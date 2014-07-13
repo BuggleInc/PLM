@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-07 23:50-0300\n"
+"PO-Revision-Date: 2014-07-12 23:44-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -2442,6 +2442,11 @@ msgid ""
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
 "line beginning with ''' and the next line ending with '''.[/!]"
 msgstr ""
+"<b>Comentários em várias linhas</b>. O\n"
+"[!java|scala]compilador[/!][!python]interpretador[/!] ignora tudo\n"
+"entre [!java|scala]os símbolos /* e */ mesmo quando eles são postos em\n"
+"linhas diferentes.[/!] [!python]uma linha comaçando com ''' e a\n"
+"próxima linha terminado com '''.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:28
@@ -2454,6 +2459,12 @@ msgid ""
 "<span class=\"comment\">also ignored  '''</span>[/!]\n"
 "yetAnotherCall()[!java];[/!]\n"
 msgstr ""
+"methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] tudo isto é ignorado</span>\n"
+"otherCall()[!java];[/!] [!java|scala]<span class=\"comment\">/* Isto é</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> também ignorado */</span>[/!]\n"
+"[!python]<span class=\"comment\">''' Isto é</span>\n"
+"<span class=\"comment\">também ignorado  '''</span>[/!]\n"
+"yetAnotherCall()[!java];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:35
@@ -2463,6 +2474,10 @@ msgid ""
 "documentation explaining how to use the code. These comments must follow a "
 "very precise formalism."
 msgstr ""
+"Existe um terceiro tipo de comentário em Java, entre /** e */, que é\n"
+"lido por um programa específico chamado JavaDoc para gerar\n"
+"automaticamente a documentação explicando como usar o código. Estes\n"
+"comentários devem seguir um formalismo bem preciso."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:40
@@ -2470,6 +2485,9 @@ msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."
 msgstr ""
+"Os comentários de várias linhas são frequentemente usados para\n"
+"documentar como usar o código, enquanto os outros são usados para\n"
+"descrever como este código funciona."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/conditions/Conditions.html:4
@@ -2479,11 +2497,16 @@ msgid ""
 "external conditions. A <b>conditional</b> let the program adapt by doing "
 "something like <i>if it's raining, take an umbrella</i>."
 msgstr ""
+"Programas feito simplesmente de um conjunto de instruções similares ao\n"
+"do exercício anterior são bastante chatos. Eles sempre fazem a mesma\n"
+"coisa, e não reajem a condições externas. Um <b>condicional</b> faz o\n"
+"programa se adaptar fazendo coisas do tipo <i>se está chovendo, pegue\n"
+"um guarda-chuva</i>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:9
 msgid "The [!thelang] syntax is the following:"
-msgstr ""
+msgstr "A sintaxe de [!thelang] é a seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:11
@@ -2497,6 +2520,13 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
 "<b>whatToDoAnyway()[!java];[/!]</b>"
 msgstr ""
+"[!java|scala]if (<b>condição</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade();</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade();</b>\n"
+"}[/!][!python]if <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade()</b>[/!]\n"
+"<b>oQueFazerDeUmJeitoOuDeOutro()[!java];[/!]</b>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:19
@@ -2507,6 +2537,11 @@ msgid ""
 "conditional block can contain several instructions, it can even contain "
 "other tests, along with their sub-blocks."
 msgstr ""
+"Se a condição for verdade, o código do próximo bloco será executado e\n"
+"então o resto do código continua. Se a condição for falsa, o próximo\n"
+"bloco é ignorado e a execução continua depois disto. O bloco\n"
+"condicional pode conter várias instruções, pode até mesmo conter\n"
+"outros testes, com seus próprios sub-testes."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:23
@@ -2516,6 +2551,11 @@ msgid ""
 "condition is true, while the instruction <code>whatToDoAnyway()</code> will "
 "be executed whether or not the condition is true."
 msgstr ""
+"Neste exemplo, as instruções <code>oQueFazerSeForVerdade()</code> e\n"
+"<code>oQueFazerDepoisSeForVerdade()</code> serão executadas se e\n"
+"somente se a condição for verdadeira, mas a instrução\n"
+"<code>oQueFazerDeUmJeitoOuDeOutro()</code> vai ser executada se a\n"
+"condição for verdadeira ou não."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:28
@@ -2538,6 +2578,26 @@ msgid ""
 "lost in your own code if it's not properly indented, so you want to clean it "
 "up so that working on your code remains pleasant and productive."
 msgstr ""
+"Em [!thelang], os blocos de código são [!java|scala]envolvidos entre\n"
+"chaves: um { abre o bloco, e um } fecha. Espaços em branco não são\n"
+"importantes[/!][!java].[/!][!scala], uma vez que suas instruções ainda\n"
+"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!]\n"
+"[!java|scala]Ainda assim é muito importante indentar corretamente seu\n"
+"código para mantê-lo legível.[/!] [!python]marcados pela indentação:\n"
+"todas as linhas que estiverem um pouco deslocadas para a direita com\n"
+"espaços pertencem ao bloco. Frequentemente se usam 4 espaços para\n"
+"indentação, mas funciona se você usar mais ou menos\n"
+"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma\n"
+"quantidade de espaços. O fim do bloco de código Python não é marcado\n"
+"por nenhum caractere específico. Indentar linhas começa um bloco e\n"
+"parar de indentar termina o bloco. Não esqueça do (:) no final da\n"
+"linha do <code>if</code>, python precisa saber que um novo bloco vai\n"
+"começar. O fato de que python de baseia em indentação para delimitar\n"
+"blocos é uma ótima propriedade para iniciantes: vai forçar você a\n"
+"aderir a padrões de apresentação de código estritos.[/!] É muito fácil\n"
+"se perder no seu próprio código se ele não for corretamente indentado,\n"
+"então você precisa deixar ele bem arrumado para que trabalhar nele\n"
+"continue sendo agradável e produtivo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:44
@@ -2545,16 +2605,23 @@ msgid ""
 "All indentations of a given block must be consistent, and it is not possible "
 "to cut a block. The two following codes are incorrect and will raise errors."
 msgstr ""
+"Todas as indentações de um dado bloco devem ser consistentes, e não é\n"
+"possível cortar um bloco. os dois códigos a seguir estão incorretos e\n"
+"devem resultar em erro."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:47
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># one space too much </span>\n"
 "<b>whatToDoAnyway()</b>\n"
 msgstr ""
+"Se <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepois()</b> <span class=\"comment\"># one space too much </span>\n"
+"<b>oQueFazerDeUmJeitoOuDeOutro()</b>\n"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:52
@@ -2565,6 +2632,10 @@ msgid ""
 "<b>whatToDoAnyway()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># this block is not hanging to a condition line</span>\n"
 msgstr ""
+"se <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>\n"
+"<b>oQueFazerDeUmJeitoOuDeOutro()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerASeguir()</b> <span class=\"comment\"># este bloco não está condicionado a uma linha de condição</span>\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:58
@@ -2577,6 +2648,16 @@ msgid ""
 "code> and <code>[!java|scala]false[/!][!python]False[/!]</code> are constant "
 "values defined by [!thelang] directly, just as 0 or 1 in mathematics."
 msgstr ""
+"A condição deve ser uma expressão\n"
+"<code>[!java]booleana[/!][!scala|python]Booleana[/!]</code>. O bloco\n"
+"interno de código será executado se a expressão for calculada para\n"
+"<code>[!java|scala]true (verdadeiro)[/!][!python]True\n"
+"(verdadeiro)[/!]</code> e será ignorado se for <code>[!java|scala]false\n"
+"(falso)[/!][!python]False (falso)[/!]</code>.\n"
+"<code>[!java|scala]true[/!][!python]True[/!]</code> e\n"
+"<code>[!java|scala]false[/!][!python]False[/!]</code> são constantes\n"
+"definidas por [!thelang] diretamente, assim como 0 ou 1 em\n"
+"matemática."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:64
@@ -2590,6 +2671,16 @@ msgid ""
 "side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), <b>&lt;=</b> "
 "(smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
+"A condição pode ser uma variável\n"
+"<code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> (vamos\n"
+"voltar a falar de variáveis no próximo exercício, não se preocupe) ou\n"
+"um teste aritmético, como <code>x == 5</code>, que verifica se o valor\n"
+"atual de <code>x</code> é 5, ou algo como <b>!=</b> (verifica\n"
+"inequação, ou seja, retorna [!java|scala]true[/!][!python]True[/!]\n"
+"apenas se o lado esquerdo é diferente do lado direito), <b>&lt;</b>\n"
+"(smaller than - menor que), <b>&gt;</b> (larger than - maior que),\n"
+"<b>&lt;=</b> (smaller or equal to - menor ou igual a), <b>&gt;=</b>\n"
+"(larger or equal to - maior ou igual a)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:71
@@ -2600,6 +2691,11 @@ msgid ""
 "get trapped is some cases (such as when you are affecting a boolean "
 "variable). So you'd better to be careful..."
 msgstr ""
+"Cuidado com um erro clássico, que é verificar a igualdade da variável\n"
+"usando = no lugar de ==. Ainda bem que o\n"
+"[!java|scala]compilador[/!][!python]interpretador[/!] detecta este\n"
+"problema na maior parte das vezes, mas às vezes passa (como quando\n"
+"você está agindo sobre uma variável booleana). Então é bom ter cuidado..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:76
@@ -2608,6 +2704,10 @@ msgid ""
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns true if the buggle is facing a wall, and false in the other case."
 msgstr ""
+"A condição pode também ser uma chamada para alguns métodos\n"
+"particulares que retornam booleano. Por exemplo, o método\n"
+"<code>estáOlhandoParaParede()</code> do buggle retorna verdadeiro se o\n"
+"buggle está olhando para uma parede, e falso caso contrário."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:80
@@ -2615,15 +2715,18 @@ msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
 "boolean operations:"
 msgstr ""
+"Finalmente, uma condição pode ser composta de várias sub-condições\n"
+"conectadas por operadores booleanos:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:83
+#, fuzzy
 msgid ""
 "<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when "
 "<tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is "
 "false, <tt>cond2</tt> is not even evaluated as we already know that the "
 "conjunction of both propositions cannot be true)."
-msgstr ""
+msgstr "<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated as we already know that the conjunction of both propositions cannot be true)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:86
