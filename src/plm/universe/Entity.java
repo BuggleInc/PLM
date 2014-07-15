@@ -19,10 +19,20 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import lessons.lightbot.universe.LightBotEntity;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
 import plm.core.PythonExceptionDecipher;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
+
+import com.sun.org.apache.xerces.internal.parsers.DOMParser;
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
  * 
@@ -212,10 +222,11 @@ public abstract class Entity extends Observable {
 					System.out.println("Error creating a temporary file, make sure "+saveDir.getAbsolutePath()+" is writable");
 					return;
 				}
-				
+
 				String extension="";
 				String arg1[];
 				String os = System.getProperty("os.name").toLowerCase();
+				final StringBuffer valgrind=new StringBuffer("");
 				if (os.indexOf("win") >= 0) {
 					extension=".exe";
 					arg1 = new String[3];
@@ -223,10 +234,19 @@ public abstract class Entity extends Observable {
 					arg1[1]="/c";
 					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
 				} else {
+					//test if valgrind exist
+					Runtime r = Runtime.getRuntime();
+					try {
+						r.exec("valgrind --version");
+						valgrind.append("valgrind --xml=yes --xml-fd=2");
+					} catch (IOException e) {
+						//TODO GIANNINI error message
+						System.out.println("Vous ne disposez pas de valgrind");
+					}
 					arg1 = new String[3];
 					arg1[0]="/bin/sh";
 					arg1[1]="-c";
-					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
+					arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
 				}
 
 				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
@@ -272,16 +292,24 @@ public abstract class Entity extends Observable {
 						try {
 							BufferedReader err = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 							String line = "";
-							try {
-								while((line = err.readLine()) != null) {
-									resCompilationErr.append(line);
-									System.out.println("error : "+line);
+							while((line = err.readLine()) != null) {
+								if(line.contains("<")){
+									resCompilationErr.append(line+"\n");
 								}
-							} finally {
-								err.close();
+								System.out.println("error : "+line);
 							}
+							if(valgrind.length()>0){
+								DOMParser parser = new DOMParser();
+								parser.parse(new InputSource(new ByteInputStream(resCompilationErr.toString().getBytes(), resCompilationErr.length())));
+								Document doc = parser.getDocument();
+								NodeList l = doc.getElementsByTagName("error");
+								
+							}
+
 						} catch(IOException ioe) {
-							ioe.printStackTrace();
+							ioe.printStackTrace();	
+						}catch(SAXException saxe){
+							saxe.printStackTrace();
 						}
 					}
 				};
@@ -335,7 +363,7 @@ public abstract class Entity extends Observable {
 
 				bwriter.close();
 
-				
+
 				randomFile.delete();
 
 				if(resCompilationErr.length()>0){
