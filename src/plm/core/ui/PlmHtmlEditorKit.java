@@ -169,10 +169,15 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			while(!strtemp.equals(res)){
 				strtemp=res.toString();
 				for (String cl : cls) {
-					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+cl+"(((\\|[a-z]*)*)?)\\]([^\\[]*?)\\[/!\\]",   "\\[!#\\]"+replace+"\\[/!\\]");
+					res = res.replaceAll("(?s)\\[!"+cl+"\\](.*?)\\[/!\\]",   "\\[!#\\]<font color=\"FF0000\">$1</font>\\[/!\\]");
+					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+cl+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "\\[!#\\]"+replace+"\\[/!\\]");
+					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+cl+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "\\[!#\\]"+replace+"\\[/!\\]");
 					//System.out.println("\t"+res);
 				}
-				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+"[a-z]*"+"(((\\|[a-z]*)*)?)\\]([^\\[]*?)\\[/!\\]",   "");
+
+				res = res.replaceAll("(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
+				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+"[a-z]*"+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "");
+				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+"[a-z]*"+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "");
 				//System.out.println(res);
 				res = res.replaceAll(      "(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
 				//System.out.println(res);
@@ -190,10 +195,14 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			while(!strtemp.equals(res)){
 				strtemp=res.toString();
 				for (String cl : cls) {
-					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+cl+"(((\\|[a-z]*)*)?)\\]([^\\[]*?)\\[/!\\]",   "\\[!#\\]$7\\[/!\\]");
+					res = res.replaceAll("(?s)\\[!"+cl+"\\](.*?)\\[/!\\]",   "\\[!#\\]$1\\[/!\\]");
+					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+cl+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "\\[!#\\]$7\\[/!\\]");
+					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+cl+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "\\[!#\\]$7\\[/!\\]");
 					//System.out.println("\t"+res);
 				}
-				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+"[a-z]*"+"(((\\|[a-z]*)*)?)\\]([^\\[]*?)\\[/!\\]",   "");
+				res = res.replaceAll("(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
+				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+"[a-z]*"+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "");
+				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+"[a-z]*"+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "");
 				//System.out.println(res);
 				res = res.replaceAll(      "(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
 				//System.out.println(res);
