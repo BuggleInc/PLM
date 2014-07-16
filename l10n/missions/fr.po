@@ -1413,6 +1413,7 @@ msgstr ""
 "[/!][!python]interpréteur[/!] rencontre le symbole [!java|scala|c]//[/!][!"
 "python]#[/!], il ignore la fin de la ligne."
 
+
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
 msgid ""
@@ -1424,6 +1425,7 @@ msgstr ""
 "<b>Commentaires sur plusieurs lignes</b>. [!java|scala|c]Le compilateur[/!][!"
 "python]L'interpréteur[/!] ignore tout ce qui se trouve entre [!java|scala|c]"
 "les symboles /* et */, même s'ils sont sur des lignes différentes.[/!]\n"
+
 "[!python]une ligne commençant par ''' et la prochaine ligne terminant par "
 "'''.[/!]"
 
@@ -1641,6 +1643,7 @@ msgstr ""
 "false[/!][!python]False[/!]</code> sont des constantes définies directement "
 "par [!thelang], tout comme 0 ou 1 en mathématiques."
 
+
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:64
 msgid ""
@@ -1732,6 +1735,7 @@ msgid ""
 msgstr ""
 "<code>[!java|scala|c]![/!][!python]not [/!]cond</code> est vraie si "
 "<tt>cond</tt> ne l'est pas."
+
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:90
@@ -4879,6 +4883,7 @@ msgstr ""
 "de la position courante. Son prototype peut être : <code>[!java|c]void [/!]"
 "faireV()</code>"
 
+
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:16
 msgid ""
@@ -5341,6 +5346,7 @@ msgstr ""
 "<code>versLAvant</code> est vrai, il faut avancer de ce nombre de pas; dans "
 "le cas contraire, il faut reculer."
 
+
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:79
 msgid ""
@@ -5709,6 +5715,7 @@ msgstr ""
 "[!python|scala|c]Il suffit ensuite de tester si la couleur renvoyée par "
 "cette fonction est égale à la valeur <code>[!scala|python]Color.green[/!][!c]"
 "GREEN[/!]</code>, qui représente la couleur verte.[/!]"
+
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:24
@@ -6123,6 +6130,7 @@ msgstr ""
 "code> : renvoie le message qu'il y a écrit par terre (s'il y a rien, on "
 "obtient une chaîne vide)."
 
+
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/bdr/BDR.html:143
 msgid ""
@@ -6135,6 +6143,7 @@ msgstr ""
 "scala]: String[/!])</code> : écrit le message spécifié en argument par "
 "terre. S'il y a déjà quelque chose écrit par terre, on ajoute le nouveau "
 "message à la fin du précédent."
+
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/bdr/BDR.html:146
@@ -6374,6 +6383,7 @@ msgstr ""
 "permet de travailler avec des caractères (<code>char</code>), qui sont moins "
 "pénibles que les chaînes."
 
+
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:197
 msgid "Tips and Hints"
@@ -6429,6 +6439,7 @@ msgid ""
 "[!java|c]<code>switch</code> conditionals[/!][!scala]Pattern matching[/!]"
 msgstr ""
 "[!java|c]Conditionnelle <code>switch</code>[/!][!scala]Les filtrages[/!]"
+
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:13
@@ -6908,6 +6919,7 @@ msgstr ""
 "<code>getDirection() == [!scala|python|java]Direction.[/!]EST</code> (ou "
 "bien OUEST)."
 
+
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/traversal/Snake.html:26
 msgid ""
@@ -7081,6 +7093,7 @@ msgstr ""
 "c] ou dernière[/!] case en dehors de la boucle principale[!java|scala|c], "
 "selon que vous utilisez une boucle <code>while</code> ou <code>do/while</"
 "code>[/!]."
+
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:4
@@ -8109,6 +8122,7 @@ msgid ""
 msgstr ""
 "[!java]boolean [/!][!c]int [/!]plusPetit([!java|c]int [/!]i[!scala]:Int[/!], "
 "[!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:16
@@ -10605,6 +10619,7 @@ msgstr ""
 "le calcul inverse, il faut utiliser <code>index=base*2+pos</code> (qui "
 "fonctionne car il y a deux positions par base)."
 
+
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:32
 msgid ""
@@ -10764,6 +10779,7 @@ msgstr "L'univers des tortues"
 msgid "This is an adaptation of LOGO for the Programmer's Learning Machine."
 msgstr ""
 "Cet univers est une adaptation de LOGO pour la Programmer's Learning Machine."
+
 
 #. type: Content of: <p>
 #: src/plm/universe/turtles/TurtleWorld.html:6
@@ -12265,6 +12281,11 @@ msgstr "[!java|c]int [/!]getRayon([!java|c]int [/!]slot)[!scala]:Int[/!]"
 msgid "Returns the radius of the top-most disk of the specified slot."
 msgstr "Retourne le rayon du disque placé en haut du piquet spécifié."
 
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
+msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]"
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:2 src/lessons/maze/short_desc.html:2
 msgid "Labyrinths"
