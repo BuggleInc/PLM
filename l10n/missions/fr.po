@@ -1413,7 +1413,6 @@ msgstr ""
 "[/!][!python]interpréteur[/!] rencontre le symbole [!java|scala|c]//[/!][!"
 "python]#[/!], il ignore la fin de la ligne."
 
-
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
 msgid ""
@@ -1425,7 +1424,6 @@ msgstr ""
 "<b>Commentaires sur plusieurs lignes</b>. [!java|scala|c]Le compilateur[/!][!"
 "python]L'interpréteur[/!] ignore tout ce qui se trouve entre [!java|scala|c]"
 "les symboles /* et */, même s'ils sont sur des lignes différentes.[/!]\n"
-
 "[!python]une ligne commençant par ''' et la prochaine ligne terminant par "
 "'''.[/!]"
 
@@ -12286,6 +12284,7 @@ msgstr "Retourne le rayon du disque placé en haut du piquet spécifié."
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]"
+
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:2 src/lessons/maze/short_desc.html:2
 msgid "Labyrinths"
