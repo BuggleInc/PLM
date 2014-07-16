@@ -255,36 +255,36 @@ public abstract class Exercise extends Lecture {
 					String link="";
 					String remote="";
 					
-					String compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/Remote.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/Remote.o";
+					String compileRemote = "gcc -g -Wall -c \""+saveDirPathSrc+"/Remote.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/Remote.o\"";
 					
 					if(code.contains("RemoteBuggle")){
 						remote = "RemoteBuggle";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBuggle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBuggle.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBuggle.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteBuggle.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteBuggle.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteBuggle.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else if(code.contains("RemoteTurtle")){
 						remote = "RemoteTurtle";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteTurtle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteTurtle.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteTurtle.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteTurtle.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteTurtle.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteTurtle.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else if(code.contains("RemoteSort")){
 						remote = "RemoteSort";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteSort.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteSort.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteSort.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteSort.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteSort.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteSort.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else if(code.contains("RemoteFlag")){
 						remote = "RemoteFlag";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteFlag.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteFlag.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteFlag.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteFlag.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteFlag.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteFlag.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else if(code.contains("RemoteBaseball")){
 						remote = "RemoteBaseball";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBaseball.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBaseball.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBaseball.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteBaseball.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteBaseball.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteBaseball.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else if(code.contains("RemotePancake")){
 						remote = "RemotePancake";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemotePancake.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemotePancake.o ";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemotePancake.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemotePancake.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemotePancake.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemotePancake.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else if(code.contains("RemoteHanoi")){
 						remote = "RemoteHanoi";
-						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteHanoi.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteHanoi.o ";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteHanoi.o "+saveDirPathBin+"/Remote.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteHanoi.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteHanoi.o\"";
+						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteHanoi.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else{
 						//TODO GIANNINI add error mesage if the remote isn't implemented
 						System.out.println("ERROR FILE SRC");
@@ -334,7 +334,7 @@ public abstract class Exercise extends Lecture {
 					hRemoteOut.close();
 					
 					//compile the current code
-					String compileCode = "gcc -g -Wall -c "+saveDirPathSrc+"/current.c  -o "+saveDirPathBin+"/current.o -I "+saveDirPathInclude+" ";
+					String compileCode = "gcc -g -Wall -c \""+saveDirPathSrc+"/current.c\"  -o \""+saveDirPathBin+"/current.o\" -I \""+saveDirPathInclude+"\"";
 
 
 					String[] arg1;
