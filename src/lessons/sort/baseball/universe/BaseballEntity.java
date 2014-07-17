@@ -3,7 +3,6 @@ package lessons.sort.baseball.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
 import plm.universe.Entity;
 

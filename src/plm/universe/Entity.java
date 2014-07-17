@@ -154,10 +154,8 @@ public abstract class Entity extends Observable {
 	 */
 	protected abstract void run() throws Exception;
 
-	/*
-	 * GIANNINI
-	 * Cette methode permet aux sous Entity de pouvoir communiquer avec des programmes externes
-	 * Pour l'instant c'est fait avec le C (ou en train d'etre fait)
+	/** This method allows in Entity to communicate with external programs
+	 * 
 	 * 
 	 */
 	protected abstract void command(String command, BufferedWriter out);
@@ -211,8 +209,8 @@ public abstract class Entity extends Observable {
 				final File randomFile = new File(tempdir+"/tmp_"+((int)(Math.random()*1000))+".txt");
 				System.out.println("tmp file : "+randomFile.getAbsolutePath());
 				if(!randomFile.createNewFile()){
-					//TODO GIANNINI add error message
-					System.out.println("ERREUR CREATE TMPFILE");
+					System.out.println("Error creating a temporary file, make sure "+saveDir.getAbsolutePath()+" is writable");
+					return;
 				}
 				
 				String extension="";
@@ -233,12 +231,10 @@ public abstract class Entity extends Observable {
 
 				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
 				if(!exec.exists()){
-					//TODO GIANNINI add error message if the binary isn't here
-					System.out.println("NO BINARY FOUND");
+					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
 					return;
 				}else if(!exec.canExecute() || !exec.isFile()){
-					//TODO GIANNINI add error message if the file is not a file or not executable
-					System.out.println("PROG IS NOT EXECUTABLE OR A FILE");
+					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
 					return;
 				}
 
@@ -297,7 +293,6 @@ public abstract class Entity extends Observable {
 							InputStream ips=new FileInputStream(randomFile.getAbsolutePath()); 
 							InputStreamReader ipsr=new InputStreamReader(ips);
 							BufferedReader br=new BufferedReader(ipsr);
-							String line = "";
 							try {
 								int truc;
 								String str = "";
@@ -316,7 +311,7 @@ public abstract class Entity extends Observable {
 									if(truc!=10){
 										str+=(char)truc;
 									}else{
-										entityThis.command(str, bwriter);
+										System.out.println(str);
 										str="";
 									}
 								}
@@ -328,7 +323,6 @@ public abstract class Entity extends Observable {
 						}
 					}
 				};
-
 
 				reader.start();
 				error.start();
@@ -352,14 +346,7 @@ public abstract class Entity extends Observable {
 
 			} catch (IOException e) {
 				e.printStackTrace();
-			} catch (Exception e) {
-				String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
-						" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
-
-				for (StackTraceElement elm : e.getStackTrace())
-					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
-				System.err.println(msg);
-				progress.setCompilationError(msg);
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}else{

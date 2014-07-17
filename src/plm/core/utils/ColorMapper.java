@@ -57,8 +57,7 @@ public class ColorMapper {
 		if(c>=0 && c<colors.length){
 			return colors[c];
 		}else{
-			//TODO GIANNINI change message and translate this
-			throw new InvalidColorNameException("Color Error");
+			throw new InvalidColorNameException("Number "+c+" is not a valid color number");
 		}
 	}
 }

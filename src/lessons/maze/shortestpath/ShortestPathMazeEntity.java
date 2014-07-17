@@ -46,7 +46,6 @@ public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggl
 	
 	@Override
 	public void command(String command, java.io.BufferedWriter out) {
-		System.out.println(command);
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2,nb3;
 		try{

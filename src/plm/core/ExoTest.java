@@ -14,7 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.junit.Ignore;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;

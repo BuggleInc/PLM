@@ -35,7 +35,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 	private JButton lButton;
 	private JToggleButton brushButton;
 	private JComboBox<Color> brushColorComboBox;
-	private JLabel lBuggleColor;
 	private JLabel lBrushColor;
 	private AbstractBuggle buggle;
 	

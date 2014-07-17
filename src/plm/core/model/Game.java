@@ -289,7 +289,6 @@ public class Game implements IWorldView {
 	}
 
 
-	//TODO GIANNINI Verifier si on peut utiliser le C
 	public boolean canC = false;
 	String CError = "";
 	private boolean checkC(){

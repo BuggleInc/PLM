@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;

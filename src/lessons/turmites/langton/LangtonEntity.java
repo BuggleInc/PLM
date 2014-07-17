@@ -42,7 +42,6 @@ public class LangtonEntity extends SimpleBuggle {
 	
 	@Override
 	public void command(String command, BufferedWriter out) {
-		System.out.println(command);
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		switch(num){
 		case 200 :

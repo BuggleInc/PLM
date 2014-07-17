@@ -204,8 +204,7 @@ public class LightBotEntity extends Entity  {
 
 	@Override
 	protected void command(String command, BufferedWriter out) {
-		// TODO GIANNINI
-		//n'est surement pas utilisé ici
+		// not use here
 		
 	}
 }
