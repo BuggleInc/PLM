@@ -12,7 +12,7 @@ public class GatesBurnedPancake extends ExerciseTemplated {
 	
 		PancakeWorld[] plate = new PancakeWorld[] {
 				new PancakeWorld("5 pancakes",new int[] {2,4,5,3,1},true),         // A+ H D-
-				new PancakeWorld("7 pancakes",new int[] {3,6, 1,2,8,5,4,7},true),  // C  E+ Cbis E+ Cbis
+				new PancakeWorld("7 pancakes",new int[] {3,6, 1,2,5,4,7},true),  // C  E+ Cbis E+ Cbis
 				new PancakeWorld("8 pancakes",new int[] {5,2,7,4,1,6,8,3,},true),  // A+ A+ A+ E+ A- G H
 				new PancakeWorld("9 pancakes",new int[] {4,2,3,7,9,1,5,6,8},true), // B+ Cbis A- D+ E+ H
 				new PancakeWorld("15 pancackes",new int[] {7, 2, 3, 14, 9, 5, 1, 8, 10, 11, 6, 12, 15, 4, 13, },true), // A+ Cbis A+ D+ E+ G A- B+ E+ F- H
