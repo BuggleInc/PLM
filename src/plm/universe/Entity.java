@@ -231,11 +231,9 @@ public abstract class Entity extends Observable {
 
 				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
 				if(!exec.exists()){
-					//TODO GIANNINI add error message if the binary isn't here
 					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
 					return;
 				}else if(!exec.canExecute() || !exec.isFile()){
-					//TODO GIANNINI add error message if the file is not a file or not executable
 					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
 					return;
 				}
