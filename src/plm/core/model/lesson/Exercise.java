@@ -257,7 +257,6 @@ public abstract class Exercise extends Lecture {
 					
 					String compileRemote = "gcc -g -Wall -c \""+saveDirPathSrc+"/Remote.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/Remote.o\"";
 					
-					
 					if(code.contains("RemoteBuggle")){
 						remote = "RemoteBuggle";
 						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteBuggle.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteBuggle.o\"";
