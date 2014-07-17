@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

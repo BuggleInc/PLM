@@ -3,7 +3,6 @@ package lessons.turmites.helloturmite;
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Arrays;
 
 import plm.universe.bugglequest.SimpleBuggle;
 

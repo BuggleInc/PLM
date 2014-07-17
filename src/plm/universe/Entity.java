@@ -295,7 +295,6 @@ public abstract class Entity extends Observable {
 							InputStream ips=new FileInputStream(randomFile.getAbsolutePath()); 
 							InputStreamReader ipsr=new InputStreamReader(ips);
 							BufferedReader br=new BufferedReader(ipsr);
-							String line = "";
 							try {
 								int truc;
 								String str = "";

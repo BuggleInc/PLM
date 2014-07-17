@@ -2,13 +2,11 @@ package plm.core.ui.action;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import plm.core.model.Game;
-import plm.core.model.User;
 
 public class AddUser extends AbstractGameAction {
 

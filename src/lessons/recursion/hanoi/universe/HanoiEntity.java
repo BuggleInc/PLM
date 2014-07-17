@@ -3,7 +3,6 @@ package lessons.recursion.hanoi.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import lessons.sort.baseball.universe.BaseballWorld;
 
 import plm.universe.Entity;
 import plm.universe.World;

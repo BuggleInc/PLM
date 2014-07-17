@@ -8,8 +8,6 @@ public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		int nb,nb2;
-		String str;
 		try {
 			switch(num){
 			case 148:
