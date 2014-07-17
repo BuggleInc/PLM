@@ -257,6 +257,7 @@ public abstract class Exercise extends Lecture {
 					
 					String compileRemote = "gcc -g -Wall -c \""+saveDirPathSrc+"/Remote.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/Remote.o\"";
 					
+					
 					if(code.contains("RemoteBuggle")){
 						remote = "RemoteBuggle";
 						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteBuggle.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteBuggle.o\"";
@@ -286,8 +287,9 @@ public abstract class Exercise extends Lecture {
 						compileRemoteWorld = "gcc -g -Wall -c \""+saveDirPathSrc+"/RemoteHanoi.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/RemoteHanoi.o\"";
 						link = "gcc \""+saveDirPathBin+"/current.o\" \""+saveDirPathBin+"/RemoteHanoi.o\" \""+saveDirPathBin+"/Remote.o\" -o \""+execPath+"\"";
 					}else{
-						//TODO GIANNINI add error mesage if the remote isn't implemented
-						System.out.println("ERROR FILE SRC");
+						PLMCompilerException e = new PLMCompilerException("This world is not implemented", null, null);
+						lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+						throw e;
 					}
 					
 					//copy file RemoteWorld from jar to tmp dir
@@ -508,7 +510,6 @@ public abstract class Exercise extends Lecture {
 							throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 						}
 					} catch (ClassNotFoundException e) {
-						//TODO GIANNINI
 						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					}
 					/* change fields of new entity to copy old one */
