@@ -24,7 +24,7 @@ int max(int a, int b){
 
 /* BEGIN HIDDEN */
 int getRankOf(int size) {
-	int rank;
+	int rank=0;
 	for (rank=0;rank<getStackSize();rank++)
 		if (getPancakeRadius(rank) == size)
 			return rank;
@@ -113,13 +113,14 @@ void solve() {
 	int doneF=0;
 	int doneG=0;
 	int doneH=0;
-	int* origSizes = (int*)malloc(sizeof(int)*getStackSize());
+	int stackSize = getStackSize();
+	int* origSizes = (int*)malloc(sizeof(int)*stackSize);
 	int i;
-	for (i=0;i<getStackSize();i++)
+	for (i=0;i<stackSize;i++)
 		origSizes[i] = getPancakeRadius(i);
 	/* end of this cruft */
 
-	int stackSize = getStackSize();
+
 
 	if (debug>0) {
 		printf("{\n");
@@ -171,86 +172,86 @@ void solve() {
 
 		if (isFree(posT)) {
 			if (isFree(posTPlus)) { /* CASE A: t and t+o free */
-			if (debug>0)
-				printf("Case A+\n");
-			if(isPancakeUpsideDown(posT)){
-				if(isPancakeUpsideDown(posTPlus)){
-					flip(posTPlus+1);
+				if (debug>0)
+					printf("Case A+\n");
+				if(isPancakeUpsideDown(posT)){
+					if(isPancakeUpsideDown(posTPlus)){
+						flip(posTPlus+1);
+						flip(1);
+						flip(posTPlus+1);
+					}
+					flip(posTPlus);
+				}else if(!isPancakeUpsideDown(posT)){
+					if(isPancakeUpsideDown(posTPlus)){
+						flip(posTPlus+1);
+						flip(1);
+						flip(posTPlus+1);
+					}
 					flip(1);
-					flip(posTPlus+1);
+					flip(posTPlus);
 				}
-				flip(posTPlus);
-			}else if(!isPancakeUpsideDown(posT)){
-				if(isPancakeUpsideDown(posTPlus)){
-					flip(posTPlus+1);
-					flip(1);
-					flip(posTPlus+1);
-				}
-				flip(1);
-				flip(posTPlus);
-			}
-			doneA = 1;
+				doneA = 1;
 			} else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
-			if (debug>0)
-				printf("Case A-\n");
-			if(isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
-				flip(posTMinus+1);
-				flip(1);
-				flip(posTMinus);
-			}else if(isPancakeUpsideDown(posT) && !isPancakeUpsideDown(posTMinus)){
-				flip(posTMinus+1);
-				flip(posTMinus);
-			}else if(!isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
-				flip(1);
-				flip(posTMinus+1);
-				flip(1);
-				flip(posTMinus);
-			}else if(!isPancakeUpsideDown(posT) && !isPancakeUpsideDown(posTMinus)){
-				flip(1);
-				flip(posTMinus+1);
-				flip(posTMinus);
-			}
-			doneA = 1;
+				if (debug>0)
+					printf("Case A-\n");
+				if(isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
+					flip(posTMinus+1);
+					flip(1);
+					flip(posTMinus);
+				}else if(isPancakeUpsideDown(posT) && !isPancakeUpsideDown(posTMinus)){
+					flip(posTMinus+1);
+					flip(posTMinus);
+				}else if(!isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
+					flip(1);
+					flip(posTMinus+1);
+					flip(1);
+					flip(posTMinus);
+				}else if(!isPancakeUpsideDown(posT) && !isPancakeUpsideDown(posTMinus)){
+					flip(1);
+					flip(posTMinus+1);
+					flip(posTMinus);
+				}
+				doneA = 1;
 
 			} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
-			if (debug>0)
-				printf("Case B+\n");
-			if(isPancakeUpsideDown(posT)){
-				flip(1);
-			}
-			flip(posTPlus);
-			doneB = 1;
+				if (debug>0)
+					printf("Case B+\n");
+				if(isPancakeUpsideDown(posT)){
+					flip(1);
+				}
+				flip(posTPlus);
+				doneB = 1;
 			} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
-			if (debug>0)
-				printf("Case B-\n");
-			if(!isPancakeUpsideDown(posT)){
-				flip(1);
-			}
-			flip(posTMinus);
-			doneB = 1;
+				if (debug>0)
+					printf("Case B-\n");
+				if(!isPancakeUpsideDown(posT)){
+					flip(1);
+				}
+				flip(posTMinus);
+				doneB = 1;
 
 			} else if (min(posTPlus,posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
-			if (debug>0)
-				printf("Case C\n");
-			if((!isPancakeUpsideDown(posT) && posTMinus<posTPlus )|| (isPancakeUpsideDown(posT) && posTMinus>posTPlus)){
-				flip(1);
-			}
-			flip(min(posTPlus,posTMinus) );
-			flip(min(posTPlus,posTMinus) - 1);
-			flip(max(posTPlus,posTMinus) + 1);
-			flip(min(posTPlus,posTMinus) - 1);
-			doneC = 1;
+				if (debug>0)
+					printf("Case C\n");
+				if((!isPancakeUpsideDown(posT) && posTMinus<posTPlus )|| (isPancakeUpsideDown(posT) && posTMinus>posTPlus)){
+					flip(1);
+				}
+				flip(min(posTPlus,posTMinus) );
+				flip(min(posTPlus,posTMinus) - 1);
+				flip(max(posTPlus,posTMinus) + 1);
+				flip(min(posTPlus,posTMinus) - 1);
+				doneC = 1;
 
-		} else {
-			if (debug>0)
-				printf("Case Cbis\n");
-			if((isPancakeUpsideDown(posT) && posTMinus==-99) ||( !isPancakeUpsideDown(posT) && posTPlus==-99)){
-				flip(1);
+			} else {
+				if (debug>0)
+					printf("Case Cbis\n");
+				if((isPancakeUpsideDown(posT) && posTMinus==-99) ||( !isPancakeUpsideDown(posT) && posTPlus==-99)){
+					flip(1);
+				}
+				flip(max(posTPlus,posTMinus) + 1);
+				flip(max(posTPlus,posTMinus) );
+				doneC = 1;
 			}
-			flip(max(posTPlus,posTMinus) + 1);
-			flip(max(posTPlus,posTMinus) );
-			doneC = 1;
-		}
 
 		} else { // t is in a block
 			if (blockLength() == stackSize) { // Done!
@@ -264,90 +265,93 @@ void solve() {
 						printf("%d, ",origSizes[rank]);
 					printf("}\n");
 				}
+				free(origSizes);
 				return;
 			}
 
-			if (isFree(posTPlus)) {          /* CASE D: t in a block, t+1 free */
-			if (debug>0)
-				printf("Case D+\n");
-			if(isPancakeUpsideDown(posTPlus)){
-				flip(posTPlus+1);
-				flip(1);
-				flip(posTPlus+1);
-			}
-			flip(posTPlus);
-			doneD = 1;
+			if (isFree(posTPlus)){      /* CASE D: t in a block, t+1 free */
+				if (debug>0){
+					printf("Case D+\n");
+				}
+				if(isPancakeUpsideDown(posTPlus)){
+					flip(posTPlus+1);
+					flip(1);
+					flip(posTPlus+1);
+				}
+				flip(posTPlus);
+				doneD = 1;
 
 			} else if (isFree(posTMinus)) {  /* CASE D: t in a block, t-1 free */
-			if (debug>0)
-				printf("Case D-\n");
-			if(!isPancakeUpsideDown(posTMinus)){
-				flip(posTMinus+1);
-				flip(1);
-				flip(posTMinus+1);
-			}
-			flip(posTMinus);
-			doneD = 1;
+				if (debug>0)
+					printf("Case D-\n");
+				if(!isPancakeUpsideDown(posTMinus)){
+					flip(posTMinus+1);
+					flip(1);
+					flip(posTMinus+1);
+				}
+				flip(posTMinus);
+				doneD = 1;
 
 			} else if (isFirst(posTPlus)) {  /* CASE E: t in a block, t+1 first element */
-			if (debug>0)
-				printf("Case E+\n");
-			flip(posTPlus);
-			doneE = 1;
+				if (debug>0)
+					printf("Case E+\n");
+				flip(posTPlus);
+				doneE = 1;
 
 			} else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
-			if (debug>0)
-				printf("Case E-\n");
-			flip(posTMinus);
-			doneE = 1;
+				if (debug>0)
+					printf("Case E-\n");
+				flip(posTMinus);
+				doneE = 1;
 
 			} else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
-			doneF = 1;
-			if (debug>0)
-				printf("Case F+\n");
-			flip(blockLength());
-			flip(posTPlus + 1);
-			int newPos = getRankOf(tRadius);
-			if (newPos>0)
-				flip(newPos);
+				doneF = 1;
+				if (debug>0)
+					printf("Case F+\n");
+				flip(blockLength());
+				flip(posTPlus + 1);
+				int newPos = getRankOf(tRadius);
+				if (newPos>0)
+					flip(newPos);
 
 			} else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
-			doneF = 1;
-			if (debug>0)
-				printf("Case F-\n");
-			flip(blockLength());
-			flip(posTMinus + 1);
-			int newPos = getRankOf(tRadius);
-			if (newPos>0)
-				flip(newPos);
-		} else {
-			int k = blockLength()-1;
-			int o = getPancakeRadius(1) - tRadius;
-			int pos = getRankOf(tRadius+(k+1)*o);
-			if (isFree(pos) || isFirst(pos)) {
-				doneG = 1;
+				doneF = 1;
 				if (debug>0)
-					printf("Case G\n");
-				if((isPancakeUpsideDown(pos) && o>0) || (!isPancakeUpsideDown(pos) && o<0)){
-					flip(pos+1);
-					flip(1);
-					flip(pos+1);
-				}
-				if(k+1 != pos){
-					flip(k+1);
-					flip(pos);
-				}
+					printf("Case F-\n");
+				flip(blockLength());
+				flip(posTMinus + 1);
+				int newPos = getRankOf(tRadius);
+				if (newPos>0)
+					flip(newPos);
 			} else {
-				doneH = 1;
-				if (debug>0)
-					printf("Case H\n");
-				flip(pos+1);
-				flip(getRankOf(tRadius+k*o));
+				int k = blockLength()-1;
+				int o = getPancakeRadius(1) - tRadius;
+				int pos = getRankOf(tRadius+(k+1)*o);
+				if (isFree(pos) || isFirst(pos)) {
+					doneG = 1;
+					if (debug>0)
+						printf("Case G\n");
+					if((isPancakeUpsideDown(pos) && o>0) || (!isPancakeUpsideDown(pos) && o<0)){
+						flip(pos+1);
+						flip(1);
+						flip(pos+1);
+					}
+					if(k+1 != pos){
+						flip(k+1);
+						flip(pos);
+					}
+				} else {
+					doneH = 1;
+					if (debug>0)
+						printf("Case H\n");
+					flip(pos+1);
+					flip(getRankOf(tRadius+k*o));
+				}
 			}
+
 		}
 	}
-}
-free(origSizes);
+	free(origSizes);
 	/* END SOLUTION */
 }
 /* END TEMPLATE */
