@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-void step();
+void step(char* rule, Color* colors, int length);
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
 
@@ -18,6 +18,7 @@ void run(){
 		stepDone();
 		step(rule,colors,length);
 	}
+	free(colors);
 }
 
 #line 1 "LangtonColors.c"

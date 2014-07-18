@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-int run(){
+void run(){
 	#line 1 "Variables"
 	/* BEGIN SOLUTION */
 	int cpt = 0;
