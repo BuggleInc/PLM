@@ -246,8 +246,7 @@ public abstract class Entity extends Observable {
 						}
 						valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
 					} catch (IOException e) {
-						//TODO GIANNINI error message
-						System.out.println("Vous ne disposez pas de valgrind");
+						//System.out.println("Vous ne disposez pas de valgrind");
 					}
 					arg1 = new String[3];
 					arg1[0]="/bin/sh";
