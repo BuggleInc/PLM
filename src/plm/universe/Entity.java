@@ -17,8 +17,17 @@ import java.util.concurrent.Semaphore;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import lessons.lightbot.universe.LightBotEntity;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import plm.core.PythonExceptionDecipher;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
@@ -206,16 +215,20 @@ public abstract class Entity extends Observable {
 				String tempdir = System.getProperty("java.io.tmpdir")+"/plmTmp";
 				File saveDir = new File(tempdir+"/bin");
 
-				final File randomFile = new File(tempdir+"/tmp_"+((int)(Math.random()*1000))+".txt");
+				int nb=(int)(Math.random()*1000);
+				final File randomFile = new File(tempdir+"/tmp_"+nb+".txt");
 				System.out.println("tmp file : "+randomFile.getAbsolutePath());
 				if(!randomFile.createNewFile()){
 					System.out.println("Error creating a temporary file, make sure "+saveDir.getAbsolutePath()+" is writable");
 					return;
 				}
-				
+
+				final File valgrindFile=new File(tempdir+"/valgrind_"+nb+".xml");
+
 				String extension="";
 				String arg1[];
 				String os = System.getProperty("os.name").toLowerCase();
+				final StringBuffer valgrind=new StringBuffer("");
 				if (os.indexOf("win") >= 0) {
 					extension=".exe";
 					arg1 = new String[3];
@@ -223,10 +236,23 @@ public abstract class Entity extends Observable {
 					arg1[1]="/c";
 					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
 				} else {
+					//test if valgrind exist
+					Runtime r = Runtime.getRuntime();
+					try {
+						r.exec("valgrind --version");
+						if(!valgrindFile.createNewFile()){
+							//TODO GIANNINI add error message
+							System.out.println("ERREUR CREATE TMPFILE");
+						}
+						valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
+					} catch (IOException e) {
+						//TODO GIANNINI error message
+						System.out.println("Vous ne disposez pas de valgrind");
+					}
 					arg1 = new String[3];
 					arg1[0]="/bin/sh";
 					arg1[1]="-c";
-					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
+					arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
 				}
 
 				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
@@ -270,19 +296,82 @@ public abstract class Entity extends Observable {
 				Thread error = new Thread() {
 					public void run() {
 						try {
-							BufferedReader err = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-							String line = "";
-							try {
+							InputStreamReader isr = new InputStreamReader(process.getErrorStream());
+							BufferedReader err = new BufferedReader(isr);
+
+							if(valgrind.length()>0){
+								try {
+									process.waitFor();
+									DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+									DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+									Document doc = dBuilder.parse(valgrindFile);
+									doc.getDocumentElement().normalize();
+
+									NodeList nodes = doc.getElementsByTagName("error");
+									int nbError=nodes.getLength();
+									if(nbError>0){
+										resCompilationErr.append("========= "+nbError+" Error"+(nbError>1?"s":"")+" =========\n");
+										for (int i = 0; i < nbError; i++) {
+											Node node = nodes.item(i);
+											if(node!=null){
+												String space="";
+												resCompilationErr.append("========= Error "+(i+1)+" =========\n");
+												resCompilationErr.append("cause : "+getValue("kind", ((Element)node))+"\n");
+												resCompilationErr.append("details : "+getValue("auxwhat", ((Element)node))+"\n");
+												if (node.getNodeType() == Node.ELEMENT_NODE) {
+													for(int j=0;j<node.getChildNodes().getLength();j++){
+														Node node2 = node.getChildNodes().item(j);
+														if (node2!=null && node2.getNodeType() == Node.ELEMENT_NODE) {
+															if(node2.getNodeName().toLowerCase().equals("stack")){
+																for(int k=0;k<node2.getChildNodes().getLength();k++){
+																	Node node3 = node2.getChildNodes().item(k);
+																	if(node3!=null && node3.getNodeType() == Node.ELEMENT_NODE){
+																		Element element = (Element) node3;
+																		if(!getValue("fn", element).toLowerCase().equals("main")){
+																			resCompilationErr.append(space+"fonction: " + getValue("fn", element)+"\n");
+																			resCompilationErr.append(space+"line: " + getValue("line", element)+"\n");
+																			space+="    ";
+																		}
+																	}
+																}
+															}else if(node2.getNodeName().toLowerCase().equals("xwhat")){
+																for(int k=0;k<node2.getChildNodes().getLength();k++){
+																	Node node3 = node2.getChildNodes().item(k);
+																	if(node3!=null && node3.getNodeType() == Node.ELEMENT_NODE){
+																		Element element = (Element) node3;
+																		//if(!getValue("fn", element).toLowerCase().equals("main")){
+																			resCompilationErr.append(space+"fonction: " + getValue("fn", element)+"\n");
+																			resCompilationErr.append(space+"line: " + getValue("line", element)+"\n");
+																			space+="    ";
+																		//}
+																	}
+																}
+															}
+														}
+													}
+												}
+
+												resCompilationErr.append("======= End Error "+(i+1)+" =======\n");
+											}
+										}
+									}
+								} catch (Exception ex) {
+									ex.printStackTrace();
+								}
+							}else{
+								String line = "";
 								while((line = err.readLine()) != null) {
-									resCompilationErr.append(line);
+									if(line.contains("<")){
+										resCompilationErr.append(line+"\n");
+									}
 									System.out.println("error : "+line);
 								}
-							} finally {
-								err.close();
 							}
+
 						} catch(IOException ioe) {
-							ioe.printStackTrace();
+							ioe.printStackTrace();	
 						}
+
 					}
 				};
 
@@ -335,8 +424,12 @@ public abstract class Entity extends Observable {
 
 				bwriter.close();
 
-				
+
 				randomFile.delete();
+
+				if(valgrindFile.exists()){
+					valgrindFile.delete();
+				}
 
 				if(resCompilationErr.length()>0){
 					System.err.println(resCompilationErr.toString());
@@ -413,6 +506,16 @@ public abstract class Entity extends Observable {
 				progress.setCompilationError(msg);
 				e.printStackTrace();
 			}
+		}
+	}
+
+	private static String getValue(String tag, Element element) {
+		if(element.getElementsByTagName(tag)!=null && element.getElementsByTagName(tag).item(0)!=null){
+			NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+			Node node = (Node) nodes.item(0);
+			return node.getNodeValue();
+		}else{
+			return "";
 		}
 	}
 
