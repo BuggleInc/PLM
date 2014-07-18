@@ -119,7 +119,6 @@ void solve() {
 	for (i=0;i<stackSize;i++)
 		origSizes[i] = getPancakeRadius(i);
 	/* end of this cruft */
-
 	if (debug>0) {
 		printf("{\n");
 		int rank;
@@ -170,7 +169,6 @@ void solve() {
 
 		if (isFree(posT)) {
 			if (isFree(posTPlus)) { /* CASE A: t and t+o free */
-
 				if (debug>0)
 					printf("Case A+\n");
 				if(isPancakeUpsideDown(posT)){
