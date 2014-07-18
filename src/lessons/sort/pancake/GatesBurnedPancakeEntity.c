@@ -120,8 +120,6 @@ void solve() {
 		origSizes[i] = getPancakeRadius(i);
 	/* end of this cruft */
 
-
-
 	if (debug>0) {
 		printf("{\n");
 		int rank;
@@ -172,6 +170,7 @@ void solve() {
 
 		if (isFree(posT)) {
 			if (isFree(posTPlus)) { /* CASE A: t and t+o free */
+
 				if (debug>0)
 					printf("Case A+\n");
 				if(isPancakeUpsideDown(posT)){
@@ -216,7 +215,7 @@ void solve() {
 			} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
 				if (debug>0)
 					printf("Case B+\n");
-				if(isPancakeUpsideDown(posT)){
+				if(!isPancakeUpsideDown(posT)){
 					flip(1);
 				}
 				flip(posTPlus);
@@ -224,7 +223,7 @@ void solve() {
 			} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
 				if (debug>0)
 					printf("Case B-\n");
-				if(!isPancakeUpsideDown(posT)){
+				if(isPancakeUpsideDown(posT)){
 					flip(1);
 				}
 				flip(posTMinus);

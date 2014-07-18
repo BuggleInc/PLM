@@ -197,7 +197,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 				} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
 					if (debug>0)
 						System.out.println("Case B+");
-					if(isPancakeUpsideDown(posT)){
+					if(!isPancakeUpsideDown(posT)){
 						flip(1);
 					}
 					flip(posTPlus);
@@ -205,7 +205,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 				} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
 					if (debug>0)
 						System.out.println("Case B-");
-					if(!isPancakeUpsideDown(posT)){
+					if(isPancakeUpsideDown(posT)){
 						flip(1);
 					}
 					flip(posTMinus);

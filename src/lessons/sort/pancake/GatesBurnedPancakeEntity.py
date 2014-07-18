@@ -141,13 +141,13 @@ while True:
 		elif isFirst(posTPlus): # CASE B: t free, t+o first element
 			if debug:
 				println("case B+")
-			if isPancakeUpsideDown(posT):
+			if not isPancakeUpsideDown(posT):
 				flip(1)
 			flip(posTPlus)
 		elif isFirst(posTMinus): # CASE B: t free, t-o first element 
 			if debug:
 				println("case B-")
-			if not isPancakeUpsideDown(posT):
+			if isPancakeUpsideDown(posT):
 				flip(1)
 			flip(posTMinus)
 
