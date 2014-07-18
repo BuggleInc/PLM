@@ -5,7 +5,7 @@ int isOverOrange() {
 	return getGroundColor()==orange;
 }
 
-int run(){
+void run(){
 	#line 1 "RunHalf"
 	/* BEGIN SOLUTION */
 	int baggle = 0;
