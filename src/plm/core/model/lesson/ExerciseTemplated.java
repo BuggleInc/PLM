@@ -413,12 +413,12 @@ public abstract class ExerciseTemplated extends Exercise {
 				/* I/O didn't work. We have to load the files manually */
 				ExecutionProgress progress = new ExecutionProgress();
 				
-				//TODO GIANNINI test
+				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
 				if(Game.getProgrammingLanguage().equals(Game.C)){
 					try {
 						compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
 					} catch (PLMCompilerException e) {
-						// TODO GIANNINI
+						System.err.println("Severe error: the correction of exercise "+getName()+" cannot be compiled in C. Please go fix your PLM.");
 						e.printStackTrace();
 					}
 				}
