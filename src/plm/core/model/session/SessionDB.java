@@ -190,7 +190,7 @@ public class SessionDB {
 				possibleL.put(pl, v.intValue());				
 			}
 			if (data.containsKey("passed"+pl.getLang())) {
-				Long v = (Long) data.get("possible"+pl.getLang()); // damn, damn java casting madness
+				Long v = (Long) data.get("passed"+pl.getLang()); // damn, damn java casting madness
 				passedL.put(pl, v.intValue());
 			}
 		}
