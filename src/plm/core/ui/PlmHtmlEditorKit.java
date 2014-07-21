@@ -372,7 +372,12 @@ class MyIconView extends View {
 		super(elem);
 		String filename = (String) elem.getAttributes().getAttribute(HTML.Attribute.SRC);
 		if (filename == null) {
-			System.err.println(Game.i18n.tr("<img> tag without src attribute in exercise {0}",baseExercise.getName()));
+			if (baseExercise == null) 
+				System.err.println(Game.i18n.tr("<img> tag without src attribute at offset {0}.", elem.getStartOffset()));
+			else
+				System.err.println(Game.i18n.tr("<img> tag without src attribute in exercise {0} at offset {1}", 
+						baseExercise.getName(), elem.getStartOffset()));
+			
 			c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
 		} else {
 			c = ResourcesCache.getIcon(filename,true);
