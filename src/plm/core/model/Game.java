@@ -169,7 +169,7 @@ public class Game implements IWorldView {
 		if (checkC())
 			System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
 		else
-			System.err.println(i18n.tr("Please install jython to use the C programming language in PLM."));
+			System.err.println(i18n.tr("Please install gcc to use the C programming language in PLM."));
 
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
