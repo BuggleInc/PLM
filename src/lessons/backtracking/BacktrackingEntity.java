@@ -27,7 +27,7 @@ public class BacktrackingEntity extends Entity {
 
 	@Override
 	protected void command(String command, BufferedWriter out) {
-		// TODO GIANNINI
+		// will be killed
 		
 	}
 }
