@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Lecture;
@@ -146,5 +150,49 @@ public class SessionDB {
 	}
 	public Set<String> getLessonsNames() {
 		return possibleExercises.keySet();
+	}
+	
+	
+	public String lessonSummary(String lesson) {
+		JSONObject result = new JSONObject();
+
+		Map<ProgrammingLanguage, Integer> possibleL = possibleExercises.get(lesson);
+		for (ProgrammingLanguage pl: possibleL.keySet()) 
+			if (possibleL.get(pl)!=0)
+				result.put("possible"+pl.getLang(), possibleL.get(pl));
+		
+		Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
+		for (ProgrammingLanguage pl: passedL.keySet()) 
+			if (passedL.get(pl)!=0)
+				result.put("passed"+pl.getLang(), passedL.get(pl));
+		
+		return result.toJSONString();
+	}
+	
+	public void lessonSummaryParse(String lesson, String JSONString) {
+		JSONParser parser = new JSONParser();
+		JSONObject data;
+		try {
+			data = (JSONObject) parser.parse(JSONString);
+		} catch (ParseException e) {
+			System.out.println("Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
+			return;
+		}
+
+		Map<ProgrammingLanguage, Integer> possibleL = new HashMap<ProgrammingLanguage, Integer>();
+		possibleExercises.put(lesson, possibleL);
+		Map<ProgrammingLanguage, Integer> passedL = new HashMap<ProgrammingLanguage, Integer>();
+		passedExercises.put(lesson, passedL);
+		
+		for (ProgrammingLanguage pl: Game.getProgrammingLanguages()) {
+			if (data.containsKey("possible"+pl.getLang())) {
+				Long v = (Long) data.get("possible"+pl.getLang());
+				possibleL.put(pl, v.intValue());				
+			}
+			if (data.containsKey("passed"+pl.getLang())) {
+				Long v = (Long) data.get("possible"+pl.getLang()); // damn, damn java casting madness
+				passedL.put(pl, v.intValue());
+			}
+		}
 	}
 }

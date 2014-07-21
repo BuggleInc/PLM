@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-07 23:50-0300\n"
+"PO-Revision-Date: 2014-07-20 10:19-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1507,6 +1507,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:44
+#, fuzzy
 msgid ""
 "Then, I tried to use the debugging infrastructure (JPDA), but never managed "
 "to get it working. It seems to me that the original com.sun.jdi package is "
@@ -1519,6 +1520,18 @@ msgid ""
 "usr/lib/jvm/java-6-sun-1.6.0.26/lib/tools.jar on my disk. It seem to be "
 "functional, I should give it another spin."
 msgstr ""
+"Então, eu tentei usar a infraestrutura de depuração (JPDA), mas nunca\n"
+"consegui fazê-la funcionar. Me parece que o pacote original\n"
+"com.sun.jdi está de alguma forma obsoleto uma vez que\n"
+"com.sun.jdi.BootStrap.virtualMachineManager() retorna null enquanto\n"
+"org.eclipse.jdi.Bootstrap.virtualMachineManager() não. Mas quando eu\n"
+"estou usando a versão do eclipse, ele tenta usar uma quantidade enorme\n"
+"de dependências, que eu não estou inclinado a usar. A raíz do meu\n"
+"problema deve ser que eu estou usando um jdi.jar que vem do eclipse,\n"
+"mas não encontro nenhum outro. Eu notei que o pacote com.sun.jdi\n"
+"também está implementado em\n"
+"/usr/lib/jvm/java-6-sun-1.6.0.26/lib/tools.jar no meu disco. Ele\n"
+"parece funcional, devo dar a ele outro \"spin\"."
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:56
@@ -1535,6 +1548,18 @@ msgid ""
 "would be so much cooler that I'd like to find the time to ensure this "
 "convergence."
 msgstr ""
+"Depois disto, eu tentei reutilizar a infraestrutura de depuração do\n"
+"DrJava. Pareceu uma boa ideia por que eles tem várias interfaces de\n"
+"auxilio para depuração e compilação. Também, eles tem um bom editor\n"
+"que nós podemos reutilizar. Finalmente, eles tem uma infraestrutura de\n"
+"testes forte com junit garantindo que sua ferramenta ainda funcionará\n"
+"após modificações (isto é algo sério que não temos aqui no PLM). Eu\n"
+"considerei que as duas ferramentas poderíam convergir para algo mais\n"
+"forte. O único argumento para não fazer isto (além do grande trabalho\n"
+"que geraria) é que cada um tem o crédito por cada ferramenta enquanto\n"
+"as coisas ficariam mais confusas numa ferramenta misturada. Mas eu não\n"
+"me importo, a ferramenta misturada seria tão legal que eu encontraria\n"
+"tempo para garantir esta convergência."
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:68
@@ -1545,10 +1570,11 @@ msgid ""
 "permission error (something related to com.sun.jdi.JDIPermission), but even "
 "with a java.security.AllPermission as permission file, I still have the "
 "issue."
-msgstr ""
+msgstr "Mas a função depuração do DrJava parece ter um problema issue: http://sourceforge.net/tracker/index.php?func=detail&aid=3004294&group_id=44253&atid=438935 eu suspeitei de um erro de permissão (algo relacionado a com.sun.jdi.JDIPermission), mas mesmo com um arquivo java.security.AllPermission, o problema persistia."
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:74
+#, fuzzy
 msgid ""
 "Another lead to get it working it to use lib ASM to modify the student code "
 "so that their recursive method gets traced. With the static backtrace and "
@@ -1556,6 +1582,12 @@ msgid ""
 "seem to be possible: 2 sec of googling gave me something like http://rejeev."
 "blogspot.com/2009/04/method-tracing.html"
 msgstr ""
+"Outro \"lead\" para botar para funcionar seria usar lib ASM para\n"
+"modificar o código do estudante de forma que seu método recursivo\n"
+"fosse rastreado. Com o \"backtrace\" estático e a informação de\n"
+"rastreio, eu imaginei que poderia reconstruir a árvore de chamadas\n"
+"atual. Isto parecia possível: 2 segundos de google me deram isto\n"
+"http://rejeev.blogspot.com/2009/04/method-tracing.html"
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:80
@@ -1565,9 +1597,15 @@ msgid ""
 "manage to do so so far, despite my efforts. If you have any hint (or "
 "patch!), please email martin.quinson#loria.fr."
 msgstr ""
+"E aqui estou eu. A lição pode ser bastante interessante para\n"
+"estudantes, e muito fácil de terminar uma vez que eu consiga a\n"
+"informação que preciso, mas eu não consegui até agora, apesar dos meus\n"
+"esforços. Se você tem alguma dica (ou patch!), por favor me mande um\n"
+"email martin.quinson#loria.fr."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/backtracking/Main.html:85
+#, fuzzy
 msgid ""
 "This gives me the following todo actions: * Check whether tools.jar gives a "
 "working com.sun.jdi package * Find the DrJava bug around debugging to help "
@@ -1586,6 +1624,25 @@ msgid ""
 "must be retrieved directly from the svn. Finally, they are quite huge, with "
 "sloccount reporting"
 msgstr ""
+"Isto me deixa com as seguintes ações a fazer: * Verificar se tools.jar\n"
+"deixa um pacote com.sun.jdi funcional * Encontrar o bug do DrJava\n"
+"\"around debugging\" para ajudá-los, e para que eu possa roubar partes\n"
+"do código deles para o PLM (o deles é BSD enquanto o PLM é basicamente\n"
+"GPL por enquanto -- preciso pedir a eles para abrirem uma\n"
+"exceção). Isto parece ser melhor pois a interface \"helper\" deles\n"
+"parece ser capaz de lidar com vários depuradores (eclipse, sun ou\n"
+"openjdk). Isto é muito trabalho que eu gostaria de não duplicar.  *\n"
+"Verificar se eu posso obter a informação de rastreio da ASM. Seria\n"
+"mais robusto para variantes JVM do que a abordagem de depuração. Por\n"
+"outro lado, depuração é uma funcionalidade limpa para o PLM como está.\n"
+"* Trabalhar na convergência de PLM e DrJava. Junto com o problema do\n"
+"licenciamento, também terá uma complicação numa futura integração do\n"
+"PLM no Debian, já que DrJava é composto de [[5 módulos\n"
+"separados|http://drjava.org/docs/developer/ch02s03.html]] que só podem\n"
+"ser integrados como pacotes fontes separados. Como todo pacote Java,\n"
+"nenhum pacote fonte é distribuído, e eles devem ser recuperados\n"
+"diretamente do svn. Finalmente, eles são muito grandes, com relatos de\n"
+"sloccount"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/chooser/LessonChooser.html:4
@@ -2442,6 +2499,11 @@ msgid ""
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
 "line beginning with ''' and the next line ending with '''.[/!]"
 msgstr ""
+"<b>Comentários em várias linhas</b>. O\n"
+"[!java|scala]compilador[/!][!python]interpretador[/!] ignora tudo\n"
+"entre [!java|scala]os símbolos /* e */ mesmo quando eles são postos em\n"
+"linhas diferentes.[/!] [!python]uma linha comaçando com ''' e a\n"
+"próxima linha terminado com '''.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:28
@@ -2454,6 +2516,12 @@ msgid ""
 "<span class=\"comment\">also ignored  '''</span>[/!]\n"
 "yetAnotherCall()[!java];[/!]\n"
 msgstr ""
+"methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] tudo isto é ignorado</span>\n"
+"otherCall()[!java];[/!] [!java|scala]<span class=\"comment\">/* Isto é</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> também ignorado */</span>[/!]\n"
+"[!python]<span class=\"comment\">''' Isto é</span>\n"
+"<span class=\"comment\">também ignorado  '''</span>[/!]\n"
+"yetAnotherCall()[!java];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:35
@@ -2463,6 +2531,10 @@ msgid ""
 "documentation explaining how to use the code. These comments must follow a "
 "very precise formalism."
 msgstr ""
+"Existe um terceiro tipo de comentário em Java, entre /** e */, que é\n"
+"lido por um programa específico chamado JavaDoc para gerar\n"
+"automaticamente a documentação explicando como usar o código. Estes\n"
+"comentários devem seguir um formalismo bem preciso."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:40
@@ -2470,6 +2542,9 @@ msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."
 msgstr ""
+"Os comentários de várias linhas são frequentemente usados para\n"
+"documentar como usar o código, enquanto os outros são usados para\n"
+"descrever como este código funciona."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/conditions/Conditions.html:4
@@ -2479,11 +2554,16 @@ msgid ""
 "external conditions. A <b>conditional</b> let the program adapt by doing "
 "something like <i>if it's raining, take an umbrella</i>."
 msgstr ""
+"Programas feito simplesmente de um conjunto de instruções similares ao\n"
+"do exercício anterior são bastante chatos. Eles sempre fazem a mesma\n"
+"coisa, e não reajem a condições externas. Um <b>condicional</b> faz o\n"
+"programa se adaptar fazendo coisas do tipo <i>se está chovendo, pegue\n"
+"um guarda-chuva</i>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:9
 msgid "The [!thelang] syntax is the following:"
-msgstr ""
+msgstr "A sintaxe de [!thelang] é a seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:11
@@ -2497,6 +2577,13 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
 "<b>whatToDoAnyway()[!java];[/!]</b>"
 msgstr ""
+"[!java|scala]if (<b>condição</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade();</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade();</b>\n"
+"}[/!][!python]if <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade()</b>[/!]\n"
+"<b>oQueFazerDeUmJeitoOuDeOutro()[!java];[/!]</b>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:19
@@ -2507,6 +2594,11 @@ msgid ""
 "conditional block can contain several instructions, it can even contain "
 "other tests, along with their sub-blocks."
 msgstr ""
+"Se a condição for verdade, o código do próximo bloco será executado e\n"
+"então o resto do código continua. Se a condição for falsa, o próximo\n"
+"bloco é ignorado e a execução continua depois disto. O bloco\n"
+"condicional pode conter várias instruções, pode até mesmo conter\n"
+"outros testes, com seus próprios sub-testes."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:23
@@ -2516,6 +2608,11 @@ msgid ""
 "condition is true, while the instruction <code>whatToDoAnyway()</code> will "
 "be executed whether or not the condition is true."
 msgstr ""
+"Neste exemplo, as instruções <code>oQueFazerSeForVerdade()</code> e\n"
+"<code>oQueFazerDepoisSeForVerdade()</code> serão executadas se e\n"
+"somente se a condição for verdadeira, mas a instrução\n"
+"<code>oQueFazerDeUmJeitoOuDeOutro()</code> vai ser executada se a\n"
+"condição for verdadeira ou não."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:28
@@ -2538,6 +2635,26 @@ msgid ""
 "lost in your own code if it's not properly indented, so you want to clean it "
 "up so that working on your code remains pleasant and productive."
 msgstr ""
+"Em [!thelang], os blocos de código são [!java|scala]envolvidos entre\n"
+"chaves: um { abre o bloco, e um } fecha. Espaços em branco não são\n"
+"importantes[/!][!java].[/!][!scala], uma vez que suas instruções ainda\n"
+"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!]\n"
+"[!java|scala]Ainda assim é muito importante indentar corretamente seu\n"
+"código para mantê-lo legível.[/!] [!python]marcados pela indentação:\n"
+"todas as linhas que estiverem um pouco deslocadas para a direita com\n"
+"espaços pertencem ao bloco. Frequentemente se usam 4 espaços para\n"
+"indentação, mas funciona se você usar mais ou menos\n"
+"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma\n"
+"quantidade de espaços. O fim do bloco de código Python não é marcado\n"
+"por nenhum caractere específico. Indentar linhas começa um bloco e\n"
+"parar de indentar termina o bloco. Não esqueça do (:) no final da\n"
+"linha do <code>if</code>, python precisa saber que um novo bloco vai\n"
+"começar. O fato de que python de baseia em indentação para delimitar\n"
+"blocos é uma ótima propriedade para iniciantes: vai forçar você a\n"
+"aderir a padrões de apresentação de código estritos.[/!] É muito fácil\n"
+"se perder no seu próprio código se ele não for corretamente indentado,\n"
+"então você precisa deixar ele bem arrumado para que trabalhar nele\n"
+"continue sendo agradável e produtivo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:44
@@ -2545,16 +2662,23 @@ msgid ""
 "All indentations of a given block must be consistent, and it is not possible "
 "to cut a block. The two following codes are incorrect and will raise errors."
 msgstr ""
+"Todas as indentações de um dado bloco devem ser consistentes, e não é\n"
+"possível cortar um bloco. os dois códigos a seguir estão incorretos e\n"
+"devem resultar em erro."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:47
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># one space too much </span>\n"
 "<b>whatToDoAnyway()</b>\n"
 msgstr ""
+"Se <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepois()</b> <span class=\"comment\"># one space too much </span>\n"
+"<b>oQueFazerDeUmJeitoOuDeOutro()</b>\n"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:52
@@ -2565,6 +2689,10 @@ msgid ""
 "<b>whatToDoAnyway()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># this block is not hanging to a condition line</span>\n"
 msgstr ""
+"se <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>\n"
+"<b>oQueFazerDeUmJeitoOuDeOutro()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerASeguir()</b> <span class=\"comment\"># este bloco não está condicionado a uma linha de condição</span>\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:58
@@ -2577,6 +2705,16 @@ msgid ""
 "code> and <code>[!java|scala]false[/!][!python]False[/!]</code> are constant "
 "values defined by [!thelang] directly, just as 0 or 1 in mathematics."
 msgstr ""
+"A condição deve ser uma expressão\n"
+"<code>[!java]booleana[/!][!scala|python]Booleana[/!]</code>. O bloco\n"
+"interno de código será executado se a expressão for calculada para\n"
+"<code>[!java|scala]true (verdadeiro)[/!][!python]True\n"
+"(verdadeiro)[/!]</code> e será ignorado se for <code>[!java|scala]false\n"
+"(falso)[/!][!python]False (falso)[/!]</code>.\n"
+"<code>[!java|scala]true[/!][!python]True[/!]</code> e\n"
+"<code>[!java|scala]false[/!][!python]False[/!]</code> são constantes\n"
+"definidas por [!thelang] diretamente, assim como 0 ou 1 em\n"
+"matemática."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:64
@@ -2590,6 +2728,16 @@ msgid ""
 "side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), <b>&lt;=</b> "
 "(smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
+"A condição pode ser uma variável\n"
+"<code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> (vamos\n"
+"voltar a falar de variáveis no próximo exercício, não se preocupe) ou\n"
+"um teste aritmético, como <code>x == 5</code>, que verifica se o valor\n"
+"atual de <code>x</code> é 5, ou algo como <b>!=</b> (verifica\n"
+"inequação, ou seja, retorna [!java|scala]true[/!][!python]True[/!]\n"
+"apenas se o lado esquerdo é diferente do lado direito), <b>&lt;</b>\n"
+"(smaller than - menor que), <b>&gt;</b> (larger than - maior que),\n"
+"<b>&lt;=</b> (smaller or equal to - menor ou igual a), <b>&gt;=</b>\n"
+"(larger or equal to - maior ou igual a)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:71
@@ -2600,6 +2748,11 @@ msgid ""
 "get trapped is some cases (such as when you are affecting a boolean "
 "variable). So you'd better to be careful..."
 msgstr ""
+"Cuidado com um erro clássico, que é verificar a igualdade da variável\n"
+"usando = no lugar de ==. Ainda bem que o\n"
+"[!java|scala]compilador[/!][!python]interpretador[/!] detecta este\n"
+"problema na maior parte das vezes, mas às vezes passa (como quando\n"
+"você está agindo sobre uma variável booleana). Então é bom ter cuidado..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:76
@@ -2608,6 +2761,10 @@ msgid ""
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns true if the buggle is facing a wall, and false in the other case."
 msgstr ""
+"A condição pode também ser uma chamada para alguns métodos\n"
+"particulares que retornam booleano. Por exemplo, o método\n"
+"<code>estáOlhandoParaParede()</code> do buggle retorna verdadeiro se o\n"
+"buggle está olhando para uma parede, e falso caso contrário."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:80
@@ -2615,15 +2772,18 @@ msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
 "boolean operations:"
 msgstr ""
+"Finalmente, uma condição pode ser composta de várias sub-condições\n"
+"conectadas por operadores booleanos:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:83
+#, fuzzy
 msgid ""
 "<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when "
 "<tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is "
 "false, <tt>cond2</tt> is not even evaluated as we already know that the "
 "conjunction of both propositions cannot be true)."
-msgstr ""
+msgstr "<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated as we already know that the conjunction of both propositions cannot be true)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:86
@@ -2633,6 +2793,11 @@ msgid ""
 "<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
 "of both propositions cannot be true)."
 msgstr ""
+"<code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> é\n"
+"verdadeiro se <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> é verdadeiro (se\n"
+"<tt>cond1</tt> é verdadeiro, <tt>cond2</tt> não é nem sequer calculada\n"
+"pois já se sabe que a disjunção de ambas as proposições não pode ser\n"
+"verdadeira)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:89
@@ -2640,6 +2805,8 @@ msgid ""
 "<code>[!java|scala]![/!][!python]not [/!]cond</code> is true if <tt>cond</"
 "tt> is false."
 msgstr ""
+"<code>[!java|scala]![/!][!python]not [/!]cond</code> é verdadeira se\n"
+"<tt>cond</tt> é falsa."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:90
@@ -2648,6 +2815,9 @@ msgid ""
 "force the order of evaluation.  Do not hesitate to add more parenthesis to "
 "remove any ambiguities that may appear in an expression."
 msgstr ""
+"Quando a expressão se torna complicada, é melhor adicionar parêntesis\n"
+"para forçar a ordem de cálculo. Não hesite em adicionar mais\n"
+"parêntesis para remover ambiguidades que apareçam na expressão."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:94
@@ -2657,6 +2827,10 @@ msgid ""
 "<code>whatToDoIfItsFalse</code> will be executed only if the condition is "
 "false."
 msgstr ""
+"Por fim, é possível especificar o que fazer quando a condição é falsa\n"
+"usando a seguinte sintaxe. Neste caso, a instrução\n"
+"<code>oQueFazerSeForFalso</code> será executada apenas se a condição\n"
+"for falsa."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:97
@@ -2671,6 +2845,14 @@ msgid ""
 "else:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
 msgstr ""
+"[!java|scala]if (<b>condição</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeCondiçãoÉVerdadeira();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForFalsa();</b>\n"
+"}[/!][!python]if (<b>condição</b>):\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeCondiçãoÉVerdadeira()</b>\n"
+"else:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForFalsa()</b>[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:106
@@ -2678,6 +2860,8 @@ msgid ""
 "Don't forget the colon (:) after the else, it is indicating that a new block "
 "is beginning."
 msgstr ""
+"Não esqueça do dois-pontos (:) depois do else, ele indica que um novo\n"
+"bloco está começando."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/conditions/Conditions.html:109
@@ -2687,6 +2871,11 @@ msgid ""
 "facing a wall, simply use the <code>isFacingWall()</code> built-in, that "
 "every buggle understands."
 msgstr ""
+"<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve\n"
+"se mover um passo para trás. Se não, você deve se mover um passo para\n"
+"frente. para detectar se você está de cara para uma parede,\n"
+"simplesmente use a função pré-fabricada <code>estáOlhandoParaParede()</code>,\n"
+"que todo buggle entende."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:116
@@ -2695,6 +2884,9 @@ msgid ""
 "each of them being in a specific initial condition. The same code will be "
 "executed for each of them."
 msgstr ""
+"Este exercício é um pouco diferente: seu código tem que funcionar para\n"
+"vários buggles, cada um começando numa posição diferente. O mesmo\n"
+"código será executado para cada um deles."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:120
@@ -2702,6 +2894,8 @@ msgid ""
 "When your program works, move forward to the next exercise, that is hidden "
 "in a sub-tree of the selection window."
 msgstr ""
+"Quando seu programa funcionar, vá para o próximo exercício, que está\n"
+"escondido numa sub-árvore da janela de seleção."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:4
@@ -2710,6 +2904,9 @@ msgid ""
 "repeat an action while a specific condition does not appear. A while loop is "
 "used for that, with the following syntax."
 msgstr ""
+"Além dos condicionais, outra construção bem útil é a habilidade de\n"
+"repetir uma ação enquanto uma condição específica  não acontece. Um\n"
+"loop 'while' é usado para isto, com a seguinte sintaxe."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:8
@@ -2720,6 +2917,10 @@ msgid ""
 "}[/!][!python]while <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
 msgstr ""
+"[!java|scala]while (<b>condição</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>ação()</b>;\n"
+"}[/!][!python]while <b>condição</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>ação()</b>[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:13
@@ -2733,6 +2934,15 @@ msgid ""
 "bloc and reevaluate the condition. It does so as long as the condition "
 "remains true."
 msgstr ""
+"O bloco interno é então executado várias e várias vezes, enquanto a\n"
+"condição se mantiver verdadeira. Mais especificamente, o buggle testa\n"
+"o valor da condição. Se for falsa, ele ignora o bloco e continua\n"
+"abaixo. Se for verdadeira, ele executa o bloco. Depois disto, ele\n"
+"testa a condição. Se ela agora for falsa (por exemplo, por que os\n"
+"movimentos do bloco nos deixaram de cara pra parede), ele agora ignora\n"
+"o bloco e continua. Se ele ainda for verdadeiro, ele executa o bloco e\n"
+"reavalia a condição. Ele faz isto enquanto a condição se mantém\n"
+"verdadeira."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:20
@@ -2742,6 +2952,10 @@ msgid ""
 "interface becomes then handy. To test this, you can try to type the "
 "following code in the editor:"
 msgstr ""
+"Naturalmente, se a ação escolhida não modifica o valor da condição, o\n"
+"buggle vai fazer a ação infinitamente. O botão <b>stop</b> na\n"
+"interface se torna útil nestes casos. Para testar isto, você pode\n"
+"tentar digitar o seguinte código no editor:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:25
@@ -2752,6 +2966,10 @@ msgid ""
 "}[/!][!python]while True:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
 msgstr ""
+"[!java|scala]while (true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;esquerda();\n"
+"}[/!][!python]while True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;direita()[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:30
@@ -2760,6 +2978,10 @@ msgid ""
 "python]True[/!]</code> remains true (ie, endlessly), or until you stop it "
 "manually using the stop button."
 msgstr ""
+"Isto vai fazer o buggle virar à esquerda enquanto\n"
+"<code>[!java|scala]true[/!][!python]True[/!]</code> permanecer true\n"
+"(ou seja, infinitamente), ou até que você pare manualmente usando o\n"
+"botão parar."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopwhile/LoopWhile.html:34
@@ -2767,19 +2989,24 @@ msgid ""
 "You now have to write some code so that your buggles move forward until they "
 "encounter a wall. The idea is thus to do something like:"
 msgstr ""
+"Agora você tem que escrever algum código para seus buggles se moverem\n"
+"para a frente até que eles encontrem uma parede. A ideia é então fazer\n"
+"algo assim:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:37
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "while we are not facing a wall, do:\n"
 "&nbsp;&nbsp;moveForward()"
 msgstr ""
+"Enquanto não estiver de cara para uma parede, faça:\n"
+"&nbsp;&nbsp;moverParaFrente()"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:40
 msgid "When your program works, move forward to the next exercise."
-msgstr ""
+msgstr "Quando o seu programa funciona, vá para o próximo exercício."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:3
@@ -2790,6 +3017,12 @@ msgid ""
 "isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
 "Check their documentation in \"Help/About this world\" for more details."
 msgstr ""
+"O mundo dos buggles pode algumas vezes conter alguns <i>baggles</i>,\n"
+"que são pequenos biscoitos que os buggles podem carregar de um ponto a\n"
+"outro. para isto, eles tem que usar métodos específicos como\n"
+"<code>estáSobreBaggle(), estáCarregandoBaggle(), pegarBaggle()</code>\n"
+"ou <code>soltarBaggle()</code>. Verifique a documentação deles em\n"
+"\"Ajuda/Sobre este mundo\" para mais detalhes."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:11
@@ -2797,11 +3030,14 @@ msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before if you want)."
 msgstr ""
+"Deixe cada buggle encontrar seu baggle adaptando o código que você\n"
+"escreveu no exercício anterior (copie e cole o que você fez antes se\n"
+"você quiser)."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:2
 msgid "Lost in the Moria"
-msgstr ""
+msgstr "Perdido em Moria"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:4
@@ -2812,6 +3048,12 @@ msgid ""
 "your buggle so that it moves those \"rocks\" than convincing your buggle "
 "that it could easily walk away without solving the problem..."
 msgstr ""
+"Seu buggle ficou preso numa mina! Algumas pedras estão bloqueando a\n"
+"saída, e você terá que limpar seu caminho para a saída. Bem, é claro\n"
+"que são apenas baggles e você pode simplesmente sair andando, mas será\n"
+"mais fácil programar seu buggle de forma que ele mova estas \"pedras\"\n"
+"do que convencer seu buggle que ele pode sair andando facilmente sem\n"
+"resolver o problema..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:10
@@ -2823,6 +3065,13 @@ msgid ""
 "you find the exit (that is, the wall to the east side). Afterward, move out "
 "as in the objective world."
 msgstr ""
+"Bem, você tem que encontrar o primeiro baggle bloqueando a saída\n"
+"(simplemente andar para o leste até que você esteja sobre um baggle),\n"
+"pegue ele e mova para o outro lado do túnel (ande para o oeste\n"
+"enquanto você ainda não estiver sobre um baggle, e então mova-se de\n"
+"volta um passo  para o leste e solte seu baggle), e iterate até você\n"
+"encontrar a saída (ou seja, a parede com murro para o lado\n"
+"leste). Depois disto, mova-se para fora como no mundo objetivo"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:17
@@ -2830,7 +3079,7 @@ msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
 "now and come back later if you don't get it right now."
-msgstr ""
+msgstr "Once you manage to escape this trap, you can move forward to the next exercise.  This exercise is a bit more complex, so you can also leave it for now and come back later if you don't get it right now."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:3
@@ -2841,11 +3090,16 @@ msgid ""
 "behind the graphical representation, but that's no reason to never "
 "manipulate some data explicitly."
 msgstr ""
+"Os programas que escrevemos até agora não tem um ponto fundamental da\n"
+"computação. Na verdade, é sobre processar <b>dados</b> através de\n"
+"<b>instruções</b> específicas. No mundo dos buggles, os dados\n"
+"principais estão escondidos atrás de uma representação gráfica, mas\n"
+"isto não é motivo para nunca manipular alguns dados explicitamente."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:9
 msgid "Data in [!thelang]"
-msgstr ""
+msgstr "Dados em [!thelang]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:10
@@ -2858,11 +3112,19 @@ msgid ""
 "label 'gift' in which you would put some stuff, like a bottle of perfume "
 "\"Channel N°5\"."
 msgstr ""
+"Num programas, você pode usar vários <i>tipos</i> de dados, tais como\n"
+"números inteiros ou cadeias de caracteres ou caracteres. Se você\n"
+"quiser usar um dado várias vezes, você precisa armazenar ele numa\n"
+"<i>variável</i>, que é uma célula de memória contendo um valor: você\n"
+"bota seu dado (digamos o valor '5') na variável (digamos\n"
+"'comprimento'), e você pode recuperá-la mais tarde quando precisar\n"
+"dela. Isto é muito similar a uma caixa com o rótulo 'presente' na qual\n"
+"você pode colocar alguma coisa, como um perfume \"Channel N°5\"."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:17
 msgid "Variable declarations"
-msgstr ""
+msgstr "Declaração de variáveis"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:19
@@ -2878,6 +3140,17 @@ msgid ""
 "<code>stepAmount</code> if you want, but <code>step amount</code> is not a "
 "valid name."
 msgstr ""
+"<b>Declarar</b> (ie, criar) uma variável em [!thelang], é muito\n"
+"simples. Você simplesmente escreve [!java]seu tipo, um espaço, e o\n"
+"nome da variável.[/!] [!scala]a palavra-chave <code>var</code>, o nome\n"
+"da variável, um dois-pontos (:) e o tipo da variável, um sinal de\n"
+"igualdade (=) e um valor inicial.[/!] [!python]o nome da variável, um\n"
+"sinal de igual (=) e um valor inicial.[/!] O nome da variável é o\n"
+"rótulo para recuperar ela depois[!python].[/!] [!java|scala] enquanto\n"
+"o tipo é o tipo de dado que a variável aceita guardar.[/!] É proibido\n"
+"usar espaços em nomes de variáveis. Você pode nomear uma variável\n"
+"<code>quantidadeDePassos</code> se você quiser, mas <code>quantidade\n"
+"de passos</code> não é um nome válidos."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:29
@@ -2886,7 +3159,7 @@ msgstr ""
 #: src/lessons/turmites/langton/Langton.html:21
 #: src/lessons/welcome/array/basics/Array1.html:202
 msgid "[!java]"
-msgstr ""
+msgstr "[!java]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:30
@@ -2894,12 +3167,14 @@ msgid ""
 "So, to create a variable named <b>x</b> intended to contain integers, one "
 "should write:"
 msgstr ""
+"Então, para criar uma variável chamada <b>x</b> para guardar inteiros,\n"
+"você deve escrever:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:31
 #, no-wrap
 msgid "int x;"
-msgstr ""
+msgstr "int x;"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:32
@@ -2907,50 +3182,58 @@ msgid ""
 "If you want, you can specify the initial value of the variable by adding an "
 "equal sign (=) followed by the value after the declaration."
 msgstr ""
+"Se você quiser, pode especificar o valor inicial da variável\n"
+"adicionando um símbolo de igual (=) seguido do valor depois da\n"
+"declaração."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:34
 #, no-wrap
 msgid "int x=5;"
-msgstr ""
+msgstr "int x=5;"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:35
 #: src/lessons/welcome/variables/Variables.html:69
 msgid "[/!] [!python]"
-msgstr ""
+msgstr "[/!] [!python]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:38
 msgid ""
 "So you want that the variable contains 5 as initial value, you should type:"
 msgstr ""
+"Então se você quiser que a variável tenha o valor inicial de 5, você\n"
+"deve digitar:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:39
 #, no-wrap
 msgid "x = 5"
-msgstr ""
+msgstr "x = 5"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:58
 #: src/lessons/welcome/bdr/BDR2.html:83
 msgid "[/!] [!scala]"
-msgstr ""
+msgstr "[/!] [!scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:43
+#, fuzzy
 msgid ""
 "So, to create a variable named <b>x</b> intended to contain integers with 42 "
 "as initial value, one should write:"
 msgstr ""
+"Logo, para criar uma variável chamada <b>x</b> que vai guardar\n"
+"inteiros e com 42 como valor inicial, você deve escrever:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:44
 #, no-wrap
 msgid "var x:Int = 42"
-msgstr ""
+msgstr "var x:Int = 42"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:45
@@ -2967,13 +3250,14 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:47
+#, fuzzy
 msgid ""
 "You still have to specify the if you use some generic values as an "
 "initialization, such as the very particular value <code>null</code>, which "
 "type happens to be ambiguous. Even when the type is clear, you can still "
 "specify it if you prefer.  So you want that the variable contains 5 as "
 "initial value, you should type:"
-msgstr ""
+msgstr "Você ainda tem que especificar o \"if\" você usa alguns valores genéricos como uma inicialização, tais como o valor muito especial <code>null</code>, que o tipo parece ser ambíguo. Mesmo quando o tipo é claro, você ainda pode especificar isto se preferir. So you want that the variable contains 5 as initial value, you should type:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:50
@@ -2982,6 +3266,8 @@ msgid ""
 "var x: Int =  5 <span class=\"comment\">// I can define the type if I want to</span>\n"
 "var y =  10      <span class=\"comment\">// or I can omit the type if I prefer</span>"
 msgstr ""
+"var x: Int =  5 <span class=\"comment\">// Eu posso definir o tipo se eu quiser</span>\n"
+"var y =  10      <span class=\"comment\">// ou posso omitir o tipo se eu preferir</span>"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:52
@@ -2989,7 +3275,7 @@ msgstr ""
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:61
 #: src/lessons/welcome/array/basics/Array1.html:116
 msgid "[/!] [!java|scala]"
-msgstr ""
+msgstr "[/!] [!java|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:55
@@ -3000,6 +3286,11 @@ msgid ""
 "tailored for letters! The [!thelang] language is said to be <b>statically "
 "typed</b>."
 msgstr ""
+"Como você pode ver, as variáveis são <b>tipadas</b> em [!thelang], que\n"
+"significa que elas são de certa forma especializadas: Uma dada\n"
+"variável pode armazenar apenas dados de um tipo; nem pense em guardar\n"
+"números em uma variável que é feita para letras! Dizemos que a\n"
+"linguagem [!thelang] é <b>estaticamente tipada</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:58
@@ -3011,21 +3302,28 @@ msgid ""
 "you, which is also good. In some sense, Python is easier to write but errors "
 "can sneak in more easily than in [!thelang]."
 msgstr ""
+"Outras linguages (como Python) são menos charas e permitem que você\n"
+"guarde qualquer tipo de dado em qualquer variável, sem restrições\n"
+"(estas linguagens são ditas <b>dinamicamente tipadas</b>). Parecem\n"
+"mais fáceis à primeira vista, mas este tipo de restrição permite que o\n"
+"compilador perceba mais erros de lógica para você, o que é bom. Num\n"
+"certo sentido, Python é mais fácil de escrever mas os erros surgem com\n"
+"mais frequencia do que em [!thelang]."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:62
 msgid "Here are some existing types in [!thelang]:"
-msgstr ""
+msgstr "Aqui estão alguns dos tipos em [!thelang]:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:64
 msgid "<b>[!java]int[/!][!scala]Int[/!]</b>, for integers;"
-msgstr ""
+msgstr "<b>[!java]int[/!][!scala]Int[/!]</b>, para inteiros;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:65
 msgid "<b>[!java]double[/!][!scala]Double[/!]</b>, for dot numbers;"
-msgstr ""
+msgstr "<b>[!java]double[/!][!scala]Double[/!]</b>, para números com vírgula;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:66
@@ -3033,11 +3331,14 @@ msgid ""
 "<b>[!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that are values "
 "being either true or false;"
 msgstr ""
+"<b>[!java]boolean[/!][!scala]Boolean[/!]</b>, para booleanos, que são\n"
+"valores de verdadeiro ou falso;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:67
+#, fuzzy
 msgid "<b>String</b>, for char strings."
-msgstr ""
+msgstr "<b>String</b>, for char strings."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:72
