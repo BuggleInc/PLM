@@ -127,76 +127,14 @@ public class GitSessionKit implements ISessionKit {
 				return FileVisitResult.CONTINUE;			
 			}
 		};
-		
-			
 				
 		try {
 			Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
 		} catch (IOException ex) {
-
+			ex.printStackTrace();
 		}
 
 
-		
-		/*
-		// check how many exercises are done per lesson
-		String pattern = "*.[0-9]*";
-		FileSystem fs = FileSystems.getDefault();
-		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern); // to match file names ending with digits
-
-		FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
-			@Override
-			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
-				Path name = file.getFileName();
-				if (matcher.matches(name)) { // if the file exists, the tests were run at least once
-					String s = name + "";
-					String[] tab = s.split("\\.", 0);
-					String lessonNameTmp = "";
-					for (int i = 0; i < tab.length - 2; i++) { // get the lesson id
-						lessonNameTmp += tab[i];
-					}
-					final String lessonName = lessonNameTmp;
-					String ext = tab[tab.length - 2]; // get the programming language
-					int possible = Integer.parseInt(tab[tab.length - 1]); // get the number of exercises
-					if (possible > 0) {
-						for (final ProgrammingLanguage p : Game.getProgrammingLanguages()) { // for each programming language, how many exercises are done
-							if (p.getExt().equals(ext)) {
-								//System.out.println(lessonName + "   " + p + "   " + possible);
-								Game.getInstance().studentWork.setPossibleExercises((String) lessonName, p, possible);
-								String pattern = lessonName + ".*." + p.getExt() + ".DONE";
-								FileSystem fs = FileSystems.getDefault();
-								final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern);
-
-								FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
-									private int passed = 0;
-
-									@Override
-									public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
-										Path name = file.getFileName();
-										if (matcher.matches(name)) {
-											passed++; // incr each time we find an exercise that is correctly done for the programming language p
-											Game.getInstance().studentWork.setPassedExercises(lessonName, p, passed);
-										}
-										return FileVisitResult.CONTINUE;
-									}
-
-									public int getPassed() {
-										return passed;
-									}
-								};
-								try {
-									Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
-								} catch (IOException ex) {
-
-								}
-							}
-						}
-					}
-				}
-				return FileVisitResult.CONTINUE;
-			}
-		};
-		 */
 	}
 	
 	/**
@@ -208,26 +146,7 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeLesson(File path, Lesson lesson) throws UserAbortException {
-//		for (Lecture lecture : lesson.exercises()) {
-//			if (lecture instanceof Exercise) {
-//				Exercise exercise = (Exercise) lecture;
-//				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
-//					SourceFile sf = exercise.getSourceFile(lang, 0);
-//					String str  =sf.getBody();
-//					if (str.length() != 0) {
-//						File sourceFileDisk = new File(path, exercise.getId() + "." + lang.getExt() + ".code");
-//						try {
-//							FileWriter fwExo = new FileWriter(sourceFileDisk.getAbsoluteFile());
-//							BufferedWriter bwExo = new BufferedWriter(fwExo);
-//							bwExo.write(sf.getBody());
-//							bwExo.close();
-//						} catch (IOException ex) {
-//
-//						}
-//					}
-//				}
-//			}
-//		}
+		/* Everything's done by spy */
 	}
 
 	/**
