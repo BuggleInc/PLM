@@ -32,6 +32,7 @@ import plm.core.PythonExceptionDecipher;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
+import plm.core.utils.ValgrindParser;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
  * 
@@ -240,11 +241,9 @@ public abstract class Entity extends Observable {
 					Runtime r = Runtime.getRuntime();
 					try {
 						r.exec("valgrind --version");
-						if(!valgrindFile.createNewFile()){
-							//TODO GIANNINI add error message
-							System.out.println("ERREUR CREATE TMPFILE");
+						if(valgrindFile.createNewFile()){
+							valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
 						}
-						valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
 					} catch (IOException e) {
 						//System.out.println("Vous ne disposez pas de valgrind");
 					}
@@ -301,59 +300,7 @@ public abstract class Entity extends Observable {
 							if(valgrind.length()>0){
 								try {
 									process.waitFor();
-									DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-									DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-									Document doc = dBuilder.parse(valgrindFile);
-									doc.getDocumentElement().normalize();
-
-									NodeList nodes = doc.getElementsByTagName("error");
-									int nbError=nodes.getLength();
-									if(nbError>0){
-										resCompilationErr.append("========= "+nbError+" Error"+(nbError>1?"s":"")+" =========\n");
-										for (int i = 0; i < nbError; i++) {
-											Node node = nodes.item(i);
-											if(node!=null){
-												String space="";
-												resCompilationErr.append("========= Error "+(i+1)+" =========\n");
-												resCompilationErr.append("cause : "+getValue("kind", ((Element)node))+"\n");
-												resCompilationErr.append("details : "+getValue("auxwhat", ((Element)node))+"\n");
-												if (node.getNodeType() == Node.ELEMENT_NODE) {
-													for(int j=0;j<node.getChildNodes().getLength();j++){
-														Node node2 = node.getChildNodes().item(j);
-														if (node2!=null && node2.getNodeType() == Node.ELEMENT_NODE) {
-															if(node2.getNodeName().toLowerCase().equals("stack")){
-																for(int k=0;k<node2.getChildNodes().getLength();k++){
-																	Node node3 = node2.getChildNodes().item(k);
-																	if(node3!=null && node3.getNodeType() == Node.ELEMENT_NODE){
-																		Element element = (Element) node3;
-																		if(!getValue("fn", element).toLowerCase().equals("main")){
-																			resCompilationErr.append(space+"fonction: " + getValue("fn", element)+"\n");
-																			resCompilationErr.append(space+"line: " + getValue("line", element)+"\n");
-																			space+="    ";
-																		}
-																	}
-																}
-															}else if(node2.getNodeName().toLowerCase().equals("xwhat")){
-																for(int k=0;k<node2.getChildNodes().getLength();k++){
-																	Node node3 = node2.getChildNodes().item(k);
-																	if(node3!=null && node3.getNodeType() == Node.ELEMENT_NODE){
-																		Element element = (Element) node3;
-																		//if(!getValue("fn", element).toLowerCase().equals("main")){
-																			resCompilationErr.append(space+"fonction: " + getValue("fn", element)+"\n");
-																			resCompilationErr.append(space+"line: " + getValue("line", element)+"\n");
-																			space+="    ";
-																		//}
-																	}
-																}
-															}
-														}
-													}
-												}
-
-												resCompilationErr.append("======= End Error "+(i+1)+" =======\n");
-											}
-										}
-									}
+									resCompilationErr.append(ValgrindParser.parse(valgrindFile));
 								} catch (Exception ex) {
 									ex.printStackTrace();
 								}
@@ -505,16 +452,6 @@ public abstract class Entity extends Observable {
 				progress.setCompilationError(msg);
 				e.printStackTrace();
 			}
-		}
-	}
-
-	private static String getValue(String tag, Element element) {
-		if(element.getElementsByTagName(tag)!=null && element.getElementsByTagName(tag).item(0)!=null){
-			NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
-			Node node = (Node) nodes.item(0);
-			return node.getNodeValue();
-		}else{
-			return "";
 		}
 	}
 
