@@ -256,22 +256,5 @@ public class GitSpy implements ProgressSpyListener {
 				System.out.println("Failed to write on disk that the exercise is passed: "+ex.getLocalizedMessage());
 			}
 		}
-
-		for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-			int possible = Game.getInstance().studentWork.getPossibleExercises(exo.getLesson().getId(), lang);
-			if (possible == 0) {
-				return;
-			}
-			File countFile = new File(repoDir, exo.getLesson().getId() + "." + lang.getExt() + "." + possible);
-			try {
-				FileWriter fwExo = new FileWriter(countFile.getAbsoluteFile());
-				BufferedWriter bwExo = new BufferedWriter(fwExo);
-				bwExo.write("");
-				bwExo.close();
-			} catch (IOException ex) {
-				System.out.println("Failed to write on disk the amount of possible exercises: "+ex.getLocalizedMessage());
-			}
-		}
 	}
-
 }
