@@ -400,7 +400,6 @@ public abstract class Exercise extends Lecture {
 					process.waitFor();
 
 					if(resCompilationErr.length()>0){
-						//TODO GIANNINI parse the error message and verify Warning
 						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 						System.err.println(Game.i18n.tr("Compilation error:"));
 						System.err.println(e.getMessage());

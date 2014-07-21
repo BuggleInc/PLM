@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-char getIndication() {
+char getIndicationBDR() {
 	if (isOverMessage()) {
 		return readMessage()[0];
 	} else {
@@ -16,7 +16,7 @@ void run(){
 	char read;
 	while(continu){
 
-		read = getIndication();
+		read = getIndicationBDR();
 		switch (read) {
 			case 'R': right(); forward(1); break;
 			case 'L': left();  forward(1); break;

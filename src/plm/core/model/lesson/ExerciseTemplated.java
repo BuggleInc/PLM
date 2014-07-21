@@ -418,8 +418,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					try {
 						compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
 					} catch (PLMCompilerException e) {
-						// TODO GIANNINI
-						e.printStackTrace();
+						Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
+						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
 					}
 				}
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);

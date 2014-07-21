@@ -2,7 +2,7 @@
 
 void run(){
 	#line 1 "LoopWhile"
-	/* GEGIN TEMPLATE */
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (!isFacingWall()){
 		forward(1);

@@ -49,8 +49,6 @@ public class MissionEditor extends JFrame {
 	private JEditorPane display = new JEditorPane("text/html", "");
 	private JEditorPane editor;
 
-	//private JComboBox<ProgrammingLanguage> selectorLanguage;
-
 	private String lastPathSelected;
 	private boolean modified = false;
 
@@ -169,37 +167,6 @@ public class MissionEditor extends JFrame {
 		selectorJava.addItemListener(il);
 		selectorScala.addItemListener(il);
 		selectorPython.addItemListener(il);
-
-		/*
-		selectorLanguage = new JComboBox<ProgrammingLanguage>();
-
-		selectorLanguage.addItem(Game.C);
-		selectorLanguage.addItem(Game.JAVA);
-		selectorLanguage.addItem(Game.SCALA);
-		selectorLanguage.addItem(Game.PYTHON);
-
-		selectorLanguage.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!modified) {
-					setTitle(TITLE_MODIFIED);
-					modified = true;
-				}
-				String ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
-						PlmHtmlEditorKit.filterHTML(editor.getText(),true,false,(ProgrammingLanguage)selectorLanguage.getSelectedItem())+
-						"</body></html>";
-				display.setText(ctn);
-				javax.swing.text.Document doc = display.getDocument();
-				int pos = (int) ( (double)doc.getLength()*editor.getCaretPosition()/editor.getDocument().getLength());
-				if (pos>doc.getLength())
-					pos = doc.getLength()-1;
-				if (pos<0)
-					pos = 0;
-				display.setCaretPosition( pos );
-			}
-		});
-		 */
 
 		editor = new JEditorPane();
 
