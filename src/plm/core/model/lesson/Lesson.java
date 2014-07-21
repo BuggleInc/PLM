@@ -47,6 +47,7 @@ public abstract class Lesson {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
 			e.printStackTrace();
 		} 
+		/* Compute the lesson summary for the next time we start the PLM */
 		for (ProgrammingLanguage lang: Game.programmingLanguages) {
 			int possible = 0;
 			int passed = 0;

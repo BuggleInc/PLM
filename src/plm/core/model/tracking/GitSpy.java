@@ -253,7 +253,7 @@ public class GitSpy implements ProgressSpyListener {
 				bwExo.write("");
 				bwExo.close();
 			} catch (IOException ex) {
-
+				System.out.println("Failed to write on disk that the exercise is passed: "+ex.getLocalizedMessage());
 			}
 		}
 
@@ -269,7 +269,7 @@ public class GitSpy implements ProgressSpyListener {
 				bwExo.write("");
 				bwExo.close();
 			} catch (IOException ex) {
-
+				System.out.println("Failed to write on disk the amount of possible exercises: "+ex.getLocalizedMessage());
 			}
 		}
 	}

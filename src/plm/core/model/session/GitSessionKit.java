@@ -50,7 +50,7 @@ public class GitSessionKit implements ISessionKit {
 			storeLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
 
-		/* No need to save the lesson summaries : it's compute on start	*/
+		/* No need to save the lesson summaries : it's computed on start */
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class GitSessionKit implements ISessionKit {
 			loadLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
 
-		// check how many exercises are done by lesson
+		// check how many exercises are done per lesson
 		String pattern = "*.[0-9]*";
 		FileSystem fs = FileSystems.getDefault();
 		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern); // to match file names ending with digits
@@ -100,7 +100,7 @@ public class GitSessionKit implements ISessionKit {
 									public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 										Path name = file.getFileName();
 										if (matcher.matches(name)) {
-											passed++; // incr each time we found a correctly done exercise for the programming language p
+											passed++; // incr each time we find an exercise that is correctly done for the programming language p
 											Game.getInstance().studentWork.setPassedExercises(lessonName, p, passed);
 										}
 										return FileVisitResult.CONTINUE;
