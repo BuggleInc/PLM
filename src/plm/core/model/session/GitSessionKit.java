@@ -95,7 +95,6 @@ public class GitSessionKit implements ISessionKit {
 				
 				String lessonId = file.getFileName().toString();
 				lessonId = lessonId.substring(0,lessonId.length() - ".summary".length());
-				System.out.println("I see lesson "+lessonId);
 
 				//  1. Read file content in String
 				StringBuilder sb = new StringBuilder();
@@ -119,7 +118,6 @@ public class GitSessionKit implements ISessionKit {
 							// I don't care about not being able to close a file that I *read*
 						}
 				}
-				System.out.println("summary of "+lessonId+": "+sb.toString());
 				
 				// 2. Pass that string to the sessionDB
 				Game.getInstance().studentWork.lessonSummaryParse(lessonId, sb.toString());
