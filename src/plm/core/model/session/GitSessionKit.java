@@ -1,9 +1,11 @@
 package plm.core.model.session;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
@@ -44,13 +46,24 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		/* First save the bodies */
 		Collection<Lesson> lessons = this.game.getLessons();
 		for (Lesson lesson : lessons) {
-			storeLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
-		}
+			File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
 
-		/* No need to save the lesson summaries : it's computed on start */
+			// First save the bodies
+			storeLesson(repoDir, lesson);
+			
+			// Recompute the summaries
+			File summary = new File(repoDir, lesson.getId() + ".summary");
+			try {
+				FileWriter fwSummary = new FileWriter(summary.getAbsoluteFile());
+				BufferedWriter bwSummary = new BufferedWriter(fwSummary);
+				bwSummary.write(Game.getInstance().studentWork.lessonSummary(lesson.getId()));
+				bwSummary.close();
+			} catch (IOException ex) {
+				System.out.println("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
+			}
+		}
 	}
 
 	/**
@@ -61,10 +74,71 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void loadAll(final File path) {
-		for (Lesson lesson : this.game.getLessons()) {
-			loadLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
+		File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
+
+		// Load bodies
+		for (Lesson lesson : this.game.getLessons()) {			
+			loadLesson(repoDir, lesson);
+		}
+		
+		// Load summary from the lastly saved files, 
+		// but don't trust the game.getLessons that is empty at startup, so search for existing files on disk
+		String pattern = "*.summary";
+		FileSystem fs = FileSystems.getDefault();
+		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern); // to match file names ending with string "summary"
+
+		FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
+			@Override
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
+				if (! matcher.matches(file.getFileName()))  // Not a summary file. Who cares?
+					return FileVisitResult.CONTINUE;			
+				
+				String lessonId = file.getFileName().toString();
+				lessonId = lessonId.substring(0,lessonId.length() - ".summary".length());
+				System.out.println("I see lesson "+lessonId);
+
+				//  1. Read file content in String
+				StringBuilder sb = new StringBuilder();
+				FileReader fr;
+				BufferedReader br = null;
+				try {
+					fr = new FileReader(file.toFile().getAbsoluteFile());
+					br = new BufferedReader(fr);
+					String line;
+					while ((line = br.readLine()) != null) 
+						sb.append(line);
+				} catch (FileNotFoundException e) {
+					// If there is no summary file, then don't do nothing for that lesson
+				} catch (IOException e) {
+					System.err.println("Error while reading the summary of lesson "+lessonId+": "+e.getLocalizedMessage());
+				} finally {
+					if (br != null)
+						try {
+							br.close();
+						} catch (IOException e) {
+							// I don't care about not being able to close a file that I *read*
+						}
+				}
+				System.out.println("summary of "+lessonId+": "+sb.toString());
+				
+				// 2. Pass that string to the sessionDB
+				Game.getInstance().studentWork.lessonSummaryParse(lessonId, sb.toString());
+				
+				return FileVisitResult.CONTINUE;			
+			}
+		};
+		
+			
+				
+		try {
+			Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
+		} catch (IOException ex) {
+
 		}
 
+
+		
+		/*
 		// check how many exercises are done per lesson
 		String pattern = "*.[0-9]*";
 		FileSystem fs = FileSystems.getDefault();
@@ -122,13 +196,9 @@ public class GitSessionKit implements ISessionKit {
 				return FileVisitResult.CONTINUE;
 			}
 		};
-		try {
-			Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
-		} catch (IOException ex) {
-
-		}
+		 */
 	}
-
+	
 	/**
 	 * Store the user source code for a specified lesson
 	 *
