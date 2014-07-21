@@ -9,6 +9,7 @@
   * The feedback is now reported as github issues [Cédric Huguenin]
   * Unclutters the UI: changing the buggle color is useless
   * welcome.bat.bool2.fizzBuzz: new exercise (classical Fizz Buzz word game)
+  * Kill the twitter spy. That's pure evil (fix #125)
 
 20131113: Release 2.3
 

@@ -49,7 +49,6 @@ import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.model.tracking.ServerSpyAppEngine;
-import plm.core.model.tracking.TwitterSpy;
 import plm.core.ui.MainFrame;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.FileUtils;
@@ -106,7 +105,6 @@ public class Game implements IWorldView {
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
 	// Turning to false will slow down the startup process, but avoid out of date files
 
-	public static final String PROP_PROGRESS_TWITTER = "plm.progress.twitter";     //  
 	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
 	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
 
@@ -211,13 +209,6 @@ public class Game implements IWorldView {
 
 		sessionKit = new GitSessionKit(this);
 
-		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
-			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
-			addProgressSpyListener(new TwitterSpy());
-		} else {
-			System.err.println(i18n.tr("Your progress will NOT be posted to twitter, as requested by the property {0}",Game.PROP_PROGRESS_TWITTER));			
-
-		}
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
 		

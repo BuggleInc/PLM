@@ -52,7 +52,7 @@ public class ExoTest {
 		
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
-		g.getProgressSpyListeners().clear(); // disable all progress spies (twitter, git, etc...)
+		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 
 		/* Compute the answers with the java entities */
