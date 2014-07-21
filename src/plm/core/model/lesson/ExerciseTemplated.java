@@ -420,6 +420,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					} catch (PLMCompilerException e) {
 						System.err.println("Severe error: the correction of exercise "+getName()+" cannot be compiled in C. Please go fix your PLM.");
 						e.printStackTrace();
+						Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
+						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
 					}
 				}
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);

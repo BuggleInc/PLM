@@ -124,7 +124,6 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 					if (!lang2.equals(lang)) {
 						String l2 = lang2.getLang().toLowerCase();
 						res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2)+"\">$1</font>");
-						res = res.replaceAll("(?s)\\[!"+l2+"\\|"+l+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2)+"\">$1</font>");
 					}
 				}
 			}
@@ -138,11 +137,6 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 							if (!lang3.equals(lang) && !lang3.equals(lang2)) {
 								String l3 = lang3.getLang().toLowerCase();
 								res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-								res = res.replaceAll("(?s)\\[!"+l+"\\|"+l3+"\\|"+l2+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-								res = res.replaceAll("(?s)\\[!"+l2+"\\|"+l+"\\|"+l3+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-								res = res.replaceAll("(?s)\\[!"+l2+"\\|"+l3+"\\|"+l+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-								res = res.replaceAll("(?s)\\[!"+l3+"\\|"+l2+"\\|"+l+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-								res = res.replaceAll("(?s)\\[!"+l3+"\\|"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
 							}
 						}
 					}
@@ -157,7 +151,9 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			currLang[1]=Game.getProgrammingLanguage();
 		}*/
 
-
+		
+		/* if showMulti, all of selected langage will be appear on editor, but in the same color*/
+		//FIXME add colors
 		if(showMulti){
 			String replace="<font color=\"FF0000\">$7</font>";
 			

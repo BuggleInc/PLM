@@ -11,5 +11,6 @@ public class Main extends Lesson {
 		addExercise(new BasicPancake(this));
 		addExercise(new BurnedPancake(this));
 		addExercise(new GatesPancake(this));
+		addExercise(new GatesBurnedPancake(this));
 	}
 }

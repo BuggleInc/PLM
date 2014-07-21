@@ -6,7 +6,7 @@ void run(){
 	int i;
 	for (i=0; i<7; i++) {
 		if (haveBaggle())
-			return 0;
+			return;
 		right();
 		forward(1);
 		left();
