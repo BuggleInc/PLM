@@ -6,9 +6,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "Remote.h"
-
-void flush();
 
 void swap(int x, int y);
 int getSize();

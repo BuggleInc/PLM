@@ -1,4 +1,4 @@
-#include "RemoteHanoi.h"
+//RemoteHanoi
 
 void solve(int src, int dst, int other);
 void solveRec(int src, int dst, int other, int height) ;

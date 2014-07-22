@@ -1,4 +1,4 @@
-#include "RemoteBuggle.h"
+//RemoteBuggle
 
 int crossing() {
 	return getX()%5== 1 && getY()%5==1;

@@ -1,16 +1,5 @@
-#include "RemoteFlag.h"
 
 #undef printf
-
-void flush(){
-    int c = 0;
-    FILE* f = fopen("/tmp/flush","a+");
-    while (c != '\n' && c != EOF){
-        c = getchar();
-        fputc(c,f);
-    }
-    fclose(f);
-}
 
 void swap(int x, int y){
 	printf("110 %d %d swap\n", x, y);

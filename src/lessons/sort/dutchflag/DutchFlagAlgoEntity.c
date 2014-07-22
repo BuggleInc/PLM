@@ -1,4 +1,4 @@
-#include "RemoteFlag.h"
+//RemoteFlag
 
 #define BLUE  0
 #define WHITE  1

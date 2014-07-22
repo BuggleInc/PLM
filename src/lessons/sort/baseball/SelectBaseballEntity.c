@@ -1,4 +1,4 @@
-#include "RemoteBaseball.h"
+//RemoteBaseball
 
 int findPlayerPos(int base, int color);
 int findPlayerBase(int start, int color);
