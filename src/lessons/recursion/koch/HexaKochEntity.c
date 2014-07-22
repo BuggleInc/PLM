@@ -1,4 +1,4 @@
-#include "RemoteTurtle.h"
+//RemoteTurtle
 
 void hexaKoch(int levels, double length);
 void drawCurve(int levels, double length);

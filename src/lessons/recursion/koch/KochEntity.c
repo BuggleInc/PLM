@@ -1,4 +1,5 @@
-#include "RemoteTurtle.h"
+//RemoteTurtle
+
 void snowFlake (int levels, double length);
 void snowSide(int levels, double length);
 void drawHint();

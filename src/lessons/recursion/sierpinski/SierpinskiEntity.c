@@ -1,4 +1,4 @@
-#include "RemoteTurte.c"
+//RemoteTurte
 
 /* BEGIN TEMPLATE */
 void sierpinski(int level, double length) {
