@@ -1,6 +1,6 @@
-//remoteTurtle
+//RemoteTurtle
 void dragon(int order, double x, double y, double z, double t);
-void dragonInverse(int order, double x, double y, double z, double t)
+void dragonInverse(int order, double x, double y, double z, double t);
 /* BEGIN TEMPLATE */
 void dragon(int order, double x, double y, double z, double t) {
 	/* BEGIN HIDDEN */
@@ -36,5 +36,5 @@ void dragonInverse(int order, double x, double y, double z, double t) {
 /* END TEMPLATE */
 
 void run() {
-	dragon((getParamInt0),  getParamDouble(1),  getParamDouble(2), getParamDouble(3), getParamDouble(4));
+	dragon(getParamInt(0),  getParamDouble(1),  getParamDouble(2), getParamDouble(3), getParamDouble(4));
 }
