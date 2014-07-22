@@ -229,7 +229,12 @@ public abstract class Entity extends Observable {
 				String arg1[];
 				String os = System.getProperty("os.name").toLowerCase();
 				final StringBuffer valgrind=new StringBuffer("");
-				String executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+				String executable;
+				if(this.getScript(Game.C)!=null){
+					executable=this.getScript(Game.C);
+				}else{
+					executable= Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+				}
 				if (os.indexOf("win") >= 0) {
 					extension=".exe";
 					arg1 = new String[3];

@@ -248,7 +248,7 @@ public abstract class Exercise extends Lecture {
 					if (os.indexOf("win") >= 0) {
 						extension=".exe";
 					}
-					String executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+					String executable = this.getId();
 					File exec = new File(saveDirPathBin+"/"+executable+extension);
 					if(exec.exists()){
 						exec.delete();

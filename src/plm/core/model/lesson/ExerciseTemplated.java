@@ -375,6 +375,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	
 	protected void computeAnswer() {
+		final String id = this.getId();
 		Thread t = new Thread() {
 			@Override
 			public void run() {
@@ -425,8 +426,10 @@ public abstract class ExerciseTemplated extends Exercise {
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) {
-					for (Entity ent: aw.getEntities()) 
+					for (Entity ent: aw.getEntities()) {
+						ent.setScript(Game.C, id);
 						ent.runIt(progress);
+					}
 					aw.setAnswerWorld();
 				}
 				
