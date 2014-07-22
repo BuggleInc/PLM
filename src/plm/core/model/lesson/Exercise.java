@@ -317,18 +317,19 @@ public abstract class Exercise extends Lecture {
 					hRemote.close();
 					
 
+
 					String[] arg1;
 					if (os.indexOf("win") >= 0) {
 						arg1 = new String[3];
 						arg1[0]="cmd.exe";
 						arg1[1]="/c";
-						arg1[2]="gcc -g -Wall -o \""+exec+"\" - ";
+						arg1[2]="gcc -g -Wall -lm -o \""+exec+"\" - ";
 						//arg1[2]=compileRemote+" & "+compileRemoteWorld+" & "+compileCode+" & "+link;
 					} else {
 						arg1 = new String[3];
 						arg1[0]="/bin/sh";
 						arg1[1]="-c";
-						arg1[2]="gcc -g -x c -Wall -o \""+exec+"\" - ";
+						arg1[2]="gcc -g -x c -Wall -lm -o \""+exec+"\" - ";
 						System.out.println(arg1[2]);
 						//arg1[2]=compileRemote+" ; "+compileRemoteWorld+" ; "+compileCode+" ; "+link;
 					}

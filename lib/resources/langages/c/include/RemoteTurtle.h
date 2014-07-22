@@ -31,7 +31,8 @@ typedef enum{
 }Direction;
 
 
-
+int getParamInt(int nb);
+double getParamDouble(int nb);
 
 void left(double nb);
 void right(double nb);

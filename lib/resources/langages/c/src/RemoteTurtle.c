@@ -7,6 +7,24 @@ char* int2str(int nb){
 	return str;
 }
 
+int getParamInt(int nb){
+	int p=-1;
+	printf("200 %d getParamInt\n",nb);
+	fflush(stdout);
+	scanf("%d",&p);
+	flush();
+	return p;
+}
+
+double getParamDouble(int nb){
+	double p=-1;
+	printf("201 %d getParamDouble\n",nb);
+	fflush(stdout);
+	scanf("%lf",&p);
+	flush();
+	return p;
+}
+
 void left(double nb){
 	printf("110 %lf left\n",nb);
 }
@@ -50,7 +68,7 @@ void setY(double nb){
 }
 	
 void setPos(double nb, double nb2){
-	printf("1 %lf %lf setPos\n", nb, nb2);
+	printf("118 %lf %lf setPos\n", nb, nb2);
 }
 	
 void moveTo(double nb, double nb2){

@@ -22,11 +22,11 @@ public class Turtle extends Entity {
 	private double y = 0.;
 
 	protected double startX,startY;
-	
+
 	private double heading = 0.;
 	private boolean penDown = true;
 	private int angularUnit = Turtle.DEGREE;
-	
+
 	private boolean visible = true;
 
 	/** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
@@ -82,12 +82,12 @@ public class Turtle extends Entity {
 	public void backward(double dist) {
 		moveTo(x + dist * Math.cos(heading + Math.PI), y + dist * Math.sin(heading + Math.PI));
 	}
-	
+
 	public Direction getHeadingDirection() {
 		final double w = getWorld().getWidth();
 		final double h = getWorld().getHeight();
 		final double angleHeading = 2*Math.PI - this.heading;
-		
+
 		if (this.heading >=0 && this.heading < Math.PI) {
 			// bottom half-circle
 			final double tangenteAngleToBottomLeftCorner = (this.x>EPSILON)?((h-this.y) / this.x):Double.POSITIVE_INFINITY;
@@ -108,7 +108,7 @@ public class Turtle extends Entity {
 			final double angleToTopRightCorner = Math.atan(tangenteAngleToTopRightCorner);
 			final double tangenteAngleToTopLeftCorner = (this.x>EPSILON)?(this.y / this.x):Double.POSITIVE_INFINITY;
 			final double angleToTopLeftCorner = Math.PI-Math.atan(tangenteAngleToTopLeftCorner);
-					
+
 			if (angleHeading < angleToTopRightCorner) {
 				return Direction.EAST;
 			} else if (angleHeading < angleToTopLeftCorner) {
@@ -122,85 +122,85 @@ public class Turtle extends Entity {
 		if (penDown)
 			getWorld().addCircle(x, y, radius, color);
 	}
-	
+
 	public void moveTo(double newX, double newY) {
 		final double w = this.getWorld().getWidth();
 		final double h = this.getWorld().getHeight();
-		
+
 		double nX = newX;
 		double nY = newY;
-		
+
 		while (nX < 0 || nX >= w || nY < 0 || nY >= h) { // need to clip			
 			// line equation y = y1+m(x-x1)
 			// where m=(y2-y1)/(x2-x1)
 			final double m = (nY - y) / (nX - x);
-	
+
 			switch (this.getHeadingDirection()) {
 			case EAST:
 				// intersection with the right boundary (x=r)
 				// x=r and y=y1+m(r-x1)
-				{
-					final double xc = w;
-					final double yc = y + m * (w - x);
+			{
+				final double xc = w;
+				final double yc = y + m * (w - x);
 
-					if (this.penDown) {
-						this.getWorld().addLine(x, y, xc, yc, color);
-					}
-					setPos(0., yc);
-					nX = nX - w;
+				if (this.penDown) {
+					this.getWorld().addLine(x, y, xc, yc, color);
 				}
-				break;
+				setPos(0., yc);
+				nX = nX - w;
+			}
+			break;
 			case NORTH:
 				// intersection with the top boundary (y=t)
 				// x=(1/m)(t-y1)+x1 and y=t
-				{
-					final double xc = (0 - this.y) / m + this.x;
-					final double yc = 0;
+			{
+				final double xc = (0 - this.y) / m + this.x;
+				final double yc = 0;
 
-					if (this.penDown) {
-						this.getWorld().addLine(x, y, xc, yc, color);
-					}
-					setPos(xc, h);
-					nY = nY + h;
+				if (this.penDown) {
+					this.getWorld().addLine(x, y, xc, yc, color);
 				}
-				break;
+				setPos(xc, h);
+				nY = nY + h;
+			}
+			break;
 			case WEST:
 				// intersection with the left boundary (x=l)
 				// x=l and y=y1+m(l-x1)
-				{
-					final double xc = 0;
-					final double yc = y + m * (0 - x);
+			{
+				final double xc = 0;
+				final double yc = y + m * (0 - x);
 
-					if (this.penDown) {
-						this.getWorld().addLine(x, y, xc, yc, color);
-					}
-					setPos(w, yc);
-					nX = nX + w;
+				if (this.penDown) {
+					this.getWorld().addLine(x, y, xc, yc, color);
 				}
-				break;
+				setPos(w, yc);
+				nX = nX + w;
+			}
+			break;
 			case SOUTH:
 				// intersection with the top boundary (y=t)
 				// x=(1/m)(t-y1)+x1 and y=t
-				{
-					final double xc = (h - this.y) / m + this.x;
-					final double yc = h;
+			{
+				final double xc = (h - this.y) / m + this.x;
+				final double yc = h;
 
-					if (this.penDown) {
-						this.getWorld().addLine(x, y, xc, yc, color);
-					}
-					setPos(xc, 0.);
-					nY = nY - h;
+				if (this.penDown) {
+					this.getWorld().addLine(x, y, xc, yc, color);
 				}
-				break;			
+				setPos(xc, 0.);
+				nY = nY - h;
+			}
+			break;			
 			}	
 		} 
-		
+
 		if (this.penDown) {
 			this.getWorld().addLine(x, y, nX, nY, color);
 		}			
 		this.x = nX;
 		this.y = nY;		
-		
+
 		stepUI();
 	}
 
@@ -223,7 +223,7 @@ public class Turtle extends Entity {
 	public void penUp() {
 		this.penDown = false;
 	}
-	
+
 	public void hide() {
 		this.visible = false;
 		stepUI();
@@ -272,7 +272,7 @@ public class Turtle extends Entity {
 		if (world != null)
 			world.notifyWorldUpdatesListeners();
 	}
-	
+
 	protected double getHeadingRadian() {
 		return this.heading;
 	}
@@ -281,7 +281,7 @@ public class Turtle extends Entity {
 	public TurtleWorld getWorld() {
 		return (TurtleWorld) super.getWorld();
 	}
-	
+
 	public Color getColor() {
 		return color;
 	}
@@ -354,14 +354,14 @@ public class Turtle extends Entity {
 	public void setPos(int x, double y) {
 		setPos((double) x, (double) y);
 	}
-	
+
 	public void addSizeHint(int x1, int y1, int x2, int y2,String txt){
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,txt);
 	}
 	public void addSizeHint(int x1, int y1, int x2, int y2){
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,null);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Turtle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Heading:" + heading + " Color:"
@@ -527,10 +527,26 @@ public class Turtle extends Entity {
 				out.write((isSelected()?"1":"0"));
 				out.write("\n");
 				break;
+			case 200:
+				nbInt = Integer.parseInt((command.split(" ")[1]));
+				out.write(Integer.toString((int)getParam(nbInt)));
+				out.write("\n");
+				break;
+			case 201:
+				nbInt = Integer.parseInt((command.split(" ")[1]));
+				double param;
+				if(getParam(nbInt) instanceof Integer){
+					param =(double) ((Integer) getParam(nbInt)).intValue();
+				}else{
+					param = (double)getParam(nbInt);
+				}
+				out.write(Double.toString(param));
+				out.write("\n");
+				break;
 			default:
 				System.out.println("COMMANDE INCONNUE : "+command);
 				break;
-			
+
 			}
 			out.flush();
 		} catch (IOException ioe) {
