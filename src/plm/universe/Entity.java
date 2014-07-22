@@ -218,7 +218,6 @@ public abstract class Entity extends Observable {
 
 				int nb=(int)(Math.random()*1000);
 				final File randomFile = new File(tempdir+"/tmp_"+nb+".txt");
-				System.out.println("tmp file : "+randomFile.getAbsolutePath());
 				if(!randomFile.createNewFile()){
 					System.out.println("Error creating a temporary file, make sure "+saveDir.getAbsolutePath()+" is writable");
 					return;
