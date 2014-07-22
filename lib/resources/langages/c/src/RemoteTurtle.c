@@ -1,16 +1,5 @@
-#include "RemoteTurtle.h"
 
 #undef printf
-
-void flush(){
-    int c = 0;
-    FILE* f = fopen("/tmp/flush","a+");
-    while (c != '\n' && c != EOF){
-        c = getchar();
-        fputc(c,f);
-    }
-    fclose(f);
-}
 
 char* int2str(int nb){
 	char* str = malloc(sizeof(char)*16);

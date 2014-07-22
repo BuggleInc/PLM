@@ -1,4 +1,4 @@
-#include "RemotePancake.h"
+//RemotePancake
 
 #line 1 "BurnedPancake"
 /* BEGIN TEMPLATE */

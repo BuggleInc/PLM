@@ -1,4 +1,3 @@
-#include "Remote.h"
 
 FILE* f;
 
@@ -24,3 +23,12 @@ void myPrintf(char* format, ...){
    	va_end(args);
 }
 
+void flush(){
+    int c = 0;
+    FILE* f = fopen("/tmp/flush","a+");
+    while (c != '\n' && c != EOF){
+        c = getchar();
+        fputc(c,f);
+    }
+    fclose(f);
+}

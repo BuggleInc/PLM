@@ -1,4 +1,4 @@
-#include "RemoteBaseball.h"
+//RemoteBaseball
 
 /* BEGIN TEMPLATE */
 void run() {

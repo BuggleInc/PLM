@@ -1,4 +1,4 @@
-#include "RemoteSort.h"
+//RemoteSort
 
 /* BEGIN TEMPLATE */
 void selectionSort() {

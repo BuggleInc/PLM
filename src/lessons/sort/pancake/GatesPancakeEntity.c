@@ -1,4 +1,4 @@
-#include "RemotePancake.h"
+//RemotePancake
 
 int blockLength();
 int isLast(int pos);
@@ -221,6 +221,7 @@ void solve() {
 						printf("%d, ",origSizes[rank]);
 					printf("}\n");
 				}
+				free(origSizes);
 				return;
 			}
 
