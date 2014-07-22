@@ -256,7 +256,6 @@ public abstract class Entity extends Observable {
 					arg1[1]="-c";
 					arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
 				}
-
 				File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 				if(!exec.exists()){
 					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
@@ -387,11 +386,6 @@ public abstract class Entity extends Observable {
 
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
-				}
-				
-				File prog = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
-				if(prog.exists()){
-					prog.delete();
 				}
 				
 				if(resCompilationErr.length()>0){

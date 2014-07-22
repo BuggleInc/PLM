@@ -3,7 +3,6 @@ package plm.core.model.lesson;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -36,7 +35,6 @@ import plm.core.model.session.SourceFileRevertable;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
-import sun.security.krb5.internal.crypto.crc32;
 
 
 public abstract class Exercise extends Lecture {
@@ -231,33 +229,21 @@ public abstract class Exercise extends Lecture {
 					if(!saveDirBin.exists()){
 						saveDirBin.mkdir();
 					}
-					File saveDirSrc = new File(plmDirTmp.getAbsolutePath()+"/src");
-					if(!saveDirSrc.exists()){
-						saveDirSrc.mkdir();
-					}
-					File saveDirInclude = new File(plmDirTmp.getAbsolutePath()+"/include");
-					if(!saveDirInclude.exists()){
-						saveDirInclude.mkdir();
-					}
-					
 					String saveDirPathBin = saveDirBin.getAbsolutePath();
-					String saveDirPathSrc = saveDirSrc.getAbsolutePath();
-					String saveDirPathInclude = saveDirInclude.getAbsolutePath();
+					String executable = this.getId();
+					
 					String extension="";
 					String os = System.getProperty("os.name").toLowerCase();
 					if (os.indexOf("win") >= 0) {
 						extension=".exe";
 					}
-					String executable = this.getId();
+					
 					File exec = new File(saveDirPathBin+"/"+executable+extension);
 					if(exec.exists()){
 						exec.delete();
 					}
 
-					//compile the RemoteBuggle
 					String remote="";
-					
-					//String compileRemote = "gcc -g -Wall -c \""+saveDirPathSrc+"/Remote.c\" -I \""+saveDirPathInclude+"\" -o \""+saveDirPathBin+"/Remote.o\"";
 					
 					if(code.contains("RemoteBuggle")){
 						remote = "RemoteBuggle";
@@ -279,10 +265,6 @@ public abstract class Exercise extends Lecture {
 						throw e;
 					}
 					
-					//copy file RemoteWorld from jar to tmp dir
-					
-					
-					//copy file Remote from jar to tmp dir
 					BufferedReader cRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
 					BufferedReader hRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
 					BufferedReader cRemoteWorld = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
@@ -305,38 +287,26 @@ public abstract class Exercise extends Lecture {
 					while((line=cRemoteWorld.readLine())!=null){
 						preCode.append(line+"\n");
 					}
-					
-					//FileWriter cCurrent = new FileWriter(saveDirPathSrc+"/current.c");
-					//cCurrent.write(preCode.toString()+"\n"+code);
-					//cCurrent.close();
-
-					
 					cRemoteWorld.close();
 					hRemoteWorld.close();
 					cRemoteWorld.close();
 					hRemote.close();
 					
-
-
 					String[] arg1;
 					if (os.indexOf("win") >= 0) {
 						arg1 = new String[3];
 						arg1[0]="cmd.exe";
 						arg1[1]="/c";
 						arg1[2]="gcc -g -Wall -lm -o \""+exec+"\" - ";
-						//arg1[2]=compileRemote+" & "+compileRemoteWorld+" & "+compileCode+" & "+link;
 					} else {
 						arg1 = new String[3];
 						arg1[0]="/bin/sh";
 						arg1[1]="-c";
 						arg1[2]="gcc -g -x c -Wall -lm -o \""+exec+"\" - ";
-						System.out.println(arg1[2]);
-						//arg1[2]=compileRemote+" ; "+compileRemoteWorld+" ; "+compileCode+" ; "+link;
 					}
 
 					final Process process = runtime.exec(arg1);
 					final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-					//System.out.println(preCode.toString()+"\n"+code);
 					bwriter.write(preCode.toString()+"\n"+code);
 					bwriter.close();
 					Thread reader = new Thread() {
@@ -377,9 +347,6 @@ public abstract class Exercise extends Lecture {
 					};
 					error.run();
 
-
-
-
 					process.waitFor();
 
 					if(resCompilationErr.length()>0){
@@ -390,19 +357,11 @@ public abstract class Exercise extends Lecture {
 
 						throw e;
 					}
-
-
 				} catch (IOException ioe) {
-					// TODO Auto-generated catch block
 					ioe.printStackTrace();
 				} catch(InterruptedException e){
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-
-
-
 			}
 
 		}
