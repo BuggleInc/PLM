@@ -1,4 +1,4 @@
-#include "RemoteBuggle.h"
+//RemoteBuggle
 
 void hunt(Color c);
 int isFacingTrail(Color c);

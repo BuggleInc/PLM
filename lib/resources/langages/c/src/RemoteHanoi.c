@@ -1,16 +1,6 @@
-#include "RemoteHanoi.h"
 
 #undef printf
 
-void flush(){
-    int c = 0;
-    FILE* f = fopen("/tmp/flush","a+");
-    while (c != '\n' && c != EOF){
-        c = getchar();
-        fputc(c,f);
-    }
-    fclose(f);
-}
 
 void move(int src, int dst){
 	printf("110 %d %d move\n", src, dst);

@@ -218,24 +218,28 @@ public abstract class Entity extends Observable {
 
 				int nb=(int)(Math.random()*1000);
 				final File randomFile = new File(tempdir+"/tmp_"+nb+".txt");
-				System.out.println("tmp file : "+randomFile.getAbsolutePath());
 				if(!randomFile.createNewFile()){
 					System.out.println("Error creating a temporary file, make sure "+saveDir.getAbsolutePath()+" is writable");
 					return;
 				}
 
 				final File valgrindFile=new File(tempdir+"/valgrind_"+nb+".xml");
-
 				String extension="";
 				String arg1[];
 				String os = System.getProperty("os.name").toLowerCase();
 				final StringBuffer valgrind=new StringBuffer("");
+				String executable;
+				if(this.getScript(Game.C)!=null){
+					executable=this.getScript(Game.C);
+				}else{
+					executable= Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+				}
 				if (os.indexOf("win") >= 0) {
 					extension=".exe";
 					arg1 = new String[3];
 					arg1[0]="cmd.exe";
 					arg1[1]="/c";
-					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
+					arg1[2]=saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
 				} else {
 					//test if valgrind exist
 					Runtime r = Runtime.getRuntime();
@@ -250,15 +254,22 @@ public abstract class Entity extends Observable {
 					arg1 = new String[3];
 					arg1[0]="/bin/sh";
 					arg1[1]="-c";
-					arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
+					arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
 				}
-
-				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
+				File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 				if(!exec.exists()){
 					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
+					randomFile.delete();
+					if(valgrindFile.exists()){
+						valgrindFile.delete();
+					}
 					return;
 				}else if(!exec.canExecute() || !exec.isFile()){
 					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
+					randomFile.delete();
+					if(valgrindFile.exists()){
+						valgrindFile.delete();
+					}
 					return;
 				}
 
@@ -376,7 +387,7 @@ public abstract class Entity extends Observable {
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
 				}
-
+				
 				if(resCompilationErr.length()>0){
 					System.err.println(resCompilationErr.toString());
 					progress.setCompilationError(resCompilationErr.toString());

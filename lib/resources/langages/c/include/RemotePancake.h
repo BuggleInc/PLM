@@ -6,9 +6,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "Remote.h"
-
-void flush();
 
 int getStackSize();  
 int getPancakeRadius(int rank);  

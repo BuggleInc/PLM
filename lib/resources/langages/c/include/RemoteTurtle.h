@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "Remote.h"
 
 
 typedef enum{
@@ -32,7 +31,8 @@ typedef enum{
 }Direction;
 
 
-
+int getParamInt(int nb);
+double getParamDouble(int nb);
 
 void left(double nb);
 void right(double nb);

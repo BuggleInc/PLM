@@ -6,9 +6,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "Remote.h"
-
-void flush();
 
 int getValueCount();
 int isSmaller(int i, int j);

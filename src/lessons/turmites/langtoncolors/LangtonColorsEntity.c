@@ -1,4 +1,4 @@
-#include "RemoteBuggle.h"
+//RemoteBuggle
 
 void step(char* rule, Color* colors, int length);
 

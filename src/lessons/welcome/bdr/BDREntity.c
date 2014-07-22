@@ -1,4 +1,4 @@
-#include "RemoteBuggle.h"
+//RemoteBuggle
 
 
 void run(){
@@ -29,7 +29,7 @@ void run(){
 		else if (c == 'X')
 			backward(3);
 		else
-			return 0;
+			return ;
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */

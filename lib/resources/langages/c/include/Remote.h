@@ -8,6 +8,8 @@
 
 #define printf myPrintf
 
+
+void flush();
 void myPrintf(char* format, ...);
 void run();
 

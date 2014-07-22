@@ -6,8 +6,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "Remote.h"
-
 
 typedef enum{
 	white,
