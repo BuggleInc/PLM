@@ -353,13 +353,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				null, this));
 		menuSession.add(miSessionImport);
 
-		
+		/* FIXME: do we still need this??
 		miSessionExportToCloud = new JMenuItem(new ExportCloudSession(g, i18n.tr("Export Session Cache to Cloud"),	null, this));
 		menuSession.add(miSessionExportToCloud);
 
 		miSessionImportFromCloud = new JMenuItem(new ImportCloudSession(g, i18n.tr("Import Session Cache from Cloud"),
 				null, this));
 		menuSession.add(miSessionImportFromCloud);
+		*/
 		
 		miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
 		menuSession.add(miAddUser);
