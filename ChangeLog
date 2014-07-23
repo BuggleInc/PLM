@@ -1,15 +1,29 @@
-20140515: Future Release 2.4 (beta)
+20140725: Release 2.4-alpha1
 
-  * Engine is now translated to italian! [Vinnie Costante]
-  * Add a little menu to switch human language (fix #110) 
-  * The error message now have the right number also on Windows. 
-    #42 was not fixed on this platform yet. [Cédric Huguenin]
-  * Various proofreadings on mission texts (FR&EN)
-  * Rewamp the feedback reporting dialog box
-  * The feedback is now reported as github issues [Cédric Huguenin]
-  * Unclutters the UI: changing the buggle color is useless
-  * welcome.bat.bool2.fizzBuzz: new exercise (classical Fizz Buzz word game)
-  * Kill the twitter spy. That's pure evil (fix #125)
+  This is an alpha release. Things are not ready for release, but we
+  need more feedback to track and fix the problems.  Use it at own
+  risk, but please report all issue so that we can hunt them down.
+
+  * New and improved translations:
+    - Brazilian Portuguese: 25% of all missions [Fred Maranhao]
+    - Italian: Full engine + Welcome lesson [Vinnie Costante]
+  * User Interface:
+    - user data are now saved in a git, and automatically synchronized
+      on github. [Cédric Huguenin, Mathieu Morainville]
+    - Add C as a programming language [Valentin Giannini]
+      Most exercises were ported, but that's still a bit experimental.
+    - Kill the twitter spy. That's pure evil (fix #125)
+    - The feedback is now reported as github issues [Cédric Huguenin]
+    - Add a little menu to switch human language (fix #110)
+    - The error message now have the right number also on Windows.
+      #42 was not fixed on this platform yet. [Cédric Huguenin]
+    - Rewamp the feedback reporting dialog box
+    - Unclutters the UI: changing the buggle color is useless
+  * Pedagogical content:
+    - lander.*: new lesson on lunar landing [Paul Brauner]
+      Only working in scala for now, somehow experimental.
+    - welcome.bat.bool2.fizzBuzz: new (classical Fizz Buzz word game)
+    - Various proofreadings on mission texts (FR&EN)
 
 20131113: Release 2.3
 
