@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-20 10:19-0300\n"
+"PO-Revision-Date: 2014-07-23 00:46-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -3241,12 +3241,14 @@ msgid ""
 "In most cases, the compiler is able to guess the type of the variable from "
 "the initialization value, and you can omit it:"
 msgstr ""
+"Na maioria dos casos, o compilador é capaz de adivinhar o tipo da\n"
+"variável baseado no valor inicial, e você pode omitir o tipo:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:46
 #, no-wrap
 msgid "var x = 42"
-msgstr ""
+msgstr "var x = 42"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:47
@@ -3338,7 +3340,7 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:67
 #, fuzzy
 msgid "<b>String</b>, for char strings."
-msgstr "<b>String</b>, for char strings."
+msgstr "<b>String</b>, para cadeias (strings) de caracteres."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:72
@@ -3349,7 +3351,7 @@ msgid ""
 "latter on store a number in the same variable.  The values themselves are "
 "still typed, but not the variable. Python is said to be <b>dynamically "
 "typed</b>."
-msgstr ""
+msgstr "As you can see, the variables are not <b>typed</b> in Python, which means that they are not specialized in any type of data.  A given variable store any type of data of a given type: you can store a number in a variable and latter on store a number in the same variable.  The values themselves are still typed, but not the variable. Python is said to be <b>dynamically typed</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:75
@@ -3361,9 +3363,17 @@ msgid ""
 "also good. In some sense, Python is easier to write but errors can sneak in "
 "more easily."
 msgstr ""
+"Outras linguagens (como Java ou Scala), são muito mais exigentes e\n"
+"impedem que você misture tipos de dados numa certa variável (dizemos\n"
+"que elas são <b>esticamente tipadas</b>). Isto parece inconveniente à\n"
+"primeira vista, mas este tipo de restrição permite que o compilador\n"
+"capture mais erros de lógica para você, o que também é bom. Num certo\n"
+"sentido, Python é mais fácil de escrever mas erros podem surgir mais\n"
+"facilmente."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:81
+#, fuzzy
 msgid ""
 "If you know that the value of your \"variable\" will never change (eg "
 "because it contains the screen size or some other constant value), then you "
@@ -3372,7 +3382,7 @@ msgid ""
 "then check your actions and catch your error when you inadvertently modify "
 "the value. More interestingly, the compiler can produce faster code in some "
 "cases."
-msgstr ""
+msgstr "Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando ela contém o tamanho da tela ou outro valor constante), então você deve fazer dela um <b>valor</b> instead of a variable. Simply change the <code>var</code> keyword with the <code>val</code> one. The compiler can then check your actions and catch your error when you inadvertently modify the value. More interestingly, the compiler can produce faster code in some cases."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:86
@@ -3380,6 +3390,8 @@ msgid ""
 "Variables work very similarly for strings, floating point numbers and "
 "boolean values."
 msgstr ""
+"Variáveis funcionam muito parecido com strings, números com vírgula e\n"
+"valores booleanos."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:88
@@ -3389,6 +3401,9 @@ msgid ""
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
 "boolean married=true;<span class=\"comment\">// the contrary would be written \"false\"</span>"
 msgstr ""
+"String nome = \"Martin Quinson\";\n"
+"double altura=1.77; <span class=\"comment\">// em metros</span>\n"
+"boolean casado=true;<span class=\"comment\">// o contrário se escreve \"false\"</span>"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:92
@@ -3399,6 +3414,10 @@ msgid ""
 "var married = true; <span class=\"comment\">// the contrary would be written \"false\"</span>\n"
 "<span class=\"comment\">// Scala knows that 'true' is a Boolean value, no need to repeat it here</span>"
 msgstr ""
+"val nome:String = \"Martin Quinson\"; <span class=\"comment\">// isto não pode ser modificado (é um valor)</span>\n"
+"var altura: Double = 1.77; <span class=\"comment\">// em metros</span>\n"
+"var casado = true; <span class=\"comment\">// o contrário se escreve \"false\"</span>\n"
+"<span class=\"comment\">// Scala sabe que 'true' é um valor Booleano, não precisa repetir</span>"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:97
@@ -3410,11 +3429,17 @@ msgid ""
 "height=1.77 <span class=\"comment\"># in meters</span>\n"
 "married=True <span class=\"comment\"># the contrary would be written \"False\"</span>"
 msgstr ""
+"firstName = \"Martin\"\n"
+"lastName = 'Quinson' <span class=\"comment\"># aspas e aspas simples funcionam aqui</span>\n"
+"frase = \"uma gota d'água é sempre melhor que nada\" <span class=\"comment\"># uma aspas simples entre aspas duplas vale</span> \n"
+"altura=1.77 <span class=\"comment\"># em metros</span>\n"
+"casado=True <span class=\"comment\"># o contrário se escreve \"False\"</span>"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:103
+#, fuzzy
 msgid "Affectations"
-msgstr ""
+msgstr "Affectations"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:105
@@ -3452,6 +3477,9 @@ msgid ""
 "objective is now to move forward until you find a baggle, pick it up, and "
 "then move back to your initial location before dropping the baggle."
 msgstr ""
+"Agora vamos fazer exercícios mais desafiantes, certo? O objetivo agora\n"
+"é mover para a frente até encontrar um baggle, pegar ele e se mover\n"
+"para trás até a localização inicial antes de sotar o baggle."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:120
@@ -3492,9 +3520,14 @@ msgid ""
 "3 if you didn't count the amount of steps done in the first phase. You can "
 "use a variable for that, which can be named <code>stepAmount</code>."
 msgstr ""
+"Naturalmente, é impossível dar a quantidade certa de passos para trás\n"
+"no passo 3 se você não contou a quantidade de passos dados na primeira\n"
+"fase. Você pode usar uma variável para isto, que pode ser chamada\n"
+"<code>quantidadeDePassos</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:134
+#, fuzzy
 msgid ""
 "Create an integer variable before phase 1, initialize it to 0, and each time "
 "you move one step forward, increment its value by one (<code>stepAmount = "
@@ -3502,6 +3535,12 @@ msgid ""
 "being equivalent[/!]).  Such variable which takes every values of a given "
 "range is often called a <b>stepper</b>."
 msgstr ""
+"Crie uma variável inteira antes da fase 1, inicie ela com 0 e a cada\n"
+"vez que der um passo para frente, incremente ela de um\n"
+"(<code>quantidadeDePassos = quantidadeDePassos + 1;</code>[!java] ou\n"
+"<code>quantidadeDePassos++;</code>, ambas as sintaxes são\n"
+"equivalentes[/!]).  Tais variáveis que pegar cada valor de um dado\n"
+"intervalo são normalmente chamadas de <b>stepper</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:141
@@ -3514,6 +3553,14 @@ msgid ""
 "is not an object but a primitive type.  (if you don't know the <code>++</"
 "code>, just ignore this paragraph: it does not exist in [!thelang])"
 msgstr ""
+"Se você conhece Java ou outras linguagens, você provavelmente vai\n"
+"tentar usar o operador <code>++</code> para incrementar a variável,\n"
+"mas isto não é permitido em [!thelang].  Isto é por que seria difícil\n"
+"definir este operador para todos os tipos de dados.  Por exemplo, o\n"
+"que faria ++ quando aplicado a um valor complexo ou a uma String? O\n"
+"problema não ocorre em Java pois <code>int</code> não é um objeto e sim um\n"
+"tipo primitivo.  (se você não conhece o <code>++</code>, simplesmente\n"
+"ignore este parágrafo: ele não existe em [!thelang])"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:149
@@ -3524,6 +3571,12 @@ msgid ""
 "<code>doneSteps</code> each time. The <code>!=</code> operator should be "
 "used to test the inequality (whether some values are NOT equal)."
 msgstr ""
+"Então, a fase 3 consiste em simplesmente criar uma nova variável\n"
+"inteira <code>passosDados</code> iniciada como 0, e dar um passos para\n"
+"trás enquanto <code>passosDados</code> não for igual a\n"
+"<code>quantidadeDePassos</code>, aumentando <code>passosDados</code> a\n"
+"cada vez. O operador <code>!=</code> deve ser usado para testar a\n"
+"inequação (quando um valor NÃO É igual)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:156
@@ -3544,6 +3597,12 @@ msgid ""
 "but stop as soon as you reach your fourth baggle.  Please help the buggles "
 "to move forward while counting the baggles and to determine when to stop."
 msgstr ""
+"Hoje é um grande dia para os buggles: a grande corrida dos Buggles\n"
+"começou. Esta é uma competição tradicional na qual jovens buggles\n"
+"mostram seu valor para a tribo. Tanto força quanto inteligência são\n"
+"exercitados: você tem que correr, mas parar assim que alcançar o\n"
+"quarto baggle. Por favor, ajude os buggles a se moverem para frente\n"
+"enquanto conta os baggles e determina quando parar."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/variables/RunHalf.html:2
@@ -3559,6 +3618,12 @@ msgid ""
 "the orange cells plus 1.  In other word, the following condition must become "
 "true <code>2 * baggles = orangeCells + 1</code>."
 msgstr ""
+"Chegamos ao segundo dia da grande corrida dos Buggles. Como antes,\n"
+"você tem que correr até alcançar a célula certa para parar. Mas desta\n"
+"vez, você tem que alcançar a célula onde a quantidade de baggles que\n"
+"você viu é o dobro da quantidade de células laranjas mais 1. Em outras\n"
+"palavras, a seguinte condição deve se tornar verdadeira <code>2 *\n"
+"baggles = orangeCells + 1</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunHalf.html:10
@@ -3577,6 +3642,14 @@ msgid ""
 "to create a new variable, initialize it, and move backward while "
 "incrementing this variable until it became equal to <code>stepAmount</code>."
 msgstr ""
+"loops 'while' são bem adaptados a situações onde você precise realizar\n"
+"uma ação enquanto uma condição se mantém verdadeira, mas são menos\n"
+"preparados para realizar uma ação num número de vezes\n"
+"predeterminado. Por exemplo, quando nós quisemos nos mover\n"
+"<code>quantidadeDePassos</code> para trás num exercício anterior, nós\n"
+"tivemos que criar uma nova variável, inicializar ela e mover para trás\n"
+"enquanto aumentávamos esta variável até ela se tornar igual a\n"
+"<code>quantidadeDePassos</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:11
@@ -3656,6 +3729,12 @@ msgid ""
 "works well: all the work is done in the condition and incrementing "
 "instruction."
 msgstr ""
+"É possível construir loops <tt>for</tt> mais avançados já que qualquer\n"
+"instrução válida pode ser usada como inicialização, condição e\n"
+"instrução de incrementação. O exemplo seguinte é um pouco extremo pois\n"
+"não existe necessidade para um corpo de loop mover um buggle para\n"
+"frente até ele alcançar a parede, mas funciona bem: todo o trabalho é\n"
+"feito nas instruções de condição e incremento."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:54
@@ -3702,6 +3781,11 @@ msgid ""
 "the baggle), but using a <code>for</code> loop instead of a <code>while</"
 "code> loop to move back to the initial location."
 msgstr ""
+"Você agora tem que refazer o mesmo exercício de antes (mover para\n"
+"frente até estar sobre um baggle, pegá-lo, mover para trás até a\n"
+"localização original, soltar o baggle), mas usando um loop\n"
+"<code>for</code> no lugar de um loop <code>while</code> para mover de\n"
+"volta ao local inicial."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:78
