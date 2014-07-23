@@ -648,9 +648,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	@Override
-	public void currentLessonHasChanged() { /* don't care */ }
-
-	@Override
 	public void selectedEntityHasChanged() { /* don't care */ }
 
 	@Override
@@ -816,8 +813,6 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 		}
 	}
 
-	@Override
-	public void currentLessonHasChanged() {   /* don't care */ }
 	@Override
 	public void selectedWorldHasChanged(World w) {   /* don't care */ }
 	@Override

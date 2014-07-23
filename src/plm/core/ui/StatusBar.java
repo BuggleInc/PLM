@@ -222,9 +222,6 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		setupProgLanguages(lecture);
 	}
 	@Override
-	public void currentLessonHasChanged() { /* Dont care. Tell me when the exercise changes only */
-	}
-	@Override
 	public void selectedWorldHasChanged(World newWorld) { /* don't care */ }
 	@Override
 	public void selectedEntityHasChanged() { /* tell your mum */ }

@@ -448,32 +448,23 @@ public class Game implements IWorldView {
 	}
 
 	public void setCurrentLesson(Lesson lesson) {
-		try {
-			saveSession(); // don't loose user changes 
-
-			this.currentLesson = lesson;
-			fireCurrentLessonChanged();
-			setCurrentExercise(this.currentLesson.getCurrentExercise());
-
-		} catch (UserAbortException e) { 
-			System.out.println(i18n.tr("Operation cancelled by the user"));
-		}
+		// Don't set the currentLesson from here, or the lastExercise saving mechanism will not work
+		setCurrentExercise(lesson.getCurrentExercise());
 	}
 
 	public Lecture getLastExercise() {
 		return this.lastExercise;
 	}
 
-	public void setLastExercise(Lecture exercise) {
-		this.lastExercise = exercise;
-	}
-
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
 		try {
 			saveSession(); // don't loose user changes
-			this.lastExercise = this.currentLesson.getCurrentExercise(); // save the last viewed exercise before switching
-
+			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
+			
+			if (this.currentLesson != lect.getLesson())
+				this.currentLesson = lect.getLesson();
+			
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
@@ -790,12 +781,6 @@ public class Game implements IWorldView {
 
 	public void removeGameListener(GameListener l) {
 		this.listeners.remove(l);
-	}
-
-	protected void fireCurrentLessonChanged() {
-		for (GameListener v : this.listeners) {
-			v.currentLessonHasChanged();
-		}
 	}
 
 	protected void fireCurrentExerciseChanged(Lecture lect) {

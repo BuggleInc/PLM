@@ -36,10 +36,6 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 	}
 		
 	@Override
-	public void currentExerciseHasChanged(Lecture l)   { /* I dont care I'm a punk */ }
-	@Override
-	public void currentLessonHasChanged()              { /* I dont care I'm a punk */ }
-	@Override
 	public void selectedEntityHasChanged()             { /* I dont care I'm a punk */ }
 	@Override
 	public void selectedWorldHasChanged(World w)       { /* I dont care I'm a punk */ }

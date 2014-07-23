@@ -152,9 +152,6 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 	}
 
 	@Override
-	public void currentLessonHasChanged() { /* don't care */ }
-
-	@Override
 	public void selectedWorldHasChanged(World newWorld) {
 		if (worldView != null && worldView.isWorldCompatible(this.game.getSelectedWorld())) {
 			worldView.setWorld(this.game.getSelectedWorld());
@@ -374,9 +371,6 @@ class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 
 	@Override
 	public void currentExerciseHasChanged(Lecture lect) { /* don't care */ }
-
-	@Override
-	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
 	public void selectedWorldHasChanged(World w) {

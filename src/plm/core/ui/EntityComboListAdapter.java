@@ -56,9 +56,6 @@ public class EntityComboListAdapter extends AbstractListModel<Entity> implements
 	public void currentExerciseHasChanged(Lecture lect) { /* don't care */ }
 
 	@Override
-	public void currentLessonHasChanged() { /* don't care */ }
-
-	@Override
 	public void selectedWorldHasChanged(World w) {
 		this.worlds = this.game.getSelectedWorlds();
 		fireContentsChanged(this, 0, this.worlds[0].getEntityCount() - 1);

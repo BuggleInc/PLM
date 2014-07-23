@@ -66,9 +66,6 @@ public class WorldComboListAdapter extends AbstractListModel<World> implements C
 	}
 	
 	@Override
-	public void currentLessonHasChanged() { /* don't care */ }
-
-	@Override
 	public void selectedWorldHasChanged(World w) {
 		this.selectedWorld = w;
 		fireContentsChanged(this, 0, this.currentExercise.getWorldCount()-1);		

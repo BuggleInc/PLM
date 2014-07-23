@@ -135,8 +135,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		doLayout();
 	}
 	@Override
-	public void currentLessonHasChanged() { /* don't care */ }
-	@Override
 	public void selectedWorldHasChanged(World w) { 
 		selectedEntityHasChanged();
 	}

@@ -5,9 +5,6 @@ import plm.universe.World;
 
 public interface GameListener {
 
-	// when a lesson becomes current lesson of the game
-	public void currentLessonHasChanged() ;
-	
 	// when an exercise becomes current exercise of the game
 	public void currentExerciseHasChanged(Lecture lect) ;
 	

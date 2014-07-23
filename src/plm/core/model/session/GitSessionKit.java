@@ -33,8 +33,7 @@ public class GitSessionKit implements ISessionKit {
 
 	public GitSessionKit(Game game) {
 		this.game = game;
-		String userUUID = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
-		reponame = userUUID.substring(0, 8);
+		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
 	}
 
 	/**

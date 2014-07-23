@@ -4,125 +4,132 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
+
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.PersonIdent;
-import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
+import org.eclipse.jgit.lib.StoredConfig;
 import org.json.simple.JSONObject;
+
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.Users;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
 public class GitSpy implements ProgressSpyListener {
 
-	private String filePath;
-	private File path;
-	private Repository repository;
+	private File plmDir;
 	private Git git;
 
-	private String repoUrl = Game.getProperty("plm.git.server.url"); //"https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git";
-
+	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
+	private File repoDir;
+	
 	public GitSpy(File path, Users users) throws IOException, GitAPIException {
-		this.path = path;
+		this.plmDir = path;
 
 		initializeRepoDir(users);
 	}
 
 	private void initializeRepoDir(Users users) throws IOException, GitAPIException {
 		String userUUID = String.valueOf(users.getCurrentUser().getUserUUID());
-		String reponame = userUUID.substring(0, 8);
 
-		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
-		File repoFile = new File(filePath);
+		repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
-		if (!repoFile.exists()) {
-			git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoFile).setBranchesToClone(Arrays.asList("master")).call();
+		if (!repoDir.exists()) {
+			// try to get the branch as stored remotely
+			String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
+
+			git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoDir).setBranchesToClone(Arrays.asList(userBranch)).call();
+			
+			// If no branch can be found remotely, create a new one.
+			if (git == null ) { 
+				git = Git.init().setDirectory(repoDir).call();
+				StoredConfig cfg = git.getRepository().getConfig();
+				cfg.setString("remote", "origin", "url", repoUrl);
+				cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
+				cfg.save();
+				git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
+				System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+			} else {
+				System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+			}
+		} else {
+			git = Git.open(repoDir);
 		}
 
-		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
-
-		// setup the remote repository
-		// final StoredConfig config = repository.getConfig();
-		// config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git");
-		// config.save();
-
-		// get the repository
-		git = new Git(repository);
-
-		GitPush gitPush = new GitPush(git);
+		GitUtils gitUtils = new GitUtils(git);
 
 		// checkout the branch of the current user
-		gitPush.checkoutUserBranch(users);
+		gitUtils.checkoutUserBranch(users.getCurrentUser());
 
-		// plm started commit message
-		git.commit().setMessage(writePLMStartedCommitMessage()).setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
+		// Log into the git that the PLM just started
+		git.commit().setMessage(writePLMStartedCommitMessage())
+		            .setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+		            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+		            .call();
 	}
 
 	@Override
 	public void executed(Exercise exo) {
-		createFiles(exo);
-		checkSuccess(exo);
-
 		try {
-			GitPush gitPush = new GitPush(git);
+			GitUtils gitUtils = new GitUtils(git);
 
-			// checkout the branch of the current user
-			// gitPush.checkoutUserBranch();
+			// checkout the branch of the current user (just in case it changed in between)
+			gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser());
+			
+			// Change the files locally
+			createFiles(exo);
+			checkSuccess(exo);
 
 			// run the add-call
 			git.add().addFilepattern(".").call();
 
 			// and then commit the changes
-			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).setMessage(writeCommitMessage(exo, null, "executed")).call();
+			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+			            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+			            .setMessage(writeCommitMessage(exo, null, "executed"))
+			            .call();
 
 			// push to the remote repository
-			gitPush.toUserBranch();
+			gitUtils.pushToUserBranch();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		repository.close();
 	}
 
 	@Override
 	public void switched(Exercise exo) {
-		Game game = Game.getInstance();
-		Exercise lastExo = (Exercise) game.getLastExercise();
+		Exercise lastExo = (Exercise) Game.getInstance().getLastExercise();
+		if (lastExo == null)
+			return;
+		
 		lastExo.lastResult = ExecutionProgress.newCompilationError("");
 
 		if (lastExo.lastResult != null) {
 			createFiles(lastExo);
 
 			try {
-				GitPush gitPush = new GitPush(git);
-
-				// checkout the branch of the current user
-				// gitPush.checkoutUserBranch();
+				GitUtils gitUtils = new GitUtils(git);
 
 				// run the add-call
 				git.add().addFilepattern(".").call();
 
 				// and then commit the changes
-				git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).setMessage(writeCommitMessage(lastExo, exo, "switched")).call();
+				git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+				            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+				            .setMessage(writeCommitMessage(lastExo, exo, "switched"))
+				            .call();
 
 				// push to the remote repository
-				gitPush.toUserBranch();
+				gitUtils.pushToUserBranch();
 			} catch (GitAPIException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-			repository.close();
 		}
 	}
 
@@ -149,19 +156,19 @@ public class GitSpy implements ProgressSpyListener {
 		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exoFrom.lastResult;
 
-		jsonObject.put("evt_type", evt_type);
 		// Retrieve appropriate parameters regarding the current exercise
 		jsonObject.put("course", game.getCourseID());
-		jsonObject.put("exoname", exoFrom.getName());
-		jsonObject.put("exolang", lastResult.language.toString());
+		jsonObject.put("exo", exoFrom.getId());
+		jsonObject.put("lang", lastResult.language.toString());
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
 		if (exoTo != null) {
-			jsonObject.put("exoswitchto", exoTo.getName());
+			jsonObject.put("switchto", exoTo.getId());
 		}
 
-		return jsonObject.toString();
+		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
+		return "{\"kind\":\""+evt_type+"\","+jsonObject.toString().substring(1);
 	}
 
 	/**
@@ -174,17 +181,13 @@ public class GitSpy implements ProgressSpyListener {
 	private String writePLMStartedCommitMessage() {
 		JSONObject jsonObject = new JSONObject();
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar cal = Calendar.getInstance();
-
-		jsonObject.put("evt_type", "started");
 		// Retrieve the feedback informations
-		jsonObject.put("start_date", dateFormat.format(cal.getTime()));
-		jsonObject.put("java_version", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
+		jsonObject.put("java", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
 		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
-		jsonObject.put("plm_version", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
+		jsonObject.put("plm", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
 
-		return jsonObject.toString();
+		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
+		return "{\"kind\":\"start\","+jsonObject.toString().substring(1);
 	}
 
 	private void createFiles(Exercise exo) {
@@ -196,7 +199,6 @@ public class GitSpy implements ProgressSpyListener {
 		String exoMission = exo.getMission(lastResult.language); // retrieve the mission
 
 		// create the different files
-		String repoDir = repository.getDirectory().getParent();
 		String ext = "." + Game.getProgrammingLanguage().getExt();
 
 		File exoFile = new File(repoDir, exo.getId() + ext + ".code");
@@ -241,7 +243,6 @@ public class GitSpy implements ProgressSpyListener {
 	 */
 	private void checkSuccess(Exercise exo) {
 		ExecutionProgress lastResult = exo.lastResult;
-		String repoDir = repository.getDirectory().getParent();
 		String ext = "." + Game.getProgrammingLanguage().getExt();
 
 		// if exercise is done correctly
