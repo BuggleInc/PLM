@@ -417,9 +417,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
 				if(Game.getProgrammingLanguage().equals(Game.C)){
 					try {
-						compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+						//TODO remove if bat will be implemented in C
+						if(!id.contains("welcome.lessons.welcome.bat") && ! id.contains("welcome.lessons.welcome.array"))
+							compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
 					} catch (PLMCompilerException e) {
-						System.err.println("Severe error: the correction of exercise "+Game.getInstance().getCurrentLesson().getCurrentExercise().getId()+" cannot be compiled in C. Please go fix your PLM.");
+						System.err.println("Severe error: the correction of exercise "+id+" cannot be compiled in C. Please go fix your PLM.");
 						e.printStackTrace();
 						Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
 						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
