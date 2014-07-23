@@ -105,10 +105,13 @@ public class Users {
 	 * @param newUser
 	 *            the user to which we want to switch
 	 * @return true if the user has been found and has been changed
+	 * @throws UserAbortException: Saving the current session went bad
 	 */
-	public boolean switchToUser(User newUser) {
+	public boolean switchToUser(User newUser) throws UserAbortException {
 		boolean found = false;
 
+		Game.getInstance().saveSession();
+		
 		for (User user : usersList) {
 			if (user.getUserUUID().equals(newUser.getUserUUID())) {
 				found = true;

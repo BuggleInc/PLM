@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import plm.core.model.Game;
 import plm.core.model.User;
+import plm.core.model.UserAbortException;
 
 public class SwitchUser extends AbstractGameAction {
 
@@ -24,7 +25,10 @@ public class SwitchUser extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		List<User> usersList = game.getUsers().getUsersList();
 		User[] possibilities = usersList.toArray(new User[usersList.size()]);
-		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, Game.i18n.tr("<html>Please choose the user you want to use from the drop-down menu.<br/>Caution! The PLM will exit immediately after you click OK.<br/>Save the code of the current lesson!</html>"), Game.i18n.tr("Switch user"),
+		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, 
+				Game.i18n.tr("<html>Please choose the user you want to use from the drop-down menu.<br/>"+
+				             "Caution! The PLM will exit immediately after you click OK.</html>"), 
+				Game.i18n.tr("Switch user"),
 				JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
 
 		if (chosenUser == null) {
@@ -32,8 +36,12 @@ public class SwitchUser extends AbstractGameAction {
 		}
 
 		if (!chosenUser.equals(game.getUsers().getCurrentUser())) {
-			game.getUsers().switchToUser(chosenUser);
-			game.quit();
+			try {
+				game.getUsers().switchToUser(chosenUser);
+				game.quit();
+			} catch (UserAbortException e1) {
+				JOptionPane.showMessageDialog(parent, Game.i18n.tr("Operation canceled by user request"));
+			}
 		}
 	}
 

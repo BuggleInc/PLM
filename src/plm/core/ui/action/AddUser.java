@@ -20,7 +20,9 @@ public class AddUser extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String newUser = JOptionPane.showInputDialog(this.parent, Game.i18n.tr("<html>Enter a name for your new user.<br/>You'll have to user the \"Switch user\" menu to use your new user.</html>"), Game.i18n.tr("Add user"), JOptionPane.PLAIN_MESSAGE);
+		String newUser = JOptionPane.showInputDialog(this.parent, 
+				Game.i18n.tr("<html>Enter a name for your new user.<br/>You'll have to user the \"Switch user\" menu to use your new user.</html>"), 
+				Game.i18n.tr("Add user"), JOptionPane.PLAIN_MESSAGE);
 
 		if (newUser == null) {
 			return;

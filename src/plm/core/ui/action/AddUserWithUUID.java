@@ -12,6 +12,7 @@ import plm.core.ui.AddExistingUserDialog;
 
 public class AddUserWithUUID extends AbstractGameAction {
 
+	private static final long serialVersionUID = 1L;
 	private Component parent;
 
 	public AddUserWithUUID(Game game, String text, ImageIcon icon, Component parent) {
