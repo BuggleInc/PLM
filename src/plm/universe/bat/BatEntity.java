@@ -91,7 +91,7 @@ public class BatEntity extends Entity {
 
 	@Override
 	protected void command(String command, BufferedWriter out) {
-		// TODO GIANNINI
+		// TODO if use
 		
 	}
 
