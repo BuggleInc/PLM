@@ -62,10 +62,12 @@ public class AboutPLMDialog extends JDialog {
 				"<li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li>"+
 				"</ul><br/>"+
 				"Your code is saved to {2}<br/>"+
+				"Your session ID is {3}<br/>"+
 				"</html>",
 				Game.getProperty("plm.major.version","internal",false),
 				Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false),
-				Game.getSavingLocation()) 
+				Game.getSavingLocation(),
+				Game.getInstance().getUsers().getCurrentUser().getUserUUID())
 		);
 		text.setBackground(Color.white);
 		text.setOpaque(true);
@@ -79,13 +81,27 @@ public class AboutPLMDialog extends JDialog {
 		try {
 			StringBuffer ctn = new StringBuffer();
 			Pattern itemPattern = Pattern.compile("^ +[*].*");
+			Pattern subItemPattern = Pattern.compile("^ +[-].*");
+			boolean inSubItem = false;
 			for (String s:FileUtils.readContentAsText("ChangeLog",null,false).toString().split("\n")) {
-				if (s.startsWith("20")) // all releases are done in this century
+				if (s.startsWith("20")) {// all releases are done in this century
+					if (inSubItem)
+						ctn.append("</ul>");
+					inSubItem = false;
 					ctn.append("</ul><h2>"+s+"</h2><ul>\n");
-				else if (itemPattern.matcher(s).matches()) 
-					ctn.append(s.replaceFirst("[*]", "<li>"));
-				else
+				} else if (itemPattern.matcher(s).matches()) { 
+					if (inSubItem)
+						ctn.append("</ul>");
+					inSubItem = false;
+					ctn.append(s.replaceFirst("[*]", "<li>")+"\n");
+				} else if (subItemPattern.matcher(s).matches()) { 
+					if (!inSubItem)
+						ctn.append("<ul>");
+					ctn.append(s.replaceFirst("[-]", "<li>")+"\n");
+					inSubItem = true;
+				} else {
 					ctn.append(s+"\n");
+				}
 			}
 			changelogArea.setText(ctn.toString());
 			changelogArea.setCaretPosition(0);
