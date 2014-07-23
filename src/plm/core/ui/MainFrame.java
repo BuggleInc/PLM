@@ -86,8 +86,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     
     private JMenu menuFile;
     private JMenuItem miFileSavePicture,miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
+    private JMenu menuExercise;
+    private JMenuItem miSessionRevert, miSessionDebug, miSessionCreative;
+
     private JMenu menuSession;
-    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity, miAddExistingUser;
+    private JMenuItem miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity, miAddExistingUser;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -304,14 +307,44 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		menuBar.add(menuFile);
 
-		/* === Edit menu === */
+		menuExercise = new JMenu(i18n.tr("Exercise"));
+		menuExercise.setMnemonic(KeyEvent.VK_E);
+		menuBar.add(menuExercise);
+		menuExercise.setEnabled(true);
+
+		miSessionRevert = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"), null));
+		menuExercise.add(miSessionRevert);
+		
+		miSessionDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.switchDebug();
+
+			}
+		});
+		menuExercise.add(miSessionDebug);
+
+		miSessionCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.switchCreative();
+
+			}
+		});
+		menuExercise.add(miSessionCreative);
+
+
+		
+		/* === Session menu === */
 		menuSession = new JMenu(i18n.tr("Session"));
 		menuSession.setMnemonic(KeyEvent.VK_S);
 		menuBar.add(menuSession);
 		menuSession.setEnabled(true);
 		
-		miSessionRevert = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"), null));
-		menuSession.add(miSessionRevert);
 
 		miSessionExport = new JMenuItem(new ExportSession(g, i18n.tr("Export Session Cache"),	null, this));
 		menuSession.add(miSessionExport);
@@ -328,30 +361,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				null, this));
 		menuSession.add(miSessionImportFromCloud);
 		
-		
-		miSessionDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				game.switchDebug();
-
-			}
-		});
-		menuSession.add(miSessionDebug);
-
-		miSessionCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				game.switchCreative();
-
-			}
-		});
-		menuSession.add(miSessionCreative);
-
-
 		miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
 		menuSession.add(miAddUser);
 		
