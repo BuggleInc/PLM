@@ -86,7 +86,8 @@ public class GitSessionKit implements ISessionKit {
 		File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
 		
 		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
-			// The user changed! switch to the right branch
+			if (Game.getInstance().isDebugEnabled())
+				System.out.println("The user changed! switch to the right branch");
 			cachedUser = Game.getInstance().getUsers().getCurrentUser();
 			
 			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUID().toString());

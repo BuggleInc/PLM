@@ -122,22 +122,23 @@ public class Users {
 	 */
 	public boolean switchToUser(User newUser) throws UserAbortException {
 		boolean found = false;
+		Game g = Game.getInstance();
 
-		Game.getInstance().saveSession();
+		g.saveSession();
 		
 		for (User user : usersList) {
 			if (user.getUserUUID().equals(newUser.getUserUUID())) {
 				found = true;
 				getCurrentUser().setLastUsed(false);
 				user.setLastUsed(true);
-				System.err.println("Switched to user: " + newUser);
+				System.err.println(Game.i18n.tr("Switched to user: {0}", newUser));
 			} 
 		}
 
 		if (found) {
 			updateUsersFile();
-			Game.getInstance().clearSession();
-			Game.getInstance().loadSession();
+			g.getLessons().clear();
+			g.clearSession();
 		} else {
 			System.err.println("Cannot switch to the user "+newUser+": not found");
 		}

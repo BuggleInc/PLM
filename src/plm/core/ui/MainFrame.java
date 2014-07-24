@@ -48,10 +48,8 @@ import plm.core.model.lesson.Lecture;
 import plm.core.ui.action.AbstractGameAction;
 import plm.core.ui.action.AddUser;
 import plm.core.ui.action.AddUserWithUUID;
-import plm.core.ui.action.ExportCloudSession;
 import plm.core.ui.action.ExportSession;
 import plm.core.ui.action.HelpMe;
-import plm.core.ui.action.ImportCloudSession;
 import plm.core.ui.action.ImportSession;
 import plm.core.ui.action.LinkUser;
 import plm.core.ui.action.PlayDemo;
@@ -119,6 +117,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		if (MainFrame.instance == null)
 			MainFrame.instance = new MainFrame();
 		return MainFrame.instance;
+	}
+	
+	public static void doDispose() {
+		if (MainFrame.instance == null)
+			return;
+		MainFrame.instance.dispose();
+		MainFrame.instance = null;
+
 	}
 
 	private void initComponents(final Game g) {
