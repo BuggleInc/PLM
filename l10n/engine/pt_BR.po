@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-24 16:27+0200\n"
+"POT-Creation-Date: 2014-07-24 17:13+0200\n"
 "PO-Revision-Date: 2014-06-15 21:51-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1130,6 +1130,8 @@ msgstr ""
 msgid "Revert Exercise"
 msgstr ""
 
+#. miSessionExportToCloud.setText(i18n.tr("Export Session Cache to Cloud"));
+#. miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
 #: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:773
 msgid "Debug mode"
 msgstr ""
@@ -1246,14 +1248,6 @@ msgstr ""
 
 #: src/plm/core/ui/MainFrame.java:766
 msgid "Lesson related functions"
-msgstr ""
-
-#: src/plm/core/ui/MainFrame.java:770
-msgid "Export Session Cache to Cloud"
-msgstr ""
-
-#: src/plm/core/ui/MainFrame.java:771
-msgid "Import Session Cache from Cloud"
 msgstr ""
 
 #: src/plm/core/ui/MissionEditorTabs.java:91
