@@ -187,7 +187,6 @@ public abstract class Exercise extends Lecture {
 			try {
 				CompilerScala.getInstance().reset();
 				for (SourceFile sf : sfs) {
-					System.out.println("name : "+tabName);
 					CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
 				}
 			} catch (PLMCompilerException e) {
