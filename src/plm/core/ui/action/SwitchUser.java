@@ -28,7 +28,7 @@ public class SwitchUser extends AbstractGameAction {
 		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, 
 				Game.i18n.tr("Please choose the user you want to use"), 
 				Game.i18n.tr("Switch user"),
-				JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
+				JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[game.getUsers().getCurrentUserRank()]);
 
 		if (chosenUser == null) 
 			return;

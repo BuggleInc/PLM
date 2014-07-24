@@ -77,6 +77,16 @@ public class Users {
 		return usersList.get(0);
 	}
 
+	/** 
+	 * Get the rank in the list of the currently selected user
+	 */
+	public int getCurrentUserRank() {
+		for (int cpt=0; cpt<usersList.size(); cpt++)
+			if (usersList.get(cpt).isLastUsed())
+				return cpt;
+		return 0;
+	}
+	
 	/**
 	 * Add a new user.
 	 * 
