@@ -57,8 +57,12 @@ public class FileUtils {
 		/* Build the list of filenames we will iterate (translated if any, and raw) */
 		String[] fileNames;
 		if (translatable && ! locale.getLanguage().equals("en")) {
+			String lang = locale.getLanguage();
+			if (lang.equals("pt_br")) 
+				lang = "pt_BR"; // Damn stupid java. Could you please stick to ISO norms and put the country uppercase?
+			
 			fileNames = new String[] {
-					file.replace('.', '/') + "." + locale.getLanguage(),
+					file.replace('.', '/') + "." + lang,
 					file.replace('.', '/')
 			};
 		} else { // not translatable, or currently in English: only search for non-translated form
