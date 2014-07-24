@@ -88,7 +88,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenuItem miSessionRevert, miSessionDebug, miSessionCreative;
 
     private JMenu menuSession;
-    private JMenuItem miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity, miAddExistingUser;
+    private JMenuItem miSessionExport, miSessionImport, /*miSessionExportToCloud, miSessionImportFromCloud,*/ miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity, miAddExistingUser;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -767,8 +767,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionRevert.setText(i18n.tr("Revert Exercise"));
 		miSessionExport.setText(i18n.tr("Export Session Cache"));
 		miSessionImport.setText(i18n.tr("Import Session Cache"));
-		miSessionExportToCloud.setText(i18n.tr("Export Session Cache to Cloud"));
-		miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
+		//miSessionExportToCloud.setText(i18n.tr("Export Session Cache to Cloud"));
+		//miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
 		
 		miSessionDebug.setText(i18n.tr("Debug mode"));
 		miSessionCreative.setText(i18n.tr("Creative mode"));
