@@ -64,15 +64,16 @@ restaurer l'état après coup.</p>
 <p>Vous pouvez être amenés à modifier également le reste de votre code, mais
 ces changements devraient rester limités.</p>
 
-<p class="python">N'oubliez pas que si l'une de vos méthodes modifie une variable globale
+[!python]<p>N'oubliez pas que si l'une de vos méthodes modifie une variable globale
 (telle que sommeAngles), vous devez vous assurer qu'elle définie cette
 globale correctement. Sinon, la méthode crée une nouvelle variable locale de
 même nom, et la globale n'est jamais modifiée.</p>
-<div class="python"><pre>def myMethod():
+<pre>def myMethod():
   global sommeAngle
   ...
   sommeAngle = sommeAngle + 1
-</pre></div>
+</pre>
+[/!]
 
 <div class="tip" id="tip-1" alt="Montrer un indice supplémentaire">
 Vous devez changer votre cap vers votre direction favorite (probablement le

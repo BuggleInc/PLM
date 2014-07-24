@@ -45,13 +45,13 @@ while firstTime or (other conditions):
 other conditions would imply the contrary.  Once the loop body has been
 executed once, it is set to false and never impact again the decision to
 enter the body or not.</p>
-[/!] [!java|scala]
+[/!] [!java|scala|c]
 <p>In a <tt>while</tt> loop, the condition is evaluated before anything else,
 and if it's false, the loop body is never evaluated. Sometimes (although not
 that often), you would prefer the loop body to get evaluated at least once,
 even if the condition is initially false. For that, a variation of the
 <tt>while</tt> loop gets used, using the following syntax in [!thelang].
-[!java]Do not forget the semi-column (;) after the condition, it is
+[!java|c]Do not forget the semi-column (;) after the condition, it is
 mandatory.[/!]
 
 <pre>do {

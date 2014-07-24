@@ -23,10 +23,10 @@ L'exemple ci-dessus de recette s'écrirait donc à peu près comme ci-dessous.
 lignes, mais ce n'est pas indispensable)[/!].</p>
     
 <pre>
-casserLesOeufs()[!java];[/!]
-ajouterDuSel()[!java];[/!]
-melangerLeTout()[!java];[/!]
-faireCuire()[!java];[/!]
+casserLesOeufs()[!java|c];[/!]
+ajouterDuSel()[!java|c];[/!]
+melangerLeTout()[!java|c];[/!]
+faireCuire()[!java|c];[/!]
 </pre>
     
 [!python|scala]
@@ -39,10 +39,9 @@ casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();
 </pre>
 [/!]
 
-  <p>Bien entendu, ces méthodes n'existent pas en
-[!java]Java[/!][!scala]Scala[/!][!python]Python[/!], mais il serait possible
-de les définir par vous même (nous verrons plus tard comment définir vos
-propres méthodes).</p>
+  <p>Bien entendu, ces méthodes n'existent pas en [!thelang], mais il serait
+possible de les définir par vous même (nous verrons plus tard comment
+définir vos propres méthodes).</p>
   
   <p>Pour l'instant, nous allons utiliser les instructions de la buggle. Il
 y a une méthode pour chaque bouton du contrôle interactif.  Pour faire la
@@ -50,20 +49,21 @@ même
 chose que le bouton <b>avance</b> (faire avancer la buggle d'un pas), il
 faut
 écrire dans l'éditeur : </p>
-  <pre>avance()[!java];[/!]</pre>
-  <p>De même, pour faire l'équivalent des boutons <b>recule</b>, <b>gauche</b> et
+  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+  <p>De même, pour faire l'équivalent des boutons
+<b>[!java|scala|python]recule[/!][!c]reculePas[/!]</b>, <b>gauche</b> et
 <b>droite</b>, il faut utiliser respectivement :</p>
 <pre>
-recule()[!java];[/!]
-gauche()[!java];[/!]
-droite()[!java];[/!]
+recule()[!java|c];[/!]
+gauche()[!java|c];[/!]
+droite()[!java|c];[/!]
 </pre>
 
 	 <p>Le bouton <b>marquer</b> est un peu particulier, puisqu'il correspond à deux
 méthodes : la première lève le crayon, tandis que la seconde le baisse.</p>
 <pre>
-leveBrosse()[!java];[/!]
-baisseBrosse()[!java];[/!]
+leveBrosse()[!java|c];[/!]
+baisseBrosse()[!java|c];[/!]
 </pre>
   <p>La buggle offre d'autres méthodes, présentées dans le menu "Aide/À propos de
 ce monde". Elles seront introduites au fur et à mesure des besoins.</p>

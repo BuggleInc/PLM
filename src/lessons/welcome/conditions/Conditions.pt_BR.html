@@ -2,38 +2,40 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Instruções condicionais</h2>
 
-Programs made of simple suite of instructions similar to previous exercise
-are quite boring. They always do the same thing, and cannot react to
-external conditions. A <b>conditional</b> let the program adapt by doing
-something like <i>if it's raining, take an umbrella</i>. 
+Programas feito simplesmente de um conjunto de instruções similares ao
+do exercício anterior são bastante chatos. Eles sempre fazem a mesma
+coisa, e não reajem a condições externas. Um <b>condicional</b> faz o
+programa se adaptar fazendo coisas do tipo <i>se está chovendo, pegue
+um guarda-chuva</i>. 
 
-<p>The [!thelang] syntax is the following:</p>
+<p>A sintaxe de [!thelang] é a seguinte:</p>
 
-<pre>[!java|scala]if (<b>condition</b>) {
+<pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>
 }[/!][!python]if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]
-<b>whatToDoAnyway()[!java];[/!]</b></pre>
+<b>whatToDoAnyway()[!java|c];[/!]</b></pre>
 
-<p>If the condition is true, the code of the next block will be executed and
-then it will continue with the rest of the code.  If the condition is false,
-the next block is ignored and the execution continues after it.  The
-conditional block can contain several instructions, it can even contain
-other tests, along with their sub-blocks.</p>
+<p>Se a condição for verdade, o código do próximo bloco será executado e
+então o resto do código continua. Se a condição for falsa, o próximo
+bloco é ignorado e a execução continua depois disto. O bloco
+condicional pode conter várias instruções, pode até mesmo conter
+outros testes, com seus próprios sub-testes.</p>
 
-<p>In this example, the instructions <code>whatToDoIfTrue()</code> and
-<code>whatToDoNextIfTrue()</code> will be executed if and only if the
-condition is true, while the instruction <code>whatToDoAnyway()</code> will
-be executed whether or not the condition is true. 
+<p>Neste exemplo, as instruções <code>oQueFazerSeForVerdade()</code> e
+<code>oQueFazerDepoisSeForVerdade()</code> serão executadas se e
+somente se a condição for verdadeira, mas a instrução
+<code>oQueFazerDeUmJeitoOuDeOutro()</code> vai ser executada se a
+condição for verdadeira ou não. 
 </p>
 
-<p>In [!thelang], the blocks of code are [!java|scala]enclosed between curly
+<p>In [!thelang], the blocks of code are [!java|scala|c]enclosed between curly
 brackets: a { sign opens the block, while a } sign closes it.  White spaces
-are not important[/!][!java].[/!][!scala], provided that your instructions
+are not important[/!][!java|c].[/!][!scala], provided that your instructions
 are still separated with a semi-column or an end of line.[/!]
-[!java|scala]It is still very important to correctly indent your code to
+[!java|scala|c]It is still very important to correctly indent your code to
 keep it readable.[/!] [!python]marked by the indentation: every lines that
 are a bit shifted to the right with white spaces belong to the block. Quite
 often, people use 4 spaces for indentation, but it works if you use more or
@@ -48,71 +50,76 @@ lost in your own code if it's not properly indented, so you want to clean it
 up so that working on your code remains pleasant and productive.</p>
 
 
-<p class="python">All indentations of a given block must be consistent, and it is not possible
-to cut a block. The two following codes are incorrect and will raise errors.</p>
+<p class="python">Todas as indentações de um dado bloco devem ser consistentes, e não é
+possível cortar um bloco. os dois códigos a seguir estão incorretos e
+devem resultar em erro.</p>
 <pre class="python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># one space too much </span>
 <b>whatToDoAnyway()</b>
 </pre>
-<pre class="python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
-<b>whatToDoAnyway()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># this block is not hanging to a condition line</span>
+<pre class="python">se <b>condição</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>
+<b>oQueFazerDeUmJeitoOuDeOutro()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerASeguir()</b> <span class="comment"># este bloco não está condicionado a uma linha de condição</span>
 </pre>
 
 <p>The condition must be a
-<code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> expression.  The
-inner block of code will get executed if the expression is evaluated to
-<code>[!java|scala]true[/!][!python]True[/!]</code> and it will be ignored
-if it is <code>[!java|scala]false[/!][!python]False[/!]</code>.
-<code>[!java|scala]true[/!][!python]True[/!]</code> and
+<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
+expression.  The inner block of code will get executed if the expression is
+evaluated to <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code>
+and it will be ignored if it is
+<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
+[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> and
 <code>[!java|scala]false[/!][!python]False[/!]</code> are constant values
-defined by [!thelang] directly, just as 0 or 1 in mathematics.</p>
+defined by [!thelang] directly, just as 0 or 1 in mathematics.[/!]</p>
 
 <p>The condition can be a
-<code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> variable (we will
-come back on variables in a latter exercise, don't worry) or an arithmetic
-test, such as <code>x == 5</code>, which checks whether the current value of
-<code>x</code> is 5, or such as <b>!=</b> (checking inequality, that is,
-returning [!java|scala]true[/!][!python]True[/!] only if the left-hand side
+<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
+variable (we will come back on variables in a latter exercise, don't worry)
+or an arithmetic test, such as <code>x == 5</code>, which checks whether the
+current value of <code>x</code> is 5, or such as <b>!=</b> (checking
+inequality, that is, returning
+[!c]1[/!][!java|scala]true[/!][!python]True[/!] only if the left-hand side
 is different from the right-hand side), <b>&lt;</b> (smaller than),
 <b>&gt;</b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b>
 (larger or equal to).</p>
 
 <p>Beware of the classical trap, which consists in testing the equality of a
 variable using = instead of ==. Hopefully, the
-[!java|scala]compiler[/!][!python]interpreter[/!] detects this problem most
-of the time, but it could get trapped is some cases (such as when you are
-affecting a boolean variable). So you'd better to be careful...</p>
+[!java|scala|c]compiler[/!][!python]interpreter[/!] detects this problem
+most of the time, but it could get trapped is some cases (such as when you
+are affecting a [!c]int[/!][!java|python|scala]boolean[/!] variable). So
+you'd better to be careful...</p>
 
 <p>The condition can also be a call to some particular methods returning a
 boolean. For example, the <code>isFacingWall()</code> method of the buggle
-returns true if the buggle is facing a wall, and false in the other case.</p>
+returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a
+wall, and false in the other case.</p>
 
-<p>Finally, a condition can be composed of several sub-conditions connected by
-boolean operations:</p>
+<p>Finalmente, uma condição pode ser composta de várias sub-condições
+conectadas por operadores booleanos:</p>
 <ul>
-  <li><code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when
+  <li><code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> is true when
 <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is
 false, <tt>cond2</tt> is not even evaluated as we already know that the
 conjunction of both propositions cannot be true).</li> 
-  <li><code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> is true if
+  <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if
 <tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true,
 <tt>cond2</tt> is not even evaluated as we already know that the disjunction
 of both propositions cannot be true).</li>
-  <li><code>[!java|scala]![/!][!python]not [/!]cond</code> is true if
+  <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if
 <tt>cond</tt> is false.</li>
-  <li>When the expression becomes complicated, it is better to add parenthesis to
-force the order of evaluation.  Do not hesitate to add more parenthesis to
-remove any ambiguities that may appear in an expression.</li>
+  <li>Quando a expressão se torna complicada, é melhor adicionar parêntesis
+para forçar a ordem de cálculo. Não hesite em adicionar mais
+parêntesis para remover ambiguidades que apareçam na expressão.</li>
 </ul> 
 
-<p>Last, it is possible to specify what to do when the condition is false using
-the following syntax. In this case, the instruction
-<code>whatToDoIfItsFalse</code> will be executed only if the condition is
-false.</p>
- <pre>[!java|scala]if (<b>condition</b>) {
+<p>Por fim, é possível especificar o que fazer quando a condição é falsa
+usando a seguinte sintaxe. Neste caso, a instrução
+<code>oQueFazerSeForFalso</code> será executada apenas se a condição
+for falsa.</p>
+ <pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
@@ -121,17 +128,19 @@ false.</p>
 else:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</pre>
 
-<p class="Python">Don't forget the colon (:) after the else, it is indicating that a new block
-is beginning.</p>
+<p class="Python">Não esqueça do dois-pontos (:) depois do else, ele indica que um novo
+bloco está começando.</p>
 
-<h3>Objetivo do exercício</h3><a name="Objectives"/> If the buggle is facing a wall, you must move one
-step back. If not, you must move one step forward. To detect whether you are
-facing a wall, simply use the <code>isFacingWall()</code> built-in, that
-every buggle understands. 
+<h3>Objetivo do exercício</h3><a name="Objectives"/> Se o buggle está de cara numa parede, você deve
+se mover um passo para trás. Se não, você deve se mover um passo para
+frente. para detectar se você está de cara para uma parede,
+simplesmente use a função pré-fabricada
+<code>estáOlhandoParaParede()</code>,
+que todo buggle entende. 
 
-<p>This exercise is a bit different: your code has to work for several buggles,
-each of them being in a specific initial condition. The same code will be
-executed for each of them.</p>
+<p>Este exercício é um pouco diferente: seu código tem que funcionar para
+vários buggles, cada um começando numa posição diferente. O mesmo
+código será executado para cada um deles.</p>
 
-<p>When your program works, move forward to the next exercise, that is hidden
-in a sub-tree of the selection window.</p>
+<p>Quando seu programa funcionar, vá para o próximo exercício, que está
+escondido numa sub-árvore da janela de seleção.</p>

@@ -11,32 +11,33 @@ différences d'efficacité entre eux.
 <h2>Méthodes disponibles pour les algorithmes de tri</h2>
 <table border=1>
 <tr><td><b>Méthode</b></td><td><b>Action</b></td><td><b>Coût</b></td></tr>
-<tr><td>[!java]int [/!]getNombreValeurs() [!scala]:Int[/!]</td>
+<tr><td>[!java|c]int [/!]getNombreValeurs() [!scala]:Int[/!]</td>
     <td>Retourne le nombre de valeurs dans le tableau</td><td>aucun</td></tr>
 
-<tr><td>[!java]boolean [/!]plusPetit([!java]int [/!]i[!scala]:Int[/!], [!java]int
-[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]</td>
+<tr><td>[!java]boolean [/!][!c]int [/!]plusPetit([!java|c]int [/!]i[!scala]:Int[/!],
+[!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]</td>
     <td>Retourne vrai si le contenu de la case i est strictement inférieur à celui
 de la case j</td><td>deux lectures</td></tr>
-<tr><td>[!java]boolean [/!]plusPetitQue([!java]int [/!]i[!scala]:Int[/!], [!java]int
-[/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]</td>
+<tr><td>[!java]boolean [/!][!c]int [/!]plusPetitQue([!java|c]int
+[/!]i[!scala]:Int[/!], [!java|c]int [/!]value[!scala]:Int[/!])[!scala]
+:Boolean[/!]</td>
     <td>Retourne vrai si le contenu de la case i est strictement inférieur à la
 valeur <code>value</code></td><td>une lecture</td></tr>
 
-<tr><td>[!java]void [/!]echange([!java]int [/!]i[!scala]:Int[/!], [!java]int
+<tr><td>[!java|c]void [/!]echange([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int
 [/!]j[!scala]:Int[/!])</td>
      <td>Échange le contenu de la case i avec celui de la case j</td><td>deux lectures, deux écritures</td></tr>
-<tr><td>[!java]void [/!]copie([!java]int [/!]depuis[!scala]:Int[/!], [!java]int
-[/!]vers[!scala]:Int[/!])</td>
+<tr><td>[!java|c]void [/!]copie([!java|c]int [/!]depuis[!scala]:Int[/!],
+[!java|c]int [/!]vers[!scala]:Int[/!])</td>
     <td>Copie le contenu de la case 'depuis' dans la case 'vers'</td><td>une lecture, une écriture</td></tr>
 
-<tr><td>[!java]int [/!]getValeur([!java]int [/!]idx[!scala]:Int[/!])</td>
+<tr><td>[!java|c]int [/!]getValeur([!java|c]int [/!]idx[!scala]:Int[/!])</td>
     <td>Retourne la valeur de la case idx</td><td>une lecture</td></tr>
-<tr><td>[!java]void [/!]setValeur([!java]int [/!]idx[!scala]:Int[/!], [!java]int
-[/!]valeur[!scala]:Int[/!])</td>
+<tr><td>[!java|c]void [/!]setValeur([!java|c]int [/!]idx[!scala]:Int[/!],
+[!java|c]int [/!]valeur[!scala]:Int[/!])</td>
     <td>Affecte la valeur '<code>valeur</code>' à la case 'idx' </td><td>une écriture</td></tr>
 
-<tr><td>[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]</td>
+<tr><td>[!java]boolean [/!][!c]int [/!]estSelectionne() [!scala]:Boolean[/!]</td>
     <td>Renvoi si le monde actuel est sélectionné dans l'interface graphique.</td><td>aucun</td></tr>
 
 </table>

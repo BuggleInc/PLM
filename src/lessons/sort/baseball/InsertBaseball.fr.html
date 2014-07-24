@@ -33,11 +33,12 @@ algorithme connu.</p>
 <p>Le plus simple pour adapter le tri par insertion au problème du baseball est
 de considérer toutes les positions comme adjacentes sans tenir compte des
 différentes bases. Pour cela, il faut définir les méthodes
-<code>couleurJoueur(pos)</code>, <code>deplace(pos)</code> et
-<code>trouveTrou()</code> qui utilisent un seul entier pour désigner une
-position donnée et appellent les fonctions de base de cet univers pour faire
-leur travail. Pour convertir une position encodée sur un seul entier
-<code>index</code> en une position encodée sur deux entiers
+<code>couleurJoueur[!c]Insert[/!](pos)</code>,
+<code>deplace[!c]Insert[/!](pos)</code> et
+<code>trouveTrou[!c]Insert[/!]()</code> qui utilisent un seul entier pour
+désigner une position donnée et appellent les fonctions de base de cet
+univers pour faire leur travail. Pour convertir une position encodée sur un
+seul entier <code>index</code> en une position encodée sur deux entiers
 <code>base,pos</code>, il faut appliquer les formules suivantes:
 <code>base=index/2</code> et <code>pos=index%2</code>. Pour faire le calcul
 inverse, il faut utiliser <code>index=base*2+pos</code> (qui fonctionne car

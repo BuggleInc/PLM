@@ -3,8 +3,8 @@
 <h2>Métodos retornando um resultado</h2>
 
 <p>Writing a method returning a result is not really more work than writing a
-method without any result.  [!java]You simply have to specify the data type
-of expected results before the method name (where we previously had
+method without any result.  [!java|c]You simply have to specify the data
+type of expected results before the method name (where we previously had
 <code>void</code>).[/!] [!scala]You simply have to add a column (:) after
 the parenthesis and write the type of data that your method will return, and
 add an equal sign (=). This syntax is actually rather close to defining a
@@ -13,9 +13,9 @@ variable, with its type, that is actually a function.[/!] You can use the
 the computation is done (the method is not further executed), and that the
 result is the the value following the <code>return</code> keyword.</p>
 
-<pre>[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
-    return 3.14159[!java];[/!]
-[!java|scala]}[/!]</pre>
+<pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
 
 <p>Actually, you can also use that <code>return</code> keyword in methods that
 do not return any result, to interupt the computation. Of course, you should
@@ -31,12 +31,12 @@ know what actual value to give back to the method caller.  Moreover,
 looking further when you know the method result?). So, if there is some code
 after a <code>return</code>, it must be an error and the compiler warns you.</p>
 
-<pre>[!java|scala][!java]boolean [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
-    if (isFacingWall() == true) {
-        return false;
+<pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
+    if (isFacingWall() == [!java|scala]true[/!][!c]1[/!]) {
+        return [!java|scala]false[/!][!c]0[/!];
         <span class="comment">/* no code allowed here */</span>
     } else {
-        return true;
+        return [!java|scala]true[/!][!c]1[/!];
         <span class="comment">/* here neither */</span>
     }
     <span class="comment">/* even here, forget it */</span>

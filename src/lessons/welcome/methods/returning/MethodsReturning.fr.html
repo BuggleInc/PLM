@@ -4,7 +4,7 @@
 
 <p>Écrire une méthode retournant un résultat n'est pas tellement plus dur que
 pour les méthodes sans résultat.
-[!java]Il suffit d'écrire le type de données renvoyées par votre méthode
+[!java|c]Il suffit d'écrire le type de données renvoyées par votre méthode
 avant son nom (là où nous écrivions <code>void</code> avant).[/!]
 [!scala]Il suffit d'ajouter deux points (:), le type de données renvoyées
 par votre méthode et le signe égal (=) entre  les parenthèses de la
@@ -16,9 +16,9 @@ corps de votre méthode pour spécifier que le calcul est fini (la suite de la
 méthode n'est pas exécutée) et donner la valeur à donner à l'appelant après
 le mot-clé <code>return</code>.</p>
 
-<pre>[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
-    return 3.14159[!java];[/!]
-[!java|scala]}[/!]</pre>
+<pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
 
 <p>En fait, vous pouvez également utiliser le mot-clé <code>return</code> dans
 les méthodes ne renvoyant pas de résultat, pour interrompre leur
@@ -37,12 +37,12 @@ on a déjà trouvé le résultat de la méthode?). Donc, s'il y a du code après
 un <tt>return</tt>, c'est sans doute une erreur, et le compilateur vous
 l'indique.</p>
 
-<pre>[!java|scala][!java]boolean [/!][!scala]def [/!]estDevantLibre()[!scala]:Boolean =[/!] {
-    if (estFaceMur() == true) {
-        return false;
+<pre>[!java|scala|c][!java][!java]boolean [/!][!c]int [/!] [/!][!scala]def [/!]estDevantLibre()[!scala]:Boolean =[/!] {
+    if (estFaceMur() == [!java|scala]true[/!][!c]1[/!]) {
+        return [!java|scala]false[/!][!c]0[/!];
         <span class="comment">/* interdit d'écrire du code ici */</span>
     } else {
-        return true;
+        return [!java|scala]true[/!][!c]1[/!];
         <span class="comment">/* pareil ici */</span>
     }
     <span class="comment">/* même ici, oubliez */</span>

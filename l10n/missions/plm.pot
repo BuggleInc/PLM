@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-07-07 23:48+0200\n"
+"POT-Creation-Date: 2014-07-24 16:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,31 +72,31 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:12 src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "[!java]void [/!]left()"
+msgid "[!java|c]void [/!]left()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:13 src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "[!java]void [/!]right()"
+msgid "[!java|c]void [/!]right()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:14 src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "[!java]void [/!]back()"
+msgid "[!java|c]void [/!]back()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:15 src/lessons/turmites/universe/TurmiteWorld.html:12
+#: src/plm/universe/bugglequest/BuggleWorld.html:15
 msgid ""
-"[!java]void [/!]forward() or [!java]void [/!]forward([!java]int "
-"[/!]steps[!scala]:Int[/!])"
+"[!java|c]void [/!][!python|java|scala]forward()[/!][!c]stepForward()[/!] or "
+"[!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:16 src/lessons/turmites/universe/TurmiteWorld.html:13
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid ""
-"[!java]void [/!]backward() or [!java]void [/!]backward([!java]int "
-"[/!]steps[!scala]:Int[/!])"
+"[!java|c]void [/!][!python|java|scala]backward()[/!][!c]stepBackward()[/!] "
+"or [!java]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -126,28 +126,28 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:18
-msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
+msgid "[!java|c]int [/!]getX()[!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:19
-msgid "[!java]int [/!]getY()[!scala]:Int[/!]"
+msgid "[!java|c]int [/!]getY()[!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:20
-msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+msgid "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:21
-msgid "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
+msgid "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:22
 msgid ""
-"[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int "
+"[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
 "[/!]y[!scala]:Int[/!])"
 msgstr ""
 
@@ -168,12 +168,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:26
-msgid "[!java]Color [/!]getBodyColor()[!scala]:Color[/!]"
+msgid "[!java|c]Color [/!]getBodyColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:27
-msgid "[!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])"
+msgid "[!java|c]void [/!]setBodyColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -188,12 +188,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:29
-msgid "[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isFacingWall()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:30
-msgid "[!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -213,17 +213,23 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:32
-msgid "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
+msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:33
-msgid "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
+msgid ""
+"[!java|c]void [/!]setDirection([!java|c]Direction "
+"[/!]dir[!scala]:Direction[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:34
-msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
+msgid ""
+"[!scala|java|python]Direction.[/!]NORTH, "
+"[!scala|java|python]Direction.[/!]EAST, "
+"[!scala|java|python]Direction.[/!]SOUTH and "
+"[!scala|java|python]Direction.[/!]WEST"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -232,9 +238,9 @@ msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/bugglequest/BuggleWorld.html:36 src/plm/universe/turtles/TurtleWorld.html:75
+#: src/plm/universe/bugglequest/BuggleWorld.html:36 src/plm/universe/turtles/TurtleWorld.html:75 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
-msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -259,17 +265,17 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
-msgid "[!java]void [/!]brushUp()"
+msgid "[!java|c]void [/!]brushUp()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:41
-msgid "[!java]void [/!]brushDown()"
+msgid "[!java|c]void [/!]brushDown()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:42
-msgid "[!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isBrushDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -284,12 +290,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
-msgid "[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])"
+msgid "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:45
-msgid "[!java]Color [/!]getBrushColor()[!scala]:Color[/!]"
+msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -304,7 +310,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:49 src/lessons/turmites/universe/TurmiteWorld.html:15
-msgid "[!java]Color [/!]getGroundColor()[!scala]:Color[/!]"
+msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -334,12 +340,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
-msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:54
-msgid "[!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -379,17 +385,19 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
-msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:61
-msgid "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
+msgid ""
+"[!java]void [/!]writeMessage([!java]String [/!][!c]char* "
+"[/!]msg[!scala]:String[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:62
-msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
+msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -414,67 +422,67 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/turtles/TurtleWorld.html:81
-msgid "Color.black"
+msgid "[!scala|java|python]Color.[/!]black"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/turtles/TurtleWorld.html:82
-msgid "Color.blue"
+msgid "[!scala|java|python]Color.[/!]blue"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/turtles/TurtleWorld.html:83
-msgid "Color.cyan"
+msgid "[!scala|java|python]Color.[/!]cyan"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/turtles/TurtleWorld.html:84
-msgid "Color.darkGray"
+msgid "[!scala|java|python]Color.[/!]darkGray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/turtles/TurtleWorld.html:85
-msgid "Color.gray"
+msgid "[!scala|java|python]Color.[/!]gray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/turtles/TurtleWorld.html:86
-msgid "Color.green"
+msgid "[!scala|java|python]Color.[/!]green"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/turtles/TurtleWorld.html:87
-msgid "Color.lightGray"
+msgid "[!scala|java|python]Color.[/!]lightGray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/turtles/TurtleWorld.html:88
-msgid "Color.magenta"
+msgid "[!scala|java|python]Color.[/!]magenta"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/turtles/TurtleWorld.html:89
-msgid "Color.orange"
+msgid "[!scala|java|python]Color.[/!]orange"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/turtles/TurtleWorld.html:90
-msgid "Color.pink"
+msgid "[!scala|java|python]Color.[/!]pink"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/turtles/TurtleWorld.html:91
-msgid "Color.red"
+msgid "[!scala|java|python]Color.[/!]red"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:80 src/plm/universe/turtles/TurtleWorld.html:92
-msgid "Color.white"
+msgid "[!scala|java|python]Color.[/!]white"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:93
-msgid "Color.yellow"
+msgid "[!scala|java|python]Color.[/!]yellow"
 msgstr ""
 
 #. type: Content of: <h2>
@@ -830,20 +838,11 @@ msgid ""
 "look at the several elements composing the main window, move your mouse over "
 "them to show the tooltip, and experiment with the elements to see what they "
 "do.  The white area below is the console: this is where errors and messages "
-"get displayed. Note that when you successfully solve an exercise, the good "
-"news is spread on twitter.  Keep posted about the progress of your friends "
-"by following @jlmlovers :)"
+"get displayed."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:33
-msgid ""
-"If you prefer not to post your successes online, just change the relevant "
-"properties in your configuration file, that is [!configfile] in your case."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:36
+#: src/lessons/welcome/environment/Environment.html:31
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -855,12 +854,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/environment/Environment.html:44
+#: src/lessons/welcome/environment/Environment.html:39
 msgid "What am I supposed to do?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:46
+#: src/lessons/welcome/environment/Environment.html:41
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
 "step forward using the Source Code pane. For that, simply write the "
@@ -869,18 +868,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:50 src/lessons/welcome/instructions/Instructions.html:46
+#: src/lessons/welcome/environment/Environment.html:45 src/lessons/welcome/instructions/Instructions.html:46
 #, no-wrap
 msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:51 src/lessons/welcome/loopfor/LoopFor.html:50 src/lessons/welcome/bdr/BDR.html:188
+#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/loopfor/LoopFor.html:50 src/lessons/welcome/bdr/BDR.html:188
 msgid "[!java|c]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:51
+#: src/lessons/welcome/environment/Environment.html:46
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot "
@@ -888,12 +887,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:53 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet.html:37 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/square/FourSquare.html:46 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet.html:37 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:55
+#: src/lessons/welcome/environment/Environment.html:50
 msgid "Once done, click on run. You can proceed to next exercise once it works."
 msgstr ""
 
@@ -2234,7 +2233,7 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet.html:31 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet.html:31 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
 msgid "[!python]"
 msgstr ""
 
@@ -3752,7 +3751,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/args/MethodsArgs.html:35 src/lessons/welcome/methods/picture/MethodsPicture.html:35 src/lessons/recursion/square/FourSquare.html:28
+#: src/lessons/welcome/methods/args/MethodsArgs.html:35 src/lessons/welcome/methods/picture/MethodsPicture.html:35
 msgid "[!java|scala]"
 msgstr ""
 
@@ -4142,7 +4141,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
+#: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4 src/lessons/recursion/square/FourSquare.html:28
 msgid "[!java|scala|c]"
 msgstr ""
 
@@ -5791,6 +5790,20 @@ msgid ""
 "you will use."
 msgstr ""
 
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:12
+msgid ""
+"[!java|c]void [/!][!c]stepForward()[/!][!java|python|scala]forward()[/!] or "
+"[!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
+msgid ""
+"[!java|c]void [/!][!c]stepBackward()[/!][!java|python|scala]backward()[/!] "
+"or [!java|c]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/plm/universe/sort/SortingWorld.html:2
 msgid "Sorting World"
@@ -7245,6 +7258,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
+#: src/lessons/sort/pancake/GatesBurnedPancake.html:2
+msgid "Faster Burned Pancake Sorting"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesBurnedPancake.html:5
+msgid ""
+"It's the same exercice that Gates Sorting but pancakes are burned.  consider "
+"all cases and check if the top pancake is in the right side before"
+msgstr ""
+
+#. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:2
 msgid "The Rainbow Baseball Game"
 msgstr ""
@@ -7798,8 +7823,8 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:14
 #, no-wrap
 msgid ""
-"[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])\n"
-"[!java]void [/!]backward([!java]double [/!]steps[!scala]:Double[/!])"
+"[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])\n"
+"[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7811,8 +7836,8 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:18
 #, no-wrap
 msgid ""
-"[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])\n"
-"[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])"
+"[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
+"[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7824,8 +7849,8 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:22
 #, no-wrap
 msgid ""
-"[!java]double [/!]getX()[!scala]:Double[/!]\n"
-"[!java]double [/!]getY()[!scala]:Double[/!]"
+"[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
+"[!java|c]double [/!]getY()[!scala]:Double[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7837,10 +7862,10 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:26
 #, no-wrap
 msgid ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double "
-"[/!]y[!scala]:Double[/!])"
+"[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
+"[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
+"[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], "
+"[!java|c]double [/!]y[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7852,8 +7877,8 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:31
 #, no-wrap
 msgid ""
-"[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double "
-"[/!]y[!scala]:Double[/!])"
+"[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], "
+"[!java|c]double [/!]y[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7864,7 +7889,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:34
 #, no-wrap
-msgid "[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])"
+msgid "[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7875,7 +7900,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:37
 #, no-wrap
-msgid "[!java]void [/!]hide()"
+msgid "[!java|c]void [/!]hide()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7886,7 +7911,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:40
 #, no-wrap
-msgid "[!java]void [/!]show()"
+msgid "[!java|c]void [/!]show()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7897,7 +7922,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:43
 #, no-wrap
-msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7908,7 +7933,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:46
 #, no-wrap
-msgid "[!java]void [/!]clear()"
+msgid "[!java|c]void [/!]clear()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7919,7 +7944,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:49
 #, no-wrap
-msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgid "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7930,7 +7955,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:52
 #, no-wrap
-msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgid "[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7946,7 +7971,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:57
 #, no-wrap
-msgid "[!java]void [/!]penUp()"
+msgid "[!java|c]void [/!]penUp()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7959,7 +7984,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:61
 #, no-wrap
-msgid "[!java]void [/!]penDown()"
+msgid "[!java|c]void [/!]penDown()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7972,7 +7997,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:64
 #, no-wrap
-msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7983,7 +8008,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:67
 #, no-wrap
-msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
+msgid "[!java|c]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7994,7 +8019,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:70
 #, no-wrap
-msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
+msgid "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -8210,7 +8235,7 @@ msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
 "<code>forward()</code> method takes the amount of steps to do not as an "
-"integer, but as a [!python]point number[/!][!java|scala]double[/!] (see "
+"integer, but as a [!python]point number[/!][!java|scala|c]double[/!] (see "
 "\"About this world\" for more details)."
 msgstr ""
 
@@ -8231,19 +8256,19 @@ msgid ""
 "double x = 3.72;\n"
 "x + 1.234 // Value = 4.954\n"
 "x + 2. // Value = 5.72 (2. means 2.0)\n"
-"x + 2 // [!java]Value = 5.72 (2 automatically converted to "
+"x + 2 // [!java|c]Value = 5.72 (2 automatically converted to "
 "2.0)[/!][!scala]Type error (+ operator don't mix Double and Int); manual "
 "conversion mandatory[/!]\n"
 "x * 2. // Value = 7.44 \n"
 "x / 2. // Value = 1.86 \n"
-"[!java](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Value = 1 (“casting to "
-"int”, converted to integer by truncating)\n"
+"[!java|c](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Value = 1 (“casting "
+"to int”, converted to integer by truncating)\n"
 "Math.round(x) // Value = 2 (1.86 rounded to nearest integer)\n"
 "Math.floor(x) // Value = 1 (1.86 rounded toward minus infinity)\n"
 "Math.floor(-5.12) // Value = -6 (rounded toward minus infinity)\n"
 "Math.ceiling(x) // Value = 2 (1.86 rounded toward plus infinity)\n"
 "Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)\n"
-"[!java](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 "
+"[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 "
 "(“casted to double”, converted to double)\n"
 msgstr ""
 
@@ -8280,9 +8305,10 @@ msgstr ""
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:6
 #, no-wrap
 msgid ""
-"[!java]void [/!]polygonFractal ([!java]int [/!]levels[!scala]:Int[/!], "
-"[!java]int [/!]sides[!scala]:Int[/!], [!java]double "
-"[/!]length[!scala]:Double[/!], [!java]double [/!]shrink[!scala]:Double[/!])"
+"[!java|c]void [/!]polygonFractal ([!java|c]int [/!]levels[!scala]:Int[/!], "
+"[!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double "
+"[/!]length[!scala]:Double[/!], [!java|c]double "
+"[/!]shrink[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: <p>
@@ -8439,7 +8465,8 @@ msgid ""
 "The Crab curve is not exactly a Koch curve, but that's still a fractal and "
 "it's built rather similarly.  This time, we grow square triangle on the side "
 "of the figure: the angle is 45 degrees, and the length is divided by "
-"[!java|scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] at each step."
+"[!java|scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!][!c]sqrt(2);[/!] at "
+"each step."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8479,9 +8506,9 @@ msgstr ""
 #: src/lessons/recursion/tree/Tree.html:6
 #, no-wrap
 msgid ""
-"[!java]void [/!]tree([!java]int [/!]steps[!scala]:Int[/!], [!java]double "
-"[/!]length[!scala]:Double[/!], [!java]double [/!]angle[!scala]:Double[/!], "
-"[!java]double [/!]shrink[!scala]:Double[/!])"
+"[!java|c]void [/!]tree([!java|c]int [/!]steps[!scala]:Int[/!], "
+"[!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double "
+"[/!]angle[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: <p>
@@ -8541,8 +8568,8 @@ msgstr ""
 #: src/lessons/recursion/sierpinski/Sierpinski.html:7
 #, no-wrap
 msgid ""
-"[!java]void [/!]sierpinski([!java]int [/!]level[!scala]:Int[/!], "
-"[!java]double [/!]length[!scala]:Double[/!])"
+"[!java|c]void [/!]sierpinski([!java|c]int [/!]level[!scala]:Int[/!], "
+"[!java|c]double [/!]length[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: <p>
@@ -8571,9 +8598,9 @@ msgstr ""
 #: src/lessons/recursion/spiral/Spiral.html:7
 #, no-wrap
 msgid ""
-"[!java]void [/!]spiral([!java]int [/!]steps[!scala]:Int[/!], [!java]int "
-"[/!]angle[!scala]:Int[/!], [!java]int [/!]length[!scala]:Int[/!], [!java]int "
-"[/!]increment[!scala]:Int[/!])"
+"[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], "
+"[!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int "
+"[/!]length[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -8684,10 +8711,10 @@ msgstr ""
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:19 src/lessons/recursion/dragoncurve/DragonCurve2.html:23
 #, no-wrap
 msgid ""
-"[!java]void [/!]dragon([!java]int [/!]order[!scala]:Int[/!], [!java]double "
-"[/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], "
-"[!java]double [/!]z[!scala]:Double[/!], [!java]double "
-"[/!]t[!scala]:Double[/!])"
+"[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], "
+"[!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double "
+"[/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], "
+"[!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: <p>
@@ -8753,10 +8780,10 @@ msgstr ""
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:32
 #, no-wrap
 msgid ""
-"[!java]void [/!]dragonReverse([!java]int [/!]order[!scala]:Int[/!], "
-"[!java]double [/!]x[!scala]:Double[/!], [!java]double "
-"[/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], "
-"[!java]double [/!]t[!scala]:Double[/!])"
+"[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], "
+"[!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double "
+"[/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], "
+"[!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: <p>
@@ -8978,12 +9005,6 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
 msgid "Returns the radius of the top-most disk of the specified slot."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -9248,7 +9269,7 @@ msgid ""
 "the global never gets modified."
 msgstr ""
 
-#. type: Content of: <div><pre>
+#. type: Content of: <pre>
 #: src/lessons/maze/pledge/PledgeMaze.html:63
 #, no-wrap
 msgid ""
@@ -9259,12 +9280,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/pledge/PledgeMaze.html:69
+#: src/lessons/maze/pledge/PledgeMaze.html:70
 msgid "Show an additional tip"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/maze/pledge/PledgeMaze.html:70
+#: src/lessons/maze/pledge/PledgeMaze.html:71
 msgid ""
 "You should set your direction to your favorite one (NORTH is advised). Then, "
 "you should write the algorithm main loop. In other words, while your buggle "
@@ -9354,7 +9375,7 @@ msgid ""
 "     ...\n"
 "     state = 0;\n"
 "  case _ => println(\"This case should not happen. Please fix me\")\n"
-"}[/!][!java]int state=0;\n"
+"}[/!][!java|c]int state=0;\n"
 "switch (state) {\n"
 "  case 0: // North runner\n"
 "     ...\n"
@@ -9492,8 +9513,9 @@ msgid ""
 "path.  Basically the buggle has only to walk on each case with the lesser "
 "distance from the exit. You can use the method "
 "<code>setDirection(direction)</code> to make your buggle look at the "
-"specific direction such as <code>Direction.NORTH</code> or "
-"<code>Direction.EAST</code>."
+"specific direction such as "
+"<code>[!scala|java|python]Direction.[/!]NORTH</code> or "
+"<code>[!scala|java|python]Direction.[/!]EAST</code>."
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>

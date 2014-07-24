@@ -13,7 +13,7 @@ corps de la boucle.</p>
 
 <p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus
 pratique. Leur syntaxe est la suivante :</p> 
-<pre>[!java]for (<b>initialisation</b>; <b>condition</b>; <b>increment</b>) {
+<pre>[!java|c]for (<b>initialisation</b>; <b>condition</b>; <b>increment</b>) {
     <b>action</b>();
 }[/!][!python]for <b>variable</b> in <b>sequence de valeurs</b>:
     <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>premiereValeur</b> to <b>derniereValeur</b>) { 
@@ -23,8 +23,11 @@ pratique. Leur syntaxe est la suivante :</p>
 <p>Par exemple, pour répéter le corps de boucle <code>n</code> fois,
 [!python]il est pratique d'utiliser l'instruction <code>range(n)</code>
   pour générer la séquence de n entiers allant de 0 à n-1.[/!]
-[!java|scala]il faut écrire:[/!]</p>
+[!java|scala|c]il faut écrire:[/!]</p>
 <pre>[!java]for (int compteur=0; compteur&lt;n; compteur++) {
+    <b>action</b>();
+}[/!][!c]int compteur;
+for (compteur=0; compteur&lt;n; compteur++) {
     <b>action</b>();
 }[/!][!python]for <b>compteur</b> in <b>range(n)</b>:
     <b>action</b>()[/!][!scala] for (<b>compteur</b> &lt;- <b>1</b> to <b>10</b>) { 
@@ -32,7 +35,7 @@ pratique. Leur syntaxe est la suivante :</p>
 }[/!]</pre>
 
 <p>Ce code est parfaitement équivalent à celui-ci :</p>
-<pre>[!java]int compteur = 0;
+<pre>[!java|c]int compteur = 0;
 while (compteur &lt; n) {
     <b>action</b>();
     <b>compteur++</b>;
@@ -48,7 +51,7 @@ while (compteur &lt; n) {
 
 <p>Le code avec une boucle <code>for</code> est plus simple à lire, non?</p>
 
-[!java]
+[!java|c]
 <p>On peut imaginer des utilisations bien plus avancées des boucles
 <tt>for</tt> car toute instruction valide peut être utilisée comme
 initialisation, condition et incrémentation. L'exemple suivant est un peu

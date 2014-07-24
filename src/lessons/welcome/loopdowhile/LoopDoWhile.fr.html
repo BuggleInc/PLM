@@ -47,13 +47,14 @@ while premiereFois or (les autres conditions):
 même si les autres conditions impliqueraient le contraire. Une fois que le
 corps de boucle a été exécuté, <code>premiereFois</code> est mis à faux et
 n'influe plus jamais la décision d'entrer dans le corps de boucle.</p>
-[/!] [!java|scala]
+[/!] [!java|scala|c]
 <p>Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
 et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
 parfois que l'on veuille que le corps de la boucle soit évalué au moins une
 fois, même si la condition est initialement fausse. On utilise pour cela une
 variante de la boucle <tt>while</tt>, dont la syntaxe est la suivante en
-[!thelang].
+[!thelang].[!java|c]Ne pas oublier le point virgule (;) après la condition,
+c'est obligatoire.[/!]
 
 <pre>do {
     <b>action()</b>[!java];[/!]

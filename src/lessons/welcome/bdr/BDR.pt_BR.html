@@ -7,7 +7,7 @@ this game beloved of some students where the player has to move its feet on
 the carpet according to the instructions presented on the screen, and
 following the music. But before that, we have some details to study first.</p>
 
-[!java|scala]
+[!java|scala|c]
 <h3>Conditionals without curly braces</h3>
 <p>
 There is one detail we omitted about the conditional syntax: if a branch
@@ -32,7 +32,7 @@ instruction only.  But beware, this becomes dangerous if you chain the
           left();
 else
      right();
-forward();</pre>
+[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
 
 <p>In fact, it does not turn right when there is no baggle on the ground AND x
 equals 5, but when the buggle found a baggle on the ground and x equals
@@ -44,7 +44,7 @@ were moved to the right):</p>
             left();
         else
             right();
-forward();</pre>
+[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
 
 <p>The first lesson of this is that the indentation is very important to help
 humans understanding, even if it does not change the actual meaning of the
@@ -55,7 +55,7 @@ professor to read it (to grade it or to answer a question about it), or if
 you want to reuse your code later, or even if you need to debug your code
 yourself.</p> 
 
-<pre>if (isOverBaggle()) if (x == 5) left(); else right(); forward();</pre>
+<pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
 
 <p>The second lesson is that a <tt>else</tt> branch always connects to the
 closest <tt>if</tt>. This may be a bit troublesome in some case, and it may
@@ -74,7 +74,7 @@ to say, if it's raining a very hot July 4th, we don't want the buggle to get
 outside with an umbrella, some water and a flag, but simply with an
 umbrella. The following code is thus WRONG.</p>
 
-<pre>[!java|scala]if (rainy())
+<pre>[!scala|c|java]if (rainy())
     takeUmbrella();
 if (hot())
     takeWater();
@@ -92,7 +92,7 @@ risk that you go to the July 4th march on a rainy day. Instead, we should
 use something like this to ensure that once we found a true condition, we
 won't evaluate the next ones.</p>
 
-<pre>[!java|scala]if (rainy()) {
+<pre>[!java|scala|c]if (rainy()) {
     takeUmbrella();
 } else {
     if (hotDay()) {
@@ -113,14 +113,14 @@ else:
 
 
 <p>Unfortunately, such a cascade of conditionals is quite difficult to read. It
-is better to [!java|scala]omit the curly braces for the <tt>else</tt>
+is better to [!java|scala|c]omit the curly braces for the <tt>else</tt>
 statements. Some languages even introduce a specific construct for these
 <tt>else if</tt>, but not [!thelang].[/!] [!python]change the sub-blocks
 using the <code>elif</code> keyword to mark explicitly these "else if"
 branches.[/!]
 </p>
 
-<pre>[!java|scala]if (rainy()) { 
+<pre>[!c|java|scala]if (rainy()) { 
     takeUmbrella();
 } else if (hotDay()) {
     takeWater();
@@ -139,17 +139,18 @@ elif todayIsJuly4th():
 the four following methods:</p>
 
 <ul>
-  <li><code>[!java]boolean[/!] isOverMessage()[!scala]:Boolean[/!]</code>: returns
-<code>[!java|scala]true[/!][!python]True[/!]</code> if and only if there is
-a message on the ground.</li>
-  <li><code>[!java]String[/!] readMessage()[!scala]: String[/!]</code>: returns
-the message written on the ground (or an empty string if nothing is
-written).</li>
-  <li><code>[!java]void[/!] writeMessage([!java]String [/!]msg[!scala]:
-String[/!])</code>: writes the specified message down on the ground. If
-there is already a message on the ground, the new content is added at the
-end of the existing message.</li>
-  <li><code>[!java]void [/!]clearMessage()</code>: clears what is written on the
+  <li><code>[!c]int[/!][!java]boolean[/!]
+isOverMessage()[!scala]:Boolean[/!]</code>: returns
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> if and only if
+there is a message on the ground.</li>
+  <li><code>[!c]char*[/!][!java]String[/!] readMessage()[!scala]:
+String[/!]</code>: returns the message written on the ground (or an empty
+string if nothing is written).</li>
+  <li><code>[!java|c]void[/!] writeMessage([!c]char*[/!][!java]String
+[/!]msg[!scala]: String[/!])</code>: writes the specified message down on
+the ground. If there is already a message on the ground, the new content is
+added at the end of the existing message.</li>
+  <li><code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the
 ground.</li>
 </ul>
 
@@ -164,17 +165,17 @@ signification:
      <td>What to do</td>
      <td>Mnemonic</td></tr>
 
- <tr><td>[!java]'R'[/!][!scala|python]"R"[/!]</td><td>Turn right and move one step forward</td><td>Right</td></tr>
- <tr><td>[!java]'L'[/!][!scala|python]"L"[/!]</td><td>Turn left and move one step forward</td><td>Left</td></tr>
- <tr><td>[!java]'I'[/!][!scala|python]"I"[/!]</td><td>Turn back (U-turn) and move one step forward</td><td>Inverse</td></tr>
+ <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Turn right and move one step forward</td><td>Right</td></tr>
+ <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Turn left and move one step forward</td><td>Left</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Turn back (U-turn) and move one step forward</td><td>Inverse</td></tr>
 
- <tr><td>[!java]'A'[/!][!scala|python]"A"[/!]</td><td>Move one step forward</td><td>First letter of the alphabet</td></tr>
- <tr><td>[!java]'B'[/!][!scala|python]"B"[/!]</td><td>Move two steps forward</td><td>Second letter of the alphabet</td></tr>
- <tr><td>[!java]'C'[/!][!scala|python]"C"[/!]</td><td>Move three steps forward</td><td>Third letter of the alphabet</td></tr>
+ <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Move one step forward</td><td>First letter of the alphabet</td></tr>
+ <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Move two steps forward</td><td>Second letter of the alphabet</td></tr>
+ <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Move three steps forward</td><td>Third letter of the alphabet</td></tr>
 
- <tr><td>[!java]'Z'[/!][!scala|python]"Z"[/!]</td><td>Move one step backward</td><td>One letter before the end of the alphabet</td></tr>
- <tr><td>[!java]'Y'[/!][!scala|python]"Y"[/!]</td><td>Move two steps backward</td><td>Two letters before the end of the alphabet</td></tr>
- <tr><td>[!java]'X'[/!][!scala|python]"X"[/!]</td><td>Move three steps backward</td><td>Three letters before the end of the alphabet</td></tr>
+ <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Move one step backward</td><td>One letter before the end of the alphabet</td></tr>
+ <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Move two steps backward</td><td>Two letters before the end of the alphabet</td></tr>
+ <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Move three steps backward</td><td>Three letters before the end of the alphabet</td></tr>
  <tr><td><i>(anything else)</i></td><td>Stop dancing.</td><td></td></tr>
 </table>
 
@@ -187,18 +188,20 @@ to summarizing the information of the table in a sequence of conditionals.
 as long as we are not in cell which content is not described in the table.
 The easier for that is to use a boolean variable (<code>finished</code>)  as
 termination condition to a <code>while</code> loop.  It should be
-initialized to <code>[!java|scala]false[/!][!python]False[/!]</code>, and
-switched to <code>[!java|scala]true[/!][!python]True[/!]</code> as soon as
+initialized to
+<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, and switched
+to <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> as soon as
 the buggle find a cell with a value not described in the table.  Thus the
 loop, will stop and the program will terminate. </p>
 
-[!java]
+[!java|c]
 <p>Another subtlety is that detecting if strings are equals is a bit annoying
-in Java.  So, we use the <code>char getIndication()</code> instead of
-<code>String readMessage()</code>.  This method, only known by the buggles
-of this exercise, returns the first char of the message written on the
-ground (or ' ' -- the space char -- if nothing is written down). It enables
-to work with chars instead of strings, that is much simpler in Java.</p>
+in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</code>
+instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>.  This
+method, only known by the buggles of this exercise, returns the first char
+of the message written on the ground (or ' ' -- the space char -- if nothing
+is written down). It enables to work with chars instead of strings, that is
+much simpler in [!thelang].</p>
 [/!]
 
 <h3>Tips and Hints</h3>

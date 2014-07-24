@@ -14,23 +14,23 @@ méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui
 suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de
 la fonction comme s'il s'agissait de variables définies ici.</p>
 
-<pre>[!java]double [/!]diviseParDeux([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]
-     return x / 2[!java];[/!]
-[!scala|java]}[/!]</pre>
+<pre>[!java|c]double [/!]diviseParDeux([!java|c]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala|c]{[/!][!python]:[/!]
+     return x / 2[!java|c];[/!]
+[!scala|java|c]}[/!]</pre>
 
 <p>À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les
 parenthèses de l'appel.</p>
-<pre>[!java]double [/!][!scala]val [/!]resultat = diviseParDeux(3.14)[!java];[/!]</pre>
+<pre>[!java|c]double [/!][!scala]val [/!]resultat = diviseParDeux(3.14)[!java|c];[/!]</pre>
 
 <p>Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules,
 lors de la déclaration comme lors de l'appel.</p>
 
-<pre>[!java]double divise(double x, double y) {[/!]
+<pre>[!java|c]double divise(double x, double y) {[/!]
 [!scala]def divise(x:Double, y:Double): Double = {[/!]
 [!python]def divise(x, y):[/!]
-     return x / y[!java];[/!]
-[!java|scala]}[/!]</pre>
-<pre>[!java]double res = divise(3.14 , 1.5);[/!]
+     return x / y[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+<pre>[!java|c]double res = divise(3.14 , 1.5);[/!]
 [!scala]val res = divise(3.14 , 1.5)[/!]
 [!python]res = divise(3.14 , 1.5)[/!]</pre>
 
@@ -74,10 +74,11 @@ fonction.</p>
 
 <h3>Objectif de cet exercice</h3>
 <p>Cette fois, vous devez écrire une méthode
-<code>[!java]move(int nbPas,boolean versLAvant)[/!] [!scala]move(nbPas:
-Int,versLAvant: Boolean)[/!] [!python]move(nbPas,versLAvant)[/!] </code> qui
-se déplace de <code>nbPas</code> pas. Si <code>versLAvant</code> est vrai,
-il faut avancer de ce nombre de pas; dans le cas contraire, il faut reculer.</p>
+<code>[!java]move(int nbPas,[!java]boolean[/!][!c]int[/!] versLAvant)[/!]
+[!scala]move(nbPas: Int,versLAvant: Boolean)[/!]
+[!python]move(nbPas,versLAvant)[/!] </code> qui se déplace de
+<code>nbPas</code> pas. Si <code>versLAvant</code> est vrai, il faut avancer
+de ce nombre de pas; dans le cas contraire, il faut reculer.</p>
 
 <p>Cette fois, il y a un seul monde, et sept buggles, qui exécutent toutes le
 code que vous allez écrire.

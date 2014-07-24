@@ -2,43 +2,47 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Loops while (enquanto)</h2>
 		
-<p>In addition to conditionals, another handy construction is the ability to
-repeat an action while a specific condition does not appear. A while loop is
-used for that, with the following syntax.</p>
+<p>Além dos condicionais, outra construção bem útil é a habilidade de
+repetir uma ação enquanto uma condição específica  não acontece. Um
+loop 'while' é usado para isto, com a seguinte sintaxe.</p>
  
-<pre>[!java|scala]while (<b>condition</b>) {
+<pre>[!java|scala|c]while (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;
 }[/!][!python]while <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</pre>
 
-<p>The inner bloc is then executed again and again, as long as the condition
-remains true.  More specifically, the buggle tests the value of the
-condition. If it's false, it ignores the bloc and continue below.  If it's
-true, it executes the bloc.  After that, it tests the condition. If it's now
-false (for example because the moves of the block made us facing the wall),
-it now ignores the bloc and continue.  If it's still true, it execute the
-bloc and reevaluate the condition. It does so as long as the condition
-remains true.</p>
+<p>O bloco interno é então executado várias e várias vezes, enquanto a
+condição se mantiver verdadeira. Mais especificamente, o buggle testa
+o valor da condição. Se for falsa, ele ignora o bloco e continua
+abaixo. Se for verdadeira, ele executa o bloco. Depois disto, ele
+testa a condição. Se ela agora for falsa (por exemplo, por que os
+movimentos do bloco nos deixaram de cara pra parede), ele agora ignora
+o bloco e continua. Se ele ainda for verdadeiro, ele executa o bloco e
+reavalia a condição. Ele faz isto enquanto a condição se mantém
+verdadeira.</p>
 
-<p>Naturally, if the chosen action does not modify the value of the condition,
-the buggle will do the action endlessly. The <b>stop</b> button of the
-interface becomes then handy. To test this, you can try to type the
-following code in the editor:</p>
+<p>Naturalmente, se a ação escolhida não modifica o valor da condição, o
+buggle vai fazer a ação infinitamente. O botão <b>stop</b> na
+interface se torna útil nestes casos. Para testar isto, você pode
+tentar digitar o seguinte código no editor:</p>
 
 <pre>[!java|scala]while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;left();
+}[/!][!c]while (1) {
 &nbsp;&nbsp;&nbsp;&nbsp;left();
 }[/!][!python]while True:
 &nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</pre>
 
 <p>This will let the buggle turn left as long as
-<code>[!java|scala]true[/!][!python]True[/!]</code> remains true (ie,
-endlessly), or until you stop it manually using the stop button.</p>
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true
+(ie, endlessly), or until you stop it manually using the stop button.</p>
 
 <h3>Objetivo do exercício</h3>
-You now have to write some code so that your buggles move forward until they
-encounter a wall. The idea is thus to do something like:
+Agora você tem que escrever algum código para seus buggles se moverem
+para a frente até que eles encontrem uma parede. A ideia é então fazer
+algo assim:
 
 <pre>while we are not facing a wall, do:
 &nbsp;&nbsp;moveForward()</pre>
 
-<p>When your program works, move forward to the next exercise.</p>
+<p>Quando o seu programa funciona, vá para o próximo exercício.</p>

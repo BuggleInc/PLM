@@ -12,20 +12,20 @@ disque plus grand sur un disque plus petit.</p>
 
 <p>Seules quatre fonctions sont fournies&nbsp;:</p>
 
-<pre>[!java]void [/!]deplace([!java]int [/!]src, [!java]int [/!]dst)</pre>
+<pre>[!java|c]void [/!]deplace([!java|c]int [/!]src, [!java|c]int [/!]dst)</pre>
 
 Elle déplace un disque d'un piquet <code>src</code> vers le piquet
 <code>dst</code>. Si vous demandez un déplacement invalide (comme le
 placement d'un disque sur un disque plus petit), une exception
 IllegalArgumentException est levée. 
 
-<pre>[!java]int [/!]getTaillePiquet([!java]int [/!]slot)[!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getTaillePiquet([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
 Retourne le nombre de disques placés sur un piquet donné. Cette fonction est
 surtout utile pour initialiser la récursion et déterminer le nombre d'appels
 récursifs à réaliser.
 
-<pre>[!java]int [/!]getRayon([!java]int [/!]slot)[!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getRayon([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
 Retourne le rayon du disque placé en haut du piquet spécifié.
 
-<pre>[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]</pre>
 Renvoi si le monde actuel est sélectionné dans l'interface graphique.

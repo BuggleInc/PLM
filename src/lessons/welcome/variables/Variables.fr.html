@@ -36,7 +36,7 @@ On peut nommer une variable <code>dejaFait</code>, mais <code>deja
 fait</code> n'est pas un identificateur de variable valide.
   </p>
 
-[!java]
+[!c|java]
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
 écrira :</p> 
   <pre>int x;</pre>
@@ -63,7 +63,7 @@ souhaitez. Ainsi, pour une variable contenant 5 en valeur initiale, on peut
 écrire: </p>
   <pre>var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
 var y = 10       <span class="comment">// ou bien je peux l'omettre</span></pre>
-[/!] [!java|scala]
+[/!] [!java|scala|c]
 <p>Comme vous pouvez le voir, les variables sont <b>typées</b> en
 [!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une
 variable donnée ne peut stocker qu'un type de données spécifique. N'essayez
@@ -78,11 +78,12 @@ d'écrire du python, mais le typage empêche certaines erreurs de se glisser
 dans vos programmes.</p>
 <p>Voici quelque uns des types de données existants en [!thelang] :</p>
 <ul>
-  <li><b>[!java]int[/!][!scala]Int[/!]</b>, pour les entiers;</li>
-  <li><b>[!java]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;</li> 
-  <li><b>[!java]boolean[/!][!scala]Boolean[/!]</b>, pour les booléens,
-c'est-à-dire les variables dont la valeur est soit "vrai" soit "faux";</li>
-  <li><b>String</b>, pour les chaînes de caractères.</li>
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, pour les entiers;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, pour les booléens,
+c'est-à-dire les variables dont la valeur est soit
+"[!c]1[/!][!java|scala]vrai[/!]" soit "[!c]0[/!][!java|scala]faux[/!]";</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, pour les chaînes de caractères.</li>
 </ul>
 [/!] [!python]
 <p>Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en
@@ -91,7 +92,7 @@ données particulier. Il est tout à fait envisageable de stocker des nombres
 dans une variable, puis d'y mettre des lettres un peu plus tard. Les valeurs
 elles-mêmes ont bien entendu un type, mais pas les variables. On dit alors
 que python est un langage <b>dynamiquement typé</b>.</p>
-<p>D'autres langages (comme le Java ou le Scala) sont plus restrictifs et
+<p>D'autres langages (comme le Java, le Scala ou le C) sont plus restrictifs et
 imposent de spécialiser chaque variable pour un type donné (on dit que ce
 sont des langages <b>statiquement typés</b>). Cela semble bien plus
 contraignant à première vue, mais ce genre de restriction permet au
@@ -115,6 +116,11 @@ cas.</p>
 <p>C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
 
+<pre class="c">char* nom = "Martin Quinson";
+double taille=1.77; <span class="comment">// en mètres</span>
+boolean marie=1; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait 0</span></pre>
+
+
 <pre class="java">String nom = "Martin Quinson";
 double taille=1.77; <span class="comment">// en mètres</span>
 boolean marie=true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span></pre>
@@ -134,14 +140,14 @@ marie=True <span class="comment"># Signifie 'vrai'; le contraire (faux) serait m
 
 <p>Une fois que votre variable est déclarée, vous pouvez y <i>affecter</i> une
 nouvelle valeur plus tard dans votre programme. C'est vraiment très simple :</p> 
-<pre>x = 3[!java];[/!]</pre>
+<pre>x = 3[!java|c];[/!]</pre>
 
 <p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
 contenir des constantes, des variables et des opérations :</p>
 
-<pre>x = 3 + 2[!java];[/!]
-x = 3 * x[!java];[/!]
-greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)</span></pre> 
+<pre>x = 3 + 2[!java|c];[/!]
+x = 3 * x[!java|c];[/!]
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)[/!]</span></pre> 
 
 <h3>Objectif de cet exercice</h3>
 Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif
@@ -164,7 +170,7 @@ cela utiliser une variable, que l'on peut nommer <code>nbPas</code>.</p>
 
 <p>On crée cette variable (de type <code>int</code>) avant l'étape 1, on
 l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
-(<code>nbPas = nbPas + 1;</code>[!java] ou <code>nbPas++;</code>, les deux
+(<code>nbPas = nbPas + 1;</code>[!java|c] ou <code>nbPas++;</code>, les deux
 écritures sont équivalentes[/!]).</p>
   
 [!python|scala]

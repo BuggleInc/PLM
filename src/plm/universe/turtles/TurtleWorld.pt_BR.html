@@ -1,98 +1,98 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h1>The universe of turtles</h1>
+<h1>O universo das tartarugas</h1>
 
 <p>This is an adaptation of LOGO for the Programmer's Learning Machine.</p>
 
-<p>It is directly inspired from the work of the mathematician Seymour Papert in
-the 60's. Inspired from the swiss psycholog Jean Piaget, he came up with a
-learning method called LOGO to teach programming to young childs. The world
-is full of turtles which leave a painting where they go and which respond to
-simple orders.</p>
+<p>É diretamente inspirado no trabalho do matemático Seymour Papert nos
+anos 60. Inspirado no psicólogo suíço Jean Piaget, ele apresentou um
+método de ensino chamado LOGO para ensinar programação para crianças
+pequenas. O mundo é cheio de tartarugas que deixam um rastro de tinta
+por onde passam e que obedecem a comandos simples.</p>
 
-<h2>Functions to move the turtle</h2>
+<h2>Funções para mover a tartaruga</h2>
 
-<pre>[!java]void [/!]avançar([!java]double [/!]passos[!scala]:Double[/!])
-[!java]void [/!]recuar([!java]double [/!]passos[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])
+[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])</pre>
 Move para frente e para trás na quantidade de passos pedidos.
 
-<pre>[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])
-[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])</pre>
-Turns left or right of the given angle (in degrees).
+<pre>[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])
+[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+Vira à esquerda ou à direita um dado ângulo (em graus).
 
-<pre>[!java]double [/!]getX()[!scala]:Double[/!]
-[!java]double [/!]getY()[!scala]:Double[/!]</pre>
-Returns the current position of the turtle.
+<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+Retorna a posição atual da tartaruga.
 
-<pre>[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])
-[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])
-[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</pre>
-Teleports the turtle to a new position (without leaving any trace).
+<pre>[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
+[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])
+[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+Teletransporta a tartaruga para uma nova posição (sem deixar rastros).
 
-<pre>[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</pre>
-Moves the turtle to a new position.
+<pre>[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+Move a tartaruga para uma nova posição.
 
-<pre>[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])</pre>
-Draw a circle of the specified radius centered on the turtle.
+<pre>[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])</pre>
+Desenha um círculo de raio especificado com o centro na tartaruga.
 
-<pre>[!java]void [/!]hide()</pre>
-Hides the turtle.
+<pre>[!java|c]void [/!]hide()</pre>
+Esconde a tartaruga.
 
-<pre>[!java]void [/!]show()</pre>
-Shows the turtle back.
+<pre>[!java|c]void [/!]show()</pre>
+Mostra novamente a tartaruga.
 
-<pre>[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]</pre>
-Returns whether the turtle is currently visible.
+<pre>[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]</pre>
+Retorna se a tartaruga é visível ou não.
 
-<pre>[!java]void [/!]clear()</pre>
-Removes any trail on the sheet.
+<pre>[!java|c]void [/!]clear()</pre>
+Remove todas as trilhas do papel.
 
-<pre>[!java]double [/!]getHeading()[!scala]:Double[/!]</pre>
-Returns the current heading of the turtle (in degrees).
+<pre>[!java|c]double [/!]getHeading()[!scala]:Double[/!]</pre>
+Retorna a direção atual da tartaruga (em graus).
 
-<pre>[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])</pre>
-Sets a new heading to the turtle (in degrees).
+<pre>[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+Ajusta uma nova direção para a tartaruga (em graus).
 
-<h2>Functions about the pen</h2>
+<h2>Funções da caneta</h2>
 
-<pre>[!java]void [/!]penUp()</pre>
+<pre>[!java|c]void [/!]penUp()</pre>
 Levanta a caneta (tartarugas têm canetas, não pinceis, como os
 buggles). A tartaruga não vai  deixar nenhum rastro durante seus
 passos seguintes.
 
-<pre>[!java]void [/!]penDown()</pre>
-Moves the pen down. The turtle will leave a trace during its subsequent
-moves.
+<pre>[!java|c]void [/!]penDown()</pre>
+Abaixa a caneta. A tartaruga vai deixar um rastro nos próximos
+movimentos.
 
-<pre>[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]</pre>
-Returns the current pen position as a boolean.
+<pre>[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]</pre>
+Retorna a posição atual da caneta como um booleano.
 
-<pre>[!java]Color [/!]getColor()[!scala]:Color[/!]</pre>
-Returns the current pen color.
+<pre>[!java|c]Color [/!]getColor()[!scala]:Color[/!]</pre>
+Retorna a cor atual da caneta.
 
-<pre>[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])</pre>
-Changes the pen color.
+<pre>[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])</pre>
+Muda a cor da caneta.
 
-<h2>Other functions</h2>
+<h2>Outras funções</h2>
 
-<pre>[!java]boolean [/!]selecionado()[!scala]:Boolean[/!]</pre>
-Returns whether the current turtle is selected in the graphical interface.
+<pre>[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</pre>
+Retorna se a tartaruga atual está selecionada na interface gráfica.
 
 <h2>Cores válidas</h2>
 <table border=1>
 <tr><td>Nome</td><td>Cor</td></tr>
-<tr><td>Color.black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
-<tr><td>Color.blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
-<tr><td>Color.cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
-<tr><td>Color.darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
-<tr><td>Color.gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
-<tr><td>Color.green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
-<tr><td>Color.lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
-<tr><td>Color.magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
-<tr><td>Color.orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
-<tr><td>Color.pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
-<tr><td>Color.red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
-<tr><td>Color.white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
-<tr><td>Color.yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
 </table>
 

@@ -2,7 +2,8 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>L'univers des tortues</h1>
 
-<p>Cet univers est une adaptation de LOGO pour la Java Learning Machine.</p>
+<p>Cet univers est une adaptation de LOGO pour la Programmer's Learning
+Machine.</p>
 
 <p>Il est directement inspiré des travaux du mathématicien Seymour Papert dans
 les années 60. Inspiré par le psychologue suisse Jean Piaget, il a inventé
@@ -12,87 +13,87 @@ là où elles marchent et à qui on peut donner des ordres simples.</p>
 
 <h2>Fonctions pour déplacer la tortue</h2>
 
-<pre>[!java]void [/!]avance([!java]double [/!]nbPas[!scala]:Double[/!])
-[!java]void [/!]recule([!java]double [/!]nbPas[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]avance([!java|c]double [/!]nbPas[!scala]:Double[/!])
+[!java|c]void [/!]recule([!java|c]double [/!]nbPas[!scala]:Double[/!])</pre>
 Avance ou recule du nombre de pas demandé.
 
-<pre>[!java]void [/!]droite([!java]double [/!]angle[!scala]:Double[/!])
-[!java]void [/!]gauche([!java]double [/!]angle[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]droite([!java|c]double [/!]angle[!scala]:Double[/!])
+[!java|c]void [/!]gauche([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
 Tourne à gauche ou à droite de l'angle indiqué (en degrés).
 
-<pre>[!java]double [/!]getX()[!scala]:Double[/!]
-[!java]double [/!]getY()[!scala]:Double[/!]</pre>
+<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
 Retourne la position actuelle de la tortue.
 
-<pre>[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])
-[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])
-[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
+[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])
+[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
 Téléporte la tortue à une nouvelle position (sans laisser de trace).
 
-<pre>[!java]void [/!]allerVers([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]allerVers([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
 Déplace la tortue à une nouvelle position.
 
-<pre>[!java]void [/!]cercle([!java]double [/!]rayon[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]cercle([!java|c]double [/!]rayon[!scala]:Double[/!])</pre>
 Dessine un cercle du rayon demandé et centré sur la tortue.
 
-<pre>[!java]void [/!]cache()</pre>
+<pre>[!java|c]void [/!]cache()</pre>
 Cache la tortue.
 
-<pre>[!java]void [/!]montre()</pre>
+<pre>[!java|c]void [/!]montre()</pre>
 Montre la tortue.
 
-<pre>[!java]boolean [/!]estVisible()[!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]estVisible()[!scala]:Boolean[/!]</pre>
 Renvoie vrai si la tortue est actuellement visible.
 
-<pre>[!java]void [/!]efface()</pre>
+<pre>[!java|c]void [/!]efface()</pre>
 Efface toutes les traces de la feuille.
 
-<pre>[!java]double [/!]getCap()[!scala]:Double[/!]</pre>
+<pre>[!java|c]double [/!]getCap()[!scala]:Double[/!]</pre>
 Retourne le cap actuel de la tortue (en degrés).
 
-<pre>[!java]void [/!]setCap([!java]double [/!]angle[!scala]:Double[/!])</pre>
+<pre>[!java|c]void [/!]setCap([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
 Change le cap de la tortue à l'angle indiqué (en degrés).
 
 <h2>Fonctions à propos du stylo</h2>
 
-<pre>[!java]void [/!]leveCrayon()</pre>
+<pre>[!java|c]void [/!]leveCrayon()</pre>
 Remonte le crayon de la tortue (les tortues ont des crayons, pas des brosses
 comme les buggles). La tortue ne laissera plus de trace lors de ses
 déplacements suivants.
 
-<pre>[!java]void [/!]baisseCrayon()</pre>
+<pre>[!java|c]void [/!]baisseCrayon()</pre>
 Descend le stylo. La tortue laissera une trace lors de ses prochains
 déplacements.
 
-<pre>[!java]boolean [/!]estCrayonBaisse()[!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]estCrayonBaisse()[!scala]:Boolean[/!]</pre>
 Retourne si le stylo est actuellement baissé ou non.
 
-<pre>[!java]Color [/!]getCouleur()[!scala]:Color[/!]</pre>
+<pre>[!java|c]Color [/!]getCouleur()[!scala]:Color[/!]</pre>
 Retourne la couleur actuelle du stylo.
 
-<pre>[!java]void [/!]setCouleur([!java]Color [/!]couleur[!scala]:Color[/!])</pre>
+<pre>[!java|c]void [/!]setCouleur([!java|c]Color [/!]couleur[!scala]:Color[/!])</pre>
 Modifier la couleur du stylo.
 
 <h2>Autres fonctions</h2>
 
-<pre>[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]</pre>
 Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique.
 
 <h2>Couleurs valides</h2>
 <table border=1>
 <tr><td>Nom</td><td>Couleur</td></tr>
-<tr><td>Color.black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
-<tr><td>Color.blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
-<tr><td>Color.cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
-<tr><td>Color.darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
-<tr><td>Color.gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
-<tr><td>Color.green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
-<tr><td>Color.lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
-<tr><td>Color.magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
-<tr><td>Color.orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
-<tr><td>Color.pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
-<tr><td>Color.red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
-<tr><td>Color.white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
-<tr><td>Color.yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
 </table>
 

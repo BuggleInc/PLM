@@ -11,7 +11,7 @@ incrementing this variable until it became equal to <code>stepAmount</code>.</p>
 
 <p>In such situations, <code>for</code> loops become handy. Their syntax is the
 following:</p> 
-<pre>[!java]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
+<pre>[!java|c]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
     <b>action</b>();
 }[/!][!python]for <b>variable</b> in <b>sequence of values</b>:
     <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>firstValue</b> to <b>lastValue</b>) { 
@@ -20,8 +20,11 @@ following:</p>
 
 <p>For example to repeat the loop body <code>n</code> times, [!python] it is
 handy to use the instruction <code>range(n)</code> to generate the sequence
-n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]</p>
+n integer value from 0 to n-1.[/!] [!java|scala|c] one should write:[/!]</p>
 <pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
+}[/!][!c]int stepper;
+for (stepper=0; stepper&lt;n; stepper++) {
     <b>action</b>();
 }[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
     <b>action</b>()[/!][!scala] for (<b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
@@ -29,7 +32,7 @@ n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]</p>
 }[/!]</pre>
 
 <p>This code is then perfectly equivalent to the following one.</p>
-<pre>[!java]int stepper = 0;
+<pre>[!java|c]int stepper = 0;
 while (stepper &lt; n) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
 &nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
@@ -45,7 +48,7 @@ while (stepper &lt;= n) {
 
 <p>The <code>for</code> loop is easier to read, don't you think?</p>
 
-[!java]
+[!java|c]
 <p>It is possible to build more advanced <tt>for</tt> loops since any valid
 instruction can be used as initialization, condition and incrementing
 instruction. The following example is a bit extreme as there is no need for

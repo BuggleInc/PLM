@@ -1,44 +1,48 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Armazenando e manipulando dados</h2>
-  <p>The programs we wrote so far are missing a fundamental point in computing.
-Actually, it is all about processing <b>data</b> through specific
-<b>instructions</b>. In the buggle world, the main data are a bit hidden
-behind the graphical representation, but that's no reason to never
-manipulate some data explicitly. </p>
+  <p>Os programas que escrevemos até agora não tem um ponto fundamental da
+computação. Na verdade, é sobre processar <b>dados</b> através de
+<b>instruções</b> específicas. No mundo dos buggles, os dados
+principais estão escondidos atrás de uma representação gráfica, mas
+isto não é motivo para nunca manipular alguns dados explicitamente. </p>
 
-  <h3>Data in [!thelang]</h3>
-<p>In a program, you can use several <i>types</i> of data, such as integers or
-strings of chars. If you want to use a data several times, you need to store
-it within a <i>variable</i>, which is a memory cell containing a value: you
-put your data (say the value '5') in the variable (say 'length'), and you
-can retrieve it latter when you need it. That's very similar to a box of
-label 'gift' in which you would put some stuff, like a bottle of perfume
-"Channel N°5".  </p>
+  <h3>Dados em [!thelang]</h3>
+<p>Num programas, você pode usar vários <i>tipos</i> de dados, tais como
+números inteiros ou cadeias de caracteres ou caracteres. Se você
+quiser usar um dado várias vezes, você precisa armazenar ele numa
+<i>variável</i>, que é uma célula de memória contendo um valor: você
+bota seu dado (digamos o valor '5') na variável (digamos
+'comprimento'), e você pode recuperá-la mais tarde quando precisar
+dela. Isto é muito similar a uma caixa com o rótulo 'presente' na qual
+você pode colocar alguma coisa, como um perfume "Channel N°5".  </p>
 
-<h3>Variable declarations</h3>  
+<h3>Declaração de variáveis</h3>  
 
-<p><b>Declaring</b> (ie, creating) a variable in [!thelang], is very
-simple. You just need to write [!java]its type, a space, and the variable
-name.[/!] [!scala]the <code>var</code> keyword, the variable name, a column
-(:) and the variable type an equal sign (=) and an initial value.[/!]
-[!python]the variable name, an equal sign (=) and an initial value.[/!] The
-variable name is the label to retrieve it afterward[!python].[/!]
-[!java|scala] while the type is the kind of data that this variable accepts
-to store.[/!] It is forbidden to use spaces in variable names. You can name
-a variable <code>stepAmount</code> if you want, but <code>step amount</code>
-is not a valid name.
+<p><b>Declarar</b> (ie, criar) uma variável em [!thelang], é muito
+simples. Você simplesmente escreve [!java]seu tipo, um espaço, e o
+nome da variável.[/!] [!scala]a palavra-chave <code>var</code>, o nome
+da variável, um dois-pontos (:) e o tipo da variável, um sinal de
+igualdade (=) e um valor inicial.[/!] [!python]o nome da variável, um
+sinal de igual (=) e um valor inicial.[/!] O nome da variável é o
+rótulo para recuperar ela depois[!python].[/!] [!java|scala] enquanto
+o tipo é o tipo de dado que a variável aceita guardar.[/!] É proibido
+usar espaços em nomes de variáveis. Você pode nomear uma variável
+<code>quantidadeDePassos</code> se você quiser, mas <code>quantidade
+de passos</code> não é um nome válidos.
   </p>
 
-[!java]
-  <p>So, to create a variable named <b>x</b> intended to contain integers, one
-should write:</p> 
+[!c|java]
+  <p>Então, para criar uma variável chamada <b>x</b> para guardar inteiros,
+você deve escrever:</p> 
   <pre>int x;</pre>
-  <p>If you want, you can specify the initial value of the variable by adding an
-equal sign (=) followed by the value after the declaration.</p>
+  <p>Se você quiser, pode especificar o valor inicial da variável
+adicionando um símbolo de igual (=) seguido do valor depois da
+declaração.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
-  <p>So you want that the variable contains 5 as initial value, you should type: </p>
+  <p>Então se você quiser que a variável tenha o valor inicial de 5, você
+deve digitar: </p>
   <pre>x = 5</pre>
 [/!] [!scala]
   <p>So, to create a variable named <b>x</b> intended to contain integers with 42
@@ -52,27 +56,29 @@ initialization, such as the very particular value <code>null</code>, which
 type happens to be ambiguous. Even when the type is clear, you can still
 specify it if you prefer.  So you want that the variable contains 5 as
 initial value, you should type: </p>
-  <pre>var x: Int =  5 <span class="comment">// I can define the type if I want to</span>
-var y =  10      <span class="comment">// or I can omit the type if I prefer</span></pre>
-[/!] [!java|scala]
-<p>As you can see, the variables are <b>typed</b> in [!thelang], which means
-that they are somehow specialized: A given variable can only store data of a
-given type; Don't even think of storing numbers in a variable that is
-tailored for letters! The [!thelang] language is said to be <b>statically
-typed</b>.</p>
-<p>Other languages (such as Python) are less picky and allow you to store any
-kind of data in any variable, without restriction (those languages are said
-to be <b>dynamically typed</b>).  This seems easier at the first glance, but
-this kind of restriction allows the compiler to catch more logic errors for
-you, which is also good. In some sense, Python is easier to write but errors
-can sneak in more easily than in [!thelang].</p>
-<p>Here are some existing types in [!thelang]:</p>
+  <pre>var x: Int =  5 <span class="comment">// Eu posso definir o tipo se eu quiser</span>
+var y =  10      <span class="comment">// ou posso omitir o tipo se eu preferir</span></pre>
+[/!] [!java|scala|c]
+<p>Como você pode ver, as variáveis são <b>tipadas</b> em [!thelang], que
+significa que elas são de certa forma especializadas: Uma dada
+variável pode armazenar apenas dados de um tipo; nem pense em guardar
+números em uma variável que é feita para letras! Dizemos que a
+linguagem [!thelang] é <b>estaticamente tipada</b>.</p>
+<p>Outras linguages (como Python) são menos charas e permitem que você
+guarde qualquer tipo de dado em qualquer variável, sem restrições
+(estas linguagens são ditas <b>dinamicamente tipadas</b>). Parecem
+mais fáceis à primeira vista, mas este tipo de restrição permite que o
+compilador perceba mais erros de lógica para você, o que é bom. Num
+certo sentido, Python é mais fácil de escrever mas os erros surgem com
+mais frequencia do que em [!thelang].</p>
+<p>Aqui estão alguns dos tipos em [!thelang]:</p>
 <ul>
-  <li><b>[!java]int[/!][!scala]Int[/!]</b>, for integers;</li>
-  <li><b>[!java]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
-  <li><b>[!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that are values
-being either true or false;</li>
-  <li><b>String</b>, for char strings.</li>
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, for integers;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that
+are values being either [!c]1[/!][!java|scala]true[/!] or
+[!c]0[/!][!java|scala]false[/!];</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, for char strings.</li>
 </ul>
 [/!] [!python]
 <p>As you can see, the variables are not <b>typed</b> in Python, which means
@@ -81,8 +87,8 @@ any type of data of a given type: you can store a number in a variable and
 latter on store a number in the same variable.  The values themselves are
 still typed, but not the variable. Python is said to be <b>dynamically
 typed</b>.</p>
-<p>Other languages (such as Java or Scala) are much more picky and prevent you
-to mix data types in a given variable (they are said to be <b>statically
+<p>Other languages (such as Java, Scala or C) are much more picky and prevent
+you to mix data types in a given variable (they are said to be <b>statically
 typed</b>).  This seems annoying at the first glance, but this kind of
 restriction allows the compiler to catch more logic errors for you, which is
 also good. In some sense, Python is easier to write but errors can sneak in
@@ -100,6 +106,11 @@ cases.</p>
 
 <p>Variables work very similarly for strings, floating point numbers and
 boolean values.</p>
+
+<pre class="c">char* name = "Martin Quinson";
+double height=1.77; <span class="comment">// in meters</span>
+int married=1;<span class="comment">// 1 means "true"; "false" would be written 0</span></pre>
+
 
 <pre class="java">String name = "Martin Quinson";
 double height=1.77; <span class="comment">// in meters</span>
@@ -120,14 +131,14 @@ married=True <span class="comment"># the contrary would be written "False"</span
 
 <p>Once your variable is declared, you can <b>affect</b> a new value to it
 later in the program. That's really easy:</p> 
-<pre>x = 3[!java];[/!]</pre>
+<pre>x = 3[!java|c];[/!]</pre>
 
 <p>To the right of the equal symbol, you can put an arithmetic expression
 containing constants, variables and operations.</p>
 
-<pre>x = 3 + 2[!java];[/!]
-x = 3 * x[!java];[/!]
-greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings</span></pre> 
+<pre>x = 3 + 2[!java|c];[/!]
+x = 3 * x[!java|c];[/!]
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></pre> 
 
 <h3>Objetivo do exercício</h3>
 It is now time to do more challenging exercises, don't you think? The
@@ -150,7 +161,7 @@ use a variable for that, which can be named <code>stepAmount</code>.</p>
 
 <p>Create an integer variable before phase 1, initialize it to 0, and each time
 you move one step forward, increment its value by one (<code>stepAmount =
-stepAmount + 1;</code>[!java] or <code>stepAmount++;</code>, both syntaxes
+stepAmount + 1;</code>[!java|c] or <code>stepAmount++;</code>, both syntaxes
 being equivalent[/!]).  Such variable which takes every values of a given
 range is often called a <b>stepper</b>.</p>
   

@@ -13,23 +13,23 @@ to specify their type and name between the parenthesis after the method
 name. Then, you can use them in the method body as if it were variables
 defined in there, and which initial value is what the caller specified.</p>
 
-<pre>[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]
-     return x / 2[!java];[/!]
-[!scala|java]}[/!]</pre>
+<pre>[!java|c]double [/!]divideByTwo([!java|c]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala|c]{[/!][!python]:[/!]
+     return x / 2[!java|c];[/!]
+[!scala|java|c]}[/!]</pre>
 
 <p>As caller, you have to specify the initial value of this "variables" between
 the call's parenthesis.</p>
-<pre>[!java]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java];[/!]</pre>
+<pre>[!java|c]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java|c];[/!]</pre>
 
 <p>If you want several parameters, you need to separate them with comas (,)
 both in the declaration and calls.</p>
 
-<pre>[!java]double divide(double x, double y) {[/!]
+<pre>[!java|c]double divide(double x, double y) {[/!]
 [!scala]def divide(x:Double, y:Double): Double = {[/!]
 [!python]def divide(x, y):[/!]
-     return x / y[!java];[/!]
-[!java|scala]}[/!]</pre>
-<pre>[!java]double res = divide(3.14 , 1.5);[/!]
+     return x / y[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+<pre>[!java|c]double res = divide(3.14 , 1.5);[/!]
 [!scala]val res = divide(3.14 , 1.5)[/!]
 [!python]res = divide(3.14 , 1.5)[/!]</pre>
 
@@ -71,11 +71,12 @@ would have stopped the execution.</p>
 
 
 <h3>Objetivo do exercício</h3>
-<p>This time, you have to write a <code> [!java]move(int stepCount,boolean
-forward)[/!] [!scala]move(stepCount: Int,forward: Boolean)[/!]
-[!python]move(stepCount,forward)[/!] </code> method which moves forward by
-<code>stepCount</code> steps if <code>forward</code> is true, and moves back
-of that amount of steps if the boolean is false.</p>
+<p>This time, you have to write a <code> [!java|c]move(int
+stepCount,[!java]boolean[/!][!c]int[/!] forward)[/!] [!scala]move(stepCount:
+Int,forward: Boolean)[/!] [!python]move(stepCount,forward)[/!] </code>
+method which moves forward by <code>stepCount</code> steps if
+<code>forward</code> is true, and moves back of that amount of steps if the
+boolean is false.</p>
 
 <p>This time, there is only one world but seven buggles, all sharing the same
 code.  This code should not be really problematic for you to write,

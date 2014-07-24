@@ -10,13 +10,13 @@ comme <i>S'il pleut, prend un parapluie</i>.
 
 <p>La syntaxe en [!thelang] est la suivante :</p>
 
-<pre>[!java|scala]if (<b>condition</b>) {
+<pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie();</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie();</b>
 }[/!][!python]if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie()</b>[/!]
-<b>aFaireDansTousLesCas()[!java];[/!]</b></pre>
+<b>aFaireDansTousLesCas()[!java|c];[/!]</b></pre>
 
 <p>Le mot <code>if</code> signifie «si» en anglais. Si la condition est vraie,
 alors le code du bloc suivant sera exécuté, puis l'exécution se poursuivra
@@ -36,10 +36,10 @@ vraie ou fausse.
 [!java|scala]délimités par des accolades : le symbole { commence un bloc
 tandis
 que le symbole } le ferme.  Les caractères blancs ne sont pas pris en
-compte[/!][!java].[/!][!scala], tant que les instructions restent séparées
+compte[/!][!java|c].[/!][!scala], tant que les instructions restent séparées
 soit par des points-virgules, soit par des retour à la ligne.[/!]
-[!java|scala]Il reste très important d'indenter correctement votre code pour
-qu'il reste lisible.[/!]
+[!java|scala|c]Il reste très important d'indenter correctement votre code
+pour qu'il reste lisible.[/!]
 [!python]marqués par l'indentation : toutes les lignes indentés (=décalées
 vers la droite par des espaces) font partie du bloc. Il est assez courant
 d'utiliser quatre espaces pour indenter le code, mais cela fonctionne quel
@@ -73,11 +73,11 @@ sont incorrects et vont générer des erreurs.</p>
 </pre>
 
 <p>La condition doit être une expression de type
-<code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> (expression
-booléenne).  Le sous-bloc sera exécuté seulement si cette expression vaut
-<code>[!java|scala]true[/!][!python]True[/!]</code> (vrai), et il sera
-ignoré si sa valeur est
-<code>[!java|scala]false[/!][!python]False[/!]</code> (faux).
+<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
+(expression booléenne).  Le sous-bloc sera exécuté seulement si cette
+expression vaut <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code>
+(vrai), et il sera ignoré si sa valeur est
+<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code> (faux).
 <code>[!java|scala]true[/!][!python]True[/!]</code> et
 <code>[!java|scala]false[/!][!python]False[/!]</code> sont des constantes
 définies directement par [!thelang], tout comme 0 ou 1 en mathématiques.</p>
@@ -91,7 +91,7 @@ membre gauche a une valeur différente du membre droit), <b>&lt;</b>
 à), <b>&gt;=</b> (supérieur ou égal à).</p>
 
 <p>Attention au piège classique, qui consiste à tester l'égalité d'une variable
-avec = au lieu de ==. Heureusement, [!java|scala]le
+avec = au lieu de ==. Heureusement, [!java|scala|c]le
 compilateur[/!][!python]l'interpréteur[/!] détecte le plus souvent ce
 problème et vous le signale, mais pas tout le temps. Si la variable est de
 type booléen, il peut se faire prendre au piège, et il convient donc d'être
@@ -99,21 +99,22 @@ attentif...</p>
 
 <p>La condition peut également être un appel à certaines méthodes
 particulières, dont le résultat est un booléen. Par exemple, la méthode
-<tt>estFaceMur()</tt> de la buggle renvoie vrai si la buggle est face à un
-mur, et faux sinon.</p>
+<tt>estFaceMur()</tt> de la buggle renvoie
+[!c]1[/!][!java|python|scala]vrai[/!] si la buggle est face à un mur, et
+faux sinon.</p>
 
 <p>Enfin, il est possible de construire une condition composée de plusieurs
 sous-conditions reliées par des opérations booléennes:</p>
 <ul>
-  <li><code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> est vraie si
+  <li><code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> est vraie si
 <tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (d'ailleurs, si
 <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée puisqu'on
 sait déjà que la conjonction des deux propositions ne peut pas être vraie).</li> 
-  <li><code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> est vraie si
+  <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> est vraie si
 <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si
 <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on
 sait déjà que la disjonction des deux propositions est vraie).</li>
-  <li><code>[!java|scala]![/!][!python]not [/!]cond</code> est vraie si
+  <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> est vraie si
 <tt>cond</tt> ne l'est pas.</li>
   <li>Quand les expressions deviennent compliquées, il est préférable d'ajouter
 quelques parenthèses pour lever toute ambiguïté sur l'ordre
@@ -126,7 +127,7 @@ condition est fausse, en utilisant la syntaxe suivante («else» signifie
 «sinon» en anglais). Dans ce cas, l'instruction
 <code>aFaireSiLaConditionEstFausse()</code> ne sera exécutée que si la
 condition est fausse.</p>
- <pre>[!java|scala]if (<b>condition</b>) {
+ <pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse();</b>

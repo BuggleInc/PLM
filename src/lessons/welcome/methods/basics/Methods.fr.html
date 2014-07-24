@@ -15,20 +15,20 @@ soit répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans
 les deux cas, il faut que vous évitiez de dupliquer votre code pour qu'il
 reste simple et lisible. Il serait mieux que la buggle comprenne un ordre de
 type <code>vaChercher()</code> tout comme elle comprend un
-<code>avance()</code>.</p>
+<code>[!c]avancePas()[/!][!scala|java|python]avance()[/!]()</code>.</p>
 
 <h3>Définir des méthodes</h3>
 
 <p>La syntaxe [!thelang] pour écrire une méthode simple nommée
 <code>vaChercher</code> est la suivante:</p>
-<pre>[!java]void vaChercher() {[/!][!python]def vaChercher():[/!][!scala]def vaChercher() {[/!]
-  actions()[!java];[/!]
-  encoreDesActions()[!java];[/!]
-  dautresTrucs()[!java];[/!]
-[!java|scala]}[/!]</pre>
+<pre>[!java|c]void vaChercher() {[/!][!python]def vaChercher():[/!][!scala]def vaChercher() {[/!]
+  actions()[!java|c];[/!]
+  encoreDesActions()[!java|c];[/!]
+  dautresTrucs()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
 
 <p>Le corps de la méthode
-[!java|scala](c'est-à-dire le bloc entre accolades)[/!]
+[!java|scala|c](c'est-à-dire le bloc entre accolades)[/!]
 [!python](c'est-à-dire le bloc indenté)[/!]
 sera exécuté à chaque appel de cette méthode (c'est-à-dire à chaque fois que
 nous écrirons <code>vaChercher()</code> quelque part dans notre code).
@@ -69,19 +69,19 @@ La première ligne devrait décrire brièvement la méthode tandis que le reste
 de la documentation devrait donner tous les points importants de la méthode.</p>
 
 <pre>[!java|scala]/**
- *  Avance, récupère le biscuit, et le ramène à la position d'origine
+ *  Go, retrieves the baggle in front of the buggle, and brings it back 
  *
- *  Ne vérifie pas la présence de mur; à ne pas l'utiliser en cas de risques de mur.
+ *   Does not check for walls, so be careful to not call it when walls are present.
  */[/!]
 [!java]void goAndGet() {[/!]
 [!scala]def goAndGet() {[/!]
 [!python]def goAndGet():
-  """Avance, récupère le biscuit, et le ramène à la position d'origine
+  """Go, retrieves the baggle in front of the buggle, and brings it back.
 
-  Ne vérifie pas la présence de mur; à ne pas l'utiliser en cas de risques de mur."""[/!]
+  Does not check for walls, so be careful to not call it when walls are present."""[/!]
   actions()[!java];[/!]
-  a()[!java];[/!]
-  faire()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
 [!java|scala]}[/!]</pre>
 
 <h3>Conventions de nommage</h3>
