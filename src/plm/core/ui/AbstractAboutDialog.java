@@ -7,11 +7,10 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
+import net.miginfocom.swing.MigLayout;
 import plm.core.GameListener;
 import plm.core.model.Game;
-import plm.core.model.lesson.Lecture;
 import plm.universe.World;
-import net.miginfocom.swing.MigLayout;
 
 public abstract class AbstractAboutDialog extends JFrame implements GameListener {
 

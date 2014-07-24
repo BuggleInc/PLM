@@ -48,7 +48,7 @@ public class GitUtils {
 			git.checkout().setName("master").call();
 */
 
-			// create the branch of the current user if it's not already there
+			// create a branch for the current user if it's not already there
 			if (git.getRepository().getRef(userBranch) == null) {
 				try { 
 					// consider there is a remote branch but not a local one

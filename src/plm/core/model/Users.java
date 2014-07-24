@@ -66,16 +66,13 @@ public class Users {
 	public User getCurrentUser() {
 		for (User user : usersList) {
 			if (user.isLastUsed()) {
-				// System.err.println("Last user found: " + user);
 				return user;
 			}
 		}
 
-		// everytime we set something on an existing user, we should update the
-		// plm.users file, as there is no other way to update it yet (there is
-		// no listener for when the plm exits)
+		// In theory, we should save the file to remember that this was the lastly used user
+		// In practice, we don't care: we'll mark the first of the list every time, so don't bother
 		usersList.get(0).setLastUsed(true);
-		updateUsersFile();
 
 		return usersList.get(0);
 	}
@@ -85,16 +82,22 @@ public class Users {
 	 * 
 	 * @param username
 	 *            the name of the new user
+	 * @param uuid the UUID to pick for that user (or null or empty if the UUID should be generated)
+	 * @throws IllegalArgumentException
+	 * 		      if the provided UUID is not valid
 	 */
-	public void addUser(String username) {
-		usersList.add(new User(username));
-		updateUsersFile();
-	}
-	
-	public void addUserWithUUID(String username, String uuid) throws IllegalArgumentException {
-		User user = new User(username, false, UUID.fromString(uuid));
+	public void addUser(String username, String uuid) throws IllegalArgumentException {
+		User user;
+		if (uuid == null || uuid.equals("")) {
+			user = new User(username);
+		} else {
+			user = new User(username, false, UUID.fromString(uuid));
+		}
+		
 		if(!usersList.contains(user)) {
 			usersList.add(user);
+		} else {
+			System.err.println(Game.i18n.tr("User {0} exists already; don't add it again.", uuid));
 		}
 		updateUsersFile();
 	}
@@ -118,11 +121,15 @@ public class Users {
 				getCurrentUser().setLastUsed(false);
 				user.setLastUsed(true);
 				System.err.println("Switched to user: " + newUser);
-			}
+			} 
 		}
 
 		if (found) {
 			updateUsersFile();
+			Game.getInstance().clearSession();
+			Game.getInstance().loadSession();
+		} else {
+			System.err.println("Cannot switch to the user "+newUser+": not found");
 		}
 
 		return found;
@@ -184,7 +191,7 @@ public class Users {
 			User user = new User(username);
 			usersList.add(user);
 			updateUsersFile();
-			System.err.println("A new user has been created for you!");
+			System.err.println(Game.i18n.tr("A new user has been created for you!"));
 			System.err.println(user);
 		}
 	}

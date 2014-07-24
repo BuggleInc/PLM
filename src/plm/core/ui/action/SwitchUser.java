@@ -26,21 +26,22 @@ public class SwitchUser extends AbstractGameAction {
 		List<User> usersList = game.getUsers().getUsersList();
 		User[] possibilities = usersList.toArray(new User[usersList.size()]);
 		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, 
-				Game.i18n.tr("<html>Please choose the user you want to use from the drop-down menu.<br/>"+
-				             "Caution! The PLM will exit immediately after you click OK.</html>"), 
+				Game.i18n.tr("Please choose the user you want to use"), 
 				Game.i18n.tr("Switch user"),
 				JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
 
-		if (chosenUser == null) {
+		if (chosenUser == null) 
 			return;
-		}
 
-		if (!chosenUser.equals(game.getUsers().getCurrentUser())) {
+		if (chosenUser.equals(game.getUsers().getCurrentUser())) {
+			JOptionPane.showMessageDialog(parent, Game.i18n.tr("User {0} already selected.", chosenUser));			
+		} else {
 			try {
 				game.getUsers().switchToUser(chosenUser);
-				game.quit();
+				JOptionPane.showMessageDialog(parent, Game.i18n.tr("User {0} now selected.", chosenUser));			
 			} catch (UserAbortException e1) {
-				JOptionPane.showMessageDialog(parent, Game.i18n.tr("Operation canceled by user request"));
+				System.out.println(Game.i18n.tr("Operation canceled by user request"));
+				JOptionPane.showMessageDialog(parent, Game.i18n.tr("Operation canceled as requested by user."));
 			}
 		}
 	}

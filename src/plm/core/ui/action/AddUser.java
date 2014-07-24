@@ -28,7 +28,7 @@ public class AddUser extends AbstractGameAction {
 			return;
 		}
 
-		game.getUsers().addUser(newUser);
+		game.getUsers().addUser(newUser,null);
 		JOptionPane.showMessageDialog(this.parent, Game.i18n.tr("Your new user has been added successfully!"));
 	}
 

@@ -31,7 +31,7 @@ public class AddUserWithUUID extends AbstractGameAction {
 
 		try {
 			int usersCount = game.getUsers().getUsersList().size();
-			game.getUsers().addUserWithUUID(newUser[0], newUser[1]);
+			game.getUsers().addUser(newUser[0], newUser[1]);
 			if (usersCount == game.getUsers().getUsersList().size()) {
 				JOptionPane.showMessageDialog(this.parent, Game.i18n.tr("Your uuid is already used by a local user."),
 						Game.i18n.tr("Error"), JOptionPane.ERROR_MESSAGE);
