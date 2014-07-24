@@ -42,7 +42,7 @@ http://cs.wellesley.edu/~cs111/fall98/assignments.html
 Pedagogical micro-worlds
  * Karel the robot (it may be sufficient to build a loader of karel
    worlds within the buggle world)
- * PatchWorld
+ * PatchWorld (see http://cs.wellesley.edu/~cs111/fall07/notes/lectures/06_picture_world_intro_web.pdf)
 Programmer games (may require a King of Hill mode?)
  * CodeRuler (strategy)
  * CodeRobot (fights between robots)
