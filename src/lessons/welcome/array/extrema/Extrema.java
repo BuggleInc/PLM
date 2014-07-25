@@ -34,7 +34,7 @@ public class Extrema extends BatExercise {
 				"  else :\n" +
 				"    return 0\n");
 		templateScala("extrema", new String[] {"Array[Int]"}, 
-				"def extrema(num:Int): Int = {\n",
+				"def extrema(num:Array[Int]): Int = {\n",
 				"  if nums.length>0{\n"+
 				"    var min=nums(0)\n"+
 				"    var max=nums(0)\n"+
