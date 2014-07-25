@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-23 00:46-0300\n"
+"PO-Revision-Date: 2014-07-24 23:44-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1406,7 +1406,7 @@ msgstr ""
 #: src/lessons/backtracking/Main.html:2
 #, fuzzy
 msgid "Backtracking lesson"
-msgstr "Backtracking lesson"
+msgstr "Lição de Backtracking"
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:4
@@ -3443,16 +3443,17 @@ msgstr "Affectations"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:105
+#, fuzzy
 msgid ""
 "Once your variable is declared, you can <b>affect</b> a new value to it "
 "later in the program. That's really easy:"
-msgstr ""
+msgstr "Uma vez que sua variável está declarada, você pode <b>affect</b> um novo valor para ela mais tarde no programa. Isto é bem fácil:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:106
 #, no-wrap
 msgid "x = 3[!java];[/!]"
-msgstr ""
+msgstr "x = 3[!java];[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:108
@@ -3460,6 +3461,8 @@ msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
 msgstr ""
+"À esquerda do símbolo de igual você pode botar uma expressão\n"
+"aritmética contendo constantes, variáveis e operações."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:110
@@ -3469,6 +3472,9 @@ msgid ""
 "x = 3 * x[!java];[/!]\n"
 "greeting = \"Hello \"+name[!java];[/!] <span class=\"comment\">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings</span>"
 msgstr ""
+"x = 3 + 2[!java];[/!]\n"
+"x = 3 * x[!java];[/!]\n"
+"saudação = \"Oi \"+nome[!java];[/!] <span class=\"comment\">[!python]#[/!][!scala|java]//[/!] + é (também) a operação de concatenação (ie, juntar) strings</span>"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:115
@@ -3484,7 +3490,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:120
 msgid "How to do this?"
-msgstr ""
+msgstr "Como fazer isto?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:121
@@ -3492,26 +3498,28 @@ msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
 msgstr ""
+"Para resolver este problema, você tem que docompor ele em sub-partes\n"
+"menores. Por exemplo, você pode querer fazer os passos seguintes:"
 
 #. type: Content of: <p><ol><li>
 #: src/lessons/welcome/variables/Variables.html:124
 msgid "Move forward until located over a baggle"
-msgstr ""
+msgstr "Mover para a frente até se colocar sobre um baggle"
 
 #. type: Content of: <p><ol><li>
 #: src/lessons/welcome/variables/Variables.html:125
 msgid "Pickup the baggle"
-msgstr ""
+msgstr "Pegar o baggle"
 
 #. type: Content of: <p><ol><li>
 #: src/lessons/welcome/variables/Variables.html:126
 msgid "Move backward of the same amount of steps than done in first step"
-msgstr ""
+msgstr "Mover para trás a mesma quantidade de passos que deu no primeiro passo"
 
 #. type: Content of: <p><ol><li>
 #: src/lessons/welcome/variables/Variables.html:127
 msgid "Drop back the baggle"
-msgstr ""
+msgstr "Soltar o baggle de novo"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:130
@@ -3581,12 +3589,12 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:156
 msgid "It's your turn now!"
-msgstr ""
+msgstr "É sua vez agora!"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/variables/RunFour.html:2
 msgid "Run Four bases"
-msgstr ""
+msgstr "Ande quatro bases"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunFour.html:4
@@ -3607,7 +3615,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/variables/RunHalf.html:2
 msgid "The Four Halves run"
-msgstr ""
+msgstr "A corrida dos quatro meios"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunHalf.html:4
@@ -3631,6 +3639,8 @@ msgid ""
 "You can determine whether you are over a orange cell with the "
 "<code>isOverOrange()</code> method."
 msgstr ""
+"Você pode determinar quando você está sobre uma célula laranja com o\n"
+"método <code>estáSobreLaranja()</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:4
@@ -3656,7 +3666,7 @@ msgstr ""
 msgid ""
 "In such situations, <code>for</code> loops become handy. Their syntax is the "
 "following:"
-msgstr ""
+msgstr "Em tais situações, loops <code>for</code> se tornam úteis. Suas sintaxes são as seguintes:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:13
@@ -3669,14 +3679,21 @@ msgid ""
 "    <b>action</b>();\n"
 "}[/!]"
 msgstr ""
+"[!java]for (<b>inicialização</b>; <b>condição</b>; <b>incremento</b>) {\n"
+"    <b>ação</b>();\n"
+"}[/!][!python]for <b>variável</b> in <b>sequencia de valores</b>:\n"
+"    <b>ação</b>()[/!][!scala] for (<b>variável</b> &lt;- <b>primeiro valor</b> to <b>último valor</b>) { \n"
+"    <b>ação</b>();\n"
+"}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:20
+#, fuzzy
 msgid ""
 "For example to repeat the loop body <code>n</code> times, [!python] it is "
 "handy to use the instruction <code>range(n)</code> to generate the sequence "
 "n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]"
-msgstr ""
+msgstr "Por exemplo, para repetir o corpo do loop <code>n</code> vezes, [!python] é úil usar a instrução <code>range(n)</code> para gerar a sequencia n valores inteiros de 0 a n-1.[/!] [!java|scala] alguém deve escreve:[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:23
@@ -3689,11 +3706,17 @@ msgid ""
 "    <b>action</b>();\n"
 "}[/!]"
 msgstr ""
+"[!java]for (int iterador=0; iterador&lt;n; iterador++) {\n"
+"    <b>ação</b>();\n"
+"}[/!][!python]for <b>iterador</b> in <b>range(n)</b>:\n"
+"    <b>ação</b>()[/!][!scala] for (<b>iterador</b> &lt;- <b>1</b> to <b>n</b>) { \n"
+"    <b>ação</b>();\n"
+"}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:30
 msgid "This code is then perfectly equivalent to the following one."
-msgstr ""
+msgstr "Este código é então complemtamente equivalente ao seguinte."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:31
@@ -3713,11 +3736,24 @@ msgid ""
 "    stepper = stepper + 1\n"
 "}[/!]"
 msgstr ""
+"[!java]int iterador = 0;\n"
+"while (iterador &lt; n) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>ação</b>();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>iterador++</b>;\n"
+"}[/!][!python]iterador=0\n"
+"while iterador &lt; n: \n"
+"    ação()\n"
+"    iterador = iterador + 1[/!][!scala]\n"
+"var iterador = 1\n"
+"while (iterador &lt;= n) {\n"
+"    <b>ação</b>()\n"
+"    iterador = iterador + 1\n"
+"}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:45
 msgid "The <code>for</code> loop is easier to read, don't you think?"
-msgstr ""
+msgstr "O loop <code>for</code> é fácil de ler, não acha?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:48
@@ -3745,13 +3781,17 @@ msgid ""
 "}\n"
 "<span class=\"comment\">/* the buggle now faces a wall */</span>"
 msgstr ""
+"for (; !estáOlhandoParaParede() ; avançar()) { \n"
+"   <span class=\"comment\">/* nada no corpo do loop */</span>\n"
+"}\n"
+"<span class=\"comment\">/* o buggle agora está de cara para uma parede */</span>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:61
 msgid ""
 "If you want to nest several loops, you can do it on one line in Scala. This "
 "means that the two following chunks are equivalent:"
-msgstr ""
+msgstr "Se você quer aninhar vários loops, você pode fazer isto em uma linha no Scala. Isto significa que os dois blocos seguintes são equivalentes:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:62
@@ -3763,6 +3803,11 @@ msgid ""
 "    }\n"
 "}"
 msgstr ""
+"for (iterador1 &lt;- 1 to n) {\n"
+"    for (iterador2 &lt;- 1 to m) {\n"
+"       ações()\n"
+"    }\n"
+"}"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:67
@@ -3772,6 +3817,9 @@ msgid ""
 "    actions()\n"
 "}"
 msgstr ""
+"for (iterador1 &lt;- 1 to n; iterador2 &lt;- 1 to m) { <span class=\"comment\">// Simplesmente separe as duas condições de loop com um ponto-e-vírgula</span>\n"
+"    ações()\n"
+"}"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:73
@@ -3790,20 +3838,21 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:78
 msgid "Once done, you can proceed to next exercise."
-msgstr ""
+msgstr "Uma vez feito, você pode seguir para o próximo exercício."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopStairs.html:2
 msgid "Stairway to Heaven"
-msgstr ""
+msgstr "Uma escadaria para o Céu"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:4
+#, fuzzy
 msgid ""
 "Your buggle feels a bit depressed today, but it's currently facing a magic "
 "stair: It leads directly to heaven, and each time you walk on it, joyful "
 "colors spur all around."
-msgstr ""
+msgstr "Your buggle feels a bit depressed today, but it's currently facing a magic stair: It leads directly to heaven, and each time you walk on it, joyful colors spur all around."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:7
@@ -3812,6 +3861,9 @@ msgid ""
 "four instructions you have to give you buggle to take one stair step, and "
 "then put them in a loop to take the whole stair."
 msgstr ""
+"Seu objetivo é subir a escada, um passo por vez. Primeiro \"devise\" as\n"
+"quatro instruções que você tem que dar ao buggle para subir um degrau,\n"
+"e então bote ela num loop para subir a escada toda."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:11
@@ -3821,19 +3873,25 @@ msgid ""
 "reach the heaven, take some steps in your new home.  Meanwhile, you just "
 "have to walk your way, the colors appear automagically."
 msgstr ""
+"Antes disto, ande um pouco para a frente para alcançar a escada, e\n"
+"certifique-se de estar na situação certa para que o que o loop faz\n"
+"seja feito corretamente. E uma vez alcançado o Céu, dê uns passos no\n"
+"seu novo lar. Enquanto isto, você deve apenas seguir seu caminho, as\n"
+"cores aparecem automagicamente."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourse.html:2
 msgid "Training Buggle"
-msgstr ""
+msgstr "Treinando o Buggle"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourse.html:4
+#, fuzzy
 msgid ""
 "Today, your buggle wants to get some serious exercise: It wants to run 'till "
 "the track burns! Its super-shoes are just perfect to run like hell, but "
 "unfortunately, they can actually damage the track on the long run..."
-msgstr ""
+msgstr "Hoje seu buggle quer fazer exercício seriamente: It wants to run 'till the track burns! Its super-shoes are just perfect to run like hell, but unfortunately, they can actually damage the track on the long run..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourse.html:7
