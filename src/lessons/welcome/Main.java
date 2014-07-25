@@ -2,9 +2,6 @@ package lessons.welcome;
 
 import java.io.IOException;
 
-import plm.core.model.lesson.Lecture;
-import plm.core.model.lesson.Lesson;
-import plm.universe.BrokenWorldFileException;
 import lessons.welcome.array.array123.Array123;
 import lessons.welcome.array.array667.Array667;
 import lessons.welcome.array.arraycount9.ArrayCount9;
@@ -12,6 +9,8 @@ import lessons.welcome.array.arrayfront9.ArrayFront9;
 import lessons.welcome.array.averagevalue.AverageValue;
 import lessons.welcome.array.basics.Array1;
 import lessons.welcome.array.basics.Array2;
+import lessons.welcome.array.extrema.Extrema;
+import lessons.welcome.array.golomb.Golomb;
 import lessons.welcome.array.has271.Has271;
 import lessons.welcome.array.indexof.maxvalue.IndexOfMaxValue;
 import lessons.welcome.array.indexof.value.IndexOfValue;
@@ -96,6 +95,9 @@ import lessons.welcome.traversal.zigzag.TraversalZigZag;
 import lessons.welcome.variables.RunFour;
 import lessons.welcome.variables.RunHalf;
 import lessons.welcome.variables.Variables;
+import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
+import plm.universe.BrokenWorldFileException;
 
 public class Main extends Lesson {
 
@@ -204,6 +206,8 @@ public class Main extends Lesson {
 		addExercise(new Array667(this),arrays);
 		addExercise(new NoTriples(this),arrays);
 		addExercise(new Has271(this),arrays);
+		addExercise(new Golomb(this),arrays);
+		addExercise(new Extrema(this),arrays);
 
 		
 		// 2D traversals
