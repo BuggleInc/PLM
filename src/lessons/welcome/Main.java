@@ -14,6 +14,7 @@ import lessons.welcome.array.golomb.Golomb;
 import lessons.welcome.array.has271.Has271;
 import lessons.welcome.array.indexof.maxvalue.IndexOfMaxValue;
 import lessons.welcome.array.indexof.value.IndexOfValue;
+import lessons.welcome.array.island.Island;
 import lessons.welcome.array.maxvalue.MaxValue;
 import lessons.welcome.array.notriples.NoTriples;
 import lessons.welcome.array.occurenceofvalue.OccurrenceOfValue;
@@ -208,6 +209,7 @@ public class Main extends Lesson {
 		addExercise(new Has271(this),arrays);
 		addExercise(new Golomb(this),arrays);
 		addExercise(new Extrema(this),arrays);
+		addExercise(new Island(this),arrays);
 
 		
 		// 2D traversals
