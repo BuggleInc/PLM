@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-26 00:10-0300\n"
+"PO-Revision-Date: 2014-07-27 18:43-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1439,19 +1439,19 @@ msgid ""
 "dealing with this specificity where the world does not only contain solving "
 "entities, but also two partial solutions (best know and current)."
 msgstr ""
-"Por enquanto, contém um exercício de \"Backtracking\" que carece de uma\n"
-"representação gráfica para ser utilizável. É baseado na entidade\n"
-"KnapsackSolver que funciona numa KnapsackPartialSolution. Este último\n"
-"não é um Mundo, mas um componente de mundo passivo. Ele é usado pelo\n"
-"resolvedor para armazenar a melhor solução do momento e a solução de\n"
-"trabalho. Este design deve ser suficientemente genérico e outros\n"
-"problemas de \"backtracking\", como aqueles nas minhas aulas de \"TOP\"\n"
-"(pyramid, recipients) devem ser implementáveis seguindo  este\n"
-"design. É por isto que classes \"Backtracking\" derivam de genéricas:\n"
-"BacktrackingEntity e BacktrackingPartialSolution. Também existe um\n"
-"BacktrackingWorld, que universos específicos devem não precisam\n"
-"sobreescrever, e BacktrackingExercise, lidando com esta especificidade\n"
-"onde o mundo não apenas contém entidades de solução, mas também duas\n"
+"Por enquanto, contém um exercício de \"Backtracking\" que carece de uma "
+"representação gráfica para ser utilizável. É baseado na entidade "
+"KnapsackSolver que funciona numa KnapsackPartialSolution. Este último "
+"não é um Mundo, mas um componente de mundo passivo. Ele é usado pelo "
+"resolvedor para armazenar a melhor solução do momento e a solução de "
+"trabalho. Este design deve ser suficientemente genérico e outros "
+"problemas de \"backtracking\", como aqueles nas minhas aulas de \"TOP\" "
+"(pyramid, recipients) devem ser implementáveis seguindo  este "
+"design. É por isto que classes \"Backtracking\" derivam de genéricas: "
+"BacktrackingEntity e BacktrackingPartialSolution. Também existe um "
+"BacktrackingWorld, que universos específicos devem não precisam "
+"sobreescrever, e BacktrackingExercise, lidando com esta especificidade "
+"onde o mundo não apenas contém entidades de solução, mas também duas "
 "soluções parciais (a melhor conhecida e a atual)."
 
 #. type: Content of: <p>
@@ -1499,8 +1499,8 @@ msgid ""
 "The first thing that I tried to use was dtrace, but it seems non-portable "
 "and somehow linked to solaris so I didn't dig any further."
 msgstr ""
-"A primeira coisa que eu tentei usar foi dtrace, mas parece que ele é\n"
-"não-portável e de certa forma ligado ao solaris, então eu não fui mais\n"
+"A primeira coisa que eu tentei usar foi dtrace, mas parece que ele é "
+"não-portável e de certa forma ligado ao solaris, então eu não fui mais "
 "à fundo."
 
 #. type: Content of: <p>
@@ -1568,7 +1568,12 @@ msgid ""
 "permission error (something related to com.sun.jdi.JDIPermission), but even "
 "with a java.security.AllPermission as permission file, I still have the "
 "issue."
-msgstr "Mas a função depuração do DrJava parece ter um problema issue: http://sourceforge.net/tracker/index.php?func=detail&aid=3004294&group_id=44253&atid=438935 eu suspeitei de um erro de permissão (algo relacionado a com.sun.jdi.JDIPermission), mas mesmo com um arquivo java.security.AllPermission, o problema persistia."
+msgstr ""
+"Mas a função depuração do DrJava parece ter um problema issue: "
+"http://sourceforge.net/tracker/index.php?func=detail&aid=3004294&group_id=44253&atid=438935 "
+"eu suspeitei de um erro de permissão (algo relacionado a "
+"com.sun.jdi.JDIPermission), mas mesmo com um arquivo "
+"java.security.AllPermission, o problema persistia."
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:74
@@ -1719,8 +1724,8 @@ msgid ""
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
-"<a href=\"plm://lessons.lightbot\">LightBot</a> neste pequeno jogo, você\n"
-"deve programar graficamente um pequeno robô dizendo para ele como\n"
+"<a href=\"plm://lessons.lightbot\">LightBot</a> neste pequeno jogo, você "
+"deve programar graficamente um pequeno robô dizendo para ele como "
 "desligar as luzes. É de rachar a cuca do programador."
 
 #. type: Content of: <ul><li>
@@ -1729,7 +1734,10 @@ msgstr ""
 msgid ""
 "<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
 "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
-msgstr "<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> Algumas atividades desenvolvidas para o Sciences Manuelles du Numérique"
+msgstr ""
+"<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> "
+"Algumas atividades desenvolvidas para o Sciences Manuelles du "
+"Numérique"
 
 #. type: Content of: <h1>
 #: src/lessons/chooser/Main.html:2
@@ -2482,7 +2490,11 @@ msgid ""
 "There is [!java]three[/!][!python|scala]two[/!] types of comments in [!"
 "thelang], instructing the [!java|scala]compiler[/!][!python]interpreter[/!] "
 "to not read the text you add for humans:"
-msgstr "Existem [!java]três[/!][!python|scala]dois[/!] tipos de comentários em [!thelang], que instruem o [!java|scala]compilador[/!][!python]interpretador[/!] a não ler o texto que você adiciona para humanos:"
+msgstr ""
+"Existem [!java]três[/!][!python|scala]dois[/!] tipos de comentários em "
+"[!thelang], que instruem o "
+"[!java|scala]compilador[/!][!python]interpretador[/!] a não ler o "
+"texto que você adiciona para humanos:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:19
@@ -2490,7 +2502,11 @@ msgid ""
 "<b>Comments on a single line</b>. When the [!java|scala]compiler[/!][!"
 "python]interpreter[/!] encounters the symbol [!java|scala]//[/!][!"
 "python]#[/!], it ignores the end of the line."
-msgstr "<b>Comentários de uma única linha</b>. Quando o [!java|scala]compilador[/!][!python]interpretador[/!] encontra o símbolo [!java|scala]//[/!][!python]#[/!], ele ignora o resto da linha."
+msgstr ""
+"<b>Comentários de uma única linha</b>. Quando o "
+"[!java|scala]compilador[/!][!python]interpretador[/!] encontra o "
+"símbolo [!java|scala]//[/!][!python]#[/!], ele ignora o resto da "
+"linha."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
@@ -2784,10 +2800,10 @@ msgid ""
 "false, <tt>cond2</tt> is not even evaluated as we already know that the "
 "conjunction of both propositions cannot be true)."
 msgstr ""
-"<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> é\n"
-"verdadeiro (true) quando <tt>cond1</tt> <b>e</b> <tt>cond2</tt> são\n"
-"ambos verdadeiros (se <tt>cond1</tt> é falso (false), <tt>cond2</tt>\n"
-"não é nem sequer calculado pois sabe-se previamente que a conjunção\n"
+"<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> é "
+"verdadeiro (true) quando <tt>cond1</tt> <b>e</b> <tt>cond2</tt> são "
+"ambos verdadeiros (se <tt>cond1</tt> é falso (false), <tt>cond2</tt> "
+"não é nem sequer calculado pois sabe-se previamente que a conjunção "
 "das duas proposições não pode ser verdadeira)."
 
 #. type: Content of: <ul><li>
@@ -3084,7 +3100,10 @@ msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
 "now and come back later if you don't get it right now."
-msgstr "Once you manage to escape this trap, you can move forward to the next exercise.  This exercise is a bit more complex, so you can also leave it for now and come back later if you don't get it right now."
+msgstr ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise.  This exercise is a bit more complex, so you can also leave "
+"it for now and come back later if you don't get it right now."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:3
@@ -3263,7 +3282,12 @@ msgid ""
 "type happens to be ambiguous. Even when the type is clear, you can still "
 "specify it if you prefer.  So you want that the variable contains 5 as "
 "initial value, you should type:"
-msgstr "Você ainda tem que especificar o \"if\" você usa alguns valores genéricos como uma inicialização, tais como o valor muito especial <code>null</code>, que o tipo parece ser ambíguo. Mesmo quando o tipo é claro, você ainda pode especificar isto se preferir. So you want that the variable contains 5 as initial value, you should type:"
+msgstr ""
+"Você ainda tem que especificar o \"if\" você usa alguns valores "
+"genéricos como uma inicialização, tais como o valor muito especial "
+"<code>null</code>, que o tipo parece ser ambíguo. Mesmo quando o tipo "
+"é claro, você ainda pode especificar isto se preferir. So you want "
+"that the variable contains 5 as initial value, you should type:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:50
@@ -3355,7 +3379,13 @@ msgid ""
 "latter on store a number in the same variable.  The values themselves are "
 "still typed, but not the variable. Python is said to be <b>dynamically "
 "typed</b>."
-msgstr "As you can see, the variables are not <b>typed</b> in Python, which means that they are not specialized in any type of data.  A given variable store any type of data of a given type: you can store a number in a variable and latter on store a number in the same variable.  The values themselves are still typed, but not the variable. Python is said to be <b>dynamically typed</b>."
+msgstr ""
+"As you can see, the variables are not <b>typed</b> in Python, which "
+"means that they are not specialized in any type of data.  A given "
+"variable store any type of data of a given type: you can store a "
+"number in a variable and latter on store a number in the same "
+"variable.  The values themselves are still typed, but not the "
+"variable. Python is said to be <b>dynamically typed</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:75
@@ -3386,7 +3416,14 @@ msgid ""
 "then check your actions and catch your error when you inadvertently modify "
 "the value. More interestingly, the compiler can produce faster code in some "
 "cases."
-msgstr "Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando ela contém o tamanho da tela ou outro valor constante), então você deve fazer dela um <b>valor</b> instead of a variable. Simply change the <code>var</code> keyword with the <code>val</code> one. The compiler can then check your actions and catch your error when you inadvertently modify the value. More interestingly, the compiler can produce faster code in some cases."
+msgstr ""
+"Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando "
+"ela contém o tamanho da tela ou outro valor constante), então você "
+"deve fazer dela um <b>valor</b> instead of a variable. Simply change "
+"the <code>var</code> keyword with the <code>val</code> one. The "
+"compiler can then check your actions and catch your error when you "
+"inadvertently modify the value. More interestingly, the compiler can "
+"produce faster code in some cases."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:86
@@ -3451,7 +3488,9 @@ msgstr "Affectations"
 msgid ""
 "Once your variable is declared, you can <b>affect</b> a new value to it "
 "later in the program. That's really easy:"
-msgstr "Uma vez que sua variável está declarada, você pode <b>affect</b> um novo valor para ela mais tarde no programa. Isto é bem fácil:"
+msgstr ""
+"Uma vez que sua variável está declarada, você pode <b>affect</b> um "
+"novo valor para ela mais tarde no programa. Isto é bem fácil:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:106
@@ -3670,7 +3709,9 @@ msgstr ""
 msgid ""
 "In such situations, <code>for</code> loops become handy. Their syntax is the "
 "following:"
-msgstr "Em tais situações, loops <code>for</code> se tornam úteis. Suas sintaxes são as seguintes:"
+msgstr ""
+"Em tais situações, loops <code>for</code> se tornam úteis. Suas "
+"sintaxes são as seguintes:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:13
@@ -3697,7 +3738,11 @@ msgid ""
 "For example to repeat the loop body <code>n</code> times, [!python] it is "
 "handy to use the instruction <code>range(n)</code> to generate the sequence "
 "n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]"
-msgstr "Por exemplo, para repetir o corpo do loop <code>n</code> vezes, [!python] é úil usar a instrução <code>range(n)</code> para gerar a sequencia n valores inteiros de 0 a n-1.[/!] [!java|scala] alguém deve escreve:[/!]"
+msgstr ""
+"Por exemplo, para repetir o corpo do loop <code>n</code> vezes, "
+"[!python] é úil usar a instrução <code>range(n)</code> para gerar a "
+"sequencia n valores inteiros de 0 a n-1.[/!] [!java|scala] alguém deve "
+"escreve:[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:23
@@ -3795,7 +3840,10 @@ msgstr ""
 msgid ""
 "If you want to nest several loops, you can do it on one line in Scala. This "
 "means that the two following chunks are equivalent:"
-msgstr "Se você quer aninhar vários loops, você pode fazer isto em uma linha no Scala. Isto significa que os dois blocos seguintes são equivalentes:"
+msgstr ""
+"Se você quer aninhar vários loops, você pode fazer isto em uma linha "
+"no Scala. Isto significa que os dois blocos seguintes são "
+"equivalentes:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:62
@@ -3856,7 +3904,10 @@ msgid ""
 "Your buggle feels a bit depressed today, but it's currently facing a magic "
 "stair: It leads directly to heaven, and each time you walk on it, joyful "
 "colors spur all around."
-msgstr "Your buggle feels a bit depressed today, but it's currently facing a magic stair: It leads directly to heaven, and each time you walk on it, joyful colors spur all around."
+msgstr ""
+"Your buggle feels a bit depressed today, but it's currently facing a "
+"magic stair: It leads directly to heaven, and each time you walk on "
+"it, joyful colors spur all around."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:7
@@ -3895,7 +3946,11 @@ msgid ""
 "Today, your buggle wants to get some serious exercise: It wants to run 'till "
 "the track burns! Its super-shoes are just perfect to run like hell, but "
 "unfortunately, they can actually damage the track on the long run..."
-msgstr "Hoje seu buggle quer fazer exercício seriamente: It wants to run 'till the track burns! Its super-shoes are just perfect to run like hell, but unfortunately, they can actually damage the track on the long run..."
+msgstr ""
+"Hoje seu buggle quer fazer exercício seriamente: It wants to run 'till "
+"the track burns! Its super-shoes are just perfect to run like hell, "
+"but unfortunately, they can actually damage the track on the long "
+"run..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourse.html:7
@@ -3936,6 +3991,13 @@ msgid ""
 "to the left, 4 steps to the right, 2 steps to the right, 4 steps to the "
 "left, and you want to run 7 around."
 msgstr ""
+"Bem, nosso último treino teve um probleminha. A trilha tocou fogo, e "
+"fomos banidos de lá. Desta vez, nosso buggle decidiu praticar ao ar "
+"livre, no meio da floresta, com seus velhos tênis. O problema é que "
+"você tem que ser cuidadoso para não cair na água. A trilha onde você "
+"corre é estreita: \"One side is now\" 4 passos para a frente, 2 passos "
+"para a esquerda, 4 passos para a direita, 2 passos para a direita, 4 "
+"passos para a esquerda, \"and you want to run 7 around\"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourseForest.html:10
@@ -3944,6 +4006,9 @@ msgid ""
 "loops around the garden, and move along to the next exercise before anyone "
 "notices the damage you made..."
 msgstr ""
+"Putz, correr na grama destrói a grama também! Então dê apenas 7 voltas "
+"no jardim e depois vá para o próximo exercício antes que alguém "
+"perceba o estrago que você fez..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:4
@@ -3952,6 +4017,10 @@ msgid ""
 "such cells. Write the necessary code to move forward until the ground gets "
 "white. For that, use the provided method <code>isGroundWhite()</code>."
 msgstr ""
+"Algumas células do mundo são amarelas, mas seu buggle não pode ficar "
+"sobre estas células. Escreva o código necessário para mover para a "
+"frente até que o chão fique branco. Para isto use o método fornecido "
+"<code>chãoBranco()</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:8
@@ -3962,17 +4031,23 @@ msgid ""
 "cell at first. In other worlds, even if the ground is white on the first "
 "cell, you still want to move forward to the next cell."
 msgstr ""
+"O truque é que a maioria dos buggles deste mundo ficam sobre o chão "
+"amarelo que eles não gostam. é por isto que eles estão em pânico, e "
+"cada buggle \"rushes\" uma célula para a frente, mesmo aqueles que não "
+"estavam numa célula amarela no começo. Em outras palavras, mesmo se o "
+"chão for branco na primeira célula, você ainda vai querer se mover "
+"para a próxima célula."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:13
 msgid "The general idea is to do something like:"
-msgstr ""
+msgstr "A ideia geral é fazer algo como:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:14
 #, no-wrap
 msgid "move forward until located in a white cell"
-msgstr ""
+msgstr "Mover para a frente até estar numa célula branca"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:16
@@ -3983,6 +4058,11 @@ msgid ""
 "duplication is a <b>very</b> bad habit, and you should <b>always</b> avoid "
 "it."
 msgstr ""
+"A coisa mais difícil é que nós queremos executar o corpo do loop uma "
+"vez, mesmo se já estivermos numa célula branca. Isto é fácil "
+"duplicando o código do loop'antes do loop em si, mas esta é uma má "
+"ideia: diplicação de código é um hábito <b>muito</b> ruim, e você deve "
+"evitar isto <b>sempre</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:20
@@ -3995,11 +4075,19 @@ msgid ""
 "duplicate you code if you can avoid. And the good news is that you always "
 "can..."
 msgstr ""
+"Duplicação de código faz da manutenção de código um pesadelo "
+"rapidamente: é fdifícil ler o código e o leitor tem que garantir que "
+"nenhuma pequena diferença exista entre as versões. Depurar o código se "
+"torna difícil, pois os bugs devem ser consertados em todas as "
+"versões. Na verdade, cada modificação do código se torna "
+"difícil. Então, na verdade, você deve <b>sempre</b> se esforçar para "
+"não duplicar seu código sempre que possível. Mas a boa notícia é que "
+"você sempre pode..."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25
 msgid "Executing the loop body at least once"
-msgstr ""
+msgstr "Executando o corpo do loop pelo menos uma vez"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
@@ -4007,7 +4095,7 @@ msgstr ""
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/welcome/array/basics/Array1.html:100
 msgid "[!python]"
-msgstr ""
+msgstr "[!python]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:27
@@ -4017,6 +4105,10 @@ msgid ""
 "dedicated variable indicating whether we are taking the loop for the first "
 "time or not, as follows."
 msgstr ""
+"Algumas linguagens tem construções específicas para isto, mas não a "
+"linguagem Python. Sem problemas, podemos fazer isto nós mesmos! Uma "
+"boa forma é ter uma variável dedicada indicando se estamos entrando no "
+"loop a primeira vez ou não, como segue."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:31
@@ -4027,6 +4119,10 @@ msgid ""
 "  firstTime = False\n"
 "  (loop body)\n"
 msgstr ""
+"primeiraVez = True\n"
+"while primeiraVez or (outras condições):\n"
+"  primeiraVez = False\n"
+"  (corpo do loop)\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:37
@@ -4036,6 +4132,10 @@ msgid ""
 "executed once, it is set to false and never impact again the decision to "
 "enter the body or not."
 msgstr ""
+"Quando <code>primeiraVez</code> é true, o corpo do loop é executado "
+"mesmo se as outras condições digam o contrário.  uma vez que o loop "
+"tenha sido executado uma vez, esta variável vira false e nunca mais "
+"impacta na decisão de entrar ou não no loop."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:43
@@ -4048,6 +4148,13 @@ msgid ""
 "java]Do not forget the semi-column (;) after the condition, it is mandatory."
 "[/!]"
 msgstr ""
+"Num loop <tt>while</tt>, a condição é calculada antes de qualquer "
+"coisa, e se for falsa, o corpo do loop nunca é executado. Algumas "
+"vezes (mas não muito frequentemente), você  pode preferir que o corpo "
+"do loop seja executado pelo menos uma vez, mesmo se a condição seja "
+"inicialmente falsa. Para isto, uma variação do loop <tt>while</tt> é "
+"usada, com a seguinte sintaxe em [!thelang].  [!java]Não esqueça o "
+"ponto-e-vírgula (;) depois da condição, que é obrigatório.[/!]"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:51
@@ -4057,11 +4164,14 @@ msgid ""
 "    <b>action()</b>[!java];[/!]\n"
 "} while (<b>condition</b>)[!java];[/!]"
 msgstr ""
+"do {\n"
+"    <b>ação()</b>[!java];[/!]\n"
+"} while (<b>condição</b>)[!java];[/!]"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopdowhile/Poucet.html:2
 msgid "Tracks of buggles"
-msgstr ""
+msgstr "Trilhas de buggles"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:4
@@ -4075,6 +4185,15 @@ msgid ""
 "Forest' right now), and selecting the other entry (that should read 'Deeper "
 "Forest')."
 msgstr ""
+"Seu buggle se perdeu num estranho labirinto, e você deve ajudá-lo a "
+"achar a saída que está representada em laranja. Você não pode "
+"simplesmente explicar o caminho para a saída com algo do tipo "
+"<code>direita();frente();frente()</code> por que você tem que salvar "
+"dois buggles ao mesmo tempo, que estão presos em mundos similares mas "
+"não iguais. Você pode alternar para o outro mundo usando o combobox "
+"acima da representação do mundo (onde está escrito 'Floresta Fechada' "
+"agora), e selecionar a outra entrada (que deve ler 'Floresta Mais "
+"Fechada')."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:10
