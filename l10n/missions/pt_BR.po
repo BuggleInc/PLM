@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-27 18:43-0300\n"
+"PO-Revision-Date: 2014-07-31 19:40-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1259,7 +1259,7 @@ msgstr "(veja a nota sobre exceções)"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
 msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]sobreBaggle()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estáSobreBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:54
@@ -3022,7 +3022,7 @@ msgid ""
 "&nbsp;&nbsp;moveForward()"
 msgstr ""
 "Enquanto não estiver de cara para uma parede, faça:\n"
-"&nbsp;&nbsp;moverParaFrente()"
+"&nbsp;&nbsp;avançar()"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:40
@@ -4204,6 +4204,11 @@ msgid ""
 "baggels or more, and you have to turn right if there is only 2 baggles or "
 "less."
 msgstr ""
+"A boa nova é que o caminho para a saída está desenhado no chão. Como "
+"você pode ver, o mundo é feito de vários corredores, com baggles no "
+"chão. Depois de cada corredor, você deve virar à esquerda se o "
+"corredor tiver três baggels ou mais, e virar a direita se tiver apenas "
+"2 ou menos baggles."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:14
@@ -4212,9 +4217,13 @@ msgid ""
 "counting as the last cell of the previous corridor, not as the first cell "
 "after your turn."
 msgstr ""
+"Você deve contar exatamente 5 células por corredor. Aquela com a "
+"intersecção conta como a última do corredor anterior, não como a "
+"primeira depois de você virar."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:17
+#, fuzzy
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -4222,6 +4231,11 @@ msgid ""
 "the exit cell (that is orange) with the provided <code>exitReached()</code> "
 "method."
 msgstr ""
+"Logo, a forma geral de seu código deve ser algo como \"enquanto não "
+"encontrar a saída, pegue o próximo corredor para decidir se vira à "
+"esqueda ou à direita na próxima intersecção\". Você pode determinar se "
+"você está na célula de saída (que é laranja) com o método "
+"<code>saídaAlcançada()</code> fornecido."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:21
@@ -4239,6 +4253,20 @@ msgid ""
 "true) before we actually use the value returned by <code>crossing()</code> "
 "to determine to continue or not.[/!]"
 msgstr ""
+"Para entrar em um corredor, você tem simplesmente que ir de uma "
+"intersecção para a outra enquanto conta os baggles que vê em seu "
+"caminho. O método \"<code>cruzamento()</code>\" diz se seu buggle está "
+"ou não numa intersecção. A complexidade extra é que no começo de um "
+"corredor, você está obviamente numa intersecção, mas você ainda "
+"precisa se mover.  [!java|scala]Para isto, a forma mais fácil é usar "
+"um loop <code>do / while</code> (faça / enquanto) ao invés de um loop "
+"<code>while</code> (enquanto) normal para se mover até a próxima "
+"intersecção.[/!] [!python]Para isto, use uma variável extra indicando "
+"quando você já entrou no corredor, como segue. Isto vai garantir que "
+"você execute o corpo do loop pelo menos uma vez (quando o "
+"<code>primeiraVez</code> for verdadeiro) antes de nós usarmos "
+"realmente o valor retornado pelo <code>cruzamento()</code> para "
+"determinar se continuamos ou não.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/Poucet.html:32
@@ -4249,11 +4277,15 @@ msgid ""
 "  firstTime = False\n"
 "  (your body)\n"
 msgstr ""
+"primeiraVez = True\n"
+"while primeiraVez or not cruzamento():\n"
+"  primeiraVez = False\n"
+"  (seu corpo)\n"
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/welcome/loopdowhile/Poucet.html:39
 msgid "I cannot imagine how to count the baggles I see."
-msgstr ""
+msgstr "Eu não consigo imaginar como contar os baggles que eu vejo."
 
 #. type: Content of: <p><div>
 #: src/lessons/welcome/loopdowhile/Poucet.html:40
@@ -4262,12 +4294,15 @@ msgid ""
 "see a baggle on the ground. A variable used this way is often called "
 "<i>counter</i>."
 msgstr ""
+"Você precisa de uma variável que é inicializada em 0, e incrementada "
+"cada vez que você vê um baggle no chão. Uma variável usada desta forma "
+"é frequentemente chamada de <i>contador</i>."
 
 #. type: Content of: <p><div>
 #: src/lessons/welcome/loopdowhile/Poucet.html:42
 msgid ""
 "Don't forget to reset your counter to 0 at the beginning of each corridor!"
-msgstr ""
+msgstr "Não esqueça de resetar seu contador para 0 no começo de cada corredor!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:45
@@ -4275,6 +4310,8 @@ msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
 msgstr ""
+"Ah, e quando chegar na saída, não esqueça de dar um passo a mais para "
+"sair de fato do labirinto!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
@@ -4282,6 +4319,8 @@ msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
 "buggle vocabulary by learning it new tricks."
 msgstr ""
+"Nós vamos agora escrever nossos próprios métodos. Isto é como extender o "
+"vocabulário do buggle ensinando novos truques."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:8
@@ -4295,11 +4334,19 @@ msgid ""
 "<code>goAndGet()</code> order just like it understands a <code>forward()</"
 "code> one."
 msgstr ""
+"Por exemplo, nós vimos num exercício anterior como pedir ao buggle "
+"para pegar o baggle na frente dele, e trazê-lo de volta. Se existem "
+"vários baggles no tabuleiro, e se nós queremos trazê-los todos para a "
+"linha de baixo, você tem que repetir este código várias vezes, ou "
+"incluir ele num loop. Em qualquer caso, você deve evitar duplicar seu "
+"código para mantê-lo agradável de ler e fácil de entender. Será melhor "
+"se o buggle puder obedecer uma ordem <code>vaiEPega()</code> assim "
+"como entende uma <code>avançar()</code>."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:16
 msgid "Defining methods"
-msgstr ""
+msgstr "Definindo métodos"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:18
@@ -4307,6 +4354,8 @@ msgid ""
 "The [!thelang] syntax to write a simple method called <code>goAndGet</code> "
 "is the following:"
 msgstr ""
+"A sintaxe de [!thelang] para escrever um método simples chamado "
+"<code>vaiEPega</code> é a seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/Methods.html:20
@@ -4318,6 +4367,11 @@ msgid ""
 "  do()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]void vaiEPega() {[/!][!python]def vaiEPega():[/!][!scala]def vaiEPega() {[/!]\n"
+"  ações()[!java];[/!]\n"
+"  to()[!java];[/!]\n"
+"  do()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:26
@@ -4333,11 +4387,22 @@ msgid ""
 "We will soon learn to define such methods too. For now, just write "
 "<code>void</code> at this location.[/!]"
 msgstr ""
+"O corpo do método [!java|scala](entre chaves)[/!][!python](o bloco "
+"indentado)[/!] será executado quando nós chamarmos o método mais tarde "
+"(ou seja, quando nós escrevermos <code>vaiEPega()</code> em algum "
+"lugar do código). Este corpo do método pode conter tantas instruções "
+"quanto você queira, e qualquer construção que nós queiramos (for, "
+"while, if, etc).  [!java]A palavra-chave <code>void</code> significa "
+"que este método não retorna qualquer resultado. Por exemplo, o método "
+"<code>estáSobreBaggle()</code> retorna um resultado, que é um booleano "
+"indicando se o buggle está ou não localizado sobre um baggle. Vamos em "
+"breve aprender a definir tais métodos também. Por agora, apenas "
+"escreva <code>void</code> neste local.[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:39
 msgid "Documenting methods"
-msgstr ""
+msgstr "Documentando métodos"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:41
@@ -4353,6 +4418,17 @@ msgid ""
 "when you change your code, you have less chances to forget to update the "
 "documentation."
 msgstr ""
+"Você deve se esforçar para documentar seu código para mantê-lo "
+"legível. Quando você escreve código, fica claro o objetivo e as "
+"limitações, mas na maioria das vezes, isto é esquecido. Você "
+"rapidamente esquecerá dos detalhes de cada método específico, e vai "
+"chegar o dia em que você ficará feliz em ler a documentação. No "
+"exemplo seguinte, nós usamos o formalismo específico de "
+"[!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], um programa "
+"que extrai a documentação do código-fonte de [!thelang] e produz "
+"páginas html. A principal vantagem é que ele permite que a "
+"documentação fique junto ao código. Então, quando você mudar o código, "
+"você tem menos chances de esquecer de atualizar a documentação."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:50
@@ -4366,6 +4442,16 @@ msgid ""
 "a brief description of what this method does while any subsequent lines "
 "should provide any important details about the method."
 msgstr ""
+"comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!]\n"
+"começam com a marca <code>/**</code> (com dois asteriscos). Eles devem\n"
+"ser colocados exatamente antes do método que documentam para a\n"
+"ferramenta encontrá-los.[/!] [!python]comentários pydoc devem ser\n"
+"colocados no começo do corpo do método de forma que a ferramenta possa\n"
+"encontrá-los. Eles devem ser colocados entre <code>\"\"\"</code>, que\n"
+"marcam strings multilinhas em python.[/!] A primeira linha deve ser\n"
+"uma breve descrição do que o método faz enquanto que as linhas\n"
+"subsequentes devem fornecer qualquer detalhes importantes sobre o\n"
+"método."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/Methods.html:59
@@ -4387,11 +4473,27 @@ msgid ""
 "  do()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java|scala]/**\n"
+" *  Vai, recupera o baggle na frente do buggle, e trás de volta \n"
+" *\n"
+" *  Não verifica se tem paredes, então cuidado para não chamar ele\n"
+" *  quando uma parede estiver presente.\n"
+" */[/!]\n"
+"[!java]void vaiEPega() {[/!]\n"
+"[!scala]def vaiEPega() {[/!]\n"
+"[!python]def vaiEPega():\n"
+"  \"\"\"Vai, recupera o baggle na frente do buggle, e trás de volta.\n"
+"\n"
+"  Não verifica se tem paredes, então cuidado para não chamar ele quando uma parede estiver presente.\"\"\"[/!]\n"
+"  ações()[!java];[/!]\n"
+"  to()[!java];[/!]\n"
+"  do()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:75
 msgid "Naming conventions"
-msgstr ""
+msgstr "Convenções de nomes"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:76
@@ -4401,9 +4503,15 @@ msgid ""
 "thelang]), but they can lead to portability issues between operating systems "
 "and should thus be avoided when possible."
 msgstr ""
+"A maioria das linguagens de programação proíbe o uso de espaços em "
+"indentificadores de métodos e variáveis (=seus nomes).  Letras "
+"acentuadas são algumas vezes permitidas (como em [!thelang]), mas elas "
+"geram problemas de portabilidade entre sistemas operacionais e devem "
+"ser evitadas sempre que possível."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:80
+#, fuzzy
 msgid ""
 "Across all programming languages, there is two main conventions to name "
 "variables and methods. The first one, consists in concatenating all words "
@@ -4413,6 +4521,14 @@ msgid ""
 "snake_case, is to write every words in lower case, separated with "
 "underscores symbols (_). \"go and get\" becomes go_and_get()."
 msgstr ""
+"Entre todas as linguagens de programação, existem duas convenções para "
+"nomear variáveis e métodos. A primeira, consiste em concatenar todas "
+"as palavras com apenas a primeria letra de cada palavra em "
+"maiúscula. \"vai e Pega\" se torna vaiEPega(). Isto é chamado "
+"\"CamelCase\" por que identificadores escritos desta forma parecem "
+"graficamente com as costas de um camelo. A outra convenção, chamada "
+"\"snake_case\", é escrever todas as palavras em minúsculas, separadas "
+"com sublinhados (_). \"vai e pega\" se torna vai_e_pega()."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:87
@@ -4423,6 +4539,11 @@ msgid ""
 "Scala prefer the lowerCamelCase (the very first letter is lower case) for "
 "that."
 msgstr ""
+"Que convenção usar é o tópico de discussões acaloradas entre "
+"desenvolvedores, mas cada linguagem de programação tem seus próprios "
+"hábitos. Em Python, Perl e C, o snake_case é normalmente usado para "
+"métodos e variáveis. Java e Scala preferemo lowerCamelCase (só a "
+"primeira letra inicial é minúscula) para isto."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:91
@@ -4432,6 +4553,11 @@ msgid ""
 "the fact that the Python bindings of PLM use the CamelCase instead of the "
 "snake_case is considered as a bug that we will fix in further releases."
 msgstr ""
+"A convenção CamelCase é sempre usada no PLM por que este programa foi "
+"escrito em Java, então mantivemos o hábito quando inserimos novas "
+"linguagens. Mas o fato de os vínculos Python do PLM usarem CamelCase e "
+"não snake_case é considerado um bug que será corrigido em algum "
+"lançamento futuro."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:97
@@ -4440,6 +4566,10 @@ msgid ""
 "code> which does the same than in a previous exercises (move forward until "
 "over a baggle, pick it up, move back to initial position, drop baggle)."
 msgstr ""
+"O objetivo deste exercício é escrever um método chamado "
+"<code>vaiEPega()</code> que faça a mesma coisa que foi feita num "
+"exercício anterior (vai para a frente até estar sobre um baggle, pega "
+"ele, vai para trás até a posição inicial e solta o baggle)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:101
@@ -4449,6 +4579,12 @@ msgid ""
 "called automagically added when you click on <b>Start</b>. Your buggle calls "
 "your <code>goAndGet()</code> method on each row, until the baggle is found."
 msgstr ""
+"Este exercício é um pouco diferente por que você não vai precisar "
+"escrever todo o código executado pelo buggle. Ao invés disto, você "
+"deve apenas escrever um método que será chamado automagicamente quando "
+"você clica em <b>Iniciar</b>. Seu buggle vai chamar seu método "
+"<code>vaiEPega()</code> em cada linha, até que o baggle seja "
+"encontrado."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:107
@@ -4456,6 +4592,8 @@ msgid ""
 "But for that to work, you have to actually write this <code>goAndGet()</"
 "code> method now."
 msgstr ""
+"Mas para isto funcionar, você tem que na verdade escrever este método "
+"<code>vaiEPega()</code> agora."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
@@ -4464,6 +4602,10 @@ msgid ""
 "approach consists in directly writing the needed code as follows.  This "
 "works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
+"Agora nós queremos ensinar ao buggle como construir uma casa de "
+"cachorro. A abordagem simplória consiste em escrever diretamente o "
+"código necessário como segue. Isto funciona por que o buggle deste "
+"exercício deixa um caminho vermelho à medida em que anda."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:8
@@ -4482,6 +4624,18 @@ msgid ""
 "forward()[!java];[/!]\n"
 "left()[!java];[/!]"
 msgstr ""
+"avançar()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"esquerda()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"esquerda()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"esquerda()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"avançar()[!java];[/!]\n"
+"esquerda()[!java];[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:21
@@ -4494,6 +4648,14 @@ msgid ""
 "have to fix it several times. And mind your back if you forget one of these "
 "locations."
 msgstr ""
+"Vai ficar mais difícil se tivermos que desenhar duas casas de "
+"cachorro: teremos que reescrever o mesmo código duas vezes, o que não "
+"é muito prático. Quando o código se torna um pouco longo como este, "
+"torna-se fácil ver por que nós insistimos já tem um tempinho namais "
+"pura maldade que duplicação de código representa. Na verdade, imagine "
+"um erro que se infiltrou no código que você copiou para vários "
+"lugares, você vai ter que corrigir várias vezes. E ai de você se "
+"esquercer de corrigir num destes lugares."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:27
@@ -4504,6 +4666,12 @@ msgid ""
 "program to avoid the differing locations to get out of synch when you modify "
 "your code."
 msgstr ""
+"Existe até um nome para esta boa prática de programação: DRY/SPOT, que "
+"em inglês significa \"Don't Repeat Yourself / Single Point Of Truth\" "
+"(não se repita/ponto único de confiança). A última parte significa que "
+"cada informação deve ser escrita em apenas um local de seu programa "
+"para evitar que diferentes locais fiquem desincronizados quando você "
+"modificar o código."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:32
@@ -4514,6 +4682,12 @@ msgid ""
 "previously.  If you do it correctly (what you should), you can use the "
 "method <code>left()</code> only once."
 msgstr ""
+"Portanto, vamos aplicar este bom princípio de programação e\n"
+"<b>fatorizar seu código</b>, ie escrever ele apenas uma vez, por\n"
+"exemplo em um método. Você pode ir até mais longe fatorizando o corpo\n"
+"do método com um loop <code>for</code>, como visto anteriormente. Se\n"
+"você faz isto corretamente (o que se espera), dá para você usar o\n"
+"método <code>esquerda()</code> apenas uma vez."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:39
@@ -4523,6 +4697,10 @@ msgid ""
 "it short.  The buggle will call your creation to create several dog houses "
 "around its world."
 msgstr ""
+"O objetivo deste exercício é escrever um método chamado\n"
+"<code>casaDeCachorro</code> que faz a mesma coisa que o código acima, mas\n"
+"com um loop for para mantê-lo curto. O buggle vai chamar sua criação\n"
+"para construir várias casas de cachorro neste mundo."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PictureMono.html:4
@@ -4531,6 +4709,8 @@ msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
 "in the \"Objective\" tab."
 msgstr ""
+"Neste exercício, vamos reproduzir o desenho geométrico que você pode\n"
+"ver na aba \"Objetivo\"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:7
@@ -4540,6 +4720,10 @@ msgid ""
 "possible code. For that, you have to decompose your work in sub-steps, and "
 "write a specific method for each sub-step."
 msgstr ""
+"Seu objetivo (aqui e em qualquer programa bem escrito) é escrever o\n"
+"código mais simples possível. Para isto, você tem que decompor seu\n"
+"trabalho em sub-passos e escrever métodos específicos para cada\n"
+"sub-passo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:11
@@ -4549,6 +4733,11 @@ msgid ""
 "in charge of drawing a V from the current position. Its prototype can be: "
 "<code>[!java]void [/!]makeV()</code>"
 msgstr ""
+"Se você observar cuidadosamente a figura que tem que desenhar, ela é\n"
+"constituída de quatro partes descrevendo um V. Uma decomposição\n"
+"possível é escrever um método responsável por escrever um V a partir\n"
+"da posição atual. Seu protótipo pode ser: <code>[!java]void\n"
+"[/!]fazerV()</code>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:16
@@ -4557,12 +4746,7 @@ msgid ""
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
 "in another method). It may be wise to write the <code>makeV()</code> so that "
 "it places directly the buggle in position for the next V."
-msgstr ""
-"Neste método, você deve usar os métodos <code>levantarPincel()</code> "
-"e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um "
-"método só para isto). É uma decisão inteligente escrever "
-"<code>makeV()</code> para colocar o buggle diretamente em posição para "
-"o próximo V."
+msgstr "Neste método, você deve usar os métodos <code>levantarPincel()</code> e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um método só para isto). É uma decisão inteligente escrever <code>fazerV()</code> para colocar o buggle diretamente em posição para o próximo V."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:21
@@ -4570,6 +4754,8 @@ msgid ""
 "Your turn. Your code of should not be longer than 4 lines (not counting "
 "<code>makeV</code>)..."
 msgstr ""
+"Sua vez. Seu código não deve ser maior que 4 linhas (sem contar\n"
+"<code>fazerV</code>)..."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PictureMono2.html:4
@@ -5256,6 +5442,12 @@ msgid ""
 "     right();\n"
 "forward();"
 msgstr ""
+"if (estáSobreBaggle())    \n"
+"     if (x == 5)\n"
+"          esquerda();\n"
+"else\n"
+"     direita();\n"
+"avançar();"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:35
@@ -5278,6 +5470,12 @@ msgid ""
 "            right();\n"
 "forward();"
 msgstr ""
+"if (estáSobreBaggle())    \n"
+"        if (x == 5)\n"
+"            esquerda();\n"
+"        else\n"
+"            direita();\n"
+"avançar();"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:47
@@ -5295,7 +5493,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:55
 #, no-wrap
 msgid "if (isOverBaggle()) if (x == 5) left(); else right(); forward();"
-msgstr ""
+msgstr "if (estáSobreBaggle()) if (x == 5) esquerda(); else direita(); avançar();"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:57
