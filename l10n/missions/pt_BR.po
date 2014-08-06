@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-31 19:40-0300\n"
+"PO-Revision-Date: 2014-08-03 21:05-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1424,7 +1424,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:10
-#, fuzzy
 msgid ""
 "For now, it contains a Backtracking exercise which lacks a graphical "
 "representation to be usable. It is based on an entity KnapsackSolver which "
@@ -1494,18 +1493,16 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:40
-#, fuzzy
 msgid ""
 "The first thing that I tried to use was dtrace, but it seems non-portable "
 "and somehow linked to solaris so I didn't dig any further."
 msgstr ""
 "A primeira coisa que eu tentei usar foi dtrace, mas parece que ele é "
-"não-portável e de certa forma ligado ao solaris, então eu não fui mais "
-"à fundo."
+"não-portável e de certa forma vinculado ao solaris, então eu não fui "
+"mais à fundo."
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:44
-#, fuzzy
 msgid ""
 "Then, I tried to use the debugging infrastructure (JPDA), but never managed "
 "to get it working. It seems to me that the original com.sun.jdi package is "
@@ -1577,20 +1574,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:74
-#, fuzzy
 msgid ""
 "Another lead to get it working it to use lib ASM to modify the student code "
 "so that their recursive method gets traced. With the static backtrace and "
 "the tracing information, I guess I could rebuild the actual call tree. That "
 "seem to be possible: 2 sec of googling gave me something like http://rejeev."
 "blogspot.com/2009/04/method-tracing.html"
-msgstr ""
-"Outro \"lead\" para botar para funcionar seria usar lib ASM para "
-"modificar o código do estudante de forma que seu método recursivo "
-"fosse rastreado. Com o \"backtrace\" estático e a informação de "
-"rastreio, eu imaginei que poderia reconstruir a árvore de chamadas "
-"atual. Isto parecia possível: 2 segundos de google me deram isto "
-"http://rejeev.blogspot.com/2009/04/method-tracing.html"
+msgstr "Outro \"lead\" para colocar para funcionar seria usar lib ASM para modificar o código do estudante de forma que seu método recursivo fosse rastreado. Com o \"backtrace\" estático e a informação de rastreio, eu imaginei que poderia reconstruir a árvore de chamadas atual. Isto parecia possível: 2 segundos de google me deram isto http://rejeev.blogspot.com/2009/04/method-tracing.html"
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:80
@@ -1608,7 +1598,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/backtracking/Main.html:85
-#, fuzzy
 msgid ""
 "This gives me the following todo actions: * Check whether tools.jar gives a "
 "working com.sun.jdi package * Find the DrJava bug around debugging to help "
@@ -1718,7 +1707,6 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:27
-#, fuzzy
 msgid ""
 "<a href=\"plm://lessons.lightbot\">LightBot</a> In this little game, you "
 "must program graphically a little robot to instruct it how to switch the "
@@ -3503,9 +3491,7 @@ msgstr "x = 3[!java];[/!]"
 msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
-msgstr ""
-"À esquerda do símbolo de igual você pode botar uma expressão "
-"aritmética contendo constantes, variáveis e operações."
+msgstr "À esquerda do símbolo de igual você pode colocar uma expressão aritmética contendo constantes, variáveis e operações."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:110
@@ -4682,11 +4668,11 @@ msgid ""
 "previously.  If you do it correctly (what you should), you can use the "
 "method <code>left()</code> only once."
 msgstr ""
-"Portanto, vamos aplicar este bom princípio de programação e\n"
-"<b>fatorizar seu código</b>, ie escrever ele apenas uma vez, por\n"
-"exemplo em um método. Você pode ir até mais longe fatorizando o corpo\n"
-"do método com um loop <code>for</code>, como visto anteriormente. Se\n"
-"você faz isto corretamente (o que se espera), dá para você usar o\n"
+"Portanto, vamos aplicar este bom princípio de programação e "
+"<b>fatorizar seu código</b>, ie escrever ele apenas uma vez, por "
+"exemplo em um método. Você pode ir até mais longe fatorizando o corpo "
+"do método com um loop <code>for</code>, como visto anteriormente. Se "
+"você faz isto corretamente (o que se espera), dá para você usar o "
 "método <code>esquerda()</code> apenas uma vez."
 
 #. type: Content of: <p>
@@ -4697,9 +4683,9 @@ msgid ""
 "it short.  The buggle will call your creation to create several dog houses "
 "around its world."
 msgstr ""
-"O objetivo deste exercício é escrever um método chamado\n"
-"<code>casaDeCachorro</code> que faz a mesma coisa que o código acima, mas\n"
-"com um loop for para mantê-lo curto. O buggle vai chamar sua criação\n"
+"O objetivo deste exercício é escrever um método chamado "
+"<code>casaDeCachorro</code> que faz a mesma coisa que o código acima, mas "
+"com um loop for para mantê-lo curto. O buggle vai chamar sua criação "
 "para construir várias casas de cachorro neste mundo."
 
 #. type: Content of: outside any tag (error?)
@@ -4709,7 +4695,7 @@ msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
 "in the \"Objective\" tab."
 msgstr ""
-"Neste exercício, vamos reproduzir o desenho geométrico que você pode\n"
+"Neste exercício, vamos reproduzir o desenho geométrico que você pode "
 "ver na aba \"Objetivo\"."
 
 #. type: Content of: <p>
@@ -4720,9 +4706,9 @@ msgid ""
 "possible code. For that, you have to decompose your work in sub-steps, and "
 "write a specific method for each sub-step."
 msgstr ""
-"Seu objetivo (aqui e em qualquer programa bem escrito) é escrever o\n"
-"código mais simples possível. Para isto, você tem que decompor seu\n"
-"trabalho em sub-passos e escrever métodos específicos para cada\n"
+"Seu objetivo (aqui e em qualquer programa bem escrito) é escrever o "
+"código mais simples possível. Para isto, você tem que decompor seu "
+"trabalho em sub-passos e escrever métodos específicos para cada "
 "sub-passo."
 
 #. type: Content of: <p>
@@ -4733,10 +4719,10 @@ msgid ""
 "in charge of drawing a V from the current position. Its prototype can be: "
 "<code>[!java]void [/!]makeV()</code>"
 msgstr ""
-"Se você observar cuidadosamente a figura que tem que desenhar, ela é\n"
-"constituída de quatro partes descrevendo um V. Uma decomposição\n"
-"possível é escrever um método responsável por escrever um V a partir\n"
-"da posição atual. Seu protótipo pode ser: <code>[!java]void\n"
+"Se você observar cuidadosamente a figura que tem que desenhar, ela é "
+"constituída de quatro partes descrevendo um V. Uma decomposição "
+"possível é escrever um método responsável por escrever um V a partir "
+"da posição atual. Seu protótipo pode ser: <code>[!java]void "
 "[/!]fazerV()</code>"
 
 #. type: Content of: <p>
@@ -4754,7 +4740,7 @@ msgid ""
 "Your turn. Your code of should not be longer than 4 lines (not counting "
 "<code>makeV</code>)..."
 msgstr ""
-"Sua vez. Seu código não deve ser maior que 4 linhas (sem contar\n"
+"Sua vez. Seu código não deve ser maior que 4 linhas (sem contar "
 "<code>fazerV</code>)..."
 
 #. type: Content of: outside any tag (error?)
@@ -4763,6 +4749,8 @@ msgid ""
 "We will now reproduce an even bigger geometrical drawing. Once again, you "
 "can see the model by clicking on the \"Objective\" tab."
 msgstr ""
+"Vamos agora reproduzir um desenho geométrico ainda maior. Novamente, "
+"você pode ver o modelo clicando na aba \"Objetivo\"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono2.html:7
@@ -4771,6 +4759,9 @@ msgid ""
 "the other exercise, do Ctrl-C, come back to the code of this exercise, do "
 "Ctrl-V)."
 msgstr ""
+"Você pode naturalmente reutilizar todo o código que você digitou em "
+"exercícios anteriores (selecione o outro exercício, faça Ctrl-C, "
+"volte para o código deste exercício e faça Ctrl-V)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono2.html:11
@@ -4780,6 +4771,11 @@ msgid ""
 "method <code>makePattern()</code> achieving the pattern of previous example "
 "seems to be a good idea (but this may not be enough)."
 msgstr ""
+"Mas você quer manter seu código tão simples quanto possível. Para "
+"isto, defina novos métodos para lidar simplesmente com as repetições "
+"no padrão. Por exemplo, um método <code>fazerPadrão()</code> fazendo o "
+"padrão do exemplo anterior parece ser uma boa ideia (mas pode não ser "
+"o suficiente)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono2.html:16
@@ -4787,6 +4783,8 @@ msgid ""
 "Why don't you give it a shot? The main code method shouldn't take more than "
 "2 lines (included in a for loop)"
 msgstr ""
+"Por que não tentar? O método do código principal não deve levar mais "
+"de 2 linhas (incluindo o loop for)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PictureMono3.html:4
@@ -4796,6 +4794,9 @@ msgid ""
 "the \"Objectives\" tab. As you can see, it is even bigger than the previous "
 "one."
 msgstr ""
+"Como você pode imaginar, você vai ter que reproduzir o desenho "
+"geométrico descrito na aba \"Objetivos\". Como você pode ver, ele é até "
+"maior que o anterior."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono3.html:8
@@ -4803,6 +4804,8 @@ msgid ""
 "You thus have to declare even more methods to use the repetitions of the "
 "pattern and factorize your code.  Your turn..."
 msgstr ""
+"Portanto você tem que declarar até mais métodos para usar as "
+"repetições do padrão e fatorar seu código. Sua vez..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:4
@@ -4818,6 +4821,19 @@ msgid ""
 "the computation is done (the method is not further executed), and that the "
 "result is the the value following the <code>return</code> keyword."
 msgstr ""
+"Escrever um método que retorna um resultado não é realmente mais "
+"trabalhoso que escrever um método que não retorna nada.  [!java]Você "
+"simplesmente tem que especificar o tipo de dado dos resultados "
+"esperados antes do nome do método (onde até aqui tínhamos "
+"<code>void</code>).[/!] [!scala]Você tem que simplesmente adicionar "
+"uma coluna (:) depois dos parêntesis e escrever o tipo de dado que seu "
+"método vai retornar, e adicionar um sinal de igualdade (=). Esta "
+"sintaxe é mais próxima de definir uma variável, com seu tipo, que "
+"realmente uma função.[/!] Você pode usar a instrução "
+"<code>return</code> em qualquer lugar no corpo do seu método para "
+"especificar que o cálculo está feito (o método pára de ser executado "
+"neste ponto), e que o resultado é o valor que segue a palavra-chave "
+"<code>return</code>."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:13
@@ -4827,6 +4843,9 @@ msgid ""
 "    return 3.14159[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]\n"
+"    return 3.14159[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:17
@@ -4835,6 +4854,10 @@ msgid ""
 "do not return any result, to interupt the computation. Of course, you should "
 "not provide any value to return in that case."
 msgstr ""
+"Na verdade, você também pode usar a palavra-chave <code>return</code>\n"
+"em métodos que não retornam qualquer resultado, para interromper o\n"
+"cálculo. Obviamente que nestes casos você não passa nenhum valor para\n"
+"retornar."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:20
@@ -4849,6 +4872,17 @@ msgid ""
 "looking further when you know the method result?). So, if there is some code "
 "after a <code>return</code>, it must be an error and the compiler warns you."
 msgstr ""
+"É possível ter várias instruções <code>return</code> em várias\n"
+"ramificações de um condicional. De fato, é proibido ter um caminho de\n"
+"execução no corpo do método sem nenhum <code>return</code>, ou\n"
+"escrever algum código depois da instrução <code>return</code>. Na\n"
+"verdade, se a máquina alcança o fim do método sem encontrar qualquer\n"
+"<code>return</code>, ela não sabe o real valor que deve retornar a\n"
+"quem chamou o método. Além disto, o <code>return</code> interrompe\n"
+"imediatamente a execução do método (por que se preocupar olhando além\n"
+"quando você sabe o resultado do método?). Então, se existe algum\n"
+"código depois de um <code>return</code>, deve ser um erro e o\n"
+"compilador irá te alertar disto."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:31
@@ -4872,6 +4906,23 @@ msgid ""
 "        <span class=\"comment\"># here neither</span>\n"
 "<span class=\"comment\"># even here, forget it</span>[/!]"
 msgstr ""
+"[!java|scala][!java]boolean [/!][!scala]def [/!]livreEmFrente()[!scala]:Boolean =[/!] {\n"
+"    if (estáOlhandoParaParede() == true) {\n"
+"        return false;\n"
+"        <span class=\"comment\">/* proibido colocar código aqui */</span>\n"
+"    } else {\n"
+"        return true;\n"
+"        <span class=\"comment\">/* nem aqui */</span>\n"
+"    }\n"
+"    <span class=\"comment\">/* e nem aqui, esqueça */</span>\n"
+"}[/!][!python]def livreEmFrente():\n"
+"    if estáOlhandoParaParede() == True:\n"
+"        return False\n"
+"        <span class=\"comment\"># proibido colocar código aqui</span>\n"
+"    else\n"
+"        return True\n"
+"        <span class=\"comment\"># nem aqui</span>\n"
+"<span class=\"comment\"># e nem aqui, esqueça</span>[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:49
@@ -4881,6 +4932,11 @@ msgid ""
 "whether the row in front of the buggle contains a baggle or not. The buggle "
 "will use it to search the first row containing a baggle, and stop here."
 msgstr ""
+"Você vai mais uma vez escrever um método que o buggle vai usar. Seu\n"
+"nome deve ser <code>temBaggle</code>, e ele retorna um valor booleano\n"
+"indicando se a linha na frente do buggle contém um babble ou não. O\n"
+"buggle vai usar isto para buscar a primeira linha contendo um baggle,\n"
+"e parar nela."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:54
@@ -4889,14 +4945,22 @@ msgid ""
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
 "initial value is 'false'."
 msgstr ""
+"A forma fácil de fazer este método é usar uma variável booleana\n"
+"chamada <code>baggleAvistado</code> indicando se nós vimos ou não um\n"
+"baggle até o momento. O valor inicial é 'false'."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:58
+#, fuzzy
 msgid ""
 "Then, move 6 steps forward (the world contains 7 cells and we already are "
 "one one of them). For each cell, if it contains a baggle, we store true in "
 "<code>sawBaggle</code> (and we don't do anything but moving forward if not)."
 msgstr ""
+"Então mova 6 passos para frente (o mundo contém 7 células e nós já\n"
+"estamos em uma delas). Para cada célula, se ela contiver um baggle,\n"
+"vamos guardar true em <code>baggleVisto</code> (e se não, vamos\n"
+"simplesmente andar para frente)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:62
@@ -4904,6 +4968,8 @@ msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
 msgstr ""
+"No final, vamos nos mover 6 passos para trás, e retornar o valor de\n"
+"<code>baggleVisto</code> para quem chamou o método."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:66
@@ -4913,12 +4979,19 @@ msgid ""
 "that the world selection scrolling menu (right below the speed slider)  "
 "allows to switch the observed world."
 msgstr ""
+"Este exercício é um pouco diferente já que ele tem dois mundos\n"
+"iniciais, cada um com um objetivo específico. Seu código deve\n"
+"funcionar em ambos. Observe que o menu de seleção de mundo (logo\n"
+"abaixo do controle de velocidade) permite que você alterne entre os\n"
+"mundos."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:71
 msgid ""
 "When your method <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
+"Quando seu método <code>temBaggle</code> funcionar, siga para o\n"
+"próximo exercício."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:4
@@ -4943,6 +5016,11 @@ msgid ""
 "name. Then, you can use them in the method body as if it were variables "
 "defined in there, and which initial value is what the caller specified."
 msgstr ""
+"Felizmente, é possível passar <b>parâmetros</b> para seus\n"
+"métodos. Você tem que especificar o tipo e nome entre parêntesis\n"
+"depois do nome do método. Então, você pode usá-los no corpo do método\n"
+"como se eles fossem variáveis definidas lá, e com valores iniciais que\n"
+"o \"caller\" especificou."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:15
@@ -4952,6 +5030,9 @@ msgid ""
 "     return x / 2[!java];[/!]\n"
 "[!scala|java]}[/!]"
 msgstr ""
+"[!java]double [/!]dividirPorDois([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+"     return x / 2[!java];[/!]\n"
+"[!scala|java]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:19
@@ -4959,12 +5040,14 @@ msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
 msgstr ""
+"Como o \"caller\", você deve especificar o valor inicial destas\n"
+"\"variáveis\" entre parêntesis na chamada."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:21
 #, no-wrap
 msgid "[!java]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java];[/!]"
-msgstr ""
+msgstr "[!java]double [/!][!scala]val [/!]result = dividirPorDois(3.14)[!java];[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:23
@@ -4972,6 +5055,8 @@ msgid ""
 "If you want several parameters, you need to separate them with comas (,)  "
 "both in the declaration and calls."
 msgstr ""
+"Se você quiser vários parâmetros, você precisa separar eles com\n"
+"vírgulas (,) tanto na declaração quanto na chamada."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:26
@@ -4983,6 +5068,11 @@ msgid ""
 "     return x / y[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]double dividir(double x, double y) {[/!]\n"
+"[!scala]def dividir(x:Double, y:Double): Double = {[/!]\n"
+"[!python]def dividir(x, y):[/!]\n"
+"     return x / y[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:31
@@ -4992,6 +5082,9 @@ msgid ""
 "[!scala]val res = divide(3.14 , 1.5)[/!]\n"
 "[!python]res = divide(3.14 , 1.5)[/!]"
 msgstr ""
+"[!java]double res = dividir(3.14 , 1.5);[/!]\n"
+"[!scala]val res = dividir(3.14 , 1.5)[/!]\n"
+"[!python]res = dividir(3.14 , 1.5)[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/args/MethodsArgs.html:35
@@ -4999,7 +5092,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
 #: src/lessons/recursion/square/FourSquare.html:28
 msgid "[!java|scala]"
-msgstr ""
+msgstr "[!java|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:36
@@ -5008,6 +5101,9 @@ msgid ""
 "they don't have the same <b>signature</b>, that is, the same amount of "
 "parameters and the same parameters' types."
 msgstr ""
+"Em [!thelang], você pode declarar vários métodos de mesmo nome desde\n"
+"que eles não tenham a mesma <b>assinatura</b>, ou seja, a mesma\n"
+"quantidade e tipo de parâmetros."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:40
@@ -5034,6 +5130,26 @@ msgid ""
 "  return z;\n"
 "}"
 msgstr ""
+"[!java]double max(double x, double y)[/!][!scala]def max(x:Double, y:Double): Double =[/!] {\n"
+"  if (x > y) {\n"
+"    return x;\n"
+"  }\n"
+"  return y;\n"
+"}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, y:Int): Int =[/!] {\n"
+"  if (x > y) {\n"
+"    return x;\n"
+"  }\n"
+"  return y;\n"
+"}\n"
+"[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, y:Int, z:Int): Int =[/!] {\n"
+"  if (x > y && x > z) {\n"
+"    return x;\n"
+"  }\n"
+"  if (y > z) {\n"
+"    return y;\n"
+"  }\n"
+"  return z;\n"
+"}"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:61
@@ -5044,6 +5160,13 @@ msgid ""
 "Int):Int[/!]</code>, we know that <code>x&lt;=y</code> because otherwise, "
 "the <tt>return</tt> of line 2 would have stopped the execution."
 msgstr ""
+"Observe que nós omitimos os ramos <tt>else</tt> de cada\n"
+"<tt>if</tt>. Isto funciona de qualquer jeito por que um\n"
+"<tt>return</tt> interrompe a execução do método. Se nós chegarmos à\n"
+"última linha de\n"
+"<code>[!java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>,\n"
+"vamos saber que <code>x&lt;=y</code> por que de outra forma, o\n"
+"<tt>return</tt> da linha 2 deveria ter parado a execução."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:71
@@ -5065,7 +5188,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:2
 msgid "Flower Pot"
-msgstr ""
+msgstr "Vaso de Flores"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:4
