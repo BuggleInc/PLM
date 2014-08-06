@@ -2,9 +2,10 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Construindo metodicamente</h2>
 
-We now would like to learn the buggle to build a doghouse. The naive
-approach consists in directly writing the needed code as follows.  This
-works because the buggle of this exercise leaves a red path as it moves.
+Agora nós queremos ensinar ao buggle como construir uma casa de cachorro. A
+abordagem simplória consiste em escrever diretamente o código necessário
+como segue. Isto funciona por que o buggle deste exercício deixa um caminho
+vermelho à medida em que anda.
 
 <pre>[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
 [!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
@@ -19,29 +20,31 @@ left()[!java|c];[/!]
 [!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
 left()[!java|c];[/!]</pre>
 
-<p>It becomes harder when we want to draw two doghouses: we have to rewrite the
-same code twice, which is not really handy. When the code becomes a bit long
-as this one, it becomes easier to see why we insist since a while on the
-pure evilness that code duplication represents. Indeed, if you realize that
-an error sneaked into a code that you copied at several locations, you will
-have to fix it several times. And mind your back if you forget one of these
-locations.</p> 
+<p>Vai ficar mais difícil se tivermos que desenhar duas casas de cachorro:
+teremos que reescrever o mesmo código duas vezes, o que não é muito
+prático. Quando o código se torna um pouco longo como este, torna-se fácil
+ver por que nós insistimos já tem um tempinho namais pura maldade que
+duplicação de código representa. Na verdade, imagine um erro que se
+infiltrou no código que você copiou para vários lugares, você vai ter que
+corrigir várias vezes. E ai de você se esquercer de corrigir num destes
+lugares.</p> 
 
-<p>There is even a name to this good principle in programming: DRY/SPOT, which
-means "Don't Repeat Yourself / Single Point Of Truth". The latter part means
-that each information must be written in only one location of your program
-to avoid the differing locations to get out of synch when you modify your
-code.</p>
+<p>Existe até um nome para esta boa prática de programação: DRY/SPOT, que em
+inglês significa "Don't Repeat Yourself / Single Point Of Truth" (não se
+repita/ponto único de confiança). A última parte significa que cada
+informação deve ser escrita em apenas um local de seu programa para evitar
+que diferentes locais fiquem desincronizados quando você modificar o código.</p>
 
-<p>So, let's apply this good principle and <b>factorize our code</b>, ie to
-write it only once, for example in a method. You should even to go further
-by factorizing the method body with a <code>for</code> loop, as seen
-previously.  If you do it correctly (what you should), you can use the
-method <code>left()</code> only once.</p>
+<p>Portanto, vamos aplicar este bom princípio de programação e <b>fatorizar seu
+código</b>, ie escrever ele apenas uma vez, por exemplo em um método. Você
+pode ir até mais longe fatorizando o corpo do método com um loop
+<code>for</code>, como visto anteriormente. Se você faz isto corretamente (o
+que se espera), dá para você usar o método <code>esquerda()</code> apenas
+uma vez.</p>
 
 <h3>Objetivo do exercício</h3>
-<p>The goal of this exercise is to write a method called <code>dogHouse</code>
-achieving the same result than the code above, but with a for loop to keep
-it short.  The buggle will call your creation to create several dog houses
-around its world. </p>
+<p>O objetivo deste exercício é escrever um método chamado
+<code>casaDeCachorro</code> que faz a mesma coisa que o código acima, mas
+com um loop for para mantê-lo curto. O buggle vai chamar sua criação para
+construir várias casas de cachorro neste mundo. </p>
 

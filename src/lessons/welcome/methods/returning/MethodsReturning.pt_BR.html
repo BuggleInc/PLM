@@ -17,19 +17,22 @@ result is the the value following the <code>return</code> keyword.</p>
     return 3.14159[!java|c];[/!]
 [!java|scala|c]}[/!]</pre>
 
-<p>Actually, you can also use that <code>return</code> keyword in methods that
-do not return any result, to interupt the computation. Of course, you should
-not provide any value to return in that case.</p>
+<p>Na verdade, você também pode usar a palavra-chave <code>return</code>
+em métodos que não retornam qualquer resultado, para interromper o
+cálculo. Obviamente que nestes casos você não passa nenhum valor para
+retornar.</p>
 
-<p>It is possible to have several <code>return</code> instructions in several
-branches of a conditional. In fac, it is forbidden to have any execution
-path of your body without any <code>return</code>, or to write some code
-after the <code>return</code> instruction. Indeed, if the machine reaches
-the end of the method without finding any <code>return</code>, it cannot
-know what actual value to give back to the method caller.  Moreover,
-<code>return</code> interrupts immediately the method execution (why bother
-looking further when you know the method result?). So, if there is some code
-after a <code>return</code>, it must be an error and the compiler warns you.</p>
+<p>É possível ter várias instruções <code>return</code> em várias
+ramificações de um condicional. De fato, é proibido ter um caminho de
+execução no corpo do método sem nenhum <code>return</code>, ou
+escrever algum código depois da instrução <code>return</code>. Na
+verdade, se a máquina alcança o fim do método sem encontrar qualquer
+<code>return</code>, ela não sabe o real valor que deve retornar a
+quem chamou o método. Além disto, o <code>return</code> interrompe
+imediatamente a execução do método (por que se preocupar olhando além
+quando você sabe o resultado do método?). Então, se existe algum
+código depois de um <code>return</code>, deve ser um erro e o
+compilador irá te alertar disto.</p>
 
 <pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
     if (isFacingWall() == [!java|scala]true[/!][!c]1[/!]) {
@@ -49,27 +52,30 @@ after a <code>return</code>, it must be an error and the compiler warns you.</p>
         <span class="comment"># here neither</span>
 <span class="comment"># even here, forget it</span>[/!]</pre>
 
-<h3>Objetivo do exercício</h3>You will once again write a method that the buggle will use. Its name must
-be <code>haveBaggle</code>, and it returns a boolean value indicating
-whether the row in front of the buggle contains a baggle or not. The buggle
-will use it to search the first row containing a baggle, and stop here.
+<h3>Objetivo do exercício</h3>Você vai mais uma vez escrever um método que o buggle vai usar. Seu
+nome deve ser <code>temBaggle</code>, e ele retorna um valor booleano
+indicando se a linha na frente do buggle contém um babble ou não. O
+buggle vai usar isto para buscar a primeira linha contendo um baggle,
+e parar nela.
 
-<p>The easier for this method is to use a boolean variable called
-<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It
-initial value is 'false'.</p>
+<p>A forma fácil de fazer este método é usar uma variável booleana
+chamada <code>baggleAvistado</code> indicando se nós vimos ou não um
+baggle até o momento. O valor inicial é 'false'.</p>
 
 <p>Then, move 6 steps forward (the world contains 7 cells and we already are
 one one of them). For each cell, if it contains a baggle, we store true in
 <code>sawBaggle</code> (and we don't do anything but moving forward if not).</p>
 
-<p>At the end, we move back by 6 steps, and we return the value of
-<code>seenBaggle</code> to the caller.</p>
+<p>No final, vamos nos mover 6 passos para trás, e retornar o valor de
+<code>baggleVisto</code> para quem chamou o método.</p>
 
 
-<p>This exercise is a bit different since there is two initial worlds, each
-with a specific objective. Your code must work for each of them. Observe
-that the world selection scrolling menu (right below the speed slider)
-allows to switch the observed world. </p>
+<p>Este exercício é um pouco diferente já que ele tem dois mundos
+iniciais, cada um com um objetivo específico. Seu código deve
+funcionar em ambos. Observe que o menu de seleção de mundo (logo
+abaixo do controle de velocidade) permite que você alterne entre os
+mundos. </p>
 
-<p>When your method <code>haveBaggle</code> works, proceed to next exercise.</p>
+<p>Quando seu método <code>temBaggle</code> funcionar, siga para o
+próximo exercício.</p>
 

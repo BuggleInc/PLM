@@ -1,25 +1,24 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Tracks of buggles</h2>
+<h2>Trilhas de buggles</h2>
 
-<p>Your buggle got lost in a strange maze, and you must help it to find the
-exit that is represented in orange.  You cannot simply explain the path to
-the exit in something like <code>right();forward;forward();forward()</code>
-because you have to save two buggles at the same time, that are lost in
-similar but not identical worlds.  You can switch to the other world by
-using the combobox above the world representation (where it's written 'Deep
-Forest' right now), and selecting the other entry (that should read 'Deeper
-Forest').</p>
+<p>Seu buggle se perdeu num estranho labirinto, e você deve ajudá-lo a achar a
+saída que está representada em laranja. Você não pode simplesmente explicar
+o caminho para a saída com algo do tipo
+<code>direita();frente();frente()</code> por que você tem que salvar dois
+buggles ao mesmo tempo, que estão presos em mundos similares mas não
+iguais. Você pode alternar para o outro mundo usando o combobox acima da
+representação do mundo (onde está escrito 'Floresta Fechada' agora), e
+selecionar a outra entrada (que deve ler 'Floresta Mais Fechada').</p>
 
-<p>The good news is that the path to the exit is written on the ground. As you
-can see, the world is made of several corridors, with baggles on the
-ground. After each corridor, you should turn left if the corridor contains
-three baggels or more, and you have to turn right if there is only 2 baggles
-or less.</p>
+<p>A boa nova é que o caminho para a saída está desenhado no chão. Como você
+pode ver, o mundo é feito de vários corredores, com baggles no chão. Depois
+de cada corredor, você deve virar à esquerda se o corredor tiver três
+baggels ou mais, e virar a direita se tiver apenas 2 ou menos baggles.</p>
 
-<p>You should count exactly 5 cells per corridor, the one at the intersection
-counting as the last cell of the previous corridor, not as the first cell
-after your turn. </p>     
+<p>Você deve contar exatamente 5 células por corredor. Aquela com a intersecção
+conta como a última do corredor anterior, não como a primeira depois de você
+virar. </p>     
 
 <p>So, the general form of your code must be something like "while I did not
 find the exit, take the next corridor to decide whether I should turn left
@@ -41,19 +40,19 @@ true) before we actually use the value returned by <code>crossing()</code>
 to determine to continue or not.[/!]</p>
 
 [!python]
-<pre>firstTime = True
-while firstTime or not crossing():
-  firstTime = False
-  (your body)
+<pre>primeiraVez = True
+while primeiraVez or not cruzamento():
+  primeiraVez = False
+  (seu corpo)
 </pre>
 [/!] 
 
-<p><div class="tip" id="tip-1" alt="I cannot imagine how to count the baggles I see.">
-You need a variable that is initialized to 0, and incremented each time you
-see a baggle on the ground. A variable used this way is often called
-<i>counter</i>.<br/><br/>
-Don't forget to reset your counter to 0 at the beginning of each corridor! 
+<p><div class="tip" id="tip-1" alt="Eu não consigo imaginar como contar os baggles que eu vejo.">
+Você precisa de uma variável que é inicializada em 0, e incrementada cada
+vez que você vê um baggle no chão. Uma variável usada desta forma é
+frequentemente chamada de <i>contador</i>.<br/><br/>
+Não esqueça de resetar seu contador para 0 no começo de cada corredor! 
 </div></p>
 
-<p>Oh, and when you reach the exit, don't forget to take an extra step to
-actually exit the maze!</p> 
+<p>Ah, e quando chegar na saída, não esqueça de dar um passo a mais para sair
+de fato do labirinto!</p> 

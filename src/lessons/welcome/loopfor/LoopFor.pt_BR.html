@@ -2,15 +2,16 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Loops for</h2>
 
-<p>While loops are well adapted to situations where you want to achieve an
-action while a condition stays true, but it is less adapted to achieve a
-given action a predetermined amount of time. For example, when we wanted to
-move <code>stepAmount</code> steps backward in a previous exercise, we had
-to create a new variable, initialize it, and move backward while
-incrementing this variable until it became equal to <code>stepAmount</code>.</p> 
+<p>loops 'while' são bem adaptados a situações onde você precise realizar uma
+ação enquanto uma condição se mantém verdadeira, mas são menos preparados
+para realizar uma ação num número de vezes predeterminado. Por exemplo,
+quando nós quisemos nos mover <code>quantidadeDePassos</code> para trás num
+exercício anterior, nós tivemos que criar uma nova variável, inicializar ela
+e mover para trás enquanto aumentávamos esta variável até ela se tornar
+igual a <code>quantidadeDePassos</code>.</p> 
 
-<p>In such situations, <code>for</code> loops become handy. Their syntax is the
-following:</p> 
+<p>Em tais situações, loops <code>for</code> se tornam úteis. Suas sintaxes são
+as seguintes:</p> 
 <pre>[!java|c]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
     <b>action</b>();
 }[/!][!python]for <b>variable</b> in <b>sequence of values</b>:
@@ -31,7 +32,7 @@ for (stepper=0; stepper&lt;n; stepper++) {
     <b>action</b>();
 }[/!]</pre>
 
-<p>This code is then perfectly equivalent to the following one.</p>
+<p>Este código é então complemtamente equivalente ao seguinte.</p>
 <pre>[!java|c]int stepper = 0;
 while (stepper &lt; n) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
@@ -46,37 +47,37 @@ while (stepper &lt;= n) {
     stepper = stepper + 1
 }[/!]</pre>
 
-<p>The <code>for</code> loop is easier to read, don't you think?</p>
+<p>O loop <code>for</code> é fácil de ler, não acha?</p>
 
 [!java|c]
-<p>It is possible to build more advanced <tt>for</tt> loops since any valid
-instruction can be used as initialization, condition and incrementing
-instruction. The following example is a bit extreme as there is no need for
-a loop body to move the buggle forward until it reaches the wall, but it
-works well: all the work is done in the condition and incrementing
-instruction.</p>
+<p>É possível construir loops <tt>for</tt> mais avançados já que qualquer
+instrução válida pode ser usada como inicialização, condição e instrução de
+incrementação. O exemplo seguinte é um pouco extremo pois não existe
+necessidade para um corpo de loop mover um buggle para frente até ele
+alcançar a parede, mas funciona bem: todo o trabalho é feito nas instruções
+de condição e incremento.</p>
 
-<pre>for (; !isFacingWall() ; forward()) { 
-   <span class="comment">/* nothing in the loop body */</span>
+<pre>for (; !estáOlhandoParaParede() ; avançar()) { 
+   <span class="comment">/* nada no corpo do loop */</span>
 }
-<span class="comment">/* the buggle now faces a wall */</span></pre>
+<span class="comment">/* o buggle agora está de cara para uma parede */</span></pre>
 [/!] [!scala]
-<p>If you want to nest several loops, you can do it on one line in Scala. This
-means that the two following chunks are equivalent:</p>
-<pre>for (stepper1 &lt;- 1 to n) {
-    for (stepper2 &lt;- 1 to m) {
-       actions()
+<p>Se você quer aninhar vários loops, você pode fazer isto em uma linha no
+Scala. Isto significa que os dois blocos seguintes são equivalentes:</p>
+<pre>for (iterador1 &lt;- 1 to n) {
+    for (iterador2 &lt;- 1 to m) {
+       ações()
     }
 }</pre> 
-<pre>for (stepper1 &lt;- 1 to n; stepper2 &lt;- 1 to m) { <span class="comment">// Simply separate both loop conditions with a semi-column</span>
-    actions()
+<pre>for (iterador1 &lt;- 1 to n; iterador2 &lt;- 1 to m) { <span class="comment">// Simplesmente separe as duas condições de loop com um ponto-e-vírgula</span>
+    ações()
 }</pre> 
 [/!]
 
 <h3>Objetivo do exercício</h3>
-<p> You now have to redo the same exercise than previously (move forward until
-being over a baggle, pick it up, move back to your original location, drop
-the baggle), but using a <code>for</code> loop instead of a
-<code>while</code> loop to move back to the initial location.</p>
+<p> Você agora tem que refazer o mesmo exercício de antes (mover para frente até
+estar sobre um baggle, pegá-lo, mover para trás até a localização original,
+soltar o baggle), mas usando um loop <code>for</code> no lugar de um loop
+<code>while</code> para mover de volta ao local inicial.</p>
 
-<p>Once done, you can proceed to next exercise.</p>
+<p>Uma vez feito, você pode seguir para o próximo exercício.</p>

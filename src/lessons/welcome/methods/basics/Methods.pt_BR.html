@@ -3,8 +3,8 @@
 <h2>Métodos</h2>
 
 <p>
-We will now write our own methods. It somehow comes down to extending the
-buggle vocabulary by learning it new tricks. 
+Nós vamos agora escrever nossos próprios métodos. Isto é como extender o
+vocabulário do buggle ensinando novos truques. 
 </p>
 <p>For example, we saw in a previous exercise how to ask the buggle to go get
 the baggle in front of it, and bring it back. If there is several baggles on
@@ -15,10 +15,10 @@ understandable.  It would be better if the buggle could obey an
 <code>goAndGet()</code> order just like it understands a
 <code>[!c]stepForward()[/!][!scala|java|python]forward()[/!]</code> one.</p>
 
-<h3>Defining methods</h3>
+<h3>Definindo métodos</h3>
 
-<p>The [!thelang] syntax to write a simple method called <code>goAndGet</code>
-is the following:</p>
+<p>A sintaxe de [!thelang] para escrever um método simples chamado
+<code>vaiEPega</code> é a seguinte:</p>
 <pre>[!java|c]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
   actions()[!java|c];[/!]
   to()[!java|c];[/!]
@@ -37,49 +37,53 @@ the buggle is located over a baggle. We will soon learn to define such
 methods too. For now, just write <code>void</code> at this location.[/!]
 </p>
 
-<h3>Documenting methods</h3>
+<h3>Documentando métodos</h3>
 
-<p>You should strive to document your code to keep it readable. When you write
-it, its purpose and limitations are clear to you, but most of the time, this
-does not last for long. You will soon forget about the details of every
-specific method, and this day you will be happy to read its
-documentation. In the following example, we use the specific formalism of
-[!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], a program that
-extracts the documentation of [!thelang] source code to produce html
-pages. The main advantage is that it allows to keep the documentation near
-to the code.  So, when you change your code, you have less chances to forget
-to update the documentation.</p>
+<p>Você deve se esforçar para documentar seu código para mantê-lo
+legível. Quando você escreve código, fica claro o objetivo e as limitações,
+mas na maioria das vezes, isto é esquecido. Você rapidamente esquecerá dos
+detalhes de cada método específico, e vai chegar o dia em que você ficará
+feliz em ler a documentação. No exemplo seguinte, nós usamos o formalismo
+específico de [!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], um
+programa que extrai a documentação do código-fonte de [!thelang] e produz
+páginas html. A principal vantagem é que ele permite que a documentação
+fique junto ao código. Então, quando você mudar o código, você tem menos
+chances de esquecer de atualizar a documentação.</p>
 
-<p>[!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] comments begin with the
-<code>/**</code> marker (with two asterisks). They must be placed right
-before the method they document for the tool to find them.[/!]
-[!python]pydoc comments should be placed at the beginning of the method body
-so that the tool finds them. They should be placed between <code>"""</code>,
-which mark multi-line strings in python.[/!] The first line should be a
-brief description of what this method does while any subsequent lines should
-provide any important details about the method.</p>
+<p>comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!]
+começam com a marca <code>/**</code> (com dois asteriscos). Eles devem
+ser colocados exatamente antes do método que documentam para a
+ferramenta encontrá-los.[/!] [!python]comentários pydoc devem ser
+colocados no começo do corpo do método de forma que a ferramenta possa
+encontrá-los. Eles devem ser colocados entre <code>"""</code>, que
+marcam strings multilinhas em python.[/!] A primeira linha deve ser
+uma breve descrição do que o método faz enquanto que as linhas
+subsequentes devem fornecer qualquer detalhes importantes sobre o
+método.</p>
 
 <pre>[!java|scala]/**
- *  Go, retrieves the baggle in front of the buggle, and brings it back 
+ *  Vai, recupera o baggle na frente do buggle, e trás de volta 
  *
- *   Does not check for walls, so be careful to not call it when walls are present.
+ *  Não verifica se tem paredes, então cuidado para não chamar ele
+ *  quando uma parede estiver presente.
  */[/!]
-[!java]void goAndGet() {[/!]
-[!scala]def goAndGet() {[/!]
-[!python]def goAndGet():
-  """Go, retrieves the baggle in front of the buggle, and brings it back.
+[!java]void vaiEPega() {[/!]
+[!scala]def vaiEPega() {[/!]
+[!python]def vaiEPega():
+  """Vai, recupera o baggle na frente do buggle, e trás de volta.
 
-  Does not check for walls, so be careful to not call it when walls are present."""[/!]
-  actions()[!java];[/!]
+  Não verifica se tem paredes, então cuidado para não chamar ele quando uma parede estiver presente."""[/!]
+  ações()[!java];[/!]
   to()[!java];[/!]
   do()[!java];[/!]
 [!java|scala]}[/!]</pre>
 
-<h3>Naming conventions</h3>
-<p>Most programming language forbid the use of spaces in method and variable
-identifiers (=their names).  Accented letters are sometimes allowed (as in
-[!thelang]), but they can lead to portability issues between operating
-systems and should thus be avoided when possible.</p>
+<h3>Convenções de nomes</h3>
+<p>A maioria das linguagens de programação proíbe o uso de espaços em
+indentificadores de métodos e variáveis (=seus nomes).  Letras acentuadas
+são algumas vezes permitidas (como em [!thelang]), mas elas geram problemas
+de portabilidade entre sistemas operacionais e devem ser evitadas sempre que
+possível.</p>
 
 <p>Across all programming languages, there is two main conventions to name
 variables and methods. The first one, consists in concatenating all words
@@ -89,27 +93,29 @@ graphically remind of a camel back. The other convention, called snake_case,
 is to write every words in lower case, separated with underscores symbols
 (_). "go and get" becomes go_and_get().</p>
 
-<p>Which convention to use is the topic of heated discussion across developers,
-but each programming language has its own habits. In Python, Perl and the C
-language, the snake_case is often used for methods and variables. Java and
-Scala prefer the lowerCamelCase (the very first letter is lower case) for
-that.</p> 
-<p>The CamelCase convention is used everywhere in PLM because this program is
-written in Java itself, so we kept our habits when adding new languages. But
-the fact that the Python bindings of PLM use the CamelCase instead of the
-snake_case is considered as a bug that we will fix in further releases.</p>
+<p>Que convenção usar é o tópico de discussões acaloradas entre
+desenvolvedores, mas cada linguagem de programação tem seus próprios
+hábitos. Em Python, Perl e C, o snake_case é normalmente usado para métodos
+e variáveis. Java e Scala preferemo lowerCamelCase (só a primeira letra
+inicial é minúscula) para isto.</p> 
+<p>A convenção CamelCase é sempre usada no PLM por que este programa foi
+escrito em Java, então mantivemos o hábito quando inserimos novas
+linguagens. Mas o fato de os vínculos Python do PLM usarem CamelCase e não
+snake_case é considerado um bug que será corrigido em algum lançamento
+futuro.</p>
 
 <h3>Objetivo do exercício</h3>
-<p>The goal of this exercise is to write a method called
-<code>goAndGet()</code> which does the same than in a previous exercises
-(move forward until over a baggle, pick it up, move back to initial
-position, drop baggle).</p>
+<p>O objetivo deste exercício é escrever um método chamado
+<code>vaiEPega()</code> que faça a mesma coisa que foi feita num exercício
+anterior (vai para a frente até estar sobre um baggle, pega ele, vai para
+trás até a posição inicial e solta o baggle).</p>
 
-<p>This exercise is a bit different because you will not write all of the code
-executed by the buggle. Instead, you should only write one method that is
-called automagically added when you click on <b>Start</b>. Your buggle calls
-your <code>goAndGet()</code> method on each row, until the baggle is found.</p> 
+<p>Este exercício é um pouco diferente por que você não vai precisar escrever
+todo o código executado pelo buggle. Ao invés disto, você deve apenas
+escrever um método que será chamado automagicamente quando você clica em
+<b>Iniciar</b>. Seu buggle vai chamar seu método <code>vaiEPega()</code> em
+cada linha, até que o baggle seja encontrado.</p> 
 
-<p>But for that to work, you have to actually write this
-<code>goAndGet()</code> method now.</p>
+<p>Mas para isto funcionar, você tem que na verdade escrever este método
+<code>vaiEPega()</code> agora.</p>
 

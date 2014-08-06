@@ -2,11 +2,11 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Instruções condicionais</h2>
 
-Programas feito simplesmente de um conjunto de instruções similares ao
-do exercício anterior são bastante chatos. Eles sempre fazem a mesma
-coisa, e não reajem a condições externas. Um <b>condicional</b> faz o
-programa se adaptar fazendo coisas do tipo <i>se está chovendo, pegue
-um guarda-chuva</i>. 
+Programas feito simplesmente de um conjunto de instruções similares ao do
+exercício anterior são bastante chatos. Eles sempre fazem a mesma coisa, e
+não reajem a condições externas. Um <b>condicional</b> faz o programa se
+adaptar fazendo coisas do tipo <i>se está chovendo, pegue um
+guarda-chuva</i>. 
 
 <p>A sintaxe de [!thelang] é a seguinte:</p>
 
@@ -18,17 +18,17 @@ um guarda-chuva</i>.
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]
 <b>whatToDoAnyway()[!java|c];[/!]</b></pre>
 
-<p>Se a condição for verdade, o código do próximo bloco será executado e
-então o resto do código continua. Se a condição for falsa, o próximo
-bloco é ignorado e a execução continua depois disto. O bloco
-condicional pode conter várias instruções, pode até mesmo conter
-outros testes, com seus próprios sub-testes.</p>
+<p>Se a condição for verdade, o código do próximo bloco será executado e então
+o resto do código continua. Se a condição for falsa, o próximo bloco é
+ignorado e a execução continua depois disto. O bloco condicional pode conter
+várias instruções, pode até mesmo conter outros testes, com seus próprios
+sub-testes.</p>
 
 <p>Neste exemplo, as instruções <code>oQueFazerSeForVerdade()</code> e
-<code>oQueFazerDepoisSeForVerdade()</code> serão executadas se e
-somente se a condição for verdadeira, mas a instrução
-<code>oQueFazerDeUmJeitoOuDeOutro()</code> vai ser executada se a
-condição for verdadeira ou não. 
+<code>oQueFazerDepoisSeForVerdade()</code> serão executadas se e somente se
+a condição for verdadeira, mas a instrução
+<code>oQueFazerDeUmJeitoOuDeOutro()</code> vai ser executada se a condição
+for verdadeira ou não. 
 </p>
 
 <p>In [!thelang], the blocks of code are [!java|scala|c]enclosed between curly
@@ -51,8 +51,8 @@ up so that working on your code remains pleasant and productive.</p>
 
 
 <p class="python">Todas as indentações de um dado bloco devem ser consistentes, e não é
-possível cortar um bloco. os dois códigos a seguir estão incorretos e
-devem resultar em erro.</p>
+possível cortar um bloco. os dois códigos a seguir estão incorretos e devem
+resultar em erro.</p>
 <pre class="python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># one space too much </span>
@@ -110,15 +110,14 @@ conjunction of both propositions cannot be true).</li>
 of both propositions cannot be true).</li>
   <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if
 <tt>cond</tt> is false.</li>
-  <li>Quando a expressão se torna complicada, é melhor adicionar parêntesis
-para forçar a ordem de cálculo. Não hesite em adicionar mais
-parêntesis para remover ambiguidades que apareçam na expressão.</li>
+  <li>Quando a expressão se torna complicada, é melhor adicionar parêntesis para
+forçar a ordem de cálculo. Não hesite em adicionar mais parêntesis para
+remover ambiguidades que apareçam na expressão.</li>
 </ul> 
 
-<p>Por fim, é possível especificar o que fazer quando a condição é falsa
-usando a seguinte sintaxe. Neste caso, a instrução
-<code>oQueFazerSeForFalso</code> será executada apenas se a condição
-for falsa.</p>
+<p>Por fim, é possível especificar o que fazer quando a condição é falsa usando
+a seguinte sintaxe. Neste caso, a instrução <code>oQueFazerSeForFalso</code>
+será executada apenas se a condição for falsa.</p>
  <pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
@@ -128,19 +127,18 @@ for falsa.</p>
 else:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</pre>
 
-<p class="Python">Não esqueça do dois-pontos (:) depois do else, ele indica que um novo
-bloco está começando.</p>
+<p class="Python">Não esqueça do dois-pontos (:) depois do else, ele indica que um novo bloco
+está começando.</p>
 
-<h3>Objetivo do exercício</h3><a name="Objectives"/> Se o buggle está de cara numa parede, você deve
-se mover um passo para trás. Se não, você deve se mover um passo para
-frente. para detectar se você está de cara para uma parede,
-simplesmente use a função pré-fabricada
-<code>estáOlhandoParaParede()</code>,
-que todo buggle entende. 
+<h3>Objetivo do exercício</h3><a name="Objectives"/> Se o buggle está de cara numa parede, você deve se
+mover um passo para trás. Se não, você deve se mover um passo para
+frente. para detectar se você está de cara para uma parede, simplesmente use
+a função pré-fabricada <code>estáOlhandoParaParede()</code>, que todo buggle
+entende. 
 
 <p>Este exercício é um pouco diferente: seu código tem que funcionar para
-vários buggles, cada um começando numa posição diferente. O mesmo
-código será executado para cada um deles.</p>
+vários buggles, cada um começando numa posição diferente. O mesmo código
+será executado para cada um deles.</p>
 
 <p>Quando seu programa funcionar, vá para o próximo exercício, que está
 escondido numa sub-árvore da janela de seleção.</p>

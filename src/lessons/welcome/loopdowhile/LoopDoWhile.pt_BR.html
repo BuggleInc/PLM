@@ -2,49 +2,49 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Loops Do .. while (faça .. enquanto)</h2>
 
-<p>Some cells of the world are yellow, but your buggle cannot stand being in
-such cells. Write the necessary code to move forward until the ground gets
-white. For that, use the provided method <code>isGroundWhite()</code>.</p>
+<p>Algumas células do mundo são amarelas, mas seu buggle não pode ficar sobre
+estas células. Escreva o código necessário para mover para a frente até que
+o chão fique branco. Para isto use o método fornecido
+<code>chãoBranco()</code>.</p>
 
-<p>The trick is that most buggles of this world are currently on this yellow
-ground that they dislike so much. That is why they are in panic, and every
-buggle rushes one cell forward, even the buggle that was not on a yellow
-cell at first. In other worlds, even if the ground is white on the first
-cell, you still want to move forward to the next cell.</p>    
+<p>O truque é que a maioria dos buggles deste mundo ficam sobre o chão amarelo
+que eles não gostam. é por isto que eles estão em pânico, e cada buggle
+"rushes" uma célula para a frente, mesmo aqueles que não estavam numa célula
+amarela no começo. Em outras palavras, mesmo se o chão for branco na
+primeira célula, você ainda vai querer se mover para a próxima célula.</p>    
 
-<p>The general idea is to do something like: </p>
-<pre>move forward until located in a white cell</pre>
+<p>A ideia geral é fazer algo como: </p>
+<pre>Mover para a frente até estar numa célula branca</pre>
 
-<p>The main difficulty is that we want this loop body to be executed once, even
-we are already on a white cell.  It would be easy to do so by duplicating
-the loop content before the actual loop, but this would be a bad idea: code
-duplication is a <b>very</b> bad habit, and you should <b>always</b> avoid
-it.</p>
+<p>A coisa mais difícil é que nós queremos executar o corpo do loop uma vez,
+mesmo se já estivermos numa célula branca. Isto é fácil duplicando o código
+do loop'antes do loop em si, mas esta é uma má ideia: diplicação de código é
+um hábito <b>muito</b> ruim, e você deve evitar isto <b>sempre</b>.</p>
 
-<p>Code duplication easily turns code maintenance into a nightmare: reading the
-code becomes difficult as the reader must ensure that no slight difference
-exist between the versions. Debugging the code becomes difficult, as bugs
-have to be fixed in all versions. Actually, every modification of the code
-becomes difficult. So, really, you should <b>always</b> strive to not
-duplicate you code if you can avoid. And the good news is that you always
-can...</p>
+<p>Duplicação de código faz da manutenção de código um pesadelo rapidamente: é
+fdifícil ler o código e o leitor tem que garantir que nenhuma pequena
+diferença exista entre as versões. Depurar o código se torna difícil, pois
+os bugs devem ser consertados em todas as versões. Na verdade, cada
+modificação do código se torna difícil. Então, na verdade, você deve
+<b>sempre</b> se esforçar para não duplicar seu código sempre que
+possível. Mas a boa notícia é que você sempre pode...</p>
 
-<h3>Executing the loop body at least once</h3>
+<h3>Executando o corpo do loop pelo menos uma vez</h3>
 [!python]
-<p>Some languages have specific constructs for that, but not the Python
-language. No problem, we can do it on our own! A good way is to have a
-dedicated variable indicating whether we are taking the loop for the first
-time or not, as follows.</p>
-<pre>firstTime = True
-while firstTime or (other conditions):
-  firstTime = False
-  (loop body)
+<p>Algumas linguagens tem construções específicas para isto, mas não a
+linguagem Python. Sem problemas, podemos fazer isto nós mesmos! Uma boa
+forma é ter uma variável dedicada indicando se estamos entrando no loop a
+primeira vez ou não, como segue.</p>
+<pre>primeiraVez = True
+while primeiraVez or (outras condições):
+  primeiraVez = False
+  (corpo do loop)
 </pre>
 
-<p>When <code>firstTime</code> is true, the loop body is executed even if the
-other conditions would imply the contrary.  Once the loop body has been
-executed once, it is set to false and never impact again the decision to
-enter the body or not.</p>
+<p>Quando <code>primeiraVez</code> é true, o corpo do loop é executado mesmo se
+as outras condições digam o contrário.  uma vez que o loop tenha sido
+executado uma vez, esta variável vira false e nunca mais impacta na decisão
+de entrar ou não no loop.</p>
 [/!] [!java|scala|c]
 <p>In a <tt>while</tt> loop, the condition is evaluated before anything else,
 and if it's false, the loop body is never evaluated. Sometimes (although not
@@ -55,6 +55,6 @@ even if the condition is initially false. For that, a variation of the
 mandatory.[/!]
 
 <pre>do {
-    <b>action()</b>[!java];[/!]
-} while (<b>condition</b>)[!java];[/!]</pre></p>
+    <b>ação()</b>[!java];[/!]
+} while (<b>condição</b>)[!java];[/!]</pre></p>
 [/!]
