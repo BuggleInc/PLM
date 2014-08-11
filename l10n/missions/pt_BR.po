@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-08-03 21:05-0300\n"
+"PO-Revision-Date: 2014-08-10 21:07-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -679,7 +679,7 @@ msgstr "[!java]void [/!]clear()"
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:47
 msgid "Removes any trail on the sheet."
-msgstr "Remove todas as trilhas do papel."
+msgstr "Remove todos os rastros do papel."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:49
@@ -1115,7 +1115,7 @@ msgstr "Procura por uma parede atrás</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estáOlhandoParaParede()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:30
@@ -1580,7 +1580,13 @@ msgid ""
 "the tracing information, I guess I could rebuild the actual call tree. That "
 "seem to be possible: 2 sec of googling gave me something like http://rejeev."
 "blogspot.com/2009/04/method-tracing.html"
-msgstr "Outro \"lead\" para colocar para funcionar seria usar lib ASM para modificar o código do estudante de forma que seu método recursivo fosse rastreado. Com o \"backtrace\" estático e a informação de rastreio, eu imaginei que poderia reconstruir a árvore de chamadas atual. Isto parecia possível: 2 segundos de google me deram isto http://rejeev.blogspot.com/2009/04/method-tracing.html"
+msgstr ""
+"Outro \"lead\" para colocar para funcionar seria usar lib ASM para\n"
+"modificar o código do estudante de forma que seu método recursivo\n"
+"fosse rastreado. Com o \"backtrace\" estático e a informação de\n"
+"rastreio, eu imaginei que poderia reconstruir a árvore de chamadas\n"
+"atual. Isto parecia possível: 2 segundos de google me deram isto\n"
+"http://rejeev.blogspot.com/2009/04/method-tracing.html"
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:80
@@ -2766,10 +2772,10 @@ msgid ""
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns true if the buggle is facing a wall, and false in the other case."
 msgstr ""
-"A condição pode também ser uma chamada para alguns métodos "
-"particulares que retornam booleano. Por exemplo, o método "
-"<code>estáOlhandoParaParede()</code> do buggle retorna verdadeiro se o "
-"buggle está olhando para uma parede, e falso caso contrário."
+"A condição pode também ser uma chamada para alguns métodos\n"
+"particulares que retornam booleano. Por exemplo, o método\n"
+"<code>estáDeFrenteParaParede()</code> do buggle retorna verdadeiro se\n"
+"o buggle está olhando para uma parede, e falso caso contrário."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:80
@@ -2880,11 +2886,11 @@ msgid ""
 "facing a wall, simply use the <code>isFacingWall()</code> built-in, that "
 "every buggle understands."
 msgstr ""
-"<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve "
-"se mover um passo para trás. Se não, você deve se mover um passo para "
-"frente. para detectar se você está de cara para uma parede, "
-"simplesmente use a função pré-fabricada <code>estáOlhandoParaParede()</code>, "
-"que todo buggle entende."
+"<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve\n"
+"se mover um passo para trás. Se não, você deve se mover um passo para\n"
+"frente. para detectar se você está de cara para uma parede,\n"
+"simplesmente use a função pré-fabricada\n"
+"<code>estáDeFrenteParaParede()</code>, que todo buggle entende."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:116
@@ -3354,7 +3360,6 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:67
-#, fuzzy
 msgid "<b>String</b>, for char strings."
 msgstr "<b>String</b>, para cadeias (strings) de caracteres."
 
@@ -3395,7 +3400,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:81
-#, fuzzy
 msgid ""
 "If you know that the value of your \"variable\" will never change (eg "
 "because it contains the screen size or some other constant value), then you "
@@ -3405,13 +3409,13 @@ msgid ""
 "the value. More interestingly, the compiler can produce faster code in some "
 "cases."
 msgstr ""
-"Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando "
-"ela contém o tamanho da tela ou outro valor constante), então você "
-"deve fazer dela um <b>valor</b> instead of a variable. Simply change "
-"the <code>var</code> keyword with the <code>val</code> one. The "
-"compiler can then check your actions and catch your error when you "
-"inadvertently modify the value. More interestingly, the compiler can "
-"produce faster code in some cases."
+"Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando\n"
+"ela contém o tamanho da tela ou outro valor constante), então você\n"
+"deve fazer dela um <b>valor</b> ao invés de uma variável. Simplesmente\n"
+"mude a palavra-chave <code>var</code> para <code>val</code>. O\n"
+"compilador pode então verificar suas ações e capturar seu erro quando\n"
+"você inadvertidamente modificar o valor. Mais interessante ainda, o\n"
+"compilador pode produzir código mais rápido em alguns casos."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:86
@@ -3491,7 +3495,9 @@ msgstr "x = 3[!java];[/!]"
 msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
-msgstr "À esquerda do símbolo de igual você pode colocar uma expressão aritmética contendo constantes, variáveis e operações."
+msgstr ""
+"À esquerda do símbolo de igual você pode colocar uma expressão\n"
+"aritmética contendo constantes, variáveis e operações."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:110
@@ -3719,16 +3725,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:20
-#, fuzzy
 msgid ""
 "For example to repeat the loop body <code>n</code> times, [!python] it is "
 "handy to use the instruction <code>range(n)</code> to generate the sequence "
 "n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]"
 msgstr ""
-"Por exemplo, para repetir o corpo do loop <code>n</code> vezes, "
-"[!python] é úil usar a instrução <code>range(n)</code> para gerar a "
-"sequencia n valores inteiros de 0 a n-1.[/!] [!java|scala] alguém deve "
-"escreve:[/!]"
+"Por exemplo, para repetir o corpo do loop <code>n</code> vezes,\n"
+"[!python] é útil usar a instrução <code>range(n)</code> para gerar a\n"
+"sequência de n valores inteiros de 0 a n-1.[/!] [!java|scala] você\n"
+"deve escrever:[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:23
@@ -3816,7 +3821,7 @@ msgid ""
 "}\n"
 "<span class=\"comment\">/* the buggle now faces a wall */</span>"
 msgstr ""
-"for (; !estáOlhandoParaParede() ; avançar()) { \n"
+"for (; !estáDeFrenteParaParede() ; avançar()) { \n"
 "   <span class=\"comment\">/* nada no corpo do loop */</span>\n"
 "}\n"
 "<span class=\"comment\">/* o buggle agora está de cara para uma parede */</span>"
@@ -3885,15 +3890,14 @@ msgstr "Uma escadaria para o Céu"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:4
-#, fuzzy
 msgid ""
 "Your buggle feels a bit depressed today, but it's currently facing a magic "
 "stair: It leads directly to heaven, and each time you walk on it, joyful "
 "colors spur all around."
 msgstr ""
-"Your buggle feels a bit depressed today, but it's currently facing a "
-"magic stair: It leads directly to heaven, and each time you walk on "
-"it, joyful colors spur all around."
+"Seu buggle está um pouco deprimido hoje, mas ele está na frente de uma\n"
+"escada mágica: Ela leva diretamente para o paraíso, e cada vez que\n"
+"você anda nela, belas cores surgem de todos os lados."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:7
@@ -4732,7 +4736,12 @@ msgid ""
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
 "in another method). It may be wise to write the <code>makeV()</code> so that "
 "it places directly the buggle in position for the next V."
-msgstr "Neste método, você deve usar os métodos <code>levantarPincel()</code> e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um método só para isto). É uma decisão inteligente escrever <code>fazerV()</code> para colocar o buggle diretamente em posição para o próximo V."
+msgstr ""
+"Neste método, você deve usar os métodos <code>levantarPincel()</code>\n"
+"e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um\n"
+"método só para isto). É uma decisão inteligente escrever\n"
+"<code>fazerV()</code> para colocar o buggle diretamente em posição\n"
+"para o próximo V."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:21
@@ -4907,7 +4916,7 @@ msgid ""
 "<span class=\"comment\"># even here, forget it</span>[/!]"
 msgstr ""
 "[!java|scala][!java]boolean [/!][!scala]def [/!]livreEmFrente()[!scala]:Boolean =[/!] {\n"
-"    if (estáOlhandoParaParede() == true) {\n"
+"    if (estáDeFrenteParaParede() == true) {\n"
 "        return false;\n"
 "        <span class=\"comment\">/* proibido colocar código aqui */</span>\n"
 "    } else {\n"
@@ -4916,7 +4925,7 @@ msgstr ""
 "    }\n"
 "    <span class=\"comment\">/* e nem aqui, esqueça */</span>\n"
 "}[/!][!python]def livreEmFrente():\n"
-"    if estáOlhandoParaParede() == True:\n"
+"    if estáDeFrenteParaParede() == True:\n"
 "        return False\n"
 "        <span class=\"comment\"># proibido colocar código aqui</span>\n"
 "    else\n"
@@ -5177,6 +5186,13 @@ msgid ""
 "<code>stepCount</code> steps if <code>forward</code> is true, and moves back "
 "of that amount of steps if the boolean is false."
 msgstr ""
+"Esta vez você vai ter que escrever um método <code> [!java]mover(int\n"
+" contaPassos,boolean paraFrente)[/!] [!scala]mover(contaPassos:\n"
+" Int,paraFrente: Boolean)[/!]\n"
+" [!python]mover(contaPassos,paraFrente)[/!] </code> que move para\n"
+" frente em <code>contaPassos</code> passos se <code>paraFrente</code>\n"
+" for true, e move para trás a mesma quantidade de passos se o booleano\n"
+" for false."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:79
@@ -5184,6 +5200,9 @@ msgid ""
 "This time, there is only one world but seven buggles, all sharing the same "
 "code.  This code should not be really problematic for you to write, actually."
 msgstr ""
+"Desta vez existe apenas um mundo mas sete buggles, todos\n"
+"compartilhando o mesmo código. Este código não deve te dar muito\n"
+"trabalho para escrever, na verdade."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:2
@@ -5197,6 +5216,9 @@ msgid ""
 "reproducing the drawing of its dreams (check the \"Objective\" tab to see "
 "it)."
 msgstr ""
+"Seu buggle decidiu plantar umas flores no pote onde vive. Você tem que\n"
+"ajudar ele a reproduzir o desenho dos sonhos dele (verifique a aba\n"
+"\"Objetivo\" para ver o sonho)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:7
@@ -5208,6 +5230,12 @@ msgid ""
 "color passed in parameter sounds like a good start, but it is probably not "
 "enough."
 msgstr ""
+"Para isto, você tem que escrever um método <code>plantarFlores()</code>\n"
+"que não recebe parâmetros e nem retorna nenhum resultado. Como o\n"
+"padrão é um pouco complexo, você deve tentar decompor este desenho em\n"
+"sub-passos de forma que seu código permaneça curto e fácil de ler. Um\n"
+"método para desenhar uma flor da cor passada como parâmetro parece um\n"
+"bom começo, mas provavelmente não é o suficiente."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:13
@@ -5216,59 +5244,67 @@ msgid ""
 "[!java|scala]The data type of these constants is <code>Color</code>, that "
 "naturally describes a particular color.[/!]"
 msgstr ""
+"Para sua informação, este método de desenho usa cinco cores que estão\n"
+"listadas abaixo.  [!java|scala]o tipo de dados destas constantes é\n"
+"<code>Cor</code>, que naturalmente descreve uma cor particular.[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:18
 msgid "<tt>Color.RED</tt>"
-msgstr ""
+msgstr "<tt>Cor.VERMELHO</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:19
 msgid "<tt>Color.PINK</tt>"
-msgstr ""
+msgstr "<tt>Cor.ROSA</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:20
 msgid "<tt>Color.CYAN</tt>"
-msgstr ""
+msgstr "<tt>Cor.CIANO</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:21
 msgid "<tt>Color.ORANGE</tt>"
-msgstr ""
+msgstr "<tt>Cor.LARANJA</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:22
 msgid "<tt>Color.GREEN</tt>"
-msgstr ""
+msgstr "<tt>Cor.VERDE</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:23
 msgid "<tt>Color.YELLOW</tt>"
-msgstr ""
+msgstr "<tt>Cor.AMARELO</tt>"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:2
+#, fuzzy
 msgid "Flower Display Case"
-msgstr ""
+msgstr "\"Display Case\" de flores"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:4
+#, fuzzy
 msgid ""
 "Whao! That's not a little pot anymore! That's a huge large flower display "
 "case! Your buggle can't help but starts flowering this gorgeous place. You "
 "should help it to prevent that it bumps into a wall..."
 msgstr ""
+"Uau! isto não é mais um potinho! É um grande \"display case\" de flores!\n"
+"Seu buggle mal pode esperar para começar a florir este belo\n"
+"lugar. Você deve ajudá-lo a \"prevent that it bumps into a wall\"..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:8
 msgid "PS: the newly used color is <code>Color.BLUE</code>."
-msgstr ""
+msgstr "PS: a cor recentemente usada é <code>Cor.AZUL</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:2
 msgid "Colorful drawing"
-msgstr ""
+msgstr "Desenho colorido"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:11
@@ -5278,12 +5314,17 @@ msgid ""
 "decomposition is to write a method in charge of drawing a V of the specified "
 "color from the current position. Its prototype can be:"
 msgstr ""
+"Se você observar cuidadosamente a figura para pintar, ela é\n"
+"constituída de quatro partes descrevendo um tipo de V usando uma cor\n"
+"diferente. Uma decomposição possível é escrever um método responsável\n"
+"por pintar um V de uma cor específica a partir da posição atual. Seu\n"
+"protótipo pode ser:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:15
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># parameter c is of type Color</span>[/!]"
-msgstr ""
+msgstr "[!java]void [/!]fazerV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># parameter c is of type Color</span>[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:17
@@ -5292,26 +5333,29 @@ msgid ""
 "Your code should probably call <code>makeV</code> with the following "
 "arguments (a different color for each call):"
 msgstr ""
+"O tipo de dados <code>Cor</code> descreve obviamente uma cor\n"
+"particular. Seu código provavelmente vai chamar <code>fazerV</code> com\n"
+"os seguintes argumentos (uma cor diferente para cada chamada):"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:21
 msgid "Color.YELLOW"
-msgstr ""
+msgstr "Cor.AMARELO"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:22
 msgid "Color.RED"
-msgstr ""
+msgstr "Cor.VERMELHO"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:23
 msgid "Color.BLUE"
-msgstr ""
+msgstr "Cor.AZUL"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:24
 msgid "Color.GREEN"
-msgstr ""
+msgstr "Cor.VERDE"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:27
@@ -5332,6 +5376,8 @@ msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
 msgstr ""
+"É recomendável escrever o código do <code>fazerV()</code> de forma que\n"
+"ele deixe o buggle na posição para o próximo V."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:36
@@ -5342,11 +5388,17 @@ msgid ""
 "keyword means more or less that anybody can call this method, which is good "
 "because the PLM infrastructure calls it directly.[/!]"
 msgstr ""
+"Agora é sua vez. tenho certeza de que você pode imaginar os outros\n"
+"métodos necessários para manter seu código simples e agradável de ler.\n"
+"Complete o método <code>run()</code> que executará uma vez.  [!java]a\n"
+"palavra-chave <code>public</code> significa mais ou menos que todo\n"
+"mundo pode chamar este método, o que é bom pois a infraestrutura do\n"
+"PLM chama ele diretamente.[/!]"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:2
 msgid "Larger colorful drawing"
-msgstr ""
+msgstr "Um desenho colorido maior"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:8
@@ -5355,6 +5407,10 @@ msgid ""
 "pattern and factorize your code. Another solution is to <i>parametrize</i> "
 "your functions to reuse the code you wrote previously by changing the size."
 msgstr ""
+"Você agora tem que declarar ainda mais métodos para usar as repetições\n"
+"de padrões e fatorizar seu código. Outra soução é <i>parametrizar</i>\n"
+"suas funções para reusar o código que você escreveu previamente\n"
+"mudando o tamanho."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:13
@@ -5364,12 +5420,12 @@ msgstr ""
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:11
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:7
 msgid "Your turn..."
-msgstr ""
+msgstr "Sua vez..."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:2
 msgid "Another Colorful Pattern"
-msgstr ""
+msgstr "Outro padrão colorido"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PatternPicture.html:4
@@ -5377,6 +5433,8 @@ msgid ""
 "Here is yet another exercise where you have to reproduce the pattern "
 "provided in the \"Objective\" tab."
 msgstr ""
+"Aqui está outro exercício onde você tem que reproduzir o padrão\n"
+"fornecido na aba \"Objetivo\"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:7
@@ -5385,19 +5443,27 @@ msgid ""
 "repeating patterns, even if the color changes, and write a method drawing "
 "each of them."
 msgstr ""
+"Este é um pouco mais difícil do que o anterior. Procure por padrões de\n"
+"repetição, mesmo se a cor mudar, e escreva um método desenhando cada\n"
+"um deles."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
 msgid "Good luck!"
-msgstr ""
+msgstr "Boa Sorte!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:4
+#, fuzzy
 msgid ""
 "Now that your <code>isFacingTrail()</code> method is working, it's time to "
 "write the code to organize the hunting party. Copy/paste your code from the "
 "previous exercise, and complete the <code>hunt()</code> method."
 msgstr ""
+"Agora que seu método <code>estáDeFrenteParaRastro()</code> está\n"
+"funcionando, é hora de escrever o código para organizar a \"hunting\n"
+"party\". Copie-e-cole seu código do exercício anterior e complete o\n"
+"método <code>hunt()</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:8
@@ -5407,6 +5473,10 @@ msgid ""
 "check whether the rest of the track is on your left or on your right, and "
 "follow it further."
 msgstr ""
+"Seguir uma trilha não é difícil: avance até você ter a trilha em\n"
+"frente a você. Se não houver trilha mais trilha em frente a você,\n"
+"verifique se o restante da trilha está a sua esquerda ou à sua\n"
+"direita, e vá nesta direção."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:12
@@ -5428,6 +5498,8 @@ msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
 "<code>pickupBaggle()</code>)."
 msgstr ""
+"Finalmente, não esqueça de capturar sua presa quando encontrá-la\n"
+"(usando <code>pickupBaggle()</code>)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/slug/SlugHunting.html:20
@@ -5436,14 +5508,23 @@ msgid ""
 "probably want to copy over the <code>isFacingTrail()</code> method that you "
 "wrote in previous exercise.  </a>"
 msgstr ""
+"<a name=\"Objetivos\"> Complete o método <code>hunt()</code>. Você\n"
+"provavelmente quer copiar por cima do método\n"
+"<code>estáDeFrenteParaRastro()</code> que você escreveu no exercício anterior.\n"
+"</a>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:4
+#, fuzzy
 msgid ""
 "Your buggle is super happy! It just found the green dribbling trail, "
 "certainly left by a big yummy slug.  At its end, the buggle is certain to "
 "entertain itself with this appetizing slug (represented as a baggle)."
 msgstr ""
+"Seu buggle está super-feliz! Ele acabou de encontrar o rastro\n"
+"\"dribbling\" verde, certamente deixada por um \"big yummy slug\".  No seu\n"
+"final, o buggle tem certeza de que vai se divertir com este\n"
+"\"appetizing slug\" (representado por um baggle)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:8
@@ -5454,9 +5535,16 @@ msgid ""
 "should make sure that this method has no <b>side effect</b>, i.e. that it "
 "does not change the state of the calling buggle nor of its world."
 msgstr ""
+"Para atingir este objetivo, você tem que escrever um método booleano\n"
+"<tt>estáDeFrenteParaRastro</tt>, que determina se estamos virados para uma\n"
+"célula verde ou não. Obviamente, se nós estivermos virados para uma\n"
+"parede, ele deve retornar falso sem \"bumping\" nela. Você deve se\n"
+"certificar que este método não tem <b>efeitos colaterais</b>, i.e. que\n"
+"ele não muda o estado do \"calling buggle\" ou do mundo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:13
+#, fuzzy
 msgid ""
 "Your tool to that end is the <code>getGroundColor()</code> that returns the "
 "color of the current cell. Just go to the cell you want to test and run that "
@@ -5468,6 +5556,16 @@ msgid ""
 "just have to test whether the returned color is equal to the value "
 "<code>Color.green</code>, that represents the green color.[/!]"
 msgstr ""
+"Sua ferramenta para este objetivo é o <code>getGroundColor()</code>\n"
+"que retorna a cor da célula atual. Simplesmente vá para a célula que\n"
+"você quer testar e execute esta função.  [!java]Você não pode testar\n"
+"se esta cor é igual a <code>Cor.verde</code> com um símbolo de\n"
+"<code>==</code> mas sim escrever algo como\n"
+"<code>getGroundColor().equals(Color.green)</code>. This is because\n"
+"green is an <i>object</i> in Java, and <code>.equals()</code> is the\n"
+"way to go to test equality between Java objects.[/!] [!python|scala]So\n"
+"you just have to test whether the returned color is equal to the value\n"
+"<code>Color.green</code>, that represents the green color.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:24
@@ -5475,20 +5573,28 @@ msgid ""
 "Complete the <code>isFacingTrail()</code> method (which gets called "
 "automatically)."
 msgstr ""
+"Complete o método <code>estáDeFrenteParaRastro()</code> (que será\n"
+"chamado automaticamente)."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/slug/SlugSnail.html:2
+#, fuzzy
 msgid "Slugs and Snails"
-msgstr ""
+msgstr "Slugs and Snails"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugSnail.html:4
+#, fuzzy
 msgid ""
 "Yuhu! This time, your buggle found the tracks of much more preys! In the "
 "first world, that's a yummy Kitty Slug (leaving a pink trail) while on the "
 "second world, that's a big fat snail that awaits your buggle at the end of "
 "the orange trail."
 msgstr ""
+"Iuhu! Desta vez, seu buggle encontrou trilhas com muitas presas! No\n"
+"primeiro mundo, era uma \"Kitty Slug\" deliciosa (que deixava um rastro\n"
+"rosa) e no segundo mundo, uma \"big fat snail\" que esperava seu buggle\n"
+"no final do rastro laranja."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugSnail.html:8
@@ -5497,11 +5603,15 @@ msgid ""
 "take the color of the trail to follow as a parameter. Beside of this, your "
 "code should work as earlier."
 msgstr ""
+"Você tem que copiar/colar seu código de novo, e mudá-lo de forma que\n"
+"seus métodos fiquem com a cor do rastro para seguir como um\n"
+"parâmetro. E mesmo assim, seu código deve funcionar como antes."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
+#, fuzzy
 msgid "Buggle Dance Revolution (BDR)"
-msgstr ""
+msgstr "Buggle Dance Revolution (BDR)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
