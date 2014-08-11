@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-08-10 20:55-0300\n"
+"PO-Revision-Date: 2014-08-10 21:07-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1580,7 +1580,13 @@ msgid ""
 "the tracing information, I guess I could rebuild the actual call tree. That "
 "seem to be possible: 2 sec of googling gave me something like http://rejeev."
 "blogspot.com/2009/04/method-tracing.html"
-msgstr "Outro \"lead\" para colocar para funcionar seria usar lib ASM para modificar o código do estudante de forma que seu método recursivo fosse rastreado. Com o \"backtrace\" estático e a informação de rastreio, eu imaginei que poderia reconstruir a árvore de chamadas atual. Isto parecia possível: 2 segundos de google me deram isto http://rejeev.blogspot.com/2009/04/method-tracing.html"
+msgstr ""
+"Outro \"lead\" para colocar para funcionar seria usar lib ASM para\n"
+"modificar o código do estudante de forma que seu método recursivo\n"
+"fosse rastreado. Com o \"backtrace\" estático e a informação de\n"
+"rastreio, eu imaginei que poderia reconstruir a árvore de chamadas\n"
+"atual. Isto parecia possível: 2 segundos de google me deram isto\n"
+"http://rejeev.blogspot.com/2009/04/method-tracing.html"
 
 #. type: Content of: <p>
 #: src/lessons/backtracking/Main.html:80
@@ -2765,7 +2771,11 @@ msgid ""
 "The condition can also be a call to some particular methods returning a "
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns true if the buggle is facing a wall, and false in the other case."
-msgstr "A condição pode também ser uma chamada para alguns métodos particulares que retornam booleano. Por exemplo, o método <code>estáDeFrenteParaParede()</code> do buggle retorna verdadeiro se o buggle está olhando para uma parede, e falso caso contrário."
+msgstr ""
+"A condição pode também ser uma chamada para alguns métodos\n"
+"particulares que retornam booleano. Por exemplo, o método\n"
+"<code>estáDeFrenteParaParede()</code> do buggle retorna verdadeiro se\n"
+"o buggle está olhando para uma parede, e falso caso contrário."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:80
@@ -2875,7 +2885,12 @@ msgid ""
 "step back. If not, you must move one step forward. To detect whether you are "
 "facing a wall, simply use the <code>isFacingWall()</code> built-in, that "
 "every buggle understands."
-msgstr "<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve se mover um passo para trás. Se não, você deve se mover um passo para frente. para detectar se você está de cara para uma parede, simplesmente use a função pré-fabricada <code>estáDeFrenteParaParede()</code>, que todo buggle entende."
+msgstr ""
+"<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve\n"
+"se mover um passo para trás. Se não, você deve se mover um passo para\n"
+"frente. para detectar se você está de cara para uma parede,\n"
+"simplesmente use a função pré-fabricada\n"
+"<code>estáDeFrenteParaParede()</code>, que todo buggle entende."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:116
@@ -3480,7 +3495,9 @@ msgstr "x = 3[!java];[/!]"
 msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
-msgstr "À esquerda do símbolo de igual você pode colocar uma expressão aritmética contendo constantes, variáveis e operações."
+msgstr ""
+"À esquerda do símbolo de igual você pode colocar uma expressão\n"
+"aritmética contendo constantes, variáveis e operações."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:110
@@ -4719,7 +4736,12 @@ msgid ""
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
 "in another method). It may be wise to write the <code>makeV()</code> so that "
 "it places directly the buggle in position for the next V."
-msgstr "Neste método, você deve usar os métodos <code>levantarPincel()</code> e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um método só para isto). É uma decisão inteligente escrever <code>fazerV()</code> para colocar o buggle diretamente em posição para o próximo V."
+msgstr ""
+"Neste método, você deve usar os métodos <code>levantarPincel()</code>\n"
+"e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um\n"
+"método só para isto). É uma decisão inteligente escrever\n"
+"<code>fazerV()</code> para colocar o buggle diretamente em posição\n"
+"para o próximo V."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:21
@@ -5437,7 +5459,11 @@ msgid ""
 "Now that your <code>isFacingTrail()</code> method is working, it's time to "
 "write the code to organize the hunting party. Copy/paste your code from the "
 "previous exercise, and complete the <code>hunt()</code> method."
-msgstr "Agora que seu método <code>estáDeFrenteParaRastro()</code> está funcionando, é hora de escrever o código para organizar a \"hunting party\". Copie-e-cole seu código do exercício anterior e complete o método <code>hunt()</code>."
+msgstr ""
+"Agora que seu método <code>estáDeFrenteParaRastro()</code> está\n"
+"funcionando, é hora de escrever o código para organizar a \"hunting\n"
+"party\". Copie-e-cole seu código do exercício anterior e complete o\n"
+"método <code>hunt()</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:8
@@ -5529,7 +5555,17 @@ msgid ""
 "way to go to test equality between Java objects.[/!] [!python|scala]So you "
 "just have to test whether the returned color is equal to the value "
 "<code>Color.green</code>, that represents the green color.[/!]"
-msgstr "Sua ferramenta para este objetivo é o <code>getGroundColor()</code> que retorna a cor da célula atual. Simplesmente vá para a célula que você quer testar e execute esta função.  [!java]Você não pode testar se esta cor é igual a <code>Cor.verde</code> com um símbolo de <code>==</code> mas sim escrever algo como <code>getGroundColor().equals(Color.green)</code>. This is because green is an <i>object</i> in Java, and <code>.equals()</code> is the way to go to test equality between Java objects.[/!] [!python|scala]So you just have to test whether the returned color is equal to the value <code>Color.green</code>, that represents the green color.[/!]"
+msgstr ""
+"Sua ferramenta para este objetivo é o <code>getGroundColor()</code>\n"
+"que retorna a cor da célula atual. Simplesmente vá para a célula que\n"
+"você quer testar e execute esta função.  [!java]Você não pode testar\n"
+"se esta cor é igual a <code>Cor.verde</code> com um símbolo de\n"
+"<code>==</code> mas sim escrever algo como\n"
+"<code>getGroundColor().equals(Color.green)</code>. This is because\n"
+"green is an <i>object</i> in Java, and <code>.equals()</code> is the\n"
+"way to go to test equality between Java objects.[/!] [!python|scala]So\n"
+"you just have to test whether the returned color is equal to the value\n"
+"<code>Color.green</code>, that represents the green color.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:24
@@ -5554,7 +5590,11 @@ msgid ""
 "first world, that's a yummy Kitty Slug (leaving a pink trail) while on the "
 "second world, that's a big fat snail that awaits your buggle at the end of "
 "the orange trail."
-msgstr "Iuhu! Desta vez, seu buggle encontrou trilhas com muitas presas! No primeiro mundo, era uma \"Kitty Slug\" deliciosa (que deixava um rastro rosa) e no segundo mundo, uma \"big fat snail\" que esperava seu buggle no final do rastro laranja."
+msgstr ""
+"Iuhu! Desta vez, seu buggle encontrou trilhas com muitas presas! No\n"
+"primeiro mundo, era uma \"Kitty Slug\" deliciosa (que deixava um rastro\n"
+"rosa) e no segundo mundo, uma \"big fat snail\" que esperava seu buggle\n"
+"no final do rastro laranja."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugSnail.html:8
