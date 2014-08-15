@@ -1,6 +1,6 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Colorful drawing</h2>
+<h2>Desenho colorido</h2>
 
 Neste exercício, vamos reproduzir o desenho geométrico que você pode ver na
 aba "Objetivo".
@@ -9,15 +9,16 @@ aba "Objetivo".
 mais simples possível. Para isto, você tem que decompor seu trabalho em
 sub-passos e escrever métodos específicos para cada sub-passo.</p>
 
-<p>If you observe carefully the picture to draw, it is constituted of four
-parts depicting a sort of V using a different color. A possible
-decomposition is to write a method in charge of drawing a V of the specified
-color from the current position. Its prototype can be:</p>
+<p>Se você observar cuidadosamente a figura para pintar, ela é
+constituída de quatro partes descrevendo um tipo de V usando uma cor
+diferente. Uma decomposição possível é escrever um método responsável
+por pintar um V de uma cor específica a partir da posição atual. Seu
+protótipo pode ser:</p>
 <pre>[!java|c]void [/!]makeV([!java|c]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span>[/!]</pre>
 
-<p>The <code>Color</code> data type naturally describes a particular
-color. Your code should probably call <code>makeV</code> with the following
-arguments (a different color for each call):</p>
+<p>O tipo de dados <code>Cor</code> descreve obviamente uma cor
+particular. Seu código provavelmente vai chamar <code>fazerV</code> com
+os seguintes argumentos (uma cor diferente para cada chamada):</p>
 <ul>
 <li>[!java|scala|python]Color.[/!]YELLOW</li>
 <li>[!java|scala|python]Color.[/!]RED</li>
@@ -30,13 +31,13 @@ arguments (a different color for each call):</p>
 do pincel do buggle, assim como <code>levantarPincel()</code> e
 <code>abaixarPincel()</code> para mudar a posição do pincel.</p>
  
-<p>It may be wise to write the <code>makeV()</code> so that it places directly
-the buggle in position for the next V.</p>
+<p>É recomendável escrever o código do <code>fazerV()</code> de forma que
+ele deixe o buggle na posição para o próximo V.</p>
  
 [!java|scala]
 <p>Your turn now. I'm sure you can imagine the other methods you need to keep
-your code simple and pleasant to read.  Complete the run which prototype is
-already given. It will be called automatically (once).  [!java]the public
-keyword means more or less that anybody can call this method, which is good
-because the PLM infrastructure calls it directly.[/!] </p>
+your code simple and pleasant to read.  Complete the method
+<code>run()</code> that should be called automatically (once).  [!java]the
+<code>public</code> keyword means more or less that anybody can call this
+method, which is good because the PLM infrastructure calls it directly.[/!] </p>
 [/!]

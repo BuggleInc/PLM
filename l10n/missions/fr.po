@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-07-24 16:44+0200\n"
+"POT-Creation-Date: 2014-08-15 19:58+0200\n"
 "PO-Revision-Date: 2014-07-01 19:26+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
@@ -2136,8 +2136,13 @@ msgstr "[/!] [!python]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:38
+#, fuzzy
+#| msgid ""
+#| "So you want that the variable contains 5 as initial value, you should "
+#| "type:"
 msgid ""
-"So you want that the variable contains 5 as initial value, you should type:"
+"So, if you want that the variable contains 5 as initial value, you should "
+"type:"
 msgstr "Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire :"
 
 #. type: Content of: <pre>
@@ -2581,12 +2586,19 @@ msgstr "La course des quatre moitiés"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunHalf.html:4
+#, fuzzy
+#| msgid ""
+#| "Here is the second day of the Big Buggles' Race.  As previously, you have "
+#| "to run forward until you reach the right cell to stop on.  But this time, "
+#| "you have to reach the cell where the amount of baggles you saw is the "
+#| "double of the orange cells plus 1.  In other word, the following "
+#| "condition must become true <code>2 * baggles = orangeCells + 1</code>."
 msgid ""
 "Here is the second day of the Big Buggles' Race.  As previously, you have to "
 "run forward until you reach the right cell to stop on.  But this time, you "
 "have to reach the cell where the amount of baggles you saw is the double of "
-"the orange cells plus 1.  In other word, the following condition must become "
-"true <code>2 * baggles = orangeCells + 1</code>."
+"the orange cells plus 1.  In other words, the following condition must "
+"become true: <code>2 * baggles = orangeCells + 1</code>."
 msgstr ""
 "C'est le second jour de la Grande Course des Buggles. Comme d'habitude, il "
 "faut courir jusqu'à trouver la case où vous devez vous arrêter. Mais cette "
@@ -2986,13 +2998,22 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:20
+#, fuzzy
+#| msgid ""
+#| "Code duplication easily turns code maintenance into a nightmare: reading "
+#| "the code becomes difficult as the reader must ensure that no slight "
+#| "difference exist between the versions. Debugging the code becomes "
+#| "difficult, as bugs have to be fixed in all versions. Actually, every "
+#| "modification of the code becomes difficult. So, really, you should "
+#| "<b>always</b> strive to not duplicate you code if you can avoid. And the "
+#| "good news is that you always can..."
 msgid ""
 "Code duplication easily turns code maintenance into a nightmare: reading the "
 "code becomes difficult as the reader must ensure that no slight difference "
 "exist between the versions. Debugging the code becomes difficult, as bugs "
 "have to be fixed in all versions. Actually, every modification of the code "
 "becomes difficult. So, really, you should <b>always</b> strive to not "
-"duplicate you code if you can avoid. And the good news is that you always "
+"duplicate your code if you can avoid. And the good news is that you always "
 "can..."
 msgstr ""
 "Quand on duplique le code, sa maintenance tourne facilement au cauchemar : "
@@ -3096,12 +3117,22 @@ msgstr "La buggle Petite Poucette"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:4
+#, fuzzy
+#| msgid ""
+#| "Your buggle got lost in a strange maze, and you must help it to find the "
+#| "exit that is represented in orange.  You cannot simply explain the path "
+#| "to the exit in something like <code>right();forward;forward();forward()</"
+#| "code> because you have to save two buggles at the same time, that are "
+#| "lost in similar but not identical worlds.  You can switch to the other "
+#| "world by using the combobox above the world representation (where it's "
+#| "written 'Deep Forest' right now), and selecting the other entry (that "
+#| "should read 'Deeper Forest')."
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
-"the exit in something like <code>right();forward;forward();forward()</code> "
-"because you have to save two buggles at the same time, that are lost in "
-"similar but not identical worlds.  You can switch to the other world by "
+"the exit in something like <code>right();forward();forward();forward()</"
+"code> because you have to save two buggles at the same time, that are lost "
+"in similar but not identical worlds.  You can switch to the other world by "
 "using the combobox above the world representation (where it's written 'Deep "
 "Forest' right now), and selecting the other entry (that should read 'Deeper "
 "Forest')."
@@ -3190,12 +3221,17 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/Poucet.html:32
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid ""
+#| "firstTime = True\n"
+#| "while firstTime or not crossing():\n"
+#| "  firstTime = False\n"
+#| "  (your body)\n"
 msgid ""
 "firstTime = True\n"
 "while firstTime or not crossing():\n"
 "  firstTime = False\n"
-"  (your body)\n"
+"  (loop body)\n"
 msgstr ""
 "premiereFois = True\n"
 "while premiereFois or not croisement():\n"
@@ -4273,6 +4309,20 @@ msgstr ""
 "la valeur de la première case du tableau."
 
 #. type: Content of: <h1>
+#: src/lessons/welcome/array/maxvalue/Extrema.html:2
+msgid "Maxima and Minima"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/maxvalue/Extrema.html:4
+msgid ""
+"In this exercise, you must return the difference between the maxima (i.e., "
+"the largest value of the array) and the minima (i.e., its smallest value). "
+"The returned value is then a positive number.  Beware, you can only do one "
+"traversal of the array to gather all informations that you need."
+msgstr ""
+
+#. type: Content of: <h1>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
 msgid "Occurrence of a value"
 msgstr "Occurrences d'une valeur"
@@ -4916,8 +4966,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:21
+#, fuzzy
+#| msgid ""
+#| "Your turn. Your code of should not be longer than 4 lines (not counting "
+#| "<code>makeV</code>)..."
 msgid ""
-"Your turn. Your code of should not be longer than 4 lines (not counting "
+"Your turn. Your code should not be longer than 4 lines (not counting "
 "<code>makeV</code>)..."
 msgstr ""
 "À vous de jouer. Votre code ne devrait pas prendre plus de quatre lignes "
@@ -4990,6 +5044,19 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:4
+#, fuzzy
+#| msgid ""
+#| "Writing a method returning a result is not really more work than writing "
+#| "a method without any result.  [!java|c]You simply have to specify the "
+#| "data type of expected results before the method name (where we previously "
+#| "had <code>void</code>).[/!] [!scala]You simply have to add a column (:) "
+#| "after the parenthesis and write the type of data that your method will "
+#| "return, and add an equal sign (=). This syntax is actually rather close "
+#| "to defining a variable, with its type, that is actually a function.[/!] "
+#| "You can use the <code>return</code> instruction anywhere in your method "
+#| "body to specify that the computation is done (the method is not further "
+#| "executed), and that the result is the the value following the "
+#| "<code>return</code> keyword."
 msgid ""
 "Writing a method returning a result is not really more work than writing a "
 "method without any result.  [!java|c]You simply have to specify the data "
@@ -5000,7 +5067,7 @@ msgid ""
 "variable, with its type, that is actually a function.[/!] You can use the "
 "<code>return</code> instruction anywhere in your method body to specify that "
 "the computation is done (the method is not further executed), and that the "
-"result is the the value following the <code>return</code> keyword."
+"result is the value following the <code>return</code> keyword."
 msgstr ""
 "Écrire une méthode retournant un résultat n'est pas tellement plus dur que "
 "pour les méthodes sans résultat.\n"
@@ -5042,9 +5109,21 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:20
+#, fuzzy
+#| msgid ""
+#| "It is possible to have several <code>return</code> instructions in "
+#| "several branches of a conditional. In fac, it is forbidden to have any "
+#| "execution path of your body without any <code>return</code>, or to write "
+#| "some code after the <code>return</code> instruction. Indeed, if the "
+#| "machine reaches the end of the method without finding any <code>return</"
+#| "code>, it cannot know what actual value to give back to the method "
+#| "caller.  Moreover, <code>return</code> interrupts immediately the method "
+#| "execution (why bother looking further when you know the method result?). "
+#| "So, if there is some code after a <code>return</code>, it must be an "
+#| "error and the compiler warns you."
 msgid ""
 "It is possible to have several <code>return</code> instructions in several "
-"branches of a conditional. In fac, it is forbidden to have any execution "
+"branches of a conditional. In fact, it is forbidden to have any execution "
 "path of your body without any <code>return</code>, or to write some code "
 "after the <code>return</code> instruction. Indeed, if the machine reaches "
 "the end of the method without finding any <code>return</code>, it cannot "
@@ -5132,9 +5211,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:58
+#, fuzzy
+#| msgid ""
+#| "Then, move 6 steps forward (the world contains 7 cells and we already are "
+#| "one one of them). For each cell, if it contains a baggle, we store true "
+#| "in <code>sawBaggle</code> (and we don't do anything but moving forward if "
+#| "not)."
 msgid ""
-"Then, move 6 steps forward (the world contains 7 cells and we already are "
-"one one of them). For each cell, if it contains a baggle, we store true in "
+"Then, move 6 steps forward (the world contains 7 cells and we already are on "
+"one of them). For each cell, if it contains a baggle, we store true in "
 "<code>sawBaggle</code> (and we don't do anything but moving forward if not)."
 msgstr ""
 "Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est déjà sur "
@@ -5547,12 +5632,20 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:36
+#, fuzzy
+#| msgid ""
+#| "Your turn now. I'm sure you can imagine the other methods you need to "
+#| "keep your code simple and pleasant to read.  Complete the run which "
+#| "prototype is already given. It will be called automatically (once).  [!"
+#| "java]the public keyword means more or less that anybody can call this "
+#| "method, which is good because the PLM infrastructure calls it directly."
+#| "[/!]"
 msgid ""
 "Your turn now. I'm sure you can imagine the other methods you need to keep "
-"your code simple and pleasant to read.  Complete the run which prototype is "
-"already given. It will be called automatically (once).  [!java]the public "
-"keyword means more or less that anybody can call this method, which is good "
-"because the PLM infrastructure calls it directly.[/!]"
+"your code simple and pleasant to read.  Complete the method <code>run()</"
+"code> that should be called automatically (once).  [!java]the <code>public</"
+"code> keyword means more or less that anybody can call this method, which is "
+"good because the PLM infrastructure calls it directly.[/!]"
 msgstr ""
 "À vous de jouer. Je suis sûr que vous parviendrez à trouver d'autres "
 "méthodes à ajouter pour décomposer ce problème et faire en sorte que votre "

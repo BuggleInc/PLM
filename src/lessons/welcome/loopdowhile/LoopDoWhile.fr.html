@@ -22,14 +22,13 @@ serait facile de dupliquer le corps de la boucle avant la boucle pour cela,
 mais  ça serait une <b>très mauvaise idée</b>. Dupliquer du code est une
 <b>très mauvaise habitude</b> et il faut toujours éviter de le faire.</p>
 
-<p>Quand on duplique le code, sa maintenance tourne facilement au cauchemar :
-la lecture du code est très pénible puisque le lecteur doit s'assurer qu'il
-n'y a effectivement aucune différence, même minime, entre les versions du
-même code. Debugger le code devient plus long, puisqu'il faut corriger
-toutes les versions. En fait, toutes les modifications deviennent
-pénibles. Alors, vraiment, vous devrez <b>toujours</b> vous efforcer
-d'éviter la duplication du code quand c'est possible. Et la bonne nouvelle
-est que c'est toujours possible...</p>
+<p>Code duplication easily turns code maintenance into a nightmare: reading the
+code becomes difficult as the reader must ensure that no slight difference
+exist between the versions. Debugging the code becomes difficult, as bugs
+have to be fixed in all versions. Actually, every modification of the code
+becomes difficult. So, really, you should <b>always</b> strive to not
+duplicate your code if you can avoid. And the good news is that you always
+can...</p>
 
 <h3>Exécuter le corps de boucle au moins une fois</h3>
 [!python]

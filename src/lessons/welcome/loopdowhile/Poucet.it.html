@@ -4,12 +4,12 @@
 
 <p>Your buggle got lost in a strange maze, and you must help it to find the
 exit that is represented in orange.  You cannot simply explain the path to
-the exit in something like <code>right();forward;forward();forward()</code>
-because you have to save two buggles at the same time, that are lost in
-similar but not identical worlds.  You can switch to the other world by
-using the combobox above the world representation (where it's written 'Deep
-Forest' right now), and selecting the other entry (that should read 'Deeper
-Forest').</p>
+the exit in something like
+<code>right();forward();forward();forward()</code> because you have to save
+two buggles at the same time, that are lost in similar but not identical
+worlds.  You can switch to the other world by using the combobox above the
+world representation (where it's written 'Deep Forest' right now), and
+selecting the other entry (that should read 'Deeper Forest').</p>
 
 <p>La buona notizia è che il percorso d'uscita è scritto sul terreno. Come
 potete vedere il mondo è composto da diversi corridoi con dei baggle sul
@@ -40,10 +40,10 @@ true) before we actually use the value returned by <code>crossing()</code>
 to determine to continue or not.[/!]</p>
 
 [!python]
-<pre>primaVolta = True
-while primaVolta or not crossing():
-  primaVolta = False
-  (corpo del tuo ciclo)
+<pre>firstTime = True
+while firstTime or not crossing():
+  firstTime = False
+  (loop body)
 </pre>
 [/!] 
 

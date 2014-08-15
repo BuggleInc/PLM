@@ -2,15 +2,14 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>La buggle Petite Poucette</h2>
 
-<p>Votre buggle est perdue dans un étrange labyrinthe, et elle a besoin de vous
-pour trouver la sortie (représentée par les cases orange). Vous ne pouvez
-pas lui donner son chemin tout simplement avec quelque chose comme
-<code>droite();avance();avance();</code> parce qu'il faut secourir deux
-buggles à la fois, perdues dans des labyrinthes similaires mais
-différents. Vous pouvez passer à l'autre monde en cliquant sur le menu
-défilant au dessus de l'endroit où est dessiné le monde. C'est là où il est
-écrit "Deep Forest" pour l'instant (forêt profonde), et si vous passez à
-"Deeper Forest" (forêt encore plus profonde), vous verrez l'autre monde.</p>
+<p>Your buggle got lost in a strange maze, and you must help it to find the
+exit that is represented in orange.  You cannot simply explain the path to
+the exit in something like
+<code>right();forward();forward();forward()</code> because you have to save
+two buggles at the same time, that are lost in similar but not identical
+worlds.  You can switch to the other world by using the combobox above the
+world representation (where it's written 'Deep Forest' right now), and
+selecting the other entry (that should read 'Deeper Forest').</p>
 
 <p>La bonne nouvelle est que le chemin vers la sortie est en quelque sorte
 écrit au sol. Ces mondes sont composés de plusieurs corridors, avec des
@@ -45,10 +44,10 @@ c'est la valeur de retour de <code>croisement()</code> qui détermine s'il
 faut s'arrêter ou non.[/!]</p>
 
 [!python]
-<pre>premiereFois = True
-while premiereFois or not croisement():
-  premiereFois = False
-  (le corps de votre boucle)
+<pre>firstTime = True
+while firstTime or not crossing():
+  firstTime = False
+  (loop body)
 </pre>
 [/!] 
 
