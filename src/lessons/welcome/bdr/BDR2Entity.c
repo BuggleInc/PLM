@@ -2,7 +2,10 @@
 
 char getIndicationBDR() {
 	if (isOverMessage()) {
-		return readMessage()[0];
+		char* msg = readMessage();
+		char ret = msg[0];
+		free(msg);
+		return ret;
 	} else {
 		return ' ';
 	}
