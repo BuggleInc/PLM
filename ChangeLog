@@ -1,12 +1,14 @@
 20140821: Release 2.4-alpha2
 
-  We are getting closer to the release, but it's not absolutely ready yet.
+  Getting closer to the release, but not there yet.
   
   * Improved translations:
     - Brazilian Portuguese: Now at 35% [Fred Maranhao]
   * Pedagogical content:
     - welcome.array.maxvalue.Extrema: find min and max values
       [Valentin Giannini]
+    - welcome.array.golomb.Golomb: compute the Nth of the surprising
+      Golomb sequence [Valentin Giannini]
 
 20140724: Release 2.4-alpha1
 
