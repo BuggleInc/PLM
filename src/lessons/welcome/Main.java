@@ -9,7 +9,7 @@ import lessons.welcome.array.arrayfront9.ArrayFront9;
 import lessons.welcome.array.averagevalue.AverageValue;
 import lessons.welcome.array.basics.Array1;
 import lessons.welcome.array.basics.Array2;
-import lessons.welcome.array.extrema.Extrema;
+import lessons.welcome.array.maxvalue.Extrema;
 import lessons.welcome.array.golomb.Golomb;
 import lessons.welcome.array.has271.Has271;
 import lessons.welcome.array.indexof.maxvalue.IndexOfMaxValue;
@@ -201,6 +201,7 @@ public class Main extends Lesson {
 		addExercise(new AverageValue(this),arrays);
 		addExercise(new MaxValue(this),arrays);
 		addExercise(new IndexOfMaxValue(this),arrays);
+		addExercise(new Extrema(this),arrays);
 		addExercise(new ArrayCount9(this),arrays);
 		addExercise(new ArrayFront9(this),arrays);
 		addExercise(new Array123(this),arrays);
@@ -208,7 +209,6 @@ public class Main extends Lesson {
 		addExercise(new NoTriples(this),arrays);
 		addExercise(new Has271(this),arrays);
 		addExercise(new Golomb(this),arrays);
-		addExercise(new Extrema(this),arrays);
 		addExercise(new Island(this),arrays);
 
 		
