@@ -5,7 +5,6 @@ int isGroundWhite() {
 }
 
 void run(){
-	#line 1 "LoopDoWhile"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	do {

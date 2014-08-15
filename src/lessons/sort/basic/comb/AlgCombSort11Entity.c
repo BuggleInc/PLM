@@ -1,7 +1,5 @@
 //RemoteSort
 
-
-#line 1 "CombSort11"
 /* BEGIN TEMPLATE */
 void combSort11() {
 	/* BEGIN SOLUTION */

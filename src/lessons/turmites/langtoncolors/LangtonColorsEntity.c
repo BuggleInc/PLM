@@ -21,7 +21,6 @@ void run(){
 	free(colors);
 }
 
-#line 1 "LangtonColors.c"
 /* BEGIN TEMPLATE */
 void step(char* rule, Color* colors, int length) {
 	/* BEGIN SOLUTION */

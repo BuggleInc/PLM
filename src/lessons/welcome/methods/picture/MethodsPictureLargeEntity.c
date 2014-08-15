@@ -7,7 +7,6 @@ void nextLine();
 void makeLine(int count);
 
 
-#line 1 "MethodsPictureLarge"
 /* BEGIN TEMPLATE */
 
 void run(){

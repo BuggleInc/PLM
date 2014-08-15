@@ -3,8 +3,6 @@
 void nextStep();
 int endingPosition();
 
-
-#line 1 "TraversalByColumn"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

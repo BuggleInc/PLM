@@ -1,7 +1,5 @@
 //RemoteSort
 
-
-#line 1 "InsertionSort"
 /* BEGIN TEMPLATE */
 void insertionSort() {
 	/* BEGIN SOLUTION */

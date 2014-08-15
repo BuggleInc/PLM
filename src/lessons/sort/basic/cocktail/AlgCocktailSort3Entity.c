@@ -1,7 +1,5 @@
 //RemoteSort
 
-
-#line 1 "CocktailSort3"
 /* BEGIN TEMPLATE */
 void cocktailSort3() {
 	/* BEGIN SOLUTION */

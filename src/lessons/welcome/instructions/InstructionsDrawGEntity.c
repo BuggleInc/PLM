@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "InstructionsDrawG"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	brushDown();

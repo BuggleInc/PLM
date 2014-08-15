@@ -1,6 +1,5 @@
 //RemotePancake
 
-#line 1 "BasicPancake"
 /* BEGIN TEMPLATE */
 void solve() {
 	/* BEGIN SOLUTION */

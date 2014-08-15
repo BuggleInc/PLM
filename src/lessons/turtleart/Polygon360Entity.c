@@ -1,6 +1,5 @@
 //RemoteTurtle
 
-#line 1 "Polygon360.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

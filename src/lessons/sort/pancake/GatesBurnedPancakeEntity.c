@@ -100,7 +100,6 @@ int blockLength() {
 int debug=0; // 0: silence; 1: which cases; 2: all details
 /* END HIDDEN */
 
-#line 1 "GatesBurnedPancake"
 /* BEGIN TEMPLATE */
 void solve() {
 	/* BEGIN SOLUTION */

@@ -3,9 +3,6 @@
 
 void branch(int size);
 
-
-
-#line 1 "Star.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

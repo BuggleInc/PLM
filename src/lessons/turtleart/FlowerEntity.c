@@ -1,6 +1,5 @@
 //RemoteTurtle
 
-#line 1 "Flower.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

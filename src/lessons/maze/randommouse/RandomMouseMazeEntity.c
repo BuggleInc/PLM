@@ -1,8 +1,8 @@
 //RemoteBuggle
 
-int random3();
-
-#line 1 "RandomMouseMaze.c"
+int random3() {
+	return rand()%3;
+}
 /* BEGIN TEMPLATE */
 void run() {
 	// Your code here =)
@@ -27,6 +27,3 @@ void run() {
 }
 /* END TEMPLATE */
 
-int random3() {
-	return rand()%3;
-}

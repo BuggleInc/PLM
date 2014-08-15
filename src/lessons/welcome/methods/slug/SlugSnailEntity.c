@@ -7,7 +7,6 @@ void run(){
 	hunt(getParam());
 }
 
-#line 1 "SlugSnail"
 /* BEGIN TEMPLATE */
 void hunt(Color c) {
 	/* BEGIN SOLUTION */

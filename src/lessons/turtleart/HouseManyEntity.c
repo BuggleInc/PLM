@@ -4,7 +4,6 @@ void house(int len);
 void line();
 void nextLine();
 
-#line 1 "HouseMany.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

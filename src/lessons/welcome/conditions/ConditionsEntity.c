@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "Conditions"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	if (isFacingWall()){

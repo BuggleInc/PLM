@@ -1,21 +1,5 @@
 //RemoteBuggle
 
-int haveBaggle();
-
-void run(){
-	int i;
-	for (i=0; i<7; i++) {
-		if (haveBaggle())
-			return;
-		right();
-		forward(1);
-		left();
-	}
-}
-
-
-
-#line 1 "MethodsReturning"
 /* BEGIN TEMPLATE */
 int haveBaggle(){
 	/* BEGIN SOLUTION */
@@ -32,3 +16,14 @@ int haveBaggle(){
 	/* END SOLUTION */
 }
 /* END TEMPLATE */
+
+void run(){
+	int i;
+	for (i=0; i<7; i++) {
+		if (haveBaggle())
+			return;
+		right();
+		forward(1);
+		left();
+	}
+}

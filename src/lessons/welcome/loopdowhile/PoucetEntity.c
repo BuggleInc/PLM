@@ -8,7 +8,6 @@ int exitReached() {
 }
 
 void run(){
-	#line 1 "Poucet"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (!exitReached()) {

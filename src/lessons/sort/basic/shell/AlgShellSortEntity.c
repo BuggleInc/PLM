@@ -1,7 +1,5 @@
 //RemoteSort
 
-
-#line 1 "ShellSort"
 /* BEGIN TEMPLATE */
 void shellSort()  {
 	/* BEGIN SOLUTION */

@@ -12,7 +12,6 @@ void run(){
 	}
 }
 
-#line 1 "Langton.c"
 /* BEGIN TEMPLATE */
 void step() {
 	/* BEGIN SOLUTION */

@@ -6,7 +6,6 @@ int isOverOrange() {
 }
 
 void run(){
-	#line 1 "RunHalf"
 	/* BEGIN SOLUTION */
 	int baggle = 0;
 	int orange = 0;

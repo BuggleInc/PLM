@@ -1,7 +1,5 @@
 //RemoteSort
 
-
-#line 1 "GnomeSort"
 /* BEGIN TEMPLATE */
 void gnomeSort() {
 	/* BEGIN SOLUTION */

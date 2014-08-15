@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "LoopStairs"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	forward(1);

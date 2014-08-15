@@ -6,8 +6,6 @@ void makePattern();
 void makeLine(int count);
 void nextLine();
 
-
-#line 1 "PictureMono2"
 /* BEGIN TEMPLATE */
 
 void run(){

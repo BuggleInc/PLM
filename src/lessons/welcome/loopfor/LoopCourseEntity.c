@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "LoopCourse"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int i,j,k;

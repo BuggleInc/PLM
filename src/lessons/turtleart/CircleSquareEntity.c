@@ -1,6 +1,5 @@
 //RemoteTurtle
 
-#line 1 "CircleSquare.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

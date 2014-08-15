@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "LoopFor"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int cpt = 0;

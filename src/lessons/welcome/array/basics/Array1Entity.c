@@ -3,7 +3,6 @@
 void makeLine(Color colors[]);
 void mark(Color c);
 
-#line 1 "Array1"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

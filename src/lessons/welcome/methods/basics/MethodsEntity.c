@@ -1,19 +1,5 @@
 //RemoteBuggle
 
-
-void goAndGet();
-
-void run(){
-	int i=0;
-	for (i=0; i<7; i++) {
-		goAndGet();
-		right();
-		forward(1);
-		left();
-	}
-}
-
-#line 1 "MethodsEntity"
 /* BEGIN TEMPLATE */
 /* BEGIN SOLUTION */
 void goAndGet() {
@@ -31,3 +17,14 @@ void goAndGet() {
 }
 /* END SOLUTION */
 /* END TEMPLATE */
+
+
+void run(){
+	int i=0;
+	for (i=0; i<7; i++) {
+		goAndGet();
+		right();
+		forward(1);
+		left();
+	}
+}

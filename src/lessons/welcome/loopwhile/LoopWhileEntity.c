@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "LoopWhile"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (!isFacingWall()){

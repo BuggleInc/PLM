@@ -1,8 +1,5 @@
 //RemoteSort
 
-
-
-#line 1 "BuubleSort3"
 /* BEGIN TEMPLATE */
 void bubbleSort3()  {
 	/* BEGIN SOLUTION */

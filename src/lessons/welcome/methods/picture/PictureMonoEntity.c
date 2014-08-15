@@ -3,7 +3,6 @@
 void mark();
 void makeV();
 
-#line 1 "PictureMono"
 /* BEGIN TEMPLATE */
 void run(){
 	/* BEGIN SOLUTION */

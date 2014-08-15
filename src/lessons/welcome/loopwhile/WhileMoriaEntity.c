@@ -1,9 +1,7 @@
 //RemoteBuggle
 
 
-#line 1 "WhileMoria"
 /* BEGIN TEMPLATE */
-
 void run(){
 	/* BEGIN SOLUTION */
 	back();

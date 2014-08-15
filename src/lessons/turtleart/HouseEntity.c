@@ -2,8 +2,6 @@
 
 void house(int len);
 
-
-#line 1 "House.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

@@ -7,7 +7,6 @@ int isChosenDirectionFree();
 int angleSum;
 Direction chosenDirection = NORTH;
 
-#line 1 "PledgeMaze.c"
 /* BEGIN TEMPLATE */
 
 void run() {

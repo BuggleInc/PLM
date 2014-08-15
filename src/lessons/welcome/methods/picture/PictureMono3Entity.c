@@ -7,8 +7,6 @@ void makeLine(int count);
 void nextLine();
 
 
-
-#line 1 "PictureMono3"
 /* BEGIN TEMPLATE */
 
 void run(){

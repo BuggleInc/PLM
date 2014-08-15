@@ -3,8 +3,6 @@
 int endingPosition();
 void snakeStep() ;
 
-
-#line 1 "Snake"
 /* BEGIN TEMPLATE */
 void run() {
 /* BEGIN SOLUTION */

@@ -10,8 +10,6 @@ void run(){
 	growFlowers();
 }
 
-
-#line 1 "FlowerPot"
 /* BEGIN SOLUTION */
 void makeFlower(Color c) {
 	setBrushColor(c);

@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "Variables"
 	/* BEGIN SOLUTION */
 	int cpt = 0;
 	while (!isOverBaggle()) {

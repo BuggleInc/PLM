@@ -2,7 +2,6 @@
 
 
 void run(){
-	#line 1 "BDR"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (1) {

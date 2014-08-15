@@ -5,8 +5,6 @@ int endingPosition();
 void nextStep();
 
 
-
-#line 1 "TraversalDiagonal"
 /* BEGIN TEMPLATE */
 int diag = 0;
 void run() {

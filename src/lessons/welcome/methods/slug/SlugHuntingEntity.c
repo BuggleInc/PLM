@@ -8,8 +8,6 @@ void run(){
 }
 
 
-
-#line 1 "SlugHunting"
 /* BEGIN TEMPLATE */
 void hunt() {
 /* BEGIN SOLUTION */

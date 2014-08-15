@@ -2,7 +2,6 @@
 
 void stepHandOnWall();
 
-#line 1 "WallFollowerMaze"
 /* BEGIN TEMPLATE */
 
 void run() {

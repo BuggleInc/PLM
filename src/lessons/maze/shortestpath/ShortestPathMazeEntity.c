@@ -6,7 +6,6 @@ int setValueIfLess(int x, int y, int val) ;
 void evaluatePaths();
 void followShortestPath();
 
-#line 1 "ShortestPath.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

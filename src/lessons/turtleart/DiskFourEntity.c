@@ -2,7 +2,6 @@
 
 void quadrant();
 
-#line 1 "DiskFour.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

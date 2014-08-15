@@ -89,7 +89,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					head.append(line+"\n");
 				}else if (line.contains("BEGIN TEMPLATE")) {
 					if(!containsLinePreprocessor && lang.equals(Game.C)){
-						head.append("#line 1 \""+name+"\" \n");
+						head.append("#line 1 \""+name+".c\" \n");
 						containsLinePreprocessor=true;
 					}
 					correction.append(line+"\n");
@@ -97,7 +97,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					if(!containsLinePreprocessor && lang.equals(Game.C)){
-						head.append("#line 1 \""+name+"\" \n");
+						head.append("#line 1 \""+name+".c\" \n");
 						containsLinePreprocessor=true;
 					}
 					correction.append(line+"\n");

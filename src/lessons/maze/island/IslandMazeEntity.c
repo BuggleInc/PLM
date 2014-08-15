@@ -4,7 +4,7 @@ void stepHandOnWall();
 int isChosenDirectionFree();
 
 Direction chosenDirection = NORTH;
-#line 1 "IslandMaze.c"
+
 /* BEGIN TEMPLATE */
 void run() {
 /* BEGIN SOLUTION */

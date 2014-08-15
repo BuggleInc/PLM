@@ -12,7 +12,6 @@ char getIndicationBDR() {
 }
 
 void run(){
-	#line 1 "BDR2"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int continu=1;

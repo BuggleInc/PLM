@@ -3,7 +3,6 @@
 void solve(int src, int dst, int other);
 void solveRec(int src, int dst, int other, int height) ;
 
-#line 1 "Hanoi"
 /* BEGIN TEMPLATE */
 void solve(int src, int dst, int other) {
 	solveRec(src, dst, other, getSlotSize(src));

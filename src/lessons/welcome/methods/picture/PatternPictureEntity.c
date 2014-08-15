@@ -1,13 +1,11 @@
 //RemoteBuggle
 
-
 void bigSquare();
 void squareB(Color c);
 void squareA(Color c);
 void mark() ;
 
 
-#line 1 "PatternPicture"
 /* BEGIN TEMPLATE */
 
 void run(){

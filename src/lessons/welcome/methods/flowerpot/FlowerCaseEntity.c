@@ -11,8 +11,6 @@ void run(){
 	growFlowers();
 }
 
-
-#line 1 "FlowerCase"
 /* BEGIN SOLUTION */
 void makeFlower(Color c) {
 	setBrushColor(c);

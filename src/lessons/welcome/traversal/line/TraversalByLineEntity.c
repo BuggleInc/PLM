@@ -3,7 +3,6 @@
 int endingPosition();
 void nextStep();
 
-#line 1 "TraversalByLine"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

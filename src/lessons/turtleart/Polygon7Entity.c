@@ -1,7 +1,5 @@
 //RemoteTurtle
 
-
-#line 1 "Polygon7.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

@@ -1,7 +1,6 @@
 //RemoteBuggle
 
 void run(){
-	#line 1 "LoopCourseForest"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int i,side,step;
