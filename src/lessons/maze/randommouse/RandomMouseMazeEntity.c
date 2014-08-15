@@ -22,7 +22,7 @@ void run() {
 			break;
 		}
 	}
-	//pickupBaggle();
+	pickupBaggle();
 	/* END SOLUTION */
 }
 /* END TEMPLATE */
