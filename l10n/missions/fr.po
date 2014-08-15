@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-08-15 19:58+0200\n"
+"POT-Creation-Date: 2014-08-15 23:11+0200\n"
 "PO-Revision-Date: 2014-07-01 19:26+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
@@ -4514,6 +4514,39 @@ msgid ""
 msgstr ""
 "De plus, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
 "correcte.<"
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/golomb/Golomb.html:2
+msgid "Golomb sequence"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/golomb/Golomb.html:4
+msgid ""
+"The Golomb sequence is a non-decreasing integer sequence where a(n) is the "
+"number of times that n occurs in the sequence, with a(1) = 1."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/golomb/Golomb.html:7
+msgid ""
+"Since a(1)=1, it means that 1 occures only once in the sequence, so a(2) "
+"must be different. Since the sequence is non-decreasing, a(2)  must be "
+"greater than 1, which in turn means that there must be more than one 2 in "
+"the sequence. So a(2)=2."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/golomb/Golomb.html:12
+msgid ""
+"Since a(2)=2, there is two 2 in the sequence, so we know the value of a(3). "
+"And so on for the other values of the sequence."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/golomb/Golomb.html:15
+msgid "Write a function that computes the Nth element of the sequence."
+msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
