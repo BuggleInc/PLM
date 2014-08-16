@@ -9,6 +9,7 @@
       [Valentin Giannini]
     - welcome.array.golomb.Golomb: compute the Nth of the surprising
       Golomb sequence [Valentin Giannini]
+    - welcome.array.island.Island: small game with arrays of integers
 
 20140724: Release 2.4-alpha1
 
