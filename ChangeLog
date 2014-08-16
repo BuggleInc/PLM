@@ -4,6 +4,10 @@
   
   * Improved translations:
     - Brazilian Portuguese: Now at 35% [Fred Maranhao]
+  * User Interface:
+    - Make it possible to copy/paste the secret session ID from the
+      about dialog, so that the students can manually pass it to their 
+      teachers. Not as convenient as it ought to be, but it works.
   * Pedagogical content:
     - welcome.array.maxvalue.Extrema: find min and max values
       [Valentin Giannini]

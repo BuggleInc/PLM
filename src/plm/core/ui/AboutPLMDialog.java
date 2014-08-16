@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 
 import plm.core.model.Game;
@@ -49,7 +50,13 @@ public class AboutPLMDialog extends JDialog {
 		JLabel iconTitle = new JLabel(ResourcesCache.getIcon("img/BuggleQuestBETA.png"));
 		aboutPane.add(BorderLayout.CENTER, iconTitle);
 		
-		JLabel text = new JLabel(Game.i18n.tr(
+		JTextPane text = new JTextPane();
+		text.setContentType("text/html");
+		text.setEditable(false);
+		text.setBorder(null);
+		text.setBackground(Color.white);
+		text.setOpaque(true);
+		text.setText(Game.i18n.tr(
 				"<html>"+
 				"<h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"+
 				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</span>"+
@@ -62,15 +69,13 @@ public class AboutPLMDialog extends JDialog {
 				"<li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li>"+
 				"</ul><br/>"+
 				"Your code is saved to {2}<br/>"+
-				"Your session ID is {3}<br/>"+
+				"Your secret session ID is {3}<br/>"+
 				"</html>",
 				Game.getProperty("plm.major.version","internal",false),
 				Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false),
 				Game.getSavingLocation(),
 				Game.getInstance().getUsers().getCurrentUser().getUserUUID())
 		);
-		text.setBackground(Color.white);
-		text.setOpaque(true);
 		aboutPane.add(BorderLayout.SOUTH, text);
 		
 		tabs.add(Game.i18n.tr("About"),aboutPane);
