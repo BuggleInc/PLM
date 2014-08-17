@@ -4,11 +4,16 @@
   
   * Improved translations:
     - Brazilian Portuguese: Now at 35% [Fred Maranhao]
+  * User Interface:
+    - Make it possible to copy/paste the secret session ID from the
+      about dialog, so that the students can manually pass it to their 
+      teachers. Not as convenient as it ought to be, but it works.
   * Pedagogical content:
     - welcome.array.maxvalue.Extrema: find min and max values
       [Valentin Giannini]
     - welcome.array.golomb.Golomb: compute the Nth of the surprising
       Golomb sequence [Valentin Giannini]
+    - welcome.array.island.Island: small game with arrays of integers
 
 20140724: Release 2.4-alpha1
 

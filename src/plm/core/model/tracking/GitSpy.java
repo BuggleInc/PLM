@@ -33,12 +33,12 @@ public class GitSpy implements ProgressSpyListener {
 
 	private void initializeRepoDir(Users users) throws IOException, GitAPIException {
 		String userUUID = String.valueOf(users.getCurrentUser().getUserUUID());
+		String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
 
 		repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
 		if (!repoDir.exists()) {
 			// try to get the branch as stored remotely
-			String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
 
 			git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoDir).setBranchesToClone(Arrays.asList(userBranch)).call();
 			
@@ -56,6 +56,7 @@ public class GitSpy implements ProgressSpyListener {
 			}
 		} else {
 			git = Git.open(repoDir);
+			git.checkout().setName(userBranch).call(); // update to get any remote changes
 		}
 
 		GitUtils gitUtils = new GitUtils(git);
