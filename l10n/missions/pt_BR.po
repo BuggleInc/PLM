@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-08-15 23:11+0200\n"
-"PO-Revision-Date: 2014-08-10 21:07-0300\n"
+"POT-Creation-Date: 2014-08-17 19:47-0300\n"
+"PO-Revision-Date: 2014-08-17 19:37-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -82,52 +82,39 @@ msgstr "Mover para trás</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:12
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
-#, fuzzy
-#| msgid "[!java]void [/!]left()"
 msgid "[!java|c]void [/!]left()"
-msgstr "[!java]void [/!]esquerda()"
+msgstr "[!java|c]void [/!]esquerda()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:13
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
-#, fuzzy
-#| msgid "[!java]void [/!]right()"
 msgid "[!java|c]void [/!]right()"
-msgstr "[!java]void [/!]direita()"
+msgstr "[!java|c]void [/!]direita()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:14
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
-#, fuzzy
-#| msgid "[!java]void [/!]back()"
 msgid "[!java|c]void [/!]back()"
-msgstr "[!java]void [/!]paraTrás()"
+msgstr "[!java|c]void [/!]paraTrás()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:15
-#, fuzzy
-#| msgid ""
-#| "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int "
-#| "[/!]steps[!scala]:Int[/!])"
 msgid ""
 "[!java|c]void [/!][!python|java|scala]forward()[/!][!c]stepForward()[/!] or "
 "[!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
-"[!java]void [/!]avançar() ou [!java]void [/!]avançar([!java]int [/!]passos[!"
-"scala]:Int[/!])"
+"[!java|c]void [/!][!python|java|scala]avançar()[/!][!c]avançarUmPasso()[/!] "
+"ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:16
-#, fuzzy
-#| msgid ""
-#| "[!java]void [/!]backward() or [!java]void [/!]backward([!java]int "
-#| "[/!]steps[!scala]:Int[/!])"
 msgid ""
 "[!java|c]void [/!][!python|java|scala]backward()[/!][!c]stepBackward()[/!] "
 "or [!java]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
-"[!java]void [/!]recuar() ou [!java]void [/!]recuar([!java]int [/!]steps[!"
-"scala]:Int[/!])"
+"[!java|c]void\n"
+"[/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou\n"
+"[!java]void [/!]recuar([!java|c]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
@@ -156,44 +143,32 @@ msgstr "Ajustar posição</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:18
-#, fuzzy
-#| msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
 msgid "[!java|c]int [/!]getX()[!scala]:Int[/!]"
-msgstr "[!java]int [/!]getX()[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getX()[!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:19
-#, fuzzy
-#| msgid "[!java]int [/!]getY()[!scala]:Int[/!]"
 msgid "[!java|c]int [/!]getY()[!scala]:Int[/!]"
-msgstr "[!java]int [/!]getY()[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getY()[!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:20
-#, fuzzy
-#| msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
 msgid "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
-msgstr "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:21
-#, fuzzy
-#| msgid "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
 msgid "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
-msgstr "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:22
-#, fuzzy
-#| msgid ""
-#| "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int "
-#| "[/!]y[!scala]:Int[/!])"
 msgid ""
 "[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
 "[/!]y[!scala]:Int[/!])"
 msgstr ""
-"[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!"
-"scala]:Int[/!])"
+"[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
+"[/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:24
@@ -212,17 +187,13 @@ msgstr "Ajustar a cor do corpo</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:26
-#, fuzzy
-#| msgid "[!java]Color [/!]getBodyColor()[!scala]:Color[/!]"
 msgid "[!java|c]Color [/!]getBodyColor()[!scala]:Color[/!]"
-msgstr "[!java]Color [/!]getBodyColor()[!scala]:Color[/!]"
+msgstr "[!java|c]Color [/!]getCorDoCorpo()[!scala]:Cor[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:27
-#, fuzzy
-#| msgid "[!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])"
 msgid "[!java|c]void [/!]setBodyColor([!java|c]Color [/!]c[!scala]:Color[/!])"
-msgstr "[!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])"
+msgstr "[!java|c]void [/!]setCorDoCorpo([!java|c]Cor [/!]c[!scala]:Cor[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:28
@@ -236,17 +207,15 @@ msgstr "Procura por uma parede atrás</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:29
-#, fuzzy
-#| msgid "[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]"
 msgid "[!java]boolean [/!][!c]int [/!]isFacingWall()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!][!c]int [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:30
-#, fuzzy
-#| msgid "[!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]"
 msgid "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!][!c]int [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:31
@@ -265,22 +234,16 @@ msgstr "direções válidas são:"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:32
-#, fuzzy
-#| msgid "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
 msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
-msgstr "[!java]Direção [/!]getDireção()[!scala]:Direção[/!]"
+msgstr "[!java|c]Direção [/!]getDireção()[!scala]:Direção[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:33
-#, fuzzy
-#| msgid ""
-#| "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:"
-#| "Direction[/!])"
 msgid ""
 "[!java|c]void [/!]setDirection([!java|c]Direction [/!]dir[!scala]:"
 "Direction[/!])"
 msgstr ""
-"[!java]void [/!]ajustaDireção([!java]Direção [/!]dir[!scala]:Direção[/!])"
+"[!java|c]void [/!]ajustaDireção([!java|c]Direção [/!]dir[!scala]:Direção[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:34
@@ -289,6 +252,10 @@ msgid ""
 "[/!]EAST, [!scala|java|python]Direction.[/!]SOUTH and [!scala|java|"
 "python]Direction.[/!]WEST"
 msgstr ""
+"[!scala|java|python]Direção.[/!]NORTE,\n"
+"[!scala|java|python]Direção.[/!]LESTE,\n"
+"[!scala|java|python]Direção.[/!]SUL e\n"
+"[!scala|java|python]Direção.[/!]OESTE"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:35
@@ -299,10 +266,9 @@ msgstr "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
 #: src/plm/universe/bugglequest/BuggleWorld.html:36
 #: src/plm/universe/turtles/TurtleWorld.html:75
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]selecionado()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]selecionado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:38
@@ -326,24 +292,19 @@ msgstr "Pegar a posição do pincel"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
-#, fuzzy
-#| msgid "[!java]void [/!]brushUp()"
 msgid "[!java|c]void [/!]brushUp()"
-msgstr "[!java]void [/!]levantarPincel()"
+msgstr "[!java|c]void [/!]levantarPincel()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:41
-#, fuzzy
-#| msgid "[!java]void [/!]brushDown()"
 msgid "[!java|c]void [/!]brushDown()"
-msgstr "[!java]void [/!]abaixarPincel()"
+msgstr "[!java|c]void [/!]abaixarPincel()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:42
-#, fuzzy
-#| msgid "[!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]"
 msgid "[!java]boolean [/!][!c]int [/!]isBrushDown()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!][!c]int [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:43
@@ -357,17 +318,14 @@ msgstr "Obtém a cor do pincel</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
-#, fuzzy
-#| msgid "[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])"
 msgid "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
-msgstr "[!java]void [/!]setCorDoPincel([!java]Cor [/!]c[!scala]:Cor[/!])"
+msgstr ""
+"[!java|c]void [/!]setCorDoPincel([!java|c]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:45
-#, fuzzy
-#| msgid "[!java]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
-msgstr "[!java]Color [/!]getCorDoPincel()[!scala]:Color[/!]"
+msgstr "[!java|c]Color [/!]getCorDoPincel()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:47
@@ -383,10 +341,8 @@ msgstr "<b>Obtém a cor do chão</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:49
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
-#, fuzzy
-#| msgid "[!java]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
-msgstr "[!java]Color [/!]getCorDoChão()[!scala]:Color[/!]"
+msgstr "[!java|c]Color [/!]getCorDoChão()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:51
@@ -415,17 +371,14 @@ msgstr "(veja a nota sobre exceções)"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
-#, fuzzy
-#| msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
 msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estáSobreBaggle()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estáSobreBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:54
-#, fuzzy
-#| msgid "[!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
 msgid "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!][!c]int [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:55
@@ -494,28 +447,22 @@ msgstr "Apaga a mensagem</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
-#, fuzzy
-#| msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgid "[!java]boolean [/!][!c]int [/!]isOverMessage()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estáSobreMensagem()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estáSobreMensagem()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:61
-#, fuzzy
-#| msgid ""
-#| "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
 msgid ""
 "[!java]void [/!]writeMessage([!java]String [/!][!c]char* [/!]msg[!scala]:"
 "String[/!])"
 msgstr ""
-"[!java]void [/!]escreverMensagem([!java]String [/!]msg[!scala]:String[/!])"
+"[!java]void [/!]escreverMensagem([!java]String [/!][!c]char* [/!]msg[!scala]:"
+"String[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:62
-#, fuzzy
-#| msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
 msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
-msgstr "[!java]String [/!]lerMensagem()[!scala]:String[/!]"
+msgstr "[!java]String [/!][!c]char* [/!]lerMensagem()[!scala]:String[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:63
@@ -544,79 +491,79 @@ msgstr "Cor"
 #: src/plm/universe/bugglequest/BuggleWorld.html:69
 #: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "[!scala|java|python]Color.[/!]black"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]black"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:70
 #: src/plm/universe/turtles/TurtleWorld.html:82
 msgid "[!scala|java|python]Color.[/!]blue"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]azul"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
 #: src/plm/universe/turtles/TurtleWorld.html:83
 msgid "[!scala|java|python]Color.[/!]cyan"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]ciano"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:72
 #: src/plm/universe/turtles/TurtleWorld.html:84
 msgid "[!scala|java|python]Color.[/!]darkGray"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]cinzaEscuro"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:73
 #: src/plm/universe/turtles/TurtleWorld.html:85
 msgid "[!scala|java|python]Color.[/!]gray"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]cinza"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:74
 #: src/plm/universe/turtles/TurtleWorld.html:86
 msgid "[!scala|java|python]Color.[/!]green"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]verde"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:75
 #: src/plm/universe/turtles/TurtleWorld.html:87
 msgid "[!scala|java|python]Color.[/!]lightGray"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]cinzaClaro"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:76
 #: src/plm/universe/turtles/TurtleWorld.html:88
 msgid "[!scala|java|python]Color.[/!]magenta"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]magenta"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:77
 #: src/plm/universe/turtles/TurtleWorld.html:89
 msgid "[!scala|java|python]Color.[/!]orange"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]laranja"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:78
 #: src/plm/universe/turtles/TurtleWorld.html:90
 msgid "[!scala|java|python]Color.[/!]pink"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]rosa"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:79
 #: src/plm/universe/turtles/TurtleWorld.html:91
 msgid "[!scala|java|python]Color.[/!]red"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:80
 #: src/plm/universe/turtles/TurtleWorld.html:92
 msgid "[!scala|java|python]Color.[/!]white"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]branco"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:81
 #: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "[!scala|java|python]Color.[/!]yellow"
-msgstr ""
+msgstr "[!scala|java|python]Cor.[/!]amarelo"
 
 #. type: Content of: <h2>
 #: src/plm/universe/bugglequest/BuggleWorld.html:84
@@ -790,7 +737,6 @@ msgstr "Métodos"
 #: src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264
 #: src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438
 #: src/lessons/welcome/Main.html:478
-#, fuzzy
 msgid "Switch"
 msgstr "Switch"
 
@@ -870,7 +816,6 @@ msgstr "desenhando metodicamente"
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:242
 #: src/lessons/welcome/methods/picture/PictureMono2.html:2
-#, fuzzy
 msgid "Methodically drawing (only bigger)"
 msgstr "Desenhando metodicamente (apenas grande)"
 
@@ -1055,7 +1000,7 @@ msgstr "Os <i>buggles</i>? O que é isso??"
 #| "The buggles are little animals obeying any order you may give them. In "
 #| "each exercise, you have to provide them with the right instructions so "
 #| "that the world turns into the objective of the exercise. For example in "
-#| "this exercise, you show instruct your buggle to move forward once. You "
+#| "this exercise, you should instruct your buggle to move forward once. You "
 #| "can see that by checking the difference between the <i>World</i> view and "
 #| "the <i>Objective</i> one.  Depending on the lessons (and your settings in "
 #| "the Language menu), your code must be written in either Java, Python or "
@@ -1067,14 +1012,14 @@ msgid ""
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either Java, Python or Scala "
+"Language menu), your code must be written in either C, Java, Python or Scala "
 "(depending on the exercise)."
 msgstr ""
-"Os \"buggles\" são pequenos animais que obedecem a qualquer ordem que você "
-"dá a eles. Em cada exercício, você tem que fornecer a eles as instruções "
-"corretas para que o mundo se torne o objetivo do exercício. Por exemplo, "
-"neste exercício você deve instruir seu buggle a avançar um passo. Você pode "
-"ver isto verificando a diferença entre a visão <i>Mundo</i> e a visão "
+"Os buggles são pequenos animais que obedecem a qualquer ordem que você dá a "
+"eles. Em cada exercício, você tem que fornecer a eles as instruções corretas "
+"para que o mundo se torne o objetivo do exercício. Por exemplo, neste "
+"exercício você deve instruir seu buggle a avançar um passo. Você pode ver "
+"isto verificando a diferença entre a visão <i>Mundo</i> e a visão "
 "<i>Objetivo</i>. Dependendo das lições (e suas configurações no menu "
 "linguagem), seu código deve ser escrito em ou Java, ou Python ou Scala "
 "(dependendo do seu exercício)."
@@ -1086,15 +1031,6 @@ msgstr "Ambiente de trabalho"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:25
-#, fuzzy
-#| msgid ""
-#| "Before going any further, get familiar with the working environment. Have "
-#| "a look at the several elements composing the main window, move your mouse "
-#| "over them to show the tooltip, and experiment with the elements to see "
-#| "what they do.  The white area below is the console: this is where errors "
-#| "and messages get displayed. Note that when you successfully solve an "
-#| "exercise, the good news is spread on twitter.  Keep posted about the "
-#| "progress of your friends by following @jlmlovers :)"
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
 "look at the several elements composing the main window, move your mouse over "
@@ -1102,13 +1038,11 @@ msgid ""
 "do.  The white area below is the console: this is where errors and messages "
 "get displayed."
 msgstr ""
-"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê uma "
-"olhada nos vários elementos que compõe a janela principal, mova seu mouse "
-"sobre eles para ver as dicas, e experimente os elementos para ver o que eles "
-"fazem. A área branca abaixo é o console: é onde erros e mensagens aparecem. "
-"Observe que quando você resolve um exercício corretamente, as boas novas são "
-"divulgadas no twitter. Fique sabendo do progresso dos seus amigos seguindo "
-"@jlmlovers :)"
+"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê\n"
+"uma olhada nos vários elementos que compõe a janela principal, mova\n"
+"seu mouse sobre eles para ver as dicas, e experimente os elementos\n"
+"para ver o que eles fazem. A área branca abaixo é o console: é onde\n"
+"erros e mensagens aparecem."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:31
@@ -1154,16 +1088,14 @@ msgstr ""
 #: src/lessons/welcome/instructions/Instructions.html:46
 #, no-wrap
 msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
-msgstr ""
+msgstr "[!java|scala|python]avançar()[!java];[/!][/!][!c]avançarUmPasso();[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:46
 #: src/lessons/welcome/loopfor/LoopFor.html:50
 #: src/lessons/welcome/bdr/BDR.html:188
-#, fuzzy
-#| msgid "[!java]"
 msgid "[!java|c]"
-msgstr "[!java]"
+msgstr "[!java|c]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:46
@@ -1256,22 +1188,17 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:22
-#, fuzzy, no-wrap
-#| msgid ""
-#| "meltTheChocolatePieces()[!java];[/!]\n"
-#| "addSugar()[!java];[/!]\n"
-#| "coolMix()[!java];[/!]\n"
-#| "serve()[!java];[/!]\n"
+#, no-wrap
 msgid ""
 "meltTheChocolatePieces()[!java|c];[/!]\n"
 "addSugar()[!java|c];[/!]\n"
 "coolMix()[!java|c];[/!]\n"
 "serve()[!java|c];[/!]\n"
 msgstr ""
-"derretaOsPedaçosDeChocolate()[!java];[/!]\n"
-"adicioneAçucar()[!java];[/!]\n"
-"mexa()[!java];[/!]\n"
-"sirva()[!java];[/!]\n"
+"derretaOsPedaçosDeChocolate()[!java|c];[/!]\n"
+"adicioneAçucar()[!java|c];[/!]\n"
+"mexa()[!java|c];[/!]\n"
+"sirva()[!java|c];[/!]\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:28
@@ -1298,20 +1225,14 @@ msgstr "derretaOsPedaçosDeChocolate(); adicioneAçucar(); mexa(); sirva()\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:37
-#, fuzzy
-#| msgid ""
-#| "Of course, these specific methods do not exist by default in [!"
-#| "java]Java[/!][!scala]Scala[/!][!python]Python[/!], but it may be possible "
-#| "to define them by yourself (we'll see later how to define your how "
-#| "methods)."
 msgid ""
 "Of course, these specific methods do not exist by default in [!thelang], but "
 "it may be possible to define them by yourself (we'll see later how to define "
 "your how methods)."
 msgstr ""
-"Obviamente, estes métodos específicos não existem por padrão em [!"
-"java]Java[/!][!scala]Scala[/!][!python]Python[/!], mas é possível definí-los "
-"você mesmo (vamos ver mais tarde como definir seus próprios métodos)."
+"Obviamente, estes métodos específicos não existem por padrão em\n"
+"[!thelang], mas é possível definí-los você mesmo (vamos ver mais tarde\n"
+"como definir seus próprios métodos)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:41
@@ -1328,33 +1249,26 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:47
-#, fuzzy
-#| msgid ""
-#| "Likewise, to achieve the same effect than the <b>backward</b>, <b>left</"
-#| "b> and <b>right</b> buttons, you need to use respectively:"
 msgid ""
 "Likewise, to achieve the same effect than the <b>[!java|scala|"
 "python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and <b>right</b> "
 "buttons, you need to use respectively:"
 msgstr ""
-"Da mesma forma, para obter o mesmo efeito que os botões <b>recuar</b>, "
-"<b>esquerda</b> e <b>direita</b>, você precisa respectivamente:"
+"Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|\"\n"
+"\"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> and\n"
+"<b>direita</b>, você precisa respectivamente:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:50
-#, fuzzy, no-wrap
-#| msgid ""
-#| "backward()[!java];[/!]\n"
-#| "left()[!java];[/!]\n"
-#| "right()[!java];[/!]\n"
+#, no-wrap
 msgid ""
 "backward()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
 "right()[!java|c];[/!]\n"
 msgstr ""
-"recuar()[!java];[/!]\n"
-"esquerda()[!java];[/!]\n"
-"direita()[!java];[/!]\n"
+"recuar()[!java|c];[/!]\n"
+"esquerda()[!java|c];[/!]\n"
+"direita()[!java|c];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:55
@@ -1367,16 +1281,13 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:58
-#, fuzzy, no-wrap
-#| msgid ""
-#| "brushUp()[!java];[/!]\n"
-#| "brushDown()[!java];[/!]\n"
+#, no-wrap
 msgid ""
 "brushUp()[!java|c];[/!]\n"
 "brushDown()[!java|c];[/!]\n"
 msgstr ""
-"levantarPincel()[!java];[/!]\n"
-"abaixarPincel()[!java];[/!]\n"
+"levantarPincel()[!java|c];[/!]\n"
+"abaixarPincel()[!java|c];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:61
@@ -1476,65 +1387,51 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:15
-#, fuzzy
-#| msgid ""
-#| "There is [!java]three[/!][!python|scala]two[/!] types of comments in [!"
-#| "thelang], instructing the [!java|scala]compiler[/!][!"
-#| "python]interpreter[/!] to not read the text you add for humans:"
 msgid ""
 "There is [!java]three[/!][!python|scala|c]two[/!] types of comments in [!"
 "thelang], instructing the [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] to not read the text you add for humans:"
 msgstr ""
-"Existem [!java]três[/!][!python|scala]dois[/!] tipos de comentários em [!"
-"thelang], que instruem o [!java|scala]compilador[/!][!"
-"python]interpretador[/!] a não ler o texto que você adiciona para humanos:"
+"Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários\n"
+"em [!thelang], que instruem o\n"
+"[!java|scala|c]compilador[/!][!python]interpretador[/!] a não ler o\n"
+"texto que você adiciona para humanos:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:19
-#, fuzzy
-#| msgid ""
-#| "<b>Comments on a single line</b>. When the [!java|scala]compiler[/!][!"
-#| "python]interpreter[/!] encounters the symbol [!java|scala]//[/!][!"
-#| "python]#[/!], it ignores the end of the line."
 msgid ""
 "<b>Comments on a single line</b>. When the [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] encounters the symbol [!java|scala|c]//[/!][!"
 "python]#[/!], it ignores the end of the line."
 msgstr ""
-"<b>Comentários de uma única linha</b>. Quando o [!java|scala]compilador[/!][!"
-"python]interpretador[/!] encontra o símbolo [!java|scala]//[/!][!"
-"python]#[/!], ele ignora o resto da linha."
+"<b>Comentários de uma única linha</b>. Quando o\n"
+"[!java|scala|c]compilador[/!][!python]interpretador[/!] encontra o\n"
+"símbolo [!java|scala|c]//[/!][!python]#[/!], ele ignora o resto da\n"
+"linha."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
 #, fuzzy
 #| msgid ""
-#| "<b>Comments on several lines</b>. The [!java|scala]compiler[/!][!"
-#| "python]interpreter[/!] ignores anything placed between [!java|scala]the "
+#| "<b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!"
+#| "python]interpreter[/!] ignores anything placed between [!java|scala|c]the "
 #| "symbols /* and */ even if they are placed on differing lines.[/!] [!"
 #| "python]a line beginning with ''' and the next line ending with '''.[/!]"
 msgid ""
 "<b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] ignores anything placed between [!java|scala|c]the "
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
-"line beginning with ''' and the next line ending with '''.[/!]"
+"line beginning with ''' until the next line ending with '''.[/!]"
 msgstr ""
-"<b>Comentários em várias linhas</b>. O [!java|scala]compilador[/!][!"
-"python]interpretador[/!] ignora tudo entre [!java|scala]os símbolos /* e */ "
-"mesmo quando eles são postos em linhas diferentes.[/!] [!python]uma linha "
-"comaçando com ''' e a próxima linha terminado com '''.[/!]"
+"<b>Comentários em várias linhas</b>. O\n"
+"[!java|scala|c]compilador[/!][!python]interpretador[/!] ignora tudo\n"
+"entre [!java|scala|c]os símbolos /* e */ mesmo quando eles são postos\n"
+"em linhas diferentes.[/!] [!python]uma linha comaçando com ''' e a\n"
+"próxima linha terminado com '''.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:28
-#, fuzzy, no-wrap
-#| msgid ""
-#| "methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] all this is ignored</span>\n"
-#| "otherCall()[!java];[/!] [!java|scala]<span class=\"comment\">/* This is</span>\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> also ignored */</span>[/!]\n"
-#| "[!python]<span class=\"comment\">''' This is</span>\n"
-#| "<span class=\"comment\">also ignored  '''</span>[/!]\n"
-#| "yetAnotherCall()[!java];[/!]\n"
+#, no-wrap
 msgid ""
 "methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>\n"
 "otherCall()[!java|c];[/!] [!java|scala|c]<span class=\"comment\">/* This is</span>\n"
@@ -1543,12 +1440,12 @@ msgid ""
 "<span class=\"comment\">also ignored  '''</span>[/!]\n"
 "yetAnotherCall()[!java|c];[/!]\n"
 msgstr ""
-"methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] tudo isto é ignorado</span>\n"
-"otherCall()[!java];[/!] [!java|scala]<span class=\"comment\">/* Isto é</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> também ignorado */</span>[/!]\n"
-"[!python]<span class=\"comment\">''' Isto é</span>\n"
-"<span class=\"comment\">também ignorado  '''</span>[/!]\n"
-"yetAnotherCall()[!java];[/!]\n"
+"chamadaDeMétodoLidaPelo[!java|scala|c]Compilador[/!][!python]Interpretador[/!]()[!java|c];[/!] <span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] tudo isto é ignorado</span>\n"
+"outraChamada()[!java|c];[/!] [!java|scala|c]<span class=\"comment\">/* Isto aqui</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> também é ignorado */</span>[/!]\n"
+"[!python]<span class=\"comment\">''' Isto aqui</span>\n"
+"<span class=\"comment\">também é ignorado  '''</span>[/!]\n"
+"maisUmaChamada()[!java|c];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:35
@@ -1595,14 +1492,6 @@ msgstr "A sintaxe de [!thelang] é a seguinte:"
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:11
 #, fuzzy, no-wrap
-#| msgid ""
-#| "[!java|scala]if (<b>condition</b>) {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>\n"
-#| "}[/!][!python]if <b>condition</b>:\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
-#| "<b>whatToDoAnyway()[!java];[/!]</b>"
 msgid ""
 "[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
@@ -1612,13 +1501,13 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
 "<b>whatToDoAnyway()[!java|c];[/!]</b>"
 msgstr ""
-"[!java|scala]if (<b>condição</b>) {\n"
+"[!java|scala|c]if (<b>condição</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade();</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade();</b>\n"
 "}[/!][!python]if <b>condição</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade()</b>[/!]\n"
-"<b>oQueFazerDeUmJeitoOuDeOutro()[!java];[/!]</b>"
+"<b>oQueFazerDeUmJeitoOuDeOutro()[!java|c];[/!]</b>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:19
@@ -1653,24 +1542,24 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:28
 #, fuzzy
 #| msgid ""
-#| "In [!thelang], the blocks of code are [!java|scala]enclosed between curly "
-#| "brackets: a { sign opens the block, while a } sign closes it.  White "
-#| "spaces are not important[/!][!java].[/!][!scala], provided that your "
-#| "instructions are still separated with a semi-column or an end of line."
-#| "[/!] [!java|scala]It is still very important to correctly indent your "
-#| "code to keep it readable.[/!] [!python]marked by the indentation: every "
-#| "lines that are a bit shifted to the right with white spaces belong to the "
-#| "block. Quite often, people use 4 spaces for indentation, but it works if "
-#| "you use more or less spaces. Simply, any lines of the block must use the "
-#| "same amount of spaces.  The end of Python code blocks are not marked by "
-#| "any specific char.  Indenting lines starts a block and unindenting ends "
-#| "it. Do not forget the colon (:) at the end of the <code>if</code> line, "
-#| "python needs it to know that a new block begins. The fact that python "
-#| "relies on indentation to delimit blocks is a very good property for "
-#| "beginners: it will force your to adhere to strict code presentation "
-#| "standards.[/!] It is very easy to get lost in your own code if it's not "
-#| "properly indented, so you want to clean it up so that working on your "
-#| "code remains pleasant and productive."
+#| "In [!thelang], the blocks of code are [!java|scala|c]enclosed between "
+#| "curly brackets: a { sign opens the block, while a } sign closes it.  "
+#| "White spaces are not important[/!][!java|c].[/!][!scala], provided that "
+#| "your instructions are still separated with a semi-column or an end of "
+#| "line.[/!] [!java|scala|c]It is still very important to correctly indent "
+#| "your code to keep it readable.[/!] [!python]marked by the indentation: "
+#| "every lines that are a bit shifted to the right with white spaces belong "
+#| "to the block. Quite often, people use 4 spaces for indentation, but it "
+#| "works if you use more or less spaces. Simply, any lines of the block must "
+#| "use the same amount of spaces.  The end of Python code blocks are not "
+#| "marked by any specific char.  Indenting lines starts a block and "
+#| "unindenting ends it. Do not forget the colon (:) at the end of the "
+#| "<code>if</code> line, python needs it to know that a new block begins. "
+#| "The fact that python relies on indentation to delimit blocks is a very "
+#| "good property for beginners: it will force your to adhere to strict code "
+#| "presentation standards.[/!] It is very easy to get lost in your own code "
+#| "if it's not properly indented, so you want to clean it up so that working "
+#| "on your code remains pleasant and productive."
 msgid ""
 "In [!thelang], the blocks of code are [!java|scala|c]enclosed between curly "
 "brackets: a { sign opens the block, while a } sign closes it.  White spaces "
@@ -1685,29 +1574,33 @@ msgid ""
 "Indenting lines starts a block and unindenting ends it. Do not forget the "
 "colon (:) at the end of the <code>if</code> line, python needs it to know "
 "that a new block begins. The fact that python relies on indentation to "
-"delimit blocks is a very good property for beginners: it will force your to "
+"delimit blocks is a very good property for beginners: it will force you to "
 "adhere to strict code presentation standards.[/!] It is very easy to get "
 "lost in your own code if it's not properly indented, so you want to clean it "
 "up so that working on your code remains pleasant and productive."
 msgstr ""
-"Em [!thelang], os blocos de código são [!java|scala]envolvidos entre chaves: "
-"um { abre o bloco, e um } fecha. Espaços em branco não são importantes[/!][!"
-"java].[/!][!scala], uma vez que suas instruções ainda estejam separadas com "
-"um ponto-e-vírgula ou um fim-de-linha.[/!] [!java|scala]Ainda assim é muito "
-"importante indentar corretamente seu código para mantê-lo legível.[/!] [!"
-"python]marcados pela indentação: todas as linhas que estiverem um pouco "
-"deslocadas para a direita com espaços pertencem ao bloco. Frequentemente se "
-"usam 4 espaços para indentação, mas funciona se você usar mais ou menos "
-"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma quantidade "
-"de espaços. O fim do bloco de código Python não é marcado por nenhum "
-"caractere específico. Indentar linhas começa um bloco e parar de indentar "
-"termina o bloco. Não esqueça do (:) no final da linha do <code>if</code>, "
-"python precisa saber que um novo bloco vai começar. O fato de que python de "
-"baseia em indentação para delimitar blocos é uma ótima propriedade para "
-"iniciantes: vai forçar você a aderir a padrões de apresentação de código "
-"estritos.[/!] É muito fácil se perder no seu próprio código se ele não for "
-"corretamente indentado, então você precisa deixar ele bem arrumado para que "
-"trabalhar nele continue sendo agradável e produtivo."
+"Em [!thelang], os blocos de código são [!java|scala|c]envolvidos entre\n"
+"chaves: um { abre o bloco, e um } fecha. Espaços em branco não são\n"
+"importantes[/!][!java|c].[/!][!scala], uma vez que suas instruções ainda\n"
+"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!]\n"
+"[!java|scala|c]Ainda assim é muito importante indentar corretamente seu\n"
+"código para mantê-lo legível.[/!] [!python]marcados pela indentação:\n"
+"todas as linhas que estiverem um pouco deslocadas para a direita com\n"
+"espaços pertencem ao bloco. Frequentemente se usam 4 espaços para\n"
+"indentação, mas funciona se você usar mais ou menos\n"
+"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma\n"
+"quantidade de espaços. O fim do bloco de código Python não é marcado\n"
+"por nenhum caractere específico. Indentar linhas começa um bloco e\n"
+"parar de indentar termina o bloco. Não esqueça do dois-pontos (:) no final "
+"da\n"
+"linha do <code>if</code>, python precisa dele para saber que um novo bloco "
+"vai\n"
+"começar. O fato de que python se baseia em indentação para delimitar\n"
+"blocos é uma ótima propriedade para iniciantes: vai forçar você a\n"
+"aderir a padrões de apresentação de código estritos.[/!] É muito fácil\n"
+"se perder no seu próprio código se ele não for corretamente indentado,\n"
+"então você precisa deixar ele bem arrumado para que trabalhar nele\n"
+"continue sendo agradável e produtivo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:44
@@ -1749,16 +1642,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:58
-#, fuzzy
-#| msgid ""
-#| "The condition must be a <code>[!java]boolean[/!][!scala|"
-#| "python]Boolean[/!]</code> expression.  The inner block of code will get "
-#| "executed if the expression is evaluated to <code>[!java|scala]true[/!][!"
-#| "python]True[/!]</code> and it will be ignored if it is <code>[!java|"
-#| "scala]false[/!][!python]False[/!]</code>.  <code>[!java|scala]true[/!][!"
-#| "python]True[/!]</code> and <code>[!java|scala]false[/!][!"
-#| "python]False[/!]</code> are constant values defined by [!thelang] "
-#| "directly, just as 0 or 1 in mathematics."
 msgid ""
 "The condition must be a <code>[!c]int[/!][!java]boolean[/!][!scala|"
 "python]Boolean[/!]</code> expression.  The inner block of code will get "
@@ -1769,14 +1652,16 @@ msgid ""
 "java|scala]false[/!][!python]False[/!]</code> are constant values defined by "
 "[!thelang] directly, just as 0 or 1 in mathematics.[/!]"
 msgstr ""
-"A condição deve ser uma expressão <code>[!java]booleana[/!][!scala|"
-"python]Booleana[/!]</code>. O bloco interno de código será executado se a "
-"expressão for calculada para <code>[!java|scala]true (verdadeiro)[/!][!"
-"python]True (verdadeiro)[/!]</code> e será ignorado se for <code>[!java|"
-"scala]false (falso)[/!][!python]False (falso)[/!]</code>. <code>[!java|"
-"scala]true[/!][!python]True[/!]</code> e <code>[!java|scala]false[/!][!"
-"python]False[/!]</code> são constantes definidas por [!thelang] diretamente, "
-"assim como 0 ou 1 em matemática."
+"A condição deve ser uma expressão\n"
+"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>. O\n"
+"bloco interno do código será executado se a expressão for calculada\n"
+"como <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e\n"
+"será ignorado se for\n"
+"<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.\n"
+"[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code>\n"
+"e <code>[!java|scala]false[/!][!python]False[/!]</code> são valores\n"
+"constantes definidos por [!thelang] diretamente, assim como 0 ou 1 na\n"
+"matemática.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:64
@@ -3534,8 +3419,9 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array1.html:2
+#, fuzzy
 msgid "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
-msgstr ""
+msgstr "[!java|scala]Arrays[/!][!python]Lists[/!] e nós"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array1.html:4
@@ -4462,6 +4348,87 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:15
 msgid "Write a function that computes the Nth element of the sequence."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/island/Island.html:2
+#, fuzzy
+#| msgid "BuggleWorld"
+msgid "Buggles' Island"
+msgstr "BuggleWorld"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/island/Island.html:4
+msgid ""
+"You just received the traveling notes of your old aunt who traveled accross "
+"the country of the Buggles' Islands. She wrote down the altitude every "
+"kilometer during her trip, resulting in a sequence of numbers as follows."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/island/Island.html:9
+#, no-wrap
+msgid "0 0 1 1 2 2 1 1 0 1 2 2 1 1 0"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:11
+msgid "Here is a cut of the islands on that path:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/island/Island.html:14
+#, no-wrap
+msgid ""
+"       /***\\       /*\\         &lt;-- 2 meters above the see level\n"
+"   /***********\\ /*******\\     &lt;-- 1 meter above the see level\n"
+"***************************    &lt;-- see level\n"
+"| | | | | | | | | | | | | |\n"
+"0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude on each point\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:21
+msgid "This example is constituted of four levels of island:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:24
+msgid "1 1 2 2 1 1 (the island on the left)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:25
+msgid "2 2 (the mountain topping the left island)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:26
+msgid "1 2 1 1 (the right island)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:27
+msgid "2 (the mountain on the right)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:30
+msgid "This can also be visualized this way:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/island/Island.html:32
+#, no-wrap
+msgid "0 0(1 1(2 2)1 1)0(1(2)1 1)0"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:34
+msgid ""
+"Could you write a little program to compute the amount of levels in a given "
+"sequence of altitudes? Actually, there is an iterative and a recursive "
+"solution to that problem."
 msgstr ""
 
 #. type: Content of: <p>
