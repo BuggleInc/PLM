@@ -69,6 +69,9 @@ public class GitSpy implements ProgressSpyListener {
 		            .setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 		            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
 		            .call();
+		
+		// and push to ensure that everything remains in sync
+		gitUtils.pushToUserBranch();
 	}
 
 	@Override
