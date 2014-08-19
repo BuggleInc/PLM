@@ -28,11 +28,12 @@ public class Island extends BatExercise{
 				);
 		templateScala("island", new String[] {"Array[Int]"}, 
 				"def island(num:Array[Int]): Int = {\n",
-				"  var nbisland=0;\n" +
-				"  for (i -> 1 to num.length-1){\n" +
-				"    if num(i)<num(i+1) nbisland=nbisland+1;\n" +
+				"  var nbIsland=0;\n" +
+				"  for (i <- 0 to num.length-2){\n" +
+				"    if (num(i)<num(i+1))\n"+
+				"      nbIsland=nbIsland+1;\n" +
 				"  }\n" +
-				"  return nbisland\n"+
+				"  return nbIsland\n"+
 				"}");
 		setup(myWorld);
 	}
