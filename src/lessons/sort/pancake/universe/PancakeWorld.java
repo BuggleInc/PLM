@@ -94,7 +94,7 @@ public class PancakeWorld extends World {
 	/** 
 	 * Regular PancakeWorld constructor that takes the pancake sizes from the provided parameter
 	 * @param name the name of the world
-	 * @param sizes the size of each pancake
+	 * @param sizes the size of each pancake. If negative, the pancake is upside down
 	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
 	 */
 	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
@@ -291,9 +291,10 @@ class Pancake {
 	private int radius; // Radius of the pancake
 	private boolean upsideDown; // True if the burned face is facing the sky, else false
 	
+	/** Create a new pancake of that radius. If the given radius is negative, the pancake is upside down */
 	public Pancake(int radius) {
-		this.radius = radius;
-		this.upsideDown = false;
+		this.radius = Math.abs(radius);
+		this.upsideDown = radius<0;
 	}
 	
 	/**
