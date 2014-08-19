@@ -180,7 +180,7 @@ public abstract class Entity extends Observable {
 	 * 
 	 *  @see #run() that encodes the student logic in Java
 	 */
-	public void runIt(ExecutionProgress progress) {
+	public void runIt(final ExecutionProgress progress) {
 		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
 		ScriptEngine engine = null;
 		if (progLang.equals(Game.JAVA)||progLang.equals(Game.SCALA)||progLang.equals(Game.LIGHTBOT)) {
@@ -240,7 +240,7 @@ public abstract class Entity extends Observable {
 							valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
 						}
 					} catch (IOException e) {
-						//System.out.println("Vous ne disposez pas de valgrind");
+						System.err.println("Valgrind does not seem to be installed");
 					}
 					arg1 = new String[3];
 					arg1[0]="/bin/sh";
@@ -249,14 +249,14 @@ public abstract class Entity extends Observable {
 				}
 				File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 				if(!exec.exists()){
-					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
+					System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
 					randomFile.delete();
 					if(valgrindFile.exists()){
 						valgrindFile.delete();
 					}
 					return;
 				}else if(!exec.canExecute() || !exec.isFile()){
-					System.out.println(Game.i18n.tr("Error, please recompile the exercice"));
+					System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
 					randomFile.delete();
 					if(valgrindFile.exists()){
 						valgrindFile.delete();
@@ -302,7 +302,10 @@ public abstract class Entity extends Observable {
 							if(valgrind.length()>0){
 								try {
 									process.waitFor();
-									resCompilationErr.append(ValgrindParser.parse(valgrindFile));
+									StringBuffer errmsg = ValgrindParser.parse(valgrindFile);
+									resCompilationErr.append(errmsg);
+									System.err.println(errmsg);
+									progress.details += errmsg;
 								} catch (Exception ex) {
 									ex.printStackTrace();
 								}
@@ -312,7 +315,7 @@ public abstract class Entity extends Observable {
 									if(line.contains("<")){
 										resCompilationErr.append(line+"\n");
 									}
-									System.out.println("error : "+line);
+									System.err.println("error: "+line);
 								}
 							}
 
