@@ -14,6 +14,7 @@
     - welcome.array.golomb.Golomb: compute the Nth of the surprising
       Golomb sequence [Valentin Giannini]
     - welcome.array.island.Island: small game with arrays of integers
+    - sort.pancake.CohenPancake: Cohen's Algorithm for burned pancakes
 
 20140724: Release 2.4-alpha1
 
