@@ -3,7 +3,7 @@ package lessons.sort.pancake;
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
 
-public class GatesBurnedPancakeEntity extends PancakeEntity {
+public class CohenPancakeEntity extends PancakeEntity {
 
 	public void run() {
 		this.solve();

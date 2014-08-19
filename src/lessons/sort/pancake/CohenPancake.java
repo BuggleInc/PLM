@@ -5,9 +5,9 @@ import plm.core.model.lesson.Lesson;
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
 
-public class GatesBurnedPancake extends ExerciseTemplated {
+public class CohenPancake extends ExerciseTemplated {
 	
-	public GatesBurnedPancake(Lesson lesson) {
+	public CohenPancake(Lesson lesson) {
 		super(lesson);
 	
 		PancakeWorld[] plate = new PancakeWorld[] {
