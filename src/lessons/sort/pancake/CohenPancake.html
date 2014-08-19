@@ -22,7 +22,14 @@ little pancake problem...</p>
   <li><b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>.  <div align="center"><img src="img/cohen-1a.png"/></div><br/></li>
   <li><b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>. <div align="center"><img src="img/cohen-1b.png"/></div><br/></li>
   <li><b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest stack, that is because <i>p = n</i>.
-     <div align="center"><img src="img/cohen-1c.png"/></div></li>
+     If pancake <i>p</i> is already in position, there is nothing to do. If not, you can move it to the bottom of the stack in 2 flips:
+     <div align="center"><img src="img/cohen-1c.png"/></div>
+     
+    <b>The trick is that the pancake <i>p</i> should never be considered again.</b> Otherwise, you will consider that pancake 
+      again and again since it's rightside up, and since that's the largest pancake. To leave that pancake alone, you should 
+      keep track of the stack size that is still to be sorted. Any traversal of the stack must then only consider these pancakes,
+      leaving alone the ones that are already in position at the bottom of the stack.
+     </li>
 </ul>
    
  
@@ -57,3 +64,11 @@ Repeat n times
 
 <p>So, all in all, the Cohen algorithm manages to sort the stack of burnt pancakes in <i>2n</i> steps in all cases. 
 Quite a win over the naive algorithm that requires <i>3n</i> steps.</p>
+
+<p><div class="tip" id="tip-1" alt="I cannot get it right.">
+Don't worry. This exercise is very difficult, so it's ok if it does not work right away for you.
+Add some relevant logging to your code to understand where it stop performing correctly. 
+Make sure to use the method <code>isSelected()</code> so that your logs only appears in the 
+currently displayed world. In particular, it may help to print textually the state of the world
+each time you enter the main loop. 
+</div></p>
