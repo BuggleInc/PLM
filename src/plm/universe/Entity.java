@@ -411,9 +411,9 @@ public abstract class Entity extends Observable {
 				if (progLang.equals(Game.PYTHON)) 
 					engine.eval(
 							"def getParam(i):\n"+
-									"  return entity.getParam(i)\n" +
-									"def cted():\n" +
-							"  return entitisSeley.isSelected()\n");		
+							"  return entity.getParam(i)\n" +
+							"def isSelected():\n" +
+							"  return entity.isSelected()\n");		
 
 				String script = getScript(progLang);
 
