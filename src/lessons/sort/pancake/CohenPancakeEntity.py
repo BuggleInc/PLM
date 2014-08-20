@@ -1,238 +1,91 @@
 # BEGIN SOLUTION
-
 def getRankOf(size):
-	for rank in range(getStackSize()):
-		if getPancakeRadius(rank) == size:
-			return rank
-	return -99 # be robust to border cases
+    for rank in range(getStackSize()):
+        if getPancakeRadius(rank) == size:
+            return rank
+    return -99 # be robust to border cases
 
-def isFree(pos):
-	if pos == -99:
-		return False
-	radius = getPancakeRadius(pos)
-	if pos>0 :
-		nextRadius = getPancakeRadius(pos-1)
-		if nextRadius == radius-1 and isPancakeUpsideDown(pos)==False and isPancakeUpsideDown(pos-1)==False or nextRadius == radius+1 and isPancakeUpsideDown(pos)==True and isPancakeUpsideDown(pos-1)==True :
-			return False	
-	if pos<getStackSize()-1:
-		nextRadius = getPancakeRadius(pos+1)
-		if nextRadius == radius-1  and  isPancakeUpsideDown(pos)==True  and  isPancakeUpsideDown(pos+1)==True   or  nextRadius == radius+1  and  isPancakeUpsideDown(pos)==False  and  isPancakeUpsideDown(pos+1)==False :
-			return False	
-	return True
+debug = False
+def showStack():
+    if debug:
+        s = "maxPos:"+str(maxPos)+" {"
+        for rank in range(getStackSize()):
+            if isPancakeUpsideDown(rank):
+                s = s + "-"
+            s = s + str(getPancakeRadius(rank)) + ", "
+        s = s + "}"
+        print(s)
 
-def isFirst(pos):
-	if pos == -99:
-		return False
-	radius = getPancakeRadius(pos)
-	if pos>0 :
-		nextRadius = getPancakeRadius(pos-1)
-		if nextRadius == radius-1  and  isPancakeUpsideDown(pos)==False  and  isPancakeUpsideDown(pos-1)==False or  nextRadius == radius+1  and  isPancakeUpsideDown(pos)==True  and  isPancakeUpsideDown(pos-1)==True:
-			return False	
-	if pos<getStackSize()-1:
-		nextRadius = getPancakeRadius(pos+1)
-		if nextRadius == radius-1  and  isPancakeUpsideDown(pos)==True  and  isPancakeUpsideDown(pos+1)==True or  nextRadius == radius+1 and  isPancakeUpsideDown(pos)==False  and  isPancakeUpsideDown(pos+1)==False:
-			return True	
-	return False
+maxPos = getStackSize()
+keepGoing = True
+while keepGoing:
+    if isSelected() and debug:
+        showStack()
+        
+    maxupside = -1
+    maxupsidePos = -1
+    sorted = True
+    for pos in range(getStackSize()):
+        if getPancakeRadius(pos) != pos+1 or isPancakeUpsideDown(pos):
+            sorted = False
+            
+        # Search if we are in case 1 on the considered interval
+        if (pos<maxPos and not isPancakeUpsideDown(pos) and (maxupside < getPancakeRadius(pos))):
+                maxupside = getPancakeRadius(pos)
+                maxupsidePos = pos;
 
-def isLast(pos):
-	if pos == -99:
-		return False
-	radius = getPancakeRadius(pos)
-	if pos<getStackSize()-1:
-		nextRadius = getPancakeRadius(pos+1)
-		if nextRadius == radius-1  and  isPancakeUpsideDown(pos)==True  and  isPancakeUpsideDown(pos+1)==True or  nextRadius == radius+1  and  isPancakeUpsideDown(pos)==False  and  isPancakeUpsideDown(pos+1)==False:
-			return False	
-	if pos>0 :
-		nextRadius = getPancakeRadius(pos-1)
-		if nextRadius == radius-1  and  isPancakeUpsideDown(pos)==False  and  isPancakeUpsideDown(pos-1)==False or  nextRadius == radius+1 and  isPancakeUpsideDown(pos)==True  and  isPancakeUpsideDown(pos-1)==True:
-			return True	
-	return False
+    if sorted: # we are done, no need to continue
+        if debug:
+            print("It's sorted now. Get out of here\n");
+        break;
 
-def blockLength():
-	pos = 0
-	radius = getPancakeRadius(pos)
-	o = getPancakeRadius(pos+1) - radius
-	if o != -1 and o != 1:
-		print("Asked to compute the block length, but there is no block at the top of the stack. The length is then 1, but you are violating a precondition somehow")
-		return 1
-	while pos < getStackSize()-1 and getPancakeRadius(pos+1) == radius + o  and  isPancakeUpsideDown(pos)==isPancakeUpsideDown(pos+1)  and  isPancakeUpsideDown(pos)==isPancakeUpsideDown(0):
-		pos += 1
-		radius += o
-	return pos+1
-
-debug = False	
-if debug:
-	print("{")
-	for rank in range(getStackSize()): 
-		print(""+getPancakeRadius(rank)+", ")
-	print("}\n")
-		
-while True:
-	tRadius = getPancakeRadius(0)
-	posTPlus  = getRankOf(tRadius+1) # returns -99 if non-existent, that is then ignored
-	posTMinus = getRankOf(tRadius-1); 
-	posT = 0
-			
-	if debug:
-		println("t Radius: "+str(tRadius))
-		for rank in range(getStackSize()):
-			print("["+str(rank)+"]="+str(getPancakeRadius(rank))+"; ")
-			if isFree(rank):
-				print("Free;")
-			else:
-				print("NON-free;")
-				
-			if isFirst(rank):
-				print("First;")
-			else:
-				print("NON-first;")
-				
-			if isLast(rank):
-				print("last;")
-			else:
-				print("NON-last;")
-
-
-			if rank == posTPlus:
-				print("t+1; ")
-			if rank == posTMinus:
-				print("t-1; ");
-			if (rank == posT):
-				print("t;" );
-
-			print("\n")
-						
-	if isFree(posT):
-		if isFree(posTPlus):    # CASE A: t and t+o free 			
-			if debug:
-				println("case A+")
-			if isPancakeUpsideDown(posT):
-				if isPancakeUpsideDown(posTPlus):
-					flip(posTPlus+1)
-					flip(1)
-					flip(posTPlus+1)
-				flip(posTPlus);
-			elif not isPancakeUpsideDown(posT):
-				if isPancakeUpsideDown(posTPlus):
-					flip(posTPlus+1)
-					flip(1)
-					flip(posTPlus+1)
-				flip(1)
-				flip(posTPlus)
-		elif isFree(posTMinus): # CASE A: t and t-o free 
-			if debug:
-				println("case A-")
-			if isPancakeUpsideDown(posT)  and  isPancakeUpsideDown(posTMinus):
-				flip(posTMinus+1)
-				flip(1)
-				flip(posTMinus)
-			elif isPancakeUpsideDown(posT)  and  not isPancakeUpsideDown(posTMinus):
-				flip(posTMinus+1)
-				flip(posTMinus)
-			elif not isPancakeUpsideDown(posT)  and  isPancakeUpsideDown(posTMinus):
-				flip(1)
-				flip(posTMinus+1)
-				flip(1)
-				flip(posTMinus)
-			elif not isPancakeUpsideDown(posT)  and  not isPancakeUpsideDown(posTMinus):
-				flip(1)
-				flip(posTMinus+1)
-				flip(posTMinus)
-		elif isFirst(posTPlus): # CASE B: t free, t+o first element
-			if debug:
-				println("case B+")
-			if not isPancakeUpsideDown(posT):
-				flip(1)
-			flip(posTPlus)
-		elif isFirst(posTMinus): # CASE B: t free, t-o first element 
-			if debug:
-				println("case B-")
-			if isPancakeUpsideDown(posT):
-				flip(1)
-			flip(posTMinus)
-
-		elif posTPlus != -99 and posTMinus != -99: # CASE C: t free, but both t+o and t-o are last elements 
-			if debug:
-				println("case C")
-			if not isPancakeUpsideDown(posT)  and  posTMinus<posTPlus  or  isPancakeUpsideDown(posT)  and  posTMinus>posTPlus:
-				flip(1)
-			flip(min(posTPlus,posTMinus) )
-			flip(min(posTPlus,posTMinus) - 1)
-			flip(max(posTPlus,posTMinus) + 1)
-			flip(min(posTPlus,posTMinus) - 1)
-		else: 					
-			if debug:
-				println("case Cbis")
-			if isPancakeUpsideDown(posT)  and  posTMinus==-99  or  not isPancakeUpsideDown(posT)  and  posTPlus==-99:
-				flip(1)
-			flip(max(posTPlus,posTMinus) + 1)
-			flip(max(posTPlus,posTMinus) )
-				
-	else: # t is in a block
-		if blockLength() == getStackSize(): # Done!
-			if tRadius != 1: # all reverse
-				flip(getStackSize())
-			break
-				
-		if isFree(posTPlus): # CASE D: t in a block, t+1 free 
-			if debug:
-				println("case D+")
-			if isPancakeUpsideDown(posTPlus):
-				flip(posTPlus+1)
-				flip(1)
-				flip(posTPlus+1)
-			flip(posTPlus)
-		elif isFree(posTMinus): # CASE D: t in a block, t-1 free 
-			if debug:
-				println("case D-")
-			if not isPancakeUpsideDown(posTMinus):
-				flip(posTMinus+1)
-				flip(1)
-				flip(posTMinus+1)
-			flip(posTMinus)
-		elif isFirst(posTPlus): # CASE E: t in a block, t+1 first element 
-			if debug:
-				println("case E+")
-			flip(posTPlus)
-
-		elif isFirst(posTMinus): # CASE E: t in a block, t-1 first element 
-			if debug:
-				println("case E-")
-			flip(posTMinus)
-
-		elif isLast(posTPlus) and posTPlus != 1: # CASE F+: t in a block, t+1 last element 
-			if debug:
-				println("case F+")
-			flip(blockLength())
-			flip(posTPlus + 1)
-			newPos = getRankOf(tRadius)
-			if newPos>0:
-				flip(newPos)
-		elif isLast(posTMinus) and posTMinus != 1: # CASE F-: t in a block, t-1 last element 
-			if debug:
-				println("case F-")
-			flip(blockLength())
-			flip(posTMinus + 1)
-			newPos = getRankOf(tRadius)
-			if (newPos>0):
-				flip(newPos)
-		else:
-			k = blockLength()-1
-			o = getPancakeRadius(1) - tRadius
-			pos = getRankOf(tRadius+(k+1)*o)
-			if isFree(pos) or isFirst(pos):
-				if debug:
-					println("case G")
-				if (isPancakeUpsideDown(pos) and o>0) or (not isPancakeUpsideDown(pos) and o<0):
-					flip(pos+1)
-					flip(1)
-					flip(pos+1)
-				if k+1 != pos:
-					flip(k+1)
-					flip(pos)
-			else:
-				if debug:
-					println("case H")
-				flip(pos+1)
-				flip(getRankOf(tRadius+k*o))
+    if maxupside != -1: # Case 1. 
+        pPlus1 = getRankOf(maxupside+1)
+        if maxupside == maxPos: # Case 1.C
+            if debug:
+                print("Case 1.C; maxupsidePos = "+str(maxupsidePos)+", maxupside = "+str(maxupside))
+            if maxupsidePos+1 != maxPos:
+                flip(maxupsidePos+1);
+                flip(maxPos);
+            maxPos -= 1
+        elif pPlus1 > maxupsidePos:
+            if debug:
+                print("Case 1.A; maxupsidePos = "+str(maxupsidePos)+", maxupside = "+str(maxupside)+", pPlus1 = "+str(pPlus1))
+            flip(pPlus1+1)
+            flip(pPlus1-maxupsidePos);
+        else:
+            if debug:
+                print("Case 1.B; maxupsidePos = "+str(maxupsidePos)+", maxupside = "+str(maxupside)+", pPlus1 = "+str(pPlus1));
+            flip(maxupsidePos+1);
+            flip(maxupsidePos-pPlus1);
+    else: # Case 2. All pancakes are upside down.
+        reverted = True   
+        for pos in range(maxPos):
+            if getPancakeRadius(pos)!=pos+1:
+                reverted = False
+                
+        if reverted:
+            if debug:
+                print("Case 2.B")
+            for i in range(maxPos):
+                flip(maxPos)
+                if maxPos>1:
+                    flip(maxPos-1)
+                showStack()
+            keepGoing = False
+        else:
+            pPlus1 = getRankOf(getStackSize()+1)
+            p = 0
+            for radius in range(maxPos,0,-1):
+                p = getRankOf(radius);
+                if p>maxPos:
+                    p=-99
+                if (pPlus1!=-99 and pPlus1<p): # we've got the larger p such that p+1 is above p and both are upsideof
+                    if debug:
+                        print("Case 2.A; p="+str(p)+", radius="+str(radius)+", pPlus1="+str(pPlus1))
+                    flip(p+1)
+                    if pPlus1!=0:
+                        flip(pPlus1+1)
+                    radius = -1 # We're done with this iteration of the loop
+                pPlus1 = p # look downward
 # END SOLUTION
