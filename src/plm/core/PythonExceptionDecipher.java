@@ -26,6 +26,12 @@ public class PythonExceptionDecipher {
 						((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)),
 						cause.value.__findattr__("msg")));
 
+			} else if (cause.type.toString().equals("<type 'exceptions.IndentationError'>")) {
+				msg.append(Game.i18n.tr("Indentation error at line {0}: {1}\n" +
+						"Please, check that you did not mix tabs and spaces. Use the TAB and shift-TAB keys to clean your indentation.\n",
+						((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)),
+						cause.value.__findattr__("msg")));
+
 			} else { /* It makes sense to display a backtrace for any errors but syntax ones */
 
 				if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
