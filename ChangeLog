@@ -1,6 +1,6 @@
-20140821: Release 2.4-alpha2
+20140821: Release 2.4-beta1
 
-  Getting closer to the release, but not there yet.
+  Close to the release, but not there yet.
   
   * Improved translations:
     - Brazilian Portuguese: Now at 35% [Fred Maranhao]
@@ -16,6 +16,12 @@
     - welcome.array.island.Island: small game with arrays of integers
     - sort.pancake.CohenPancake: Cohen's Algorithm for burned pancakes
     - lander.*: Integrate properly and port to any supported languages.
+    
+  * Still missing for the release:
+    - French and Brasilian translations should be updated and completed
+    - Switching identity is still broken (see #189)
+    - Clang being highly experimental, it should only be activated if
+      a specific configuration flag is activated.
 
 20140724: Release 2.4-alpha1
 
