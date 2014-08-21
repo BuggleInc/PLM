@@ -10,6 +10,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 
+import org.fife.ui.rsyntaxtextarea.RSyntaxDocument;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import plm.core.model.session.ISourceFileListener;
 import plm.core.model.session.SourceFile;
 
@@ -26,11 +28,15 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	private EditorKit editorKit;
 	private boolean propagationInProgress = false, pendingPropagDocToSource = false, pendingPropagSourceToDoc = false;
 
+    public SourceFileDocumentSynchronizer(RSyntaxTextArea rtextarea) {
+        this.editorKit = rtextarea.getUI().getEditorKit(rtextarea);
+    }
+
 	public SourceFileDocumentSynchronizer(EditorKit kit) {
 		this.editorKit = kit;
 	}
 
-	public void clear() {
+ 	public void clear() {
 		document.removeDocumentListener(this);
 		sourceFile.removeListener();
 		this.document = null;
@@ -80,7 +86,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 				return;
 			}
 			Reader reader = new StringReader(body);
-			this.editorKit.read(reader, this.document, 0);
+            this.editorKit.read(reader, this.document, 0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (BadLocationException e) {

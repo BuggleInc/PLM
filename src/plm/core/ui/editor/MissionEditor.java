@@ -69,7 +69,7 @@ public class MissionEditor extends JFrame {
 		});
 		setSize(1200, 800);
 		Game.getInstance();
-		PlmSyntaxPane.initKits();
+		//PlmSyntaxPane.initKits();
 		initComponents();
 		setVisible(true);
 	}
@@ -250,7 +250,7 @@ public class MissionEditor extends JFrame {
 			}
 
 			editor.setText(content.toString());
-			((jsyntaxpane.SyntaxDocument) editor.getDocument()).clearUndos();
+			//((jsyntaxpane.SyntaxDocument) editor.getDocument()).clearUndos();
 			modified = false;
 			setTitle(TITLE_NOT_MODIFIED);
 		} catch (IOException e1) {
