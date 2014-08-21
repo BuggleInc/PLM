@@ -2,12 +2,11 @@ package lessons.lander.universe
 
 import javax.script.ScriptEngine
 import javax.swing.ImageIcon
-
 import plm.universe.World
 import plm.core.model.ProgrammingLanguage
 import plm.core.ui.ResourcesCache
-
 import Math.PI
+import plm.core.model.Game
 
 object LanderWorld {
   object State extends Enumeration {
@@ -43,7 +42,39 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   def getIcon = ResourcesCache.getIcon("img/world_lander.png");
 
-  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine): Unit = ()
+  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine) {
+  		if (lang.equals(Game.PYTHON)) {
+  			engine.put("Segment", Segment.getClass())
+			engine.eval(
+			    "def isFlying():\n"+
+			    "  return entity.isFlying()\n"+
+			    "def simulateStep():\n"+
+			    "  entity.simulateStep()\n"+
+			    "def getGround():\n"+
+			    "  return [ (elm.x(), elm.y()) for elm in entity.getGround() ]\n"+
+			    "def getX():\n"+
+			    "  return entity.getX()\n"+
+			    "def getY():\n"+
+			    "  return entity.getY()\n"+
+			    "def getSpeedX():\n"+
+			    "  return entity.getSpeedX()\n"+
+			    "def getSpeedY():\n"+
+			    "  return entity.getSpeedY()\n"+
+			    "def getAngle():\n"+
+			    "  return entity.getAngle()\n"+
+			    "def setDesiredAngle(a):\n"+
+			    "  entity.setDesiredAngle(a)\n"+
+			    "def getThrust():\n"+
+			    "  return entity.getThrust()\n"+
+			    "def setDesiredThrust(t):\n"+
+			    "  entity.setDesiredThrust(t)\n"+
+			    "def getFuel():\n"+
+			    "  return entity.getFuel()\n"+
+			    "")
+  		} else {
+  			throw new RuntimeException("No binding of LanderWorld for "+lang)
+  		}
+  }
 
   /** Returns true if both worlds have same name and same state. */
   def winning(target: World): Boolean = state == LANDED

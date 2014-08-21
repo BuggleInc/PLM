@@ -15,6 +15,7 @@
       Golomb sequence [Valentin Giannini]
     - welcome.array.island.Island: small game with arrays of integers
     - sort.pancake.CohenPancake: Cohen's Algorithm for burned pancakes
+    - lander.*: Integrate properly and port to any supported languages.
 
 20140724: Release 2.4-alpha1
 
@@ -39,7 +40,7 @@
     - Unclutters the UI: changing the buggle color is useless
   * Pedagogical content:
     - lander.*: new lesson on lunar landing [Paul Brauner]
-      Only working in scala for now, somehow experimental.
+      Only working in Java for now, somehow experimental.
     - welcome.bat.bool2.fizzBuzz: new (classical Fizz Buzz word game)
     - Various proofreadings on mission texts (FR&EN)
 

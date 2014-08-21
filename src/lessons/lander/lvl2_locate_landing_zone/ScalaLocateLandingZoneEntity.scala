@@ -24,11 +24,10 @@ class ScalaLocateLandingZoneEntity extends LanderEntity {
   }
   /* END TEMPLATE */
 
-  /* BEGIN HIDDEN */
   var targetStart = 0.0;
   var targetEnd = 0.0;
 
-  override def init() {
+  override def initialize() {
     var landingZone = getLandingZone();
     targetStart = landingZone.start.x;
     targetEnd = landingZone.end.x;
@@ -54,5 +53,4 @@ class ScalaLocateLandingZoneEntity extends LanderEntity {
     else
       setDesiredThrust(3)
   }
-  /* END HIDDEN */
 }

@@ -12,7 +12,7 @@ class ScalaFlyTheLanderEntity extends LanderEntity {
   var targetStart=0.0
   var targetEnd=0.0
   /* END HIDDEN */
-  override def init() {
+  override def initialize() {
     /* BEGIN HIDDEN */
     var lastPoint:Point = getGround.get(0);
     for (point <- getGround()) {
