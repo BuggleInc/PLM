@@ -8,6 +8,8 @@
     - Make it possible to copy/paste the secret session ID from the
       about dialog, so that the students can manually pass it to their 
       teachers. Not as convenient as it ought to be, but it works.
+    - Display a big fat warning when switching to C: that's still
+      experimental, and not everything works for now. They're warned.
   * Pedagogical content:
     - welcome.array.maxvalue.Extrema: find min and max values
       [Valentin Giannini]
@@ -20,8 +22,6 @@
   * Still missing for the release:
     - French and Brasilian translations should be updated and completed
     - Switching identity is still broken (see #189)
-    - Clang being highly experimental, it should only be activated if
-      a specific configuration flag is activated.
 
 20140724: Release 2.4-alpha1
 

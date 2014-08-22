@@ -950,6 +950,16 @@ public class Game implements IWorldView {
 						i18n.tr("C is missing"), JOptionPane.ERROR_MESSAGE); 
 				return;
 			}
+			if (newLanguage.equals(Game.C)) {
+				int res = JOptionPane.showConfirmDialog(null, 
+						i18n.tr(  "The C langage is currently very experimental in the PLM.\n"
+			                    + "If you go for C, you may not be able to complete some exercises that\n"
+			                    + "are still in progress in C, although some other parts are already okay.\n\n"
+			                    + "Do you want to proceed anyway?"),
+						i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
+				if (res == JOptionPane.CANCEL_OPTION)
+					return;
+			}
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
 			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
