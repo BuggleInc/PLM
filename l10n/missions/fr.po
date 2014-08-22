@@ -32,7 +32,7 @@ msgid ""
 msgstr ""
 "Ce monde a été inventé par Lyn Turbak, du Wellesley College. Il est peuplé "
 "de Buggles, petites bêtes qui comprennent des ordres simples, et offre de "
-"nombreuses possibilités d'interaction avec le monde: prendre ou poser des "
+"nombreuses possibilités d'interaction avec le monde : prendre ou poser des "
 "objets, colorier le sol, se cogner à des murs, etc."
 
 #. type: Content of: <h2>
@@ -595,7 +595,7 @@ msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
 msgstr ""
-"Les \"SimpleBuggles\" (ie, celles utilisées dans les premiers exercices) "
+"Les \"SimpleBuggles\" (c.-à.-d., celles utilisées dans les premiers exercices) "
 "affiche un message d'erreur sans que vous ayez à vous soucier de ce qu'est "
 "une exception."
 
@@ -635,10 +635,10 @@ msgid ""
 "abstraction nor visualization. You have to fill a function, which gets "
 "called for a bunch of parameter sets, and that's it."
 msgstr ""
-"Contrairement aux autres mondes, le BatWorld ne fournit pas ni de belle "
-"abstractions ni de belles visualisations. Vous aurez à remplier une "
-"fonction, qui sera appelée avec un tas d'ensembles de différentes "
-"paramètres, et c'est tout."
+"Contrairement aux autres mondes, le BatWorld ne fournit ni de belles "
+"abstractions ni de belles visualisations. Vous aurez à remplir une "
+"fonction qui sera appelée avec un ensemble de paramètres différents, "
+"et c'est tout."
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:17
@@ -891,7 +891,7 @@ msgstr "Parcours en zig-zag"
 #: src/lessons/welcome/Main.html:455
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:2
 msgid "Diagonal Traversal"
-msgstr "Parcours en diagonal"
+msgstr "Parcours en diagonale"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:483
@@ -921,7 +921,7 @@ msgstr "Le concept n'est pas indispensable à l'exercice"
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:501
 msgid "What will I learn?"
-msgstr "Que vais-je apprendre?"
+msgstr "Que vais-je apprendre ?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Main.html:502
@@ -936,12 +936,12 @@ msgid ""
 "difficulties."
 msgstr ""
 "Vous allez apprendre les bases de la programmation. Disons au moins que les "
-"principaux concepts vous auront été présentés, vous permettant de lire et "
+"principaux concepts vous auront été présentés, vous permettant de lire et de "
 "comprendre la plupart des algorithmes. Vous ne pourrez toujours pas écrire "
 "ou même lire des programmes complets en [!thelang] car la notion d'objet ne "
 "fait pas partie des objectifs de cette leçon, mais vous maîtriserez ce qu'on "
-"appelle la «programmation tactique», ce qui veut dire que votre maîtrise de "
-"la syntaxe vous permettra de vous concentrer sur les problèmes à résoudre "
+"appelle la « programmation tactique », ce qui veut dire que votre maîtrise "
+"de la syntaxe vous permettra de vous concentrer sur les problèmes à résoudre "
 "sans vous battre contre le compilateur à propos de la syntaxe."
 
 #. type: Content of: <p>
@@ -959,7 +959,7 @@ msgid ""
 "If you are not sure, go for this lesson that will teach you the bases of "
 "programming."
 msgstr ""
-"Dans le doute, faites cette leçon, qui vous enseignera les bases de la "
+"Dans le doute, faites cette leçon qui vous enseignera les bases de la "
 "programmation."
 
 #. type: Content of: <p>
@@ -974,8 +974,8 @@ msgid ""
 "clicking on the [!thelang/] icon at the right of the status bar below."
 msgstr ""
 "Vous venez de lancer PLM, l'exerciseur du programmeur (Programmer's Learning "
-"Machine).  Il s'agit d'une plate-forme pédagogique destinée à simplifier "
-"l'apprentissage de la programmation.  Il est constitué d'un ensemble "
+"Machine). Il s'agit d'une plate-forme pédagogique destinée à simplifier "
+"l'apprentissage de la programmation. Il est constitué d'un ensemble "
 "d'exercices groupés par leçons, pour vous permettre de progresser à votre "
 "rythme. Pour l'instant, l'outil est configuré pour vous permettre de "
 "programmer en [!thelang/], mais vous pouvez changer de langage de "
@@ -1013,7 +1013,7 @@ msgid ""
 "world turns into the objective of the exercise. For example in this "
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the lessons (and your settings in the "
+"<i>Objective</i> one. Depending on the lessons (and your settings in the "
 "Language menu), your code must be written in either C, Java, Python or Scala "
 "(depending on the exercise)."
 msgstr ""
