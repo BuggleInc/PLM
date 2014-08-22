@@ -51,3 +51,9 @@ http://www.essentialmath.com/tutorial.htm
  Essential Math for Games Programmers
 http://www.redblobgames.com/articles/visibility/
  Introduction to the algorithms behind the games
+ 
+***************** GOOD SE PRACTICES
+
+ * Avoid CRLF or lose few life points: img/dos2unix_allthefiles.jpg when
+   a CRLF has been pushed, or configure git attributes to avoid other PG
+   trolling :)
