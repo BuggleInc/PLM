@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-24 17:13+0200\n"
+"POT-Creation-Date: 2014-08-22 02:07+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -408,9 +408,10 @@ msgid "Compilation failed."
 msgstr "Compilazione fallita."
 
 #: src/plm/core/PythonExceptionDecipher.java:24
-#, java-format
+#, fuzzy, java-format
 msgid ""
-"Syntax error at line {0}: {1}\n"
+"Syntax error: {0}\n"
+"Line {1}: {2}\n"
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
 "Errore di sintassi alla riga {0}: {1}\n"
@@ -418,6 +419,21 @@ msgstr ""
 "tabulazioni\n"
 
 #: src/plm/core/PythonExceptionDecipher.java:32
+#, java-format
+msgid ""
+"Indentation error: {0}\n"
+"line {1}: {2}\n"
+"Please, check that you did not mix tabs and spaces. Use the TAB and shift-"
+"TAB keys to clean your indentation.\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:39
+msgid ""
+"You interrupted the execution.\n"
+"Your program must stop by itself to successfully pass the exercise.\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:45
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
@@ -425,13 +441,13 @@ msgstr ""
 "Eccezione NameError sollevata: Sembra che tu stia usando un identificatore "
 "non esistente; Per piacere controlla eventuali errori di battitura.\n"
 
-#: src/plm/core/PythonExceptionDecipher.java:35
+#: src/plm/core/PythonExceptionDecipher.java:48
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 "Eccezione TypeError sollevata: probabilmente stai utilizzando male una "
 "funzione o qualcosa del genere.\n"
 
-#: src/plm/core/PythonExceptionDecipher.java:38
+#: src/plm/core/PythonExceptionDecipher.java:51
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
@@ -439,24 +455,24 @@ msgstr ""
 "Eccezione UnboundLocalError sollevata: probabilmente stai provando ad "
 "utilizzare una variabile globale non dichiarata come tale.\n"
 
-#: src/plm/core/PythonExceptionDecipher.java:44
+#: src/plm/core/PythonExceptionDecipher.java:57
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr "Errore: non ci sono baggle da prendere sotto il buggle"
 
-#: src/plm/core/PythonExceptionDecipher.java:46
+#: src/plm/core/PythonExceptionDecipher.java:59
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr "Errore: un buggle non può trasportare più di un baggle alla volta"
 
-#: src/plm/core/PythonExceptionDecipher.java:48
+#: src/plm/core/PythonExceptionDecipher.java:61
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr ""
 "Errore: il tuo buggle si è appena teletrasportato nello spazio esterno..."
 
-#: src/plm/core/PythonExceptionDecipher.java:50
+#: src/plm/core/PythonExceptionDecipher.java:63
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr "Errore: il tuo buggle ha appena colpito un muro Fa male."
 
-#: src/plm/core/PythonExceptionDecipher.java:53
+#: src/plm/core/PythonExceptionDecipher.java:66
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
@@ -647,6 +663,19 @@ msgstr ""
 #, fuzzy
 msgid "C is missing"
 msgstr "Scala è mancante"
+
+#: src/plm/core/model/Game.java:955
+msgid ""
+"The C langage is currently very experimental in the PLM.\n"
+"If you go for C, you may not be able to complete some exercises that\n"
+"are still in progress in C, although some other parts are already okay.\n"
+"\n"
+"Do you want to proceed anyway?"
+msgstr ""
+
+#: src/plm/core/model/Game.java:959
+msgid "C is still experimental"
+msgstr ""
 
 #: src/plm/core/model/HelpServer.java:27
 msgid "Asking to the teacher for help"
@@ -920,12 +949,12 @@ msgstr ""
 msgid "About lesson - "
 msgstr "Riguardo la lezione - "
 
-#: src/plm/core/ui/AboutPLMDialog.java:36 src/plm/core/ui/MainFrame.java:453
+#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:453
 #: src/plm/core/ui/MainFrame.java:790
 msgid "About PLM"
 msgstr "Riguardo PLM"
 
-#: src/plm/core/ui/AboutPLMDialog.java:53
+#: src/plm/core/ui/AboutPLMDialog.java:60
 #, fuzzy, java-format
 msgid ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
@@ -934,7 +963,8 @@ msgid ""
 "style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
 "College)</i></li><li>Design and code: <i>M. Quinson and G. Oster</i></"
 "li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
-"ul><br/>Your code is saved to {2}<br/>Your session ID is {3}<br/></html>"
+"ul><br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/></"
+"html>"
 msgstr ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
 "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
@@ -944,15 +974,15 @@ msgstr ""
 "li><li>Collaudo: <i>Studenti del Telecom Nancy (tutte le classi a partire "
 "dal ''11)</i></li></ul><br/>Il tuo codice è salvato in {2}<br/></html>"
 
-#: src/plm/core/ui/AboutPLMDialog.java:76
+#: src/plm/core/ui/AboutPLMDialog.java:81
 msgid "About"
 msgstr "Informazioni"
 
-#: src/plm/core/ui/AboutPLMDialog.java:113
+#: src/plm/core/ui/AboutPLMDialog.java:118
 msgid "Changes"
 msgstr "Cambiamenti"
 
-#: src/plm/core/ui/AboutPLMDialog.java:119
+#: src/plm/core/ui/AboutPLMDialog.java:124
 msgid ""
 "<h2>PLM is proudly Free Software</h2><p>Copyright (c) 2008-2013.<br/> The "
 "PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git logs "
@@ -990,11 +1020,11 @@ msgstr ""
 "libere. Le licenze specifiche e l'origine di ogni file sono elencati nel "
 "file COPYING distribuito con l'archivio.</p>"
 
-#: src/plm/core/ui/AboutPLMDialog.java:145
+#: src/plm/core/ui/AboutPLMDialog.java:150
 msgid "Copying"
 msgstr "Licenza"
 
-#: src/plm/core/ui/AboutPLMDialog.java:151
+#: src/plm/core/ui/AboutPLMDialog.java:156
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Close"
 msgstr "Chiudi"
@@ -1143,12 +1173,12 @@ msgstr ""
 "Per piacere leggilo attentamente per capire il problema e correggi il tuo "
 "codice.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:71
-#: src/plm/core/ui/ExerciseFailedDialog.java:78
+#: src/plm/core/ui/ExerciseFailedDialog.java:74
+#: src/plm/core/ui/ExerciseFailedDialog.java:81
 msgid "Details >>"
 msgstr "Dettagli >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:81
+#: src/plm/core/ui/ExerciseFailedDialog.java:84
 msgid "Details <<"
 msgstr "Dettagli <<"
 
@@ -1846,7 +1876,7 @@ msgstr ""
 msgid "WEST"
 msgstr ""
 
-#: src/plm/universe/Entity.java:199
+#: src/plm/universe/Entity.java:190
 #, java-format
 msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
@@ -1855,11 +1885,11 @@ msgstr ""
 "L'esecuzione del tuo programma selleva una eccezione {0}: {1}\n"
 " Per piacere correggi il tuo codice.\n"
 
-#: src/plm/universe/Entity.java:261 src/plm/universe/Entity.java:268
+#: src/plm/universe/Entity.java:252 src/plm/universe/Entity.java:259
 msgid "Error, please recompile the exercice"
 msgstr ""
 
-#: src/plm/universe/Entity.java:407
+#: src/plm/universe/Entity.java:401
 #, java-format
 msgid ""
 "No ScriptEngine for {0}. Please check your classpath and similar settings."
@@ -1867,7 +1897,7 @@ msgstr ""
 "Nessuno ScriptEngine per {0}. Per piacere controlla il tuo classpath ed "
 "impostazioni simili."
 
-#: src/plm/universe/Entity.java:427
+#: src/plm/universe/Entity.java:421
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against PLM."
@@ -1875,11 +1905,11 @@ msgstr ""
 "Nessuno script sorgente {0} per l'entità {1}. Per piacere segnala questo bug "
 "a PLM."
 
-#: src/plm/universe/Entity.java:451
+#: src/plm/universe/Entity.java:445
 msgid "Received a ScriptException that does not come from Python.\n"
 msgstr "Ricevuto uno ScriptException che non proviene da Python.\n"
 
-#: src/plm/universe/Entity.java:456
+#: src/plm/universe/Entity.java:450
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
