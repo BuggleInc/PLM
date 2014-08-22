@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-15 23:11+0200\n"
+"POT-Creation-Date: 2014-08-22 02:05+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1092,6 +1092,16 @@ msgstr "I <i>buggles</i>? Che cosa sono??"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:15
+#, fuzzy
+#| msgid ""
+#| "The buggles are little animals obeying any order you may give them. In "
+#| "each exercise, you have to provide them with the right instructions so "
+#| "that the world turns into the objective of the exercise. For example in "
+#| "this exercise, you should instruct your buggle to move forward once. You "
+#| "can see that by checking the difference between the <i>World</i> view and "
+#| "the <i>Objective</i> one.  Depending on the lessons (and your settings in "
+#| "the Language menu), your code must be written in either Java, Python or "
+#| "Scala (depending on the exercise)."
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
@@ -1099,7 +1109,7 @@ msgid ""
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either Java, Python or Scala "
+"Language menu), your code must be written in either C, Java, Python or Scala "
 "(depending on the exercise)."
 msgstr ""
 "I buggles sono piccoli animali obbedienti ad ogni ordine che si possa dare "
@@ -1516,11 +1526,17 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
+#, fuzzy
+#| msgid ""
+#| "<b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!"
+#| "python]interpreter[/!] ignores anything placed between [!java|scala|c]the "
+#| "symbols /* and */ even if they are placed on differing lines.[/!] [!"
+#| "python]a line beginning with ''' and the next line ending with '''.[/!]"
 msgid ""
 "<b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] ignores anything placed between [!java|scala|c]the "
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
-"line beginning with ''' and the next line ending with '''.[/!]"
+"line beginning with ''' until the next line ending with '''.[/!]"
 msgstr ""
 "<b>Commenti su più righe</b> [!java|scala|c]Il compilatore[/!][!"
 "python]L'interprete[/!] ignora qualsiasi cosa posta fra [!java|scala|c]i "
@@ -1638,6 +1654,26 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:28
+#, fuzzy
+#| msgid ""
+#| "In [!thelang], the blocks of code are [!java|scala|c]enclosed between "
+#| "curly brackets: a { sign opens the block, while a } sign closes it.  "
+#| "White spaces are not important[/!][!java|c].[/!][!scala], provided that "
+#| "your instructions are still separated with a semi-column or an end of "
+#| "line.[/!] [!java|scala|c]It is still very important to correctly indent "
+#| "your code to keep it readable.[/!] [!python]marked by the indentation: "
+#| "every lines that are a bit shifted to the right with white spaces belong "
+#| "to the block. Quite often, people use 4 spaces for indentation, but it "
+#| "works if you use more or less spaces. Simply, any lines of the block must "
+#| "use the same amount of spaces.  The end of Python code blocks are not "
+#| "marked by any specific char.  Indenting lines starts a block and "
+#| "unindenting ends it. Do not forget the colon (:) at the end of the "
+#| "<code>if</code> line, python needs it to know that a new block begins. "
+#| "The fact that python relies on indentation to delimit blocks is a very "
+#| "good property for beginners: it will force your to adhere to strict code "
+#| "presentation standards.[/!] It is very easy to get lost in your own code "
+#| "if it's not properly indented, so you want to clean it up so that working "
+#| "on your code remains pleasant and productive."
 msgid ""
 "In [!thelang], the blocks of code are [!java|scala|c]enclosed between curly "
 "brackets: a { sign opens the block, while a } sign closes it.  White spaces "
@@ -1652,7 +1688,7 @@ msgid ""
 "Indenting lines starts a block and unindenting ends it. Do not forget the "
 "colon (:) at the end of the <code>if</code> line, python needs it to know "
 "that a new block begins. The fact that python relies on indentation to "
-"delimit blocks is a very good property for beginners: it will force your to "
+"delimit blocks is a very good property for beginners: it will force you to "
 "adhere to strict code presentation standards.[/!] It is very easy to get "
 "lost in your own code if it's not properly indented, so you want to clean it "
 "up so that working on your code remains pleasant and productive."
@@ -4723,6 +4759,85 @@ msgstr ""
 msgid "Write a function that computes the Nth element of the sequence."
 msgstr ""
 
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/island/Island.html:2
+msgid "Buggles' Island"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/island/Island.html:4
+msgid ""
+"You just received the traveling notes of your old aunt who traveled accross "
+"the country of the Buggles' Islands. She wrote down the altitude every "
+"kilometer during her trip, resulting in a sequence of numbers as follows."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/island/Island.html:9
+#, no-wrap
+msgid "0 0 1 1 2 2 1 1 0 1 2 2 1 1 0"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:11
+msgid "Here is a cut of the islands on that path:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/island/Island.html:14
+#, no-wrap
+msgid ""
+"       /***\\       /*\\         &lt;-- 2 meters above the see level\n"
+"   /***********\\ /*******\\     &lt;-- 1 meter above the see level\n"
+"***************************    &lt;-- see level\n"
+"| | | | | | | | | | | | | |\n"
+"0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude on each point\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:21
+msgid "This example is constituted of four levels of island:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:24
+msgid "1 1 2 2 1 1 (the island on the left)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:25
+msgid "2 2 (the mountain topping the left island)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:26
+msgid "1 2 1 1 (the right island)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/array/island/Island.html:27
+msgid "2 (the mountain on the right)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:30
+msgid "This can also be visualized this way:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/island/Island.html:32
+#, no-wrap
+msgid "0 0(1 1(2 2)1 1)0(1(2)1 1)0"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/island/Island.html:34
+msgid ""
+"Could you write a little program to compute the amount of levels in a given "
+"sequence of altitudes? Actually, there is an iterative and a recursive "
+"solution to that problem."
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
 msgid ""
@@ -5996,6 +6111,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:41
 msgid "Good luck!"
 msgstr "Buona fortuna!"
 
@@ -9453,6 +9569,7 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:8
 msgid "Provided functions"
 msgstr ""
 
@@ -9697,7 +9814,9 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/Main.html:35
 msgid ""
-"Other exercises, for example on the Cohen's algorithm, or on the other ones."
+"Other exercises, for example on the Roti sorting, with a pile of Roti that "
+"have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
+"Pancake_sorting#The_identical_pancake_stack)."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -9972,15 +10091,156 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/pancake/GatesBurnedPancake.html:2
+#: src/lessons/sort/pancake/CohenPancake.html:2
 msgid "Faster Burned Pancake Sorting"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesBurnedPancake.html:5
+#: src/lessons/sort/pancake/CohenPancake.html:4
 msgid ""
-"It's the same exercice that Gates Sorting but pancakes are burned.  consider "
-"all cases and check if the top pancake is in the right side before"
+"The Gates' algorithm that we saw in the previous exercise quickly sort a "
+"stack of unburned pancakes by increasing the size of the blocks of sorted "
+"pancakes. This is much faster that the naive algorithm which moves at each "
+"step the largest pancake to the bottom of still unsorted pancakes. Gates' "
+"algorithm manages to sort a stack of <i>n</i> pancakes in less than <i>(5n + "
+"5)/3</i> steps in the worst case, while the naive algorithm requires at most "
+"<i>2n</i> steps. Gates is thus about one third faster in the worst case."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:11
+msgid ""
+"In this exercise, we will explore an adaptation of the same idea to burnt "
+"pancakes. This was first published by David X. Cohen and Manuel Blum. David "
+"Cohen co-founded a few years later the Futurama TV show bursted with jokes "
+"inspired from scientific facts. Definitively, interesting people studied "
+"that little pancake problem..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:16
+msgid ""
+"The Cohen's algorithm is slightly easier than the Gates' one since it "
+"distinguishes less cases:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:18
+msgid ""
+"<b>Case 1:</b> At least one pancake is rightside up in the stack. Let <i>p</"
+"i> be the largest such pancake.  Note that <i>p + 1</i> must therefore be "
+"upside down, unless <i>p = n</i> (in which case there is no <i>p + 1</i> "
+"pancake)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:22
+msgid "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:23
+msgid "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:24
+msgid ""
+"<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
+"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
+"position, there is nothing to do. If not, you can move it to the bottom of "
+"the stack in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:28
+msgid ""
+"<b>The trick is that the pancake <i>p</i> should never be considered again.</"
+"b> Otherwise, you will consider that pancake again and again since it's "
+"rightside up, and since that's the largest pancake. To leave that pancake "
+"alone, you should keep track of the stack size that is still to be sorted. "
+"Any traversal of the stack must then only consider these pancakes, leaving "
+"alone the ones that are already in position at the bottom of the stack."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:36
+msgid ""
+"<b>Case 2:</b> All pancakes are downside. Again, we distinguish two sub-"
+"cases."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:39
+msgid ""
+"<b>Case 2.a:</b> There is at least one <i>p</i> for which <i>p+1</i> is "
+"higher than <i>p</i> (if there is several such <i>p</i>, take the largest "
+"one)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:43
+msgid ""
+"<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
+"that case, we must have that setting:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:48
+msgid ""
+"As you can see, we achieve one join in 2 flips in the cases 1 or 2.a. Since "
+"we need to achieve n joins to sort the stack, we can sort the stack in "
+"<i>2n</i> steps if case 2.b does not occurs."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:51
+msgid ""
+"That case 2.b requires a very different handling as it is obviously not "
+"possible to achieve a join in only 2 flips.  But fortunately, we can "
+"leverage the very specific setting of the stack in that case to provide the "
+"following algorithm.  It sorts a stack in that exact configuration after "
+"exactly 2n steps."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/CohenPancake.html:56
+#, no-wrap
+msgid ""
+"Repeat n times\n"
+"    Flip the whole stack of n pancakes\n"
+"    Flip the top (n-1) pancakes\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:61
+msgid ""
+"It may sound somehow magic, but it actually works, as depicted on an example "
+"below."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:65
+msgid ""
+"So, all in all, the Cohen algorithm manages to sort the stack of burnt "
+"pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
+"algorithm that requires <i>3n</i> steps."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/CohenPancake.html:68
+msgid "I cannot get it right."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/CohenPancake.html:69
+msgid ""
+"Don't worry. This exercise is very difficult, so it's ok if it does not work "
+"right away for you.  Add some relevant logging to your code to understand "
+"where it stop performing correctly.  Make sure to use the method "
+"<code>isSelected()</code> so that your logs only appears in the currently "
+"displayed world. In particular, it may help to print textually the state of "
+"the world each time you enter the main loop."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -10589,6 +10849,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:22
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:10
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
@@ -13588,8 +13849,9 @@ msgid ""
 "\" strings will not overlap."
 msgstr ""
 
-#. type: Content of: <h3>
+#. type: Content of: <h2>
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:2
 msgid "Lunar Lander"
 msgstr ""
 
@@ -13648,6 +13910,306 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
 msgid "This lesson assumes some basic programming and physics skills."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:4
+msgid ""
+"In this universe you pilot a lunar lander. At each simulation step you're "
+"given the lander's position, speed, angle and thrust and must issue a "
+"command adjusting its angle and thrust."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:12
+msgid "Get the X and Y position of the lander."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:13
+#, fuzzy, no-wrap
+#| msgid ""
+#| "[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+#| "     return x / 2[!java];[/!]\n"
+#| "[!scala|java]}[/!]"
+msgid ""
+"[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
+"[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
+msgstr ""
+"[!java]double [/!]divisionePerDue([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+"     return x / 2[!java];[/!]\n"
+"[!scala|java]}[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:15
+msgid "Get the horizontal and vertical speed of the lander."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:17
+#, fuzzy, no-wrap
+#| msgid ""
+#| "[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+#| "     return x / 2[!java];[/!]\n"
+#| "[!scala|java]}[/!]"
+msgid ""
+"[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
+"[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])"
+msgstr ""
+"[!java]double [/!]divisionePerDue([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+"     return x / 2[!java];[/!]\n"
+"[!scala|java]}[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:19
+#, fuzzy
+#| msgid "One letter before the end of the alphabet"
+msgid "Get or set the angle of the lander."
+msgstr "Ultima lettera dell'alfabeto"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:20
+msgid ""
+"An angle of 0° denotes a vertical position where the \"head\" of the lander "
+"points up.  This is the angle you must land with. A positive angle denotes a "
+"left-leaning lander, a negative angle a right-leaning one. You cannot lean "
+"more than by ±90°, and the angle can vary by at most ±5° in one step."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:25
+#, fuzzy, no-wrap
+#| msgid ""
+#| "[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+#| "     return x / 2[!java];[/!]\n"
+#| "[!scala|java]}[/!]"
+msgid ""
+"[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
+"[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
+msgstr ""
+"[!java]double [/!]divisionePerDue([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+"     return x / 2[!java];[/!]\n"
+"[!scala|java]}[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:27
+msgid "Get or set the thrust of the lander."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:27
+msgid ""
+"You can only increment or decrement the thrust by 1 between two simulation "
+"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
+"the next step. If you ask for less than 0 (resp. more than 4), everything "
+"will be as if you had asked for 0 (resp. 4)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:33
+#, fuzzy, no-wrap
+#| msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
+msgid "[!java|c]int [/!]getFuel()[!scala]:Int[/!]"
+msgstr "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:34
+msgid ""
+"Get the remaining fuel in the lander.  At each step of the simulation the "
+"lander consumes as many fuel units as the current thrust. Once you run out "
+"of fuel you're in free fall so beware!"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:2
+msgid "Lander 101"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:4
+msgid ""
+"Congratulations! You won a (one-way) trip to Mars in a cereal box. NASA was "
+"kind enough to donate the Lunar Excursion Module for this mission, so that's "
+"what you'll be flying."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:8
+msgid ""
+"Before you take off, you must go through some basic landing simulation. You "
+"shouldn't have to fly the lander if all goes as planned but, as they say, "
+"\"better safe than sorry\"."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:12
+msgid ""
+"Your mission is to <b>land the lander with a vertical speed of at most 10 m/"
+"s.</b> There are two ways you can influence the lander's course: by "
+"adjusting its angle or by adjusting its thrust. In this simulation we only "
+"care about adjusting the thrust, expressed in m/s²."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:17
+msgid ""
+"The <code>step()</code> function that you should write now will be called "
+"every 0.1 second during the simulation. It should set the desired thrust of "
+"the next simulation step, by calling <code>[!java]void "
+"[/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</"
+"code> where <code>desiredThrust</code> is some integer between 0 and 4. You "
+"can only increment or decrement the thrust by 1 between two simulation "
+"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
+"the next step. If you ask for less than 0 (resp. more than 4), everything "
+"will be as if you had asked for 0 (resp. 4)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+msgid ""
+"In order to take informed decisions, you can query the lander's state. In "
+"this simulation you'll probably be interested in its vertical position: "
+"<code>[!java]double [/!]getY()[!scala]:Double[/!]</code>, and its vertical "
+"speed: <code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. You "
+"can also ask for the thrust via <code>[!java]int [/!]getThrust()[!scala]:"
+"Integer[/!]</code> in case you don't remember what you asked for. Remember "
+"that Mars' gravity is 3.711 m/s², it might come in handy."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+msgid ""
+"One last thing: the lander is pretty small so you don't have much fuel. At "
+"each step of the simulation the lander consumes as many fuel units as the "
+"current thrust. Once you run out of fuel you're in free fall so beware! You "
+"can consult the remaining amount of available fuel units using <code>[!"
+"java]int [/!]getFuel()[!scala]:Integer[/!]</code>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:2
+msgid "Locate a Landing Zone"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:4
+msgid ""
+"After 200 days of traveling space and eating cereals you finally reach Mars. "
+"Time to land at last!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
+msgid ""
+"The lander is on autopilot and all you have to do is look around and tell it "
+"where to land. The lander must <b>land on a flat zone</b> it you want to "
+"remain in one piece. You indicate the lander where to land by modifying the "
+"<code>getLandingZone</code> function so that it returns a [!java|"
+"scala]<code>Segment</code> representing the zone of your choice."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:13
+msgid ""
+"A segment is composed of two <code>Point</code>s, each of them composed of "
+"two <code>double</code>s. A segment is built via the <code>Segment(Point "
+"start, Point end)</code> constructor. A point is built via the "
+"<code>Point(double x, double y)</code> constructor. A point's coordinates "
+"are accessible via its <code>double x()</code> and <code>double y()</code> "
+"methods."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:17
+msgid ""
+"[/!] [!python]tuple of two X coordinates representing the zone of your "
+"choice.[/!]"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:21
+msgid ""
+"In order to determine which zone to return, you'll need to call <code>[!java|"
+"scala]List&lt;Point&gt; [/!]getGround()</code>, which returns the vertices "
+"of the ground's profile as a list of [!java|scala]Point[/!] [!python]tuples "
+"(x,y)[/!]."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:26
+msgid ""
+"One more thing: your function should return a valid flat zone in any kind of "
+"situation, not just for the currently visualized one. That's because it will "
+"be not only tested against that world, but also against the one we had in "
+"the previous exercise. As usual, you can see the other existing worlds with "
+"the appropriate combobox."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:32
+msgid ""
+"Have a safe landing! Don't forget to put on your space suit on your way out."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:2
+msgid "Fly the Lander!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:4
+msgid ""
+"After 30 days of staring at rocks and eating cereals you decide it's time to "
+"go explore other parts of the planet."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:7
+msgid ""
+"You fly for a while and suddenly realize you're almost out of fuel.  "
+"Unfortunately you're in a delicate situation and the autopilot is helpless.  "
+"You will have to pilot the lander yourself. Your mission is to <b>land the "
+"lander on a flat zone with a vertical speed less than 10 m/s, an horizontal "
+"speed less than 5 m/s and an angle of 0°.</b>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:13
+msgid ""
+"You must define two functions: <code>[!java]void [/!]initialize()</code> and "
+"<code>[!java]void [/!]step()</code>. <code>initialize()</code> is called "
+"once just after you press \"Run\". You can use it for chosing some flat "
+"zone. As before, <code>step()</code> is called every 0.1 second and is used "
+"for adjusting the lander's thrust and angle. As in the first exercise the "
+"lander's thrust is adjusted via <code>[!java]void [/!]setDesiredThrust([!"
+"java]int [/!]desiredThrust[!scala]:Integer[/!])</code>.  But you can also "
+"control its angle via <code>[!java]void [/!]setDesiredAngle([!java]double "
+"[/!]desiredAngle[!scala]:Double[/!])</code>.  An angle of 0° denotes a "
+"vertical position where the \"head\" of the lander points up.  This is the "
+"angle you must land with. A positive angle denotes a left-leaning lander, a "
+"negative angle a right-leaning one. You cannot lean more than by ±90°, and "
+"the angle can vary by at most ±5° in one step."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:26
+msgid ""
+"As in the previous lesson, <code>[!java]List&lt;Point&gt; [/!]getGround()[!"
+"scala]:List[Point][/!]</code> returns the vertices of the ground's profile "
+"from left to right.  Please refer to the documentation (Help/About this "
+"world) for a reference manual of your lunar lander."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:30
+msgid ""
+"As before, your program must safely land the lander in all the situations "
+"encountered so far in addition to this new one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:33
+msgid "Good luck, try not to crash!"
 msgstr ""
 
 #. type: Content of: <h2>

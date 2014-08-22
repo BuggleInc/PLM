@@ -12,9 +12,8 @@ nécessaires au dessin. Il peut être pratique d'ajouter des commentaires
 comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le
 G. Retournons à la position initiale</i>. Documenter votre code est presque
 toujours nécessaire si quelqu'un (vous ou quelqu'un d'autre) veut le lire
-après coup. Cependant, commenter des choses triviales est une mauvaise idée
-car cela dilue les informations dans des commentaires trop verbeux. En
-anglais, ce travers s'appelle <i>over-commenting</i>.</p>
+après coup. Cependant, sur-commenter des choses triviales est une mauvaise
+idée car cela dilue les informations dans des commentaires trop verbeux.</p>
    
   <p>Il y a [!java]trois[/!][!python|scala|c]deux[/!] sortes de commentaires en
 [!thelang], indiquant [!java|scala|c]au compilateur[/!][!python]à
@@ -24,12 +23,11 @@ l'interpréteur[/!] qu'il ne doit pas lire le texte ajouté pour les humains.</p
     <li><b>Commentaires sur une seule ligne</b>. Quand le
 [!java|scala|c]compilateur[/!][!python]interpréteur[/!] rencontre le symbole
 [!java|scala|c]//[/!][!python]#[/!], il ignore la fin de la ligne.</li>      
-    <li><b>Commentaires sur plusieurs lignes</b>. [!java|scala|c]Le
-compilateur[/!][!python]L'interpréteur[/!] ignore tout ce qui se trouve
-entre [!java|scala|c]les symboles /* et */, même s'ils sont sur des lignes
-différentes.[/!]
-[!python]une ligne commençant par ''' et la prochaine ligne terminant par
-'''.[/!]</li>
+    <li><b>Comments on several lines</b>. The
+[!java|scala|c]compiler[/!][!python]interpreter[/!] ignores anything placed
+between [!java|scala|c]the symbols /* and */ even if they are placed on
+differing lines.[/!] [!python]a line beginning with ''' until the next line
+ending with '''.[/!]</li>
   </ul>
 
 <pre>
