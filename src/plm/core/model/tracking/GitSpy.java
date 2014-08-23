@@ -57,6 +57,7 @@ public class GitSpy implements ProgressSpyListener {
 		} else {
 			git = Git.open(repoDir);
 			git.checkout().setName(userBranch).call(); // update to get any remote changes
+			git.pull().call();
 		}
 
 		GitUtils gitUtils = new GitUtils(git);
