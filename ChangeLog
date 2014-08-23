@@ -3,8 +3,8 @@
   Let's get ready for the Big Show of this year.
   
   * User Interface:
-    - Switch from the now unmaintained upstream jsyntaxpane to
-      RSyntaxpaneArea (fix #191). 
+    - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
+      (fix #191). 
 
 20140821: Release 2.4-beta1
 
