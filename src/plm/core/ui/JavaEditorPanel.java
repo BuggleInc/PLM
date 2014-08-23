@@ -1,13 +1,9 @@
 package plm.core.ui;
 
-import javax.swing.JEditorPane;
-import javax.swing.JScrollPane;
-
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextAreaEditorKit;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.fife.ui.rsyntaxtextarea.TextEditorPane;
 import org.fife.ui.rtextarea.RTextScrollPane;
+
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
@@ -31,17 +27,16 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
         setLineNumbersEnabled(true);
         setFoldIndicatorEnabled(true);
 
-        if (lang.getLang().equalsIgnoreCase(Game.JAVA.getLang())) {
+        if (lang.equals(Game.JAVA)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+        } else if (lang.equals(Game.PYTHON)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
-        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+        } else if (lang.equals(Game.SCALA)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SCALA);
-        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+        } else if (lang.equals(Game.C)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
         } else {
-            // FIXME: check how to log properly internal warning
-            System.err.println("WARNING: Unsupported programming language for syntax highlighting module");
+            System.err.println("WARNING: Unsupported programming language for syntax highlighting module. Please fix that PLM bug.");
         }
 
         codeEditor.setAnimateBracketMatching(true);
