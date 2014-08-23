@@ -1338,9 +1338,8 @@ msgid "Quit"
 msgstr "Esci"
 
 #: src/plm/core/ui/MainFrame.java:316
-#, fuzzy
 msgid "Exercise"
-msgstr "Annulla Esercizio"
+msgstr "Esercizio"
 
 #: src/plm/core/ui/MainFrame.java:321 src/plm/core/ui/MainFrame.java:767
 msgid "Revert Exercise"

@@ -1319,9 +1319,8 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/plm/core/ui/MainFrame.java:316
-#, fuzzy
 msgid "Exercise"
-msgstr "Recommencer l'exercice"
+msgstr "Exercice"
 
 #: src/plm/core/ui/MainFrame.java:321 src/plm/core/ui/MainFrame.java:767
 msgid "Revert Exercise"
@@ -1361,11 +1360,11 @@ msgstr "Importer le cache de session"
 #: src/plm/core/ui/MainFrame.java:371 src/plm/core/ui/MainFrame.java:776
 #: src/plm/core/ui/action/AddUser.java:25
 msgid "Add user"
-msgstr ""
+msgstr "Ajouter un utilisateur"
 
 #: src/plm/core/ui/MainFrame.java:374
 msgid "Add user with an UUID identity"
-msgstr ""
+msgstr "Ajouter un utilisateur avec un UUID"
 
 #: src/plm/core/ui/MainFrame.java:377 src/plm/core/ui/MainFrame.java:777
 #: src/plm/core/ui/action/SwitchUser.java:32
@@ -1375,11 +1374,11 @@ msgstr "Changer d'utilisateur"
 #: src/plm/core/ui/MainFrame.java:380 src/plm/core/ui/MainFrame.java:778
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid "Remove user"
-msgstr ""
+msgstr "Supprimer un utilisateur"
 
 #: src/plm/core/ui/MainFrame.java:383
 msgid "Link identity"
-msgstr ""
+msgstr "Lier une identité"
 
 #. === Language menu ===
 #: src/plm/core/ui/MainFrame.java:387 src/plm/core/ui/MainFrame.java:781
