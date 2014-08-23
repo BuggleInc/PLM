@@ -39,7 +39,6 @@ import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
-import plm.core.utils.PlmSyntaxPane;
 
 public class MissionEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -250,7 +249,6 @@ public class MissionEditor extends JFrame {
 			}
 
 			editor.setText(content.toString());
-			//((jsyntaxpane.SyntaxDocument) editor.getDocument()).clearUndos();
 			modified = false;
 			setTitle(TITLE_NOT_MODIFIED);
 		} catch (IOException e1) {

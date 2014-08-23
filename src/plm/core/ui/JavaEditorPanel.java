@@ -58,7 +58,6 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
 		sync.setSourceFile(srcFile);
 		
 		codeEditor.setText(srcFile.getBody());
-		//((jsyntaxpane.SyntaxDocument) codeEditor.getDocument()).clearUndos();
         codeEditor.discardAllEdits();
 		
 		/* Highlighting stuff, to trace entities */
@@ -77,8 +76,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
 	}
 	@Override
 	public void entityTraceChanged(Entity e, StackTraceElement[] trace) {
-		/* TODO: The symbol setCurrentEditedLineNumber() is not in jsyntaxpane anymore. 
-		 * But the following code was not working anyway... 
+		/* TODO:  the following code was not working anymore... 
 		for (StackTraceElement elm:trace) {
 			// added defenses against NPE because sometimes (launched from a .jar file, a NullPointerException might happen...)
 			if (elm.getFileName() != null && codeEditor != null && (elm.getFileName().equals(srcFile.getName()) || elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl"))) {				

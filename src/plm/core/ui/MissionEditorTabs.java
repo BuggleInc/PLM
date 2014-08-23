@@ -21,7 +21,6 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.session.SourceFile;
-import plm.core.utils.PlmSyntaxPane;
 import plm.universe.IEntityStackListener;
 import plm.universe.World;
 
