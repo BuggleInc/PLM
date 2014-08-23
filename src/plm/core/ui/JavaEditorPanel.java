@@ -3,38 +3,58 @@ package plm.core.ui;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextAreaEditorKit;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.TextEditorPane;
+import org.fife.ui.rtextarea.RTextScrollPane;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 import plm.universe.IEntityStackListener;
 
-public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntityStackListener {
+public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEntityStackListener {
 	private static final long serialVersionUID = 1L;
 	SourceFile srcFile;
 	SourceFileDocumentSynchronizer sync ;
-	JEditorPane codeEditor;
-	Entity tracedEntity;
+	RSyntaxTextArea codeEditor;
+    Entity tracedEntity;
 
 	public JavaEditorPanel(SourceFile srcFile, ProgrammingLanguage lang) {
 		super();
 		this.srcFile = srcFile;
 
-		codeEditor = new JEditorPane();
-		setViewportView(codeEditor);
-		codeEditor.setContentType("text/"+lang.getLang().toLowerCase());
+		codeEditor = new RSyntaxTextArea();
+        setViewportView(codeEditor);
 
-		/*
-		InputMap imap = codeEditor.getInputMap();
-		ActionMap amap = codeEditor.getActionMap();		
-		for (KeyStroke ks:imap.allKeys()) 
-			System.out.println("key: "+ks+" -> "+imap.get(ks)+" -> "+amap.get(imap.get(ks)));
-		 */
-		
+        setLineNumbersEnabled(true);
+        setFoldIndicatorEnabled(true);
+
+        if (lang.getLang().equalsIgnoreCase(Game.JAVA.getLang())) {
+            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
+        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SCALA);
+        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+        } else {
+            // FIXME: check how to log properly internal warning
+            System.err.println("WARNING: Unsupported programming language for syntax highlighting module");
+        }
+
+        codeEditor.setAnimateBracketMatching(true);
+        codeEditor.setAntiAliasingEnabled(true);
+        codeEditor.setAutoIndentEnabled(true);
+        codeEditor.setBracketMatchingEnabled(true);
+        codeEditor.setCloseCurlyBraces(true);
+        codeEditor.setCodeFoldingEnabled(true);
+
 		codeEditor.setCaretPosition(0);
 		
 		/* Create a synchronization element, and connect it to the editor */
-		sync = new SourceFileDocumentSynchronizer(codeEditor.getEditorKit());
+		sync = new SourceFileDocumentSynchronizer(codeEditor);
 		sync.setDocument(codeEditor.getDocument());
 		codeEditor.getDocument().addDocumentListener(sync);
 		
@@ -43,7 +63,8 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		sync.setSourceFile(srcFile);
 		
 		codeEditor.setText(srcFile.getBody());
-		((jsyntaxpane.SyntaxDocument) codeEditor.getDocument()).clearUndos();
+		//((jsyntaxpane.SyntaxDocument) codeEditor.getDocument()).clearUndos();
+        codeEditor.discardAllEdits();
 		
 		/* Highlighting stuff, to trace entities */
 		tracedEntity = Game.getInstance().getSelectedEntity();

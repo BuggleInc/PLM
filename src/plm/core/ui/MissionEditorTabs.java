@@ -91,7 +91,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.addTab(i18n.tr("Mission"), null, new JScrollPane(missionTab),
 				i18n.tr("Description of the work to do"));
 		
-		PlmSyntaxPane.initKits();
+		//PlmSyntaxPane.initKits();
 
 		/* Register to game engine */
 		this.game = Game.getInstance();
