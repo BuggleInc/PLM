@@ -116,8 +116,6 @@ public class MissionEditor extends JFrame {
 		final ItemListener il = new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
-				// TODO Auto-generated method stub
-				Object source = arg0.getItemSelectable();
 				String ctn="";
 				if (selectorAll.isSelected()) {
 					ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
