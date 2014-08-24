@@ -1034,7 +1034,7 @@ msgstr ""
 
 #: src/plm/core/ui/AddExistingUserDialog.java:87
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: src/plm/core/ui/AddExistingUserDialog.java:99
 #: src/plm/core/ui/FeedbackDialog.java:89
@@ -1134,7 +1134,7 @@ msgid ""
 "<html>You didn't manage to reach your objective. <br>\n"
 "You should graphically compare the final state of your world <br>\n"
 "with the objective to understand the problem. <br>\n"
-"If you don't see the error, check the details below to for a <br>\n"
+"If you don't see the error, check the details below for a <br>\n"
 "textual description of this difference between both worlds.</html>"
 msgstr ""
 "<html>Vous n'avez pas atteint votre objectif. <br>\n"
@@ -1148,10 +1148,10 @@ msgstr ""
 msgid ""
 "<html>Compilation error.<br>\n"
 "You can find below the detailed error message (as given by {0}).<br>\n"
-"Please read it carfully to understand the problem, and fix your code.</html>"
+"Please read it carefully to understand the problem, and fix your code.</html>"
 msgstr ""
 "<html>Erreur de compilation.<br>\n"
-"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}."
+"Vous trouverez ci-dessous le message d''erreur détaillé renvoyé par {0}."
 "<br>\n"
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
@@ -1200,9 +1200,9 @@ msgstr "Changer d'entité"
 #: src/plm/core/ui/FeedbackDialog.java:42
 msgid ""
 "Please write your suggestion here, with all necessary details\n"
-"(if possible in english or french).\n"
+"(if possible in English or French).\n"
 "\n"
-"If you found a typo or a sentence that is hard to understand, \n"
+"If you find a typo or a sentence that is hard to understand, \n"
 "it is really helpful if you can suggest a new wording.\n"
 "\n"
 "If you encounter a technical bug, please tell us what you did,\n"
@@ -1213,10 +1213,23 @@ msgid ""
 "--------------------[ Technical Information ]--------------------\n"
 "(This can help us fixing your problem, please don't erase)\n"
 msgstr ""
+"Écrivez votre suggestion ici, avec tous les détails nécessaires\n"
+"(si possible en anglais ou en français).\n"
+"\n"
+"Si vous trouvez une typo ou une phrase difficile à comprendre, \n"
+"suggérer la reformulation nous aide vraiment.\n"
+"\n"
+"Si vous trouvez un bigue technique, expliquez-nous comment le reproduire,\n"
+"qu'est-ce que vous attendiez et ce qui s'est passé à la place.\n"
+"\n"
+"  mais NE DIFFUSEZ JAMAIS UN MOT DE PASSE sur un outil de suivi de bogues. Jamais.\n"
+"\n"
+"--------------------[ Informations techniques ]--------------------\n"
+"(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:60
 msgid "Please describe the problem in a few words"
-msgstr ""
+msgstr "Décrivez le problème en quelques mots"
 
 #: src/plm/core/ui/FeedbackDialog.java:67
 msgid "Report your feedback"
@@ -1224,7 +1237,7 @@ msgstr "Signaler un problème dans PLM"
 
 #: src/plm/core/ui/FeedbackDialog.java:75
 msgid "Issue title:"
-msgstr ""
+msgstr "Intitulé du problème :"
 
 #: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Do you really want to cancel your feedback and lose any edit?"
@@ -1233,7 +1246,7 @@ msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:95
 msgid "are you sure?"
-msgstr "êtes vous sûr?"
+msgstr "êtes-vous sûr?"
 
 #: src/plm/core/ui/FeedbackDialog.java:103
 msgid "Send feedback"
@@ -1245,6 +1258,8 @@ msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
 msgstr ""
+"Merci pour votre remarque, nous allons faire de notre mieux pour la prendre\n"
+" en compte. Suivez notre avancement sur {0}."
 
 #: src/plm/core/ui/FeedbackDialog.java:118
 msgid "Thanks for your suggestion"
@@ -1256,7 +1271,7 @@ msgstr "Erreur lors de l'envoi de votre retour"
 
 #: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
 msgid "Where error and other messages get written"
-msgstr "Endroit ou les erreurs et autres messages sont écrits"
+msgstr "Endroit où les erreurs et autres messages sont écrits"
 
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
@@ -1452,12 +1467,12 @@ msgstr "Mission"
 
 #: src/plm/core/ui/MissionEditorTabs.java:92
 msgid "Description of the work to do"
-msgstr "Description de la tache à effectuer"
+msgstr "Description de la tâche à effectuer"
 
 #. Create the tab with the code editor as content
 #: src/plm/core/ui/MissionEditorTabs.java:160
 msgid "Type your code here"
-msgstr "Composer votre code ici"
+msgstr "Écrire votre code ici"
 
 #: src/plm/core/ui/PlmHtmlEditorKit.java:376
 #, fuzzy, java-format
@@ -1499,23 +1514,25 @@ msgstr "(aucune astuce disponible pour l'instant)"
 
 #: src/plm/core/ui/action/AddUser.java:24
 msgid ""
-"<html>Enter a name for your new user.<br/>You'll have to user the \"Switch "
+"<html>Enter a name for your new user.<br/>You'll have to use the \"Switch "
 "user\" menu to use your new user.</html>"
 msgstr ""
+"<html>Entrer un nom pour votre nouvel utilisateur.<br/>Vous devrez utiliser le menu"
+" \"Changer d'utilisateur\" pour utiliser le nouveau compte utilisateur.</html>"
 
 #: src/plm/core/ui/action/AddUser.java:32
 #: src/plm/core/ui/action/AddUserWithUUID.java:39
 #, fuzzy
 msgid "Your new user has been added successfully!"
-msgstr "Votre session a été importée avec succès."
+msgstr "Votre nouvel utilisateur a été ajouté avec succès."
 
 #: src/plm/core/ui/action/AddUserWithUUID.java:36
-msgid "Your uuid is already used by a local user."
-msgstr ""
+msgid "Your UUID is already used by a local user."
+msgstr "Votre UUID est déjà utilisé par un utilisateur local"
 
 #: src/plm/core/ui/action/AddUserWithUUID.java:42
-msgid "Your uuid is malformed."
-msgstr ""
+msgid "Your UUID is malformed."
+msgstr "Votre UUID est invalide."
 
 #: src/plm/core/ui/action/ExportCloudSession.java:78
 #: src/plm/core/ui/action/ImportCloudSession.java:53
@@ -1615,11 +1632,11 @@ msgstr ""
 
 #: src/plm/core/ui/action/RemoveUser.java:36
 msgid "Sorry, you can't delete the current user."
-msgstr ""
+msgstr "Désolé, vous ne pouvez supprimer l'utilisateur courant."
 
 #: src/plm/core/ui/action/RemoveUser.java:36
 msgid "Try again"
-msgstr ""
+msgstr "Essayer à nouveau"
 
 #: src/plm/core/ui/action/Reset.java:29
 msgid "Reset your world to the initial state"
@@ -1665,17 +1682,17 @@ msgstr "Accéder à un autre exercice"
 
 #: src/plm/core/ui/action/SwitchUser.java:31
 msgid "Please choose the user you want to use"
-msgstr ""
+msgstr "Choisir l'utilisateur que vous souhaitez utiliser"
 
 #: src/plm/core/ui/action/SwitchUser.java:39
 #, java-format
 msgid "User {0} already selected."
-msgstr ""
+msgstr "Utilisateur {0} déjà sélectionné."
 
 #: src/plm/core/ui/action/SwitchUser.java:45
 #, java-format
 msgid "User {0} now selected."
-msgstr ""
+msgstr "Utilisateur {0} sélectionné"
 
 #: src/plm/core/ui/action/SwitchUser.java:47
 #, fuzzy
@@ -1705,7 +1722,7 @@ msgstr "Erreur lors de la lecture de {0}"
 msgid "You did not save you changes. Do you want to save it before quiting?"
 msgstr ""
 "Vous n'avez pas sauvegardé vos modifications. Voulez-vous les sauver avant "
-"de quitter?"
+"de quitter ?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:265
 #: src/plm/core/ui/editor/MissionEditor.java:384
