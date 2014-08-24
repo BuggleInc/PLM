@@ -1338,7 +1338,6 @@ msgid "Quit"
 msgstr "Esci"
 
 #: src/plm/core/ui/MainFrame.java:316
-#, fuzzy
 msgid "Exercise"
 msgstr "Esercizio"
 

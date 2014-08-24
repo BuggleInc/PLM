@@ -18,7 +18,7 @@
 	<classpathentry kind="lib" path="lib/gettext-commons-0.9.6.jar"/>
 	<classpathentry kind="lib" path="lib/plm-messages.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/jsyntaxpane-0.9.6~r156.jar"/>
+	<classpathentry kind="lib" path="lib/RSyntaxTextArea-2.5.4.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.egit.github.core-2.1.5.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>

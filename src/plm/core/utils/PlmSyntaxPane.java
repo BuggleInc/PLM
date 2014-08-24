@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import plm.core.model.Game;
+/*
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
@@ -19,10 +20,11 @@ import jsyntaxpane.syntaxkits.PythonSyntaxKit;
 import jsyntaxpane.syntaxkits.ScalaSyntaxKit;
 import jsyntaxpane.syntaxkits.XHTMLSyntaxKit;
 import jsyntaxpane.util.Configuration;
-
+*/
 public class PlmSyntaxPane {
 
 	public static void initKits() {
+/*
 		DefaultSyntaxKit.initKit();
         //Configuration conf = DefaultSyntaxKit.getConfig(DefaultSyntaxKit.class);
 
@@ -58,8 +60,9 @@ public class PlmSyntaxPane {
 		setupKit(pyConf);
 		setupKit(scalaConf);
 		setupKit(xhtmlConf);
+*/
 	}
-	
+/*
 	private static void setupKit(Configuration conf) {
 		Properties props = new Properties();
 		File bindings = new File(Game.getSavingLocation()+File.separatorChar+"bindings.properties");
@@ -91,4 +94,5 @@ public class PlmSyntaxPane {
 		}
 
 	}
+	*/
 }

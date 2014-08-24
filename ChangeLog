@@ -1,3 +1,11 @@
+20140901: Release 2.4
+
+  Let's get ready for the Big Show of this year.
+  
+  * User Interface:
+    - Switch from the now unmaintained upstream jsyntaxpane to
+      RSyntaxpaneArea (fix #191). 
+
 20140821: Release 2.4-beta1
 
   Close to the release, but not there yet.
