@@ -75,7 +75,7 @@ affecting a [!c]int[/!][!java|python|scala]boolean[/!] variable). So you'd bette
 
 <p>The condition can also be a call to some particular methods returning a
 boolean. For example, the <code>isFacingWall()</code> method of the buggle
-returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a wall, and false in the other case.</p>
+returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case.</p>
 
 <p>Finally, a condition can be composed of several sub-conditions connected by
 boolean operations:</p>
@@ -85,7 +85,7 @@ boolean operations:</p>
       <tt>cond2</tt> is not even evaluated as we already know that the conjunction of both propositions cannot be true).</li> 
   <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if <tt>cond1</tt> <b>or</b> 
       <tt>cond2</tt> is true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated
-      as we already know that the disjunction of both propositions cannot be true).</li>
+      as we already know that the disjunction of both propositions cannot be false).</li>
   <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if <tt>cond</tt> is false.</li>
   <li>When the expression becomes complicated, it is better to add parenthesis to force the order of evaluation.
       Do not hesitate to add more parenthesis to remove any ambiguities that may appear in an expression.</li>
