@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.PersonIdent;
@@ -65,24 +64,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			} else {
 				git = Git.open(repoDir);
 				
-				if (git.getRepository().getRef(userBranch) == null) { // Branch does not exist yet
-				    System.err.println("Creating branch "+userBranch);
-				    git.branchCreate()
-				        .setName(userBranch)
-				        .setUpstreamMode(SetupUpstreamMode.TRACK)
-				        .setStartPoint("origin/" + userBranch)
-				        .call();
-				    System.err.println("Created branch "+userBranch);
-				}
-				
-				StoredConfig cfg = git.getRepository().getConfig();
-				cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
-				cfg.setString("branch", userBranch, "merge", "refs/heads/"+userBranch);
-				cfg.save();
-
-				
-				git.checkout().setName(userBranch).call(); // update to get any remote changes
-				git.pull().call();
+				new GitUtils(git).checkoutUserBranch(newUser);
 			}
 
 			GitUtils gitUtils = new GitUtils(git);

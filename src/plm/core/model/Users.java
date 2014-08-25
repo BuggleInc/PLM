@@ -22,6 +22,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import plm.core.UserSwitchesListener;
+import plm.core.utils.FileUtils;
 
 /**
  * This class handles the insertion and deletion of users from the plm.users file.
@@ -149,6 +150,8 @@ public class Users {
 	 *            the user to remove
 	 */
 	public void removeUser(User user) {
+		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + user.getUserUUID().toString());
+		FileUtils.deleteRecursive(gitDir);
 		usersList.remove(user);
 		updateUsersFile();
 	}

@@ -199,6 +199,7 @@ public class Game implements IWorldView {
 		users.getCurrentUser();
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
+		sessionKit = new GitSessionKit(this);
 
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
@@ -207,7 +208,6 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 
-		sessionKit = new GitSessionKit(this);
 
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
