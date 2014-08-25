@@ -35,7 +35,7 @@ public class AddUser extends AbstractGameAction {
 			try {
 				game.getUsers().addUser(username.getText(),uuid.getText());
 				JOptionPane.showMessageDialog(this.parent, 
-						Game.i18n.tr("Your new user has been added successfully!\nYou can now switch to that user"));
+						Game.i18n.tr("Your new user has been added successfully!\nYou were automatically switched to that user."));
 			} catch (IllegalArgumentException ex) {
 				JOptionPane.showMessageDialog(this.parent, 
 						Game.i18n.tr("Invalid UUID! Either paste a correct identifyer or use the randomly generated one"));				

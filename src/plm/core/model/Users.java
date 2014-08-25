@@ -103,6 +103,12 @@ public class Users {
 		
 		if(!usersList.contains(user)) {
 			usersList.add(user);
+			try {
+				switchToUser(user);
+			} catch (UserAbortException e) {
+				System.err.println("Error while switching users");
+				e.printStackTrace();
+			}
 		} else {
 			System.err.println(Game.i18n.tr("User {0} exists already; don't add it again.", uuid));
 		}
