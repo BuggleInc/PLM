@@ -7,7 +7,7 @@
   * User Interface:
     - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
       (fix #191).
-    - Switching users now work (fix #189).
+    - Switching users now works without restarting anything (fix #189)
     - Kill the cloud session export feature: git superseeds that.
 
 20140821: Release 2.4-beta1

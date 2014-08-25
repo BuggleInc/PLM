@@ -336,6 +336,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionImport = new JMenuItem(new ImportSession(g, i18n.tr("Import Session Cache"),
 				null, this));
 		menuSession.add(miSessionImport);
+		menuSession.addSeparator();
 
 		miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
 		menuSession.add(miAddUser);

@@ -10,8 +10,6 @@ import javax.swing.JOptionPane;
 import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.UserAbortException;
-import plm.core.ui.ChooseLessonDialog;
-import plm.core.ui.MainFrame;
 
 public class SwitchUser extends AbstractGameAction {
 
@@ -40,9 +38,7 @@ public class SwitchUser extends AbstractGameAction {
 		} else {
 			try {
 				game.getUsers().switchToUser(chosenUser);
-				ChooseLessonDialog dialog = new ChooseLessonDialog();
-				MainFrame.doDispose();
-				JOptionPane.showMessageDialog(dialog, Game.i18n.tr("User {0} now selected.", chosenUser));
+				JOptionPane.showMessageDialog(null, Game.i18n.tr("User {0} now selected.", chosenUser));
 			} catch (UserAbortException e1) {
 				System.out.println(Game.i18n.tr("Operation canceled by user request"));
 				JOptionPane.showMessageDialog(parent, Game.i18n.tr("Operation canceled as requested by user."));

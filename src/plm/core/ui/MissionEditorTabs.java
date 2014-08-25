@@ -15,8 +15,10 @@ import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.GameListener;
 import plm.core.ProgLangChangesListener;
+import plm.core.UserSwitchesListener;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
+import plm.core.model.User;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
@@ -26,7 +28,7 @@ import plm.universe.World;
 
 
 
-public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener {
+public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener, UserSwitchesListener {
 	private static final long serialVersionUID = 1L;
 
 	private Game game;
@@ -96,6 +98,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.game = Game.getInstance();
 		this.game.addGameListener(this);
 		this.game.addProgLangListener(this);
+		this.game.getUsers().addUserSwitchesListener(this);
 		
 		/* add code tabs if the initialization is done already */
 		if (game.getCurrentLesson() != null)
@@ -177,4 +180,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	}
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
+
+	@Override
+	public void userHasChanged(User newUser) {
+		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage());
+	}
 }

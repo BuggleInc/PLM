@@ -133,10 +133,8 @@ public class Users {
 
 		if (found) {
 			updateUsersFile();
-			fireUserSwitch(newUser);
-			g.getLessons().clear();
-			g.clearSession();
 			g.loadSession();
+			fireUserSwitch(newUser);
 		} else {
 			System.err.println("Cannot switch to the user "+newUser+": not found");
 		}

@@ -83,8 +83,6 @@ public class GitSessionKit implements ISessionKit {
 	public void loadAll(final File path) {
 		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
 
-		File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
-		
 		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
 			if (Game.getInstance().isDebugEnabled())
 				System.out.println("The user changed! switch to the right branch");
@@ -102,8 +100,8 @@ public class GitSessionKit implements ISessionKit {
 		}
 
 		// Load bodies
-		for (Lesson lesson : this.game.getLessons()) {			
-			loadLesson(repoDir, lesson);
+		for (Lesson lesson : this.game.getLessons()) {
+			loadLesson(path, lesson);
 		}
 		
 		// Load summary from the lastly saved files, 
@@ -208,9 +206,10 @@ public class GitSessionKit implements ISessionKit {
 							}
 						}
 						srcFile.setBody(b.toString());
-					} catch (FileNotFoundException ex) {
-						// System.out.println("Il n'y a rien en " + fileName);
+					} catch (FileNotFoundException fnf) {
+						/* that's fine, we never did that exercise */
 					} catch (IOException ex) {
+						ex.printStackTrace();
 					}
 
 				}
@@ -220,6 +219,7 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
+		System.out.println("Clean all lessons. Your session is now lost.");
 		for (Lesson lesson : this.game.getLessons()) {
 			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
