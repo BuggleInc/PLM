@@ -54,6 +54,7 @@ public class ExoTest {
 		Game g = Game.getInstance();
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
+		g.setBatchExecution();
 
 		/* Compute the answers with the java entities */
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
