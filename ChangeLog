@@ -2,9 +2,12 @@
 
   Let's get ready for the Big Show of this year.
   
+  * Improved translations:
+    - Brazilian Portuguese: Now at 37% despite the content changes
   * User Interface:
     - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
-      (fix #191). 
+      (fix #191).
+    - Switching users now work (fix #189).
 
 20140821: Release 2.4-beta1
 
