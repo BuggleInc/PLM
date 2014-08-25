@@ -83,9 +83,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JButton exoChangeButton;
     
     private JMenu menuFile;
-    private JMenuItem miFileSavePicture,miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
+    private JMenuItem miFileSavePicture,miExoLoad,miExoSwitch,miExoExercise,miExoCourse,miFileQuit;
     private JMenu menuExercise;
-    private JMenuItem miSessionRevert, miSessionDebug, miSessionCreative;
+    private JMenuItem miExoRevert, miExoDebug, miExoCreative;
 
     private JMenu menuSession;
     private JMenuItem miSessionExport, miSessionImport, /*miSessionExportToCloud, miSessionImportFromCloud,*/ miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity, miAddExistingUser;
@@ -219,9 +219,20 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				}
 			}
 		});
-		menuFile.add(miFileSavePicture);
-		
-		miFileLoad = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, KeyEvent.VK_L) {
+		menuFile.add(miFileSavePicture);       
+        
+        miFileQuit = new JMenuItem(new QuitGame(g, i18n.tr("Quit"), null,  KeyEvent.VK_Q));
+        miFileQuit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
+
+		menuFile.add(miFileQuit);
+
+		menuBar.add(menuFile);
+
+		menuExercise = new JMenu(i18n.tr("Exercise"));
+		menuExercise.setMnemonic(KeyEvent.VK_E);
+		menuBar.add(menuExercise);
+		menuExercise.setEnabled(true);
+		miExoLoad = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -240,10 +251,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				}
 			}
 		});
-		menuFile.add(miFileLoad);
+		menuExercise.add(miExoLoad);
 		
 		
-		miFileSwitch = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
+		miExoSwitch = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -252,10 +263,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				MainFrame.getInstance().setVisible(false);		
 			}
 		});
-		miFileSwitch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
-		menuFile.add(miFileSwitch);
+		miExoSwitch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+		menuExercise.add(miExoSwitch);
 		
-		miFileExercise = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch exercise"), null, KeyEvent.VK_E) {
+		miExoExercise = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch exercise"), null, KeyEvent.VK_E) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -263,11 +274,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				new ChooseLectureDialog();
 			}
 		});
-		miFileExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		menuFile.add(miFileExercise);
+		miExoExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		menuExercise.add(miExoExercise);
 		        
         // Menu item to change the current Course
-        miFileCourse = new JMenuItem(new AbstractGameAction(g, i18n.tr("Choose your course")) {
+        miExoCourse = new JMenuItem(new AbstractGameAction(g, i18n.tr("Choose your course")) {
 
 			private static final long serialVersionUID = 1L;
 			private ChooseCourseDialog dialog = null;
@@ -282,26 +293,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
             }
         });
 
-        miFileCourse.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
-        menuFile.add(miFileCourse);
-       
-        
-        miFileQuit = new JMenuItem(new QuitGame(g, i18n.tr("Quit"), null,  KeyEvent.VK_Q));
-        miFileQuit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
+        miExoCourse.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+        menuExercise.add(miExoCourse);
 
-		menuFile.add(miFileQuit);
-
-		menuBar.add(menuFile);
-
-		menuExercise = new JMenu(i18n.tr("Exercise"));
-		menuExercise.setMnemonic(KeyEvent.VK_E);
-		menuBar.add(menuExercise);
-		menuExercise.setEnabled(true);
-
-		miSessionRevert = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"), null));
-		menuExercise.add(miSessionRevert);
+		miExoRevert = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"), null));
+		menuExercise.add(miExoRevert);
+		menuExercise.addSeparator();
 		
-		miSessionDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
+		miExoDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -310,9 +309,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			}
 		});
-		menuExercise.add(miSessionDebug);
+		menuExercise.add(miExoDebug);
 
-		miSessionCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
+		miExoCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -321,7 +320,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			}
 		});
-		menuExercise.add(miSessionCreative);
+		menuExercise.add(miExoCreative);
 
 
 		
@@ -734,24 +733,23 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         // Menus
 		menuFile.setText(i18n.tr("File"));
 		miFileSavePicture.setText(i18n.tr("Save a picture"));
-		miFileLoad.setText(i18n.tr("Load lesson"));
-		miFileSwitch.setText(i18n.tr("Switch lesson"));
-		miFileExercise.setText(i18n.tr("Switch exercise"));
-		if (miFileConsole != null)
-			miFileConsole.setText(i18n.tr("Teacher Console"));
-		miFileCourse.setText(i18n.tr("Choose your course"));
         miFileQuit.setText(i18n.tr("Quit"));
 
+		menuExercise.setText(i18n.tr("Exercise"));
+        miExoLoad.setText(i18n.tr("Load lesson"));
+        miExoSwitch.setText(i18n.tr("Switch lesson"));
+        miExoExercise.setText(i18n.tr("Switch exercise"));
+        miExoCourse.setText(i18n.tr("Choose your course"));
+        miExoRevert.setText(i18n.tr("Revert Exercise"));
+        miExoDebug.setText(i18n.tr("Debug mode"));
+        miExoCreative.setText(i18n.tr("Creative mode"));
+        
 		menuSession.setText(i18n.tr("Session"));
 		menuSession.getAccessibleContext().setAccessibleDescription(i18n.tr("Lesson related functions"));
-		miSessionRevert.setText(i18n.tr("Revert Exercise"));
 		miSessionExport.setText(i18n.tr("Export Session Cache"));
 		miSessionImport.setText(i18n.tr("Import Session Cache"));
 		//miSessionExportToCloud.setText(i18n.tr("Export Session Cache to Cloud"));
-		//miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
-		
-		miSessionDebug.setText(i18n.tr("Debug mode"));
-		miSessionCreative.setText(i18n.tr("Creative mode"));
+		//miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));		
 		
 		miAddUser.setText(i18n.tr("Add user"));
 		miSwitchUser.setText(i18n.tr("Switch user"));
