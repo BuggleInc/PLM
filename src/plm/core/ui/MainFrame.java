@@ -265,27 +265,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		miFileExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		menuFile.add(miFileExercise);
-		
-		// Teacher console menu item (shown only if defined in the PLM properties)
-        if(Game.getProperty("plm.configuration.teacher").equals("true")) {
-            miFileConsole = new JMenuItem(new AbstractGameAction(g,i18n.tr("Teacher Console")) {
-
-				private static final long serialVersionUID = 1L;
-				private TeacherConsoleDialog dialog = null;
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // launch teacher console
-					if (dialog == null) {
-						dialog = new TeacherConsoleDialog();
-					}
-                    dialog.setVisible(true);
-                }
-            });
-            miFileConsole.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-            menuFile.add(miFileConsole);
-        }
-        
+		        
         // Menu item to change the current Course
         miFileCourse = new JMenuItem(new AbstractGameAction(g, i18n.tr("Choose your course")) {
 
