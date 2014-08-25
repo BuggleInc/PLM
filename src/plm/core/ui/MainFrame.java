@@ -87,7 +87,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenuItem miExoRevert, miExoDebug, miExoCreative;
 
     private JMenu menuSession;
-    private JMenuItem miSessionExport, miSessionImport, /*miSessionExportToCloud, miSessionImportFromCloud,*/ miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity;
+    private JMenuItem miSessionExport, miSessionImport, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -337,15 +337,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				null, this));
 		menuSession.add(miSessionImport);
 
-		/* FIXME: do we still need this??
-		miSessionExportToCloud = new JMenuItem(new ExportCloudSession(g, i18n.tr("Export Session Cache to Cloud"),	null, this));
-		menuSession.add(miSessionExportToCloud);
-
-		miSessionImportFromCloud = new JMenuItem(new ImportCloudSession(g, i18n.tr("Import Session Cache from Cloud"),
-				null, this));
-		menuSession.add(miSessionImportFromCloud);
-		*/
-		
 		miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
 		menuSession.add(miAddUser);
 		
@@ -744,8 +735,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuSession.getAccessibleContext().setAccessibleDescription(i18n.tr("Lesson related functions"));
 		miSessionExport.setText(i18n.tr("Export Session Cache"));
 		miSessionImport.setText(i18n.tr("Import Session Cache"));
-		//miSessionExportToCloud.setText(i18n.tr("Export Session Cache to Cloud"));
-		//miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));		
+
 		
 		miAddUser.setText(i18n.tr("Add user"));
 		miSwitchUser.setText(i18n.tr("Switch user"));

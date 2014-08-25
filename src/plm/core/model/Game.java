@@ -109,8 +109,6 @@ public class Game implements IWorldView {
 	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
 	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
 
-	public static final String SESSION_CLOUD_PROVIDER_URL = "plm.session.cloud.provider.url";
-
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
