@@ -28,6 +28,7 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -203,7 +204,8 @@ public class Game implements IWorldView {
 
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
-		} catch (Exception e) {
+		} catch (IOException | GitAPIException e) {
+			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
 		}
 

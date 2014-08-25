@@ -14,11 +14,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import plm.core.UserSwitchesListener;
 
 /**
  * This class handles the insertion and deletion of users from the plm.users file.
@@ -47,14 +50,7 @@ public class Users {
 
 		parseFile(filePath);
 
-		// System.err.println("The file has been parsed successfully!");
-		// System.err.println(users.toJSONString());
-
 		loadUsersFromFile();
-		// System.err.println("The users have been loaded successfully!");
-		// for (User user : usersList) {
-		// System.err.println("User found: " + user);
-		// }
 	}
 
 	/**
@@ -137,8 +133,10 @@ public class Users {
 
 		if (found) {
 			updateUsersFile();
+			fireUserSwitch(newUser);
 			g.getLessons().clear();
 			g.clearSession();
+			g.loadSession();
 		} else {
 			System.err.println("Cannot switch to the user "+newUser+": not found");
 		}
@@ -270,4 +268,18 @@ public class Users {
 		this.usersList = usersList;
 	}
 
+	/**
+	 * User switches listeners
+	 */
+	private List<UserSwitchesListener> userSwitchesListeners = new Vector<UserSwitchesListener>();
+	public void addUserSwitchesListener(UserSwitchesListener l) {
+		userSwitchesListeners.add(l);
+	}
+	public void fireUserSwitch(User newUser) {
+		for (UserSwitchesListener l : userSwitchesListeners)
+			l.userHasChanged(newUser);
+	}
+	public void removeUserSwitchesListener(UserSwitchesListener l) {
+		this.userSwitchesListeners.remove(l);
+	}
 }

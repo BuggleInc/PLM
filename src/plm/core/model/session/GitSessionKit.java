@@ -189,6 +189,8 @@ public class GitSessionKit implements ISessionKit {
 							+ exercise.getId() + "." + lang.getExt() + ".DONE";
 					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
+					} else {
+						Game.getInstance().studentWork.setPassed(exercise, lang, false);
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
