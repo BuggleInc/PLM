@@ -11,7 +11,6 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 	
 	public void command(String command, BufferedWriter out){
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		int nb;
 		switch(num){
 			case 200 :
 			try {
