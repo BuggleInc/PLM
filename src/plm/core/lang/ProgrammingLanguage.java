@@ -1,4 +1,4 @@
-package plm.core.model;
+package plm.core.lang;
 
 import javax.swing.ImageIcon;
 

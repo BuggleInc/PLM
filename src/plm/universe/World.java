@@ -14,9 +14,9 @@ import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;

@@ -1,4 +1,4 @@
-package plm.core;
+package plm.core.lang;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -37,6 +37,7 @@ import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 
 

@@ -19,9 +19,9 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import lessons.lightbot.universe.LightBotEntity;
-import plm.core.PythonExceptionDecipher;
+import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.PythonExceptionDecipher;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.utils.ValgrindParser;
 

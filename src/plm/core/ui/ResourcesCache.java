@@ -10,9 +10,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 
 public class ResourcesCache {

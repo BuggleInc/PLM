@@ -1,4 +1,4 @@
-package plm.core;
+package plm.core.lang;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 

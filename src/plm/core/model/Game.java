@@ -37,6 +37,7 @@ import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.StatusStateListener;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;

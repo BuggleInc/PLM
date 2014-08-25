@@ -1,6 +1,6 @@
 /** In memory compiler of scala code. This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala */
 
-package plm.core;
+package plm.core.lang;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import scala.Option;
 import scala.collection.JavaConverters;

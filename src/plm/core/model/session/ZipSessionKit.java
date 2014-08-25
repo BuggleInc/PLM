@@ -17,9 +17,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;

@@ -1,4 +1,4 @@
-package plm.core;
+package plm.core.lang;
 
 import javax.script.ScriptException;
 

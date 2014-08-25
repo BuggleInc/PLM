@@ -19,13 +19,13 @@ import javax.tools.JavaFileObject;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
-import plm.core.CompilerC;
-import plm.core.CompilerJava;
-import plm.core.CompilerScala;
 import plm.core.PLMCompilerException;
+import plm.core.lang.CompilerC;
+import plm.core.lang.CompilerJava;
+import plm.core.lang.CompilerScala;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.utils.FileUtils;

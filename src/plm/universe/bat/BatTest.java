@@ -1,7 +1,7 @@
 package plm.universe.bat;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 
 public class BatTest {
 	Object[] parameters;

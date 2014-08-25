@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 
