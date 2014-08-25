@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-22 02:07+0200\n"
+"POT-Creation-Date: 2014-08-24 10:46+0200\n"
 "PO-Revision-Date: 2014-01-18 21:07+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
@@ -1130,11 +1130,12 @@ msgid "Mmm, not quite /o\\"
 msgstr "Mmm, pas tout à fait /o\\\\"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:51
+#, fuzzy
 msgid ""
 "<html>You didn't manage to reach your objective. <br>\n"
 "You should graphically compare the final state of your world <br>\n"
 "with the objective to understand the problem. <br>\n"
-"If you don't see the error, check the details below for a <br>\n"
+"If you don't see the error, check the details below to for a <br>\n"
 "textual description of this difference between both worlds.</html>"
 msgstr ""
 "<html>Vous n'avez pas atteint votre objectif. <br>\n"
@@ -1144,11 +1145,11 @@ msgstr ""
 "pour une description textuelle des différences entre les deux mondes.</html>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:59
-#, java-format
+#, fuzzy, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
 "You can find below the detailed error message (as given by {0}).<br>\n"
-"Please read it carefully to understand the problem, and fix your code.</html>"
+"Please read it carfully to understand the problem, and fix your code.</html>"
 msgstr ""
 "<html>Erreur de compilation.<br>\n"
 "Vous trouverez ci-dessous le message d''erreur détaillé renvoyé par {0}."
@@ -1198,11 +1199,12 @@ msgid "Switch the entity"
 msgstr "Changer d'entité"
 
 #: src/plm/core/ui/FeedbackDialog.java:42
+#, fuzzy
 msgid ""
 "Please write your suggestion here, with all necessary details\n"
-"(if possible in English or French).\n"
+"(if possible in english or french).\n"
 "\n"
-"If you find a typo or a sentence that is hard to understand, \n"
+"If you found a typo or a sentence that is hard to understand, \n"
 "it is really helpful if you can suggest a new wording.\n"
 "\n"
 "If you encounter a technical bug, please tell us what you did,\n"
@@ -1222,7 +1224,8 @@ msgstr ""
 "Si vous trouvez un bigue technique, expliquez-nous comment le reproduire,\n"
 "qu'est-ce que vous attendiez et ce qui s'est passé à la place.\n"
 "\n"
-"  mais NE DIFFUSEZ JAMAIS UN MOT DE PASSE sur un outil de suivi de bogues. Jamais.\n"
+"  mais NE DIFFUSEZ JAMAIS UN MOT DE PASSE sur un outil de suivi de bogues. "
+"Jamais.\n"
 "\n"
 "--------------------[ Informations techniques ]--------------------\n"
 "(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"
@@ -1513,12 +1516,14 @@ msgid "(no tips to display)"
 msgstr "(aucune astuce disponible pour l'instant)"
 
 #: src/plm/core/ui/action/AddUser.java:24
+#, fuzzy
 msgid ""
-"<html>Enter a name for your new user.<br/>You'll have to use the \"Switch "
+"<html>Enter a name for your new user.<br/>You'll have to user the \"Switch "
 "user\" menu to use your new user.</html>"
 msgstr ""
-"<html>Entrer un nom pour votre nouvel utilisateur.<br/>Vous devrez utiliser le menu"
-" \"Changer d'utilisateur\" pour utiliser le nouveau compte utilisateur.</html>"
+"<html>Entrer un nom pour votre nouvel utilisateur.<br/>Vous devrez utiliser "
+"le menu \"Changer d'utilisateur\" pour utiliser le nouveau compte "
+"utilisateur.</html>"
 
 #: src/plm/core/ui/action/AddUser.java:32
 #: src/plm/core/ui/action/AddUserWithUUID.java:39
@@ -1527,11 +1532,13 @@ msgid "Your new user has been added successfully!"
 msgstr "Votre nouvel utilisateur a été ajouté avec succès."
 
 #: src/plm/core/ui/action/AddUserWithUUID.java:36
-msgid "Your UUID is already used by a local user."
+#, fuzzy
+msgid "Your uuid is already used by a local user."
 msgstr "Votre UUID est déjà utilisé par un utilisateur local"
 
 #: src/plm/core/ui/action/AddUserWithUUID.java:42
-msgid "Your UUID is malformed."
+#, fuzzy
+msgid "Your uuid is malformed."
 msgstr "Votre UUID est invalide."
 
 #: src/plm/core/ui/action/ExportCloudSession.java:78
