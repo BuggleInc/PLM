@@ -36,7 +36,7 @@ public class BatEntity extends Entity {
 	}
 	
 	@Override
-	protected void run() {
+	public void run() {
 		for (BatTest t:((BatWorld) world).getTests())
 			try {
 				run(t);

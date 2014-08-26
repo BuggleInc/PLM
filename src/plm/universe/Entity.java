@@ -134,19 +134,9 @@ public abstract class Entity extends Observable {
 	/** Run this specific entity, encoding the student logic to solve a given exercise. 
 	 * 
 	 *  This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)   
-	 *   
-	 *  @see #runIt() that execute an entity depending on the universe and programming language
-	 *    
 	 */
-	protected abstract void run() throws Exception;
+	public abstract void run() throws Exception;
 
-	/** Simply to increase the visibility of the run() without interfering with the user code 
-	 * FIXME: killme?
-	 */
-	public void publicRun() throws Exception {
-		run();
-	}
-	
 	/** Allows Entity to communicate with external programs, as needed to execute C programs */
 	public abstract void command(String command, BufferedWriter out);
 

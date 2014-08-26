@@ -34,7 +34,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	@Override
 	public void runEntity(Entity ent, ExecutionProgress progress) {
 		try {
-			ent.publicRun();
+			ent.run();
 		} catch (Exception e) {
 			String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
 					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
