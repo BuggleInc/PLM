@@ -257,14 +257,14 @@ public class LangC extends ProgrammingLanguage {
 			}
 			File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 			if(!exec.exists()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
+				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
 				}
 				return;
 			}else if(!exec.canExecute() || !exec.isFile()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
+				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();

@@ -24,7 +24,7 @@ public class RemoveUser extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		List<User> usersList = game.getUsers().getUsersList();
 		User[] possibilities = usersList.toArray(new User[usersList.size()]);
-		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, Game.i18n.tr("<html>Please choose the user you want to remove from the drop-down menu.</html>"), Game.i18n.tr("Remove user"), JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
+		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, Game.i18n.tr("<html>Please choose from the drop-down menu the user you want to remove.</html>"), Game.i18n.tr("Remove user"), JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
 
 		if (chosenUser == null) {
 			return;
@@ -32,8 +32,9 @@ public class RemoveUser extends AbstractGameAction {
 
 		if (!chosenUser.equals(game.getUsers().getCurrentUser())) {
 			if (JOptionPane.showConfirmDialog(this.parent, 
-					Game.i18n.tr("A deleted user is definitely lost if you don''t know its UUID.\n"
-							    +"Are you sure that you want to delete the user {0}?",chosenUser), 
+					Game.i18n.tr("A deleted user is definitely lost if you don''t know its \n"
+						    +"full UUID (something like 110E8400-E29B-11D4-A716-446655440000).\n"
+						    +"Are you sure that you want to delete the user {0}?",chosenUser), 
 					Game.i18n.tr("Confirm user deletion"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				game.getUsers().removeUser(chosenUser);
 				JOptionPane.showMessageDialog(this.parent, 

@@ -24,7 +24,7 @@ public class AddUser extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		JTextField username = new JTextField();
 		JTextField uuid = new JTextField(UUID.randomUUID().toString());
-		uuid.setToolTipText(Game.i18n.tr("If you already have a UUID, paste it here. If not, you can use that randomly generated identifyier"));
+		uuid.setToolTipText(Game.i18n.tr("If you already have a UUID, paste it here. If not, you can use that randomly generated identifier."));
 		Object[] message = {
 		    Game.i18n.tr("Username:"), username,
 		    Game.i18n.tr("Secret UUID:"), uuid
@@ -38,7 +38,7 @@ public class AddUser extends AbstractGameAction {
 						Game.i18n.tr("Your new user has been added successfully!\nYou were automatically switched to that user."));
 			} catch (IllegalArgumentException ex) {
 				JOptionPane.showMessageDialog(this.parent, 
-						Game.i18n.tr("Invalid UUID! Either paste a correct identifyer or use the randomly generated one"));				
+						Game.i18n.tr("Invalid UUID! Either paste a correct identifier or use the randomly generated one."));
 			}
 		}
 	}
