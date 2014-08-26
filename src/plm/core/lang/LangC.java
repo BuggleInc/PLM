@@ -18,7 +18,7 @@ import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 
-public class LangC extends JVMCompiledLang {
+public class LangC extends ProgrammingLanguage {
 
 	public LangC() {
 		super("C","c",ResourcesCache.getIcon("img/lang_c.png"));
@@ -32,9 +32,8 @@ public class LangC extends JVMCompiledLang {
 		if (sfs == null || sfs.isEmpty()) {
 			String msg = exo.getName()+": No source to compile";
 			System.err.println(msg);
-			PLMCompilerException e = new PLMCompilerException(msg, null, null);
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
-			throw e;
+			exo.lastResult = ExecutionProgress.newCompilationError(msg);				
+			throw new PLMCompilerException(msg, null, null);
 		}
 
 		for (SourceFile sf : sfs){
@@ -42,15 +41,8 @@ public class LangC extends JVMCompiledLang {
 			compile(code,exo.getId(),exo.lastResult);
 			
 		}
-
-		
 	}
 
-	@Override
-	protected Entity mutateEntity(String newClassName)
-			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		return (Entity) Class.forName(newClassName).newInstance();
-	}
 
 	private void compile(String code, String executable, ExecutionProgress lastResult) throws PLMCompilerException{
 		
@@ -201,6 +193,13 @@ public class LangC extends JVMCompiledLang {
 		} catch(InterruptedException e){
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old,
+			StudentOrCorrection whatToMutate) {
+		
+		return old; /* Nothing to do, actually */
 	}
 
 }
