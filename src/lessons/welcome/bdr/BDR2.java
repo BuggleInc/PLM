@@ -5,9 +5,9 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class BDR2 extends ExerciseTemplated {
 
@@ -45,10 +45,10 @@ public class BDR2 extends ExerciseTemplated {
 
 		myWorld = new BuggleWorld("Dance Floor",11,11);
 		/* please applause the dancers*/
-		new Buggle(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
-		new Buggle(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
-		new Buggle(myWorld, "Moon Walker", 0, 10, Direction.NORTH, Color.pink, Color.pink);
-		new Buggle(myWorld, "Elwood Blues", 10, 10, Direction.WEST, Color.blue, Color.blue);
+		new SimpleBuggle(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
+		new SimpleBuggle(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
+		new SimpleBuggle(myWorld, "Moon Walker", 0, 10, Direction.NORTH, Color.pink, Color.pink);
+		new SimpleBuggle(myWorld, "Elwood Blues", 10, 10, Direction.WEST, Color.blue, Color.blue);
 		
 		/* welcome to the dance floor, each dancer on a column */
 		plus5(0,0);		plus5(10,0);	plus5(0,10);	plus5(10,10);

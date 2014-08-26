@@ -35,11 +35,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
-import plm.core.utils.PlmSyntaxPane;
 
 public class MissionEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -117,8 +116,6 @@ public class MissionEditor extends JFrame {
 		final ItemListener il = new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
-				// TODO Auto-generated method stub
-				Object source = arg0.getItemSelectable();
 				String ctn="";
 				if (selectorAll.isSelected()) {
 					ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
@@ -250,7 +247,6 @@ public class MissionEditor extends JFrame {
 			}
 
 			editor.setText(content.toString());
-			//((jsyntaxpane.SyntaxDocument) editor.getDocument()).clearUndos();
 			modified = false;
 			setTitle(TITLE_NOT_MODIFIED);
 		} catch (IOException e1) {

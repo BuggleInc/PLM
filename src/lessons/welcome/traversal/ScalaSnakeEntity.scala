@@ -6,7 +6,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 class ScalaSnakeEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		brushDown();
 		while (!endingPosition()) {

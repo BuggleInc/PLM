@@ -6,8 +6,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -36,24 +36,23 @@ public class BatEntity extends Entity {
 	}
 	
 	@Override
-	protected void run() {
-		throw new RuntimeException ("I thought this method was useless. Please report.");
+	public void run() {
+		for (BatTest t:((BatWorld) world).getTests())
+			try {
+				run(t);
+			} catch (Exception e) {
+				t.setResult(Game.i18n.tr("This test raised a {0} exception: {1}",e.getClass().getName(), e.getMessage()));
+			}
 	}
 
 	protected void run(BatTest t) {
 		// To be overriden by child classes
 	}
-	
-	@Override 
+
+	// FIXME: this is probably broken
 	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA) || pl.equals(Game.C)) {
-			for (BatTest t:((BatWorld) world).getTests())
-				try {
-					run(t);
-				} catch (Exception e) {
-					t.setResult(Game.i18n.tr("This test raised a {0} exception: {1}",e.getClass().getName(), e.getMessage()));
-				}
 		} else if (pl.equals(Game.PYTHON)) {
 			ScriptEngine engine ;
 
@@ -90,7 +89,7 @@ public class BatEntity extends Entity {
 	}
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		// TODO if use
 		
 	}

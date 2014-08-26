@@ -4,7 +4,7 @@ package lessons.welcome.methods.picture;
 class ScalaPictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 3) {
 			makeLine(3);

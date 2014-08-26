@@ -6,7 +6,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 class ScalaTraversalDiagonalEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	var diag = 0;
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		var cpt = 0;
 		writeMessage(cpt);

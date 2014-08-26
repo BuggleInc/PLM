@@ -1,12 +1,14 @@
 package lessons.lander.universe
 
+import Math.PI
+
 import javax.script.ScriptEngine
 import javax.swing.ImageIcon
-import plm.universe.World
-import plm.core.model.ProgrammingLanguage
-import plm.core.ui.ResourcesCache
-import Math.PI
+import plm.core.lang.ProgrammingLanguage
 import plm.core.model.Game
+import plm.core.lang.ProgrammingLanguage
+import plm.core.ui.ResourcesCache
+import plm.universe.World
 
 object LanderWorld {
   object State extends Enumeration {

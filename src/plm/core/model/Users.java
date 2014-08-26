@@ -14,11 +14,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import plm.core.UserSwitchesListener;
+import plm.core.utils.FileUtils;
 
 /**
  * This class handles the insertion and deletion of users from the plm.users file.
@@ -47,14 +51,7 @@ public class Users {
 
 		parseFile(filePath);
 
-		// System.err.println("The file has been parsed successfully!");
-		// System.err.println(users.toJSONString());
-
 		loadUsersFromFile();
-		// System.err.println("The users have been loaded successfully!");
-		// for (User user : usersList) {
-		// System.err.println("User found: " + user);
-		// }
 	}
 
 	/**
@@ -106,6 +103,12 @@ public class Users {
 		
 		if(!usersList.contains(user)) {
 			usersList.add(user);
+			try {
+				switchToUser(user);
+			} catch (UserAbortException e) {
+				System.err.println("Error while switching users");
+				e.printStackTrace();
+			}
 		} else {
 			System.err.println(Game.i18n.tr("User {0} exists already; don't add it again.", uuid));
 		}
@@ -137,8 +140,8 @@ public class Users {
 
 		if (found) {
 			updateUsersFile();
-			g.getLessons().clear();
-			g.clearSession();
+			g.loadSession();
+			fireUserSwitch(newUser);
 		} else {
 			System.err.println("Cannot switch to the user "+newUser+": not found");
 		}
@@ -153,6 +156,8 @@ public class Users {
 	 *            the user to remove
 	 */
 	public void removeUser(User user) {
+		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + user.getUserUUID().toString());
+		FileUtils.deleteRecursive(gitDir);
 		usersList.remove(user);
 		updateUsersFile();
 	}
@@ -270,4 +275,18 @@ public class Users {
 		this.usersList = usersList;
 	}
 
+	/**
+	 * User switches listeners
+	 */
+	private List<UserSwitchesListener> userSwitchesListeners = new Vector<UserSwitchesListener>();
+	public void addUserSwitchesListener(UserSwitchesListener l) {
+		userSwitchesListeners.add(l);
+	}
+	public void fireUserSwitch(User newUser) {
+		for (UserSwitchesListener l : userSwitchesListeners)
+			l.userHasChanged(newUser);
+	}
+	public void removeUserSwitchesListener(UserSwitchesListener l) {
+		this.userSwitchesListeners.remove(l);
+	}
 }

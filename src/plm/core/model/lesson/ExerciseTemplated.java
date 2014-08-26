@@ -10,8 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import plm.core.PLMCompilerException;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
@@ -334,7 +334,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			for (SourceFile sf : getSourceFilesList(lang)) {
 				if (searchedName == null) {//lazy initialization if there is any sourcefile to parse
 					Pattern p = Pattern.compile(".*?([^.]*)$");
-					Matcher m = p.matcher(nameOfCorrectionEntity(lang));
+					Matcher m = p.matcher(lang.nameOfCorrectionEntity(this));
 					if (m.matches())
 						searchedName = m.group(1);
 					p = Pattern.compile("Entity$");
@@ -348,11 +348,11 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 			if (!foundThisLanguage) {
 				try {
-					newSourceFromFile(lang, tabName, nameOfCorrectionEntity(lang));
+					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
 					super.addProgLanguage(lang);
 					foundALanguage = true;
 					if (Game.getInstance().isDebugEnabled())
-						System.out.println("Found suitable templating entity "+nameOfCorrectionEntity(lang)+" in "+lang);
+						System.out.println("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
 					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
@@ -432,7 +432,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
 						ent.setScript(Game.C, id);
-						ent.runIt(progress);
+						Game.getProgrammingLanguage().runEntity(ent,progress);
 					}
 					aw.setAnswerWorld();
 				}

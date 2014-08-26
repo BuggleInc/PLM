@@ -1,15 +1,11 @@
 package plm.core.ui;
 
-import javax.swing.JEditorPane;
-import javax.swing.JScrollPane;
-
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextAreaEditorKit;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.fife.ui.rsyntaxtextarea.TextEditorPane;
 import org.fife.ui.rtextarea.RTextScrollPane;
+
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 import plm.universe.IEntityStackListener;
@@ -31,17 +27,16 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
         setLineNumbersEnabled(true);
         setFoldIndicatorEnabled(true);
 
-        if (lang.getLang().equalsIgnoreCase(Game.JAVA.getLang())) {
+        if (lang.equals(Game.JAVA)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+        } else if (lang.equals(Game.PYTHON)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
-        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+        } else if (lang.equals(Game.SCALA)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SCALA);
-        } else if (lang.getLang().equalsIgnoreCase(Game.PYTHON.getLang())) {
+        } else if (lang.equals(Game.C)) {
             codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
         } else {
-            // FIXME: check how to log properly internal warning
-            System.err.println("WARNING: Unsupported programming language for syntax highlighting module");
+            System.err.println("WARNING: Unsupported programming language for syntax highlighting module. Please fix that PLM bug.");
         }
 
         codeEditor.setAnimateBracketMatching(true);
@@ -63,7 +58,6 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
 		sync.setSourceFile(srcFile);
 		
 		codeEditor.setText(srcFile.getBody());
-		//((jsyntaxpane.SyntaxDocument) codeEditor.getDocument()).clearUndos();
         codeEditor.discardAllEdits();
 		
 		/* Highlighting stuff, to trace entities */
@@ -82,8 +76,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
 	}
 	@Override
 	public void entityTraceChanged(Entity e, StackTraceElement[] trace) {
-		/* TODO: The symbol setCurrentEditedLineNumber() is not in jsyntaxpane anymore. 
-		 * But the following code was not working anyway... 
+		/* TODO:  the following code was not working anymore... 
 		for (StackTraceElement elm:trace) {
 			// added defenses against NPE because sometimes (launched from a .jar file, a NullPointerException might happen...)
 			if (elm.getFileName() != null && codeEditor != null && (elm.getFileName().equals(srcFile.getName()) || elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl"))) {				

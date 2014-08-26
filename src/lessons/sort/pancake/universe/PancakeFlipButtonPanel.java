@@ -21,7 +21,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton validateButton;	// a validate button
-	private JComboBox pancakesAmountComboBox;	// a combobox which let you choose how many pancake you want to flip
+	private JComboBox<Integer> pancakesAmountComboBox;	// a combobox which let you choose how many pancake you want to flip
 	private boolean burnedPancake;
 	/**
      * Constructor of PancakeFlipButtonPanel
@@ -88,7 +88,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 			for ( int i = 0 ; i < n-1 ; i++) 
 				values[i] = i+2;
 		}
-		this.pancakesAmountComboBox = new JComboBox(values) ;
+		this.pancakesAmountComboBox = new JComboBox<Integer>(values) ;
 	}
 	
 	/**

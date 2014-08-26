@@ -5,8 +5,8 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.SimpleBuggle;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class MethodsReturning extends ExerciseTemplated {
@@ -18,7 +18,7 @@ public class MethodsReturning extends ExerciseTemplated {
 		BuggleWorld[] myWorld = new BuggleWorld[3];
 		for (int i=0; i<3;i++) {
 			myWorld[i] = new BuggleWorld("World "+(i+1),7,7);
-			new Buggle(myWorld[i], "Searcher", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(myWorld[i], "Searcher", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 		}
 
 		try {

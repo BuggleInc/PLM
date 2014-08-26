@@ -3,7 +3,7 @@ package lessons.backtracking;
 import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
 
-import plm.core.model.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.World;

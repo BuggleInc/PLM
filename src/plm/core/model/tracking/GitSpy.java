@@ -12,67 +12,78 @@ import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.json.simple.JSONObject;
 
+import plm.core.UserSwitchesListener;
 import plm.core.model.Game;
+import plm.core.model.User;
 import plm.core.model.Users;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
-public class GitSpy implements ProgressSpyListener {
+public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	private File plmDir;
 	private Git git;
 
 	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
 	private File repoDir;
-	
+
 	public GitSpy(File path, Users users) throws IOException, GitAPIException {
 		this.plmDir = path;
 
-		initializeRepoDir(users);
+		users.addUserSwitchesListener(this);
+		userHasChanged(users.getCurrentUser());
 	}
+	/** 
+	 * Initialize locally the git repo for that user
+	 */
+	@Override
+	public void userHasChanged(User newUser) {
+		try {
+			String userUUID = String.valueOf(newUser.getUserUUID());
+			String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
 
-	private void initializeRepoDir(Users users) throws IOException, GitAPIException {
-		String userUUID = String.valueOf(users.getCurrentUser().getUserUUID());
-		String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
+			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
-		repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
+			if (!repoDir.exists()) {
+				// try to get the branch as stored remotely
 
-		if (!repoDir.exists()) {
-			// try to get the branch as stored remotely
+				git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoDir).setBranchesToClone(Arrays.asList(userBranch)).call();
 
-			git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoDir).setBranchesToClone(Arrays.asList(userBranch)).call();
-			
-			// If no branch can be found remotely, create a new one.
-			if (git == null ) { 
-				git = Git.init().setDirectory(repoDir).call();
-				StoredConfig cfg = git.getRepository().getConfig();
-				cfg.setString("remote", "origin", "url", repoUrl);
-				cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
-				cfg.save();
-				git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
-				System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+				// If no branch can be found remotely, create a new one.
+				if (git == null) { 
+					git = Git.init().setDirectory(repoDir).call();
+					StoredConfig cfg = git.getRepository().getConfig();
+					cfg.setString("remote", "origin", "url", repoUrl);
+					cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
+					cfg.save();
+					git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
+					System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+				} else {
+					System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+				}
 			} else {
-				System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+				git = Git.open(repoDir);
+				
+				new GitUtils(git).checkoutUserBranch(newUser);
 			}
-		} else {
-			git = Git.open(repoDir);
-			git.checkout().setName(userBranch).call(); // update to get any remote changes
-			git.pull().call();
+
+			GitUtils gitUtils = new GitUtils(git);
+
+			// checkout the branch of the current user
+			gitUtils.checkoutUserBranch(newUser);
+
+			// Log into the git that the PLM just started
+			git.commit().setMessage(writePLMStartedCommitMessage())
+			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.call();
+
+			// and push to ensure that everything remains in sync
+			gitUtils.pushToUserBranch();
+		} catch (Exception e) {
+			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
+			e.printStackTrace();
 		}
-
-		GitUtils gitUtils = new GitUtils(git);
-
-		// checkout the branch of the current user
-		gitUtils.checkoutUserBranch(users.getCurrentUser());
-
-		// Log into the git that the PLM just started
-		git.commit().setMessage(writePLMStartedCommitMessage())
-		            .setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
-		            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-		            .call();
-		
-		// and push to ensure that everything remains in sync
-		gitUtils.pushToUserBranch();
 	}
 
 	@Override
@@ -82,7 +93,7 @@ public class GitSpy implements ProgressSpyListener {
 
 			// checkout the branch of the current user (just in case it changed in between)
 			gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser());
-			
+
 			// Change the files locally
 			createFiles(exo);
 			checkSuccess(exo);
@@ -110,7 +121,7 @@ public class GitSpy implements ProgressSpyListener {
 		Exercise lastExo = (Exercise) Game.getInstance().getLastExercise();
 		if (lastExo == null)
 			return;
-		
+
 		lastExo.lastResult = ExecutionProgress.newCompilationError("");
 
 		if (lastExo.lastResult != null) {
@@ -124,9 +135,9 @@ public class GitSpy implements ProgressSpyListener {
 
 				// and then commit the changes
 				git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
-				            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-				            .setMessage(writeCommitMessage(lastExo, exo, "switched"))
-				            .call();
+				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+				.setMessage(writeCommitMessage(lastExo, exo, "switched"))
+				.call();
 
 				// push to the remote repository
 				gitUtils.pushToUserBranch();

@@ -18,7 +18,7 @@ class ScalaArray1Entity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		val colors = new Array[Color](getWorldHeight());
 

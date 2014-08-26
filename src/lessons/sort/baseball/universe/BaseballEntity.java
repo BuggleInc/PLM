@@ -72,7 +72,7 @@ public class BaseballEntity extends Entity {
 	
 	public boolean estSelectionne() { return isSelected(); }
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2;
 		String str;

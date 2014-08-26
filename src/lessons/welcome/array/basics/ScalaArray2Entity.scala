@@ -18,8 +18,9 @@ class ScalaArray2Entity extends SimpleBuggle {
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
+	
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 	/* BEGIN SOLUTION */
 		val colors = new Array[Color](getWorldHeight());
 

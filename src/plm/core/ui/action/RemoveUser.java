@@ -31,7 +31,14 @@ public class RemoveUser extends AbstractGameAction {
 		}
 
 		if (!chosenUser.equals(game.getUsers().getCurrentUser())) {
-			game.getUsers().removeUser(chosenUser);
+			if (JOptionPane.showConfirmDialog(this.parent, 
+					Game.i18n.tr("A deleted user is definitely lost if you don''t know its UUID.\n"
+							    +"Are you sure that you want to delete the user {0}?",chosenUser), 
+					Game.i18n.tr("Confirm user deletion"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				game.getUsers().removeUser(chosenUser);
+				JOptionPane.showMessageDialog(this.parent, 
+						Game.i18n.tr("User {0} successfully deleted", chosenUser));
+			}
 		} else {
 			JOptionPane.showMessageDialog(this.parent, Game.i18n.tr("Sorry, you can't delete the current user."), Game.i18n.tr("Try again"), JOptionPane.ERROR_MESSAGE);
 		}

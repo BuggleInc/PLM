@@ -3,7 +3,7 @@ package lessons.welcome.instructions;
 
 class ScalaInstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 
-	protected def run() {
+	override protected def run() {
 		/* BEGIN SOLUTION */
 		brushDown();
 		left();

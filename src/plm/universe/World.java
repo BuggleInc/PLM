@@ -14,9 +14,9 @@ import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
@@ -27,7 +27,7 @@ public abstract class World {
 	private boolean isAnswer = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
 
-	protected ArrayList<Entity> entities = new ArrayList<Entity>();
+	protected List<Entity> entities = new ArrayList<Entity>();
 
 	private String name;
 
@@ -129,7 +129,7 @@ public abstract class World {
 		notifyEntityUpdateListeners();
 	}
 
-	public void setEntities(ArrayList<Entity> l) {
+	public void setEntities(List<Entity> l) {
 		entities = l;
 		notifyEntityUpdateListeners();
 	}
@@ -146,19 +146,20 @@ public abstract class World {
 	}
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
+		final ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		if (Game.getInstance().isDebugEnabled())
-			Logger.log("World:runEntities","Programming language: "+Game.getProgrammingLanguage());
+			Logger.log("World:runEntities","Programming language: "+pl);
 		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					b.runIt(progress);
+					pl.runEntity(b, progress);
 					Game.getInstance().statusArgRemove(getName());
 				}
 			});
 
-			// So that we can still stop it from the AWT Thread, even if an infinite loop occures
+			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
 			runner.setPriority(Thread.MIN_PRIORITY);
 
 			runner.start();

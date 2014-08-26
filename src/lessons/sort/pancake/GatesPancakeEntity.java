@@ -21,8 +21,9 @@ import lessons.sort.pancake.universe.PancakeWorld;
 
 public class GatesPancakeEntity extends PancakeEntity {
 
+	// FIXME: killme and merge it to parent class
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		try {
 			switch(num){

@@ -167,4 +167,22 @@ public class FileUtils {
 		return tmpFile;
 	}
 
+	/**
+	 * Recursively remove a directory. Warning, it fails to detect links so may recurse out of the tree
+	 */
+	public static void deleteRecursive(File path){
+        File[] c = path.listFiles();
+        if (c != null) {
+        	for (File file : c){
+        		if (file.isDirectory()){
+        			deleteRecursive(file);
+        			file.delete();
+        		} else {
+        			file.delete();
+        		}
+        	}
+        }
+        
+        path.delete();
+  }
 }

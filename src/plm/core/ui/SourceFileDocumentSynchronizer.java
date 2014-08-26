@@ -10,8 +10,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 
-import org.fife.ui.rsyntaxtextarea.RSyntaxDocument;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+
 import plm.core.model.session.ISourceFileListener;
 import plm.core.model.session.SourceFile;
 

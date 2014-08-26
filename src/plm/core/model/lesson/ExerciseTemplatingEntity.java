@@ -3,8 +3,8 @@ package plm.core.model.lesson;
 import java.util.HashMap;
 import java.util.Map;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
 import plm.universe.World;
 

@@ -12,8 +12,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
@@ -202,7 +202,7 @@ public class BuggleWorld extends GridWorld {
 				}
 				String buggleName = buggleMatcher.group(6);
 
-				new Buggle(res, buggleName, x, y, direction, color, brushColor);
+				new SimpleBuggle(res, buggleName, x, y, direction, color, brushColor);
 			} else if (cellMatcher.matches()) {
 				/* Get the info */
 				int x=Integer.parseInt( cellMatcher.group(1) );

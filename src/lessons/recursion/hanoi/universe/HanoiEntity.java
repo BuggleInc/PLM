@@ -61,7 +61,7 @@ public class HanoiEntity extends Entity {
 	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2;
 		try {
