@@ -63,8 +63,11 @@ public class ExerciseFailedDialog extends JDialog {
 			ta.setText(ep.compilationError);
 			ta.setCaretPosition(0);
 		}
+		msg.setFocusable(false);
+		ta.setFocusable(false);
 		add(msg,"wrap");
 		final JScrollPane sp = new JScrollPane(ta);
+		sp.setFocusable(false);
 		if (ep.compilationError == null) {
 			sp.setPreferredSize(new Dimension(0, 250));
 			JPanel buttons = new JPanel();
@@ -92,9 +95,11 @@ public class ExerciseFailedDialog extends JDialog {
 			add(sp,"spanx, grow, growprio 200, wrap");			
 			add(close,"span, alignx 50%");
 		}
-		pack();
 		setMinimumSize(getSize());
 		close.requestFocusInWindow();
+		setModal(true);
+		setModalityType(ModalityType.APPLICATION_MODAL);
+		pack();
 		setVisible(true);
 	}
 }

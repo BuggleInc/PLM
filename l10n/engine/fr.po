@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-24 17:13+0200\n"
+"POT-Creation-Date: 2014-08-22 02:07+0200\n"
 "PO-Revision-Date: 2014-01-18 21:07+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
@@ -415,9 +415,10 @@ msgid "Compilation failed."
 msgstr "La compilation a échoué."
 
 #: src/plm/core/PythonExceptionDecipher.java:24
-#, java-format
+#, fuzzy, java-format
 msgid ""
-"Syntax error at line {0}: {1}\n"
+"Syntax error: {0}\n"
+"Line {1}: {2}\n"
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
 "Erreur de syntaxe à la ligne {0} : {1}\n"
@@ -425,6 +426,21 @@ msgstr ""
 "espaces et tabulations.\n"
 
 #: src/plm/core/PythonExceptionDecipher.java:32
+#, java-format
+msgid ""
+"Indentation error: {0}\n"
+"line {1}: {2}\n"
+"Please, check that you did not mix tabs and spaces. Use the TAB and shift-"
+"TAB keys to clean your indentation.\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:39
+msgid ""
+"You interrupted the execution.\n"
+"Your program must stop by itself to successfully pass the exercise.\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:45
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
@@ -432,13 +448,13 @@ msgstr ""
 "Erreur de nom : vous semblez utiliser un identifiant qui n'existe pas. "
 "Auriez-vous fait une typo ?\n"
 
-#: src/plm/core/PythonExceptionDecipher.java:35
+#: src/plm/core/PythonExceptionDecipher.java:48
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 "Erreur de type : vous n'utilisez pas correctement une fonction, ou quelque "
 "chose du genre.\n"
 
-#: src/plm/core/PythonExceptionDecipher.java:38
+#: src/plm/core/PythonExceptionDecipher.java:51
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
@@ -446,23 +462,23 @@ msgstr ""
 "Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
 "déclarée, ou quelque chose du genre.\n"
 
-#: src/plm/core/PythonExceptionDecipher.java:44
+#: src/plm/core/PythonExceptionDecipher.java:57
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
-#: src/plm/core/PythonExceptionDecipher.java:46
+#: src/plm/core/PythonExceptionDecipher.java:59
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr "Erreur : une buggle ne peut porter qu'un biscuit à la fois."
 
-#: src/plm/core/PythonExceptionDecipher.java:48
+#: src/plm/core/PythonExceptionDecipher.java:61
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr "Erreur : Votre buggle s'est téléportée dans l'espace."
 
-#: src/plm/core/PythonExceptionDecipher.java:50
+#: src/plm/core/PythonExceptionDecipher.java:63
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr "Erreur : Vous avez heurté un mur. Ça fait mal."
 
-#: src/plm/core/PythonExceptionDecipher.java:53
+#: src/plm/core/PythonExceptionDecipher.java:66
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
@@ -648,6 +664,19 @@ msgstr ""
 #: src/plm/core/model/Game.java:950
 msgid "C is missing"
 msgstr "C est manquant"
+
+#: src/plm/core/model/Game.java:955
+msgid ""
+"The C langage is currently very experimental in the PLM.\n"
+"If you go for C, you may not be able to complete some exercises that\n"
+"are still in progress in C, although some other parts are already okay.\n"
+"\n"
+"Do you want to proceed anyway?"
+msgstr ""
+
+#: src/plm/core/model/Game.java:959
+msgid "C is still experimental"
+msgstr ""
 
 #: src/plm/core/model/HelpServer.java:27
 msgid "Asking to the teacher for help"
@@ -922,12 +951,12 @@ msgstr ""
 msgid "About lesson - "
 msgstr "À propos de la leçon - "
 
-#: src/plm/core/ui/AboutPLMDialog.java:36 src/plm/core/ui/MainFrame.java:453
+#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:453
 #: src/plm/core/ui/MainFrame.java:790
 msgid "About PLM"
 msgstr "À propos de PLM"
 
-#: src/plm/core/ui/AboutPLMDialog.java:53
+#: src/plm/core/ui/AboutPLMDialog.java:60
 #, fuzzy, java-format
 msgid ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
@@ -936,7 +965,8 @@ msgid ""
 "style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
 "College)</i></li><li>Design and code: <i>M. Quinson and G. Oster</i></"
 "li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
-"ul><br/>Your code is saved to {2}<br/>Your session ID is {3}<br/></html>"
+"ul><br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/></"
+"html>"
 msgstr ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
 "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
@@ -946,15 +976,15 @@ msgstr ""
 "i></li><li>Tests : <i>les étudiants de Telecom Nancy (depuis la promo 2011)</"
 "i></li></ul><br/>Votre code est sauvegardé dans {2}<br/></html>"
 
-#: src/plm/core/ui/AboutPLMDialog.java:76
+#: src/plm/core/ui/AboutPLMDialog.java:81
 msgid "About"
 msgstr "À propos"
 
-#: src/plm/core/ui/AboutPLMDialog.java:113
+#: src/plm/core/ui/AboutPLMDialog.java:118
 msgid "Changes"
 msgstr "Changements"
 
-#: src/plm/core/ui/AboutPLMDialog.java:119
+#: src/plm/core/ui/AboutPLMDialog.java:124
 msgid ""
 "<h2>PLM is proudly Free Software</h2><p>Copyright (c) 2008-2013.<br/> The "
 "PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git logs "
@@ -974,11 +1004,11 @@ msgid ""
 "the COPYING file distributed with the archive.</p>"
 msgstr ""
 
-#: src/plm/core/ui/AboutPLMDialog.java:145
+#: src/plm/core/ui/AboutPLMDialog.java:150
 msgid "Copying"
 msgstr "Licence"
 
-#: src/plm/core/ui/AboutPLMDialog.java:151
+#: src/plm/core/ui/AboutPLMDialog.java:156
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Close"
 msgstr "Fermer"
@@ -1126,12 +1156,12 @@ msgstr ""
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:71
-#: src/plm/core/ui/ExerciseFailedDialog.java:78
+#: src/plm/core/ui/ExerciseFailedDialog.java:74
+#: src/plm/core/ui/ExerciseFailedDialog.java:81
 msgid "Details >>"
 msgstr "Détails >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:81
+#: src/plm/core/ui/ExerciseFailedDialog.java:84
 msgid "Details <<"
 msgstr "Détails <<"
 
@@ -1289,9 +1319,8 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/plm/core/ui/MainFrame.java:316
-#, fuzzy
 msgid "Exercise"
-msgstr "Recommencer l'exercice"
+msgstr "Exercice"
 
 #: src/plm/core/ui/MainFrame.java:321 src/plm/core/ui/MainFrame.java:767
 msgid "Revert Exercise"
@@ -1331,11 +1360,11 @@ msgstr "Importer le cache de session"
 #: src/plm/core/ui/MainFrame.java:371 src/plm/core/ui/MainFrame.java:776
 #: src/plm/core/ui/action/AddUser.java:25
 msgid "Add user"
-msgstr ""
+msgstr "Ajouter un utilisateur"
 
 #: src/plm/core/ui/MainFrame.java:374
 msgid "Add user with an UUID identity"
-msgstr ""
+msgstr "Ajouter un utilisateur avec un UUID"
 
 #: src/plm/core/ui/MainFrame.java:377 src/plm/core/ui/MainFrame.java:777
 #: src/plm/core/ui/action/SwitchUser.java:32
@@ -1345,11 +1374,11 @@ msgstr "Changer d'utilisateur"
 #: src/plm/core/ui/MainFrame.java:380 src/plm/core/ui/MainFrame.java:778
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid "Remove user"
-msgstr ""
+msgstr "Supprimer un utilisateur"
 
 #: src/plm/core/ui/MainFrame.java:383
 msgid "Link identity"
-msgstr ""
+msgstr "Lier une identité"
 
 #. === Language menu ===
 #: src/plm/core/ui/MainFrame.java:387 src/plm/core/ui/MainFrame.java:781
@@ -1826,7 +1855,7 @@ msgstr "SUD"
 msgid "WEST"
 msgstr "OUEST"
 
-#: src/plm/universe/Entity.java:199
+#: src/plm/universe/Entity.java:190
 #, java-format
 msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
@@ -1835,11 +1864,11 @@ msgstr ""
 "L''exécution de votre programme a déclenché une exception {0} : {1}\n"
 " Merci de corriger votre code.\n"
 
-#: src/plm/universe/Entity.java:261 src/plm/universe/Entity.java:268
+#: src/plm/universe/Entity.java:252 src/plm/universe/Entity.java:259
 msgid "Error, please recompile the exercice"
 msgstr ""
 
-#: src/plm/universe/Entity.java:407
+#: src/plm/universe/Entity.java:401
 #, java-format
 msgid ""
 "No ScriptEngine for {0}. Please check your classpath and similar settings."
@@ -1847,18 +1876,18 @@ msgstr ""
 "Pas d''engin de script pour {0}. Veuillez vérifier votre classpath et autres "
 "réglages similaires."
 
-#: src/plm/universe/Entity.java:427
+#: src/plm/universe/Entity.java:421
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against PLM."
 msgstr ""
 "Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de PLM."
 
-#: src/plm/universe/Entity.java:451
+#: src/plm/universe/Entity.java:445
 msgid "Received a ScriptException that does not come from Python.\n"
 msgstr "Reçu une ScriptException qui ne vient pas de python.\n"
 
-#: src/plm/universe/Entity.java:456
+#: src/plm/universe/Entity.java:450
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "

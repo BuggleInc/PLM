@@ -14,29 +14,30 @@ quase obrigatório se você (ou mais alguém) quiser lê-lo depois, embora
 comentar demais (descrevendo coisas óbvias) é ruim pois as ideias
 importantes se perdem no meio do ruído.</p>
    
-  <p>There is [!java]three[/!][!python|scala|c]two[/!] types of comments in
-[!thelang], instructing the
-[!java|scala|c]compiler[/!][!python]interpreter[/!] to not read the text you
-add for humans:</p>
+  <p>Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários
+em [!thelang], que instruem o
+[!java|scala|c]compilador[/!][!python]interpretador[/!] a não ler o
+texto que você adiciona para humanos:</p>
    
   <ul>
-    <li><b>Comments on a single line</b>. When the
-[!java|scala|c]compiler[/!][!python]interpreter[/!] encounters the symbol
-[!java|scala|c]//[/!][!python]#[/!], it ignores the end of the line.</li>      
+    <li><b>Comentários de uma única linha</b>. Quando o
+[!java|scala|c]compilador[/!][!python]interpretador[/!] encontra o
+símbolo [!java|scala|c]//[/!][!python]#[/!], ele ignora o resto da
+linha.</li>      
     <li><b>Comments on several lines</b>. The
 [!java|scala|c]compiler[/!][!python]interpreter[/!] ignores anything placed
 between [!java|scala|c]the symbols /* and */ even if they are placed on
-differing lines.[/!] [!python]a line beginning with ''' and the next line
+differing lines.[/!] [!python]a line beginning with ''' until the next line
 ending with '''.[/!]</li>
   </ul>
 
 <pre>
-methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>
-otherCall()[!java|c];[/!] [!java|scala|c]<span class="comment">/* This is</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>[/!]
-[!python]<span class="comment">''' This is</span>
-<span class="comment">also ignored  '''</span>[/!]
-yetAnotherCall()[!java|c];[/!]
+chamadaDeMétodoLidaPelo[!java|scala|c]Compilador[/!][!python]Interpretador[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] tudo isto é ignorado</span>
+outraChamada()[!java|c];[/!] [!java|scala|c]<span class="comment">/* Isto aqui</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> também é ignorado */</span>[/!]
+[!python]<span class="comment">''' Isto aqui</span>
+<span class="comment">também é ignorado  '''</span>[/!]
+maisUmaChamada()[!java|c];[/!]
 </pre>  
   <p class="Java">Existe um terceiro tipo de comentário em Java, entre /** e */, que é lido
 por um programa específico chamado JavaDoc para gerar automaticamente a

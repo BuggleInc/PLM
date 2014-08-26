@@ -17,10 +17,13 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.PersonIdent;
+import org.eclipse.jgit.lib.StoredConfig;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
@@ -35,7 +38,6 @@ public class GitSessionKit implements ISessionKit {
 
 	private Game game;
 	private String reponame;
-	private GitUtils gitUtils;
 	private User cachedUser = null;
 
 	public GitSessionKit(Game game) {
@@ -83,27 +85,44 @@ public class GitSessionKit implements ISessionKit {
 	public void loadAll(final File path) {
 		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
 
-		File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
-		
 		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
 			if (Game.getInstance().isDebugEnabled())
 				System.out.println("The user changed! switch to the right branch");
 			cachedUser = Game.getInstance().getUsers().getCurrentUser();
 			
 			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUID().toString());
-			try {
-				gitUtils = new GitUtils(Git.open(gitDir));
-				gitUtils.checkoutUserBranch(cachedUser);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (GitAPIException e) {
-				e.printStackTrace();
+			if (! gitDir.exists()) {
+				String repoUrl = Game.getProperty("plm.git.server.url");
+				String userBranch = "PLM"+GitUtils.sha1(reponame); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
+
+				
+				Git git;
+				try {
+					git = Git.cloneRepository().setURI(repoUrl).setDirectory(gitDir).setBranchesToClone(Arrays.asList(userBranch)).call();
+
+					// If no branch can be found remotely, create a new one.
+					if (git == null) { 
+						git = Git.init().setDirectory(gitDir).call();
+						StoredConfig cfg = git.getRepository().getConfig();
+						cfg.setString("remote", "origin", "url", repoUrl);
+						cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
+						cfg.save();
+						git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
+						System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+					} else {
+						System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+					}
+				} catch (GitAPIException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			
 		}
 
 		// Load bodies
-		for (Lesson lesson : this.game.getLessons()) {			
-			loadLesson(repoDir, lesson);
+		for (Lesson lesson : this.game.getLessons()) {
+			loadLesson(path, lesson);
 		}
 		
 		// Load summary from the lastly saved files, 
@@ -189,6 +208,8 @@ public class GitSessionKit implements ISessionKit {
 							+ exercise.getId() + "." + lang.getExt() + ".DONE";
 					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
+					} else {
+						Game.getInstance().studentWork.setPassed(exercise, lang, false);
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
@@ -206,9 +227,10 @@ public class GitSessionKit implements ISessionKit {
 							}
 						}
 						srcFile.setBody(b.toString());
-					} catch (FileNotFoundException ex) {
-						// System.out.println("Il n'y a rien en " + fileName);
+					} catch (FileNotFoundException fnf) {
+						/* that's fine, we never did that exercise */
 					} catch (IOException ex) {
+						ex.printStackTrace();
 					}
 
 				}
@@ -218,6 +240,7 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
+		System.out.println("Clean all lessons. Your session is now lost.");
 		for (Lesson lesson : this.game.getLessons()) {
 			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}

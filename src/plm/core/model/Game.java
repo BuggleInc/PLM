@@ -28,6 +28,7 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -107,8 +108,6 @@ public class Game implements IWorldView {
 
 	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
 	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
-
-	public static final String SESSION_CLOUD_PROVIDER_URL = "plm.session.cloud.provider.url";
 
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
@@ -200,14 +199,15 @@ public class Game implements IWorldView {
 		users.getCurrentUser();
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
+		sessionKit = new GitSessionKit(this);
 
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
-		} catch (Exception e) {
+		} catch (IOException | GitAPIException e) {
+			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
 		}
 
-		sessionKit = new GitSessionKit(this);
 
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
@@ -950,6 +950,16 @@ public class Game implements IWorldView {
 						i18n.tr("C is missing"), JOptionPane.ERROR_MESSAGE); 
 				return;
 			}
+			if (newLanguage.equals(Game.C) && !doBatch) {
+				int res = JOptionPane.showConfirmDialog(null, 
+						i18n.tr(  "The C langage is currently very experimental in the PLM.\n"
+			                    + "If you go for C, you may not be able to complete some exercises that\n"
+			                    + "are still in progress in C, although some other parts are already okay.\n\n"
+			                    + "Do you want to proceed anyway?"),
+						i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
+				if (res != JOptionPane.OK_OPTION)
+					return;
+			}
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
 			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
@@ -1028,7 +1038,14 @@ public class Game implements IWorldView {
 	public boolean isDebugEnabled() {
 		return doDebug;
 	}
-
+	private boolean doBatch = false;
+	public void setBatchExecution() {
+		doBatch = true;
+	}
+	public boolean isBatchExecution() {
+		return doBatch;
+	}
+	
 	private boolean doCreative = false;		
 	public void switchCreative() {
 		doCreative =  !doCreative;

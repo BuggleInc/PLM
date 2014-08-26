@@ -114,13 +114,13 @@ public class Main extends Lesson {
 
 		Lecture loopWhile = addExercise(new LoopWhile(this));
 		addExercise(new BaggleSeeker(this), loopWhile);
-		addExercise(new BDR(this),loopWhile);
-		addExercise(new BDR2(this),loopWhile);
 		addExercise(new WhileMoria(this),loopWhile);
 		
 		Lecture vars = addExercise(new Variables(this));
 		addExercise(new RunFour(this), vars);
 		addExercise(new RunHalf(this), vars);
+		addExercise(new BDR(this),vars);
+		addExercise(new BDR2(this),vars);
 		
 		Lecture loopFor = addExercise(new LoopFor(this));
 		addExercise(new LoopStairs(this), loopFor);

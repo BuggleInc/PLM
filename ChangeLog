@@ -1,6 +1,21 @@
-20140821: Release 2.4-alpha2
+20140901: Release 2.4
 
-  Getting closer to the release, but not there yet.
+  Let's get ready for the Big Show of this year.
+  
+  * Improved translations:
+    - Brazilian Portuguese: Now at 37% despite the content changes
+  * User Interface:
+    - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
+      (fix #191).
+    - Switching users now works without restarting anything (fix #189)
+    - Kill the cloud session export feature: git superseeds that.
+  * Pedagogical content:
+    - welcome: move the BDR after the races so that students know
+      about variables when attempting them (fix #106).
+
+20140821: Release 2.4-beta1
+
+  Close to the release, but not there yet.
   
   * Improved translations:
     - Brazilian Portuguese: Now at 35% [Fred Maranhao]
@@ -8,12 +23,20 @@
     - Make it possible to copy/paste the secret session ID from the
       about dialog, so that the students can manually pass it to their 
       teachers. Not as convenient as it ought to be, but it works.
+    - Display a big fat warning when switching to C: that's still
+      experimental, and not everything works for now. They're warned.
   * Pedagogical content:
     - welcome.array.maxvalue.Extrema: find min and max values
       [Valentin Giannini]
     - welcome.array.golomb.Golomb: compute the Nth of the surprising
       Golomb sequence [Valentin Giannini]
     - welcome.array.island.Island: small game with arrays of integers
+    - sort.pancake.CohenPancake: Cohen's Algorithm for burned pancakes
+    - lander.*: Integrate properly and port to any supported languages.
+    
+  * Still missing for the release:
+    - French and Brasilian translations should be updated and completed
+    - Switching identity is still broken (see #189)
 
 20140724: Release 2.4-alpha1
 
@@ -38,7 +61,7 @@
     - Unclutters the UI: changing the buggle color is useless
   * Pedagogical content:
     - lander.*: new lesson on lunar landing [Paul Brauner]
-      Only working in scala for now, somehow experimental.
+      Only working in Java for now, somehow experimental.
     - welcome.bat.bool2.fizzBuzz: new (classical Fizz Buzz word game)
     - Various proofreadings on mission texts (FR&EN)
 

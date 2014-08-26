@@ -14,6 +14,7 @@ import org.json.simple.JSONValue;
  * Class that contains the data sent by the server
  * It describes a student and its results
  */
+@Deprecated
 public class ServerUserData {
 
     private String username;

@@ -44,7 +44,7 @@ spaces.  The end of Python code blocks are not marked by any specific char.
 Indenting lines starts a block and unindenting ends it. Do not forget the
 colon (:) at the end of the <code>if</code> line, python needs it to know
 that a new block begins. The fact that python relies on indentation to
-delimit blocks is a very good property for beginners: it will force your to
+delimit blocks is a very good property for beginners: it will force you to
 adhere to strict code presentation standards.[/!] It is very easy to get
 lost in your own code if it's not properly indented, so you want to clean it
 up so that working on your code remains pleasant and productive.</p>
@@ -64,15 +64,16 @@ resultar em erro.</p>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerASeguir()</b> <span class="comment"># este bloco não está condicionado a uma linha de condição</span>
 </pre>
 
-<p>The condition must be a
-<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
-expression.  The inner block of code will get executed if the expression is
-evaluated to <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code>
-and it will be ignored if it is
+<p>A condição deve ser uma expressão
+<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>. O
+bloco interno do código será executado se a expressão for calculada
+como <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e
+será ignorado se for
 <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
-[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> and
-<code>[!java|scala]false[/!][!python]False[/!]</code> are constant values
-defined by [!thelang] directly, just as 0 or 1 in mathematics.[/!]</p>
+[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code>
+e <code>[!java|scala]false[/!][!python]False[/!]</code> são valores
+constantes definidos por [!thelang] diretamente, assim como 0 ou 1 na
+matemática.[/!]</p>
 
 <p>The condition can be a
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>

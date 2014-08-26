@@ -21,10 +21,10 @@ adicionar ponto-e-vírgula no final das linhas, mas isto não é
 obrigatório)[/!].</p>
     
 <pre>
-meltTheChocolatePieces()[!java|c];[/!]
-addSugar()[!java|c];[/!]
-coolMix()[!java|c];[/!]
-serve()[!java|c];[/!]
+derretaOsPedaçosDeChocolate()[!java|c];[/!]
+adicioneAçucar()[!java|c];[/!]
+mexa()[!java|c];[/!]
+sirva()[!java|c];[/!]
 </pre>
     
 [!python|scala]
@@ -36,29 +36,29 @@ derretaOsPedaçosDeChocolate(); adicioneAçucar(); mexa(); sirva()
 </pre>
 [/!]
 
-  <p>Of course, these specific methods do not exist by default in [!thelang], but
-it may be possible to define them by yourself (we'll see later how to define
-your how methods).</p>
+  <p>Obviamente, estes métodos específicos não existem por padrão em
+[!thelang], mas é possível definí-los você mesmo (vamos ver mais tarde
+como definir seus próprios métodos).</p>
   
   <p>Por enquanto, vamos ficar apenas com as instruções do buggle. Existe um
 método para cada botão do painel de controle interativo. Para alcançar o
 mesmo efeito que o botão <b>avançar</b> (fazendo o buggle avançar um passo),
 você precisa escrever o seguinte no editor: </p>
-  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
-  <p>Likewise, to achieve the same effect than the
-<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and
-<b>right</b> buttons, you need to use respectively:</p>
+  <pre>[!java|scala|python]avançar()[!java];[/!][/!][!c]avançarUmPasso();[/!]</pre>
+  <p>Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|"
+"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> and
+<b>direita</b>, você precisa respectivamente:</p>
 <pre>
-backward()[!java|c];[/!]
-left()[!java|c];[/!]
-right()[!java|c];[/!]
+recuar()[!java|c];[/!]
+esquerda()[!java|c];[/!]
+direita()[!java|c];[/!]
 </pre>
 
 	 <p>O botão <b>mark</b> é diferente, pois corresponde a dois métodos: o primeiro
 move a caneta para cima e o segundo move a caneta para baixo.</p>
 <pre>
-brushUp()[!java|c];[/!]
-brushDown()[!java|c];[/!]
+levantarPincel()[!java|c];[/!]
+abaixarPincel()[!java|c];[/!]
 </pre>
   <p>O buggle tem outros métodos, que estão no menu "Ajuda/sobre este mundo" e
 serão introduzidos quando forem necessários.</p>

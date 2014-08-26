@@ -30,7 +30,7 @@ public class LocateLandingZoneEntity extends LanderEntity {
   double targetEnd = 0;
 
   @Override
-  public void init() {
+  public void initialize() {
     Segment landingZone = getLandingZone();
     targetStart = landingZone.start().x();
     targetEnd = landingZone.end().x();

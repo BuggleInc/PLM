@@ -94,7 +94,7 @@ public class PancakeWorld extends World {
 	/** 
 	 * Regular PancakeWorld constructor that takes the pancake sizes from the provided parameter
 	 * @param name the name of the world
-	 * @param sizes the size of each pancake
+	 * @param sizes the size of each pancake. If negative, the pancake is upside down
 	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
 	 */
 	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
@@ -120,6 +120,9 @@ public class PancakeWorld extends World {
 			return Game.i18n.tr("The two worlds are of differing size");
 
 		StringBuffer res = new StringBuffer();
+		if (other.moveCount != moveCount)
+			res.append(Game.i18n.tr("Stacks were not flipped the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+
 		for ( int i = 0;i< pancakeStack.length;i++) 
 			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld)) 
 				res.append(Game.i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
@@ -291,9 +294,10 @@ class Pancake {
 	private int radius; // Radius of the pancake
 	private boolean upsideDown; // True if the burned face is facing the sky, else false
 	
+	/** Create a new pancake of that radius. If the given radius is negative, the pancake is upside down */
 	public Pancake(int radius) {
-		this.radius = radius;
-		this.upsideDown = false;
+		this.radius = Math.abs(radius);
+		this.upsideDown = radius<0;
 	}
 	
 	/**

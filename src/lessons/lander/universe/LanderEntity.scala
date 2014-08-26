@@ -1,7 +1,7 @@
 package lessons.lander.universe
 
 import plm.universe.Entity
-import scala.collection.JavaConversions.asJavaIterable
+import scala.collection.JavaConversions._
 
 class LanderEntity extends Entity {
 
@@ -12,20 +12,19 @@ class LanderEntity extends Entity {
   }
   
   override def run() = {
-    init()
-    while (landerWorld.state == LanderWorld.State.FLYING) {
+    initialize()
+    while (isFlying()) {
       step()
-      landerWorld.simulate(0.1)
-      stepUI()
+      simulateStep()
     }
   }
 
   // methods to be overridden by the player
-  def init(): Unit = ()
+  def initialize(): Unit = ()
   def step(): Unit = ()
 
   // query terrain2
-  def getGround(): java.lang.Iterable[Point] = landerWorld.ground
+  def getGround(): java.util.List[Point] = landerWorld.ground
 
   // query lander state
   def getX(): Double = landerWorld.position.x
@@ -41,5 +40,12 @@ class LanderEntity extends Entity {
   }
   def setDesiredThrust(desiredThrust: Int) {
     landerWorld.desiredThrust = desiredThrust
+  }
+  
+  /* Internal commands used by the python entities to simulate the above run method */
+  def isFlying(): Boolean = (landerWorld.state == LanderWorld.State.FLYING)
+  def simulateStep() = {
+    landerWorld.simulate(0.1)
+    stepUI()
   }
 }

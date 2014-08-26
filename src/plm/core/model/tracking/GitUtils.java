@@ -38,16 +38,6 @@ public class GitUtils {
 		try {
 			userBranch = "PLM"+sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
 
-			
-			/*
-			if (git.getRepository().getRef("master") == null) {
-				git.branchCreate().setName("master").call();
-			}
-
-			// checkout master branch so that we start with a clean base
-			git.checkout().setName("master").call();
-*/
-
 			// create a branch for the current user if it's not already there
 			if (git.getRepository().getRef(userBranch) == null) {
 				try { 

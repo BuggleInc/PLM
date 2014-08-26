@@ -77,8 +77,8 @@
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${base.dir}" includes="ChangeLog" />
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.4.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
                         
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.10.3.jar"/>
@@ -90,9 +90,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jruby-1.5.6-5.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.2.5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.2.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.3.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.3.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.3.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
             
@@ -102,8 +102,8 @@
             
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
-			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
-			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
+	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
+	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
 
         </jar>
 
@@ -118,13 +118,13 @@
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${base.dir}" includes="ChangeLog" />
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/engine/* l10n/missions/*"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.4.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.2.5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.2.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.3.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.3.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.3.4.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
