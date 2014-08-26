@@ -1,8 +1,18 @@
 package plm.core.lang;
 
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import javax.swing.ImageIcon;
 
-public class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
+import plm.core.PLMCompilerException;
+import plm.core.model.LogWriter;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.universe.Entity;
+
+public abstract class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	String lang;
 	String ext;
 	ImageIcon icon;
@@ -43,5 +53,13 @@ public class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	}
 	public ImageIcon getIcon() {
 		return icon;
+	}
+	
+	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
+	public abstract void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
+	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate);
+	
+	public String nameOfCorrectionEntity(Exercise exo) {
+		return exo.getClass().getCanonicalName() + "Entity";
 	}
 }

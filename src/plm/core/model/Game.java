@@ -37,6 +37,12 @@ import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.StatusStateListener;
+import plm.core.lang.LangC;
+import plm.core.lang.LangJava;
+import plm.core.lang.LangLightbot;
+import plm.core.lang.LangPython;
+import plm.core.lang.LangRuby;
+import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -52,7 +58,6 @@ import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.model.tracking.ServerSpyAppEngine;
 import plm.core.ui.MainFrame;
-import plm.core.ui.ResourcesCache;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.IWorldView;
@@ -90,13 +95,14 @@ public class Game implements IWorldView {
 
 	public static final String [][] humanLangs = { {"English","en"}, {"Francais","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"} };
 
-	public static final ProgrammingLanguage JAVA =       new ProgrammingLanguage("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
-	public static final ProgrammingLanguage PYTHON =     new ProgrammingLanguage("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
-	public static final ProgrammingLanguage SCALA =      new ProgrammingLanguage("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
-	public static final ProgrammingLanguage C =      new ProgrammingLanguage("C","c",ResourcesCache.getIcon("img/lang_c.png"));
+	public static final ProgrammingLanguage JAVA =       new LangJava();
+	public static final ProgrammingLanguage PYTHON =     new LangPython();
+	public static final ProgrammingLanguage SCALA =      new LangScala();
+	public static final ProgrammingLanguage C =          new LangC();
 	//public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
-	public static final ProgrammingLanguage RUBY =       new ProgrammingLanguage("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
-	public static final ProgrammingLanguage LIGHTBOT =   new ProgrammingLanguage("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
+	public static final ProgrammingLanguage RUBY =       new LangRuby();
+	public static final ProgrammingLanguage LIGHTBOT =   new LangLightbot();
+	
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
 		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C // TODO: re-add JAVASCRIPT to this list once it works at least a bit
 	}; 
@@ -964,7 +970,7 @@ public class Game implements IWorldView {
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
 			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
-				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.lang);
+				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.getLang());
 			return;
 		}
 		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);

@@ -27,7 +27,7 @@ public abstract class World {
 	private boolean isAnswer = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
 
-	protected ArrayList<Entity> entities = new ArrayList<Entity>();
+	protected List<Entity> entities = new ArrayList<Entity>();
 
 	private String name;
 
@@ -129,7 +129,7 @@ public abstract class World {
 		notifyEntityUpdateListeners();
 	}
 
-	public void setEntities(ArrayList<Entity> l) {
+	public void setEntities(List<Entity> l) {
 		entities = l;
 		notifyEntityUpdateListeners();
 	}

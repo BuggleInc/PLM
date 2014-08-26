@@ -6,14 +6,53 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.List;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
+import plm.core.model.LogWriter;
 import plm.core.model.lesson.ExecutionProgress;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.session.SourceFile;
+import plm.core.ui.ResourcesCache;
+import plm.universe.Entity;
 
-public class CompilerC {
-	
-	public static void compile(String code, String executable, ExecutionProgress lastResult) throws PLMCompilerException{
+public class LangC extends JVMCompiledLang {
+
+	public LangC() {
+		super("C","c",ResourcesCache.getIcon("img/lang_c.png"));
+	}
+
+	@Override
+	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
+			throws PLMCompilerException {
+		
+		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
+		if (sfs == null || sfs.isEmpty()) {
+			String msg = exo.getName()+": No source to compile";
+			System.err.println(msg);
+			PLMCompilerException e = new PLMCompilerException(msg, null, null);
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+			throw e;
+		}
+
+		for (SourceFile sf : sfs){
+			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
+			compile(code,exo.getId(),exo.lastResult);
+			
+		}
+
+		
+	}
+
+	@Override
+	protected Entity mutateEntity(String newClassName)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return (Entity) Class.forName(newClassName).newInstance();
+	}
+
+	private void compile(String code, String executable, ExecutionProgress lastResult) throws PLMCompilerException{
 		
 		Runtime runtime = Runtime.getRuntime();
 
@@ -65,10 +104,10 @@ public class CompilerC {
 				throw e;
 			}
 			
-			BufferedReader cRemote = new BufferedReader(new InputStreamReader(CompilerC.class.getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
-			BufferedReader hRemote = new BufferedReader(new InputStreamReader(CompilerC.class.getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
-			BufferedReader cRemoteWorld = new BufferedReader(new InputStreamReader(CompilerC.class.getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
-			BufferedReader hRemoteWorld = new BufferedReader(new InputStreamReader(CompilerC.class.getClassLoader().getResourceAsStream("resources/langages/c/include/"+remote+".h")));
+			BufferedReader cRemote = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
+			BufferedReader hRemote = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
+			BufferedReader cRemoteWorld = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
+			BufferedReader hRemoteWorld = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/"+remote+".h")));
 			String line;
 			StringBuffer preCode = new StringBuffer();
 			

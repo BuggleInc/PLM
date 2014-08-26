@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.ExerciseTemplated;
@@ -78,14 +77,14 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 		t.setHeading(-90);
 		setup(myWorld);
 	}
-
+/*FIXME: KILLME
   @Override
   protected String nameOfCorrectionEntity(ProgrammingLanguage lang) {
     String entityName =
         getLesson().getClass().getCanonicalName().replace(".Main","") + "." + getName() + "Entity";
     return lang.equals(Game.SCALA) ? prependScalaToLastComponent(entityName) : entityName;
   }
-
+*/
 	@Override
 	public void loadHTMLMission() {
 		StringBuffer res = new StringBuffer();
