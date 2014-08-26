@@ -76,11 +76,9 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		return olds;
 	}
 
-	
 	@Override
 	public void runEntity(Entity ent, ExecutionProgress progress) {
 		ScriptEngine engine = null;		
-		String script = null;
 		try {
 			ScriptEngineManager manager = new ScriptEngineManager();       
 			engine = manager.getEngineByName(getLang().toLowerCase());
@@ -90,52 +88,27 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			/* Inject the entity into the scripting world so that it can forward script commands to the world */
 			engine.put("entity", ent);
 
-
 			/* Inject commands' wrappers that forward the calls to the entity */
 			ent.getWorld().setupBindings(this,engine);
 
-			/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
-			if (this.equals(Game.PYTHON)) {
-				engine.eval(
-						"def getParam(i):\n"+
-						"  return entity.getParam(i)\n" +
-						"def isSelected():\n" +
-						"  return entity.isSelected()\n");		
-			}
-			script = ent.getScript(this);
-
-			if (script == null) { 
-				System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against PLM.",this,ent));
+			if (ent.getScript(this) == null) { 
+				System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against the PLM.",this,ent));
 				return;
 			}
-			if (this.equals(Game.PYTHON)) {
-				/* that's not really clean to get the output working when we redirect to the graphical console, 
-				 * but it works (as long as it's evaluated at the exact same time than the script). */
-				ent.setScriptOffset(this, ent.getScriptOffset(this)+7);
-				script= "import sys;\n" +
-						"import java.lang;\n" +
-						"class PLMOut:\n" +
-						"  def write(obj,msg):\n" +
-						"    java.lang.System.out.print(str(msg))\n" +
-						"sys.stdout = PLMOut()\n" +
-						"sys.stderr = PLMOut()\n" +
-						script;
-			}
-			engine.eval(script);
+			setupEntityBindings(ent); // Python wants to add extra definitions to intercept I/O
+			engine.eval(ent.getScript(this));
 
 		} catch (ScriptException e) {
 			if (Game.getInstance().isDebugEnabled()) 
-				System.err.println("Here is the script in "+getLang()+" >>>>"+script+"<<<<");
-			if (Game.getInstance().canPython && PythonExceptionDecipher.isPythonException(e))
-				PythonExceptionDecipher.handlePythonException(e,ent,progress);
-			else {
-				System.err.println(Game.i18n.tr("Received a ScriptException that does not come from Python.\n")+e);
+				System.err.println("Here is the script in "+getLang()+" >>>>"+ent.getScript(this)+"<<<<");
+			if (!handleLangException(e,ent,progress)) {
+				System.err.println(Game.i18n.tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);
 				e.printStackTrace();
 			}
 
 		} catch (Exception e) {
 			String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
-					" Please report this as a bug against PLM, with all details allowing to reproduce it.\n" +
+					" Please report this as a bug against the PLM, with all details allowing to reproduce it.\n" +
 					"Exception message: {1}\n",e.getClass(),e.getLocalizedMessage());
 			System.err.println(msg);
 			for (StackTraceElement elm : e.getStackTrace()) 
@@ -146,5 +119,13 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		}
 	}
 
+	/** Add extra definitions to the script if needed */
+	protected abstract void setupEntityBindings(Entity ent);
+
+	/** Decipher an exception and produce a meaningful feedback to the user
+	 * 
+	 * @return true if it's an exception of that ProgrammingLanguage, and false if the exception should be handled elsewhere
+	 */
+	protected abstract boolean handleLangException(ScriptException e, Entity ent, ExecutionProgress progress);
 
 }
