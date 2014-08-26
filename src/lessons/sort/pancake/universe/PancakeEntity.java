@@ -87,7 +87,7 @@ public class PancakeEntity extends Entity {
 	public boolean estChoisi() { return isSelected(); }
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb;
 		try {

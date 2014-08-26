@@ -1,5 +1,6 @@
 package lessons.backtracking;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExerciseTemplated;
@@ -39,11 +40,12 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 	}
 	protected void computeAnswer() {
 		ExecutionProgress progress = new ExecutionProgress();
+		ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		
 		for (World aw : answerWorld) {
 			System.out.println("Compute answer for world "+aw.getName());
 			try {
-				aw.getEntity(0).runIt(progress);
+				pl.runEntity(aw.getEntity(0),progress);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}

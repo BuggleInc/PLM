@@ -432,7 +432,7 @@ public class Turtle extends Entity {
 	public boolean estVisible()      { return isVisible(); }
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		double nb,nb2;
 		int nbInt;

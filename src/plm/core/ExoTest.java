@@ -128,7 +128,7 @@ public class ExoTest {
 			
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
-					ent.runIt(exo.lastResult);
+					lang.runEntity(ent,exo.lastResult);
 			
 			exo.check();
 		} catch (PLMCompilerException e) {

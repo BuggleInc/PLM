@@ -63,7 +63,7 @@ public class Main extends Lesson {
 	}
 }
 
-class TurtleGraphicalExercise extends ExerciseTemplated{
+class TurtleGraphicalExercise extends ExerciseTemplated {
 	
 	public TurtleGraphicalExercise(Lesson lesson,String name,
 			int worldWidth,int worldHeight,int tx, int ty) {
@@ -77,14 +77,13 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 		t.setHeading(-90);
 		setup(myWorld);
 	}
-/*FIXME: KILLME
-  @Override
-  protected String nameOfCorrectionEntity(ProgrammingLanguage lang) {
-    String entityName =
-        getLesson().getClass().getCanonicalName().replace(".Main","") + "." + getName() + "Entity";
-    return lang.equals(Game.SCALA) ? prependScalaToLastComponent(entityName) : entityName;
-  }
-*/
+	
+	/* all exercises are packed into that file because the only difference between them is only the world size and turtle coordinates */
+	@Override
+	public String nameOfCorrectionEntity() { 
+		return getLesson().getClass().getCanonicalName().replace(".Main","") + "." + getName() + "Entity";
+	}
+
 	@Override
 	public void loadHTMLMission() {
 		StringBuffer res = new StringBuffer();

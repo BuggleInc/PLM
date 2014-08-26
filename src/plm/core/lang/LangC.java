@@ -3,7 +3,9 @@ package plm.core.lang;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.List;
@@ -16,6 +18,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
+import plm.core.utils.ValgrindParser;
 import plm.universe.Entity;
 
 public class LangC extends ProgrammingLanguage {
@@ -200,6 +203,205 @@ public class LangC extends ProgrammingLanguage {
 			StudentOrCorrection whatToMutate) {
 		
 		return old; /* Nothing to do, actually */
+	}
+
+	@Override
+	public void runEntity(final Entity ent, final ExecutionProgress progress) {
+		Runtime runtime = Runtime.getRuntime();
+		final StringBuffer resCompilationErr = new StringBuffer();
+
+		try {
+
+			String tempdir = System.getProperty("java.io.tmpdir")+"/plmTmp";
+			File saveDir = new File(tempdir+"/bin");
+
+			int nb=(int)(Math.random()*1000);
+			final File randomFile = new File(tempdir+"/tmp_"+nb+".txt");
+			if(!randomFile.createNewFile()){
+				System.out.println("Error creating a temporary file, make sure "+saveDir.getAbsolutePath()+" is writable");
+				return;
+			}
+
+			final File valgrindFile=new File(tempdir+"/valgrind_"+nb+".xml");
+			String extension="";
+			String arg1[];
+			String os = System.getProperty("os.name").toLowerCase();
+			final StringBuffer valgrind=new StringBuffer("");
+			String executable;
+			if(ent.getScript(Game.C)!=null){
+				executable=ent.getScript(Game.C);
+			}else{
+				executable= Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+			}
+			if (os.indexOf("win") >= 0) {
+				extension=".exe";
+				arg1 = new String[3];
+				arg1[0]="cmd.exe";
+				arg1[1]="/c";
+				arg1[2]=saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
+			} else {
+				//test if valgrind exist
+				Runtime r = Runtime.getRuntime();
+				try {
+					r.exec("valgrind --version");
+					if(valgrindFile.createNewFile()){
+						valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
+					}
+				} catch (IOException e) {
+					System.err.println("Valgrind does not seem to be installed");
+				}
+				arg1 = new String[3];
+				arg1[0]="/bin/sh";
+				arg1[1]="-c";
+				arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
+			}
+			File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
+			if(!exec.exists()){
+				System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
+				randomFile.delete();
+				if(valgrindFile.exists()){
+					valgrindFile.delete();
+				}
+				return;
+			}else if(!exec.canExecute() || !exec.isFile()){
+				System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
+				randomFile.delete();
+				if(valgrindFile.exists()){
+					valgrindFile.delete();
+				}
+				return;
+			}
+
+			final Process process = runtime.exec(arg1);
+
+			final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+			Thread reader = new Thread() {
+				public void run() {
+					try {
+						BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+						try {
+							int truc;
+							String str = "";
+							while((truc=reader.read())!=-1){
+								if(truc!=10){
+									str+=(char)truc;
+								}else{
+									ent.command(str, bwriter);
+									str="";
+								}
+							}
+
+						} finally {
+							reader.close();
+						}
+					} catch(IOException ioe) {
+						ioe.printStackTrace();
+					}
+				}
+			};
+
+
+			Thread error = new Thread() {
+				public void run() {
+					try {
+						InputStreamReader isr = new InputStreamReader(process.getErrorStream());
+						BufferedReader err = new BufferedReader(isr);
+
+						if(valgrind.length()>0){
+							try {
+								process.waitFor();
+								StringBuffer errmsg = ValgrindParser.parse(valgrindFile);
+								resCompilationErr.append(errmsg);
+								System.err.println(errmsg);
+								progress.details += errmsg;
+							} catch (Exception ex) {
+								ex.printStackTrace();
+							}
+						}else{
+							String line = "";
+							while((line = err.readLine()) != null) {
+								if(line.contains("<")){
+									resCompilationErr.append(line+"\n");
+								}
+								System.err.println("error: "+line);
+							}
+						}
+
+					} catch(IOException ioe) {
+						ioe.printStackTrace();	
+					}
+
+				}
+			};
+
+			final StringBuffer continu = new StringBuffer("");
+			Thread print = new Thread() {
+				public void run() {
+					try {
+						InputStream ips=new FileInputStream(randomFile.getAbsolutePath()); 
+						InputStreamReader ipsr=new InputStreamReader(ips);
+						BufferedReader br=new BufferedReader(ipsr);
+						try {
+							int truc;
+							String str = "";
+							while(continu.length()==0){
+								truc=br.read();
+								if(truc!=-1){
+									if(((char)truc)!='\n'){
+										str+=(char)truc;
+									}else{
+										System.out.println(str);
+										str="";
+									}
+								}
+							}
+							while((truc=br.read())!=-1){
+								if(truc!=10){
+									str+=(char)truc;
+								}else{
+									System.out.println(str);
+									str="";
+								}
+							}
+						} finally {
+							br.close();
+						}
+					} catch(IOException ioe) {
+						ioe.printStackTrace();
+					}
+				}
+			};
+
+			reader.start();
+			error.start();
+			print.start();
+			process.waitFor();
+			reader.join();
+			error.join();
+			continu.append("fin");
+			print.join();
+
+			bwriter.close();
+
+
+			randomFile.delete();
+
+			if(valgrindFile.exists()){
+				valgrindFile.delete();
+			}
+			
+			if(resCompilationErr.length()>0){
+				System.err.println(resCompilationErr.toString());
+				progress.setCompilationError(resCompilationErr.toString());
+			}
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

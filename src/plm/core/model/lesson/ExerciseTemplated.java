@@ -432,7 +432,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
 						ent.setScript(Game.C, id);
-						ent.runIt(progress);
+						Game.getProgrammingLanguage().runEntity(ent,progress);
 					}
 					aw.setAnswerWorld();
 				}

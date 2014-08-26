@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import plm.core.model.Game;
+import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.universe.Entity;
@@ -56,5 +58,22 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 
 		}
 		return newEntities;
+	}
+
+	@Override
+	public void runEntity(Entity ent, ExecutionProgress progress) {
+		try {
+			ent.publicRun();
+		} catch (Exception e) {
+			String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
+					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
+
+			for (StackTraceElement elm : e.getStackTrace())
+				msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
+
+			System.err.println(msg);
+			progress.setCompilationError(msg);
+			e.printStackTrace();
+		}
 	}
 }

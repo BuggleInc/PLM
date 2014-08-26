@@ -146,14 +146,15 @@ public abstract class World {
 	}
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
+		final ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		if (Game.getInstance().isDebugEnabled())
-			Logger.log("World:runEntities","Programming language: "+Game.getProgrammingLanguage());
+			Logger.log("World:runEntities","Programming language: "+pl);
 		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					b.runIt(progress);
+					pl.runEntity(b, progress);
 					Game.getInstance().statusArgRemove(getName());
 				}
 			});

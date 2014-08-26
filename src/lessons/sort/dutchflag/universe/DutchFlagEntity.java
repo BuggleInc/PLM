@@ -75,7 +75,7 @@ public class DutchFlagEntity extends Entity {
 	public final static int ROUGE = RED;
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2;
 		try {
