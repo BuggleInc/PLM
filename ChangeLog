@@ -4,6 +4,7 @@
   
   * Improved translations:
     - Brazilian Portuguese: Now at 37% despite the content changes
+    - French: Engine translation back to 100%
   * User Interface:
     - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
       (fix #191).
