@@ -18,7 +18,7 @@ class ScalaIslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 	/* BEGIN SOLUTION */
 		var state = 0 ;
 		setDirection(chosenDirection);

@@ -34,7 +34,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 	def hasLeftWall(x:Int, y:Int): Boolean = world.asInstanceOf[BuggleWorld].getCell(x,y).hasLeftWall();
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		evaluatePaths(); // write on each case the distance to the maze exit
 		followShortestPath(); // make the buggle follow the shortest path

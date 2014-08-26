@@ -5,8 +5,8 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.SimpleBuggle;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class SlugHunting extends ExerciseTemplated {
@@ -59,10 +59,10 @@ public class SlugHunting extends ExerciseTemplated {
 		}
 		myWorlds[1] = myWorld;
 
-		Buggle hunter = new Buggle(myWorlds[0], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
+		SimpleBuggle hunter = new SimpleBuggle(myWorlds[0], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
-		hunter = new Buggle(myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
+		hunter = new SimpleBuggle(myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
 		setup(myWorlds);

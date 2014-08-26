@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 class ScalaPictureMono3Entity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 9) {
 			makeLine(9);

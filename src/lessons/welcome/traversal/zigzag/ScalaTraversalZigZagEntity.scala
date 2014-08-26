@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaTraversalZigZagEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */		
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		var cpt=0;
 		writeMessage(cpt);

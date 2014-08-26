@@ -202,7 +202,7 @@ public class BuggleWorld extends GridWorld {
 				}
 				String buggleName = buggleMatcher.group(6);
 
-				new Buggle(res, buggleName, x, y, direction, color, brushColor);
+				new SimpleBuggle(res, buggleName, x, y, direction, color, brushColor);
 			} else if (cellMatcher.matches()) {
 				/* Get the info */
 				int x=Integer.parseInt( cellMatcher.group(1) );

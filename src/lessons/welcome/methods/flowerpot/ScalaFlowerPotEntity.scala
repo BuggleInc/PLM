@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaFlowerPotEntity extends SimpleBuggle {
 
-	def run() {
+	override def run() {
 	    growFlowers();
 	}
 	/* BEGIN SOLUTION */

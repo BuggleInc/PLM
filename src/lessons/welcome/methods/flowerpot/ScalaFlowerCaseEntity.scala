@@ -5,7 +5,7 @@ import java.awt.Color;
 import plm.universe.bugglequest.SimpleBuggle;
 class ScalaFlowerCaseEntity extends SimpleBuggle {
 
-	def run() {
+	override def run() {
 		growFlowers();
 	}
 	/* BEGIN SOLUTION */
