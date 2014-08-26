@@ -51,14 +51,14 @@ public class ExerciseFailedDialog extends JDialog {
 			msg = new JLabel(i18n.tr("<html>You didn't manage to reach your objective. <br>\n"
 					+ "You should graphically compare the final state of your world <br>\n"
 					+ "with the objective to understand the problem. <br>\n"
-					+ "If you don't see the error, check the details below to for a <br>\n"
+					+ "If you don't see the error, check the details below for a <br>\n"
 					+ "textual description of this difference between both worlds.</html>" ));
 			ta.setText(ep.details);
 			ta.setCaretPosition(0);
 		} else {
 			msg = new JLabel( i18n.tr("<html>Compilation error.<br>\n"
 					+ "You can find below the detailed error message (as given by {0}).<br>\n"
-					+ "Please read it carfully to understand the problem, and fix your code.</html>",
+					+ "Please read it carefully to understand the problem, and fix your code.</html>",
 						Game.getProgrammingLanguage().getLang()) );
 			ta.setText(ep.compilationError);
 			ta.setCaretPosition(0);

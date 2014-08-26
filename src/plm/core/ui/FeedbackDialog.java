@@ -40,9 +40,9 @@ public class FeedbackDialog extends JDialog {
 		}
 		FeedbackDialog.instance.feedback.setText(FeedbackDialog.instance.i18n.tr(
 				  "Please write your suggestion here, with all necessary details\n"
-				+ "(if possible in english or french).\n\n"
-				+ "If you found a typo or a sentence that is hard to understand, \n"
-				+ "it is really helpful if you can suggest a new wording.\n\n"
+				+ "(if possible in English or French).\n\n"
+				+ "When you find a typo or a sentence that is hard to understand, \n"
+				+ "it really helps to suggest a new wording.\n\n"
 				+ "If you encounter a technical bug, please tell us what you did,\n"
 				+ "which outcome you were expecting and what happened instead.\n\n"
 				+ "  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never."
