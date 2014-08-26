@@ -159,7 +159,7 @@ public abstract class World {
 				}
 			});
 
-			// So that we can still stop it from the AWT Thread, even if an infinite loop occures
+			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
 			runner.setPriority(Thread.MIN_PRIORITY);
 
 			runner.start();
