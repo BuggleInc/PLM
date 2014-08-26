@@ -29,6 +29,8 @@ import scala.tools.nsc.reporters.AbstractReporter;
 
 public class LangScala extends JVMCompiledLang {
 
+	ScalaCompiler compiler = new ScalaCompiler();
+	
 	public LangScala() {
 		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
 	}
@@ -50,9 +52,9 @@ public class LangScala extends JVMCompiledLang {
 		}
 
 		try {
-			CompilerScala.getInstance().reset();
+			compiler.reset();
 			for (plm.core.model.session.SourceFile sf : sfs) {
-				CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
+				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
 			}
 		} catch (PLMCompilerException e) {
 			System.err.println(Game.i18n.tr("Compilation error:"));
@@ -83,20 +85,13 @@ public class LangScala extends JVMCompiledLang {
 	protected Entity mutateEntity(String newClassName)
 			throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException {
-		return (Entity) CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
+		return (Entity) compiler.findClass(className(newClassName)).newInstance();
 	}
 }
 
 /** In memory compiler of scala code. 
  *  This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala */
-class CompilerScala {
-	
-	static private CompilerScala instance;
-	public static CompilerScala getInstance() {
-		if (instance == null)
-			instance = new CompilerScala();
-		return instance;
-	}
+class ScalaCompiler {
 	
 	private PLMReporter reporter;
 	private Settings settings;
@@ -105,7 +100,7 @@ class CompilerScala {
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	
-	private CompilerScala() {
+	public ScalaCompiler() {
 		super();
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
