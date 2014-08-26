@@ -163,7 +163,7 @@ public class ExoTest {
 		testCorrectionEntity(Game.SCALA);
 	}
 	
-	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
+//	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testCEntity() {
 		if (!exo.getProgLanguages().contains(Game.C)) 
 			fail("Exercise "+exo.getId()+" does not support C");
