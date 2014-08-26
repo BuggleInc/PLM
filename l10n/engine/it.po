@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 21:26+0200\n"
+"POT-Creation-Date: 2014-08-26 23:17+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -413,7 +413,7 @@ msgid "Compilation error:"
 msgstr "Errore di compilazione:"
 
 #: src/plm/core/lang/LangC.java:260 src/plm/core/lang/LangC.java:267
-msgid "Error, please recompile the exercice"
+msgid "Error, please recompile the exercise"
 msgstr ""
 
 #.
@@ -541,7 +541,8 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala è utilizzabile sul tuo pc. Congratulazioni."
 
 #: src/plm/core/model/Game.java:168
-msgid "Please install Scala version 2.10 or higher to use it in PLM."
+#, fuzzy
+msgid "Please install Scala version 2.10 or higher to use it in the PLM."
 msgstr "Per piacere istalla Scala versione 2.10 o maggiore per usarlo in PLM."
 
 #: src/plm/core/model/Game.java:170
@@ -549,7 +550,9 @@ msgid "Jython is usable on your machine. Congratulations."
 msgstr "Jython è utilizzabile sul tuo pc. Congratulazioni."
 
 #: src/plm/core/model/Game.java:172
-msgid "Please install jython to use the python programming language in PLM."
+#, fuzzy
+msgid ""
+"Please install jython to use the python programming language in the PLM."
 msgstr ""
 "Per piacere installa jython per usare il linguaggio di programmazione python "
 "in PLM."
@@ -561,7 +564,7 @@ msgstr "Scala è utilizzabile sul tuo pc. Congratulazioni."
 
 #: src/plm/core/model/Game.java:176
 #, fuzzy
-msgid "Please install gcc to use the C programming language in PLM."
+msgid "Please install gcc to use the C programming language in the PLM."
 msgstr ""
 "Per piacere installa jython per usare il linguaggio di programmazione python "
 "in PLM."
@@ -573,10 +576,10 @@ msgid ""
 "or ''Scala'' or ''C'' but {0}.\n"
 "   This language will be used to setup the worlds, possibly leading to "
 "severe issues for the exercises that don''t expect it.\n"
-"   It is safer to change the current language, and restart PLM before "
+"   It is safer to change the current language, and restart the PLM before "
 "proceeding.\n"
 "   Alternatively, the property {1} can be changed in your configuration file "
-"($HOME/.plm/plm.properties)"
+"({2}/plm.properties)"
 msgstr ""
 "Attenzione, il linguaggio di programmazione predefinito non è né ''Java'', "
 "né ''python'' e nemmeno ''Scala'' ma {0}.\n"
@@ -612,7 +615,7 @@ msgstr ""
 "Il linguaggio di programmazione predefinito è Scala ma la tua installazione "
 "di scala non è utilizzabile. Seleziona Java invece.\n"
 
-#: src/plm/core/model/Game.java:214 src/plm/core/model/tracking/GitSpy.java:84
+#: src/plm/core/model/Game.java:214
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below"
@@ -684,8 +687,9 @@ msgid "The lecture {0} has no world that I can select"
 msgstr "La lettura {0} non ha parole che io posso selezionare"
 
 #: src/plm/core/model/Game.java:946
+#, fuzzy
 msgid ""
-"Please install Scala version 2.10 or higher to use it in PLM.\n"
+"Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 "Per piacere istalla Scala versione 2.10 o maggiore per usarlo in PLM.\n"
@@ -696,9 +700,10 @@ msgid "Scala is missing"
 msgstr "Scala è mancante"
 
 #: src/plm/core/model/Game.java:951
+#, fuzzy
 msgid ""
 "Please install jython and its dependencies to use the python programming "
-"language in PLM.\n"
+"language in the PLM.\n"
 "\n"
 msgstr ""
 "Per piacere installa jython e le sue dipendenze per poter utilizzare il "
@@ -713,7 +718,7 @@ msgstr "Python è mancante"
 #, fuzzy
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
-"PLM.\n"
+"the PLM.\n"
 "\n"
 msgstr ""
 "Per piacere installa jython e le sue dipendenze per poter utilizzare il "
@@ -993,6 +998,12 @@ msgstr "Errore durante il caricamento della tua sessione"
 #: src/plm/core/model/session/ZipSessionKit.java:363
 msgid "Abording on user request"
 msgstr "Interruzione su richiesta dell'utente"
+
+#: src/plm/core/model/tracking/GitSpy.java:84
+msgid ""
+"You found a bug in the PLM. Please report it with all possible details "
+"(including the stacktrace below)."
+msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:63
 msgid ""
@@ -1537,7 +1548,7 @@ msgstr "(nessun suggerimento da mostrare)"
 #: src/plm/core/ui/action/AddUser.java:27
 msgid ""
 "If you already have a UUID, paste it here. If not, you can use that randomly "
-"generated identifyier"
+"generated identifier."
 msgstr ""
 
 #: src/plm/core/ui/action/AddUser.java:29
@@ -1557,8 +1568,8 @@ msgstr "La tua sessione è stata importata con successo."
 
 #: src/plm/core/ui/action/AddUser.java:41
 msgid ""
-"Invalid UUID! Either paste a correct identifyer or use the randomly "
-"generated one"
+"Invalid UUID! Either paste a correct identifier or use the randomly "
+"generated one."
 msgstr ""
 
 #: src/plm/core/ui/action/HelpMe.java:37
@@ -1583,31 +1594,32 @@ msgstr "Impossibile uscire dall'applicazione in questo momento"
 
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid ""
-"<html>Please choose the user you want to remove from the drop-down menu.</"
+"<html>Please choose from the drop-down menu the user you want to remove.</"
 "html>"
 msgstr ""
 
 #: src/plm/core/ui/action/RemoveUser.java:35
 #, java-format
 msgid ""
-"A deleted user is definitely lost if you don''t know its UUID.\n"
+"A deleted user is definitely lost if you don''t know its \n"
+"full UUID (something like 110E8400-E29B-11D4-A716-446655440000).\n"
 "Are you sure that you want to delete the user {0}?"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:37
+#: src/plm/core/ui/action/RemoveUser.java:38
 msgid "Confirm user deletion"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:40
+#: src/plm/core/ui/action/RemoveUser.java:41
 #, java-format
 msgid "User {0} successfully deleted"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:43
+#: src/plm/core/ui/action/RemoveUser.java:44
 msgid "Sorry, you can't delete the current user."
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:43
+#: src/plm/core/ui/action/RemoveUser.java:44
 msgid "Try again"
 msgstr ""
 
