@@ -90,14 +90,6 @@ public abstract class Exercise extends Lecture {
 			currentWorld.get(i).reset(initialWorld.get(i));
 	}
 
-	/*
-	 * +++++++++++++++++++++++++
-	 * Compilation related stuff
-	 * +++++++++++++++++++++++++
-	 * 
-	 */
-
-
 	/**
 	 * Generate Java source from the user function
 	 * @param out 

@@ -10,6 +10,8 @@
       (fix #191).
     - Switching users now works without restarting anything (fix #189)
     - Kill the cloud session export feature: git superseeds that.
+    - Allow the students to provide imediate feedback on the exercises
+      they just passed.
   * Pedagogical content:
     - welcome: move the BDR after the races so that students know
       about variables when attempting them (fix #106).

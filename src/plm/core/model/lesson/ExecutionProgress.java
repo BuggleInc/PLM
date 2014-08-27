@@ -17,6 +17,11 @@ public class ExecutionProgress {
 	public Date date = new Date();
 	public ProgrammingLanguage language = Game.getProgrammingLanguage();
 
+	/* The feedback from the student in the ExecisePassedDialog */
+	public String feedbackDifficulty;
+	public String feedbackInterest;
+	public String feedback; 
+
 	public static ExecutionProgress newCompilationError(String message) {
 		ExecutionProgress ep = new ExecutionProgress();
 		

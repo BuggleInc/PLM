@@ -179,9 +179,16 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
-		if (exoTo != null) {
+
+		if (exoFrom.lastResult.feedbackDifficulty != null)
+			jsonObject.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
+		if (exoFrom.lastResult.feedbackInterest != null)
+			jsonObject.put("exoInterest", exoFrom.lastResult.feedbackInterest);
+		if (exoFrom.lastResult.feedback != null)
+			jsonObject.put("exoComment", exoFrom.lastResult.feedback);
+		
+		if (exoTo != null)
 			jsonObject.put("switchto", exoTo.getId());
-		}
 
 		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
 		return "{\"kind\":\""+evt_type+"\","+jsonObject.toString().substring(1);
