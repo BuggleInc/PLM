@@ -48,4 +48,12 @@ class LanderEntity extends Entity {
     landerWorld.simulate(0.1)
     stepUI()
   }
+  
+  /* BINDINGS TRANSLATION: French */
+  def getSol() = getGround()
+  def getVitesseX(): Double = getSpeedX()
+  def getVitesseY(): Double = getSpeedY()
+  def getPoussee(): Int = getThrust()
+  def setAngleDesire(desiredAngle: Double) = setDesiredAngle(desiredAngle) 
+  def setPousseeDesiree(desiredThrust: Int) = setDesiredThrust(desiredThrust)
 }
