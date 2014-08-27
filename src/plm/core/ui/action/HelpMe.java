@@ -14,11 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -65,8 +62,8 @@ public class HelpMe extends AbstractGameAction {
 		}
 		String payload = JSONValue.toJSONString(obj);
 		//System.out.println("JSON string : " + payload);
-		//String urlStr = Game.getProperty("plm.play.server.url") + "callHelp";
-		String urlStr = "http://localhost:9000/callHelp";
+		String urlStr = Game.getProperty("plm.play.server.url") + "callHelp";
+		//String urlStr = "http://localhost:9000/callHelp";
 
 		String line;
 		StringBuffer jsonString = new StringBuffer();
