@@ -15,6 +15,14 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.universe.Entity;
 
+/**
+ * Captures the whole logic of a given programming language (compiling the user code, running it).
+ * 
+ * If you want to add a new programming language to the PLM, then you probably want to read that page:
+ * https://github.com/oster/PLM/wiki/Adding-a-new-programming-language
+ *
+ */
+
 public abstract class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	String lang;
 	String ext;
