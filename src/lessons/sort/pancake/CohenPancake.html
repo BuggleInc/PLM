@@ -10,7 +10,7 @@ worst case.</p>
 
 <p>In this exercise, we will explore an adaptation of the same idea to burnt pancakes. This was first 
 published by David X. Cohen and Manuel Blum. David Cohen co-founded a few years later the Futurama TV 
-show bursted with jokes inspired from scientific facts. Definitively, interesting people studied that 
+show full of mathematical jokes. Definitively, interesting people studied that 
 little pancake problem...</p>
 
 <p>The Cohen's algorithm is slightly easier than the Gates' one since it distinguishes less cases:</p>
@@ -50,7 +50,7 @@ the stack in <i>2n</i> steps if case 2.b does not occurs.</p>
 
 <p>That case 2.b requires a very different handling as it is obviously not possible to achieve a join in only 2 flips. 
   But fortunately, we can leverage the very specific setting of the stack in that case to provide the following algorithm. 
-  It sorts a stack in that exact configuration after exactly 2n steps.</p>
+  It sorts a stack in that exact configuration after exactly <i>2n</i> steps.</p>
   
 <pre>
 Repeat n times
@@ -63,7 +63,7 @@ Repeat n times
 <p><div align="center"><img src="img/cohen-2b-algo.png"/></div></p>
 
 <p>So, all in all, the Cohen algorithm manages to sort the stack of burnt pancakes in <i>2n</i> steps in all cases. 
-Quite a win over the naive algorithm that requires <i>3n</i> steps.</p>
+Quite a win over the naive algorithm for burnt pancakes that requires <i>3n</i> steps.</p>
 
 <p><div class="tip" id="tip-1" alt="I cannot get it right.">
 Don't worry. This exercise is very difficult, so it's ok if it does not work right away for you.
