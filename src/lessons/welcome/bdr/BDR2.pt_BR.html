@@ -14,18 +14,18 @@ thanks to the new constructs we will introduce.</p>
 <p>The hardest part of previous code is certainly the conditional
 cascading. Somewhere in your code, you certainly had something similar to:</p>
 
-<pre>if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == "R"[/!]) {
-  right();
-  [!c]stepForward()[/!][!java|scala]forward()[/!];
-} else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == "L"[/!]) {
-  left();
-  [!c]stepForward()[/!][!java|scala]forward()[/!];
-} else if ([!java|c]getIndication() == 'I'[/!][!scala]readMessage() == "I"[/!]) {
-  back();
-  [!c]stepForward()[/!][!java|scala]forward()[/!];
+<pre>if ([!java|c]getIndicação() == 'R'[/!][!scala]lerMensagem() == "R"[/!]) {
+  direita();
+  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+} else if ([!java|c]getIndicação() == 'L'[/!][!scala]lerMensagem() == "L"[/!]) {
+  esquerda();
+  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+} else if ([!java|c]getIndicação() == 'I'[/!][!scala]lerMensagem() == "I"[/!]) {
+  voltar();
+  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
 <span class="comment">/* other else if */</span>
 } else {
-  finished = [!c]1[/!][!java|scala]true[/!];
+  terminou = [!c]1[/!][!java|scala]true[/!];
 }
 </pre>
 
@@ -63,18 +63,18 @@ some <b>rare</b> cases where this behavior reveals helpful.</p>
 <p>It is then possible to rewrite previous BDR code in a cleaner way using the
 <tt>switch</tt> construct:</p>
 
-<pre>switch (getIndication()) {
+<pre>switch (getIndicação()) {
   case 'R':
-    right(); 
-    [!c]stepForward()[/!][!java]forward()[/!]; 
+    direita(); 
+    [!c]avançarUmPasso()[/!][!java]avançar()[/!]; 
     break;
   case 'L':
-    left();
-    [!c]stepForward()[/!][!java]forward()[/!]; 
+    esquerda();
+    [!c]avançarUmPasso()[/!][!java]avançar()[/!]; 
     break;
   case 'I':
-    back();
-    [!c]stepForward()[/!][!java]forward()[/!];
+    voltar();
+    [!c]avançarUmPasso()[/!][!java]avançar()[/!];
     break;
   default: 
     return;

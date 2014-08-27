@@ -1,0 +1,39 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Repérer une zone plate</h2>
+
+<p>Après 200 jours de voyage intersidéral à manger des céréales, vous êtes
+enfin parvenu à la planète rouge. Il est enfin temps de se poser !</p>
+
+<p>Le module est en pilote automatique, et vous n'avez qu'à regarder autour de
+vous pour sélectionner une zone d'alunissage. Vous devez vous poser sur
+<b>une zone plate</b> si vous ne voulez pas vous scratcher. Vous indiquez au
+pilote automatique où se poser en modifiant la fonction
+<code>getLandingZone</code> de façon à ce qu'elle retourne [!java|scala]un
+Segment représentant la zone de votre choix.
+
+<p>Un Segment est composé de deux <code>Point</code>s, chacun composé de deux
+doubles. On construit un nouveau segment de la façon suivante :
+<code>Segment([!java]Point [/!]debut[!scala]:Point[/!], [!java]Point
+[/!]fin[!scala]:Point[/!])</code>. Pour créer de nouveaux points, il faut
+utiliser le constructeur <code>Point([!java]double [/!]x[!scala]:Double[/!],
+[!java]double [/!]y[!scala]:Double[/!])</code>. Les coordonnées d'un point
+sont accessibles grâce à ses méthodes <code>[!java]double
+[/!]x()[!scala]:Double[/!]</code> et <code>[!java]double
+[/!]y()[!scala]:Double[/!]</code>.</p>[/!] [!python]tuple de deux coordonnées X délimitant la zone de votre
+choix.[/!]
+
+<p>Pour déterminer la zone cible, vous devez appeler
+<code>[!java]List&lt;Point&gt; [/!]getSol()[!scala]:List[Point][/!]</code>,
+qui retourne les points qui composent la surface sous la forme d'une list de
+[!java|scala]<code>Point</code>[/!] [!python]tuples (x,y)[/!].</p>
+
+<p>Une dernière chose : votre fonction doit retourner une zone valide dans
+toutes les situations, pas seulement celle que l'on voit en ce moment. C'est
+que votre code sera utilisé dans ce cas, mais également dans la
+configuration que nous avions dans l'exercice précédent. Comme d'habitude,
+vous pouvez voir les autres mondes en les sélectionnant dans le combobox au
+dessus de la vue du monde.</p>
+
+<p>Bon alunissage ! N'oubliez pas de mettre votre combinaison spatiale en
+sortant.</p>

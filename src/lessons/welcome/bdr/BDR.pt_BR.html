@@ -2,10 +2,11 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Buggle Dance Revolution (BDR)</h2>
 
-<p>Today is a great day: we will learn the buggles to play Dance Revolution,
-this game beloved of some students where the player has to move its feet on
-the carpet according to the instructions presented on the screen, and
-following the music. But before that, we have some details to study first.</p>
+<p>After these races, it's time to party! For that, we will learn the buggles
+to play Dance Revolution, this game beloved of some students: The player has
+to move the feet on the carpet according to the instructions presented on
+the screen, and following the music. But before that, we have some details
+to study first.</p>
 
 [!java|scala|c]
 <h3>Conditionals without curly braces</h3>
@@ -27,24 +28,24 @@ else
 <p>Actually, you can do the same for loops body that are reduced to one
 instruction only.  But beware, this becomes dangerous if you chain the
 <tt>if</tt> instructions like this: </p>
-<pre>if (isOverBaggle())    
+<pre>if (estáSobreBaggle())    
      if (x == 5)
-          left();
+          esquerda();
 else
-     right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+     direita();
+[!c]avançarUmPasso();[/!][!java|scala]avançar();[/!]</pre>
 
 <p>In fact, it does not turn right when there is no baggle on the ground AND x
 equals 5, but when the buggle found a baggle on the ground and x equals
 anything but 5. Putting this otherwise, the buggle understands the previous
 code as if it were written the following way (note that the <tt>else</tt>
 were moved to the right):</p>
-<pre>if (isOverBaggle())    
+<pre>if (estáSobreBaggle())    
         if (x == 5)
-            left();
+            esquerda();
         else
-            right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+            direita();
+avançar();</pre>
 
 <p>The first lesson of this is that the indentation is very important to help
 humans understanding, even if it does not change the actual meaning of the
@@ -55,7 +56,7 @@ professor to read it (to grade it or to answer a question about it), or if
 you want to reuse your code later, or even if you need to debug your code
 yourself.</p> 
 
-<pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+<pre>if (estáSobreBaggle()) if (x == 5) esquerda(); else direita(); [!c]avançarUmPasso();[/!][!java|scala]avançar();[/!]</pre>
 
 <p>The second lesson is that a <tt>else</tt> branch always connects to the
 closest <tt>if</tt>. This may be a bit troublesome in some case, and it may

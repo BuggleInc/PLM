@@ -21,13 +21,13 @@ mesmo se já estivermos numa célula branca. Isto é fácil duplicando o código
 do loop'antes do loop em si, mas esta é uma má ideia: diplicação de código é
 um hábito <b>muito</b> ruim, e você deve evitar isto <b>sempre</b>.</p>
 
-<p>Code duplication easily turns code maintenance into a nightmare: reading the
-code becomes difficult as the reader must ensure that no slight difference
-exist between the versions. Debugging the code becomes difficult, as bugs
-have to be fixed in all versions. Actually, every modification of the code
-becomes difficult. So, really, you should <b>always</b> strive to not
-duplicate your code if you can avoid. And the good news is that you always
-can...</p>
+<p>Duplicação de código faz da manutenção de código um pesadelo rapidamente: é
+fdifícil ler o código e o leitor tem que garantir que nenhuma pequena
+diferença exista entre as versões. Depurar o código se torna difícil, pois
+os bugs devem ser consertados em todas as versões. Na verdade, cada
+modificação do código se torna difícil. Então, na verdade, você deve
+<b>sempre</b> se esforçar para não duplicar seu código sempre que
+possível. Mas a boa notícia é que você sempre pode...</p>
 
 <h3>Executando o corpo do loop pelo menos uma vez</h3>
 [!python]
@@ -46,13 +46,13 @@ as outras condições digam o contrário.  uma vez que o loop tenha sido
 executado uma vez, esta variável vira false e nunca mais impacta na decisão
 de entrar ou não no loop.</p>
 [/!] [!java|scala|c]
-<p>In a <tt>while</tt> loop, the condition is evaluated before anything else,
-and if it's false, the loop body is never evaluated. Sometimes (although not
-that often), you would prefer the loop body to get evaluated at least once,
-even if the condition is initially false. For that, a variation of the
-<tt>while</tt> loop gets used, using the following syntax in [!thelang].
-[!java|c]Do not forget the semi-column (;) after the condition, it is
-mandatory.[/!]
+<p>Num loop <tt>while</tt>, a condição é calculada antes de qualquer coisa, e
+se for falsa, o corpo do loop nunca é executado. Algumas vezes (mas não
+muito frequentemente), você pode preferir que o corpo do loop seja executado
+pelo menos uma vez, mesmo se a condição seja inicialmente falsa. Para isto,
+uma variação do loop <tt>while</tt> é usada, com a seguinte sintaxe em
+[!thelang].  [!java|c]Não esqueça o ponto-e-vírgula (;) depois da condição,
+que é obrigatório.[/!]
 
 <pre>do {
     <b>ação()</b>[!java];[/!]
