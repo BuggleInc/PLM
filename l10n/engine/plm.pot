@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 23:18+0200\n"
+"POT-Creation-Date: 2014-08-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -638,38 +638,6 @@ msgstr ""
 msgid "Cancel call for help to the teacher"
 msgstr ""
 
-#: src/plm/core/model/LessonRunner.java:95
-#, java-format
-msgid ""
-"Congratulations, you passed this exercise.\n"
-"{0} tests passed."
-msgstr ""
-
-#: src/plm/core/model/LessonRunner.java:97
-#: src/plm/core/model/LessonRunner.java:103
-#: src/plm/core/model/LessonRunner.java:113
-#: src/plm/core/model/LessonRunner.java:119
-msgid "Exercice passed \\o/"
-msgstr ""
-
-#: src/plm/core/model/LessonRunner.java:101
-msgid "Congratulations, you passed this exercise."
-msgstr ""
-
-#: src/plm/core/model/LessonRunner.java:111
-#, java-format
-msgid ""
-"Congratulations, you passed this exercise.\n"
-"({0} tests passed)\n"
-"Which exercise will you do now?"
-msgstr ""
-
-#: src/plm/core/model/LessonRunner.java:118
-msgid ""
-"Congratulations, you passed this exercise.\n"
-"Which exercise will you do now?"
-msgstr ""
-
 #: src/plm/core/model/Users.java:113
 #, java-format
 msgid "User {0} exists already; don't add it again."
@@ -917,6 +885,7 @@ msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
+#: src/plm/core/ui/ExercisePassedDialog.java:107
 msgid "Close"
 msgstr ""
 
@@ -1020,6 +989,106 @@ msgstr ""
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:84
 msgid "Details <<"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:35
+msgid "Exercice passed \\o/"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:44
+msgid "Congrats"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:53
+#, java-format
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"{0} tests passed."
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:56
+msgid "Congratulations, you passed this exercise."
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:66
+#, java-format
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"({0} tests passed)\n"
+"Which exercise will you do now?"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:69
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"Which exercise will you do now?"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:79
+msgid "Give feedback"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:82
+msgid ""
+"Please help us to improve this exercise by filling this little evaluation."
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:84
+msgid "Difficulty:"
+msgstr ""
+
+#. Difficulties are the text presented to the user while difficultiesEN are the one that will be added to the report
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "(please choose)"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Too easy"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Easy"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Just right"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Difficult"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Too difficult"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:92
+msgid "Interest:"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Really good"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Amusing"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Just okay"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Boring"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Really bad"
+msgstr ""
+
+#: src/plm/core/ui/ExercisePassedDialog.java:99
+msgid "Free comments on that exercise:"
 msgstr ""
 
 #: src/plm/core/ui/ExerciseView.java:94 src/plm/core/ui/ExerciseView.java:162
