@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-08-22 02:05+0200\n"
-"PO-Revision-Date: 2014-08-22 02:47+0200\n"
+"POT-Creation-Date: 2014-08-27 10:17+0200\n"
+"PO-Revision-Date: 2014-08-27 10:32+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -595,9 +595,9 @@ msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
 msgstr ""
-"Les \"SimpleBuggles\" (c.-à-d., celles utilisées dans les premiers exercices) "
-"affichent un message d'erreur sans que vous ayez à vous soucier de ce qu'est "
-"une exception."
+"Les \"SimpleBuggles\" (c.-à-d., celles utilisées dans les premiers "
+"exercices) affichent un message d'erreur sans que vous ayez à vous soucier "
+"de ce qu'est une exception."
 
 #. type: Content of: <h1>
 #: src/plm/universe/bat/BatWorld.html:2
@@ -636,9 +636,9 @@ msgid ""
 "called for a bunch of parameter sets, and that's it."
 msgstr ""
 "Contrairement aux autres mondes, le BatWorld ne fournit ni de belles "
-"abstractions ni de belles visualisations. Vous aurez à remplier une "
-"fonction qui sera appelée avec plusieurs ensembles différents de "
-"paramètres, et c'est tout."
+"abstractions ni de belles visualisations. Vous aurez à remplier une fonction "
+"qui sera appelée avec plusieurs ensembles différents de paramètres, et c'est "
+"tout."
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:17
@@ -940,8 +940,8 @@ msgstr ""
 "comprendre la plupart des algorithmes. Vous ne pourrez toujours pas écrire "
 "ou même lire des programmes complets en [!thelang] car la notion d'objet ne "
 "fait pas partie des objectifs de cette leçon, mais vous maîtriserez ce qu'on "
-"appelle la « programmation tactique », ce qui veut dire que votre maîtrise de "
-"la syntaxe vous permettra de vous concentrer sur les problèmes à résoudre "
+"appelle la « programmation tactique », ce qui veut dire que votre maîtrise "
+"de la syntaxe vous permettra de vous concentrer sur les problèmes à résoudre "
 "sans vous battre contre le compilateur à propos de la syntaxe."
 
 #. type: Content of: <p>
@@ -997,34 +997,23 @@ msgstr "Les <i>buggles</i> ? Qu'est ce que c'est ??"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:15
-#, fuzzy
-#| msgid ""
-#| "The buggles are little animals obeying any order you may give them. In "
-#| "each exercise, you have to provide them with the right instructions so "
-#| "that the world turns into the objective of the exercise. For example in "
-#| "this exercise, you should instruct your buggle to move forward once. You "
-#| "can see that by checking the difference between the <i>World</i> view and "
-#| "the <i>Objective</i> one.  Depending on the lessons (and your settings in "
-#| "the Language menu), your code must be written in either Java, Python or "
-#| "Scala (depending on the exercise)."
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
 "world turns into the objective of the exercise. For example in this "
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either C, Java, Python or Scala "
-"(depending on the exercise)."
+"<i>Objective</i> one.  Depending on the exercise (and your settings in the "
+"Language menu), your code must be written in either C, Java, Python or Scala."
 msgstr ""
 "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
 "donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
 "pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par "
 "exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle "
 "avance d'un pas. Observez la différence entre l'état initial et l'objectif "
-"en utilisant les panneaux à droite. Selon la leçon (et vos réglages), vous "
-"devez écrire vos programme dans l'un des langages de programmation suivant : "
-"Java, Python ou Scala (en fonction de l'exercice)."
+"en utilisant les panneaux à droite. En fonction de l'exercice (et vos "
+"réglages), vous devez écrire vos programme dans l'un des langages de "
+"programmation suivant : Java, Python, Scala ou C (en fonction de l'exercice)."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:23
@@ -1418,12 +1407,6 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
-#, fuzzy
-#| msgid ""
-#| "<b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!"
-#| "python]interpreter[/!] ignores anything placed between [!java|scala|c]the "
-#| "symbols /* and */ even if they are placed on differing lines.[/!] [!"
-#| "python]a line beginning with ''' and the next line ending with '''.[/!]"
 msgid ""
 "<b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] ignores anything placed between [!java|scala|c]the "
@@ -1555,26 +1538,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:28
-#, fuzzy
-#| msgid ""
-#| "In [!thelang], the blocks of code are [!java|scala|c]enclosed between "
-#| "curly brackets: a { sign opens the block, while a } sign closes it.  "
-#| "White spaces are not important[/!][!java|c].[/!][!scala], provided that "
-#| "your instructions are still separated with a semi-column or an end of "
-#| "line.[/!] [!java|scala|c]It is still very important to correctly indent "
-#| "your code to keep it readable.[/!] [!python]marked by the indentation: "
-#| "every lines that are a bit shifted to the right with white spaces belong "
-#| "to the block. Quite often, people use 4 spaces for indentation, but it "
-#| "works if you use more or less spaces. Simply, any lines of the block must "
-#| "use the same amount of spaces.  The end of Python code blocks are not "
-#| "marked by any specific char.  Indenting lines starts a block and "
-#| "unindenting ends it. Do not forget the colon (:) at the end of the "
-#| "<code>if</code> line, python needs it to know that a new block begins. "
-#| "The fact that python relies on indentation to delimit blocks is a very "
-#| "good property for beginners: it will force your to adhere to strict code "
-#| "presentation standards.[/!] It is very easy to get lost in your own code "
-#| "if it's not properly indented, so you want to clean it up so that working "
-#| "on your code remains pleasant and productive."
 msgid ""
 "In [!thelang], the blocks of code are [!java|scala|c]enclosed between curly "
 "brackets: a { sign opens the block, while a } sign closes it.  White spaces "
@@ -1595,7 +1558,7 @@ msgid ""
 "up so that working on your code remains pleasant and productive."
 msgstr ""
 "En [!thelang], les blocs sont \n"
-"[!java|scala]délimités par des accolades : le symbole { commence un bloc "
+"[!java|scala|c]délimités par des accolades : le symbole { commence un bloc "
 "tandis\n"
 "que le symbole } le ferme.  Les caractères blancs ne sont pas pris en \n"
 "compte[/!][!java|c].[/!][!scala], tant que les instructions restent séparées "
@@ -1724,12 +1687,13 @@ msgid ""
 "The condition can also be a call to some particular methods returning a "
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a "
-"wall, and false in the other case."
+"wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case."
 msgstr ""
 "La condition peut également être un appel à certaines méthodes "
 "particulières, dont le résultat est un booléen. Par exemple, la méthode "
 "<tt>estFaceMur()</tt> de la buggle renvoie [!c]1[/!][!java|python|"
-"scala]vrai[/!] si la buggle est face à un mur, et faux sinon."
+"scala]vrai[/!] si la buggle est face à un mur, et [!c]0[/!][!java|python|"
+"scala]faux[/!] sinon."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:80
@@ -1759,12 +1723,12 @@ msgid ""
 "<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if "
 "<tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true, "
 "<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
-"of both propositions cannot be true)."
+"of both propositions cannot be false)."
 msgstr ""
 "<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> est vraie si "
 "<tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</"
 "tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà que "
-"la disjonction des deux propositions est vraie)."
+"la disjonction des deux propositions ne peut pas être fausse)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:89
@@ -4370,7 +4334,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/Extrema.html:2
 msgid "Maxima and Minima"
-msgstr ""
+msgstr "Maximum et minimum"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/maxvalue/Extrema.html:4
@@ -4380,6 +4344,11 @@ msgid ""
 "The returned value is then a positive number.  Beware, you can only do one "
 "traversal of the array to gather all informations that you need."
 msgstr ""
+"Dans cet exercice, vous devez renvoyer la différence entre le maximum (c'est "
+"à dire la plus grande valeur du tableau) et le minimum (c'est à dire la plus "
+"petite des valeurs). La valeur renvoyée est donc un nombre positif. "
+"Attention, vous ne pouvez balayer les valeurs qu'une seule fois pour "
+"récupérer toutes les informations dont vous avez besoin."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
@@ -4577,7 +4546,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/golomb/Golomb.html:2
 msgid "Golomb sequence"
-msgstr ""
+msgstr "La suite de Golomb"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/golomb/Golomb.html:4
@@ -4585,15 +4554,21 @@ msgid ""
 "The Golomb sequence is a non-decreasing integer sequence where a(n) is the "
 "number of times that n occurs in the sequence, with a(1) = 1."
 msgstr ""
+"La suite de Golomb est une suite d'entiers non décroissante où a(n) indique "
+"le nombre de fois où n apparaît dans la suite, avec a(1)=1."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:7
 msgid ""
-"Since a(1)=1, it means that 1 occures only once in the sequence, so a(2) "
-"must be different. Since the sequence is non-decreasing, a(2)  must be "
-"greater than 1, which in turn means that there must be more than one 2 in "
-"the sequence. So a(2)=2."
+"Since a(1)=1, it means that 1 occurs only once in the sequence, so a(2) must "
+"be different. Since the sequence is non-decreasing, a(2)  must be greater "
+"than 1. Since a(2)>1, the digit 2 must appear more than one time in the "
+"sequence. So a(2)=2."
 msgstr ""
+"Puisque a(1)=1, nous savons que 1 n'apparaît qu'une seule fois dans la "
+"suite, ce qui impose à a(2) d'avoir une autre valeur. Comme a(2) est non-"
+"décroissante, cette autre valeur doit être plus grande que 1. Puisque "
+"a(2)>1, le chiffre 2 apparaît plus d'une fois dans la suite. Donc, a(2)=2."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:12
@@ -4601,18 +4576,19 @@ msgid ""
 "Since a(2)=2, there is two 2 in the sequence, so we know the value of a(3). "
 "And so on for the other values of the sequence."
 msgstr ""
+"Puisque a(2)=2, le chiffre 2 apparaît deux fois dans la suite, ce qui nous "
+"donne la valeur de a(3). Et ainsi de suite pour les valeurs suivantes de la "
+"suite."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:15
 msgid "Write a function that computes the Nth element of the sequence."
-msgstr ""
+msgstr "Écrivez une fonction calculant le Nième élément de la suite."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/island/Island.html:2
-#, fuzzy
-#| msgid "BuggleWorld"
 msgid "Buggles' Island"
-msgstr "Le monde des Buggles"
+msgstr "L'île des Buggles"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/island/Island.html:4
@@ -4621,17 +4597,20 @@ msgid ""
 "the country of the Buggles' Islands. She wrote down the altitude every "
 "kilometer during her trip, resulting in a sequence of numbers as follows."
 msgstr ""
+"Vous venez de recevoir les notes de voyage que votre vieille tante a rédigé "
+"lors de ses visites aux Îles des Buggles. Elle a noté l'altitude à chaque "
+"kilomètre pendant son voyage, ce qui donne des suites de nombres comme suit."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/island/Island.html:9
 #, no-wrap
 msgid "0 0 1 1 2 2 1 1 0 1 2 2 1 1 0"
-msgstr ""
+msgstr "0 0 1 1 2 2 1 1 0 1 2 2 1 1 0"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:11
 msgid "Here is a cut of the islands on that path:"
-msgstr ""
+msgstr "Voici une vue en coupe de l'île sur le parcours de votre tante :"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/island/Island.html:14
@@ -4643,42 +4622,49 @@ msgid ""
 "| | | | | | | | | | | | | |\n"
 "0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude on each point\n"
 msgstr ""
+"       /***\\       /*\\         &lt;-- 2 mètres au dessus du niveau de la "
+"mer\n"
+"   /***********\\ /*******\\     &lt;-- 1 mètre au dessus du niveau de la "
+"mer\n"
+"***************************    &lt;-- niveau de la mer\n"
+"| | | | | | | | | | | | | |\n"
+"0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude en chaque point\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:21
 msgid "This example is constituted of four levels of island:"
-msgstr ""
+msgstr "Cet exemple est constitué de quatre niveaux d'île :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:24
 msgid "1 1 2 2 1 1 (the island on the left)"
-msgstr ""
+msgstr "1 1 2 2 1 1 (l'île sur la gauche)"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:25
 msgid "2 2 (the mountain topping the left island)"
-msgstr ""
+msgstr "2 2 (la montagne au sommet de l'île à gauche)"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:26
 msgid "1 2 1 1 (the right island)"
-msgstr ""
+msgstr "1 2 1 1 (l'île de droite)"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:27
 msgid "2 (the mountain on the right)"
-msgstr ""
+msgstr "2 (la montagne sur l'ile à droite)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:30
 msgid "This can also be visualized this way:"
-msgstr ""
+msgstr "Cela peut également être visualisé ainsi :"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/island/Island.html:32
 #, no-wrap
 msgid "0 0(1 1(2 2)1 1)0(1(2)1 1)0"
-msgstr ""
+msgstr "0 0(1 1(2 2)1 1)0(1(2)1 1)0"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:34
@@ -4687,6 +4673,9 @@ msgid ""
 "sequence of altitudes? Actually, there is an iterative and a recursive "
 "solution to that problem."
 msgstr ""
+"Pourriez vous écrire un petit programme calculant le nombre de niveaux "
+"d'îles dans une séquence d'altitudes donnée ? En fait, il existe une "
+"solution itérative et une solution récursive à ce problème."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
@@ -5207,9 +5196,9 @@ msgid ""
 "Writing a method returning a result is not really more work than writing a "
 "method without any result.  [!java|c]You simply have to specify the data "
 "type of expected results before the method name (where we previously had "
-"<code>void</code>).[/!] [!scala]You simply have to add a column (:) after "
-"the parenthesis and write the type of data that your method will return, and "
-"add an equal sign (=). This syntax is actually rather close to defining a "
+"<code>void</code>).[/!] [!scala]You simply have to add a colon (:) after the "
+"parenthesis and write the type of data that your method will return, and add "
+"an equal sign (=). This syntax is actually rather close to defining a "
 "variable, with its type, that is actually a function.[/!] You can use the "
 "<code>return</code> instruction anywhere in your method body to specify that "
 "the computation is done (the method is not further executed), and that the "
@@ -6007,16 +5996,17 @@ msgstr "Buggle Dance Revolution (BDR)"
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"Today is a great day: we will learn the buggles to play Dance Revolution, "
-"this game beloved of some students where the player has to move its feet on "
-"the carpet according to the instructions presented on the screen, and "
-"following the music. But before that, we have some details to study first."
+"After these races, it's time to party! For that, we will learn the buggles "
+"to play Dance Revolution, this game beloved of some students: The player has "
+"to move the feet on the carpet according to the instructions presented on "
+"the screen, and following the music. But before that, we have some details "
+"to study first."
 msgstr ""
-"Aujourd'hui est un grand jour : nous allons apprendre à nos buggles à jouer "
-"à Dance Revolution, ce jeu très prisé de certains étudiants où le joueur "
-"doit bouger sur un tapis prévu à cet effet en fonction des consignes "
-"présentées à l'écran en rythme avec la musique. Mais avant cela, nous avons "
-"quelques détails à étudier."
+"Après toutes ces courses, il est temps de faire la fête ! Pour cela, nous "
+"allons apprendre à nos buggles à jouer à Dance Revolution, ce jeu très prisé "
+"de certains étudiants où le joueur doit bouger sur un tapis prévu à cet "
+"effet en fonction des consignes présentées à l'écran en rythme avec la "
+"musique. Mais avant cela, nous avons quelques détails à étudier."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
@@ -8738,7 +8728,7 @@ msgid ""
 "algorithms is available in the world reference documentation (\"Help\"-&gt;"
 "\"About this world\")."
 msgstr ""
-"Bienvenu dans l'univers des tris. Il permet d'expérimenter avec les "
+"Bienvenue dans l'univers des tris. Il permet d'expérimenter avec les "
 "algorithmes de tri existants. La liste des primitives que vous pouvez "
 "utiliser dans vos programmes est disponible dans la documentation de "
 "référence du monde (Aide / À propos de cet univers)."
@@ -10016,6 +10006,10 @@ msgid ""
 "have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
 "Pancake_sorting#The_identical_pancake_stack)."
 msgstr ""
+"D'autres exercices, comme le tri des cheese nans, avec une pile de nans qui "
+"doivent chacun toucher le grill sur les deux faces pour être bien grillés "
+"(voir  http://en.wikipedia.org/wiki/"
+"Pancake_sorting#The_identical_pancake_stack)."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:2
@@ -10413,16 +10407,29 @@ msgid ""
 "5)/3</i> steps in the worst case, while the naive algorithm requires at most "
 "<i>2n</i> steps. Gates is thus about one third faster in the worst case."
 msgstr ""
+"L'algorithme de Gates que nous avons vu dans l'exercice précédent trie "
+"rapidement les crêpes non brûlées en augmentant constamment la taille de "
+"sous-séquences triées dans la pile. Cela va bien plus vite que l'algorithme "
+"naïf qui déplace à chaque étape la plus grande crêpe en bas de la pile non-"
+"triée. L'algorithme de Gates trie une pile de <i>n</i> crêpes en moins de  "
+"<i>(5n + 5)/3</i> étapes dans le pire des cas là où l'algorithme naïf "
+"nécessite <i>2n</i> étapes. L'algorithme de Gates est donc un tiers plus "
+"rapide dans le pire des cas."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:11
 msgid ""
 "In this exercise, we will explore an adaptation of the same idea to burnt "
 "pancakes. This was first published by David X. Cohen and Manuel Blum. David "
-"Cohen co-founded a few years later the Futurama TV show bursted with jokes "
-"inspired from scientific facts. Definitively, interesting people studied "
-"that little pancake problem..."
+"Cohen co-founded a few years later the Futurama TV show full of mathematical "
+"jokes. Definitively, interesting people studied that little pancake "
+"problem..."
 msgstr ""
+"Dans cet exercice, nous allons explorer une adaptation de la même idée aux "
+"crêpes brûlées. Cet algorithme fut tout d'abord publié par David X. Cohen et "
+"Manuel Blum. Quelques années après, David Cohen lançait avec un ami la série "
+"Futurama, remplie de blagues mathématiques. Décidément, ce petit problème de "
+"crêpes a inspiré des gens intéressant..."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:16
@@ -10430,6 +10437,8 @@ msgid ""
 "The Cohen's algorithm is slightly easier than the Gates' one since it "
 "distinguishes less cases:"
 msgstr ""
+"L'algorithme de Cohen est un peu plus simple que celui de Gates, car il "
+"distingue moins de cas :"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:18
@@ -10439,16 +10448,22 @@ msgid ""
 "upside down, unless <i>p = n</i> (in which case there is no <i>p + 1</i> "
 "pancake)."
 msgstr ""
+"<b>Cas 1 :</b> Au moins une crêpe est à l'endroit dans la pile. Soit <i>p</"
+"i> la plus grande des crêpes à l'endroit. Notez que <i>p + 1</i> est donc "
+"forcément à l'envers, à moins que <i>p = n</i> (auquel cas il n'y a pas de "
+"crêpe <i>p + 1</i>)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:22
 msgid "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
 msgstr ""
+"<b>Cas 1.a :</b> <i>p+1</i> est placée plus bas que <i>p</i> dans la pile."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:23
 msgid "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
 msgstr ""
+"<b>Cas 1.b :</b> <i>p+1</i> est placée plus haut que <i>p</i> dans la pile."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:24
@@ -10458,6 +10473,10 @@ msgid ""
 "position, there is nothing to do. If not, you can move it to the bottom of "
 "the stack in 2 flips:"
 msgstr ""
+"<b>Cas 1.c :</b> Il n'y a pas de crêpe <i>p + 1</i> car <i>p</i> est la plus "
+"grande crêpe de la pile (c'est à dire que <i>p = n</i>). Si la crêpe <i>p</"
+"i> est déjà en position, il n'y a rien à faire. Dans le cas contraire, on "
+"peut l'amener en bas de la pile en deux opérations :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:28
@@ -10469,6 +10488,13 @@ msgid ""
 "Any traversal of the stack must then only consider these pancakes, leaving "
 "alone the ones that are already in position at the bottom of the stack."
 msgstr ""
+"<b>Le truc est que la crêpe <i>p</i> ne doit plus jamais être considérée "
+"après cela.</b> Dans le cas contraire, vous allez considérer cette crêpe "
+"encore et encore puisqu'elle est à l'endroit et que c'est la plus grande des "
+"crêpes. Pour la laisser en paix, vous devez garder trace de la taille de la "
+"pile restant à trier. Tout balayage de la pile de crêpes doit se limiter aux "
+"crêpes restant à trier, sans considérer celles étant déjà en position en bas "
+"de la pile."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:36
@@ -10476,6 +10502,8 @@ msgid ""
 "<b>Case 2:</b> All pancakes are downside. Again, we distinguish two sub-"
 "cases."
 msgstr ""
+"<b>Cas 2 :</b> Toutes les crêpes sont à l'envers. À nouveau, nous "
+"distinguons deux sous-cas."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:39
@@ -10484,6 +10512,9 @@ msgid ""
 "higher than <i>p</i> (if there is several such <i>p</i>, take the largest "
 "one)."
 msgstr ""
+"<b>Cas 2.a :</b> Il y a au moins une crêpe <i>p</i> pour laquelle <i>p+1</i> "
+"est placée au dessus de <i>p</i> dans la pile (s'il y a plusieurs tels <i>p</"
+"i>, prenez le plus grand)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:43
@@ -10491,6 +10522,8 @@ msgid ""
 "<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
 "that case, we must have that setting:"
 msgstr ""
+"<b>Cas 2.b:</b> Chaque crêpe <i>p</i> est placée plus bas que sa crêpe <i>p"
+"+1</i>. Dans ce cas, nous avons forcément la situation suivante :"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:48
@@ -10499,6 +10532,10 @@ msgid ""
 "we need to achieve n joins to sort the stack, we can sort the stack in "
 "<i>2n</i> steps if case 2.b does not occurs."
 msgstr ""
+"Dans les cas 1 ou 2.a, nous pouvons fusionner deux crêpes qui doivent se "
+"suivre en deux opérations. Puisque nous devons réaliser n fusions de ce "
+"genre pour trier la pile, nous pouvons trier la pile en <i>2n</i> opérations "
+"si le cas 2.b n'arrive jamais."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:51
@@ -10507,8 +10544,14 @@ msgid ""
 "possible to achieve a join in only 2 flips.  But fortunately, we can "
 "leverage the very specific setting of the stack in that case to provide the "
 "following algorithm.  It sorts a stack in that exact configuration after "
-"exactly 2n steps."
+"exactly <i>2n</i> steps."
 msgstr ""
+"Ce cas 2.b nécessite un traitement particulier puisqu'il est impossible de "
+"fusionner deux crêpes qui doivent se suivre en deux étapes seulement. Fort "
+"heureusement, une seule configuration de pile rentre dans ce cas de figure. "
+"Nous pouvons alors utiliser l'algorithme suivant, conçu pour tirer partie de "
+"cette configuration. Cet algorithme trie alors toute la pile en exactement "
+"<i>2n</i> opérations."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/CohenPancake.html:56
@@ -10518,6 +10561,9 @@ msgid ""
 "    Flip the whole stack of n pancakes\n"
 "    Flip the top (n-1) pancakes\n"
 msgstr ""
+"Répéter n fois\n"
+"    Inverser toute la pile de n crêpes \n"
+"    Inverser les (n-1) crêpes placées au sommet de la pile\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:61
@@ -10525,19 +10571,24 @@ msgid ""
 "It may sound somehow magic, but it actually works, as depicted on an example "
 "below."
 msgstr ""
+"Cela peut sembler un peu magique, mais cela fonctionne. Le dessin ci-dessous "
+"montre même comment."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:65
 msgid ""
 "So, all in all, the Cohen algorithm manages to sort the stack of burnt "
 "pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
-"algorithm that requires <i>3n</i> steps."
+"algorithm for burnt pancakes that requires <i>3n</i> steps."
 msgstr ""
+"Donc, dans tous les cas, l'algorithme de Cohen parvient à trier une pile de "
+"crêpes brûlées en <i>2n</i> étapes, dans tous les cas. C'est mieux que "
+"l'algorithme naïf pour crêpes brûlées, qui nécessite <i>3n</i> étapes."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:68
 msgid "I cannot get it right."
-msgstr ""
+msgstr "Je n'y arrive pas."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:69
@@ -10549,6 +10600,14 @@ msgid ""
 "displayed world. In particular, it may help to print textually the state of "
 "the world each time you enter the main loop."
 msgstr ""
+"Pas de panique, cet exercice est très difficile, et il est donc normale de "
+"ne pas y parvenir du premier coup. Ajouter des affichages à votre code pour "
+"voir les différentes étapes, et ainsi comprendre le moment où votre "
+"algorithme cesse de se comporter correctement. Assurez vous d'utiliser la "
+"méthode <code>isSelected()</code> pour que vos affichages n'aient lieu que "
+"pour le monde en cours d'affichage. En particulier, cela peut aider "
+"d'afficher textuellement l'état du monde à chaque fois que vous entrez dans "
+"la boucle principale."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:2
@@ -15006,6 +15065,8 @@ msgid ""
 "At each step of the simulation, the player issues a command controlling how "
 "much the angle and thrust of the lander should change"
 msgstr ""
+"À chaque pas de la simulation, le joueur donne des commandes contrôlant "
+"l'angle et la poussée du module d'alunissage."
 
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:10
@@ -15016,15 +15077,19 @@ msgstr "Idées d'exercices à ajouter à la progression proposée :"
 #: src/lessons/lander/Main.html:12
 msgid ""
 "A lander in vertical position above flat ground, the player can only control "
-"thrust"
+"thrust (done)"
 msgstr ""
+"Un alunisseur en position verticale au dessus d'un sol plat. Le joueur ne "
+"peut régler que la poussée (c'est fait)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:14
 msgid ""
 "A lander in vertical position not above flat ground, the player control "
-"thrust and angle"
+"thrust and angle (done)"
 msgstr ""
+"Un alunisseur en position verticale pas au dessus d'un sol plat. Le joueur "
+"peut régler la poussée et l'angle (c'est fait)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:16
@@ -15032,6 +15097,8 @@ msgid ""
 "A lander with difficult angle and speed not above flat ground, the player "
 "control thrust and angle"
 msgstr ""
+"Un alunisseur avec un angle et une vitesse difficile, pas au dessus d'un sol "
+"plat. Le joueur contrôle la poussée et l'angle."
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:18
@@ -15039,11 +15106,14 @@ msgid ""
 "A lander with difficult angle and speed not above flat ground, with "
 "difficult ground, the player control thrust and angle"
 msgstr ""
+"Un alunisseur avec un angle et une vitesse difficile, pas au dessus d'un sol "
+"plat dans une configuration difficile. Le joueur contrôle la poussée et "
+"l'angle."
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:20
 msgid "Same with wind?"
-msgstr ""
+msgstr "La même chose avec du vent ?"
 
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
@@ -15059,49 +15129,44 @@ msgid ""
 "given the lander's position, speed, angle and thrust and must issue a "
 "command adjusting its angle and thrust."
 msgstr ""
+"Dans cet univers, vous contrôlez un module d'alunissage. À chaque pas de la "
+"simulation, vous avez accès à la position du module, sa vitesse, son angle "
+"et la poussée de son moteur. Vous devez alors décider de l'angle et de la "
+"poussée pour l'étape suivante. "
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:12
-#| msgid "Returns the current position of the turtle."
 msgid "Get the X and Y position of the lander."
 msgstr "Retourne la position en X et Y du module d'alunissage."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:13
 #, no-wrap
-#| msgid ""
-#| "[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
-#| "[!java|c]double [/!]getY()[!scala]:Double[/!]"
 msgid ""
 "[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
 "[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
 msgstr ""
-"[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
+"[!java|c]double [/!]getVitesseX()[!scala]:Double[/!]\n"
+"[!java|c]double [/!]getVitesseY()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:15
 msgid "Get the horizontal and vertical speed of the lander."
-msgstr ""
+msgstr "Obtenir les vitesses horizontale et verticale du module."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:17
 #, no-wrap
-#| msgid ""
-#| "[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
-#| "[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgid ""
 "[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
 "[!java|c]void [/!]setDesiredAngle([!java|c]double "
 "[/!]desiredAngle[!scala]:Double[/!])"
 msgstr ""
 "[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
-"[!java|c]void [/!]setDesiredAngle([!java|c]double "
-"[/!]angle[!scala]:Double[/!])"
+"[!java|c]void [/!]setAngleDesire([!java|c]double [/!]angle[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:19
-#| msgid "Returns the color of the given line."
 msgid "Get or set the angle of the lander."
 msgstr "Retourne ou fixe l'angle du module d'alunissage."
 
@@ -15113,21 +15178,25 @@ msgid ""
 "left-leaning lander, a negative angle a right-leaning one. You cannot lean "
 "more than by ±90°, and the angle can vary by at most ±5° in one step."
 msgstr ""
+"Un angle de O° dénote une position verticale, avec le sommet du module "
+"dirigé vers le haut. C'est l'angle avec lequel vous devez vous poser. Un "
+"angle positif indique que le module penche vers la gauche tandis qu'un angle "
+"négatif indique au contraire qu'il penche à droite. Il est impossible de se "
+"pencher à plus de ±90°, et on ne peut pas pencher le module de plus de ±5° "
+"en une fois."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:25
-#, fuzzy, no-wrap
-#| msgid "[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
+#, no-wrap
 msgid ""
 "[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
 "[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
 msgstr ""
-"[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
-"[/!]y[!scala]:Int[/!])"
+"[!java|c]int [/!]getPoussee()[!scala]:Int[/!]\n"
+"[!java|c]void [/!]setPousseeDesiree([!java|c]int [/!]poussée[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:27
-#| msgid "Returns the color of the given line."
 msgid "Get or set the thrust of the lander."
 msgstr "Retourne ou fixe la poussée du module."
 
@@ -15139,11 +15208,15 @@ msgid ""
 "the next step. If you ask for less than 0 (resp. more than 4), everything "
 "will be as if you had asked for 0 (resp. 4)."
 msgstr ""
+"Vous ne pouvez incrémenter ou décrémenter la poussée que d'une unité à "
+"chaque fois. Si votre poussée actuelle est de 2 et que vous demandez une "
+"poussée de 4, vous n'obtiendrez que 3 au prochain pas de temps. Si vous "
+"demandez moins que 0 (ou plus que 4), tout se passera comme si vous "
+"demandiez 0 (ou 4)."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:33
 #, no-wrap
-#| msgid "[!java|c]int [/!]getX()[!scala]:Int[/!]"
 msgid "[!java|c]int [/!]getFuel()[!scala]:Int[/!]"
 msgstr "[!java|c]int [/!]getFuel()[!scala]:Int[/!]"
 
@@ -15154,11 +15227,37 @@ msgid ""
 "lander consumes as many fuel units as the current thrust. Once you run out "
 "of fuel you're in free fall so beware!"
 msgstr ""
+"Obtient la quantité de fuel restant dans le réservoir. À chaque pas de "
+"simulation, le module consomme entre 0 et 4 unités de fuel, en fonction de "
+"sa poussée. Une fois que vous avez utilisé tout votre carburant, vous êtes "
+"en chute libre alors prenez garde !"
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:38
+#, no-wrap
+msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
+msgstr "[!java]List&lt;Point&gt; [/!]getSol()[! scala]:List[Point][/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:39
+msgid ""
+"Get the vertices of the ground's profile from left to right.  [!java|"
+"scala]You can retrieve the X and Y coordinates of each point with the "
+"corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
+"code>.[!/] [!python]Each point is an array of two integers denoting "
+"respectively the X and Y coordinates of that point.[/!]"
+msgstr ""
+"Obtenir les points du sol de gauche à droite. "
+"[!java|scala]Vous pouvez retrouver les coordonnées X et Y de chaque point "
+"avec les méthodes correspondantes de votre point : <code>p.x()</code> et <"
+"code>p.y()</code>.[!/] "
+"[!python]Chaque point est un tableau de deux entiers représentant "
+"respectivement les coordonnées X et Y de chaque point.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:2
 msgid "Lander 101"
-msgstr ""
+msgstr "Se poser pour les nuls"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:4
@@ -15167,6 +15266,9 @@ msgid ""
 "kind enough to donate the Lunar Excursion Module for this mission, so that's "
 "what you'll be flying."
 msgstr ""
+"Bravo ! Vous avez gagné dans une boîte de céréales un voyage (aller simple) "
+"pour Mars. La NASA vous a même fourni un module d'excursion lunaire pour "
+"l'occasion, et c'est donc avec ce véhicule que vous voyagerez."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:8
@@ -15175,6 +15277,9 @@ msgid ""
 "shouldn't have to fly the lander if all goes as planned but, as they say, "
 "\"better safe than sorry\"."
 msgstr ""
+"Avant le décollage, vous devez vous entraîner sur simulateur aux bases de "
+"l'alunissage. Si tout se passe comme prévu, vous ne devriez pas avoir à "
+"voler en mode manuel, mais mieux vaut prévenir que guérir, comme ils disent."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:12
@@ -15184,6 +15289,12 @@ msgid ""
 "adjusting its angle or by adjusting its thrust. In this simulation we only "
 "care about adjusting the thrust, expressed in m/s²."
 msgstr ""
+"Votre mission est de <b>poser le module avec une vitesse verticale inférieure "
+"à 10 m/s</b>. "
+"Il y a deux façons d'influer sur la trajectoire du module : en modifiant son "
+"angle, ou en réglant la poussée de son moteur. "
+"Dans cette simulation, nous ne nous intéressons qu'à la poussée, exprimée en "
+"m/s²."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:17
@@ -15198,6 +15309,18 @@ msgid ""
 "the next step. If you ask for less than 0 (resp. more than 4), everything "
 "will be as if you had asked for 0 (resp. 4)."
 msgstr ""
+"Vous devez écrire le corps de la fonction <code>step()</code>, qui sera "
+"appelée tous les dixièmes de seconde pendant la simulation. "
+"Elle doit ajuster la poussée du moteur en utilisant la fonction <code>"
+"[!java]void "
+"[/!]setPouseeDesiree([!java]int [/!]poussee[!scala]:Integer[/!])</"
+"code> où <code>poussee</code> est un entier entre 0 et 4. "
+"Vous ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas "
+"de la simulation. "
+"Ainsi, si la poussée du moteur est actuellement de 2 et que vous demandez 4, "
+"vous n'aurez que 3 à la prochaine étape. "
+"Si vous demandez une valeur inférieure à 0 (ou supérieure à 4), tout se "
+"passera comme si vous aviez demandé 0 (ou 4)."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:27
@@ -15210,6 +15333,18 @@ msgid ""
 "Integer[/!]</code> in case you don't remember what you asked for. Remember "
 "that Mars' gravity is 3.711 m/s², it might come in handy."
 msgstr ""
+"Afin de prendre des décisions informées, vous pouvez demander des "
+"informations sur l'état actuel du module. "
+"Dans cette simulation, vous ne serez probablement intéressé que par sa "
+"position verticale (accessible grâce à "
+"<code>[!java]double [/!]getY()[!scala]:Double[/!]</code>) et sa vitesse "
+"verticale (accessible grâce à "
+"<code>[!java]double [/!]getVitesseY()[!scala]:Double[/!]</code>). "
+"Vous pouvez également demander la poussée actuelle du moteur (avec <code>"
+"[!java]int [/!]getPoussee()[!scala]:"
+"Integer[/!]</code>) si vous avez oublié ce que vous avez demandé. "
+"Rappelez vous que la gravité martienne est de 3.711 m/s², cela peut vous être "
+"utile."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:35
@@ -15220,11 +15355,19 @@ msgid ""
 "can consult the remaining amount of available fuel units using <code>[!"
 "java]int [/!]getFuel()[!scala]:Integer[/!]</code>."
 msgstr ""
+"Une dernière chose : le module est plutôt petit, et vous n'avez pas tant de "
+"carburant que cela. "
+"À chaque pas de simulation, il consomme autant d'unité de carburant que la "
+"poussée actuelle "
+"du moteur. Si vous tombez en panne sèche, vous serez en chute libre alors "
+"attention ! "
+"Vous pouvez consulter le niveau du réservoir avec <code>[!java]int "
+"[/!]getFuel()[!scala]:Integer[/!]</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:2
 msgid "Locate a Landing Zone"
-msgstr ""
+msgstr "Repérer une zone plate"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:4
@@ -15232,6 +15375,8 @@ msgid ""
 "After 200 days of traveling space and eating cereals you finally reach Mars. "
 "Time to land at last!"
 msgstr ""
+"Après 200 jours de voyage intersidéral à manger des céréales, vous êtes enfin "
+"parvenu à la planète rouge. Il est enfin temps de se poser !"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
@@ -15285,11 +15430,13 @@ msgstr ""
 msgid ""
 "Have a safe landing! Don't forget to put on your space suit on your way out."
 msgstr ""
+"Bon alunissage ! N'oubliez pas de mettre votre combinaison spatiale en "
+"sortant."
 
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:2
 msgid "Fly the Lander!"
-msgstr ""
+msgstr "Aux commandes du module"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:4
@@ -15297,6 +15444,8 @@ msgid ""
 "After 30 days of staring at rocks and eating cereals you decide it's time to "
 "go explore other parts of the planet."
 msgstr ""
+"Après 30 jours à regarder des cailloux en mangeant des céréales, vous "
+"décidez qu'il est temps d'aller explorer d'autres coins de cette planète."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:7
@@ -15307,15 +15456,36 @@ msgid ""
 "lander on a flat zone with a vertical speed less than 10 m/s, an horizontal "
 "speed less than 5 m/s and an angle of 0°.</b>"
 msgstr ""
+"Vous volez un moment, avant de réaliser soudain que vous êtes presque à "
+"court d'essence. Le pilote automatique est malheureusement inutile dans ce "
+"genre de situation périlleuse, et vous allez devoir vous poser en mode "
+"manuel. Votre mission et de vous <b>poser sur une zone plate, avec une "
+"vitesse verticale inférieure à 10 m/s, une vitesse horizontale inférieure à "
+"5 m/s et un angle de 0°</b>."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:13
+#| msgid ""
+#| "You must define two functions: <code>[!java]void [/!]initialize()</code> "
+#| "and <code>[!java]void [/!]step()</code>. <code>initialize()</code> is "
+#| "called once just after you press \"Run\". You can use it for chosing some "
+#| "flat zone. As before, <code>step()</code> is called every 0.1 second and "
+#| "is used for adjusting the lander's thrust and angle. As in the first "
+#| "exercise the lander's thrust is adjusted via <code>[!java]void "
+#| "[/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</"
+#| "code>.  But you can also control its angle via <code>[!java]void "
+#| "[/!]setDesiredAngle([!java]double [/!]desiredAngle[!scala]:Double[/!])</"
+#| "code>.  An angle of 0° denotes a vertical position where the \"head\" of "
+#| "the lander points up.  This is the angle you must land with. A positive "
+#| "angle denotes a left-leaning lander, a negative angle a right-leaning "
+#| "one. You cannot lean more than by ±90°, and the angle can vary by at most "
+#| "±5° in one step."
 msgid ""
 "You must define two functions: <code>[!java]void [/!]initialize()</code> and "
 "<code>[!java]void [/!]step()</code>. <code>initialize()</code> is called "
-"once just after you press \"Run\". You can use it for chosing some flat "
-"zone. As before, <code>step()</code> is called every 0.1 second and is used "
-"for adjusting the lander's thrust and angle. As in the first exercise the "
+"once just after you press \"Run\". You can use it to chose some flat zone. "
+"As before, <code>step()</code> is called every 0.1 second and is used for "
+"adjusting the lander's thrust and angle. As in the first exercise the "
 "lander's thrust is adjusted via <code>[!java]void [/!]setDesiredThrust([!"
 "java]int [/!]desiredThrust[!scala]:Integer[/!])</code>.  But you can also "
 "control its angle via <code>[!java]void [/!]setDesiredAngle([!java]double "
@@ -15325,15 +15495,39 @@ msgid ""
 "negative angle a right-leaning one. You cannot lean more than by ±90°, and "
 "the angle can vary by at most ±5° in one step."
 msgstr ""
+"Vous devez définir deux fonctions : <code>[!java]void [/!]initialize()</"
+"code> et <code>[!java]void [/!]step()</code>. <code>initialize()</code> est "
+"appelée au moment où l'on appuie sur le bouton «Exécuter». Vous pouvez "
+"l'utiliser pour choisir une zone plate. Comme avant, <code>step()</code> est "
+"appelée tous les dixièmes de seconde pour vous permettre d'ajuster la "
+"poussée (avec la fonction  <code>[!java]void [/!]setPousseedesiree([!"
+"java]int [/!]poussee[!scala]:Integer[/!])</code>). Vous pouvez également "
+"contrôler l'angle du module avec la fonction <code>[!java]void "
+"[/!]setAngleDesire([!java]double [/!]angle[!scala]:Double[/!])</code>. Un "
+"angle de O° dénote une position verticale, avec le sommet du module dirigé "
+"vers le haut. C'est l'angle avec lequel vous devez vous poser. Un angle "
+"positif indique que le module penche vers la gauche tandis qu'un angle "
+"négatif indique au contraire qu'il penche à droite. Il est impossible de se "
+"pencher à plus de ±90°, et on ne peut pas pencher le module de plus de ±5° "
+"en une fois."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:26
+#| msgid ""
+#| "As in the previous lesson, <code>[!java]List&lt;Point&gt; [/!]getGround()"
+#| "[!scala]:List[Point][/!]</code> returns the vertices of the ground's "
+#| "profile from left to right.  Please refer to the documentation (Help/"
+#| "About this world) for a reference manual of your lunar lander."
 msgid ""
-"As in the previous lesson, <code>[!java]List&lt;Point&gt; [/!]getGround()[!"
+"As in the previous exercise, <code>[!java]List&lt;Point&gt; [/!]getGround()[!"
 "scala]:List[Point][/!]</code> returns the vertices of the ground's profile "
 "from left to right.  Please refer to the documentation (Help/About this "
 "world) for a reference manual of your lunar lander."
 msgstr ""
+"Comme dans les exercices précédents, <code>[!java]List&lt;Point&gt; "
+"[/!]getSol()[!scala]:List[Point][/!]</code> retourne les points qui "
+"composent l'horizon. Le manuel de référence de votre module est disponible "
+"dans la documentation (Aide/À propos de ce monde)."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:30
@@ -15341,11 +15535,14 @@ msgid ""
 "As before, your program must safely land the lander in all the situations "
 "encountered so far in addition to this new one."
 msgstr ""
+"Comme d'habitude, votre programme doit se poser sans heurt dans toutes les "
+"situations que nous avons rencontré jusqu'à présent, ainsi que dans ce "
+"nouveau cas."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:33
 msgid "Good luck, try not to crash!"
-msgstr ""
+msgstr "Bonne chance. Essayez de ne vous scratcher ;)"
 
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1
