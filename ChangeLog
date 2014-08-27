@@ -13,6 +13,9 @@
   * Pedagogical content:
     - welcome: move the BDR after the races so that students know
       about variables when attempting them (fix #106).
+  * Internal organization:
+    - Move the logic related to a given programming language to a
+      central class. This should make it easier to add new languages.
 
 20140821: Release 2.4-beta1
 
