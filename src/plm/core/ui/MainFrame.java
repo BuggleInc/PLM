@@ -480,7 +480,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         helpMeButton = new PropagatingToggleButton(new HelpMe(g, i18n.tr("Call for Help"),
                 ResourcesCache.getIcon("img/btn-alert-off.png")));
         if (Game.getProperty(Game.PROP_PROGRESS_APPENGINE,"false",true).equals("false")) // Turned off
-        	helpMeButton.setEnabled(false);
+        	helpMeButton.setEnabled(true);
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
