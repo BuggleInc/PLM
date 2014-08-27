@@ -1177,7 +1177,7 @@ msgstr ""
 "ligne[/!].\n"
 "L'exemple ci-dessus de recette s'écrirait donc à peu près comme ci-"
 "dessous. \n"
-"[!python|scala] (vous pouvez aussi ajouter des points-virgules en fin de "
+"[!python|scala] (Vous pouvez aussi ajouter des points-virgules en fin de "
 "lignes, mais ce n'est pas indispensable)[/!]."
 
 #. type: Content of: <pre>

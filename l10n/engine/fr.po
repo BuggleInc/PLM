@@ -1223,12 +1223,12 @@ msgid ""
 "Congratulations, you passed this exercise.\n"
 "{0} tests passed."
 msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
+"Félicitations, vous avez réussi cet exercice.\n"
 "{0} tests passés."
 
 #: src/plm/core/ui/ExercisePassedDialog.java:56
 msgid "Congratulations, you passed this exercise."
-msgstr "Félicitation, vous avez réussi cet exercice."
+msgstr "Félicitations, vous avez réussi cet exercice."
 
 #: src/plm/core/ui/ExercisePassedDialog.java:66
 #, java-format
@@ -1237,7 +1237,7 @@ msgid ""
 "({0} tests passed)\n"
 "Which exercise will you do now?"
 msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
+"Félicitations, vous avez réussi cet exercice.\n"
 "({0} tests passés)\n"
 "Par quel exercice voulez vous continuer ?"
 
@@ -1246,7 +1246,7 @@ msgid ""
 "Congratulations, you passed this exercise.\n"
 "Which exercise will you do now?"
 msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
+"Félicitations, vous avez réussi cet exercice.\n"
 "Par quel exercice voulez vous continuer ?"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:79
