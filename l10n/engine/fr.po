@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 23:17+0200\n"
-"PO-Revision-Date: 2014-08-26 23:18+0200\n"
-"Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
-"Language-Team: Martin.quinson@loria.fr\n"
+"POT-Creation-Date: 2014-08-27 16:23+0200\n"
+"PO-Revision-Date: 2014-08-27 16:26+0200\n"
+"Last-Translator: Martin Quinson\n"
+"Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: src/lessons/maze/island/IslandMazeEntity.java:10
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:10
@@ -762,45 +762,6 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/plm/core/model/LessonRunner.java:95
-#, java-format
-msgid ""
-"Congratulations, you passed this exercise.\n"
-"{0} tests passed."
-msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
-"{0} tests passés."
-
-#: src/plm/core/model/LessonRunner.java:97
-#: src/plm/core/model/LessonRunner.java:103
-#: src/plm/core/model/LessonRunner.java:113
-#: src/plm/core/model/LessonRunner.java:119
-msgid "Exercice passed \\o/"
-msgstr "Exercice réussi \\o/"
-
-#: src/plm/core/model/LessonRunner.java:101
-msgid "Congratulations, you passed this exercise."
-msgstr "Félicitation, vous avez réussi cet exercice."
-
-#: src/plm/core/model/LessonRunner.java:111
-#, java-format
-msgid ""
-"Congratulations, you passed this exercise.\n"
-"({0} tests passed)\n"
-"Which exercise will you do now?"
-msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
-"({0} tests passés)\n"
-"Par quel exercice voulez vous continuer ?"
-
-#: src/plm/core/model/LessonRunner.java:118
-msgid ""
-"Congratulations, you passed this exercise.\n"
-"Which exercise will you do now?"
-msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
-"Par quel exercice voulez vous continuer ?"
-
 #: src/plm/core/model/Users.java:113
 #, java-format
 msgid "User {0} exists already; don't add it again."
@@ -1116,6 +1077,7 @@ msgstr "Licence"
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
+#: src/plm/core/ui/ExercisePassedDialog.java:107
 msgid "Close"
 msgstr "Fermer"
 
@@ -1246,6 +1208,114 @@ msgstr "Détails >>"
 #: src/plm/core/ui/ExerciseFailedDialog.java:84
 msgid "Details <<"
 msgstr "Détails <<"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:35
+msgid "Exercice passed \\o/"
+msgstr "Exercice réussi \\o/"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:44
+msgid "Congrats"
+msgstr "Bravo"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:53
+#, java-format
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"{0} tests passed."
+msgstr ""
+"Félicitation, vous avez réussi cet exercice.\n"
+"{0} tests passés."
+
+#: src/plm/core/ui/ExercisePassedDialog.java:56
+msgid "Congratulations, you passed this exercise."
+msgstr "Félicitation, vous avez réussi cet exercice."
+
+#: src/plm/core/ui/ExercisePassedDialog.java:66
+#, java-format
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"({0} tests passed)\n"
+"Which exercise will you do now?"
+msgstr ""
+"Félicitation, vous avez réussi cet exercice.\n"
+"({0} tests passés)\n"
+"Par quel exercice voulez vous continuer ?"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:69
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"Which exercise will you do now?"
+msgstr ""
+"Félicitation, vous avez réussi cet exercice.\n"
+"Par quel exercice voulez vous continuer ?"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:79
+msgid "Give feedback"
+msgstr "Exprimez-vous"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:82
+msgid ""
+"Please help us to improve this exercise by filling this little evaluation."
+msgstr ""
+"Aidez nous à améliorer cet exercice en remplissant cette petite évaluation."
+
+#: src/plm/core/ui/ExercisePassedDialog.java:84
+msgid "Difficulty:"
+msgstr "Difficulté :"
+
+#. Difficulties are the text presented to the user while difficultiesEN are the one that will be added to the report
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "(please choose)"
+msgstr "(choisissez)"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Too easy"
+msgstr "Trop simple"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Easy"
+msgstr "Simple"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Just right"
+msgstr "Juste bien"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Difficult"
+msgstr "Difficile"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:87
+msgid "Too difficult"
+msgstr "Trop difficile"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:92
+msgid "Interest:"
+msgstr "Intérêt :"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Really good"
+msgstr "Très bien"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Amusing"
+msgstr "Amusant"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Just okay"
+msgstr "Acceptable"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Boring"
+msgstr "Ennuyeux"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:94
+msgid "Really bad"
+msgstr "Très mauvais"
+
+#: src/plm/core/ui/ExercisePassedDialog.java:99
+msgid "Free comments on that exercise:"
+msgstr "Commentaires libres sur cet exercice :"
 
 #: src/plm/core/ui/ExerciseView.java:94 src/plm/core/ui/ExerciseView.java:162
 #: src/plm/core/ui/ExerciseView.java:219
