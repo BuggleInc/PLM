@@ -97,14 +97,21 @@ public class HelpMe extends AbstractGameAction {
 				case "KO":
 					String message = (String) map.get("message");
 					System.out.println(message);
+					if(isRequestingHelp) {
+						Game.getInstance().fireCallForHelpSpy();
+					} else {
+						Game.getInstance().fireCancelCallForHelpSpy();
+					}
 					isRequestingHelp = ! isRequestingHelp;
 					break;
 				case "OK":
 					if(map.containsKey("callID")) {
 						lastCallID = Long.parseLong((String) map.get("callID"));
 						System.out.println(i18n.tr("Asking to the teacher for help"));
+						Game.getInstance().fireCallForHelpSpy();
 					} else {
 						System.out.println(i18n.tr("Cancel call for help to the teacher"));
+						Game.getInstance().fireCancelCallForHelpSpy();
 					}
 					((JToggleButton) e.getSource()).setText(isRequestingHelp ? i18n.tr("Cancel call") : i18n.tr("Call for Help"));
 					((JToggleButton) e.getSource()).setIcon(ResourcesCache.getIcon("img/btn-alert-" + (isRequestingHelp ? "on" : "off") + ".png"));

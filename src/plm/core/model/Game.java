@@ -848,6 +848,18 @@ public class Game implements IWorldView {
 			l.executed(exo);
 		}
 	}
+	
+	public void fireCallForHelpSpy() {
+		for (ProgressSpyListener l : this.progressSpyListeners) {
+			l.callForHelp();
+		}
+	}
+	
+	public void fireCancelCallForHelpSpy() {
+		for (ProgressSpyListener l : this.progressSpyListeners) {
+			l.cancelCallForHelp();
+		}
+	}
 
 	@Override
 	public void worldHasChanged() {
