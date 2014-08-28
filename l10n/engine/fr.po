@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-27 16:23+0200\n"
-"PO-Revision-Date: 2014-08-27 16:26+0200\n"
+"POT-Creation-Date: 2014-08-29 00:51+0200\n"
+"PO-Revision-Date: 2014-08-29 00:51+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -695,7 +695,7 @@ msgstr "Opération annulée par l'utilisateur"
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:946
+#: src/plm/core/model/Game.java:958
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
@@ -704,11 +704,11 @@ msgstr ""
 "PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:947
+#: src/plm/core/model/Game.java:959
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:951
+#: src/plm/core/model/Game.java:963
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
@@ -718,11 +718,11 @@ msgstr ""
 "python.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:952
+#: src/plm/core/model/Game.java:964
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:956
+#: src/plm/core/model/Game.java:968
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
@@ -731,11 +731,11 @@ msgstr ""
 "Veuillez installer C et ses dépendances pour utiliser la PLM en C.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:957
+#: src/plm/core/model/Game.java:969
 msgid "C is missing"
 msgstr "C est manquant"
 
-#: src/plm/core/model/Game.java:962
+#: src/plm/core/model/Game.java:974
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -750,15 +750,17 @@ msgstr ""
 "\n"
 "Voulez-vous continuer malgré tout ?"
 
-#: src/plm/core/model/Game.java:966
+#: src/plm/core/model/Game.java:978
 msgid "C is still experimental"
 msgstr "C est encore expérimental"
 
 #: src/plm/core/model/HelpServer.java:27
+#: src/plm/core/ui/action/HelpMe.java:110
 msgid "Asking to the teacher for help"
 msgstr "Demander de l'aide à l'enseignant"
 
 #: src/plm/core/model/HelpServer.java:29
+#: src/plm/core/ui/action/HelpMe.java:113
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
@@ -1076,7 +1078,7 @@ msgid "Copying"
 msgstr "Licence"
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:38
+#: src/plm/core/ui/ExerciseFailedDialog.java:47
 #: src/plm/core/ui/ExercisePassedDialog.java:107
 msgid "Close"
 msgstr "Fermer"
@@ -1169,25 +1171,55 @@ msgstr "{0} exercices sur {1} réussis en {2}."
 msgid "You never attempted this lesson."
 msgstr "Vous n'avez jamais tenté cette leçon."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
-msgid "Mmm, not quite /o\\"
-msgstr "Mmm, pas tout à fait /o\\\\"
-
-#: src/plm/core/ui/ExerciseFailedDialog.java:51
+#. i18n.tr("<i>Practice makes perfect</i>, as they say."),
+#. i18n.tr("<i>To err is human</i>, as they say."),
+#. i18n.tr("You should keep trying until you get it right!"),
+#. i18n.tr("We all learn from our mistakes, so, good job!"),
+#. i18n.tr("We learn from failure, not from success!"),
+#.
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid ""
-"<html>You didn't manage to reach your objective. <br>\n"
+"<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
+"(Einstein)."
+msgstr ""
+"<i>Ceux qui n'ont pas fait d'erreur de leur vie n'ont jamais rien essayé "
+"<br>de nouveau</i> (Einstein)."
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:39
+msgid ""
+"<i>Success does not consist in never making mistakes,<br> but in never "
+"making the same one a second time.</i> (Shaw)"
+msgstr ""
+"<i>La réussite n'est pas de ne jamais faire d'erreur, <br>mais de ne jamais "
+"faire la même deux fois</i>. (Shaw)"
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:42
+msgid "Mmm, not quite"
+msgstr "Mmm, pas tout à fait"
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:60
+#, java-format
+msgid ""
+"<html>You didn''t manage to reach your objective this time. <br>\n"
+"That''s fine. {0}<br>\n"
+"<br>\n"
 "You should graphically compare the final state of your world <br>\n"
 "with the objective to understand the problem. <br>\n"
-"If you don't see the error, check the details below for a <br>\n"
+"<br>\n"
+"If you don''t see the error, check the details below for a <br>\n"
 "textual description of this difference between both worlds.</html>"
 msgstr ""
-"<html>Vous n'avez pas atteint votre objectif. <br>\n"
+"<html>Vous n''avez pas atteint votre objectif cette fois. Ce n''est pas "
+"grave.<br>\n"
+"{0}<br>\n"
+"<br>\n"
 "Vous devriez comparer graphiquement votre monde et celui de <br>\n"
-"l'objectif pour comprendre le problème. <br>\n"
-"Si vous ne voyez pas l'erreur, consultez les détails ci-dessous <br>\n"
-"pour une description textuelle des différences entre les deux mondes.</html>"
+"l''objectif pour comprendre le problème. <br>\n"
+"<br>\n"
+"Si vous ne voyez pas l''erreur, consultez les détails ci-dessous pour<br>\n"
+"une description textuelle des différences entre les deux mondes.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:59
+#: src/plm/core/ui/ExerciseFailedDialog.java:72
 #, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -1200,12 +1232,12 @@ msgstr ""
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:74
-#: src/plm/core/ui/ExerciseFailedDialog.java:81
+#: src/plm/core/ui/ExerciseFailedDialog.java:87
+#: src/plm/core/ui/ExerciseFailedDialog.java:94
 msgid "Details >>"
 msgstr "Détails >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:84
+#: src/plm/core/ui/ExerciseFailedDialog.java:97
 msgid "Details <<"
 msgstr "Détails <<"
 
@@ -1589,7 +1621,7 @@ msgid "Demo"
 msgstr "Démo"
 
 #: src/plm/core/ui/MainFrame.java:480 src/plm/core/ui/MainFrame.java:718
-#: src/plm/core/ui/action/HelpMe.java:37
+#: src/plm/core/ui/action/HelpMe.java:116
 msgid "Call for Help"
 msgstr "Appeler à l'aide"
 
@@ -1684,7 +1716,7 @@ msgstr ""
 "UUID invalide ! Vous pouvez soit copie/coller un identifiant correct, soit "
 "utiliser l'identifiant généré automatiquement."
 
-#: src/plm/core/ui/action/HelpMe.java:37
+#: src/plm/core/ui/action/HelpMe.java:116
 msgid "Cancel call"
 msgstr "Annuler l'appel"
 
@@ -2398,140 +2430,17 @@ msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
 
-#, fuzzy
-#~ msgid "A deleted user is definitely lost if you don''t know its\n"
-#~ msgstr ""
-#~ "Un utilisateur supprimé est définitivement perdu si vous n'avez pas noté "
-#~ "son UUID \n"
-#~ "complet (quelque chose comme 110E8400-E29B-11D4-A716-446655440000).\n"
-#~ "Êtes-vous sûr de vouloir supprimer l''utilisateur {0} ?"
+#~ msgid "<i>Practice makes perfect</i>, as they say."
+#~ msgstr "<i>C'est en forgeant qu'on devient forgeron</i>, comme on dit."
 
-#~ msgid ""
-#~ "Cannot compute the answer from file {0}.{1} since I cannot read it (error "
-#~ "was: {2})."
-#~ msgstr ""
-#~ "Impossible de calculer la réponse à partir du fichier {0}.{1} car il est "
-#~ "illisible (erreur : {2})."
+#~ msgid "<i>To err is human</i>, as they say."
+#~ msgstr "<i>L'erreur est humaine</i>, comme on dit."
 
-#~ msgid "Teacher Console"
-#~ msgstr "Console enseignant"
+#~ msgid "You should keep trying until you get it right!"
+#~ msgstr "Il faut persévérer jusqu'à y parvenir !"
 
-#~ msgid "Add user with an UUID identity"
-#~ msgstr "Ajouter un utilisateur avec un UUID"
+#~ msgid "We all learn from our mistakes, so, good job!"
+#~ msgstr "Nous apprenons tous de nos erreurs, donc bien joué !"
 
-#~ msgid ""
-#~ "No session cloud provider provided (property {0} is {1}). Please update "
-#~ "your property file."
-#~ msgstr ""
-#~ "Aucun fournisseur de cloud pour la session (la propriété {0} vaut {1}). "
-#~ "Veuillez modifier fichier de propriétés."
-
-#~ msgid ""
-#~ "<html>Please remember the following code:<br/><h1>{0}</h1><br/>You will "
-#~ "need it to import your session.</html>"
-#~ msgstr ""
-#~ "<html>Veuillez noter le code suivant :<br/><h1>{0}</h1><br/>Vous en aurez "
-#~ "besoin pour importer votre session.</html>"
-
-#~ msgid "Export success"
-#~ msgstr "Export réussi"
-
-#~ msgid ""
-#~ "<html>Export to cloud failed.<br/>{0}<br/>Caution! Your session is not "
-#~ "saved yet.</html>"
-#~ msgstr ""
-#~ "<html>L''export de votre session dans le cloud a échoué.<br/>{0}<br/"
-#~ ">Attention! Votre session n''est pas encore sauvegardée.</html>"
-
-#~ msgid "Export error"
-#~ msgstr "Erreur d'export"
-
-#~ msgid "Download failed - Please check the code you entered."
-#~ msgstr "Erreur de téléchargement. Veuillez vérifier le code fourni."
-
-#~ msgid "Please enter your personal code to retrieve your session"
-#~ msgstr "Veuillez entrer votre code personnel pour sauvegarder la session"
-
-#~ msgid "Session code"
-#~ msgstr "Code de la session"
-
-#~ msgid "Your session has been successfully imported."
-#~ msgstr "Votre session a été importée avec succès."
-
-#~ msgid "Importation suceeded"
-#~ msgstr "Import réussi"
-
-#~ msgid "Something unexpected went wrong during downloading"
-#~ msgstr "Une erreur inattendue s'est produite pendant le téléchargement."
-
-#, fuzzy
-#~ msgid "A {0} exception occurred while importing your session: {1}"
-#~ msgstr ""
-#~ "Une exception {0} s''est produite lors de l''import de la session: {1}"
-
-#~ msgid "Importation error"
-#~ msgstr "Erreur d'import"
-
-#~ msgid "Export Session Cache to Cloud"
-#~ msgstr "Exporter la session dans le cloud"
-
-#~ msgid "Import Session Cache from Cloud"
-#~ msgstr "Importer la session depuis le cloud"
-
-#~ msgid ""
-#~ "Your progress will be posted to https://twitter.com/jlmlovers This can be "
-#~ "turned off through the property {0}"
-#~ msgstr ""
-#~ "Vos progrès seront postés sur http://twitter.com/jlmlovers Cela peut être "
-#~ "désactivé par la propriété {0}."
-
-#~ msgid ""
-#~ "Your progress will NOT be posted to twitter, as requested by the property "
-#~ "{0}"
-#~ msgstr ""
-#~ "Vos progrès ne seront PAS postés sur twitter, comme demandé par la "
-#~ "propriété {0}."
-
-#~ msgid "(your feedback comes here)"
-#~ msgstr "(votre retour vient ici)"
-
-#, fuzzy
-#~ msgid ""
-#~ "<html><p>Thanks for your feedback on PLM. We deeply need this to make the "
-#~ "tool match <br>your needs, so please don't hesitate to report any "
-#~ "suggestion, such as typos and <br/>unclear parts in the mission texts, "
-#~ "other improvement to the existing exercises<br/>or prospective exercises. "
-#~ "We will do our best to integrate your suggestions.</p><p>Please write "
-#~ "here your suggestion (if possible in english or french), with all<br/"
-#~ ">necessary details, and then click on 'Send' below.</p><p><b>Please "
-#~ "provide your email address so that we can contact you back</b> but <br/"
-#~ ">NEVER DISCLOSE A PASSWORD while reporting issues.</p><p>Note that some "
-#~ "technical information (such as your version of PLM and Java) will <br/"
-#~ ">automatically be added to your feedback. None of these automatic "
-#~ "information <br/>are personal and you still have to identify yourself if "
-#~ "you want to.</p><p>Alternatively, you can use the <a href='http://github."
-#~ "com/oster/PLM/issues'>github interface</a> for feedback.</p></html>"
-#~ msgstr ""
-#~ "<html><p>Merci pour votre retour sur PLM. Nous en avons vraiment besoin "
-#~ "pour<br/>améliorer notre outil et nous assurer qu'il correspond à vos "
-#~ "besoins. N'hésitez<br/>pas à nous signaler toute amélioration possible, "
-#~ "telles que des fautes et des<br/>parties peu claires dans les énoncés, "
-#~ "d'autres améliorations aux exercices<br/>existants, ou des idées "
-#~ "d'exercices supplémentaires. Nous ferons de notre<br/>mieux pour intégrer "
-#~ "vos suggestions.</p><p>Veuillez écrire ici vos suggestions (si possible "
-#~ "en français ou anglais),<br/>avec tous les détails nécessaires, et "
-#~ "cliquez ensuite sur «envoyer».</p><p><b>N'oubliez pas d'indiquer votre "
-#~ "email si vous voulez que nous vous contactions<br/>en retour</b>, mais NE "
-#~ "DONNEZ JAMAIS UN MOT DE PASSE DANS UN FORMULAIRE DE CE GENRE.<br/></"
-#~ "p><p>Notez que certaines données techniques (telles que votre version de "
-#~ "PLM ou de Java)<br/>seront jointes à votre envoi, mais nous ne récoltons "
-#~ "aucune donnée personnelle<br/>de cette façon, et il faut que vous vous "
-#~ "identifiez vous même si vous le souhaitez.</p><p>Une autre façon de "
-#~ "rapporter du feedback sur PLM est d'utiliser <a href='http://github.com/"
-#~ "oster/JLM/issues'>l'interface github</a>.</p></html>"
-
-#~ msgid "setColor(Color.{0})"
-#~ msgstr "setCouleur(Color.{0})"
-
-#~ msgid "Buggle Color"
-#~ msgstr "Couleur de la buggle"
+#~ msgid "We learn from failure, not from success!"
+#~ msgstr "Nous apprenons de nos échecs, pas de nos succès !"

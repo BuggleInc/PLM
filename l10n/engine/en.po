@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-27 16:23+0200\n"
+"POT-Creation-Date: 2014-08-29 00:51+0200\n"
 "PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -588,39 +588,39 @@ msgstr "Operation cancelled by the user"
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:946
+#: src/plm/core/model/Game.java:958
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:947
+#: src/plm/core/model/Game.java:959
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:951
+#: src/plm/core/model/Game.java:963
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:952
+#: src/plm/core/model/Game.java:964
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:956
+#: src/plm/core/model/Game.java:968
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:957
+#: src/plm/core/model/Game.java:969
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:962
+#: src/plm/core/model/Game.java:974
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -629,15 +629,17 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:966
+#: src/plm/core/model/Game.java:978
 msgid "C is still experimental"
 msgstr ""
 
 #: src/plm/core/model/HelpServer.java:27
+#: src/plm/core/ui/action/HelpMe.java:110
 msgid "Asking to the teacher for help"
 msgstr "Asking to the teacher for help"
 
 #: src/plm/core/model/HelpServer.java:29
+#: src/plm/core/ui/action/HelpMe.java:113
 msgid "Cancel call for help to the teacher"
 msgstr "Cancel call for help to the teacher"
 
@@ -888,7 +890,7 @@ msgid "Copying"
 msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:38
+#: src/plm/core/ui/ExerciseFailedDialog.java:47
 #: src/plm/core/ui/ExercisePassedDialog.java:107
 msgid "Close"
 msgstr "Close"
@@ -968,20 +970,42 @@ msgstr ""
 msgid "You never attempted this lesson."
 msgstr "About this lesson"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
-msgid "Mmm, not quite /o\\"
+#. i18n.tr("<i>Practice makes perfect</i>, as they say."),
+#. i18n.tr("<i>To err is human</i>, as they say."),
+#. i18n.tr("You should keep trying until you get it right!"),
+#. i18n.tr("We all learn from our mistakes, so, good job!"),
+#. i18n.tr("We learn from failure, not from success!"),
+#.
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
+msgid ""
+"<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
+"(Einstein)."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:51
+#: src/plm/core/ui/ExerciseFailedDialog.java:39
 msgid ""
-"<html>You didn't manage to reach your objective. <br>\n"
+"<i>Success does not consist in never making mistakes,<br> but in never "
+"making the same one a second time.</i> (Shaw)"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:42
+msgid "Mmm, not quite"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:60
+#, java-format
+msgid ""
+"<html>You didn''t manage to reach your objective this time. <br>\n"
+"That''s fine. {0}<br>\n"
+"<br>\n"
 "You should graphically compare the final state of your world <br>\n"
 "with the objective to understand the problem. <br>\n"
-"If you don't see the error, check the details below for a <br>\n"
+"<br>\n"
+"If you don''t see the error, check the details below for a <br>\n"
 "textual description of this difference between both worlds.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:59
+#: src/plm/core/ui/ExerciseFailedDialog.java:72
 #, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -989,12 +1013,12 @@ msgid ""
 "Please read it carefully to understand the problem, and fix your code.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:74
-#: src/plm/core/ui/ExerciseFailedDialog.java:81
+#: src/plm/core/ui/ExerciseFailedDialog.java:87
+#: src/plm/core/ui/ExerciseFailedDialog.java:94
 msgid "Details >>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:84
+#: src/plm/core/ui/ExerciseFailedDialog.java:97
 msgid "Details <<"
 msgstr ""
 
@@ -1365,7 +1389,7 @@ msgid "Demo"
 msgstr "Demo"
 
 #: src/plm/core/ui/MainFrame.java:480 src/plm/core/ui/MainFrame.java:718
-#: src/plm/core/ui/action/HelpMe.java:37
+#: src/plm/core/ui/action/HelpMe.java:116
 msgid "Call for Help"
 msgstr "Call for Help"
 
@@ -1455,7 +1479,7 @@ msgid ""
 "generated one."
 msgstr ""
 
-#: src/plm/core/ui/action/HelpMe.java:37
+#: src/plm/core/ui/action/HelpMe.java:116
 msgid "Cancel call"
 msgstr "Cancel call"
 
