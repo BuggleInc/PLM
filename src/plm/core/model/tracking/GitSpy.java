@@ -281,4 +281,47 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			}
 		}
 	}
+
+	@Override
+	public void callForHelp() {		
+		recordHelpInGit("callForHelp");
+	}
+
+	@Override
+	public void cancelCallForHelp() {
+		recordHelpInGit("cancelCallForHelp");
+	}
+	
+	public void recordHelpInGit(String evt_type) {
+		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
+		ExecutionProgress execProg = lastExo.lastResult;
+		String exoCode = lastExo.getSourceFile(execProg.language, 0).getBody();
+		String ext = "." + Game.getProgrammingLanguage().getExt();
+		File exoFile = new File(repoDir, lastExo.getId() + ext + ".code");
+		
+		try {
+			// write the code of the exercise into the file
+			FileWriter fwExo = new FileWriter(exoFile.getAbsoluteFile());
+			BufferedWriter bwExo = new BufferedWriter(fwExo);
+			bwExo.write(exoCode == null ? "" : exoCode);
+			bwExo.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			GitUtils gitUtils = new GitUtils(git);
+			git.add().addFilepattern(".").call();
+
+			// and then commit the changes
+			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+					.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+					.setMessage(writeCommitMessage(lastExo, null, evt_type))
+					.call();
+
+			// push to the remote repository
+			gitUtils.pushToUserBranch();
+		} catch (IOException | GitAPIException ex) { // TODO	
+		}
+	}
 }
