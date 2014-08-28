@@ -23,14 +23,23 @@ import plm.core.model.lesson.ExecutionProgress;
 
 public class ExerciseFailedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
-	
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 
 	public ExerciseFailedDialog(ExecutionProgress ep) {
-		super(MainFrame.getInstance(), "Mmm, not quite /o\\", false);
+		super(MainFrame.getInstance(), "Mmm, not quite", false);
 		
-		this.setTitle(i18n.tr("Mmm, not quite /o\\"));
+		String[] fortune = new String[] {
+				i18n.tr("<i>Practice makes perfect</i>, as they say."),
+				i18n.tr("<i>To err is human</i>, as they say."),
+				i18n.tr("You should keep trying until you get it right!"),
+				i18n.tr("We all learn from our mistakes, so, good job!"),
+				i18n.tr("We learn from failure, not from success!"),
+				i18n.tr("<i>Anyone who has never made a mistake has never <br>tried anything new.</i> (Einstein)."),
+				i18n.tr("<i>Success does not consist in never making mistakes,<br> but in never making the same one a second time.</i> (Shaw)")
+		};
+		
+		this.setTitle(i18n.tr("Mmm, not quite"));
 		
 		setLayout(new MigLayout("fill",""));
 		add(new JLabel( (Icon) UIManager.getLookAndFeelDefaults().get("OptionPane.errorIcon") ));
@@ -48,11 +57,15 @@ public class ExerciseFailedDialog extends JDialog {
 		JTextArea ta = new JTextArea();
 		ta.setEditable(false);
 		if (ep.compilationError == null) { 
-			msg = new JLabel(i18n.tr("<html>You didn't manage to reach your objective. <br>\n"
+			msg = new JLabel(i18n.tr("<html>You didn''t manage to reach your objective this time. <br>\n"
+					+ "That''s fine. {0}<br>\n"
+					+ "<br>\n"
 					+ "You should graphically compare the final state of your world <br>\n"
 					+ "with the objective to understand the problem. <br>\n"
-					+ "If you don't see the error, check the details below for a <br>\n"
-					+ "textual description of this difference between both worlds.</html>" ));
+					+ "<br>\n"
+					+ "If you don''t see the error, check the details below for a <br>\n"
+					+ "textual description of this difference between both worlds.</html>",
+					fortune[(int)  (Math.random()*fortune.length)]));
 			ta.setText(ep.details);
 			ta.setCaretPosition(0);
 		} else {
