@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-27 11:26+0200\n"
+"POT-Creation-Date: 2014-08-30 09:58+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -890,9 +890,8 @@ msgstr "Ciclo do .. while"
 msgid "Building methodically"
 msgstr "Costruire metodicamente"
 
-#. type: Content of: <h2>
+#. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:202
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:2
 msgid "Methods returning a result"
 msgstr "Metodi che ritornano un risultato"
 
@@ -1421,7 +1420,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopFor.html:75
 #: src/lessons/welcome/methods/basics/Methods.html:96
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:49
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
 #: src/lessons/welcome/methods/args/MethodsArgs.html:70
 #: src/lessons/welcome/methods/slug/SlugHunting.html:19
 #: src/lessons/welcome/methods/slug/SlugTracking.html:23
@@ -5376,6 +5375,14 @@ msgstr ""
 "Quindi è necessario dichiarare ancora altri metodi per usare le ripetizioni "
 "dei pattern e fattorizzare maggiormente il codice. È il tuo turno..."
 
+#. type: Content of: <h1>
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:2
+#: src/lessons/lightbot/Board06Func.html:2
+#, fuzzy
+#| msgid "Indications"
+msgid "Functions"
+msgstr "Indicazioni"
+
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:4
 #, fuzzy
@@ -5392,16 +5399,18 @@ msgstr ""
 #| "executed), and that the result is the the value following the "
 #| "<code>return</code> keyword."
 msgid ""
-"Writing a method returning a result is not really more work than writing a "
-"method without any result.  [!java|c]You simply have to specify the data "
-"type of expected results before the method name (where we previously had "
-"<code>void</code>).[/!] [!scala]You simply have to add a colon (:) after the "
-"parenthesis and write the type of data that your method will return, and add "
-"an equal sign (=). This syntax is actually rather close to defining a "
-"variable, with its type, that is actually a function.[/!] You can use the "
-"<code>return</code> instruction anywhere in your method body to specify that "
-"the computation is done (the method is not further executed), and that the "
-"result is the value following the <code>return</code> keyword."
+"Quite often, you want to write a method that compute some value and returns "
+"it. Methods returning results are called <b>functions</b>.  Writing a "
+"function is not really harder than writing a simple method.  [!java|c]You "
+"simply have to specify the data type of expected results before the function "
+"name (where we previously had <code>void</code>).[/!] [!scala]You simply "
+"have to add a colon (:) after the parenthesis and write the type of data "
+"that your function will return, and add an equal sign (=). This syntax is "
+"actually rather close to defining a variable, with its type, that is "
+"actually a function.[/!] You can use the <code>return</code> instruction "
+"anywhere in your function body to specify that the computation is done (the "
+"function is not further executed), and that the result is the value "
+"following the <code>return</code> keyword."
 msgstr ""
 "Non c'è bisogno di molto più lavoro da svolgere per scrivere un metodo con "
 "risultato piuttosto che uno sensa risultato. [!java]Nella dichiarazione devi "
@@ -5417,7 +5426,7 @@ msgstr ""
 "subito dopo la parola chiave <code>return</code>."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:13
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:14
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]\n"
@@ -5433,7 +5442,7 @@ msgstr ""
 "[!java|scala]}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:17
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:18
 msgid ""
 "Actually, you can also use that <code>return</code> keyword in methods that "
 "do not return any result, to interupt the computation. Of course, you should "
@@ -5444,7 +5453,7 @@ msgstr ""
 "Ovviamente in questo caso non bisognerà specificare un valore di ritorno."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:20
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:21
 #, fuzzy
 #| msgid ""
 #| "It is possible to have several <code>return</code> instructions in "
@@ -5462,11 +5471,12 @@ msgid ""
 "branches of a conditional. In fact, it is forbidden to have any execution "
 "path of your body without any <code>return</code>, or to write some code "
 "after the <code>return</code> instruction. Indeed, if the machine reaches "
-"the end of the method without finding any <code>return</code>, it cannot "
-"know what actual value to give back to the method caller.  Moreover, "
-"<code>return</code> interrupts immediately the method execution (why bother "
-"looking further when you know the method result?). So, if there is some code "
-"after a <code>return</code>, it must be an error and the compiler warns you."
+"the end of the function without finding any <code>return</code>, it cannot "
+"know what actual value to give back to the function caller.  Moreover, "
+"<code>return</code> interrupts immediately the function execution (why "
+"bother looking further when you know the function result?). So, if there is "
+"some code after a <code>return</code>, it must be an error and the compiler "
+"warns you."
 msgstr ""
 "È possibile avere più istruzioni <code>return</code> disposte in diversi "
 "rami di strutture condizionali. In effetti all'interno di un metodo è "
@@ -5480,7 +5490,7 @@ msgstr ""
 "ed il compilatore ce lo farà notare."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:31
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:32
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java|scala][!java]boolean [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {\n"
@@ -5538,9 +5548,16 @@ msgstr ""
 "<span class=\"comment\"># lascia perdere anche quì</span>[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:49
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
+#, fuzzy
+#| msgid ""
+#| "You will once again write a method that the buggle will use. Its name "
+#| "must be <code>haveBaggle</code>, and it returns a boolean value "
+#| "indicating whether the row in front of the buggle contains a baggle or "
+#| "not. The buggle will use it to search the first row containing a baggle, "
+#| "and stop here."
 msgid ""
-"You will once again write a method that the buggle will use. Its name must "
+"You will once again write a function that the buggle will use. Its name must "
 "be <code>haveBaggle</code>, and it returns a boolean value indicating "
 "whether the row in front of the buggle contains a baggle or not. The buggle "
 "will use it to search the first row containing a baggle, and stop here."
@@ -5552,9 +5569,14 @@ msgstr ""
 "contenente un baggle e si fermerà li."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:54
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:55
+#, fuzzy
+#| msgid ""
+#| "The easier for this method is to use a boolean variable called "
+#| "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
+#| "It initial value is 'false'."
 msgid ""
-"The easier for this method is to use a boolean variable called "
+"The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
 "initial value is 'false'."
 msgstr ""
@@ -5563,7 +5585,7 @@ msgstr ""
 "valore iniziale sarà 'false'."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:58
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:59
 #, fuzzy
 #| msgid ""
 #| "Then, move 6 steps forward (the world contains 7 cells and we already are "
@@ -5581,7 +5603,7 @@ msgstr ""
 "positivo (non dobbiamo fare null'altro se non continuare ad avanzare).,"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:62
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:63
 msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
@@ -5590,7 +5612,7 @@ msgstr ""
 "variabile <code>baggleVisto</code> al chiamante."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:66
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:67
 msgid ""
 "This exercise is a bit different since there is two initial worlds, each "
 "with a specific objective. Your code must work for each of them. Observe "
@@ -5603,9 +5625,12 @@ msgstr ""
 "speed slider) permette di cambiare il mondo osservato."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:71
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:72
+#, fuzzy
+#| msgid ""
+#| "When your method <code>haveBaggle</code> works, proceed to next exercise."
 msgid ""
-"When your method <code>haveBaggle</code> works, proceed to next exercise."
+"When your function <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
 "Quando il tuo metodo <code>haveBaggle</code> funzionerà, procedi al prossimo "
 "esercizio."
@@ -12877,13 +12902,6 @@ msgstr ""
 #: src/lessons/lightbot/Board05Higher.html:4
 msgid "Let's go higher"
 msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/lightbot/Board06Func.html:2
-#, fuzzy
-#| msgid "Indications"
-msgid "Functions"
-msgstr "Indicazioni"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board06Func.html:4
