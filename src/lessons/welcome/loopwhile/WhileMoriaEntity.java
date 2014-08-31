@@ -1,6 +1,7 @@
 package lessons.welcome.loopwhile;
 
 import plm.core.model.Game;
+import plm.universe.Direction;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class WhileMoriaEntity extends SimpleBuggle {
@@ -18,6 +19,10 @@ public class WhileMoriaEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
+		@SuppressWarnings("unused")
+		Direction d = Direction.NORTH; // Some people want to use Direction in that lesson
+		
+		
 		back();
 		while (!isFacingWall()) {
 			while (!isOverBaggle() && !isFacingWall())
