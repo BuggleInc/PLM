@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 00:51+0200\n"
-"PO-Revision-Date: 2014-08-31 11:34+0200\n"
-"Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
-"Language-Team: Martin.quinson@loria.fr\n"
+"POT-Creation-Date: 2014-09-01 15:20+0200\n"
+"PO-Revision-Date: 2014-09-01 15:22+0200\n"
+"Last-Translator: Martin Quinson\n"
+"Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: src/lessons/maze/island/IslandMazeEntity.java:10
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:10
@@ -291,7 +291,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopStairsEntity.java:10
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
-#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:9
+#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:10
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -310,7 +310,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopStairsEntity.java:14
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
-#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:14
+#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:15
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
@@ -905,7 +905,7 @@ msgstr "Le fichier {0}.html est introuvable."
 msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossible de trouver le nom de la mission dans {0}.html"
 
-#: src/plm/core/model/session/GitSessionKit.java:111
+#: src/plm/core/model/session/GitSessionKit.java:112
 #: src/plm/core/model/tracking/GitSpy.java:60
 msgid ""
 "Creating a new session locally, as no corresponding session could be "
@@ -914,11 +914,18 @@ msgstr ""
 "Création d'une nouvelle session locale, puisque aucune session convenable "
 "n'a pu être récupérée des serveurs."
 
-#: src/plm/core/model/session/GitSessionKit.java:113
+#: src/plm/core/model/session/GitSessionKit.java:114
 #: src/plm/core/model/tracking/GitSpy.java:62
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
+
+#: src/plm/core/model/session/GitSessionKit.java:117
+#: src/plm/core/model/tracking/GitUtils.java:86
+msgid "Cannot synchronize your session with the servers (network down)."
+msgstr ""
+"Impossible de synchroniser votre session avec les serveurs (le réseau est "
+"inutilisable)."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Ok, quit and lose my data"
@@ -1011,14 +1018,14 @@ msgid ""
 "ul><br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/></"
 "html>"
 msgstr ""
-"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;<"
-"span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\""
-">({1})</span></h3><br/>&copy; 2008-2011 Contributeurs. Tous droits "
-"réservés.<br/><ul style=\"margin-left:20px;\"><li>Idée originale : <i>L. "
-"Turbak (Wellesley College)</i></li><li>Design et programmation : <i>M. "
-"Quinson et G. Oster</i></li><li>Tests : <i>les étudiants de Telecom Nancy ("
-"depuis la promo 2011)</i></li></ul><br/>Votre code est sauvegardé dans "
-"{2}<br/>Votre identifiant secret de session est {3}<br/></html>"
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
+"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
+"span></h3><br/>&copy; 2008-2011 Contributeurs. Tous droits réservés.<br/><ul "
+"style=\"margin-left:20px;\"><li>Idée originale : <i>L. Turbak (Wellesley "
+"College)</i></li><li>Design et programmation : <i>M. Quinson et G. Oster</"
+"i></li><li>Tests : <i>les étudiants de Telecom Nancy (depuis la promo 2011)</"
+"i></li></ul><br/>Votre code est sauvegardé dans {2}<br/>Votre identifiant "
+"secret de session est {3}<br/></html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:81
 msgid "About"
@@ -1171,12 +1178,26 @@ msgstr "{0} exercices sur {1} réussis en {2}."
 msgid "You never attempted this lesson."
 msgstr "Vous n'avez jamais tenté cette leçon."
 
-#. i18n.tr("<i>Practice makes perfect</i>, as they say."),
-#. i18n.tr("<i>To err is human</i>, as they say."),
-#. i18n.tr("You should keep trying until you get it right!"),
-#. i18n.tr("We all learn from our mistakes, so, good job!"),
-#. i18n.tr("We learn from failure, not from success!"),
-#.
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
+msgid "<i>Practice makes perfect</i>, as they say."
+msgstr "<i>C'est en forgeant qu'on devient forgeron</i>, comme on dit."
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
+msgid "<i>To err is human</i>, as they say."
+msgstr "<i>L'erreur est humaine</i>, comme on dit."
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
+msgid "You should keep trying until you get it right!"
+msgstr "Il faut persévérer jusqu'à y parvenir !"
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:36
+msgid "We all learn from our mistakes, so, good job!"
+msgstr "Nous apprenons tous de nos erreurs, donc bien joué !"
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:37
+msgid "We learn from failure, not from success!"
+msgstr "Nous apprenons de nos échecs, pas de nos succès !"
+
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
@@ -2430,17 +2451,3 @@ msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
 
-#~ msgid "<i>Practice makes perfect</i>, as they say."
-#~ msgstr "<i>C'est en forgeant qu'on devient forgeron</i>, comme on dit."
-
-#~ msgid "<i>To err is human</i>, as they say."
-#~ msgstr "<i>L'erreur est humaine</i>, comme on dit."
-
-#~ msgid "You should keep trying until you get it right!"
-#~ msgstr "Il faut persévérer jusqu'à y parvenir !"
-
-#~ msgid "We all learn from our mistakes, so, good job!"
-#~ msgstr "Nous apprenons tous de nos erreurs, donc bien joué !"
-
-#~ msgid "We learn from failure, not from success!"
-#~ msgstr "Nous apprenons de nos échecs, pas de nos succès !"
