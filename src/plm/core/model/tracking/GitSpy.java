@@ -321,7 +321,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 			// push to the remote repository
 			gitUtils.pushToUserBranch();
-		} catch (IOException | GitAPIException ex) { // TODO	
+		} catch (IOException | GitAPIException ex) { 
+			ex.printStackTrace();
 		}
 	}
 }

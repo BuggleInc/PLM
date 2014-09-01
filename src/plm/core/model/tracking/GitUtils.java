@@ -83,7 +83,7 @@ public class GitUtils {
 				} catch (InvalidRemoteException e) {
 					e.printStackTrace();
 				} catch (TransportException e) {
-					e.printStackTrace();
+					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
 				} catch (GitAPIException e) {
 					e.printStackTrace();
 				}
