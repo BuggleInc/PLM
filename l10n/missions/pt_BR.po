@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-08-17 19:47-0300\n"
-"PO-Revision-Date: 2014-08-24 22:57-0300\n"
+"POT-Creation-Date: 2014-08-26 00:09-0300\n"
+"PO-Revision-Date: 2014-08-31 22:53-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1001,9 +1001,8 @@ msgid ""
 "world turns into the objective of the exercise. For example in this "
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either C, Java, Python or Scala "
-"(depending on the exercise)."
+"<i>Objective</i> one.  Depending on the exercise (and your settings in the "
+"Language menu), your code must be written in either C, Java, Python or Scala."
 msgstr ""
 "Os buggles são pequenos animais que obedecem a qualquer ordem que você\n"
 "dá a eles. Em cada exercício, você tem que fornecer a eles as\n"
@@ -1555,8 +1554,10 @@ msgstr ""
 "espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma\n"
 "quantidade de espaços. O fim do bloco de código Python não é marcado\n"
 "por nenhum caractere específico. Indentar linhas começa um bloco e\n"
-"parar de indentar termina o bloco. Não esqueça do dois-pontos (:) no final da\n"
-"linha do <code>if</code>, python precisa dele para saber que um novo bloco vai\n"
+"parar de indentar termina o bloco. Não esqueça do dois-pontos (:) no final "
+"da\n"
+"linha do <code>if</code>, python precisa dele para saber que um novo bloco "
+"vai\n"
 "começar. O fato de que python se baseia em indentação para delimitar\n"
 "blocos é uma ótima propriedade para iniciantes: vai forçar você a\n"
 "aderir a padrões de apresentação de código estritos.[/!] É muito fácil\n"
@@ -1657,7 +1658,12 @@ msgid ""
 "python]interpreter[/!] detects this problem most of the time, but it could "
 "get trapped is some cases (such as when you are affecting a [!c]int[/!][!"
 "java|python|scala]boolean[/!] variable). So you'd better to be careful..."
-msgstr "Cuidado com um erro clássico, que é verificar a igualdade da variável usando = no lugar de ==. Ainda bem que o [!java|scala|c]compilador[/!][!python]interpretador[/!] detecta este problema na maior parte das vezes, mas às vezes passa (como quando você está agindo sobre uma variável [!c]int[/!][!java|python|scala]boolean[/!]). Então é bom ter cuidado..."
+msgstr ""
+"Cuidado com um erro clássico, que é verificar a igualdade da variável usando "
+"= no lugar de ==. Ainda bem que o [!java|scala|c]compilador[/!][!"
+"python]interpretador[/!] detecta este problema na maior parte das vezes, mas "
+"às vezes passa (como quando você está agindo sobre uma variável [!c]int[/!][!"
+"java|python|scala]boolean[/!]). Então é bom ter cuidado..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:76
@@ -1665,7 +1671,7 @@ msgid ""
 "The condition can also be a call to some particular methods returning a "
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a "
-"wall, and false in the other case."
+"wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case."
 msgstr ""
 "A condição pode também ser uma chamada para alguns métodos\n"
 "particulares que retornam booleano. Por exemplo, o método\n"
@@ -1689,7 +1695,12 @@ msgid ""
 "<tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is "
 "false, <tt>cond2</tt> is not even evaluated as we already know that the "
 "conjunction of both propositions cannot be true)."
-msgstr "<code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> é verdadeiro (true) quando <tt>cond1</tt> <b>e</b> <tt>cond2</tt> são ambos verdadeiros (se <tt>cond1</tt> é falso (false), <tt>cond2</tt> não é nem sequer calculado pois sabe-se previamente que a conjunção das duas proposições não pode ser verdadeira)."
+msgstr ""
+"<code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> é verdadeiro "
+"(true) quando <tt>cond1</tt> <b>e</b> <tt>cond2</tt> são ambos verdadeiros "
+"(se <tt>cond1</tt> é falso (false), <tt>cond2</tt> não é nem sequer "
+"calculado pois sabe-se previamente que a conjunção das duas proposições não "
+"pode ser verdadeira)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:86
@@ -1697,15 +1708,22 @@ msgid ""
 "<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if "
 "<tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true, "
 "<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
-"of both propositions cannot be true)."
-msgstr "<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> é verdadeiro se <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> é verdadeiro (se <tt>cond1</tt> é verdadeiro, <tt>cond2</tt> não é nem sequer calculada pois já se sabe que a disjunção de ambas as proposições não pode ser verdadeira)."
+"of both propositions cannot be false)."
+msgstr ""
+"<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> é\n"
+"verdadeiro se <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> é verdadeiro (se\n"
+"<tt>cond1</tt> é verdadeiro, <tt>cond2</tt> não é nem sequer calculada\n"
+"pois já se sabe que a disjunção de ambas as proposições não pode ser\n"
+"verdadeira)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:89
 msgid ""
 "<code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if <tt>cond</"
 "tt> is false."
-msgstr "<code>[!java|scala|c]![/!][!python]not [/!]cond</code> é verdadeira se <tt>cond</tt> é falsa."
+msgstr ""
+"<code>[!java|scala|c]![/!][!python]not [/!]cond</code> é verdadeira se "
+"<tt>cond</tt> é falsa."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:90
@@ -1878,7 +1896,10 @@ msgid ""
 "This will let the buggle turn left as long as <code>[!c]1[/!][!java|"
 "scala]true[/!][!python]True[/!]</code> remains true (ie, endlessly), or "
 "until you stop it manually using the stop button."
-msgstr "Isto vai fazer o buggle virar à esquerda enquanto <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> permanecer true (ou seja, infinitamente), ou até que você pare manualmente usando o botão parar."
+msgstr ""
+"Isto vai fazer o buggle virar à esquerda enquanto <code>[!c]1[/!][!java|"
+"scala]true[/!][!python]True[/!]</code> permanecer true (ou seja, "
+"infinitamente), ou até que você pare manualmente usando o botão parar."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopwhile/LoopWhile.html:36
@@ -2219,7 +2240,8 @@ msgstr "<b>[!java|c]int[/!][!scala]Int[/!]</b>, para inteiros;"
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:65
 msgid "<b>[!java|c]double[/!][!scala]Double[/!]</b>, for dot numbers;"
-msgstr "<b>[!java|c]double[/!][!scala]Double[/!]</b>, para números com vírgula;"
+msgstr ""
+"<b>[!java|c]double[/!][!scala]Double[/!]</b>, para números com vírgula;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:66
@@ -2227,12 +2249,16 @@ msgid ""
 "<b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that "
 "are values being either [!c]1[/!][!java|scala]true[/!] or [!c]0[/!][!java|"
 "scala]false[/!];"
-msgstr "<b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, para booleanos, que são valores ou [!c]1[/!][!java|scala]true[/!] ou [!c]0[/!][!java|scala]false[/!];"
+msgstr ""
+"<b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, para booleanos, que "
+"são valores ou [!c]1[/!][!java|scala]true[/!] ou [!c]0[/!][!java|"
+"scala]false[/!];"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:67
 msgid "<b>[!c]char*[/!][!java|scala]String[/!]</b>, for char strings."
-msgstr "<b>[!c]char*[/!][!java|scala]String[/!]</b>, para cadeias de caracteres."
+msgstr ""
+"<b>[!c]char*[/!][!java|scala]String[/!]</b>, para cadeias de caracteres."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:72
@@ -2260,7 +2286,13 @@ msgid ""
 "restriction allows the compiler to catch more logic errors for you, which is "
 "also good. In some sense, Python is easier to write but errors can sneak in "
 "more easily."
-msgstr "Outras linguagens (como Java, Scala ou C), são muito mais exigentes e impedem que você misture tipos de dados numa certa variável (dizemos que elas são <b>esticamente tipadas</b>). Isto parece inconveniente à primeira vista, mas este tipo de restrição permite que o compilador capture mais erros de lógica para você, o que também é bom. Num certo sentido, Python é mais fácil de escrever mas erros podem surgir mais facilmente."
+msgstr ""
+"Outras linguagens (como Java, Scala ou C), são muito mais exigentes e "
+"impedem que você misture tipos de dados numa certa variável (dizemos que "
+"elas são <b>esticamente tipadas</b>). Isto parece inconveniente à primeira "
+"vista, mas este tipo de restrição permite que o compilador capture mais "
+"erros de lógica para você, o que também é bom. Num certo sentido, Python é "
+"mais fácil de escrever mas erros podem surgir mais facilmente."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:81
@@ -2452,7 +2484,12 @@ msgid ""
 "stepAmount + 1;</code>[!java|c] or <code>stepAmount++;</code>, both syntaxes "
 "being equivalent[/!]).  Such variable which takes every values of a given "
 "range is often called a <b>stepper</b>."
-msgstr "Crie uma variável inteira antes da fase 1, inicie ela com 0 e a cada vez que der um passo para frente, incremente ela de um (<code>quantidadeDePassos = quantidadeDePassos + 1;</code>[!java] ou <code>quantidadeDePassos++;</code>, ambas as sintaxes são equivalentes[/!]).  Tais variáveis que pegam cada valor de um dado intervalo são normalmente chamadas de <b>stepper</b>."
+msgstr ""
+"Crie uma variável inteira antes da fase 1, inicie ela com 0 e a cada vez que "
+"der um passo para frente, incremente ela de um (<code>quantidadeDePassos = "
+"quantidadeDePassos + 1;</code>[!java] ou <code>quantidadeDePassos++;</code>, "
+"ambas as sintaxes são equivalentes[/!]).  Tais variáveis que pegam cada "
+"valor de um dado intervalo são normalmente chamadas de <b>stepper</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:146
@@ -2528,7 +2565,13 @@ msgid ""
 "have to reach the cell where the amount of baggles you saw is the double of "
 "the orange cells plus 1.  In other words, the following condition must "
 "become true: <code>2 * baggles = orangeCells + 1</code>."
-msgstr "Chegamos ao segundo dia da grande corrida dos Buggles. Como antes, você tem que correr até alcançar a célula certa para parar. Mas desta vez, você tem que alcançar a célula onde a quantidade de baggles que você viu é o dobro da quantidade de células laranjas mais 1. Em outras palavras, a seguinte condição deve se tornar verdadeira <code>2 * baggles = célulasLaranjas + 1</code>."
+msgstr ""
+"Chegamos ao segundo dia da grande corrida dos Buggles. Como antes, você tem "
+"que correr até alcançar a célula certa para parar. Mas desta vez, você tem "
+"que alcançar a célula onde a quantidade de baggles que você viu é o dobro da "
+"quantidade de células laranjas mais 1. Em outras palavras, a seguinte "
+"condição deve se tornar verdadeira <code>2 * baggles = célulasLaranjas + 1</"
+"code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunHalf.html:10
@@ -2800,7 +2843,10 @@ msgid ""
 "Today, your buggle wants to get some serious exercise: It wants to run 'till "
 "the track burns! Its super-shoes are just perfect to run like hell, but "
 "unfortunately, they can actually damage the track on the long run..."
-msgstr "Hoje seu buggle quer fazer exercício seriamente: Ele quer correr até tocar fogo na trilha! seus super-tenis são perfeitos para correr loucamente, mas infelizmente, eles podem estragar seriamente a trilha a longo prazo..."
+msgstr ""
+"Hoje seu buggle quer fazer exercício seriamente: Ele quer correr até tocar "
+"fogo na trilha! seus super-tenis são perfeitos para correr loucamente, mas "
+"infelizmente, eles podem estragar seriamente a trilha a longo prazo..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourse.html:7
@@ -2994,7 +3040,14 @@ msgid ""
 "<tt>while</tt> loop gets used, using the following syntax in [!thelang].  [!"
 "java|c]Do not forget the semi-column (;) after the condition, it is "
 "mandatory.[/!]"
-msgstr "Num loop <tt>while</tt>, a condição é calculada antes de qualquer coisa, e se for falsa, o corpo do loop nunca é executado. Algumas vezes (mas não muito frequentemente), você pode preferir que o corpo do loop seja executado pelo menos uma vez, mesmo se a condição seja inicialmente falsa. Para isto, uma variação do loop <tt>while</tt> é usada, com a seguinte sintaxe em [!thelang].  [!java|c]Não esqueça o ponto-e-vírgula (;) depois da condição, que é obrigatório.[/!]"
+msgstr ""
+"Num loop <tt>while</tt>, a condição é calculada antes de qualquer coisa, e "
+"se for falsa, o corpo do loop nunca é executado. Algumas vezes (mas não "
+"muito frequentemente), você pode preferir que o corpo do loop seja executado "
+"pelo menos uma vez, mesmo se a condição seja inicialmente falsa. Para isto, "
+"uma variação do loop <tt>while</tt> é usada, com a seguinte sintaxe em [!"
+"thelang].  [!java|c]Não esqueça o ponto-e-vírgula (;) depois da condição, "
+"que é obrigatório.[/!]"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:51
@@ -3024,7 +3077,15 @@ msgid ""
 "using the combobox above the world representation (where it's written 'Deep "
 "Forest' right now), and selecting the other entry (that should read 'Deeper "
 "Forest')."
-msgstr "Seu buggle se perdeu num estranho labirinto, e você deve ajudá-lo a achar a saída que está representada em laranja. Você não pode simplesmente explicar o caminho para a saída com algo do tipo <code>direita();avançar();avançar();avançar()</code> por que você tem que salvar dois buggles ao mesmo tempo, que estão presos em mundos similares mas não iguais. Você pode alternar para o outro mundo usando o combobox acima da representação do mundo (onde está escrito 'Floresta Fechada' agora), e selecionar a outra entrada (que deve ler 'Floresta Mais Fechada')."
+msgstr ""
+"Seu buggle se perdeu num estranho labirinto, e você deve ajudá-lo a achar a "
+"saída que está representada em laranja. Você não pode simplesmente explicar "
+"o caminho para a saída com algo do tipo <code>direita();avançar();avançar();"
+"avançar()</code> por que você tem que salvar dois buggles ao mesmo tempo, "
+"que estão presos em mundos similares mas não iguais. Você pode alternar para "
+"o outro mundo usando o combobox acima da representação do mundo (onde está "
+"escrito 'Floresta Fechada' agora), e selecionar a outra entrada (que deve "
+"ler 'Floresta Mais Fechada')."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:10
@@ -3081,7 +3142,20 @@ msgid ""
 "you execute the loop body at least once (when <code>firstTime</code> is "
 "true) before we actually use the value returned by <code>crossing()</code> "
 "to determine to continue or not.[/!]"
-msgstr "Para entrar em um corredor, você tem simplesmente que ir de uma intersecção para a outra enquanto conta os baggles que vê em seu caminho. O método \"<code>cruzamento()</code>\" diz se seu buggle está ou não numa intersecção. A complexidade extra é que no começo de um corredor, você está obviamente numa intersecção, mas você ainda precisa se mover.  [!java|scala|c]Para isto, a forma mais fácil é usar um loop <code>do / while</code> (faça / enquanto) ao invés de um loop <code>while</code> (enquanto) normal para se mover até a próxima intersecção.[/!] [!python]Para isto, use uma variável extra indicando quando você já entrou no corredor, como segue. Isto vai garantir que você execute o corpo do loop pelo menos uma vez (quando o <code>primeiraVez</code> for verdadeiro) antes de nós usarmos realmente o valor retornado pelo <code>cruzamento()</code> para determinar se continuamos ou não.[/!]"
+msgstr ""
+"Para entrar em um corredor, você tem simplesmente que ir de uma intersecção "
+"para a outra enquanto conta os baggles que vê em seu caminho. O método "
+"\"<code>cruzamento()</code>\" diz se seu buggle está ou não numa "
+"intersecção. A complexidade extra é que no começo de um corredor, você está "
+"obviamente numa intersecção, mas você ainda precisa se mover.  [!java|scala|"
+"c]Para isto, a forma mais fácil é usar um loop <code>do / while</code> "
+"(faça / enquanto) ao invés de um loop <code>while</code> (enquanto) normal "
+"para se mover até a próxima intersecção.[/!] [!python]Para isto, use uma "
+"variável extra indicando quando você já entrou no corredor, como segue. Isto "
+"vai garantir que você execute o corpo do loop pelo menos uma vez (quando o "
+"<code>primeiraVez</code> for verdadeiro) antes de nós usarmos realmente o "
+"valor retornado pelo <code>cruzamento()</code> para determinar se "
+"continuamos ou não.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/Poucet.html:32
@@ -3143,6 +3217,13 @@ msgid ""
 "reproducing it. You cannot do otherwise because the same code will be "
 "executed on three different worlds, each of them having a specific pattern."
 msgstr ""
+"O objetivo deste exercício é reproduzir o padrão da primeira linha nas\n"
+"outras linhas com um deslocamento de uma célula (veja a aba Objetivo\n"
+"para detalhes). A maior diferença entre este exercício e os outros\n"
+"sobre padrões é que você tem que ler o padrão (na primeira linha)\n"
+"antes de reproduzí-lo. Você não pode fazer de outro jeito por que o\n"
+"mesmo código será executado em três mundos diferentes, cada um com seu\n"
+"próprio padrão."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:12
@@ -3152,6 +3233,11 @@ msgid ""
 "methods to teleport the buggle to a specific position (<code>setPos()</code> "
 "and similar), this approach will be a pain to implement."
 msgstr ""
+"Uma solução é ler a próxima célula, e copiar ela na posição antes de\n"
+"voltar para ler a segunda célula. Mas já que é proibido usar os\n"
+"métodos de teletransporte de buggle para uma posição específica\n"
+"(<code>setPos()</code> e similares), esta abordagem seria muito\n"
+"difícil de implementar."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:17
@@ -3161,6 +3247,11 @@ msgid ""
 "before we can do so, we should learn a bit what [!java|scala]arrays[/!][!"
 "python]lists[/!] are."
 msgstr ""
+"O mais simples é armazenar a sequência de cores que constituem o\n"
+"padrão inteiro numa\n"
+"[!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  Mas antes de\n"
+"fazer isto, devemos aprender um pouco sobre o que\n"
+"[!java|scala]arrays[/!][!python]lists[/!] são."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/array/basics/Array1.html:21
@@ -4159,7 +4250,15 @@ msgid ""
 "understandable.  It would be better if the buggle could obey an "
 "<code>goAndGet()</code> order just like it understands a <code>[!"
 "c]stepForward()[/!][!scala|java|python]forward()[/!]</code> one."
-msgstr "Por exemplo, nós vimos num exercício anterior como pedir ao buggle para pegar o baggle na frente dele, e trazê-lo de volta. Se existem vários baggles no tabuleiro, e se nós queremos trazê-los todos para a linha de baixo, você tem que repetir este código várias vezes, ou incluir ele num loop. Em qualquer caso, você deve evitar duplicar seu código para mantê-lo agradável de ler e fácil de entender. Será melhor se o buggle puder obedecer uma ordem <code>vaiEPega()</code> assim como entende uma <code>[!c]avançarUmPasso()[/!][!scala|java|python]avançar()[/!]</code>."
+msgstr ""
+"Por exemplo, nós vimos num exercício anterior como pedir ao buggle para "
+"pegar o baggle na frente dele, e trazê-lo de volta. Se existem vários "
+"baggles no tabuleiro, e se nós queremos trazê-los todos para a linha de "
+"baixo, você tem que repetir este código várias vezes, ou incluir ele num "
+"loop. Em qualquer caso, você deve evitar duplicar seu código para mantê-lo "
+"agradável de ler e fácil de entender. Será melhor se o buggle puder obedecer "
+"uma ordem <code>vaiEPega()</code> assim como entende uma <code>[!"
+"c]avançarUmPasso()[/!][!scala|java|python]avançar()[/!]</code>."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:16
@@ -4204,7 +4303,17 @@ msgid ""
 "is a [!c]int[/!][!java]boolean[/!] indicating whether or not the buggle is "
 "located over a baggle. We will soon learn to define such methods too. For "
 "now, just write <code>void</code> at this location.[/!]"
-msgstr "O corpo do método [!java|scala](entre chaves)[/!][!python](o bloco indentado)[/!] será executado quando nós chamarmos o método mais tarde (ou seja, quando nós escrevermos <code>vaiEPega()</code> em algum lugar do código). Este corpo do método pode conter tantas instruções quanto você queira, e qualquer construção que nós queiramos (for, while, if, etc).  [!java]A palavra-chave <code>void</code> significa que este método não retorna qualquer resultado. Por exemplo, o método <code>estáSobreBaggle()</code> retorna um resultado, que é um booleano indicando se o buggle está ou não localizado sobre um baggle. Vamos em breve aprender a definir tais métodos também. Por agora, apenas escreva <code>void</code> neste local.[/!]"
+msgstr ""
+"O corpo do método [!java|scala](entre chaves)[/!][!python](o bloco indentado)"
+"[/!] será executado quando nós chamarmos o método mais tarde (ou seja, "
+"quando nós escrevermos <code>vaiEPega()</code> em algum lugar do código). "
+"Este corpo do método pode conter tantas instruções quanto você queira, e "
+"qualquer construção que nós queiramos (for, while, if, etc).  [!java]A "
+"palavra-chave <code>void</code> significa que este método não retorna "
+"qualquer resultado. Por exemplo, o método <code>estáSobreBaggle()</code> "
+"retorna um resultado, que é um booleano indicando se o buggle está ou não "
+"localizado sobre um baggle. Vamos em breve aprender a definir tais métodos "
+"também. Por agora, apenas escreva <code>void</code> neste local.[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:39
@@ -4325,7 +4434,15 @@ msgid ""
 "way graphically remind of a camel back. The other convention, called "
 "snake_case, is to write every words in lower case, separated with "
 "underscores symbols (_). \"go and get\" becomes go_and_get()."
-msgstr "Entre todas as linguagens de programação, existem duas convenções para nomear variáveis e métodos. A primeira, consiste em concatenar todas as palavras com apenas a primeria letra de cada palavra em maiúscula. \"vai e Pega\" se torna vaiEPega(). Isto é chamado \"CamelCase\" por que identificadores escritos desta forma parecem graficamente com as costas de um camelo. A outra convenção, chamada \"snake_case\", é escrever todas as palavras em minúsculas, separadas com sublinhados (_). \"vai e pega\" se torna vai_e_pega()."
+msgstr ""
+"Entre todas as linguagens de programação, existem duas convenções para "
+"nomear variáveis e métodos. A primeira, consiste em concatenar todas as "
+"palavras com apenas a primeria letra de cada palavra em maiúscula. \"vai e "
+"Pega\" se torna vaiEPega(). Isto é chamado \"CamelCase\" por que "
+"identificadores escritos desta forma parecem graficamente com as costas de "
+"um camelo. A outra convenção, chamada \"snake_case\", é escrever todas as "
+"palavras em minúsculas, separadas com sublinhados (_). \"vai e pega\" se "
+"torna vai_e_pega()."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:87
@@ -4524,7 +4641,11 @@ msgid ""
 "parts depicting a sort of V. A possible decomposition is to write a method "
 "in charge of drawing a V from the current position. Its prototype can be: "
 "<code>[!java|c]void [/!]makeV()</code>"
-msgstr "Se você observar cuidadosamente a figura que tem que desenhar, ela é constituída de quatro partes descrevendo um V. Uma decomposição possível é escrever um método responsável por escrever um V a partir da posição atual. Seu protótipo pode ser: <code>[!java|c]void [/!]fazerV()</code>"
+msgstr ""
+"Se você observar cuidadosamente a figura que tem que desenhar, ela é "
+"constituída de quatro partes descrevendo um V. Uma decomposição possível é "
+"escrever um método responsável por escrever um V a partir da posição atual. "
+"Seu protótipo pode ser: <code>[!java|c]void [/!]fazerV()</code>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:16
@@ -4618,9 +4739,9 @@ msgid ""
 "Writing a method returning a result is not really more work than writing a "
 "method without any result.  [!java|c]You simply have to specify the data "
 "type of expected results before the method name (where we previously had "
-"<code>void</code>).[/!] [!scala]You simply have to add a column (:) after "
-"the parenthesis and write the type of data that your method will return, and "
-"add an equal sign (=). This syntax is actually rather close to defining a "
+"<code>void</code>).[/!] [!scala]You simply have to add a colon (:) after the "
+"parenthesis and write the type of data that your method will return, and add "
+"an equal sign (=). This syntax is actually rather close to defining a "
 "variable, with its type, that is actually a function.[/!] You can use the "
 "<code>return</code> instruction anywhere in your method body to specify that "
 "the computation is done (the method is not further executed), and that the "
@@ -4965,7 +5086,13 @@ msgid ""
 "forward: Boolean)[/!] [!python]move(stepCount,forward)[/!] </code> method "
 "which moves forward by <code>stepCount</code> steps if <code>forward</code> "
 "is true, and moves back of that amount of steps if the boolean is false."
-msgstr "Agora você vai ter que escrever um método <code> [!java|c]mover(int contaPassos,[!java]boolean[/!][!c]int[/!] forward)[/!] [!scala]mover(contaPassos: Int,forward: Boolean)[/!] [!python]mover(contaPassos,forward)[/!] </code> que move para a frente <code>contaPassos</code> passos se <code>forward</code> for verdadeiro, e move para trás a mesmas quantidade de passos se o booleano for falso."
+msgstr ""
+"Agora você vai ter que escrever um método <code> [!java|c]mover(int "
+"contaPassos,[!java]boolean[/!][!c]int[/!] forward)[/!] [!"
+"scala]mover(contaPassos: Int,forward: Boolean)[/!] [!"
+"python]mover(contaPassos,forward)[/!] </code> que move para a frente "
+"<code>contaPassos</code> passos se <code>forward</code> for verdadeiro, e "
+"move para trás a mesmas quantidade de passos se o booleano for falso."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:79
@@ -5220,6 +5347,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:41
 msgid "Good luck!"
 msgstr "Boa Sorte!"
 
@@ -5288,7 +5416,11 @@ msgid ""
 "Your buggle is super happy! It just found the green dribbling trail, "
 "certainly left by a big yummy slug.  At its end, the buggle is certain to "
 "entertain itself with this appetizing slug (represented as a baggle)."
-msgstr "Seu buggle está super-feliz! Ele acabou de encontrar o rastro verde e úmido, certamente deixado por um apetitosa e grande lesma.  No seu final, o buggle tem certeza de que vai se divertir com est deliciosa lesma (representada por um baggle)."
+msgstr ""
+"Seu buggle está super-feliz! Ele acabou de encontrar o rastro verde e úmido, "
+"certamente deixado por um apetitosa e grande lesma.  No seu final, o buggle "
+"tem certeza de que vai se divertir com est deliciosa lesma (representada por "
+"um baggle)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:8
@@ -5355,7 +5487,8 @@ msgid ""
 msgstr ""
 "Iuhu! Desta vez, seu buggle encontrou trilhas com muitas presas! No\n"
 "primeiro mundo, era uma bela lesma deliciosa (que deixava um rastro\n"
-"rosa) e no segundo mundo, uma grande e gordo caracol que esperava seu buggle\n"
+"rosa) e no segundo mundo, uma grande e gordo caracol que esperava seu "
+"buggle\n"
 "no final do rastro laranja."
 
 #. type: Content of: <p>
@@ -5377,10 +5510,11 @@ msgstr "Buggle Dance Revolution (BDR)"
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"Today is a great day: we will learn the buggles to play Dance Revolution, "
-"this game beloved of some students where the player has to move its feet on "
-"the carpet according to the instructions presented on the screen, and "
-"following the music. But before that, we have some details to study first."
+"After these races, it's time to party! For that, you will learn the buggles "
+"to play Dance Revolution, this game beloved of some students where the "
+"player has to move its feet on the carpet according to the instructions "
+"presented on the screen, and following the music. But before that, we have "
+"some details to study first."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7064,14 +7198,18 @@ msgstr ""
 msgid ""
 "[!java|c]void [/!][!c]stepForward()[/!][!java|python|scala]forward()[/!] or "
 "[!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!][!c]avançarUmPasso()[/!][!java|python|scala]avançar()[/!] ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])"
+msgstr ""
+"[!java|c]void [/!][!c]avançarUmPasso()[/!][!java|python|scala]avançar()[/!] "
+"ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid ""
 "[!java|c]void [/!][!c]stepBackward()[/!][!java|python|scala]backward()[/!] "
 "or [!java|c]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!][!c]voltarUmPasso()[/!][!java|python|scala]voltar()[/!] ou [!java|c]void [/!]voltar([!java|c]int [/!]passos[!scala]:Int[/!])"
+msgstr ""
+"[!java|c]void [/!][!c]voltarUmPasso()[/!][!java|python|scala]voltar()[/!] ou "
+"[!java|c]void [/!]voltar([!java|c]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <h1>
 #: src/plm/universe/sort/SortingWorld.html:2
@@ -7135,7 +7273,9 @@ msgstr "nenhum"
 msgid ""
 "[!java]boolean [/!][!c]int [/!]isSmaller([!java|c]int [/!]i[!scala]:Int[/!], "
 "[!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]éMenor([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!][!c]int [/!]éMenor([!java|c]int [/!]i[!scala]:Int[/!], [!"
+"java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:16
@@ -7156,7 +7296,9 @@ msgstr "duas leituras"
 msgid ""
 "[!java]boolean [/!][!c]int [/!]isSmallerThan([!java|c]int [/!]i[!scala]:"
 "Int[/!], [!java|c]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]éMenorQue([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!][!c]int [/!]éMenorQue([!java|c]int [/!]i[!scala]:Int[/!], "
+"[!java|c]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:18
@@ -7178,7 +7320,9 @@ msgstr "uma leitura"
 msgid ""
 "[!java|c]void [/!]swap([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
 "[/!]j[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]alterna([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int [/!]j[!scala]:Int[/!])"
+msgstr ""
+"[!java|c]void [/!]alterna([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
+"[/!]j[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:21
@@ -7195,7 +7339,9 @@ msgstr "duas escritas, duas leituras"
 msgid ""
 "[!java|c]void [/!]copy([!java|c]int [/!]from[!scala]:Int[/!], [!java|c]int "
 "[/!]to[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]copia([!java|c]int [/!]de[!scala]:Int[/!], [!java|c]int [/!]para[!scala]:Int[/!])"
+msgstr ""
+"[!java|c]void [/!]copia([!java|c]int [/!]de[!scala]:Int[/!], [!java|c]int "
+"[/!]para[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:23
@@ -7222,7 +7368,9 @@ msgstr "Retorna o valor da célula idx"
 msgid ""
 "[!java|c]void [/!]setValue([!java|c]int [/!]idx[!scala]:Int[/!], [!java|"
 "c]int [/!]value[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]setValor([!java|c]int [/!]idx[!scala]:Int[/!], [!java|c]int [/!]valor[!scala]:Int[/!])"
+msgstr ""
+"[!java|c]void [/!]setValor([!java|c]int [/!]idx[!scala]:Int[/!], [!java|"
+"c]int [/!]valor[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:28
@@ -7277,7 +7425,11 @@ msgid ""
 "of your sorting algorithm. Switch to the Objective view and use the "
 "contextual menu (right click) to switch from the view of the current state "
 "to the view of its history."
-msgstr "Para ajudar neste processo, é possível explorar graficamente o histórico do algoritmo de ordenação. Alternar para a visão Objetivo e usar o menu de contexto (clique com botão direito) para alternar da visão do estado atual para a visão do histórico."
+msgstr ""
+"Para ajudar neste processo, é possível explorar graficamente o histórico do "
+"algoritmo de ordenação. Alternar para a visão Objetivo e usar o menu de "
+"contexto (clique com botão direito) para alternar da visão do estado atual "
+"para a visão do histórico."
 
 #. type: Content of: <p>
 #: src/plm/universe/sort/SortingWorld.html:48
@@ -8077,6 +8229,7 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:8
 msgid "Provided functions"
 msgstr ""
 
@@ -8121,10 +8274,9 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:31
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
-msgstr "[!java]booleano [/!]selecionado()  [!scala]:Booleano[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()  [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:23
@@ -8134,10 +8286,9 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:37
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]"
-msgstr "[!java]booleano [/!]selecionado()  [!scala]:Booleano[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()  [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26
@@ -8157,10 +8308,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:6
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getStackSize()  [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getX()[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getTamanhoDaPilha()  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:7
@@ -8170,10 +8320,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:9
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]int [/!]getPancakeRadius([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+msgstr "[!java|c]int [/!]getRaioPanqueca([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:10
@@ -8184,10 +8333,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:12
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isPancakeUpsideDown([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]éOMenor([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]panquecaDeCabeçaPraBaixo([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:13
@@ -8198,10 +8346,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:15
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
-msgstr "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:16
@@ -8212,10 +8359,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:18
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()   [!scala]:Boolean[/!]"
-msgstr "[!java]booleano [/!]selecionado()   [!scala]:Booleano[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()   [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:19
@@ -8224,10 +8370,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()   [!scala]:Boolean[/!]"
-msgstr "[!java]booleano [/!]selecionado()   [!scala]:Booleano[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]selecionado()   [!scala]:Boolean[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/Main.html:2
@@ -8295,7 +8440,9 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/Main.html:35
 msgid ""
-"Other exercises, for example on the Cohen's algorithm, or on the other ones."
+"Other exercises, for example on the Roti sorting, with a pile of Roti that "
+"have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
+"Pancake_sorting#The_identical_pancake_stack)."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -8551,14 +8698,6 @@ msgstr ""
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:80
-#, fuzzy
-#| msgid ""
-#| "To debug one world after the other and avoid that the messages of all "
-#| "worlds get intermixed, you can write your debug function only if the "
-#| "method <code>isSelected()</code> returns true. It will be so only for the "
-#| "entity that is currently selected in the graphical interface, that is "
-#| "probably the world you are currently debugging. This will help breaking "
-#| "the difficulty in parts by debugging the situation on after the other."
 msgid ""
 "To debug one world after the other and avoid that the messages of all worlds "
 "get intermixed, you can write your debug function only if the method "
@@ -8583,15 +8722,156 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/pancake/GatesBurnedPancake.html:2
+#: src/lessons/sort/pancake/CohenPancake.html:2
 msgid "Faster Burned Pancake Sorting"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesBurnedPancake.html:5
+#: src/lessons/sort/pancake/CohenPancake.html:4
 msgid ""
-"It's the same exercice that Gates Sorting but pancakes are burned.  consider "
-"all cases and check if the top pancake is in the right side before"
+"The Gates' algorithm that we saw in the previous exercise quickly sort a "
+"stack of unburned pancakes by increasing the size of the blocks of sorted "
+"pancakes. This is much faster that the naive algorithm which moves at each "
+"step the largest pancake to the bottom of still unsorted pancakes. Gates' "
+"algorithm manages to sort a stack of <i>n</i> pancakes in less than <i>(5n + "
+"5)/3</i> steps in the worst case, while the naive algorithm requires at most "
+"<i>2n</i> steps. Gates is thus about one third faster in the worst case."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:11
+msgid ""
+"In this exercise, we will explore an adaptation of the same idea to burnt "
+"pancakes. This was first published by David X. Cohen and Manuel Blum. David "
+"Cohen co-founded a few years later the Futurama TV show bursted with jokes "
+"inspired from scientific facts. Definitively, interesting people studied "
+"that little pancake problem..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:16
+msgid ""
+"The Cohen's algorithm is slightly easier than the Gates' one since it "
+"distinguishes less cases:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:18
+msgid ""
+"<b>Case 1:</b> At least one pancake is rightside up in the stack. Let <i>p</"
+"i> be the largest such pancake.  Note that <i>p + 1</i> must therefore be "
+"upside down, unless <i>p = n</i> (in which case there is no <i>p + 1</i> "
+"pancake)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:22
+msgid "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:23
+msgid "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:24
+msgid ""
+"<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
+"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
+"position, there is nothing to do. If not, you can move it to the bottom of "
+"the stack in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:28
+msgid ""
+"<b>The trick is that the pancake <i>p</i> should never be considered again.</"
+"b> Otherwise, you will consider that pancake again and again since it's "
+"rightside up, and since that's the largest pancake. To leave that pancake "
+"alone, you should keep track of the stack size that is still to be sorted. "
+"Any traversal of the stack must then only consider these pancakes, leaving "
+"alone the ones that are already in position at the bottom of the stack."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:36
+msgid ""
+"<b>Case 2:</b> All pancakes are downside. Again, we distinguish two sub-"
+"cases."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:39
+msgid ""
+"<b>Case 2.a:</b> There is at least one <i>p</i> for which <i>p+1</i> is "
+"higher than <i>p</i> (if there is several such <i>p</i>, take the largest "
+"one)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/CohenPancake.html:43
+msgid ""
+"<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
+"that case, we must have that setting:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:48
+msgid ""
+"As you can see, we achieve one join in 2 flips in the cases 1 or 2.a. Since "
+"we need to achieve n joins to sort the stack, we can sort the stack in "
+"<i>2n</i> steps if case 2.b does not occurs."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:51
+msgid ""
+"That case 2.b requires a very different handling as it is obviously not "
+"possible to achieve a join in only 2 flips.  But fortunately, we can "
+"leverage the very specific setting of the stack in that case to provide the "
+"following algorithm.  It sorts a stack in that exact configuration after "
+"exactly 2n steps."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/CohenPancake.html:56
+#, no-wrap
+msgid ""
+"Repeat n times\n"
+"    Flip the whole stack of n pancakes\n"
+"    Flip the top (n-1) pancakes\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:61
+msgid ""
+"It may sound somehow magic, but it actually works, as depicted on an example "
+"below."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/CohenPancake.html:65
+msgid ""
+"So, all in all, the Cohen algorithm manages to sort the stack of burnt "
+"pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
+"algorithm that requires <i>3n</i> steps."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/CohenPancake.html:68
+msgid "I cannot get it right."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/CohenPancake.html:69
+msgid ""
+"Don't worry. This exercise is very difficult, so it's ok if it does not work "
+"right away for you.  Add some relevant logging to your code to understand "
+"where it stop performing correctly.  Make sure to use the method "
+"<code>isSelected()</code> so that your logs only appears in the currently "
+"displayed world. In particular, it may help to print textually the state of "
+"the world each time you enter the main loop."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8711,10 +8991,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:14
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getBasesAmount() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getQuantidadeDeValores() [!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getQuantidadeDeBases() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:15
@@ -8723,10 +9002,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:17
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getPositionsAmount() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getQuantidadeDeValores() [!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getQuantidadeDePosições() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:18
@@ -8740,10 +9018,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:22
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getX()[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:23
@@ -8752,10 +9029,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:25
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getQuantidadeDeValores() [!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getPosiçãoDoBuraco() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:26
@@ -8764,10 +9040,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:28
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getPlayerColor([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java]boolean [/!]éOMenor([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr "[!java|c]int [/!]getCorDoJogador([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:29
@@ -8781,10 +9056,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:34
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isBaseSorted([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]éOMenor([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]baseEstáOrdenada([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:35
@@ -8798,10 +9072,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:41
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int [/!]to[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]move([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])"
-msgstr "[!java]void [/!]copia([!java]int [/!]de[!scala]:Int[/!], [!java]int [/!]para[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]mover([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:42
@@ -9096,6 +9369,16 @@ msgid ""
 "base)\". After a while, <code>isSorted()</code> will return true and your "
 "algorithm will stop."
 msgstr ""
+"Se não pudermos tornar o ordenamento mais rápido, podemos torná-lo\n"
+"mais fácil. Se pensar a respeito, parece natural adaptar a ordenção\n"
+"bolha para este problema: o buraco se torna a bolha que se move para\n"
+"cima e para baixo, ordenando um pouco o array a cada passagem. As\n"
+"linhas grandes são simples: \"enquanto (while) não estiver ordenado,\n"
+"mova o buraco para baixo até a base 0 (movendo o maior jogador de cada\n"
+"base em cada passo) e então de volta à base maximal (movendo o menor\n"
+"jogador de cada base)\". depois de um tempo,\n"
+"<code>estáOrdenado()</code> vai retornar verdadeiro e seu algoritmo\n"
+"vai parar."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:22
@@ -9124,10 +9407,8 @@ msgstr "O universo das tartarugas"
 
 #. type: Content of: <p>
 #: src/plm/universe/turtles/TurtleWorld.html:4
-#, fuzzy
-#| msgid "This is an adaptation of LOGO for the Java Learning Machine."
 msgid "This is an adaptation of LOGO for the Programmer's Learning Machine."
-msgstr "Esta é uma adaptação do LOGO para a Java Learning Machine."
+msgstr "Esta é uma adaptação do LOGO para o Programmer's Learning Machine."
 
 #. type: Content of: <p>
 #: src/plm/universe/turtles/TurtleWorld.html:6
@@ -9166,16 +9447,13 @@ msgstr "Move para frente e para trás na quantidade de passos pedidos."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:18
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])\n"
-#| "[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])"
+#, no-wrap
 msgid ""
 "[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
 "[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgstr ""
-"[!java]void [/!]direita([!java]double [/!]ângulo[!scala]:Double[/!])\n"
-"[!java]void [/!]esquerda([!java]double [/!]ângulo[!scala]:Double[/!])"
+"[!java|c]void [/!]direita([!java|c]double [/!]ângulo[!scala]:Double[/!])\n"
+"[!java|c]void [/!]esquerda([!java|c]double [/!]ângulo[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:20
@@ -9184,16 +9462,14 @@ msgstr "Vira à esquerda ou à direita um dado ângulo (em graus)."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:22
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]double [/!]getX()[!scala]:Double[/!]\n"
-#| "[!java]double [/!]getY()[!scala]:Double[/!]"
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:10
+#, no-wrap
 msgid ""
 "[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
 "[!java|c]double [/!]getY()[!scala]:Double[/!]"
 msgstr ""
-"[!java]double [/!]getX()[!scala]:Double[/!]\n"
-"[!java]double [/!]getY()[!scala]:Double[/!]"
+"[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
+"[!java|c]double [/!]getY()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:24
@@ -9202,19 +9478,15 @@ msgstr "Retorna a posição atual da tartaruga."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:26
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+#, no-wrap
 msgid ""
 "[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
 "[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
 "[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 msgstr ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+"[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
+"[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
+"[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:29
@@ -9223,10 +9495,9 @@ msgstr "Teletransporta a tartaruga para uma nova posição (sem deixar rastros).
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:31
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
-msgstr "[!java]void [/!]moverPara([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]moverPara([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:32
@@ -9235,10 +9506,9 @@ msgstr "Move a tartaruga para uma nova posição."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:34
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])"
-msgstr "[!java]void [/!]círculo([!java]double [/!]radius[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]círculo([!java|c]double [/!]raio[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:35
@@ -9247,10 +9517,9 @@ msgstr "Desenha um círculo de raio especificado com o centro na tartaruga."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:37
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]hide()"
+#, no-wrap
 msgid "[!java|c]void [/!]hide()"
-msgstr "[!java]void [/!]esconder()"
+msgstr "[!java|c]void [/!]esconder()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:38
@@ -9259,10 +9528,9 @@ msgstr "Esconde a tartaruga."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:40
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]show()"
+#, no-wrap
 msgid "[!java|c]void [/!]show()"
-msgstr "[!java]void [/!]mostrar()"
+msgstr "[!java|c]void [/!]mostrar()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:41
@@ -9271,10 +9539,9 @@ msgstr "Mostra novamente a tartaruga."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:43
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]éVisível()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]éVisível()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:44
@@ -9283,10 +9550,9 @@ msgstr "Retorna se a tartaruga é visível ou não."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:46
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]clear()"
+#, no-wrap
 msgid "[!java|c]void [/!]clear()"
-msgstr "[!java]void [/!]clear()"
+msgstr "[!java|c]void [/!]limpar()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:47
@@ -9295,10 +9561,9 @@ msgstr "Remove todos os rastros do papel."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:49
-#, fuzzy, no-wrap
-#| msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+#, no-wrap
 msgid "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
-msgstr "[!java]double [/!]getDireção()[!scala]:Double[/!]"
+msgstr "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:50
@@ -9307,10 +9572,9 @@ msgstr "Retorna a direção atual da tartaruga (em graus)."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:52
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])"
-msgstr "[!java]void [/!]setDireção([!java]double [/!]ângulo[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]setDireção([!java|c]double [/!]ângulo[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:53
@@ -9324,10 +9588,9 @@ msgstr "Funções da caneta"
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:57
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]penUp()"
+#, no-wrap
 msgid "[!java|c]void [/!]penUp()"
-msgstr "[!java]void [/!]levantarCaneta()"
+msgstr "[!java|c]void [/!]levantarCaneta()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:58
@@ -9340,10 +9603,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:61
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]penDown()"
+#, no-wrap
 msgid "[!java|c]void [/!]penDown()"
-msgstr "[!java]void [/!]abaixarCaneta()"
+msgstr "[!java|c]void [/!]abaixarCaneta()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:62
@@ -9355,10 +9617,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:64
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]canetaEstáAbaixada()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]canetaEstáAbaixada()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:65
@@ -9367,10 +9628,9 @@ msgstr "Retorna a posição atual da caneta como um booleano."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:67
-#, fuzzy, no-wrap
-#| msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
+#, no-wrap
 msgid "[!java|c]Color [/!]getColor()[!scala]:Color[/!]"
-msgstr "[!java]Color [/!]getColor()[!scala]:Color[/!]"
+msgstr "[!java|c]Cor [/!]getCor()[!scala]:Cor[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:68
@@ -9379,10 +9639,9 @@ msgstr "Retorna a cor atual da caneta."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:70
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
-msgstr "[!java]void [/!]setCor([!java]Color [/!]cor[!scala]:Color[/!])"
+msgstr "[!java|c]void [/!]setCor([!java|c]Cor [/!]cor[!scala]:Cor[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:71
@@ -9595,14 +9854,19 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/square/FourSquare.html:22
-#, fuzzy
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
 "<code>forward()</code> method takes the amount of steps to do not as an "
 "integer, but as a [!python]point number[/!][!java|scala|c]double[/!] (see "
 "\"About this world\" for more details)."
-msgstr "From a practical point of view, most of the methods you knew about buggles still work with turtles, with some minor adaptations. In particular, the <code>avançar()</code> method takes the amount of steps to do not as an integer, but as a [!python]point number[/!][!java|scala|c]double[/!] (see \"About this world\" for more details)."
+msgstr ""
+"De um ponto de vista prático, a maioria dos métodos que você conhece\n"
+"sobre buggles ainda funciona com tartarugas, com pequenas\n"
+"adaptações. Em particular, o método <code>forward()</code> pega a\n"
+"quantidade de passos a dar não como inteiro, mas como [!python]point\n"
+"number[/!][!java|scala|c]double[/!] (veja \"Sobre este mundo\" para\n"
+"maiores detalhes)."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/square/FourSquare.html:29
@@ -9664,16 +9928,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:6
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]polygonFractal ([!java|c]int [/!]levels[!scala]:Int[/!], [!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
-msgstr ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]fractalDoPolígono ([!java|c]int [/!]níveis[!scala]:Int[/!], [!java|c]int [/!]lados[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:8
@@ -9872,16 +10129,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/tree/Tree.html:6
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]tree([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]angle[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
-msgstr ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]árvore([!java|c]int [/!]passos[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!], [!java|c]double [/!]ângulo[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/tree/Tree.html:8
@@ -9937,10 +10187,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/sierpinski/Sierpinski.html:7
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]sierpinski([!java|c]int [/!]level[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!])"
-msgstr "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]sierpinski([!java|c]int [/!]nível[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/sierpinski/Sierpinski.html:9
@@ -9966,10 +10215,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/spiral/Spiral.html:7
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
+#, no-wrap
 msgid "[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]length[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])"
-msgstr "[!java]boolean [/!]éMenorQue([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]valor[!scala]:Int[/!])[!scala] :Boolean[/!]"
+msgstr "[!java|c]void [/!]espiral([!java|c]int [/!]passos[!scala]:Int[/!], [!java|c]int [/!]ângulo[!scala]:Int[/!], [!java|c]int [/!]comprimento[!scala]:Int[/!], [!java|c]int [/!]incremento[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/spiral/Spiral.html:9
@@ -9980,7 +10228,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/spiral/Spiral.html:12
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "spiral(5, 90, 0, 3);\n"
 "  forward(0);\n"
@@ -9999,22 +10247,22 @@ msgid ""
 "          left(90);\n"
 "          spiral(0,90,12,3);\n"
 msgstr ""
-"spiral(5, 90, 0, 3);\n"
+"espiral(5, 90, 0, 3);\n"
 "  avançar(0);\n"
-"  left(90);\n"
-"  spiral(4,90,3,3);\n"
+"  esquerda(90);\n"
+"  espiral(4,90,3,3);\n"
 "    avançar(3);\n"
-"    left(90);\n"
-"    spiral(3,90,6,3);\n"
+"    esquerda(90);\n"
+"    espiral(3,90,6,3);\n"
 "      avançar(6);\n"
-"      left(90);\n"
-"      spiral(2,90,9,3);\n"
+"      esquerda(90);\n"
+"      espiral(2,90,9,3);\n"
 "        avançar(9);\n"
-"        left(90);\n"
-"        spiral(1,90,12,3);\n"
+"        esquerda(90);\n"
+"        espiral(1,90,12,3);\n"
 "          avançar(12);\n"
-"          left(90);\n"
-"          spiral(0,90,12,3);\n"
+"          esquerda(90);\n"
+"          espiral(0,90,12,3);\n"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/spiral/SpiralUse.html:2
@@ -10096,16 +10344,9 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:19
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:23
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
-msgstr ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]dragão([!java|c]int [/!]ordem[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:22
@@ -10168,16 +10409,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:32
-#, fuzzy, no-wrap
-#| msgid ""
-#| "[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-#| "[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
-msgstr ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+msgstr "[!java|c]void [/!]inverterDragão([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:34
@@ -10364,10 +10598,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:14
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]void [/!]move([!java|c]int [/!]src, [!java|c]int [/!]dst)"
-msgstr "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]mover([!java|c]int [/!]src, [!java|c]int [/!]dst)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:16
@@ -10379,10 +10612,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:20
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]int [/!]getSlotSize([!java|c]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java]int [/!]getValor([!java]int [/!]idx[!scala]:Int[/!])"
+msgstr "[!java|c]int [/!]getTamanhoSlot([!java|c]int [/!]slot)[!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:21
@@ -10394,10 +10626,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
+#, no-wrap
 msgid "[!java|c]int [/!]getRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java]int [/!]getValor([!java]int [/!]idx[!scala]:Int[/!])"
+msgstr "[!java|c]int [/!]getRaio([!java|c]int [/!]slot)[!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
@@ -11995,8 +12226,9 @@ msgid ""
 "\" strings will not overlap."
 msgstr ""
 
-#. type: Content of: <h3>
+#. type: Content of: <h2>
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:2
 msgid "Lunar Lander"
 msgstr ""
 
@@ -12055,6 +12287,288 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
 msgid "This lesson assumes some basic programming and physics skills."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:4
+msgid ""
+"In this universe you pilot a lunar lander. At each simulation step you're "
+"given the lander's position, speed, angle and thrust and must issue a "
+"command adjusting its angle and thrust."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:12
+msgid "Get the X and Y position of the lander."
+msgstr "Obter (Get) as posições X e Y do \"lander\"."
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:13
+#, no-wrap
+msgid ""
+"[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
+"[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
+msgstr ""
+"[!java|c]double [/!]getVelocidadeX()[!scala]:Double[/!]\n"
+"[!java|c]double [/!]getVelocidadeY()[!scala]:Double[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:15
+msgid "Get the horizontal and vertical speed of the lander."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:17
+#, no-wrap
+msgid ""
+"[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
+"[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])"
+msgstr ""
+"[!java|c]double [/!]getÂngulo()[!scala]:Double[/!]\n"
+"[!java|c]void [/!]setÂnguloDesejado([!java|c]double [/!]ÂnguloDesejado[!scala]:Double[/!])"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:19
+msgid "Get or set the angle of the lander."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:20
+msgid ""
+"An angle of 0° denotes a vertical position where the \"head\" of the lander "
+"points up.  This is the angle you must land with. A positive angle denotes a "
+"left-leaning lander, a negative angle a right-leaning one. You cannot lean "
+"more than by ±90°, and the angle can vary by at most ±5° in one step."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:25
+#, no-wrap
+msgid ""
+"[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
+"[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
+msgstr ""
+"[!java|c]int [/!]getImpulso()[!scala]:Int[/!]\n"
+"[!java|c]void [/!]setImpulsoDesejado([!java|c]int [/!]thrust[!scala]:Int[/!])"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:27
+msgid "Get or set the thrust of the lander."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:27
+msgid ""
+"You can only increment or decrement the thrust by 1 between two simulation "
+"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
+"the next step. If you ask for less than 0 (resp. more than 4), everything "
+"will be as if you had asked for 0 (resp. 4)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:33
+#, no-wrap
+msgid "[!java|c]int [/!]getFuel()[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getCombustível()[!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:34
+msgid ""
+"Get the remaining fuel in the lander.  At each step of the simulation the "
+"lander consumes as many fuel units as the current thrust. Once you run out "
+"of fuel you're in free fall so beware!"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:2
+msgid "Lander 101"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:4
+msgid ""
+"Congratulations! You won a (one-way) trip to Mars in a cereal box. NASA was "
+"kind enough to donate the Lunar Excursion Module for this mission, so that's "
+"what you'll be flying."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:8
+msgid ""
+"Before you take off, you must go through some basic landing simulation. You "
+"shouldn't have to fly the lander if all goes as planned but, as they say, "
+"\"better safe than sorry\"."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:12
+msgid ""
+"Your mission is to <b>land the lander with a vertical speed of at most 10 m/"
+"s.</b> There are two ways you can influence the lander's course: by "
+"adjusting its angle or by adjusting its thrust. In this simulation we only "
+"care about adjusting the thrust, expressed in m/s²."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:17
+msgid ""
+"The <code>step()</code> function that you should write now will be called "
+"every 0.1 second during the simulation. It should set the desired thrust of "
+"the next simulation step, by calling <code>[!java]void "
+"[/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</"
+"code> where <code>desiredThrust</code> is some integer between 0 and 4. You "
+"can only increment or decrement the thrust by 1 between two simulation "
+"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
+"the next step. If you ask for less than 0 (resp. more than 4), everything "
+"will be as if you had asked for 0 (resp. 4)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+msgid ""
+"In order to take informed decisions, you can query the lander's state. In "
+"this simulation you'll probably be interested in its vertical position: "
+"<code>[!java]double [/!]getY()[!scala]:Double[/!]</code>, and its vertical "
+"speed: <code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. You "
+"can also ask for the thrust via <code>[!java]int [/!]getThrust()[!scala]:"
+"Integer[/!]</code> in case you don't remember what you asked for. Remember "
+"that Mars' gravity is 3.711 m/s², it might come in handy."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+msgid ""
+"One last thing: the lander is pretty small so you don't have much fuel. At "
+"each step of the simulation the lander consumes as many fuel units as the "
+"current thrust. Once you run out of fuel you're in free fall so beware! You "
+"can consult the remaining amount of available fuel units using <code>[!"
+"java]int [/!]getFuel()[!scala]:Integer[/!]</code>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:2
+msgid "Locate a Landing Zone"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:4
+msgid ""
+"After 200 days of traveling space and eating cereals you finally reach Mars. "
+"Time to land at last!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
+msgid ""
+"The lander is on autopilot and all you have to do is look around and tell it "
+"where to land. The lander must <b>land on a flat zone</b> it you want to "
+"remain in one piece. You indicate the lander where to land by modifying the "
+"<code>getLandingZone</code> function so that it returns a [!java|"
+"scala]<code>Segment</code> representing the zone of your choice."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:13
+msgid ""
+"A segment is composed of two <code>Point</code>s, each of them composed of "
+"two <code>double</code>s. A segment is built via the <code>Segment(Point "
+"start, Point end)</code> constructor. A point is built via the "
+"<code>Point(double x, double y)</code> constructor. A point's coordinates "
+"are accessible via its <code>double x()</code> and <code>double y()</code> "
+"methods."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:17
+msgid ""
+"[/!] [!python]tuple of two X coordinates representing the zone of your "
+"choice.[/!]"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:21
+msgid ""
+"In order to determine which zone to return, you'll need to call <code>[!java|"
+"scala]List&lt;Point&gt; [/!]getGround()</code>, which returns the vertices "
+"of the ground's profile as a list of [!java|scala]Point[/!] [!python]tuples "
+"(x,y)[/!]."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:26
+msgid ""
+"One more thing: your function should return a valid flat zone in any kind of "
+"situation, not just for the currently visualized one. That's because it will "
+"be not only tested against that world, but also against the one we had in "
+"the previous exercise. As usual, you can see the other existing worlds with "
+"the appropriate combobox."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:32
+msgid ""
+"Have a safe landing! Don't forget to put on your space suit on your way out."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:2
+msgid "Fly the Lander!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:4
+msgid ""
+"After 30 days of staring at rocks and eating cereals you decide it's time to "
+"go explore other parts of the planet."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:7
+msgid ""
+"You fly for a while and suddenly realize you're almost out of fuel.  "
+"Unfortunately you're in a delicate situation and the autopilot is helpless.  "
+"You will have to pilot the lander yourself. Your mission is to <b>land the "
+"lander on a flat zone with a vertical speed less than 10 m/s, an horizontal "
+"speed less than 5 m/s and an angle of 0°.</b>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:13
+msgid ""
+"You must define two functions: <code>[!java]void [/!]initialize()</code> and "
+"<code>[!java]void [/!]step()</code>. <code>initialize()</code> is called "
+"once just after you press \"Run\". You can use it for chosing some flat "
+"zone. As before, <code>step()</code> is called every 0.1 second and is used "
+"for adjusting the lander's thrust and angle. As in the first exercise the "
+"lander's thrust is adjusted via <code>[!java]void [/!]setDesiredThrust([!"
+"java]int [/!]desiredThrust[!scala]:Integer[/!])</code>.  But you can also "
+"control its angle via <code>[!java]void [/!]setDesiredAngle([!java]double "
+"[/!]desiredAngle[!scala]:Double[/!])</code>.  An angle of 0° denotes a "
+"vertical position where the \"head\" of the lander points up.  This is the "
+"angle you must land with. A positive angle denotes a left-leaning lander, a "
+"negative angle a right-leaning one. You cannot lean more than by ±90°, and "
+"the angle can vary by at most ±5° in one step."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:26
+msgid ""
+"As in the previous lesson, <code>[!java]List&lt;Point&gt; [/!]getGround()[!"
+"scala]:List[Point][/!]</code> returns the vertices of the ground's profile "
+"from left to right.  Please refer to the documentation (Help/About this "
+"world) for a reference manual of your lunar lander."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:30
+msgid ""
+"As before, your program must safely land the lander in all the situations "
+"encountered so far in addition to this new one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:33
+msgid "Good luck, try not to crash!"
 msgstr ""
 
 #. type: Content of: <h2>
@@ -12130,19 +12644,14 @@ msgstr ""
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:31
-#, fuzzy
-#| msgid ""
-#| "The <b>Demo</b> button shows you the execution of the expected solution. "
-#| "During its execution, you may want to swich the seen world to see the "
-#| "different expected solutions."
 msgid ""
 "The <b>Demo</b> button shows you the execution of the expected solution. "
 "During its execution, you may want to switch the seen world to see the "
 "different expected solutions."
 msgstr ""
-"O botão <b>Demo</b> mostra a execução da solução esperada. Durante sua "
-"execução, você pode alternar o mundo visto para ver as diferentes soluções "
-"esperadas."
+"O botão <b>Demo</b> mostra a execução da solução esperada. Durante sua\n"
+"execução, você pode alternar o mundo visto para ver as diferentes\n"
+"soluções esperadas."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:34
@@ -12162,15 +12671,6 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:41
 #, fuzzy
-#| msgid ""
-#| "<b>Mission and editor tabs:</b> this is were you read this very text. "
-#| "This area contains several tabs to which you can access by clicking on "
-#| "their name on the top left. The first tab (which is always named "
-#| "<b>Mission</b>)  contains a presentation of the current exercise. To "
-#| "solve an exercise, you need to write your code in the other tabs. For "
-#| "example, you can now clic on the <b>Source Code</b> tab to see the actual "
-#| "source. It is empty because there is no code to write for this "
-#| "introduction exercise."
 msgid ""
 "<b>Mission and editor tabs:</b> this is were you read this very text. This "
 "area contains several tabs to which you can access by clicking on their name "
@@ -12180,13 +12680,14 @@ msgid ""
 "the <b>Source Code</b> tab to see the actual source. If it is empty, that's "
 "because you did not write any code yet."
 msgstr ""
-"<b>Abas de missão e editor:</b> é onde você está lendo este texto. Esta área "
-"contém várias abas as quais você pode acessar clicando seu nome no canto "
-"superior esquerdo. A primeira aba (que sempre se chama <b>Missão</b>) contém "
-"uma apresentação do exercício atual. Para resolver um exercício, você "
-"precisa escrever seu código nas outras abas. Por exemplo, você pode agora "
-"clicar na aba <b>Código Fonte</b> para ver o código real. Vai estar vazia "
-"por que não existe código para escrever neste exercício introdutório."
+"<b>Abas de missão e editor:</b> é onde você está lendo este\n"
+"texto. Esta área contém várias abas as quais você pode acessar\n"
+"clicando em seu nome no canto superior esquerdo. A primeira aba (que\n"
+"sempre se chama <b>Missão</b>) contém uma apresentação do exercício\n"
+"atual. Para resolver um exercício, você precisa escrever seu código\n"
+"nas outras abas. Por exemplo, você pode agora clicar na aba <b>Código\n"
+"Fonte</b> para ver o código real. Se estiver vazia, é por que você\n"
+"ainda não escreveu nenhum código."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:49
@@ -12208,39 +12709,30 @@ msgstr ""
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:57
-#, fuzzy
-#| msgid ""
-#| "A scrolling menu allows to choose the world. Indeed, the program you "
-#| "write may be executed in several worlds to test it in differing "
-#| "conditions. This menu allows you to choose the world you want to see."
 msgid ""
 "A scrolling menu allows to choose the world. Indeed, the program you write "
 "may be executed in several worlds to test it in differing conditions. This "
 "menu allows you to choose the world you want to see. Note that this "
 "scrolling menu is hidden if there is only one world in your exercise."
 msgstr ""
-"Um menu rolante serve para escolher o mundo. Na verdade, o programa que você "
-"escreveu pode ser executado em vários mundos para testar ele em diferentes "
-"condições. Este menu é para você escolher o mundo que você quer ver."
+"Um menu rolante serve para escolher o mundo. Na verdade, o programa\n"
+"que você escreveu pode ser executado em vários mundos para testar ele\n"
+"em diferentes condições. Este menu é para você escolher o mundo que\n"
+"você quer ver. Observe que este menu rolante fica oculto se houver\n"
+"apenas um mundo no seu exercício."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:62
-#, fuzzy
-#| msgid ""
-#| "A slider placed underneath allows to choose the animation speed of the "
-#| "world. More precisely, it allows to choose the delay (in milliseconds) "
-#| "that the buggles must wait after each action to allow you to see what "
-#| "they are doing."
 msgid ""
 "A slider placed right bellow allows to choose the animation speed of the "
 "world. More precisely, it allows to choose the delay (in milliseconds) that "
 "the buggles must wait after each action to allow you to see what they are "
 "doing."
 msgstr ""
-"Um \"slider\" colocado abaixo serve para escolher a velocidade da animação "
-"do mundo. Mais precisamente, permite escolher o atraso (em milisegundos) que "
-"os buggles devem esperar depois de cada ação para permitir que você veja o "
-"que eles estão fazendo."
+"Um \"slider\" colocado logo abaixo serve para escolher a velocidade da\n"
+"animação do mundo. Mais precisamente, permite escolher o atraso (em\n"
+"milisegundos) que os buggles devem esperar depois de cada ação para\n"
+"permitir que você veja o que eles estão fazendo."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:67
