@@ -3,7 +3,7 @@
   Let's get ready for the Big Show of this year.
   
   * Improved translations:
-    - Brazilian Portuguese: Now at 37% despite the content changes
+    - Brazilian Portuguese: Missions at 39% despite content changes
     - French: Engine and Missions translation back to 100%
   * User Interface:
     - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
