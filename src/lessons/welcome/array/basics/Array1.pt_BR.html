@@ -2,22 +2,25 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>[!java|scala]Arrays[/!][!python]Lists[/!] e nós</h1>
 
-The goal of this exercise is to reproduce the pattern of the first row in
-the other rows with a shift of one cell (see the Objective tab for
-details). The biggest difference between this exercise and the others we had
-on patterns is that you have to read the pattern (on first row) before
-reproducing it. You cannot do otherwise because the same code will be
-executed on three different worlds, each of them having a specific pattern.
+O objetivo deste exercício é reproduzir o padrão da primeira linha nas
+outras linhas com um deslocamento de uma célula (veja a aba Objetivo
+para detalhes). A maior diferença entre este exercício e os outros
+sobre padrões é que você tem que ler o padrão (na primeira linha)
+antes de reproduzí-lo. Você não pode fazer de outro jeito por que o
+mesmo código será executado em três mundos diferentes, cada um com seu
+próprio padrão.
 
-<p>One solution is to read the next cell, and go copy it in position before
-coming back to read the second cell. But since it is forbidden to use the
-methods to teleport the buggle to a specific position (<code>setPos()</code>
-and similar), this approach will be a pain to implement. </p>
+<p>Uma solução é ler a próxima célula, e copiar ela na posição antes de
+voltar para ler a segunda célula. Mas já que é proibido usar os
+métodos de teletransporte de buggle para uma posição específica
+(<code>setPos()</code> e similares), esta abordagem seria muito
+difícil de implementar. </p>
  
-<p>The simplest is to store the sequence of colors that constitute the whole
-pattern in an [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  But
-before we can do so, we should learn a bit what
-[!java|scala]arrays[/!][!python]lists[/!] are.</p>
+<p>O mais simples é armazenar a sequência de cores que constituem o
+padrão inteiro numa
+[!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  Mas antes de
+fazer isto, devemos aprender um pouco sobre o que
+[!java|scala]arrays[/!][!python]lists[/!] são.</p>
 
 <h2>[!java|scala]Arrays[/!][!python]List[/!]</h2> 
 
