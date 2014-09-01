@@ -1,44 +1,47 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h1>Lander 101</h1>
+<h1>Se poser pour les nuls</h1>
 
-<p>Congratulations! You won a (one-way) trip to Mars in a cereal box. NASA was
-kind enough to donate the Lunar Excursion Module for this mission, so that's
-what you'll be flying.</p>
+<p>Bravo ! Vous avez gagné dans une boîte de céréales un voyage (aller simple)
+pour Mars. La NASA vous a même fourni un module d'excursion lunaire pour
+l'occasion, et c'est donc avec ce véhicule que vous voyagerez.</p>
 
-<p>Before you take off, you must go through some basic landing simulation. You
-shouldn't have to fly the lander if all goes as planned but, as they say,
-"better safe than sorry".</p>
+<p>Avant le décollage, vous devez vous entraîner sur simulateur aux bases de
+l'alunissage. Si tout se passe comme prévu, vous ne devriez pas avoir à
+voler en mode manuel, mais mieux vaut prévenir que guérir, comme ils disent.</p>
 
-<p>Your mission is to <b>land the lander with a vertical speed of at most 10
-m/s.</b> There are two ways you can influence the lander's course: by
-adjusting its angle or by adjusting its thrust. In this simulation we only
-care about adjusting the thrust, expressed in m/s².</p>
+<p>Votre mission est de <b>poser le module avec une vitesse verticale
+inférieure à 10 m/s</b>. Il y a deux façons d'influer sur la trajectoire du
+module : en modifiant son angle, ou en réglant la poussée de son
+moteur. Dans cette simulation, nous ne nous intéressons qu'à la poussée,
+exprimée en m/s².</p>
 
-<p>The <code>step()</code> function that you should write now will be called
-every 0.1 second during the simulation. It should set the desired thrust of
-the next simulation step, by calling <code>[!java]void
-[/!]setDesiredThrust([!java]int
-[/!]desiredThrust[!scala]:Integer[/!])</code> where
-<code>desiredThrust</code> is some integer between 0 and 4. You can only
-increment or decrement the thrust by 1 between two simulation steps, so if
-the current thrust is 2 and you ask for 4, you'll only get 3 in the next
-step. If you ask for less than 0 (resp. more than 4), everything will be as
-if you had asked for 0 (resp. 4).</p>
+<p>Vous devez écrire le corps de la fonction <code>step()</code>, qui sera
+appelée tous les dixièmes de seconde pendant la simulation. Elle doit
+ajuster la poussée du moteur en utilisant la fonction <code>[!java]void
+[/!]setPouseeDesiree([!java]int [/!]poussee[!scala]:Integer[/!])</code> où
+<code>poussee</code> est un entier entre 0 et 4. Vous ne pouvez incrémenter
+ou décrémenter la poussée que de 1 entre deux pas de la simulation. Ainsi,
+si la poussée du moteur est actuellement de 2 et que vous demandez 4, vous
+n'aurez que 3 à la prochaine étape. Si vous demandez une valeur inférieure à
+0 (ou supérieure à 4), tout se passera comme si vous aviez demandé 0 (ou 4).</p>
 
-<p>In order to take informed decisions, you can query the lander's state. In
-this simulation you'll probably be interested in its vertical position:
-<code>[!java]double [/!]getY()[!scala]:Double[/!]</code>, and its vertical
-speed: <code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. You
-can also ask for the thrust via <code>[!java]int
-[/!]getThrust()[!scala]:Integer[/!]</code> in case you don't remember what
-you asked for. Remember that Mars' gravity is 3.711 m/s², it might come in
-handy.</p>
+<p>Afin de prendre des décisions informées, vous pouvez demander des
+informations sur l'état actuel du module. Dans cette simulation, vous ne
+serez probablement intéressé que par sa position verticale (accessible grâce
+à <code>[!java]double [/!]getY()[!scala]:Double[/!]</code>) et sa vitesse
+verticale (accessible grâce à <code>[!java]double
+[/!]getVitesseY()[!scala]:Double[/!]</code>). Vous pouvez également demander
+la poussée actuelle du moteur (avec <code>[!java]int
+[/!]getPoussee()[!scala]:Integer[/!]</code>) si vous avez oublié ce que vous
+avez demandé. Rappelez vous que la gravité martienne est de 3.711 m/s², cela
+peut vous être utile.</p>
 
-<p>One last thing: the lander is pretty small so you don't have much fuel. At
-each step of the simulation the lander consumes as many fuel units as the
-current thrust. Once you run out of fuel you're in free fall so beware! You
-can consult the remaining amount of available fuel units using
-<code>[!java]int [/!]getFuel()[!scala]:Integer[/!]</code>.</p>
+<p>Une dernière chose : le module est plutôt petit, et vous n'avez pas tant de
+carburant que cela. À chaque pas de simulation, il consomme autant d'unité
+de carburant que la poussée actuelle du moteur. Si vous tombez en panne
+sèche, vous serez en chute libre alors attention ! Vous pouvez consulter le
+niveau du réservoir avec <code>[!java]int
+[/!]getFuel()[!scala]:Integer[/!]</code>.</p>
 
 <p>Bon courage !</p>

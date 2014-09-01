@@ -5,8 +5,8 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class Array1 extends ExerciseTemplated {
 
@@ -41,9 +41,9 @@ public class Array1 extends ExerciseTemplated {
 		((BuggleWorld) myWorlds[2]).setColor(0,3,Color.yellow);
 		((BuggleWorld) myWorlds[2]).setColor(0,4,Color.black);
 
-		new Buggle(myWorlds[0], "Picasso", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
-		new Buggle(myWorlds[1], "Braque", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
-		new Buggle(myWorlds[2], "Ingres", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorlds[0], "Picasso", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorlds[1], "Braque", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorlds[2], "Ingres", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);
 	}

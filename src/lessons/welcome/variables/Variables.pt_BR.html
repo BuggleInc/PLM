@@ -39,8 +39,8 @@ deve escrever:</p>
 símbolo de igual (=) seguido do valor depois da declaração.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
-  <p>So, if you want that the variable contains 5 as initial value, you should
-type: </p>
+  <p>Então se você quiser que a variável tenha o valor inicial de 5, você deve
+digitar: </p>
   <pre>x = 5</pre>
 [/!] [!scala]
   <p>Logo, para criar uma variável chamada <b>x</b> que vai guardar inteiros e
@@ -71,12 +71,12 @@ fácil de escrever mas os erros surgem com mais frequencia do que em
 [!thelang].</p>
 <p>Aqui estão alguns dos tipos em [!thelang]:</p>
 <ul>
-  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, for integers;</li>
-  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
-  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that
-are values being either [!c]1[/!][!java|scala]true[/!] or
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, para inteiros;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, para números com vírgula;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, para booleanos, que
+são valores ou [!c]1[/!][!java|scala]true[/!] ou
 [!c]0[/!][!java|scala]false[/!];</li>
-  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, for char strings.</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, para cadeias de caracteres.</li>
 </ul>
 [/!] [!python]
 <p>As you can see, the variables are not <b>typed</b> in Python, which means
@@ -85,12 +85,12 @@ any type of data of a given type: you can store a number in a variable and
 latter on store a number in the same variable.  The values themselves are
 still typed, but not the variable. Python is said to be <b>dynamically
 typed</b>.</p>
-<p>Other languages (such as Java, Scala or C) are much more picky and prevent
-you to mix data types in a given variable (they are said to be <b>statically
-typed</b>).  This seems annoying at the first glance, but this kind of
-restriction allows the compiler to catch more logic errors for you, which is
-also good. In some sense, Python is easier to write but errors can sneak in
-more easily.</p>
+<p>Outras linguagens (como Java, Scala ou C), são muito mais exigentes e
+impedem que você misture tipos de dados numa certa variável (dizemos que
+elas são <b>esticamente tipadas</b>). Isto parece inconveniente à primeira
+vista, mas este tipo de restrição permite que o compilador capture mais
+erros de lógica para você, o que também é bom. Num certo sentido, Python é
+mais fácil de escrever mas erros podem surgir mais facilmente.</p>
 [/!]
   
 
@@ -105,9 +105,9 @@ compilador pode produzir código mais rápido em alguns casos.</p>
 <p>Variáveis funcionam muito parecido com strings, números com vírgula e
 valores booleanos.</p>
 
-<pre class="c">char* name = "Martin Quinson";
-double height=1.77; <span class="comment">// in meters</span>
-int married=1;<span class="comment">// 1 means "true"; "false" would be written 0</span></pre>
+<pre class="c">char* nome = "Martin Quinson";
+double altura=1.77; <span class="comment">// em metros</span>
+int casado=1;<span class="comment">// 1 significa "verdadeiro"; falso é 0</span></pre>
 
 
 <pre class="java">String nome = "Martin Quinson";
@@ -136,7 +136,7 @@ aritmética contendo constantes, variáveis e operações.</p>
 
 <pre>x = 3 + 2[!java|c];[/!]
 x = 3 * x[!java|c];[/!]
-[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></pre> 
+[!java|scala|python]saudação = "Oi "+nome[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + é (também) a operação para concatenar (ie, para juntar) strings[/!]</span></pre> 
 
 <h3>Objetivo do exercício</h3>
 Agora vamos fazer exercícios mais desafiantes, certo? O objetivo agora é
@@ -158,11 +158,11 @@ passo 3 se você não contou a quantidade de passos dados na primeira
 fase. Você pode usar uma variável para isto, que pode ser chamada
 <code>quantidadeDePassos</code>.</p>
 
-<p>Create an integer variable before phase 1, initialize it to 0, and each time
-you move one step forward, increment its value by one (<code>stepAmount =
-stepAmount + 1;</code>[!java|c] or <code>stepAmount++;</code>, both syntaxes
-being equivalent[/!]).  Such variable which takes every values of a given
-range is often called a <b>stepper</b>.</p>
+<p>Crie uma variável inteira antes da fase 1, inicie ela com 0 e a cada vez que
+der um passo para frente, incremente ela de um (<code>quantidadeDePassos =
+quantidadeDePassos + 1;</code>[!java] ou <code>quantidadeDePassos++;</code>,
+ambas as sintaxes são equivalentes[/!]).  Tais variáveis que pegam cada
+valor de um dado intervalo são normalmente chamadas de <b>stepper</b>.</p>
   
 [!python|scala]
 <p>Se você conhece Java ou outras linguagens, você provavelmente vai tentar

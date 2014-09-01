@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -128,7 +128,7 @@ public class ExoTest {
 			
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
-					ent.runIt(exo.lastResult);
+					lang.runEntity(ent,exo.lastResult);
 			
 			exo.check();
 		} catch (PLMCompilerException e) {
@@ -163,7 +163,7 @@ public class ExoTest {
 		testCorrectionEntity(Game.SCALA);
 	}
 	
-	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
+//	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testCEntity() {
 		if (!exo.getProgLanguages().contains(Game.C)) 
 			fail("Exercise "+exo.getId()+" does not support C");

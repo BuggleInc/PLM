@@ -1,17 +1,19 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Métodos retornando um resultado</h2>
+<h2>Functions</h2>
 
-<p>Writing a method returning a result is not really more work than writing a
-method without any result.  [!java|c]You simply have to specify the data
-type of expected results before the method name (where we previously had
-<code>void</code>).[/!] [!scala]You simply have to add a column (:) after
-the parenthesis and write the type of data that your method will return, and
-add an equal sign (=). This syntax is actually rather close to defining a
-variable, with its type, that is actually a function.[/!] You can use the
-<code>return</code> instruction anywhere in your method body to specify that
-the computation is done (the method is not further executed), and that the
-result is the value following the <code>return</code> keyword.</p>
+<p>Quite often, you want to write a method that compute some value and returns
+it. Methods returning results are called <b>functions</b>.  Writing a
+function is not really harder than writing a simple method.  [!java|c]You
+simply have to specify the data type of expected results before the function
+name (where we previously had <code>void</code>).[/!] [!scala]You simply
+have to add a colon (:) after the parenthesis and write the type of data
+that your function will return, and add an equal sign (=). This syntax is
+actually rather close to defining a variable, with its type, that is
+actually a function.[/!] You can use the <code>return</code> instruction
+anywhere in your function body to specify that the computation is done (the
+function is not further executed), and that the result is the value
+following the <code>return</code> keyword.</p>
 
 <pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
     return 3.14159[!java|c];[/!]
@@ -26,43 +28,44 @@ retornar.</p>
 branches of a conditional. In fact, it is forbidden to have any execution
 path of your body without any <code>return</code>, or to write some code
 after the <code>return</code> instruction. Indeed, if the machine reaches
-the end of the method without finding any <code>return</code>, it cannot
-know what actual value to give back to the method caller.  Moreover,
-<code>return</code> interrupts immediately the method execution (why bother
-looking further when you know the method result?). So, if there is some code
-after a <code>return</code>, it must be an error and the compiler warns you.</p>
+the end of the function without finding any <code>return</code>, it cannot
+know what actual value to give back to the function caller.  Moreover,
+<code>return</code> interrupts immediately the function execution (why
+bother looking further when you know the function result?). So, if there is
+some code after a <code>return</code>, it must be an error and the compiler
+warns you.</p>
 
 <pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
-    if (isFacingWall() == [!java|scala]true[/!][!c]1[/!]) {
+    if (estáDeFrenteParaParede() == [!java|scala]true[/!][!c]1[/!]) {
         return [!java|scala]false[/!][!c]0[/!];
-        <span class="comment">/* no code allowed here */</span>
+        <span class="comment">/* proibido colocar código aqui */</span>
     } else {
         return [!java|scala]true[/!][!c]1[/!];
-        <span class="comment">/* here neither */</span>
+        <span class="comment">/* nem aqui */</span>
     }
-    <span class="comment">/* even here, forget it */</span>
-}[/!][!python]def isFrontFree():
-    if isFacingWall() == True:
+    <span class="comment">/* e nem mesmo aqui. desista */</span>
+}[/!][!python]def livreEmFrente():
+    if estáDeFrenteParaParede() == True:
         return False
-        <span class="comment"># no code allowed here</span>
+        <span class="comment"># proibido colocar código aqui</span>
     else
         return True
-        <span class="comment"># here neither</span>
-<span class="comment"># even here, forget it</span>[/!]</pre>
+        <span class="comment"># nem aqui</span>
+<span class="comment"># e nem mesmo aqui, desista</span>[/!]</pre>
 
-<h3>Objetivo do exercício</h3>Você vai mais uma vez escrever um método que o buggle vai usar. Seu
-nome deve ser <code>temBaggle</code>, e ele retorna um valor booleano
-indicando se a linha na frente do buggle contém um babble ou não. O
-buggle vai usar isto para buscar a primeira linha contendo um baggle,
-e parar nela.
+<h3>Objetivo do exercício</h3>You will once again write a function that the buggle will use. Its name must
+be <code>haveBaggle</code>, and it returns a boolean value indicating
+whether the row in front of the buggle contains a baggle or not. The buggle
+will use it to search the first row containing a baggle, and stop here.
 
-<p>A forma fácil de fazer este método é usar uma variável booleana
-chamada <code>baggleAvistado</code> indicando se nós vimos ou não um
-baggle até o momento. O valor inicial é 'false'.</p>
+<p>The easier for this function is to use a boolean variable called
+<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It
+initial value is 'false'.</p>
 
-<p>Then, move 6 steps forward (the world contains 7 cells and we already are on
-one of them). For each cell, if it contains a baggle, we store true in
-<code>sawBaggle</code> (and we don't do anything but moving forward if not).</p>
+<p>Então mova 6 passos para frente (o mundo contém 7 células e nós já
+estamos em uma delas). Para cada célula, se ela contiver um baggle,
+vamos guardar true em <code>baggleVisto</code> (e se não, vamos
+simplesmente andar para frente).</p>
 
 <p>No final, vamos nos mover 6 passos para trás, e retornar o valor de
 <code>baggleVisto</code> para quem chamou o método.</p>
@@ -74,6 +77,5 @@ funcionar em ambos. Observe que o menu de seleção de mundo (logo
 abaixo do controle de velocidade) permite que você alterne entre os
 mundos. </p>
 
-<p>Quando seu método <code>temBaggle</code> funcionar, siga para o
-próximo exercício.</p>
+<p>When your function <code>haveBaggle</code> works, proceed to next exercise.</p>
 

@@ -1,6 +1,4 @@
-/** In memory compiler of scala code. This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala */
-
-package plm.core;
+package plm.core.lang;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,7 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
+import plm.core.model.LogWriter;
+import plm.core.model.lesson.ExecutionProgress;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.ui.ResourcesCache;
+import plm.universe.Entity;
 import scala.Option;
 import scala.collection.JavaConverters;
 import scala.reflect.internal.util.BatchSourceFile;
@@ -22,14 +27,71 @@ import scala.tools.nsc.Settings;
 import scala.tools.nsc.interpreter.AbstractFileClassLoader;
 import scala.tools.nsc.reporters.AbstractReporter;
 
-public class CompilerScala {
+public class LangScala extends JVMCompiledLang {
+
+	ScalaCompiler compiler = new ScalaCompiler();
 	
-	static private CompilerScala instance;
-	public static CompilerScala getInstance() {
-		if (instance == null)
-			instance = new CompilerScala();
-		return instance;
+	public LangScala() {
+		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
 	}
+
+	@Override
+	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
+			throws PLMCompilerException {
+		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
+		packageNameSuffix++;
+		runtimePatterns.put("\\$package", "package "+packageName()+";");
+
+		List<plm.core.model.session.SourceFile> sfs = exo.getSourceFilesList(this);
+		if (sfs == null || sfs.isEmpty()) {
+			String msg = exo.getName()+": No source to compile";
+			System.err.println(msg);
+			PLMCompilerException e = new PLMCompilerException(msg, null, null);
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+			throw e;
+		}
+
+		try {
+			compiler.reset();
+			for (plm.core.model.session.SourceFile sf : sfs) {
+				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
+			}
+		} catch (PLMCompilerException e) {
+			System.err.println(Game.i18n.tr("Compilation error:"));
+			System.err.println(e.getMessage());
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+
+			throw e;
+		}
+		
+	}
+	
+	/** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
+	@Override
+	public String nameOfCorrectionEntity(Exercise exo){
+		String path = super.nameOfCorrectionEntity(exo);
+		
+		String[] components = path.split("\\.");
+		StringBuilder result = new StringBuilder();
+		int last = components.length - 1;
+		for (int i = 0; i < last; i++) {
+			result.append(components[i] + ".");
+		}
+		result.append("Scala" + components[last]);
+		return result.toString();
+	}
+
+	@Override
+	protected Entity mutateEntity(String newClassName)
+			throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
+		return (Entity) compiler.findClass(className(newClassName)).newInstance();
+	}
+}
+
+/** In memory compiler of scala code. 
+ *  This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala */
+class ScalaCompiler {
 	
 	private PLMReporter reporter;
 	private Settings settings;
@@ -38,7 +100,7 @@ public class CompilerScala {
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	
-	private CompilerScala() {
+	public ScalaCompiler() {
 		super();
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us

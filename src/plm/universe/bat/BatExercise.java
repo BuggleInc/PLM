@@ -3,8 +3,8 @@ package plm.universe.bat;
 import java.util.List;
 import java.util.Vector;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExerciseTemplatingEntity;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;

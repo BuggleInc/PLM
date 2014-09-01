@@ -17,7 +17,7 @@ class ScalaRandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN TEMPLATE */ 
-	def run() {
+	override def run() {
 		// Your code here 
 		/* BEGIN SOLUTION */ 
 		while (!isOverBaggle()) {

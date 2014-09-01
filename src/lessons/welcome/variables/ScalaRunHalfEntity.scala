@@ -17,7 +17,7 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	def estSurOrange():Boolean = { return isOverOrange(); }
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		var baggle:Int = 0;
 		var orange:Int = 0;

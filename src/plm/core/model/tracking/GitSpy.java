@@ -81,7 +81,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// and push to ensure that everything remains in sync
 			gitUtils.pushToUserBranch();
 		} catch (Exception e) {
-			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
+			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();
 		}
 	}
@@ -179,9 +179,16 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
-		if (exoTo != null) {
+
+		if (exoFrom.lastResult.feedbackDifficulty != null)
+			jsonObject.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
+		if (exoFrom.lastResult.feedbackInterest != null)
+			jsonObject.put("exoInterest", exoFrom.lastResult.feedbackInterest);
+		if (exoFrom.lastResult.feedback != null)
+			jsonObject.put("exoComment", exoFrom.lastResult.feedback);
+		
+		if (exoTo != null)
 			jsonObject.put("switchto", exoTo.getId());
-		}
 
 		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
 		return "{\"kind\":\""+evt_type+"\","+jsonObject.toString().substring(1);
@@ -272,6 +279,49 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			} catch (IOException ex) {
 				System.out.println("Failed to write on disk that the exercise is passed: "+ex.getLocalizedMessage());
 			}
+		}
+	}
+
+	@Override
+	public void callForHelp() {		
+		recordHelpInGit("callForHelp");
+	}
+
+	@Override
+	public void cancelCallForHelp() {
+		recordHelpInGit("cancelCallForHelp");
+	}
+	
+	public void recordHelpInGit(String evt_type) {
+		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
+		ExecutionProgress execProg = lastExo.lastResult;
+		String exoCode = lastExo.getSourceFile(execProg.language, 0).getBody();
+		String ext = "." + Game.getProgrammingLanguage().getExt();
+		File exoFile = new File(repoDir, lastExo.getId() + ext + ".code");
+		
+		try {
+			// write the code of the exercise into the file
+			FileWriter fwExo = new FileWriter(exoFile.getAbsoluteFile());
+			BufferedWriter bwExo = new BufferedWriter(fwExo);
+			bwExo.write(exoCode == null ? "" : exoCode);
+			bwExo.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			GitUtils gitUtils = new GitUtils(git);
+			git.add().addFilepattern(".").call();
+
+			// and then commit the changes
+			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+					.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+					.setMessage(writeCommitMessage(lastExo, null, evt_type))
+					.call();
+
+			// push to the remote repository
+			gitUtils.pushToUserBranch();
+		} catch (IOException | GitAPIException ex) { // TODO	
 		}
 	}
 }

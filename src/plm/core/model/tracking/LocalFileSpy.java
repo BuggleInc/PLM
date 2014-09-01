@@ -62,4 +62,14 @@ public class LocalFileSpy implements ProgressSpyListener {
 
     @Override
     public void leave() { /* good idea, go away */ }
+
+	@Override
+	public void callForHelp() {
+		//TODO
+	}
+
+	@Override
+	public void cancelCallForHelp() {
+		//TODO
+	}
 }

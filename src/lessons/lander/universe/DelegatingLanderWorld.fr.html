@@ -2,36 +2,47 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Alunisseur</h2>
 
-<p>In this universe you pilot a lunar lander. At each simulation step you're
-given the lander's position, speed, angle and thrust and must issue a
-command adjusting its angle and thrust.</p>
+<p>Dans cet univers, vous contrôlez un module d'alunissage. À chaque pas de la
+simulation, vous avez accès à la position du module, sa vitesse, son angle
+et la poussée de son moteur. Vous devez alors décider de l'angle et de la
+poussée pour l'étape suivante. </p>
 
 <h2>Fonctions fournies</h2>
 
 <pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
 [!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
-Get the X and Y position of the lander.
-<pre>[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]
-[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]</pre>
-Get the horizontal and vertical speed of the lander.
+Retourne la position en X et Y du module d'alunissage.
+<pre>[!java|c]double [/!]getVitesseX()[!scala]:Double[/!]
+[!java|c]double [/!]getVitesseY()[!scala]:Double[/!]</pre>
+Obtenir les vitesses horizontale et verticale du module.
 
 <pre>[!java|c]double [/!]getAngle()[!scala]:Double[/!]
-[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])</pre>
-Get or set the angle of the lander.<br/>
-An angle of 0° denotes a vertical position where the "head" of the lander
-points up.  This is the angle you must land with. A positive angle denotes a
-left-leaning lander, a negative angle a right-leaning one. You cannot lean
-more than by ±90°, and the angle can vary by at most ±5° in one step.
+[!java|c]void [/!]setAngleDesire([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+Retourne ou fixe l'angle du module d'alunissage.<br/>
+Un angle de O° dénote une position verticale, avec le sommet du module
+dirigé vers le haut. C'est l'angle avec lequel vous devez vous poser. Un
+angle positif indique que le module penche vers la gauche tandis qu'un angle
+négatif indique au contraire qu'il penche à droite. Il est impossible de se
+pencher à plus de ±90°, et on ne peut pas pencher le module de plus de ±5°
+en une fois.
 
-<pre>[!java|c]int [/!]getThrust()[!scala]:Int[/!]
-[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])</pre>
-Get or set the thrust of the lander. <br/>You can only increment or decrement the thrust by 1 between two simulation
-steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in
-the next step. If you ask for less than 0 (resp. more than 4), everything
-will be as if you had asked for 0 (resp. 4).
+<pre>[!java|c]int [/!]getPoussee()[!scala]:Int[/!]
+[!java|c]void [/!]setPousseeDesiree([!java|c]int [/!]poussée[!scala]:Int[/!])</pre>
+Retourne ou fixe la poussée du module. <br/>Vous ne pouvez incrémenter ou décrémenter la poussée que d'une unité à
+chaque fois. Si votre poussée actuelle est de 2 et que vous demandez une
+poussée de 4, vous n'obtiendrez que 3 au prochain pas de temps. Si vous
+demandez moins que 0 (ou plus que 4), tout se passera comme si vous
+demandiez 0 (ou 4).
 
 <pre>[!java|c]int [/!]getFuel()[!scala]:Int[/!]</pre>
-Get the remaining fuel in the lander.  At each step of the simulation the
-lander consumes as many fuel units as the current thrust. Once you run out
-of fuel you're in free fall so beware!
+Obtient la quantité de fuel restant dans le réservoir. À chaque pas de
+simulation, le module consomme entre 0 et 4 unités de fuel, en fonction de
+sa poussée. Une fois que vous avez utilisé tout votre carburant, vous êtes
+en chute libre alors prenez garde !
 
+<pre>[!java]List&lt;Point&gt; [/!]getSol()[! scala]:List[Point][/!]</pre>
+Obtenir les points du sol de gauche à droite. [!java|scala]Vous pouvez
+retrouver les coordonnées X et Y de chaque point avec les méthodes
+correspondantes de votre point : <code>p.x()</code> et
+<code>p.y()</code>.[!/] [!python]Chaque point est un tableau de deux entiers
+représentant respectivement les coordonnées X et Y de chaque point.[/!]

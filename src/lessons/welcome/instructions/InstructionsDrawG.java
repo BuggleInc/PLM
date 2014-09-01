@@ -5,8 +5,8 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class InstructionsDrawG extends ExerciseTemplated {
 
@@ -15,7 +15,7 @@ public class InstructionsDrawG extends ExerciseTemplated {
 		tabName = "Source";
 
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7, 7);
-		new Buggle(myWorld, "Rookie", 5, 1, Direction.NORTH, Color.black, Color.blue);
+		new SimpleBuggle(myWorld, "Rookie", 5, 1, Direction.NORTH, Color.black, Color.blue);
 		
 		setup(myWorld);
 	}

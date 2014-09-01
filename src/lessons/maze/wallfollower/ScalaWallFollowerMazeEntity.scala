@@ -31,7 +31,7 @@ class ScalaWallFollowerMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		right(); // change to left to get a right follower
 	}
 
-	def run() {
+	override def run() {
 		// Make sure we have a wall to the left
 		left();
 		while (!isFacingWall())

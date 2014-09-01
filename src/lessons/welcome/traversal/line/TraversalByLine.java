@@ -5,8 +5,8 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalByLine extends ExerciseTemplated {
 
@@ -20,7 +20,7 @@ public class TraversalByLine extends ExerciseTemplated {
 			myWorld.putLeftWall(0, i);
 		}
 		
-		new Buggle(myWorld, "Walker", 0, 0, Direction.NORTH, Color.black, Color.red);
+		new SimpleBuggle(myWorld, "Walker", 0, 0, Direction.NORTH, Color.black, Color.red);
 
 		setup(myWorld);
 	}

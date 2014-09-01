@@ -7,7 +7,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 class ScalaPatternPictureEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	def run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		bigSquare();
 		forward(4);

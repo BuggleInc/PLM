@@ -8,7 +8,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 public class HanoiBoardEntity extends HanoiEntity {
 	
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb;
 		try {

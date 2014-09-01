@@ -2,7 +2,7 @@ package lessons.lightbot.universe;
 
 import javax.swing.JScrollPane;
 
-import plm.core.model.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.session.SourceFileRevertable;
 
 public class LightBotSourceFile extends SourceFileRevertable {

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-22 02:05+0200\n"
+"POT-Creation-Date: 2014-08-30 09:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -649,8 +649,8 @@ msgstr ""
 msgid "Building methodically"
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:202 src/lessons/welcome/methods/returning/MethodsReturning.html:2
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:202
 msgid "Methods returning a result"
 msgstr ""
 
@@ -821,9 +821,9 @@ msgid ""
 "world turns into the objective of the exercise. For example in this "
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either C, Java, Python or Scala "
-"(depending on the exercise)."
+"<i>Objective</i> one.  Depending on the exercise (and your settings in the "
+"Language menu), your code must be written in either C, Java, Python or "
+"Scala."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -1016,7 +1016,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:65 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:75 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:49 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/instructions/Instructions.html:65 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:75 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
@@ -1267,7 +1267,7 @@ msgid ""
 "The condition can also be a call to some particular methods returning a "
 "boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a "
-"wall, and false in the other case."
+"wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case."
 msgstr ""
 
 #. type: Content of: <p>
@@ -1292,7 +1292,7 @@ msgid ""
 "<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if "
 "<tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true, "
 "<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
-"of both propositions cannot be true)."
+"of both propositions cannot be false)."
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -3256,10 +3256,10 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:7
 msgid ""
-"Since a(1)=1, it means that 1 occures only once in the sequence, so a(2) "
-"must be different. Since the sequence is non-decreasing, a(2)  must be "
-"greater than 1, which in turn means that there must be more than one 2 in "
-"the sequence. So a(2)=2."
+"Since a(1)=1, it means that 1 occurs only once in the sequence, so a(2) must "
+"be different. Since the sequence is non-decreasing, a(2)  must be greater "
+"than 1. Since a(2)>1, the digit 2 must appear more than one time in the "
+"sequence. So a(2)=2."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3692,23 +3692,30 @@ msgid ""
 "pattern and factorize your code.  Your turn..."
 msgstr ""
 
+#. type: Content of: <h1>
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:2 src/lessons/lightbot/Board06Func.html:2
+msgid "Functions"
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:4
 msgid ""
-"Writing a method returning a result is not really more work than writing a "
-"method without any result.  [!java|c]You simply have to specify the data "
-"type of expected results before the method name (where we previously had "
-"<code>void</code>).[/!] [!scala]You simply have to add a column (:) after "
-"the parenthesis and write the type of data that your method will return, and "
-"add an equal sign (=). This syntax is actually rather close to defining a "
-"variable, with its type, that is actually a function.[/!] You can use the "
-"<code>return</code> instruction anywhere in your method body to specify that "
-"the computation is done (the method is not further executed), and that the "
-"result is the value following the <code>return</code> keyword."
+"Quite often, you want to write a method that compute some value and returns "
+"it. Methods returning results are called <b>functions</b>.  Writing a "
+"function is not really harder than writing a simple method.  [!java|c]You "
+"simply have to specify the data type of expected results before the function "
+"name (where we previously had <code>void</code>).[/!] [!scala]You simply "
+"have to add a colon (:) after the parenthesis and write the type of data "
+"that your function will return, and add an equal sign (=). This syntax is "
+"actually rather close to defining a variable, with its type, that is "
+"actually a function.[/!] You can use the <code>return</code> instruction "
+"anywhere in your function body to specify that the computation is done (the "
+"function is not further executed), and that the result is the value "
+"following the <code>return</code> keyword."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:13
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:14
 #, no-wrap
 msgid ""
 "[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def "
@@ -3718,7 +3725,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:17
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:18
 msgid ""
 "Actually, you can also use that <code>return</code> keyword in methods that "
 "do not return any result, to interupt the computation. Of course, you should "
@@ -3726,21 +3733,22 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:20
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:21
 msgid ""
 "It is possible to have several <code>return</code> instructions in several "
 "branches of a conditional. In fact, it is forbidden to have any execution "
 "path of your body without any <code>return</code>, or to write some code "
 "after the <code>return</code> instruction. Indeed, if the machine reaches "
-"the end of the method without finding any <code>return</code>, it cannot "
-"know what actual value to give back to the method caller.  Moreover, "
-"<code>return</code> interrupts immediately the method execution (why bother "
-"looking further when you know the method result?). So, if there is some code "
-"after a <code>return</code>, it must be an error and the compiler warns you."
+"the end of the function without finding any <code>return</code>, it cannot "
+"know what actual value to give back to the function caller.  Moreover, "
+"<code>return</code> interrupts immediately the function execution (why "
+"bother looking further when you know the function result?). So, if there is "
+"some code after a <code>return</code>, it must be an error and the compiler "
+"warns you."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:31
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:32
 #, no-wrap
 msgid ""
 "[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def "
@@ -3764,24 +3772,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:49
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
 msgid ""
-"You will once again write a method that the buggle will use. Its name must "
+"You will once again write a function that the buggle will use. Its name must "
 "be <code>haveBaggle</code>, and it returns a boolean value indicating "
 "whether the row in front of the buggle contains a baggle or not. The buggle "
 "will use it to search the first row containing a baggle, and stop here."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:54
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:55
 msgid ""
-"The easier for this method is to use a boolean variable called "
+"The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
 "initial value is 'false'."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:58
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:59
 msgid ""
 "Then, move 6 steps forward (the world contains 7 cells and we already are on "
 "one of them). For each cell, if it contains a baggle, we store true in "
@@ -3789,14 +3797,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:62
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:63
 msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:66
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:67
 msgid ""
 "This exercise is a bit different since there is two initial worlds, each "
 "with a specific objective. Your code must work for each of them. Observe "
@@ -3805,8 +3813,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:71
-msgid "When your method <code>haveBaggle</code> works, proceed to next exercise."
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:72
+msgid "When your function <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
 
 #. type: Content of: <p>
@@ -4262,10 +4270,11 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"Today is a great day: we will learn the buggles to play Dance Revolution, "
-"this game beloved of some students where the player has to move its feet on "
-"the carpet according to the instructions presented on the screen, and "
-"following the music. But before that, we have some details to study first."
+"After these races, it's time to party! For that, we will learn the buggles "
+"to play Dance Revolution, this game beloved of some students: The player has "
+"to move the feet on the carpet according to the instructions presented on "
+"the screen, and following the music. But before that, we have some details "
+"to study first."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7410,9 +7419,9 @@ msgstr ""
 msgid ""
 "In this exercise, we will explore an adaptation of the same idea to burnt "
 "pancakes. This was first published by David X. Cohen and Manuel Blum. David "
-"Cohen co-founded a few years later the Futurama TV show bursted with jokes "
-"inspired from scientific facts. Definitively, interesting people studied "
-"that little pancake problem..."
+"Cohen co-founded a few years later the Futurama TV show full of mathematical "
+"jokes. Definitively, interesting people studied that little pancake "
+"problem..."
 msgstr ""
 
 #. type: Content of: <p>
@@ -7499,7 +7508,7 @@ msgid ""
 "possible to achieve a join in only 2 flips.  But fortunately, we can "
 "leverage the very specific setting of the stack in that case to provide the "
 "following algorithm.  It sorts a stack in that exact configuration after "
-"exactly 2n steps."
+"exactly <i>2n</i> steps."
 msgstr ""
 
 #. type: Content of: <pre>
@@ -7523,7 +7532,7 @@ msgstr ""
 msgid ""
 "So, all in all, the Cohen algorithm manages to sort the stack of burnt "
 "pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
-"algorithm that requires <i>3n</i> steps."
+"algorithm for burnt pancakes that requires <i>3n</i> steps."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
@@ -10057,11 +10066,6 @@ msgstr ""
 msgid "Let's go higher"
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/lightbot/Board06Func.html:2
-msgid "Functions"
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board06Func.html:4
 msgid "You can use"
@@ -10897,14 +10901,14 @@ msgstr ""
 #: src/lessons/lander/Main.html:12
 msgid ""
 "A lander in vertical position above flat ground, the player can only control "
-"thrust"
+"thrust (done)"
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:14
 msgid ""
 "A lander in vertical position not above flat ground, the player control "
-"thrust and angle"
+"thrust and angle (done)"
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -11016,6 +11020,22 @@ msgid ""
 "of fuel you're in free fall so beware!"
 msgstr ""
 
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:38
+#, no-wrap
+msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:39
+msgid ""
+"Get the vertices of the ground's profile from left to right.  "
+"[!java|scala]You can retrieve the X and Y coordinates of each point with the "
+"corresponding methods of your point: <code>p.x()</code> and "
+"<code>p.y()</code>.[!/] [!python]Each point is an array of two integers "
+"denoting respectively the X and Y coordinates of that point.[/!]"
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:2
 msgid "Lander 101"
@@ -11110,31 +11130,34 @@ msgstr ""
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:13
 msgid ""
 "A segment is composed of two <code>Point</code>s, each of them composed of "
-"two <code>double</code>s. A segment is built via the <code>Segment(Point "
-"start, Point end)</code> constructor. A point is built via the "
-"<code>Point(double x, double y)</code> constructor. A point's coordinates "
-"are accessible via its <code>double x()</code> and <code>double y()</code> "
-"methods."
+"two <code>double</code>s. A segment is built via the "
+"<code>Segment([!java]Point [/!]start[!scala]:Point[/!], [!java]Point "
+"[/!]end[!scala]:Point[/!])</code> constructor.  A point is built via the "
+"<code>Point([!java]double [/!]x[!scala]:Double[/!], [!java]double "
+"[/!]y[!scala]:Double[/!])</code> constructor. A point's coordinates are "
+"accessible via its <code>[!java]double [/!]x()[!scala]:Double[/!]</code> and "
+"<code>[!java]double [/!]y()[!scala]:Double[/!]</code> methods."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:17
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:18
 msgid ""
 "[/!] [!python]tuple of two X coordinates representing the zone of your "
 "choice.[/!]"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:21
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:22
 msgid ""
 "In order to determine which zone to return, you'll need to call "
-"<code>[!java|scala]List&lt;Point&gt; [/!]getGround()</code>, which returns "
-"the vertices of the ground's profile as a list of [!java|scala]Point[/!] "
+"<code>[!java]List&lt;Point&gt; "
+"[/!]getGround()[!scala]List[Point][/!]</code>, which returns the vertices of "
+"the ground's profile as a list of [!java|scala]<code>Point</code>[/!] "
 "[!python]tuples (x,y)[/!]."
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:26
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:27
 msgid ""
 "One more thing: your function should return a valid flat zone in any kind of "
 "situation, not just for the currently visualized one. That's because it will "
@@ -11144,7 +11167,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:32
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:33
 msgid "Have a safe landing! Don't forget to put on your space suit on your way out."
 msgstr ""
 
@@ -11175,7 +11198,7 @@ msgstr ""
 msgid ""
 "You must define two functions: <code>[!java]void [/!]initialize()</code> and "
 "<code>[!java]void [/!]step()</code>. <code>initialize()</code> is called "
-"once just after you press \"Run\". You can use it for chosing some flat "
+"once just after you press \"Run\". You can use it to chose some flat "
 "zone. As before, <code>step()</code> is called every 0.1 second and is used "
 "for adjusting the lander's thrust and angle. As in the first exercise the "
 "lander's thrust is adjusted via <code>[!java]void "
@@ -11192,7 +11215,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:26
 msgid ""
-"As in the previous lesson, <code>[!java]List&lt;Point&gt; "
+"As in the previous exercise, <code>[!java]List&lt;Point&gt; "
 "[/!]getGround()[!scala]:List[Point][/!]</code> returns the vertices of the "
 "ground's profile from left to right.  Please refer to the documentation "
 "(Help/About this world) for a reference manual of your lunar lander."

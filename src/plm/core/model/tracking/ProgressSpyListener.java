@@ -12,4 +12,8 @@ public interface ProgressSpyListener {
     public String join();
 
     public void leave();
+	
+	public void callForHelp();
+	
+	public void cancelCallForHelp();
 }

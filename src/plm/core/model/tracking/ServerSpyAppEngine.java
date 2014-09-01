@@ -56,4 +56,14 @@ public class ServerSpyAppEngine extends ServerSpy {
         return response;
     }
 
+	@Override
+	public void callForHelp() {
+		//TODO
+	}
+
+	@Override
+	public void cancelCallForHelp() {
+		//TODO
+	}
+
 }

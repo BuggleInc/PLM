@@ -203,8 +203,8 @@ public class LightBotEntity extends Entity  {
 	}
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
-		// not use here
+	public void command(String command, BufferedWriter out) {
+		// not used
 		
 	}
 }

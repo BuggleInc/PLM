@@ -5,9 +5,9 @@ import java.awt.Color;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class BDR extends ExerciseTemplated {
 
@@ -38,14 +38,14 @@ public class BDR extends ExerciseTemplated {
 
 		myWorld = new BuggleWorld("Dance Floor",7,7);
 		/* first dancer, plus its steps */
-		new Buggle(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
+		new SimpleBuggle(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
 		plus1(0,6);
 		left(1,6);
 		plus2(1,5);
 		right(1,3);
 		
 		/* second dancer */
-		new Buggle(myWorld, "Break Dancer", 0,0,Direction.WEST, Color.magenta, Color.lightGray);
+		new SimpleBuggle(myWorld, "Break Dancer", 0,0,Direction.WEST, Color.magenta, Color.lightGray);
 		minus1(0,0);
 		left(1,0);
 		plus2(1,1);
@@ -53,7 +53,7 @@ public class BDR extends ExerciseTemplated {
 		minus1(3,3);
 		
 		/* third one */
-		new Buggle(myWorld, "Moon Walker", 6,0, Direction.WEST, Color.pink,Color.lightGray);
+		new SimpleBuggle(myWorld, "Moon Walker", 6,0, Direction.WEST, Color.pink,Color.lightGray);
 		plus1(6,0);
 		left(5,0);
 		plus2(5,1);
@@ -64,7 +64,7 @@ public class BDR extends ExerciseTemplated {
 		plus2(3,1);
 		
 		/* last one */
-		new Buggle(myWorld, "Elwood Blues", 6,6, Direction.WEST, Color.blue,Color.lightGray);
+		new SimpleBuggle(myWorld, "Elwood Blues", 6,6, Direction.WEST, Color.blue,Color.lightGray);
 		plus1(6,6);
 		right(5,6);
 		plus2(5,5);

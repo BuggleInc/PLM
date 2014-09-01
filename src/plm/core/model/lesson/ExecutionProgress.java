@@ -6,8 +6,8 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
 public class ExecutionProgress {
@@ -16,6 +16,11 @@ public class ExecutionProgress {
 	public String details = "";
 	public Date date = new Date();
 	public ProgrammingLanguage language = Game.getProgrammingLanguage();
+
+	/* The feedback from the student in the ExecisePassedDialog */
+	public String feedbackDifficulty;
+	public String feedbackInterest;
+	public String feedback; 
 
 	public static ExecutionProgress newCompilationError(String message) {
 		ExecutionProgress ep = new ExecutionProgress();

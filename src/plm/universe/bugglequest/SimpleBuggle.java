@@ -1,6 +1,9 @@
 package plm.universe.bugglequest;
 
+import java.awt.Color;
+
 import plm.core.model.Game;
+import plm.universe.Direction;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import plm.universe.bugglequest.exception.BuggleWallException;
@@ -9,13 +12,20 @@ import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 
 
-public abstract class SimpleBuggle extends AbstractBuggle  {
-	
-	/*@Override
-	public void command(String command){
-		super.command(command);
-	}*/
-	
+public class SimpleBuggle extends AbstractBuggle  {
+	/* Make it possible to instantiate SimpleBuggles from exercises so that Python also gets graphical window showing */
+	public SimpleBuggle() {
+		super();
+	}
+	public SimpleBuggle(BuggleWorld world, String name, int i, int j, Direction north, Color color, Color brush) {
+		super(world, name, i, j, north, color, brush);
+	}
+	@Override
+	public void run() {
+		// Overridden by children
+	}
+
+	/* Raise a window error when an exception is encountered */
 	@Override
 	public void forward()  {
 		try { 

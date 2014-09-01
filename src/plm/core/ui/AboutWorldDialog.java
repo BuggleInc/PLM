@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 
 import plm.core.HumanLangChangesListener;
 import plm.core.ProgLangChangesListener;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;

@@ -11,17 +11,18 @@ in one piece. You indicate the lander where to land by modifying the
 [!java|scala]<code>Segment</code> representing the zone of your choice.
 
 <p>A segment is composed of two <code>Point</code>s, each of them composed of
-two <code>double</code>s. A segment is built via the <code>Segment(Point start,
-Point end)</code> constructor. A point is built via the <code>Point(double x,
-double y)</code> constructor. A point's coordinates are accessible via its
-<code>double x()</code> and <code>double y()</code> methods.</p>[/!]
+two <code>double</code>s. A segment is built via the 
+<code>Segment([!java]Point [/!]start[!scala]:Point[/!], [!java]Point [/!]end[!scala]:Point[/!])</code> constructor. 
+A point is built via the <code>Point([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</code> constructor. A point's coordinates are accessible via its
+<code>[!java]double [/!]x()[!scala]:Double[/!]</code> and
+<code>[!java]double [/!]y()[!scala]:Double[/!]</code> methods.</p>[/!]
 
 [!python]tuple of two X coordinates representing the zone of your choice.[/!]
 
 <p>In order to determine which zone to return, you'll need to call
-<code>[!java|scala]List&lt;Point&gt; [/!]getGround()</code>, which returns 
+<code>[!java]List&lt;Point&gt; [/!]getGround()[!scala]List[Point][/!]</code>, which returns 
 the vertices of the ground's profile as a list of 
-[!java|scala]Point[/!] [!python]tuples (x,y)[/!].</p>
+[!java|scala]<code>Point</code>[/!] [!python]tuples (x,y)[/!].</p>
 
 <p>One more thing: your function should return a valid flat zone in any kind of
 situation, not just for the currently visualized one. That's because it will

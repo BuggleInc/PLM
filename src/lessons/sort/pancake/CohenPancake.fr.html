@@ -2,93 +2,98 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>Tri rapide de crêpes brûlées</h1>
 
-<p>The Gates' algorithm that we saw in the previous exercise quickly sort a
-stack of unburned pancakes by increasing the size of the blocks of sorted
-pancakes. This is much faster that the naive algorithm which moves at each
-step the largest pancake to the bottom of still unsorted pancakes. Gates'
-algorithm manages to sort a stack of <i>n</i> pancakes in less than <i>(5n +
-5)/3</i> steps in the worst case, while the naive algorithm requires at most
-<i>2n</i> steps. Gates is thus about one third faster in the worst case.</p>
+<p>L'algorithme de Gates que nous avons vu dans l'exercice précédent trie
+rapidement les crêpes non brûlées en augmentant constamment la taille de
+sous-séquences triées dans la pile. Cela va bien plus vite que l'algorithme
+naïf qui déplace à chaque étape la plus grande crêpe en bas de la pile
+non-triée. L'algorithme de Gates trie une pile de <i>n</i> crêpes en moins
+de  <i>(5n + 5)/3</i> étapes dans le pire des cas là où l'algorithme naïf
+nécessite <i>2n</i> étapes. L'algorithme de Gates est donc un tiers plus
+rapide dans le pire des cas.</p>
 
-<p>In this exercise, we will explore an adaptation of the same idea to burnt
-pancakes. This was first published by David X. Cohen and Manuel Blum. David
-Cohen co-founded a few years later the Futurama TV show bursted with jokes
-inspired from scientific facts. Definitively, interesting people studied
-that little pancake problem...</p>
+<p>Dans cet exercice, nous allons explorer une adaptation de la même idée aux
+crêpes brûlées. Cet algorithme fut tout d'abord publié par David X. Cohen et
+Manuel Blum. Quelques années après, David Cohen lançait avec un ami la série
+Futurama, remplie de blagues mathématiques. Décidément, ce petit problème de
+crêpes a inspiré des gens intéressant...</p>
 
-<p>The Cohen's algorithm is slightly easier than the Gates' one since it
-distinguishes less cases:</p>
+<p>L'algorithme de Cohen est un peu plus simple que celui de Gates, car il
+distingue moins de cas :</p>
 
-<p><b>Case 1:</b> At least one pancake is rightside up in the stack. Let
-<i>p</i> be the largest such pancake.  Note that <i>p + 1</i> must therefore
-be upside down, unless <i>p = n</i> (in which case there is no <i>p + 1</i>
-pancake).</p>
+<p><b>Cas 1 :</b> Au moins une crêpe est à l'endroit dans la pile. Soit
+<i>p</i> la plus grande des crêpes à l'endroit. Notez que <i>p + 1</i> est
+donc forcément à l'envers, à moins que <i>p = n</i> (auquel cas il n'y a pas
+de crêpe <i>p + 1</i>).</p>
 
 <ul>
-  <li><b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>.  <div align="center"><img src="img/cohen-1a.png"/></div><br/></li>
-  <li><b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>. <div align="center"><img src="img/cohen-1b.png"/></div><br/></li>
-  <li><b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest
-stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in
-position, there is nothing to do. If not, you can move it to the bottom of
-the stack in 2 flips:
+  <li><b>Cas 1.a :</b> <i>p+1</i> est placée plus bas que <i>p</i> dans la pile.  <div align="center"><img src="img/cohen-1a.png"/></div><br/></li>
+  <li><b>Cas 1.b :</b> <i>p+1</i> est placée plus haut que <i>p</i> dans la pile. <div align="center"><img src="img/cohen-1b.png"/></div><br/></li>
+  <li><b>Cas 1.c :</b> Il n'y a pas de crêpe <i>p + 1</i> car <i>p</i> est la plus
+grande crêpe de la pile (c'est à dire que <i>p = n</i>). Si la crêpe
+<i>p</i> est déjà en position, il n'y a rien à faire. Dans le cas contraire,
+on peut l'amener en bas de la pile en deux opérations :
      <div align="center"><img src="img/cohen-1c.png"/></div>
      
-    <b>The trick is that the pancake <i>p</i> should never be considered
-again.</b> Otherwise, you will consider that pancake again and again since
-it's rightside up, and since that's the largest pancake. To leave that
-pancake alone, you should keep track of the stack size that is still to be
-sorted. Any traversal of the stack must then only consider these pancakes,
-leaving alone the ones that are already in position at the bottom of the
-stack.
+    <b>Le truc est que la crêpe <i>p</i> ne doit plus jamais être considérée
+après cela.</b> Dans le cas contraire, vous allez considérer cette crêpe
+encore et encore puisqu'elle est à l'endroit et que c'est la plus grande des
+crêpes. Pour la laisser en paix, vous devez garder trace de la taille de la
+pile restant à trier. Tout balayage de la pile de crêpes doit se limiter aux
+crêpes restant à trier, sans considérer celles étant déjà en position en bas
+de la pile.
      </li>
 </ul>
    
  
-<p><b>Case 2:</b> All pancakes are downside. Again, we distinguish two
-sub-cases.</p>
+<p><b>Cas 2 :</b> Toutes les crêpes sont à l'envers. À nouveau, nous
+distinguons deux sous-cas.</p>
   
 <ul>
- <li><b>Case 2.a:</b> There is at least one <i>p</i> for which <i>p+1</i> is
-higher than <i>p</i> (if there is several such <i>p</i>, take the largest
-one).
+ <li><b>Cas 2.a :</b> Il y a au moins une crêpe <i>p</i> pour laquelle <i>p+1</i>
+est placée au dessus de <i>p</i> dans la pile (s'il y a plusieurs tels
+<i>p</i>, prenez le plus grand).
    <div align="center"><img src="img/cohen-2a.png"/></div><br/>
  </li>
- <li><b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In
-that case, we must have that setting:
+ <li><b>Cas 2.b:</b> Chaque crêpe <i>p</i> est placée plus bas que sa crêpe
+<i>p+1</i>. Dans ce cas, nous avons forcément la situation suivante :
     <div align="center"><img src="img/cohen-2b.png"/></div>
  </li>
 </ul>
 
-<p>As you can see, we achieve one join in 2 flips in the cases 1 or 2.a. Since
-we need to achieve n joins to sort the stack, we can sort the stack in
-<i>2n</i> steps if case 2.b does not occurs.</p>
+<p>Dans les cas 1 ou 2.a, nous pouvons fusionner deux crêpes qui doivent se
+suivre en deux opérations. Puisque nous devons réaliser n fusions de ce
+genre pour trier la pile, nous pouvons trier la pile en <i>2n</i> opérations
+si le cas 2.b n'arrive jamais.</p>
 
-<p>That case 2.b requires a very different handling as it is obviously not
-possible to achieve a join in only 2 flips.  But fortunately, we can
-leverage the very specific setting of the stack in that case to provide the
-following algorithm.  It sorts a stack in that exact configuration after
-exactly 2n steps.</p>
+<p>Ce cas 2.b nécessite un traitement particulier puisqu'il est impossible de
+fusionner deux crêpes qui doivent se suivre en deux étapes seulement. Fort
+heureusement, une seule configuration de pile rentre dans ce cas de
+figure. Nous pouvons alors utiliser l'algorithme suivant, conçu pour tirer
+partie de cette configuration. Cet algorithme trie alors toute la pile en
+exactement <i>2n</i> opérations.</p>
   
 <pre>
-Repeat n times
-    Flip the whole stack of n pancakes
-    Flip the top (n-1) pancakes
+Répéter n fois
+    Inverser toute la pile de n crêpes 
+    Inverser les (n-1) crêpes placées au sommet de la pile
 </pre>
  
-<p>It may sound somehow magic, but it actually works, as depicted on an example
-below.</p>
+<p>Cela peut sembler un peu magique, mais cela fonctionne. Le dessin ci-dessous
+montre même comment.</p>
 
 <p><div align="center"><img src="img/cohen-2b-algo.png"/></div></p>
 
-<p>So, all in all, the Cohen algorithm manages to sort the stack of burnt
-pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive
-algorithm that requires <i>3n</i> steps.</p>
+<p>Donc, dans tous les cas, l'algorithme de Cohen parvient à trier une pile de
+crêpes brûlées en <i>2n</i> étapes, dans tous les cas. C'est mieux que
+l'algorithme naïf pour crêpes brûlées, qui nécessite <i>3n</i> étapes.</p>
 
-<p><div class="tip" id="tip-1" alt="I cannot get it right.">
-Don't worry. This exercise is very difficult, so it's ok if it does not work
-right away for you.  Add some relevant logging to your code to understand
-where it stop performing correctly.  Make sure to use the method
-<code>isSelected()</code> so that your logs only appears in the currently
-displayed world. In particular, it may help to print textually the state of
-the world each time you enter the main loop. 
+<p><div class="tip" id="tip-1" alt="Je n'y arrive pas.">
+Pas de panique, cet exercice est très difficile, et il est donc normale de
+ne pas y parvenir du premier coup. Ajouter des affichages à votre code pour
+voir les différentes étapes, et ainsi comprendre le moment où votre
+algorithme cesse de se comporter correctement. Assurez vous d'utiliser la
+méthode <code>isSelected()</code> pour que vos affichages n'aient lieu que
+pour le monde en cours d'affichage. En particulier, cela peut aider
+d'afficher textuellement l'état du monde à chaque fois que vous entrez dans
+la boucle principale. 
 </div></p>

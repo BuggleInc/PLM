@@ -26,7 +26,7 @@ public class BacktrackingEntity extends Entity {
 	}
 
 	@Override
-	protected void command(String command, BufferedWriter out) {
+	public void command(String command, BufferedWriter out) {
 		// will be killed
 		
 	}

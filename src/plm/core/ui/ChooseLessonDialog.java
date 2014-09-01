@@ -28,9 +28,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LessonLoadingException;
-import plm.core.model.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
 
 public class ChooseLessonDialog extends JFrame {
