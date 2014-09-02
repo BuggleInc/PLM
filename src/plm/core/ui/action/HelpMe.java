@@ -61,8 +61,8 @@ public class HelpMe extends AbstractGameAction {
 		if(isRequestingHelp) {
 			studentInput = (String) JOptionPane.showInputDialog(
 					null,
-					"Detailed question :",
-					"Call for help",
+					i18n.tr("Please ask here your question for the teacher:"),
+					i18n.tr("Call for help"),
 					JOptionPane.PLAIN_MESSAGE);
 
 			//If a string was returned, say so.
