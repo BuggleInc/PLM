@@ -14,14 +14,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
+
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
+
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.FileUtils;
@@ -46,7 +49,7 @@ public class HelpMe extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		isRequestingHelp = !isRequestingHelp;
 
-		LinkedHashMap obj = new LinkedHashMap();
+		LinkedHashMap<String,String> obj = new LinkedHashMap<String,String>();
 		obj.put("uuid", "" + Game.getInstance().getUsers().getCurrentUser().getUserUUID()); // ""+ to display the String
 		try {
 			obj.put("hostname", InetAddress.getLocalHost().getHostName());
@@ -105,7 +108,8 @@ public class HelpMe extends AbstractGameAction {
 
 			JSONParser parser = new JSONParser();
 			Object objResponse = parser.parse(jsonString.toString());
-			Map map = (Map) objResponse;
+			@SuppressWarnings("unchecked")
+			Map<String,String> map = (Map<String,String>) objResponse;
 
 			String status = (String) map.get("status");
 
