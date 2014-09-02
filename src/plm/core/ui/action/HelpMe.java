@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
@@ -34,7 +35,7 @@ public class HelpMe extends AbstractGameAction {
 	private I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
 
 	private boolean isRequestingHelp = false;
-	
+
 	private long lastCallID;
 
 	public HelpMe(Game game, String text, ImageIcon icon) {
@@ -55,10 +56,25 @@ public class HelpMe extends AbstractGameAction {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
 		obj.put("date", dateFormat.format(cal.getTime()));
-		obj.put("details", Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
 		obj.put("action", isRequestingHelp ? "add" : "remove");
-		if(!isRequestingHelp) {
-			obj.put("callID", lastCallID+"");
+		String studentInput = "";
+		if(isRequestingHelp) {
+			studentInput = (String) JOptionPane.showInputDialog(
+					null,
+					"Detailed question :",
+					"Call for help",
+					JOptionPane.PLAIN_MESSAGE);
+
+			//If a string was returned, say so.
+			if (!(studentInput != null)) {
+				studentInput= ""; 
+			} else {
+				studentInput = " : " + studentInput;
+			}
+		}
+		obj.put("details", Game.getInstance().getCurrentLesson().getCurrentExercise().getName() + studentInput);
+		if (!isRequestingHelp) {
+			obj.put("callID", lastCallID + "");
 		}
 		String payload = JSONValue.toJSONString(obj);
 		//System.out.println("JSON string : " + payload);
@@ -97,15 +113,15 @@ public class HelpMe extends AbstractGameAction {
 				case "KO":
 					String message = (String) map.get("message");
 					System.out.println(message);
-					if(isRequestingHelp) {
+					if (isRequestingHelp) {
 						Game.getInstance().fireCallForHelpSpy();
 					} else {
 						Game.getInstance().fireCancelCallForHelpSpy();
 					}
-					isRequestingHelp = ! isRequestingHelp;
+					isRequestingHelp = !isRequestingHelp;
 					break;
 				case "OK":
-					if(map.containsKey("callID")) {
+					if (map.containsKey("callID")) {
 						lastCallID = Long.parseLong((String) map.get("callID"));
 						System.out.println(i18n.tr("Asking to the teacher for help"));
 						Game.getInstance().fireCallForHelpSpy();
@@ -118,8 +134,13 @@ public class HelpMe extends AbstractGameAction {
 					break;
 			}
 
-		} catch (IOException | ParseException ex) { //TODO
-			//System.out.println(ex);
+		} catch (IOException | ParseException ex) {
+			isRequestingHelp = false;
+			((JToggleButton) e.getSource()).setText(isRequestingHelp ? i18n.tr("Cancel call") : i18n.tr("Call for Help"));
+			((JToggleButton) e.getSource()).setIcon(ResourcesCache.getIcon("img/btn-alert-" + (isRequestingHelp ? "on" : "off") + ".png"));
+			System.out.println(i18n.tr("Cancel call for help to the teacher"));
+			Game.getInstance().fireCancelCallForHelpSpy();
+			
 		}
 	}
 
