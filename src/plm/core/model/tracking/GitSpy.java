@@ -104,7 +104,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// and then commit the changes
 			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 			            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-			            .setMessage(writeCommitMessage(exo, null, "executed"))
+			            .setMessage(writeCommitMessage(exo, null, "executed",new JSONObject()))
 			            .call();
 
 			// push to the remote repository
@@ -136,7 +136,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				// and then commit the changes
 				git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-				.setMessage(writeCommitMessage(lastExo, exo, "switched"))
+				.setMessage(writeCommitMessage(lastExo, exo, "switched",new JSONObject()))
 				.call();
 
 				// push to the remote repository
@@ -166,32 +166,31 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	 * Helper methods
 	 */
 	@SuppressWarnings("unchecked")
-	private String writeCommitMessage(Exercise exoFrom, Exercise exoTo, String evt_type) {
-		JSONObject jsonObject = new JSONObject();
+	private String writeCommitMessage(Exercise exoFrom, Exercise exoTo, String evt_type, JSONObject logmsg) {
 
 		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exoFrom.lastResult;
 
 		// Retrieve appropriate parameters regarding the current exercise
-		jsonObject.put("course", game.getCourseID());
-		jsonObject.put("exo", exoFrom.getId());
-		jsonObject.put("lang", lastResult.language.toString());
+		logmsg.put("course", game.getCourseID());
+		logmsg.put("exo", exoFrom.getId());
+		logmsg.put("lang", lastResult.language.toString());
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
-		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
-		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
+		logmsg.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
+		logmsg.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
 
 		if (exoFrom.lastResult.feedbackDifficulty != null)
-			jsonObject.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
+			logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
 		if (exoFrom.lastResult.feedbackInterest != null)
-			jsonObject.put("exoInterest", exoFrom.lastResult.feedbackInterest);
+			logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
 		if (exoFrom.lastResult.feedback != null)
-			jsonObject.put("exoComment", exoFrom.lastResult.feedback);
+			logmsg.put("exoComment", exoFrom.lastResult.feedback);
 		
 		if (exoTo != null)
-			jsonObject.put("switchto", exoTo.getId());
+			logmsg.put("switchto", exoTo.getId());
 
 		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
-		return "{\"kind\":\""+evt_type+"\","+jsonObject.toString().substring(1);
+		return "{\"kind\":\""+evt_type+"\","+logmsg.toString().substring(1);
 	}
 
 	/**
@@ -283,16 +282,16 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	}
 
 	@Override
-	public void callForHelp() {		
-		recordHelpInGit("callForHelp");
+	public void callForHelp(String studentInput) {		
+		recordHelpInGit("callForHelp",studentInput);
 	}
 
 	@Override
 	public void cancelCallForHelp() {
-		recordHelpInGit("cancelCallForHelp");
+		recordHelpInGit("cancelCallForHelp",null);
 	}
 	
-	public void recordHelpInGit(String evt_type) {
+	public void recordHelpInGit(String evt_type, String studentInput) {
 		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
 		ExecutionProgress execProg = lastExo.lastResult;
 		String exoCode = lastExo.getSourceFile(execProg.language, 0).getBody();
@@ -313,10 +312,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			GitUtils gitUtils = new GitUtils(git);
 			git.add().addFilepattern(".").call();
 
+			JSONObject msg = new JSONObject();
+			msg.put("studentInput", studentInput);
 			// and then commit the changes
 			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 					.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-					.setMessage(writeCommitMessage(lastExo, null, evt_type))
+					.setMessage(writeCommitMessage(lastExo, null, evt_type, msg))
 					.call();
 
 			// push to the remote repository

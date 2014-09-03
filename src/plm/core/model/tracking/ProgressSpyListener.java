@@ -13,7 +13,6 @@ public interface ProgressSpyListener {
 
     public void leave();
 	
-	public void callForHelp();
-	
+	public void callForHelp(String studentInput);
 	public void cancelCallForHelp();
 }

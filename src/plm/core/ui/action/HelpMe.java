@@ -118,7 +118,7 @@ public class HelpMe extends AbstractGameAction {
 					String message = (String) map.get("message");
 					System.out.println(message);
 					if (isRequestingHelp) {
-						Game.getInstance().fireCallForHelpSpy();
+						Game.getInstance().fireCallForHelpSpy(studentInput);
 					} else {
 						Game.getInstance().fireCancelCallForHelpSpy();
 					}
@@ -128,7 +128,7 @@ public class HelpMe extends AbstractGameAction {
 					if (map.containsKey("callID")) {
 						lastCallID = Long.parseLong((String) map.get("callID"));
 						System.out.println(i18n.tr("Asking to the teacher for help"));
-						Game.getInstance().fireCallForHelpSpy();
+						Game.getInstance().fireCallForHelpSpy(studentInput);
 					} else {
 						System.out.println(i18n.tr("Cancel call for help to the teacher"));
 						Game.getInstance().fireCancelCallForHelpSpy();
