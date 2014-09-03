@@ -417,7 +417,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuHelp.add(miHelpWorld);
 
 		if (!System.getProperty("os.name").startsWith("Mac")) {
-			miHelpAbout = new JMenuItem(new AbstractGameAction(g, i18n.tr("About PLM"), null) {
+			miHelpAbout = new JMenuItem(new AbstractGameAction(g, i18n.tr("About the PLM"), null) {
 				private static final long serialVersionUID = 1L;
 
 				public void actionPerformed(ActionEvent e) {
@@ -752,7 +752,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miHelpLesson.setText(i18n.tr("About this lesson"));
 		miHelpWorld.setText(i18n.tr("About this world"));
 		if (miHelpAbout != null)
-			miHelpAbout.setText(i18n.tr("About PLM"));
+			miHelpAbout.setText(i18n.tr("About the PLM"));
 
 
 
