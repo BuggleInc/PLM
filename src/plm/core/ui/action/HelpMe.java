@@ -80,9 +80,7 @@ public class HelpMe extends AbstractGameAction {
 			obj.put("callID", lastCallID + "");
 		}
 		String payload = JSONValue.toJSONString(obj);
-		//System.out.println("JSON string : " + payload);
 		String urlStr = Game.getProperty("plm.play.server.url") + "callHelp";
-		//String urlStr = "http://localhost:9000/callHelp";
 
 		String line;
 		StringBuffer jsonString = new StringBuffer();
