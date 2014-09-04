@@ -313,7 +313,7 @@ public class LangC extends ProgrammingLanguage {
 								StringBuffer errmsg = ValgrindParser.parse(valgrindFile);
 								resCompilationErr.append(errmsg);
 								System.err.println(errmsg);
-								progress.details += errmsg;
+								progress.executionError += errmsg;
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}

@@ -66,7 +66,7 @@ public class ExerciseFailedDialog extends JDialog {
 					+ "If you don''t see the error, check the details below for a <br>\n"
 					+ "textual description of this difference between both worlds.</html>",
 					fortune[(int)  (Math.random()*fortune.length)]));
-			ta.setText(ep.details);
+			ta.setText(ep.executionError);
 			ta.setCaretPosition(0);
 		} else {
 			msg = new JLabel( i18n.tr("<html>Compilation error.<br>\n"
