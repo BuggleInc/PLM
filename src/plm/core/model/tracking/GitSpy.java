@@ -270,7 +270,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		String ext = "." + Game.getProgrammingLanguage().getExt();
 
 		// if exercise is done correctly
-		if (lastResult.totalTests != 0 && lastResult.totalTests == lastResult.passedTests) {
+		if (lastResult.totalTests > 0 && lastResult.totalTests == lastResult.passedTests) {
 			File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
 			try {
 				FileWriter fwExo = new FileWriter(doneFile.getAbsoluteFile());
