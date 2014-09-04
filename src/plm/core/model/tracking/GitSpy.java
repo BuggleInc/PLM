@@ -270,8 +270,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		String ext = "." + Game.getProgrammingLanguage().getExt();
 
 		// if exercise is done correctly
+		File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
 		if (lastResult.totalTests > 0 && lastResult.totalTests == lastResult.passedTests) {
-			File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
 			try {
 				FileWriter fwExo = new FileWriter(doneFile.getAbsoluteFile());
 				BufferedWriter bwExo = new BufferedWriter(fwExo);
@@ -280,6 +280,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			} catch (IOException ex) {
 				System.out.println("Failed to write on disk that the exercise is passed: "+ex.getLocalizedMessage());
 			}
+		} else {
+			if (doneFile.exists())
+				doneFile.delete(); // not passed anymore. Sad thing.
 		}
 	}
 
