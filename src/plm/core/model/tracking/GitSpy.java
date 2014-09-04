@@ -217,6 +217,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 		String exoCode = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve the code from the student
 		String exoError = lastResult.compilationError; // retrieve the compilation error
+		if (lastResult.compilationError == null) 
+			exoError = lastResult.details; 
 		String exoCorrection = exo.getSourceFile(lastResult.language, 0).getCorrection(); // retrieve the correction
 		String exoMission = exo.getMission(lastResult.language); // retrieve the mission
 
