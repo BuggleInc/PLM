@@ -1,3 +1,13 @@
+20140905: Release 2.4.1
+
+  Soon in production, last chance to iron out the bugs found on time.
+
+  * User Interface:
+    - Students can explain their problem in a phrase when requesting
+      for help (contributing to #208, but the teacher cannot answer yet)
+  * Engine:
+    - Save the error message also when it compiles but diverges (fix #213)
+
 20140901: Release 2.4
 
   Let's get ready for the Big Show of this year.
