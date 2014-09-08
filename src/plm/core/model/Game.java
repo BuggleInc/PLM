@@ -849,9 +849,9 @@ public class Game implements IWorldView {
 		}
 	}
 	
-	public void fireCallForHelpSpy() {
+	public void fireCallForHelpSpy(String studentInput) {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
-			l.callForHelp();
+			l.callForHelp(studentInput);
 		}
 	}
 	

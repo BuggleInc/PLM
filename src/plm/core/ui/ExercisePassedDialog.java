@@ -51,10 +51,10 @@ public class ExercisePassedDialog extends JDialog {
 		if ( nextExercises.size() == 0) {
 			if (exo.lastResult.passedTests > 1) {
 				msg.setText(i18n.tr("Congratulations, you passed this exercise.\n{0} tests passed.",
-								exo.lastResult.passedTests) + exo.lastResult.details);
+								exo.lastResult.passedTests) + exo.lastResult.executionError);
 			} else { 
 				msg.setText(i18n.tr("Congratulations, you passed this exercise.",
-								exo.lastResult.passedTests) + exo.lastResult.details);
+								exo.lastResult.passedTests) + exo.lastResult.executionError);
 			}
 
 			congratsPane.add(new JLabel( ResourcesCache.getIcon("img/trophy.png") ));

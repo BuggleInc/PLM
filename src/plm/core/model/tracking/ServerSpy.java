@@ -29,6 +29,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	 * @param exo
 	 *            progress data
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void executed(Exercise exo) {
 		JSONObject jsonObject = new JSONObject();
@@ -44,6 +45,19 @@ public abstract class ServerSpy implements ProgressSpyListener {
         jsonObject.put("password", game.getCoursePassword());
 		jsonObject.put("exoname", exo.getName());
 		jsonObject.put("exolang", lastResult.language.toString());
+		
+		switch (lastResult.outcome) {
+		case COMPILE:  jsonObject.put("outcome", "compile");  break;
+		case FAIL:     jsonObject.put("outcome", "fail");     break;
+		case PASS:     jsonObject.put("outcome", "pass");     break;
+		default:       jsonObject.put("outcome", "UNKNOWN");  break;
+		}
+		
+		if (lastResult.totalTests > 0) {
+			jsonObject.put("passedtests", lastResult.passedTests + "");
+			jsonObject.put("totaltests", lastResult.totalTests + "");
+		}
+
         // passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
@@ -53,6 +67,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
 		sendRequest(jsonObject.toString());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void switched(Exercise exo) {
 		JSONObject jsonObject = new JSONObject();
@@ -73,6 +88,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	/**
 	 * Send a presence report to the server
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void heartbeat() {
 		JSONObject jsonObject = new JSONObject();
@@ -84,7 +100,8 @@ public abstract class ServerSpy implements ProgressSpyListener {
 
 		sendRequest(jsonObject.toString());
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String join() {
 		JSONObject jsonObject = new JSONObject();
@@ -97,6 +114,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
         return sendRequest(jsonObject.toString());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void leave() {
 		JSONObject jsonObject = new JSONObject();

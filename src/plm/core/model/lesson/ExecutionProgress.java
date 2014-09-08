@@ -11,9 +11,13 @@ import plm.core.model.Game;
 
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
 public class ExecutionProgress {
+
+	public static enum outcomeKind { COMPILE, FAIL, PASS };
+	public outcomeKind outcome;
+	
 	public String compilationError;
+	public String executionError = "";
 	public int passedTests, totalTests=0;
-	public String details = "";
 	public Date date = new Date();
 	public ProgrammingLanguage language = Game.getProgrammingLanguage();
 
@@ -30,6 +34,8 @@ public class ExecutionProgress {
 		ep.totalTests = -1;
 		if (ep.compilationError == null)
 			ep.compilationError = "Unknown compilation error";
+		ep.outcome = ExecutionProgress.outcomeKind.COMPILE;
+
 		return ep;
 	}
 	public static ExecutionProgress newCompilationError(DiagnosticCollector<JavaFileObject> diagnostics) {

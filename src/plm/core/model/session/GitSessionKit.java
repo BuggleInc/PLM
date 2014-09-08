@@ -22,6 +22,7 @@ import java.util.Collection;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.StoredConfig;
 
@@ -112,6 +113,8 @@ public class GitSessionKit implements ISessionKit {
 					} else {
 						System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
 					}
+				} catch (TransportException e1) {
+					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
 				} catch (GitAPIException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

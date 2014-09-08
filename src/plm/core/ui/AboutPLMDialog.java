@@ -33,8 +33,8 @@ public class AboutPLMDialog extends JDialog {
 	}
 	
 	private AboutPLMDialog() {
-		super(MainFrame.getInstance(), "About PLM", true);
-		this.setTitle(Game.i18n.tr("About PLM"));
+		super(MainFrame.getInstance(), "About the PLM", true);
+		this.setTitle(Game.i18n.tr("About the PLM"));
 		initComponent();
 	}
 	
@@ -121,7 +121,7 @@ public class AboutPLMDialog extends JDialog {
 		licenseArea.setEditorKit(new PlmHtmlEditorKit());
 		licenseArea.setEditable(false);
 		licenseArea.setText(Game.i18n.tr(
-				  "<h2>PLM is proudly Free Software</h2>"
+				  "<h2>The PLM is proudly Free Software</h2>"
 				+ ""
 				+ "<p>Copyright (c) 2008-2013.<br/> "
 				+ "The PLM Team: Martin Quinson, Gérald Oster and others.<br/> "

@@ -57,7 +57,7 @@ public class ServerSpyAppEngine extends ServerSpy {
     }
 
 	@Override
-	public void callForHelp() {
+	public void callForHelp(String studentInput) {
 		//TODO
 	}
 

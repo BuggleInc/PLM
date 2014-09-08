@@ -141,12 +141,10 @@ public class ExoTest {
 							                              : "none"));
 		
 		
-		if (exo.lastResult.totalTests == 0 
-				|| exo.lastResult.totalTests != exo.lastResult.passedTests 
-				|| !exo.lastResult.details.equals("")) {
+		if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
 			//System.out.println(""+exo.getId()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
 			fail(exo.getId()+": failed exercise ("+
-				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.details+"'");
+				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.executionError+"'");
 		}
 		//System.out.println(""+exo.getId()+" passed in "+Game.getProgrammingLanguage());
 	}

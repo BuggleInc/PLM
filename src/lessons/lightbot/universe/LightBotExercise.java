@@ -53,10 +53,14 @@ public class LightBotExercise extends ExerciseTemplated {
 			}
 			int stillOff = lastResult.totalTests - lastResult.passedTests;
 			if (stillOff == 1) 
-				lastResult.details = "The light is still off";
+				lastResult.executionError = Game.i18n.tr("A light is still off.");
 			if (stillOff > 1)
-				lastResult.details = stillOff + " lights (out of "+lastResult.totalTests+") are still off";
+				lastResult.executionError = Game.i18n.tr("{0} lights (out of {1}) are still off.",stillOff,lastResult.totalTests);
 
+			if (stillOff == 0)
+				lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
+			else
+				lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
 		}
 	}
 	@Override

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-30 09:58+0200\n"
+"POT-Creation-Date: 2014-09-08 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2538,7 +2538,7 @@ msgid ""
 "can be used to retrieve the length of many objects.  Applied to strings for "
 "example, it returns the amount of chars in this string.[/!] [!scala]Don't "
 "forget to start at <code>0</code> and stop at <code>T.length-1</code> "
-"instead of <code>1 to T.length</code> however.[/!]"
+"instead of <code>1</code> to <code>T.length</code> however.[/!]"
 msgstr ""
 
 #. type: Content of: <p>
@@ -2623,8 +2623,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:119
 msgid ""
-"To declare a variable named <b>T</b> that can store arrays of integers, one "
-"should write:"
+"To declare a variable named <b>T</b> that can store an array of integers, "
+"one should write:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -2697,7 +2697,7 @@ msgid ""
 "<code>[!java]int[] T = new int[i];[/!][!scala]var T = new "
 "Array[Int](i);[/!]</code> In this case, the array's size will be set to the "
 "value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size "
-"of the array still cannot be modified : even if the variable <code>i</code> "
+"of the array still cannot be modified: even if the variable <code>i</code> "
 "changes afterward, the size remains to the value given when it was "
 "allocated.  [!java]Also, it is forbidden to write something like <code>int "
 "T[10];</code> when declaring the variable.  You are required to use the "

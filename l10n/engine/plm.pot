@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 00:51+0200\n"
+"POT-Creation-Date: 2014-09-04 00:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,7 +255,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopStairsEntity.java:10
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
-#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:9
+#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:10
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -272,7 +272,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopStairsEntity.java:14
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
-#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:14
+#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:15
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
@@ -631,12 +631,13 @@ msgid "C is still experimental"
 msgstr ""
 
 #: src/plm/core/model/HelpServer.java:27
-#: src/plm/core/ui/action/HelpMe.java:110
+#: src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
 msgstr ""
 
 #: src/plm/core/model/HelpServer.java:29
-#: src/plm/core/ui/action/HelpMe.java:113
+#: src/plm/core/ui/action/HelpMe.java:133
+#: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
 msgstr ""
 
@@ -759,17 +760,22 @@ msgstr ""
 msgid "Cannot find the name of mission in {0}.html"
 msgstr ""
 
-#: src/plm/core/model/session/GitSessionKit.java:111
+#: src/plm/core/model/session/GitSessionKit.java:112
 #: src/plm/core/model/tracking/GitSpy.java:60
 msgid ""
 "Creating a new session locally, as no corresponding session could be "
 "retrieved from the servers."
 msgstr ""
 
-#: src/plm/core/model/session/GitSessionKit.java:113
+#: src/plm/core/model/session/GitSessionKit.java:114
 #: src/plm/core/model/tracking/GitSpy.java:62
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
+msgstr ""
+
+#: src/plm/core/model/session/GitSessionKit.java:117
+#: src/plm/core/model/tracking/GitUtils.java:86
+msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
@@ -783,7 +789,7 @@ msgstr ""
 #: src/plm/core/model/session/ZipSessionKit.java:253
 #, java-format
 msgid ""
-"PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
+"The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
 "\n"
 " Would you like proceed anyway (and lose any solution typed so far)?"
 msgstr ""
@@ -807,7 +813,7 @@ msgstr ""
 #: src/plm/core/model/session/ZipSessionKit.java:357
 #, java-format
 msgid ""
-"PLM were unable to load your code for lesson {0} ({1}:{2}).\n"
+"The PLM were unable to load your code for lesson {0} ({1}:{2}).\n"
 "\n"
 " Would you like proceed anyway (and lose any solution typed previously)?"
 msgstr ""
@@ -837,7 +843,7 @@ msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:420
 #: src/plm/core/ui/MainFrame.java:755
-msgid "About PLM"
+msgid "About the PLM"
 msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:60
@@ -863,11 +869,11 @@ msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:124
 msgid ""
-"<h2>PLM is proudly Free Software</h2><p>Copyright (c) 2008-2013.<br/> The "
-"PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git logs "
-"for the exact authorship of each file).</p> <p>The PLM software was written "
-"internally by the team. This software is distributed under the GNU general "
-"public license version 3 (GPLv3).</p> <p>The pedagogical material "
+"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2013.<br/> "
+"The PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git "
+"logs for the exact authorship of each file).</p> <p>The PLM software was "
+"written internally by the team. This software is distributed under the GNU "
+"general public license version 3 (GPLv3).</p> <p>The pedagogical material "
 "distributed with the PLM is covered both by the GPLv3 license (mainly for "
 "the included code) and by the CC-BY-SA license (mainly for the other media "
 "files). But the exact boundary here between the source code and the media is "
@@ -963,12 +969,26 @@ msgstr ""
 msgid "You never attempted this lesson."
 msgstr ""
 
-#. i18n.tr("<i>Practice makes perfect</i>, as they say."),
-#. i18n.tr("<i>To err is human</i>, as they say."),
-#. i18n.tr("You should keep trying until you get it right!"),
-#. i18n.tr("We all learn from our mistakes, so, good job!"),
-#. i18n.tr("We learn from failure, not from success!"),
-#.
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
+msgid "<i>Practice makes perfect</i>, as they say."
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
+msgid "<i>To err is human</i>, as they say."
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
+msgid "You should keep trying until you get it right!"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:36
+msgid "We all learn from our mistakes, so, good job!"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:37
+msgid "We learn from failure, not from success!"
+msgstr ""
+
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
@@ -1369,7 +1389,8 @@ msgid "Demo"
 msgstr ""
 
 #: src/plm/core/ui/MainFrame.java:480 src/plm/core/ui/MainFrame.java:718
-#: src/plm/core/ui/action/HelpMe.java:116
+#: src/plm/core/ui/action/HelpMe.java:136
+#: src/plm/core/ui/action/HelpMe.java:143
 msgid "Call for Help"
 msgstr ""
 
@@ -1458,7 +1479,16 @@ msgid ""
 "generated one."
 msgstr ""
 
-#: src/plm/core/ui/action/HelpMe.java:116
+#: src/plm/core/ui/action/HelpMe.java:67
+msgid "Please ask here your question for the teacher:"
+msgstr ""
+
+#: src/plm/core/ui/action/HelpMe.java:68
+msgid "Call for help"
+msgstr ""
+
+#: src/plm/core/ui/action/HelpMe.java:136
+#: src/plm/core/ui/action/HelpMe.java:143
 msgid "Cancel call"
 msgstr ""
 
@@ -1610,7 +1640,7 @@ msgstr ""
 #, java-format
 msgid ""
 "You chose a translated mission text for edition ({0}).\n"
-"This is wrong. The translations should be handled with po4a in PLM.\n"
+"This is wrong. The translations should be handled with po4a in the PLM.\n"
 "Please refer to https://github.com/oster/PLM/wiki/Working-with-the-"
 "translations for more information.\n"
 "\n"

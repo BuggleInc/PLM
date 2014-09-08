@@ -1,9 +1,19 @@
+20140905: Release 2.4.1
+
+  Soon in production, last chance to iron out the bugs found on time.
+
+  * User Interface:
+    - Students can explain their problem in a phrase when requesting
+      for help (contributing to #208, but the teacher cannot answer yet)
+  * Engine:
+    - Save the error message also when it compiles but diverges (fix #213)
+
 20140901: Release 2.4
 
   Let's get ready for the Big Show of this year.
   
   * Improved translations:
-    - Brazilian Portuguese: Now at 37% despite the content changes
+    - Brazilian Portuguese: Missions at 39% despite content changes
     - French: Engine and Missions translation back to 100%
   * User Interface:
     - Switch from the now unmaintained jsyntaxpane to RSyntaxpaneArea 
@@ -12,6 +22,10 @@
     - Kill the cloud session export feature: git superseeds that.
     - Allow the students to provide imediate feedback on the exercises
       they just passed.
+    - Restore the feature where the students can ask for the help of
+      their teacher, once they have registered their identity to the
+      PLM-server. Also, the PLM-server now gives a much better
+      interface for the teacher.
   * Pedagogical content:
     - welcome: move the BDR after the races so that students know
       about variables when attempting them (fix #106).
