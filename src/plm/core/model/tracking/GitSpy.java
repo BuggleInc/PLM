@@ -165,6 +165,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			GitUtils gitUtils = new GitUtils(git);
 			// push to the remote repository
 			gitUtils.forcefullyPushToUserBranch();
+
+		} catch (org.eclipse.jgit.api.errors.TransportException e) {
+			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable."));
+			if (Game.getInstance().isDebugEnabled())
+				e.printStackTrace();
+
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
