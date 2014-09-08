@@ -112,10 +112,12 @@ public class GitUtils {
      * concurrent push requests, triggering an alert that got the PLM-data repo to get temporarily disabled.
      * 
 	 */
-	public void maybePushToUserBranch() {
-		if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
-			return;
-		currentlyPushing = true;
+	public void maybePushToUserBranch() {	
+		synchronized(GitUtils.class) {
+			if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
+				return;
+			currentlyPushing = true;
+		}
 		
 		new SwingWorker<Void, Integer>() {
 			@Override
@@ -129,7 +131,11 @@ public class GitUtils {
 
 				// Do it now, and allow next request to occur
 				forcefullyPushToUserBranch();
-				currentlyPushing = false;
+				
+				synchronized(GitUtils.class) {
+					currentlyPushing = false;
+				}
+				
 				return null;
 			}
 		}.execute();
