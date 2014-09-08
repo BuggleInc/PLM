@@ -1,12 +1,12 @@
-20140908: Release 2.4.2
+20140909: Release 2.4.2
 
-  * Improved translations:
-    - Brazilian Portuguese: Missions at 45%
   * Engine:
     - Reduce the load to the github servers by not pushing more often
       than once every 30mn (or when the client quits). The PLM-data
       repository was disabled by github robots due to the excessive
       load. We don't want it to happen again...
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 45%
   * Pedagogical content: fixing the issues opened by our students.
     #221: fix templating to now show crude details to youngsters
     #218, #225, #227: typos in French
