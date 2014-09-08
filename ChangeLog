@@ -13,6 +13,9 @@
     #226: Course: nice error message when running more than asked
     #228: CourseForest: nice error message when running more than asked
     #230: Course*: forbid backward() too. forward() must be called.
+    #232, #233: Methods: show the code calling goAndGet() in languages
+          allowing methods to be embeeded within methods (scala/python)
+          Should be more robust to students misuses now.
 
 20140905: Release 2.4.1
 

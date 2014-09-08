@@ -9,6 +9,10 @@ def backward(i=-1):
     else:
       errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
 
+# BEGIN TEMPLATE
+
+# Add your code here
+
 # BEGIN SOLUTION
 def goAndGet():
   cpt = 0
@@ -27,3 +31,4 @@ for i in range(7):
   right()
   forward()
   left()
+# END TEMPLATE
