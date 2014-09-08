@@ -111,11 +111,15 @@ correggeremo nei rilasci futuri di PLM.</p>
 (muoversi in avanti finché non si incontra un baggle, prenderlo e tornare
 indientro alla posizione iniziale per depositarlo sul terreno).</p>
 
-<p>Questo esercizio si distingue dai precedenti perché non dovrete scrivere
-tutto il codice eseguito dal buggle. Invece dovrete scrivere esclusivamente
-il metodo che verrà chiamato magicamente da solo quando voi cliccherete sul
-pulsante <b>Start</b>. Il buggle chiamerà il tuo metodo
-<code>goAndGet()</code> per ogni colonna finché non troverà il baggle.</p> 
+<p>This exercise is a bit different because you will not write all of the code
+executed by the buggle. Instead, you should only write one method that get
+called automagically added when you click on <b>Start</b>. Your buggle calls
+your <code>goAndGet()</code> method on each row, until the baggle is
+found. [!python|scala]The code for that is already provided under the
+<code>goAndGet()</code> method, but you probably don't want to change
+it.[/!] [!java]You don't need to write the code calling
+<code>goAndGet()</code> yourself. It's automagically there already, even if
+you cannot see it.[/!]</p> 
 
 <p>Ma per far si che questo avvenga ora dovrai scrivere il metodo
 <code>goAndGet()</code>.</p>

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-08 11:49+0200\n"
+"POT-Creation-Date: 2014-09-08 22:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3527,13 +3527,18 @@ msgstr ""
 #: src/lessons/welcome/methods/basics/Methods.html:101
 msgid ""
 "This exercise is a bit different because you will not write all of the code "
-"executed by the buggle. Instead, you should only write one method that is "
+"executed by the buggle. Instead, you should only write one method that get "
 "called automagically added when you click on <b>Start</b>. Your buggle calls "
-"your <code>goAndGet()</code> method on each row, until the baggle is found."
+"your <code>goAndGet()</code> method on each row, until the baggle is "
+"found. [!python|scala]The code for that is already provided under the "
+"<code>goAndGet()</code> method, but you probably don't want to change "
+"it.[/!] [!java]You don't need to write the code calling "
+"<code>goAndGet()</code> yourself. It's automagically there already, even if "
+"you cannot see it.[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/Methods.html:107
+#: src/lessons/welcome/methods/basics/Methods.html:110
 msgid ""
 "But for that to work, you have to actually write this "
 "<code>goAndGet()</code> method now."
