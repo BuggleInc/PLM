@@ -115,6 +115,8 @@ public class GitSessionKit implements ISessionKit {
 					}
 				} catch (TransportException e1) {
 					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
+					if (Game.getInstance().isDebugEnabled())
+						e1.printStackTrace();
 				} catch (GitAPIException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -61,6 +61,8 @@ public class GitUtils {
 			} 
 		} catch (org.eclipse.jgit.api.errors.TransportException e) {
 			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable. That's fine."));
+			if (Game.getInstance().isDebugEnabled())
+				e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -84,6 +86,8 @@ public class GitUtils {
 					e.printStackTrace();
 				} catch (TransportException e) {
 					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
+					if (Game.getInstance().isDebugEnabled())
+						e.printStackTrace();
 				} catch (GitAPIException e) {
 					e.printStackTrace();
 				}
