@@ -21,7 +21,7 @@ def forward(i=-1):
       errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
 def backward(i=-1):
     if i==-1:
-      entity.backward()
+      errorMsg("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay.")
     else:
       errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
 # BEGIN SOLUTION

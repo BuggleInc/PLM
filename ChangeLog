@@ -12,6 +12,7 @@
     #218, #227: typos in French
     #226: Course: nice error message when running more than asked
     #228: CourseForest: nice error message when running more than asked
+    #230: Course*: forbid backward() too. forward() must be called.
 
 20140905: Release 2.4.1
 
