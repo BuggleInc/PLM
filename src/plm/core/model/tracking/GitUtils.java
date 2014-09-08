@@ -32,7 +32,7 @@ public class GitUtils {
 	public GitUtils(Git git) throws IOException, GitAPIException {
 		this.git = git;
 	}
-
+	
 	public void checkoutUserBranch(User currentUser) throws GitAPIException {
 		String userUUID = String.valueOf(currentUser.getUserUUID());
 		String userBranch;
@@ -75,6 +75,10 @@ public class GitUtils {
 	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
 	 */
 	public void forcefullyPushToUserBranch() {
+		synchronized(GitUtils.class) {
+			currentlyPushing = true;
+		}
+		
 		// credentials
 		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
@@ -93,6 +97,10 @@ public class GitUtils {
 				e.printStackTrace();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
+		}  finally {	
+			synchronized(GitUtils.class) {
+				currentlyPushing = false;
+			}
 		}
 	}
 	
@@ -131,10 +139,6 @@ public class GitUtils {
 
 				// Do it now, and allow next request to occur
 				forcefullyPushToUserBranch();
-				
-				synchronized(GitUtils.class) {
-					currentlyPushing = false;
-				}
 				
 				return null;
 			}
