@@ -4637,7 +4637,7 @@ msgstr ""
 "les deux cas, il faut que vous évitiez de dupliquer votre code pour qu'il "
 "reste simple et lisible. Il serait mieux que la buggle comprenne un ordre de "
 "type <code>vaChercher()</code> tout comme elle comprend un <code>[!"
-"c]avancePas()[/!][!scala|java|python]avance()[/!]()</code>."
+"c]avancePas()[/!][!scala|java|python]avance()[/!]</code>."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:16

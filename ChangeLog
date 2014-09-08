@@ -9,7 +9,7 @@
       load. We don't want it to happen again...
   * Pedagogical content: fixing the issues opened by our students.
     #221: fix templating to now show crude details to youngsters
-    #218, #227: typos in French
+    #218, #225, #227: typos in French
     #226: Course: nice error message when running more than asked
     #228: CourseForest: nice error message when running more than asked
     #230: Course*: forbid backward() too. forward() must be called.
