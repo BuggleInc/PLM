@@ -27,6 +27,8 @@ public class GitUtils {
 	private String repoName = Game.getProperty("plm.git.server.username");
 	private String repoPassword = Game.getProperty("plm.git.server.password");
 
+	private static boolean currentlyPushing = false;
+
 	public GitUtils(Git git) throws IOException, GitAPIException {
 		this.git = git;
 	}
@@ -68,29 +70,66 @@ public class GitUtils {
 		}
 	}
 
-	public void pushToUserBranch() {
+	/** Push the data to the github servers. 
+	 * 
+	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
+	 */
+	public void forcefullyPushToUserBranch() {
+		// credentials
+		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
+
+		// push
+		PushCommand pc = git.push();
+		pc.setCredentialsProvider(cp).setForce(true).setPushAll();
+		try {
+			for (PushResult pr: pc.call()) 
+				if (!pr.getMessages().equals(""))
+					System.err.println("Pushed to "+pr.getURI()+". Message: "+pr.getMessages());
+		} catch (InvalidRemoteException e) {
+			e.printStackTrace();
+		} catch (TransportException e) {
+			System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
+			if (Game.getInstance().isDebugEnabled())
+				e.printStackTrace();
+		} catch (GitAPIException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/** try to push to the git servers, if no request is pending
+	 * 
+	 * We had issues with the git servers that don't like having more than 1,200 concurrent push requests 
+	 * from the same NATed IP address, and our PLM-data repo got temporarily disabled as a result. So now, 
+	 * we only push at most once every 30 minutes (unless when the client quits, in which case 
+	 * forcefullyPushToUserBranch() is used to get the data immediately out). 
+	 * 
+	 * Here is my understanding of the github incident:  We had 100 students using the PLM from the same 
+	 * external IP address (our school is in a NATed network) at the same time for about 4 hours. Each 
+  	 * of them was issuing git push requests each time that the "run" button is hit. Those requests where 
+  	 * handled in a new thread to improve the UI reactivity. Since all branches derive from the master
+     * branch, it imposes the server to lock that branch for the commit to proceed. Things went seriously 
+     * wrong at some point, probably because of the lock. As a result, the github servers got up to 1200
+     * concurrent push requests, triggering an alert that got the PLM-data repo to get temporarily disabled.
+     * 
+	 */
+	public void maybePushToUserBranch() {
+		if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
+			return;
+		currentlyPushing = true;
+		
 		new SwingWorker<Void, Integer>() {
 			@Override
 			protected Void doInBackground() {
-				// credentials
-				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
-
-				// push
-				PushCommand pc = git.push();
-				pc.setCredentialsProvider(cp).setForce(true).setPushAll();
+				// Reduce the load on the github servers by not pushing more often that once every 20 minutes
 				try {
-					for (PushResult pr: pc.call()) 
-						if (!pr.getMessages().equals(""))
-							System.err.println("Pushed to "+pr.getURI()+". Message: "+pr.getMessages());
-				} catch (InvalidRemoteException e) {
-					e.printStackTrace();
-				} catch (TransportException e) {
-					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
-					if (Game.getInstance().isDebugEnabled())
-						e.printStackTrace();
-				} catch (GitAPIException e) {
-					e.printStackTrace();
+					Thread.sleep(30 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
+				} catch (InterruptedException e1) {
+					/* Ok, that's fine, what ever */
 				}
+
+				// Do it now, and allow next request to occur
+				forcefullyPushToUserBranch();
+				currentlyPushing = false;
 				return null;
 			}
 		}.execute();

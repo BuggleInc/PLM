@@ -79,7 +79,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			.call();
 
 			// and push to ensure that everything remains in sync
-			gitUtils.pushToUserBranch();
+			gitUtils.maybePushToUserBranch();
 		} catch (Exception e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();
@@ -108,7 +108,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			            .call();
 
 			// push to the remote repository
-			gitUtils.pushToUserBranch();
+			gitUtils.maybePushToUserBranch();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -140,7 +140,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				.call();
 
 				// push to the remote repository
-				gitUtils.pushToUserBranch();
+				gitUtils.maybePushToUserBranch();
 			} catch (GitAPIException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -335,7 +335,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					.call();
 
 			// push to the remote repository
-			gitUtils.pushToUserBranch();
+			gitUtils.maybePushToUserBranch();
 		} catch (IOException | GitAPIException ex) { 
 			ex.printStackTrace();
 		}
