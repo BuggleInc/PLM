@@ -159,7 +159,17 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	}
 
 	@Override
-	public void leave() {
+	public void leave() {	
+		System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting"));
+		try {
+			GitUtils gitUtils = new GitUtils(git);
+			// push to the remote repository
+			gitUtils.forcefullyPushToUserBranch();
+		} catch (GitAPIException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

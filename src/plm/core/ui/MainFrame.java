@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -118,6 +120,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		return MainFrame.instance;
 	}
 	
+	
+	// FIXME: useless since it is never called...
 	public static void doDispose() {
 		if (MainFrame.instance == null)
 			return;
@@ -127,7 +131,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	private void initComponents(final Game g) {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+	        @Override
+	        public void windowClosing(WindowEvent event) {
+	            Game.getInstance().quit();
+	        }
+	    });		
 		getContentPane().setLayout(new BorderLayout());
 
 		JSplitPane logPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true);
