@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-08-26 00:09-0300\n"
-"PO-Revision-Date: 2014-08-31 22:53-0300\n"
+"POT-Creation-Date: 2014-08-30 09:58+0200\n"
+"PO-Revision-Date: 2014-09-05 17:57-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -795,9 +795,8 @@ msgstr "Loops Do .. while (faça .. enquanto)"
 msgid "Building methodically"
 msgstr "Construindo metodicamente"
 
-#. type: Content of: <h2>
+#. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:202
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:2
 msgid "Methods returning a result"
 msgstr "Métodos retornando um resultado"
 
@@ -1296,7 +1295,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopFor.html:75
 #: src/lessons/welcome/methods/basics/Methods.html:96
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:49
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
 #: src/lessons/welcome/methods/args/MethodsArgs.html:70
 #: src/lessons/welcome/methods/slug/SlugHunting.html:19
 #: src/lessons/welcome/methods/slug/SlugTracking.html:23
@@ -3256,7 +3255,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/array/basics/Array1.html:21
 msgid "[!java|scala]Arrays[/!][!python]List[/!]"
-msgstr ""
+msgstr "[!java|scala]Arrays[/!][!python]List[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:23
@@ -3278,6 +3277,24 @@ msgid ""
 "differing types, such as integer values in some cells and colors in other "
 "cells.[/!]"
 msgstr ""
+"[!java|scala]Uma array[/!][!python]Uma list[/!] é uma sequência\n"
+"ordenada de variáveis que ficam juntas. é similar a uma estante onde\n"
+"em cada prateleira se coloca um valor separado. Cada variável da\n"
+"sequência é identificada por sua posição, e pode armazenar um valor\n"
+"específico. [!java|scala]todas as células da array devem armazenar\n"
+"valores do mesmo tipo por que arrays são homogêneas em [!thelang]. É\n"
+"possível burlar esta restrição usando tipos de dados\n"
+"<code>[!java]Object[/!][!scala]Any[/!]</code> que contenham\n"
+"[!java]praticamente[/!] qualquer outro tipo de dados. [!java]Tipos\n"
+"primitivos como aqueles que vimos anteriormente (int, boolean, double,\n"
+"char, etc) não podem ser armazenados numa variável Object, mas suas\n"
+"contrapartidas objetificadas (Integer, Boolean, Double, Char, Boolean,\n"
+"etc) podem.[/!] Entretanto, é boa prática fazer o tipo de uma array o\n"
+"mais específico possível, i.e., se você planeja armazenar alguns\n"
+"inteiros na sua array, faça dela uma array de inteiros, não de\n"
+"[!java]Object[/!][!scala]Any[/!].[/!] [!python]Lists podematé mesmo\n"
+"misturar valores de diferentes tipos, como valores inteiros em algumas\n"
+"células e cores em outras células.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:40
@@ -3291,11 +3308,20 @@ msgid ""
 "scala]T(N-1)[/!]. It may seem funny to count starting from 0 and not from 1 "
 "as usual, but some historical reasons make it unavoidable here."
 msgstr ""
+"T é o nome da [!java|scala]array[/!][!python]list[/!],\n"
+"[!java|python]T[0][/!][!scala]T(0)[/!] é o nome da primeira célula,\n"
+"[!java|python]T[1][/!][!scala]T(1)[/!] é o nome da segunda célula,\n"
+"[!java|python]T[2][/!][!scala]T(2)[/!] da terceira e etc. E sim, a\n"
+"primeira célula é numerada [!java|python]T[0][/!][!scala]T(0)[/!] e a\n"
+"última de uma [!java|scala]array[/!][!python]list[/!] de tamanho N é\n"
+"[!java|python]T[N-1][/!][!scala]T(N-1)[/!]. Pode parecer estranho\n"
+"contar a partir de 0 e não de 1 como normalmente, mas por motivos\n"
+"históricos isto agora é inevitável."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:48
 msgid "Basic usage"
-msgstr ""
+msgstr "Uso básico"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:50
@@ -3309,28 +3335,37 @@ msgid ""
 "scala]T(i)[/!]</code> can be used just like any variable. We can set a new "
 "value:"
 msgstr ""
+"Podemos usar uma variável inteira <i>i</i> para acessar com\n"
+"[!java|python]T[i][/!][!scala]T(i)[/!] as células: quando o valor de\n"
+"<i>i</i> é 0, [!java|python]T[i][/!][!scala]T(i)[/!] acessa\n"
+"[!java|python]T[0][/!][!scala]T(0)[/!]; quando o valor de <i>i</i> é\n"
+"10, [!java|python]T[i][/!][!scala]T(i)[/!] acessa\n"
+"[!java|python]T[10][/!][!scala]T(10)[/!]. Sizemos que <i>i</i> é o\n"
+"<b>índice</b> em T.\n"
+"<code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> pode ser usada\n"
+"simplesmente como qualquer variável. Podemos configurar um novo valor:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:58
 #, no-wrap
 msgid "[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]"
-msgstr ""
+msgstr "[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:60
 msgid "We can retrieve and use its value:"
-msgstr ""
+msgstr "Podemos recuperar e usar seu valor:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:61
 #, no-wrap
 msgid "x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]"
-msgstr ""
+msgstr "x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:63
 msgid "We can test this value:"
-msgstr ""
+msgstr "Podemos testar este valor:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:64
@@ -3340,6 +3375,9 @@ msgid ""
 "    [!java|scala]//[/!][!python]#[/!] instructions...\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) [!scala|java]{[/!][!python]:[/!]\n"
+"    [!java|scala]//[/!][!python]#[/!] instruções...\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:68
@@ -3347,6 +3385,9 @@ msgid ""
 "It is very easy to traverse the whole [!scala|java]array[/!][!"
 "python]list[/!], for example to initialize each cells."
 msgstr ""
+"É muito fácil percorrer toda a\n"
+"[!scala|java]array[/!][!python]list[/!], por exemplo para iniciar as\n"
+"células."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:71
@@ -3356,6 +3397,9 @@ msgid ""
 "   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]\n"
+"   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:75
@@ -3368,7 +3412,7 @@ msgid ""
 "example, it returns the amount of chars in this string.[/!] [!scala]Don't "
 "forget to start at <code>0</code> and stop at <code>T.length-1</code> "
 "instead of <code>1 to T.length</code> however.[/!]"
-msgstr ""
+msgstr "[!java|scala]A notação <code>T.length</code> recupera o comprimento (length) da  array T,[/!] [!python]A função <code>len()</code> recupera o comprimento da lista T,[/!] permitindo que se construa um loop clássico facilmente.  [!python]Na verdade, a função <code>len()</code> é muito mais genérica e pode ser usada para recuperar o comprimento de muitos objetos. Aplicada numa string, por exemplo, ela retorna a quantidade de chars na string.[/!] [!scala]Não esqueça de começar com <code>0</code> e terminar em <code>T.length-1</code> ao invés de ir de <code>1 até T.length</code>.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:83
@@ -3376,6 +3420,8 @@ msgid ""
 "If you just want to iterate over the values of T without keeping track of "
 "their index, you can simply write:"
 msgstr ""
+"Se você quer simplesmente iterar nos valores de T sem controlar o\n"
+"índice, pode simplesmente escrever:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:84
@@ -3385,6 +3431,9 @@ msgid ""
 "  action()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]\n"
+"  ação()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:87
@@ -3399,11 +3448,21 @@ msgid ""
 "but this should be the topic of a specific set of exercises (that are still "
 "to be written in PLM).[/!]"
 msgstr ""
+"[!java]Esta construção é chamada um <i>loop extendido</i> em Java. A\n"
+"variável <i>i</i> assume todos os valores do conjunto localizado a\n"
+"direita do dois-pontos (:), um depois do outro.[/!]\n"
+"[!python|scala]Isto é na verdade muito similar à construção\n"
+"anterior. Simplesmente, <code>[!python]range(n)[/!][!scala]i to\n"
+"j[/!]</code> retorna um conjunto de inteiros sobre os quais o loop for\n"
+"itera. Na verdade, [!thelang] oferece formas muito mais elegantes de\n"
+"percorrer [!python]lists[/!][!scala]arrays[/!] e outras coleções de\n"
+"dados, mas isto fica para um conjunto específico de exercícios (que\n"
+"ainda será escrito no PLM).[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:98
 msgid "Declaring [!python]a list[/!][!java|scala]an array[/!]"
-msgstr ""
+msgstr "Declarando uma [!python]list[/!][!java|scala]array[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:101
@@ -3412,6 +3471,9 @@ msgid ""
 "all together.  Just put them between square braces and separated by commas "
 "as follows:"
 msgstr ""
+"Se você sabe antecipadamente o conteúdo da sua lista, você pode afetar\n"
+"os valores todos juntos. Coloque eles simplesmente entre colchetes e\n"
+"separados por vírgulas como segue:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:104
@@ -3420,6 +3482,8 @@ msgid ""
 "L = [1, 3, 5, 7, 9] \n"
 "<span class=\"comment\"># L is now an array of 5 values, all of them being integers</span>"
 msgstr ""
+"L = [1, 3, 5, 7, 9] \n"
+"<span class=\"comment\"># L agora é uma array de 5 valores, todos eles inteiros</span>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:106
@@ -3427,6 +3491,8 @@ msgid ""
 "Otherwise, you probably want to create an empty list and then append each "
 "values separately to the list:"
 msgstr ""
+"Por outro lado, você provavelmente vai querer criar uma lista vazia e\n"
+"então anexar os valores separadamente a ela:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:108
@@ -3441,6 +3507,14 @@ msgid ""
 "L2.append(9) \n"
 "<span class=\"comment\"># Its content is now the same as L previously</span>"
 msgstr ""
+"L2 = [] \n"
+"<span class=\"comment\"># neste momento, L2 é uma lista vazia</span>\n"
+"L2.append(1)\n"
+"L2.append(3)\n"
+"L2.append(5)\n"
+"L2.append(7)\n"
+"L2.append(9) \n"
+"<span class=\"comment\"># E agora seu conteúdo é igual ao de L, vista antes</span>"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array1.html:116
@@ -3454,12 +3528,14 @@ msgid ""
 "To declare a variable named <b>T</b> that can store arrays of integers, one "
 "should write:"
 msgstr ""
+"Para declarar uma variável chamada <b>T</b> que pode guardar uma array de\n"
+"inteiros, você deve escrever:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:120
 #, no-wrap
 msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
-msgstr ""
+msgstr "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:122
@@ -3473,11 +3549,20 @@ msgid ""
 "specifying that each cell of this array is an integer. An array of booleans "
 "would simply by written <code>Array[Boolean]</code>.[/!]"
 msgstr ""
+"[!java]<code>int</code> significa que os elementos da array são do\n"
+"tipo inteiro; <code>[]</code> significa que estamos falando de uma\n"
+"array e <code>T</code> é o nome da variável. Por motivos históricos,\n"
+"também pode ser escrito como <code>int T[]</code> (com o [] depois do\n"
+"nome da variável), mas como assim é menos legível é melhor você evitar\n"
+"esta forma.[/!] [!scala]A notação <code>[Int]</code> especializa o\n"
+"tipo Array (que é genérico), especificando que cada célula desta array\n"
+"é um inteiro. Um array de booleanos deve ser escrito simplesmente como\n"
+"<code>Array[Boolean]</code>.[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:130
 msgid "Allocating an array"
-msgstr ""
+msgstr "Alocando uma array"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:132
@@ -3488,17 +3573,23 @@ msgid ""
 "What would <code>[!java]T[4][/!][!scala]T(4)[/!]</code> mean if we didn't "
 "say that the array is 5 cells long?"
 msgstr ""
+"Declarar uma variável <code>T</code> que armazena uma array apenas\n"
+"reserva o <b>nome</b> <code>T</code> para uso futuro, mas não reserva\n"
+"a área de memória para armazenar as células. A array ainda não está\n"
+"inicializada: ela não tem qualquer valor. O que significa\n"
+"<code>[!java]T[4][/!][!scala]T(4)[/!]</code> se ainda não dissemos que\n"
+"a array tem 5 células?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:137
 msgid "First and foremost, we have to give a value to <code>T</code>:"
-msgstr ""
+msgstr "Primeiramente, temos que dar um valor a <code>T</code>:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:138
 #, no-wrap
 msgid "[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]"
-msgstr ""
+msgstr "[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:140
@@ -3508,6 +3599,11 @@ msgid ""
 "of 10 integer values.  In return, an array of 10 integer cells is created in "
 "memory, and the <code>T</code> variable <b>references</b> this array."
 msgstr ""
+"<code>new</code> (novo) significa que nós queremos criar algo, e\n"
+"<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> significa\n"
+"que é uma array de 10 valores inteiros. Como resultado, uma array de\n"
+"10 células para valores inteiros é criada na memória, e a variável\n"
+"<code>T</code> <b>faz referência</b> a esta array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:145
@@ -3516,6 +3612,9 @@ msgid ""
 "the array. The size of a <code>T</code> array can be retrieve by consulting "
 "the variable <code>T.length</code>."
 msgstr ""
+"O tamanho de uma array é fixo e não pode ser mudado depois da criação\n"
+"da array. O tamanho de uma array <code>T</code> pode ser recuperado ao\n"
+"se consultar a variável <code>T.length</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:149
@@ -3530,11 +3629,21 @@ msgid ""
 "the variable.  You are required to use the <code>new</code> instruction to "
 "allocate it, as in <code>int[] T = new int[10];</code> [/!]"
 msgstr ""
+"Na hora da alocação, você pode especificar o tamanho com uma variável:\n"
+"<code>[!java]int[] T = new int[i];[/!][!scala]var T = new\n"
+"Array[Int](i);[/!]</code> Neste caso, o tamanho da array será ajustado\n"
+"para o valor de <code>i</code> <i>quando <code>new</code> for\n"
+"chamado</i>.  O tamanho da array ainda não pode ser modificado: mesmo\n"
+"se a variável <code>i</code> mudar depois disto, o tamanho permanece o\n"
+"do valor dado no momento da alocação.  [!java]Além disto, é proibido\n"
+"escrever algo como <code>int T[10];</code> no momento de declarar a\n"
+"variável. Você deve usar a instrução <code>new</code> para alocar o\n"
+"array, como em <code>int[] T = new int[10];</code> [/!]"
 
 #. type: Content of: <h4>
 #: src/lessons/welcome/array/basics/Array1.html:157
 msgid "Declaration and initialization"
-msgstr ""
+msgstr "Declaração e inicialização"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:158
@@ -3542,12 +3651,14 @@ msgid ""
 "If you know beforehand the content of your array, you can declare, allocate "
 "and initialize it in one shoot:"
 msgstr ""
+"Se você sabe previamente o conteúdo da sua array, você pode declarar,\n"
+"alocar e inicializar ela tudo de uma vez:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:159
 #, no-wrap
 msgid "[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]"
-msgstr ""
+msgstr "[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:161
@@ -3555,6 +3666,8 @@ msgid ""
 "To know the size of the array to allocate, the compiler counts the provided "
 "values.  This code is equivalent to:"
 msgstr ""
+"Para saber o tamanho da array para alocar, o compilador conta os\n"
+"valores dados. Este código é equivalente a:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:163
@@ -3570,11 +3683,20 @@ msgid ""
 "...\n"
 "T(9) = 10[/!]"
 msgstr ""
+"[!java]int[] T = new int[10];\n"
+"T[0] = 1;\n"
+"T[1] = 2;\n"
+"...\n"
+"T[9] = 10;[/!][!scala]var T = new Array[Int](10);\n"
+"T(0) = 1\n"
+"T(1) = 2\n"
+"...\n"
+"T(9) = 10[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:173
 msgid "It is also equivalent to:"
-msgstr ""
+msgstr "também é equivalente a:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:174
@@ -3588,11 +3710,18 @@ msgid ""
 "  T(i) = i+1\n"
 "}[/!]"
 msgstr ""
+"[!java]int[] T = new int[10];\n"
+"for (int i=0; i&lt;T.length; i++) {\n"
+"  T[i] = i+1;\n"
+"}[/!][!scala]var T = new Array[Int](10);\n"
+"for (i &lt;- 0 to T.length-1) {\n"
+"  T(i) = i+1\n"
+"}[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:185
 msgid "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
-msgstr ""
+msgstr "[!python]Lists[/!][!scala|java]Arrays[/!] e parâmetros de métodos"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:186
@@ -3601,6 +3730,10 @@ msgid ""
 "method as a parameter.  This method can then use this parameter as if it "
 "were defined locally:"
 msgstr ""
+"Não tem nenhum problema passar uma\n"
+"[!python]list[/!][!java|scala]array[/!] para um método como\n"
+"parâmetro. Este método pode então usar este parâmetro como se ele\n"
+"fosse definido localmente:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:188
@@ -3613,11 +3746,17 @@ msgid ""
 "  return array(0) == 42\n"
 "}[/!]"
 msgstr ""
+"[!java]boolean has42First(int[] array) {\n"
+"    return array[0] == 42;\n"
+"}[/!][!python]def has42First(list):\n"
+"  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = {\n"
+"  return array(0) == 42\n"
+"}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:195
 msgid "On the caller side, that also very simple:"
-msgstr ""
+msgstr "No lado de quem invoca também é bastante simples:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:196
@@ -3629,6 +3768,11 @@ msgid ""
 "   <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] do something</span>\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] (10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]\n"
+"[!java|scala]<span class=\"comment\">// inicialização de valores omitida</span>\n"
+"[/!]if (has42First(tab))[!java|scala] {[/!][!python]:[/!]\n"
+"   <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] faz algo</span>\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array1.html:202
@@ -3643,6 +3787,9 @@ msgid ""
 "more complicated as the compiler has to know the type of the parameter you "
 "are creating.  For that, use the following (ugly) construct:"
 msgstr ""
+"Se você quer alocar e inicializar o array de uma vez só, é um pouco\n"
+"mais complicado pois o compilador terá que saber o tipo do parâmetro\n"
+"que você está criando. Para isto, use a seguinte construção (feia):"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:206
@@ -3652,6 +3799,9 @@ msgid ""
 "   <span class=\"comment\">// do something</span>\n"
 "}"
 msgstr ""
+"if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {\n"
+"   <span class=\"comment\">// faz algo</span>\n"
+"}"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:211
@@ -3660,6 +3810,11 @@ msgid ""
 "without any complication.  Here is a method that returns [!java|scala]an "
 "array[/!][!python]a list[/!] of the requested size, filled with 42s."
 msgstr ""
+"Métodos também podem retornar\n"
+"[!java|scala]arrays[/!][!python]lists[/!] como resultado sem nenhuma\n"
+"complicação. Aqui está um método que retorna uma\n"
+"[!java|scala]array[/!][!python]list[/!] do tamanho pedido, preenchido\n"
+"com 42s."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:214
@@ -3682,19 +3837,35 @@ msgid ""
 "        res.append(42)\n"
 "    return res[/!]"
 msgstr ""
+"[!java]int[] fill42(int size) {\n"
+"    int[] res = new int[size];\n"
+"    for (int i=0; i&lt;size; i++) \n"
+"        res[i] = 42;\n"
+"    return res;\n"
+"}[/!][!scala]def fill42(size:Int):Array[Int] = {\n"
+"    var res = new Array[int] (size)\n"
+"    for (i &lt;- 0 to size -1) {\n"
+"        res(i) = 42;\n"
+"    }\n"
+"    return res;\n"
+"}[/!][!python]def fill42(size):\n"
+"    res = []\n"
+"    for i in range(size):\n"
+"        res.append(42)\n"
+"    return res[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:231
 #: src/lessons/recursion/square/FourSquare.html:48
 #: src/lessons/recursion/hanoi/HanoiBoard.html:21
 msgid "Goal of this exercise"
-msgstr ""
+msgstr "Objetivo deste exercício"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:233
 msgid ""
 "At least! After this long explanation, we can come back to the exercise."
-msgstr ""
+msgstr "Finalmente! Depois desta longa explicação, podemos voltar ao exercício."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:234
@@ -3710,6 +3881,17 @@ msgid ""
 "by reading the ground color in each locations (with <code>getGroundColor()</"
 "code>).[/!]"
 msgstr ""
+"Sua missão é bastante simples na verdade. Seu código deve guardar o\n"
+"padrão de cores observado na primeira linha numa\n"
+"[!java|scala]array[/!][!python]list[/!].  [!python]O mais fácil é\n"
+"criar uma lista vazia, e então usar <code>append()</code>para\n"
+"adicionar as cores uma por uma à medida em que você for lendo elas\n"
+"(com <code>getCorDoChão()</code>).[/!] [!java|scala]Para isto, você\n"
+"deve declarar e alocar uma array de <code>Cor</code>. Mas atencção,\n"
+"existem vários mundos, de diferentes tamanhos; use\n"
+"<code>getAlturaDoMundo()</code> para recuperar o tamanho do mundo\n"
+"atual. Uma que a array esteja alocada, preencha ela lendo a cor do\n"
+"chão em cada um dos pontos (com <code>getCorDoChão()</code>).[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:242
@@ -3718,11 +3900,15 @@ msgid ""
 "reapply the pattern on every rows, for example by executing "
 "<code>getWorldHeight()</code> times a method written specifically for this."
 msgstr ""
+"Uma vez que você conseguiu ler e gravar o padrão na primeira linha,\n"
+"você tem que reaplicar o padrão nas outras linhas, por exemplo\n"
+"executando <code>getAlturaDoMundo()</code> vezes um método escrito\n"
+"especificamente para isto."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array2.html:2
 msgid "[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos"
-msgstr ""
+msgstr "[!java|scala]Arrays[/!][!python]Lists[/!], Nós e Módulos"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:4
@@ -3730,6 +3916,8 @@ msgid ""
 "This exercise is similar to the previous one: you have to reproduce the "
 "color pattern of the first cell into the other ones."
 msgstr ""
+"Este exercício é similar ao anterior: você tem que reproduzir o padrão\n"
+"de cores da primeira célula nas outras."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:7
@@ -3740,6 +3928,11 @@ msgid ""
 "<code>for</code> loop and do only <code>getWorldHeight()-1</code> steps in "
 "the loop."
 msgstr ""
+"A primeira diferença é que o mundo é cercado de muros: você portanto\n"
+"tem que modificar levemente sua trajetória para garantir que o buggle\n"
+"não bata num muro. O jeito mais simples é manipular a primeira célula\n"
+"fora do loop <code>for</code> e fazer apenas\n"
+"<code>getAlturaDoMundo()-1</code> passos no loop."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:13
@@ -3748,12 +3941,15 @@ msgid ""
 "fixed, but written on the first cell of each column. To get the info as an "
 "integer, we can use:"
 msgstr ""
+"A outra diferença é que o deslocamento para aplicar entre as colunas\n"
+"não é fixo, mas está escrito na primeira célula de cada coluna. Para\n"
+"obter a informação como um inteiro, podemos usar:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array2.html:17
 #, no-wrap
 msgid "[!java]int offset = Integer.parseInt(readMessage())[/!][!python]offset = int( readMessage() )[/!][!scala]val offset = readMessage().toInt[/!]"
-msgstr ""
+msgstr "[!java]int deslocamento = Integer.parseInt(readMessage())[/!][!python]deslocamento = int( readMessage() )[/!][!scala]val deslocamento = readMessage().toInt[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:19
@@ -3763,6 +3959,10 @@ msgid ""
 "[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> transforms the string "
 "<code>str</code> into an integer by <i>reading</i> it."
 msgstr ""
+"<code>readMessage()</code> obtém a mensagem no chão como uma\n"
+"[!java|scala]String[/!][!python]string[/!], enquanto\n"
+"<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code>\n"
+"transforma a string <code>str</code> em um inteiro ao <i>ler</i> ela."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:23
@@ -3772,16 +3972,21 @@ msgid ""
 "retrieve the <code>i</code>th cell of an array of size <code>size</code> "
 "with an offset of <code>5</code>."
 msgstr ""
+"Então, para pegar a cor certa, o mais fácil é usar o operador\n"
+"<code>%</code> (módulo). Por exemplo, <code>(i + 5) % tamanho</code>\n"
+"serve para recuperar a <code>i</code>-ésima célula de uma array de\n"
+"tamanho <code>tamanho</code> com um deslocamento de <code>5</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:28
+#, fuzzy
 msgid "You're up."
-msgstr ""
+msgstr "You're up."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:2
 msgid "Searching for a given value"
-msgstr ""
+msgstr "Buscando por um dado valor"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:4
@@ -3789,6 +3994,8 @@ msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
 msgstr ""
+"O objetivo deste exercício é buscar a célula de um dado valor, e\n"
+"retornar sua posição."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
@@ -3798,14 +4005,19 @@ msgid ""
 "<code>lookingFor</code> is not in the array <code>tab</code>, the method "
 "should return -1."
 msgstr ""
+"Para isto, você deve preencher o método <code>indexOf()</code>, cujos\n"
+"parâmetros são a array a ser explorada, e o valor a ser buscado. Se o\n"
+"valor <code>lookingFor</code> não está na array <code>tab</code>, o\n"
+"método deve retornar -1."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
+#, fuzzy
 msgid ""
 "The idea of the algorithm is to sweep over the whole array, checking the "
 "value of each cell. If it's the searched value, you should return the index "
 "of the cell currently checked."
-msgstr ""
+msgstr "The idea of the algorithm is to sweep over the whole array, checking the value of each cell. If it's the searched value, you should return the index of the cell currently checked."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
@@ -3813,6 +4025,9 @@ msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
 msgstr ""
+"Lembre que os índices começam com 0 e não com 1. Logo, se houverem 3\n"
+"células, seus índices serão 0, 1 e 2. Não vai haver nenhuma célula\n"
+"numerada com 3."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
@@ -3823,12 +4038,20 @@ msgid ""
 "there is no () after <code>length</code>. An attribute is a sort of variable "
 "embedded in another object (here, the array)."
 msgstr ""
+"Lembre também que a quantidade de células numa array pode ser\n"
+"recuperada usando o atributo <code>length</code>. Portanto, se sua\n"
+"array é chamada <code>tab</code>, seu temanho será recuperado como\n"
+"<code>tab.length</code>. Observe que não existe um () depois de\n"
+"<code>length</code>. Um atributo é como uma variável dentro de outro\n"
+"objeto (no caso, a array)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
 msgid ""
 "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
+"Logo, o último valor de uma array é dado por <code>tab[tab.length -\n"
+"1]</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
@@ -3837,17 +4060,21 @@ msgid ""
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
 "its size can be retrieved as <code>len(tab)</code>."
 msgstr ""
+"Lembre também que a quantidade de células numa array pode ser\n"
+"recuperada com a função <code>len()</code>. Logo, se sua array é\n"
+"chamada <code>tab</code>, seu tamanho pode ser recuperado como\n"
+"<code>len(tab)</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
 msgid ""
 "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
-msgstr ""
+msgstr "Logo, o último valor de uma array é dado por <code>tab[ len(tab) - 1]</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:2
 msgid "Index of the maximum value"
-msgstr ""
+msgstr "ìndice do valor máximo"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:4
@@ -3855,6 +4082,8 @@ msgid ""
 "In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
 msgstr ""
+"Neste exercício, você deve calcular o índice da célula da tab contendo\n"
+"o maior valor."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
@@ -3863,6 +4092,10 @@ msgid ""
 "the array to explore. Should the array contain the searched value several "
 "times, you should return the index of the first occurrence."
 msgstr ""
+"Para isto, complete o método <code>indiceDoMáximo()</code>. Seu\n"
+"parâmetro é a array para explorar. Caso a array contenha o valor\n"
+"buscado várias vezes, você deve retornar o índice da primeira\n"
+"ocorrência."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
@@ -3872,11 +4105,16 @@ msgid ""
 "this new champion and its position.  You will thus need 2 extra variables; "
 "the initial value of the champion could be the value of the first cell."
 msgstr ""
+"Para resolver este exercício, você deve varrer a array\n"
+"completamente. Para cada valor, se ele for maior que o maior até o\n"
+"momento, este passa a ser o novo maior e você guarda o valor e a\n"
+"posição dele. Você precisa de 2 variáveis extras; o valor inicial do\n"
+"maior pode ser o valor da primeira célula."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:2
 msgid "Average value"
-msgstr ""
+msgstr "Valor médio"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:5
@@ -3884,6 +4122,8 @@ msgid ""
 "The objective of this exercise is to compute the average value of the "
 "integer values stored in an array."
 msgstr ""
+"O objetivo deste exercício é calcular o valor médio dos valores\n"
+"inteiros armazenados numa array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:7
@@ -3892,6 +4132,9 @@ msgid ""
 "as parameter the array of integers of which it computes and returns the "
 "average value. Please note that this method must return an integer."
 msgstr ""
+"Você tem que preencher o corpo do método <code>media()</code> que pega\n"
+"como parâmetro a array de inteiros da qual ele calcula e retorna o\n"
+"valor médio. Por favor note que este método deve retornar um inteiro."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:9
@@ -3901,6 +4144,10 @@ msgid ""
 "variable to store this temporary result), then you have to divide this sum "
 "by the size of the array."
 msgstr ""
+"para calcular o valor médio de um inteiro, é necessário percorrer toda\n"
+"a array e calcular a soma de todos os valores (logo, você precisa de\n"
+"uma variável para armazenar este valor temporário), e por fim dividir\n"
+"esta soma pelo tamanho da array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:11
@@ -3908,7 +4155,7 @@ msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, <code>myarray.length</"
 "code>). Notice that there is no parenthesis after <code>length</code>."
-msgstr ""
+msgstr "Em Java, você pode obter o tamanho de uma array <code>minhaarray</code> ao consultar seu atributo <code>length</code> (tamanho) (em outras palavras, <code>minhaarray.length</code>). Observe que não existe parêntesis depois do <code>length</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:16
@@ -3916,11 +4163,13 @@ msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
 msgstr ""
+"Em python, recuperar o tamanho de uma array <code>minhaarray</code> é\n"
+"tão fácil como chamar <code>len(myarray)</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:2
 msgid "Maximal value"
-msgstr ""
+msgstr "Valor maximal"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:4
@@ -3929,20 +4178,29 @@ msgid ""
 "For that, fill the <code>maximum()</code> method, which parameter is the "
 "array to explore."
 msgstr ""
+"Neste exercício, você deve calcular o valor maximal contido numa\n"
+"array. Para isto, preencha o método <code>maximum()</code>, cujo\n"
+"parâmetro é a array para explorar."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:8
+#, fuzzy
 msgid ""
 "To compute this value, sweep over the whole parameter. For each value, if "
 "it's bigger than the biggest value you saw so far, you must save this value "
 "somewhere to remember it afterward. You thus need an extra variable, which "
 "can be initialized to the value of the first array cell."
 msgstr ""
+"Para calcular este valor, percorra o parâmetro todo. Para cada valor,\n"
+"se ele for maior que o maior valor até o momento, você deve gravar\n"
+"este valor em algum lugar para lembrar dele mais tarde. Você precisa\n"
+"de uma variável extra, que pode ser iniciada para o valor da primeira\n"
+"célula do array."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/Extrema.html:2
 msgid "Maxima and Minima"
-msgstr ""
+msgstr "Máximo e Mínimo"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/maxvalue/Extrema.html:4
@@ -3952,11 +4210,16 @@ msgid ""
 "The returned value is then a positive number.  Beware, you can only do one "
 "traversal of the array to gather all informations that you need."
 msgstr ""
+"Neste exercício, você deve retornar a diferença entre o máximo (i.e.,\n"
+"o maior valor da array) e o mínimo (i.e., o menor valor). O valor\n"
+"retornado é então um número positivo. Mas atenção, você só pode\n"
+"percorrer o array uma vez para obter todas as informações de que\n"
+"necessita."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
 msgid "Occurrence of a value"
-msgstr ""
+msgstr "Ocorrência de um valor"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:4
@@ -3967,6 +4230,11 @@ msgid ""
 "returns the number of occurrence of <code>lookingFor</code> in <code>tab</"
 "code>."
 msgstr ""
+"Neste exercício, você deve calcular a quantidade de ocorrências de um\n"
+"dado valor numa array (ou seja, a quantidade de tempo que este valor\n"
+"aparece na array). Para isto, preencha o método\n"
+"<code>occurrences()</code>, que retorna o número de ocorrências de\n"
+"<code>lookingFor</code> em <code>tab</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
@@ -3975,11 +4243,14 @@ msgid ""
 "of cells containing the searched value. You thus need an extra variable for "
 "that."
 msgstr ""
+"Para calcular este valor, simplesmente parcorra a array contando a\n"
+"quantidade de células contendo o valor procurado. Você vai precisar de\n"
+"uma variável extra para isto."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
 msgid "Array123"
-msgstr ""
+msgstr "Array123"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/array123/Array123.html:3
@@ -3987,6 +4258,8 @@ msgid ""
 "Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
 "array somewhere."
 msgstr ""
+"Dada uma array de inteiros, retorna verdadeiro (true) se .. 1, 2, 3,\n"
+".. aparece em algum lugar da array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/array123/Array123.html:5
@@ -4048,11 +4321,13 @@ msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
 "javabat.com/"
 msgstr ""
+"Este exercício foi convertido para o PLM do excelente sítio de\n"
+"exercícios http://javabat.com/"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array667/Array667.html:2
 msgid "Array667"
-msgstr ""
+msgstr "Array667"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/array667/Array667.html:3
@@ -4061,33 +4336,36 @@ msgid ""
 "to each other in the array. Also count instances where the second \"6\" is "
 "actually a 7."
 msgstr ""
+"Dada uma array de inteiros, retorna o número de vezes no qual dois 6\n"
+" estão vizinhos na array. Também conta as instâncias onde o segundo\n"
+" \"6\" é na verdade um 7."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
 msgid "ArrayCount9"
-msgstr ""
+msgstr "ArrayCount9"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:3
 msgid "Given an array of integers, return the number of 9's in the array."
-msgstr ""
+msgstr "Dada uma array de inteiros, retorna o número de 9's na array."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:2
 msgid "ArrayFront9"
-msgstr ""
+msgstr "ArrayFront9"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:3
 msgid ""
 "Given an array of integers, return true if one of the first 4 elements in "
 "the array is a 9. The array length may be less than 4."
-msgstr ""
+msgstr "Dada uma array de inteiros, retorna verdadeiro (true) se um dos primeiros 4 elementos na array é um 9. O comprimento da array pode ser menor que 4."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/notriples/NoTriples.html:2
 msgid "NoTriples"
-msgstr ""
+msgstr "NenhumaTripla"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/notriples/NoTriples.html:3
@@ -4133,10 +4411,10 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:7
 msgid ""
-"Since a(1)=1, it means that 1 occures only once in the sequence, so a(2) "
-"must be different. Since the sequence is non-decreasing, a(2)  must be "
-"greater than 1, which in turn means that there must be more than one 2 in "
-"the sequence. So a(2)=2."
+"Since a(1)=1, it means that 1 occurs only once in the sequence, so a(2) must "
+"be different. Since the sequence is non-decreasing, a(2)  must be greater "
+"than 1. Since a(2)>1, the digit 2 must appear more than one time in the "
+"sequence. So a(2)=2."
 msgstr ""
 
 #. type: Content of: <p>
@@ -4733,23 +5011,56 @@ msgstr ""
 "Portanto você tem que declarar até mais métodos para usar as repetições do "
 "padrão e fatorar seu código. Sua vez..."
 
+#. type: Content of: <h1>
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:2
+#: src/lessons/lightbot/Board06Func.html:2
+msgid "Functions"
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:4
+#, fuzzy
+#| msgid ""
+#| "Writing a method returning a result is not really more work than writing "
+#| "a method without any result.  [!java|c]You simply have to specify the "
+#| "data type of expected results before the method name (where we previously "
+#| "had <code>void</code>).[/!] [!scala]You simply have to add a colon (:) "
+#| "after the parenthesis and write the type of data that your method will "
+#| "return, and add an equal sign (=). This syntax is actually rather close "
+#| "to defining a variable, with its type, that is actually a function.[/!] "
+#| "You can use the <code>return</code> instruction anywhere in your method "
+#| "body to specify that the computation is done (the method is not further "
+#| "executed), and that the result is the value following the <code>return</"
+#| "code> keyword."
 msgid ""
-"Writing a method returning a result is not really more work than writing a "
-"method without any result.  [!java|c]You simply have to specify the data "
-"type of expected results before the method name (where we previously had "
-"<code>void</code>).[/!] [!scala]You simply have to add a colon (:) after the "
-"parenthesis and write the type of data that your method will return, and add "
-"an equal sign (=). This syntax is actually rather close to defining a "
-"variable, with its type, that is actually a function.[/!] You can use the "
-"<code>return</code> instruction anywhere in your method body to specify that "
-"the computation is done (the method is not further executed), and that the "
-"result is the value following the <code>return</code> keyword."
-msgstr "Escrever um método que retorna um resultado não é realmente mais trabalhoso que escrever um método que não retorna nada.  [!java|c]Você simplesmente tem que especificar o tipo de dado dos resultados esperados antes do nome do método (onde até aqui tínhamos <code>void</code>).[/!] [!scala]Você tem que simplesmente adicionar um dois-pontos (:) depois dos parêntesis e escrever o tipo de dado que seu método vai retornar, e adicionar um sinal de igualdade (=). Esta sintaxe é bem parecida com a de definir uma variável, com seu tipo, que é na verdade uma função.[/!] Você pode usar a instrução <code>return</code> em qualquer lugar no corpo do seu método para especificar que o cálculo está feito (o método pára de ser executado neste ponto), e que o resultado é o valor que segue a palavra-chave <code>return</code>."
+"Quite often, you want to write a method that compute some value and returns "
+"it. Methods returning results are called <b>functions</b>.  Writing a "
+"function is not really harder than writing a simple method.  [!java|c]You "
+"simply have to specify the data type of expected results before the function "
+"name (where we previously had <code>void</code>).[/!] [!scala]You simply "
+"have to add a colon (:) after the parenthesis and write the type of data "
+"that your function will return, and add an equal sign (=). This syntax is "
+"actually rather close to defining a variable, with its type, that is "
+"actually a function.[/!] You can use the <code>return</code> instruction "
+"anywhere in your function body to specify that the computation is done (the "
+"function is not further executed), and that the result is the value "
+"following the <code>return</code> keyword."
+msgstr ""
+"Escrever um método que retorna um resultado não é realmente mais trabalhoso "
+"que escrever um método que não retorna nada.  [!java|c]Você simplesmente tem "
+"que especificar o tipo de dado dos resultados esperados antes do nome do "
+"método (onde até aqui tínhamos <code>void</code>).[/!] [!scala]Você tem que "
+"simplesmente adicionar um dois-pontos (:) depois dos parêntesis e escrever o "
+"tipo de dado que seu método vai retornar, e adicionar um sinal de igualdade "
+"(=). Esta sintaxe é bem parecida com a de definir uma variável, com seu "
+"tipo, que é na verdade uma função.[/!] Você pode usar a instrução "
+"<code>return</code> em qualquer lugar no corpo do seu método para "
+"especificar que o cálculo está feito (o método pára de ser executado neste "
+"ponto), e que o resultado é o valor que segue a palavra-chave <code>return</"
+"code>."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:13
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:14
 #, no-wrap
 msgid ""
 "[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]\n"
@@ -4761,7 +5072,7 @@ msgstr ""
 "[!java|scala|c]}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:17
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:18
 msgid ""
 "Actually, you can also use that <code>return</code> keyword in methods that "
 "do not return any result, to interupt the computation. Of course, you should "
@@ -4773,17 +5084,30 @@ msgstr ""
 "retornar."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:20
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:21
+#, fuzzy
+#| msgid ""
+#| "It is possible to have several <code>return</code> instructions in "
+#| "several branches of a conditional. In fact, it is forbidden to have any "
+#| "execution path of your body without any <code>return</code>, or to write "
+#| "some code after the <code>return</code> instruction. Indeed, if the "
+#| "machine reaches the end of the method without finding any <code>return</"
+#| "code>, it cannot know what actual value to give back to the method "
+#| "caller.  Moreover, <code>return</code> interrupts immediately the method "
+#| "execution (why bother looking further when you know the method result?). "
+#| "So, if there is some code after a <code>return</code>, it must be an "
+#| "error and the compiler warns you."
 msgid ""
 "It is possible to have several <code>return</code> instructions in several "
 "branches of a conditional. In fact, it is forbidden to have any execution "
 "path of your body without any <code>return</code>, or to write some code "
 "after the <code>return</code> instruction. Indeed, if the machine reaches "
-"the end of the method without finding any <code>return</code>, it cannot "
-"know what actual value to give back to the method caller.  Moreover, "
-"<code>return</code> interrupts immediately the method execution (why bother "
-"looking further when you know the method result?). So, if there is some code "
-"after a <code>return</code>, it must be an error and the compiler warns you."
+"the end of the function without finding any <code>return</code>, it cannot "
+"know what actual value to give back to the function caller.  Moreover, "
+"<code>return</code> interrupts immediately the function execution (why "
+"bother looking further when you know the function result?). So, if there is "
+"some code after a <code>return</code>, it must be an error and the compiler "
+"warns you."
 msgstr ""
 "É possível ter várias instruções <code>return</code> em várias\n"
 "ramificações de um condicional. De fato, é proibido ter um caminho de\n"
@@ -4798,7 +5122,7 @@ msgstr ""
 "compilador irá te alertar disto."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:31
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:32
 #, no-wrap
 msgid ""
 "[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {\n"
@@ -4838,9 +5162,16 @@ msgstr ""
 "<span class=\"comment\"># e nem mesmo aqui, desista</span>[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:49
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
+#, fuzzy
+#| msgid ""
+#| "You will once again write a method that the buggle will use. Its name "
+#| "must be <code>haveBaggle</code>, and it returns a boolean value "
+#| "indicating whether the row in front of the buggle contains a baggle or "
+#| "not. The buggle will use it to search the first row containing a baggle, "
+#| "and stop here."
 msgid ""
-"You will once again write a method that the buggle will use. Its name must "
+"You will once again write a function that the buggle will use. Its name must "
 "be <code>haveBaggle</code>, and it returns a boolean value indicating "
 "whether the row in front of the buggle contains a baggle or not. The buggle "
 "will use it to search the first row containing a baggle, and stop here."
@@ -4852,9 +5183,14 @@ msgstr ""
 "e parar nela."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:54
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:55
+#, fuzzy
+#| msgid ""
+#| "The easier for this method is to use a boolean variable called "
+#| "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
+#| "It initial value is 'false'."
 msgid ""
-"The easier for this method is to use a boolean variable called "
+"The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
 "initial value is 'false'."
 msgstr ""
@@ -4863,7 +5199,7 @@ msgstr ""
 "baggle até o momento. O valor inicial é 'false'."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:58
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:59
 msgid ""
 "Then, move 6 steps forward (the world contains 7 cells and we already are on "
 "one of them). For each cell, if it contains a baggle, we store true in "
@@ -4875,7 +5211,7 @@ msgstr ""
 "simplesmente andar para frente)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:62
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:63
 msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
@@ -4884,7 +5220,7 @@ msgstr ""
 "<code>baggleVisto</code> para quem chamou o método."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:66
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:67
 msgid ""
 "This exercise is a bit different since there is two initial worlds, each "
 "with a specific objective. Your code must work for each of them. Observe "
@@ -4898,9 +5234,12 @@ msgstr ""
 "mundos."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:71
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:72
+#, fuzzy
+#| msgid ""
+#| "When your method <code>haveBaggle</code> works, proceed to next exercise."
 msgid ""
-"When your method <code>haveBaggle</code> works, proceed to next exercise."
+"When your function <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
 "Quando seu método <code>temBaggle</code> funcionar, siga para o\n"
 "próximo exercício."
@@ -5510,11 +5849,11 @@ msgstr "Buggle Dance Revolution (BDR)"
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"After these races, it's time to party! For that, you will learn the buggles "
-"to play Dance Revolution, this game beloved of some students where the "
-"player has to move its feet on the carpet according to the instructions "
-"presented on the screen, and following the music. But before that, we have "
-"some details to study first."
+"After these races, it's time to party! For that, we will learn the buggles "
+"to play Dance Revolution, this game beloved of some students: The player has "
+"to move the feet on the carpet according to the instructions presented on "
+"the screen, and following the music. But before that, we have some details "
+"to study first."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -7116,6 +7455,51 @@ msgid ""
 "{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway\n"
 "{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 msgstr ""
+"{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
+"{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: binary counter\n"
+"{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: (filled triangle)\n"
+"{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: spiral in a box\n"
+"{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: stripe-filled spiral\n"
+"{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: stepped pyramid\n"
+"{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: contoured island\n"
+"{{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: woven placemat\n"
+"{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: snowflake-ish\n"
+"{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: slow city builder\n"
+"{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 0}, {0, LEFT  , 1}}} # 11: framed computer art\n"
+"{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 1}, {1, LEFT  , 0}}} # 12: balloon bursting (makes a spreading highway)\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 13: makes a horizontal highway\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 1}, {1, RIGHT , 0}}} # 14: makes a 45 degree highway\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 1}}, {{1, RIGHT , 1}, {0, LEFT  , 0}}} # 15: makes a 45 degree highway\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{1, NOTURN, 0}, {1, RIGHT , 0}}} # 16: spiral in a filled box\n"
+"{{{1, LEFT  , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 17: glaciers\n"
+"{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 18: golden rectangle!\n"
+"{{{1, LEFT  , 1}, {1, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 19: fizzy spill\n"
+"{{{1, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 20: nested cabinets\n"
+"{{{1, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {1, NOTURN, 1}}} # 21: (cross)\n"
+"{{{1, NOTURN, 1}, {0, NOTURN, 0}}, {{0, RIGHT , 0}, {1, LEFT  , 0}}} # 22: saw-tipped growth\n"
+"{{{1, NOTURN, 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 23: curves in blocks growth\n"
+"{{{1, NOTURN, 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 24: textured growth\n"
+"{{{1, NOTURN, 1}, {0, RIGHT , 1}}, {{1, LEFT  , 0}, {1, RIGHT , 0}}} # 25: (diamond growth)\n"
+"{{{1, NOTURN, 1}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 26: coiled rope\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, NOTURN, 1}}} # 27: (growth)\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, RIGHT , 1}}} # 28: (square spiral)\n"
+"{{{1, RIGHT , 0}, {1, RIGHT , 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}} # 29: loopy growth with holes\n"
+"{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: Lanton's Ant drawn with squares\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 1}, {1, LEFT  , 0}}} # 31: growth with curves and blocks\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, NOTURN, 0}, {1, RIGHT , 1}}} # 32: distracted spiral builder\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 33: cauliflower stalk (45 deg highway)\n"
+"{{{1, RIGHT , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, RIGHT , 0}}} # 34: worm trails (eventually turns cyclic!)\n"
+"{{{1, RIGHT , 1}, {1, NOTURN, 0}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 35: eventually makes a two-way highway!\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, NOTURN, 0}, {0, NOTURN, 0}}} # 36: almost symmetric mould bloom\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, RIGHT , 0}, {1, NOTURN, 1}}} # 37: makes a 1 in 2 gradient highway\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 38: immediately makes a 1 in 3 highway\n"
+"{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{0, LEFT  , 2}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {1, LEFT  , 0}}} # 39: squares and diagonals growth\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{0, RIGHT , 2}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 40: streak at approx. an 8.1 in 1 gradient\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 2}}, {{0, RIGHT , 2}, {1, NOTURN, 1}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 41: streak at approx. a 1.14 in 1 gradient\n"
+"{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 2}}, {{0, LEFT  , 1}, {1, NOTURN, 1}}} # 42: maze-like growth\n"
+"{{{1, LEFT  , 2}, {0, RIGHT , 0}}, {{1, LEFT  , 0}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 43: growth by cornices \n"
+"{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway\n"
+"{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:114
@@ -8743,9 +9127,9 @@ msgstr ""
 msgid ""
 "In this exercise, we will explore an adaptation of the same idea to burnt "
 "pancakes. This was first published by David X. Cohen and Manuel Blum. David "
-"Cohen co-founded a few years later the Futurama TV show bursted with jokes "
-"inspired from scientific facts. Definitively, interesting people studied "
-"that little pancake problem..."
+"Cohen co-founded a few years later the Futurama TV show full of mathematical "
+"jokes. Definitively, interesting people studied that little pancake "
+"problem..."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8831,7 +9215,7 @@ msgid ""
 "possible to achieve a join in only 2 flips.  But fortunately, we can "
 "leverage the very specific setting of the stack in that case to provide the "
 "following algorithm.  It sorts a stack in that exact configuration after "
-"exactly 2n steps."
+"exactly <i>2n</i> steps."
 msgstr ""
 
 #. type: Content of: <pre>
@@ -8855,7 +9239,7 @@ msgstr ""
 msgid ""
 "So, all in all, the Cohen algorithm manages to sort the stack of burnt "
 "pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
-"algorithm that requires <i>3n</i> steps."
+"algorithm for burnt pancakes that requires <i>3n</i> steps."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
@@ -11414,11 +11798,6 @@ msgstr ""
 msgid "Let's go higher"
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/lightbot/Board06Func.html:2
-msgid "Functions"
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board06Func.html:4
 msgid "You can use"
@@ -12255,14 +12634,14 @@ msgstr ""
 #: src/lessons/lander/Main.html:12
 msgid ""
 "A lander in vertical position above flat ground, the player can only control "
-"thrust"
+"thrust (done)"
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:14
 msgid ""
 "A lander in vertical position not above flat ground, the player control "
-"thrust and angle"
+"thrust and angle (done)"
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -12379,6 +12758,23 @@ msgid ""
 "of fuel you're in free fall so beware!"
 msgstr ""
 
+#. type: Content of: <pre>
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:38
+#, fuzzy, no-wrap
+#| msgid "[!java|c]int [/!]getX()[!scala]:Int[/!]"
+msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
+msgstr "[!java|c]int [/!]getX()[!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:39
+msgid ""
+"Get the vertices of the ground's profile from left to right.  [!java|"
+"scala]You can retrieve the X and Y coordinates of each point with the "
+"corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
+"code>.[!/] [!python]Each point is an array of two integers denoting "
+"respectively the X and Y coordinates of that point.[/!]"
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:2
 msgid "Lander 101"
@@ -12471,31 +12867,33 @@ msgstr ""
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:13
 msgid ""
 "A segment is composed of two <code>Point</code>s, each of them composed of "
-"two <code>double</code>s. A segment is built via the <code>Segment(Point "
-"start, Point end)</code> constructor. A point is built via the "
-"<code>Point(double x, double y)</code> constructor. A point's coordinates "
-"are accessible via its <code>double x()</code> and <code>double y()</code> "
-"methods."
+"two <code>double</code>s. A segment is built via the <code>Segment([!"
+"java]Point [/!]start[!scala]:Point[/!], [!java]Point [/!]end[!scala]:"
+"Point[/!])</code> constructor.  A point is built via the <code>Point([!"
+"java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:"
+"Double[/!])</code> constructor. A point's coordinates are accessible via its "
+"<code>[!java]double [/!]x()[!scala]:Double[/!]</code> and <code>[!"
+"java]double [/!]y()[!scala]:Double[/!]</code> methods."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:17
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:18
 msgid ""
 "[/!] [!python]tuple of two X coordinates representing the zone of your "
 "choice.[/!]"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:21
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:22
 msgid ""
-"In order to determine which zone to return, you'll need to call <code>[!java|"
-"scala]List&lt;Point&gt; [/!]getGround()</code>, which returns the vertices "
-"of the ground's profile as a list of [!java|scala]Point[/!] [!python]tuples "
-"(x,y)[/!]."
+"In order to determine which zone to return, you'll need to call <code>[!"
+"java]List&lt;Point&gt; [/!]getGround()[!scala]List[Point][/!]</code>, which "
+"returns the vertices of the ground's profile as a list of [!java|"
+"scala]<code>Point</code>[/!] [!python]tuples (x,y)[/!]."
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:26
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:27
 msgid ""
 "One more thing: your function should return a valid flat zone in any kind of "
 "situation, not just for the currently visualized one. That's because it will "
@@ -12505,7 +12903,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:32
+#: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:33
 msgid ""
 "Have a safe landing! Don't forget to put on your space suit on your way out."
 msgstr ""
@@ -12537,9 +12935,9 @@ msgstr ""
 msgid ""
 "You must define two functions: <code>[!java]void [/!]initialize()</code> and "
 "<code>[!java]void [/!]step()</code>. <code>initialize()</code> is called "
-"once just after you press \"Run\". You can use it for chosing some flat "
-"zone. As before, <code>step()</code> is called every 0.1 second and is used "
-"for adjusting the lander's thrust and angle. As in the first exercise the "
+"once just after you press \"Run\". You can use it to chose some flat zone. "
+"As before, <code>step()</code> is called every 0.1 second and is used for "
+"adjusting the lander's thrust and angle. As in the first exercise the "
 "lander's thrust is adjusted via <code>[!java]void [/!]setDesiredThrust([!"
 "java]int [/!]desiredThrust[!scala]:Integer[/!])</code>.  But you can also "
 "control its angle via <code>[!java]void [/!]setDesiredAngle([!java]double "
@@ -12553,7 +12951,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:26
 msgid ""
-"As in the previous lesson, <code>[!java]List&lt;Point&gt; [/!]getGround()[!"
+"As in the previous exercise, <code>[!java]List&lt;Point&gt; [/!]getGround()[!"
 "scala]:List[Point][/!]</code> returns the vertices of the ground's profile "
 "from left to right.  Please refer to the documentation (Help/About this "
 "world) for a reference manual of your lunar lander."

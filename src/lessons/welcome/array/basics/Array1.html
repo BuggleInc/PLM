@@ -77,7 +77,7 @@ example to initialize each cells.</p>
 allowing to build a classical for loop easily. 
 [!python]Actually, the <code>len()</code> function is much more generic and can be used to retrieve the length of many objects. 
 Applied  to strings for example, it returns the amount of chars in this string.[/!] 
-[!scala]Don't forget to start at <code>0</code> and stop at <code>T.length-1</code> instead of <code>1 to T.length</code>
+[!scala]Don't forget to start at <code>0</code> and stop at <code>T.length-1</code> instead of <code>1</code> to <code>T.length</code>
 however.[/!]</p>
 
 <p>If you just want to iterate over the values of T without keeping track of their index, you can simply write:</p>
@@ -116,7 +116,7 @@ L2.append(9)
 [/!]
  
 [!java|scala]
-<p>To declare a variable named <b>T</b> that can store arrays of integers, one should write:</p>
+<p>To declare a variable named <b>T</b> that can store an array of integers, one should write:</p>
 <pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
 
 <p>[!java]<code>int</code> means that the elements of the array are of type integer;
@@ -148,7 +148,7 @@ variable <code>T.length</code>.</p>
 
 <p>While allocating, you can specify the size with a variable: <code>[!java]int[] T = new int[i];[/!][!scala]var T = new Array[Int](i);[/!]</code>
 In this case, the array's size will be set to the value of <code>i</code> <i>when <code>new</code> gets called</i>. 
-The size of the array still cannot be modified : even if the variable <code>i</code> changes afterward, 
+The size of the array still cannot be modified: even if the variable <code>i</code> changes afterward, 
 the size remains to the value given when it was allocated.
 [!java]Also, it is forbidden to write something like <code>int T[10];</code> when declaring the variable.
 You are required to use the <code>new</code> instruction to allocate it, as in 
