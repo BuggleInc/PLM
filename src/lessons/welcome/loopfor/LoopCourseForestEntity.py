@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 
 colors = [Color(0,155,0), Color(50,155,0), Color(100,155,0), Color(140,155,0),
-          Color(160,155,0), Color(180,155,0), Color(200,155,0), Color(210,155,0)]
+          Color(160,155,0), Color(180,155,0), Color(200,155,0), Color(210,155,0), Color.red]
 
 def forward(i=-1):
     if i==-1:
@@ -15,7 +15,10 @@ def forward(i=-1):
 
       for i in range(len(colors)-1):
           if colors[i].equals(c):
-              c = colors[i+1]
+              if i == len(colors)-1:
+                  c = color[i]
+              else:
+                  c = colors[i+1]
               break
       setBrushColor(c)    
       brushDown()

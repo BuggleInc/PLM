@@ -22,6 +22,7 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
 			new Color(180,155,0),
 			new Color(200,155,0),
 			new Color(210,155,0),
+			Color.red,
 	};
 	@Override
 	public void forward()  {
@@ -35,7 +36,10 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
 		}
 		for (int i=0;i<colors.length-1;i++)
 			if (colors[i].equals(c)) {
-				c = colors[i+1];
+				if (i == colors.length-1)
+					c = colors[i];
+				else
+					c = colors[i+1];
 				break;
 			}
 		setBrushColor(c);

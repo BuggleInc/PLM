@@ -8,7 +8,9 @@
       repository was disabled by github robots due to the excessive
       load. We don't want it to happen again...
   * Pedagogical content: fixing the issues opened by our students.
-    See #221, #218, #227 for details.
+    #221: fix templating to now show crude details to youngsters
+    #218, #227: typos in French
+    #228: CourseForest: nice error message when running more than asked
 
 20140905: Release 2.4.1
 
