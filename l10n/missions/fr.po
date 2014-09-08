@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-08 11:49+0200\n"
-"PO-Revision-Date: 2014-08-30 10:03+0200\n"
+"PO-Revision-Date: 2014-09-08 21:29+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -3433,16 +3433,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:75
-#, fuzzy
-#| msgid ""
-#| "[!java|scala]The notation <code>T.length</code> retrieves the length of "
-#| "the array T,[/!] [!python]The function <code>len()</code> retrieves the "
-#| "length of the list T,[/!] allowing to build a classical for loop easily.  "
-#| "[!python]Actually, the <code>len()</code> function is much more generic "
-#| "and can be used to retrieve the length of many objects.  Applied to "
-#| "strings for example, it returns the amount of chars in this string.[/!] [!"
-#| "scala]Don't forget to start at <code>0</code> and stop at <code>T."
-#| "length-1</code> instead of <code>1 to T.length</code> however.[/!]"
 msgid ""
 "[!java|scala]The notation <code>T.length</code> retrieves the length of the "
 "array T,[/!] [!python]The function <code>len()</code> retrieves the length "
@@ -3463,7 +3453,7 @@ msgstr ""
 "une chaîne de caractères par exemple, elle retourne le nombre de caractères "
 "composant cette chaîne.[/!]\n"
 "[!scala]N'oubliez pas de commencer à <code>0</code> pour terminer à <code>T."
-"length-1</code> au lieu de <code>1 to T.length</code>![/!]"
+"length-1</code> au lieu de <code>1</code> to <code>T.length</code>![/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:83
@@ -3577,10 +3567,6 @@ msgstr "[/!] [!java|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:119
-#, fuzzy
-#| msgid ""
-#| "To declare a variable named <b>T</b> that can store arrays of integers, "
-#| "one should write:"
 msgid ""
 "To declare a variable named <b>T</b> that can store an array of integers, "
 "one should write:"
@@ -3676,18 +3662,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:149
-#, fuzzy
-#| msgid ""
-#| "While allocating, you can specify the size with a variable: <code>[!"
-#| "java]int[] T = new int[i];[/!][!scala]var T = new Array[Int](i);[/!]</"
-#| "code> In this case, the array's size will be set to the value of <code>i</"
-#| "code> <i>when <code>new</code> gets called</i>.  The size of the array "
-#| "still cannot be modified : even if the variable <code>i</code> changes "
-#| "afterward, the size remains to the value given when it was allocated.  [!"
-#| "java]Also, it is forbidden to write something like <code>int T[10];</"
-#| "code> when declaring the variable.  You are required to use the "
-#| "<code>new</code> instruction to allocate it, as in <code>int[] T = new "
-#| "int[10];</code> [/!]"
 msgid ""
 "While allocating, you can specify the size with a variable: <code>[!"
 "java]int[] T = new int[i];[/!][!scala]var T = new Array[Int](i);[/!]</code> "
@@ -6690,11 +6664,11 @@ msgstr ""
 "Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>, "
 "dont la syntaxe est la suivante en Java.[/!]\n"
 "[!scala] un filtrage (pattern matching en anglais), qui est une construction "
-"très agréable généralisant le <code>if</code>. Il s'agit sans aucun "
-"doute de l'un des avantages majeurs du langage Scala par rapport à d'autres "
-"tels que le Java ou le Python. Cette construction n'est cependant pas "
-"révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages "
-"comme OCaml ou Haskell, mais il n'empêche. Elle est carrément cool![/!]"
+"très agréable généralisant le <code>if</code>. Il s'agit sans aucun doute de "
+"l'un des avantages majeurs du langage Scala par rapport à d'autres tels que "
+"le Java ou le Python. Cette construction n'est cependant pas révolutionnaire "
+"puisqu'elle existe depuis assez longtemps dans des langages comme OCaml ou "
+"Haskell, mais il n'empêche. Elle est carrément cool![/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR2.html:40
