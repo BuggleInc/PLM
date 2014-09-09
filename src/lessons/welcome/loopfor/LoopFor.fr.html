@@ -34,7 +34,13 @@ for (compteur=0; compteur&lt;n; compteur++) {
     <b>action</b>();
 }[/!]</pre>
 
-<p>Ce code est parfaitement équivalent à celui-ci :</p>
+<p>This code is then equivalent to the following one from the computer point of
+view. From the programmer point of view, one form or the other can make the
+source code easier to read, depending on the situation. You should chose
+wisely in each situation whether you want to use a for loop or a while
+loop. Your uttermost goal should remain to keep your code simple and easy to
+read, to ensure that your day remain pleasant and productive.
+</p>
 <pre>[!java|c]int compteur = 0;
 while (compteur &lt; n) {
     <b>action</b>();
@@ -49,7 +55,7 @@ while (compteur &lt; n) {
     compteur = compteur + 1
 }[/!]</pre>
 
-<p>Le code avec une boucle <code>for</code> est plus simple à lire, non?</p>
+<p>In that case, the <code>for</code> loop is easier to read, don't you think?</p>
 
 [!java|c]
 <p>On peut imaginer des utilisations bien plus avancées des boucles
