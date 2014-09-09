@@ -50,10 +50,10 @@ public class ExercisePassedDialog extends JDialog {
 		
 		if ( nextExercises.size() == 0) {
 			if (exo.lastResult.passedTests > 1) {
-				msg.setText(i18n.tr("Congratulations, you passed this exercise.\n{0} tests passed.",
+				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>",
 								exo.lastResult.passedTests) + exo.lastResult.executionError);
 			} else { 
-				msg.setText(i18n.tr("Congratulations, you passed this exercise.",
+				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.</html>",
 								exo.lastResult.passedTests) + exo.lastResult.executionError);
 			}
 
@@ -63,10 +63,10 @@ public class ExercisePassedDialog extends JDialog {
 		} else {
 			
 			if (exo.lastResult.passedTests > 1) {
-				msg.setText(i18n.tr("Congratulations, you passed this exercise.\n({0} tests passed)\nWhich exercise will you do now?",
+				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)<br>Which exercise will you do now?</html>",
 								exo.lastResult.passedTests)); 
 			} else {
-				msg.setText(i18n.tr("Congratulations, you passed this exercise.\nWhich exercise will you do now?")); 
+				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.<br>Which exercise will you do now?</html>"));
 			}
 			
 			congratsPane.add(new JLabel( ResourcesCache.getIcon("img/trophy.png") ), "spany 2");
