@@ -30,7 +30,14 @@ for (stepper=0; stepper&lt;n; stepper++) {
     <b>action</b>();
 }[/!]</pre>
 
-<p>This code is then perfectly equivalent to the following one.</p>
+<p>This code is then equivalent to the following one from the computer
+   point of view. From the programmer point of view, one form or the other
+   can make the source code easier to read, depending on the
+   situation. You should chose wisely in each situation whether you want
+   to use a for loop or a while loop. Your uttermost goal should
+   remain to keep your code simple and easy to read, to ensure that your
+   day remain pleasant and productive.
+</p>
 <pre>[!java|c]int stepper = 0;
 while (stepper &lt; n) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
@@ -45,7 +52,7 @@ while (stepper &lt;= n) {
     stepper = stepper + 1
 }[/!]</pre>
 
-<p>The <code>for</code> loop is easier to read, don't you think?</p>
+<p>In that case, the <code>for</code> loop is easier to read, don't you think?</p>
 
 [!java|c]
 <p>It is possible to build more advanced <tt>for</tt> loops since any valid
