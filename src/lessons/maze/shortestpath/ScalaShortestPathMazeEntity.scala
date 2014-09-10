@@ -35,6 +35,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 
 	/* BEGIN TEMPLATE */
 	override def run() {
+		// Your code here
 		/* BEGIN SOLUTION */
 		evaluatePaths(); // write on each case the distance to the maze exit
 		followShortestPath(); // make the buggle follow the shortest path
