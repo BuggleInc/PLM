@@ -19,11 +19,11 @@ class ScalaIslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	override def run() {
-	/* BEGIN SOLUTION */
+		/* BEGIN SOLUTION */
 		var state = 0 ;
 		setDirection(chosenDirection);
 		while ( !isOverBaggle() ) { 
-		  state match {
+			state match {
 			case 0 => // North runner mode
 				while ( !isFacingWall() )
 					forward();
@@ -57,8 +57,8 @@ class ScalaIslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		var isFree = ! isFacingWall();
 		setDirection(memorizedD);
 		return isFree;
+		/* END SOLUTION */
 	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 
 }
