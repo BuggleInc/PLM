@@ -6,6 +6,7 @@
   * Pedagogical content: further fixing students' issues
     - #237, #252: typo in French
     - #255 : IndexOfValue: world and function renamed to match with the instructions
+    - #267: when a user read a tip, the tip's id as well as the current mission text are logged in the git 
 
 20140909: Release 2.4.2
 
