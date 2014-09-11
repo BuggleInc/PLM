@@ -19,7 +19,7 @@ class ScalaPledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	override def run() {
-	/* BEGIN SOLUTION */
+		/* BEGIN SOLUTION */
 		var state = 0 ;
 		this.angleSum = 0;
 		this.setDirection(this.chosenDirection);
@@ -28,7 +28,7 @@ class ScalaPledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 			case 0 => // North runner mode
 				while ( !isFacingWall() )
 					forward();
-				
+		
 				right(); // make sure that we have a left wall
 				angleSum -=1;
 				state = 1; // time to enter the Left Follower mode
@@ -62,7 +62,7 @@ class ScalaPledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		val isFree = !isFacingWall();
 		setDirection(memorizedD);
 		return isFree;
+		/* END SOLUTION */
 	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 }

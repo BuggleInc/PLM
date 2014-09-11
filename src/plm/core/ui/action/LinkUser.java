@@ -16,7 +16,7 @@ public class LinkUser extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			String userUUID = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
-			String url = Game.getProperty("plm.play.server.url") + "link?UUID=" + userUUID;
+			String url = Game.getProperty("plm.play.server.url") + "link?UUID=" + userUUID + "&majorVersion="+ Game.getProperty("plm.major.version") + "&minorVersion=" + Game.getProperty("plm.minor.version");
 			java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
 		} catch (java.io.IOException ex) {
 			//System.err.println(ex.getMessage());

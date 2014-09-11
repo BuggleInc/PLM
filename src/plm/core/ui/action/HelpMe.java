@@ -60,6 +60,8 @@ public class HelpMe extends AbstractGameAction {
 		Calendar cal = Calendar.getInstance();
 		obj.put("date", dateFormat.format(cal.getTime()));
 		obj.put("action", isRequestingHelp ? "add" : "remove");
+		obj.put("majorVersion", Game.getProperty("plm.major.version"));
+		obj.put("minorVersion", Game.getProperty("plm.minor.version"));
 		String studentInput = "";
 		if(isRequestingHelp) {
 			studentInput = (String) JOptionPane.showInputDialog(

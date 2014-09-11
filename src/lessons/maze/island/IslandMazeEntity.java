@@ -21,8 +21,8 @@ public class IslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 	
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
 	public void run() {
+		/* BEGIN SOLUTION */
 		int state = 0 ;
 		this.setDirection(this.chosenDirection);
 		while ( !isOverBaggle() )
@@ -62,8 +62,8 @@ public class IslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		boolean isFree = ! isFacingWall();
 		this.setDirection(memorizedD);
 		return isFree;
+		/* END SOLUTION */
 	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 
 }
