@@ -132,7 +132,7 @@ public class GitUtils {
 			protected Void doInBackground() {
 				// Reduce the load on the github servers by not pushing more often that once every 20 minutes
 				try {
-					Thread.sleep(30 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
+					Thread.sleep(5 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
 				} catch (InterruptedException e1) {
 					/* Ok, that's fine, what ever */
 				}
