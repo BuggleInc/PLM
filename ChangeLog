@@ -3,6 +3,8 @@
   * User Interface:
     - Add the public branch name to the feedbacks to ease reproducing 
       the issues.
+  * Engine:
+    - #257: loading sessions from git was sometimes loosing DONE marks
   * Pedagogical content: further fixing students' issues
     - #237, #252: typo in French
     - #246, #259: Lessons about mazes': make the templating mechanism explicit
