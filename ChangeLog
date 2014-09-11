@@ -5,7 +5,8 @@
       the issues.
   * Pedagogical content: further fixing students' issues
     - #237, #252: typo in French
-    - #246, #259: Lessons about mazes' template improved
+    - #246, #259: Lessons about mazes': make the templating mechanism explicit
+    - #255 : IndexOfValue: world and function renamed to match with the instructions
 
 20140909: Release 2.4.2
 
