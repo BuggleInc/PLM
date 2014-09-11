@@ -34,7 +34,7 @@ public class IndexOfValue extends BatExercise {
 		for (int i=0; i<tab4.length; i++) 
 			tab4[i] = r.nextInt(35)-15;
 
-		BatWorld myWorld = new BatWorld("indexOfMaxValue");
+		BatWorld myWorld = new BatWorld("indexOfValue");
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
 		myWorld.addTest(VISIBLE, tab, r.nextInt(35)-15);
@@ -46,14 +46,14 @@ public class IndexOfValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab4, r.nextInt(35)-15);
 		myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
 
-		templatePython("indexOfMaxValue", 
-				"def indexOfMaxValue(nums,val):\n",
+		templatePython("indexOfValue", 
+				"def indexOfValue(nums,val):\n",
 				"  for i in range(len(nums)):\n" +
 				"    if nums[i]==val:\n"+
 				"      return i\n" +
 				"  return -1\n");
-		templateScala("indexOfMaxValue", new String[] {"Array[Int]","Int"}, 
-				"def indexOfMaxValue(nums:Array[Int] ,value:Int): Int = {\n",
+		templateScala("indexOfValue", new String[] {"Array[Int]","Int"}, 
+				"def indexOfValue(nums:Array[Int] ,value:Int): Int = {\n",
 				"  for (i <- 0 to nums.length-1)\n" +
 				"    if (nums(i)==value) \n"+
 				"      return i\n" +
