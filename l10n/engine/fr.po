@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-09 00:04+0200\n"
+"POT-Creation-Date: 2014-09-11 13:34+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -711,7 +711,7 @@ msgstr "Opération annulée par l'utilisateur"
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:958
+#: src/plm/core/model/Game.java:964
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
@@ -720,11 +720,11 @@ msgstr ""
 "PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:959
+#: src/plm/core/model/Game.java:965
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:963
+#: src/plm/core/model/Game.java:969
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
@@ -734,11 +734,11 @@ msgstr ""
 "python.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:964
+#: src/plm/core/model/Game.java:970
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:968
+#: src/plm/core/model/Game.java:974
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
@@ -747,11 +747,11 @@ msgstr ""
 "Veuillez installer C et ses dépendances pour utiliser la PLM en C.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:969
+#: src/plm/core/model/Game.java:975
 msgid "C is missing"
 msgstr "C est manquant"
 
-#: src/plm/core/model/Game.java:974
+#: src/plm/core/model/Game.java:980
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -766,18 +766,18 @@ msgstr ""
 "\n"
 "Voulez-vous continuer malgré tout ?"
 
-#: src/plm/core/model/Game.java:978
+#: src/plm/core/model/Game.java:984
 msgid "C is still experimental"
 msgstr "C est encore expérimental"
 
 #: src/plm/core/model/HelpServer.java:27
-#: src/plm/core/ui/action/HelpMe.java:128
+#: src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
 msgstr "Demander de l'aide à l'enseignant"
 
 #: src/plm/core/model/HelpServer.java:29
-#: src/plm/core/ui/action/HelpMe.java:131
-#: src/plm/core/ui/action/HelpMe.java:143
+#: src/plm/core/ui/action/HelpMe.java:133
+#: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
@@ -922,8 +922,8 @@ msgstr "Le fichier {0}.html est introuvable."
 msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossible de trouver le nom de la mission dans {0}.html"
 
-#: src/plm/core/model/session/GitSessionKit.java:112
-#: src/plm/core/model/tracking/GitSpy.java:60
+#: src/plm/core/model/session/GitSessionKit.java:115
+#: src/plm/core/model/tracking/GitSpy.java:62
 msgid ""
 "Creating a new session locally, as no corresponding session could be "
 "retrieved from the servers."
@@ -931,13 +931,13 @@ msgstr ""
 "Création d'une nouvelle session locale, puisque aucune session convenable "
 "n'a pu être récupérée des serveurs."
 
-#: src/plm/core/model/session/GitSessionKit.java:114
-#: src/plm/core/model/tracking/GitSpy.java:62
+#: src/plm/core/model/session/GitSessionKit.java:117
+#: src/plm/core/model/tracking/GitSpy.java:64
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
 
-#: src/plm/core/model/session/GitSessionKit.java:117
+#: src/plm/core/model/session/GitSessionKit.java:120
 #: src/plm/core/model/tracking/GitUtils.java:95
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
@@ -999,7 +999,7 @@ msgstr "Erreur lors du chargement de votre session"
 msgid "Abording on user request"
 msgstr "Abandon, comme demandé par l'utilisateur"
 
-#: src/plm/core/model/tracking/GitSpy.java:84
+#: src/plm/core/model/tracking/GitSpy.java:86
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
@@ -1007,11 +1007,11 @@ msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
 
-#: src/plm/core/model/tracking/GitSpy.java:163
+#: src/plm/core/model/tracking/GitSpy.java:165
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:170
+#: src/plm/core/model/tracking/GitSpy.java:172
 #, fuzzy
 msgid "Don't save code remotely, as the network seems unreachable."
 msgstr ""
@@ -1029,8 +1029,8 @@ msgstr ""
 msgid "About lesson - "
 msgstr "À propos de la leçon - "
 
-#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:430
-#: src/plm/core/ui/MainFrame.java:765
+#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:431
+#: src/plm/core/ui/MainFrame.java:766
 msgid "About the PLM"
 msgstr "À propos de la PLM"
 
@@ -1299,33 +1299,33 @@ msgid "Congrats"
 msgstr "Bravo"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:53
-#, java-format
+#, fuzzy, java-format
 msgid ""
-"Congratulations, you passed this exercise.\n"
-"{0} tests passed."
+"<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>"
 msgstr ""
 "Félicitations, vous avez réussi cet exercice.\n"
 "{0} tests passés."
 
 #: src/plm/core/ui/ExercisePassedDialog.java:56
-msgid "Congratulations, you passed this exercise."
+#, fuzzy
+msgid "<html>Congratulations, you passed this exercise.</html>"
 msgstr "Félicitations, vous avez réussi cet exercice."
 
 #: src/plm/core/ui/ExercisePassedDialog.java:66
-#, java-format
+#, fuzzy, java-format
 msgid ""
-"Congratulations, you passed this exercise.\n"
-"({0} tests passed)\n"
-"Which exercise will you do now?"
+"<html>Congratulations, you passed this exercise.<br>({0} tests "
+"passed)<br>Which exercise will you do now?</html>"
 msgstr ""
 "Félicitations, vous avez réussi cet exercice.\n"
 "({0} tests passés)\n"
 "Par quel exercice voulez vous continuer ?"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:69
+#, fuzzy
 msgid ""
-"Congratulations, you passed this exercise.\n"
-"Which exercise will you do now?"
+"<html>Congratulations, you passed this exercise.<br>Which exercise will you "
+"do now?</html>"
 msgstr ""
 "Félicitations, vous avez réussi cet exercice.\n"
 "Par quel exercice voulez vous continuer ?"
@@ -1430,7 +1430,7 @@ msgstr "Changer la vitesse d'exécution"
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
-#: src/plm/core/ui/FeedbackDialog.java:42
+#: src/plm/core/ui/FeedbackDialog.java:43
 msgid ""
 "Please write your suggestion here, with all necessary details\n"
 "(if possible in English or French).\n"
@@ -1461,37 +1461,37 @@ msgstr ""
 "--------------------[ Informations techniques ]--------------------\n"
 "(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:60
+#: src/plm/core/ui/FeedbackDialog.java:62
 msgid "Please describe the problem in a few words"
 msgstr "Décrivez le problème en quelques mots"
 
-#: src/plm/core/ui/FeedbackDialog.java:67
+#: src/plm/core/ui/FeedbackDialog.java:69
 msgid "Report your feedback"
 msgstr "Signaler un problème dans la PLM"
 
-#: src/plm/core/ui/FeedbackDialog.java:75
+#: src/plm/core/ui/FeedbackDialog.java:77
 msgid "Issue title:"
 msgstr "Intitulé du problème :"
 
-#: src/plm/core/ui/FeedbackDialog.java:89
+#: src/plm/core/ui/FeedbackDialog.java:91
 #: src/plm/core/ui/action/RevertExercise.java:25
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/plm/core/ui/FeedbackDialog.java:94
+#: src/plm/core/ui/FeedbackDialog.java:96
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 "Voulez-vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:95
+#: src/plm/core/ui/FeedbackDialog.java:97
 msgid "are you sure?"
 msgstr "êtes-vous sûr ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:103
+#: src/plm/core/ui/FeedbackDialog.java:105
 msgid "Send feedback"
 msgstr "Envoyer"
 
-#: src/plm/core/ui/FeedbackDialog.java:117
+#: src/plm/core/ui/FeedbackDialog.java:119
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
@@ -1501,11 +1501,11 @@ msgstr ""
 "prendre \n"
 "en compte. Suivez notre avancement sur {0}."
 
-#: src/plm/core/ui/FeedbackDialog.java:118
+#: src/plm/core/ui/FeedbackDialog.java:120
 msgid "Thanks for your suggestion"
 msgstr "Merci pour votre retour"
 
-#: src/plm/core/ui/FeedbackDialog.java:127
+#: src/plm/core/ui/FeedbackDialog.java:129
 msgid "Error while uploading your feedback"
 msgstr "Erreur lors de l'envoi de votre retour"
 
@@ -1516,7 +1516,7 @@ msgstr "Endroit où les erreurs et autres messages sont écrits"
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/plm/core/ui/MainFrame.java:186 src/plm/core/ui/MainFrame.java:732
+#: src/plm/core/ui/MainFrame.java:186 src/plm/core/ui/MainFrame.java:733
 msgid "File"
 msgstr "Fichier"
 
@@ -1524,7 +1524,7 @@ msgstr "Fichier"
 msgid "File related functions"
 msgstr "Fonction relatives à la gestion de fichiers"
 
-#: src/plm/core/ui/MainFrame.java:190 src/plm/core/ui/MainFrame.java:733
+#: src/plm/core/ui/MainFrame.java:190 src/plm/core/ui/MainFrame.java:734
 msgid "Save a picture"
 msgstr "Prendre une photo"
 
@@ -1547,153 +1547,153 @@ msgstr "{0} existe"
 msgid "Image saved into {0}."
 msgstr "L''image a été sauvegardée dans {0}."
 
-#: src/plm/core/ui/MainFrame.java:233 src/plm/core/ui/MainFrame.java:734
+#: src/plm/core/ui/MainFrame.java:233 src/plm/core/ui/MainFrame.java:735
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/plm/core/ui/MainFrame.java:240 src/plm/core/ui/MainFrame.java:736
+#: src/plm/core/ui/MainFrame.java:240 src/plm/core/ui/MainFrame.java:737
 msgid "Exercise"
 msgstr "Exercice"
 
-#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:737
+#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:738
 msgid "Load lesson"
 msgstr "Charger une leçon"
 
-#: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:738
+#: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:739
 msgid "Switch lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/plm/core/ui/MainFrame.java:278 src/plm/core/ui/MainFrame.java:504
-#: src/plm/core/ui/MainFrame.java:729 src/plm/core/ui/MainFrame.java:739
+#: src/plm/core/ui/MainFrame.java:278 src/plm/core/ui/MainFrame.java:505
+#: src/plm/core/ui/MainFrame.java:730 src/plm/core/ui/MainFrame.java:740
 msgid "Switch exercise"
 msgstr "Changer d'exercice"
 
 #. Menu item to change the current Course
-#: src/plm/core/ui/MainFrame.java:290 src/plm/core/ui/MainFrame.java:740
+#: src/plm/core/ui/MainFrame.java:290 src/plm/core/ui/MainFrame.java:741
 msgid "Choose your course"
 msgstr "Sélectionner un cours"
 
-#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:741
+#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:742
 msgid "Revert Exercise"
 msgstr "Recommencer l'exercice"
 
-#: src/plm/core/ui/MainFrame.java:312 src/plm/core/ui/MainFrame.java:742
+#: src/plm/core/ui/MainFrame.java:312 src/plm/core/ui/MainFrame.java:743
 msgid "Debug mode"
 msgstr "Mode débogage"
 
-#: src/plm/core/ui/MainFrame.java:323 src/plm/core/ui/MainFrame.java:743
+#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:744
 msgid "Creative mode"
 msgstr "Mode créatif"
 
 #. === Session menu ===
-#: src/plm/core/ui/MainFrame.java:337 src/plm/core/ui/MainFrame.java:745
+#: src/plm/core/ui/MainFrame.java:338 src/plm/core/ui/MainFrame.java:746
 msgid "Session"
 msgstr "Session"
 
-#: src/plm/core/ui/MainFrame.java:343 src/plm/core/ui/MainFrame.java:747
+#: src/plm/core/ui/MainFrame.java:344 src/plm/core/ui/MainFrame.java:748
 msgid "Export Session Cache"
 msgstr "Exporter le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:346 src/plm/core/ui/MainFrame.java:748
+#: src/plm/core/ui/MainFrame.java:347 src/plm/core/ui/MainFrame.java:749
 msgid "Import Session Cache"
 msgstr "Importer le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:351 src/plm/core/ui/MainFrame.java:751
+#: src/plm/core/ui/MainFrame.java:352 src/plm/core/ui/MainFrame.java:752
 #: src/plm/core/ui/action/AddUser.java:33
 msgid "Add user"
 msgstr "Ajouter un utilisateur"
 
-#: src/plm/core/ui/MainFrame.java:354 src/plm/core/ui/MainFrame.java:752
+#: src/plm/core/ui/MainFrame.java:355 src/plm/core/ui/MainFrame.java:753
 #: src/plm/core/ui/action/SwitchUser.java:30
 msgid "Switch user"
 msgstr "Changer d'utilisateur"
 
-#: src/plm/core/ui/MainFrame.java:357 src/plm/core/ui/MainFrame.java:753
+#: src/plm/core/ui/MainFrame.java:358 src/plm/core/ui/MainFrame.java:754
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid "Remove user"
 msgstr "Supprimer un utilisateur"
 
-#: src/plm/core/ui/MainFrame.java:360
+#: src/plm/core/ui/MainFrame.java:361
 msgid "Link identity"
 msgstr "Lier une identité"
 
 #. === Language menu ===
-#: src/plm/core/ui/MainFrame.java:364 src/plm/core/ui/MainFrame.java:756
+#: src/plm/core/ui/MainFrame.java:365 src/plm/core/ui/MainFrame.java:757
 msgid "Language"
 msgstr "Langage"
 
 #. === Programming language changing ===
-#: src/plm/core/ui/MainFrame.java:369 src/plm/core/ui/MainFrame.java:757
+#: src/plm/core/ui/MainFrame.java:370 src/plm/core/ui/MainFrame.java:758
 msgid "Human"
 msgstr "Humain"
 
-#: src/plm/core/ui/MainFrame.java:383 src/plm/core/ui/MainFrame.java:758
+#: src/plm/core/ui/MainFrame.java:384 src/plm/core/ui/MainFrame.java:759
 msgid "Computer"
 msgstr "Ordinateur"
 
 #. === Help menu ===
-#: src/plm/core/ui/MainFrame.java:387 src/plm/core/ui/MainFrame.java:760
+#: src/plm/core/ui/MainFrame.java:388 src/plm/core/ui/MainFrame.java:761
 msgid "Help"
 msgstr "Aide"
 
-#: src/plm/core/ui/MainFrame.java:391 src/plm/core/ui/MainFrame.java:761
+#: src/plm/core/ui/MainFrame.java:392 src/plm/core/ui/MainFrame.java:762
 msgid "Provide feedback"
 msgstr "Rapport d'anomalie"
 
-#: src/plm/core/ui/MainFrame.java:401 src/plm/core/ui/MainFrame.java:762
+#: src/plm/core/ui/MainFrame.java:402 src/plm/core/ui/MainFrame.java:763
 msgid "About this lesson"
 msgstr "À propos de cette leçon"
 
-#: src/plm/core/ui/MainFrame.java:414 src/plm/core/ui/MainFrame.java:763
+#: src/plm/core/ui/MainFrame.java:415 src/plm/core/ui/MainFrame.java:764
 msgid "About this world"
 msgstr "À propos de ce monde"
 
 #. Buttons
-#: src/plm/core/ui/MainFrame.java:463 src/plm/core/ui/MainFrame.java:723
+#: src/plm/core/ui/MainFrame.java:464 src/plm/core/ui/MainFrame.java:724
 msgid "Run"
 msgstr "Exécuter"
 
-#: src/plm/core/ui/MainFrame.java:467 src/plm/core/ui/MainFrame.java:567
-#: src/plm/core/ui/MainFrame.java:724
+#: src/plm/core/ui/MainFrame.java:468 src/plm/core/ui/MainFrame.java:568
+#: src/plm/core/ui/MainFrame.java:725
 msgid "Step"
 msgstr "Un pas"
 
-#: src/plm/core/ui/MainFrame.java:472 src/plm/core/ui/MainFrame.java:725
+#: src/plm/core/ui/MainFrame.java:473 src/plm/core/ui/MainFrame.java:726
 msgid "Stop"
 msgstr "Stop"
 
-#: src/plm/core/ui/MainFrame.java:478 src/plm/core/ui/MainFrame.java:726
+#: src/plm/core/ui/MainFrame.java:479 src/plm/core/ui/MainFrame.java:727
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: src/plm/core/ui/MainFrame.java:484 src/plm/core/ui/MainFrame.java:727
+#: src/plm/core/ui/MainFrame.java:485 src/plm/core/ui/MainFrame.java:728
 msgid "Demo"
 msgstr "Démo"
 
-#: src/plm/core/ui/MainFrame.java:490 src/plm/core/ui/MainFrame.java:728
-#: src/plm/core/ui/action/HelpMe.java:134
-#: src/plm/core/ui/action/HelpMe.java:141
+#: src/plm/core/ui/MainFrame.java:491 src/plm/core/ui/MainFrame.java:729
+#: src/plm/core/ui/action/HelpMe.java:136
+#: src/plm/core/ui/action/HelpMe.java:143
 msgid "Call for Help"
 msgstr "Appeler à l'aide"
 
-#: src/plm/core/ui/MainFrame.java:552
+#: src/plm/core/ui/MainFrame.java:553
 msgid "Next"
 msgstr "Suivant"
 
-#: src/plm/core/ui/MainFrame.java:746
+#: src/plm/core/ui/MainFrame.java:747
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
-#: src/plm/core/ui/MissionEditorTabs.java:92
+#: src/plm/core/ui/MissionEditorTabs.java:94
 msgid "Mission"
 msgstr "Mission"
 
-#: src/plm/core/ui/MissionEditorTabs.java:93
+#: src/plm/core/ui/MissionEditorTabs.java:95
 msgid "Description of the work to do"
 msgstr "Description de la tâche à effectuer"
 
 #. Create the tab with the code editor as content
-#: src/plm/core/ui/MissionEditorTabs.java:162
+#: src/plm/core/ui/MissionEditorTabs.java:164
 msgid "Type your code here"
 msgstr "Écrire votre code ici"
 
@@ -1767,16 +1767,16 @@ msgstr ""
 "UUID invalide ! Vous pouvez soit copie/coller un identifiant correct, soit "
 "utiliser l'identifiant généré automatiquement."
 
-#: src/plm/core/ui/action/HelpMe.java:67
+#: src/plm/core/ui/action/HelpMe.java:69
 msgid "Please ask here your question for the teacher:"
 msgstr "Posez ici votre question pour l'enseignant :"
 
-#: src/plm/core/ui/action/HelpMe.java:68
+#: src/plm/core/ui/action/HelpMe.java:70
 msgid "Call for help"
 msgstr "Appeler à l'aide"
 
-#: src/plm/core/ui/action/HelpMe.java:134
-#: src/plm/core/ui/action/HelpMe.java:141
+#: src/plm/core/ui/action/HelpMe.java:136
+#: src/plm/core/ui/action/HelpMe.java:143
 msgid "Cancel call"
 msgstr "Annuler l'appel"
 
