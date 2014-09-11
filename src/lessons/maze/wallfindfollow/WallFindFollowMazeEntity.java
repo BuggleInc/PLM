@@ -23,19 +23,8 @@ public class WallFindFollowMazeEntity extends plm.universe.bugglequest.SimpleBug
 	}
 	 
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
-	public void stepHandOnWall() {
-		// PRE: we have a wall on the left
-		// POST: we still have the same wall on the left, are one step ahead
-
-		while (!isFacingWall()) {
-			forward();
-			left(); // change to right to get a right follower
-		}
-		right(); // change to left to get a right follower
-	}
-
 	public void run() {
+		/* BEGIN SOLUTION */
 		// Make sure we have a wall to the left
 		left();
 		while (!isFacingWall())
@@ -47,7 +36,18 @@ public class WallFindFollowMazeEntity extends plm.universe.bugglequest.SimpleBug
 
 		pickupBaggle();
 	}
-	/* END SOLUTION */
+	
+	public void stepHandOnWall() {
+		// PRE: we have a wall on the left
+		// POST: we still have the same wall on the left, are one step ahead
+
+		while (!isFacingWall()) {
+			forward();
+			left(); // change to right to get a right follower
+		}
+		right(); // change to left to get a right follower
+		/* END SOLUTION */
+	}
 	/* END TEMPLATE */
 }
 

@@ -5,6 +5,7 @@
       the issues.
   * Pedagogical content: further fixing students' issues
     - #237, #252: typo in French
+    - #246, #259: Lessons about mazes': make the templating mechanism explicit
     - #255 : IndexOfValue: world and function renamed to match with the instructions
     - #265: Provide now the PLM's version number when interacting with the server
     - #251: Fizz Buzz: correct the solution to match the instructions
