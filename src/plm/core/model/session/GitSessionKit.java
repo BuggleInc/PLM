@@ -99,7 +99,7 @@ public class GitSessionKit implements ISessionKit {
 				
 				Git git;
 				try {
-					git = Git.cloneRepository().setURI(repoUrl).setDirectory(gitDir).setBranchesToClone(Arrays.asList(userBranch)).call();
+					git = Git.cloneRepository().setURI(repoUrl).setDirectory(gitDir).setBranch(userBranch).call();
 
 					// If no branch can be found remotely, create a new one.
 					if (git == null) { 
@@ -107,6 +107,9 @@ public class GitSessionKit implements ISessionKit {
 						StoredConfig cfg = git.getRepository().getConfig();
 						cfg.setString("remote", "origin", "url", repoUrl);
 						cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
+						// TODO: more test before enabling the following configuration
+						//cfg.setString("branch", userBranch, "remote", "origin");
+						//cfg.setString("branch", userBranch, "merge", "refs/heads/"+userBranch);
 						cfg.save();
 						git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
 						System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
