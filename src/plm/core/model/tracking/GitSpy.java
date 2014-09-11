@@ -358,4 +358,38 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			ex.printStackTrace();
 		}
 	}
+	@Override
+	public void readTip(String id, String mission) {
+		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
+		String ext = "." + Game.getProgrammingLanguage().getExt();
+		File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
+		
+		try {
+			// write the instructions of the exercise into the file
+			FileWriter fwMission = new FileWriter(missionFile.getAbsoluteFile());
+			BufferedWriter bwMission = new BufferedWriter(fwMission);
+			bwMission.write(mission == null ? "" : mission);
+			bwMission.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			GitUtils gitUtils = new GitUtils(git);
+			git.add().addFilepattern(".").call();
+
+			JSONObject msg = new JSONObject();
+			msg.put("id", id);
+			// and then commit the changes
+			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+					.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+					.setMessage(writeCommitMessage(lastExo, null, "readTip", msg))
+					.call();
+
+			// push to the remote repository
+			gitUtils.maybePushToUserBranch();
+		} catch (IOException | GitAPIException ex) { 
+			ex.printStackTrace();
+		}
+	}
 }
