@@ -315,7 +315,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.switchDebug();
-
+				if (! Game.getInstance().isDebugEnabled())
+					outputArea.clear();
 			}
 		});
 		menuExercise.add(miExoDebug);
