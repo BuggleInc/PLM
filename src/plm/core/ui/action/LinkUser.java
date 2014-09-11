@@ -7,11 +7,9 @@ import plm.core.model.Game;
 
 public class LinkUser extends AbstractGameAction {
 
-	private Component parent;
-
+	private static final long serialVersionUID = 1L;
 	public LinkUser(Game game, String text, ImageIcon icon, Component parent) {
 		super(game, text, icon);
-		this.parent = parent;
 	}
 
 	@Override
