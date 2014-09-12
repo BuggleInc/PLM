@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-11 13:34+0200\n"
+"POT-Creation-Date: 2014-09-12 11:30+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,10 +342,10 @@ msgstr "Sei caduto in acqua."
 #: src/plm/universe/bugglequest/SimpleBuggle.java:84
 #: src/plm/universe/bugglequest/SimpleBuggle.java:88
 #: src/plm/universe/bugglequest/SimpleBuggle.java:99
-#: src/plm/universe/bugglequest/SimpleBuggle.java:102
-#: src/plm/universe/bugglequest/SimpleBuggle.java:111
-#: src/plm/universe/bugglequest/SimpleBuggle.java:121
-#: src/plm/universe/bugglequest/SimpleBuggle.java:131
+#: src/plm/universe/bugglequest/SimpleBuggle.java:103
+#: src/plm/universe/bugglequest/SimpleBuggle.java:113
+#: src/plm/universe/bugglequest/SimpleBuggle.java:123
+#: src/plm/universe/bugglequest/SimpleBuggle.java:133
 msgid "Test failed"
 msgstr "Test fallito"
 
@@ -910,14 +910,14 @@ msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossibile trovare il nome della missione in {0}.html"
 
 #: src/plm/core/model/session/GitSessionKit.java:115
-#: src/plm/core/model/tracking/GitSpy.java:62
+#: src/plm/core/model/tracking/GitSpy.java:61
 msgid ""
 "Creating a new session locally, as no corresponding session could be "
 "retrieved from the servers."
 msgstr ""
 
 #: src/plm/core/model/session/GitSessionKit.java:117
-#: src/plm/core/model/tracking/GitSpy.java:64
+#: src/plm/core/model/tracking/GitSpy.java:63
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
@@ -984,17 +984,17 @@ msgstr "Errore durante il caricamento della tua sessione"
 msgid "Abording on user request"
 msgstr "Interruzione su richiesta dell'utente"
 
-#: src/plm/core/model/tracking/GitSpy.java:86
+#: src/plm/core/model/tracking/GitSpy.java:85
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:165
+#: src/plm/core/model/tracking/GitSpy.java:162
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:172
+#: src/plm/core/model/tracking/GitSpy.java:169
 msgid "Don't save code remotely, as the network seems unreachable."
 msgstr ""
 
