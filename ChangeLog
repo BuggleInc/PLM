@@ -1,3 +1,12 @@
+20140912: wanna be Release 2.4.4
+
+  * Engine: 
+    - #257: used to write the bad information when passing an exercise
+      placed on the top of a sub-menu, resulting in the DONE mark not
+      being retrieved when loading the session afterward.
+  * Pedagogical content:
+    - #274: BDR: citation of Java instead of [!theLang] in mission
+
 20140911: Release 2.4.3
 
   * User Interface:
