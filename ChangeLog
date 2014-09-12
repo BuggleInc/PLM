@@ -6,6 +6,8 @@
       being retrieved when loading the session afterward.
   * Pedagogical content:
     - #274: BDR: citation of Java instead of [!theLang] in mission
+    - #289: indexOfMaxValue: add a table with all negative numbers to
+      catch people initializing maxValue = 0
 
 20140911: Release 2.4.3
 
