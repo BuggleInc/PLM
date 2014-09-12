@@ -13306,7 +13306,7 @@ msgid ""
 msgstr ""
 "Pour conclure avec cette leçon d'introduction aux algorithmes de sortie de "
 "labyrinthe, nous allons étudier un autre moyen de trouver la sortie. La "
-"buggle de cette leçon est spéciale : c'est une jedi. Il peut ressentir la "
+"buggle de cette leçon est spéciale : c'est une jedi. Elle peut ressentir la "
 "Force. Cela signifie qu'elle peut ressentir son environnement."
 
 #. type: Content of: <p>
