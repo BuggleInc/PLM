@@ -14448,7 +14448,7 @@ msgid ""
 "multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
 "5) is 2."
 msgstr ""
-"Soit un entier positif \"num\", renvoyez vrai si num est à moins de 2 d'un "
+"Soit un entier positif \"num\", renvoyez vrai si num est à distance 2 ou moins d'un "
 "multiple de 10. Note: ( a % b ) est le reste de la division de a par b, donc "
 "(7 % 5) vaut 2."
 
