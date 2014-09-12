@@ -2,15 +2,15 @@ package lessons.turtleart;
 
 import plm.universe.turtles.Turtle;
 
-public class Polygon15Entity extends Turtle {
+class ScalaPolygon20Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 	    addSizeHint(45,135, 45,165);
-	    int sides=20;
+	    val sides=20;
 
-	    for (int i=0; i<sides;i++) {
+	    for (i <- 1 to sides) {
 	        forward(30);
 	        right(360/sides);
 	    }

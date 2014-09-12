@@ -35,7 +35,7 @@ public class Main extends Lesson {
 		addExercise(new TurtleGraphicalExercise(this,"HouseMany",    300,300, 50,250));
 		addExercise(new TurtleGraphicalExercise(this,"Polygon6",     300,300, 81,190));
 		addExercise(new TurtleGraphicalExercise(this,"Polygon7",     300,300, 65,190));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon15",    300,300, 55,165));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon20",    300,300, 55,165));
 		addExercise(new TurtleGraphicalExercise(this,"Polygon360",   300,300, 35,149));
 		addExercise(new TurtleGraphicalExercise(this,"CircleTwo",    300,300, 35,149));
 		addExercise(new TurtleGraphicalExercise(this,"CircleYing",   300,300, 35,149));
