@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-09 20:46+0200\n"
+"POT-Creation-Date: 2014-09-12 10:53+0200\n"
 "PO-Revision-Date: 2014-09-08 22:36+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -6546,9 +6546,18 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:189
+#, fuzzy
+#| msgid ""
+#| "Another subtlety is that detecting if strings are equals is a bit "
+#| "annoying in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</"
+#| "code> instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</"
+#| "code>.  This method, only known by the buggles of this exercise, returns "
+#| "the first char of the message written on the ground (or ' ' -- the space "
+#| "char -- if nothing is written down). It enables to work with chars "
+#| "instead of strings, that is much simpler in [!thelang]."
 msgid ""
 "Another subtlety is that detecting if strings are equals is a bit annoying "
-"in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
+"in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
 "instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>.  This "
 "method, only known by the buggles of this exercise, returns the first char "
 "of the message written on the ground (or ' ' -- the space char -- if nothing "
@@ -13361,9 +13370,9 @@ msgid ""
 "<code>getIndication(x,y,i)</code> retrieves the integer indication of the "
 "cell (x,y) (or 9999 if there is no indication)."
 msgstr ""
-"<code>getIndication(x,y)</code> retourne l'indication entière qui se "
-"trouve dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas "
-"d'indication à l'endroit indiqué)."
+"<code>getIndication(x,y)</code> retourne l'indication entière qui se trouve "
+"dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas d'indication à "
+"l'endroit indiqué)."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:19
@@ -14448,9 +14457,9 @@ msgid ""
 "multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
 "5) is 2."
 msgstr ""
-"Soit un entier positif \"num\", renvoyez vrai si num est à distance 2 ou moins d'un "
-"multiple de 10. Note: ( a % b ) est le reste de la division de a par b, donc "
-"(7 % 5) vaut 2."
+"Soit un entier positif \"num\", renvoyez vrai si num est à distance 2 ou "
+"moins d'un multiple de 10. Note: ( a % b ) est le reste de la division de a "
+"par b, donc (7 % 5) vaut 2."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/RedTicket.html:2

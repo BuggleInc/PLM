@@ -201,14 +201,13 @@ de cette variable à vrai
 la boucle, et le programme. </p>
 
 [!java|c]
-<p>Une autre subtilité est qu'il est un peu pénible en Java de déterminer si
-deux chaînes de caractères sont identiques. Nous utiliserons donc la méthode
-<code>char getIndication[!c]Bdr[/!]()</code> à la place de
-<code>[!java]String[/!][!c]char*[/!] litMessage()</code>. Cette méthode, qui
-n'est connue que des buggles des exercices BDR, renvoie le premier caractère
-du message au sol (ou ' ' --une espace-- s'il n'y a rien d'écrit au
-sol). Cela nous permet de travailler avec des caractères
-(<code>char</code>), qui sont moins pénibles que les chaînes.</p>
+<p>Another subtlety is that detecting if strings are equals is a bit annoying
+in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code>
+instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>.  This
+method, only known by the buggles of this exercise, returns the first char
+of the message written on the ground (or ' ' -- the space char -- if nothing
+is written down). It enables to work with chars instead of strings, that is
+much simpler in [!thelang].</p>
 [/!]
 
 <h3>Trucs et astuces</h3>
