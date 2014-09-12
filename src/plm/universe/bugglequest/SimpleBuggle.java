@@ -99,7 +99,9 @@ public class SimpleBuggle extends AbstractBuggle  {
 				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		} catch (DontHaveBaggleException e) {
-			javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+			if (!haveSeenError())
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+			seenError();
 		}
 	}	
 	@Override 

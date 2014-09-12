@@ -4,6 +4,9 @@
     - #257: used to write the bad information when passing an exercise
       placed on the top of a sub-menu, resulting in the DONE mark not
       being retrieved when loading the session afterward.
+  * Worlds:
+    - #280: Buggles: Don't display the error dialog more than once when
+      dropping the baggle that you don't have.
   * Pedagogical content:
     - #274: BDR: citation of Java instead of [!theLang] in mission
     - #289: indexOfMaxValue: add a table with all negative numbers to
