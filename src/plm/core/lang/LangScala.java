@@ -40,7 +40,8 @@ public class LangScala extends JVMCompiledLang {
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
-		runtimePatterns.put("\\$package", "package "+packageName()+";");
+		runtimePatterns.put("\\$package", 
+				"package "+packageName()+";import java.awt.Color;");
 
 		List<plm.core.model.session.SourceFile> sfs = exo.getSourceFilesList(this);
 		if (sfs == null || sfs.isEmpty()) {
