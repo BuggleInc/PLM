@@ -6,7 +6,10 @@
   * Worlds:
     - #291: TurtleWorld: align equals() and diffTo() on what's equal.
       That is, equals() now ignore the turtle color while diffTo() now
-      reports differences in turtle position. 
+      reports differences in turtle position.
+    - #298: TurtleWorld: Drop duplicate shapes before comparing, so
+      that it still matches if the only difference is that you don't 
+      duplicate the same segments than the correction.
   * Pedagogical content:
     - #299, #307: French typo
     - #303: No need to draw the same thing twice

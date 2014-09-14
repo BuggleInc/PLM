@@ -223,38 +223,46 @@ public class TurtleWorld extends World {
 			return false;
 		
 		TurtleWorld other = (TurtleWorld) obj;
-		if (other.entities.size() != entities.size())
-			return false;
-		for (int i=0; i<other.entities.size();i++)
-			if (! other.entities.get(i).equals(entities.get(i)))
-				return false;
-		synchronized (shapes) { synchronized (other.shapes) {
-			if (shapes.size() != other.shapes.size())
-				return false;
-			ShapeComparator cmp = new ShapeComparator();
-			Collections.sort(shapes, cmp);
-			Collections.sort(other.shapes, cmp);
-			for (int i=0;i<other.shapes.size();i++)
-				if (! other.shapes.get(i).equals(shapes.get(i)))
-					return false;
-		}}		
-		return true;
+		String diff = diffTo(other);
+		if (diff.equals(""))
+			return true;
+		return false;
 	}
 	@Override
 	public String diffTo(World world) {
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
+		
+		// First compare entities
 		if (other.entities.size() != entities.size())
 			return Game.i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
 		for (int i=0; i<other.entities.size();i++)
 			if (! other.entities.get(i).equals(entities.get(i)))
 				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i)));
+		
+		// Compare shapes
 		synchronized (shapes) { synchronized (other.shapes) {
-			if (shapes.size() != other.shapes.size())
-				return Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size());
 			ShapeComparator cmp = new ShapeComparator();
 			Collections.sort(shapes, cmp);
 			Collections.sort(other.shapes, cmp);
+			
+			// Drop duplicates before the comparison
+			for (int i=0;i<other.shapes.size()-1;i++) 
+				if (other.shapes.get(i).equals(other.shapes.get(i+1))) {
+					other.shapes.remove(i+1);
+					i--; // counters the effect of next i++ in the for loop
+				}
+			for (int i=0;i<shapes.size()-1;i++) 
+				if (shapes.get(i).equals(shapes.get(i+1))) {
+					shapes.remove(i+1);
+					i--; // counters the effect of next i++ in the for loop
+				}
+			
+			// Same amount of shapes?
+			if (shapes.size() != other.shapes.size())
+				return Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size());
+			
+			// Same shapes?
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
 					sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n",
