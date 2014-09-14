@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
-
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -380,6 +380,22 @@ public class Turtle extends Entity {
 		return result;
 	}
 
+	public String diffTo(Object obj) {
+		if (this == obj)
+			return "";
+		if (obj == null)
+			return "I was not expecting a (null) turtle";
+		if (!(obj instanceof Turtle))
+			return "The turtle is not a turtle! It's a trap!";
+
+		final Turtle other = (Turtle) obj;
+		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
+			return Game.i18n.tr("The turtle {0} is not heading to the right direction.",getName());
+		if (Math.abs(x-other.x) > Turtle.EPSILON || Math.abs(y-other.y) > Turtle.EPSILON)
+			return Game.i18n.tr("The turtle {0} is at the right location.",getName());
+		return "";
+
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -390,11 +406,6 @@ public class Turtle extends Entity {
 			return false;
 
 		final Turtle other = (Turtle) obj;
-		if (color == null) {
-			if (other.color != null)
-				return false;
-		} else if (!color.equals(other.color))
-			return false;
 		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
 			return false;
 		if (Math.abs(x-other.x) > Turtle.EPSILON)

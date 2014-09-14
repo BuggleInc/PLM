@@ -3,6 +3,10 @@
   * Engine:
     - #294: Import package Color in every exercise, so that students
       may use it even if they don't have to in a given exercise.
+  * Worlds:
+    - #291: TurtleWorld: align equals() and diffTo() on what's equal.
+      That is, equals() now ignore the turtle color while diffTo() now
+      reports differences in turtle position. 
   * Pedagogical content:
     - #299, #307: French typo
     - #303: No need to draw the same thing twice

@@ -119,27 +119,7 @@ public class TurtleWorld extends World {
 	public ImageIcon getIcon() {
 		return ResourcesCache.getIcon("img/world_turtle.png");
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (! (obj instanceof TurtleWorld))
-			return false;
-		if (! super.equals(obj))
-			return false;
 		
-		TurtleWorld other = (TurtleWorld) obj;
-		synchronized (shapes) { synchronized (other.shapes) {
-			if (shapes.size() != other.shapes.size())
-				return false;
-			Collections.sort(shapes, new ShapeComparator());
-			Collections.sort(other.shapes, new ShapeComparator());
-			for (int i=0;i<shapes.size();i++)
-				if (! shapes.get(i).equals(other.shapes.get(i)))
-					return false;
-		}}		
-		return true;
-	}
-	
 	// TODO implement world IO	
 	
 	@Override
@@ -238,15 +218,43 @@ public class TurtleWorld extends World {
 	}
 
 	@Override
-	public String diffTo(World world) {
-		StringBuffer sb = new StringBuffer();
-		TurtleWorld other = (TurtleWorld) world;
+	public boolean equals(Object obj) {
+		if (! (obj instanceof TurtleWorld))
+			return false;
+		
+		TurtleWorld other = (TurtleWorld) obj;
+		if (other.entities.size() != entities.size())
+			return false;
+		for (int i=0; i<other.entities.size();i++)
+			if (! other.entities.get(i).equals(entities.get(i)))
+				return false;
 		synchronized (shapes) { synchronized (other.shapes) {
+			if (shapes.size() != other.shapes.size())
+				return false;
 			ShapeComparator cmp = new ShapeComparator();
 			Collections.sort(shapes, cmp);
 			Collections.sort(other.shapes, cmp);
+			for (int i=0;i<other.shapes.size();i++)
+				if (! other.shapes.get(i).equals(shapes.get(i)))
+					return false;
+		}}		
+		return true;
+	}
+	@Override
+	public String diffTo(World world) {
+		StringBuffer sb = new StringBuffer();
+		TurtleWorld other = (TurtleWorld) world;
+		if (other.entities.size() != entities.size())
+			return Game.i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
+		for (int i=0; i<other.entities.size();i++)
+			if (! other.entities.get(i).equals(entities.get(i)))
+				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i)));
+		synchronized (shapes) { synchronized (other.shapes) {
 			if (shapes.size() != other.shapes.size())
 				return Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size());
+			ShapeComparator cmp = new ShapeComparator();
+			Collections.sort(shapes, cmp);
+			Collections.sort(other.shapes, cmp);
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
 					sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n",
