@@ -77,7 +77,7 @@ public class ExerciseFailedDialog extends JDialog {
 			ta.setCaretPosition(0);
 		}
 		msg.setFocusable(false);
-		ta.setFocusable(false);
+		ta.setFocusable(true);
 		add(msg,"wrap");
 		final JScrollPane sp = new JScrollPane(ta);
 		sp.setFocusable(false);
