@@ -290,19 +290,22 @@ class ShapeComparator implements Comparator<Shape> {
 			Line l1 = (Line) s1;
 			Line l2 = (Line) s2;
 			
-			int res = cmp(l1.x1, l2.x1);
+			// We don't need to sort the extremities even if [(x1,y1);(x2,y2)]   ==   [(x2,y2);(x1,y1)]
+			// because the constructor of Line already deal with that issue.
+			
+			int res = cmp(l2.x1, l1.x1);
 			if (res != 0)
 				return res;
 			
-			res = cmp(l1.y1, l2.y1);
+			res = cmp(l2.x2, l1.x2);
 			if (res != 0)
 				return res;
 			
-			res = cmp(l1.x2, l2.x2);
+			res = cmp(l2.y1, l1.y1);
 			if (res != 0)
 				return res;
 
-			return cmp(l1.y2, l2.y2);
+			return cmp(l2.y2, l1.y2);
 		}
 		
 		if (s1 instanceof Circle) {
@@ -317,11 +320,9 @@ class ShapeComparator implements Comparator<Shape> {
 			if (res != 0)
 				return res;
 			
-			res = cmp(c1.radius, c2.radius);
-			if (res != 0)
-				return res;
+			return cmp(c1.radius, c2.radius);
 		}
-		return 0;
+		throw new RuntimeException("s1 is neither a Line nor a Circle. I'm puzzled.");
 	}
 	
 }
