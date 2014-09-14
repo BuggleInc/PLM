@@ -9,6 +9,7 @@
     - turtleart.Flower2: New picture, proposed by a student last year.
     - #242: Moria: Forces the use of while loops by making the word
       too uneven for forloops, and by adding another world.
+    - #247: ScalaWallFindFollowMazeEntity was in wrong package, breaking demo.
 
 20140912: Release 2.4.4
 

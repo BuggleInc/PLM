@@ -1,4 +1,4 @@
-package lessons.maze.wallfollower;
+package lessons.maze.wallfindfollow;
 
 import plm.core.model.Game;
 import plm.universe.Direction;
