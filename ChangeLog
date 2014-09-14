@@ -18,6 +18,7 @@
       too uneven for forloops, and by adding more buggles.
     - #247: ScalaWallFindFollowMazeEntity was in wrong package, breaking demo.
     - #305: ShortestPathMaze: fix mission to match world's expectations
+    - #273: FlowerPot: don't add a buggle manually, the map contains one
 
 20140912: Release 2.4.4
 
