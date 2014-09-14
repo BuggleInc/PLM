@@ -12,6 +12,8 @@
       duplicate the same segments than the correction.
     - #236: Make sure that Left() and Right() are detected as errors
       even in Scala that gives a meaning to these names.
+    - #272: Bat: Clone the arrays passed as parameter to the user code
+      to ensure that the user don't mess with our precious data.
   * Pedagogical content:
     - #299, #307: French typo
     - #303: No need to draw the same thing twice
