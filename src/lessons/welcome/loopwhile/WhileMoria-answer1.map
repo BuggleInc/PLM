@@ -1,6 +1,6 @@
-BuggleWorld: Moria
+BuggleWorld: Moria2
 Size: 20x3
-Buggle(19,2): east,black,black,Balin
+Buggle(19,2): east,black,black,Dwalin
 Cell(0,0): 90/90/80,nobaggle,notopwall,noleftwall,
 Cell(0,1): 222/205/135,baggle,topwall,noleftwall,
 Cell(0,2): 90/90/80,nobaggle,topwall,noleftwall,
@@ -35,10 +35,10 @@ Cell(10,0): 90/90/80,nobaggle,notopwall,noleftwall,
 Cell(10,1): 222/205/135,baggle,topwall,noleftwall,
 Cell(10,2): 90/90/80,nobaggle,topwall,noleftwall,
 Cell(11,0): 108/93/83,nobaggle,notopwall,noleftwall,
-Cell(11,1): 211/188/95,nobaggle,topwall,noleftwall,
+Cell(11,1): 211/188/95,baggle,topwall,noleftwall,
 Cell(11,2): 108/93/83,nobaggle,topwall,noleftwall,
 Cell(12,0): 90/90/80,nobaggle,notopwall,noleftwall,
-Cell(12,1): 222/205/135,nobaggle,topwall,noleftwall,
+Cell(12,1): 222/205/135,baggle,topwall,noleftwall,
 Cell(12,2): 90/90/80,nobaggle,topwall,noleftwall,
 Cell(13,0): 108/93/83,nobaggle,notopwall,noleftwall,
 Cell(13,1): 211/188/95,nobaggle,topwall,noleftwall,
