@@ -10,6 +10,8 @@
     - #298: TurtleWorld: Drop duplicate shapes before comparing, so
       that it still matches if the only difference is that you don't 
       duplicate the same segments than the correction.
+    - #236: Make sure that Left() and Right() are detected as errors
+      even in Scala that gives a meaning to these names.
   * Pedagogical content:
     - #299, #307: French typo
     - #303: No need to draw the same thing twice

@@ -207,10 +207,18 @@ public class Turtle extends Entity {
 	public void left(double angle) {
 		setHeadingRadian(heading - fromAngularUnit(angle));
 	}
-
 	public void right(double angle) {
 		setHeadingRadian(heading + fromAngularUnit(angle));
 	}
+	
+	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
+	public void Left(double angle) { 
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+	}
+	public void Right(double angle) {
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+	}
+
 
 	public boolean isPenDown() {
 		return penDown;

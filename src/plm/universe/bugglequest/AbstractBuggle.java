@@ -149,6 +149,14 @@ public abstract class AbstractBuggle extends Entity {
 		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
 	}
+	
+	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
+	public void Left() { 
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+	}
+	public void Right() {
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+	}
 
 	public void back() {
 		setDirection(direction.opposite());
