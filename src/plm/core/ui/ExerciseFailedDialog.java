@@ -14,37 +14,31 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 
 public class ExerciseFailedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
-
 
 	public ExerciseFailedDialog(ExecutionProgress ep) {
 		super(MainFrame.getInstance(), "Mmm, not quite", false);
 		
 		String[] fortune = new String[] {
-				i18n.tr("<i>Practice makes perfect</i>, as they say."),
-				i18n.tr("<i>To err is human</i>, as they say."),
-				i18n.tr("You should keep trying until you get it right!"),
-				i18n.tr("We all learn from our mistakes, so, good job!"),
-				i18n.tr("We learn from failure, not from success!"),
-				i18n.tr("<i>Anyone who has never made a mistake has never <br>tried anything new.</i> (Einstein)."),
-				i18n.tr("<i>Success does not consist in never making mistakes,<br> but in never making the same one a second time.</i> (Shaw)")
+				Game.i18n.tr("<i>Practice makes perfect</i>, as they say."),
+				Game.i18n.tr("<i>To err is human</i>, as they say."),
+				Game.i18n.tr("You should keep trying until you get it right!"),
+				Game.i18n.tr("We all learn from our mistakes, so, good job!"),
+				Game.i18n.tr("We learn from failure, not from success!"),
+				Game.i18n.tr("<i>Anyone who has never made a mistake has never <br>tried anything new.</i> (Einstein)."),
+				Game.i18n.tr("<i>Success does not consist in never making mistakes,<br> but in never making the same one a second time.</i> (Shaw)")
 		};
 		
-		this.setTitle(i18n.tr("Mmm, not quite"));
+		this.setTitle(Game.i18n.tr("Mmm, not quite"));
 		
 		setLayout(new MigLayout("fill",""));
 		add(new JLabel( (Icon) UIManager.getLookAndFeelDefaults().get("OptionPane.errorIcon") ));
 
-		JButton close = new JButton(i18n.tr("Close"));
+		JButton close = new JButton(Game.i18n.tr("Close"));
 		close.addActionListener(new ActionListener() {
 			
 			@Override
@@ -57,7 +51,7 @@ public class ExerciseFailedDialog extends JDialog {
 		JTextArea ta = new JTextArea();
 		ta.setEditable(false);
 		if (ep.compilationError == null) { 
-			msg = new JLabel(i18n.tr("<html>You didn''t manage to reach your objective this time. <br>\n"
+			msg = new JLabel(Game.i18n.tr("<html>You didn''t manage to reach your objective this time. <br>\n"
 					+ "That''s fine. {0}<br>\n"
 					+ "<br>\n"
 					+ "You should graphically compare the final state of your world <br>\n"
@@ -69,7 +63,7 @@ public class ExerciseFailedDialog extends JDialog {
 			ta.setText(ep.executionError);
 			ta.setCaretPosition(0);
 		} else {
-			msg = new JLabel( i18n.tr("<html>Compilation error.<br>\n"
+			msg = new JLabel( Game.i18n.tr("<html>Compilation error.<br>\n"
 					+ "You can find below the detailed error message (as given by {0}).<br>\n"
 					+ "Please read it carefully to understand the problem, and fix your code.</html>",
 						Game.getProgrammingLanguage().getLang()) );
@@ -84,17 +78,17 @@ public class ExerciseFailedDialog extends JDialog {
 		if (ep.compilationError == null) {
 			sp.setPreferredSize(new Dimension(0, 250));
 			JPanel buttons = new JPanel();
-			final JButton detailsBt = new JButton(i18n.tr("Details >>"));
+			final JButton detailsBt = new JButton(Game.i18n.tr("Details >>"));
 			detailsBt.addActionListener(new ActionListener() {
 				boolean shown = false;
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (shown) {
-						detailsBt.setText(i18n.tr("Details >>"));
+						detailsBt.setText(Game.i18n.tr("Details >>"));
 						remove(sp);
 					} else {
-						detailsBt.setText(i18n.tr("Details <<"));
+						detailsBt.setText(Game.i18n.tr("Details <<"));
 						add(sp,"spanx, grow, growprio 200, wrap");
 					}
 					shown = !shown;

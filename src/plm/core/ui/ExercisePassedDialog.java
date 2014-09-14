@@ -14,10 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import net.miginfocom.swing.MigLayout;
-
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -26,13 +22,10 @@ import plm.core.model.lesson.Lecture;
 public class ExercisePassedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
-
-
 	public ExercisePassedDialog(Exercise exo) {
 		super(MainFrame.getInstance(), "Exercice passed \\o/", false);
 		
-		this.setTitle(i18n.tr("Exercice passed \\o/"));
+		this.setTitle(Game.i18n.tr("Exercice passed \\o/"));
 		
 		setLayout(new MigLayout("fill","","[fill,grow,push][]"));
 		
@@ -41,7 +34,7 @@ public class ExercisePassedDialog extends JDialog {
 		
 		/* ------------ The congrats panel ------------ */
 		JPanel congratsPane = new JPanel();
-		panes.addTab(i18n.tr("Congrats"), congratsPane);
+		panes.addTab(Game.i18n.tr("Congrats"), congratsPane);
 		congratsPane.setLayout(new MigLayout("fill"));
 		
 		JLabel msg = new JLabel();		
@@ -50,10 +43,10 @@ public class ExercisePassedDialog extends JDialog {
 		
 		if ( nextExercises.size() == 0) {
 			if (exo.lastResult.passedTests > 1) {
-				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>",
+				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>",
 								exo.lastResult.passedTests) + exo.lastResult.executionError);
 			} else { 
-				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.</html>",
+				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.</html>",
 								exo.lastResult.passedTests) + exo.lastResult.executionError);
 			}
 
@@ -63,10 +56,10 @@ public class ExercisePassedDialog extends JDialog {
 		} else {
 			
 			if (exo.lastResult.passedTests > 1) {
-				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)<br>Which exercise will you do now?</html>",
+				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)<br>Which exercise will you do now?</html>",
 								exo.lastResult.passedTests)); 
 			} else {
-				msg.setText(i18n.tr("<html>Congratulations, you passed this exercise.<br>Which exercise will you do now?</html>"));
+				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>Which exercise will you do now?</html>"));
 			}
 			
 			congratsPane.add(new JLabel( ResourcesCache.getIcon("img/trophy.png") ), "spany 2");
@@ -76,27 +69,27 @@ public class ExercisePassedDialog extends JDialog {
 		
 		/* ------------ The feedback panel ------------ */
 		JPanel feedbackPane = new JPanel();
-		panes.addTab(i18n.tr("Give feedback"), feedbackPane);
+		panes.addTab(Game.i18n.tr("Give feedback"), feedbackPane);
 		feedbackPane.setLayout(new MigLayout("fill","[][grow,fill]20[][grow,fill]","[][][][grow,fill,push]0[]"));
 		
-		feedbackPane.add(new JLabel(i18n.tr("Please help us to improve this exercise by filling this little evaluation.")), "growx, growy 0,wrap,spanx 4");
+		feedbackPane.add(new JLabel(Game.i18n.tr("Please help us to improve this exercise by filling this little evaluation.")), "growx, growy 0,wrap,spanx 4");
 		
-		JLabel lbDifficulty = new JLabel(i18n.tr("Difficulty:"));
+		JLabel lbDifficulty = new JLabel(Game.i18n.tr("Difficulty:"));
 		feedbackPane.add(lbDifficulty,"align right");
 		/* Difficulties are the text presented to the user while difficultiesEN are the one that will be added to the report */
-		String[] difficulties = new String[] {i18n.tr("(please choose)"),i18n.tr("Too easy"),i18n.tr("Easy"),i18n.tr("Just right"),i18n.tr("Difficult"),i18n.tr("Too difficult")};
+		String[] difficulties = new String[] {Game.i18n.tr("(please choose)"),Game.i18n.tr("Too easy"),Game.i18n.tr("Easy"),Game.i18n.tr("Just right"),Game.i18n.tr("Difficult"),Game.i18n.tr("Too difficult")};
 		final String[] difficultiesEN = new String[] {"Too easy","Easy","Just right","Difficult","Too difficult"};
 		final JComboBox<String> difficultiesChooser = new JComboBox<String>(difficulties);
 		feedbackPane.add(difficultiesChooser,"grow");
 
-		JLabel lbInterest = new JLabel(i18n.tr("Interest:"));
+		JLabel lbInterest = new JLabel(Game.i18n.tr("Interest:"));
 		feedbackPane.add(lbInterest,"");
-		String[] interests = new String[] {i18n.tr("(please choose)"),i18n.tr("Really good"),i18n.tr("Amusing"),i18n.tr("Just okay"),i18n.tr("Boring"),i18n.tr("Really bad"),};
+		String[] interests = new String[] {Game.i18n.tr("(please choose)"),Game.i18n.tr("Really good"),Game.i18n.tr("Amusing"),Game.i18n.tr("Just okay"),Game.i18n.tr("Boring"),Game.i18n.tr("Really bad"),};
 		final String[] interestsEN = new String[] {"(please choose)","Really good","Amusing","Just okay","Boring","Really bad"};
 		final JComboBox<String> interestChooser = new JComboBox<String>(interests);
 		feedbackPane.add(interestChooser,"grow,wrap");
 		
-		feedbackPane.add(new JLabel(i18n.tr("Free comments on that exercise:")),"grow 0,spanx 4,wrap");
+		feedbackPane.add(new JLabel(Game.i18n.tr("Free comments on that exercise:")),"grow 0,spanx 4,wrap");
 		final JEditorPane comment = new JEditorPane();
 		JScrollPane spComment = new JScrollPane(comment);
  		feedbackPane.add(spComment,"push,grow 20000 20000,wrap,span");
@@ -104,7 +97,7 @@ public class ExercisePassedDialog extends JDialog {
 		
 		/* ------------ The close button ------------ */
  		final ExecutionProgress result = exo.lastResult;
-		JButton close = new JButton(i18n.tr("Close"));
+		JButton close = new JButton(Game.i18n.tr("Close"));
 		close.addActionListener(new ActionListener() {
 			
 			@Override
@@ -115,11 +108,11 @@ public class ExercisePassedDialog extends JDialog {
 				
 				String chosenDifficulty = null;
 				for (String d: difficultiesEN) 
-					if (difficultiesChooser.getSelectedItem().equals(i18n.tr(d)))
+					if (difficultiesChooser.getSelectedItem().equals(Game.i18n.tr(d)))
 						chosenDifficulty = d;
 				String chosenInterest = null;
 				for (String d: interestsEN) 
-					if (interestChooser.getSelectedItem().equals(i18n.tr(d)))
+					if (interestChooser.getSelectedItem().equals(Game.i18n.tr(d)))
 						chosenInterest = d;
 				
 				result.feedbackDifficulty = chosenDifficulty;
@@ -140,4 +133,5 @@ public class ExercisePassedDialog extends JDialog {
 		setMinimumSize(getSize());
 		setVisible(true);
 	}
+
 }
