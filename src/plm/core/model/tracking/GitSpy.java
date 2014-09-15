@@ -4,11 +4,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.NullProgressMonitor;
 import org.eclipse.jgit.lib.PersonIdent;
+import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.json.simple.JSONObject;
 
@@ -23,6 +24,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	private File plmDir;
 	private Git git;
+	
+	private ProgressMonitor progress = NullProgressMonitor.INSTANCE; //new TextProgressMonitor(new PrintWriter(System.out));
+
 
 	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
 	private File repoDir;
@@ -39,7 +43,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	@Override
 	public void userHasChanged(User newUser) {
 		try {
-			String userUUID = String.valueOf(newUser.getUserUUID());
+			String userUUID = newUser.getUserUUIDasString();
 			String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
 
 			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
@@ -65,14 +69,14 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				}
 			} else {
 				git = Git.open(repoDir);
-				
-				new GitUtils(git).checkoutUserBranch(newUser);
+								
+				new GitUtils(git).checkoutUserBranch(newUser, progress);
 			}
 
 			GitUtils gitUtils = new GitUtils(git);
 
 			// checkout the branch of the current user
-			gitUtils.checkoutUserBranch(newUser);
+			gitUtils.checkoutUserBranch(newUser, progress);
 
 			// Log into the git that the PLM just started
 			git.commit().setMessage(writePLMStartedCommitMessage())
@@ -81,7 +85,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			.call();
 
 			// and push to ensure that everything remains in sync
-			gitUtils.maybePushToUserBranch();
+			gitUtils.maybePushToUserBranch(progress);
 		} catch (Exception e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();
@@ -94,7 +98,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			GitUtils gitUtils = new GitUtils(git);
 
 			// checkout the branch of the current user (just in case it changed in between)
-			gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser());
+			gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser(), progress);
 
 			// Change the files locally
 			createFiles(exo);
@@ -110,7 +114,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			            .call();
 
 			// push to the remote repository
-			gitUtils.maybePushToUserBranch();
+			gitUtils.maybePushToUserBranch(progress);
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -142,7 +146,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				.call();
 
 				// push to the remote repository
-				gitUtils.maybePushToUserBranch();
+				gitUtils.maybePushToUserBranch(progress);
 			} catch (GitAPIException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -166,7 +170,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		try {
 			GitUtils gitUtils = new GitUtils(git);
 			// push to the remote repository
-			gitUtils.forcefullyPushToUserBranch();
+			gitUtils.forcefullyPushToUserBranch(progress);
 
 		} catch (org.eclipse.jgit.api.errors.TransportException e) {
 			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable."));
@@ -353,7 +357,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					.call();
 
 			// push to the remote repository
-			gitUtils.maybePushToUserBranch();
+			gitUtils.maybePushToUserBranch(progress);
 		} catch (IOException | GitAPIException ex) { 
 			ex.printStackTrace();
 		}
@@ -387,7 +391,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					.call();
 
 			// push to the remote repository
-			gitUtils.maybePushToUserBranch();
+			gitUtils.maybePushToUserBranch(progress);
 		} catch (IOException | GitAPIException ex) { 
 			ex.printStackTrace();
 		}

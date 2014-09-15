@@ -50,7 +50,7 @@ public class HelpMe extends AbstractGameAction {
 		isRequestingHelp = !isRequestingHelp;
 
 		LinkedHashMap<String,String> obj = new LinkedHashMap<String,String>();
-		obj.put("uuid", "" + Game.getInstance().getUsers().getCurrentUser().getUserUUID()); // ""+ to display the String
+		obj.put("uuid", Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString());
 		try {
 			obj.put("hostname", InetAddress.getLocalHost().getHostName());
 		} catch (UnknownHostException ex) {

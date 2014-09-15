@@ -13,6 +13,7 @@ import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.TransportException;
+import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
@@ -33,8 +34,8 @@ public class GitUtils {
 		this.git = git;
 	}
 	
-	public void checkoutUserBranch(User currentUser) throws GitAPIException {
-		String userUUID = String.valueOf(currentUser.getUserUUID());
+	public void checkoutUserBranch(User currentUser, ProgressMonitor progress) throws GitAPIException {
+		String userUUID = currentUser.getUserUUIDasString();
 		String userBranch;
 
 		try {
@@ -74,7 +75,7 @@ public class GitUtils {
 	 * 
 	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
 	 */
-	public void forcefullyPushToUserBranch() {
+	public void forcefullyPushToUserBranch(ProgressMonitor progress) {
 		synchronized(GitUtils.class) {
 			currentlyPushing = true;
 		}
@@ -83,7 +84,7 @@ public class GitUtils {
 		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
 		// push
-		PushCommand pc = git.push();
+		PushCommand pc = git.push().setProgressMonitor(progress);
 		pc.setCredentialsProvider(cp).setForce(true).setPushAll();
 		try {
 			for (PushResult pr: pc.call()) 
@@ -120,7 +121,7 @@ public class GitUtils {
      * concurrent push requests, triggering an alert that got the PLM-data repo to get temporarily disabled.
      * 
 	 */
-	public void maybePushToUserBranch() {	
+	public void maybePushToUserBranch(final ProgressMonitor progress) {	
 		synchronized(GitUtils.class) {
 			if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
 				return;
@@ -138,7 +139,7 @@ public class GitUtils {
 				}
 
 				// Do it now, and allow next request to occur
-				forcefullyPushToUserBranch();
+				forcefullyPushToUserBranch(progress);
 				
 				return null;
 			}

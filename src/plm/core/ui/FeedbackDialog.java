@@ -57,7 +57,7 @@ public class FeedbackDialog extends JDialog {
 				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
 				+ "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")" + "\n"
 				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
-				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUID().toString())+ "\n");
+				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n");
 		
 		FeedbackDialog.instance.title.setText(FeedbackDialog.instance.i18n.tr("Please describe the problem in a few words"));
 		FeedbackDialog.instance.pack();

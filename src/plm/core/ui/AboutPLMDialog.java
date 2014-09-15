@@ -74,7 +74,7 @@ public class AboutPLMDialog extends JDialog {
 				Game.getProperty("plm.major.version","internal",false),
 				Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false),
 				Game.getSavingLocation(),
-				Game.getInstance().getUsers().getCurrentUser().getUserUUID())
+				Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())
 		);
 		aboutPane.add(BorderLayout.SOUTH, text);
 		
