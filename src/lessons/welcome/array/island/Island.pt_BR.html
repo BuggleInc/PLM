@@ -2,35 +2,36 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>Ilha dos Buggles</h1>
 
-You just received the traveling notes of your old aunt who traveled accross
-the country of the Buggles' Islands. She wrote down the altitude every
-kilometer during her trip, resulting in a sequence of numbers as follows.
+Você acaba de receber as anotações de viagem da sua velha tia que
+atravessou o país das Ilhas dos Buggles. Ela escreveu a altitude a
+cada quilômetro durante a viagem, resultando numa sequência de números
+como segue.
 
 <pre>0 0 1 1 2 2 1 1 0 1 2 2 1 1 0</pre>
 
-<p>Here is a cut of the islands on that path:</p>
+<p>Aqui está um corte das ilhas por este caminho:</p>
 
 <pre>
-       /***\       /*\         &lt;-- 2 meters above the see level
-   /***********\ /*******\     &lt;-- 1 meter above the see level
-***************************    &lt;-- see level
+       /***\       /*\         &lt;-- 2 metros acima do nível do mar
+   /***********\ /*******\     &lt;-- 1 metro acima do nível do mar
+***************************    &lt;-- nível do mar
 | | | | | | | | | | | | | |
-0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude on each point
+0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude em cada ponto
 </pre>
 
-<p>This example is constituted of four levels of island:</p>
+<p>Este exemplo é constituído de quatro níveis de ilhas:</p>
 
 <ul>
-  <li>1 1 2 2 1 1 (the island on the left)</li>
-  <li>2 2 (the mountain topping the left island)</li>
-  <li>1 2 1 1 (the right island)</li>
-  <li>2 (the mountain on the right)</li>
+  <li>1 1 2 2 1 1 (a ilha da esquerda)</li>
+  <li>2 2 (o topo da montanha da ilha da esquerda)</li>
+  <li>1 2 1 1 (a ilha da direita)</li>
+  <li>2 (a montanha da direita)</li>
 </ul>
 
-<p>This can also be visualized this way:</p>
+<p>Isto também pode ser visualizado desta forma:</p>
 
 <pre>0 0(1 1(2 2)1 1)0(1(2)1 1)0</pre>
 
-<p>Could you write a little program to compute the amount of levels in a given
-sequence of altitudes? Actually, there is an iterative and a recursive
-solution to that problem.</p>
+<p>Você poderia escrever um pequeno programa que calculasse a quantidade
+de níveis numa dada sequência de altitudes? Na verdade, existem uma
+solução iterativa e uma recursiva para este problema.</p>
