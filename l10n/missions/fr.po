@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-15 07:45+0200\n"
-"PO-Revision-Date: 2014-09-08 22:36+0200\n"
+"POT-Creation-Date: 2014-09-15 13:46+0200\n"
+"PO-Revision-Date: 2014-09-15 13:47+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1962,38 +1962,24 @@ msgstr "Perdu dans la Moria"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:4
-#, fuzzy
-#| msgid ""
-#| "You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
-#| "will have to clear your way to the exit. Well of course these are only "
-#| "baggles and you could simply walk away, but it will be easier to program "
-#| "your buggle so that it moves those \"rocks\" than convincing your buggle "
-#| "that it could easily walk away without solving the problem..."
 msgid ""
 "You buggles got stuck in the mines of Moria! Some rocks are blocking the "
 "exit, and you will have to clear your way to the exit. Well of course these "
 "are only baggles and you could simply walk away, but it will be easier to "
 "program the buggles so that they move those \"rocks\" than convincing them "
-"to walk away without solving the problem..."
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
 msgstr ""
-"Votre buggle est coincée dans une mine ! Des rochers bloquent la sortie, et "
-"il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont pas "
-"vraiment des rochers mais juste des biscuits, et votre buggle pourrait "
+"Vos buggles sont coincées dans la mine de la Moria ! Des rochers bloquent la "
+"sortie, et il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont "
+"pas vraiment des rochers mais juste des biscuits, et vos buggles pourraient "
 "facilement passer au dessus sans se fatiguer. Mais il est probablement plus "
-"simple de programmer votre buggle pour qu'elle déplace ces «rochers» plutôt "
-"que de tenter de la convaincre de passer à la suite sans avoir résolu le "
-"problème..."
+"simple de programmer vos buggles pour qu'elles déplacent ces «rochers» "
+"plutôt que de tenter de les convaincre de passer à la suite sans avoir "
+"résolu le problème. Les nains sont souvent un peu têtus..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:10
-#, fuzzy
-#| msgid ""
-#| "So, you have to find the first baggle blocking the exit (simply walk to "
-#| "the east until you are over a baggle), take it and move it back to the "
-#| "other side of the tunnel (walk to the west while you are not over a "
-#| "baggle, and then move back one step to the east and drop your baggle), "
-#| "and iterate until you find the exit (that is, the wall to the east side). "
-#| "Afterward, move out as in the objective world."
+#: src/lessons/welcome/loopwhile/WhileMoria.html:11
 msgid ""
 "So, you have to find the first baggle blocking the exit (simply walk to the "
 "east until you are over a baggle), take it and move it back to the other "
@@ -2008,19 +1994,24 @@ msgstr ""
 "(marchez vers l'ouest jusqu'à vous trouver au dessus d'un biscuit puis "
 "reculez d'un pas). Il faut ensuite faire de même pour tous les biscuits "
 "jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais "
-"comme dans le monde objectif."
+"comme dans le monde objectif, cela ne sera plus qu'à quelques pas de là."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:17
+#: src/lessons/welcome/loopwhile/WhileMoria.html:18
 msgid ""
 "To make things worse, you have to write a program that works for every "
 "buggle, even if writing a specific program for each of them would be easier. "
 "It seems that using <code>while</code> loops is the only solution to move "
 "the buggles correctly."
 msgstr ""
+"Pour compliquer encore les choses, vous devez écrire un programme qui "
+"fonctionne pour toutes les buggles, même si écrire un programme spécifique à "
+"chacune serait peut-être un peu plus simple. Il semblerait qu'utiliser une "
+"boucle <code>while</code> soit la seule solution pour déplacer vos buggles "
+"correctement."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:22
+#: src/lessons/welcome/loopwhile/WhileMoria.html:23
 msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
@@ -2201,13 +2192,6 @@ msgstr "var x = 42"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:47
-#, fuzzy
-#| msgid ""
-#| "You still have to specify the if you use some generic values as an "
-#| "initialization, such as the very particular value <code>null</code>, "
-#| "which type happens to be ambiguous. Even when the type is clear, you can "
-#| "still specify it if you prefer.  So you want that the variable contains 5 "
-#| "as initial value, you should type:"
 msgid ""
 "You still have to specify if you use some generic values as an "
 "initialization, such as the very particular value <code>null</code>, which "
@@ -2717,6 +2701,13 @@ msgid ""
 "Your uttermost goal should remain to keep your code simple and easy to read, "
 "to ensure that your day remain pleasant and productive."
 msgstr ""
+"Ce code est équivalent du point de vue de l'ordinateur, mais du point de vue "
+"du programmeur, ce n'est pas forcément la même chose. L'une ou l'autre forme "
+"peut rendre le code plus facile à lire, en fonction de la situation. C'est "
+"donc à vous, le programmeur, de choisir la forme de boucle est la plus "
+"adaptée à chaque cas. L'objectif absolu doit être de garder votre code aussi "
+"simple que possible en toute situation. De la sorte, vos journées resteront "
+"plaisantes et productives."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:41
@@ -2752,11 +2743,11 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:55
-#, fuzzy
-#| msgid "The <code>for</code> loop is easier to read, don't you think?"
 msgid ""
 "In that case, the <code>for</code> loop is easier to read, don't you think?"
-msgstr "Le code avec une boucle <code>for</code> est plus simple à lire, non?"
+msgstr ""
+"Dans ce cas, le code avec une boucle <code>for</code> est plus simple à "
+"lire, non?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:58
@@ -5318,19 +5309,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:55
-#, fuzzy
-#| msgid ""
-#| "The easier for this function is to use a boolean variable called "
-#| "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
-#| "It initial value is 'false'."
 msgid ""
 "The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
-"Its initial value is 'false'."
+"Its initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 msgstr ""
 "Le plus simple pour écrire cette fonction est peut être d'utiliser une "
 "variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit "
-"jusque là. Initialement, elle contient faux."
+"jusque là. Initialement, elle contient faux («[!python]False[!/][!scala|"
+"java]false[/!][!c]0[/!]»)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:59
@@ -6559,17 +6546,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:179
-#, fuzzy
-#| msgid ""
-#| "You have to keep dancing as long as there is some dancing steps to do, i."
-#| "e., as long as we are not in cell which content is not described in the "
-#| "table.  The easier for that is to use a boolean variable (<code>finished</"
-#| "code>)  as termination condition to a <code>while</code> loop.  It should "
-#| "be initialized to <code>[!c]0[/!][!java|scala]false[/!][!"
-#| "python]False[/!]</code>, and switched to <code>[!c]1[/!][!java|"
-#| "scala]true[/!][!python]True[/!]</code> as soon as the buggle find a cell "
-#| "with a value not described in the table.  Thus the loop, will stop and "
-#| "the program will terminate."
 msgid ""
 "You have to keep dancing as long as there is some dancing steps to do, i.e., "
 "as long as we are in a cell which content is described in the table.  The "
@@ -6582,26 +6558,16 @@ msgid ""
 "terminate."
 msgstr ""
 "Vous devez continuer à danser tant qu'il reste des pas de danse à faire. c-à-"
-"d tant qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le "
-"plus simple pour cela est d'utiliser une variable booléenne (<code>fini</"
-"code>) en condition d'arrêt d'une boucle while. Cette variable est "
-"initialisée à la valeur faux (<code>[!c]0[/!][!java|scala]false[/!][!"
-"python]False[/!]</code>). Si on trouve une case ne répondant à aucune ligne "
-"du tableau, on change la valeur de cette variable à vrai (<code>[!c]1[/!][!"
-"java|scala]true[/!][!python]True[/!]</code>). Cela arrête la boucle, et le "
-"programme."
+"d tant qu'on est sur une case décrite dans le tableau. Le plus simple pour "
+"cela est d'utiliser une variable booléenne (<code>fini</code>) en condition "
+"d'arrêt d'une boucle while. Cette variable est initialisée à la valeur faux "
+"(<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>). Si on "
+"trouve une case ne répondant à aucune ligne du tableau, on change la valeur "
+"de cette variable à vrai (<code>[!c]1[/!][!java|scala]true[/!][!"
+"python]True[/!]</code>). Cela arrête la boucle, et le programme."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:189
-#, fuzzy
-#| msgid ""
-#| "Another subtlety is that detecting if strings are equals is a bit "
-#| "annoying in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</"
-#| "code> instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</"
-#| "code>.  This method, only known by the buggles of this exercise, returns "
-#| "the first char of the message written on the ground (or ' ' -- the space "
-#| "char -- if nothing is written down). It enables to work with chars "
-#| "instead of strings, that is much simpler in [!thelang]."
 msgid ""
 "Another subtlety is that detecting if strings are equals is a bit annoying "
 "in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
@@ -6618,7 +6584,7 @@ msgstr ""
 "connue que des buggles des exercices BDR, renvoie le premier caractère du "
 "message au sol (ou ' ' --une espace-- s'il n'y a rien d'écrit au sol). Cela "
 "nous permet de travailler avec des caractères (<code>char</code>), qui sont "
-"moins pénibles que les chaînes."
+"moins pénibles que les chaînes en [!thelang]."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:197
@@ -6720,18 +6686,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:31
-#, fuzzy
-#| msgid ""
-#| "When you review this code, it may not be clear at the first glance that "
-#| "it is simply a choice with 4 branches depending on the value of [!java|"
-#| "c]getIndication()[/!][!scala]readMessage()[/!].  To improve this, we will "
-#| "use a [!java|c]<code>switch</code> construct, which Java syntax is the "
-#| "following:[/!] [!scala] pattern matching, which is a very powerful "
-#| "construct that greatly generalizes the <code>if</code>. It is arguably "
-#| "one one the major advantages of Scala when compared to languages such as "
-#| "Java or python.  It is not new either, as other languages such as OCaml "
-#| "or Haskell offer this feature since long, but still.  It's really cool!"
-#| "[/!]"
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
 "is simply a choice with 4 branches depending on the value of [!java|"
@@ -13437,12 +13391,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:26
-#, fuzzy
-#| msgid ""
-#| "For that, find the exit and write 0 there.  Then, write 1 on every "
-#| "neighboring cells that is not separated from the exit with a wall.  And "
-#| "then mark every cells from which you can reach the exit in 2 steps, and "
-#| "iterate for all cells until you mark the cell where the buggle is located."
 msgid ""
 "For that, find the exit and write 0 there.  Then, write 1 on every "
 "neighboring cells that is not separated from the exit with a wall.  And then "
@@ -13453,7 +13401,7 @@ msgstr ""
 "toutes les cases adjacentes à la sortie qui n'en sont pas séparées par un "
 "mur. Ensuite, écrivez 2 sur toutes les cases à partir desquelles on peut "
 "atteindre une case marquée 1, puis faites de même pour toutes les cases "
-"jusqu'à numéroter la case où se trouve votre buggle."
+"jusqu'à avoir numéroté toutes les cases du monde."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:31

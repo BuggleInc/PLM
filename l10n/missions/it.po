@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-15 07:45+0200\n"
+"POT-Creation-Date: 2014-09-15 13:46+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2174,7 +2174,8 @@ msgid ""
 "exit, and you will have to clear your way to the exit. Well of course these "
 "are only baggles and you could simply walk away, but it will be easier to "
 "program the buggles so that they move those \"rocks\" than convincing them "
-"to walk away without solving the problem..."
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
 msgstr ""
 "Il tuo buggle è bloccato in una miniera! Alcune rocce stanno bloccando "
 "l'uscita e tu dovrai pulire la strada per uscire. Bene, ovviamente questi "
@@ -2183,7 +2184,7 @@ msgstr ""
 "che sia più facile andar via senza risolvere il problema..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:10
+#: src/lessons/welcome/loopwhile/WhileMoria.html:11
 #, fuzzy
 #| msgid ""
 #| "So, you have to find the first baggle blocking the exit (simply walk to "
@@ -2208,7 +2209,7 @@ msgstr ""
 "sul lato est). Dopodiché muovetevi fuori come nel objective world."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:17
+#: src/lessons/welcome/loopwhile/WhileMoria.html:18
 msgid ""
 "To make things worse, you have to write a program that works for every "
 "buggle, even if writing a specific program for each of them would be easier. "
@@ -2217,7 +2218,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:22
+#: src/lessons/welcome/loopwhile/WhileMoria.html:23
 msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
@@ -5655,7 +5656,7 @@ msgstr ""
 msgid ""
 "The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
-"Its initial value is 'false'."
+"Its initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 msgstr ""
 "Il modo più facile per scriverlo è usare una variabile booleana chiamata "
 "<code>baggleVisto</code> che indica se è stato visto un baggle. Il suo "

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-15 07:45+0200\n"
+"POT-Creation-Date: 2014-09-15 13:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1474,11 +1474,12 @@ msgid ""
 "exit, and you will have to clear your way to the exit. Well of course these "
 "are only baggles and you could simply walk away, but it will be easier to "
 "program the buggles so that they move those \"rocks\" than convincing them "
-"to walk away without solving the problem..."
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:10
+#: src/lessons/welcome/loopwhile/WhileMoria.html:11
 msgid ""
 "So, you have to find the first baggle blocking the exit (simply walk to the "
 "east until you are over a baggle), take it and move it back to the other "
@@ -1489,7 +1490,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:17
+#: src/lessons/welcome/loopwhile/WhileMoria.html:18
 msgid ""
 "To make things worse, you have to write a program that works for every "
 "buggle, even if writing a specific program for each of them would be "
@@ -1498,7 +1499,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:22
+#: src/lessons/welcome/loopwhile/WhileMoria.html:23
 msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
@@ -3805,7 +3806,8 @@ msgstr ""
 msgid ""
 "The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so "
-"far. Its initial value is 'false'."
+"far. Its initial value is "
+"'[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 msgstr ""
 
 #. type: Content of: <p>
