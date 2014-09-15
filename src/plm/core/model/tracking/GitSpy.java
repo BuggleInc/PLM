@@ -64,19 +64,21 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					cfg.save();
 					git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
 					System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+
 				} else {
 					System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
 				}
+				
+				GitUtils gitUtils = new GitUtils(git);
+				// checkout the branch of the current user
+				gitUtils.checkoutUserBranch(newUser, progress);
 			} else {
 				git = Git.open(repoDir);
-								
-				new GitUtils(git).checkoutUserBranch(newUser, progress);
+				GitUtils gitUtils = new GitUtils(git);				
+				gitUtils.checkoutUserBranch(newUser, progress);
+				gitUtils.maybePullUserBranchFromServer(newUser, progress);
 			}
 
-			GitUtils gitUtils = new GitUtils(git);
-
-			// checkout the branch of the current user
-			gitUtils.checkoutUserBranch(newUser, progress);
 
 			// Log into the git that the PLM just started
 			git.commit().setMessage(writePLMStartedCommitMessage())
@@ -85,7 +87,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			.call();
 
 			// and push to ensure that everything remains in sync
-			gitUtils.maybePushToUserBranch(progress);
+			GitUtils gitUtils = new GitUtils(git);
+			gitUtils.maybePushToUserBranch(progress); 
 		} catch (Exception e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();

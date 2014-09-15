@@ -9,13 +9,17 @@ import javax.swing.SwingWorker;
 import org.eclipse.jgit.api.CreateBranchCommand;
 import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.MergeCommand;
+import org.eclipse.jgit.api.MergeResult;
 import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.lib.ProgressMonitor;
+import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
+import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import plm.core.model.Game;
@@ -145,6 +149,32 @@ public class GitUtils {
 			}
 		}.execute();
 	}
+	
+	
+	public void maybePullUserBranchFromServer(User currentUser, final ProgressMonitor progress) {	
+		// TODO: we should protect this method call from concurrent execution with pushing methods
+				String userUUID = currentUser.getUserUUIDasString();
+		String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
+		
+		try {
+			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranch+":refs/remotes/origin/"+userBranch)).call();
+		} catch (GitAPIException e) {
+			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
+			//if (Game.getInstance().isDebugEnabled())
+				e.printStackTrace();
+		}
+		
+		try {
+			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RESOLVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranch)).call();
+			System.out.println(res.getMergeStatus()); // TODO: to remove
+		} catch (GitAPIException | IOException e) {
+			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
+			//if (Game.getInstance().isDebugEnabled())
+				e.printStackTrace();
+		}
+	}
+	
+	
 
 	// Helper methods
 	public static String sha1(String input)  {
