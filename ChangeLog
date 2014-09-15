@@ -1,5 +1,8 @@
 20140913: wanabe Release 2.4.5
 
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 51% despite content changes
+    - French: Missions translation at 100% (Engine's lagging behide)
   * Engine:
     - #294: Import package Color in every exercise, so that students
       may use it even if they don't have to in a given exercise.
