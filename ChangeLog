@@ -6,6 +6,7 @@
   * Engine:
     - #294: Import package Color in every exercise, so that students
       may use it even if they don't have to in a given exercise.
+    - #327: Update our embeeded java compiler to OpenJDK7
   * Worlds:
     - #291: TurtleWorld: align equals() and diffTo() on what's equal.
       That is, equals() now ignore the turtle color while diffTo() now

@@ -79,7 +79,7 @@
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
                         
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.10.3.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.10.3.jar"/>
@@ -120,7 +120,7 @@
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/engine/* l10n/missions/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.3.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.3.2.jar"/>
