@@ -54,7 +54,7 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
 		Collection<Lesson> lessons = this.game.getLessons();
 		for (Lesson lesson : lessons) {
@@ -84,14 +84,14 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void loadAll(final File path) {
-		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
 		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
 			if (Game.getInstance().isDebugEnabled())
 				System.out.println("The user changed! switch to the right branch");
 			cachedUser = Game.getInstance().getUsers().getCurrentUser();
 			
-			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUID().toString());
+			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
 			if (! gitDir.exists()) {
 				String repoUrl = Game.getProperty("plm.git.server.url");
 				String userBranch = "PLM"+GitUtils.sha1(reponame); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it

@@ -63,14 +63,15 @@ public class User implements JSONStreamAware {
 		this.lastUsed = lastUsed;
 	}
 
+	
+	public String getUserUUIDasString() {
+		return this.userUUID.toString();
+	}
+	
 	public UUID getUserUUID() {
 		return userUUID;
 	}
-
-	public void setUserUUID(UUID userUUID) {
-		this.userUUID = userUUID;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		int hash = 3;
@@ -87,7 +88,7 @@ public class User implements JSONStreamAware {
 			return false;
 		}
 		final User other = (User) obj;
-		if (!Objects.equals(this.userUUID, other.userUUID)) {
+		if (! this.userUUID.equals(other.userUUID)) {
 			return false;
 		}
 		return true;
