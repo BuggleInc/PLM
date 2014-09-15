@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-09 20:46+0200\n"
+"POT-Creation-Date: 2014-09-15 13:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1470,26 +1470,36 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:4
 msgid ""
-"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
-"will have to clear your way to the exit. Well of course these are only "
-"baggles and you could simply walk away, but it will be easier to program "
-"your buggle so that it moves those \"rocks\" than convincing your buggle "
-"that it could easily walk away without solving the problem..."
+"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
+"exit, and you will have to clear your way to the exit. Well of course these "
+"are only baggles and you could simply walk away, but it will be easier to "
+"program the buggles so that they move those \"rocks\" than convincing them "
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:10
+#: src/lessons/welcome/loopwhile/WhileMoria.html:11
 msgid ""
 "So, you have to find the first baggle blocking the exit (simply walk to the "
 "east until you are over a baggle), take it and move it back to the other "
 "side of the tunnel (walk to the west while you are not over a baggle, and "
 "then move back one step to the east and drop your baggle), and iterate until "
 "you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world."
+"as in the objective world. That's only a few more steps away."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:17
+#: src/lessons/welcome/loopwhile/WhileMoria.html:18
+msgid ""
+"To make things worse, you have to write a program that works for every "
+"buggle, even if writing a specific program for each of them would be "
+"easier. It seems that using <code>while</code> loops is the only solution to "
+"move the buggles correctly."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:23
 msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
@@ -1626,7 +1636,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:47
 msgid ""
-"You still have to specify the if you use some generic values as an "
+"You still have to specify if you use some generic values as an "
 "initialization, such as the very particular value <code>null</code>, which "
 "type happens to be ambiguous. Even when the type is clear, you can still "
 "specify it if you prefer.  So you want that the variable contains 5 as "
@@ -3795,8 +3805,9 @@ msgstr ""
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:55
 msgid ""
 "The easier for this function is to use a boolean variable called "
-"<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
-"initial value is 'false'."
+"<code>seenBaggle</code> indicating whether or not we saw a baggle so "
+"far. Its initial value is "
+"'[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 msgstr ""
 
 #. type: Content of: <p>
@@ -4735,21 +4746,21 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:179
 msgid ""
 "You have to keep dancing as long as there is some dancing steps to do, i.e., "
-"as long as we are not in cell which content is not described in the table.  "
-"The easier for that is to use a boolean variable (<code>finished</code>)  as "
+"as long as we are in a cell which content is described in the table.  The "
+"easier for that is to use a boolean variable (<code>finished</code>)  as "
 "termination condition to a <code>while</code> loop.  It should be "
 "initialized to "
 "<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, and switched "
 "to <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> as soon as "
-"the buggle find a cell with a value not described in the table.  Thus the "
-"loop, will stop and the program will terminate."
+"the buggle find a cell with a value not described in the table.  Thus, the "
+"loop will stop and the program will terminate."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:189
 msgid ""
 "Another subtlety is that detecting if strings are equals is a bit annoying "
-"in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
+"in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
 "instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>.  This "
 "method, only known by the buggles of this exercise, returns the first char "
 "of the message written on the ground (or ' ' -- the space char -- if nothing "
@@ -4835,7 +4846,7 @@ msgid ""
 "[!java|c]getIndication()[/!][!scala]readMessage()[/!].  To improve this, we "
 "will use a [!java|c]<code>switch</code> construct, which Java syntax is the "
 "following:[/!] [!scala] pattern matching, which is a very powerful construct "
-"that greatly generalizes the <code>if</code>. It is arguably one one the "
+"that greatly generalizes the <code>if</code>. It is arguably one of the "
 "major advantages of Scala when compared to languages such as Java or "
 "python.  It is not new either, as other languages such as OCaml or Haskell "
 "offer this feature since long, but still.  It's really cool![/!]"
@@ -8361,28 +8372,15 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:16
 msgid ""
-"When you don't want to follow the proposed exercises but draw your own "
-"stuff, the \"you failed\" message really gets annoying.  We should have a "
-"\"Creative mode\" in PLM, where the world is not checked against the "
-"answer.  Also, we should not clean the board automatically in this mode."
+"Other exercises should be added. A whole lot of exercises are available from "
+"<a "
+"href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/#sect4</a> "
+"or from <a "
+"href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
-msgid ""
-"Other exercises should be added. A whole lot of exercises are available from "
-"http://neoparaiso.com/logo/#sect4."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:20
-msgid ""
-"Missing: the built-ins hide()/show(), that decide whether the turtle must be "
-"shown."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:21
 msgid ""
 "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
 "moving or by moving to the end of the arc."
@@ -9796,7 +9794,7 @@ msgid ""
 "For that, find the exit and write 0 there.  Then, write 1 on every "
 "neighboring cells that is not separated from the exit with a wall.  And then "
 "mark every cells from which you can reach the exit in 2 steps, and iterate "
-"for all cells until you mark the cell where the buggle is located."
+"for all cells until all cells are marked."
 msgstr ""
 
 #. type: Content of: <p>

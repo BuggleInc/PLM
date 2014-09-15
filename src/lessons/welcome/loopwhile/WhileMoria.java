@@ -12,7 +12,7 @@ public class WhileMoria extends ExerciseTemplated {
 
 	public WhileMoria(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
-		tabName = "Balin";
+		tabName = "DwarfCode";
 		
 		/* Create initial situation */
 		World[] myWorlds = new World[] {

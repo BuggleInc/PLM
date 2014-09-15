@@ -119,27 +119,7 @@ public class TurtleWorld extends World {
 	public ImageIcon getIcon() {
 		return ResourcesCache.getIcon("img/world_turtle.png");
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (! (obj instanceof TurtleWorld))
-			return false;
-		if (! super.equals(obj))
-			return false;
 		
-		TurtleWorld other = (TurtleWorld) obj;
-		synchronized (shapes) { synchronized (other.shapes) {
-			if (shapes.size() != other.shapes.size())
-				return false;
-			Collections.sort(shapes, new ShapeComparator());
-			Collections.sort(other.shapes, new ShapeComparator());
-			for (int i=0;i<shapes.size();i++)
-				if (! shapes.get(i).equals(other.shapes.get(i)))
-					return false;
-		}}		
-		return true;
-	}
-	
 	// TODO implement world IO	
 	
 	@Override
@@ -238,15 +218,51 @@ public class TurtleWorld extends World {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (! (obj instanceof TurtleWorld))
+			return false;
+		
+		TurtleWorld other = (TurtleWorld) obj;
+		String diff = diffTo(other);
+		if (diff.equals(""))
+			return true;
+		return false;
+	}
+	@Override
 	public String diffTo(World world) {
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
+		
+		// First compare entities
+		if (other.entities.size() != entities.size())
+			return Game.i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
+		for (int i=0; i<other.entities.size();i++)
+			if (! other.entities.get(i).equals(entities.get(i)))
+				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i)));
+		
+		// Compare shapes
 		synchronized (shapes) { synchronized (other.shapes) {
 			ShapeComparator cmp = new ShapeComparator();
 			Collections.sort(shapes, cmp);
 			Collections.sort(other.shapes, cmp);
+			
+			// Drop duplicates before the comparison
+			for (int i=0;i<other.shapes.size()-1;i++) 
+				if (other.shapes.get(i).equals(other.shapes.get(i+1))) {
+					other.shapes.remove(i+1);
+					i--; // counters the effect of next i++ in the for loop
+				}
+			for (int i=0;i<shapes.size()-1;i++) 
+				if (shapes.get(i).equals(shapes.get(i+1))) {
+					shapes.remove(i+1);
+					i--; // counters the effect of next i++ in the for loop
+				}
+			
+			// Same amount of shapes?
 			if (shapes.size() != other.shapes.size())
 				return Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size());
+			
+			// Same shapes?
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
 					sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n",
@@ -282,19 +298,22 @@ class ShapeComparator implements Comparator<Shape> {
 			Line l1 = (Line) s1;
 			Line l2 = (Line) s2;
 			
-			int res = cmp(l1.x1, l2.x1);
+			// We don't need to sort the extremities even if [(x1,y1);(x2,y2)]   ==   [(x2,y2);(x1,y1)]
+			// because the constructor of Line already deal with that issue.
+			
+			int res = cmp(l2.x1, l1.x1);
 			if (res != 0)
 				return res;
 			
-			res = cmp(l1.y1, l2.y1);
+			res = cmp(l2.x2, l1.x2);
 			if (res != 0)
 				return res;
 			
-			res = cmp(l1.x2, l2.x2);
+			res = cmp(l2.y1, l1.y1);
 			if (res != 0)
 				return res;
 
-			return cmp(l1.y2, l2.y2);
+			return cmp(l2.y2, l1.y2);
 		}
 		
 		if (s1 instanceof Circle) {
@@ -309,11 +328,9 @@ class ShapeComparator implements Comparator<Shape> {
 			if (res != 0)
 				return res;
 			
-			res = cmp(c1.radius, c2.radius);
-			if (res != 0)
-				return res;
+			return cmp(c1.radius, c2.radius);
 		}
-		return 0;
+		throw new RuntimeException("s1 is neither a Line nor a Circle. I'm puzzled.");
 	}
 	
 }

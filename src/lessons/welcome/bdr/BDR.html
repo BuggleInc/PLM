@@ -177,16 +177,16 @@ This exercise may seem a bit complex at the first glance, but it comes down
 to summarizing the information of the table in a sequence of conditionals.
 
 <p>You have to keep dancing as long as there is some dancing steps to do,
-i.e., as long as we are not in cell which content is not described in the table. 
+i.e., as long as we are in a cell which content is described in the table. 
 The easier for that is to use a boolean variable (<code>finished</code>)
 as termination condition to a <code>while</code> loop.
 It should be initialized to <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, and 
 switched to <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code>
 as soon as the buggle find a cell with a value not described in the table.
-Thus the loop, will stop and the program will terminate. </p>
+Thus, the loop will stop and the program will terminate. </p>
 
 [!java|c]
-<p>Another subtlety is that detecting if strings are equals is a bit annoying in Java.
+<p>Another subtlety is that detecting if strings are equals is a bit annoying in [!thelang].
 So, we use the <code>char getIndication[!c]Bdr[/!]()</code> instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>. 
 
 This method, only known by the buggles of this exercise, returns the first char of the message written on the ground 

@@ -27,6 +27,7 @@ public class BatTest {
 			this.parameters = new Object[] {parameters};
 		}
 	}
+
 	public BatTest copy() {
 		BatTest res = new BatTest(funName,visible,parameters.clone());
 		res.result = result;
@@ -92,6 +93,18 @@ public class BatTest {
 	}
 
 	public Object getParameter(int i) {
+		if (parameters[i].getClass().isArray()) {
+			if (parameters[i].getClass().getComponentType().equals(Integer.TYPE)) {
+				int[] orig = (int[]) parameters[i];
+				int[] res = new int[orig.length];
+				for (int cpt=0;cpt<orig.length;cpt++)
+					res[cpt] = orig[cpt];
+				return res;
+
+			} else {
+				throw new RuntimeException("Unhandled internal type (only integer arrays are handled so far)");
+			}
+		}
 		return parameters[i];
 	}
 

@@ -1,6 +1,7 @@
 package plm.core.model.lesson;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -334,7 +335,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			for (SourceFile sf : getSourceFilesList(lang)) {
 				if (searchedName == null) {//lazy initialization if there is any sourcefile to parse
 					Pattern p = Pattern.compile(".*?([^.]*)$");
-					Matcher m = p.matcher(lang.nameOfCorrectionEntity(this));
+					Matcher m = p.matcher(lang.nameOfTemplateFile(this));
 					if (m.matches())
 						searchedName = m.group(1);
 					p = Pattern.compile("Entity$");
@@ -348,7 +349,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 			if (!foundThisLanguage) {
 				try {
-					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
+					newSourceFromFile(lang, tabName, lang.nameOfTemplateFile(this));
 					super.addProgLanguage(lang);
 					foundALanguage = true;
 					if (Game.getInstance().isDebugEnabled())
@@ -393,6 +394,10 @@ public abstract class ExerciseTemplated extends Exercise {
 								newAnswer.add(nw);
 							} catch (BrokenWorldFileException bwfe) {
 								System.err.println(i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
+								allFound = false;
+								break;
+							} catch (FileNotFoundException fnf) {
+								System.err.println(i18n.tr("Cache file {0} is missing. Recompute all answer worlds.",name,fnf.getLocalizedMessage()));
 								allFound = false;
 								break;
 							} catch (IOException ioe) {

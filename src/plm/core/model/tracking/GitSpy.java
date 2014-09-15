@@ -128,8 +128,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		if (lastExo == null)
 			return;
 
-		lastExo.lastResult = ExecutionProgress.newCompilationError("");
-
 		if (lastExo.lastResult != null) {
 			createFiles(lastExo);
 
@@ -190,19 +188,20 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	@SuppressWarnings("unchecked")
 	private String writeCommitMessage(Exercise exoFrom, Exercise exoTo, String evt_type, JSONObject logmsg) {
 
-		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exoFrom.lastResult;
 
 		// Retrieve appropriate parameters regarding the current exercise
-		logmsg.put("course", game.getCourseID());
+		logmsg.put("course", Game.getInstance().getCourseID());
 		logmsg.put("exo", exoFrom.getId());
 		logmsg.put("lang", lastResult.language.toString());
 		
-		switch (lastResult.outcome) {
-		case COMPILE:  logmsg.put("outcome", "compile");  break;
-		case FAIL:     logmsg.put("outcome", "fail");     break;
-		case PASS:     logmsg.put("outcome", "pass");     break;
-		default:       logmsg.put("outcome", "UNKNOWN");  break;
+		if (lastResult.outcome != null) {
+			switch (lastResult.outcome) {
+			case COMPILE:  logmsg.put("outcome", "compile");  break;
+			case FAIL:     logmsg.put("outcome", "fail");     break;
+			case PASS:     logmsg.put("outcome", "pass");     break;
+			default:       logmsg.put("outcome", "UNKNOWN");  break;
+			}
 		}
 		
 		if (lastResult.totalTests > 0) {

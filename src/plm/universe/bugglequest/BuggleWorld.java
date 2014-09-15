@@ -554,10 +554,14 @@ public class BuggleWorld extends GridWorld {
 			for (int y=0; y<getHeight(); y++) 
 				if (!getCell(x, y).equals(other.getCell(x, y))) 
 					sb.append(i18n.tr("  In ({0},{1})",x,y)+  getCell(x, y).diffTo(other.getCell(x, y))+".\n");
-		for (int i=0; i<entities.size(); i++)  
-			if (! entities.get(i).equals(other.entities.get(i))) 
-				sb.append(i18n.tr("  Something is wrong about buggle ''{0}'':\n",entities.get(i).getName())+
-						((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i)));
+		if (entities.size() != other.entities.size()) {
+			sb.append(i18n.tr("  There is {0} entities where {1} were expected.",other.entities.size(),entities.size()));
+		} else {
+			for (int i=0; i<entities.size(); i++)  
+				if (! entities.get(i).equals(other.entities.get(i))) 
+					sb.append(i18n.tr("  Something is wrong about buggle ''{0}'':\n",entities.get(i).getName())+
+							((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i)));
+		}
 		return sb.toString();
 	}
 

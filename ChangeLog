@@ -1,3 +1,48 @@
+20140913: wanabe Release 2.4.5
+
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 51% despite content changes
+    - French: Missions translation at 100% (Engine's lagging behide)
+  * Engine:
+    - #294: Import package Color in every exercise, so that students
+      may use it even if they don't have to in a given exercise.
+  * Worlds:
+    - #291: TurtleWorld: align equals() and diffTo() on what's equal.
+      That is, equals() now ignore the turtle color while diffTo() now
+      reports differences in turtle position.
+    - #298: TurtleWorld: Drop duplicate shapes before comparing, so
+      that it still matches if the only difference is that you don't 
+      duplicate the same segments than the correction.
+    - #236: Make sure that Left() and Right() are detected as errors
+      even in Scala that gives a meaning to these names.
+    - #272: Bat: Clone the arrays passed as parameter to the user code
+      to ensure that the user don't mess with our precious data.
+  * Pedagogical content:
+    - #299, #307: French typo
+    - #303: No need to draw the same thing twice
+    - turtleart.Flower2: New picture, proposed by a student last year.
+    - #242: Moria: Forces the use of while loops by making the word
+      too uneven for forloops, and by adding more buggles.
+    - #247: ScalaWallFindFollowMazeEntity was in wrong package, breaking demo.
+    - #305: ShortestPathMaze: fix mission to match world's expectations
+    - #273: FlowerPot: don't add a buggle manually, the map contains one
+
+20140912: Release 2.4.4
+
+  * Engine: 
+    - #257: used to write the bad information when passing an exercise
+      placed on the top of a sub-menu, resulting in the DONE mark not
+      being retrieved when loading the session afterward.
+  * Worlds:
+    - #280: Buggles: Don't display the error dialog more than once when
+      dropping the baggle that you don't have.
+  * Pedagogical content:
+    - #274: BDR: citation of Java instead of [!theLang] in mission
+    - #289: indexOfMaxValue: add a table with all negative numbers to
+      catch people initializing maxValue = 0
+    - #248: Misleading mission text in French
+    - #285: TurtleArt with 20 sides should not be called Polygon15
+
 20140911: Release 2.4.3
 
   * User Interface:
