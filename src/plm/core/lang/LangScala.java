@@ -232,5 +232,14 @@ class ScalaCompiler {
 			super.reset();
 			messages.removeAllElements();
 		}
+		
+		/* These methods are mandated by scala 2.11, but I dunno what to do with it, so ignore that for now */
+		public int count(Object o) {
+			return 0;
+		}
+		public void resetCount(Object o) {}
+		public void info0(Position arg0, String arg1, Object arg2, boolean arg3) {
+			// TODO Auto-generated method stub
+		}
 	}
 }
