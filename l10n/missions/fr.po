@@ -15275,7 +15275,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:33
 msgid "Good luck, try not to crash!"
-msgstr "Bonne chance. Essayez de ne vous scratcher ;)"
+msgstr "Bonne chance. Essayez de ne pas vous scratcher ;)"
 
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1
