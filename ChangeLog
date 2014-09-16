@@ -1,3 +1,9 @@
+20140917: wannabe Release 2.4.6
+
+  * Pedagogical content:
+    - #330: Lander.*: Make Segment usable in every exercise, even if
+      they are not absolutely mandatory to solve the problem.
+
 20140916: Release 2.4.5
 
   * Improved translations:
