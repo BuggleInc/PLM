@@ -4,6 +4,7 @@
     - #329: Buggle: allow exercise to specify that Buggle's direction
       is irrelevant to world equality tests. Use it for all maze exos.
   * Pedagogical content:
+    - #332: French typo
     - #330: Lander.*: Make Segment usable in every exercise, even if
       they are not absolutely mandatory to solve the problem.
     - #320: indexOfValue: align the template onto the mission text
