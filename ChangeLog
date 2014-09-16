@@ -11,6 +11,8 @@
     - #334: Lander1: we are only supposed to write a method body in
       python while that's a random code chunk in other languages.
       Adapt the mission text to that fact.
+    - #335: Array123: Add some tests so that testing if 3 is in the
+      array is not enough to solve the problem.
 
 20140916: Release 2.4.5
 
