@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 16:26+0200\n"
+"POT-Creation-Date: 2014-09-17 00:31+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -783,17 +783,17 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/plm/core/model/Users.java:113
+#: src/plm/core/model/Users.java:98
 #, java-format
 msgid "User {0} exists already; don't add it again."
 msgstr "L''utilisateur {0} existe déjà; il ne sera pas ajouté à nouveau. "
 
-#: src/plm/core/model/Users.java:137
+#: src/plm/core/model/Users.java:122
 #, java-format
 msgid "Switched to user: {0}"
 msgstr "L''utilisateur est maintenant {0}"
 
-#: src/plm/core/model/Users.java:210
+#: src/plm/core/model/Users.java:175
 msgid "A new user has been created for you!"
 msgstr "Un nouvel utilisateur a été créé pour vous !"
 
@@ -930,7 +930,7 @@ msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossible de trouver le nom de la mission dans {0}.html"
 
 #: src/plm/core/model/session/GitSessionKit.java:115
-#: src/plm/core/model/tracking/GitSpy.java:61
+#: src/plm/core/model/tracking/GitSpy.java:66
 msgid ""
 "Creating a new session locally, as no corresponding session could be "
 "retrieved from the servers."
@@ -939,13 +939,13 @@ msgstr ""
 "n'a pu être récupérée des serveurs."
 
 #: src/plm/core/model/session/GitSessionKit.java:117
-#: src/plm/core/model/tracking/GitSpy.java:63
+#: src/plm/core/model/tracking/GitSpy.java:68
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
 
 #: src/plm/core/model/session/GitSessionKit.java:120
-#: src/plm/core/model/tracking/GitUtils.java:95
+#: src/plm/core/model/tracking/GitUtils.java:96
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 "Impossible de synchroniser votre session avec les serveurs (le réseau est "
@@ -1006,7 +1006,7 @@ msgstr "Erreur lors du chargement de votre session"
 msgid "Abording on user request"
 msgstr "Abandon, comme demandé par l'utilisateur"
 
-#: src/plm/core/model/tracking/GitSpy.java:85
+#: src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
@@ -1014,18 +1014,18 @@ msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
 
-#: src/plm/core/model/tracking/GitSpy.java:162
+#: src/plm/core/model/tracking/GitSpy.java:167
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:169
+#: src/plm/core/model/tracking/GitSpy.java:174
 #, fuzzy
 msgid "Don't save code remotely, as the network seems unreachable."
 msgstr ""
 "Le code n'a pas été sauvegardé sur les serveurs distants puisque le réseau "
 "semble inutilisable. Ce n'est pas un problème."
 
-#: src/plm/core/model/tracking/GitUtils.java:65
+#: src/plm/core/model/tracking/GitUtils.java:66
 msgid ""
 "Don't save code remotely, as the network seems unreachable. That's fine."
 msgstr ""
@@ -2101,7 +2101,7 @@ msgstr "OUEST"
 msgid "This test raised a {0} exception: {1}"
 msgstr "Ce test a levé une exception {0} : {1}"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:155
+#: src/plm/universe/bugglequest/AbstractBuggle.java:156
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
 #: src/plm/universe/turtles/Turtle.java:216
 #, fuzzy
@@ -2112,7 +2112,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas pouvoir te laisser utiliser droite() dans cet "
 "exercice. Utilise plutôt gauche()."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:158
+#: src/plm/universe/bugglequest/AbstractBuggle.java:159
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
 #: src/plm/universe/turtles/Turtle.java:219
 #, fuzzy
@@ -2123,7 +2123,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas pouvoir te laisser utiliser droite() dans cet "
 "exercice. Utilise plutôt gauche()."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:178
+#: src/plm/universe/bugglequest/AbstractBuggle.java:179
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
@@ -2132,7 +2132,7 @@ msgstr ""
 "Vous avez accédé à une cellule telle que Y={0}, mais le Y maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:180
+#: src/plm/universe/bugglequest/AbstractBuggle.java:181
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
@@ -2141,68 +2141,68 @@ msgstr ""
 "Vous avez accédé à une cellule telle que X={0}, mais le X maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:199
-#: src/plm/universe/bugglequest/AbstractBuggle.java:235
+#: src/plm/universe/bugglequest/AbstractBuggle.java:200
+#: src/plm/universe/bugglequest/AbstractBuggle.java:236
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 "Vous avez tenté de mettre la valeur de X à {0}, mais le X maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:218
-#: src/plm/universe/bugglequest/AbstractBuggle.java:233
+#: src/plm/universe/bugglequest/AbstractBuggle.java:219
+#: src/plm/universe/bugglequest/AbstractBuggle.java:234
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 "Vous avez tenté de mettre la valeur de Y à {0}, mais le Y maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:352
+#: src/plm/universe/bugglequest/AbstractBuggle.java:353
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:128
 msgid "There is no baggle to pick up here."
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:354
+#: src/plm/universe/bugglequest/AbstractBuggle.java:355
 msgid "Your are already carrying a baggle."
 msgstr "Vous portez déjà un biscuit."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:436
+#: src/plm/universe/bugglequest/AbstractBuggle.java:441
 msgid "Its value is 'null', which is never good."
 msgstr "Sa valeur est 'null', ce qui n'est jamais bon."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:443
+#: src/plm/universe/bugglequest/AbstractBuggle.java:448
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr "    Sa position est ({0},{1}) ; attendue : ({2},{3}).\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:445
+#: src/plm/universe/bugglequest/AbstractBuggle.java:450
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr "    Sa direction est {0} ; attendue : {1}.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:447
+#: src/plm/universe/bugglequest/AbstractBuggle.java:452
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr "    Sa couleur est {0} ; attendue : {1}.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:449
+#: src/plm/universe/bugglequest/AbstractBuggle.java:454
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr "    La couleur de son pinceau est {0} ; attendue : {1}\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:451
+#: src/plm/universe/bugglequest/AbstractBuggle.java:456
 msgid "    It should not carry that baggle.\n"
 msgstr "    Elle de devrait pas porter de biscuit.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:453
+#: src/plm/universe/bugglequest/AbstractBuggle.java:458
 msgid "    It is not carrying any baggle.\n"
 msgstr "    Elle ne porte pas de biscuit.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:455
+#: src/plm/universe/bugglequest/AbstractBuggle.java:460
 msgid "    It encountered an issue, such as bumping into a wall.\n"
 msgstr "    Elle a eu un problème tel que rencontrer un mur.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:457
+#: src/plm/universe/bugglequest/AbstractBuggle.java:462
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr "    Elle n'a pas eu de problème tel que rencontrer un mur.\n"
 
@@ -2308,22 +2308,22 @@ msgstr ""
 "Erreur de syntaxe. J''attendais la description d''une cellule ou d''un "
 "buggle mais j''ai eu : {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:552
+#: src/plm/universe/bugglequest/BuggleWorld.java:557
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr "  Le nom du monde est {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:556
+#: src/plm/universe/bugglequest/BuggleWorld.java:561
 #, java-format
 msgid "  In ({0},{1})"
 msgstr "  En ({0},{1})"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:558
+#: src/plm/universe/bugglequest/BuggleWorld.java:563
 #, fuzzy, java-format
 msgid "  There is {0} entities where {1} were expected."
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:562
+#: src/plm/universe/bugglequest/BuggleWorld.java:567
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr "  Il y a quelque chose qui cloche avec la buggle «{0}»:\n"
