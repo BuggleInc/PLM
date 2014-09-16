@@ -8,9 +8,9 @@ import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
-public class PictureMono extends ExerciseTemplated {
+public class PictureMono1 extends ExerciseTemplated {
 
-	public PictureMono(Lesson lesson) {
+	public PictureMono1(Lesson lesson) {
 		super(lesson);
 		BuggleWorld myWorld =  new BuggleWorld("World",7,7);
 		new SimpleBuggle(myWorld, "Picasso", 0, 6, Direction.EAST, Color.black, Color.lightGray);

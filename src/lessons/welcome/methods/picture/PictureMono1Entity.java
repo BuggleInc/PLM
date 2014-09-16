@@ -1,7 +1,7 @@
 package lessons.welcome.methods.picture;
 
 import plm.universe.bugglequest.SimpleBuggle;
-public class PictureMonoEntity extends SimpleBuggle {
+public class PictureMono1Entity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	public void run() {
