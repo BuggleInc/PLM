@@ -15,8 +15,8 @@ public class PledgeMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		setup( new World[] {
-				BuggleWorld.newFromFile("lessons/maze/pledge/PledgeMaze"),	
-				BuggleWorld.newFromFile("lessons/maze/pledge/PledgeMaze2")
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/pledge/PledgeMaze")).ignoreDirectionDifference(),	
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/pledge/PledgeMaze2")).ignoreDirectionDifference()
 		});
 	}
 }

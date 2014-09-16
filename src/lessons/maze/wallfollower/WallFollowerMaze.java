@@ -15,8 +15,8 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		setup(new World[] {
-				BuggleWorld.newFromFile("lessons/maze/wallfollower/WallFollowerMaze"),
-				BuggleWorld.newFromFile("lessons/maze/wallfollower/WallFollowerMaze2")
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/wallfollower/WallFollowerMaze")).ignoreDirectionDifference(),
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/wallfollower/WallFollowerMaze2")).ignoreDirectionDifference()
 		});
 	}
 }

@@ -1,5 +1,8 @@
 20140917: wannabe Release 2.4.6
 
+  * Worlds:
+    - #329: Buggle: allow exercise to specify that Buggle's direction
+      is irrelevant to world equality tests. Use it for all maze exos.
   * Pedagogical content:
     - #330: Lander.*: Make Segment usable in every exercise, even if
       they are not absolutely mandatory to solve the problem.

@@ -346,6 +346,11 @@ public class BuggleWorld extends GridWorld {
 		result = PRIME * result + Arrays.hashCode(cells);
 		return result;
 	}
+	public World ignoreDirectionDifference() {
+		for (Entity e: getEntities()) 
+			((AbstractBuggle)e).ignoreDirectionDifference();
+		return this;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
