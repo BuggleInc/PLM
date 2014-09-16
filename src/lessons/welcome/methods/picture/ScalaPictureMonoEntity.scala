@@ -18,7 +18,7 @@ class ScalaPictureMonoEntity extends SimpleBuggle {
 	}
 
 	def makeV() {
-		forward();
+		forward(2);
 		mark();
 
 		forward();
@@ -31,7 +31,7 @@ class ScalaPictureMonoEntity extends SimpleBuggle {
 		forward();
 		mark();
 
-		forward();
+		forward(2);
 		left();
 		/* END SOLUTION */
 	}

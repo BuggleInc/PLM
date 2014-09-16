@@ -17,7 +17,7 @@ public class PictureMonoEntity extends SimpleBuggle {
 	}
 
 	void makeV() {
-		forward();
+		forward(2);
 		mark();
 
 		forward();
@@ -30,7 +30,7 @@ public class PictureMonoEntity extends SimpleBuggle {
 		forward();
 		mark();
 
-		forward();
+		forward(2);
 		left();
 		/* END SOLUTION */
 	}

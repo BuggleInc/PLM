@@ -4,7 +4,7 @@ def mark():
    brushUp()
 
 def makeV():
-   forward()
+   forward(2)
    mark()
    forward()
    left()
@@ -14,22 +14,22 @@ def makeV():
    right()
    forward()
    mark()   
-   forward()
+   forward(2)
    left()
 
 def makePattern():
     for i in range(4):
         makeV()
-    forward(5)
+    forward(7)
 
 def makeLine(count):
    for i in range(count):
       makePattern()
-   backward(count*5)
+   backward(count*7)
 
 def nextLine():
    left()
-   forward(5)
+   forward(7)
    right()
 
 for i in range(9):

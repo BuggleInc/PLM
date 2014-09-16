@@ -18,7 +18,7 @@ void mark() {
 }
 
 void makeV() {
-	forward(1);
+	forward(2);
 	mark();
 
 	forward(1);
@@ -31,7 +31,7 @@ void makeV() {
 	forward(1);
 	mark();
 
-	forward(1);
+	forward(2);
 	left();
 /* END SOLUTION */
 

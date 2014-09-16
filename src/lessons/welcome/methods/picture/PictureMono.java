@@ -12,8 +12,8 @@ public class PictureMono extends ExerciseTemplated {
 
 	public PictureMono(Lesson lesson) {
 		super(lesson);
-		BuggleWorld myWorld =  new BuggleWorld("World",5,5);
-		new SimpleBuggle(myWorld, "Picasso", 0, 4, Direction.EAST, Color.black, Color.lightGray);
+		BuggleWorld myWorld =  new BuggleWorld("World",7,7);
+		new SimpleBuggle(myWorld, "Picasso", 0, 6, Direction.EAST, Color.black, Color.lightGray);
 		
 		setup(myWorld);
 	}

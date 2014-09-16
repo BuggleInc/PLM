@@ -14,6 +14,7 @@
     - #335: Array123: Add some tests so that testing if 3 is in the
       array is not enough to solve the problem.
     - #331: New turtle art figure, original by a student.
+    - PictureMono: more space between patterns so that V are visible
 
 20140916: Release 2.4.5
 

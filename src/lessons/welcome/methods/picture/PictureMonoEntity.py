@@ -4,7 +4,7 @@ def mark():
    brushUp()
 
 def makeV():
-   forward()
+   forward(2)
    mark()
    forward()
    left()
@@ -14,7 +14,7 @@ def makeV():
    right()
    forward()
    mark()   
-   forward()
+   forward(2)
    left()
 
 

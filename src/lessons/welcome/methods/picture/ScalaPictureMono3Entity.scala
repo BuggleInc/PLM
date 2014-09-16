@@ -18,7 +18,7 @@ class ScalaPictureMono3Entity extends SimpleBuggle {
 	}
 
 	def makeV() {
-		forward();
+		forward(2);
 		mark();
 
 		forward();
@@ -31,7 +31,7 @@ class ScalaPictureMono3Entity extends SimpleBuggle {
 		forward();
 		mark();
 
-		forward();
+		forward(2);
 		left();
 	}
 
@@ -40,18 +40,18 @@ class ScalaPictureMono3Entity extends SimpleBuggle {
 		makeV();
 		makeV();
 		makeV();
-		forward(5);
+		forward(7);
 	}
 
 	def makeLine(count: Int){
 		for (i <- 1 to count)
 			makePattern();
-		backward(count*5);
+		backward(count*7);
 	}
 
 	def nextLine() {
 		left();
-		forward(5);
+		forward(7);
 		right();	
 		/* END SOLUTION */
 	}

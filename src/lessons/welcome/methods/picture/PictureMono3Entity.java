@@ -18,7 +18,7 @@ public class PictureMono3Entity extends SimpleBuggle {
 	}
 
 	void makeV() {
-		forward();
+		forward(2);
 		mark();
 
 		forward();
@@ -31,7 +31,7 @@ public class PictureMono3Entity extends SimpleBuggle {
 		forward();
 		mark();
 
-		forward();
+		forward(2);
 		left();
 	}
 
@@ -40,18 +40,18 @@ public class PictureMono3Entity extends SimpleBuggle {
 		makeV();
 		makeV();
 		makeV();
-		forward(5);
+		forward(7);
 	}
 
 	void makeLine(int count){
 		for (int i=0; i<count;i++)
 			makePattern();
-		backward(count*5);
+		backward(count*7);
 	}
 
 	void nextLine() {
 		left();
-		forward(5);
+		forward(7);
 		right();	
 		/* END SOLUTION */
 	}
