@@ -8,6 +8,9 @@
     - #330: Lander.*: Make Segment usable in every exercise, even if
       they are not absolutely mandatory to solve the problem.
     - #320: indexOfValue: align the template onto the mission text
+    - #334: Lander1: we are only supposed to write a method body in
+      python while that's a random code chunk in other languages.
+      Adapt the mission text to that fact.
 
 20140916: Release 2.4.5
 
