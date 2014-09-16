@@ -16,15 +16,17 @@ module : en modifiant son angle, ou en réglant la poussée de son
 moteur. Dans cette simulation, nous ne nous intéressons qu'à la poussée,
 exprimée en m/s².</p>
 
-<p>Vous devez écrire le corps de la fonction <code>step()</code>, qui sera
-appelée tous les dixièmes de seconde pendant la simulation. Elle doit
-ajuster la poussée du moteur en utilisant la fonction <code>[!java]void
-[/!]setPousseeDesiree([!java]int [/!]poussee[!scala]:Integer[/!])</code> où
-<code>poussee</code> est un entier entre 0 et 4. Vous ne pouvez incrémenter
-ou décrémenter la poussée que de 1 entre deux pas de la simulation. Ainsi,
-si la poussée du moteur est actuellement de 2 et que vous demandez 4, vous
-n'aurez que 3 à la prochaine étape. Si vous demandez une valeur inférieure à
-0 (ou supérieure à 4), tout se passera comme si vous aviez demandé 0 (ou 4).</p>
+<p>Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui
+sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes
+de seconde pendant la simulation. Il faut ajuster la poussée du moteur en
+utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int
+[/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un
+entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous
+ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de
+la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que
+vous demandez 4, vous n'aurez que 3 à la prochaine étape. Si vous demandez
+une valeur inférieure à 0 (ou supérieure à 4), tout se passera comme si vous
+aviez demandé 0 (ou 4).</p>
 
 <p>Afin de prendre des décisions informées, vous pouvez demander des
 informations sur l'état actuel du module. Dans cette simulation, vous ne
