@@ -37,6 +37,7 @@ public class Flower3Entity extends Turtle {
 			right(angle);
 		}
 		hide();
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
 }
