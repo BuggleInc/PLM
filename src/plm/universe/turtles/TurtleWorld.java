@@ -229,6 +229,89 @@ public class TurtleWorld extends World {
 			return true;
 		return false;
 	}
+	
+	
+	// Merge the lines that are lengthening each others
+	private boolean mergeLengthening(ArrayList<Shape> shapes) {
+		boolean changedSomething = false;
+
+		// FIXME: this code seems rather suboptimal, but I prefer to be safe than sorry. 
+		//
+		// I think that we could do less tests, but I prefer to leave them all so that all duplicates are actually catched
+		// In practice, it seems that case 2 (L2 after L1) never occurs, so we could kill it.
+		// 
+		// Since extremities are sorted for each line (so p1 < p2 in each line), 
+		//  and since shapes are sorted before entering that function, 
+		//  then I guess that we could have (j <- 0 to i), stopping at i instead of j, and killing the case 2 (l2 after l1).
+		//
+		// But I prefer not to do that before someone better in geometry than me thinks about it.
+		
+		for (int i=0;i<shapes.size();i++) {
+			if (shapes.get(i) instanceof Line) {
+
+				for (int j=0;j<shapes.size();j++) {
+					if (i!=j && shapes.get(j) instanceof Line) {
+						Line l1 = (Line) shapes.get(i);
+						Line l2 = (Line) shapes.get(j);
+						if (l1.sameSlope(l2)) { // We cannot have inverted slopes because the extremities within a line are sorted
+							if (Line.doubleEqual(l1.x1, l2.x1) && Line.doubleEqual(l1.y1, l2.y1)) {// Same start. Keep the longer
+								int rmIdx;
+								if (l1.getLength()>l2.getLength()) {
+									rmIdx = j;
+//									System.out.println("1a: Kill "+shapes.get(j)+" because of "+shapes.get(i));
+								} else {
+									rmIdx = i;
+//									System.out.println("1b: Kill "+shapes.get(i)+" because of "+shapes.get(j));
+								}
+								shapes.remove(rmIdx);
+								if (i>=rmIdx)
+									i--;
+								if (j>=rmIdx)
+									j--;
+								changedSomething = true;
+							} else if (Line.doubleEqual(l1.x1, l2.x2) && Line.doubleEqual(l1.y1, l2.y2)) {
+								// l1 and l2 are aligned, and l2 is after l1. Modify end of l1 and kill l2
+//								System.out.print("2: "+l2+" is after "+l1+".");
+								l1.x1 = l2.x1;
+								l1.y1 = l2.y1;
+//								System.out.println(" New l1: "+l1);
+								
+								if (i>=j)
+									i--;
+								shapes.remove(j);
+								j--;
+								changedSomething = true;
+							} else if (Line.doubleEqual(l1.x2, l2.x1) && Line.doubleEqual(l1.y2, l2.y1)) {
+								// l1 and l2 are aligned, and l1 is after l2. Modify start of l1 and kill l2 
+//								System.out.print("3: "+l2+" is before "+l1+".");
+								l1.x2 = l2.x2;
+								l1.y2 = l2.y2;
+//								System.out.println(" New l1: "+l1);
+								if (i>=j)
+									i--;
+								shapes.remove(j);
+								j--; 
+								changedSomething = true;
+							}
+						} // not same slope, certainly not lenghtening each other
+					} // j is not a shape
+				} // for all j
+			} // i is not a shape
+		} // for all i
+		return changedSomething;
+	}
+	private boolean killDuplicate(ArrayList<Shape> shapes) {
+		boolean changedSomething = false;
+		
+		for (int i=0;i<shapes.size()-1;i++) 
+			if (shapes.get(i).equals(shapes.get(i+1))) {
+				changedSomething  = true;
+				shapes.remove(i+1);
+				i--; // counters the effect of next i++ in the for loop
+			}
+		return changedSomething;
+	}
+	
 	@Override
 	public String diffTo(World world) {
 		StringBuffer sb = new StringBuffer();
@@ -244,24 +327,30 @@ public class TurtleWorld extends World {
 		// Compare shapes
 		synchronized (shapes) { synchronized (other.shapes) {
 			ShapeComparator cmp = new ShapeComparator();
-			Collections.sort(shapes, cmp);
-			Collections.sort(other.shapes, cmp);
 			
-			// Drop duplicates before the comparison
-			for (int i=0;i<other.shapes.size()-1;i++) 
-				if (other.shapes.get(i).equals(other.shapes.get(i+1))) {
-					other.shapes.remove(i+1);
-					i--; // counters the effect of next i++ in the for loop
-				}
-			for (int i=0;i<shapes.size()-1;i++) 
-				if (shapes.get(i).equals(shapes.get(i+1))) {
-					shapes.remove(i+1);
-					i--; // counters the effect of next i++ in the for loop
-				}
-			
+			// Sort shapes and kill duplicates as long as we manage to merge lengthening
+			// that's because merging lines may change the shape order, but our duplicate detection works only when they are sorted
+//			System.out.print("Shapes available in the student's work before merging:\n");
+//			for (int i=0;i<other.shapes.size();i++)
+//				System.out.print("  "+other.shapes.get(i)+"\n");
+			do {
+//				System.out.println("Merge your solution");
+				Collections.sort(other.shapes, cmp);
+				killDuplicate(other.shapes);
+			} while (mergeLengthening(other.shapes));
+
+			do {
+//				System.out.println("Merge the correction");
+				Collections.sort(shapes, cmp);
+				killDuplicate(shapes);
+			} while (mergeLengthening(shapes));
+				
 			// Same amount of shapes?
 			if (shapes.size() != other.shapes.size()) {
-				sb.append( Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+				if (shapes.size() > other.shapes.size())
+					sb.append( Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+				else 
+					sb.append( Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				
 				if (Game.getInstance().isDebugEnabled()) {
 					sb.append("Shapes available in the student's work:\n");

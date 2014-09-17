@@ -1,6 +1,13 @@
 20130918: wannabe Release 2.4.7
 
   * Worlds:
+    - Turtle: Merge lines that are in line with each other before
+      comparing equality. You can now walk half of a segment, the half
+      will be removed. You can walk to your destination in large
+      amount of very small lines that are all depicting a long line,
+      parts will be merged together. I hope that now, that damn
+      world equality detection will not return false negative anymore!
+      This fixes #338 and #339 (which are not exact duplicates).
     - Turtle: Show the superflous and missing shapes when the amount
       of shapes does not match.
   * Pedagogical content:

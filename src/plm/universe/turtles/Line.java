@@ -10,6 +10,7 @@ import plm.core.model.Game;
 public class Line implements Shape {
 	public double x1, y1,  x2, y2;
 	public Color color;
+	private double length = -1;
 	
 	public Line(double x1, double y1, double x2, double y2, Color color) {
 		this.color = color;
@@ -47,8 +48,23 @@ public class Line implements Shape {
 	public Line copy() {
 		return new Line(x1,y1,x2,y2,color);
 	}
-	private boolean doubleEqual(double a, double b) {
+	public static boolean doubleEqual(double a, double b) {
 		return (Math.abs(a-b)<0.001);
+	}
+	public boolean sameSlope(Line other) {
+		if (doubleEqual(x1, x2) && doubleEqual(other.x1, other.x2)) // Both are vertical, same infinite slope
+			return true;
+		
+		if (doubleEqual(x1, x2) || doubleEqual(other.x1, other.x2)) // one is vertical (but not both, given above test)
+			return false;
+		
+		// none is vertical, actually compute and compare the slopes
+		return doubleEqual( (y2-y1) / (x2-x1) , (other.y2-other.y1) / (other.x2-other.x1) );
+	}
+	public double getLength() {
+		if (length == -1)
+			length = Math.sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) );
+		return length;
 	}
 	
 	@Override
