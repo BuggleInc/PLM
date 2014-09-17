@@ -1,3 +1,9 @@
+20130918: wannabe Release 2.4.7
+
+  * Worlds:
+    - Turtle: Show the superflous and missing shapes when the amount
+      of shapes does not match.
+
 20140917: Release 2.4.6
 
   * Worlds:

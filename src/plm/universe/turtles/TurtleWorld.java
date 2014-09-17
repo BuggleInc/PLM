@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -259,8 +260,44 @@ public class TurtleWorld extends World {
 				}
 			
 			// Same amount of shapes?
-			if (shapes.size() != other.shapes.size())
-				return Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size());
+			if (shapes.size() != other.shapes.size()) {
+				sb.append( Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+				
+				if (Game.getInstance().isDebugEnabled()) {
+					sb.append("Shapes available in the student's work:\n");
+					for (int i=0;i<other.shapes.size();i++)
+						sb.append("  "+other.shapes.get(i)+"\n");
+					sb.append("Expected shapes:\n");
+					for (int i=0;i<shapes.size();i++)
+						sb.append("  "+shapes.get(i)+"\n");
+				}
+				
+				Vector<Shape> studentShapes = new Vector<Shape>();
+				Vector<Shape> correctionShapes = new Vector<Shape>();
+				for (int i=0;i<other.shapes.size();i++)
+					studentShapes.add(other.shapes.get(i));
+				for (int i=0;i<shapes.size();i++)
+					correctionShapes.add(shapes.get(i));
+
+				for (int i=0;i<studentShapes.size();i++) {
+					Shape s = studentShapes.get(i);
+					if (correctionShapes.contains(s)) {
+						studentShapes.remove(i);
+						i--;
+						correctionShapes.remove(s);
+					}
+				}
+				if (!studentShapes.isEmpty()) {
+					sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
+					for (Shape s: studentShapes)
+						sb.append("   "+s+"\n");
+					sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
+					for (Shape s: correctionShapes)
+						sb.append("   "+s+"\n");
+				}
+				
+				return sb.toString();
+			}
 			
 			// Same shapes?
 			for (int i=0;i<other.shapes.size();i++)
