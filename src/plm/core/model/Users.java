@@ -172,7 +172,7 @@ public class Users {
 			User user = new User(username);
 			this.usersList.add(user);
 			flushUsersToFile();
-			System.err.println(Game.i18n.tr("A new user has been created for you!"));
+			System.err.println(Game.i18n.tr("A new PLM user has been created for you!"));
 			System.err.println(user);
 		} else {
 			JSONParser parser = new JSONParser();
