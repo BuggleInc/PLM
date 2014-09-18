@@ -25,6 +25,7 @@ public abstract class AbstractBuggle extends Entity {
 	Color bodyColor = Color.red;
 	Color brushColor = Color.red;
 	
+	private boolean dontIgnoreDirectionDifference = true; // if the buggle direction matters for world equality
 
 
 	private int x = 0;
@@ -148,6 +149,14 @@ public abstract class AbstractBuggle extends Entity {
 	public void right() {
 		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
+	}
+	
+	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
+	public void Left() { 
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+	}
+	public void Right() {
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
 	public void back() {
@@ -395,6 +404,10 @@ public abstract class AbstractBuggle extends Entity {
 		return result;
 	}
 
+	public void ignoreDirectionDifference() {
+		dontIgnoreDirectionDifference = false;	
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -410,10 +423,10 @@ public abstract class AbstractBuggle extends Entity {
 				return false;
 		} else if (!bodyColor.equals(other.bodyColor))
 			return false;
-		if (direction == null) {
+		if (dontIgnoreDirectionDifference && direction == null) {
 			if (other.direction != null)
 				return false;
-		} else if (!direction.equals(other.direction))
+		} else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
 			return false;
 		if (seenError != other.seenError)
 			return false;
@@ -433,7 +446,7 @@ public abstract class AbstractBuggle extends Entity {
 		StringBuffer sb = new StringBuffer();
 		if (getX() != other.getX() || getY() != other.getY()) 
 			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-		if (getDirection() != other.getDirection()) 
+		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection()) 
 			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
 		if (getBodyColor() != other.getBodyColor()) 
 			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));

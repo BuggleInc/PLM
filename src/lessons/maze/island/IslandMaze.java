@@ -16,8 +16,8 @@ public class IslandMaze extends ExerciseTemplated {
 				
 		/* Create initial situation */
 		setup( new World[] {
-				BuggleWorld.newFromFile("lessons/maze/island/IslandMaze"),
-				BuggleWorld.newFromFile("lessons/maze/island/IslandMaze2")
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/island/IslandMaze")).ignoreDirectionDifference(),
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/island/IslandMaze2")).ignoreDirectionDifference()
 		});
 	}
 }

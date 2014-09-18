@@ -1,6 +1,7 @@
 package plm.core.model.lesson;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -393,6 +394,10 @@ public abstract class ExerciseTemplated extends Exercise {
 								newAnswer.add(nw);
 							} catch (BrokenWorldFileException bwfe) {
 								System.err.println(i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
+								allFound = false;
+								break;
+							} catch (FileNotFoundException fnf) {
+								System.err.println(i18n.tr("Cache file {0} is missing. Recompute all answer worlds.",name,fnf.getLocalizedMessage()));
 								allFound = false;
 								break;
 							} catch (IOException ioe) {

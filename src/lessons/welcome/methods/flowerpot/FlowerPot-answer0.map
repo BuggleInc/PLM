@@ -1,4 +1,4 @@
-BuggleWorld: Brave new world
+BuggleWorld: Pot
 Size: 9x9
 Buggle(1,6): east,black,yellow,Van Gogh
 Cell(0,0): 200/113/55,nobaggle,notopwall,noleftwall,

@@ -24,6 +24,7 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
+import plm.core.model.tracking.GitUtils;
 
 public class FeedbackDialog extends JDialog {
 
@@ -55,7 +56,8 @@ public class FeedbackDialog extends JDialog {
 				+ "Locale: "+Game.getInstance().getLocale().getDisplayName() + "\n"
 				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
 				+ "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")" + "\n"
-				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n");
+				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
+				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n");
 		
 		FeedbackDialog.instance.title.setText(FeedbackDialog.instance.i18n.tr("Please describe the problem in a few words"));
 		FeedbackDialog.instance.pack();

@@ -15,8 +15,8 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 		
 		setup(new World[] {
-				BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFindFollowMaze"),
-				BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFindFollowMaze2")
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFindFollowMaze")).ignoreDirectionDifference(),
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFindFollowMaze2")).ignoreDirectionDifference()
 				
 		});
 	}

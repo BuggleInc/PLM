@@ -25,6 +25,7 @@ public class IndexOfMaxValue extends BatExercise {
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
 		myWorld.addTest(VISIBLE, tab) ;
 		myWorld.addTest(INVISIBLE, tab2) ;
+		myWorld.addTest(INVISIBLE, new int[] { -4, -3, -1, -17, -13, -5, -3, -1, -9, -18 }) ;
 
 		templatePython("indexOfMaxValue", 
 				"def indexOfMaxValue(nums):\n",

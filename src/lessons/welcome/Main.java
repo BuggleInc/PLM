@@ -81,7 +81,7 @@ import lessons.welcome.methods.flowerpot.FlowerPot;
 import lessons.welcome.methods.picture.MethodsPicture;
 import lessons.welcome.methods.picture.MethodsPictureLarge;
 import lessons.welcome.methods.picture.PatternPicture;
-import lessons.welcome.methods.picture.PictureMono;
+import lessons.welcome.methods.picture.PictureMono1;
 import lessons.welcome.methods.picture.PictureMono2;
 import lessons.welcome.methods.picture.PictureMono3;
 import lessons.welcome.methods.returning.MethodsReturning;
@@ -132,7 +132,7 @@ public class Main extends Lesson {
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
 		  addExercise(new MethodsDogHouse(this),methodsVoid);
-  		  addExercise(new PictureMono(this),methodsVoid);
+  		  addExercise(new PictureMono1(this),methodsVoid);
 		  addExercise(new PictureMono2(this),methodsVoid);
 		  addExercise(new PictureMono3(this),methodsVoid);
 		 	 	  

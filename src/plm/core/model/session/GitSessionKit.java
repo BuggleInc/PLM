@@ -54,7 +54,7 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
 		Collection<Lesson> lessons = this.game.getLessons();
 		for (Lesson lesson : lessons) {
@@ -84,14 +84,14 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void loadAll(final File path) {
-		reponame = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
 		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
 			if (Game.getInstance().isDebugEnabled())
 				System.out.println("The user changed! switch to the right branch");
 			cachedUser = Game.getInstance().getUsers().getCurrentUser();
 			
-			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUID().toString());
+			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
 			if (! gitDir.exists()) {
 				String repoUrl = Game.getProperty("plm.git.server.url");
 				String userBranch = "PLM"+GitUtils.sha1(reponame); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
@@ -99,7 +99,7 @@ public class GitSessionKit implements ISessionKit {
 				
 				Git git;
 				try {
-					git = Git.cloneRepository().setURI(repoUrl).setDirectory(gitDir).setBranchesToClone(Arrays.asList(userBranch)).call();
+					git = Git.cloneRepository().setURI(repoUrl).setDirectory(gitDir).setBranch(userBranch).call();
 
 					// If no branch can be found remotely, create a new one.
 					if (git == null) { 
@@ -107,6 +107,9 @@ public class GitSessionKit implements ISessionKit {
 						StoredConfig cfg = git.getRepository().getConfig();
 						cfg.setString("remote", "origin", "url", repoUrl);
 						cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
+						// TODO: more test before enabling the following configuration
+						//cfg.setString("branch", userBranch, "remote", "origin");
+						//cfg.setString("branch", userBranch, "merge", "refs/heads/"+userBranch);
 						cfg.save();
 						git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
 						System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
@@ -115,6 +118,8 @@ public class GitSessionKit implements ISessionKit {
 					}
 				} catch (TransportException e1) {
 					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
+					if (Game.getInstance().isDebugEnabled())
+						e1.printStackTrace();
 				} catch (GitAPIException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

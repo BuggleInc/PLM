@@ -29,29 +29,14 @@ import plm.core.utils.FileUtils;
  * 
  */
 public class Users {
-	private String filePath;
-	private File userFile;
-	private String username;
-	private boolean lastUsed;
-	private UUID userUUID;
-	private JSONArray users;
+	private File userDBFile;
 	private List<User> usersList;
 
 	public Users(File path) {
-		username = System.getenv("USER");
-		if (username == null) {
-			username = System.getenv("USERNAME");
-		}
-		if (username == null) {
-			username = "John Doe";
-		}
+		String userDBFilePath = path.getAbsolutePath() + System.getProperty("file.separator") + "plm.users";
+		this.userDBFile = new File(userDBFilePath);
 
-		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + "plm.users";
-		userFile = new File(filePath);
-
-		parseFile(filePath);
-
-		loadUsersFromFile();
+		loadUsersFromFile(userDBFile);
 	}
 
 	/**
@@ -112,7 +97,7 @@ public class Users {
 		} else {
 			System.err.println(Game.i18n.tr("User {0} exists already; don't add it again.", uuid));
 		}
-		updateUsersFile();
+		flushUsersToFile();
 	}
 
 	/**
@@ -130,7 +115,7 @@ public class Users {
 		g.saveSession();
 		
 		for (User user : usersList) {
-			if (user.getUserUUID().equals(newUser.getUserUUID())) {
+			if (user.getUserUUIDasString().equals(newUser.getUserUUIDasString())) {
 				found = true;
 				getCurrentUser().setLastUsed(false);
 				user.setLastUsed(true);
@@ -139,7 +124,7 @@ public class Users {
 		}
 
 		if (found) {
-			updateUsersFile();
+			flushUsersToFile();
 			g.loadSession();
 			fireUserSwitch(newUser);
 		} else {
@@ -156,59 +141,65 @@ public class Users {
 	 *            the user to remove
 	 */
 	public void removeUser(User user) {
-		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + user.getUserUUID().toString());
+		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + user.getUserUUIDasString());
 		FileUtils.deleteRecursive(gitDir);
 		usersList.remove(user);
-		updateUsersFile();
+		flushUsersToFile();
 	}
 
 	/**
-	 * This method turns each user found in plm.users and parsed into the JSONArray user.
+	 * This method read each user definition from the plm.users JSON file. 
+	 * If the file does not exist, it is created.
+	 * 
+	 * @param userDBFile
+	 *            the file representing the plm.users
 	 */
 	@SuppressWarnings("rawtypes")
-	private void loadUsersFromFile() {
-		usersList = new ArrayList<User>();
+	private void loadUsersFromFile(File userDBFile) {
+		this.usersList = new ArrayList<User>();
 
-		String jsonText = users.toJSONString();
-		JSONParser parser = new JSONParser();
-		ContainerFactory containerFactory = new ContainerFactory() {
-			public List creatArrayContainer() {
-				return new LinkedList();
+		if (!this.userDBFile.exists()) {
+			// if the plm.users file doesn't exist yet, it means that no users
+			// have been created, so we create one first user.
+
+			String username = System.getenv("USER");
+			if (username == null) {
+				username = System.getenv("USERNAME");
 			}
-
-			public Map createObjectContainer() {
-				return new LinkedHashMap();
+			if (username == null) {
+				username = "John Doe";
 			}
-		};
+			User user = new User(username);
+			this.usersList.add(user);
+			flushUsersToFile();
+			System.err.println(Game.i18n.tr("A new PLM user has been created for you!"));
+			System.err.println(user);
+		} else {
+			JSONParser parser = new JSONParser();
+			ContainerFactory containerFactory = new ContainerFactory() {
+				public List creatArrayContainer() {
+					return new LinkedList();
+				}
 
-		if (userFile.exists()) {
+				public Map createObjectContainer() {
+					return new LinkedHashMap();
+				}
+			};
 			try {
-				List json = (List) parser.parse(jsonText, containerFactory);
+				List json = (List) parser.parse(new FileReader(userDBFile), containerFactory);
 				Iterator iter = json.iterator();
-				// System.out.println("==iterate result==");
 
 				while (iter.hasNext()) {
 					LinkedHashMap entry = (LinkedHashMap) iter.next();
-					username = (String) entry.get("username");
-					lastUsed = (Boolean) entry.get("lastUsed");
-					userUUID = UUID.fromString((String) entry.get("userUUID"));
+					String username = (String) entry.get("username");
+					boolean lastUsed = (Boolean) entry.get("lastUsed");
+					UUID userUUID = UUID.fromString((String) entry.get("userUUID"));
 					usersList.add(new User(username, lastUsed, userUUID));
-					// System.out.println(usersList.get(0));
 				}
 
-				// System.out.println("==toJSONString()==");
-				// System.out.println(JSONValue.toJSONString(json));
-			} catch (ParseException pe) {
+			} catch (ParseException | IOException pe) {
 				System.out.println(pe);
 			}
-		} else {
-			// if the plm.users file doesn't exist yet, it means that no users have been created, so we create one first
-			// user.
-			User user = new User(username);
-			usersList.add(user);
-			updateUsersFile();
-			System.err.println(Game.i18n.tr("A new user has been created for you!"));
-			System.err.println(user);
 		}
 	}
 
@@ -217,12 +208,12 @@ public class Users {
 	 * latest changes. This method should always be called after using a Setter from User.
 	 */
 	@SuppressWarnings("unchecked")
-	public void updateUsersFile() {
+	public void flushUsersToFile() {
 		FileWriter fwUser;
-		users = new JSONArray();
+		JSONArray users = new JSONArray();
 
 		try {
-			fwUser = new FileWriter(userFile.getAbsoluteFile());
+			fwUser = new FileWriter(userDBFile);
 			BufferedWriter bwUser = new BufferedWriter(fwUser);
 
 			for (User user : usersList) {
@@ -237,30 +228,6 @@ public class Users {
 			bwUser.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Read the plm.users file and put the results in a JSONArray.
-	 * 
-	 * @param filePath
-	 *            the path to the plm.users file
-	 */
-	private void parseFile(String filePath) {
-		JSONParser parser = new JSONParser();
-
-		if (userFile.exists()) {
-			try {
-				users = (JSONArray) parser.parse(new FileReader(filePath));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		} else {
-			users = new JSONArray();
 		}
 	}
 

@@ -23,7 +23,7 @@ void mark() {
 }
 
 void makeV() {
-	forward(1);
+	forward(2);
 	mark();
 
 	forward(1);
@@ -36,7 +36,7 @@ void makeV() {
 	forward(1);
 	mark();
 
-	forward(1);
+	forward(2);
 	left();
 }
 
@@ -45,19 +45,19 @@ void makePattern() {
 	makeV();
 	makeV();
 	makeV();
-	forward(5);
+	forward(7);
 }
 
 void makeLine(int count){
 	int i;
 	for (i=0; i<count;i++)
 		makePattern();
-	backward(count*5);
+	backward(count*7);
 }
 
 void nextLine() {
 	left();
-	forward(5);
+	forward(7);
 	right();
 	/* END SOLUTION */
 }

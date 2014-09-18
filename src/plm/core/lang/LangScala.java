@@ -40,7 +40,8 @@ public class LangScala extends JVMCompiledLang {
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
-		runtimePatterns.put("\\$package", "package "+packageName()+";");
+		runtimePatterns.put("\\$package", 
+				"package "+packageName()+";import java.awt.Color;");
 
 		List<plm.core.model.session.SourceFile> sfs = exo.getSourceFilesList(this);
 		if (sfs == null || sfs.isEmpty()) {
@@ -230,6 +231,15 @@ class ScalaCompiler {
 		public void reset() {
 			super.reset();
 			messages.removeAllElements();
+		}
+		
+		/* These methods are mandated by scala 2.11, but I dunno what to do with it, so ignore that for now */
+		public int count(Object o) {
+			return 0;
+		}
+		public void resetCount(Object o) {}
+		public void info0(Position arg0, String arg1, Object arg2, boolean arg3) {
+			// TODO Auto-generated method stub
 		}
 	}
 }

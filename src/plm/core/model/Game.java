@@ -861,6 +861,12 @@ public class Game implements IWorldView {
 		}
 	}
 
+	public void fireReadTipSpy(String id, String mission) {
+		for (ProgressSpyListener l : this.progressSpyListeners) {
+			l.readTip(id, mission);
+		}
+	}
+	
 	@Override
 	public void worldHasChanged() {
 		if (selectedWorld.getEntityCount()>0)

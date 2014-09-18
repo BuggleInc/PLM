@@ -34,7 +34,14 @@ for (compteur=0; compteur&lt;n; compteur++) {
     <b>action</b>();
 }[/!]</pre>
 
-<p>Ce code est parfaitement équivalent à celui-ci :</p>
+<p>Ce code est équivalent du point de vue de l'ordinateur, mais du point de vue
+du programmeur, ce n'est pas forcément la même chose. L'une ou l'autre forme
+peut rendre le code plus facile à lire, en fonction de la situation. C'est
+donc à vous, le programmeur, de choisir la forme de boucle est la plus
+adaptée à chaque cas. L'objectif absolu doit être de garder votre code aussi
+simple que possible en toute situation. De la sorte, vos journées resteront
+plaisantes et productives.
+</p>
 <pre>[!java|c]int compteur = 0;
 while (compteur &lt; n) {
     <b>action</b>();
@@ -49,7 +56,8 @@ while (compteur &lt; n) {
     compteur = compteur + 1
 }[/!]</pre>
 
-<p>Le code avec une boucle <code>for</code> est plus simple à lire, non?</p>
+<p>Dans ce cas, le code avec une boucle <code>for</code> est plus simple à
+lire, non?</p>
 
 [!java|c]
 <p>On peut imaginer des utilisations bien plus avancées des boucles

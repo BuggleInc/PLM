@@ -1,3 +1,118 @@
+20130918: wannabe Release 2.4.7
+
+  * Worlds:
+    - Turtle: Merge lines that are in line with each other before
+      comparing equality. You can now walk half of a segment, the half
+      will be removed. You can walk to your destination in large
+      amount of very small lines that are all depicting a long line,
+      parts will be merged together. I hope that now, that damn
+      world equality detection will not return false negative anymore!
+      This fixes #338 and #339 (which are not exact duplicates).
+    - Turtle: Show the superflous and missing shapes when the amount
+      of shapes does not match.
+    - #344 Turtle: Display the coordinates of the mouse.
+      That helps reading the differences between worlds, if any.
+  * Pedagogical content:
+    - #341: French typo
+
+20140917: Release 2.4.6
+
+  * Worlds:
+    - #329: Buggle: allow exercise to specify that Buggle's direction
+      is irrelevant to world equality tests. Use it for all maze exos.
+  * Pedagogical content:
+    - #332, #333: French typo
+    - #330: Lander.*: Make Segment usable in every exercise, even if
+      they are not absolutely mandatory to solve the problem.
+    - #320: indexOfValue: align the template onto the mission text
+    - #334: Lander1: we are only supposed to write a method body in
+      python while that's a random code chunk in other languages.
+      Adapt the mission text to that fact.
+    - #335: Array123: Add some tests so that testing if 3 is in the
+      array is not enough to solve the problem.
+    - #331: New turtle art figure, original by a student.
+    - PictureMono: more space between patterns so that V are visible
+
+20140916: Release 2.4.5
+
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 51% despite content changes
+    - French: Missions translation at 100% (Engine's lagging behide)
+  * Engine:
+    - #294: Import package Color in every exercise, so that students
+      may use it even if they don't have to in a given exercise.
+    - #327: Update our embeeded java compiler to OpenJDK7
+  * Worlds:
+    - #291: TurtleWorld: align equals() and diffTo() on what's equal.
+      That is, equals() now ignore the turtle color while diffTo() now
+      reports differences in turtle position.
+    - #298: TurtleWorld: Drop duplicate shapes before comparing, so
+      that it still matches if the only difference is that you don't 
+      duplicate the same segments than the correction.
+    - #236: Make sure that Left() and Right() are detected as errors
+      even in Scala that gives a meaning to these names.
+    - #272: Bat: Clone the arrays passed as parameter to the user code
+      to ensure that the user don't mess with our precious data.
+  * Pedagogical content:
+    - #299, #307: French typo
+    - #303: No need to draw the same thing twice
+    - turtleart.Flower2: New picture, proposed by a student last year.
+    - #242: Moria: Forces the use of while loops by making the word
+      too uneven for forloops, and by adding more buggles.
+    - #247: ScalaWallFindFollowMazeEntity was in wrong package, breaking demo.
+    - #305: ShortestPathMaze: fix mission to match world's expectations
+    - #273: FlowerPot: don't add a buggle manually, the map contains one
+
+20140912: Release 2.4.4
+
+  * Engine: 
+    - #257: used to write the bad information when passing an exercise
+      placed on the top of a sub-menu, resulting in the DONE mark not
+      being retrieved when loading the session afterward.
+  * Worlds:
+    - #280: Buggles: Don't display the error dialog more than once when
+      dropping the baggle that you don't have.
+  * Pedagogical content:
+    - #274: BDR: citation of Java instead of [!theLang] in mission
+    - #289: indexOfMaxValue: add a table with all negative numbers to
+      catch people initializing maxValue = 0
+    - #248: Misleading mission text in French
+    - #285: TurtleArt with 20 sides should not be called Polygon15
+
+20140911: Release 2.4.3
+
+  * User Interface:
+    - Add the public branch name to the feedbacks to ease reproducing 
+      the issues.
+  * Engine:
+    - #257: loading sessions from git was sometimes loosing DONE marks
+    - #267: record a git event when the student reads a tip
+    - #265: Provide now the PLM's version number when interacting with the server
+  * Pedagogical content: further fixing students' issues
+    - #237, #252: typo in French
+    - #246, #259: Lessons about mazes': make the templating mechanism explicit
+    - #255: IndexOfValue: world and function renamed to match with the instructions
+    - #251: Fizz Buzz: correct the solution to match the instructions
+
+20140909: Release 2.4.2
+
+  * Engine:
+    - Reduce the load to the github servers by not pushing more often
+      than once every 30mn (or when the client quits). The PLM-data
+      repository was disabled by github robots due to the excessive
+      load. We don't want it to happen again...
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 45%
+  * Pedagogical content: fixing the issues opened by our students.
+    - #221: fix templating to now show crude details to youngsters
+    - #218, #225, #227: typos in French
+    - #226: Course: nice error message when running more than asked
+    - #228: CourseForest: nice error message when running more than asked
+    - #230: Course*: forbid backward() too. forward() must be called.
+    - #232, #233: Methods: show the code calling goAndGet() in languages
+            allowing methods to be embeeded within methods (scala/python)
+            Should be more robust to students misuses now.
+
 20140905: Release 2.4.1
 
   Soon in production, last chance to iron out the bugs found on time.

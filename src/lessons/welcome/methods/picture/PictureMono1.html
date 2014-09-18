@@ -1,0 +1,22 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Methodically drawing</h2>
+
+In this exercise, we will reproduce the geometric drawing that you can see
+in the "Objective" tab.
+
+<p>Your goal (here and in any well written program) is to write the simplest
+possible code. For that, you have to decompose your work in
+sub-steps, and write a specific method for each sub-step.</p>
+
+<p>If you observe carefully the picture to draw, it is constituted of four
+parts depicting a sort of V. A possible decomposition is to write a method 
+in charge of drawing a V from the current position. Its prototype can be: 
+<code>[!java|c]void [/!]makeV()</code></p>
+
+<p>In this method, you should use the methods <code>brushUp()</code> and
+<code>brushDown()</code> to mark the ground (you may want to factorize this in another
+method). It may be wise to write the <code>makeV()</code> so that it places directly 
+the buggle in position for the next V.</p>
+ 
+<p>Your turn. Your code should not be longer than 4 lines (not counting 
+<code>makeV</code>)...</p>

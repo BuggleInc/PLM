@@ -50,7 +50,7 @@ public class HelpMe extends AbstractGameAction {
 		isRequestingHelp = !isRequestingHelp;
 
 		LinkedHashMap<String,String> obj = new LinkedHashMap<String,String>();
-		obj.put("uuid", "" + Game.getInstance().getUsers().getCurrentUser().getUserUUID()); // ""+ to display the String
+		obj.put("uuid", Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString());
 		try {
 			obj.put("hostname", InetAddress.getLocalHost().getHostName());
 		} catch (UnknownHostException ex) {
@@ -60,6 +60,8 @@ public class HelpMe extends AbstractGameAction {
 		Calendar cal = Calendar.getInstance();
 		obj.put("date", dateFormat.format(cal.getTime()));
 		obj.put("action", isRequestingHelp ? "add" : "remove");
+		obj.put("majorVersion", Game.getProperty("plm.major.version"));
+		obj.put("minorVersion", Game.getProperty("plm.minor.version"));
 		String studentInput = "";
 		if(isRequestingHelp) {
 			studentInput = (String) JOptionPane.showInputDialog(

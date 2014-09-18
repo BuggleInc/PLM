@@ -22,13 +22,15 @@ public class RevertExercise extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object[] options = { "OK", "CANCEL" };
+		Object[] options = { Game.i18n.tr("OK"), Game.i18n.tr("Cancel") };
 		int choice = 
-			JOptionPane.showOptionDialog(null, "Reverting this exercise will erase all your work and cannot be undone.\n Are you sure that you want to proceed?", "Warning",
+			JOptionPane.showOptionDialog(null, 
+					Game.i18n.tr("Reverting this exercise will erase all your work and cannot be undone.\n Are you sure that you want to proceed?"), 
+					Game.i18n.tr("Warning"),
 				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
 				null, options, options[0]);
 		if (choice != 0) {
-			System.out.println("Revert canceled on user request -- your work was preserved.");
+			System.out.println(Game.i18n.tr("Revert canceled on user request -- your work was preserved."));
 			return;
 		}
 
@@ -46,7 +48,7 @@ public class RevertExercise extends AbstractGameAction {
 		for (ProgrammingLanguage pl:Game.programmingLanguages) 
 			Game.getInstance().studentWork.setPassed(ex, pl, false);
 		
-		System.out.println("Exercise reverted");
+		System.out.println(Game.i18n.tr("Exercise reverted"));
 	}
 
 }

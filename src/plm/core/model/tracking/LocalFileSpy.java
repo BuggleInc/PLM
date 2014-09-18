@@ -72,4 +72,10 @@ public class LocalFileSpy implements ProgressSpyListener {
 	public void cancelCallForHelp() {
 		//TODO
 	}
+
+	@Override
+	public void readTip(String id, String mission) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -84,14 +84,15 @@ células.</p>
    [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]
 [!java|scala]}[/!]</pre>
 
-<p>[!java|scala]The notation <code>T.length</code> retrieves the length of the
-array T,[/!] [!python]The function <code>len()</code> retrieves the length
-of the list T,[/!] allowing to build a classical for loop easily.
-[!python]Actually, the <code>len()</code> function is much more generic and
-can be used to retrieve the length of many objects.  Applied to strings for
-example, it returns the amount of chars in this string.[/!] [!scala]Don't
-forget to start at <code>0</code> and stop at <code>T.length-1</code>
-instead of <code>1</code> to <code>T.length</code> however.[/!]</p>
+<p>[!java|scala]A notação <code>T.length</code> recupera o comprimento (length)
+da  array T,[/!] [!python]A função <code>len()</code> recupera o comprimento
+da lista T,[/!] permitindo que se construa um loop clássico facilmente.
+[!python]Na verdade, a função <code>len()</code> é muito mais genérica e
+pode ser usada para recuperar o comprimento de muitos objetos. Aplicada numa
+string, por exemplo, ela retorna a quantidade de caracteres na string.[/!]
+[!scala]Não esqueça de começar em <code>0</code> e terminar em
+<code>T.length-1</code> ao invés de ir de <code>1</code> até
+<code>T.length</code>.[/!]</p>
 
 <p>Se você quer simplesmente iterar nos valores de T sem controlar o
 índice, pode simplesmente escrever:</p>
@@ -113,7 +114,7 @@ ainda será escrito no PLM).[/!]</p>
 <h3>Declarando uma [!python]list[/!][!java|scala]array[/!]</h3>
 
 [!python]
-<p>Se você sabe antecipadamente o conteúdo da sua lista, você pode afetar
+<p>Se você sabe antecipadamente o conteúdo da sua lista, você pode atribuir
 os valores todos juntos. Coloque eles simplesmente entre colchetes e
 separados por vírgulas como segue:</p>
 <pre>
@@ -131,8 +132,8 @@ L2.append(7)
 L2.append(9) 
 <span class="comment"># E agora seu conteúdo é igual ao de L, vista antes</span></pre> 
 [/!] [!java|scala]
-<p>To declare a variable named <b>T</b> that can store an array of integers,
-one should write:</p>
+<p>Para declarar uma variável chamada <b>T</b> que pode guardar uma array de
+inteiros, você deve escrever:</p>
 <pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
 
 <p>[!java]<code>int</code> significa que os elementos da array são do
@@ -168,16 +169,16 @@ que é uma array de 10 valores inteiros. Como resultado, uma array de
 da array. O tamanho de uma array <code>T</code> pode ser recuperado ao
 se consultar a variável <code>T.length</code>.</p>
 
-<p>While allocating, you can specify the size with a variable:
+<p>Na hora da alocação, você pode especificar o tamanho com uma variável:
 <code>[!java]int[] T = new int[i];[/!][!scala]var T = new
-Array[Int](i);[/!]</code> In this case, the array's size will be set to the
-value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size
-of the array still cannot be modified: even if the variable <code>i</code>
-changes afterward, the size remains to the value given when it was
-allocated.  [!java]Also, it is forbidden to write something like <code>int
-T[10];</code> when declaring the variable.  You are required to use the
-<code>new</code> instruction to allocate it, as in <code>int[] T = new
-int[10];</code> [/!]</p>
+Array[Int](i);[/!]</code> Neste caso, o tamanho da array será ajustado
+para o valor de <code>i</code> <i>quando <code>new</code> for
+chamado</i>.  O tamanho da array ainda não pode ser modificado: mesmo
+se a variável <code>i</code> mudar depois disto, o tamanho permanece o
+do valor dado no momento da alocação.  [!java]Além disto, é proibido
+escrever algo como <code>int T[10];</code> no momento de declarar a
+variável. Você deve usar a instrução <code>new</code> para alocar o
+array, como em <code>int[] T = new int[10];</code> [/!]</p>
 
 <h4>Declaração e inicialização</h4>
 <p>Se você sabe previamente o conteúdo da sua array, você pode declarar,

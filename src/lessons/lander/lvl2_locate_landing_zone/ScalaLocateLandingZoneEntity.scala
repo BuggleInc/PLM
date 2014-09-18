@@ -3,9 +3,7 @@ package lessons.lander.lvl2_locate_landing_zone;
 import java.util.Iterator;
 import scala.collection.JavaConversions._
 
-import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.Point;
-import lessons.lander.universe.Segment;
+import lessons.lander.universe._;
 
 class ScalaLocateLandingZoneEntity extends LanderEntity {
   /* BEGIN TEMPLATE */

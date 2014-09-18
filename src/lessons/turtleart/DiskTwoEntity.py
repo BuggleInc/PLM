@@ -5,7 +5,7 @@ def quadrant():
 		backward(100);
 		right(1);
 
-for i in range(18):
+for i in range(9):
 	setColor(Color.BLACK);
 	quadrant();
 	setColor(Color.RED);

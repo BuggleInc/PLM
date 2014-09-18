@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-08 11:49+0200\n"
+"POT-Creation-Date: 2014-09-16 17:00+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1199,7 +1199,7 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:46
-#: src/lessons/welcome/loopfor/LoopFor.html:50
+#: src/lessons/welcome/loopfor/LoopFor.html:57
 #: src/lessons/welcome/bdr/BDR.html:188
 msgid "[!java|c]"
 msgstr "[!java|c]"
@@ -1220,7 +1220,7 @@ msgstr ""
 #: src/lessons/welcome/instructions/Instructions.html:35
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
-#: src/lessons/welcome/loopfor/LoopFor.html:73
+#: src/lessons/welcome/loopfor/LoopFor.html:80
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:54
 #: src/lessons/welcome/loopdowhile/Poucet.html:37
 #: src/lessons/welcome/array/basics/Array1.html:183
@@ -1417,7 +1417,7 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:35
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:9
 #: src/lessons/welcome/variables/Variables.html:119
-#: src/lessons/welcome/loopfor/LoopFor.html:75
+#: src/lessons/welcome/loopfor/LoopFor.html:82
 #: src/lessons/welcome/methods/basics/Methods.html:96
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:50
@@ -2162,12 +2162,20 @@ msgstr "Persi in Moria"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:4
+#, fuzzy
+#| msgid ""
+#| "You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
+#| "will have to clear your way to the exit. Well of course these are only "
+#| "baggles and you could simply walk away, but it will be easier to program "
+#| "your buggle so that it moves those \"rocks\" than convincing your buggle "
+#| "that it could easily walk away without solving the problem..."
 msgid ""
-"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
-"will have to clear your way to the exit. Well of course these are only "
-"baggles and you could simply walk away, but it will be easier to program "
-"your buggle so that it moves those \"rocks\" than convincing your buggle "
-"that it could easily walk away without solving the problem..."
+"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
+"exit, and you will have to clear your way to the exit. Well of course these "
+"are only baggles and you could simply walk away, but it will be easier to "
+"program the buggles so that they move those \"rocks\" than convincing them "
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
 msgstr ""
 "Il tuo buggle è bloccato in una miniera! Alcune rocce stanno bloccando "
 "l'uscita e tu dovrai pulire la strada per uscire. Bene, ovviamente questi "
@@ -2176,14 +2184,22 @@ msgstr ""
 "che sia più facile andar via senza risolvere il problema..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:10
+#: src/lessons/welcome/loopwhile/WhileMoria.html:11
+#, fuzzy
+#| msgid ""
+#| "So, you have to find the first baggle blocking the exit (simply walk to "
+#| "the east until you are over a baggle), take it and move it back to the "
+#| "other side of the tunnel (walk to the west while you are not over a "
+#| "baggle, and then move back one step to the east and drop your baggle), "
+#| "and iterate until you find the exit (that is, the wall to the east side). "
+#| "Afterward, move out as in the objective world."
 msgid ""
 "So, you have to find the first baggle blocking the exit (simply walk to the "
 "east until you are over a baggle), take it and move it back to the other "
 "side of the tunnel (walk to the west while you are not over a baggle, and "
 "then move back one step to the east and drop your baggle), and iterate until "
 "you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world."
+"as in the objective world. That's only a few more steps away."
 msgstr ""
 "Quindi devi trovare il primo baggle che blocca l'uscita (semplicemente "
 "camminando ad est fintanto che non non ci sei sopra), prenderlo e portarlo "
@@ -2193,7 +2209,16 @@ msgstr ""
 "sul lato est). Dopodiché muovetevi fuori come nel objective world."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:17
+#: src/lessons/welcome/loopwhile/WhileMoria.html:18
+msgid ""
+"To make things worse, you have to write a program that works for every "
+"buggle, even if writing a specific program for each of them would be easier. "
+"It seems that using <code>while</code> loops is the only solution to move "
+"the buggles correctly."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:23
 msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
 "exercise.  This exercise is a bit more complex, so you can also leave it for "
@@ -2337,7 +2362,7 @@ msgstr "x = 5"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:40
-#: src/lessons/welcome/loopfor/LoopFor.html:61
+#: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
@@ -2374,8 +2399,15 @@ msgstr "var x = 42"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:47
+#, fuzzy
+#| msgid ""
+#| "You still have to specify the if you use some generic values as an "
+#| "initialization, such as the very particular value <code>null</code>, "
+#| "which type happens to be ambiguous. Even when the type is clear, you can "
+#| "still specify it if you prefer.  So you want that the variable contains 5 "
+#| "as initial value, you should type:"
 msgid ""
-"You still have to specify the if you use some generic values as an "
+"You still have to specify if you use some generic values as an "
 "initialization, such as the very particular value <code>null</code>, which "
 "type happens to be ambiguous. Even when the type is clear, you can still "
 "specify it if you prefer.  So you want that the variable contains 5 as "
@@ -2898,11 +2930,17 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:33
-msgid "This code is then perfectly equivalent to the following one."
-msgstr "Il codice precedente è perfettamente equivalente a quello che segue:"
+msgid ""
+"This code is then equivalent to the following one from the computer point of "
+"view. From the programmer point of view, one form or the other can make the "
+"source code easier to read, depending on the situation. You should chose "
+"wisely in each situation whether you want to use a for loop or a while loop. "
+"Your uttermost goal should remain to keep your code simple and easy to read, "
+"to ensure that your day remain pleasant and productive."
+msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:34
+#: src/lessons/welcome/loopfor/LoopFor.html:41
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java]int stepper = 0;\n"
@@ -2948,12 +2986,15 @@ msgstr ""
 "}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:48
-msgid "The <code>for</code> loop is easier to read, don't you think?"
+#: src/lessons/welcome/loopfor/LoopFor.html:55
+#, fuzzy
+#| msgid "The <code>for</code> loop is easier to read, don't you think?"
+msgid ""
+"In that case, the <code>for</code> loop is easier to read, don't you think?"
 msgstr "Il ciclo <code>for</code> è facile da leggere, non credete?"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:51
+#: src/lessons/welcome/loopfor/LoopFor.html:58
 msgid ""
 "It is possible to build more advanced <tt>for</tt> loops since any valid "
 "instruction can be used as initialization, condition and incrementing "
@@ -2970,7 +3011,7 @@ msgstr ""
 "condizione e dell'incremento."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:57
+#: src/lessons/welcome/loopfor/LoopFor.html:64
 #, no-wrap
 msgid ""
 "for (; !isFacingWall() ; forward()) { \n"
@@ -2984,7 +3025,7 @@ msgstr ""
 "<span class=\"comment\">/* ora i buggle fronteggiano il muro */</span>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:64
+#: src/lessons/welcome/loopfor/LoopFor.html:71
 msgid ""
 "If you want to nest several loops, you can do it on one line in Scala. This "
 "means that the two following chunks are equivalent:"
@@ -2993,7 +3034,7 @@ msgstr ""
 "Questo significa che i due seguenti spezzoni di codice sono equivalenti:"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:65
+#: src/lessons/welcome/loopfor/LoopFor.html:72
 #, no-wrap
 msgid ""
 "for (stepper1 &lt;- 1 to n) {\n"
@@ -3009,7 +3050,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:70
+#: src/lessons/welcome/loopfor/LoopFor.html:77
 #, no-wrap
 msgid ""
 "for (stepper1 &lt;- 1 to n; stepper2 &lt;- 1 to m) { <span class=\"comment\">// Simply separate both loop conditions with a semi-column</span>\n"
@@ -3021,7 +3062,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:76
+#: src/lessons/welcome/loopfor/LoopFor.html:83
 msgid ""
 "You now have to redo the same exercise than previously (move forward until "
 "being over a baggle, pick it up, move back to your original location, drop "
@@ -3034,7 +3075,7 @@ msgstr ""
 "<code>while</code> per tornare indietro alla posizione iniziale."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:81
+#: src/lessons/welcome/loopfor/LoopFor.html:88
 msgid "Once done, you can proceed to next exercise."
 msgstr "Quando avrete finito potrete procedere al prossimo esercizio."
 
@@ -5149,11 +5190,22 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:101
+#, fuzzy
+#| msgid ""
+#| "This exercise is a bit different because you will not write all of the "
+#| "code executed by the buggle. Instead, you should only write one method "
+#| "that is called automagically added when you click on <b>Start</b>. Your "
+#| "buggle calls your <code>goAndGet()</code> method on each row, until the "
+#| "baggle is found."
 msgid ""
 "This exercise is a bit different because you will not write all of the code "
-"executed by the buggle. Instead, you should only write one method that is "
+"executed by the buggle. Instead, you should only write one method that get "
 "called automagically added when you click on <b>Start</b>. Your buggle calls "
-"your <code>goAndGet()</code> method on each row, until the baggle is found."
+"your <code>goAndGet()</code> method on each row, until the baggle is found. "
+"[!python|scala]The code for that is already provided under the "
+"<code>goAndGet()</code> method, but you probably don't want to change it."
+"[/!] [!java]You don't need to write the code calling <code>goAndGet()</code> "
+"yourself. It's automagically there already, even if you cannot see it.[/!]"
 msgstr ""
 "Questo esercizio si distingue dai precedenti perché non dovrete scrivere "
 "tutto il codice eseguito dal buggle. Invece dovrete scrivere esclusivamente "
@@ -5162,7 +5214,7 @@ msgstr ""
 "code> per ogni colonna finché non troverà il baggle."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/Methods.html:107
+#: src/lessons/welcome/methods/basics/Methods.html:110
 msgid ""
 "But for that to work, you have to actually write this <code>goAndGet()</"
 "code> method now."
@@ -5603,8 +5655,8 @@ msgstr ""
 #| "It initial value is 'false'."
 msgid ""
 "The easier for this function is to use a boolean variable called "
-"<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
-"initial value is 'false'."
+"<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
+"Its initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 msgstr ""
 "Il modo più facile per scriverlo è usare una variabile booleana chiamata "
 "<code>baggleVisto</code> che indica se è stato visto un baggle. Il suo "
@@ -7035,13 +7087,13 @@ msgstr ""
 #| "Thus the loop, will stop and the program will terminate."
 msgid ""
 "You have to keep dancing as long as there is some dancing steps to do, i.e., "
-"as long as we are not in cell which content is not described in the table.  "
-"The easier for that is to use a boolean variable (<code>finished</code>)  as "
+"as long as we are in a cell which content is described in the table.  The "
+"easier for that is to use a boolean variable (<code>finished</code>)  as "
 "termination condition to a <code>while</code> loop.  It should be "
 "initialized to <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</"
 "code>, and switched to <code>[!c]1[/!][!java|scala]true[/!][!"
 "python]True[/!]</code> as soon as the buggle find a cell with a value not "
-"described in the table.  Thus the loop, will stop and the program will "
+"described in the table.  Thus, the loop will stop and the program will "
 "terminate."
 msgstr ""
 "Voi dovete continuare a ballare fintantoché ci sono passi da fare, e cioé, "
@@ -7066,7 +7118,7 @@ msgstr ""
 #| "simpler in Java."
 msgid ""
 "Another subtlety is that detecting if strings are equals is a bit annoying "
-"in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
+"in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
 "instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>.  This "
 "method, only known by the buggles of this exercise, returns the first char "
 "of the message written on the ground (or ' ' -- the space char -- if nothing "
@@ -7218,7 +7270,7 @@ msgid ""
 "c]getIndication()[/!][!scala]readMessage()[/!].  To improve this, we will "
 "use a [!java|c]<code>switch</code> construct, which Java syntax is the "
 "following:[/!] [!scala] pattern matching, which is a very powerful construct "
-"that greatly generalizes the <code>if</code>. It is arguably one one the "
+"that greatly generalizes the <code>if</code>. It is arguably one of the "
 "major advantages of Scala when compared to languages such as Java or "
 "python.  It is not new either, as other languages such as OCaml or Haskell "
 "offer this feature since long, but still.  It's really cool![/!]"
@@ -11166,28 +11218,15 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:16
 msgid ""
-"When you don't want to follow the proposed exercises but draw your own "
-"stuff, the \"you failed\" message really gets annoying.  We should have a "
-"\"Creative mode\" in PLM, where the world is not checked against the "
-"answer.  Also, we should not clean the board automatically in this mode."
+"Other exercises should be added. A whole lot of exercises are available from "
+"<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
+"#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-"
+"shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
+"shapes-challenges.html</a>."
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
-msgid ""
-"Other exercises should be added. A whole lot of exercises are available from "
-"http://neoparaiso.com/logo/#sect4."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:20
-msgid ""
-"Missing: the built-ins hide()/show(), that decide whether the turtle must be "
-"shown."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:21
 msgid ""
 "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
 "moving or by moving to the end of the arc."
@@ -12642,7 +12681,7 @@ msgid ""
 "For that, find the exit and write 0 there.  Then, write 1 on every "
 "neighboring cells that is not separated from the exit with a wall.  And then "
 "mark every cells from which you can reach the exit in 2 steps, and iterate "
-"for all cells until you mark the cell where the buggle is located."
+"for all cells until all cells are marked."
 msgstr ""
 
 #. type: Content of: <p>
@@ -14120,15 +14159,16 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:17
 msgid ""
-"The <code>step()</code> function that you should write now will be called "
-"every 0.1 second during the simulation. It should set the desired thrust of "
-"the next simulation step, by calling <code>[!java]void "
-"[/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</"
-"code> where <code>desiredThrust</code> is some integer between 0 and 4. You "
-"can only increment or decrement the thrust by 1 between two simulation "
-"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
-"the next step. If you ask for less than 0 (resp. more than 4), everything "
-"will be as if you had asked for 0 (resp. 4)."
+"The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
+"you should write now will be called every 0.1 second during the simulation. "
+"It should set the desired thrust of the next simulation step, by calling "
+"<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:"
+"Integer[/!])</code> where <code>desiredThrust</code> is some integer between "
+"0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
+"increment or decrement the thrust by 1 between two simulation steps, so if "
+"the current thrust is 2 and you ask for 4, you'll only get 3 in the next "
+"step. If you ask for less than 0 (resp. more than 4), everything will be as "
+"if you had asked for 0 (resp. 4)."
 msgstr ""
 
 #. type: Content of: <p>
@@ -14454,6 +14494,10 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr ""
+
+#~ msgid "This code is then perfectly equivalent to the following one."
+#~ msgstr ""
+#~ "Il codice precedente è perfettamente equivalente a quello che segue:"
 
 #~ msgid "Color.black"
 #~ msgstr "Color.black"

@@ -17,7 +17,7 @@ class ScalaPictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 
 	def makeV() {
-		forward();
+		forward(2);
 		mark();
 
 		forward();
@@ -30,7 +30,7 @@ class ScalaPictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		forward();
 		mark();
 
-		forward();
+		forward(2);
 		left();
 	}
 
@@ -38,18 +38,18 @@ class ScalaPictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 	  for (i <- 1 to 4) {
 		  makeV();
 	  }
-	  forward(5);
+	  forward(7);
 	}
 
 	def makeLine(count: Int){
 		for (i <- 1 to count)
 			makePattern();
-		backward(count*5);
+		backward(count*7);
 	}
 
 	def nextLine() {
 		left();
-		forward(5);
+		forward(7);
 		right();	
 		/* END SOLUTION */
 	}

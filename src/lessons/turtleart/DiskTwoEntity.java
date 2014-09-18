@@ -9,7 +9,7 @@ public class DiskTwoEntity extends Turtle {
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
-		for (int i=0;i<18;i++) {
+		for (int i=0;i<9;i++) {
 			setColor(Color.BLACK);
 			quadrant();
 			setColor(Color.RED);

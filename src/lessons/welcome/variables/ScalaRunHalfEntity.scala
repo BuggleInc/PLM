@@ -16,8 +16,8 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BINDINGS TRANSLATION */
 	def estSurOrange():Boolean = { return isOverOrange(); }
 
-	/* BEGIN TEMPLATE */
 	override def run() {
+		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		var baggle:Int = 0;
 		var orange:Int = 0;
@@ -31,6 +31,6 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 				orange += 1
 		}
 		/* END SOLUTION */
+		/* END TEMPLATE */
 	}
-	/* END TEMPLATE */
 }

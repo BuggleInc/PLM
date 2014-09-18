@@ -11,6 +11,9 @@ class ScalaLoopCourseForestEntity extends SimpleBuggle {
 	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
+	override def backward() {
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay."));
+	}
 
 	var colors = Array(
 			new Color(0,155,0),
@@ -20,7 +23,8 @@ class ScalaLoopCourseForestEntity extends SimpleBuggle {
 			new Color(160,155,0),
 			new Color(180,155,0),
 			new Color(200,155,0),
-			new Color(210,155,0))
+			new Color(210,155,0), 
+			Color.red)
 	
 	override def forward()  {
 		if (!haveSeenError())
@@ -33,7 +37,10 @@ class ScalaLoopCourseForestEntity extends SimpleBuggle {
 		var nextColor:Color = null;
 		for (i <- 0 to colors.length-1)
 			if (colors(i).equals(c)) { 
-				nextColor = colors(i+1);
+			    if (i==colors.length-1)
+			    	nextColor = colors(i);
+			    else
+			    	nextColor = colors(i+1);
 			}
 		setBrushColor(nextColor);
 		brushDown();

@@ -61,7 +61,7 @@ public class LangJava extends JVMCompiledLang {
 	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
-		runtimePatterns.put("\\$package", "package "+packageName()+";");
+		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
 
 		
 		/* Prepare the source files */

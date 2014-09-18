@@ -40,8 +40,11 @@ public class ExecutionProgress {
 	}
 	public static ExecutionProgress newCompilationError(DiagnosticCollector<JavaFileObject> diagnostics) {
 		StringBuffer sb = new StringBuffer();
-		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {			
-			sb.append(diagnostic.getSource().getName()+":"+(diagnostic.getLineNumber()-1)+":"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
+		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {	
+			if (diagnostic.getSource() == null) 
+				sb.append("unknown source:"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
+			else
+				sb.append(diagnostic.getSource().getName()+":"+(diagnostic.getLineNumber()-1)+":"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
 			sb.append("\n");
 		}
 		return newCompilationError(sb.toString());
