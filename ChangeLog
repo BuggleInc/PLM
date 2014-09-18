@@ -10,6 +10,8 @@
       This fixes #338 and #339 (which are not exact duplicates).
     - Turtle: Show the superflous and missing shapes when the amount
       of shapes does not match.
+    - #344 Turtle: Display the coordinates of the mouse.
+      That helps reading the differences between worlds, if any.
   * Pedagogical content:
     - #341: French typo
 

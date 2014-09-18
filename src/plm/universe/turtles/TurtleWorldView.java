@@ -60,6 +60,7 @@ public class TurtleWorldView extends WorldView {
 	public void doPaint(Graphics g, int sizeX, int sizeY, boolean showTurtle) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		AffineTransform initialTransform = g2.getTransform();
 		
 		TurtleWorld tw = (TurtleWorld) this.world;
 		
@@ -112,15 +113,25 @@ public class TurtleWorldView extends WorldView {
 		}
 	
 		// FIXME: That's not working! If you resize the window, the wrong coordinates are written. Plus, it's written at the wrong location.	
-		if (false && mouseIn) { 
-			// Convert back the mouse position with our resize and everything
-			int x=(int) (mousePos.getX()-(int)(Math.abs(getWidth() - displayRatio * tw.getWidth())/2.));
-			int y=(int) (mousePos.getY()-(int)(Math.abs(getHeight() - displayRatio * tw.getHeight())/2.));
-		
-			// Draw coordinates if on zone
-			if (x>=0 && x < tw.getWidth() && y>=0 && y < tw.getHeight()) {
-				g2.drawString("x: "+x, (int) (tw.getWidth()) - 130, (int) (tw.getHeight()) - 30);
-				g2.drawString("y: "+y, (int) (tw.getWidth()) - 130, (int) (tw.getHeight()) - 2 * 30);
+		if (mouseIn) { 
+			try {
+				AffineTransform deltaTransform = new AffineTransform(g2.getTransform());
+				deltaTransform.invert();
+				deltaTransform.concatenate(initialTransform);
+
+				Point2D coord = deltaTransform.transform(new Point2D.Double(mousePos.x, mousePos.y), null);
+
+				// Convert back the mouse position with our resize and everything
+				int x=(int) (coord.getX());
+				int y=(int) (coord.getY());
+
+				// Draw coordinates if on zone
+				if (x>=0 && x < tw.getWidth() && y>=0 && y < tw.getHeight()) {
+					g2.drawString("x: "+x, 3,      g2.getFontMetrics().getHeight()+1);
+					g2.drawString("y: "+y, 3, 2 * (g2.getFontMetrics().getHeight()+1));
+				}
+			} catch (NoninvertibleTransformException e) {
+				e.printStackTrace();
 			}
 		}
 		
