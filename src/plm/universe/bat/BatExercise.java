@@ -41,6 +41,33 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 
 	public abstract void run(BatTest t);
 	
+	protected void templatePython(String entName, int nbParams, String initialCode, String correction) {
+		/* The following test is intended to make sure that this function is called before setup() right above.
+		 * This is because setup() needs all programming languages to be declared when it runs */
+		if (isSetup())
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
+		if (this.getProgLanguages().contains(Game.PYTHON))
+			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
+		
+		StringBuffer skeleton = new StringBuffer();
+		skeleton.append("for t in batTests:\n");
+		skeleton.append("  t.setResult(");
+		skeleton.append(entName);
+		skeleton.append("(");
+		for(int i=0; i<nbParams; i++) {
+			if (i>0)
+				skeleton.append(", ");
+			skeleton.append("t.getParameter(");
+			skeleton.append(i);
+			skeleton.append(")");
+		}
+		skeleton.append("))\n");
+		
+		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"");
+		corrections.put(Game.PYTHON, initialCode+correction+"\n"+skeleton);
+		addProgLanguage(Game.PYTHON);
+	}
+	
 	@Override 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
