@@ -41,6 +41,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 
 	public abstract void run(BatTest t);
 	
+	public void templatePython(String entName, String initialCode, String correction) {
+		throw new RuntimeException("The exercise "+getName()+" should add the amount of parameters to templatePython().");
+	}
 	protected void templatePython(String entName, int nbParams, String initialCode, String correction) {
 		/* The following test is intended to make sure that this function is called before setup() right above.
 		 * This is because setup() needs all programming languages to be declared when it runs */
