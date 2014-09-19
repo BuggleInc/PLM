@@ -67,26 +67,28 @@ public abstract class Exercise extends Lecture {
 
 	public void check() {
 		boolean pass = true;
-		for (int i=0; i<currentWorld.size(); i++) {
-			currentWorld.get(i).notifyWorldUpdatesListeners();
+		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+			for (int i=0; i<currentWorld.size(); i++) {
+				currentWorld.get(i).notifyWorldUpdatesListeners();
 
-			lastResult.totalTests++;
+				lastResult.totalTests++;
 
-			if (!currentWorld.get(i).winning(answerWorld.get(i))) {
-				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
-				lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
-				if (diff != null) 
-					lastResult.executionError += ":\n"+diff;
-				lastResult.executionError += "\n";
-				pass = false;
-			} else {
-				lastResult.passedTests++;
+				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
+					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
+					lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
+					if (diff != null) 
+						lastResult.executionError += ":\n"+diff;
+					lastResult.executionError += "\n";
+					pass = false;
+				} else {
+					lastResult.passedTests++;
+				}
 			}
+			if (pass)
+				lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
+			else 
+				lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
 		}
-		if (pass)
-			lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
-		else 
-			lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
 	}
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {

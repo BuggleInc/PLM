@@ -1,5 +1,8 @@
 20130918: wannabe Release 2.4.7
 
+  * Engine: 
+    - Don't even compare the worlds when there was a compilation error
+      Prevents python code from failing after reaching the solution.
   * Worlds:
     - Turtle: Merge lines that are in line with each other before
       comparing equality. You can now walk half of a segment, the half
