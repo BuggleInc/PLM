@@ -250,7 +250,7 @@ public class TurtleWorld extends World {
 			if (shapes.get(i) instanceof Line) {
 
 				for (int j=0;j<shapes.size();j++) {
-					if (i!=j && shapes.get(j) instanceof Line) {
+					if (i>0 && j>0 && i!=j && shapes.get(j) instanceof Line) { // We shouldn't have to test i>0 && j>0 but we do. Lame.
 						Line l1 = (Line) shapes.get(i);
 						Line l2 = (Line) shapes.get(j);
 						if (l1.sameSlope(l2)) { // We cannot have inverted slopes because the extremities within a line are sorted
