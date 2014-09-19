@@ -16,7 +16,7 @@ public class SleepIn extends BatExercise {
 		myWorld.addTest(INVISIBLE, false,true);
 		myWorld.addTest(INVISIBLE, true,true);
 
-		templatePython("sleepIn", 
+		templatePython("sleepIn", 2,
 				"def sleepIn(weekday, vacation):\n",
 				"    return not weekday or vacation\n");
 		templateScala("sleepIn", new String[] {"Boolean","Boolean"},

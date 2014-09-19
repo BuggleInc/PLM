@@ -16,7 +16,7 @@ public class MonkeyTrouble extends BatExercise {
 		myWorld.addTest(VISIBLE, true, false);
 		myWorld.addTest(INVISIBLE, false, true);
 
-		templatePython("monkeyTrouble", 
+		templatePython("monkeyTrouble", 2,
 				"def monkeyTrouble(aSmile, bSmile):\n",
 				"   return (aSmile and bSmile) or (not aSmile and not bSmile)\n");
 		templateScala("monkeyTrouble", new String[] {"Boolean","Boolean"}, 

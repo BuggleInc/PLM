@@ -15,6 +15,8 @@
       of shapes does not match.
     - #344 Turtle: Display the coordinates of the mouse.
       That helps reading the differences between worlds, if any.
+    - #309 Bat: Edit the python template in order to test correctly
+      the exercise's winning conditions instead of passing it.
   * Pedagogical content:
     - #341: French typo
     - TurtleArt: rename challenges from Bill Kerr to credit the author.

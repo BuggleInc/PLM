@@ -96,12 +96,12 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		}
 		
 		computeAnswer();
-		isSetup  = true;
+		setSetup(true);
 	}
 	protected void templatePython(String entName, String initialCode, String correction) {
 		/* The following test is intended to make sure that this function is called before setup() right above.
 		 * This is because setup() needs all programming languages to be declared when it runs */
-		if (isSetup)
+		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
 		if (this.getProgLanguages().contains(Game.PYTHON))
 			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
@@ -111,7 +111,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		addProgLanguage(Game.PYTHON);
 	}
 	protected void templateScala(String entName, String[] types, String initialCode, String correction) {
-		if (isSetup)
+		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
 		if (this.getProgLanguages().contains(Game.SCALA))
 			throw new RuntimeException("The exercise "+getName()+" has two Scala templates. Please fix this bug.");
@@ -133,5 +133,11 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",7,
 				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
 		addProgLanguage(Game.SCALA);
+	}
+	public boolean isSetup() {
+		return isSetup;
+	}
+	public void setSetup(boolean isSetup) {
+		this.isSetup = isSetup;
 	}
 }
