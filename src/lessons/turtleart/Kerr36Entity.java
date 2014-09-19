@@ -4,7 +4,7 @@ import plm.universe.turtles.Turtle;
 
 /* Item 36 of billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html */
 
-public class Flower2Entity extends Turtle {
+public class Kerr36Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	public void run() {

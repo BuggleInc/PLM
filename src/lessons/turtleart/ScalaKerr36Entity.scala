@@ -4,7 +4,7 @@ import plm.universe.turtles.Turtle;
 
 /* Item 36 of http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html */
 
-class ScalaFlower2Entity extends Turtle {
+class ScalaKerr36Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	override def run():Unit= {
