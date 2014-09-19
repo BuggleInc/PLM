@@ -23,7 +23,7 @@ public class RedTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, 2, 0) ;
 		myWorld.addTest(INVISIBLE, 1, 1, 2) ;
 
-		templatePython("redTicket", 
+		templatePython("redTicket", 3,
 				"def redTicket(a, b, c):\n",
 				"	if (a == b and b == c and c == 2):\n"+
 				"		return 10\n"+

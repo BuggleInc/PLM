@@ -26,7 +26,7 @@ public class FizzBuzz extends BatExercise {
 		myWorld.addTest(INVISIBLE, 16) ;
 		myWorld.addTest(INVISIBLE, 18) ;
 
-		templatePython("fizzBuzz", 
+		templatePython("fizzBuzz", 1,
 				"def fizzBuzz(a):\n",
 				"	if (a%5 == 0 and a%3 ==0):\n"+
 				"		return \"Fizz Buzz\"\n"+

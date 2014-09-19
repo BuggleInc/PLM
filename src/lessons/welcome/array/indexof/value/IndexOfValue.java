@@ -46,7 +46,7 @@ public class IndexOfValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab4, r.nextInt(35)-15);
 		myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
 
-		templatePython("indexOfValue", 
+		templatePython("indexOfValue", 2,
 				"def indexOfValue(nums,lookingFor):\n",
 				"  for i in range(len(nums)):\n" +
 				"    if nums[i]==lookingFor:\n"+

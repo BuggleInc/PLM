@@ -36,7 +36,7 @@ public class MaxValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab3) ;
 		myWorld.addTest(INVISIBLE, tab4) ;
 
-		templatePython("maxValue", 
+		templatePython("maxValue", 1,
 				"def maxValue(nums):\n",
 				"  max=nums[0]\n"+
 				"  for i in range(len(nums)):\n"+

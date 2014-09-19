@@ -26,7 +26,7 @@ public class NearTen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3) ;
 		myWorld.addTest(INVISIBLE, 1) ;
 
-		templatePython("nearTen", 
+		templatePython("nearTen", 1,
 				"def nearTen(num):\n",
 				"  return (num % 10) <= 2 or (num % 10) >= 8\n");
 		templateScala("nearTen",new String[]{"Int"}, 

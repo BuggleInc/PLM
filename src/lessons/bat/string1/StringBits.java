@@ -15,7 +15,7 @@ public class StringBits extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "Greetings") ;
 
-		templatePython("stringBits", 
+		templatePython("stringBits", 1,
 				"def stringBits(str):\n",
 				"  res = ''\n" +
 				"  for i in range(0,len(str),2):\n" +

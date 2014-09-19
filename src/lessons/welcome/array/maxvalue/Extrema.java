@@ -22,7 +22,7 @@ public class Extrema extends BatExercise {
 		
 		
 
-		templatePython("extrema", 
+		templatePython("extrema", 1,
 				"def extrema(nums):\n",
 				"  if (len(nums)>0) :\n"+
 				"    min=nums[0]\n"+

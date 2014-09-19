@@ -25,7 +25,7 @@ public class LastDigit2 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 11, 20) ;
 		myWorld.addTest(INVISIBLE, 0, 11, 0) ;
 
-		templatePython("lastDigit", 
+		templatePython("lastDigit", 3,
 				"def lastDigit(a, b, c):\n",
 				"	da = a % 10\n"+
 				"	db = b % 10\n"+

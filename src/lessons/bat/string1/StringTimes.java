@@ -19,7 +19,7 @@ public class StringTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "code", 2) ;
 		myWorld.addTest(INVISIBLE, "code", 3) ;
 
-		templatePython("stringTimes", 
+		templatePython("stringTimes", 2,
 				"def stringTimes(str, n):\n",
 				"  res = \"\"\n"+
 				"  for i in range(n):\n"+

@@ -17,7 +17,7 @@ public class StringSplosion extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Good") ;
 		myWorld.addTest(INVISIBLE, "Bad") ;
 
-		templatePython("stringSplosion", 
+		templatePython("stringSplosion", 1,
 				"def stringSplosion(str):\n",
 				"  res = ''\n" +
 				"  for i in range(len(str)):\n" +

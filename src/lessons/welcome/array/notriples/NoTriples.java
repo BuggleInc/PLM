@@ -19,7 +19,7 @@ public class NoTriples extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		templatePython("noTriples", 
+		templatePython("noTriples", 1,
 				"def noTriples(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-2 ):\n"+

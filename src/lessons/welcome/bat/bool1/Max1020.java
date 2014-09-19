@@ -21,7 +21,7 @@ public class Max1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 20) ;
 		myWorld.addTest(INVISIBLE, 17, 16) ;
 
-		templatePython("max1020", 
+		templatePython("max1020", 2,
 				"def max1020(a, b):\n",
 				"	A = max(a,b)\n"+
 				"	B = min(a,b)\n"+

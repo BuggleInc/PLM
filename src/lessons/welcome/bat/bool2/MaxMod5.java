@@ -23,7 +23,7 @@ public class MaxMod5 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 14) ;
 		myWorld.addTest(INVISIBLE, 1, 2) ;
 
-		templatePython("maxMod5", 
+		templatePython("maxMod5", 2,
 				"def maxMod5(a, b):\n",
 				"	if (a == b):\n"+
 				"		return 0\n"+

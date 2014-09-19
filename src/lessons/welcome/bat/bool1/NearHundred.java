@@ -23,7 +23,7 @@ public class NearHundred extends BatExercise {
 		myWorld.addTest(INVISIBLE, 211);
 		myWorld.addTest(INVISIBLE, -100);
 
-		templatePython("nearHundred", 
+		templatePython("nearHundred", 1,
 				"def nearHundred(n):\n",
 				"   return (90<=n and n<=110) or (190<=n and n<=210)\n");
 		templateScala("nearHundred",new String[]{"Int"},

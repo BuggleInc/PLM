@@ -21,7 +21,7 @@ public class Close10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,20);
 		myWorld.addTest(INVISIBLE, 10,10);
 
-		templatePython("close10", 
+		templatePython("close10", 2,
 				"import math\ndef close10(a, b):\n",
 				"   if math.fabs(10-a) == math.fabs(10-b):\n"+
 				"      return 0\n"+

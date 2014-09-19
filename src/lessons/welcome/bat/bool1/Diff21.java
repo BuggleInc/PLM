@@ -23,7 +23,7 @@ public class Diff21 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 30);
 		myWorld.addTest(INVISIBLE, -21);
 
-		templatePython("diff21", 
+		templatePython("diff21", 1,
 				"def diff21(n):\n",
 				"   if (n>21):\n"+
 				"      return 2*(n-21)\n"+

@@ -18,7 +18,7 @@ public class AltPairs extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "ThisThatTheOther") ;
 
-		templatePython("altPairs", 
+		templatePython("altPairs", 1,
 				"def altPairs(str):\n",
 				"  res = ''\n" +
 				"  for i in range(0,len(str),4):\n" +

@@ -25,7 +25,7 @@ public class CountTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,11,11,11);
 		myWorld.addTest(INVISIBLE, 15,15,15,15);
 
-		templatePython("countTeen", 
+		templatePython("countTeen", 4,
 				"def countTeen(a, b, c, d):\n",
 				"		ret=0\n"+
 				"		if (a>12 and a<20):\n"+

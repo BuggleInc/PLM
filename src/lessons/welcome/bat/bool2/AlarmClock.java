@@ -21,7 +21,7 @@ public class AlarmClock extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3, true) ;
 		myWorld.addTest(INVISIBLE, 5, true) ;
 
-		templatePython("alarmClock", 
+		templatePython("alarmClock", 2,
 				"def alarmClock(day, vacation):\n",
 				"	if not vacation:\n"+
 				"		if (day >= 1 and day <= 5):\n"+

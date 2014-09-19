@@ -25,7 +25,7 @@ public class SquirrelPlay extends BatExercise {
 		myWorld.addTest(INVISIBLE, 59, true) ;
 		myWorld.addTest(INVISIBLE, 60, false) ;
 
-		templatePython("squirrelPlay", 
+		templatePython("squirrelPlay", 2,
 				"def squirrelPlay(temp, isSummer):\n",
 				"   return (temp >= 60 and ((isSummer and temp <= 100) or temp <= 90))");
 		templateScala("squirrelPlay",new String[]{"Int","Boolean"}, 

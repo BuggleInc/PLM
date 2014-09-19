@@ -17,7 +17,7 @@ public class StringYak extends BatExercise {
 		myWorld.addTest(INVISIBLE, "HiyakHi") ;
 		myWorld.addTest(INVISIBLE, "xxxyakyyyakzzz") ;
 
-		templatePython("stringYak", 
+		templatePython("stringYak", 1,
 				"def stringYak(str):\n",
 				"  res = ''\n" +
 				"  i=0\n" +

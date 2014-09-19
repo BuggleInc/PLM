@@ -19,7 +19,7 @@ public class IcyHot extends BatExercise {
 		myWorld.addTest(INVISIBLE, -2,-2);
 		myWorld.addTest(INVISIBLE, 120,120);
 
-		templatePython("icyHot", 
+		templatePython("icyHot", 2,
 				"def icyHot(temp1, temp2):\n",
 				"   return temp1<0 and temp2>100 or temp1>100 and temp2<0\n");
 		templateScala("icyHot",new String[]{"Int","Int"}, 

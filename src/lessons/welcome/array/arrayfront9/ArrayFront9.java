@@ -22,7 +22,7 @@ public class ArrayFront9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {3, 9, 2, 3, 3}) ;
 
-		templatePython("arrayFront9", 
+		templatePython("arrayFront9", 1,
 				"def arrayFront9(nums):\n",
 				"  for i in range( min( len(nums), 4) ):\n" +
 				"    if nums[i] == 9:\n" +

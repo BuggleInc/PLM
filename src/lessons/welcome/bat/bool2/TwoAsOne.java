@@ -24,7 +24,7 @@ public class TwoAsOne extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3, 3, 0) ;
 		myWorld.addTest(INVISIBLE, 3, 3, 2) ;
 
-		templatePython("twoAsOne", 
+		templatePython("twoAsOne", 3,
 				"def twoAsOne(a, b, c):\n",
 				"   return (a + b == c) or (a + c == b) or (b + c == a)");
 		templateScala("twoAsOne",new String[]{"Int","Int","Int"}, 

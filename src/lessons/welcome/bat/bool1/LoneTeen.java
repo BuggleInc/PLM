@@ -26,7 +26,7 @@ public class LoneTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 42,13);
 		myWorld.addTest(INVISIBLE, 42,42);
 
-		templatePython("loneTeen", 
+		templatePython("loneTeen", 2,
 				"def loneTeen(a, b):\n",
 				"	teenA = a>12 and a<20\n"+
 				"	teenB = b>12 and b<20\n"+

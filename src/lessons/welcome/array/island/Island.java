@@ -18,7 +18,7 @@ public class Island extends BatExercise{
 		myWorld.addTest(INVISIBLE, (Object)new int[] {0,0,2,4,0,0}) ;
 		
 
-		templatePython("island", 
+		templatePython("island", 1,
 				"def island(num):\n",
 				"  nbisland=0\n" +
 				"  for i in range(len(num)-1):\n" +
