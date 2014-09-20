@@ -1,4 +1,6 @@
-20130918: wannabe Release 2.4.7
+20130920: Release 2.4.7
+
+  Python is usable again, sorry for the inconvenience.
 
   * Engine: 
     - Don't even compare the worlds when there was a compilation error
