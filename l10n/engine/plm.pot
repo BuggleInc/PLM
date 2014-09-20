@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-17 00:31+0200\n"
+"POT-Creation-Date: 2014-09-20 11:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,7 +397,7 @@ msgstr ""
 msgid "Compilation failed."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:48
+#: src/plm/core/lang/LangPython.java:49
 #, java-format
 msgid ""
 "Syntax error: {0}\n"
@@ -405,7 +405,7 @@ msgid ""
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:56
+#: src/plm/core/lang/LangPython.java:58
 #, java-format
 msgid ""
 "Indentation error: {0}\n"
@@ -414,45 +414,45 @@ msgid ""
 "TAB keys to clean your indentation.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:63
+#: src/plm/core/lang/LangPython.java:66
 msgid ""
 "You interrupted the execution.\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:69
+#: src/plm/core/lang/LangPython.java:72
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:72
+#: src/plm/core/lang/LangPython.java:76
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:75
+#: src/plm/core/lang/LangPython.java:80
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:81
+#: src/plm/core/lang/LangPython.java:87
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:83
+#: src/plm/core/lang/LangPython.java:89
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:85
+#: src/plm/core/lang/LangPython.java:91
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:87
+#: src/plm/core/lang/LangPython.java:93
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:90
+#: src/plm/core/lang/LangPython.java:96
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
@@ -670,10 +670,10 @@ msgid "Switched to user: {0}"
 msgstr ""
 
 #: src/plm/core/model/Users.java:175
-msgid "A new user has been created for you!"
+msgid "A new PLM user has been created for you!"
 msgstr ""
 
-#: src/plm/core/model/lesson/Exercise.java:77
+#: src/plm/core/model/lesson/Exercise.java:78
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr ""
@@ -2187,31 +2187,31 @@ msgstr ""
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:75
+#: src/plm/universe/turtles/Line.java:91
 msgid "x1 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:77
+#: src/plm/universe/turtles/Line.java:93
 msgid "x2 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:79
+#: src/plm/universe/turtles/Line.java:95
 msgid "y1 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:81
+#: src/plm/universe/turtles/Line.java:97
 msgid "y2 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:83
+#: src/plm/universe/turtles/Line.java:99
 msgid "The color differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:84
+#: src/plm/universe/turtles/Line.java:100
 msgid "I dont see the difference (please report this bug)."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:86
+#: src/plm/universe/turtles/Line.java:102
 msgid "That's not a line (please report this bug)."
 msgstr ""
 
@@ -2225,17 +2225,30 @@ msgstr ""
 msgid "The turtle {0} is at the right location."
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:238
+#: src/plm/universe/turtles/TurtleWorld.java:322
 #, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:263
+#: src/plm/universe/turtles/TurtleWorld.java:351
 #, java-format
-msgid "  There is {0} shapes, but {1} shapes were expected\n"
+msgid "  There is {0} shapes, but only {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:268
+#: src/plm/universe/turtles/TurtleWorld.java:353
+#, java-format
+msgid "  There is only {0} shapes, but {1} shapes were expected\n"
+msgstr ""
+
+#: src/plm/universe/turtles/TurtleWorld.java:380
+msgid "Superflous shapes in your solution:\n"
+msgstr ""
+
+#: src/plm/universe/turtles/TurtleWorld.java:383
+msgid "Missing shapes in your solution:\n"
+msgstr ""
+
+#: src/plm/universe/turtles/TurtleWorld.java:394
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr ""

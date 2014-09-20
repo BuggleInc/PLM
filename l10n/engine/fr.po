@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-17 00:31+0200\n"
+"POT-Creation-Date: 2014-09-20 11:32+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -452,7 +452,7 @@ msgstr "Erreur, veuillez recompiler l'exercice."
 msgid "Compilation failed."
 msgstr "La compilation a échoué."
 
-#: src/plm/core/lang/LangPython.java:48
+#: src/plm/core/lang/LangPython.java:49
 #, java-format
 msgid ""
 "Syntax error: {0}\n"
@@ -464,7 +464,7 @@ msgstr ""
 "En cas de doute, vérifiez les indentations, et veillez à ne pas mélanger "
 "espaces et tabulations.\n"
 
-#: src/plm/core/lang/LangPython.java:56
+#: src/plm/core/lang/LangPython.java:58
 #, java-format
 msgid ""
 "Indentation error: {0}\n"
@@ -477,7 +477,7 @@ msgstr ""
 "Veuillez vérifier que vous ne mélangez pas les tabulations et les espaces. "
 "Utilisez les touches TAB et majuscule-TAB pour nettoyer votre indentation.\n"
 
-#: src/plm/core/lang/LangPython.java:63
+#: src/plm/core/lang/LangPython.java:66
 msgid ""
 "You interrupted the execution.\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
@@ -485,7 +485,7 @@ msgstr ""
 "Vous avez interrompu l'exécution.\n"
 "Votre programme doit s'arrêter de lui-même pour réussir l'exercice.\n"
 
-#: src/plm/core/lang/LangPython.java:69
+#: src/plm/core/lang/LangPython.java:72
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
@@ -493,13 +493,13 @@ msgstr ""
 "Erreur de nom : vous semblez utiliser un identifiant qui n'existe pas. "
 "Auriez-vous fait une typo ?\n"
 
-#: src/plm/core/lang/LangPython.java:72
+#: src/plm/core/lang/LangPython.java:76
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 "Erreur de type : vous n'utilisez pas correctement une fonction, ou quelque "
 "chose du genre.\n"
 
-#: src/plm/core/lang/LangPython.java:75
+#: src/plm/core/lang/LangPython.java:80
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
@@ -507,23 +507,23 @@ msgstr ""
 "Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
 "déclarée, ou quelque chose du genre.\n"
 
-#: src/plm/core/lang/LangPython.java:81
+#: src/plm/core/lang/LangPython.java:87
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
-#: src/plm/core/lang/LangPython.java:83
+#: src/plm/core/lang/LangPython.java:89
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr "Erreur : une buggle ne peut porter qu'un biscuit à la fois."
 
-#: src/plm/core/lang/LangPython.java:85
+#: src/plm/core/lang/LangPython.java:91
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr "Erreur : Votre buggle s'est téléportée dans l'espace."
 
-#: src/plm/core/lang/LangPython.java:87
+#: src/plm/core/lang/LangPython.java:93
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr "Erreur : Vous avez heurté un mur. Ça fait mal."
 
-#: src/plm/core/lang/LangPython.java:90
+#: src/plm/core/lang/LangPython.java:96
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
@@ -794,10 +794,11 @@ msgid "Switched to user: {0}"
 msgstr "L''utilisateur est maintenant {0}"
 
 #: src/plm/core/model/Users.java:175
-msgid "A new user has been created for you!"
+#, fuzzy
+msgid "A new PLM user has been created for you!"
 msgstr "Un nouvel utilisateur a été créé pour vous !"
 
-#: src/plm/core/model/lesson/Exercise.java:77
+#: src/plm/core/model/lesson/Exercise.java:78
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr "Le monde ''{0}'' diffère"
@@ -2509,31 +2510,31 @@ msgstr ""
 "Dépassement des bornes à l''appel de la méthode echange({0},{1}) : {2}"
 ">nombre de valeurs"
 
-#: src/plm/universe/turtles/Line.java:75
+#: src/plm/universe/turtles/Line.java:91
 msgid "x1 differs."
 msgstr "x1 diffère."
 
-#: src/plm/universe/turtles/Line.java:77
+#: src/plm/universe/turtles/Line.java:93
 msgid "x2 differs."
 msgstr "x2 diffère."
 
-#: src/plm/universe/turtles/Line.java:79
+#: src/plm/universe/turtles/Line.java:95
 msgid "y1 differs."
 msgstr "y1 diffère."
 
-#: src/plm/universe/turtles/Line.java:81
+#: src/plm/universe/turtles/Line.java:97
 msgid "y2 differs."
 msgstr "y2 diffère."
 
-#: src/plm/universe/turtles/Line.java:83
+#: src/plm/universe/turtles/Line.java:99
 msgid "The color differs."
 msgstr "La couleur diffère."
 
-#: src/plm/universe/turtles/Line.java:84
+#: src/plm/universe/turtles/Line.java:100
 msgid "I dont see the difference (please report this bug)."
 msgstr "Je ne vois pas de différence (merci de rapporter cette anomalie)."
 
-#: src/plm/universe/turtles/Line.java:86
+#: src/plm/universe/turtles/Line.java:102
 #, fuzzy
 msgid "That's not a line (please report this bug)."
 msgstr "Je ne vois pas de différence (merci de rapporter cette anomalie)."
@@ -2548,17 +2549,30 @@ msgstr ""
 msgid "The turtle {0} is at the right location."
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:238
+#: src/plm/universe/turtles/TurtleWorld.java:322
 #, fuzzy, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
-#: src/plm/universe/turtles/TurtleWorld.java:263
-#, java-format
-msgid "  There is {0} shapes, but {1} shapes were expected\n"
+#: src/plm/universe/turtles/TurtleWorld.java:351
+#, fuzzy, java-format
+msgid "  There is {0} shapes, but only {1} shapes were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
-#: src/plm/universe/turtles/TurtleWorld.java:268
+#: src/plm/universe/turtles/TurtleWorld.java:353
+#, fuzzy, java-format
+msgid "  There is only {0} shapes, but {1} shapes were expected\n"
+msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
+
+#: src/plm/universe/turtles/TurtleWorld.java:380
+msgid "Superflous shapes in your solution:\n"
+msgstr ""
+
+#: src/plm/universe/turtles/TurtleWorld.java:383
+msgid "Missing shapes in your solution:\n"
+msgstr ""
+
+#: src/plm/universe/turtles/TurtleWorld.java:394
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
