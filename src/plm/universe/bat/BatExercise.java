@@ -70,15 +70,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		for(int i=0; i<types.length; i++) {
 			if (i>0)
 				skeleton.append(", ");
-			if (types[i].equals("RecList")) {
-				skeleton.append("RecListFromArray(t.getParameter(");
-				skeleton.append(i);
-				skeleton.append("))");
-			} else {
-				skeleton.append("t.getParameter(");
-				skeleton.append(i);
-				skeleton.append(")");
-			}
+			skeleton.append("t.getParameter(");
+			skeleton.append(i);
+			skeleton.append(")");
 		}
 		skeleton.append("))\n");
 		

@@ -1,0 +1,18 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>ConsWorld</h1>
+
+<p>This world allows you to experiment with the recursive strings, as
+they were first defined in Lisp. It is very similar to the BatWorld,
+but you are supposed to write recursive functions working on 
+[!python|java]recursive strings. Since [!thelang] does not provide
+such a construct natively, the ConsWorld defines recursive lists of
+type <code>RecList</code>.[/!]
+[!scala]lists of integers (<code>List[Int]</code>).</p>
+
+<p>Any given such list is either the empty list 
+(noted <code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>),
+or an integer followed by a list. If a list is not empty, you can
+retrieve its first integer with <code>list.head</code> and the list
+containing its other parameters with <code>list.tail</code>. Of
+course, the empty list has no head nor the tail, so trying to access
+these elements will result in an (unpleasant) error message.</p>

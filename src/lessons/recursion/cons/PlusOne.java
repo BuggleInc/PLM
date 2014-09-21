@@ -7,28 +7,29 @@ import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class Length extends ConsExercise {
+public class PlusOne extends ConsExercise {
 
-	public Length(Lesson lesson) {
+	public PlusOne(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new ConsWorld("length");
+		BatWorld myWorld = new ConsWorld("plusOne");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 1, 1}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 1, 3})) ;
 		myWorld.addTest(INVISIBLE, data(new int[]{2, 4, 6, 8, 10})) ;
 		myWorld.addTest(INVISIBLE, data(new int[]{})) ;
+		myWorld.addTest(INVISIBLE, data(new int[]{-2, -4, -6, -8, -10})) ;
 
-		templatePython("length", new String[]{"RecList"},
-				"def length(list):\n",
+		templatePython("plusOne", new String[]{"RecList"},
+				"def plusOne(list):\n",
 				"  if list == None:\n" +
-				"    return 0;\n"+
-				"  return 1 + length(list.tail)\n");
-		templateScala("length", new String[] {"List[Int]"}, 
-				"def length(l:List[Int]): Int = {\n",
+				"    return None;\n"+
+				"  return cons(list.head+1, list.tail)\n");
+		templateScala("plusOne", new String[] {"List[Int]"}, 
+				"def plusOne(l:List[Int]): List[Int] = {\n",
 				"  l match {\n" +
-				"    case a::b => 1+length(b)\n"+
-				"    case _    => 0\n"+
+				"    case a::b => (a+1)::plusOne(b)\n"+
+				"    case _    => Nil\n"+
 				"  }\n"+
 				"}");
 		setup(myWorld);
@@ -36,16 +37,16 @@ public class Length extends ConsExercise {
 
 	public void run(BatTest t) {
 		/* BEGIN SKEL */
-		t.setResult( length( (RecList)t.getParameter(0) ) );
+		t.setResult( plusOne((RecList)t.getParameter(0)) );
 		/* END SKEL */
 	}
 
 	/* BEGIN TEMPLATE */
-	int length(RecList seq) {
+	RecList plusOne(RecList seq) {
 		/* BEGIN SOLUTION */
 		if (seq == null)
-			return 0;
-		return 1+length(seq.tail);
+			return null;
+		return cons(seq.head+1, plusOne(seq.tail));
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

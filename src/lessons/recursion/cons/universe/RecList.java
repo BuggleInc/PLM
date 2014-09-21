@@ -1,6 +1,8 @@
 package lessons.recursion.cons.universe;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 /** Recursive sequence of integers */
 
@@ -13,10 +15,10 @@ public class RecList {
 	}
 	
 	/* Constructor from an array of integers. Not a constructor as it returns sometimes null */
-	public static RecList fromList(List<Integer> seq) {
-		return fromArray((Integer[])seq.toArray(),0);
+	public static RecList fromArray(int[] a) {
+		return fromArray(a,0);
 	}
-	private static RecList fromArray(Integer[] seq, int rank) {
+	private static RecList fromArray(int[] seq, int rank) {
 		if (rank>= seq.length)
 			return null;
 		return new RecList(seq[rank], fromArray(seq,rank+1) );
@@ -41,6 +43,15 @@ public class RecList {
 		return res;
 	}
 
+	public List<Integer> toList() {
+		List<Integer> res = new ArrayList<Integer>();
+		RecList ptr = this;
+		while (ptr != null) {
+			res.add(ptr.head);
+			ptr = ptr.tail;
+		}
+		return res;
+	}
 	public String toString() {
 		StringBuffer res = new StringBuffer();
 		res.append("[");

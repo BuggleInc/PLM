@@ -117,14 +117,20 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		if (this.getProgLanguages().contains(Game.SCALA))
 			throw new RuntimeException("The exercise "+getName()+" has two Scala templates. Please fix this bug.");
 		
-		StringBuffer skeleton = new StringBuffer("   t.setResult( ");
+		StringBuffer skeleton = new StringBuffer(" val res = ");
 		skeleton.append(entName);
 		skeleton.append("( ");
 		for (int i=0;i<types.length;i++) {
 			if (i>0)
 				skeleton.append(", ");
 			if (types[i].equals("List[Int]")) {
-				skeleton.append("t.getParameter("+i+").asInstanceOf[java.util.List[Int]].asScala.toList");
+				skeleton.append("(if (t.getParameter("+i+") == null) {");
+				skeleton.append("  Nil");
+				skeleton.append("} else if (t.getParameter("+i+").isInstanceOf[lessons.recursion.cons.universe.RecList]) {");
+				skeleton.append("  t.getParameter("+i+").asInstanceOf[lessons.recursion.cons.universe.RecList].toList().asInstanceOf[java.util.List[Int]].asScala.toList");
+				skeleton.append("} else {");
+				skeleton.append("  t.getParameter("+i+").asInstanceOf[java.util.List[Int]].asScala.toList");
+				skeleton.append("}) ");
 			} else {
 				skeleton.append("t.getParameter(");
 				skeleton.append(i);
@@ -133,9 +139,14 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 				skeleton.append("]");
 			}
 		}
-		skeleton.append(") )");
+		skeleton.append(");\n");
+		skeleton.append("try {\n");
+		skeleton.append("   t.setResult(if (res==null||res == Nil) {null} else {res.asInstanceOf[List[Int]].asJava})\n");
+		skeleton.append("} catch {\n");
+		skeleton.append("  case e:java.lang.ClassCastException => t.setResult(res)\n"); // primitive types cannot be converted to java, but I don't care (and cannot test whether res is a primitive type)
+		skeleton.append("}\n");
 		
-		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",8,
+		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",14,
 				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
 		addProgLanguage(Game.SCALA);
 	}

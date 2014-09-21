@@ -11,6 +11,7 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() throws IOException, BrokenWorldFileException {
 		addExercise(new Length(this));		
+		addExercise(new PlusOne(this));		
 	}
 
 }
