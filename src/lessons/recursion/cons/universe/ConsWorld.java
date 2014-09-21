@@ -2,9 +2,11 @@ package lessons.recursion.cons.universe;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.ui.ResourcesCache;
 import plm.universe.bat.BatWorld;
 
 public class ConsWorld extends BatWorld {
@@ -13,6 +15,10 @@ public class ConsWorld extends BatWorld {
 	}
 	public ConsWorld(String funName) {
 		super(funName);
+	}
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_cons.png");
 	}
 
 	@Override
