@@ -54,7 +54,7 @@ public class RecList {
 	}
 	public String toString() {
 		StringBuffer res = new StringBuffer();
-		res.append("[");
+		res.append(" [");
 		RecList ptr = this;
 		boolean first = true;
 		while (ptr != null) {
@@ -65,7 +65,7 @@ public class RecList {
 			res.append(ptr.head);
 			ptr = ptr.tail;
 		}
-		res.append("]");
+		res.append("] ");
 		return res.toString();
 	}
 }

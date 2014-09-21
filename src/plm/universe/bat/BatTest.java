@@ -36,6 +36,7 @@ public class BatTest {
 		BatTest res = new BatTest(funName,visible,parameters.clone());
 		res.result = result;
 		res.expected = expected;
+		res.expectedHasValue = expectedHasValue;
 		return res;
 	}
 	
@@ -164,7 +165,12 @@ public class BatTest {
 	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
 		if (o == null) {
-			sb.append("null");
+			if (pl == Game.SCALA)
+				sb.append("Nil");
+			else if (pl == Game.PYTHON)
+				sb.append("None");
+			else
+				sb.append("null");
 			
 		} else if (o instanceof String[]) {
 			if (pl.equals(Game.JAVA)) {
@@ -290,15 +296,21 @@ public class BatTest {
 			displayParameter(o, sb, Game.getProgrammingLanguage());
 			return sb.toString();
 		} else {
-			return "(null)";
+			if (Game.getProgrammingLanguage() == Game.SCALA)
+				return "Nil";
+			if (Game.getProgrammingLanguage() == Game.PYTHON)
+				return "None";
+			return "null";
 		}
 	}
+	private boolean expectedHasValue = false;
 	public void setResult(Object r) {
 		result = r;
-		if (expected == null) {
+		if (!expectedHasValue) {
 			expected = r; // The first time we're set, that's an answer which comes in
+			expectedHasValue = true;
 		} else {
-			if (expected != null)
+			if (expectedHasValue)
 				correct = equalParameter(expected, result);
 			answered = true;
 		}

@@ -2,13 +2,7 @@ package plm.universe.bat;
 
 import java.io.BufferedWriter;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
 import plm.universe.World;
 
