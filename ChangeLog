@@ -1,4 +1,11 @@
-20130920: Release 2.4.7
+20140921: wanabee Release 2.4.8
+
+  * Worlds:
+    - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
+  * Pedagogical content:
+    - recursion.cons: new lesson on recursive lists. Still to be filled.
+
+20140920: Release 2.4.7
 
   Python is usable again, sorry for the inconvenience.
 
