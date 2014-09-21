@@ -80,8 +80,8 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		
 		SourceFile javaFile = sourceFiles.get(Game.JAVA).get(0);
 		
-		javaFile.setCorrection("$package "+template+" public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
-		javaFile.setTemplate  ("$package "+template+" public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
+		javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
+		javaFile.setTemplate  ("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
 		//System.out.println("New template: "+sf.getTemplate());
 		
 		if (getProgLanguages().contains(Game.SCALA)) {
@@ -89,6 +89,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 			String header = "$package\n"
 					+ "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
 					+ "import plm.universe.World; \n"
+					+ "import scala.collection.JavaConverters._;\n"
 					+ "class "+entName+" extends BatEntity { ";
 			
 			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");
@@ -122,15 +123,19 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		for (int i=0;i<types.length;i++) {
 			if (i>0)
 				skeleton.append(", ");
-			skeleton.append("t.getParameter(");
-			skeleton.append(i);
-			skeleton.append(").asInstanceOf[");
-			skeleton.append(types[i]);
-			skeleton.append("]");
+			if (types[i].equals("List[Int]")) {
+				skeleton.append("t.getParameter("+i+").asInstanceOf[java.util.List[Int]].asScala.toList");
+			} else {
+				skeleton.append("t.getParameter(");
+				skeleton.append(i);
+				skeleton.append(").asInstanceOf[");
+				skeleton.append(types[i]);
+				skeleton.append("]");
+			}
 		}
 		skeleton.append(") )");
 		
-		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",7,
+		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",8,
 				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
 		addProgLanguage(Game.SCALA);
 	}
