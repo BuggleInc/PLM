@@ -5,7 +5,7 @@ import java.util.List;
 
 import lessons.recursion.cons.universe.ConsExercise;
 import lessons.recursion.cons.universe.ConsWorld;
-import lessons.recursion.cons.universe.IntSequence;
+import lessons.recursion.cons.universe.RecList;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
@@ -40,12 +40,12 @@ public class Length extends ConsExercise {
 	@SuppressWarnings("unchecked")
 	public void run(BatTest t) {
 		/* BEGIN SKEL */
-		t.setResult( length(IntSequence.fromList((List<Integer>)t.getParameter(0))) );
+		t.setResult( length(RecList.fromList((List<Integer>)t.getParameter(0))) );
 		/* END SKEL */
 	}
 
 	/* BEGIN TEMPLATE */
-	int length(IntSequence seq) {
+	int length(RecList seq) {
 		/* BEGIN SOLUTION */
 		if (seq == null)
 			return 0;
