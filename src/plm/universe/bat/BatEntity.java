@@ -50,45 +50,6 @@ public class BatEntity extends Entity {
 		// To be overriden by child classes
 	}
 
-	// FIXME: this is probably broken
-	public void runIt(ExecutionProgress progress) {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA) || pl.equals(Game.C)) {
-		} else if (pl.equals(Game.PYTHON)) {
-			ScriptEngine engine ;
-
-			ScriptEngineManager manager = new ScriptEngineManager();       
-			engine = manager.getEngineByName("python");
-			if (engine==null) 
-				throw new RuntimeException("Failed to start an interpreter for python");
-			
-			try {
-				engine.eval(
-						"import java.lang.System.err\n"+
-						"def log(a):\n"+
-						"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))\n");
-				String script = getScript(Game.PYTHON);
-				if (script == null)
-					throw new RuntimeException("No script found for "+Game.getInstance().getCurrentLesson().getCurrentExercise());
-				engine.eval(script);
-			} catch (ScriptException e1) {
-				progress.setCompilationError( e1.getCause().toString() );
-				e1.printStackTrace();
-			}									
-
-			for (BatTest t:((BatWorld) getWorld()).getTests())
-				try {
-					engine.put("thetest",t);
-					engine.eval("thetest.setResult("+t.getName()+")");
-				} catch (Exception e) {
-					t.setResult(Game.i18n.tr("This test raised a {0} exception: {1}",e.getClass().getName(), e.getMessage()));
-				}
-		} else {
-			throw new RuntimeException("BatWorld was not ported to "+pl.getLang()+" yet.");
-		}
-		
-	}
-
 	@Override
 	public void command(String command, BufferedWriter out) {
 		// TODO if use
