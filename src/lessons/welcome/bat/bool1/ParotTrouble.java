@@ -22,7 +22,7 @@ public class ParotTrouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, true,20);
 
 
-		templatePython("parotTrouble", 2,
+		templatePython("parotTrouble", new String[] {"Boolean","Int"},
 				"def parotTrouble(talking, hour):\n",
 				"   return (talking and (hour<7 or hour>20))\n");
 		templateScala("parotTrouble", new String[] {"Boolean","Int"},

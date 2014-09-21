@@ -18,6 +18,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	}
 
 	protected void setup(World[] ws) {
+		setup(ws,"","");
+	}
+	protected void setup(World[] ws,String extraImport, String extraBody) {
 		if (ws.length > 1)
 			throw new RuntimeException("Bat exercises must have at most one world");
 		
@@ -31,7 +34,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		        "import plm.universe.bat.BatWorld; "+
 		        "import plm.universe.bat.BatTest; "+
 		        "import plm.universe.World; "+
-		        "public class "+entName+" extends BatEntity { ");
+		        extraImport+
+		        "public class "+entName+" extends BatEntity { "+
+		        extraBody);
 	}
 	
 	@Override
@@ -44,7 +49,12 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	public void templatePython(String entName, String initialCode, String correction) {
 		throw new RuntimeException("The exercise "+getName()+" should add the amount of parameters to templatePython().");
 	}
-	protected void templatePython(String entName, int nbParams, String initialCode, String correction) {
+	
+	/* The types parameter is needed because I sometimes need to convert from the java world to the python one (ConsWorld comes to mind)
+	 * In most cases, the content is ignored but we still use the amount of elements in the array. 
+	 * The most elegant usage here is to pass the same argument than to the scala template, unless when you want a specific conversion 
+	 */
+	protected void templatePython(String entName, String[] types, String initialCode, String correction) {
 		/* The following test is intended to make sure that this function is called before setup() right above.
 		 * This is because setup() needs all programming languages to be declared when it runs */
 		if (isSetup())
@@ -57,12 +67,18 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		skeleton.append("  t.setResult(");
 		skeleton.append(entName);
 		skeleton.append("(");
-		for(int i=0; i<nbParams; i++) {
+		for(int i=0; i<types.length; i++) {
 			if (i>0)
 				skeleton.append(", ");
-			skeleton.append("t.getParameter(");
-			skeleton.append(i);
-			skeleton.append(")");
+			if (types[i].equals("RecList")) {
+				skeleton.append("RecListFromArray(t.getParameter(");
+				skeleton.append(i);
+				skeleton.append("))");
+			} else {
+				skeleton.append("t.getParameter(");
+				skeleton.append(i);
+				skeleton.append(")");
+			}
 		}
 		skeleton.append("))\n");
 		

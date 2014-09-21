@@ -24,7 +24,7 @@ public class CaughtSpeeding extends BatExercise {
 		myWorld.addTest(INVISIBLE, 40, true) ;
 		myWorld.addTest(INVISIBLE, 90, false) ;
 
-		templatePython("caughtSpeeding", 2,
+		templatePython("caughtSpeeding", new String[] {"Int","Boolean"},
 				"def caughtSpeeding(speed, isBirthday):\n",
 				"	if ((isBirthday and speed <= 65) or (speed <= 60)):\n"+
 				"		return 0\n"+

@@ -24,7 +24,7 @@ public class WithoutDoubles extends BatExercise {
 		myWorld.addTest(INVISIBLE, 1, 6, true) ;
 		myWorld.addTest(INVISIBLE, 6, 1, false) ;
 
-		templatePython("withoutDoubles", 3,
+		templatePython("withoutDoubles", new String[]{"Int","Int","Boolean"},
 				"def withoutDoubles(die1, die2, noDoubles):\n",
 				"	if (noDoubles and (die1 == die2)):\n"+
 				"		if (die1 == 6):\n"+

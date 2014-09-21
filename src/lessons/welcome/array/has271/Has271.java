@@ -23,7 +23,7 @@ public class Has271 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 7, 5, 10, 1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 7, -2, 4, 10, 2}) ;
 
-		templatePython("has271", 1,
+		templatePython("has271", new String[] {"Array[Int]"},
 				"import math\ndef has271(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-1):\n"+

@@ -21,7 +21,7 @@ public class Max1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 20) ;
 		myWorld.addTest(INVISIBLE, 17, 16) ;
 
-		templatePython("max1020", 2,
+		templatePython("max1020", new String[] {"Int","Int"},
 				"def max1020(a, b):\n",
 				"	A = max(a,b)\n"+
 				"	B = min(a,b)\n"+
@@ -30,7 +30,7 @@ public class Max1020 extends BatExercise {
 				"	if (B<21 and B>9):\n"+
 				"		return B\n"+
 				"	return 0\n");
-		templateScala("max1020",new String[] {"Int","Int"}, 
+		templateScala("max1020", new String[] {"Int","Int"}, 
 				"def max1020(a:Int, b:Int):Int = {\n",
 				"	val A = Math.max(a,b)\n"+
 				"	val B = Math.min(a,b)\n"+

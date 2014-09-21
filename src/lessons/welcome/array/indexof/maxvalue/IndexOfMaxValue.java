@@ -27,7 +27,7 @@ public class IndexOfMaxValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab2) ;
 		myWorld.addTest(INVISIBLE, new int[] { -4, -3, -1, -17, -13, -5, -3, -1, -9, -18 }) ;
 
-		templatePython("indexOfMaxValue", 1,
+		templatePython("indexOfMaxValue", new String[]{"Array[Int]"},
 				"def indexOfMaxValue(nums):\n",
 				"  max=nums[0]\n" +
 				"  maxIdx = 0\n" +

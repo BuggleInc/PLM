@@ -22,7 +22,7 @@ public class Last2 extends BatExercise {
 		myWorld.addTest(INVISIBLE, "h") ;
 		myWorld.addTest(INVISIBLE, "") ;
 
-		templatePython("last2", 1,
+		templatePython("last2", new String[]{"String"},
 				"def last2(str):\n",
 				"  l = len(str)\n" +
 				"  if l < 2:\n" +

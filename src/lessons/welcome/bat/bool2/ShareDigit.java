@@ -22,10 +22,10 @@ public class ShareDigit extends BatExercise {
 		myWorld.addTest(INVISIBLE, 55, 55) ;
 		myWorld.addTest(INVISIBLE, 55, 44) ;
 
-		templatePython("shareDigit", 2,
+		templatePython("shareDigit", new String[]{"Int","Int"},
 				"def shareDigit(a, b):\n",
 				"   return (a/10 == b/10 or a/10 == b%10 or a%10 == b/10 or a%10 == b%10)");
-		templateScala("shareDigit",new String[]{"Int","Int"}, 
+		templateScala("shareDigit", new String[]{"Int","Int"}, 
 				"def shareDigit(a:Int, b:Int):Boolean = {\n",
 				"   return (a/10 == b/10 || a/10 == b%10 || a%10 == b/10 || a%10 == b%10)\n"+
 				"}");

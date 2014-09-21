@@ -30,7 +30,7 @@ public class AverageValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, new int[] {1, 2}) ;
 		myWorld.addTest(INVISIBLE, new int[] {42}) ;
 
-		templatePython("averageValue", 1,
+		templatePython("averageValue", new String[] {"Array[Int]"},
 				"def averageValue(nums):\n",
 				"  total = 0\n"+
 				"  for i in range(len(nums)):\n" +

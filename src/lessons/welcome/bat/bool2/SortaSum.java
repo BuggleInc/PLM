@@ -21,7 +21,7 @@ public class SortaSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 14, 7) ;
 		myWorld.addTest(INVISIBLE, 14, 6) ;
 
-		templatePython("sortaSum", 2,
+		templatePython("sortaSum", new String[]{"Int","Int"},
 				"def sortaSum(a, b):\n",
 				"	sum = a+b\n"+
 				"	if (sum >= 10 and sum <= 19):\n"+

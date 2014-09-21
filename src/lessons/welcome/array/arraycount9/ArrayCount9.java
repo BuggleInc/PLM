@@ -17,7 +17,7 @@ public class ArrayCount9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {4, 2, 4, 3, 1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {9, 2, 4, 3, 1}) ;
 
-		templatePython("arrayCount9", 1,
+		templatePython("arrayCount9", new String[]{"Array[Int]"},
 				"def arrayCount9(nums):\n",
 				"  res = 0\n" +
 				"  for value in nums:\n" +

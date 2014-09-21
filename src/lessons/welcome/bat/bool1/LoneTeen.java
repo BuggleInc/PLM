@@ -26,12 +26,12 @@ public class LoneTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 42,13);
 		myWorld.addTest(INVISIBLE, 42,42);
 
-		templatePython("loneTeen", 2,
+		templatePython("loneTeen", new String[] {"Int","Int"},
 				"def loneTeen(a, b):\n",
 				"	teenA = a>12 and a<20\n"+
 				"	teenB = b>12 and b<20\n"+
 				"	return  (teenA and not teenB) or (teenB and not teenA)\n");
-		templateScala("loneTeen",new String[] {"Int","Int"}, 
+		templateScala("loneTeen", new String[] {"Int","Int"}, 
 				"def loneTeen(a:Int, b:Int):Boolean = {\n",
 				"	val teenA = a>12 && a<20\n"+
 				"	val teenB = b>12 && b<20\n"+

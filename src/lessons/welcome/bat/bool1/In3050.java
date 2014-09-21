@@ -26,7 +26,7 @@ public class In3050 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 35,45);
 
 
-		templatePython("in3050", 2,
+		templatePython("in3050", new String[] {"Int","Int"},
 				"def in3050(a, b):\n",
 				"   return (a>29 and a<41 and b>29 and b<41) or (a>39 and a<51 and b>39 and b<51)\n");
 		templateScala("in3050", new String[] {"Int","Int"},

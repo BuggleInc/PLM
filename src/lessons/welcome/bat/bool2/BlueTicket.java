@@ -24,7 +24,7 @@ public class BlueTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 8, 4, 2) ;
 		myWorld.addTest(INVISIBLE, 8, 4, 1) ;
 
-		templatePython("blueTicket", 3,
+		templatePython("blueTicket", new String[]{"Int","Int","Int"},
 				"def blueTicket(a, b, c):\n",
 				"	ab = a + b\n"+
 				"	ac = a + c\n"+

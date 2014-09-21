@@ -25,7 +25,7 @@ public class HasTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,22,22);
 
 
-		templatePython("hasTeen", 3,
+		templatePython("hasTeen", new String[] {"Int","Int","Int"},
 				"def hasTeen(a, b, c):\n",
 				"   return (a>12 and a<20) or (b>12 and b<20) or (c>12 and c<20)\n");
 		templateScala("hasTeen", new String[] {"Int","Int","Int"}, 

@@ -22,10 +22,10 @@ public class Makes10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10,42);
 		myWorld.addTest(INVISIBLE, 12,-2);
 
-		templatePython("makes10", 2,
+		templatePython("makes10", new String[]{"Int","Int"},
 				"def makes10(a, b):\n",
 				"   return a==10 or b==10 or (a+b)==10");
-		templateScala("makes10",new String[]{"Int","Int"},
+		templateScala("makes10", new String[]{"Int","Int"},
 				"def makes10(a:Int, b:Int):Boolean = {\n",
 				"   return (a==10) || (b==10) || ((a+b)==10)\n"
 			  + "}");

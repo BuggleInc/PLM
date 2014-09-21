@@ -24,10 +24,10 @@ public class TwoAsOne extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3, 3, 0) ;
 		myWorld.addTest(INVISIBLE, 3, 3, 2) ;
 
-		templatePython("twoAsOne", 3,
+		templatePython("twoAsOne", new String[]{"Int","Int","Int"},
 				"def twoAsOne(a, b, c):\n",
 				"   return (a + b == c) or (a + c == b) or (b + c == a)");
-		templateScala("twoAsOne",new String[]{"Int","Int","Int"}, 
+		templateScala("twoAsOne", new String[]{"Int","Int","Int"}, 
 				"def twoAsOne(a:Int, b:Int, c:Int):Boolean = {\n",
 				"   return (a + b == c) || (a + c == b) || (b + c == a)\n"+
 				"}");

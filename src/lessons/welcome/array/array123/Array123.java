@@ -22,7 +22,7 @@ public class Array123 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		templatePython("array123", 1,
+		templatePython("array123", new String[] {"Array[Int]"},
 				"def array123(nums):\n",
 				"  for i in range(len(nums)-2):\n" +
 				"    if nums[i]==1  and  nums[i+1]==2  and  nums[i+2]==3:\n"+

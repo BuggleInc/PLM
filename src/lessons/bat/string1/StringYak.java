@@ -17,7 +17,7 @@ public class StringYak extends BatExercise {
 		myWorld.addTest(INVISIBLE, "HiyakHi") ;
 		myWorld.addTest(INVISIBLE, "xxxyakyyyakzzz") ;
 
-		templatePython("stringYak", 1,
+		templatePython("stringYak", new String[]{"String"},
 				"def stringYak(str):\n",
 				"  res = ''\n" +
 				"  i=0\n" +
@@ -28,7 +28,7 @@ public class StringYak extends BatExercise {
 				"      res += str[i]\n" +
 				"    i+=1\n"+
 				"  return res\n");
-		templateScala("stringYak",new String[]{"String"}, 
+		templateScala("stringYak", new String[]{"String"}, 
 				"def stringYak(str:String):String = { \n",
 				"  var res = \"\"\n" +
 				"  var i=0\n" +

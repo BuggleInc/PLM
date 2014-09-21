@@ -17,7 +17,7 @@ public class FrontTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "", 4) ;
 		myWorld.addTest(INVISIBLE, "Abc", 0) ;
 
-		templatePython("frontTimes", 2,
+		templatePython("frontTimes", new String[]{"String","Int"},
 				"def frontTimes(str, n):\n",
 				"  frontLen = 3\n" +
 				"  if frontLen > len(str):\n" +

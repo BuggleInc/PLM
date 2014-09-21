@@ -19,7 +19,7 @@ public class SumDouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,0);
 		myWorld.addTest(INVISIBLE, 0,1);
 
-		templatePython("sumDouble", 2,
+		templatePython("sumDouble", new String[]{"Integer","Integer"},
 				"def sumDouble(a, b):\n",
 				"  if a==b:\n"+
 				"    return (a+b)*2\n"+

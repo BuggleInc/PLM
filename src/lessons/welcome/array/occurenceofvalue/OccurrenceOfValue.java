@@ -48,7 +48,7 @@ public class OccurrenceOfValue extends BatExercise {
 
 		
 		
-		templatePython("occurrences", 2,
+		templatePython("occurrences", new String[]{"Array[Int]","Int"},
 				"def occurrences(nums,lookingFor):\n",
 				"  count = 0\n" +
 				"  for i in range(len(nums)):\n" +
