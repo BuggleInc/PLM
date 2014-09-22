@@ -24,7 +24,7 @@ public class PlusOne extends ConsExercise {
 				"def plusOne(list):\n",
 				"  if list == None:\n" +
 				"    return None;\n"+
-				"  return cons(list.head+1, list.tail)\n");
+				"  return cons(list.head+1, plusOne(list.tail))\n");
 		templateScala("plusOne", new String[] {"List[Int]"}, 
 				"def plusOne(l:List[Int]): List[Int] = {\n",
 				"  l match {\n" +
