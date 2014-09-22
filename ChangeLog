@@ -1,9 +1,9 @@
-20140921: wanabee Release 2.4.8
+20140921: wanabe Release 2.4.8
 
   * Worlds:
     - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
   * Pedagogical content:
-    - recursion.cons: new lesson on recursive lists. Still to be filled.
+    - recursion.cons: new lesson on recursive lists (only 3 exos so far)
 
 20140920: Release 2.4.7
 

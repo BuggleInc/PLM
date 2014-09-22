@@ -12,6 +12,8 @@ public class Main extends Lesson {
 	protected void loadExercises() throws IOException, BrokenWorldFileException {
 		addExercise(new Length(this));		
 		addExercise(new PlusOne(this));		
+		// Some exercises are missing here
+		addExercise(new Remove(this));		
 	}
 
 }
