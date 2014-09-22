@@ -4,6 +4,7 @@
     - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
   * Pedagogical content:
     - recursion.cons: new lesson on recursive lists (only 3 exos so far)
+    - #349: French typo
 
 20140920: Release 2.4.7
 

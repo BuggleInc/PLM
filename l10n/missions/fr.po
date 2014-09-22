@@ -8673,7 +8673,7 @@ msgstr ""
 "faire: \n"
 "        Pour tout i dans [0,lgr-2]\n"
 "          Si les cases i et i+1 doivent être inversées, le faire\n"
-"     tant qu'on a inverser des choses lors du dernier parcours\n"
+"     tant qu'on a inversé des choses lors du dernier parcours\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
@@ -8715,7 +8715,7 @@ msgid ""
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"          Si les cases j et j+1 doivent être inversées, le faire\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:20
@@ -8796,7 +8796,7 @@ msgid ""
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"          Si les cases j et j+1 doivent être inversées, le faire\n"
 "       Si le parcours sur les j n'a rien inversé, casser la boucle\n"
 
 #. type: Content of: <p>
