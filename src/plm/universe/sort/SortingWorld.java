@@ -87,7 +87,7 @@ public class SortingWorld extends World {
 		
 		/* Do not compare the operation order as it's not part of the problem specification
 		 * 
-		 * If you want to add this again, please make sure that swap(i,j) is equal to swap(j,i)
+		 * If you want to add this again, please make sure that swap(i,j) equals to swap(j,i)
 		 
 		if (operations.size() != other.operations.size())
 			return false;
@@ -123,7 +123,8 @@ public class SortingWorld extends World {
 			
 			for (int i = 0 ; i < this.values.length ; i++) 
 				if ( this.values[i] != other.values[i] )
-					sb.append(Game.i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",val2str(values[i],values.length),val2str(other.values[i],other.values.length)));
+					sb.append(Game.i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",
+							i, val2str(values[i],values.length),  val2str(other.values[i],other.values.length)  ));
 					
 			s = sb.toString();
 		}
