@@ -9335,7 +9335,7 @@ msgstr ""
 "peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il "
 "trouve souvent des bugs bizarres qui auraient été très pénibles à débugger "
 "s'il ne les avait pas attrapé à la source. Et comme de plus les auteurs de "
-"Scala sont pragmatiques, cela peut aussi de manière simplifiée :"
+"Scala sont pragmatiques, cela peut aussi s'écrire de manière simplifiée :"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:36
