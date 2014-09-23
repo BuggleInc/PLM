@@ -5,6 +5,7 @@
   * Pedagogical content:
     - recursion.cons: new lesson on recursive lists (only 3 exos so far)
     - #349, #355 : French typo
+    - #356: write 'one', not '1' (was too similar to 'l') (fix #356)
 
 20140920: Release 2.4.7
 
