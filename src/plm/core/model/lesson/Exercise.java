@@ -160,6 +160,8 @@ public abstract class Exercise extends Lecture {
 		}
 
 		for (World current:worlds) {
+			if (current.getEntities().isEmpty())
+				throw new RuntimeException("Every world in every exercise must have at lease one entity when calling setup(). Please fix your exercise.");
 			current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate) );			
 		}
 	}
