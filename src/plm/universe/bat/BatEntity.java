@@ -35,7 +35,7 @@ public class BatEntity extends Entity {
 			try {
 				run(t);
 			} catch (Exception e) {
-				t.setResult(Game.i18n.tr("This test raised a {0} exception: {1}",e.getClass().getName(), e.getMessage()));
+				t.setResult(Game.i18n.tr("Exception {0}: {1}",e.getClass().getName(), e.getMessage()));
 				e.printStackTrace();
 			}
 	}
