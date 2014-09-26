@@ -10,12 +10,12 @@ public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 
 	@Override
 	public String generateRuntimeExceptionRisingCode() {
-		return "def toto():\nédvw<fe\"v[>";
+		return "myList=[1,2,3,4,5,6]\nprint myList[42]";
 	}
 
 	@Override
 	public String generateCompilationExceptionRisingCode() {
-		return generateRuntimeExceptionRisingCode();
+		return "def toto():\ndvw<fe\"v[>";
 	}
 
 }
