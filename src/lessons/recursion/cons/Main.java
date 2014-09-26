@@ -18,6 +18,7 @@ public class Main extends Lesson {
 		addExercise(new PlusOne(this));		
 		// Some exercises are missing here
 		addExercise(new Remove(this));		
+		addExercise(new AllDifferent(this)); // This one is harder: O(n²) with an extra function, or you need to first sort the array
 	}
 
 }
