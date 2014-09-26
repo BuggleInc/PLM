@@ -1,5 +1,8 @@
 20140921: wanabe Release 2.4.8
 
+  * Engine:
+  	- Use appropriately the executionError field instead of compilationError 
+  	  to signal errors detected while running an entity.
   * Worlds:
     - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
   * Pedagogical content:

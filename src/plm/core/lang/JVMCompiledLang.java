@@ -72,7 +72,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 				msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
 
 			System.err.println(msg);
-			progress.setCompilationError(msg);
+			progress.setExecutionError(msg);
 			e.printStackTrace();
 		}
 	}
