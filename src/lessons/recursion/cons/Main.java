@@ -19,6 +19,7 @@ public class Main extends Lesson {
 		addExercise(new PlusOne(this)); // uses cons or ::
 		addExercise(new Remove(this));  // uses cons or ::
 		addExercise(new Nth(this));
+		addExercise(new Nfirst(this));  // uses cons or ::
 
 		addExercise(new AllDifferent(this)); // This one is harder: O(n²) with an extra function, or you need to first sort the array
 	}
