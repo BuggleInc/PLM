@@ -20,6 +20,7 @@ public class Main extends Lesson {
 		addExercise(new Remove(this));  // uses cons or ::
 		addExercise(new Nth(this));
 		addExercise(new Nfirst(this));  // uses cons or ::
+		addExercise(new Nlast(this));   // uses cons or :: and extra functions
 		addExercise(new ButNfirst(this));
 		addExercise(new ButNlast(this)); // uses extra functions
 
