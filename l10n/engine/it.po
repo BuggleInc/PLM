@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-20 11:32+0200\n"
+"POT-Creation-Date: 2014-09-28 22:03+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -534,12 +534,12 @@ msgstr ""
 "Nessuno script sorgente {0} per l'entità {1}. Per piacere segnala questo bug "
 "a PLM."
 
-#: src/plm/core/lang/ScriptingLanguage.java:105
+#: src/plm/core/lang/ScriptingLanguage.java:107
 #, fuzzy, java-format
 msgid "Received a ScriptException that does not come from the {0} language.\n"
 msgstr "Ricevuto uno ScriptException che non proviene da Python.\n"
 
-#: src/plm/core/lang/ScriptingLanguage.java:110
+#: src/plm/core/lang/ScriptingLanguage.java:112
 #, fuzzy, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
@@ -930,7 +930,7 @@ msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
 
 #: src/plm/core/model/session/GitSessionKit.java:120
-#: src/plm/core/model/tracking/GitUtils.java:96
+#: src/plm/core/model/tracking/GitUtils.java:97
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 
@@ -1005,7 +1005,12 @@ msgstr ""
 msgid "Don't save code remotely, as the network seems unreachable."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:66
+#. System.out.println("Branch " + userBranch + " created");
+#: src/plm/core/model/tracking/GitUtils.java:56
+msgid "Retrieving your session from the servers..."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:67
 msgid ""
 "Don't save code remotely, as the network seems unreachable. That's fine."
 msgstr ""
@@ -2037,11 +2042,10 @@ msgstr ""
 msgid "WEST"
 msgstr ""
 
-#: src/plm/universe/bat/BatEntity.java:44
-#: src/plm/universe/bat/BatEntity.java:83
+#: src/plm/universe/bat/BatEntity.java:38
 #, java-format
-msgid "This test raised a {0} exception: {1}"
-msgstr "Questo test ha sollevato una eccezione {0}: {1}"
+msgid "Exception {0}: {1}"
+msgstr ""
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:156
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2433,14 +2437,14 @@ msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr ""
 "L'indice del valure {0} è differente. Ci si aspettava: {1}; Trovato: {2}\n"
 
-#: src/plm/universe/sort/SortingWorld.java:352
 #: src/plm/universe/sort/SortingWorld.java:353
+#: src/plm/universe/sort/SortingWorld.java:354
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
 msgstr "Fuori dai margini durante scambia({0},{1}): {2}<0"
 
-#: src/plm/universe/sort/SortingWorld.java:354
 #: src/plm/universe/sort/SortingWorld.java:355
+#: src/plm/universe/sort/SortingWorld.java:356
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr "Fuori dai margini durante scambia({0},{1}): {2}>totale valori"
@@ -2511,6 +2515,9 @@ msgstr ""
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (ottenuto {1} invece di {2})\n"
+
+#~ msgid "This test raised a {0} exception: {1}"
+#~ msgstr "Questo test ha sollevato una eccezione {0}: {1}"
 
 #~ msgid "That's not a line."
 #~ msgstr "Questa non è una riga."
