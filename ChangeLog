@@ -6,7 +6,7 @@
   * Worlds:
     - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
   * Pedagogical content:
-    - recursion.cons: new lesson on recursive lists (12 exos so far)
+    - recursion.cons: new lesson on recursive lists (15 challenges)
     - #349, #355 : French typo
     - #356: write 'one', not '1' (was too similar to 'l') (fix #356)
     - #365: SelectionSort: don't sort the last cell, it's already done

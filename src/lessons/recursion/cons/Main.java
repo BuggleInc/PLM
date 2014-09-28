@@ -24,6 +24,9 @@ public class Main extends Lesson {
 		addExercise(new ButNfirst(this));
 		addExercise(new ButNlast(this)); // uses extra functions
 
+		addExercise(new Reverse(this));
+		addExercise(new Concat(this));
+		
 		addExercise(new AllDifferent(this)); // This one is harder: O(n²) with an extra function, or you need to first sort the array
 	}
 
