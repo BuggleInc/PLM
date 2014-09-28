@@ -11,7 +11,7 @@ public class AlgSelectionSortEntity extends SortingEntity {
 	/* BEGIN TEMPLATE */
 	public void selectionSort() {
 		/* BEGIN SOLUTION */
-		for (int i = 0; i < getValueCount(); i++) {
+		for (int i = 0; i < getValueCount()-1; i++) {
 			int min = i;	
 			int j;
 

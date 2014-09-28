@@ -1,5 +1,5 @@
 # BEGIN SOLUTION
-for i in range(getValueCount()):
+for i in range(getValueCount()-1):
 	min = i
 	for j in range(i+1, getValueCount()):
 		if isSmaller(j,min):
