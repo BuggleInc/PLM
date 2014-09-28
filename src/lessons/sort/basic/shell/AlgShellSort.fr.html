@@ -2,16 +2,17 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Tri Shell</h2>
  
-This algorithm is named after its author, Donald Shell, who published it in
-1959. It can be seen as an application of the CombSort idea (let elements
-having a long path to travel take shortcuts) to the insertion sort (CombSort
-is a variation of BubbleSort). Instead of comparing adjacent values during
-the insertion sort, it compares values separated by a bigger gap. The bigger
-the gap, the faster the elements are moved to their final destination, but
-also the less precise is this move. It is thus mandatory to apply the
-algorithm with a serie of decreasing gaps. At the last step, when the gap is
-one, InsertionSort is used, but onto an array which is almost already sorted
-by previous steps.
+Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en
+1959. Son principe peut être vu comme une application de l'idée du CombSort
+(faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire)
+au tri par insertion (le CombSort est une variante du tri à bulle).  Au lieu
+de comparer les valeurs adjacentes lors du tri par insertion, on compare des
+valeurs séparées par un <i>écart</i> plus grand. Plus l'écart est grand et
+plus les éléments sont déplacés rapidement vers leur position finale, mais
+aussi plus le déplacement est imprécis. Il faut donc appliquer l'algorithme
+avec une séquence d'écarts décroissante vers un. Ainsi, à la dernière étape
+quand l'écart vaut un, on applique l'algorithme de tri par insertion de
+base, mais sur un tableau déjà presque trié par les étapes précédentes.
 
 <p>Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur de
 l'écartement, puis de le diviser par deux à chaque étape.  Le pseudo-code

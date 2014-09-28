@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-28 21:55+0200\n"
-"PO-Revision-Date: 2014-09-16 17:04+0200\n"
+"PO-Revision-Date: 2014-09-28 22:01+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -9074,18 +9074,6 @@ msgstr "Tri Shell"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/shell/AlgShellSort.html:4
-#, fuzzy
-#| msgid ""
-#| "This algorithm is named after its author, Donald Shell, who published it "
-#| "in 1959. It can be seen as an application of the CombSort idea (let "
-#| "elements having a long path to travel take shortcuts) to the insertion "
-#| "sort (CombSort is a variation of BubbleSort). Instead of comparing "
-#| "adjacent values during the insertion sort, it compares values separated "
-#| "by a bigger gap. The bigger the gap, the faster the elements are moved to "
-#| "their final destination, but also the less precise is this move. It is "
-#| "thus mandatory to apply the algorithm with a serie of decreasing gaps. At "
-#| "the last step, when the gap is 1, InsertionSort is used, but onto an "
-#| "array which is almost already sorted by previous steps."
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -9205,13 +9193,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:7
-#, fuzzy
-#| msgid ""
-#| "The idea is simply to select for each cell of the array the smallest "
-#| "value from the part not already sorted. Thus for the first cell, it takes "
-#| "the smallest value over the whole array. For the second one, it takes the "
-#| "second smallest value, which is the smallest value from the cell not "
-#| "already sorted."
 msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
@@ -9219,28 +9200,15 @@ msgid ""
 "smallest value, which is the smallest value from the cell not already "
 "sorted. You of course don't have to sort the last cell of the array, that is "
 "already sorted when you consider it."
-msgstr ""
-"Son principe est simplement de sélectionner pour chaque case du tableau la "
-"plus petite valeur de la partie pas encore triée. Ainsi, pour la première "
-"case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
-"la seconde plus petite valeur, qui se trouve être la plus petite des cases "
-"n'étant pas encore triées."
+msgstr "Son principe est simplement de sélectionner pour chaque case du tableau la plus petite valeur de la partie pas encore triée. Ainsi, pour la première case, je prend la plus petite valeur du tableau. Pour la seconde, je prend la seconde plus petite valeur, qui se trouve être la plus petite des cases n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la dernière case du tableau, puisqu'elle est déjà triée lorsque vous la considérez."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
-#, fuzzy
-#| msgid ""
-#| "More generally, for the cell N, it looks the cell M in [n;len] containing "
-#| "the smallest possible value of the interval. Then, it swaps the content "
-#| "of cell N with the one of cell M."
 msgid ""
 "More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
-msgstr ""
-"Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant "
-"la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
-"et celui de la case M."
+msgstr "Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N et celui de la case M."
 
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
@@ -11565,10 +11533,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:2
-#, fuzzy
-#| msgid "Sorting World"
 msgid "ConsWorld"
-msgstr "Monde des tris"
+msgstr "Monde des listes récursives"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:4
@@ -11615,10 +11581,9 @@ msgstr ""
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
-#, fuzzy, no-wrap
-#| msgid "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+#, no-wrap
 msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
-msgstr "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+msgstr "[!java|c]null[/!][!scala]Nil[/!][python]None[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
@@ -11663,8 +11628,6 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Main.html:2
-#, fuzzy
-#| msgid "Recursive algorithms"
 msgid "Recursive Lists"
 msgstr "Algorithmes récursifs"
 
@@ -11739,10 +11702,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
-#, fuzzy
-#| msgid "Occurrence of a value"
 msgid "Occurrences"
-msgstr "Occurrences d'une valeur"
+msgstr "Occurrences"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Occurrence.html:3
@@ -11755,10 +11716,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Last.html:2
-#, fuzzy
-#| msgid "Last2"
 msgid "Last"
-msgstr "Deux derniers"
+msgstr "Dernier"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Last.html:3
@@ -11795,10 +11754,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButLast.html:2
-#, fuzzy
-#| msgid "Last2"
 msgid "But Last"
-msgstr "Deux derniers"
+msgstr "Sauf Dernier"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButLast.html:3
@@ -11929,8 +11886,6 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Reverse.html:2
-#, fuzzy
-#| msgid "Inverse"
 msgid "Reverse"
 msgstr "Inverse"
 
