@@ -1,4 +1,4 @@
-20140921: wanabe Release 2.4.8
+20140928: Release 2.4.8
 
   * Engine:
     - Use appropriately the executionError field instead of
