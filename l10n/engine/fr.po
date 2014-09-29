@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-20 11:32+0200\n"
+"POT-Creation-Date: 2014-09-28 22:03+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -547,12 +547,12 @@ msgid ""
 msgstr ""
 "Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de la PLM."
 
-#: src/plm/core/lang/ScriptingLanguage.java:105
+#: src/plm/core/lang/ScriptingLanguage.java:107
 #, java-format
 msgid "Received a ScriptException that does not come from the {0} language.\n"
 msgstr "Reçu une ScriptException qui ne vient pas du langage {0}.\n"
 
-#: src/plm/core/lang/ScriptingLanguage.java:110
+#: src/plm/core/lang/ScriptingLanguage.java:112
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
@@ -946,7 +946,7 @@ msgid "Your session {0} was automatically retrieved from the servers."
 msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
 
 #: src/plm/core/model/session/GitSessionKit.java:120
-#: src/plm/core/model/tracking/GitUtils.java:96
+#: src/plm/core/model/tracking/GitUtils.java:97
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 "Impossible de synchroniser votre session avec les serveurs (le réseau est "
@@ -1026,7 +1026,12 @@ msgstr ""
 "Le code n'a pas été sauvegardé sur les serveurs distants puisque le réseau "
 "semble inutilisable. Ce n'est pas un problème."
 
-#: src/plm/core/model/tracking/GitUtils.java:66
+#. System.out.println("Branch " + userBranch + " created");
+#: src/plm/core/model/tracking/GitUtils.java:56
+msgid "Retrieving your session from the servers..."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:67
 msgid ""
 "Don't save code remotely, as the network seems unreachable. That's fine."
 msgstr ""
@@ -2096,11 +2101,10 @@ msgstr "SUD"
 msgid "WEST"
 msgstr "OUEST"
 
-#: src/plm/universe/bat/BatEntity.java:44
-#: src/plm/universe/bat/BatEntity.java:83
+#: src/plm/universe/bat/BatEntity.java:38
 #, java-format
-msgid "This test raised a {0} exception: {1}"
-msgstr "Ce test a levé une exception {0} : {1}"
+msgid "Exception {0}: {1}"
+msgstr ""
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:156
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2496,14 +2500,14 @@ msgstr "Le nombre d''écritures diffère. Attendu : {0}; Observé : {1}\n"
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr "Les valeurs à l''index {0} diffère. Attendue : {1}; Observée : {2}\n"
 
-#: src/plm/universe/sort/SortingWorld.java:352
 #: src/plm/universe/sort/SortingWorld.java:353
+#: src/plm/universe/sort/SortingWorld.java:354
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
 msgstr "Dépassement des bornes à l''appel de  echange({0},{1}) : {2}<0"
 
-#: src/plm/universe/sort/SortingWorld.java:354
 #: src/plm/universe/sort/SortingWorld.java:355
+#: src/plm/universe/sort/SortingWorld.java:356
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
@@ -2576,6 +2580,9 @@ msgstr ""
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
+
+#~ msgid "This test raised a {0} exception: {1}"
+#~ msgstr "Ce test a levé une exception {0} : {1}"
 
 #~ msgid "That's not a line."
 #~ msgstr "Ce n'est pas une ligne."

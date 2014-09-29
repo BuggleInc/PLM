@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-16 17:00+0200\n"
+"POT-Creation-Date: 2014-09-28 21:55+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -903,7 +903,7 @@ msgstr "Metodi con parametri"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:229
-#: src/lessons/welcome/methods/picture/PictureMono.html:2
+#: src/lessons/welcome/methods/picture/PictureMono1.html:2
 msgid "Methodically drawing"
 msgstr "Disegnare metodicamente"
 
@@ -1232,6 +1232,7 @@ msgstr ""
 #: src/lessons/turmites/langton/Langton.html:32
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -2360,10 +2361,11 @@ msgstr ""
 msgid "x = 5"
 msgstr "x = 5"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
 
@@ -5319,7 +5321,7 @@ msgstr ""
 "creazione per creare diverse cuccie intorno al suo mondo."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/PictureMono.html:4
+#: src/lessons/welcome/methods/picture/PictureMono1.html:4
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:4
 msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
@@ -5329,7 +5331,7 @@ msgstr ""
 "scheda \"Objective\"."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:7
+#: src/lessons/welcome/methods/picture/PictureMono1.html:7
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:7
 msgid ""
 "Your goal (here and in any well written program) is to write the simplest "
@@ -5341,7 +5343,7 @@ msgstr ""
 "sottosezioni e scrivere un metodo specifico per ognuna di esse."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:11
+#: src/lessons/welcome/methods/picture/PictureMono1.html:11
 #, fuzzy
 #| msgid ""
 #| "If you observe carefully the picture to draw, it is constituted of four "
@@ -5361,7 +5363,7 @@ msgstr ""
 "code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:16
+#: src/lessons/welcome/methods/picture/PictureMono1.html:16
 msgid ""
 "In this method, you should use the methods <code>brushUp()</code> and "
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
@@ -5375,7 +5377,7 @@ msgstr ""
 "buggle già nella posizione adatta a disegnare la V seguente."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:21
+#: src/lessons/welcome/methods/picture/PictureMono1.html:21
 #, fuzzy
 #| msgid ""
 #| "Your turn. Your code of should not be longer than 4 lines (not counting "
@@ -8037,6 +8039,7 @@ msgstr ""
 #: src/lessons/sort/dutchflag/Main.html:11
 #: src/lessons/sort/pancake/Main.html:32
 #: src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14
+#: src/lessons/recursion/cons/Main.html:7
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -9325,7 +9328,7 @@ msgid ""
 "the gap, the faster the elements are moved to their final destination, but "
 "also the less precise is this move. It is thus mandatory to apply the "
 "algorithm with a serie of decreasing gaps. At the last step, when the gap is "
-"1, InsertionSort is used, but onto an array which is almost already sorted "
+"one, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
 
@@ -9398,24 +9401,26 @@ msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
 "smallest value over the whole array. For the second one, it takes the second "
-"smallest value, which is the smallest value from the cell not already sorted."
+"smallest value, which is the smallest value from the cell not already "
+"sorted. You of course don't have to sort the last cell of the array, that is "
+"already sorted when you consider it."
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:13
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
 msgid ""
-"More generally, for the cell N, it looks the cell M in [n;len] containing "
+"More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
 msgstr ""
 
 #. type: Content of: <p><p><h2>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
 msgid "Existing variations"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:19
 msgid ""
 "Another classical algorithm which idea is based on the selection of good "
 "elements is HeapSort, but it uses a heap data structure which we did not see "
@@ -11245,6 +11250,443 @@ msgid ""
 "You should know the basic syntax of the programming language you will "
 "choose, but no exhaustive programming practice is required to take this "
 "lesson."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:2
+#, fuzzy
+#| msgid "Snake World"
+msgid "ConsWorld"
+msgstr "Mondo di Snake"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:4
+msgid ""
+"This world allows you to experiment with the recursive strings, as they were "
+"first defined in Lisp. It is very similar to the BatWorld, but you are "
+"supposed to write recursive functions working on [!python|java]recursive "
+"strings. Since [!thelang] does not provide such a construct natively, the "
+"ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
+"scala]lists of integers (<code>List[Int]</code>)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:12
+msgid ""
+"Any given such list is either the empty list (noted <code>[!scala]Nil[/!][!"
+"java]null[/!][!python]None[/!]</code>), or an integer followed by a list. If "
+"a list is not empty, you can retrieve its first integer with <code>list."
+"head</code> and the list containing its other parameters with <code>list."
+"tail</code>. Of course, the empty list has no head nor the tail, so trying "
+"to access these elements will result in an (unpleasant) error message."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:20
+msgid ""
+"To build your own list, you need to concatenate a head and a tail as "
+"follows: [!java|python]<code>cons(head, tail)</code>[/!] [!scala]<code>head::"
+"tail</code> Note that <code>::</code> is a generic operator in Scala to "
+"build lists.[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:26
+msgid ""
+"So, in summary, you can solve every exercises of this lesson with the "
+"following constructs."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+msgid "<b>The empty string:</b>"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+#, fuzzy, no-wrap
+#| msgid "[!java]'R'[/!][!scala|python]\"R\"[/!]"
+msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
+msgstr "[!java]'R'[/!][!scala|python]\"R\"[/!]"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+msgid "<b>Get the first element of <code>l</code></b>"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+#, no-wrap
+msgid "l.head"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+msgid "<b>Get the rest of the list</b>, when the first element is removed:"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+#, no-wrap
+msgid "l.tail"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:33
+msgid ""
+"<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
+"java|python]"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
+#, no-wrap
+msgid "cons(value, list)"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#, no-wrap
+msgid "value::list"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Main.html:2
+msgid "Recursive Lists"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Main.html:3
+msgid ""
+"This lesson contains a bunch of classical exercises on recursive lists.  It "
+"is certainly not the most pleasant lesson to do, but I think that it is the "
+"easiest of the PLM lessons dealing with recursion."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:10
+msgid ""
+"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
+"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
+"report them as an issue."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:13
+msgid ""
+"It would be interesting to check the asymptotic complexity of the student's "
+"code, but that does not sound easy to do. In Python and Java (where we "
+"provide a hand-made RecList class), we could count the amount of cons per "
+"exercise, but it won't be easy to relate this to the right BatTest. For "
+"Scala, it sounds even more difficult as we use the classical :: operators of "
+"the language. That will be difficult to override to add a counting "
+"mechanism. Another solution would be to ensure that the call stack does not "
+"pass a given threshold, but that sounds very difficult too. Any idea is "
+"welcome."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Length.html:2
+msgid "Length"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Length.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"length[!scala] (without using its <code>size</code> method, of course)[/!]."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:5
+#: src/lessons/recursion/cons/IsMember.html:7
+#: src/lessons/recursion/cons/Occurrence.html:7
+#: src/lessons/recursion/cons/Last.html:6
+#: src/lessons/recursion/cons/Min.html:6
+#: src/lessons/recursion/cons/Increasing.html:6
+#: src/lessons/recursion/cons/ButLast.html:6
+#: src/lessons/recursion/cons/PlusOne.html:5
+#: src/lessons/recursion/cons/Remove.html:8
+#: src/lessons/recursion/cons/ButNfirst.html:6
+msgid "Your solution should be linear in time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/IsMember.html:2
+msgid "IsMember"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/IsMember.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return true if the given integer is one of the elements of the "
+"list, or false if it cannot be found."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Occurrence.html:2
+#, fuzzy
+#| msgid "Occurrence of a value"
+msgid "Occurrences"
+msgstr "Occorrenze di un valore"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Occurrence.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return the amount of occurrences of the given integer in the list. "
+"If the integer is not a member of the list, the function should thus return "
+"0."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Last.html:2
+#, fuzzy
+#| msgid "LastDigit 2"
+msgid "Last"
+msgstr "Ultima Cifra 2"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Last.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"last element.  You can assume that the list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Min.html:2
+msgid "Min"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Min.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"smallest of its values.  You will probably need an extra function, even if "
+"you can assume that the list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Increasing.html:2
+msgid "Increasing"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Increasing.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return "
+"whether its elements form an increasing sequence (i.e., if the elements are "
+"sorted from the smallest to the largest one)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButLast.html:2
+#, fuzzy
+#| msgid "LastDigit 2"
+msgid "But Last"
+msgstr "Ultima Cifra 2"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButLast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"list containing every elements but the last one.  You can assume that the "
+"list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/PlusOne.html:2
+msgid "PlusOne"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/PlusOne.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list containing all elements of your parameter incremented by one."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Remove.html:2
+msgid "Remove"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Remove.html:4
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] <code>L</"
+"code>and an integer, return a new list containing all elements of L that are "
+"not equal to the value received as parameter."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nth.html:2
+msgid "Nth"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nth.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return its <code>N</code>th element."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nth.html:6
+#: src/lessons/recursion/cons/Nfirst.html:7
+msgid ""
+"You can assume that the list is long enough, i.e. that there is at least "
+"<code>N</code> elements.  Your solution should be linear in time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nfirst.html:2
+msgid "Nfirst"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list constituted of the first <code>N</code> "
+"elements. You can assume that the list is long enough, i.e. that there is at "
+"least <code>N</code> elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nlast.html:2
+msgid "Nlast"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list with only the <code>N</code> last elements."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nlast.html:6
+#: src/lessons/recursion/cons/ButNlast.html:6
+msgid ""
+"Your solution should be linear in time, but you will probably need to define "
+"several functions to achieve that complexity."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/cons/Nlast.html:8
+#: src/lessons/recursion/cons/ButNlast.html:8
+#: src/lessons/recursion/cons/Reverse.html:8
+#: src/lessons/recursion/cons/Concat.html:8
+msgid "I cannot do it in linear time"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Nlast.html:9
+#: src/lessons/recursion/cons/ButNlast.html:9
+msgid ""
+"The trick is to compute only once (and beforehand) how many elements you "
+"should keep."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNfirst.html:2
+msgid "But Nfirst"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> first elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNlast.html:2
+msgid "But Nlast"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> last elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Reverse.html:2
+#, fuzzy
+#| msgid "Inverse"
+msgid "Reverse"
+msgstr "Inverse"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Reverse.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list with all elements in reverse order."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Reverse.html:5
+msgid ""
+"This function is very important and you should not pass that challenge.  "
+"Your solution should be linear in time, with the help of helper functions."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Reverse.html:9
+msgid ""
+"You need an helper function in which the result is accumulated (built) at "
+"each step."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Concat.html:2
+msgid "Concat"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Concat.html:3
+msgid ""
+"Given two [!scala]List[Int][/!][!java|python]recursive list[/!] <code>l1</"
+"code> and <code>l2</code>, return a new list with all elements of <code>l1</"
+"code> followed by the elements of <code>l2</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Concat.html:6
+msgid ""
+"Your solution should be linear in time, with the help of helper functions."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Concat.html:9
+msgid ""
+"You need to modify <code>l1</code> beforehand so that the computations at "
+"each step of the recursion are in constant time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/AllDifferent.html:2
+msgid "All Different"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/AllDifferent.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return true "
+"if any two elements of the list are different (ie, if no element appears "
+"more than once in the list)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/AllDifferent.html:6
+msgid ""
+"The simplest solution is in O(n²), meaning that it runs in quadratic time.  "
+"You will probably have to define one extra function for that.  Another much "
+"more complex solution runs in O(n log(n))."
 msgstr ""
 
 #. type: Content of: <h1>

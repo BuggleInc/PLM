@@ -9,9 +9,11 @@ Cet exercice est l'occasion d'implémenter un autre algorithme très classique
 plus petite valeur de la partie pas encore triée. Ainsi, pour la première
 case, je prend la plus petite valeur du tableau. Pour la seconde, je prend
 la seconde plus petite valeur, qui se trouve être la plus petite des cases
-n'étant pas encore triées.     
+n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la
+dernière case du tableau, puisqu'elle est déjà triée lorsque vous la
+considérez.
 
-<p>Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant
+<p>Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant
 la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N
 et celui de la case M. 
 

@@ -68,4 +68,14 @@ public class RecList {
 		res.append("] ");
 		return res.toString();
 	}
+
+	public int plmInsiderLength() {
+		int res = 0;
+		RecList ptr = this;
+		while (ptr != null) {
+			ptr = ptr.tail;
+			res++;
+		}
+		return res;
+	}
 }
