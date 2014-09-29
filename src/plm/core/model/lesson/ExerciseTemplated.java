@@ -465,6 +465,14 @@ public abstract class ExerciseTemplated extends Exercise {
 		};
 		Game.addInitThread(t);
 		t.start();
+		
+		// Added this join to make sure the answer world
+		// is correctly initialized before working on the exercise
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
