@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-28 22:03+0200\n"
+"POT-Creation-Date: 2014-09-29 22:27+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -919,13 +919,13 @@ msgstr ""
 "permissions."
 
 #: src/plm/core/model/lesson/Lecture.java:90
-#: src/plm/core/model/lesson/Lesson.java:85
+#: src/plm/core/model/lesson/Lesson.java:89
 #, java-format
 msgid "File {0}.html not found."
 msgstr "Le fichier {0}.html est introuvable."
 
 #: src/plm/core/model/lesson/Lecture.java:99
-#: src/plm/core/model/lesson/Lesson.java:95
+#: src/plm/core/model/lesson/Lesson.java:99
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossible de trouver le nom de la mission dans {0}.html"
@@ -2553,30 +2553,30 @@ msgstr ""
 msgid "The turtle {0} is at the right location."
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:322
+#: src/plm/universe/turtles/TurtleWorld.java:328
 #, fuzzy, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
-#: src/plm/universe/turtles/TurtleWorld.java:351
+#: src/plm/universe/turtles/TurtleWorld.java:357
 #, fuzzy, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
-#: src/plm/universe/turtles/TurtleWorld.java:353
+#: src/plm/universe/turtles/TurtleWorld.java:359
 #, fuzzy, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
-#: src/plm/universe/turtles/TurtleWorld.java:380
+#: src/plm/universe/turtles/TurtleWorld.java:386
 msgid "Superflous shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:383
+#: src/plm/universe/turtles/TurtleWorld.java:389
 msgid "Missing shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:394
+#: src/plm/universe/turtles/TurtleWorld.java:400
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
