@@ -1,5 +1,7 @@
 20140929: Release 2.4.9
 
+  * Engine:
+    - Lesson constructor waits for all init threads' completion
   * Worlds:
     - Turtle: equal() was too permissive after recent work on merging
       lines that were too picky. Now take the world name into account
