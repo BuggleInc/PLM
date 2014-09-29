@@ -1,7 +1,7 @@
 # BEGIN TEMPLATE
 def run():	
   # BEGIN SOLUTION
-  print "Je fonctionne !"
+  w.setObjectif(True)
   # END SOLUTION
 # END TEMPLATE
 run()

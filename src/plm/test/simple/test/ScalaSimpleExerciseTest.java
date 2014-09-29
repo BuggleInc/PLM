@@ -27,4 +27,9 @@ public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	public String generateOutOfBoundsErrorCode() {
 		return "override def run() { var t:Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\n println(t(42)); }";
 	}
+
+	@Override
+	public String generateWrongCode() {
+		return "override def run() { world.asInstanceOf[SimpleWorld].setObjectif(false);  }";
+	}
 }

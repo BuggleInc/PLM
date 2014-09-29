@@ -27,5 +27,10 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	public String generateOutOfBoundsErrorCode() {
 		return "public void run() { int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\nSystem.out.println(t[42]); }";
 	}
+
+	@Override
+	public String generateWrongCode() {
+		return "public void run() { ((SimpleWorld) world).setObjectif(false);  }";
+	}
 	
 }

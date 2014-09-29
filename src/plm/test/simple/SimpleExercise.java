@@ -4,7 +4,6 @@ import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.bugglequest.BuggleWorld;
 
 public class SimpleExercise extends ExerciseTemplated {
 
@@ -18,7 +17,6 @@ public class SimpleExercise extends ExerciseTemplated {
 		try {
 			newEntity = SimpleExerciseEntity.class.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		w.addEntity(newEntity);

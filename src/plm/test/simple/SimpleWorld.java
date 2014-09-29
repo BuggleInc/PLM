@@ -5,23 +5,24 @@ import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.universe.World;
 
 public class SimpleWorld extends World {
 
-	boolean pass = false;
+	private boolean objectif = false;
 	
 	public SimpleWorld(String name) {
 		super(name);
 	}
-	public SimpleWorld(String name, boolean pass) {
+	public SimpleWorld(String name, boolean objectif) {
 		super(name);
-		this.pass = pass;
+		this.objectif = objectif;
 	}
 	
 	public SimpleWorld(SimpleWorld w) {
 		super(w);
-		this.pass = w.pass;
+		this.objectif = w.objectif;
 	}
 	
 	public SimpleWorld copy(SimpleWorld w) {
@@ -38,14 +39,39 @@ public class SimpleWorld extends World {
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine)
 			throws ScriptException {
-		// TODO Auto-generated method stub
-		
+		if (lang.equals(Game.PYTHON)) {
+			engine.put("w", this);
+		}
 	}
 
 	@Override
+	public boolean equals(Object o){
+		if (!(o instanceof SimpleWorld)) {
+			return false;
+		}
+		SimpleWorld other = (SimpleWorld) o;
+		if(this.objectif != other.objectif) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
 	public String diffTo(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		SimpleWorld other = (SimpleWorld) world;
+		String s = "No diff";
+		if(this.objectif != other.objectif) {
+			s = "Returned "+other.objectif+" while "+objectif+" was expected...";
+		}
+		return s;
 	}
 
+	public void setObjectif(boolean val) {
+		objectif = val;
+	}
+	
+	public boolean getObjectif() {
+		return objectif;
+	}
+	
 }

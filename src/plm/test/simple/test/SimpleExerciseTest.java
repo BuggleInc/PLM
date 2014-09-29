@@ -13,6 +13,7 @@ import org.junit.Test;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lesson;
@@ -78,22 +79,12 @@ public abstract class SimpleExerciseTest {
 			fail(getClass().getName().replace("Test", "Entity") +" should compile and not throw the following error:\n"+exo.lastResult.compilationError);
 		}
 	}
+		
+	@Test
+	public abstract void testSolutionShouldExecuteProperly() throws PLMCompilerException;
 	
 	@Test
-	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
-		exo.compileAll(null, StudentOrCorrection.CORRECTION);
-		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
-		
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
-			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
-			}
-		}
-		
-		if(exo.lastResult.executionError!=null && !exo.lastResult.executionError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should execute properly and not throw the following error:\n"+exo.lastResult.executionError);
-		}
-	}
+	public abstract void testSolutionShouldPass() throws PLMCompilerException;
 	
 	@Test
 	public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
@@ -129,6 +120,25 @@ public abstract class SimpleExerciseTest {
 		}
 	}
 	
+	@Test
+	public void testWrongCodeShouldNotPass() throws PLMCompilerException {
+		exo.getSourceFile(pl, 0).setBody(generateWrongCode());
+		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+		
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+			for (Entity ent: w.getEntities()) {
+				pl.runEntity(ent,exo.lastResult);
+			}
+		}
+		
+		exo.check();
+		
+		if(exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+			fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
+		}
+	}
+
 	// Used to generate compilation error for each programming languages tested
 	public abstract String generateSyntaxErrorCode();
 	public abstract String generateVariableErrorCode();
@@ -136,4 +146,7 @@ public abstract class SimpleExerciseTest {
 	// Used to generate execution error for each programming languages tested
 	public abstract String generateNullPointerErrorCode();
 	public abstract String generateOutOfBoundsErrorCode();
+
+	// Used to generate a code throwing no errors but not passing the exercise
+	public abstract String generateWrongCode();
 }

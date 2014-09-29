@@ -3,6 +3,7 @@ package plm.test.simple;
 import java.io.BufferedWriter;
 
 import plm.universe.Entity;
+import plm.test.simple.SimpleWorld;
 
 public class SimpleExerciseEntity extends Entity {
 
@@ -10,7 +11,7 @@ public class SimpleExerciseEntity extends Entity {
 	/* BEGIN TEMPLATE */
 	public void run() throws Exception {
 		/* BEGIN SOLUTION */
-		System.out.println("Je fonctionne !");
+		((SimpleWorld) world).setObjectif(true);
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
