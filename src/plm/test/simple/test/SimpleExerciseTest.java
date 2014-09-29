@@ -99,6 +99,7 @@ public abstract class SimpleExerciseTest {
 	
 	// FIXME: 	Currently always failing since the execution errors
 	//			are signaled using the compilationError field
+	/*
 	@Test
 	public void testBadCodeShouldNotExecuteProperly() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateRuntimeExceptionRisingCode());
@@ -115,7 +116,52 @@ public abstract class SimpleExerciseTest {
 			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
 		}
 	}
+	*/
 	
+	@Test
+	public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
+		exo.getSourceFile(pl, 0).setBody(generateOutOfBoundsErrorCode());
+		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+		
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+			for (Entity ent: w.getEntities()) {
+				pl.runEntity(ent,exo.lastResult);
+			}
+		}
+		
+		if(exo.lastResult.executionError==null || exo.lastResult.executionError.equals("")) {
+			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
+		}
+	}
+	
+	@Test
+	public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
+		exo.getSourceFile(pl, 0).setBody(generateNullPointerErrorCode());
+		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+		
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+			for (Entity ent: w.getEntities()) {
+				pl.runEntity(ent,exo.lastResult);
+			}
+		}
+		
+		if(exo.lastResult.executionError==null || exo.lastResult.executionError.equals("")) {
+			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
+		}
+	}
+	
+	/*
 	public abstract String generateRuntimeExceptionRisingCode();
 	public abstract String generateCompilationExceptionRisingCode();
+	*/
+	
+	// Used to generate compilation error for each programming languages tested
+	public abstract String generateSyntaxErrorCode();
+	public abstract String generateVariableErrorCode();
+	
+	// Used to generate execution error for each programming languages tested
+	public abstract String generateNullPointerErrorCode();
+	public abstract String generateOutOfBoundsErrorCode();
 }

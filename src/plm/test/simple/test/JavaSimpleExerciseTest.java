@@ -9,13 +9,23 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	}
 
 	@Override
-	public String generateRuntimeExceptionRisingCode() {
-		return "public void run() { String s = null; System.out.println(s.length()); }";
+	public String generateSyntaxErrorCode() {
+		return "zqkdçajdé\"\"";
 	}
 
 	@Override
-	public String generateCompilationExceptionRisingCode() {
-		return "zqkdçajdé\"\"";
+	public String generateVariableErrorCode() {
+		return "toto++;\n";
+	}
+
+	@Override
+	public String generateNullPointerErrorCode() {
+		return "public void run() { String s = null;\nSystem.out.println(s.length()); }";
+	}
+
+	@Override
+	public String generateOutOfBoundsErrorCode() {
+		return "public void run() { int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\nSystem.out.println(t[42]); }";
 	}
 	
 }

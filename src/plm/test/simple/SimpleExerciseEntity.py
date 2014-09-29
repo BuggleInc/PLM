@@ -1,7 +1,6 @@
-/* BEGIN TEMPLATE */
-void run(){	
-	/* BEGIN SOLUTION */
+# BEGIN TEMPLATE
+def run():	
+	# BEGIN SOLUTION
 	print "Je fonctionne !"
-	/* END SOLUTION */
-}
-/* END TEMPLATE */
+	# END SOLUTION
+# END TEMPLATE

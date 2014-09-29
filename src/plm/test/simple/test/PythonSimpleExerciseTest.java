@@ -9,13 +9,23 @@ public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 	}
 
 	@Override
-	public String generateRuntimeExceptionRisingCode() {
-		return "myList=[1,2,3,4,5,6]\nprint myList[42]";
+	public String generateSyntaxErrorCode() {
+		return "zqkdçajdé\"\"";
 	}
 
 	@Override
-	public String generateCompilationExceptionRisingCode() {
-		return "def toto():\ndvw<fe\"v[>";
+	public String generateVariableErrorCode() {
+		return "toto++;\n";
+	}
+
+	@Override
+	public String generateNullPointerErrorCode() {
+		return "def run():\n  truc = None\n  print truc.toto";
+	}
+
+	@Override
+	public String generateOutOfBoundsErrorCode() {
+		return "def run():\n  tab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n  print tab[42]";
 	}
 
 }
