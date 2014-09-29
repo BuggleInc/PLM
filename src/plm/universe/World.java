@@ -186,6 +186,8 @@ public abstract class World {
 	}
 
 	public void notifyWorldUpdatesListeners() {
+		if (worldUpdatesListeners.isEmpty())
+			return;
 		synchronized (this.worldUpdatesListeners) {
 			for (IWorldView v : this.worldUpdatesListeners) {
 				v.worldHasMoved();
