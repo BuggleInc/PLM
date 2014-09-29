@@ -220,10 +220,14 @@ public class TurtleWorld extends World {
 
 	@Override
 	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
 		if (! (obj instanceof TurtleWorld))
 			return false;
 		
 		TurtleWorld other = (TurtleWorld) obj;
+		if (!other.getName().equals(getName()))
+			return false;
 		String diff = diffTo(other);
 		if (diff.equals(""))
 			return true;
@@ -314,6 +318,8 @@ public class TurtleWorld extends World {
 	
 	@Override
 	public String diffTo(World world) {
+		if (world == this)
+			return "";
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
 		

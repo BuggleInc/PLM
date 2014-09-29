@@ -1,5 +1,10 @@
 20140929: Release 2.4.9
 
+  * Worlds:
+    - Turtle: equal() was too permissive after recent work on merging
+      lines that were too picky. Now take the world name into account
+      in equality, so that we can switch from an empty world to 
+      another empty world.
   * Pedagogical content:
     - recursion: remove the largest fractals that were too heavy
 
