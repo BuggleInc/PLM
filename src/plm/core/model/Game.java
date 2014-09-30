@@ -465,6 +465,11 @@ public class Game implements IWorldView {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
+		// No need to stop the execution if no lesson is currently selected
+		if(currentLesson != null) {
+			// If already executing a program, stop it
+			stopExerciseExecution();
+		}
 		try {
 			saveSession(); // don't loose user changes
 			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
