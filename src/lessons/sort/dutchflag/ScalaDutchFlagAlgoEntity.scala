@@ -4,7 +4,7 @@ import lessons.sort.dutchflag.universe.DutchFlagEntity._;
 import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
-class DutchFlagAlgoEntityScala extends DutchFlagEntity {
+class ScalaDutchFlagAlgoEntity extends DutchFlagEntity {
 	
 	override def run() {
 		solve();
