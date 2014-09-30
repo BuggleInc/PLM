@@ -4,9 +4,15 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.NoninvertibleTransformException;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
@@ -20,9 +26,31 @@ import plm.universe.World;
 
 public class TurtleWorldView extends WorldView {
 	private static final long serialVersionUID = 1674820378395646693L;
+	Point mousePos = new Point(0,0);
+	boolean mouseIn = false;
 	
 	public TurtleWorldView(World w) {
 		super(w);
+
+		addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e)  {
+				mousePos = new Point(e.getX(), e.getY());
+				repaint();
+			}
+		});
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e)  {
+				mouseIn = false;
+				repaint();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e)  {
+				mouseIn = true;
+			}
+		});
+
 	}
 	
 	@Override
@@ -32,12 +60,15 @@ public class TurtleWorldView extends WorldView {
 	public void doPaint(Graphics g, int sizeX, int sizeY, boolean showTurtle) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		AffineTransform initialTransform = g2.getTransform();
 		
 		TurtleWorld tw = (TurtleWorld) this.world;
 		
-		double ratio = Math.min(((double) sizeX)/tw.getWidth(), ((double)sizeY)/tw.getHeight());
-		g2.translate(Math.abs((sizeX-ratio*tw.getWidth())/2.), Math.abs((sizeY-ratio*tw.getHeight())/2.));
-		g2.scale(ratio, ratio);
+		double displayRatio = Math.min(((double) sizeX)/tw.getWidth(), ((double)sizeY)/tw.getHeight());
+		double deltaX = Math.abs((sizeX-displayRatio*tw.getWidth())/2.);
+		double deltaY = Math.abs((sizeY-displayRatio*tw.getHeight())/2.);  
+		g2.translate(deltaX, deltaY);
+		g2.scale(displayRatio, displayRatio);
 
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(Color.white);
@@ -80,7 +111,29 @@ public class TurtleWorldView extends WorldView {
 			while (it2.hasNext())
 				it2.next().draw(g2);			
 		}
-		
+	
+		// FIXME: That's not working! If you resize the window, the wrong coordinates are written. Plus, it's written at the wrong location.	
+		if (mouseIn) { 
+			try {
+				AffineTransform deltaTransform = new AffineTransform(g2.getTransform());
+				deltaTransform.invert();
+				deltaTransform.concatenate(initialTransform);
+
+				Point2D coord = deltaTransform.transform(new Point2D.Double(mousePos.x, mousePos.y), null);
+
+				// Convert back the mouse position with our resize and everything
+				int x=(int) (coord.getX());
+				int y=(int) (coord.getY());
+
+				// Draw coordinates if on zone
+				if (x>=0 && x < tw.getWidth() && y>=0 && y < tw.getHeight()) {
+					g2.drawString("x: "+x, 3,      g2.getFontMetrics().getHeight()+1);
+					g2.drawString("y: "+y, 3, 2 * (g2.getFontMetrics().getHeight()+1));
+				}
+			} catch (NoninvertibleTransformException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 

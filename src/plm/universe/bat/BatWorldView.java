@@ -62,7 +62,7 @@ public class BatWorldView extends WorldView {
 				}
 			}
 			g2.drawString(currTest.getName()+"="+currTest.getResult()
-					+(currTest.isAnswered() && !currTest.isCorrect() ?" (expected: "+currTest.expected+")":"")
+					+(currTest.isAnswered() && !currTest.isCorrect() ?" (expected: "+currTest.stringParameter(currTest.expected)+")":"")
 					, 0, (i+1)*20);
 		}
 

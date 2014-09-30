@@ -23,7 +23,7 @@ public class Array667 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 5, 6}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 6, 6}) ;
 
-		templatePython("array667", 
+		templatePython("array667", new String[] {"Array[Int]"},
 				"def array667(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-1):\n"+

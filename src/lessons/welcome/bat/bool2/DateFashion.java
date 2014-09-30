@@ -24,7 +24,7 @@ public class DateFashion extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 7) ;
 		myWorld.addTest(INVISIBLE, 6, 2) ;
 
-		templatePython("dateFashion", 
+		templatePython("dateFashion", new String[]{"Int","Int"},
 				"def dateFashion(you, date):\n",
 				"	if (you <= 2 or date <= 2):\n"+
 				"		return 0\n"+

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-15 13:46+0200\n"
-"PO-Revision-Date: 2014-09-15 13:47+0200\n"
+"POT-Creation-Date: 2014-09-28 21:55+0200\n"
+"PO-Revision-Date: 2014-09-28 22:01+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -809,7 +809,7 @@ msgstr "Méthodes avec paramètres"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:229
-#: src/lessons/welcome/methods/picture/PictureMono.html:2
+#: src/lessons/welcome/methods/picture/PictureMono1.html:2
 msgid "Methodically drawing"
 msgstr "Dessiner avec méthode"
 
@@ -1114,6 +1114,7 @@ msgstr ""
 #: src/lessons/turmites/langton/Langton.html:32
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -2152,10 +2153,11 @@ msgstr "Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire :"
 msgid "x = 5"
 msgstr "x = 5"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
 
@@ -5041,7 +5043,7 @@ msgstr ""
 "partout."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/PictureMono.html:4
+#: src/lessons/welcome/methods/picture/PictureMono1.html:4
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:4
 msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
@@ -5051,7 +5053,7 @@ msgstr ""
 "pouvez voir en cliquant sur l'onglet «Objectif»."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:7
+#: src/lessons/welcome/methods/picture/PictureMono1.html:7
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:7
 msgid ""
 "Your goal (here and in any well written program) is to write the simplest "
@@ -5064,7 +5066,7 @@ msgstr ""
 "méthode particulière."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:11
+#: src/lessons/welcome/methods/picture/PictureMono1.html:11
 msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V. A possible decomposition is to write a method "
@@ -5078,7 +5080,7 @@ msgstr ""
 "[/!]faireV()</code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:16
+#: src/lessons/welcome/methods/picture/PictureMono1.html:16
 msgid ""
 "In this method, you should use the methods <code>brushUp()</code> and "
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
@@ -5092,7 +5094,7 @@ msgstr ""
 "position pour dessiner le prochain V."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:21
+#: src/lessons/welcome/methods/picture/PictureMono1.html:21
 msgid ""
 "Your turn. Your code should not be longer than 4 lines (not counting "
 "<code>makeV</code>)..."
@@ -7411,6 +7413,7 @@ msgstr "Que puis-je faire pour améliorer cet univers de PLM?"
 #: src/lessons/sort/dutchflag/Main.html:11
 #: src/lessons/sort/pancake/Main.html:32
 #: src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14
+#: src/lessons/recursion/cons/Main.html:7
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -7627,8 +7630,8 @@ msgstr ""
 "compliqué, même si ce n'est pas complètement trivial. Comme précédemment, "
 "vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle "
 "reçoit deux tableaux comme paramètres. Le premier définit les règles à "
-"suivre selon la couleur du sol tandis que le deuxième done la séquence de "
-"couleur à utiliser. Par exemple, la fourmi de base aurait \n"
+"suivre selon la couleur du sol tandis que le deuxième donne la séquence de "
+"couleurs à utiliser. Par exemple, la fourmi de base aurait \n"
 "[!java]<code>{'R', 'L'}</code> et <code>{Color.white, Color.black}</"
 "code>[/!]\n"
 "[!python]<code>['R', 'L']</code> et <code>[Color.white, Color.black]</"
@@ -8673,7 +8676,7 @@ msgstr ""
 "faire: \n"
 "        Pour tout i dans [0,lgr-2]\n"
 "          Si les cases i et i+1 doivent être inversées, le faire\n"
-"     tant qu'on a inverser des choses lors du dernier parcours\n"
+"     tant qu'on a inversé des choses lors du dernier parcours\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
@@ -8715,7 +8718,7 @@ msgid ""
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"          Si les cases j et j+1 doivent être inversées, le faire\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:20
@@ -8796,7 +8799,7 @@ msgid ""
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"          Si les cases j et j+1 doivent être inversées, le faire\n"
 "       Si le parcours sur les j n'a rien inversé, casser la boucle\n"
 
 #. type: Content of: <p>
@@ -9080,7 +9083,7 @@ msgid ""
 "the gap, the faster the elements are moved to their final destination, but "
 "also the less precise is this move. It is thus mandatory to apply the "
 "algorithm with a serie of decreasing gaps. At the last step, when the gap is "
-"1, InsertionSort is used, but onto an array which is almost already sorted "
+"one, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
 "Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en "
@@ -9088,13 +9091,12 @@ msgstr ""
 "(faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) "
 "au tri par insertion (le CombSort est une variante du tri à bulle).  Au lieu "
 "de comparer les valeurs adjacentes lors du tri par insertion, on compare des "
-"valeurs séparées par un <i>gap</i> (écartement) plus grand. Plus le gap est "
-"grand et plus les éléments sont déplacés rapidement vers leur position "
-"finale, mais aussi plus le déplacement est imprécis. Il faut donc appliquer "
-"l'algorithme avec une séquence de gaps décroissante vers 1. Ainsi, à la "
-"dernière étape quand le gap vaut 1, on applique l'algorithme de tri par "
-"insertion de base, mais sur un tableau déjà presque trié par les étapes "
-"précédentes."
+"valeurs séparées par un <i>écart</i> plus grand. Plus l'écart est grand et "
+"plus les éléments sont déplacés rapidement vers leur position finale, mais "
+"aussi plus le déplacement est imprécis. Il faut donc appliquer l'algorithme "
+"avec une séquence d'écarts décroissante vers un. Ainsi, à la dernière étape "
+"quand l'écart vaut un, on applique l'algorithme de tri par insertion de "
+"base, mais sur un tableau déjà presque trié par les étapes précédentes."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:15
@@ -9102,9 +9104,9 @@ msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
 msgstr ""
-"Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur du "
-"gap, puis de le diviser par deux à chaque étape.  Le pseudo-code est donc le "
-"suivant:"
+"Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur de "
+"l'écartement, puis de le diviser par deux à chaque étape.  Le pseudo-code "
+"est donc le suivant:"
 
 #. type: Content of: <p><pre>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:18
@@ -9114,9 +9116,9 @@ msgid ""
 "while gap>0:\n"
 "  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.\n"
 msgstr ""
-"gap=lgr/2\n"
-"tant que gap>0:\n"
-"  appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis i-2gap et i-gap, puis i-3gap et i-2gap, etc.\n"
+"ecart=lgr/2\n"
+"tant que ecart>0:\n"
+"  appliquer l'algorithme de tri par insertion en comparant i-ecart et i, puis i-2ecart et i-ecart, puis i-3ecart et i-2ecart, etc.\n"
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:23
@@ -9131,7 +9133,7 @@ msgid ""
 "ShellSort is a valid candidate for array of several hundred thousands when "
 "correctly implemented."
 msgstr ""
-"Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se "
+"Comme dans le cas du CombSort, la séquence des valeurs prises par l'écart se "
 "révèle être d'une importance capitale pour les performances du tri de Shell. "
 "Il existe des cas pathologiques qui font que la séquence que nous avons "
 "utilisée ici présente une complexité en O(n^2) dans le pire des cas. "
@@ -9152,7 +9154,7 @@ msgid ""
 msgstr ""
 "Dans notre cas, les instances de tableaux que nous utilisons sont trop "
 "petites pour que ces optimisations présentent un réel avantage. Si on "
-"voulait le faire, il faudrait prendre en valeur initiale du gap la plus "
+"voulait le faire, il faudrait prendre en valeur initiale de l'écart la plus "
 "grande valeur de la suite utilisée, puis prendre les valeurs successives en "
 "descendant ensuite."
 
@@ -9167,13 +9169,13 @@ msgid ""
 "International Symposium on Fundamentals of Computation Theory, LNCS 2001; "
 "Vol. 2138)."
 msgstr ""
-"De façon intéressante, déterminer la meilleure séquence de gap pour le shell "
-"sort s'avère être un problème de recherche de notre siècle en informatique. "
-"Par exemple, un article publié en 2001 propose la suite suivante, qui semble "
-"optimale en pratique pour des tailles de tableau allant jusqu'à 10^5: {1, 4, "
-"10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the "
-"Average Case of Shellsort, 13th International Symposium on Fundamentals of "
-"Computation Theory, LNCS 2001; Vol. 2138)."
+"De façon intéressante, déterminer la meilleure séquence d'écart pour le "
+"shell sort s'avère être un problème de recherche de notre siècle en "
+"informatique. Par exemple, un article publié en 2001 propose la suite "
+"suivante, qui semble optimale en pratique pour des tailles de tableau allant "
+"jusqu'à 10^5: {1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best "
+"Increments for the Average Case of Shellsort, 13th International Symposium "
+"on Fundamentals of Computation Theory, LNCS 2001; Vol. 2138)."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:2
@@ -9195,32 +9197,26 @@ msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
 "smallest value over the whole array. For the second one, it takes the second "
-"smallest value, which is the smallest value from the cell not already sorted."
-msgstr ""
-"Son principe est simplement de sélectionner pour chaque case du tableau la "
-"plus petite valeur de la partie pas encore triée. Ainsi, pour la première "
-"case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
-"la seconde plus petite valeur, qui se trouve être la plus petite des cases "
-"n'étant pas encore triées."
+"smallest value, which is the smallest value from the cell not already "
+"sorted. You of course don't have to sort the last cell of the array, that is "
+"already sorted when you consider it."
+msgstr "Son principe est simplement de sélectionner pour chaque case du tableau la plus petite valeur de la partie pas encore triée. Ainsi, pour la première case, je prend la plus petite valeur du tableau. Pour la seconde, je prend la seconde plus petite valeur, qui se trouve être la plus petite des cases n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la dernière case du tableau, puisqu'elle est déjà triée lorsque vous la considérez."
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:13
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
 msgid ""
-"More generally, for the cell N, it looks the cell M in [n;len] containing "
+"More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
-msgstr ""
-"Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant "
-"la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
-"et celui de la case M."
+msgstr "Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N et celui de la case M."
 
 #. type: Content of: <p><p><h2>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
 msgid "Existing variations"
 msgstr "Variantes possibles"
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:19
 msgid ""
 "Another classical algorithm which idea is based on the selection of good "
 "elements is HeapSort, but it uses a heap data structure which we did not see "
@@ -9335,7 +9331,7 @@ msgstr ""
 "peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il "
 "trouve souvent des bugs bizarres qui auraient été très pénibles à débugger "
 "s'il ne les avait pas attrapé à la source. Et comme de plus les auteurs de "
-"Scala sont pragmatiques, cela peut aussi de manière simplifiée :"
+"Scala sont pragmatiques, cela peut aussi s'écrire de manière simplifiée :"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:36
@@ -11500,6 +11496,12 @@ msgid ""
 "shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
 "shapes-challenges.html</a>."
 msgstr ""
+"D'autres exercises devraient être ajoutés. Une mine d'inspiration quasi "
+"inépuisable se trouve à l'adresse <a href=\"http://neoparaiso.com/logo/"
+"#sect4\">http://neoparaiso.com/logo/#sect4</a>, tandis que d'autres "
+"challenges intéressants se trouvent à l'adresse <a href=\"http://billkerr2."
+"blogspot.fr/2009/08/40-maths-shapes-challenges.html.\">http://billkerr2."
+"blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
@@ -11528,6 +11530,432 @@ msgid ""
 msgstr ""
 "Vous devez connaître la syntaxe de base du langage que vous allez choisir, "
 "mais aucune expérience n'est nécessaire pour entreprendre cette leçon."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:2
+msgid "ConsWorld"
+msgstr "Monde des listes récursives"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:4
+msgid ""
+"This world allows you to experiment with the recursive strings, as they were "
+"first defined in Lisp. It is very similar to the BatWorld, but you are "
+"supposed to write recursive functions working on [!python|java]recursive "
+"strings. Since [!thelang] does not provide such a construct natively, the "
+"ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
+"scala]lists of integers (<code>List[Int]</code>)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:12
+msgid ""
+"Any given such list is either the empty list (noted <code>[!scala]Nil[/!][!"
+"java]null[/!][!python]None[/!]</code>), or an integer followed by a list. If "
+"a list is not empty, you can retrieve its first integer with <code>list."
+"head</code> and the list containing its other parameters with <code>list."
+"tail</code>. Of course, the empty list has no head nor the tail, so trying "
+"to access these elements will result in an (unpleasant) error message."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:20
+msgid ""
+"To build your own list, you need to concatenate a head and a tail as "
+"follows: [!java|python]<code>cons(head, tail)</code>[/!] [!scala]<code>head::"
+"tail</code> Note that <code>::</code> is a generic operator in Scala to "
+"build lists.[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:26
+msgid ""
+"So, in summary, you can solve every exercises of this lesson with the "
+"following constructs."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+msgid "<b>The empty string:</b>"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+#, no-wrap
+msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
+msgstr "[!java|c]null[/!][!scala]Nil[/!][python]None[/!]"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+msgid "<b>Get the first element of <code>l</code></b>"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+#, no-wrap
+msgid "l.head"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+msgid "<b>Get the rest of the list</b>, when the first element is removed:"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+#, no-wrap
+msgid "l.tail"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:33
+msgid ""
+"<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
+"java|python]"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
+#, no-wrap
+msgid "cons(value, list)"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#, no-wrap
+msgid "value::list"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Main.html:2
+msgid "Recursive Lists"
+msgstr "Algorithmes récursifs"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Main.html:3
+msgid ""
+"This lesson contains a bunch of classical exercises on recursive lists.  It "
+"is certainly not the most pleasant lesson to do, but I think that it is the "
+"easiest of the PLM lessons dealing with recursion."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:10
+msgid ""
+"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
+"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
+"report them as an issue."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:13
+msgid ""
+"It would be interesting to check the asymptotic complexity of the student's "
+"code, but that does not sound easy to do. In Python and Java (where we "
+"provide a hand-made RecList class), we could count the amount of cons per "
+"exercise, but it won't be easy to relate this to the right BatTest. For "
+"Scala, it sounds even more difficult as we use the classical :: operators of "
+"the language. That will be difficult to override to add a counting "
+"mechanism. Another solution would be to ensure that the call stack does not "
+"pass a given threshold, but that sounds very difficult too. Any idea is "
+"welcome."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Length.html:2
+msgid "Length"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Length.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"length[!scala] (without using its <code>size</code> method, of course)[/!]."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:5
+#: src/lessons/recursion/cons/IsMember.html:7
+#: src/lessons/recursion/cons/Occurrence.html:7
+#: src/lessons/recursion/cons/Last.html:6
+#: src/lessons/recursion/cons/Min.html:6
+#: src/lessons/recursion/cons/Increasing.html:6
+#: src/lessons/recursion/cons/ButLast.html:6
+#: src/lessons/recursion/cons/PlusOne.html:5
+#: src/lessons/recursion/cons/Remove.html:8
+#: src/lessons/recursion/cons/ButNfirst.html:6
+msgid "Your solution should be linear in time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/IsMember.html:2
+msgid "IsMember"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/IsMember.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return true if the given integer is one of the elements of the "
+"list, or false if it cannot be found."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Occurrence.html:2
+msgid "Occurrences"
+msgstr "Occurrences"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Occurrence.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return the amount of occurrences of the given integer in the list. "
+"If the integer is not a member of the list, the function should thus return "
+"0."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Last.html:2
+msgid "Last"
+msgstr "Dernier"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Last.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"last element.  You can assume that the list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Min.html:2
+msgid "Min"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Min.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"smallest of its values.  You will probably need an extra function, even if "
+"you can assume that the list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Increasing.html:2
+msgid "Increasing"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Increasing.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return "
+"whether its elements form an increasing sequence (i.e., if the elements are "
+"sorted from the smallest to the largest one)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButLast.html:2
+msgid "But Last"
+msgstr "Sauf Dernier"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButLast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"list containing every elements but the last one.  You can assume that the "
+"list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/PlusOne.html:2
+msgid "PlusOne"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/PlusOne.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list containing all elements of your parameter incremented by one."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Remove.html:2
+msgid "Remove"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Remove.html:4
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] <code>L</"
+"code>and an integer, return a new list containing all elements of L that are "
+"not equal to the value received as parameter."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nth.html:2
+msgid "Nth"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nth.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return its <code>N</code>th element."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nth.html:6
+#: src/lessons/recursion/cons/Nfirst.html:7
+msgid ""
+"You can assume that the list is long enough, i.e. that there is at least "
+"<code>N</code> elements.  Your solution should be linear in time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nfirst.html:2
+msgid "Nfirst"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list constituted of the first <code>N</code> "
+"elements. You can assume that the list is long enough, i.e. that there is at "
+"least <code>N</code> elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nlast.html:2
+msgid "Nlast"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list with only the <code>N</code> last elements."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nlast.html:6
+#: src/lessons/recursion/cons/ButNlast.html:6
+msgid ""
+"Your solution should be linear in time, but you will probably need to define "
+"several functions to achieve that complexity."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/cons/Nlast.html:8
+#: src/lessons/recursion/cons/ButNlast.html:8
+#: src/lessons/recursion/cons/Reverse.html:8
+#: src/lessons/recursion/cons/Concat.html:8
+msgid "I cannot do it in linear time"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Nlast.html:9
+#: src/lessons/recursion/cons/ButNlast.html:9
+msgid ""
+"The trick is to compute only once (and beforehand) how many elements you "
+"should keep."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNfirst.html:2
+msgid "But Nfirst"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> first elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNlast.html:2
+msgid "But Nlast"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> last elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Reverse.html:2
+msgid "Reverse"
+msgstr "Inverse"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Reverse.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list with all elements in reverse order."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Reverse.html:5
+msgid ""
+"This function is very important and you should not pass that challenge.  "
+"Your solution should be linear in time, with the help of helper functions."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Reverse.html:9
+msgid ""
+"You need an helper function in which the result is accumulated (built) at "
+"each step."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Concat.html:2
+msgid "Concat"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Concat.html:3
+msgid ""
+"Given two [!scala]List[Int][/!][!java|python]recursive list[/!] <code>l1</"
+"code> and <code>l2</code>, return a new list with all elements of <code>l1</"
+"code> followed by the elements of <code>l2</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Concat.html:6
+msgid ""
+"Your solution should be linear in time, with the help of helper functions."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Concat.html:9
+msgid ""
+"You need to modify <code>l1</code> beforehand so that the computations at "
+"each step of the recursion are in constant time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/AllDifferent.html:2
+msgid "All Different"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/AllDifferent.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return true "
+"if any two elements of the list are different (ie, if no element appears "
+"more than once in the list)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/AllDifferent.html:6
+msgid ""
+"The simplest solution is in O(n²), meaning that it runs in quadratic time.  "
+"You will probably have to define one extra function for that.  Another much "
+"more complex solution runs in O(n log(n))."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/Main.html:2
@@ -15032,25 +15460,28 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:17
 msgid ""
-"The <code>step()</code> function that you should write now will be called "
-"every 0.1 second during the simulation. It should set the desired thrust of "
-"the next simulation step, by calling <code>[!java]void "
-"[/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</"
-"code> where <code>desiredThrust</code> is some integer between 0 and 4. You "
-"can only increment or decrement the thrust by 1 between two simulation "
-"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
-"the next step. If you ask for less than 0 (resp. more than 4), everything "
-"will be as if you had asked for 0 (resp. 4)."
+"The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
+"you should write now will be called every 0.1 second during the simulation. "
+"It should set the desired thrust of the next simulation step, by calling "
+"<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:"
+"Integer[/!])</code> where <code>desiredThrust</code> is some integer between "
+"0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
+"increment or decrement the thrust by 1 between two simulation steps, so if "
+"the current thrust is 2 and you ask for 4, you'll only get 3 in the next "
+"step. If you ask for less than 0 (resp. more than 4), everything will be as "
+"if you had asked for 0 (resp. 4)."
 msgstr ""
-"Vous devez écrire le corps de la fonction <code>step()</code>, qui sera "
-"appelée tous les dixièmes de seconde pendant la simulation. Elle doit "
-"ajuster la poussée du moteur en utilisant la fonction <code>[!java]void "
-"[/!]setPouseeDesiree([!java]int [/!]poussee[!scala]:Integer[/!])</code> où "
-"<code>poussee</code> est un entier entre 0 et 4. Vous ne pouvez incrémenter "
-"ou décrémenter la poussée que de 1 entre deux pas de la simulation. Ainsi, "
-"si la poussée du moteur est actuellement de 2 et que vous demandez 4, vous "
-"n'aurez que 3 à la prochaine étape. Si vous demandez une valeur inférieure à "
-"0 (ou supérieure à 4), tout se passera comme si vous aviez demandé 0 (ou 4)."
+"Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui "
+"sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes "
+"de seconde pendant la simulation. Il faut ajuster la poussée du moteur en "
+"utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int "
+"[/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un "
+"entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous "
+"ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de "
+"la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que "
+"vous demandez 4, vous n'aurez que 3 à la prochaine étape. Si vous demandez "
+"une valeur inférieure à 0 (ou supérieure à 4), tout se passera comme si vous "
+"aviez demandé 0 (ou 4)."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:27
@@ -15275,7 +15706,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:33
 msgid "Good luck, try not to crash!"
-msgstr "Bonne chance. Essayez de ne vous scratcher ;)"
+msgstr "Bonne chance. Essayez de ne pas vous scratcher ;)"
 
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1

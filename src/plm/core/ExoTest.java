@@ -33,10 +33,10 @@ import plm.universe.bat.BatWorld;
 @RunWith(Parameterized.class)
 public class ExoTest {
 	
-	static private String[] lessonNamesToTest = new String[] { 
+	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake",  
-		"lessons.recursion", "lessons.recursion.hanoi",
+		"lessons.recursion.cons", "lessons.recursion", "lessons.recursion.hanoi",
 		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
 		"lessons.bat.string1", "lessons.lander",
 		};

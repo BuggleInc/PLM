@@ -12,9 +12,9 @@ public class PictureMono2 extends ExerciseTemplated {
 
 	public PictureMono2(Lesson lesson) {
 		super(lesson);
-		BuggleWorld myWorld =  new BuggleWorld("World",15,15);
+		BuggleWorld myWorld =  new BuggleWorld("World",21,21);
 		myWorld.setDelay(20);
-		new SimpleBuggle(myWorld, "Picasso", 0, 14, Direction.EAST, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorld, "Picasso", 0, 20, Direction.EAST, Color.black, Color.lightGray);
 
 		setup(myWorld);
 	}

@@ -14,7 +14,7 @@ public class HexaKoch extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		World[] myWorlds = new World[6];
+		World[] myWorlds = new World[5];
 		myWorlds[0] = new TurtleWorld("hexaKoch(0,200)", 400, 400);
 		myWorlds[0].setParameter(new Object[] {0,200.});		
 		new Turtle(myWorlds[0], "Hawksbill", 100, 250, 0, Color.red);
@@ -35,10 +35,11 @@ public class HexaKoch extends ExerciseTemplated {
 		myWorlds[4].setParameter(new Object[] {4,7500.});		
 		new Turtle(myWorlds[4], "Hawksbill", 100, 250,0, Color.red);
 
+		/* TOO LARGE for the PLM on medium-range machines	
 		myWorlds[5] = new TurtleWorld("hexaKoch(5,15000)", 400, 400);
 		myWorlds[5].setParameter(new Object[] {5,15000.});		
 		new Turtle(myWorlds[5], "Hawksbill", 100, 250,0, Color.red);
-		
+	*/	
 		setup(myWorlds);
 	}
 }

@@ -1,4 +1,84 @@
-20140913: wanabe Release 2.4.5
+20140930: wanabe Release 2.4.10
+
+  * Engine:
+    - Add several tests to check ExerciseTemplated's behavior.
+  * Pedagogical content:
+    - #372: scala code for Koch and Crab exercises were inverted.
+
+20140929: Release 2.4.9
+
+  Recursion lesson is usable again, sorry for the inconvenience.
+  (we really need more tests, grmbl)
+
+  * Engine:
+    - Lesson constructor waits for all init threads' completion
+  * Worlds:
+    - Turtle: equal() was too permissive after recent work on merging
+      lines that were too picky. Now take the world name into account
+      in equality, so that we can switch from an empty world to 
+      another empty world in the UI.
+  * Pedagogical content:
+    - recursion: remove the largest fractals that were too heavy
+    - #366: recursion.spiralUse: add another nice picture
+
+20140928: Release 2.4.8
+
+  * Engine:
+    - Use appropriately the executionError field instead of
+      compilationError to store entities' run time errors.
+  * Worlds:
+    - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
+  * Pedagogical content:
+    - recursion.cons: new lesson on recursive lists (17 challenges)
+    - #349, #355 : French typo
+    - #356: write 'one', not '1' (was too similar to 'l') (fix #356)
+    - #365: SelectionSort: don't sort the last cell, it's already done
+
+20140920: Release 2.4.7
+
+  Python is usable again, sorry for the inconvenience.
+
+  * Engine: 
+    - Don't even compare the worlds when there was a compilation error
+      Prevents python code from failing after reaching the solution.
+  * Worlds:
+    - Turtle: Merge lines that are in line with each other before
+      comparing equality. You can now walk half of a segment, the half
+      will be removed. You can walk to your destination in large
+      amount of very small lines that are all depicting a long line,
+      parts will be merged together. I hope that now, that damn
+      world equality detection will not return false negative anymore!
+      This fixes #338 and #339 (which are not exact duplicates).
+    - Turtle: Show the superflous and missing shapes when the amount
+      of shapes does not match.
+    - #344 Turtle: Display the coordinates of the mouse.
+      That helps reading the differences between worlds, if any.
+    - #309 Bat: Edit the python template in order to test correctly
+      the exercise's winning conditions instead of passing it.
+  * Pedagogical content:
+    - #341: French typo
+    - TurtleArt: rename challenges from Bill Kerr to credit the author.
+      http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html
+
+20140917: Release 2.4.6
+
+  * Worlds:
+    - #329: Buggle: allow exercise to specify that Buggle's direction
+      is irrelevant to world equality tests. Use it for all maze exos.
+  * Pedagogical content:
+    - #332, #333: French typo
+    - #330: Lander.*: Make Segment usable in every exercise, even if
+      they are not absolutely mandatory to solve the problem.
+    - #320: indexOfValue: align the template onto the mission text
+    - #334: Lander1: we are only supposed to write a method body in
+      python while that's a random code chunk in other languages.
+      Adapt the mission text to that fact.
+    - #335: Array123: Add some tests so that testing if 3 is in the
+      array is not enough to solve the problem.
+    - #331: New turtle art figure, original by a student.
+    - PictureMono: more space between patterns so that V are visible
+
+20140916: Release 2.4.5
 
   * Improved translations:
     - Brazilian Portuguese: Missions at 51% despite content changes
@@ -6,6 +86,7 @@
   * Engine:
     - #294: Import package Color in every exercise, so that students
       may use it even if they don't have to in a given exercise.
+    - #327: Update our embeeded java compiler to OpenJDK7
   * Worlds:
     - #291: TurtleWorld: align equals() and diffTo() on what's equal.
       That is, equals() now ignore the turtle color while diffTo() now
@@ -68,14 +149,14 @@
   * Improved translations:
     - Brazilian Portuguese: Missions at 45%
   * Pedagogical content: fixing the issues opened by our students.
-    #221: fix templating to now show crude details to youngsters
-    #218, #225, #227: typos in French
-    #226: Course: nice error message when running more than asked
-    #228: CourseForest: nice error message when running more than asked
-    #230: Course*: forbid backward() too. forward() must be called.
-    #232, #233: Methods: show the code calling goAndGet() in languages
-          allowing methods to be embeeded within methods (scala/python)
-          Should be more robust to students misuses now.
+    - #221: fix templating to now show crude details to youngsters
+    - #218, #225, #227: typos in French
+    - #226: Course: nice error message when running more than asked
+    - #228: CourseForest: nice error message when running more than asked
+    - #230: Course*: forbid backward() too. forward() must be called.
+    - #232, #233: Methods: show the code calling goAndGet() in languages
+            allowing methods to be embeeded within methods (scala/python)
+            Should be more robust to students misuses now.
 
 20140905: Release 2.4.1
 

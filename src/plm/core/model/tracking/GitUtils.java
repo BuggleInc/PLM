@@ -57,6 +57,7 @@ public class GitUtils {
 					create.call();
 
 					//System.out.println("Branch " + userBranch + " created");
+					System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
 					git.checkout().setName(userBranch).call();
 				} catch (GitAPIException ex) {
 					// if consideration is wrong, it's a new session from scratch : create the local branch as usual

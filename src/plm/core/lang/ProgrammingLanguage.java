@@ -94,7 +94,4 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
 		return exo.nameOfCorrectionEntity();
 	}
-	public String nameOfTemplateFile(Exercise exo) { // Scala won't touch this one
-		return exo.nameOfCorrectionEntity();
-	}
 }

@@ -23,7 +23,7 @@ public class MaxMod5 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 14) ;
 		myWorld.addTest(INVISIBLE, 1, 2) ;
 
-		templatePython("maxMod5", 
+		templatePython("maxMod5", new String[]{"Int","Int"},
 				"def maxMod5(a, b):\n",
 				"	if (a == b):\n"+
 				"		return 0\n"+
@@ -37,7 +37,7 @@ public class MaxMod5 extends BatExercise {
 				"			return a\n"+
 				"		else:\n"+
 				"			return b");  
-		templateScala("maxMod5",new String[]{"Int","Int"}, 
+		templateScala("maxMod5", new String[]{"Int","Int"}, 
 				"def maxMod5(a:Int, b:Int):Int = {\n",
 				"	if (a == b)\n"+
 				"		return 0\n"+

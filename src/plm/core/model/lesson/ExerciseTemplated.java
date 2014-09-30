@@ -335,7 +335,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			for (SourceFile sf : getSourceFilesList(lang)) {
 				if (searchedName == null) {//lazy initialization if there is any sourcefile to parse
 					Pattern p = Pattern.compile(".*?([^.]*)$");
-					Matcher m = p.matcher(lang.nameOfTemplateFile(this));
+					Matcher m = p.matcher(lang.nameOfCorrectionEntity(this));
 					if (m.matches())
 						searchedName = m.group(1);
 					p = Pattern.compile("Entity$");
@@ -349,7 +349,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 			if (!foundThisLanguage) {
 				try {
-					newSourceFromFile(lang, tabName, lang.nameOfTemplateFile(this));
+					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
 					super.addProgLanguage(lang);
 					foundALanguage = true;
 					if (Game.getInstance().isDebugEnabled())

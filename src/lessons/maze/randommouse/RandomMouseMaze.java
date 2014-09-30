@@ -15,8 +15,8 @@ public class RandomMouseMaze extends ExerciseTemplated {
 		tabName = "RandomMouseMaze";
 		
 		setup( new World[] {
-				BuggleWorld.newFromFile("lessons/maze/randommouse/RandomMouseMaze"),
-				BuggleWorld.newFromFile("lessons/maze/randommouse/RandomMouseMaze2")
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/randommouse/RandomMouseMaze")).ignoreDirectionDifference(),
+				((BuggleWorld) BuggleWorld.newFromFile("lessons/maze/randommouse/RandomMouseMaze2")).ignoreDirectionDifference()
 		});
 	}
 }

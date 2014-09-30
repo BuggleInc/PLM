@@ -24,7 +24,7 @@ public class In1To10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, true) ;
 		myWorld.addTest(INVISIBLE, -1, false) ;
 
-		templatePython("in1To10", 
+		templatePython("in1To10", new String[]{"Int","Boolean"},
 				"def in1To10(n, outsideMode):\n",
 				"   return (outsideMode and (n <= 1 or n >= 10)) or ((not outsideMode) and (n >= 1 and n <= 10))\n");
 		templateScala("in1To10",new String[]{"Int","Boolean"}, 

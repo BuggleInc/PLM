@@ -46,16 +46,16 @@ public class IndexOfValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab4, r.nextInt(35)-15);
 		myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
 
-		templatePython("indexOfValue", 
-				"def indexOfValue(nums,val):\n",
+		templatePython("indexOfValue", new String[] {"Array[Int]","Int"},
+				"def indexOfValue(nums,lookingFor):\n",
 				"  for i in range(len(nums)):\n" +
-				"    if nums[i]==val:\n"+
+				"    if nums[i]==lookingFor:\n"+
 				"      return i\n" +
 				"  return -1\n");
 		templateScala("indexOfValue", new String[] {"Array[Int]","Int"}, 
-				"def indexOfValue(nums:Array[Int] ,value:Int): Int = {\n",
+				"def indexOfValue(nums:Array[Int] ,lookingFor:Int): Int = {\n",
 				"  for (i <- 0 to nums.length-1)\n" +
-				"    if (nums(i)==value) \n"+
+				"    if (nums(i)==lookingFor) \n"+
 				"      return i\n" +
 				"  return -1\n"+
 				"}");

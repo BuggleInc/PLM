@@ -1,0 +1,19 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Recursive Lists</h1>
+<p>This lesson contains a bunch of classical exercises on recursive lists. 
+It is certainly not the most pleasant lesson to do, but I think that it is 
+the easiest of the PLM lessons dealing with recursion.</p>
+
+<p>As usual, there are several things that could be done in the code of this universe to improve it:</p>
+
+<ul>
+<li>New exercises could be proposed, such as
+    http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf
+    If you know some others, please report them as an issue.</li>
+<li>It would be interesting to check the asymptotic complexity of the student's code, but that does not
+    sound easy to do. In Python and Java (where we provide a hand-made RecList class), we could count the
+    amount of cons per exercise, but it won't be easy to relate this to the right BatTest. For Scala, 
+    it sounds even more difficult as we use the classical :: operators of the language. That will be difficult 
+    to override to add a counting mechanism. Another solution would be to ensure that 
+    the call stack does not pass a given threshold, but that sounds very difficult too. Any idea is welcome.</li>
+<ul>

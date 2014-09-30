@@ -25,6 +25,7 @@ public abstract class AbstractBuggle extends Entity {
 	Color bodyColor = Color.red;
 	Color brushColor = Color.red;
 	
+	private boolean dontIgnoreDirectionDifference = true; // if the buggle direction matters for world equality
 
 
 	private int x = 0;
@@ -403,6 +404,10 @@ public abstract class AbstractBuggle extends Entity {
 		return result;
 	}
 
+	public void ignoreDirectionDifference() {
+		dontIgnoreDirectionDifference = false;	
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -418,10 +423,10 @@ public abstract class AbstractBuggle extends Entity {
 				return false;
 		} else if (!bodyColor.equals(other.bodyColor))
 			return false;
-		if (direction == null) {
+		if (dontIgnoreDirectionDifference && direction == null) {
 			if (other.direction != null)
 				return false;
-		} else if (!direction.equals(other.direction))
+		} else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
 			return false;
 		if (seenError != other.seenError)
 			return false;
@@ -441,7 +446,7 @@ public abstract class AbstractBuggle extends Entity {
 		StringBuffer sb = new StringBuffer();
 		if (getX() != other.getX() || getY() != other.getY()) 
 			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-		if (getDirection() != other.getDirection()) 
+		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection()) 
 			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
 		if (getBodyColor() != other.getBodyColor()) 
 			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));

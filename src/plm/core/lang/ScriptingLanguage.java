@@ -96,6 +96,8 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				return;
 			}
 			setupEntityBindings(ent); // Python wants to add extra definitions to intercept I/O
+			if (Game.getInstance().isDebugEnabled())
+				System.out.println("Compiled script:\n"+ent.getScript(this));
 			engine.eval(ent.getScript(this));
 
 		} catch (ScriptException e) {

@@ -32,7 +32,7 @@ public class Golomb extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new Integer(20)) ;
 		
 
-		templatePython("golomb", 
+		templatePython("golomb", new String[] {"Int"},
 				"def golomb(num):\n",
 				"  if num==1:\n" +
 				"    return 1\n"+
