@@ -52,6 +52,9 @@ public abstract class World {
 		}
 		return res;
 	}
+	public String getDebugInfo() {
+		return "";
+	}
 
 	/**
 	 * Reset the content of a world to be the same than the one passed as

@@ -1042,6 +1042,11 @@ public class Game implements IWorldView {
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
+			for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+				String s = w.getDebugInfo();
+				if (s != "") 
+					System.out.println("World: "+s);
+			}
 			System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");

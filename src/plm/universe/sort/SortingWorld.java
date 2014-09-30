@@ -131,6 +131,21 @@ public class SortingWorld extends World {
 		return s;
 	}
 
+	@Override
+	public String getDebugInfo() {
+		StringBuffer sb = new StringBuffer();
+		sb.append(getName()+" [");
+		boolean first = true;
+		for (Integer i : initValues) {
+			if (first) 
+				first = false;
+			else 
+				sb.append(", ");
+			sb.append(i);
+		}
+		sb.append("]");
+		return sb.toString();
+	}
 	/**
 	 * Tells if the array is Sorted or not
 	 */

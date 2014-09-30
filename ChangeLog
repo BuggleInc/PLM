@@ -5,6 +5,8 @@
     - #262: sensible error message when putting code out of any method
       in Scala
     - Add a test suite to gather together all tests.
+    - #359: Add world-specific info to debug and feedback.
+      SortingWorld uses that to tell which random instance was used.
   * Pedagogical content:
     - #372: scala code for Koch and Crab exercises were inverted.
     - #373: Fix entity name for the dutch flag
