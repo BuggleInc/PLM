@@ -1,4 +1,4 @@
-20140930: wanabe Release 2.4.10
+20140930: Release 2.4.10
 
   * Engine:
     - Add several tests to check ExerciseTemplated's behavior.
