@@ -1,4 +1,4 @@
-package plm.core;
+package plm.test;
 
 import static org.junit.Assert.fail;
 
@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
@@ -35,7 +36,7 @@ public class ExoTest {
 	
 	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
-		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake",  
+		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
 		"lessons.recursion.cons", "lessons.recursion", "lessons.recursion.hanoi",
 		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
 		"lessons.bat.string1", "lessons.lander",
