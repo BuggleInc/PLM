@@ -1,3 +1,19 @@
+20140929: Release 2.4.9
+
+  Recursion lesson is usable again, sorry for the inconvenience.
+  (we really need more tests, grmbl)
+
+  * Engine:
+    - Lesson constructor waits for all init threads' completion
+  * Worlds:
+    - Turtle: equal() was too permissive after recent work on merging
+      lines that were too picky. Now take the world name into account
+      in equality, so that we can switch from an empty world to 
+      another empty world in the UI.
+  * Pedagogical content:
+    - recursion: remove the largest fractals that were too heavy
+    - #366: recursion.spiralUse: add another nice picture
+
 20140928: Release 2.4.8
 
   * Engine:

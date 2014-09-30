@@ -40,11 +40,15 @@ public abstract class Lesson {
 		
 		try {
 			loadExercises();
+			Game.waitInitThreads();
 		} catch (IOException e) {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
 			e.printStackTrace();
 		} catch (BrokenWorldFileException e) {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			System.err.println("Interrupted while waiting for the lesson to load.");
 			e.printStackTrace();
 		} 
 		/* Compute the lesson summary for the next time we start the PLM */

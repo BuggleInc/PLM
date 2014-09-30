@@ -110,6 +110,8 @@ public abstract class Entity extends Observable {
 		stackListeners.remove(l);
 	}
 	public void fireStackListener() {
+		if (stackListeners.isEmpty())
+			return;
 		StackTraceElement[] trace = getCurrentStack();
 		for (IEntityStackListener l:stackListeners)
 			l.entityTraceChanged(this, trace);		
