@@ -2,6 +2,8 @@
 
   * Engine:
     - Add several tests to check ExerciseTemplated's behavior.
+  * Pedagogical content:
+    - #372: scala code for Koch and Crab exercises were inverted.
 
 20140929: Release 2.4.9
 
