@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 22:27+0200\n"
+"POT-Creation-Date: 2014-09-30 20:54+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -423,7 +423,30 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser recule() dans cet exercice. "
 "Utilise plutôt setPos(x,y)."
 
-#: src/plm/core/lang/JVMCompiledLang.java:68
+#: src/plm/core/lang/JVMCompiledLang.java:52
+msgid ""
+"Your entity failed to start. Did you forgot to put your code within a "
+"method?\n"
+"\n"
+"This problem often arises when the exercise expects you to put all the code "
+"within a \n"
+"method e.g. run(), but you put some statements (e.g. forward()) outside of "
+"any method.\n"
+"\n"
+"The easiest solution to sort it out is to copy all your code (Ctrl-A Ctrl-"
+"C), use the \n"
+"'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code "
+"within the\n"
+"provided method."
+msgstr ""
+
+#: src/plm/core/lang/JVMCompiledLang.java:59
+msgid ""
+"Your entity failed to start. Your constructor seems to be broken, but I have "
+"no clue."
+msgstr ""
+
+#: src/plm/core/lang/JVMCompiledLang.java:82
 #: src/plm/core/lang/LangLightbot.java:39
 #, java-format
 msgid ""
@@ -1443,7 +1466,7 @@ msgstr "Changer la vitesse d'exécution"
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
-#: src/plm/core/ui/FeedbackDialog.java:43
+#: src/plm/core/ui/FeedbackDialog.java:53
 msgid ""
 "Please write your suggestion here, with all necessary details\n"
 "(if possible in English or French).\n"
@@ -1474,37 +1497,37 @@ msgstr ""
 "--------------------[ Informations techniques ]--------------------\n"
 "(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:62
+#: src/plm/core/ui/FeedbackDialog.java:73
 msgid "Please describe the problem in a few words"
 msgstr "Décrivez le problème en quelques mots"
 
-#: src/plm/core/ui/FeedbackDialog.java:69
+#: src/plm/core/ui/FeedbackDialog.java:80
 msgid "Report your feedback"
 msgstr "Signaler un problème dans la PLM"
 
-#: src/plm/core/ui/FeedbackDialog.java:77
+#: src/plm/core/ui/FeedbackDialog.java:88
 msgid "Issue title:"
 msgstr "Intitulé du problème :"
 
-#: src/plm/core/ui/FeedbackDialog.java:91
+#: src/plm/core/ui/FeedbackDialog.java:102
 #: src/plm/core/ui/action/RevertExercise.java:25
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/plm/core/ui/FeedbackDialog.java:96
+#: src/plm/core/ui/FeedbackDialog.java:107
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 "Voulez-vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:97
+#: src/plm/core/ui/FeedbackDialog.java:108
 msgid "are you sure?"
 msgstr "êtes-vous sûr ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:105
+#: src/plm/core/ui/FeedbackDialog.java:116
 msgid "Send feedback"
 msgstr "Envoyer"
 
-#: src/plm/core/ui/FeedbackDialog.java:119
+#: src/plm/core/ui/FeedbackDialog.java:130
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
@@ -1514,11 +1537,11 @@ msgstr ""
 "prendre \n"
 "en compte. Suivez notre avancement sur {0}."
 
-#: src/plm/core/ui/FeedbackDialog.java:120
+#: src/plm/core/ui/FeedbackDialog.java:131
 msgid "Thanks for your suggestion"
 msgstr "Merci pour votre retour"
 
-#: src/plm/core/ui/FeedbackDialog.java:129
+#: src/plm/core/ui/FeedbackDialog.java:140
 msgid "Error while uploading your feedback"
 msgstr "Erreur lors de l'envoi de votre retour"
 
@@ -2500,14 +2523,14 @@ msgstr "Le nombre d''écritures diffère. Attendu : {0}; Observé : {1}\n"
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr "Les valeurs à l''index {0} diffère. Attendue : {1}; Observée : {2}\n"
 
-#: src/plm/universe/sort/SortingWorld.java:353
-#: src/plm/universe/sort/SortingWorld.java:354
+#: src/plm/universe/sort/SortingWorld.java:368
+#: src/plm/universe/sort/SortingWorld.java:369
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
 msgstr "Dépassement des bornes à l''appel de  echange({0},{1}) : {2}<0"
 
-#: src/plm/universe/sort/SortingWorld.java:355
-#: src/plm/universe/sort/SortingWorld.java:356
+#: src/plm/universe/sort/SortingWorld.java:370
+#: src/plm/universe/sort/SortingWorld.java:371
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
