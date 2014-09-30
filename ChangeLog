@@ -1,3 +1,8 @@
+20140930: wanabe Release 2.4.10
+
+  * Engine:
+    - Add several tests to check ExerciseTemplated's behavior.
+
 20140929: Release 2.4.9
 
   Recursion lesson is usable again, sorry for the inconvenience.
