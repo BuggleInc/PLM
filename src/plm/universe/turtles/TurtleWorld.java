@@ -353,7 +353,7 @@ public class TurtleWorld extends World {
 				
 			// Same amount of shapes?
 			if (shapes.size() != other.shapes.size()) {
-				if (shapes.size() > other.shapes.size())
+				if (other.shapes.size() > shapes.size())
 					sb.append( Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				else 
 					sb.append( Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
