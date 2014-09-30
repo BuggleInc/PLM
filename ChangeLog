@@ -2,6 +2,8 @@
 
   * Engine:
     - Add several tests to check ExerciseTemplated's behavior.
+    - #262: sensible error message when putting code out of any method
+      in Scala
   * Pedagogical content:
     - #372: scala code for Koch and Crab exercises were inverted.
     - #373: Fix entity name for the dutch flag

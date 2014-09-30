@@ -46,7 +46,11 @@ public class PLMCompilerException extends Exception {
 	      setDiagnostics(diagnostics);
 	   }
 
-	   private void setClassNames(Set<String> qualifiedClassNames) {
+	   public PLMCompilerException(String message) {
+		   super(message);
+	   }
+
+	private void setClassNames(Set<String> qualifiedClassNames) {
 	      // Creates a new HashSet because the set passed in may not be Serializable.
 	      // For example, Map.keySet() returns a non-Serializable set.
 		   if (qualifiedClassNames != null)
