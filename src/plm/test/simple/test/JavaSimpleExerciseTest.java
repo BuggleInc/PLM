@@ -20,17 +20,34 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 
 	@Override
 	public String generateNullPointerErrorCode() {
-		return "public void run() { String s = null;\nSystem.out.println(s.length()); }";
+		return "public void run() {\n"
+				+ "    String s = null;\n"
+				+ "    System.out.println(s.length());\n"
+				+ "}";
 	}
 
 	@Override
 	public String generateOutOfBoundsErrorCode() {
-		return "public void run() { int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\nSystem.out.println(t[42]); }";
+		return "public void run() {\n"
+				+ "    int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n"
+				+ "    System.out.println(t[42]);\n"
+				+ "}";
 	}
 
 	@Override
 	public String generateWrongCode() {
-		return "public void run() { ((SimpleWorld) world).setObjectif(false);  }";
+		return "public void run() {\n"
+				+ "    ((SimpleWorld) world).setObjectif(false);\n"
+				+ "}";
+	}
+
+	@Override
+	public String generateSolutionFollowedByError() {
+		return "public void run() {\n"
+				+ "    ((SimpleWorld) world).setObjectif(true);\n"
+				+ "    int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n"
+				+ "    System.out.println(t[42]);\n"
+				+ "}";
 	}
 	
 }

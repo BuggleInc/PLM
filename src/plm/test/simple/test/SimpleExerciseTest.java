@@ -139,6 +139,25 @@ public abstract class SimpleExerciseTest {
 		}
 	}
 
+	@Test
+	public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException {
+		exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError());
+		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+		
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+			for (Entity ent: w.getEntities()) {
+				pl.runEntity(ent,exo.lastResult);
+			}
+		}
+		
+		exo.check();
+		
+		if(exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+			fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
+		}
+	}
+	
 	// Used to generate compilation error for each programming languages tested
 	public abstract String generateSyntaxErrorCode();
 	public abstract String generateVariableErrorCode();
@@ -149,4 +168,6 @@ public abstract class SimpleExerciseTest {
 
 	// Used to generate a code throwing no errors but not passing the exercise
 	public abstract String generateWrongCode();
+	
+	public abstract String generateSolutionFollowedByError();
 }
