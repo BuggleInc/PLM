@@ -487,10 +487,11 @@ public class Game implements IWorldView {
 						fallback = l;
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
-				System.out.println( 
-						Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
-								+ "Please consider contributing to this project by adapting this exercise to this language.",
-								lect.getName(),getProgrammingLanguage(),fallback.getLang()));
+				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
+					System.out.println(
+							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
+									+ "Please consider contributing to this project by adapting this exercise to this language.",
+									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 				setProgramingLanguage(fallback);
 
 			}
