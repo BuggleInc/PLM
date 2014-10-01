@@ -1,3 +1,9 @@
+20141001: wanabe Release 2.4.11
+
+	* Engine:
+	  - #224: Automatically mark as failed an exercise if 
+        the program's execution has been interrupted
+
 20140930: Release 2.4.10
 
   * Engine:

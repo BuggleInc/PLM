@@ -63,7 +63,7 @@ public class LangPython extends ScriptingLanguage {
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'java.lang.ThreadDeath'>")) {
-			msg.append(Game.i18n.tr("You interrupted the execution.\n" +
+			msg.append(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n" +
 					"Your program must stop by itself to successfully pass the exercise.\n"));
 
 		} else { /* It makes sense to display a backtrace for any errors but syntax ones */
