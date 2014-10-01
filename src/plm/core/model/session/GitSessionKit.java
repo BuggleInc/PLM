@@ -96,7 +96,6 @@ public class GitSessionKit implements ISessionKit {
 				// It should never happen since the session content should be created by the git spy module.
 				System.out.println(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 			}
-			
 		}
 
 		// Load bodies

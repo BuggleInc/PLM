@@ -6,11 +6,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.MergeCommand;
+import org.eclipse.jgit.api.MergeResult;
+import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
+import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRefNameException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
+import org.eclipse.jgit.api.errors.RefNotFoundException;
+import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.lib.NullProgressMonitor;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.StoredConfig;
+import org.eclipse.jgit.merge.MergeStrategy;
+import org.eclipse.jgit.transport.FetchResult;
+import org.eclipse.jgit.transport.RefSpec;
 import org.json.simple.JSONObject;
 
 import plm.core.UserSwitchesListener;
@@ -37,6 +49,84 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		users.addUserSwitchesListener(this);
 		userHasChanged(users.getCurrentUser());
 	}
+	
+	
+	// TODO: all the static method have to be moved to a git utils helper class.
+	
+	public static void initLocalRepository(File repoDirectory, String repoUrl) throws GitAPIException, IOException {
+		Git git = Git.init().setDirectory(repoDirectory).call();
+		git.close();
+	}
+		
+	public static boolean createBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {		
+		String repoName = "origin";
+		Git git = Git.open(repoDirectory);
+			
+		try {
+			StoredConfig cfg = git.getRepository().getConfig();
+			cfg.setString("remote", repoName, "url", repoUrl);
+			cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);		
+			cfg.save();		
+
+			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
+			FetchResult res = git.fetch().call();
+		} catch (TransportException ex) {
+			if (ex.getMessage().equals("Remote does not have refs/heads/"+userBranchHash+" available for fetch.")) {
+				return false;
+			} else {
+				throw ex;
+			}
+		} finally {
+			git.close();
+		}
+		
+		return true;
+	}
+	
+	public void createLocalUserBranch(File repoDirectory, String repoName, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
+		Git git = Git.open(repoDirectory);
+				
+		// We must create an initial commit before creating a specific branch for the user
+		git.commit().setMessage("Empty initial commit")
+			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.call();		
+		git.checkout().setCreateBranch(true).setName(userBranchHash).call();
+		git.close();
+	}
+
+	public static void checkoutExistingUserBranch(File repoDirectory, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
+		Git git = Git.open(repoDirectory);
+		try {
+			git.checkout().setCreateBranch(false).setName(userBranchHash).call();
+		} finally {
+			git.close();
+		}
+	}
+	
+	public static void pullExistingBranch(File repoDirectory, String userBranchHash) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
+		// TODO: we should protect this method call from concurrent execution with pushing methods
+		Git git = Git.open(repoDirectory);
+		try {
+			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
+		} catch (Exception ex) {
+			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
+			throw ex;
+		} finally {
+			git.close();
+		}
+		
+		try {
+			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RESOLVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
+			System.out.println(res.getMergeStatus()); // TODO: to remove
+		} catch (Exception ex) {
+			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
+			throw ex;
+		} finally {
+			git.close();
+		}
+	}
+	
 	/** 
 	 * Initialize locally the git repo for that user
 	 */
@@ -44,51 +134,43 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	public void userHasChanged(User newUser) {
 		try {
 			String userUUID = newUser.getUserUUIDasString();
-			String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
+			String userBranch = "PLM"+GitUtils.sha1(userUUID);
 
 			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
 			if (!repoDir.exists()) {
+				initLocalRepository(repoDir, repoUrl); // TODO: remove last parameter (repoUrl)
 				// try to get the branch as stored remotely
-				git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoDir).setBranch(userBranch).call();
-				
-				// If no branch can be found remotely, create a new one.
-				if (git == null) { 
-					git = Git.init().setDirectory(repoDir).call();
-					StoredConfig cfg = git.getRepository().getConfig();
-					cfg.setString("remote", "origin", "url", repoUrl);
-					cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
-					// TODO: more test before enabling the following configuration
-					//cfg.setString("branch", userBranch, "remote", "origin");
-					//cfg.setString("branch", userBranch, "merge", "refs/heads/"+userBranch);
-					cfg.save();
-					git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
-					System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-
-				} else {
+				if (createBranchFromRemoteBranch(repoDir, repoUrl, userBranch)) {
+					checkoutExistingUserBranch(repoDir, userBranch);
 					System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+				} else {
+					// If no branch can be found remotely, create a new one.
+					System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+					createLocalUserBranch(repoDir, "origin", userBranch);
 				}
-				
-				GitUtils gitUtils = new GitUtils(git);
-				// checkout the branch of the current user
-				gitUtils.checkoutUserBranch(newUser, progress);
-			} else {
-				git = Git.open(repoDir);
-				GitUtils gitUtils = new GitUtils(git);				
-				gitUtils.checkoutUserBranch(newUser, progress);
-				gitUtils.maybePullUserBranchFromServer(newUser, progress);
+			} else {		
+				 Git git = Git.open(repoDir);
+				 if (git.getRepository().getRef(userBranch) != null) {
+					 git.close();
+					 checkoutExistingUserBranch(repoDir, userBranch);
+					 pullExistingBranch(repoDir, userBranch);
+				 } else { // FIXME: this case should never happenedn, therefore it should be reported to the end-user
+					 git.close();
+					 System.out.println("WARNING: trying to checkout a non existing git user branch during user switching.");
+				 }
 			}
-
+			this.git = Git.open(repoDir);
 
 			// Log into the git that the PLM just started
-			git.commit().setMessage(writePLMStartedCommitMessage())
+			this.git.commit().setMessage(writePLMStartedCommitMessage())
 			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
 			.call();
 
 			// and push to ensure that everything remains in sync
 			GitUtils gitUtils = new GitUtils(git);
-			gitUtils.maybePushToUserBranch(progress); 
+			gitUtils.maybePushToUserBranch(userBranch, progress); 
 		} catch (Exception e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();
@@ -98,11 +180,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	@Override
 	public void executed(Exercise exo) {
 		try {
-			GitUtils gitUtils = new GitUtils(git);
 
 			// checkout the branch of the current user (just in case it changed in between)
-			gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser(), progress);
-
+			// if this case might happen, then you should also checkout back the current user branch...
+			//GitUtils gitUtils = new GitUtils(git);
+			//gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser(), progress);
+			
 			// Change the files locally
 			createFiles(exo);
 			checkSuccess(exo);
@@ -113,11 +196,15 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// and then commit the changes
 			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 			            .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-			            .setMessage(writeCommitMessage(exo, null, "executed",new JSONObject()))
+			            .setMessage(writeCommitMessage(exo, null, "executed", new JSONObject()))
 			            .call();
 
 			// push to the remote repository
-			gitUtils.maybePushToUserBranch(progress);
+			GitUtils gitUtils = new GitUtils(git);
+			
+			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userBranch = "PLM"+GitUtils.sha1(userUUID);
+			gitUtils.maybePushToUserBranch(userBranch, progress);
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -127,6 +214,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	@Override
 	public void switched(Exercise exo) {
+		//TODO: remove duplicated code. Looks like the executed(Exercise exo) code
 		Exercise lastExo = (Exercise) Game.getInstance().getLastExercise();
 		if (lastExo == null)
 			return;
@@ -143,11 +231,13 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				// and then commit the changes
 				git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-				.setMessage(writeCommitMessage(lastExo, exo, "switched",new JSONObject()))
+				.setMessage(writeCommitMessage(lastExo, exo, "switched", new JSONObject()))
 				.call();
 
 				// push to the remote repository
-				gitUtils.maybePushToUserBranch(progress);
+				String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+				String userBranch = "PLM"+GitUtils.sha1(userUUID);
+				gitUtils.maybePushToUserBranch(userBranch, progress);
 			} catch (GitAPIException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -171,7 +261,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		try {
 			GitUtils gitUtils = new GitUtils(git);
 			// push to the remote repository
-			gitUtils.forcefullyPushToUserBranch(progress);
+			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userBranch = "PLM"+GitUtils.sha1(userUUID);
+			gitUtils.forcefullyPushToUserBranch(userBranch, progress);
 
 		} catch (org.eclipse.jgit.api.errors.TransportException e) {
 			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable."));
@@ -359,7 +451,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					.call();
 
 			// push to the remote repository
-			gitUtils.maybePushToUserBranch(progress);
+			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userBranch = "PLM"+GitUtils.sha1(userUUID);
+			gitUtils.maybePushToUserBranch(userBranch, progress);
 		} catch (IOException | GitAPIException ex) { 
 			ex.printStackTrace();
 		}
@@ -393,7 +487,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					.call();
 
 			// push to the remote repository
-			gitUtils.maybePushToUserBranch(progress);
+			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userBranch = "PLM"+GitUtils.sha1(userUUID);
+			gitUtils.maybePushToUserBranch(userBranch, progress);
 		} catch (IOException | GitAPIException ex) { 
 			ex.printStackTrace();
 		}

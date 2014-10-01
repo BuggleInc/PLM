@@ -9,14 +9,11 @@ import javax.swing.SwingWorker;
 import org.eclipse.jgit.api.CreateBranchCommand;
 import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.MergeCommand;
-import org.eclipse.jgit.api.MergeResult;
 import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.lib.ProgressMonitor;
-import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
@@ -38,6 +35,7 @@ public class GitUtils {
 		this.git = git;
 	}
 	
+	@Deprecated
 	public void checkoutUserBranch(User currentUser, ProgressMonitor progress) throws GitAPIException {
 		String userUUID = currentUser.getUserUUIDasString();
 		String userBranch;
@@ -80,7 +78,7 @@ public class GitUtils {
 	 * 
 	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
 	 */
-	public void forcefullyPushToUserBranch(ProgressMonitor progress) {
+	public void forcefullyPushToUserBranch(String userBranchHash, ProgressMonitor progress) {
 		synchronized(GitUtils.class) {
 			currentlyPushing = true;
 		}
@@ -89,7 +87,7 @@ public class GitUtils {
 		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
 		// push
-		PushCommand pc = git.push().setProgressMonitor(progress);
+		PushCommand pc = git.push().setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).setProgressMonitor(progress);
 		pc.setCredentialsProvider(cp).setForce(true).setPushAll();
 		try {
 			for (PushResult pr: pc.call()) 
@@ -126,7 +124,7 @@ public class GitUtils {
      * concurrent push requests, triggering an alert that got the PLM-data repo to get temporarily disabled.
      * 
 	 */
-	public void maybePushToUserBranch(final ProgressMonitor progress) {	
+	public void maybePushToUserBranch(final String userBranchHash, final ProgressMonitor progress) {	
 		synchronized(GitUtils.class) {
 			if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
 				return;
@@ -138,44 +136,18 @@ public class GitUtils {
 			protected Void doInBackground() {
 				// Reduce the load on the github servers by not pushing more often that once every 20 minutes
 				try {
-					Thread.sleep(5 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
+					Thread.sleep(1 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
 				} catch (InterruptedException e1) {
 					/* Ok, that's fine, what ever */
 				}
 
 				// Do it now, and allow next request to occur
-				forcefullyPushToUserBranch(progress);
+				forcefullyPushToUserBranch(userBranchHash, progress);
 				
 				return null;
 			}
 		}.execute();
 	}
-	
-	
-	public void maybePullUserBranchFromServer(User currentUser, final ProgressMonitor progress) {	
-		// TODO: we should protect this method call from concurrent execution with pushing methods
-				String userUUID = currentUser.getUserUUIDasString();
-		String userBranch = "PLM"+GitUtils.sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
-		
-		try {
-			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranch+":refs/remotes/origin/"+userBranch)).call();
-		} catch (GitAPIException e) {
-			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
-			//if (Game.getInstance().isDebugEnabled())
-				e.printStackTrace();
-		}
-		
-		try {
-			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RESOLVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranch)).call();
-			System.out.println(res.getMergeStatus()); // TODO: to remove
-		} catch (GitAPIException | IOException e) {
-			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
-			//if (Game.getInstance().isDebugEnabled())
-				e.printStackTrace();
-		}
-	}
-	
-	
 
 	// Helper methods
 	public static String sha1(String input)  {
