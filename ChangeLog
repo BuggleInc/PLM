@@ -1,9 +1,23 @@
-20140930: wanabe Release 2.4.10
+20141001: wanabe Release 2.4.11
+
+  * Engine:
+    - #224: If the execution is interrupted, the exercise is failed
+    - #380: Disable creative mode when switching the exercise
+  * Pedagogical content:
+    - #378: French typo
+
+20140930: Release 2.4.10
 
   * Engine:
     - Add several tests to check ExerciseTemplated's behavior.
+    - #262: sensible error message when putting code out of any method
+      in Scala
+    - Add a test suite to gather together all tests.
+    - #359: Add world-specific info to debug and feedback.
+      SortingWorld uses that to tell which random instance was used.
   * Pedagogical content:
     - #372: scala code for Koch and Crab exercises were inverted.
+    - #373: Fix entity name for the dutch flag
 
 20140929: Release 2.4.9
 

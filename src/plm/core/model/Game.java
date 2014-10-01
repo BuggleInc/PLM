@@ -472,6 +472,10 @@ public class Game implements IWorldView {
 			if (this.currentLesson != lect.getLesson())
 				this.currentLesson = lect.getLesson();
 			
+			/* if the user changes the exercise, you can assume that he wants to test another challenge */
+			if (isCreativeEnabled())
+				switchCreative();
+			
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
@@ -487,15 +491,15 @@ public class Game implements IWorldView {
 						fallback = l;
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
-				System.out.println( 
-						Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
-								+ "Please consider contributing to this project by adapting this exercise to this language.",
-								lect.getName(),getProgrammingLanguage(),fallback.getLang()));
+				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
+					System.out.println(
+							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
+									+ "Please consider contributing to this project by adapting this exercise to this language.",
+									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 				setProgramingLanguage(fallback);
 
 			}
 			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
-
 		} catch (UserAbortException e) { 
 			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}
@@ -1042,6 +1046,11 @@ public class Game implements IWorldView {
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
+			for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+				String s = w.getDebugInfo();
+				if (s != "") 
+					System.out.println("World: "+s);
+			}
 			System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");

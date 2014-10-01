@@ -24,7 +24,10 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.tracking.GitUtils;
+import plm.universe.World;
 
 public class FeedbackDialog extends JDialog {
 
@@ -39,6 +42,13 @@ public class FeedbackDialog extends JDialog {
 		if (FeedbackDialog.instance == null) {
 			FeedbackDialog.instance = new FeedbackDialog();
 		}
+		StringBuffer worldInfo = new StringBuffer();
+		for (World w:((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+			String s = w.getDebugInfo();
+			if (s != "") 
+				worldInfo.append("World: "+s+"\n");
+		}
+
 		FeedbackDialog.instance.feedback.setText(FeedbackDialog.instance.i18n.tr(
 				  "Please write your suggestion here, with all necessary details\n"
 				+ "(if possible in English or French).\n\n"
@@ -52,6 +62,7 @@ public class FeedbackDialog extends JDialog {
 				) /* The rest is not translated */
 				+ "\nLesson: "+Game.getInstance().getCurrentLesson().getId() + "\n"
 				+ "Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n"
+				+ worldInfo.toString()
 				+ "Programming Language: "+Game.getProgrammingLanguage().getLang() + "\n"
 				+ "Locale: "+Game.getInstance().getLocale().getDisplayName() + "\n"
 				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
