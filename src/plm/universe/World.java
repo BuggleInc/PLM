@@ -166,7 +166,9 @@ public abstract class World {
 			    public void uncaughtException(Thread th, Throwable ex) {
 			        
 			    	if(ex instanceof ThreadDeath) {
-				        progress.setExecutionError("The execution has been interrupted, did you fall into an infinite loop ? ;)");
+			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
+			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
+				        progress.setExecutionError(Game.i18n.tr(msg));
 				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
 			    	}
 			    }
