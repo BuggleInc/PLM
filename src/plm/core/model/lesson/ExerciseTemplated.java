@@ -11,8 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import plm.core.PLMCompilerException;
+import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
@@ -377,6 +379,14 @@ public abstract class ExerciseTemplated extends Exercise {
 	
 	protected void computeAnswer() {
 		final String id = this.getId();
+		Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+		    public void uncaughtException(Thread th, Throwable ex) {
+		    	if(ex instanceof PLMEntityNotFound) {
+		    		getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
+		    	}
+		        System.err.println("Uncaught exception while computing answer: " + ex);
+		    }
+		};
 		Thread t = new Thread() {
 			@Override
 			public void run() {
@@ -463,6 +473,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				Game.getInstance().statusArgRemove(getClass().getSimpleName());
 			}
 		};
+		t.setUncaughtExceptionHandler(h);
 		Game.addInitThread(t);
 		t.start();
 	}

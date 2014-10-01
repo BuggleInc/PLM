@@ -35,6 +35,7 @@ import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
 import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
+import plm.core.PLMEntityNotFound;
 import plm.core.ProgLangChangesListener;
 import plm.core.StatusStateListener;
 import plm.core.lang.LangC;
@@ -49,6 +50,7 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
@@ -370,10 +372,14 @@ public class Game implements IWorldView {
 			System.err.println("Interrupted while loading the lesson "+lesson.getName());
 			e.printStackTrace();
 		}
+		// If a problem arose while setting up the lesson, don't switch 
+		// TODO: define a better solution when encountering this issue
+		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
+			throw new PLMEntityNotFound("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.");
+		}
+			
 		setCurrentLesson(lesson);
-
 		this.setState(GameState.LOADING_DONE);
-
 		return lesson;
 	}
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
