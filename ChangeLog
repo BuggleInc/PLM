@@ -1,8 +1,9 @@
 20141001: wanabe Release 2.4.11
 
-	* Engine:
-	  - #224: Automatically mark as failed an exercise if 
-        the program's execution has been interrupted
+  * Engine:
+    - #224: If the execution is interrupted, the exercise is failed
+  * Pedagogical content:
+    - #378: French typo
 
 20140930: Release 2.4.10
 

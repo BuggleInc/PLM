@@ -12079,7 +12079,7 @@ msgstr ""
 "Aujourd'hui, nous allons faire la connaissance des petites cousines des "
 "buggles : les tortues. En fait, les tortues sont bien plus vieilles que les "
 "buggles. Elles ont été inventées dans les années 70 par un scientifique du "
-"MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
+"MIT nommé Seymour Papert pour aider à l'enseignement de la programmation, et "
 "les buggles sont une variation sur le thème inventée par Lyn Turbak du "
 "Wellesley College plus tard."
 
