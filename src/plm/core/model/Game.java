@@ -472,6 +472,10 @@ public class Game implements IWorldView {
 			if (this.currentLesson != lect.getLesson())
 				this.currentLesson = lect.getLesson();
 			
+			/* if the user changes the exercise, you can assume that he wants to test another challenge */
+			if (isCreativeEnabled())
+				switchCreative();
+			
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
@@ -496,7 +500,6 @@ public class Game implements IWorldView {
 
 			}
 			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
-
 		} catch (UserAbortException e) { 
 			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}

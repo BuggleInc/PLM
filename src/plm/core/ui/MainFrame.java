@@ -639,6 +639,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		} else {
 			hideWorldView();
 		}
+		miExoCreative.setSelected(Game.getInstance().isCreativeEnabled());
 	}
 
 	@Override

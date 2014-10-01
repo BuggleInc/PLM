@@ -2,6 +2,7 @@
 
   * Engine:
     - #224: If the execution is interrupted, the exercise is failed
+    - #380: Disable creative mode when switching the exercise
   * Pedagogical content:
     - #378: French typo
 
