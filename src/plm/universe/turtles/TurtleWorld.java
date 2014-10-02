@@ -258,7 +258,8 @@ public class TurtleWorld extends World {
 						Line l1 = (Line) shapes.get(i);
 						Line l2 = (Line) shapes.get(j);
 						if (l1.sameSlope(l2)) { // We cannot have inverted slopes because the extremities within a line are sorted
-							if (Line.doubleEqual(l1.x1, l2.x1) && Line.doubleEqual(l1.y1, l2.y1)) {// Same start. Keep the longer
+							if ( (Line.doubleEqual(l1.x1, l2.x1) && Line.doubleEqual(l1.y1, l2.y1)) || // Same start. Keep the longer
+									(Line.doubleEqual(l1.x2, l2.x2) && Line.doubleEqual(l1.y2, l2.y2)) ) { // Same end. Keep the longer
 								int rmIdx;
 								if (l1.getLength()>l2.getLength()) {
 									rmIdx = j;
