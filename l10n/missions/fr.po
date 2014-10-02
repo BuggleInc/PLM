@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-28 21:55+0200\n"
+"POT-Creation-Date: 2014-10-02 10:53+0200\n"
 "PO-Revision-Date: 2014-09-28 22:01+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -9200,7 +9200,14 @@ msgid ""
 "smallest value, which is the smallest value from the cell not already "
 "sorted. You of course don't have to sort the last cell of the array, that is "
 "already sorted when you consider it."
-msgstr "Son principe est simplement de sélectionner pour chaque case du tableau la plus petite valeur de la partie pas encore triée. Ainsi, pour la première case, je prend la plus petite valeur du tableau. Pour la seconde, je prend la seconde plus petite valeur, qui se trouve être la plus petite des cases n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la dernière case du tableau, puisqu'elle est déjà triée lorsque vous la considérez."
+msgstr ""
+"Son principe est simplement de sélectionner pour chaque case du tableau la "
+"plus petite valeur de la partie pas encore triée. Ainsi, pour la première "
+"case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
+"la seconde plus petite valeur, qui se trouve être la plus petite des cases "
+"n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la "
+"dernière case du tableau, puisqu'elle est déjà triée lorsque vous la "
+"considérez."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
@@ -9208,7 +9215,10 @@ msgid ""
 "More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
-msgstr "Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N et celui de la case M."
+msgstr ""
+"Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant "
+"la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
+"et celui de la case M."
 
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
@@ -12676,16 +12686,16 @@ msgstr ""
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
-"switch to the creative mode (from the Session menu)  to disable the world "
+"switch to the creative mode (from the Exercise menu)  to disable the world "
 "comparison when you explore with these spirals."
 msgstr ""
 "Voici quelques figures que l'on peut produire avec votre fonction "
 "<code>spiral</code> en lui passant les bons paramètres. Passez en mode "
-"créatif (dans le menu session) pour désactiver la correction de votre code "
+"créatif (dans le menu Exercice) pour désactiver la correction de votre code "
 "quand vous explorez ces spirales."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:19
+#: src/lessons/recursion/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
