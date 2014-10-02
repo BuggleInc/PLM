@@ -49,13 +49,16 @@ public class Line implements Shape {
 		return new Line(x1,y1,x2,y2,color);
 	}
 	public static boolean doubleEqual(double a, double b) {
-		return (Math.abs(a-b)<0.001);
+		return (Math.abs(a-b)<0.01);
+	}
+	public static boolean doubleApprox(double a, double b) {
+		return (Math.abs(a-b)<1);
 	}
 	public boolean sameSlope(Line other) {
-		if (doubleEqual(x1, x2) && doubleEqual(other.x1, other.x2)) // Both are vertical, same infinite slope
+		if (doubleApprox(x1, x2) && doubleApprox(other.x1, other.x2)) // Both are vertical, same infinite slope
 			return true;
 		
-		if (doubleEqual(x1, x2) || doubleEqual(other.x1, other.x2)) // one is vertical (but not both, given above test)
+		if (doubleApprox(x1, x2) || doubleApprox(other.x1, other.x2)) // one is vertical (but not both, given above test)
 			return false;
 		
 		// none is vertical, actually compute and compare the slopes
@@ -104,6 +107,13 @@ public class Line implements Shape {
 	
 	@Override
 	public String toString(){
-		return String.format("Line (x%.3f y%.3f / x%.3f y%.3f / %s)", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color));
+		String slope = "";
+		if (Game.getInstance().isDebugEnabled()) {
+			if (doubleApprox(x1,x2))
+				slope = "slope=infty";
+			else
+				slope = "slope="+ ((y2-y1) / (x2-x1));
+		}
+		return String.format("Line (x%.3f y%.3f / x%.3f y%.3f / %s) %s", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color),slope);
 	}
 }
