@@ -54,6 +54,11 @@ public class Line implements Shape {
 	public static boolean doubleApprox(double a, double b) {
 		return (Math.abs(a-b)<1);
 	}
+	public static boolean doubleWithin(double a, double min, double max) {
+		double MIN = Math.min(min,max); // We need to sort min and max because y coordinates can be out of order
+		double MAX = Math.max(min,max);
+		return (a > MIN && a < MAX) || doubleEqual(a, MIN) || doubleEqual(a, MAX);
+	}
 	public boolean sameSlope(Line other) {
 		if (doubleApprox(x1, x2) && doubleApprox(other.x1, other.x2)) // Both are vertical, same infinite slope
 			return true;
@@ -63,6 +68,16 @@ public class Line implements Shape {
 		
 		// none is vertical, actually compute and compare the slopes
 		return doubleEqual( (y2-y1) / (x2-x1) , (other.y2-other.y1) / (other.x2-other.x1) );
+	}
+	public boolean sameRoot(Line other) {
+		if (doubleApprox(y1, y2) && doubleApprox(other.y1, other.y2)) // Both are horizontal, none of the roots are defined
+			return true;
+		if (doubleApprox(y1, y2) || doubleApprox(other.y1, other.y2)) // One of them have no root
+			return false;
+		// let's compute the roots that do exist, and compare them
+		double root = (x2*y1 - x1*y2) / (x2-x1);
+		double otherRoot = (other.x2*other.y1 - other.x1*other.y2) / (other.x2-other.x1);
+		return doubleEqual(root, otherRoot);
 	}
 	public double getLength() {
 		if (length == -1)

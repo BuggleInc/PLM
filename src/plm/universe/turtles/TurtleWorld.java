@@ -299,6 +299,34 @@ public class TurtleWorld extends World {
 								if (j>0)
 									j--; 
 								changedSomething = true;
+							} else if (l1.sameRoot(l2)) {
+								// The lines are parallel and on the same ray. Check if they are intersecting
+								if (Line.doubleWithin(l1.x1, l2.x1, l2.x2) && Line.doubleWithin(l1.x2, l2.x1, l2.x2) &&
+									Line.doubleWithin(l1.y1, l2.y1, l2.y2) && Line.doubleWithin(l1.y2, l2.y1, l2.y2)) {
+									// l1 is strictly within l2 (we don't test on y because we have the same slope & root, and extremities are sorted)
+									if (j>=i  && i>0)
+										j--;
+									shapes.remove(i);
+									if (i>0)
+										i--;
+									changedSomething = true;
+								} else if (Line.doubleWithin(l2.x1, l1.x1, l1.x2) && Line.doubleWithin(l2.x2, l1.x1, l1.x2) &&
+										   Line.doubleWithin(l2.y1, l1.y1, l1.y2) && Line.doubleWithin(l2.y2, l1.y1, l1.y2) ) {
+									// l2 is strictly within l1
+									if (i>=j  && j>0)
+										i--;
+									shapes.remove(j);
+									if (j>0)
+										j--;
+									changedSomething = true;
+								} /*else if (!Line.doubleWithin(l1.x1, l2.x1, l2.x2) && !Line.doubleWithin(l1.x2, l2.x1, l2.x2)) {
+									// No point of l1 is within l2. They are disjoint, nothing to do
+								} else if (!Line.doubleWithin(l2.x1, l1.x1, l1.x2) && !Line.doubleWithin(l2.x2, l1.x1, l1.x2)) {
+									// No point of l2 is within l1. They are disjoint, nothing to do
+								} else if (Line.doubleWithin(l1.x1, l2.x1, l2.x2) && Line.doubleWithin(l2.x1, l1.x1, l1.x2)) {
+									// if l1=(ab) and l2=(cd), we have the points in that order a,c,b,d or c,a,d,b
+									// FIXME: that's not sorted out yet...
+								}*/
 							}
 						} // not same slope, certainly not lenghtening each other
 					} // j is not a shape
