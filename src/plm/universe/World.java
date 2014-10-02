@@ -95,7 +95,9 @@ public abstract class World {
 	public int getDelay() {
 		return this.delay;
 	}
-	/** set the value of the UI delay which will be used on doDelay() */
+	/** set the value of the UI delay which will be used on doDelay() 
+	 * 
+	 * Default value: 100ms */
 	public void setDelay(int d) {
 		this.delay = d;
 		notifyWorldUpdatesListeners(); // notify the speed slider model
