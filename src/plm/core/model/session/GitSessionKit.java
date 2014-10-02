@@ -17,14 +17,7 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Arrays;
 import java.util.Collection;
-
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.TransportException;
-import org.eclipse.jgit.lib.PersonIdent;
-import org.eclipse.jgit.lib.StoredConfig;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -33,7 +26,6 @@ import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.model.tracking.GitUtils;
 
 public class GitSessionKit implements ISessionKit {
 

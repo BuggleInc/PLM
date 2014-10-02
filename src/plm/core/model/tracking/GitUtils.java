@@ -1,26 +1,41 @@
 package plm.core.model.tracking;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.swing.SwingWorker;
 
-import org.eclipse.jgit.api.CreateBranchCommand;
-import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.MergeCommand;
+import org.eclipse.jgit.api.MergeResult;
 import org.eclipse.jgit.api.PushCommand;
+import org.eclipse.jgit.api.errors.CheckoutConflictException;
+import org.eclipse.jgit.api.errors.ConcurrentRefUpdateException;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRefNameException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.NoFilepatternException;
+import org.eclipse.jgit.api.errors.NoHeadException;
+import org.eclipse.jgit.api.errors.NoMessageException;
+import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
+import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.api.errors.TransportException;
+import org.eclipse.jgit.api.errors.UnmergedPathsException;
+import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
+import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
+import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.lib.StoredConfig;
+import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.transport.CredentialsProvider;
+import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import plm.core.model.Game;
-import plm.core.model.User;
 
 public class GitUtils {
 
@@ -31,46 +46,89 @@ public class GitUtils {
 
 	private static boolean currentlyPushing = false;
 
+	// TODO: remove git.close() ?
+	
+	public GitUtils() {
+		super();
+	}
+	
+	@Deprecated
 	public GitUtils(Git git) throws IOException, GitAPIException {
 		this.git = git;
 	}
 	
-	@Deprecated
-	public void checkoutUserBranch(User currentUser, ProgressMonitor progress) throws GitAPIException {
-		String userUUID = currentUser.getUserUUIDasString();
-		String userBranch;
-
+	public void initLocalRepository(File repoDirectory, String repoUrl) throws GitAPIException, IOException {
+		git = Git.init().setDirectory(repoDirectory).call();
+		git.close();
+	}
+		
+	public boolean createBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {		
+		String repoName = "origin";
+		
+		git = Git.open(repoDirectory);	
+		
 		try {
-			userBranch = "PLM"+sha1(userUUID); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
+			StoredConfig cfg = git.getRepository().getConfig();
+			cfg.setString("remote", repoName, "url", repoUrl);
+			cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);		
+			cfg.save();		
 
-			// create a branch for the current user if it's not already there
-			if (git.getRepository().getRef(userBranch) == null) {
-				try { 
-					// consider there is a remote branch but not a local one
-					CreateBranchCommand create = git.branchCreate();
-					create.setUpstreamMode(SetupUpstreamMode.SET_UPSTREAM);
-					create.setName(userBranch);
-					create.setStartPoint("origin/" + userBranch);
-					create.setForce(true);
-					create.call();
+			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
+			FetchResult res = git.fetch().call();
+		} catch (TransportException ex) {
+			if (ex.getMessage().equals("Remote does not have refs/heads/"+userBranchHash+" available for fetch.")) {
+				return false;
+			} else {
+				throw ex;
+			}
+		} finally {
+			git.close();
+		}
+		
+		return true;
+	}
+	
+	public void createLocalUserBranch(File repoDirectory, String repoName, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
+		git = Git.open(repoDirectory);
+				
+		// We must create an initial commit before creating a specific branch for the user
+		git.commit().setMessage("Empty initial commit")
+			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.call();		
+		git.checkout().setCreateBranch(true).setName(userBranchHash).call();
+		git.close();
+	}
 
-					//System.out.println("Branch " + userBranch + " created");
-					System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
-					git.checkout().setName(userBranch).call();
-				} catch (GitAPIException ex) {
-					// if consideration is wrong, it's a new session from scratch : create the local branch as usual
-					CreateBranchCommand create = git.branchCreate();
-					create.setName(userBranch);
-					create.call();
-					git.checkout().setName(userBranch).call();
-				}
-			} 
-		} catch (org.eclipse.jgit.api.errors.TransportException e) {
-			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable. That's fine."));
-			if (Game.getInstance().isDebugEnabled())
-				e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void checkoutExistingUserBranch(File repoDirectory, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
+		git = Git.open(repoDirectory);
+		try {
+			git.checkout().setCreateBranch(false).setName(userBranchHash).call();
+		} finally {
+			git.close();
+		}
+	}
+	
+	public void pullExistingBranch(File repoDirectory, String userBranchHash) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
+		// TODO: we should protect this method call from concurrent execution with pushing methods
+		git = Git.open(repoDirectory);
+		try {
+			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
+		} catch (Exception ex) {
+			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
+			throw ex;
+		} finally {
+			git.close();
+		}
+		
+		try {
+			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RESOLVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
+			System.out.println(res.getMergeStatus()); // TODO: to remove
+		} catch (Exception ex) {
+			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
+			throw ex;
+		} finally {
+			git.close();
 		}
 	}
 
@@ -88,6 +146,8 @@ public class GitUtils {
 
 		// push
 		PushCommand pc = git.push().setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).setProgressMonitor(progress);
+		
+		// TODO: replace setForce with a push, if error then pull before pushing again
 		pc.setCredentialsProvider(cp).setForce(true).setPushAll();
 		try {
 			for (PushResult pr: pc.call()) 
@@ -165,5 +225,50 @@ public class GitUtils {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public void openRepo(File repoDir) throws IOException {
+		// If the repo is already opened, do nothing
+		if(git != null && git.getRepository().getDirectory().equals(repoDir)) {
+			return;
+		}
+		// Close the previous repo
+		if(git != null) {
+			git.close();
+		}
+		git = Git.open(repoDir);
+	}
+
+	public void commit(String msg) throws NoHeadException, NoMessageException, UnmergedPathsException, ConcurrentRefUpdateException, WrongRepositoryStateException, GitAPIException {
+		this.git.commit().setMessage(msg)
+		.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+		.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+		.call();
+	}
+
+	public void addFiles() throws NoFilepatternException, GitAPIException {
+		git.add().addFilepattern(".").call();
+	}
+
+	public void seqAddFilesToPush(String commitMsg, String userBranch,
+			ProgressMonitor progress) throws NoFilepatternException, GitAPIException {
+		// run the add-call
+		addFiles();
+
+		// and then commit the changes
+		commit(commitMsg);
+
+		// push to the remote repository
+		maybePushToUserBranch(userBranch, progress);
+	}
+
+	public void dispose() {
+		repoName = null;
+		repoPassword = null;
+		git.close();
+	}
+	
+	public Ref getRepoRef(String branch) throws IOException {
+		return git.getRepository().getRef(branch);
 	}
 }
