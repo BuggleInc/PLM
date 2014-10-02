@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-28 21:55+0200\n"
+"POT-Creation-Date: 2014-10-02 10:53+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12250,12 +12250,12 @@ msgstr ""
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
-"switch to the creative mode (from the Session menu)  to disable the world "
+"switch to the creative mode (from the Exercise menu)  to disable the world "
 "comparison when you explore with these spirals."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:19
+#: src/lessons/recursion/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
