@@ -36,7 +36,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		users.addUserSwitchesListener(this);
 		userHasChanged(users.getCurrentUser());
 	}
-	
+
 	/** 
 	 * Initialize locally the git repo for that user
 	 */
