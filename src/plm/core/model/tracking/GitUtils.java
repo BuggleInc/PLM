@@ -59,10 +59,16 @@ public class GitUtils {
 	
 	public void initLocalRepository(File repoDirectory, String repoUrl) throws GitAPIException, IOException {
 		git = Git.init().setDirectory(repoDirectory).call();
+/*
+		git.commit().setMessage("Empty initial commit")
+		.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+		.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+		.call();		
+	*/	
 		git.close();
 	}
 		
-	public boolean createBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {		
+	public boolean fetchBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {		
 		String repoName = "origin";
 		
 		git = Git.open(repoDirectory);	
@@ -70,11 +76,12 @@ public class GitUtils {
 		try {
 			StoredConfig cfg = git.getRepository().getConfig();
 			cfg.setString("remote", repoName, "url", repoUrl);
-			cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);		
+			cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);
 			cfg.save();		
 
 			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
 			FetchResult res = git.fetch().call();
+			System.err.println("FetchResult: "+res); // TODO: remove it
 		} catch (TransportException ex) {
 			if (ex.getMessage().equals("Remote does not have refs/heads/"+userBranchHash+" available for fetch.")) {
 				return false;
@@ -95,15 +102,16 @@ public class GitUtils {
 		git.commit().setMessage("Empty initial commit")
 			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-			.call();		
+			.call();
+					
 		git.checkout().setCreateBranch(true).setName(userBranchHash).call();
 		git.close();
 	}
 
-	public void checkoutExistingUserBranch(File repoDirectory, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
+	public void checkoutUserBranch(File repoDirectory, String userBranchHash, boolean create) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
 		git = Git.open(repoDirectory);
 		try {
-			git.checkout().setCreateBranch(false).setName(userBranchHash).call();
+			git.checkout().setCreateBranch(create).setName(userBranchHash).setStartPoint("refs/remotes/origin/"+userBranchHash).call();
 		} finally {
 			git.close();
 		}
@@ -117,8 +125,6 @@ public class GitUtils {
 		} catch (Exception ex) {
 			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
 			throw ex;
-		} finally {
-			git.close();
 		}
 		
 		try {
@@ -150,9 +156,16 @@ public class GitUtils {
 		// TODO: replace setForce with a push, if error then pull before pushing again
 		pc.setCredentialsProvider(cp).setForce(true).setPushAll();
 		try {
-			for (PushResult pr: pc.call()) 
-				if (!pr.getMessages().equals(""))
+			boolean error = false;
+			for (PushResult pr: pc.call()) { 
+				if (!pr.getMessages().equals("")) {
+					error = true;
 					System.err.println("Pushed to "+pr.getURI()+". Message: "+pr.getMessages());
+				}
+			}
+			if (! error) {
+				System.out.println(Game.i18n.tr("Your session has been successfully saved into the clouds."));
+			}
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
 		} catch (TransportException e) {

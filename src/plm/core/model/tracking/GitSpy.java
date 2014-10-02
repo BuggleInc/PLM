@@ -51,8 +51,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			if (!repoDir.exists()) {
 				gitUtils.initLocalRepository(repoDir, repoUrl); // TODO: remove last parameter (repoUrl)
 				// try to get the branch as stored remotely
-				if (gitUtils.createBranchFromRemoteBranch(repoDir, repoUrl, userBranch)) {
-					gitUtils.checkoutExistingUserBranch(repoDir, userBranch);
+				if (gitUtils.fetchBranchFromRemoteBranch(repoDir, repoUrl, userBranch)) {
+					gitUtils.checkoutUserBranch(repoDir, userBranch, true);
 					System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
 				} else {
 					// If no branch can be found remotely, create a new one.
@@ -62,7 +62,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			} else {		
 				 gitUtils.openRepo(repoDir);
 				 if (gitUtils.getRepoRef(userBranch) != null) {
-					 gitUtils.checkoutExistingUserBranch(repoDir, userBranch);
+					 gitUtils.checkoutUserBranch(repoDir, userBranch, false);
 					 gitUtils.pullExistingBranch(repoDir, userBranch);
 				 } else { // FIXME: this case should never happenedn, therefore it should be reported to the end-user
 					 System.out.println("WARNING: trying to checkout a non existing git user branch during user switching.");
