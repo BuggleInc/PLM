@@ -10,6 +10,7 @@
       intermixed (yet). Fix #381.
   * Pedagogical content:
     - #378: French typo
+    - #383: Fix the name of the Scala entity
 
 20140930: Release 2.4.10
 
