@@ -25,12 +25,14 @@ import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.api.errors.UnmergedPathsException;
 import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
+import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.merge.ResolveMerger.MergeFailureReason;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.PushResult;
@@ -136,46 +138,60 @@ public class GitUtils {
 		}
 		
 		try {
-			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.THEIRS).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
+			//MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.THEIRS).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 			
 			// TODO: replace the current merge strategy with a better one
-			/*
+			
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 			
-			if(res.equals(MergeResult.MergeStatus.FAST_FORWARD)) {
+			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
 				System.out.println(Game.i18n.tr("last session data successfully retrieved"));
 			}
-			else if(res.equals(MergeResult.MergeStatus.MERGED)) {
+			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
 				System.out.println(Game.i18n.tr("last session data successfully merged"));
 			}
-			else if(res.equals(MergeResult.MergeStatus.CONFLICTING)) {
+			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
 				System.out.println(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
+					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
+					
 					System.out.println("Conflicts detected in file: "+path);
-					// TODO: check if 
-					// - summary: delete it
-					// - others cases: get last commit editing the files
+					
+					RevCommit lastCommitLocal = git.log().addPath(path).setMaxCount(1).call().iterator().next();
+					RevCommit lastCommitRemote = git.log().add(remote).addPath(path).setMaxCount(1).call().iterator().next();
+					long timeLocal = lastCommitLocal.getAuthorIdent().getWhen().getTime();
+					long timeRemote = lastCommitRemote.getAuthorIdent().getWhen().getTime();
+					
+					System.out.println("Local version last modified the "+timeLocal);
+					System.out.println("Remote version last modified the "+timeRemote);
+					
+					if(timeLocal>timeRemote) {
+						System.out.println("Should keep the local version");
+						git.checkout().setStartPoint(lastCommitLocal).addPath(path).call();
+					}
+					else {
+						// TODO: check if this checkout works
+						System.out.println("Better keep the remote one");
+						git.checkout().setStartPoint(lastCommitRemote).addPath(path).call();
+					}
+					git.add().addFilepattern(path).call();
 				}
+				
+				System.out.println("All conflicts have been manually handled ;)");
+				// TODO: check if the commit is mandatory
+				git.commit().setMessage("Manual merging")
+				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+				.call();
 			}
-			else if(res.equals(MergeResult.MergeStatus.FAILED)) {
+			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
 				// TODO: handle this case
 				System.out.println(Game.i18n.tr("Cancelled the merge operation because of the following failures:"));
 				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
 				for(String path : allFailures.keySet()) {
 					System.out.println(path + " : " + allFailures.get(path));
 				}
-			}
-			*/
-			
-			if(res.equals(MergeResult.MergeStatus.FAST_FORWARD)) {
-				System.out.println(Game.i18n.tr("last session data successfully retrieved"));
-			}
-			else if(res.equals(MergeResult.MergeStatus.MERGED)) {
-				System.out.println(Game.i18n.tr("last session data successfully merged"));
-			}
-			else {
-				System.out.println(res.getMergeStatus()); // TODO: to remove
 			}
 		} catch (Exception ex) {
 			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
