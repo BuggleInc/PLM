@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 import javax.swing.SwingWorker;
 
@@ -29,6 +30,7 @@ import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.merge.MergeStrategy;
+import org.eclipse.jgit.merge.ResolveMerger.MergeFailureReason;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.PushResult;
@@ -36,6 +38,7 @@ import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import plm.core.model.Game;
+import sun.misc.Regexp;
 
 public class GitUtils {
 
@@ -68,7 +71,7 @@ public class GitUtils {
 		git.close();
 	}
 		
-	public boolean fetchBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {		
+	public boolean fetchBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException,  InvalidRemoteException, GitAPIException {		
 		String repoName = "origin";
 		
 		git = Git.open(repoDirectory);	
@@ -82,12 +85,17 @@ public class GitUtils {
 			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
 			FetchResult res = git.fetch().call();
 			System.err.println("FetchResult: "+res); // TODO: remove it
-		} catch (TransportException ex) {
+		} catch (GitAPIException ex) {
+			// FIXME: We should display the stacktrace sometimes
+			/*
+			if(Game.getInstance().isDebugEnabled()) {
+				ex.printStackTrace();
+			}
+			*/
 			if (ex.getMessage().equals("Remote does not have refs/heads/"+userBranchHash+" available for fetch.")) {
 				return false;
-			} else {
-				throw ex;
 			}
+			return false;
 		} finally {
 			git.close();
 		}
@@ -122,14 +130,53 @@ public class GitUtils {
 		git = Git.open(repoDirectory);
 		try {
 			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
-		} catch (Exception ex) {
+		} catch (GitAPIException ex) {
 			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
-			throw ex;
+			return;
 		}
 		
 		try {
-			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RESOLVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
-			System.out.println(res.getMergeStatus()); // TODO: to remove
+			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.THEIRS).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
+			
+			// TODO: replace the current merge strategy with a better one
+			/*
+			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
+			
+			if(res.equals(MergeResult.MergeStatus.FAST_FORWARD)) {
+				System.out.println(Game.i18n.tr("last session data successfully retrieved"));
+			}
+			else if(res.equals(MergeResult.MergeStatus.MERGED)) {
+				System.out.println(Game.i18n.tr("last session data successfully merged"));
+			}
+			else if(res.equals(MergeResult.MergeStatus.CONFLICTING)) {
+				System.out.println(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				Map<String, int[][]> allConflicts = res.getConflicts();
+				for (String path : allConflicts.keySet()) {
+					System.out.println("Conflicts detected in file: "+path);
+					// TODO: check if 
+					// - summary: delete it
+					// - others cases: get last commit editing the files
+				}
+			}
+			else if(res.equals(MergeResult.MergeStatus.FAILED)) {
+				// TODO: handle this case
+				System.out.println(Game.i18n.tr("Cancelled the merge operation because of the following failures:"));
+				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
+				for(String path : allFailures.keySet()) {
+					System.out.println(path + " : " + allFailures.get(path));
+				}
+			}
+			*/
+			
+			if(res.equals(MergeResult.MergeStatus.FAST_FORWARD)) {
+				System.out.println(Game.i18n.tr("last session data successfully retrieved"));
+			}
+			else if(res.equals(MergeResult.MergeStatus.MERGED)) {
+				System.out.println(Game.i18n.tr("last session data successfully merged"));
+			}
+			else {
+				System.out.println(res.getMergeStatus()); // TODO: to remove
+			}
 		} catch (Exception ex) {
 			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
 			throw ex;
