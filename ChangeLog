@@ -3,6 +3,9 @@
   * Engine:
     - #224: If the execution is interrupted, the exercise is failed
     - #380: Disable creative mode when switching the exercise
+    - GitSpy: Fix a bug which overwrote the current exercise's files
+      for the current programming language by the current exercise's files
+      for the last result's programming language
   * Worlds:
     - Turtle: equal() was not detecting when lines are overlapping
       with no common extremities. We now detect when one line is
