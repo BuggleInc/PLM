@@ -94,24 +94,24 @@ um risco de que você vá para a marcha de 4 de Julho num dia chuvoso. Na
 verdade, nós devemos usar algo como isto para garantir que uma vez que
 encontremos a condição verdadeira, não passemos para as próximas.</p>
 
-<pre>[!java|scala|c]if (rainy()) {
-    takeUmbrella();
+<pre>[!java|scala|c]if (chuvoso()) {
+    pegarGuardaChuva();
 } else {
-    if (hotDay()) {
-        takeWater();
+    if (diaQuente()) {
+        pegarAgua();
     } else {
-        if (todayIsJuly4th()) {
-            takeFlag();
+        if (jogoDaCopa()) {
+            pegarBandeira();
         }
     }
-}[/!][!python]if rainy():
-    takeUmbrella()
+}[/!][!python]if chuvoso():
+    pegarGuardaChuva()
 else:
-    if hotDay():
-        takeWater()
+    if diaQuente():
+        pegarAgua()
     else:
-        if todayIsJuly4th():
-            takeFlag()[/!]</pre>
+        if jogoDaCopa():
+            pegarBandeira()[/!]</pre>
 
 
 <p>Infelizmente, tal cascata de condicionais é bastante difícil de ler. É
@@ -122,18 +122,18 @@ específica para estes <tt>else if</tt>, mas não [!thelang].[/!]
 para marcar explicitamente estes ramos "else if".[/!]
 </p>
 
-<pre>[!c|java|scala]if (rainy()) { 
-    takeUmbrella();
-} else if (hotDay()) {
-    takeWater();
-} else if (todayIsJuly4th()) {
-    takeFlag();
-}[/!][!python]if rainy():
-    takeUmbrella()
-elif hotDay():
-    takeWater()
-elif todayIsJuly4th():
-    takeFlag()[/!]</pre>
+<pre>[!c|java|scala]if (chuvoso()) { 
+    pegarGuardaChuva();
+} else if (diaQuente()) {
+    pegarAgua();
+} else if (jogoDaCopa()) {
+    pegarBandeira();
+}[/!][!python]if chuvoso():
+    pegarGuardaChuva()
+elif diaQuente():
+    pegarAgua()
+elif jogoDaCopa():
+    pegarBandeira()[/!]</pre>
 
 <h3>Grafitagem no mundo dos Buggles</h3>
 

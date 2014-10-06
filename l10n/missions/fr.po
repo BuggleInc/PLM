@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-10-02 10:53+0200\n"
+"POT-Creation-Date: 2014-10-06 17:06+0200\n"
 "PO-Revision-Date: 2014-09-28 22:01+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -7145,9 +7145,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:33
+#, fuzzy
+#| msgid ""
+#| "Hint: the main loop of your code must continue while the testing function "
+#| "returns false. Their is thus two way of writing it:"
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
-"returns false. Their is thus two way of writing it:"
+"returns false. There is two ways of writing it:"
 msgstr ""
 "Indication: la boucle principale de votre code doit continuer tant que la "
 "fonction adéquate renvoie faux. On peut l'écrire de deux façons:"
@@ -12290,19 +12294,46 @@ msgstr ""
 "Au niveau 2, le processus est répété avec le tiers central de chaque segment "
 "remplacé par un petit triangle équilatéral."
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:20
+#, fuzzy
+#| msgid "The pseudo-code of the BubbleSort algorithm is the following:"
+msgid "The pseudo-code of the general case is the following:"
+msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/koch/Koch.html:22
+#, no-wrap
+msgid ""
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment  \n"
+"  Turn 120 degrees to the right\n"
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:30
+msgid ""
+"As you can see, the function forward() is not called from the recursive "
+"case, only in the base case when there is no recursive call."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr "TL;DR. Vous pouvez me dessiner tout ça ?"
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:21
+#: src/lessons/recursion/koch/Koch.html:35
 #: src/lessons/recursion/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr "Voici le résultat des premiers niveaux de récursion."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:25
+#: src/lessons/recursion/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -12519,6 +12550,31 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/tree/Tree.html:16
 msgid ""
+"At the end, here is the pseudo-code of the general case (you should add the "
+"base case yourself):"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/recursion/tree/Tree.html:18
+#, no-wrap
+msgid ""
+"  Move forward of the desired length\n"
+"  Draw (recursively) the right subtree\n"
+"  Draw (recursively) the left subtree\n"
+"  Move back to your initial position\n"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:23
+msgid ""
+"Don't forget to add the base case to your code, or your buggle will enter an "
+"infinite loop.  Then, drawing the right subtree comes down to turn right and "
+"then draw the subtree."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:26
+msgid ""
 "As you can see, each recursion level is represented by a distinctive color. "
 "For that, you have to call the <code>current(step)</code>, passing the "
 "current recursion level as a parameter. This will pick the right color for "
@@ -12532,7 +12588,7 @@ msgstr ""
 "vous retournez à votre position initiale."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:20
+#: src/lessons/recursion/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
