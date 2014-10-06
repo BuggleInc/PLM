@@ -1,5 +1,7 @@
 20141001: wanabe Release 2.4.11
 
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 54% despite content changes
   * Engine:
     - #224: If the execution is interrupted, the exercise is failed
     - #380: Disable creative mode when switching the exercise
