@@ -49,7 +49,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
 			if (!repoDir.exists()) {
-				gitUtils.initLocalRepository(repoDir, repoUrl); // TODO: remove last parameter (repoUrl)
+				gitUtils.initLocalRepository(repoDir);
 				// try to get the branch as stored remotely
 				if (gitUtils.fetchBranchFromRemoteBranch(repoDir, repoUrl, userBranch)) {
 					gitUtils.checkoutUserBranch(repoDir, userBranch, true);
@@ -64,7 +64,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				 if (gitUtils.getRepoRef(userBranch) != null) {
 					 gitUtils.checkoutUserBranch(repoDir, userBranch, false);
 					 gitUtils.pullExistingBranch(repoDir, userBranch);
-				 } else { // FIXME: this case should never happenedn, therefore it should be reported to the end-user
+				 } else { // FIXME: this case should never happen, therefore it should be reported to the end-user
 					 System.out.println("WARNING: trying to checkout a non existing git user branch during user switching.");
 				 }
 			}
@@ -106,7 +106,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	@Override
 	public void switched(Exercise exo) {
-		//TODO: remove duplicated code. Looks like the executed(Exercise exo) code
 		Exercise lastExo = (Exercise) Game.getInstance().getLastExercise();
 		if (lastExo == null)
 			return;
@@ -138,23 +137,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	@Override
 	public void leave() {	
 		System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting"));
-		//try {
 		
 		// push to the remote repository
 		String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		gitUtils.forcefullyPushToUserBranch(userBranch, progress);
 
-		/*} catch (org.eclipse.jgit.api.errors.TransportException e) {
-			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable."));
-			if (Game.getInstance().isDebugEnabled())
-				e.printStackTrace();
-		} catch (GitAPIException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 		gitUtils.dispose();
 	}
 
@@ -318,9 +306,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		//try {
-			//GitUtils gitUtils = new GitUtils(git);
 			
 		JSONObject msg = new JSONObject();
 		msg.put("studentInput", studentInput);
@@ -336,9 +321,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					+ "Please send a bug report with the following trace:");
 			e.printStackTrace();
 		}
-		/*} catch (IOException | GitAPIException ex) { 
-			ex.printStackTrace();
-		}*/
 	}
 	@Override
 	public void readTip(String id, String mission) {
@@ -369,27 +351,5 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					+ "Please send a bug report with the following trace:");
 			e.printStackTrace();
 		}
-		
-		/*
-		try {
-			GitUtils gitUtils = new GitUtils(git);
-			git.add().addFilepattern(".").call();
-
-			JSONObject msg = new JSONObject();
-			msg.put("id", id);
-			// and then commit the changes
-			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
-					.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-					.setMessage(writeCommitMessage(lastExo, null, "readTip", msg))
-					.call();
-
-			// push to the remote repository
-			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-			String userBranch = "PLM"+GitUtils.sha1(userUUID);
-			gitUtils.maybePushToUserBranch(userBranch, progress);
-		} catch (IOException | GitAPIException ex) { 
-			ex.printStackTrace();
-		}
-		*/
 	}
 }

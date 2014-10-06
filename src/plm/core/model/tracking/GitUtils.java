@@ -34,13 +34,11 @@ import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.merge.ResolveMerger.MergeFailureReason;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
-import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import plm.core.model.Game;
-import sun.misc.Regexp;
 
 public class GitUtils {
 
@@ -50,27 +48,13 @@ public class GitUtils {
 	private String repoPassword = Game.getProperty("plm.git.server.password");
 
 	private static boolean currentlyPushing = false;
-
-	// TODO: remove git.close() ?
 	
 	public GitUtils() {
 		super();
 	}
 	
-	@Deprecated
-	public GitUtils(Git git) throws IOException, GitAPIException {
-		this.git = git;
-	}
-	
-	public void initLocalRepository(File repoDirectory, String repoUrl) throws GitAPIException, IOException {
+	public void initLocalRepository(File repoDirectory) throws GitAPIException, IOException {
 		git = Git.init().setDirectory(repoDirectory).call();
-/*
-		git.commit().setMessage("Empty initial commit")
-		.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
-		.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-		.call();		
-	*/	
-		git.close();
 	}
 		
 	public boolean fetchBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException,  InvalidRemoteException, GitAPIException {		
@@ -85,10 +69,9 @@ public class GitUtils {
 			cfg.save();		
 
 			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
-			FetchResult res = git.fetch().call();
-			System.err.println("FetchResult: "+res); // TODO: remove it
+			git.fetch().call();
 		} catch (GitAPIException ex) {
-			// FIXME: We should display the stacktrace sometimes
+			// FIXME: should display the stacktrace is an error occurs
 			/*
 			if(Game.getInstance().isDebugEnabled()) {
 				ex.printStackTrace();
@@ -115,16 +98,11 @@ public class GitUtils {
 			.call();
 					
 		git.checkout().setCreateBranch(true).setName(userBranchHash).call();
-		git.close();
 	}
 
 	public void checkoutUserBranch(File repoDirectory, String userBranchHash, boolean create) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
 		git = Git.open(repoDirectory);
-		try {
-			git.checkout().setCreateBranch(create).setName(userBranchHash).setStartPoint("refs/remotes/origin/"+userBranchHash).call();
-		} finally {
-			git.close();
-		}
+		git.checkout().setCreateBranch(create).setName(userBranchHash).setStartPoint("refs/remotes/origin/"+userBranchHash).call();
 	}
 	
 	public void pullExistingBranch(File repoDirectory, String userBranchHash) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
@@ -138,10 +116,6 @@ public class GitUtils {
 		}
 		
 		try {
-			//MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.THEIRS).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
-			
-			// TODO: replace the current merge strategy with a better one
-			
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 			
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
@@ -156,23 +130,15 @@ public class GitUtils {
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
 					
-					System.out.println("Conflicts detected in file: "+path);
-					
 					RevCommit lastCommitLocal = git.log().addPath(path).setMaxCount(1).call().iterator().next();
 					RevCommit lastCommitRemote = git.log().add(remote).addPath(path).setMaxCount(1).call().iterator().next();
 					long timeLocal = lastCommitLocal.getAuthorIdent().getWhen().getTime();
 					long timeRemote = lastCommitRemote.getAuthorIdent().getWhen().getTime();
 					
-					System.out.println("Local version last modified the "+timeLocal);
-					System.out.println("Remote version last modified the "+timeRemote);
-					
 					if(timeLocal>timeRemote) {
-						System.out.println("Should keep the local version");
 						git.checkout().setStartPoint(lastCommitLocal).addPath(path).call();
 					}
 					else {
-						// TODO: check if this checkout works
-						System.out.println("Better keep the remote one");
 						git.checkout().setStartPoint(lastCommitRemote).addPath(path).call();
 					}
 					git.add().addFilepattern(path).call();
@@ -196,8 +162,6 @@ public class GitUtils {
 		} catch (Exception ex) {
 			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
 			throw ex;
-		} finally {
-			git.close();
 		}
 	}
 
@@ -210,14 +174,20 @@ public class GitUtils {
 			currentlyPushing = true;
 		}
 		
+		// Pull and merge possible changes on the remote depository 
+		// before pushing local ones
+		try {
+			pullExistingBranch(git.getRepository().getDirectory(), userBranchHash);
+		} catch (IOException | GitAPIException e1) {
+			e1.printStackTrace();
+		}
+		
 		// credentials
 		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
 		// push
 		PushCommand pc = git.push().setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).setProgressMonitor(progress);
-		
-		// TODO: replace setForce with a push, if error then pull before pushing again
-		pc.setCredentialsProvider(cp).setForce(true).setPushAll();
+		pc.setCredentialsProvider(cp).setPushAll();
 		try {
 			boolean error = false;
 			for (PushResult pr: pc.call()) { 
@@ -304,11 +274,9 @@ public class GitUtils {
 	}
 
 	public void openRepo(File repoDir) throws IOException {
-		// If the repo is already opened, do nothing
 		if(git != null && git.getRepository().getDirectory().equals(repoDir)) {
 			return;
 		}
-		// Close the previous repo
 		if(git != null) {
 			git.close();
 		}
@@ -328,13 +296,8 @@ public class GitUtils {
 
 	public void seqAddFilesToPush(String commitMsg, String userBranch,
 			ProgressMonitor progress) throws NoFilepatternException, GitAPIException {
-		// run the add-call
 		addFiles();
-
-		// and then commit the changes
 		commit(commitMsg);
-
-		// push to the remote repository
 		maybePushToUserBranch(userBranch, progress);
 	}
 
