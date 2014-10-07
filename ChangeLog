@@ -19,6 +19,7 @@
     - #378: French typo
     - #383: Fix the name of the Scala entity
     - #387: Fix a broken link when run from the jar
+    - #388: The Pancake #0 is actually on top (fix mission text)
 
 20140930: Release 2.4.10
 

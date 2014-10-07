@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-10-06 17:06+0200\n"
-"PO-Revision-Date: 2014-09-28 22:01+0200\n"
+"PO-Revision-Date: 2014-10-07 21:17+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -9908,15 +9908,20 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:13
+#, fuzzy
+#| msgid ""
+#| "Your work is to help this poor guy sorting his stack by flipping the "
+#| "pancakes. Each pancake is defined by its radius and rank within the "
+#| "stack, with the top-most pancake is at rank 0, and the one below at rank "
+#| "1."
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
 "where the bottom pancake is at rank 0, and the one above at rank 1."
 msgstr ""
-"Vous devez aider ce pauvre homme à trier sa pile en retournant des\n"
-"crêpes. Chaque crêpe est définie par son rayon et son rang dans la pile. La "
-"pile\n"
-"la plus basse est de rang 0, et celle placée au dessus d'elle est de rang 1."
+"Vous devez aider ce pauvre homme à trier sa pile en retournant des crêpes. "
+"Chaque crêpe est définie par son rayon et son rang dans la pile. La pile la "
+"plus haute est de rang 0, et celle placée au dessous d'elle est de rang 1."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:17
@@ -12296,10 +12301,8 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:20
-#, fuzzy
-#| msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgid "The pseudo-code of the general case is the following:"
-msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
+msgstr "Le pseudo-code du cas général est le suivant :"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/koch/Koch.html:22
