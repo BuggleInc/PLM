@@ -333,9 +333,10 @@ public class Game implements IWorldView {
 	 */
 
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
-		if (stepModeEnabled())
-			disableStepMode();
-
+		if(state == GameState.EXECUTION_STARTED) {
+			stopExerciseExecution();
+		}
+		
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
@@ -468,7 +469,9 @@ public class Game implements IWorldView {
 		// No need to stop the execution if no lesson is currently selected
 		if(currentLesson != null) {
 			// If already executing a program, stop it
-			stopExerciseExecution();
+			if(state==GameState.EXECUTION_STARTED) {
+				stopExerciseExecution();
+			}
 		}
 		try {
 			saveSession(); // don't loose user changes
