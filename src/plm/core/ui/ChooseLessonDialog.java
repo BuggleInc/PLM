@@ -184,10 +184,11 @@ class LessonOverview extends JPanel {
 		btGo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game.getInstance().switchLesson(path.replaceAll("/", "."),false);
-				MainFrame.getInstance().setVisible(true);
-				Game.getInstance().setCaptureOutput(true);
-				lc.dispose();
+				if(Game.getInstance().switchLesson(path.replaceAll("/", "."),false)!=null) {
+					MainFrame.getInstance().setVisible(true);
+					Game.getInstance().setCaptureOutput(true);
+					lc.dispose();
+				}
 			}
 		});
 		btGo.setEnabled(false);
