@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.SwingWorker;
@@ -36,6 +37,8 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
+import org.eclipse.jgit.transport.RemoteRefUpdate;
+import org.eclipse.jgit.transport.RemoteRefUpdate.Status;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import plm.core.model.Game;
@@ -165,39 +168,32 @@ public class GitUtils {
 		}
 	}
 
-	/** Push the data to the github servers. 
+	/** Push the local changes to the user's remote branch
 	 * 
-	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
+	 * @return if the modifications have been correctly pushed
 	 */
-	public void forcefullyPushToUserBranch(String userBranchHash, ProgressMonitor progress) {
-		synchronized(GitUtils.class) {
-			currentlyPushing = true;
-		}
-		
-		// Pull and merge possible changes on the remote depository 
-		// before pushing local ones
+	public boolean pushChanges(String userBranchHash, ProgressMonitor progress, CredentialsProvider cp) {
+		boolean success = true;
+		PushCommand pc = git.push().setProgressMonitor(progress).setCredentialsProvider(cp).setRefSpecs(new RefSpec("refs/heads/"+userBranchHash+":refs/heads/"+userBranchHash));
 		try {
-			pullExistingBranch(git.getRepository().getDirectory(), userBranchHash);
-		} catch (IOException | GitAPIException e1) {
-			e1.printStackTrace();
-		}
-		
-		// credentials
-		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
-
-		// push
-		PushCommand pc = git.push().setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).setProgressMonitor(progress);
-		pc.setCredentialsProvider(cp).setPushAll();
-		try {
-			boolean error = false;
-			for (PushResult pr: pc.call()) { 
-				if (!pr.getMessages().equals("")) {
-					error = true;
-					System.err.println("Pushed to "+pr.getURI()+". Message: "+pr.getMessages());
+			Iterable<PushResult> resultIterable  = pc.call();
+			Iterator<PushResult> it = resultIterable.iterator();
+			while(it.hasNext()) {
+				PushResult pr = it.next();
+				for (RemoteRefUpdate ru: pr.getRemoteUpdates()) {
+					if (ru.getMessage() != null) {
+						success = false;
+						if(Game.getInstance().isDebugEnabled()) {
+							System.err.println("Pushed to "+pr.getURI()+". Message: "+ru.getMessage());
+						}
+					}
+					if(ru.getStatus()!=Status.OK && ru.getStatus()!=Status.UP_TO_DATE) {
+						success = false;
+						if(Game.getInstance().isDebugEnabled()) {
+							System.err.println("Pushed to "+pr.getURI()+". Status: "+ru.getStatus().toString());
+						}
+					}
 				}
-			}
-			if (! error) {
-				System.out.println(Game.i18n.tr("Your session has been successfully saved into the clouds."));
 			}
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
@@ -207,10 +203,43 @@ public class GitUtils {
 				e.printStackTrace();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
-		}  finally {	
-			synchronized(GitUtils.class) {
-				currentlyPushing = false;
+		}
+		return success;
+	}
+	
+	/** Push the data to the github servers. 
+	 * 
+	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
+	 */
+	public void forcefullyPushToUserBranch(String userBranchHash, ProgressMonitor progress) {
+		synchronized(GitUtils.class) {
+			currentlyPushing = true;
+		}
+		
+		// credentials
+		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
+
+		// push
+		if(pushChanges(userBranchHash, progress, cp)) {
+			System.out.println(Game.i18n.tr("Your session has been successfully saved into the clouds."));
+		}
+		else {
+			// An error occurred while pushing
+			// Try to synchronize with the remote branch before pushing again
+			System.out.println(Game.i18n.tr("Fetching the server's last version..."));
+			try {
+				pullExistingBranch(git.getRepository().getDirectory(), userBranchHash);
+				if(!pushChanges(userBranchHash, progress, cp)) {
+					System.out.println(Game.i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
+				}
+			} catch (IOException | GitAPIException e) {
+				System.out.println(Game.i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
+				e.printStackTrace();
 			}
+		}
+		
+		synchronized(GitUtils.class) {
+			currentlyPushing = false;
 		}
 	}
 	
