@@ -375,7 +375,9 @@ public class Game implements IWorldView {
 		// If a problem arose while setting up the lesson, don't switch 
 		// TODO: define a better solution when encountering this issue
 		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
-			throw new PLMEntityNotFound("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.");
+			JOptionPane.showMessageDialog(null, i18n.tr("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.") ,
+					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
+			throw new PLMEntityNotFound("Broken lesson: "+lesson.getName());
 		}
 			
 		setCurrentLesson(lesson);
