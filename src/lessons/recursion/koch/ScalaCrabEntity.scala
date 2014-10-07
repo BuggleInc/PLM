@@ -3,7 +3,7 @@ package lessons.recursion.koch;
 import plm.universe.turtles.Turtle;
 import java.awt.Color
 
-class ScalaKochEntity extends Turtle {
+class ScalaCrabEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	def crab(levels:Int, length:Double) {

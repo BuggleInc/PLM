@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 22:27+0200\n"
+"POT-Creation-Date: 2014-10-06 17:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -370,7 +370,30 @@ msgid ""
 "y) instead."
 msgstr ""
 
-#: src/plm/core/lang/JVMCompiledLang.java:68
+#: src/plm/core/lang/JVMCompiledLang.java:52
+msgid ""
+"Your entity failed to start. Did you forgot to put your code within a "
+"method?\n"
+"\n"
+"This problem often arises when the exercise expects you to put all the code "
+"within a \n"
+"method e.g. run(), but you put some statements (e.g. forward()) outside of "
+"any method.\n"
+"\n"
+"The easiest solution to sort it out is to copy all your code (Ctrl-A Ctrl-"
+"C), use the \n"
+"'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code "
+"within the\n"
+"provided method."
+msgstr ""
+
+#: src/plm/core/lang/JVMCompiledLang.java:59
+msgid ""
+"Your entity failed to start. Your constructor seems to be broken, but I have "
+"no clue."
+msgstr ""
+
+#: src/plm/core/lang/JVMCompiledLang.java:82
 #: src/plm/core/lang/LangLightbot.java:39
 #, java-format
 msgid ""
@@ -416,7 +439,7 @@ msgstr ""
 
 #: src/plm/core/lang/LangPython.java:66
 msgid ""
-"You interrupted the execution.\n"
+"You interrupted the execution, did you fall into an infinite loop ?\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
 msgstr ""
 
@@ -586,7 +609,7 @@ msgstr ""
 msgid "Load lesson {0}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:491
+#: src/plm/core/model/Game.java:496
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -594,48 +617,48 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:500
+#: src/plm/core/model/Game.java:504
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/plm/core/model/Game.java:542
+#: src/plm/core/model/Game.java:546
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:964
+#: src/plm/core/model/Game.java:968
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:965
+#: src/plm/core/model/Game.java:969
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:969
+#: src/plm/core/model/Game.java:973
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:970
+#: src/plm/core/model/Game.java:974
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:974
+#: src/plm/core/model/Game.java:978
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:975
+#: src/plm/core/model/Game.java:979
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:980
+#: src/plm/core/model/Game.java:984
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -644,7 +667,7 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:984
+#: src/plm/core/model/Game.java:988
 msgid "C is still experimental"
 msgstr ""
 
@@ -878,7 +901,7 @@ msgid "About lesson - "
 msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:431
-#: src/plm/core/ui/MainFrame.java:766
+#: src/plm/core/ui/MainFrame.java:767
 msgid "About the PLM"
 msgstr ""
 
@@ -1201,7 +1224,7 @@ msgstr ""
 msgid "Switch the entity"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:43
+#: src/plm/core/ui/FeedbackDialog.java:53
 msgid ""
 "Please write your suggestion here, with all necessary details\n"
 "(if possible in English or French).\n"
@@ -1218,47 +1241,47 @@ msgid ""
 "(This can help us fixing your problem, please don't erase)\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:62
+#: src/plm/core/ui/FeedbackDialog.java:73
 msgid "Please describe the problem in a few words"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:69
+#: src/plm/core/ui/FeedbackDialog.java:80
 msgid "Report your feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:77
+#: src/plm/core/ui/FeedbackDialog.java:88
 msgid "Issue title:"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:91
+#: src/plm/core/ui/FeedbackDialog.java:102
 #: src/plm/core/ui/action/RevertExercise.java:25
 msgid "Cancel"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:96
+#: src/plm/core/ui/FeedbackDialog.java:107
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:97
+#: src/plm/core/ui/FeedbackDialog.java:108
 msgid "are you sure?"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:105
+#: src/plm/core/ui/FeedbackDialog.java:116
 msgid "Send feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:119
+#: src/plm/core/ui/FeedbackDialog.java:130
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:120
+#: src/plm/core/ui/FeedbackDialog.java:131
 msgid "Thanks for your suggestion"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:129
+#: src/plm/core/ui/FeedbackDialog.java:140
 msgid "Error while uploading your feedback"
 msgstr ""
 
@@ -1269,7 +1292,7 @@ msgstr ""
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/plm/core/ui/MainFrame.java:186 src/plm/core/ui/MainFrame.java:733
+#: src/plm/core/ui/MainFrame.java:186 src/plm/core/ui/MainFrame.java:734
 msgid "File"
 msgstr ""
 
@@ -1277,7 +1300,7 @@ msgstr ""
 msgid "File related functions"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:190 src/plm/core/ui/MainFrame.java:734
+#: src/plm/core/ui/MainFrame.java:190 src/plm/core/ui/MainFrame.java:735
 msgid "Save a picture"
 msgstr ""
 
@@ -1300,68 +1323,68 @@ msgstr ""
 msgid "Image saved into {0}."
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:233 src/plm/core/ui/MainFrame.java:735
+#: src/plm/core/ui/MainFrame.java:233 src/plm/core/ui/MainFrame.java:736
 msgid "Quit"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:240 src/plm/core/ui/MainFrame.java:737
+#: src/plm/core/ui/MainFrame.java:240 src/plm/core/ui/MainFrame.java:738
 msgid "Exercise"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:738
+#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:739
 msgid "Load lesson"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:739
+#: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:740
 msgid "Switch lesson"
 msgstr ""
 
 #: src/plm/core/ui/MainFrame.java:278 src/plm/core/ui/MainFrame.java:505
-#: src/plm/core/ui/MainFrame.java:730 src/plm/core/ui/MainFrame.java:740
+#: src/plm/core/ui/MainFrame.java:731 src/plm/core/ui/MainFrame.java:741
 msgid "Switch exercise"
 msgstr ""
 
 #. Menu item to change the current Course
-#: src/plm/core/ui/MainFrame.java:290 src/plm/core/ui/MainFrame.java:741
+#: src/plm/core/ui/MainFrame.java:290 src/plm/core/ui/MainFrame.java:742
 msgid "Choose your course"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:742
+#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:743
 msgid "Revert Exercise"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:312 src/plm/core/ui/MainFrame.java:743
+#: src/plm/core/ui/MainFrame.java:312 src/plm/core/ui/MainFrame.java:744
 msgid "Debug mode"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:744
+#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:745
 msgid "Creative mode"
 msgstr ""
 
 #. === Session menu ===
-#: src/plm/core/ui/MainFrame.java:338 src/plm/core/ui/MainFrame.java:746
+#: src/plm/core/ui/MainFrame.java:338 src/plm/core/ui/MainFrame.java:747
 msgid "Session"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:344 src/plm/core/ui/MainFrame.java:748
+#: src/plm/core/ui/MainFrame.java:344 src/plm/core/ui/MainFrame.java:749
 msgid "Export Session Cache"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:347 src/plm/core/ui/MainFrame.java:749
+#: src/plm/core/ui/MainFrame.java:347 src/plm/core/ui/MainFrame.java:750
 msgid "Import Session Cache"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:352 src/plm/core/ui/MainFrame.java:752
+#: src/plm/core/ui/MainFrame.java:352 src/plm/core/ui/MainFrame.java:753
 #: src/plm/core/ui/action/AddUser.java:33
 msgid "Add user"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:355 src/plm/core/ui/MainFrame.java:753
+#: src/plm/core/ui/MainFrame.java:355 src/plm/core/ui/MainFrame.java:754
 #: src/plm/core/ui/action/SwitchUser.java:30
 msgid "Switch user"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:358 src/plm/core/ui/MainFrame.java:754
+#: src/plm/core/ui/MainFrame.java:358 src/plm/core/ui/MainFrame.java:755
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid "Remove user"
 msgstr ""
@@ -1371,59 +1394,59 @@ msgid "Link identity"
 msgstr ""
 
 #. === Language menu ===
-#: src/plm/core/ui/MainFrame.java:365 src/plm/core/ui/MainFrame.java:757
+#: src/plm/core/ui/MainFrame.java:365 src/plm/core/ui/MainFrame.java:758
 msgid "Language"
 msgstr ""
 
 #. === Programming language changing ===
-#: src/plm/core/ui/MainFrame.java:370 src/plm/core/ui/MainFrame.java:758
+#: src/plm/core/ui/MainFrame.java:370 src/plm/core/ui/MainFrame.java:759
 msgid "Human"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:384 src/plm/core/ui/MainFrame.java:759
+#: src/plm/core/ui/MainFrame.java:384 src/plm/core/ui/MainFrame.java:760
 msgid "Computer"
 msgstr ""
 
 #. === Help menu ===
-#: src/plm/core/ui/MainFrame.java:388 src/plm/core/ui/MainFrame.java:761
+#: src/plm/core/ui/MainFrame.java:388 src/plm/core/ui/MainFrame.java:762
 msgid "Help"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:392 src/plm/core/ui/MainFrame.java:762
+#: src/plm/core/ui/MainFrame.java:392 src/plm/core/ui/MainFrame.java:763
 msgid "Provide feedback"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:402 src/plm/core/ui/MainFrame.java:763
+#: src/plm/core/ui/MainFrame.java:402 src/plm/core/ui/MainFrame.java:764
 msgid "About this lesson"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:415 src/plm/core/ui/MainFrame.java:764
+#: src/plm/core/ui/MainFrame.java:415 src/plm/core/ui/MainFrame.java:765
 msgid "About this world"
 msgstr ""
 
 #. Buttons
-#: src/plm/core/ui/MainFrame.java:464 src/plm/core/ui/MainFrame.java:724
+#: src/plm/core/ui/MainFrame.java:464 src/plm/core/ui/MainFrame.java:725
 msgid "Run"
 msgstr ""
 
 #: src/plm/core/ui/MainFrame.java:468 src/plm/core/ui/MainFrame.java:568
-#: src/plm/core/ui/MainFrame.java:725
+#: src/plm/core/ui/MainFrame.java:726
 msgid "Step"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:473 src/plm/core/ui/MainFrame.java:726
+#: src/plm/core/ui/MainFrame.java:473 src/plm/core/ui/MainFrame.java:727
 msgid "Stop"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:479 src/plm/core/ui/MainFrame.java:727
+#: src/plm/core/ui/MainFrame.java:479 src/plm/core/ui/MainFrame.java:728
 msgid "Reset"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:485 src/plm/core/ui/MainFrame.java:728
+#: src/plm/core/ui/MainFrame.java:485 src/plm/core/ui/MainFrame.java:729
 msgid "Demo"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:491 src/plm/core/ui/MainFrame.java:729
+#: src/plm/core/ui/MainFrame.java:491 src/plm/core/ui/MainFrame.java:730
 #: src/plm/core/ui/action/HelpMe.java:136
 #: src/plm/core/ui/action/HelpMe.java:143
 msgid "Call for Help"
@@ -1433,7 +1456,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:747
+#: src/plm/core/ui/MainFrame.java:748
 msgid "Lesson related functions"
 msgstr ""
 
@@ -2179,43 +2202,43 @@ msgstr ""
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:353
-#: src/plm/universe/sort/SortingWorld.java:354
+#: src/plm/universe/sort/SortingWorld.java:368
+#: src/plm/universe/sort/SortingWorld.java:369
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:355
-#: src/plm/universe/sort/SortingWorld.java:356
+#: src/plm/universe/sort/SortingWorld.java:370
+#: src/plm/universe/sort/SortingWorld.java:371
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:91
+#: src/plm/universe/turtles/Line.java:109
 msgid "x1 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:93
+#: src/plm/universe/turtles/Line.java:111
 msgid "x2 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:95
+#: src/plm/universe/turtles/Line.java:113
 msgid "y1 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:97
+#: src/plm/universe/turtles/Line.java:115
 msgid "y2 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:99
+#: src/plm/universe/turtles/Line.java:117
 msgid "The color differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:100
+#: src/plm/universe/turtles/Line.java:118
 msgid "I dont see the difference (please report this bug)."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:102
+#: src/plm/universe/turtles/Line.java:120
 msgid "That's not a line (please report this bug)."
 msgstr ""
 
@@ -2229,30 +2252,30 @@ msgstr ""
 msgid "The turtle {0} is at the right location."
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:328
+#: src/plm/universe/turtles/TurtleWorld.java:359
 #, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:357
+#: src/plm/universe/turtles/TurtleWorld.java:388
 #, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:359
+#: src/plm/universe/turtles/TurtleWorld.java:390
 #, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:386
+#: src/plm/universe/turtles/TurtleWorld.java:417
 msgid "Superflous shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:389
+#: src/plm/universe/turtles/TurtleWorld.java:422
 msgid "Missing shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:400
+#: src/plm/universe/turtles/TurtleWorld.java:433
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr ""

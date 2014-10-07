@@ -49,11 +49,12 @@ com 42 como valor inicial, você deve escrever:</p>
   <p>Na maioria dos casos, o compilador é capaz de adivinhar o tipo da variável
 baseado no valor inicial, e você pode omitir o tipo:</p>
   <pre>var x = 42</pre>
-  <p>You still have to specify if you use some generic values as an
-initialization, such as the very particular value <code>null</code>, which
-type happens to be ambiguous. Even when the type is clear, you can still
-specify it if you prefer.  So you want that the variable contains 5 as
-initial value, you should type: </p>
+  <p>Você ainda tem que especificar se você usa alguns valores genéricos
+como uma inicialização, tais como o valor muito especial
+<code>null</code>, cujo tipo parece ser ambíguo. Mesmo quando o tipo é
+claro, você ainda pode especificar o tipo se preferir. Portanto, se
+você quiser que a variável contenha 5 como valor inicial, você deve
+digitar: </p>
   <pre>var x: Int =  5 <span class="comment">// Eu posso definir o tipo se eu quiser</span>
 var y =  10      <span class="comment">// ou posso omitir o tipo se eu preferir</span></pre>
 [/!] [!java|scala|c]

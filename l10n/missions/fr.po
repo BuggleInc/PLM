@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-28 21:55+0200\n"
+"POT-Creation-Date: 2014-10-06 17:06+0200\n"
 "PO-Revision-Date: 2014-09-28 22:01+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -7145,9 +7145,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:33
+#, fuzzy
+#| msgid ""
+#| "Hint: the main loop of your code must continue while the testing function "
+#| "returns false. Their is thus two way of writing it:"
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
-"returns false. Their is thus two way of writing it:"
+"returns false. There is two ways of writing it:"
 msgstr ""
 "Indication: la boucle principale de votre code doit continuer tant que la "
 "fonction adéquate renvoie faux. On peut l'écrire de deux façons:"
@@ -9200,7 +9204,14 @@ msgid ""
 "smallest value, which is the smallest value from the cell not already "
 "sorted. You of course don't have to sort the last cell of the array, that is "
 "already sorted when you consider it."
-msgstr "Son principe est simplement de sélectionner pour chaque case du tableau la plus petite valeur de la partie pas encore triée. Ainsi, pour la première case, je prend la plus petite valeur du tableau. Pour la seconde, je prend la seconde plus petite valeur, qui se trouve être la plus petite des cases n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la dernière case du tableau, puisqu'elle est déjà triée lorsque vous la considérez."
+msgstr ""
+"Son principe est simplement de sélectionner pour chaque case du tableau la "
+"plus petite valeur de la partie pas encore triée. Ainsi, pour la première "
+"case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
+"la seconde plus petite valeur, qui se trouve être la plus petite des cases "
+"n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la "
+"dernière case du tableau, puisqu'elle est déjà triée lorsque vous la "
+"considérez."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
@@ -9208,7 +9219,10 @@ msgid ""
 "More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
-msgstr "Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N et celui de la case M."
+msgstr ""
+"Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant "
+"la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
+"et celui de la case M."
 
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
@@ -12079,7 +12093,7 @@ msgstr ""
 "Aujourd'hui, nous allons faire la connaissance des petites cousines des "
 "buggles : les tortues. En fait, les tortues sont bien plus vieilles que les "
 "buggles. Elles ont été inventées dans les années 70 par un scientifique du "
-"MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
+"MIT nommé Seymour Papert pour aider à l'enseignement de la programmation, et "
 "les buggles sont une variation sur le thème inventée par Lyn Turbak du "
 "Wellesley College plus tard."
 
@@ -12280,19 +12294,46 @@ msgstr ""
 "Au niveau 2, le processus est répété avec le tiers central de chaque segment "
 "remplacé par un petit triangle équilatéral."
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:20
+#, fuzzy
+#| msgid "The pseudo-code of the BubbleSort algorithm is the following:"
+msgid "The pseudo-code of the general case is the following:"
+msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/koch/Koch.html:22
+#, no-wrap
+msgid ""
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment  \n"
+"  Turn 120 degrees to the right\n"
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:30
+msgid ""
+"As you can see, the function forward() is not called from the recursive "
+"case, only in the base case when there is no recursive call."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr "TL;DR. Vous pouvez me dessiner tout ça ?"
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:21
+#: src/lessons/recursion/koch/Koch.html:35
 #: src/lessons/recursion/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr "Voici le résultat des premiers niveaux de récursion."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:25
+#: src/lessons/recursion/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -12509,6 +12550,31 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/tree/Tree.html:16
 msgid ""
+"At the end, here is the pseudo-code of the general case (you should add the "
+"base case yourself):"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/recursion/tree/Tree.html:18
+#, no-wrap
+msgid ""
+"  Move forward of the desired length\n"
+"  Draw (recursively) the right subtree\n"
+"  Draw (recursively) the left subtree\n"
+"  Move back to your initial position\n"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:23
+msgid ""
+"Don't forget to add the base case to your code, or your buggle will enter an "
+"infinite loop.  Then, drawing the right subtree comes down to turn right and "
+"then draw the subtree."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:26
+msgid ""
 "As you can see, each recursion level is represented by a distinctive color. "
 "For that, you have to call the <code>current(step)</code>, passing the "
 "current recursion level as a parameter. This will pick the right color for "
@@ -12522,7 +12588,7 @@ msgstr ""
 "vous retournez à votre position initiale."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:20
+#: src/lessons/recursion/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
@@ -12676,16 +12742,16 @@ msgstr ""
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
-"switch to the creative mode (from the Session menu)  to disable the world "
+"switch to the creative mode (from the Exercise menu)  to disable the world "
 "comparison when you explore with these spirals."
 msgstr ""
 "Voici quelques figures que l'on peut produire avec votre fonction "
 "<code>spiral</code> en lui passant les bons paramètres. Passez en mode "
-"créatif (dans le menu session) pour désactiver la correction de votre code "
+"créatif (dans le menu Exercice) pour désactiver la correction de votre code "
 "quand vous explorez ces spirales."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:19
+#: src/lessons/recursion/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"

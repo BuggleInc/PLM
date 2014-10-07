@@ -52,6 +52,9 @@ public abstract class World {
 		}
 		return res;
 	}
+	public String getDebugInfo() {
+		return "";
+	}
 
 	/**
 	 * Reset the content of a world to be the same than the one passed as
@@ -92,7 +95,9 @@ public abstract class World {
 	public int getDelay() {
 		return this.delay;
 	}
-	/** set the value of the UI delay which will be used on doDelay() */
+	/** set the value of the UI delay which will be used on doDelay() 
+	 * 
+	 * Default value: 100ms */
 	public void setDelay(int d) {
 		this.delay = d;
 		notifyWorldUpdatesListeners(); // notify the speed slider model
@@ -159,9 +164,21 @@ public abstract class World {
 				}
 			});
 
+			Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+			    public void uncaughtException(Thread th, Throwable ex) {
+			        
+			    	if(ex instanceof ThreadDeath) {
+			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
+			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
+				        progress.setExecutionError(Game.i18n.tr(msg));
+				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
+			    	}
+			    }
+			};
+			
 			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
 			runner.setPriority(Thread.MIN_PRIORITY);
-
+			runner.setUncaughtExceptionHandler(h);
 			runner.start();
 			runnerVect.add(runner);
 		}

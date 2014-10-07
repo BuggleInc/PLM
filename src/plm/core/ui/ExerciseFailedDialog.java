@@ -89,7 +89,7 @@ public class ExerciseFailedDialog extends JDialog {
 						remove(sp);
 					} else {
 						detailsBt.setText(Game.i18n.tr("Details <<"));
-						add(sp,"spanx, grow, growprio 200, wrap");
+						add(sp,"spanx, grow 20000 20000,push, growprio 200, wrap");
 					}
 					shown = !shown;
 					ExerciseFailedDialog.this.pack();

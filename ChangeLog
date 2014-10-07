@@ -1,3 +1,36 @@
+20141001: wanabe Release 2.4.11
+
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 54% despite content changes
+  * Engine:
+    - #224: If the execution is interrupted, the exercise is failed
+    - #380: Disable creative mode when switching the exercise
+    - GitSpy: Fix a bug which overwrote the current exercise's files
+      for the current programming language by the current exercise's files
+      for the last result's programming language
+  * Worlds:
+    - Turtle: equal() was not detecting when lines are overlapping
+      with no common extremities. We now detect when one line is
+      strictly included within another one, but not when they are
+      intermixed (yet). Fix #381.
+  * Pedagogical content:
+    - #378: French typo
+    - #383: Fix the name of the Scala entity
+    - #387: Fix a broken link when run from the jar
+
+20140930: Release 2.4.10
+
+  * Engine:
+    - Add several tests to check ExerciseTemplated's behavior.
+    - #262: sensible error message when putting code out of any method
+      in Scala
+    - Add a test suite to gather together all tests.
+    - #359: Add world-specific info to debug and feedback.
+      SortingWorld uses that to tell which random instance was used.
+  * Pedagogical content:
+    - #372: scala code for Koch and Crab exercises were inverted.
+    - #373: Fix entity name for the dutch flag
+
 20140929: Release 2.4.9
 
   Recursion lesson is usable again, sorry for the inconvenience.
