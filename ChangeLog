@@ -5,6 +5,8 @@
   * Engine:
     - #224: If the execution is interrupted, the exercise is failed
     - #380: Disable creative mode when switching the exercise
+    - Lessons: Prevent users from accessing broken lessons and add tests
+      to detect them.
     - GitSpy: Fix a bug which overwrote the current exercise's files
       for the current programming language by the current exercise's files
       for the last result's programming language

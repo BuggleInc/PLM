@@ -17,6 +17,11 @@ import plm.universe.BrokenWorldFileException;
 public abstract class Lesson {
 	private String name;
 	private String id;
+	
+	public static enum LoadingOutcome {SUCCESS,FAIL}
+	
+	private LoadingOutcome LoadingOutcomeState = LoadingOutcome.SUCCESS;
+
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
 	
@@ -174,5 +179,12 @@ public abstract class Lesson {
 	}
 	public int getExerciseCount() {
 		return this.lectures.size();
+	}
+	
+	public LoadingOutcome getLoadingOutcomeState() {
+		return LoadingOutcomeState;
+	}
+	public void setLoadingOutcomeState(LoadingOutcome loadingOutcomeState) {
+		LoadingOutcomeState = loadingOutcomeState;
 	}
 }

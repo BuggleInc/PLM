@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 import plm.core.PLMCompilerException;
+import plm.core.PLMEntityNotFound;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -58,7 +59,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 						else
 							throw new PLMCompilerException(Game.i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
 					} else {
-						throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
+						throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 					}
 				}
 			} catch (ClassNotFoundException e) {
