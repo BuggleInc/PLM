@@ -254,11 +254,12 @@ public class TurtleWorld extends World {
 			if (shapes.get(i) instanceof Line) {
 
 				for (int j=0;j<shapes.size();j++) {
-					if (i>0 && j>0 && i!=j && shapes.get(j) instanceof Line) { // We shouldn't have to test i>0 && j>0 but we do. Lame.
+					if (i!=j && shapes.get(j) instanceof Line) {
 						Line l1 = (Line) shapes.get(i);
 						Line l2 = (Line) shapes.get(j);
 						if (l1.sameSlope(l2)) { // We cannot have inverted slopes because the extremities within a line are sorted
-							if (Line.doubleEqual(l1.x1, l2.x1) && Line.doubleEqual(l1.y1, l2.y1)) {// Same start. Keep the longer
+							if ( (Line.doubleEqual(l1.x1, l2.x1) && Line.doubleEqual(l1.y1, l2.y1)) || // Same start. Keep the longer
+									(Line.doubleEqual(l1.x2, l2.x2) && Line.doubleEqual(l1.y2, l2.y2)) ) { // Same end. Keep the longer
 								int rmIdx;
 								if (l1.getLength()>l2.getLength()) {
 									rmIdx = j;
@@ -268,9 +269,9 @@ public class TurtleWorld extends World {
 //									System.out.println("1b: Kill "+shapes.get(i)+" because of "+shapes.get(j));
 								}
 								shapes.remove(rmIdx);
-								if (i>=rmIdx)
+								if (i>=rmIdx && rmIdx>0)
 									i--;
-								if (j>=rmIdx)
+								if (j>=rmIdx && rmIdx>0)
 									j--;
 								changedSomething = true;
 							} else if (Line.doubleEqual(l1.x1, l2.x2) && Line.doubleEqual(l1.y1, l2.y2)) {
@@ -280,10 +281,11 @@ public class TurtleWorld extends World {
 								l1.y1 = l2.y1;
 //								System.out.println(" New l1: "+l1);
 								
-								if (i>=j)
+								if (i>=j && i>0)
 									i--;
 								shapes.remove(j);
-								j--;
+								if (j>0)
+									j--;
 								changedSomething = true;
 							} else if (Line.doubleEqual(l1.x2, l2.x1) && Line.doubleEqual(l1.y2, l2.y1)) {
 								// l1 and l2 are aligned, and l1 is after l2. Modify start of l1 and kill l2 
@@ -291,11 +293,40 @@ public class TurtleWorld extends World {
 								l1.x2 = l2.x2;
 								l1.y2 = l2.y2;
 //								System.out.println(" New l1: "+l1);
-								if (i>=j)
+								if (i>=j  && j>0)
 									i--;
 								shapes.remove(j);
-								j--; 
+								if (j>0)
+									j--; 
 								changedSomething = true;
+							} else if (l1.sameRoot(l2)) {
+								// The lines are parallel and on the same ray. Check if they are intersecting
+								if (Line.doubleWithin(l1.x1, l2.x1, l2.x2) && Line.doubleWithin(l1.x2, l2.x1, l2.x2) &&
+									Line.doubleWithin(l1.y1, l2.y1, l2.y2) && Line.doubleWithin(l1.y2, l2.y1, l2.y2)) {
+									// l1 is strictly within l2 (we don't test on y because we have the same slope & root, and extremities are sorted)
+									if (j>=i  && i>0)
+										j--;
+									shapes.remove(i);
+									if (i>0)
+										i--;
+									changedSomething = true;
+								} else if (Line.doubleWithin(l2.x1, l1.x1, l1.x2) && Line.doubleWithin(l2.x2, l1.x1, l1.x2) &&
+										   Line.doubleWithin(l2.y1, l1.y1, l1.y2) && Line.doubleWithin(l2.y2, l1.y1, l1.y2) ) {
+									// l2 is strictly within l1
+									if (i>=j  && j>0)
+										i--;
+									shapes.remove(j);
+									if (j>0)
+										j--;
+									changedSomething = true;
+								} /*else if (!Line.doubleWithin(l1.x1, l2.x1, l2.x2) && !Line.doubleWithin(l1.x2, l2.x1, l2.x2)) {
+									// No point of l1 is within l2. They are disjoint, nothing to do
+								} else if (!Line.doubleWithin(l2.x1, l1.x1, l1.x2) && !Line.doubleWithin(l2.x2, l1.x1, l1.x2)) {
+									// No point of l2 is within l1. They are disjoint, nothing to do
+								} else if (Line.doubleWithin(l1.x1, l2.x1, l2.x2) && Line.doubleWithin(l2.x1, l1.x1, l1.x2)) {
+									// if l1=(ab) and l2=(cd), we have the points in that order a,c,b,d or c,a,d,b
+									// FIXME: that's not sorted out yet...
+								}*/
 							}
 						} // not same slope, certainly not lenghtening each other
 					} // j is not a shape
@@ -359,7 +390,7 @@ public class TurtleWorld extends World {
 					sb.append( Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				
 				if (Game.getInstance().isDebugEnabled()) {
-					sb.append("Shapes available in the student's work:\n");
+					sb.append("Shapes available in the student's work (after mergin' madness):\n");
 					for (int i=0;i<other.shapes.size();i++)
 						sb.append("  "+other.shapes.get(i)+"\n");
 					sb.append("Expected shapes:\n");
@@ -386,6 +417,8 @@ public class TurtleWorld extends World {
 					sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
 					for (Shape s: studentShapes)
 						sb.append("   "+s+"\n");
+				}
+				if (!correctionShapes.isEmpty()) {
 					sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
 					for (Shape s: correctionShapes)
 						sb.append("   "+s+"\n");

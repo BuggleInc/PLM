@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-28 21:55+0200\n"
+"POT-Creation-Date: 2014-10-06 17:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5172,7 +5172,7 @@ msgstr ""
 #: src/lessons/welcome/traversal/Snake.html:33
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
-"returns false. Their is thus two way of writing it:"
+"returns false. There is two ways of writing it:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -9055,18 +9055,43 @@ msgid ""
 "two sides of an equilateral triangle."
 msgstr ""
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:20
+msgid "The pseudo-code of the general case is the following:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/koch/Koch.html:22
+#, no-wrap
+msgid ""
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment  \n"
+"  Turn 120 degrees to the right\n"
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:30
+msgid ""
+"As you can see, the function forward() is not called from the recursive "
+"case, only in the base case when there is no recursive call."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:21 src/lessons/recursion/koch/SquareKoch.html:9
+#: src/lessons/recursion/koch/Koch.html:35 src/lessons/recursion/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:25
+#: src/lessons/recursion/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -9233,6 +9258,31 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/tree/Tree.html:16
 msgid ""
+"At the end, here is the pseudo-code of the general case (you should add the "
+"base case yourself):"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/recursion/tree/Tree.html:18
+#, no-wrap
+msgid ""
+"  Move forward of the desired length\n"
+"  Draw (recursively) the right subtree\n"
+"  Draw (recursively) the left subtree\n"
+"  Move back to your initial position\n"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:23
+msgid ""
+"Don't forget to add the base case to your code, or your buggle will enter an "
+"infinite loop.  Then, drawing the right subtree comes down to turn right and "
+"then draw the subtree."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:26
+msgid ""
 "As you can see, each recursion level is represented by a distinctive "
 "color. For that, you have to call the <code>current(step)</code>, passing "
 "the current recursion level as a parameter. This will pick the right color "
@@ -9241,7 +9291,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:20
+#: src/lessons/recursion/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
@@ -9356,12 +9406,12 @@ msgstr ""
 msgid ""
 "Here are some of the figures that you can produce with your "
 "<code>Spiral</code> function, provided that you come with the right "
-"parameters. You can switch to the creative mode (from the Session menu)  to "
+"parameters. You can switch to the creative mode (from the Exercise menu)  to "
 "disable the world comparison when you explore with these spirals."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:19
+#: src/lessons/recursion/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"

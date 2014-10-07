@@ -253,7 +253,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		String exoMission = exo.getMission(lastResult.language); // retrieve the mission
 
 		// create the different files
-		String ext = "." + Game.getProgrammingLanguage().getExt();
+		String ext = "." + lastResult.language.getExt();
 
 		File exoFile = new File(repoDir, exo.getId() + ext + ".code");
 		File errorFile = new File(repoDir, exo.getId() + ext + ".error");

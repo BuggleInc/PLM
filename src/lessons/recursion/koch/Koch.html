@@ -17,6 +17,20 @@ the two sides of an equilateral triangle of the same length as the segment being
 At level 2, the process is repeated, whith each segments split in three parts and the 
 middle part being replaced by the two sides of an equilateral triangle.</p>
 
+<p>The pseudo-code of the general case is the following:</p>
+<pre>
+  Draw recursively a smaller segment
+  Turn 60 degrees to the left
+  Draw recursively a smaller segment  
+  Turn 120 degrees to the right
+  Draw recursively a smaller segment
+  Turn 60 degrees to the left
+  Draw recursively a smaller segment
+</pre>
+<p>As you can see, the function forward() is not called from the recursive case, only 
+in the base case when there is no recursive call.</p>
+
+
 <p><div class="tip" id="tip-1" alt="Too much letters. Please picture it.">
 <p>Here are the results of the first levels of recursion.</p>
 <img src="KochHint.png" />
