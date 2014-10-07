@@ -3,7 +3,7 @@ package lessons.welcome.methods.picture;
 import java.awt.Color;
 
 import plm.universe.bugglequest.SimpleBuggle;
-class ScalaPictureMonoEntity extends SimpleBuggle {
+class ScalaPictureMono1Entity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	override def run() {

@@ -127,6 +127,7 @@ public class TurtleWorldView extends WorldView {
 
 				// Draw coordinates if on zone
 				if (x>=0 && x < tw.getWidth() && y>=0 && y < tw.getHeight()) {
+					g2.setColor(Color.black);
 					g2.drawString("x: "+x, 3,      g2.getFontMetrics().getHeight()+1);
 					g2.drawString("y: "+y, 3, 2 * (g2.getFontMetrics().getHeight()+1));
 				}

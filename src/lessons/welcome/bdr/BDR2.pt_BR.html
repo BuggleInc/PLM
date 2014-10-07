@@ -90,56 +90,57 @@ clara usando a construção <tt>switch</tt>:</p>
   <b>case _                 =></b> instruções padrão
 }
 </pre>
-<p>The expression provided before the keyword <code>match</code>, and then the
-branches are evaluated one after the other until we find one which value
-provided between <code>case</code> and <code>=&gt</code> is equal to the
-expression's value.  The <code>_</code> symbol acts as a wildcard, so the
-<code>_</code> branch <i>always</i> matches.  Here is an example where a
-variable <code>name</code> is matched.</p>
+<p>A espressão fornecida antes da palavra-chave <code>match</code>, e os
+ramos seguintes são avaliados um após o outro até encontrarmos um cujo
+valor fornecido entre <code>case</code> e <code>=&gt</code> seja igual
+ao valor da expressão. O símbolo <code>_</code> age como um coringa,
+logo o ramo <code>_</code> <i>sempre</i> casa. Aqui está um exemplo de
+onde uma variável <code>name</code> casa.</p>
 <pre>name match {
-  case "Martin" => println("Hello Martin, how are you?")
-  case "Gerald" => println("Hey Gerald! How are you doing?")
-  case _            => println("Welcome stranger.")
+  case "Martin" => println("Oi Martin, como vai?")
+  case "Gerald" => println("Oi Gerald! como vai você?")
+  case _            => println("Olá estranho.")
 }</pre>
 
-<p>It is possible to have more than one instruction per branch, and merge
-branches when the values are separated by a | symbol.</p>
+<p>é possível ter mais que uma instrução por ramo, e mesclar ramos quando
+os valores são separados por um símbolo | .</p>
 <pre>name match {
-  case "Martin" | "Gerald" => println("Hello "+name+", how are you?"); openTheDoor()
-  case _                            => println("Hello stranger. Please do not pass."); lockTheDoor()
+  case "Martin" | "Gerald" => println("Oi "+name+", como vai?"); openTheDoor()
+  case _                            => println("Oi estranho. Favor não passar."); lockTheDoor()
 }</pre>
 
 <p>You can even add guards to your branches. These are extra conditions that
 must be respected for the branch to get applied. This is handy if you want
 match on value ranges, as follows.</p>
 <pre>age match {
-  case i if i&lt;10 => println("Hey kid!")
-  case i if i&lt;20 => println("Hey dude!")
-  case i if i&lt;30 => println("Hello young man")
-  case _           => println("Hello Sir")
+  case i if i&lt;10 => println("Oi menino!")
+  case i if i&lt;20 => println("Oi cara!")
+  case i if i&lt;30 => println("Oi, meu caro")
+  case _           => println("Oi senhor")
 }</pre>
-<p>Note that there is no need to check whether the value is higher than 10 on
-the second line because the first matching branch is used. So, if the second
-branch gets evaluated, then the first one did not match.</p>
+<p>Observe que não há necessidade de verificar se o valor é maior que 10
+na segunda linha por que o primeiro ramo "foi verificado". Então, se o
+segundo ramo está sendo verificado, o primeiro não aprovou.</p>
 
-<p>Finally, it is possible also to match several variables in one shoot!</p>
+<p>Finalmente, é possível também aprovar várias variáveis de uma vez!</p>
 <pre>(x,y) match {
- case (0,0) => println("that's the origin")
- case (_,0) => println("On the ordinate")
- case (0,_) => println("On the abscissa")
- case (_,_) => println("Some random point")
+ case (0,0) => println("Esta é a origem")
+ case (_,0) => println("nas ordenadas")
+ case (0,_) => println("nas abscissas")
+ case (_,_) => println("algum ponto qualquer")
 }</pre>
 
-<p>I told you that scala's pattern matching is very powerful! I actually love
-this feature!</p>
+<p>Eu disse que reconhecimentod e padrões em scala é muito poderoso! Eu
+adoro esta funcionalidade!</p>
 [/!]
 
 <h3>Objetivo do exercício</h3>
-<p>[!java|scala|c]Apply the improvement we just saw to rewrite your buggle code
-with the following dance steps. [/!] [!python]Let's teach a new dance step
-to the buggles. It is slightly more complex but actually better
-looking. Beside of that, that's the same old story.[/!] Note that we can now
-move up to 6 cells in one dance step.</p>
+<p>[!java|scala|c]"Aplique" a melhoria que acabamos de ver para
+reescrever seu código do buggle com os seguintes passos de dança. [/!]
+[!python]Vamos ensinar um novo passo de dança para os buggles. É um
+pouco mais complexo mas na verdade vai ficar mais legal. Apesar disto,
+é a mesma história de sempre.[/!] Observe que nósagora vamos subir
+seis células em um passo de dança.</p>
 
 <table border="1">
  <tr><td>Mensagem</td>
@@ -147,23 +148,23 @@ move up to 6 cells in one dance step.</p>
 
  <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Vire a direita (R de right) e mova um passo a frente</td></tr>
  <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Vire a esquerda e mova um passo a frente</td></tr>
- <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Turn back and move one step forward</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Vire e dê um passo para frente</td></tr>
 
  <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Mova um passo a frente</td></tr>
  <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Mova dois passos a frente</td></tr>
  <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Mova três passos a frente</td></tr>
- <tr><td>[!java|c]'D'[/!][!scala|python]"D"[/!]</td><td>Move four cells forward</td></tr>
- <tr><td>[!java|c]'E'[/!][!scala|python]"E"[/!]</td><td>Move five cells forward</td></tr>
- <tr><td>[!java|c]'F'[/!][!scala|python]"F"[/!]</td><td>Move six cells forward</td></tr>
+ <tr><td>[!java|c]'D'[/!][!scala|python]"D"[/!]</td><td>Mova quantro passos para frente</td></tr>
+ <tr><td>[!java|c]'E'[/!][!scala|python]"E"[/!]</td><td>Mova cinco passos para frente</td></tr>
+ <tr><td>[!java|c]'F'[/!][!scala|python]"F"[/!]</td><td>Mova seis passos para frente</td></tr>
 
  <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Mova um passo para trás</td></tr>
  <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Mova dois passos para trás</td></tr>
  <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Mova três passos para trás</td></tr>
- <tr><td>[!java|c]'W'[/!][!scala|python]"W"[/!]</td><td>Move four cells backward</td></tr>
- <tr><td>[!java|c]'V'[/!][!scala|python]"V"[/!]</td><td>Move five cells backward</td></tr>
- <tr><td>[!java|c]'U'[/!][!scala|python]"U"[/!]</td><td>Move six cells backward</td></tr>
+ <tr><td>[!java|c]'W'[/!][!scala|python]"W"[/!]</td><td>Mova quatro passos para trás</td></tr>
+ <tr><td>[!java|c]'V'[/!][!scala|python]"V"[/!]</td><td>Mova cinco passos para trás</td></tr>
+ <tr><td>[!java|c]'U'[/!][!scala|python]"U"[/!]</td><td>Mova seis passos para trás</td></tr>
  <tr><td><i>(qualquer outra coisa)</i></td><td>Parar de dançar.</td></tr>
 
 </table>
 
-<p>When you program works again, proceed to next exercise.</p>
+<p>Quando seu programa funcionar de novo, vá para o próximo exercício.</p>
