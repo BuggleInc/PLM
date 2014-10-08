@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-06 17:07+0200\n"
+"POT-Creation-Date: 2014-10-08 23:35+0200\n"
 "PO-Revision-Date: 2014-09-04 00:59+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -117,7 +117,7 @@ msgstr ""
 
 #. Create the button
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
-#: src/plm/core/ui/ChooseLessonDialog.java:183
+#: src/plm/core/ui/ChooseLessonDialog.java:191
 msgid "Go"
 msgstr "Aller"
 
@@ -423,7 +423,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser recule() dans cet exercice. "
 "Utilise plutôt setPos(x,y)."
 
-#: src/plm/core/lang/JVMCompiledLang.java:52
+#: src/plm/core/lang/JVMCompiledLang.java:53
 msgid ""
 "Your entity failed to start. Did you forgot to put your code within a "
 "method?\n"
@@ -440,13 +440,13 @@ msgid ""
 "provided method."
 msgstr ""
 
-#: src/plm/core/lang/JVMCompiledLang.java:59
+#: src/plm/core/lang/JVMCompiledLang.java:60
 msgid ""
 "Your entity failed to start. Your constructor seems to be broken, but I have "
 "no clue."
 msgstr ""
 
-#: src/plm/core/lang/JVMCompiledLang.java:82
+#: src/plm/core/lang/JVMCompiledLang.java:83
 #: src/plm/core/lang/LangLightbot.java:39
 #, java-format
 msgid ""
@@ -591,35 +591,35 @@ msgstr ""
 "nécessaires pour reproduire le problème.\n"
 "Message de l''exception: {1}\n"
 
-#: src/plm/core/model/Game.java:166
+#: src/plm/core/model/Game.java:168
 msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala est utilisable sur votre machine. Félicitations."
 
-#: src/plm/core/model/Game.java:168
+#: src/plm/core/model/Game.java:170
 msgid "Please install Scala version 2.10 or higher to use it in the PLM."
 msgstr ""
 "Veuillez installer Scala version 2.10 ou supérieure pour l'utiliser dans la "
 "PLM."
 
-#: src/plm/core/model/Game.java:170
+#: src/plm/core/model/Game.java:172
 msgid "Jython is usable on your machine. Congratulations."
 msgstr "Jython est utilisable sur votre machine. Félicitations."
 
-#: src/plm/core/model/Game.java:172
+#: src/plm/core/model/Game.java:174
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr ""
 "Veuillez installer jython afin d'utiliser le langage python dans la PLM."
 
-#: src/plm/core/model/Game.java:174
+#: src/plm/core/model/Game.java:176
 msgid "C is usable on your machine. Congratulations."
 msgstr "C est utilisable sur votre machine. Félicitations."
 
-#: src/plm/core/model/Game.java:176
+#: src/plm/core/model/Game.java:178
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "Veuillez installer gcc afin d'utiliser le langage C dans la PLM."
 
-#: src/plm/core/model/Game.java:183
+#: src/plm/core/model/Game.java:185
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -641,7 +641,7 @@ msgstr ""
 "  Vous pouvez également changer la propriété {1} de votre fichier de "
 "configuration ({2}/plm.properties) pour cela."
 
-#: src/plm/core/model/Game.java:189
+#: src/plm/core/model/Game.java:191
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
@@ -649,7 +649,7 @@ msgstr ""
 "Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
 "Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:192
+#: src/plm/core/model/Game.java:194
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
@@ -657,7 +657,7 @@ msgstr ""
 "Vous utilisez python par défaut, mais votre installation de python est "
 "cassée. Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:195
+#: src/plm/core/model/Game.java:197
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
@@ -665,7 +665,7 @@ msgstr ""
 "Vous utilisez C par défaut, mais votre installation de C est cassée. "
 "Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:214
+#: src/plm/core/model/Game.java:216
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below"
@@ -673,19 +673,19 @@ msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
 
-#: src/plm/core/model/Game.java:248
+#: src/plm/core/model/Game.java:250
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr "Erreur {0} lors de l''obtention du numéro de version de Scala: {1}"
 
-#: src/plm/core/model/Game.java:257
+#: src/plm/core/model/Game.java:259
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 "Scala est trop vieux. La PLM nécessite la version 2.10 ou supérieure, mais "
 "la version trouvée est : {0}."
 
-#: src/plm/core/model/Game.java:282
+#: src/plm/core/model/Game.java:284
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
@@ -693,7 +693,7 @@ msgstr ""
 "Impossible de démarrer un engin de script pour python. Est ce que jython.jar "
 "et ses dépendances sont dans le classpath ?"
 
-#: src/plm/core/model/Game.java:321
+#: src/plm/core/model/Game.java:323
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
@@ -702,22 +702,32 @@ msgstr ""
 "La ressource {0} est introuvable dans le classpath.\n"
 "Vous devriez peut-être ajouter {1} à votre classpath pour y remédier."
 
-#: src/plm/core/model/Game.java:323
+#: src/plm/core/model/Game.java:325
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr "{0} reçue lors de la recherche de la ressource {1}: {2}"
 
-#: src/plm/core/model/Game.java:358 src/plm/core/model/Game.java:359
+#: src/plm/core/model/Game.java:360 src/plm/core/model/Game.java:361
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "Impossible de passer à la leçon {0} : la classe Main est introuvable."
 
-#: src/plm/core/model/Game.java:360
+#: src/plm/core/model/Game.java:362
 #, java-format
 msgid "Load lesson {0}"
 msgstr "Chargement de la leçon {0}"
 
-#: src/plm/core/model/Game.java:496
+#: src/plm/core/model/Game.java:378
+#, fuzzy
+msgid "The lesson "
+msgstr "Sélectionner une leçon"
+
+#: src/plm/core/model/Game.java:379
+#, fuzzy
+msgid "Broken lesson"
+msgstr "Charger une leçon"
+
+#: src/plm/core/model/Game.java:504
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -728,16 +738,16 @@ msgstr ""
 "à la place. Vous pourriez contribuer au projet en ajoutant votre langage à "
 "cet exercice."
 
-#: src/plm/core/model/Game.java:504
+#: src/plm/core/model/Game.java:512
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
-#: src/plm/core/model/Game.java:546
+#: src/plm/core/model/Game.java:554
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:968
+#: src/plm/core/model/Game.java:976
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
@@ -746,11 +756,11 @@ msgstr ""
 "PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:969
+#: src/plm/core/model/Game.java:977
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:973
+#: src/plm/core/model/Game.java:981
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
@@ -760,11 +770,11 @@ msgstr ""
 "python.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:974
+#: src/plm/core/model/Game.java:982
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:978
+#: src/plm/core/model/Game.java:986
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
@@ -773,11 +783,11 @@ msgstr ""
 "Veuillez installer C et ses dépendances pour utiliser la PLM en C.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:979
+#: src/plm/core/model/Game.java:987
 msgid "C is missing"
 msgstr "C est manquant"
 
-#: src/plm/core/model/Game.java:984
+#: src/plm/core/model/Game.java:992
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -792,7 +802,7 @@ msgstr ""
 "\n"
 "Voulez-vous continuer malgré tout ?"
 
-#: src/plm/core/model/Game.java:988
+#: src/plm/core/model/Game.java:996
 msgid "C is still experimental"
 msgstr "C est encore expérimental"
 
@@ -827,19 +837,19 @@ msgstr "Un nouvel utilisateur a été créé pour vous !"
 msgid "The world ''{0}'' differs"
 msgstr "Le monde ''{0}'' diffère"
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:45
+#: src/plm/core/model/lesson/ExerciseTemplated.java:47
 #, java-format
 msgid "Source file {0}.{1} not found."
 msgstr "Le fichier source {0}.{1} est introuvable."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:118
+#: src/plm/core/model/lesson/ExerciseTemplated.java:120
 #, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
 msgstr ""
 "{0}: BEGIN TEMPLATE à l'intérieur de la template. Veuillez corriger votre "
 "entité."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:139
+#: src/plm/core/model/lesson/ExerciseTemplated.java:141
 #, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
@@ -847,8 +857,8 @@ msgstr ""
 "{0}: BEGIN SOLUTION est clos par END TEMPLATE. Veuillez corriger votre "
 "entité."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:157
-#: src/plm/core/model/lesson/ExerciseTemplated.java:181
+#: src/plm/core/model/lesson/ExerciseTemplated.java:159
+#: src/plm/core/model/lesson/ExerciseTemplated.java:183
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
@@ -856,13 +866,13 @@ msgstr ""
 "{0}: END TEMPLATE sans BEGIN TEMPLATE correspondant. Veuillez corriger votre "
 "entité."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:161
+#: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
 msgstr ""
 "{0}: BEGIN SOLUTION après la fin du template. Changez le en BEGIN HIDDEN."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:201
+#: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
@@ -870,7 +880,7 @@ msgstr ""
 "Erreur d''analyse à la lecture du fichier {0}. C''est un bug de l''analyseur "
 "(état={1}), merci de faire un rapport."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:206
+#: src/plm/core/model/lesson/ExerciseTemplated.java:208
 #, java-format
 msgid ""
 "{0}: End of file unexpected after the solution but within the template. "
@@ -879,7 +889,7 @@ msgstr ""
 "{0}: Fin de fichier inattendue après la solution mais avant la fin du "
 "template. Veuillez corriger votre entité."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:208
+#: src/plm/core/model/lesson/ExerciseTemplated.java:210
 #, java-format
 msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
@@ -889,7 +899,7 @@ msgstr ""
 "vous oublié de fermer votre template ou votre solution ? Veuillez corriger "
 "votre entité."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:364
+#: src/plm/core/model/lesson/ExerciseTemplated.java:366
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
@@ -898,22 +908,22 @@ msgstr ""
 "L''exercice {0} dit permettre l''usage du langage {1}, mais il n''y a pas "
 "d''entité pour ce langage : {2}"
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:373
+#: src/plm/core/model/lesson/ExerciseTemplated.java:375
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and such"
 msgstr "{0}: aucune entité trouvée. Vous devriez corriger vos réglages."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:396
+#: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr "Le monde {0} est cassé ({1}). Recalcule tous les mondes solutions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:400
+#: src/plm/core/model/lesson/ExerciseTemplated.java:410
 #, fuzzy, java-format
 msgid "Cache file {0} is missing. Recompute all answer worlds."
 msgstr "Le monde {0} est cassé ({1}). Recalcule tous les mondes solutions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:404
+#: src/plm/core/model/lesson/ExerciseTemplated.java:414
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
@@ -921,7 +931,7 @@ msgstr ""
 "Exception d''entrée/sortie lors de la lecture du monde {0} ({1}). Recalcule "
 "tous les mondes solutions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:415
+#: src/plm/core/model/lesson/ExerciseTemplated.java:425
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
@@ -930,12 +940,12 @@ msgstr ""
 "Recalcule la solution de {0} malgré le fichier de cache, comme demandé par "
 "la propriété {1}."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:455
+#: src/plm/core/model/lesson/ExerciseTemplated.java:465
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr "Erreur lors de l''écriture du monde de correction de {0} :"
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:459
+#: src/plm/core/model/lesson/ExerciseTemplated.java:469
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
@@ -943,38 +953,23 @@ msgstr ""
 "permissions."
 
 #: src/plm/core/model/lesson/Lecture.java:90
-#: src/plm/core/model/lesson/Lesson.java:89
+#: src/plm/core/model/lesson/Lesson.java:94
 #, java-format
 msgid "File {0}.html not found."
 msgstr "Le fichier {0}.html est introuvable."
 
 #: src/plm/core/model/lesson/Lecture.java:99
-#: src/plm/core/model/lesson/Lesson.java:99
+#: src/plm/core/model/lesson/Lesson.java:104
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossible de trouver le nom de la mission dans {0}.html"
 
-#: src/plm/core/model/session/GitSessionKit.java:115
-#: src/plm/core/model/tracking/GitSpy.java:66
+#. It should never happen since the session content should be created by the git spy module.
+#: src/plm/core/model/session/GitSessionKit.java:89
 msgid ""
-"Creating a new session locally, as no corresponding session could be "
-"retrieved from the servers."
+"Something weird happened. Your session was not created/reloaded properly. "
+"Please report this issue."
 msgstr ""
-"Création d'une nouvelle session locale, puisque aucune session convenable "
-"n'a pu être récupérée des serveurs."
-
-#: src/plm/core/model/session/GitSessionKit.java:117
-#: src/plm/core/model/tracking/GitSpy.java:68
-#, java-format
-msgid "Your session {0} was automatically retrieved from the servers."
-msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
-
-#: src/plm/core/model/session/GitSessionKit.java:120
-#: src/plm/core/model/tracking/GitUtils.java:97
-msgid "Cannot synchronize your session with the servers (network down)."
-msgstr ""
-"Impossible de synchroniser votre session avec les serveurs (le réseau est "
-"inutilisable)."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Ok, quit and lose my data"
@@ -1031,7 +1026,21 @@ msgstr "Erreur lors du chargement de votre session"
 msgid "Abording on user request"
 msgstr "Abandon, comme demandé par l'utilisateur"
 
-#: src/plm/core/model/tracking/GitSpy.java:90
+#: src/plm/core/model/tracking/GitSpy.java:56
+#, java-format
+msgid "Your session {0} was automatically retrieved from the servers."
+msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
+
+#. If no branch can be found remotely, create a new one.
+#: src/plm/core/model/tracking/GitSpy.java:59
+msgid ""
+"Creating a new session locally, as no corresponding session could be "
+"retrieved from the servers."
+msgstr ""
+"Création d'une nouvelle session locale, puisque aucune session convenable "
+"n'a pu être récupérée des serveurs."
+
+#: src/plm/core/model/tracking/GitSpy.java:79
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
@@ -1039,28 +1048,70 @@ msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
 
-#: src/plm/core/model/tracking/GitSpy.java:167
+#: src/plm/core/model/tracking/GitSpy.java:139
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:174
-#, fuzzy
-msgid "Don't save code remotely, as the network seems unreachable."
-msgstr ""
-"Le code n'a pas été sauvegardé sur les serveurs distants puisque le réseau "
-"semble inutilisable. Ce n'est pas un problème."
-
-#. System.out.println("Branch " + userBranch + " created");
-#: src/plm/core/model/tracking/GitUtils.java:56
+#: src/plm/core/model/tracking/GitUtils.java:74
 msgid "Retrieving your session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:67
-msgid ""
-"Don't save code remotely, as the network seems unreachable. That's fine."
+#: src/plm/core/model/tracking/GitUtils.java:117
+msgid "Can't retrieve data stored on server."
 msgstr ""
-"Le code n'a pas été sauvegardé sur les serveurs distants puisque le réseau "
-"semble inutilisable. Ce n'est pas un problème."
+
+#: src/plm/core/model/tracking/GitUtils.java:125
+#, fuzzy
+msgid "last session data successfully retrieved"
+msgstr "L''utilisateur {0} a été supprimé avec succès"
+
+#: src/plm/core/model/tracking/GitUtils.java:128
+#, fuzzy
+msgid "last session data successfully merged"
+msgstr "L''utilisateur {0} a été supprimé avec succès"
+
+#: src/plm/core/model/tracking/GitUtils.java:131
+msgid ""
+"Conflicts have been detected while synchronizing with last session data, "
+"trying to resolve it..."
+msgstr ""
+
+#. TODO: handle this case
+#: src/plm/core/model/tracking/GitUtils.java:159
+msgid "Cancelled the merge operation because of the following failures:"
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:166
+msgid "Can't merge data retrieved from server with local session data."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:201
+msgid "Cannot synchronize your session with the servers (network down)."
+msgstr ""
+"Impossible de synchroniser votre session avec les serveurs (le réseau est "
+"inutilisable)."
+
+#: src/plm/core/model/tracking/GitUtils.java:224
+msgid "Your session has been successfully saved into the clouds."
+msgstr ""
+
+#. An error occurred while pushing
+#. Try to synchronize with the remote branch before pushing again
+#: src/plm/core/model/tracking/GitUtils.java:229
+msgid "Fetching the server's last version..."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:233
+msgid ""
+"Fetching the data's last version didn't solve the issue, please report this "
+"bug."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:236
+msgid ""
+"A bug occurred while synchronizing your data with the server, please report "
+"the following error:"
+msgstr ""
 
 #: src/plm/core/ui/AboutLessonDialog.java:20
 msgid "About lesson - "
@@ -1165,11 +1216,11 @@ msgstr "À propos du monde - {0}"
 msgid "Choose your next exercise"
 msgstr "Sélectionner votre prochain exercice"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:43
+#: src/plm/core/ui/ChooseLessonDialog.java:45
 msgid "Choose your lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:57
+#: src/plm/core/ui/ChooseLessonDialog.java:65
 msgid ""
 "<table border=\"0\" align=\"center\"><tr>\n"
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
@@ -1195,17 +1246,17 @@ msgstr ""
 "interactifs. De nombreux exercices sont proposés, pour vous permettre "
 "d'apprendre à votre rythme.</font></p><br/>"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:135
+#: src/plm/core/ui/ChooseLessonDialog.java:143
 #: src/plm/core/ui/MainFrame.java:250
 msgid "PLM lesson files"
 msgstr "Fichiers de leçons pour la PLM"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:144
+#: src/plm/core/ui/ChooseLessonDialog.java:152
 #: src/plm/core/ui/MainFrame.java:259
 msgid "Error"
 msgstr "Erreur"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:171
+#: src/plm/core/ui/ChooseLessonDialog.java:179
 msgid ""
 "<h1>Please pick a lesson</h1>\n"
 "<p>Please click on an icon on the left to select a lesson.</p>\n"
@@ -1216,7 +1267,7 @@ msgstr ""
 "<p>Cliquez sur un icône à gauche pour choisir une leçon.</p>\n"
 "<p>Les leçons du haut sont généralement plus simples que celles du bas.</p>"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:214
+#: src/plm/core/ui/ChooseLessonDialog.java:223
 #, java-format
 msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
@@ -1225,21 +1276,21 @@ msgstr ""
 "<p>(impossible d''afficher le descriptif court de cette leçon: le fichier "
 "{0} est introuvable)</p>"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:217
+#: src/plm/core/ui/ChooseLessonDialog.java:226
 msgid "<p><b>Your score:</b> "
 msgstr "<p><b>Votre score :</b> "
 
-#: src/plm/core/ui/ChooseLessonDialog.java:225
+#: src/plm/core/ui/ChooseLessonDialog.java:234
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr "{0} exercices sur {1} réussis."
 
-#: src/plm/core/ui/ChooseLessonDialog.java:229
+#: src/plm/core/ui/ChooseLessonDialog.java:238
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr "{0} exercices sur {1} réussis en {2}."
 
-#: src/plm/core/ui/ChooseLessonDialog.java:235
+#: src/plm/core/ui/ChooseLessonDialog.java:244
 msgid "You never attempted this lesson."
 msgstr "Vous n'avez jamais tenté cette leçon."
 
@@ -2604,6 +2655,18 @@ msgstr ""
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
+
+#, fuzzy
+#~ msgid "Don't save code remotely, as the network seems unreachable."
+#~ msgstr ""
+#~ "Le code n'a pas été sauvegardé sur les serveurs distants puisque le "
+#~ "réseau semble inutilisable. Ce n'est pas un problème."
+
+#~ msgid ""
+#~ "Don't save code remotely, as the network seems unreachable. That's fine."
+#~ msgstr ""
+#~ "Le code n'a pas été sauvegardé sur les serveurs distants puisque le "
+#~ "réseau semble inutilisable. Ce n'est pas un problème."
 
 #~ msgid "This test raised a {0} exception: {1}"
 #~ msgstr "Ce test a levé une exception {0} : {1}"
