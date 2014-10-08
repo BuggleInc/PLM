@@ -10,6 +10,7 @@
     - GitSpy: Fix a bug which overwrote the current exercise's files
       for the current programming language by the current exercise's files
       for the last result's programming language
+    - Git: Refactor Git related code to fix progression loss bugs
   * Worlds:
     - Turtle: equal() was not detecting when lines are overlapping
       with no common extremities. We now detect when one line is

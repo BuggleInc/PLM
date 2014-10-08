@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -46,8 +48,14 @@ public class ChooseLessonDialog extends JFrame {
 	}
 
 	private void initComponents(Game g) {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+	        @Override
+	        public void windowClosing(WindowEvent event) {
+	            Game.getInstance().quit();
+	        }
+	    });
+		
 		setBackground(Color.white);
 		setLayout(new BorderLayout());
 
