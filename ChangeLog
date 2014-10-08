@@ -16,7 +16,7 @@
       strictly included within another one, but not when they are
       intermixed (yet). Fix #381.
   * Pedagogical content:
-    - #378: French typo
+    - #378, #393: French typo
     - #383: Fix the name of the Scala entity
     - #387: Fix a broken link when run from the jar
     - #388: The Pancake #0 is actually on top (fix mission text)
