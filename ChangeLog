@@ -4,8 +4,8 @@
     - Brazilian Portuguese: Missions at 54% despite content changes
   * Engine:
     - #224: If the execution is interrupted, the exercise is failed
-    - #304: Stop user's program's execution if the user switches to
-      another exercise or lesson.
+    - #304: Stop user's program's or demo's execution if the user 
+      switches to another exercise or lesson.
     - #380: Disable creative mode when switching the exercise
     - GitSpy: Fix a bug which overwrote the current exercise's files
       for the current programming language by the current exercise's files
