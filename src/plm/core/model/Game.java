@@ -336,7 +336,9 @@ public class Game implements IWorldView {
 		if(state == GameState.EXECUTION_STARTED) {
 			stopExerciseExecution();
 		}
-		
+		else if(state == GameState.DEMO_STARTED) {
+			stopExerciseDemoExecution();
+		}
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
@@ -472,6 +474,9 @@ public class Game implements IWorldView {
 			if(state==GameState.EXECUTION_STARTED) {
 				stopExerciseExecution();
 			}
+			else if(state == GameState.DEMO_STARTED) {
+				stopExerciseDemoExecution();
+			}
 		}
 		try {
 			saveSession(); // don't loose user changes
@@ -593,6 +598,14 @@ public class Game implements IWorldView {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
 		runner.start();
 	}
+	
+	public void stopExerciseDemoExecution() {
+		if(this.demoRunners.size()>0) {
+			DemoRunner runner = (DemoRunner) this.demoRunners.get(0);
+			runner.stopAll();
+		}
+	}
+	
 	public void startExerciseStepExecution() {
 		stepMode = true;
 		startExerciseExecution();
