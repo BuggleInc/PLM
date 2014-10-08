@@ -1,4 +1,6 @@
-20141001: wanabe Release 2.4.11
+20141009: Release 2.4.11
+
+  Git and TurtleWorld's equality should both be working now :)
 
   * Improved translations:
     - Brazilian Portuguese: Missions at 54% despite content changes
