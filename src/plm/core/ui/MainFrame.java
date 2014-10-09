@@ -109,6 +109,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private MainFrame() {
 		super(frameTitle);
+		
+		if (OSXAdapter.isMacOSX()) {
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "PLM");
+		}
+		
 		FileUtils.setLocale(this.getLocale());
 		initComponents(Game.getInstance());
 		this.keyListeners(exerciseView);
@@ -430,8 +436,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		} else {
 			try {
-				OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[]) null));
-				OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[]) null));
+				if (OSXAdapter.isMacOSX()) {
+					OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[]) null));
+					OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[]) null));
+					OSXAdapter.enableFullScreenMode(this);
+				}
 			} catch (SecurityException e) {
 				e.printStackTrace();
 			} catch (NoSuchMethodException e) {
