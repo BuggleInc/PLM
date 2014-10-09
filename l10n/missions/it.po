@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-06 17:06+0200\n"
+"POT-Creation-Date: 2014-10-09 20:46+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9974,7 +9974,7 @@ msgstr ""
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
-"where the bottom pancake is at rank 0, and the one above at rank 1."
+"with the top-most pancake is at rank 0, and the one below at rank 1."
 msgstr ""
 
 #. type: Content of: <p>
@@ -11266,12 +11266,12 @@ msgstr "Mondo di Snake"
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:4
 msgid ""
-"This world allows you to experiment with the recursive strings, as they were "
-"first defined in Lisp. It is very similar to the BatWorld, but you are "
+"This world allows you to experiment with the recursive lists, as they were "
+"first introduced in Lisp. It is very similar to the BatWorld, but you are "
 "supposed to write recursive functions working on [!python|java]recursive "
 "strings. Since [!thelang] does not provide such a construct natively, the "
 "ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
-"scala]lists of integers (<code>List[Int]</code>)."
+"scala]lists of integers (<code>List[Int]</code>).[/!]"
 msgstr ""
 
 #. type: Content of: <p>
@@ -11303,7 +11303,7 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
-msgid "<b>The empty string:</b>"
+msgid "<b>The empty list:</b>"
 msgstr ""
 
 #. type: Content of: <ul><li><pre>

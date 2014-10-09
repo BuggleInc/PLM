@@ -1,24 +1,28 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h1>Algorithmes récursifs</h1>
-<p>This lesson contains a bunch of classical exercises on recursive lists.  It
-is certainly not the most pleasant lesson to do, but I think that it is the
-easiest of the PLM lessons dealing with recursion.</p>
+<h1>Listes récursives</h1>
+<p>Cette leçon propose un paquet d'exercices classiques sur les listes
+récursives. Il ne s'agit certainement pas de la leçon la plus drôle de la
+PLM, mais il s'agit certainement de la plus simple des leçons PLM sur la
+récursivité.</p>
 
 <p>Comme souvent, plusieurs points pourraient être améliorés dans le code de
 cet univers pour l'améliorer&nbsp;:</p>
 
 <ul>
-<li>New exercises could be proposed, such as
+<li>De nouveaux exercices pourraient être proposés, par exemple inspirés de
 http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf
-If you know some others, please report them as an issue.</li>
-<li>It would be interesting to check the asymptotic complexity of the student's
-code, but that does not sound easy to do. In Python and Java (where we
-provide a hand-made RecList class), we could count the amount of cons per
-exercise, but it won't be easy to relate this to the right BatTest. For
-Scala, it sounds even more difficult as we use the classical :: operators of
-the language. That will be difficult to override to add a counting
-mechanism. Another solution would be to ensure that the call stack does not
-pass a given threshold, but that sounds very difficult too. Any idea is
-welcome.</li>
+Si vous en connaissez d'autres, nous vous serions reconnaissant de nous en
+parler dans un rapport d'anomalie.</li>
+<li>Il serait intéressant de vérifier la complexité algorithmique du code
+proposé par les étudiants, mais cela semble assez difficile à faire. En
+Python et Java, nous proposons un type de donnée spécifique (les
+<code>RecList</code>) alors nous pourrions compter le nombre de cons
+réalisés dans chaque exercice, mais il risque d'être compliqué de trouver le
+test auquel rattacher chaque opération. En Scala, cela s'annonce encore plus
+difficile car nous utilisons directement des mots-clés du langage. Il serait
+probablement difficile d'y injecter un mécanisme comptant les opérations. On
+pourrait vouloir assurer que la pile d'appel ne dépasse pas une profondeur
+donnée, mais cela semble également difficile à implémenter. Si vous avez des
+idées, merci de nous en faire part.</li>
 <ul>

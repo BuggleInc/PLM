@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-10-06 17:06+0200\n"
-"PO-Revision-Date: 2014-10-08 00:04+0200\n"
+"POT-Creation-Date: 2014-10-09 20:46+0200\n"
+"PO-Revision-Date: 2014-10-09 20:58+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -9904,16 +9904,10 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:13
-#, fuzzy
-#| msgid ""
-#| "Your work is to help this poor guy sorting his stack by flipping the "
-#| "pancakes. Each pancake is defined by its radius and rank within the "
-#| "stack, with the top-most pancake is at rank 0, and the one below at rank "
-#| "1."
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
-"where the bottom pancake is at rank 0, and the one above at rank 1."
+"with the top-most pancake is at rank 0, and the one below at rank 1."
 msgstr ""
 "Vous devez aider ce pauvre homme à trier sa pile en retournant des crêpes. "
 "Chaque crêpe est définie par son rayon et son rang dans la pile. La pile la "
@@ -11554,13 +11548,19 @@ msgstr "Monde des listes récursives"
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:4
 msgid ""
-"This world allows you to experiment with the recursive strings, as they were "
-"first defined in Lisp. It is very similar to the BatWorld, but you are "
+"This world allows you to experiment with the recursive lists, as they were "
+"first introduced in Lisp. It is very similar to the BatWorld, but you are "
 "supposed to write recursive functions working on [!python|java]recursive "
 "strings. Since [!thelang] does not provide such a construct natively, the "
 "ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
-"scala]lists of integers (<code>List[Int]</code>)."
+"scala]lists of integers (<code>List[Int]</code>).[/!]"
 msgstr ""
+"Ce monde vous permettra d'expérimenter avec les listes récursives, telles "
+"qu'elles ont été définies en Lisp à l'origine. Ce monde est assez similaire "
+"au BatWorld, mais vous êtes supposé écrire des fonctions récursives agissant "
+"sur des [!python|java]listes récursives. Comme [!thelang] ne propose rien de "
+"tel en natif, ce monde défini un nouveau type nommé <code>RecList</code> "
+"pour cela.[/!] [!scala]listes d'entiers (<code>List[Int]</code>).[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:12
@@ -11572,6 +11572,15 @@ msgid ""
 "tail</code>. Of course, the empty list has no head nor the tail, so trying "
 "to access these elements will result in an (unpleasant) error message."
 msgstr ""
+"Une telle liste peut être soit la liste vide (notée <code>[!scala]Nil[/!][!"
+"java]null[/!][!python]None[/!]</code>), soit un entier suivi d'une liste. Si "
+"une liste n'est pas vide, vous pouvez retrouver son premier entier avec "
+"<code>list.head</code>. On dit qu'on extrait alors la tête de la liste.La "
+"liste contenant ses autres éléments (tous sauf la tête) peut être retrouvée "
+"avec <code>list.tail</code>. On dit qu'on extrait la suite de la liste.Bien "
+"entendu, la liste vide n'a ni tête ni suite, et vous ne devriez pas tenter "
+"d'accéder à ces éléments sous peine d'obtenir un message d'erreur "
+"(particulièrement déplaisant)."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:20
@@ -11581,6 +11590,10 @@ msgid ""
 "tail</code> Note that <code>::</code> is a generic operator in Scala to "
 "build lists.[/!]"
 msgstr ""
+"Pour construire votre propre liste, vous devez concaténer une tête et une "
+"suite comme suit : [!java|python]<code>cons(tête, suite)</code>[/!] [!"
+"scala]<code>tête::suite</code>. Il se trouve que <code>::</code> est un "
+"opérateur générique du langage Scala pour construire des listes.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:26
@@ -11588,11 +11601,13 @@ msgid ""
 "So, in summary, you can solve every exercises of this lesson with the "
 "following constructs."
 msgstr ""
+"En résumé, vous pouvez résoudre tous les exercices de cette leçon avec les "
+"constructions suivantes :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
-msgid "<b>The empty string:</b>"
-msgstr ""
+msgid "<b>The empty list:</b>"
+msgstr "<b>La liste vide:</b>"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
@@ -11603,24 +11618,24 @@ msgstr "[!java|c]null[/!][!scala]Nil[/!][python]None[/!]"
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 msgid "<b>Get the first element of <code>l</code></b>"
-msgstr ""
+msgstr "<b>Obtenir le premier élément de <code>l</code></b>"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 #, no-wrap
 msgid "l.head"
-msgstr ""
+msgstr "l.head"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 msgid "<b>Get the rest of the list</b>, when the first element is removed:"
-msgstr ""
+msgstr "<b>Obtenir la suite de la liste</b>, privée de son premier élément:"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 #, no-wrap
 msgid "l.tail"
-msgstr ""
+msgstr "l.tail"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:33
@@ -11628,23 +11643,25 @@ msgid ""
 "<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
 "java|python]"
 msgstr ""
+"<b>Construire une liste</b> à partir d'une <code>valeur</code> et d'une "
+"<code>liste</code>: [!java|python]"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
 #, no-wrap
 msgid "cons(value, list)"
-msgstr ""
+msgstr "cons(valeur, liste)"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #, no-wrap
 msgid "value::list"
-msgstr ""
+msgstr "valeur::liste"
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Main.html:2
 msgid "Recursive Lists"
-msgstr "Algorithmes récursifs"
+msgstr "Listes récursives"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Main.html:3
@@ -11653,6 +11670,10 @@ msgid ""
 "is certainly not the most pleasant lesson to do, but I think that it is the "
 "easiest of the PLM lessons dealing with recursion."
 msgstr ""
+"Cette leçon propose un paquet d'exercices classiques sur les listes "
+"récursives. Il ne s'agit certainement pas de la leçon la plus drôle de la "
+"PLM, mais il s'agit certainement de la plus simple des leçons PLM sur la "
+"récursivité."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/Main.html:10
@@ -11661,6 +11682,10 @@ msgid ""
 "Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
 "report them as an issue."
 msgstr ""
+"De nouveaux exercices pourraient être proposés, par exemple inspirés de "
+"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf "
+"Si vous en connaissez d'autres, nous vous serions reconnaissant de nous en "
+"parler dans un rapport d'anomalie."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/Main.html:13
@@ -11675,11 +11700,22 @@ msgid ""
 "pass a given threshold, but that sounds very difficult too. Any idea is "
 "welcome."
 msgstr ""
+"Il serait intéressant de vérifier la complexité algorithmique du code "
+"proposé par les étudiants, mais cela semble assez difficile à faire. En "
+"Python et Java, nous proposons un type de donnée spécifique (les "
+"<code>RecList</code>) alors nous pourrions compter le nombre de cons "
+"réalisés dans chaque exercice, mais il risque d'être compliqué de trouver le "
+"test auquel rattacher chaque opération. En Scala, cela s'annonce encore plus "
+"difficile car nous utilisons directement des mots-clés du langage. Il serait "
+"probablement difficile d'y injecter un mécanisme comptant les opérations. On "
+"pourrait vouloir assurer que la pile d'appel ne dépasse pas une profondeur "
+"donnée, mais cela semble également difficile à implémenter. Si vous avez des "
+"idées, merci de nous en faire part."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Length.html:2
 msgid "Length"
-msgstr ""
+msgstr "Longueur"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Length.html:3
@@ -11687,6 +11723,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
 "length[!scala] (without using its <code>size</code> method, of course)[/!]."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"retournez sa longueur[!scala], sans utiliser la méthode <code>size</code> de "
+"la liste, bien entendu[/!]."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
@@ -11700,7 +11739,7 @@ msgstr ""
 #: src/lessons/recursion/cons/Remove.html:8
 #: src/lessons/recursion/cons/ButNfirst.html:6
 msgid "Your solution should be linear in time."
-msgstr ""
+msgstr "Votre solution devrait être linéaire en temps."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/IsMember.html:2

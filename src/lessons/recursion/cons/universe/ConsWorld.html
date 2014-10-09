@@ -1,13 +1,13 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>ConsWorld</h1>
 
-<p>This world allows you to experiment with the recursive strings, as
-they were first defined in Lisp. It is very similar to the BatWorld,
+<p>This world allows you to experiment with the recursive lists, as
+they were first introduced in Lisp. It is very similar to the BatWorld,
 but you are supposed to write recursive functions working on 
 [!python|java]recursive strings. Since [!thelang] does not provide
 such a construct natively, the ConsWorld defines recursive lists of
 type <code>RecList</code>.[/!]
-[!scala]lists of integers (<code>List[Int]</code>).</p>
+[!scala]lists of integers (<code>List[Int]</code>).[/!]</p>
 
 <p>Any given such list is either the empty list 
 (noted <code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>),
@@ -27,7 +27,7 @@ operator in Scala to build lists.[/!]</p>
 the following constructs.</p>
 
 <ul>
-<li><b>The empty string:</b> <pre>[!java]null[/!][!scala]Nil[/!][!python]None[/!]</pre></li>
+<li><b>The empty list:</b> <pre>[!java]null[/!][!scala]Nil[/!][!python]None[/!]</pre></li>
 <li><b>Get the first element of <code>l</code></b> <pre>l.head</pre></li>
 <li><b>Get the rest of the list</b>, when the first element is removed: <pre>l.tail</pre></li>
 <li><b>Build a list</b> from a <code>value</code> and a <code>list</code>: 
