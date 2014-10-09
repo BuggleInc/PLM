@@ -1,3 +1,9 @@
+20141015: wannabe Release 2.5
+
+  * Engine:
+    - #304: Stop user's program's or demo's execution if the user 
+      switches to another exercise or lesson.
+
 20141009: Release 2.4.11
 
   Git and TurtleWorld's equality should both be working now :)
@@ -6,8 +12,6 @@
     - Brazilian Portuguese: Missions at 54% despite content changes
   * Engine:
     - #224: If the execution is interrupted, the exercise is failed
-    - #304: Stop user's program's or demo's execution if the user 
-      switches to another exercise or lesson.
     - #380: Disable creative mode when switching the exercise
     - Lessons: Prevent users from accessing broken lessons and add tests
       to detect them.
