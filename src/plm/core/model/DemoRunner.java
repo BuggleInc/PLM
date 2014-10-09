@@ -66,5 +66,4 @@ public class DemoRunner extends Thread {
 
 		runners.remove(this);
 	}
-
 }
