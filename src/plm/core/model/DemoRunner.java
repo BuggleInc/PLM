@@ -66,14 +66,4 @@ public class DemoRunner extends Thread {
 
 		runners.remove(this);
 	}
-
-	/** Stop all the threads that were already started. Harmful but who cares? */
-	@SuppressWarnings("deprecation")
-	public void stopAll() {
-		while (runners.size()>0) {
-			Thread t = runners.remove(runners.size() - 1);
-			t.stop(); // harmful but who cares ?
-		}
-	}
-	
 }

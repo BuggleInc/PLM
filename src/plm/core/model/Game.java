@@ -334,11 +334,8 @@ public class Game implements IWorldView {
 	 */
 
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
-		if(state == GameState.EXECUTION_STARTED) {
+		if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
 			stopExerciseExecution();
-		}
-		else if(state == GameState.DEMO_STARTED) {
-			stopExerciseDemoExecution();
 		}
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
@@ -478,11 +475,8 @@ public class Game implements IWorldView {
 		// No need to stop the execution if no lesson is currently selected
 		if(currentLesson != null) {
 			// If already executing a program, stop it
-			if(state==GameState.EXECUTION_STARTED) {
+			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
 				stopExerciseExecution();
-			}
-			else if(state == GameState.DEMO_STARTED) {
-				stopExerciseDemoExecution();
 			}
 		}
 		try {
@@ -591,8 +585,11 @@ public class Game implements IWorldView {
 		if (stepModeEnabled()) 
 			disableStepMode();
 
-		if (runner != null)
+		// Running threads can be the user's program or the correction
+		// Only stop them if it's the user's code
+		if(state == GameState.EXECUTION_STARTED) {
 			runner.stopAll();
+		}			
 
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
@@ -604,13 +601,6 @@ public class Game implements IWorldView {
 	public void startExerciseDemoExecution() {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
 		runner.start();
-	}
-	
-	public void stopExerciseDemoExecution() {
-		if(this.demoRunners.size()>0) {
-			DemoRunner runner = (DemoRunner) this.demoRunners.get(0);
-			runner.stopAll();
-		}
 	}
 	
 	public void startExerciseStepExecution() {
