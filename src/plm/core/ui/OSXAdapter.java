@@ -58,6 +58,7 @@ Copyright © 2003-2007 Apple, Inc., All Rights Reserved
 // http://developer.apple.com/referencelibrary/Java/idxPorting-date.html
 package plm.core.ui;
 
+import java.awt.Window;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -71,6 +72,21 @@ public class OSXAdapter implements InvocationHandler {
 
 	static Object macOSXApplication;
 
+    public static void enableFullScreenMode(Window window) {
+        String className = "com.apple.eawt.FullScreenUtilities";
+        String methodName = "setWindowCanFullScreen";
+ 
+        try {
+            Class<?> clazz = Class.forName(className);
+            Method method = clazz.getMethod(methodName, new Class<?>[] {
+                    Window.class, boolean.class });
+            method.invoke(null, window, true);
+        } catch (Throwable t) {
+            System.err.println("Full screen mode is not supported");
+            t.printStackTrace();
+        }
+    }
+	
 	// Pass this method an Object and Method equipped to perform application
 	// shutdown logic
 	// The method passed should return a boolean stating whether or not the quit
@@ -242,5 +258,9 @@ public class OSXAdapter implements InvocationHandler {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	public static boolean isMacOSX() {
+		return System.getProperty("os.name").startsWith("Mac");		
 	}
 }

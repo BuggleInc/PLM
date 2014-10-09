@@ -1,4 +1,6 @@
-20141001: wanabe Release 2.4.11
+20141009: Release 2.4.11
+
+  Git and TurtleWorld's equality should both be working now :)
 
   * Improved translations:
     - Brazilian Portuguese: Missions at 54% despite content changes
@@ -7,18 +9,22 @@
     - #304: Stop user's program's or demo's execution if the user 
       switches to another exercise or lesson.
     - #380: Disable creative mode when switching the exercise
+    - Lessons: Prevent users from accessing broken lessons and add tests
+      to detect them.
     - GitSpy: Fix a bug which overwrote the current exercise's files
       for the current programming language by the current exercise's files
       for the last result's programming language
+    - Git: Refactor Git related code to fix progression loss bugs
   * Worlds:
     - Turtle: equal() was not detecting when lines are overlapping
       with no common extremities. We now detect when one line is
       strictly included within another one, but not when they are
       intermixed (yet). Fix #381.
   * Pedagogical content:
-    - #378: French typo
+    - #378, #393: French typo
     - #383: Fix the name of the Scala entity
     - #387: Fix a broken link when run from the jar
+    - #388: The Pancake #0 is actually on top (fix mission text)
 
 20140930: Release 2.4.10
 

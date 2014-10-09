@@ -49,6 +49,7 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
@@ -175,7 +176,7 @@ public class Game implements IWorldView {
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
 
-		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
+		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
@@ -373,10 +374,16 @@ public class Game implements IWorldView {
 			System.err.println("Interrupted while loading the lesson "+lesson.getName());
 			e.printStackTrace();
 		}
+		// If a problem arose while setting up the lesson, don't switch 
+		// TODO: define a better solution when encountering this issue
+		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
+			JOptionPane.showMessageDialog(null, i18n.tr("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.") ,
+					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
+			return null;
+		}
+			
 		setCurrentLesson(lesson);
-
 		this.setState(GameState.LOADING_DONE);
-
 		return lesson;
 	}
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
@@ -669,7 +676,7 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-
+			
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
 				spyListener.leave();

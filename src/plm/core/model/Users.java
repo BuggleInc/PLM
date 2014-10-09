@@ -125,8 +125,8 @@ public class Users {
 
 		if (found) {
 			flushUsersToFile();
-			g.loadSession();
 			fireUserSwitch(newUser);
+			g.loadSession();
 		} else {
 			System.err.println("Cannot switch to the user "+newUser+": not found");
 		}

@@ -62,7 +62,10 @@ public class ExoTest {
 		
 		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
 		for (String lessonName : lessonNamesToTest) { 
-			g.switchLesson(lessonName, true);
+			if(g.switchLesson(lessonName, true)==null) {
+				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
+				System.exit(1);
+			}
 			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
