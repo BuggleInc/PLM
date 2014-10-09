@@ -585,12 +585,13 @@ public class Game implements IWorldView {
 		if (stepModeEnabled()) 
 			disableStepMode();
 
-		// Running threads can be the user's program or the correction
-		// Only stop them if it's the user's code
+		// Only forcefully stop the threads if they run the user code (not the correction)
 		if(state == GameState.EXECUTION_STARTED) {
 			runner.stopAll();
 		}			
 
+		// "Stop" the demo threads too, but asking them to not wait for the UI
+		// We cannot kill them as they are computing the exercise's correction.
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
 			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
