@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
+import plm.core.ui.MainFrame;
 
 
 public class QuitGame extends AbstractGameAction implements HumanLangChangesListener {
@@ -20,8 +21,8 @@ public class QuitGame extends AbstractGameAction implements HumanLangChangesList
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		game.quit();
-	}
+    	MainFrame.getInstance().quit();
+   }
 
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {

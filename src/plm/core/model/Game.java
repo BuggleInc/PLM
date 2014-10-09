@@ -35,7 +35,6 @@ import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
 import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
-import plm.core.PLMEntityNotFound;
 import plm.core.ProgLangChangesListener;
 import plm.core.StatusStateListener;
 import plm.core.lang.LangC;
@@ -656,7 +655,7 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-
+			
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
 				spyListener.leave();

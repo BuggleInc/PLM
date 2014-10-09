@@ -52,7 +52,7 @@ public class ChooseLessonDialog extends JFrame {
 		this.addWindowListener(new WindowAdapter() {
 	        @Override
 	        public void windowClosing(WindowEvent event) {
-	            Game.getInstance().quit();
+	        	MainFrame.getInstance().quit();	        			
 	        }
 	    });
 		

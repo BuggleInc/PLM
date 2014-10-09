@@ -1,6 +1,8 @@
 package plm.core.ui;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
@@ -19,8 +21,15 @@ public class ProgrammersLearningMachine {
 		FileUtils.setLocale(new JFrame().getLocale());
 		
 		Game.getInstance(); // make sure it's created
-		MainFrame.getInstance().setVisible(false);		
-		ChooseLessonDialog cld = new ChooseLessonDialog();
-		cld.setVisible(true);
+		
+		//MainFrame.getInstance().setVisible(false);		
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				ChooseLessonDialog cld = new ChooseLessonDialog();
+				cld.setVisible(true);
+			}
+		});
+
 	}
 }
