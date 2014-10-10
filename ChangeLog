@@ -3,6 +3,7 @@
   * Improved translations:
     - French: mission back at 100%
   * Engine:
+    - #292: Check the user's input before submitting a feedback
     - #304: Stop user's program's or demo's execution if the user 
       switches to another exercise or lesson.
     - #395: Correctly remove the files that should be when reverting
