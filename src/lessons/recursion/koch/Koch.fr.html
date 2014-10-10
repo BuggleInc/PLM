@@ -25,16 +25,17 @@ remplacé par un petit triangle équilatéral.</p>
 
 <p>Le pseudo-code du cas général est le suivant :</p>
 <pre>
-  Draw recursively a smaller segment
-  Turn 60 degrees to the left
-  Draw recursively a smaller segment  
-  Turn 120 degrees to the right
-  Draw recursively a smaller segment
-  Turn 60 degrees to the left
-  Draw recursively a smaller segment
+Dessiner récursivement un segment plus petit
+Tourner à 60 degrés vers la gauche
+Dessiner récursivement un segment plus petit
+Tourner à 120 degrés vers la droite
+Dessiner récursivement un segment plus petit
+Tourner à 60 degrés vers la gauche
+Dessiner récursivement un segment plus petit
 </pre>
-<p>As you can see, the function forward() is not called from the recursive
-case, only in the base case when there is no recursive call.</p>
+<p>Comme vous pouvez le constater, la fonction avance() n'est pas appelée dans
+le cas récursif, mais seulement dans le cas de base, quand il n'y a plus
+d'appel récursif.</p>
 
 
 <p><div class="tip" id="tip-1" alt="TL;DR. Vous pouvez me dessiner tout ça ?">

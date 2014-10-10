@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-10 19:20+0200\n"
+"POT-Creation-Date: 2014-10-10 21:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8546,7 +8546,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/cons/Length.html:5 src/lessons/recursion/cons/IsMember.html:7 src/lessons/recursion/cons/Occurrence.html:7 src/lessons/recursion/cons/Last.html:6 src/lessons/recursion/cons/Min.html:6 src/lessons/recursion/cons/Increasing.html:6 src/lessons/recursion/cons/ButLast.html:6 src/lessons/recursion/cons/PlusOne.html:5 src/lessons/recursion/cons/Remove.html:8 src/lessons/recursion/cons/ButNfirst.html:6
+#: src/lessons/recursion/cons/Length.html:5 src/lessons/recursion/cons/IsMember.html:7 src/lessons/recursion/cons/Occurrence.html:7 src/lessons/recursion/cons/Last.html:6 src/lessons/recursion/cons/Min.html:6 src/lessons/recursion/cons/Increasing.html:6 src/lessons/recursion/cons/ButLast.html:6 src/lessons/recursion/cons/PlusOne.html:5 src/lessons/recursion/cons/Remove.html:9 src/lessons/recursion/cons/ButNfirst.html:6
 msgid "Your solution should be linear in time."
 msgstr ""
 
@@ -8649,8 +8649,8 @@ msgstr ""
 #: src/lessons/recursion/cons/Remove.html:4
 msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] "
-"<code>L</code>and an integer, return a new list containing all elements of L "
-"that are not equal to the value received as parameter."
+"<code>L</code>and an integer, return a new list containing all elements of "
+"<code>L</code> that are not equal to the value received as parameter."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8662,7 +8662,7 @@ msgstr ""
 #: src/lessons/recursion/cons/Nth.html:3
 msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
-"<code>N</code>, return its <code>N</code>th element."
+"<code>N</code>, return the <code>N</code>th element of the list."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8699,7 +8699,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/cons/Nlast.html:6 src/lessons/recursion/cons/ButNlast.html:6
+#: src/lessons/recursion/cons/Nlast.html:6 src/lessons/recursion/cons/ButNlast.html:6 src/lessons/recursion/cons/Concat.html:6
 msgid ""
 "Your solution should be linear in time, but you will probably need to define "
 "several functions to achieve that complexity."
@@ -8778,11 +8778,6 @@ msgid ""
 "Given two [!scala]List[Int][/!][!java|python]recursive list[/!] "
 "<code>l1</code> and <code>l2</code>, return a new list with all elements of "
 "<code>l1</code> followed by the elements of <code>l2</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/cons/Concat.html:6
-msgid "Your solution should be linear in time, with the help of helper functions."
 msgstr ""
 
 #. type: Content of: <div>

@@ -15,17 +15,17 @@ la position initiale !<p>
 <p>Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à
 l'étage N+1.<p>
 
-<p>At the end, here is the pseudo-code of the general case (you should add the
-base case yourself):</p>
+<p>Au final, voici le pseudo-code du cas général de la récursivité (il manque
+bien sûr le cas de base, laissé en exercice).</p>
 <pre>
-  Move forward of the desired length
-  Draw (recursively) the right subtree
-  Draw (recursively) the left subtree
-  Move back to your initial position
+Avancer de la longueur désirée
+Dessiner (récursivement) le sous-arbre de droite
+Dessiner (récursivement) le sous-arbre de gauche
+Reculer de la longueur désirée pour retourner au point de départ
 </pre> 
-<p>Don't forget to add the base case to your code, or your buggle will enter an
-infinite loop.  Then, drawing the right subtree comes down to turn right and
-then draw the subtree.</p>
+<p>N'oubliez pas d'ajouter le cas de base dans votre code, ou la buggle va
+entrer en boucle infinie. De plus, dessiner le sous-arbre droit revient à
+tourner à droite puis dessiner un sous-arbre.</p>
 
 <p>Comme vous pouvez le voir, chaque étage de la récursion est représenté par
 une couleur distinctive. Pour cela, appelez la fonction

@@ -1,10 +1,14 @@
 20141015: wannabe Release 2.5
 
+  * Improved translations:
+    - French: mission back at 100%
   * Engine:
     - #304: Stop user's program's or demo's execution if the user 
       switches to another exercise or lesson.
     - #395: Correctly remove the files that should be when reverting
       or failing an exercise (both in local and remote repositories)
+    - #389: Allow fullscreen on Mac OSX
+    - #394: Display a waiting dialog when exiting
   * Pedagogical content:
     - #323: turtleart.Kerr40: new exercise
     - #397: GnomeSort: align mission text with code
