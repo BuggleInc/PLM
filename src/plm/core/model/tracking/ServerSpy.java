@@ -85,6 +85,24 @@ public abstract class ServerSpy implements ProgressSpyListener {
 		sendRequest(jsonObject.toString());
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public void reverted(Exercise exo) {
+		JSONObject jsonObject = new JSONObject();
+
+		Game game = Game.getInstance();
+		ExecutionProgress lastResult = exo.lastResult;
+		// Retrieve appropriate parameters regarding the new exercise
+		jsonObject.put("username", username);
+		jsonObject.put("course", game.getCourseID());
+        jsonObject.put("password", game.getCoursePassword());
+		jsonObject.put("exoname", exo.getName());
+		jsonObject.put("exolang", lastResult != null ? lastResult.language.toString() : "");
+		jsonObject.put("action", "reverted");
+
+		sendRequest(jsonObject.toString());
+	}
+	
 	/**
 	 * Send a presence report to the server
 	 */

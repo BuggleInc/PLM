@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.NullProgressMonitor;
@@ -11,6 +13,7 @@ import org.eclipse.jgit.lib.ProgressMonitor;
 import org.json.simple.JSONObject;
 
 import plm.core.UserSwitchesListener;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.Users;
@@ -93,11 +96,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// Change the files locally
 			createFiles(exo);
 			checkSuccess(exo);
-
+			
 			String commitMsg = writeCommitMessage(exo, null, "executed", new JSONObject());
 			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
+			gitUtils.removeFiles();
 			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
 		} catch (GitAPIException e) {
 			e.printStackTrace();
@@ -125,6 +129,23 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		}
 	}
 
+	@Override
+	public void reverted(Exercise exo) {
+		try {
+			deleteFiles(exo);
+
+			String commitMsg = writeCommitMessage(exo, null, "reverted", new JSONObject());
+			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userBranch = "PLM"+GitUtils.sha1(userUUID);
+		
+			gitUtils.removeFiles();
+			gitUtils.commit(commitMsg);
+			gitUtils.maybePushToUserBranch(userBranch, progress);
+		} catch (GitAPIException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void heartbeat() {
 	}
@@ -223,7 +244,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		File errorFile = new File(repoDir, exo.getId() + ext + ".error");
 		File correctionFile = new File(repoDir, exo.getId() + ext + ".correction");
 		File missionFile = new File(repoDir, exo.getId() + ext + ".mission");
-
+		
 		try {
 			// write the code of the exercise into the file
 			FileWriter fwExo = new FileWriter(exoFile.getAbsoluteFile());
@@ -253,6 +274,26 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		}
 	}
 
+	private void deleteFiles(Exercise exo) {
+		
+		List<String> suffixes = new ArrayList<String>();
+		suffixes.add(".code");
+		suffixes.add(".error");
+		suffixes.add(".correction");
+		suffixes.add(".mission");
+		suffixes.add(".DONE");
+		
+		for(ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
+			String ext = "." + pl.getExt();	
+			for(String suffix:suffixes) {
+				File file = new File(repoDir, exo.getId() + ext + suffix);
+				if(file.exists()) {
+					file.delete();
+				}
+			}
+		}	
+	}
+	
 	/**
 	 * Create some files to know how many exercises there is by programming languages for this lesson. Also add a file
 	 * to know if the exercise has been done correctly.

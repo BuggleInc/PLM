@@ -13,6 +13,8 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.MergeCommand;
 import org.eclipse.jgit.api.MergeResult;
 import org.eclipse.jgit.api.PushCommand;
+import org.eclipse.jgit.api.RmCommand;
+import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.ConcurrentRefUpdateException;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -26,6 +28,7 @@ import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.api.errors.UnmergedPathsException;
 import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
+import org.eclipse.jgit.errors.NoWorkTreeException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
@@ -38,7 +41,6 @@ import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
-import org.eclipse.jgit.transport.RemoteRefUpdate.Status;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import plm.core.model.Game;
@@ -167,7 +169,7 @@ public class GitUtils {
 			throw ex;
 		}
 	}
-
+	
 	/** Push the local changes to the user's remote branch
 	 * 
 	 * @return if the modifications have been correctly pushed
@@ -187,7 +189,7 @@ public class GitUtils {
 							System.err.println("Pushed to "+pr.getURI()+". Message: "+ru.getMessage());
 						}
 					}
-					if(ru.getStatus()!=Status.OK && ru.getStatus()!=Status.UP_TO_DATE) {
+					if(ru.getStatus()!=RemoteRefUpdate.Status.OK && ru.getStatus()!=RemoteRefUpdate.Status.UP_TO_DATE) {
 						success = false;
 						if(Game.getInstance().isDebugEnabled()) {
 							System.err.println("Pushed to "+pr.getURI()+". Status: "+ru.getStatus().toString());
@@ -323,6 +325,22 @@ public class GitUtils {
 		git.add().addFilepattern(".").call();
 	}
 
+	public void removeFiles() {
+		try {
+			Status status = git.status().call();
+			RmCommand rm = git.rm();
+			if(status.getMissing().size()>0) {
+				for(String filename:status.getMissing()) {
+					rm.addFilepattern(filename);
+				}
+				rm.call();
+			}
+		} catch (NoWorkTreeException | GitAPIException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void seqAddFilesToPush(String commitMsg, String userBranch,
 			ProgressMonitor progress) throws NoFilepatternException, GitAPIException {
 		addFiles();

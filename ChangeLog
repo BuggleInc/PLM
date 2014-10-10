@@ -3,6 +3,9 @@
   * Engine:
     - #304: Stop user's program's or demo's execution if the user 
       switches to another exercise or lesson.
+    - #395: Remove correctly deleted files (from failing an
+      already passed exercise or reverting one) in the local
+      and remote repository.
   * Pedagogical content:
     - #323: turtleart.Kerr40: new exercise
 
