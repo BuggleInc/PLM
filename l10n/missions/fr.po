@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-10-09 20:46+0200\n"
-"PO-Revision-Date: 2014-10-09 20:58+0200\n"
+"POT-Creation-Date: 2014-10-10 19:20+0200\n"
+"PO-Revision-Date: 2014-10-10 20:20+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -9416,24 +9416,20 @@ msgstr ""
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
-"Basically, he looks at the flower pot next to him and the previous one; if "
-"they are in the right order he steps one pot forward, otherwise he swaps "
-"them and steps one pot backwards. Boundary conditions: if there is no "
-"previous pot, he steps forwards; if there is no pot next to him, he is "
+"Basically, he looks at the flower pot next to him and the one immediately "
+"after ; if they are in the right order he steps one pot forward, otherwise "
+"he swaps them and steps one pot backwards. Boundary conditions: if there is "
+"no previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
 msgstr ""
 "L'algorithme de tri du gnome repose sur la manière habituelle de travailler "
-"des\n"
-"nains de jardin pour trier une ligne de pots de fleurs: Le nain regarde le "
-"pot\n"
-"de fleur qui est à côté de lui et il regarde également le pot de fleurs\n"
-"précédent; si ces deux pots sont alignés dans le bon ordre, le nain se "
-"déplace\n"
-"en avant d'un pot de fleurs, sinon il les échange et se déplace en arrière "
-"d'un\n"
-"pot de fleur. Condition aux limites&nbsp;: si il n'y a pas de pot de fleurs "
-"précédent, le nain avance ; si il n'y a pas de pot suivant alors il a "
-"terminé sa tâche."
+"des nains de jardin pour trier une ligne de pots de fleurs: Le nain regarde "
+"le pot de fleur qui est à côté de lui et il regarde également le pot de "
+"fleurs juste après&nbsp;; si ces deux pots sont alignés dans le bon ordre, "
+"le nain se déplace en avant d'un pot de fleurs, sinon il les échange et se "
+"déplace en arrière d'un pot de fleur. Condition aux limites&nbsp;: si il n'y "
+"a pas de pot de fleurs précédent, le nain avance ; si il n'y a pas de pot "
+"suivant alors il a terminé sa tâche."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/dutchflag/Main.html:2
@@ -11744,7 +11740,7 @@ msgstr "Votre solution devrait être linéaire en temps."
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/IsMember.html:2
 msgid "IsMember"
-msgstr ""
+msgstr "EstMembre"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/IsMember.html:3
@@ -11753,6 +11749,9 @@ msgid ""
 "integer, return true if the given integer is one of the elements of the "
 "list, or false if it cannot be found."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier,retournez <code>true</code> si cet entier fait partie des éléments de "
+"la liste, et <code>false</code> sinon."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
@@ -11767,6 +11766,9 @@ msgid ""
 "If the integer is not a member of the list, the function should thus return "
 "0."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier,retournez le nombre d'occurences de cet entier dans la liste. Si "
+"l'entier n'est pas membre de la liste, la fonction doit renvoyer 0."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Last.html:2
@@ -11779,11 +11781,14 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
 "last element.  You can assume that the list is not empty."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez son dernier élément. Vous pouvez supposer que la liste n'est pas "
+"vide."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Min.html:2
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Min.html:3
@@ -11792,11 +11797,15 @@ msgid ""
 "smallest of its values.  You will probably need an extra function, even if "
 "you can assume that the list is not empty."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez la plus petite de ses valeurs. Vous aurez probablement besoin "
+"d'une fonction supplémentaire, mais vous pouvez supposer que la liste n'est "
+"pas vide."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Increasing.html:2
 msgid "Increasing"
-msgstr ""
+msgstr "Croissante"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Increasing.html:3
@@ -11805,6 +11814,9 @@ msgid ""
 "whether its elements form an increasing sequence (i.e., if the elements are "
 "sorted from the smallest to the largest one)."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez <code>true</code> si ses éléments forment une suite croissante "
+"(c'est-à-dire si ses éléments sont classés du plus petit au plus grand)."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButLast.html:2
@@ -11818,6 +11830,9 @@ msgid ""
 "list containing every elements but the last one.  You can assume that the "
 "list is not empty."
 msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez la liste contenant tous ses éléments sauf le dernier. Vous pouvez "
+"supposer que la liste n'est pas vide."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/PlusOne.html:2
