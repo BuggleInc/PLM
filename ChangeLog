@@ -3,11 +3,11 @@
   * Engine:
     - #304: Stop user's program's or demo's execution if the user 
       switches to another exercise or lesson.
-    - #395: Remove correctly deleted files (from failing an
-      already passed exercise or reverting one) in the local
-      and remote repository.
+    - #395: Correctly remove the files that should be when reverting
+      or failing an exercise (both in local and remote repositories)
   * Pedagogical content:
     - #323: turtleart.Kerr40: new exercise
+    - #397: GnomeSort: align mission text with code
 
 20141009: Release 2.4.11
 
