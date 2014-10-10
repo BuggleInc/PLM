@@ -10,6 +10,8 @@
       or failing an exercise (both in local and remote repositories)
     - #389: Allow fullscreen on Mac OSX
     - #394: Display a waiting dialog when exiting
+  * Worlds:
+    - #286: Turtle, Buggle: document where (0,0) is
   * Pedagogical content:
     - #323: turtleart.Kerr40: new exercise
     - #397: GnomeSort: align mission text with code
