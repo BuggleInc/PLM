@@ -53,6 +53,8 @@ import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
+import plm.core.model.session.SourceFile;
+import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
@@ -1197,5 +1199,24 @@ public class Game implements IWorldView {
 	}
 	public static String getSavingLocation() {
 		return SAVE_DIR.getPath();
+	}
+
+	public void revertExo() {
+		Lecture lect = getCurrentLesson().getCurrentExercise();
+		if (! (lect instanceof Exercise)) 
+			return;
+
+		Exercise ex = (Exercise) lect;
+		for (ProgrammingLanguage lang: ex.getProgLanguages())
+			for (int i=0; i<ex.getSourceFileCount(lang); i++) {
+				SourceFile sf = ex.getSourceFile(lang,i);
+				if (sf instanceof SourceFileRevertable)
+					((SourceFileRevertable) sf).revert();
+			}
+		for (ProgrammingLanguage pl:Game.programmingLanguages)
+			Game.getInstance().studentWork.setPassed(ex, pl, false);
+		for (ProgressSpyListener l : this.progressSpyListeners) {
+			l.reverted(ex);
+		}
 	}
 }

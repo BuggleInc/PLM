@@ -5,12 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Lecture;
-import plm.core.model.session.SourceFile;
-import plm.core.model.session.SourceFileRevertable;
 
 public class RevertExercise extends AbstractGameAction {
 
@@ -34,20 +29,13 @@ public class RevertExercise extends AbstractGameAction {
 			return;
 		}
 
-		Lecture lect = game.getCurrentLesson().getCurrentExercise();
-		if (! (lect instanceof Exercise)) 
-			return;
-
-		Exercise ex = (Exercise) lect;
-		for (ProgrammingLanguage lang: ex.getProgLanguages())
-			for (int i=0; i<ex.getSourceFileCount(lang); i++) {
-				SourceFile sf = ex.getSourceFile(lang,i);
-				if (sf instanceof SourceFileRevertable)
-					((SourceFileRevertable) sf).revert();
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				Game.getInstance().revertExo();
 			}
-		for (ProgrammingLanguage pl:Game.programmingLanguages) 
-			Game.getInstance().studentWork.setPassed(ex, pl, false);
-		
+		});
+		t.start();
+
 		System.out.println(Game.i18n.tr("Exercise reverted"));
 	}
 
