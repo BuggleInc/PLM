@@ -12,6 +12,7 @@
     - #394: Display a waiting dialog when exiting
   * Worlds:
     - #286: Turtle, Buggle: document where (0,0) is
+    - #220: Buggle: Improve doc of isOverBaggle(), isCarryingBaggle()
   * Pedagogical content:
     - #323: turtleart.Kerr40: new exercise
     - #397: GnomeSort: align mission text with code
