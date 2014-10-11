@@ -457,6 +457,10 @@ public class BuggleWorld extends GridWorld {
 				
 				"def errorMsg(str):\n"+
 				"  entity.seenError(str)\n"+
+				"def haveSeenError():\n"+
+				"  return entity.haveSeenError()\n"+
+				"def seenError():\n"+
+				"  entity.seenError()\n"+
 				
 				"def isOverBaggle():\n"+
 				"	return entity.isOverBaggle()\n"+
