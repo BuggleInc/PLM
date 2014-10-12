@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-10-11 00:49+0200\n"
-"PO-Revision-Date: 2014-10-10 22:07+0200\n"
+"POT-Creation-Date: 2014-10-12 20:54+0200\n"
+"PO-Revision-Date: 2014-10-12 20:55+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -176,6 +176,8 @@ msgid ""
 "Note that the point (0,0) is on the top left corner, as it is often the case "
 "in Computer Science."
 msgstr ""
+"L'origine (0, 0) est dans le coin en haut à gauche, comme c'est souvent le "
+"cas en informatique."
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:25
@@ -7250,9 +7252,12 @@ msgstr ""
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
 msgid ""
 "Beware, the first line and column are numbered 0 and not 1, and the point "
-"(0,0)  is on the top left corner. This may seem disturbing, but it is very "
+"(0,0)  is on the top left corner. This may seem surprising, but it is very "
 "often so in Computer Science."
 msgstr ""
+"Attention, la première ligne et la première colonne sont numérotées 0 au "
+"lieu de 1, et l'origine (0, 0) est dans le coin en haut à gauche. Cela peut "
+"sembler étonnant, mais ces choses sont traditionnelles en informatique."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:32
@@ -11277,6 +11282,8 @@ msgid ""
 "Returns the current position of the turtle.  Note that the point (0,0) is on "
 "the top left corner, as it is often the case in Computer Science."
 msgstr ""
+"Renvoie la position courante de la tortue. L'origine (0; 0) est dans le coin "
+"en haut à gauche, comme c'est souvent le cas en informatique."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:27
@@ -16138,171 +16145,6 @@ msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
 
-#~ msgid "Beware, the first line and column are numbered 0 and not 1..."
-#~ msgstr ""
-#~ "Attention, la première ligne et la première colonne sont numérotées 0 et "
-#~ "non 1..."
-
-#~ msgid "Returns the current position of the turtle."
-#~ msgstr "Retourne la position actuelle de la tortue."
-
-#~ msgid ""
-#~ "When you don't want to follow the proposed exercises but draw your own "
-#~ "stuff, the \"you failed\" message really gets annoying.  We should have a "
-#~ "\"Creative mode\" in PLM, where the world is not checked against the "
-#~ "answer.  Also, we should not clean the board automatically in this mode."
-#~ msgstr ""
-#~ "Lorsqu'on préfère faire son propre dessin plutôt que suivre l'exercice "
-#~ "proposer, les messages «vous avez échoués» deviennent vite agaçant. Il "
-#~ "faudrait un mode créatif dans PLM, où le monde ne serait plus comparé à "
-#~ "la solution attendue, et où il ne serait pas remis à zéro automatiquement "
-#~ "entre les exécutions."
-
-#~ msgid ""
-#~ "Other exercises should be added. A whole lot of exercises are available "
-#~ "from http://neoparaiso.com/logo/#sect4."
-#~ msgstr ""
-#~ "D'autres exercices devraient être ajoutés. http://neoparaiso.com/logo/"
-#~ "#sect4 constitue une source d'inspiration quasi inépuisable."
-
-#~ msgid ""
-#~ "Missing: the built-ins hide()/show(), that decide whether the turtle must "
-#~ "be shown."
-#~ msgstr ""
-#~ "Il manque des primitives cache()/montre() pour décider si la tortue doit "
-#~ "être affichée."
-
-#~ msgid "This code is then perfectly equivalent to the following one."
-#~ msgstr "Ce code est parfaitement équivalent à celui-ci :"
-
-#~ msgid ""
-#~ "Other exercises, for example on the Cohen's algorithm, or on the other "
-#~ "ones."
-#~ msgstr ""
-#~ "D'autres exercices, par exemple sur l'algorithme de Cohen ou sur d'autres."
-
-#~ msgid ""
-#~ "If you prefer not to post your successes online, just change the relevant "
-#~ "properties in your configuration file, that is [!configfile] in your case."
-#~ msgstr ""
-#~ "Si vous préférez ne pas poster vos progrès sur internet, changez "
-#~ "simplement la propriété correspondante dans votre fichier de "
-#~ "configuration, qui est [!configfile] dans votre cas."
-
-#~ msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
-#~ msgstr ""
-#~ "Direction.NORD (le nord), Direction.EST (l'est), Direction.SUD (le sud) "
-#~ "et Direction.OUEST (l'ouest)"
-
-#~ msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
-
-#~ msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estSurBiscuit()[!scala]:Boolean[/!]"
-
-#~ msgid "Color.black"
-#~ msgstr "Color.black"
-
-#~ msgid "Color.blue"
-#~ msgstr "Color.blue"
-
-#~ msgid "Color.cyan"
-#~ msgstr "Color.cyan"
-
-#~ msgid "Color.darkGray"
-#~ msgstr "Color.darkGray"
-
-#~ msgid "Color.gray"
-#~ msgstr "Color.gray"
-
-#~ msgid "Color.green"
-#~ msgstr "Color.green"
-
-#~ msgid "Color.lightGray"
-#~ msgstr "Color.lightGray"
-
-#~ msgid "Color.magenta"
-#~ msgstr "Color.magenta"
-
-#~ msgid "Color.orange"
-#~ msgstr "Color.orange"
-
-#~ msgid "Color.pink"
-#~ msgstr "Color.pink"
-
-#~ msgid "Color.red"
-#~ msgstr "Color.red"
-
-#~ msgid "Color.white"
-#~ msgstr "Color.white"
-
-#~ msgid "Color.yellow"
-#~ msgstr "Color.yellow"
-
-#~ msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estVisible()[!scala]:Boolean[/!]"
-
-#~ msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
-
-#~ msgid "forward()[!java];[/!]"
-#~ msgstr "avance()[!java];[/!]"
-
-#~ msgid ""
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]"
-#~ msgstr ""
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]"
-
-#~ msgid "Color.YELLOW"
-#~ msgstr "Color.YELLOW (jaune)"
-
-#~ msgid "Color.RED"
-#~ msgstr "Color.RED (rouge)"
-
-#~ msgid "Color.BLUE"
-#~ msgstr "Color.BLUE (bleu)"
-
-#~ msgid "Color.GREEN"
-#~ msgstr "Color.GREEN (vert)"
-
-#~ msgid ""
-#~ "The scrolling menu <b>Lessoon</b> allows you to choose the lesson you "
-#~ "want to work on."
-#~ msgstr ""
-#~ "Le menu déroulant <b>Lesson</b>, vous permet de choisir la leçon que vous "
-#~ "souhaitez étudier."
-
-#~ msgid ""
-#~ "The scrolling menu <b>Exercise</b> allows you to switch to another "
-#~ "exercise when you want. Some lessons require you to finish an exercise "
-#~ "before starting the previous one."
-#~ msgstr ""
-#~ "Le menu déroulant <b>Exercise</b>, vous permet de changer d'exercice "
-#~ "quand vous le souhaitez. Notez que certaines leçons vous imposent de "
-#~ "finir un exercice avant de pouvoir commencer le suivant."
-
 #~ msgid "Backtracking lesson"
 #~ msgstr "Leçon sur le \"backtracking\""
 
@@ -17006,12 +16848,3 @@ msgstr ""
 #~ "Cela semble être beaucoup de code à écrire comparé aux autres exercices "
 #~ "de la PLM, mais en fin de compte, mon implémentation de HanoiWorld fait "
 #~ "moints de cent lignes, ce qui n'est pas beaucoup."
-
-#~ msgid "Meta lesson"
-#~ msgstr "Meta leçon"
-
-#~ msgid ""
-#~ "The purpose of this lesson is to teach you how to write lessons for PLM."
-#~ msgstr ""
-#~ "Le but de cette leçon est de vous apprendre comment écrire des leçons "
-#~ "pour la PLM."
