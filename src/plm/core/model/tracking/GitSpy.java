@@ -60,7 +60,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				} else {
 					// If no branch can be found remotely, create a new one.
 					System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-					gitUtils.createLocalUserBranch(repoDir, "origin", userBranch);
+					gitUtils.createLocalUserBranch(repoDir, userBranch);
 				}
 			} else {		
 				 gitUtils.openRepo(repoDir);

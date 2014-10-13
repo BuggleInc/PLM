@@ -65,8 +65,6 @@ public class GitUtils {
 	public boolean fetchBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException,  InvalidRemoteException, GitAPIException {		
 		String repoName = "origin";
 		
-		git = Git.open(repoDirectory);	
-		
 		try {
 			StoredConfig cfg = git.getRepository().getConfig();
 			cfg.setString("remote", repoName, "url", repoUrl);
@@ -86,16 +84,12 @@ public class GitUtils {
 				return false;
 			}
 			return false;
-		} finally {
-			git.close();
 		}
 		
 		return true;
 	}
 	
-	public void createLocalUserBranch(File repoDirectory, String repoName, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
-		git = Git.open(repoDirectory);
-				
+	public void createLocalUserBranch(File repoDirectory, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {			
 		// We must create an initial commit before creating a specific branch for the user
 		git.commit().setMessage("Empty initial commit")
 			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
@@ -106,13 +100,11 @@ public class GitUtils {
 	}
 
 	public void checkoutUserBranch(File repoDirectory, String userBranchHash, boolean create) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
-		git = Git.open(repoDirectory);
 		git.checkout().setCreateBranch(create).setName(userBranchHash).setStartPoint("refs/remotes/origin/"+userBranchHash).call();
 	}
 	
 	public void pullExistingBranch(File repoDirectory, String userBranchHash) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
 		// TODO: we should protect this method call from concurrent execution with pushing methods
-		git = Git.open(repoDirectory);
 		try {
 			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
 		} catch (GitAPIException ex) {
@@ -356,5 +348,9 @@ public class GitUtils {
 	
 	public Ref getRepoRef(String branch) throws IOException {
 		return git.getRepository().getRef(branch);
+	}
+	
+	public Git getGit() {
+		return git;
 	}
 }
