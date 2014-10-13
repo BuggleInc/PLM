@@ -37,7 +37,7 @@ public class GitUtilsTest {
 	public GitUtilsTest() {
 		testUser = new User("testUser");
 		localBranchName = testUser.getUserUUIDasString();
-		repoDirectory = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm" + System.getProperty("file.separator") + localBranchName);
+		repoDirectory = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm-test" + System.getProperty("file.separator") + localBranchName);
 		gitUtils = new GitUtils();
 		
 		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
@@ -135,7 +135,7 @@ public class GitUtilsTest {
 		
 		currentBranch = git.getRepository().getBranch();
 		if(!currentBranch.equals("master")) {
-			fail("Should be on the master branch...");
+			fail("Should by default be on the master branch...");
 		}
 		
 		try {
@@ -175,7 +175,7 @@ public class GitUtilsTest {
 		catch (IOException e) {
 			System.err.println("An error occurred while retrieving the current branch's name...");
 			e.printStackTrace();
-			fail("Should not have get to this point...");
+			fail("Should not have gone that far in the execution...");
 		}
 		
 		if(currentBranch.equals(localBranchName)) {
