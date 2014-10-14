@@ -302,7 +302,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	 */
 	private void checkSuccess(Exercise exo) {
 		ExecutionProgress lastResult = exo.lastResult;
-		String ext = "." + Game.getProgrammingLanguage().getExt();
+		String ext = "." + exo.lastResult.language.getExt();
 
 		// if exercise is done correctly
 		File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
