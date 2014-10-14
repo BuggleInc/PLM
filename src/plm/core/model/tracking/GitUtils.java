@@ -69,7 +69,7 @@ public class GitUtils {
 			StoredConfig cfg = git.getRepository().getConfig();
 			cfg.setString("remote", repoName, "url", repoUrl);
 			cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);
-			cfg.save();		
+			cfg.save();
 
 			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
 			git.fetch().call();

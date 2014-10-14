@@ -10,14 +10,12 @@ import java.lang.reflect.Field;
 import java.util.Iterator;
 
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.InvalidRefNameException;
-import org.eclipse.jgit.api.errors.InvalidRemoteException;
-import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.api.errors.RefNotFoundException;
+import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,16 +37,15 @@ public class GitUtilsTest {
 	private Utils utils;
 	
 	public GitUtilsTest() {
+		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		
 		testUser = new User("testUser");
 		localBranchName = testUser.getUserUUIDasString();
 		repoDirectory = new File(System.getProperty("user.home") + System.getProperty("file.separator")
 				+ ".plm-test" + System.getProperty("file.separator") + localBranchName);
-		Game.loadProperties();
 		repoUrl = Game.getProperty("plm.git.server.url");
-		gitUtils = new GitUtils();		
-		
+		gitUtils = new GitUtils();
 		utils = new Utils();
 		
 		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
@@ -131,7 +128,7 @@ public class GitUtilsTest {
 	}
 	
 	@Test
-	public void testCheckoutUserBranchShouldCheckoutBranch() throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {		
+	public void testCheckoutUserBranchShouldCheckoutBranch() throws IOException, GitAPIException {		
 		git.commit().setMessage("Empty initial commit")
 		.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 		.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
@@ -190,23 +187,47 @@ public class GitUtilsTest {
 	}
 	
 	@Test
-	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfExisting() throws InvalidRemoteException, IOException, GitAPIException {
+	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfExisting() throws IOException, GitAPIException {
 		String userBranchHash = "PLM6dd35951d44843079580ea78409560139e7e4503"; // Existing branch
 		boolean successfulFetch = gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
 		assertTrue("Fetching a existing remote branch should be OK...", successfulFetch);
 	}
 	
 	@Test
-	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfNotExisting() throws InvalidRemoteException, IOException, GitAPIException {
+	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfNotExisting() throws IOException, GitAPIException {
 		String userBranchHash = utils.generateRandomString(32);
 		boolean successfulFetch = gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
-		assertFalse("Fetching a existing remote branch should be OK...", successfulFetch);
+		assertFalse("Fetching a non-existing remote branch should NOT be OK...", successfulFetch);
 	}
 	
 	@Test
-	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfNoInternet() {
-		// TODO: check if possible to disable internet connexion
+	public void testPullNonExistingBranchShouldNotCrash() throws IOException, GitAPIException {
+		String userBranchHash = utils.generateRandomString(32);
+		gitUtils.createLocalUserBranch(repoDirectory, userBranchHash);
+		gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
+		gitUtils.pullExistingBranch(repoDirectory, userBranchHash);
 	}
 	
-	
+	@Test
+	public void testPullExistingBranchShouldSynchronizeBranches() throws IOException, GitAPIException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		// FIXME: should look for a better way to initialize repo
+		
+		String userBranchHash = "PLM6dd35951d44843079580ea78409560139e7e4503"; // Existing branch
+		gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
+		gitUtils.pullExistingBranch(repoDirectory, userBranchHash);
+		
+		ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
+		
+		// Should only skip 1 commit but since we're creating a local branch here,
+		// Have an additional commit to skip
+		RevCommit lastCommitLocal = git.log().setSkip(1).setMaxCount(1).call().iterator().next();
+		System.err.println(lastCommitLocal.getShortMessage()); // TODO: remove it
+		RevCommit lastCommitRemote = git.log().add(remote).setMaxCount(1).call().iterator().next();
+		System.err.println(lastCommitRemote.getShortMessage()); // TODO: remove it
+		
+		if( !(lastCommitLocal.equals(lastCommitRemote))) {
+			fail("Local branch and remote one should be synchronized...");
+		}
+		
+	}
 }

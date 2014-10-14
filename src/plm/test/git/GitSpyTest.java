@@ -381,30 +381,4 @@ public class GitSpyTest {
 			}
 		}
 	}
-	
-	@Test
-	public void testUserHasChangedToNewUser() {
-		// TODO: test behavior
-		
-		// Should create own repo
-		// GitUtils should switch to this repo
-		// Should create own branch
-		// Should checkout own branch
-		// Should commit start of the PLM
-	}
-	
-	@Test
-	public void testUserHasChangedToNewUserButExistingRemotely() {
-		// TODO: define behavior
-	}
-	
-	@Test
-	public void testUserHasChangedToExistingUserAndExistingRemotely() {
-		// TODO: define behavior
-	}
-	
-	@Test
-	public void testUserHasChangedToExistingUserButNotExistingRemotely() {
-		// TODO: define behavior
-	}
 }
