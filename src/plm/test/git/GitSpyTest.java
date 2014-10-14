@@ -1,7 +1,6 @@
-package plm.test;
+package plm.test.git;
 
-import static java.nio.file.FileVisitResult.CONTINUE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,14 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
+import java.util.List;
 import java.util.UUID;
 
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -28,6 +22,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.xnap.commons.i18n.I18nFactory;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.Users;
@@ -42,13 +37,12 @@ import plm.core.utils.FileUtils;
 public class GitSpyTest {
 	
 	private GitSpy gitSpy;
-	private final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private Random rnd = new Random();
-	private File repoDirectory;
+	private File repoDir;
 	private String userUUID;
+	private Utils utils;
 	
 	public GitSpyTest() throws IOException, GitAPIException {
-		repoDirectory = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm-test");
+		repoDir = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm-test");
 		Users users = Mockito.mock(Users.class);
 		User user = Mockito.mock(User.class);
 
@@ -58,8 +52,11 @@ public class GitSpyTest {
 		
 		Mockito.when(user.getUserUUIDasString()).thenReturn(userUUID);
 		Mockito.when(users.getCurrentUser()).thenReturn(user);
-		gitSpy = new GitSpy(repoDirectory, users);
-		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
+		gitSpy = new GitSpy(repoDir, users);
+		
+		utils = new Utils();
+		
+		System.out.println("repoDir: "+ repoDir.getAbsolutePath());
 	}
 	
 	@Before 
@@ -69,15 +66,15 @@ public class GitSpyTest {
 	
 	@After
 	public void tearDown() {
-		deleteRepo(repoDirectory);
+		utils.deleteRepo(repoDir);
 	}
 	
 	@Test
 	public void testCreateFilesWithoutPreviouslyCreatedFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
-		String code = generateRandomString(32);
-		String correction = generateRandomString(32);
-		String error = generateRandomString(32);
-		String mission = generateRandomString(32);
+		String code = utils.generateRandomString(32);
+		String correction = utils.generateRandomString(32);
+		String error = utils.generateRandomString(32);
+		String mission = utils.generateRandomString(32);
 		
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
 		lastResult.language = Game.JAVA;
@@ -101,8 +98,9 @@ public class GitSpyTest {
 		suffixes.add(".mission");
 		
 		for(String suffix:suffixes) {
-			if(new File(getFilePath(exo, lastResult, suffix)).exists()) {
-				fail(getFilePath(exo, lastResult, suffix)+" should not exist previously...");
+			String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, suffix);
+			if(new File(fp).exists()) {
+				fail(fp+" should not exist previously...");
 			}
 		}
 		
@@ -112,7 +110,7 @@ public class GitSpyTest {
 		
 		HashMap<String, String> hm = new HashMap<>();
 		for(String suffix:suffixes) {
-			hm.put(suffix, getFileContent(exo, lastResult, suffix));
+			hm.put(suffix, utils.getFileContent(repoDir, userUUID, exo, lastResult, suffix));
 		}
 		
 		if(!hm.get(".code").equals(code)) {
@@ -132,10 +130,10 @@ public class GitSpyTest {
 	
 	@Test
 	public void testCreateFilesWithPreviouslyCreatedFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
-		String code = generateRandomString(32);
-		String correction = generateRandomString(32);
-		String error = generateRandomString(32);
-		String mission = generateRandomString(32);
+		String code = utils.generateRandomString(32);
+		String correction = utils.generateRandomString(32);
+		String error = utils.generateRandomString(32);
+		String mission = utils.generateRandomString(32);
 		
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
 		lastResult.language = Game.JAVA;
@@ -160,16 +158,18 @@ public class GitSpyTest {
 		suffixes.add(".mission");
 		
 		for(String suffix:suffixes) {
-			File file = new File(getFilePath(exo, lastResult, suffix));
+			String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, suffix);
+			File file = new File(fp);
 			FileWriter fw = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(generateRandomString(32));
+			bw.write(utils.generateRandomString(32));
 			bw.close();
 		}
 		
 		for(String suffix:suffixes) {
-			if(! (new File(getFilePath(exo, lastResult, suffix)).exists()) ) {
-				fail(getFilePath(exo, lastResult, suffix)+" should have been created...");
+			String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, suffix);
+			if(! (new File(fp).exists()) ) {
+				fail(fp+" should have been created...");
 			}
 		}
 		
@@ -179,7 +179,7 @@ public class GitSpyTest {
 		
 		HashMap<String, String> hm = new HashMap<>();
 		for(String suffix:suffixes) {
-			hm.put(suffix, getFileContent(exo, lastResult, suffix));
+			hm.put(suffix, utils.getFileContent(repoDir, userUUID, exo, lastResult, suffix));
 		}
 		
 		if(!hm.get(".code").equals(code)) {
@@ -206,16 +206,17 @@ public class GitSpyTest {
 		exo.lastResult = lastResult;
 		Mockito.when(exo.getId()).thenReturn("exoTest");
 		
-		if(new File(getFilePath(exo, lastResult, ".DONE")).exists()) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should not exist previously...");
+		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+		if(new File(fp).exists()) {
+			fail(fp+" should not exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
 		method.setAccessible(true);
 		method.invoke(gitSpy, exo);
 		
-		if(! (new File(getFilePath(exo, lastResult, ".DONE")).exists()) ) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should exist now...");
+		if(! (new File(fp).exists()) ) {
+			fail(fp+" should exist now...");
 		}
 	}
 	
@@ -229,22 +230,23 @@ public class GitSpyTest {
 		exo.lastResult = lastResult;
 		Mockito.when(exo.getId()).thenReturn("exoTest");
 		
-		File file = new File(getFilePath(exo, lastResult, ".DONE"));
+		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+		File file = new File(fp);
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write("");
 		bw.close();
 		
-		if(! (new File(getFilePath(exo, lastResult, ".DONE")).exists()) ) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should exist previously...");
+		if(! (new File(fp).exists()) ) {
+			fail(fp+" should exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
 		method.setAccessible(true);
 		method.invoke(gitSpy, exo);
 		
-		if( !(new File(getFilePath(exo, lastResult, ".DONE")).exists()) ) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should still exist now...");
+		if( !(new File(fp).exists()) ) {
+			fail(fp+" should still exist now...");
 		}
 	}
 	
@@ -258,16 +260,17 @@ public class GitSpyTest {
 		exo.lastResult = lastResult;
 		Mockito.when(exo.getId()).thenReturn("exoTest");
 		
-		if(new File(getFilePath(exo, lastResult, ".DONE")).exists()) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should not exist previously...");
+		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+		if(new File(fp).exists()) {
+			fail(fp+" should not exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
 		method.setAccessible(true);
 		method.invoke(gitSpy, exo);
 		
-		if(new File(getFilePath(exo, lastResult, ".DONE")).exists()) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should not have been created...");
+		if(new File(fp).exists()) {
+			fail(fp+" should not have been created...");
 		}
 	}
 	
@@ -281,72 +284,127 @@ public class GitSpyTest {
 		exo.lastResult = lastResult;
 		Mockito.when(exo.getId()).thenReturn("exoTest");
 		
-		File file = new File(getFilePath(exo, lastResult, ".DONE"));
+		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+		File file = new File(fp);
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write("");
 		bw.close();
 		
-		if(! (new File(getFilePath(exo, lastResult, ".DONE")).exists()) ) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should exist previously...");
+		if(! (new File(fp).exists()) ) {
+			fail(fp+" should exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
 		method.setAccessible(true);
 		method.invoke(gitSpy, exo);
 		
-		if(new File(getFilePath(exo, lastResult, ".DONE")).exists()) {
-			fail(getFilePath(exo, lastResult, ".DONE")+" should have been deleted...");
+		if(new File(fp).exists()) {
+			fail(fp+" should have been deleted...");
 		}
 	}
 	
-	private void deleteRepo(File repoDirectory) {
-		try {
-			Files.walkFileTree(repoDirectory.toPath(), new SimpleFileVisitor<Path>() {
-				 
-			      @Override
-			      public FileVisitResult visitFile(Path file,
-			              BasicFileAttributes attrs) throws IOException {
-			 
-			          Files.delete(file);
-			          return CONTINUE;
-			      }
-			 
-			      @Override
-			      public FileVisitResult postVisitDirectory(Path dir,
-			              IOException exc) throws IOException {
-			 
-			          if (exc == null) {
-			              Files.delete(dir);
-			              return CONTINUE;
-			          } else {
-			              throw exc;
-			          }
-			      }
-			 
-			  });
-		} catch (IOException e) {
-			e.printStackTrace();
+	@Test
+	public void testDeleteFilesWithoutExistingFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Exercise exo = Mockito.mock(Exercise.class);
+		Mockito.when(exo.getId()).thenReturn("exoTest");
+		
+		List<String> suffixes = new ArrayList<String>();
+		suffixes.add(".code");
+		suffixes.add(".error");
+		suffixes.add(".correction");
+		suffixes.add(".mission");
+		suffixes.add(".DONE");
+		
+		for(ProgrammingLanguage pl : Game.programmingLanguages) {
+			String ext = "." + pl.getExt();	
+			for(String suffix:suffixes) {
+				File file = new File(repoDir, exo.getId() + ext + suffix);
+				if(file.exists()) {
+					fail(file.getAbsolutePath() + " should not exist...");
+				}
+			}
+		}
+		
+		Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+		method.setAccessible(true);
+		method.invoke(gitSpy, exo);
+		
+		for(ProgrammingLanguage pl : Game.programmingLanguages) {
+			String ext = "." + pl.getExt();	
+			for(String suffix:suffixes) {
+				File file = new File(repoDir, exo.getId() + ext + suffix);
+				if(file.exists()) {
+					fail(file.getAbsolutePath() + " should still not exist...");
+				}
+			}
 		}
 	}
 	
-	private String generateRandomString(int len) {
-		StringBuffer sb = new StringBuffer();
-		for(int i=0; i<len; i++) {
-			sb.append(AB.charAt(rnd.nextInt(AB.length())));
+	@Test
+	public void testDeleteFilesWithExistingFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
+		Exercise exo = Mockito.mock(Exercise.class);
+		Mockito.when(exo.getId()).thenReturn("exoTest");
+		
+		List<String> suffixes = new ArrayList<String>();
+		suffixes.add(".code");
+		suffixes.add(".error");
+		suffixes.add(".correction");
+		suffixes.add(".mission");
+		suffixes.add(".DONE");
+		
+		for(ProgrammingLanguage pl : Game.programmingLanguages) {
+			for(String suffix:suffixes) {
+				String fp = utils.getFilePath(repoDir, userUUID, exo, pl, suffix);
+				File file = new File(fp);
+				if(file.exists()) {
+					fail(file.getAbsolutePath() + " should not yet exist...");
+				}
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write("");
+				bw.close();
+			}
 		}
-		return sb.toString();
+		
+		Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+		method.setAccessible(true);
+		method.invoke(gitSpy, exo);
+		
+		for(ProgrammingLanguage pl : Game.programmingLanguages) {
+			String ext = "." + pl.getExt();	
+			for(String suffix:suffixes) {
+				File file = new File(repoDir, exo.getId() + ext + suffix);
+				if(file.exists()) {
+					fail(file.getAbsolutePath() + " should have been deleted...");
+				}
+			}
+		}
 	}
 	
-	private String getFileContent(Exercise exo, ExecutionProgress lastResult, String suffix) throws IOException {
-		File file = new File(getFilePath(exo, lastResult, suffix));
-		System.out.println(file.getAbsolutePath().toString());
-		return new String(Files.readAllBytes(file.toPath()));
+	@Test
+	public void testUserHasChangedToNewUser() {
+		// TODO: test behavior
+		
+		// Should create own repo
+		// GitUtils should switch to this repo
+		// Should create own branch
+		// Should checkout own branch
+		// Should commit start of the PLM
 	}
 	
-	private String getFilePath(Exercise exo, ExecutionProgress lastResult, String suffix) {
-		return repoDirectory.getPath() + System.getProperty("file.separator") + 
-				userUUID + System.getProperty("file.separator") + 
-				exo.getId() + "." + lastResult.language.getExt() + suffix;
+	@Test
+	public void testUserHasChangedToNewUserButExistingRemotely() {
+		// TODO: define behavior
+	}
+	
+	@Test
+	public void testUserHasChangedToExistingUserAndExistingRemotely() {
+		// TODO: define behavior
+	}
+	
+	@Test
+	public void testUserHasChangedToExistingUserButNotExistingRemotely() {
+		// TODO: define behavior
 	}
 }

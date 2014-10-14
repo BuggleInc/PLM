@@ -349,8 +349,4 @@ public class GitUtils {
 	public Ref getRepoRef(String branch) throws IOException {
 		return git.getRepository().getRef(branch);
 	}
-	
-	public Git getGit() {
-		return git;
-	}
 }
