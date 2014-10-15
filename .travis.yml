@@ -3,6 +3,8 @@ scala:
   - 2.10.5
 jdk:
   - openjdk7
+env:
+  - TEST_SUITE=unit-tests
+  - TEST_SUITE=integration-tests
 script:
-  - ant unit-tests
-  - ant integration-tests
+  - ant $TEST_SUITE
