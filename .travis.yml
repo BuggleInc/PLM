@@ -1,0 +1,8 @@
+language: scala
+scala:
+  - 2.10.5
+jdk:
+  - openjdk7
+script:
+  - ant unit-tests
+  - ant integration-tests
