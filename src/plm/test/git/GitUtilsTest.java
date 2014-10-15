@@ -1,7 +1,5 @@
 package plm.test.git;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -11,11 +9,8 @@ import java.util.Iterator;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.RefNotFoundException;
-import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Ref;
-import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +28,6 @@ public class GitUtilsTest {
 	private File repoDirectory;
 	private User testUser;
 	private String localBranchName;
-	private String repoUrl;
 	private Utils utils;
 	
 	public GitUtilsTest() {
@@ -44,7 +38,6 @@ public class GitUtilsTest {
 		localBranchName = testUser.getUserUUIDasString();
 		repoDirectory = new File(System.getProperty("user.home") + System.getProperty("file.separator")
 				+ ".plm-test" + System.getProperty("file.separator") + localBranchName);
-		repoUrl = Game.getProperty("plm.git.server.url");
 		gitUtils = new GitUtils();
 		utils = new Utils();
 		
@@ -84,7 +77,7 @@ public class GitUtilsTest {
 		}
 		
 		try {
-			gitUtils.createLocalUserBranch(repoDirectory, localBranchName);
+			gitUtils.createLocalUserBranch(localBranchName);
 		} catch (IOException e) {
 			System.err.println("An error occurred while creating the local branch...");
 			e.printStackTrace();
@@ -114,7 +107,7 @@ public class GitUtilsTest {
 		}
 		
 		try {
-			gitUtils.createLocalUserBranch(repoDirectory, localBranchName);
+			gitUtils.createLocalUserBranch(localBranchName);
 		} catch (IOException e) {
 			System.err.println("An error occurred while creating the local branch...");
 			e.printStackTrace();
@@ -143,13 +136,7 @@ public class GitUtilsTest {
 			fail("Should by default be on the master branch...");
 		}
 		
-		try {
-			gitUtils.checkoutUserBranch(repoDirectory, localBranchName, false);
-		} catch (IOException e) {
-			System.err.println("An error occurred while checking out the local branch...");
-			e.printStackTrace();
-			fail("Should be able to checkout the local branch...");
-		}
+		gitUtils.checkoutUserBranch(localBranchName);
 		
 		currentBranch = git.getRepository().getBranch();
 		if(!currentBranch.equals(localBranchName)) {
@@ -157,8 +144,7 @@ public class GitUtilsTest {
 		}
 	}
 	
-	@Test (expected = RefNotFoundException.class)
-	public void testCheckoutUserBranchShouldNotCreateBranch() throws GitAPIException, IOException {
+	public void testCheckoutUserBranchShouldNotCreateBranch() throws GitAPIException {
 		Iterator<Ref> it;
 		
 		it = git.branchList().call().iterator();
@@ -169,43 +155,30 @@ public class GitUtilsTest {
 			}
 		}
 		
-		gitUtils.checkoutUserBranch(repoDirectory, localBranchName, false);
-		
-		String currentBranch = "";
-		try{
-			currentBranch = git.getRepository().getBranch();
-		}
-		catch (IOException e) {
-			System.err.println("An error occurred while retrieving the current branch's name...");
-			e.printStackTrace();
-			fail("Should not have gone that far in the execution...");
-		}
-		
-		if(currentBranch.equals(localBranchName)) {
+		if(gitUtils.checkoutUserBranch(localBranchName)) {
 			fail("The "+localBranchName+" should not exist...");
 		}
 	}
-	
+	/*
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfExisting() throws IOException, GitAPIException {
 		String userBranchHash = "PLM6dd35951d44843079580ea78409560139e7e4503"; // Existing branch
-		boolean successfulFetch = gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
+		boolean successfulFetch = gitUtils.fetchBranchFromRemoteBranch(repoUrl, userBranchHash);
 		assertTrue("Fetching a existing remote branch should be OK...", successfulFetch);
 	}
 	
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfNotExisting() throws IOException, GitAPIException {
 		String userBranchHash = utils.generateRandomString(32);
-		boolean successfulFetch = gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
+		boolean successfulFetch = gitUtils.fetchBranchFromRemoteBranch(repoUrl, userBranchHash);
 		assertFalse("Fetching a non-existing remote branch should NOT be OK...", successfulFetch);
 	}
 	
 	@Test
 	public void testPullNonExistingBranchShouldNotCrash() throws IOException, GitAPIException {
 		String userBranchHash = utils.generateRandomString(32);
-		gitUtils.createLocalUserBranch(repoDirectory, userBranchHash);
-		gitUtils.fetchBranchFromRemoteBranch(repoDirectory, repoUrl, userBranchHash);
-		gitUtils.pullExistingBranch(repoDirectory, userBranchHash);
+		gitUtils.createLocalUserBranch(userBranchHash);
+		gitUtils.fetchBranchFromRemoteBranch(repoUrl, userBranchHash);
 	}
 	
 	@Test
@@ -230,4 +203,5 @@ public class GitUtilsTest {
 		}
 		
 	}
+	*/
 }

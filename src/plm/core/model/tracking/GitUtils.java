@@ -62,17 +62,24 @@ public class GitUtils {
 		git = Git.init().setDirectory(repoDirectory).call();
 	}
 		
-	public boolean fetchBranchFromRemoteBranch(File repoDirectory, String repoUrl, String userBranchHash) throws IOException,  InvalidRemoteException, GitAPIException {		
+	public void setUpRepoConfig(String repoUrl, String userBranchHash) {
 		String repoName = "origin";
 		
+		StoredConfig cfg = git.getRepository().getConfig();
+		cfg.setString("remote", repoName, "url", repoUrl);
+		cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);
 		try {
-			StoredConfig cfg = git.getRepository().getConfig();
-			cfg.setString("remote", repoName, "url", repoUrl);
-			cfg.setString("remote", repoName, "fetch", "+refs/heads/"+userBranchHash+":refs/remotes/"+repoName+"/"+userBranchHash);
 			cfg.save();
-
-			System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
-			git.fetch().call();
+		} catch (IOException e) {
+			System.out.println(Game.i18n.tr("An error occurred while configuring the repository..."));
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean fetchBranchFromRemoteBranch(String userBranchHash) throws InvalidRemoteException, GitAPIException {		
+		System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
+		try {
+			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
 		} catch (GitAPIException ex) {
 			// FIXME: should display the stacktrace is an error occurs
 			/*
@@ -85,11 +92,10 @@ public class GitUtils {
 			}
 			return false;
 		}
-		
 		return true;
 	}
 	
-	public void createLocalUserBranch(File repoDirectory, String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {			
+	public void createLocalUserBranch(String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {			
 		// We must create an initial commit before creating a specific branch for the user
 		git.commit().setMessage("Empty initial commit")
 			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
@@ -98,20 +104,20 @@ public class GitUtils {
 					
 		git.checkout().setCreateBranch(true).setName(userBranchHash).call();
 	}
-
-	public void checkoutUserBranch(File repoDirectory, String userBranchHash, boolean create) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {
-		git.checkout().setCreateBranch(create).setName(userBranchHash).setStartPoint("refs/remotes/origin/"+userBranchHash).call();
+	
+	public boolean checkoutUserBranch(String userBranchHash) {
+		boolean success = true;
+		try {
+			git.checkout().setName(userBranchHash).call();
+		} catch (GitAPIException e) {
+			System.out.println(Game.i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
 	}
 	
-	public void pullExistingBranch(File repoDirectory, String userBranchHash) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
-		// TODO: we should protect this method call from concurrent execution with pushing methods
-		try {
-			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
-		} catch (GitAPIException ex) {
-			System.err.println(Game.i18n.tr("Can't retrieve data stored on server."));
-			return;
-		}
-		
+	public void mergeRemoteIntoLocalBranch(String userBranchHash) throws Exception {
 		try {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 			
@@ -219,14 +225,16 @@ public class GitUtils {
 		}
 		else {
 			// An error occurred while pushing
-			// Try to synchronize with the remote branch before pushing again
 			System.out.println(Game.i18n.tr("Fetching the server's last version..."));
 			try {
-				pullExistingBranch(git.getRepository().getDirectory(), userBranchHash);
+				// Try to synchronize with the remote branch before pushing again
+				if (fetchBranchFromRemoteBranch(userBranchHash)) {
+					mergeRemoteIntoLocalBranch(userBranchHash);
+				}
 				if(!pushChanges(userBranchHash, progress, cp)) {
 					System.out.println(Game.i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
 				}
-			} catch (IOException | GitAPIException e) {
+			} catch (Exception e) {
 				System.out.println(Game.i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
 				e.printStackTrace();
 			}

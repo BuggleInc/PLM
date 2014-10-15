@@ -45,33 +45,35 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	 */
 	@Override
 	public void userHasChanged(User newUser) {
+		String userUUID = newUser.getUserUUIDasString();
+		String userBranch = "PLM"+GitUtils.sha1(userUUID);
+		
 		try {
-			String userUUID = newUser.getUserUUIDasString();
-			String userBranch = "PLM"+GitUtils.sha1(userUUID);
-
 			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
 			if (!repoDir.exists()) {
 				gitUtils.initLocalRepository(repoDir);
-				// try to get the branch as stored remotely
-				if (gitUtils.fetchBranchFromRemoteBranch(repoDir, repoUrl, userBranch)) {
-					gitUtils.checkoutUserBranch(repoDir, userBranch, true);
-					System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
-				} else {
-					// If no branch can be found remotely, create a new one.
-					System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-					gitUtils.createLocalUserBranch(repoDir, userBranch);
-				}
-			} else {		
-				 gitUtils.openRepo(repoDir);
-				 if (gitUtils.getRepoRef(userBranch) != null) {
-					 gitUtils.checkoutUserBranch(repoDir, userBranch, false);
-					 gitUtils.pullExistingBranch(repoDir, userBranch);
-				 } else { // FIXME: this case should never happen, therefore it should be reported to the end-user
-					 System.out.println("WARNING: trying to checkout a non existing git user branch during user switching.");
-				 }
+				gitUtils.setUpRepoConfig(repoUrl, userBranch);
 			}
+			
 			gitUtils.openRepo(repoDir);
+			if (gitUtils.getRepoRef(userBranch) != null) {
+				gitUtils.checkoutUserBranch(userBranch);
+			}
+			else {
+				gitUtils.createLocalUserBranch(userBranch);
+			}
+			
+			// try to get the branch as stored remotely
+			if (gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
+				gitUtils.mergeRemoteIntoLocalBranch(userBranch);
+				System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+			} 
+			else {
+				// If no branch can be found remotely, create a new one.
+				//System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+				System.out.println(Game.i18n.tr("Couldn't retrieve a corresponding session from the servers..."));
+			}
 
 			// Log into the git that the PLM just started
 			gitUtils.commit(writePLMStartedCommitMessage());
