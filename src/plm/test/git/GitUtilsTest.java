@@ -156,14 +156,7 @@ public class GitUtilsTest {
 		remoteGitUtils.createLocalUserBranch(userBranch);
 		Git remoteGit = utils.getGit(remoteGitUtils);
 	
-		RevCommit[] commits = new RevCommit[100];
-		
-		for(int i=0; i<100; i++) {
-			commits[i] = remoteGit.commit().setMessage(utils.generateRandomString(32))
-			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
-			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
-			.call();
-		}
+		generateCommits(remoteGit);
 		
 		remoteGitUtils.checkoutUserBranch("master");
 		
@@ -173,7 +166,7 @@ public class GitUtilsTest {
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 		
 		remoteGitUtils.dispose();
-		utils.deleteRepo(remoteRepoDirectory);
+		utils.deleteRepo(remotePlmTestDir);
 		
 		if(!success) {
 			fail("Should have been able to fetch the remote branch");
@@ -195,10 +188,111 @@ public class GitUtilsTest {
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 		
 		remoteGitUtils.dispose();
-		utils.deleteRepo(remoteRepoDirectory);
+		utils.deleteRepo(remotePlmTestDir);
 		
 		if(success) {
 			fail("Should not have been able to fetch the remote branch since it doesn't exist...");
+		}
+	}
+	
+	@Test
+	public void testMergeRemoteIntoLocalBranchShouldSynchronizeBranches() throws GitAPIException, IOException {
+		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		GitUtils remoteGitUtils = new GitUtils();
+		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
+		remoteGitUtils.createInitialCommit();
+		remoteGitUtils.createLocalUserBranch(userBranch);
+		Git remoteGit = utils.getGit(remoteGitUtils);
+		
+		generateCommits(remoteGit);
+		RevCommit remoteCommit = remoteGit.log().call().iterator().next();
+		
+		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
+		
+		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
+		gitUtils.createLocalUserBranch(userBranch);
+		if(!gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
+			fail("Should have been able to fetch remote branch...");
+		}
+		try {
+			gitUtils.mergeRemoteIntoLocalBranch(userBranch);
+		} catch (Exception e) {
+			System.err.println("An error occurred while merging the branches...");
+			e.printStackTrace();
+			fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
+		}
+		
+		RevCommit commit = git.log().call().iterator().next();
+		
+		remoteGitUtils.dispose();
+		utils.deleteRepo(remotePlmTestDir);
+		
+		assertEquals(commit.getId().getName(),
+				remoteCommit.getId().getName());
+	}
+	
+	@Test
+	public void testMergeRemoteIntoLocalBranchShouldHandleConflicts() throws GitAPIException, IOException, InterruptedException {
+		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		GitUtils remoteGitUtils = new GitUtils();
+		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
+		remoteGitUtils.createInitialCommit();
+		remoteGitUtils.createLocalUserBranch(userBranch);
+		Git remoteGit = utils.getGit(remoteGitUtils);
+		
+		String droppedContent1 = utils.generateRandomString(32);
+		String expectedContent1 = utils.generateRandomString(32);
+		utils.generateFile(remoteRepoDirectory, "test1", droppedContent1);
+		remoteGit.add().addFilepattern(".").call();
+		remoteGit.commit().setMessage("Add test1").call();
+		Thread.sleep(1000);
+		utils.generateFile(localRepoDirectory, "test1", expectedContent1);
+		git.add().addFilepattern(".").call();
+		git.commit().setMessage("Add test1").call();
+		
+		String droppedContent2 = utils.generateRandomString(32);
+		String expectedContent2 = utils.generateRandomString(32);
+		utils.generateFile(localRepoDirectory, "test2", droppedContent2);
+		git.add().addFilepattern(".").call();
+		git.commit().setMessage("Add test1").call();
+		Thread.sleep(1000);
+		utils.generateFile(remoteRepoDirectory, "test2", expectedContent2);
+		remoteGit.add().addFilepattern(".").call();
+		remoteGit.commit().setMessage("Add test2").call();
+		
+		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
+				
+		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
+		gitUtils.createLocalUserBranch(userBranch);
+		if(!gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
+			fail("Should have been able to fetch remote branch...");
+		}
+		try {
+			gitUtils.mergeRemoteIntoLocalBranch(userBranch);
+		} catch (Exception e) {
+			System.err.println("An error occurred while merging the branches...");
+			e.printStackTrace();
+			fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
+		}
+		
+		String path1 = localRepoDirectory + System.getProperty("file.separator") + "test1";
+		String path2 = localRepoDirectory + System.getProperty("file.separator") + "test2";
+		assertEquals(expectedContent1, utils.getFileContent(path1));
+		assertEquals(expectedContent2, utils.getFileContent(path2));
+	}
+	
+	private void generateCommits(Git git) {
+		for(int i=0; i<100; i++) {
+			try {
+				git.commit().setMessage(utils.generateRandomString(32))
+				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
+				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+				.call();
+			} catch (GitAPIException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

@@ -2,7 +2,9 @@ package plm.test.git;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.file.FileVisitResult;
@@ -62,10 +64,27 @@ public class Utils {
 		return sb.toString();
 	}
 	
-	public String getFileContent(File repoDir, String userUUID, Exercise exo, ExecutionProgress lastResult, String suffix) throws IOException {
-		File file = new File(getFilePath(repoDir, userUUID, exo, lastResult, suffix));
-		System.out.println(file.getAbsolutePath().toString());
+	public void generateFile(File repoDir, String name, String content) {
+		File file = new File(repoDir.getAbsolutePath() + System.getProperty("file.separator") + name);
+		FileWriter fw;
+		try {
+			fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public String getFileContent(String path) throws IOException {
+		File file = new File(path);
 		return new String(Files.readAllBytes(file.toPath()));
+	}
+	
+	public String getFileContent(File repoDir, String userUUID, Exercise exo, ExecutionProgress lastResult, String suffix) throws IOException {
+		return getFileContent(getFilePath(repoDir, userUUID, exo, lastResult, suffix));
 	}
 	
 	public String getFilePath(File repoDir, String userUUID, Exercise exo, ProgrammingLanguage pl, String suffix) {
