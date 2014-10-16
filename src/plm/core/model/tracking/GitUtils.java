@@ -185,15 +185,21 @@ public class GitUtils {
 				for (RemoteRefUpdate ru: pr.getRemoteUpdates()) {
 					if (ru.getMessage() != null) {
 						success = false;
+						// FIXME: display the stacktrace if debug mode is enabled without instancing Game
+						/*
 						if(Game.getInstance().isDebugEnabled()) {
 							System.err.println("Pushed to "+pr.getURI()+". Message: "+ru.getMessage());
 						}
+						*/
 					}
 					if(ru.getStatus()!=RemoteRefUpdate.Status.OK && ru.getStatus()!=RemoteRefUpdate.Status.UP_TO_DATE) {
 						success = false;
+						// FIXME: display the stacktrace if debug mode is enabled without instancing Game
+						/*
 						if(Game.getInstance().isDebugEnabled()) {
 							System.err.println("Pushed to "+pr.getURI()+". Status: "+ru.getStatus().toString());
 						}
+						*/
 					}
 				}
 			}

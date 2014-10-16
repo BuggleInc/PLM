@@ -8,7 +8,9 @@ import java.util.Iterator;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.NullProgressMonitor;
 import org.eclipse.jgit.lib.PersonIdent;
+import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.After;
@@ -241,25 +243,11 @@ public class GitUtilsTest {
 		remoteGitUtils.createLocalUserBranch(userBranch);
 		Git remoteGit = utils.getGit(remoteGitUtils);
 		
-		String droppedContent1 = utils.generateRandomString(32);
 		String expectedContent1 = utils.generateRandomString(32);
-		utils.generateFile(remoteRepoDirectory, "test1", droppedContent1);
-		remoteGit.add().addFilepattern(".").call();
-		remoteGit.commit().setMessage("Add test1").call();
-		Thread.sleep(1000);
-		utils.generateFile(localRepoDirectory, "test1", expectedContent1);
-		git.add().addFilepattern(".").call();
-		git.commit().setMessage("Add test1").call();
+		generateGitConflict(remoteGit, git, remoteRepoDirectory, localRepoDirectory, "test1", utils.generateRandomString(32), expectedContent1);
 		
-		String droppedContent2 = utils.generateRandomString(32);
 		String expectedContent2 = utils.generateRandomString(32);
-		utils.generateFile(localRepoDirectory, "test2", droppedContent2);
-		git.add().addFilepattern(".").call();
-		git.commit().setMessage("Add test1").call();
-		Thread.sleep(1000);
-		utils.generateFile(remoteRepoDirectory, "test2", expectedContent2);
-		remoteGit.add().addFilepattern(".").call();
-		remoteGit.commit().setMessage("Add test2").call();
+		generateGitConflict(git, remoteGit, localRepoDirectory, remoteRepoDirectory, "test2", utils.generateRandomString(32), expectedContent2);
 		
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
 				
@@ -282,6 +270,62 @@ public class GitUtilsTest {
 		assertEquals(expectedContent2, utils.getFileContent(path2));
 	}
 	
+	@Test
+	public void testPushChangesShouldReturnTrueIfNoConflicts() throws GitAPIException, IOException, InterruptedException {
+		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		GitUtils remoteGitUtils = new GitUtils();
+		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
+		remoteGitUtils.createInitialCommit();
+		Git remoteGit = utils.getGit(remoteGitUtils);
+		
+		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
+		
+		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
+		gitUtils.createLocalUserBranch(userBranch);
+		
+		generateCommits(git);
+		
+		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
+		boolean success = gitUtils.pushChanges(userBranch, progress, null);
+		
+		remoteGitUtils.dispose();
+		utils.deleteRepo(remotePlmTestDir);
+		
+		assertTrue(success);
+	}
+	
+	@Test
+	public void testPushChangesShouldReturnFalseIfConflictsDetected() throws GitAPIException, IOException, InterruptedException {
+		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		GitUtils remoteGitUtils = new GitUtils();
+		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
+		remoteGitUtils.createInitialCommit();
+		remoteGitUtils.createLocalUserBranch(userBranch);
+		Git remoteGit = utils.getGit(remoteGitUtils);
+		
+		String expectedContent1 = utils.generateRandomString(32);
+		generateGitConflict(remoteGit, git, remoteRepoDirectory, localRepoDirectory, "test1", utils.generateRandomString(32), expectedContent1);
+		
+		String expectedContent2 = utils.generateRandomString(32);
+		generateGitConflict(git, remoteGit, localRepoDirectory, remoteRepoDirectory, "test2", utils.generateRandomString(32), expectedContent2);
+		
+		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
+		
+		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
+		gitUtils.createLocalUserBranch(userBranch);
+		
+		generateCommits(git);
+		
+		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
+		boolean success = gitUtils.pushChanges(userBranch, progress, null);
+		
+		remoteGitUtils.dispose();
+		utils.deleteRepo(remotePlmTestDir);
+		
+		assertFalse(success);
+	}
+	
 	private void generateCommits(Git git) {
 		for(int i=0; i<100; i++) {
 			try {
@@ -290,9 +334,18 @@ public class GitUtilsTest {
 				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
 				.call();
 			} catch (GitAPIException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private void generateGitConflict(Git git1, Git git2, File dir1, File dir2, String name, String droppedContent, String expectedContent) throws GitAPIException, InterruptedException {
+		utils.generateFile(dir1, name, droppedContent);
+		git1.add().addFilepattern(".").call();
+		git1.commit().setMessage("Add "+name).call();
+		Thread.sleep(1000);
+		utils.generateFile(dir2, name, expectedContent);
+		git2.add().addFilepattern(".").call();
+		git2.commit().setMessage("Add "+name).call();
 	}
 }
