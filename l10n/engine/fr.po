@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-08 23:35+0200\n"
-"PO-Revision-Date: 2014-09-04 00:59+0200\n"
+"PO-Revision-Date: 2014-10-16 23:15+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1931,7 +1931,7 @@ msgstr "Le monde ne peut être réinitialisé pour l'instant"
 
 #: src/plm/core/ui/action/RevertExercise.java:25
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/plm/core/ui/action/RevertExercise.java:28
 msgid ""
@@ -1941,7 +1941,7 @@ msgstr ""
 
 #: src/plm/core/ui/action/RevertExercise.java:29
 msgid "Warning"
-msgstr ""
+msgstr "Attention"
 
 #: src/plm/core/ui/action/RevertExercise.java:33
 msgid "Revert canceled on user request -- your work was preserved."
@@ -2179,29 +2179,27 @@ msgstr "OUEST"
 #: src/plm/universe/bat/BatEntity.java:38
 #, java-format
 msgid "Exception {0}: {1}"
-msgstr ""
+msgstr "Exception {0} : {1}"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:156
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
 #: src/plm/universe/turtles/Turtle.java:216
-#, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
 msgstr ""
-"Désolé Dave, je ne peux pas pouvoir te laisser utiliser droite() dans cet "
-"exercice. Utilise plutôt gauche()."
+"Désolé Dave, je ne peux pas pouvoir te laisser utiliser Left() avec une "
+"majuscule. Utilise plutôt left() ou gauche()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:159
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
 #: src/plm/universe/turtles/Turtle.java:219
-#, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
 "instead."
 msgstr ""
-"Désolé Dave, je ne peux pas pouvoir te laisser utiliser droite() dans cet "
-"exercice. Utilise plutôt gauche()."
+"Désolé Dave, je ne peux pas pouvoir te laisser utiliser Right() avec une "
+"majuscule. Utilise plutôt right() ou droite()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:179
 #, java-format
@@ -2399,9 +2397,9 @@ msgid "  In ({0},{1})"
 msgstr "  En ({0},{1})"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:563
-#, fuzzy, java-format
+#, java-format
 msgid "  There is {0} entities where {1} were expected."
-msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
+msgstr "  Il y a {0} formes là où {1} formes étaient attendues"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:567
 #, java-format
@@ -2614,9 +2612,8 @@ msgid "I dont see the difference (please report this bug)."
 msgstr "Je ne vois pas de différence (merci de rapporter cette anomalie)."
 
 #: src/plm/universe/turtles/Line.java:120
-#, fuzzy
 msgid "That's not a line (please report this bug)."
-msgstr "Je ne vois pas de différence (merci de rapporter cette anomalie)."
+msgstr "Ce n'est pas une ligne (merci de rapporter cette anomalie)."
 
 #: src/plm/universe/turtles/Turtle.java:401
 #, java-format
