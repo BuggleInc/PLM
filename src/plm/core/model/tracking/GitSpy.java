@@ -54,6 +54,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			if (!repoDir.exists()) {
 				gitUtils.initLocalRepository(repoDir);
 				gitUtils.setUpRepoConfig(repoUrl, userBranch);
+				// We must create an initial commit before creating a specific branch for the user
+				gitUtils.createInitialCommit();
 			}
 			
 			gitUtils.openRepo(repoDir);

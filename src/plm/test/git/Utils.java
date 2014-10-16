@@ -4,6 +4,7 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,9 +12,12 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Random;
 
+import org.eclipse.jgit.api.Git;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
+import plm.core.model.tracking.GitUtils;
 
 public class Utils {
 	
@@ -72,5 +76,21 @@ public class Utils {
 	
 	public String getFilePath(File repoDir, String userUUID, Exercise exo, ExecutionProgress lastResult, String suffix) {
 		return getFilePath(repoDir, userUUID, exo, lastResult.language, suffix);
+	}
+	
+	public Git getGit(GitUtils gitUtils) {
+		Field f = null;
+		try {
+			f = gitUtils.getClass().getDeclaredField("git");
+			f.setAccessible(true);
+			return (Git) f.get(gitUtils);
+		} catch (NoSuchFieldException | SecurityException e) {
+			System.err.println("An error occurred while retrieving gitUtils' git field...");
+			e.printStackTrace();
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			System.err.println("An error occurred while retrieving gitUtils' git field's value...");
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

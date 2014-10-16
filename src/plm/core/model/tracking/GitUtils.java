@@ -95,13 +95,14 @@ public class GitUtils {
 		return true;
 	}
 	
-	public void createLocalUserBranch(String userBranchHash) throws IOException, RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {			
-		// We must create an initial commit before creating a specific branch for the user
+	public void createInitialCommit() throws NoHeadException, NoMessageException, UnmergedPathsException, ConcurrentRefUpdateException, WrongRepositoryStateException, GitAPIException {
 		git.commit().setMessage("Empty initial commit")
 			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
 			.call();
-					
+	}
+	
+	public void createLocalUserBranch(String userBranchHash) throws RefAlreadyExistsException, RefNotFoundException, InvalidRefNameException, CheckoutConflictException, GitAPIException {						
 		git.checkout().setCreateBranch(true).setName(userBranchHash).call();
 	}
 	
@@ -111,7 +112,8 @@ public class GitUtils {
 			git.checkout().setName(userBranchHash).call();
 		} catch (GitAPIException e) {
 			System.out.println(Game.i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
-			e.printStackTrace();
+			// FIXME: display the stacktrace if debug mode is enabled
+			//e.printStackTrace();
 			success = false;
 		}
 		return success;
