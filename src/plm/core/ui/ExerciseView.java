@@ -165,6 +165,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		}
 		// To refresh the controlPane in any case ( else the SortingWorldPanel is not refreshed )
 		controlPane.removeAll();
+		buttonPanel.dispose();
 		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 		controlPane.add(buttonPanel, "grow");
 		
@@ -177,6 +178,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 	@Override
 	public void selectedEntityHasChanged() { 
 		controlPane.removeAll();
+		buttonPanel.dispose();
 		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 		controlPane.add(buttonPanel, "grow");
 	}
