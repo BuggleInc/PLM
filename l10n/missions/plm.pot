@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-11 00:49+0200\n"
+"POT-Creation-Date: 2014-10-17 18:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3189,10 +3189,10 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10 src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:5 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8
+#: src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10 src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:7 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:10 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site "
-"http://javabat.com/"
+"http://codingbat.com/"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -5254,7 +5254,7 @@ msgstr ""
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
 msgid ""
 "Beware, the first line and column are numbered 0 and not 1, and the point "
-"(0,0)  is on the top left corner. This may seem disturbing, but it is very "
+"(0,0)  is on the top left corner. This may seem surprising, but it is very "
 "often so in Computer Science."
 msgstr ""
 
@@ -10721,6 +10721,13 @@ msgid ""
 "remainders, so 17 % 10 is 7."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10
+msgid ""
+"This exercise was converted to PLM from the excellent exercising site "
+"http://javabat.com/"
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
@@ -11065,7 +11072,7 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/Main.html:4
 msgid ""
 "A very good introduction to this type is available here: "
-"http://javabat.com/doc/ifboolean.html."
+"http://codingbat.com/doc/java-if-boolean-logic.html"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -11213,14 +11220,14 @@ msgstr ""
 #: src/lessons/bat/string1/Main.html:4
 msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
-"operations, such as getting the length of the string, or a substring of it.."
+"operations, such as getting the length of the string, or a substring of it."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
 msgid ""
 "A very good introduction to this type is available here: "
-"http://javabat.com/doc/string.html."
+"http://codingbat.com/doc/java-string-introduction.html"
 msgstr ""
 
 #. type: Content of: <h3>

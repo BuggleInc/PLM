@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-11 00:49+0200\n"
+"POT-Creation-Date: 2014-10-17 18:06+0200\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4662,7 +4662,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/IcyHot.html:6
 #: src/lessons/welcome/bat/bool1/In1020.html:6
 #: src/lessons/welcome/bat/bool1/In3050.html:6
-#: src/lessons/welcome/bat/bool1/LastDigit.html:10
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:7
 #: src/lessons/welcome/bat/bool1/Main.html:12
 #: src/lessons/welcome/bat/bool1/Makes10.html:6
@@ -4685,18 +4684,18 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/InOrder.html:9
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:9
 #: src/lessons/welcome/bat/bool2/LessBy10.html:6
-#: src/lessons/welcome/bat/bool2/Main.html:5
+#: src/lessons/welcome/bat/bool2/Main.html:7
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:10
 #: src/lessons/welcome/bat/bool2/NearTen.html:9
 #: src/lessons/welcome/bat/bool2/RedTicket.html:10
-#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
 #: src/lessons/welcome/bat/bool2/SortaSum.html:8
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:11
 #: src/lessons/welcome/bat/bool2/TeaParty.html:12
 #: src/lessons/welcome/bat/bool2/TeenSum.html:9
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:6
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:9
-#: src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5
+#: src/lessons/bat/string1/Main.html:10
+#: src/lessons/bat/string1/AltPairs.html:5
 #: src/lessons/bat/string1/FrontTimes.html:8
 #: src/lessons/bat/string1/Last2.html:9
 #: src/lessons/bat/string1/StringBits.html:5
@@ -4705,9 +4704,13 @@ msgstr ""
 #: src/lessons/bat/string1/StringTimes.html:5
 #: src/lessons/bat/string1/StringX.html:7
 #: src/lessons/bat/string1/StringYak.html:8
+#, fuzzy
+#| msgid ""
+#| "This exercise was converted to PLM from the excellent exercising site "
+#| "http://javabat.com/"
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
-"javabat.com/"
+"codingbat.com/"
 msgstr ""
 "Questo esercizio è stato convertito per PLM dall'eccellente sito di esercizi "
 "http://javabat.com/"
@@ -7876,7 +7879,7 @@ msgstr ""
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
 msgid ""
 "Beware, the first line and column are numbered 0 and not 1, and the point "
-"(0,0)  is on the top left corner. This may seem disturbing, but it is very "
+"(0,0)  is on the top left corner. This may seem surprising, but it is very "
 "often so in Computer Science."
 msgstr ""
 
@@ -13672,6 +13675,16 @@ msgstr ""
 "cifra in comune come 27 e 57. Nota che l'operatore % \"modulo\" calcola i "
 "resti, quindi 17 % 10 è 7."
 
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool1/LastDigit.html:10
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
+msgid ""
+"This exercise was converted to PLM from the excellent exercising site http://"
+"javabat.com/"
+msgstr ""
+"Questo esercizio è stato convertito per PLM dall'eccellente sito di esercizi "
+"http://javabat.com/"
+
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
@@ -14102,9 +14115,13 @@ msgstr "Ancora più divertimento booleano"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/Main.html:4
+#, fuzzy
+#| msgid ""
+#| "A very good introduction to this type is available here: http://javabat."
+#| "com/doc/ifboolean.html."
 msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/ifboolean.html."
+"A very good introduction to this type is available here: http://codingbat."
+"com/doc/java-if-boolean-logic.html"
 msgstr ""
 "Una buona introduzione per questo tipo di dato è disponibile quì: http://"
 "javabat.com/doc/ifboolean.html."
@@ -14294,7 +14311,7 @@ msgstr ""
 #: src/lessons/bat/string1/Main.html:4
 msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
-"operations, such as getting the length of the string, or a substring of it.."
+"operations, such as getting the length of the string, or a substring of it."
 msgstr ""
 
 #. type: Content of: <p>
@@ -14304,8 +14321,8 @@ msgstr ""
 #| "A very good introduction to this type is available here: http://javabat."
 #| "com/doc/ifboolean.html."
 msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/string.html."
+"A very good introduction to this type is available here: http://codingbat."
+"com/doc/java-string-introduction.html"
 msgstr ""
 "Una buona introduzione per questo tipo di dato è disponibile quì: http://"
 "javabat.com/doc/ifboolean.html."
