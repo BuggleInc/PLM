@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-08 23:35+0200\n"
-"PO-Revision-Date: 2014-10-16 23:15+0200\n"
+"PO-Revision-Date: 2014-10-19 19:39+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -445,6 +445,8 @@ msgid ""
 "Your entity failed to start. Your constructor seems to be broken, but I have "
 "no clue."
 msgstr ""
+"Votre entité n'a pas démarré. Votre constructeur semble cassé, mais "
+"je ne sais pas du tout pourquoi."
 
 #: src/plm/core/lang/JVMCompiledLang.java:83
 #: src/plm/core/lang/LangLightbot.java:39
@@ -501,13 +503,13 @@ msgstr ""
 "Utilisez les touches TAB et majuscule-TAB pour nettoyer votre indentation.\n"
 
 #: src/plm/core/lang/LangPython.java:66
-#, fuzzy
 msgid ""
 "You interrupted the execution, did you fall into an infinite loop ?\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
 msgstr ""
-"Vous avez interrompu l'exécution.\n"
-"Votre programme doit s'arrêter de lui-même pour réussir l'exercice.\n"
+"Vous avez interrompu l'exécution. Seriez-vous tombé dans une \n"
+"boucle infinie ? Votre programme doit s'arrêter de lui-même pour \n"
+"réussir l'exercice.\n"
 
 #: src/plm/core/lang/LangPython.java:72
 msgid ""
@@ -723,9 +725,8 @@ msgid "The lesson "
 msgstr "Sélectionner une leçon"
 
 #: src/plm/core/model/Game.java:379
-#, fuzzy
 msgid "Broken lesson"
-msgstr "Charger une leçon"
+msgstr "Leçon cassée"
 
 #: src/plm/core/model/Game.java:504
 #, java-format
@@ -828,9 +829,8 @@ msgid "Switched to user: {0}"
 msgstr "L''utilisateur est maintenant {0}"
 
 #: src/plm/core/model/Users.java:175
-#, fuzzy
 msgid "A new PLM user has been created for you!"
-msgstr "Un nouvel utilisateur a été créé pour vous !"
+msgstr "Un nouvel utilisateur PLM a été créé pour vous !"
 
 #: src/plm/core/model/lesson/Exercise.java:78
 #, java-format
@@ -919,9 +919,10 @@ msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr "Le monde {0} est cassé ({1}). Recalcule tous les mondes solutions."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:410
-#, fuzzy, java-format
+#, java-format
 msgid "Cache file {0} is missing. Recompute all answer worlds."
-msgstr "Le monde {0} est cassé ({1}). Recalcule tous les mondes solutions."
+msgstr ""
+"Le fichier de cache {0} est manquant. Recalcule tous les mondes solutions."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:414
 #, java-format
@@ -1050,25 +1051,23 @@ msgstr ""
 
 #: src/plm/core/model/tracking/GitSpy.java:139
 msgid "Pushing to the remote repository before exiting"
-msgstr ""
+msgstr "Envoi de vos changements sur le serveur avant de quitter."
 
 #: src/plm/core/model/tracking/GitUtils.java:74
 msgid "Retrieving your session from the servers..."
-msgstr ""
+msgstr "Récupération de votre session depuis le serveur..."
 
 #: src/plm/core/model/tracking/GitUtils.java:117
 msgid "Can't retrieve data stored on server."
-msgstr ""
+msgstr "Impossible de récupérer les données sauvegardées sur le serveur."
 
 #: src/plm/core/model/tracking/GitUtils.java:125
-#, fuzzy
 msgid "last session data successfully retrieved"
-msgstr "L''utilisateur {0} a été supprimé avec succès"
+msgstr "Les données de la session précédente ont été récupérées."
 
 #: src/plm/core/model/tracking/GitUtils.java:128
-#, fuzzy
 msgid "last session data successfully merged"
-msgstr "L''utilisateur {0} a été supprimé avec succès"
+msgstr "Les données de la session précédente ont été fusionnées avec succès."
 
 #: src/plm/core/model/tracking/GitUtils.java:131
 msgid ""
@@ -1387,36 +1386,34 @@ msgid "Congrats"
 msgstr "Bravo"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:46
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>"
 msgstr ""
-"Félicitations, vous avez réussi cet exercice.\n"
-"{0} tests passés."
+"<html>Félicitations, vous avez réussi cet exercice.<br>"
+"{0} tests passés.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:49
-#, fuzzy
 msgid "<html>Congratulations, you passed this exercise.</html>"
-msgstr "Félicitations, vous avez réussi cet exercice."
+msgstr "<html>Félicitations, vous avez réussi cet exercice.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:59
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br>Which exercise will you do now?</html>"
 msgstr ""
-"Félicitations, vous avez réussi cet exercice.\n"
-"({0} tests passés)\n"
-"Par quel exercice voulez vous continuer ?"
+"<html>Félicitations, vous avez réussi cet exercice.<bbr>"
+"({0} tests passés)<br>"
+"Par quel exercice voulez vous continuer ?</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
-#, fuzzy
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>Which exercise will you "
 "do now?</html>"
 msgstr ""
-"Félicitations, vous avez réussi cet exercice.\n"
-"Par quel exercice voulez vous continuer ?"
+"<html>Félicitations, vous avez réussi cet exercice.<br>"
+"Par quel exercice voulez vous continuer ?</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid "Give feedback"
@@ -2618,35 +2615,35 @@ msgstr "Ce n'est pas une ligne (merci de rapporter cette anomalie)."
 #: src/plm/universe/turtles/Turtle.java:401
 #, java-format
 msgid "The turtle {0} is not heading to the right direction."
-msgstr ""
+msgstr "La tortue {0} n''a pas la bonne orientation."
 
 #: src/plm/universe/turtles/Turtle.java:403
 #, java-format
 msgid "The turtle {0} is at the right location."
-msgstr ""
+msgstr "La tortue {0} est à l''emplacement attendu."
 
 #: src/plm/universe/turtles/TurtleWorld.java:359
-#, fuzzy, java-format
+#, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
-msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
+msgstr "  Il y a {0} entités là où {1} entités étaient attendues\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:388
-#, fuzzy, java-format
+#, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
-msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
+msgstr "  Il y a {0} formes là où seulement {1} formes étaient attendues\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:390
-#, fuzzy, java-format
+#, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:417
 msgid "Superflous shapes in your solution:\n"
-msgstr ""
+msgstr "Formes superflues dans votre solution : "
 
 #: src/plm/universe/turtles/TurtleWorld.java:422
 msgid "Missing shapes in your solution:\n"
-msgstr ""
+msgstr "Formes manquantes dans votre solution : "
 
 #: src/plm/universe/turtles/TurtleWorld.java:433
 #, java-format
