@@ -70,7 +70,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			if (gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
 				gitUtils.mergeRemoteIntoLocalBranch(userBranch);
 				System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
-			} 
+			}
 			else {
 				// If no branch can be found remotely, create a new one.
 				//System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
@@ -78,7 +78,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			}
 
 			// Log into the git that the PLM just started
-			gitUtils.commit(writePLMStartedCommitMessage());
+			gitUtils.commit(writePLMStartedOrLeavedCommitMessage("started"));
 			
 			// and push to ensure that everything remains in sync
 			gitUtils.maybePushToUserBranch(userBranch, progress); 
@@ -164,10 +164,20 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting"));
 		
 		// push to the remote repository
+		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
 		String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
-		gitUtils.forcefullyPushToUserBranch(userBranch, progress);
+		
+		try {
+			gitUtils.addFiles();
+			gitUtils.commit(commitMsg);
+			gitUtils.forcefullyPushToUserBranch(userBranch, progress);
 
+		} catch (GitAPIException e) {
+			System.err.println("An error occurred while quitting the program, please report the following issue:");
+			e.printStackTrace();
+		}
+		
 		gitUtils.dispose();
 	}
 
@@ -219,7 +229,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	 * @return the JSON String that will be used as the commit message
 	 */
 	@SuppressWarnings("unchecked")
-	private String writePLMStartedCommitMessage() {
+	private String writePLMStartedOrLeavedCommitMessage(String kind) {
 		JSONObject jsonObject = new JSONObject();
 
 		// Retrieve the feedback informations
@@ -228,7 +238,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		jsonObject.put("plm", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
 
 		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
-		return "{\"kind\":\"start\","+jsonObject.toString().substring(1);
+		return "{\"kind\":\""+kind+"\","+jsonObject.toString().substring(1);
 	}
 
 	private void createFiles(Exercise exo) {
@@ -335,6 +345,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		recordHelpInGit("cancelCallForHelp",null);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void recordHelpInGit(String evt_type, String studentInput) {
 		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
 		ExecutionProgress execProg = lastExo.lastResult;
@@ -367,7 +378,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			e.printStackTrace();
 		}
 	}
+	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void readTip(String id, String mission) {
 		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
 		String ext = "." + Game.getProgrammingLanguage().getExt();
