@@ -48,4 +48,9 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 	public boolean isWorldCompatible(World world) {
 		return world.getClass().equals(this.world.getClass());
 	}
+
+	public void dispose() {
+		this.world.removeWorldUpdatesListener(this);
+		this.world = null;
+	}
 }
