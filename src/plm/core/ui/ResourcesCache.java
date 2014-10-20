@@ -89,7 +89,6 @@ public class ResourcesCache {
 		WorldView view = exo.getWorld(0).getView();
 		String path = view.getClass().getCanonicalName();
 		view.dispose();
-		view = null;
 		for (ProgrammingLanguage lang : exo.getProgLanguages()) {
 			if (Game.getInstance().studentWork.getPassed(exo, lang))
 				path += "_"+lang.getLang()+"ok";
