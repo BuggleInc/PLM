@@ -11,6 +11,7 @@
     - #389: Allow fullscreen on Mac OSX
     - #394: Display a waiting dialog when exiting
     - #263: Also interpret language tags in hints, not only missions
+    - #401: Remove non-needed HumanLangListeners
   * Worlds:
     - #286: Turtle, Buggle: document where (0,0) is
     - #220: Buggle: Improve doc of isOverBaggle(), isCarryingBaggle()
