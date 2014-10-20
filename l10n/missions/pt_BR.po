@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-10-12 21:31-0300\n"
+"PO-Revision-Date: 2014-10-19 23:15-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -7106,7 +7106,10 @@ msgstr ""
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
 "returns false. Their is thus two way of writing it:"
-msgstr "Dica: o loop principal do seu código deve continuar enquanto a função de teste retorna falso. Existe portanto entretanto duas formas de fazer isto:"
+msgstr ""
+"Dica: o loop principal do seu código deve continuar enquanto a função\n"
+"de teste retorna falso. Existe portanto entretanto duas formas de\n"
+"fazer isto:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:35
@@ -7299,7 +7302,10 @@ msgstr ""
 msgid ""
 "This time, you have to zigzag on the way up. Have a look at the objective "
 "world for more details on the requested traversal order."
-msgstr "Desta vez, você vai ter que fazer um zigzag no caminho para cima. Dê uma olhada no mundo objetivo para mais detalhes da ordem a percorrer pedida."
+msgstr ""
+"Desta vez, você vai ter que fazer um zigzag no caminho para cima. Dê\n"
+"uma olhada no mundo objetivo para mais detalhes da ordem a percorrer\n"
+"pedida."
 
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
@@ -7314,7 +7320,9 @@ msgid ""
 "beginners, and open the door to an amazing world."
 msgstr ""
 "Este conjunto de atividades é para você brincar com formigas de\n"
-"Langton, que são máquinas de Turing 2D. Elas constituem problemas bem simples, bons para iniciantes, e abrem as portas para um mundo fantástico."
+"Langton, que são máquinas de Turing 2D. Elas constituem problemas bem\n"
+"simples, bons para iniciantes, e abrem as portas para um mundo\n"
+"fantástico."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/Main.html:8
@@ -7325,7 +7333,15 @@ msgid ""
 "used to compute any boolean circuit, and thus that an ant is capable of "
 "universal computation. Put simply, any possible computation can be achieved "
 "using a turmite as a computing device. Yet another subject of fascination..."
-msgstr "Este mecanismo foi inventado em 1986 por Chris Langton, e depois generalizado em várias formas (como veremos nos próximos exercícios). Foi provado que Turmites e máquinas de Turing têm o mesmo poder: Uma trajetória de formiga pode ser usada para calcular qualquer circuito booleano, e logo uma formiga é capaz de qualquer cálculo universal. resumindo, qualquer cálculo possível pode ser alcançado usando uma turmite como dispocitivo computacional. Ainda outro assunto fascinante..."
+msgstr ""
+"Este mecanismo foi inventado em 1986 por Chris Langton, e depois\n"
+"generalizado em várias formas (como veremos nos próximos\n"
+"exercícios). Foi provado que Turmites e máquinas de Turing têm o mesmo\n"
+"poder: Uma trajetória de formiga pode ser usada para calcular qualquer\n"
+"circuito booleano, e logo uma formiga é capaz de qualquer cálculo\n"
+"universal. resumindo, qualquer cálculo possível pode ser alcançado\n"
+"usando uma turmite como dispocitivo computacional. Ainda outro assunto\n"
+"fascinante..."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/Main.html:14
@@ -7334,14 +7350,20 @@ msgid ""
 "funny fact is that the ants which name is a list of consecutive pair of "
 "identical letters (LL and RR) produce symmetric patterns. This fact was even "
 "formally proved."
-msgstr "formigas de Langton multicoloridas foram descobertas em 1995 por Propp et Al. Outro fato divertido é que as formigas cujos nomes é uma lista de pares consecutivos de letras idênticas (LL e RR) produzem padrões simétricos. Este fato foi até mesmo provado formalmente."
+msgstr ""
+"formigas de Langton multicoloridas foram descobertas em 1995 por Propp\n"
+"et Al. Outro fato divertido é que as formigas cujos nomes é uma lista\n"
+"de pares consecutivos de letras idênticas (LL e RR) produzem padrões\n"
+"simétricos. Este fato foi até mesmo provado formalmente."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/Main.html:19
 msgid ""
 "Check the corresponding wikipedia web page, of which this exercise is "
 "inspired, for further details."
-msgstr "Verifique a página da wikipédia correspondente, na qual este exercício é inspirado, para maiores detalhes."
+msgstr ""
+"Verifique a página da wikipédia correspondente, na qual este exercício\n"
+"é inspirado, para maiores detalhes."
 
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15
@@ -7359,14 +7381,19 @@ msgstr "O que eu posso fazer para melhorar este universo do PLM?"
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
-msgstr "Como sempre, existem várias coisas que podem ser feitas no código deste universo para melhorá-lo:"
+msgstr ""
+"Como sempre, existem várias coisas que podem ser feitas no código\n"
+"deste universo para melhorá-lo:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/Main.html:26
 msgid ""
 "We are probably missing some good exercises. The turmite creator exercise is "
 "a bit harsh: we could introduce the patterns in a more friendly manner."
-msgstr "Alguns bons exercícios estão provavelmente faltando. O exercício de criador de turmite é um pouco pé-duro: podemos introduzir os padrões de uma forma mais amigável."
+msgstr ""
+"Alguns bons exercícios estão provavelmente faltando. O exercício de\n"
+"criador de turmite é um pouco pé-duro: podemos introduzir os padrões\n"
+"de uma forma mais amigável."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/Main.html:28
@@ -7383,7 +7410,9 @@ msgstr "Descubra as formigas de Langton, que são máquinas de Turing 2D."
 msgid ""
 "These activities are very simple application problems, achievable by "
 "beginners, and open the door to an amazing world."
-msgstr "Estas atividades são problemas bem simples, bons para iniciantes, e abrema a porta para um mundo fantástico."
+msgstr ""
+"Estas atividades são problemas bem simples, bons para iniciantes, e\n"
+"abrema a porta para um mundo fantástico."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/langton/Langton.html:2
@@ -7397,7 +7426,12 @@ msgid ""
 "These artificial little animals are very interesting because they are given "
 "simple rules that depend only on their local environment, and after a period "
 "of apparent chaotic behavior, a general pattern <i>emerges</i>."
-msgstr "Neste exercício, você vai transformar seu buggle numa <i>formiga de Langton</i>. Estes pequenos animais artificiais são bastante interessantes por que eles recebem regras simples que dependem apenas do seu ambiente local, e depois de um período de aparente comportamento caótico, um padrão geral <i>surge</i>."
+msgstr ""
+"Neste exercício, você vai transformar seu buggle numa <i>formiga de\n"
+"Langton</i>. Estes pequenos animais artificiais são bastante\n"
+"interessantes por que eles recebem regras simples que dependem apenas\n"
+"do seu ambiente local, e depois de um período de aparente\n"
+"comportamento caótico, um padrão geral <i>surge</i>."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:9
@@ -7407,7 +7441,12 @@ msgid ""
 "<code>getGroundColor()</code>). If it's white, change it to black, turn "
 "right and move forward by one cell. If the ground is currently black, change "
 "it to white, turn left and move forward by one cell."
-msgstr "As regras são absolutamente triviais: para calcular qual o próximo passo, você verifica a cor atual do chão (usando <code>getGroundColor()</code>). Se for branco, mude para preto, vire à direita e mova uma célula. Se for preto mude para branco, vire a esquerda e ande uma célula."
+msgstr ""
+"As regras são absolutamente triviais: para calcular qual o próximo\n"
+"passo, você verifica a cor atual do chão (usando\n"
+"<code>getGroundColor()</code>). Se for branco, mude para preto, vire à\n"
+"direita e mova uma célula. Se for preto mude para branco, vire a\n"
+"esquerda e ande uma célula."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:15
@@ -7419,7 +7458,14 @@ msgid ""
 "<code>getGroundColor()</code> method to retrieve the color of the cell on "
 "which the ant is currently.  Colors of interest are simply named <code>Color."
 "black</code> and <code>Color.white</code>."
-msgstr "It's hard to come up with simpler rules isn't it? Bem, vamos em frente codificar isto agora. Você precisa completar o método <code>step()</code>, que codifica o comportamento da formiga em cada passo. Você vai provavelmente usar o método <code>getGroundColor()</code> para recuperar a cor da célula na qual a formiga está no momento. Cores de úteis são nomeadas simplesmente de <code>Cor.preto</code> e <code>Cor.branco</code>."
+msgstr ""
+"It's hard to come up with simpler rules isn't it? Bem, vamos em frente\n"
+"codificar isto agora. Você precisa completar o método\n"
+"<code>step()</code>, que codifica o comportamento da formiga em cada\n"
+"passo. Você vai provavelmente usar o método\n"
+"<code>getGroundColor()</code> para recuperar a cor da célula na qual a\n"
+"formiga está no momento. Cores de úteis são nomeadas simplesmente de\n"
+"<code>Cor.preto</code> e <code>Cor.branco</code>."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:22
@@ -7427,7 +7473,10 @@ msgid ""
 "To compare colors, you cannot use the equal signs (==), because these things "
 "are not scalar values but objects. Instead, you need to write something like "
 "the following:"
-msgstr "Para comparar cores, você não pode usar o símbolo de igualdade (==), pois estas coisas não são valores escalares, mas objetos. Ao invés disto, você precisa escrever algo como o seguinte:"
+msgstr ""
+"Para comparar cores, você não pode usar o símbolo de igualdade (==),\n"
+"pois estas coisas não são valores escalares, mas objetos. Ao invés\n"
+"disto, você precisa escrever algo como o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/langton/Langton.html:25
@@ -7475,7 +7524,13 @@ msgid ""
 "ant start building a regular pattern. This emergence of a regular pattern "
 "from the chaos is rather fascinating, isn't it? Move on to the next exercise "
 "to see more of them."
-msgstr "Como você pode ver da execução deste exercício, o interessante neste algoritmo é que depois de uns 10000 passos de comportamento relativamente caótico, a formiga começa a construir um padrão regular. O surgimento deste padrão regular em meio ao caos é bastante fascinante, não acha? Mova para o próximo exercício para ver mais disto."
+msgstr ""
+"Como você pode ver da execução deste exercício, o interessante neste\n"
+"algoritmo é que depois de uns 10000 passos de comportamento\n"
+"relativamente caótico, a formiga começa a construir um padrão\n"
+"regular. O surgimento deste padrão regular em meio ao caos é bastante\n"
+"fascinante, não acha? Mova para o próximo exercício para ver mais\n"
+"disto."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:2
@@ -7484,6 +7539,7 @@ msgstr "formiga de Langton multicolorida"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:4
+#, fuzzy
 msgid ""
 "There is several ways to extend the concept of Langton's ant. In this "
 "exercise, we explore first one, using more than two colors. It remains very "
@@ -7495,6 +7551,15 @@ msgid ""
 "the basic ant is a RL (since it turns right on white cells and left on black "
 "ones)."
 msgstr ""
+"There is several ways to extend the concept of Langton's ant. In this\n"
+"exercise, we explore first one, using more than two colors. It remains\n"
+"very similar to the base case: the behavior at each step still depends\n"
+"on the ground color, but you have more than 2 possibilities. It allows\n"
+"to have more than one kind of ant, depending on what you decide to do\n"
+"for each color. For example, the ant LRL takes 3 colors. It turns left\n"
+"on the first color, right on the second one and left on the third\n"
+"color. According to this definition, the basic ant is a RL (since it\n"
+"turns right on white cells and left on black ones)."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:13
@@ -7504,6 +7569,11 @@ msgid ""
 "a square, LLRRRLRLRLLR draws a convoluted regular pattern after a period of "
 "seemingly chaotic behavior, and RRLLLRLLLRRR seems to fill a hour glass..."
 msgstr ""
+"Algumas destas formigas desenham padrões fascinantes (alterne o mundo\n"
+"para vê-los): LLRR constrói uma figura simétrica semelhante a uma\n"
+"bola, LRRRRRLLR desenha um quadrado, LLRRRLRLRLLR desenha um padrão\n"
+"regular convolucionado depois de um período de aparente caos, e\n"
+"RRLLLRLLLRRR parece preencher uma ampulheta..."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:18
@@ -7519,16 +7589,27 @@ msgid ""
 "'L')</code> and <code>Array(Color.white, Color.black)</code>[/!] as "
 "arguments."
 msgstr ""
+"Transformar seu buggle numa formiga de Langton genérica não é muito\n"
+"complicado, embora não seja totalmente trivial. Como anteriormente,\n"
+"você tem que escrever uma função <code>step</code>. Mas desta vez, ela\n"
+"recebe duas arrays como parâmetros. A primeira define as regras para\n"
+"seguir dependendo da cor do chão enquanto a segunda dá a sequência de\n"
+"cores a usar. Por exemplo, a formiga básica deve ter\n"
+"[!java]<code>{'R', 'L'}</code> e <code>{Cor.branco,\n"
+"Cor.preto}</code>[/!] [!python]<code>['R', 'L']</code> e\n"
+"<code>[Cor.branco, Cor.preto]</code>[/!] [!scala]<code>Array('R',\n"
+"'L')</code> e <code>Array(Cor.branco, Cor.preto)</code>[/!] como\n"
+"argumentos."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:29
 msgid "At each step, you thus have to apply the following pseudo-code:"
-msgstr ""
+msgstr "Em cada passo, você deve então ter que aplicar o seguinte pseudo-código:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:31
 msgid "Find the position of the ground color in the color sequence;"
-msgstr ""
+msgstr "Encontre a posição da cor do chão na sequência de cores;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:32
@@ -7536,32 +7617,36 @@ msgid ""
 "Turn left or right depending on the content of the rule array at that "
 "position;"
 msgstr ""
+"Vire a esquerda ou direita dependendo do conteúdo da array de regras\n"
+"nesta posição;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:33
+#, fuzzy
 msgid ""
 "Mark the current ground with the next color in the sequence (the last color "
 "being followed by the first one);"
-msgstr ""
+msgstr "Marque o chão com a próxima cor na sequência (the last color being followed by the first one);"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:34
 msgid "Move forward by one step."
-msgstr ""
+msgstr "ande um passo para frente."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:37
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:67
 msgid "You now should have enough information to succeed."
-msgstr ""
+msgstr "Você agora tem informação o suficiente para conseguir."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:2
 msgid "Turmites"
-msgstr ""
+msgstr "Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:4
+#, fuzzy
 msgid ""
 "This exercise explores a new way to extend the concept of Langton's ant. "
 "Now, the behavior of the ant not only depends on the color on the ground, "
@@ -7572,9 +7657,19 @@ msgid ""
 "Turing machine is, you should run to wikipedia, because it is simply "
 "impossible to be a real computer scientist before that)."
 msgstr ""
+"Este exercício explora uma nova forma de extender o conceito de\n"
+"formiga de Langton. Agora, o comportamento da formiga não depende\n"
+"apenas da cor no chão, mas também de seu estado interno (representado\n"
+"por um valor inteiro). A ideia de transformar a formiga em um autômato\n"
+"vem naturalmente do conceito de máquina de Turing. Isto explica o nome\n"
+"destes novos animais, que é um portemanteau de <i>Turing</i> e\n"
+"<i>Termite</i> (se você não sabe o que uma máquina de Turing é, vá na\n"
+"wikipédia, por que é impossível ser um cientista da computação de\n"
+"verdade sem conhecê-la)."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:13
+#, fuzzy
 msgid ""
 "Once again, you just have to write the <code>step()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
@@ -7587,7 +7682,7 @@ msgid ""
 "worlds, you can retrieve the information relative to your current situation "
 "by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
 "(currentColor)[/!]</code>."
-msgstr ""
+msgstr "Once again, you just have to write the <code>step()</code> method, in charge of doing one turmite's step. Once again, you should first find the rank of the current's cell ground color in the color sequence. But this time, the <code>rule</code> data depends both on the current color and the current state.  <code>rule</code> actually contains 3 information in each situation: the color to write, the move to do, and the next state value. For example, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the informations to use when <code>state==1</code> and <code>color==0</code>.  In other worlds, you can retrieve the information relative to your current situation by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:25
@@ -7800,7 +7895,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
 "{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: binary counter\n"
@@ -8242,7 +8337,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/sort/basic/Main.html:2 src/lessons/sort/basic/short_desc.html:2
 msgid "Sorting Algorithms"
-msgstr ""
+msgstr "Algoritmos de Ordenação"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/Main.html:4
@@ -8254,6 +8349,13 @@ msgid ""
 "\"races\" between these algorithms to experiment in practice what the "
 "different asymptotical complexity mean."
 msgstr ""
+"Esta lição permite a experimentação com alguns algoritmos de ordenação\n"
+"clássicos (e algumas variações menos comuns deles). E temos um duplo\n"
+"objetivo: você pode primeiro compreender melhor a ideia destes\n"
+"algoritmos escrevendo eles por si só. Mas mesmo se você não codificar\n"
+"os algoritmos, você pode usar o modo de demonstração para organizar\n"
+"\"corridas\" entre os algoritmos para experimentar na prática o que\n"
+"significam diferentes complexidades assintóticas."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/Main.html:11
@@ -8262,6 +8364,9 @@ msgid ""
 "(such as QuickSort and MergeSort) or using other microworlds to apply these "
 "algorithms to other contexts."
 msgstr ""
+"Mais exercícios estão previstos para o futuro, sobre os algoritmos de\n"
+"ordenação recursivos (como o QuickSort e o MergeSort) ou usando outros\n"
+"micromundos para aplicar estes algoritmos a outros contextos."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/basic/Main.html:19
@@ -8269,6 +8374,8 @@ msgid ""
 "Other graphical representations could be proposed, such as the ones "
 "presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 msgstr ""
+"Outras representações gráficas podem ser propostas, como aquelas\n"
+"apresentadas em <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:4
@@ -8276,18 +8383,20 @@ msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
 "some less common variant of them :)"
 msgstr ""
+"Esta lição permite a experimentação com alguns algotimos de ordenação\n"
+"clássicos (e algumas variantes menos comuns deles :)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:7
 #: src/lessons/recursion/short_desc.html:6 src/lessons/maze/short_desc.html:6
 msgid ""
 "You are supposed to master the bases of programming to take this lesson."
-msgstr ""
+msgstr "Para fazer esta lição você deve dominar as bases da programação."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:2
 msgid "BubbleSort"
-msgstr ""
+msgstr "BubbleSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:4
@@ -8297,6 +8406,10 @@ msgid ""
 "algorithms is available in the world reference documentation (\"Help\"-&gt;"
 "\"About this world\")."
 msgstr ""
+"Bem vindo ao universo da ordenação. Ele permite que você experimente\n"
+"os algoritmos de ordenação existentes. A lista de \"buildins\" que você\n"
+"pode usar nos seus algoritmos está disponível na documentação de\n"
+"referência do mundo (\"Ajuda\"-&gt;\"Sobre este mundo\")."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:8
@@ -8306,6 +8419,11 @@ msgid ""
 "checking that your algorithm needs the same amount of read and write "
 "operations to sort the array."
 msgstr ""
+"Não é suficiente ordenar a array para passar nos exercícios. Sua\n"
+"solução deve seguir estritamente o comportamento esperado em cada\n"
+"exercício. Isto é reforçado verificando que seu algoritmo precisa da\n"
+"mesma quantidade de operações de escrita e leitura para ordenar a\n"
+"array."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:13
