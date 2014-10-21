@@ -29,10 +29,12 @@ public class Sierpinski extends ExerciseTemplated {
 
 		myWorlds[3] = new TurtleWorld("sierpinski(3,300.)", 400, 400);
 		myWorlds[3].setParameter(new Object[] {3, 300.});		
+		myWorlds[3].setDelay(45);
 		new Turtle(myWorlds[3], "Hawksbill", 350, 350,-180, Color.red);
 
 		myWorlds[4] = new TurtleWorld("sierpinski(5,300.)", 400, 400);
 		myWorlds[4].setParameter(new Object[] {5, 300.});		
+		myWorlds[4].setDelay(2);
 		new Turtle(myWorlds[4], "Hawksbill", 350, 350,-180, Color.red);
 
 		setup(myWorlds);

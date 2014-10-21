@@ -8,9 +8,10 @@ sort.
 from the part not already sorted. Thus for the first cell, it takes the
 smallest value over the whole array. For the second one, it takes the second
 smallest value, which is the smallest value from the cell not already
-sorted.     
+sorted. You of course don't have to sort the last cell of the array, that is 
+already sorted when you consider it.
 
-<p>More generally, for the cell N, it looks the cell M in [n;len] containing
+<p>More generally, for the cell N, it looks the cell M in [N;len] containing
 the smallest possible value of the interval. Then, it swaps the content of
 cell N with the one of cell M. 
 

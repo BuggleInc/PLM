@@ -24,22 +24,36 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.tracking.GitUtils;
+import plm.universe.World;
 
 public class FeedbackDialog extends JDialog {
 
 	private static final long serialVersionUID = 0;
 	private static FeedbackDialog instance = null;
-
+	private static String defaultTitle = "";
+	private static String defaultText = "";	
+	
 	public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
+	public String errorMsg;
 	final JEditorPane feedback = new JEditorPane();
 	final JTextField title = new JTextField();
-
+	
 	public static FeedbackDialog getInstance() {
 		if (FeedbackDialog.instance == null) {
 			FeedbackDialog.instance = new FeedbackDialog();
 		}
-		FeedbackDialog.instance.feedback.setText(FeedbackDialog.instance.i18n.tr(
+		StringBuffer worldInfo = new StringBuffer();
+		for (World w:((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+			String s = w.getDebugInfo();
+			if (s != "") 
+				worldInfo.append("World: "+s+"\n");
+		}
+
+		defaultTitle = FeedbackDialog.instance.i18n.tr("Please describe the problem in a few words");
+		defaultText = FeedbackDialog.instance.i18n.tr(
 				  "Please write your suggestion here, with all necessary details\n"
 				+ "(if possible in English or French).\n\n"
 				+ "When you find a typo or a sentence that is hard to understand, \n"
@@ -48,10 +62,12 @@ public class FeedbackDialog extends JDialog {
 				+ "which outcome you were expecting and what happened instead.\n\n"
 				+ "  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never."
 				+ "\n\n--------------------[ Technical Information ]--------------------\n"
-				+ "(This can help us fixing your problem, please don't erase)\n"
-				) /* The rest is not translated */
+				+ "(This can help us fixing your problem, please don't erase)\n"); /* The rest is not translated */
+		
+		FeedbackDialog.instance.feedback.setText(defaultText
 				+ "\nLesson: "+Game.getInstance().getCurrentLesson().getId() + "\n"
 				+ "Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n"
+				+ worldInfo.toString()
 				+ "Programming Language: "+Game.getProgrammingLanguage().getLang() + "\n"
 				+ "Locale: "+Game.getInstance().getLocale().getDisplayName() + "\n"
 				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
@@ -59,7 +75,8 @@ public class FeedbackDialog extends JDialog {
 				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
 				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n");
 		
-		FeedbackDialog.instance.title.setText(FeedbackDialog.instance.i18n.tr("Please describe the problem in a few words"));
+		
+		FeedbackDialog.instance.title.setText(defaultTitle);
 		FeedbackDialog.instance.pack();
 		return FeedbackDialog.instance;
 	}
@@ -108,27 +125,35 @@ public class FeedbackDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				client.setOAuth2Token(Game.getProperty("plm.github.oauth"));
-				Issue issue = new Issue();
-				issue.setTitle(title.getText());
-				issue.setBody(feedback.getText());
-				IssueService issueService = new IssueService(client);
-				try {
-					Issue i = issueService.createIssue(Game.getProperty("plm.github.owner"), Game.getProperty("plm.github.repo"), issue);
-					JOptionPane.showMessageDialog(sendBtn, i18n.tr(
-							  "Thank you for your remark, we will do our best to integrate it.\n"
-							+ "Follow our progress at {0}.",i.getHtmlUrl()), i18n.tr("Thanks for your suggestion"), JOptionPane.INFORMATION_MESSAGE);
-					dispose();
-				} catch (IOException ex) {
-					StringBuffer ctn = new StringBuffer(ex.getLocalizedMessage() + "\n");
-					for (StackTraceElement elm : ex.getStackTrace()) {
-						ctn.append(elm.toString()).append("\n");
+				if(isCorrect()) {
+					client.setOAuth2Token(Game.getProperty("plm.github.oauth"));
+					Issue issue = new Issue();
+					issue.setTitle(title.getText());
+					issue.setBody(feedback.getText());
+					IssueService issueService = new IssueService(client);
+					try {
+						Issue i = issueService.createIssue(Game.getProperty("plm.github.owner"), Game.getProperty("plm.github.repo"), issue);
+						JOptionPane.showMessageDialog(sendBtn, i18n.tr(
+								  "Thank you for your remark, we will do our best to integrate it.\n"
+								+ "Follow our progress at {0}.",i.getHtmlUrl()), i18n.tr("Thanks for your suggestion"), JOptionPane.INFORMATION_MESSAGE);
+						dispose();
+					} catch (IOException ex) {
+						StringBuffer ctn = new StringBuffer(ex.getLocalizedMessage() + "\n");
+						for (StackTraceElement elm : ex.getStackTrace()) {
+							ctn.append(elm.toString()).append("\n");
+						}
+						JOptionPane.showMessageDialog(cancelBtn,
+													  ctn.toString(),
+													  i18n.tr("Error while uploading your feedback"),
+													  JOptionPane.ERROR_MESSAGE);
+						ex.printStackTrace();
 					}
-					JOptionPane.showMessageDialog(cancelBtn,
-												  ctn.toString(),
-												  i18n.tr("Error while uploading your feedback"),
-												  JOptionPane.ERROR_MESSAGE);
-					ex.printStackTrace();
+				}
+				else {
+					JOptionPane.showMessageDialog(FeedbackDialog.this, 
+							i18n.tr("Your feedback needs some little changes before being send,\nplease fix the following issue(s):\n\n")+errorMsg, 
+							i18n.tr("Incorrect feedback"), 
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -147,4 +172,22 @@ public class FeedbackDialog extends JDialog {
 		setLocationRelativeTo(getParent());
 	}
 
+	public boolean isCorrect() {
+		boolean correct = true;
+		StringBuffer msg = new StringBuffer();
+		if(title.getText().equals(defaultTitle)) {
+			correct = false;
+			msg.append(i18n.tr("The feedback's title is still the default one, please specify a relevant one.\n"));
+		}
+		else if(title.getText().equals("")) {
+			correct = false;
+			msg.append(i18n.tr("The current title is empty, please specify a relevant title.\n"));
+		}
+		if(feedback.getText().contains(defaultText)) {
+			correct = false;
+			msg.append(i18n.tr("The feedback still contains the explanatory text, please remove it.\n"));
+		}
+		errorMsg = msg.toString();
+		return correct;
+	}
 }

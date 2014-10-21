@@ -25,4 +25,8 @@ public abstract class EntityControlPanel extends JPanel implements HumanLangChan
 	public static void echo(String name) {
 		System.out.println(name+(Game.getProgrammingLanguage()==Game.JAVA?";":""));
 	}
+	
+	public void dispose() {
+		
+	}
 }

@@ -7,6 +7,8 @@ public interface ProgressSpyListener {
 
     public void switched(Exercise exo);
 
+    public void reverted(Exercise exo);
+    
     public void heartbeat();
 
     public String join();

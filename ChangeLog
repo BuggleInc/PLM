@@ -1,5 +1,103 @@
-20130918: wannabe Release 2.4.7
+20141015: wannabe Release 2.5
 
+  * Improved translations:
+    - French: mission back at 100%
+  * Engine:
+    - #292: Check the user's input before submitting a feedback
+    - #304: Stop user's program's or demo's execution if the user 
+      switches to another exercise or lesson.
+    - #395: Correctly remove the files that should be when reverting
+      or failing an exercise (both in local and remote repositories)
+    - #389: Allow fullscreen on Mac OSX
+    - #394: Display a waiting dialog when exiting
+    - #263: Also interpret language tags in hints, not only missions
+    - #401: Remove non-needed HumanLangListeners
+  * Worlds:
+    - #286: Turtle, Buggle: document where (0,0) is
+    - #220: Buggle: Improve doc of isOverBaggle(), isCarryingBaggle()
+  * Pedagogical content:
+    - #323: turtleart.Kerr40: new exercise
+    - #397: GnomeSort: align mission text with code
+    - #296: TraversalByColumn: document where (0,0) is
+    - #239: CourseForest: get stick in water, not moving anymore
+    - #405: LoopStairs: Make French python bindings fit the templating
+
+
+20141009: Release 2.4.11
+
+  Git and TurtleWorld's equality should both be working now :)
+
+  * Improved translations:
+    - Brazilian Portuguese: Missions at 54% despite content changes
+  * Engine:
+    - #224: If the execution is interrupted, the exercise is failed
+    - #380: Disable creative mode when switching the exercise
+    - Lessons: Prevent users from accessing broken lessons and add tests
+      to detect them.
+    - GitSpy: Fix a bug which overwrote the current exercise's files
+      for the current programming language by the current exercise's files
+      for the last result's programming language
+    - Git: Refactor Git related code to fix progression loss bugs
+  * Worlds:
+    - Turtle: equal() was not detecting when lines are overlapping
+      with no common extremities. We now detect when one line is
+      strictly included within another one, but not when they are
+      intermixed (yet). Fix #381.
+  * Pedagogical content:
+    - #378, #393: French typo
+    - #383: Fix the name of the Scala entity
+    - #387: Fix a broken link when run from the jar
+    - #388: The Pancake #0 is actually on top (fix mission text)
+
+20140930: Release 2.4.10
+
+  * Engine:
+    - Add several tests to check ExerciseTemplated's behavior.
+    - #262: sensible error message when putting code out of any method
+      in Scala
+    - Add a test suite to gather together all tests.
+    - #359: Add world-specific info to debug and feedback.
+      SortingWorld uses that to tell which random instance was used.
+  * Pedagogical content:
+    - #372: scala code for Koch and Crab exercises were inverted.
+    - #373: Fix entity name for the dutch flag
+
+20140929: Release 2.4.9
+
+  Recursion lesson is usable again, sorry for the inconvenience.
+  (we really need more tests, grmbl)
+
+  * Engine:
+    - Lesson constructor waits for all init threads' completion
+  * Worlds:
+    - Turtle: equal() was too permissive after recent work on merging
+      lines that were too picky. Now take the world name into account
+      in equality, so that we can switch from an empty world to 
+      another empty world in the UI.
+  * Pedagogical content:
+    - recursion: remove the largest fractals that were too heavy
+    - #366: recursion.spiralUse: add another nice picture
+
+20140928: Release 2.4.8
+
+  * Engine:
+    - Use appropriately the executionError field instead of
+      compilationError to store entities' run time errors.
+  * Worlds:
+    - ConsWorld: new subclass of BatWorld dedicated to recursive lists.
+  * Pedagogical content:
+    - recursion.cons: new lesson on recursive lists (17 challenges)
+    - #349, #355 : French typo
+    - #356: write 'one', not '1' (was too similar to 'l') (fix #356)
+    - #365: SelectionSort: don't sort the last cell, it's already done
+
+20140920: Release 2.4.7
+
+  Python is usable again, sorry for the inconvenience.
+
+  * Engine: 
+    - Don't even compare the worlds when there was a compilation error
+      Prevents python code from failing after reaching the solution.
   * Worlds:
     - Turtle: Merge lines that are in line with each other before
       comparing equality. You can now walk half of a segment, the half
@@ -12,8 +110,12 @@
       of shapes does not match.
     - #344 Turtle: Display the coordinates of the mouse.
       That helps reading the differences between worlds, if any.
+    - #309 Bat: Edit the python template in order to test correctly
+      the exercise's winning conditions instead of passing it.
   * Pedagogical content:
     - #341: French typo
+    - TurtleArt: rename challenges from Bill Kerr to credit the author.
+      http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html
 
 20140917: Release 2.4.6
 

@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -46,8 +48,14 @@ public class ChooseLessonDialog extends JFrame {
 	}
 
 	private void initComponents(Game g) {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+	        @Override
+	        public void windowClosing(WindowEvent event) {
+	        	MainFrame.getInstance().quit();	        			
+	        }
+	    });
+		
 		setBackground(Color.white);
 		setLayout(new BorderLayout());
 
@@ -69,7 +77,7 @@ public class ChooseLessonDialog extends JFrame {
 		LessonMatrix matrix = new LessonMatrix(overview, new String[][] { // WARNING, keep ExoTest.lessons synchronized
 				{"lessons/welcome", "lessons/maze", "lessons/turmites", "lessons/turtleart"},
 				{"lessons/sort/basic", "lessons/sort/dutchflag", "lessons/sort/baseball", "lessons/sort/pancake"},
-				{"lessons/recursion", "lessons/recursion/hanoi" },
+				{"lessons/recursion/cons", "lessons/recursion", "lessons/recursion/hanoi" },
 				{"lessons/lightbot", "lessons/bat/string1", "lessons/lander" },
 		    }); 
 	
@@ -184,10 +192,11 @@ class LessonOverview extends JPanel {
 		btGo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game.getInstance().switchLesson(path.replaceAll("/", "."),false);
-				MainFrame.getInstance().setVisible(true);
-				Game.getInstance().setCaptureOutput(true);
-				lc.dispose();
+				if(Game.getInstance().switchLesson(path.replaceAll("/", "."),false)!=null) {
+					MainFrame.getInstance().setVisible(true);
+					Game.getInstance().setCaptureOutput(true);
+					lc.dispose();
+				}
 			}
 		});
 		btGo.setEnabled(false);

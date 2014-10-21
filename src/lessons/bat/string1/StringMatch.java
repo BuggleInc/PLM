@@ -20,7 +20,7 @@ public class StringMatch extends BatExercise {
 		myWorld.addTest(INVISIBLE, "aaxxaaxx", "iaxxai") ;
 		myWorld.addTest(INVISIBLE, "iaxxai", "aaxxaaxx") ;
 
-		templatePython("stringMatch", 
+		templatePython("stringMatch", new String[]{"String","String"},
 				"def stringMatch(a, b):\n",
 				"  l = min( len(a), len(b) )\n" +
 				"  count = 0\n" +

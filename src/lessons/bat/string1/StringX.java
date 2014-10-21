@@ -18,7 +18,7 @@ public class StringX extends BatExercise {
 		myWorld.addTest(INVISIBLE, "x") ;
 		myWorld.addTest(INVISIBLE, "") ;
 
-		templatePython("stringX", 
+		templatePython("stringX", new String[] {"String"},
 				"def stringX(str):\n",
 				"  res = ''\n" +
 				"  for i in range(len(str)):\n" +

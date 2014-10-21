@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import plm.core.PLMCompilerException;
+import plm.core.PLMEntityNotFound;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -27,7 +29,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 
 	protected abstract Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException;
 	@Override
-	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) {
+	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException {
 		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
 
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();
@@ -45,7 +47,20 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 				try {
 					ent = (Entity)getClass().getClassLoader().loadClass(newClassName).newInstance(); 
 				} catch (Exception e2) {
-					throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
+					if (whatToMutate == StudentOrCorrection.STUDENT) {
+						if (Game.getProgrammingLanguage() == Game.SCALA)
+							throw new PLMCompilerException(Game.i18n.tr(
+									  "Your entity failed to start. Did you forgot to put your code within a method?\n\n"
+									+ "This problem often arises when the exercise expects you to put all the code within a \n"
+									+ "method e.g. run(), but you put some statements (e.g. forward()) outside of any method.\n\n"
+									+ "The easiest solution to sort it out is to copy all your code (Ctrl-A Ctrl-C), use the \n"
+									+ "'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code within the\n"
+									+ "provided method."));
+						else
+							throw new PLMCompilerException(Game.i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
+					} else {
+						throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
+					}
 				}
 			} catch (ClassNotFoundException e) {
 				throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
@@ -72,7 +87,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 				msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
 
 			System.err.println(msg);
-			progress.setCompilationError(msg);
+			progress.setExecutionError(msg);
 			e.printStackTrace();
 		}
 	}

@@ -86,7 +86,9 @@ public class ResourcesCache {
 	}
 
 	public static ImageIcon getStarredIcon(ImageIcon icon, Exercise exo) {
-		String path = exo.getWorld(0).getView().getClass().getCanonicalName();
+		WorldView view = exo.getWorld(0).getView();
+		String path = view.getClass().getCanonicalName();
+		view.dispose();
 		for (ProgrammingLanguage lang : exo.getProgLanguages()) {
 			if (Game.getInstance().studentWork.getPassed(exo, lang))
 				path += "_"+lang.getLang()+"ok";

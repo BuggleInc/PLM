@@ -13,7 +13,7 @@ import plm.core.model.Game;
 public class ExecutionProgress {
 
 	public static enum outcomeKind { COMPILE, FAIL, PASS };
-	public outcomeKind outcome;
+	public outcomeKind outcome = outcomeKind.PASS;
 	
 	public String compilationError;
 	public String executionError = "";
@@ -51,8 +51,13 @@ public class ExecutionProgress {
 	}
 	
 	public void setCompilationError(String msg) {
+		outcome = ExecutionProgress.outcomeKind.COMPILE;
 		compilationError = msg;
 		passedTests = -1;
+	}
+	public void setExecutionError(String msg) {
+		outcome = ExecutionProgress.outcomeKind.FAIL;
+		executionError = msg;
 	}
 
 

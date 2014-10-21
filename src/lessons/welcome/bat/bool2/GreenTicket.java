@@ -24,7 +24,7 @@ public class GreenTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 9, 9) ;
 		myWorld.addTest(INVISIBLE, 9, 0, 9) ;
 
-		templatePython("greenTicket", 
+		templatePython("greenTicket", new String[] {"Int","Int","Int"},
 				"def greenTicket(a, b, c):\n",
 				"	if (a == b and b == c):\n"+
 				"		return 20\n"+

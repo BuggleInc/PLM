@@ -28,7 +28,7 @@ public class TeenSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 16) ;
 		myWorld.addTest(INVISIBLE, 6, 7) ;
 
-		templatePython("teenSum", 
+		templatePython("teenSum", new String[]{"Int","Int"},
 				"def teenSum(a, b):\n",
 				"	if ((a >= 13 and a <= 19) or (b >= 13 and b <= 19)):\n"+
 				"		return 19\n"+

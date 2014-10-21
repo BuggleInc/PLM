@@ -38,18 +38,19 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("You fall into water."), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
+		} else {
+			for (int i=0;i<colors.length-1;i++)
+				if (colors[i].equals(c)) {
+					if (i == colors.length-1)
+						c = colors[i];
+					else
+						c = colors[i+1];
+					break;
+				}
+			setBrushColor(c);
+			brushDown();
+			brushUp();
 		}
-		for (int i=0;i<colors.length-1;i++)
-			if (colors[i].equals(c)) {
-				if (i == colors.length-1)
-					c = colors[i];
-				else
-					c = colors[i+1];
-				break;
-			}
-		setBrushColor(c);
-		brushDown();
-		brushUp();
 	}
 
 	

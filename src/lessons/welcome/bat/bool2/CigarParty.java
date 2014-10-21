@@ -23,10 +23,10 @@ public class CigarParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 40, true) ;
 		myWorld.addTest(INVISIBLE, 39, true) ;
 
-		templatePython("cigarParty", 
+		templatePython("cigarParty", new String[] {"Int","Boolean"},
 				"def cigarParty(cigars, isWeekend):\n",
 				"   return (isWeekend and cigars >= 40) or (not isWeekend and (cigars >= 40) and (cigars <= 60))\n");
-		templateScala("cigarParty",new String[] {"Int","Boolean"}, 
+		templateScala("cigarParty", new String[] {"Int","Boolean"}, 
 				"def cigarParty(cigars:Int, isWeekend:Boolean):Boolean = {\n",
 				"   return (isWeekend && cigars >= 40) || (! isWeekend && (cigars >= 40) && (cigars <= 60))\n"+
 				"}");

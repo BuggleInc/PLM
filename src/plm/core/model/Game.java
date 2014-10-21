@@ -49,9 +49,12 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
+import plm.core.model.session.SourceFile;
+import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
@@ -175,7 +178,7 @@ public class Game implements IWorldView {
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
 
-		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
+		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
@@ -333,9 +336,9 @@ public class Game implements IWorldView {
 	 */
 
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
-		if (stepModeEnabled())
-			disableStepMode();
-
+		if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
+			stopExerciseExecution();
+		}
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
@@ -370,10 +373,16 @@ public class Game implements IWorldView {
 			System.err.println("Interrupted while loading the lesson "+lesson.getName());
 			e.printStackTrace();
 		}
+		// If a problem arose while setting up the lesson, don't switch 
+		// TODO: define a better solution when encountering this issue
+		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
+			JOptionPane.showMessageDialog(null, i18n.tr("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.") ,
+					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
+			return null;
+		}
+			
 		setCurrentLesson(lesson);
-
 		this.setState(GameState.LOADING_DONE);
-
 		return lesson;
 	}
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
@@ -465,12 +474,23 @@ public class Game implements IWorldView {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
+		// No need to stop the execution if no lesson is currently selected
+		if(currentLesson != null) {
+			// If already executing a program, stop it
+			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
+				stopExerciseExecution();
+			}
+		}
 		try {
 			saveSession(); // don't loose user changes
 			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
 			
 			if (this.currentLesson != lect.getLesson())
 				this.currentLesson = lect.getLesson();
+			
+			/* if the user changes the exercise, you can assume that he wants to test another challenge */
+			if (isCreativeEnabled())
+				switchCreative();
 			
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
@@ -487,15 +507,15 @@ public class Game implements IWorldView {
 						fallback = l;
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
-				System.out.println( 
-						Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
-								+ "Please consider contributing to this project by adapting this exercise to this language.",
-								lect.getName(),getProgrammingLanguage(),fallback.getLang()));
+				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
+					System.out.println(
+							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
+									+ "Please consider contributing to this project by adapting this exercise to this language.",
+									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 				setProgramingLanguage(fallback);
 
 			}
 			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
-
 		} catch (UserAbortException e) { 
 			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}
@@ -567,9 +587,13 @@ public class Game implements IWorldView {
 		if (stepModeEnabled()) 
 			disableStepMode();
 
-		if (runner != null)
+		// Only forcefully stop the threads if they run the user code (not the correction)
+		if(state == GameState.EXECUTION_STARTED) {
 			runner.stopAll();
+		}			
 
+		// "Stop" the demo threads too, but asking them to not wait for the UI
+		// We cannot kill them as they are computing the exercise's correction.
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
 			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
@@ -581,6 +605,7 @@ public class Game implements IWorldView {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
 		runner.start();
 	}
+	
 	public void startExerciseStepExecution() {
 		stepMode = true;
 		startExerciseExecution();
@@ -644,7 +669,7 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-
+			
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
 				spyListener.leave();
@@ -1042,6 +1067,13 @@ public class Game implements IWorldView {
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
+			if(l!=null) {
+				for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+					String s = w.getDebugInfo();
+					if (s != "") 
+						System.out.println("World: "+s);
+				}
+			}
 			System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
@@ -1169,5 +1201,24 @@ public class Game implements IWorldView {
 	}
 	public static String getSavingLocation() {
 		return SAVE_DIR.getPath();
+	}
+
+	public void revertExo() {
+		Lecture lect = getCurrentLesson().getCurrentExercise();
+		if (! (lect instanceof Exercise)) 
+			return;
+
+		Exercise ex = (Exercise) lect;
+		for (ProgrammingLanguage lang: ex.getProgLanguages())
+			for (int i=0; i<ex.getSourceFileCount(lang); i++) {
+				SourceFile sf = ex.getSourceFile(lang,i);
+				if (sf instanceof SourceFileRevertable)
+					((SourceFileRevertable) sf).revert();
+			}
+		for (ProgrammingLanguage pl:Game.programmingLanguages)
+			Game.getInstance().studentWork.setPassed(ex, pl, false);
+		for (ProgressSpyListener l : this.progressSpyListeners) {
+			l.reverted(ex);
+		}
 	}
 }

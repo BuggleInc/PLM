@@ -77,7 +77,7 @@ public abstract class Lecture {
 		this.mission=mission;
 	}
 	public String getTip(String tipsId) {
-		return this.tips.get(tipsId);
+		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), Game.getInstance().isDebugEnabled());
 	}
 
 	public void loadHTMLMission() {

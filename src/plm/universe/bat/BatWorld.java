@@ -72,7 +72,9 @@ public class BatWorld extends World {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
-		/* No need of any binding for this world */
+		if (lang == Game.PYTHON) {
+			e.put("batTests", tests);
+		}
 	}
 	@Override
 	public String diffTo(World w) {

@@ -108,6 +108,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private MainFrame() {
 		super(frameTitle);
+		
+		if (OSXAdapter.isMacOSX()) {
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "PLM");
+		}
+		
 		FileUtils.setLocale(this.getLocale());
 		initComponents(Game.getInstance());
 		this.keyListeners(exerciseView);
@@ -119,23 +125,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			MainFrame.instance = new MainFrame();
 		return MainFrame.instance;
 	}
-	
-	
-	// FIXME: useless since it is never called...
-	public static void doDispose() {
-		if (MainFrame.instance == null)
-			return;
-		MainFrame.instance.dispose();
-		MainFrame.instance = null;
-
-	}
 
 	private void initComponents(final Game g) {
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 	        @Override
 	        public void windowClosing(WindowEvent event) {
-	            Game.getInstance().quit();
+	            MainFrame.this.quit();
 	        }
 	    });		
 		getContentPane().setLayout(new BorderLayout());
@@ -439,8 +435,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		} else {
 			try {
-				OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[]) null));
-				OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[]) null));
+				if (OSXAdapter.isMacOSX()) {
+					OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[]) null));
+					OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[]) null));
+					OSXAdapter.enableFullScreenMode(this);
+				}
 			} catch (SecurityException e) {
 				e.printStackTrace();
 			} catch (NoSuchMethodException e) {
@@ -610,8 +609,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 
 	public void quit() {
-		MainFrame.getInstance().dispose();
-		Game.getInstance().quit();
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				Game.getInstance().quit();
+			}
+		});
+		t.start();
+
+		JOptionPane.showMessageDialog(this, i18n.tr("Please wait, while PLM is saving your session data."));		
 	}
 
 	public void about() {
@@ -639,6 +644,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		} else {
 			hideWorldView();
 		}
+		miExoCreative.setSelected(Game.getInstance().isCreativeEnabled());
 	}
 
 	@Override

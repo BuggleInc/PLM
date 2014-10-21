@@ -26,7 +26,7 @@ public class LessBy10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 2, -8) ;
 		myWorld.addTest(INVISIBLE, 2, 8, 12) ;
 
-		templatePython("lessBy10", 
+		templatePython("lessBy10", new String[] {"Int","Int","Int"},
 				"def lessBy10(a, b, c):\n",
 				"	return ((a - b) >= 10) or ((b - a) >= 10) or ((b - c) >= 10) or ((c - b) >= 10) or ((a - c) >= 10) or ((c - a) >= 10)\n");
 		templateScala("lessBy10", new String[] {"Int","Int","Int"},

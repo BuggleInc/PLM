@@ -4,7 +4,7 @@
 void selectionSort() {
 	/* BEGIN SOLUTION */
 	int i;
-	for (i = 0; i < getValueCount(); i++) {
+	for (i = 0; i < getValueCount()-1; i++) {
 		int min = i;
 		int j;
 

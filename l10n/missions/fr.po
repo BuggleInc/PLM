@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-09-16 17:04+0200\n"
+"POT-Creation-Date: 2014-10-17 18:06+0200\n"
+"PO-Revision-Date: 2014-10-17 18:07+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -171,73 +171,82 @@ msgstr ""
 "[/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:24
+#: src/plm/universe/bugglequest/BuggleWorld.html:23
+msgid ""
+"Note that the point (0,0) is on the top left corner, as it is often the case "
+"in Computer Science."
+msgstr ""
+"L'origine (0, 0) est dans le coin en haut à gauche, comme c'est souvent le "
+"cas en informatique."
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:25
 msgid "<b>Information on the buggle</b>"
 msgstr "<b>Informations sur la buggle</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "<b>Get the color of the body"
 msgstr "<b>Obtenir la couleur de la buggle</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "Set the color of the body</b>"
 msgstr "Changer la couleur de la buggle</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:26
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
 msgid "[!java|c]Color [/!]getBodyColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCouleurCorps()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:27
+#: src/plm/universe/bugglequest/BuggleWorld.html:28
 msgid "[!java|c]void [/!]setBodyColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 "[!java|c]void [/!]setCouleurCorps([!java|c]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
+#: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "<b>Look for a wall forward"
 msgstr "<b>Chercher un mur devant"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
+#: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "Look for a wall backward</b>"
 msgstr "Chercher un mur derrière</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:29
+#: src/plm/universe/bugglequest/BuggleWorld.html:30
 msgid "[!java]boolean [/!][!c]int [/!]isFacingWall()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estFaceMur()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:30
+#: src/plm/universe/bugglequest/BuggleWorld.html:31
 msgid "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estDosMur()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "<b>Get heading"
 msgstr "<b>Obtenir la direction"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "Set heading</b>"
 msgstr "Changer la direction</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "valid directions are:"
 msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:32
+#: src/plm/universe/bugglequest/BuggleWorld.html:33
 msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
 msgstr "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:33
+#: src/plm/universe/bugglequest/BuggleWorld.html:34
 msgid ""
 "[!java|c]void [/!]setDirection([!java|c]Direction [/!]dir[!scala]:"
 "Direction[/!])"
@@ -246,7 +255,7 @@ msgstr ""
 "Direction[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:34
+#: src/plm/universe/bugglequest/BuggleWorld.html:35
 msgid ""
 "[!scala|java|python]Direction.[/!]NORTH, [!scala|java|python]Direction."
 "[/!]EAST, [!scala|java|python]Direction.[/!]SOUTH and [!scala|java|"
@@ -257,140 +266,139 @@ msgstr ""
 "(sud) et [!scala|java|python]Direction.[/!]WEST (ouest)"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:35
+#: src/plm/universe/bugglequest/BuggleWorld.html:36
 msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
 "Renvoi si la buggle est actuellement <b>sélectionnée dans l'interface</b>"
 
 #. type: Content of: <pre>
-#: src/plm/universe/bugglequest/BuggleWorld.html:36
-#: src/plm/universe/turtles/TurtleWorld.html:75
+#: src/plm/universe/bugglequest/BuggleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:76
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:38
+#: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "<b>About the brush</b>"
 msgstr "<b>À propos de la brosse</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "<b>Brush down"
 msgstr "<b>Baisser la brosse"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "Brush up"
 msgstr "Lever la brosse"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "Get brush position</b>"
 msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:40
+#: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "[!java|c]void [/!]brushUp()"
 msgstr "[!java|c]void [/!]leveBrosse()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:41
+#: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid "[!java|c]void [/!]brushDown()"
 msgstr "[!java|c]void [/!]baisseBrosse()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:42
+#: src/plm/universe/bugglequest/BuggleWorld.html:43
 msgid "[!java]boolean [/!][!c]int [/!]isBrushDown()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estBrosseBaissee()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:43
+#: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "<b>Change the brush color"
 msgstr "<b>Modifier la couleur de la brosse"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:43
+#: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "Get the color of the brush</b>"
 msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:44
+#: src/plm/universe/bugglequest/BuggleWorld.html:45
 msgid "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 "[!java|c]void [/!]setCouleurBrosse([!java|c]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:45
+#: src/plm/universe/bugglequest/BuggleWorld.html:46
 msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCouleurBrosse()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:47
+#: src/plm/universe/bugglequest/BuggleWorld.html:48
 msgid "<b>Interacting with the world</b>"
 msgstr "<b>Interagir avec le monde</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:48
+#: src/plm/universe/bugglequest/BuggleWorld.html:49
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "<b>Get the color of the ground</b>"
 msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:49
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCouleurSol()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "<b>Look for a baggle on the ground"
-msgstr "<b>Chercher un biscuit par terre"
+msgstr "<b>Vrai si biscuit par terre"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Look for a baggle in bag"
-msgstr "Chercher un biscuit dans ses poches"
+msgstr "Vrai si on porte un biscuit"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Pickup a baggle"
-msgstr "Prendre un biscuit"
+msgstr "Ramasse un biscuit"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Drop a baggle</b>"
 msgstr "Poser un biscuit</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:52
+#: src/plm/universe/bugglequest/BuggleWorld.html:53
 msgid "(see the note on exceptions)"
 msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:53
+#: src/plm/universe/bugglequest/BuggleWorld.html:54
 msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estSurBiscuit()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:54
+#: src/plm/universe/bugglequest/BuggleWorld.html:55
 msgid "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]porteBiscuit()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:55
+#: src/plm/universe/bugglequest/BuggleWorld.html:56
 msgid "[!java]void [/!]pickupBaggle()"
 msgstr "[!java]void [/!]prendBiscuit()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:56
+#: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "[!java]void [/!]dropBaggle()"
 msgstr "[!java]void [/!]poseBiscuit()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
-#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 #: src/plm/universe/bugglequest/BuggleWorld.html:70
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
 #: src/plm/universe/bugglequest/BuggleWorld.html:72
@@ -403,11 +411,11 @@ msgstr "[!java]void [/!]poseBiscuit()"
 #: src/plm/universe/bugglequest/BuggleWorld.html:79
 #: src/plm/universe/bugglequest/BuggleWorld.html:80
 #: src/plm/universe/bugglequest/BuggleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:82
 #: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
 #: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
 #: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
 #: src/lessons/welcome/Main.html:469
-#: src/plm/universe/turtles/TurtleWorld.html:81
 #: src/plm/universe/turtles/TurtleWorld.html:82
 #: src/plm/universe/turtles/TurtleWorld.html:83
 #: src/plm/universe/turtles/TurtleWorld.html:84
@@ -420,36 +428,37 @@ msgstr "[!java]void [/!]poseBiscuit()"
 #: src/plm/universe/turtles/TurtleWorld.html:91
 #: src/plm/universe/turtles/TurtleWorld.html:92
 #: src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "&nbsp;"
 msgstr "&nbsp;"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "<b>Look for a message"
 msgstr "<b>Chercher un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Add a message"
 msgstr "Ajouter un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Read the message"
 msgstr "Lire le message"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Erase the message</b>"
 msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
+#: src/plm/universe/bugglequest/BuggleWorld.html:61
 msgid "[!java]boolean [/!][!c]int [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estSurMessage()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:61
+#: src/plm/universe/bugglequest/BuggleWorld.html:62
 msgid ""
 "[!java]void [/!]writeMessage([!java]String [/!][!c]char* [/!]msg[!scala]:"
 "String[/!])"
@@ -458,118 +467,118 @@ msgstr ""
 "String[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:62
+#: src/plm/universe/bugglequest/BuggleWorld.html:63
 msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
 msgstr "[!java]String [/!][!c]char* [/!]litMessage()[!scala]:String[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:63
+#: src/plm/universe/bugglequest/BuggleWorld.html:64
 msgid "[!java]void [/!]clearMessage()"
 msgstr "[!java]void [/!]effaceMessage()"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:66
-#: src/plm/universe/turtles/TurtleWorld.html:78
+#: src/plm/universe/bugglequest/BuggleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:79
 msgid "Valid colors"
 msgstr "Couleurs valides"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:68
-#: src/plm/universe/turtles/TurtleWorld.html:80
+#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Name"
 msgstr "Nom"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:68
-#: src/plm/universe/turtles/TurtleWorld.html:80
+#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Color"
 msgstr "Couleur"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:69
-#: src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:82
 msgid "[!scala|java|python]Color.[/!]black"
 msgstr "[!scala|java|python]Color.[/!]black"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:70
-#: src/plm/universe/turtles/TurtleWorld.html:82
+#: src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:83
 msgid "[!scala|java|python]Color.[/!]blue"
 msgstr "[!scala|java|python]Color.[/!]blue"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71
-#: src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/turtles/TurtleWorld.html:84
 msgid "[!scala|java|python]Color.[/!]cyan"
 msgstr "[!scala|java|python]Color.[/!]cyan"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:72
-#: src/plm/universe/turtles/TurtleWorld.html:84
+#: src/plm/universe/bugglequest/BuggleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:85
 msgid "[!scala|java|python]Color.[/!]darkGray"
 msgstr "[!scala|java|python]Color.[/!]darkGray"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:73
-#: src/plm/universe/turtles/TurtleWorld.html:85
+#: src/plm/universe/bugglequest/BuggleWorld.html:74
+#: src/plm/universe/turtles/TurtleWorld.html:86
 msgid "[!scala|java|python]Color.[/!]gray"
 msgstr "[!scala|java|python]Color.[/!]gray"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:74
-#: src/plm/universe/turtles/TurtleWorld.html:86
+#: src/plm/universe/bugglequest/BuggleWorld.html:75
+#: src/plm/universe/turtles/TurtleWorld.html:87
 msgid "[!scala|java|python]Color.[/!]green"
 msgstr "[!scala|java|python]Color.[/!]green"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:75
-#: src/plm/universe/turtles/TurtleWorld.html:87
+#: src/plm/universe/bugglequest/BuggleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:88
 msgid "[!scala|java|python]Color.[/!]lightGray"
 msgstr "[!scala|java|python]Color.[/!]lightGray"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:76
-#: src/plm/universe/turtles/TurtleWorld.html:88
+#: src/plm/universe/bugglequest/BuggleWorld.html:77
+#: src/plm/universe/turtles/TurtleWorld.html:89
 msgid "[!scala|java|python]Color.[/!]magenta"
 msgstr "[!scala|java|python]Color.[/!]magenta"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:77
-#: src/plm/universe/turtles/TurtleWorld.html:89
+#: src/plm/universe/bugglequest/BuggleWorld.html:78
+#: src/plm/universe/turtles/TurtleWorld.html:90
 msgid "[!scala|java|python]Color.[/!]orange"
 msgstr "[!scala|java|python]Color.[/!]orange"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:78
-#: src/plm/universe/turtles/TurtleWorld.html:90
+#: src/plm/universe/bugglequest/BuggleWorld.html:79
+#: src/plm/universe/turtles/TurtleWorld.html:91
 msgid "[!scala|java|python]Color.[/!]pink"
 msgstr "[!scala|java|python]Color.[/!]pink"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:79
-#: src/plm/universe/turtles/TurtleWorld.html:91
+#: src/plm/universe/bugglequest/BuggleWorld.html:80
+#: src/plm/universe/turtles/TurtleWorld.html:92
 msgid "[!scala|java|python]Color.[/!]red"
 msgstr "[!scala|java|python]Color.[/!]red"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:80
-#: src/plm/universe/turtles/TurtleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:81
+#: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "[!scala|java|python]Color.[/!]white"
 msgstr "[!scala|java|python]Color.[/!]white"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:81
-#: src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/bugglequest/BuggleWorld.html:82
+#: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "[!scala|java|python]Color.[/!]yellow"
 msgstr "[!scala|java|python]Color.[/!]yellow"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:84
+#: src/plm/universe/bugglequest/BuggleWorld.html:85
 msgid "Note on exceptions"
 msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/bugglequest/BuggleWorld.html:85
+#: src/plm/universe/bugglequest/BuggleWorld.html:86
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -590,7 +599,7 @@ msgstr ""
 "DontHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:93
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -809,7 +818,7 @@ msgstr "Méthodes avec paramètres"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:229
-#: src/lessons/welcome/methods/picture/PictureMono.html:2
+#: src/lessons/welcome/methods/picture/PictureMono1.html:2
 msgid "Methodically drawing"
 msgstr "Dessiner avec méthode"
 
@@ -1114,6 +1123,7 @@ msgstr ""
 #: src/lessons/turmites/langton/Langton.html:32
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -2152,10 +2162,11 @@ msgstr "Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire :"
 msgid "x = 5"
 msgstr "x = 5"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
 
@@ -4372,7 +4383,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/IcyHot.html:6
 #: src/lessons/welcome/bat/bool1/In1020.html:6
 #: src/lessons/welcome/bat/bool1/In3050.html:6
-#: src/lessons/welcome/bat/bool1/LastDigit.html:10
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:7
 #: src/lessons/welcome/bat/bool1/Main.html:12
 #: src/lessons/welcome/bat/bool1/Makes10.html:6
@@ -4395,18 +4405,18 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/InOrder.html:9
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:9
 #: src/lessons/welcome/bat/bool2/LessBy10.html:6
-#: src/lessons/welcome/bat/bool2/Main.html:5
+#: src/lessons/welcome/bat/bool2/Main.html:7
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:10
 #: src/lessons/welcome/bat/bool2/NearTen.html:9
 #: src/lessons/welcome/bat/bool2/RedTicket.html:10
-#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
 #: src/lessons/welcome/bat/bool2/SortaSum.html:8
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:11
 #: src/lessons/welcome/bat/bool2/TeaParty.html:12
 #: src/lessons/welcome/bat/bool2/TeenSum.html:9
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:6
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:9
-#: src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5
+#: src/lessons/bat/string1/Main.html:10
+#: src/lessons/bat/string1/AltPairs.html:5
 #: src/lessons/bat/string1/FrontTimes.html:8
 #: src/lessons/bat/string1/Last2.html:9
 #: src/lessons/bat/string1/StringBits.html:5
@@ -4417,10 +4427,10 @@ msgstr ""
 #: src/lessons/bat/string1/StringYak.html:8
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
-"javabat.com/"
+"codingbat.com/"
 msgstr ""
 "Cet exercice a été extrait pour PLM depuis l'excellent site d'exercices "
-"http://javabat.com/"
+"http://codingbat.com/"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array667/Array667.html:2
@@ -5041,7 +5051,7 @@ msgstr ""
 "partout."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/PictureMono.html:4
+#: src/lessons/welcome/methods/picture/PictureMono1.html:4
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:4
 msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
@@ -5051,7 +5061,7 @@ msgstr ""
 "pouvez voir en cliquant sur l'onglet «Objectif»."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:7
+#: src/lessons/welcome/methods/picture/PictureMono1.html:7
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:7
 msgid ""
 "Your goal (here and in any well written program) is to write the simplest "
@@ -5064,7 +5074,7 @@ msgstr ""
 "méthode particulière."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:11
+#: src/lessons/welcome/methods/picture/PictureMono1.html:11
 msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V. A possible decomposition is to write a method "
@@ -5078,7 +5088,7 @@ msgstr ""
 "[/!]faireV()</code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:16
+#: src/lessons/welcome/methods/picture/PictureMono1.html:16
 msgid ""
 "In this method, you should use the methods <code>brushUp()</code> and "
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
@@ -5092,7 +5102,7 @@ msgstr ""
 "position pour dessiner le prochain V."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:21
+#: src/lessons/welcome/methods/picture/PictureMono1.html:21
 msgid ""
 "Your turn. Your code should not be longer than 4 lines (not counting "
 "<code>makeV</code>)..."
@@ -5771,7 +5781,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:13
 #: src/lessons/welcome/traversal/Snake.html:40
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:48
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:50
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:11
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:11
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:7
@@ -7145,7 +7155,7 @@ msgstr ""
 #: src/lessons/welcome/traversal/Snake.html:33
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
-"returns false. Their is thus two way of writing it:"
+"returns false. There is two ways of writing it:"
 msgstr ""
 "Indication: la boucle principale de votre code doit continuer tant que la "
 "fonction adéquate renvoie faux. On peut l'écrire de deux façons:"
@@ -7239,13 +7249,17 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
-msgid "Beware, the first line and column are numbered 0 and not 1..."
+msgid ""
+"Beware, the first line and column are numbered 0 and not 1, and the point "
+"(0,0)  is on the top left corner. This may seem surprising, but it is very "
+"often so in Computer Science."
 msgstr ""
-"Attention, la première ligne et la première colonne sont numérotées 0 et non "
-"1..."
+"Attention, la première ligne et la première colonne sont numérotées 0 au "
+"lieu de 1, et l'origine (0, 0) est dans le coin en haut à gauche. Cela peut "
+"sembler étonnant, mais ces choses sont traditionnelles en informatique."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:30
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:32
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
@@ -7258,7 +7272,7 @@ msgstr ""
 "sinon, il faut aller à la case du dessous."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:35
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:37
 msgid ""
 "At this point, you can launch your program to check that the buggle "
 "correctly traverse the world in the expected order, and that it stops when "
@@ -7270,7 +7284,7 @@ msgstr ""
 "votre programme ne se termine pas correctement."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:39
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:41
 msgid ""
 "It is now time to write down the cell numbers. For that, you will need a "
 "counter initialiser to zero at the beginning of your code, and incremented "
@@ -7283,7 +7297,7 @@ msgstr ""
 "écrire cette valeur au sol (avec <code>ecritMessage()</code>)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:45
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:47
 msgid ""
 "You probably need to write the first [!java|scala|c]or last [/!]value out of "
 "the main loop [!java|scala|c], depending on whether you prefer to use a "
@@ -7411,6 +7425,7 @@ msgstr "Que puis-je faire pour améliorer cet univers de PLM?"
 #: src/lessons/sort/dutchflag/Main.html:11
 #: src/lessons/sort/pancake/Main.html:32
 #: src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14
+#: src/lessons/recursion/cons/Main.html:7
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -8673,7 +8688,7 @@ msgstr ""
 "faire: \n"
 "        Pour tout i dans [0,lgr-2]\n"
 "          Si les cases i et i+1 doivent être inversées, le faire\n"
-"     tant qu'on a inverser des choses lors du dernier parcours\n"
+"     tant qu'on a inversé des choses lors du dernier parcours\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
@@ -8715,7 +8730,7 @@ msgid ""
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"          Si les cases j et j+1 doivent être inversées, le faire\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:20
@@ -8796,7 +8811,7 @@ msgid ""
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"          Si les cases j et j+1 doivent être inversées, le faire\n"
 "       Si le parcours sur les j n'a rien inversé, casser la boucle\n"
 
 #. type: Content of: <p>
@@ -8960,7 +8975,7 @@ msgid ""
 "position in the array."
 msgstr ""
 "L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à "
-"sa place dans la partie du tableau déjà trié.  Lorsque l'on regarde un "
+"sa place dans la partie du tableau déjà triée.  Lorsque l'on regarde un "
 "élément x du tableau, on est dans la situation suivante : tous les éléments "
 "à gauche du tableau sont déjà triés, et il faut insérer x à sa place dans le "
 "tableau."
@@ -9080,7 +9095,7 @@ msgid ""
 "the gap, the faster the elements are moved to their final destination, but "
 "also the less precise is this move. It is thus mandatory to apply the "
 "algorithm with a serie of decreasing gaps. At the last step, when the gap is "
-"1, InsertionSort is used, but onto an array which is almost already sorted "
+"one, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
 "Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en "
@@ -9088,13 +9103,12 @@ msgstr ""
 "(faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) "
 "au tri par insertion (le CombSort est une variante du tri à bulle).  Au lieu "
 "de comparer les valeurs adjacentes lors du tri par insertion, on compare des "
-"valeurs séparées par un <i>gap</i> (écartement) plus grand. Plus le gap est "
-"grand et plus les éléments sont déplacés rapidement vers leur position "
-"finale, mais aussi plus le déplacement est imprécis. Il faut donc appliquer "
-"l'algorithme avec une séquence de gaps décroissante vers 1. Ainsi, à la "
-"dernière étape quand le gap vaut 1, on applique l'algorithme de tri par "
-"insertion de base, mais sur un tableau déjà presque trié par les étapes "
-"précédentes."
+"valeurs séparées par un <i>écart</i> plus grand. Plus l'écart est grand et "
+"plus les éléments sont déplacés rapidement vers leur position finale, mais "
+"aussi plus le déplacement est imprécis. Il faut donc appliquer l'algorithme "
+"avec une séquence d'écarts décroissante vers un. Ainsi, à la dernière étape "
+"quand l'écart vaut un, on applique l'algorithme de tri par insertion de "
+"base, mais sur un tableau déjà presque trié par les étapes précédentes."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:15
@@ -9102,9 +9116,9 @@ msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
 msgstr ""
-"Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur du "
-"gap, puis de le diviser par deux à chaque étape.  Le pseudo-code est donc le "
-"suivant:"
+"Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur de "
+"l'écartement, puis de le diviser par deux à chaque étape.  Le pseudo-code "
+"est donc le suivant:"
 
 #. type: Content of: <p><pre>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:18
@@ -9114,9 +9128,9 @@ msgid ""
 "while gap>0:\n"
 "  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.\n"
 msgstr ""
-"gap=lgr/2\n"
-"tant que gap>0:\n"
-"  appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis i-2gap et i-gap, puis i-3gap et i-2gap, etc.\n"
+"ecart=lgr/2\n"
+"tant que ecart>0:\n"
+"  appliquer l'algorithme de tri par insertion en comparant i-ecart et i, puis i-2ecart et i-ecart, puis i-3ecart et i-2ecart, etc.\n"
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:23
@@ -9131,7 +9145,7 @@ msgid ""
 "ShellSort is a valid candidate for array of several hundred thousands when "
 "correctly implemented."
 msgstr ""
-"Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se "
+"Comme dans le cas du CombSort, la séquence des valeurs prises par l'écart se "
 "révèle être d'une importance capitale pour les performances du tri de Shell. "
 "Il existe des cas pathologiques qui font que la séquence que nous avons "
 "utilisée ici présente une complexité en O(n^2) dans le pire des cas. "
@@ -9152,7 +9166,7 @@ msgid ""
 msgstr ""
 "Dans notre cas, les instances de tableaux que nous utilisons sont trop "
 "petites pour que ces optimisations présentent un réel avantage. Si on "
-"voulait le faire, il faudrait prendre en valeur initiale du gap la plus "
+"voulait le faire, il faudrait prendre en valeur initiale de l'écart la plus "
 "grande valeur de la suite utilisée, puis prendre les valeurs successives en "
 "descendant ensuite."
 
@@ -9167,13 +9181,13 @@ msgid ""
 "International Symposium on Fundamentals of Computation Theory, LNCS 2001; "
 "Vol. 2138)."
 msgstr ""
-"De façon intéressante, déterminer la meilleure séquence de gap pour le shell "
-"sort s'avère être un problème de recherche de notre siècle en informatique. "
-"Par exemple, un article publié en 2001 propose la suite suivante, qui semble "
-"optimale en pratique pour des tailles de tableau allant jusqu'à 10^5: {1, 4, "
-"10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the "
-"Average Case of Shellsort, 13th International Symposium on Fundamentals of "
-"Computation Theory, LNCS 2001; Vol. 2138)."
+"De façon intéressante, déterminer la meilleure séquence d'écart pour le "
+"shell sort s'avère être un problème de recherche de notre siècle en "
+"informatique. Par exemple, un article publié en 2001 propose la suite "
+"suivante, qui semble optimale en pratique pour des tailles de tableau allant "
+"jusqu'à 10^5: {1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best "
+"Increments for the Average Case of Shellsort, 13th International Symposium "
+"on Fundamentals of Computation Theory, LNCS 2001; Vol. 2138)."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:2
@@ -9195,32 +9209,36 @@ msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
 "smallest value over the whole array. For the second one, it takes the second "
-"smallest value, which is the smallest value from the cell not already sorted."
+"smallest value, which is the smallest value from the cell not already "
+"sorted. You of course don't have to sort the last cell of the array, that is "
+"already sorted when you consider it."
 msgstr ""
 "Son principe est simplement de sélectionner pour chaque case du tableau la "
 "plus petite valeur de la partie pas encore triée. Ainsi, pour la première "
 "case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
 "la seconde plus petite valeur, qui se trouve être la plus petite des cases "
-"n'étant pas encore triées."
+"n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la "
+"dernière case du tableau, puisqu'elle est déjà triée lorsque vous la "
+"considérez."
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:13
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
 msgid ""
-"More generally, for the cell N, it looks the cell M in [n;len] containing "
+"More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
 msgstr ""
-"Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant "
+"Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant "
 "la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
 "et celui de la case M."
 
 #. type: Content of: <p><p><h2>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
 msgid "Existing variations"
 msgstr "Variantes possibles"
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:19
 msgid ""
 "Another classical algorithm which idea is based on the selection of good "
 "elements is HeapSort, but it uses a heap data structure which we did not see "
@@ -9335,7 +9353,7 @@ msgstr ""
 "peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il "
 "trouve souvent des bugs bizarres qui auraient été très pénibles à débugger "
 "s'il ne les avait pas attrapé à la source. Et comme de plus les auteurs de "
-"Scala sont pragmatiques, cela peut aussi de manière simplifiée :"
+"Scala sont pragmatiques, cela peut aussi s'écrire de manière simplifiée :"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:36
@@ -9410,24 +9428,20 @@ msgstr ""
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
-"Basically, he looks at the flower pot next to him and the previous one; if "
-"they are in the right order he steps one pot forward, otherwise he swaps "
-"them and steps one pot backwards. Boundary conditions: if there is no "
-"previous pot, he steps forwards; if there is no pot next to him, he is "
+"Basically, he looks at the flower pot next to him and the one immediately "
+"after ; if they are in the right order he steps one pot forward, otherwise "
+"he swaps them and steps one pot backwards. Boundary conditions: if there is "
+"no previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
 msgstr ""
 "L'algorithme de tri du gnome repose sur la manière habituelle de travailler "
-"des\n"
-"nains de jardin pour trier une ligne de pots de fleurs: Le nain regarde le "
-"pot\n"
-"de fleur qui est à côté de lui et il regarde également le pot de fleurs\n"
-"précédent; si ces deux pots sont alignés dans le bon ordre, le nain se "
-"déplace\n"
-"en avant d'un pot de fleurs, sinon il les échange et se déplace en arrière "
-"d'un\n"
-"pot de fleur. Condition aux limites&nbsp;: si il n'y a pas de pot de fleurs "
-"précédent, le nain avance ; si il n'y a pas de pot suivant alors il a "
-"terminé sa tâche."
+"des nains de jardin pour trier une ligne de pots de fleurs: Le nain regarde "
+"le pot de fleur qui est à côté de lui et il regarde également le pot de "
+"fleurs juste après&nbsp;; si ces deux pots sont alignés dans le bon ordre, "
+"le nain se déplace en avant d'un pot de fleurs, sinon il les échange et se "
+"déplace en arrière d'un pot de fleur. Condition aux limites&nbsp;: si il n'y "
+"a pas de pot de fleurs précédent, le nain avance ; si il n'y a pas de pot "
+"suivant alors il a terminé sa tâche."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/dutchflag/Main.html:2
@@ -9901,12 +9915,11 @@ msgstr ""
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
-"where the bottom pancake is at rank 0, and the one above at rank 1."
+"with the top-most pancake is at rank 0, and the one below at rank 1."
 msgstr ""
-"Vous devez aider ce pauvre homme à trier sa pile en retournant des\n"
-"crêpes. Chaque crêpe est définie par son rayon et son rang dans la pile. La "
-"pile\n"
-"la plus basse est de rang 0, et celle placée au dessus d'elle est de rang 1."
+"Vous devez aider ce pauvre homme à trier sa pile en retournant des crêpes. "
+"Chaque crêpe est définie par son rayon et son rang dans la pile. La pile la "
+"plus haute est de rang 0, et celle placée au dessous d'elle est de rang 1."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:17
@@ -11264,11 +11277,15 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:24
-msgid "Returns the current position of the turtle."
-msgstr "Retourne la position actuelle de la tortue."
+msgid ""
+"Returns the current position of the turtle.  Note that the point (0,0) is on "
+"the top left corner, as it is often the case in Computer Science."
+msgstr ""
+"Renvoie la position courante de la tortue. L'origine (0; 0) est dans le coin "
+"en haut à gauche, comme c'est souvent le cas en informatique."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:26
+#: src/plm/universe/turtles/TurtleWorld.html:27
 #, no-wrap
 msgid ""
 "[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
@@ -11280,111 +11297,111 @@ msgstr ""
 "[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:29
+#: src/plm/universe/turtles/TurtleWorld.html:30
 msgid "Teleports the turtle to a new position (without leaving any trace)."
 msgstr "Téléporte la tortue à une nouvelle position (sans laisser de trace)."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:31
+#: src/plm/universe/turtles/TurtleWorld.html:32
 #, no-wrap
 msgid "[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]allerVers([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:32
+#: src/plm/universe/turtles/TurtleWorld.html:33
 msgid "Moves the turtle to a new position."
 msgstr "Déplace la tortue à une nouvelle position."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:34
+#: src/plm/universe/turtles/TurtleWorld.html:35
 #, no-wrap
 msgid "[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]cercle([!java|c]double [/!]rayon[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:35
+#: src/plm/universe/turtles/TurtleWorld.html:36
 msgid "Draw a circle of the specified radius centered on the turtle."
 msgstr "Dessine un cercle du rayon demandé et centré sur la tortue."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:38
 #, no-wrap
 msgid "[!java|c]void [/!]hide()"
 msgstr "[!java|c]void [/!]cache()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:38
+#: src/plm/universe/turtles/TurtleWorld.html:39
 msgid "Hides the turtle."
 msgstr "Cache la tortue."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:40
+#: src/plm/universe/turtles/TurtleWorld.html:41
 #, no-wrap
 msgid "[!java|c]void [/!]show()"
 msgstr "[!java|c]void [/!]montre()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:41
+#: src/plm/universe/turtles/TurtleWorld.html:42
 msgid "Shows the turtle back."
 msgstr "Montre la tortue."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:43
+#: src/plm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estVisible()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:44
+#: src/plm/universe/turtles/TurtleWorld.html:45
 msgid "Returns whether the turtle is currently visible."
 msgstr "Renvoie vrai si la tortue est actuellement visible."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:46
+#: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
 msgid "[!java|c]void [/!]clear()"
 msgstr "[!java|c]void [/!]efface()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:47
+#: src/plm/universe/turtles/TurtleWorld.html:48
 msgid "Removes any trail on the sheet."
 msgstr "Efface toutes les traces de la feuille."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:49
+#: src/plm/universe/turtles/TurtleWorld.html:50
 #, no-wrap
 msgid "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr "[!java|c]double [/!]getCap()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:50
+#: src/plm/universe/turtles/TurtleWorld.html:51
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr "Retourne le cap actuel de la tortue (en degrés)."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:53
 #, no-wrap
 msgid "[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]setCap([!java|c]double [/!]angle[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:53
+#: src/plm/universe/turtles/TurtleWorld.html:54
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr "Change le cap de la tortue à l'angle indiqué (en degrés)."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:56
 msgid "Functions about the pen"
 msgstr "Fonctions à propos du stylo"
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:58
 #, no-wrap
 msgid "[!java|c]void [/!]penUp()"
 msgstr "[!java|c]void [/!]leveCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:59
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
@@ -11394,13 +11411,13 @@ msgstr ""
 "déplacements suivants."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:61
+#: src/plm/universe/turtles/TurtleWorld.html:62
 #, no-wrap
 msgid "[!java|c]void [/!]penDown()"
 msgstr "[!java|c]void [/!]baisseCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:62
+#: src/plm/universe/turtles/TurtleWorld.html:63
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
@@ -11409,45 +11426,45 @@ msgstr ""
 "déplacements."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:64
+#: src/plm/universe/turtles/TurtleWorld.html:65
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:65
+#: src/plm/universe/turtles/TurtleWorld.html:66
 msgid "Returns the current pen position as a boolean."
 msgstr "Retourne si le stylo est actuellement baissé ou non."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:68
 #, no-wrap
 msgid "[!java|c]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCouleur()[!scala]:Color[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:68
+#: src/plm/universe/turtles/TurtleWorld.html:69
 msgid "Returns the current pen color."
 msgstr "Retourne la couleur actuelle du stylo."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:71
 #, no-wrap
 msgid "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
 msgstr "[!java|c]void [/!]setCouleur([!java|c]Color [/!]couleur[!scala]:Color[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:72
 msgid "Changes the pen color."
 msgstr "Modifier la couleur du stylo."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:74
 msgid "Other functions"
 msgstr "Autres fonctions"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:77
 msgid ""
 "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
@@ -11499,7 +11516,13 @@ msgid ""
 "#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-"
 "shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
 "shapes-challenges.html</a>."
-msgstr "D'autres exercises devraient être ajoutés. Une mine d'inspiration quasi inépuisable se trouve à l'adresse <a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/#sect4</a>, tandis que d'autres challenges intéressants se trouvent à l'adresse <a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
+msgstr ""
+"D'autres exercises devraient être ajoutés. Une mine d'inspiration quasi "
+"inépuisable se trouve à l'adresse <a href=\"http://neoparaiso.com/logo/"
+"#sect4\">http://neoparaiso.com/logo/#sect4</a>, tandis que d'autres "
+"challenges intéressants se trouvent à l'adresse <a href=\"http://billkerr2."
+"blogspot.fr/2009/08/40-maths-shapes-challenges.html.\">http://billkerr2."
+"blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
@@ -11528,6 +11551,539 @@ msgid ""
 msgstr ""
 "Vous devez connaître la syntaxe de base du langage que vous allez choisir, "
 "mais aucune expérience n'est nécessaire pour entreprendre cette leçon."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:2
+msgid "ConsWorld"
+msgstr "Monde des listes récursives"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:4
+msgid ""
+"This world allows you to experiment with the recursive lists, as they were "
+"first introduced in Lisp. It is very similar to the BatWorld, but you are "
+"supposed to write recursive functions working on [!python|java]recursive "
+"strings. Since [!thelang] does not provide such a construct natively, the "
+"ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
+"scala]lists of integers (<code>List[Int]</code>).[/!]"
+msgstr ""
+"Ce monde vous permettra d'expérimenter avec les listes récursives, telles "
+"qu'elles ont été définies en Lisp à l'origine. Ce monde est assez similaire "
+"au BatWorld, mais vous êtes supposé écrire des fonctions récursives agissant "
+"sur des [!python|java]listes récursives. Comme [!thelang] ne propose rien de "
+"tel en natif, ce monde défini un nouveau type nommé <code>RecList</code> "
+"pour cela.[/!] [!scala]listes d'entiers (<code>List[Int]</code>).[/!]"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:12
+msgid ""
+"Any given such list is either the empty list (noted <code>[!scala]Nil[/!][!"
+"java]null[/!][!python]None[/!]</code>), or an integer followed by a list. If "
+"a list is not empty, you can retrieve its first integer with <code>list."
+"head</code> and the list containing its other parameters with <code>list."
+"tail</code>. Of course, the empty list has no head nor the tail, so trying "
+"to access these elements will result in an (unpleasant) error message."
+msgstr ""
+"Une telle liste peut être soit la liste vide (notée <code>[!scala]Nil[/!][!"
+"java]null[/!][!python]None[/!]</code>), soit un entier suivi d'une liste. Si "
+"une liste n'est pas vide, vous pouvez retrouver son premier entier avec "
+"<code>list.head</code>. On dit qu'on extrait alors la tête de la liste.La "
+"liste contenant ses autres éléments (tous sauf la tête) peut être retrouvée "
+"avec <code>list.tail</code>. On dit qu'on extrait la suite de la liste.Bien "
+"entendu, la liste vide n'a ni tête ni suite, et vous ne devriez pas tenter "
+"d'accéder à ces éléments sous peine d'obtenir un message d'erreur "
+"(particulièrement déplaisant)."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:20
+msgid ""
+"To build your own list, you need to concatenate a head and a tail as "
+"follows: [!java|python]<code>cons(head, tail)</code>[/!] [!scala]<code>head::"
+"tail</code> Note that <code>::</code> is a generic operator in Scala to "
+"build lists.[/!]"
+msgstr ""
+"Pour construire votre propre liste, vous devez concaténer une tête et une "
+"suite comme suit : [!java|python]<code>cons(tête, suite)</code>[/!] [!"
+"scala]<code>tête::suite</code>. Il se trouve que <code>::</code> est un "
+"opérateur générique du langage Scala pour construire des listes.[/!]"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:26
+msgid ""
+"So, in summary, you can solve every exercises of this lesson with the "
+"following constructs."
+msgstr ""
+"En résumé, vous pouvez résoudre tous les exercices de cette leçon avec les "
+"constructions suivantes :"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+msgid "<b>The empty list:</b>"
+msgstr "<b>La liste vide:</b>"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+#, no-wrap
+msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
+msgstr "[!java|c]null[/!][!scala]Nil[/!][python]None[/!]"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+msgid "<b>Get the first element of <code>l</code></b>"
+msgstr "<b>Obtenir le premier élément de <code>l</code></b>"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+#, no-wrap
+msgid "l.head"
+msgstr "l.head"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+msgid "<b>Get the rest of the list</b>, when the first element is removed:"
+msgstr "<b>Obtenir la suite de la liste</b>, privée de son premier élément:"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+#, no-wrap
+msgid "l.tail"
+msgstr "l.tail"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:33
+msgid ""
+"<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
+"java|python]"
+msgstr ""
+"<b>Construire une liste</b> à partir d'une <code>valeur</code> et d'une "
+"<code>liste</code>: [!java|python]"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
+#, no-wrap
+msgid "cons(value, list)"
+msgstr "cons(valeur, liste)"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#, no-wrap
+msgid "value::list"
+msgstr "valeur::liste"
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Main.html:2
+msgid "Recursive Lists"
+msgstr "Listes récursives"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Main.html:3
+msgid ""
+"This lesson contains a bunch of classical exercises on recursive lists.  It "
+"is certainly not the most pleasant lesson to do, but I think that it is the "
+"easiest of the PLM lessons dealing with recursion."
+msgstr ""
+"Cette leçon propose un paquet d'exercices classiques sur les listes "
+"récursives. Il ne s'agit certainement pas de la leçon la plus drôle de la "
+"PLM, mais il s'agit certainement de la plus simple des leçons PLM sur la "
+"récursivité."
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:10
+msgid ""
+"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
+"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
+"report them as an issue."
+msgstr ""
+"De nouveaux exercices pourraient être proposés, par exemple inspirés de "
+"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf "
+"Si vous en connaissez d'autres, nous vous serions reconnaissant de nous en "
+"parler dans un rapport d'anomalie."
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:13
+msgid ""
+"It would be interesting to check the asymptotic complexity of the student's "
+"code, but that does not sound easy to do. In Python and Java (where we "
+"provide a hand-made RecList class), we could count the amount of cons per "
+"exercise, but it won't be easy to relate this to the right BatTest. For "
+"Scala, it sounds even more difficult as we use the classical :: operators of "
+"the language. That will be difficult to override to add a counting "
+"mechanism. Another solution would be to ensure that the call stack does not "
+"pass a given threshold, but that sounds very difficult too. Any idea is "
+"welcome."
+msgstr ""
+"Il serait intéressant de vérifier la complexité algorithmique du code "
+"proposé par les étudiants, mais cela semble assez difficile à faire. En "
+"Python et Java, nous proposons un type de donnée spécifique (les "
+"<code>RecList</code>) alors nous pourrions compter le nombre de cons "
+"réalisés dans chaque exercice, mais il risque d'être compliqué de trouver le "
+"test auquel rattacher chaque opération. En Scala, cela s'annonce encore plus "
+"difficile car nous utilisons directement des mots-clés du langage. Il serait "
+"probablement difficile d'y injecter un mécanisme comptant les opérations. On "
+"pourrait vouloir assurer que la pile d'appel ne dépasse pas une profondeur "
+"donnée, mais cela semble également difficile à implémenter. Si vous avez des "
+"idées, merci de nous en faire part."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Length.html:2
+msgid "Length"
+msgstr "Longueur"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Length.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"length[!scala] (without using its <code>size</code> method, of course)[/!]."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"retournez sa longueur[!scala], sans utiliser la méthode <code>size</code> de "
+"la liste, bien entendu[/!]."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:5
+#: src/lessons/recursion/cons/IsMember.html:7
+#: src/lessons/recursion/cons/Occurrence.html:7
+#: src/lessons/recursion/cons/Last.html:6
+#: src/lessons/recursion/cons/Min.html:6
+#: src/lessons/recursion/cons/Increasing.html:6
+#: src/lessons/recursion/cons/ButLast.html:6
+#: src/lessons/recursion/cons/PlusOne.html:5
+#: src/lessons/recursion/cons/Remove.html:9
+#: src/lessons/recursion/cons/ButNfirst.html:6
+msgid "Your solution should be linear in time."
+msgstr "Votre solution devrait être linéaire en temps."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/IsMember.html:2
+msgid "IsMember"
+msgstr "EstMembre"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/IsMember.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return true if the given integer is one of the elements of the "
+"list, or false if it cannot be found."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier,retournez <code>true</code> si cet entier fait partie des éléments de "
+"la liste, et <code>false</code> sinon."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Occurrence.html:2
+msgid "Occurrences"
+msgstr "Occurrences"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Occurrence.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return the amount of occurrences of the given integer in the list. "
+"If the integer is not a member of the list, the function should thus return "
+"0."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier,retournez le nombre d'occurences de cet entier dans la liste. Si "
+"l'entier n'est pas membre de la liste, la fonction doit renvoyer 0."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Last.html:2
+msgid "Last"
+msgstr "Dernier"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Last.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"last element.  You can assume that the list is not empty."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez son dernier élément. Vous pouvez supposer que la liste n'est pas "
+"vide."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Min.html:2
+msgid "Min"
+msgstr "Min"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Min.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"smallest of its values.  You will probably need an extra function, even if "
+"you can assume that the list is not empty."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez la plus petite de ses valeurs. Vous aurez probablement besoin "
+"d'une fonction supplémentaire, mais vous pouvez supposer que la liste n'est "
+"pas vide."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Increasing.html:2
+msgid "Increasing"
+msgstr "Croissante"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Increasing.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return "
+"whether its elements form an increasing sequence (i.e., if the elements are "
+"sorted from the smallest to the largest one)."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez <code>true</code> si ses éléments forment une suite croissante "
+"(c'est-à-dire si ses éléments sont classés du plus petit au plus grand)."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButLast.html:2
+msgid "But Last"
+msgstr "Sauf Dernier"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButLast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"list containing every elements but the last one.  You can assume that the "
+"list is not empty."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez la liste contenant tous ses éléments sauf le dernier. Vous pouvez "
+"supposer que la liste n'est pas vide."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/PlusOne.html:2
+msgid "PlusOne"
+msgstr "PlusUn"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/PlusOne.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list containing all elements of your parameter incremented by one."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"retournez une nouvelle liste dont les éléments sont ceux de votre paramètre, "
+"incrémentés de un."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Remove.html:2
+msgid "Remove"
+msgstr "Retire"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Remove.html:4
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] <code>L</"
+"code>and an integer, return a new list containing all elements of <code>L</"
+"code> that are not equal to the value received as parameter."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"<code>L</code> et un entier,retournez une nouvelle liste contenant tous les "
+"éléments de <code>L</code> n'étant pas égaux à l'entier passé en paramètre."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nth.html:2
+msgid "Nth"
+msgstr "Nième"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nth.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the <code>N</code>th element of the list."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier <code>N</code>, retournez le <code>N</code>ième élément de la liste."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nth.html:6
+#: src/lessons/recursion/cons/Nfirst.html:7
+msgid ""
+"You can assume that the list is long enough, i.e. that there is at least "
+"<code>N</code> elements.  Your solution should be linear in time."
+msgstr ""
+"Vous pouvez supposer que la liste est suffisamment longue, c'est à dire "
+"qu'elle contient au moins <code>N</code> éléments. Votre solution devrait "
+"être linéaire en temps."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nfirst.html:2
+msgid "Nfirst"
+msgstr "nPremiers"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list constituted of the first <code>N</code> "
+"elements. You can assume that the list is long enough, i.e. that there is at "
+"least <code>N</code> elements."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier <code>N</code>, retournez la liste constituée de ses <code>N</code> "
+"premiers éléments. Vous pouvez supposer que la liste est suffisamment "
+"longue, c'est à dire qu'elle contient au moins <code>N</code> éléments."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nlast.html:2
+msgid "Nlast"
+msgstr "nDerniers"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list with only the <code>N</code> last elements."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier <code>N</code>, retournez la liste constituée de ses <code>N</code> "
+"derniers éléments. "
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nlast.html:6
+#: src/lessons/recursion/cons/ButNlast.html:6
+#: src/lessons/recursion/cons/Concat.html:6
+msgid ""
+"Your solution should be linear in time, but you will probably need to define "
+"several functions to achieve that complexity."
+msgstr ""
+"Votre solution devrait être linéaire en temps, mais vous aurez probablement "
+"besoin de définir plusieurs fonctions pour atteindre cette complexité."
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/cons/Nlast.html:8
+#: src/lessons/recursion/cons/ButNlast.html:8
+#: src/lessons/recursion/cons/Reverse.html:8
+#: src/lessons/recursion/cons/Concat.html:8
+msgid "I cannot do it in linear time"
+msgstr "Je n'arrive pas à le faire en temps linéaire"
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Nlast.html:9
+#: src/lessons/recursion/cons/ButNlast.html:9
+msgid ""
+"The trick is to compute only once (and beforehand) how many elements you "
+"should keep."
+msgstr ""
+"L'astuce est de calculer une seule fois (et à l'avance) combien d'éléments "
+"il faut garder."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNfirst.html:2
+msgid "But Nfirst"
+msgstr "Sauf nPremiers"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> first elements."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
+"premiers éléments. "
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNlast.html:2
+msgid "But Nlast"
+msgstr "Sauf nDerniers"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> last elements."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
+"entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
+"derniers éléments."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Reverse.html:2
+msgid "Reverse"
+msgstr "Inverse"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Reverse.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list with all elements in reverse order."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!], "
+"retournez la liste constituée de ses éléments en ordre inverse."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Reverse.html:5
+msgid ""
+"This function is very important and you should not pass that challenge.  "
+"Your solution should be linear in time, with the help of helper functions."
+msgstr ""
+"Cette fonction est très importante et vous ne devriez pas passer ce défi "
+"sans trouver la réponse, qui doit être linéaire grâce à l'aide de fonctions "
+"supplémentaires."
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Reverse.html:9
+msgid ""
+"You need an helper function in which the result is accumulated (built) at "
+"each step."
+msgstr ""
+"Il faut réaliser une fonction d'aide dont le résultat est accumulé "
+"(construit) à chaque étape."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Concat.html:2
+msgid "Concat"
+msgstr "Concaténation"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Concat.html:3
+msgid ""
+"Given two [!scala]List[Int][/!][!java|python]recursive list[/!] <code>l1</"
+"code> and <code>l2</code>, return a new list with all elements of <code>l1</"
+"code> followed by the elements of <code>l2</code>."
+msgstr ""
+"Étant donnée deux [!scala]List[Int][/!][java|python]listes récursives[/!] "
+"<code>l1</code> et <code>l2</code>, retournez la liste constituée de tous "
+"les éléments de <code>l1</code> suivis de tous les éléments de <code>l2</"
+"code>."
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Concat.html:9
+msgid ""
+"You need to modify <code>l1</code> beforehand so that the computations at "
+"each step of the recursion are in constant time."
+msgstr ""
+"Il faut modifier <code>l1</code> au préalable pour s'assurer que chaque "
+"étape récursive soit en temps constant."
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/AllDifferent.html:2
+msgid "All Different"
+msgstr "Tous différents"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/AllDifferent.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return true "
+"if any two elements of the list are different (ie, if no element appears "
+"more than once in the list)."
+msgstr ""
+"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!], "
+"retournez <code>false</code> si deux éléments ont la même valeur, et "
+"<code>true</code> si tous les éléments sont différents deux à deux."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/AllDifferent.html:6
+msgid ""
+"The simplest solution is in O(n²), meaning that it runs in quadratic time.  "
+"You will probably have to define one extra function for that.  Another much "
+"more complex solution runs in O(n log(n))."
+msgstr ""
+"La solution la plus simple est en O(n²), ce qui veut dire qu'elle s'exécute "
+"en temps quadratique. Vous aurez probablement besoin de définir une fonction "
+"supplémentaire pour cela. Une autre solution bien plus complexe s'exécute en "
+"O(n log(n))."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/Main.html:2
@@ -11651,7 +12207,7 @@ msgstr ""
 "Aujourd'hui, nous allons faire la connaissance des petites cousines des "
 "buggles : les tortues. En fait, les tortues sont bien plus vieilles que les "
 "buggles. Elles ont été inventées dans les années 70 par un scientifique du "
-"MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
+"MIT nommé Seymour Papert pour aider à l'enseignement de la programmation, et "
 "les buggles sont une variation sur le thème inventée par Lyn Turbak du "
 "Wellesley College plus tard."
 
@@ -11852,19 +12408,54 @@ msgstr ""
 "Au niveau 2, le processus est répété avec le tiers central de chaque segment "
 "remplacé par un petit triangle équilatéral."
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:20
+msgid "The pseudo-code of the general case is the following:"
+msgstr "Le pseudo-code du cas général est le suivant :"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/koch/Koch.html:22
+#, no-wrap
+msgid ""
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment  \n"
+"  Turn 120 degrees to the right\n"
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment\n"
+msgstr ""
+"Dessiner récursivement un segment plus petit\n"
+"Tourner à 60 degrés vers la gauche\n"
+"Dessiner récursivement un segment plus petit\n"
+"Tourner à 120 degrés vers la droite\n"
+"Dessiner récursivement un segment plus petit\n"
+"Tourner à 60 degrés vers la gauche\n"
+"Dessiner récursivement un segment plus petit\n"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:30
+msgid ""
+"As you can see, the function forward() is not called from the recursive "
+"case, only in the base case when there is no recursive call."
+msgstr ""
+"Comme vous pouvez le constater, la fonction avance() n'est pas appelée dans "
+"le cas récursif, mais seulement dans le cas de base, quand il n'y a plus "
+"d'appel récursif."
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr "TL;DR. Vous pouvez me dessiner tout ça ?"
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:21
+#: src/lessons/recursion/koch/Koch.html:35
 #: src/lessons/recursion/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr "Voici le résultat des premiers niveaux de récursion."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:25
+#: src/lessons/recursion/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -12081,6 +12672,40 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/tree/Tree.html:16
 msgid ""
+"At the end, here is the pseudo-code of the general case (you should add the "
+"base case yourself):"
+msgstr ""
+"Au final, voici le pseudo-code du cas général de la récursivité (il manque "
+"bien sûr le cas de base, laissé en exercice)."
+
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/recursion/tree/Tree.html:18
+#, no-wrap
+msgid ""
+"  Move forward of the desired length\n"
+"  Draw (recursively) the right subtree\n"
+"  Draw (recursively) the left subtree\n"
+"  Move back to your initial position\n"
+msgstr ""
+"Avancer de la longueur désirée\n"
+"Dessiner (récursivement) le sous-arbre de droite\n"
+"Dessiner (récursivement) le sous-arbre de gauche\n"
+"Reculer de la longueur désirée pour retourner au point de départ\n"
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:23
+msgid ""
+"Don't forget to add the base case to your code, or your buggle will enter an "
+"infinite loop.  Then, drawing the right subtree comes down to turn right and "
+"then draw the subtree."
+msgstr ""
+"N'oubliez pas d'ajouter le cas de base dans votre code, ou la buggle va "
+"entrer en boucle infinie. De plus, dessiner le sous-arbre droit revient à "
+"tourner à droite puis dessiner un sous-arbre."
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:26
+msgid ""
 "As you can see, each recursion level is represented by a distinctive color. "
 "For that, you have to call the <code>current(step)</code>, passing the "
 "current recursion level as a parameter. This will pick the right color for "
@@ -12094,7 +12719,7 @@ msgstr ""
 "vous retournez à votre position initiale."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:20
+#: src/lessons/recursion/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
@@ -12248,16 +12873,16 @@ msgstr ""
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
-"switch to the creative mode (from the Session menu)  to disable the world "
+"switch to the creative mode (from the Exercise menu)  to disable the world "
 "comparison when you explore with these spirals."
 msgstr ""
 "Voici quelques figures que l'on peut produire avec votre fonction "
 "<code>spiral</code> en lui passant les bons paramètres. Passez en mode "
-"créatif (dans le menu session) pour désactiver la correction de votre code "
+"créatif (dans le menu Exercice) pour désactiver la correction de votre code "
 "quand vous explorez ces spirales."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:19
+#: src/lessons/recursion/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
@@ -13965,6 +14590,16 @@ msgstr ""
 "dernier chiffre, comme 27 et 57. Remarquez que l'opérateur % (modulo) "
 "calcule le reste de la division entière (donc 17 % 10 vaut 7)."
 
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool1/LastDigit.html:10
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
+msgid ""
+"This exercise was converted to PLM from the excellent exercising site http://"
+"javabat.com/"
+msgstr ""
+"Cet exercice a été extrait pour PLM depuis l'excellent site d'exercices "
+"http://javabat.com/"
+
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
@@ -14411,11 +15046,11 @@ msgstr "Encore des jeux booléens"
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/Main.html:4
 msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/ifboolean.html."
+"A very good introduction to this type is available here: http://codingbat."
+"com/doc/java-if-boolean-logic.html"
 msgstr ""
-"Une très bonne introduction à ce type est disponible ici : http://javabat."
-"com/doc/ifboolean.html."
+"Une très bonne introduction à ce type est disponible ici : http://codingbat."
+"com/doc/java-if-boolean-logic.html"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:2
@@ -14601,20 +15236,20 @@ msgstr "Jouer avec les chaînes"
 #: src/lessons/bat/string1/Main.html:4
 msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
-"operations, such as getting the length of the string, or a substring of it.."
+"operations, such as getting the length of the string, or a substring of it."
 msgstr ""
 "Les chaînes de caractères (\"String\") sont les plus simples des types de "
 "données complexes :) Elles fournissent différentes opérations, comme obtenir "
-"la longueur de la chaîne ou une sous-chaîne..."
+"la longueur de la chaîne ou une sous-chaîne."
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
 msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/string.html."
+"A very good introduction to this type is available here: http://codingbat."
+"com/doc/java-string-introduction.html"
 msgstr ""
-"Une très bonne introduction à ce type est disponible ici : http://javabat."
-"com/doc/string.html."
+"Une très bonne introduction à ce type est disponible ici : http://codingbat."
+"com/doc/java-string-introduction.html"
 
 #. type: Content of: <h3>
 #: src/lessons/bat/string1/short_desc.html:2
@@ -15042,7 +15677,18 @@ msgid ""
 "the current thrust is 2 and you ask for 4, you'll only get 3 in the next "
 "step. If you ask for less than 0 (resp. more than 4), everything will be as "
 "if you had asked for 0 (resp. 4)."
-msgstr "Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes de seconde pendant la simulation. Il faut ajuster la poussée du moteur en utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int [/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que vous demandez 4, vous n'aurez que 3 à la prochaine étape. Si vous demandez une valeur inférieure à 0 (ou supérieure à 4), tout se passera comme si vous aviez demandé 0 (ou 4)."
+msgstr ""
+"Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui "
+"sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes "
+"de seconde pendant la simulation. Il faut ajuster la poussée du moteur en "
+"utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int "
+"[/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un "
+"entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous "
+"ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de "
+"la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que "
+"vous demandez 4, vous n'aurez que 3 à la prochaine étape. Si vous demandez "
+"une valeur inférieure à 0 (ou supérieure à 4), tout se passera comme si vous "
+"aviez demandé 0 (ou 4)."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:27
@@ -15507,163 +16153,6 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
-
-#~ msgid ""
-#~ "When you don't want to follow the proposed exercises but draw your own "
-#~ "stuff, the \"you failed\" message really gets annoying.  We should have a "
-#~ "\"Creative mode\" in PLM, where the world is not checked against the "
-#~ "answer.  Also, we should not clean the board automatically in this mode."
-#~ msgstr ""
-#~ "Lorsqu'on préfère faire son propre dessin plutôt que suivre l'exercice "
-#~ "proposer, les messages «vous avez échoués» deviennent vite agaçant. Il "
-#~ "faudrait un mode créatif dans PLM, où le monde ne serait plus comparé à "
-#~ "la solution attendue, et où il ne serait pas remis à zéro automatiquement "
-#~ "entre les exécutions."
-
-#~ msgid ""
-#~ "Other exercises should be added. A whole lot of exercises are available "
-#~ "from http://neoparaiso.com/logo/#sect4."
-#~ msgstr ""
-#~ "D'autres exercices devraient être ajoutés. http://neoparaiso.com/logo/"
-#~ "#sect4 constitue une source d'inspiration quasi inépuisable."
-
-#~ msgid ""
-#~ "Missing: the built-ins hide()/show(), that decide whether the turtle must "
-#~ "be shown."
-#~ msgstr ""
-#~ "Il manque des primitives cache()/montre() pour décider si la tortue doit "
-#~ "être affichée."
-
-#~ msgid "This code is then perfectly equivalent to the following one."
-#~ msgstr "Ce code est parfaitement équivalent à celui-ci :"
-
-#~ msgid ""
-#~ "Other exercises, for example on the Cohen's algorithm, or on the other "
-#~ "ones."
-#~ msgstr ""
-#~ "D'autres exercices, par exemple sur l'algorithme de Cohen ou sur d'autres."
-
-#~ msgid ""
-#~ "If you prefer not to post your successes online, just change the relevant "
-#~ "properties in your configuration file, that is [!configfile] in your case."
-#~ msgstr ""
-#~ "Si vous préférez ne pas poster vos progrès sur internet, changez "
-#~ "simplement la propriété correspondante dans votre fichier de "
-#~ "configuration, qui est [!configfile] dans votre cas."
-
-#~ msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
-#~ msgstr ""
-#~ "Direction.NORD (le nord), Direction.EST (l'est), Direction.SUD (le sud) "
-#~ "et Direction.OUEST (l'ouest)"
-
-#~ msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
-
-#~ msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estSurBiscuit()[!scala]:Boolean[/!]"
-
-#~ msgid "Color.black"
-#~ msgstr "Color.black"
-
-#~ msgid "Color.blue"
-#~ msgstr "Color.blue"
-
-#~ msgid "Color.cyan"
-#~ msgstr "Color.cyan"
-
-#~ msgid "Color.darkGray"
-#~ msgstr "Color.darkGray"
-
-#~ msgid "Color.gray"
-#~ msgstr "Color.gray"
-
-#~ msgid "Color.green"
-#~ msgstr "Color.green"
-
-#~ msgid "Color.lightGray"
-#~ msgstr "Color.lightGray"
-
-#~ msgid "Color.magenta"
-#~ msgstr "Color.magenta"
-
-#~ msgid "Color.orange"
-#~ msgstr "Color.orange"
-
-#~ msgid "Color.pink"
-#~ msgstr "Color.pink"
-
-#~ msgid "Color.red"
-#~ msgstr "Color.red"
-
-#~ msgid "Color.white"
-#~ msgstr "Color.white"
-
-#~ msgid "Color.yellow"
-#~ msgstr "Color.yellow"
-
-#~ msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estVisible()[!scala]:Boolean[/!]"
-
-#~ msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
-#~ msgstr "[!java]boolean [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
-
-#~ msgid "forward()[!java];[/!]"
-#~ msgstr "avance()[!java];[/!]"
-
-#~ msgid ""
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "forward()[!java];[/!]\n"
-#~ "left()[!java];[/!]"
-#~ msgstr ""
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "avance()[!java];[/!]\n"
-#~ "gauche()[!java];[/!]"
-
-#~ msgid "Color.YELLOW"
-#~ msgstr "Color.YELLOW (jaune)"
-
-#~ msgid "Color.RED"
-#~ msgstr "Color.RED (rouge)"
-
-#~ msgid "Color.BLUE"
-#~ msgstr "Color.BLUE (bleu)"
-
-#~ msgid "Color.GREEN"
-#~ msgstr "Color.GREEN (vert)"
-
-#~ msgid ""
-#~ "The scrolling menu <b>Lessoon</b> allows you to choose the lesson you "
-#~ "want to work on."
-#~ msgstr ""
-#~ "Le menu déroulant <b>Lesson</b>, vous permet de choisir la leçon que vous "
-#~ "souhaitez étudier."
-
-#~ msgid ""
-#~ "The scrolling menu <b>Exercise</b> allows you to switch to another "
-#~ "exercise when you want. Some lessons require you to finish an exercise "
-#~ "before starting the previous one."
-#~ msgstr ""
-#~ "Le menu déroulant <b>Exercise</b>, vous permet de changer d'exercice "
-#~ "quand vous le souhaitez. Notez que certaines leçons vous imposent de "
-#~ "finir un exercice avant de pouvoir commencer le suivant."
 
 #~ msgid "Backtracking lesson"
 #~ msgstr "Leçon sur le \"backtracking\""
@@ -16368,12 +16857,3 @@ msgstr ""
 #~ "Cela semble être beaucoup de code à écrire comparé aux autres exercices "
 #~ "de la PLM, mais en fin de compte, mon implémentation de HanoiWorld fait "
 #~ "moints de cent lignes, ce qui n'est pas beaucoup."
-
-#~ msgid "Meta lesson"
-#~ msgstr "Meta leçon"
-
-#~ msgid ""
-#~ "The purpose of this lesson is to teach you how to write lessons for PLM."
-#~ msgstr ""
-#~ "Le but de cette leçon est de vous apprendre comment écrire des leçons "
-#~ "pour la PLM."

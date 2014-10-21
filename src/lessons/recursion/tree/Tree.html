@@ -13,6 +13,16 @@ location. Don't forget to come back to the initial location!<p>
 <p>If a tree's trunk is of length 'len', the trunk of the next level tree will
 be of length 'len*shrink'.<p>
 
+<p>At the end, here is the pseudo-code of the general case (you should add the base case yourself):</p>
+<pre>
+  Move forward of the desired length
+  Draw (recursively) the right subtree
+  Draw (recursively) the left subtree
+  Move back to your initial position
+</pre> 
+<p>Don't forget to add the base case to your code, or your buggle will enter an infinite loop. 
+Then, drawing the right subtree comes down to turn right and then draw the subtree.</p>
+
 <p>As you can see, each recursion level is represented by a distinctive color. For that, you have to call the 
 <code>current(step)</code>, passing the current recursion level as a parameter. This will pick the right color for you.
 Don't erase your great colors when you move back to your initial location.</p>

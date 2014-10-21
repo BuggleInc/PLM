@@ -11,7 +11,7 @@ class ScalaAlgSelectionSortEntity extends SortingEntity {
 	/* BEGIN TEMPLATE */
 	def selectionSort() {
 		/* BEGIN SOLUTION */
-		for (i <- 0 to getValueCount()-1) {
+		for (i <- 0 to getValueCount()-2) {
 			var min = i;	
 
 			/*  Find the smallest element in the unsorted list */

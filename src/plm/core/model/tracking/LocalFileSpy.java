@@ -55,6 +55,9 @@ public class LocalFileSpy implements ProgressSpyListener {
     public void switched(Exercise exo) {    /* i don't care, i'm a viking */ }
 
     @Override
+    public void reverted(Exercise exo) { }
+    
+    @Override
     public void heartbeat() { /* don't talk to me */ }
 
     @Override

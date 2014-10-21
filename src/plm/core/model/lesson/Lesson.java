@@ -17,6 +17,11 @@ import plm.universe.BrokenWorldFileException;
 public abstract class Lesson {
 	private String name;
 	private String id;
+	
+	public static enum LoadingOutcome {SUCCESS,FAIL}
+	
+	private LoadingOutcome LoadingOutcomeState = LoadingOutcome.SUCCESS;
+
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
 	
@@ -40,11 +45,15 @@ public abstract class Lesson {
 		
 		try {
 			loadExercises();
+			Game.waitInitThreads();
 		} catch (IOException e) {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
 			e.printStackTrace();
 		} catch (BrokenWorldFileException e) {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			System.err.println("Interrupted while waiting for the lesson to load.");
 			e.printStackTrace();
 		} 
 		/* Compute the lesson summary for the next time we start the PLM */
@@ -170,5 +179,12 @@ public abstract class Lesson {
 	}
 	public int getExerciseCount() {
 		return this.lectures.size();
+	}
+	
+	public LoadingOutcome getLoadingOutcomeState() {
+		return LoadingOutcomeState;
+	}
+	public void setLoadingOutcomeState(LoadingOutcome loadingOutcomeState) {
+		LoadingOutcomeState = loadingOutcomeState;
 	}
 }

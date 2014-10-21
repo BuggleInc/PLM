@@ -19,14 +19,14 @@ public class NoTriples extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		templatePython("noTriples", 
+		templatePython("noTriples", new String[]{"Array[Int]"},
 				"def noTriples(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-2 ):\n"+
 				"    if (nums[i] == nums[i+1]) and (nums[i+1] == nums[i+2]):\n"+
 				"      return False\n"+
 				"  return True\n");
-		templateScala("noTriples",new String[]{"Array[Int]"}, 
+		templateScala("noTriples", new String[]{"Array[Int]"}, 
 				"def noTriples(nums:Array[Int]): Boolean = {\n",
 				"  var count=0\n"+
 				"  for (i <- 0 to nums.length-3)\n"+

@@ -17,14 +17,7 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Arrays;
 import java.util.Collection;
-
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.TransportException;
-import org.eclipse.jgit.lib.PersonIdent;
-import org.eclipse.jgit.lib.StoredConfig;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -33,7 +26,6 @@ import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.model.tracking.GitUtils;
 
 public class GitSessionKit implements ISessionKit {
 
@@ -93,39 +85,9 @@ public class GitSessionKit implements ISessionKit {
 			
 			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
 			if (! gitDir.exists()) {
-				String repoUrl = Game.getProperty("plm.git.server.url");
-				String userBranch = "PLM"+GitUtils.sha1(reponame); // For some reason, github don't like when the branch name consists of 40 hexadecimal, so we add "PLM" in front of it
-
-				
-				Git git;
-				try {
-					git = Git.cloneRepository().setURI(repoUrl).setDirectory(gitDir).setBranch(userBranch).call();
-
-					// If no branch can be found remotely, create a new one.
-					if (git == null) { 
-						git = Git.init().setDirectory(gitDir).call();
-						StoredConfig cfg = git.getRepository().getConfig();
-						cfg.setString("remote", "origin", "url", repoUrl);
-						cfg.setString("remote", "origin", "fetch", "+refs/heads/*:refs/remotes/origin/*");
-						// TODO: more test before enabling the following configuration
-						//cfg.setString("branch", userBranch, "remote", "origin");
-						//cfg.setString("branch", userBranch, "merge", "refs/heads/"+userBranch);
-						cfg.save();
-						git.commit().setMessage("Empty initial commit").setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
-						System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-					} else {
-						System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
-					}
-				} catch (TransportException e1) {
-					System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
-					if (Game.getInstance().isDebugEnabled())
-						e1.printStackTrace();
-				} catch (GitAPIException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				// It should never happen since the session content should be created by the git spy module.
+				System.out.println(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 			}
-			
 		}
 
 		// Load bodies

@@ -39,6 +39,7 @@ public class LangPython extends ScriptingLanguage {
 		if (!(e.getCause() instanceof org.python.core.PyException)) { // This seems to be the ancestor of all exceptions raised by jython
 			return false; // not for us
 		}
+		ExecutionProgress.outcomeKind errorKind = ExecutionProgress.outcomeKind.FAIL;
 		
 		org.python.core.PyException cause = (PyException) e.getCause();
 
@@ -51,6 +52,7 @@ public class LangPython extends ScriptingLanguage {
 					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
 					cause.value.__findattr__("text")
 					));
+			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'exceptions.IndentationError'>")) {
 			msg.append(Game.i18n.tr("Indentation error: {0}\nline {1}: {2}\n" +
@@ -58,9 +60,10 @@ public class LangPython extends ScriptingLanguage {
 					cause.value.__findattr__("msg"),
 					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
 					cause.value.__findattr__("text")));
+			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'java.lang.ThreadDeath'>")) {
-			msg.append(Game.i18n.tr("You interrupted the execution.\n" +
+			msg.append(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n" +
 					"Your program must stop by itself to successfully pass the exercise.\n"));
 
 		} else { /* It makes sense to display a backtrace for any errors but syntax ones */
@@ -68,12 +71,15 @@ public class LangPython extends ScriptingLanguage {
 			if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
 				msg.append(Game.i18n.tr("NameError raised: You seem to use a non-existent identifier; Please check for typos\n"));
 				msg.append(cause.value+"\n");
+				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 			} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
 				msg.append(Game.i18n.tr("TypeError raised: you are probably misusing a function or something.\n"));
 				msg.append(cause.value+"\n");
+				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 			} else if (cause.type.toString().equals("<type 'exceptions.UnboundLocalError'>")) {
 				msg.append(Game.i18n.tr("UnboundLocalError raised: you are probably using a global variable that is not declared as such.\n"));
 				msg.append(cause.value+"\n");
+				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 
 				/* FIXME: how could we factorize the world's error? */ 
@@ -114,9 +120,12 @@ public class LangPython extends ScriptingLanguage {
 			System.err.println("MSG: "+e.getMessage());
 			System.err.println("BT: "+msg);
 		}
-
-		progress.setCompilationError(msg.toString());
 		
+		if (errorKind == ExecutionProgress.outcomeKind.COMPILE)
+			progress.setCompilationError(msg.toString());
+		else 
+			progress.setExecutionError(msg.toString());
+
 		return true; // That was indeed a Python exception
 	}
 

@@ -25,7 +25,7 @@ public class TeaParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 4) ;
 		myWorld.addTest(INVISIBLE, 10, 20) ;
 
-		templatePython("teaParty", 
+		templatePython("teaParty", new String[]{"Int","Int"},
 				"def teaParty(tea, candy):\n",
 				"	if (tea < 5 or candy < 5):\n"+
 				"		return 0\n"+

@@ -10,16 +10,16 @@ pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié
 et N2/4 en moyenne).
 </p>
 <p>L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à
-sa place dans la partie du tableau déjà trié.  Lorsque l'on regarde un
+sa place dans la partie du tableau déjà triée.  Lorsque l'on regarde un
 élément x du tableau, on est dans la situation suivante : tous les éléments
 à gauche du tableau sont déjà triés, et il faut insérer x à sa place dans le
 tableau.</p>
 <div style="text-align:center">
-	<img src="./InsertionsortBefore.png"/>
+	<img src="lessons/sort/basic/insertion/InsertionsortBefore.png"/>
 </div>
 <p>Une fois ceci fait, on se retrouve dans la situation suivante:</p>
 <div style="text-align:center">
-	<img src="./InsertionsortAfter.png"/>
+	<img src="lessons/sort/basic/insertion/InsertionsortAfter.png"/>
 </div>
 <p>Le pseudo-code de cet algorithme est donc le suivant :</p>
 <pre>Pour tout i dans [1,lgr-1]
