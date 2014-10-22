@@ -21,6 +21,7 @@
     - #296: TraversalByColumn: document where (0,0) is
     - #239: CourseForest: get stick in water, not moving anymore
     - #405: LoopStairs: Make French python bindings fit the templating
+    - #406: Lander101: unclear mission text wrt stepping the simulation
 
 
 20141009: Release 2.4.11
