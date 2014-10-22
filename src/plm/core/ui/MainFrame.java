@@ -616,7 +616,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		t.start();
 
-		JOptionPane.showMessageDialog(this, i18n.tr("Please wait, while PLM is saving your session data."));		
+		JOptionPane.showMessageDialog(this, i18n.tr("Please wait, while the PLM is saving your session data."));		
 	}
 
 	public void about() {
