@@ -1,7 +1,8 @@
 20141015: wannabe Release 2.5
 
   * Improved translations:
-    - French: mission back at 100%
+    - French: mission and engine back at 100%
+    - Brazilian: missions at 56%
   * Engine:
     - #292: Check the user's input before submitting a feedback
     - #304: Stop user's program's or demo's execution if the user 
@@ -12,6 +13,7 @@
     - #394: Display a waiting dialog when exiting
     - #263: Also interpret language tags in hints, not only missions
     - #401: Remove non-needed HumanLangListeners
+    - Greatly improve the coverage of our unit tests.
   * Worlds:
     - #286: Turtle, Buggle: document where (0,0) is
     - #220: Buggle: Improve doc of isOverBaggle(), isCarryingBaggle()
