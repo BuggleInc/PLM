@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-10-19 23:15-0300\n"
+"PO-Revision-Date: 2014-10-25 21:19-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -7626,7 +7626,9 @@ msgstr ""
 msgid ""
 "Mark the current ground with the next color in the sequence (the last color "
 "being followed by the first one);"
-msgstr "Marque o chão com a próxima cor na sequência (the last color being followed by the first one);"
+msgstr ""
+"Marque o chão com a próxima cor na sequência (the last color being\n"
+"followed by the first one);"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:34
@@ -7682,10 +7684,23 @@ msgid ""
 "worlds, you can retrieve the information relative to your current situation "
 "by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
 "(currentColor)[/!]</code>."
-msgstr "Once again, you just have to write the <code>step()</code> method, in charge of doing one turmite's step. Once again, you should first find the rank of the current's cell ground color in the color sequence. But this time, the <code>rule</code> data depends both on the current color and the current state.  <code>rule</code> actually contains 3 information in each situation: the color to write, the move to do, and the next state value. For example, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the informations to use when <code>state==1</code> and <code>color==0</code>.  In other worlds, you can retrieve the information relative to your current situation by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>."
+msgstr ""
+"Once again, you just have to write the <code>step()</code> method, in\n"
+"charge of doing one turmite's step. Once again, you should first find\n"
+"the rank of the current's cell ground color in the color sequence. But\n"
+"this time, the <code>rule</code> data depends both on the current\n"
+"color and the current state.  <code>rule</code> actually contains 3\n"
+"information in each situation: the color to write, the move to do, and\n"
+"the next state value. For example,\n"
+"[!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the\n"
+"informations to use when <code>state==1</code> and\n"
+"<code>color==0</code>.  In other worlds, you can retrieve the\n"
+"information relative to your current situation by using\n"
+"<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:25
+#, fuzzy
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
@@ -7695,9 +7710,18 @@ msgid ""
 "in a future state). Finally, the third integer is the next <code>state</"
 "code> value to go into after this iteration."
 msgstr ""
+"Each such information set contains 3 values. The first one is the rank\n"
+"of the color to write on the ground. The second is the move to do,\n"
+"with the following notation: 0=stop, 1=noturn, 2=left, 4=u-turn,\n"
+"8=right. Note that if the command is stop, you shouldn't even move\n"
+"forward on that step (but you shouldn't stop your program either: the\n"
+"next steps can do something else in a future state). Finally, the\n"
+"third integer is the next <code>state</code> value to go into after\n"
+"this iteration."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:32
+#, fuzzy
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, you "
 "should define a set of constants that you should use instead of the direct "
@@ -7712,39 +7736,63 @@ msgid ""
 "can still modify them, but that would be a very bad idea.[/!] You should "
 "write them out of any method so that they are globally visible."
 msgstr ""
+"Since these arbitrary notations are somehow difficult to remember, you\n"
+"should define a set of constants that you should use instead of the\n"
+"direct numerical values.  Their names could be NOTURN, LEFT, RIGHT and\n"
+"so on.  [!scala]Just declare them using the keyword <code>val</code>\n"
+"instead of <code>var</code>.  You should always use <code>val</code>\n"
+"instead of <code>var</code> when possible anyway.[/!] [!java]The\n"
+"modifiers <code>final static</code> before their type is the way to\n"
+"mark variables as constant in Java.  You should write for example\n"
+"<code>static final int NOTURN=1;</code> Sorry for the complexity of\n"
+"this notation. [/!] [!python]By convention, such constant variables\n"
+"are written in upper case in python.  Technically, you can still\n"
+"modify them, but that would be a very bad idea.[/!] You should write\n"
+"them out of any method so that they are globally visible."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:44
+#, fuzzy
 msgid ""
 "Using such constants greatly help making the code easier to read. Compare "
 "the next two code chunks:"
 msgstr ""
+"Using such constants greatly help making the code easier to\n"
+"read. Compare the next two code chunks:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:46
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
 "    left()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
+"    left()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:49
+#, fuzzy
 msgid "This is much more easier to read (although longer) than the following:"
-msgstr ""
+msgstr "This is much more easier to read (although longer) than the following:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:50
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
 "    left()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
+"[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
+"    left()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
+#, fuzzy
 msgid ""
 "Finally, you probably want to write a <code>elif</code> branch for the "
 "<code>STOP</code> condition too. Having a <code>else</code> branch "
@@ -7756,22 +7804,39 @@ msgid ""
 "<code>pass</code> instruction as a placeholder: it says python that you have "
 "a branch here, and that it does not contain anything."
 msgstr ""
+"Finally, you probably want to write a <code>elif</code> branch for the\n"
+"<code>STOP</code> condition too. Having a <code>else</code> branch\n"
+"displaying an error message such as \"unknown case\" is a good practice:\n"
+"it makes your assumptions about your code more explicit, and you will\n"
+"get an error message if they fall short. When doing so, the next\n"
+"problem is that you have nothing to do in the <code>STOP</code> case,\n"
+"but python do not allows you to write empty <code>elif</code>\n"
+"branches. You should use the <code>pass</code> instruction as a\n"
+"placeholder: it says python that you have a branch here, and that it\n"
+"does not contain anything."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:63
+#, fuzzy
 msgid ""
 "You should probably use a [!java]switch case[/!][!scala]pattern matching[/!] "
 "construct to keep your code readable.  If you can't remember what it is, "
 "check <a href=\"plm://lessons.welcome/bdr.BDR2\">this exercise</a>."
 msgstr ""
+"You should probably use a [!java]switch case[/!][!scala]pattern\n"
+"matching[/!] construct to keep your code readable.  If you can't\n"
+"remember what it is, check <a\n"
+"href=\"plm://lessons.welcome/bdr.BDR2\">this exercise</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:69
+#, fuzzy
 msgid "Bibliographical notes"
-msgstr ""
+msgstr "Bibliographical notes"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:70
+#, fuzzy
 msgid ""
 "According to wikipedia, turmites were invented independently by the end of "
 "the eighties. It has been shown that turmites in general are exactly "
@@ -7780,25 +7845,39 @@ msgid ""
 "program that you can think of could theoretically be computed on this "
 "device..."
 msgstr ""
+"According to wikipedia, turmites were invented independently by the\n"
+"end of the eighties. It has been shown that turmites in general are\n"
+"exactly equivalent in power to one-dimensional Turing machines with an\n"
+"infinite tape, as either can simulate the other. This means that\n"
+"absolutely any program that you can think of could theoretically be\n"
+"computed on this device..."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:2
+#, fuzzy
 msgid "Creating Turmites"
-msgstr ""
+msgstr "Creating Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:4
+#, fuzzy
 msgid ""
 "This exercise allows you to build your own turmites. To pass the exercise, "
 "you should simply write a <code>init()</code> method which initializes the "
 "<code>rule</code> to use the following transitions table (from wikipedia), "
 "set the buggle initial position at (8;33), and ask for 8342 steps."
 msgstr ""
+"This exercise allows you to build your own turmites. To pass the\n"
+"exercise, you should simply write a <code>init()</code> method which\n"
+"initializes the <code>rule</code> to use the following transitions\n"
+"table (from wikipedia), set the buggle initial position at (8;33), and\n"
+"ask for 8342 steps."
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:11
+#, fuzzy
 msgid "Current color"
-msgstr ""
+msgstr "Current color"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14
@@ -7808,7 +7887,7 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:42
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:43
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:15
@@ -7818,57 +7897,68 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:38
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:45
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:19
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:22
+#, fuzzy
 msgid "Write color"
-msgstr ""
+msgstr "Write color"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:20
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:23
+#, fuzzy
 msgid "Turn"
-msgstr ""
+msgstr "Turn"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:21
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:24
+#, fuzzy
 msgid "Next state"
-msgstr ""
+msgstr "Next state"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:27
+#, fuzzy
 msgid "Current state"
-msgstr ""
+msgstr "Current state"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:31
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:34
+#, fuzzy
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:41
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:44
+#, fuzzy
 msgid "N"
-msgstr ""
+msgstr "N"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:49
+#, fuzzy
 msgid ""
 "where the direction to turn is one of <b>L</b> (90° left), <b>R</b> (90° "
 "right), <b>N</b> (no turn) and <b>U</b> (180° U-turn)."
 msgstr ""
+"where the direction to turn is one of <b>L</b> (90° left), <b>R</b>\n"
+"(90° right), <b>N</b> (no turn) and <b>U</b> (180° U-turn)."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:51
+#, fuzzy
 msgid "Going further"
-msgstr ""
+msgstr "Going further"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:52
+#, fuzzy
 msgid ""
 "This exercise is naturally an excuse to let you experiment with your own "
 "turmites.  Feel free to change the transition table and the amount of steps "
@@ -7876,22 +7966,36 @@ msgid ""
 "library useful. If you find new interesting patterns, send them per email so "
 "that we can integrate them to this list!"
 msgstr ""
+"This exercise is naturally an excuse to let you experiment with your\n"
+"own turmites.  Feel free to change the transition table and the amount\n"
+"of steps to experiment by yourself. To that extend, you may find the\n"
+"Ed Pegg Jr's library useful. If you find new interesting patterns,\n"
+"send them per email so that we can integrate them to this list!"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:58
+#, fuzzy
 msgid ""
 "In addition, wikipedia is desperately missing some good looking colorful "
 "turmites: only black and white ones are depicted.  You should consider "
 "submitting your creations directly to the free encyclopedia."
 msgstr ""
+"In addition, wikipedia is desperately missing some good looking\n"
+"colorful turmites: only black and white ones are depicted.  You should\n"
+"consider submitting your creations directly to the free encyclopedia."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:63
+#, fuzzy
 msgid ""
 "Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
 "com/Turmites/ [!python|scala]They are not written using the [!thelang] "
 "syntax, but converting them should be easy.[/!]"
 msgstr ""
+"Here are some 2-color turmites, extracted from\n"
+"http://demonstrations.wolfram.com/Turmites/ [!python|scala]They are\n"
+"not written using the [!thelang] syntax, but converting them should be\n"
+"easy.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
@@ -7991,6 +8095,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:114
+#, fuzzy
 msgid ""
 "Langton's ants may not share the expressiveness power of the turmites, but "
 "they remain fascinating too. You can experiment with them using the "
@@ -8000,9 +8105,18 @@ msgid ""
 "constructed pattern, even after a million steps, but \"RLL\" starts building "
 "a very simple highway pattern after less than 100 steps!"
 msgstr ""
+"Langton's ants may not share the expressiveness power of the turmites,\n"
+"but they remain fascinating too. You can experiment with them using\n"
+"the initLangton() method, provided in your template, that allows to\n"
+"build a Turmite transition table from a Langton's ant name. Tiny\n"
+"changes in the ant may result huge changes. For example, \"RRL\" does\n"
+"not seem to lead to any constructed pattern, even after a million\n"
+"steps, but \"RLL\" starts building a very simple highway pattern after\n"
+"less than 100 steps!"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:121
+#, fuzzy
 msgid ""
 "Quite a lot of Langton's ants build highways: RL, of course, but also "
 "RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before the "
@@ -8014,9 +8128,19 @@ msgid ""
 "squarish even before the highway start where most others do not show "
 "anything notable before their highway."
 msgstr ""
+"Quite a lot of Langton's ants build highways: RL, of course, but also\n"
+"RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before\n"
+"the highway can be very short (as with RLL that only need 100 steps to\n"
+"converge) or very long, as with LLLLLLRRLRRR which seems chaotic for\n"
+"more than 500,000 steps before build the highway or even RRLLLRRRLRRR\n"
+"which needs 1170000 to start converging. Some are narrow, and others\n"
+"are very large, such as RRLRLLRLRR (200,000 steps). This ant is also\n"
+"notable since it is somehow squarish even before the highway start\n"
+"where most others do not show anything notable before their highway."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:129
+#, fuzzy
 msgid ""
 "Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps), "
 "RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR "
@@ -8027,9 +8151,19 @@ msgid ""
 "the box are regular and since it converges more rapidly to its stable "
 "behavior (15,000 steps are enough)."
 msgstr ""
+"Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps),\n"
+"RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or\n"
+"RRLRLLRRRRRR (20,000 steps). Some even fill the whole space (RRLRR\n"
+"after 3000 steps). Some of my personal favorite ones are the ones\n"
+"where the ant seem to be bouncing within a box that gets bigger on\n"
+"each bump, such as LRRRRRLLR (30,000 steps). LRRRRLLLRRR is even more\n"
+"impressing since the bounces within the box are regular and since it\n"
+"converges more rapidly to its stable behavior (15,000 steps are\n"
+"enough)."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:136
+#, fuzzy
 msgid ""
 "Finally, some ants are just build artistic patterns. You should check this "
 "video for some beautiful ones: http://www.youtube.com/watch?v=1X-gtr4pEBU. "
@@ -8037,9 +8171,16 @@ msgid ""
 "For example, the one depicted at 3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the "
 "first visible move should be read as last one)."
 msgstr ""
+"Finally, some ants are just build artistic patterns. You should check\n"
+"this video for some beautiful ones:\n"
+"http://www.youtube.com/watch?v=1X-gtr4pEBU. If you want to convert\n"
+"them into your code, you have to shift them by one: For example, the\n"
+"one depicted at 3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the first\n"
+"visible move should be read as last one)."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:141
+#, fuzzy
 msgid ""
 "As you can see by exploring the above set of turmites, they are usually not "
 "as colorful as the ants, but this may be because very few colors suffice to "
@@ -8051,19 +8192,34 @@ msgid ""
 "covers the biggest area before stopping. The web page is here: http://code."
 "google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
 msgstr ""
+"As you can see by exploring the above set of turmites, they are\n"
+"usually not as colorful as the ants, but this may be because very few\n"
+"colors suffice to exhibit complex behaviors. For example, there is a\n"
+"specific class of turmites called <i>busy beavers</i> which are\n"
+"turmites that write a lot of things before stopping (busy beavers are\n"
+"usually classical turing machines, but the idea fits perfectly to\n"
+"turmites too). There is a sort of international competition where\n"
+"people strive to find the turmite that covers the biggest area before\n"
+"stopping. The web page is here:\n"
+"http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
 
 #. type: Content of: <h1>
 #: src/lessons/turmites/universe/TurmiteWorld.html:2
+#, fuzzy
 msgid "Turmite universe"
-msgstr ""
+msgstr "Turmite universe"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/universe/TurmiteWorld.html:4
+#, fuzzy
 msgid ""
 "This universe is very similar to the buggle one, but you will probably not "
 "use all buggles methods.  So, this page only recap the buggle methods that "
 "you will use."
 msgstr ""
+"This universe is very similar to the buggle one, but you will probably\n"
+"not use all buggles methods.  So, this page only recap the buggle\n"
+"methods that you will use."
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:12
@@ -8427,6 +8583,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:13
+#, fuzzy
 msgid ""
 "When your algorithm diverges from the expectation, understanding the "
 "difference between your code and the expected solution can reveal very "
@@ -8435,14 +8592,22 @@ msgid ""
 "contextual menu (right click)  to switch from the the view of the current "
 "state to the view of its history."
 msgstr ""
+"When your algorithm diverges from the expectation, understanding the\n"
+"difference between your code and the expected solution can reveal very\n"
+"difficult. To help in this process, it is posible to graphically\n"
+"explore the history of your sorting algorithm. Switch to the Objective\n"
+"view and use the contextual menu (right click)  to switch from the the\n"
+"view of the current state to the view of its history."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:28
+#, fuzzy
 msgid "First attempt at BubbleSort"
-msgstr ""
+msgstr "First attempt at BubbleSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:30
+#, fuzzy
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -8455,35 +8620,54 @@ msgid ""
 "simplicity, but it is almost never used in practice because of its bad "
 "performance (O(n^2) on average)."
 msgstr ""
+"This first sorting algorithm is the most simple one: Bubble sort\n"
+"consists in progressively moving up the smaller elements of the array,\n"
+"as if they were air bubbles moving up to the surface of a liquid. The\n"
+"algorithm traverse the array, and compare any pair of adjacent\n"
+"elements. If two adjacent elements are wrongly sorted, they are\n"
+"swapped. Once the array was completely traversed, the operation starts\n"
+"again from the beginning. When no elements were sorted after a full\n"
+"traversal, it means that the array is completely sorted: the algorithm\n"
+"can stop.  Bubble sort is studied because of its simplicity, but it is\n"
+"almost never used in practice because of its bad performance (O(n^2)\n"
+"on average)."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
+#, fuzzy
 msgid "Show Tip (Pseudo-code)"
-msgstr ""
+msgstr "Show Tip (Pseudo-code)"
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:41
+#, fuzzy
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
-msgstr ""
+msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:42
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "do: \n"
 "        For each i in [0,len-2]\n"
 "          If cells i and i+1 must be swapped, do it\n"
 "while we swapped something during last traversal\n"
 msgstr ""
+"do: \n"
+"        For each i in [0,len-2]\n"
+"          If cells i and i+1 must be swapped, do it\n"
+"while we swapped something during last traversal\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
+#, fuzzy
 msgid "BubbleSort (take 2)"
-msgstr ""
+msgstr "BubbleSort (take 2)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:4
+#, fuzzy
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
 "optimization appears: after one traversal, the last element of the array "
@@ -8493,23 +8677,36 @@ msgid ""
 "compare them again during the subsequent traversals. For now, we will have "
 "as many traversal as there is in the array."
 msgstr ""
+"If you look carefully at the behavior of BubbleSort, a first easy\n"
+"optimization appears: after one traversal, the last element of the\n"
+"array must be the biggest of all since the traversal moved it up like\n"
+"a bubble to its position. More generally, after N traversal, we know\n"
+"that the N last elements of the array are already sorted. It is thus\n"
+"not necessary to compare them again during the subsequent\n"
+"traversals. For now, we will have as many traversal as there is in the\n"
+"array."
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:13
+#, fuzzy
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
-msgstr ""
+msgstr "The pseudo-code of the BubbleSort2 algorithm is the following:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:14
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
 "          If cells j and j+1 must be swapped, do it\n"
 msgstr ""
+"For all i in [len-2,0] (traversing from biggest to smallest)\n"
+"       For all j in [0, i]\n"
+"          If cells j and j+1 must be swapped, do it\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:20
+#, fuzzy
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -8520,63 +8717,98 @@ msgid ""
 "than the base version. But the statistics on the amount of reads show that "
 "we saved about the fourth of the amount of reads, which is not bad."
 msgstr ""
+"When we run this algorithm, it is quite disappointing to see that it\n"
+"runs approximately at the same speed than the basic version of\n"
+"BubbleSort. This is a graphical effect only since only value changes\n"
+"are graphically represented. Since this variation avoids some useless\n"
+"comparisons, it does exactly the same amount of swaps that the basic\n"
+"version. It is thus quite logical that the graphical interface draws\n"
+"this version at the same pace than the base version. But the\n"
+"statistics on the amount of reads show that we saved about the fourth\n"
+"of the amount of reads, which is not bad."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:29
+#, fuzzy
 msgid ""
 "From the asymptotic complexity point of view, there is absolutely no "
 "difference: this variation is still in O(n^2) on average (our gain is only "
 "on the constant term, ignored when computing the asymptotic complexity)."
 msgstr ""
+"From the asymptotic complexity point of view, there is absolutely no\n"
+"difference: this variation is still in O(n^2) on average (our gain is\n"
+"only on the constant term, ignored when computing the asymptotic\n"
+"complexity)."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:2
+#, fuzzy
 msgid "BubbleSort (take 3)"
-msgstr ""
+msgstr "BubbleSort (take 3)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:4
+#, fuzzy
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
 "sorted. In that case, we want to stop the whole sorting process."
 msgstr ""
+"Let's now reintroduce the little optimization we removed at previous\n"
+"step: if a traversal does not swap any element, it means that the\n"
+"array is already sorted. In that case, we want to stop the whole\n"
+"sorting process."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:9
+#, fuzzy
 msgid ""
 "[!java|python|c]For that, simply use the <code>break</code> keyword, which "
 "breaks the current loop.  Beware, if you have several embedded loops, this "
 "will apply to the internal one.[/!] [!scala]For that, simply quit the "
 "current function by calling <code>return</code> with no associated value.[/!]"
 msgstr ""
+"[!java|python|c]For that, simply use the <code>break</code> keyword,\n"
+"which breaks the current loop.  Beware, if you have several embedded\n"
+"loops, this will apply to the internal one.[/!] [!scala]For that,\n"
+"simply quit the current function by calling <code>return</code> with\n"
+"no associated value.[/!]"
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:14
+#, fuzzy
 msgid "If you want, this tip shows the pseudo-code."
-msgstr ""
+msgstr "If you want, this tip shows the pseudo-code."
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:16
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
 "          If cells j and j+1 must be swapped, do it\n"
 "       If traversal on j did not swap anything, break the for loop\n"
 msgstr ""
+"For all i in [len-2,0] (traversing from biggest to smallest)\n"
+"       For all j in [0, i]\n"
+"          If cells j and j+1 must be swapped, do it\n"
+"       If traversal on j did not swap anything, break the for loop\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:23
+#, fuzzy
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
 msgstr ""
+"This optimization is even more disappointing: it only provide a gain\n"
+"of a few percents on the amount of reads over BubbleSort2."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:2
+#, fuzzy
 msgid "CocktailSort"
-msgstr ""
+msgstr "CocktailSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:4
@@ -8587,6 +8819,12 @@ msgid ""
 "thus traditionally referred to as \"rabbits\" and \"turtles\" respectively "
 "for big fast values and small slow ones."
 msgstr ""
+"Para melhorar ainda mais o algoritmo BubbleSort, precisamos ver seu\n"
+"comportamente bem de perto. Você pode perceber que os elementos\n"
+"grandes se movem bem rápido enquanto os pequenos se movem lentamente\n"
+"para seus destinos. Eles são então tradicionalmente chamados de\n"
+"\"coelhos\" e \"tartarugas\" respectivamente para valores grandes e\n"
+"rápidos e valores pequenos e lentos."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:10
@@ -8594,10 +8832,13 @@ msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the pseudo-code:"
 msgstr ""
+"Para ajudar as tartarugas a se mover rápido, o cocktail sort percorre\n"
+"alternativamente a array da direita para a esquerda e da esquerda para\n"
+"a direita. Aqui está o pseudo-código:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:15
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "Do\n"
 "  For all i in [0,len-2], do:\n"
@@ -8606,19 +8847,30 @@ msgid ""
 "    if i and i+1 must be swapped, do it\n"
 "while at least one of the traversal swapped an element\n"
 msgstr ""
+"Do\n"
+"  For all i in [0,len-2], do:\n"
+"    if i and i+1 must be swapped, do it\n"
+"  For all i in [len-2,0] (downward), do:\n"
+"    if i and i+1 must be swapped, do it\n"
+"while at least one of the traversal swapped an element\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:23
+#, fuzzy
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
 "than the bubble sort, but improves slightly on read amount. It is however "
 "still worse than BubbleSort2 to that extend."
 msgstr ""
+"Podemos perceber que cocktail sort alcança exatamente a mesma\n"
+"quantidade de trocas que o bubble sort, mas melhora levemente na\n"
+"quantidade de leituras. Ele é entretanto ainda pior que o BubbleSort2\n"
+"to that extend."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:2
 msgid "CocktailSort (take 2)"
-msgstr ""
+msgstr "CocktailSort (take 2)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:4
@@ -8628,10 +8880,14 @@ msgid ""
 "sorted yet, and traverse it alternatively from left to right and from right "
 "to left:"
 msgstr ""
+"Vamos agora aplicar ao CocktailSort a mesma otimização que o\n"
+"BubbleSort2 faz no BubbleSort. Devemos lembrar que os limites da parte\n"
+"do array que não está ordenada ainda, e percorrer ela alternativamente\n"
+"da esquerda para a direita e da diretia para a esquerda:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:9
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "beg=0; end=len-2\n"
 "do\n"
@@ -8643,11 +8899,20 @@ msgid ""
 "  beg += 1 (this means beg = beg + 1)\n"
 "while at least one of the traversal swapped an element\n"
 msgstr ""
+"beg=0; end=len-2\n"
+"do\n"
+"  For all Pour i in [beg,end], do:\n"
+"      If cells i and i+1 must be swapped, do it    \n"
+"  end -= 1 (this means end = end - 1)\n"
+"  For all Pour i in [beg,end] (downwards), do:\n"
+"      If cells i and i+1 must be swapped, do it    \n"
+"  beg += 1 (this means beg = beg + 1)\n"
+"while at least one of the traversal swapped an element\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:2
 msgid "CocktailSort (take 3)"
-msgstr ""
+msgstr "CocktailSort (3o tempo)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:4
@@ -8659,11 +8924,17 @@ msgid ""
 "can stop if the upward traversal found something to swap, but not the "
 "downwards one."
 msgstr ""
+"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do\n"
+"BubbleSort, Ele parece melhor na prática. É até mesmo possível\n"
+"melhorar um pouco mais parando ele na primeira rodada que não\n"
+"encontrar nada para trocar, se realizar a rodada para baixo. Da mesma\n"
+"forma, podemos parar se a rodade para cima encontrar algo para trocar\n"
+"mas a rodada para baixo não."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:2
 msgid "InsertionSort"
-msgstr ""
+msgstr "InsertionSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:5
@@ -8673,6 +8944,11 @@ msgid ""
 "it is more efficient in practice (linear in best case, ie when the array is "
 "already sorted, and N2/4 on average)."
 msgstr ""
+"Este algoritmo de ordenação é muito simples de entender e escrever,\n"
+"mesmo se não for o mais eficiente possível. Sua complexidade\n"
+"assintótica é O(n2), mas ele é mais eficiente na prática (linear no\n"
+"melhor caso, ie quando a array já está ordenada, e N2/4 no caso\n"
+"médio)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:10
@@ -8683,20 +8959,25 @@ msgid ""
 "left of the array are already sorted, and we have to insert x at its "
 "position in the array."
 msgstr ""
+"A ideia é percorrer todos os elementos da array, e inserir cada um\n"
+"deles em sua posição correta numa parte já ordenada da array. Quando\n"
+"nós olhamos para um elemento x, a situação é a seguinte: qualquer\n"
+"elemento da esquerda da array já está ordenado, e temos que inserir x\n"
+"na sua posição na array."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:18
 msgid "Once this is done, the situation is the following:"
-msgstr ""
+msgstr "Uma vez isto feito, a situação é a seguinte:"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:22
 msgid "The pseudo-code of this algorithm is thus the following:"
-msgstr ""
+msgstr "O pseudo-código deste algoritmo é então o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:23
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "For each i in [1,len-1]\n"
 "  store the value of i in a variable v\n"
@@ -8707,6 +8988,14 @@ msgid ""
 "  ...\n"
 "  copy v into the last cell copied above\n"
 msgstr ""
+"For each i in [1,len-1]\n"
+"  store the value of i in a variable v\n"
+"  copy the cell i-1 into i if i-1 contains a value bigger than v\n"
+"  copy the cell i-2 into i-1 if i-2 contains a value bigger than v\n"
+"  copy the cell i-3 into i-2 if i-3 contains a value bigger than v\n"
+"  copy the cell i-4 into i-3 if i-4 contains a value bigger than v\n"
+"  ...\n"
+"  copy v into the last cell copied above\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:33
@@ -8714,6 +9003,9 @@ msgid ""
 "Naturally, you should use a loop to write the big permutation within the "
 "given loop. Writing it this way would be really ... counter-productive."
 msgstr ""
+"Naturalmente, você deve usar um loop para escrever a grande permutação\n"
+"dentro do loop. Escrever ela desta forma deve ser na verdade\n"
+"... improdutivo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:36
@@ -8722,11 +9014,15 @@ msgid ""
 "here is part of the answer: They improve fundamental algorithms so that "
 "others can write efficient programs."
 msgstr ""
+"Se você já se perguntou o que cientistas da computação fazem nos dias\n"
+"de hoje, aqui está uma parte da resposta: Eles melhoram algoritmos\n"
+"fundamentais para que outras pessoas possam escrever programas\n"
+"eficientes."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:40
 msgid "Other variation of insertion sort"
-msgstr ""
+msgstr "Outra variação do insertion sort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:42
@@ -8736,6 +9032,11 @@ msgid ""
 "algorithm here since understanding its behavior requires to know what a "
 "binary tree is, what is beyond our present goals."
 msgstr ""
+"TreeSort constrói uma árvore de busca binária para ordená-la. Ele\n"
+"consegue O(n log(n)) no caso médio, mas O(n^2) nos piores casos. Não\n"
+"vamos estudar este algoritmo aqui pois para entendê-lo temos que\n"
+"entender o que uma árvore binária é, o que está além de nossos\n"
+"objetivos atuais."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:47
@@ -8747,6 +9048,12 @@ msgid ""
 "since it provide a time complexity of O(n log(n)) but needs to store some "
 "more data."
 msgstr ""
+"Existem variações do insertion sort, tais como o PatienceSort que\n"
+"constrói pilhas de valores e ordena cada pilha depois. Este algoritmo\n"
+"apresenta um tempo 0(n log(n)) no pior caso e uma complexidade de\n"
+"espaço de 0(n). LibrarySort (proposto em 2004) também troca um pouco\n"
+"de espaço por tempo já que tem uma complexidade de tempo de O(n\n"
+"log(n)) mas precisa armazenar um pouco mais de dados."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:54
@@ -8754,11 +9061,13 @@ msgid ""
 "Wikipedia provides a detailled description of all these algorithms we cannot "
 "present here because of time constraints."
 msgstr ""
+"A Wikipédia fornece uma descrição detalhada de cada um destes\n"
+"algoritmos que não apresentamos aqui devido a limitações de tempo."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:2
 msgid "ShellSort"
-msgstr ""
+msgstr "ShellSort"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/shell/AlgShellSort.html:4
@@ -8774,6 +9083,18 @@ msgid ""
 "1, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
+"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que\n"
+"o publicou em 1959. Ele pode ser visto como uma aplicação da ideia do\n"
+"CombSort (faça com que elementos que tem um longo caminho pegarem\n"
+"atalhos) ao insertion sort (CombSort é uma variação do BubbleSort). Ao\n"
+"invés de comparar valores adjacentes durante o insertion sort, ele\n"
+"compara valores separados por um intervalo maior. Quanto maior o\n"
+"intervalo, mais rápido os elementos se movem para seu destino final,\n"
+"mas também menos preciso fica o movimento. É portanto essencial que o\n"
+"algoritmo vá sendo aplicado numa série de intervalos cada vez\n"
+"menor. No último passo, quando o intervalo for 1, o InsertionSort será\n"
+"usado, mas numa array que estará praticamente ordenada pelos passos\n"
+"anteriores."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:15
@@ -8781,15 +9102,21 @@ msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
 msgstr ""
+"Donald Shell propôs <code>len/2</code> como o valor inicial do\n"
+"intervalo, e ir dividindo por 2 a cada passo. O pseudo-código é o\n"
+"seguinte:"
 
 #. type: Content of: <p><pre>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:18
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "gap=len/2\n"
 "while gap>0:\n"
 "  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.\n"
 msgstr ""
+"gap=len/2\n"
+"while gap>0:\n"
+"  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.\n"
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:23
