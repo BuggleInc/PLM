@@ -24,6 +24,7 @@
     - #239: CourseForest: get stick in water, not moving anymore
     - #405: LoopStairs: Make French python bindings fit the templating
     - #406: Lander101: unclear mission text wrt stepping the simulation
+    - #409: LoopWhile: additional reference to "About this world" menu
 
 
 20141009: Release 2.4.11
