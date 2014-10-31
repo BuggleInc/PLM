@@ -16,17 +16,18 @@ module : en modifiant son angle, ou en réglant la poussée de son
 moteur. Dans cette simulation, nous ne nous intéressons qu'à la poussée,
 exprimée en m/s².</p>
 
-<p>Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui
-sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes
-de seconde pendant la simulation. Il faut ajuster la poussée du moteur en
-utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int
-[/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un
-entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous
-ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de
-la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que
-vous demandez 4, vous n'aurez que 3 à la prochaine étape. Si vous demandez
-une valeur inférieure à 0 (ou supérieure à 4), tout se passera comme si vous
-aviez demandé 0 (ou 4).</p>
+<p>The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that
+you should write now will be called every 0.1 second during the
+simulation. Make sure that your code does not last too long, with no while
+loop! It should only set the desired thrust of the next simulation step, by
+calling <code>[!java]void [/!]setDesiredThrust([!java]int
+[/!]desiredThrust[!scala]:Integer[/!])</code> where
+<code>desiredThrust</code> is some integer between 0 and 4 (that is, a
+thrust between 0 m/s² and 4 m/s²). You can only increment or decrement the
+thrust by 1 between two simulation steps, so if the current thrust is 2 and
+you ask for 4, you'll only get 3 in the next step. If you ask for less than
+0 (resp. more than 4), everything will be as if you had asked for 0
+(resp. 4).</p>
 
 <p>Afin de prendre des décisions informées, vous pouvez demander des
 informations sur l'état actuel du module. Dans cette simulation, vous ne

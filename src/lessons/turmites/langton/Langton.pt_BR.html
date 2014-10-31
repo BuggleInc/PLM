@@ -3,15 +3,16 @@
 <h2>formiga de Langton</h2>
 
 <p>Neste exercício, você vai transformar seu buggle numa <i>formiga de
-Langton</i>. Estes pequenos animais artificiais são bastante interessantes
-por que eles recebem regras simples que dependem apenas do seu ambiente
-local, e depois de um período de aparente comportamento caótico, um padrão
-geral <i>surge</i>.</p>
+Langton</i>. Estes pequenos animais artificiais são bastante
+interessantes por que eles recebem regras simples que dependem apenas
+do seu ambiente local, e depois de um período de aparente
+comportamento caótico, um padrão geral <i>surge</i>.</p>
 
-<p>As regras são absolutamente triviais: para calcular qual o próximo passo,
-você verifica a cor atual do chão (usando <code>getGroundColor()</code>). Se
-for branco, mude para preto, vire à direita e mova uma célula. Se for preto
-mude para branco, vire a esquerda e ande uma célula.</p> 
+<p>As regras são absolutamente triviais: para calcular qual o próximo
+passo, você verifica a cor atual do chão (usando
+<code>getGroundColor()</code>). Se for branco, mude para preto, vire à
+direita e mova uma célula. Se for preto mude para branco, vire a
+esquerda e ande uma célula.</p> 
 
 <p>It's hard to come up with simpler rules isn't it? Well, let's go and code it
 now. You have to complete the <code>step()</code> method, which encodes the
@@ -21,9 +22,9 @@ which the ant is currently.  Colors of interest are simply named
 <code>Color.black</code> and <code>Color.white</code>.</p>
 
 [!java]
-<p>Para comparar cores, você não pode usar o símbolo de igualdade (==), pois
-estas coisas não são valores escalares, mas objetos. Ao invés disto, você
-precisa escrever algo como o seguinte:</p> 
+<p>Para comparar cores, você não pode usar o símbolo de igualdade (==),
+pois estas coisas não são valores escalares, mas objetos. Ao invés
+disto, você precisa escrever algo como o seguinte:</p> 
 <pre>
 Cor c /* = alguma inicialização */;
 if (c.equals(Cor.preto)) {
@@ -43,8 +44,9 @@ you may want to write a <code>setGroundColor(color)</code> method to
 factorize things a bit.</p>
 
 <p>Como você pode ver da execução deste exercício, o interessante neste
-algoritmo é que depois de uns 10000 passos de comportamento relativamente
-caótico, a formiga começa a construir um padrão regular. O surgimento deste
-padrão regular em meio ao caos é bastante fascinante, não acha? Mova para o
-próximo exercício para ver mais disto.</p>   
+algoritmo é que depois de uns 10000 passos de comportamento
+relativamente caótico, a formiga começa a construir um padrão
+regular. O surgimento deste padrão regular em meio ao caos é bastante
+fascinante, não acha? Mova para o próximo exercício para ver mais
+disto.</p>   
 

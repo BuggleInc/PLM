@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-17 18:06+0200\n"
+"POT-Creation-Date: 2014-10-31 21:25+0100\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6225,7 +6225,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:41
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
 msgstr "Buona fortuna!"
 
@@ -14681,7 +14681,8 @@ msgstr ""
 msgid ""
 "The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
 "you should write now will be called every 0.1 second during the simulation. "
-"It should set the desired thrust of the next simulation step, by calling "
+"Make sure that your code does not last too long, with no while loop! It "
+"should only set the desired thrust of the next simulation step, by calling "
 "<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:"
 "Integer[/!])</code> where <code>desiredThrust</code> is some integer between "
 "0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
@@ -14692,7 +14693,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:28
 msgid ""
 "In order to take informed decisions, you can query the lander's state. In "
 "this simulation you'll probably be interested in its vertical position: "
@@ -14704,7 +14705,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:36
 msgid ""
 "One last thing: the lander is pretty small so you don't have much fuel. At "
 "each step of the simulation the lander consumes as many fuel units as the "

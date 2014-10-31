@@ -12,30 +12,32 @@ on the second one and left on the third color. According to this definition,
 the basic ant is a RL (since it turns right on white cells and left on black
 ones).</p>
 
-<p>Some of these ants draw fascinating patterns (switch the world to see them):
-LLRR build a symmetric figure resembling loosely to a ball, LRRRRRLLR draws
-a square, LLRRRLRLRLLR draws a convoluted regular pattern after a period of
-seemingly chaotic behavior, and RRLLLRLLLRRR seems to fill a hour glass...</p>  
+<p>Algumas destas formigas desenham padrões fascinantes (alterne o mundo
+para vê-los): LLRR constrói uma figura simétrica semelhante a uma
+bola, LRRRRRLLR desenha um quadrado, LLRRRLRLRLLR desenha um padrão
+regular convolucionado depois de um período de aparente caos, e
+RRLLLRLLLRRR parece preencher uma ampulheta...</p>  
 
-<p>Changing your buggle into a generic Langton's ant is not very complicated,
-although it is not completely trivial. As previously, you have to write a
-<code>step</code> function. But this time, it receives two arrays as
-parameters.  The first one defines the rules to follow depending on the
-ground color while the second one gives the sequence of colors to use. For
-example, the basic ant would have [!java]<code>{'R', 'L'}</code> and
-<code>{Color.white, Color.black}</code>[/!] [!python]<code>['R', 'L']</code>
-and <code>[Color.white, Color.black]</code>[/!] [!scala]<code>Array('R',
-'L')</code> and <code>Array(Color.white, Color.black)</code>[/!] as
-arguments.</p>
+<p>Transformar seu buggle numa formiga de Langton genérica não é muito
+complicado, embora não seja totalmente trivial. Como anteriormente,
+você tem que escrever uma função <code>step</code>. Mas desta vez, ela
+recebe duas arrays como parâmetros. A primeira define as regras para
+seguir dependendo da cor do chão enquanto a segunda dá a sequência de
+cores a usar. Por exemplo, a formiga básica deve ter
+[!java]<code>{'R', 'L'}</code> e <code>{Cor.branco,
+Cor.preto}</code>[/!] [!python]<code>['R', 'L']</code> e
+<code>[Cor.branco, Cor.preto]</code>[/!] [!scala]<code>Array('R',
+'L')</code> e <code>Array(Cor.branco, Cor.preto)</code>[/!] como
+argumentos.</p>
 
-<p>At each step, you thus have to apply the following pseudo-code:</p>
+<p>Em cada passo, você deve então ter que aplicar o seguinte pseudo-código:</p>
 <ul>
- <li>Find the position of the ground color in the color sequence;</li>
- <li>Turn left or right depending on the content of the rule array at that
-position;</li>
+ <li>Encontre a posição da cor do chão na sequência de cores;</li>
+ <li>Vire a esquerda ou direita dependendo do conteúdo da array de regras
+nesta posição;</li>
  <li>Mark the current ground with the next color in the sequence (the last color
 being followed by the first one);</li>
- <li>Move forward by one step.</li>
+ <li>ande um passo para frente.</li>
 </ul> 
 
-<p>You now should have enough information to succeed.</p>
+<p>Você agora tem informação o suficiente para conseguir.</p>
