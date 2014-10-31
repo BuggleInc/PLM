@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 21:53+0200\n"
-"PO-Revision-Date: 2014-10-22 21:59+0200\n"
+"POT-Creation-Date: 2014-10-31 22:06+0100\n"
+"PO-Revision-Date: 2014-10-31 22:09+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1623,9 +1623,9 @@ msgid ""
 "please fix the following issue(s):\n"
 "\n"
 msgstr ""
-"Votre rapport d'anomalie doit être légèrement modifié avant de pouvoir "
-"l'envoyer. "
-"Merci de corriger les points suivants "
+"Votre rapport d'anomalie doit être légèrement modifié avant \n"
+"de pouvoir l'envoyer. Merci de corriger les points suivants : \n"
+"\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:155
 msgid "Incorrect feedback"
@@ -1635,19 +1635,17 @@ msgstr "Rapport d'anomalie invalide"
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
-msgstr ""
-"Le titre est encore celui par défaut. Merci de résumer votre problème dans le "
-"titre. "
+msgstr "Le titre est encore celui par défaut. Merci de résumer votre problème dans le titre. \n"
 
 #: src/plm/core/ui/FeedbackDialog.java:184
 msgid "The current title is empty, please specify a relevant title.\n"
-msgstr "Le titre est vide. Merci de résumer votre problème dans le titre. "
+msgstr "Le titre est vide. Merci de résumer votre problème dans le titre. \n"
 
 #: src/plm/core/ui/FeedbackDialog.java:188
-msgid "The feedback still contains the explanatory text, please remove it.\n"
-msgstr ""
-"Le corps du message contient encore le texte explicatif (au dessus de la "
-"ligne de -------------), merci de le retirer. "
+msgid ""
+"The feedback still contains the explanatory text (above the line of "
+"---------), please remove it.\n"
+msgstr "Le corps du message contient encore le texte explicatif (au dessus de la ligne de -------------), merci de le retirer. \n"
 
 #: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
 msgid "Where error and other messages get written"
@@ -1821,7 +1819,7 @@ msgid "Next"
 msgstr "Suivant"
 
 #: src/plm/core/ui/MainFrame.java:619
-msgid "Please wait, while PLM is saving your session data."
+msgid "Please wait, while the PLM is saving your session data."
 msgstr "Veuillez patienter pendant que la PLM sauvegarde votre session."
 
 #: src/plm/core/ui/MainFrame.java:753
@@ -2700,35 +2698,13 @@ msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:417
 msgid "Superflous shapes in your solution:\n"
-msgstr "Formes superflues dans votre solution : "
+msgstr "Formes superflues dans votre solution : \n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:422
 msgid "Missing shapes in your solution:\n"
-msgstr "Formes manquantes dans votre solution : "
+msgstr "Formes manquantes dans votre solution : \n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:433
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
-
-#, fuzzy
-#~ msgid "The lesson "
-#~ msgstr "Sélectionner une leçon"
-
-#, fuzzy
-#~ msgid "Don't save code remotely, as the network seems unreachable."
-#~ msgstr ""
-#~ "Le code n'a pas été sauvegardé sur les serveurs distants puisque le "
-#~ "réseau semble inutilisable. Ce n'est pas un problème."
-
-#~ msgid ""
-#~ "Don't save code remotely, as the network seems unreachable. That's fine."
-#~ msgstr ""
-#~ "Le code n'a pas été sauvegardé sur les serveurs distants puisque le "
-#~ "réseau semble inutilisable. Ce n'est pas un problème."
-
-#~ msgid "This test raised a {0} exception: {1}"
-#~ msgstr "Ce test a levé une exception {0} : {1}"
-
-#~ msgid "That's not a line."
-#~ msgstr "Ce n'est pas une ligne."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 21:53+0200\n"
+"POT-Creation-Date: 2014-10-31 22:06+0100\n"
 "PO-Revision-Date: 2014-06-15 21:51-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1368,7 +1368,9 @@ msgid "The current title is empty, please specify a relevant title.\n"
 msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:188
-msgid "The feedback still contains the explanatory text, please remove it.\n"
+msgid ""
+"The feedback still contains the explanatory text (above the line of "
+"---------), please remove it.\n"
 msgstr ""
 
 #: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
@@ -1543,7 +1545,7 @@ msgid "Next"
 msgstr ""
 
 #: src/plm/core/ui/MainFrame.java:619
-msgid "Please wait, while PLM is saving your session data."
+msgid "Please wait, while the PLM is saving your session data."
 msgstr ""
 
 #: src/plm/core/ui/MainFrame.java:753
