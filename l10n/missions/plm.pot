@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-31 21:25+0100\n"
+"POT-Creation-Date: 2014-10-31 21:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1448,7 +1448,9 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
-msgid "When your program works, move forward to the next exercise."
+msgid ""
+"Look at the documentation (in \"Help/About this world\") for the full list "
+"of buggles' methods."
 msgstr ""
 
 #. type: Content of: <p>

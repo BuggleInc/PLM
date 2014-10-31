@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-31 21:25+0100\n"
+"POT-Creation-Date: 2014-10-31 21:42+0100\n"
 "PO-Revision-Date: 2014-07-07 23:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2133,9 +2133,10 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
-msgid "When your program works, move forward to the next exercise."
+msgid ""
+"Look at the documentation (in \"Help/About this world\") for the full list "
+"of buggles' methods."
 msgstr ""
-"Quando il tuo programma avrà funzionato, prosegui con il prossimo esercizio."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:3
@@ -15015,6 +15016,11 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr ""
+
+#~ msgid "When your program works, move forward to the next exercise."
+#~ msgstr ""
+#~ "Quando il tuo programma avrà funzionato, prosegui con il prossimo "
+#~ "esercizio."
 
 #~ msgid "Beware, the first line and column are numbered 0 and not 1..."
 #~ msgstr ""
