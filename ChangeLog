@@ -2,7 +2,7 @@
 
   * Improved translations:
     - French: mission and engine back at 100%
-    - Brazilian: missions at 56%
+    - Brazilian: missions at 58%
   * Engine:
     - #292: Check the user's input before submitting a feedback
     - #304: Stop user's program's or demo's execution if the user 
