@@ -1,5 +1,7 @@
-20141015: wannabe Release 2.5
+20141031: Release 2.5
 
+  The Halloween Release.
+  
   * Improved translations:
     - French: mission and engine back at 100%
     - Brazilian: missions at 58%
@@ -25,7 +27,6 @@
     - #405: LoopStairs: Make French python bindings fit the templating
     - #406: Lander101: unclear mission text wrt stepping the simulation
     - #409: LoopWhile: additional reference to "About this world" menu
-
 
 20141009: Release 2.4.11
 
