@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-31 21:42+0100\n"
+"POT-Creation-Date: 2014-11-02 23:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3382,7 +3382,7 @@ msgstr ""
 #: src/lessons/welcome/methods/basics/Methods.html:5
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
-"buggle vocabulary by learning it new tricks."
+"buggle vocabulary by teaching it new tricks."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3572,7 +3572,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
 msgid ""
-"We now would like to learn the buggle to build a doghouse. The naive "
+"We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
 "works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
@@ -4301,7 +4301,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"After these races, it's time to party! For that, we will learn the buggles "
+"After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
 "to move the feet on the carpet according to the instructions presented on "
 "the screen, and following the music. But before that, we have some details "
@@ -4573,7 +4573,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
 msgid ""
-"The goal is then to organize a BDR game between the buggles by learning them "
+"The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
 "instructions are messages written on the ground, with the following "
 "signification:"
