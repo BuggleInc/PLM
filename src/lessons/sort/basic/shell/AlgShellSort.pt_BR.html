@@ -22,25 +22,27 @@ while gap>0:
   apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.
 </pre>
 
-<p>Just like in CombSort, the sequence of values taken by the gap is crucial
-for Shell sort performance. In some rare pathological cases, the sequence we
-used above can lead to a O(n^2) performance. Other sequences were proposed:
-the Hibbard's increments of 2k − 1 lead to a complexity of O(n^(3/2)) in
-worst cases. Pratt's increments 2^i3^j lead to a O(nlog(n)log(n) performance
-in worst cases. The existance of a sequence leading to a O(n log(n)) was
-precluded by Poonen, Plaxton, and Suel. Thanks to this performance,
-ShellSort is a valid candidate for array of several hundred thousands when
-correctly implemented.</p>
+<p>Assim como no CombSort, a sequência de valores pega pelo intervalo é
+crucial para a performance do Shell sort. Em alguns casos patológicos
+raros, a sequência que usamos pode levar a uma performance
+O(n^2). Outras sequências foram propostas: os incrementos de Hibbard
+de 2k − 1 levam a uma complexidade de O(n^(3/2)) em casos
+ruins. incrementos de Pratt 2^i3^j levam a uma performance de
+O(nlog(n)log(n) nos piores casos. A existência de uma sequência
+levando a O(n log(n)) foi excluída por Poonen, Plaxton e Suel. Graças
+a esta performance, ShellSort é um candidato válido para arrays de
+várias centenas de milhares quando corretamente implementado.</p>
 
-<p>In our case, the array are ways too small to benefit of these
-optimizations. If you ever need to do so, take as initial gap the biggest
-value of the targeted serie still smaller than the array size, and then use
-decreasing values of the serie.</p>
+<p>No nosso caso, a array é pequena demais para se beneficiar destas
+otimizações. Se você ainda assim quiser, tome o intervalo inicial como
+o maior valor da série alvo ainda menor que o tamanho do array, e
+então use valores decrescentes da série.</p>
 
-<p>Interestingly enough, determining the best gap sequence for shell sort turns
-into a research issue of our century in computer science. For example, an
-article of 2001 introduces the following sequence, which seems to be optimal
-in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701,
-1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th
-International Symposium on Fundamentals of Computation Theory, LNCS 2001;
+<p>Determinar a melhor sequência de intervalos para o shell sort se
+tornou um tema de pesquisa de nosso século em ciência da
+computação. Por exemplo, um artigo de 2001 introduz a seguinte
+sequência, que parece ser a melhor na prática para arrays de tamanho
+até 10^5: {1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best
+Increments for the Average Case of Shellsort, 13th International
+Symposium on Fundamentals of Computation Theory, LNCS 2001;
 Vol. 2138).</p> 
