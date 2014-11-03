@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-10-25 21:19-0300\n"
+"PO-Revision-Date: 2014-11-02 23:23-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -9131,6 +9131,16 @@ msgid ""
 "ShellSort is a valid candidate for array of several hundred thousands when "
 "correctly implemented."
 msgstr ""
+"Assim como no CombSort, a sequência de valores pega pelo intervalo é\n"
+"crucial para a performance do Shell sort. Em alguns casos patológicos\n"
+"raros, a sequência que usamos pode levar a uma performance\n"
+"O(n^2). Outras sequências foram propostas: os incrementos de Hibbard\n"
+"de 2k − 1 levam a uma complexidade de O(n^(3/2)) em casos\n"
+"ruins. incrementos de Pratt 2^i3^j levam a uma performance de\n"
+"O(nlog(n)log(n) nos piores casos. A existência de uma sequência\n"
+"levando a O(n log(n)) foi excluída por Poonen, Plaxton e Suel. Graças\n"
+"a esta performance, ShellSort é um candidato válido para arrays de\n"
+"várias centenas de milhares quando corretamente implementado."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:33
@@ -9140,6 +9150,10 @@ msgid ""
 "targeted serie still smaller than the array size, and then use decreasing "
 "values of the serie."
 msgstr ""
+"No nosso caso, a array é pequena demais para se beneficiar destas\n"
+"otimizações. Se você ainda assim quiser, tome o intervalo inicial como\n"
+"o maior valor da série alvo ainda menor que o tamanho do array, e\n"
+"então use valores decrescentes da série."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:38
@@ -9152,18 +9166,26 @@ msgid ""
 "International Symposium on Fundamentals of Computation Theory, LNCS 2001; "
 "Vol. 2138)."
 msgstr ""
+"Determinar a melhor sequência de intervalos para o shell sort se\n"
+"tornou um tema de pesquisa de nosso século em ciência da\n"
+"computação. Por exemplo, um artigo de 2001 introduz a seguinte\n"
+"sequência, que parece ser a melhor na prática para arrays de tamanho\n"
+"até 10^5: {1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best\n"
+"Increments for the Average Case of Shellsort, 13th International\n"
+"Symposium on Fundamentals of Computation Theory, LNCS 2001;\n"
+"Vol. 2138)."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:2
 msgid "Selection Sort"
-msgstr ""
+msgstr "Selection Sort"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:4
 msgid ""
 "In this exercise we will implement another classical algorithm: selection "
 "sort."
-msgstr ""
+msgstr "Neste exercício vamos implementar outro algoritmo clássico: selection sort."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:7
@@ -9173,6 +9195,10 @@ msgid ""
 "smallest value over the whole array. For the second one, it takes the second "
 "smallest value, which is the smallest value from the cell not already sorted."
 msgstr ""
+"A ideia é simplesmente selecionar para cada célula da array o menor\n"
+"valor da parte ainda não ordenada. Então para a primeira célula,\n"
+"pegamos o menor valor da array toda. Para a segunda, pegamos o segundo\n"
+"menor valor, que é o menor valor da célula ainda não ordenado."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:13
@@ -9181,11 +9207,14 @@ msgid ""
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
 msgstr ""
+"De forma mais geral, para a célula N, ele busca a célula M em [n;len]\n"
+"contendo o menor valor possível do intervalo. Então, troca o conteúdo\n"
+"da célula N com o da célula M."
 
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
 msgid "Existing variations"
-msgstr ""
+msgstr "Variações existentes"
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
@@ -9195,14 +9224,20 @@ msgid ""
 "yet. Simply remember that HeapSort provides a O(n log n) performance in "
 "worst case, which is why it is a very interesting algorithm in practice."
 msgstr ""
+"Outro algoritmo clássico cuja ideia é baseada na seleção de bons\n"
+"elementos é o HeapSort, mas ele usa uma estrutura de dados heap que\n"
+"ainda não vimos. Simplesmente lembre que o HeapSort fornece um\n"
+"desempenho O(n log n) no pior caso, que é o motivo para ele ser bem\n"
+"interessante na prática."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:2
 msgid "CombSort"
-msgstr ""
+msgstr "CombSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:4
+#, fuzzy
 msgid ""
 "We saw that CocktailSort improve a bit for turtles (i.e. small values near "
 "to the end of the array), but it is still possible to achieve better. "
@@ -9214,11 +9249,11 @@ msgid ""
 "right gap and how to decrease it is a difficult question, but in practice, "
 "dividing it by 1.3 after each traversal leads to good performance. Here is "
 "the corresponding pseudo-code:"
-msgstr ""
+msgstr "We saw that CocktailSort improve a bit for turtles (i.e. small values near to the end of the array), but it is still possible to achieve better. ComboSort comes down to providing them a short cut: instead of comparing adjacent values, we compare values separated by a gap bigger than 1. That way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, we have to apply the algorithm with decreasing gaps, and finish with <i>gap=1</i> to ensure that the array is correctly sorted afterward. Choosing the right gap and how to decrease it is a difficult question, but in practice, dividing it by 1.3 after each traversal leads to good performance. Here is the corresponding pseudo-code:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:16
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "gap = len;\n"
 "do\n"
@@ -9230,13 +9265,22 @@ msgid ""
 "     increase i by one\n"
 "while the gap is bigger than 1 or the last traversal swapped at least one pair\n"
 msgstr ""
+"gap = len;\n"
+"do\n"
+"   if gap>1 then\n"
+"     gap = gap / 1.3\n"
+"   i = O\n"
+"   while i+gap &lt; len do:\n"
+"     if i and i+gap must be swapped, do it\n"
+"     increase i by one\n"
+"while the gap is bigger than 1 or the last traversal swapped at least one pair\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
 #: src/lessons/maze/island/IslandMaze.html:67
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[!scala]"
-msgstr ""
+msgstr "[!scala]"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
@@ -9248,12 +9292,19 @@ msgid ""
 "the operation, and then convert the result back to Int to store it into gap. "
 "This should be written this way:"
 msgstr ""
+"Um detalhe perigoso é que temos que dividir o intervalo, que é um\n"
+"inteiro (ou do tipo Int), por 1.3, que é um Double. O sistema de tipos\n"
+"do scala não nos deixa fazer isto, por que tal discrepância\n"
+"normalmente significa um erro de programação. Como isto não é um erro\n"
+"neste caso, vamos ter que converter o intervalo para Double para o\n"
+"momento da operação, e então converter o resultado de volta para Int\n"
+"para armazená-lo no intervalo. Isto deve ser escrito desta forma:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:31
 #, no-wrap
 msgid "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
-msgstr ""
+msgstr "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:32
@@ -9264,12 +9315,18 @@ msgid ""
 "been a pain to debug if not catch by the type checker. And since the Scala's "
 "authors are pragmatic, the previous expression can be simplified:"
 msgstr ""
+"Isto é meio exagerado, mas na verdade, esta notação não é muito\n"
+"complexa. E lembre que o verificador de sintaxe é seu amigo. Ele às\n"
+"vezes é chato e irritante (como neste caso), mas frequentemente pega\n"
+"bugs esquisitos que seriam trabalhosos para depurar se não fosse o\n"
+"verificador de sintaxe. E como os autores do Scala são pragmáticos, a\n"
+"expressão anterior pode ser simplificada:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:36
 #, no-wrap
 msgid "gap = (gap.toDouble / 1.3).toInt"
-msgstr ""
+msgstr "gap = (gap.toDouble / 1.3).toInt"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:37
@@ -9278,6 +9335,10 @@ msgid ""
 "corresponding expressions <code>asInstanceOf[Double]</code> and "
 "<code>asInstanceOf[Int]</code>. It's not very generic, but it's very handy."
 msgstr ""
+"<code>toDouble</code> e <code>toInt</code> são apenas atalhos para as\n"
+"expressões correspondentes <code>asInstanceOf[Double]</code> e\n"
+"<code>asInstanceOf[Int]</code>. Não é muito genérico, mas é bem\n"
+"prático."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:41
@@ -9286,11 +9347,14 @@ msgid ""
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
 "it in Byte Magazine in April 1991."
 msgstr ""
+"Este algoritmo foi inventanndo por Wlodek Dobosiewicz em 1980, e\n"
+"depois redescoberto e popularizado por Stephen Lacey e Richard Box,\n"
+"que o descreveram na Byte Magazine em Abril de 1991."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/comb/AlgCombSort11.html:2
 msgid "CombSort11"
-msgstr ""
+msgstr "CombSort11"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort11.html:4
@@ -9301,11 +9365,16 @@ msgid ""
 "CombSort to ensure just after the gap update that if it is 9 or 10, we "
 "should use 11 instead."
 msgstr ""
+"Os autores deste algoritmo observaram que o desempenho é aumentado se\n"
+"nos certificarmos que os últimos valores do intervalo são (11, 8, 6,\n"
+"4, 3, 2, 1) ao invés de (9, 6, 4, 3, 2, 1) ou (10, 7, 5, 3, 2,\n"
+"1). Retrabalhar o código do CombSort para garantir apenas que depois\n"
+"da atualização do intervalo que se ele for 9 ou 10, devemos usar 11."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/gnome/AlgGnomeSort.html:2
 msgid "GnomeSort"
-msgstr ""
+msgstr "GnomeSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/gnome/AlgGnomeSort.html:4
@@ -9315,9 +9384,15 @@ msgid ""
 "supposed behavior of garden gnomes when they sort flower pots. Here is a "
 "description of the algorithm by its author:"
 msgstr ""
+"O Gnome sort é similar ao insertion sort, mas os elementos são movidos\n"
+"de poisção por uma série de trocas que se parecem com o bubble sort. O\n"
+"nome veio do suposto comportamento que gnomos de jardim tem quando\n"
+"ordenam vasos de flores. Aqui está uma descrição do algoritmo por seu\n"
+"autor:"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/gnome/AlgGnomeSort.html:9
+#, fuzzy
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
@@ -9326,7 +9401,7 @@ msgid ""
 "them and steps one pot backwards. Boundary conditions: if there is no "
 "previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
-msgstr ""
+msgstr "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome (Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. Basically, he looks at the flower pot next to him and the previous one; if they are in the right order he steps one pot forward, otherwise he swaps them and steps one pot backwards. Boundary conditions: if there is no previous pot, he steps forwards; if there is no pot next to him, he is done.  <i>—Dick Grune</i>"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/dutchflag/Main.html:2
@@ -9334,7 +9409,7 @@ msgstr ""
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:2
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:2
 msgid "The Dutch Flag Problem"
-msgstr ""
+msgstr "O problema da bandeira holandesa"
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/Main.html:4
@@ -9346,11 +9421,18 @@ msgid ""
 "complexity is not trivial, but not complex either.  It can easily be "
 "formally proven, but it's not absolutely trivial either."
 msgstr ""
+"Este problema foi proposto primeiro por E.W Dijkstra em 1976 (no\n"
+"capítulo 14 de seu livro \"A Discipline of Programming\"). É uma\n"
+"variação clássica de algoritmos de ordenação desde então. Ele é às\n"
+"vezes útil em vida real, mas se tornou famosos por suas propriedades\n"
+"pedagógicas: sua complexidade não é trivial, mas não é muito\n"
+"complexo. Pode ser provados formalmente com facilidade, mas não é de\n"
+"forma alguma trivial."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:13
 msgid "A temporal view could be welcomed."
-msgstr ""
+msgstr "Uma visão temporal pode ser bem-vinda."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:14
@@ -9358,6 +9440,8 @@ msgid ""
 "Other exercises, for example with 2 colors only or with more than 3 colors, "
 "could generalize the proposed approach."
 msgstr ""
+"Outros exercícios, por exemplo com 2 cores apenas ou com mais de 3\n"
+"cores, podem generalizar a abordagem proposta."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:15
