@@ -18,8 +18,10 @@ exprimée en m/s².</p>
 
 <p>Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui
 sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes
-de seconde pendant la simulation. Il faut ajuster la poussée du moteur en
-utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int
+de seconde pendant la simulation. Assurez vous que votre code ne dure pas
+trop longtemps, et évitez en particulier les boucles <code>while</code>. Il
+faut juste ajuster la poussée du moteur en utilisant la fonction
+<code>[!java]void [/!]setPousseeDesiree([!java]int
 [/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un
 entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous
 ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de

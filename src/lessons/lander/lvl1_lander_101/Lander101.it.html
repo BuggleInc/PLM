@@ -17,7 +17,8 @@ care about adjusting the thrust, expressed in m/s².</p>
 
 <p>The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that
 you should write now will be called every 0.1 second during the
-simulation. It should set the desired thrust of the next simulation step, by
+simulation. Make sure that your code does not last too long, with no while
+loop! It should only set the desired thrust of the next simulation step, by
 calling <code>[!java]void [/!]setDesiredThrust([!java]int
 [/!]desiredThrust[!scala]:Integer[/!])</code> where
 <code>desiredThrust</code> is some integer between 0 and 4 (that is, a

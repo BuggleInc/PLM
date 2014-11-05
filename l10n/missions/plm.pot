@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-11 00:49+0200\n"
+"POT-Creation-Date: 2014-11-02 23:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1448,7 +1448,9 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
-msgid "When your program works, move forward to the next exercise."
+msgid ""
+"Look at the documentation (in \"Help/About this world\") for the full list "
+"of buggles' methods."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3189,10 +3191,10 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10 src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:5 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8
+#: src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10 src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:7 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:10 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site "
-"http://javabat.com/"
+"http://codingbat.com/"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -3380,7 +3382,7 @@ msgstr ""
 #: src/lessons/welcome/methods/basics/Methods.html:5
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
-"buggle vocabulary by learning it new tricks."
+"buggle vocabulary by teaching it new tricks."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3570,7 +3572,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
 msgid ""
-"We now would like to learn the buggle to build a doghouse. The naive "
+"We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
 "works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
@@ -4182,7 +4184,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PatternPicture.html:11 src/lessons/lander/lvl1_lander_101/Lander101.html:41
+#: src/lessons/welcome/methods/picture/PatternPicture.html:11 src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
 msgstr ""
 
@@ -4299,7 +4301,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"After these races, it's time to party! For that, we will learn the buggles "
+"After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
 "to move the feet on the carpet according to the instructions presented on "
 "the screen, and following the music. But before that, we have some details "
@@ -4571,7 +4573,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
 msgid ""
-"The goal is then to organize a BDR game between the buggles by learning them "
+"The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
 "instructions are messages written on the ground, with the following "
 "signification:"
@@ -5254,7 +5256,7 @@ msgstr ""
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
 msgid ""
 "Beware, the first line and column are numbered 0 and not 1, and the point "
-"(0,0)  is on the top left corner. This may seem disturbing, but it is very "
+"(0,0)  is on the top left corner. This may seem surprising, but it is very "
 "often so in Computer Science."
 msgstr ""
 
@@ -10721,6 +10723,13 @@ msgid ""
 "remainders, so 17 % 10 is 7."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10
+msgid ""
+"This exercise was converted to PLM from the excellent exercising site "
+"http://javabat.com/"
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
@@ -11065,7 +11074,7 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/Main.html:4
 msgid ""
 "A very good introduction to this type is available here: "
-"http://javabat.com/doc/ifboolean.html."
+"http://codingbat.com/doc/java-if-boolean-logic.html"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -11213,14 +11222,14 @@ msgstr ""
 #: src/lessons/bat/string1/Main.html:4
 msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
-"operations, such as getting the length of the string, or a substring of it.."
+"operations, such as getting the length of the string, or a substring of it."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
 msgid ""
 "A very good introduction to this type is available here: "
-"http://javabat.com/doc/string.html."
+"http://codingbat.com/doc/java-string-introduction.html"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -11549,7 +11558,8 @@ msgstr ""
 msgid ""
 "The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
 "you should write now will be called every 0.1 second during the "
-"simulation. It should set the desired thrust of the next simulation step, by "
+"simulation. Make sure that your code does not last too long, with no while "
+"loop! It should only set the desired thrust of the next simulation step, by "
 "calling <code>[!java]void [/!]setDesiredThrust([!java]int "
 "[/!]desiredThrust[!scala]:Integer[/!])</code> where "
 "<code>desiredThrust</code> is some integer between 0 and 4 (that is, a "
@@ -11561,7 +11571,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:28
 msgid ""
 "In order to take informed decisions, you can query the lander's state. In "
 "this simulation you'll probably be interested in its vertical position: "
@@ -11574,7 +11584,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:36
 msgid ""
 "One last thing: the lander is pretty small so you don't have much fuel. At "
 "each step of the simulation the lander consumes as many fuel units as the "

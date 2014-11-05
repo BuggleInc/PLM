@@ -1,18 +1,18 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Langton's ant</h2>
+<h2>formiga de Langton</h2>
 
-<p>In this exercise, you will turn your buggle into a <i>Langton's
-ant</i>. These artificial little animals are very interesting because they
-are given simple rules that depend only on their local environment, and
-after a period of apparent chaotic behavior, a general pattern
-<i>emerges</i>.</p>
+<p>Neste exercício, você vai transformar seu buggle numa <i>formiga de
+Langton</i>. Estes pequenos animais artificiais são bastante
+interessantes por que eles recebem regras simples que dependem apenas
+do seu ambiente local, e depois de um período de aparente
+comportamento caótico, um padrão geral <i>surge</i>.</p>
 
-<p>The rules are absolutely trivial: to compute what the next step should be,
-you should check the current color of the ground (using
-<code>getGroundColor()</code>). If it's white, change it to black, turn
-right and move forward by one cell. If the ground is currently black, change
-it to white, turn left and move forward by one cell.</p> 
+<p>As regras são absolutamente triviais: para calcular qual o próximo
+passo, você verifica a cor atual do chão (usando
+<code>getGroundColor()</code>). Se for branco, mude para preto, vire à
+direita e mova uma célula. Se for preto mude para branco, vire a
+esquerda e ande uma célula.</p> 
 
 <p>It's hard to come up with simpler rules isn't it? Well, let's go and code it
 now. You have to complete the <code>step()</code> method, which encodes the
@@ -22,30 +22,31 @@ which the ant is currently.  Colors of interest are simply named
 <code>Color.black</code> and <code>Color.white</code>.</p>
 
 [!java]
-<p>To compare colors, you cannot use the equal signs (==), because these things
-are not scalar values but objects. Instead, you need to write something like
-the following:</p> 
+<p>Para comparar cores, você não pode usar o símbolo de igualdade (==),
+pois estas coisas não são valores escalares, mas objetos. Ao invés
+disto, você precisa escrever algo como o seguinte:</p> 
 <pre>
-Color c /* = some initialization */;
-if (c.equals(Color.black)) {
-  /* that's equal */
+Cor c /* = alguma inicialização */;
+if (c.equals(Cor.preto)) {
+  /* é igual */
 } else {
-  /* that was not equal */
+  /* não é igual */
 }
 </pre>
 [/!]
 
-<p>mudar a cor do chão não é difícil, mas meio demorado: você tem que
-mudar a cor do pincel de seu buggle, baixar o pincel (para marcar a
-célula atual -- com <code>brushDown()</code>), e levantar o pincel de
-novo (com <code>levantarPincel()</code>) para evitar problemas quando
-o buggle se mexer. Você é, naturalmente, livre para organizar seu
-código da forma que quiser, mas você deve querer escrever um método
-<code>setCorDoChão(color)</code> para separar um pouco as coisas.</p>
+<p>Changing the ground color is not difficult, but a bit long: you have to
+change the brush color of your buggle, set the brush down (to mark the
+current cell -- with <code>brushDown()</code>), and set the brush back up
+(with <code>brushUp()</code>) to avoid further issues when the buggle will
+move. You are naturally free of organizing your code the way you want, but
+you may want to write a <code>setGroundColor(color)</code> method to
+factorize things a bit.</p>
 
-<p>As you can see from the execution of this exercise, the interest in this
-algorithm is that after about 10000 steps of relative chaotic behavior, the
-ant start building a regular pattern. This emergence of a regular pattern
-from the chaos is rather fascinating, isn't it? Move on to the next exercise
-to see more of them.</p>   
+<p>Como você pode ver da execução deste exercício, o interessante neste
+algoritmo é que depois de uns 10000 passos de comportamento
+relativamente caótico, a formiga começa a construir um padrão
+regular. O surgimento deste padrão regular em meio ao caos é bastante
+fascinante, não acha? Mova para o próximo exercício para ver mais
+disto.</p>   
 

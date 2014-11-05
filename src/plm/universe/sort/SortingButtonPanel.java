@@ -109,4 +109,9 @@ public class SortingButtonPanel extends EntityControlPanel {
 			operationsComboBox.addItem(s);
 		
 	}
+	
+	@Override
+	public void dispose() {
+		Game.getInstance().removeHumanLangListener(this);
+	}
 }

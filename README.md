@@ -13,6 +13,8 @@ For more information, subscribe to our
 mailing list (low trafic), and 
 [visit the PLM web site](http://www.loria.fr/~quinson/Teaching/PLM/).
 
+[![Build Status](https://travis-ci.org/oster/PLM.svg)](https://travis-ci.org/oster/PLM)
+
 ## License
 
 PLM is licensed under the GNU General Public License 3.

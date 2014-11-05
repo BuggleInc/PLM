@@ -185,7 +185,7 @@ public class FeedbackDialog extends JDialog {
 		}
 		if(feedback.getText().contains(defaultText)) {
 			correct = false;
-			msg.append(i18n.tr("The feedback still contains the explanatory text, please remove it.\n"));
+			msg.append(i18n.tr("The feedback still contains the explanatory text (above the line of ---------), please remove it.\n"));
 		}
 		errorMsg = msg.toString();
 		return correct;

@@ -29,7 +29,7 @@ retornam respectivamente a largura e altura do mundo. Seu teste é deve
 comparar a posição atual do buggle (que vocẽ pode acessar com
 <code>getX()</code> e <code>getY()</code>) com as dimensões do mundo.<br/>
 Beware, the first line and column are numbered 0 and not 1, and the point
-(0,0)  is on the top left corner. This may seem disturbing, but it is very
+(0,0)  is on the top left corner. This may seem surprising, but it is very
 often so in Computer Science.</p>  
 
 <p>Then, you have to write the code to reach the next position. In this
@@ -42,15 +42,16 @@ percorre corretamente o mundo na ordem esperada, e que ele pára quando
 tem que parar. Use oo botão <b>stop</b> se o buggle não parar
 corretamente.</p>
 
-<p>It is now time to write down the cell numbers. For that, you will need a
-counter initialiser to zero at the beginning of your code, and incremented
-by one at each step (for example with <code>counter += 1;</code>).  Then,
-you have to use <code>writeMessage()</code> to write the value on the
-ground.
+<p>Agora é hora de escrever os números das células. Para isto, você vai
+precisar de um contador iniciando em zero no começo do seu código, e
+incrementar de um em cada passo (por exemplo com <code>counter +=
+1;</code>).  Então, você terá que usar <code>escreverMensagem()</code>
+para escrever o valor no chão.
 </p>
 
-<p>You probably need to write the first [!java|scala|c]or last [/!]value out of
-the main loop [!java|scala|c], depending on whether you prefer to use a
-<code>while</code> or a <code>do/while</code> one[/!].</p>
+<p>Você provavelmente vai precisar escrever o primeiro [!java|scala|c]ou
+último [/!]valor fora do loop principal [!java|scala|c], dependendo se
+você prefere usar um <code>while</code> ou um
+<code>do/while</code>[/!].</p>
 
 <p>Sua vez...</p>
