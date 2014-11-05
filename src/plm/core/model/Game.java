@@ -669,6 +669,8 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
+
+			saveSession();
 			
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
@@ -678,7 +680,6 @@ public class Game implements IWorldView {
 			if(heartBeatSpy != null)
 				heartBeatSpy.die();
 
-			saveSession();
 			storeProperties();
 			System.exit(0);
 		} catch (UserAbortException e) {
