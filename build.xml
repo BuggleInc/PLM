@@ -240,7 +240,7 @@
 	  </junit>
     </target>
 
-	<target name="all-tests" depends="compile" description="launch all tests">
+    <target name="all-tests" depends="compile" description="launch all tests">
 	  <junit printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
@@ -248,7 +248,7 @@
 	  </junit>
     </target>
 	
-	<target name="unit-tests" depends="compile" description="launch all unit tests">
+    <target name="unit-tests" depends="compile" description="launch all unit tests">
 	  <junit printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
@@ -256,7 +256,7 @@
 	  </junit>
     </target>
 	
-	<target name="integration-tests" depends="compile" description="launch all integration tests">
+    <target name="integration-tests" depends="compile" description="launch all integration tests">
 	  <junit printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
