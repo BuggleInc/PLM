@@ -158,7 +158,7 @@ public class GitUtils {
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
 				// TODO: handle this case
-				System.out.println(Game.i18n.tr("Cancelled the merge operation because of the following failures:"));
+				System.out.println(Game.i18n.tr("Canceled the merge operation because of the following failures:"));
 				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
 				for(String path : allFailures.keySet()) {
 					System.out.println(path + " : " + allFailures.get(path));

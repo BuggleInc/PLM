@@ -374,9 +374,9 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 		// If a problem arose while setting up the lesson, don't switch 
-		// TODO: define a better solution when encountering this issue
 		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
-			JOptionPane.showMessageDialog(null, i18n.tr("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.") ,
+			JOptionPane.showMessageDialog(null, 
+					i18n.tr("The lesson {0} encountered an issue while loading its exercises, please report the issue and choose another lesson.",lesson.getName()) ,
 					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
 			return null;
 		}
@@ -1068,10 +1068,12 @@ public class Game implements IWorldView {
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
-			for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
-				String s = w.getDebugInfo();
-				if (s != "") 
-					System.out.println("World: "+s);
+			if(l!=null) {
+				for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+					String s = w.getDebugInfo();
+					if (s != "") 
+						System.out.println("World: "+s);
+				}
 			}
 			System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");

@@ -33,7 +33,6 @@ import javax.swing.JSplitPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.xnap.commons.i18n.I18n;
@@ -617,7 +616,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		t.start();
 
-		JOptionPane.showMessageDialog(this, i18n.tr("Please wait, while PLM is saving your session data."));		
+		JOptionPane.showMessageDialog(this, i18n.tr("Please wait, while the PLM is saving your session data."));		
 	}
 
 	public void about() {

@@ -1,6 +1,7 @@
 package plm.universe.sort;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -351,4 +352,16 @@ public class SortingWorldView extends WorldView {
 		this.useStateView = useStateView;
 	}
 
+	@Override
+	public void dispose() {
+		super.dispose();
+		for(Component child : popup.getComponents()) {
+			if(child instanceof JMenuItem) {
+				JMenuItem menuItem = (JMenuItem) child;
+				for(ActionListener al:menuItem.getActionListeners()) {
+					Game.getInstance().removeHumanLangListener((HumanLangChangesListener) al);
+				}
+			}
+		}
+	}
 }

@@ -250,4 +250,8 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		}
 	}
 	
+	@Override
+	public void dispose() {
+		Game.getInstance().removeHumanLangListener(this);
+	}
 }

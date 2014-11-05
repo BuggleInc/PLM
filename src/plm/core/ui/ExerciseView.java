@@ -157,14 +157,21 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 			worldView.setWorld(this.game.getSelectedWorld());
 			objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
 		} else {
+			if(worldView != null) {
+				worldView.dispose();
+			}
+			if(objectivesView != null) {
+				objectivesView.dispose();
+			}
 			tabPane.removeAll();
-			worldView = Game.getInstance().getSelectedWorld().getView();			
+			worldView = Game.getInstance().getSelectedWorld().getView();
 			tabPane.addTab(i18n.tr("World"), null, worldView, i18n.tr("The world as it is right now"));
 			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
 			tabPane.addTab(i18n.tr("Objective"), null, objectivesView, i18n.tr("The world as it should be"));
 		}
 		// To refresh the controlPane in any case ( else the SortingWorldPanel is not refreshed )
 		controlPane.removeAll();
+		buttonPanel.dispose();
 		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 		controlPane.add(buttonPanel, "grow");
 		
@@ -177,6 +184,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 	@Override
 	public void selectedEntityHasChanged() { 
 		controlPane.removeAll();
+		buttonPanel.dispose();
 		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 		controlPane.add(buttonPanel, "grow");
 	}
