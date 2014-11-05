@@ -240,7 +240,30 @@
 	  </junit>
     </target>
 
-
+    <target name="all-tests" depends="compile" description="launch all tests">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.test.AllTests"/>		
+	  </junit>
+    </target>
+	
+    <target name="unit-tests" depends="compile" description="launch all unit tests">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.test.UnitTests"/>		
+	  </junit>
+    </target>
+	
+    <target name="integration-tests" depends="compile" description="launch all integration tests">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.test.IntegrationTests"/>		
+	  </junit>
+    </target>
+	
 <!--  This requires Java7 to work, but I'd prefer to support for Java6
       a bit longer if possible. Disable this for now, sorry Franck.
       
