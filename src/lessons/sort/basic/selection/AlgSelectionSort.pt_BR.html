@@ -1,0 +1,23 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Selection Sort</h1>
+
+Neste exercício vamos implementar outro algoritmo clássico: selection sort.
+
+<p>The idea is simply to select for each cell of the array the smallest value
+from the part not already sorted. Thus for the first cell, it takes the
+smallest value over the whole array. For the second one, it takes the second
+smallest value, which is the smallest value from the cell not already
+sorted. You of course don't have to sort the last cell of the array, that is
+already sorted when you consider it.
+
+<p>More generally, for the cell N, it looks the cell M in [N;len] containing
+the smallest possible value of the interval. Then, it swaps the content of
+cell N with the one of cell M. 
+
+<h2>Variações existentes</h2>
+Outro algoritmo clássico cuja ideia é baseada na seleção de bons
+elementos é o HeapSort, mas ele usa uma estrutura de dados heap que
+ainda não vimos. Simplesmente lembre que o HeapSort fornece um
+desempenho O(n log n) no pior caso, que é o motivo para ele ser bem
+interessante na prática. 
