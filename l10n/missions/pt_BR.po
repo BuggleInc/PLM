@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-11-02 23:23-0300\n"
+"PO-Revision-Date: 2014-11-09 23:40-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -9446,7 +9446,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:15
 msgid "This problem could be solved recursively."
-msgstr ""
+msgstr "Este problema pode ser resolvido recursivamente."
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/short_desc.html:4
@@ -9454,14 +9454,21 @@ msgid ""
 "This is a classical sorting problem, constituting a variation over the "
 "insertion sort."
 msgstr ""
+"Este é um problema de ordenação clássico, constituindo uma variação do\n"
+"insertion sort."
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:4
+#, fuzzy
 msgid ""
 "Your work is to sort all the colors of the Dutch flag, and the only provided "
 "primitive is to exchange two given lines.  In addition, you should not "
 "create any additional variables (but a few indices)."
 msgstr ""
+"Seu trabalho é ordenar todas as cores da bandeira holandesa, e a única\n"
+"primitiva fornecida é trocar duas dadas linhas. Adicionalmente, você\n"
+"não deve criar quaisquer variáveis adicionais (exceto uns poucos\n"
+"índices)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:7
@@ -9472,16 +9479,22 @@ msgid ""
 "of which the Dutch Flag sort is a variation. The main difference is that you "
 "have 3 insertion points, not only one..."
 msgstr ""
+"Se você pensar com carinho, isto pode ser feito em tempo linear, onde\n"
+"você ordena uma linha a cada iteração do loop. Você pode querer dar\n"
+"mais uma olhada no\n"
+"<a href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion\n"
+"sort</a>, do qual o Dutch Flag sort é uma variação. A principal\n"
+"diferença é que você tem 3 pontos de inserção, e não apenas um..."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
 msgid "I need an hint to start"
-msgstr ""
+msgstr "Preciso de uma dica para começar"
 
 #. type: Content of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:12
 msgid "Do a traversal over your data, saving 3 indices:"
-msgstr ""
+msgstr "Atravesse seus dados, guardando 3 índices:"
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
@@ -9489,6 +9502,9 @@ msgid ""
 "<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
 "<code>afterBlue</code> is filled with blue elements."
 msgstr ""
+"<code>afterBlue</code> é iniciado como 0. Certifique-se de que cada\n"
+"célula abaixo de <code>afterBlue</code> é preenchida com elementos\n"
+"azuis."
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
@@ -9496,6 +9512,9 @@ msgid ""
 "<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
 "after <code>whiteRed</code> is filled with red elements."
 msgstr ""
+"<code>whiteRed</code> é iniciado como size-1. Certifique-se de que\n"
+"cada célula depois de <code>whiteRed</code> é preenchida com elementos\n"
+"vermelhos."
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
@@ -9504,13 +9523,16 @@ msgid ""
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
 "with while elements."
 msgstr ""
+"<code>beforeWhite</code> é iniciado com size-1. Certifiqeu-se de que\n"
+"cada célula depois de <code>beforeWhite</code> e antes de\n"
+"<code>whiteRed</code> é preenchida com elementos brancos."
 
 #. type: Content of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:18
 msgid ""
 "Note that the unsorted cells are always between <code>afterBlue</code> and "
 "<code>beforeWhite</code>."
-msgstr ""
+msgstr "Observe que as células não-ordenadas ficam sempre entre <code>afterBlue</code> e <code>beforeWhite</code>."
 
 #. type: Content of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:20
@@ -9519,30 +9541,30 @@ msgid ""
 "<code>afterBlue</code> and do the required exchanges.  The loop ending "
 "condition is when <code>afterBlue</code> becomes larger than "
 "<code>beforeWhite</code>."
-msgstr ""
+msgstr "Em cada passo de sua travessia, verifique a cor da célula em <code>afterBlue</code> e faça as mudanças necessárias. A condição de fim de loop é quando <code>afterBlue</code> se torna maior que <code>beforeWhite</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
 msgid "Provided values"
-msgstr ""
+msgstr "Valores fornecidos"
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:6
 msgid ""
 "The colors are represented through the following constants: BLUE, WHITE and "
 "RED.  You can use them directly in your code."
-msgstr ""
+msgstr "As cores são representadas através das seguintes constantes: BLUE, WHITE e RED. Você pode usá-las diretamente em seu código."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:8
 msgid "Provided functions"
-msgstr ""
+msgstr "Funções fornecidas"
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
 msgid "This world is very simple, with only 5 provided functions."
-msgstr ""
+msgstr "Este mundo é bem simples, com apenas 5 funções fornecidas."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:13
@@ -9553,7 +9575,7 @@ msgstr "[!java|c]void [/!]alterna([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]i
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:14
 msgid "Swap the lines number <code>x</code> and <code>y</code>."
-msgstr ""
+msgstr "Troca as linhas de número <code>x</code> com a de número <code>y</code>."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:16
@@ -9564,7 +9586,7 @@ msgstr "[!java|c]int [/!]getTamanho() [!scala]:Int[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:17
 msgid "Returns the amount of lines on this flag."
-msgstr ""
+msgstr "Retorna a quantidade de linhas desta bandeira."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:19
@@ -9575,7 +9597,7 @@ msgstr "[!java|c]int [/!]getCor([!java|c]int [/!]linha[!scala]:Int[/!])  [!scala
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:20
 msgid "Returns the color of the given line."
-msgstr ""
+msgstr "Retorna a cor da linha dada."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
@@ -9587,7 +9609,7 @@ msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()  [!scala]:Boolean[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:23
 msgid "Returns whether the flag is sorted."
-msgstr ""
+msgstr "Retorna verdadeiro se a bandeira estiver ordenada."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25
@@ -9600,17 +9622,17 @@ msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()  [!scala]:Boolean[/!]"
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:38
 msgid "Returns whether the current world is selected in the interface."
-msgstr ""
+msgstr "Retorna verdadeiro se o mundo atual estiver selecionado na interface."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:2
 msgid "PancakeWorld"
-msgstr ""
+msgstr "PancakeWorld"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:4
 msgid "This universe is very simple, with only five functions provided."
-msgstr ""
+msgstr "Este universo é bastante simples, com apenas cinco funções fornecidas."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:6
@@ -9622,7 +9644,7 @@ msgstr "[!java|c]int [/!]getTamanhoDaPilha()  [!scala]:Int[/!]"
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:7
 msgid ""
 "Returns the size of the stack, that is the amount of pancakes it contains."
-msgstr ""
+msgstr "Retorna o tamanho da pilha, ou seja, a quantidade de panquecas nela."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:9
@@ -9635,7 +9657,7 @@ msgstr "[!java|c]int [/!]getRaioPanqueca([!java|c]int [/!]rank[!scala]:Int[/!]) 
 msgid ""
 "Returns the radius of the pancake passed as argument, with the rank of the "
 "top-most pancake being 0."
-msgstr ""
+msgstr "Retorna o raio da panqueca passado como argumento, com o rank da panqueca mais acima sendo 0."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:12
@@ -9645,10 +9667,11 @@ msgstr "[!java]boolean [/!][!c]int [/!]panquecaDeCabeçaPraBaixo([!java|c]int [/
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:13
+#, fuzzy
 msgid ""
 "Returns whether the pancake passed as argument upside-down, that is, if its "
 "burned side is on top. As usual, the top-most pancake is of rank 0."
-msgstr ""
+msgstr "Returns whether the pancake passed as argument upside-down, that is, if its burned side is on top. As usual, the top-most pancake is of rank 0."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:15
@@ -9661,7 +9684,7 @@ msgstr "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
 msgid ""
 "Flips the <code>amount</code> first pancakes composing the stack, from the "
 "top of it."
-msgstr ""
+msgstr "Vira as primeiras <code>amount</code> panquecas que compõe a pilha, do topo dela."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:18
@@ -9672,7 +9695,7 @@ msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()   [!scala]:Boolean[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:19
 msgid "Returns whether the pancake stack is correctly sorted."
-msgstr ""
+msgstr "Retorna verdadeiro se a pilha de panquecas estiver corretamente ordenada."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
@@ -9693,7 +9716,7 @@ msgid ""
 "Dweighter in the American Mathematical Monthly. The question is not only to "
 "sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
 "amount of flips mandated to sort any stack of size <code>n</code>."
-msgstr ""
+msgstr "Esta atividade é inspirada por um problema introduzido pela primeira vez em 1975 por Harry Dweighter no American Mathematical Monthly. A pergunta não é apenas ordenar panquecas, mas determinar <code>f(n)</code> a quantidade <i>minima</i> de viradas necessárias para ordenar qualquer pilha de tamanho <code>n</code>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:8
@@ -9703,7 +9726,7 @@ msgid ""
 "providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n"
 "+5)/3</code>.  This was the only publication of Bill Gates before he "
 "invented Windows and became rich."
-msgstr ""
+msgstr "Este problema é agora famoso por que Bill Gates escreveu (com C. Papadimitriou) sua única publicação científica em 1979 neste tópico, fornecendo um algoritmo mais rápido e provando que <code>17n/16 ≤ f(n) ≤ (5n+5)/3</code>.  Este foi a única publicação de Bill Gates antes dele inventar o Windows e ficar rico."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:12
@@ -9711,7 +9734,7 @@ msgid ""
 "Then, David X. Cohen, the inventor of the Futurama comics with many "
 "mathematical references, introduced the variant with burnt pancakes and "
 "studied its complexity with Manuel Blum in 1993."
-msgstr ""
+msgstr "Então, David X. Cohen, o inventor dos quadrinhos Futurama com muitas referências matemáticas, introduziu a variante com panquecas queimadas e estudou sua complexidade com Manuel Blum em 1993."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:15
@@ -9722,12 +9745,12 @@ msgid ""
 "can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
 "the Gates algorithm.  That's determining the minimal amount of steps that is "
 "NP."
-msgstr ""
+msgstr "Um artigo de 2012 (de L. Bulteau, G. Fertin e I. Rusu) provou que determinar a quantidade mínima de viradas para ordenar a pilha é um problema NP-completo. Naturalmente, o problema de ordenar a pilha não é NP-complete pois pode ser resolvido em 2n-3 passos com o algoritmo simplório e (5n+5)/3 passos com o algoritmo de Gates. É a determinação da quantidade mínima de passos que é NP."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:20
 msgid "Further information can be found on the wikipedia page, as usual."
-msgstr ""
+msgstr "Mais informações podem ser encontradas na página da wikipédia, como sempre."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:23
