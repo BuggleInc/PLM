@@ -219,6 +219,14 @@ public class Turtle extends Entity {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
+	public void brushDown(){
+		throw new RuntimeException(Game.i18n.tr(
+				"Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not brushes. Use penDown() instead."));
+	}
+	public void brushUp(){
+		throw new RuntimeException(Game.i18n.tr(
+				"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
+	}
 
 	public boolean isPenDown() {
 		return penDown;
@@ -438,6 +446,8 @@ public class Turtle extends Entity {
 	public void allerVers(double x, double y) {moveTo(x,y);}
 	public double getCap()           { return getHeading(); }
 	public void setCap(double cap)   { setHeading(cap);     }
+	public void leveBrosse()         { brushUp(); }
+	public void baisseBrosse()       { brushDown(); }
 	public void leveCrayon()         { penUp(); }
 	public void baisseCrayon()       { penDown(); }
 	public boolean estCrayonBaisse() { return isPenDown();}
