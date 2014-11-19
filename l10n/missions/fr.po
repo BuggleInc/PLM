@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-11-02 23:13+0100\n"
+"POT-Creation-Date: 2014-11-20 00:39+0100\n"
 "PO-Revision-Date: 2014-11-02 23:13+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -9558,10 +9558,15 @@ msgstr ""
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
+#, fuzzy
+#| msgid ""
+#| "<code>beforeWhite</code> is initialized to size-1. Make sure that every "
+#| "cell after <code>beforeWhite</code> and before <code>whiteRed</code> is "
+#| "filled with while elements."
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
-"with while elements."
+"with white elements."
 msgstr ""
 "<code>avantBlanc</code> est initialisé à taille-1. Assurez vous de n'avoir "
 "que des cellules blanches entre <code>avantBlanc</code> et <code>blancRouge</"
