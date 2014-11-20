@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import plm.core.model.Game;
 
-public class PoucetEntity extends plm.universe.bugglequest.SimpleBuggle {
+public class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));

@@ -8,9 +8,9 @@ import plm.universe.BrokenWorldFileException;
 import plm.universe.World;
 import plm.universe.bugglequest.BuggleWorld;
 
-public class Poucet extends ExerciseTemplated {
+public class Poucet1 extends ExerciseTemplated {
 
-	public Poucet(Lesson lesson) throws IOException, BrokenWorldFileException {
+	public Poucet1(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "Poucet";
 		

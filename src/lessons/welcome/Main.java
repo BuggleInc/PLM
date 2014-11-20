@@ -65,7 +65,7 @@ import lessons.welcome.environment.Environment;
 import lessons.welcome.instructions.Instructions;
 import lessons.welcome.instructions.InstructionsDrawG;
 import lessons.welcome.loopdowhile.LoopDoWhile;
-import lessons.welcome.loopdowhile.Poucet;
+import lessons.welcome.loopdowhile.Poucet1;
 import lessons.welcome.loopfor.LoopCourse;
 import lessons.welcome.loopfor.LoopCourseForest;
 import lessons.welcome.loopfor.LoopFor;
@@ -128,7 +128,7 @@ public class Main extends Lesson {
 		addExercise(new LoopCourseForest(this),loopFor);
 		
 		Lecture loopDoWhile = addExercise(new LoopDoWhile(this));
-		addExercise(new Poucet(this), loopDoWhile);
+		addExercise(new Poucet1(this), loopDoWhile);
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
 		  addExercise(new MethodsDogHouse(this),methodsVoid);
