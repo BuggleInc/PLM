@@ -7,6 +7,11 @@
   * Pedagogical content:
     - #410: Fix my usage of "teach" vs. "learn" in English
     - #240: SlugSnail: add false leads to avoid cheaters
+    - #243: Poucet: Split the exercise in two. Both request to write
+      two loops. The external loop is always a do/while ("until
+      found").  The inner loop in the first one is a simpler for loop
+      while the second exercise request the inner loop to also be a
+      do/while (because of the corridors of differing lenghts)
 
 20141031: Release 2.5
 
