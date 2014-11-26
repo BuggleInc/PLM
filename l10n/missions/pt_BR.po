@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-11-09 23:40-0300\n"
+"PO-Revision-Date: 2014-11-25 00:48-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -112,8 +112,8 @@ msgid ""
 "[!java|c]void [/!][!python|java|scala]backward()[/!][!c]stepBackward()[/!] "
 "or [!java]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
-"[!java|c]void\n"
-"[/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou\n"
+"[!java|c]void "
+"[/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou "
 "[!java]void [/!]recuar([!java|c]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
@@ -252,9 +252,9 @@ msgid ""
 "[/!]EAST, [!scala|java|python]Direction.[/!]SOUTH and [!scala|java|"
 "python]Direction.[/!]WEST"
 msgstr ""
-"[!scala|java|python]Direção.[/!]NORTE,\n"
-"[!scala|java|python]Direção.[/!]LESTE,\n"
-"[!scala|java|python]Direção.[/!]SUL e\n"
+"[!scala|java|python]Direção.[/!]NORTE, "
+"[!scala|java|python]Direção.[/!]LESTE, "
+"[!scala|java|python]Direção.[/!]SUL e "
 "[!scala|java|python]Direção.[/!]OESTE"
 
 #. type: Content of: <table><tr><td>
@@ -1003,13 +1003,13 @@ msgid ""
 "<i>Objective</i> one.  Depending on the exercise (and your settings in the "
 "Language menu), your code must be written in either C, Java, Python or Scala."
 msgstr ""
-"Os buggles são pequenos animais que obedecem a qualquer ordem que você\n"
-"dá a eles. Em cada exercício, você tem que fornecer a eles as\n"
-"instruções corretas para que o mundo se torne o objetivo do\n"
-"exercício. Por exemplo, neste exercício você deve instruir seu buggle\n"
-"a avançar um passo. Você pode ver isto verificando a diferença entre a\n"
-"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e\n"
-"suas configurações no menu linguagem), seu código deve ser escrito em\n"
+"Os buggles são pequenos animais que obedecem a qualquer ordem que você "
+"dá a eles. Em cada exercício, você tem que fornecer a eles as "
+"instruções corretas para que o mundo se torne o objetivo do "
+"exercício. Por exemplo, neste exercício você deve instruir seu buggle "
+"a avançar um passo. Você pode ver isto verificando a diferença entre a "
+"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e "
+"suas configurações no menu linguagem), seu código deve ser escrito em "
 "C, Java, Python ou Scala (dependendo do seu exercício)."
 
 #. type: Content of: <h3>
@@ -1026,10 +1026,10 @@ msgid ""
 "do.  The white area below is the console: this is where errors and messages "
 "get displayed."
 msgstr ""
-"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê\n"
-"uma olhada nos vários elementos que compõe a janela principal, mova\n"
-"seu mouse sobre eles para ver as dicas, e experimente os elementos\n"
-"para ver o que eles fazem. A área branca abaixo é o console: é onde\n"
+"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê "
+"uma olhada nos vários elementos que compõe a janela principal, mova "
+"seu mouse sobre eles para ver as dicas, e experimente os elementos "
+"para ver o que eles fazem. A área branca abaixo é o console: é onde "
 "erros e mensagens aparecem."
 
 #. type: Content of: <p>
@@ -1218,8 +1218,8 @@ msgid ""
 "it may be possible to define them by yourself (we'll see later how to define "
 "your how methods)."
 msgstr ""
-"Obviamente, estes métodos específicos não existem por padrão em\n"
-"[!thelang], mas é possível definí-los você mesmo (vamos ver mais tarde\n"
+"Obviamente, estes métodos específicos não existem por padrão em "
+"[!thelang], mas é possível definí-los você mesmo (vamos ver mais tarde "
 "como definir seus próprios métodos)."
 
 #. type: Content of: <p>
@@ -1242,8 +1242,8 @@ msgid ""
 "python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and <b>right</b> "
 "buttons, you need to use respectively:"
 msgstr ""
-"Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|\"\n"
-"\"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> and\n"
+"Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|\" "
+"\"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> and "
 "<b>direita</b>, você precisa respectivamente:"
 
 #. type: Content of: <pre>
@@ -1380,9 +1380,9 @@ msgid ""
 "thelang], instructing the [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] to not read the text you add for humans:"
 msgstr ""
-"Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários\n"
-"em [!thelang], que instruem o\n"
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] a não ler o\n"
+"Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários "
+"em [!thelang], que instruem o "
+"[!java|scala|c]compilador[/!][!python]interpretador[/!] a não ler o "
 "texto que você adiciona para humanos:"
 
 #. type: Content of: <ul><li>
@@ -1392,9 +1392,9 @@ msgid ""
 "python]interpreter[/!] encounters the symbol [!java|scala|c]//[/!][!"
 "python]#[/!], it ignores the end of the line."
 msgstr ""
-"<b>Comentários de uma única linha</b>. Quando o\n"
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] encontra o\n"
-"símbolo [!java|scala|c]//[/!][!python]#[/!], ele ignora o resto da\n"
+"<b>Comentários de uma única linha</b>. Quando o "
+"[!java|scala|c]compilador[/!][!python]interpretador[/!] encontra o "
+"símbolo [!java|scala|c]//[/!][!python]#[/!], ele ignora o resto da "
 "linha."
 
 #. type: Content of: <ul><li>
@@ -1405,10 +1405,10 @@ msgid ""
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
 "line beginning with ''' until the next line ending with '''.[/!]"
 msgstr ""
-"<b>Comentários em várias linhas</b>. O\n"
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] ignora tudo\n"
-"entre [!java|scala|c]os símbolos /* e */ mesmo quando eles são postos\n"
-"em linhas diferentes.[/!] [!python]uma linha comaçando com ''' até a\n"
+"<b>Comentários em várias linhas</b>. O "
+"[!java|scala|c]compilador[/!][!python]interpretador[/!] ignora tudo "
+"entre [!java|scala|c]os símbolos /* e */ mesmo quando eles são postos "
+"em linhas diferentes.[/!] [!python]uma linha comaçando com ''' até a "
 "próxima linha terminado com '''.[/!]"
 
 #. type: Content of: <pre>
@@ -1541,27 +1541,27 @@ msgid ""
 "lost in your own code if it's not properly indented, so you want to clean it "
 "up so that working on your code remains pleasant and productive."
 msgstr ""
-"Em [!thelang], os blocos de código são [!java|scala|c]envolvidos entre\n"
-"chaves: um { abre o bloco, e um } fecha. Espaços em branco não são\n"
-"importantes[/!][!java|c].[/!][!scala], uma vez que suas instruções ainda\n"
-"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!]\n"
-"[!java|scala|c]Ainda assim é muito importante indentar corretamente seu\n"
-"código para mantê-lo legível.[/!] [!python]marcados pela indentação:\n"
-"todas as linhas que estiverem um pouco deslocadas para a direita com\n"
-"espaços pertencem ao bloco. Frequentemente se usam 4 espaços para\n"
-"indentação, mas funciona se você usar mais ou menos\n"
-"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma\n"
-"quantidade de espaços. O fim do bloco de código Python não é marcado\n"
-"por nenhum caractere específico. Indentar linhas começa um bloco e\n"
+"Em [!thelang], os blocos de código são [!java|scala|c]envolvidos entre "
+"chaves: um { abre o bloco, e um } fecha. Espaços em branco não são "
+"importantes[/!][!java|c].[/!][!scala], uma vez que suas instruções ainda "
+"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!] "
+"[!java|scala|c]Ainda assim é muito importante indentar corretamente seu "
+"código para mantê-lo legível.[/!] [!python]marcados pela indentação: "
+"todas as linhas que estiverem um pouco deslocadas para a direita com "
+"espaços pertencem ao bloco. Frequentemente se usam 4 espaços para "
+"indentação, mas funciona se você usar mais ou menos "
+"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma "
+"quantidade de espaços. O fim do bloco de código Python não é marcado "
+"por nenhum caractere específico. Indentar linhas começa um bloco e "
 "parar de indentar termina o bloco. Não esqueça do dois-pontos (:) no final "
-"da\n"
+"da "
 "linha do <code>if</code>, python precisa dele para saber que um novo bloco "
-"vai\n"
-"começar. O fato de que python se baseia em indentação para delimitar\n"
-"blocos é uma ótima propriedade para iniciantes: vai forçar você a\n"
-"aderir a padrões de apresentação de código estritos.[/!] É muito fácil\n"
-"se perder no seu próprio código se ele não for corretamente indentado,\n"
-"então você precisa deixar ele bem arrumado para que trabalhar nele\n"
+"vai "
+"começar. O fato de que python se baseia em indentação para delimitar "
+"blocos é uma ótima propriedade para iniciantes: vai forçar você a "
+"aderir a padrões de apresentação de código estritos.[/!] É muito fácil "
+"se perder no seu próprio código se ele não for corretamente indentado, "
+"então você precisa deixar ele bem arrumado para que trabalhar nele "
 "continue sendo agradável e produtivo."
 
 #. type: Content of: <p>
@@ -6481,17 +6481,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:179
-#, fuzzy
-#| msgid ""
-#| "You have to keep dancing as long as there is some dancing steps to do, i."
-#| "e., as long as we are not in cell which content is not described in the "
-#| "table.  The easier for that is to use a boolean variable (<code>finished</"
-#| "code>)  as termination condition to a <code>while</code> loop.  It should "
-#| "be initialized to <code>[!c]0[/!][!java|scala]false[/!][!"
-#| "python]False[/!]</code>, and switched to <code>[!c]1[/!][!java|"
-#| "scala]true[/!][!python]True[/!]</code> as soon as the buggle find a cell "
-#| "with a value not described in the table.  Thus the loop, will stop and "
-#| "the program will terminate."
 msgid ""
 "You have to keep dancing as long as there is some dancing steps to do, i.e., "
 "as long as we are in a cell which content is described in the table.  The "
@@ -6507,24 +6496,15 @@ msgstr ""
 "fazer, i.e., enquanto estivermos numa célula cujo conteúdo esteja\n"
 "contido na tabela. a forma mais fácil de fazer isto é usando uma\n"
 "variável booleana (<code>terminou</code>) como condição de término\n"
-"para o loop <code>while</code>. Ele deve ser iniciado como\n"
+"para o loop <code>while</code>. Ela deve ser iniciada como\n"
 "<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, e\n"
-"trocado para\n"
+"trocada para\n"
 "<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> assim que\n"
-"o  buggle encontre uma célula com um valor não descrito na\n"
+"o buggle encontre uma célula com um valor não descrito na\n"
 "tabela. Assim, o loop pára e o programa termina."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:189
-#, fuzzy
-#| msgid ""
-#| "Another subtlety is that detecting if strings are equals is a bit "
-#| "annoying in Java.  So, we use the <code>char getIndication[!c]Bdr[/!]()</"
-#| "code> instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</"
-#| "code>.  This method, only known by the buggles of this exercise, returns "
-#| "the first char of the message written on the ground (or ' ' -- the space "
-#| "char -- if nothing is written down). It enables to work with chars "
-#| "instead of strings, that is much simpler in [!thelang]."
 msgid ""
 "Another subtlety is that detecting if strings are equals is a bit annoying "
 "in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
@@ -6537,7 +6517,7 @@ msgstr ""
 "Outro detalhe é que detectar se strings são iguais é um pouco chato em\n"
 "Java. Então, usamos o <code>char getIndication[!c]Bdr[/!]()</code> ao\n"
 "invés do <code>[!java]String[/!][!c]char*[/!]\n"
-"lerMensagem()</code>. Este método, apenas conhecidos pelos buggles\n"
+"lerMensagem()</code>. Este método, conhecido apenas pelos buggles\n"
 "deste exercício, retorna o primeiro caractere da mensagem escrita no\n"
 "chão (ou ' ' -- o caractere para espaço -- se não tem nada\n"
 "escrito). Ele habilita que se trabalhe com caracteres ao invés de\n"
@@ -6644,17 +6624,6 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:31
 #, fuzzy
-#| msgid ""
-#| "When you review this code, it may not be clear at the first glance that "
-#| "it is simply a choice with 4 branches depending on the value of [!java|"
-#| "c]getIndication()[/!][!scala]readMessage()[/!].  To improve this, we will "
-#| "use a [!java|c]<code>switch</code> construct, which Java syntax is the "
-#| "following:[/!] [!scala] pattern matching, which is a very powerful "
-#| "construct that greatly generalizes the <code>if</code>. It is arguably "
-#| "one one the major advantages of Scala when compared to languages such as "
-#| "Java or python.  It is not new either, as other languages such as OCaml "
-#| "or Haskell offer this feature since long, but still.  It's really cool!"
-#| "[/!]"
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
 "is simply a choice with 4 branches depending on the value of [!java|"
@@ -6667,7 +6636,7 @@ msgid ""
 "offer this feature since long, but still.  It's really cool![/!]"
 msgstr ""
 "Quando você revisa este código, não fica claro à primeira vista que\n"
-"ele ele é simplesmente a escolha entre quatro ramos dependendo do\n"
+"ele é simplesmente a escolha entre quatro ramos dependendo do\n"
 "valor de [!java|c]getIndication()[/!][!scala]lerMensagem()[/!]. Para\n"
 "melhorar ele, vamos usar uma construção [!java|c]<code>switch</code>,\n"
 "que na sintaxe de Java é o seguinte:[/!] [!scala] de busca de padrões,\n"
@@ -6675,7 +6644,7 @@ msgstr ""
 "certeza uma das maiores vantagens de Scala quando comparada com\n"
 "linguagens como Java ou python. E nem é tão nova assim, já que outras\n"
 "linguagens como OCaml e Haskell já tem esta funcionalidade a muito\n"
-"tempo. É bem legal![/!]"
+"tempo. Ela é bem legal![/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR2.html:40
@@ -6853,7 +6822,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:110
-#, fuzzy
 msgid ""
 "You can even add guards to your branches. These are extra conditions that "
 "must be respected for the branch to get applied. This is handy if you want "
@@ -7216,8 +7184,8 @@ msgid ""
 msgstr ""
 "Então, você tem que escrever o código para alcançar a próxima\n"
 "posição. Neste exercício, você tem que percorrer o mundo linha após\n"
-"linha. Logo, se você está no fundo de uma linha, você tem que mover\n"
-"para o topo da próxima, e você tem que mover para a célula abaixo\n"
+"linha. Logo, se você está no fundo de uma linha, você tem que se mover\n"
+"para o topo da próxima, e você tem que se mover para a célula abaixo\n"
 "\"else\"."
 
 #. type: Content of: <p>
@@ -7450,7 +7418,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:15
-#, fuzzy
 msgid ""
 "It's hard to come up with simpler rules isn't it? Well, let's go and code it "
 "now. You have to complete the <code>step()</code> method, which encodes the "
@@ -7459,12 +7426,12 @@ msgid ""
 "which the ant is currently.  Colors of interest are simply named <code>Color."
 "black</code> and <code>Color.white</code>."
 msgstr ""
-"It's hard to come up with simpler rules isn't it? Bem, vamos em frente\n"
+"Difícil encontrar regras mais simples, não é? Bem, vamos em frente\n"
 "codificar isto agora. Você precisa completar o método\n"
 "<code>step()</code>, que codifica o comportamento da formiga em cada\n"
 "passo. Você vai provavelmente usar o método\n"
-"<code>getGroundColor()</code> para recuperar a cor da célula na qual a\n"
-"formiga está no momento. Cores de úteis são nomeadas simplesmente de\n"
+"<code>getCorDoChão()</code> para recuperar a cor da célula na qual a\n"
+"formiga está no momento. Cores úteis são nomeadas simplesmente de\n"
 "<code>Cor.preto</code> e <code>Cor.branco</code>."
 
 #. type: Content of: <p>
@@ -9754,35 +9721,47 @@ msgstr "Mais informações podem ser encontradas na página da wikipédia, como 
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:23
+#, fuzzy
 msgid ""
 "This activity is also integrated to CSIRL (my repository of <i>free</i> "
 "unplugged activities to introduce computer science, available at http://www."
 "loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
 "unplugged activities before implementing these algorithms in PLM."
 msgstr ""
+"Esta atividade também é integrada ao CSIRL (meu repositório de\n"
+"atividades \"unplugged\" <i>livres</i> para introdução de ciência da\n"
+"computação, disponível em\n"
+"http://www.loria.fr/~quinson/Mediation/SMN/), e pode ser interessante\n"
+"executar as atividades \"unplugged\" antes de implementar estes\n"
+"algoritmos no PLM."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/Main.html:34
 msgid "A temporal view similar to the sorting universe could be helpful"
-msgstr ""
+msgstr "Uma visão temporal similar ao universo da ordenação pode ser útil"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/Main.html:35
+#, fuzzy
 msgid ""
 "Other exercises, for example on the Roti sorting, with a pile of Roti that "
 "have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
 "Pancake_sorting#The_identical_pancake_stack)."
 msgstr ""
+"Outros exercícios, por exemplo sobre \"Roti sorting\", com uma pilha de\n"
+"Roti que tem que tocar a grelha em ambos os lados (see\n"
+"http://en.wikipedia.org/wiki/Pancake_sorting#The_identical_pancake_stack)."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:2
 msgid "The pancake problem"
-msgstr ""
+msgstr "O problema da panqueca"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/short_desc.html:4
+#, fuzzy
 msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
-msgstr ""
+msgstr "Ajude o pobre chef das panquecas psychorigid a ordenar sua pilha de panquecas!"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/short_desc.html:6
@@ -9791,9 +9770,13 @@ msgid ""
 "implement. You are supposed to master the bases of programming and some "
 "sorting algorithms to take this lesson."
 msgstr ""
+"Este problema divertido leva a algoritmos que são de certa forma mais\n"
+"desafiadores de implmentar. Espera-se que você domine as bases da\n"
+"programação e de algoritmos de ordenação para fazer esta lição."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:4
+#, fuzzy
 msgid ""
 "The pancake sorting problem this is a simple puzzle where you have a set of "
 "pancakes, each of differing size. The chef cooking the pancake is a bit "
@@ -9804,7 +9787,7 @@ msgid ""
 "several pancakes at once. The thing is that he has only one plate and the "
 "table is too dirty to place pancakes on it, even temporary. The only allowed "
 "operation is to flip some pancakes that are on top of the stack."
-msgstr ""
+msgstr "O problema da ordenação da panqueca é um quebra-cabeças simples onde você tem um conjunto de panquecas, cada uma de tamanhos diferentes. O chef que cozinha as panquecas é um pouco \"psychorigid\": ele odeia quando as panquecas não estão corretamente ordenadas no prato. He loves when they are correctly ordered, with the small ones over the larger ones. As every pancake maker, he masters the pancake flipping with his spatula. He can flip the pancake on top of the stack, or even several pancakes at once. The thing is that he has only one plate and the table is too dirty to place pancakes on it, even temporary. The only allowed operation is to flip some pancakes that are on top of the stack."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:13
@@ -9813,6 +9796,10 @@ msgid ""
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
 "where the bottom pancake is at rank 0, and the one above at rank 1."
 msgstr ""
+"Seu trabalho é ajudar este pobre coitado a ordenar a pilha dele\n"
+"virando as panquecas. Cada panqueca é definida pelo raio e rank dentro\n"
+"da pilha, onde a panqueca do fundo está com rank 0, e a próxima com\n"
+"rank 1."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:17
@@ -9823,11 +9810,18 @@ msgid ""
 "concept of algorithm to absolute beginners that wonder about our science. "
 "More information at http://www.loria.fr/~quinson/Mediation/SMN/ (in French)."
 msgstr ""
+"Observe que você pode brincar primeiro fisicamente com pedaços de\n"
+"papel ou madeira para ter a ideia do problema. Esta é inclusive uma\n"
+"das atividades que eu uso no meu projeto CS-IRL (computer science in\n"
+"real life - ciência da computação na vida real) para introduzir o\n"
+"conceito de algoritmo para completos iniciantes que querem saber da\n"
+"nossa ciência. Mais informações em\n"
+"http://www.loria.fr/~quinson/Mediation/SMN/ (em francês)."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:23
 msgid "I don't get it. I need some help."
-msgstr ""
+msgstr "Não compreendi. preciso de ajuda."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:24
@@ -9836,17 +9830,20 @@ msgid ""
 "largest but one pancake on top of it, and then the one just smaller on top, "
 "and so on."
 msgstr ""
+"Você deve tentar primeiro mover a maior panqueca para o fundo, e então\n"
+"a segunda maior para cima dela, e depois a menor para o topo e assim\n"
+"por diante."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:28
 msgid "The first tip was not enough. I need another one."
-msgstr ""
+msgstr "A primeira dica não foi suficiente. Preciso de outra."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:29
 msgid ""
 "So first, you need to move the largest pancake at the bottom of the stack."
-msgstr ""
+msgstr "Logo, em primeiro lugar você precisa mover a maior panqueca para o fundo da pilha."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:30
@@ -9854,16 +9851,19 @@ msgid ""
 "Can you imagine a situation in which you can easily bring this damn large "
 "pancake to the bottom?"
 msgstr ""
+"Você pode imaginar uma situação onde você possa facilmente trazer esta\n"
+"panqueca super-grande para o fundo?"
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:31
+#, fuzzy
 msgid "How could you reach this situation from the current one?"
-msgstr ""
+msgstr "Como você pode atingir esta situação a partir da atual?"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:2
 msgid "Burned Pancakes"
-msgstr ""
+msgstr "Panquecas queimadas"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BurnedPancake.html:4
@@ -9872,11 +9872,15 @@ msgid ""
 "he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
 "to help him ensuring that no pancake is upside-down while sorting his stack."
 msgstr ""
+"Hard blow for the chef! As panquecas queimaram de um lado! Não há\n"
+"forma de entregar uma pilha de panquecas com paquecas visivelmente\n"
+"queimadas! Você tem que ajudá-lo a ter certeza de que nenhuma panqueca\n"
+"está de cabeça pra baixo enquanto ordena esta pilha."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/GatesPancake.html:2
 msgid "Faster Pancake Sorting"
-msgstr ""
+msgstr "Ondenação de Panqueca Rápida"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:4
@@ -9887,6 +9891,11 @@ msgid ""
 "funny side is that this algorithm was first introduced by Bill Gates, before "
 "invented Windows."
 msgstr ""
+"Ao contrário de outros problemas de ordenação, a operação cara não é a\n"
+"comparação de valores, mas virar as panquecas. Neste exercício, vamos\n"
+"explorar outro algoritmo que tenta reduzir a quantidade de viradas da\n"
+"pilha. O engraçado é que este algoritmo mostrado primeiro por Bill\n"
+"Gates, antes de inventar o Windows."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:9
@@ -9899,6 +9908,13 @@ msgid ""
 "code> pancakes (the considered neighbor is noted <code>t+o</code>). Eight "
 "cases may happen:"
 msgstr ""
+"A ideia básica é aumentar as sequências de panquecas ordenadas, não\n"
+"necessariamente começando do fundo. Dizemos que uma sequência de\n"
+"panquecas ordenadas constitui um <b>bloco</b> enquanto uma panqueca\n"
+"que não é parte de um bloco é dita <b>livre</b>. O algoritmo então\n"
+"considera o panqueca mais de cima (de raio <code>t</code>) e busca\n"
+"pelas panquecas <code>t+1</code> ou <code>t-1</code> (a vizinhança\n"
+"considerada é <code>t+o</code>). Oito casos podem acontecer:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:16
@@ -9906,6 +9922,8 @@ msgid ""
 "<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
 "then merged in one flip."
 msgstr ""
+"<b>Caso a</b>: tanto <code>t</code> quanto <code>t+o</code> são\n"
+"livres. elas são então juntadas em uma virada."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:20
@@ -9913,37 +9931,40 @@ msgid ""
 "<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
 "a block. They are merged in one flip."
 msgstr ""
+"<b>Caso b</b>: <code>t</code> é livre, e <code>t+o</code> é o primeiro\n"
+"de um bloco. Eles são juntados em uma virada."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:25
+#, fuzzy
 msgid ""
 "<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t"
 "+1</code> are the last elements of blocks.  Both blocs and <code>t</code> "
 "are merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
 "<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
 "two flips are mandated."
-msgstr ""
+msgstr "<b>Caso c</b>: <code>t</code> é livre mas tanto <code>t-1</code> quanto <code>t+1</code> são últimos elementos de blocos. Tanto blocos quanto <code>t</code> são mesclados juntos em 4 viradas. Cuidado, se tanto <code>t-1</code> quanto <code>t+1</code> não existirem (pois <code>t</code> é 0 ou max), apenas duas viradas são obrigatórias."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:33
 msgid ""
 "<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is free. "
 "They are merged in one flip."
-msgstr ""
+msgstr "<b>Caso d</b>: <code>t</code> está num bloco mas <code>t+o</code> é livre. Eles são mesclados em uma virada."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:38
 msgid ""
 "<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
 "first element of a block. They are merged in one flip."
-msgstr ""
+msgstr "<b>Caso e</b>: <code>t</code> está num bloco e <code>t+o</code> é o primeiro elemento de um bloco. Eles são mesclados em uma virada."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:42
 msgid ""
 "<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
 "element of another block.  They are merged in 3 flips as follows."
-msgstr ""
+msgstr "<b>Caso f</b>: <code>t</code> está em um bloco e <code>t+o</code> é o último elemento de outro bloco. Eles são mesclados em 3 viradas como segue."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:46
@@ -9951,7 +9972,7 @@ msgid ""
 "<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
 "is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
 "element of another block. Both blocks are merged in 2 flips:"
-msgstr ""
+msgstr "<b>Caso g</b>: <code>t</code> está em um bloco de comprimento k+1 (o último elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é tanto livre ou o último elemento é outro bloco. Ambos os blocos são mesclados em 2 viradas:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:49
@@ -9960,7 +9981,7 @@ msgid ""
 "is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
 "block (the difference with case g is that <code>t+(k+1)o</code> is now the "
 "<i>first</i> element of its block). Both blocks are merged in 2 flips:"
-msgstr ""
+msgstr "<b>Caso h</b>: <code>t</code> está num bloco de comprimento k+1 (o último elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é o primeiro elemento de outro bloco (a diferença com o caso g é que <code>t+(k+1)o</code> é agora o <i>primeiro</i> elemento de seu bloco). Ambos os blocos são mesclados em 2 viradas:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:55
@@ -9968,7 +9989,7 @@ msgid ""
 "<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
 "block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
 "is fliped. The algorithm then stops."
-msgstr ""
+msgstr "<b>Caso i</b>: <code>t</code> está num bloco de comprimento <code>n</code> (este bloco contém todas as panquecas). Se <code>t</code> não for 1, a pilha toda destá virada. O algoritmo então pára."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:58
@@ -9978,11 +9999,16 @@ msgid ""
 "<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve "
 "algorithm, that requires 2n-3 steps."
 msgstr ""
+"Cada iteração aumenta o tamanho dos blocos, então o algoritmo\n"
+"eventualmente pára em todos os casos. Uma análise mais aprofundada\n"
+"mostrará que leva no máximo <code>(5n+5)/3</code> passos para ordenar\n"
+"a pilha. O que é melhor que o algoritmo simplório, que precisa de 2n-3\n"
+"passos."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/pancake/GatesPancake.html:61
 msgid "Your turn"
-msgstr ""
+msgstr "Sua vez"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:62
@@ -9996,6 +10022,16 @@ msgid ""
 "flips of case <b>a</b>. If a given case applies for both <code>t+1</code> "
 "and <code>t-1</code>, then you should apply it to <code>t+1</code>."
 msgstr ""
+"Você agora tem quase toda a informação necessária para implementar\n"
+"este algoritmo por si só. Temos apenas que remover as últimas\n"
+"ambiquidades para garantir que você implemente exatamente o mesmo\n"
+"algoritmo que a correção. Se vários casos se aplicam a sua situação,\n"
+"então você deve usar o primeiro que foi dado. Por exemplo, se tanto o\n"
+"caso a quanto o caso b se  se aplicam (e.g., com <code>t-1</code> no\n"
+"<b>a</b> e <code>t+1</code> no caso <b>b</b>), então você deve aplicar\n"
+"as viradas do caso <b>a</b>. Se um dado caso se aplica tanto para\n"
+"<code>t+1</code> quanto para <code>t-1</code>, então você deve\n"
+"aplicá-lo a <code>t+1</code>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:68
@@ -10004,26 +10040,31 @@ msgid ""
 "don't be surprised if you need more time to achieve this.  But do not give "
 "hope, you can do it!"
 msgstr ""
+"Observe que este é de certa forma mais difícil que os outros\n"
+"exercícios que fizemos até agora, logo não se surpreenda se você\n"
+"precisar de mais tempo para terminar. Mas não desista, você pode\n"
+"conseguir!"
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:71
 msgid "Well, I need some help to start."
-msgstr ""
+msgstr "Bem, eu preciso de alguma ajuda para começar."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:72
+#, fuzzy
 msgid ""
 "First write some helper functions such as <code>isFirst()</code> or "
 "<code>isFree()</code>. This will simplify your main algorithm afterward, "
 "that can be written very similarly to the explication above with a bunch of "
 "if conditions. Factorizing code this way often helps making your code more "
 "readable."
-msgstr ""
+msgstr "Primeiro escreva algumas funções auxiliares tais como <code>isFirst()</code> ou <code>isFree()</code>. This will simplify your main algorithm afterward, that can be written very similarly to the explication above with a bunch of if conditions. Factorizing code this way often helps making your code more readable."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:79
 msgid "My code keeps failing and I don't know how to debug it."
-msgstr ""
+msgstr "Meu código continua falhando e eu não sei como depurar ele."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:80
@@ -10049,14 +10090,17 @@ msgid ""
 "In particular, it may help to print textually the state of the world each "
 "time you enter the main loop."
 msgstr ""
+"Em particular, escrever textualmente o estado do mundo cada vez que\n"
+"você entrar no loop principal pode ajudar."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/CohenPancake.html:2
 msgid "Faster Burned Pancake Sorting"
-msgstr ""
+msgstr "Faster Burned Pancake Sorting"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:4
+#, fuzzy
 msgid ""
 "The Gates' algorithm that we saw in the previous exercise quickly sort a "
 "stack of unburned pancakes by increasing the size of the blocks of sorted "
@@ -10065,10 +10109,11 @@ msgid ""
 "algorithm manages to sort a stack of <i>n</i> pancakes in less than <i>(5n + "
 "5)/3</i> steps in the worst case, while the naive algorithm requires at most "
 "<i>2n</i> steps. Gates is thus about one third faster in the worst case."
-msgstr ""
+msgstr "O algoritmo de Gates que vimos no exercício anterior ordena rapidamente uma pilha de panquecas \"unburned\" aumentando o tamanho dos blocos de panquecas já ordenadas. Isto é muito mais rápido que o algoritmo que mova em cada passo a panqueca maior para o fundo das panquecas ainda não ordenadas. O algoritmo de Gates ordena uma pilha de <i>n</i> panquecas em menos que <i>(5n + 5)/3</i> passos no pior caso, enquanto que o algoritmo simplório precisa de no máximo <i>2n</i> passos. Gates é então cerca de 3 vezes mais rápido no pior caso."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:11
+#, fuzzy
 msgid ""
 "In this exercise, we will explore an adaptation of the same idea to burnt "
 "pancakes. This was first published by David X. Cohen and Manuel Blum. David "
@@ -10076,6 +10121,11 @@ msgid ""
 "jokes. Definitively, interesting people studied that little pancake "
 "problem..."
 msgstr ""
+"Neste exercício, vamos explorar uma adaptação da mesma ideia das\n"
+"panquecas \"burnt\". Isto foi publicado primeiramente por David\n"
+"X. Cohen e Manuel Blum. David Cohen co-fundou uns anos depois a série\n"
+"de TV Futurama, cheia de piadas matemáticas. Definitivamente, pessoas\n"
+"interessantes estudaram este singelo problema da panqueca..."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:16
@@ -10083,6 +10133,8 @@ msgid ""
 "The Cohen's algorithm is slightly easier than the Gates' one since it "
 "distinguishes less cases:"
 msgstr ""
+"O algoritmo de Cohen é um pouco mais fácil que o algoritmo de Gates já\n"
+"que ele distingue menos casos:"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:18
