@@ -109,9 +109,9 @@ os valores são separados por um símbolo | .</p>
   case _                            => println("Oi estranho. Favor não passar."); lockTheDoor()
 }</pre>
 
-<p>You can even add guards to your branches. These are extra conditions that
-must be respected for the branch to get applied. This is handy if you want
-match on value ranges, as follows.</p>
+<p>Você sempre pode adicionar guardas aos seus ramos. Estes são condições
+extra que devem ser respeitadas para que o ramo seja feito. São úteis
+se você quiser casar em intervalos de valores, como segue.</p>
 <pre>age match {
   case i if i&lt;10 => println("Oi menino!")
   case i if i&lt;20 => println("Oi cara!")

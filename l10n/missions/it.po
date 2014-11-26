@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-11-20 00:39+0100\n"
+"POT-Creation-Date: 2014-11-27 00:29+0100\n"
 "PO-Revision-Date: 2014-11-02 23:14+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1229,7 +1229,6 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:152
 #: src/lessons/welcome/loopfor/LoopFor.html:80
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:54
-#: src/lessons/welcome/loopdowhile/Poucet.html:37
 #: src/lessons/welcome/array/basics/Array1.html:183
 #: src/lessons/welcome/array/basics/Array1.html:209
 #: src/lessons/welcome/methods/args/MethodsArgs.html:66
@@ -3296,7 +3295,6 @@ msgstr "Eseguendo il contenuto del ciclo almeno una volta"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
-#: src/lessons/welcome/loopdowhile/Poucet.html:31
 #: src/lessons/welcome/array/basics/Array1.html:100
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
@@ -3385,12 +3383,12 @@ msgstr ""
 "} while (<b>condizione</b>)[!java];[/!]"
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loopdowhile/Poucet.html:2
+#: src/lessons/welcome/loopdowhile/Poucet1.html:2
 msgid "Tracks of buggles"
 msgstr "Tracciato dei buggle"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:4
+#: src/lessons/welcome/loopdowhile/Poucet1.html:4
 #, fuzzy
 #| msgid ""
 #| "Your buggle got lost in a strange maze, and you must help it finding the "
@@ -3421,7 +3419,7 @@ msgstr ""
 "l'altra voce (che dovrebbe chiamarsi 'Deeper Forest')."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:10
+#: src/lessons/welcome/loopdowhile/Poucet1.html:10
 msgid ""
 "The good news is that the path to the exit is written on the ground. As you "
 "can see, the world is made of several corridors, with baggles on the ground. "
@@ -3435,7 +3433,7 @@ msgstr ""
 "girare a sinistra mentre per due o meno a destra."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:14
+#: src/lessons/welcome/loopdowhile/Poucet1.html:14
 msgid ""
 "You should count exactly 5 cells per corridor, the one at the intersection "
 "counting as the last cell of the previous corridor, not as the first cell "
@@ -3446,7 +3444,7 @@ msgstr ""
 "cella del successivo, dopo aver girato."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet1.html:17
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -3461,74 +3459,20 @@ msgstr ""
 "<code>exitReached()</code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:21
-#, fuzzy
-#| msgid ""
-#| "To take one corridor, you simply have to run from one intersection to "
-#| "another while counting the baggles you see on your path. The method "
-#| "<code>crossing()</code> tells you whether your buggle currently stands on "
-#| "an intersection.  The extra complexity is that at the beginning of a "
-#| "corridor, you obviously stand on an intersection, but you still want to "
-#| "move on.  [!java|scala]For that, the easiest is to use a <code>do / "
-#| "while</code> loop instead of a regular <code>while</code> loop to move "
-#| "until the next intersection.[/!] [!python]For that, use an extra variable "
-#| "indicating whether you already entered the corridor, as follows. This "
-#| "will ensure that you execute the loop body at least once (when "
-#| "<code>firstTime</code> is true) before we actually use the value returned "
-#| "by <code>crossing()</code> to determine to continue or not.[/!]"
+#: src/lessons/welcome/loopdowhile/Poucet1.html:21
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
-"another while counting the baggles you see on your path. The method "
-"<code>crossing()</code> tells you whether your buggle currently stands on an "
-"intersection.  The extra complexity is that at the beginning of a corridor, "
-"you obviously stand on an intersection, but you still want to move on.  [!"
-"java|scala|c]For that, the easiest is to use a <code>do / while</code> loop "
-"instead of a regular <code>while</code> loop to move until the next "
-"intersection.[/!] [!python]For that, use an extra variable indicating "
-"whether you already entered the corridor, as follows. This will ensure that "
-"you execute the loop body at least once (when <code>firstTime</code> is "
-"true) before we actually use the value returned by <code>crossing()</code> "
-"to determine to continue or not.[/!]"
+"another while counting the baggles you see on your path. That's easy: there "
+"is 5 steps in each corridors so a simple <code>for</code> loop suffices."
 msgstr ""
-"Per imboccare un corridoio devi semplicemente spostarti da un incrocio "
-"all'altro mentre conti i baggles che vedi sul tuo percorso. Il metodo "
-"<code>crossing()</code> ti dice se il buggle è nel bel mezzo di un incrocio. "
-"La complessita extra è che all'inizio di un corridoio, sei sì su un incrocio "
-"ma vorrai ancora spostarti in avanti. [!java|scala]In questo caso è più "
-"semplice utilizzare un ciclo <code>do / while</code> invece che un normale "
-"<code>while</code> per muoversi fino all'incrocio successivo.[/!] [!"
-"python]In questo caso usate una variabile extra che indica se siete già "
-"entrati nel corridoio, come mostrato quì sotto. Questo vi assicurerà di "
-"eseguire il contenuto del ciclo almeno una volta (quando <code>primaVolta</"
-"code> è true) prima di poter effettivamente utilizzare il valore restituito "
-"da <code>crossing()</code> per determinare se continuare o meno.[/!]"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:32
-#, fuzzy, no-wrap
-#| msgid ""
-#| "firstTime = True\n"
-#| "while firstTime or not crossing():\n"
-#| "  firstTime = False\n"
-#| "  (your body)\n"
-msgid ""
-"firstTime = True\n"
-"while firstTime or not crossing():\n"
-"  firstTime = False\n"
-"  (loop body)\n"
-msgstr ""
-"primaVolta = True\n"
-"while primaVolta or not crossing():\n"
-"  primaVolta = False\n"
-"  (corpo del tuo ciclo)\n"
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:39
+#: src/lessons/welcome/loopdowhile/Poucet1.html:25
 msgid "I cannot imagine how to count the baggles I see."
 msgstr "Non riesco ad immaginare come contare i baggle che vedo."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:40
+#: src/lessons/welcome/loopdowhile/Poucet1.html:26
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -3539,14 +3483,14 @@ msgstr ""
 "spesso chiamanta <i>contatore</i>."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:42
+#: src/lessons/welcome/loopdowhile/Poucet1.html:28
 msgid ""
 "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr ""
 "Non dimenticare di azzerare il tuo contatore all'inizio di ogni corridoio!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:45
+#: src/lessons/welcome/loopdowhile/Poucet1.html:31
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -6390,6 +6334,15 @@ msgstr ""
 "Dovrai ancora copiare ed incollare il tuo codice e cambiarlo in modo tale "
 "che il tuo metodo prenda il colore della traccia come parametro. Oltre a ciò "
 "il tuo codice non dovrebbe funzionare come in precedenza."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:11
+msgid ""
+"Don't get lost on false leads! The hunt() method was given a parameter to "
+"tell you which color to follow (and it is not the same in all worlds). Add a "
+"parameter to your isFacingTrail() method to only follow the requested color, "
+"as the other colors lead to dead ends..."
+msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
@@ -9964,7 +9917,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:4
 msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
+"The pancake sorting problem is a simple puzzle where you have a set of "
 "pancakes, each of differing size. The chef cooking the pancake is a bit "
 "psychorigid: he hates when the pancakes are not correctly sorted on the "
 "plate. He loves when they are correctly ordered, with the small ones over "
@@ -10173,7 +10126,7 @@ msgstr ""
 msgid ""
 "Note that it is somehow harder than the other exercises we did so far, so "
 "don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
+"up hope, you can do it!"
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
@@ -15010,6 +14963,65 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "To take one corridor, you simply have to run from one intersection to "
+#~| "another while counting the baggles you see on your path. The method "
+#~| "<code>crossing()</code> tells you whether your buggle currently stands "
+#~| "on an intersection.  The extra complexity is that at the beginning of a "
+#~| "corridor, you obviously stand on an intersection, but you still want to "
+#~| "move on.  [!java|scala]For that, the easiest is to use a <code>do / "
+#~| "while</code> loop instead of a regular <code>while</code> loop to move "
+#~| "until the next intersection.[/!] [!python]For that, use an extra "
+#~| "variable indicating whether you already entered the corridor, as "
+#~| "follows. This will ensure that you execute the loop body at least once "
+#~| "(when <code>firstTime</code> is true) before we actually use the value "
+#~| "returned by <code>crossing()</code> to determine to continue or not.[/!]"
+#~ msgid ""
+#~ "To take one corridor, you simply have to run from one intersection to "
+#~ "another while counting the baggles you see on your path. The method "
+#~ "<code>crossing()</code> tells you whether your buggle currently stands on "
+#~ "an intersection.  The extra complexity is that at the beginning of a "
+#~ "corridor, you obviously stand on an intersection, but you still want to "
+#~ "move on.  [!java|scala|c]For that, the easiest is to use a <code>do / "
+#~ "while</code> loop instead of a regular <code>while</code> loop to move "
+#~ "until the next intersection.[/!] [!python]For that, use an extra variable "
+#~ "indicating whether you already entered the corridor, as follows. This "
+#~ "will ensure that you execute the loop body at least once (when "
+#~ "<code>firstTime</code> is true) before we actually use the value returned "
+#~ "by <code>crossing()</code> to determine to continue or not.[/!]"
+#~ msgstr ""
+#~ "Per imboccare un corridoio devi semplicemente spostarti da un incrocio "
+#~ "all'altro mentre conti i baggles che vedi sul tuo percorso. Il metodo "
+#~ "<code>crossing()</code> ti dice se il buggle è nel bel mezzo di un "
+#~ "incrocio. La complessita extra è che all'inizio di un corridoio, sei sì "
+#~ "su un incrocio ma vorrai ancora spostarti in avanti. [!java|scala]In "
+#~ "questo caso è più semplice utilizzare un ciclo <code>do / while</code> "
+#~ "invece che un normale <code>while</code> per muoversi fino all'incrocio "
+#~ "successivo.[/!] [!python]In questo caso usate una variabile extra che "
+#~ "indica se siete già entrati nel corridoio, come mostrato quì sotto. "
+#~ "Questo vi assicurerà di eseguire il contenuto del ciclo almeno una volta "
+#~ "(quando <code>primaVolta</code> è true) prima di poter effettivamente "
+#~ "utilizzare il valore restituito da <code>crossing()</code> per "
+#~ "determinare se continuare o meno.[/!]"
+
+#, fuzzy
+#~| msgid ""
+#~| "firstTime = True\n"
+#~| "while firstTime or not crossing():\n"
+#~| "  firstTime = False\n"
+#~| "  (your body)\n"
+#~ msgid ""
+#~ "firstTime = True\n"
+#~ "while firstTime or not crossing():\n"
+#~ "  firstTime = False\n"
+#~ "  (loop body)\n"
+#~ msgstr ""
+#~ "primaVolta = True\n"
+#~ "while primaVolta or not crossing():\n"
+#~ "  primaVolta = False\n"
+#~ "  (corpo del tuo ciclo)\n"
 
 #~ msgid "When your program works, move forward to the next exercise."
 #~ msgstr ""

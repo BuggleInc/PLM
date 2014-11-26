@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-11-20 00:39+0100\n"
+"POT-Creation-Date: 2014-11-27 00:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -894,7 +894,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet.html:37 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -2260,7 +2260,7 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet.html:31 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
 msgid "[!python]"
 msgstr ""
 
@@ -2314,12 +2314,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loopdowhile/Poucet.html:2
+#: src/lessons/welcome/loopdowhile/Poucet1.html:2
 msgid "Tracks of buggles"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:4
+#: src/lessons/welcome/loopdowhile/Poucet1.html:4
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
@@ -2332,7 +2332,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:10
+#: src/lessons/welcome/loopdowhile/Poucet1.html:10
 msgid ""
 "The good news is that the path to the exit is written on the ground. As you "
 "can see, the world is made of several corridors, with baggles on the "
@@ -2342,7 +2342,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:14
+#: src/lessons/welcome/loopdowhile/Poucet1.html:14
 msgid ""
 "You should count exactly 5 cells per corridor, the one at the intersection "
 "counting as the last cell of the previous corridor, not as the first cell "
@@ -2350,7 +2350,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet1.html:17
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -2360,39 +2360,20 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:21
+#: src/lessons/welcome/loopdowhile/Poucet1.html:21
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
-"another while counting the baggles you see on your path. The method "
-"<code>crossing()</code> tells you whether your buggle currently stands on an "
-"intersection.  The extra complexity is that at the beginning of a corridor, "
-"you obviously stand on an intersection, but you still want to move on.  "
-"[!java|scala|c]For that, the easiest is to use a <code>do / while</code> "
-"loop instead of a regular <code>while</code> loop to move until the next "
-"intersection.[/!] [!python]For that, use an extra variable indicating "
-"whether you already entered the corridor, as follows. This will ensure that "
-"you execute the loop body at least once (when <code>firstTime</code> is "
-"true) before we actually use the value returned by <code>crossing()</code> "
-"to determine to continue or not.[/!]"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:32
-#, no-wrap
-msgid ""
-"firstTime = True\n"
-"while firstTime or not crossing():\n"
-"  firstTime = False\n"
-"  (loop body)\n"
+"another while counting the baggles you see on your path. That's easy: there "
+"is 5 steps in each corridors so a simple <code>for</code> loop suffices."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:39
+#: src/lessons/welcome/loopdowhile/Poucet1.html:25
 msgid "I cannot imagine how to count the baggles I see."
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:40
+#: src/lessons/welcome/loopdowhile/Poucet1.html:26
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -2400,12 +2381,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:42
+#: src/lessons/welcome/loopdowhile/Poucet1.html:28
 msgid "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:45
+#: src/lessons/welcome/loopdowhile/Poucet1.html:31
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -4291,6 +4272,15 @@ msgid ""
 "You have to copy/paste your code again, and change it so that your methods "
 "take the color of the trail to follow as a parameter. Beside of this, your "
 "code should work as earlier."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:11
+msgid ""
+"Don't get lost on false leads! The hunt() method was given a parameter to "
+"tell you which color to follow (and it is not the same in all worlds). Add a "
+"parameter to your isFacingTrail() method to only follow the requested color, "
+"as the other colors lead to dead ends..."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -7184,7 +7174,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:4
 msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
+"The pancake sorting problem is a simple puzzle where you have a set of "
 "pancakes, each of differing size. The chef cooking the pancake is a bit "
 "psychorigid: he hates when the pancakes are not correctly sorted on the "
 "plate. He loves when they are correctly ordered, with the small ones over "
@@ -7391,7 +7381,7 @@ msgstr ""
 msgid ""
 "Note that it is somehow harder than the other exercises we did so far, so "
 "don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
+"up hope, you can do it!"
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>

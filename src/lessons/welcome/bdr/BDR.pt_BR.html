@@ -188,24 +188,26 @@ Este exercício pode parecer um pouco complexo à primeira vista, mas
 ele vem para resumir a informação na tabela numa sequência de
 condicionais.
 
-<p>You have to keep dancing as long as there is some dancing steps to do, i.e.,
-as long as we are in a cell which content is described in the table.  The
-easier for that is to use a boolean variable (<code>finished</code>)  as
-termination condition to a <code>while</code> loop.  It should be
-initialized to
-<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, and switched
-to <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> as soon as
-the buggle find a cell with a value not described in the table.  Thus, the
-loop will stop and the program will terminate. </p>
+<p>Você tem que se manter dançando enquanto houverem passos de dança para
+fazer, i.e., enquanto estivermos numa célula cujo conteúdo esteja
+contido na tabela. a forma mais fácil de fazer isto é usando uma
+variável booleana (<code>terminou</code>) como condição de término
+para o loop <code>while</code>. Ela deve ser iniciada como
+<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, e
+trocada para
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> assim que
+o buggle encontre uma célula com um valor não descrito na
+tabela. Assim, o loop pára e o programa termina. </p>
 
 [!java|c]
-<p>Another subtlety is that detecting if strings are equals is a bit annoying
-in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code>
-instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>.  This
-method, only known by the buggles of this exercise, returns the first char
-of the message written on the ground (or ' ' -- the space char -- if nothing
-is written down). It enables to work with chars instead of strings, that is
-much simpler in [!thelang].</p>
+<p>Outro detalhe é que detectar se strings são iguais é um pouco chato em
+Java. Então, usamos o <code>char getIndication[!c]Bdr[/!]()</code> ao
+invés do <code>[!java]String[/!][!c]char*[/!]
+lerMensagem()</code>. Este método, conhecido apenas pelos buggles
+deste exercício, retorna o primeiro caractere da mensagem escrita no
+chão (ou ' ' -- o caractere para espaço -- se não tem nada
+escrito). Ele habilita que se trabalhe com caracteres ao invés de
+strings, que é muito mais simples em [!thelang].</p>
 [/!]
 
 <h3>Dicas</h3>

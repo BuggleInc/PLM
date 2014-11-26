@@ -1,29 +1,29 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h1>Faster Pancake Sorting</h1>
+<h1>Ondenação de Panqueca Rápida</h1>
 
-<p>Unlike others sorting problem, the expensive operation is not the comparison
-of values, but the flipping of pancakes. In this exercise, we will explore
-another algorithm that attempt to reduce the amount of stack flipping. The
-funny side is that this algorithm was first introduced by Bill Gates, before
-invented Windows.</p>
+<p>Ao contrário de outros problemas de ordenação, a operação cara não é a
+comparação de valores, mas virar as panquecas. Neste exercício, vamos
+explorar outro algoritmo que tenta reduzir a quantidade de viradas da
+pilha. O engraçado é que este algoritmo mostrado primeiro por Bill
+Gates, antes de inventar o Windows.</p>
 
-<p>The basic idea is to grow sequences of sorted pancakes, not necessarily
-starting from the bottom.  We say that a sequence of ordered pancakes
-constitute a <b>bloc</b> while a pancake that is not part of a bloc is said
-to be <b>free</b>. The algorithm then considers the topmost pancake (of
-radius <code>t</code>) and search for the <code>t+1</code> or
-<code>t-1</code> pancakes (the considered neighbor is noted
-<code>t+o</code>). Eight cases may happen:</p>
+<p>A ideia básica é aumentar as sequências de panquecas ordenadas, não
+necessariamente começando do fundo. Dizemos que uma sequência de
+panquecas ordenadas constitui um <b>bloco</b> enquanto uma panqueca
+que não é parte de um bloco é dita <b>livre</b>. O algoritmo então
+considera o panqueca mais de cima (de raio <code>t</code>) e busca
+pelas panquecas <code>t+1</code> ou <code>t-1</code> (a vizinhança
+considerada é <code>t+o</code>). Oito casos podem acontecer:</p>
 
 <ul>
-<li><b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are
-then merged in one flip.<br/>
+<li><b>Caso a</b>: tanto <code>t</code> quanto <code>t+o</code> são
+livres. elas são então juntadas em uma virada.<br/>
 <div align="center"><img src="img/gates-a.png"/></div>
 </li></ul>
 
-<ul><li><b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of
-a block. They are merged in one flip.<br/>
+<ul><li><b>Caso b</b>: <code>t</code> é livre, e <code>t+o</code> é o primeiro
+de um bloco. Eles são juntados em uma virada.<br/>
 <div align="center"><img src="img/gates-b.png"/></div>
 </li></ul>
 
@@ -38,57 +38,61 @@ is 0 or max), only two flips are mandated.
 </li></ul>
 
 <ul>
-<li><b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is
-free. They are merged in one flip.<br/>
+<li><b>Caso d</b>: <code>t</code> está num bloco mas <code>t+o</code> é
+livre. Eles são mesclados em uma virada.<br/>
 <div align="center"><img src="img/gates-d.png"/></div>
 </li></ul>
 
 <ul>
-<li><b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the
-first element of a block. They are merged in one flip.<br/>
+<li><b>Caso e</b>: <code>t</code> está num bloco e <code>t+o</code> é o primeiro
+elemento de um bloco. Eles são mesclados em uma virada.<br/>
 <div align="center"><img src="img/gates-e.png"/></div>
 </li></ul>
 
-<ul><li><b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last
-element of another block.  They are merged in 3 flips as follows.<br/>
+<ul><li><b>Caso f</b>: <code>t</code> está em um bloco e <code>t+o</code> é o último
+elemento de outro bloco. Eles são mesclados em 3 viradas como segue.<br/>
 <div align="center"><img src="img/gates-f.png"/></div></li></ul>
 
-<ul><li><b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element
-is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last
-element of another block. Both blocks are merged in 2 flips:<br/>
+<ul><li><b>Caso g</b>: <code>t</code> está em um bloco de comprimento k+1 (o último
+elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é tanto livre ou o
+último elemento é outro bloco. Ambos os blocos são mesclados em 2 viradas:<br/>
 <div align="center"><img src="img/gates-g.png"/></div><br/></li></ul>
 
-<ul><li><b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element
-is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another
-block (the difference with case g is that <code>t+(k+1)o</code> is now the
-<i>first</i> element of its block). Both blocks are merged in 2 flips:<br/>
+<ul><li><b>Caso h</b>: <code>t</code> está num bloco de comprimento k+1 (o último
+elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é o primeiro elemento
+de outro bloco (a diferença com o caso g é que <code>t+(k+1)o</code> é agora
+o <i>primeiro</i> elemento de seu bloco). Ambos os blocos são mesclados em 2
+viradas:<br/>
 <div align="center"><img src="img/gates-h.png"/></div>
 </li></ul>
 
-<ul><li><b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this
-block contains all pancakes).  If <code>t</code> is not 1, the whole stack
-is fliped. The algorithm then stops.</li></ul>    
+<ul><li><b>Caso i</b>: <code>t</code> está num bloco de comprimento <code>n</code>
+(este bloco contém todas as panquecas). Se <code>t</code> não for 1, a pilha
+toda destá virada. O algoritmo então pára.</li></ul>    
 
-<p>Each iteration increases the size of the blocks, so the algorithm eventually
-halts in all cases. A finer analysis would show that it takes at most
-<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve
-algorithm, that requires 2n-3 steps.</p>
+<p>Cada iteração aumenta o tamanho dos blocos, então o algoritmo
+eventualmente pára em todos os casos. Uma análise mais aprofundada
+mostrará que leva no máximo <code>(5n+5)/3</code> passos para ordenar
+a pilha. O que é melhor que o algoritmo simplório, que precisa de 2n-3
+passos.</p>
 
-<h2>Your turn</h2>
-<p>You now have almost enough information to implement this algorithm on your
-own. We just have to remove the last remaining ambiguities to ensure that
-you implement exactly the same algorithm that the correction. If several
-cases apply to your situation, then you should use the first given one. For
-example, if both cases a and b apply (e.g., with <code>t-1</code> on case
-<b>a</b> and <code>t+1</code> on case <b>b</b>), then you should apply the
-flips of case <b>a</b>. If a given case applies for both <code>t+1</code>
-and <code>t-1</code>, then you should apply it to <code>t+1</code>.</p>
+<h2>Sua vez</h2>
+<p>Você agora tem quase toda a informação necessária para implementar
+este algoritmo por si só. Temos apenas que remover as últimas
+ambiquidades para garantir que você implemente exatamente o mesmo
+algoritmo que a correção. Se vários casos se aplicam a sua situação,
+então você deve usar o primeiro que foi dado. Por exemplo, se tanto o
+caso a quanto o caso b se  se aplicam (e.g., com <code>t-1</code> no
+<b>a</b> e <code>t+1</code> no caso <b>b</b>), então você deve aplicar
+as viradas do caso <b>a</b>. Se um dado caso se aplica tanto para
+<code>t+1</code> quanto para <code>t-1</code>, então você deve
+aplicá-lo a <code>t+1</code>.</p>
 
 <p>Note that it is somehow harder than the other exercises we did so far, so
 don't be surprised if you need more time to achieve this.  But do not give
-hope, you can do it!</p>
+up hope, you can do it!</p>
 
-<p><div class="tip" id="tip-1" alt="Well, I need some help to start.">
+<p><div class="tip" id="tip-1" alt="Bem, eu preciso de alguma ajuda para começar.">
 First write some helper functions such as <code>isFirst()</code> or
 <code>isFree()</code>. This will simplify your main algorithm afterward,
 that can be written very similarly to the explication above with a bunch of
@@ -96,7 +100,7 @@ if conditions. Factorizing code this way often helps making your code more
 readable.
 </div></p>
 
-<p><div class="tip" id="tip-2" alt="My code keeps failing and I don't know how to debug it.">
+<p><div class="tip" id="tip-2" alt="Meu código continua falhando e eu não sei como depurar ele.">
 Para depurar um mundo depois do outro e evitar que as mensagens de
 todos os mundos fiquem misturadas, você pode escrever sua função de
 depuração apenas se o método <code>selecionado()</code> retorna
@@ -104,6 +108,6 @@ verdadeiro. Isto acontecerá apenas para a entidade que estiver
 selecionada na interface gráfica, que é provavelmente o mundo que você
 está depurando no momento. Isto vai ajudar dividindo a dificuldade em
 partes e depurando a situção uma após a outra.<br/>
-In particular, it may help to print textually the state of the world each
-time you enter the main loop. 
+Em particular, escrever textualmente o estado do mundo cada vez que
+você entrar no loop principal pode ajudar. 
 </div></p>
