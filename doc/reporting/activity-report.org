@@ -1,0 +1,50 @@
+* Objectifs
+** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite ici est complète.
+** TODO Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
+*** TODO Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
+    SCHEDULED: <2014-12-01 lun.>
+    - Lors de la création du jar, plusieurs erreurs surgissent:
+    En effet, les librairies importées par Play Framework par défaut
+    déclenchent un conflit puisqu'elles déclarent des classes avec le
+    même nom.  Il est donc nécessaire de définir une [[https://github.com/sbt/sbt-assembly#merge-strategy][stratégie de résolution des conflits.]]
+      - Tout d'abord,il faut remplacer /assemblyMergeStrategy/ de leur
+        exemple par /mergeStrategy/ dans notre cas (doc pas à jour?)).
+      - Utiliser /MergeStrategy.rename/ lève l'exception
+        /Java.io.FileNotFoundException/. En effet, les fichiers en
+        conflits sont renommés, et leur nouveau nom dépasse 255
+        caractères.  Ceci empêche donc la création du jar.
+      - Utiliser /MergeStrategy.last/ permet au build de
+        passer. Cependant, la classe /play.core.server.NettyServer/
+        n'est pas embarquée dans le jar, empêchant ainsi l'application
+        de fonctionner.
+      - Utiliser une combinaison de /MergeStrategy/ telle que:
+        ~mergeStrategy in assembly := { 
+case "META-INF/MANIFEST.MF" => MergeStrategy.rename 
+case _ => MergeStrategy.first 
+}~ 
+        gènère aussi un jar ne fonctionnant pas car
+        une dépendance est manquante.
+*** TODO Créer une archive zip de l'application à partir [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-dist-task][des instructions suivantes]]
+    SCHEDULED: <2014-12-02 mar.> 
+    - L'archive résultante possède deux binaires, un pour les
+      environnements UNIX et un pour les environnements Windows.
+**** DONE Vérifier que le binaire pour UNIX fonctionne correctement
+     SCHEDULED: <2014-12-02 mar.>
+
+**** TODO Vérifier que le script .bat fonctionne correctement
+     SCHEDULED: <2014-12-02 mar.>
+      
+*** TODO Mettre en place une routine permettant de compiler les fichiers Dart en Javascript, rendant l'application compatible avec tous les navigateurs
+    SCHEDULED: <2014-12-02 mar.> 
+    - Dans Eclipse, le plugin Dart et son option /pub build/
+      permettent de générer un dossier *build* contenant le code Dart
+      ainsi que son équivalent Javascript.  Cependant, il est ensuite
+      nécessaire de modifier les références vers les scripts pour
+      qu'elles pointent vers ce nouveau dossier:
+      - Soit nous mettons à jour les références côté client (fichiers
+        HTML) pour tenir compte de ce changement,
+      - Soit nous modifions le fichier /conf/routes.conf/ pour que ça
+        soit le serveur qui redirige les requêtes des clients vers les
+        bons fichiers.
+**** TODO Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déployement
+     SCHEDULED: <2014-12-02 mar.>
