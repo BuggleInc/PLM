@@ -46,5 +46,23 @@ case _ => MergeStrategy.first
       - Soit nous modifions le fichier /conf/routes.conf/ pour que ça
         soit le serveur qui redirige les requêtes des clients vers les
         bons fichiers.
-**** TODO Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déployement
+    - Après plusieurs tests plus poussés, l'option /pub build/ ne
+      fonctionne pas (plus?). En effet, lorsqu'on définit le template
+      HTML d'un *Component* (élément basique d'*AngularDart*) dans un
+      autre fichier que dans /component.dart/, /pub build/ échoue car
+      il n'arrive pas à le localiser. Quant à la commande /dart2js -o
+      main.dart.js main.dart/, elle fonctionne toujours et permet de
+      générer directement les fichiers Javascript à l'emplacement
+      souhaité.
+**** DONE Modifier /build.sbt/ pour lancer la commande /dart2js -o main.dart.js main.dart/ avant de créer l'archive zip
+     SCHEDULED: <2014-12-02 mar.>
+    - J'ai rencontré des difficultés à modifier /build.sbt/ pour que
+      les fichiers Dart soient compilés avant la création de
+      l'archive. Je n'ai en effet pas trouvé comment configurer *sbt*
+      pour ajouter l'exécution d'une commande shell lors du build.
+    - J'ai donc créé un script shell se contentant de lancer les deux
+      commandes à la suite et permettant ainsi de rendre l'application
+      compatible avec tous les navigateurs et de l'exporter dans une
+      archive zip.
+**** TODO Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déploiement
      SCHEDULED: <2014-12-02 mar.>
