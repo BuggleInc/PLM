@@ -1,7 +1,7 @@
 * Objectifs
-** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite ici est complète.
-** TODO Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
-*** TODO Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
+** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
+** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
+*** CANCEL Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
     SCHEDULED: <2014-12-01 lun.>
     - Lors de la création du jar, plusieurs erreurs surgissent:
     En effet, les librairies importées par Play Framework par défaut
@@ -24,17 +24,17 @@ case _ => MergeStrategy.first
 }~ 
         gènère aussi un jar ne fonctionnant pas car
         une dépendance est manquante.
-*** TODO Créer une archive zip de l'application à partir [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-dist-task][des instructions suivantes]]
+*** DONE Créer une archive zip de l'application à partir [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-dist-task][des instructions suivantes]]
     SCHEDULED: <2014-12-02 mar.> 
     - L'archive résultante possède deux binaires, un pour les
       environnements UNIX et un pour les environnements Windows.
 **** DONE Vérifier que le binaire pour UNIX fonctionne correctement
      SCHEDULED: <2014-12-02 mar.>
 
-**** TODO Vérifier que le script .bat fonctionne correctement
+**** DONE Vérifier que le script .bat fonctionne correctement
      SCHEDULED: <2014-12-02 mar.>
       
-*** TODO Mettre en place une routine permettant de compiler les fichiers Dart en Javascript, rendant l'application compatible avec tous les navigateurs
+*** DONE Mettre en place une routine permettant de compiler les fichiers Dart en Javascript, rendant l'application compatible avec tous les navigateurs
     SCHEDULED: <2014-12-02 mar.> 
     - Dans Eclipse, le plugin Dart et son option /pub build/
       permettent de générer un dossier *build* contenant le code Dart
@@ -64,5 +64,29 @@ case _ => MergeStrategy.first
       commandes à la suite et permettant ainsi de rendre l'application
       compatible avec tous les navigateurs et de l'exporter dans une
       archive zip.
-**** TODO Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déploiement
+**** CANCEL Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déploiement
      SCHEDULED: <2014-12-02 mar.>
+** DONE Instancier un objet PLM côté serveur
+   SCHEDULED: <2014-12-03 mer.>
+   - Plusieurs problèmes ont été rencontrés avant de réussir à
+     instancier un objet PLM depuis un projet Play Framework.
+     - Tout d'abord, le jar produit par PLM embarque pour plusieurs
+       librairies, dont le *compilateur Scala*. Ceci provoque alors un
+       doublon avec la configuration par défaut d'un projet *Play
+       Framework*. Il a donc fallu retirer cette librairie du build de
+       PLM.
+     - Par défaut, Play Framework utilise la /version 2.11/ du
+       compilateur Scala. Cette version est cependant incompatible
+       avec PLM, qui est compilée à l'heure actuelle avec la /version
+       2.10.5/ du compilateur. Pour permettre à l'application de
+       fonctionner, il faut donc downgrader la version de scala
+       utilisée en modifiant la valeur affectée à ~scalaVersion~ dans
+       /build.sbt/.
+** DONE Mettre en place un webservice RESTful permettant d'interagir avec PLM
+   SCHEDULED: <2014-12-04 jeu.>
+** TODO Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
+   SCHEDULED: <2014-12-05 ven.>
+** TODO Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
+   SCHEDULED: <2014-12-05 ven.>
+** TODO Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+   SCHEDULED: <2014-12-08 lun.>
