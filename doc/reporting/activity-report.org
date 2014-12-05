@@ -84,9 +84,24 @@ case _ => MergeStrategy.first
        /build.sbt/.
 ** DONE Mettre en place un webservice RESTful permettant d'interagir avec PLM
    SCHEDULED: <2014-12-04 jeu.>
-** TODO Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
+** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
-** TODO Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
+** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
 ** TODO Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+   SCHEDULED: <2014-12-08 lun.>
+   - Création d'un /Component/ se chargeant des interactions entre
+     Dart et Ace.
+   - Mais avec AngularDart, un Component est inclus dans son
+     propre *ShadowDom* ce qui empêche Ace de trouver l'élément à
+     transformer en éditeur de code.
+   - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
+   - Mais Dom pas encore complètement chargé lors de l'exécution du
+     code Dart ce qui force, faute d'avoir trouvé mieux, l'utilisation
+     d'un timer pour instancier l'éditeur de code.
+** TODO Modifier les messages concernant l'envoi de données au serveur
+   - Actuellement, plusieurs messages sont affichés pour informer
+     l'utilisateur que PLM est en train d'envoyer les données de son
+     activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de communiquer ses données, ce qui peut prêter à confusion.
    SCHEDULED: <2014-12-08 lun.>

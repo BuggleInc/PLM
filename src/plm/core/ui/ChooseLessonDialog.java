@@ -118,10 +118,10 @@ public class ChooseLessonDialog extends JFrame {
 			    options[2]);
 			if(n == 0) {
 				// The user agreed to let us track his activity on PLM
-				trackUserProperty = "yes";
+				trackUserProperty = "true";
 			}
 			else if(n == 1) {
-				trackUserProperty = "no";
+				trackUserProperty = "false";
 			}
 			Game.setProperty("plm.git.track.user", trackUserProperty);
 		}
