@@ -17,6 +17,8 @@ import plm.universe.BrokenWorldFileException;
 public abstract class Lesson {
 	private String name;
 	private String id;
+	private String description;
+	private String imgPath;
 	
 	public static enum LoadingOutcome {SUCCESS,FAIL}
 	
@@ -41,8 +43,10 @@ public abstract class Lesson {
 
 	public Lesson() {
 		id = getClass().getCanonicalName().replaceAll(".Main$","");
-		id = id.replaceAll("^lessons.", "");
-		
+		id = id.replaceAll("^lessons.", "");		
+	}
+	
+	public void loadLesson() {
 		try {
 			loadExercises();
 			Game.waitInitThreads();
@@ -74,6 +78,7 @@ public abstract class Lesson {
 			Game.getInstance().studentWork.setPossibleExercises(id, lang, possible);
 		}
 	}
+	
 	public String getId() {
 		return id;
 	}
@@ -186,5 +191,36 @@ public abstract class Lesson {
 	}
 	public void setLoadingOutcomeState(LoadingOutcome loadingOutcomeState) {
 		LoadingOutcomeState = loadingOutcomeState;
+	}
+
+	public String getDescription() {
+		if(description == null) {
+			setDescription("short_desc");
+		}
+		return description;
+	}
+
+	public void setDescription(String name) {
+		String filename = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
+		System.out.println("SetDescription: " + filename);
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, "html",true);
+		} catch (IOException ex) {
+			filename += ".html";
+		}
+		
+		description = sb.toString();
+	}
+
+	public String getImgPath() {
+		if(imgPath == null) {
+			setImgPath("icon.png");
+		}
+		return imgPath;
+	}
+
+	public void setImgPath(String name) {
+		imgPath = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
 	}
 }

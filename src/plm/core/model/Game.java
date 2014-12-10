@@ -92,12 +92,21 @@ public class Game implements IWorldView {
 
 	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
+	private Map<String, Lesson> loadedLessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
 	private Course currentCourse;
 	private Lecture lastExercise;
 
+	
+	
 	public static final String [][] humanLangs = { {"English","en"}, {"Francais","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"} };
-
+	public static final String [] lessonsName = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
+		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
+		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
+		"lessons.recursion.cons", "lessons.recursion", "lessons.recursion.hanoi",
+		"lessons.lightbot", "lessons.bat.string1", "lessons.lander"
+		};
+	
 	public static final ProgrammingLanguage JAVA =       new LangJava();
 	public static final ProgrammingLanguage PYTHON =     new LangPython();
 	public static final ProgrammingLanguage SCALA =      new LangScala();
@@ -122,7 +131,7 @@ public class Game implements IWorldView {
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
-
+	
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
@@ -218,6 +227,7 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 
+		initLessons();
 
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
@@ -327,6 +337,25 @@ public class Game implements IWorldView {
 		}
 	}
 
+	private void initLessons() {
+		for(String lessonName: lessonsName) {
+			Lesson lesson = null;
+			try {
+				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
+				// We manually build a call to the constructor of this object, and fire it
+				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
+				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
+				lessons.put(lessonName, lesson); // cache the newly created object
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(Game.i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
+			}
+		}
+	}
+	
 	/** Change the current lesson.
 	 * 
 	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
@@ -342,27 +371,11 @@ public class Game implements IWorldView {
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
+		Lesson lessonLoaded = loadedLessons.get(lessonName);
 		statusArgAdd(lessonName);
-
-		if (lesson == null) { // we have to load it 
-			try {
-				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
-				// We manually build a call to the constructor of this object, and fire it
-				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
-				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
-
-				lessons.put(lessonName, lesson); // cache the newly created object
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				if (failOnError)
-					throw new RuntimeException(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.",lessonName));
-				System.err.println(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.",lessonName));
-				statusArgRemove(Game.i18n.tr("Load lesson {0}",lessonName));				
-				return getCurrentLesson();
-			}
+		if (lessonLoaded == null) { // we have to load it 
+			lesson.loadLesson();
+			loadedLessons.put(lessonName, lesson);
 		}
 		// Prevent obvious error messages
 		if (sessionKit != null)
@@ -456,6 +469,10 @@ public class Game implements IWorldView {
 		return this.lessons.values();
 	}
 
+	public Collection<Lesson> getLoadedLessons() {
+		return this.loadedLessons.values();
+	}
+	
 	public Lesson getCurrentLesson() {
 		if (this.currentLesson == null && this.lessons.size() > 0) {
 			setCurrentLesson(this.lessons.get(0));

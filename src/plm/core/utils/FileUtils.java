@@ -51,8 +51,14 @@ public class FileUtils {
 			}
 		}
 		
-		if (translatable && locale == null)
-			throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
+		if (translatable && locale == null) {
+			locale = Locale.getDefault();
+			System.out.println("Locale vaut: "+ locale.getDisplayLanguage());
+			if(locale == null) {
+				throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
+			}
+		}
+			
 		
 		/* Build the list of filenames we will iterate (translated if any, and raw) */
 		String[] fileNames;

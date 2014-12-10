@@ -48,7 +48,7 @@ public class GitSessionKit implements ISessionKit {
 	public void storeAll(File path) throws UserAbortException {
 		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
-		Collection<Lesson> lessons = this.game.getLessons();
+		Collection<Lesson> lessons = this.game.getLoadedLessons();
 		for (Lesson lesson : lessons) {
 			File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
 
