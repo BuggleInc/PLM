@@ -84,9 +84,67 @@ case _ => MergeStrategy.first
        /build.sbt/.
 ** DONE Mettre en place un webservice RESTful permettant d'interagir avec PLM
    SCHEDULED: <2014-12-04 jeu.>
+<<<<<<< Updated upstream
 ** TODO Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
 ** TODO Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
 ** TODO Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
    SCHEDULED: <2014-12-08 lun.>
+=======
+** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
+   SCHEDULED: <2014-12-05 ven.>
+** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
+   SCHEDULED: <2014-12-05 ven.>
+** DONE Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+   SCHEDULED: <2014-12-08 lun.>
+   - Création d'un /Component/ se chargeant des interactions entre
+     Dart et Ace.
+   - Mais avec AngularDart, un Component est inclus dans son
+     propre *ShadowDom* ce qui empêche Ace de trouver l'élément à
+     transformer en éditeur de code.
+   - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
+   - Hériter de *ShadowRootAware* permet d'écouter
+     l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
+** TODO Modifier les messages concernant l'envoi de données au serveur
+   - Actuellement, plusieurs messages sont affichés pour informer
+     l'utilisateur que PLM est en train d'envoyer les données de son
+     activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de
+     communiquer ses données, ce qui peut prêter à confusion.
+   SCHEDULED: <2014-12-08 lun.>
+** DONE Ajouter une fonction à PLM retournant la liste des leçons
+   SCHEDULED: <2014-12-08 lun.>
+** DONE Etudier comment récupérer à partir du nom d'une leçon son image et sa description
+   - Actuellement, /src/plm/core/ui/ChooseLessonDialog.java/ récupère
+     à partir de la liste des leçons l'image et la description associée à chacune.
+     Celles-ci sont contenues dans le jar de la PLM.
+   - Maintenant que nous passons à une interface WEB, devons-nous
+     externaliser ces fichiers (images et descriptions) pour y accéder
+     directement depuis l'implémentation du serveur ou devons-nous les
+     rendre accessibles par le biais d'attributs présents dans les
+     classes exposées au serveur?
+   - Possible d'accéder à une image contenue dans le jar à partir
+     d'une son URL. Nous avons donc juste besoin de pouvoir récupérer
+     le chemin de l'image associée à la leçon.
+   - Possible de charger la description d'une leçon à son initialisation dans un champ.
+** DONE Modifier PLM pour disposer d'une liste de leçons initialisées au lancement
+   - Ceci permettrait au serveur de récupérer la liste des leçons et
+     de leurs données, qui seraient ensuite transmises au client pour
+     construire la page d'accueil.
+   - Les exercices des leçons et leurs solutions seraient toujours
+     chargées uniquement au moment où l'utilisateur essaient d'y
+     accéder.
+** TODO Charger la description d'une leçon
+   SCHEDULED: <2014-12-11 jeu.>
+   - La description d'une leçon est stockée dans différents fichiers
+     selon la langue actuellement selectionnée. On utilise donc
+     /FileUtils/ pour récupérer la description de la langue choisie.
+   - Mais /FileUtils/ utilise /Locale/ pour déterminer le fichier à
+     lire, qui n'est pas initialisée suite aux modifications apportées
+     à l'instanciation de Game.
+** TODO Instancier Game au lancement du serveur
+   SCHEDULED: <2014-12-11 jeu.>
+   - Game n'est instancié qu'au moment où le serveur l'interroge. Son
+     instanciation prenant plusieurs secondes, elle entraîne un
+     timeout qui renvoie une erreur à l'utilisateur.
