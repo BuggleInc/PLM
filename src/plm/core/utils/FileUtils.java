@@ -35,7 +35,10 @@ public class FileUtils {
 		locale = l;
 	}
 	public static Locale getLocale() {
-		return locale==null?new Locale("en"):locale;
+		if(locale == null) {
+			locale = Locale.getDefault();
+		}
+		return locale;
 	}
 	
 	public static BufferedReader newFileReader(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
@@ -51,12 +54,8 @@ public class FileUtils {
 			}
 		}
 		
-		if (translatable && locale == null) {
-			locale = Locale.getDefault();
-			System.out.println("Locale vaut: "+ locale.getDisplayLanguage());
-			if(locale == null) {
+		if (translatable && getLocale() == null) {
 				throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
-			}
 		}
 			
 		
