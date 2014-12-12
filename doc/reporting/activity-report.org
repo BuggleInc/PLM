@@ -84,14 +84,12 @@ case _ => MergeStrategy.first
        /build.sbt/.
 ** DONE Mettre en place un webservice RESTful permettant d'interagir avec PLM
    SCHEDULED: <2014-12-04 jeu.>
-<<<<<<< Updated upstream
-** TODO Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
+** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
-** TODO Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
+** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
 ** TODO Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
    SCHEDULED: <2014-12-08 lun.>
-=======
 ** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
 ** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
@@ -135,16 +133,34 @@ case _ => MergeStrategy.first
    - Les exercices des leçons et leurs solutions seraient toujours
      chargées uniquement au moment où l'utilisateur essaient d'y
      accéder.
-** TODO Charger la description d'une leçon
+** DONE Charger la description d'une leçon
    SCHEDULED: <2014-12-11 jeu.>
    - La description d'une leçon est stockée dans différents fichiers
      selon la langue actuellement selectionnée. On utilise donc
-     /FileUtils/ pour récupérer la description de la langue choisie.
-   - Mais /FileUtils/ utilise /Locale/ pour déterminer le fichier à
+     *FileUtils* pour récupérer la description de la langue choisie.
+   - Mais *FileUtils* utilise /Locale/ pour déterminer le fichier à
      lire, qui n'est pas initialisée suite aux modifications apportées
      à l'instanciation de Game.
-** TODO Instancier Game au lancement du serveur
+   - Il a donc fallu modifier *FileUtils* pour utiliser /getLocale/
+     plutôt que /locale/ directement, /getLocale/ se chargeant
+     d'initialiser cette dernière si elle n'est pas initialisée.
+** DONE Instancier Game au lancement du serveur
    SCHEDULED: <2014-12-11 jeu.>
    - Game n'est instancié qu'au moment où le serveur l'interroge. Son
      instanciation prenant plusieurs secondes, elle entraîne un
      timeout qui renvoie une erreur à l'utilisateur.
+   - /Play Framework/ permet de définir un objet *Global* permettant
+     de surcharger les fonctions appelées au lancement et au stop de
+     l'application. Ceci permet d'instancier *Game* au démarrage.
+** TODO Faire un mock-up de l'interface WEB
+   - Il convient de choisir un framework CSS au préalable pour
+     faciliter le développement de l'interface WEB. [[http://usablica.github.io/front-end-frameworks/compare.html][Cette page]] liste
+     un grand nombre de ces derniers.
+   - *BootStrap*, *Foundation* se démarquent par leur communauté importante (surtout *BootStrap*).
+   - *Semantic UI* semble aussi être un choix intéressant, mais est plus (trop?) jeune.
+   - Il est aussi important de prendre l'intégration du framework CSS
+     avec le framework JS utilisé: il semblerait que les frameworks
+     tels qu'*Angular* peuvent buggés suite à une modification du DOM
+     par un autre script.
+** DONE Afficher la page d'accueil de l'application automatiquement au lancement du serveur
+   SCHEDULED: <2014-12-12 ven.>
