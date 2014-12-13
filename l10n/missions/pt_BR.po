@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-12-08 23:02-0300\n"
+"PO-Revision-Date: 2014-12-11 23:02-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1003,14 +1003,14 @@ msgid ""
 "<i>Objective</i> one.  Depending on the exercise (and your settings in the "
 "Language menu), your code must be written in either C, Java, Python or Scala."
 msgstr ""
-"Os buggles são pequenos animais que obedecem a qualquer ordem que você "
-"dá a eles. Em cada exercício, você tem que fornecer a eles as "
-"instruções corretas para que o mundo se torne o objetivo do "
-"exercício. Por exemplo, neste exercício você deve instruir seu buggle "
-"a avançar um passo. Você pode ver isto verificando a diferença entre a "
-"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e "
-"suas configurações no menu linguagem), seu código deve ser escrito em "
-"C, Java, Python ou Scala (dependendo do seu exercício)."
+"Os buggles são pequenos animais que obedecem a qualquer ordem que você\n"
+"dá a eles. Em cada exercício, você tem que fornecer a eles as\n"
+"instruções corretas para que o mundo se torne o objetivo do\n"
+"exercício. Por exemplo, neste exercício você deve instruir seu buggle\n"
+"a avançar um passo. Você pode ver isto verificando a diferença entre a\n"
+"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e\n"
+"suas configurações no menu Idioma), seu código deve ser escrito em C,\n"
+"Java, Python ou Scala."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:23
@@ -1034,6 +1034,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:31
+#, fuzzy
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -1043,14 +1044,15 @@ msgid ""
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You will see, with a bit of habit, we get used to it."
 msgstr ""
-"Se seu código contém erros (e código sempre contém em algum momento), o "
-"computador vai exibir mensagens de erro no console. Você obviamente terá que "
-"consertar os erros para passar nos exercícios. As mensagens que são "
-"mostradas podem soar assustadoras à primeira vista, mas não entre em pânico. "
-"O compilador é meio limitado nas suas capacidades de comunicação, mas ele "
-"não é malvado. Se você olhar de perto, a solução para o problema está "
-"escrita no meio daquelas mensagens ilegíveis. Você vai notar que com um "
-"pouco de hábito a gente se acostuma."
+"Se seu código tem erros (e qualquer código sempre vai ter em algum\n"
+"momento), o computador vai exibir mensagens de erro no console. Você\n"
+"obviamente terá que consertar os erros para passar nos exercícios. As\n"
+"mensagens que são mostradas podem soar assustadoras à primeira vista,\n"
+"mas não entre em pânico. O compilador é meio limitado nas suas\n"
+"capacidades de comunicação, mas ele não faz de má-vontade. Se você olhar de\n"
+"perto, a solução para o problema está escrita no meio daquelas\n"
+"mensagens ilegíveis. Você vai notar que com um pouco de hábito a gente\n"
+"se acostuma."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:39
@@ -10262,19 +10264,27 @@ msgid ""
 "It may sound somehow magic, but it actually works, as depicted on an example "
 "below."
 msgstr ""
+"Pode parecer mágica, mas funciona de verdade, como é mostrado no\n"
+"exemplo abaixo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:65
+#, fuzzy
 msgid ""
 "So, all in all, the Cohen algorithm manages to sort the stack of burnt "
 "pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
 "algorithm for burnt pancakes that requires <i>3n</i> steps."
 msgstr ""
+"Portanto, \"all in all\", o algoritmo de Cohen trata de ordenar a pilha\n"
+"de panquecas queimadas em <i>2n</i> passos em todos os casos. Uma\n"
+"vitória sobre o algoritmo simplório para panquecas queimadas que\n"
+"precisa de <i>3n</i> passos."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:68
+#, fuzzy
 msgid "I cannot get it right."
-msgstr ""
+msgstr "I cannot get it right."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:69
@@ -10286,14 +10296,23 @@ msgid ""
 "displayed world. In particular, it may help to print textually the state of "
 "the world each time you enter the main loop."
 msgstr ""
+"Não se preocupe. Este exercício é muito difícil, então tudo bem se\n"
+"você não conseguir de primeira. Adicione alguns logs relevantes ao seu\n"
+"código para entender onde ele parou de funcionar\n"
+"corretamente. Certifique-se de usar o método\n"
+"<code>selecionado()</code> de forma que seus logs apenas apareçam no\n"
+"mundo que estiver sendo exibido no momento. Em particular, pode ajudar\n"
+"se você imprimir textualmente o estado do mundo cada vez que você\n"
+"adentrar no loop principal."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:2
 msgid "The Rainbow Baseball Game"
-msgstr ""
+msgstr "O jogo do basebal multicores"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:4
+#, fuzzy
 msgid ""
 "This activity is inspired from the orange game, from the \"Computer Science "
 "Unplugged\" activities repository.  It was however heavily since then, first "
@@ -10301,9 +10320,16 @@ msgid ""
 "introduce computer science, available at http://www.loria.fr/~quinson/"
 "Mediation/SMN/) and now for PLM."
 msgstr ""
+"Esta atividade é inspirada do jogo orange, do repositório de\n"
+"atividades \"Computer Science Unplugged\".  Ela foi entretanto\n"
+"profundamente alterada, primeiro para o CSIRL (meu repositório de\n"
+"atividades unplugged <i>livres</i> para introduzir a ciência da\n"
+"computação, disponível em\n"
+"http://www.loria.fr/~quinson/Mediation/SMN/) e agora para o PLM."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:8
+#, fuzzy
 msgid ""
 "In the literature, the generalized form of this problem is known as the "
 "pebble motion problem (the bases can be connected by any kind of graph, and "
@@ -10312,13 +10338,23 @@ msgid ""
 "two dimensional square grid. Much more information about these problems can "
 "be found on wikipedia, as usual."
 msgstr ""
+"Na literatura, a forma geral deste problema é conhecida como o\n"
+"problema da \"pebble motion \" (as bases podem ser conectadas por\n"
+"qualquer tipo de grafo, e a afinidade das \"pebbles\" com as bases pode\n"
+"ser diferente). Outra variante deste problema é o famoso problema\n"
+"15-puzzle, com um jogador por base, e um tabuleiro quadrado\n"
+"bidimensional. Mais informações sobre estes problemas podem ser\n"
+"encontradas na wikipédia, como sempre."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/Main.html:13
+#, fuzzy
 msgid ""
 "How do you know that the naive algorithm won't loop on that initial "
 "situation?"
 msgstr ""
+"Como você sabe que o algoritmo \"naive\" não vai entrar em loop nesta\n"
+"situação inicial?"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:15
@@ -10333,9 +10369,20 @@ msgid ""
 "initial situations for the first exercise for which the algorithm we propose "
 "is guarenteed to work."
 msgstr ""
+"Bem, nós simplemente testamos todas as situações possíveis para ver\n"
+"quando este algoritmo entra em loop e quando ele acha a solução\n"
+"correta. Nós verificamos que ele funciona em todas as situaçoes onde\n"
+"nenhum jogador está em sua casa (existem 84 situações destas para 4\n"
+"bases, levando em conta as simetrias). Ele obviamente funciona para\n"
+"algumas situações que não respeitam este critério (such as all\n"
+"situations it encounters from one of those 84 boards to the final\n"
+"state), mas isto é outra história. Dado tal critério podemos gerar\n"
+"situaões iniciais pseudo-aleatórias para o primeiro exercício para o\n"
+"qual o algoritmo que propomos com certeza funciona."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:22
+#, fuzzy
 msgid ""
 "We also explored bigger instances of the problem, and unfortunately, we have "
 "no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
@@ -10346,6 +10393,15 @@ msgid ""
 "report it. Ideally, it would be simple to enforce manually so that we can "
 "use it during our unplugged activities."
 msgstr ""
+"Também exploramos instâncias maiores do problema, e infelizmente, não\n"
+"temos tal critério para elas. Com 5 bases, o algoritmo entra em loop\n"
+"de forma errada para 24 dos 1824 possíveis tabuleiros onde nenhum\n"
+"jogador está na sua casa (que dá 1.31%).  Com 6 bases, ele falha em\n"
+"1251 dos 58860 tabuleiros (2.12%). Com 7 bases, ele falha para 84444\n"
+"dos 2633940 (3.2%). Ainda estou procurando um critério que garanta que\n"
+"o algoritmo não vai entrar em loop. Se você descobrir um, por favor\n"
+"avise. Idealmente, deve ser simples garantir manualmente de forma que\n"
+"possamos usá-lo durante nossas atividades \"unplugged\"."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/Main.html:32
@@ -10354,18 +10410,24 @@ msgid ""
 "the existing exercises) or other ones (such as a grid or a tree, if an "
 "exercise on this kind of graph proves interesting)."
 msgstr ""
+"Outras representações gráficas podem ser propostas, tais como uma\n"
+"linear (para os exercícios existentes) ou outros (como um grid ou uma\n"
+"árvore, se um exercício neste tipo de grafo se mostrar interessante)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/Main.html:34
+#, fuzzy
 msgid ""
 "Other exercises on other algorithms on this variant, or on other variants "
 "such as the 15-puzzle."
 msgstr ""
+"Outros exercícios em outros algoritmos desta variante, ou em outras\n"
+"variantes como o 15-puzzle."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
 msgid "Rainbow baseball"
-msgstr ""
+msgstr "basebal multicores"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/short_desc.html:4
@@ -10373,11 +10435,13 @@ msgid ""
 "This is another funny variation on the sorting problem, adapting the main "
 "sorting algorithms on an unusual context."
 msgstr ""
+"Este é outra variação divertida do problema da ordenação, adaptando os\n"
+"pricipais algoritmos de ordenação num contexto inusitado."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:2
 msgid "Rainbow Baseball"
-msgstr ""
+msgstr "Rainbow Baseball"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:3
