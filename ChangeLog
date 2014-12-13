@@ -12,6 +12,8 @@
       found").  The inner loop in the first one is a simpler for loop
       while the second exercise request the inner loop to also be a
       do/while (because of the corridors of differing lenghts)
+  * Internal organization:
+    - Automatically check for classical errors in [!python] and such
 
 20141031: Release 2.5
 
