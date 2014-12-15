@@ -152,15 +152,37 @@ case _ => MergeStrategy.first
    - /Play Framework/ permet de définir un objet *Global* permettant
      de surcharger les fonctions appelées au lancement et au stop de
      l'application. Ceci permet d'instancier *Game* au démarrage.
+** DONE Afficher la page d'accueil de l'application automatiquement au lancement du serveur
+   SCHEDULED: <2014-12-12 ven.>
 ** TODO Faire un mock-up de l'interface WEB
    - Il convient de choisir un framework CSS au préalable pour
      faciliter le développement de l'interface WEB. [[http://usablica.github.io/front-end-frameworks/compare.html][Cette page]] liste
      un grand nombre de ces derniers.
    - *BootStrap*, *Foundation* se démarquent par leur communauté importante (surtout *BootStrap*).
-   - *Semantic UI* semble aussi être un choix intéressant, mais est plus (trop?) jeune.
+   - *Semantic UI* est aussi un choix intéressant, mais semble encore jeune (trop?).
    - Il est aussi important de prendre l'intégration du framework CSS
      avec le framework JS utilisé: il semblerait que les frameworks
      tels qu'*Angular* peuvent buggés suite à une modification du DOM
      par un autre script.
-** DONE Afficher la page d'accueil de l'application automatiquement au lancement du serveur
-   SCHEDULED: <2014-12-12 ven.>
+** DONE Tester Foundation
+   SCHEDULED: <2014-12-15 lun.>
+   - *Foundation* propose des fonctionnalités qui peuvent s'avérer
+     intéressantes telles que [[http://foundation.zurb.com/docs/components/block_grid.html][celle-ci]] ou encore [[http://foundation.zurb.com/docs/components/joyride.html][celle-là]].
+   - Mais sa faiblesse est qu'il ne gère pas l'HTML généré
+     dynamiquement (voir les issues [[https://github.com/zurb/foundation/issues/5503][#5503]] et [[https://github.com/zurb/foundation/issues/4827][#4827]]).
+   - Pour pallier à ce problème, il est nécessaire d'appeler la
+     méthode /$(document).foundation()/ à chaque fois que l'on modifie
+     le DOM et que l'on souhaite utiliser une fonctionnalité
+     de *Foundation*.
+   - Est-ce que des appels répétés à cette méthode peuvent être
+     handicapant pour l'application et ses performances au cours d'une
+     longue session d'utilisation?
+** TODO Tester Bootstrap
+   SCHEDULED: <2014-12-16 mar.>
+   - *Bootstrap* serait capable de détecter
+     automatiquement les changements apportés au DOM.
+   - Il reste à déterminer si cette détection automatique est plus
+     performante que le refresh manuel de *Foundation*.
+** TODO Se renseigner sur Docker
+   - A première vue, ça pourrait être utile pour effectuer le code des
+     clients une fois passé en mode serveur centralisé.
