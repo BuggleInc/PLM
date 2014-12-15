@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-11-27 00:29+0100\n"
-"PO-Revision-Date: 2014-11-27 00:31+0100\n"
+"POT-Creation-Date: 2014-12-13 11:08+0100\n"
+"PO-Revision-Date: 2014-12-13 11:10+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1123,6 +1123,7 @@ msgstr ""
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#: src/lessons/recursion/cons/Length.html:8
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -5288,11 +5289,7 @@ msgid ""
 "The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
 "Its initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
-msgstr ""
-"Le plus simple pour écrire cette fonction est peut être d'utiliser une "
-"variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit "
-"jusque là. Initialement, elle contient faux («[!python]False[!/][!scala|"
-"java]false[/!][!c]0[/!]»)."
+msgstr "Le plus simple pour écrire cette fonction est peut être d'utiliser une variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit jusque là. Initialement, elle contient faux («[!python]False[/!][!scala|java]false[/!][!c]0[/!]»)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:59
@@ -11599,7 +11596,7 @@ msgstr "<b>La liste vide:</b>"
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
 #, no-wrap
 msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
-msgstr "[!java|c]null[/!][!scala]Nil[/!][python]None[/!]"
+msgstr "[!java|c]null[/!][!scala]Nil[/!][!python]None[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
@@ -11707,14 +11704,27 @@ msgstr "Longueur"
 #: src/lessons/recursion/cons/Length.html:3
 msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
-"length[!scala] (without using its <code>size</code> method, of course)[/!]."
+"length[!scala] (without using its <code>size</code> method, of course)[/!].  "
+"[!java|python]"
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] "
 "retournez sa longueur[!scala], sans utiliser la méthode <code>size</code> de "
-"la liste, bien entendu[/!]."
+"la liste, bien entendu[/!].[!java|python]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
+msgid ""
+"[!python]Be careful, you are not supposed to use the Python lists, but the "
+"specific type defined in this exercise. [/!] Please refer to the world's "
+"documentation for more information about recursive lists."
+msgstr ""
+"[!python]Attention, vous n'êtes pas supposé utiliser les listes classiques "
+"de Python, mais celles définies dans cet exercice. [/!] Veuillez vous "
+"référer à la documentation de ce monde pour plus d'information sur les "
+"listes récursives."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:10
 #: src/lessons/recursion/cons/IsMember.html:7
 #: src/lessons/recursion/cons/Occurrence.html:7
 #: src/lessons/recursion/cons/Last.html:6
@@ -11739,9 +11749,9 @@ msgid ""
 "integer, return true if the given integer is one of the elements of the "
 "list, or false if it cannot be found."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier,retournez <code>true</code> si cet entier fait partie des éléments de "
-"la liste, et <code>false</code> sinon."
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier,retournez <code>true</code> si cet entier fait partie des éléments "
+"de la liste, et <code>false</code> sinon."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
@@ -11756,8 +11766,8 @@ msgid ""
 "If the integer is not a member of the list, the function should thus return "
 "0."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier,retournez le nombre d'occurences de cet entier dans la liste. Si "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier,retournez le nombre d'occurences de cet entier dans la liste. Si "
 "l'entier n'est pas membre de la liste, la fonction doit renvoyer 0."
 
 #. type: Content of: <h1>
@@ -11771,7 +11781,7 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
 "last element.  You can assume that the list is not empty."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez son dernier élément. Vous pouvez supposer que la liste n'est pas "
 "vide."
 
@@ -11787,7 +11797,7 @@ msgid ""
 "smallest of its values.  You will probably need an extra function, even if "
 "you can assume that the list is not empty."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez la plus petite de ses valeurs. Vous aurez probablement besoin "
 "d'une fonction supplémentaire, mais vous pouvez supposer que la liste n'est "
 "pas vide."
@@ -11804,7 +11814,7 @@ msgid ""
 "whether its elements form an increasing sequence (i.e., if the elements are "
 "sorted from the smallest to the largest one)."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez <code>true</code> si ses éléments forment une suite croissante "
 "(c'est-à-dire si ses éléments sont classés du plus petit au plus grand)."
 
@@ -11820,7 +11830,7 @@ msgid ""
 "list containing every elements but the last one.  You can assume that the "
 "list is not empty."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez la liste contenant tous ses éléments sauf le dernier. Vous pouvez "
 "supposer que la liste n'est pas vide."
 
@@ -11835,7 +11845,7 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
 "list containing all elements of your parameter incremented by one."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez une nouvelle liste dont les éléments sont ceux de votre paramètre, "
 "incrémentés de un."
 
@@ -11851,7 +11861,7 @@ msgid ""
 "code>and an integer, return a new list containing all elements of <code>L</"
 "code> that are not equal to the value received as parameter."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] "
 "<code>L</code> et un entier,retournez une nouvelle liste contenant tous les "
 "éléments de <code>L</code> n'étant pas égaux à l'entier passé en paramètre."
 
@@ -11866,8 +11876,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the <code>N</code>th element of the list."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez le <code>N</code>ième élément de la liste."
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez le <code>N</code>ième élément de la "
+"liste."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nth.html:6
@@ -11893,9 +11904,9 @@ msgid ""
 "elements. You can assume that the list is long enough, i.e. that there is at "
 "least <code>N</code> elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste constituée de ses <code>N</code> "
-"premiers éléments. Vous pouvez supposer que la liste est suffisamment "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste constituée de ses <code>N</"
+"code> premiers éléments. Vous pouvez supposer que la liste est suffisamment "
 "longue, c'est à dire qu'elle contient au moins <code>N</code> éléments."
 
 #. type: Content of: <h1>
@@ -11909,9 +11920,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list with only the <code>N</code> last elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste constituée de ses <code>N</code> "
-"derniers éléments. "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste constituée de ses <code>N</"
+"code> derniers éléments. "
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nlast.html:6
@@ -11953,8 +11964,8 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list without the <code>N</code> first elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
 "premiers éléments. "
 
 #. type: Content of: <h1>
@@ -11968,8 +11979,8 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list without the <code>N</code> last elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
 "derniers éléments."
 
 #. type: Content of: <h1>
@@ -11983,7 +11994,7 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
 "list with all elements in reverse order."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!], "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!], "
 "retournez la liste constituée de ses éléments en ordre inverse."
 
 #. type: Content of: <p>
@@ -12017,7 +12028,7 @@ msgid ""
 "code> and <code>l2</code>, return a new list with all elements of <code>l1</"
 "code> followed by the elements of <code>l2</code>."
 msgstr ""
-"Étant donnée deux [!scala]List[Int][/!][java|python]listes récursives[/!] "
+"Étant donnée deux [!scala]List[Int][/!][!java|python]listes récursives[/!] "
 "<code>l1</code> et <code>l2</code>, retournez la liste constituée de tous "
 "les éléments de <code>l1</code> suivis de tous les éléments de <code>l2</"
 "code>."
@@ -12043,7 +12054,7 @@ msgid ""
 "if any two elements of the list are different (ie, if no element appears "
 "more than once in the list)."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!], "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!], "
 "retournez <code>false</code> si deux éléments ont la même valeur, et "
 "<code>true</code> si tous les éléments sont différents deux à deux."
 
@@ -15588,7 +15599,7 @@ msgid ""
 "Get the vertices of the ground's profile from left to right.  [!java|"
 "scala]You can retrieve the X and Y coordinates of each point with the "
 "corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
-"code>.[!/] [!python]Each point is an array of two integers denoting "
+"code>.[/!] [!python]Each point is an array of two integers denoting "
 "respectively the X and Y coordinates of that point.[/!]"
 msgstr ""
 "Obtenir les points du sol de gauche à droite. [!java|scala]Vous pouvez "

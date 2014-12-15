@@ -223,6 +223,7 @@
 	   <arg value="l10n/engine/fr.po"/>
 	   <redirector output="errors-msgstr.txt" alwayslog="true"/>           
       </exec>
+      <exec executable="./check_pseudoMD.pl" />
     </target>
     
     <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update, i18n-check">
