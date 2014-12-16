@@ -29,6 +29,7 @@ public class ExerciseFailedDialog extends JDialog {
 				Game.i18n.tr("You should keep trying until you get it right!"),
 				Game.i18n.tr("We all learn from our mistakes, so, good job!"),
 				Game.i18n.tr("We learn from failure, not from success!"),
+				Game.i18n.tr("The master has failed more time than the beginner has even tried."),
 				Game.i18n.tr("<i>Anyone who has never made a mistake has never <br>tried anything new.</i> (Einstein)."),
 				Game.i18n.tr("<i>Success does not consist in never making mistakes,<br> but in never making the same one a second time.</i> (Shaw)")
 		};
