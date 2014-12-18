@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-12-13 11:08+0100\n"
+"POT-Creation-Date: 2014-12-18 16:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5256,7 +5256,7 @@ msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
 "the bottom of a row, you have to move to the top of next row, and you have "
-"to move to the cell below else."
+"to move to the cell below."
 msgstr ""
 
 #. type: Content of: <p>
@@ -7479,9 +7479,9 @@ msgstr ""
 #: src/lessons/sort/pancake/CohenPancake.html:24
 msgid ""
 "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
-"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
-"position, there is nothing to do. If not, you can move it to the bottom of "
-"the stack in 2 flips:"
+"pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is "
+"already in position, there is nothing to do. If not, you can move it to the "
+"bottom of the stack in 2 flips:"
 msgstr ""
 
 #. type: Content of: <ul><li>

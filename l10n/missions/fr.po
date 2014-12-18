@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-12-13 11:08+0100\n"
+"POT-Creation-Date: 2014-12-18 16:56+0100\n"
 "PO-Revision-Date: 2014-12-13 11:10+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -5289,7 +5289,11 @@ msgid ""
 "The easier for this function is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
 "Its initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
-msgstr "Le plus simple pour écrire cette fonction est peut être d'utiliser une variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit jusque là. Initialement, elle contient faux («[!python]False[/!][!scala|java]false[/!][!c]0[/!]»)."
+msgstr ""
+"Le plus simple pour écrire cette fonction est peut être d'utiliser une "
+"variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit "
+"jusque là. Initialement, elle contient faux («[!python]False[/!][!scala|"
+"java]false[/!][!c]0[/!]»)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:59
@@ -7231,11 +7235,17 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:32
+#, fuzzy
+#| msgid ""
+#| "Then, you have to write the code to reach the next position. In this "
+#| "exercise, you have to traverse the world row after row. So, if you are at "
+#| "the bottom of a row, you have to move to the top of next row, and you "
+#| "have to move to the cell below else."
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
 "the bottom of a row, you have to move to the top of next row, and you have "
-"to move to the cell below else."
+"to move to the cell below."
 msgstr ""
 "Ensuite, il faut écrire le code pour aller à la position suivante. Dans cet "
 "exercice, il faut parcourir le monde colonne par colonne. Donc, si on est "
@@ -10284,11 +10294,17 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:24
+#, fuzzy
+#| msgid ""
+#| "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
+#| "stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
+#| "position, there is nothing to do. If not, you can move it to the bottom "
+#| "of the stack in 2 flips:"
 msgid ""
 "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
-"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
-"position, there is nothing to do. If not, you can move it to the bottom of "
-"the stack in 2 flips:"
+"pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is "
+"already in position, there is nothing to do. If not, you can move it to the "
+"bottom of the stack in 2 flips:"
 msgstr ""
 "<b>Cas 1.c :</b> Il n'y a pas de crêpe <i>p + 1</i> car <i>p</i> est la plus "
 "grande crêpe de la pile (c'est à dire que <i>p = n</i>). Si la crêpe <i>p</"
