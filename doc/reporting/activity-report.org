@@ -183,6 +183,23 @@ case _ => MergeStrategy.first
      automatiquement les changements apportés au DOM.
    - Il reste à déterminer si cette détection automatique est plus
      performante que le refresh manuel de *Foundation*.
+** DONE Mettre en place plusieurs vues côté client
+   SCHEDULED: <2014-12-17 mer.>
+   - *Angular* permet de créer des applications web fonctionnant en 1 page.
+   - L'application reste néanmoins composée de plusieurs vues qui sont
+     chargées à la volée par *Angular* selon l'état actuel.
+   - Il faut donc modifier le code de l'interface cliente pour diviser
+     l'application en vues.
+** TODO Création de l'interface de l'exerciseur
+*** DONE Affichage de la consigne de l'exercice
+    SCHEDULED: <2014-12-18 jeu.>
+    - Quelques soucis de CSS encore par contre...
+*** DONE Implémentation d'un éditeur de code
+    SCHEDULED: <2014-12-19 ven.>
+    - *CodeMirror* semble fonctionner correctement avec *Angular* grâce à [[https://github.com/angular-ui/ui-codemirror][ce module]].
+*** TODO Représentation du monde courant et de son état
+** TODO Récupérer le code de l'étudiant pour l'exercice en cours
+   SCHEDULED: <2014-12-19 ven.>
 ** TODO Récupérer la liste des exercices pour chaque leçon
    - Pour permettre à l'utilisateur de visualiser sa progression, on
      pourrait afficher pour chaque leçon un graphe des exercices.
@@ -193,6 +210,11 @@ case _ => MergeStrategy.first
      dernier exercice consulté de cette dernière.
    - Pour construire ce graphe, nous avons besoin de connaître la
      liste des exercices d'une leçon et leur arborescence.
+   - Pour récupérer actuellement la liste des exercices d'une leçon,
+     il est nécessaire de la charger. Cela revient à lancer le calcul
+     des mondes objectifs de chaque exercice.
+   - Il convient donc de modifier pour que la liste des exercices soit
+     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour effectuer le code des
      clients une fois passé en mode serveur centralisé.
