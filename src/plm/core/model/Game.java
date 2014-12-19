@@ -374,9 +374,9 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 		// If a problem arose while setting up the lesson, don't switch 
-		// TODO: define a better solution when encountering this issue
 		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
-			JOptionPane.showMessageDialog(null, i18n.tr("The lesson "+lesson.getName()+" encountered an issue while loading its exercises, please choose another lesson.") ,
+			JOptionPane.showMessageDialog(null, 
+					i18n.tr("The lesson {0} encountered an issue while loading its exercises, please report the issue and choose another lesson.",lesson.getName()) ,
 					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
 			return null;
 		}
@@ -669,6 +669,8 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
+
+			saveSession();
 			
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
@@ -678,7 +680,6 @@ public class Game implements IWorldView {
 			if(heartBeatSpy != null)
 				heartBeatSpy.die();
 
-			saveSession();
 			storeProperties();
 			System.exit(0);
 		} catch (UserAbortException e) {

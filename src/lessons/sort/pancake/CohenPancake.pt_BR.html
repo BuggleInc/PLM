@@ -1,0 +1,96 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Faster Burned Pancake Sorting</h1>
+
+<p>The Gates' algorithm that we saw in the previous exercise quickly sort a
+stack of unburned pancakes by increasing the size of the blocks of sorted
+pancakes. This is much faster that the naive algorithm which moves at each
+step the largest pancake to the bottom of still unsorted pancakes. Gates'
+algorithm manages to sort a stack of <i>n</i> pancakes in less than <i>(5n +
+5)/3</i> steps in the worst case, while the naive algorithm requires at most
+<i>2n</i> steps. Gates is thus about one third faster in the worst case.</p>
+
+<p>In this exercise, we will explore an adaptation of the same idea to burnt
+pancakes. This was first published by David X. Cohen and Manuel Blum. David
+Cohen co-founded a few years later the Futurama TV show full of mathematical
+jokes. Definitively, interesting people studied that little pancake
+problem...</p>
+
+<p>O algoritmo de Cohen é um pouco mais fácil que o algoritmo de Gates já
+que ele distingue menos casos:</p>
+
+<p><b>Caso 1:</b> pelo menos uma panqueca está de cabeça para cima na
+pilha. Seja <i>p</i> a maior destas panquecas. Observe que <i>p +
+1</i> deve portanto estar de cabeça para baixo, a menos que <i>p =
+n</i> (e neste caso não existe a panqueca <i>p + 1</i>).</p>
+
+<ul>
+  <li><b>Caso 1.a:</b> <i>p+1</i> é menor que <i>p</i> na pilha.  <div align="center"><img src="img/cohen-1a.png"/></div><br/></li>
+  <li><b>Caso 1.b:</b> <i>p+1</i> é maior que <i>p</i> na pilha. <div align="center"><img src="img/cohen-1b.png"/></div><br/></li>
+  <li><b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest
+pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is
+already in position, there is nothing to do. If not, you can move it to the
+bottom of the stack in 2 flips:
+     <div align="center"><img src="img/cohen-1c.png"/></div>
+     
+    <b>O truque é que a panqueca <i>p</i> nunca deve ser considerada de
+novo.</b> caso contrário, você vai considerar ela de novo e de novo
+pois ela está de cabeça pra cima, e já que é a maior panqueca. Para
+desconsiderar ela, você deve lembrar da tamanho da pilha que ainda
+está para ser ordenada. Qualquer travessia da pilha deve então
+considerar apenas estas panquecas, não mexendo nas que já estão
+posicionadas no fundo da pilha.
+     </li>
+</ul>
+   
+ 
+<p><b>Caso 2:</b> Todas as panquecas estão de cabeça para baixo. De novo,
+distinguimos dois sub-casos.</p>
+  
+<ul>
+ <li><b>Caso 2.a:</b> Existe pelo menos um <i>p</i> para o qual <i>p+1</i>
+é maior que <i>p</i> (se existem vários destes <i>p</i>, pegue o maior).
+   <div align="center"><img src="img/cohen-2a.png"/></div><br/>
+ </li>
+ <li><b>Caso 2.b:</b> Qualquer panqueca <i>p</i> é menor que a panqueca
+<i>p+1</i>. Neste caso, devemos ter a seguinte configuração:
+    <div align="center"><img src="img/cohen-2b.png"/></div>
+ </li>
+</ul>
+
+<p>Como você pode ver, alcançamos um "join" em duas viradas nos casos 1
+ou 2.a. Já que nós precisamos alcançar n junções para ordenar a pilha,
+podemos ordenar a pilha em <i>2n</i> passos se o caso 2.b não
+ocorrer.</p>
+
+<p>That case 2.b requires a very different handling as it is obviously not
+possible to achieve a join in only 2 flips.  But fortunately, we can
+leverage the very specific setting of the stack in that case to provide the
+following algorithm.  It sorts a stack in that exact configuration after
+exactly <i>2n</i> steps.</p>
+  
+<pre>
+Repita n vezes
+    vire a pilha toda de n panquecas
+    Vire as (n-1) panquecas mais de cima
+</pre>
+ 
+<p>Pode parecer mágica, mas funciona de verdade, como é mostrado no
+exemplo abaixo.</p>
+
+<p><div align="center"><img src="img/cohen-2b-algo.png"/></div></p>
+
+<p>So, all in all, the Cohen algorithm manages to sort the stack of burnt
+pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive
+algorithm for burnt pancakes that requires <i>3n</i> steps.</p>
+
+<p><div class="tip" id="tip-1" alt="I cannot get it right.">
+Não se preocupe. Este exercício é muito difícil, então tudo bem se
+você não conseguir de primeira. Adicione alguns logs relevantes ao seu
+código para entender onde ele parou de funcionar
+corretamente. Certifique-se de usar o método
+<code>selecionado()</code> de forma que seus logs apenas apareçam no
+mundo que estiver sendo exibido no momento. Em particular, pode ajudar
+se você imprimir textualmente o estado do mundo cada vez que você
+adentrar no loop principal. 
+</div></p>

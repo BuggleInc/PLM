@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-17 18:06+0200\n"
+"POT-Creation-Date: 2014-12-18 16:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -894,7 +894,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet.html:37 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -1448,7 +1448,9 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
-msgid "When your program works, move forward to the next exercise."
+msgid ""
+"Look at the documentation (in \"Help/About this world\") for the full list "
+"of buggles' methods."
 msgstr ""
 
 #. type: Content of: <p>
@@ -2258,7 +2260,7 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet.html:31 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
 msgid "[!python]"
 msgstr ""
 
@@ -2312,12 +2314,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loopdowhile/Poucet.html:2
+#: src/lessons/welcome/loopdowhile/Poucet1.html:2
 msgid "Tracks of buggles"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:4
+#: src/lessons/welcome/loopdowhile/Poucet1.html:4
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
@@ -2330,7 +2332,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:10
+#: src/lessons/welcome/loopdowhile/Poucet1.html:10
 msgid ""
 "The good news is that the path to the exit is written on the ground. As you "
 "can see, the world is made of several corridors, with baggles on the "
@@ -2340,7 +2342,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:14
+#: src/lessons/welcome/loopdowhile/Poucet1.html:14
 msgid ""
 "You should count exactly 5 cells per corridor, the one at the intersection "
 "counting as the last cell of the previous corridor, not as the first cell "
@@ -2348,7 +2350,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet1.html:17
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -2358,39 +2360,20 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:21
+#: src/lessons/welcome/loopdowhile/Poucet1.html:21
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
-"another while counting the baggles you see on your path. The method "
-"<code>crossing()</code> tells you whether your buggle currently stands on an "
-"intersection.  The extra complexity is that at the beginning of a corridor, "
-"you obviously stand on an intersection, but you still want to move on.  "
-"[!java|scala|c]For that, the easiest is to use a <code>do / while</code> "
-"loop instead of a regular <code>while</code> loop to move until the next "
-"intersection.[/!] [!python]For that, use an extra variable indicating "
-"whether you already entered the corridor, as follows. This will ensure that "
-"you execute the loop body at least once (when <code>firstTime</code> is "
-"true) before we actually use the value returned by <code>crossing()</code> "
-"to determine to continue or not.[/!]"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:32
-#, no-wrap
-msgid ""
-"firstTime = True\n"
-"while firstTime or not crossing():\n"
-"  firstTime = False\n"
-"  (loop body)\n"
+"another while counting the baggles you see on your path. That's easy: there "
+"is 5 steps in each corridors so a simple <code>for</code> loop suffices."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:39
+#: src/lessons/welcome/loopdowhile/Poucet1.html:25
 msgid "I cannot imagine how to count the baggles I see."
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:40
+#: src/lessons/welcome/loopdowhile/Poucet1.html:26
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -2398,12 +2381,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:42
+#: src/lessons/welcome/loopdowhile/Poucet1.html:28
 msgid "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:45
+#: src/lessons/welcome/loopdowhile/Poucet1.html:31
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -3380,7 +3363,7 @@ msgstr ""
 #: src/lessons/welcome/methods/basics/Methods.html:5
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
-"buggle vocabulary by learning it new tricks."
+"buggle vocabulary by teaching it new tricks."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3570,7 +3553,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
 msgid ""
-"We now would like to learn the buggle to build a doghouse. The naive "
+"We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
 "works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
@@ -4182,7 +4165,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PatternPicture.html:11 src/lessons/lander/lvl1_lander_101/Lander101.html:41
+#: src/lessons/welcome/methods/picture/PatternPicture.html:11 src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
 msgstr ""
 
@@ -4291,6 +4274,15 @@ msgid ""
 "code should work as earlier."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:11
+msgid ""
+"Don't get lost on false leads! The hunt() method was given a parameter to "
+"tell you which color to follow (and it is not the same in all worlds). Add a "
+"parameter to your isFacingTrail() method to only follow the requested color, "
+"as the other colors lead to dead ends..."
+msgstr ""
+
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
 msgid "Buggle Dance Revolution (BDR)"
@@ -4299,7 +4291,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"After these races, it's time to party! For that, we will learn the buggles "
+"After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
 "to move the feet on the carpet according to the instructions presented on "
 "the screen, and following the music. But before that, we have some details "
@@ -4571,7 +4563,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
 msgid ""
-"The goal is then to organize a BDR game between the buggles by learning them "
+"The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
 "instructions are messages written on the ground, with the following "
 "signification:"
@@ -5264,7 +5256,7 @@ msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
 "the bottom of a row, you have to move to the top of next row, and you have "
-"to move to the cell below else."
+"to move to the cell below."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6910,7 +6902,7 @@ msgstr ""
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
-"with while elements."
+"with white elements."
 msgstr ""
 
 #. type: Content of: <div>
@@ -7182,7 +7174,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:4
 msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
+"The pancake sorting problem is a simple puzzle where you have a set of "
 "pancakes, each of differing size. The chef cooking the pancake is a bit "
 "psychorigid: he hates when the pancakes are not correctly sorted on the "
 "plate. He loves when they are correctly ordered, with the small ones over "
@@ -7389,7 +7381,7 @@ msgstr ""
 msgid ""
 "Note that it is somehow harder than the other exercises we did so far, so "
 "don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
+"up hope, you can do it!"
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
@@ -7487,9 +7479,9 @@ msgstr ""
 #: src/lessons/sort/pancake/CohenPancake.html:24
 msgid ""
 "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
-"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
-"position, there is nothing to do. If not, you can move it to the bottom of "
-"the stack in 2 flips:"
+"pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is "
+"already in position, there is nothing to do. If not, you can move it to the "
+"bottom of the stack in 2 flips:"
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -8554,11 +8546,20 @@ msgstr ""
 #: src/lessons/recursion/cons/Length.html:3
 msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
-"length[!scala] (without using its <code>size</code> method, of course)[/!]."
+"length[!scala] (without using its <code>size</code> method, of course)[/!].  "
+"[!java|python]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/cons/Length.html:5 src/lessons/recursion/cons/IsMember.html:7 src/lessons/recursion/cons/Occurrence.html:7 src/lessons/recursion/cons/Last.html:6 src/lessons/recursion/cons/Min.html:6 src/lessons/recursion/cons/Increasing.html:6 src/lessons/recursion/cons/ButLast.html:6 src/lessons/recursion/cons/PlusOne.html:5 src/lessons/recursion/cons/Remove.html:9 src/lessons/recursion/cons/ButNfirst.html:6
+#: src/lessons/recursion/cons/Length.html:5
+msgid ""
+"[!python]Be careful, you are not supposed to use the Python lists, but the "
+"specific type defined in this exercise. [/!] Please refer to the world's "
+"documentation for more information about recursive lists."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:10 src/lessons/recursion/cons/IsMember.html:7 src/lessons/recursion/cons/Occurrence.html:7 src/lessons/recursion/cons/Last.html:6 src/lessons/recursion/cons/Min.html:6 src/lessons/recursion/cons/Increasing.html:6 src/lessons/recursion/cons/ButLast.html:6 src/lessons/recursion/cons/PlusOne.html:5 src/lessons/recursion/cons/Remove.html:9 src/lessons/recursion/cons/ButNfirst.html:6
 msgid "Your solution should be linear in time."
 msgstr ""
 
@@ -11517,7 +11518,7 @@ msgid ""
 "Get the vertices of the ground's profile from left to right.  "
 "[!java|scala]You can retrieve the X and Y coordinates of each point with the "
 "corresponding methods of your point: <code>p.x()</code> and "
-"<code>p.y()</code>.[!/] [!python]Each point is an array of two integers "
+"<code>p.y()</code>.[/!] [!python]Each point is an array of two integers "
 "denoting respectively the X and Y coordinates of that point.[/!]"
 msgstr ""
 
@@ -11556,7 +11557,8 @@ msgstr ""
 msgid ""
 "The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
 "you should write now will be called every 0.1 second during the "
-"simulation. It should set the desired thrust of the next simulation step, by "
+"simulation. Make sure that your code does not last too long, with no while "
+"loop! It should only set the desired thrust of the next simulation step, by "
 "calling <code>[!java]void [/!]setDesiredThrust([!java]int "
 "[/!]desiredThrust[!scala]:Integer[/!])</code> where "
 "<code>desiredThrust</code> is some integer between 0 and 4 (that is, a "
@@ -11568,7 +11570,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:28
 msgid ""
 "In order to take informed decisions, you can query the lander's state. In "
 "this simulation you'll probably be interested in its vertical position: "
@@ -11581,7 +11583,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:36
 msgid ""
 "One last thing: the lander is pretty small so you don't have much fuel. At "
 "each step of the simulation the lander consumes as many fuel units as the "

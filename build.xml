@@ -223,6 +223,7 @@
 	   <arg value="l10n/engine/fr.po"/>
 	   <redirector output="errors-msgstr.txt" alwayslog="true"/>           
       </exec>
+      <exec executable="./check_pseudoMD.pl" />
     </target>
     
     <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update, i18n-check">
@@ -240,7 +241,30 @@
 	  </junit>
     </target>
 
-
+    <target name="all-tests" depends="compile" description="launch all tests">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.test.AllTests"/>		
+	  </junit>
+    </target>
+	
+    <target name="unit-tests" depends="compile" description="launch all unit tests">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.test.UnitTests"/>		
+	  </junit>
+    </target>
+	
+    <target name="integration-tests" depends="compile" description="launch all integration tests">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.test.IntegrationTests"/>		
+	  </junit>
+    </target>
+	
 <!--  This requires Java7 to work, but I'd prefer to support for Java6
       a bit longer if possible. Disable this for now, sorry Franck.
       

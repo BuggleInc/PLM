@@ -80,6 +80,15 @@ public abstract class AbstractBuggle extends Entity {
 		this.direction = other.direction;
 	}
 
+	public void penDown(){
+		throw new RuntimeException(Game.i18n.tr(
+				"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
+	}
+	public void penUp(){
+		throw new RuntimeException(Game.i18n.tr(
+				"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
+	}
+
 	public boolean isBrushDown() {
 		return brushDown;
 	}
@@ -475,6 +484,8 @@ public abstract class AbstractBuggle extends Entity {
 	public void setCouleurCorps(Color c)  { setBodyColor(c); }
 	public boolean estFaceMur()           { return isFacingWall(); }
 	public boolean estDosMur()            { return isBackingWall(); }
+	public void leveCrayon()              { penUp(); }
+	public void baisseCrayon()            { penDown(); }
 	public void leveBrosse()              { brushUp(); }
 	public void baisseBrosse()            { brushDown(); }
 	public boolean estBrosseBaissee()     { return isBrushDown(); }

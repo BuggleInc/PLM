@@ -3,27 +3,29 @@
 <h2>formiga de Langton</h2>
 
 <p>Neste exercício, você vai transformar seu buggle numa <i>formiga de
-Langton</i>. Estes pequenos animais artificiais são bastante interessantes
-por que eles recebem regras simples que dependem apenas do seu ambiente
-local, e depois de um período de aparente comportamento caótico, um padrão
-geral <i>surge</i>.</p>
+Langton</i>. Estes pequenos animais artificiais são bastante
+interessantes por que eles recebem regras simples que dependem apenas
+do seu ambiente local, e depois de um período de aparente
+comportamento caótico, um padrão geral <i>surge</i>.</p>
 
-<p>As regras são absolutamente triviais: para calcular qual o próximo passo,
-você verifica a cor atual do chão (usando <code>getGroundColor()</code>). Se
-for branco, mude para preto, vire à direita e mova uma célula. Se for preto
-mude para branco, vire a esquerda e ande uma célula.</p> 
+<p>As regras são absolutamente triviais: para calcular qual o próximo
+passo, você verifica a cor atual do chão (usando
+<code>getGroundColor()</code>). Se for branco, mude para preto, vire à
+direita e mova uma célula. Se for preto mude para branco, vire a
+esquerda e ande uma célula.</p> 
 
-<p>It's hard to come up with simpler rules isn't it? Well, let's go and code it
-now. You have to complete the <code>step()</code> method, which encodes the
-behavior of the ant at each step. You will probably use the
-<code>getGroundColor()</code> method to retrieve the color of the cell on
-which the ant is currently.  Colors of interest are simply named
-<code>Color.black</code> and <code>Color.white</code>.</p>
+<p>Difícil encontrar regras mais simples, não é? Bem, vamos em frente
+codificar isto agora. Você precisa completar o método
+<code>step()</code>, que codifica o comportamento da formiga em cada
+passo. Você vai provavelmente usar o método
+<code>getCorDoChão()</code> para recuperar a cor da célula na qual a
+formiga está no momento. Cores úteis são nomeadas simplesmente de
+<code>Cor.preto</code> e <code>Cor.branco</code>.</p>
 
 [!java]
-<p>Para comparar cores, você não pode usar o símbolo de igualdade (==), pois
-estas coisas não são valores escalares, mas objetos. Ao invés disto, você
-precisa escrever algo como o seguinte:</p> 
+<p>Para comparar cores, você não pode usar o símbolo de igualdade (==),
+pois estas coisas não são valores escalares, mas objetos. Ao invés
+disto, você precisa escrever algo como o seguinte:</p> 
 <pre>
 Cor c /* = alguma inicialização */;
 if (c.equals(Cor.preto)) {
@@ -34,13 +36,13 @@ if (c.equals(Cor.preto)) {
 </pre>
 [/!]
 
-<p>Changing the ground color is not difficult, but a bit long: you have to
-change the brush color of your buggle, set the brush down (to mark the
-current cell -- with <code>brushDown()</code>), and set the brush back up
-(with <code>brushUp()</code>) to avoid further issues when the buggle will
-move. You are naturally free of organizing your code the way you want, but
-you may want to write a <code>setGroundColor(color)</code> method to
-factorize things a bit.</p>
+<p>mudar a cor do chão não é difícil, mas meio demorado: você tem que mudar a
+cor do pincel de seu buggle, baixar o pincel (para marcar a célula atual --
+com <code>abaixarPincel()</code>), e levantar o pincel de novo (com
+<code>levantarPincel()</code>) para evitar problemas quando o buggle se
+mexer. Você é, naturalmente, livre para organizar seu código da forma que
+quiser, mas você deve querer escrever um método
+<code>setCorDoChão(color)</code> para separar um pouco as coisas.</p>
 
 <p>Como você pode ver da execução deste exercício, o interessante neste
 algoritmo é que depois de uns 10000 passos de comportamento relativamente

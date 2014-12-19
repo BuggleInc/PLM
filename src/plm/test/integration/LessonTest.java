@@ -1,4 +1,4 @@
-package plm.test;
+package plm.test.integration;
 
 import static org.junit.Assert.assertTrue;
 

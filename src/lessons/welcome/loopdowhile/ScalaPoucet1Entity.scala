@@ -1,7 +1,9 @@
 package lessons.welcome.loopdowhile;
 
-import java.awt.Color;
+import java.awt.Color
 import plm.core.model.Game
+import plm.universe.GridWorld
+import plm.universe.bugglequest.BuggleWorldCell
 
 class ScalaPoucetEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def forward(i: Int)  { 
@@ -12,7 +14,22 @@ class ScalaPoucetEntity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 
 	def crossing(): Boolean = {
-		return getX()%5== 1 && getY()%5==1;
+		val gridWorld = world.asInstanceOf[GridWorld];
+	  	val here  = gridWorld.getCell(getX(),getY()).asInstanceOf[BuggleWorldCell];
+		val right = gridWorld.getCell(  (getX()+1)%gridWorld.getWidth() ,  getY()  ).asInstanceOf[BuggleWorldCell]
+		val below = gridWorld.getCell( getX()  ,  (getY()+1)%gridWorld.getHeight()).asInstanceOf[BuggleWorldCell]
+		
+		var open = 0;
+		if (!here.hasLeftWall())
+			open += 1;
+		if (!here.hasTopWall())
+			open += 1;
+		if (!right.hasLeftWall())
+			open += 1;
+		if (!below.hasTopWall())
+			open += 1;
+		
+		return open>2 || (here.hasLeftWall() != right.hasLeftWall()) || (here.hasTopWall() != below.hasTopWall());
 	}
 	def exitReached(): Boolean = {
 		return getGroundColor().equals(Color.orange);

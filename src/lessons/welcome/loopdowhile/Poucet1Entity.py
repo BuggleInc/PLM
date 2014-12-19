@@ -10,7 +10,21 @@ def backward(i=-1):
       errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
 
 def crossing():
-    return (entity.getX() % 5 == 1) and ( entity.getY()%5==1 )
+    here  = entity.world.getCell(getX(),getY());
+    right = entity.world.getCell( (getX()+1)%entity.world.getWidth() ,  getY()  )
+    below = entity.world.getCell( getX()  ,  (getY()+1)%entity.world.getHeight())
+        
+    open = 0
+    if not here.hasLeftWall():
+        open += 1;
+    if not here.hasTopWall():
+        open += 1;
+    if not right.hasLeftWall():
+        open += 1;
+    if not below.hasTopWall():
+        open += 1;
+        
+    return open>2 or (here.hasLeftWall() != right.hasLeftWall()) or (here.hasTopWall() != below.hasTopWall());
     
 def exitReached():
     return getGroundColor().equals(Color.orange)

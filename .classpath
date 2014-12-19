@@ -4,6 +4,7 @@
 	<classpathentry excluding="*" including="img/*.png|img/*/*.png" kind="src" path=""/>
 	<classpathentry excluding="*.jar" including="resources|resources/" kind="src" path="lib"/>
 	<classpathentry kind="lib" path="lib/miglayout-4.2.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.9.5.jar"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/httpclient-4.3.4.jar"/>

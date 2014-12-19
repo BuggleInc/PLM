@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-10-17 18:06+0200\n"
-"PO-Revision-Date: 2014-10-17 18:07+0200\n"
+"POT-Creation-Date: 2014-12-18 16:56+0100\n"
+"PO-Revision-Date: 2014-12-13 11:10+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1113,7 +1113,6 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:152
 #: src/lessons/welcome/loopfor/LoopFor.html:80
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:54
-#: src/lessons/welcome/loopdowhile/Poucet.html:37
 #: src/lessons/welcome/array/basics/Array1.html:183
 #: src/lessons/welcome/array/basics/Array1.html:209
 #: src/lessons/welcome/methods/args/MethodsArgs.html:66
@@ -1124,6 +1123,7 @@ msgstr ""
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#: src/lessons/recursion/cons/Length.html:8
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -1937,8 +1937,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
-msgid "When your program works, move forward to the next exercise."
-msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
+msgid ""
+"Look at the documentation (in \"Help/About this world\") for the full list "
+"of buggles' methods."
+msgstr ""
+"Référez-vous à la documentation (dans le menu \"Aide/À propos de ce monde\") "
+"pour la liste complète des méthodes comprises par les buggles."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:3
@@ -3044,7 +3048,6 @@ msgstr "Exécuter le corps de boucle au moins une fois"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
-#: src/lessons/welcome/loopdowhile/Poucet.html:31
 #: src/lessons/welcome/array/basics/Array1.html:100
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
@@ -3123,12 +3126,12 @@ msgstr ""
 "} while (<b>condition</b>)[!java];[/!]"
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loopdowhile/Poucet.html:2
+#: src/lessons/welcome/loopdowhile/Poucet1.html:2
 msgid "Tracks of buggles"
 msgstr "La buggle Petite Poucette"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:4
+#: src/lessons/welcome/loopdowhile/Poucet1.html:4
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
@@ -3150,7 +3153,7 @@ msgstr ""
 "\" (forêt encore plus profonde), vous verrez l'autre monde."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:10
+#: src/lessons/welcome/loopdowhile/Poucet1.html:10
 msgid ""
 "The good news is that the path to the exit is written on the ground. As you "
 "can see, the world is made of several corridors, with baggles on the ground. "
@@ -3165,7 +3168,7 @@ msgstr ""
 "s'il contient 2 baggles ou moins."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:14
+#: src/lessons/welcome/loopdowhile/Poucet1.html:14
 msgid ""
 "You should count exactly 5 cells per corridor, the one at the intersection "
 "counting as the last cell of the previous corridor, not as the first cell "
@@ -3176,7 +3179,7 @@ msgstr ""
 "comme les premières après avoir tourné."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet1.html:17
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -3191,57 +3194,20 @@ msgstr ""
 "méthode <code>sortieTrouvee()</code> fournie."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:21
+#: src/lessons/welcome/loopdowhile/Poucet1.html:21
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
-"another while counting the baggles you see on your path. The method "
-"<code>crossing()</code> tells you whether your buggle currently stands on an "
-"intersection.  The extra complexity is that at the beginning of a corridor, "
-"you obviously stand on an intersection, but you still want to move on.  [!"
-"java|scala|c]For that, the easiest is to use a <code>do / while</code> loop "
-"instead of a regular <code>while</code> loop to move until the next "
-"intersection.[/!] [!python]For that, use an extra variable indicating "
-"whether you already entered the corridor, as follows. This will ensure that "
-"you execute the loop body at least once (when <code>firstTime</code> is "
-"true) before we actually use the value returned by <code>crossing()</code> "
-"to determine to continue or not.[/!]"
+"another while counting the baggles you see on your path. That's easy: there "
+"is 5 steps in each corridors so a simple <code>for</code> loop suffices."
 msgstr ""
-"Pour prendre un couloir, il suffit de courir d'une intersection à l'autre "
-"tout en comptant les biscuits en chemin. La méthode <code>croisement()</"
-"code> indique si vous vous trouvez actuellement à un embranchement. Ce qui "
-"complique un peu, c'est qu'au début du couloir, vous vous trouvez bien "
-"entendu à une intersection, mais vous souhaitez avancer quand même.\n"
-"[!java|scala|c]Le plus simple pour cela est d'utiliser une boucle <code>do / "
-"while</code> à la place d'une simple boucle <code>while</code> pour se "
-"déplacer d'une intersection à l'autre.[/!]\n"
-"[!python]Pour cela, utilisez une variable supplémentaire indiquant si vous "
-"êtes déjà entré dans le couloir, comme dans l'exemple suivant. Ainsi, vous "
-"exécuterez le corps de la boucle au moins une fois (quand "
-"<code>premiereFois</code> est vrai) tandis qu'aux tours de boucles suivants, "
-"c'est la valeur de retour de <code>croisement()</code> qui détermine s'il "
-"faut s'arrêter ou non.[/!]"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:32
-#, no-wrap
-msgid ""
-"firstTime = True\n"
-"while firstTime or not crossing():\n"
-"  firstTime = False\n"
-"  (loop body)\n"
-msgstr ""
-"premiereFois = True\n"
-"while premiereFois or not croisement():\n"
-"  premiereFois = False\n"
-"  (le corps de votre boucle)\n"
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:39
+#: src/lessons/welcome/loopdowhile/Poucet1.html:25
 msgid "I cannot imagine how to count the baggles I see."
 msgstr "Je n'arrive pas à imaginer comment compter les baggles que je vois"
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:40
+#: src/lessons/welcome/loopdowhile/Poucet1.html:26
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -3252,13 +3218,13 @@ msgstr ""
 "<i>compteur</i>."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:42
+#: src/lessons/welcome/loopdowhile/Poucet1.html:28
 msgid ""
 "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr "N'oubliez pas de remettre le compteur à 0 au début de chaque couloir!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:45
+#: src/lessons/welcome/loopdowhile/Poucet1.html:31
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -4652,7 +4618,7 @@ msgstr ""
 #: src/lessons/welcome/methods/basics/Methods.html:5
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
-"buggle vocabulary by learning it new tricks."
+"buggle vocabulary by teaching it new tricks."
 msgstr ""
 "Nous allons maintenant voir comment écrire nos propres méthodes. Il s'agit "
 "en quelque sorte d'étendre le vocabulaire de la buggle en lui apprenant à "
@@ -4946,7 +4912,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
 msgid ""
-"We now would like to learn the buggle to build a doghouse. The naive "
+"We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
 "works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
@@ -5326,7 +5292,7 @@ msgid ""
 msgstr ""
 "Le plus simple pour écrire cette fonction est peut être d'utiliser une "
 "variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit "
-"jusque là. Initialement, elle contient faux («[!python]False[!/][!scala|"
+"jusque là. Initialement, elle contient faux («[!python]False[/!][!scala|"
 "java]false[/!][!c]0[/!]»)."
 
 #. type: Content of: <p>
@@ -5815,7 +5781,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:41
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
 msgstr "Bon courage !"
 
@@ -5968,6 +5934,15 @@ msgstr ""
 "que vos méthodes prennent la couleur de piste à suivre en paramètre. À part "
 "cela, votre code devrait faire comme avant."
 
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:11
+msgid ""
+"Don't get lost on false leads! The hunt() method was given a parameter to "
+"tell you which color to follow (and it is not the same in all worlds). Add a "
+"parameter to your isFacingTrail() method to only follow the requested color, "
+"as the other colors lead to dead ends..."
+msgstr ""
+
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
 msgid "Buggle Dance Revolution (BDR)"
@@ -5976,7 +5951,7 @@ msgstr "Buggle Dance Revolution (BDR)"
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
 msgid ""
-"After these races, it's time to party! For that, we will learn the buggles "
+"After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
 "to move the feet on the carpet according to the instructions presented on "
 "the screen, and following the music. But before that, we have some details "
@@ -6370,7 +6345,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
 msgid ""
-"The goal is then to organize a BDR game between the buggles by learning them "
+"The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
 "instructions are messages written on the ground, with the following "
 "signification:"
@@ -7260,11 +7235,17 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:32
+#, fuzzy
+#| msgid ""
+#| "Then, you have to write the code to reach the next position. In this "
+#| "exercise, you have to traverse the world row after row. So, if you are at "
+#| "the bottom of a row, you have to move to the top of next row, and you "
+#| "have to move to the cell below else."
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
 "the bottom of a row, you have to move to the top of next row, and you have "
-"to move to the cell below else."
+"to move to the cell below."
 msgstr ""
 "Ensuite, il faut écrire le code pour aller à la position suivante. Dans cet "
 "exercice, il faut parcourir le monde colonne par colonne. Donc, si on est "
@@ -9557,7 +9538,7 @@ msgstr ""
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
-"with while elements."
+"with white elements."
 msgstr ""
 "<code>avantBlanc</code> est initialisé à taille-1. Assurez vous de n'avoir "
 "que des cellules blanches entre <code>avantBlanc</code> et <code>blancRouge</"
@@ -9882,7 +9863,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:4
 msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
+"The pancake sorting problem is a simple puzzle where you have a set of "
 "pancakes, each of differing size. The chef cooking the pancake is a bit "
 "psychorigid: he hates when the pancakes are not correctly sorted on the "
 "plate. He loves when they are correctly ordered, with the small ones over "
@@ -10181,7 +10162,7 @@ msgstr ""
 msgid ""
 "Note that it is somehow harder than the other exercises we did so far, so "
 "don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
+"up hope, you can do it!"
 msgstr ""
 "Cet exercice est plus difficile que ceux que nous avons fait jusque là, et "
 "il ne serait pas choquant que vous ayez besoin d'un peu plus de temps que "
@@ -10313,11 +10294,17 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:24
+#, fuzzy
+#| msgid ""
+#| "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
+#| "stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
+#| "position, there is nothing to do. If not, you can move it to the bottom "
+#| "of the stack in 2 flips:"
 msgid ""
 "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
-"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
-"position, there is nothing to do. If not, you can move it to the bottom of "
-"the stack in 2 flips:"
+"pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is "
+"already in position, there is nothing to do. If not, you can move it to the "
+"bottom of the stack in 2 flips:"
 msgstr ""
 "<b>Cas 1.c :</b> Il n'y a pas de crêpe <i>p + 1</i> car <i>p</i> est la plus "
 "grande crêpe de la pile (c'est à dire que <i>p = n</i>). Si la crêpe <i>p</"
@@ -11625,7 +11612,7 @@ msgstr "<b>La liste vide:</b>"
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
 #, no-wrap
 msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
-msgstr "[!java|c]null[/!][!scala]Nil[/!][python]None[/!]"
+msgstr "[!java|c]null[/!][!scala]Nil[/!][!python]None[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
@@ -11733,14 +11720,27 @@ msgstr "Longueur"
 #: src/lessons/recursion/cons/Length.html:3
 msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
-"length[!scala] (without using its <code>size</code> method, of course)[/!]."
+"length[!scala] (without using its <code>size</code> method, of course)[/!].  "
+"[!java|python]"
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] "
 "retournez sa longueur[!scala], sans utiliser la méthode <code>size</code> de "
-"la liste, bien entendu[/!]."
+"la liste, bien entendu[/!].[!java|python]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
+msgid ""
+"[!python]Be careful, you are not supposed to use the Python lists, but the "
+"specific type defined in this exercise. [/!] Please refer to the world's "
+"documentation for more information about recursive lists."
+msgstr ""
+"[!python]Attention, vous n'êtes pas supposé utiliser les listes classiques "
+"de Python, mais celles définies dans cet exercice. [/!] Veuillez vous "
+"référer à la documentation de ce monde pour plus d'information sur les "
+"listes récursives."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:10
 #: src/lessons/recursion/cons/IsMember.html:7
 #: src/lessons/recursion/cons/Occurrence.html:7
 #: src/lessons/recursion/cons/Last.html:6
@@ -11765,9 +11765,9 @@ msgid ""
 "integer, return true if the given integer is one of the elements of the "
 "list, or false if it cannot be found."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier,retournez <code>true</code> si cet entier fait partie des éléments de "
-"la liste, et <code>false</code> sinon."
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier,retournez <code>true</code> si cet entier fait partie des éléments "
+"de la liste, et <code>false</code> sinon."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
@@ -11782,8 +11782,8 @@ msgid ""
 "If the integer is not a member of the list, the function should thus return "
 "0."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier,retournez le nombre d'occurences de cet entier dans la liste. Si "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier,retournez le nombre d'occurences de cet entier dans la liste. Si "
 "l'entier n'est pas membre de la liste, la fonction doit renvoyer 0."
 
 #. type: Content of: <h1>
@@ -11797,7 +11797,7 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
 "last element.  You can assume that the list is not empty."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez son dernier élément. Vous pouvez supposer que la liste n'est pas "
 "vide."
 
@@ -11813,7 +11813,7 @@ msgid ""
 "smallest of its values.  You will probably need an extra function, even if "
 "you can assume that the list is not empty."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez la plus petite de ses valeurs. Vous aurez probablement besoin "
 "d'une fonction supplémentaire, mais vous pouvez supposer que la liste n'est "
 "pas vide."
@@ -11830,7 +11830,7 @@ msgid ""
 "whether its elements form an increasing sequence (i.e., if the elements are "
 "sorted from the smallest to the largest one)."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez <code>true</code> si ses éléments forment une suite croissante "
 "(c'est-à-dire si ses éléments sont classés du plus petit au plus grand)."
 
@@ -11846,7 +11846,7 @@ msgid ""
 "list containing every elements but the last one.  You can assume that the "
 "list is not empty."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez la liste contenant tous ses éléments sauf le dernier. Vous pouvez "
 "supposer que la liste n'est pas vide."
 
@@ -11861,7 +11861,7 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
 "list containing all elements of your parameter incremented by one."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!],"
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!],"
 "retournez une nouvelle liste dont les éléments sont ceux de votre paramètre, "
 "incrémentés de un."
 
@@ -11877,7 +11877,7 @@ msgid ""
 "code>and an integer, return a new list containing all elements of <code>L</"
 "code> that are not equal to the value received as parameter."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] "
 "<code>L</code> et un entier,retournez une nouvelle liste contenant tous les "
 "éléments de <code>L</code> n'étant pas égaux à l'entier passé en paramètre."
 
@@ -11892,8 +11892,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the <code>N</code>th element of the list."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez le <code>N</code>ième élément de la liste."
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez le <code>N</code>ième élément de la "
+"liste."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nth.html:6
@@ -11919,9 +11920,9 @@ msgid ""
 "elements. You can assume that the list is long enough, i.e. that there is at "
 "least <code>N</code> elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste constituée de ses <code>N</code> "
-"premiers éléments. Vous pouvez supposer que la liste est suffisamment "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste constituée de ses <code>N</"
+"code> premiers éléments. Vous pouvez supposer que la liste est suffisamment "
 "longue, c'est à dire qu'elle contient au moins <code>N</code> éléments."
 
 #. type: Content of: <h1>
@@ -11935,9 +11936,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list with only the <code>N</code> last elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste constituée de ses <code>N</code> "
-"derniers éléments. "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste constituée de ses <code>N</"
+"code> derniers éléments. "
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nlast.html:6
@@ -11979,8 +11980,8 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list without the <code>N</code> first elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
 "premiers éléments. "
 
 #. type: Content of: <h1>
@@ -11994,8 +11995,8 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list without the <code>N</code> last elements."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!] et un "
-"entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
+"un entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
 "derniers éléments."
 
 #. type: Content of: <h1>
@@ -12009,7 +12010,7 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
 "list with all elements in reverse order."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!], "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!], "
 "retournez la liste constituée de ses éléments en ordre inverse."
 
 #. type: Content of: <p>
@@ -12043,7 +12044,7 @@ msgid ""
 "code> and <code>l2</code>, return a new list with all elements of <code>l1</"
 "code> followed by the elements of <code>l2</code>."
 msgstr ""
-"Étant donnée deux [!scala]List[Int][/!][java|python]listes récursives[/!] "
+"Étant donnée deux [!scala]List[Int][/!][!java|python]listes récursives[/!] "
 "<code>l1</code> et <code>l2</code>, retournez la liste constituée de tous "
 "les éléments de <code>l1</code> suivis de tous les éléments de <code>l2</"
 "code>."
@@ -12069,7 +12070,7 @@ msgid ""
 "if any two elements of the list are different (ie, if no element appears "
 "more than once in the list)."
 msgstr ""
-"Étant donnée une [!scala]List[Int][/!][java|python]liste récursive[/!], "
+"Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!], "
 "retournez <code>false</code> si deux éléments ont la même valeur, et "
 "<code>true</code> si tous les éléments sont différents deux à deux."
 
@@ -15614,7 +15615,7 @@ msgid ""
 "Get the vertices of the ground's profile from left to right.  [!java|"
 "scala]You can retrieve the X and Y coordinates of each point with the "
 "corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
-"code>.[!/] [!python]Each point is an array of two integers denoting "
+"code>.[/!] [!python]Each point is an array of two integers denoting "
 "respectively the X and Y coordinates of that point.[/!]"
 msgstr ""
 "Obtenir les points du sol de gauche à droite. [!java|scala]Vous pouvez "
@@ -15669,7 +15670,8 @@ msgstr ""
 msgid ""
 "The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
 "you should write now will be called every 0.1 second during the simulation. "
-"It should set the desired thrust of the next simulation step, by calling "
+"Make sure that your code does not last too long, with no while loop! It "
+"should only set the desired thrust of the next simulation step, by calling "
 "<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:"
 "Integer[/!])</code> where <code>desiredThrust</code> is some integer between "
 "0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
@@ -15680,18 +15682,19 @@ msgid ""
 msgstr ""
 "Vous devez écrire le [!python]corps de la fonction <code>step()</code>, qui "
 "sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes "
-"de seconde pendant la simulation. Il faut ajuster la poussée du moteur en "
-"utilisant la fonction <code>[!java]void [/!]setPousseeDesiree([!java]int "
-"[/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un "
-"entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous "
-"ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de "
-"la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que "
-"vous demandez 4, vous n'aurez que 3 à la prochaine étape. Si vous demandez "
-"une valeur inférieure à 0 (ou supérieure à 4), tout se passera comme si vous "
-"aviez demandé 0 (ou 4)."
+"de seconde pendant la simulation. Assurez vous que votre code ne dure pas "
+"trop longtemps, et évitez en particulier les boucles <code>while</code>. Il "
+"faut juste ajuster la poussée du moteur en utilisant la fonction <code>[!"
+"java]void [/!]setPousseeDesiree([!java]int [/!]poussee[!scala]:Integer[/!])</"
+"code> où <code>poussee</code> est un entier entre 0 et 4 (représentant une "
+"poussée entre 0 m/s² et 4 m/s²). Vous ne pouvez incrémenter ou décrémenter "
+"la poussée que de 1 entre deux pas de la simulation. Ainsi, si la poussée du "
+"moteur est actuellement de 2 et que vous demandez 4, vous n'aurez que 3 à la "
+"prochaine étape. Si vous demandez une valeur inférieure à 0 (ou supérieure à "
+"4), tout se passera comme si vous aviez demandé 0 (ou 4)."
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:28
 msgid ""
 "In order to take informed decisions, you can query the lander's state. In "
 "this simulation you'll probably be interested in its vertical position: "
@@ -15712,7 +15715,7 @@ msgstr ""
 "martienne est de 3.711 m/s², cela peut vous être utile."
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:36
 msgid ""
 "One last thing: the lander is pretty small so you don't have much fuel. At "
 "each step of the simulation the lander consumes as many fuel units as the "
@@ -16153,6 +16156,46 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
+
+#~ msgid ""
+#~ "To take one corridor, you simply have to run from one intersection to "
+#~ "another while counting the baggles you see on your path. The method "
+#~ "<code>crossing()</code> tells you whether your buggle currently stands on "
+#~ "an intersection.  The extra complexity is that at the beginning of a "
+#~ "corridor, you obviously stand on an intersection, but you still want to "
+#~ "move on.  [!java|scala|c]For that, the easiest is to use a <code>do / "
+#~ "while</code> loop instead of a regular <code>while</code> loop to move "
+#~ "until the next intersection.[/!] [!python]For that, use an extra variable "
+#~ "indicating whether you already entered the corridor, as follows. This "
+#~ "will ensure that you execute the loop body at least once (when "
+#~ "<code>firstTime</code> is true) before we actually use the value returned "
+#~ "by <code>crossing()</code> to determine to continue or not.[/!]"
+#~ msgstr ""
+#~ "Pour prendre un couloir, il suffit de courir d'une intersection à l'autre "
+#~ "tout en comptant les biscuits en chemin. La méthode <code>croisement()</"
+#~ "code> indique si vous vous trouvez actuellement à un embranchement. Ce "
+#~ "qui complique un peu, c'est qu'au début du couloir, vous vous trouvez "
+#~ "bien entendu à une intersection, mais vous souhaitez avancer quand même.\n"
+#~ "[!java|scala|c]Le plus simple pour cela est d'utiliser une boucle "
+#~ "<code>do / while</code> à la place d'une simple boucle <code>while</code> "
+#~ "pour se déplacer d'une intersection à l'autre.[/!]\n"
+#~ "[!python]Pour cela, utilisez une variable supplémentaire indiquant si "
+#~ "vous êtes déjà entré dans le couloir, comme dans l'exemple suivant. "
+#~ "Ainsi, vous exécuterez le corps de la boucle au moins une fois (quand "
+#~ "<code>premiereFois</code> est vrai) tandis qu'aux tours de boucles "
+#~ "suivants, c'est la valeur de retour de <code>croisement()</code> qui "
+#~ "détermine s'il faut s'arrêter ou non.[/!]"
+
+#~ msgid ""
+#~ "firstTime = True\n"
+#~ "while firstTime or not crossing():\n"
+#~ "  firstTime = False\n"
+#~ "  (loop body)\n"
+#~ msgstr ""
+#~ "premiereFois = True\n"
+#~ "while premiereFois or not croisement():\n"
+#~ "  premiereFois = False\n"
+#~ "  (le corps de votre boucle)\n"
 
 #~ msgid "Backtracking lesson"
 #~ msgstr "Leçon sur le \"backtracking\""

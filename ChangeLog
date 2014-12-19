@@ -1,7 +1,27 @@
-20141015: wannabe Release 2.5
+20141130: wannabe 2.6
 
   * Improved translations:
-    - French: mission back at 100%
+    - Brazilian: missions at 65%
+  * Worlds:
+    - #284: Turtle, Buggle: Better message when mixing pens and brushes
+  * Pedagogical content:
+    - #410: Fix my usage of "teach" vs. "learn" in English
+    - #240: SlugSnail: add false leads to avoid cheaters
+    - #229: Poucet: Split the exercise in two. Both request to write
+      two loops. The external loop is always a do/while ("until
+      found").  The inner loop in the first one is a simpler for loop
+      while the second exercise request the inner loop to also be a
+      do/while (because of the corridors of differing lenghts)
+  * Internal organization:
+    - Automatically check for classical errors in [!python] and such
+
+20141031: Release 2.5
+
+  The Halloween Release.
+  
+  * Improved translations:
+    - French: mission and engine back at 100%
+    - Brazilian: missions at 58%
   * Engine:
     - #292: Check the user's input before submitting a feedback
     - #304: Stop user's program's or demo's execution if the user 
@@ -12,6 +32,7 @@
     - #394: Display a waiting dialog when exiting
     - #263: Also interpret language tags in hints, not only missions
     - #401: Remove non-needed HumanLangListeners
+    - Greatly improve the coverage of our unit tests.
   * Worlds:
     - #286: Turtle, Buggle: document where (0,0) is
     - #220: Buggle: Improve doc of isOverBaggle(), isCarryingBaggle()
@@ -21,7 +42,8 @@
     - #296: TraversalByColumn: document where (0,0) is
     - #239: CourseForest: get stick in water, not moving anymore
     - #405: LoopStairs: Make French python bindings fit the templating
-
+    - #406: Lander101: unclear mission text wrt stepping the simulation
+    - #409: LoopWhile: additional reference to "About this world" menu
 
 20141009: Release 2.4.11
 
