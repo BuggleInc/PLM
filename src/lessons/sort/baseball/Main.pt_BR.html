@@ -1,6 +1,6 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h1>The Rainbow Baseball Game</h1>
+<h1>O jogo do basebal multicores</h1>
 
 <p>This activity is inspired from the orange game, from the "Computer Science
 Unplugged" activities repository.  It was however heavily since then, first
@@ -18,15 +18,16 @@ be found on wikipedia, as usual.</p>
 <h3>How do you know that the naive algorithm won't loop on that initial
 situation?</h3>
 
-<p>Well, we simply tested all possible situations to see when this algorithm
-loops and when it finds the correct solution. We found that it works for all
-situations where no player is at home (there is 84 such situations for 4
-bases, once you take the symmetries into account). It obviously works for
-some situations that do not respect this criteria (such as all situations it
-encounters from one of those 84 boards to the final state), but that's
-another story. Having such a criteria allows us to generate pseudo-random
-initial situations for the first exercise for which the algorithm we propose
-is guarenteed to work.</p>
+<p>Bem, nós simplemente testamos todas as situações possíveis para ver
+quando este algoritmo entra em loop e quando ele acha a solução
+correta. Nós verificamos que ele funciona em todas as situaçoes onde
+nenhum jogador está em sua casa (existem 84 situações destas para 4
+bases, levando em conta as simetrias). Ele obviamente funciona para
+algumas situações que não respeitam este critério (such as all
+situations it encounters from one of those 84 boards to the final
+state), mas isto é outra história. Dado tal critério podemos gerar
+situaões iniciais pseudo-aleatórias para o primeiro exercício para o
+qual o algoritmo que propomos com certeza funciona.</p>
 
 <p>We also explored bigger instances of the problem, and unfortunately, we have
 no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24
@@ -42,9 +43,9 @@ use it during our unplugged activities.</p>
 <p>Como sempre, existem várias coisas que podem ser feitas no código
 deste universo para melhorá-lo:</p>
 <ul>
-  <li>Other graphical representations could be proposed, such as a linear one (for
-the existing exercises) or other ones (such as a grid or a tree, if an
-exercise on this kind of graph proves interesting).</li>
+  <li>Outras representações gráficas podem ser propostas, tais como uma
+linear (para os exercícios existentes) ou outros (como um grid ou uma
+árvore, se um exercício neste tipo de grafo se mostrar interessante).</li>
   <li>Other exercises on other algorithms on this variant, or on other variants
 such as the 15-puzzle.</li>
 </ul>

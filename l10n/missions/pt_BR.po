@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-09-16 17:00+0200\n"
-"PO-Revision-Date: 2014-11-25 00:48-0300\n"
+"POT-Creation-Date: 2014-12-18 16:56+0100\n"
+"PO-Revision-Date: 2014-12-11 23:02-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -112,8 +112,7 @@ msgid ""
 "[!java|c]void [/!][!python|java|scala]backward()[/!][!c]stepBackward()[/!] "
 "or [!java]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
-"[!java|c]void "
-"[/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou "
+"[!java|c]void [/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou "
 "[!java]void [/!]recuar([!java|c]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
@@ -171,74 +170,81 @@ msgstr ""
 "[/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:24
+#: src/plm/universe/bugglequest/BuggleWorld.html:23
+msgid ""
+"Note that the point (0,0) is on the top left corner, as it is often the case "
+"in Computer Science."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:25
 msgid "<b>Information on the buggle</b>"
 msgstr "<b>Informações sobre o buggle</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "<b>Get the color of the body"
 msgstr "<b>Obter a cor do corpo"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "Set the color of the body</b>"
 msgstr "Ajustar a cor do corpo</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:26
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
 msgid "[!java|c]Color [/!]getBodyColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCorDoCorpo()[!scala]:Cor[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:27
+#: src/plm/universe/bugglequest/BuggleWorld.html:28
 msgid "[!java|c]void [/!]setBodyColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr "[!java|c]void [/!]setCorDoCorpo([!java|c]Cor [/!]c[!scala]:Cor[/!])"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
+#: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "<b>Look for a wall forward"
 msgstr "<b>Procura por uma parede à frente"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
+#: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "Look for a wall backward</b>"
 msgstr "Procura por uma parede atrás</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:29
+#: src/plm/universe/bugglequest/BuggleWorld.html:30
 msgid "[!java]boolean [/!][!c]int [/!]isFacingWall()[!scala]:Boolean[/!]"
 msgstr ""
 "[!java]boolean [/!][!c]int [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:30
+#: src/plm/universe/bugglequest/BuggleWorld.html:31
 msgid "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
 msgstr ""
 "[!java]boolean [/!][!c]int [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "<b>Get heading"
 msgstr "<b>Obter direção"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "Set heading</b>"
 msgstr "Ajustar direção</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "valid directions are:"
 msgstr "direções válidas são:"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:32
+#: src/plm/universe/bugglequest/BuggleWorld.html:33
 msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
 msgstr "[!java|c]Direção [/!]getDireção()[!scala]:Direção[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:33
+#: src/plm/universe/bugglequest/BuggleWorld.html:34
 msgid ""
 "[!java|c]void [/!]setDirection([!java|c]Direction [/!]dir[!scala]:"
 "Direction[/!])"
@@ -246,153 +252,151 @@ msgstr ""
 "[!java|c]void [/!]ajustaDireção([!java|c]Direção [/!]dir[!scala]:Direção[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:34
+#: src/plm/universe/bugglequest/BuggleWorld.html:35
 msgid ""
 "[!scala|java|python]Direction.[/!]NORTH, [!scala|java|python]Direction."
 "[/!]EAST, [!scala|java|python]Direction.[/!]SOUTH and [!scala|java|"
 "python]Direction.[/!]WEST"
 msgstr ""
-"[!scala|java|python]Direção.[/!]NORTE, "
-"[!scala|java|python]Direção.[/!]LESTE, "
-"[!scala|java|python]Direção.[/!]SUL e "
-"[!scala|java|python]Direção.[/!]OESTE"
+"[!scala|java|python]Direção.[/!]NORTE, [!scala|java|python]Direção."
+"[/!]LESTE, [!scala|java|python]Direção.[/!]SUL e [!scala|java|python]Direção."
+"[/!]OESTE"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:35
+#: src/plm/universe/bugglequest/BuggleWorld.html:36
 msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
 
 #. type: Content of: <pre>
-#: src/plm/universe/bugglequest/BuggleWorld.html:36
-#: src/plm/universe/turtles/TurtleWorld.html:75
+#: src/plm/universe/bugglequest/BuggleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:76
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]selecionado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:38
+#: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "<b>About the brush</b>"
 msgstr "<b>Sobre o pincel</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "<b>Brush down"
 msgstr "<b>Abaixar pincel"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "Brush up"
 msgstr "Levantar pincel"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "Get brush position</b>"
 msgstr "Pegar a posição do pincel"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:40
+#: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "[!java|c]void [/!]brushUp()"
 msgstr "[!java|c]void [/!]levantarPincel()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:41
+#: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid "[!java|c]void [/!]brushDown()"
 msgstr "[!java|c]void [/!]abaixarPincel()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:42
+#: src/plm/universe/bugglequest/BuggleWorld.html:43
 msgid "[!java]boolean [/!][!c]int [/!]isBrushDown()[!scala]:Boolean[/!]"
 msgstr ""
 "[!java]boolean [/!][!c]int [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:43
+#: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "<b>Change the brush color"
 msgstr "<b>Muda a cor do pincel"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:43
+#: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "Get the color of the brush</b>"
 msgstr "Obtém a cor do pincel</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:44
+#: src/plm/universe/bugglequest/BuggleWorld.html:45
 msgid "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 "[!java|c]void [/!]setCorDoPincel([!java|c]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:45
+#: src/plm/universe/bugglequest/BuggleWorld.html:46
 msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCorDoPincel()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:47
+#: src/plm/universe/bugglequest/BuggleWorld.html:48
 msgid "<b>Interacting with the world</b>"
 msgstr "<b>Interagindo com o mundo</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:48
+#: src/plm/universe/bugglequest/BuggleWorld.html:49
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "<b>Get the color of the ground</b>"
 msgstr "<b>Obtém a cor do chão</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:49
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Color [/!]getCorDoChão()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "<b>Look for a baggle on the ground"
 msgstr "<b>Procura por um \"baggle\" no chão"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Look for a baggle in bag"
 msgstr "Procura por um \"baggle\" na bolsa"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Pickup a baggle"
 msgstr "Pega um \"baggle\""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Drop a baggle</b>"
 msgstr "Solta um \"baggle\"</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:52
+#: src/plm/universe/bugglequest/BuggleWorld.html:53
 msgid "(see the note on exceptions)"
 msgstr "(veja a nota sobre exceções)"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:53
+#: src/plm/universe/bugglequest/BuggleWorld.html:54
 msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estáSobreBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:54
+#: src/plm/universe/bugglequest/BuggleWorld.html:55
 msgid "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
 msgstr ""
 "[!java]boolean [/!][!c]int [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:55
+#: src/plm/universe/bugglequest/BuggleWorld.html:56
 msgid "[!java]void [/!]pickupBaggle()"
 msgstr "[!java]void [/!]pegarBaggle()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:56
+#: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "[!java]void [/!]dropBaggle()"
 msgstr "[!java]void [/!]soltarBaggle()"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
-#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 #: src/plm/universe/bugglequest/BuggleWorld.html:70
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
 #: src/plm/universe/bugglequest/BuggleWorld.html:72
@@ -405,11 +409,11 @@ msgstr "[!java]void [/!]soltarBaggle()"
 #: src/plm/universe/bugglequest/BuggleWorld.html:79
 #: src/plm/universe/bugglequest/BuggleWorld.html:80
 #: src/plm/universe/bugglequest/BuggleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:82
 #: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
 #: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
 #: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
 #: src/lessons/welcome/Main.html:469
-#: src/plm/universe/turtles/TurtleWorld.html:81
 #: src/plm/universe/turtles/TurtleWorld.html:82
 #: src/plm/universe/turtles/TurtleWorld.html:83
 #: src/plm/universe/turtles/TurtleWorld.html:84
@@ -422,36 +426,37 @@ msgstr "[!java]void [/!]soltarBaggle()"
 #: src/plm/universe/turtles/TurtleWorld.html:91
 #: src/plm/universe/turtles/TurtleWorld.html:92
 #: src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "&nbsp;"
 msgstr "&nbsp;"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "<b>Look for a message"
 msgstr "<b>Procura por uma mensagem"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Add a message"
 msgstr "Adiciona uma mensagem"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Read the message"
 msgstr "Lê a mensagem"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Erase the message</b>"
 msgstr "Apaga a mensagem</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
+#: src/plm/universe/bugglequest/BuggleWorld.html:61
 msgid "[!java]boolean [/!][!c]int [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]estáSobreMensagem()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:61
+#: src/plm/universe/bugglequest/BuggleWorld.html:62
 msgid ""
 "[!java]void [/!]writeMessage([!java]String [/!][!c]char* [/!]msg[!scala]:"
 "String[/!])"
@@ -460,118 +465,118 @@ msgstr ""
 "String[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:62
+#: src/plm/universe/bugglequest/BuggleWorld.html:63
 msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
 msgstr "[!java]String [/!][!c]char* [/!]lerMensagem()[!scala]:String[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:63
+#: src/plm/universe/bugglequest/BuggleWorld.html:64
 msgid "[!java]void [/!]clearMessage()"
 msgstr "[!java]void [/!]limparMensagem()"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:66
-#: src/plm/universe/turtles/TurtleWorld.html:78
+#: src/plm/universe/bugglequest/BuggleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:79
 msgid "Valid colors"
 msgstr "Cores válidas"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:68
-#: src/plm/universe/turtles/TurtleWorld.html:80
+#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Name"
 msgstr "Nome"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:68
-#: src/plm/universe/turtles/TurtleWorld.html:80
+#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Color"
 msgstr "Cor"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:69
-#: src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:82
 msgid "[!scala|java|python]Color.[/!]black"
 msgstr "[!scala|java|python]Cor.[/!]black"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:70
-#: src/plm/universe/turtles/TurtleWorld.html:82
+#: src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:83
 msgid "[!scala|java|python]Color.[/!]blue"
 msgstr "[!scala|java|python]Cor.[/!]azul"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71
-#: src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/turtles/TurtleWorld.html:84
 msgid "[!scala|java|python]Color.[/!]cyan"
 msgstr "[!scala|java|python]Cor.[/!]ciano"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:72
-#: src/plm/universe/turtles/TurtleWorld.html:84
+#: src/plm/universe/bugglequest/BuggleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:85
 msgid "[!scala|java|python]Color.[/!]darkGray"
 msgstr "[!scala|java|python]Cor.[/!]cinzaEscuro"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:73
-#: src/plm/universe/turtles/TurtleWorld.html:85
+#: src/plm/universe/bugglequest/BuggleWorld.html:74
+#: src/plm/universe/turtles/TurtleWorld.html:86
 msgid "[!scala|java|python]Color.[/!]gray"
 msgstr "[!scala|java|python]Cor.[/!]cinza"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:74
-#: src/plm/universe/turtles/TurtleWorld.html:86
+#: src/plm/universe/bugglequest/BuggleWorld.html:75
+#: src/plm/universe/turtles/TurtleWorld.html:87
 msgid "[!scala|java|python]Color.[/!]green"
 msgstr "[!scala|java|python]Cor.[/!]verde"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:75
-#: src/plm/universe/turtles/TurtleWorld.html:87
+#: src/plm/universe/bugglequest/BuggleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:88
 msgid "[!scala|java|python]Color.[/!]lightGray"
 msgstr "[!scala|java|python]Cor.[/!]cinzaClaro"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:76
-#: src/plm/universe/turtles/TurtleWorld.html:88
+#: src/plm/universe/bugglequest/BuggleWorld.html:77
+#: src/plm/universe/turtles/TurtleWorld.html:89
 msgid "[!scala|java|python]Color.[/!]magenta"
 msgstr "[!scala|java|python]Cor.[/!]magenta"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:77
-#: src/plm/universe/turtles/TurtleWorld.html:89
+#: src/plm/universe/bugglequest/BuggleWorld.html:78
+#: src/plm/universe/turtles/TurtleWorld.html:90
 msgid "[!scala|java|python]Color.[/!]orange"
 msgstr "[!scala|java|python]Cor.[/!]laranja"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:78
-#: src/plm/universe/turtles/TurtleWorld.html:90
+#: src/plm/universe/bugglequest/BuggleWorld.html:79
+#: src/plm/universe/turtles/TurtleWorld.html:91
 msgid "[!scala|java|python]Color.[/!]pink"
 msgstr "[!scala|java|python]Cor.[/!]rosa"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:79
-#: src/plm/universe/turtles/TurtleWorld.html:91
+#: src/plm/universe/bugglequest/BuggleWorld.html:80
+#: src/plm/universe/turtles/TurtleWorld.html:92
 msgid "[!scala|java|python]Color.[/!]red"
 msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:80
-#: src/plm/universe/turtles/TurtleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:81
+#: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "[!scala|java|python]Color.[/!]white"
 msgstr "[!scala|java|python]Cor.[/!]branco"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:81
-#: src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/bugglequest/BuggleWorld.html:82
+#: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "[!scala|java|python]Color.[/!]yellow"
 msgstr "[!scala|java|python]Cor.[/!]amarelo"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:84
+#: src/plm/universe/bugglequest/BuggleWorld.html:85
 msgid "Note on exceptions"
 msgstr "Nota sobre exceções"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/bugglequest/BuggleWorld.html:85
+#: src/plm/universe/bugglequest/BuggleWorld.html:86
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -590,7 +595,7 @@ msgstr ""
 "\"baggle\" quando você não tem nenhum lança uma DontHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:93
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -808,7 +813,7 @@ msgstr "Métodos com perâmetros"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:229
-#: src/lessons/welcome/methods/picture/PictureMono.html:2
+#: src/lessons/welcome/methods/picture/PictureMono1.html:2
 msgid "Methodically drawing"
 msgstr "desenhando metodicamente"
 
@@ -1003,14 +1008,14 @@ msgid ""
 "<i>Objective</i> one.  Depending on the exercise (and your settings in the "
 "Language menu), your code must be written in either C, Java, Python or Scala."
 msgstr ""
-"Os buggles são pequenos animais que obedecem a qualquer ordem que você "
-"dá a eles. Em cada exercício, você tem que fornecer a eles as "
-"instruções corretas para que o mundo se torne o objetivo do "
-"exercício. Por exemplo, neste exercício você deve instruir seu buggle "
-"a avançar um passo. Você pode ver isto verificando a diferença entre a "
-"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e "
-"suas configurações no menu linguagem), seu código deve ser escrito em "
-"C, Java, Python ou Scala (dependendo do seu exercício)."
+"Os buggles são pequenos animais que obedecem a qualquer ordem que você\n"
+"dá a eles. Em cada exercício, você tem que fornecer a eles as\n"
+"instruções corretas para que o mundo se torne o objetivo do\n"
+"exercício. Por exemplo, neste exercício você deve instruir seu buggle\n"
+"a avançar um passo. Você pode ver isto verificando a diferença entre a\n"
+"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e\n"
+"suas configurações no menu Idioma), seu código deve ser escrito em C,\n"
+"Java, Python ou Scala."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:23
@@ -1026,14 +1031,14 @@ msgid ""
 "do.  The white area below is the console: this is where errors and messages "
 "get displayed."
 msgstr ""
-"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê "
-"uma olhada nos vários elementos que compõe a janela principal, mova "
-"seu mouse sobre eles para ver as dicas, e experimente os elementos "
-"para ver o que eles fazem. A área branca abaixo é o console: é onde "
-"erros e mensagens aparecem."
+"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê uma "
+"olhada nos vários elementos que compõe a janela principal, mova seu mouse "
+"sobre eles para ver as dicas, e experimente os elementos para ver o que eles "
+"fazem. A área branca abaixo é o console: é onde erros e mensagens aparecem."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:31
+#, fuzzy
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -1043,14 +1048,15 @@ msgid ""
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You will see, with a bit of habit, we get used to it."
 msgstr ""
-"Se seu código contém erros (e código sempre contém em algum momento), o "
-"computador vai exibir mensagens de erro no console. Você obviamente terá que "
-"consertar os erros para passar nos exercícios. As mensagens que são "
-"mostradas podem soar assustadoras à primeira vista, mas não entre em pânico. "
-"O compilador é meio limitado nas suas capacidades de comunicação, mas ele "
-"não é malvado. Se você olhar de perto, a solução para o problema está "
-"escrita no meio daquelas mensagens ilegíveis. Você vai notar que com um "
-"pouco de hábito a gente se acostuma."
+"Se seu código tem erros (e qualquer código sempre vai ter em algum\n"
+"momento), o computador vai exibir mensagens de erro no console. Você\n"
+"obviamente terá que consertar os erros para passar nos exercícios. As\n"
+"mensagens que são mostradas podem soar assustadoras à primeira vista,\n"
+"mas não entre em pânico. O compilador é meio limitado nas suas\n"
+"capacidades de comunicação, mas ele não faz de má-vontade. Se você olhar de\n"
+"perto, a solução para o problema está escrita no meio daquelas\n"
+"mensagens ilegíveis. Você vai notar que com um pouco de hábito a gente\n"
+"se acostuma."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:39
@@ -1103,7 +1109,6 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:152
 #: src/lessons/welcome/loopfor/LoopFor.html:80
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:54
-#: src/lessons/welcome/loopdowhile/Poucet.html:37
 #: src/lessons/welcome/array/basics/Array1.html:183
 #: src/lessons/welcome/array/basics/Array1.html:209
 #: src/lessons/welcome/methods/args/MethodsArgs.html:66
@@ -1113,6 +1118,8 @@ msgstr ""
 #: src/lessons/turmites/langton/Langton.html:32
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#: src/lessons/recursion/cons/Length.html:8
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -1218,9 +1225,9 @@ msgid ""
 "it may be possible to define them by yourself (we'll see later how to define "
 "your how methods)."
 msgstr ""
-"Obviamente, estes métodos específicos não existem por padrão em "
-"[!thelang], mas é possível definí-los você mesmo (vamos ver mais tarde "
-"como definir seus próprios métodos)."
+"Obviamente, estes métodos específicos não existem por padrão em [!thelang], "
+"mas é possível definí-los você mesmo (vamos ver mais tarde como definir seus "
+"próprios métodos)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:41
@@ -1380,10 +1387,9 @@ msgid ""
 "thelang], instructing the [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] to not read the text you add for humans:"
 msgstr ""
-"Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários "
-"em [!thelang], que instruem o "
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] a não ler o "
-"texto que você adiciona para humanos:"
+"Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários em [!"
+"thelang], que instruem o [!java|scala|c]compilador[/!][!"
+"python]interpretador[/!] a não ler o texto que você adiciona para humanos:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:19
@@ -1392,10 +1398,9 @@ msgid ""
 "python]interpreter[/!] encounters the symbol [!java|scala|c]//[/!][!"
 "python]#[/!], it ignores the end of the line."
 msgstr ""
-"<b>Comentários de uma única linha</b>. Quando o "
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] encontra o "
-"símbolo [!java|scala|c]//[/!][!python]#[/!], ele ignora o resto da "
-"linha."
+"<b>Comentários de uma única linha</b>. Quando o [!java|scala|c]compilador[/!]"
+"[!python]interpretador[/!] encontra o símbolo [!java|scala|c]//[/!][!"
+"python]#[/!], ele ignora o resto da linha."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
@@ -1405,11 +1410,10 @@ msgid ""
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
 "line beginning with ''' until the next line ending with '''.[/!]"
 msgstr ""
-"<b>Comentários em várias linhas</b>. O "
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] ignora tudo "
-"entre [!java|scala|c]os símbolos /* e */ mesmo quando eles são postos "
-"em linhas diferentes.[/!] [!python]uma linha comaçando com ''' até a "
-"próxima linha terminado com '''.[/!]"
+"<b>Comentários em várias linhas</b>. O [!java|scala|c]compilador[/!][!"
+"python]interpretador[/!] ignora tudo entre [!java|scala|c]os símbolos /* e "
+"*/ mesmo quando eles são postos em linhas diferentes.[/!] [!python]uma linha "
+"comaçando com ''' até a próxima linha terminado com '''.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:28
@@ -1544,25 +1548,22 @@ msgstr ""
 "Em [!thelang], os blocos de código são [!java|scala|c]envolvidos entre "
 "chaves: um { abre o bloco, e um } fecha. Espaços em branco não são "
 "importantes[/!][!java|c].[/!][!scala], uma vez que suas instruções ainda "
-"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!] "
-"[!java|scala|c]Ainda assim é muito importante indentar corretamente seu "
-"código para mantê-lo legível.[/!] [!python]marcados pela indentação: "
-"todas as linhas que estiverem um pouco deslocadas para a direita com "
-"espaços pertencem ao bloco. Frequentemente se usam 4 espaços para "
-"indentação, mas funciona se você usar mais ou menos "
-"espaços. Resumindo, quaisquer linhas do bloco devem usar a mesma "
-"quantidade de espaços. O fim do bloco de código Python não é marcado "
-"por nenhum caractere específico. Indentar linhas começa um bloco e "
-"parar de indentar termina o bloco. Não esqueça do dois-pontos (:) no final "
-"da "
-"linha do <code>if</code>, python precisa dele para saber que um novo bloco "
-"vai "
-"começar. O fato de que python se baseia em indentação para delimitar "
-"blocos é uma ótima propriedade para iniciantes: vai forçar você a "
-"aderir a padrões de apresentação de código estritos.[/!] É muito fácil "
-"se perder no seu próprio código se ele não for corretamente indentado, "
-"então você precisa deixar ele bem arrumado para que trabalhar nele "
-"continue sendo agradável e produtivo."
+"estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!] [!java|"
+"scala|c]Ainda assim é muito importante indentar corretamente seu código para "
+"mantê-lo legível.[/!] [!python]marcados pela indentação: todas as linhas que "
+"estiverem um pouco deslocadas para a direita com espaços pertencem ao bloco. "
+"Frequentemente se usam 4 espaços para indentação, mas funciona se você usar "
+"mais ou menos espaços. Resumindo, quaisquer linhas do bloco devem usar a "
+"mesma quantidade de espaços. O fim do bloco de código Python não é marcado "
+"por nenhum caractere específico. Indentar linhas começa um bloco e parar de "
+"indentar termina o bloco. Não esqueça do dois-pontos (:) no final da linha "
+"do <code>if</code>, python precisa dele para saber que um novo bloco vai "
+"começar. O fato de que python se baseia em indentação para delimitar blocos "
+"é uma ótima propriedade para iniciantes: vai forçar você a aderir a padrões "
+"de apresentação de código estritos.[/!] É muito fácil se perder no seu "
+"próprio código se ele não for corretamente indentado, então você precisa "
+"deixar ele bem arrumado para que trabalhar nele continue sendo agradável e "
+"produtivo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:44
@@ -1923,8 +1924,10 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
-msgid "When your program works, move forward to the next exercise."
-msgstr "Quando o seu programa funciona, vá para o próximo exercício."
+msgid ""
+"Look at the documentation (in \"Help/About this world\") for the full list "
+"of buggles' methods."
+msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:3
@@ -2144,10 +2147,11 @@ msgstr ""
 msgid "x = 5"
 msgstr "x = 5"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
 
@@ -3013,7 +3017,6 @@ msgstr "Executando o corpo do loop pelo menos uma vez"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
-#: src/lessons/welcome/loopdowhile/Poucet.html:31
 #: src/lessons/welcome/array/basics/Array1.html:100
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
@@ -3092,12 +3095,12 @@ msgstr ""
 "} while (<b>condição</b>)[!java];[/!]"
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loopdowhile/Poucet.html:2
+#: src/lessons/welcome/loopdowhile/Poucet1.html:2
 msgid "Tracks of buggles"
 msgstr "Trilhas de buggles"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:4
+#: src/lessons/welcome/loopdowhile/Poucet1.html:4
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
@@ -3118,7 +3121,7 @@ msgstr ""
 "ler 'Floresta Mais Fechada')."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:10
+#: src/lessons/welcome/loopdowhile/Poucet1.html:10
 msgid ""
 "The good news is that the path to the exit is written on the ground. As you "
 "can see, the world is made of several corridors, with baggles on the ground. "
@@ -3132,7 +3135,7 @@ msgstr ""
 "baggels ou mais, e virar a direita se tiver apenas 2 ou menos baggles."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:14
+#: src/lessons/welcome/loopdowhile/Poucet1.html:14
 msgid ""
 "You should count exactly 5 cells per corridor, the one at the intersection "
 "counting as the last cell of the previous corridor, not as the first cell "
@@ -3143,7 +3146,7 @@ msgstr ""
 "virar."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet1.html:17
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -3158,56 +3161,20 @@ msgstr ""
 "fornecido."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:21
+#: src/lessons/welcome/loopdowhile/Poucet1.html:21
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
-"another while counting the baggles you see on your path. The method "
-"<code>crossing()</code> tells you whether your buggle currently stands on an "
-"intersection.  The extra complexity is that at the beginning of a corridor, "
-"you obviously stand on an intersection, but you still want to move on.  [!"
-"java|scala|c]For that, the easiest is to use a <code>do / while</code> loop "
-"instead of a regular <code>while</code> loop to move until the next "
-"intersection.[/!] [!python]For that, use an extra variable indicating "
-"whether you already entered the corridor, as follows. This will ensure that "
-"you execute the loop body at least once (when <code>firstTime</code> is "
-"true) before we actually use the value returned by <code>crossing()</code> "
-"to determine to continue or not.[/!]"
+"another while counting the baggles you see on your path. That's easy: there "
+"is 5 steps in each corridors so a simple <code>for</code> loop suffices."
 msgstr ""
-"Para entrar em um corredor, você tem simplesmente que ir de uma intersecção "
-"para a outra enquanto conta os baggles que vê em seu caminho. O método "
-"\"<code>cruzamento()</code>\" diz se seu buggle está ou não numa "
-"intersecção. A complexidade extra é que no começo de um corredor, você está "
-"obviamente numa intersecção, mas você ainda precisa se mover.  [!java|scala|"
-"c]Para isto, a forma mais fácil é usar um loop <code>do / while</code> "
-"(faça / enquanto) ao invés de um loop <code>while</code> (enquanto) normal "
-"para se mover até a próxima intersecção.[/!] [!python]Para isto, use uma "
-"variável extra indicando quando você já entrou no corredor, como segue. Isto "
-"vai garantir que você execute o corpo do loop pelo menos uma vez (quando o "
-"<code>primeiraVez</code> for verdadeiro) antes de nós usarmos realmente o "
-"valor retornado pelo <code>cruzamento()</code> para determinar se "
-"continuamos ou não.[/!]"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:32
-#, no-wrap
-msgid ""
-"firstTime = True\n"
-"while firstTime or not crossing():\n"
-"  firstTime = False\n"
-"  (loop body)\n"
-msgstr ""
-"primeiraVez = True\n"
-"while primeiraVez or not cruzamento():\n"
-"  primeiraVez = False\n"
-"  (corpo do loop)\n"
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:39
+#: src/lessons/welcome/loopdowhile/Poucet1.html:25
 msgid "I cannot imagine how to count the baggles I see."
 msgstr "Eu não consigo imaginar como contar os baggles que eu vejo."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:40
+#: src/lessons/welcome/loopdowhile/Poucet1.html:26
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -3218,13 +3185,13 @@ msgstr ""
 "frequentemente chamada de <i>contador</i>."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:42
+#: src/lessons/welcome/loopdowhile/Poucet1.html:28
 msgid ""
 "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr "Não esqueça de resetar seu contador para 0 no começo de cada corredor!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:45
+#: src/lessons/welcome/loopdowhile/Poucet1.html:31
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -4322,7 +4289,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/IcyHot.html:6
 #: src/lessons/welcome/bat/bool1/In1020.html:6
 #: src/lessons/welcome/bat/bool1/In3050.html:6
-#: src/lessons/welcome/bat/bool1/LastDigit.html:10
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:7
 #: src/lessons/welcome/bat/bool1/Main.html:12
 #: src/lessons/welcome/bat/bool1/Makes10.html:6
@@ -4345,18 +4311,18 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/InOrder.html:9
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:9
 #: src/lessons/welcome/bat/bool2/LessBy10.html:6
-#: src/lessons/welcome/bat/bool2/Main.html:5
+#: src/lessons/welcome/bat/bool2/Main.html:7
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:10
 #: src/lessons/welcome/bat/bool2/NearTen.html:9
 #: src/lessons/welcome/bat/bool2/RedTicket.html:10
-#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
 #: src/lessons/welcome/bat/bool2/SortaSum.html:8
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:11
 #: src/lessons/welcome/bat/bool2/TeaParty.html:12
 #: src/lessons/welcome/bat/bool2/TeenSum.html:9
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:6
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:9
-#: src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5
+#: src/lessons/bat/string1/Main.html:10
+#: src/lessons/bat/string1/AltPairs.html:5
 #: src/lessons/bat/string1/FrontTimes.html:8
 #: src/lessons/bat/string1/Last2.html:9
 #: src/lessons/bat/string1/StringBits.html:5
@@ -4365,9 +4331,13 @@ msgstr ""
 #: src/lessons/bat/string1/StringTimes.html:5
 #: src/lessons/bat/string1/StringX.html:7
 #: src/lessons/bat/string1/StringYak.html:8
+#, fuzzy
+#| msgid ""
+#| "This exercise was converted to PLM from the excellent exercising site "
+#| "http://javabat.com/"
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
-"javabat.com/"
+"codingbat.com/"
 msgstr ""
 "Este exercício foi convertido para o PLM do excelente sítio de\n"
 "exercícios http://javabat.com/"
@@ -4590,9 +4560,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
+#, fuzzy
+#| msgid ""
+#| "We will now write our own methods. It somehow comes down to extending the "
+#| "buggle vocabulary by learning it new tricks."
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
-"buggle vocabulary by learning it new tricks."
+"buggle vocabulary by teaching it new tricks."
 msgstr ""
 "Nós vamos agora escrever nossos próprios métodos. Isto é como extender o "
 "vocabulário do buggle ensinando novos truques."
@@ -4878,8 +4852,13 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
+#, fuzzy
+#| msgid ""
+#| "We now would like to learn the buggle to build a doghouse. The naive "
+#| "approach consists in directly writing the needed code as follows.  This "
+#| "works because the buggle of this exercise leaves a red path as it moves."
 msgid ""
-"We now would like to learn the buggle to build a doghouse. The naive "
+"We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
 "works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
@@ -4981,7 +4960,7 @@ msgstr ""
 "construir várias casas de cachorro neste mundo."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/PictureMono.html:4
+#: src/lessons/welcome/methods/picture/PictureMono1.html:4
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:4
 msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
@@ -4991,7 +4970,7 @@ msgstr ""
 "aba \"Objetivo\"."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:7
+#: src/lessons/welcome/methods/picture/PictureMono1.html:7
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:7
 msgid ""
 "Your goal (here and in any well written program) is to write the simplest "
@@ -5003,7 +4982,7 @@ msgstr ""
 "passos e escrever métodos específicos para cada sub-passo."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:11
+#: src/lessons/welcome/methods/picture/PictureMono1.html:11
 msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V. A possible decomposition is to write a method "
@@ -5016,7 +4995,7 @@ msgstr ""
 "Seu protótipo pode ser: <code>[!java|c]void [/!]fazerV()</code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:16
+#: src/lessons/welcome/methods/picture/PictureMono1.html:16
 msgid ""
 "In this method, you should use the methods <code>brushUp()</code> and "
 "<code>brushDown()</code> to mark the ground (you may want to factorize this "
@@ -5030,7 +5009,7 @@ msgstr ""
 "para o próximo V."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono.html:21
+#: src/lessons/welcome/methods/picture/PictureMono1.html:21
 msgid ""
 "Your turn. Your code should not be longer than 4 lines (not counting "
 "<code>makeV</code>)..."
@@ -5706,7 +5685,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:13
 #: src/lessons/welcome/traversal/Snake.html:40
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:48
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:50
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:11
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:11
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:7
@@ -5740,7 +5719,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:41
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
 msgstr "Boa Sorte!"
 
@@ -5895,6 +5874,15 @@ msgstr ""
 "seus métodos fiquem com a cor do rastro para seguir como um\n"
 "parâmetro. E mesmo assim, seu código deve funcionar como antes."
 
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:11
+msgid ""
+"Don't get lost on false leads! The hunt() method was given a parameter to "
+"tell you which color to follow (and it is not the same in all worlds). Add a "
+"parameter to your isFacingTrail() method to only follow the requested color, "
+"as the other colors lead to dead ends..."
+msgstr ""
+
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
 msgid "Buggle Dance Revolution (BDR)"
@@ -5902,8 +5890,15 @@ msgstr "Buggle Dance Revolution (BDR)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
+#, fuzzy
+#| msgid ""
+#| "After these races, it's time to party! For that, we will learn the "
+#| "buggles to play Dance Revolution, this game beloved of some students: The "
+#| "player has to move the feet on the carpet according to the instructions "
+#| "presented on the screen, and following the music. But before that, we "
+#| "have some details to study first."
 msgid ""
-"After these races, it's time to party! For that, we will learn the buggles "
+"After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
 "to move the feet on the carpet according to the instructions presented on "
 "the screen, and following the music. But before that, we have some details "
@@ -6294,8 +6289,14 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
+#, fuzzy
+#| msgid ""
+#| "The goal is then to organize a BDR game between the buggles by learning "
+#| "them to move according to the instructions written on the ground. These "
+#| "instructions are messages written on the ground, with the following "
+#| "signification:"
 msgid ""
-"The goal is then to organize a BDR game between the buggles by learning them "
+"The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
 "instructions are messages written on the ground, with the following "
 "signification:"
@@ -6623,7 +6624,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:31
-#, fuzzy
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
 "is simply a choice with 4 branches depending on the value of [!java|"
@@ -6637,7 +6637,7 @@ msgid ""
 msgstr ""
 "Quando você revisa este código, não fica claro à primeira vista que\n"
 "ele é simplesmente a escolha entre quatro ramos dependendo do\n"
-"valor de [!java|c]getIndication()[/!][!scala]lerMensagem()[/!]. Para\n"
+"valor de [!java|c]getIndicação()[/!][!scala]lerMensagem()[/!]. Para\n"
 "melhorar ele, vamos usar uma construção [!java|c]<code>switch</code>,\n"
 "que na sintaxe de Java é o seguinte:[/!] [!scala] de busca de padrões,\n"
 "que é bastante poderosa e generaliza muito o <code>if</code>. É com\n"
@@ -7017,7 +7017,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:17
 msgid "We reached the final position if and only if both conditions are true:"
-msgstr "Chegamos na posição final se e apenas se ambas as condições são verdadeiras:"
+msgstr ""
+"Chegamos na posição final se e apenas se ambas as condições são verdadeiras:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/traversal/Snake.html:19
@@ -7071,9 +7072,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:33
+#, fuzzy
+#| msgid ""
+#| "Hint: the main loop of your code must continue while the testing function "
+#| "returns false. Their is thus two way of writing it:"
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
-"returns false. Their is thus two way of writing it:"
+"returns false. There is two ways of writing it:"
 msgstr ""
 "Dica: o loop principal do seu código deve continuar enquanto a função\n"
 "de teste retorna falso. Existe portanto entretanto duas formas de\n"
@@ -7168,19 +7173,20 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
-msgid "Beware, the first line and column are numbered 0 and not 1..."
+msgid ""
+"Beware, the first line and column are numbered 0 and not 1, and the point "
+"(0,0)  is on the top left corner. This may seem surprising, but it is very "
+"often so in Computer Science."
 msgstr ""
-"Cuidado, a primeira linha e a primeira coluna são numeradas com 0 e\n"
-"não com 1..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:30
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:32
 #, fuzzy
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
 "the bottom of a row, you have to move to the top of next row, and you have "
-"to move to the cell below else."
+"to move to the cell below."
 msgstr ""
 "Então, você tem que escrever o código para alcançar a próxima\n"
 "posição. Neste exercício, você tem que percorrer o mundo linha após\n"
@@ -7189,7 +7195,7 @@ msgstr ""
 "\"else\"."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:35
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:37
 msgid ""
 "At this point, you can launch your program to check that the buggle "
 "correctly traverse the world in the expected order, and that it stops when "
@@ -7201,7 +7207,7 @@ msgstr ""
 "corretamente."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:39
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:41
 msgid ""
 "It is now time to write down the cell numbers. For that, you will need a "
 "counter initialiser to zero at the beginning of your code, and incremented "
@@ -7215,7 +7221,7 @@ msgstr ""
 "para escrever o valor no chão."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:45
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:47
 msgid ""
 "You probably need to write the first [!java|scala|c]or last [/!]value out of "
 "the main loop [!java|scala|c], depending on whether you prefer to use a "
@@ -7346,6 +7352,7 @@ msgstr "O que eu posso fazer para melhorar este universo do PLM?"
 #: src/lessons/sort/dutchflag/Main.html:11
 #: src/lessons/sort/pancake/Main.html:32
 #: src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14
+#: src/lessons/recursion/cons/Main.html:7
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -7465,7 +7472,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:34
-#, fuzzy
 msgid ""
 "Changing the ground color is not difficult, but a bit long: you have to "
 "change the brush color of your buggle, set the brush down (to mark the "
@@ -7475,13 +7481,13 @@ msgid ""
 "you may want to write a <code>setGroundColor(color)</code> method to "
 "factorize things a bit."
 msgstr ""
-"mudar a cor do chão não é difícil, mas meio demorado: você tem que\n"
-"mudar a cor do pincel de seu buggle, baixar o pincel (para marcar a\n"
-"célula atual -- com <code>brushDown()</code>), e levantar o pincel de\n"
-"novo (com <code>levantarPincel()</code>) para evitar problemas quando\n"
-"o buggle se mexer. Você é, naturalmente, livre para organizar seu\n"
-"código da forma que quiser, mas você deve querer escrever um método\n"
-"<code>setCorDoChão(color)</code> para separar um pouco as coisas."
+"mudar a cor do chão não é difícil, mas meio demorado: você tem que mudar a "
+"cor do pincel de seu buggle, baixar o pincel (para marcar a célula atual -- "
+"com <code>abaixarPincel()</code>), e levantar o pincel de novo (com "
+"<code>levantarPincel()</code>) para evitar problemas quando o buggle se "
+"mexer. Você é, naturalmente, livre para organizar seu código da forma que "
+"quiser, mas você deve querer escrever um método <code>setCorDoChão(color)</"
+"code> para separar um pouco as coisas."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:41
@@ -7492,12 +7498,11 @@ msgid ""
 "from the chaos is rather fascinating, isn't it? Move on to the next exercise "
 "to see more of them."
 msgstr ""
-"Como você pode ver da execução deste exercício, o interessante neste\n"
-"algoritmo é que depois de uns 10000 passos de comportamento\n"
-"relativamente caótico, a formiga começa a construir um padrão\n"
-"regular. O surgimento deste padrão regular em meio ao caos é bastante\n"
-"fascinante, não acha? Mova para o próximo exercício para ver mais\n"
-"disto."
+"Como você pode ver da execução deste exercício, o interessante neste "
+"algoritmo é que depois de uns 10000 passos de comportamento relativamente "
+"caótico, a formiga começa a construir um padrão regular. O surgimento deste "
+"padrão regular em meio ao caos é bastante fascinante, não acha? Mova para o "
+"próximo exercício para ver mais disto."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:2
@@ -7518,15 +7523,15 @@ msgid ""
 "the basic ant is a RL (since it turns right on white cells and left on black "
 "ones)."
 msgstr ""
-"There is several ways to extend the concept of Langton's ant. In this\n"
-"exercise, we explore first one, using more than two colors. It remains\n"
-"very similar to the base case: the behavior at each step still depends\n"
-"on the ground color, but you have more than 2 possibilities. It allows\n"
-"to have more than one kind of ant, depending on what you decide to do\n"
-"for each color. For example, the ant LRL takes 3 colors. It turns left\n"
-"on the first color, right on the second one and left on the third\n"
-"color. According to this definition, the basic ant is a RL (since it\n"
-"turns right on white cells and left on black ones)."
+"There is several ways to extend the concept of Langton's ant. In this "
+"exercise, we explore first one, using more than two colors. It remains very "
+"similar to the base case: the behavior at each step still depends on the "
+"ground color, but you have more than 2 possibilities. It allows to have more "
+"than one kind of ant, depending on what you decide to do for each color. For "
+"example, the ant LRL takes 3 colors. It turns left on the first color, right "
+"on the second one and left on the third color. According to this definition, "
+"the basic ant is a RL (since it turns right on white cells and left on black "
+"ones)."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:13
@@ -7536,11 +7541,11 @@ msgid ""
 "a square, LLRRRLRLRLLR draws a convoluted regular pattern after a period of "
 "seemingly chaotic behavior, and RRLLLRLLLRRR seems to fill a hour glass..."
 msgstr ""
-"Algumas destas formigas desenham padrões fascinantes (alterne o mundo\n"
-"para vê-los): LLRR constrói uma figura simétrica semelhante a uma\n"
-"bola, LRRRRRLLR desenha um quadrado, LLRRRLRLRLLR desenha um padrão\n"
-"regular convolucionado depois de um período de aparente caos, e\n"
-"RRLLLRLLLRRR parece preencher uma ampulheta..."
+"Algumas destas formigas desenham padrões fascinantes (alterne o mundo para "
+"vê-los): LLRR constrói uma figura simétrica semelhante a uma bola, LRRRRRLLR "
+"desenha um quadrado, LLRRRLRLRLLR desenha um padrão regular convolucionado "
+"depois de um período de aparente caos, e RRLLLRLLLRRR parece preencher uma "
+"ampulheta..."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:18
@@ -7556,22 +7561,21 @@ msgid ""
 "'L')</code> and <code>Array(Color.white, Color.black)</code>[/!] as "
 "arguments."
 msgstr ""
-"Transformar seu buggle numa formiga de Langton genérica não é muito\n"
-"complicado, embora não seja totalmente trivial. Como anteriormente,\n"
-"você tem que escrever uma função <code>step</code>. Mas desta vez, ela\n"
-"recebe duas arrays como parâmetros. A primeira define as regras para\n"
-"seguir dependendo da cor do chão enquanto a segunda dá a sequência de\n"
-"cores a usar. Por exemplo, a formiga básica deve ter\n"
-"[!java]<code>{'R', 'L'}</code> e <code>{Cor.branco,\n"
-"Cor.preto}</code>[/!] [!python]<code>['R', 'L']</code> e\n"
-"<code>[Cor.branco, Cor.preto]</code>[/!] [!scala]<code>Array('R',\n"
-"'L')</code> e <code>Array(Cor.branco, Cor.preto)</code>[/!] como\n"
-"argumentos."
+"Transformar seu buggle numa formiga de Langton genérica não é muito "
+"complicado, embora não seja totalmente trivial. Como anteriormente, você tem "
+"que escrever uma função <code>step</code>. Mas desta vez, ela recebe duas "
+"arrays como parâmetros. A primeira define as regras para seguir dependendo "
+"da cor do chão enquanto a segunda dá a sequência de cores a usar. Por "
+"exemplo, a formiga básica deve ter [!java]<code>{'R', 'L'}</code> e "
+"<code>{Cor.branco, Cor.preto}</code>[/!] [!python]<code>['R', 'L']</code> e "
+"<code>[Cor.branco, Cor.preto]</code>[/!] [!scala]<code>Array('R', 'L')</"
+"code> e <code>Array(Cor.branco, Cor.preto)</code>[/!] como argumentos."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:29
 msgid "At each step, you thus have to apply the following pseudo-code:"
-msgstr "Em cada passo, você deve então ter que aplicar o seguinte pseudo-código:"
+msgstr ""
+"Em cada passo, você deve então ter que aplicar o seguinte pseudo-código:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:31
@@ -7584,18 +7588,17 @@ msgid ""
 "Turn left or right depending on the content of the rule array at that "
 "position;"
 msgstr ""
-"Vire a esquerda ou direita dependendo do conteúdo da array de regras\n"
-"nesta posição;"
+"Vire a esquerda ou direita dependendo do conteúdo da array de regras nesta "
+"posição;"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:33
-#, fuzzy
 msgid ""
 "Mark the current ground with the next color in the sequence (the last color "
 "being followed by the first one);"
 msgstr ""
-"Marque o chão com a próxima cor na sequência (the last color being\n"
-"followed by the first one);"
+"Marque o chão com a próxima cor na sequência (a cor seguinte à última\n"
+"é a primeira);"
 
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:34
@@ -7615,7 +7618,6 @@ msgstr "Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:4
-#, fuzzy
 msgid ""
 "This exercise explores a new way to extend the concept of Langton's ant. "
 "Now, the behavior of the ant not only depends on the color on the ground, "
@@ -7626,15 +7628,14 @@ msgid ""
 "Turing machine is, you should run to wikipedia, because it is simply "
 "impossible to be a real computer scientist before that)."
 msgstr ""
-"Este exercício explora uma nova forma de extender o conceito de\n"
-"formiga de Langton. Agora, o comportamento da formiga não depende\n"
-"apenas da cor no chão, mas também de seu estado interno (representado\n"
-"por um valor inteiro). A ideia de transformar a formiga em um autômato\n"
-"vem naturalmente do conceito de máquina de Turing. Isto explica o nome\n"
-"destes novos animais, que é um portemanteau de <i>Turing</i> e\n"
-"<i>Termite</i> (se você não sabe o que uma máquina de Turing é, vá na\n"
-"wikipédia, por que é impossível ser um cientista da computação de\n"
-"verdade sem conhecê-la)."
+"Este exercício explora uma nova forma de extender o conceito de formiga de "
+"Langton. Agora, o comportamento da formiga não depende apenas da cor no "
+"chão, mas também de seu estado interno (representado por um valor inteiro). "
+"A ideia de transformar a formiga em um autômato vem naturalmente do conceito "
+"de máquina de Turing. Isto explica o nome destes novos animais, que é um "
+"amálgama de <i>Turing</i> e <i>Termite</i> (se você não sabe o que uma "
+"máquina de Turing é, vá na wikipédia, por que é impossível ser um cientista "
+"da computação de verdade sem conhecê-la)."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:13
@@ -7663,7 +7664,8 @@ msgstr ""
 "informations to use when <code>state==1</code> and\n"
 "<code>color==0</code>.  In other worlds, you can retrieve the\n"
 "information relative to your current situation by using\n"
-"<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>."
+"<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
+"(currentColor)[/!]</code>."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:25
@@ -7729,7 +7731,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:46
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7747,7 +7749,7 @@ msgstr "This is much more easier to read (although longer) than the following:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:50
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7966,7 +7968,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
 "{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: binary counter\n"
@@ -8168,7 +8170,8 @@ msgstr ""
 "turmites too). There is a sort of international competition where\n"
 "people strive to find the turmite that covers the biggest area before\n"
 "stopping. The web page is here:\n"
-"http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
+"http://code.google.com/p/ruletablerepository/wiki/"
+"TwoDimensionalTuringMachines"
 
 #. type: Content of: <h1>
 #: src/lessons/turmites/universe/TurmiteWorld.html:2
@@ -8472,13 +8475,13 @@ msgid ""
 "\"races\" between these algorithms to experiment in practice what the "
 "different asymptotical complexity mean."
 msgstr ""
-"Esta lição permite a experimentação com alguns algoritmos de ordenação\n"
-"clássicos (e algumas variações menos comuns deles). E temos um duplo\n"
-"objetivo: você pode primeiro compreender melhor a ideia destes\n"
-"algoritmos escrevendo eles por si só. Mas mesmo se você não codificar\n"
-"os algoritmos, você pode usar o modo de demonstração para organizar\n"
-"\"corridas\" entre os algoritmos para experimentar na prática o que\n"
-"significam diferentes complexidades assintóticas."
+"Esta lição permite a experimentação com alguns algoritmos de ordenação "
+"clássicos (e algumas variações menos comuns deles). E temos um duplo "
+"objetivo: você pode primeiro compreender melhor a ideia destes algoritmos "
+"escrevendo eles por si só. Mas mesmo se você não codificar os algoritmos, "
+"você pode usar o modo de demonstração para organizar \"corridas\" entre os "
+"algoritmos para experimentar na prática o que significam diferentes "
+"complexidades assintóticas."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/Main.html:11
@@ -8487,8 +8490,8 @@ msgid ""
 "(such as QuickSort and MergeSort) or using other microworlds to apply these "
 "algorithms to other contexts."
 msgstr ""
-"Mais exercícios estão previstos para o futuro, sobre os algoritmos de\n"
-"ordenação recursivos (como o QuickSort e o MergeSort) ou usando outros\n"
+"Mais exercícios estão previstos para o futuro, sobre os algoritmos de "
+"ordenação recursivos (como o QuickSort e o MergeSort) ou usando outros "
 "micromundos para aplicar estes algoritmos a outros contextos."
 
 #. type: Content of: <ul><li>
@@ -8497,7 +8500,7 @@ msgid ""
 "Other graphical representations could be proposed, such as the ones "
 "presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 msgstr ""
-"Outras representações gráficas podem ser propostas, como aquelas\n"
+"Outras representações gráficas podem ser propostas, como aquelas "
 "apresentadas em <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 
 #. type: Content of: <p>
@@ -8506,7 +8509,7 @@ msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
 "some less common variant of them :)"
 msgstr ""
-"Esta lição permite a experimentação com alguns algotimos de ordenação\n"
+"Esta lição permite a experimentação com alguns algotimos de ordenação "
 "clássicos (e algumas variantes menos comuns deles :)"
 
 #. type: Content of: <p>
@@ -8529,10 +8532,10 @@ msgid ""
 "algorithms is available in the world reference documentation (\"Help\"-&gt;"
 "\"About this world\")."
 msgstr ""
-"Bem vindo ao universo da ordenação. Ele permite que você experimente\n"
-"os algoritmos de ordenação existentes. A lista de \"buildins\" que você\n"
-"pode usar nos seus algoritmos está disponível na documentação de\n"
-"referência do mundo (\"Ajuda\"-&gt;\"Sobre este mundo\")."
+"Bem vindo ao universo da ordenação. Ele permite que você experimente os "
+"algoritmos de ordenação existentes. A lista de \"buildins\" que você pode "
+"usar nos seus algoritmos está disponível na documentação de referência do "
+"mundo (\"Ajuda\"-&gt;\"Sobre este mundo\")."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:8
@@ -8542,11 +8545,10 @@ msgid ""
 "checking that your algorithm needs the same amount of read and write "
 "operations to sort the array."
 msgstr ""
-"Não é suficiente ordenar a array para passar nos exercícios. Sua\n"
-"solução deve seguir estritamente o comportamento esperado em cada\n"
-"exercício. Isto é reforçado verificando que seu algoritmo precisa da\n"
-"mesma quantidade de operações de escrita e leitura para ordenar a\n"
-"array."
+"Não é suficiente ordenar a array para passar nos exercícios. Sua solução "
+"deve seguir estritamente o comportamento esperado em cada exercício. Isto é "
+"reforçado verificando que seu algoritmo precisa da mesma quantidade de "
+"operações de escrita e leitura para ordenar a array."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:13
@@ -8559,12 +8561,12 @@ msgid ""
 "contextual menu (right click)  to switch from the the view of the current "
 "state to the view of its history."
 msgstr ""
-"When your algorithm diverges from the expectation, understanding the\n"
-"difference between your code and the expected solution can reveal very\n"
-"difficult. To help in this process, it is posible to graphically\n"
-"explore the history of your sorting algorithm. Switch to the Objective\n"
-"view and use the contextual menu (right click)  to switch from the the\n"
-"view of the current state to the view of its history."
+"When your algorithm diverges from the expectation, understanding the "
+"difference between your code and the expected solution can reveal very "
+"difficult. To help in this process, it is posible to graphically explore the "
+"history of your sorting algorithm. Switch to the Objective view and use the "
+"contextual menu (right click)  to switch from the the view of the current "
+"state to the view of its history."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:28
@@ -8614,7 +8616,7 @@ msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:42
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "do: \n"
 "        For each i in [0,len-2]\n"
@@ -8661,7 +8663,7 @@ msgstr "The pseudo-code of the BubbleSort2 algorithm is the following:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:14
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
@@ -8749,7 +8751,7 @@ msgstr "If you want, this tip shows the pseudo-code."
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:16
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
@@ -8786,12 +8788,12 @@ msgid ""
 "thus traditionally referred to as \"rabbits\" and \"turtles\" respectively "
 "for big fast values and small slow ones."
 msgstr ""
-"Para melhorar ainda mais o algoritmo BubbleSort, precisamos ver seu\n"
-"comportamente bem de perto. Você pode perceber que os elementos\n"
-"grandes se movem bem rápido enquanto os pequenos se movem lentamente\n"
-"para seus destinos. Eles são então tradicionalmente chamados de\n"
-"\"coelhos\" e \"tartarugas\" respectivamente para valores grandes e\n"
-"rápidos e valores pequenos e lentos."
+"Para melhorar ainda mais o algoritmo BubbleSort, precisamos ver seu "
+"comportamente bem de perto. Você pode perceber que os elementos grandes se "
+"movem bem rápido enquanto os pequenos se movem lentamente para seus "
+"destinos. Eles são então tradicionalmente chamados de \"coelhos\" e "
+"\"tartarugas\" respectivamente para valores grandes e rápidos e valores "
+"pequenos e lentos."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:10
@@ -8799,13 +8801,13 @@ msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the pseudo-code:"
 msgstr ""
-"Para ajudar as tartarugas a se mover rápido, o cocktail sort percorre\n"
-"alternativamente a array da direita para a esquerda e da esquerda para\n"
-"a direita. Aqui está o pseudo-código:"
+"Para ajudar as tartarugas a se mover rápido, o cocktail sort percorre "
+"alternativamente a array da direita para a esquerda e da esquerda para a "
+"direita. Aqui está o pseudo-código:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:15
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "Do\n"
 "  For all i in [0,len-2], do:\n"
@@ -8829,10 +8831,9 @@ msgid ""
 "than the bubble sort, but improves slightly on read amount. It is however "
 "still worse than BubbleSort2 to that extend."
 msgstr ""
-"Podemos perceber que cocktail sort alcança exatamente a mesma\n"
-"quantidade de trocas que o bubble sort, mas melhora levemente na\n"
-"quantidade de leituras. Ele é entretanto ainda pior que o BubbleSort2\n"
-"to that extend."
+"Podemos perceber que cocktail sort alcança exatamente a mesma quantidade de "
+"trocas que o bubble sort, mas melhora levemente na quantidade de leituras. "
+"Ele é entretanto ainda pior que o BubbleSort2 to that extend."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:2
@@ -8847,14 +8848,14 @@ msgid ""
 "sorted yet, and traverse it alternatively from left to right and from right "
 "to left:"
 msgstr ""
-"Vamos agora aplicar ao CocktailSort a mesma otimização que o\n"
-"BubbleSort2 faz no BubbleSort. Devemos lembrar que os limites da parte\n"
-"do array que não está ordenada ainda, e percorrer ela alternativamente\n"
-"da esquerda para a direita e da diretia para a esquerda:"
+"Vamos agora aplicar ao CocktailSort a mesma otimização que o BubbleSort2 faz "
+"no BubbleSort. Devemos lembrar que os limites da parte do array que não está "
+"ordenada ainda, e percorrer ela alternativamente da esquerda para a direita "
+"e da diretia para a esquerda:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:9
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "beg=0; end=len-2\n"
 "do\n"
@@ -8891,12 +8892,11 @@ msgid ""
 "can stop if the upward traversal found something to swap, but not the "
 "downwards one."
 msgstr ""
-"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do\n"
-"BubbleSort, Ele parece melhor na prática. É até mesmo possível\n"
-"melhorar um pouco mais parando ele na primeira rodada que não\n"
-"encontrar nada para trocar, se realizar a rodada para baixo. Da mesma\n"
-"forma, podemos parar se a rodade para cima encontrar algo para trocar\n"
-"mas a rodada para baixo não."
+"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do "
+"BubbleSort, Ele parece melhor na prática. É até mesmo possível melhorar um "
+"pouco mais parando ele na primeira rodada que não encontrar nada para "
+"trocar, se realizar a rodada para baixo. Da mesma forma, podemos parar se a "
+"rodade para cima encontrar algo para trocar mas a rodada para baixo não."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:2
@@ -8911,11 +8911,10 @@ msgid ""
 "it is more efficient in practice (linear in best case, ie when the array is "
 "already sorted, and N2/4 on average)."
 msgstr ""
-"Este algoritmo de ordenação é muito simples de entender e escrever,\n"
-"mesmo se não for o mais eficiente possível. Sua complexidade\n"
-"assintótica é O(n2), mas ele é mais eficiente na prática (linear no\n"
-"melhor caso, ie quando a array já está ordenada, e N2/4 no caso\n"
-"médio)."
+"Este algoritmo de ordenação é muito simples de entender e escrever, mesmo se "
+"não for o mais eficiente possível. Sua complexidade assintótica é O(n2), mas "
+"ele é mais eficiente na prática (linear no melhor caso, ie quando a array já "
+"está ordenada, e N2/4 no caso médio)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:10
@@ -8926,11 +8925,10 @@ msgid ""
 "left of the array are already sorted, and we have to insert x at its "
 "position in the array."
 msgstr ""
-"A ideia é percorrer todos os elementos da array, e inserir cada um\n"
-"deles em sua posição correta numa parte já ordenada da array. Quando\n"
-"nós olhamos para um elemento x, a situação é a seguinte: qualquer\n"
-"elemento da esquerda da array já está ordenado, e temos que inserir x\n"
-"na sua posição na array."
+"A ideia é percorrer todos os elementos da array, e inserir cada um deles em "
+"sua posição correta numa parte já ordenada da array. Quando nós olhamos para "
+"um elemento x, a situação é a seguinte: qualquer elemento da esquerda da "
+"array já está ordenado, e temos que inserir x na sua posição na array."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:18
@@ -8944,7 +8942,7 @@ msgstr "O pseudo-código deste algoritmo é então o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:23
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "For each i in [1,len-1]\n"
 "  store the value of i in a variable v\n"
@@ -8970,9 +8968,8 @@ msgid ""
 "Naturally, you should use a loop to write the big permutation within the "
 "given loop. Writing it this way would be really ... counter-productive."
 msgstr ""
-"Naturalmente, você deve usar um loop para escrever a grande permutação\n"
-"dentro do loop. Escrever ela desta forma deve ser na verdade\n"
-"... improdutivo."
+"Naturalmente, você deve usar um loop para escrever a grande permutação "
+"dentro do loop. Escrever ela desta forma deve ser na verdade ... improdutivo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:36
@@ -8981,10 +8978,9 @@ msgid ""
 "here is part of the answer: They improve fundamental algorithms so that "
 "others can write efficient programs."
 msgstr ""
-"Se você já se perguntou o que cientistas da computação fazem nos dias\n"
-"de hoje, aqui está uma parte da resposta: Eles melhoram algoritmos\n"
-"fundamentais para que outras pessoas possam escrever programas\n"
-"eficientes."
+"Se você já se perguntou o que cientistas da computação fazem nos dias de "
+"hoje, aqui está uma parte da resposta: Eles melhoram algoritmos fundamentais "
+"para que outras pessoas possam escrever programas eficientes."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:40
@@ -8999,11 +8995,10 @@ msgid ""
 "algorithm here since understanding its behavior requires to know what a "
 "binary tree is, what is beyond our present goals."
 msgstr ""
-"TreeSort constrói uma árvore de busca binária para ordená-la. Ele\n"
-"consegue O(n log(n)) no caso médio, mas O(n^2) nos piores casos. Não\n"
-"vamos estudar este algoritmo aqui pois para entendê-lo temos que\n"
-"entender o que uma árvore binária é, o que está além de nossos\n"
-"objetivos atuais."
+"TreeSort constrói uma árvore de busca binária para ordená-la. Ele consegue "
+"O(n log(n)) no caso médio, mas O(n^2) nos piores casos. Não vamos estudar "
+"este algoritmo aqui pois para entendê-lo temos que entender o que uma árvore "
+"binária é, o que está além de nossos objetivos atuais."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:47
@@ -9015,12 +9010,12 @@ msgid ""
 "since it provide a time complexity of O(n log(n)) but needs to store some "
 "more data."
 msgstr ""
-"Existem variações do insertion sort, tais como o PatienceSort que\n"
-"constrói pilhas de valores e ordena cada pilha depois. Este algoritmo\n"
-"apresenta um tempo 0(n log(n)) no pior caso e uma complexidade de\n"
-"espaço de 0(n). LibrarySort (proposto em 2004) também troca um pouco\n"
-"de espaço por tempo já que tem uma complexidade de tempo de O(n\n"
-"log(n)) mas precisa armazenar um pouco mais de dados."
+"Existem variações do insertion sort, tais como o PatienceSort que constrói "
+"pilhas de valores e ordena cada pilha depois. Este algoritmo apresenta um "
+"tempo 0(n log(n)) no pior caso e uma complexidade de espaço de 0(n). "
+"LibrarySort (proposto em 2004) também troca um pouco de espaço por tempo já "
+"que tem uma complexidade de tempo de O(n log(n)) mas precisa armazenar um "
+"pouco mais de dados."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:54
@@ -9028,8 +9023,8 @@ msgid ""
 "Wikipedia provides a detailled description of all these algorithms we cannot "
 "present here because of time constraints."
 msgstr ""
-"A Wikipédia fornece uma descrição detalhada de cada um destes\n"
-"algoritmos que não apresentamos aqui devido a limitações de tempo."
+"A Wikipédia fornece uma descrição detalhada de cada um destes algoritmos que "
+"não apresentamos aqui devido a limitações de tempo."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:2
@@ -9038,6 +9033,18 @@ msgstr "ShellSort"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/shell/AlgShellSort.html:4
+#, fuzzy
+#| msgid ""
+#| "This algorithm is named after its author, Donald Shell, who published it "
+#| "in 1959. It can be seen as an application of the CombSort idea (let "
+#| "elements having a long path to travel take shortcuts) to the insertion "
+#| "sort (CombSort is a variation of BubbleSort). Instead of comparing "
+#| "adjacent values during the insertion sort, it compares values separated "
+#| "by a bigger gap. The bigger the gap, the faster the elements are moved to "
+#| "their final destination, but also the less precise is this move. It is "
+#| "thus mandatory to apply the algorithm with a serie of decreasing gaps. At "
+#| "the last step, when the gap is 1, InsertionSort is used, but onto an "
+#| "array which is almost already sorted by previous steps."
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -9047,21 +9054,20 @@ msgid ""
 "the gap, the faster the elements are moved to their final destination, but "
 "also the less precise is this move. It is thus mandatory to apply the "
 "algorithm with a serie of decreasing gaps. At the last step, when the gap is "
-"1, InsertionSort is used, but onto an array which is almost already sorted "
+"one, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
-"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que\n"
-"o publicou em 1959. Ele pode ser visto como uma aplicação da ideia do\n"
-"CombSort (faça com que elementos que tem um longo caminho pegarem\n"
-"atalhos) ao insertion sort (CombSort é uma variação do BubbleSort). Ao\n"
-"invés de comparar valores adjacentes durante o insertion sort, ele\n"
-"compara valores separados por um intervalo maior. Quanto maior o\n"
-"intervalo, mais rápido os elementos se movem para seu destino final,\n"
-"mas também menos preciso fica o movimento. É portanto essencial que o\n"
-"algoritmo vá sendo aplicado numa série de intervalos cada vez\n"
-"menor. No último passo, quando o intervalo for 1, o InsertionSort será\n"
-"usado, mas numa array que estará praticamente ordenada pelos passos\n"
-"anteriores."
+"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que o "
+"publicou em 1959. Ele pode ser visto como uma aplicação da ideia do CombSort "
+"(faça com que elementos que tem um longo caminho pegarem atalhos) ao "
+"insertion sort (CombSort é uma variação do BubbleSort). Ao invés de comparar "
+"valores adjacentes durante o insertion sort, ele compara valores separados "
+"por um intervalo maior. Quanto maior o intervalo, mais rápido os elementos "
+"se movem para seu destino final, mas também menos preciso fica o movimento. "
+"É portanto essencial que o algoritmo vá sendo aplicado numa série de "
+"intervalos cada vez menor. No último passo, quando o intervalo for 1, o "
+"InsertionSort será usado, mas numa array que estará praticamente ordenada "
+"pelos passos anteriores."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:15
@@ -9069,13 +9075,12 @@ msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
 msgstr ""
-"Donald Shell propôs <code>len/2</code> como o valor inicial do\n"
-"intervalo, e ir dividindo por 2 a cada passo. O pseudo-código é o\n"
-"seguinte:"
+"Donald Shell propôs <code>len/2</code> como o valor inicial do intervalo, e "
+"ir dividindo por 2 a cada passo. O pseudo-código é o seguinte:"
 
 #. type: Content of: <p><pre>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:18
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "gap=len/2\n"
 "while gap>0:\n"
@@ -9098,15 +9103,14 @@ msgid ""
 "ShellSort is a valid candidate for array of several hundred thousands when "
 "correctly implemented."
 msgstr ""
-"Assim como no CombSort, a sequência de valores pega pelo intervalo é\n"
-"crucial para a performance do Shell sort. Em alguns casos patológicos\n"
-"raros, a sequência que usamos pode levar a uma performance\n"
-"O(n^2). Outras sequências foram propostas: os incrementos de Hibbard\n"
-"de 2k − 1 levam a uma complexidade de O(n^(3/2)) em casos\n"
-"ruins. incrementos de Pratt 2^i3^j levam a uma performance de\n"
-"O(nlog(n)log(n) nos piores casos. A existência de uma sequência\n"
-"levando a O(n log(n)) foi excluída por Poonen, Plaxton e Suel. Graças\n"
-"a esta performance, ShellSort é um candidato válido para arrays de\n"
+"Assim como no CombSort, a sequência de valores pega pelo intervalo é crucial "
+"para a performance do Shell sort. Em alguns casos patológicos raros, a "
+"sequência que usamos pode levar a uma performance O(n^2). Outras sequências "
+"foram propostas: os incrementos de Hibbard de 2k − 1 levam a uma "
+"complexidade de O(n^(3/2)) em casos ruins. incrementos de Pratt 2^i3^j levam "
+"a uma performance de O(nlog(n)log(n) nos piores casos. A existência de uma "
+"sequência levando a O(n log(n)) foi excluída por Poonen, Plaxton e Suel. "
+"Graças a esta performance, ShellSort é um candidato válido para arrays de "
 "várias centenas de milhares quando corretamente implementado."
 
 #. type: Content of: <p><p>
@@ -9117,10 +9121,10 @@ msgid ""
 "targeted serie still smaller than the array size, and then use decreasing "
 "values of the serie."
 msgstr ""
-"No nosso caso, a array é pequena demais para se beneficiar destas\n"
-"otimizações. Se você ainda assim quiser, tome o intervalo inicial como\n"
-"o maior valor da série alvo ainda menor que o tamanho do array, e\n"
-"então use valores decrescentes da série."
+"No nosso caso, a array é pequena demais para se beneficiar destas "
+"otimizações. Se você ainda assim quiser, tome o intervalo inicial como o "
+"maior valor da série alvo ainda menor que o tamanho do array, e então use "
+"valores decrescentes da série."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:38
@@ -9133,13 +9137,12 @@ msgid ""
 "International Symposium on Fundamentals of Computation Theory, LNCS 2001; "
 "Vol. 2138)."
 msgstr ""
-"Determinar a melhor sequência de intervalos para o shell sort se\n"
-"tornou um tema de pesquisa de nosso século em ciência da\n"
-"computação. Por exemplo, um artigo de 2001 introduz a seguinte\n"
-"sequência, que parece ser a melhor na prática para arrays de tamanho\n"
-"até 10^5: {1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best\n"
-"Increments for the Average Case of Shellsort, 13th International\n"
-"Symposium on Fundamentals of Computation Theory, LNCS 2001;\n"
+"Determinar a melhor sequência de intervalos para o shell sort se tornou um "
+"tema de pesquisa de nosso século em ciência da computação. Por exemplo, um "
+"artigo de 2001 introduz a seguinte sequência, que parece ser a melhor na "
+"prática para arrays de tamanho até 10^5: {1, 4, 10, 23, 57, 132, 301, 701, "
+"1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th "
+"International Symposium on Fundamentals of Computation Theory, LNCS 2001; "
 "Vol. 2138)."
 
 #. type: Content of: <h1>
@@ -9152,50 +9155,64 @@ msgstr "Selection Sort"
 msgid ""
 "In this exercise we will implement another classical algorithm: selection "
 "sort."
-msgstr "Neste exercício vamos implementar outro algoritmo clássico: selection sort."
+msgstr ""
+"Neste exercício vamos implementar outro algoritmo clássico: selection sort."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:7
+#, fuzzy
+#| msgid ""
+#| "The idea is simply to select for each cell of the array the smallest "
+#| "value from the part not already sorted. Thus for the first cell, it takes "
+#| "the smallest value over the whole array. For the second one, it takes the "
+#| "second smallest value, which is the smallest value from the cell not "
+#| "already sorted."
 msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
 "smallest value over the whole array. For the second one, it takes the second "
-"smallest value, which is the smallest value from the cell not already sorted."
+"smallest value, which is the smallest value from the cell not already "
+"sorted. You of course don't have to sort the last cell of the array, that is "
+"already sorted when you consider it."
 msgstr ""
-"A ideia é simplesmente selecionar para cada célula da array o menor\n"
-"valor da parte ainda não ordenada. Então para a primeira célula,\n"
-"pegamos o menor valor da array toda. Para a segunda, pegamos o segundo\n"
-"menor valor, que é o menor valor da célula ainda não ordenado."
+"A ideia é simplesmente selecionar para cada célula da array o menor valor da "
+"parte ainda não ordenada. Então para a primeira célula, pegamos o menor "
+"valor da array toda. Para a segunda, pegamos o segundo menor valor, que é o "
+"menor valor da célula ainda não ordenado."
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:13
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
+#, fuzzy
+#| msgid ""
+#| "More generally, for the cell N, it looks the cell M in [n;len] containing "
+#| "the smallest possible value of the interval. Then, it swaps the content "
+#| "of cell N with the one of cell M."
 msgid ""
-"More generally, for the cell N, it looks the cell M in [n;len] containing "
+"More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
 msgstr ""
-"De forma mais geral, para a célula N, ele busca a célula M em [n;len]\n"
-"contendo o menor valor possível do intervalo. Então, troca o conteúdo\n"
-"da célula N com o da célula M."
+"De forma mais geral, para a célula N, ele busca a célula M em [n;len] "
+"contendo o menor valor possível do intervalo. Então, troca o conteúdo da "
+"célula N com o da célula M."
 
 #. type: Content of: <p><p><h2>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
 msgid "Existing variations"
 msgstr "Variações existentes"
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:19
 msgid ""
 "Another classical algorithm which idea is based on the selection of good "
 "elements is HeapSort, but it uses a heap data structure which we did not see "
 "yet. Simply remember that HeapSort provides a O(n log n) performance in "
 "worst case, which is why it is a very interesting algorithm in practice."
 msgstr ""
-"Outro algoritmo clássico cuja ideia é baseada na seleção de bons\n"
-"elementos é o HeapSort, mas ele usa uma estrutura de dados heap que\n"
-"ainda não vimos. Simplesmente lembre que o HeapSort fornece um\n"
-"desempenho O(n log n) no pior caso, que é o motivo para ele ser bem\n"
-"interessante na prática."
+"Outro algoritmo clássico cuja ideia é baseada na seleção de bons elementos é "
+"o HeapSort, mas ele usa uma estrutura de dados heap que ainda não vimos. "
+"Simplesmente lembre que o HeapSort fornece um desempenho O(n log n) no pior "
+"caso, que é o motivo para ele ser bem interessante na prática."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:2
@@ -9216,11 +9233,21 @@ msgid ""
 "right gap and how to decrease it is a difficult question, but in practice, "
 "dividing it by 1.3 after each traversal leads to good performance. Here is "
 "the corresponding pseudo-code:"
-msgstr "We saw that CocktailSort improve a bit for turtles (i.e. small values near to the end of the array), but it is still possible to achieve better. ComboSort comes down to providing them a short cut: instead of comparing adjacent values, we compare values separated by a gap bigger than 1. That way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, we have to apply the algorithm with decreasing gaps, and finish with <i>gap=1</i> to ensure that the array is correctly sorted afterward. Choosing the right gap and how to decrease it is a difficult question, but in practice, dividing it by 1.3 after each traversal leads to good performance. Here is the corresponding pseudo-code:"
+msgstr ""
+"We saw that CocktailSort improve a bit for turtles (i.e. small values near "
+"to the end of the array), but it is still possible to achieve better. "
+"ComboSort comes down to providing them a short cut: instead of comparing "
+"adjacent values, we compare values separated by a gap bigger than 1. That "
+"way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, we "
+"have to apply the algorithm with decreasing gaps, and finish with <i>gap=1</"
+"i> to ensure that the array is correctly sorted afterward. Choosing the "
+"right gap and how to decrease it is a difficult question, but in practice, "
+"dividing it by 1.3 after each traversal leads to good performance. Here is "
+"the corresponding pseudo-code:"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:16
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "gap = len;\n"
 "do\n"
@@ -9363,12 +9390,19 @@ msgstr ""
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
+"Basically, he looks at the flower pot next to him and the one immediately "
+"after ; if they are in the right order he steps one pot forward, otherwise "
+"he swaps them and steps one pot backwards. Boundary conditions: if there is "
+"no previous pot, he steps forwards; if there is no pot next to him, he is "
+"done.  <i>—Dick Grune</i>"
+msgstr ""
+"Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
+"(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
 "Basically, he looks at the flower pot next to him and the previous one; if "
 "they are in the right order he steps one pot forward, otherwise he swaps "
 "them and steps one pot backwards. Boundary conditions: if there is no "
 "previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
-msgstr "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome (Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. Basically, he looks at the flower pot next to him and the previous one; if they are in the right order he steps one pot forward, otherwise he swaps them and steps one pot backwards. Boundary conditions: if there is no previous pot, he steps forwards; if there is no pot next to him, he is done.  <i>—Dick Grune</i>"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/dutchflag/Main.html:2
@@ -9485,10 +9519,15 @@ msgstr ""
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
+#, fuzzy
+#| msgid ""
+#| "<code>beforeWhite</code> is initialized to size-1. Make sure that every "
+#| "cell after <code>beforeWhite</code> and before <code>whiteRed</code> is "
+#| "filled with while elements."
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
-"with while elements."
+"with white elements."
 msgstr ""
 "<code>beforeWhite</code> é iniciado com size-1. Certifiqeu-se de que\n"
 "cada célula depois de <code>beforeWhite</code> e antes de\n"
@@ -9499,7 +9538,9 @@ msgstr ""
 msgid ""
 "Note that the unsorted cells are always between <code>afterBlue</code> and "
 "<code>beforeWhite</code>."
-msgstr "Observe que as células não-ordenadas ficam sempre entre <code>afterBlue</code> e <code>beforeWhite</code>."
+msgstr ""
+"Observe que as células não-ordenadas ficam sempre entre <code>afterBlue</"
+"code> e <code>beforeWhite</code>."
 
 #. type: Content of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:20
@@ -9508,7 +9549,11 @@ msgid ""
 "<code>afterBlue</code> and do the required exchanges.  The loop ending "
 "condition is when <code>afterBlue</code> becomes larger than "
 "<code>beforeWhite</code>."
-msgstr "Em cada passo de sua travessia, verifique a cor da célula em <code>afterBlue</code> e faça as mudanças necessárias. A condição de fim de loop é quando <code>afterBlue</code> se torna maior que <code>beforeWhite</code>."
+msgstr ""
+"Em cada passo de sua travessia, verifique a cor da célula em "
+"<code>afterBlue</code> e faça as mudanças necessárias. A condição de fim de "
+"loop é quando <code>afterBlue</code> se torna maior que <code>beforeWhite</"
+"code>."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
@@ -9520,7 +9565,9 @@ msgstr "Valores fornecidos"
 msgid ""
 "The colors are represented through the following constants: BLUE, WHITE and "
 "RED.  You can use them directly in your code."
-msgstr "As cores são representadas através das seguintes constantes: BLUE, WHITE e RED. Você pode usá-las diretamente em seu código."
+msgstr ""
+"As cores são representadas através das seguintes constantes: BLUE, WHITE e "
+"RED. Você pode usá-las diretamente em seu código."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
@@ -9542,7 +9589,8 @@ msgstr "[!java|c]void [/!]alterna([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]i
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:14
 msgid "Swap the lines number <code>x</code> and <code>y</code>."
-msgstr "Troca as linhas de número <code>x</code> com a de número <code>y</code>."
+msgstr ""
+"Troca as linhas de número <code>x</code> com a de número <code>y</code>."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:16
@@ -9624,7 +9672,9 @@ msgstr "[!java|c]int [/!]getRaioPanqueca([!java|c]int [/!]rank[!scala]:Int[/!]) 
 msgid ""
 "Returns the radius of the pancake passed as argument, with the rank of the "
 "top-most pancake being 0."
-msgstr "Retorna o raio da panqueca passado como argumento, com o rank da panqueca mais acima sendo 0."
+msgstr ""
+"Retorna o raio da panqueca passado como argumento, com o rank da panqueca "
+"mais acima sendo 0."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:12
@@ -9638,7 +9688,9 @@ msgstr "[!java]boolean [/!][!c]int [/!]panquecaDeCabeçaPraBaixo([!java|c]int [/
 msgid ""
 "Returns whether the pancake passed as argument upside-down, that is, if its "
 "burned side is on top. As usual, the top-most pancake is of rank 0."
-msgstr "Returns whether the pancake passed as argument upside-down, that is, if its burned side is on top. As usual, the top-most pancake is of rank 0."
+msgstr ""
+"Returns whether the pancake passed as argument upside-down, that is, if its "
+"burned side is on top. As usual, the top-most pancake is of rank 0."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:15
@@ -9651,7 +9703,9 @@ msgstr "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
 msgid ""
 "Flips the <code>amount</code> first pancakes composing the stack, from the "
 "top of it."
-msgstr "Vira as primeiras <code>amount</code> panquecas que compõe a pilha, do topo dela."
+msgstr ""
+"Vira as primeiras <code>amount</code> panquecas que compõe a pilha, do topo "
+"dela."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:18
@@ -9662,7 +9716,8 @@ msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()   [!scala]:Boolean[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:19
 msgid "Returns whether the pancake stack is correctly sorted."
-msgstr "Retorna verdadeiro se a pilha de panquecas estiver corretamente ordenada."
+msgstr ""
+"Retorna verdadeiro se a pilha de panquecas estiver corretamente ordenada."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
@@ -9683,7 +9738,12 @@ msgid ""
 "Dweighter in the American Mathematical Monthly. The question is not only to "
 "sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
 "amount of flips mandated to sort any stack of size <code>n</code>."
-msgstr "Esta atividade é inspirada por um problema introduzido pela primeira vez em 1975 por Harry Dweighter no American Mathematical Monthly. A pergunta não é apenas ordenar panquecas, mas determinar <code>f(n)</code> a quantidade <i>minima</i> de viradas necessárias para ordenar qualquer pilha de tamanho <code>n</code>."
+msgstr ""
+"Esta atividade é inspirada por um problema introduzido pela primeira vez em "
+"1975 por Harry Dweighter no American Mathematical Monthly. A pergunta não é "
+"apenas ordenar panquecas, mas determinar <code>f(n)</code> a quantidade "
+"<i>minima</i> de viradas necessárias para ordenar qualquer pilha de tamanho "
+"<code>n</code>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:8
@@ -9693,7 +9753,12 @@ msgid ""
 "providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n"
 "+5)/3</code>.  This was the only publication of Bill Gates before he "
 "invented Windows and became rich."
-msgstr "Este problema é agora famoso por que Bill Gates escreveu (com C. Papadimitriou) sua única publicação científica em 1979 neste tópico, fornecendo um algoritmo mais rápido e provando que <code>17n/16 ≤ f(n) ≤ (5n+5)/3</code>.  Este foi a única publicação de Bill Gates antes dele inventar o Windows e ficar rico."
+msgstr ""
+"Este problema é agora famoso por que Bill Gates escreveu (com C. "
+"Papadimitriou) sua única publicação científica em 1979 neste tópico, "
+"fornecendo um algoritmo mais rápido e provando que <code>17n/16 ≤ f(n) ≤ (5n"
+"+5)/3</code>.  Este foi a única publicação de Bill Gates antes dele inventar "
+"o Windows e ficar rico."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:12
@@ -9701,7 +9766,10 @@ msgid ""
 "Then, David X. Cohen, the inventor of the Futurama comics with many "
 "mathematical references, introduced the variant with burnt pancakes and "
 "studied its complexity with Manuel Blum in 1993."
-msgstr "Então, David X. Cohen, o inventor dos quadrinhos Futurama com muitas referências matemáticas, introduziu a variante com panquecas queimadas e estudou sua complexidade com Manuel Blum em 1993."
+msgstr ""
+"Então, David X. Cohen, o inventor dos quadrinhos Futurama com muitas "
+"referências matemáticas, introduziu a variante com panquecas queimadas e "
+"estudou sua complexidade com Manuel Blum em 1993."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:15
@@ -9712,12 +9780,19 @@ msgid ""
 "can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
 "the Gates algorithm.  That's determining the minimal amount of steps that is "
 "NP."
-msgstr "Um artigo de 2012 (de L. Bulteau, G. Fertin e I. Rusu) provou que determinar a quantidade mínima de viradas para ordenar a pilha é um problema NP-completo. Naturalmente, o problema de ordenar a pilha não é NP-complete pois pode ser resolvido em 2n-3 passos com o algoritmo simplório e (5n+5)/3 passos com o algoritmo de Gates. É a determinação da quantidade mínima de passos que é NP."
+msgstr ""
+"Um artigo de 2012 (de L. Bulteau, G. Fertin e I. Rusu) provou que determinar "
+"a quantidade mínima de viradas para ordenar a pilha é um problema NP-"
+"completo. Naturalmente, o problema de ordenar a pilha não é NP-complete pois "
+"pode ser resolvido em 2n-3 passos com o algoritmo simplório e (5n+5)/3 "
+"passos com o algoritmo de Gates. É a determinação da quantidade mínima de "
+"passos que é NP."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:20
 msgid "Further information can be found on the wikipedia page, as usual."
-msgstr "Mais informações podem ser encontradas na página da wikipédia, como sempre."
+msgstr ""
+"Mais informações podem ser encontradas na página da wikipédia, como sempre."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:23
@@ -9761,7 +9836,9 @@ msgstr "O problema da panqueca"
 #: src/lessons/sort/pancake/short_desc.html:4
 #, fuzzy
 msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
-msgstr "Ajude o pobre chef das panquecas psychorigid a ordenar sua pilha de panquecas!"
+msgstr ""
+"Ajude o pobre chef das panquecas psychorigid a ordenar sua pilha de "
+"panquecas!"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/short_desc.html:6
@@ -9778,7 +9855,7 @@ msgstr ""
 #: src/lessons/sort/pancake/BasicPancake.html:4
 #, fuzzy
 msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
+"The pancake sorting problem is a simple puzzle where you have a set of "
 "pancakes, each of differing size. The chef cooking the pancake is a bit "
 "psychorigid: he hates when the pancakes are not correctly sorted on the "
 "plate. He loves when they are correctly ordered, with the small ones over "
@@ -9787,14 +9864,29 @@ msgid ""
 "several pancakes at once. The thing is that he has only one plate and the "
 "table is too dirty to place pancakes on it, even temporary. The only allowed "
 "operation is to flip some pancakes that are on top of the stack."
-msgstr "O problema da ordenação da panqueca é um quebra-cabeças simples onde você tem um conjunto de panquecas, cada uma de tamanhos diferentes. O chef que cozinha as panquecas é um pouco \"psychorigid\": ele odeia quando as panquecas não estão corretamente ordenadas no prato. He loves when they are correctly ordered, with the small ones over the larger ones. As every pancake maker, he masters the pancake flipping with his spatula. He can flip the pancake on top of the stack, or even several pancakes at once. The thing is that he has only one plate and the table is too dirty to place pancakes on it, even temporary. The only allowed operation is to flip some pancakes that are on top of the stack."
+msgstr ""
+"O problema da ordenação da panqueca é um quebra-cabeças simples onde você "
+"tem um conjunto de panquecas, cada uma de tamanhos diferentes. O chef que "
+"cozinha as panquecas é um pouco \"psychorigid\": ele odeia quando as "
+"panquecas não estão corretamente ordenadas no prato. He loves when they are "
+"correctly ordered, with the small ones over the larger ones. As every "
+"pancake maker, he masters the pancake flipping with his spatula. He can flip "
+"the pancake on top of the stack, or even several pancakes at once. The thing "
+"is that he has only one plate and the table is too dirty to place pancakes "
+"on it, even temporary. The only allowed operation is to flip some pancakes "
+"that are on top of the stack."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:13
+#, fuzzy
+#| msgid ""
+#| "Your work is to help this poor guy sorting his stack by flipping the "
+#| "pancakes. Each pancake is defined by its radius and rank within the "
+#| "stack, where the bottom pancake is at rank 0, and the one above at rank 1."
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
-"where the bottom pancake is at rank 0, and the one above at rank 1."
+"with the top-most pancake is at rank 0, and the one below at rank 1."
 msgstr ""
 "Seu trabalho é ajudar este pobre coitado a ordenar a pilha dele\n"
 "virando as panquecas. Cada panqueca é definida pelo raio e rank dentro\n"
@@ -9843,7 +9935,9 @@ msgstr "A primeira dica não foi suficiente. Preciso de outra."
 #: src/lessons/sort/pancake/BasicPancake.html:29
 msgid ""
 "So first, you need to move the largest pancake at the bottom of the stack."
-msgstr "Logo, em primeiro lugar você precisa mover a maior panqueca para o fundo da pilha."
+msgstr ""
+"Logo, em primeiro lugar você precisa mover a maior panqueca para o fundo da "
+"pilha."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:30
@@ -9943,28 +10037,39 @@ msgid ""
 "are merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
 "<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
 "two flips are mandated."
-msgstr "<b>Caso c</b>: <code>t</code> é livre mas tanto <code>t-1</code> quanto <code>t+1</code> são últimos elementos de blocos. Tanto blocos quanto <code>t</code> são mesclados juntos em 4 viradas. Cuidado, se tanto <code>t-1</code> quanto <code>t+1</code> não existirem (pois <code>t</code> é 0 ou max), apenas duas viradas são obrigatórias."
+msgstr ""
+"<b>Caso c</b>: <code>t</code> é livre mas tanto <code>t-1</code> quanto "
+"<code>t+1</code> são últimos elementos de blocos. Tanto blocos quanto "
+"<code>t</code> são mesclados juntos em 4 viradas. Cuidado, se tanto "
+"<code>t-1</code> quanto <code>t+1</code> não existirem (pois <code>t</code> "
+"é 0 ou max), apenas duas viradas são obrigatórias."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:33
 msgid ""
 "<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is free. "
 "They are merged in one flip."
-msgstr "<b>Caso d</b>: <code>t</code> está num bloco mas <code>t+o</code> é livre. Eles são mesclados em uma virada."
+msgstr ""
+"<b>Caso d</b>: <code>t</code> está num bloco mas <code>t+o</code> é livre. "
+"Eles são mesclados em uma virada."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:38
 msgid ""
 "<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
 "first element of a block. They are merged in one flip."
-msgstr "<b>Caso e</b>: <code>t</code> está num bloco e <code>t+o</code> é o primeiro elemento de um bloco. Eles são mesclados em uma virada."
+msgstr ""
+"<b>Caso e</b>: <code>t</code> está num bloco e <code>t+o</code> é o primeiro "
+"elemento de um bloco. Eles são mesclados em uma virada."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:42
 msgid ""
 "<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
 "element of another block.  They are merged in 3 flips as follows."
-msgstr "<b>Caso f</b>: <code>t</code> está em um bloco e <code>t+o</code> é o último elemento de outro bloco. Eles são mesclados em 3 viradas como segue."
+msgstr ""
+"<b>Caso f</b>: <code>t</code> está em um bloco e <code>t+o</code> é o último "
+"elemento de outro bloco. Eles são mesclados em 3 viradas como segue."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:46
@@ -9972,7 +10077,10 @@ msgid ""
 "<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
 "is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
 "element of another block. Both blocks are merged in 2 flips:"
-msgstr "<b>Caso g</b>: <code>t</code> está em um bloco de comprimento k+1 (o último elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é tanto livre ou o último elemento é outro bloco. Ambos os blocos são mesclados em 2 viradas:"
+msgstr ""
+"<b>Caso g</b>: <code>t</code> está em um bloco de comprimento k+1 (o último "
+"elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é tanto livre ou o "
+"último elemento é outro bloco. Ambos os blocos são mesclados em 2 viradas:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:49
@@ -9981,7 +10089,12 @@ msgid ""
 "is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
 "block (the difference with case g is that <code>t+(k+1)o</code> is now the "
 "<i>first</i> element of its block). Both blocks are merged in 2 flips:"
-msgstr "<b>Caso h</b>: <code>t</code> está num bloco de comprimento k+1 (o último elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é o primeiro elemento de outro bloco (a diferença com o caso g é que <code>t+(k+1)o</code> é agora o <i>primeiro</i> elemento de seu bloco). Ambos os blocos são mesclados em 2 viradas:"
+msgstr ""
+"<b>Caso h</b>: <code>t</code> está num bloco de comprimento k+1 (o último "
+"elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é o primeiro elemento "
+"de outro bloco (a diferença com o caso g é que <code>t+(k+1)o</code> é agora "
+"o <i>primeiro</i> elemento de seu bloco). Ambos os blocos são mesclados em 2 "
+"viradas:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:55
@@ -9989,7 +10102,10 @@ msgid ""
 "<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
 "block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
 "is fliped. The algorithm then stops."
-msgstr "<b>Caso i</b>: <code>t</code> está num bloco de comprimento <code>n</code> (este bloco contém todas as panquecas). Se <code>t</code> não for 1, a pilha toda destá virada. O algoritmo então pára."
+msgstr ""
+"<b>Caso i</b>: <code>t</code> está num bloco de comprimento <code>n</code> "
+"(este bloco contém todas as panquecas). Se <code>t</code> não for 1, a pilha "
+"toda destá virada. O algoritmo então pára."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:58
@@ -10035,10 +10151,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:68
+#, fuzzy
+#| msgid ""
+#| "Note that it is somehow harder than the other exercises we did so far, so "
+#| "don't be surprised if you need more time to achieve this.  But do not "
+#| "give hope, you can do it!"
 msgid ""
 "Note that it is somehow harder than the other exercises we did so far, so "
 "don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
+"up hope, you can do it!"
 msgstr ""
 "Observe que este é de certa forma mais difícil que os outros\n"
 "exercícios que fizemos até agora, logo não se surpreenda se você\n"
@@ -10059,7 +10180,12 @@ msgid ""
 "that can be written very similarly to the explication above with a bunch of "
 "if conditions. Factorizing code this way often helps making your code more "
 "readable."
-msgstr "Primeiro escreva algumas funções auxiliares tais como <code>isFirst()</code> ou <code>isFree()</code>. This will simplify your main algorithm afterward, that can be written very similarly to the explication above with a bunch of if conditions. Factorizing code this way often helps making your code more readable."
+msgstr ""
+"Primeiro escreva algumas funções auxiliares tais como <code>isFirst()</code> "
+"ou <code>isFree()</code>. This will simplify your main algorithm afterward, "
+"that can be written very similarly to the explication above with a bunch of "
+"if conditions. Factorizing code this way often helps making your code more "
+"readable."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:79
@@ -10109,7 +10235,15 @@ msgid ""
 "algorithm manages to sort a stack of <i>n</i> pancakes in less than <i>(5n + "
 "5)/3</i> steps in the worst case, while the naive algorithm requires at most "
 "<i>2n</i> steps. Gates is thus about one third faster in the worst case."
-msgstr "O algoritmo de Gates que vimos no exercício anterior ordena rapidamente uma pilha de panquecas \"unburned\" aumentando o tamanho dos blocos de panquecas já ordenadas. Isto é muito mais rápido que o algoritmo que mova em cada passo a panqueca maior para o fundo das panquecas ainda não ordenadas. O algoritmo de Gates ordena uma pilha de <i>n</i> panquecas em menos que <i>(5n + 5)/3</i> passos no pior caso, enquanto que o algoritmo simplório precisa de no máximo <i>2n</i> passos. Gates é então cerca de 3 vezes mais rápido no pior caso."
+msgstr ""
+"O algoritmo de Gates que vimos no exercício anterior ordena rapidamente uma "
+"pilha de panquecas \"unburned\" aumentando o tamanho dos blocos de panquecas "
+"já ordenadas. Isto é muito mais rápido que o algoritmo que mova em cada "
+"passo a panqueca maior para o fundo das panquecas ainda não ordenadas. O "
+"algoritmo de Gates ordena uma pilha de <i>n</i> panquecas em menos que "
+"<i>(5n + 5)/3</i> passos no pior caso, enquanto que o algoritmo simplório "
+"precisa de no máximo <i>2n</i> passos. Gates é então cerca de 3 vezes mais "
+"rápido no pior caso."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:11
@@ -10144,25 +10278,34 @@ msgid ""
 "upside down, unless <i>p = n</i> (in which case there is no <i>p + 1</i> "
 "pancake)."
 msgstr ""
+"<b>Caso 1:</b> pelo menos uma panqueca está de cabeça para cima na\n"
+"pilha. Seja <i>p</i> a maior destas panquecas. Observe que <i>p +\n"
+"1</i> deve portanto estar de cabeça para baixo, a menos que <i>p =\n"
+"n</i> (e neste caso não existe a panqueca <i>p + 1</i>)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:22
 msgid "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
-msgstr ""
+msgstr "<b>Caso 1.a:</b> <i>p+1</i> é menor que <i>p</i> na pilha."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:23
 msgid "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
-msgstr ""
+msgstr "<b>Caso 1.b:</b> <i>p+1</i> é maior que <i>p</i> na pilha."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:24
+#, fuzzy
 msgid ""
 "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
-"stack, that is because <i>p = n</i>.  If pancake <i>p</i> is already in "
-"position, there is nothing to do. If not, you can move it to the bottom of "
-"the stack in 2 flips:"
+"pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is "
+"already in position, there is nothing to do. If not, you can move it to the "
+"bottom of the stack in 2 flips:"
 msgstr ""
+"<b>Caso 1.c:</b> Não existe <i>p+1</i> pois <i>p</i> é a \"maior pilha\",\n"
+"isto por que <i>p = n</i>.  Se a panqueca <i>p</i> já estiver na\n"
+"posição, não há nada a fazer. Se não, você pode movê-la para o fundo\n"
+"da pilha em duas viradas:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:28
@@ -10174,6 +10317,13 @@ msgid ""
 "Any traversal of the stack must then only consider these pancakes, leaving "
 "alone the ones that are already in position at the bottom of the stack."
 msgstr ""
+"<b>O truque é que a panqueca <i>p</i> nunca deve ser considerada de\n"
+"novo.</b> caso contrário, você vai considerar ela de novo e de novo\n"
+"pois ela está de cabeça pra cima, e já que é a maior panqueca. Para\n"
+"desconsiderar ela, você deve lembrar da tamanho da pilha que ainda\n"
+"está para ser ordenada. Qualquer travessia da pilha deve então\n"
+"considerar apenas estas panquecas, não mexendo nas que já estão\n"
+"posicionadas no fundo da pilha."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:36
@@ -10181,6 +10331,8 @@ msgid ""
 "<b>Case 2:</b> All pancakes are downside. Again, we distinguish two sub-"
 "cases."
 msgstr ""
+"<b>Caso 2:</b> Todas as panquecas estão de cabeça para baixo. De novo,\n"
+"distinguimos dois sub-casos."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:39
@@ -10189,6 +10341,8 @@ msgid ""
 "higher than <i>p</i> (if there is several such <i>p</i>, take the largest "
 "one)."
 msgstr ""
+"<b>Caso 2.a:</b> Existe pelo menos um <i>p</i> para o qual <i>p+1</i>\n"
+"é maior que <i>p</i> (se existem vários destes <i>p</i>, pegue o maior)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:43
@@ -10196,6 +10350,8 @@ msgid ""
 "<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
 "that case, we must have that setting:"
 msgstr ""
+"<b>Caso 2.b:</b> Qualquer panqueca <i>p</i> é menor que a panqueca\n"
+"<i>p+1</i>. Neste caso, devemos ter a seguinte configuração:"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:48
@@ -10204,9 +10360,14 @@ msgid ""
 "we need to achieve n joins to sort the stack, we can sort the stack in "
 "<i>2n</i> steps if case 2.b does not occurs."
 msgstr ""
+"Como você pode ver, alcançamos um \"join\" em duas viradas nos casos 1\n"
+"ou 2.a. Já que nós precisamos alcançar n junções para ordenar a pilha,\n"
+"podemos ordenar a pilha em <i>2n</i> passos se o caso 2.b não\n"
+"ocorrer."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:51
+#, fuzzy
 msgid ""
 "That case 2.b requires a very different handling as it is obviously not "
 "possible to achieve a join in only 2 flips.  But fortunately, we can "
@@ -10214,6 +10375,11 @@ msgid ""
 "following algorithm.  It sorts a stack in that exact configuration after "
 "exactly <i>2n</i> steps."
 msgstr ""
+"\"That case 2.b requires\" uma manipulação bastante diferente já que é\n"
+"obviamente impossível alcançar um \"join\" em apenas duas viradas. Mas\n"
+"por sorte, podemos \"leverage\" a configuração bem específica da pilha\n"
+"neste caso para fornecer o seguinte algoritmo. Ele ordena uma pilha\n"
+"nesta exata configuração depois de exatamente <i>2n</i> passos."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/CohenPancake.html:56
@@ -10223,6 +10389,9 @@ msgid ""
 "    Flip the whole stack of n pancakes\n"
 "    Flip the top (n-1) pancakes\n"
 msgstr ""
+"Repita n vezes\n"
+"    vire a pilha toda de n panquecas\n"
+"    Vire as (n-1) panquecas mais de cima\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:61
@@ -10230,19 +10399,27 @@ msgid ""
 "It may sound somehow magic, but it actually works, as depicted on an example "
 "below."
 msgstr ""
+"Pode parecer mágica, mas funciona de verdade, como é mostrado no\n"
+"exemplo abaixo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:65
+#, fuzzy
 msgid ""
 "So, all in all, the Cohen algorithm manages to sort the stack of burnt "
 "pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
 "algorithm for burnt pancakes that requires <i>3n</i> steps."
 msgstr ""
+"Portanto, \"all in all\", o algoritmo de Cohen trata de ordenar a pilha\n"
+"de panquecas queimadas em <i>2n</i> passos em todos os casos. Uma\n"
+"vitória sobre o algoritmo simplório para panquecas queimadas que\n"
+"precisa de <i>3n</i> passos."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:68
+#, fuzzy
 msgid "I cannot get it right."
-msgstr ""
+msgstr "I cannot get it right."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:69
@@ -10254,14 +10431,23 @@ msgid ""
 "displayed world. In particular, it may help to print textually the state of "
 "the world each time you enter the main loop."
 msgstr ""
+"Não se preocupe. Este exercício é muito difícil, então tudo bem se\n"
+"você não conseguir de primeira. Adicione alguns logs relevantes ao seu\n"
+"código para entender onde ele parou de funcionar\n"
+"corretamente. Certifique-se de usar o método\n"
+"<code>selecionado()</code> de forma que seus logs apenas apareçam no\n"
+"mundo que estiver sendo exibido no momento. Em particular, pode ajudar\n"
+"se você imprimir textualmente o estado do mundo cada vez que você\n"
+"adentrar no loop principal."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:2
 msgid "The Rainbow Baseball Game"
-msgstr ""
+msgstr "O jogo do basebal multicores"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:4
+#, fuzzy
 msgid ""
 "This activity is inspired from the orange game, from the \"Computer Science "
 "Unplugged\" activities repository.  It was however heavily since then, first "
@@ -10269,9 +10455,16 @@ msgid ""
 "introduce computer science, available at http://www.loria.fr/~quinson/"
 "Mediation/SMN/) and now for PLM."
 msgstr ""
+"Esta atividade é inspirada do jogo orange, do repositório de\n"
+"atividades \"Computer Science Unplugged\".  Ela foi entretanto\n"
+"profundamente alterada, primeiro para o CSIRL (meu repositório de\n"
+"atividades unplugged <i>livres</i> para introduzir a ciência da\n"
+"computação, disponível em\n"
+"http://www.loria.fr/~quinson/Mediation/SMN/) e agora para o PLM."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:8
+#, fuzzy
 msgid ""
 "In the literature, the generalized form of this problem is known as the "
 "pebble motion problem (the bases can be connected by any kind of graph, and "
@@ -10280,13 +10473,23 @@ msgid ""
 "two dimensional square grid. Much more information about these problems can "
 "be found on wikipedia, as usual."
 msgstr ""
+"Na literatura, a forma geral deste problema é conhecida como o\n"
+"problema da \"pebble motion \" (as bases podem ser conectadas por\n"
+"qualquer tipo de grafo, e a afinidade das \"pebbles\" com as bases pode\n"
+"ser diferente). Outra variante deste problema é o famoso problema\n"
+"15-puzzle, com um jogador por base, e um tabuleiro quadrado\n"
+"bidimensional. Mais informações sobre estes problemas podem ser\n"
+"encontradas na wikipédia, como sempre."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/Main.html:13
+#, fuzzy
 msgid ""
 "How do you know that the naive algorithm won't loop on that initial "
 "situation?"
 msgstr ""
+"Como você sabe que o algoritmo \"naive\" não vai entrar em loop nesta\n"
+"situação inicial?"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:15
@@ -10301,9 +10504,20 @@ msgid ""
 "initial situations for the first exercise for which the algorithm we propose "
 "is guarenteed to work."
 msgstr ""
+"Bem, nós simplemente testamos todas as situações possíveis para ver\n"
+"quando este algoritmo entra em loop e quando ele acha a solução\n"
+"correta. Nós verificamos que ele funciona em todas as situaçoes onde\n"
+"nenhum jogador está em sua casa (existem 84 situações destas para 4\n"
+"bases, levando em conta as simetrias). Ele obviamente funciona para\n"
+"algumas situações que não respeitam este critério (such as all\n"
+"situations it encounters from one of those 84 boards to the final\n"
+"state), mas isto é outra história. Dado tal critério podemos gerar\n"
+"situaões iniciais pseudo-aleatórias para o primeiro exercício para o\n"
+"qual o algoritmo que propomos com certeza funciona."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:22
+#, fuzzy
 msgid ""
 "We also explored bigger instances of the problem, and unfortunately, we have "
 "no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
@@ -10314,6 +10528,15 @@ msgid ""
 "report it. Ideally, it would be simple to enforce manually so that we can "
 "use it during our unplugged activities."
 msgstr ""
+"Também exploramos instâncias maiores do problema, e infelizmente, não\n"
+"temos tal critério para elas. Com 5 bases, o algoritmo entra em loop\n"
+"de forma errada para 24 dos 1824 possíveis tabuleiros onde nenhum\n"
+"jogador está na sua casa (que dá 1.31%).  Com 6 bases, ele falha em\n"
+"1251 dos 58860 tabuleiros (2.12%). Com 7 bases, ele falha para 84444\n"
+"dos 2633940 (3.2%). Ainda estou procurando um critério que garanta que\n"
+"o algoritmo não vai entrar em loop. Se você descobrir um, por favor\n"
+"avise. Idealmente, deve ser simples garantir manualmente de forma que\n"
+"possamos usá-lo durante nossas atividades \"unplugged\"."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/Main.html:32
@@ -10322,18 +10545,24 @@ msgid ""
 "the existing exercises) or other ones (such as a grid or a tree, if an "
 "exercise on this kind of graph proves interesting)."
 msgstr ""
+"Outras representações gráficas podem ser propostas, tais como uma\n"
+"linear (para os exercícios existentes) ou outros (como um grid ou uma\n"
+"árvore, se um exercício neste tipo de grafo se mostrar interessante)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/Main.html:34
+#, fuzzy
 msgid ""
 "Other exercises on other algorithms on this variant, or on other variants "
 "such as the 15-puzzle."
 msgstr ""
+"Outros exercícios em outros algoritmos desta variante, ou em outras\n"
+"variantes como o 15-puzzle."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
 msgid "Rainbow baseball"
-msgstr ""
+msgstr "basebal multicores"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/short_desc.html:4
@@ -10341,11 +10570,13 @@ msgid ""
 "This is another funny variation on the sorting problem, adapting the main "
 "sorting algorithms on an unusual context."
 msgstr ""
+"Este é outra variação divertida do problema da ordenação, adaptando os\n"
+"pricipais algoritmos de ordenação num contexto inusitado."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:2
 msgid "Rainbow Baseball"
-msgstr ""
+msgstr "Rainbow Baseball"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:3
@@ -10854,11 +11085,13 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:24
-msgid "Returns the current position of the turtle."
-msgstr "Retorna a posição atual da tartaruga."
+msgid ""
+"Returns the current position of the turtle.  Note that the point (0,0) is on "
+"the top left corner, as it is often the case in Computer Science."
+msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:26
+#: src/plm/universe/turtles/TurtleWorld.html:27
 #, no-wrap
 msgid ""
 "[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
@@ -10870,111 +11103,111 @@ msgstr ""
 "[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:29
+#: src/plm/universe/turtles/TurtleWorld.html:30
 msgid "Teleports the turtle to a new position (without leaving any trace)."
 msgstr "Teletransporta a tartaruga para uma nova posição (sem deixar rastros)."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:31
+#: src/plm/universe/turtles/TurtleWorld.html:32
 #, no-wrap
 msgid "[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]moverPara([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:32
+#: src/plm/universe/turtles/TurtleWorld.html:33
 msgid "Moves the turtle to a new position."
 msgstr "Move a tartaruga para uma nova posição."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:34
+#: src/plm/universe/turtles/TurtleWorld.html:35
 #, no-wrap
 msgid "[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]círculo([!java|c]double [/!]raio[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:35
+#: src/plm/universe/turtles/TurtleWorld.html:36
 msgid "Draw a circle of the specified radius centered on the turtle."
 msgstr "Desenha um círculo de raio especificado com o centro na tartaruga."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:38
 #, no-wrap
 msgid "[!java|c]void [/!]hide()"
 msgstr "[!java|c]void [/!]esconder()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:38
+#: src/plm/universe/turtles/TurtleWorld.html:39
 msgid "Hides the turtle."
 msgstr "Esconde a tartaruga."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:40
+#: src/plm/universe/turtles/TurtleWorld.html:41
 #, no-wrap
 msgid "[!java|c]void [/!]show()"
 msgstr "[!java|c]void [/!]mostrar()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:41
+#: src/plm/universe/turtles/TurtleWorld.html:42
 msgid "Shows the turtle back."
 msgstr "Mostra novamente a tartaruga."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:43
+#: src/plm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]éVisível()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:44
+#: src/plm/universe/turtles/TurtleWorld.html:45
 msgid "Returns whether the turtle is currently visible."
 msgstr "Retorna se a tartaruga é visível ou não."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:46
+#: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
 msgid "[!java|c]void [/!]clear()"
 msgstr "[!java|c]void [/!]limpar()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:47
+#: src/plm/universe/turtles/TurtleWorld.html:48
 msgid "Removes any trail on the sheet."
 msgstr "Remove todos os rastros do papel."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:49
+#: src/plm/universe/turtles/TurtleWorld.html:50
 #, no-wrap
 msgid "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:50
+#: src/plm/universe/turtles/TurtleWorld.html:51
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr "Retorna a direção atual da tartaruga (em graus)."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:53
 #, no-wrap
 msgid "[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]setDireção([!java|c]double [/!]ângulo[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:53
+#: src/plm/universe/turtles/TurtleWorld.html:54
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr "Ajusta uma nova direção para a tartaruga (em graus)."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:56
 msgid "Functions about the pen"
 msgstr "Funções da caneta"
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:58
 #, no-wrap
 msgid "[!java|c]void [/!]penUp()"
 msgstr "[!java|c]void [/!]levantarCaneta()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:59
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
@@ -10983,13 +11216,13 @@ msgstr ""
 "tartaruga não vai  deixar nenhum rastro durante seus passos seguintes."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:61
+#: src/plm/universe/turtles/TurtleWorld.html:62
 #, no-wrap
 msgid "[!java|c]void [/!]penDown()"
 msgstr "[!java|c]void [/!]abaixarCaneta()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:62
+#: src/plm/universe/turtles/TurtleWorld.html:63
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
@@ -10997,45 +11230,45 @@ msgstr ""
 "Abaixa a caneta. A tartaruga vai deixar um rastro nos próximos movimentos."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:64
+#: src/plm/universe/turtles/TurtleWorld.html:65
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!][!c]int [/!]canetaEstáAbaixada()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:65
+#: src/plm/universe/turtles/TurtleWorld.html:66
 msgid "Returns the current pen position as a boolean."
 msgstr "Retorna a posição atual da caneta como um booleano."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:68
 #, no-wrap
 msgid "[!java|c]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr "[!java|c]Cor [/!]getCor()[!scala]:Cor[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:68
+#: src/plm/universe/turtles/TurtleWorld.html:69
 msgid "Returns the current pen color."
 msgstr "Retorna a cor atual da caneta."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:71
 #, no-wrap
 msgid "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
 msgstr "[!java|c]void [/!]setCor([!java|c]Cor [/!]cor[!scala]:Cor[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:72
 msgid "Changes the pen color."
 msgstr "Muda a cor da caneta."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:74
 msgid "Other functions"
 msgstr "Outras funções"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:77
 msgid ""
 "Returns whether the current turtle is selected in the graphical interface."
 msgstr "Retorna se a tartaruga atual está selecionada na interface gráfica."
@@ -11098,6 +11331,443 @@ msgid ""
 "You should know the basic syntax of the programming language you will "
 "choose, but no exhaustive programming practice is required to take this "
 "lesson."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:2
+#, fuzzy
+#| msgid "Sorting World"
+msgid "ConsWorld"
+msgstr "Mundo da ordenação"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:4
+msgid ""
+"This world allows you to experiment with the recursive lists, as they were "
+"first introduced in Lisp. It is very similar to the BatWorld, but you are "
+"supposed to write recursive functions working on [!python|java]recursive "
+"strings. Since [!thelang] does not provide such a construct natively, the "
+"ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
+"scala]lists of integers (<code>List[Int]</code>).[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:12
+msgid ""
+"Any given such list is either the empty list (noted <code>[!scala]Nil[/!][!"
+"java]null[/!][!python]None[/!]</code>), or an integer followed by a list. If "
+"a list is not empty, you can retrieve its first integer with <code>list."
+"head</code> and the list containing its other parameters with <code>list."
+"tail</code>. Of course, the empty list has no head nor the tail, so trying "
+"to access these elements will result in an (unpleasant) error message."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:20
+msgid ""
+"To build your own list, you need to concatenate a head and a tail as "
+"follows: [!java|python]<code>cons(head, tail)</code>[/!] [!scala]<code>head::"
+"tail</code> Note that <code>::</code> is a generic operator in Scala to "
+"build lists.[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:26
+msgid ""
+"So, in summary, you can solve every exercises of this lesson with the "
+"following constructs."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+msgid "<b>The empty list:</b>"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:30
+#, fuzzy, no-wrap
+#| msgid "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
+msgstr "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+msgid "<b>Get the first element of <code>l</code></b>"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:31
+#, no-wrap
+msgid "l.head"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+msgid "<b>Get the rest of the list</b>, when the first element is removed:"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:32
+#, no-wrap
+msgid "l.tail"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:33
+msgid ""
+"<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
+"java|python]"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
+#, no-wrap
+msgid "cons(value, list)"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#, no-wrap
+msgid "value::list"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Main.html:2
+msgid "Recursive Lists"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Main.html:3
+msgid ""
+"This lesson contains a bunch of classical exercises on recursive lists.  It "
+"is certainly not the most pleasant lesson to do, but I think that it is the "
+"easiest of the PLM lessons dealing with recursion."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:10
+msgid ""
+"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
+"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
+"report them as an issue."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/cons/Main.html:13
+msgid ""
+"It would be interesting to check the asymptotic complexity of the student's "
+"code, but that does not sound easy to do. In Python and Java (where we "
+"provide a hand-made RecList class), we could count the amount of cons per "
+"exercise, but it won't be easy to relate this to the right BatTest. For "
+"Scala, it sounds even more difficult as we use the classical :: operators of "
+"the language. That will be difficult to override to add a counting "
+"mechanism. Another solution would be to ensure that the call stack does not "
+"pass a given threshold, but that sounds very difficult too. Any idea is "
+"welcome."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Length.html:2
+msgid "Length"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Length.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"length[!scala] (without using its <code>size</code> method, of course)[/!].  "
+"[!java|python]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:5
+msgid ""
+"[!python]Be careful, you are not supposed to use the Python lists, but the "
+"specific type defined in this exercise. [/!] Please refer to the world's "
+"documentation for more information about recursive lists."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Length.html:10
+#: src/lessons/recursion/cons/IsMember.html:7
+#: src/lessons/recursion/cons/Occurrence.html:7
+#: src/lessons/recursion/cons/Last.html:6
+#: src/lessons/recursion/cons/Min.html:6
+#: src/lessons/recursion/cons/Increasing.html:6
+#: src/lessons/recursion/cons/ButLast.html:6
+#: src/lessons/recursion/cons/PlusOne.html:5
+#: src/lessons/recursion/cons/Remove.html:9
+#: src/lessons/recursion/cons/ButNfirst.html:6
+msgid "Your solution should be linear in time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/IsMember.html:2
+msgid "IsMember"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/IsMember.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return true if the given integer is one of the elements of the "
+"list, or false if it cannot be found."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Occurrence.html:2
+#, fuzzy
+#| msgid "Occurrence of a value"
+msgid "Occurrences"
+msgstr "Ocorrência de um valor"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Occurrence.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an "
+"integer, return the amount of occurrences of the given integer in the list. "
+"If the integer is not a member of the list, the function should thus return "
+"0."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Last.html:2
+msgid "Last"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Last.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
+"last element.  You can assume that the list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Min.html:2
+msgid "Min"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Min.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"smallest of its values.  You will probably need an extra function, even if "
+"you can assume that the list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Increasing.html:2
+msgid "Increasing"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Increasing.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return "
+"whether its elements form an increasing sequence (i.e., if the elements are "
+"sorted from the smallest to the largest one)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButLast.html:2
+msgid "But Last"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButLast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return the "
+"list containing every elements but the last one.  You can assume that the "
+"list is not empty."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/PlusOne.html:2
+msgid "PlusOne"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/PlusOne.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list containing all elements of your parameter incremented by one."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Remove.html:2
+msgid "Remove"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Remove.html:4
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] <code>L</"
+"code>and an integer, return a new list containing all elements of <code>L</"
+"code> that are not equal to the value received as parameter."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nth.html:2
+msgid "Nth"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nth.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the <code>N</code>th element of the list."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nth.html:6
+#: src/lessons/recursion/cons/Nfirst.html:7
+msgid ""
+"You can assume that the list is long enough, i.e. that there is at least "
+"<code>N</code> elements.  Your solution should be linear in time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nfirst.html:2
+msgid "Nfirst"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list constituted of the first <code>N</code> "
+"elements. You can assume that the list is long enough, i.e. that there is at "
+"least <code>N</code> elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Nlast.html:2
+msgid "Nlast"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Nlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list with only the <code>N</code> last elements."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Nlast.html:6
+#: src/lessons/recursion/cons/ButNlast.html:6
+#: src/lessons/recursion/cons/Concat.html:6
+msgid ""
+"Your solution should be linear in time, but you will probably need to define "
+"several functions to achieve that complexity."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/cons/Nlast.html:8
+#: src/lessons/recursion/cons/ButNlast.html:8
+#: src/lessons/recursion/cons/Reverse.html:8
+#: src/lessons/recursion/cons/Concat.html:8
+msgid "I cannot do it in linear time"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Nlast.html:9
+#: src/lessons/recursion/cons/ButNlast.html:9
+msgid ""
+"The trick is to compute only once (and beforehand) how many elements you "
+"should keep."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNfirst.html:2
+msgid "But Nfirst"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNfirst.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> first elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/ButNlast.html:2
+msgid "But Nlast"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/ButNlast.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
+"<code>N</code>, return the list without the <code>N</code> last elements."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Reverse.html:2
+#, fuzzy
+#| msgid "Inverse"
+msgid "Reverse"
+msgstr "Inversa"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Reverse.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
+"list with all elements in reverse order."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/Reverse.html:5
+msgid ""
+"This function is very important and you should not pass that challenge.  "
+"Your solution should be linear in time, with the help of helper functions."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Reverse.html:9
+msgid ""
+"You need an helper function in which the result is accumulated (built) at "
+"each step."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/Concat.html:2
+msgid "Concat"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/Concat.html:3
+msgid ""
+"Given two [!scala]List[Int][/!][!java|python]recursive list[/!] <code>l1</"
+"code> and <code>l2</code>, return a new list with all elements of <code>l1</"
+"code> followed by the elements of <code>l2</code>."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/cons/Concat.html:9
+msgid ""
+"You need to modify <code>l1</code> beforehand so that the computations at "
+"each step of the recursion are in constant time."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/cons/AllDifferent.html:2
+msgid "All Different"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/cons/AllDifferent.html:3
+msgid ""
+"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return true "
+"if any two elements of the list are different (ie, if no element appears "
+"more than once in the list)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/cons/AllDifferent.html:6
+msgid ""
+"The simplest solution is in O(n²), meaning that it runs in quadratic time.  "
+"You will probably have to define one extra function for that.  Another much "
+"more complex solution runs in O(n log(n))."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -11343,19 +12013,45 @@ msgid ""
 "two sides of an equilateral triangle."
 msgstr ""
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:20
+#, fuzzy
+msgid "The pseudo-code of the general case is the following:"
+msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/koch/Koch.html:22
+#, no-wrap
+msgid ""
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment  \n"
+"  Turn 120 degrees to the right\n"
+"  Draw recursively a smaller segment\n"
+"  Turn 60 degrees to the left\n"
+"  Draw recursively a smaller segment\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:30
+msgid ""
+"As you can see, the function forward() is not called from the recursive "
+"case, only in the base case when there is no recursive call."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:21
+#: src/lessons/recursion/koch/Koch.html:35
 #: src/lessons/recursion/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:25
+#: src/lessons/recursion/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -11520,6 +12216,31 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/tree/Tree.html:16
 msgid ""
+"At the end, here is the pseudo-code of the general case (you should add the "
+"base case yourself):"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/recursion/tree/Tree.html:18
+#, no-wrap
+msgid ""
+"  Move forward of the desired length\n"
+"  Draw (recursively) the right subtree\n"
+"  Draw (recursively) the left subtree\n"
+"  Move back to your initial position\n"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:23
+msgid ""
+"Don't forget to add the base case to your code, or your buggle will enter an "
+"infinite loop.  Then, drawing the right subtree comes down to turn right and "
+"then draw the subtree."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:26
+msgid ""
 "As you can see, each recursion level is represented by a distinctive color. "
 "For that, you have to call the <code>current(step)</code>, passing the "
 "current recursion level as a parameter. This will pick the right color for "
@@ -11528,7 +12249,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:20
+#: src/lessons/recursion/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
@@ -11653,12 +12374,12 @@ msgstr ""
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
-"switch to the creative mode (from the Session menu)  to disable the world "
+"switch to the creative mode (from the Exercise menu)  to disable the world "
 "comparison when you explore with these spirals."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:19
+#: src/lessons/recursion/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
@@ -12959,6 +13680,16 @@ msgid ""
 "remainders, so 17 % 10 is 7."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool1/LastDigit.html:10
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
+msgid ""
+"This exercise was converted to PLM from the excellent exercising site http://"
+"javabat.com/"
+msgstr ""
+"Este exercício foi convertido para o PLM do excelente sítio de\n"
+"exercícios http://javabat.com/"
+
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
@@ -13301,8 +14032,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/Main.html:4
 msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/ifboolean.html."
+"A very good introduction to this type is available here: http://codingbat."
+"com/doc/java-if-boolean-logic.html"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -13450,14 +14181,14 @@ msgstr ""
 #: src/lessons/bat/string1/Main.html:4
 msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
-"operations, such as getting the length of the string, or a substring of it.."
+"operations, such as getting the length of the string, or a substring of it."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
 msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/string.html."
+"A very good introduction to this type is available here: http://codingbat."
+"com/doc/java-string-introduction.html"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -13754,7 +14485,7 @@ msgid ""
 "Get the vertices of the ground's profile from left to right.  [!java|"
 "scala]You can retrieve the X and Y coordinates of each point with the "
 "corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
-"code>.[!/] [!python]Each point is an array of two integers denoting "
+"code>.[/!] [!python]Each point is an array of two integers denoting "
 "respectively the X and Y coordinates of that point.[/!]"
 msgstr ""
 
@@ -13793,7 +14524,8 @@ msgstr ""
 msgid ""
 "The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that "
 "you should write now will be called every 0.1 second during the simulation. "
-"It should set the desired thrust of the next simulation step, by calling "
+"Make sure that your code does not last too long, with no while loop! It "
+"should only set the desired thrust of the next simulation step, by calling "
 "<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:"
 "Integer[/!])</code> where <code>desiredThrust</code> is some integer between "
 "0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
@@ -13804,7 +14536,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:27
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:28
 msgid ""
 "In order to take informed decisions, you can query the lander's state. In "
 "this simulation you'll probably be interested in its vertical position: "
@@ -13816,7 +14548,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lander/lvl1_lander_101/Lander101.html:35
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:36
 msgid ""
 "One last thing: the lander is pretty small so you don't have much fuel. At "
 "each step of the simulation the lander consumes as many fuel units as the "
@@ -14188,6 +14920,56 @@ msgid ""
 msgstr ""
 "O botão <b>Marcar</b> pede que o seu \"buggle\" deixe uma marca atrás dele "
 "depois que sair."
+
+#~ msgid "When your program works, move forward to the next exercise."
+#~ msgstr "Quando o seu programa funciona, vá para o próximo exercício."
+
+#~ msgid ""
+#~ "To take one corridor, you simply have to run from one intersection to "
+#~ "another while counting the baggles you see on your path. The method "
+#~ "<code>crossing()</code> tells you whether your buggle currently stands on "
+#~ "an intersection.  The extra complexity is that at the beginning of a "
+#~ "corridor, you obviously stand on an intersection, but you still want to "
+#~ "move on.  [!java|scala|c]For that, the easiest is to use a <code>do / "
+#~ "while</code> loop instead of a regular <code>while</code> loop to move "
+#~ "until the next intersection.[/!] [!python]For that, use an extra variable "
+#~ "indicating whether you already entered the corridor, as follows. This "
+#~ "will ensure that you execute the loop body at least once (when "
+#~ "<code>firstTime</code> is true) before we actually use the value returned "
+#~ "by <code>crossing()</code> to determine to continue or not.[/!]"
+#~ msgstr ""
+#~ "Para entrar em um corredor, você tem simplesmente que ir de uma "
+#~ "intersecção para a outra enquanto conta os baggles que vê em seu caminho. "
+#~ "O método \"<code>cruzamento()</code>\" diz se seu buggle está ou não numa "
+#~ "intersecção. A complexidade extra é que no começo de um corredor, você "
+#~ "está obviamente numa intersecção, mas você ainda precisa se mover.  [!"
+#~ "java|scala|c]Para isto, a forma mais fácil é usar um loop <code>do / "
+#~ "while</code> (faça / enquanto) ao invés de um loop <code>while</code> "
+#~ "(enquanto) normal para se mover até a próxima intersecção.[/!] [!"
+#~ "python]Para isto, use uma variável extra indicando quando você já entrou "
+#~ "no corredor, como segue. Isto vai garantir que você execute o corpo do "
+#~ "loop pelo menos uma vez (quando o <code>primeiraVez</code> for "
+#~ "verdadeiro) antes de nós usarmos realmente o valor retornado pelo "
+#~ "<code>cruzamento()</code> para determinar se continuamos ou não.[/!]"
+
+#~ msgid ""
+#~ "firstTime = True\n"
+#~ "while firstTime or not crossing():\n"
+#~ "  firstTime = False\n"
+#~ "  (loop body)\n"
+#~ msgstr ""
+#~ "primeiraVez = True\n"
+#~ "while primeiraVez or not cruzamento():\n"
+#~ "  primeiraVez = False\n"
+#~ "  (corpo do loop)\n"
+
+#~ msgid "Beware, the first line and column are numbered 0 and not 1..."
+#~ msgstr ""
+#~ "Cuidado, a primeira linha e a primeira coluna são numeradas com 0 e\n"
+#~ "não com 1..."
+
+#~ msgid "Returns the current position of the turtle."
+#~ msgstr "Retorna a posição atual da tartaruga."
 
 #~ msgid "This code is then perfectly equivalent to the following one."
 #~ msgstr "Este código é então complemtamente equivalente ao seguinte."
