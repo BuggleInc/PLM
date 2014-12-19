@@ -43,7 +43,7 @@ public abstract class Lesson {
 
 	public Lesson() {
 		id = getClass().getCanonicalName().replaceAll(".Main$","");
-		id = id.replaceAll("^lessons.", "");		
+		id = id.replaceAll("^lessons.", "");
 	}
 	
 	public void loadLesson() {

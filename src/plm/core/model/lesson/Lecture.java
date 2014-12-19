@@ -70,8 +70,7 @@ public abstract class Lecture {
 
 
 	public String getMission(ProgrammingLanguage lang) {
-		String res = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+PlmHtmlEditorKit.filterHTML(this.mission,Game.getInstance().isDebugEnabled())+"</body></html>";
-		return res;
+		return PlmHtmlEditorKit.filterHTML(this.mission,Game.getInstance().isDebugEnabled());
 	}
 	public void setMission(String mission) {
 		this.mission=mission;
