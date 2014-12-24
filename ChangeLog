@@ -2,6 +2,8 @@
 
   * Improved translations:
     - Brazilian: missions at 65%
+  * Engine:
+    - Ask loudly before pushing anything to the remote servers
   * Worlds:
     - #284: Turtle, Buggle: Better message when mixing pens and brushes
   * Pedagogical content:
