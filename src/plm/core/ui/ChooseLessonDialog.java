@@ -47,7 +47,7 @@ public class ChooseLessonDialog extends JFrame {
 		initComponents(Game.getInstance());
 	}
 
-	private void initComponents(Game g) {
+	private void initComponents(Game g) {		
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 	        @Override
@@ -96,6 +96,35 @@ public class ChooseLessonDialog extends JFrame {
 		setSize(750, 500);
 		setVisible(true);
 		setResizable(false);
+		
+		System.out.println("Property: "+ Game.getProperty("plm.git.track.user"));
+		
+		if(Game.getProperty("plm.git.track.user").equals("unknown")) {
+			String trackUserProperty = "unknown";
+			String message = "The only way to close this dialog is by\n"
+				    + "pressing one of the following buttons.\n"
+				    + "Do you understand?";
+			String title = "Test";
+			Object[] options = {"Yes, please",
+                    "No, thanks",
+                    "Let me decide later"};
+			int n = JOptionPane.showOptionDialog(this,
+			    message,
+			    title,
+			    JOptionPane.YES_NO_CANCEL_OPTION,
+			    JOptionPane.QUESTION_MESSAGE,
+			    null,
+			    options,
+			    options[2]);
+			if(n == 0) {
+				// The user agreed to let us track his activity on PLM
+				trackUserProperty = "true";
+			}
+			else if(n == 1) {
+				trackUserProperty = "false";
+			}
+			Game.setProperty("plm.git.track.user", trackUserProperty);
+		}
 	}
 }
 

@@ -104,10 +104,15 @@ case _ => MergeStrategy.first
    - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
    - Hériter de *ShadowRootAware* permet d'écouter
      l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
+   - Mais Dom pas encore complètement chargé lors de l'exécution du
+     code Dart ce qui force, faute d'avoir trouvé mieux, l'utilisation
+     d'un timer pour instancier l'éditeur de code.
 ** TODO Modifier les messages concernant l'envoi de données au serveur
    - Actuellement, plusieurs messages sont affichés pour informer
      l'utilisateur que PLM est en train d'envoyer les données de son
      activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de communiquer ses données, ce qui peut prêter à confusion.
+   SCHEDULED: <2014-12-08 lun.>
    - Ces messages apparaissent même si l'utilisateur a refusé de
      communiquer ses données, ce qui peut prêter à confusion.
    SCHEDULED: <2014-12-08 lun.>
@@ -218,4 +223,3 @@ case _ => MergeStrategy.first
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour effectuer le code des
      clients une fois passé en mode serveur centralisé.
-     
