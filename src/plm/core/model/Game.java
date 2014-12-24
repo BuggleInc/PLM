@@ -168,7 +168,7 @@ public class Game implements IWorldView {
 		if (checkScala())
 			System.err.println(i18n.tr("Scala is usable on your machine. Congratulations."));
 		else
-			System.err.println(i18n.tr("Please install Scala version 2.10 or higher to use it in the PLM."));
+			System.err.println(i18n.tr("Please install Scala version 2.11 or higher to use it in the PLM."));
 		if (checkPython())
 			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
 		else
@@ -232,7 +232,7 @@ public class Game implements IWorldView {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private boolean checkScala() {
-		String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/ScalaObject", "/scala/reflect/io/AbstractFile"};
+		String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit",        "/scala/reflect/io/AbstractFile"};
 		String[] hints     = new String[] {"scala-compiler.jar",           "scala-library.jar",  "scala-reflect.jar"};
 		for (int i=0;i<resources.length;i++) {
 			scalaError = canResolve(resources[i],hints[i]);
