@@ -4,6 +4,7 @@
     - Brazilian: missions at 65%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
+    - Switch embeeded scala compiler to version 2.11.4
   * Worlds:
     - #284: Turtle, Buggle: Better message when mixing pens and brushes
   * Pedagogical content:
