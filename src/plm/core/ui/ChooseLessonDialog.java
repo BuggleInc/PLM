@@ -101,13 +101,13 @@ public class ChooseLessonDialog extends JFrame {
 		
 		if(Game.getProperty("plm.git.track.user").equals("unknown")) {
 			String trackUserProperty = "unknown";
-			String message = "The only way to close this dialog is by\n"
-				    + "pressing one of the following buttons.\n"
-				    + "Do you understand?";
-			String title = "Test";
-			Object[] options = {"Yes, please",
-                    "No, thanks",
-                    "Let me decide later"};
+			String message = "The PLM can save your data anonymously on remote servers. That way, you \n"
+				    + "can retrieve your session from your anonymous tag from any connected computer.\n"
+				    + "This anonymous data also helps scientists understanding how people learn \n"
+				    +" programming. No nominative information is stored, only the source code written\n"
+				    + "to solve the challenges.\n";
+			String title = "Do you want to store your data online?";
+			Object[] options = {"Ok, save my data online", "No, keep everything local", "Let me decide later"};
 			int n = JOptionPane.showOptionDialog(this,
 			    message,
 			    title,
@@ -119,8 +119,7 @@ public class ChooseLessonDialog extends JFrame {
 			if(n == 0) {
 				// The user agreed to let us track his activity on PLM
 				trackUserProperty = "true";
-			}
-			else if(n == 1) {
+			} else if(n == 1) {
 				trackUserProperty = "false";
 			}
 			Game.setProperty("plm.git.track.user", trackUserProperty);
