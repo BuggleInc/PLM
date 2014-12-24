@@ -29,13 +29,13 @@ public class StartExecution extends AbstractGameAction implements HumanLangChang
 			asked = 5; /* Ask every 5 runs */
 			
 			String trackUserProperty = "unknown";
-			String message = "The PLM can save your data anonymously on remote servers. That way, you \n"
+			String message = i18n.tr("The PLM can save your data anonymously on remote servers. That way, you \n"
 				    + "can retrieve your session from your anonymous tag from any connected computer.\n"
 				    + "This anonymous data also helps scientists understanding how people learn \n"
 				    +" programming. No nominative information is stored, only the source code written\n"
-				    + "to solve the challenges.\n";
-			String title = "Do you want to store your data online?";
-			Object[] options = {"Ok, save my data online", "No, keep everything local", "Let me decide later"};
+				    + "to solve the challenges.\n");
+			String title = i18n.tr("Do you want to store your data online?");
+			Object[] options = {i18n.tr("Ok, save my data online"), i18n.tr("No, keep everything local"), i18n.tr("Let me decide later")};
 			int n = JOptionPane.showOptionDialog(MainFrame.getInstance(),
 			    message,
 			    title,
