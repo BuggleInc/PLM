@@ -409,7 +409,7 @@ public class BaseballWorld extends World {
 			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1}",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)

@@ -506,7 +506,41 @@ public abstract class AbstractBuggle extends Entity {
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
-
+	/* BINDINGS TRANSLATION: Brazilian Portuguese */
+	public void esquerda()        { left(); }
+	public void direita()         { right(); }
+	public void voltar()          { back(); }
+	public void avançar()          throws BuggleWallException { forward(); }
+	public void avançar(int steps) throws BuggleWallException { forward(steps); }
+	public void recuar()           throws BuggleWallException { backward(); }
+	public void recuar(int steps)  throws BuggleWallException { backward(steps); }
+	public Color getCorDoCorpo()        { return getBodyColor(); }
+	public void setCorDoCorpo(Color c)  { setBodyColor(c); }
+	public boolean estáDeFrenteParaParede() { return isFacingWall(); }
+	public boolean estáDeCostasParaParede() { return isBackingWall(); }
+	public void levantarCaneta()            { penUp(); }
+	public void abaixarCaneta()             { penDown(); }
+	public void levantarPincel()            { brushUp(); }
+	public void abaixarPincel()             { brushDown(); }
+/*    	public boolean estBrosseBaissee()     { return isBrushDown(); }
+	public Color getCouleurBrosse()       { return getBrushColor(); }
+	public void setCouleurBrosse(Color c) { setBrushColor(c); }
+	public Color getCouleurSol()          { return getGroundColor(); }
+	public boolean estSurBiscuit()        { return isOverBaggle(); }
+	public boolean porteBiscuit()         { return isCarryingBaggle(); }
+	public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+	public void poseBiscuit()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
+	public boolean estSurMessage()        { return isOverMessage(); }
+	public String litMessage()            { return readMessage(); }
+	public void ecritMessage(String s)    { writeMessage(s); }
+	public void ecritMessage(int i)       { writeMessage(i); }
+	public void effaceMessage()           { clearMessage(); }
+	public int getMondeHauteur()          { return getWorldHeight(); }
+	public int getMondeLargeur()          { return getWorldWidth(); }
+	// get/set X/Y/Pos are not translated as they happen to be the same in French
+	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
+	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+*/
 
 	@Override
 	public void command(String command, BufferedWriter out){
