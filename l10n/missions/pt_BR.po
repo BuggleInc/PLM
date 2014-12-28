@@ -1,4 +1,4 @@
-# Portuguese translations for PACKAGE package
+# Portuguese translations for PLM package
 # Copyright (C) 2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2014.
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-12-22 10:34+0100\n"
-"PO-Revision-Date: 2014-12-11 23:02-0300\n"
+"PO-Revision-Date: 2014-12-24 17:12-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -175,6 +175,8 @@ msgid ""
 "Note that the point (0,0) is on the top left corner, as it is often the case "
 "in Computer Science."
 msgstr ""
+"Observe que o ponto (0,0) está no canto superior esquerdo, o que é comum em "
+"ciência da computação."
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:25
@@ -962,8 +964,8 @@ msgid ""
 "If you are not sure, go for this lesson that will teach you the bases of "
 "programming."
 msgstr ""
-"Se você não tem certeza, vá para esta lição que ela irá te ensinar as bases "
-"da programação."
+"Se você está perdido, venha para esta lição que ela irá te ensinar as\n"
+"bases da programação."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:4
@@ -976,13 +978,14 @@ msgid ""
 "language, but you can change it from the Language menu if you want, or by "
 "clicking on the [!thelang/] icon at the right of the status bar below."
 msgstr ""
-"Você acaba de iniciar o Programmer's Learning Machine. Este é um sistema de "
-"gestão de aprendizagem para ensinar a arte de programação de computadores "
-"através de exercícios interativos. É formado por um conjunto de exercícios "
-"agrupados por lições, para que você possa aprender no seu tempo. Atualmente, "
-"o ambiente é configurado para ser programado na linguagem de programação [!"
-"thelang/], mas você pode mudar isto no menu de Idiomas se você quiser, ou "
-"clicando no ícone [!thelang/] na direita da barra de status."
+"Você acaba de iniciar o Programmer's Learning Machine. Este é um\n"
+"sistema de gestão de aprendizagem para ensinar a arte de programação\n"
+"de computadores através de exercícios interativos. É formado por um\n"
+"conjunto de exercícios agrupados por lições, para que você possa\n"
+"aprender no seu tempo. Atualmente, o ambiente está configurado para ser\n"
+"programado na linguagem de programação [!thelang/], mas você pode\n"
+"mudar isto no menu de Idioma/linguagem se você quiser, ou clicando no\n"
+"ícone [!thelang/] na direita da barra de status."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:11
@@ -1014,8 +1017,8 @@ msgstr ""
 "exercício. Por exemplo, neste exercício você deve instruir seu buggle\n"
 "a avançar um passo. Você pode ver isto verificando a diferença entre a\n"
 "visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e\n"
-"suas configurações no menu Idioma), seu código deve ser escrito em C,\n"
-"Java, Python ou Scala."
+"suas configurações no menu Idioma/linguagem), seu código deve ser\n"
+"escrito em C, Java, Python ou Scala."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:23
@@ -1038,7 +1041,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:31
-#, fuzzy
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -1048,15 +1050,14 @@ msgid ""
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You will see, with a bit of habit, we get used to it."
 msgstr ""
-"Se seu código tem erros (e qualquer código sempre vai ter em algum\n"
-"momento), o computador vai exibir mensagens de erro no console. Você\n"
-"obviamente terá que consertar os erros para passar nos exercícios. As\n"
-"mensagens que são mostradas podem soar assustadoras à primeira vista,\n"
-"mas não entre em pânico. O compilador é meio limitado nas suas\n"
-"capacidades de comunicação, mas ele não faz de má-vontade. Se você olhar de\n"
-"perto, a solução para o problema está escrita no meio daquelas\n"
-"mensagens ilegíveis. Você vai notar que com um pouco de hábito a gente\n"
-"se acostuma."
+"Se seu código tem erros (e qualquer código sempre vai ter em algum momento), "
+"o computador vai exibir mensagens de erro no console. Você obviamente terá "
+"que consertar os erros para passar nos exercícios. As mensagens que são "
+"mostradas podem soar assustadoras à primeira vista, mas não entre em pânico. "
+"O compilador é meio limitado nas suas capacidades de comunicação, mas ele "
+"não faz de má-vontade. Se você olhar de perto, a solução para o problema "
+"está escrita no meio daquelas mensagens ilegíveis. Você vai notar que com um "
+"pouco de hábito a gente se acostuma."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:39
@@ -1131,8 +1132,8 @@ msgstr "[/!]"
 msgid ""
 "Once done, click on run. You can proceed to next exercise once it works."
 msgstr ""
-"Uma vez feito, clique em rodar (run). Você pode seguir para o próximo "
-"exercício assim que este funcionar."
+"Uma vez feito, clique em rodar. Você pode seguir para o próximo exercício "
+"assim que este funcionar."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:4
@@ -1638,17 +1639,15 @@ msgid ""
 "the right-hand side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), "
 "<b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
-"A condição pode ser uma variável\n"
-"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>\n"
-"(vamos voltar a falar de variáveis num próximo exercício, não se\n"
-"preocupe) ou um teste aritmético, como <code>x == 5</code>, que\n"
-"verifica se o valor atual de <code>x</code> é 5, ou algo como\n"
-"<b>!=</b> (verifica inequação, ou seja, retorna\n"
-"[!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado\n"
-"esquerdo é diferente do direito), <b>&lt;</b> (smaller than - menor\n"
-"que), <b>&gt;</b> (larger than - maior que), <b>&lt;=</b> (smaller or\n"
-"equal to - menor ou igual a), <b>&gt;=</b> (larger or equal to - maior\n"
-"ou igual a)."
+"A condição pode ser uma variável <code>[!c]int[/!][!java]boolean[/!][!scala|"
+"python]Boolean[/!]</code> (vamos voltar a falar de variáveis num próximo "
+"exercício, não se preocupe) ou um teste aritmético, como <code>x == 5</"
+"code>, que verifica se o valor atual de <code>x</code> é 5, ou algo como <b>!"
+"=</b> (verifica inequação, ou seja, retorna [!c]1[/!][!java|scala]true[/!][!"
+"python]True[/!] apenas se o lado esquerdo é diferente do direito), <b>&lt;</"
+"b> (smaller than - menor que), <b>&gt;</b> (larger than - maior que), <b>&lt;"
+"=</b> (smaller or equal to - menor ou igual a), <b>&gt;=</b> (larger or "
+"equal to - maior ou igual a)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:71
@@ -1659,13 +1658,11 @@ msgid ""
 "get trapped is some cases (such as when you are affecting a [!c]int[/!][!"
 "java|python|scala]boolean[/!] variable). So you'd better to be careful..."
 msgstr ""
-"Cuidado com um erro clássico, que é verificar a igualdade da variável\n"
-"usando = no lugar de ==. Ainda bem que o\n"
-"[!java|scala|c]compilador[/!][!python]interpretador[/!] detecta este\n"
-"problema na maior parte das vezes, mas às vezes passa (como quando\n"
-"você está atribuindo valor a uma variável\n"
-"[!c]int[/!][!java|python|scala]booleana[/!]). Então é bom ter\n"
-"cuidado..."
+"Cuidado com um erro clássico, que é verificar a igualdade da variável usando "
+"= no lugar de ==. Ainda bem que o [!java|scala|c]compilador[/!][!"
+"python]interpretador[/!] detecta este problema na maior parte das vezes, mas "
+"às vezes passa (como quando você está atribuindo valor a uma variável [!"
+"c]int[/!][!java|python|scala]booleana[/!]). Então é bom ter cuidado..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:76
@@ -1675,11 +1672,10 @@ msgid ""
 "returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a "
 "wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case."
 msgstr ""
-"A condição pode também ser uma chamada para alguns métodos\n"
-"particulares que retornam booleano. Por exemplo, o método\n"
-"<code>estáDeFrenteParaParede()</code> do buggle retorna\n"
-"[!c]1[/!][!java|python|scala]true[/!] se o buggle está olhando para\n"
-"uma parede, e falso caso contrário."
+"A condição pode também ser uma chamada para alguns métodos particulares que "
+"retornam booleano. Por exemplo, o método <code>estáDeFrenteParaParede()</"
+"code> do buggle retorna [!c]1[/!][!java|python|scala]true[/!] se o buggle "
+"está olhando para uma parede, e falso caso contrário."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:80
@@ -1712,11 +1708,10 @@ msgid ""
 "<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
 "of both propositions cannot be false)."
 msgstr ""
-"<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> é\n"
-"verdadeiro se <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> é verdadeiro (se\n"
-"<tt>cond1</tt> é verdadeiro, <tt>cond2</tt> não é nem sequer calculada\n"
-"pois já se sabe que a disjunção de ambas as proposições não pode ser\n"
-"verdadeira)."
+"<code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> é verdadeiro "
+"se <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> é verdadeiro (se <tt>cond1</tt> é "
+"verdadeiro, <tt>cond2</tt> não é nem sequer calculada pois já se sabe que a "
+"disjunção de ambas as proposições não pode ser verdadeira)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:89
@@ -1789,11 +1784,11 @@ msgid ""
 "facing a wall, simply use the <code>isFacingWall()</code> built-in, that "
 "every buggle understands."
 msgstr ""
-"<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve\n"
-"se mover um passo para trás. Se não, você deve se mover um passo para\n"
-"frente. para detectar se você está de cara para uma parede,\n"
-"simplesmente use a função pré-fabricada\n"
-"<code>estáDeFrenteParaParede()</code>, que todo buggle entende."
+"<a name=\"Objectives\"/> Se o buggle está de cara numa parede, você deve se "
+"mover um passo para trás. Se não, você deve se mover um passo para frente. "
+"para detectar se você está de cara para uma parede, simplesmente use a "
+"função pré-fabricada <code>estáDeFrenteParaParede()</code>, que todo buggle "
+"entende."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:116
@@ -1928,6 +1923,8 @@ msgid ""
 "Look at the documentation (in \"Help/About this world\") for the full list "
 "of buggles' methods."
 msgstr ""
+"Procure na documentação (em \"Ajuda/Sobre este mundo\") para a lista "
+"completa dos métodos dos buggles."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:3
@@ -1969,13 +1966,12 @@ msgid ""
 "to walk away without solving the problem. Dwarfs are sometimes really "
 "stubborns..."
 msgstr ""
-"Seus buggles ficaram presos nas minas de Moria! Algumas pedras estão\n"
-"bloqueando a saída, e você terá que limpar seu caminho para a\n"
-"saída. Bem, é claro que são apenas baggles e você pode simplesmente\n"
-"sair andando, mas será mais fácil programar seu buggle de forma que\n"
-"ele mova estas \"pedras\" do que convencer seu buggle que ele pode sair\n"
-"andando facilmente sem resolver o problema. Anões podem ser bem\n"
-"teimosos..."
+"Seus buggles ficaram presos nas minas de Moria! Algumas pedras estão "
+"bloqueando a saída, e você terá que limpar seu caminho para a saída. Bem, é "
+"claro que são apenas baggles e você pode simplesmente sair andando, mas será "
+"mais fácil programar seu buggle de forma que ele mova estas \"pedras\" do "
+"que convencer seu buggle que ele pode sair andando facilmente sem resolver o "
+"problema. Anões podem ser bem teimosos..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:11
@@ -1987,14 +1983,13 @@ msgid ""
 "you find the exit (that is, the wall to the east side). Afterward, move out "
 "as in the objective world. That's only a few more steps away."
 msgstr ""
-"Bem, você tem que encontrar o primeiro baggle bloqueando a saída\n"
-"(simplemente ande para o leste até que você esteja sobre um baggle),\n"
-"pegue ele e mova para o outro lado do túnel (ande para o oeste\n"
-"enquanto você ainda não estiver sobre um baggle, e então mova-se de\n"
-"volta um passo para o leste e solte seu baggle), e repita até você\n"
-"encontrar a saída (ou seja, a parede com o muro para o lado\n"
-"leste). Depois disto, mova-se para fora como no mundo objetivo. São só\n"
-"mais uns passos."
+"Bem, você tem que encontrar o primeiro baggle bloqueando a saída "
+"(simplemente ande para o leste até que você esteja sobre um baggle), pegue "
+"ele e mova para o outro lado do túnel (ande para o oeste enquanto você ainda "
+"não estiver sobre um baggle, e então mova-se de volta um passo para o leste "
+"e solte seu baggle), e repita até você encontrar a saída (ou seja, a parede "
+"com o muro para o lado leste). Depois disto, mova-se para fora como no mundo "
+"objetivo. São só mais uns passos."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:18
@@ -2004,11 +1999,10 @@ msgid ""
 "It seems that using <code>while</code> loops is the only solution to move "
 "the buggles correctly."
 msgstr ""
-"Para piorar ainda mais as coisas, você tem que escrever um programa\n"
-"que funcione para qualquer buggle, mesmo se escrever um programa\n"
-"específico para cada um deles for mais fácil. Parece que usar loops\n"
-"<code>while</code> é a única solução para mover os buggles\n"
-"corretamente."
+"Para piorar ainda mais as coisas, você tem que escrever um programa que "
+"funcione para qualquer buggle, mesmo se escrever um programa específico para "
+"cada um deles for mais fácil. Parece que usar loops <code>while</code> é a "
+"única solução para mover os buggles corretamente."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:23
@@ -2194,12 +2188,11 @@ msgid ""
 "specify it if you prefer.  So you want that the variable contains 5 as "
 "initial value, you should type:"
 msgstr ""
-"Você ainda tem que especificar se você usa alguns valores genéricos\n"
-"como uma inicialização, tais como o valor muito especial\n"
-"<code>null</code>, cujo tipo parece ser ambíguo. Mesmo quando o tipo é\n"
-"claro, você ainda pode especificar o tipo se preferir. Portanto, se\n"
-"você quiser que a variável contenha 5 como valor inicial, você deve\n"
-"digitar:"
+"Você ainda tem que especificar se você usa alguns valores genéricos como uma "
+"inicialização, tais como o valor muito especial <code>null</code>, cujo tipo "
+"parece ser ambíguo. Mesmo quando o tipo é claro, você ainda pode especificar "
+"o tipo se preferir. Portanto, se você quiser que a variável contenha 5 como "
+"valor inicial, você deve digitar:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:50
@@ -2328,13 +2321,13 @@ msgid ""
 "the value. More interestingly, the compiler can produce faster code in some "
 "cases."
 msgstr ""
-"Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando\n"
-"ela contém o tamanho da tela ou outro valor constante), então você\n"
-"deve fazer dela um <b>valor</b> ao invés de uma variável. Simplesmente\n"
-"mude a palavra-chave <code>var</code> para <code>val</code>. O\n"
-"compilador pode então verificar suas ações e capturar seu erro quando\n"
-"você inadvertidamente modificar o valor. Mais interessante ainda, o\n"
-"compilador pode produzir código mais rápido em alguns casos."
+"Se você sabe que o valor de sua \"variável\" nunca vai mudar (eg quando ela "
+"contém o tamanho da tela ou outro valor constante), então você deve fazer "
+"dela um <b>valor</b> ao invés de uma variável. Simplesmente mude a palavra-"
+"chave <code>var</code> para <code>val</code>. O compilador pode então "
+"verificar suas ações e capturar seu erro quando você inadvertidamente "
+"modificar o valor. Mais interessante ainda, o compilador pode produzir "
+"código mais rápido em alguns casos."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:86
@@ -2425,8 +2418,8 @@ msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
 msgstr ""
-"À esquerda do símbolo de igual você pode colocar uma expressão\n"
-"aritmética contendo constantes, variáveis e operações."
+"À esquerda do símbolo de igual você pode colocar uma expressão aritmética "
+"contendo constantes, variáveis e operações."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:115
@@ -2655,10 +2648,9 @@ msgid ""
 "handy to use the instruction <code>range(n)</code> to generate the sequence "
 "n integer value from 0 to n-1.[/!] [!java|scala|c] one should write:[/!]"
 msgstr ""
-"Por exemplo, para repetir o corpo do loop <code>n</code> vezes,\n"
-"[!python] é útil usar a instrução <code>range(n)</code> para gerar a\n"
-"sequência de n valores inteiros de 0 a n-1.[/!] [!java|scala|c] você\n"
-"deve escrever:[/!]"
+"Por exemplo, para repetir o corpo do loop <code>n</code> vezes, [!python] é "
+"útil usar a instrução <code>range(n)</code> para gerar a sequência de n "
+"valores inteiros de 0 a n-1.[/!] [!java|scala|c] você deve escrever:[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:23
@@ -2694,12 +2686,12 @@ msgid ""
 "Your uttermost goal should remain to keep your code simple and easy to read, "
 "to ensure that your day remain pleasant and productive."
 msgstr ""
-"Este código é então equivalente ao seguinte do ponto de vista do\n"
-"computador. Do ponto de vista do programador, uma forma ou outra pode\n"
-"ser mais difícil ou mais fácil de ler, dependendo da situação. Você\n"
-"deve escolher sabiamente em qual situação usar um loop for ou um loop\n"
-"while. Seu objetivo principal deve ser manter seu código simples e\n"
-"fácil de ler, para garantir que seu dia seja agradável e produtivo."
+"Este código é então equivalente ao seguinte do ponto de vista do computador. "
+"Do ponto de vista do programador, uma forma ou outra pode ser mais difícil "
+"ou mais fácil de ler, dependendo da situação. Você deve escolher sabiamente "
+"em qual situação usar um loop for ou um loop while. Seu objetivo principal "
+"deve ser manter seu código simples e fácil de ler, para garantir que seu dia "
+"seja agradável e produtivo."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopfor/LoopFor.html:41
@@ -2837,9 +2829,9 @@ msgid ""
 "stair: It leads directly to heaven, and each time you walk on it, joyful "
 "colors spur all around."
 msgstr ""
-"Seu buggle está um pouco deprimido hoje, mas ele está na frente de uma\n"
-"escada mágica: Ela leva diretamente para o paraíso, e cada vez que\n"
-"você anda nela, belas cores surgem de todos os lados."
+"Seu buggle está um pouco deprimido hoje, mas ele está na frente de uma "
+"escada mágica: Ela leva diretamente para o paraíso, e cada vez que você anda "
+"nela, belas cores surgem de todos os lados."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:7
@@ -3167,6 +3159,10 @@ msgid ""
 "another while counting the baggles you see on your path. That's easy: there "
 "is 5 steps in each corridors so a simple <code>for</code> loop suffices."
 msgstr ""
+"Para entrar num corredor, você tem que simplesmente correr de uma "
+"intersecção para outra enquanto conta os baggles que vê no seu caminho. Isto "
+"é fácil: existem 5 passos em cada corredor, de forma que um simples loop "
+"<code>for</code> resolve."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/welcome/loopdowhile/Poucet1.html:25
@@ -3214,13 +3210,12 @@ msgid ""
 "reproducing it. You cannot do otherwise because the same code will be "
 "executed on three different worlds, each of them having a specific pattern."
 msgstr ""
-"O objetivo deste exercício é reproduzir o padrão da primeira linha nas\n"
-"outras linhas com um deslocamento de uma célula (veja a aba Objetivo\n"
-"para detalhes). A maior diferença entre este exercício e os outros\n"
-"sobre padrões é que você tem que ler o padrão (na primeira linha)\n"
-"antes de reproduzí-lo. Você não pode fazer de outro jeito por que o\n"
-"mesmo código será executado em três mundos diferentes, cada um com seu\n"
-"próprio padrão."
+"O objetivo deste exercício é reproduzir o padrão da primeira linha nas "
+"outras linhas com um deslocamento de uma célula (veja a aba Objetivo para "
+"detalhes). A maior diferença entre este exercício e os outros sobre padrões "
+"é que você tem que ler o padrão (na primeira linha) antes de reproduzí-lo. "
+"Você não pode fazer de outro jeito por que o mesmo código será executado em "
+"três mundos diferentes, cada um com seu próprio padrão."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:12
@@ -3230,11 +3225,10 @@ msgid ""
 "methods to teleport the buggle to a specific position (<code>setPos()</code> "
 "and similar), this approach will be a pain to implement."
 msgstr ""
-"Uma solução é ler a próxima célula, e copiar ela na posição antes de\n"
-"voltar para ler a segunda célula. Mas já que é proibido usar os\n"
-"métodos de teletransporte de buggle para uma posição específica\n"
-"(<code>setPos()</code> e similares), esta abordagem seria muito\n"
-"difícil de implementar."
+"Uma solução é ler a próxima célula, e copiar ela na posição antes de voltar "
+"para ler a segunda célula. Mas já que é proibido usar os métodos de "
+"teletransporte de buggle para uma posição específica (<code>setPos()</code> "
+"e similares), esta abordagem seria muito difícil de implementar."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:17
@@ -3244,11 +3238,10 @@ msgid ""
 "before we can do so, we should learn a bit what [!java|scala]arrays[/!][!"
 "python]lists[/!] are."
 msgstr ""
-"O mais simples é armazenar a sequência de cores que constituem o\n"
-"padrão inteiro numa\n"
-"[!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  Mas antes de\n"
-"fazer isto, devemos aprender um pouco sobre o que\n"
-"[!java|scala]arrays[/!][!python]lists[/!] são."
+"O mais simples é armazenar a sequência de cores que constituem o padrão "
+"inteiro numa [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  Mas "
+"antes de fazer isto, devemos aprender um pouco sobre o que [!java|"
+"scala]arrays[/!][!python]lists[/!] são."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/array/basics/Array1.html:21
@@ -3275,24 +3268,22 @@ msgid ""
 "differing types, such as integer values in some cells and colors in other "
 "cells.[/!]"
 msgstr ""
-"[!java|scala]Uma array[/!][!python]Uma list[/!] é uma sequência\n"
-"ordenada de variáveis que ficam juntas. é similar a uma estante onde\n"
-"em cada prateleira se coloca um valor separado. Cada variável da\n"
-"sequência é identificada por sua posição, e pode armazenar um valor\n"
-"específico. [!java|scala]todas as células da array devem armazenar\n"
-"valores do mesmo tipo por que arrays são homogêneas em [!thelang]. É\n"
-"possível burlar esta restrição usando tipos de dados\n"
-"<code>[!java]Object[/!][!scala]Any[/!]</code> que contenham\n"
-"[!java]praticamente[/!] qualquer outro tipo de dados. [!java]Tipos\n"
-"primitivos como aqueles que vimos anteriormente (int, boolean, double,\n"
-"char, etc) não podem ser armazenados numa variável Object, mas suas\n"
-"contrapartidas objetificadas (Integer, Boolean, Double, Char, Boolean,\n"
-"etc) podem.[/!] Entretanto, é boa prática fazer o tipo de uma array o\n"
-"mais específico possível, i.e., se você planeja armazenar alguns\n"
-"inteiros na sua array, faça dela uma array de inteiros, não de\n"
-"[!java]Object[/!][!scala]Any[/!].[/!] [!python]Lists podematé mesmo\n"
-"misturar valores de diferentes tipos, como valores inteiros em algumas\n"
-"células e cores em outras células.[/!]"
+"[!java|scala]Uma array[/!][!python]Uma list[/!] é uma sequência ordenada de "
+"variáveis que ficam juntas. é similar a uma estante onde em cada prateleira "
+"se coloca um valor separado. Cada variável da sequência é identificada por "
+"sua posição, e pode armazenar um valor específico. [!java|scala]todas as "
+"células da array devem armazenar valores do mesmo tipo por que arrays são "
+"homogêneas em [!thelang]. É possível burlar esta restrição usando tipos de "
+"dados <code>[!java]Object[/!][!scala]Any[/!]</code> que contenham [!"
+"java]praticamente[/!] qualquer outro tipo de dados. [!java]Tipos primitivos "
+"como aqueles que vimos anteriormente (int, boolean, double, char, etc) não "
+"podem ser armazenados numa variável Object, mas suas contrapartidas "
+"objetificadas (Integer, Boolean, Double, Char, Boolean, etc) podem.[/!] "
+"Entretanto, é boa prática fazer o tipo de uma array o mais específico "
+"possível, i.e., se você planeja armazenar alguns inteiros na sua array, faça "
+"dela uma array de inteiros, não de [!java]Object[/!][!scala]Any[/!].[/!] [!"
+"python]Lists podematé mesmo misturar valores de diferentes tipos, como "
+"valores inteiros em algumas células e cores em outras células.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:40
@@ -3306,15 +3297,14 @@ msgid ""
 "scala]T(N-1)[/!]. It may seem funny to count starting from 0 and not from 1 "
 "as usual, but some historical reasons make it unavoidable here."
 msgstr ""
-"T é o nome da [!java|scala]array[/!][!python]list[/!],\n"
-"[!java|python]T[0][/!][!scala]T(0)[/!] é o nome da primeira célula,\n"
-"[!java|python]T[1][/!][!scala]T(1)[/!] é o nome da segunda célula,\n"
-"[!java|python]T[2][/!][!scala]T(2)[/!] da terceira e etc. E sim, a\n"
-"primeira célula é numerada [!java|python]T[0][/!][!scala]T(0)[/!] e a\n"
-"última de uma [!java|scala]array[/!][!python]list[/!] de tamanho N é\n"
-"[!java|python]T[N-1][/!][!scala]T(N-1)[/!]. Pode parecer estranho\n"
-"contar a partir de 0 e não de 1 como normalmente, mas por motivos\n"
-"históricos isto agora é inevitável."
+"T é o nome da [!java|scala]array[/!][!python]list[/!], [!java|python]T[0][/!]"
+"[!scala]T(0)[/!] é o nome da primeira célula, [!java|python]T[1][/!][!"
+"scala]T(1)[/!] é o nome da segunda célula, [!java|python]T[2][/!][!scala]T(2)"
+"[/!] da terceira e etc. E sim, a primeira célula é numerada [!java|"
+"python]T[0][/!][!scala]T(0)[/!] e a última de uma [!java|scala]array[/!][!"
+"python]list[/!] de tamanho N é [!java|python]T[N-1][/!][!scala]T(N-1)[/!]. "
+"Pode parecer estranho contar a partir de 0 e não de 1 como normalmente, mas "
+"por motivos históricos isto agora é inevitável."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:48
@@ -3333,15 +3323,14 @@ msgid ""
 "scala]T(i)[/!]</code> can be used just like any variable. We can set a new "
 "value:"
 msgstr ""
-"Podemos usar uma variável inteira <i>i</i> para acessar com\n"
-"[!java|python]T[i][/!][!scala]T(i)[/!] as células: quando o valor de\n"
-"<i>i</i> é 0, [!java|python]T[i][/!][!scala]T(i)[/!] acessa\n"
-"[!java|python]T[0][/!][!scala]T(0)[/!]; quando o valor de <i>i</i> é\n"
-"10, [!java|python]T[i][/!][!scala]T(i)[/!] acessa\n"
-"[!java|python]T[10][/!][!scala]T(10)[/!]. Sizemos que <i>i</i> é o\n"
-"<b>índice</b> em T.\n"
-"<code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> pode ser usada\n"
-"simplesmente como qualquer variável. Podemos configurar um novo valor:"
+"Podemos usar uma variável inteira <i>i</i> para acessar com [!java|"
+"python]T[i][/!][!scala]T(i)[/!] as células: quando o valor de <i>i</i> é 0, "
+"[!java|python]T[i][/!][!scala]T(i)[/!] acessa [!java|python]T[0][/!][!"
+"scala]T(0)[/!]; quando o valor de <i>i</i> é 10, [!java|python]T[i][/!][!"
+"scala]T(i)[/!] acessa [!java|python]T[10][/!][!scala]T(10)[/!]. Sizemos que "
+"<i>i</i> é o <b>índice</b> em T. <code>[!java|python]T[i][/!][!scala]T(i)"
+"[/!]</code> pode ser usada simplesmente como qualquer variável. Podemos "
+"configurar um novo valor:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:58
@@ -3383,9 +3372,8 @@ msgid ""
 "It is very easy to traverse the whole [!scala|java]array[/!][!"
 "python]list[/!], for example to initialize each cells."
 msgstr ""
-"É muito fácil percorrer toda a\n"
-"[!scala|java]array[/!][!python]list[/!], por exemplo para iniciar as\n"
-"células."
+"É muito fácil percorrer toda a [!scala|java]array[/!][!python]list[/!], por "
+"exemplo para iniciar as células."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:71
@@ -3427,8 +3415,8 @@ msgid ""
 "If you just want to iterate over the values of T without keeping track of "
 "their index, you can simply write:"
 msgstr ""
-"Se você quer simplesmente iterar nos valores de T sem controlar o\n"
-"índice, pode simplesmente escrever:"
+"Se você quer simplesmente iterar nos valores de T sem controlar o índice, "
+"pode simplesmente escrever:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:84
@@ -3455,16 +3443,15 @@ msgid ""
 "but this should be the topic of a specific set of exercises (that are still "
 "to be written in PLM).[/!]"
 msgstr ""
-"[!java]Esta construção é chamada um <i>loop extendido</i> em Java. A\n"
-"variável <i>i</i> assume todos os valores do conjunto localizado a\n"
-"direita do dois-pontos (:), um depois do outro.[/!]\n"
-"[!python|scala]Isto é na verdade muito similar à construção\n"
-"anterior. Simplesmente, <code>[!python]range(n)[/!][!scala]i to\n"
-"j[/!]</code> retorna um conjunto de inteiros sobre os quais o loop for\n"
-"itera. Na verdade, [!thelang] oferece formas muito mais elegantes de\n"
-"percorrer [!python]lists[/!][!scala]arrays[/!] e outras coleções de\n"
-"dados, mas isto fica para um conjunto específico de exercícios (que\n"
-"ainda será escrito no PLM).[/!]"
+"[!java]Esta construção é chamada um <i>loop extendido</i> em Java. A "
+"variável <i>i</i> assume todos os valores do conjunto localizado a direita "
+"do dois-pontos (:), um depois do outro.[/!] [!python|scala]Isto é na verdade "
+"muito similar à construção anterior. Simplesmente, <code>[!python]range(n)"
+"[/!][!scala]i to j[/!]</code> retorna um conjunto de inteiros sobre os quais "
+"o loop for itera. Na verdade, [!thelang] oferece formas muito mais elegantes "
+"de percorrer [!python]lists[/!][!scala]arrays[/!] e outras coleções de "
+"dados, mas isto fica para um conjunto específico de exercícios (que ainda "
+"será escrito no PLM).[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:98
@@ -3478,9 +3465,9 @@ msgid ""
 "all together.  Just put them between square braces and separated by commas "
 "as follows:"
 msgstr ""
-"Se você sabe antecipadamente o conteúdo da sua lista, você pode atribuir\n"
-"os valores todos juntos. Coloque eles simplesmente entre colchetes e\n"
-"separados por vírgulas como segue:"
+"Se você sabe antecipadamente o conteúdo da sua lista, você pode atribuir os "
+"valores todos juntos. Coloque eles simplesmente entre colchetes e separados "
+"por vírgulas como segue:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:104
@@ -3498,8 +3485,8 @@ msgid ""
 "Otherwise, you probably want to create an empty list and then append each "
 "values separately to the list:"
 msgstr ""
-"Por outro lado, você provavelmente vai querer criar uma lista vazia e\n"
-"então anexar os valores separadamente a ela:"
+"Por outro lado, você provavelmente vai querer criar uma lista vazia e então "
+"anexar os valores separadamente a ela:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:108
@@ -3535,7 +3522,7 @@ msgid ""
 "To declare a variable named <b>T</b> that can store an array of integers, "
 "one should write:"
 msgstr ""
-"Para declarar uma variável chamada <b>T</b> que pode guardar uma array de\n"
+"Para declarar uma variável chamada <b>T</b> que pode guardar uma array de "
 "inteiros, você deve escrever:"
 
 #. type: Content of: <pre>
@@ -3556,15 +3543,14 @@ msgid ""
 "specifying that each cell of this array is an integer. An array of booleans "
 "would simply by written <code>Array[Boolean]</code>.[/!]"
 msgstr ""
-"[!java]<code>int</code> significa que os elementos da array são do\n"
-"tipo inteiro; <code>[]</code> significa que estamos falando de uma\n"
-"array e <code>T</code> é o nome da variável. Por motivos históricos,\n"
-"também pode ser escrito como <code>int T[]</code> (com o [] depois do\n"
-"nome da variável), mas como assim é menos legível é melhor você evitar\n"
-"esta forma.[/!] [!scala]A notação <code>[Int]</code> especializa o\n"
-"tipo Array (que é genérico), especificando que cada célula desta array\n"
-"é um inteiro. Um array de booleanos deve ser escrito simplesmente como\n"
-"<code>Array[Boolean]</code>.[/!]"
+"[!java]<code>int</code> significa que os elementos da array são do tipo "
+"inteiro; <code>[]</code> significa que estamos falando de uma array e "
+"<code>T</code> é o nome da variável. Por motivos históricos, também pode ser "
+"escrito como <code>int T[]</code> (com o [] depois do nome da variável), mas "
+"como assim é menos legível é melhor você evitar esta forma.[/!] [!scala]A "
+"notação <code>[Int]</code> especializa o tipo Array (que é genérico), "
+"especificando que cada célula desta array é um inteiro. Um array de "
+"booleanos deve ser escrito simplesmente como <code>Array[Boolean]</code>.[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:130
@@ -3580,12 +3566,11 @@ msgid ""
 "What would <code>[!java]T[4][/!][!scala]T(4)[/!]</code> mean if we didn't "
 "say that the array is 5 cells long?"
 msgstr ""
-"Declarar uma variável <code>T</code> que armazena uma array apenas\n"
-"reserva o <b>nome</b> <code>T</code> para uso futuro, mas não reserva\n"
-"a área de memória para armazenar as células. A array ainda não está\n"
-"inicializada: ela não tem qualquer valor. O que significa\n"
-"<code>[!java]T[4][/!][!scala]T(4)[/!]</code> se ainda não dissemos que\n"
-"a array tem 5 células?"
+"Declarar uma variável <code>T</code> que armazena uma array apenas reserva o "
+"<b>nome</b> <code>T</code> para uso futuro, mas não reserva a área de "
+"memória para armazenar as células. A array ainda não está inicializada: ela "
+"não tem qualquer valor. O que significa <code>[!java]T[4][/!][!scala]T(4)"
+"[/!]</code> se ainda não dissemos que a array tem 5 células?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:137
@@ -3606,11 +3591,11 @@ msgid ""
 "of 10 integer values.  In return, an array of 10 integer cells is created in "
 "memory, and the <code>T</code> variable <b>references</b> this array."
 msgstr ""
-"<code>new</code> (novo) significa que nós queremos criar algo, e\n"
-"<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> significa\n"
-"que é uma array de 10 valores inteiros. Como resultado, uma array de\n"
-"10 células para valores inteiros é criada na memória, e a variável\n"
-"<code>T</code> <b>faz referência</b> a esta array."
+"<code>new</code> (novo) significa que nós queremos criar algo, e <code>[!"
+"java]int[10][/!][!scala]Array[Int](10)[/!]</code> significa que é uma array "
+"de 10 valores inteiros. Como resultado, uma array de 10 células para valores "
+"inteiros é criada na memória, e a variável <code>T</code> <b>faz referência</"
+"b> a esta array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:145
@@ -3619,9 +3604,9 @@ msgid ""
 "the array. The size of a <code>T</code> array can be retrieve by consulting "
 "the variable <code>T.length</code>."
 msgstr ""
-"O tamanho de uma array é fixo e não pode ser mudado depois da criação\n"
-"da array. O tamanho de uma array <code>T</code> pode ser recuperado ao\n"
-"se consultar a variável <code>T.length</code>."
+"O tamanho de uma array é fixo e não pode ser mudado depois da criação da "
+"array. O tamanho de uma array <code>T</code> pode ser recuperado ao se "
+"consultar a variável <code>T.length</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:149
@@ -3636,16 +3621,16 @@ msgid ""
 "the variable.  You are required to use the <code>new</code> instruction to "
 "allocate it, as in <code>int[] T = new int[10];</code> [/!]"
 msgstr ""
-"Na hora da alocação, você pode especificar o tamanho com uma variável:\n"
-"<code>[!java]int[] T = new int[i];[/!][!scala]var T = new\n"
-"Array[Int](i);[/!]</code> Neste caso, o tamanho da array será ajustado\n"
-"para o valor de <code>i</code> <i>quando <code>new</code> for\n"
-"chamado</i>.  O tamanho da array ainda não pode ser modificado: mesmo\n"
-"se a variável <code>i</code> mudar depois disto, o tamanho permanece o\n"
-"do valor dado no momento da alocação.  [!java]Além disto, é proibido\n"
-"escrever algo como <code>int T[10];</code> no momento de declarar a\n"
-"variável. Você deve usar a instrução <code>new</code> para alocar o\n"
-"array, como em <code>int[] T = new int[10];</code> [/!]"
+"Na hora da alocação, você pode especificar o tamanho com uma variável: "
+"<code>[!java]int[] T = new int[i];[/!][!scala]var T = new Array[Int](i);"
+"[/!]</code> Neste caso, o tamanho da array será ajustado para o valor de "
+"<code>i</code> <i>quando <code>new</code> for chamado</i>.  O tamanho da "
+"array ainda não pode ser modificado: mesmo se a variável <code>i</code> "
+"mudar depois disto, o tamanho permanece o do valor dado no momento da "
+"alocação.  [!java]Além disto, é proibido escrever algo como <code>int T[10];"
+"</code> no momento de declarar a variável. Você deve usar a instrução "
+"<code>new</code> para alocar o array, como em <code>int[] T = new int[10];</"
+"code> [/!]"
 
 #. type: Content of: <h4>
 #: src/lessons/welcome/array/basics/Array1.html:157
@@ -3658,8 +3643,8 @@ msgid ""
 "If you know beforehand the content of your array, you can declare, allocate "
 "and initialize it in one shoot:"
 msgstr ""
-"Se você sabe previamente o conteúdo da sua array, você pode declarar,\n"
-"alocar e inicializar ela tudo de uma vez:"
+"Se você sabe previamente o conteúdo da sua array, você pode declarar, alocar "
+"e inicializar ela tudo de uma vez:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:159
@@ -3673,8 +3658,8 @@ msgid ""
 "To know the size of the array to allocate, the compiler counts the provided "
 "values.  This code is equivalent to:"
 msgstr ""
-"Para saber o tamanho da array para alocar, o compilador conta os\n"
-"valores dados. Este código é equivalente a:"
+"Para saber o tamanho da array para alocar, o compilador conta os valores "
+"dados. Este código é equivalente a:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:163
@@ -3737,10 +3722,9 @@ msgid ""
 "method as a parameter.  This method can then use this parameter as if it "
 "were defined locally:"
 msgstr ""
-"Não tem nenhum problema passar uma\n"
-"[!python]list[/!][!java|scala]array[/!] para um método como\n"
-"parâmetro. Este método pode então usar este parâmetro como se ele\n"
-"fosse definido localmente:"
+"Não tem nenhum problema passar uma [!python]list[/!][!java|scala]array[/!] "
+"para um método como parâmetro. Este método pode então usar este parâmetro "
+"como se ele fosse definido localmente:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:188
@@ -3794,9 +3778,9 @@ msgid ""
 "more complicated as the compiler has to know the type of the parameter you "
 "are creating.  For that, use the following (ugly) construct:"
 msgstr ""
-"Se você quer alocar e inicializar o array de uma vez só, é um pouco\n"
-"mais complicado pois o compilador terá que saber o tipo do parâmetro\n"
-"que você está criando. Para isto, use a seguinte construção (feia):"
+"Se você quer alocar e inicializar o array de uma vez só, é um pouco mais "
+"complicado pois o compilador terá que saber o tipo do parâmetro que você "
+"está criando. Para isto, use a seguinte construção (feia):"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:206
@@ -3817,11 +3801,9 @@ msgid ""
 "without any complication.  Here is a method that returns [!java|scala]an "
 "array[/!][!python]a list[/!] of the requested size, filled with 42s."
 msgstr ""
-"Métodos também podem retornar\n"
-"[!java|scala]arrays[/!][!python]lists[/!] como resultado sem nenhuma\n"
-"complicação. Aqui está um método que retorna uma\n"
-"[!java|scala]array[/!][!python]list[/!] do tamanho pedido, preenchido\n"
-"com 42s."
+"Métodos também podem retornar [!java|scala]arrays[/!][!python]lists[/!] como "
+"resultado sem nenhuma complicação. Aqui está um método que retorna uma [!"
+"java|scala]array[/!][!python]list[/!] do tamanho pedido, preenchido com 42s."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:214
@@ -3889,17 +3871,16 @@ msgid ""
 "by reading the ground color in each locations (with <code>getGroundColor()</"
 "code>).[/!]"
 msgstr ""
-"Sua missão é bastante simples na verdade. Seu código deve guardar o\n"
-"padrão de cores observado na primeira linha numa\n"
-"[!java|scala]array[/!][!python]list[/!].  [!python]O mais fácil é\n"
-"criar uma lista vazia, e então usar <code>append()</code>para\n"
-"adicionar as cores uma por uma à medida em que você for lendo elas\n"
-"(com <code>getCorDoChão()</code>).[/!] [!java|scala]Para isto, você\n"
-"deve declarar e alocar uma array de <code>Cor</code>. Mas atencção,\n"
-"existem vários mundos, de diferentes tamanhos; use\n"
-"<code>getAlturaDoMundo()</code> para recuperar o tamanho do mundo\n"
-"atual. Uma que a array esteja alocada, preencha ela lendo a cor do\n"
-"chão em cada um dos pontos (com <code>getCorDoChão()</code>).[/!]"
+"Sua missão é bastante simples na verdade. Seu código deve guardar o padrão "
+"de cores observado na primeira linha numa [!java|scala]array[/!][!"
+"python]list[/!].  [!python]O mais fácil é criar uma lista vazia, e então "
+"usar <code>append()</code>para adicionar as cores uma por uma à medida em "
+"que você for lendo elas (com <code>getCorDoChão()</code>).[/!] [!java|"
+"scala]Para isto, você deve declarar e alocar uma array de <code>Cor</code>. "
+"Mas atencção, existem vários mundos, de diferentes tamanhos; use "
+"<code>getAlturaDoMundo()</code> para recuperar o tamanho do mundo atual. Uma "
+"que a array esteja alocada, preencha ela lendo a cor do chão em cada um dos "
+"pontos (com <code>getCorDoChão()</code>).[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:242
@@ -3908,10 +3889,10 @@ msgid ""
 "reapply the pattern on every rows, for example by executing "
 "<code>getWorldHeight()</code> times a method written specifically for this."
 msgstr ""
-"Uma vez que você conseguiu ler e gravar o padrão na primeira linha,\n"
-"você tem que reaplicar o padrão nas outras linhas, por exemplo\n"
-"executando <code>getAlturaDoMundo()</code> vezes um método escrito\n"
-"especificamente para isto."
+"Uma vez que você conseguiu ler e gravar o padrão na primeira linha, você tem "
+"que reaplicar o padrão nas outras linhas, por exemplo executando "
+"<code>getAlturaDoMundo()</code> vezes um método escrito especificamente para "
+"isto."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array2.html:2
@@ -3924,8 +3905,8 @@ msgid ""
 "This exercise is similar to the previous one: you have to reproduce the "
 "color pattern of the first cell into the other ones."
 msgstr ""
-"Este exercício é similar ao anterior: você tem que reproduzir o padrão\n"
-"de cores da primeira célula nas outras."
+"Este exercício é similar ao anterior: você tem que reproduzir o padrão de "
+"cores da primeira célula nas outras."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:7
@@ -3936,11 +3917,11 @@ msgid ""
 "<code>for</code> loop and do only <code>getWorldHeight()-1</code> steps in "
 "the loop."
 msgstr ""
-"A primeira diferença é que o mundo é cercado de muros: você portanto\n"
-"tem que modificar levemente sua trajetória para garantir que o buggle\n"
-"não bata num muro. O jeito mais simples é manipular a primeira célula\n"
-"fora do loop <code>for</code> e fazer apenas\n"
-"<code>getAlturaDoMundo()-1</code> passos no loop."
+"A primeira diferença é que o mundo é cercado de muros: você portanto tem que "
+"modificar levemente sua trajetória para garantir que o buggle não bata num "
+"muro. O jeito mais simples é manipular a primeira célula fora do loop "
+"<code>for</code> e fazer apenas <code>getAlturaDoMundo()-1</code> passos no "
+"loop."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:13
@@ -3949,9 +3930,9 @@ msgid ""
 "fixed, but written on the first cell of each column. To get the info as an "
 "integer, we can use:"
 msgstr ""
-"A outra diferença é que o deslocamento para aplicar entre as colunas\n"
-"não é fixo, mas está escrito na primeira célula de cada coluna. Para\n"
-"obter a informação como um inteiro, podemos usar:"
+"A outra diferença é que o deslocamento para aplicar entre as colunas não é "
+"fixo, mas está escrito na primeira célula de cada coluna. Para obter a "
+"informação como um inteiro, podemos usar:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array2.html:17
@@ -3967,10 +3948,9 @@ msgid ""
 "[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> transforms the string "
 "<code>str</code> into an integer by <i>reading</i> it."
 msgstr ""
-"<code>readMessage()</code> obtém a mensagem no chão como uma\n"
-"[!java|scala]String[/!][!python]string[/!], enquanto\n"
-"<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)"
-"[/!]</code>\n"
+"<code>readMessage()</code> obtém a mensagem no chão como uma [!java|"
+"scala]String[/!][!python]string[/!], enquanto <code>[!java]Integer."
+"parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> "
 "transforma a string <code>str</code> em um inteiro ao <i>ler</i> ela."
 
 #. type: Content of: <p>
@@ -3981,10 +3961,10 @@ msgid ""
 "retrieve the <code>i</code>th cell of an array of size <code>size</code> "
 "with an offset of <code>5</code>."
 msgstr ""
-"Então, para pegar a cor certa, o mais fácil é usar o operador\n"
-"<code>%</code> (módulo). Por exemplo, <code>(i + 5) % tamanho</code>\n"
-"serve para recuperar a <code>i</code>-ésima célula de uma array de\n"
-"tamanho <code>tamanho</code> com um deslocamento de <code>5</code>."
+"Então, para pegar a cor certa, o mais fácil é usar o operador <code>%</code> "
+"(módulo). Por exemplo, <code>(i + 5) % tamanho</code> serve para recuperar a "
+"<code>i</code>-ésima célula de uma array de tamanho <code>tamanho</code> com "
+"um deslocamento de <code>5</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:28
@@ -4003,8 +3983,8 @@ msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
 msgstr ""
-"O objetivo deste exercício é buscar a célula de um dado valor, e\n"
-"retornar sua posição."
+"O objetivo deste exercício é buscar a célula de um dado valor, e retornar "
+"sua posição."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
@@ -4014,10 +3994,10 @@ msgid ""
 "<code>lookingFor</code> is not in the array <code>tab</code>, the method "
 "should return -1."
 msgstr ""
-"Para isto, você deve preencher o método <code>indexOf()</code>, cujos\n"
-"parâmetros são a array a ser explorada, e o valor a ser buscado. Se o\n"
-"valor <code>lookingFor</code> não está na array <code>tab</code>, o\n"
-"método deve retornar -1."
+"Para isto, você deve preencher o método <code>indexOf()</code>, cujos "
+"parâmetros são a array a ser explorada, e o valor a ser buscado. Se o valor "
+"<code>lookingFor</code> não está na array <code>tab</code>, o método deve "
+"retornar -1."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
@@ -4026,9 +4006,9 @@ msgid ""
 "value of each cell. If it's the searched value, you should return the index "
 "of the cell currently checked."
 msgstr ""
-"A ideia do algoritmo é varrer toda a array, verificando o valor de\n"
-"cada célula. Se for o valor procurado, você deve retornar o índice da\n"
-"célula que está sendo verificada."
+"A ideia do algoritmo é varrer toda a array, verificando o valor de cada "
+"célula. Se for o valor procurado, você deve retornar o índice da célula que "
+"está sendo verificada."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
@@ -4036,9 +4016,9 @@ msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
 msgstr ""
-"Lembre que os índices começam com 0 e não com 1. Logo, se houverem 3\n"
-"células, seus índices serão 0, 1 e 2. Não vai haver nenhuma célula\n"
-"numerada com 3."
+"Lembre que os índices começam com 0 e não com 1. Logo, se houverem 3 "
+"células, seus índices serão 0, 1 e 2. Não vai haver nenhuma célula numerada "
+"com 3."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
@@ -4049,20 +4029,19 @@ msgid ""
 "there is no () after <code>length</code>. An attribute is a sort of variable "
 "embedded in another object (here, the array)."
 msgstr ""
-"Lembre também que a quantidade de células numa array pode ser\n"
-"recuperada usando o atributo <code>length</code>. Portanto, se sua\n"
-"array é chamada <code>tab</code>, seu temanho será recuperado como\n"
-"<code>tab.length</code>. Observe que não existe um () depois de\n"
-"<code>length</code>. Um atributo é como uma variável dentro de outro\n"
-"objeto (no caso, a array)."
+"Lembre também que a quantidade de células numa array pode ser recuperada "
+"usando o atributo <code>length</code>. Portanto, se sua array é chamada "
+"<code>tab</code>, seu temanho será recuperado como <code>tab.length</code>. "
+"Observe que não existe um () depois de <code>length</code>. Um atributo é "
+"como uma variável dentro de outro objeto (no caso, a array)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
 msgid ""
 "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
-"Logo, o último valor de uma array é dado por <code>tab[tab.length -\n"
-"1]</code>."
+"Logo, o último valor de uma array é dado por <code>tab[tab.length - 1]</"
+"code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
@@ -4071,10 +4050,9 @@ msgid ""
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
 "its size can be retrieved as <code>len(tab)</code>."
 msgstr ""
-"Lembre também que a quantidade de células numa array pode ser\n"
-"recuperada com a função <code>len()</code>. Logo, se sua array é\n"
-"chamada <code>tab</code>, seu tamanho pode ser recuperado como\n"
-"<code>len(tab)</code>."
+"Lembre também que a quantidade de células numa array pode ser recuperada com "
+"a função <code>len()</code>. Logo, se sua array é chamada <code>tab</code>, "
+"seu tamanho pode ser recuperado como <code>len(tab)</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
@@ -4094,8 +4072,8 @@ msgid ""
 "In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
 msgstr ""
-"Neste exercício, você deve calcular o índice da célula da tab contendo\n"
-"o maior valor."
+"Neste exercício, você deve calcular o índice da célula da tab contendo o "
+"maior valor."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
@@ -4104,10 +4082,9 @@ msgid ""
 "the array to explore. Should the array contain the searched value several "
 "times, you should return the index of the first occurrence."
 msgstr ""
-"Para isto, complete o método <code>indiceDoMáximo()</code>. Seu\n"
-"parâmetro é a array para explorar. Caso a array contenha o valor\n"
-"buscado várias vezes, você deve retornar o índice da primeira\n"
-"ocorrência."
+"Para isto, complete o método <code>indiceDoMáximo()</code>. Seu parâmetro é "
+"a array para explorar. Caso a array contenha o valor buscado várias vezes, "
+"você deve retornar o índice da primeira ocorrência."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
@@ -4117,11 +4094,11 @@ msgid ""
 "this new champion and its position.  You will thus need 2 extra variables; "
 "the initial value of the champion could be the value of the first cell."
 msgstr ""
-"Para resolver este exercício, você deve varrer a array\n"
-"completamente. Para cada valor, se ele for maior que o maior até o\n"
-"momento, este passa a ser o novo maior e você guarda o valor e a\n"
-"posição dele. Você precisa de 2 variáveis extras; o valor inicial do\n"
-"maior pode ser o valor da primeira célula."
+"Para resolver este exercício, você deve varrer a array completamente. Para "
+"cada valor, se ele for maior que o maior até o momento, este passa a ser o "
+"novo maior e você guarda o valor e a posição dele. Você precisa de 2 "
+"variáveis extras; o valor inicial do maior pode ser o valor da primeira "
+"célula."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:2
@@ -4134,8 +4111,8 @@ msgid ""
 "The objective of this exercise is to compute the average value of the "
 "integer values stored in an array."
 msgstr ""
-"O objetivo deste exercício é calcular o valor médio dos valores\n"
-"inteiros armazenados numa array."
+"O objetivo deste exercício é calcular o valor médio dos valores inteiros "
+"armazenados numa array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:7
@@ -4144,9 +4121,9 @@ msgid ""
 "as parameter the array of integers of which it computes and returns the "
 "average value. Please note that this method must return an integer."
 msgstr ""
-"Você tem que preencher o corpo do método <code>media()</code> que pega\n"
-"como parâmetro a array de inteiros da qual ele calcula e retorna o\n"
-"valor médio. Por favor note que este método deve retornar um inteiro."
+"Você tem que preencher o corpo do método <code>media()</code> que pega como "
+"parâmetro a array de inteiros da qual ele calcula e retorna o valor médio. "
+"Por favor note que este método deve retornar um inteiro."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:9
@@ -4156,10 +4133,10 @@ msgid ""
 "variable to store this temporary result), then you have to divide this sum "
 "by the size of the array."
 msgstr ""
-"para calcular o valor médio de um inteiro, é necessário percorrer toda\n"
-"a array e calcular a soma de todos os valores (logo, você precisa de\n"
-"uma variável para armazenar este valor temporário), e por fim dividir\n"
-"esta soma pelo tamanho da array."
+"para calcular o valor médio de um inteiro, é necessário percorrer toda a "
+"array e calcular a soma de todos os valores (logo, você precisa de uma "
+"variável para armazenar este valor temporário), e por fim dividir esta soma "
+"pelo tamanho da array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:11
@@ -4179,8 +4156,8 @@ msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
 msgstr ""
-"Em python, recuperar o tamanho de uma array <code>minhaarray</code> é\n"
-"tão fácil como chamar <code>len(myarray)</code>."
+"Em python, recuperar o tamanho de uma array <code>minhaarray</code> é tão "
+"fácil como chamar <code>len(myarray)</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:2
@@ -4194,9 +4171,9 @@ msgid ""
 "For that, fill the <code>maximum()</code> method, which parameter is the "
 "array to explore."
 msgstr ""
-"Neste exercício, você deve calcular o valor maximal contido numa\n"
-"array. Para isto, preencha o método <code>maximum()</code>, cujo\n"
-"parâmetro é a array para explorar."
+"Neste exercício, você deve calcular o valor maximal contido numa array. Para "
+"isto, preencha o método <code>maximum()</code>, cujo parâmetro é a array "
+"para explorar."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:8
@@ -4206,11 +4183,11 @@ msgid ""
 "somewhere to remember it afterward. You thus need an extra variable, which "
 "can be initialized to the value of the first array cell."
 msgstr ""
-"Para calcular este valor, percorra o parâmetro todo. Para cada valor,\n"
-"se ele for maior que o maior valor até o momento, você deve gravar\n"
-"este valor em algum lugar para lembrar dele mais tarde. Você vai precisar\n"
-"então de uma variável extra, que pode ser iniciada para o valor da primeira\n"
-"célula do array."
+"Para calcular este valor, percorra o parâmetro todo. Para cada valor, se ele "
+"for maior que o maior valor até o momento, você deve gravar este valor em "
+"algum lugar para lembrar dele mais tarde. Você vai precisar então de uma "
+"variável extra, que pode ser iniciada para o valor da primeira célula do "
+"array."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/Extrema.html:2
@@ -4225,11 +4202,10 @@ msgid ""
 "The returned value is then a positive number.  Beware, you can only do one "
 "traversal of the array to gather all informations that you need."
 msgstr ""
-"Neste exercício, você deve retornar a diferença entre o máximo (i.e.,\n"
-"o maior valor da array) e o mínimo (i.e., o menor valor). O valor\n"
-"retornado é então um número positivo. Mas atenção, você só pode\n"
-"percorrer o array uma vez para obter todas as informações de que\n"
-"necessita."
+"Neste exercício, você deve retornar a diferença entre o máximo (i.e., o "
+"maior valor da array) e o mínimo (i.e., o menor valor). O valor retornado é "
+"então um número positivo. Mas atenção, você só pode percorrer o array uma "
+"vez para obter todas as informações de que necessita."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
@@ -4245,11 +4221,10 @@ msgid ""
 "returns the number of occurrence of <code>lookingFor</code> in <code>tab</"
 "code>."
 msgstr ""
-"Neste exercício, você deve calcular a quantidade de ocorrências de um\n"
-"dado valor numa array (ou seja, a quantidade de tempo que este valor\n"
-"aparece na array). Para isto, preencha o método\n"
-"<code>occurrences()</code>, que retorna o número de ocorrências de\n"
-"<code>lookingFor</code> em <code>tab</code>."
+"Neste exercício, você deve calcular a quantidade de ocorrências de um dado "
+"valor numa array (ou seja, a quantidade de tempo que este valor aparece na "
+"array). Para isto, preencha o método <code>occurrences()</code>, que retorna "
+"o número de ocorrências de <code>lookingFor</code> em <code>tab</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
@@ -4258,9 +4233,9 @@ msgid ""
 "of cells containing the searched value. You thus need an extra variable for "
 "that."
 msgstr ""
-"Para calcular este valor, simplesmente parcorra a array contando a\n"
-"quantidade de células contendo o valor procurado. Você vai precisar de\n"
-"uma variável extra para isto."
+"Para calcular este valor, simplesmente parcorra a array contando a "
+"quantidade de células contendo o valor procurado. Você vai precisar de uma "
+"variável extra para isto."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -4273,8 +4248,8 @@ msgid ""
 "Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
 "array somewhere."
 msgstr ""
-"Dada uma array de inteiros, retorna verdadeiro (true) se .. 1, 2, 3,\n"
-".. aparece em algum lugar da array."
+"Dada uma array de inteiros, retorna verdadeiro (true) se .. 1, 2, 3, .. "
+"aparece em algum lugar da array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/array123/Array123.html:5
@@ -4339,8 +4314,8 @@ msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
 "codingbat.com/"
 msgstr ""
-"Este exercício foi convertido para o PLM do excelente sítio de\n"
-"exercícios http://javabat.com/"
+"Este exercício foi convertido para o PLM do excelente sítio de exercícios "
+"http://javabat.com/"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array667/Array667.html:2
@@ -4354,9 +4329,9 @@ msgid ""
 "to each other in the array. Also count instances where the second \"6\" is "
 "actually a 7."
 msgstr ""
-"Dada uma array de inteiros, retorna o número de vezes no qual dois 6\n"
-" estão vizinhos na array. Também conta as instâncias onde o segundo\n"
-" \"6\" é na verdade um 7."
+"Dada uma array de inteiros, retorna o número de vezes no qual dois 6  estão "
+"vizinhos na array. Também conta as instâncias onde o segundo  \"6\" é na "
+"verdade um 7."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
@@ -4394,9 +4369,9 @@ msgid ""
 "times in a row in the array. Return true if the array does not contain any "
 "triples."
 msgstr ""
-"Dada uma array de inteiros, digamos que uma tripla é um valor que\n"
-"aparece 3 vezes seguidas na array. Retorne verdadeiro se a array não\n"
-"contém nenhuma tripla."
+"Dada uma array de inteiros, digamos que uma tripla é um valor que aparece 3 "
+"vezes seguidas na array. Retorne verdadeiro se a array não contém nenhuma "
+"tripla."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/has271/Has271.html:2
@@ -4411,10 +4386,9 @@ msgid ""
 "1.  So, 2,7,1 is such a pattern because 7 is 5+2 and 1 is 2-1. 3,8,2 is also "
 "such a pattern."
 msgstr ""
-"Dada uma array de inteiros, retorne verdadeiro se ela contém um padrão\n"
-"2, 7, 1 -- um valor, seguido dele mais 5, seguinte dele menos\n"
-"1. Então, 2,7,1 é um exemplo deste padrão pois  7 é 5+2 e 1 é\n"
-"2-1. 3,8,2 é outro exemplo."
+"Dada uma array de inteiros, retorne verdadeiro se ela contém um padrão 2, 7, "
+"1 -- um valor, seguido dele mais 5, seguinte dele menos 1. Então, 2,7,1 é um "
+"exemplo deste padrão pois  7 é 5+2 e 1 é 2-1. 3,8,2 é outro exemplo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/has271/Has271.html:7
@@ -4422,7 +4396,7 @@ msgid ""
 "Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
 "correct value."
 msgstr ""
-"Acicionalmente, o 271 \"counts even\" se o \"1\" difere por 2 ou menos do\n"
+"Acicionalmente, o 271 \"counts even\" se o \"1\" difere por 2 ou menos do "
 "valor correto."
 
 #. type: Content of: <h1>
@@ -4436,8 +4410,8 @@ msgid ""
 "The Golomb sequence is a non-decreasing integer sequence where a(n) is the "
 "number of times that n occurs in the sequence, with a(1) = 1."
 msgstr ""
-"A sequência de Golomb é uma sequência de inteiros não decrescente onde\n"
-"a(n) é o número  de vezes que n ocorre na sequência, com a(1) = 1."
+"A sequência de Golomb é uma sequência de inteiros não decrescente onde a(n) "
+"é o número  de vezes que n ocorre na sequência, com a(1) = 1."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:7
@@ -4447,10 +4421,10 @@ msgid ""
 "than 1. Since a(2)>1, the digit 2 must appear more than one time in the "
 "sequence. So a(2)=2."
 msgstr ""
-"Como a(1)=1, significa que 1 ocorre apenas uma vez na sequência, então\n"
-"a(2) deve ser diferente. Uma vez que a sequência é não-decrescente,\n"
-"a(2) deve ser maior que 1. Como a(2)>1, o dígito 2 deve aparecer mais\n"
-"de uma vez na sequência. Logo, a(2)=2."
+"Como a(1)=1, significa que 1 ocorre apenas uma vez na sequência, então a(2) "
+"deve ser diferente. Uma vez que a sequência é não-decrescente, a(2) deve ser "
+"maior que 1. Como a(2)>1, o dígito 2 deve aparecer mais de uma vez na "
+"sequência. Logo, a(2)=2."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:12
@@ -4458,9 +4432,8 @@ msgid ""
 "Since a(2)=2, there is two 2 in the sequence, so we know the value of a(3). "
 "And so on for the other values of the sequence."
 msgstr ""
-"Como a(2)=2, existem duas ocorrências de 2 na sequência, logo nós\n"
-"sabemos o valor de a(3). E assim por diante para os outros valores da\n"
-"sequência."
+"Como a(2)=2, existem duas ocorrências de 2 na sequência, logo nós sabemos o "
+"valor de a(3). E assim por diante para os outros valores da sequência."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/golomb/Golomb.html:15
@@ -4479,10 +4452,9 @@ msgid ""
 "the country of the Buggles' Islands. She wrote down the altitude every "
 "kilometer during her trip, resulting in a sequence of numbers as follows."
 msgstr ""
-"Você acaba de receber as anotações de viagem da sua velha tia que\n"
-"atravessou o país das Ilhas dos Buggles. Ela escreveu a altitude a\n"
-"cada quilômetro durante a viagem, resultando numa sequência de números\n"
-"como segue."
+"Você acaba de receber as anotações de viagem da sua velha tia que atravessou "
+"o país das Ilhas dos Buggles. Ela escreveu a altitude a cada quilômetro "
+"durante a viagem, resultando numa sequência de números como segue."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/island/Island.html:9
@@ -12727,18 +12699,19 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:2 src/lessons/maze/short_desc.html:2
 msgid "Labyrinths"
-msgstr ""
+msgstr "Labirintos"
 
 #. type: Content of: <p>
 #: src/lessons/maze/Main.html:4 src/lessons/maze/short_desc.html:4
 msgid ""
 "This lesson proposes several exercises about labyrinths in the buggle world."
 msgstr ""
+"Esta lição propõe vários exercícios sobre labirintos no mundo dos buggles."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:2
 msgid "The crazy mouse"
-msgstr ""
+msgstr "O rato doido"
 
 #. type: Content of: <p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:4
