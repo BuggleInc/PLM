@@ -1,7 +1,7 @@
 20141130: wannabe 2.6
 
   * Improved translations:
-    - Brazilian: missions at 65%
+    - Brazilian: missions at 62%, engine at 34%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
     - Switch embeeded scala compiler to version 2.11.4
