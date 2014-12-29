@@ -119,6 +119,22 @@ public abstract class SimpleExerciseTest {
 			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
 		}
 	}
+	@Test
+	public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
+		exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode());
+		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+		
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+			for (Entity ent: w.getEntities()) {
+				pl.runEntity(ent,exo.lastResult);
+			}
+		}
+		
+		if(exo.lastResult.executionError==null || exo.lastResult.executionError.equals("")) {
+			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an exception...\n");
+		}
+	}
 	
 	@Test
 	public void testWrongCodeShouldNotPass() throws PLMCompilerException {
@@ -165,6 +181,7 @@ public abstract class SimpleExerciseTest {
 	// Used to generate execution error for each programming languages tested
 	public abstract String generateNullPointerErrorCode();
 	public abstract String generateOutOfBoundsErrorCode();
+	public abstract String generateExceptionRaisingCode();
 
 	// Used to generate a code throwing no errors but not passing the exercise
 	public abstract String generateWrongCode();
