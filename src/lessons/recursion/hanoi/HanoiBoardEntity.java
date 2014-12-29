@@ -33,16 +33,16 @@ public class HanoiBoardEntity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-	public void solve(int src, int dst, int other) {
-		solve(src, dst, other, getSlotSize(src));
+	public void solve(int src, int other, int dst) {
+		hanoi(getSlotSize(src), src, other, dst);
 	}
 
-	public void solve(int src, int dst, int other, int height) {
+	public void hanoi(int height, int src, int other, int dst) {
 		/* BEGIN SOLUTION */
 		if (height != 0) {
-			solve(src,other,dst, height-1);
+			hanoi(height-1, src, dst, other);
 			move(src,dst);
-			solve(other,dst,src, height-1);
+			hanoi(height-1, other,src, dst);
 		}
 		/* END SOLUTION */
 	}

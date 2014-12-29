@@ -6,5 +6,6 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
 		addExercise(new HanoiBoard(this));
+		addExercise(new InterleavedHanoi(this));
 	}
 }
