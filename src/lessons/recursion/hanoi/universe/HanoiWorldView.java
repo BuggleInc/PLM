@@ -1,5 +1,6 @@
 package lessons.recursion.hanoi.universe;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -48,6 +49,7 @@ public class HanoiWorldView extends WorldView {
 
 	@Override
 	public void paintComponent(Graphics g) {
+		HanoiWorld board = (HanoiWorld)world;
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
@@ -64,18 +66,17 @@ public class HanoiWorldView extends WorldView {
 		g2.translate(Math.abs(getWidth() - ratio * renderedX)/2., Math.abs(getHeight() - ratio * renderedY)/2.);
 		g2.scale(ratio, ratio);
 		
-		drawSlot(g2, 0, 50.);
-		drawSlot(g2, 1, 150.);
-		drawSlot(g2, 2, 250.);
+		for (int s=0;s<board.getSlotAmount();s++) 
+			drawSlot(g2, s, (1+2*s)*300./(2*board.getSlotAmount()));
 	}
 	
 	private void drawSlot(Graphics2D g2, int rank, double xoffset) {
 		HanoiWorld board = (HanoiWorld)world;
 		
-		/* draw bar */
+		/* draw bars, with color indicating whether it's a valid move during interactive drag&drop */
 		if (pegFrom == -1)
 			g2.setColor(Color.black);
-		else if (board.getRadius(pegFrom) >= board.getRadius(rank))
+		else if (board.getRadius(pegFrom) > board.getRadius(rank))
 			g2.setColor(Color.red);
 		else 
 			g2.setColor(Color.green);
@@ -88,15 +89,18 @@ public class HanoiWorldView extends WorldView {
 		int height = 1;
 		for (int i=0; i<board.values(rank).length; i++) {
 			int size = board.values(rank)[i];
-			if (rank == pegFrom && i==board.values(rank).length-1)
+			g2.setColor(board.getColor(rank, i));
+			g2.fill(new Rectangle2D.Double( xoffset-size*5-3, 180-(11.*height),  size*10+3, 10));
+			if (rank == pegFrom && i==board.values(rank).length-1) {
+				g2.setStroke(new BasicStroke(3));
 				g2.setColor(buggyMove ? Color.red : Color.green);
-			else
-				g2.setColor(Color.yellow);
-			g2.fill(new Rectangle2D.Double( xoffset-size*5-3, 180-(15.*height),  size*10+3, 10));
-			g2.setColor(Color.black);
-			g2.draw(new Rectangle2D.Double( xoffset-size*5-3, 180-(15.*height),  size*10+3, 10));
+			} else {
+				g2.setColor(Color.black);
+			}
+			g2.draw(new Rectangle2D.Double( xoffset-size*5-3, 180-(11.*height),  size*10+3, 10));
 			height++;
 		}
+        g2.setStroke(new BasicStroke(1));
 	}
 	
 	
@@ -107,7 +111,8 @@ public class HanoiWorldView extends WorldView {
 				return;
 			HanoiWorld board = (HanoiWorld) world;
 
-			pegFrom = dge.getDragOrigin().x / (HanoiWorldView.this.getWidth()/3);
+			int slotAmount =  ((HanoiWorld)HanoiWorldView.this.world).getSlotAmount();
+			pegFrom = dge.getDragOrigin().x / (HanoiWorldView.this.getWidth()/slotAmount);
 			if (pegFrom >2 || pegFrom<0 || board.getSlotSize(pegFrom) == 0) {
 				pegFrom = -1;
 				return;
@@ -125,7 +130,8 @@ public class HanoiWorldView extends WorldView {
 		int lastPeg = -1;
 		@Override
 		public void dragOver(DropTargetDragEvent dtde) {
-			int peg = dtde.getLocation().x / ( HanoiWorldView.this.getWidth() / 3);
+			int slotAmount =  ((HanoiWorld)HanoiWorldView.this.world).getSlotAmount();
+			int peg = dtde.getLocation().x / ( HanoiWorldView.this.getWidth() / slotAmount);
 			if (peg == lastPeg)
 				return;
 			lastPeg = peg;
@@ -149,8 +155,9 @@ public class HanoiWorldView extends WorldView {
 		public void drop(DropTargetDropEvent dtde) {
 			dtde.acceptDrop(DnDConstants.ACTION_MOVE);
 			HanoiWorld board = (HanoiWorld) world; 
-			int pegTo = dtde.getLocation().x/( HanoiWorldView.this.getWidth() / 3);
-			if (pegTo <0 || pegTo>2) {
+			int slotAmount =  board.getSlotAmount();
+			int pegTo = dtde.getLocation().x/( HanoiWorldView.this.getWidth() / slotAmount);
+			if (pegTo <0 || pegTo>=slotAmount) {
 				System.out.println("Ignore the buggy drop onto peg "+pegTo);
 				dtde.dropComplete(false);
 				return;
