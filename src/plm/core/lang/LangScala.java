@@ -160,6 +160,7 @@ class ScalaCompiler {
 		final static int INFO = 0;
 		final static int WARNING = 1;
 		final static int ERROR = 2;
+		final int[] counts = new int[] {0, 0, 0};
 		int offset=0;
 		Vector<String> messages = new Vector<String>();
 		Settings settings;
@@ -178,26 +179,34 @@ class ScalaCompiler {
 		public void displayPrompt() { 
 			/* Don't do that, pal. */ 
 		}
-		@Override
-		public void display(Position pos, String message, Severity _severity) {
-			String severityName = _severity.toString(); 
-			String label = "";
+		private int severityRank(Severity s) {
+			String severityName = s.toString(); 
 			int severity = -1;
 			if (severityName.equals("INFO") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@0"))
 				severity = INFO;
-			if (severityName.equals("WARNING") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@1")) {
+			if (severityName.equals("WARNING") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@1"))
 				severity = WARNING;
-				label= "warning: ";
-			}
-			if (severityName.equals("ERROR") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@2")) {
+			if (severityName.equals("ERROR") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@2")) 
 				severity = ERROR;
-				label = "error: ";
-			}
 			if (severity == -1)
 				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt the PLM to this new version of scala (or whatever).");
+			return severity;
+		}
+		@Override
+		public void display(Position pos, String message, Severity _severity) {
+			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
+
+			String label = "";
+			int severity = severityRank(_severity);
 			if (severity == INFO && !Game.getInstance().isDebugEnabled()) 
 				return;
+			if (severity == WARNING)
+				label = "warning: ";
+			if (severity == ERROR)
+				label = "error: "; 
 
+			counts[severity]++;
+			
 			int lineNum = -1;
 			try {
 				lineNum = pos.line() - offset;
@@ -218,6 +227,7 @@ class ScalaCompiler {
 					msg += " ";
 				msg += "^";
 			}
+			System.err.println(msg);
 
 			messages.add(msg);
 		}
@@ -235,13 +245,18 @@ class ScalaCompiler {
 			messages.removeAllElements();
 		}
 		
-		/* These methods are mandated by scala 2.11, but I dunno what to do with it, so ignore that for now */
+		@Override
 		public int count(Object o) {
-			return 0;
+			return counts[severityRank((Severity) o)];
 		}
-		public void resetCount(Object o) {}
-		public void info0(Position arg0, String arg1, Object arg2, boolean arg3) {
-			// TODO Auto-generated method stub
+		@Override
+		public void resetCount(Object o) {
+			counts[severityRank((Severity) o)] = 0;
+		}
+		@Override
+		public void info0(Position pos, String msg, Object o, boolean force) {
+			Severity s = (Severity) o;
+			display(pos, msg, s);
 		}
 	}
 }
