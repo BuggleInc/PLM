@@ -7,5 +7,6 @@ public class Main extends Lesson {
 	protected void loadExercises() {
 		addExercise(new HanoiBoard(this));
 		addExercise(new InterleavedHanoi(this));
+		addExercise(new SplitHanoi1(this));
 	}
 }
