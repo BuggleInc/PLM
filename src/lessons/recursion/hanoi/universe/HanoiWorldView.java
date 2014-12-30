@@ -68,6 +68,8 @@ public class HanoiWorldView extends WorldView {
 		
 		for (int s=0;s<board.getSlotAmount();s++) 
 			drawSlot(g2, s, (1+2*s)*300./(2*board.getSlotAmount()));
+		g2.setColor(Color.black);
+		g2.drawString(""+board.moveCount+" moves", 0, 15);
 	}
 	
 	private void drawSlot(Graphics2D g2, int rank, double xoffset) {

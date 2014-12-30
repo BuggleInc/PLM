@@ -7,6 +7,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
+import lessons.sort.pancake.universe.PancakeWorld;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
@@ -141,6 +142,8 @@ public class HanoiWorld extends World {
 		if (o == null || !(o instanceof HanoiWorld))
 			return false;
 		HanoiWorld other = (HanoiWorld) o;
+		if (this.moveCount != other.moveCount)
+			return false;
 		if (this.slotsVal.length != other.slotsVal.length)
 			return false;
 		for (int i=0;i<slotsVal.length;i++) {
@@ -153,14 +156,40 @@ public class HanoiWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World world) {
-		return null; // FIXME: how to represent this textually?
+	public String diffTo(World o) {
+		StringBuffer res = new StringBuffer();
+		if (o == null || !(o instanceof HanoiWorld))
+			return "This is not a world of Hanoi";
+
+		HanoiWorld other = (HanoiWorld) o;
+		if (slotsVal.length != other.slotsVal.length)
+			return "The worlds don't have the same amount of pegs";
+
+		if (other.moveCount != moveCount)
+			res.append(Game.i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+
+		for (int slot=0; slot<slotsVal.length; slot++)
+			for ( int pos = 0;pos< Math.max(slotsVal[slot].size(),other.slotsVal[slot].size()) ; pos++) {
+				String thisVal = pos >=  this.slotsVal[slot].size()?"--": this.slotsVal[slot].get(pos).toString();
+				String otherVal= pos >= other.slotsVal[slot].size()?"--":other.slotsVal[slot].get(pos).toString();
+				if (!thisVal.equals(otherVal)) {
+					res.append(Game.i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisVal,otherVal));
+				} else {
+					Color thisColor = pos >=   this.slotsColor[slot].size()?null: this.slotsColor[slot].get(pos);
+					Color otherColor= pos >=  other.slotsColor[slot].size()?null:other.slotsColor[slot].get(pos);
+					if (thisColor.equals(otherColor)) {
+						res.append(Game.i18n.tr(" Colot of disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisColor,otherColor));						
+					}
+				}
+			}
+		return res.toString();
 	}
 	
 	/* Here comes the world logic */
 	/* BEGIN HIDDEN */
 	private Vector<Integer> slotsVal[];
 	private Vector<Color> slotsColor[];
+	public int moveCount = 0;
 	
 	/** This function is used by the view to retrieve the data to display */
 	protected Integer[] values(Integer	 i) {
@@ -183,6 +212,7 @@ public class HanoiWorld extends World {
 					Game.i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
 							src,dst,slotsVal[src].lastElement(),slotsVal[dst].lastElement()));
 		
+		moveCount  ++;
 		slotsVal[dst]  .add( slotsVal[src]  .remove(slotsVal[src].size()-1) );
 		slotsColor[dst].add( slotsColor[src].remove(slotsColor[src].size()-1) );
 	}
