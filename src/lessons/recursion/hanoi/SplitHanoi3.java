@@ -7,9 +7,9 @@ import plm.core.model.lesson.Lesson;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
 
-public class SplitHanoi1 extends ExerciseTemplated {
+public class SplitHanoi3 extends ExerciseTemplated {
 
-	public SplitHanoi1(Lesson lesson) {
+	public SplitHanoi3(Lesson lesson) {
 		super(lesson);
 				
 		/* Create initial situation */

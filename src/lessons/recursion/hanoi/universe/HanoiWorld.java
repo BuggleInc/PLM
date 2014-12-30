@@ -104,6 +104,7 @@ public class HanoiWorld extends World {
 				slotsColor[slot].add( other.slotsColor[slot].elementAt(i));
 			}
 		}
+		moveCount = other.moveCount;
 		super.reset(w);		
 	}
 

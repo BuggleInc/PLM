@@ -9,5 +9,6 @@ public class Main extends Lesson {
 		addExercise(new InterleavedHanoi(this));
 		addExercise(new SplitHanoi1(this));
 		addExercise(new SplitHanoi2(this));
+		addExercise(new SplitHanoi3(this));
 	}
 }

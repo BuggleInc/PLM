@@ -82,7 +82,7 @@ public class HanoiWorldView extends WorldView {
 			g2.setColor(Color.red);
 		else 
 			g2.setColor(Color.green);
-		g2.fill(new Rectangle2D.Double(xoffset-2, 55.,  2., 125.));
+		g2.fill(new Rectangle2D.Double(xoffset-2, 35.,  2., 145.));
 		
 		if (board.values(rank)==null)
 			return;
