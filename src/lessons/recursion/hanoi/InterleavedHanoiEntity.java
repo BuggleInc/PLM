@@ -32,11 +32,11 @@ public class InterleavedHanoiEntity extends HanoiEntity {
 		solve((Integer)getParam(0),(Integer) getParam(1),(Integer) getParam(2),(Integer) getParam(3));
 	}
 
-	/* BEGIN TEMPLATE */
 	public void solve(int src1,int src2, int other, int dst) {
 		interleavedHanoi(getSlotSize(src1), src1,src2, other, dst);
 	}
 
+	/* BEGIN TEMPLATE */
 	public void interleavedHanoi(int height, int src1,int src2, int other, int dst) {
 		/* BEGIN SOLUTION */
 		//for (int i=4;i>height;i--) System.out.print(" ");

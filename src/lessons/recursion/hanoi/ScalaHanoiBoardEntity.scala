@@ -8,11 +8,11 @@ class ScalaHanoiBoardEntity extends HanoiEntity {
 		solve(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Int], getParam(2).asInstanceOf[Int]);
 	}
 
-	/* BEGIN TEMPLATE */
 	def solve(src:Int, other:Int, dst:Int) {
 		hanoi(getSlotSize(src), src,other,dst);
 	}
 
+	/* BEGIN TEMPLATE */
 	def hanoi(height:Int, src:Int, other:Int, dst:Int) {
 		/* BEGIN SOLUTION */
 		if (height!=0) {

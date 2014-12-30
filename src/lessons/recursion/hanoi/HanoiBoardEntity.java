@@ -32,11 +32,11 @@ public class HanoiBoardEntity extends HanoiEntity {
 		solve((Integer)getParam(0),(Integer) getParam(1),(Integer) getParam(2));
 	}
 
-	/* BEGIN TEMPLATE */
 	public void solve(int src, int other, int dst) {
 		hanoi(getSlotSize(src), src, other, dst);
 	}
 
+	/* BEGIN TEMPLATE */
 	public void hanoi(int height, int src, int other, int dst) {
 		/* BEGIN SOLUTION */
 		if (height != 0) {

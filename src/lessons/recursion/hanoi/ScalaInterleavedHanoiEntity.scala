@@ -8,11 +8,11 @@ class ScalaInterleavedHanoiEntity extends HanoiEntity {
 		solve(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Int], getParam(2).asInstanceOf[Int], getParam(3).asInstanceOf[Int]);
 	}
 
-	/* BEGIN TEMPLATE */
 	def solve(src1:Int,src2:Int, other:Int, dst:Int) {
 		interleavedHanoi(getSlotSize(src1), src1,src2, other,dst);
 	}
 
+	/* BEGIN TEMPLATE */
   def interleavedHanoi(height:Int, src1:Int, src2:Int, other:Int, dst:Int) {
 	  /* BEGIN SOLUTION */
     if (height > 0) {
