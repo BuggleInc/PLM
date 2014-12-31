@@ -16,8 +16,9 @@
       found").  The inner loop in the first one is a simpler for loop
       while the second exercise request the inner loop to also be a
       do/while (because of the corridors of differing lenghts)
-    - InterleavedHanoi,SplitHanoi[123],LinearHanoi: 
-      problem variations exercising recursive problem decomposition
+    - InterleavedHanoi,SplitHanoi[123]; LinearHanoi,LinearTwinHanoi;
+      TricolorHanoi[123]: New exercises. These problem variations
+      exercise recursive problem decomposition
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
 
