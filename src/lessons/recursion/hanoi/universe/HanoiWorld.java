@@ -7,7 +7,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import lessons.sort.pancake.universe.PancakeWorld;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
@@ -153,7 +152,7 @@ public class HanoiWorld extends World {
 				return false;
 		}
 		/* END HIDDEN */
-		return true;
+		return getName().equals(other.getName());
 	}
 	
 	@Override
@@ -178,9 +177,8 @@ public class HanoiWorld extends World {
 				} else {
 					Color thisColor = pos >=   this.slotsColor[slot].size()?null: this.slotsColor[slot].get(pos);
 					Color otherColor= pos >=  other.slotsColor[slot].size()?null:other.slotsColor[slot].get(pos);
-					if (thisColor.equals(otherColor)) {
-						res.append(Game.i18n.tr(" Colot of disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisColor,otherColor));						
-					}
+					if (!thisColor.equals(otherColor)) 
+						res.append(Game.i18n.tr(" Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisColor,otherColor));						
 				}
 			}
 		return res.toString();
@@ -247,6 +245,10 @@ public class HanoiWorld extends World {
 					"  return entity.getSlotAmount()\n"+
 					"def getRadius(slot):\n"+
 					"  return entity.getRadius(slot)\n"+
+					
+					"def errorMsg(str):\n"+/* don't translate this one, there is no need*/
+					"  entity.seenError(str)\n"+
+
 					/* BINDINGS TRANSLATION: French */
 					"def deplace(src,dst):\n"+
 					"  entity.move(src,dst)\n"+
