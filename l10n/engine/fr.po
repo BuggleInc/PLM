@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-01 23:38+0100\n"
-"PO-Revision-Date: 2014-12-24 23:27+0100\n"
+"POT-Creation-Date: 2015-01-01 23:45+0100\n"
+"PO-Revision-Date: 2015-01-01 23:44+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -76,21 +76,14 @@ msgstr ""
 "exercice. Marche jusqu'à ton objectif."
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
-#, fuzzy
+#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
 "Use the intermediate slot in all moves."
 msgstr ""
-"Je suis désolé Dave, je ne peux pas te laisser utiliser avance() avec un "
-"argument dans cet exercice. Utilise plutôt une boucle."
-
-#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
-#, java-format
-msgid ""
-"Sorry Dave, I cannot let you use move disks from one end of the playground "
-"(slot {0}) directly to the other end (slot {1}). Use the intermediate slot "
-"(1) in all moves."
-msgstr ""
+"Je suis désolé Dave, je ne peux pas te laisser déplacer des disques entre "
+"les piquets 0 et 2 directement. Utilise le piquet intermédiaire dans tous "
+"les déplacements."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
 #, java-format
@@ -98,6 +91,9 @@ msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
 msgstr ""
+"Désolé Dave, je ne peux pas te laisser déplacer des disques dans le sens "
+"contraire. Seuls les déplacements de 0 à 1, de 1 à 2 ou de 2 à 0 sont "
+"autorisés, et tu as demandé de {0} à {1}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
@@ -113,29 +109,29 @@ msgid "Invalid move"
 msgstr "Déplacement invalide"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
-#, fuzzy, java-format
+#, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
 msgstr ""
-"Les piles n''ont pas été retournées le même nombre de fois : {0} contre {1}\n"
+"Les disques n''ont pas été déplacés le même nombre de fois : {0} contre {1}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
-#, fuzzy, java-format
+#, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
-msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
+msgstr "Le disque n°{0} du piquet {1} diffère : {2} vs {3}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
-#, fuzzy, java-format
+#, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
-msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
+msgstr "La couleur du disque n°{0} au piquet {1} diffère : {2} vs {3}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}"
 msgstr ""
-"Impossible de bouger du piquet {0} au piquet {1} car les seuls piquets "
-"existants sont 0, 1 et 2."
+"Impossible de bouger du piquet {0} au piquet {1} car seuls les piquets "
+"numérotés de 0 à {1} existent."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
 #, java-format
@@ -651,10 +647,9 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala est utilisable sur votre machine. Félicitations."
 
 #: src/plm/core/model/Game.java:171
-#, fuzzy
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
-"Veuillez installer Scala version 2.10 ou supérieure pour l'utiliser dans la "
+"Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la "
 "PLM."
 
 #: src/plm/core/model/Game.java:173

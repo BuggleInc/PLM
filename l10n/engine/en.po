@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-01 23:38+0100\n"
+"POT-Creation-Date: 2015-01-01 23:45+0100\n"
 "PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,17 +69,10 @@ msgid ""
 msgstr ""
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
+#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
 "Use the intermediate slot in all moves."
-msgstr ""
-
-#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
-#, java-format
-msgid ""
-"Sorry Dave, I cannot let you use move disks from one end of the playground "
-"(slot {0}) directly to the other end (slot {1}). Use the intermediate slot "
-"(1) in all moves."
 msgstr ""
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
