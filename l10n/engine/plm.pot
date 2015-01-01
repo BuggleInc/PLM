@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-31 22:09+0100\n"
+"POT-Creation-Date: 2015-01-01 23:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,36 +68,73 @@ msgid ""
 "goal instead."
 msgstr ""
 
+#: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
+msgid ""
+"Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
+"Use the intermediate slot in all moves."
+msgstr ""
+
+#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
+#, java-format
+msgid ""
+"Sorry Dave, I cannot let you use move disks from one end of the playground "
+"(slot {0}) directly to the other end (slot {1}). Use the intermediate slot "
+"(1) in all moves."
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
+#, java-format
+msgid ""
+"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
+"1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
+msgstr ""
+
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
-#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:163
+#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:73
 #, java-format
 msgid "move({0},{1})"
 msgstr ""
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:71
-#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:167
+#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:176
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:77
 msgid "Invalid move"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:134
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
 #, java-format
-msgid ""
-"Cannot move from slot {0} to {1}: the only existing slots are 0, 1 and 2"
+msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:136
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
+#, java-format
+msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
+#, java-format
+msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
+#, java-format
+msgid ""
+"Cannot move from slot {0} to {1}: the only existing slots are numbered from "
+"0 to {2}"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
 #, java-format
 msgid "Cannot move from slot {0} to itself"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:138
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:206
 #, java-format
 msgid "No disc to move from slot {0}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:143
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:211
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
@@ -257,7 +294,8 @@ msgid ""
 "{1}"
 msgstr ""
 
-#: src/lessons/welcome/loopdowhile/PoucetEntity.java:10
+#: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
+#: src/lessons/welcome/loopdowhile/Poucet2Entity.java:12
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:10
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:10
 #: src/lessons/welcome/loopfor/LoopForEntity.java:8
@@ -274,7 +312,8 @@ msgid ""
 "Use a loop instead."
 msgstr ""
 
-#: src/lessons/welcome/loopdowhile/PoucetEntity.java:14
+#: src/lessons/welcome/loopdowhile/Poucet1Entity.java:14
+#: src/lessons/welcome/loopdowhile/Poucet2Entity.java:16
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:14
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:14
 #: src/lessons/welcome/loopfor/LoopForEntity.java:13
@@ -514,7 +553,7 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr ""
 
 #: src/plm/core/model/Game.java:171
-msgid "Please install Scala version 2.10 or higher to use it in the PLM."
+msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 
 #: src/plm/core/model/Game.java:173
@@ -637,39 +676,39 @@ msgstr ""
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:989
+#: src/plm/core/model/Game.java:990
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:990
+#: src/plm/core/model/Game.java:991
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:994
+#: src/plm/core/model/Game.java:995
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:995
+#: src/plm/core/model/Game.java:996
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:999
+#: src/plm/core/model/Game.java:1000
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1000
+#: src/plm/core/model/Game.java:1001
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1005
+#: src/plm/core/model/Game.java:1006
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -678,7 +717,7 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1009
+#: src/plm/core/model/Game.java:1010
 msgid "C is still experimental"
 msgstr ""
 
@@ -707,7 +746,7 @@ msgstr ""
 msgid "A new PLM user has been created for you!"
 msgstr ""
 
-#: src/plm/core/model/lesson/Exercise.java:78
+#: src/plm/core/model/lesson/Exercise.java:80
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr ""
@@ -872,80 +911,82 @@ msgstr ""
 msgid "Abording on user request"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:59
+#: src/plm/core/model/tracking/GitSpy.java:72
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
 
 #. If no branch can be found remotely, create a new one.
-#: src/plm/core/model/tracking/GitSpy.java:62
-msgid ""
-"Creating a new session locally, as no corresponding session could be "
-"retrieved from the servers."
+#. System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+#: src/plm/core/model/tracking/GitSpy.java:77
+msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:82
+#: src/plm/core/model/tracking/GitSpy.java:86
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:160
+#: src/plm/core/model/tracking/GitSpy.java:164
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:76
+msgid "An error occurred while configuring the repository..."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitUtils.java:85
 msgid "Retrieving your session from the servers..."
 msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:119
-msgid "Can't retrieve data stored on server."
+msgid "An error occurred while checking out the user's branch: "
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:127
+#: src/plm/core/model/tracking/GitUtils.java:132
 msgid "last session data successfully retrieved"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:130
+#: src/plm/core/model/tracking/GitUtils.java:135
 msgid "last session data successfully merged"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:133
+#: src/plm/core/model/tracking/GitUtils.java:138
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
 msgstr ""
 
 #. TODO: handle this case
-#: src/plm/core/model/tracking/GitUtils.java:161
+#: src/plm/core/model/tracking/GitUtils.java:166
 msgid "Canceled the merge operation because of the following failures:"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:168
+#: src/plm/core/model/tracking/GitUtils.java:173
 msgid "Can't merge data retrieved from server with local session data."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:203
+#: src/plm/core/model/tracking/GitUtils.java:214
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:226
+#: src/plm/core/model/tracking/GitUtils.java:241
 msgid "Your session has been successfully saved into the clouds."
 msgstr ""
 
 #. An error occurred while pushing
-#. Try to synchronize with the remote branch before pushing again
-#: src/plm/core/model/tracking/GitUtils.java:231
+#: src/plm/core/model/tracking/GitUtils.java:245
 msgid "Fetching the server's last version..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:235
+#: src/plm/core/model/tracking/GitUtils.java:252
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:238
+#: src/plm/core/model/tracking/GitUtils.java:255
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
@@ -1006,7 +1047,7 @@ msgid "Copying"
 msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:41
+#: src/plm/core/ui/ExerciseFailedDialog.java:42
 #: src/plm/core/ui/ExercisePassedDialog.java:100
 msgid "Close"
 msgstr ""
@@ -1105,21 +1146,27 @@ msgstr ""
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:32
 msgid ""
+"<i>The master has failed more time than the beginner has even tried</i>,<br> "
+"as they say."
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
+msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
 "(Einstein)."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
 "<i>Success does not consist in never making mistakes,<br> but in never "
 "making the same one a second time.</i> (Shaw)"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:36
+#: src/plm/core/ui/ExerciseFailedDialog.java:37
 msgid "Mmm, not quite"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:54
+#: src/plm/core/ui/ExerciseFailedDialog.java:55
 #, java-format
 msgid ""
 "<html>You didn''t manage to reach your objective this time. <br>\n"
@@ -1132,7 +1179,7 @@ msgid ""
 "textual description of this difference between both worlds.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:66
+#: src/plm/core/ui/ExerciseFailedDialog.java:67
 #, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -1140,12 +1187,12 @@ msgid ""
 "Please read it carefully to understand the problem, and fix your code.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:81
-#: src/plm/core/ui/ExerciseFailedDialog.java:88
+#: src/plm/core/ui/ExerciseFailedDialog.java:82
+#: src/plm/core/ui/ExerciseFailedDialog.java:89
 msgid "Details >>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:91
+#: src/plm/core/ui/ExerciseFailedDialog.java:92
 msgid "Details <<"
 msgstr ""
 
@@ -1714,10 +1761,37 @@ msgid "Exercise reverted"
 msgstr ""
 
 #: src/plm/core/ui/action/StartExecution.java:32
+msgid ""
+"The PLM can save your data anonymously on remote servers. That way, you \n"
+"can retrieve your session from your anonymous tag from any connected "
+"computer.\n"
+"This anonymous data also helps scientists understanding how people learn \n"
+" programming. No nominative information is stored, only the source code "
+"written\n"
+"to solve the challenges.\n"
+msgstr ""
+
+#: src/plm/core/ui/action/StartExecution.java:37
+msgid "Do you want to store your data online?"
+msgstr ""
+
+#: src/plm/core/ui/action/StartExecution.java:38
+msgid "Ok, save my data online"
+msgstr ""
+
+#: src/plm/core/ui/action/StartExecution.java:38
+msgid "No, keep everything local"
+msgstr ""
+
+#: src/plm/core/ui/action/StartExecution.java:38
+msgid "Let me decide later"
+msgstr ""
+
+#: src/plm/core/ui/action/StartExecution.java:65
 msgid "Launch the execution of your code"
 msgstr ""
 
-#: src/plm/core/ui/action/StartExecution.java:33
+#: src/plm/core/ui/action/StartExecution.java:66
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
 "activity with the stop button"
@@ -1927,7 +2001,19 @@ msgstr ""
 msgid "Exception {0}: {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:156
+#: src/plm/universe/bugglequest/AbstractBuggle.java:85
+msgid ""
+"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
+"pens. Use brushDown() instead."
+msgstr ""
+
+#: src/plm/universe/bugglequest/AbstractBuggle.java:89
+msgid ""
+"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
+"pens. Use brushUp() instead."
+msgstr ""
+
+#: src/plm/universe/bugglequest/AbstractBuggle.java:165
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
 #: src/plm/universe/turtles/Turtle.java:216
 msgid ""
@@ -1935,7 +2021,7 @@ msgid ""
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:159
+#: src/plm/universe/bugglequest/AbstractBuggle.java:168
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
 #: src/plm/universe/turtles/Turtle.java:219
 msgid ""
@@ -1943,78 +2029,78 @@ msgid ""
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:179
+#: src/plm/universe/bugglequest/AbstractBuggle.java:188
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:181
+#: src/plm/universe/bugglequest/AbstractBuggle.java:190
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:200
-#: src/plm/universe/bugglequest/AbstractBuggle.java:236
+#: src/plm/universe/bugglequest/AbstractBuggle.java:209
+#: src/plm/universe/bugglequest/AbstractBuggle.java:245
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:219
-#: src/plm/universe/bugglequest/AbstractBuggle.java:234
+#: src/plm/universe/bugglequest/AbstractBuggle.java:228
+#: src/plm/universe/bugglequest/AbstractBuggle.java:243
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:353
+#: src/plm/universe/bugglequest/AbstractBuggle.java:362
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:128
 msgid "There is no baggle to pick up here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:355
+#: src/plm/universe/bugglequest/AbstractBuggle.java:364
 msgid "Your are already carrying a baggle."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:441
+#: src/plm/universe/bugglequest/AbstractBuggle.java:450
 msgid "Its value is 'null', which is never good."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:448
+#: src/plm/universe/bugglequest/AbstractBuggle.java:457
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:450
+#: src/plm/universe/bugglequest/AbstractBuggle.java:459
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:452
+#: src/plm/universe/bugglequest/AbstractBuggle.java:461
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:454
+#: src/plm/universe/bugglequest/AbstractBuggle.java:463
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:456
+#: src/plm/universe/bugglequest/AbstractBuggle.java:465
 msgid "    It should not carry that baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:458
+#: src/plm/universe/bugglequest/AbstractBuggle.java:467
 msgid "    It is not carrying any baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:460
+#: src/plm/universe/bugglequest/AbstractBuggle.java:469
 msgid "    It encountered an issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:462
+#: src/plm/universe/bugglequest/AbstractBuggle.java:471
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
@@ -2328,12 +2414,24 @@ msgstr ""
 msgid "That's not a line (please report this bug)."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:401
+#: src/plm/universe/turtles/Turtle.java:224
+msgid ""
+"Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
+"brushes. Use penDown() instead."
+msgstr ""
+
+#: src/plm/universe/turtles/Turtle.java:228
+msgid ""
+"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
+"brushes. Use penUp() instead."
+msgstr ""
+
+#: src/plm/universe/turtles/Turtle.java:409
 #, java-format
 msgid "The turtle {0} is not heading to the right direction."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:403
+#: src/plm/universe/turtles/Turtle.java:411
 #, java-format
 msgid "The turtle {0} is at the right location."
 msgstr ""

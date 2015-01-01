@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-24 23:11+0100\n"
+"POT-Creation-Date: 2015-01-01 23:38+0100\n"
 "PO-Revision-Date: 2014-12-24 23:27+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -75,38 +75,79 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser setPos(x,y) dans cet "
 "exercice. Marche jusqu'à ton objectif."
 
+#: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
+#, fuzzy
+msgid ""
+"Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
+"Use the intermediate slot in all moves."
+msgstr ""
+"Je suis désolé Dave, je ne peux pas te laisser utiliser avance() avec un "
+"argument dans cet exercice. Utilise plutôt une boucle."
+
+#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
+#, java-format
+msgid ""
+"Sorry Dave, I cannot let you use move disks from one end of the playground "
+"(slot {0}) directly to the other end (slot {1}). Use the intermediate slot "
+"(1) in all moves."
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
+#, java-format
+msgid ""
+"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
+"1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
+msgstr ""
+
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
-#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:163
+#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:73
 #, java-format
 msgid "move({0},{1})"
 msgstr "deplace({0},{1})"
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:71
-#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:167
+#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:176
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:77
 msgid "Invalid move"
 msgstr "Déplacement invalide"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:134
-#, java-format
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
+#, fuzzy, java-format
+msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
+msgstr ""
+"Les piles n''ont pas été retournées le même nombre de fois : {0} contre {1}\n"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
+#, fuzzy, java-format
+msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
+#, fuzzy, java-format
+msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
+#, fuzzy, java-format
 msgid ""
-"Cannot move from slot {0} to {1}: the only existing slots are 0, 1 and 2"
+"Cannot move from slot {0} to {1}: the only existing slots are numbered from "
+"0 to {2}"
 msgstr ""
 "Impossible de bouger du piquet {0} au piquet {1} car les seuls piquets "
 "existants sont 0, 1 et 2."
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:136
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
 #, java-format
 msgid "Cannot move from slot {0} to itself"
 msgstr "Impossible de bouger du piquet {0} à lui-même"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:138
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:206
 #, java-format
 msgid "No disc to move from slot {0}"
 msgstr "Il n''y a pas de disque à déplacer sur le piquet {0}"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:143
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:211
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
@@ -375,13 +416,17 @@ msgstr ""
 msgid ""
 "I cannot let you use backward with an argument in this exercise. Use a loop "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser recule() avec un argument dans cet exercice. Utilise plutôt une boucle."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser recule() avec un argument "
+"dans cet exercice. Utilise plutôt une boucle."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser droite() dans cet exercice. Utilise plutôt gauche()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser droite() dans cet exercice. "
+"Utilise plutôt gauche()."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
 #, java-format
@@ -606,7 +651,8 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala est utilisable sur votre machine. Félicitations."
 
 #: src/plm/core/model/Game.java:171
-msgid "Please install Scala version 2.10 or higher to use it in the PLM."
+#, fuzzy
+msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 "Veuillez installer Scala version 2.10 ou supérieure pour l'utiliser dans la "
 "PLM."
@@ -844,7 +890,7 @@ msgstr "L''utilisateur est maintenant {0}"
 msgid "A new PLM user has been created for you!"
 msgstr "Un nouvel utilisateur PLM a été créé pour vous !"
 
-#: src/plm/core/model/lesson/Exercise.java:78
+#: src/plm/core/model/lesson/Exercise.java:80
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr "Le monde ''{0}'' diffère"
@@ -2285,13 +2331,17 @@ msgstr "Exception {0} : {1}"
 msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser baisseCrayon() ici. Les buggles ont des brosses, pas des crayons. Utilise plutôt baisseBrosse()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser baisseCrayon() ici. Les "
+"buggles ont des brosses, pas des crayons. Utilise plutôt baisseBrosse()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:89
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser leveCrayon() ici. Les buggles ont des brosses, pas des crayons. Utilise plutôt leveBrosse()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser leveCrayon() ici. Les "
+"buggles ont des brosses, pas des crayons. Utilise plutôt leveBrosse()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:165
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2299,7 +2349,9 @@ msgstr "Désolé Dave, je ne peux pas te laisser utiliser leveCrayon() ici. Les 
 msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser Left() avec une majuscule. Utilise plutôt left() ou gauche()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser Left() avec une majuscule. "
+"Utilise plutôt left() ou gauche()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:168
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
@@ -2307,7 +2359,9 @@ msgstr "Désolé Dave, je ne peux pas te laisser utiliser Left() avec une majusc
 msgid ""
 "Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser Right() avec une majuscule. Utilise plutôt right() ou droite()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser Right() avec une majuscule. "
+"Utilise plutôt right() ou droite()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:188
 #, java-format
@@ -2727,13 +2781,17 @@ msgstr "Ce n'est pas une ligne (merci de rapporter cette anomalie)."
 msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser baisseBrosse() ici. Les tortues ont des crayons, pas des brosses. Utilise plutôt baisseCrayon()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser baisseBrosse() ici. Les "
+"tortues ont des crayons, pas des brosses. Utilise plutôt baisseCrayon()."
 
 #: src/plm/universe/turtles/Turtle.java:228
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser leveBrosse() ici. Les tortues ont des crayons, pas des brosses. Utilise plutôt leveCrayon()."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser leveBrosse() ici. Les "
+"tortues ont des crayons, pas des brosses. Utilise plutôt leveCrayon()."
 
 #: src/plm/universe/turtles/Turtle.java:409
 #, java-format

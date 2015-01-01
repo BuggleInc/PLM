@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-12-22 10:34+0100\n"
+"POT-Creation-Date: 2015-01-01 23:36+0100\n"
 "PO-Revision-Date: 2014-12-22 10:35+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -13077,13 +13077,45 @@ msgstr "Les tours de Hanoï"
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:3
 msgid ""
-"Here comes the super classical exercise on recursion. It's not very "
-"developed here, I'm not sure of what I could add to this lesson. If you have "
-"any idea, please submit them."
+"Here comes the super classical exercise on recursion along with some "
+"variations. If you have any other nice variations, please submit them.  At "
+"some point, someone should also probably contribute these variations to "
+"wikipedia, as only the base problem is nicely described there."
 msgstr ""
-"Voici l'exercice ultra classique sur la récursivité. Il n'est pas très "
-"développé ici, mais je ne sais pas vraiment quoi rajouter pour prolonger le "
-"plaisir. Si vous avez des idées, n'hésitez pas à nous en faire part."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:8
+msgid ""
+"The Interleaved and Split variations come from the following article: "
+"\"Exploring Recursion with Variations on the Towers of Hanoi\", Daniel W. "
+"Palmer. Available at http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/"
+"Daniel%20W%20Palmer.pdf"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:13
+msgid ""
+"The Linear Hanoi is briefly discussed in the article presenting the Linear "
+"Twin Towers of Hanoi: \"The Linear Twin Towers of Hanoi Problem\", Steven "
+"Minsker (ACM SIGCSE Bulletin Volume 39 Issue 4, December 2007). This article "
+"can only be accessed through the paywall of the editor, sorry."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:18
+msgid ""
+"The 3-colors Towers of Hanoi problem was presented on this web page: http://"
+"www.cut-the-knot.org/recurrence/TricolorHanoiAuto.shtml"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:21
+msgid ""
+"The Cyclic Towers of Hanoi was proposed by M.D. Atkinson in an article of "
+"1981 titled \"The cyclic towers of Hanoi\" (Information Processing Letters, "
+"Volume 13:3).  The article is available at http://www.cs.otago.ac.nz/"
+"staffpriv/mike/Papers/Hanoi/CyclicHanoi.pdf."
+msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:3
@@ -13153,10 +13185,16 @@ msgstr "Aucun disque ne peut être placé au dessus d'un disque plus petit."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/HanoiBoard.html:23
+#, fuzzy
+#| msgid ""
+#| "Write the core of the method: <code>[!java|c]void [/!]solve[!c]Rec[/!]([!"
+#| "java|c]int [/!]src[!scala]:Int[/!], [!java|c]int [/!]dst[!scala]:Int[/!],"
+#| "[!java|c]int [/!]other[!scala]:Int[/!], [!java|c]int [/!]height[!scala]:"
+#| "Int[/!])</code>"
 msgid ""
-"Write the core of the method: <code>[!java|c]void [/!]solve[!c]Rec[/!]([!"
-"java|c]int [/!]src[!scala]:Int[/!], [!java|c]int [/!]dst[!scala]:Int[/!],[!"
-"java|c]int [/!]other[!scala]:Int[/!], [!java|c]int [/!]height[!scala]:"
+"Write the core of the method: <code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!"
+"java|c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], "
+"[!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!scala]:"
 "Int[/!])</code>"
 msgstr ""
 "Écrivez le corps de la méthode : <code>[!java|c]void [/!]solve([!java|c]int "
@@ -13165,12 +13203,20 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:26
+#, fuzzy
+#| msgid ""
+#| "This method will recursively solve the presented problem. The first "
+#| "parameter named <code>src</code> is the index of the initial tower, the "
+#| "second parameter <code>dst</code> is the index of the expected final "
+#| "tower, the third parameter <code>other</code> is the index of the unused "
+#| "peg while the fourth parameter <code>height</code> is the height of the "
+#| "tower."
 msgid ""
 "This method will recursively solve the presented problem. The first "
-"parameter named <code>src</code> is the index of the initial tower, the "
-"second parameter <code>dst</code> is the index of the expected final tower, "
-"the third parameter <code>other</code> is the index of the unused peg while "
-"the fourth parameter <code>height</code> is the height of the tower."
+"parameter named <code>height</code> is the height of the tower to move; The "
+"second parameter <code>src</code> is the index of the initial tower, the "
+"third parameter <code>other</code> is the index of the unused peg while the "
+"fourth parameter <code>dst</code> is the index of the expected final tower."
 msgstr ""
 "Cette méthode résout récursivement le problème. \n"
 "Le premier paramètre (nommé <code>src</code>) est l'index de la pile "
@@ -13245,6 +13291,567 @@ msgstr "déplacer le disque numéro n de A vers C"
 msgid "move n−1 discs from B to C so they sit on disc number n"
 msgstr ""
 "déplacer n-1 disques de B vers C afin qu'ils reposent sur le disque numéro n"
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Interleaved Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:4
+msgid ""
+"In this classical variation of the Towers of Hanoi, you are given 4 pegs "
+"with 2 stacks, one white and one black. You should mix the two stacks as "
+"depicted in the Objective world.  As previously, you cannot move a disk on a "
+"smaller disk."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:8
+#, fuzzy
+#| msgid ""
+#| "The prototype of the <code>dragon()</code> method remains unchanged from "
+#| "previous exercise:"
+msgid ""
+"You will probably need to reuse the <code>hanoi()</code> method that you "
+"wrote in the previous exercise."
+msgstr ""
+"Le prototype de la méthode <code>dragon()</code> reste le même que "
+"précédemment :"
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:10
+msgid "Please show me an intermediate step"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:12
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:12
+#, fuzzy
+#| msgid "Once this is done, the situation is the following:"
+msgid "If your initial situation is as follows:"
+msgstr "Une fois ceci fait, on se retrouve dans la situation suivante:"
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:15
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:15
+msgid ""
+"then you have the following situation right before the main recursive call:"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Split Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:4
+msgid ""
+"Given one interleaved stack (e.g. resulting from the previous exercise), you "
+"should build two separate stacks.  In other words, your code should revert "
+"the operations done to solve the previous exercise."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:7
+msgid ""
+"You will need an extra function that can move an interleaved stack of (2*n) "
+"disks, without changing the relative positions of disks of the same size."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Better Split Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:4
+msgid ""
+"Surprisingly, our solution to the split tower generates much more moves than "
+"our solution to the interleaved towers.  As both problems are the opposite "
+"of each other, this should not be."
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Disks amount"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Interleaved"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+msgid "Split"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+#, fuzzy
+#| msgid "Stairs"
+msgid "5 pairs"
+msgstr "Escaliers"
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "62 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "88 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+#, fuzzy
+#| msgid "Stairs"
+msgid "6 pairs"
+msgstr "Escaliers"
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "126 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "183 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+#, fuzzy
+#| msgid "Stairs"
+msgid "7 pairs"
+msgstr "Escaliers"
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "254 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "374 moves"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:13
+msgid "Can you make the split tower as efficient as the interleaved one?"
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:15
+#, fuzzy
+#| msgid "I need an hint to start"
+msgid "I need a starter hint"
+msgstr "J'ai besoin d'un indice pour commencer."
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:16
+msgid ""
+"The source of discrepancy is an inefficient problem decomposition.  "
+"Satisfied that it merely worked, we looked no futher for a better solution.  "
+"Keeping the disks of the interleaved tower in the correct order during every "
+"move is unnecessary.  In fact, we can avoid moving the interleaved tower at "
+"all.  A better problem decomposition splits the pair of disks into two "
+"colored towers as they are removed from the interleaved tower."
+msgstr ""
+
+#. type: Attribute 'alt' of: <br><br><div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:24
+msgid "The starter hint was not enough"
+msgstr ""
+
+#. type: Content of: <br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:27
+msgid ""
+"First split the first (n-1) pairs of disks from the interleaved stack into a "
+"white tower and a black tower (calling recursively your main function)."
+msgstr ""
+
+#. type: Content of: <br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:28
+msgid "Then move the large white disk on its target pole."
+msgstr ""
+
+#. type: Content of: <br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:29
+msgid "Then move the (n-1) smaller white disks on top of the large one."
+msgstr ""
+
+#. type: Content of: <br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:30
+msgid "Then move the large black disk on its target pole."
+msgstr ""
+
+#. type: Content of: <br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:31
+msgid "Then move the smaller black disks in position."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Fast Split Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:4
+msgid ""
+"Again, our previous solution is working, but it is far from being optimal.  "
+"When moving the towers, we use the algorithm for 3 pegs even if we have 4 "
+"pegs.  Of course, movements to the last peg are restricted since it contains "
+"the other stack, but we can always store the smallest disk on top of the "
+"other stack before moving our stack."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:9
+msgid ""
+"For that, we need to devise a new function <code>hanoi_fast(height, src, "
+"free, full, dst)</code> that moves the stack from <code>src</code> to "
+"<code>dst</code> using <code>free</code>, but storing the smallest disk onto "
+"<code>full</code> beforehand."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:13
+msgid "I'm lost"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:14
+msgid ""
+"The <code>hanoi_fast(height, src, free, full, dst)</code> function is not "
+"recursive.  It moves the first disk and then call the regular <code>hanoi()</"
+"code> function."
+msgstr ""
+
+#. type: Content of: <br><p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:18
+msgid ""
+"This change greatly improve the performance, as you can see below. Of "
+"course, this trick could also be used for the interleaved algorithm, leading "
+"as expected to the exact same performance."
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Slow Split"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Fast Split"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "46 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "82 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "150 moves"
+msgstr ""
+
+#. type: Content of: <br><p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:27
+msgid ""
+"As a conclusion, most of us are satisfied with a working solution and we "
+"easily overlook possibilities for improved problem decomposition. <b>You</b> "
+"should not do that ;)"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Linear Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:4
+msgid ""
+"This is a classical variation over the Towers of Hanoi where some moves are "
+"forbidden.  Specifically, disks cannot move directly between the left-most "
+"and the right-most pegs.  The middle peg must be involved in every moves."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:8
+msgid ""
+"Beside of that extra complexity, the problem remains unchanged: you are "
+"requested to move the whole stack of disks from one extremity peg to the "
+"other one. You can only move one disk at a time, and a bigger disk cannot be "
+"placed over a smaller one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:12
+msgid ""
+"As with the classical version, it is much easier to produce a recursive "
+"solution, and you are absolutely able to devise this solution if you think "
+"hard enough about it."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:15
+msgid "I tried, but I don't get it"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:16
+msgid ""
+"The standard recursive algorithm for classical Hanoi is of complexity "
+"<i>2^n-1</i> where the standard recursive algorithm for this variation is of "
+"complexity <i>3^n-1</i>."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:20
+#, fuzzy
+#| msgid "The first tip was not enough. I need another one."
+msgid "That first tip was not enough"
+msgstr "Ce premier indice n'était pas suffisant, j'ai besoin de plus d'aide."
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:21
+msgid ""
+"The standard recursive algorithm for classical Hanoi involves two recursive "
+"calls sandwiching one movement of the largest ring, the standard recursive "
+"algorithm for Linear Hanoi involves three recursive calls sandwiched around "
+"two movements of the same ring."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Linear Twin Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:4
+msgid ""
+"This is a mix between both the Split and Interleaved problems, and the "
+"linear problem.  We are given two stacks of disks, on three pegs. We are "
+"expected to swap the stacks' position while respecting the classical Hanoi "
+"movement restrictions (one disk at a time, and no large disk over smaller "
+"disks) and the linear movement restriction (no direct exchange between the "
+"left-most and right-most pegs)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:10
+msgid "You will use three recursive functions:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:12
+msgid ""
+"<b>moveDouble(k,from, to)</b>: moves an interleaved stack of (2*k) disks, "
+"without changing the relative positions of disks of the same size. As in the "
+"Split Hanoi problem, an interleaved stack alternates white and black disks "
+"of each sizes. This function is not completely new: you wrote a version with "
+"4 pegs (but using only 3 of them) for the first version of the Split Hanoi "
+"problem."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:17
+msgid ""
+"<b>gather(k)</b>: from the initial split situation, build on peg 3 an "
+"interleaved stack of k pairs of disks. You may parametrize your function so "
+"that it can be used to gather the disk on any peg passed as parameter, but "
+"in practice, your function will only be used to gather on peg 3."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:21
+msgid ""
+"<b>scatter(k)</b>: from a situation where k pairs of disks are interleaved "
+"on peg 1, split it down by moving the white disks to peg 1 and black ones to "
+"peg 3."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:25
+msgid ""
+"In <code>gather()</code>, the recursive call comes before two calls to "
+"<code>moveDouble()</code> while in <code>scatter()</code>, the calls to "
+"<code>moveDouble()</code> come before the recursive call.  The main function "
+"that you should write is not recursive, but simply gather almost all disks, "
+"moves directly the remaining disks, and then scatters back the small disks. "
+"The linearity naturally induces some extra complexity as you have to "
+"decompose every move between pegs 0 and 2. Note that the requested algorithm "
+"was proved optimal for that problem, so you don't need to fiddle the "
+"performance this time."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:32
+msgid "I am still confident in your ability to overcome the challenge :)"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:2
+msgid "Tricolor Hanoi: stack move"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:4
+msgid ""
+"In this set of exercises, we will devise an algorithm for the Tricolor Hanoi "
+"problem.  There will be 3 stacks on 3 pegs, each stack of a differing color, "
+"and the problem is to exchange the stacks' positions under the classical "
+"move restrictions (one disk at a time, and no bigger disk over smaller disk)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:9
+msgid "As in previous exercises, our solution will use three functions:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:11
+msgid ""
+"<code>moveStack(n,from, other, to)</code>: moves a stack of interleaved "
+"disks, ie a stack of (n*3) disks of alternating colors from peg <code>from</"
+"code> to peg <code>to</code>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:13
+msgid ""
+"<code>gather()</code>: builds an interleaved stack from the regular split "
+"ones."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:14
+msgid ""
+"<code>scatter()</code>: splits an interleaved stack into several regular "
+"ones."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:17
+msgid ""
+"The goal of this first exercise in the series is to devise the "
+"<code>moveStack()</code> function.  This starter task should not block you "
+"for too long, actually. It is ok if your function changes the order of the "
+"bottom triplet of disks, but it must preserve the order of the other "
+"triplets."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/TricolorHanoi2.html:2
+msgid "Tricolor Hanoi: the Gathering"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi2.html:4
+msgid ""
+"It is now time to write the second function required by the Tricolor Hanoi "
+"problem.  <code>gather()</code> builds an interleaved stack from the regular "
+"split ones. This function takes four arguments, the last one being the "
+"target peg where the interleaved stack must be assembled.  As you can see in "
+"the examples, the colors of must be in the same order for each triplet of "
+"disks."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi2.html:9
+msgid ""
+"That function actually uses the <code>move3()</code> that you wrote just "
+"before. Simply copy/paste your code over to reuse it. If you're lost, please "
+"refer to the Interleaved Hanoi exercise. Gathering 3 stacks on 3 pegs is "
+"rather similar to gathering 2 stacks on 4 pegs. You can find that exercise "
+"<a href=\"plm://lessons.recursion.hanoi/InterleavedHanoi\">here</a>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/TricolorHanoi3.html:2
+msgid "Tricolor Hanoi: the Final"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi3.html:4
+msgid ""
+"We are almost ready to write the whole tricolor algorithm. We just need the "
+"<code>scatter()</code> function, very inspired from the first one that we "
+"wrote for the <a href=\"plm://lessons.recursion.hanoi/SplitHanoi1\">Split "
+"Hanoi problem</a>. Assuming that your interleaved stack is placed on the "
+"<code>mid</code> peg, spread the disks over all pegs. Make sure to use "
+"<code>move3()</code> an even amount of time at each recursive level to "
+"ensure that the bottom disks are in the correct order."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi3.html:10
+msgid ""
+"As you can see, the initial situation is not the one expected by "
+"<code>scatter()</code>. You first have to apply <code>gather()</code> and "
+"<code>move3()</code> (twice to get the bottom triplet in the right order). "
+"These few steps plus the new <code>scatter()</code> function are enough to "
+"entirely solve the Tricolor Hanoi problem."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:2
+#, fuzzy
+#| msgid "Tower of Hanoi"
+msgid "Cyclic Towers of Hanoi"
+msgstr "Les tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:4
+msgid ""
+"This variation is very similar to the regular problem: you are given one "
+"stack of disks and three pegs.  The change is that you can only move disks "
+"clockwise: 0->1 or 1->2 or 2->0, but never in the other direction.  As "
+"usual, you cannot move a larger disk over a smaller one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:8
+msgid ""
+"Obviously, the movements are not symmetric anymore. Moves from A to B are "
+"now very different from moves to B to A.  As a result, you need two "
+"recursive functions depending on whether you are moving the stack clockwise "
+"or counterclockwise.  The problem decomposition is very similar to the "
+"classical Hanoi, but the funny thing is that each function call the other "
+"one, constituting a nice example of mutual recursion."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:2
@@ -16152,6 +16759,15 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
+
+#~ msgid ""
+#~ "Here comes the super classical exercise on recursion. It's not very "
+#~ "developed here, I'm not sure of what I could add to this lesson. If you "
+#~ "have any idea, please submit them."
+#~ msgstr ""
+#~ "Voici l'exercice ultra classique sur la récursivité. Il n'est pas très "
+#~ "développé ici, mais je ne sais pas vraiment quoi rajouter pour prolonger "
+#~ "le plaisir. Si vous avez des idées, n'hésitez pas à nous en faire part."
 
 #~ msgid "Backtracking lesson"
 #~ msgstr "Leçon sur le \"backtracking\""
