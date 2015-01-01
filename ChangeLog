@@ -4,6 +4,7 @@
     - Brazilian: missions at 62%, engine at 34%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
+      This fixes http://bugs.debian.org/772026
     - Switch embeeded scala compiler to version 2.11.4
   * Worlds:
     - #284: Turtle, Buggle: Better message when mixing pens and brushes
@@ -17,8 +18,8 @@
       while the second exercise request the inner loop to also be a
       do/while (because of the corridors of differing lenghts)
     - InterleavedHanoi,SplitHanoi[123]; LinearHanoi,LinearTwinHanoi;
-      TricolorHanoi[123]; CyclicHanoi: New exercises. These problem 
-      variations exercise recursive problem decomposition
+      TricolorHanoi[123]; CyclicHanoi: New exercises to work on the 
+      decomposition of recursive problems.
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
 
