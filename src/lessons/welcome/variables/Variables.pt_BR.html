@@ -49,12 +49,11 @@ com 42 como valor inicial, você deve escrever:</p>
   <p>Na maioria dos casos, o compilador é capaz de adivinhar o tipo da variável
 baseado no valor inicial, e você pode omitir o tipo:</p>
   <pre>var x = 42</pre>
-  <p>Você ainda tem que especificar se você usa alguns valores genéricos
-como uma inicialização, tais como o valor muito especial
-<code>null</code>, cujo tipo parece ser ambíguo. Mesmo quando o tipo é
-claro, você ainda pode especificar o tipo se preferir. Portanto, se
-você quiser que a variável contenha 5 como valor inicial, você deve
-digitar: </p>
+  <p>Você ainda tem que especificar se você usa alguns valores genéricos como uma
+inicialização, tais como o valor muito especial <code>null</code>, cujo tipo
+parece ser ambíguo. Mesmo quando o tipo é claro, você ainda pode especificar
+o tipo se preferir. Portanto, se você quiser que a variável contenha 5 como
+valor inicial, você deve digitar: </p>
   <pre>var x: Int =  5 <span class="comment">// Eu posso definir o tipo se eu quiser</span>
 var y =  10      <span class="comment">// ou posso omitir o tipo se eu preferir</span></pre>
 [/!] [!java|scala|c]
@@ -95,13 +94,13 @@ mais fácil de escrever mas erros podem surgir mais facilmente.</p>
 [/!]
   
 
-<p class="scala">Se você sabe que o valor de sua "variável" nunca vai mudar (eg quando
-ela contém o tamanho da tela ou outro valor constante), então você
-deve fazer dela um <b>valor</b> ao invés de uma variável. Simplesmente
-mude a palavra-chave <code>var</code> para <code>val</code>. O
-compilador pode então verificar suas ações e capturar seu erro quando
-você inadvertidamente modificar o valor. Mais interessante ainda, o
-compilador pode produzir código mais rápido em alguns casos.</p>
+<p class="scala">Se você sabe que o valor de sua "variável" nunca vai mudar (eg quando ela
+contém o tamanho da tela ou outro valor constante), então você deve fazer
+dela um <b>valor</b> ao invés de uma variável. Simplesmente mude a
+palavra-chave <code>var</code> para <code>val</code>. O compilador pode
+então verificar suas ações e capturar seu erro quando você inadvertidamente
+modificar o valor. Mais interessante ainda, o compilador pode produzir
+código mais rápido em alguns casos.</p>
 
 <p>Variáveis funcionam muito parecido com strings, números com vírgula e
 valores booleanos.</p>
@@ -132,8 +131,8 @@ casado=True <span class="comment"># o contrário se escreve "False"</span></pre>
 valor para ela mais tarde no programa. Isto é bem fácil:</p> 
 <pre>x = 3[!java|c];[/!]</pre>
 
-<p>À esquerda do símbolo de igual você pode colocar uma expressão
-aritmética contendo constantes, variáveis e operações.</p>
+<p>À esquerda do símbolo de igual você pode colocar uma expressão aritmética
+contendo constantes, variáveis e operações.</p>
 
 <pre>x = 3 + 2[!java|c];[/!]
 x = 3 * x[!java|c];[/!]
