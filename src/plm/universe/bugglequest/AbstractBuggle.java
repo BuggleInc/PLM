@@ -538,8 +538,7 @@ public abstract class AbstractBuggle extends Entity {
 	public int getAlturaDoMundo()          { return getWorldHeight(); }
 	public int getLarguraDoMundo()          { return getWorldWidth(); }
 	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
-	public boolean estáSelecionado()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
-	public boolean estáSelecionado()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+	public boolean estáSelecionado()           { return isSelected(); } 
 
 
 	@Override
