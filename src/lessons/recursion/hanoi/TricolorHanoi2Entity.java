@@ -1,8 +1,6 @@
 package lessons.recursion.hanoi;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
-//http://stackoverflow.com/questions/13542156/cyclic-unidirectional-tower-of-hanoi-suggestions?rq=1
-//http://en.wikipedia.org/wiki/Tower_of_Hanoi#Cyclic_Hanoi
 
 public class TricolorHanoi2Entity extends HanoiEntity {
 

@@ -19,5 +19,7 @@ public class Main extends Lesson {
 		Lecture tricolor = addExercise(new TricolorHanoi1(this));
 		addExercise(new TricolorHanoi2(this),tricolor);
 		addExercise(new TricolorHanoi3(this),tricolor);
+		
+		addExercise(new CyclicHanoi(this));
 	}
 }
