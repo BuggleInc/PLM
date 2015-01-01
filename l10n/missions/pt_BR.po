@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-12-22 10:34+0100\n"
-"PO-Revision-Date: 2014-12-24 17:12-0300\n"
+"PO-Revision-Date: 2014-12-28 23:45-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -275,7 +275,7 @@ msgstr "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]selecionado()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
@@ -1272,8 +1272,8 @@ msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
 msgstr ""
-"O botão <b>mark</b> é diferente, pois corresponde a dois métodos: o primeiro "
-"move a caneta para cima e o segundo move a caneta para baixo."
+"O botão <b>marcar</b> é diferente, pois corresponde a dois métodos: o\n"
+"primeiro move a caneta para cima e o segundo move a caneta para baixo."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:58
@@ -6255,9 +6255,7 @@ msgstr ""
 msgid ""
 "<code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the "
 "ground."
-msgstr ""
-"<code>[!java|c]void [/!]clearMessage()</code>: limpa o que está escrito no "
-"chão."
+msgstr "<code>[!java|c]void [/!]limparMensagem()</code>: limpa o que está escrito no chão."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
@@ -7126,6 +7124,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:21
+#, fuzzy
 msgid ""
 "Your first task is thus to write a boolean function indicating whether the "
 "buggle reached the final position or not, ie if it reached the bottom right "
@@ -7138,9 +7137,9 @@ msgstr ""
 "Sua primeira tarefa é escrever uma função booleana indicando se o\n"
 "buggle alcançou a posição final ou não, ou seja se ele alcançou o\n"
 "canto inferior direito do mundo. Para isto, você pode usar\n"
-"<code>getWorldWidth()</code> e <code>getWorldHeight()</code> que\n"
+"<code>getLarguraDoMundo()</code> e <code>getAlturaDoMundo()</code> que\n"
 "retornam respectivamente a largura e altura do mundo. Seu teste é deve\n"
-"comparar a posição atual do buggle (que vocẽ pode acessar com\n"
+"comparar a posição atual do buggle (que você pode acessar com\n"
 "<code>getX()</code> e <code>getY()</code>) com as dimensões do mundo."
 
 #. type: Content of: <p>

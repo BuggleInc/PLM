@@ -522,25 +522,25 @@ public abstract class AbstractBuggle extends Entity {
 	public void abaixarCaneta()             { penDown(); }
 	public void levantarPincel()            { brushUp(); }
 	public void abaixarPincel()             { brushDown(); }
-/*    	public boolean estBrosseBaissee()     { return isBrushDown(); }
-	public Color getCouleurBrosse()       { return getBrushColor(); }
-	public void setCouleurBrosse(Color c) { setBrushColor(c); }
-	public Color getCouleurSol()          { return getGroundColor(); }
-	public boolean estSurBiscuit()        { return isOverBaggle(); }
-	public boolean porteBiscuit()         { return isCarryingBaggle(); }
-	public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
-	public void poseBiscuit()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
-	public boolean estSurMessage()        { return isOverMessage(); }
-	public String litMessage()            { return readMessage(); }
-	public void ecritMessage(String s)    { writeMessage(s); }
-	public void ecritMessage(int i)       { writeMessage(i); }
-	public void effaceMessage()           { clearMessage(); }
-	public int getMondeHauteur()          { return getWorldHeight(); }
-	public int getMondeLargeur()          { return getWorldWidth(); }
-	// get/set X/Y/Pos are not translated as they happen to be the same in French
-	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
-	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
-*/
+    	public boolean pincelEstáAbaixado()     { return isBrushDown(); }
+	public Color getCorDoPincel()       { return getBrushColor(); }
+	public void setCorDoPincel(Color c) { setBrushColor(c); }
+	public Color getCorDoChão()          { return getGroundColor(); }
+	public boolean estáSobreBaggle()        { return isOverBaggle(); }
+	public boolean estáCarregandoBaggle()         { return isCarryingBaggle(); }
+	public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+	public void soltarBaggle()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
+	public boolean estáSobreMensagem()        { return isOverMessage(); }
+	public String lerMensagem()            { return readMessage(); }
+	public void escreverMensagem(String s)    { writeMessage(s); }
+	public void escrevermensagem(int i)       { writeMessage(i); }
+	public void limparMensagem()           { clearMessage(); }
+	public int getAlturaDoMundo()          { return getWorldHeight(); }
+	public int getLarguraDoMundo()          { return getWorldWidth(); }
+	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
+	public boolean estáSelecionado()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
+	public boolean estáSelecionado()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+
 
 	@Override
 	public void command(String command, BufferedWriter out){
