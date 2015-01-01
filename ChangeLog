@@ -1,7 +1,7 @@
 20141130: wannabe 2.6
 
   * Improved translations:
-    - Brazilian: missions at 62%, engine at 34%
+    - Brazilian: missions at 62%, engine at 38%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
       This fixes http://bugs.debian.org/772026
