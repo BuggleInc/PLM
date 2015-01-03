@@ -1,0 +1,26 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tours de Hanoï tricolores : déplacer</h2>
+
+<p>Dans cette série d'exercices, nous allons mettre au point un algorithme pour
+le problème des tours de Hanoï tricolores. Il y aura trois piles de couleurs
+différentes sur trois piquets, et il s'agira d'échanger la position des
+piles en respectant les règles de mouvement habituelles (un disque à la
+fois, et pas de gros disques sur des petits disques).</p>
+
+<p>Comme précédement, notre solution sera basée sur trois fonctions :</p>
+<ul>
+ <li><code>move3(n, src, mid, dst)</code>: déplace une pile de disques
+interclassée, c'est-à-dire une pile de (n*3) disques de couleurs alternées,
+depuis le piquet <code>src</code> jusqu'au piquet <code>dst</code>. </li>
+ <li><code>rassemble()</code> : construit une pile interclassée à partir de trois
+piles séparées.</li>
+ <li><code>repartis()</code> : démonte une pile interclassée en trois piles
+normales.</li>
+</ul>
+
+<p>L'objectif de ce premier exercice de la série est d'écrire la fonction
+<code>move3()</code>. Cet échauffement ne devrait pas vous bloquer très
+longtemps. Cela ne pose pas de problème si votre fonction change l'ordre des
+disques du triplet du bas, mais les autres triplets doivent rester dans le
+même ordre.</p> 

@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Les tours jumelles de Hanoï linéaire</h2>
+
+<p>Cette variante est un mélange entre d'une part les tours séparées et
+interclassées, et d'autre part les tours linéaires. Nous avons deux piles de
+disques, et trois piquets. Il faut inverser la position des piles en
+respectant les règles de mouvement habituelles des tours de Hanoï (un seul
+disque à la fois, et pas de grand disque sur les petits disques) ainsi que
+les restrictions du mouvement linéaire (pas d'échange direct entre les
+piquets des extrémités).</p>
+
+<p>Vous aurez besoin de trois fonctions récursives :</p>
+<ul>
+ <li><b>deplaceInterclassee(k, src,dst)</b> : déplace une pile interclassée de k
+paires de disques, sans changer l'ordre relatif des disques de même
+taille. Comme dans le problème des tours séparées, une tour interclassée
+alterne des disques blancs et noirs de chaque taille. Cette fonction n'est
+pas entièrement nouvelle : vous avez écrit une version avec quatre piquets
+(mais en n'en utilisant que trois) dans la première version des tours
+séparées.</li>
+ <li><b>rassemble(k)</b> : à partir d'une situation séparée, construire sur le
+piquet n°2 une pile interclassée de k paires de disques. Vous pouvez rendre
+votre fonction paramétrable afin qu'elle puisse rassembler les disque sur
+n'importe quel piquet passé en paramètre, mais en pratique, elle ne sera
+utilisée que pour rassembler les disques sur le dernier piquet.</li>
+ <li><b>repartis(k)</b> : à partir d'une situation où k paires de disques sont
+interclassés sur le piquet n°0, séparez là en déplaçant les disques blancs
+sur le piquet n°1 et les noirs sur le piquet n°2.</li>
+</ul>
+
+<p>Dans <code>rassemble()</code>, l'appel récursif vient avant deux appels à
+<code>deplaceInterclassee</code> tandis que dans <code>repartis()</code> les
+appels à <code>deplaceInterclassee</code> arrivent avant l'appel
+récursif. La fonction principale que vous devez écrire n'est pas récursive,
+mais rassemble simplement la plupart des disques, déplace les disques
+restants, puis répartit de nouveau les petits disques. </p>
+
+<p>La linéarité ajoute certainement un peu de complexité puisqu'il faut
+décomposer tous les mouvements entre les piquets n°0 et n°2, mais je reste
+confiant dans votre capacité à résoudre cette épreuve :)</p> 
+
+<p>Remarquez que l'algorithme demandé a été prouvé optimal pour ce problème. Il
+n'est donc pas utile aujourd'hui de chercher à optimiser plus que demandé.</p>
