@@ -20,6 +20,8 @@
     - InterleavedHanoi,SplitHanoi[123]; LinearHanoi,LinearTwinHanoi;
       TricolorHanoi[123]; CyclicHanoi: New exercises to work on the 
       decomposition of recursive problems.
+    - Move the Moria exercise to the last position in welcome lesson.
+      It is ways harder than the other ones.
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
 
