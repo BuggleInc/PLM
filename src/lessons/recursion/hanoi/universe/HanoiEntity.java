@@ -55,8 +55,13 @@ public class HanoiEntity extends Entity {
 					"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.",from, to));
 		regularMove(from,to);
 	}
+	/** Returns the amount of disks on the given slot */
 	public int getSlotSize(int slot) {
 		return ((HanoiWorld) world).getSlotSize(slot);
+	}
+	/** Returns the radius of the topmost disk of the given slot */
+	public int getSlotRadius(int slot) {
+		return ((HanoiWorld) world).getRadius(slot);
 	}
 
 	/* BEGIN HIDDEN */
