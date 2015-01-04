@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-01-03 10:39+0100\n"
-"PO-Revision-Date: 2015-01-03 13:38+0100\n"
+"POT-Creation-Date: 2015-01-04 16:03+0100\n"
+"PO-Revision-Date: 2015-01-04 16:04+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -13823,7 +13823,9 @@ msgstr ""
 msgid ""
 "Note that the requested algorithm was proved optimal for that problem, so "
 "you don't need to fiddle the performance this time."
-msgstr "Remarquez que l'algorithme demandé a été prouvé optimal pour ce problème. Il n'est donc pas utile aujourd'hui de chercher à optimiser plus que demandé."
+msgstr ""
+"Remarquez que l'algorithme demandé a été prouvé optimal pour ce problème. Il "
+"n'est donc pas utile aujourd'hui de chercher à optimiser plus que demandé."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:2
@@ -13855,21 +13857,28 @@ msgid ""
 "<code>move3(n, src, mid, dst)</code>: moves a stack of interleaved disks, ie "
 "a stack of (n*3) disks of alternating colors from peg <code>src</code> to "
 "peg <code>dst</code>."
-msgstr "<code>move3(n, src, mid, dst)</code>: déplace une pile de disques interclassée, c'est-à-dire une pile de (n*3) disques de couleurs alternées, depuis le piquet <code>src</code> jusqu'au piquet <code>dst</code>. "
+msgstr ""
+"<code>move3(n, src, mid, dst)</code>: déplace une pile de disques "
+"interclassée, c'est-à-dire une pile de (n*3) disques de couleurs alternées, "
+"depuis le piquet <code>src</code> jusqu'au piquet <code>dst</code>. "
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:13
 msgid ""
 "<code>gather()</code>: builds an interleaved stack from the regular split "
 "ones."
-msgstr "<code>rassemble()</code> : construit une pile interclassée à partir de trois piles séparées."
+msgstr ""
+"<code>rassemble()</code> : construit une pile interclassée à partir de trois "
+"piles séparées."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:14
 msgid ""
 "<code>scatter()</code>: splits an interleaved stack into several regular "
 "ones."
-msgstr "<code>repartis()</code> : démonte une pile interclassée en trois piles normales."
+msgstr ""
+"<code>repartis()</code> : démonte une pile interclassée en trois piles "
+"normales."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:17
@@ -13879,7 +13888,12 @@ msgid ""
 "too long, actually. It is ok if your function changes the order of the "
 "bottom triplet of disks, but it must preserve the order of the other "
 "triplets."
-msgstr "L'objectif de ce premier exercice de la série est d'écrire la fonction <code>move3()</code>. Cet échauffement ne devrait pas vous bloquer très longtemps. Cela ne pose pas de problème si votre fonction change l'ordre des disques du triplet du bas, mais les autres triplets doivent rester dans le même ordre."
+msgstr ""
+"L'objectif de ce premier exercice de la série est d'écrire la fonction "
+"<code>move3()</code>. Cet échauffement ne devrait pas vous bloquer très "
+"longtemps. Cela ne pose pas de problème si votre fonction change l'ordre des "
+"disques du triplet du bas, mais les autres triplets doivent rester dans le "
+"même ordre."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/TricolorHanoi2.html:2
@@ -13895,7 +13909,14 @@ msgid ""
 "target peg where the interleaved stack must be assembled.  As you can see in "
 "the examples, the colors of must be in the same order for each triplet of "
 "disks."
-msgstr "Il est maintenant temps d'écrire la seconde fonction nécessaire pour les tours de Hanoï tricolores. La fonction <code>gather()</code> construit une pile interclassée à partir de piles séparées (gather veut dire «rassembler» en anglais). Cette fonction prend quatre arguments, le dernier étant le numéro du piquet où il faut construire la pile interclassée. Comme vous pouvez voir dans les exemples, l'ordre des couleurs doit être le même pour tous les triplets de disques."
+msgstr ""
+"Il est maintenant temps d'écrire la seconde fonction nécessaire pour les "
+"tours de Hanoï tricolores. La fonction <code>gather()</code> construit une "
+"pile interclassée à partir de piles séparées (gather veut dire «rassembler» "
+"en anglais). Cette fonction prend quatre arguments, le dernier étant le "
+"numéro du piquet où il faut construire la pile interclassée. Comme vous "
+"pouvez voir dans les exemples, l'ordre des couleurs doit être le même pour "
+"tous les triplets de disques."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi2.html:9
@@ -13905,7 +13926,13 @@ msgid ""
 "refer to the Interleaved Hanoi exercise. Gathering 3 stacks on 3 pegs is "
 "rather similar to gathering 2 stacks on 4 pegs. You can find that exercise "
 "<a href=\"plm://lessons.recursion.hanoi/InterleavedHanoi\">here</a>."
-msgstr "Cette fonction utilise la fonction <code>move3()</code> que vous venez d'écrire. Faites un copie/colle de votre code pour le réutiliser ici. Si vous avez besoin de plus d'explications, référez vous à l'exercice des tours interclassées. Rassembler 3 piles sur 3 piquets est assez similaire à rassembler 2 piles sur 4 piquets. Vous trouverez cet exercice <a href=\"plm://lessons.recursion.hanoi/InterleavedHanoi\">ici</a>."
+msgstr ""
+"Cette fonction utilise la fonction <code>move3()</code> que vous venez "
+"d'écrire. Faites un copie/colle de votre code pour le réutiliser ici. Si "
+"vous avez besoin de plus d'explications, référez vous à l'exercice des tours "
+"interclassées. Rassembler 3 piles sur 3 piquets est assez similaire à "
+"rassembler 2 piles sur 4 piquets. Vous trouverez cet exercice <a href="
+"\"plm://lessons.recursion.hanoi/InterleavedHanoi\">ici</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/TricolorHanoi3.html:2
@@ -13922,7 +13949,16 @@ msgid ""
 "<code>mid</code> peg, spread the disks over all pegs. Make sure to use "
 "<code>move3()</code> an even amount of time at each recursive level to "
 "ensure that the bottom disks are in the correct order."
-msgstr "Nous sommes presque prêts à écrire l'algorithme entier des tours tricolores. Il ne nous manque plus qu'une fonction <code>separe()</code>, très inspirée de la première que nous avions écrite pour le problème des <a href=\"plm://lessons.recursion.hanoi/SplitHanoi1\">Tours de Hanoï séparées</a>. En supposant que votre tour interclassée se trouve sur le piquet <code>mid</code>, il faut répartir les disques sur tous les piquets. Assurez-vous d'utiliser la fonction <code>move3</code> un nombre pair de fois à chaque étage récursif afin que les disques du triplet du bas soient dans le bon ordre."
+msgstr ""
+"Nous sommes presque prêts à écrire l'algorithme entier des tours tricolores. "
+"Il ne nous manque plus qu'une fonction <code>separe()</code>, très inspirée "
+"de la première que nous avions écrite pour le problème des <a href=\"plm://"
+"lessons.recursion.hanoi/SplitHanoi1\">Tours de Hanoï séparées</a>. En "
+"supposant que votre tour interclassée se trouve sur le piquet <code>mid</"
+"code>, il faut répartir les disques sur tous les piquets. Assurez-vous "
+"d'utiliser la fonction <code>move3</code> un nombre pair de fois à chaque "
+"étage récursif afin que les disques du triplet du bas soient dans le bon "
+"ordre."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi3.html:10
@@ -13932,7 +13968,13 @@ msgid ""
 "<code>move3()</code> (twice to get the bottom triplet in the right order). "
 "These few steps plus the new <code>scatter()</code> function are enough to "
 "entirely solve the Tricolor Hanoi problem."
-msgstr "Comme vous pouvez le voir, la situation initiale n'est pas celle attendue par la méthode <code>separe()</code>. Il faut auparavant utiliser les méthodes <code>gather()</code> puis <code>move3()</code> (deux fois pour que le triplet du bas soit dans le bon ordre). Ces quelques étapes suivies de la fonction <code>separe()</code> suffisent à résoudre intégralement le problème des tours tricolores de Hanoï."
+msgstr ""
+"Comme vous pouvez le voir, la situation initiale n'est pas celle attendue "
+"par la méthode <code>separe()</code>. Il faut auparavant utiliser les "
+"méthodes <code>gather()</code> puis <code>move3()</code> (deux fois pour que "
+"le triplet du bas soit dans le bon ordre). Ces quelques étapes suivies de la "
+"fonction <code>separe()</code> suffisent à résoudre intégralement le "
+"problème des tours tricolores de Hanoï."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/CyclicHanoi.html:2
@@ -13977,6 +14019,90 @@ msgstr ""
 "Ceci étant, la décomposition récursive du problème est très similaire à "
 "celle du problème classique. Simplement, chacune des deux fonctions appelle "
 "l'autre, constituant un bel exemple de récursivité mutuelle."
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:2
+msgid "Iterative Towers of Hanoi"
+msgstr "Les tours de Hanoï itératives"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:4
+msgid ""
+"In this last exercise of the series, we will implement an iterative "
+"algorithm for the base problem of the Towers of Hanoi (one stack, 3 pegs, no "
+"extra movement restriction)."
+msgstr ""
+"Dans ce dernier exercice de la série, nous allons implémenter une solution "
+"itérative au problème de base des tours de Hanoï (une pile, trois piques, "
+"pas de restriction de mouvement particulière)."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:8
+msgid ""
+"This algorithm is actually very simple: On odd moves, the smallest disk is "
+"moved in a given direction (either increasing 0-&gt;1-&gt;2-&gt;0 or "
+"decreasing 2-&lt;1-&lt;0-&lt;2) while on even moves, the only possible move "
+"that does not imply the smallest disk is made. You stop as soon as the stack "
+"is rebuilt on another location."
+msgstr ""
+"Cet algorithme est très simple, en fait : Lors des déplacements pairs, le "
+"plus petit disque se déplace dans une direction donnée (soit dans le sens "
+"ascendant 0-&gt;1-&gt;2-&gt;0 soit dans le sens descendant 2-&gt;1-&gt;0-"
+"&gt;2). Lors des déplacements impaires, on fait le seul mouvement possible "
+"n'impliquant pas le petit disque. On s'arrête dès que la pile est "
+"reconstruite quelque part."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:13
+msgid ""
+"The function that you now need to write takes two parameters: the initial "
+"position of the smallest disk (i.e., the peg initially containing the stack) "
+"and a boolean indicating whether the smallest disk should move in the "
+"increasing order or not."
+msgstr ""
+"La fonction que vous devez écrire pour cela prend deux paramètres : la "
+"position initiale du petit disque (càd le numéro du piquet contenant "
+"initialement la pile) et un booléen indiquant si le petit disque doit se "
+"déplacer dans le sens ascendant ou non."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:17
+msgid ""
+"The simplicity of this algorithm is actually almost deceiving. One could "
+"wonder on the interest of the recursive algorithms when such a simple "
+"iterative algorithm exists. My personal feeling is that this solution is "
+"nice to execute, but almost impossible to devise in the first place (I even "
+"suspect that the authors built this iterative solution from observations of "
+"the recursive execution)..."
+msgstr ""
+"La simplicité de cet algorithme est presque décevante ! On peut s'interroger "
+"sur l'intérêt des solutions récursives que nous avons construit jusqu'ici "
+"alors qu'il existe un algorithme itératif aussi simple. Mon avis personnel "
+"est que cette solution est facile à exécuter une fois qu'on l'a, mais "
+"pratiquement impossible à découvrir par soit-même (je soupçonne même les "
+"auteurs de l'avoir découverte en observant les effets de la solution "
+"itérative)..."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:23
+msgid ""
+"Predicting the effect of this function is also difficult: When the small "
+"disk moves in the increasing order, the stack is reconstructed on the right "
+"peg with 5 disks but on the left with 6 disks."
+msgstr ""
+"Il est également malaisé de prédire le résultat de cet algorithme : quand le "
+"petit disque se déplace dans l'ordre ascendant, la pile est reconstruite à "
+"droite pour cinq disques, mais à gauche pour six disques."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:27
+msgid ""
+"An interesting question is whether such simple iterative algorithms exist "
+"for the other variation of the problem. Some were given in the literature (e."
+"g. for the cyclic variation). I would happily integrate your solutions to "
+"the PLM, especially if you can hint (without spoiling) the solution to guide "
+"the next ones."
+msgstr "Une question intéressante est de savoir s'il existe des algorithmes itératifs aussi simples pour les différentes variantes du problème. Certains ont été proposés dans la littérature (en particulier pour la variante cyclique). J'intégrerais vos solutions avec plaisir dans la PLM, surtout si vous trouvez des indications permettant de guider la réflexion sans donner la solution."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:2
@@ -14042,8 +14168,8 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
 #, no-wrap
-msgid "[!java|c]int [/!]getRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getRayon([!java|c]int [/!]slot)[!scala]:Int[/!]"
+msgid "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getRayonPiquet([!java|c]int [/!]slot)[!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
