@@ -21,5 +21,7 @@ public class Main extends Lesson {
 		addExercise(new TricolorHanoi3(this),tricolor);
 		
 		addExercise(new CyclicHanoi(this));
+		
+		addExercise(new IterativeHanoi(this));
 	}
 }

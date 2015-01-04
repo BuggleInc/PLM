@@ -243,8 +243,8 @@ public class HanoiWorld extends World {
 					"  return entity.getSlotSize(slot)\n"+
 					"def getSlotAmount():\n"+
 					"  return entity.getSlotAmount()\n"+
-					"def getRadius(slot):\n"+
-					"  return entity.getRadius(slot)\n"+
+					"def getSlotRadius(slot):\n"+
+					"  return entity.getSlotRadius(slot)\n"+
 					
 					"def errorMsg(str):\n"+/* don't translate this one, there is no need*/
 					"  entity.seenError(str)\n"+
@@ -256,8 +256,8 @@ public class HanoiWorld extends World {
 					"  return entity.getSlotSize(slot)\n"+
 					"def getNbPiquet():\n"+
 					"  return entity.getSlotAmount()\n"+
-			        "def getRayon(piquet):\n"+
-			        "  return entity.getRadius(piquet)\n");
+			        "def getRayonPiquet(piquet):\n"+
+			        "  return entity.getSlotRadius(piquet)\n");
 		} else {
 			throw new RuntimeException("No binding of HanoiWorld for "+lang);
 		}

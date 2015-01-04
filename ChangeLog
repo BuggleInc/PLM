@@ -18,8 +18,8 @@
       while the second exercise request the inner loop to also be a
       do/while (because of the corridors of differing lenghts)
     - InterleavedHanoi,SplitHanoi[123]; LinearHanoi,LinearTwinHanoi;
-      TricolorHanoi[123]; CyclicHanoi: New exercises to work on the 
-      decomposition of recursive problems.
+      TricolorHanoi[123]; CyclicHanoi; IterativeHanoi: New exercises 
+      to work on the decomposition of recursive problems.
     - Move the Moria exercise to the last position in welcome lesson.
       It is ways harder than the other ones.
   * Internal organization:
