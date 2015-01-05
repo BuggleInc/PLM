@@ -506,6 +506,39 @@ public abstract class AbstractBuggle extends Entity {
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+	/* BINDINGS TRANSLATION: Brazilian Portuguese */
+	public void esquerda()        { left(); }
+	public void direita()         { right(); }
+	public void voltar()          { back(); }
+	public void avançar()          throws BuggleWallException { forward(); }
+	public void avançar(int steps) throws BuggleWallException { forward(steps); }
+	public void recuar()           throws BuggleWallException { backward(); }
+	public void recuar(int steps)  throws BuggleWallException { backward(steps); }
+	public Color getCorDoCorpo()        { return getBodyColor(); }
+	public void setCorDoCorpo(Color c)  { setBodyColor(c); }
+	public boolean estáDeFrenteParaParede() { return isFacingWall(); }
+	public boolean estáDeCostasParaParede() { return isBackingWall(); }
+	public void levantarCaneta()            { penUp(); }
+	public void abaixarCaneta()             { penDown(); }
+	public void levantarPincel()            { brushUp(); }
+	public void abaixarPincel()             { brushDown(); }
+    	public boolean pincelEstáAbaixado()     { return isBrushDown(); }
+	public Color getCorDoPincel()       { return getBrushColor(); }
+	public void setCorDoPincel(Color c) { setBrushColor(c); }
+	public Color getCorDoChão()          { return getGroundColor(); }
+	public boolean estáSobreBaggle()        { return isOverBaggle(); }
+	public boolean estáCarregandoBaggle()         { return isCarryingBaggle(); }
+	public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+	public void soltarBaggle()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
+	public boolean estáSobreMensagem()        { return isOverMessage(); }
+	public String lerMensagem()            { return readMessage(); }
+	public void escreverMensagem(String s)    { writeMessage(s); }
+	public void escrevermensagem(int i)       { writeMessage(i); }
+	public void limparMensagem()           { clearMessage(); }
+	public int getAlturaDoMundo()          { return getWorldHeight(); }
+	public int getLarguraDoMundo()          { return getWorldWidth(); }
+	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
+	public boolean estáSelecionado()           { return isSelected(); } 
 
 
 	@Override

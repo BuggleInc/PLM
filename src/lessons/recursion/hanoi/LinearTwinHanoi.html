@@ -1,0 +1,36 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Linear Twin Towers of Hanoi</h2>
+
+<p>This is a mix between both the Split and Interleaved problems, and the linear problem.
+We are given two stacks of disks, on three pegs. We are expected to swap the stacks' 
+position while respecting the classical Hanoi movement restrictions (one disk at a time, 
+and no large disk over smaller disks) and the linear movement restriction (no direct exchange 
+between the left-most and right-most pegs).</p>
+
+<p>You will use three recursive functions:</p>
+<ul>
+ <li><b>moveDouble(k,from, to)</b>: moves an interleaved stack of k pairs of disks, without 
+  changing the relative positions of disks of the same size. As in the Split Hanoi problem, 
+  an interleaved stack alternates white and black disks of each sizes. This function is not 
+  completely new: you wrote a version with 4 pegs (but using only 3 of them) for the first 
+  version of the Split Hanoi problem.</li>
+ <li><b>gather(k)</b>: from the initial split situation, build on peg #2 an interleaved stack
+  of k pairs of disks. You may parametrize your function so that it can be used to gather the
+  disk on any peg passed as parameter, but in practice, your function will only be used to gather on
+  the last peg.</li>
+ <li><b>scatter(k)</b>: from a situation where k pairs of disks are interleaved on peg #0, 
+  split it down by moving the white disks to peg #1 and black ones to peg #2.</li>
+</ul>
+
+<p>In <code>gather()</code>, the recursive call comes before two calls to  <code>moveDouble()</code> 
+while in <code>scatter()</code>, the calls to <code>moveDouble()</code> come before the recursive call.
+The main function that you should write is not recursive, but simply gather almost all disks, moves 
+directly the remaining disks, and then scatters back the small
+disks.</p>
+
+<p>The linearity naturally induces some extra complexity as you have
+to decompose every move between pegs 0 and 2. I am still confident in
+your ability to overcome the challenge :)</p> 
+
+<p>Note that the requested algorithm was proved optimal for that
+problem, so you don't need to fiddle the performance this time.</p>

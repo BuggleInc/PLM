@@ -49,5 +49,12 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 				+ "    System.out.println(t[42]);\n"
 				+ "}";
 	}
+
+	@Override
+	public String generateExceptionRaisingCode() {
+		return "public void run() {\n"
+				+ "    throw new RuntimeException(\"easy exception\");\n"
+				+ "}";
+	}
 	
 }

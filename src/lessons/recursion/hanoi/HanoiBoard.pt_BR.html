@@ -23,15 +23,15 @@ on that peg.</li>
 <h3>Objetivo deste exercício</h3> 
 
 Write the core of the method: <code>[!java|c]void
-[/!]solve[!c]Rec[/!]([!java|c]int [/!]src[!scala]:Int[/!], [!java|c]int
-[/!]dst[!scala]:Int[/!],[!java|c]int [/!]other[!scala]:Int[/!], [!java|c]int
-[/!]height[!scala]:Int[/!])</code>
+[/!]hanoi[!c]Rec[/!]([!java|c]int [/!]height[!scala]:Int[/!], [!java|c]int
+[/!]src[!scala]:Int[/!], [!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int
+[/!]dst[!scala]:Int[/!])</code>
 
 <p>This method will recursively solve the presented problem. The first
-parameter named <code>src</code> is the index of the initial tower, the
-second parameter <code>dst</code> is the index of the expected final tower,
-the third parameter <code>other</code> is the index of the unused peg while
-the fourth parameter <code>height</code> is the height of the tower.</p>
+parameter named <code>height</code> is the height of the tower to move; The
+second parameter <code>src</code> is the index of the initial tower, the
+third parameter <code>other</code> is the index of the unused peg while the
+fourth parameter <code>dst</code> is the index of the expected final tower.</p>
 
 <p>A key to solving this puzzle is to recognize that it can be solved by
 breaking the problem down into a collection of smaller problems and further

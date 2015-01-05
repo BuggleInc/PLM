@@ -1,0 +1,45 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>De meilleures tours de Hanoï séparées</h2>
+
+<p>Étonnamment, notre solution pour séparer les tours génère beaucoup plus de
+mouvements que notre solution pour les interclasser. Comme les deux
+problèmes sont symétriques, cela ne devrait pas être le cas.</p>
+<table border="1">
+<tr><td>Nombre de disques</td><td>Interclassement</td><td>Séparation</td></tr>
+<tr><td>5 paires</td>     <td> 62 mouvements</td>  <td> 88 mouvements</td></tr>
+<tr><td>6 paires</td>     <td>126 mouvements</td>  <td>183 mouvements</td></tr>
+<tr><td>7 paires</td>     <td>254 mouvements</td>  <td>374 mouvements</td></tr>
+</table>
+
+<p>Pouvez-vous rendre la séparation des tours aussi efficace que
+l'interclassement ?</p>
+
+<div class="tip" id="tip-1" alt="J'ai besoin d'un indice pour commencer.">
+La différence vient du fait que notre décomposition du problème n'est pas la
+bonne. Contents d'avoir trouvé une solution fonctionnelle, nous n'avons pas
+cherché à l'améliorer. Préserver l'ordre des disques interclassés à chaque
+déplacement est inutile. En fait, on peut même éviter de déplacer la tour
+interclassée et simplement séparer les paires de disques en tours colorées
+au fur et à mesure qu'ils sont retirés de la tour interclassée.
+</div> 
+
+<br><br>
+<div class="tip" id="tip-2" alt="Le premier indice n'était pas suffisant">
+Si quelqu'un pouvait séparer les (n-1) paires de disques auparavent,
+sauriez-vous séparer la paire restante ?
+</div>
+
+<br><br>
+<div class="tip" id="tip-3" alt="Il va falloir être plus explicite">
+<ul>
+ <li>Séparez tout d'abord les (n-1) premières paires de disques de la tour
+interclassée en une tour blanche et une tour noire (grâce à un appel
+récursif de votre fonction principale).</li>
+ <li>Déplacez ensuite le grand disque blanc à la position où il doit finir.</li>
+ <li>Déplacez ensuite les (n-1) disques blancs plus petits sur le grand disque
+blanc.</li>
+ <li>Déplacez ensuite le grand disque noir jusqu'à sa destination.</li>
+ <li>Déplacez enfin les petits disques noirs en position.</li>
+</ul>
+</div>

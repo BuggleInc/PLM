@@ -32,6 +32,9 @@ buggle concept. For example:
 
 http://cs.wellesley.edu/~cs111/fall98/assignments.html
 
+Another classical recursive game:
+http://www.cut-the-knot.org/recurrence/flavius.shtml
+
 ***************** UNIVERSES
 
 Pedagogical micro-worlds
@@ -43,6 +46,7 @@ Programmer games (may require a King of Hill mode?)
  * CodeRobot (fights between robots)
  * CodeRally (racing cars)
  * CodeInvaders (fight between spaceships)
+   https://www-927.ibm.com/ibm/cas/hspc/competition/
  * MARS (assembly) http://courses.missouristate.edu/kenvollmar/mars/
  * MMIX (assembly by Knuth) http://mmix.cs.hm.edu/index.html
  * Corewars
@@ -51,3 +55,4 @@ http://www.essentialmath.com/tutorial.htm
  Essential Math for Games Programmers
 http://www.redblobgames.com/articles/visibility/
  Introduction to the algorithms behind the games
+ 

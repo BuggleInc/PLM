@@ -3,7 +3,7 @@ package lessons.recursion.hanoi.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
+import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -39,23 +39,39 @@ public class HanoiEntity extends Entity {
 
 	/** Part of your world logic */
 	public void move(int src, int dst) {
+		regularMove(src,dst);
+	}
+	public void regularMove(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
 		stepUI();
 		/* END HIDDEN */
 	}
+	public void cyclicMove(int from, int to){
+		if ((from==0 && to!=1) ||
+			(from==1 && to!=2) ||
+			(from==2 && to!=0))
+			throw new RuntimeException(Game.i18n.tr(
+					"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.",from, to));
+		regularMove(from,to);
+	}
+	/** Returns the amount of disks on the given slot */
 	public int getSlotSize(int slot) {
 		return ((HanoiWorld) world).getSlotSize(slot);
 	}
-	
+	/** Returns the radius of the topmost disk of the given slot */
+	public int getSlotRadius(int slot) {
+		return ((HanoiWorld) world).getRadius(slot);
+	}
+
 	/* BEGIN HIDDEN */
 	@Override
 	public String toString(){
 		return "HanoiEntity (" + this.getClass().getName() + ")";
 	}
 	/* END HIDDEN */
-	
-	
+
+
 	/* BINDINGS TRANSLATION: French */
 	public void deplace(int src,int dst) { move(src, dst); }
 	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
@@ -88,7 +104,7 @@ public class HanoiEntity extends Entity {
 		}catch(IOException ioe){
 			ioe.printStackTrace();
 		}
-		
+
 	}
 }
 /* END TEMPLATE */

@@ -26,6 +26,12 @@ public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 	}
 
 	@Override
+	public String generateExceptionRaisingCode() {
+		return "def run():\n"
+				+ "  raise Exception(\"I know python!\")";
+	}
+	
+	@Override
 	public String generateOutOfBoundsErrorCode() {
 		return "def run():\n"
 				+ "  tab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n"

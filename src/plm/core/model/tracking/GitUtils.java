@@ -47,6 +47,8 @@ import plm.core.model.Game;
 
 public class GitUtils {
 
+	final private String trackUserProperty = "plm.git.track.user";
+	
 	private Git git;
 
 	private String repoName = Game.getProperty("plm.git.server.username");
@@ -76,7 +78,10 @@ public class GitUtils {
 		}
 	}
 	
-	public boolean fetchBranchFromRemoteBranch(String userBranchHash) throws InvalidRemoteException, GitAPIException {		
+	public boolean fetchBranchFromRemoteBranch(String userBranchHash) throws InvalidRemoteException, GitAPIException {
+		if(!Game.getProperty(trackUserProperty).equals("true")) {
+			return false;
+		}
 		System.out.println(Game.i18n.tr("Retrieving your session from the servers..."));
 		try {
 			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
@@ -220,6 +225,10 @@ public class GitUtils {
 	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
 	 */
 	public void forcefullyPushToUserBranch(String userBranchHash, ProgressMonitor progress) {
+		if(!Game.getProperty(trackUserProperty).equals("true")) {
+			return;
+		}
+		
 		synchronized(GitUtils.class) {
 			currentlyPushing = true;
 		}
@@ -269,7 +278,11 @@ public class GitUtils {
      * concurrent push requests, triggering an alert that got the PLM-data repo to get temporarily disabled.
      * 
 	 */
-	public void maybePushToUserBranch(final String userBranchHash, final ProgressMonitor progress) {	
+	public void maybePushToUserBranch(final String userBranchHash, final ProgressMonitor progress) {
+		if(!Game.getProperty(trackUserProperty).equals("true")) {
+			return;
+		}
+		
 		synchronized(GitUtils.class) {
 			if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
 				return;

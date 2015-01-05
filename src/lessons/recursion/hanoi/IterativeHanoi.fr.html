@@ -1,0 +1,38 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Les tours de Hanoï itératives</h2>
+
+<p>Dans ce dernier exercice de la série, nous allons implémenter une solution
+itérative au problème de base des tours de Hanoï (une pile, trois piques,
+pas de restriction de mouvement particulière). </p>
+
+<p>Cet algorithme est très simple, en fait : Lors des déplacements pairs, le
+plus petit disque se déplace dans une direction donnée (soit dans le sens
+ascendant 0-&gt;1-&gt;2-&gt;0 soit dans le sens descendant
+2-&gt;1-&gt;0-&gt;2). Lors des déplacements impaires, on fait le seul
+mouvement possible n'impliquant pas le petit disque. On s'arrête dès que la
+pile est reconstruite quelque part.</p> 
+
+<p>La fonction que vous devez écrire pour cela prend deux paramètres : la
+position initiale du petit disque (càd le numéro du piquet contenant
+initialement la pile) et un booléen indiquant si le petit disque doit se
+déplacer dans le sens ascendant ou non.</p>
+
+<p>La simplicité de cet algorithme est presque décevante ! On peut s'interroger
+sur l'intérêt des solutions récursives que nous avons construit jusqu'ici
+alors qu'il existe un algorithme itératif aussi simple. Mon avis personnel
+est que cette solution est facile à exécuter une fois qu'on l'a, mais
+pratiquement impossible à découvrir par soit-même (je soupçonne même les
+auteurs de l'avoir découverte en observant les effets de la solution
+itérative)...</p>
+
+<p>Il est également malaisé de prédire le résultat de cet algorithme : quand le
+petit disque se déplace dans l'ordre ascendant, la pile est reconstruite à
+droite pour cinq disques, mais à gauche pour six disques.</p>
+
+<p>Une question intéressante est de savoir s'il existe des algorithmes
+itératifs aussi simples pour les différentes variantes du problème. Certains
+ont été proposés dans la littérature (en particulier pour la variante
+cyclique). J'intégrerais vos solutions avec plaisir dans la PLM, surtout si
+vous trouvez des indications permettant de guider la réflexion sans donner
+la solution.</p>      

@@ -21,21 +21,21 @@ de buggle e usar o método <code>setPos(x, y)</code> para
 exemplo, <code>setPos(3, 5)</code> teletransporta o buggle para a
 célula onde x=3 e y=5.</p>
 
-<p>Sua primeira tarefa é escrever uma função booleana indicando se o
-buggle alcançou a posição final ou não, ou seja se ele alcançou o
-canto inferior direito do mundo. Para isto, você pode usar
-<code>getWorldWidth()</code> e <code>getWorldHeight()</code> que
-retornam respectivamente a largura e altura do mundo. Seu teste é deve
-comparar a posição atual do buggle (que vocẽ pode acessar com
-<code>getX()</code> e <code>getY()</code>) com as dimensões do mundo.<br/>
+<p>Your first task is thus to write a boolean function indicating whether the
+buggle reached the final position or not, ie if it reached the bottom right
+corner of the world. For this, you can use <code>getWorldWidth()</code> and
+<code>getWorldHeight()</code> which return respectively the world's width
+and height. Your test is about comparing the buggle's current position (that
+you can access with <code>getX()</code> and <code>getY()</code>) to the
+world dimensions.<br/>
 Beware, the first line and column are numbered 0 and not 1, and the point
 (0,0)  is on the top left corner. This may seem surprising, but it is very
 often so in Computer Science.</p>  
 
 <p>Then, you have to write the code to reach the next position. In this
 exercise, you have to traverse the world row after row. So, if you are at
-the bottom of a row, you have to move to the top of next row, and you have
-to move to the cell below else.</p>
+the bottom of a row, you have to move to the top of next row. Else, you have
+to move to the cell below.</p>
 
 <p>Neste ponto, você pode lançar seu programa para verificar se o buggle
 percorre corretamente o mundo na ordem esperada, e que ele pára quando

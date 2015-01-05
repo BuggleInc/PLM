@@ -47,7 +47,7 @@ public class ChooseLessonDialog extends JFrame {
 		initComponents(Game.getInstance());
 	}
 
-	private void initComponents(Game g) {
+	private void initComponents(Game g) {		
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 	        @Override

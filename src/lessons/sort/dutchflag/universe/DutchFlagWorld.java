@@ -188,7 +188,7 @@ public class DutchFlagWorld extends World {
 	}	
 	
 	/**
-	 * Give the color of of a specific ray in the flag
+	 * Give the color of a specific ray in the flag
 	 * @param rank : the number of the ray that you want to get.
 	 * @return The color of that ray (either 0, 1 or 2)
 	 */
