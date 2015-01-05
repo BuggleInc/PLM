@@ -76,27 +76,8 @@ public class LessonRunner extends Thread {
 		}
 
 		if (!game.isCreativeEnabled()) {
-			try {
-				if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-					Game.getInstance().studentWork.setPassed(exo, null, true);
-
-					SwingUtilities.invokeAndWait(new Runnable() {
-						@Override
-						public void run() {
-							new ExercisePassedDialog(exo);
-						}
-					});
-				} else {
-					SwingUtilities.invokeAndWait(new Runnable() {
-						public void run() {
-							new ExerciseFailedDialog(exo.lastResult);
-						}
-					});
-
-				}
-			} catch (InvocationTargetException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+				Game.getInstance().studentWork.setPassed(exo, null, true);
 			}
 			Game.getInstance().fireProgressSpy(exo);									
 		}

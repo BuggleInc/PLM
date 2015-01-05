@@ -60,5 +60,20 @@ public class ExecutionProgress {
 		executionError = msg;
 	}
 
-
+	public String getMsg() {
+		String res = "";
+		if(outcome == ExecutionProgress.outcomeKind.PASS) {
+			System.out.println("PASS");
+			res = Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)", passedTests);
+		}
+		else if(outcome == ExecutionProgress.outcomeKind.COMPILE) {
+			System.out.println("COMPILE");
+			res = compilationError;
+		}
+		else {
+			System.out.println("EXE");
+			res = executionError;
+		}
+		return res;
+	}
 }
