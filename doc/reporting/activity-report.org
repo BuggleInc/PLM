@@ -203,8 +203,18 @@ case _ => MergeStrategy.first
     SCHEDULED: <2014-12-19 ven.>
     - *CodeMirror* semble fonctionner correctement avec *Angular* grâce à [[https://github.com/angular-ui/ui-codemirror][ce module]].
 *** TODO Représentation du monde courant et de son état
-** TODO Récupérer le code de l'étudiant pour l'exercice en cours
+** DONE Récupérer le code de l'étudiant pour l'exercice en cours
    SCHEDULED: <2014-12-19 ven.>
+   - Reprendre le code utilisé dans GitSpy
+** TODO Permettre à l'étudiant d'exécuter son code
+   SCHEDULED: <2015-01-05 lun.>
+*** DONE Ajouter un bouton qui permet à l'étudiant d'envoyer son code à un web-service
+*** DONE Le web-service exécute le code de l'étudiant
+    - Reprendre le code utilisé dans les tests
+*** TODO Le web-service renvoie le résultat au client
+*** DONE L'interface affiche le résultat de l'exécution
+** TODO Refactorer l'architecture du projet
+   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
 ** TODO Récupérer la liste des exercices pour chaque leçon
    - Pour permettre à l'utilisateur de visualiser sa progression, on
      pourrait afficher pour chaque leçon un graphe des exercices.
