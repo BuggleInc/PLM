@@ -88,7 +88,7 @@ case _ => MergeStrategy.first
    SCHEDULED: <2014-12-05 ven.>
 ** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
-** TODO Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+** CANCEL Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
    SCHEDULED: <2014-12-08 lun.>
 ** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
@@ -104,15 +104,10 @@ case _ => MergeStrategy.first
    - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
    - Hériter de *ShadowRootAware* permet d'écouter
      l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
-   - Mais Dom pas encore complètement chargé lors de l'exécution du
-     code Dart ce qui force, faute d'avoir trouvé mieux, l'utilisation
-     d'un timer pour instancier l'éditeur de code.
 ** TODO Modifier les messages concernant l'envoi de données au serveur
    - Actuellement, plusieurs messages sont affichés pour informer
      l'utilisateur que PLM est en train d'envoyer les données de son
      activité au serveur.
-   - Ces messages apparaissent même si l'utilisateur a refusé de communiquer ses données, ce qui peut prêter à confusion.
-   SCHEDULED: <2014-12-08 lun.>
    - Ces messages apparaissent même si l'utilisateur a refusé de
      communiquer ses données, ce qui peut prêter à confusion.
    SCHEDULED: <2014-12-08 lun.>
@@ -209,10 +204,27 @@ case _ => MergeStrategy.first
 ** TODO Permettre à l'étudiant d'exécuter son code
    SCHEDULED: <2015-01-05 lun.>
 *** DONE Ajouter un bouton qui permet à l'étudiant d'envoyer son code à un web-service
+    - La fonction déclenchée lors du click doit récupérer le code
+      contenu dans CodeMirror et le transmettre au web-service.
 *** DONE Le web-service exécute le code de l'étudiant
     - Reprendre le code utilisé dans les tests
 *** TODO Le web-service renvoie le résultat au client
+    - Actuellement, n'attend pas la fin de l'exécution du code pour
+      envoyer le résultat (faussé du coup).
+    - Modifier le web-service pour qu'il attende que le thread exécutant le programme se termine?
 *** DONE L'interface affiche le résultat de l'exécution
+** TODO Afficher les étapes de l'exécution du code de l'étudiant
+*** TODO Modifier les interactions entre le client et le serveur
+    - Pour permettre au serveur d'envoyer des données en continu au
+      client lors de l'exécution d'un programme, une WebSocket est
+      requise.
+*** TODO Permettre à PLM de streamer l'exécution du code
+    - Créer une classe basée sur [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/Bridge.java][Bridge]] et [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/ISender.java][ISender]] enregistrant les
+      différents actions effectuées à chaque pas et les écrivant dans un
+      stream.
+    - Cette classe doit-elle indiquer la fin de l'exécution du programme au client?
+*** TODO Transmettre le stream de l'exécution du code au client
+    - Le serveur doit rediriger le stream dans la websocket du client.
 ** TODO Refactorer l'architecture du projet
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
 ** TODO Récupérer la liste des exercices pour chaque leçon
@@ -230,6 +242,8 @@ case _ => MergeStrategy.first
      des mondes objectifs de chaque exercice.
    - Il convient donc de modifier pour que la liste des exercices soit
      un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+** TODO Retirer la partie UI présente dans PLM-library
+   - 
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour effectuer le code des
      clients une fois passé en mode serveur centralisé.
