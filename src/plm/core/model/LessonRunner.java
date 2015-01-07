@@ -79,7 +79,7 @@ public class LessonRunner extends Thread {
 			if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
 				Game.getInstance().studentWork.setPassed(exo, null, true);
 			}
-			Game.getInstance().fireProgressSpy(exo);									
+			Game.getInstance().fireProgressSpy(exo);
 		}
 		runners.remove(this);
 	}

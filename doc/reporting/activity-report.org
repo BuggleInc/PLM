@@ -201,20 +201,23 @@ case _ => MergeStrategy.first
 ** DONE Récupérer le code de l'étudiant pour l'exercice en cours
    SCHEDULED: <2014-12-19 ven.>
    - Reprendre le code utilisé dans GitSpy
-** TODO Permettre à l'étudiant d'exécuter son code
+** DONE Permettre à l'étudiant d'exécuter son code
    SCHEDULED: <2015-01-05 lun.>
 *** DONE Ajouter un bouton qui permet à l'étudiant d'envoyer son code à un web-service
     - La fonction déclenchée lors du click doit récupérer le code
       contenu dans CodeMirror et le transmettre au web-service.
 *** DONE Le web-service exécute le code de l'étudiant
     - Reprendre le code utilisé dans les tests
-*** TODO Le web-service renvoie le résultat au client
+*** DONE Le web-service renvoie le résultat au client
     - Actuellement, n'attend pas la fin de l'exécution du code pour
       envoyer le résultat (faussé du coup).
     - Modifier le web-service pour qu'il attende que le thread exécutant le programme se termine?
+    - Web-service modifié pour qu'il ajoute un progressSpyListener à
+      PLM, qui se charge de communiquer les résultats de l'exécution
+      au client.
 *** DONE L'interface affiche le résultat de l'exécution
 ** TODO Afficher les étapes de l'exécution du code de l'étudiant
-*** TODO Modifier les interactions entre le client et le serveur
+*** DONE Modifier les interactions entre le client et le serveur
     - Pour permettre au serveur d'envoyer des données en continu au
       client lors de l'exécution d'un programme, une WebSocket est
       requise.
@@ -222,9 +225,13 @@ case _ => MergeStrategy.first
     - Créer une classe basée sur [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/Bridge.java][Bridge]] et [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/ISender.java][ISender]] enregistrant les
       différents actions effectuées à chaque pas et les écrivant dans un
       stream.
-    - Cette classe doit-elle indiquer la fin de l'exécution du programme au client?
-*** TODO Transmettre le stream de l'exécution du code au client
+    - Créer une classe implémentant IWorldView et vidant un buffer à
+      chaque WorldHasMoved?
+*** DONE Transmettre le stream de l'exécution du code au client
     - Le serveur doit rediriger le stream dans la websocket du client.
+    - Pas de solution simple pour créer un stream?
+    - Donner à la classe une référence vers PLMActor et utiliser sa
+      méthode createMessage permet de contourner ce problème.
 ** TODO Refactorer l'architecture du projet
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
 ** TODO Récupérer la liste des exercices pour chaque leçon
