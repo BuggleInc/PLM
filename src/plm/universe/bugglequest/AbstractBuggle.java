@@ -325,6 +325,8 @@ public abstract class AbstractBuggle extends Entity {
 				delta.equals(direction.opposite().toPoint()) && isBackingWall())	
 
 			throw new BuggleWallException();
+		
+		getWorld().operations.add(new MoveBuggleOperation(this, x, y, newx, newy));
 
 		x = newx;
 		y = newy;

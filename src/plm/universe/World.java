@@ -27,6 +27,7 @@ public abstract class World {
 	private boolean isAnswer = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
 
+	public List<Operation> operations = new ArrayList<Operation>();
 	protected List<Entity> entities = new ArrayList<Entity>();
 
 	private String name;
