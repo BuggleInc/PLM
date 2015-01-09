@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-12-22 10:34+0100\n"
-"PO-Revision-Date: 2014-12-28 23:45-0300\n"
+"PO-Revision-Date: 2014-12-30 23:17-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -4306,16 +4306,12 @@ msgstr ""
 #: src/lessons/bat/string1/StringTimes.html:5
 #: src/lessons/bat/string1/StringX.html:7
 #: src/lessons/bat/string1/StringYak.html:8
-#, fuzzy
-#| msgid ""
-#| "This exercise was converted to PLM from the excellent exercising site "
-#| "http://javabat.com/"
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
 "codingbat.com/"
 msgstr ""
-"Este exercício foi convertido para o PLM do excelente sítio de exercícios "
-"http://javabat.com/"
+"Este exercício foi convertido para o PLM do excelente sítio de\n"
+"exercícios http://codingbat.com/"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array667/Array667.html:2
@@ -4532,10 +4528,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
-#, fuzzy
-#| msgid ""
-#| "We will now write our own methods. It somehow comes down to extending the "
-#| "buggle vocabulary by learning it new tricks."
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
 "buggle vocabulary by teaching it new tricks."
@@ -4824,11 +4816,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
-#, fuzzy
-#| msgid ""
-#| "We now would like to learn the buggle to build a doghouse. The naive "
-#| "approach consists in directly writing the needed code as follows.  This "
-#| "works because the buggle of this exercise leaves a red path as it moves."
 msgid ""
 "We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
@@ -5862,13 +5849,6 @@ msgstr "Buggle Dance Revolution (BDR)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
-#, fuzzy
-#| msgid ""
-#| "After these races, it's time to party! For that, we will learn the "
-#| "buggles to play Dance Revolution, this game beloved of some students: The "
-#| "player has to move the feet on the carpet according to the instructions "
-#| "presented on the screen, and following the music. But before that, we "
-#| "have some details to study first."
 msgid ""
 "After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
@@ -6259,12 +6239,6 @@ msgstr "<code>[!java|c]void [/!]limparMensagem()</code>: limpa o que está escri
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
-#, fuzzy
-#| msgid ""
-#| "The goal is then to organize a BDR game between the buggles by learning "
-#| "them to move according to the instructions written on the ground. These "
-#| "instructions are messages written on the ground, with the following "
-#| "signification:"
 msgid ""
 "The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
@@ -7042,17 +7016,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:33
-#, fuzzy
-#| msgid ""
-#| "Hint: the main loop of your code must continue while the testing function "
-#| "returns false. Their is thus two way of writing it:"
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
 "returns false. There is two ways of writing it:"
 msgstr ""
 "Dica: o loop principal do seu código deve continuar enquanto a função\n"
-"de teste retorna falso. Existe portanto entretanto duas formas de\n"
-"fazer isto:"
+"de teste retorna falso. Existem duas formas de fazer isto:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:35
@@ -7124,7 +7093,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:21
-#, fuzzy
 msgid ""
 "Your first task is thus to write a boolean function indicating whether the "
 "buggle reached the final position or not, ie if it reached the bottom right "
@@ -7138,7 +7106,7 @@ msgstr ""
 "buggle alcançou a posição final ou não, ou seja se ele alcançou o\n"
 "canto inferior direito do mundo. Para isto, você pode usar\n"
 "<code>getLarguraDoMundo()</code> e <code>getAlturaDoMundo()</code> que\n"
-"retornam respectivamente a largura e altura do mundo. Seu teste é deve\n"
+"retornam respectivamente a largura e altura do mundo. Seu teste deve\n"
 "comparar a posição atual do buggle (que você pode acessar com\n"
 "<code>getX()</code> e <code>getY()</code>) com as dimensões do mundo."
 
@@ -7162,8 +7130,8 @@ msgstr ""
 "Então, você tem que escrever o código para alcançar a próxima\n"
 "posição. Neste exercício, você tem que percorrer o mundo linha após\n"
 "linha. Logo, se você está no fundo de uma linha, você tem que se mover\n"
-"para o topo da próxima, e você tem que se mover para a célula abaixo\n"
-"\"else\"."
+"para o topo da próxima, caso contrário você tem que se mover para a\n"
+"célula abaixo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:37
@@ -7482,7 +7450,6 @@ msgstr "formiga de Langton multicolorida"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:4
-#, fuzzy
 msgid ""
 "There is several ways to extend the concept of Langton's ant. In this "
 "exercise, we explore first one, using more than two colors. It remains very "
@@ -7494,15 +7461,16 @@ msgid ""
 "the basic ant is a RL (since it turns right on white cells and left on black "
 "ones)."
 msgstr ""
-"There is several ways to extend the concept of Langton's ant. In this "
-"exercise, we explore first one, using more than two colors. It remains very "
-"similar to the base case: the behavior at each step still depends on the "
-"ground color, but you have more than 2 possibilities. It allows to have more "
-"than one kind of ant, depending on what you decide to do for each color. For "
-"example, the ant LRL takes 3 colors. It turns left on the first color, right "
-"on the second one and left on the third color. According to this definition, "
-"the basic ant is a RL (since it turns right on white cells and left on black "
-"ones)."
+"Existem várias formas de extender o conceito de formiga de\n"
+"Langton. Neste exercício, vamos explorar a primeira, usando mais que\n"
+"duas cores. Ela se mantem muito similar ao caso base: o comportamento\n"
+"em cada passo ainda depende da cor do chão, mas você tem mais que duas\n"
+"possibilidades. Você pode ter mais que um tipo de formiga, dependendo\n"
+"do que você decide fazer para cada cor. Por exemplo, a formiga LRL\n"
+"recebe 3 cores. Ela vira a esquerda na primiera cor, a direita na\n"
+"segunda e a esquerda na terceira. De acordo com esta definição, a\n"
+"formiga básica é uma RL (já que ela vira a direita em células brancas\n"
+"e a esquerda em pretas)."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:13
@@ -8289,9 +8257,7 @@ msgstr "uma leitura"
 msgid ""
 "[!java|c]void [/!]swap([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
 "[/!]j[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]void [/!]alterna([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
-"[/!]j[!scala]:Int[/!])"
+msgstr "[!java|c]void [/!]alternar([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int [/!]j[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:21
@@ -8413,14 +8379,15 @@ msgid ""
 "getValue(); If the value is red and followed with an exclamation point (!), "
 "it was written using setValue()."
 msgstr ""
-"A visão do histórico é um pouco bagunçada à primeira vista, mas na verdade é "
-"bem simples: o tempo anda da esquerda para a direita neste gráfico, e cada "
-"linha é uma célula de sua array. As linhas curvas que navegam entre linhas "
-"representam um certo valor de um dado. Quando duas linhas se cruzam, "
-"significa que dois valores foram trocados neste momento; uma bifurcação numa "
-"linha representa uma cópia de valor; quando um valor é magenta e seguido de "
-"uma interrogação (?), foi lido usando getValor(); Se o valor é vermelho e "
-"seguido de uma exclamação (!), foi escrito com setValor()."
+"A visão do histórico é um pouco bagunçada à primeira vista, mas na\n"
+"verdade é bem simples: o tempo anda da esquerda para a direita neste\n"
+"gráfico, e cada linha é uma célula de sua array. As linhas curvas que\n"
+"navegam entre linhas representam um certo valor de um dado. Quando\n"
+"duas linhas se cruzam, significa que dois valores foram alternados\n"
+"neste momento; uma bifurcação numa linha representa uma cópia de\n"
+"valor; quando um valor é magenta e seguido de uma interrogação (?),\n"
+"foi lido usando getValor(); Se o valor é vermelho e seguido de uma\n"
+"exclamação (!), foi escrito com setValor()."
 
 #. type: Content of: <p>
 #: src/plm/universe/sort/SortingWorld.html:57
@@ -8560,12 +8527,12 @@ msgid ""
 "simplicity, but it is almost never used in practice because of its bad "
 "performance (O(n^2) on average)."
 msgstr ""
-"This first sorting algorithm is the most simple one: Bubble sort\n"
-"consists in progressively moving up the smaller elements of the array,\n"
-"as if they were air bubbles moving up to the surface of a liquid. The\n"
-"algorithm traverse the array, and compare any pair of adjacent\n"
-"elements. If two adjacent elements are wrongly sorted, they are\n"
-"swapped. Once the array was completely traversed, the operation starts\n"
+"O primeiro algoritmo de ordenação é o mais simples: Bubble sort\n"
+"consiste em progressivamente mover o menor elemento da array,\n"
+"como se eles fossem bolhas de ar subindo para a superfície de um líquido.\n"
+"O algoritmo percorre a array e compara qualquer par de elementos adjacentes.\n"
+"Se dois elementos adjacentes estiverem desordenados, eles são alternados.\n"
+"Once the array was completely traversed, the operation starts\n"
 "again from the beginning. When no elements were sorted after a full\n"
 "traversal, it means that the array is completely sorted: the algorithm\n"
 "can stop.  Bubble sort is studied because of its simplicity, but it is\n"
@@ -8594,10 +8561,10 @@ msgid ""
 "          If cells i and i+1 must be swapped, do it\n"
 "while we swapped something during last traversal\n"
 msgstr ""
-"do: \n"
-"        For each i in [0,len-2]\n"
-"          If cells i and i+1 must be swapped, do it\n"
-"while we swapped something during last traversal\n"
+"faça: \n"
+"        Para cada i em [0,len-2]\n"
+"          Se a célula i e i+1 devem ser alternadas, alterne\n"
+"enquanto algo foi alternado na última passagem\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
@@ -8657,12 +8624,10 @@ msgid ""
 "than the base version. But the statistics on the amount of reads show that "
 "we saved about the fourth of the amount of reads, which is not bad."
 msgstr ""
-"When we run this algorithm, it is quite disappointing to see that it\n"
+"Quando rodamos este algoritmo, it is quite disappointing to see that it\n"
 "runs approximately at the same speed than the basic version of\n"
 "BubbleSort. This is a graphical effect only since only value changes\n"
-"are graphically represented. Since this variation avoids some useless\n"
-"comparisons, it does exactly the same amount of swaps that the basic\n"
-"version. It is thus quite logical that the graphical interface draws\n"
+"are graphically represented. Como esta variação evita algumas comparações inúteis, ela faz exatamente a mesma quantidade de trocar que a versão básica. It is thus quite logical that the graphical interface draws\n"
 "this version at the same pace than the base version. But the\n"
 "statistics on the amount of reads show that we saved about the fourth\n"
 "of the amount of reads, which is not bad."
@@ -8863,11 +8828,12 @@ msgid ""
 "can stop if the upward traversal found something to swap, but not the "
 "downwards one."
 msgstr ""
-"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do "
-"BubbleSort, Ele parece melhor na prática. É até mesmo possível melhorar um "
-"pouco mais parando ele na primeira rodada que não encontrar nada para "
-"trocar, se realizar a rodada para baixo. Da mesma forma, podemos parar se a "
-"rodade para cima encontrar algo para trocar mas a rodada para baixo não."
+"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do\n"
+"BubbleSort, Ele parece melhor na prática. É até mesmo possível\n"
+"melhorar um pouco mais parando ele na primeira rodada que não\n"
+"encontrar nada para alternar, se realizar a rodada para baixo. Da\n"
+"mesma forma, podemos parar se a rodada para cima encontrar algo para\n"
+"alternar mas a rodada para baixo não."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:2
@@ -9004,18 +8970,6 @@ msgstr "ShellSort"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/shell/AlgShellSort.html:4
-#, fuzzy
-#| msgid ""
-#| "This algorithm is named after its author, Donald Shell, who published it "
-#| "in 1959. It can be seen as an application of the CombSort idea (let "
-#| "elements having a long path to travel take shortcuts) to the insertion "
-#| "sort (CombSort is a variation of BubbleSort). Instead of comparing "
-#| "adjacent values during the insertion sort, it compares values separated "
-#| "by a bigger gap. The bigger the gap, the faster the elements are moved to "
-#| "their final destination, but also the less precise is this move. It is "
-#| "thus mandatory to apply the algorithm with a serie of decreasing gaps. At "
-#| "the last step, when the gap is 1, InsertionSort is used, but onto an "
-#| "array which is almost already sorted by previous steps."
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -9028,17 +8982,18 @@ msgid ""
 "one, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
-"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que o "
-"publicou em 1959. Ele pode ser visto como uma aplicação da ideia do CombSort "
-"(faça com que elementos que tem um longo caminho pegarem atalhos) ao "
-"insertion sort (CombSort é uma variação do BubbleSort). Ao invés de comparar "
-"valores adjacentes durante o insertion sort, ele compara valores separados "
-"por um intervalo maior. Quanto maior o intervalo, mais rápido os elementos "
-"se movem para seu destino final, mas também menos preciso fica o movimento. "
-"É portanto essencial que o algoritmo vá sendo aplicado numa série de "
-"intervalos cada vez menor. No último passo, quando o intervalo for 1, o "
-"InsertionSort será usado, mas numa array que estará praticamente ordenada "
-"pelos passos anteriores."
+"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que\n"
+"o publicou em 1959. Ele pode ser visto como uma aplicação da ideia do\n"
+"CombSort (faça com que elementos que tem um longo caminho pegarem\n"
+"atalhos) ao insertion sort (CombSort é uma variação do BubbleSort). Ao\n"
+"invés de comparar valores adjacentes durante o insertion sort, ele\n"
+"compara valores separados por um intervalo maior. Quanto maior o\n"
+"intervalo, mais rápido os elementos se movem para seu destino final,\n"
+"mas também menos preciso fica o movimento. É portanto essencial que o\n"
+"algoritmo vá sendo aplicado numa série de intervalos cada vez\n"
+"menor. No último passo, quando o intervalo for 1, o InsertionSort será\n"
+"usado, mas numa array que estará praticamente ordenada pelos passos\n"
+"anteriores."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:15
@@ -9131,13 +9086,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:7
-#, fuzzy
-#| msgid ""
-#| "The idea is simply to select for each cell of the array the smallest "
-#| "value from the part not already sorted. Thus for the first cell, it takes "
-#| "the smallest value over the whole array. For the second one, it takes the "
-#| "second smallest value, which is the smallest value from the cell not "
-#| "already sorted."
 msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
@@ -9146,26 +9094,21 @@ msgid ""
 "sorted. You of course don't have to sort the last cell of the array, that is "
 "already sorted when you consider it."
 msgstr ""
-"A ideia é simplesmente selecionar para cada célula da array o menor valor da "
-"parte ainda não ordenada. Então para a primeira célula, pegamos o menor "
-"valor da array toda. Para a segunda, pegamos o segundo menor valor, que é o "
-"menor valor da célula ainda não ordenado."
+"A ideia é simplesmente selecionar para cada célula da array o menor\n"
+"valor da parte ainda não ordenada. Então para a primeira célula,\n"
+"pegamos o menor valor da array toda. Para a segunda, pegamos o segundo\n"
+"menor valor, que é o menor valor das células ainda não ordenadas."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
-#, fuzzy
-#| msgid ""
-#| "More generally, for the cell N, it looks the cell M in [n;len] containing "
-#| "the smallest possible value of the interval. Then, it swaps the content "
-#| "of cell N with the one of cell M."
 msgid ""
 "More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
 msgstr ""
-"De forma mais geral, para a célula N, ele busca a célula M em [n;len] "
-"contendo o menor valor possível do intervalo. Então, troca o conteúdo da "
-"célula N com o da célula M."
+"De forma mais geral, para a célula N, ele busca a célula M em [N;len]\n"
+"contendo o menor valor possível do intervalo. Então, alterna o\n"
+"conteúdo da célula N com o da célula M."
 
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
@@ -9849,11 +9792,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:13
-#, fuzzy
-#| msgid ""
-#| "Your work is to help this poor guy sorting his stack by flipping the "
-#| "pancakes. Each pancake is defined by its radius and rank within the "
-#| "stack, where the bottom pancake is at rank 0, and the one above at rank 1."
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
@@ -9861,7 +9799,7 @@ msgid ""
 msgstr ""
 "Seu trabalho é ajudar este pobre coitado a ordenar a pilha dele\n"
 "virando as panquecas. Cada panqueca é definida pelo raio e rank dentro\n"
-"da pilha, onde a panqueca do fundo está com rank 0, e a próxima com\n"
+"da pilha, onde a panqueca de cima está com rank 0, e a próxima com\n"
 "rank 1."
 
 #. type: Content of: <p>
@@ -9921,7 +9859,6 @@ msgstr ""
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:31
-#, fuzzy
 msgid "How could you reach this situation from the current one?"
 msgstr "Como você pode atingir esta situação a partir da atual?"
 
