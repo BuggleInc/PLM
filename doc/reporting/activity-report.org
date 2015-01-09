@@ -216,12 +216,12 @@ case _ => MergeStrategy.first
       PLM, qui se charge de communiquer les résultats de l'exécution
       au client.
 *** DONE L'interface affiche le résultat de l'exécution
-** TODO Afficher les étapes de l'exécution du code de l'étudiant
+** DONE Afficher les étapes de l'exécution du code de l'étudiant
 *** DONE Modifier les interactions entre le client et le serveur
     - Pour permettre au serveur d'envoyer des données en continu au
       client lors de l'exécution d'un programme, une WebSocket est
       requise.
-*** TODO Permettre à PLM de streamer l'exécution du code
+*** DONE Permettre à PLM de streamer l'exécution du code
     - Créer une classe basée sur [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/Bridge.java][Bridge]] et [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/ISender.java][ISender]] enregistrant les
       différents actions effectuées à chaque pas et les écrivant dans un
       stream.
@@ -232,6 +232,21 @@ case _ => MergeStrategy.first
     - Pas de solution simple pour créer un stream?
     - Donner à la classe une référence vers PLMActor et utiliser sa
       méthode createMessage permet de contourner ce problème.
+** DONE Envoyer l'état initial du monde
+   - Au démarrage d'un exercice, le serveur doit fournir au client
+     l'état initiaux des mondes.
+** TODO Créer le modèle local du monde
+   - Le client doit récupérer les données pour créer un modèle local
+     de chaque monde en fonction de son type.
+** TODO Représenter côté client le monde de l'exercice
+   - Une fois le modèle du monde créé, il faut ensuite dessiner sa représentation.
+** TODO Récupérer l'état objectif du monde
+   - Plutôt que de récupérer l'état objectif du monde, on peut se
+     contenter de récupérer les opérations obtenues lors de
+     l'exécution de la solution.
+   - Nous n'avons alors pas besoin de rejouer la solution côté serveur
+     lorsque l'étudiant souhaite voir la démo, puisque nous possèdons
+     alors les opérations de la solution.
 ** TODO Refactorer l'architecture du projet
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
 ** TODO Récupérer la liste des exercices pour chaque leçon
