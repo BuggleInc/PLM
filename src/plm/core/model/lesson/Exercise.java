@@ -56,6 +56,8 @@ public abstract class Exercise extends Lecture {
 		initialWorld = new Vector<World>(w.length);
 		answerWorld  = new Vector<World>(w.length);
 		for (int i=0; i<w.length; i++) {
+			if (w[i] == null) 
+				throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
 			currentWorld.add( w[i].copy() );
 			initialWorld.add( w[i].copy() );
 			answerWorld. add( w[i].copy() );

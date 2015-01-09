@@ -49,4 +49,11 @@ public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 				+ "  println(t(42));\n"
 				+ "}";
 	}
+
+	@Override
+	public String generateExceptionRaisingCode() {
+		return "override def run() {\n"
+				+ "  throw new Exception(\"easy exception\")\n"
+				+ "}";
+	}
 }
