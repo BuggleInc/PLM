@@ -1,8 +1,5 @@
 package plm.universe;
 
-
-
-
 public abstract class GridWorldCell {
 
 	protected GridWorld world;

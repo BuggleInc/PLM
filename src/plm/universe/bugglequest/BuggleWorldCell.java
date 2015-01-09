@@ -8,8 +8,6 @@ import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-
-
 public class BuggleWorldCell extends GridWorldCell {
 	private Color color;
 

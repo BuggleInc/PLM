@@ -1,10 +1,5 @@
 package plm.universe;
 
-
-
-
-
-
 public abstract class GridWorld extends World {
 
 	protected GridWorldCell[][] cells;
@@ -68,6 +63,9 @@ public abstract class GridWorld extends World {
 		sizeY = height;
 	}
 
+	public GridWorldCell[][] getCells() {
+		return cells;
+	}
 	
 	public GridWorldCell getCell(int x, int y) {
 		return this.cells[x][y];
