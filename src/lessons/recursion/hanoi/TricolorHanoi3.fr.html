@@ -1,0 +1,20 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tours de Hanoï tricolores : séparer et terminer</h2>
+
+<p>Nous sommes presque prêts à écrire l'algorithme entier des tours
+tricolores. Il ne nous manque plus qu'une fonction <code>separe()</code>,
+très inspirée de la première que nous avions écrite pour le problème des <a
+href="plm://lessons.recursion.hanoi/SplitHanoi1">Tours de Hanoï
+séparées</a>. En supposant que votre tour interclassée se trouve sur le
+piquet <code>mid</code>, il faut répartir les disques sur tous les
+piquets. Assurez-vous d'utiliser la fonction <code>move3</code> un nombre
+pair de fois à chaque étage récursif afin que les disques du triplet du bas
+soient dans le bon ordre.</p>
+
+<p>Comme vous pouvez le voir, la situation initiale n'est pas celle attendue
+par la méthode <code>separe()</code>. Il faut auparavant utiliser les
+méthodes <code>gather()</code> puis <code>move3()</code> (deux fois pour que
+le triplet du bas soit dans le bon ordre). Ces quelques étapes suivies de la
+fonction <code>separe()</code> suffisent à résoudre intégralement le
+problème des tours tricolores de Hanoï.</p>

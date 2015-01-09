@@ -1,0 +1,13 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Cyclic Towers of Hanoi</h2>
+
+<p>This variation of the Towers of Hanoi is very similar to the
+regular problem: you are given one stack of disks and three pegs, and you cannot move a larger disk over a smaller one.
+The change is that you can only move disks clockwise: 0->1 or 1->2 or 2->0, but never in the other direction.</p>
+
+<p>Obviously, the movements are not symmetric anymore. Moves from A to B are now very different from moves to B to A.
+As a result, you need two recursive functions depending on whether you are moving the stack clockwise or counterclockwise.</p>
+
+<p>That being said, the problem decomposition is very similar to the
+classical Hanoi. The twist is that each function call the other one, 
+constituting a nice example of mutual recursion.</p>

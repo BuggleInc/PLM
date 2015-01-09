@@ -115,7 +115,6 @@ public class Main extends Lesson {
 
 		Lecture loopWhile = addExercise(new LoopWhile(this));
 		addExercise(new BaggleSeeker(this), loopWhile);
-		addExercise(new WhileMoria(this),loopWhile);
 		
 		Lecture vars = addExercise(new Variables(this));
 		addExercise(new RunFour(this), vars);
@@ -220,6 +219,10 @@ public class Main extends Lesson {
 		addExercise(new TraversalByLine(this),snake);
 		addExercise(new TraversalZigZag(this),snake);
 		addExercise(new TraversalDiagonal(this),snake);
+		
+		// Other exercises
+		addExercise(new WhileMoria(this));
+
 		
 	}
 }
