@@ -235,11 +235,18 @@ case _ => MergeStrategy.first
 ** DONE Envoyer l'état initial du monde
    - Au démarrage d'un exercice, le serveur doit fournir au client
      l'état initiaux des mondes.
-** TODO Créer le modèle local du monde
+** DONE Créer le modèle local du monde
    - Le client doit récupérer les données pour créer un modèle local
      de chaque monde en fonction de son type.
-** TODO Représenter côté client le monde de l'exercice
+** DONE Représenter côté client le monde de l'exercice
    - Une fois le modèle du monde créé, il faut ensuite dessiner sa représentation.
+** TODO Ajouter un bouton permettant de stopper l'exécution en cours
+   - Si l'étudiant code une boucle infinie, cela peut s'avérer plus
+     pratique que de devoir redémarrer le serveur.
+** TODO Permettre à l'utilisateur de naviguer entre les étapes de son programme
+   - La liste des opérations reçues doit être stockée pour chaque
+     monde et l'utilisateur doit pouvoir les jouer/dé-jouer pour
+     examiner le comportement de son programme.
 ** TODO Récupérer l'état objectif du monde
    - Plutôt que de récupérer l'état objectif du monde, on peut se
      contenter de récupérer les opérations obtenues lors de
@@ -247,8 +254,17 @@ case _ => MergeStrategy.first
    - Nous n'avons alors pas besoin de rejouer la solution côté serveur
      lorsque l'étudiant souhaite voir la démo, puisque nous possèdons
      alors les opérations de la solution.
+** TODO Refactorer drawBuggleImage
+   - La méthode actuelle rencontre des difficultés à changer la
+     couleur du Buggle: getImageData permet de récupérer les pixels
+     représentants l'image et de les modifier, mais ceux-ci
+     correspondent aussi à la cellule sur laquelle se trouve le
+     buggle...
 ** TODO Refactorer l'architecture du projet
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
+** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
+   - Rien n'indique actuellement à l'utilisateur que la communication
+     avec le serveur a été interrompue, ce qui peut être confus.
 ** TODO Récupérer la liste des exercices pour chaque leçon
    - Pour permettre à l'utilisateur de visualiser sa progression, on
      pourrait afficher pour chaque leçon un graphe des exercices.
