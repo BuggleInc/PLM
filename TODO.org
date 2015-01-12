@@ -1,0 +1,93 @@
+This file presents some of the projects that we would like to tackle
+with the PLM. The current file is more about lessons that are not
+written yet. I don't feel like opening an issue for most of these
+things to not overload the issue tracker.
+
+Other source of informations include:
+
+- http://webloria.loria.fr/~quinson/blog/2014/1204/PLM.pdf 
+  A presentation about the current state of the PLM (as of Dec. 2014),
+  and a roadmap of the future. That's in French, sorry.
+  
+- https://github.com/oster/PLM/issues 
+  The known bugs about the PLM. Some of them are hard issues about the
+  PLM core, but some others are smaller possible improvement of the
+  existing universes and exercises. 
+  
+In most existing lessons, some extension ideas are given in the
+"help"/"About this lesson" menu. You can find these files in the
+archive by searching files named "Main.html" in the differing
+subdirectories. They are even translated to French, if that helps.
+
+* Lessons and universes
+The important here is that I try to build lessons on important
+notions, not entertaining or particularly challenging things. That's
+the main editorial difference with projects like Codingame.com or
+other programming challenges. They want to find the best programmers
+out there, I want to teach everybody the things that good programmers
+need to know.
+
+That being said, I have no strong feelings about the parts of
+informatics that should be taught in the PLM. I seriously think about
+adding a lesson on HPC programming in C with MPI, for example, even if
+that's *very* different from the existing content.
+** Additional exercises
+There is naturally a huge body of things that we could add to the
+PLM. Take one book such as the Cormen or the Sedgewik and just pick
+some random ideas.
+
+** Pedagogical micro-worlds
+Adding them could only require to reimplement an adapted universe
+(similar to BuggleWorld or TurtleWorld or SortingWorld), and import
+the existing exercises from the upstream authors.
+
+At least, that's the initial plan but in practice, I often change the
+exercises to integrate them in the gameplay of having buggles and also
+because I love changing the stuff that I integrate...
+
+- Karel the robot (it may be sufficient to build a loader of karel
+  worlds within the buggle world)
+- PatchWorld. This one is very good for absolute learners.
+  http://cs.wellesley.edu/~cs111/fall07/notes/lectures/06_picture_world_intro_web.pdf
+- These people, who invented the whole buggle concept had many other ideas:
+  - http://cs.wellesley.edu/~cs111/fall98/assignments.html
+- Another classical recursive game:
+  - http://www.cut-the-knot.org/recurrence/flavius.shtml
+** Programmer games
+They may require a King of Hill mode, which will soon be easier to do
+(after the move to Web techno)
+
+- CodeRuler (strategy)
+- CodeRobot (fights between robots)
+- CodeRally (racing cars)
+- CodeInvaders (fight between spaceships)
+  https://www-927.ibm.com/ibm/cas/hspc/competition/
+- MARS (assembly) http://courses.missouristate.edu/kenvollmar/mars/
+- MMIX (assembly by Knuth) http://mmix.cs.hm.edu/index.html
+- Corewars
+
+* Possible improvement to the graphical engine
+There is a bunch of ideas in this category, but these tasks are a bit
+post-ponned until after the ongoing move from Java Swing to Web stuff.
+- Use the same shortcuts than eclipse
+- Provide autocompletion on keywords and bindings
+- have the editor follow the execution point during stepped execution 
+- represent graphically the textual diff between the expected world
+  and the actual one. We would have red circles on cells that have an
+  error (either wrong color or wrong message), red crosses on badly
+  located buggles, etc.
+- Locations displayed in the console should be links that move the
+  editor.
+- During step-by-step execution, it'd be great to display the content
+  of values, but I'm not sure of how to do that. See
+  https://github.com/oster/PLM/issues/379
+
+* Annoying small things.
+- In lightbot, the last instruction does not refresh the world when executed.
+- we should try to remove the *sys-package-mgr* processing messages when jython is loading
+* Various ideas
+** Essential Math for Games Programmers
+- http://www.essentialmath.com/tutorial.htm
+** Introduction to the algorithms behind the games
+- http://www.redblobgames.com/articles/visibility/
+ 
