@@ -1,5 +1,5 @@
 * Objectifs
-** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
+** CANCEL S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
 ** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
 *** CANCEL Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
     SCHEDULED: <2014-12-01 lun.>
@@ -190,14 +190,14 @@ case _ => MergeStrategy.first
      chargées à la volée par *Angular* selon l'état actuel.
    - Il faut donc modifier le code de l'interface cliente pour diviser
      l'application en vues.
-** TODO Création de l'interface de l'exerciseur
+** DONE Création de l'interface de l'exerciseur
 *** DONE Affichage de la consigne de l'exercice
     SCHEDULED: <2014-12-18 jeu.>
     - Quelques soucis de CSS encore par contre...
 *** DONE Implémentation d'un éditeur de code
     SCHEDULED: <2014-12-19 ven.>
     - *CodeMirror* semble fonctionner correctement avec *Angular* grâce à [[https://github.com/angular-ui/ui-codemirror][ce module]].
-*** TODO Représentation du monde courant et de son état
+*** DONE Représentation du monde courant et de son état
 ** DONE Récupérer le code de l'étudiant pour l'exercice en cours
    SCHEDULED: <2014-12-19 ven.>
    - Reprendre le code utilisé dans GitSpy
@@ -240,13 +240,17 @@ case _ => MergeStrategy.first
      de chaque monde en fonction de son type.
 ** DONE Représenter côté client le monde de l'exercice
    - Une fois le modèle du monde créé, il faut ensuite dessiner sa représentation.
-** TODO Ajouter un bouton permettant de stopper l'exécution en cours
+** DONE Ajouter un bouton permettant de stopper l'exécution en cours
    - Si l'étudiant code une boucle infinie, cela peut s'avérer plus
      pratique que de devoir redémarrer le serveur.
-** TODO Permettre à l'utilisateur de naviguer entre les étapes de son programme
+** DONE Permettre à l'utilisateur de naviguer entre les étapes de son programme
    - La liste des opérations reçues doit être stockée pour chaque
      monde et l'utilisateur doit pouvoir les jouer/dé-jouer pour
      examiner le comportement de son programme.
+** TODO Etudier comment binder une valeur du modèle à un slider avec AngularJS
+   - Ceci nous permettrait d'utiliser des sliders pour permettre à
+     l'utilisateur de régler la vitesse d'animation ou de naviguer
+     entre les différentes étapes du programme.
 ** TODO Récupérer l'état objectif du monde
    - Plutôt que de récupérer l'état objectif du monde, on peut se
      contenter de récupérer les opérations obtenues lors de
