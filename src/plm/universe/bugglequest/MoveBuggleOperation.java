@@ -1,8 +1,7 @@
 package plm.universe.bugglequest;
 
 public class MoveBuggleOperation extends BuggleOperation {
-
-	private AbstractBuggle buggle;
+	
 	private int oldX;
 	private int oldY;
 	private int newX;
@@ -10,16 +9,11 @@ public class MoveBuggleOperation extends BuggleOperation {
 	
 	public MoveBuggleOperation(AbstractBuggle buggle, int oldX,
 			int oldY, int newX, int newY) {
-		super("moveBuggleOperation");
-		this.buggle = buggle;
+		super("moveBuggleOperation", buggle);
 		this.oldX = oldX;
 		this.oldY = oldY;
 		this.newX = newX;
 		this.newY = newY;
-	}
-
-	public AbstractBuggle getBuggle() {
-		return buggle;
 	}
 
 	public int getOldX() {
