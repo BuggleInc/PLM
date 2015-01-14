@@ -247,10 +247,17 @@ case _ => MergeStrategy.first
    - La liste des opérations reçues doit être stockée pour chaque
      monde et l'utilisateur doit pouvoir les jouer/dé-jouer pour
      examiner le comportement de son programme.
-** TODO Etudier comment binder une valeur du modèle à un slider avec AngularJS
+** DONE Etudier comment binder une valeur du modèle à un slider avec AngularJS
    - Ceci nous permettrait d'utiliser des sliders pour permettre à
      l'utilisateur de régler la vitesse d'animation ou de naviguer
      entre les différentes étapes du programme.
+** DONE Corriger l'affichage des murs
+   - Les murs correspondant à la bordure du monde ne sont actuellement
+     pas dessinés.
+** DONE Ajouter des types d'opérations supplémentaires
+   - ChangeBuggleDirection
+   - ChangeCellColor
+** TODO Ajouter la gestion des baggles
 ** TODO Récupérer l'état objectif du monde
    - Plutôt que de récupérer l'état objectif du monde, on peut se
      contenter de récupérer les opérations obtenues lors de
@@ -258,17 +265,32 @@ case _ => MergeStrategy.first
    - Nous n'avons alors pas besoin de rejouer la solution côté serveur
      lorsque l'étudiant souhaite voir la démo, puisque nous possèdons
      alors les opérations de la solution.
+** TODO Permettre à l'utilisateur de passer d'un monde à l'autre
+   - Certains exercices comportent plusieurs mondes.
+   - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
+     déroulement de son algorithme en fonction des différentes
+     conditions.
 ** TODO Refactorer drawBuggleImage
    - La méthode actuelle rencontre des difficultés à changer la
      couleur du Buggle: getImageData permet de récupérer les pixels
      représentants l'image et de les modifier, mais ceux-ci
      correspondent aussi à la cellule sur laquelle se trouve le
      buggle...
+   - Il faut donc colorier uniquement les pixels du buggle.
+   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
+   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
+     images, à étudier.
 ** TODO Refactorer l'architecture du projet
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
 ** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
    - Rien n'indique actuellement à l'utilisateur que la communication
      avec le serveur a été interrompue, ce qui peut être confus.
+** TODO Mettre en place de reconnexion de la websocket
+   - Si le serveur rencontre un problème momentané, le client doit
+     être le moins possible impacté.
+   - Une tentative de reconnexion de la websocket à intervals
+     réguliers permettrait d'éviter à l'utilisateur de recharger la
+     page et (surtout) perdre ses dernières modifications.
 ** TODO Récupérer la liste des exercices pour chaque leçon
    - Pour permettre à l'utilisateur de visualiser sa progression, on
      pourrait afficher pour chaque leçon un graphe des exercices.
@@ -284,8 +306,19 @@ case _ => MergeStrategy.first
      des mondes objectifs de chaque exercice.
    - Il convient donc de modifier pour que la liste des exercices soit
      un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+** TODO Vérifier le bon fonctionnement de Git côté serveur
+   - PLM affiche le message suivant au démarrage du serveur:
+     "Impossible de récupérer une session adéquate sur les
+     serveurs...".
 ** TODO Retirer la partie UI présente dans PLM-library
    - 
+** TODO Permettre à un utilisateur de gérer les vues des mondes dynamiquement
+   - Actuellement, seul le monde selectionné est
+     affiché. L'utilisateur doit donc changer de monde selectionné
+     pour observer l'exécution du programme sur un autre monde.
+   - Donner les moyens à l'utilisateur d'ajouter ou de retirer
+     dynamiquement les vues des mondes permettrait à chacun de
+     personnaliser son interface.
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour effectuer le code des
      clients une fois passé en mode serveur centralisé.
