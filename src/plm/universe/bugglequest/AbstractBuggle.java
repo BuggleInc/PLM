@@ -96,6 +96,8 @@ public abstract class AbstractBuggle extends Entity {
 	public void brushDown() {
 		this.brushDown = true;
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
+		Color oldColor = getCell().getColor();
+		addOperation(new ChangeCellColor(cell, oldColor, brushColor));
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
 		setChanged();
@@ -327,12 +329,14 @@ public abstract class AbstractBuggle extends Entity {
 
 			throw new BuggleWallException();
 		
-		getWorld().operations.add(new MoveBuggleOperation(this, x, y, newx, newy));
+		addOperation(new MoveBuggleOperation(this, x, y, newx, newy));
 
 		x = newx;
 		y = newy;
 
 		if (brushDown) {
+			Color oldColor = getCell().getColor();
+			addOperation(new ChangeCellColor(getCell(), oldColor, brushColor));
 			getCell().setColor(brushColor);
 		}
 

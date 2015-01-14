@@ -158,4 +158,8 @@ public abstract class Entity extends Observable {
 		Integer res = scriptOffset.get(lang);
 		return res == null ? 0:res;
 	}
+	
+	public void addOperation(Operation operation) {
+		world.operations.add(operation);
+	}
 }
