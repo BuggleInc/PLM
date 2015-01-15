@@ -5,7 +5,7 @@ public class ChangeBuggleCarryBaggle extends BuggleOperation {
 	private boolean newCarryBaggle;
 	
 	public ChangeBuggleCarryBaggle(AbstractBuggle buggle, boolean oldCarryBaggle, boolean newCarryBaggle) {
-		super("changeBuggleDirection", buggle);
+		super("changeBuggleCarryBaggle", buggle);
 		this.oldCarryBaggle = oldCarryBaggle;
 		this.newCarryBaggle = newCarryBaggle;
 	}
