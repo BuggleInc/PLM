@@ -371,6 +371,8 @@ public abstract class AbstractBuggle extends Entity {
 			throw new AlreadyHaveBaggleException(Game.i18n.tr("Your are already carrying a baggle."));
 		getCellFromLesson(this.x, this.y).baggleRemove();
 		carryBaggle = true;
+		addOperation(new ChangeCellHasBaggle(getCell(), false, true));
+		addOperation(new ChangeBuggleCarryBaggle(this, false, true));
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
@@ -378,6 +380,8 @@ public abstract class AbstractBuggle extends Entity {
 			throw new DontHaveBaggleException();
 		getCellFromLesson(this.x, this.y).baggleAdd();
 		carryBaggle = false;
+		addOperation(new ChangeCellHasBaggle(getCell(), true, false));
+		addOperation(new ChangeBuggleCarryBaggle(this, true, false));
 	}
 
 	public boolean isOverMessage() {
