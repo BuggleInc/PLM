@@ -615,8 +615,6 @@ public class Game implements IWorldView {
 		if (lecture instanceof Exercise)
 			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
 				w.doneDelay();
-
-		setState(GameState.EXECUTION_ENDED);
 	}
 	public void startExerciseDemoExecution() {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
