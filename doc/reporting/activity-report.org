@@ -257,40 +257,22 @@ case _ => MergeStrategy.first
 ** DONE Ajouter des types d'opérations supplémentaires
    - ChangeBuggleDirection
    - ChangeCellColor
-** TODO Ajouter la gestion des baggles
-** TODO Récupérer l'état objectif du monde
+** DONE Ajouter la gestion des baggles
+** DONE Retirer le délai d'exécution côté serveur
+** DONE Récupérer l'état objectif du monde
    - Plutôt que de récupérer l'état objectif du monde, on peut se
      contenter de récupérer les opérations obtenues lors de
      l'exécution de la solution.
-   - Nous n'avons alors pas besoin de rejouer la solution côté serveur
+** DONE Permettre à l'utilisateur de consulter l'objectif pour chaque monde
+** DONE Permettre à l'utilisateur d'exécuter le code de la solution en guise de démo
+   - Nous n'avons pas besoin de rejouer la solution côté serveur
      lorsque l'étudiant souhaite voir la démo, puisque nous possèdons
-     alors les opérations de la solution.
-** TODO Permettre à l'utilisateur de passer d'un monde à l'autre
+     déjà les opérations de la solution.
+** DONE Permettre à l'utilisateur de passer d'un monde à l'autre
    - Certains exercices comportent plusieurs mondes.
    - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
      déroulement de son algorithme en fonction des différentes
      conditions.
-** TODO Refactorer drawBuggleImage
-   - La méthode actuelle rencontre des difficultés à changer la
-     couleur du Buggle: getImageData permet de récupérer les pixels
-     représentants l'image et de les modifier, mais ceux-ci
-     correspondent aussi à la cellule sur laquelle se trouve le
-     buggle...
-   - Il faut donc colorier uniquement les pixels du buggle.
-   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
-   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
-     images, à étudier.
-** TODO Refactorer l'architecture du projet
-   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
-** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
-   - Rien n'indique actuellement à l'utilisateur que la communication
-     avec le serveur a été interrompue, ce qui peut être confus.
-** TODO Mettre en place de reconnexion de la websocket
-   - Si le serveur rencontre un problème momentané, le client doit
-     être le moins possible impacté.
-   - Une tentative de reconnexion de la websocket à intervals
-     réguliers permettrait d'éviter à l'utilisateur de recharger la
-     page et (surtout) perdre ses dernières modifications.
 ** TODO Récupérer la liste des exercices pour chaque leçon
    - Pour permettre à l'utilisateur de visualiser sa progression, on
      pourrait afficher pour chaque leçon un graphe des exercices.
@@ -306,6 +288,28 @@ case _ => MergeStrategy.first
      des mondes objectifs de chaque exercice.
    - Il convient donc de modifier pour que la liste des exercices soit
      un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+** TODO Permettre à l'utilisateur de passer à l'exercice suivant
+** TODO Refactorer drawBuggleImage
+   - La méthode actuelle rencontre des difficultés à changer la
+     couleur du Buggle: getImageData permet de récupérer les pixels
+     représentants l'image et de les modifier, mais ceux-ci
+     correspondent aussi à la cellule sur laquelle se trouve le
+     buggle...
+   - Il faut donc colorier uniquement les pixels du buggle.
+   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
+   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
+     images, à étudier.
+** TODO Refactorer l'architecture du projet
+   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
+** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
+   - Rien n'indique actuellement à l'utilisateur que la communication
+     avec le serveur a été interrompue, ce qui peut être confus.
+** TODO Mettre en place un processus de reconnexion de la websocket
+   - Si le serveur rencontre un problème momentané, le client doit
+     être le moins possible impacté.
+   - Une tentative de reconnexion de la websocket à intervals
+     réguliers permettrait d'éviter à l'utilisateur de recharger la
+     page et (surtout) perdre ses dernières modifications.
 ** TODO Vérifier le bon fonctionnement de Git côté serveur
    - PLM affiche le message suivant au démarrage du serveur:
      "Impossible de récupérer une session adéquate sur les
