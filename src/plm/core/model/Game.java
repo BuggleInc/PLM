@@ -668,7 +668,7 @@ public class Game implements IWorldView {
 			Logger l = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
-		} else if (System.out.equals(this.outputOrig)) {
+		} else if (!System.out.equals(this.outputOrig)) {
 			System.setOut(this.outputOrig);
 			System.setErr(this.errorOrig);
 		}
