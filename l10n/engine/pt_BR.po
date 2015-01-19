@@ -5,12 +5,12 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: PLM engine\n"
+"PO-Revision-Date: 2015-01-17 00:33-0300\n"
+"Last-Translator: Fred Maranh„o <fred.maranhao@gmail.com>\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #~ # Brazilian portuguese translation of the PLM engine.
@@ -93,14 +93,14 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
 "Use the intermediate slot in all moves."
-msgstr ""
+msgstr "Desculpe Dave, n„o posso deixar vocÍ mover discos entre os slots 0 e 2 diretamente. Use o slot intermedi·rio em todos os movimentos."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
-msgstr ""
+msgstr "Desculpe Dave, n„o posso deixar vocÍ  you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
@@ -116,9 +116,9 @@ msgid "Invalid move"
 msgstr "Movimento inv√°lido"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
-#, java-format
+#, java-format, fuzzy
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
-msgstr ""
+msgstr "Os discos n„o foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
 #, fuzzy, java-format
@@ -747,26 +747,26 @@ msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
 "consider contributing to this project by adapting this exercise to this "
 "language."
-msgstr ""
+msgstr "O exerc√≠cio {0} n√£o suporta a linguagem {1}. Trocando para {2}. Favor considere a possibilidade de contribuir para este projeto adaptando este exerc√≠cio para esta linguagem."
 
 #: src/plm/core/model/Game.java:520
 msgid "Operation cancelled by the user"
-msgstr ""
+msgstr "Opera√ß√£o cancelada pelo usu√°rio"
 
 #: src/plm/core/model/Game.java:562
 #, java-format
 msgid "The lecture {0} has no world that I can select"
-msgstr ""
+msgstr "A \"lecture\" {0} n√£o tem um mundo que eu possa selecionar"
 
 #: src/plm/core/model/Game.java:990
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
-msgstr ""
+msgstr "Favor instalar o Scala vers√£o 2.10 ou superior para usar ele no PLM.\n\n"
 
 #: src/plm/core/model/Game.java:991
 msgid "Scala is missing"
-msgstr ""
+msgstr "Scala est√° faltando"
 
 #: src/plm/core/model/Game.java:995
 msgid ""
