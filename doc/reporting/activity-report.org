@@ -1,4 +1,12 @@
 * Tâches restantes
+** TODO Limiter la vitesse d'exécution du programme du client
+   - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
+     ne comportant pas de stepUI, tel que System.out.println, alors
+     son programme surcharge le serveur empêchant l'utilisateur de
+     le stopper autrement qu'en arrêtant manuellement le serveur.
+   - Lancer le programme de l'utilisateur dans une autre JVM
+     permettrait de mieux contrôler son exécution et de corriger ce
+     problème.
 ** TODO Modifier les messages concernant l'envoi de données au serveur
    - Actuellement, plusieurs messages sont affichés pour informer
      l'utilisateur que PLM est en train d'envoyer les données de son
@@ -60,9 +68,12 @@
      clients une fois passé en mode serveur centralisé.
 
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** TODO Fix Logger.debug
+** TODO Ajouter des tests unitaires
+** DONE Fix Logger.debug
    - Rediriger la sortie standard vers l'interface client empêche les
      messages de debug du serveur de s'afficher.
+   - Ajout d'un LoggerUtils s'occupant de désactiver/réactiver la
+     capture de la sortie lorsque l'on souhaite logger.
 ** DONE Rediriger ce qui est écrit dans la console de la PLM vers l'interface client
    - Voir Game.setOutputWriter
    - Ajout de RemoteLogWriter qui redirige la sortie standard vers la websocket.
