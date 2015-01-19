@@ -1,3 +1,76 @@
+* Tâches restantes
+** TODO Modifier les messages concernant l'envoi de données au serveur
+   - Actuellement, plusieurs messages sont affichés pour informer
+     l'utilisateur que PLM est en train d'envoyer les données de son
+     activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de
+     communiquer ses données, ce qui peut prêter à confusion.
+   SCHEDULED: <2014-12-08 lun.>
+** TODO Récupérer la liste des exercices pour chaque leçon
+   - Pour permettre à l'utilisateur de visualiser sa progression, on
+     pourrait afficher pour chaque leçon un graphe des exercices.
+   - Pour chaque noeud de ce graphe, un code couleur permettrait de
+     distinguer les exercices réussis des exercices échoués ou
+     non-essayés.
+   - A la sélection d'une leçon, le graphe serait centré sur le
+     dernier exercice consulté de cette dernière.
+   - Pour construire ce graphe, nous avons besoin de connaître la
+     liste des exercices d'une leçon et leur arborescence.
+   - Pour récupérer actuellement la liste des exercices d'une leçon,
+     il est nécessaire de la charger. Cela revient à lancer le calcul
+     des mondes objectifs de chaque exercice.
+   - Il convient donc de modifier pour que la liste des exercices soit
+     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+** TODO Permettre à l'utilisateur de passer à l'exercice suivant
+** TODO Refactorer drawBuggleImage
+   - La méthode actuelle rencontre des difficultés à changer la
+     couleur du Buggle: getImageData permet de récupérer les pixels
+     représentants l'image et de les modifier, mais ceux-ci
+     correspondent aussi à la cellule sur laquelle se trouve le
+     buggle...
+   - Il faut donc colorier uniquement les pixels du buggle.
+   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
+   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
+     images, à étudier.
+** TODO Refactorer l'architecture du projet
+   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
+** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
+   - Rien n'indique actuellement à l'utilisateur que la communication
+     avec le serveur a été interrompue, ce qui peut être confus.
+** TODO Mettre en place un processus de reconnexion de la websocket
+   - Si le serveur rencontre un problème momentané, le client doit
+     être le moins possible impacté.
+   - Une tentative de reconnexion de la websocket à intervals
+     réguliers permettrait d'éviter à l'utilisateur de recharger la
+     page et (surtout) perdre ses dernières modifications.
+** TODO Vérifier le bon fonctionnement de Git côté serveur
+   - PLM affiche le message suivant au démarrage du serveur:
+     "Impossible de récupérer une session adéquate sur les
+     serveurs...".
+** TODO Retirer la partie UI présente dans PLM-library
+** TODO Permettre à un utilisateur de gérer les vues des mondes dynamiquement
+   - Actuellement, seul le monde selectionné est
+     affiché. L'utilisateur doit donc changer de monde selectionné
+     pour observer l'exécution du programme sur un autre monde.
+   - Donner les moyens à l'utilisateur d'ajouter ou de retirer
+     dynamiquement les vues des mondes permettrait à chacun de
+     personnaliser son interface.
+** TODO Se renseigner sur Docker
+   - A première vue, ça pourrait être utile pour effectuer le code des
+     clients une fois passé en mode serveur centralisé.
+
+* Semaine du 2015-01-19 lun. au 2015-01-23 ven.
+** TODO Fix Logger.debug
+   - Rediriger la sortie standard vers l'interface client empêche les
+     messages de debug du serveur de s'afficher.
+** DONE Rediriger ce qui est écrit dans la console de la PLM vers l'interface client
+   - Voir Game.setOutputWriter
+   - Ajout de RemoteLogWriter qui redirige la sortie standard vers la websocket.
+** DONE Fix la démo de RandMouseMaze
+   - Lorsqu'on exécute la démo de cet exercice, le baggle n'est pas
+     ramassé à la fin. De plus, si on recharge la page et relance la
+     démo, la 1ère opération effectuée sera celle ramassant le baggle.
+   - Ajout d'un stepUI à la fin de pickupBaggle
 * Objectifs
 ** CANCEL S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
 ** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
@@ -104,13 +177,6 @@ case _ => MergeStrategy.first
    - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
    - Hériter de *ShadowRootAware* permet d'écouter
      l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
-** TODO Modifier les messages concernant l'envoi de données au serveur
-   - Actuellement, plusieurs messages sont affichés pour informer
-     l'utilisateur que PLM est en train d'envoyer les données de son
-     activité au serveur.
-   - Ces messages apparaissent même si l'utilisateur a refusé de
-     communiquer ses données, ce qui peut prêter à confusion.
-   SCHEDULED: <2014-12-08 lun.>
 ** DONE Ajouter une fonction à PLM retournant la liste des leçons
    SCHEDULED: <2014-12-08 lun.>
 ** DONE Etudier comment récupérer à partir du nom d'une leçon son image et sa description
@@ -154,7 +220,7 @@ case _ => MergeStrategy.first
      l'application. Ceci permet d'instancier *Game* au démarrage.
 ** DONE Afficher la page d'accueil de l'application automatiquement au lancement du serveur
    SCHEDULED: <2014-12-12 ven.>
-** TODO Faire un mock-up de l'interface WEB
+** CANCEL Faire un mock-up de l'interface WEB
    - Il convient de choisir un framework CSS au préalable pour
      faciliter le développement de l'interface WEB. [[http://usablica.github.io/front-end-frameworks/compare.html][Cette page]] liste
      un grand nombre de ces derniers.
@@ -177,7 +243,7 @@ case _ => MergeStrategy.first
    - Est-ce que des appels répétés à cette méthode peuvent être
      handicapant pour l'application et ses performances au cours d'une
      longue session d'utilisation?
-** TODO Tester Bootstrap
+** CANCEL Tester Bootstrap
    SCHEDULED: <2014-12-16 mar.>
    - *Bootstrap* serait capable de détecter
      automatiquement les changements apportés au DOM.
@@ -273,56 +339,3 @@ case _ => MergeStrategy.first
    - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
      déroulement de son algorithme en fonction des différentes
      conditions.
-** TODO Récupérer la liste des exercices pour chaque leçon
-   - Pour permettre à l'utilisateur de visualiser sa progression, on
-     pourrait afficher pour chaque leçon un graphe des exercices.
-   - Pour chaque noeud de ce graphe, un code couleur permettrait de
-     distinguer les exercices réussis des exercices échoués ou
-     non-essayés.
-   - A la sélection d'une leçon, le graphe serait centré sur le
-     dernier exercice consulté de cette dernière.
-   - Pour construire ce graphe, nous avons besoin de connaître la
-     liste des exercices d'une leçon et leur arborescence.
-   - Pour récupérer actuellement la liste des exercices d'une leçon,
-     il est nécessaire de la charger. Cela revient à lancer le calcul
-     des mondes objectifs de chaque exercice.
-   - Il convient donc de modifier pour que la liste des exercices soit
-     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
-** TODO Permettre à l'utilisateur de passer à l'exercice suivant
-** TODO Refactorer drawBuggleImage
-   - La méthode actuelle rencontre des difficultés à changer la
-     couleur du Buggle: getImageData permet de récupérer les pixels
-     représentants l'image et de les modifier, mais ceux-ci
-     correspondent aussi à la cellule sur laquelle se trouve le
-     buggle...
-   - Il faut donc colorier uniquement les pixels du buggle.
-   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
-   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
-     images, à étudier.
-** TODO Refactorer l'architecture du projet
-   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
-** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
-   - Rien n'indique actuellement à l'utilisateur que la communication
-     avec le serveur a été interrompue, ce qui peut être confus.
-** TODO Mettre en place un processus de reconnexion de la websocket
-   - Si le serveur rencontre un problème momentané, le client doit
-     être le moins possible impacté.
-   - Une tentative de reconnexion de la websocket à intervals
-     réguliers permettrait d'éviter à l'utilisateur de recharger la
-     page et (surtout) perdre ses dernières modifications.
-** TODO Vérifier le bon fonctionnement de Git côté serveur
-   - PLM affiche le message suivant au démarrage du serveur:
-     "Impossible de récupérer une session adéquate sur les
-     serveurs...".
-** TODO Retirer la partie UI présente dans PLM-library
-   - 
-** TODO Permettre à un utilisateur de gérer les vues des mondes dynamiquement
-   - Actuellement, seul le monde selectionné est
-     affiché. L'utilisateur doit donc changer de monde selectionné
-     pour observer l'exécution du programme sur un autre monde.
-   - Donner les moyens à l'utilisateur d'ajouter ou de retirer
-     dynamiquement les vues des mondes permettrait à chacun de
-     personnaliser son interface.
-** TODO Se renseigner sur Docker
-   - A première vue, ça pourrait être utile pour effectuer le code des
-     clients une fois passé en mode serveur centralisé.
