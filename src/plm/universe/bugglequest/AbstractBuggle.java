@@ -373,6 +373,7 @@ public abstract class AbstractBuggle extends Entity {
 		carryBaggle = true;
 		addOperation(new ChangeCellHasBaggle(getCell(), true, false));
 		addOperation(new ChangeBuggleCarryBaggle(this, false, true));
+		stepUI();
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
@@ -382,6 +383,7 @@ public abstract class AbstractBuggle extends Entity {
 		carryBaggle = false;
 		addOperation(new ChangeCellHasBaggle(getCell(), false, true));
 		addOperation(new ChangeBuggleCarryBaggle(this, true, false));
+		stepUI();
 	}
 
 	public boolean isOverMessage() {
