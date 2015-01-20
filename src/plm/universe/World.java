@@ -188,6 +188,10 @@ public abstract class World {
 	/* who's interested in every details of the world changes */
 	private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
 
+	public ArrayList<IWorldView> getWorldUpdatesListeners() {
+		return worldUpdatesListeners;
+	}
+	
 	/* who's only interested in entities creation and destructions */
 	private ArrayList<IWorldView> entitiesUpdateListeners = new ArrayList<IWorldView>();
 
