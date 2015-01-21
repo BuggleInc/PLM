@@ -65,10 +65,7 @@
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** TODO Continuer d'intégrer BuggleWorld dans WebPLM
-   - Gestion des messages au sol (attribut content)
-     - Ajout des opérations correspondantes
-     - Représentation des messages dans l'interface cliente
+** TODO Intégrer les collisions avec les murs de BuggleWorld dans WebPLM
    - Gestion des collisions avec les murs
      - Transmission du message d'erreur au client
      - Arrêt de l'exécution du programme?
@@ -80,6 +77,10 @@
      unitaires.
    - Ajout de tests unitaires pour models.PLM.
    - Ajout de tests unitaires pour log.RemoteLogWriter.
+** DONE Intégrer les messages au sol de BuggleWorld dans WebPLM
+   - Gestion des messages au sol (attribut content)
+     - Ajout des opérations correspondantes
+     - Représentation des messages dans l'interface cliente
 ** DONE Refactorer l'architecture du projet côté client
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
    - Utilisation de [[http://requirejs.org/docs/commonjs.html][CommonJS]] pour gérer les dépendances?
@@ -99,7 +100,11 @@
      démo, la 1ère opération effectuée sera celle ramassant le baggle.
    - Ajout d'un stepUI à la fin de pickupBaggle
 * Objectifs
+<<<<<<< Updated upstream
 ** CANCEL S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
+=======
+** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite ici est complète.
+>>>>>>> Stashed changes
 ** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
 *** CANCEL Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
     SCHEDULED: <2014-12-01 lun.>
@@ -188,12 +193,15 @@ case _ => MergeStrategy.first
    SCHEDULED: <2014-12-05 ven.>
 ** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
+<<<<<<< Updated upstream
 ** CANCEL Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
    SCHEDULED: <2014-12-08 lun.>
 ** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
 ** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
+=======
+>>>>>>> Stashed changes
 ** DONE Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
    SCHEDULED: <2014-12-08 lun.>
    - Création d'un /Component/ se chargeant des interactions entre
@@ -204,6 +212,16 @@ case _ => MergeStrategy.first
    - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
    - Hériter de *ShadowRootAware* permet d'écouter
      l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
+<<<<<<< Updated upstream
+=======
+** TODO Modifier les messages concernant l'envoi de données au serveur
+   - Actuellement, plusieurs messages sont affichés pour informer
+     l'utilisateur que PLM est en train d'envoyer les données de son
+     activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de
+     communiquer ses données, ce qui peut prêter à confusion.
+   SCHEDULED: <2014-12-08 lun.>
+>>>>>>> Stashed changes
 ** DONE Ajouter une fonction à PLM retournant la liste des leçons
    SCHEDULED: <2014-12-08 lun.>
 ** DONE Etudier comment récupérer à partir du nom d'une leçon son image et sa description
@@ -227,6 +245,7 @@ case _ => MergeStrategy.first
      chargées uniquement au moment où l'utilisateur essaient d'y
      accéder.
 ** DONE Charger la description d'une leçon
+<<<<<<< Updated upstream
    SCHEDULED: <2014-12-11 jeu.>
    - La description d'une leçon est stockée dans différents fichiers
      selon la langue actuellement selectionnée. On utilise donc
@@ -366,3 +385,17 @@ case _ => MergeStrategy.first
    - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
      déroulement de son algorithme en fonction des différentes
      conditions.
+=======
+   - La description d'une leçon est stockée dans différents fichiers
+     selon la langue actuellement selectionnée. On utilise donc
+     /FileUtils/ pour récupérer la description de la langue choisie.
+   - Mais /FileUtils/ utilise /Locale/ pour déterminer le fichier à
+     lire, qui semble rencontrer des problèmes d'initialisation
+     avec *Play framework*.
+   - Affecter la valeur par défaut à /Locale/ avant le test levant
+     l'exception permet de pallier temporairement à ce problème.
+** TODO Instancier Game au lancement du serveur
+   - Game n'est instancié qu'au moment où le serveur l'interroge. Son
+     instanciation prenant plusieurs secondes, elle entraîne un
+     timeout qui renvoie une erreur à l'utilisateur.
+>>>>>>> Stashed changes
