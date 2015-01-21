@@ -40,8 +40,6 @@
    - Le buggle dessiné n'a pas non plus toujours la bonne taille.
    - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
      images, à étudier.
-** TODO Refactorer l'architecture du projet
-   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
 ** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
    - Rien n'indique actuellement à l'utilisateur que la communication
      avec le serveur a été interrompue, ce qui peut être confus.
@@ -64,11 +62,29 @@
      dynamiquement les vues des mondes permettrait à chacun de
      personnaliser son interface.
 ** TODO Se renseigner sur Docker
-   - A première vue, ça pourrait être utile pour effectuer le code des
+   - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
-
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** TODO Ajouter des tests unitaires
+** TODO Continuer d'intégrer BuggleWorld dans WebPLM
+   - Gestion des messages au sol (attribut content)
+     - Ajout des opérations correspondantes
+     - Représentation des messages dans l'interface cliente
+   - Gestion des collisions avec les murs
+     - Transmission du message d'erreur au client
+     - Arrêt de l'exécution du programme?
+** TODO Ajouter des tests unitaires côté client
+   - Voir la documentation [[https://docs.angularjs.org/guide/unit-testing][d'AngularJS]] concernant l'ajout de tests
+     unitaires.
+** TODO Ajouter des tests unitaires côté serveur
+   - Voir [[https://www.playframework.com/documentation/2.3.x/ScalaTestingYourApplication][la documentation de Play]] concernant l'ajout de tests
+     unitaires.
+   - Ajout de tests unitaires pour models.PLM.
+   - Ajout de tests unitaires pour log.RemoteLogWriter.
+** DONE Refactorer l'architecture du projet côté client
+   - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
+   - Utilisation de [[http://requirejs.org/docs/commonjs.html][CommonJS]] pour gérer les dépendances?
+     => Non, juste besoin de lister l'ensemble des fichiers JS dans index.html.
+   - Déplacement des directives: une par fichier.
 ** DONE Fix Logger.debug
    - Rediriger la sortie standard vers l'interface client empêche les
      messages de debug du serveur de s'afficher.
