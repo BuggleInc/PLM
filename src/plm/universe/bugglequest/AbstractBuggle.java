@@ -391,7 +391,13 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void writeMessage(String msg) {
+		String oldContent = readMessage();
+		boolean oldHasContent = getCell().hasContent();
 		getCell().addContent(msg);
+		String newContent = readMessage();
+		addOperation(new ChangeCellContent(getCell(), oldContent, newContent));
+		addOperation(new ChangeCellHasContent(getCell(), oldHasContent, true));
+		stepUI();
 	}
 	public void writeMessage(int nb) {
 		writeMessage(""+nb);
@@ -402,10 +408,14 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void clearMessage() {
+		String oldContent = readMessage();
+		boolean oldHasContent = getCell().hasContent();
 		getCell().emptyContent();
+		String newContent = readMessage();
+		addOperation(new ChangeCellContent(getCell(), oldContent, newContent));
+		addOperation(new ChangeCellHasContent(getCell(), oldHasContent, false));
+		stepUI();
 	}
-
-
 
 	@Override
 	public String toString() {
