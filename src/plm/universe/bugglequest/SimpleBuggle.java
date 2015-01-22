@@ -6,7 +6,6 @@ import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
-import plm.universe.bugglequest.exception.BuggleWallException;
 import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
@@ -37,51 +36,6 @@ public class SimpleBuggle extends AbstractBuggle  {
 		seenError();
 	}
 	
-	/* Raise a window error when an exception is encountered */
-	@Override
-	public void forward()  {
-		try { 
-			super.forward(); 
-		} catch (BuggleWallException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-
-	@Override
-	public void forward(int count)  {
-		try { 
-			super.forward(count); 
-		} catch (BuggleWallException e) { 
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-
-	@Override
-	public void backward()  {
-		try { 
-			super.backward(); 
-		} catch (BuggleWallException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-
-	@Override
-	public void backward(int count)  {
-		try { 
-			super.backward(count); 
-		} catch (BuggleWallException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-
 	@Deprecated
 	@Override
 	public void pickUpBaggle () { 

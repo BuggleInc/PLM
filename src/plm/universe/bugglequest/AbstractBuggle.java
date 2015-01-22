@@ -325,10 +325,12 @@ public abstract class AbstractBuggle extends Entity {
 			newy += getWorldHeight();
 
 		if (delta.equals(direction.toPoint())            && isFacingWall() ||
-				delta.equals(direction.opposite().toPoint()) && isBackingWall())	
-
+				delta.equals(direction.opposite().toPoint()) && isBackingWall()) {
+			addOperation(new BuggleEncounterWall(this));
+			stepUI();
 			throw new BuggleWallException();
-		
+		}
+			
 		addOperation(new MoveBuggleOperation(this, x, y, newx, newy));
 
 		x = newx;
