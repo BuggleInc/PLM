@@ -61,14 +61,25 @@
    - Donner les moyens à l'utilisateur d'ajouter ou de retirer
      dynamiquement les vues des mondes permettrait à chacun de
      personnaliser son interface.
+** TODO Se renseigner sur seccomp-bpf
+   - Permettrait de sandboxer les programmes utilisateurs, à voir
+     comment ça s'utilise et cela fonctionne.
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** TODO Intégrer les collisions avec les murs de BuggleWorld dans WebPLM
-   - Gestion des collisions avec les murs
-     - Transmission du message d'erreur au client
-     - Arrêt de l'exécution du programme?
+** TODO Retravailler l'interface de l'exerciseur
+   - Revoir le placement des différents composants: consigne, éditeur
+     de code, vue du monde/player.
+   - Ajouter la console de log.
+   - Ajouter le composant "dernier résultat" indiquant si le programme
+     lancé a passé les tests et indiquant l'erreur rencontré dans le
+     cas contraire.
+   - Lier les nouveaux composants aux données du controller.
+** TODO Refactorer les controllers
+   - Retirer les parties du codes interrogeant le serveur pour
+     récupérer la liste des exercices/les données d'un exercice des
+     controllers et en faire des services à la place.
 ** TODO Ajouter des tests unitaires côté client
    - Voir la documentation [[https://docs.angularjs.org/guide/unit-testing][d'AngularJS]] concernant l'ajout de tests
      unitaires.
@@ -77,6 +88,10 @@
      unitaires.
    - Ajout de tests unitaires pour models.PLM.
    - Ajout de tests unitaires pour log.RemoteLogWriter.
+** DONE Intégrer les collisions avec les murs de BuggleWorld dans WebPLM
+   - Gestion des collisions avec les murs
+     - Transmission du message d'erreur au client
+     - Arrêt de l'exécution du programme
 ** DONE Intégrer les messages au sol de BuggleWorld dans WebPLM
    - Gestion des messages au sol (attribut content)
      - Ajout des opérations correspondantes
