@@ -69,16 +69,6 @@
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** TODO Retravailler l'interface de l'exerciseur
-   - Revoir le placement des différents composants: consigne, éditeur
-     de code, vue du monde/player.
-   - Ajouter la console de log.
-   - Ajouter le composant "dernier résultat" indiquant si le programme
-     lancé a passé les tests et indiquant l'erreur rencontré dans le
-     cas contraire.
-   - Ajouter une liste des actions réalisées pour chaque monde
-     (alternative au slider).
-   - Lier les nouveaux composants aux données du controller.
 ** TODO Refactorer les controllers
    - Retirer les parties du codes interrogeant le serveur pour
      récupérer la liste des exercices/les données d'un exercice des
@@ -91,6 +81,16 @@
      unitaires.
    - Ajout de tests unitaires pour models.PLM.
    - Ajout de tests unitaires pour log.RemoteLogWriter.
+** DONE Retravailler l'interface de l'exerciseur
+   - Revoir le placement des différents composants: consigne, éditeur
+     de code, vue du monde/player.
+   - Ajouter la console de log.
+   - Ajouter le composant "dernier résultat" indiquant si le programme
+     lancé a passé les tests et indiquant l'erreur rencontré dans le
+     cas contraire.
+   - Ajouter une liste des actions réalisées pour chaque monde
+     (alternative au slider).
+   - Lier les nouveaux composants aux données du controller.
 ** DONE Intégrer les collisions avec les murs de BuggleWorld dans WebPLM
    - Gestion des collisions avec les murs
      - Transmission du message d'erreur au client
