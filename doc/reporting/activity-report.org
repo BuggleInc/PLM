@@ -1,4 +1,5 @@
 * Tâches restantes
+** TODO Permettre à l'utilisateur de changer le langage de programmation
 ** TODO Lancer la démo lorsqu'on bascule sur le monde objectif pour la 1ère fois
 ** TODO Limiter la vitesse d'exécution du programme du client
    - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
@@ -31,16 +32,6 @@
    - Il convient donc de modifier pour que la liste des exercices soit
      un attribut d'une leçon et qu'il soit initialisé par le constructeur.
 ** TODO Permettre à l'utilisateur de passer à l'exercice suivant
-** TODO Refactorer drawBuggleImage
-   - La méthode actuelle rencontre des difficultés à changer la
-     couleur du Buggle: getImageData permet de récupérer les pixels
-     représentants l'image et de les modifier, mais ceux-ci
-     correspondent aussi à la cellule sur laquelle se trouve le
-     buggle...
-   - Il faut donc colorier uniquement les pixels du buggle.
-   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
-   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
-     images, à étudier.
 ** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
    - Rien n'indique actuellement à l'utilisateur que la communication
      avec le serveur a été interrompue, ce qui peut être confus.
@@ -68,15 +59,28 @@
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
-* Semaine du 2015-01-19 lun. au 2015-01-23 ven.
+* Semaine du 2015-01-27 mar. au 2015-01-30 ven.
+** TODO Refactorer drawBuggleImage
+   - La méthode actuelle rencontre des difficultés à changer la
+     couleur du Buggle: getImageData permet de récupérer les pixels
+     représentants l'image et de les modifier, mais ceux-ci
+     correspondent aussi à la cellule sur laquelle se trouve le
+     buggle...
+   - Il faut donc colorier uniquement les pixels du buggle.
+   - Le buggle dessiné n'a pas non plus toujours la bonne taille.
+   - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
+     images, à étudier.
 ** TODO Refactorer les controllers
    - Retirer les parties du codes interrogeant le serveur pour
      récupérer la liste des exercices/les données d'un exercice des
      controllers et en faire des services à la place.
+** TODO Poursuivre le développement de tests unitaires
+* Semaine du 2015-01-19 lun. au 2015-01-23 ven.
 ** TODO Ajouter des tests unitaires côté client
    - Voir la documentation [[https://docs.angularjs.org/guide/unit-testing][d'AngularJS]] concernant l'ajout de tests
      unitaires.
-** TODO Ajouter des tests unitaires côté serveur
+** DONE Permettre à l'utilisateur de consulter l'API du monde
+** DONE Ajouter des tests unitaires côté serveur
    - Voir [[https://www.playframework.com/documentation/2.3.x/ScalaTestingYourApplication][la documentation de Play]] concernant l'ajout de tests
      unitaires.
    - Ajout de tests unitaires pour models.PLM.
