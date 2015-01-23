@@ -95,6 +95,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void brushDown() {
 		this.brushDown = true;
+		addOperation(new ChangeBuggleBrushDown(this, false, true));
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 		Color oldColor = getCell().getColor();
 		addOperation(new ChangeCellColor(cell, oldColor, brushColor));
@@ -106,6 +107,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void brushUp() {
 		if (k_seq[k_val]==4) k_val++; else k_val = 0;
+		addOperation(new ChangeBuggleBrushDown(this, true, false));
 		this.brushDown = false;
 		setChanged();
 		notifyObservers(BRUSH_STATE);
