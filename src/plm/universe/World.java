@@ -340,7 +340,7 @@ public abstract class World {
 			/* read it */
 			about = sb.toString();
 		}
-		return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
+		return PlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled());
 	}
 	
 	/**
