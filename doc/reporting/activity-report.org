@@ -1,4 +1,5 @@
 * Tâches restantes
+** TODO Lancer la démo lorsqu'on bascule sur le monde objectif pour la 1ère fois
 ** TODO Limiter la vitesse d'exécution du programme du client
    - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
      ne comportant pas de stepUI, tel que System.out.println, alors
@@ -75,6 +76,8 @@
    - Ajouter le composant "dernier résultat" indiquant si le programme
      lancé a passé les tests et indiquant l'erreur rencontré dans le
      cas contraire.
+   - Ajouter une liste des actions réalisées pour chaque monde
+     (alternative au slider).
    - Lier les nouveaux composants aux données du controller.
 ** TODO Refactorer les controllers
    - Retirer les parties du codes interrogeant le serveur pour
