@@ -1,35 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian portuguese translation of the PLM engine.
+# Copyright (C) 2015 Martin Quinson
+# This file is distributed under the same license as the PLM itself
+# Fred Maranhão <fred.maranhao@gmail.com>, 2015.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PLM engine\n"
-"PO-Revision-Date: 2015-01-17 00:33-0300\n"
-"Last-Translator: Fred Maranh�o <fred.maranhao@gmail.com>\n"
-"Language-Team: none\n"
+"Project-Id-Version: PLM\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2015-01-22 23:31-0300\n"
+"Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
+"Language-Team: Brazilian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#~ # Brazilian portuguese translation of the PLM engine.
-#~ # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-#~ # This file is distributed under the same license as the PACKAGE package.
-#~ # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#~ #
-#~ msgid ""
-#~ msgstr ""
-#~ "Project-Id-Version: PACKAGE VERSION\n"
-#~ "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-28 23:02-0300\n"
-"PO-Revision-Date: 2015-01-08 23:44-0300\n"
-"Last-Translator: Fred Ulisses Maranhão <fred.maranhao@gmail.com>\n"
-"Language-Team: none\n"
-"Language: pt_BR\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/lessons/lightbot/universe/LightBotExercise.java:56
 msgid "A light is still off."
@@ -53,7 +37,7 @@ msgid ""
 "Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal "
 "instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar setX(x) neste\n"
+"Desculpe Dave, mas não posso deixar você usar setX(x) neste "
 "exercício. Em vez disto, caminhe para seu objetivo."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:15
@@ -69,7 +53,7 @@ msgid ""
 "Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal "
 "instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar setY(y) neste\n"
+"Desculpe Dave, mas não posso deixar você usar setY(y) neste "
 "exercício. Em vez disto, caminhe para seu objetivo."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:20
@@ -85,7 +69,7 @@ msgid ""
 "Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
 "goal instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar setPos(x,y) neste\n"
+"Desculpe Dave, mas não posso deixar você usar setPos(x,y) neste "
 "exercício. Em vez disto, caminhe para seu objetivo."
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
@@ -93,14 +77,14 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
 "Use the intermediate slot in all moves."
-msgstr "Desculpe Dave, n�o posso deixar voc� mover discos entre os slots 0 e 2 diretamente. Use o slot intermedi�rio em todos os movimentos."
+msgstr "Desculpe Dave, não posso deixar você mover discos entre os slots 0 e 2 diretamente. Use o slot intermediário em todos os movimentos."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
 #, java-format, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
-msgstr "Desculpe Dave, n�o posso deixar voc�  you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
+msgstr "Desculpe Dave, não posso deixar você usar mover discos no sentido anti-horário. Mova de 0 para 1, de 1 para 2 ou de 2 para 0 apenas, não de {0} para {1}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
@@ -118,7 +102,7 @@ msgstr "Movimento inválido"
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
 #, java-format, fuzzy
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
-msgstr "Os discos n�o foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
+msgstr "Os discos não foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
 #, fuzzy, java-format
@@ -170,7 +154,7 @@ msgid ""
 "The player {0} of the base {1} cannot reach the hole that is too far from "
 "its position"
 msgstr ""
-"O jogador {0} da base {1} não pode alcançar o buraco que está muito\n"
+"O jogador {0} da base {1} não pode alcançar o buraco que está muito "
 "longe de sua posição"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:146
@@ -219,7 +203,7 @@ msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
 "it in one move"
 msgstr ""
-"O jogador {0} da base {1} está muito longe do buraco (na base {2})\n"
+"O jogador {0} da base {1} está muito longe do buraco (na base {2}) "
 "para alcançá-lo em um movimento"
 
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:669
@@ -338,7 +322,7 @@ msgid ""
 "Sorry Dave, I cannot let you use forward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar avançar com um argumento\n"
+"Desculpe Dave, não posso deixar você usar avançar com um argumento "
 "neste exercício. Use um loop ao invés disto."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:14
@@ -358,7 +342,7 @@ msgid ""
 "Sorry Dave, I cannot let you use backward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar avançar com um argumento\n"
+"Desculpe Dave, não posso deixar você usar avançar com um argumento "
 "neste exercício. Use um loop ao invés disto."
 
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:18
@@ -368,7 +352,7 @@ msgid ""
 "Sorry Dave, you cannot run backward that way. Exercising is hard enough -- "
 "please don't overplay."
 msgstr ""
-"Desculpe Dave, você não pode recuar deste jeito. 'Exercising' é\n"
+"Desculpe Dave, você não pode recuar deste jeito. 'Exercising' é "
 "difícil o suficiente -- por favor não exagere."
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
@@ -397,7 +381,7 @@ msgid ""
 "I cannot let you use forward with an argument in this exercise. Use a loop "
 "instead."
 msgstr ""
-"Não posso deixar você usar avançar com um argumento neste\n"
+"Não posso deixar você usar avançar com um argumento neste "
 "exercício. Use um loop ao invés disto."
 
 #: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
@@ -405,7 +389,7 @@ msgid ""
 "I cannot let you use backward with an argument in this exercise. Use a loop "
 "instead."
 msgstr ""
-"Não posso deixar você usar recuar com um argumento neste\n"
+"Não posso deixar você usar recuar com um argumento neste "
 "exercicio. Use um loop ao invés disto."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
@@ -413,7 +397,7 @@ msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar direita() neste\n"
+"Desculpe Dave, não posso deixar você usar direita() neste "
 "exercício. Use esquerda() ao invés disto."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
@@ -422,8 +406,8 @@ msgid ""
 "Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
 "exercise. You can write left() only once in this exercise."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar esquerda() em ambas as\n"
-"linhas {0} e {1} neste exercício. Você pode escrever esquerda() apenas\n"
+"Desculpe Dave, não posso deixar você usar esquerda() em ambas as "
+"linhas {0} e {1} neste exercício. Você pode escrever esquerda() apenas "
 "uma vez neste exercício."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:42
@@ -438,7 +422,7 @@ msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar avançar() neste\n"
+"Desculpe Dave, não posso deixar você usar avançar() neste "
 "exercício. Use setPos(x,y) ao invés disto."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:51
@@ -453,7 +437,7 @@ msgid ""
 "Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
 "y) instead."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar recuar() neste\n"
+"Desculpe Dave, não posso deixar você usar recuar() neste "
 "exercício. Use setPos(x,y) ao invés disto."
 
 #: src/plm/core/lang/JVMCompiledLang.java:53
@@ -488,7 +472,7 @@ msgid ""
 "Your entity failed to start. Your constructor seems to be broken, but I have "
 "no clue."
 msgstr ""
-"Sua entidade falhou para iniciar. Seu construtor parece estar com\n"
+"Sua entidade falhou para iniciar. Seu construtor parece estar com "
 "defeito, mas não tenho uma dica para te dar."
 
 #: src/plm/core/lang/JVMCompiledLang.java:83
@@ -566,7 +550,7 @@ msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
 msgstr ""
-"UnboundLocalError levantado: você está provavelmente usando uma\n"
+"UnboundLocalError levantado: você está provavelmente usando uma "
 "variável global que não é declarada como tal.\n"
 
 #: src/plm/core/lang/LangPython.java:87
@@ -773,22 +757,22 @@ msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
-msgstr ""
+msgstr "Por favor instale o jython e suas dependências para usar a linguagem de programação pythonno PLM.\n\n"
 
 #: src/plm/core/model/Game.java:996
 msgid "Python is missing"
-msgstr ""
+msgstr "Python está faltando"
 
 #: src/plm/core/model/Game.java:1000
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
-msgstr ""
+msgstr "Por favor instale o C e suas dependências para usar a linguagem de programação C no PLM.\n\n"
 
 #: src/plm/core/model/Game.java:1001
 msgid "C is missing"
-msgstr ""
+msgstr "C está faltando"
 
 #: src/plm/core/model/Game.java:1006
 msgid ""
@@ -798,45 +782,49 @@ msgid ""
 "\n"
 "Do you want to proceed anyway?"
 msgstr ""
+"A linguagem de programação C é atualmente muito experimental no PLM.\n"
+"Se você for para C, talvez não consiga completar alguns exercícios que ainda estão sendo feitos em C, mas outras partes estão funcionando.\n"
+"\n"
+"Quer continuar mesmo assim?"
 
 #: src/plm/core/model/Game.java:1010
 msgid "C is still experimental"
-msgstr ""
+msgstr "C ainda é experimental"
 
 #: src/plm/core/model/HelpServer.java:27
 #: src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
-msgstr ""
+msgstr "Pedindo ajuda ao professor"
 
 #: src/plm/core/model/HelpServer.java:29
 #: src/plm/core/ui/action/HelpMe.java:133
 #: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
-msgstr ""
+msgstr "Cancelar o pedido de ajuda para o professor"
 
 #: src/plm/core/model/Users.java:98
 #, java-format
 msgid "User {0} exists already; don't add it again."
-msgstr ""
+msgstr "Usuário {0} já existe; não vou adicionar de novo."
 
 #: src/plm/core/model/Users.java:122
 #, java-format
 msgid "Switched to user: {0}"
-msgstr ""
+msgstr "Alternando para usuário: {0}"
 
 #: src/plm/core/model/Users.java:175
 msgid "A new PLM user has been created for you!"
-msgstr ""
+msgstr "Um novo usuário PLM foi criado para você!"
 
 #: src/plm/core/model/lesson/Exercise.java:80
 #, java-format
 msgid "The world ''{0}'' differs"
-msgstr ""
+msgstr "A palavra ''{0}'' difere"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:47
 #, java-format
 msgid "Source file {0}.{1} not found."
-msgstr ""
+msgstr "Arquivo fonte {0}.{1} não encontrado."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:120
 #, java-format
@@ -844,10 +832,10 @@ msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
 msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:141
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
-msgstr ""
+msgstr "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:159
 #: src/plm/core/model/lesson/ExerciseTemplated.java:183
@@ -865,33 +853,33 @@ msgstr ""
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
-msgstr ""
+msgstr "Erro de sintaxe no arquivo {0}. Este é um bug do verificador de sintaxe (estado={1}), favor abra um relatório de erro."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:208
 #, java-format
 msgid ""
 "{0}: End of file unexpected after the solution but within the template. "
 "Please fix your entity."
-msgstr ""
+msgstr "{0}: Fim de arquivo não esperado depois da solução mas dentro do template. Favor conserte sua entidade."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:210
 #, java-format
 msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
 "template or solution? Please fix your entity."
-msgstr ""
+msgstr "{0}: Fim de arquivo não esperado (estado: {1}). Será que você esqueceu de fechar seu template ou solução? Favor conserte sua entidade."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:366
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
 "entity for this language: {2}"
-msgstr ""
+msgstr "exercício {0} é dito ser compatível com a linguagem {1}, mas não existe entidade para esta linguagem: {2}"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
-#, java-format
+#, java-format, fuzzy
 msgid "{0}: No entity found. You should fix your paths and such"
-msgstr ""
+msgstr "{0}: Nenhuma entidade encontrada. Você deve consertar seus caminhos e tal"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
