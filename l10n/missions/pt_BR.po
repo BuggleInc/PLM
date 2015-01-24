@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-12-22 10:34+0100\n"
-"PO-Revision-Date: 2014-12-28 23:45-0300\n"
+"POT-Creation-Date: 2015-01-09 23:51-0300\n"
+"PO-Revision-Date: 2014-12-30 23:17-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1121,7 +1121,7 @@ msgstr ""
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #: src/lessons/recursion/cons/Length.html:8
-#: src/lessons/recursion/square/FourSquare.html:46
+#: src/lessons/recursion/lego/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
@@ -3845,7 +3845,7 @@ msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:231
-#: src/lessons/recursion/square/FourSquare.html:48
+#: src/lessons/recursion/lego/square/FourSquare.html:48
 #: src/lessons/recursion/hanoi/HanoiBoard.html:21
 msgid "Goal of this exercise"
 msgstr "Objetivo deste exercício"
@@ -4306,16 +4306,12 @@ msgstr ""
 #: src/lessons/bat/string1/StringTimes.html:5
 #: src/lessons/bat/string1/StringX.html:7
 #: src/lessons/bat/string1/StringYak.html:8
-#, fuzzy
-#| msgid ""
-#| "This exercise was converted to PLM from the excellent exercising site "
-#| "http://javabat.com/"
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
 "codingbat.com/"
 msgstr ""
-"Este exercício foi convertido para o PLM do excelente sítio de exercícios "
-"http://javabat.com/"
+"Este exercício foi convertido para o PLM do excelente sítio de\n"
+"exercícios http://codingbat.com/"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array667/Array667.html:2
@@ -4532,10 +4528,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:5
-#, fuzzy
-#| msgid ""
-#| "We will now write our own methods. It somehow comes down to extending the "
-#| "buggle vocabulary by learning it new tricks."
 msgid ""
 "We will now write our own methods. It somehow comes down to extending the "
 "buggle vocabulary by teaching it new tricks."
@@ -4824,11 +4816,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:4
-#, fuzzy
-#| msgid ""
-#| "We now would like to learn the buggle to build a doghouse. The naive "
-#| "approach consists in directly writing the needed code as follows.  This "
-#| "works because the buggle of this exercise leaves a red path as it moves."
 msgid ""
 "We now would like to teach the buggle to build a doghouse. The naive "
 "approach consists in directly writing the needed code as follows.  This "
@@ -5862,13 +5849,6 @@ msgstr "Buggle Dance Revolution (BDR)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:4
-#, fuzzy
-#| msgid ""
-#| "After these races, it's time to party! For that, we will learn the "
-#| "buggles to play Dance Revolution, this game beloved of some students: The "
-#| "player has to move the feet on the carpet according to the instructions "
-#| "presented on the screen, and following the music. But before that, we "
-#| "have some details to study first."
 msgid ""
 "After these races, it's time to party! For that, we will teach the buggles "
 "to play Dance Revolution, this game beloved of some students: The player has "
@@ -5884,7 +5864,7 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
-#: src/lessons/recursion/square/FourSquare.html:28
+#: src/lessons/recursion/lego/square/FourSquare.html:28
 msgid "[!java|scala|c]"
 msgstr "[!java|scala|c]"
 
@@ -6255,16 +6235,12 @@ msgstr ""
 msgid ""
 "<code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the "
 "ground."
-msgstr "<code>[!java|c]void [/!]limparMensagem()</code>: limpa o que está escrito no chão."
+msgstr ""
+"<code>[!java|c]void [/!]limparMensagem()</code>: limpa o que está escrito no "
+"chão."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:150
-#, fuzzy
-#| msgid ""
-#| "The goal is then to organize a BDR game between the buggles by learning "
-#| "them to move according to the instructions written on the ground. These "
-#| "instructions are messages written on the ground, with the following "
-#| "signification:"
 msgid ""
 "The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
@@ -7042,17 +7018,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:33
-#, fuzzy
-#| msgid ""
-#| "Hint: the main loop of your code must continue while the testing function "
-#| "returns false. Their is thus two way of writing it:"
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
 "returns false. There is two ways of writing it:"
 msgstr ""
 "Dica: o loop principal do seu código deve continuar enquanto a função\n"
-"de teste retorna falso. Existe portanto entretanto duas formas de\n"
-"fazer isto:"
+"de teste retorna falso. Existem duas formas de fazer isto:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:35
@@ -7124,7 +7095,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:21
-#, fuzzy
 msgid ""
 "Your first task is thus to write a boolean function indicating whether the "
 "buggle reached the final position or not, ie if it reached the bottom right "
@@ -7138,7 +7108,7 @@ msgstr ""
 "buggle alcançou a posição final ou não, ou seja se ele alcançou o\n"
 "canto inferior direito do mundo. Para isto, você pode usar\n"
 "<code>getLarguraDoMundo()</code> e <code>getAlturaDoMundo()</code> que\n"
-"retornam respectivamente a largura e altura do mundo. Seu teste é deve\n"
+"retornam respectivamente a largura e altura do mundo. Seu teste deve\n"
 "comparar a posição atual do buggle (que você pode acessar com\n"
 "<code>getX()</code> e <code>getY()</code>) com as dimensões do mundo."
 
@@ -7162,8 +7132,8 @@ msgstr ""
 "Então, você tem que escrever o código para alcançar a próxima\n"
 "posição. Neste exercício, você tem que percorrer o mundo linha após\n"
 "linha. Logo, se você está no fundo de uma linha, você tem que se mover\n"
-"para o topo da próxima, e você tem que se mover para a célula abaixo\n"
-"\"else\"."
+"para o topo da próxima, caso contrário você tem que se mover para a\n"
+"célula abaixo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:37
@@ -7482,7 +7452,6 @@ msgstr "formiga de Langton multicolorida"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:4
-#, fuzzy
 msgid ""
 "There is several ways to extend the concept of Langton's ant. In this "
 "exercise, we explore first one, using more than two colors. It remains very "
@@ -7494,15 +7463,16 @@ msgid ""
 "the basic ant is a RL (since it turns right on white cells and left on black "
 "ones)."
 msgstr ""
-"There is several ways to extend the concept of Langton's ant. In this "
-"exercise, we explore first one, using more than two colors. It remains very "
-"similar to the base case: the behavior at each step still depends on the "
-"ground color, but you have more than 2 possibilities. It allows to have more "
-"than one kind of ant, depending on what you decide to do for each color. For "
-"example, the ant LRL takes 3 colors. It turns left on the first color, right "
-"on the second one and left on the third color. According to this definition, "
-"the basic ant is a RL (since it turns right on white cells and left on black "
-"ones)."
+"Existem várias formas de extender o conceito de formiga de\n"
+"Langton. Neste exercício, vamos explorar a primeira, usando mais que\n"
+"duas cores. Ela se mantem muito similar ao caso base: o comportamento\n"
+"em cada passo ainda depende da cor do chão, mas você tem mais que duas\n"
+"possibilidades. Você pode ter mais que um tipo de formiga, dependendo\n"
+"do que você decide fazer para cada cor. Por exemplo, a formiga LRL\n"
+"recebe 3 cores. Ela vira a esquerda na primiera cor, a direita na\n"
+"segunda e a esquerda na terceira. De acordo com esta definição, a\n"
+"formiga básica é uma RL (já que ela vira a direita em células brancas\n"
+"e a esquerda em pretas)."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:13
@@ -8290,7 +8260,7 @@ msgid ""
 "[!java|c]void [/!]swap([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
 "[/!]j[!scala]:Int[/!])"
 msgstr ""
-"[!java|c]void [/!]alterna([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
+"[!java|c]void [/!]alternar([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
 "[/!]j[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
@@ -8413,14 +8383,15 @@ msgid ""
 "getValue(); If the value is red and followed with an exclamation point (!), "
 "it was written using setValue()."
 msgstr ""
-"A visão do histórico é um pouco bagunçada à primeira vista, mas na verdade é "
-"bem simples: o tempo anda da esquerda para a direita neste gráfico, e cada "
-"linha é uma célula de sua array. As linhas curvas que navegam entre linhas "
-"representam um certo valor de um dado. Quando duas linhas se cruzam, "
-"significa que dois valores foram trocados neste momento; uma bifurcação numa "
-"linha representa uma cópia de valor; quando um valor é magenta e seguido de "
-"uma interrogação (?), foi lido usando getValor(); Se o valor é vermelho e "
-"seguido de uma exclamação (!), foi escrito com setValor()."
+"A visão do histórico é um pouco bagunçada à primeira vista, mas na\n"
+"verdade é bem simples: o tempo anda da esquerda para a direita neste\n"
+"gráfico, e cada linha é uma célula de sua array. As linhas curvas que\n"
+"navegam entre linhas representam um certo valor de um dado. Quando\n"
+"duas linhas se cruzam, significa que dois valores foram alternados\n"
+"neste momento; uma bifurcação numa linha representa uma cópia de\n"
+"valor; quando um valor é magenta e seguido de uma interrogação (?),\n"
+"foi lido usando getValor(); Se o valor é vermelho e seguido de uma\n"
+"exclamação (!), foi escrito com setValor()."
 
 #. type: Content of: <p>
 #: src/plm/universe/sort/SortingWorld.html:57
@@ -8485,7 +8456,8 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:7
-#: src/lessons/recursion/short_desc.html:6 src/lessons/maze/short_desc.html:6
+#: src/lessons/recursion/lego/short_desc.html:6
+#: src/lessons/maze/short_desc.html:6
 msgid ""
 "You are supposed to master the bases of programming to take this lesson."
 msgstr "Para fazer esta lição você deve dominar as bases da programação."
@@ -8560,12 +8532,13 @@ msgid ""
 "simplicity, but it is almost never used in practice because of its bad "
 "performance (O(n^2) on average)."
 msgstr ""
-"This first sorting algorithm is the most simple one: Bubble sort\n"
-"consists in progressively moving up the smaller elements of the array,\n"
-"as if they were air bubbles moving up to the surface of a liquid. The\n"
-"algorithm traverse the array, and compare any pair of adjacent\n"
-"elements. If two adjacent elements are wrongly sorted, they are\n"
-"swapped. Once the array was completely traversed, the operation starts\n"
+"O primeiro algoritmo de ordenação é o mais simples: Bubble sort\n"
+"consiste em progressivamente mover o menor elemento da array,\n"
+"como se eles fossem bolhas de ar subindo para a superfície de um líquido.\n"
+"O algoritmo percorre a array e compara qualquer par de elementos "
+"adjacentes.\n"
+"Se dois elementos adjacentes estiverem desordenados, eles são alternados.\n"
+"Once the array was completely traversed, the operation starts\n"
 "again from the beginning. When no elements were sorted after a full\n"
 "traversal, it means that the array is completely sorted: the algorithm\n"
 "can stop.  Bubble sort is studied because of its simplicity, but it is\n"
@@ -8594,10 +8567,10 @@ msgid ""
 "          If cells i and i+1 must be swapped, do it\n"
 "while we swapped something during last traversal\n"
 msgstr ""
-"do: \n"
-"        For each i in [0,len-2]\n"
-"          If cells i and i+1 must be swapped, do it\n"
-"while we swapped something during last traversal\n"
+"faça: \n"
+"        Para cada i em [0,len-2]\n"
+"          Se a célula i e i+1 devem ser alternadas, alterne\n"
+"enquanto algo foi alternado na última passagem\n"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
@@ -8657,12 +8630,12 @@ msgid ""
 "than the base version. But the statistics on the amount of reads show that "
 "we saved about the fourth of the amount of reads, which is not bad."
 msgstr ""
-"When we run this algorithm, it is quite disappointing to see that it\n"
+"Quando rodamos este algoritmo, it is quite disappointing to see that it\n"
 "runs approximately at the same speed than the basic version of\n"
 "BubbleSort. This is a graphical effect only since only value changes\n"
-"are graphically represented. Since this variation avoids some useless\n"
-"comparisons, it does exactly the same amount of swaps that the basic\n"
-"version. It is thus quite logical that the graphical interface draws\n"
+"are graphically represented. Como esta variação evita algumas comparações "
+"inúteis, ela faz exatamente a mesma quantidade de trocar que a versão "
+"básica. It is thus quite logical that the graphical interface draws\n"
 "this version at the same pace than the base version. But the\n"
 "statistics on the amount of reads show that we saved about the fourth\n"
 "of the amount of reads, which is not bad."
@@ -8863,11 +8836,12 @@ msgid ""
 "can stop if the upward traversal found something to swap, but not the "
 "downwards one."
 msgstr ""
-"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do "
-"BubbleSort, Ele parece melhor na prática. É até mesmo possível melhorar um "
-"pouco mais parando ele na primeira rodada que não encontrar nada para "
-"trocar, se realizar a rodada para baixo. Da mesma forma, podemos parar se a "
-"rodade para cima encontrar algo para trocar mas a rodada para baixo não."
+"Mesmo se a complexidade assintótica de CocktailSort2 for a mesma do\n"
+"BubbleSort, Ele parece melhor na prática. É até mesmo possível\n"
+"melhorar um pouco mais parando ele na primeira rodada que não\n"
+"encontrar nada para alternar, se realizar a rodada para baixo. Da\n"
+"mesma forma, podemos parar se a rodada para cima encontrar algo para\n"
+"alternar mas a rodada para baixo não."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:2
@@ -9004,18 +8978,6 @@ msgstr "ShellSort"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/shell/AlgShellSort.html:4
-#, fuzzy
-#| msgid ""
-#| "This algorithm is named after its author, Donald Shell, who published it "
-#| "in 1959. It can be seen as an application of the CombSort idea (let "
-#| "elements having a long path to travel take shortcuts) to the insertion "
-#| "sort (CombSort is a variation of BubbleSort). Instead of comparing "
-#| "adjacent values during the insertion sort, it compares values separated "
-#| "by a bigger gap. The bigger the gap, the faster the elements are moved to "
-#| "their final destination, but also the less precise is this move. It is "
-#| "thus mandatory to apply the algorithm with a serie of decreasing gaps. At "
-#| "the last step, when the gap is 1, InsertionSort is used, but onto an "
-#| "array which is almost already sorted by previous steps."
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -9028,17 +8990,18 @@ msgid ""
 "one, InsertionSort is used, but onto an array which is almost already sorted "
 "by previous steps."
 msgstr ""
-"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que o "
-"publicou em 1959. Ele pode ser visto como uma aplicação da ideia do CombSort "
-"(faça com que elementos que tem um longo caminho pegarem atalhos) ao "
-"insertion sort (CombSort é uma variação do BubbleSort). Ao invés de comparar "
-"valores adjacentes durante o insertion sort, ele compara valores separados "
-"por um intervalo maior. Quanto maior o intervalo, mais rápido os elementos "
-"se movem para seu destino final, mas também menos preciso fica o movimento. "
-"É portanto essencial que o algoritmo vá sendo aplicado numa série de "
-"intervalos cada vez menor. No último passo, quando o intervalo for 1, o "
-"InsertionSort será usado, mas numa array que estará praticamente ordenada "
-"pelos passos anteriores."
+"Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que\n"
+"o publicou em 1959. Ele pode ser visto como uma aplicação da ideia do\n"
+"CombSort (faça com que elementos que tem um longo caminho pegarem\n"
+"atalhos) ao insertion sort (CombSort é uma variação do BubbleSort). Ao\n"
+"invés de comparar valores adjacentes durante o insertion sort, ele\n"
+"compara valores separados por um intervalo maior. Quanto maior o\n"
+"intervalo, mais rápido os elementos se movem para seu destino final,\n"
+"mas também menos preciso fica o movimento. É portanto essencial que o\n"
+"algoritmo vá sendo aplicado numa série de intervalos cada vez\n"
+"menor. No último passo, quando o intervalo for 1, o InsertionSort será\n"
+"usado, mas numa array que estará praticamente ordenada pelos passos\n"
+"anteriores."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:15
@@ -9131,13 +9094,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:7
-#, fuzzy
-#| msgid ""
-#| "The idea is simply to select for each cell of the array the smallest "
-#| "value from the part not already sorted. Thus for the first cell, it takes "
-#| "the smallest value over the whole array. For the second one, it takes the "
-#| "second smallest value, which is the smallest value from the cell not "
-#| "already sorted."
 msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
@@ -9146,26 +9102,21 @@ msgid ""
 "sorted. You of course don't have to sort the last cell of the array, that is "
 "already sorted when you consider it."
 msgstr ""
-"A ideia é simplesmente selecionar para cada célula da array o menor valor da "
-"parte ainda não ordenada. Então para a primeira célula, pegamos o menor "
-"valor da array toda. Para a segunda, pegamos o segundo menor valor, que é o "
-"menor valor da célula ainda não ordenado."
+"A ideia é simplesmente selecionar para cada célula da array o menor\n"
+"valor da parte ainda não ordenada. Então para a primeira célula,\n"
+"pegamos o menor valor da array toda. Para a segunda, pegamos o segundo\n"
+"menor valor, que é o menor valor das células ainda não ordenadas."
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:14
-#, fuzzy
-#| msgid ""
-#| "More generally, for the cell N, it looks the cell M in [n;len] containing "
-#| "the smallest possible value of the interval. Then, it swaps the content "
-#| "of cell N with the one of cell M."
 msgid ""
 "More generally, for the cell N, it looks the cell M in [N;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
 "cell N with the one of cell M."
 msgstr ""
-"De forma mais geral, para a célula N, ele busca a célula M em [n;len] "
-"contendo o menor valor possível do intervalo. Então, troca o conteúdo da "
-"célula N com o da célula M."
+"De forma mais geral, para a célula N, ele busca a célula M em [N;len]\n"
+"contendo o menor valor possível do intervalo. Então, alterna o\n"
+"conteúdo da célula N com o da célula M."
 
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
@@ -9849,11 +9800,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:13
-#, fuzzy
-#| msgid ""
-#| "Your work is to help this poor guy sorting his stack by flipping the "
-#| "pancakes. Each pancake is defined by its radius and rank within the "
-#| "stack, where the bottom pancake is at rank 0, and the one above at rank 1."
 msgid ""
 "Your work is to help this poor guy sorting his stack by flipping the "
 "pancakes. Each pancake is defined by its radius and rank within the stack, "
@@ -9861,7 +9807,7 @@ msgid ""
 msgstr ""
 "Seu trabalho é ajudar este pobre coitado a ordenar a pilha dele\n"
 "virando as panquecas. Cada panqueca é definida pelo raio e rank dentro\n"
-"da pilha, onde a panqueca do fundo está com rank 0, e a próxima com\n"
+"da pilha, onde a panqueca de cima está com rank 0, e a próxima com\n"
 "rank 1."
 
 #. type: Content of: <p>
@@ -9921,7 +9867,6 @@ msgstr ""
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:31
-#, fuzzy
 msgid "How could you reach this situation from the current one?"
 msgstr "Como você pode atingir esta situação a partir da atual?"
 
@@ -11742,17 +11687,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/recursion/Main.html:2
+#: src/lessons/recursion/lego/Main.html:2
 msgid "Recursive algorithms"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Main.html:3
+#: src/lessons/recursion/lego/Main.html:3
 msgid "This lesson allows to experiment with recursive algorithms."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Main.html:5
+#: src/lessons/recursion/lego/Main.html:5
 msgid ""
 "If you need more recursive algorithms, an exercise on recursive sorting "
 "algorithms (in particular QuickSort and MergeSort) is planned in the future "
@@ -11760,54 +11705,54 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/Main.html:9
+#: src/lessons/recursion/lego/Main.html:9
 msgid "What can I do to improve this lesson?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Main.html:11
+#: src/lessons/recursion/lego/Main.html:11
 msgid ""
 "As usual, there are several things that could be done in this lesson to "
 "improve it further:"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:13
+#: src/lessons/recursion/lego/Main.html:13
 msgid ""
 "The Sierpinski triangle can be drawn using a simpler L-system. See http://"
 "jpvallon.free.fr/recursivite.html"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:14
+#: src/lessons/recursion/lego/Main.html:14
 msgid ""
 "The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
 "sierpinski/sierpinskitriangle.shtml"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:15
+#: src/lessons/recursion/lego/Main.html:15
 msgid ""
 "The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
 "edu/~lriddle/ifs/heighway/heighway.htm"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:16
+#: src/lessons/recursion/lego/Main.html:16
 msgid ""
 "The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/heighway/twindragon.htm"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:17
+#: src/lessons/recursion/lego/Main.html:17
 msgid ""
 "The space filling curves could be added (Peano, Hildebert, etc).  See: "
 "http://teachout1.net/village/fill.html"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:19
+#: src/lessons/recursion/lego/Main.html:19
 msgid ""
 "We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
 "helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
@@ -11815,24 +11760,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/short_desc.html:2
+#: src/lessons/recursion/lego/short_desc.html:2
 msgid "Bases of recursion"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/short_desc.html:3
+#: src/lessons/recursion/lego/short_desc.html:3
 msgid ""
 "Discover the recursive way of thinking by drawing trees and other figures "
 "with the Logo turtle."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/square/FourSquare.html:2
+#: src/lessons/recursion/lego/square/FourSquare.html:2
 msgid "The small cousines of Buggles"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:4
+#: src/lessons/recursion/lego/square/FourSquare.html:4
 msgid ""
 "Today, we will meet the small cousines of the buggles: the turtles. In fact, "
 "turtles are much olders than the buggles. They were invented in the 70's by "
@@ -11842,7 +11787,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:10
+#: src/lessons/recursion/lego/square/FourSquare.html:10
 msgid ""
 "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can "
 "order them to move forward, to turn, to move backward, etc. Just like "
@@ -11851,7 +11796,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:15
+#: src/lessons/recursion/lego/square/FourSquare.html:15
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
 "turtles can move of any arbitrary angles specified by a real number (a "
@@ -11862,7 +11807,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:22
+#: src/lessons/recursion/lego/square/FourSquare.html:22
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
@@ -11878,17 +11823,17 @@ msgstr ""
 "maiores detalhes)."
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/square/FourSquare.html:29
+#: src/lessons/recursion/lego/square/FourSquare.html:29
 msgid "Doubles? But what is it?"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/square/FourSquare.html:30
+#: src/lessons/recursion/lego/square/FourSquare.html:30
 msgid "It's simply a point number. Example:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/square/FourSquare.html:32
+#: src/lessons/recursion/lego/square/FourSquare.html:32
 #, no-wrap
 msgid ""
 "double x = 3.72;\n"
@@ -11907,7 +11852,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:49
+#: src/lessons/recursion/lego/square/FourSquare.html:49
 msgid ""
 "Even if this is the first exercise on the recursivity lesson, the code you "
 "have to write is not recursive. The goal is to get familiar with the turtle "
@@ -11915,7 +11860,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:53
+#: src/lessons/recursion/lego/square/FourSquare.html:53
 msgid ""
 "You must reproduce a simple geometrical painting constituted of four 100 "
 "steps long squares (see the objective world for more details). It is "
@@ -11924,46 +11869,46 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:2
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:2
 msgid "Fractal of polygons"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:4
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:4
 msgid ""
 "The fractal we will now draw is formed of a polygon, with little polygons on "
 "each corner. The prototype of the method drawing it is the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:6
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:6
 #, no-wrap
 msgid "[!java|c]void [/!]polygonFractal ([!java|c]int [/!]levels[!scala]:Int[/!], [!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]fractalDoPolígono ([!java|c]int [/!]níveis[!scala]:Int[/!], [!java|c]int [/!]lados[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:8
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:26
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:45
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:8
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:26
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:45
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/Koch.html:2
+#: src/lessons/recursion/lego/koch/Koch.html:2
 msgid "Snow flake"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/koch/Koch.html:4
+#: src/lessons/recursion/lego/koch/Koch.html:4
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
 "geometric pattern repeated at every scale."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:7
+#: src/lessons/recursion/lego/koch/Koch.html:7
 msgid ""
 "The general form is a triangle, with each side given by several recursive "
 "calls. Your work is only to write the code of the <code>snowSide</code> "
@@ -11973,7 +11918,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:13
+#: src/lessons/recursion/lego/koch/Koch.html:13
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
 "logic, and then reproduce it. At level 0, the Koch curve is just a straight "
@@ -11985,13 +11930,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:20
+#: src/lessons/recursion/lego/koch/Koch.html:20
 #, fuzzy
 msgid "The pseudo-code of the general case is the following:"
 msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/koch/Koch.html:22
+#: src/lessons/recursion/lego/koch/Koch.html:22
 #, no-wrap
 msgid ""
 "  Draw recursively a smaller segment\n"
@@ -12004,25 +11949,25 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:30
+#: src/lessons/recursion/lego/koch/Koch.html:30
 msgid ""
 "As you can see, the function forward() is not called from the recursive "
 "case, only in the base case when there is no recursive call."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/recursion/koch/Koch.html:34
+#: src/lessons/recursion/lego/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:35
-#: src/lessons/recursion/koch/SquareKoch.html:9
+#: src/lessons/recursion/lego/koch/Koch.html:35
+#: src/lessons/recursion/lego/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:39
+#: src/lessons/recursion/lego/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -12030,12 +11975,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/SquareKoch.html:2
+#: src/lessons/recursion/lego/koch/SquareKoch.html:2
 msgid "Snow square"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/SquareKoch.html:4
+#: src/lessons/recursion/lego/koch/SquareKoch.html:4
 msgid ""
 "This exercise is a variation over the snow flake that we saw previously.  "
 "The main difference is that we are growing little squares instead of "
@@ -12043,12 +11988,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/recursion/koch/SquareKoch.html:8
+#: src/lessons/recursion/lego/koch/SquareKoch.html:8
 msgid "I don't see it, sorry. Please picture it."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/SquareKoch.html:14
+#: src/lessons/recursion/lego/koch/SquareKoch.html:14
 msgid ""
 "As previously, your <code>squareSide</code> function should only draw one "
 "side of the figure, and the template will call it for all sides "
@@ -12056,12 +12001,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/PentaKoch.html:2
+#: src/lessons/recursion/lego/koch/PentaKoch.html:2
 msgid "Snow pentagon"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/PentaKoch.html:4
+#: src/lessons/recursion/lego/koch/PentaKoch.html:4
 msgid ""
 "Here comes yet another variation of the Koch curve. This time, we grow "
 "little pentagons (ie, polygons with five sides each). I'm sure you get it "
@@ -12069,7 +12014,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/PentaKoch.html:7
+#: src/lessons/recursion/lego/koch/PentaKoch.html:7
 msgid ""
 "Another difference with earlier is that the length is not divided by three "
 "at each step anymore, but multiplied by 0.4. The curve looks better this "
@@ -12077,19 +12022,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/PentaKoch.html:10
+#: src/lessons/recursion/lego/koch/PentaKoch.html:10
 msgid ""
 "We draw only one side in this exercise so your code will be called only once "
 "this time."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/HexaKoch.html:2
+#: src/lessons/recursion/lego/koch/HexaKoch.html:2
 msgid "Snow hexagon"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/HexaKoch.html:4
+#: src/lessons/recursion/lego/koch/HexaKoch.html:4
 msgid ""
 "This time, we will draw the curve that is known as the (6, 0.14)-Koch curve. "
 "This means that you have to grow 6-sided polygons on the segments, and that "
@@ -12097,7 +12042,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/HexaKoch.html:8
+#: src/lessons/recursion/lego/koch/HexaKoch.html:8
 msgid ""
 "For the record, the origical Koch curve is the (3, 1/3)-Koch curve, the Snow "
 "square would be (4,1/3)-Koch curve while the Snow pentagon is also called "
@@ -12107,7 +12052,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/HexaKoch.html:13
+#: src/lessons/recursion/lego/koch/HexaKoch.html:13
 msgid ""
 "For further reference, please see <a href=\"http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/"
@@ -12115,12 +12060,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/Crab.html:2
+#: src/lessons/recursion/lego/koch/Crab.html:2
 msgid "Fractal Crab"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:4
+#: src/lessons/recursion/lego/koch/Crab.html:4
 msgid ""
 "The Crab curve is not exactly a Koch curve, but that's still a fractal and "
 "it's built rather similarly.  This time, we grow square triangle on the side "
@@ -12129,19 +12074,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:8
+#: src/lessons/recursion/lego/koch/Crab.html:8
 msgid ""
 "Check the figures produced by the first steps of recursion to understand the "
 "pattern."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/koch/Crab.html:10
+#: src/lessons/recursion/lego/koch/Crab.html:10
 msgid "Bibliographical note"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:11
+#: src/lessons/recursion/lego/koch/Crab.html:11
 msgid ""
 "This curve, also called the Lévy C curve was invented in 1938 by the French "
 "mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
@@ -12151,25 +12096,25 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/tree/Tree.html:2
+#: src/lessons/recursion/lego/tree/Tree.html:2
 msgid "Trees"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/tree/Tree.html:4
+#: src/lessons/recursion/lego/tree/Tree.html:4
 msgid ""
 "We will now draw trees. For that, we will write a method using double "
 "recursion following this prototype"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/tree/Tree.html:6
+#: src/lessons/recursion/lego/tree/Tree.html:6
 #, no-wrap
 msgid "[!java|c]void [/!]tree([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]angle[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]árvore([!java|c]int [/!]passos[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!], [!java|c]double [/!]ângulo[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/tree/Tree.html:8
+#: src/lessons/recursion/lego/tree/Tree.html:8
 msgid ""
 "To draw a tree of four levels, you have to draw a trunk of the given length, "
 "turn right of the given angle, draw a tree of level 3, turn left twice of "
@@ -12178,21 +12123,21 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/tree/Tree.html:13
+#: src/lessons/recursion/lego/tree/Tree.html:13
 msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:16
+#: src/lessons/recursion/lego/tree/Tree.html:16
 msgid ""
 "At the end, here is the pseudo-code of the general case (you should add the "
 "base case yourself):"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/recursion/tree/Tree.html:18
+#: src/lessons/recursion/lego/tree/Tree.html:18
 #, no-wrap
 msgid ""
 "  Move forward of the desired length\n"
@@ -12202,7 +12147,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:23
+#: src/lessons/recursion/lego/tree/Tree.html:23
 msgid ""
 "Don't forget to add the base case to your code, or your buggle will enter an "
 "infinite loop.  Then, drawing the right subtree comes down to turn right and "
@@ -12210,7 +12155,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:26
+#: src/lessons/recursion/lego/tree/Tree.html:26
 msgid ""
 "As you can see, each recursion level is represented by a distinctive color. "
 "For that, you have to call the <code>current(step)</code>, passing the "
@@ -12220,7 +12165,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:30
+#: src/lessons/recursion/lego/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
@@ -12233,12 +12178,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:2
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:2
 msgid "Sierpinski's Triangle"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:4
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:4
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
 "several smaller triangles are embedded. The prototype of the function to "
@@ -12246,13 +12191,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:7
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:7
 #, no-wrap
 msgid "[!java|c]void [/!]sierpinski([!java|c]int [/!]level[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]sierpinski([!java|c]int [/!]nível[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:9
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:9
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function.  To draw one side of the triangle, draw a smaller recursive "
@@ -12261,12 +12206,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/spiral/Spiral.html:2
+#: src/lessons/recursion/lego/spiral/Spiral.html:2
 msgid "Spirals"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/spiral/Spiral.html:4
+#: src/lessons/recursion/lego/spiral/Spiral.html:4
 msgid ""
 "We will now draw our first recursive function with the turtle. The goal is "
 "to draw different kind of spirals with the same function, which prototype is "
@@ -12274,20 +12219,20 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiral/Spiral.html:7
+#: src/lessons/recursion/lego/spiral/Spiral.html:7
 #, no-wrap
 msgid "[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]length[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])"
 msgstr "[!java|c]void [/!]espiral([!java|c]int [/!]passos[!scala]:Int[/!], [!java|c]int [/!]ângulo[!scala]:Int[/!], [!java|c]int [/!]comprimento[!scala]:Int[/!], [!java|c]int [/!]incremento[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/spiral/Spiral.html:9
+#: src/lessons/recursion/lego/spiral/Spiral.html:9
 msgid ""
 "To help you understanding how to write it, here is an example of how the "
 "parameters change during one specific call:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiral/Spiral.html:12
+#: src/lessons/recursion/lego/spiral/Spiral.html:12
 #, no-wrap
 msgid ""
 "spiral(5, 90, 0, 3);\n"
@@ -12325,12 +12270,12 @@ msgstr ""
 "          espiral(0,90,12,3);\n"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/spiral/SpiralUse.html:2
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:2
 msgid "Drawing spirals"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:4
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:4
 msgid ""
 "This exercise is not really an exercise in that sense that you just have to "
 "click on the Execute button to get the reward: All the needed code is "
@@ -12341,7 +12286,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:10
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:10
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
@@ -12350,35 +12295,35 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:21
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:2
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:2
 msgid "Dragon curve (1)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:4
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:4
 msgid "The dragon curve is a classical example of recursive method."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:6
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:6
 msgid "The definition of this curve is the following:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:7
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:8
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:8
 msgid ""
 "the dragon curve of order n is the dragon curve of order n-1 between P and "
 "R, followed by the same curve of order n-1 between Q and R, where PRQ is an "
@@ -12388,8 +12333,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:14
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:27
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:14
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:27
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -12397,19 +12342,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:18
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:18
 msgid "The prototype of the method drawing the curve is the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:19
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:23
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:23
 #, no-wrap
 msgid "[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]dragão([!java|c]int [/!]ordem[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:22
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:22
 msgid ""
 "You should use the method <code>setPos(x,y)</code> to put your turtle at "
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
@@ -12417,12 +12362,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:2
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:2
 msgid "The dragon curve (2)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:4
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:4
 msgid ""
 "Previous solution induce that the turtle teleports to other location, or at "
 "the very least, that it moves its pen up during the drawing. Indeed, the end "
@@ -12432,7 +12377,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:10
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:10
 msgid ""
 "In this lesson, you will write a recursive method allowing to draw the "
 "dragon curve without taking the pen up. For that, we need another recursive "
@@ -12440,7 +12385,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:14
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:14
 msgid ""
 "The method <code>dragon()</code> is then recursively defined using itself "
 "and <code>dragonReverse()</code>. Likewise, the method "
@@ -12449,39 +12394,39 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:21
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:21
 msgid ""
 "The prototype of the <code>dragon()</code> method remains unchanged from "
 "previous exercise:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:25
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:25
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:31
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:31
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:32
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:32
 #, no-wrap
 msgid "[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]inverterDragão([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:34
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:34
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
 "code> are:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:36
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:36
 #, no-wrap
 msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
@@ -12489,7 +12434,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:40
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:40
 msgid ""
 "To make the work of each method recursiv more visible, the line painted by "
 "the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
@@ -12506,9 +12451,44 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:3
 msgid ""
-"Here comes the super classical exercise on recursion. It's not very "
-"developed here, I'm not sure of what I could add to this lesson. If you have "
-"any idea, please submit them."
+"Here comes the super classical exercise on recursion along with some "
+"variations. If you have any other nice variations, please submit them.  At "
+"some point, someone should also probably contribute these variations to "
+"wikipedia, as only the base problem is nicely described there."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:8
+msgid ""
+"The Interleaved and Split variations come from the following article: "
+"\"Exploring Recursion with Variations on the Towers of Hanoi\", Daniel W. "
+"Palmer. Available at http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/"
+"Daniel%20W%20Palmer.pdf"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:13
+msgid ""
+"The Linear Hanoi is briefly discussed in the article presenting the Linear "
+"Twin Towers of Hanoi: \"The Linear Twin Towers of Hanoi Problem\", Steven "
+"Minsker (ACM SIGCSE Bulletin Volume 39 Issue 4, December 2007). This article "
+"can only be accessed through the paywall of the editor, sorry."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:18
+msgid ""
+"The 3-colors Towers of Hanoi problem was presented on this web page: http://"
+"www.cut-the-knot.org/recurrence/TricolorHanoiAuto.shtml"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:21
+msgid ""
+"The Cyclic Towers of Hanoi was proposed by M.D. Atkinson in an article of "
+"1981 titled \"The cyclic towers of Hanoi\" (Information Processing Letters, "
+"Volume 13:3).  The article is available at http://www.cs.otago.ac.nz/"
+"staffpriv/mike/Papers/Hanoi/CyclicHanoi.pdf."
 msgstr ""
 
 #. type: Content of: <p>
@@ -12565,21 +12545,29 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/HanoiBoard.html:23
+#, fuzzy
+#| msgid ""
+#| "[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], [!java|"
+#| "c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]length[!scala]:Int[/!], "
+#| "[!java|c]int [/!]increment[!scala]:Int[/!])"
 msgid ""
-"Write the core of the method: <code>[!java|c]void [/!]solve[!c]Rec[/!]([!"
-"java|c]int [/!]src[!scala]:Int[/!], [!java|c]int [/!]dst[!scala]:Int[/!],[!"
-"java|c]int [/!]other[!scala]:Int[/!], [!java|c]int [/!]height[!scala]:"
+"Write the core of the method: <code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!"
+"java|c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], "
+"[!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!scala]:"
 "Int[/!])</code>"
 msgstr ""
+"[!java|c]void [/!]espiral([!java|c]int [/!]passos[!scala]:Int[/!], [!java|"
+"c]int [/!]ângulo[!scala]:Int[/!], [!java|c]int [/!]comprimento[!scala]:"
+"Int[/!], [!java|c]int [/!]incremento[!scala]:Int[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:26
 msgid ""
 "This method will recursively solve the presented problem. The first "
-"parameter named <code>src</code> is the index of the initial tower, the "
-"second parameter <code>dst</code> is the index of the expected final tower, "
-"the third parameter <code>other</code> is the index of the unused peg while "
-"the fourth parameter <code>height</code> is the height of the tower."
+"parameter named <code>height</code> is the height of the tower to move; The "
+"second parameter <code>src</code> is the index of the initial tower, the "
+"third parameter <code>other</code> is the index of the unused peg while the "
+"fourth parameter <code>dst</code> is the index of the expected final tower."
 msgstr ""
 
 #. type: Content of: <p>
@@ -12636,6 +12624,635 @@ msgstr ""
 msgid "move n−1 discs from B to C so they sit on disc number n"
 msgstr ""
 
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:2
+msgid "Interleaved Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:4
+msgid ""
+"In this classical variation of the Towers of Hanoi, you are given 4 pegs "
+"with 2 stacks, one white and one black. You should mix the two stacks as "
+"depicted in the Objective world.  As previously, you cannot move a disk on a "
+"smaller disk."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:8
+#, fuzzy
+#| msgid ""
+#| "<a name=\"Objectives\"> Complete the <code>hunt()</code> method. You "
+#| "probably want to copy over the <code>isFacingTrail()</code> method that "
+#| "you wrote in previous exercise.  </a>"
+msgid ""
+"You will probably need to reuse the <code>hanoi()</code> method that you "
+"wrote in the previous exercise."
+msgstr ""
+"<a name=\"Objetivos\"> Complete o método <code>caçar()</code>. Você não\n"
+"gostaria de copiar o método <code>estáDeFrenteParaRastro()</code> que\n"
+"você escreveu no exercício anterior?</a>"
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:10
+msgid "Please show me an intermediate step"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:12
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:12
+#, fuzzy
+#| msgid "Once this is done, the situation is the following:"
+msgid "If your initial situation is as follows:"
+msgstr "Uma vez isto feito, a situação é a seguinte:"
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:15
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:15
+msgid ""
+"then you have the following situation right before the main recursive call:"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:2
+msgid "Split Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:4
+msgid ""
+"Given one interleaved stack (e.g. resulting from the previous exercise), you "
+"should build two separate stacks.  In other words, your code should revert "
+"the operations done to solve the previous exercise."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:7
+msgid ""
+"You will need an extra function that can move an interleaved stack of n "
+"pairs of disks, without changing the relative positions of disks of the same "
+"size."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:2
+msgid "Better Split Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:4
+msgid ""
+"Surprisingly, our solution to split the towers generates much more moves "
+"than our solution to interleave them. As both problems are symmetric, this "
+"should not be."
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Disks amount"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Interleaved"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+msgid "Split"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "5 pairs"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "62 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "88 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "6 pairs"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "126 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "183 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "7 pairs"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "254 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "374 moves"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:13
+msgid "Can you make the split tower as efficient as the interleaved one?"
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:15
+#, fuzzy
+#| msgid "I need an hint to start"
+msgid "I need a starter hint"
+msgstr "Preciso de uma dica para começar"
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:16
+msgid ""
+"The source of discrepancy is an inefficient problem decomposition.  "
+"Satisfied that it merely worked, we looked no futher for a better solution.  "
+"Keeping the disks of the interleaved tower in the correct order during every "
+"move is unnecessary.  In fact, we can avoid moving the interleaved tower at "
+"all.  A better problem decomposition splits the pair of disks into two "
+"colored towers as they are removed from the interleaved tower."
+msgstr ""
+
+#. type: Attribute 'alt' of: <br><br><div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:24
+msgid "The starter hint was not enough"
+msgstr ""
+
+#. type: Content of: <br><br><div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:25
+msgid ""
+"If someone could split the (n-1) pairs of disks beforehand, could you split "
+"the remaining pair?"
+msgstr ""
+
+#. type: Attribute 'alt' of: <br><br><br><br><div>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:30
+msgid "You need to be more explicit"
+msgstr ""
+
+#. type: Content of: <br><br><br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:32
+msgid ""
+"First split the first (n-1) pairs of disks from the interleaved stack into a "
+"white tower and a black tower (calling recursively your main function)."
+msgstr ""
+
+#. type: Content of: <br><br><br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:33
+msgid "Then move the large white disk on its target pole."
+msgstr ""
+
+#. type: Content of: <br><br><br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:34
+msgid "Then move the (n-1) smaller white disks on top of the large one."
+msgstr ""
+
+#. type: Content of: <br><br><br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:35
+msgid "Then move the large black disk on its target pole."
+msgstr ""
+
+#. type: Content of: <br><br><br><br><div><ul><li>
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:36
+msgid "Then move the smaller black disks in position."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:2
+msgid "Fast Split Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:4
+msgid ""
+"Again, our previous solution is working, but it is far from being optimal.  "
+"When moving the towers, we use the algorithm for 3 pegs even if we have 4 "
+"pegs.  Of course, movements to the last peg are restricted since it contains "
+"the other stack, but we can always store the smallest disk on top of the "
+"other stack before moving our stack."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:9
+msgid ""
+"For that, we need to devise a new function <code>hanoi_fast(height, src, "
+"free, full, dst)</code> that moves the stack from <code>src</code> to "
+"<code>dst</code> using <code>free</code>, but storing the smallest disk onto "
+"<code>full</code> beforehand."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:13
+msgid "I'm lost"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:14
+msgid ""
+"The <code>hanoi_fast(height, src, free, full, dst)</code> function is not "
+"recursive.  It moves the first disk and then call the regular <code>hanoi()</"
+"code> function."
+msgstr ""
+
+#. type: Content of: <br><p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:18
+msgid ""
+"This change greatly improve the performance, as you can see below. Of "
+"course, this trick could also be used for the interleaved algorithm, leading "
+"as expected to the exact same performance."
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Slow Split"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
+msgid "Fast Split"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
+msgid "46 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
+msgid "82 moves"
+msgstr ""
+
+#. type: Content of: <br><table><tr><td>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
+msgid "150 moves"
+msgstr ""
+
+#. type: Content of: <br><p>
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:27
+msgid ""
+"As a conclusion, most of us are satisfied with a working solution and we "
+"easily overlook possibilities to improve the problem decomposition. <b>You</"
+"b> should not do that ;)"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:2
+msgid "Linear Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:4
+msgid ""
+"This is a classical variation over the Towers of Hanoi where some moves are "
+"forbidden.  Specifically, disks cannot move directly between the left-most "
+"and the right-most pegs.  The middle peg must be involved in every moves."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:8
+msgid ""
+"Beside of that extra complexity, the problem remains unchanged: you are "
+"requested to move the whole stack of disks from one extremity peg to the "
+"other one. You can only move one disk at a time, and a bigger disk cannot be "
+"placed over a smaller one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:12
+msgid ""
+"As with the classical version, it is much easier to produce a recursive "
+"solution, and you are absolutely able to devise this solution if you think "
+"hard enough about it."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:15
+msgid "I tried, but I don't get it"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:16
+msgid ""
+"The standard recursive algorithm for classical Hanoi is of complexity "
+"<i>2^n-1</i> where the standard recursive algorithm for this variation is of "
+"complexity <i>3^n-1</i>."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:20
+#, fuzzy
+#| msgid "The first tip was not enough. I need another one."
+msgid "That first tip was not enough"
+msgstr "A primeira dica não foi suficiente. Preciso de outra."
+
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/LinearHanoi.html:21
+msgid ""
+"The standard recursive algorithm for classical Hanoi involves two recursive "
+"calls sandwiching one movement of the largest ring, the standard recursive "
+"algorithm for Linear Hanoi involves three recursive calls sandwiched around "
+"two movements of the same ring."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:2
+msgid "Linear Twin Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:4
+msgid ""
+"This is a mix between both the Split and Interleaved problems, and the "
+"linear problem.  We are given two stacks of disks, on three pegs. We are "
+"expected to swap the stacks' position while respecting the classical Hanoi "
+"movement restrictions (one disk at a time, and no large disk over smaller "
+"disks) and the linear movement restriction (no direct exchange between the "
+"left-most and right-most pegs)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:10
+msgid "You will use three recursive functions:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:12
+msgid ""
+"<b>moveDouble(k,from, to)</b>: moves an interleaved stack of k pairs of "
+"disks, without changing the relative positions of disks of the same size. As "
+"in the Split Hanoi problem, an interleaved stack alternates white and black "
+"disks of each sizes. This function is not completely new: you wrote a "
+"version with 4 pegs (but using only 3 of them) for the first version of the "
+"Split Hanoi problem."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:17
+msgid ""
+"<b>gather(k)</b>: from the initial split situation, build on peg #2 an "
+"interleaved stack of k pairs of disks. You may parametrize your function so "
+"that it can be used to gather the disk on any peg passed as parameter, but "
+"in practice, your function will only be used to gather on the last peg."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:21
+msgid ""
+"<b>scatter(k)</b>: from a situation where k pairs of disks are interleaved "
+"on peg #0, split it down by moving the white disks to peg #1 and black ones "
+"to peg #2."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:25
+msgid ""
+"In <code>gather()</code>, the recursive call comes before two calls to "
+"<code>moveDouble()</code> while in <code>scatter()</code>, the calls to "
+"<code>moveDouble()</code> come before the recursive call.  The main function "
+"that you should write is not recursive, but simply gather almost all disks, "
+"moves directly the remaining disks, and then scatters back the small disks."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:31
+msgid ""
+"The linearity naturally induces some extra complexity as you have to "
+"decompose every move between pegs 0 and 2. I am still confident in your "
+"ability to overcome the challenge :)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/LinearTwinHanoi.html:35
+msgid ""
+"Note that the requested algorithm was proved optimal for that problem, so "
+"you don't need to fiddle the performance this time."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:2
+msgid "Tricolor Hanoi: stack move"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:4
+msgid ""
+"In this set of exercises, we will devise an algorithm for the Tricolor Hanoi "
+"problem.  There will be 3 stacks on 3 pegs, each stack of a differing color, "
+"and the problem is to exchange the stacks' positions under the classical "
+"move rules (one disk at a time, and no bigger disk over smaller disk)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:9
+msgid "As in previous exercises, our solution will use three functions:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:11
+msgid ""
+"<code>move3(n, src, mid, dst)</code>: moves a stack of interleaved disks, ie "
+"a stack of (n*3) disks of alternating colors from peg <code>src</code> to "
+"peg <code>dst</code>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:13
+msgid ""
+"<code>gather()</code>: builds an interleaved stack from the regular split "
+"ones."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:14
+msgid ""
+"<code>scatter()</code>: splits an interleaved stack into several regular "
+"ones."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi1.html:17
+msgid ""
+"The goal of this first exercise in the series is to devise the "
+"<code>move3()</code> function.  This starter task should not block you for "
+"too long, actually. It is ok if your function changes the order of the "
+"bottom triplet of disks, but it must preserve the order of the other "
+"triplets."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/TricolorHanoi2.html:2
+msgid "Tricolor Hanoi: the Gathering"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi2.html:4
+msgid ""
+"It is now time to write the second function required by the Tricolor Hanoi "
+"problem.  <code>gather()</code> builds an interleaved stack from the regular "
+"split ones. This function takes four arguments, the last one being the "
+"target peg where the interleaved stack must be assembled.  As you can see in "
+"the examples, the colors of must be in the same order for each triplet of "
+"disks."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi2.html:9
+msgid ""
+"That function actually uses the <code>move3()</code> that you wrote just "
+"before. Simply copy/paste your code over to reuse it. If you're lost, please "
+"refer to the Interleaved Hanoi exercise. Gathering 3 stacks on 3 pegs is "
+"rather similar to gathering 2 stacks on 4 pegs. You can find that exercise "
+"<a href=\"plm://lessons.recursion.hanoi/InterleavedHanoi\">here</a>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/TricolorHanoi3.html:2
+msgid "Tricolor Hanoi: the Final"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi3.html:4
+msgid ""
+"We are almost ready to write the whole tricolor algorithm. We just need the "
+"<code>scatter()</code> function, very inspired from the first one that we "
+"wrote for the <a href=\"plm://lessons.recursion.hanoi/SplitHanoi1\">Split "
+"Hanoi problem</a>. Assuming that your interleaved stack is placed on the "
+"<code>mid</code> peg, spread the disks over all pegs. Make sure to use "
+"<code>move3()</code> an even amount of time at each recursive level to "
+"ensure that the bottom disks are in the correct order."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/TricolorHanoi3.html:10
+msgid ""
+"As you can see, the initial situation is not the one expected by "
+"<code>scatter()</code>. You first have to apply <code>gather()</code> and "
+"<code>move3()</code> (twice to get the bottom triplet in the right order). "
+"These few steps plus the new <code>scatter()</code> function are enough to "
+"entirely solve the Tricolor Hanoi problem."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:2
+msgid "Cyclic Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:4
+msgid ""
+"This variation of the Towers of Hanoi is very similar to the regular "
+"problem: you are given one stack of disks and three pegs, and you cannot "
+"move a larger disk over a smaller one.  The change is that you can only move "
+"disks clockwise: 0->1 or 1->2 or 2->0, but never in the other direction."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:8
+msgid ""
+"Obviously, the movements are not symmetric anymore. Moves from A to B are "
+"now very different from moves to B to A.  As a result, you need two "
+"recursive functions depending on whether you are moving the stack clockwise "
+"or counterclockwise."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/CyclicHanoi.html:11
+msgid ""
+"That being said, the problem decomposition is very similar to the classical "
+"Hanoi. The twist is that each function call the other one, constituting a "
+"nice example of mutual recursion."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:2
+msgid "Iterative Towers of Hanoi"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:4
+msgid ""
+"In this last exercise of the series, we will implement an iterative "
+"algorithm for the base problem of the Towers of Hanoi (one stack, 3 pegs, no "
+"extra movement restriction)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:8
+msgid ""
+"This algorithm is actually very simple: On odd moves, the smallest disk is "
+"moved in a given direction (either increasing 0-&gt;1-&gt;2-&gt;0 or "
+"decreasing 2-&lt;1-&lt;0-&lt;2) while on even moves, the only possible move "
+"that does not imply the smallest disk is made. You stop as soon as the stack "
+"is rebuilt on another location."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:13
+msgid ""
+"The function that you now need to write takes two parameters: the initial "
+"position of the smallest disk (i.e., the peg initially containing the stack) "
+"and a boolean indicating whether the smallest disk should move in the "
+"increasing order or not."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:17
+msgid ""
+"The simplicity of this algorithm is actually almost deceiving. One could "
+"wonder on the interest of the recursive algorithms when such a simple "
+"iterative algorithm exists. My personal feeling is that this solution is "
+"nice to execute, but almost impossible to devise in the first place (I even "
+"suspect that the authors built this iterative solution from observations of "
+"the recursive execution)..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:23
+msgid ""
+"Predicting the effect of this function is also difficult: When the small "
+"disk moves in the increasing order, the stack is reconstructed on the right "
+"peg with 5 disks but on the left with 6 disks."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/IterativeHanoi.html:27
+msgid ""
+"An interesting question is whether such simple iterative algorithms exist "
+"for the other variation of the problem. Some were given in the literature (e."
+"g. for the cyclic variation). I would happily integrate your solutions to "
+"the PLM, especially if you can hint (without spoiling) the solution to guide "
+"the next ones."
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:2
 msgid "HanoiWorld"
@@ -12686,8 +13303,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
-#, no-wrap
-msgid "[!java|c]int [/!]getRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
+#, fuzzy, no-wrap
+#| msgid "[!java|c]int [/!]getRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
+msgid "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
 msgstr "[!java|c]int [/!]getRaio([!java|c]int [/!]slot)[!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
