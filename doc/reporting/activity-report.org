@@ -1,5 +1,4 @@
 * Tâches restantes
-** TODO Permettre à l'utilisateur de changer le langage de programmation
 ** TODO Lancer la démo lorsqu'on bascule sur le monde objectif pour la 1ère fois
 ** TODO Limiter la vitesse d'exécution du programme du client
    - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
@@ -60,9 +59,16 @@
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-01-27 mar. au 2015-01-30 ven.
-** TODO Refactorer drawBuggleImage
+** TODO Permettre à l'utilisateur de changer le langage de programmation
+   - Pour chaque exercice, récupérer la liste des langages disponibles
+     et le langage actuellement selectionné.
+   - Afficher cette liste côté client.
+   - La liste doit permettre de changer le langage actuellement
+     sélectionné et le mode de l'IDE.
+** TODO Poursuivre le développement de tests unitaires
+** DONE Refactorer drawBuggleImage
    - La méthode actuelle rencontre des difficultés à changer la
-     couleur du Buggle: getImageData permet de récupérer les pixels
+     couleur du Buggle: getImageData permet ed récupérer les pixels
      représentants l'image et de les modifier, mais ceux-ci
      correspondent aussi à la cellule sur laquelle se trouve le
      buggle...
@@ -70,11 +76,15 @@
    - Le buggle dessiné n'a pas non plus toujours la bonne taille.
    - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
      images, à étudier.
-** TODO Refactorer les controllers
+** CANCEL Refactorer les controllers
    - Retirer les parties du codes interrogeant le serveur pour
      récupérer la liste des exercices/les données d'un exercice des
      controllers et en faire des services à la place.
-** TODO Poursuivre le développement de tests unitaires
+   - Actuellement nécessaire d'écouter l'évènement "onmessage" pour
+     traiter les messages provenant du serveur et n'étant pas une
+     réponse à une requête (par exemple "operations"), on peut donc
+     difficilement sortir complètement la logique de communication
+     client/serveur des controllers.
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
 ** TODO Ajouter des tests unitaires côté client
    - Voir la documentation [[https://docs.angularjs.org/guide/unit-testing][d'AngularJS]] concernant l'ajout de tests
@@ -122,11 +132,8 @@
      démo, la 1ère opération effectuée sera celle ramassant le baggle.
    - Ajout d'un stepUI à la fin de pickupBaggle
 * Objectifs
-<<<<<<< Updated upstream
 ** CANCEL S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
-=======
 ** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite ici est complète.
->>>>>>> Stashed changes
 ** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
 *** CANCEL Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
     SCHEDULED: <2014-12-01 lun.>
@@ -222,8 +229,6 @@ case _ => MergeStrategy.first
    SCHEDULED: <2014-12-05 ven.>
 ** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
-=======
->>>>>>> Stashed changes
 ** DONE Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
    SCHEDULED: <2014-12-08 lun.>
    - Création d'un /Component/ se chargeant des interactions entre
@@ -407,7 +412,6 @@ case _ => MergeStrategy.first
    - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
      déroulement de son algorithme en fonction des différentes
      conditions.
-=======
    - La description d'une leçon est stockée dans différents fichiers
      selon la langue actuellement selectionnée. On utilise donc
      /FileUtils/ pour récupérer la description de la langue choisie.
@@ -416,8 +420,7 @@ case _ => MergeStrategy.first
      avec *Play framework*.
    - Affecter la valeur par défaut à /Locale/ avant le test levant
      l'exception permet de pallier temporairement à ce problème.
-** TODO Instancier Game au lancement du serveur
+** DONE Instancier Game au lancement du serveur
    - Game n'est instancié qu'au moment où le serveur l'interroge. Son
      instanciation prenant plusieurs secondes, elle entraîne un
      timeout qui renvoie une erreur à l'utilisateur.
->>>>>>> Stashed changes
