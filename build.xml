@@ -80,9 +80,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
-                        
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.11.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-reflect-2.11.4.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
