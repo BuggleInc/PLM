@@ -108,5 +108,12 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public void recule(int steps) { backward(steps); }
 	public void prendBiscuit()    { pickupBaggle(); }
 	public void poseBiscuit()     { dropBaggle(); }
+	/* BINDINGS TRANSLATION: Brazilian Portuguese */
+	public void avançar()          { forward(); }
+	public void avançar(int steps) { forward(steps); }
+	public void recuar()          { backward(); }
+	public void recuar(int steps) { backward(steps); }
+	public void pegarBaggle()    { pickupBaggle(); }
+	public void soltarBaggle()     { dropBaggle(); }
 
 }
