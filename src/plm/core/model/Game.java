@@ -993,7 +993,14 @@ public class Game implements IWorldView {
 		return FileUtils.getLocale();
 	}
 
-
+	public void setProgrammingLanguage(String newLanguage) {
+		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
+			if (pl.getLang().equalsIgnoreCase(newLanguage)) {
+				setProgramingLanguage(pl);
+				break;
+			}
+		}
+	}
 
 	public void setProgramingLanguage(ProgrammingLanguage newLanguage) {
 		if (programmingLanguage.equals(newLanguage))
