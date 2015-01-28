@@ -59,13 +59,36 @@
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-01-27 mar. au 2015-01-30 ven.
-** TODO Permettre à l'utilisateur de changer le langage de programmation
+** TODO Rédiger le README du projet
+** TODO Débugger le mode Scala
+   - Exécuter un programme en Scala dans webPLM génère l'erreur suivante:
+     scala.annotation.Annotation in compiler mirror not found.
+     at scala.reflect.internal.MissingRequirementError$.signal(MissingRequirementError.scala:17)
+     at scala.reflect.internal.MissingRequirementError$.notFound(MissingRequirementError.scala:18)
+     at scala.reflect.internal.Mirrors$RootsBase.getModuleOrClass(Mirrors.scala:53)
+     at scala.reflect.internal.Mirrors$RootsBase.getModuleOrClass(Mirrors.scala:45)
+     at scala.reflect.internal.Mirrors$RootsBase.getModuleOrClass(Mirrors.scala:66)
+     at scala.reflect.internal.Mirrors$RootsBase.getClassByName(Mirrors.scala:102)
+     at scala.reflect.internal.Mirrors$RootsBase.getRequiredClass(Mirrors.scala:105)
+     at scala.reflect.internal.Mirrors$RootsBase.requiredClass(Mirrors.scala:108)
+     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationClass$lzycompute(Definitions.scala:1087)
+     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationClass(Definitions.scala:1087)
+     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationDefaultAttr$lzycompute(Definitions.scala:1165)
+     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationDefaultAttr(Definitions.scala:1163)
+     at scala.reflect.internal.Definitions$DefinitionsClass.syntheticCoreClasses$lzycompute(Definitions.scala:1293)
+     at scala.reflect.internal.Definitions$DefinitionsClass.syntheticCoreClasses(Definitions.scala:1292)
+     at scala.reflect.internal.Definitions$DefinitionsClass.symbolsNotPresentInBytecode$lzycompute(Definitions.scala:1335)
+     at scala.reflect.internal.Definitions$DefinitionsClass.symbolsNotPresentInBytecode(Definitions.scala:1335)
+     at scala.reflect.internal.Definitions$DefinitionsClass.init(Definitions.scala:1389)
+     at scala.tools.nsc.Global$Run.<init>(Global.scala:1053)
+     at plm.core.lang.ScalaCompiler.compile(Unknown Source)
+** TODO Poursuivre le développement de tests unitaires
+** DONE Permettre à l'utilisateur de changer le langage de programmation
    - Pour chaque exercice, récupérer la liste des langages disponibles
      et le langage actuellement selectionné.
    - Afficher cette liste côté client.
    - La liste doit permettre de changer le langage actuellement
-     sélectionné et le mode de l'IDE.
-** TODO Poursuivre le développement de tests unitaires
+     sélectionné ainsi que le mode de l'IDE.
 ** DONE Refactorer drawBuggleImage
    - La méthode actuelle rencontre des difficultés à changer la
      couleur du Buggle: getImageData permet ed récupérer les pixels
