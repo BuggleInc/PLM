@@ -15,22 +15,6 @@
    - Ces messages apparaissent même si l'utilisateur a refusé de
      communiquer ses données, ce qui peut prêter à confusion.
    SCHEDULED: <2014-12-08 lun.>
-** TODO Récupérer la liste des exercices pour chaque leçon
-   - Pour permettre à l'utilisateur de visualiser sa progression, on
-     pourrait afficher pour chaque leçon un graphe des exercices.
-   - Pour chaque noeud de ce graphe, un code couleur permettrait de
-     distinguer les exercices réussis des exercices échoués ou
-     non-essayés.
-   - A la sélection d'une leçon, le graphe serait centré sur le
-     dernier exercice consulté de cette dernière.
-   - Pour construire ce graphe, nous avons besoin de connaître la
-     liste des exercices d'une leçon et leur arborescence.
-   - Pour récupérer actuellement la liste des exercices d'une leçon,
-     il est nécessaire de la charger. Cela revient à lancer le calcul
-     des mondes objectifs de chaque exercice.
-   - Il convient donc de modifier pour que la liste des exercices soit
-     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
-** TODO Permettre à l'utilisateur de passer à l'exercice suivant
 ** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
    - Rien n'indique actuellement à l'utilisateur que la communication
      avec le serveur a été interrompue, ce qui peut être confus.
@@ -59,7 +43,25 @@
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-01-27 mar. au 2015-01-30 ven.
-** TODO Rédiger le README du projet
+** TODO Récupérer la liste des exercices pour chaque leçon
+   - Pour permettre à l'utilisateur de visualiser sa progression, on
+     pourrait afficher pour chaque leçon un graphe des exercices.
+   - Pour chaque noeud de ce graphe, un code couleur permettrait de
+     distinguer les exercices réussis des exercices échoués ou
+     non-essayés.
+   - A la sélection d'une leçon, le graphe serait centré sur le
+     dernier exercice consulté de cette dernière.
+   - Pour construire ce graphe, nous avons besoin de connaître la
+     liste des exercices d'une leçon et leur arborescence.
+   - Pour récupérer actuellement la liste des exercices d'une leçon,
+     il est nécessaire de la charger. Cela revient à lancer le calcul
+     des mondes objectifs de chaque exercice.
+   - Il convient donc de modifier pour que la liste des exercices soit
+     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+** TODO Permettre à l'utilisateur de passer à l'exercice suivant
+** TODO Bloquer les actions utilisateurs pendant le changement du langage de programmation
+   - Empêcher l'utilisateur de changer le langage de programmation
+     actuel alors qu'un programme est en cours.
 ** TODO Débugger le mode Scala
    - Exécuter un programme en Scala dans webPLM génère l'erreur suivante:
      scala.annotation.Annotation in compiler mirror not found.
@@ -83,6 +85,7 @@
      at scala.tools.nsc.Global$Run.<init>(Global.scala:1053)
      at plm.core.lang.ScalaCompiler.compile(Unknown Source)
 ** TODO Poursuivre le développement de tests unitaires
+** DONE Rédiger le README du projet
 ** DONE Permettre à l'utilisateur de changer le langage de programmation
    - Pour chaque exercice, récupérer la liste des langages disponibles
      et le langage actuellement selectionné.
