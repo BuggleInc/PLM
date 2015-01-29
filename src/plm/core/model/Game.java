@@ -398,6 +398,12 @@ public class Game implements IWorldView {
 		this.setState(GameState.LOADING_DONE);
 		return lesson;
 	}
+
+	public void switchExercise(String exerciseID) {
+		this.selectedWorld = null; // Remove the previous selectedWorld
+		this.currentLesson.setCurrentExercise(exerciseID);
+	}
+
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
 	/** Load a new lesson from an external JAR file.
 	 *  
