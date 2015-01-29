@@ -1,4 +1,21 @@
 * Tâches restantes
+** TODO Permettre à l'utilisateur d'écouter le replay
+   - Lorsque l'utilisateur rejoue l'exécution de son programme, il n'a
+     pas d'autres choix que d'attendre la fin de l'animation pour
+     pouvoir naviguer de nouveau entre les étapes.
+** TODO Fixer le bug du baggle ne s'affichant pas
+   - Lorsque webPLM a été testé sur le Mac de Gérald, le baggle
+     présent normalement dans l'exercice n'était pas affiché.
+   - Reste à voir si ce bug est reproductible.
+** TODO Permettre à l'utilisateur de choisir une leçon en double-cliquant sur son image
+** TODO Fixer le bug de "Program steps" dans le cas d'un monde possédant plusieurs entités
+   - Dans certains exercices, tels que BDR, plusieurs entités (buggles
+     dans ce cas là) sont présentes dans le monde. Le programme de
+     l'utilisateur s'exécutant en concurrence sur chacune des entités,
+     les buggles bougent de façon chaotique jusqu'à atteindre l'état final.
+   - A cause de cela, les pas décrits dans "Program steps" ne
+     correspondent pas à un pas d'un buggle mais aux actions de
+     plusieurs, ce qui peut gêner la compréhension du programme.
 ** TODO Lancer la démo lorsqu'on bascule sur le monde objectif pour la 1ère fois
 ** TODO Limiter la vitesse d'exécution du programme du client
    - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
@@ -265,8 +282,6 @@ case _ => MergeStrategy.first
    - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
    - Hériter de *ShadowRootAware* permet d'écouter
      l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
-<<<<<<< Updated upstream
-=======
 ** TODO Modifier les messages concernant l'envoi de données au serveur
    - Actuellement, plusieurs messages sont affichés pour informer
      l'utilisateur que PLM est en train d'envoyer les données de son
@@ -274,7 +289,6 @@ case _ => MergeStrategy.first
    - Ces messages apparaissent même si l'utilisateur a refusé de
      communiquer ses données, ce qui peut prêter à confusion.
    SCHEDULED: <2014-12-08 lun.>
->>>>>>> Stashed changes
 ** DONE Ajouter une fonction à PLM retournant la liste des leçons
    SCHEDULED: <2014-12-08 lun.>
 ** DONE Etudier comment récupérer à partir du nom d'une leçon son image et sa description
