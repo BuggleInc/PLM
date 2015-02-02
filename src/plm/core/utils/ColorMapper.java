@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import plm.core.model.Game;
+
 
 public class ColorMapper {
 	static String[] choices = {
@@ -51,6 +53,23 @@ public class ColorMapper {
 			if (colors[i].equals(c))
 				return i;
 		return -1;
+	}
+	
+	public static String color2translated(Color c) {
+	  	     if (c == Color.black)     return Game.getInstance().i18n.tr("black");
+		else if (c == Color.blue)      return Game.getInstance().i18n.tr("blue");
+		else if (c == Color.cyan)      return Game.getInstance().i18n.tr("cyan");
+		else if (c == Color.darkGray)  return Game.getInstance().i18n.tr("dark grey");
+		else if (c == Color.gray)      return Game.getInstance().i18n.tr("grey");
+		else if (c == Color.green)     return Game.getInstance().i18n.tr("green");
+		else if (c == Color.lightGray) return Game.getInstance().i18n.tr("light grey");
+		else if (c == Color.magenta)   return Game.getInstance().i18n.tr("magenta");
+		else if (c == Color.orange)    return Game.getInstance().i18n.tr("orange");
+		else if (c == Color.pink)      return Game.getInstance().i18n.tr("pink");
+		else if (c == Color.red)       return Game.getInstance().i18n.tr("red");
+		else if (c == Color.white)     return Game.getInstance().i18n.tr("white");
+		else if (c == Color.yellow)    return Game.getInstance().i18n.tr("yellow");
+		else return c.toString();
 	}
 	
 	public static Color int2color(int c) throws InvalidColorNameException{
