@@ -59,23 +59,12 @@
 ** TODO Se renseigner sur Docker
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
-* Semaine du 2015-01-27 mar. au 2015-01-30 ven.
-** TODO Récupérer la liste des exercices pour chaque leçon
-   - Pour permettre à l'utilisateur de visualiser sa progression, on
-     pourrait afficher pour chaque leçon un graphe des exercices.
-   - Pour chaque noeud de ce graphe, un code couleur permettrait de
-     distinguer les exercices réussis des exercices échoués ou
-     non-essayés.
-   - A la sélection d'une leçon, le graphe serait centré sur le
-     dernier exercice consulté de cette dernière.
-   - Pour construire ce graphe, nous avons besoin de connaître la
-     liste des exercices d'une leçon et leur arborescence.
-   - Pour récupérer actuellement la liste des exercices d'une leçon,
-     il est nécessaire de la charger. Cela revient à lancer le calcul
-     des mondes objectifs de chaque exercice.
-   - Il convient donc de modifier pour que la liste des exercices soit
-     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+* Semaine du 2015-02-02 lun. au 2015-02-07 ven.
+** TODO Permettre à l'utilisateur de parcourir la liste des exercices
+   - Comment représenter graphiquement la liste des exercices et des sous-exercices efficacement?
 ** TODO Permettre à l'utilisateur de passer à l'exercice suivant
+   - Il suffit de récupérer l'index de l'exercice actuel dans la liste
+     pour pouvoir récupérer le suivant.
 ** TODO Bloquer les actions utilisateurs pendant le changement du langage de programmation
    - Empêcher l'utilisateur de changer le langage de programmation
      actuel alors qu'un programme est en cours.
@@ -102,6 +91,22 @@
      at scala.tools.nsc.Global$Run.<init>(Global.scala:1053)
      at plm.core.lang.ScalaCompiler.compile(Unknown Source)
 ** TODO Poursuivre le développement de tests unitaires
+** DONE Récupérer la liste des exercices pour chaque leçon
+   - Pour permettre à l'utilisateur de visualiser sa progression, on
+     pourrait afficher pour chaque leçon un graphe des exercices.
+   - Pour chaque noeud de ce graphe, un code couleur permettrait de
+     distinguer les exercices réussis des exercices échoués ou
+     non-essayés.
+   - A la sélection d'une leçon, le graphe serait centré sur le
+     dernier exercice consulté de cette dernière.
+   - Pour construire ce graphe, nous avons besoin de connaître la
+     liste des exercices d'une leçon et leur arborescence.
+   - Pour récupérer actuellement la liste des exercices d'une leçon,
+     il est nécessaire de la charger. Cela revient à lancer le calcul
+     des mondes objectifs de chaque exercice.
+   - Il convient donc de modifier pour que la liste des exercices soit
+     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
+* Semaine du 2015-01-27 mar. au 2015-01-30 ven.
 ** DONE Rédiger le README du projet
 ** DONE Permettre à l'utilisateur de changer le langage de programmation
    - Pour chaque exercice, récupérer la liste des langages disponibles
@@ -129,9 +134,6 @@
      difficilement sortir complètement la logique de communication
      client/serveur des controllers.
 * Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** TODO Ajouter des tests unitaires côté client
-   - Voir la documentation [[https://docs.angularjs.org/guide/unit-testing][d'AngularJS]] concernant l'ajout de tests
-     unitaires.
 ** DONE Permettre à l'utilisateur de consulter l'API du monde
 ** DONE Ajouter des tests unitaires côté serveur
    - Voir [[https://www.playframework.com/documentation/2.3.x/ScalaTestingYourApplication][la documentation de Play]] concernant l'ajout de tests
