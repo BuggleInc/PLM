@@ -1,5 +1,5 @@
 * Tâches restantes
-** TODO Permettre à l'utilisateur d'écouter le replay
+** TODO Permettre à l'utilisateur d'écourter le replay
    - Lorsque l'utilisateur rejoue l'exécution de son programme, il n'a
      pas d'autres choix que d'attendre la fin de l'animation pour
      pouvoir naviguer de nouveau entre les étapes.
@@ -60,14 +60,11 @@
    - A première vue, ça pourrait être utile pour exécuter le code des
      clients une fois passé en mode serveur centralisé.
 * Semaine du 2015-02-02 lun. au 2015-02-07 ven.
-** TODO Permettre à l'utilisateur de parcourir la liste des exercices
-   - Comment représenter graphiquement la liste des exercices et des sous-exercices efficacement?
-** TODO Permettre à l'utilisateur de passer à l'exercice suivant
-   - Il suffit de récupérer l'index de l'exercice actuel dans la liste
-     pour pouvoir récupérer le suivant.
-** TODO Bloquer les actions utilisateurs pendant le changement du langage de programmation
-   - Empêcher l'utilisateur de changer le langage de programmation
-     actuel alors qu'un programme est en cours.
+** TODO Refactorer le code concernant le passage au prochain exercice
+** TODO Etudier les options de codeMirror
+   - Voir pour l'auto-complétion des {}, ()...
+   - Voir pour la suggestion de mots-clés
+   - Voir l'indentation par défaut
 ** TODO Débugger le mode Scala
    - Exécuter un programme en Scala dans webPLM génère l'erreur suivante:
      scala.annotation.Annotation in compiler mirror not found.
@@ -91,6 +88,16 @@
      at scala.tools.nsc.Global$Run.<init>(Global.scala:1053)
      at plm.core.lang.ScalaCompiler.compile(Unknown Source)
 ** TODO Poursuivre le développement de tests unitaires
+** DONE Bloquer les actions utilisateurs pendant le changement du langage de programmation
+   - Empêcher l'utilisateur de changer le langage de programmation
+     actuel alors qu'un programme est en cours.
+** DONE Ajouter un message de félicitations lorsque l'utilisateur réussit un exercice
+** DONE Ajouter un bouton permettant de passer à l'exercice suivant
+** DONE Permettre à l'utilisateur de parcourir la liste des exercices
+   - Comment représenter graphiquement la liste des exercices et des sous-exercices efficacement?
+** DONE Permettre à l'utilisateur de passer à l'exercice suivant
+   - Il suffit de récupérer l'index de l'exercice actuel dans la liste
+     pour pouvoir récupérer le suivant.
 ** DONE Récupérer la liste des exercices pour chaque leçon
    - Pour permettre à l'utilisateur de visualiser sa progression, on
      pourrait afficher pour chaque leçon un graphe des exercices.
