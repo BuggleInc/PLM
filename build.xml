@@ -77,7 +77,12 @@
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${base.dir}" includes="ChangeLog" />
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/* ${lib.dir}/scala/scala-library-2.10.3.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.11.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.11.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-reflect-2.11.4.jar"/>
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
 
