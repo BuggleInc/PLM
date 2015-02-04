@@ -1,127 +1,54 @@
-* Tâches restantes
-** TODO Permettre à l'utilisateur d'écourter le replay
-   - Lorsque l'utilisateur rejoue l'exécution de son programme, il n'a
-     pas d'autres choix que d'attendre la fin de l'animation pour
-     pouvoir naviguer de nouveau entre les étapes.
-** TODO Fixer le bug du baggle ne s'affichant pas
-   - Lorsque webPLM a été testé sur le Mac de Gérald, le baggle
-     présent normalement dans l'exercice n'était pas affiché.
-   - Reste à voir si ce bug est reproductible.
-** TODO Permettre à l'utilisateur de choisir une leçon en double-cliquant sur son image
-** TODO Fixer le bug de "Program steps" dans le cas d'un monde possédant plusieurs entités
-   - Dans certains exercices, tels que BDR, plusieurs entités (buggles
-     dans ce cas là) sont présentes dans le monde. Le programme de
-     l'utilisateur s'exécutant en concurrence sur chacune des entités,
-     les buggles bougent de façon chaotique jusqu'à atteindre l'état final.
-   - A cause de cela, les pas décrits dans "Program steps" ne
-     correspondent pas à un pas d'un buggle mais aux actions de
-     plusieurs, ce qui peut gêner la compréhension du programme.
-** TODO Lancer la démo lorsqu'on bascule sur le monde objectif pour la 1ère fois
-** TODO Limiter la vitesse d'exécution du programme du client
-   - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
-     ne comportant pas de stepUI, tel que System.out.println, alors
-     son programme surcharge le serveur empêchant l'utilisateur de
-     le stopper autrement qu'en arrêtant manuellement le serveur.
-   - Lancer le programme de l'utilisateur dans une autre JVM
-     permettrait de mieux contrôler son exécution et de corriger ce
-     problème.
-** TODO Modifier les messages concernant l'envoi de données au serveur
-   - Actuellement, plusieurs messages sont affichés pour informer
-     l'utilisateur que PLM est en train d'envoyer les données de son
-     activité au serveur.
-   - Ces messages apparaissent même si l'utilisateur a refusé de
-     communiquer ses données, ce qui peut prêter à confusion.
-   SCHEDULED: <2014-12-08 lun.>
-** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
-   - Rien n'indique actuellement à l'utilisateur que la communication
-     avec le serveur a été interrompue, ce qui peut être confus.
-** TODO Mettre en place un processus de reconnexion de la websocket
-   - Si le serveur rencontre un problème momentané, le client doit
-     être le moins possible impacté.
-   - Une tentative de reconnexion de la websocket à intervals
-     réguliers permettrait d'éviter à l'utilisateur de recharger la
-     page et (surtout) perdre ses dernières modifications.
-** TODO Vérifier le bon fonctionnement de Git côté serveur
-   - PLM affiche le message suivant au démarrage du serveur:
-     "Impossible de récupérer une session adéquate sur les
-     serveurs...".
-** TODO Retirer la partie UI présente dans PLM-library
-** TODO Permettre à un utilisateur de gérer les vues des mondes dynamiquement
-   - Actuellement, seul le monde selectionné est
-     affiché. L'utilisateur doit donc changer de monde selectionné
-     pour observer l'exécution du programme sur un autre monde.
-   - Donner les moyens à l'utilisateur d'ajouter ou de retirer
-     dynamiquement les vues des mondes permettrait à chacun de
-     personnaliser son interface.
-** TODO Se renseigner sur seccomp-bpf
-   - Permettrait de sandboxer les programmes utilisateurs, à voir
-     comment ça s'utilise et cela fonctionne.
-** TODO Se renseigner sur Docker
-   - A première vue, ça pourrait être utile pour exécuter le code des
-     clients une fois passé en mode serveur centralisé.
-* Semaine du 2015-02-02 lun. au 2015-02-07 ven.
-** TODO Refactorer le code concernant le passage au prochain exercice
-** TODO Etudier les options de codeMirror
-   - Voir pour l'auto-complétion des {}, ()...
-   - Voir pour la suggestion de mots-clés
-   - Voir l'indentation par défaut
-** TODO Débugger le mode Scala
-   - Exécuter un programme en Scala dans webPLM génère l'erreur suivante:
-     scala.annotation.Annotation in compiler mirror not found.
-     at scala.reflect.internal.MissingRequirementError$.signal(MissingRequirementError.scala:17)
-     at scala.reflect.internal.MissingRequirementError$.notFound(MissingRequirementError.scala:18)
-     at scala.reflect.internal.Mirrors$RootsBase.getModuleOrClass(Mirrors.scala:53)
-     at scala.reflect.internal.Mirrors$RootsBase.getModuleOrClass(Mirrors.scala:45)
-     at scala.reflect.internal.Mirrors$RootsBase.getModuleOrClass(Mirrors.scala:66)
-     at scala.reflect.internal.Mirrors$RootsBase.getClassByName(Mirrors.scala:102)
-     at scala.reflect.internal.Mirrors$RootsBase.getRequiredClass(Mirrors.scala:105)
-     at scala.reflect.internal.Mirrors$RootsBase.requiredClass(Mirrors.scala:108)
-     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationClass$lzycompute(Definitions.scala:1087)
-     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationClass(Definitions.scala:1087)
-     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationDefaultAttr$lzycompute(Definitions.scala:1165)
-     at scala.reflect.internal.Definitions$DefinitionsClass.AnnotationDefaultAttr(Definitions.scala:1163)
-     at scala.reflect.internal.Definitions$DefinitionsClass.syntheticCoreClasses$lzycompute(Definitions.scala:1293)
-     at scala.reflect.internal.Definitions$DefinitionsClass.syntheticCoreClasses(Definitions.scala:1292)
-     at scala.reflect.internal.Definitions$DefinitionsClass.symbolsNotPresentInBytecode$lzycompute(Definitions.scala:1335)
-     at scala.reflect.internal.Definitions$DefinitionsClass.symbolsNotPresentInBytecode(Definitions.scala:1335)
-     at scala.reflect.internal.Definitions$DefinitionsClass.init(Definitions.scala:1389)
-     at scala.tools.nsc.Global$Run.<init>(Global.scala:1053)
-     at plm.core.lang.ScalaCompiler.compile(Unknown Source)
-** TODO Poursuivre le développement de tests unitaires
-** DONE Bloquer les actions utilisateurs pendant le changement du langage de programmation
-   - Empêcher l'utilisateur de changer le langage de programmation
-     actuel alors qu'un programme est en cours.
-** DONE Ajouter un message de félicitations lorsque l'utilisateur réussit un exercice
-** DONE Ajouter un bouton permettant de passer à l'exercice suivant
-** DONE Permettre à l'utilisateur de parcourir la liste des exercices
-   - Comment représenter graphiquement la liste des exercices et des sous-exercices efficacement?
-** DONE Permettre à l'utilisateur de passer à l'exercice suivant
-   - Il suffit de récupérer l'index de l'exercice actuel dans la liste
-     pour pouvoir récupérer le suivant.
-** DONE Récupérer la liste des exercices pour chaque leçon
-   - Pour permettre à l'utilisateur de visualiser sa progression, on
-     pourrait afficher pour chaque leçon un graphe des exercices.
-   - Pour chaque noeud de ce graphe, un code couleur permettrait de
-     distinguer les exercices réussis des exercices échoués ou
-     non-essayés.
-   - A la sélection d'une leçon, le graphe serait centré sur le
-     dernier exercice consulté de cette dernière.
-   - Pour construire ce graphe, nous avons besoin de connaître la
-     liste des exercices d'une leçon et leur arborescence.
-   - Pour récupérer actuellement la liste des exercices d'une leçon,
-     il est nécessaire de la charger. Cela revient à lancer le calcul
-     des mondes objectifs de chaque exercice.
-   - Il convient donc de modifier pour que la liste des exercices soit
-     un attribut d'une leçon et qu'il soit initialisé par le constructeur.
-* Semaine du 2015-01-27 mar. au 2015-01-30 ven.
-** DONE Rédiger le README du projet
-** DONE Permettre à l'utilisateur de changer le langage de programmation
+* Informations
+Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activité sur PLM.
+** Bibliographie
+- https://github.com/oster/PLM
+  Le lien vers le repo de la version originale de PLM
+- https://github.com/MatthieuNICOLAS/webPLM
+  Le lien vers le repo de la version web de PLM
+* Journal de bord
+** Semaine du <2015-02-04 mer.> au <2015-02-06 ven.>
+*** Done
+**** DONE Fix la compilation en Scala
+- J'ai tenté de jouer avec les versions de Scala utilisées (2.10, 2.11) et avec l'origine de la dépendance (PLM ou webPLM) pour corriger le bug, sans succès.
+- Je suis tombé sur [[http://stackoverflow.com/questions/27470669/scala-reflect-internal-fatalerror-package-scala-does-not-have-a-member-int][ce sujet]] traitant d'un problème similaire, mais aucune réponse n'a été proposée.
+- Lancer l'application avec *activator start* au lieu de *activator run* permet de "résoudre" le problème!
+**** DONE Bloquer les actions utilisateurs pendant le changement du langage de programmation
+- Empêcher l'utilisateur de changer le langage de programmation actuel alors qu'un programme est en cours.
+**** DONE Ajouter un message de félicitations lorsque l'utilisateur réussit un exercice
+**** DONE Ajouter un bouton permettant de passer à l'exercice suivant
+**** DONE Permettre à l'utilisateur de parcourir la liste des exercices
+**** DONE Permettre à l'utilisateur de passer à l'exercice suivant
+**** DONE Récupérer la liste des exercices pour chaque leçon
+- getRootLectures permet de récupérer les exercices principaux d'une leçon
+- getChildren permet ensuite de récupérer les exercices secondaires
+*** Questions
+**** Pourquoi la compilation de code Scala ne fonctionne pas si on lance l'application en mode développement?
+- Post d'une [[https://groups.google.com/forum/#!topic/play-framework/a_80eHRxbAk][question]] sur la mailing list de *Play Framework* pour demander des explications, en attente d'une réponse.
+*** Planned
+**** TODO Mettre en valeur le message d'erreur reçu lorsqu'on n'a pas réussi un exercice
+- Message affiché dans l'onglet "Result", mais rien n'indique que quelque chose de nouveau y est écrit.
+**** TODO Fixer la duplication des baggles
+- Un buggle a pu ramassé un baggle et le reposer ailleurs, sans que le baggle original ne soit retiré de la vue du monde.
+**** TODO Fixer le baggle invisible
+- Lors de la séance de test réalisée avec Gérald sur son Mac, un baggle présent dans l'exercice n'était pas dessiné.
+**** TODO Fixer les buggles décalés
+- Si le monde n'est pas carré, les buggles ne sont pas correctement alignés sur le damier
+**** TODO Refactorer le code concernant le passage au prochain exercice
+**** TODO Etudier les options de codeMirror
+- Auto-complétion des {}, ()... => Add-on [[http://codemirror.net/doc/manual.html#addon_closebrackets][closebrackets]]
+- Suggestion de mots-clés => Add-on [[http://codemirror.net/doc/manual.html#addon_show-hint][show-hint]]
+- Indentation par défaut => Option *tabSize* à passer dans la directive AngularJS
+**** TODO Poursuivre le développement de tests unitaires
+** Semaine du <2015-01-27 mar.> au <2015-01-30 ven.>
+*** Done
+**** DONE Rédiger le README du projet
+**** DONE Permettre à l'utilisateur de changer le langage de programmation
    - Pour chaque exercice, récupérer la liste des langages disponibles
      et le langage actuellement selectionné.
    - Afficher cette liste côté client.
    - La liste doit permettre de changer le langage actuellement
      sélectionné ainsi que le mode de l'IDE.
-** DONE Refactorer drawBuggleImage
+**** DONE Refactorer drawBuggleImage
    - La méthode actuelle rencontre des difficultés à changer la
      couleur du Buggle: getImageData permet ed récupérer les pixels
      représentants l'image et de les modifier, mais ceux-ci
@@ -131,7 +58,10 @@
    - Le buggle dessiné n'a pas non plus toujours la bonne taille.
    - [[http://fabricjs.com/][Fabricjs]] propose des fonctions permettant de manipuler les
      images, à étudier.
-** CANCEL Refactorer les controllers
+*** Questions
+**** Pourquoi la compilation de code Scala ne fonctionne pas dans webPLM mais fonctionne dans PLM?
+*** Planned
+**** CANCELLED Refactorer les controllers
    - Retirer les parties du codes interrogeant le serveur pour
      récupérer la liste des exercices/les données d'un exercice des
      controllers et en faire des services à la place.
@@ -140,14 +70,15 @@
      réponse à une requête (par exemple "operations"), on peut donc
      difficilement sortir complètement la logique de communication
      client/serveur des controllers.
-* Semaine du 2015-01-19 lun. au 2015-01-23 ven.
-** DONE Permettre à l'utilisateur de consulter l'API du monde
-** DONE Ajouter des tests unitaires côté serveur
+** Semaine du <2015-01-19 lun.> au <2015-01-23 ven.>
+*** Done
+**** DONE Permettre à l'utilisateur de consulter l'API du monde
+**** DONE Ajouter des tests unitaires côté serveur
    - Voir [[https://www.playframework.com/documentation/2.3.x/ScalaTestingYourApplication][la documentation de Play]] concernant l'ajout de tests
      unitaires.
    - Ajout de tests unitaires pour models.PLM.
    - Ajout de tests unitaires pour log.RemoteLogWriter.
-** DONE Retravailler l'interface de l'exerciseur
+**** DONE Retravailler l'interface de l'exerciseur
    - Revoir le placement des différents composants: consigne, éditeur
      de code, vue du monde/player.
    - Ajouter la console de log.
@@ -157,60 +88,39 @@
    - Ajouter une liste des actions réalisées pour chaque monde
      (alternative au slider).
    - Lier les nouveaux composants aux données du controller.
-** DONE Intégrer les collisions avec les murs de BuggleWorld dans WebPLM
+**** DONE Intégrer les collisions avec les murs de BuggleWorld dans WebPLM
    - Gestion des collisions avec les murs
      - Transmission du message d'erreur au client
      - Arrêt de l'exécution du programme
-** DONE Intégrer les messages au sol de BuggleWorld dans WebPLM
+**** DONE Intégrer les messages au sol de BuggleWorld dans WebPLM
    - Gestion des messages au sol (attribut content)
      - Ajout des opérations correspondantes
      - Représentation des messages dans l'interface cliente
-** DONE Refactorer l'architecture du projet côté client
+**** DONE Refactorer l'architecture du projet côté client
    - Voir les bonnes pratiques listées dans [[https://github.com/johnpapa/angularjs-styleguide][ce guide]] et [[https://github.com/toddmotto/angularjs-styleguide][celui-ci]].
    - Utilisation de [[http://requirejs.org/docs/commonjs.html][CommonJS]] pour gérer les dépendances?
      => Non, juste besoin de lister l'ensemble des fichiers JS dans index.html.
    - Déplacement des directives: une par fichier.
-** DONE Fix Logger.debug
+**** DONE Fix Logger.debug
    - Rediriger la sortie standard vers l'interface client empêche les
      messages de debug du serveur de s'afficher.
    - Ajout d'un LoggerUtils s'occupant de désactiver/réactiver la
      capture de la sortie lorsque l'on souhaite logger.
-** DONE Rediriger ce qui est écrit dans la console de la PLM vers l'interface client
+**** DONE Rediriger ce qui est écrit dans la console de la PLM vers l'interface client
    - Voir Game.setOutputWriter
    - Ajout de RemoteLogWriter qui redirige la sortie standard vers la websocket.
-** DONE Fix la démo de RandMouseMaze
+**** DONE Fix la démo de RandMouseMaze
    - Lorsqu'on exécute la démo de cet exercice, le baggle n'est pas
      ramassé à la fin. De plus, si on recharge la page et relance la
      démo, la 1ère opération effectuée sera celle ramassant le baggle.
    - Ajout d'un stepUI à la fin de pickupBaggle
-* Objectifs
-** CANCEL S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
-** TODO S'assurer que la procédure de mise en place de l'environnement de développement décrite ici est complète.
-** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
-*** CANCEL Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
-    SCHEDULED: <2014-12-01 lun.>
-    - Lors de la création du jar, plusieurs erreurs surgissent:
-    En effet, les librairies importées par Play Framework par défaut
-    déclenchent un conflit puisqu'elles déclarent des classes avec le
-    même nom.  Il est donc nécessaire de définir une [[https://github.com/sbt/sbt-assembly#merge-strategy][stratégie de résolution des conflits.]]
-      - Tout d'abord,il faut remplacer /assemblyMergeStrategy/ de leur
-        exemple par /mergeStrategy/ dans notre cas (doc pas à jour?)).
-      - Utiliser /MergeStrategy.rename/ lève l'exception
-        /Java.io.FileNotFoundException/. En effet, les fichiers en
-        conflits sont renommés, et leur nouveau nom dépasse 255
-        caractères.  Ceci empêche donc la création du jar.
-      - Utiliser /MergeStrategy.last/ permet au build de
-        passer. Cependant, la classe /play.core.server.NettyServer/
-        n'est pas embarquée dans le jar, empêchant ainsi l'application
-        de fonctionner.
-      - Utiliser une combinaison de /MergeStrategy/ telle que:
-        ~mergeStrategy in assembly := { 
-case "META-INF/MANIFEST.MF" => MergeStrategy.rename 
-case _ => MergeStrategy.first 
-}~ 
-        gènère aussi un jar ne fonctionnant pas car
-        une dépendance est manquante.
-*** DONE Créer une archive zip de l'application à partir [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-dist-task][des instructions suivantes]]
+*** Questions
+*** Planned
+** du <2014-12-01 lun.> au <2015-01-16 lun.>
+*** Done
+**** DONE S'assurer que la procédure de mise en place de l'environnement de développement décrite ici est complète.
+**** DONE Étudier comment déployer l'application au format standalone et la rendre facile d'utilisation
+**** DONE Créer une archive zip de l'application à partir [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-dist-task][des instructions suivantes]]
     SCHEDULED: <2014-12-02 mar.> 
     - L'archive résultante possède deux binaires, un pour les
       environnements UNIX et un pour les environnements Windows.
@@ -219,8 +129,109 @@ case _ => MergeStrategy.first
 
 **** DONE Vérifier que le script .bat fonctionne correctement
      SCHEDULED: <2014-12-02 mar.>
-      
-*** DONE Mettre en place une routine permettant de compiler les fichiers Dart en Javascript, rendant l'application compatible avec tous les navigateurs
+**** DONE Mettre en place plusieurs vues côté client
+   SCHEDULED: <2014-12-17 mer.>
+   - *Angular* permet de créer des applications web fonctionnant en 1 page.
+   - L'application reste néanmoins composée de plusieurs vues qui sont
+     chargées à la volée par *Angular* selon l'état actuel.
+   - Il faut donc modifier le code de l'interface cliente pour diviser
+     l'application en vues.
+**** DONE Création de l'interface de l'exerciseur
+**** DONE Affichage de la consigne de l'exercice
+    SCHEDULED: <2014-12-18 jeu.>
+    - Quelques soucis de CSS encore par contre...
+**** DONE Implémentation d'un éditeur de code
+    SCHEDULED: <2014-12-19 ven.>
+    - *CodeMirror* semble fonctionner correctement avec *Angular* grâce à [[https://github.com/angular-ui/ui-codemirror][ce module]].
+**** DONE Représentation du monde courant et de son état
+**** DONE Récupérer le code de l'étudiant pour l'exercice en cours
+   SCHEDULED: <2014-12-19 ven.>
+   - Reprendre le code utilisé dans GitSpy
+**** DONE Permettre à l'étudiant d'exécuter son code
+   SCHEDULED: <2015-01-05 lun.>
+**** DONE Ajouter un bouton qui permet à l'étudiant d'envoyer son code à un web-service
+    - La fonction déclenchée lors du click doit récupérer le code
+      contenu dans CodeMirror et le transmettre au web-service.
+**** DONE Le web-service exécute le code de l'étudiant
+    - Reprendre le code utilisé dans les tests
+**** DONE Le web-service renvoie le résultat au client
+    - Actuellement, n'attend pas la fin de l'exécution du code pour
+      envoyer le résultat (faussé du coup).
+    - Modifier le web-service pour qu'il attende que le thread exécutant le programme se termine?
+    - Web-service modifié pour qu'il ajoute un progressSpyListener à
+      PLM, qui se charge de communiquer les résultats de l'exécution
+      au client.
+**** DONE L'interface affiche le résultat de l'exécution
+**** DONE Afficher les étapes de l'exécution du code de l'étudiant
+**** DONE Modifier les interactions entre le client et le serveur
+    - Pour permettre au serveur d'envoyer des données en continu au
+      client lors de l'exécution d'un programme, une WebSocket est
+      requise.
+**** DONE Permettre à PLM de streamer l'exécution du code
+    - Créer une classe basée sur [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/Bridge.java][Bridge]] et [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/ISender.java][ISender]] enregistrant les
+      différents actions effectuées à chaque pas et les écrivant dans un
+      stream.
+    - Créer une classe implémentant IWorldView et vidant un buffer à
+      chaque WorldHasMoved?
+**** DONE Transmettre le stream de l'exécution du code au client
+    - Le serveur doit rediriger le stream dans la websocket du client.
+    - Pas de solution simple pour créer un stream?
+    - Donner à la classe une référence vers PLMActor et utiliser sa
+      méthode createMessage permet de contourner ce problème.
+**** DONE Envoyer l'état initial du monde
+   - Au démarrage d'un exercice, le serveur doit fournir au client
+     l'état initiaux des mondes.
+**** DONE Créer le modèle local du monde
+   - Le client doit récupérer les données pour créer un modèle local
+     de chaque monde en fonction de son type.
+**** DONE Représenter côté client le monde de l'exercice
+   - Une fois le modèle du monde créé, il faut ensuite dessiner sa représentation.
+**** DONE Ajouter un bouton permettant de stopper l'exécution en cours
+   - Si l'étudiant code une boucle infinie, cela peut s'avérer plus
+     pratique que de devoir redémarrer le serveur.
+**** DONE Permettre à l'utilisateur de naviguer entre les étapes de son programme
+   - La liste des opérations reçues doit être stockée pour chaque
+     monde et l'utilisateur doit pouvoir les jouer/dé-jouer pour
+     examiner le comportement de son programme.
+**** DONE Etudier comment binder une valeur du modèle à un slider avec AngularJS
+   - Ceci nous permettrait d'utiliser des sliders pour permettre à
+     l'utilisateur de régler la vitesse d'animation ou de naviguer
+     entre les différentes étapes du programme.
+**** DONE Corriger l'affichage des murs
+   - Les murs correspondant à la bordure du monde ne sont actuellement
+     pas dessinés.
+**** DONE Ajouter des types d'opérations supplémentaires
+   - ChangeBuggleDirection
+   - ChangeCellColor
+**** DONE Ajouter la gestion des baggles
+**** DONE Retirer le délai d'exécution côté serveur
+**** DONE Récupérer l'état objectif du monde
+   - Plutôt que de récupérer l'état objectif du monde, on peut se
+     contenter de récupérer les opérations obtenues lors de
+     l'exécution de la solution.
+**** DONE Permettre à l'utilisateur de consulter l'objectif pour chaque monde
+**** DONE Permettre à l'utilisateur d'exécuter le code de la solution en guise de démo
+   - Nous n'avons pas besoin de rejouer la solution côté serveur
+     lorsque l'étudiant souhaite voir la démo, puisque nous possèdons
+     déjà les opérations de la solution.
+**** DONE Permettre à l'utilisateur de passer d'un monde à l'autre
+   - Certains exercices comportent plusieurs mondes.
+   - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
+     déroulement de son algorithme en fonction des différentes
+     conditions.
+   - La description d'une leçon est stockée dans différents fichiers
+     selon la langue actuellement selectionnée. On utilise donc
+     /FileUtils/ pour récupérer la description de la langue choisie.
+   - Mais /FileUtils/ utilise /Locale/ pour déterminer le fichier à
+     lire, qui semble rencontrer des problèmes d'initialisation
+     avec *Play framework*.
+   - Affecter la valeur par défaut à /Locale/ avant le test levant
+     l'exception permet de pallier temporairement à ce problème.
+**** DONE Instancier Game au lancement du serveur
+   - Game n'est instancié qu'au moment où le serveur l'interroge. Son
+     instanciation prenant plusieurs secondes, elle entraîne un
+     timeout qui renvoie une erreur à l'utilisateur.
+**** DONE Mettre en place une routine permettant de compiler les fichiers Dart en Javascript, rendant l'application compatible avec tous les navigateurs
     SCHEDULED: <2014-12-02 mar.> 
     - Dans Eclipse, le plugin Dart et son option /pub build/
       permettent de générer un dossier *build* contenant le code Dart
@@ -250,9 +261,7 @@ case _ => MergeStrategy.first
       commandes à la suite et permettant ainsi de rendre l'application
       compatible avec tous les navigateurs et de l'exporter dans une
       archive zip.
-**** CANCEL Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déploiement
-     SCHEDULED: <2014-12-02 mar.>
-** DONE Instancier un objet PLM côté serveur
+**** DONE Instancier un objet PLM côté serveur
    SCHEDULED: <2014-12-03 mer.>
    - Plusieurs problèmes ont été rencontrés avant de réussir à
      instancier un objet PLM depuis un projet Play Framework.
@@ -268,39 +277,15 @@ case _ => MergeStrategy.first
        fonctionner, il faut donc downgrader la version de scala
        utilisée en modifiant la valeur affectée à ~scalaVersion~ dans
        /build.sbt/.
-** DONE Mettre en place un webservice RESTful permettant d'interagir avec PLM
+**** DONE Mettre en place un webservice RESTful permettant d'interagir avec PLM
    SCHEDULED: <2014-12-04 jeu.>
-** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
+**** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
    SCHEDULED: <2014-12-05 ven.>
-** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
+**** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
    SCHEDULED: <2014-12-05 ven.>
-<<<<<<< Updated upstream
-** CANCEL Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+**** DONE Ajouter une fonction à PLM retournant la liste des leçons
    SCHEDULED: <2014-12-08 lun.>
-** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
-   SCHEDULED: <2014-12-05 ven.>
-** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
-   SCHEDULED: <2014-12-05 ven.>
-** DONE Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
-   SCHEDULED: <2014-12-08 lun.>
-   - Création d'un /Component/ se chargeant des interactions entre
-     Dart et Ace.
-   - Mais avec AngularDart, un Component est inclus dans son
-     propre *ShadowDom* ce qui empêche Ace de trouver l'élément à
-     transformer en éditeur de code.
-   - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
-   - Hériter de *ShadowRootAware* permet d'écouter
-     l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
-** TODO Modifier les messages concernant l'envoi de données au serveur
-   - Actuellement, plusieurs messages sont affichés pour informer
-     l'utilisateur que PLM est en train d'envoyer les données de son
-     activité au serveur.
-   - Ces messages apparaissent même si l'utilisateur a refusé de
-     communiquer ses données, ce qui peut prêter à confusion.
-   SCHEDULED: <2014-12-08 lun.>
-** DONE Ajouter une fonction à PLM retournant la liste des leçons
-   SCHEDULED: <2014-12-08 lun.>
-** DONE Etudier comment récupérer à partir du nom d'une leçon son image et sa description
+**** DONE Etudier comment récupérer à partir du nom d'une leçon son image et sa description
    - Actuellement, /src/plm/core/ui/ChooseLessonDialog.java/ récupère
      à partir de la liste des leçons l'image et la description associée à chacune.
      Celles-ci sont contenues dans le jar de la PLM.
@@ -313,15 +298,14 @@ case _ => MergeStrategy.first
      d'une son URL. Nous avons donc juste besoin de pouvoir récupérer
      le chemin de l'image associée à la leçon.
    - Possible de charger la description d'une leçon à son initialisation dans un champ.
-** DONE Modifier PLM pour disposer d'une liste de leçons initialisées au lancement
+**** DONE Modifier PLM pour disposer d'une liste de leçons initialisées au lancement
    - Ceci permettrait au serveur de récupérer la liste des leçons et
      de leurs données, qui seraient ensuite transmises au client pour
      construire la page d'accueil.
    - Les exercices des leçons et leurs solutions seraient toujours
      chargées uniquement au moment où l'utilisateur essaient d'y
      accéder.
-** DONE Charger la description d'une leçon
-<<<<<<< Updated upstream
+**** DONE Charger la description d'une leçon
    SCHEDULED: <2014-12-11 jeu.>
    - La description d'une leçon est stockée dans différents fichiers
      selon la langue actuellement selectionnée. On utilise donc
@@ -332,7 +316,7 @@ case _ => MergeStrategy.first
    - Il a donc fallu modifier *FileUtils* pour utiliser /getLocale/
      plutôt que /locale/ directement, /getLocale/ se chargeant
      d'initialiser cette dernière si elle n'est pas initialisée.
-** DONE Instancier Game au lancement du serveur
+**** DONE Instancier Game au lancement du serveur
    SCHEDULED: <2014-12-11 jeu.>
    - Game n'est instancié qu'au moment où le serveur l'interroge. Son
      instanciation prenant plusieurs secondes, elle entraîne un
@@ -340,9 +324,9 @@ case _ => MergeStrategy.first
    - /Play Framework/ permet de définir un objet *Global* permettant
      de surcharger les fonctions appelées au lancement et au stop de
      l'application. Ceci permet d'instancier *Game* au démarrage.
-** DONE Afficher la page d'accueil de l'application automatiquement au lancement du serveur
+**** DONE Afficher la page d'accueil de l'application automatiquement au lancement du serveur
    SCHEDULED: <2014-12-12 ven.>
-** CANCEL Faire un mock-up de l'interface WEB
+**** CANCELLED Faire un mock-up de l'interface WEB
    - Il convient de choisir un framework CSS au préalable pour
      faciliter le développement de l'interface WEB. [[http://usablica.github.io/front-end-frameworks/compare.html][Cette page]] liste
      un grand nombre de ces derniers.
@@ -352,7 +336,21 @@ case _ => MergeStrategy.first
      avec le framework JS utilisé: il semblerait que les frameworks
      tels qu'*Angular* peuvent buggés suite à une modification du DOM
      par un autre script.
-** DONE Tester Foundation
+**** DONE Ajouter pop-up au démarrage informant l'utilisateur que PLM conserve une trace de son activité suite au [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772026][bug report suivant]]
+   SCHEDULED: <2014-12-05 ven.>
+**** DONE Permettre aux utilisateurs de désactiver l'envoi de la trace de leur activité au repo central
+   SCHEDULED: <2014-12-05 ven.>
+**** DONE Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+   SCHEDULED: <2014-12-08 lun.>
+   - Création d'un /Component/ se chargeant des interactions entre
+     Dart et Ace.
+   - Mais avec AngularDart, un Component est inclus dans son
+     propre *ShadowDom* ce qui empêche Ace de trouver l'élément à
+     transformer en éditeur de code.
+   - Possibilité de désactiver le ShadowDom en modifiant l'attribut ~useShadowDom~ du Component.
+   - Hériter de *ShadowRootAware* permet d'écouter
+     l'évènement *onShadowRoot* qui indique quand le DOM est chargé.
+**** DONE Tester Foundation
    SCHEDULED: <2014-12-15 lun.>
    - *Foundation* propose des fonctionnalités qui peuvent s'avérer
      intéressantes telles que [[http://foundation.zurb.com/docs/components/block_grid.html][celle-ci]] ou encore [[http://foundation.zurb.com/docs/components/joyride.html][celle-là]].
@@ -365,111 +363,48 @@ case _ => MergeStrategy.first
    - Est-ce que des appels répétés à cette méthode peuvent être
      handicapant pour l'application et ses performances au cours d'une
      longue session d'utilisation?
-** CANCEL Tester Bootstrap
+*** Questions
+*** Planned
+**** TODO Modifier les messages concernant l'envoi de données au serveur
+   - Actuellement, plusieurs messages sont affichés pour informer
+     l'utilisateur que PLM est en train d'envoyer les données de son
+     activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de
+     communiquer ses données, ce qui peut prêter à confusion.
+   SCHEDULED: <2014-12-08 lun.>
+
+**** CANCELLED S'assurer que la procédure de mise en place de l'environnement de développement décrite [[https://github.com/MatthieuNICOLAS/play-with-dart/blob/master/README.md#getting-started][ici]] est complète.
+**** CANCELLED Créer un jar de l'application [[https://www.playframework.com/documentation/2.4.x/ProductionDist#Using-the-SBT-assembly-plugin][à partir des instructions suivantes.]]
+    SCHEDULED: <2014-12-01 lun.>
+    - Lors de la création du jar, plusieurs erreurs surgissent:
+    En effet, les librairies importées par Play Framework par défaut
+    déclenchent un conflit puisqu'elles déclarent des classes avec le
+    même nom.  Il est donc nécessaire de définir une [[https://github.com/sbt/sbt-assembly#merge-strategy][stratégie de résolution des conflits.]]
+      - Tout d'abord,il faut remplacer /assemblyMergeStrategy/ de leur
+        exemple par /mergeStrategy/ dans notre cas (doc pas à jour?)).
+      - Utiliser /MergeStrategy.rename/ lève l'exception
+        /Java.io.FileNotFoundException/. En effet, les fichiers en
+        conflits sont renommés, et leur nouveau nom dépasse 255
+        caractères.  Ceci empêche donc la création du jar.
+      - Utiliser /MergeStrategy.last/ permet au build de
+        passer. Cependant, la classe /play.core.server.NettyServer/
+        n'est pas embarquée dans le jar, empêchant ainsi l'application
+        de fonctionner.
+      - Utiliser une combinaison de /MergeStrategy/ telle que:
+        ~mergeStrategy in assembly := { 
+case "META-INF/MANIFEST.MF" => MergeStrategy.rename 
+case _ => MergeStrategy.first 
+}~ 
+        gènère aussi un jar ne fonctionnant pas car
+        une dépendance est manquante.
+**** CANCELLED Voir si on peut facilement passer d'un fichier /routes.conf/ pour le développement à un fichier /routes.conf/ pour le déploiement
+     SCHEDULED: <2014-12-02 mar.>
+**** CANCELLED Implémenter une page web incorporant un éditeur de code tel que [[http://ace.c9.io/#nav=about][Ace]] ou [[http://codemirror.net/][CodeMirror]] depuis Dart
+   SCHEDULED: <2014-12-08 lun.
+**** CANCELLED Tester Bootstrap
    SCHEDULED: <2014-12-16 mar.>
    - *Bootstrap* serait capable de détecter
      automatiquement les changements apportés au DOM.
    - Il reste à déterminer si cette détection automatique est plus
      performante que le refresh manuel de *Foundation*.
-** DONE Mettre en place plusieurs vues côté client
-   SCHEDULED: <2014-12-17 mer.>
-   - *Angular* permet de créer des applications web fonctionnant en 1 page.
-   - L'application reste néanmoins composée de plusieurs vues qui sont
-     chargées à la volée par *Angular* selon l'état actuel.
-   - Il faut donc modifier le code de l'interface cliente pour diviser
-     l'application en vues.
-** DONE Création de l'interface de l'exerciseur
-*** DONE Affichage de la consigne de l'exercice
-    SCHEDULED: <2014-12-18 jeu.>
-    - Quelques soucis de CSS encore par contre...
-*** DONE Implémentation d'un éditeur de code
-    SCHEDULED: <2014-12-19 ven.>
-    - *CodeMirror* semble fonctionner correctement avec *Angular* grâce à [[https://github.com/angular-ui/ui-codemirror][ce module]].
-*** DONE Représentation du monde courant et de son état
-** DONE Récupérer le code de l'étudiant pour l'exercice en cours
-   SCHEDULED: <2014-12-19 ven.>
-   - Reprendre le code utilisé dans GitSpy
-** DONE Permettre à l'étudiant d'exécuter son code
-   SCHEDULED: <2015-01-05 lun.>
-*** DONE Ajouter un bouton qui permet à l'étudiant d'envoyer son code à un web-service
-    - La fonction déclenchée lors du click doit récupérer le code
-      contenu dans CodeMirror et le transmettre au web-service.
-*** DONE Le web-service exécute le code de l'étudiant
-    - Reprendre le code utilisé dans les tests
-*** DONE Le web-service renvoie le résultat au client
-    - Actuellement, n'attend pas la fin de l'exécution du code pour
-      envoyer le résultat (faussé du coup).
-    - Modifier le web-service pour qu'il attende que le thread exécutant le programme se termine?
-    - Web-service modifié pour qu'il ajoute un progressSpyListener à
-      PLM, qui se charge de communiquer les résultats de l'exécution
-      au client.
-*** DONE L'interface affiche le résultat de l'exécution
-** DONE Afficher les étapes de l'exécution du code de l'étudiant
-*** DONE Modifier les interactions entre le client et le serveur
-    - Pour permettre au serveur d'envoyer des données en continu au
-      client lors de l'exécution d'un programme, une WebSocket est
-      requise.
-*** DONE Permettre à PLM de streamer l'exécution du code
-    - Créer une classe basée sur [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/Bridge.java][Bridge]] et [[https://github.com/oster/PLM/blob/command-view/src/plm/universe/ISender.java][ISender]] enregistrant les
-      différents actions effectuées à chaque pas et les écrivant dans un
-      stream.
-    - Créer une classe implémentant IWorldView et vidant un buffer à
-      chaque WorldHasMoved?
-*** DONE Transmettre le stream de l'exécution du code au client
-    - Le serveur doit rediriger le stream dans la websocket du client.
-    - Pas de solution simple pour créer un stream?
-    - Donner à la classe une référence vers PLMActor et utiliser sa
-      méthode createMessage permet de contourner ce problème.
-** DONE Envoyer l'état initial du monde
-   - Au démarrage d'un exercice, le serveur doit fournir au client
-     l'état initiaux des mondes.
-** DONE Créer le modèle local du monde
-   - Le client doit récupérer les données pour créer un modèle local
-     de chaque monde en fonction de son type.
-** DONE Représenter côté client le monde de l'exercice
-   - Une fois le modèle du monde créé, il faut ensuite dessiner sa représentation.
-** DONE Ajouter un bouton permettant de stopper l'exécution en cours
-   - Si l'étudiant code une boucle infinie, cela peut s'avérer plus
-     pratique que de devoir redémarrer le serveur.
-** DONE Permettre à l'utilisateur de naviguer entre les étapes de son programme
-   - La liste des opérations reçues doit être stockée pour chaque
-     monde et l'utilisateur doit pouvoir les jouer/dé-jouer pour
-     examiner le comportement de son programme.
-** DONE Etudier comment binder une valeur du modèle à un slider avec AngularJS
-   - Ceci nous permettrait d'utiliser des sliders pour permettre à
-     l'utilisateur de régler la vitesse d'animation ou de naviguer
-     entre les différentes étapes du programme.
-** DONE Corriger l'affichage des murs
-   - Les murs correspondant à la bordure du monde ne sont actuellement
-     pas dessinés.
-** DONE Ajouter des types d'opérations supplémentaires
-   - ChangeBuggleDirection
-   - ChangeCellColor
-** DONE Ajouter la gestion des baggles
-** DONE Retirer le délai d'exécution côté serveur
-** DONE Récupérer l'état objectif du monde
-   - Plutôt que de récupérer l'état objectif du monde, on peut se
-     contenter de récupérer les opérations obtenues lors de
-     l'exécution de la solution.
-** DONE Permettre à l'utilisateur de consulter l'objectif pour chaque monde
-** DONE Permettre à l'utilisateur d'exécuter le code de la solution en guise de démo
-   - Nous n'avons pas besoin de rejouer la solution côté serveur
-     lorsque l'étudiant souhaite voir la démo, puisque nous possèdons
-     déjà les opérations de la solution.
-** DONE Permettre à l'utilisateur de passer d'un monde à l'autre
-   - Certains exercices comportent plusieurs mondes.
-   - L'utilisateur doit pouvoir passer d'un à l'autre pour observer le
-     déroulement de son algorithme en fonction des différentes
-     conditions.
-   - La description d'une leçon est stockée dans différents fichiers
-     selon la langue actuellement selectionnée. On utilise donc
-     /FileUtils/ pour récupérer la description de la langue choisie.
-   - Mais /FileUtils/ utilise /Locale/ pour déterminer le fichier à
-     lire, qui semble rencontrer des problèmes d'initialisation
-     avec *Play framework*.
-   - Affecter la valeur par défaut à /Locale/ avant le test levant
-     l'exception permet de pallier temporairement à ce problème.
-** DONE Instancier Game au lancement du serveur
-   - Game n'est instancié qu'au moment où le serveur l'interroge. Son
-     instanciation prenant plusieurs secondes, elle entraîne un
-     timeout qui renvoie une erreur à l'utilisateur.
+
