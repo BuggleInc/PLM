@@ -1,0 +1,61 @@
+** TODO Permettre à l'utilisateur d'écourter le replay
+   - Lorsque l'utilisateur rejoue l'exécution de son programme, il n'a
+     pas d'autres choix que d'attendre la fin de l'animation pour
+     pouvoir naviguer de nouveau entre les étapes.
+** TODO Fixer le bug du baggle ne s'affichant pas
+   - Lorsque webPLM a été testé sur le Mac de Gérald, le baggle
+     présent normalement dans l'exercice n'était pas affiché.
+   - Reste à voir si ce bug est reproductible.
+** TODO Permettre à l'utilisateur de choisir une leçon en double-cliquant sur son image
+** TODO Fixer le bug de "Program steps" dans le cas d'un monde possédant plusieurs entités
+   - Dans certains exercices, tels que BDR, plusieurs entités (buggles
+     dans ce cas là) sont présentes dans le monde. Le programme de
+     l'utilisateur s'exécutant en concurrence sur chacune des entités,
+     les buggles bougent de façon chaotique jusqu'à atteindre l'état final.
+   - A cause de cela, les pas décrits dans "Program steps" ne
+     correspondent pas à un pas d'un buggle mais aux actions de
+     plusieurs, ce qui peut gêner la compréhension du programme.
+** TODO Lancer la démo lorsqu'on bascule sur le monde objectif pour la 1ère fois
+** TODO Limiter la vitesse d'exécution du programme du client
+   - Si l'utilisateur boucle indéfinitivement sur une ou des méthodes
+     ne comportant pas de stepUI, tel que System.out.println, alors
+     son programme surcharge le serveur empêchant l'utilisateur de
+     le stopper autrement qu'en arrêtant manuellement le serveur.
+   - Lancer le programme de l'utilisateur dans une autre JVM
+     permettrait de mieux contrôler son exécution et de corriger ce
+     problème.
+** TODO Modifier les messages concernant l'envoi de données au serveur
+   - Actuellement, plusieurs messages sont affichés pour informer
+     l'utilisateur que PLM est en train d'envoyer les données de son
+     activité au serveur.
+   - Ces messages apparaissent même si l'utilisateur a refusé de
+     communiquer ses données, ce qui peut prêter à confusion.
+   SCHEDULED: <2014-12-08 lun.>
+** TODO Indiquer à l'utilisateur si la connexion avec le serveur a été perdue
+   - Rien n'indique actuellement à l'utilisateur que la communication
+     avec le serveur a été interrompue, ce qui peut être confus.
+** TODO Mettre en place un processus de reconnexion de la websocket
+   - Si le serveur rencontre un problème momentané, le client doit
+     être le moins possible impacté.
+   - Une tentative de reconnexion de la websocket à intervals
+     réguliers permettrait d'éviter à l'utilisateur de recharger la
+     page et (surtout) perdre ses dernières modifications.
+** TODO Vérifier le bon fonctionnement de Git côté serveur
+   - PLM affiche le message suivant au démarrage du serveur:
+     "Impossible de récupérer une session adéquate sur les
+     serveurs...".
+** TODO Retirer la partie UI présente dans PLM-library
+** TODO Permettre à un utilisateur de gérer les vues des mondes dynamiquement
+   - Actuellement, seul le monde selectionné est
+     affiché. L'utilisateur doit donc changer de monde selectionné
+     pour observer l'exécution du programme sur un autre monde.
+   - Donner les moyens à l'utilisateur d'ajouter ou de retirer
+     dynamiquement les vues des mondes permettrait à chacun de
+     personnaliser son interface.
+** TODO Se renseigner sur seccomp-bpf
+   - Permettrait de sandboxer les programmes utilisateurs, à voir
+     comment ça s'utilise et cela fonctionne.
+** TODO Se renseigner sur Docker
+   - A première vue, ça pourrait être utile pour exécuter le code des
+     clients une fois passé en mode serveur centralisé.
+
