@@ -8,6 +8,26 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 * Journal de bord
 ** Semaine du <2015-02-04 mer.> au <2015-02-06 ven.>
 *** Done
+**** DONE Fixer le changement de monde involontaire
+- Dans le 1er exercice de la leçon labyrinthe par exemple, lorsque
+  l'utilisateur exécute son programme, la vue du monde passe toute
+  seule sur la celle de *Blue cheese*.
+- Dû à une erreur dans la méthode *reset*, qui remplaçait le monde
+  affiché actuellement par le monde qu'on venait de remettre à zéro.
+**** DONE Permettre à l'utilisateur d'écourter le replay
+- Lorsque l'utilisateur rejoue l'exécution de son programme, il n'a
+  pas d'autres choix que d'attendre la fin de l'animation pour pouvoir
+  naviguer de nouveau entre les étapes.
+- Il devrait pouvoir stopper l'animation (avec les boutons *reset* et *last* ?)
+**** DONE Fixer les buggles décalés
+- Si le monde n'est pas carré, les buggles ne sont pas correctement alignés sur le damier
+**** DONE Etudier les options de codeMirror
+- Auto-complétion des {}, ()... => Add-on [[http://codemirror.net/doc/manual.html#addon_closebrackets][closebrackets]]
+- Suggestion de mots-clés => Add-on [[http://codemirror.net/doc/manual.html#addon_show-hint][show-hint]]
+- Indentation par défaut => Option *tabSize* à passer dans la directive AngularJS
+**** DONE Mettre en valeur le message d'erreur reçu lorsqu'on n'a pas réussi un exercice
+- Message affiché dans l'onglet "Result", mais rien n'indique que quelque chose de nouveau y est écrit.
+- Maintenant sélectionne l'onglet "Result" automatiquement lorsqu'il est mis à jour.
 **** DONE Fix la compilation en Scala
 - J'ai tenté de jouer avec les versions de Scala utilisées (2.10, 2.11) et avec l'origine de la dépendance (PLM ou webPLM) pour corriger le bug, sans succès.
 - Je suis tombé sur [[http://stackoverflow.com/questions/27470669/scala-reflect-internal-fatalerror-package-scala-does-not-have-a-member-int][ce sujet]] traitant d'un problème similaire, mais aucune réponse n'a été proposée.
@@ -24,20 +44,17 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 *** Questions
 **** Pourquoi la compilation de code Scala ne fonctionne pas si on lance l'application en mode développement?
 - Post d'une [[https://groups.google.com/forum/#!topic/play-framework/a_80eHRxbAk][question]] sur la mailing list de *Play Framework* pour demander des explications, en attente d'une réponse.
+**** Y a-t-il un intérêt à extraire la liste des exercices de ExerciseController pour en faire un data service?
+- Un service permettrait de ne récupérer qu'une fois la liste des exercices au début d'une leçon, puisque les données sont conservées entre plusieurs pages.
+- Mais comment le service serait informé du changement de leçon, s'il y en a eu un?
 *** Planned
-**** TODO Mettre en valeur le message d'erreur reçu lorsqu'on n'a pas réussi un exercice
-- Message affiché dans l'onglet "Result", mais rien n'indique que quelque chose de nouveau y est écrit.
 **** TODO Fixer la duplication des baggles
 - Un buggle a pu ramassé un baggle et le reposer ailleurs, sans que le baggle original ne soit retiré de la vue du monde.
 **** TODO Fixer le baggle invisible
 - Lors de la séance de test réalisée avec Gérald sur son Mac, un baggle présent dans l'exercice n'était pas dessiné.
-**** TODO Fixer les buggles décalés
-- Si le monde n'est pas carré, les buggles ne sont pas correctement alignés sur le damier
 **** TODO Refactorer le code concernant le passage au prochain exercice
-**** TODO Etudier les options de codeMirror
-- Auto-complétion des {}, ()... => Add-on [[http://codemirror.net/doc/manual.html#addon_closebrackets][closebrackets]]
-- Suggestion de mots-clés => Add-on [[http://codemirror.net/doc/manual.html#addon_show-hint][show-hint]]
-- Indentation par défaut => Option *tabSize* à passer dans la directive AngularJS
+- Nettoyer le code
+- Voir pour l'extraire de ExerciseController et en faire un service
 **** TODO Poursuivre le développement de tests unitaires
 ** Semaine du <2015-01-27 mar.> au <2015-01-30 ven.>
 *** Done
