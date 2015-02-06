@@ -3,6 +3,7 @@ package plm.universe;
 import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
@@ -23,7 +24,9 @@ public abstract class Entity extends Observable {
 	protected String name = "(noname)";
 
 	protected World world;
-
+	
+	private boolean readyToSend = false;
+	private List<Operation> operations = new ArrayList<Operation>();
 	private Semaphore oneStepSemaphore = new Semaphore(0);
 
 	public Entity() {}
@@ -73,7 +76,8 @@ public abstract class Entity extends Observable {
 	 *  
 	 * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().  
 	 */
-	protected void stepUI() {		
+	protected void stepUI() {
+		readyToSend = true;
 		fireStackListener();
 		world.notifyWorldUpdatesListeners();
 		if (world.isDelayed()) {
@@ -159,7 +163,19 @@ public abstract class Entity extends Observable {
 		return res == null ? 0:res;
 	}
 	
+	public List<Operation> getOperations() {
+		return operations;
+	}
+	
 	public void addOperation(Operation operation) {
-		world.operations.add(operation);
+		operations.add(operation);
+	}
+	
+	public boolean isReadyToSend() {
+		return readyToSend == true;
+	}
+	
+	public void setReadyToSend(boolean readyToSend) {
+		this.readyToSend = readyToSend;
 	}
 }

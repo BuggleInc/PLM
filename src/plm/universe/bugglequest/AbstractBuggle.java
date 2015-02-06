@@ -149,7 +149,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setDirection(Direction direction) {
 		if (direction != null) {
-			world.operations.add(new ChangeBuggleDirection(this, this.direction, direction));
+			addOperation(new ChangeBuggleDirection(this, this.direction, direction));
 			this.direction = direction;
 			stepUI();
 		}
