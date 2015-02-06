@@ -6,8 +6,34 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - https://github.com/MatthieuNICOLAS/webPLM
   Le lien vers le repo de la version web de PLM
 * Journal de bord
-** Semaine du <2015-02-04 mer.> au <2015-02-06 ven.>
+** Semaine du <2015-02-02 lun.>  au <2015-02-06 ven.>
 *** Done
+**** DONE Stocker localement la vitesse d'exécution de l'animation
+- Il serait intéressant pour l'utilisateur que la vitesse d'exécution
+  de l'animations soit conservée entre les exercices/entre les
+  sessions.
+- Utilisation de *localStorage*?
+- Il existe un module *ngStorage* permettant de stocker facilement
+   avec *localStorage* une valeur manipulée par *AngularJS*
+- Implémentation de *ngStorage*.
+- *ngStorage* semble ne plus être maintenu et comporter plusieurs problèmes: [[http://stackoverflow.com/questions/28136231/angularjs-controller-is-caching-in-firefox-and-ie-how-to-disable][voir ce thread]].
+- Implémentation de [[https://github.com/tymondesigns/angular-locker][angular-locker]] à la place.
+**** DONE Fixer le bug de "Program steps" dans le cas d'un monde possédant plusieurs entités
+- Dans certains exercices, tels que BDR, plusieurs entités (buggles
+  dans ce cas là) sont présentes dans le monde. Le programme de
+  l'utilisateur s'exécutant en concurrence sur chacune des entités,
+  les buggles bougent de façon chaotique jusqu'à atteindre l'état
+  final.
+ - A cause de cela, les pas décrits dans "Program steps" ne
+ correspondent pas à un pas d'un buggle mais aux actions de plusieurs,
+  ce qui peut gêner la compréhension du programme.
+- Stocke maintenant les opérations dans les entités et non plus dans
+  un tableau commun au monde.
+- Lorsqu'un *worldStep* est détecté, on n'envoie les opérations que
+  des entités étant marqué comme prête à envoyer.
+**** DONE Permettre à l'utilisateur de sélectionner une leçon en double-cliquant dessus
+- *$location.path* permet de rediriger l'utilisateur vers une nouvelle page
+- *ng-dblclick* permet de détecter un double-clique
 **** DONE Fixer le changement de monde involontaire
 - Dans le 1er exercice de la leçon labyrinthe par exemple, lorsque
   l'utilisateur exécute son programme, la vue du monde passe toute
@@ -47,6 +73,12 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 **** Y a-t-il un intérêt à extraire la liste des exercices de ExerciseController pour en faire un data service?
 - Un service permettrait de ne récupérer qu'une fois la liste des exercices au début d'une leçon, puisque les données sont conservées entre plusieurs pages.
 - Mais comment le service serait informé du changement de leçon, s'il y en a eu un?
+**** Comment gérer les opérations rajoutées par l'exercice ?
+- Dans l'exercice *Voie du paradis*, les cases sur lesquelles passent
+  le buggle s'illumine d'elles-même au fur et à mesure de l'exécution.
+- Ca correspond à l'ajout d'opérations dans *Program steps* mais qui
+  ne correspondent pas au pas attendu (le buggle avance alors qu'il
+  est écrit qu'il est en train de peindre la case par exemple).
 *** Planned
 **** TODO Fixer la duplication des baggles
 - Un buggle a pu ramassé un baggle et le reposer ailleurs, sans que le baggle original ne soit retiré de la vue du monde.
