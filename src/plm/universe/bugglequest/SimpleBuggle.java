@@ -35,26 +35,6 @@ public class SimpleBuggle extends AbstractBuggle  {
 			javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 		seenError();
 	}
-	
-	@Deprecated
-	@Override
-	public void pickUpBaggle () { 
-		pickupBaggle();
-	}
-	@Override
-	public void pickupBaggle () { 
-		try { 
-			super.pickupBaggle(); 
-		} catch (NoBaggleUnderBuggleException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		} catch (AlreadyHaveBaggleException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
 
 	@Override
 	public void dropBaggle () { 

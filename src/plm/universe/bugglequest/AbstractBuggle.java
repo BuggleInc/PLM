@@ -355,10 +355,6 @@ public abstract class AbstractBuggle extends Entity {
 		return this.carryBaggle;
 	}
 
-	@Deprecated
-	public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
-		pickupBaggle();
-	}
 	public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
 		if (k_seq[k_val]==5) k_val++; else k_val = 0;
 		if (k_val>k_seq.length-1) {
@@ -369,10 +365,16 @@ public abstract class AbstractBuggle extends Entity {
 			return;
 		}
 
-		if (!isOverBaggle())
+		if (!isOverBaggle()) {
+			addOperation(new NoBaggleUnderBuggle(this));
+			stepUI();
 			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
-		if (isCarryingBaggle())
+		}
+		if (isCarryingBaggle()) {
+			addOperation(new BuggleAlreadyHaveBaggle(this));
+			stepUI();
 			throw new AlreadyHaveBaggleException(Game.i18n.tr("Your are already carrying a baggle."));
+		}
 		getCellFromLesson(this.x, this.y).baggleRemove();
 		carryBaggle = true;
 		addOperation(new ChangeCellHasBaggle(getCell(), true, false));
