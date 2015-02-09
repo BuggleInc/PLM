@@ -6,6 +6,23 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - https://github.com/MatthieuNICOLAS/webPLM
   Le lien vers le repo de la version web de PLM
 * Journal de bord
+** Semaine du <2015-02-09 lun.> au <2015-02-13 ven.>
+*** Done
+**** DONE Ajouter l'opération BuggleDontHaveBaggle
+**** DONE Ajouter l'opération CellAlreadyHaveBaggle
+*** Questions
+**** Créer le type d'opération "ExceptionOperation" ?
+- Actuellement, il existe un type d'opération spécifique pour chaque au type d'exception existant.
+- Ne faudrait-il mieux pas créer un type d'opération générique possédant juste un nom et un message?
+- Cela permettrait de factoriser le code de la génération des opérations et de leur exécution.
+*** Planned
+**** TODO Préparer la présentation pour le séminaire IJD
+**** TODO Ajouter des opérations correspondant aux exceptions levées
+- BuggleDontHaveBaggleException
+- CellAlreadyHaveBaggle
+- BuggleInOuterSpaceException
+- "Sorry Dave, I cannot let you use..."
+**** TODO Poursuivre le développement de tests unitaires
 ** Semaine du <2015-02-02 lun.>  au <2015-02-06 ven.>
 *** Done
 **** DONE Stocker localement la vitesse d'exécution de l'animation
