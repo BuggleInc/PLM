@@ -4,12 +4,7 @@ import java.awt.Color;
 
 import plm.core.model.Game;
 import plm.universe.Direction;
-import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
-import plm.universe.bugglequest.exception.DontHaveBaggleException;
-import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
-
-
 
 public class SimpleBuggle extends AbstractBuggle  {
 	/* Make it possible to instantiate SimpleBuggles from exercises so that Python also gets graphical window showing */
@@ -36,20 +31,6 @@ public class SimpleBuggle extends AbstractBuggle  {
 		seenError();
 	}
 
-	@Override
-	public void dropBaggle () { 
-		try { 
-			super.dropBaggle(); 
-		} catch (AlreadyHaveBaggleException e) { 
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		} catch (DontHaveBaggleException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}	
 	@Override 
 	public void setX(int x) {
 		try {

@@ -383,9 +383,20 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
-		if (! isCarryingBaggle())
+		if (! isCarryingBaggle()) {
+			addOperation(new BuggleDontHaveBaggle(this));
+			stepUI();
 			throw new DontHaveBaggleException();
-		getCellFromLesson(this.x, this.y).baggleAdd();
+		}
+		BuggleWorldCell cell = getCellFromLesson(this.x, this.y);
+		try {
+			cell.baggleAdd();
+		}
+		catch (AlreadyHaveBaggleException e) {
+			addOperation(new CellAlreadyHaveBaggle(cell));
+			stepUI();
+			throw e;
+		}
 		carryBaggle = false;
 		addOperation(new ChangeCellHasBaggle(getCell(), false, true));
 		addOperation(new ChangeBuggleCarryBaggle(this, true, false));
