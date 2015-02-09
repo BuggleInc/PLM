@@ -10,6 +10,10 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 *** Done
 **** DONE Ajouter l'opération BuggleDontHaveBaggle
 **** DONE Ajouter l'opération CellAlreadyHaveBaggle
+**** DONE Mettre en place les tests unitaires pour le code JS
+- Ajout de [[http://jasmine.github.io/][jasmine]] et de [[http://sinonjs.org/][sinon]] au projet.
+- Création d'une [[http://localhost:9000/specRunner][page]] permettant d'exécuter les tests.
+- Ajout de tests unitaires pour les principales opérations.
 *** Questions
 **** Créer le type d'opération "ExceptionOperation" ?
 - Actuellement, il existe un type d'opération spécifique pour chaque au type d'exception existant.
@@ -23,6 +27,9 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - BuggleInOuterSpaceException
 - "Sorry Dave, I cannot let you use..."
 **** TODO Poursuivre le développement de tests unitaires
+- Ajouter des tests unitaires pour le code JS permettrait de s'assurer de la robustesse du code.
+- Voir comment utiliser [[http://jasmine.github.io/][jasmine]].
+- Voir comment utiliser [[http://sinonjs.org/][sinon]].
 ** Semaine du <2015-02-02 lun.>  au <2015-02-06 ven.>
 *** Done
 **** DONE Stocker localement la vitesse d'exécution de l'animation

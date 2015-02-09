@@ -1,3 +1,17 @@
+* TODO Mettre en place un outil de concaténation et de minification du JS
+- Plutôt que de charger plusieurs fichiers JS, il serait préférable
+  que le client ne charge qu'un seul fichier contenant tout le code JS
+  nécessaire à l'application.
+- Ceci permettrait d'améliorer les performances de l'application en
+  réduisant le temps de chargement de la page (1 seule requête HTTP
+  pour le JS au lieu de... beaucoup).
+- Minifier le code de ce fichier permettrait d'améliorer encore plus
+  la vitesse de chargement de la page.
+- Voir du côté de [[http://gruntjs.com/][Grunt]]. 
+* TODO Automatiser les tests du JS
+- Il faudrait que les tests JS s'exécutent de façon automatique.
+- Les tests pourraient se lancer à la suite de la tâche de concaténation et de minification du code JS.
+- Voir si un plug-in *Grunt* existe pour *jasmine*.
 * TODO Interrompre l'exécution du programme si une exception est levée
 - Le programme devrait s'interrompre lorsqu'une exception est levée,
   par exemple lorsqu'on essaie de poser un baggle sans en avoir un.
