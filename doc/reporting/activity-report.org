@@ -14,11 +14,25 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - Ajout de [[http://jasmine.github.io/][jasmine]] et de [[http://sinonjs.org/][sinon]] au projet.
 - Création d'une [[http://localhost:9000/specRunner][page]] permettant d'exécuter les tests.
 - Ajout de tests unitaires pour les principales opérations.
+- Ajout de tests unitaires pour les constructeurs des modèles de
+  données.
+- Ajout de tests unitaires pour *BuggleWorld*.
 *** Questions
 **** Créer le type d'opération "ExceptionOperation" ?
-- Actuellement, il existe un type d'opération spécifique pour chaque au type d'exception existant.
-- Ne faudrait-il mieux pas créer un type d'opération générique possédant juste un nom et un message?
-- Cela permettrait de factoriser le code de la génération des opérations et de leur exécution.
+- Actuellement, il existe un type d'opération spécifique pour chaque
+  au type d'exception existant.
+- Ne faudrait-il mieux pas créer un type d'opération générique
+  possédant juste un nom et un message?
+- Cela permettrait de factoriser le code de la génération des
+  opérations et de leur exécution.
+**** Refactorer BuggleWorld.generateOperation (JS) ?
+- En appliquant *JSHint* sur *BuggleWorld*, j'ai relevé un
+  avertissement généré expliquant que la complexité cyclomatique
+  de *generateOperation* est actuellement trop élevée.
+- Ceci est dû à l'utilisation d'un switch pour déterminer quel
+  constructeur utiliser en fonction des données reçues.
+- Comment pouvons-nous refactorer *generateOperation* pour que sa
+  complexité ne soit plus une source d'avertissement?
 *** Planned
 **** TODO Préparer la présentation pour le séminaire IJD
 **** TODO Ajouter des opérations correspondant aux exceptions levées
