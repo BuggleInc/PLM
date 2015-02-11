@@ -1,3 +1,5 @@
+* TODO Refactorer le code gérant la conversion en JSON des objets Scala
+- Voir question de la semaine du <2015-02-09 lun.> au <2015-02-13 ven.>
 * TODO Mettre en place un outil de concaténation et de minification du JS
 - Plutôt que de charger plusieurs fichiers JS, il serait préférable
   que le client ne charge qu'un seul fichier contenant tout le code JS

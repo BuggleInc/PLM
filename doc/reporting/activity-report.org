@@ -8,6 +8,12 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 * Journal de bord
 ** Semaine du <2015-02-09 lun.> au <2015-02-13 ven.>
 *** Done
+**** DONE Etablir le plan de la présentation
+**** DONE Créer un dépôt pour la présentation
+- Voir [[https://github.com/MatthieuNICOLAS/IJD-seminar-2015-03-03][ici]].
+**** DONE Prendre en main reveal.js
+- Ajout de [[https://github.com/hakimel/reveal.js][reveal.js]] au dépôt.
+- Utilisation de [[http://johnmacfarlane.net/pandoc/][Pandoc]] pour [[http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html][générer les slides]] à partir d'un fichier *Markdown*.
 **** DONE Ajouter l'opération BuggleDontHaveBaggle
 **** DONE Ajouter l'opération CellAlreadyHaveBaggle
 **** DONE Mettre en place les tests unitaires pour le code JS
@@ -17,6 +23,7 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - Ajout de tests unitaires pour les constructeurs des modèles de
   données.
 - Ajout de tests unitaires pour *BuggleWorld*.
+- Ajout de tests unitaire pour *canvas*.
 *** Questions
 **** Créer le type d'opération "ExceptionOperation" ?
 - Actuellement, il existe un type d'opération spécifique pour chaque
@@ -25,6 +32,7 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
   possédant juste un nom et un message?
 - Cela permettrait de factoriser le code de la génération des
   opérations et de leur exécution.
+- Mais cela perdrait en clarté selon moi.
 **** Refactorer BuggleWorld.generateOperation (JS) ?
 - En appliquant *JSHint* sur *BuggleWorld*, j'ai relevé un
   avertissement généré expliquant que la complexité cyclomatique
@@ -33,8 +41,17 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
   constructeur utiliser en fonction des données reçues.
 - Comment pouvons-nous refactorer *generateOperation* pour que sa
   complexité ne soit plus une source d'avertissement?
+**** Refactorer le code gérant la conversion en JSON des objets Scala ?
+- Les objets Scala du serveur sont transmis au client après avoir été
+  converti au format JSON.
+- Pour chaque type d'objet, une fonction de conversion est définie.
+- Ces fonctions sont actuallement éparpillées dans plusieurs
+  fichiers: *PLMActor* et *ExecutionSpy*
+- Comment mieux gérer cette partie du code? Mise en place d'un utilitaire?
 *** Planned
 **** TODO Préparer la présentation pour le séminaire IJD
+- Travailler le plan de la présentation
+- Voir pour essayer [[https://github.com/hakimel/reveal.js][reveal.js]].
 **** TODO Ajouter des opérations correspondant aux exceptions levées
 - BuggleDontHaveBaggleException
 - CellAlreadyHaveBaggle
