@@ -2,16 +2,18 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>ShellSort</h2>
  
-This algorithm is named after its author, Donald Shell, who published it in
-1959. It can be seen as an application of the CombSort idea (let elements
-having a long path to travel take shortcuts) to the insertion sort (CombSort
-is a variation of BubbleSort). Instead of comparing adjacent values during
-the insertion sort, it compares values separated by a bigger gap. The bigger
-the gap, the faster the elements are moved to their final destination, but
-also the less precise is this move. It is thus mandatory to apply the
-algorithm with a serie of decreasing gaps. At the last step, when the gap is
-one, InsertionSort is used, but onto an array which is almost already sorted
-by previous steps.
+Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que
+o publicou em 1959. Ele pode ser visto como uma aplicação da ideia do
+CombSort (faça com que elementos que tem um longo caminho pegarem
+atalhos) ao insertion sort (CombSort é uma variação do BubbleSort). Ao
+invés de comparar valores adjacentes durante o insertion sort, ele
+compara valores separados por um intervalo maior. Quanto maior o
+intervalo, mais rápido os elementos se movem para seu destino final,
+mas também menos preciso fica o movimento. É portanto essencial que o
+algoritmo vá sendo aplicado numa série de intervalos cada vez
+menor. No último passo, quando o intervalo for 1, o InsertionSort será
+usado, mas numa array que estará praticamente ordenada pelos passos
+anteriores.
 
 <p>Donald Shell propôs <code>len/2</code> como o valor inicial do intervalo, e
 ir dividindo por 2 a cada passo. O pseudo-código é o seguinte:

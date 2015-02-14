@@ -23,7 +23,7 @@ célula j</td><td>duas leituras</td></tr>
     <td>Retorna verdadeiro se o conteúdo da célula i é estritamente menor que
 <code>valor</code></td><td>uma leitura</td></tr>
 
-<tr><td>[!java|c]void [/!]alterna([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int
+<tr><td>[!java|c]void [/!]alternar([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int
 [/!]j[!scala]:Int[/!])</td>
      <td>Alterna ("swap") o conteúdo da célula i com o da célula j</td><td>duas escritas, duas leituras</td></tr>
 <tr><td>[!java|c]void [/!]copia([!java|c]int [/!]de[!scala]:Int[/!], [!java|c]int
@@ -54,14 +54,15 @@ algoritmo de ordenação. Alternar para a visão Objetivo e usar o menu de
 contexto (clique com botão direito) para alternar da visão do estado atual
 para a visão do histórico.</p>
 
-<p>A visão do histórico é um pouco bagunçada à primeira vista, mas na verdade é
-bem simples: o tempo anda da esquerda para a direita neste gráfico, e cada
-linha é uma célula de sua array. As linhas curvas que navegam entre linhas
-representam um certo valor de um dado. Quando duas linhas se cruzam,
-significa que dois valores foram trocados neste momento; uma bifurcação numa
-linha representa uma cópia de valor; quando um valor é magenta e seguido de
-uma interrogação (?), foi lido usando getValor(); Se o valor é vermelho e
-seguido de uma exclamação (!), foi escrito com setValor().</p>
+<p>A visão do histórico é um pouco bagunçada à primeira vista, mas na
+verdade é bem simples: o tempo anda da esquerda para a direita neste
+gráfico, e cada linha é uma célula de sua array. As linhas curvas que
+navegam entre linhas representam um certo valor de um dado. Quando
+duas linhas se cruzam, significa que dois valores foram alternados
+neste momento; uma bifurcação numa linha representa uma cópia de
+valor; quando um valor é magenta e seguido de uma interrogação (?),
+foi lido usando getValor(); Se o valor é vermelho e seguido de uma
+exclamação (!), foi escrito com setValor().</p>
 
 <p>Esta visão, inspirada por Aldo Cortesi, se mostra muito útil para entender o
 comportamento interno de algoritmos de ordenação.</p> 
