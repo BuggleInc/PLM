@@ -23,7 +23,8 @@
       to work on the decomposition of recursive problems.
     - Move the Moria exercise to the last position in welcome lesson.
       It is ways harder than the other ones.
-    - #104: Instruction: hint about brushUp/brushDown
+    - #104: Instructions: hint about brushUp/brushDown
+    - #428: Instructions: typo in english
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
 
