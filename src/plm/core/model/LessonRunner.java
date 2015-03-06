@@ -1,18 +1,13 @@
 package plm.core.model;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
-
-import javax.swing.SwingUtilities;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
-import plm.core.ui.ExerciseFailedDialog;
-import plm.core.ui.ExercisePassedDialog;
 
 /** 
  * This class runs the student code of the current exercise in a separated thread 
