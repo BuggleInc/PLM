@@ -8,6 +8,15 @@ public class ChangeBuggleBrushDown extends BuggleOperation {
 		super("changeBuggleBrushDown", buggle);
 		this.oldBrushDown = oldBrushDown;
 		this.newBrushDown = newBrushDown;
+		
+		String msg = "";
+		if(this.newBrushDown) {
+			msg = getI18n().tr("Buggle {0} is now painting the floor!", buggle.getName());	
+		}
+		else {
+			msg = getI18n().tr("Buggle {0} put away its brush.", buggle.getName());
+		}
+		setMsg(msg);
 	}
 
 	public boolean getOldBrushDown() {
