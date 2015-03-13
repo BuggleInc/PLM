@@ -224,6 +224,7 @@ public abstract class AbstractBuggle extends Entity {
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
+		addOperation(new MoveBuggleOperation(this, this.x, y, x, y));
 		this.x = x;
 		stepUI();
 	}
@@ -247,6 +248,7 @@ public abstract class AbstractBuggle extends Entity {
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
+		addOperation(new MoveBuggleOperation(this, x, this.y, x, y));
 		this.y = y;
 		stepUI();
 	}
@@ -272,6 +274,7 @@ public abstract class AbstractBuggle extends Entity {
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
+		addOperation(new MoveBuggleOperation(this, this.x, this.y, x, y));
 		this.x = x;
 		this.y = y;
 		stepUI();

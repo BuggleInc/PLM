@@ -18,37 +18,6 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public void run() {
 		// Overridden by children
 	}
-
-	@Override 
-	public void setX(int x) {
-		try {
-			super.setX(x);
-		} catch (BuggleInOuterSpaceException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-	@Override 
-	public void setY(int y) {
-		try {
-			super.setY(y);
-		} catch (BuggleInOuterSpaceException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-	@Override 
-	public void setPos(int x,int y) {
-		try {
-			super.setPos(x,y);
-		} catch (BuggleInOuterSpaceException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
 	
 	/* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
 	public void avance()          { forward(); }
