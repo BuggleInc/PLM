@@ -189,6 +189,18 @@ public abstract class AbstractBuggle extends Entity {
 	}
 	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException{
 		BuggleWorld bw = (BuggleWorld) world;
+		if(y<0) {
+			String message = Game.i18n.tr("You tried to access a cell with Y={0}, but the minimal Y in this world is 0.",y);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if(x<0) {
+			String message = Game.i18n.tr("You tried to access a cell with X={0}, but the minimal X in this world is 0.",x);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
 		if (y>=bw.getHeight()) {
 			String message = Game.i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
 			addOperation(new BuggleInOuterSpace(this, message));
@@ -218,6 +230,12 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setX(int x) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
+		if(x<0) {
+			String message = Game.i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
 		if (x>=bw.getWidth()) {
 			String message = Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
 			addOperation(new BuggleInOuterSpace(this, message));
@@ -242,6 +260,12 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setY(int y) throws BuggleInOuterSpaceException  {
 		BuggleWorld bw = (BuggleWorld) world;
+		if(y<0) {
+			String message = Game.i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
 		if (y>=bw.getHeight()) {
 			String message = Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
 			addOperation(new BuggleInOuterSpace(this, message));
@@ -262,6 +286,18 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
+		if(y<0) {
+			String message = Game.i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if(x<0) {
+			String message = Game.i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
 		if (y>=bw.getHeight()) {
 			String message = Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
 			addOperation(new BuggleInOuterSpace(this, message));
