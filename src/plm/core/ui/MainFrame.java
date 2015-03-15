@@ -64,6 +64,7 @@ import plm.core.ui.action.StartExecution;
 import plm.core.ui.action.StepExecution;
 import plm.core.ui.action.StopExecution;
 import plm.core.ui.action.SwitchExo;
+import plm.core.ui.action.SwitchLesson;
 import plm.core.ui.action.SwitchUser;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
@@ -82,6 +83,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton demoButton;
     private JToggleButton helpMeButton;
     private JButton exoChangeButton;
+    private JButton lessonChangeButton;
     
     private JMenu menuFile;
     private JMenuItem miFileSavePicture,miExoLoad,miExoSwitch,miExoExercise,miExoCourse,miFileQuit;
@@ -500,6 +502,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         toolBar.add(helpMeButton);
 
         toolBar.addSeparator();
+
+        lessonChangeButton = new PropagatingButton(new SwitchLesson(g, i18n.tr("Switch lesson"), ResourcesCache.getIcon("img/btn-switch-lesson.png")));
+        toolBar.add(lessonChangeButton);
         
         exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), ResourcesCache.getIcon("img/btn-switch-exo.png")));
         toolBar.add(exoChangeButton);
