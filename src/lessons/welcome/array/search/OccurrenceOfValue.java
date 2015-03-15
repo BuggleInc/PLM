@@ -1,4 +1,4 @@
-package lessons.welcome.array.indexof.value;
+package lessons.welcome.array.search;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class IndexOfValue extends BatExercise {
+public class OccurrenceOfValue extends BatExercise {
 
 	Random r = new Random();
 	
@@ -15,26 +15,26 @@ public class IndexOfValue extends BatExercise {
 		return tab[r.nextInt(tab.length)];
 	}
 	
-	public IndexOfValue(Lesson lesson) {
+	public OccurrenceOfValue(Lesson lesson) {
 		super(lesson);
-
+		
 		int[] tab = new int[15];
 		for (int i=0; i<tab.length; i++) 
-			tab[i] = r.nextInt(35)-15;
+			tab[i] = r.nextInt(tab.length/2);
 
 		int[] tab2 = new int[20];
 		for (int i=0; i<tab2.length; i++) 
-			tab2[i] = r.nextInt(35)-15;
+			tab2[i] = r.nextInt(tab.length/2);
 
 		int[] tab3 = new int[25];
 		for (int i=0; i<tab3.length; i++) 
-			tab3[i] = r.nextInt(35)-15;
+			tab3[i] = r.nextInt(tab.length/2);
 		
 		int[] tab4 = new int[25];
 		for (int i=0; i<tab4.length; i++) 
-			tab4[i] = r.nextInt(35)-15;
+			tab4[i] = r.nextInt(tab.length/2);
 
-		BatWorld myWorld = new BatWorld("indexOfValue");
+		BatWorld myWorld = new BatWorld("occurrences");
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
 		myWorld.addTest(VISIBLE, tab, r.nextInt(35)-15);
@@ -46,41 +46,48 @@ public class IndexOfValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab4, r.nextInt(35)-15);
 		myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
 
-		templatePython("indexOfValue", new String[] {"Array[Int]","Int"},
-				"def indexOfValue(nums,lookingFor):\n",
-				"  for i in range(len(nums)):\n" +
-				"    if nums[i]==lookingFor:\n"+
-				"      return i\n" +
-				"  return -1\n");
-		templateScala("indexOfValue", new String[] {"Array[Int]","Int"}, 
-				"def indexOfValue(nums:Array[Int] ,lookingFor:Int): Int = {\n",
-				"  for (i <- 0 to nums.length-1)\n" +
-				"    if (nums(i)==lookingFor) \n"+
-				"      return i\n" +
-				"  return -1\n"+
-				"}");
 		
+		
+		templatePython("occurrences", new String[]{"Array[Int]","Int"},
+				"def occurrences(nums,lookingFor):\n",
+				"  count = 0\n" +
+				"  for i in range(len(nums)):\n" +
+				"    if nums[i] == lookingFor:\n" +
+				"      count += 1\n" +
+				"  return count\n");
+		templateScala("occurrences", new String[]{"Array[Int]","Int"},
+				"def occurrences(nums:Array[Int],lookingFor:Int):Int = {\n",
+				"  var count = 0\n" +
+				"  for (i <- 0 to nums.length-1)\n" +
+				"    if (nums(i) == lookingFor)\n" +
+				"      count += 1\n" +
+				"  return count\n"+
+				"}");
+
 		setup(myWorld);
 	}
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( indexOf( (int[])t.getParameter(0), (Integer)t.getParameter(1) ) );
-		/* END SKEL */
-	}
-
+	
 	/* BEGIN TEMPLATE */
-	// computes the index of the first value equals to 'lookingFor' contained in tab variable
-	public int indexOf(int[] tab, Integer lookingFor) {
+	// counts the occurrences of the value 'lookingFor' contained in tab variable
+	public int occurrences(int[] tab, int lookingFor) {
 		/* BEGIN SOLUTION */
-		for (int i=0; i<tab.length; i++) 
-			if (tab[i] == lookingFor) 
-				return i;
-		
-		return -1;
+		int count = 0;
+		for (int i=0; i<tab.length; i++) {
+			if (tab[i] == lookingFor) {
+				count++;
+			}
+		}
+		return count;
 		/* END SOLUTION */
 	}
 
 	/* END TEMPLATE */
+	public void run(BatTest t) {
+		/* BEGIN SKEL */
+		t.setResult( occurrences( (int[])t.getParameter(0), (Integer)t.getParameter(1) ) );
+		/* END SKEL */
+	}
+
 }
 
 
