@@ -25,6 +25,7 @@
       It is ways harder than the other ones.
     - #104: Instructions: hint about brushUp/brushDown
     - #428: Instructions: typo in english
+    - New exercise, searching for the second biggest value in array
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
 
