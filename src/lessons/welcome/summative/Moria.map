@@ -1,8 +1,8 @@
 BuggleWorld: Moria
 Size: 21x9
-Buggle(2,1): west,black,black,Balin
-Buggle(2,4): west,black,black,Dwalin
-Buggle(3,7): west,black,black,Gimli
+Buggle(2,1): west,black,black,Balin,noBaggle,
+Buggle(2,4): west,black,black,Dwalin,noBaggle,
+Buggle(3,7): west,black,black,Gimli,noBaggle,
 Cell(0,0): 90/90/80,nobaggle,topwall,leftwall,
 Cell(0,1): 222/205/135,baggle,topwall,leftwall,
 Cell(0,2): 90/90/80,nobaggle,topwall,leftwall,

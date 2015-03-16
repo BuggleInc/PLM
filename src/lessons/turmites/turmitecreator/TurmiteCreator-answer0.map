@@ -1,6 +1,6 @@
-TurmiteWorld: blah
+BuggleWorld: blah
 Size: 100x100
-Buggle(48,57): north,red,white,ant
+Buggle(48,57): north,red,white,ant,noBaggle,
 Cell(3,49): yellow,nobaggle,notopwall,noleftwall,
 Cell(3,51): yellow,nobaggle,notopwall,noleftwall,
 Cell(3,52): yellow,nobaggle,notopwall,noleftwall,

@@ -1,6 +1,6 @@
-TurmiteWorld: crabe (8342 steps)
+BuggleWorld: crabe (8342 steps)
 Size: 78x72
-Buggle(48,57): north,red,white,ant
+Buggle(48,57): north,red,white,ant,noBaggle,
 Cell(3,49): black,nobaggle,notopwall,noleftwall,
 Cell(3,51): black,nobaggle,notopwall,noleftwall,
 Cell(3,52): black,nobaggle,notopwall,noleftwall,

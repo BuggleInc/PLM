@@ -1,6 +1,6 @@
 BuggleWorld: Island
 Size: 12x12
-Buggle(11,5): east,black,black,Thesee
+Buggle(11,5): east,black,black,Thesee,haveBaggle,
 Cell(0,0): white,nobaggle,topwall,leftwall,
 Cell(0,1): white,nobaggle,notopwall,leftwall,
 Cell(0,2): white,nobaggle,notopwall,leftwall,

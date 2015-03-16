@@ -1,6 +1,6 @@
 BuggleWorld: Snail
 Size: 8x7
-Buggle(3,4): east,black,lightGray,Hunter
+Buggle(3,4): east,black,lightGray,Hunter,haveBaggle,
 Cell(2,0): lightGray,nobaggle,notopwall,noleftwall,
 Cell(2,1): lightGray,nobaggle,notopwall,noleftwall,
 Cell(2,2): lightGray,nobaggle,notopwall,noleftwall,
