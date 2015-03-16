@@ -1,4 +1,4 @@
-package lessons.welcome.array.maxvalue;
+package lessons.welcome.array.search;
 
 import java.util.Random;
 

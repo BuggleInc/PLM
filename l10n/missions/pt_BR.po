@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-01-09 23:51-0300\n"
-"PO-Revision-Date: 2014-12-30 23:17-0300\n"
+"POT-Creation-Date: 2015-02-14 21:21+0100\n"
+"PO-Revision-Date: 2015-02-14 21:24+0100\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1152,7 +1152,7 @@ msgstr ""
 #: src/lessons/welcome/instructions/Instructions.html:9
 msgid ""
 "Programs are mainly suites of method calls, which are no more than a list of "
-"simple order given to the machine. It is very similar to a recipe stating "
+"simple orders given to the machine. It is very similar to a recipe stating "
 "<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  In "
 "your programs, such built instructions are called functions or methods, and "
 "you should add parenthesis to invoke them:"
@@ -1330,6 +1330,23 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:70
 msgid ""
+"Use your brush to mark the ground as you walk. Start marking the ground with "
+"<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward "
+"(e.g., to enter your house without marking its ground). The full list of all "
+"instructions understood by your buggle can be found in \"Help/About this "
+"world\"."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/instructions/Instructions.html:75
+#, fuzzy
+#| msgid "Goal of this exercise"
+msgid "After this exercise"
+msgstr "Objetivo deste exercício"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:76
+msgid ""
 "When switching to the next exercise, please note that there is a sub-"
 "exercise following this one.  By default, it is hidden in the menu and you "
 "have to open the sub-menu to see it.  When you switch the exercise, most of "
@@ -1341,7 +1358,7 @@ msgstr ""
 "exercícios fica escondida por que a árvore está recolhida, como segue:"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:75
+#: src/lessons/welcome/instructions/Instructions.html:81
 msgid ""
 "You have to click on the little symbol to the left of the buggle to unfold "
 "the tree, as follows:"

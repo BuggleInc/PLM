@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-01-04 16:03+0100\n"
-"PO-Revision-Date: 2015-01-04 16:04+0100\n"
+"POT-Creation-Date: 2015-02-14 21:21+0100\n"
+"PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1124,7 +1124,7 @@ msgstr ""
 #: src/lessons/sort/basic/comb/AlgCombSort.html:39
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #: src/lessons/recursion/cons/Length.html:8
-#: src/lessons/recursion/square/FourSquare.html:46
+#: src/lessons/recursion/lego/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
@@ -1156,7 +1156,7 @@ msgstr ""
 #: src/lessons/welcome/instructions/Instructions.html:9
 msgid ""
 "Programs are mainly suites of method calls, which are no more than a list of "
-"simple order given to the machine. It is very similar to a recipe stating "
+"simple orders given to the machine. It is very similar to a recipe stating "
 "<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  In "
 "your programs, such built instructions are called functions or methods, and "
 "you should add parenthesis to invoke them:"
@@ -1340,6 +1340,23 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:70
 msgid ""
+"Use your brush to mark the ground as you walk. Start marking the ground with "
+"<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward "
+"(e.g., to enter your house without marking its ground). The full list of all "
+"instructions understood by your buggle can be found in \"Help/About this "
+"world\"."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/instructions/Instructions.html:75
+#, fuzzy
+#| msgid "Goal of this exercise"
+msgid "After this exercise"
+msgstr "Objectif de l'exercice"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:76
+msgid ""
 "When switching to the next exercise, please note that there is a sub-"
 "exercise following this one.  By default, it is hidden in the menu and you "
 "have to open the sub-menu to see it.  When you switch the exercise, most of "
@@ -1351,7 +1368,7 @@ msgstr ""
 "sélection des exercices, la plupart d'entre eux sont cachés, comme cela:"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:75
+#: src/lessons/welcome/instructions/Instructions.html:81
 msgid ""
 "You have to click on the little symbol to the left of the buggle to unfold "
 "the tree, as follows:"
@@ -3914,7 +3931,7 @@ msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:231
-#: src/lessons/recursion/square/FourSquare.html:48
+#: src/lessons/recursion/lego/square/FourSquare.html:48
 #: src/lessons/recursion/hanoi/HanoiBoard.html:21
 msgid "Goal of this exercise"
 msgstr "Objectif de l'exercice"
@@ -5973,7 +5990,7 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
-#: src/lessons/recursion/square/FourSquare.html:28
+#: src/lessons/recursion/lego/square/FourSquare.html:28
 msgid "[!java|scala|c]"
 msgstr "[!java|scala|c]"
 
@@ -8562,7 +8579,8 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:7
-#: src/lessons/recursion/short_desc.html:6 src/lessons/maze/short_desc.html:6
+#: src/lessons/recursion/lego/short_desc.html:6
+#: src/lessons/maze/short_desc.html:6
 msgid ""
 "You are supposed to master the bases of programming to take this lesson."
 msgstr ""
@@ -12083,17 +12101,17 @@ msgstr ""
 "O(n log(n))."
 
 #. type: Content of: <h1>
-#: src/lessons/recursion/Main.html:2
+#: src/lessons/recursion/lego/Main.html:2
 msgid "Recursive algorithms"
 msgstr "Algorithmes récursifs"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Main.html:3
+#: src/lessons/recursion/lego/Main.html:3
 msgid "This lesson allows to experiment with recursive algorithms."
 msgstr "Cette leçon vous permet d'expérimenter avec des algorithmes récursifs."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Main.html:5
+#: src/lessons/recursion/lego/Main.html:5
 msgid ""
 "If you need more recursive algorithms, an exercise on recursive sorting "
 "algorithms (in particular QuickSort and MergeSort) is planned in the future "
@@ -12104,12 +12122,12 @@ msgstr ""
 "la leçon sur les tris."
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/Main.html:9
+#: src/lessons/recursion/lego/Main.html:9
 msgid "What can I do to improve this lesson?"
 msgstr "Que puis-je faire pour améliorer cette leçon ?"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Main.html:11
+#: src/lessons/recursion/lego/Main.html:11
 msgid ""
 "As usual, there are several things that could be done in this lesson to "
 "improve it further:"
@@ -12118,7 +12136,7 @@ msgstr ""
 "leçon&nbsp;:"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:13
+#: src/lessons/recursion/lego/Main.html:13
 msgid ""
 "The Sierpinski triangle can be drawn using a simpler L-system. See http://"
 "jpvallon.free.fr/recursivite.html"
@@ -12127,7 +12145,7 @@ msgstr ""
 "utilisant un L-système. Voir http://jpvallon.free.fr/recursivite.html"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:14
+#: src/lessons/recursion/lego/Main.html:14
 msgid ""
 "The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
 "sierpinski/sierpinskitriangle.shtml"
@@ -12136,7 +12154,7 @@ msgstr ""
 "fractals/sierpinski/sierpinskitriangle.shtml"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:15
+#: src/lessons/recursion/lego/Main.html:15
 msgid ""
 "The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
 "edu/~lriddle/ifs/heighway/heighway.htm"
@@ -12145,7 +12163,7 @@ msgstr ""
 "ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:16
+#: src/lessons/recursion/lego/Main.html:16
 msgid ""
 "The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/heighway/twindragon.htm"
@@ -12154,7 +12172,7 @@ msgstr ""
 "agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:17
+#: src/lessons/recursion/lego/Main.html:17
 msgid ""
 "The space filling curves could be added (Peano, Hildebert, etc).  See: "
 "http://teachout1.net/village/fill.html"
@@ -12163,7 +12181,7 @@ msgstr ""
 "ajoutées. http://teachout1.net/village/fill.html"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/Main.html:19
+#: src/lessons/recursion/lego/Main.html:19
 msgid ""
 "We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
 "helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
@@ -12174,12 +12192,12 @@ msgstr ""
 "actionsrecursives.html"
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/short_desc.html:2
+#: src/lessons/recursion/lego/short_desc.html:2
 msgid "Bases of recursion"
 msgstr "Les bases de la récursion"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/short_desc.html:3
+#: src/lessons/recursion/lego/short_desc.html:3
 msgid ""
 "Discover the recursive way of thinking by drawing trees and other figures "
 "with the Logo turtle."
@@ -12188,12 +12206,12 @@ msgstr ""
 "tortue Logo."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/square/FourSquare.html:2
+#: src/lessons/recursion/lego/square/FourSquare.html:2
 msgid "The small cousines of Buggles"
 msgstr "Les petites cousines des Buggles"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:4
+#: src/lessons/recursion/lego/square/FourSquare.html:4
 msgid ""
 "Today, we will meet the small cousines of the buggles: the turtles. In fact, "
 "turtles are much olders than the buggles. They were invented in the 70's by "
@@ -12209,7 +12227,7 @@ msgstr ""
 "Wellesley College plus tard."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:10
+#: src/lessons/recursion/lego/square/FourSquare.html:10
 msgid ""
 "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can "
 "order them to move forward, to turn, to move backward, etc. Just like "
@@ -12222,7 +12240,7 @@ msgstr ""
 "avancent (simplement, le trait est bien plus fin)."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:15
+#: src/lessons/recursion/lego/square/FourSquare.html:15
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
 "turtles can move of any arbitrary angles specified by a real number (a "
@@ -12240,7 +12258,7 @@ msgstr ""
 "complètement les tortues."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:22
+#: src/lessons/recursion/lego/square/FourSquare.html:22
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
@@ -12256,17 +12274,17 @@ msgstr ""
 "plus de détails)."
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/square/FourSquare.html:29
+#: src/lessons/recursion/lego/square/FourSquare.html:29
 msgid "Doubles? But what is it?"
 msgstr "Des doubles ? Mais qu'est ce que c'est ?"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/square/FourSquare.html:30
+#: src/lessons/recursion/lego/square/FourSquare.html:30
 msgid "It's simply a point number. Example:"
 msgstr "C'est simplement un nombre à virgule. Exemple:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/square/FourSquare.html:32
+#: src/lessons/recursion/lego/square/FourSquare.html:32
 #, no-wrap
 msgid ""
 "double x = 3.72;\n"
@@ -12298,7 +12316,7 @@ msgstr ""
 "[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 (“transtypage en double”, converti en double)\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:49
+#: src/lessons/recursion/lego/square/FourSquare.html:49
 msgid ""
 "Even if this is the first exercise on the recursivity lesson, the code you "
 "have to write is not recursive. The goal is to get familiar with the turtle "
@@ -12309,7 +12327,7 @@ msgstr ""
 "avec le monde des tortues avant d'attaquer les choses sérieuses."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/FourSquare.html:53
+#: src/lessons/recursion/lego/square/FourSquare.html:53
 msgid ""
 "You must reproduce a simple geometrical painting constituted of four 100 "
 "steps long squares (see the objective world for more details). It is "
@@ -12322,12 +12340,12 @@ msgstr ""
 "réutiliser lors de l'écriture de votre code."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:2
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:2
 msgid "Fractal of polygons"
 msgstr "Fractales de polygones"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:4
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:4
 msgid ""
 "The fractal we will now draw is formed of a polygon, with little polygons on "
 "each corner. The prototype of the method drawing it is the following:"
@@ -12337,15 +12355,15 @@ msgstr ""
 "la fonction le traçant est le suivant:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:6
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:6
 #, no-wrap
 msgid "[!java|c]void [/!]polygonFractal ([!java|c]int [/!]levels[!scala]:Int[/!], [!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]polygonFractal ([!java|c]int [/!]niveaux[!scala]:Int[/!], [!java|c]int [/!]cotés[!scala]:Int[/!], [!java|c]double [/!]longueur[!scala]:Double[/!], [!java|c]double [/!]multiplicateur[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:8
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:26
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:45
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:8
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:26
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:45
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -12354,12 +12372,12 @@ msgstr ""
 "fonction."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/Koch.html:2
+#: src/lessons/recursion/lego/koch/Koch.html:2
 msgid "Snow flake"
 msgstr "Flocons de neige"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/koch/Koch.html:4
+#: src/lessons/recursion/lego/koch/Koch.html:4
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
 "geometric pattern repeated at every scale."
@@ -12369,7 +12387,7 @@ msgstr ""
 "reproduit à n'importe quelle échelle."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:7
+#: src/lessons/recursion/lego/koch/Koch.html:7
 msgid ""
 "The general form is a triangle, with each side given by several recursive "
 "calls. Your work is only to write the code of the <code>snowSide</code> "
@@ -12386,7 +12404,7 @@ msgstr ""
 "et les autres couleurs seront dessinées automatiquement."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:13
+#: src/lessons/recursion/lego/koch/Koch.html:13
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
 "logic, and then reproduce it. At level 0, the Koch curve is just a straight "
@@ -12406,12 +12424,12 @@ msgstr ""
 "remplacé par un petit triangle équilatéral."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:20
+#: src/lessons/recursion/lego/koch/Koch.html:20
 msgid "The pseudo-code of the general case is the following:"
 msgstr "Le pseudo-code du cas général est le suivant :"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/koch/Koch.html:22
+#: src/lessons/recursion/lego/koch/Koch.html:22
 #, no-wrap
 msgid ""
 "  Draw recursively a smaller segment\n"
@@ -12431,7 +12449,7 @@ msgstr ""
 "Dessiner récursivement un segment plus petit\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:30
+#: src/lessons/recursion/lego/koch/Koch.html:30
 msgid ""
 "As you can see, the function forward() is not called from the recursive "
 "case, only in the base case when there is no recursive call."
@@ -12441,18 +12459,18 @@ msgstr ""
 "d'appel récursif."
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/recursion/koch/Koch.html:34
+#: src/lessons/recursion/lego/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
 msgstr "TL;DR. Vous pouvez me dessiner tout ça ?"
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/koch/Koch.html:35
-#: src/lessons/recursion/koch/SquareKoch.html:9
+#: src/lessons/recursion/lego/koch/Koch.html:35
+#: src/lessons/recursion/lego/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr "Voici le résultat des premiers niveaux de récursion."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:39
+#: src/lessons/recursion/lego/koch/Koch.html:39
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
@@ -12463,12 +12481,12 @@ msgstr ""
 "étrange et inattendu."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/SquareKoch.html:2
+#: src/lessons/recursion/lego/koch/SquareKoch.html:2
 msgid "Snow square"
 msgstr "Carrés de neige"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/SquareKoch.html:4
+#: src/lessons/recursion/lego/koch/SquareKoch.html:4
 msgid ""
 "This exercise is a variation over the snow flake that we saw previously.  "
 "The main difference is that we are growing little squares instead of "
@@ -12479,12 +12497,12 @@ msgstr ""
 "carrés au lieu des triangles sur les segments de cette figure."
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/recursion/koch/SquareKoch.html:8
+#: src/lessons/recursion/lego/koch/SquareKoch.html:8
 msgid "I don't see it, sorry. Please picture it."
 msgstr "Je ne vois pas. Je peux voir un dessin ?"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/SquareKoch.html:14
+#: src/lessons/recursion/lego/koch/SquareKoch.html:14
 msgid ""
 "As previously, your <code>squareSide</code> function should only draw one "
 "side of the figure, and the template will call it for all sides "
@@ -12495,12 +12513,12 @@ msgstr ""
 "dessiner tous les cotés (chacun avec sa couleur)."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/PentaKoch.html:2
+#: src/lessons/recursion/lego/koch/PentaKoch.html:2
 msgid "Snow pentagon"
 msgstr "Pentagone de neige"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/PentaKoch.html:4
+#: src/lessons/recursion/lego/koch/PentaKoch.html:4
 msgid ""
 "Here comes yet another variation of the Koch curve. This time, we grow "
 "little pentagons (ie, polygons with five sides each). I'm sure you get it "
@@ -12511,7 +12529,7 @@ msgstr ""
 "sur les faces de la figure. Je suis sûr que vous commencez à prendre le truc."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/PentaKoch.html:7
+#: src/lessons/recursion/lego/koch/PentaKoch.html:7
 msgid ""
 "Another difference with earlier is that the length is not divided by three "
 "at each step anymore, but multiplied by 0.4. The curve looks better this "
@@ -12523,7 +12541,7 @@ msgstr ""
 "ainsi :)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/PentaKoch.html:10
+#: src/lessons/recursion/lego/koch/PentaKoch.html:10
 msgid ""
 "We draw only one side in this exercise so your code will be called only once "
 "this time."
@@ -12532,12 +12550,12 @@ msgstr ""
 "appelé qu'une seule fois."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/HexaKoch.html:2
+#: src/lessons/recursion/lego/koch/HexaKoch.html:2
 msgid "Snow hexagon"
 msgstr "Hexagone de neige"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/HexaKoch.html:4
+#: src/lessons/recursion/lego/koch/HexaKoch.html:4
 msgid ""
 "This time, we will draw the curve that is known as the (6, 0.14)-Koch curve. "
 "This means that you have to grow 6-sided polygons on the segments, and that "
@@ -12549,7 +12567,7 @@ msgstr ""
 "multipliées par 0,14 à chaque étage de la récursion."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/HexaKoch.html:8
+#: src/lessons/recursion/lego/koch/HexaKoch.html:8
 msgid ""
 "For the record, the origical Koch curve is the (3, 1/3)-Koch curve, the Snow "
 "square would be (4,1/3)-Koch curve while the Snow pentagon is also called "
@@ -12564,7 +12582,7 @@ msgstr ""
 "voulez."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/HexaKoch.html:13
+#: src/lessons/recursion/lego/koch/HexaKoch.html:13
 msgid ""
 "For further reference, please see <a href=\"http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/"
@@ -12575,12 +12593,12 @@ msgstr ""
 "ifs/kcurve/kcurve.htm</a>."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/koch/Crab.html:2
+#: src/lessons/recursion/lego/koch/Crab.html:2
 msgid "Fractal Crab"
 msgstr "La fractale du crabe"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:4
+#: src/lessons/recursion/lego/koch/Crab.html:4
 msgid ""
 "The Crab curve is not exactly a Koch curve, but that's still a fractal and "
 "it's built rather similarly.  This time, we grow square triangle on the side "
@@ -12595,7 +12613,7 @@ msgstr ""
 "sqrt(2)[/!][!python]math.sqrt(2)[/!][!c]sqrt(2);[/!] à chaque étape."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:8
+#: src/lessons/recursion/lego/koch/Crab.html:8
 msgid ""
 "Check the figures produced by the first steps of recursion to understand the "
 "pattern."
@@ -12604,12 +12622,12 @@ msgstr ""
 "comprendre le motif."
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/koch/Crab.html:10
+#: src/lessons/recursion/lego/koch/Crab.html:10
 msgid "Bibliographical note"
 msgstr "Note bibliographique"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:11
+#: src/lessons/recursion/lego/koch/Crab.html:11
 msgid ""
 "This curve, also called the Lévy C curve was invented in 1938 by the French "
 "mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
@@ -12624,12 +12642,12 @@ msgstr ""
 "shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/tree/Tree.html:2
+#: src/lessons/recursion/lego/tree/Tree.html:2
 msgid "Trees"
 msgstr "Arbres"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/tree/Tree.html:4
+#: src/lessons/recursion/lego/tree/Tree.html:4
 msgid ""
 "We will now draw trees. For that, we will write a method using double "
 "recursion following this prototype"
@@ -12638,13 +12656,13 @@ msgstr ""
 "une fonction doublement récursive de prototype"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/tree/Tree.html:6
+#: src/lessons/recursion/lego/tree/Tree.html:6
 #, no-wrap
 msgid "[!java|c]void [/!]tree([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]angle[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]tree([!java|c]int [/!]nbPas[!scala]:Int[/!], [!java|c]double [/!]longueur[!scala]:Double[/!], [!java|c]double [/!]angle[!scala]:Double[/!], [!java|c]double [/!]multiplicateur[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/tree/Tree.html:8
+#: src/lessons/recursion/lego/tree/Tree.html:8
 msgid ""
 "To draw a tree of four levels, you have to draw a trunk of the given length, "
 "turn right of the given angle, draw a tree of level 3, turn left twice of "
@@ -12658,7 +12676,7 @@ msgstr ""
 "la position initiale !"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/tree/Tree.html:13
+#: src/lessons/recursion/lego/tree/Tree.html:13
 msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
@@ -12667,7 +12685,7 @@ msgstr ""
 "l'étage N+1."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:16
+#: src/lessons/recursion/lego/tree/Tree.html:16
 msgid ""
 "At the end, here is the pseudo-code of the general case (you should add the "
 "base case yourself):"
@@ -12676,7 +12694,7 @@ msgstr ""
 "bien sûr le cas de base, laissé en exercice)."
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/recursion/tree/Tree.html:18
+#: src/lessons/recursion/lego/tree/Tree.html:18
 #, no-wrap
 msgid ""
 "  Move forward of the desired length\n"
@@ -12690,7 +12708,7 @@ msgstr ""
 "Reculer de la longueur désirée pour retourner au point de départ\n"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:23
+#: src/lessons/recursion/lego/tree/Tree.html:23
 msgid ""
 "Don't forget to add the base case to your code, or your buggle will enter an "
 "infinite loop.  Then, drawing the right subtree comes down to turn right and "
@@ -12701,7 +12719,7 @@ msgstr ""
 "tourner à droite puis dessiner un sous-arbre."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:26
+#: src/lessons/recursion/lego/tree/Tree.html:26
 msgid ""
 "As you can see, each recursion level is represented by a distinctive color. "
 "For that, you have to call the <code>current(step)</code>, passing the "
@@ -12716,7 +12734,7 @@ msgstr ""
 "vous retournez à votre position initiale."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/recursion/tree/Tree.html:30
+#: src/lessons/recursion/lego/tree/Tree.html:30
 msgid ""
 "If you get your function wrong, this can easily become hairly to debug as "
 "your errors will appear at each level of the recursion, completely changing "
@@ -12739,12 +12757,12 @@ msgstr ""
 "marche) pour avoir les couleurs justes, et donc pour passer l'exercice."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:2
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:2
 msgid "Sierpinski's Triangle"
 msgstr "Triangle de Sierpinski"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:4
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:4
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
 "several smaller triangles are embedded. The prototype of the function to "
@@ -12755,13 +12773,13 @@ msgstr ""
 "fonction le traçant est le suivant :"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:7
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:7
 #, no-wrap
 msgid "[!java|c]void [/!]sierpinski([!java|c]int [/!]level[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]sierpinski([!java|c]int [/!]niveau[!scala]:Int[/!], [!java|c]double [/!]longueur[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/sierpinski/Sierpinski.html:9
+#: src/lessons/recursion/lego/sierpinski/Sierpinski.html:9
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function.  To draw one side of the triangle, draw a smaller recursive "
@@ -12775,12 +12793,12 @@ msgstr ""
 "tournant de 120 entre chaque."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/spiral/Spiral.html:2
+#: src/lessons/recursion/lego/spiral/Spiral.html:2
 msgid "Spirals"
 msgstr "Spirales"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/spiral/Spiral.html:4
+#: src/lessons/recursion/lego/spiral/Spiral.html:4
 msgid ""
 "We will now draw our first recursive function with the turtle. The goal is "
 "to draw different kind of spirals with the same function, which prototype is "
@@ -12791,13 +12809,13 @@ msgstr ""
 "la même fonction, dont le prototype est le suivant:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiral/Spiral.html:7
+#: src/lessons/recursion/lego/spiral/Spiral.html:7
 #, no-wrap
 msgid "[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]length[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])"
 msgstr "[!java|c]void [/!]spiral([!java|c]int [/!]nbPas[!scala]:Int[/!], [!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]longueur[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/spiral/Spiral.html:9
+#: src/lessons/recursion/lego/spiral/Spiral.html:9
 msgid ""
 "To help you understanding how to write it, here is an example of how the "
 "parameters change during one specific call:"
@@ -12806,7 +12824,7 @@ msgstr ""
 "des différentes valeurs prises par les paramètres dans un cas:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiral/Spiral.html:12
+#: src/lessons/recursion/lego/spiral/Spiral.html:12
 #, no-wrap
 msgid ""
 "spiral(5, 90, 0, 3);\n"
@@ -12844,12 +12862,12 @@ msgstr ""
 "          spiral(0,90,12,3);\n"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/spiral/SpiralUse.html:2
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:2
 msgid "Drawing spirals"
 msgstr "Faire des spirales"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:4
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:4
 msgid ""
 "This exercise is not really an exercise in that sense that you just have to "
 "click on the Execute button to get the reward: All the needed code is "
@@ -12866,7 +12884,7 @@ msgstr ""
 "l'exercice suivant si le temps vous manque, puis revenir jouer ici plus tard."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:10
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:10
 msgid ""
 "Here are some of the figures that you can produce with your <code>Spiral</"
 "code> function, provided that you come with the right parameters. You can "
@@ -12879,7 +12897,7 @@ msgstr ""
 "quand vous explorez ces spirales."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:21
+#: src/lessons/recursion/lego/spiral/SpiralUse.html:21
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
@@ -12889,22 +12907,22 @@ msgstr ""
 "l'ajouter à la liste!"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:2
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:2
 msgid "Dragon curve (1)"
 msgstr "Courbe du Dragon (1)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:4
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:4
 msgid "The dragon curve is a classical example of recursive method."
 msgstr "Un exemple classique de la méthode récursive est la courbe du Dragon."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:6
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:6
 msgid "The definition of this curve is the following:"
 msgstr "La définition de cette courbe est la suivante :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:7
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 msgstr ""
@@ -12912,7 +12930,7 @@ msgstr ""
 "et Q,"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:8
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:8
 msgid ""
 "the dragon curve of order n is the dragon curve of order n-1 between P and "
 "R, followed by the same curve of order n-1 between Q and R, where PRQ is an "
@@ -12927,8 +12945,8 @@ msgstr ""
 "sont les suivantes:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:14
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:27
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:14
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:27
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -12938,19 +12956,19 @@ msgstr ""
 "v = (y + t)/2 - (z - x)/2\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:18
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:18
 msgid "The prototype of the method drawing the curve is the following:"
 msgstr "Le prototype de la méthode traçant la courbe est le suivant :"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:19
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:23
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:23
 #, no-wrap
 msgid "[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]dragon([!java|c]int [/!]ordre[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:22
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:22
 msgid ""
 "You should use the method <code>setPos(x,y)</code> to put your turtle at "
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
@@ -12962,12 +12980,12 @@ msgstr ""
 "de coordonnées (z,t)"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:2
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:2
 msgid "The dragon curve (2)"
 msgstr "Courbe du Dragon (2)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:4
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:4
 msgid ""
 "Previous solution induce that the turtle teleports to other location, or at "
 "the very least, that it moves its pen up during the drawing. Indeed, the end "
@@ -12982,7 +13000,7 @@ msgstr ""
 "était nécessaire d'utiliser la méthode <code>setPos()</code>"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:10
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:10
 msgid ""
 "In this lesson, you will write a recursive method allowing to draw the "
 "dragon curve without taking the pen up. For that, we need another recursive "
@@ -12993,7 +13011,7 @@ msgstr ""
 "définirez une seconde méthode récursive qui trace la courbe à l'envers."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:14
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:14
 msgid ""
 "The method <code>dragon()</code> is then recursively defined using itself "
 "and <code>dragonReverse()</code>. Likewise, the method "
@@ -13007,7 +13025,7 @@ msgstr ""
 "exemple de <i>récursivité croisée</i>."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:21
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:21
 msgid ""
 "The prototype of the <code>dragon()</code> method remains unchanged from "
 "previous exercise:"
@@ -13016,7 +13034,7 @@ msgstr ""
 "précédemment :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:25
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:25
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
@@ -13025,19 +13043,19 @@ msgstr ""
 "<code>dragon()</code> seront :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:31
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:31
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
 msgstr ""
 "Le prototype de la méthode <code>dragonInverse()</code> est identique : :"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:32
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:32
 #, no-wrap
 msgid "[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr "[!java|c]void [/!]dragonReverse([!java|c]int [/!]ordre[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:34
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:34
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
 "code> are:"
@@ -13046,7 +13064,7 @@ msgstr ""
 "<code>dragonInverse()</code> seront :"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:36
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:36
 #, no-wrap
 msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
@@ -13056,7 +13074,7 @@ msgstr ""
 "v = (y + t)/2 + (z - x)/2\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:40
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:40
 msgid ""
 "To make the work of each method recursiv more visible, the line painted by "
 "the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
@@ -14102,7 +14120,13 @@ msgid ""
 "g. for the cyclic variation). I would happily integrate your solutions to "
 "the PLM, especially if you can hint (without spoiling) the solution to guide "
 "the next ones."
-msgstr "Une question intéressante est de savoir s'il existe des algorithmes itératifs aussi simples pour les différentes variantes du problème. Certains ont été proposés dans la littérature (en particulier pour la variante cyclique). J'intégrerais vos solutions avec plaisir dans la PLM, surtout si vous trouvez des indications permettant de guider la réflexion sans donner la solution."
+msgstr ""
+"Une question intéressante est de savoir s'il existe des algorithmes "
+"itératifs aussi simples pour les différentes variantes du problème. Certains "
+"ont été proposés dans la littérature (en particulier pour la variante "
+"cyclique). J'intégrerais vos solutions avec plaisir dans la PLM, surtout si "
+"vous trouvez des indications permettant de guider la réflexion sans donner "
+"la solution."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:2

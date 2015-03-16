@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 
@@ -270,12 +271,36 @@ class LessonButton extends JButton {
 			}
 		});
 		addMouseListener(new MouseAdapter() {
+			String filename = path.replace('.', File.separatorChar)
+					+ "/short_desc";
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 					overview.setPath(path);
 					overview.goOnDoubleClick();
 				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				try {
+					BufferedReader buffer = FileUtils.newFileReader(filename,
+							"html", true);
+					String line = buffer.readLine();
+					while (!line.contains("<h3>")) {
+						line = buffer.readLine();
+					}
+
+					String title = line.replaceAll("<h3>|</h3>", "");
+
+					setToolTipText(title);
+					buffer.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
 			}
 		});
 	}

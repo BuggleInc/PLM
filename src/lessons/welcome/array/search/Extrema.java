@@ -1,4 +1,4 @@
-package lessons.welcome.array.maxvalue;
+package lessons.welcome.array.search;
 
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;

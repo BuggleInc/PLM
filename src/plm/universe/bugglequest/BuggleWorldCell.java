@@ -3,6 +3,7 @@ package plm.universe.bugglequest;
 import java.awt.Color;
 
 import plm.core.model.Game;
+import plm.core.utils.ColorMapper;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
@@ -192,7 +193,6 @@ public class BuggleWorldCell extends GridWorldCell {
 			return false;
 		return true;
 	}
-
 	/* This function is called as answer.diffTo(current) */
 	public String diffTo(BuggleWorldCell current) {
 		StringBuffer sb = new StringBuffer();
@@ -202,9 +202,11 @@ public class BuggleWorldCell extends GridWorldCell {
 			sb.append(this.world.i18n.tr(", there should be a baggle"));
 		if (color == null) {
 			if (current.color != null)
-				sb.append(this.world.i18n.tr(", the ground should not be {0}",current.color));
-		} else if (!color.equals(current.color))
-			sb.append(this.world.i18n.tr(", the ground is expected to be {0}, but it is {1}", color, current.color));
+				sb.append(this.world.i18n.tr(", the ground should not be {0}",ColorMapper.color2translated(current.color)));
+		} else if (!color.equals(current.color)) {
+			sb.append(this.world.i18n.tr(", the ground is expected to be {0}, but it is {1}", 
+					ColorMapper.color2translated(color), ColorMapper.color2translated(current.color)));
+		}
 		if (!content.equals(current.content))
 			sb.append(this.world.i18n.tr(", the ground reads ''{0}'' (expected: ''{1}'')", current.content, content));
 		if (leftWall != current.leftWall)
