@@ -1,9 +1,9 @@
-package lessons.welcome.loopwhile;
+package lessons.welcome.summative;
 
 import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
-class ScalaWhileMoriaEntity extends SimpleBuggle {
+class ScalaMoriaEntity extends SimpleBuggle {
 	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}

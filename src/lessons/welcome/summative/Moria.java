@@ -16,7 +16,7 @@ public class Moria extends ExerciseTemplated {
 		
 		/* Create initial situation */
 		World[] myWorlds = new World[] {
-				BuggleWorld.newFromFile("lessons/welcome/loopwhile/WhileMoria"),
+				BuggleWorld.newFromFile("lessons/welcome/summative/Moria"),
 		};
 		for (World w: myWorlds)
 			w.setDelay(50); // moving a bit faster than usual
