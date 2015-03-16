@@ -1,10 +1,10 @@
-package lessons.welcome.loopwhile;
+package lessons.welcome.summative;
 
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.SimpleBuggle;
 
-public class WhileMoriaEntity extends SimpleBuggle {
+public class MoriaEntity extends SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));

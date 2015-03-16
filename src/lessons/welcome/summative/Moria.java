@@ -1,4 +1,4 @@
-package lessons.welcome.loopwhile;
+package lessons.welcome.summative;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import plm.universe.BrokenWorldFileException;
 import plm.universe.World;
 import plm.universe.bugglequest.BuggleWorld;
 
-public class WhileMoria extends ExerciseTemplated {
+public class Moria extends ExerciseTemplated {
 
-	public WhileMoria(Lesson lesson) throws IOException, BrokenWorldFileException {
+	public Moria(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "DwarfCode";
 		

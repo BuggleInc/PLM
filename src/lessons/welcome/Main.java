@@ -223,7 +223,7 @@ public class Main extends Lesson {
 		addExercise(new TraversalDiagonal(this),snake);
 		
 		// Other exercises
-		addExercise(new WhileMoria(this));
+		addExercise(new Moria(this));
 
 		
 	}
