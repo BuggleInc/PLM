@@ -372,7 +372,12 @@ public abstract class AbstractBuggle extends Entity {
 		getCellFromLesson(this.x, this.y).baggleAdd();
 		carryBaggle = false;
 	}
-
+	
+	protected void doCarryBaggle() { /* This should not be used in user code, only in the world loading code */
+		carryBaggle = true;
+	}
+	
+	
 	public boolean isOverMessage() {
 		return getCell().hasContent();
 	}
