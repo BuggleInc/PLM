@@ -25,6 +25,8 @@ import plm.core.utils.FileUtils;
 
 public class GitUtilsTest {
 
+	final private String trackUserProperty = "plm.git.track.user";
+
 	private final File plmTestDir = new File(System.getProperty("user.home") + System.getProperty("file.separator")
 			+ ".plm-test");
 	private final File remotePlmTestDir = new File(System.getProperty("user.home") + System.getProperty("file.separator")
@@ -36,11 +38,12 @@ public class GitUtilsTest {
 	private User testUser;
 	private String userBranch;
 	private Utils utils;
-	
+	private String oldTrackUserProperty;
+
 	public GitUtilsTest() {
 		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
-		
+		oldTrackUserProperty = Game.getProperty(trackUserProperty);
 		testUser = new User("testUser");
 		userBranch = testUser.getUserUUIDasString();
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
@@ -52,6 +55,7 @@ public class GitUtilsTest {
 	
 	@Before 
 	public void setUp() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		Game.setProperty(trackUserProperty, "true");
 		try {
 			gitUtils.initLocalRepository(repoDirectory);
 			gitUtils.createInitialCommit();
@@ -64,6 +68,7 @@ public class GitUtilsTest {
 	
 	@After
 	public void tearDown() {
+		Game.setProperty(trackUserProperty, oldTrackUserProperty);
 		gitUtils.dispose();
 		utils.deleteRepo(repoDirectory);
 	}
@@ -165,6 +170,7 @@ public class GitUtilsTest {
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
 		
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
+		
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 		
 		remoteGitUtils.dispose();
