@@ -33,6 +33,10 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - Cela permettrait de factoriser le code de la génération des
   opérations et de leur exécution.
 - Mais cela perdrait en clarté selon moi.
+- Réponse Mt: On a pour l'instant une exception par type de problème
+  potentiel car je me disais qu'un jour, les apprenants pourraient
+  vouloir rattraper des exceptions et agir en conséquence. Il faut
+  donc pas arrêter de faire ainsi, stp.
 **** Refactorer BuggleWorld.generateOperation (JS) ?
 - En appliquant *JSHint* sur *BuggleWorld*, j'ai relevé un
   avertissement généré expliquant que la complexité cyclomatique
@@ -134,6 +138,8 @@ Ce fichier contient le journal de bord de Matthieu Nicolas concernant son activi
 - Ca correspond à l'ajout d'opérations dans *Program steps* mais qui
   ne correspondent pas au pas attendu (le buggle avance alors qu'il
   est écrit qu'il est en train de peindre la case par exemple).
+- Répone Mt: ha oui, c'est dommage. La magie de ce genre d'exercice va
+  un peu tomber à l'eau. Tant pis pour l'instant.
 *** Planned
 **** TODO Fixer la duplication des baggles
 - Un buggle a pu ramassé un baggle et le reposer ailleurs, sans que le baggle original ne soit retiré de la vue du monde.
