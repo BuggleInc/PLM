@@ -78,6 +78,7 @@ public abstract class AbstractBuggle extends Entity {
 		this.x = other.x;
 		this.y = other.y;
 		this.direction = other.direction;
+		this.carryBaggle = other.carryBaggle;
 	}
 
 	public void penDown(){
