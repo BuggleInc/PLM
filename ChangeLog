@@ -26,6 +26,7 @@
     - #104: Instructions: hint about brushUp/brushDown
     - #428: Instructions: typo in english
     - New exercise, searching for the second biggest value in array
+    - #433: New exercise: BubblePancake [Tydax]
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
     - New package in welcome lesson for summative exercises
