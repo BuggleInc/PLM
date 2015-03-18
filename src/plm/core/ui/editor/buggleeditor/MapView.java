@@ -5,12 +5,14 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
 import plm.universe.Direction;
 import plm.universe.Entity;
 import plm.universe.bugglequest.Buggle;
+import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.ui.BuggleWorldView;
@@ -104,6 +106,116 @@ public class MapView extends BuggleWorldView implements EditionListener {
 
 					}
 					editor.setSelectedEntity(null);
+					
+					
+				} else if (cmd.equals("linedel")) {
+					int option = JOptionPane.showConfirmDialog(null,
+									"Do you really want to delete line "+y+"? (no undo possible)", "Are you sure?",
+									JOptionPane.ERROR_MESSAGE);
+					if (option == JOptionPane.OK_OPTION) {
+						BuggleWorld w = editor.getWorld();
+						for (int yiter=y; yiter<w.getHeight() - 1;yiter++) {
+							for (int xiter=0;xiter<w.getWidth() ;xiter++) {
+								w.setCell(w.getCell(xiter, yiter+1), xiter, yiter);
+								w.getCell(xiter, yiter).setY(yiter);
+							}
+						}
+						w.setHeight(w.getHeight()-1);
+						
+						Vector<Buggle> toRemove = new Vector<Buggle>();
+						for (Entity ent:editor.getWorld().getEntities()) {
+							Buggle b = (Buggle) ent;
+							if (b.getY()==y)
+								toRemove.add(b); // Don't remove right away to avoid concurrent modification of traversed collection
+							if (b.getY()>y) {
+								b.setY(b.getY()-1);
+							}
+						}
+						for (Buggle b:toRemove)
+							editor.getWorld().removeEntity(b);
+					}
+				} else if (cmd.equals("coldel")) {
+					int option = JOptionPane.showConfirmDialog(null,
+							"Do you really want to delete column "+x+"? (no undo possible)", "Are you sure?",
+							JOptionPane.ERROR_MESSAGE);
+					if (option == JOptionPane.OK_OPTION) {
+						BuggleWorld w = editor.getWorld();
+						for (int xiter=x;xiter<w.getWidth() - 1;xiter++) {
+							for (int yiter=0; yiter<w.getHeight();yiter++) {
+								w.setCell(w.getCell(xiter+1, yiter), xiter, yiter);
+								w.getCell(xiter, yiter).setX(xiter);
+							}
+						}
+						w.setWidth(w.getWidth()-1);
+
+						Vector<Buggle> toRemove = new Vector<Buggle>();
+						for (Entity ent:editor.getWorld().getEntities()) {
+							Buggle b = (Buggle) ent;
+							if (b.getX()==x)
+								toRemove.add(b); // Don't remove right away to avoid concurrent modification of traversed collection
+							if (b.getX()>x) {
+								b.setX(b.getX()-1);
+							}
+						}
+						for (Buggle b:toRemove)
+							editor.getWorld().removeEntity(b);
+					}
+				} else if (cmd.equals("lineadd")) {
+					String[] choices = {"Above", "Below","Cancel"};
+
+					int option = JOptionPane.showOptionDialog(null, 
+							"Add a line above or below the line "+y+"?", "Above or below?", 0,
+							JOptionPane.INFORMATION_MESSAGE, null, choices, choices[0]);
+					switch (option) {
+					case 0: break;
+					case 1: y++;break;
+					case 2: return;
+					}
+					
+					BuggleWorld w = editor.getWorld();
+					w.setHeight(w.getHeight()+1);
+					for (int yiter=w.getHeight() - 1; yiter>y;yiter--) {
+						for (int xiter=0;xiter<w.getWidth() ;xiter++) {
+							w.setCell(w.getCell(xiter, yiter-1), xiter, yiter);
+							w.getCell(xiter, yiter).setY(yiter);
+						}
+					}
+					for (int xiter=0;xiter<w.getWidth() ;xiter++) 
+						w.setCell(w.newCell(xiter,y),xiter,y);
+					for (Entity ent:editor.getWorld().getEntities()) {
+						Buggle b = (Buggle) ent;
+						if (b.getY()>=y) 
+							b.setY(b.getY()+1);
+					}	
+				} else if (cmd.equals("coladd")) {
+					String[] choices = {"Left", "Right","Cancel"};
+
+					int option = JOptionPane.showOptionDialog(null, 
+							"Add a column left or right of column "+x+"?", "Left or Right?", 0,
+							JOptionPane.INFORMATION_MESSAGE, null, choices, choices[0]);
+					switch (option) {
+					case 0: break;
+					case 1: x++;break;
+					case 2: return;
+					}
+					
+					BuggleWorld w = editor.getWorld();
+					w.setWidth(w.getWidth()+1);
+					for (int xiter=w.getWidth()-1;xiter>x ;xiter--) {
+						for (int yiter=0; yiter<w.getHeight();yiter++) {
+							w.setCell(w.getCell(xiter-1, yiter), xiter, yiter);
+							w.getCell(xiter, yiter).setX(xiter);
+						}
+					}
+					for (int yiter=0;yiter<w.getHeight() ;yiter++) 
+						w.setCell(w.newCell(x,yiter),x,yiter);
+					for (Entity ent:editor.getWorld().getEntities()) {
+						Buggle b = (Buggle) ent;
+						if (b.getX()>=x) 
+							b.setX(b.getX()+1);
+					}	
+				} else {
+					System.out.println("Unhandled command: "+cmd+". Please fix that bug.");
 				}
 			}
 		};

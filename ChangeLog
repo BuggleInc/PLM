@@ -29,6 +29,8 @@
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
     - New package in welcome lesson for summative exercises
+  * Buggle Editor:
+    - New commands: add/del line or column.
 
 20141031: Release 2.5
 
