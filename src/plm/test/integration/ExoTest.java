@@ -2,10 +2,11 @@ package plm.test.integration;
 
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -17,13 +18,14 @@ import org.junit.runners.Parameterized.Parameters;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.DemoRunner;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Lecture;
-import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
+import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -33,7 +35,7 @@ import plm.universe.bat.BatWorld;
 
 @RunWith(Parameterized.class)
 public class ExoTest {
-	
+
 	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
@@ -103,14 +105,26 @@ public class ExoTest {
 		}
 	}
 	
+	/** Try to run the solution, fail if it's missing **/
+	private void testCorrectionEntityExists(ProgrammingLanguage lang) {
+		Game.getInstance().setProgramingLanguage(lang);
+		
+		DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
+		
+		exo.lastResult = new ExecutionProgress();
+		try {
+			demoRunner.runDemo(exo);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			fail(exo.getId()+"'s solution failed to run...");
+		}
+	}
+	
 	/** Resets current world, populate it with the correction entity, and rerun it */
 	private void testCorrectionEntity(ProgrammingLanguage lang) {
 		Game.getInstance().setProgramingLanguage(lang);
-		Game.getInstance().setCurrentExercise(exo);
-		Game.getInstance().setProgramingLanguage(lang); // This stupid Game.setCurrentExercise tries to be cleaver if the current progLang is not avail in the requested exercise
 		
-		//System.out.flush();
-		//System.err.println("Testing "+exo.getName()+" in "+lang.getLang()+" ");
 		exo.lastResult = new ExecutionProgress();
 		
 		try {
@@ -146,11 +160,35 @@ public class ExoTest {
 		
 		
 		if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			//System.out.println(""+exo.getId()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
 			fail(exo.getId()+": failed exercise ("+
 				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.executionError+"'");
 		}
-		//System.out.println(""+exo.getId()+" passed in "+Game.getProgrammingLanguage());
+	}
+	
+	@Test(timeout=10000)
+	public void testJavaEntityExists() {
+		testCorrectionEntityExists(Game.JAVA);
+	}
+	
+	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
+	public void testScalaEntityExists() {
+		if (!exo.getProgLanguages().contains(Game.SCALA)) 
+			fail("Exercise "+exo.getId()+" does not support scala");
+		testCorrectionEntityExists(Game.SCALA);
+	}
+	
+//	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
+	public void testCEntityExists() {
+		if (!exo.getProgLanguages().contains(Game.C)) 
+			fail("Exercise "+exo.getId()+" does not support C");
+		testCorrectionEntityExists(Game.C);
+	}
+	
+	@Test(timeout=30000) // the well known python's "performance"...
+	public void testPythonEntityExists() {
+		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
+			fail("Exercise "+exo.getId()+" does not support python");
+		testCorrectionEntityExists(Game.PYTHON);
 	}
 	
 	@Test(timeout=10000)
@@ -169,15 +207,13 @@ public class ExoTest {
 	public void testCEntity() {
 		if (!exo.getProgLanguages().contains(Game.C)) 
 			fail("Exercise "+exo.getId()+" does not support C");
-		
-		Game.getInstance().setProgramingLanguage(Game.C);
 		testCorrectionEntity(Game.C);
 	}
 	
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
-			fail("Exercise "+exo.getId()+" does not support python");	
+			fail("Exercise "+exo.getId()+" does not support python");
 		testCorrectionEntity(Game.PYTHON);
 	}
 }
