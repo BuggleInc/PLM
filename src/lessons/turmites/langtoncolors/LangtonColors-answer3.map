@@ -1,4 +1,4 @@
-BuggleWorld: LLRRRLRLRLLR (36001 steps)
+TurmiteWorld: LLRRRLRLRLLR (36001 steps)
 Size: 120x60
 Buggle(11,36): east,red,cyan,ant,noBaggle,
 Cell(6,35): black,nobaggle,notopwall,noleftwall,

@@ -1,4 +1,4 @@
-BuggleWorld: snail (10100 steps)
+TurmiteWorld: snail (10100 steps)
 Size: 68x72
 Buggle(45,60): west,red,black,ant,noBaggle,
 Cell(3,26): black,nobaggle,notopwall,noleftwall,
