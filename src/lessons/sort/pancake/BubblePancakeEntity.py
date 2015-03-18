@@ -1,5 +1,5 @@
 # BEGIN SOLUTION
-bool swapped = True
+swapped = True
 
 while swapped:
     swapped = False 
