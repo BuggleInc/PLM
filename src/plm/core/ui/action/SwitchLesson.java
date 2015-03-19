@@ -22,8 +22,8 @@ public class SwitchLesson extends AbstractGameAction implements
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new ChooseLessonDialog();
 		MainFrame.getInstance().setVisible(false);
+		new ChooseLessonDialog();
 	}
 
 	@Override
