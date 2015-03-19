@@ -4,17 +4,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 
 
-public abstract class Lesson {
+public abstract class Lesson implements HumanLangChangesListener {
 	private String name;
 	private String id;
 	
@@ -186,5 +188,9 @@ public abstract class Lesson {
 	}
 	public void setLoadingOutcomeState(LoadingOutcome loadingOutcomeState) {
 		LoadingOutcomeState = loadingOutcomeState;
+	}
+	
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		loadAboutAndName();
 	}
 }

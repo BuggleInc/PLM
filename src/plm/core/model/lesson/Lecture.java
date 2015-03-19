@@ -3,6 +3,7 @@ package plm.core.model.lesson;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 import java.util.regex.Matcher;
@@ -10,6 +11,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.PlmHtmlEditorKit;
@@ -18,7 +20,7 @@ import plm.core.utils.FileUtils;
 /** Represents an element of the pedagogic sequence, be it a lecture or 
  * an exercise. A better name would be useful, but I feel limited in 
  * English today. Sorry. */
-public abstract class Lecture {
+public abstract class Lecture implements HumanLangChangesListener{
 	private String localId; // lecture's identifier WITHIN THE LESSON 
 	private String id; // global lecture's identifier 
 	
@@ -134,5 +136,9 @@ public abstract class Lecture {
 	}
 	public String getLocalId() {
 		return localId;
+	}
+
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		loadHTMLMission();
 	}
 }
