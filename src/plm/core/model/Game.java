@@ -345,6 +345,7 @@ public class Game implements IWorldView {
 				// We manually build a call to the constructor of this object, and fire it
 				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
 				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
+				addHumanLangListener(lesson);
 				lessons.put(lessonName, lesson); // cache the newly created object
 			} catch (InstantiationException e) {
 				e.printStackTrace();

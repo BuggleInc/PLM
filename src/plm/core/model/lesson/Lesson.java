@@ -228,5 +228,6 @@ public abstract class Lesson implements HumanLangChangesListener {
 	
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		loadAboutAndName();
+		setDescription("short_desc");
 	}
 }
