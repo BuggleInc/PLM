@@ -480,19 +480,24 @@ public class Game implements IWorldView {
 			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
 				stopExerciseExecution();
 			}
+			removeHumanLangListener(currentLesson.getCurrentExercise());
+			removeHumanLangListener(currentLesson);
 		}
 		try {
 			saveSession(); // don't loose user changes
 			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
 			
-			if (this.currentLesson != lect.getLesson())
+			if (this.currentLesson != lect.getLesson()) {
 				this.currentLesson = lect.getLesson();
-			
+				addHumanLangListener(currentLesson);
+			}
+				
 			/* if the user changes the exercise, you can assume that he wants to test another challenge */
 			if (isCreativeEnabled())
 				switchCreative();
 			
 			this.currentLesson.setCurrentExercise(lect);
+			addHumanLangListener(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
 				Exercise exo = (Exercise) lect;
@@ -955,25 +960,8 @@ public class Game implements IWorldView {
 		FileUtils.setLocale(lang);
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 		fireHumanLangChange(lang);
-
-		/* FIXME: convert all this to a humanLanguage listener */
-		if (  Game.getInstance() != null && Game.getInstance().getCurrentLesson() != null ) {
-			Game.getInstance().getCurrentLesson().resetAboutLoaded();
-			Lecture lect = Game.getInstance().getCurrentLesson().getCurrentExercise();
-			if ( lect instanceof Exercise )
-				((Exercise) lect).getWorlds(WorldKind.CURRENT).get(0).resetAbout();
-		}
-
-		for (Lesson lesson : lessons.values()) {
-			for (Lecture lect:lesson.exercises()) {
-				if (lect instanceof ExerciseTemplated) {
-					lect.loadHTMLMission();
-				}
-			}
-		}
-		setCurrentLesson(getCurrentLesson());
-		currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
 	}
+	
 	public Locale getLocale(){
 		return FileUtils.getLocale();
 	}
