@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -219,6 +220,12 @@ public abstract class Exercise extends Lecture {
 	}
 	protected void addProgLanguage(ProgrammingLanguage newL) {
 		progLanguages.add(newL);
+	}
+	
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		super.currentHumanLanguageHasChanged(newLang);
+		initialWorld.get(0).resetAbout();
+		initialWorld.get(0).getAbout();
 	}
 }
 
