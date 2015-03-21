@@ -1,4 +1,4 @@
-package lessons.welcome.basics;
+package lessons.welcome.instructions;
 
 import plm.universe.bugglequest.SimpleBuggle;
 

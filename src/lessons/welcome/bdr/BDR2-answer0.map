@@ -1,9 +1,9 @@
 BuggleWorld: Dance Floor
 Size: 11x11
-Buggle(9,1): south,red,red,John Travolta
-Buggle(9,9): west,magenta,magenta,Break Dancer
-Buggle(1,1): east,pink,pink,Moon Walker
-Buggle(1,9): north,blue,blue,Elwood Blues
+Buggle(9,1): south,red,red,John Travolta,noBaggle,
+Buggle(9,9): west,magenta,magenta,Break Dancer,noBaggle,
+Buggle(1,1): east,pink,pink,Moon Walker,noBaggle,
+Buggle(1,9): north,blue,blue,Elwood Blues,noBaggle,
 Cell(0,0): white,nobaggle,notopwall,noleftwall,E
 Cell(0,1): white,nobaggle,notopwall,noleftwall,R
 Cell(0,2): white,nobaggle,notopwall,noleftwall,L

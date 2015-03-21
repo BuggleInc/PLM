@@ -152,7 +152,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 		}*/
 
 		
-		/* if showMulti, all of selected langage will be appear on editor, but in the same color*/
+		/* if showMulti, all of selected language will be appear on editor, but in the same color*/
 		//FIXME add colors
 		if(showMulti){
 			String replace="<font color=\"FF0000\">$7</font>";
@@ -197,62 +197,6 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 				res = res.replaceAll(      "(?s)\\[!#\\](.*?)\\[/!\\]",   "$1");
 
 			}
-			/*
-			String cl = Game.getProgrammingLanguage().getLang().toLowerCase();
-			// Process any block with one language first so that they can be nested in blocks with more than one language.
-			res = res.replaceAll(      "(?s)\\[!"+cl+"\\](.*?)\\[/!\\]","$1");
-			//System.out.println("Keep "+"(?s)\\[!"+cl+"\\](.*?)\\[/!\\]");
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-				if (!lang.equals(Game.getProgrammingLanguage())) {
-					String l = lang.getLang().toLowerCase();
-					res = res.replaceAll(      "(?s)\\[!"+l+"\\](.*?)\\[/!\\]",   "");
-					//System.out.println("Kill "+"(?s)\\[!"+l+"\\](.*?)\\[/!\\]");
-				}
-			}
-			
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-				if (!lang.equals(Game.getProgrammingLanguage())) {
-					String l = lang.getLang().toLowerCase();
-
-					res = res.replaceAll(      "(?s)\\[!"+l +"\\|"+cl+"\\](.*?)\\[/!\\]",   "$1");
-					//System.out.println("Keep "+"(?s)\\[!"+l +"\\|"+cl+"\\](.*?)\\[/!\\]");
-					res = res.replaceAll(      "(?s)\\[!"+cl+"\\|"+l +"\\](.*?)\\[/!\\]",   "$1");
-					//System.out.println("Keep "+"(?s)\\[!"+cl+"\\|"+l +"\\](.*?)\\[/!\\]");
-
-					for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
-						if (!lang2.equals(Game.getProgrammingLanguage()) && !lang2.equals(lang)) {
-							String l2 = lang2.getLang().toLowerCase();
-							res = res.replaceAll(   "(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]",    "");
-							res = res.replaceAll(   "(?s)\\[!"+l2+"\\|"+l+"\\](.*?)\\[/!\\]",    "");
-							//System.out.println("Kill (?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]");
-
-
-							for (ProgrammingLanguage lang3 : Game.getProgrammingLanguages()) {
-								if (lang3.equals(Game.getProgrammingLanguage()) && !lang3.equals(lang) && !lang3.equals(lang2)) {
-									String l3 = lang3.getLang().toLowerCase();
-									res = res.replaceAll("(?s)\\[!"+cl+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","$1");
-									res = res.replaceAll("(?s)\\[!"+cl+"\\|"+l3+"\\|"+l2+"\\](.*?)\\[/!\\]","$1");
-									res = res.replaceAll("(?s)\\[!"+l2+"\\|"+cl+"\\|"+l3+"\\](.*?)\\[/!\\]","$1");
-									res = res.replaceAll("(?s)\\[!"+l2+"\\|"+l3+"\\|"+cl+"\\](.*?)\\[/!\\]","$1");
-									res = res.replaceAll("(?s)\\[!"+l3+"\\|"+l2+"\\|"+cl+"\\](.*?)\\[/!\\]","$1");
-									res = res.replaceAll("(?s)\\[!"+l3+"\\|"+cl+"\\|"+l2+"\\](.*?)\\[/!\\]","$1");
-								}else{
-									String l3 = lang3.getLang().toLowerCase();
-									res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","");
-									res = res.replaceAll("(?s)\\[!"+l+"\\|"+l3+"\\|"+l2+"\\](.*?)\\[/!\\]","");
-									res = res.replaceAll("(?s)\\[!"+l2+"\\|"+l+"\\|"+l3+"\\](.*?)\\[/!\\]","");
-									res = res.replaceAll("(?s)\\[!"+l2+"\\|"+l3+"\\|"+l+"\\](.*?)\\[/!\\]","");
-									res = res.replaceAll("(?s)\\[!"+l3+"\\|"+l2+"\\|"+l+"\\](.*?)\\[/!\\]","");
-									res = res.replaceAll("(?s)\\[!"+l3+"\\|"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","");
-								}
-							}
-						}
-					}
-
-				}
-
-			}
-			*/
 		}
 
 		return res;

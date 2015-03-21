@@ -1,6 +1,6 @@
 BuggleWorld: Pattern 3
 Size: 8x8
-Buggle(7,0): south,black,magenta,Ingres
+Buggle(7,0): south,black,magenta,Ingres,noBaggle,
 Cell(0,0): red,nobaggle,topwall,leftwall,
 Cell(0,1): green,nobaggle,notopwall,leftwall,
 Cell(0,2): orange,nobaggle,notopwall,leftwall,

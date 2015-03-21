@@ -6,18 +6,19 @@ import lessons.welcome.array.array123.Array123;
 import lessons.welcome.array.array667.Array667;
 import lessons.welcome.array.arraycount9.ArrayCount9;
 import lessons.welcome.array.arrayfront9.ArrayFront9;
-import lessons.welcome.array.averagevalue.AverageValue;
 import lessons.welcome.array.basics.Array1;
 import lessons.welcome.array.basics.Array2;
 import lessons.welcome.array.golomb.Golomb;
 import lessons.welcome.array.has271.Has271;
-import lessons.welcome.array.indexof.maxvalue.IndexOfMaxValue;
-import lessons.welcome.array.indexof.value.IndexOfValue;
 import lessons.welcome.array.island.Island;
-import lessons.welcome.array.maxvalue.Extrema;
-import lessons.welcome.array.maxvalue.MaxValue;
 import lessons.welcome.array.notriples.NoTriples;
-import lessons.welcome.array.occurenceofvalue.OccurrenceOfValue;
+import lessons.welcome.array.search.AverageValue;
+import lessons.welcome.array.search.Extrema;
+import lessons.welcome.array.search.IndexOfMaxValue;
+import lessons.welcome.array.search.IndexOfValue;
+import lessons.welcome.array.search.MaxValue;
+import lessons.welcome.array.search.OccurrenceOfValue;
+import lessons.welcome.array.search.SecondMaxValue;
 import lessons.welcome.bat.bool1.Close10;
 import lessons.welcome.bat.bool1.CountTeen;
 import lessons.welcome.bat.bool1.Diff21;
@@ -73,7 +74,6 @@ import lessons.welcome.loopfor.LoopFor;
 import lessons.welcome.loopfor.LoopStairs;
 import lessons.welcome.loopwhile.BaggleSeeker;
 import lessons.welcome.loopwhile.LoopWhile;
-import lessons.welcome.loopwhile.WhileMoria;
 import lessons.welcome.methods.args.MethodsArgs;
 import lessons.welcome.methods.basics.Methods;
 import lessons.welcome.methods.basics.MethodsDogHouse;
@@ -89,6 +89,7 @@ import lessons.welcome.methods.returning.MethodsReturning;
 import lessons.welcome.methods.slug.SlugHunting;
 import lessons.welcome.methods.slug.SlugSnail;
 import lessons.welcome.methods.slug.SlugTracking;
+import lessons.welcome.summative.Moria;
 import lessons.welcome.traversal.Snake;
 import lessons.welcome.traversal.column.TraversalByColumn;
 import lessons.welcome.traversal.diagonal.TraversalDiagonal;
@@ -203,6 +204,7 @@ public class Main extends Lesson {
 		addExercise(new MaxValue(this),arrays);
 		addExercise(new IndexOfMaxValue(this),arrays);
 		addExercise(new Extrema(this),arrays);
+		addExercise(new SecondMaxValue(this),arrays);
 		addExercise(new ArrayCount9(this),arrays);
 		addExercise(new ArrayFront9(this),arrays);
 		addExercise(new Array123(this),arrays);
@@ -221,7 +223,7 @@ public class Main extends Lesson {
 		addExercise(new TraversalDiagonal(this),snake);
 		
 		// Other exercises
-		addExercise(new WhileMoria(this));
+		addExercise(new Moria(this));
 
 		
 	}

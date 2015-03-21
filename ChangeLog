@@ -1,7 +1,8 @@
-20141130: wannabe 2.6
+20150202: wannabe 2.6
 
   * Improved translations:
     - Brazilian: missions at 62%, engine at 38%
+    - Chinese: engine at 39%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
       This fixes http://bugs.debian.org/772026
@@ -9,6 +10,7 @@
   * Worlds:
     - #284: Turtle, Buggle: Better message when mixing pens and brushes
     - Hanoi: Allows for problems with 3+ pegs and multiple stacks
+    - Buggle: Sensible names for well known colors when diffing worlds
   * Pedagogical content:
     - #410: Fix my usage of "teach" vs. "learn" in English
     - #240: SlugSnail: add false leads to avoid cheaters
@@ -22,8 +24,15 @@
       to work on the decomposition of recursive problems.
     - Move the Moria exercise to the last position in welcome lesson.
       It is ways harder than the other ones.
+    - #104: Instructions: hint about brushUp/brushDown
+    - #428: Instructions: typo in english
+    - New exercise, searching for the second biggest value in array
+    - #433: New exercise: BubblePancake [Tydax]
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
+    - New package in welcome lesson for summative exercises
+  * Buggle Editor:
+    - New commands: add/del line or column.
 
 20141031: Release 2.5
 

@@ -1,6 +1,6 @@
 TurmiteWorld: LRRRRRLLR (9001 steps)
 Size: 25x24
-Buggle(18,8): west,red,blue,ant
+Buggle(18,8): west,red,blue,ant,noBaggle,
 Cell(1,3): black,nobaggle,notopwall,noleftwall,
 Cell(1,4): black,nobaggle,notopwall,noleftwall,
 Cell(1,5): black,nobaggle,notopwall,noleftwall,

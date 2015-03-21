@@ -1,9 +1,9 @@
 BuggleWorld: Dance Floor
 Size: 7x7
-Buggle(2,3): east,red,lightGray,John Travolta
-Buggle(4,3): west,magenta,lightGray,Break Dancer
-Buggle(3,2): south,pink,lightGray,Moon Walker
-Buggle(3,4): north,blue,lightGray,Elwood Blues
+Buggle(2,3): east,red,lightGray,John Travolta,noBaggle,
+Buggle(4,3): west,magenta,lightGray,Break Dancer,noBaggle,
+Buggle(3,2): south,pink,lightGray,Moon Walker,noBaggle,
+Buggle(3,4): north,blue,lightGray,Elwood Blues,noBaggle,
 Cell(0,0): white,nobaggle,notopwall,noleftwall,Z
 Cell(0,3): white,nobaggle,notopwall,noleftwall,X
 Cell(0,6): white,nobaggle,notopwall,noleftwall,A

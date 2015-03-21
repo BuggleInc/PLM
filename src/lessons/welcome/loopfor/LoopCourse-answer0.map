@@ -1,6 +1,6 @@
 BuggleWorld: Brave new world
 Size: 11x11
-Buggle(9,9): north,black,255/5/5,runner
+Buggle(9,9): north,black,255/5/5,runner,noBaggle,
 Cell(1,1): 255/5/5,nobaggle,topwall,leftwall,
 Cell(1,2): 255/5/5,nobaggle,notopwall,leftwall,
 Cell(1,3): 255/5/5,nobaggle,notopwall,leftwall,

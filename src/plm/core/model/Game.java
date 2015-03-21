@@ -96,7 +96,7 @@ public class Game implements IWorldView {
 	private Course currentCourse;
 	private Lecture lastExercise;
 
-	public static final String [][] humanLangs = { {"English","en"}, {"Francais","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"} };
+	public static final String [][] humanLangs = { {"English","en"}, {"Français","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"}, {"中文", "zh"} };
 
 	public static final ProgrammingLanguage JAVA =       new LangJava();
 	public static final ProgrammingLanguage PYTHON =     new LangPython();

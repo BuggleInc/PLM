@@ -4,16 +4,14 @@
 
 Neste exercício vamos implementar outro algoritmo clássico: selection sort.
 
-<p>The idea is simply to select for each cell of the array the smallest value
-from the part not already sorted. Thus for the first cell, it takes the
-smallest value over the whole array. For the second one, it takes the second
-smallest value, which is the smallest value from the cell not already
-sorted. You of course don't have to sort the last cell of the array, that is
-already sorted when you consider it.
+<p>A ideia é simplesmente selecionar para cada célula da array o menor
+valor da parte ainda não ordenada. Então para a primeira célula,
+pegamos o menor valor da array toda. Para a segunda, pegamos o segundo
+menor valor, que é o menor valor das células ainda não ordenadas.
 
-<p>More generally, for the cell N, it looks the cell M in [N;len] containing
-the smallest possible value of the interval. Then, it swaps the content of
-cell N with the one of cell M. 
+<p>De forma mais geral, para a célula N, ele busca a célula M em [N;len]
+contendo o menor valor possível do intervalo. Então, alterna o
+conteúdo da célula N com o da célula M. 
 
 <h2>Variações existentes</h2>
 Outro algoritmo clássico cuja ideia é baseada na seleção de bons elementos é

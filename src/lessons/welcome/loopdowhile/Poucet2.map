@@ -1,6 +1,6 @@
 BuggleWorld: Deeper Forest
 Size: 23x18
-Buggle(11,16): north,black,black,buggle2
+Buggle(11,16): north,black,black,buggle2,noBaggle,
 Cell(0,1): orange,nobaggle,topwall,noleftwall,
 Cell(0,2): white,nobaggle,topwall,noleftwall,
 Cell(1,1): orange,nobaggle,topwall,noleftwall,

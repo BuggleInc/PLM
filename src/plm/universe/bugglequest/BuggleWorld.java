@@ -36,7 +36,7 @@ public class BuggleWorld extends GridWorld {
 		super(name,x,y);
 	}
 	@Override
-	protected GridWorldCell newCell(int x, int y) {
+	public GridWorldCell newCell(int x, int y) {
 		return new BuggleWorldCell(this, x, y);
 	}
 	/** 
@@ -154,7 +154,7 @@ public class BuggleWorld extends GridWorld {
 		
 		line = reader.readLine();
 		
-		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),([^,]+),([^,]+),(.+)$"); // direction, color, brush, name
+		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),([^,]+),([^,]+),([^,]+),([^,]+),$"); // direction, color, brush, name, haveBaggle|noBaggle
 		Matcher buggleMatcher = bugglePattern.matcher(line);
 		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): ([^,]+?),(\\w+),(\\w+),(\\w+),(.*)$";
 		Pattern cellPattern = Pattern.compile(cellFmt);
@@ -201,8 +201,13 @@ public class BuggleWorld extends GridWorld {
 							"Invalid buggle''s color name: {0}", buggleMatcher.group(5)));
 				}
 				String buggleName = buggleMatcher.group(6);
+				SimpleBuggle b = new SimpleBuggle(res, buggleName, x, y, direction, color, brushColor);
+				String haveBaggle = buggleMatcher.group(7);
+				if (haveBaggle.equals("haveBaggle"))
+					b.doCarryBaggle();
+				else if (! haveBaggle.equals("noBaggle"))
+					throw new BrokenWorldFileException("Broken file, invalid buggle carrying information '"+haveBaggle+"': A buggle can either carry a baggle (haveBaggle) or not (noBaggle)");
 
-				new SimpleBuggle(res, buggleName, x, y, direction, color, brushColor);
 			} else if (cellMatcher.matches()) {
 				/* Get the info */
 				int x=Integer.parseInt( cellMatcher.group(1) );
@@ -293,7 +298,11 @@ public class BuggleWorld extends GridWorld {
 			
 			writer.write(ColorMapper.color2name(b.getBodyColor())+",");
 			writer.write(ColorMapper.color2name(b.getBrushColor())+",");
-			writer.write(b.getName());
+			writer.write(b.getName()+",");
+			if (b.isCarryingBaggle())
+				writer.write("haveBaggle,");
+			else
+				writer.write("noBaggle,");
 			writer.write("\n");
 		}
 			
