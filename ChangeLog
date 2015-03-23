@@ -2,6 +2,7 @@
 
   * Improved translations:
     - Brazilian: missions at 62%, engine at 38%
+    - Chinese: engine at 39%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
       This fixes http://bugs.debian.org/772026
@@ -26,8 +27,12 @@
     - #104: Instructions: hint about brushUp/brushDown
     - #428: Instructions: typo in english
     - New exercise, searching for the second biggest value in array
+    - #433: New exercise: BubblePancake [Tydax]
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
+    - New package in welcome lesson for summative exercises
+  * Buggle Editor:
+    - New commands: add/del line or column.
 
 20141031: Release 2.5
 

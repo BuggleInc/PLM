@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-02-14 21:21+0100\n"
-"PO-Revision-Date: 2015-02-14 21:22+0100\n"
+"POT-Creation-Date: 2015-03-19 17:48+0100\n"
+"PO-Revision-Date: 2015-03-19 18:14+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.7.5\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -1985,73 +1985,6 @@ msgstr ""
 "Faites en sorte que chaque buggle trouve son baggle en adaptant le code que "
 "vous aviez écrit pour l'exercice précédent (vous êtes libre de faire un "
 "copie/colle de ce que vous aviez fait si vous le souhaitez)."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:2
-msgid "Lost in the Moria"
-msgstr "Perdu dans la Moria"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:4
-msgid ""
-"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
-"exit, and you will have to clear your way to the exit. Well of course these "
-"are only baggles and you could simply walk away, but it will be easier to "
-"program the buggles so that they move those \"rocks\" than convincing them "
-"to walk away without solving the problem. Dwarfs are sometimes really "
-"stubborns..."
-msgstr ""
-"Vos buggles sont coincées dans la mine de la Moria ! Des rochers bloquent la "
-"sortie, et il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont "
-"pas vraiment des rochers mais juste des biscuits, et vos buggles pourraient "
-"facilement passer au dessus sans se fatiguer. Mais il est probablement plus "
-"simple de programmer vos buggles pour qu'elles déplacent ces «rochers» "
-"plutôt que de tenter de les convaincre de passer à la suite sans avoir "
-"résolu le problème. Les nains sont souvent un peu têtus..."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:11
-msgid ""
-"So, you have to find the first baggle blocking the exit (simply walk to the "
-"east until you are over a baggle), take it and move it back to the other "
-"side of the tunnel (walk to the west while you are not over a baggle, and "
-"then move back one step to the east and drop your baggle), and iterate until "
-"you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world. That's only a few more steps away."
-msgstr ""
-"Donc, il vous faut trouver le premier biscuit en travers de votre chemin "
-"(marchez vers l'est jusqu'à vous trouver au dessus d'un biscuit), le "
-"ramasser, et retourner à l'autre extrémité du couloir pour le déposer "
-"(marchez vers l'ouest jusqu'à vous trouver au dessus d'un biscuit puis "
-"reculez d'un pas). Il faut ensuite faire de même pour tous les biscuits "
-"jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais "
-"comme dans le monde objectif, cela ne sera plus qu'à quelques pas de là."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:18
-msgid ""
-"To make things worse, you have to write a program that works for every "
-"buggle, even if writing a specific program for each of them would be easier. "
-"It seems that using <code>while</code> loops is the only solution to move "
-"the buggles correctly."
-msgstr ""
-"Pour compliquer encore les choses, vous devez écrire un programme qui "
-"fonctionne pour toutes les buggles, même si écrire un programme spécifique à "
-"chacune serait peut-être un peu plus simple. Il semblerait qu'utiliser une "
-"boucle <code>while</code> soit la seule solution pour déplacer vos buggles "
-"correctement."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:23
-msgid ""
-"Once you manage to escape this trap, you can move forward to the next "
-"exercise.  This exercise is a bit more complex, so you can also leave it for "
-"now and come back later if you don't get it right now."
-msgstr ""
-"Quand vous serez parvenu à sortir de ce piège, vous pouvez passez à "
-"l'exercice suivant. Cet exercice est un peu plus difficile que les autres, "
-"et vous pouvez tout à fait le laisser momentanément de coté pour y revenir "
-"plus tard si vous n'y parvenez pas pour l'instant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:3
@@ -4062,12 +3995,12 @@ msgid "You're up."
 msgstr "À vous de jouer."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:2
+#: src/lessons/welcome/array/search/IndexOfValue.html:2
 msgid "Searching for a given value"
 msgstr "Chercher une valeur donnée"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:4
+#: src/lessons/welcome/array/search/IndexOfValue.html:4
 msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
@@ -4076,7 +4009,7 @@ msgstr ""
 "donnée, et de retourner sa position."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
+#: src/lessons/welcome/array/search/IndexOfValue.html:6
 msgid ""
 "To that extend, you should fill the method <code>indexOf()</code>, which "
 "parameters are the array to explore, and the value to search. If the value "
@@ -4090,7 +4023,7 @@ msgstr ""
 "-1."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
+#: src/lessons/welcome/array/search/IndexOfValue.html:10
 msgid ""
 "The idea of the algorithm is to sweep over the whole array, checking the "
 "value of each cell. If it's the searched value, you should return the index "
@@ -4102,7 +4035,7 @@ msgstr ""
 "renvoyer l'indice de la case actuellement explorée."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
+#: src/lessons/welcome/array/search/IndexOfValue.html:14
 msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
@@ -4112,7 +4045,7 @@ msgstr ""
 "numérotée 3."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
+#: src/lessons/welcome/array/search/IndexOfValue.html:17
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved using "
 "the <code>length</code> attribute. So, if your array is called <code>tab</"
@@ -4129,7 +4062,7 @@ msgstr ""
 "variable embarquée dans un autre objet (ici, le tableau)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
+#: src/lessons/welcome/array/search/IndexOfValue.html:22
 msgid ""
 "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
@@ -4137,7 +4070,7 @@ msgstr ""
 "-1]</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
+#: src/lessons/welcome/array/search/IndexOfValue.html:24
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved with the "
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
@@ -4149,7 +4082,7 @@ msgstr ""
 "<code>tableau</code>, sa taille sera <code>len(tableau)</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
+#: src/lessons/welcome/array/search/IndexOfValue.html:28
 msgid ""
 "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
 msgstr ""
@@ -4157,12 +4090,12 @@ msgstr ""
 "-1]</code>."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:2
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:2
 msgid "Index of the maximum value"
 msgstr "Indice de la valeur maximale"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:4
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:4
 msgid ""
 "In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
@@ -4171,7 +4104,7 @@ msgstr ""
 "grande valeur du tableau."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:6
 msgid ""
 "For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
 "the array to explore. Should the array contain the searched value several "
@@ -4183,7 +4116,7 @@ msgstr ""
 "de la première occurrence."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:10
 msgid ""
 "To solve this exercise, you should sweep over the whole array. For each "
 "value, if it's bigger than the biggest value you saw so far, you must save "
@@ -4200,12 +4133,12 @@ msgstr ""
 "pourrait être la valeur rangée dans la première case."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:2
+#: src/lessons/welcome/array/search/AverageValue.html:2
 msgid "Average value"
 msgstr "Valeur moyenne"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:5
+#: src/lessons/welcome/array/search/AverageValue.html:5
 msgid ""
 "The objective of this exercise is to compute the average value of the "
 "integer values stored in an array."
@@ -4214,7 +4147,7 @@ msgstr ""
 "valeur entière."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:7
+#: src/lessons/welcome/array/search/AverageValue.html:7
 msgid ""
 "You have to fill the body of the method <code>average()</code> which takes "
 "as parameter the array of integers of which it computes and returns the "
@@ -4225,7 +4158,7 @@ msgstr ""
 "moyenne. Notez bien que cette méthode doit renvoyer un entier."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:9
+#: src/lessons/welcome/array/search/AverageValue.html:9
 msgid ""
 "To compute the average value of an integer, it is necessary to traverse the "
 "whole array and to compute the sum of all its values (so you will need a "
@@ -4238,7 +4171,7 @@ msgstr ""
 "par le nombre de valeur contenu dans le tableau."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:11
+#: src/lessons/welcome/array/search/AverageValue.html:11
 msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, <code>myarray.length</"
@@ -4250,7 +4183,7 @@ msgstr ""
 "<code>length</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:16
+#: src/lessons/welcome/array/search/AverageValue.html:16
 msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
@@ -4259,12 +4192,12 @@ msgstr ""
 "<code>len(monTableau)</code>."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:2
+#: src/lessons/welcome/array/search/MaxValue.html:2
 msgid "Maximal value"
 msgstr "Valeur maximale"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:4
+#: src/lessons/welcome/array/search/MaxValue.html:4
 msgid ""
 "In this exercise, you must compute the maximal value contained in an array.  "
 "For that, fill the <code>maximum()</code> method, which parameter is the "
@@ -4275,7 +4208,7 @@ msgstr ""
 "code>, dont le paramètre est le tableau à explorer."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:8
+#: src/lessons/welcome/array/search/MaxValue.html:8
 msgid ""
 "To compute this value, sweep over the whole parameter. For each value, if "
 "it's bigger than the biggest value you saw so far, you must save this value "
@@ -4292,31 +4225,12 @@ msgstr ""
 "la valeur de la première case du tableau."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/Extrema.html:2
-msgid "Maxima and Minima"
-msgstr "Maximum et minimum"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/maxvalue/Extrema.html:4
-msgid ""
-"In this exercise, you must return the difference between the maxima (i.e., "
-"the largest value of the array) and the minima (i.e., its smallest value). "
-"The returned value is then a positive number.  Beware, you can only do one "
-"traversal of the array to gather all informations that you need."
-msgstr ""
-"Dans cet exercice, vous devez renvoyer la différence entre le maximum (c'est "
-"à dire la plus grande valeur du tableau) et le minimum (c'est à dire la plus "
-"petite des valeurs). La valeur renvoyée est donc un nombre positif. "
-"Attention, vous ne pouvez balayer les valeurs qu'une seule fois pour "
-"récupérer toutes les informations dont vous avez besoin."
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:2
 msgid "Occurrence of a value"
 msgstr "Occurrences d'une valeur"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:4
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:4
 msgid ""
 "In this exercise, you must compute the amount of occurrences of a given "
 "value in an array (that is, the amount of time that this value appears in "
@@ -4331,7 +4245,7 @@ msgstr ""
 "valeur <code>lookingFor</code> dans le tableau <code>tab</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:9
 msgid ""
 "To compute this value, simply sweep over the array counting for the amount "
 "of cells containing the searched value. You thus need an extra variable for "
@@ -4341,6 +4255,52 @@ msgstr ""
 "nombre de cases contenant la valeur cherchée que vous rencontrez. Il vous "
 "faut\n"
 "donc un paramètre supplémentaire pour cela."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/search/Extrema.html:2
+msgid "Maxima and Minima"
+msgstr "Maximum et minimum"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/search/Extrema.html:4
+msgid ""
+"In this exercise, you must return the difference between the maxima (i.e., "
+"the largest value of the array) and the minima (i.e., its smallest value). "
+"The returned value is then a positive number.  Beware, you can only do one "
+"traversal of the array to gather all informations that you need."
+msgstr ""
+"Dans cet exercice, vous devez renvoyer la différence entre le maximum (c'est "
+"à dire la plus grande valeur du tableau) et le minimum (c'est à dire la plus "
+"petite des valeurs). La valeur renvoyée est donc un nombre positif. "
+"Attention, vous ne pouvez balayer les valeurs qu'une seule fois pour "
+"récupérer toutes les informations dont vous avez besoin."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:2
+msgid "Second Biggest Value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:4
+msgid ""
+"In this exercise, you must compute the second maximal value contained in an "
+"array, i.e. the value that becomes the maximum if you remove every instance "
+"of the current maximum from the array."
+msgstr ""
+"In this exercise, you must compute the second maximal value contained in an "
+"array, i.e. the value that becomes the maximum if you remove every instance "
+"of the current maximum from the array."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:7
+msgid ""
+"As usual, you should gather the information in only one traversal of the "
+"array.  You can assume that the second biggest value actual exists (there is "
+"at least two distinct values in the array), and that all values in the array "
+"are greater than [!python] -100000000.[/!] [!java|scala]<code>Integer."
+"MIN_VALUE</code> (which is the smallest representable integer existing in [!"
+"thelang]).[/!]"
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -7354,6 +7314,73 @@ msgstr ""
 "Cette fois, il faut parcourir le monde en zig-zag. Regardez le monde "
 "objectif pour voir les détails de l'ordre de parcours demandé."
 
+#. type: Content of: <h2>
+#: src/lessons/welcome/summative/Moria.html:2
+msgid "Lost in the Moria"
+msgstr "Perdu dans la Moria"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:4
+msgid ""
+"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
+"exit, and you will have to clear your way to the exit. Well of course these "
+"are only baggles and you could simply walk away, but it will be easier to "
+"program the buggles so that they move those \"rocks\" than convincing them "
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
+msgstr ""
+"Vos buggles sont coincées dans la mine de la Moria ! Des rochers bloquent la "
+"sortie, et il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont "
+"pas vraiment des rochers mais juste des biscuits, et vos buggles pourraient "
+"facilement passer au dessus sans se fatiguer. Mais il est probablement plus "
+"simple de programmer vos buggles pour qu'elles déplacent ces «rochers» "
+"plutôt que de tenter de les convaincre de passer à la suite sans avoir "
+"résolu le problème. Les nains sont souvent un peu têtus..."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:11
+msgid ""
+"So, you have to find the first baggle blocking the exit (simply walk to the "
+"east until you are over a baggle), take it and move it back to the other "
+"side of the tunnel (walk to the west while you are not over a baggle, and "
+"then move back one step to the east and drop your baggle), and iterate until "
+"you find the exit (that is, the wall to the east side). Afterward, move out "
+"as in the objective world. That's only a few more steps away."
+msgstr ""
+"Donc, il vous faut trouver le premier biscuit en travers de votre chemin "
+"(marchez vers l'est jusqu'à vous trouver au dessus d'un biscuit), le "
+"ramasser, et retourner à l'autre extrémité du couloir pour le déposer "
+"(marchez vers l'ouest jusqu'à vous trouver au dessus d'un biscuit puis "
+"reculez d'un pas). Il faut ensuite faire de même pour tous les biscuits "
+"jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais "
+"comme dans le monde objectif, cela ne sera plus qu'à quelques pas de là."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:18
+msgid ""
+"To make things worse, you have to write a program that works for every "
+"buggle, even if writing a specific program for each of them would be easier. "
+"It seems that using <code>while</code> loops is the only solution to move "
+"the buggles correctly."
+msgstr ""
+"Pour compliquer encore les choses, vous devez écrire un programme qui "
+"fonctionne pour toutes les buggles, même si écrire un programme spécifique à "
+"chacune serait peut-être un peu plus simple. Il semblerait qu'utiliser une "
+"boucle <code>while</code> soit la seule solution pour déplacer vos buggles "
+"correctement."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:23
+msgid ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise.  This exercise is a bit more complex, so you can also leave it for "
+"now and come back later if you don't get it right now."
+msgstr ""
+"Quand vous serez parvenu à sortir de ce piège, vous pouvez passez à "
+"l'exercice suivant. Cet exercice est un peu plus difficile que les autres, "
+"et vous pouvez tout à fait le laisser momentanément de coté pour y revenir "
+"plus tard si vous n'y parvenez pas pour l'instant."
+
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
 msgid "The turmites"
@@ -9940,6 +9967,7 @@ msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:23
+#: src/lessons/sort/pancake/BubblePancake.html:10
 msgid "I don't get it. I need some help."
 msgstr "Je suis perdu, j'ai besoin d'aide."
 
@@ -9954,8 +9982,9 @@ msgstr ""
 "pile et ensuite placer celle juste plus petite au dessus, puis celle plus "
 "petite et ainsi de suite."
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Attribute 'alt' of: <p><p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:28
+#: src/lessons/sort/pancake/BubblePancake.html:13
 msgid "The first tip was not enough. I need another one."
 msgstr "Ce premier indice n'était pas suffisant, j'ai besoin de plus d'aide."
 
@@ -9981,6 +10010,79 @@ msgid "How could you reach this situation from the current one?"
 msgstr ""
 "Et comment pourriez vous parvenir à cette situation à partir de la situation "
 "courante?"
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/BubblePancake.html:2
+msgid "Bubble Pancakes"
+msgstr "Crêpes et bulle"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:4
+msgid ""
+"This problem is similar to the previous: you have to sort the pancakes, the "
+"smallest at the top and the biggest at the bottom, except you can only flip "
+"them to sort."
+msgstr ""
+"Cet exercice ressemble au précédent: il faut que vous triiez les crêpes, la "
+"plus petite en haut de la pile, et la plus grande en bas de la pile, sauf "
+"que vous ne pouvez seulement en retourner qu’un certain nombre."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:6
+msgid ""
+"The purpose here is to sort them using the bubble algorithm, where one "
+"pancake is moved to the bottom until it encounters a bigger one. In "
+"graphical representations, it looks like a bubble takes the element and move "
+"them through the pile. This is where its name comes from."
+msgstr ""
+"L'objectif ici est de trier les crêpes en utilisant l'algorithme du tri à "
+"bulle, où une crêpe est déplacée vers le bas de la pile jusqu'à qu'elle en "
+"rencontre une plus grande. Dans les représentations graphiques, cela se "
+"matérialise par une bulle qui prend un élément et le déplace sur toute la "
+"pile, d'où le nom de \"tri à bulle\"."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:8
+msgid ""
+"Now, using pancakes makes it a little more difficult to write, because you "
+"have to find a way to swap only two pancakes at a time."
+msgstr ""
+"Maintenant, l'utilisation de crêpes rend l'algorithme un peu plus difficile "
+"à écrire, car vous devez trouver un moyen d'échanger de place seulement deux "
+"crêpes à la fois."
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BubblePancake.html:11
+msgid ""
+"The bubble algorithm consists in browsing the whole pile from top to bottom, "
+"and making a comparision between two pancakes. Each time the top pancake is "
+"bigger than the one below, you have to swap them, then compare the bigger "
+"pancake you just swapped with one below, and so on. You have to browse "
+"through the entire pile until no swap has occurred, in which case the pile "
+"is sorted."
+msgstr ""
+"Le tri à bulle consiste à parcourir la pile entière, de haut en bas, et "
+"d'effectuer des comparaisons entre deux crêpes. Chaque fois que la crêpe du "
+"dessus est plus grande que celle du dessous, il faut que vous les échangiez, "
+"puis que vous compariez la crêpe que vous venez de déplacer avec celle du "
+"dessous, et ainsi de suite. Vous devez continuer à parcourir toute la pile "
+"jusqu'à que vous ne déplaciez plus aucune crêpe, auquel cas la pile est "
+"triée."
+
+#. type: Content of: <p><p><div>
+#: src/lessons/sort/pancake/BubblePancake.html:14
+msgid ""
+"If you don't understand the basic bubble sorting algorithm, you should try "
+"the exercises within the “Sorting algorithms” lesson. If you do, but can't "
+"figure a way to swap only two pancakes at a time, think of a situation where "
+"only two pancakes are swapped at a time, and find a way to reach that "
+"situation."
+msgstr ""
+"Si vous ne comprenez pas l'algorithme de tri à bulle de base, vous devriez "
+"d'abord essayer les exercices le concernant dans la leçon \"Algorithmes de "
+"tri\". Si c'est plutôt le fait d'échanger seulement deux crêpes à la fois "
+"qui vous pose problème, cherchez une situation où seulement deux crêpes sont "
+"échangées, et trouver un moyen d'arriver à cette situation."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:2

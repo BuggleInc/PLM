@@ -118,6 +118,10 @@ public class MainFrame extends JFrame {
 					}					
 			}	
 		});
+		JToggleButton lineAddButton = createButton("lineadd");
+		JToggleButton lineDelButton = createButton("linedel");
+		JToggleButton colAddButton = createButton("coladd");
+		JToggleButton colDelButton = createButton("coldel");
 
 		topButton.setSelected(true);
 
@@ -129,6 +133,10 @@ public class MainFrame extends JFrame {
 		toolBar.add(nobuggleButton);
 		toolBar.add(colorButton);
 		toolBar.add(textButton);
+		toolBar.add(lineAddButton);
+		toolBar.add(lineDelButton);
+		toolBar.add(colAddButton);
+		toolBar.add(colDelButton);
 
 		tools = new ButtonGroup();
 		tools.add(topButton);
@@ -138,6 +146,10 @@ public class MainFrame extends JFrame {
 		tools.add(nobuggleButton);
 		tools.add(colorButton);
 		tools.add(textButton);
+		tools.add(lineAddButton);
+		tools.add(lineDelButton);
+		tools.add(colAddButton);
+		tools.add(colDelButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 

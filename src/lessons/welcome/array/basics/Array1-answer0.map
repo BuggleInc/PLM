@@ -1,6 +1,6 @@
 BuggleWorld: Pattern 1
 Size: 6x6
-Buggle(5,5): south,black,pink,Picasso
+Buggle(5,5): south,black,pink,Picasso,noBaggle,
 Cell(0,0): red,nobaggle,notopwall,noleftwall,
 Cell(0,1): cyan,nobaggle,notopwall,noleftwall,
 Cell(0,2): green,nobaggle,notopwall,noleftwall,

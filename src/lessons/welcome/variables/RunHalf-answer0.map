@@ -1,13 +1,13 @@
 BuggleWorld: Run track
 Size: 8x16
-Buggle(0,7): north,black,black,buggle1
-Buggle(1,7): north,black,black,buggle2
-Buggle(2,10): north,black,black,buggle3
-Buggle(3,14): north,black,black,buggle4
-Buggle(4,12): north,black,black,buggle5
-Buggle(5,13): north,black,black,buggle6
-Buggle(6,0): north,black,black,buggle7
-Buggle(7,13): north,black,black,buggle8
+Buggle(0,7): north,black,black,buggle1,noBaggle,
+Buggle(1,7): north,black,black,buggle2,noBaggle,
+Buggle(2,10): north,black,black,buggle3,noBaggle,
+Buggle(3,14): north,black,black,buggle4,noBaggle,
+Buggle(4,12): north,black,black,buggle5,noBaggle,
+Buggle(5,13): north,black,black,buggle6,noBaggle,
+Buggle(6,0): north,black,black,buggle7,noBaggle,
+Buggle(7,13): north,black,black,buggle8,noBaggle,
 Cell(0,0): orange,nobaggle,notopwall,noleftwall,
 Cell(0,1): orange,baggle,notopwall,noleftwall,
 Cell(0,4): orange,baggle,notopwall,noleftwall,

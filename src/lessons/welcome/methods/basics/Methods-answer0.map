@@ -1,6 +1,6 @@
 BuggleWorld: Donut World
 Size: 7x7
-Buggle(0,6): north,black,lightGray,Homer
+Buggle(0,6): north,black,lightGray,Homer,noBaggle,
 Cell(0,6): white,baggle,notopwall,noleftwall,
 Cell(1,6): white,baggle,notopwall,noleftwall,
 Cell(2,6): white,baggle,notopwall,noleftwall,

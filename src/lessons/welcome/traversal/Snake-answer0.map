@@ -1,6 +1,6 @@
 BuggleWorld: Desert
 Size: 7x7
-Buggle(6,0): east,red,red,Snake
+Buggle(6,0): east,red,red,Snake,noBaggle,
 Cell(0,0): red,nobaggle,topwall,leftwall,
 Cell(0,1): red,nobaggle,notopwall,leftwall,
 Cell(0,2): red,nobaggle,notopwall,leftwall,

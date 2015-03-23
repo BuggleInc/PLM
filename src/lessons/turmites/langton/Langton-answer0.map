@@ -1,6 +1,6 @@
 TurmiteWorld: 12000 steps
 Size: 100x70
-Buggle(10,55): north,red,black,ant
+Buggle(10,55): north,red,black,ant,noBaggle,
 Cell(9,52): black,nobaggle,notopwall,noleftwall,
 Cell(9,53): black,nobaggle,notopwall,noleftwall,
 Cell(10,51): black,nobaggle,notopwall,noleftwall,

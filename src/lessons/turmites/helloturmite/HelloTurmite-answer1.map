@@ -1,6 +1,6 @@
 TurmiteWorld: snail (10100 steps)
 Size: 68x72
-Buggle(45,60): west,red,black,ant
+Buggle(45,60): west,red,black,ant,noBaggle,
 Cell(3,26): black,nobaggle,notopwall,noleftwall,
 Cell(3,27): black,nobaggle,notopwall,noleftwall,
 Cell(3,28): black,nobaggle,notopwall,noleftwall,

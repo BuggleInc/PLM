@@ -1,6 +1,6 @@
 BuggleWorld: Stairway to heaven
 Size: 15x9
-Buggle(0,8): east,black,black,buggle2
+Buggle(0,8): east,black,black,buggle2,noBaggle,
 Cell(0,0): white,nobaggle,topwall,noleftwall,
 Cell(0,8): lightGray,nobaggle,notopwall,noleftwall,
 Cell(1,0): white,nobaggle,topwall,noleftwall,

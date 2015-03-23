@@ -1,6 +1,6 @@
 BuggleWorld: World
 Size: 7x7
-Buggle(2,0): west,red,red,Puppy
+Buggle(2,0): west,red,red,Puppy,noBaggle,
 Cell(0,0): red,nobaggle,notopwall,noleftwall,
 Cell(0,1): red,nobaggle,notopwall,noleftwall,
 Cell(0,2): red,nobaggle,notopwall,noleftwall,

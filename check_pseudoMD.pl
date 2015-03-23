@@ -4,11 +4,11 @@ use strict;
 
 my @langs = qw,python java scala c,;
 
-my $res = 0;
+my $errorCount = 0;
 
 sub error($) {
     print $_[0];
-    $res++;
+    $errorCount++;
 }
 
 print "Checking for errors about language pseudo-markup ([!python] etc)\n";
@@ -22,21 +22,21 @@ foreach my $file (qx(find src -name '*html')) {
     
     for my $line (@arr) {
 	for my $lang1 (@langs) {
-	    error "$file: [$lang1]: $line\n"
+	    error "$file: [$lang1] instead of [!$lang1].\n  $line\n"
 	      if ($line =~ /\[$lang1\]/);
 	    for my $lang2 (@langs) {
-		error "$file: [$lang1|$lang2]: $line\n"
+		error "$file: [$lang1|$lang2] instead of [!$lang1|$lang2].\n  $line\n"
 		  if ($line =~ /\[$lang1\|$lang2\]/);
 		for my $lang3 (@langs) {
-		    error "$file: [$lang1|$lang2|$lang3]: $line\n"
+		    error "$file: [$lang1|$lang2|$lang3] instead of [!$lang1|$lang2|$lang3].\n  $line\n"
 		      if ($line =~ /\[$lang1\|$lang2\|$lang3\]/);
 		}
 	    }
 	}
-	error "$file: [!/]: $line" 
+	error "$file: [!/] instead of [/!].\n  $line" 
 	  if ($line =~ m|\[!/\]|);
     }
 }
 
-print "$res errors found.\n";
-exit $res;
+print "$errorCount errors found.\n";
+exit $errorCount;
