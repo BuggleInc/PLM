@@ -62,7 +62,7 @@ public class BatWorld extends World {
 	}
 	
 	/* So that the view can display them */
-	protected List<BatTest> getTests() {
+	public List<BatTest> getTests() {
 		return tests;
 	}
 

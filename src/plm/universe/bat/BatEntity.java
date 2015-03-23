@@ -38,6 +38,8 @@ public class BatEntity extends Entity {
 				t.setResult(Game.i18n.tr("Exception {0}: {1}",e.getClass().getName(), e.getMessage()));
 				e.printStackTrace();
 			}
+		addOperation(new BatOperation((BatWorld) world));
+		stepUI();
 	}
 
 	protected void run(BatTest t) {

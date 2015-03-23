@@ -276,6 +276,11 @@ public class BatTest {
 		return objectiveTest;
 	}
 	
+	public String formatAsString() {
+		return getName()+"="+getResult()
+		+(isAnswered() && !isCorrect() ?" (expected: "+stringParameter(expected)+")":"");
+	}
+	
 	public String toString() {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		StringBuffer res = new StringBuffer(getName());
