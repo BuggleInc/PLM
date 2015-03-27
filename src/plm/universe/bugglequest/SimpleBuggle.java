@@ -17,8 +17,8 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public SimpleBuggle() {
 		super();
 	}
-	public SimpleBuggle(BuggleWorld world, String name, int i, int j, Direction north, Color color, Color brush) {
-		super(world, name, i, j, north, color, brush);
+	public SimpleBuggle(Game game, BuggleWorld world, String name, int i, int j, Direction north, Color color, Color brush) {
+		super(game, world, name, i, j, north, color, brush);
 	}
 	@Override
 	public void run() {

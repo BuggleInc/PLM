@@ -8,7 +8,7 @@ import lessons.recursion.hanoi.universe.HanoiWorld;
 public class HanoiBoard extends ExerciseTemplated {
 
 	public HanoiBoard(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];

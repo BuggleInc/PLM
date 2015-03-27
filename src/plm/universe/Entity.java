@@ -23,16 +23,19 @@ public abstract class Entity extends Observable {
 	protected String name = "(noname)";
 
 	protected World world;
-
+	
+	private Game game;
 	private Semaphore oneStepSemaphore = new Semaphore(0);
 
 	public Entity() {}
 
-	public Entity(String name) {
+	public Entity(Game game, String name) {
 		this.name=name;
+		this.game = game;
 	}
-	public Entity(String name, World w) {
+	public Entity(Game game, String name, World w) {
 		this.name=name;
+		this.game = game;
 		if (w != null)
 			w.addEntity(this);
 	}
@@ -77,7 +80,7 @@ public abstract class Entity extends Observable {
 		fireStackListener();
 		world.notifyWorldUpdatesListeners();
 		if (world.isDelayed()) {
-			if (Game.getInstance().stepModeEnabled()) {
+			if (game.stepModeEnabled()) {
 				this.oneStepSemaphore.acquireUninterruptibly();
 			} else {	
 				try {
@@ -92,6 +95,7 @@ public abstract class Entity extends Observable {
 
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {
+		setGame(other.game);
 		setName(other.getName());
 		setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
 	}
@@ -130,7 +134,7 @@ public abstract class Entity extends Observable {
 
 	/** Returns whether this is the entity selected in the interface */
 	public boolean isSelected() {
-		return this == Game.getInstance().getSelectedEntity();
+		return this == game.getSelectedEntity();
 	}
 
 	/** Run this specific entity, encoding the student logic to solve a given exercise. 
@@ -157,5 +161,13 @@ public abstract class Entity extends Observable {
 	public Integer getScriptOffset(ProgrammingLanguage lang) {
 		Integer res = scriptOffset.get(lang);
 		return res == null ? 0:res;
+	}
+	
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

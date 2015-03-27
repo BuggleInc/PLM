@@ -84,7 +84,7 @@ public class LangJava extends JVMCompiledLang {
 			if (out != null)
 				out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
-			if (Game.getInstance().isDebugEnabled())
+			if (getGame().isDebugEnabled())
 				for (SourceFile sf: exo.getSourceFilesList(Game.JAVA)) 
 					System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns,whatToCompile)); 
 

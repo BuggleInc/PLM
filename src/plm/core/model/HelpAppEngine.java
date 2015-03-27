@@ -17,7 +17,10 @@ public class HelpAppEngine extends HelpServer {
 
     private static URL helpServer;
 
-    public HelpAppEngine() {
+    private Game game;
+    
+    public HelpAppEngine(Game game) {
+    	this.game = game;
     	String url = Game.getProperty(Game.PROP_APPENGINE_URL);
     	if (! url.equals("")) { // no configuration were provided
     		try {
@@ -66,8 +69,8 @@ public class HelpAppEngine extends HelpServer {
         JSONObject jsonObject = new JSONObject();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "help");
-        jsonObject.put("course", Game.getInstance().getCourseID());
-        jsonObject.put("password", Game.getInstance().getCoursePassword());
+        jsonObject.put("course", game.getCourseID());
+        jsonObject.put("password", game.getCoursePassword());
         jsonObject.put("status", isRequestingHelp ? "true" : "false");
 
 		sendRequest(jsonObject.toString());

@@ -98,132 +98,137 @@ import lessons.welcome.traversal.zigzag.TraversalZigZag;
 import lessons.welcome.variables.RunFour;
 import lessons.welcome.variables.RunHalf;
 import lessons.welcome.variables.Variables;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.universe.BrokenWorldFileException;
 
 public class Main extends Lesson {
 
+	public Main(Game game) {
+		super(game);
+	}
+
 	@Override
 	protected void loadExercises() throws IOException, BrokenWorldFileException {
-		addExercise(new Environment(this));
+		addExercise(new Environment(getGame(), this));
 		
-		Lecture instructions = addExercise(new Instructions(this));
-		addExercise(new InstructionsDrawG(this), instructions);
+		Lecture instructions = addExercise(new Instructions(getGame(), this));
+		addExercise(new InstructionsDrawG(getGame(), this), instructions);
 		
 		//Lecture conditions = 
-		addExercise(new Conditions(this));
+		addExercise(new Conditions(getGame(), this));
 
-		Lecture loopWhile = addExercise(new LoopWhile(this));
-		addExercise(new BaggleSeeker(this), loopWhile);
+		Lecture loopWhile = addExercise(new LoopWhile(getGame(), this));
+		addExercise(new BaggleSeeker(getGame(), this), loopWhile);
 		
-		Lecture vars = addExercise(new Variables(this));
-		addExercise(new RunFour(this), vars);
-		addExercise(new RunHalf(this), vars);
-		addExercise(new BDR(this),vars);
-		addExercise(new BDR2(this),vars);
+		Lecture vars = addExercise(new Variables(getGame(), this));
+		addExercise(new RunFour(getGame(), this), vars);
+		addExercise(new RunHalf(getGame(), this), vars);
+		addExercise(new BDR(getGame(), this),vars);
+		addExercise(new BDR2(getGame(), this),vars);
 		
-		Lecture loopFor = addExercise(new LoopFor(this));
-		addExercise(new LoopStairs(this), loopFor);
-		addExercise(new LoopCourse(this),loopFor);
-		addExercise(new LoopCourseForest(this),loopFor);
+		Lecture loopFor = addExercise(new LoopFor(getGame(), this));
+		addExercise(new LoopStairs(getGame(), this), loopFor);
+		addExercise(new LoopCourse(getGame(), this),loopFor);
+		addExercise(new LoopCourseForest(getGame(), this),loopFor);
 		
-		Lecture loopDoWhile = addExercise(new LoopDoWhile(this));
-		addExercise(new Poucet1(this), loopDoWhile);
-		addExercise(new Poucet2(this), loopDoWhile);
+		Lecture loopDoWhile = addExercise(new LoopDoWhile(getGame(), this));
+		addExercise(new Poucet1(getGame(), this), loopDoWhile);
+		addExercise(new Poucet2(getGame(), this), loopDoWhile);
 		
-		Lecture methodsVoid = addExercise(new Methods(this));
-		  addExercise(new MethodsDogHouse(this),methodsVoid);
-  		  addExercise(new PictureMono1(this),methodsVoid);
-		  addExercise(new PictureMono2(this),methodsVoid);
-		  addExercise(new PictureMono3(this),methodsVoid);
+		Lecture methodsVoid = addExercise(new Methods(getGame(), this));
+		  addExercise(new MethodsDogHouse(getGame(), this),methodsVoid);
+  		  addExercise(new PictureMono1(getGame(), this),methodsVoid);
+		  addExercise(new PictureMono2(getGame(), this),methodsVoid);
+		  addExercise(new PictureMono3(getGame(), this),methodsVoid);
 		 	 	  
- 	 	Lecture methodReturns = addExercise(new MethodsReturning(this));
-		  addExercise(new SlugTracking(this),methodReturns);
-		  addExercise(new SlugHunting(this),methodReturns);
+ 	 	Lecture methodReturns = addExercise(new MethodsReturning(getGame(), this));
+		  addExercise(new SlugTracking(getGame(), this),methodReturns);
+		  addExercise(new SlugHunting(getGame(), this),methodReturns);
 		
-		Lecture methodArg = addExercise(new MethodsArgs(this));
-		  addExercise(new SlugSnail(this), methodArg);
-		  addExercise(new MethodsPicture(this), methodArg);
-		  addExercise(new MethodsPictureLarge(this), methodArg);
- 	 	  addExercise(new PatternPicture(this), methodArg);
- 	 	  addExercise(new FlowerPot(this), methodArg);
- 	 	  addExercise(new FlowerCase(this), methodArg);
+		Lecture methodArg = addExercise(new MethodsArgs(getGame(), this));
+		  addExercise(new SlugSnail(getGame(), this), methodArg);
+		  addExercise(new MethodsPicture(getGame(), this), methodArg);
+		  addExercise(new MethodsPictureLarge(getGame(), this), methodArg);
+ 	 	  addExercise(new PatternPicture(getGame(), this), methodArg);
+ 	 	  addExercise(new FlowerPot(getGame(), this), methodArg);
+ 	 	  addExercise(new FlowerCase(getGame(), this), methodArg);
 	
 		  // First serie of boolean fun
-		  Lecture bat = addExercise(new SleepIn(this));
-		  addExercise(new MonkeyTrouble(this),bat);
-		  addExercise(new NearHundred(this),bat);
-		  addExercise(new SumDouble(this),bat);
-		  addExercise(new Diff21(this),bat);
-		  addExercise(new ParotTrouble(this),bat);
-		  addExercise(new Makes10(this),bat);
-		  addExercise(new PosNeg(this),bat);
-		  addExercise(new IcyHot(this),bat);
-		  addExercise(new In1020(this),bat);
-		  addExercise(new HasTeen(this),bat);
-		  addExercise(new LoneTeen(this),bat);
-		  addExercise(new CountTeen(this),bat);
-		  addExercise(new Close10(this),bat);
-		  addExercise(new In3050(this),bat);
-		  addExercise(new Max1020(this),bat);
-		  addExercise(new LastDigit(this),bat);
+		  Lecture bat = addExercise(new SleepIn(getGame(), this));
+		  addExercise(new MonkeyTrouble(getGame(), this),bat);
+		  addExercise(new NearHundred(getGame(), this),bat);
+		  addExercise(new SumDouble(getGame(), this),bat);
+		  addExercise(new Diff21(getGame(), this),bat);
+		  addExercise(new ParotTrouble(getGame(), this),bat);
+		  addExercise(new Makes10(getGame(), this),bat);
+		  addExercise(new PosNeg(getGame(), this),bat);
+		  addExercise(new IcyHot(getGame(), this),bat);
+		  addExercise(new In1020(getGame(), this),bat);
+		  addExercise(new HasTeen(getGame(), this),bat);
+		  addExercise(new LoneTeen(getGame(), this),bat);
+		  addExercise(new CountTeen(getGame(), this),bat);
+		  addExercise(new Close10(getGame(), this),bat);
+		  addExercise(new In3050(getGame(), this),bat);
+		  addExercise(new Max1020(getGame(), this),bat);
+		  addExercise(new LastDigit(getGame(), this),bat);
 
 		  // Second serie of boolean fun
-		  bat = addExercise(new AlarmClock(this));
-		  addExercise(new AnswerCell(this),bat);
-		  addExercise(new BlueTicket(this),bat);
-		  addExercise(new CaughtSpeeding(this),bat);
-		  addExercise(new CigarParty(this),bat);
-		  addExercise(new DateFashion(this),bat);
-		  addExercise(new GreenTicket(this),bat);
-		  addExercise(new In1To10(this),bat);
-		  addExercise(new InOrder(this),bat);
-		  addExercise(new InOrderEqual(this),bat);
-		  addExercise(new LastDigit2(this),bat);
-		  addExercise(new LessBy10(this),bat);
-		  addExercise(new MaxMod5(this),bat);
-		  addExercise(new NearTen(this),bat);
-		  addExercise(new RedTicket(this),bat);
-		  addExercise(new ShareDigit(this),bat);
-		  addExercise(new SortaSum(this),bat);
-		  addExercise(new FizzBuzz(this), bat);
-		  addExercise(new SquirrelPlay(this),bat);
-		  addExercise(new TeaParty(this),bat);
-		  addExercise(new TeenSum(this),bat);
-		  addExercise(new TwoAsOne(this),bat);
-		  addExercise(new WithoutDoubles(this),bat);
+		  bat = addExercise(new AlarmClock(getGame(), this));
+		  addExercise(new AnswerCell(getGame(), this),bat);
+		  addExercise(new BlueTicket(getGame(), this),bat);
+		  addExercise(new CaughtSpeeding(getGame(), this),bat);
+		  addExercise(new CigarParty(getGame(), this),bat);
+		  addExercise(new DateFashion(getGame(), this),bat);
+		  addExercise(new GreenTicket(getGame(), this),bat);
+		  addExercise(new In1To10(getGame(), this),bat);
+		  addExercise(new InOrder(getGame(), this),bat);
+		  addExercise(new InOrderEqual(getGame(), this),bat);
+		  addExercise(new LastDigit2(getGame(), this),bat);
+		  addExercise(new LessBy10(getGame(), this),bat);
+		  addExercise(new MaxMod5(getGame(), this),bat);
+		  addExercise(new NearTen(getGame(), this),bat);
+		  addExercise(new RedTicket(getGame(), this),bat);
+		  addExercise(new ShareDigit(getGame(), this),bat);
+		  addExercise(new SortaSum(getGame(), this),bat);
+		  addExercise(new FizzBuzz(getGame(), this), bat);
+		  addExercise(new SquirrelPlay(getGame(), this),bat);
+		  addExercise(new TeaParty(getGame(), this),bat);
+		  addExercise(new TeenSum(getGame(), this),bat);
+		  addExercise(new TwoAsOne(getGame(), this),bat);
+		  addExercise(new WithoutDoubles(getGame(), this),bat);
 
 		  
 		// arrays exercises 
-		Lecture arrays = addExercise(new Array1(this));
-		addExercise(new Array2(this),arrays);
-		addExercise(new IndexOfValue(this),arrays);
-		addExercise(new OccurrenceOfValue(this),arrays);
-		addExercise(new AverageValue(this),arrays);
-		addExercise(new MaxValue(this),arrays);
-		addExercise(new IndexOfMaxValue(this),arrays);
-		addExercise(new Extrema(this),arrays);
-		addExercise(new SecondMaxValue(this),arrays);
-		addExercise(new ArrayCount9(this),arrays);
-		addExercise(new ArrayFront9(this),arrays);
-		addExercise(new Array123(this),arrays);
-		addExercise(new Array667(this),arrays);
-		addExercise(new NoTriples(this),arrays);
-		addExercise(new Has271(this),arrays);
-		addExercise(new Golomb(this),arrays);
-		addExercise(new Island(this),arrays);
+		Lecture arrays = addExercise(new Array1(getGame(), this));
+		addExercise(new Array2(getGame(), this),arrays);
+		addExercise(new IndexOfValue(getGame(), this),arrays);
+		addExercise(new OccurrenceOfValue(getGame(), this),arrays);
+		addExercise(new AverageValue(getGame(), this),arrays);
+		addExercise(new MaxValue(getGame(), this),arrays);
+		addExercise(new IndexOfMaxValue(getGame(), this),arrays);
+		addExercise(new Extrema(getGame(), this),arrays);
+		addExercise(new SecondMaxValue(getGame(), this),arrays);
+		addExercise(new ArrayCount9(getGame(), this),arrays);
+		addExercise(new ArrayFront9(getGame(), this),arrays);
+		addExercise(new Array123(getGame(), this),arrays);
+		addExercise(new Array667(getGame(), this),arrays);
+		addExercise(new NoTriples(getGame(), this),arrays);
+		addExercise(new Has271(getGame(), this),arrays);
+		addExercise(new Golomb(getGame(), this),arrays);
+		addExercise(new Island(getGame(), this),arrays);
 
 		
 		// 2D traversals
-		Lecture snake = addExercise(new Snake(this));
-		addExercise(new TraversalByColumn(this),snake);
-		addExercise(new TraversalByLine(this),snake);
-		addExercise(new TraversalZigZag(this),snake);
-		addExercise(new TraversalDiagonal(this),snake);
+		Lecture snake = addExercise(new Snake(getGame(), this));
+		addExercise(new TraversalByColumn(getGame(), this),snake);
+		addExercise(new TraversalByLine(getGame(), this),snake);
+		addExercise(new TraversalZigZag(getGame(), this),snake);
+		addExercise(new TraversalDiagonal(getGame(), this),snake);
 		
 		// Other exercises
-		addExercise(new Moria(this));
+		addExercise(new Moria(getGame(), this));
 
 		
 	}

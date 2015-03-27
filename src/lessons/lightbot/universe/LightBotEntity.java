@@ -26,8 +26,8 @@ public class LightBotEntity extends Entity  {
 	}
 
 	/** That constructor is called by the exercises */
-	public LightBotEntity(World world, String name, int x, int y, Direction direction2) {
-		super(name,world);
+	public LightBotEntity(Game game, World world, String name, int x, int y, Direction direction2) {
+		super(game, name,world);
 		this.setX(x);
 		this.setY(y);
 		this.direction = direction2;
@@ -156,7 +156,7 @@ public class LightBotEntity extends Entity  {
 	LightBotSourceFile sf;
 	@Override
 	public void run() {
-		sf = (LightBotSourceFile) ((Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.LIGHTBOT,0);
+		sf = (LightBotSourceFile) ((Exercise) getGame().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.LIGHTBOT,0);
 				
 		/* Run main */
 		run("main",sf.getMain());

@@ -10,7 +10,7 @@ import lessons.recursion.hanoi.universe.HanoiWorld;
 public class TricolorHanoi2 extends ExerciseTemplated {
 
 	public TricolorHanoi2(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		HanoiWorld w;

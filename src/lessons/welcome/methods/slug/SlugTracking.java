@@ -2,6 +2,7 @@ package lessons.welcome.methods.slug;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -11,12 +12,12 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class SlugTracking extends ExerciseTemplated {
 
-	public SlugTracking(Lesson lesson) {
-		super(lesson);
+	public SlugTracking(Game game, Lesson lesson) {
+		super(game, lesson);
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 
-		BuggleWorld myWorld = new BuggleWorld("Forrest", 8, 7);
+		BuggleWorld myWorld = new BuggleWorld(game, "Forrest", 8, 7);
 		for (int i = 5; i >= 2; i--)
 			myWorld.setColor(6, i,Color.green);
 		myWorld.setColor(5, 2,Color.green);
@@ -59,10 +60,10 @@ public class SlugTracking extends ExerciseTemplated {
 		}
 		myWorlds[1] = myWorld;
 
-		SimpleBuggle hunter = new SimpleBuggle(myWorlds[0], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
+		SimpleBuggle hunter = new SimpleBuggle(game, myWorlds[0], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
-		hunter = new SimpleBuggle(myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
+		hunter = new SimpleBuggle(game, myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
 		setup(myWorlds);

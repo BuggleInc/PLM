@@ -25,7 +25,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 	private JTree tree;
 
 	public ChooseLectureDialog() {
-		Lesson l = Game.getInstance().getCurrentLesson();
+		Lesson l = game.getCurrentLesson();
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode();
 		for (Lecture lect : l.getRootLectures()) 
 			root.add(lect.getNode());
@@ -81,7 +81,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 				Object selection = node.getUserObject();
 
 				if (selection instanceof Lecture) 
-					Game.getInstance().setCurrentExercise((Lecture) selection);
+					game.setCurrentExercise((Lecture) selection);
 				else 
 					System.out.println("selection is not a lecture: "+selection);
 			}

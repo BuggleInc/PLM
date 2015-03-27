@@ -1,5 +1,7 @@
 package plm.universe;
 
+import plm.core.model.Game;
+
 
 
 
@@ -12,8 +14,8 @@ public abstract class GridWorld extends World {
 	protected int sizeY;
 	protected boolean visibleGrid=true;
 
-	public GridWorld(String name, int x, int y) {
-		super(name);
+	public GridWorld(Game game, String name, int x, int y) {
+		super(game, name);
 		create(x, y);
 	}
 

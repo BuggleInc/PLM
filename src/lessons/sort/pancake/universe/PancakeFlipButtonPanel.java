@@ -29,7 +29,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
      */
 	public PancakeFlipButtonPanel() {
 		super();
-		PancakeEntity pe = (PancakeEntity) Game.getInstance().getSelectedEntity();
+		PancakeEntity pe = (PancakeEntity) game.getSelectedEntity();
 		this.add(this.createFlipPanel(pe));
 	}
 
@@ -62,7 +62,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int amount = (Integer) pancakesAmountComboBox.getSelectedItem();
-				PancakeEntity pe = (PancakeEntity) Game.getInstance().getSelectedEntity();
+				PancakeEntity pe = (PancakeEntity) game.getSelectedEntity();
 				echo(i18n.tr("flip({0})",amount));
 				pe.flip(amount);
 			}
@@ -77,7 +77,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 	private void initPancakesAmountComboBox(PancakeEntity pe) {
 		int n = pe.getStackSize();
 		Integer values[];
-		burnedPancake = ((PancakeWorld) Game.getInstance().getSelectedWorld()).isBurnedPancake(); 
+		burnedPancake = ((PancakeWorld) game.getSelectedWorld()).isBurnedPancake(); 
 		if ( burnedPancake) {
 			values = new Integer[n];
 			for ( int i = 0 ; i < n ; i++) 

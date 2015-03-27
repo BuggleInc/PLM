@@ -2,6 +2,7 @@ package lessons.welcome.conditions;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -10,13 +11,13 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class Conditions extends ExerciseTemplated {
 
-	public Conditions(Lesson lesson) {
-		super(lesson);
+	public Conditions(Game game, Lesson lesson) {
+		super(game, lesson);
 		tabName = "Program";
 				
-		BuggleWorld myWorld = new BuggleWorld("Closed World",7,7);
+		BuggleWorld myWorld = new BuggleWorld(game, "Closed World",7,7);
 		for (int i=0;i<7;i++) { 
-			new SimpleBuggle(myWorld, "Buggle "+(i+1), i, 3, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(game, myWorld, "Buggle "+(i+1), i, 3, Direction.NORTH, Color.black, Color.lightGray);
 			if (i%2 == 0) {
 				myWorld.putTopWall(i, 3);
 				myWorld.putTopWall(i, 5);

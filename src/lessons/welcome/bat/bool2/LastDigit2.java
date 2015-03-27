@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LastDigit2 extends BatExercise {
-	public LastDigit2(Lesson lesson) {
-		super(lesson);
+	public LastDigit2(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("lastDigit");
+		BatWorld myWorld = new BatWorld(game, "lastDigit");
 		myWorld.addTest(VISIBLE, 23, 19, 13) ;
 		myWorld.addTest(VISIBLE, 23, 19, 12) ;
 		myWorld.addTest(VISIBLE, 23, 19, 3) ;

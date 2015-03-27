@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringTimes extends BatExercise {
-	public StringTimes(Lesson lesson) {
-		super(lesson);
+	public StringTimes(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("stringTimes");
+		BatWorld myWorld = new BatWorld(game, "stringTimes");
 		myWorld.addTest(VISIBLE, "Hi", 2) ;
 		myWorld.addTest(VISIBLE, "Hi", 3) ;
 		myWorld.addTest(VISIBLE, "Hi", 1) ;

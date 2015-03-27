@@ -24,17 +24,18 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	private File plmDir;
 	private GitUtils gitUtils;
-	
+	private Game game;
 	private ProgressMonitor progress = NullProgressMonitor.INSTANCE; //new TextProgressMonitor(new PrintWriter(System.out));
 
 
 	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
 	private File repoDir;
 
-	public GitSpy(File path, Users users) throws IOException, GitAPIException {
+	public GitSpy(Game game, File path, Users users) throws IOException, GitAPIException {
+		this.game = game;
 		this.plmDir = path;
 
-		gitUtils = new GitUtils();
+		gitUtils = new GitUtils(game);
 		
 		users.addUserSwitchesListener(this);
 		userHasChanged(users.getCurrentUser());
@@ -95,14 +96,14 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// checkout the branch of the current user (just in case it changed in between)
 			// if this case might happen, then you should also checkout back the current user branch...
 			//GitUtils gitUtils = new GitUtils(git);
-			//gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser(), progress);
+			//gitUtils.checkoutUserBranch(game.getUsers().getCurrentUser(), progress);
 			
 			// Change the files locally
 			createFiles(exo);
 			checkSuccess(exo);
 			
 			String commitMsg = writeCommitMessage(exo, null, "executed", new JSONObject());
-			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 			gitUtils.removeFiles();
@@ -114,7 +115,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	@Override
 	public void switched(Exercise exo) {
-		Exercise lastExo = (Exercise) Game.getInstance().getLastExercise();
+		Exercise lastExo = (Exercise) game.getLastExercise();
 		if (lastExo == null)
 			return;
 
@@ -123,7 +124,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 			try {
 				String commitMsg = writeCommitMessage(lastExo, exo, "switched", new JSONObject());
-				String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+				String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 				String userBranch = "PLM"+GitUtils.sha1(userUUID);
 			
 				gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
@@ -139,7 +140,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			deleteFiles(exo);
 
 			String commitMsg = writeCommitMessage(exo, null, "reverted", new JSONObject());
-			String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+			String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 			gitUtils.removeFiles();
@@ -165,7 +166,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		
 		// push to the remote repository
 		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
-		String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+		String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		try {
@@ -190,7 +191,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		ExecutionProgress lastResult = exoFrom.lastResult;
 
 		// Retrieve appropriate parameters regarding the current exercise
-		logmsg.put("course", Game.getInstance().getCourseID());
+		logmsg.put("course", game.getCourseID());
 		logmsg.put("exo", exoFrom.getId());
 		logmsg.put("lang", lastResult.language.toString());
 		
@@ -347,7 +348,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	
 	@SuppressWarnings("unchecked")
 	public void recordHelpInGit(String evt_type, String studentInput) {
-		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
+		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
 		ExecutionProgress execProg = lastExo.lastResult;
 		String exoCode = lastExo.getSourceFile(execProg.language, 0).getBody();
 		String ext = "." + Game.getProgrammingLanguage().getExt();
@@ -366,7 +367,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		JSONObject msg = new JSONObject();
 		msg.put("studentInput", studentInput);
 		String commitMsg = writeCommitMessage(lastExo, null, evt_type, msg);
-		String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+		String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		// push to the remote repository
@@ -382,7 +383,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void readTip(String id, String mission) {
-		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
+		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
 		String ext = "." + Game.getProgrammingLanguage().getExt();
 		File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
 		
@@ -399,7 +400,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		JSONObject msg = new JSONObject();
 		msg.put("id", id);
 		String commitMsg = writeCommitMessage(lastExo, null, "readTip", msg);
-		String userUUID = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+		String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		try {

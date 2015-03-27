@@ -31,7 +31,10 @@ public class Users {
 	private File userDBFile;
 	private List<User> usersList;
 
-	public Users(File path) {
+	private Game game;
+	
+	public Users(Game game, File path) {
+		this.game = game;
 		String userDBFilePath = path.getAbsolutePath() + System.getProperty("file.separator") + "plm.users";
 		this.userDBFile = new File(userDBFilePath);
 
@@ -109,7 +112,7 @@ public class Users {
 	 */
 	public boolean switchToUser(User newUser) throws UserAbortException {
 		boolean found = false;
-		Game g = Game.getInstance();
+		Game g = game;
 
 		g.saveSession();
 		

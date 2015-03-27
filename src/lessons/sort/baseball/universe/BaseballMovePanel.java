@@ -28,7 +28,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 
 	public BaseballMovePanel() {
 		super();
-		field = (BaseballWorld) Game.getInstance().getSelectedEntity().getWorld() ;
+		field = (BaseballWorld) game.getSelectedEntity().getWorld() ;
 		setLayout(new GridLayout(2,1));
 		add(createMovePanel());
 	}
@@ -66,7 +66,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 		validateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				BaseballEntity be = (BaseballEntity) Game.getInstance().getSelectedEntity();
+				BaseballEntity be = (BaseballEntity) game.getSelectedEntity();
 				int base = baseSelector.getSelectedIndex();
 				int player = playerSelector.getSelectedIndex();
 				try  {

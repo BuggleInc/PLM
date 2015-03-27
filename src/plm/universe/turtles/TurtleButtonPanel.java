@@ -3,8 +3,9 @@ package plm.universe.turtles;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import plm.universe.EntityControlPanel;
 import net.miginfocom.swing.MigLayout;
+import plm.core.model.Game;
+import plm.universe.EntityControlPanel;
 
 public class TurtleButtonPanel extends EntityControlPanel {
 
@@ -12,7 +13,8 @@ public class TurtleButtonPanel extends EntityControlPanel {
 	JLabel lForward;
 	JTextArea taForward;
 	
-	public TurtleButtonPanel() {
+	public TurtleButtonPanel(Game game) {
+		super(game);
 		setLayout(new MigLayout());
 		//lForward = new JLabel("Forward");
 		//taForward = new JTextArea();

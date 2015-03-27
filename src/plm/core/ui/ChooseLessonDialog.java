@@ -42,10 +42,10 @@ public class ChooseLessonDialog extends JFrame {
 
 	public ChooseLessonDialog() {
 		super();
-		Game.getInstance().setCaptureOutput(false);
+		game.setCaptureOutput(false);
 		setTitle(i18n.tr("Choose your lesson"));
 		FileUtils.setLocale(this.getLocale());
-		initComponents(Game.getInstance());
+		initComponents(game);
 	}
 
 	private void initComponents(Game g) {		
@@ -148,7 +148,7 @@ class LessonMatrix extends JPanel {
 
 				try {
 					if (selectedFile != null)
-						Game.getInstance().loadLessonFromJAR(fc.getSelectedFile());
+						game.loadLessonFromJAR(fc.getSelectedFile());
 				} catch (LessonLoadingException lle) {
 					JOptionPane.showMessageDialog(null, lle.getMessage(), i18n.tr("Error"), JOptionPane.ERROR_MESSAGE); 
 				}
@@ -193,9 +193,9 @@ class LessonOverview extends JPanel {
 		btGo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(Game.getInstance().switchLesson(path.replaceAll("/", "."),false)!=null) {
+				if(game.switchLesson(path.replaceAll("/", "."),false)!=null) {
 					MainFrame.getInstance().setVisible(true);
-					Game.getInstance().setCaptureOutput(true);
+					game.setCaptureOutput(true);
 					lc.dispose();
 				}
 			}
@@ -228,8 +228,8 @@ class LessonOverview extends JPanel {
 		String id = path.replaceAll("/", ".").replaceAll("^lessons\\.", "");
 		boolean foundOne = false;
 		for (ProgrammingLanguage lang:Game.programmingLanguages) {
-			int possible = Game.getInstance().studentWork.getPossibleExercises(id, lang);
-			int passed = Game.getInstance().studentWork.getPassedExercises(id, lang);
+			int possible = game.studentWork.getPossibleExercises(id, lang);
+			int passed = game.studentWork.getPassedExercises(id, lang);
 			if (possible>0) {
 				if (lang == Game.LIGHTBOT) 
 					sb.append(" "+i18n.tr("{0} out of {1} exercises passed.",passed,possible));

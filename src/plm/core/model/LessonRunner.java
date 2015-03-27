@@ -78,7 +78,7 @@ public class LessonRunner extends Thread {
 		if (!game.isCreativeEnabled()) {
 			try {
 				if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-					Game.getInstance().studentWork.setPassed(exo, null, true);
+					game.studentWork.setPassed(exo, null, true);
 
 					SwingUtilities.invokeAndWait(new Runnable() {
 						@Override
@@ -98,7 +98,7 @@ public class LessonRunner extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Game.getInstance().fireProgressSpy(exo);									
+			game.fireProgressSpy(exo);									
 		}
 		runners.remove(this);
 	}

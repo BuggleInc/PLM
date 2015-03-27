@@ -10,7 +10,7 @@ import lessons.recursion.hanoi.universe.HanoiWorld;
 public class InterleavedHanoi extends ExerciseTemplated {
 
 	public InterleavedHanoi(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];

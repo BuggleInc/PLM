@@ -31,11 +31,11 @@ public class SortingWorld extends World {
 	}
 
 	/** Constructor used in the exercises */
-	public SortingWorld(String name, int nbValues) {
-		this(name, nbValues, true);
+	public SortingWorld(Game game, String name, int nbValues) {
+		this(game, name, nbValues, true);
 	}
-	public SortingWorld(String name, int nbValues, boolean someoneHomeOk) {
-		super(name);
+	public SortingWorld(Game game, String name, int nbValues, boolean someoneHomeOk) {
+		super(game, name);
 		if (nbValues>100)
 			setDelay(1);
 		else
@@ -183,7 +183,7 @@ public class SortingWorld extends World {
 	/** Returns the panel which let the user to interact dynamically with the world */
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
-		return new SortingButtonPanel();
+		return new SortingButtonPanel(getGame());
 	}
 	/** Returns the icon of the universe */
 	@Override

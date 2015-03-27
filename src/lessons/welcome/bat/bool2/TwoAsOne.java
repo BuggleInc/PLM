@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class TwoAsOne extends BatExercise {
-	public TwoAsOne(Lesson lesson) {
-		super(lesson);
+	public TwoAsOne(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("twoAsOne");
+		BatWorld myWorld = new BatWorld(game, "twoAsOne");
 		myWorld.addTest(VISIBLE, 1, 2, 3) ;
 		myWorld.addTest(VISIBLE, 3, 1, 2) ;
 		myWorld.addTest(VISIBLE, 3, 2, 2) ;

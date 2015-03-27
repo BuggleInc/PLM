@@ -2,6 +2,7 @@ package lessons.welcome.loopwhile;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -11,12 +12,12 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class BaggleSeeker extends ExerciseTemplated {
 
-	public BaggleSeeker(Lesson lesson) {
-		super(lesson);
+	public BaggleSeeker(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BuggleWorld myWorld = new BuggleWorld("Kitchen",7,7);
+		BuggleWorld myWorld = new BuggleWorld(game, "Kitchen",7,7);
 		for (int i=0;i<7;i++) {
-			new SimpleBuggle(myWorld, "Cooker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(game, myWorld, "Cooker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 			try {
 				myWorld.addBaggle(i, 6-i);
 			} catch (AlreadyHaveBaggleException e) {

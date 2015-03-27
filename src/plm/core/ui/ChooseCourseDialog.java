@@ -94,7 +94,7 @@ public class ChooseCourseDialog extends JDialog {
         JPanel coursesPanel = new JPanel(new BorderLayout());
 
         // Load the list of available "courses", or a message to say nope.
-        Course currentCourse = Game.getInstance().getCurrentCourse();
+        Course currentCourse = game.getCurrentCourse();
         courseListIDs = currentCourse.getAllCoursesId();
 
         if (courseListIDs.isEmpty()) {
@@ -167,7 +167,7 @@ public class ChooseCourseDialog extends JDialog {
      * Launch new heartbeat and join events, change current course
      */
     public void selectCourse() {
-        Game game = Game.getInstance();
+        Game game = game;
 
         // leave the previous course and kill the heartbeat if existing
         if (game.getHeartBeatSpy() != null)

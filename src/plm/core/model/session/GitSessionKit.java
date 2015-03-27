@@ -60,7 +60,7 @@ public class GitSessionKit implements ISessionKit {
 			try {
 				FileWriter fwSummary = new FileWriter(summary.getAbsoluteFile());
 				BufferedWriter bwSummary = new BufferedWriter(fwSummary);
-				bwSummary.write(Game.getInstance().studentWork.lessonSummary(lesson.getId()));
+				bwSummary.write(game.studentWork.lessonSummary(lesson.getId()));
 				bwSummary.close();
 			} catch (IOException ex) {
 				System.out.println("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
@@ -78,10 +78,10 @@ public class GitSessionKit implements ISessionKit {
 	public void loadAll(final File path) {
 		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
-		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
-			if (Game.getInstance().isDebugEnabled())
+		if (!game.getUsers().getCurrentUser().equals(cachedUser)) {
+			if (game.isDebugEnabled())
 				System.out.println("The user changed! switch to the right branch");
-			cachedUser = Game.getInstance().getUsers().getCurrentUser();
+			cachedUser = game.getUsers().getCurrentUser();
 			
 			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
 			if (! gitDir.exists()) {
@@ -134,7 +134,7 @@ public class GitSessionKit implements ISessionKit {
 				}
 				
 				// 2. Pass that string to the sessionDB
-				Game.getInstance().studentWork.lessonSummaryParse(lessonId, sb.toString());
+				game.studentWork.lessonSummaryParse(lessonId, sb.toString());
 				
 				return FileVisitResult.CONTINUE;			
 			}
@@ -177,9 +177,9 @@ public class GitSessionKit implements ISessionKit {
 					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
 							+ exercise.getId() + "." + lang.getExt() + ".DONE";
 					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
-						Game.getInstance().studentWork.setPassed(exercise, lang, true);
+						game.studentWork.setPassed(exercise, lang, true);
 					} else {
-						Game.getInstance().studentWork.setPassed(exercise, lang, false);
+						game.studentWork.setPassed(exercise, lang, false);
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);

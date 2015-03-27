@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class IcyHot extends BatExercise {
 
-	public IcyHot(Lesson lesson) {
-		super(lesson);
+	public IcyHot(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("icyHot");
+		BatWorld myWorld = new BatWorld(game, "icyHot");
 		myWorld.addTest(VISIBLE, 120,-1);
 		myWorld.addTest(VISIBLE, -1,120);
 		myWorld.addTest(VISIBLE, 2,120);

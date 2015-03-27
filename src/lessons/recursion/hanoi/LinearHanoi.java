@@ -8,7 +8,7 @@ import plm.core.model.lesson.Lesson;
 public class LinearHanoi extends ExerciseTemplated {
 
 	public LinearHanoi(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[2];

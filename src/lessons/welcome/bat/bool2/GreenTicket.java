@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class GreenTicket extends BatExercise {
-	public GreenTicket(Lesson lesson) {
-		super(lesson);
+	public GreenTicket(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("greenTicket");
+		BatWorld myWorld = new BatWorld(game, "greenTicket");
 		myWorld.addTest(VISIBLE, 1, 2, 3) ;
 		myWorld.addTest(VISIBLE, 2, 2, 2) ;
 		myWorld.addTest(VISIBLE, 1, 1, 2) ;

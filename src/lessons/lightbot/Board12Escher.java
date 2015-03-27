@@ -9,7 +9,7 @@ import plm.universe.Direction;
 public class Board12Escher extends LightBotExercise {
 
 	public Board12Escher(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Board 12", 8, 8);

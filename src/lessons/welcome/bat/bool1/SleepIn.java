@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class SleepIn extends BatExercise {
 
-	public SleepIn(Lesson lesson) {
-		super(lesson);
+	public SleepIn(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("sleepIn");
+		BatWorld myWorld = new BatWorld(game, "sleepIn");
 		myWorld.addTest(VISIBLE,  false,false);
 		myWorld.addTest(VISIBLE,  true,false);
 		myWorld.addTest(INVISIBLE, false,true);

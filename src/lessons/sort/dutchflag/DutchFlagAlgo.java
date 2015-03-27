@@ -7,7 +7,7 @@ import plm.core.model.lesson.Lesson;
 public class DutchFlagAlgo extends ExerciseTemplated {
 	
 	public DutchFlagAlgo(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 	
 		setup( new DutchFlagWorld[] {
 				

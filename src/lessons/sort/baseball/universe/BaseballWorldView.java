@@ -634,7 +634,7 @@ public class BaseballWorldView extends WorldView {
 			if(child instanceof JMenuItem) {
 				JMenuItem menuItem = (JMenuItem) child;
 				for(ActionListener al:menuItem.getActionListeners()) {
-					Game.getInstance().removeHumanLangListener((HumanLangChangesListener) al);
+					game.removeHumanLangListener((HumanLangChangesListener) al);
 				}
 			}
 		}
@@ -651,7 +651,7 @@ class BaseballViewActionListener implements ActionListener, HumanLangChangesList
 	public BaseballViewActionListener(JMenuItem i, BaseballWorldView v) {
 		item=i;
 		view=v;
-		Game.getInstance().addHumanLangListener(this);
+		game.addHumanLangListener(this);
 		currentHumanLanguageHasChanged(item.getLocale());
 	}
 

@@ -3,16 +3,17 @@ package lessons.recursion.cons;
 import lessons.recursion.cons.universe.ConsExercise;
 import lessons.recursion.cons.universe.ConsWorld;
 import lessons.recursion.cons.universe.RecList;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Increasing extends ConsExercise {
 
-	public Increasing(Lesson lesson) {
-		super(lesson);
+	public Increasing(Game game, Lesson lesson) {
+		super(game, lesson);
 		
-		BatWorld myWorld = new ConsWorld("increasing");
+		BatWorld myWorld = new ConsWorld(game, "increasing");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 1, 1}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 1, 3, 2}));

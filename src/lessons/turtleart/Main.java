@@ -23,32 +23,36 @@ import plm.universe.turtles.TurtleWorldView;
 
 public class Main extends Lesson {
 	
+	public Main(Game game) {
+		super(game);
+	}
+
 	@Override
 	protected void loadExercises() throws IOException, BrokenWorldFileException {
-		addExercise(new TurtleGraphicalExercise(this,"Square",       300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"SmallSquare",  300,300, 50,150));
-		addExercise(new TurtleGraphicalExercise(this,"Stairs",       300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"TriangleFlat", 300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"Triangle",     300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"House",        300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"HouseThree",   300,300, 50,150));
-		addExercise(new TurtleGraphicalExercise(this,"HouseMany",    300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon6",     300,300, 81,190));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon7",     300,300, 65,190));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon20",    300,300, 55,165));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon360",   300,300, 35,149));
-		addExercise(new TurtleGraphicalExercise(this,"CircleTwo",    300,300, 35,149));
-		addExercise(new TurtleGraphicalExercise(this,"CircleYing",   300,300, 35,149));
-		addExercise(new TurtleGraphicalExercise(this,"CircleSquare", 300,300, 50,200));
-		addExercise(new TurtleGraphicalExercise(this,"CircleTen",    300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"DiskFourth",   300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"DiskFour",     300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"DiskTwo",      300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"Star",         300,300, 150,200));
-		addExercise(new TurtleGraphicalExercise(this,"Flower",       300,300, 90, 175));
-		addExercise(new TurtleGraphicalExercise(this,"Kerr36",       300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"Kerr40",       300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"Flower3",      300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Square",       300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"SmallSquare",  300,300, 50,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Stairs",       300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"TriangleFlat", 300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Triangle",     300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"House",        300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"HouseThree",   300,300, 50,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"HouseMany",    300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Polygon6",     300,300, 81,190));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Polygon7",     300,300, 65,190));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Polygon20",    300,300, 55,165));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Polygon360",   300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"CircleTwo",    300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"CircleYing",   300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"CircleSquare", 300,300, 50,200));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"CircleTen",    300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"DiskFourth",   300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"DiskFour",     300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"DiskTwo",      300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Star",         300,300, 150,200));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Flower",       300,300, 90, 175));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Kerr36",       300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Kerr40",       300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(getGame(), this,"Flower3",      300,300, 150,150));
 		
 		setCurrentExercise(currentExercise); // recompute the missions
 	}
@@ -68,15 +72,15 @@ public class Main extends Lesson {
 
 class TurtleGraphicalExercise extends ExerciseTemplated {
 	
-	public TurtleGraphicalExercise(Lesson lesson,String name,
+	public TurtleGraphicalExercise(Game game, Lesson lesson,String name,
 			int worldWidth,int worldHeight,int tx, int ty) {
 		
-		super(lesson, lesson.getClass().getName()+"."+name);
+		super(game, lesson, lesson.getClass().getName()+"."+name);
 		
 		setName(name);
 		tabName = "Source";
-		World myWorld = new TurtleWorld(name, worldWidth, worldHeight);
-		Turtle t = new Turtle(myWorld, "Hawksbill", tx, ty);
+		World myWorld = new TurtleWorld(game, name, worldWidth, worldHeight);
+		Turtle t = new Turtle(game, myWorld, "Hawksbill", tx, ty);
 		t.setHeading(-90);
 		setup(myWorld);
 	}
@@ -95,7 +99,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 			int iconSize=100;
 			Exercise exo = (Exercise) l;
 			boolean isSelected = exo.equals(getLesson().getCurrentExercise());
-			boolean isPassed = Game.getInstance().studentWork.getPassed(exo, Game.getProgrammingLanguage());
+			boolean isPassed = getGame().studentWork.getPassed(exo, Game.getProgrammingLanguage());
 			
 			String path = "TurtleGraphics/"+exo.getId()+(isSelected?"-selected":"")+(isPassed?"-passed":"")+".png";
 			

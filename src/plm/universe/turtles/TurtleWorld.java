@@ -27,12 +27,12 @@ public class TurtleWorld extends World {
 	private double width;
 	private double height;
 	
-	public TurtleWorld(String name) {
-		super(name);
+	public TurtleWorld(Game game, String name) {
+		super(game, name);
 	}
 
-	public TurtleWorld(String name, int width, int height) {
-		super(name);
+	public TurtleWorld(Game game, String name, int width, int height) {
+		super(game, name);
 		this.width = width;
 		this.height = height;
 	}
@@ -78,7 +78,7 @@ public class TurtleWorld extends World {
 	}
 	public void addLine(double x, double y, double newX, double newY, Color color) {
 		synchronized (shapes) {
-			shapes.add(new Line(x,y,newX,newY,color));
+			shapes.add(new Line(x,y,newX,newY,color, getGame()));
 			notifyWorldUpdatesListeners();
 		}
 	}
@@ -109,7 +109,7 @@ public class TurtleWorld extends World {
 	
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
-		return new TurtleButtonPanel();
+		return new TurtleButtonPanel(getGame());
 	}
 
 	@Override
@@ -389,7 +389,7 @@ public class TurtleWorld extends World {
 				else 
 					sb.append( Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				
-				if (Game.getInstance().isDebugEnabled()) {
+				if (getGame().isDebugEnabled()) {
 					sb.append("Shapes available in the student's work (after mergin' madness):\n");
 					for (int i=0;i<other.shapes.size();i++)
 						sb.append("  "+other.shapes.get(i)+"\n");

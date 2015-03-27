@@ -8,7 +8,7 @@ import lessons.sort.pancake.universe.PancakeWorld;
 public class BurnedPancake extends ExerciseTemplated {
 
 	public BurnedPancake(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 		
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld("5 pancakes",5,true);

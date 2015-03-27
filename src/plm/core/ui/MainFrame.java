@@ -117,9 +117,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		}
 		
 		FileUtils.setLocale(this.getLocale());
-		initComponents(Game.getInstance());
+		initComponents(game);
 		this.keyListeners(exerciseView);
-		Game.getInstance().addHumanLangListener(this);
+		game.addHumanLangListener(this);
 	}
 
 	public static MainFrame getInstance() {
@@ -313,7 +313,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.switchDebug();
-				if (! Game.getInstance().isDebugEnabled())
+				if (! game.isDebugEnabled())
 					outputArea.clear();
 			}
 		});
@@ -529,7 +529,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			exerciseView.setEnabledControl(false);
 			break;
 		case COMPILATION_STARTED:
-			if (!Game.getInstance().isDebugEnabled())
+			if (!game.isDebugEnabled())
 				outputArea.clear();
 			startButton.setEnabled(false);
 			debugButton.setEnabled(false);
@@ -551,7 +551,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			break;
 		case EXECUTION_STARTED:
 			exerciseView.selectWorldPane();
-			if (Game.getInstance().stepModeEnabled()) {
+			if (game.stepModeEnabled()) {
 				debugButton.setEnabled(true);
 				startButton.setEnabled(true);
 				debugButton.setText(i18n.tr("Next"));
@@ -616,7 +616,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	public void quit() {
 		Thread t = new Thread(new Runnable() {
 			public void run() {
-				Game.getInstance().quit();
+				game.quit();
 			}
 		});
 		t.start();
@@ -638,7 +638,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	@Override
 	public void currentExerciseHasChanged(Lecture lecture) {
-		Game g = Game.getInstance();
+		Game g = game;
 		if (lecture instanceof Exercise) {
 			showWorldView();
 			Exercise exo = (Exercise) lecture;
@@ -649,7 +649,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		} else {
 			hideWorldView();
 		}
-		miExoCreative.setSelected(Game.getInstance().isCreativeEnabled());
+		miExoCreative.setSelected(game.isCreativeEnabled());
 	}
 
 	@Override
@@ -786,19 +786,19 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 
 	public ProgLangSubMenu(String name) {
 		super(name);
-		Game.getInstance().addGameListener(this);
-		Game.getInstance().addProgLangListener(this);
-		if (Game.getInstance().getCurrentLesson() != null)
-			currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
+		game.addGameListener(this);
+		game.addProgLangListener(this);
+		if (game.getCurrentLesson() != null)
+			currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
 	}
 
 	@Override
 	public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) {
-		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());		
+		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());		
 	}
 	@Override
 	public void currentExerciseHasChanged(Lecture lecture) {
-		Game g = Game.getInstance();
+		Game g = game;
 		if (lecture instanceof Exercise) {
 			setEnabled(true);
 			Exercise exo = (Exercise) lecture;

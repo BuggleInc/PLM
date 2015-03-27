@@ -46,7 +46,7 @@ public class FeedbackDialog extends JDialog {
 			FeedbackDialog.instance = new FeedbackDialog();
 		}
 		StringBuffer worldInfo = new StringBuffer();
-		for (World w:((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+		for (World w:((Exercise)game.getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
 			String s = w.getDebugInfo();
 			if (s != "") 
 				worldInfo.append("World: "+s+"\n");
@@ -65,15 +65,15 @@ public class FeedbackDialog extends JDialog {
 				+ "(This can help us fixing your problem, please don't erase)\n"); /* The rest is not translated */
 		
 		FeedbackDialog.instance.feedback.setText(defaultText
-				+ "\nLesson: "+Game.getInstance().getCurrentLesson().getId() + "\n"
-				+ "Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n"
+				+ "\nLesson: "+game.getCurrentLesson().getId() + "\n"
+				+ "Exercise: "+game.getCurrentLesson().getCurrentExercise().getId() + "\n"
 				+ worldInfo.toString()
 				+ "Programming Language: "+Game.getProgrammingLanguage().getLang() + "\n"
-				+ "Locale: "+Game.getInstance().getLocale().getDisplayName() + "\n"
+				+ "Locale: "+game.getLocale().getDisplayName() + "\n"
 				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
 				+ "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")" + "\n"
 				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
-				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n");
+				+ "Public user ID: PLM"+GitUtils.sha1(game.getUsers().getCurrentUser().getUserUUIDasString())+ "\n");
 		
 		
 		FeedbackDialog.instance.title.setText(defaultTitle);

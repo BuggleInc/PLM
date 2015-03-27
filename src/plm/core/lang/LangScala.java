@@ -29,10 +29,11 @@ import scala.tools.nsc.reporters.AbstractReporter;
 
 public class LangScala extends JVMCompiledLang {
 
-	ScalaCompiler compiler = new ScalaCompiler();
+	ScalaCompiler compiler;
 	
 	public LangScala() {
 		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
+		compiler = new ScalaCompiler();
 	}
 
 	@Override
@@ -125,7 +126,7 @@ class ScalaCompiler {
 	}
 
 	public void compile(String name,String content,int offset) throws PLMCompilerException {
-		if (Game.getInstance().isDebugEnabled()) 
+		if (isDebugEnabled) 
 			System.out.println("Compiline souce "+name+" to scala (offset:"+offset+"):\n"+content);
 		
 		Run compiler = global.new Run();
@@ -136,7 +137,7 @@ class ScalaCompiler {
 		
 		compiler.compileSources(JavaConverters.asScalaBufferConverter(sources).asScala().toList());
 		
-		if (Game.getInstance().isDebugEnabled() && reporter.hasErrors())
+		if (isDebugEnabled && reporter.hasErrors())
 			System.out.println("Here is the scala source code of "+name+" (offset:"+offset+"): "+content);
 		reporter.throwExceptionOnNeed();
 	}
@@ -192,13 +193,14 @@ class ScalaCompiler {
 				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt the PLM to this new version of scala (or whatever).");
 			return severity;
 		}
+		
 		@Override
 		public void display(Position pos, String message, Severity _severity) {
 			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
 
 			String label = "";
 			int severity = severityRank(_severity);
-			if (severity == INFO && !Game.getInstance().isDebugEnabled()) 
+			if (severity == INFO && isDebugEnabled) 
 				return;
 			if (severity == WARNING)
 				label = "warning: ";

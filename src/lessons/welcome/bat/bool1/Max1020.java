@@ -1,14 +1,15 @@
 package lessons.welcome.bat.bool1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Max1020 extends BatExercise {
-	public Max1020(Lesson lesson) {
-		super(lesson);
+	public Max1020(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("max1020");
+		BatWorld myWorld = new BatWorld(game, "max1020");
 		myWorld.addTest(VISIBLE, 11, 19) ;
 		myWorld.addTest(VISIBLE, 19, 11) ;
 		myWorld.addTest(VISIBLE, 11, 9) ;

@@ -63,8 +63,8 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected Map<ProgrammingLanguage,String> corrections = new HashMap<ProgrammingLanguage, String>();
 	private boolean isSetup = false;
 	
-	public ExerciseTemplatingEntity(Lesson lesson) {
-		super(lesson);
+	public ExerciseTemplatingEntity(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 	protected void setup(World[] ws, String entName, String template) {
 		this.tabName=entName;

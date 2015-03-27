@@ -11,8 +11,10 @@ public class Line implements Shape {
 	public double x1, y1,  x2, y2;
 	public Color color;
 	private double length = -1;
+	private Game game;
 	
-	public Line(double x1, double y1, double x2, double y2, Color color) {
+	public Line(double x1, double y1, double x2, double y2, Color color, Game game) {
+		this.game = game;
 		this.color = color;
 		/* make sure that the first point of each segment is before the second point in comparison order */ 
 		if (doubleEqual(x1, x2)) { // Don't check if x1<x2 before checking their approximate equality
@@ -46,7 +48,7 @@ public class Line implements Shape {
 	}
 
 	public Line copy() {
-		return new Line(x1,y1,x2,y2,color);
+		return new Line(x1,y1,x2,y2,color, game);
 	}
 	public static boolean doubleEqual(double a, double b) {
 		return (Math.abs(a-b)<0.01);
@@ -123,7 +125,7 @@ public class Line implements Shape {
 	@Override
 	public String toString(){
 		String slope = "";
-		if (Game.getInstance().isDebugEnabled()) {
+		if (game.isDebugEnabled()) {
 			if (doubleApprox(x1,x2))
 				slope = "slope=infty";
 			else

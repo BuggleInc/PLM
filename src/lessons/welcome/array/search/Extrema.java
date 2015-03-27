@@ -1,15 +1,16 @@
 package lessons.welcome.array.search;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Extrema extends BatExercise {
-	public Extrema(Lesson lesson) {
-		super(lesson);
+	public Extrema(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("extrema");
+		BatWorld myWorld = new BatWorld(game, "extrema");
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 2, 7, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 2}) ;

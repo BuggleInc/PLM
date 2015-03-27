@@ -81,7 +81,7 @@ public class TurtleWorldView extends WorldView {
 	                        BasicStroke.JOIN_MITER,
 	                        10.0f, new float[]{2f,10.0f}, 0.0f));
 
-		if (Game.getInstance().isDebugEnabled()) {
+		if (world.getGame().isDebugEnabled()) {
 			for (int x=50;x<tw.getWidth();x+=50) 
 				g2.drawLine(x, 1, x, (int) tw.getHeight()-1);
 			for (int y=50;y<tw.getHeight();y+=50) 
@@ -89,7 +89,7 @@ public class TurtleWorldView extends WorldView {
 		}
 		g2.setStroke(oldStroke);
 		
-		if (world.isAnswerWorld() || Game.getInstance().isDebugEnabled()) {
+		if (world.isAnswerWorld() || world.getGame().isDebugEnabled()) {
 			for (Entity e: world.getEntities()) {
 				Turtle t = (Turtle) e;
 				g2.setColor(SizeHint.color);

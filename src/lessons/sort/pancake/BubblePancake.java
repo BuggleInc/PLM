@@ -8,7 +8,7 @@ import plm.core.model.lesson.Lesson;
 public class BubblePancake extends ExerciseTemplated {
 
 	public BubblePancake(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 		
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld("5 pancakes",5,false);

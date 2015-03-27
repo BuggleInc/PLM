@@ -39,7 +39,7 @@ public class GitUtilsTest {
 	private String userBranch;
 	private Utils utils;
 	private String oldTrackUserProperty;
-
+	
 	public GitUtilsTest() {
 		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);

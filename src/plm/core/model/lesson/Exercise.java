@@ -45,10 +45,8 @@ public abstract class Exercise extends Lecture {
 
 	public ExecutionProgress lastResult;
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
-
-	public Exercise(Lesson lesson,String basename) {
-		super(lesson,basename);
+	public Exercise(Game game, Lesson lesson,String basename) {
+		super(game, lesson,basename);
 	}
 
 	public void setupWorlds(World[] w) {
@@ -77,7 +75,7 @@ public abstract class Exercise extends Lecture {
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
-					lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
+					lastResult.executionError += Game.i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
 						lastResult.executionError += ":\n"+diff;
 					lastResult.executionError += "\n";
@@ -134,7 +132,7 @@ public abstract class Exercise extends Lecture {
 	}
 
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn));
+		getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {

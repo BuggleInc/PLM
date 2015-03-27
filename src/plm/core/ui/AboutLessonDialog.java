@@ -17,9 +17,9 @@ public class AboutLessonDialog extends AbstractAboutDialog {
 
 	@Override
 	public void currentExerciseHasChanged(Lecture lect) {
-		setTitle(Game.i18n.tr("About lesson - ") + Game.getInstance().getCurrentLesson().getName());
+		setTitle(Game.i18n.tr("About lesson - ") + lect.getLesson().getName());
 
-		area.setText(Game.getInstance().getCurrentLesson().getAbout());
+		area.setText(lect.getLesson().getAbout());
 		area.setCaretPosition(0);
 	}
 

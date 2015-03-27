@@ -27,11 +27,11 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
-	public ExerciseTemplated(Lesson lesson) {
-		super(lesson,null);
+	public ExerciseTemplated(Game game, Lesson lesson) {
+		super(game, lesson,null);
 	}
-	public ExerciseTemplated(Lesson lesson, String basename) {
-		super(lesson,basename);
+	public ExerciseTemplated(Game game, Lesson lesson, String basename) {
+		super(game, lesson,basename);
 	}
 	
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
@@ -117,7 +117,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 1: /* template head */
 				correction.append(line+"\n");
 				if (line.contains("BEGIN TEMPLATE")) {
-					System.out.println(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
+					System.out.println(Game.i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("public class ")){
 					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
@@ -138,7 +138,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 2: /* solution */
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
-					System.out.println(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
+					System.out.println(Game.i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					if (seenTemplate)
@@ -156,11 +156,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
-						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+						System.out.println(Game.i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 						
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
+					throw new RuntimeException(Game.i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
@@ -180,7 +180,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else {
 					if (line.contains("END TEMPLATE"))  
 						if (!seenTemplate)
-							System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+							System.out.println(Game.i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					
 					tail.append(line+"\n");
 				}
@@ -200,14 +200,14 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			default: 	
-				throw new RuntimeException(i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
+				throw new RuntimeException(Game.i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
 			}
 		}
 		if (state == 3) {
 			if (seenTemplate)
-				System.out.println(i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
+				System.out.println(Game.i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
 		} else if (state != 4)
-			System.out.println(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
+			System.out.println(Game.i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
@@ -273,7 +273,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (parts.length != 3 || !parts[0].equals("s")) 
 						throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
 
-					if (Game.getInstance().isDebugEnabled())
+					if (getGame().isDebugEnabled())
 						System.out.println("Replace all "+parts[1]+" to "+parts[2]);
 					template = template.replaceAll(parts[1], parts[2]);
 					initialContent = initialContent.replaceAll(parts[1], parts[2]);
@@ -344,7 +344,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					m = p.matcher(searchedName);
 					searchedName = m.replaceAll("");
 				}
-				if (Game.getInstance().isDebugEnabled())
+				if (getGame().isDebugEnabled())
 					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
 				if (sf.getName().equals(searchedName)||sf.getName().equals(tabName))
 					foundThisLanguage=true;
@@ -354,7 +354,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
 					super.addProgLanguage(lang);
 					foundALanguage = true;
-					if (Game.getInstance().isDebugEnabled())
+					if (getGame().isDebugEnabled())
 						System.out.println("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
@@ -390,7 +390,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		Thread t = new Thread() {
 			@Override
 			public void run() {
-				Game.getInstance().statusArgAdd(getClass().getSimpleName());
+				getGame().statusArgAdd(getClass().getSimpleName());
 				boolean allFound = true;
 				if (answerWorld.get(0).haveIO()) {
 					if (Game.getProperty(Game.PROP_ANSWER_CACHE, "true",true).equalsIgnoreCase("true")) {
@@ -403,26 +403,26 @@ public abstract class ExerciseTemplated extends Exercise {
 								nw.setAnswerWorld();
 								newAnswer.add(nw);
 							} catch (BrokenWorldFileException bwfe) {
-								System.err.println(i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
+								System.err.println(Game.i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
 								allFound = false;
 								break;
 							} catch (FileNotFoundException fnf) {
-								System.err.println(i18n.tr("Cache file {0} is missing. Recompute all answer worlds.",name,fnf.getLocalizedMessage()));
+								System.err.println(Game.i18n.tr("Cache file {0} is missing. Recompute all answer worlds.",name,fnf.getLocalizedMessage()));
 								allFound = false;
 								break;
 							} catch (IOException ioe) {
-								System.err.println(i18n.tr("IO exception while reading world {0} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
+								System.err.println(Game.i18n.tr("IO exception while reading world {0} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
 								allFound = false;
 								break;
 							}
 						}
 						if (allFound) {
 							answerWorld = newAnswer;
-							Game.getInstance().statusArgRemove(getClass().getSimpleName());
+							getGame().statusArgRemove(getClass().getSimpleName());
 							return;
 						}
 					} else {
-						System.out.println(i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
+						System.out.println(Game.i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
 					}
 				}
 				
@@ -434,12 +434,12 @@ public abstract class ExerciseTemplated extends Exercise {
 					try {
 						//TODO BAT remove if bat will be implemented in C
 						if(!id.contains("bat.string1.lessons.bat") && !id.contains("welcome.lessons.welcome.bat") && ! id.contains("welcome.lessons.welcome.array"))
-							compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+							compileAll(getGame().getOutputWriter(), StudentOrCorrection.CORRECTION);
 					} catch (PLMCompilerException e) {
 						System.err.println("Severe error: the correction of exercise "+id+" cannot be compiled in C. Please go fix your PLM.");
 						e.printStackTrace();
-						Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
-						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
+						getGame().setState(Game.GameState.COMPILATION_ENDED);
+						getGame().setState(Game.GameState.EXECUTION_ENDED);
 					}
 				}
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
@@ -462,15 +462,15 @@ public abstract class ExerciseTemplated extends Exercise {
 							try {
 								aw.writeToFile(new File(name));
 							} catch (Exception e) {
-								System.err.println(i18n.tr("Error while writing answer world of {0}:",name));
+								System.err.println(Game.i18n.tr("Error while writing answer world of {0}:",name));
 								e.printStackTrace();
 							}
 						} else {
-							System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions.",name));
+							System.err.println(Game.i18n.tr("Cannot write answer world of {0}. Please check the permissions.",name));
 						}
 					}
 				}
-				Game.getInstance().statusArgRemove(getClass().getSimpleName());
+				getGame().statusArgRemove(getClass().getSimpleName());
 			}
 		};
 		t.setUncaughtExceptionHandler(h);

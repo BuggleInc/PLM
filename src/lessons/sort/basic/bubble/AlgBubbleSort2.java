@@ -7,7 +7,7 @@ import plm.universe.sort.SortingWorld;
 public class AlgBubbleSort2 extends ExerciseTemplated {
 
 	public AlgBubbleSort2(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 		
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld("Functional test",10);

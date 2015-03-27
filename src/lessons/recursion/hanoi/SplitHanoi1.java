@@ -10,7 +10,7 @@ import lessons.recursion.hanoi.universe.HanoiWorld;
 public class SplitHanoi1 extends ExerciseTemplated {
 
 	public SplitHanoi1(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];

@@ -7,8 +7,9 @@ import plm.core.model.Game;
 public class MissionEditorApp {
 
 	public static void main(String[] args) {
+		Game game = new Game();
 		MissionEditor editor = new MissionEditor();
-		Game.getInstance().switchDebug(); // Forces the PlmHTMLEditorKit to also display all blocks marked with a class
+		game.switchDebug(); // Forces the PlmHTMLEditorKit to also display all blocks marked with a class
 		if (args.length>0)
 			editor.loadMission(args[0]);
 		else {

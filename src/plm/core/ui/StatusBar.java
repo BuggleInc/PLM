@@ -202,7 +202,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 
 	public void setupProgLanguages(Lecture lecture) {
 		progLangPopup.removeAll();
-		Game g = Game.getInstance();
+		Game g = game;
 		if (lecture instanceof Exercise) {
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage pl : exo.getProgLanguages()) {

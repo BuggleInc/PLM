@@ -5,6 +5,7 @@ import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.ui.WorldView;
 import plm.universe.World;
 import scala.collection.immutable.List;
@@ -13,9 +14,9 @@ public class DelegatingLanderWorld extends World {
 
   final LanderWorld realWorld;
 
-  public DelegatingLanderWorld(String name, int width, int height,
+  public DelegatingLanderWorld(Game game, String name, int width, int height,
       List<Point> ground, Point position, Point speed, double angle, int thrust, int fuel) {
-    super(name);
+    super(game, name);
     realWorld = new LanderWorld(this);
     realWorld.width_$eq(width);
     realWorld.height_$eq(height);
@@ -28,7 +29,7 @@ public class DelegatingLanderWorld extends World {
   }
 
   public DelegatingLanderWorld(DelegatingLanderWorld world) {
-    super(world.getName());
+    super(world.getGame(), world.getName());
     realWorld = new LanderWorld(this);
     reset(world);
   }

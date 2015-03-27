@@ -1,14 +1,15 @@
 package lessons.welcome.array.array123;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Array123 extends BatExercise {
-	public Array123(Lesson lesson) {
-		super(lesson);
+	public Array123(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("array123");
+		BatWorld myWorld = new BatWorld(game, "array123");
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 3, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 4, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 1, 2, 3}) ;

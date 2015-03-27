@@ -7,7 +7,7 @@ import lessons.sort.baseball.universe.BaseballWorld;
 public class BubbleBaseball extends ExerciseTemplated {
 
 	public BubbleBaseball(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 
 		setup(new BaseballWorld[] {
 				new BaseballWorld("5 bases, 2 positions",5,2),

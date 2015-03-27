@@ -7,7 +7,7 @@ import lessons.sort.baseball.universe.BaseballWorld;
 public class InsertBaseball extends ExerciseTemplated {
 
 	public InsertBaseball(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 
 		setup(new BaseballWorld[] {
 				new BaseballWorld("4 bases",4,2),

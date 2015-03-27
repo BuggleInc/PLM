@@ -8,7 +8,7 @@ import plm.universe.turtles.TurtleWorld;
 public class SpiralUse extends ExerciseTemplated {
 
 	public SpiralUse(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld("Sheet", 400, 400);

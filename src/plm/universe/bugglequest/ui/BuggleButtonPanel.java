@@ -38,7 +38,8 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 	private JLabel lBrushColor;
 	private AbstractBuggle buggle;
 	
-	public BuggleButtonPanel() {
+	public BuggleButtonPanel(Game game) {
+		super(game);
 		setLayout(new FlowLayout());
 		
 		initializeButtons();
@@ -47,8 +48,8 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		add(createButtonsPanel());
 		add(createColorsBoxes());
 
-		Game.getInstance().addHumanLangListener(this);
-		buggle = (AbstractBuggle)Game.getInstance().getSelectedEntity();
+		getGame().addHumanLangListener(this);
+		buggle = (AbstractBuggle)getGame().getSelectedEntity();
 		buggle.addObserver(this);
 	}
 
@@ -56,13 +57,13 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 	 * Initialize fButton, bButton, rButton, lButton and brushButton
 	 */
 	private void initializeButtons() {
-		fButton = new JButton(i18n.tr("forward"));
+		fButton = new JButton(Game.i18n.tr("forward"));
 		fButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				try {
-					echo(i18n.tr("forward()"));
-					((AbstractBuggle)Game.getInstance().getSelectedEntity()).forward();
+					echo(Game.i18n.tr("forward()"));
+					((AbstractBuggle)getGame().getSelectedEntity()).forward();
 				} catch (BuggleWallException e) {
 					showWallHuggingErrorMessageDialog();
 					// e.printStackTrace();
@@ -72,58 +73,58 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		});
 		fButton.setMnemonic(KeyEvent.VK_UP);
 
-		bButton = new JButton(i18n.tr("backward"));
+		bButton = new JButton(Game.i18n.tr("backward"));
 		bButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				try {
-					echo(i18n.tr("backward()"));
-					((AbstractBuggle)Game.getInstance().getSelectedEntity()).backward();
+					echo(Game.i18n.tr("backward()"));
+					((AbstractBuggle)getGame().getSelectedEntity()).backward();
 				} catch (BuggleWallException e) {
 					showWallHuggingErrorMessageDialog();
 					// e.printStackTrace();
-					// Game.getInstance().getOutputWriter().log(e);
+					// game.getOutputWriter().log(e);
 				}
 			}
 		});
 		bButton.setMnemonic(KeyEvent.VK_DOWN);
 
-		lButton = new JButton(i18n.tr("left"));
+		lButton = new JButton(Game.i18n.tr("left"));
 		lButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				echo(i18n.tr("left()"));
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
+				echo(Game.i18n.tr("left()"));
+				((AbstractBuggle)getGame().getSelectedEntity()).left();
 			}
 		});
 		lButton.setMnemonic(KeyEvent.VK_LEFT);
 
-		rButton = new JButton(i18n.tr("right"));
+		rButton = new JButton(Game.i18n.tr("right"));
 		rButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				echo(i18n.tr("right()"));
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
+				echo(Game.i18n.tr("right()"));
+				((AbstractBuggle)getGame().getSelectedEntity()).right();
 			}
 		});
 		rButton.setMnemonic(KeyEvent.VK_RIGHT);
 
-		brushButton = new JToggleButton(i18n.tr("mark"));
+		brushButton = new JToggleButton(Game.i18n.tr("mark"));
 		brushButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
+				AbstractBuggle b = (AbstractBuggle)getGame().getSelectedEntity();
 				if (b.isBrushDown()) {
-					echo(i18n.tr("brushUp()"));
+					echo(Game.i18n.tr("brushUp()"));
 					b.brushUp();
 				} else {
-					echo(i18n.tr("brushDown()"));
+					echo(Game.i18n.tr("brushDown()"));
 					b.brushDown();
 				}
 			}
 		});
 		brushButton.setMnemonic(KeyEvent.VK_SPACE);
-		brushButton.setSelected(((AbstractBuggle)(Game.getInstance().getSelectedEntity())).isBrushDown());
+		brushButton.setSelected(((AbstractBuggle)(getGame().getSelectedEntity())).isBrushDown());
 	}
 
 	/**
@@ -136,15 +137,15 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		
 		brushColorComboBox=new JComboBox<Color>(colors);
 		brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
+		brushColorComboBox.setSelectedItem(((AbstractBuggle)getGame().getSelectedEntity()).getBrushColor());
 		brushColorComboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				JComboBox<?> cb = (JComboBox<?>) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
 				cb.setSelectedItem(c);
-				echo(i18n.tr("setBrushColor(Color.{0})",ColorMapper.color2name(c)));
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
+				echo(Game.i18n.tr("setBrushColor(Color.{0})",ColorMapper.color2name(c)));
+				((AbstractBuggle)getGame().getSelectedEntity()).setBrushColor(c);
 			}
 		});
 	}
@@ -219,21 +220,19 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 	
 	public void showWallHuggingErrorMessageDialog() {
 		String message ;
-		String title = i18n.tr("Wall hugging error");
-		message = i18n.tr("Your buggle has collided with a wall, it hurts a lot ! ='(");
+		String title = Game.i18n.tr("Wall hugging error");
+		message = Game.i18n.tr("Your buggle has collided with a wall, it hurts a lot ! ='(");
 		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
 	}
 
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {
-		i18n.setLocale(newLang);
-		
-		bButton.setText(i18n.tr("backward"));
-		fButton.setText(i18n.tr("forward"));
-		lButton.setText(i18n.tr("left"));
-		rButton.setText(i18n.tr("right"));
-		brushButton.setText(i18n.tr("mark"));
-		lBrushColor.setText(i18n.tr("Brush Color"));
+		bButton.setText(Game.i18n.tr("backward"));
+		fButton.setText(Game.i18n.tr("forward"));
+		lButton.setText(Game.i18n.tr("left"));
+		rButton.setText(Game.i18n.tr("right"));
+		brushButton.setText(Game.i18n.tr("mark"));
+		lBrushColor.setText(Game.i18n.tr("Brush Color"));
 		//lBuggleColor.setText(i18n.tr("Buggle Color"));
 	}
 
@@ -252,6 +251,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 	
 	@Override
 	public void dispose() {
-		Game.getInstance().removeHumanLangListener(this);
+		getGame().removeHumanLangListener(this);
 	}
 }

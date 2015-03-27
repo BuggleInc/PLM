@@ -19,8 +19,8 @@ public class ServerSpyAppEngine extends ServerSpy {
 
     private URL server;
 
-    public ServerSpyAppEngine() {
-        super();
+    public ServerSpyAppEngine(Game game) {
+        super(game);
 
         try {
             server = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/student");

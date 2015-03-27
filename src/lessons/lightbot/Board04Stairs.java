@@ -9,7 +9,7 @@ import plm.universe.Direction;
 public class Board04Stairs extends LightBotExercise {
 
 	public Board04Stairs(Lesson lesson) {
-		super(lesson);
+		super(game, lesson);
 				
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Board 4", 8, 8);

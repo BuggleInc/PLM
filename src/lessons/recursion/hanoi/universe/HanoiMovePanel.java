@@ -61,7 +61,7 @@ public class HanoiMovePanel extends EntityControlPanel {
 		this.validateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HanoiEntity he = (HanoiEntity) Game.getInstance().getSelectedEntity();
+				HanoiEntity he = (HanoiEntity) game.getSelectedEntity();
 				int src = sourceSelector.getSelectedIndex();
 				int dst = destinationSelector.getSelectedIndex();
 				try {
