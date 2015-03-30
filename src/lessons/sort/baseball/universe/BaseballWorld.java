@@ -8,9 +8,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class BaseballWorld extends World {
@@ -222,34 +219,7 @@ public class BaseballWorld extends World {
 			throw new RuntimeException("No binding of BaseballWorld for "+lang);
 		}
 	}
-
-	/** Returns the icon of the world */
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_baseball.png");
-	}
-	/** Returns a component able to display the world */
-	@Override
-	public WorldView getView() {
-		return new BaseballWorldView(this);
-	}
-	BaseballMovePanel panel = null; 
-	/** Returns a panel allowing to interact dynamically with the world */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		if (panel == null)
-			panel = new BaseballMovePanel(getGame());
-		return panel;
-	}
-	/** Passes the mouse selection from view to the control panel */ 
-	public void setPlayer(int base, int pos) {
-		panel.setPlayer(base, pos);
-	}
-	/** Passes the mouse action from the view to the control panel */
-	public void doMove() {
-		panel.doMove();
-	}
-
+	
 	/** 
 	 * Reset the state of the current world to the one passed in argument
 	 * @param the world which must be the new start of your current world

@@ -1,25 +1,15 @@
 package lessons.turtleart;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.swing.ImageIcon;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.ui.ResourcesCache;
-import plm.universe.BrokenWorldFileException;
 import plm.universe.World;
 import plm.universe.turtles.Turtle;
 import plm.universe.turtles.TurtleWorld;
-import plm.universe.turtles.TurtleWorldView;
 
 public class Main extends Lesson {
 	
@@ -28,7 +18,7 @@ public class Main extends Lesson {
 	}
 
 	@Override
-	protected void loadExercises() throws IOException, BrokenWorldFileException {
+	protected void loadExercises() throws IOException {
 		addExercise(new TurtleGraphicalExercise(getGame(), this,"Square",       300,300, 50,250));
 		addExercise(new TurtleGraphicalExercise(getGame(), this,"SmallSquare",  300,300, 50,150));
 		addExercise(new TurtleGraphicalExercise(getGame(), this,"Stairs",       300,300, 50,250));
@@ -102,41 +92,6 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 			boolean isPassed = getGame().studentWork.getPassed(exo, Game.getProgrammingLanguage());
 			
 			String path = "TurtleGraphics/"+exo.getId()+(isSelected?"-selected":"")+(isPassed?"-passed":"")+".png";
-			
-			// Recompute the icon if not cached
-			ImageIcon icon = ResourcesCache.getIcon(path,true);
-			if (icon == null) {
-				BufferedImage bImg = new BufferedImage(iconSize, iconSize, BufferedImage.TYPE_INT_ARGB);
-				Graphics2D cg = bImg.createGraphics();
-				cg.setColor(new Color(1, 1, 1, 0));
-				cg.fillRect(0, 0, bImg.getHeight(), bImg.getWidth());		
-
-				TurtleWorld tw;
-				do {
-					try {
-						Game.waitInitThreads();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					tw= (TurtleWorld) exo.getWorlds(WorldKind.ANSWER).get(0);
-				} while (! tw.isAnswerWorld());
-				
-				((TurtleWorldView) tw.getView()).doPaint(cg,iconSize,iconSize,false);
-				
-				// Add a box around it
-				cg.setTransform(new AffineTransform()); // draw in 100x100, not world's dimensions
-				cg.setColor(isSelected?Color.RED:Color.lightGray);
-				cg.drawRect(1, 1, iconSize-2,iconSize-2);
-				
-				// Marker if it's passed
-				if (isPassed) {
-					Image star = ResourcesCache.getIcon("resources/star.png").getImage(); 
-					cg.drawImage(star, 3, iconSize-star.getHeight(null)-2, null);
-				}
-				
-				// Cache it
-				ResourcesCache.setIcon(path,new ImageIcon(bImg));
-			}
 			    
 			String lessonPart = "lessons."+getLesson().getId().replace("/",".").replace(".Main","");
 			String exoPart = exo.getLocalId(); 

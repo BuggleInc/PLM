@@ -1,13 +1,13 @@
 package lessons.lander.universe
 
-import Math.PI
+import java.lang.Math.PI
 
+import NumUtil.clamp
+import NumUtil.gameAngleToRadian
+import NumUtil.radianToVector
 import javax.script.ScriptEngine
-import javax.swing.ImageIcon
 import plm.core.lang.ProgrammingLanguage
 import plm.core.model.Game
-import plm.core.lang.ProgrammingLanguage
-import plm.core.ui.ResourcesCache
 import plm.universe.World
 
 object LanderWorld {
@@ -41,8 +41,6 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   parent.addEntity(new LanderEntity())
 
   // "inherited" methods
-
-  def getIcon = ResourcesCache.getIcon("img/world_lander.png");
 
   def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine) {
   		if (lang.equals(Game.PYTHON)) {
@@ -96,8 +94,6 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     desiredAngle = angle
     desiredThrust = thrust
   }
-
-  def getView() = new LanderWorldView(parent)
 
   override def toString() = "scala lander world"
 

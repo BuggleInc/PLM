@@ -48,11 +48,13 @@ public class GitSpyTest {
 
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		
+		Game game = Mockito.mock(Game.class);
+		
 		userUUID = UUID.randomUUID().toString();
 		
 		Mockito.when(user.getUserUUIDasString()).thenReturn(userUUID);
 		Mockito.when(users.getCurrentUser()).thenReturn(user);
-		gitSpy = new GitSpy(repoDir, users);
+		gitSpy = new GitSpy(game, repoDir, users);
 		
 		utils = new Utils();
 		

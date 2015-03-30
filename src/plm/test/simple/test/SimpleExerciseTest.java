@@ -29,26 +29,25 @@ public abstract class SimpleExerciseTest {
 	protected Lesson l;
 	protected SimpleExercise exo;
 	
-	public SimpleExerciseTest(ProgrammingLanguage pl) {
+	public SimpleExerciseTest(Game game, ProgrammingLanguage pl) {
 		this.pl = pl;
 		
 		FileUtils.setLocale(new Locale("en"));
-		Game g = game;
-		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
-		g.removeSessionKit();
-		g.setBatchExecution();
-		if(!g.isDebugEnabled()) {
-			g.switchDebug();
+		game.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
+		game.removeSessionKit();
+		game.setBatchExecution();
+		if(!game.isDebugEnabled()) {
+			game.switchDebug();
 		}
-		g.setProgramingLanguage(pl);
+		game.setProgramingLanguage(pl);
 		
-		l = new Main();
+		l = new Main(game);
 		exo = (SimpleExercise) l.getExercise("SimpleExercise");
 
 		l.setCurrentExercise(exo);
-		g.setCurrentLesson(l);
-		g.setProgramingLanguage(pl);
-		g.setLocale(new Locale("en"));
+		game.setCurrentLesson(l);
+		game.setProgramingLanguage(pl);
+		game.setLocale(new Locale("en"));
 	}
 	
 	@BeforeClass

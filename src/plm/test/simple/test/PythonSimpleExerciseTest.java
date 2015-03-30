@@ -4,8 +4,8 @@ import plm.core.model.Game;
 
 public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 
-	public PythonSimpleExerciseTest() {
-		super(Game.PYTHON);
+	public PythonSimpleExerciseTest(Game game) {
+		super(game, Game.PYTHON);
 	}
 
 	@Override

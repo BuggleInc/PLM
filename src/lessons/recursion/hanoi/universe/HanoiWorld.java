@@ -9,9 +9,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 /* BEGIN TEMPLATE */
@@ -106,19 +103,6 @@ public class HanoiWorld extends World {
 		moveCount = other.moveCount;
 		super.reset(w);		
 	}
-
-	/* BEGIN HIDDEN */
-	/** Returns a component able of displaying the world -- will be used in third exercise 
-	 * You should comment this for the first exercises */
-	@Override
-	public WorldView getView() {
-		return new HanoiWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_hanoi.png");
-	}
-	/* END HIDDEN */
 	
 	/* BEGIN HIDDEN */
 	@Override
@@ -263,13 +247,6 @@ public class HanoiWorld extends World {
 		}
 	}
 	
-	/**
-	 * Return the panel which let the user to interact dynamically with the world
-	 */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new HanoiMovePanel(getGame());
-	}
 	/* END HIDDEN */
 
 }

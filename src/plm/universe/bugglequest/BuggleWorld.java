@@ -14,20 +14,16 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Direction;
 import plm.universe.Entity;
-import plm.universe.EntityControlPanel;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.World;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
-import plm.universe.bugglequest.ui.BuggleButtonPanel;
-import plm.universe.bugglequest.ui.BuggleWorldView;
 
 
 public class BuggleWorld extends GridWorld {
@@ -84,19 +80,6 @@ public class BuggleWorld extends GridWorld {
 			if (b.getY()>h)
 				entities.remove(i--); // -- to counter the effect of ++ at the  end of body loop
 		}
-	}
-
-	@Override
-	public BuggleWorldView getView() {
-		return new BuggleWorldView(this);
-	}
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new BuggleButtonPanel(getGame());
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_buggle.png");
 	}
 
 	public boolean easter = false;

@@ -1,12 +1,9 @@
 package lessons.backtracking;
 
 import javax.script.ScriptEngine;
-import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
 import plm.universe.World;
 
 public class BacktrackingWorld extends World {	
@@ -44,17 +41,6 @@ public class BacktrackingWorld extends World {
 		
 		/* FIXME */
 		super.reset(w);		
-	}
-
-	/** Returns a component able of displaying the world -- will be used in third exercise 
-	 * You should comment this for the first exercises */
-	@Override
-	public WorldView getView() {
-		return new BacktrackingWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_backtracking.png"); // Yeah, does not exists, I know
 	}
 
 	@Override

@@ -15,6 +15,6 @@ import plm.core.model.Game
 class LocateLandingZone(game: Game, lesson: Lesson) extends ExerciseTemplated(game, lesson, null) {
   tabName = "Lander"
   setup(Array(
-      CHALLENGING_TERRAIN_SIMPLE_CONFIG,
-      SIMPLE_TERRAIN_TRIVIAL_CONFIG))
+      makeWorld(game, "CHALLENGING_TERRAIN_SIMPLE_CONFIG"),
+      makeWorld(game, "SIMPLE_TERRAIN_TRIVIAL_CONFIG")))
 }

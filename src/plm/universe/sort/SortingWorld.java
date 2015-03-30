@@ -8,9 +8,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class SortingWorld extends World {
@@ -180,17 +177,6 @@ public class SortingWorld extends World {
 		this.values[to] = this.values[from];
 	}
 
-	/** Returns the panel which let the user to interact dynamically with the world */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new SortingButtonPanel(getGame());
-	}
-	/** Returns the icon of the universe */
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_sorting.png");
-	}
-
 	/**
 	 * Returns the initial state of the array
 	 */
@@ -220,12 +206,6 @@ public class SortingWorld extends World {
 	/** Returns the array of values that need to be sorted */
 	public int[] getValues() {
 		return this.values;
-	}
-
-	/** Returns a component able at displaying the world */
-	@Override
-	public WorldView getView() {
-		return new SortingWorldView(this);
 	}
 	
 	/** Returns the write counter */

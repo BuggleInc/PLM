@@ -9,13 +9,11 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Direction;
 import plm.universe.World;
 import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
-import plm.universe.bugglequest.ui.BuggleWorldView;
 
 public class TurmiteWorld extends BuggleWorld {	
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)
@@ -59,16 +57,6 @@ public class TurmiteWorld extends BuggleWorld {
 		TurmiteWorld other = (TurmiteWorld)w;
 		currStep = other.currStep;
 		super.reset(w);		
-	}
-
-	/** Returns a component able of displaying the world */
-	@Override
-	public BuggleWorldView getView() {
-		return new TurmiteWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_buggle.png");
 	}
 	
 	/** Used to check whether the student code changed the world in the right state */

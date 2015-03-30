@@ -16,7 +16,6 @@ import plm.core.model.Game;
 import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
-import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
 
 public abstract class World {
@@ -258,28 +257,7 @@ public abstract class World {
 				bw.close();
 		}
 	}
-
-	/* Find my UI */
-	public WorldView getView() {
-		return new WorldView(this) {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public boolean isWorldCompatible(World world) {
-				return false;
-			}
-		};
-	}
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel(game) {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void setEnabledControl(boolean enabled) {
-			}
-		};
-	}
-	public abstract ImageIcon getIcon();
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

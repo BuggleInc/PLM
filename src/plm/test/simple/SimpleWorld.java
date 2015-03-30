@@ -12,11 +12,11 @@ public class SimpleWorld extends World {
 
 	private boolean objectif = false;
 	
-	public SimpleWorld(String name) {
-		super(name);
+	public SimpleWorld(Game game, String name) {
+		super(game, name);
 	}
-	public SimpleWorld(String name, boolean objectif) {
-		super(name);
+	public SimpleWorld(Game game, String name, boolean objectif) {
+		super(game, name);
 		this.objectif = objectif;
 	}
 	
@@ -30,12 +30,6 @@ public class SimpleWorld extends World {
 		return res;
 	}
 	
-	@Override
-	public ImageIcon getIcon() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine)
 			throws ScriptException {

@@ -9,14 +9,10 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
 import plm.universe.Entity;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class TurtleWorld extends World {
@@ -107,20 +103,6 @@ public class TurtleWorld extends World {
 		return width;
 	}
 	
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new TurtleButtonPanel(getGame());
-	}
-
-	@Override
-	public WorldView getView() {
-		return new TurtleWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_turtle.png");
-	}
-		
 	// TODO implement world IO	
 	
 	@Override

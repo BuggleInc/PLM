@@ -8,8 +8,6 @@ import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.ui.JavaEditorPanel;
-
 
 public class SourceFile {
 
@@ -134,10 +132,6 @@ public class SourceFile {
 		} else if (!body.equals(other.body))
 			return false;
 		return true;
-	}
-
-	public JScrollPane getEditorPanel(ProgrammingLanguage lang) {
-		return new JavaEditorPanel(this, lang);
 	}
 
 	public int getOffset() {

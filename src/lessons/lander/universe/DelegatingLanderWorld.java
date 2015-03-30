@@ -2,11 +2,9 @@ package lessons.lander.universe;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.WorldView;
 import plm.universe.World;
 import scala.collection.immutable.List;
 
@@ -35,11 +33,6 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
-  public ImageIcon getIcon() {
-    return realWorld.getIcon();
-  }
-
-  @Override
   public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
     realWorld.setupBindings(lang, engine);
   }
@@ -58,11 +51,6 @@ public class DelegatingLanderWorld extends World {
   public void reset(World initialWorld) {
     realWorld.reset(((DelegatingLanderWorld) initialWorld).realWorld);
     super.reset(initialWorld);
-  }
-
-  @Override
-  public WorldView getView() {
-    return realWorld.getView();
   }
 
   @Override

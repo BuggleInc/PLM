@@ -4,12 +4,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import javax.script.ScriptEngine;
-import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
 import plm.universe.Entity;
 import plm.universe.GridWorld;
 import plm.universe.World;
@@ -101,18 +98,6 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
 		}
 		
 		notifyWorldUpdatesListeners();		
-	}
-	
-	
-	
-	@Override
-	public WorldView getView() {
-//		return new LightBotWorldView2D(this);
-		return new LightBotWorldViewIsometric(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_lightbot.png");
 	}
 	
 	@Override

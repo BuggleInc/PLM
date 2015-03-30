@@ -36,6 +36,8 @@ import plm.universe.bat.BatWorld;
 @RunWith(Parameterized.class)
 public class ExoTest {
 
+	static private Game g;
+	
 	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
@@ -54,13 +56,13 @@ public class ExoTest {
 		List<Object[]> result = new LinkedList<Object[]>();
 		
 		FileUtils.setLocale(new Locale("en"));
-		Game g = game;
+		g = new Game();
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
 
 		/* Compute the answers with the java entities */
-		game.setProgramingLanguage(Game.JAVA);
+		g.setProgramingLanguage(Game.JAVA);
 		
 		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
 		for (String lessonName : lessonNamesToTest) { 
@@ -75,7 +77,7 @@ public class ExoTest {
 			}
 			for (Lecture l : g.getCurrentLesson().exercises()) 
 				if (l instanceof Exercise) {
-					result.add(new Object[] { game.getCurrentLesson(), l });
+					result.add(new Object[] { g.getCurrentLesson(), l });
 					if (alreadySeenExercises.contains(l)) {
 						System.err.println("Warning, I tried to add the exercise "+l.getName()+" twice. Something's wrong here");
 						System.exit(1);
@@ -96,8 +98,8 @@ public class ExoTest {
 
 	public ExoTest(Lesson l, Exercise e) {
 		this.exo = e;
-		game.setCurrentLesson(l);
-		game.setCurrentExercise(exo);
+		g.setCurrentLesson(l);
+		g.setCurrentExercise(exo);
 	
 		// disable delay on world execution
 		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
@@ -107,9 +109,9 @@ public class ExoTest {
 	
 	/** Try to run the solution, fail if it's missing **/
 	private void testCorrectionEntityExists(ProgrammingLanguage lang) {
-		game.setProgramingLanguage(lang);
+		g.setProgramingLanguage(lang);
 		
-		DemoRunner demoRunner = new DemoRunner(game, new ArrayList<Thread>());
+		DemoRunner demoRunner = new DemoRunner(g, new ArrayList<Thread>());
 		
 		exo.lastResult = new ExecutionProgress();
 		try {
@@ -123,7 +125,7 @@ public class ExoTest {
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
 	private void testCorrectionEntity(ProgrammingLanguage lang) {
-		game.setProgramingLanguage(lang);
+		g.setProgramingLanguage(lang);
 		
 		exo.lastResult = new ExecutionProgress();
 		

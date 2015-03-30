@@ -63,10 +63,6 @@ public class LightBotSourceFile extends SourceFileRevertable {
 				func2[pos++]=new LightBotInstruction(c);
 	}
 
-	@Override
-	public JScrollPane getEditorPanel(ProgrammingLanguage lang){
-		return new LightBotEditorPanel(getGame(), this);
-	}
 	public LightBotInstruction[] getMain() {
 		return main;
 	}

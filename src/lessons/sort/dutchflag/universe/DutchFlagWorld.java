@@ -6,9 +6,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class DutchFlagWorld extends World {
@@ -20,31 +17,6 @@ public class DutchFlagWorld extends World {
 	public DutchFlagWorld(DutchFlagWorld world) {
 		super(world);
 	}
-	
-	/** Returns a component able of displaying the world */
-	@Override
-	public WorldView getView() {
-		return new DutchFlagWorldView(this);
-	}
-	/** Returns the icon of the universe */
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"world_dutchflag.png");
-	}
-	/** Returns the panel which let the user to interact dynamically with the world */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel(getGame()) {
-			
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void setEnabledControl(boolean enabled) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-	}	
 	
 	private int initialContent[];
 	/** 

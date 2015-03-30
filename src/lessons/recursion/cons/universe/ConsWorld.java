@@ -6,7 +6,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
 import plm.universe.bat.BatWorld;
 
 public class ConsWorld extends BatWorld {
@@ -15,10 +14,6 @@ public class ConsWorld extends BatWorld {
 	}
 	public ConsWorld(Game game, String funName) {
 		super(game, funName);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_cons.png");
 	}
 
 	@Override

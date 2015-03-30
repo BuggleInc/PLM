@@ -8,8 +8,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
 import plm.universe.World;
 
 public class BatWorld extends World {
@@ -51,14 +49,6 @@ public class BatWorld extends World {
 				return false;
 			}
 		return true;
-	}
-	@Override
-	public WorldView getView() {
-		return new BatWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_bat.png");
 	}
 	
 	/* So that the view can display them */

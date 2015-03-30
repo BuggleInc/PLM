@@ -4,8 +4,8 @@ import plm.core.model.Game;
 
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
-	public ScalaSimpleExerciseTest() {
-		super(Game.SCALA);
+	public ScalaSimpleExerciseTest(Game game) {
+		super(game, Game.SCALA);
 	}
 	
 	@Override

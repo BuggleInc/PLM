@@ -39,15 +39,17 @@ public class GitUtilsTest {
 	private String userBranch;
 	private Utils utils;
 	private String oldTrackUserProperty;
+	private Game game;
 	
 	public GitUtilsTest() {
+		game = new Game();
 		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
 		testUser = new User("testUser");
 		userBranch = testUser.getUserUUIDasString();
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		gitUtils = new GitUtils();
+		gitUtils = new GitUtils(game);
 		utils = new Utils();
 		
 		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
@@ -157,7 +159,7 @@ public class GitUtilsTest {
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfRemoteBranchExists () throws GitAPIException, IOException {		
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils();
+		GitUtils remoteGitUtils = new GitUtils(game);
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);
@@ -184,7 +186,7 @@ public class GitUtilsTest {
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfRemoteBranchNotExists () throws GitAPIException, IOException {
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils();
+		GitUtils remoteGitUtils = new GitUtils(game);
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		Git remoteGit = utils.getGit(remoteGitUtils);
@@ -206,7 +208,7 @@ public class GitUtilsTest {
 	@Test
 	public void testMergeRemoteIntoLocalBranchShouldSynchronizeBranches() throws GitAPIException, IOException {
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils();
+		GitUtils remoteGitUtils = new GitUtils(game);
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);
@@ -243,7 +245,7 @@ public class GitUtilsTest {
 	public void testMergeRemoteIntoLocalBranchShouldHandleConflicts() throws GitAPIException, IOException, InterruptedException {
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils();
+		GitUtils remoteGitUtils = new GitUtils(game);
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);
@@ -279,7 +281,7 @@ public class GitUtilsTest {
 	@Test
 	public void testPushChangesShouldReturnTrueIfNoConflicts() throws GitAPIException, IOException, InterruptedException {
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils();
+		GitUtils remoteGitUtils = new GitUtils(game);
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		Git remoteGit = utils.getGit(remoteGitUtils);
@@ -304,7 +306,7 @@ public class GitUtilsTest {
 	public void testPushChangesShouldReturnFalseIfConflictsDetected() throws GitAPIException, IOException, InterruptedException {
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils();
+		GitUtils remoteGitUtils = new GitUtils(game);
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);

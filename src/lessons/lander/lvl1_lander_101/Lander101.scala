@@ -14,5 +14,5 @@ import plm.core.model.Game
 
 class Lander101(game: Game, lesson: Lesson) extends ExerciseTemplated(game, lesson, null) {
   tabName = "Lander"
-  setup(SIMPLE_TERRAIN_TRIVIAL_CONFIG)
+  setup(makeWorld(game, "SIMPLE_TERRAIN_TRIVIAL_CONFIG"))
 }

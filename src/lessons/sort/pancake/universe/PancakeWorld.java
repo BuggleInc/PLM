@@ -6,9 +6,6 @@ import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class PancakeWorld extends World {
@@ -24,44 +21,16 @@ public class PancakeWorld extends World {
 		super(world);
 	}
 	
-	/** Returns a component able of displaying the world */
-	@Override
-	public WorldView getView() {
-		return new PancakeWorldView(this);
-	}
-	/** Returns the icon of the universe */
-	// http://omgwtflols.deviantart.com/
-	// http://fc06.deviantart.net/fs71/f/2012/118/5/7/pixel_art__pancakes_with_s236rup_b236_omgwtflols-d4xu72c.gif
-	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"world_pancake.png");
-	}
-	PancakeFlipButtonPanel panel = null;
-	/** Returns the panel which let the user to interact dynamically with the world */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		if (panel == null)
-			panel = new PancakeFlipButtonPanel(getGame());
-		return panel;
-	}
 	/** Passes the mouse selection from view to the control panel */ 
 	public void setSelectedPancake(int rank) {
 		if (rank < 1 || rank > getStackSize() || (rank==1&&!burnedWorld) ) {
 			this.selected = -1;
-			panel.setSelectedPancake(selected);
 		} else {
 			this.selected = rank;
-			panel.setSelectedPancake(selected);
 			notifyWorldUpdatesListeners();
 		}
 		
 	}
-	/** Passes the mouse action from the view to the control panel */
-	public void doMove() {
-		panel.doMove();
-	}
-	
 	
 	/** 
 	 * Regular PancakeWorld constructor that creates a random plate

@@ -67,14 +67,14 @@ public class LessonTest {
 	
 	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {		
 		FileUtils.setLocale(new Locale("en"));
-		Game g = game;
+		Game g = new Game();
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
 
 		/* Compute the answers with the selected language entities */
-		game.setProgramingLanguage(pl);
-		return game.switchLesson(lessonName, true);
+		g.setProgramingLanguage(pl);
+		return g.switchLesson(lessonName, true);
 	}
 	
 	@Test

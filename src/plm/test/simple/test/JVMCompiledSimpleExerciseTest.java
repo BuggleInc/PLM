@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -14,8 +15,8 @@ import plm.universe.World;
 
 public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 	
-	public JVMCompiledSimpleExerciseTest(ProgrammingLanguage pl) {
-		super(pl);
+	public JVMCompiledSimpleExerciseTest(Game game, ProgrammingLanguage pl) {
+		super(game, pl);
 	}
 
 	@Test
