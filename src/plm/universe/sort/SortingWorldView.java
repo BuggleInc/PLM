@@ -34,7 +34,7 @@ class SortingViewActionListener implements ActionListener, HumanLangChangesListe
 	public SortingViewActionListener(JMenuItem i, SortingWorldView v) {
 		item=i;
 		view=v;
-		Game.getInstance().addHumanLangListener(this);
+		game.addHumanLangListener(this);
 		currentHumanLanguageHasChanged(item.getLocale());
 	}
 
@@ -359,7 +359,7 @@ public class SortingWorldView extends WorldView {
 			if(child instanceof JMenuItem) {
 				JMenuItem menuItem = (JMenuItem) child;
 				for(ActionListener al:menuItem.getActionListeners()) {
-					Game.getInstance().removeHumanLangListener((HumanLangChangesListener) al);
+					game.removeHumanLangListener((HumanLangChangesListener) al);
 				}
 			}
 		}

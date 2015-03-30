@@ -3,16 +3,17 @@ package lessons.recursion.cons;
 import lessons.recursion.cons.universe.ConsExercise;
 import lessons.recursion.cons.universe.ConsWorld;
 import lessons.recursion.cons.universe.RecList;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Occurrence extends ConsExercise {
 
-	public Occurrence(Lesson lesson) {
-		super(lesson);
+	public Occurrence(Game game, Lesson lesson) {
+		super(game, lesson);
 		
-		BatWorld myWorld = new ConsWorld("Occurence");
+		BatWorld myWorld = new ConsWorld(game, "Occurence");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 2, 4}), 1);
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 2, 4}), 2);
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}), 42);

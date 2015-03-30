@@ -1,10 +1,15 @@
 package lessons.sort.dutchflag;
 
+import plm.core.model.Game;
 import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
 public class DutchFlagAlgoEntity extends DutchFlagEntity {
 	
+	public DutchFlagAlgoEntity(Game game) {
+		super(game);
+	}
+
 	public void run() {
 		solve();
 	}

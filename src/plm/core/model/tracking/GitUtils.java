@@ -50,14 +50,15 @@ public class GitUtils {
 	final private String trackUserProperty = "plm.git.track.user";
 	
 	private Git git;
-
+	private Game game;
+	
 	private String repoName = Game.getProperty("plm.git.server.username");
 	private String repoPassword = Game.getProperty("plm.git.server.password");
 
 	private static boolean currentlyPushing = false;
 	
-	public GitUtils() {
-		super();
+	public GitUtils(Game game) {
+		this.game = game;
 	}
 	
 	public void initLocalRepository(File repoDirectory) throws GitAPIException, IOException {
@@ -88,7 +89,7 @@ public class GitUtils {
 		} catch (GitAPIException ex) {
 			// FIXME: should display the stacktrace is an error occurs
 			/*
-			if(Game.getInstance().isDebugEnabled()) {
+			if(game.isDebugEnabled()) {
 				ex.printStackTrace();
 			}
 			*/
@@ -192,7 +193,7 @@ public class GitUtils {
 						success = false;
 						// FIXME: display the stacktrace if debug mode is enabled without instancing Game
 						/*
-						if(Game.getInstance().isDebugEnabled()) {
+						if(game.isDebugEnabled()) {
 							System.err.println("Pushed to "+pr.getURI()+". Message: "+ru.getMessage());
 						}
 						*/
@@ -201,7 +202,7 @@ public class GitUtils {
 						success = false;
 						// FIXME: display the stacktrace if debug mode is enabled without instancing Game
 						/*
-						if(Game.getInstance().isDebugEnabled()) {
+						if(game.isDebugEnabled()) {
 							System.err.println("Pushed to "+pr.getURI()+". Status: "+ru.getStatus().toString());
 						}
 						*/
@@ -212,7 +213,7 @@ public class GitUtils {
 			e.printStackTrace();
 		} catch (TransportException e) {
 			System.out.println(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
-			if (Game.getInstance().isDebugEnabled())
+			if (game.isDebugEnabled())
 				e.printStackTrace();
 		} catch (GitAPIException e) {
 			e.printStackTrace();

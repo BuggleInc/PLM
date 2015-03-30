@@ -56,7 +56,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		this.game = game;
 		this.game.addGameListener(this);
 		initComponents();
-		Game.getInstance().addHumanLangListener(this);
+		game.addHumanLangListener(this);
 		if (game.getCurrentLesson() != null)
 			currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
 	}
@@ -73,13 +73,13 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 				
 		upperPane.setLayout(new MigLayout("insets 0 0 0 0,wrap","[fill]"));
 
-		worldComboBox = new JComboBox<World>(new WorldComboListAdapter(Game.getInstance()));
+		worldComboBox = new JComboBox<World>(new WorldComboListAdapter(game));
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
 		upperPane.add(worldComboBox, "growx");
 
 		// TODO: logarithmic slider ?
-		speedSlider = new JSlider(new DelayBoundedRangeModel(Game.getInstance()));
+		speedSlider = new JSlider(new DelayBoundedRangeModel(game));
 		speedSlider.setOrientation(JSlider.HORIZONTAL);
 		speedSlider.setMajorTickSpacing(50);
 		speedSlider.setMinorTickSpacing(10);
@@ -89,18 +89,18 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 
 		tabPane = new JTabbedPane();
 		removeControlPage(tabPane);
-		if (Game.getInstance().getSelectedWorld() != null) {
-			worldView = Game.getInstance().getSelectedWorld().getView();
+		if (game.getSelectedWorld() != null) {
+			worldView = game.getSelectedWorld().getView();
 			tabPane.addTab(i18n.tr("World"), null, worldView, i18n.tr("The world as it is right now"));
 		}
-		if (Game.getInstance().getAnswerOfSelectedWorld() != null) {
-			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
+		if (game.getAnswerOfSelectedWorld() != null) {
+			objectivesView = game.getAnswerOfSelectedWorld().getView();
 			tabPane.addTab(i18n.tr("Objective"), null, objectivesView, i18n.tr("The world as it should be"));
 		}
 		
 		upperPane.add(tabPane, "grow 100 100,push");
 
-		entityComboBox = new JComboBox<Entity>(new EntityComboListAdapter(Game.getInstance()));
+		entityComboBox = new JComboBox<Entity>(new EntityComboListAdapter(game));
 		entityComboBox.setRenderer(new EntityCellRenderer());
 		entityComboBox.setEditable(false);
 		upperPane.add(entityComboBox, "alignx center");
@@ -114,8 +114,8 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		
 		controlPane = new JPanel();
 		controlPane.setLayout(new MigLayout("insets 0 0 0 0, fill"));
-		if (Game.getInstance().getSelectedWorld()!=null) {
-			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+		if (game.getSelectedWorld()!=null) {
+			buttonPanel = game.getSelectedWorld().getEntityControlPanel();
 			controlPane.add(buttonPanel, "grow");
 		}
 		//add(controlPane, "span,growx,wrap");
@@ -164,15 +164,15 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 				objectivesView.dispose();
 			}
 			tabPane.removeAll();
-			worldView = Game.getInstance().getSelectedWorld().getView();
+			worldView = game.getSelectedWorld().getView();
 			tabPane.addTab(i18n.tr("World"), null, worldView, i18n.tr("The world as it is right now"));
-			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
+			objectivesView = game.getAnswerOfSelectedWorld().getView();
 			tabPane.addTab(i18n.tr("Objective"), null, objectivesView, i18n.tr("The world as it should be"));
 		}
 		// To refresh the controlPane in any case ( else the SortingWorldPanel is not refreshed )
 		controlPane.removeAll();
 		buttonPanel.dispose();
-		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+		buttonPanel = game.getSelectedWorld().getEntityControlPanel();
 		controlPane.add(buttonPanel, "grow");
 		
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
@@ -185,7 +185,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 	public void selectedEntityHasChanged() { 
 		controlPane.removeAll();
 		buttonPanel.dispose();
-		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+		buttonPanel = game.getSelectedWorld().getEntityControlPanel();
 		controlPane.add(buttonPanel, "grow");
 	}
 

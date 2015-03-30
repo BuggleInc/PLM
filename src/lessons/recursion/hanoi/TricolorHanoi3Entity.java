@@ -1,10 +1,15 @@
 package lessons.recursion.hanoi;
 
+import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 //http://stackoverflow.com/questions/13542156/cyclic-unidirectional-tower-of-hanoi-suggestions?rq=1
 //http://en.wikipedia.org/wiki/Tower_of_Hanoi#Cyclic_Hanoi
 
 public class TricolorHanoi3Entity extends HanoiEntity {
+
+	public TricolorHanoi3Entity(Game game) {
+		super(game);
+	}
 
 	public void run() {
 		int src = (Integer)getParam(0);

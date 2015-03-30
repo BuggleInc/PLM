@@ -4,6 +4,7 @@ import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.World;
@@ -16,8 +17,8 @@ public class BacktrackingWorld extends World {
 	public BacktrackingWorld(BacktrackingWorld other) {
 		super(other);
 	}
-	public BacktrackingWorld(BacktrackingPartialSolution sol) {
-		super(sol.getTitle());
+	public BacktrackingWorld(Game game, BacktrackingPartialSolution sol) {
+		super(game, sol.getTitle());
 		parameters=new Object[] {sol};
 	}
 	

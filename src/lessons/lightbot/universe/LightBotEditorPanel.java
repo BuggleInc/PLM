@@ -30,7 +30,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	private Map<Icon,String> iconNameByIcons = new HashMap<Icon,String>();
 	private Icon[] iconList;
 
-	public LightBotEditorPanel(LightBotSourceFile srcFile) {
+	public LightBotEditorPanel(Game game, LightBotSourceFile srcFile) {
 		super();
 		
 		iconList = new Icon[LightBotInstruction.instructionNames.length];
@@ -45,7 +45,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		this.srcFile = srcFile;
 		srcFile.setListener(this);
 		sourceFileContentHasChanged();
-		tracedEntity = Game.getInstance().getSelectedEntity();
+		tracedEntity = game.getSelectedEntity();
 		tracedEntity.addStackListener(this);
 	}
 	@Override

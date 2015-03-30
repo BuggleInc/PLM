@@ -13,8 +13,8 @@ public class ConsWorld extends BatWorld {
 	public ConsWorld(ConsWorld other) {
 		super(other);
 	}
-	public ConsWorld(String funName) {
-		super(funName);
+	public ConsWorld(Game game, String funName) {
+		super(game, funName);
 	}
 	@Override
 	public ImageIcon getIcon() {
@@ -61,7 +61,7 @@ public class ConsWorld extends BatWorld {
 						"\n"+*/
 						"def cons(a,b):\n"+
 						"  return RecList(a,b)\n";
-				if (Game.getInstance().isDebugEnabled()) 
+				if (getGame().isDebugEnabled()) 
 					System.out.println("Extra script chunk added by "+getClass()+":\n"+script);
 				e.eval(script);
 			} catch (ScriptException e1) {

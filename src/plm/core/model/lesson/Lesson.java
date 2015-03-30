@@ -15,8 +15,9 @@ import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 
-
 public abstract class Lesson implements HumanLangChangesListener {
+
+	private Game game;
 	private String name;
 	private String id;
 	private String description;
@@ -43,7 +44,8 @@ public abstract class Lesson implements HumanLangChangesListener {
 	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
 	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 
-	public Lesson() {
+	public Lesson(Game game) {
+		this.game = game;
 		id = getClass().getCanonicalName().replaceAll(".Main$","");
 		id = id.replaceAll("^lessons.", "");
 	}
@@ -71,13 +73,13 @@ public abstract class Lesson implements HumanLangChangesListener {
 					Exercise exo = (Exercise) l;
 					if (exo.getProgLanguages().contains(lang)) {
 						possible++;
-						if (Game.getInstance().studentWork.getPassed(l, lang))
+						if (game.studentWork.getPassed(l, lang))
 							passed++;
 					}
 				}
 			}
-			Game.getInstance().studentWork.setPassedExercises(id, lang, passed);
-			Game.getInstance().studentWork.setPossibleExercises(id, lang, possible);
+			game.studentWork.setPassedExercises(id, lang, passed);
+			game.studentWork.setPossibleExercises(id, lang, possible);
 		}
 	}
 	
@@ -229,5 +231,9 @@ public abstract class Lesson implements HumanLangChangesListener {
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		loadAboutAndName();
 		setDescription("short_desc");
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

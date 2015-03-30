@@ -1,15 +1,16 @@
 package lessons.welcome.array.golomb;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Golomb extends BatExercise {
-	public Golomb(Lesson lesson) {
-		super(lesson);
+	public Golomb(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("golomb");
+		BatWorld myWorld = new BatWorld(game, "golomb");
 		myWorld.addTest(VISIBLE, (Object)new Integer(1)) ;
 		myWorld.addTest(VISIBLE, (Object)new Integer(2)) ;
 		myWorld.addTest(VISIBLE, (Object)new Integer(3)) ;

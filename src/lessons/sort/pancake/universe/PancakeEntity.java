@@ -3,7 +3,7 @@ package lessons.sort.pancake.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
+import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -15,18 +15,18 @@ public class PancakeEntity extends Entity {
 	 * Must call super(name)
 	 * @return A new instance of PancakeEntity
 	 */
-	public PancakeEntity() {
-		super("Pancake Entity");
+	public PancakeEntity(Game game) {
+		super(game, "Pancake Entity");
 	}
 
 	/** Copy constructor (used internally) */
-	public PancakeEntity(String name) {
-		super(name);
+	public PancakeEntity(Game game, String name) {
+		super(game, name);
 	}
 	
 	/** Instantiation Constructor (used by exercises to setup the world) */ 
-	public PancakeEntity(String name, World world) {
-		super(name,world);
+	public PancakeEntity(Game game, String name, World world) {
+		super(game, name,world);
 	}
 	
 	/**

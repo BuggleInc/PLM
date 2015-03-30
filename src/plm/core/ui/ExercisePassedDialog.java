@@ -103,7 +103,7 @@ public class ExercisePassedDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (exoChooser != null) {
-					Game.getInstance().setCurrentExercise((Lecture) exoChooser.getSelectedItem());
+					game.setCurrentExercise((Lecture) exoChooser.getSelectedItem());
 				}
 				
 				String chosenDifficulty = null;

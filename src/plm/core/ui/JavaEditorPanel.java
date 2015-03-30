@@ -61,7 +61,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
         codeEditor.discardAllEdits();
 		
 		/* Highlighting stuff, to trace entities */
-		tracedEntity = Game.getInstance().getSelectedEntity();
+		tracedEntity = game.getSelectedEntity();
 		if (tracedEntity != null)
 			tracedEntity.addStackListener(this);
 	}

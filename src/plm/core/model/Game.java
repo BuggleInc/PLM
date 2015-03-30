@@ -166,7 +166,7 @@ public class Game implements IWorldView {
 		return Game.instance;
 	}
 
-	private Game() {
+	public Game() {
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
 
@@ -210,14 +210,14 @@ public class Game implements IWorldView {
 				}
 		}
 
-		users = new Users(SAVE_DIR);
+		users = new Users(this, SAVE_DIR);
 		users.getCurrentUser();
 
-		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
+		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
 		sessionKit = new GitSessionKit(this);
 
 		try {
-			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
+			addProgressSpyListener(new GitSpy(this, SAVE_DIR, users));
 		} catch (IOException | GitAPIException e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
@@ -226,7 +226,7 @@ public class Game implements IWorldView {
 		initLessons();
 
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
-			addProgressSpyListener(new ServerSpyAppEngine());
+			addProgressSpyListener(new ServerSpyAppEngine(this));
 		
 		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
 	        currentCourse = new CourseAppEngine();
@@ -455,7 +455,7 @@ public class Game implements IWorldView {
 			throw new LessonLoadingException("Invalid lesson file (Attribute 'LessonPackage' not found in Manifest): "+jar.getName());
 
 		// We are ready to launch this lesson
-		Game.getInstance().switchLesson("lessons." + lessonPackage,false);
+		switchLesson("lessons." + lessonPackage,false);
 	}//end method
 
 
@@ -605,7 +605,7 @@ public class Game implements IWorldView {
 	private boolean stepMode = false;
 	private LessonRunner runner;
 	public void startExerciseExecution() {
-		runner = new LessonRunner(Game.getInstance());
+		runner = new LessonRunner(this);
 		runner.start();
 	}
 	public void stopExerciseExecution() {
@@ -625,7 +625,7 @@ public class Game implements IWorldView {
 				w.doneDelay();
 	}
 	public void startExerciseDemoExecution() {
-		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
+		DemoRunner runner = new DemoRunner(this, this.demoRunners);
 		runner.start();
 	}
 	
@@ -719,7 +719,7 @@ public class Game implements IWorldView {
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
 					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages()) 
-						Game.getInstance().studentWork.setPassed(lect, lang, false);
+						studentWork.setPassed(lect, lang, false);
 
 		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
 	}
@@ -1077,7 +1077,7 @@ public class Game implements IWorldView {
 	public void switchDebug() {
 		doDebug = !doDebug;
 		if (doDebug) {
-			Lesson l = Game.getInstance().getCurrentLesson();
+			Lesson l = getCurrentLesson();
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
@@ -1230,7 +1230,7 @@ public class Game implements IWorldView {
 					((SourceFileRevertable) sf).revert();
 			}
 		for (ProgrammingLanguage pl:Game.programmingLanguages)
-			Game.getInstance().studentWork.setPassed(ex, pl, false);
+			studentWork.setPassed(ex, pl, false);
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}

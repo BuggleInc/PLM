@@ -90,7 +90,7 @@ public class ResourcesCache {
 		String path = view.getClass().getCanonicalName();
 		view.dispose();
 		for (ProgrammingLanguage lang : exo.getProgLanguages()) {
-			if (Game.getInstance().studentWork.getPassed(exo, lang))
+			if (game.studentWork.getPassed(exo, lang))
 				path += "_"+lang.getLang()+"ok";
 			else 
 				path += "_"+lang.getLang()+"nok";
@@ -104,7 +104,7 @@ public class ResourcesCache {
 				
 				ImageIcon star = getIcon("resources/star.png");
 				ImageIcon starNo = getIcon("resources/star_white.png");
-				if (Game.getInstance().studentWork.getPassed(exo, Game.LIGHTBOT))  
+				if (game.studentWork.getPassed(exo, Game.LIGHTBOT))  
 					g.drawImage(star.getImage(), 0, 0, null);
 				else 
 					g.drawImage(starNo.getImage(), 0, 0, null);
@@ -117,12 +117,12 @@ public class ResourcesCache {
 						                                 new Dimension(42,0), new Dimension(42,16)};
 				int curPos=0;
 				
-				Game.getInstance();
+				game;
 				for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 					if (lang.equals(Game.LIGHTBOT))
 						continue;
 					
-					if (Game.getInstance().studentWork.getPassed(exo, lang)) {
+					if (game.studentWork.getPassed(exo, lang)) {
 						g.drawImage(lang.getIcon().getImage(), positions[curPos].width, positions[curPos].height, null);
 						curPos++;
 					}

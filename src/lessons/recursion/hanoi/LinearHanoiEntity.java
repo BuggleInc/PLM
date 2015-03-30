@@ -5,6 +5,10 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class LinearHanoiEntity extends HanoiEntity {
 	
+	public LinearHanoiEntity(Game game) {
+		super(game);
+	}
+
 	public void move(int from, int to) {
 		if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
 			throw new RuntimeException(Game.i18n.tr(

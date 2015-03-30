@@ -19,9 +19,9 @@ public class AboutWorldDialog extends AbstractAboutDialog implements ProgLangCha
 
 	public AboutWorldDialog(JFrame parent) {
 		super(parent);
-		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
-		Game.getInstance().addProgLangListener(this);
-		Game.getInstance().addHumanLangListener(this);
+		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
+		game.addProgLangListener(this);
+		game.addHumanLangListener(this);
 	}
 
 	@Override
@@ -41,13 +41,13 @@ public class AboutWorldDialog extends AbstractAboutDialog implements ProgLangCha
 	@Override
 	public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) {
 		int pos = area.getCaretPosition();
-		area.setText(((Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.CURRENT).get(0).getAbout());
+		area.setText(((Exercise) game.getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.CURRENT).get(0).getAbout());
 		area.setCaretPosition(pos);
 	}
 
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		setTitle(Game.i18n.tr("About world - {0}",
-				((Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.CURRENT).get(0).getClass().getSimpleName()));
+				((Exercise) game.getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.CURRENT).get(0).getClass().getSimpleName()));
 	}
 }

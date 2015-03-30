@@ -3,6 +3,7 @@ package lessons.lightbot.universe;
 import javax.swing.JScrollPane;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.model.session.SourceFileRevertable;
 
 public class LightBotSourceFile extends SourceFileRevertable {
@@ -10,8 +11,8 @@ public class LightBotSourceFile extends SourceFileRevertable {
 	private LightBotInstruction[] func1;
 	private LightBotInstruction[] func2;
 
-	public LightBotSourceFile(String name) {
-		super(name);
+	public LightBotSourceFile(Game game, String name) {
+		super(game, name);
 		resetBody();
 	}
 	@Override
@@ -64,7 +65,7 @@ public class LightBotSourceFile extends SourceFileRevertable {
 
 	@Override
 	public JScrollPane getEditorPanel(ProgrammingLanguage lang){
-		return new LightBotEditorPanel(this);
+		return new LightBotEditorPanel(getGame(), this);
 	}
 	public LightBotInstruction[] getMain() {
 		return main;

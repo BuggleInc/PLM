@@ -115,7 +115,7 @@ public class LangPython extends ScriptingLanguage {
 			}
 		}				
 
-		if (Game.getInstance().isDebugEnabled()) {
+		if (getGame().isDebugEnabled()) {
 			System.err.println("CAUSE: "+cause.value.toString());
 			System.err.println("MSG: "+e.getMessage());
 			System.err.println("BT: "+msg);

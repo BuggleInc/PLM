@@ -29,8 +29,8 @@ public class HanoiMovePanel extends EntityControlPanel {
 	 * Constructor of HanoiMovePanel
 	 * It initializes the command panel
 	 */
-	public HanoiMovePanel() {
-		super();
+	public HanoiMovePanel(Game game) {
+		super(game);
 		this.add(this.createMovePanel());
 	}
 
@@ -61,14 +61,14 @@ public class HanoiMovePanel extends EntityControlPanel {
 		this.validateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HanoiEntity he = (HanoiEntity) Game.getInstance().getSelectedEntity();
+				HanoiEntity he = (HanoiEntity) getGame().getSelectedEntity();
 				int src = sourceSelector.getSelectedIndex();
 				int dst = destinationSelector.getSelectedIndex();
 				try {
-					echo(i18n.tr("move({0},{1})",src,dst));
+					echo(Game.i18n.tr("move({0},{1})",src,dst));
 					he.move(src, dst);
 				} catch (IllegalArgumentException iae) { 
-					JOptionPane.showMessageDialog(null, iae.getLocalizedMessage(),i18n.tr("Invalid move"), JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, iae.getLocalizedMessage(),Game.i18n.tr("Invalid move"), JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

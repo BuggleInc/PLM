@@ -11,24 +11,24 @@ public class HanoiEntity extends Entity {
 	/** Instantiation Constructor (used by exercises to setup the world) 
 	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
 	 */
-	public HanoiEntity(String name, World world) {
+	public HanoiEntity(Game game, String name, World world) {
 		/* BEGIN HIDDEN */
-		super(name,world);
+		super(game, name,world);
 		/* END HIDDEN */
 	}
 
 	/** Part of the copy process 
 	 * Must call super(name)
 	 */
-	public HanoiEntity(String name) {
+	public HanoiEntity(Game game, String name) {
 		/* BEGIN HIDDEN */
-		super(name);
+		super(game, name);
 		/* END HIDDEN */
 	}
 	/** Must exist too. Calling HanoiEntity("dummy name") is ok */
-	public HanoiEntity() {
+	public HanoiEntity(Game game) {
 		/* BEGIN HIDDEN */
-		this("Hanoi Entity");
+		this(game, "Hanoi Entity");
 		/* END HIDDEN */
 	}
 

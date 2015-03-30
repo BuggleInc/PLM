@@ -288,7 +288,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 		JButton rotateLeft = new JButton("left");
 		rotateLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				for (World w : Game.getInstance().getSelectedWorlds())
+				for (World w : game.getSelectedWorlds())
 					((LightBotWorld) w).rotateLeft();
 			}
 		});
@@ -296,7 +296,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 		JButton rotateRight = new JButton("right");
 		rotateRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				for (World w : Game.getInstance().getSelectedWorlds())
+				for (World w : game.getSelectedWorlds())
 					((LightBotWorld) w).rotateRight();
 			}
 		});

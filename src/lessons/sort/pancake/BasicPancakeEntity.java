@@ -1,8 +1,13 @@
 package lessons.sort.pancake;
 
+import plm.core.model.Game;
 import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BasicPancakeEntity extends PancakeEntity {
+
+	public BasicPancakeEntity(Game game) {
+		super(game);
+	}
 
 	public void run() {
 		solve();

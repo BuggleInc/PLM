@@ -19,7 +19,7 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 	
 	protected AbstractAboutDialog(JFrame parent) {
 		super();
-		Game.getInstance().addGameListener(this);
+		game.addGameListener(this);
 		
 		setResizable(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

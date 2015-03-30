@@ -11,9 +11,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
@@ -30,15 +27,15 @@ public abstract class World {
 	protected List<Entity> entities = new ArrayList<Entity>();
 
 	private String name;
-
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
-
-	public World(String name) {
+	private Game game;
+	
+	public World(Game game, String name) {
 		this.name = name;
+		this.game = game;
 	}
 
 	public World(World w2) {
-		this(w2.getName());
+		this(w2.game, w2.getName());
 		reset(w2);
 	}
 
@@ -152,15 +149,15 @@ public abstract class World {
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
 		final ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (Game.getInstance().isDebugEnabled())
+		if (game.isDebugEnabled())
 			Logger.log("World:runEntities","Programming language: "+pl);
 		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
-					Game.getInstance().statusArgAdd(getName());
+					game.statusArgAdd(getName());
 					pl.runEntity(b, progress);
-					Game.getInstance().statusArgRemove(getName());
+					game.statusArgRemove(getName());
 				}
 			});
 
@@ -273,7 +270,7 @@ public abstract class World {
 		};
 	}
 	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() {
+		return new EntityControlPanel(game) {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void setEnabledControl(boolean enabled) {
@@ -339,7 +336,7 @@ public abstract class World {
 			/* read it */
 			about = sb.toString();
 		}
-		return PlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled());
+		return PlmHtmlEditorKit.filterHTML(about, game.isDebugEnabled());
 	}
 	
 	/**
@@ -372,4 +369,8 @@ public abstract class World {
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);
+	
+	public Game getGame() {
+		return game;
+	}
 }

@@ -14,18 +14,18 @@ public class DutchFlagEntity extends Entity {
 	public final static int RED = 2;
 	
 	/** Required by the PLM infrastructure */
-	public DutchFlagEntity() {
-		super("DutchFlag Entity");
+	public DutchFlagEntity(Game game) {
+		super(game, "DutchFlag Entity");
 	}
 
 	/** Copy constructor (used internally) */
-	public DutchFlagEntity(String name) {
-		super(name);
+	public DutchFlagEntity(Game game, String name) {
+		super(game, name);
 	}
 	
 	/** Instantiation Constructor (used by exercises to setup the world) */ 
-	public DutchFlagEntity(World world) {
-		super(Game.i18n.tr("Flag sorter"),world);
+	public DutchFlagEntity(Game game, World world) {
+		super(game, Game.i18n.tr("Flag sorter"),world);
 	}
 	
 	/** Swap two positions */

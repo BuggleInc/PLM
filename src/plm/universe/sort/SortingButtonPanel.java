@@ -30,10 +30,10 @@ public class SortingButtonPanel extends EntityControlPanel {
      * Constructor of SortingButtonPanel
      * It initializes the command panel
      */
-	public SortingButtonPanel() {
-		super();
-		SortingEntity se = (SortingEntity) Game.getInstance().getSelectedEntity();
-		Game.getInstance().addHumanLangListener(this);
+	public SortingButtonPanel(Game game) {
+		super(game);
+		SortingEntity se = (SortingEntity) game.getSelectedEntity();
+		game.addHumanLangListener(this);
 		this.add(this.createCommandPanel(se));
 	}
 	
@@ -56,26 +56,26 @@ public class SortingButtonPanel extends EntityControlPanel {
 		this.leftValueComboBox = new JComboBox<Integer>(index) ;
 		this.rightValueComboBox = new JComboBox<Integer>(index) ;
 		
-		this.validateButton = new JButton(i18n.tr("go"));
+		this.validateButton = new JButton(Game.i18n.tr("go"));
 		this.validateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int i = leftValueComboBox.getSelectedIndex();
 				int j = rightValueComboBox.getSelectedIndex();
 				int selectedOperation = operationsComboBox.getSelectedIndex();
-				SortingEntity se = (SortingEntity) Game.getInstance().getSelectedEntity();
+				SortingEntity se = (SortingEntity) getGame().getSelectedEntity();
 				switch (selectedOperation)
 				{
 					case 0:
-						echo(i18n.tr("swap({0},{1})",i,j));
+						echo(Game.i18n.tr("swap({0},{1})",i,j));
 						se.swap(i,j);
 						break;
 					case 1:
-						echo(i18n.tr("setValue({0},{1})",i,j));
+						echo(Game.i18n.tr("setValue({0},{1})",i,j));
 						se.setValue(i,j);
 						break;
 					case 2:
-						echo(i18n.tr("copy({0},{1})",i,j));
+						echo(Game.i18n.tr("copy({0},{1})",i,j));
 						se.copy(i, j);
 						break;
 					default:
@@ -105,13 +105,13 @@ public class SortingButtonPanel extends EntityControlPanel {
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		super.currentHumanLanguageHasChanged(newLang);
 		operationsComboBox.removeAllItems();
-		for (String s : new String[] { i18n.tr("swap"),i18n.tr("setValue"),i18n.tr("copy")}) 
+		for (String s : new String[] { Game.i18n.tr("swap"),Game.i18n.tr("setValue"),Game.i18n.tr("copy")}) 
 			operationsComboBox.addItem(s);
 		
 	}
 	
 	@Override
 	public void dispose() {
-		Game.getInstance().removeHumanLangListener(this);
+		getGame().removeHumanLangListener(this);
 	}
 }

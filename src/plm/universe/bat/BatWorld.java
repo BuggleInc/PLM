@@ -15,8 +15,8 @@ import plm.universe.World;
 public class BatWorld extends World {
 	public List<BatTest> tests = new Vector<BatTest>();
 	
-	public BatWorld(String funName) {
-		super(funName);
+	public BatWorld(Game game, String funName) {
+		super(game, funName);
 		
 		addEntity(new BatEntity());
 	}
@@ -82,7 +82,7 @@ public class BatWorld extends World {
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;
 		for (int i=0;i<tests.size();i++) {
-			if (foundError && !tests.get(i).isVisible() && !Game.getInstance().isDebugEnabled()) 
+			if (foundError && !tests.get(i).isVisible() && !getGame().isDebugEnabled()) 
 				return sb.toString();
 					
 			if (!tests.get(i).equals(other.tests.get(i))) { 

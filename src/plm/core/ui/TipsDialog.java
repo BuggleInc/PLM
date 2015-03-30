@@ -10,8 +10,8 @@ public class TipsDialog extends AbstractAboutDialog {
 
 	public TipsDialog(JFrame parent) {
 		super(parent);
-		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
-		area.setEditorKit(new PlmHtmlEditorKit(Game.getInstance().getCurrentLesson().getCurrentExercise()));
+		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
+		area.setEditorKit(new PlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
 
 	}
 

@@ -1,5 +1,6 @@
 package lessons.welcome.array.island;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class Island extends BatExercise{
 	
-	public Island(Lesson lesson) {
-		super(lesson);
+	public Island(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("island");
+		BatWorld myWorld = new BatWorld(game, "island");
 		myWorld.addTest(VISIBLE, (Object)new int[] {0,1,2,2,1,0,1,2,2,1,0}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {0,1,2,3,4,3,2,1,2,3,4,3,2,1,0}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0}) ;

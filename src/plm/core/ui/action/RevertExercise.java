@@ -31,7 +31,7 @@ public class RevertExercise extends AbstractGameAction {
 
 		Thread t = new Thread(new Runnable() {
 			public void run() {
-				Game.getInstance().revertExo();
+				game.revertExo();
 			}
 		});
 		t.start();

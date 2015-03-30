@@ -53,7 +53,7 @@ public class MissionEditor extends JFrame {
 
 	private String TITLE_MODIFIED = i18n.tr("PLM - Mission Editor (modified)");
 	private String TITLE_NOT_MODIFIED = i18n.tr("PLM - Mission Editor");
-
+	
 	public MissionEditor() {
 		super();
 		setTitle(TITLE_NOT_MODIFIED);
@@ -67,7 +67,6 @@ public class MissionEditor extends JFrame {
 			}
 		});
 		setSize(1200, 800);
-		Game.getInstance();
 		//PlmSyntaxPane.initKits();
 		initComponents();
 		setVisible(true);

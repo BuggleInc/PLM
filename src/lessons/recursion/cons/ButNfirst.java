@@ -3,16 +3,17 @@ package lessons.recursion.cons;
 import lessons.recursion.cons.universe.ConsExercise;
 import lessons.recursion.cons.universe.ConsWorld;
 import lessons.recursion.cons.universe.RecList;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ButNfirst extends ConsExercise {
 
-	public ButNfirst(Lesson lesson) {
-		super(lesson);
+	public ButNfirst(Game game, Lesson lesson) {
+		super(game, lesson);
 		
-		BatWorld myWorld = new ConsWorld("butNfirst");
+		BatWorld myWorld = new ConsWorld(game, "butNfirst");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}), 3);
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}), 2);
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 1, 3, 2}), 0);

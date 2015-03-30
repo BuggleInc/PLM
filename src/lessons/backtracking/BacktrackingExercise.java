@@ -10,8 +10,8 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {
-	public BacktrackingExercise(Lesson lesson) {
-		super(lesson);
+	public BacktrackingExercise(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 	protected void setup(World[] ws,BacktrackingEntity solver) {
 		for (World w:ws) {

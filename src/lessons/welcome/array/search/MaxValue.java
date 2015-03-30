@@ -2,6 +2,7 @@ package lessons.welcome.array.search;
 
 import java.util.Random;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -9,8 +10,8 @@ import plm.universe.bat.BatWorld;
 
 public class MaxValue extends BatExercise {
 
-	public MaxValue(Lesson lesson) {
-		super(lesson);
+	public MaxValue(Game game, Lesson lesson) {
+		super(game, lesson);
 		Random r = new Random();
 		
 		int[] tab = new int[15];
@@ -29,7 +30,7 @@ public class MaxValue extends BatExercise {
 		for (int i=0; i<tab4.length; i++) 
 			tab4[i] = r.nextInt(35)-15;
 
-		BatWorld myWorld = new BatWorld("maxValue");
+		BatWorld myWorld = new BatWorld(game, "maxValue");
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
 		myWorld.addTest(VISIBLE, tab) ;
 		myWorld.addTest(VISIBLE, tab2) ;

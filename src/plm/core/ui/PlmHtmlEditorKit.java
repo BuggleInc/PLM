@@ -223,7 +223,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 					theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
 			}
 			 */
-			if (!Game.getInstance().isDebugEnabled() // Display everything when in debug mode 
+			if (!game.isDebugEnabled() // Display everything when in debug mode 
 					&& hideLang(theCSSClass)) {
 				return new EmptyView(element);
 			}
@@ -268,7 +268,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 				"              color:#00AA00;\n"+
 				"              font-style: italic; }\n";
 		String res;
-		if (Game.getInstance().isDebugEnabled()) {
+		if (game.isDebugEnabled()) {
 			/* In debugging mode, all languages are displayed, with differing colors */
 			res = header;
 			res += ".Java   {visibility: visible; color:#FF0000}\n";

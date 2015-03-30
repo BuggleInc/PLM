@@ -9,12 +9,12 @@ import plm.core.model.lesson.Lesson;
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {
-	public LightBotExercise(Lesson lesson) {
-		super(lesson);
+	public LightBotExercise(Game game, Lesson lesson) {
+		super(game, lesson);
 		addProgLanguage(Game.LIGHTBOT);
 		if (getProgLanguages().size()>1) 
 			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
+		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile(game, "Code"));
 	}
 
 	@Override

@@ -231,7 +231,7 @@ public class LangC extends ProgrammingLanguage {
 			if(ent.getScript(Game.C)!=null){
 				executable=ent.getScript(Game.C);
 			}else{
-				executable= Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+				executable= getGame().getCurrentLesson().getCurrentExercise().getId();
 			}
 			if (os.indexOf("win") >= 0) {
 				extension=".exe";

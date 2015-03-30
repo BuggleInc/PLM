@@ -16,8 +16,10 @@ public class LocalFileSpy implements ProgressSpyListener {
 
     private String username;
     private String filePath;
-
-    public LocalFileSpy(File path) {
+    private Game game;
+    
+    public LocalFileSpy(Game game, File path) {
+    	this.game = game;
         username = System.getenv("USER");
         if (username == null)
             username = System.getenv("USERNAME");
@@ -29,7 +31,7 @@ public class LocalFileSpy implements ProgressSpyListener {
 
     @Override
     public void executed(Exercise exo) {
-        if (Game.getInstance().studentWork.getPassed(exo, exo.lastResult.language)) {
+        if (game.studentWork.getPassed(exo, exo.lastResult.language)) {
             write(username + " solved " + exo.getName() + " in "
                     + exo.lastResult.language + "!");
         } else {

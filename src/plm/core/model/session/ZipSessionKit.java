@@ -54,8 +54,8 @@ public class ZipSessionKit implements ISessionKit {
 		for (String lessonName : this.game.studentWork.getLessonsNames()) {
 			JSONObject allLangs = new JSONObject();
 			for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-				int possible = Game.getInstance().studentWork.getPossibleExercises(lessonName, lang);
-				int passed = Game.getInstance().studentWork.getPassedExercises(lessonName, lang);
+				int possible = game.studentWork.getPossibleExercises(lessonName, lang);
+				int passed = game.studentWork.getPassedExercises(lessonName, lang);
 
 				if (possible>0) {
 					JSONObject oneLang = new JSONObject();
@@ -163,8 +163,8 @@ public class ZipSessionKit implements ISessionKit {
 				JSONObject oneLang = (JSONObject) allLangs.get(langName);
 				int possible = Integer.parseInt(""+oneLang.get("possible"));
 				int passed = Integer.parseInt(""+oneLang.get("passed"));
-				Game.getInstance().studentWork.setPossibleExercises((String) lessonName, lang, possible);
-				Game.getInstance().studentWork.setPassedExercises((String) lessonName, lang, passed);
+				game.studentWork.setPossibleExercises((String) lessonName, lang, possible);
+				game.studentWork.setPassedExercises((String) lessonName, lang, passed);
 			}
 		}
 	}
@@ -205,7 +205,7 @@ public class ZipSessionKit implements ISessionKit {
 					Exercise exercise = (Exercise) lecture;
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						// flag successfully passed exercise
-						if (Game.getInstance().studentWork.getPassed(exercise, lang)) {
+						if (game.studentWork.getPassed(exercise, lang)) {
 							ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE."+lang.getExt());
 							zos.putNextEntry(ze);
 							byte[] bytes = new byte[1];
@@ -289,7 +289,7 @@ public class ZipSessionKit implements ISessionKit {
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE."+lang.getExt());
 						if (entry != null) {
-							Game.getInstance().studentWork.setPassed(exercise, lang, true);
+							game.studentWork.setPassed(exercise, lang, true);
 						}
 
 						for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {

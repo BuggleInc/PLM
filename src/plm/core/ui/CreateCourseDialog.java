@@ -157,7 +157,7 @@ public class CreateCourseDialog extends JDialog {
                     JOptionPane.showMessageDialog(getParent(), "Course name already used on the server", "Server error",
                             JOptionPane.ERROR_MESSAGE);
                 else if(answer == ServerAnswer.ALL_IS_FINE){
-                    Game.getInstance().setCurrentCourse(course);
+                    game.setCurrentCourse(course);
                     MainFrame.getInstance().appendToTitle("[" + course.getCourseId() + "]");
                 }
             }

@@ -46,10 +46,12 @@ public abstract class Lecture implements HumanLangChangesListener{
 	private String name = "<no name>";                     /** indicate whether this Exercise was successfully done or not */
 	private String mission = "";                        /** The text to display to present the lesson */
 	private Lesson lesson;
+	private Game game;
 	
 	protected Map<String, String> tips = new HashMap<String, String>();
 	
-	public Lecture(Lesson lesson,String basename) {
+	public Lecture(Game game, Lesson lesson,String basename) {
+		this.game = game;
 		this.lesson = lesson;
 		localId = (basename!=null?basename:getClass().getName());
 		id = lesson.getId()+"."+ getLocalId();
@@ -72,13 +74,13 @@ public abstract class Lecture implements HumanLangChangesListener{
 
 
 	public String getMission(ProgrammingLanguage lang) {
-		return PlmHtmlEditorKit.filterHTML(this.mission,Game.getInstance().isDebugEnabled());
+		return PlmHtmlEditorKit.filterHTML(this.mission, game.isDebugEnabled());
 	}
 	public void setMission(String mission) {
 		this.mission=mission;
 	}
 	public String getTip(String tipsId) {
-		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), Game.getInstance().isDebugEnabled());
+		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), game.isDebugEnabled());
 	}
 
 	public void loadHTMLMission() {
@@ -139,5 +141,9 @@ public abstract class Lecture implements HumanLangChangesListener{
 
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		loadHTMLMission();
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

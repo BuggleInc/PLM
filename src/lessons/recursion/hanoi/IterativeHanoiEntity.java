@@ -1,9 +1,14 @@
 package lessons.recursion.hanoi;
 
+import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class IterativeHanoiEntity extends HanoiEntity {
 	
+	public IterativeHanoiEntity(Game game) {
+		super(game);
+	}
+
 	public void run() {
 		hanoi((Integer)getParam(0),(Boolean) getParam(1));
 	}

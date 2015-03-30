@@ -2,6 +2,7 @@ package lessons.welcome.array.search;
 
 import java.util.Random;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -9,15 +10,15 @@ import plm.universe.bat.BatWorld;
 
 public class AverageValue extends BatExercise {
 
-	public AverageValue(Lesson lesson) {
-		super(lesson);
+	public AverageValue(Game game, Lesson lesson) {
+		super(game, lesson);
 		
 		int[] randomTab = new int[30];
 		Random r = new Random();
 		for (int i=0; i<randomTab.length; i++) 
 			randomTab[i] = r.nextInt(35);
 		
-		BatWorld myWorld = new BatWorld("averageValue");
+		BatWorld myWorld = new BatWorld(game, "averageValue");
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 });
 		myWorld.addTest(VISIBLE, randomTab);
 		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 3, 1}) ;

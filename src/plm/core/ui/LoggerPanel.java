@@ -52,7 +52,7 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
 			
 			Matcher isJava6Matcher = isJava6Pattern.matcher(msg);
 			if (isJava6Matcher.find()) {
-				if (!warnedJava6 && Game.getInstance().isDebugEnabled())
+				if (!warnedJava6 && game.isDebugEnabled())
 					append("You are using a PLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is believed to work.\n");
 				warnedJava6 = true;
 			} else {

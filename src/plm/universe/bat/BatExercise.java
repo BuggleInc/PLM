@@ -13,8 +13,8 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	public static final boolean INVISIBLE = false;
 	public static final boolean VISIBLE = true;
 	
-	public BatExercise(Lesson lesson) {
-		super(lesson);
+	public BatExercise(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 
 	protected void setup(World[] ws) {

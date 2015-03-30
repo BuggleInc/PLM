@@ -19,8 +19,10 @@ public class SourceFile {
 	private int offset;
 	private String correction;
 	private ISourceFileListener listener = null;
-
-	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn) {
+	private Game game;
+	
+	public SourceFile(Game game, String name, String initialBody, String template, int _offset, String _correctionCtn) {
+		this.game = game;
 		this.name = name;
 		this.body = initialBody;
 		this.offset = _offset;
@@ -87,7 +89,7 @@ public class SourceFile {
 							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
 					System.out.println("pattern key: "+pattern.getKey());
 					System.out.println("pattern value: "+pattern.getValue());
-					System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
+					System.out.println("Exercise: "+game.getCurrentLesson().getCurrentExercise().getName());
 					System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 					System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
 					System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
@@ -140,5 +142,9 @@ public class SourceFile {
 
 	public int getOffset() {
 		return offset;
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

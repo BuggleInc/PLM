@@ -1,8 +1,9 @@
 package lessons.recursion.hanoi;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.core.model.Game
 
-class ScalaSplitHanoi2Entity extends HanoiEntity {
+class ScalaSplitHanoi2Entity(game: Game) extends HanoiEntity(game) {
 
 	override def run() {
 		solve(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Int], getParam(2).asInstanceOf[Int], getParam(3).asInstanceOf[Int]);

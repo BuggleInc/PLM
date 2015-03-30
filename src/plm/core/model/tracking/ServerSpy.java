@@ -13,8 +13,10 @@ import plm.core.model.lesson.Exercise;
 public abstract class ServerSpy implements ProgressSpyListener {
 
 	protected String username;
-
-	public ServerSpy() {
+	private Game game;
+	
+	public ServerSpy(Game game) {
+		this.game = game;
 		username = System.getenv("USER");
 		if (username == null)
 			username = System.getenv("USERNAME");
@@ -34,7 +36,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	public void executed(Exercise exo) {
 		JSONObject jsonObject = new JSONObject();
 
-		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exo.lastResult;
 		String exoCode = exo.getSourceFile(lastResult.language, 0)
 				.getBody();
@@ -72,7 +73,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	public void switched(Exercise exo) {
 		JSONObject jsonObject = new JSONObject();
 
-		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exo.lastResult;
 		// Retrieve appropriate parameters regarding the new exercise
 		jsonObject.put("username", username);
@@ -90,7 +90,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	public void reverted(Exercise exo) {
 		JSONObject jsonObject = new JSONObject();
 
-		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exo.lastResult;
 		// Retrieve appropriate parameters regarding the new exercise
 		jsonObject.put("username", username);
@@ -110,7 +109,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	@Override
 	public void heartbeat() {
 		JSONObject jsonObject = new JSONObject();
-        Game game = Game.getInstance();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "heartbeat");
         jsonObject.put("course", game.getCourseID());
@@ -123,7 +121,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	@Override
 	public String join() {
 		JSONObject jsonObject = new JSONObject();
-        Game game = Game.getInstance();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "join");
         jsonObject.put("course", game.getCourseID());
@@ -136,7 +133,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	@Override
 	public void leave() {
 		JSONObject jsonObject = new JSONObject();
-        Game game = Game.getInstance();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "leave");
         jsonObject.put("course", game.getCourseID());

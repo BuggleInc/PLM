@@ -50,7 +50,7 @@ public class HelpMe extends AbstractGameAction {
 		isRequestingHelp = !isRequestingHelp;
 
 		LinkedHashMap<String,String> obj = new LinkedHashMap<String,String>();
-		obj.put("uuid", Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString());
+		obj.put("uuid", game.getUsers().getCurrentUser().getUserUUIDasString());
 		try {
 			obj.put("hostname", InetAddress.getLocalHost().getHostName());
 		} catch (UnknownHostException ex) {
@@ -77,7 +77,7 @@ public class HelpMe extends AbstractGameAction {
 				studentInput = " : " + studentInput;
 			}
 		}
-		obj.put("details", Game.getInstance().getCurrentLesson().getCurrentExercise().getName() + studentInput);
+		obj.put("details", game.getCurrentLesson().getCurrentExercise().getName() + studentInput);
 		if (!isRequestingHelp) {
 			obj.put("callID", lastCallID + "");
 		}
@@ -118,9 +118,9 @@ public class HelpMe extends AbstractGameAction {
 					String message = (String) map.get("message");
 					System.out.println(message);
 					if (isRequestingHelp) {
-						Game.getInstance().fireCallForHelpSpy(studentInput);
+						game.fireCallForHelpSpy(studentInput);
 					} else {
-						Game.getInstance().fireCancelCallForHelpSpy();
+						game.fireCancelCallForHelpSpy();
 					}
 					isRequestingHelp = !isRequestingHelp;
 					break;
@@ -128,10 +128,10 @@ public class HelpMe extends AbstractGameAction {
 					if (map.containsKey("callID")) {
 						lastCallID = Long.parseLong((String) map.get("callID"));
 						System.out.println(i18n.tr("Asking to the teacher for help"));
-						Game.getInstance().fireCallForHelpSpy(studentInput);
+						game.fireCallForHelpSpy(studentInput);
 					} else {
 						System.out.println(i18n.tr("Cancel call for help to the teacher"));
-						Game.getInstance().fireCancelCallForHelpSpy();
+						game.fireCancelCallForHelpSpy();
 					}
 					((JToggleButton) e.getSource()).setText(isRequestingHelp ? i18n.tr("Cancel call") : i18n.tr("Call for Help"));
 					((JToggleButton) e.getSource()).setIcon(ResourcesCache.getIcon("img/btn-alert-" + (isRequestingHelp ? "on" : "off") + ".png"));
@@ -143,7 +143,7 @@ public class HelpMe extends AbstractGameAction {
 			((JToggleButton) e.getSource()).setText(isRequestingHelp ? i18n.tr("Cancel call") : i18n.tr("Call for Help"));
 			((JToggleButton) e.getSource()).setIcon(ResourcesCache.getIcon("img/btn-alert-" + (isRequestingHelp ? "on" : "off") + ".png"));
 			System.out.println(i18n.tr("Cancel call for help to the teacher"));
-			Game.getInstance().fireCancelCallForHelpSpy();
+			game.fireCancelCallForHelpSpy();
 			
 		}
 	}

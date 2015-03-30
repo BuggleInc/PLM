@@ -12,31 +12,37 @@ import lessons.sort.basic.gnome.AlgGnomeSort;
 import lessons.sort.basic.insertion.AlgInsertionSort;
 import lessons.sort.basic.selection.AlgSelectionSort;
 import lessons.sort.basic.shell.AlgShellSort;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 
 // see http://www.cs.ubc.ca/~harrison/Java/sorting-demo.html
 
 public class Main extends Lesson {
+	
+	public Main(Game game) {
+		super(game);
+	}
+
 	@Override
 	protected void loadExercises() {
 		
-		addExercise(new AlgBubbleSort1(this));
-		addExercise(new AlgBubbleSort2(this));
-		addExercise(new AlgBubbleSort3(this));
+		addExercise(new AlgBubbleSort1(getGame(), this));
+		addExercise(new AlgBubbleSort2(getGame(), this));
+		addExercise(new AlgBubbleSort3(getGame(), this));
 		
-		addExercise(new AlgCocktailSort1(this));
-		addExercise(new AlgCocktailSort2(this));
-		addExercise(new AlgCocktailSort3(this));
+		addExercise(new AlgCocktailSort1(getGame(), this));
+		addExercise(new AlgCocktailSort2(getGame(), this));
+		addExercise(new AlgCocktailSort3(getGame(), this));
 
-		addExercise(new AlgCombSort(this));
-		addExercise(new AlgCombSort11(this));
+		addExercise(new AlgCombSort(getGame(), this));
+		addExercise(new AlgCombSort11(getGame(), this));
 
-		addExercise(new AlgGnomeSort(this));
+		addExercise(new AlgGnomeSort(getGame(), this));
 		
-		addExercise(new AlgInsertionSort(this));
-		addExercise(new AlgShellSort(this));
+		addExercise(new AlgInsertionSort(getGame(), this));
+		addExercise(new AlgShellSort(getGame(), this));
 		
-		addExercise(new AlgSelectionSort(this));
+		addExercise(new AlgSelectionSort(getGame(), this));
 		
 	}
 }

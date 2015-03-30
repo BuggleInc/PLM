@@ -60,7 +60,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
 						String mission = currentExercise.getMission(Game.getProgrammingLanguage());
-						Game.getInstance().fireReadTipSpy(desc, mission);
+						game.fireReadTipSpy(desc, mission);
 					}
 					if (desc.startsWith("plm://")) {
 						//Load a regular lesson
@@ -73,15 +73,15 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 							if (exoName.length()==0)
 								exoName = null;
 						}
-						if (Game.getInstance().isDebugEnabled()) 
+						if (game.isDebugEnabled()) 
 							System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
 								
-						Lesson lesson = Game.getInstance().switchLesson(lessonName,false);
-						Game.getInstance().setCurrentLesson(lesson);
+						Lesson lesson = game.switchLesson(lessonName,false);
+						game.setCurrentLesson(lesson);
 						if (exoName != null && exoName.length()>0) {
 							Lecture lect = lesson.getExercise(exoName);
 							if (lect != null) {
-								Game.getInstance().setCurrentExercise(lect);
+								game.setCurrentExercise(lect);
 							} else {
 								System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
 							}
@@ -97,7 +97,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		//PlmSyntaxPane.initKits();
 
 		/* Register to game engine */
-		this.game = Game.getInstance();
+		this.game = game;
 		this.game.addGameListener(this);
 		this.game.addProgLangListener(this);
 		this.game.getUsers().addUserSwitchesListener(this);
