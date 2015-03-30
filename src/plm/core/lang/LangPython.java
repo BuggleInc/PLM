@@ -6,13 +6,12 @@ import org.python.core.PyException;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 
 public class LangPython extends ScriptingLanguage {
 
-	public LangPython() {
-		super("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
+	public LangPython(boolean isDebugEnabled) {
+		super("Python","py", isDebugEnabled);
 	}
 
 	protected void setupEntityBindings(Entity ent) {
@@ -115,7 +114,7 @@ public class LangPython extends ScriptingLanguage {
 			}
 		}				
 
-		if (getGame().isDebugEnabled()) {
+		if (isDebugEnabled()) {
 			System.err.println("CAUSE: "+cause.value.toString());
 			System.err.println("MSG: "+e.getMessage());
 			System.err.println("BT: "+msg);

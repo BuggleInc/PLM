@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -59,7 +60,6 @@ import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.model.tracking.ServerSpyAppEngine;
-import plm.core.ui.MainFrame;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.IWorldView;
@@ -103,13 +103,13 @@ public class Game implements IWorldView {
 		"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi",
 		"lessons.lightbot", "lessons.bat.string1", "lessons.lander"
 		};
-	public static final ProgrammingLanguage JAVA =       new LangJava();
-	public static final ProgrammingLanguage PYTHON =     new LangPython();
-	public static final ProgrammingLanguage SCALA =      new LangScala();
-	public static final ProgrammingLanguage C =          new LangC();
+	public static final ProgrammingLanguage JAVA =       new LangJava(false);
+	public static final ProgrammingLanguage PYTHON =     new LangPython(false);
+	public static final ProgrammingLanguage SCALA =      new LangScala(false);
+	public static final ProgrammingLanguage C =          new LangC(false);
 	//public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
-	public static final ProgrammingLanguage RUBY =       new LangRuby();
-	public static final ProgrammingLanguage LIGHTBOT =   new LangLightbot();
+	public static final ProgrammingLanguage RUBY =       new LangRuby(false);
+	public static final ProgrammingLanguage LIGHTBOT =   new LangLightbot(false);
 	
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
 		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C // TODO: re-add JAVASCRIPT to this list once it works at least a bit
@@ -340,7 +340,12 @@ public class Game implements IWorldView {
 				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
 				// We manually build a call to the constructor of this object, and fire it
 				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
-				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
+				try {
+					lesson = (Lesson) Class.forName(lessonName + ".Main").getDeclaredConstructor(Game.class).newInstance(this);
+				} catch (IllegalArgumentException | InvocationTargetException
+						| NoSuchMethodException | SecurityException e) {
+					e.printStackTrace();
+				}
 				addHumanLangListener(lesson);
 				lessons.put(lessonName, lesson); // cache the newly created object
 			} catch (InstantiationException e) {
@@ -540,7 +545,6 @@ public class Game implements IWorldView {
 				setProgramingLanguage(fallback);
 
 			}
-			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 		} catch (UserAbortException e) { 
 			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}

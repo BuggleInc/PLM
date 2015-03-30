@@ -21,8 +21,8 @@ import plm.universe.Entity;
 
 public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
-	public ScriptingLanguage(String lang, String ext, ImageIcon i) {
-		super(lang, ext, i);
+	public ScriptingLanguage(String lang, String ext, boolean isDebugEnabled) {
+		super(lang, ext, isDebugEnabled);
 	}
 
 	@Override
@@ -96,12 +96,12 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				return;
 			}
 			setupEntityBindings(ent); // Python wants to add extra definitions to intercept I/O
-			if (getGame().isDebugEnabled())
+			if (isDebugEnabled())
 				System.out.println("Compiled script:\n"+ent.getScript(this));
 			engine.eval(ent.getScript(this));
 
 		} catch (ScriptException e) {
-			if (getGame().isDebugEnabled()) 
+			if (isDebugEnabled()) 
 				System.err.println("Here is the script in "+getLang()+" >>>>"+ent.getScript(this)+"<<<<");
 			if (!handleLangException(e,ent,progress)) {
 				System.err.println(Game.i18n.tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);

@@ -14,8 +14,8 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.universe.Entity;
 
 public abstract class JVMCompiledLang extends ProgrammingLanguage {
-	public JVMCompiledLang(String lang, String ext, ImageIcon i) {
-		super(lang, ext, i);
+	public JVMCompiledLang(String lang, String ext, boolean isDebugEnabled) {
+		super(lang, ext, isDebugEnabled);
 	}
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	protected static final String packageNamePrefix = "plm.runtime";

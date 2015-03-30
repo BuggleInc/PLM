@@ -12,8 +12,8 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
+
 import scala.Option;
 import scala.collection.JavaConverters;
 import scala.reflect.internal.util.BatchSourceFile;
@@ -31,9 +31,9 @@ public class LangScala extends JVMCompiledLang {
 
 	ScalaCompiler compiler;
 	
-	public LangScala() {
-		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
-		compiler = new ScalaCompiler();
+	public LangScala(boolean isDebugEnabled) {
+		super("Scala","scala", isDebugEnabled);
+		compiler = new ScalaCompiler(isDebugEnabled);
 	}
 
 	@Override
@@ -101,9 +101,11 @@ class ScalaCompiler {
 	private Global global;
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
+	private boolean isDebugEnabled;
 	
-	public ScalaCompiler() {
+	public ScalaCompiler(boolean isDebugEnabled) {
 		super();
+		this.isDebugEnabled = isDebugEnabled;
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
 
@@ -113,7 +115,7 @@ class ScalaCompiler {
 		
 		settings.usejavacp().tryToSetFromPropertyValue("true");
 		//settings.usemanifestcp().tryToSetFromPropertyValue("true");
-		reporter = new PLMReporter(settings);
+		reporter = new PLMReporter(settings, isDebugEnabled);
 		global = new Global(settings,reporter);
 	}
 
@@ -163,11 +165,13 @@ class ScalaCompiler {
 		final static int ERROR = 2;
 		final int[] counts = new int[] {0, 0, 0};
 		int offset=0;
+		boolean isDebugEnabled;
 		Vector<String> messages = new Vector<String>();
 		Settings settings;
 
-		public PLMReporter(Settings s) {
+		public PLMReporter(Settings s, boolean isDebugEnabled) {
 			settings = s;
+			this.isDebugEnabled = isDebugEnabled;
 		}
 		public void setOffset(int _offset) {
 			this.offset = _offset;

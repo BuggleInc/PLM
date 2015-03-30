@@ -46,12 +46,11 @@ import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 
 public class LangJava extends JVMCompiledLang {
-	public LangJava() {
-		super("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
+	public LangJava(boolean isDebugEnabled) {
+		super("Java","java", isDebugEnabled);
 	}
 
 	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
@@ -84,7 +83,7 @@ public class LangJava extends JVMCompiledLang {
 			if (out != null)
 				out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
-			if (getGame().isDebugEnabled())
+			if (isDebugEnabled())
 				for (SourceFile sf: exo.getSourceFilesList(Game.JAVA)) 
 					System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns,whatToCompile)); 
 

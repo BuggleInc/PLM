@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javax.script.ScriptEngine;
-import javax.swing.ImageIcon;
 
 import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PLMCompilerException;
@@ -27,11 +26,12 @@ import plm.universe.Entity;
 public abstract class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	String lang;
 	String ext;
-	ImageIcon icon;
-	public ProgrammingLanguage(String l, String ext, ImageIcon i) {
+	boolean isDebugEnabled;
+	
+	public ProgrammingLanguage(String l, String ext, boolean isDebugEnabled) {
 		lang = l;
 		this.ext = ext;
-		this.icon = i;
+		this.isDebugEnabled = isDebugEnabled;
 	}
 	public boolean equals(Object o) {
 		if (!super.equals(o))
@@ -63,8 +63,9 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 			return res;
 		return ext.compareTo(o.ext);
 	}
-	public ImageIcon getIcon() {
-		return icon;
+	
+	public boolean isDebugEnabled() {
+		return isDebugEnabled;
 	}
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();

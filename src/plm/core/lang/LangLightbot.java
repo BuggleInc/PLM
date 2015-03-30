@@ -8,13 +8,12 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 
 public class LangLightbot extends ProgrammingLanguage {
 
-	public LangLightbot() {
-		super("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
+	public LangLightbot(boolean isDebugEnabled) {
+		super("lightbot","ignored", isDebugEnabled);
 	}
 
 	@Override

@@ -4,13 +4,12 @@ import javax.script.ScriptException;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 
 public class LangRuby extends ScriptingLanguage {
 
-	public LangRuby() {
-		super("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
+	public LangRuby(boolean isDebugEnabled) {
+		super("Ruby","rb",isDebugEnabled);
 	}
 
 	@Override

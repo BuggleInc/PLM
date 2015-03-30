@@ -17,14 +17,13 @@ import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
-import plm.core.ui.ResourcesCache;
 import plm.core.utils.ValgrindParser;
 import plm.universe.Entity;
 
 public class LangC extends ProgrammingLanguage {
 
-	public LangC() {
-		super("C","c",ResourcesCache.getIcon("img/lang_c.png"));
+	public LangC(boolean isDebugEnabled) {
+		super("C","c", isDebugEnabled);
 	}
 
 	@Override
@@ -224,10 +223,13 @@ public class LangC extends ProgrammingLanguage {
 
 			final File valgrindFile=new File(tempdir+"/valgrind_"+nb+".xml");
 			String extension="";
-			String arg1[];
+			String arg1[] = {};
 			String os = System.getProperty("os.name").toLowerCase();
 			final StringBuffer valgrind=new StringBuffer("");
-			String executable;
+			String executable = "";
+			// FIXME: 
+			// How to find executable?
+			/*
 			if(ent.getScript(Game.C)!=null){
 				executable=ent.getScript(Game.C);
 			}else{
@@ -255,6 +257,7 @@ public class LangC extends ProgrammingLanguage {
 				arg1[1]="-c";
 				arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
 			}
+			*/
 			File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 			if(!exec.exists()){
 				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
