@@ -8,8 +8,8 @@ import lessons.lander.lvl3_fly_the_lander.FlyTheLander
 
 class Main(game: Game) extends Lesson(game) {
   override def loadExercises = {
-    addExercise(new Lander101(this));
-    addExercise(new LocateLandingZone(this));
-    addExercise(new FlyTheLander(this));
+    addExercise(new Lander101(game, this));
+    addExercise(new LocateLandingZone(game, this));
+    addExercise(new FlyTheLander(game, this));
   }
 }

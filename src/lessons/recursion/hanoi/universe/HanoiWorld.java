@@ -35,8 +35,8 @@ public class HanoiWorld extends World {
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C) {
-		super(name);
+	public HanoiWorld(Game game, String name, Integer[] A, Integer[] B, Integer[] C) {
+		super(game, name);
 		setDelay(200); /* Delay (in ms) in default animations */
 		slotsVal = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
 		slotsColor = new Vector[] {new Vector<Color>(), new Vector<Color>(), new Vector<Color>()};
@@ -56,8 +56,8 @@ public class HanoiWorld extends World {
 	}
 
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C, Integer[] D) {
-		super(name);
+	public HanoiWorld(Game game, String name, Integer[] A, Integer[] B, Integer[] C, Integer[] D) {
+		super(game, name);
 		setDelay(200); /* Delay (in ms) in default animations */
 		slotsVal = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
 		slotsColor = new Vector[] {new Vector<Color>(), new Vector<Color>(), new Vector<Color>(), new Vector<Color>()};
@@ -268,7 +268,7 @@ public class HanoiWorld extends World {
 	 */
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
-		return new HanoiMovePanel();
+		return new HanoiMovePanel(getGame());
 	}
 	/* END HIDDEN */
 

@@ -3,18 +3,19 @@ package lessons.lightbot;
 import lessons.lightbot.universe.LightBotEntity;
 import lessons.lightbot.universe.LightBotExercise;
 import lessons.lightbot.universe.LightBotWorld;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
 
 public class Board10Wall extends LightBotExercise {
 
-	public Board10Wall(Lesson lesson) {
+	public Board10Wall(Game game, Lesson lesson) {
 		super(game, lesson);
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Board 10", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld(game, "Board 10", 8, 8);
 		
-		new LightBotEntity(myWorld, "D2R2", 1, 0, Direction.SOUTH);
+		new LightBotEntity(game, myWorld, "D2R2", 1, 0, Direction.SOUTH);
 
 		for (int i=0;i<7;i++)
 			myWorld.setHeight(2, i, 2);

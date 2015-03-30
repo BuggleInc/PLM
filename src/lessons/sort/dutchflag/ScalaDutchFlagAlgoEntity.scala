@@ -1,10 +1,11 @@
 package lessons.sort.dutchflag;
 
-import lessons.sort.dutchflag.universe.DutchFlagEntity._;
-import lessons.sort.dutchflag.universe.DutchFlagEntity;
+import lessons.sort.dutchflag.universe.DutchFlagEntity._
+import lessons.sort.dutchflag.universe.DutchFlagEntity
 import lessons.sort.dutchflag.universe.DutchFlagWorld;
+import plm.core.model.Game
 
-class ScalaDutchFlagAlgoEntity extends DutchFlagEntity {
+class ScalaDutchFlagAlgoEntity(game: Game) extends DutchFlagEntity(game) {
 	
 	override def run() {
 		solve();

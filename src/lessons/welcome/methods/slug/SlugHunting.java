@@ -35,7 +35,7 @@ public class SlugHunting extends ExerciseTemplated {
 		}
 		myWorlds[0] = myWorld;
 
-		myWorld = new BuggleWorld("Desert", 8, 7);
+		myWorld = new BuggleWorld(game, "Desert", 8, 7);
 		for (int i = 5; i >= 2; i--)
 		    myWorld.setColor(6, i,Color.green);
 		myWorld.putTopWall(6, 2);

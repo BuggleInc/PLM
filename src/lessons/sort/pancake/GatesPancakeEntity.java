@@ -3,6 +3,7 @@ package lessons.sort.pancake;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.model.Game;
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
 
@@ -20,6 +21,10 @@ import lessons.sort.pancake.universe.PancakeWorld;
 
 
 public class GatesPancakeEntity extends PancakeEntity {
+
+	public GatesPancakeEntity(Game game) {
+		super(game);
+	}
 
 	// FIXME: killme and merge it to parent class
 	@Override

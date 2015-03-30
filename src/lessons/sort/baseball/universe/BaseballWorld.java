@@ -6,14 +6,10 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
@@ -31,12 +27,10 @@ public class BaseballWorld extends World {
 	private int holeBase,holePos; // The coordinate of the hole
 	protected int[] initialField; 
 	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
-	private I18n i18n;
 
 	/** Copy constructor used internally by PLM */
 	public BaseballWorld(BaseballWorld other) {
 		super(other);
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		initialField = new int[other.initialField.length];
 		for (int i=0;i<initialField.length;i++)
 			initialField[i] = other.initialField[i];
@@ -44,14 +38,13 @@ public class BaseballWorld extends World {
 
 
 	/** Regular constructor used by exercises */
-	public BaseballWorld(String name, int baseAmount, int positionAmount) {
-		this(name,baseAmount,positionAmount,MIX_RANDOM);
+	public BaseballWorld(Game game, String name, int baseAmount, int positionAmount) {
+		this(game, name,baseAmount,positionAmount,MIX_RANDOM);
 	}
 
-	public BaseballWorld(String name, int baseAmount, int posAmount, int mix) {
-		super(name);
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
-
+	public BaseballWorld(Game game, String name, int baseAmount, int posAmount, int mix) {
+		super(game, name);
+		
 		// create the bases
 		this.baseAmount = baseAmount;
 		this.posAmount = posAmount;
@@ -114,8 +107,8 @@ public class BaseballWorld extends World {
 	}
 
 
-	public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values) {
-		this(name, baseAmount, positionAmount, MIX_SORTED);
+	public BaseballWorld(Game game, String name, int baseAmount, int positionAmount, int[] values) {
+		this(game, name, baseAmount, positionAmount, MIX_SORTED);
 		if (baseAmount*posAmount != values.length)
 			throw new RuntimeException("Your values array is not of the right size");
 		field = values;
@@ -143,20 +136,20 @@ public class BaseballWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof BaseballWorld))
-			return i18n.tr("This is not a baseball world :-(");
+			return Game.i18n.tr("This is not a baseball world :-(");
 
 		BaseballWorld other = (BaseballWorld) o;
 		if (getBasesAmount() != other.getBasesAmount())
-			return i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
+			return Game.i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
 
 		if (getPositionsAmount() != ((BaseballWorld) o).getPositionsAmount())
-			return i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
+			return Game.i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
 		for (int base = 0; base< baseAmount; base++)
 			for (int pos=0; pos<posAmount; pos++)
 				if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
-					sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
+					sb.append(Game.i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
 		return sb.toString();
 	}
@@ -245,7 +238,7 @@ public class BaseballWorld extends World {
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		if (panel == null)
-			panel = new BaseballMovePanel();
+			panel = new BaseballMovePanel(getGame());
 		return panel;
 	}
 	/** Passes the mouse selection from view to the control panel */ 
@@ -406,10 +399,10 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -418,7 +411,7 @@ public class BaseballWorld extends World {
 			 && (holeBase != getBasesAmount()-1 || base != 0 )
 			 && (holeBase != base ) )
 			
-			throw new IllegalArgumentException(i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
+			throw new IllegalArgumentException(Game.i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
 					position,base,holeBase));
 
 		// All clear. Proceed.

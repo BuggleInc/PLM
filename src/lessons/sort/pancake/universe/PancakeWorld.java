@@ -42,7 +42,7 @@ public class PancakeWorld extends World {
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		if (panel == null)
-			panel = new PancakeFlipButtonPanel();
+			panel = new PancakeFlipButtonPanel(getGame());
 		return panel;
 	}
 	/** Passes the mouse selection from view to the control panel */ 
@@ -69,8 +69,8 @@ public class PancakeWorld extends World {
 	 * @param amountOfPancakes : the amount of pancakes in the stack
 	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(String name, int size, boolean burnedPancake) {
-		super(name);
+	public PancakeWorld(Game game, String name, int size, boolean burnedPancake) {
+		super(game, name);
 		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */
@@ -97,8 +97,8 @@ public class PancakeWorld extends World {
 	 * @param sizes the size of each pancake. If negative, the pancake is upside down
 	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
-		super(name);
+	public PancakeWorld(Game game, String name, int[] sizes, boolean burnedPancake) {
+		super(game, name);
 		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */

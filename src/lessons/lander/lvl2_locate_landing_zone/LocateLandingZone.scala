@@ -10,8 +10,9 @@ import Math.PI
 import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
+import plm.core.model.Game
 
-class LocateLandingZone(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+class LocateLandingZone(game: Game, lesson: Lesson) extends ExerciseTemplated(game, lesson, null) {
   tabName = "Lander"
   setup(Array(
       CHALLENGING_TERRAIN_SIMPLE_CONFIG,

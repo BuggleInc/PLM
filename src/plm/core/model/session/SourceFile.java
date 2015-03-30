@@ -143,4 +143,8 @@ public class SourceFile {
 	public int getOffset() {
 		return offset;
 	}
+	
+	public Game getGame() {
+		return game;
+	}
 }

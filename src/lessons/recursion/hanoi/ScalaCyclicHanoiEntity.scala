@@ -1,8 +1,9 @@
 package lessons.recursion.hanoi;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.core.model.Game
 
-class ScalaCyclicHanoiEntity extends HanoiEntity {
+class ScalaCyclicHanoiEntity(game: Game) extends HanoiEntity(game) {
   override def move(from:Int, to:Int) = cyclicMove(from, to)
   
 	override def run() {

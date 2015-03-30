@@ -12,7 +12,7 @@ public class ProgrammersLearningMachine {
 	public static void main(String args[]) {
 		FileUtils.setLocale(new JFrame().getLocale());
 		
-		game; // make sure it's created
+		Game game = new Game(); // make sure it's created
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

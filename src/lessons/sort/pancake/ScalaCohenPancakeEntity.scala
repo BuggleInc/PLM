@@ -1,8 +1,9 @@
 package lessons.sort.pancake;
 
 import lessons.sort.pancake.universe.PancakeEntity;
+import plm.core.model.Game
 
-class ScalaCohenPancakeEntity extends PancakeEntity {
+class ScalaCohenPancakeEntity(game: Game) extends PancakeEntity(game) {
 
 	override def run() {
 		solve();

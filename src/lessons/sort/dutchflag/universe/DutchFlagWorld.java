@@ -34,7 +34,7 @@ public class DutchFlagWorld extends World {
 	/** Returns the panel which let the user to interact dynamically with the world */
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() {
+		return new EntityControlPanel(getGame()) {
 			
 			private static final long serialVersionUID = 1L;
 
@@ -52,10 +52,10 @@ public class DutchFlagWorld extends World {
 	 * @param name : the name of the world
 	 * @param size : the amount of elements 
 	 */
-	public DutchFlagWorld(String name, int size) {
-		super(name);
+	public DutchFlagWorld(Game game, String name, int size) {
+		super(game, name);
 		setDelay(size>100?20:200); // Delay (in ms) in default animations
-		new DutchFlagEntity(this);
+		new DutchFlagEntity(game, this);
 		
 		content = new int[size];
 		initialContent = new int[size];
@@ -72,10 +72,10 @@ public class DutchFlagWorld extends World {
 		}
 	}
 	
-	public DutchFlagWorld(String name, int size, int colorRemoved) {
-		super(name);
+	public DutchFlagWorld(Game game, String name, int size, int colorRemoved) {
+		super(game, name);
 		setDelay(size>100?20:200); // Delay (in ms) in default animations
-		new DutchFlagEntity(this);
+		new DutchFlagEntity(game, this);
 		int [][]color = {
 				{1,2},
 				{0,2},

@@ -3,10 +3,15 @@ package lessons.recursion.hanoi;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class SplitHanoi3Entity extends HanoiEntity {
 	
+	public SplitHanoi3Entity(Game game) {
+		super(game);
+	}
+
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));

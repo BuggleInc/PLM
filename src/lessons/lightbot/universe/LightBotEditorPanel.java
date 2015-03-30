@@ -30,7 +30,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	private Map<Icon,String> iconNameByIcons = new HashMap<Icon,String>();
 	private Icon[] iconList;
 
-	public LightBotEditorPanel(LightBotSourceFile srcFile) {
+	public LightBotEditorPanel(Game game, LightBotSourceFile srcFile) {
 		super();
 		
 		iconList = new Icon[LightBotInstruction.instructionNames.length];
