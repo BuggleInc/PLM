@@ -314,6 +314,7 @@ public class BatTest {
 		if (!expectedHasValue) {
 			expected = r; // The first time we're set, that's an answer which comes in
 			expectedHasValue = true;
+			result = null;
 		} else {
 			if (expectedHasValue)
 				correct = equalParameter(expected, result);

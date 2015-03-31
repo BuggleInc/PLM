@@ -83,18 +83,6 @@ public abstract class Entity extends Observable {
 		readyToSend = true;
 		fireStackListener();
 		world.notifyWorldUpdatesListeners();
-		if (world.isDelayed()) {
-			if (game.stepModeEnabled()) {
-				this.oneStepSemaphore.acquireUninterruptibly();
-			} else {	
-				try {
-					if (world.getDelay()>0) // seems that sleep(0) takes time (yield thread?)
-						Thread.sleep(world.getDelay());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}		
 	}
 
 	/** Copy fields of the entity passed in argument */
