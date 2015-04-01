@@ -28,6 +28,10 @@ public class DutchFlagEntity extends Entity {
 		super(game, Game.i18n.tr("Flag sorter"),world);
 	}
 	
+	public DutchFlagEntity() {
+		super();
+	}
+
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);

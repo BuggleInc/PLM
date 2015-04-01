@@ -5,6 +5,9 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BubblePancakeEntity extends PancakeEntity {
 
+	public BubblePancakeEntity() {
+		super();
+	}
 	
 	public BubblePancakeEntity(Game game) {
 		super(game);

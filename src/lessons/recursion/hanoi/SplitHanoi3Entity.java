@@ -8,6 +8,10 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class SplitHanoi3Entity extends HanoiEntity {
 	
+	public SplitHanoi3Entity() {
+		super();
+	}
+	
 	public SplitHanoi3Entity(Game game) {
 		super(game);
 	}

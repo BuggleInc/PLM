@@ -8,6 +8,10 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class InterleavedHanoiEntity extends HanoiEntity {
 	
+	public InterleavedHanoiEntity() {
+		super();
+	}
+	
 	public InterleavedHanoiEntity(Game game) {
 		super(game);
 	}

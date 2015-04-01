@@ -22,6 +22,10 @@ import lessons.sort.pancake.universe.PancakeWorld;
 
 public class GatesPancakeEntity extends PancakeEntity {
 
+	public GatesPancakeEntity() {
+		super();
+	}
+
 	public GatesPancakeEntity(Game game) {
 		super(game);
 	}

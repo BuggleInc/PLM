@@ -8,6 +8,10 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class HanoiBoardEntity extends HanoiEntity {
 	
+	public HanoiBoardEntity() {
+		super();
+	}
+	
 	public HanoiBoardEntity(Game game) {
 		super(game);
 	}

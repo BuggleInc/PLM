@@ -9,6 +9,10 @@ import plm.universe.World;
 
 public class PancakeEntity extends Entity {
 
+	public PancakeEntity() {
+		super();
+	}
+	
 	/**
 	 * Must exist. Calling PancakeEntity("dummy name") is ok
 	 * Part of the copy process 

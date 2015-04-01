@@ -4,7 +4,11 @@ import plm.core.model.Game;
 import lessons.sort.pancake.universe.PancakeEntity;
 
 public class CohenPancakeEntity extends PancakeEntity {
-
+	
+	public CohenPancakeEntity() {
+		super();
+	}
+	
 	public CohenPancakeEntity(Game game) {
 		super(game);
 	}

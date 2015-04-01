@@ -5,6 +5,10 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BasicPancakeEntity extends PancakeEntity {
 
+	public BasicPancakeEntity() {
+		super();
+	}
+	
 	public BasicPancakeEntity(Game game) {
 		super(game);
 	}

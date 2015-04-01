@@ -4,6 +4,11 @@ import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class LinearTwinHanoiEntity extends HanoiEntity {
+	
+	public LinearTwinHanoiEntity() {
+		super();
+	}
+	
 	public LinearTwinHanoiEntity(Game game) {
 		super(game);
 	}

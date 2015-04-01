@@ -7,6 +7,11 @@ import java.io.IOException;
 import plm.universe.Entity;
 
 public class BaseballEntity extends Entity {
+	
+	public BaseballEntity() {
+		super();
+	}
+	
 	/** Returns the amount of bases on your field */
 	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();

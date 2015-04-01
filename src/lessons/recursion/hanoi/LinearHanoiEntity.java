@@ -5,6 +5,10 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class LinearHanoiEntity extends HanoiEntity {
 	
+	public LinearHanoiEntity() {
+		super();
+	}
+	
 	public LinearHanoiEntity(Game game) {
 		super(game);
 	}

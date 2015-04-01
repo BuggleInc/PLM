@@ -8,6 +8,11 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 public class HanoiEntity extends Entity {
+	
+	public HanoiEntity() {
+		super();
+	}
+	
 	/** Instantiation Constructor (used by exercises to setup the world) 
 	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
 	 */

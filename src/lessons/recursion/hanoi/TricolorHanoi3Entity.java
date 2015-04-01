@@ -7,6 +7,10 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class TricolorHanoi3Entity extends HanoiEntity {
 
+	public TricolorHanoi3Entity() {
+		super();
+	}
+	
 	public TricolorHanoi3Entity(Game game) {
 		super(game);
 	}

@@ -5,6 +5,9 @@ import lessons.sort.baseball.universe.BaseballWorld;
 
 public class SelectBaseballEntity extends BaseballEntity {
 
+	public SelectBaseballEntity() {
+		super();
+	}
 	
 	/* BEGIN TEMPLATE */
 	public void run() {
