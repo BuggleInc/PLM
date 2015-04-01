@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-01-22 23:31-0300\n"
+"PO-Revision-Date: 2015-04-01 20:10-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -827,9 +827,9 @@ msgid "Source file {0}.{1} not found."
 msgstr "Arquivo fonte {0}.{1} não encontrado."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:120
-#, java-format
+#, java-format, fuzzy
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
-msgstr ""
+msgstr "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:141
 #, java-format, fuzzy
@@ -842,7 +842,7 @@ msgstr "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
-msgstr ""
+msgstr "{0}: END TEMPLATE sem o respectivo BEGIN TEMPLATE. corrija sua entidade."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
@@ -902,17 +902,17 @@ msgstr ""
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
-msgstr ""
+msgstr "Recalcular a resposta de {0} a despeito do arquivo de cache, como pedido pela propriedade {1}"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:465
 #, java-format
 msgid "Error while writing answer world of {0}:"
-msgstr ""
+msgstr "Erro enquanto escrevia o mundo resposta de {0}:"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:469
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
-msgstr ""
+msgstr "Não pode escrever o mundo resposta de {0}. Favor verificar as permissões."
 
 #: src/plm/core/model/lesson/Lecture.java:90
 #: src/plm/core/model/lesson/Lesson.java:94
@@ -931,7 +931,7 @@ msgstr "Não encontrei o nome da missão em {0}.html"
 msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
-msgstr ""
+msgstr "Algo estranho aconteceu. Sua sessão não foi criada/recarregada propriamente. Favor relatar esta questão."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Ok, quit and lose my data"
@@ -948,22 +948,25 @@ msgid ""
 "\n"
 " Would you like proceed anyway (and lose any solution typed so far)?"
 msgstr ""
+"O PLM foi incapaz de gravar seu arquivo de sessão para a lição {0} ({1}:{2}).\n"
+"\n"
+" Quer continuar mesmo assim (e perder qualquer solução digitada até agora)?"
 
 #: src/plm/core/model/session/ZipSessionKit.java:256
 msgid "Your changes are NOT saved"
-msgstr ""
+msgstr "Suas modificações NÃO FORAM gravadas"
 
 #: src/plm/core/model/session/ZipSessionKit.java:259
 msgid "User aborted saving on system error"
-msgstr ""
+msgstr "Usuário abortou gravação em erro do sistema"
 
 #: src/plm/core/model/session/ZipSessionKit.java:356
 msgid "Proceed"
-msgstr ""
+msgstr "Prosseguir"
 
 #: src/plm/core/model/session/ZipSessionKit.java:356
 msgid "Abort"
-msgstr ""
+msgstr "Abortar"
 
 #: src/plm/core/model/session/ZipSessionKit.java:357
 #, java-format
@@ -972,19 +975,22 @@ msgid ""
 "\n"
 " Would you like proceed anyway (and lose any solution typed previously)?"
 msgstr ""
+"O PLM foi incapaz de carregar seu código da lição {0} ({1}:{2}).\n"
+"\n"
+" Você quer prosseguir de qualquer forma (e perder qualquer solução digitada anteriormente)?"
 
 #: src/plm/core/model/session/ZipSessionKit.java:360
 msgid "Error while loading your session"
-msgstr ""
+msgstr "Erro enquanto carregava sua sessão"
 
 #: src/plm/core/model/session/ZipSessionKit.java:363
 msgid "Abording on user request"
-msgstr ""
+msgstr "Abortando a pedido do usuário"
 
 #: src/plm/core/model/tracking/GitSpy.java:72
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
-msgstr ""
+msgstr "Sua sessão {0} foi automaticamente recuperada dos servidores."
 
 #. If no branch can be found remotely, create a new one.
 #. System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
@@ -996,19 +1002,19 @@ msgstr "Não consegui recuperar uma sessão correspondente dos servidores..."
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
-msgstr ""
+msgstr "Você encontrou um bug no PLM. Favor relatar isto com todos os datalhes possíveis (incluindo o stacktrace abaixo)."
 
 #: src/plm/core/model/tracking/GitSpy.java:164
 msgid "Pushing to the remote repository before exiting"
-msgstr ""
+msgstr "Empurrando para o repositório remoto antes de sair"
 
 #: src/plm/core/model/tracking/GitUtils.java:76
 msgid "An error occurred while configuring the repository..."
-msgstr ""
+msgstr "Um erro ocorreu enquanto configurava o repositório..."
 
 #: src/plm/core/model/tracking/GitUtils.java:85
 msgid "Retrieving your session from the servers..."
-msgstr ""
+msgstr "Recuperando sua sessão dos servidores..."
 
 #: src/plm/core/model/tracking/GitUtils.java:119
 msgid "An error occurred while checking out the user's branch: "
