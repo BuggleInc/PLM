@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import plm.core.model.Game;
 import plm.universe.Direction;
-import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 
 public class SimpleBuggle extends AbstractBuggle  {
 	/* Make it possible to instantiate SimpleBuggles from exercises so that Python also gets graphical window showing */

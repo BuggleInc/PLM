@@ -2,7 +2,6 @@
 
 package lessons.welcome.bat.bool2;
 import plm.core.model.Game;
-import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;

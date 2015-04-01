@@ -36,6 +36,7 @@ public abstract class SimpleExerciseTest {
 		game.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		game.removeSessionKit();
 		game.setBatchExecution();
+		
 		if(!game.isDebugEnabled()) {
 			game.switchDebug();
 		}

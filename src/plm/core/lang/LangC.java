@@ -34,7 +34,7 @@ public class LangC extends ProgrammingLanguage {
 		if (sfs == null || sfs.isEmpty()) {
 			String msg = exo.getName()+": No source to compile";
 			System.err.println(msg);
-			exo.lastResult = ExecutionProgress.newCompilationError(msg);				
+			exo.lastResult = ExecutionProgress.newCompilationError(msg, this);	
 			throw new PLMCompilerException(msg, null, null);
 		}
 
@@ -94,7 +94,7 @@ public class LangC extends ProgrammingLanguage {
 				remote = "RemoteHanoi";
 			}else{
 				PLMCompilerException e = new PLMCompilerException("This world is not implemented", null, null);
-				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);				
 				throw e;
 			}
 			
@@ -186,7 +186,7 @@ public class LangC extends ProgrammingLanguage {
 				PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
-				lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 
 				throw e;
 			}

@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -58,7 +56,7 @@ public class BatWorld extends World {
 
 	/* World logic */
 	public void addTest(boolean visible, Object...params) {
-		tests.add(new BatTest(getName(),visible, params));
+		tests.add(new BatTest(getGame(), getName(),visible, params));
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {

@@ -79,7 +79,7 @@ public class LangJava extends JVMCompiledLang {
 				out.log(errs);
 		} catch (PLMCompilerException e) {
 			System.err.println(Game.i18n.tr("Compilation error:"));
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics(), this);
 			if (out != null)
 				out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 

@@ -28,10 +28,10 @@ public class DemoRunner extends Thread {
 	public void runDemo(Exercise exo) throws Exception {
 		game.setState(Game.GameState.DEMO_STARTED);
 		
-		this.game.disableStepMode();
+		game.disableStepMode();
 		
-		if(Game.getProgrammingLanguage().equals(Game.C)){
-			exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.CORRECTION);
+		if(game.getProgrammingLanguage().equals(Game.C)){
+			exo.compileAll(game.getOutputWriter(), StudentOrCorrection.CORRECTION);
 		}
 		
 		exo.runDemo(runners);

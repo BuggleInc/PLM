@@ -40,7 +40,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 	@Override
 	public void check() {
-		lastResult = new ExecutionProgress();
+		lastResult = new ExecutionProgress(Game.LIGHTBOT);
 		for (int w=0;w<currentWorld.size();w++) {
 			LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
 			while (ci.hasNext()) {

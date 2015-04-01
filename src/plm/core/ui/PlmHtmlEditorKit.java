@@ -1,22 +1,12 @@
 package plm.core.ui;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.Shape;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
 import javax.swing.text.IconView;
-import javax.swing.text.Position;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
@@ -52,12 +42,12 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 	 * 
 	 */
 
-	public static String filterHTML(String in, boolean showAll){
+	public static String filterHTML(String in, boolean showAll, ProgrammingLanguage language){
 
-		return filterHTML(in, showAll,false, null);
+		return filterHTML(in, showAll,false, null, language);
 	}
 
-	public static String filterHTML(String in, boolean showAll, boolean showMulti, ProgrammingLanguage[] currLang) {
+	public static String filterHTML(String in, boolean showAll, boolean showMulti, ProgrammingLanguage[] currLang, ProgrammingLanguage language) {
 		if (langColors == null) {
 			langColors = new HashMap<String, String>();
 			langColors.put("java", "FF0000");
@@ -148,7 +138,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 		/* filter out irrelevant stuff when not in debug */
 		/*if(currLang==null){
 			currLang = new ProgrammingLanguage[1]; 
-			currLang[1]=Game.getProgrammingLanguage();
+			currLang[1]=getGame().getProgrammingLanguage();
 		}*/
 
 		
@@ -181,7 +171,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 
 			
 			String strtemp="";
-			String cls[] = {Game.getProgrammingLanguage().getLang().toLowerCase()};
+			String cls[] = {language.getLang().toLowerCase()};
 			
 			while(!strtemp.equals(res)){
 				strtemp=res.toString();
@@ -202,10 +192,10 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 		return res;
 	}
 
-	private static boolean hideLang(String cssClass) {
+	private static boolean hideLang(String cssClass, ProgrammingLanguage language) {
 		if (cssClass == null)
 			return false;
-		if (cssClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) 
+		if (cssClass.toLowerCase().equals(language.getLang().toLowerCase())) 
 			return false;
 		return true;
 	}

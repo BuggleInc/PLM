@@ -17,8 +17,9 @@ public class BatTest {
 	private boolean correct,answered;
 	public boolean objectiveTest=false; // ExoTest messes with it, sorry
 	private String funName;
+	private Game game;
 	
-	public BatTest(String funName, boolean visible,Object parameters) {
+	public BatTest(Game game, String funName, boolean visible,Object parameters) {
 		this.funName = funName;
 		this.visible = visible;
 		this.correct = false;
@@ -33,7 +34,7 @@ public class BatTest {
 	}
 
 	public BatTest copy() {
-		BatTest res = new BatTest(funName,visible,parameters.clone());
+		BatTest res = new BatTest(game, funName,visible,parameters.clone());
 		res.result = result;
 		res.expected = expected;
 		res.expectedHasValue = expectedHasValue;
@@ -160,7 +161,7 @@ public class BatTest {
 	}
 	public String stringParameter(Object o) {
 		StringBuffer res = new StringBuffer();
-		displayParameter(o, res, Game.getProgrammingLanguage());
+		displayParameter(o, res, game.getProgrammingLanguage());
 		return res.toString();
 	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
@@ -256,7 +257,7 @@ public class BatTest {
 		}		
 	}
 	public String getName() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = game.getProgrammingLanguage();
 		if (name == null) {
 			StringBuffer sb=new StringBuffer(funName+"(");
 			
@@ -282,7 +283,7 @@ public class BatTest {
 	}
 	
 	public String toString() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = game.getProgrammingLanguage();
 		StringBuffer res = new StringBuffer(getName());
 		res.append("=");
 		displayParameter(result, res, pl);
@@ -298,12 +299,12 @@ public class BatTest {
 		
 		if (o != null) {
 			StringBuffer sb = new StringBuffer();
-			displayParameter(o, sb, Game.getProgrammingLanguage());
+			displayParameter(o, sb, game.getProgrammingLanguage());
 			return sb.toString();
 		} else {
-			if (Game.getProgrammingLanguage() == Game.SCALA)
+			if (game.getProgrammingLanguage() == Game.SCALA)
 				return "Nil";
-			if (Game.getProgrammingLanguage() == Game.PYTHON)
+			if (game.getProgrammingLanguage() == Game.PYTHON)
 				return "None";
 			return "null";
 		}

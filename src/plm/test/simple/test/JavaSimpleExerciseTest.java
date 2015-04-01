@@ -4,10 +4,10 @@ import plm.core.model.Game;
 
 public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
-	public JavaSimpleExerciseTest(Game game) {
-		super(game, Game.JAVA);
+	public JavaSimpleExerciseTest() {
+		super(new Game(), Game.JAVA);
 	}
-
+	
 	@Override
 	public String generateSyntaxErrorCode() {
 		return "zqkdçajdé\"\"";

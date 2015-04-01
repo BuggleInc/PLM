@@ -89,7 +89,6 @@ public class Game implements IWorldView {
 	private static Properties localGameProperties = new Properties();
 	private static File localGamePropertiesLoadedFile;
 
-	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Map<String, Lesson> loadedLessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
@@ -145,7 +144,7 @@ public class Game implements IWorldView {
 	private PrintStream errorOrig = System.err;
 
 
-	public SessionDB studentWork = new SessionDB();
+	public SessionDB studentWork;
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
 
@@ -153,19 +152,7 @@ public class Game implements IWorldView {
 
 	private static boolean ongoingInitialization = false;
 	public  static I18n i18n;
-
-	public static Game getInstance() {
-		if (Game.instance == null) {
-			if (ongoingInitialization)
-				throw new RuntimeException("Loop in initialization process. This is a PLM bug: please report it.");
-			ongoingInitialization = true;
-			Game.instance = new Game();
-			ongoingInitialization = false;
-			Game.instance.loadSession();
-		}
-		return Game.instance;
-	}
-
+	
 	public Game() {
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
@@ -210,6 +197,8 @@ public class Game implements IWorldView {
 				}
 		}
 
+		studentWork = new SessionDB(this);
+		
 		users = new Users(this, SAVE_DIR);
 		users.getCurrentUser();
 
@@ -231,6 +220,8 @@ public class Game implements IWorldView {
 		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
 	        currentCourse = new CourseAppEngine();
 		}
+		
+		loadSession();
 	}
 
 	boolean canScala = false;
@@ -483,7 +474,7 @@ public class Game implements IWorldView {
 	
 	public Lesson getCurrentLesson() {
 		if (this.currentLesson == null && this.lessons.size() > 0) {
-			setCurrentLesson(this.lessons.get(0));
+			setCurrentLesson(this.lessons.get(lessonsName[0]));
 		}
 		return this.currentLesson;
 	}
@@ -729,8 +720,10 @@ public class Game implements IWorldView {
 	}
 
 	public void loadSession() {
-		if (sessionKit == null)
+		if (sessionKit == null) {
+			System.exit(1);
 			return;
+		}
 		this.setState(GameState.LOADING);
 		this.sessionKit.loadAll(SAVE_DIR);
 		this.setState(GameState.LOADING_DONE);
@@ -1037,11 +1030,11 @@ public class Game implements IWorldView {
 		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);
 	}
 
-	public static ProgrammingLanguage getProgrammingLanguage() {
+	public ProgrammingLanguage getProgrammingLanguage() {
 		if (ongoingInitialization) /* break an initialization loop -- the crude way (FIXME) */
 			return JAVA;
 		else
-			return getInstance().programmingLanguage;
+			return programmingLanguage;
 	}
 	public static ProgrammingLanguage[] getProgrammingLanguages(){
 		return programmingLanguages;

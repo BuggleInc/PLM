@@ -2,7 +2,6 @@ package plm.core.lang;
 
 import javax.script.ScriptException;
 
-import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
 

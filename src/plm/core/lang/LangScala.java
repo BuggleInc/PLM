@@ -49,7 +49,7 @@ public class LangScala extends JVMCompiledLang {
 			String msg = exo.getName()+": No source to compile";
 			System.err.println(msg);
 			PLMCompilerException e = new PLMCompilerException(msg, null, null);
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);				
 			throw e;
 		}
 
@@ -61,7 +61,7 @@ public class LangScala extends JVMCompiledLang {
 		} catch (PLMCompilerException e) {
 			System.err.println(Game.i18n.tr("Compilation error:"));
 			System.err.println(e.getMessage());
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 
 			throw e;
 		}

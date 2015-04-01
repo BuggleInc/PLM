@@ -11,9 +11,6 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -93,7 +90,7 @@ public abstract class Exercise extends Lecture {
 	}
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
-		lastResult = new ExecutionProgress();
+		lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
 
 		for (int i=0; i<initialWorld.size(); i++) 
 			currentWorld.get(i).reset(initialWorld.get(i));
@@ -113,12 +110,12 @@ public abstract class Exercise extends Lecture {
 		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
-		Game.getProgrammingLanguage().compileExo(this, out, whatToCompile);
+		getGame().getProgrammingLanguage().compileExo(this, out, whatToCompile);
 	}
 
 	/** get the list of source files for a given language, or create it if not existent yet */
 	public List<SourceFile> getSourceFilesList(ProgrammingLanguage lang) {
-		List<SourceFile> res = sourceFiles.get(lang); 
+		List<SourceFile> res = sourceFiles.get(lang);
 		if (res == null) {
 			res = new ArrayList<SourceFile>();
 			sourceFiles.put(lang, res);
@@ -137,7 +134,7 @@ public abstract class Exercise extends Lecture {
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
-		ProgrammingLanguage lang = Game.getProgrammingLanguage();
+		ProgrammingLanguage lang = getGame().getProgrammingLanguage();
 
 		Vector<World> worlds;
 		switch (kind) {
@@ -148,7 +145,7 @@ public abstract class Exercise extends Lecture {
 		}
 
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+		if (getGame().getProgrammingLanguage().equals(Game.JAVA)) {
 			String[] forbidden = new String[] {"'","\""};
 			for (String stringPattern : forbidden) {
 				Pattern pattern = Pattern.compile(stringPattern);
@@ -167,7 +164,7 @@ public abstract class Exercise extends Lecture {
 				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate) );			
 			}
 		} catch (PLMCompilerException e) {
-			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage());
+			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage(), lang);
 		}
 	}
 

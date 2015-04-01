@@ -113,7 +113,7 @@ public class ExoTest {
 		
 		DemoRunner demoRunner = new DemoRunner(g, new ArrayList<Thread>());
 		
-		exo.lastResult = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress(lang);
 		try {
 			demoRunner.runDemo(exo);
 		}
@@ -127,7 +127,7 @@ public class ExoTest {
 	private void testCorrectionEntity(ProgrammingLanguage lang) {
 		g.setProgramingLanguage(lang);
 		
-		exo.lastResult = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress(lang);
 		
 		try {
 			exo.compileAll(null, StudentOrCorrection.CORRECTION);

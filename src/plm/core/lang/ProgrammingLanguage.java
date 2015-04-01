@@ -8,7 +8,6 @@ import javax.script.ScriptEngine;
 
 import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PLMCompilerException;
-import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;

@@ -19,16 +19,19 @@ public class ExecutionProgress {
 	public String executionError = "";
 	public int passedTests, totalTests=0;
 	public Date date = new Date();
-	public ProgrammingLanguage language = Game.getProgrammingLanguage();
+	public ProgrammingLanguage language;
 
 	/* The feedback from the student in the ExecisePassedDialog */
 	public String feedbackDifficulty;
 	public String feedbackInterest;
 	public String feedback; 
 
-	public static ExecutionProgress newCompilationError(String message) {
-		ExecutionProgress ep = new ExecutionProgress();
-		
+	public ExecutionProgress(ProgrammingLanguage language) {
+		this.language = language;
+	}
+	
+	public static ExecutionProgress newCompilationError(String message, ProgrammingLanguage language) {
+		ExecutionProgress ep = new ExecutionProgress(language);
 		ep.compilationError = message;
 		ep.passedTests = -1;
 		ep.totalTests = -1;
@@ -38,7 +41,7 @@ public class ExecutionProgress {
 
 		return ep;
 	}
-	public static ExecutionProgress newCompilationError(DiagnosticCollector<JavaFileObject> diagnostics) {
+	public static ExecutionProgress newCompilationError(DiagnosticCollector<JavaFileObject> diagnostics, ProgrammingLanguage language) {
 		StringBuffer sb = new StringBuffer();
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {	
 			if (diagnostic.getSource() == null) 
@@ -47,7 +50,7 @@ public class ExecutionProgress {
 				sb.append(diagnostic.getSource().getName()+":"+(diagnostic.getLineNumber()-1)+":"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
 			sb.append("\n");
 		}
-		return newCompilationError(sb.toString());
+		return newCompilationError(sb.toString(), language);
 	}
 	
 	public void setCompilationError(String msg) {

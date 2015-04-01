@@ -9,8 +9,6 @@ import java.util.List;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
@@ -147,7 +145,7 @@ public abstract class World {
 	}
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
-		final ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		final ProgrammingLanguage pl = getGame().getProgrammingLanguage();
 		if (game.isDebugEnabled())
 			Logger.log("World:runEntities","Programming language: "+pl);
 		
@@ -314,7 +312,7 @@ public abstract class World {
 			/* read it */
 			about = sb.toString();
 		}
-		return PlmHtmlEditorKit.filterHTML(about, game.isDebugEnabled());
+		return PlmHtmlEditorKit.filterHTML(about, game.isDebugEnabled(), getGame().getProgrammingLanguage());
 	}
 	
 	/**

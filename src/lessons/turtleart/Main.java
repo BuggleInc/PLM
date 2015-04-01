@@ -86,10 +86,9 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 		StringBuffer res = new StringBuffer();
 		int exoCount = 0;
 		for (Lecture l : getLesson().exercises()) {
-			int iconSize=100;
 			Exercise exo = (Exercise) l;
 			boolean isSelected = exo.equals(getLesson().getCurrentExercise());
-			boolean isPassed = getGame().studentWork.getPassed(exo, Game.getProgrammingLanguage());
+			boolean isPassed = getGame().studentWork.getPassed(exo, getGame().getProgrammingLanguage());
 			
 			String path = "TurtleGraphics/"+exo.getId()+(isSelected?"-selected":"")+(isPassed?"-passed":"")+".png";
 			    

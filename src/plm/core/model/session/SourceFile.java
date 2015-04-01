@@ -3,9 +3,6 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.swing.JScrollPane;
-
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 
@@ -37,7 +34,7 @@ public class SourceFile {
 	}
 
 	public void setBody(String text) { 
-		if (Game.getProgrammingLanguage().equals(Game.PYTHON))
+		if (getGame().getProgrammingLanguage().equals(Game.PYTHON))
 			body = text.replaceAll("\\t", "    ");
 		else
 			body = text;

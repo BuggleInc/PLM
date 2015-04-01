@@ -34,7 +34,7 @@ public class LessonRunner extends Thread {
 			return;
 		final Exercise exo = (Exercise) lect;
 
-		exo.lastResult = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress(game.getProgrammingLanguage());
 
 		try {
 			game.saveSession(); // for safety reasons;
@@ -72,7 +72,7 @@ public class LessonRunner extends Thread {
 
 		if (!game.isCreativeEnabled()) {
 			if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-				Game.getInstance().studentWork.setPassed(exo, null, true);
+				game.studentWork.setPassed(exo, null, true);
 			}
 			game.fireProgressSpy(exo);
 		}

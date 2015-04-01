@@ -1,8 +1,5 @@
 package lessons.lightbot.universe;
 
-import javax.swing.JScrollPane;
-
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.session.SourceFileRevertable;
 

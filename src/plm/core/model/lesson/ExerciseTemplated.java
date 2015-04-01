@@ -427,10 +427,10 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				
 				/* I/O didn't work. We have to load the files manually */
-				ExecutionProgress progress = new ExecutionProgress();
+				ExecutionProgress progress = new ExecutionProgress(getGame().getProgrammingLanguage());
 				
 				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
-				if(Game.getProgrammingLanguage().equals(Game.C)){
+				if(getGame().getProgrammingLanguage().equals(Game.C)){
 					try {
 						//TODO BAT remove if bat will be implemented in C
 						if(!id.contains("bat.string1.lessons.bat") && !id.contains("welcome.lessons.welcome.bat") && ! id.contains("welcome.lessons.welcome.array"))
@@ -447,7 +447,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
 						ent.setScript(Game.C, id);
-						Game.getProgrammingLanguage().runEntity(ent,progress);
+						getGame().getProgrammingLanguage().runEntity(ent,progress);
 					}
 					aw.setAnswerWorld();
 				}
@@ -481,7 +481,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	@Override
 	public void run(List<Thread> runnerVect){
 		if (lastResult == null)
-			lastResult = new ExecutionProgress();
+			lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
 		
 		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
@@ -493,7 +493,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void runDemo(List<Thread> runnerVect){
-		ExecutionProgress ignored = new ExecutionProgress();
+		ExecutionProgress ignored = new ExecutionProgress(getGame().getProgrammingLanguage());
 		
 		for (int i=0; i<initialWorld.size(); i++) { 
 			answerWorld.get(i).reset(initialWorld.get(i));

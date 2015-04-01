@@ -22,7 +22,7 @@ public class SessionDB {
 	
 	private Game game;
 	
-	public void SessionDB(Game game) {
+	public SessionDB(Game game) {
 		this.game = game;
 	}
 	
@@ -30,7 +30,7 @@ public class SessionDB {
 		if (exo == null)
 			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo);
 		if (bodyE == null) {
@@ -49,7 +49,7 @@ public class SessionDB {
 		if (exo == null)
 			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo.getId());
 		if (bodyE == null) 
@@ -65,7 +65,7 @@ public class SessionDB {
 		if (exo == null)
 			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 		
 		if (getPassed(exo, lang) == _passed)
 			return;
@@ -85,7 +85,7 @@ public class SessionDB {
 		if (exo == null)
 			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Boolean> passedE = passed.get(exo.getId());
 		if (passedE == null)
@@ -100,7 +100,7 @@ public class SessionDB {
 		if (lesson == null)
 			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> passedL = possibleExercises.get(lesson);
 		if (passedL == null)
@@ -115,7 +115,7 @@ public class SessionDB {
 		if (lesson == null)
 			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
 		if (passedL == null) {
@@ -129,7 +129,7 @@ public class SessionDB {
 		if (lesson == null)
 			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> possibleL = possibleExercises.get(lesson);
 		if (possibleL == null) {
@@ -143,7 +143,7 @@ public class SessionDB {
 		if (lesson == null)
 			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
 		if (passedL == null)

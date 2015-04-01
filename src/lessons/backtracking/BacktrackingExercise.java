@@ -39,8 +39,8 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		computeAnswer();
 	}
 	protected void computeAnswer() {
-		ExecutionProgress progress = new ExecutionProgress();
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = getGame().getProgrammingLanguage();
+		ExecutionProgress progress = new ExecutionProgress(pl);
 		
 		for (World aw : answerWorld) {
 			System.out.println("Compute answer for world "+aw.getName());

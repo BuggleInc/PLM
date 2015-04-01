@@ -65,7 +65,7 @@ public abstract class Lecture implements HumanLangChangesListener{
 		name = n;
 	}
 	public String getName() {
-		return PlmHtmlEditorKit.filterHTML(name, false);
+		return PlmHtmlEditorKit.filterHTML(name, false, getGame().getProgrammingLanguage());
 	}
 
 	public Lesson getLesson() {
@@ -74,13 +74,13 @@ public abstract class Lecture implements HumanLangChangesListener{
 
 
 	public String getMission(ProgrammingLanguage lang) {
-		return PlmHtmlEditorKit.filterHTML(this.mission, game.isDebugEnabled());
+		return PlmHtmlEditorKit.filterHTML(this.mission, game.isDebugEnabled(), getGame().getProgrammingLanguage());
 	}
 	public void setMission(String mission) {
 		this.mission=mission;
 	}
 	public String getTip(String tipsId) {
-		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), game.isDebugEnabled());
+		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), game.isDebugEnabled(), getGame().getProgrammingLanguage());
 	}
 
 	public void loadHTMLMission() {
