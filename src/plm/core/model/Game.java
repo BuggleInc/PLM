@@ -1048,7 +1048,15 @@ public class Game implements IWorldView {
 	}
 	private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
 	public void addProgLangListener(ProgLangChangesListener l) {
-		progLangListeners.add(l);
+		progLangListeners.add(0, l);
+	}
+	public void addProgLangListener(ProgLangChangesListener l, boolean last) {
+		if(last) {
+			progLangListeners.add(l);
+		}
+		else {
+			addProgLangListener(l);
+		}
 	}
 	public void fireProgLangChange(ProgrammingLanguage newLang) {
 		for (ProgLangChangesListener l : progLangListeners)
@@ -1060,7 +1068,15 @@ public class Game implements IWorldView {
 
 	private List<HumanLangChangesListener> humanLangListeners = new Vector<HumanLangChangesListener>();
 	public void addHumanLangListener(HumanLangChangesListener l) {
-		humanLangListeners.add(l);
+		humanLangListeners.add(0, l);
+	}
+	public void addHumanLangListener(HumanLangChangesListener l, boolean last) {
+		if(last) {
+			humanLangListeners.add(l);
+		}
+		else {
+			addHumanLangListener(l);
+		}
 	}
 	public void fireHumanLangChange(Locale newLang) {
 		for (HumanLangChangesListener l : humanLangListeners)
