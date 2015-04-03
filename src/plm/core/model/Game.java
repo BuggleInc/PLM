@@ -45,6 +45,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.LangRuby;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
@@ -1022,6 +1023,8 @@ public class Game implements IWorldView {
 					return;
 			}
 			this.programmingLanguage = newLanguage;
+			if(getCurrentLesson() != null)
+				((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress();
 			fireProgLangChange(newLanguage);
 			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
 				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.getLang());
