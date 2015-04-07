@@ -14,12 +14,7 @@ public class SimpleExercise extends ExerciseTemplated {
 		tabName = "SimpleExercise";
 		
 		SimpleWorld w = new SimpleWorld(game, "test");
-		Entity newEntity = null;
-		try {
-			newEntity = SimpleExerciseEntity.class.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
+		Entity newEntity = new SimpleExerciseEntity();
 		w.addEntity(newEntity);
 		setup( new World[] {
 				w

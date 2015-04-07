@@ -40,13 +40,9 @@ public abstract class SimpleExerciseTest {
 		if(!game.isDebugEnabled()) {
 			game.switchDebug();
 		}
-		game.setProgramingLanguage(pl);
-		
-		l = new Main(game);
-		exo = (SimpleExercise) l.getExercise("SimpleExercise");
-
-		l.setCurrentExercise(exo);
-		game.setCurrentLesson(l);
+		game.addLesson("plm.test.simple");
+		game.switchLesson("plm.test.simple", true);
+		exo = (SimpleExercise) game.getCurrentLesson().getCurrentExercise();
 		game.setProgramingLanguage(pl);
 		game.setLocale(new Locale("en"));
 	}
@@ -61,7 +57,6 @@ public abstract class SimpleExerciseTest {
 
 	@Before
 	public void setUp() throws Exception {
-		exo.reset();
 	}
 
 	@After

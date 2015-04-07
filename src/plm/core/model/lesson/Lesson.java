@@ -214,7 +214,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 			filename += ".html";
 		}
 		
-		description = sb.toString();
+		description = sb != null? sb.toString() : "";
 	}
 
 	public String getImgPath() {

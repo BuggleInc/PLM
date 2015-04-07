@@ -3,7 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.model.Game
 
-class ScalaIterativeHanoiEntity(game: Game) extends HanoiEntity(game) {
+class ScalaIterativeHanoiEntity extends HanoiEntity {
 	override def run() {
     val initialPos=getParam(0).asInstanceOf[Int]
     val increasing=getParam(1).asInstanceOf[Boolean]

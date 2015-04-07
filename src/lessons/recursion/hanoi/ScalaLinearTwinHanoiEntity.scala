@@ -3,7 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity
 import plm.core.model.Game
 
-class ScalaLinearTwinHanoiEntity(game: Game) extends HanoiEntity(game) {
+class ScalaLinearTwinHanoiEntity extends HanoiEntity {
   override def move(from:Int, to:Int) {
     if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
       throw new RuntimeException(Game.i18n.tr(

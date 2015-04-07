@@ -327,26 +327,30 @@ public class Game implements IWorldView {
 
 	private void initLessons() {
 		for(String lessonName: lessonsName) {
-			Lesson lesson = null;
+			addLesson(lessonName);			
+		}
+	}
+	
+	public void addLesson(String lessonName) {
+		Lesson lesson = null;
+		try {
+			// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
+			// We manually build a call to the constructor of this object, and fire it
+			// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
 			try {
-				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
-				// We manually build a call to the constructor of this object, and fire it
-				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
-				try {
-					lesson = (Lesson) Class.forName(lessonName + ".Main").getDeclaredConstructor(Game.class).newInstance(this);
-				} catch (IllegalArgumentException | InvocationTargetException
-						| NoSuchMethodException | SecurityException e) {
-					e.printStackTrace();
-				}
-				addHumanLangListener(lesson);
-				lessons.put(lessonName, lesson); // cache the newly created object
-			} catch (InstantiationException e) {
+				lesson = (Lesson) Class.forName(lessonName + ".Main").getDeclaredConstructor(Game.class).newInstance(this);
+			} catch (IllegalArgumentException | InvocationTargetException
+					| NoSuchMethodException | SecurityException e) {
 				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				throw new RuntimeException(Game.i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
 			}
+			addHumanLangListener(lesson);
+			lessons.put(lessonName, lesson); // cache the newly created object
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(Game.i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
 		}
 	}
 	
@@ -474,8 +478,8 @@ public class Game implements IWorldView {
 	}
 	
 	public Lesson getCurrentLesson() {
-		if (this.currentLesson == null && this.lessons.size() > 0) {
-			setCurrentLesson(this.lessons.get(lessonsName[0]));
+		if (this.currentLesson == null && this.loadedLessons.size() > 0) {
+			setCurrentLesson(loadedLessons.get(lessonsName[0]));
 		}
 		return this.currentLesson;
 	}

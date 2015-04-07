@@ -3,7 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.model.Game
 
-class ScalaCyclicHanoiEntity(game: Game) extends HanoiEntity(game) {
+class ScalaCyclicHanoiEntity extends HanoiEntity {
   override def move(from:Int, to:Int) = cyclicMove(from, to)
   
 	override def run() {

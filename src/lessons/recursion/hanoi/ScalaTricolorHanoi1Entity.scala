@@ -3,7 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.model.Game
 
-class ScalaTricolorHanoi1Entity(game: Game) extends HanoiEntity(game) {
+class ScalaTricolorHanoi1Entity extends HanoiEntity {
 
 	override def run() {
     val src = getParam(0).asInstanceOf[Int]
