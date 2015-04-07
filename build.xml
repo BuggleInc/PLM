@@ -235,7 +235,7 @@
     </target>
 
     <target name="test-all-exos" depends="compile" description="tests compilation of provided solutions of all exos">
-	  <junit printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.core.ExoTest"/>		
@@ -243,7 +243,7 @@
     </target>
 
     <target name="all-tests" depends="compile" description="launch all tests">
-	  <junit printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.test.AllTests"/>		
@@ -259,7 +259,7 @@
     </target>
 	
     <target name="integration-tests" depends="compile" description="launch all integration tests">
-	  <junit printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.test.IntegrationTests"/>		
