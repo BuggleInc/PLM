@@ -15,7 +15,7 @@ public class Board05Higher extends LightBotExercise {
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld(game, "Board 5", 8, 8);
 		
-		new LightBotEntity(game, myWorld, "D2R2", 2, 3, Direction.SOUTH);
+		new LightBotEntity(myWorld, "D2R2", 2, 3, Direction.SOUTH);
 
 		myWorld.setHeight(2,4,1);
 		myWorld.setHeight(2,5,1);

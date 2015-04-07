@@ -13,7 +13,7 @@ public class SpiralUse extends ExerciseTemplated {
 
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld(game, "Sheet", 400, 400);
-		new Turtle(game, myWorld, "Hawksbill", 200, 200);
+		new Turtle(myWorld, "Hawksbill", 200, 200);
 
 		setup(myWorld);
 	}

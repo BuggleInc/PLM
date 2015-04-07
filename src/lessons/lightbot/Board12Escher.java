@@ -15,7 +15,7 @@ public class Board12Escher extends LightBotExercise {
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld(game, "Board 12", 8, 8);
 		
-		new LightBotEntity(game, myWorld, "D2R2", 0, 4, Direction.EAST);
+		new LightBotEntity(myWorld, "D2R2", 0, 4, Direction.EAST);
 
 		for (int i=1;i<5;i++) {
 			myWorld.setHeight(5, i, i);  myWorld.addLight(5, i);

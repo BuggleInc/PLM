@@ -8,10 +8,6 @@ public class CohenPancakeEntity extends PancakeEntity {
 	public CohenPancakeEntity() {
 		super();
 	}
-	
-	public CohenPancakeEntity(Game game) {
-		super(game);
-	}
 
 	public void run() {
 		this.solve();

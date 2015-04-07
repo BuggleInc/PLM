@@ -20,7 +20,7 @@ public class Board01TwoSteps extends LightBotExercise {
 		}			
 		myWorld.addLight(4,4);
 		
-		new LightBotEntity(game, myWorld, "D2R2", 4, 2, Direction.SOUTH);
+		new LightBotEntity(myWorld, "D2R2", 4, 2, Direction.SOUTH);
 		setup(myWorld);
 	}
 }

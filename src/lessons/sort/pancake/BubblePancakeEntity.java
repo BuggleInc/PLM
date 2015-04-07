@@ -8,10 +8,6 @@ public class BubblePancakeEntity extends PancakeEntity {
 	public BubblePancakeEntity() {
 		super();
 	}
-	
-	public BubblePancakeEntity(Game game) {
-		super(game);
-	}
 
 	public void run() {
 		this.solve();

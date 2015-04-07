@@ -15,7 +15,7 @@ public class Board07Repeat extends LightBotExercise {
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld(game, "Board 7", 8, 8);
 		
-		new LightBotEntity(game, myWorld, "D2R2", 4, 0, Direction.SOUTH);
+		new LightBotEntity(myWorld, "D2R2", 4, 0, Direction.SOUTH);
 
 		for (int i=1;i<8;i++) {
 			myWorld.addLight(4, i);

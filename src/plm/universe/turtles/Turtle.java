@@ -34,12 +34,12 @@ public class Turtle extends Entity {
 		super();
 	}	
 
-	public Turtle(Game game, World w, String name, double x, double y) {
-		this(game, w, name, x, y, 0., Color.black);
+	public Turtle(World w, String name, double x, double y) {
+		this(w, name, x, y, 0., Color.black);
 	}
 
-	public Turtle(Game game, World world, String name, double x, double y, double heading, Color c) {
-		super(game, name, world);
+	public Turtle(World world, String name, double x, double y, double heading, Color c) {
+		super(name, world);
 		this.color = c;
 		this.x = x;
 		this.y = y;

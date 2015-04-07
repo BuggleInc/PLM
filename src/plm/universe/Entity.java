@@ -32,15 +32,15 @@ public abstract class Entity extends Observable {
 
 	public Entity() {}
 
-	public Entity(Game game, String name) {
+	public Entity(String name) {
 		this.name=name;
-		this.game = game;
 	}
-	public Entity(Game game, String name, World w) {
+	public Entity(String name, World w) {
 		this.name=name;
-		this.game = game;
-		if (w != null)
+		if (w != null) {
 			w.addEntity(this);
+			game = world.getGame();
+		}
 	}
 
 	public String getName() {

@@ -46,10 +46,10 @@ public class BDR2 extends ExerciseTemplated {
 
 		myWorld = new BuggleWorld(game, "Dance Floor",11,11);
 		/* please applause the dancers*/
-		new SimpleBuggle(game, myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
-		new SimpleBuggle(game, myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
-		new SimpleBuggle(game, myWorld, "Moon Walker", 0, 10, Direction.NORTH, Color.pink, Color.pink);
-		new SimpleBuggle(game, myWorld, "Elwood Blues", 10, 10, Direction.WEST, Color.blue, Color.blue);
+		new SimpleBuggle(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
+		new SimpleBuggle(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
+		new SimpleBuggle(myWorld, "Moon Walker", 0, 10, Direction.NORTH, Color.pink, Color.pink);
+		new SimpleBuggle(myWorld, "Elwood Blues", 10, 10, Direction.WEST, Color.blue, Color.blue);
 		
 		/* welcome to the dance floor, each dancer on a column */
 		plus5(0,0);		plus5(10,0);	plus5(0,10);	plus5(10,10);

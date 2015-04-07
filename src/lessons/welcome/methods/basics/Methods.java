@@ -16,7 +16,7 @@ public class Methods extends ExerciseTemplated {
 		super(game, lesson);
 
 		BuggleWorld myWorld =  new BuggleWorld(game, "Donut World",7,7);
-		new SimpleBuggle(game, myWorld, "Homer", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorld, "Homer", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 
 		try {
 			for (int i=0;i<7;i++) 

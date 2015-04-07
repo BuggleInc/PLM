@@ -4,7 +4,7 @@ import lessons.sort.pancake.universe.PancakeEntity
 import lessons.sort.pancake.universe.PancakeWorld;
 import plm.core.model.Game
 
-class ScalaGatesBurnedPancakeEntity(game : Game) extends PancakeEntity(game) {
+class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 
 
 	override def run() {

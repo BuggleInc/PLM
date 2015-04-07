@@ -39,7 +39,7 @@ public class TurmiteWorld extends BuggleWorld {
 				rule
 		});
 
-		new Buggle(game, (BuggleWorld)this,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.red);
+		new Buggle((BuggleWorld)this,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.red);
 	}
 	
 	/** Reset the state of the current world to the one passed in argument

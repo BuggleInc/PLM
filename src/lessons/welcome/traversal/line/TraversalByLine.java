@@ -21,7 +21,7 @@ public class TraversalByLine extends ExerciseTemplated {
 			myWorld.putLeftWall(0, i);
 		}
 		
-		new SimpleBuggle(game, myWorld, "Walker", 0, 0, Direction.NORTH, Color.black, Color.red);
+		new SimpleBuggle(myWorld, "Walker", 0, 0, Direction.NORTH, Color.black, Color.red);
 
 		setup(myWorld);
 	}

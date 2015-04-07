@@ -15,7 +15,7 @@ public class FourSquare extends ExerciseTemplated {
 		/* Create initial situation */
 		World myWorld = new TurtleWorld(game, "WhiteBoard", 400, 400);
 
-		new Turtle(game, myWorld, "Hawksbill", 200, 200);
+		new Turtle(myWorld, "Hawksbill", 200, 200);
 		setup(myWorld);
 	}
 }

@@ -24,7 +24,7 @@ public class GatesPancake extends ExerciseTemplated {
 						// A+ A+ D+ A+ A+ A- E- A+ C E- A+ A+ A+ D+ D+ E+ D+ F+ F- C B+ F- E+ D+ F+ H E- F+ E+ => miss Cbis and G
 		};
 		for ( int i = 0 ; i<plate.length;i++)
-			new PancakeEntity(game, "Bill",plate[i]);
+			new PancakeEntity("Bill",plate[i]);
 
 		setup(plate);
 	}

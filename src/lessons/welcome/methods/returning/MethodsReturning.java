@@ -19,7 +19,7 @@ public class MethodsReturning extends ExerciseTemplated {
 		BuggleWorld[] myWorld = new BuggleWorld[3];
 		for (int i=0; i<3;i++) {
 			myWorld[i] = new BuggleWorld(game, "World "+(i+1),7,7);
-			new SimpleBuggle(game, myWorld[i], "Searcher", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(myWorld[i], "Searcher", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 		}
 
 		try {

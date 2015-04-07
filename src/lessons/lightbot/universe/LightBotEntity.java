@@ -26,8 +26,8 @@ public class LightBotEntity extends Entity  {
 	}
 
 	/** That constructor is called by the exercises */
-	public LightBotEntity(Game game, World world, String name, int x, int y, Direction direction2) {
-		super(game, name,world);
+	public LightBotEntity(World world, String name, int x, int y, Direction direction2) {
+		super(name,world);
 		this.setX(x);
 		this.setY(y);
 		this.direction = direction2;

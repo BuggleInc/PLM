@@ -17,7 +17,7 @@ import plm.core.model.Game
  */
 
 
-class ScalaGatesPancakeEntity(game : Game) extends PancakeEntity(game) {
+class ScalaGatesPancakeEntity extends PancakeEntity {
 
 	override def run() {
 		solve();

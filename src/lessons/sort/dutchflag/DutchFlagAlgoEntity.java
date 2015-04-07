@@ -9,10 +9,6 @@ public class DutchFlagAlgoEntity extends DutchFlagEntity {
 	public DutchFlagAlgoEntity() {
 		super();
 	}
-	
-	public DutchFlagAlgoEntity(Game game) {
-		super(game);
-	}
 
 	public void run() {
 		solve();

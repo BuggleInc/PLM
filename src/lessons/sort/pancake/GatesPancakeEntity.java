@@ -26,10 +26,6 @@ public class GatesPancakeEntity extends PancakeEntity {
 		super();
 	}
 
-	public GatesPancakeEntity(Game game) {
-		super(game);
-	}
-
 	// FIXME: killme and merge it to parent class
 	@Override
 	public void command(String command, BufferedWriter out) {

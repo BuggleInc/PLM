@@ -3,7 +3,7 @@ package lessons.sort.pancake;
 import lessons.sort.pancake.universe.PancakeEntity;
 import plm.core.model.Game
 
-class ScalaBurnedPancakeEntity(game : Game) extends PancakeEntity(game) {
+class ScalaBurnedPancakeEntity extends PancakeEntity {
 
 
 	override def run() {

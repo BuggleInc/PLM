@@ -17,7 +17,7 @@ public class LoopWhile extends ExerciseTemplated {
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Closed world",7,7);
 		for (int i=0;i<7;i++) {
-			new SimpleBuggle(game, myWorld, "Joker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(myWorld, "Joker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 			myWorld.putTopWall (i, 6-i);
 			myWorld.putLeftWall(i, 6-i);
 			myWorld.putLeftWall(0, i  );

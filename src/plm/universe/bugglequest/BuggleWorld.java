@@ -184,7 +184,7 @@ public class BuggleWorld extends GridWorld {
 							"Invalid buggle''s color name: {0}", buggleMatcher.group(5)));
 				}
 				String buggleName = buggleMatcher.group(6);
-				SimpleBuggle b = new SimpleBuggle(getGame(), res, buggleName, x, y, direction, color, brushColor);
+				SimpleBuggle b = new SimpleBuggle(res, buggleName, x, y, direction, color, brushColor);
 				String haveBaggle = buggleMatcher.group(7);
 				if (haveBaggle.equals("haveBaggle"))
 					b.doCarryBaggle();

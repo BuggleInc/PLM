@@ -61,8 +61,8 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	/** That constructor is called by the exercises */
-	public AbstractBuggle(Game game, World world, String name, int x, int y, Direction direction, Color color, Color brushColor) {
-		super(game, name,world);
+	public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color color, Color brushColor) {
+		super(name,world);
 		this.bodyColor = color;
 		this.brushColor = brushColor;
 		this.x = x;

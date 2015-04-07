@@ -17,7 +17,7 @@ public class Variables extends ExerciseTemplated {
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Kitchen",7,7);
 		for (int i=0;i<7;i++) {
-			new SimpleBuggle(game, myWorld, "Cooker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(myWorld, "Cooker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 
 			try {
 				myWorld.addBaggle(i, 6-i);

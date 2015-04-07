@@ -20,7 +20,7 @@ public class IterativeHanoi extends ExerciseTemplated {
 		myWorlds[2] = new HanoiWorld(game, "hanoi(1,false)", new Integer[0], new Integer[] {6,5,4,3,2,1}, new Integer[0]);
 		myWorlds[2].setParameter(new Object[] {1,false});		
 		for (int i=0;i<myWorlds.length;i++) 
-			new HanoiEntity(game, "worker",myWorlds[i]);
+			new HanoiEntity("worker",myWorlds[i]);
 		
 		setup(myWorlds);
 	}

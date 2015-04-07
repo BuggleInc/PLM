@@ -8,10 +8,6 @@ public class BurnedPancakeEntity extends PancakeEntity {
 	public BurnedPancakeEntity() {
 		super();
 	}
-	
-	public BurnedPancakeEntity(Game game) {
-		super(game);
-	}
 
 	public void run() {
 		this.solve();

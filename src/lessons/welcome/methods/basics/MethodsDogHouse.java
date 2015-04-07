@@ -14,7 +14,7 @@ public class MethodsDogHouse extends ExerciseTemplated {
 	public MethodsDogHouse(Game game, Lesson lesson) {
 		super(game, lesson);
 		BuggleWorld myWorld =  new BuggleWorld(game, "World",7,7);
-		new SimpleBuggle(game, myWorld, "Puppy", 0, 6, Direction.EAST, Color.red, Color.red);
+		new SimpleBuggle(myWorld, "Puppy", 0, 6, Direction.EAST, Color.red, Color.red);
 		
 		setup(myWorld);
 	}

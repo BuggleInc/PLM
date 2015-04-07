@@ -67,9 +67,9 @@ public class Array2 extends ExerciseTemplated {
 			}
 		}
 
-		new SimpleBuggle(game, myWorlds[0], "Picasso", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
-		new SimpleBuggle(game, myWorlds[1], "Braque", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
-		new SimpleBuggle(game, myWorlds[2], "Ingres", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorlds[0], "Picasso", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorlds[1], "Braque", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorlds[2], "Ingres", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
 
 		setup(myWorlds);
 	}

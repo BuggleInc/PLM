@@ -20,7 +20,7 @@ public class PatternPicture extends ExerciseTemplated {
 			myWorld.putLeftWall(0, i);
 		}
 		
-		new SimpleBuggle(game, myWorld, "Picasso", 0, 7, Direction.EAST, Color.black, Color.lightGray);
+		new SimpleBuggle(myWorld, "Picasso", 0, 7, Direction.EAST, Color.black, Color.lightGray);
 		
 		setup(myWorld);
 	}

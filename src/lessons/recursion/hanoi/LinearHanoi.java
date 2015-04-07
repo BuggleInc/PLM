@@ -21,7 +21,7 @@ public class LinearHanoi extends ExerciseTemplated {
 		myWorlds[1].setParameter(new Object[] {2,1,0});		
 
 		for (int i=0;i<myWorlds.length;i++) 
-			new HanoiEntity(game, "worker",myWorlds[i]);
+			new HanoiEntity("worker",myWorlds[i]);
 		
 		setup(myWorlds);
 	}

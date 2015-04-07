@@ -45,7 +45,7 @@ public class TricolorHanoi3 extends ExerciseTemplated {
 
 		
 		for (int i=0;i<myWorlds.length;i++) 
-			new HanoiEntity(game, "worker",myWorlds[i]);
+			new HanoiEntity("worker",myWorlds[i]);
 		
 		setup(myWorlds);
 	}

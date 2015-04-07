@@ -17,7 +17,7 @@ public class Conditions extends ExerciseTemplated {
 				
 		BuggleWorld myWorld = new BuggleWorld(game, "Closed World",7,7);
 		for (int i=0;i<7;i++) { 
-			new SimpleBuggle(game, myWorld, "Buggle "+(i+1), i, 3, Direction.NORTH, Color.black, Color.lightGray);
+			new SimpleBuggle(myWorld, "Buggle "+(i+1), i, 3, Direction.NORTH, Color.black, Color.lightGray);
 			if (i%2 == 0) {
 				myWorld.putTopWall(i, 3);
 				myWorld.putTopWall(i, 5);

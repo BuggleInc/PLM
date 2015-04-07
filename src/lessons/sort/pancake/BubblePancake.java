@@ -17,7 +17,7 @@ public class BubblePancake extends ExerciseTemplated {
 		plate[2]= new PancakeWorld(game, "15 pancakes",15,false);
 		plate[3]= new PancakeWorld(game, "30 pancakes",30,false);
 		for ( int i = 0 ; i<4;i++)
-			new PancakeEntity(game, "Pancake Seller",plate[i]);
+			new PancakeEntity("Pancake Seller",plate[i]);
 
 		setup(plate);
 	}

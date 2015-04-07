@@ -12,8 +12,8 @@ public class BatEntity extends Entity {
 		super();
 	}
 	
-	public BatEntity(Game game, String name, World w) {
-		super(game, name,w);
+	public BatEntity(String name, World w) {
+		super(name,w);
 	}
 	
 	public BatEntity(BatEntity other) {

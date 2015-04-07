@@ -21,7 +21,7 @@ public class Snake extends ExerciseTemplated {
 			myWorld.putLeftWall(0, i);
 		}
 		
-		new SimpleBuggle(game, myWorld, "Snake", 0, 6, Direction.EAST, Color.red, Color.red);
+		new SimpleBuggle(myWorld, "Snake", 0, 6, Direction.EAST, Color.red, Color.red);
 
 		setup(myWorld);
 	}

@@ -25,7 +25,7 @@ public class DutchFlagWorld extends World {
 	public DutchFlagWorld(Game game, String name, int size) {
 		super(game, name);
 		setDelay(size>100?20:200); // Delay (in ms) in default animations
-		new DutchFlagEntity(game, this);
+		new DutchFlagEntity(this);
 		
 		content = new int[size];
 		initialContent = new int[size];
@@ -45,7 +45,7 @@ public class DutchFlagWorld extends World {
 	public DutchFlagWorld(Game game, String name, int size, int colorRemoved) {
 		super(game, name);
 		setDelay(size>100?20:200); // Delay (in ms) in default animations
-		new DutchFlagEntity(game, this);
+		new DutchFlagEntity(this);
 		int [][]color = {
 				{1,2},
 				{0,2},

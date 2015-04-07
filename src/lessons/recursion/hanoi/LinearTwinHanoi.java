@@ -24,7 +24,7 @@ public class LinearTwinHanoi extends ExerciseTemplated {
 		}
 		myWorlds[0] = w;
 		for (int i=0;i<myWorlds.length;i++) 
-			new HanoiEntity(game, "worker",myWorlds[i]);
+			new HanoiEntity("worker",myWorlds[i]);
 		
 		setup(myWorlds);
 	}

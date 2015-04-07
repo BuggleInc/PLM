@@ -70,7 +70,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 		setName(name);
 		tabName = "Source";
 		World myWorld = new TurtleWorld(game, name, worldWidth, worldHeight);
-		Turtle t = new Turtle(game, myWorld, "Hawksbill", tx, ty);
+		Turtle t = new Turtle(myWorld, "Hawksbill", tx, ty);
 		t.setHeading(-90);
 		setup(myWorld);
 	}

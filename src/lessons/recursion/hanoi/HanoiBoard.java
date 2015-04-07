@@ -23,7 +23,7 @@ public class HanoiBoard extends ExerciseTemplated {
 				new Integer[0], new Integer[] {8,7,6,5,4,3,2,1}, new Integer[0]);
 		myWorlds[2].setParameter(new Object[] {1,2,0});		
 		for (int i=0;i<myWorlds.length;i++) {
-			new HanoiEntity(game, "worker",myWorlds[i]);
+			new HanoiEntity("worker",myWorlds[i]);
 		}
 		
 		setup(myWorlds);

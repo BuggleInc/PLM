@@ -9,28 +9,24 @@ import plm.universe.World;
 
 public class PancakeEntity extends Entity {
 
-	public PancakeEntity() {
-		super();
-	}
-	
 	/**
 	 * Must exist. Calling PancakeEntity("dummy name") is ok
 	 * Part of the copy process 
 	 * Must call super(name)
 	 * @return A new instance of PancakeEntity
 	 */
-	public PancakeEntity(Game game) {
-		super(game, "Pancake Entity");
+	public PancakeEntity() {
+		super("Pancake Entity");
 	}
 
 	/** Copy constructor (used internally) */
-	public PancakeEntity(Game game, String name) {
-		super(game, name);
+	public PancakeEntity(String name) {
+		super(name);
 	}
 	
 	/** Instantiation Constructor (used by exercises to setup the world) */ 
-	public PancakeEntity(Game game, String name, World world) {
-		super(game, name,world);
+	public PancakeEntity(String name, World world) {
+		super(name,world);
 	}
 	
 	/**

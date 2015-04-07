@@ -60,10 +60,10 @@ public class SlugTracking extends ExerciseTemplated {
 		}
 		myWorlds[1] = myWorld;
 
-		SimpleBuggle hunter = new SimpleBuggle(game, myWorlds[0], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
+		SimpleBuggle hunter = new SimpleBuggle(myWorlds[0], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
-		hunter = new SimpleBuggle(game, myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
+		hunter = new SimpleBuggle(myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
 		setup(myWorlds);
