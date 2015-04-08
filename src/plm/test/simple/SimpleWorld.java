@@ -23,11 +23,6 @@ public class SimpleWorld extends World {
 		this.objectif = w.objectif;
 	}
 	
-	public SimpleWorld copy(SimpleWorld w) {
-		SimpleWorld res = new SimpleWorld(w);
-		return res;
-	}
-	
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine)
 			throws ScriptException {

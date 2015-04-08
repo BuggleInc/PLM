@@ -21,11 +21,7 @@ import lessons.sort.pancake.universe.PancakeWorld;
 
 
 public class GatesPancakeEntity extends PancakeEntity {
-
-	public GatesPancakeEntity() {
-		super();
-	}
-
+	
 	// FIXME: killme and merge it to parent class
 	@Override
 	public void command(String command, BufferedWriter out) {

@@ -6,10 +6,6 @@ import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
 public class DutchFlagAlgoEntity extends DutchFlagEntity {
 	
-	public DutchFlagAlgoEntity() {
-		super();
-	}
-
 	public void run() {
 		solve();
 	}

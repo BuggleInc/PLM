@@ -4,11 +4,7 @@ import plm.core.model.Game;
 import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BubblePancakeEntity extends PancakeEntity {
-
-	public BubblePancakeEntity() {
-		super();
-	}
-
+	
 	public void run() {
 		this.solve();
 	}

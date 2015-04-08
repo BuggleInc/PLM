@@ -4,11 +4,7 @@ import plm.core.model.Game;
 import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BasicPancakeEntity extends PancakeEntity {
-
-	public BasicPancakeEntity() {
-		super();
-	}
-
+	
 	public void run() {
 		solve();
 	}

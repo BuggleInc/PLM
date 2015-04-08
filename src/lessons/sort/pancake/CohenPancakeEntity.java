@@ -5,10 +5,6 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 public class CohenPancakeEntity extends PancakeEntity {
 	
-	public CohenPancakeEntity() {
-		super();
-	}
-
 	public void run() {
 		this.solve();
 	}

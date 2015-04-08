@@ -10,7 +10,7 @@ public class BubblePancake extends ExerciseTemplated {
 
 	public BubblePancake(Game game, Lesson lesson) {
 		super(game, lesson);
-		
+	
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld(game, "5 pancakes",5,false);
 		plate[1]= new PancakeWorld(game, "10 pancakes",10,false);

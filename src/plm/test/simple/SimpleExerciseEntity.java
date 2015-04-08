@@ -7,10 +7,6 @@ import plm.test.simple.SimpleWorld;
 
 public class SimpleExerciseEntity extends Entity {
 
-	public SimpleExerciseEntity() {
-		super();
-	}
-	
 	@Override
 	/* BEGIN TEMPLATE */
 	public void run() throws Exception {

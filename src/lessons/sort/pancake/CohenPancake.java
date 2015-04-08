@@ -10,7 +10,7 @@ public class CohenPancake extends ExerciseTemplated {
 	
 	public CohenPancake(Game game, Lesson lesson) {
 		super(game, lesson);
-	
+
 		PancakeWorld[] plate = new PancakeWorld[] {
 				new PancakeWorld(game, "5 pancakes",new int[] {2,4,5,3,1},true),         // A+ H D-
 				new PancakeWorld(game, "upside down",new int[] {-1,-2,-3,-4,-5,-6,-7,-8,-9,-10},true),

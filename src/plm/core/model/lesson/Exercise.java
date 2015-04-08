@@ -126,7 +126,10 @@ public abstract class Exercise extends Lecture {
 		return getSourceFilesList(lang).size();
 	}	
 	public SourceFile getSourceFile(ProgrammingLanguage lang, int i) {
-		return i < getSourceFileCount(lang) ? getSourceFilesList(lang).get(i) : null;
+		if(i<getSourceFileCount(lang)) {
+			return getSourceFilesList(lang).get(i);
+		}
+		return null;
 	}
 
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {

@@ -4,10 +4,6 @@ import lessons.sort.baseball.universe.BaseballEntity;
 import lessons.sort.baseball.universe.BaseballWorld;
 
 public class NaiveBaseballEntity extends BaseballEntity {
-
-	public NaiveBaseballEntity() {
-		super();
-	}
 	
 	/* BEGIN TEMPLATE */
 	public void run() {

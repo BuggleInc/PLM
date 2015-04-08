@@ -10,8 +10,6 @@ public class SimpleExercise extends ExerciseTemplated {
 
 	public SimpleExercise(Game game, Lesson lesson) {
 		super(game, lesson);
-		this.setName("SimpleExercise");
-		tabName = "SimpleExercise";
 		
 		SimpleWorld w = new SimpleWorld(game, "test");
 		Entity newEntity = new SimpleExerciseEntity();

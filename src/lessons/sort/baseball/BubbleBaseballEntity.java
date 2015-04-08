@@ -5,10 +5,6 @@ import lessons.sort.baseball.universe.BaseballWorld;
 
 public class BubbleBaseballEntity extends BaseballEntity {
 	
-	public BubbleBaseballEntity() {
-		super();
-	}
-	
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
