@@ -3,7 +3,6 @@ package lessons.sort.pancake.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 

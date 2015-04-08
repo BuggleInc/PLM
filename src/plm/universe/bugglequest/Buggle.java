@@ -2,7 +2,6 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
-import plm.core.model.Game;
 import plm.universe.Direction;
 
 

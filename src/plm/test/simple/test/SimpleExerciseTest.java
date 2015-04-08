@@ -18,7 +18,6 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
-import plm.test.simple.Main;
 import plm.test.simple.SimpleExercise;
 import plm.universe.Entity;
 import plm.universe.World;

@@ -3,7 +3,6 @@ package lessons.recursion.hanoi;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class HanoiBoardEntity extends HanoiEntity {
