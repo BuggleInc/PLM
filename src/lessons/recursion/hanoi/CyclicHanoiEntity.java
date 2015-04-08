@@ -4,14 +4,6 @@ import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class CyclicHanoiEntity extends HanoiEntity {
-	
-	public CyclicHanoiEntity() {
-		super();
-	}
-	
-	public CyclicHanoiEntity(Game game) {
-		super(game);
-	}
 
 	public void move(int from, int to) {
 		//System.err.println("move("+from+","+to+")");

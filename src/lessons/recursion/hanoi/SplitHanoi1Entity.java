@@ -8,14 +8,6 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class SplitHanoi1Entity extends HanoiEntity {
 	
-	public SplitHanoi1Entity() {
-		super();
-	}
-		
-	public SplitHanoi1Entity(Game game) {
-		super(game);
-	}
-
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));

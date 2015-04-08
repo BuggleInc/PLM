@@ -7,14 +7,6 @@ import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class SplitHanoi2Entity extends HanoiEntity {
-	
-	public SplitHanoi2Entity() {
-		super();
-	}
-	
-	public SplitHanoi2Entity(Game game) {
-		super(game);
-	}
 
 	@Override
 	public void command(String command, BufferedWriter out) {

@@ -4,15 +4,7 @@ import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class TricolorHanoi1Entity extends HanoiEntity {
-
-	public TricolorHanoi1Entity() {
-		super();
-	}
 	
-	public TricolorHanoi1Entity(Game game) {
-		super(game);
-	}
-
 	public void run() {
 		int src = (Integer)getParam(0);
 		int mid = (Integer)getParam(1);

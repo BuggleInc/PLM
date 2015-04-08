@@ -8,14 +8,6 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class InterleavedHanoiEntity extends HanoiEntity {
 	
-	public InterleavedHanoiEntity() {
-		super();
-	}
-	
-	public InterleavedHanoiEntity(Game game) {
-		super(game);
-	}
-
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
