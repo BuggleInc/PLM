@@ -23,9 +23,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.tools.DiagnosticCollector;
 import javax.tools.FileObject;
@@ -41,7 +41,7 @@ import javax.tools.ToolProvider;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -57,7 +57,7 @@ public class LangJava extends JVMCompiledLang {
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of existing entity classes */
 
 
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+	public void compileExo(Exercise exo, Logger logger, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -75,13 +75,13 @@ public class LangJava extends JVMCompiledLang {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 			compiledClasses = compiler.compile(sources, errs);
 
-			if (out != null)
-				out.log(errs);
+			if (logger != null)
+				logger.log(errs.toString());
 		} catch (PLMCompilerException e) {
 			System.err.println(Game.i18n.tr("Compilation error:"));
 			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics(), this);
-			if (out != null)
-				out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+			if (logger != null)
+				logger.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
 			if (isDebugEnabled())
 				for (SourceFile sf: exo.getSourceFilesList(Game.JAVA)) 

@@ -31,7 +31,7 @@ public class DemoRunner extends Thread {
 		game.disableStepMode();
 		
 		if(game.getProgrammingLanguage().equals(Game.C)){
-			exo.compileAll(game.getOutputWriter(), StudentOrCorrection.CORRECTION);
+			exo.compileAll(game.getLogger(), StudentOrCorrection.CORRECTION);
 		}
 		
 		exo.runDemo(runners);
@@ -58,7 +58,7 @@ public class DemoRunner extends Thread {
 		try {
 			runDemo(exo);
 		} catch (InterruptedException e) {
-			game.getOutputWriter().log(e);
+			game.getLogger().log(e.getLocalizedMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

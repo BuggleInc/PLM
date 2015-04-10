@@ -1,11 +1,13 @@
 package plm.test.simple.test;
 
+import static org.mockito.Mockito.mock;
 import plm.core.model.Game;
+import plm.core.model.Logger;
 
 public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 
 	public PythonSimpleExerciseTest() {
-		super(new Game(), Game.PYTHON);
+		super(new Game(mock(Logger.class)), Game.PYTHON);
 	}
 
 	@Override

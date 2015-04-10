@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -140,21 +139,19 @@ public class Game implements IWorldView {
 
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
-	private LogWriter outputWriter;
-	private PrintStream outputOrig = System.out;
-	private PrintStream errorOrig = System.err;
-
-
 	public SessionDB studentWork;
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
 
+	public Logger logger;
+	
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
 	public  static I18n i18n;
 	
-	public Game() {
+	public Game(Logger logger) {
+		this.logger = logger;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
 
@@ -669,24 +666,6 @@ public class Game implements IWorldView {
 
 	public GameState getState() {
 		return this.state;
-	}
-
-	public void setCaptureOutput(boolean isCaptured) {
-		if (isCaptured && getProperty(PROP_OUTPUT_CAPTURE, "true",true).equals("true")) {
-			Logger l = new Logger(outputWriter);
-			System.setOut(l);
-			System.setErr(l);
-		} else if (!System.out.equals(this.outputOrig)) {
-			System.setOut(this.outputOrig);
-			System.setErr(this.errorOrig);
-		}
-	}
-	public void setOutputWriter(LogWriter writer) {
-		this.outputWriter = writer;
-	}
-
-	public LogWriter getOutputWriter() {
-		return this.outputWriter;
 	}
 
 	public void quit() {
@@ -1244,5 +1223,9 @@ public class Game implements IWorldView {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}
+	}
+	
+	public Logger getLogger() {
+		return logger;
 	}
 }

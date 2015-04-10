@@ -1,6 +1,10 @@
 package plm.test.git;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +23,7 @@ import org.junit.Test;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
+import plm.core.model.Logger;
 import plm.core.model.User;
 import plm.core.model.tracking.GitUtils;
 import plm.core.utils.FileUtils;
@@ -42,7 +47,7 @@ public class GitUtilsTest {
 	private Game game;
 	
 	public GitUtilsTest() {
-		game = new Game();
+		game = new Game(mock(Logger.class));
 		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);

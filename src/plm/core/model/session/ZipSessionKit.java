@@ -19,7 +19,6 @@ import org.json.simple.parser.ParseException;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.Logger;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -380,7 +379,8 @@ public class ZipSessionKit implements ISessionKit {
 
 		if (saveFile.exists()) {
 			if (saveFile.delete()) {
-				Logger.log("ZipSessionKit:cleanup", "cannot remove session store directory");
+				game.getLogger().log("ZipSessionKit:cleanup");
+				game.getLogger().log("cannot remove session store directory");
 			}
 		}
 	}

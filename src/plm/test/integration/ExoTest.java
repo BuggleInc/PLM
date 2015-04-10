@@ -1,6 +1,7 @@
 package plm.test.integration;
 
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +21,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
+import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -56,7 +58,7 @@ public class ExoTest {
 		List<Object[]> result = new LinkedList<Object[]>();
 		
 		FileUtils.setLocale(new Locale("en"));
-		g = new Game();
+		g = new Game(mock(Logger.class));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();

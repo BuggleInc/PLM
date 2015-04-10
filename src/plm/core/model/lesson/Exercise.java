@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.Logger;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.universe.World;
@@ -106,11 +106,11 @@ public abstract class Exercise extends Lecture {
 	 * 
 	 * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
 	 */
-	public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+	public void compileAll(Logger logger, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
-		getGame().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+		getGame().getProgrammingLanguage().compileExo(this, logger, whatToCompile);
 	}
 
 	/** get the list of source files for a given language, or create it if not existent yet */

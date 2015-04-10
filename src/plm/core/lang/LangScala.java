@@ -8,12 +8,11 @@ import java.util.Vector;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.universe.Entity;
-
 import scala.Option;
 import scala.collection.JavaConverters;
 import scala.reflect.internal.util.BatchSourceFile;
@@ -37,7 +36,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, Logger logger, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;

@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
@@ -146,8 +146,10 @@ public abstract class World {
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
 		final ProgrammingLanguage pl = getGame().getProgrammingLanguage();
-		if (game.isDebugEnabled())
-			Logger.log("World:runEntities","Programming language: "+pl);
+		if (game.isDebugEnabled()) {
+			game.getLogger().log("World:runEntities");
+			game.getLogger().log("Programming language: "+pl);
+		}
 		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {

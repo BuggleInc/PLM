@@ -28,6 +28,8 @@ public abstract class SimpleExerciseTest {
 	protected Lesson l;
 	protected SimpleExercise exo;
 	
+	public SimpleExerciseTest() {}
+	
 	public SimpleExerciseTest(Game game, ProgrammingLanguage pl) {
 		this.pl = pl;
 		
