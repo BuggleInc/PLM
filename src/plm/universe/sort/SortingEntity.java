@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import plm.universe.Entity;
+import plm.universe.sort.operations.CopyOperation;
+import plm.universe.sort.operations.SetValOperation;
+import plm.universe.sort.operations.SwapOperation;
 
 public class SortingEntity extends Entity {
 
@@ -13,6 +16,7 @@ public class SortingEntity extends Entity {
 
 	public void copy(int from,int to) {
 		((SortingWorld) this.world).copy(from,to);
+		addOperation(new CopyOperation(this, to, from));
 		stepUI();
 	}
 
@@ -38,11 +42,13 @@ public class SortingEntity extends Entity {
 
 	public void setValue(int i,int val) {
 		((SortingWorld) this.world).setValue(i,val);
+		addOperation(new SetValOperation(this, val, -1));
 		stepUI();
 	}
 
 	public void swap(int i, int j) {
 		((SortingWorld) this.world).swap(i,j);
+		addOperation(new SwapOperation(this, i, j));
 		stepUI();
 	}
 
