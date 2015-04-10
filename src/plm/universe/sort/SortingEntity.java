@@ -42,7 +42,7 @@ public class SortingEntity extends Entity {
 
 	public void setValue(int i,int val) {
 		((SortingWorld) this.world).setValue(i,val);
-		addOperation(new SetValOperation(this, val, -1));
+		addOperation(new SetValOperation(this, val, i));
 		stepUI();
 	}
 
