@@ -70,12 +70,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// try to get the branch as stored remotely
 			if (gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
 				gitUtils.mergeRemoteIntoLocalBranch(userBranch);
-				System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+				game.getLogger().log(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
 			}
 			else {
 				// If no branch can be found remotely, create a new one.
-				//System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-				System.out.println(Game.i18n.tr("Couldn't retrieve a corresponding session from the servers..."));
+				//getGame().getLogger().log(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+				game.getLogger().log(Game.i18n.tr("Couldn't retrieve a corresponding session from the servers..."));
 			}
 
 			// Log into the git that the PLM just started
@@ -162,7 +162,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	@Override
 	public void leave() {	
-		System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting"));
+		game.getLogger().log(Game.i18n.tr("Pushing to the remote repository before exiting"));
 		
 		// push to the remote repository
 		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
@@ -328,7 +328,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 				bwExo.write("");
 				bwExo.close();
 			} catch (IOException ex) {
-				System.out.println("Failed to write on disk that the exercise is passed: "+ex.getLocalizedMessage());
+				game.getLogger().log("Failed to write on disk that the exercise is passed: "+ex.getLocalizedMessage());
 			}
 		} else {
 			if (doneFile.exists())

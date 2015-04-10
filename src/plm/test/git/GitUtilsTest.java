@@ -57,7 +57,7 @@ public class GitUtilsTest {
 		gitUtils = new GitUtils(game);
 		utils = new Utils();
 		
-		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
+		game.getLogger().log("repoDirectory: "+ repoDirectory.getAbsolutePath());
 	}
 	
 	@Before 
@@ -199,7 +199,7 @@ public class GitUtilsTest {
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
 		
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
-		System.out.println("Try to fetch from "+remoteUrl);
+		game.getLogger().log("Try to fetch from "+remoteUrl);
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 		
 		remoteGitUtils.dispose();

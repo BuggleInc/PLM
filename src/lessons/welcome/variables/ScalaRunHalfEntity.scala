@@ -23,7 +23,7 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 		var orange:Int = 0;
 		while (2 * baggle != orange + 1) {
 			//if (getName().equals("buggle2")) 
-			//	System.out.println("baggle: "+baggle+"; orange: "+orange+"; sum:"+(2*baggle-orange-1));
+			//	getGame().getLogger().log("baggle: "+baggle+"; orange: "+orange+"; sum:"+(2*baggle-orange-1));
 			forward();
 			if (isOverBaggle())
 				baggle += 1

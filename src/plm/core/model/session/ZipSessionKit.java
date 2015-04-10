@@ -66,7 +66,7 @@ public class ZipSessionKit implements ISessionKit {
 			if (allLangs.size()>0) 
 				allLessons.put(lessonName, allLangs);
 		}
-		//System.out.println("JSON written: "+allLessons.toJSONString());
+		//getGame().getLogger().log("JSON written: "+allLessons.toJSONString());
 		
 
 		ZipOutputStream zos = null;
@@ -136,7 +136,7 @@ public class ZipSessionKit implements ISessionKit {
 		}
 		if (content == null)
 			return;
-		//System.out.println("JSON Read: "+content);
+		//getGame().getLogger().log("JSON Read: "+content);
 		
 		// now parse it
 		Object value = null;

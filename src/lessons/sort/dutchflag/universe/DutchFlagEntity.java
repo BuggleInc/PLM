@@ -106,7 +106,7 @@ public class DutchFlagEntity extends Entity {
 				((DutchFlagWorld) world).assertSorted();
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

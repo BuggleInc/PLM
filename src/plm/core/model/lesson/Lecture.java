@@ -99,7 +99,7 @@ public abstract class Lecture implements HumanLangChangesListener{
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
+			getGame().getLogger().log(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		setName( m.group(1) );
 	
 		/* prepare the tips, if any */

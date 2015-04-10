@@ -29,7 +29,7 @@ public class HelpAppEngine extends HelpServer {
     			e.printStackTrace();
     		}
     	} else {
-    		System.out.println("No course server configured");
+    		game.getLogger().log("No course server configured");
     	}
     }
 
@@ -54,7 +54,7 @@ public class HelpAppEngine extends HelpServer {
             wr.close();
             br.close();
         } catch (IOException e) {
-            System.out.println("Unable to contact PLMServer to send request " + request);
+        	game.getLogger().log("Unable to contact PLMServer to send request " + request);
         }
         return response;
     }

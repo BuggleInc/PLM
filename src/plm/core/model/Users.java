@@ -200,7 +200,7 @@ public class Users {
 				}
 
 			} catch (ParseException | IOException pe) {
-				System.out.println(pe);
+				game.getLogger().log(pe.getLocalizedMessage());
 			}
 		}
 	}
@@ -224,7 +224,7 @@ public class Users {
 
 			StringWriter out = new StringWriter();
 			users.writeJSONString(out);
-			// System.out.println(out.toString());
+			// getGame().getLogger().log(out.toString());
 
 			bwUser.write(out.toString());
 			bwUser.close();

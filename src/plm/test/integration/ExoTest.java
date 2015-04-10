@@ -72,7 +72,7 @@ public class ExoTest {
 				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
 				System.exit(1);
 			}
-			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
+			g.getLogger().log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
 				System.exit(1);
@@ -87,8 +87,8 @@ public class ExoTest {
 					alreadySeenExercises.add(l);
 				}
 		}
-		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
-		System.out.println("");
+		g.getLogger().log("There is currently "+result.size()+" exercises in our database. Yes sir.");
+		g.getLogger().log("");
 		
 		//g.switchDebug();		
 		g.setLocale(new Locale("en"));

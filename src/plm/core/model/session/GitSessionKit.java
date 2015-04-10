@@ -63,7 +63,7 @@ public class GitSessionKit implements ISessionKit {
 				bwSummary.write(game.studentWork.lessonSummary(lesson.getId()));
 				bwSummary.close();
 			} catch (IOException ex) {
-				System.out.println("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
+				game.getLogger().log("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
 			}
 		}
 	}
@@ -80,13 +80,13 @@ public class GitSessionKit implements ISessionKit {
 
 		if (!game.getUsers().getCurrentUser().equals(cachedUser)) {
 			if (game.isDebugEnabled())
-				System.out.println("The user changed! switch to the right branch");
+				game.getLogger().log("The user changed! switch to the right branch");
 			cachedUser = game.getUsers().getCurrentUser();
 			
 			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
 			if (! gitDir.exists()) {
 				// It should never happen since the session content should be created by the git spy module.
-				System.out.println(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
+				game.getLogger().log(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 			}
 		}
 
@@ -185,7 +185,7 @@ public class GitSessionKit implements ISessionKit {
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
 					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
 							+ exercise.getId() + "." + lang.getExt() + ".code";
-					//System.out.println(fileName);
+					//getGame().getLogger().log(fileName);
 					String line;
 					StringBuilder b = new StringBuilder();
 					try {
@@ -210,7 +210,7 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
-		System.out.println("Clean all lessons. Your session is now lost.");
+		game.getLogger().log("Clean all lessons. Your session is now lost.");
 		for (Lesson lesson : this.game.getLessons()) {
 			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}

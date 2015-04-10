@@ -58,7 +58,7 @@ public class GitSpyTest {
 		
 		utils = new Utils();
 		
-		System.out.println("repoDir: "+ repoDir.getAbsolutePath());
+		game.getLogger().log("repoDir: "+ repoDir.getAbsolutePath());
 	}
 	
 	@Before 

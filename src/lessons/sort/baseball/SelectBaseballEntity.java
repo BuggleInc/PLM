@@ -18,7 +18,7 @@ public class SelectBaseballEntity extends BaseballEntity {
 	/* BEGIN HIDDEN */
 	void out(String msg) {
 		//if (false)
-		//	System.out.println(msg);
+		//	getGame().getLogger().log(msg);
 	}
 	
 	public void bringPlayersHome(int base) {

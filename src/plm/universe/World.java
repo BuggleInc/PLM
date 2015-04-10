@@ -119,7 +119,7 @@ public abstract class World {
 	}
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
-			System.out.println("Ignoring a request to remove an unknown entity");
+			getGame().getLogger().log("Ignoring a request to remove an unknown entity");
 		notifyEntityUpdateListeners();		
 	}
 

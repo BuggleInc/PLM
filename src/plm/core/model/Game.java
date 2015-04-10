@@ -216,7 +216,7 @@ public class Game implements IWorldView {
 			addProgressSpyListener(new ServerSpyAppEngine(this));
 		
 		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
-	        currentCourse = new CourseAppEngine();
+	        currentCourse = new CourseAppEngine(logger);
 		}
 		
 		loadSession();
@@ -531,7 +531,7 @@ public class Game implements IWorldView {
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
 				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
-					System.out.println(
+					getLogger().log(
 							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
 									+ "Please consider contributing to this project by adapting this exercise to this language.",
 									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
@@ -539,7 +539,7 @@ public class Game implements IWorldView {
 
 			}
 		} catch (UserAbortException e) { 
-			System.out.println(i18n.tr("Operation cancelled by the user"));
+			getLogger().log(i18n.tr("Operation cancelled by the user"));
 		}
 	}
 
@@ -686,7 +686,7 @@ public class Game implements IWorldView {
 			System.exit(0);
 		} catch (UserAbortException e) {
 			// Ok, user decided to not quit (to get a chance to export the session)
-			System.out.println("Exit aborted");
+			getLogger().log("Exit aborted");
 		}
 	}
 
@@ -727,9 +727,10 @@ public class Game implements IWorldView {
 	}
 	public void removeSessionKit() {
 		sessionKit = null;
-		System.out.println("Disabling the session kit on disk.");
+		getLogger().log("Disabling the session kit on disk.");
 	}
 
+	// FIXME: Should not be static
 	public static void loadProperties() {
 		InputStream is = null;
 		try {
@@ -773,7 +774,7 @@ public class Game implements IWorldView {
 						e.printStackTrace();
 					}
 			}
-			System.out.println(String.format("Loading properties [%s]", localPropertiesFile));
+			//getLogger().log(String.format("Loading properties [%s]", localPropertiesFile));
 		}
 	}
 
@@ -979,7 +980,7 @@ public class Game implements IWorldView {
 			return;
 
 		if (isValidProgLanguage(newLanguage)) {
-			//System.out.println("Switch programming language to "+newLanguage);
+			//.getLogger().log("Switch programming language to "+newLanguage);
 			if (newLanguage.equals(Game.SCALA) && !canScala) {
 				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.10 or higher to use it in the PLM.\n\n")+scalaError ,
 						i18n.tr("Scala is missing"), JOptionPane.ERROR_MESSAGE); 
@@ -1067,31 +1068,34 @@ public class Game implements IWorldView {
 		doDebug = !doDebug;
 		if (doDebug) {
 			Lesson l = getCurrentLesson();
-			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
-			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
-			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
+			getLogger().log("Saving location: "+SAVE_DIR.getAbsolutePath());
+			getLogger().log("Lesson: "+(l==null?"None loaded yet":l.getName()));
+			getLogger().log("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
 			if(l!=null) {
 				for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
 					String s = w.getDebugInfo();
 					if (s != "") 
-						System.out.println("World: "+s);
+						getLogger().log("World: "+s);
 				}
 			}
-			System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
-			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
-			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+			getLogger().log("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
+			getLogger().log("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
+			getLogger().log("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 			for (ScriptEngineFactory sef : new ScriptEngineManager().getEngineFactories()) {
-				System.out.println(sef);
-				System.out.append("  Engine: ")
+				StringBuilder sb = new StringBuilder(sef.toString())
+				.append("  Engine: ")
 				.append(sef.getEngineName())
 				.append(" ")
-				.println(sef.getEngineVersion());
-				System.out.append("  Language: ")
+				.append(sef.getEngineVersion());
+				getLogger().log(sb.toString());
+				sb = new StringBuilder("  Language: ")
 				.append(sef.getLanguageName())
 				.append(" ")
-				.println(sef.getLanguageVersion());
-				System.out.append("  Names: ")
-				.println(sef.getNames());
+				.append(sef.getLanguageVersion());
+				getLogger().log(sb.toString());
+				sb = new StringBuilder("  Names: ")
+				.append(sef.getNames());
+				getLogger().log(sb.toString());
 			}
 		}
 	}
@@ -1174,6 +1178,8 @@ public class Game implements IWorldView {
 		"z:"     + File.separator + "plm",
 	};
 	private static File SAVE_DIR = initializeSaveDir();
+	
+	// FIXME: Should not be static
 	private static File initializeSaveDir() {
 		StringBuffer sb = new StringBuffer();
 		for (String path : rootDirNames) {
@@ -1186,11 +1192,11 @@ public class Game implements IWorldView {
 						if (res.canWrite()) {
 							return res;
 						} else {
-							System.out.println(res.getAbsolutePath()+" is not writable.");
+							//.getLogger().log(res.getAbsolutePath()+" is not writable.");
 							continue;
 						}
 					} else {
-						System.out.println(res.getAbsolutePath()+" is not a directory.");
+						//.getLogger().log(res.getAbsolutePath()+" is not a directory.");
 						continue;
 					}
 				}

@@ -25,7 +25,7 @@ class ScalaSplitHanoi1Entity extends HanoiEntity {
   }
   def moveDouble(height:Int, src:Int, other1:Int, other2:Int, dst:Int) {
     //for (int i=4;i>height;i--) System.out.print(" ");
-    //System.out.println("hanoi("+height+","+src+","+other+","+dst+")");
+    //getGame().getLogger().log("hanoi("+height+","+src+","+other+","+dst+")");
     if (height>0) {
       moveDouble(height-1, src,other1,dst,other2);
       move(src,other1);

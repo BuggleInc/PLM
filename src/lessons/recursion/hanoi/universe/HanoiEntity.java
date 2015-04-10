@@ -102,7 +102,7 @@ public class HanoiEntity extends Entity {
 				out.write("\n");
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

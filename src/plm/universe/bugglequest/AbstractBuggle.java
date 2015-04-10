@@ -423,7 +423,7 @@ public abstract class AbstractBuggle extends Entity {
 		if (k_seq[k_val]==5) k_val++; else k_val = 0;
 		if (k_val>k_seq.length-1) {
 			setName("Easter "+name);
-			System.out.println("EASTEEEER");
+			getGame().getLogger().log("EASTEEEER");
 			((BuggleWorld)world).easter= true;
 			k_val=0;
 			return;
@@ -762,7 +762,7 @@ public abstract class AbstractBuggle extends Entity {
 			case 131:
 				out.write(Integer.toString(ColorMapper.color2int(getBrushColor())));
 				out.write("\n");
-				System.out.println("a toi");
+				getGame().getLogger().log("a toi");
 				break;
 			case 132:
 				out.write(Integer.toString(ColorMapper.color2int(getGroundColor())));
@@ -806,7 +806,7 @@ public abstract class AbstractBuggle extends Entity {
 				out.write("\n");
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 
 			}

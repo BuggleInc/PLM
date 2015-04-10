@@ -110,7 +110,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
+			getGame().getLogger().log(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		name = m.group(1);
 		/* get the mission explanation */
 		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		
@@ -206,7 +206,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 
 	public void setDescription(String name) {
 		String filename = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
-		System.out.println("SetDescription: " + filename);
+		getGame().getLogger().log("SetDescription: " + filename);
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, "html",true);

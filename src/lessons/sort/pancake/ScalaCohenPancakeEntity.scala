@@ -27,7 +27,7 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 			}  
 			System.out.print("}  ");
 			if (nl)
-				System.out.println();
+				getGame().getLogger().log("");
 		}
 	}
 	/* END HIDDEN */
@@ -58,14 +58,14 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 
 			if (sorted) { // we are done, no need to continue
 				if (debug) 
-					System.out.println("It's sorted now. Get out of here\n");
+					getGame().getLogger().log("It's sorted now. Get out of here\n");
 				return;
 			}
 
 			if (maxupside != -1) { // Case 1. 
 				if (maxupside == maxPos) { // Case 1.C
 					if (debug) 
-						System.out.println("Case 1.C; maxupsidePos = "+maxupsidePos+", maxupside = "+maxupside);
+						getGame().getLogger().log("Case 1.C; maxupsidePos = "+maxupsidePos+", maxupside = "+maxupside);
 					if (maxupsidePos+1 != maxPos) {
 						flip(maxupsidePos+1);
 						flip(maxPos);
@@ -75,12 +75,12 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 					val pPlus1 = getRankOf(maxupside+1);
 					if (pPlus1 > maxupsidePos) {
 						if (debug) 
-							System.out.println("Case 1.A; maxupsidePos = "+maxupsidePos+", maxupside = "+maxupside+", pPlus1 = "+pPlus1);
+							getGame().getLogger().log("Case 1.A; maxupsidePos = "+maxupsidePos+", maxupside = "+maxupside+", pPlus1 = "+pPlus1);
 						flip(pPlus1+1);showStack(true);
 						flip(pPlus1-maxupsidePos);
 					} else {
 						if (debug) 
-							System.out.println("Case 1.B; maxupsidePos = "+maxupsidePos+", maxupside = "+maxupside+", pPlus1 = "+pPlus1);						
+							getGame().getLogger().log("Case 1.B; maxupsidePos = "+maxupsidePos+", maxupside = "+maxupside+", pPlus1 = "+pPlus1);						
 						flip(maxupsidePos+1);
 						flip(maxupsidePos-pPlus1);
 					}
@@ -93,7 +93,7 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 
 						if (reverted) {
 							if (debug) 
-								System.out.println("Case 2.B");
+								getGame().getLogger().log("Case 2.B");
 							for (i <- 1 to maxPos) {
 								flip(maxPos);
 								showStack(true)
@@ -113,7 +113,7 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 												p = -99
 												if (pPlus1 != -99 && pPlus1<p) { // we've got the larger p such that p+1 is above p and both are upsideof
 													if (debug) 
-														System.out.println("Case 2.A; p="+p+", radius="+radius+", pPlus1="+pPlus1);
+														getGame().getLogger().log("Case 2.A; p="+p+", radius="+radius+", pPlus1="+pPlus1);
 													flip(p+1);
 													if (pPlus1!=0)
 														flip(pPlus1+1);

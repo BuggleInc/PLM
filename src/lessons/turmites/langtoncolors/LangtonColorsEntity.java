@@ -20,7 +20,7 @@ public class LangtonColorsEntity extends SimpleBuggle {
 				case 'L': left(); break;
 				case 'R': right(); break;
 				default:
-					System.out.println("Unknown command associated to i="+i+": "+rule[i]);
+					getGame().getLogger().log("Unknown command associated to i="+i+": "+rule[i]);
 				}
 
 				setBrushColor(colors[(i+1) % colors.length]);
