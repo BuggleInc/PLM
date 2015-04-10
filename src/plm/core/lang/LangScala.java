@@ -8,7 +8,7 @@ import java.util.Vector;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -36,7 +36,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, Logger logger, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;

@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.utils.FileUtils;
@@ -69,7 +69,7 @@ public class LessonTest {
 	
 	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {		
 		FileUtils.setLocale(new Locale("en"));
-		Game g = new Game(mock(Logger.class));
+		Game g = new Game(mock(LogHandler.class));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();

@@ -143,14 +143,14 @@ public class Game implements IWorldView {
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
 
-	public Logger logger;
+	public LogHandler logger;
 	
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
 	public  static I18n i18n;
 	
-	public Game(Logger logger) {
+	public Game(LogHandler logger) {
 		this.logger = logger;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
@@ -1225,7 +1225,7 @@ public class Game implements IWorldView {
 		}
 	}
 	
-	public Logger getLogger() {
+	public LogHandler getLogger() {
 		return logger;
 	}
 }

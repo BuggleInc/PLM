@@ -1,6 +1,6 @@
 package plm.core.model;
 
-public abstract class Logger {
+public abstract class LogHandler {
 	
 	public static int INFO = 0;
 	public static int DEBUG = 1;

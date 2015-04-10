@@ -23,7 +23,7 @@ import org.junit.Test;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.User;
 import plm.core.model.tracking.GitUtils;
 import plm.core.utils.FileUtils;
@@ -47,7 +47,7 @@ public class GitUtilsTest {
 	private Game game;
 	
 	public GitUtilsTest() {
-		game = new Game(mock(Logger.class));
+		game = new Game(mock(LogHandler.class));
 		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);

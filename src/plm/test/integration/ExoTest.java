@@ -21,7 +21,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -58,7 +58,7 @@ public class ExoTest {
 		List<Object[]> result = new LinkedList<Object[]>();
 		
 		FileUtils.setLocale(new Locale("en"));
-		g = new Game(mock(Logger.class));
+		g = new Game(mock(LogHandler.class));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();

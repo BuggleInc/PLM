@@ -12,7 +12,7 @@ import java.util.List;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -27,7 +27,7 @@ public class LangC extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, Logger logger, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		
 		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);

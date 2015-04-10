@@ -2,12 +2,12 @@ package plm.test.simple.test;
 
 import static org.mockito.Mockito.mock;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
 	public ScalaSimpleExerciseTest() {
-		super(new Game(mock(Logger.class)), Game.SCALA);
+		super(new Game(mock(LogHandler.class)), Game.SCALA);
 	}
 	
 	@Override

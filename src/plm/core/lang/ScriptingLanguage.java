@@ -9,7 +9,7 @@ import javax.script.ScriptException;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -25,7 +25,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, Logger logger, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		
 		/* Nothing to do */

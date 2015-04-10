@@ -41,7 +41,7 @@ import javax.tools.ToolProvider;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.Logger;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -57,7 +57,7 @@ public class LangJava extends JVMCompiledLang {
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of existing entity classes */
 
 
-	public void compileExo(Exercise exo, Logger logger, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
