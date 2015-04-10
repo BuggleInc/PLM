@@ -24,6 +24,7 @@ public class BatTest {
 		this.visible = visible;
 		this.correct = false;
 		this.answered = false;
+		this.game = game;
 		
 		/* Cast parameters into an array on need */
 		if (parameters.getClass().isArray()) {
