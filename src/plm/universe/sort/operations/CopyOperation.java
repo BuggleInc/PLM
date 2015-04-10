@@ -8,6 +8,7 @@ public class CopyOperation extends SortOperation {
 
 	private int destination;
 	private int source;
+	private int oldValue;
 	
 	public CopyOperation(SortingEntity entity, int destination, int source) {
 		super("copyOperation", entity);
@@ -21,6 +22,11 @@ public class CopyOperation extends SortOperation {
 
 	public int getSource() {
 		return source;
+	}
+	
+	public int getOldValue()
+	{
+		return this.oldValue;
 	}
 	
 	
