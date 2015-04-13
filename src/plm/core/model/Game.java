@@ -115,8 +115,8 @@ public class Game implements IWorldView {
 	
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
 		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C, BLOCKLY // TODO: re-add JAVASCRIPT to this list once it works at least a bit
-	}; 
-	private ProgrammingLanguage programmingLanguage = JAVA;
+	};
+	private ProgrammingLanguage programmingLanguage = BLOCKLY;
 
 	/* TODO: document these values elsewhere */
 	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true

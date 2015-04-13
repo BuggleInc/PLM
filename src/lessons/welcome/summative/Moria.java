@@ -24,4 +24,5 @@ public class Moria extends ExerciseTemplated {
 		
 		setup(myWorlds);
 	}
+	
 }

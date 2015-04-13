@@ -25,4 +25,5 @@ public class TraversalByColumn extends ExerciseTemplated {
 
 		setup(myWorld);
 	}
+	
 }
