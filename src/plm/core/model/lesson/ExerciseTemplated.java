@@ -42,7 +42,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
+			sb = FileUtils.readContentAsText(filename, null, lang.getExt(), false);
 		} catch (IOException ex) {
 			throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.",filename.replaceAll("\\.","/"),lang.getExt()));			
 		}

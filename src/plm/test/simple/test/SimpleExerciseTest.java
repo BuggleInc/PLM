@@ -33,7 +33,6 @@ public abstract class SimpleExerciseTest {
 	public SimpleExerciseTest(Game game, ProgrammingLanguage pl) {
 		this.pl = pl;
 		
-		FileUtils.setLocale(new Locale("en"));
 		game.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		game.removeSessionKit();
 		game.setBatchExecution();

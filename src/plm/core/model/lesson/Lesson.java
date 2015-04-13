@@ -98,7 +98,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename,"html",true);
+			sb = FileUtils.readContentAsText(filename,getGame().getLocale(),"html",true);
 		} catch (IOException ex) {
 			about = Game.i18n.tr("File {0}.html not found.",filename);
 			name = filename;
@@ -209,7 +209,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		getGame().getLogger().log("SetDescription: " + filename);
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, "html",true);
+			sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html",true);
 		} catch (IOException ex) {
 			filename += ".html";
 		}

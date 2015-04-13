@@ -57,8 +57,7 @@ public class ExoTest {
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
 		
-		FileUtils.setLocale(new Locale("en"));
-		g = new Game(mock(LogHandler.class));
+		g = new Game(mock(LogHandler.class), new Locale("en"));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();

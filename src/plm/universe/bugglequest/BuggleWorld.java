@@ -104,7 +104,7 @@ public class BuggleWorld extends GridWorld {
 		if (path.endsWith(".map"))
 			System.err.println(Game.i18n.tr("{0}: The path to the map on disk should not include the .map extension (or it won''t work in jarfiles). Please fix your exercise.",path));
 		
-		BufferedReader reader = FileUtils.newFileReader(path, "map", false);
+		BufferedReader reader = FileUtils.newFileReader(path, null, "map", false);
 		
 		/* Get the world name from the first line */
 		String line = reader.readLine();

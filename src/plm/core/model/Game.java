@@ -148,11 +148,14 @@ public class Game implements IWorldView {
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
+	
+	private Locale locale;
 	public  static I18n i18n;
 	
-	public Game(LogHandler logger) {
+	public Game(LogHandler logger, Locale locale) {
 		this.logger = logger;
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		this.locale = locale;
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
 		loadProperties();
 
 		if (checkScala())
@@ -957,13 +960,13 @@ public class Game implements IWorldView {
 			l.stateChanged(msg);
 	}
 	public void setLocale(Locale lang) {
-		FileUtils.setLocale(lang);
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+		this.locale = lang;
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", lang, I18nFactory.FALLBACK);
 		fireHumanLangChange(lang);
 	}
 	
 	public Locale getLocale(){
-		return FileUtils.getLocale();
+		return locale;
 	}
 
 	public void setProgrammingLanguage(String newLanguage) {

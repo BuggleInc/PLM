@@ -9,6 +9,7 @@ import static org.mockito.Mockito.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Locale;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -47,9 +48,7 @@ public class GitUtilsTest {
 	private Game game;
 	
 	public GitUtilsTest() {
-		game = new Game(mock(LogHandler.class));
-		Game.loadProperties();
-		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		game = new Game(mock(LogHandler.class), new Locale("en"));
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
 		testUser = new User("testUser");
 		userBranch = testUser.getUserUUIDasString();

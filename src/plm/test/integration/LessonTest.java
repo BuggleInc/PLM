@@ -68,8 +68,7 @@ public class LessonTest {
 	}
 	
 	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {		
-		FileUtils.setLocale(new Locale("en"));
-		Game g = new Game(mock(LogHandler.class));
+		Game g = new Game(mock(LogHandler.class), new Locale("en"));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();

@@ -306,7 +306,7 @@ public abstract class World {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, "html", true);
+				sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html", true);
 			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;

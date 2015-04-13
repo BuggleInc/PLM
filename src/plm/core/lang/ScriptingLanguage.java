@@ -61,7 +61,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		} else { // whatToMutate == StudentOrCorrection.CORRECTION
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(this.nameOfCorrectionEntity(exo), getExt(), false);
+				sb = FileUtils.readContentAsText(this.nameOfCorrectionEntity(exo), null, getExt(), false);
 			} catch (IOException ex) {
 				throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionEntity(exo)+"."+getExt()+" since I cannot read it (error was: "+
 						ex.getLocalizedMessage());

@@ -88,7 +88,7 @@ public abstract class Lecture implements HumanLangChangesListener{
 	
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, "html",true);
+			sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html",true);
 		} catch (IOException ex) {
 			setMission(Game.i18n.tr("File {0}.html not found.",filename));
 			return;			
