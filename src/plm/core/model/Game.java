@@ -44,6 +44,7 @@ import plm.core.lang.LangLightbot;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangRuby;
 import plm.core.lang.LangScala;
+import plm.core.lang.LangBlockly;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -110,9 +111,10 @@ public class Game implements IWorldView {
 	//public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
 	public static final ProgrammingLanguage RUBY =       new LangRuby(false);
 	public static final ProgrammingLanguage LIGHTBOT =   new LangLightbot(false);
+	public static final ProgrammingLanguage BLOCKLY =      new LangBlockly(false);
 	
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C // TODO: re-add JAVASCRIPT to this list once it works at least a bit
+		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C, BLOCKLY // TODO: re-add JAVASCRIPT to this list once it works at least a bit
 	}; 
 	private ProgrammingLanguage programmingLanguage = JAVA;
 
@@ -170,13 +172,18 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
+		if (checkBlockly())
+			System.err.println(i18n.tr("Blockly is usable on your machine. Congratulations."));
+		else
+			System.err.println(i18n.tr("Please install jython to use the blockly programming language in the PLM."));
 
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang())) 
-			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' but {0}.\n"+
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) && 
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.BLOCKLY.getLang())) 
+			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' or ''Blockly'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart the PLM before proceeding.\n"+
 					"   Alternatively, the property {1} can be changed in your configuration file ({2}/plm.properties)",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE, getSavingLocation()));
@@ -189,6 +196,9 @@ public class Game implements IWorldView {
 			setProgramingLanguage(JAVA);
 		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) && !canC) {
 			System.err.println(i18n.tr("The default programming language is C, but your C installation is not usable. Switching to Java instead.\n"));
+			setProgramingLanguage(JAVA);
+		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.BLOCKLY.getLang()) && !canBlockly) {
+			System.err.println(i18n.tr("The default programming language is Blockly, but your Blockly installation is not usable. Switching to Java instead.\n"));
 			setProgramingLanguage(JAVA);
 		} else {
 			for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) 
@@ -300,6 +310,14 @@ public class Game implements IWorldView {
 			canC=false;
 		}
 		return canC;
+	}
+	
+	
+	public boolean canBlockly = false;
+	String BlocklyError = "";
+	private boolean checkBlockly(){
+		canBlockly = checkPython();
+		return canBlockly;
 	}
 
 
@@ -1016,11 +1034,16 @@ public class Game implements IWorldView {
 						i18n.tr("C is missing"), JOptionPane.ERROR_MESSAGE); 
 				return;
 			}
+			if (newLanguage.equals(Game.BLOCKLY) && !canBlockly) {
+				JOptionPane.showMessageDialog(null, i18n.tr("Please install jython and its dependencies to use the Blockly programming language in the PLM.\n\n")+CError,
+						i18n.tr("Blockly is missing"), JOptionPane.ERROR_MESSAGE); 
+				return;
+			}
 			this.programmingLanguage = newLanguage;
 			if(getCurrentLesson() != null)
 				((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress(newLanguage);
 			fireProgLangChange(newLanguage);
-			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
+			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C) || newLanguage.equals(Game.BLOCKLY)) // Only save it if it's stable enough
 				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.getLang());
 			return;
 		}
