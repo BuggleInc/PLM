@@ -155,7 +155,7 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					game.statusArgAdd(getName());
-					pl.runEntity(b, progress);
+					pl.runEntity(b, progress, getGame().i18n);
 					game.statusArgRemove(getName());
 				}
 			});
@@ -166,7 +166,7 @@ public abstract class World {
 			    	if(ex instanceof ThreadDeath) {
 			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
 			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
-				        progress.setExecutionError(Game.i18n.tr(msg));
+				        progress.setExecutionError(getGame().i18n.tr(msg));
 				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
 			    	}
 			    }

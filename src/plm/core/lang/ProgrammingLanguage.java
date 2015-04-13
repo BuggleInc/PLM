@@ -7,6 +7,9 @@ import java.util.TreeMap;
 import javax.script.ScriptEngine;
 
 import lessons.lightbot.universe.LightBotEntity;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
@@ -68,8 +71,8 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	}
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
-	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile) throws PLMCompilerException;
-	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate) throws PLMCompilerException;
+	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
+	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n) throws PLMCompilerException;
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
 	 * This task is not trivial given that it depends on the universe and the programming language:
@@ -90,7 +93,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	 * 
 	 *  @see #run() that encodes the student logic in Java
 	 */
-	public abstract void runEntity(Entity ent, ExecutionProgress progress);
+	public abstract void runEntity(Entity ent, ExecutionProgress progress, I18n i18n);
 	
 	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
 		return exo.nameOfCorrectionEntity();

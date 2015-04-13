@@ -17,7 +17,6 @@ import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lesson;
-import plm.core.utils.FileUtils;
 import plm.test.simple.SimpleExercise;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -28,10 +27,14 @@ public abstract class SimpleExerciseTest {
 	protected Lesson l;
 	protected SimpleExercise exo;
 	
+	public Game game;
+	
 	public SimpleExerciseTest() {}
 	
 	public SimpleExerciseTest(Game game, ProgrammingLanguage pl) {
 		this.pl = pl;
+		
+		this.game = game;
 		
 		game.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		game.removeSessionKit();
@@ -89,7 +92,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -106,7 +109,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -122,7 +125,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -139,7 +142,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -158,7 +161,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -182,4 +185,8 @@ public abstract class SimpleExerciseTest {
 	public abstract String generateWrongCode();
 	
 	public abstract String generateSolutionFollowedByError();
+	
+	public Game getGame() {
+		return game;
+	}
 }

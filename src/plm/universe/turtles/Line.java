@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.model.Game;
 
 
@@ -104,22 +106,22 @@ public class Line implements Shape {
 		
 		return color.equals(other.color);
 	}
-	public String diffTo(Shape o) {
+	public String diffTo(Shape o, I18n i18n) {
 		if (o instanceof Line) {
 			Line other = (Line) o;
 			if (!doubleEqual(x1,other.x1))
-				return Game.i18n.tr("x1 differs.");
+				return i18n.tr("x1 differs.");
 			if (!doubleEqual(x2,other.x2))
-				return Game.i18n.tr("x2 differs.");
+				return i18n.tr("x2 differs.");
 			if (!doubleEqual(y1,other.y1))
-				return Game.i18n.tr("y1 differs.");
+				return i18n.tr("y1 differs.");
 			if (!doubleEqual(y2,other.y2))
-				return Game.i18n.tr("y2 differs.");
+				return i18n.tr("y2 differs.");
 			if (!color.equals(other.color))
-				return Game.i18n.tr("The color differs.");
-			return Game.i18n.tr("I dont see the difference (please report this bug).");
+				return i18n.tr("The color differs.");
+			return i18n.tr("I dont see the difference (please report this bug).");
 		} else 
-			return Game.i18n.tr("That's not a line (please report this bug).");
+			return i18n.tr("That's not a line (please report this bug).");
 	}
 	
 	@Override

@@ -45,7 +45,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		for (World aw : answerWorld) {
 			getGame().getLogger().log("Compute answer for world "+aw.getName());
 			try {
-				pl.runEntity(aw.getEntity(0),progress);
+				pl.runEntity(aw.getEntity(0),progress, getGame().i18n);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}

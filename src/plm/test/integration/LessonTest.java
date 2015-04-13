@@ -22,7 +22,6 @@ import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
-import plm.core.utils.FileUtils;
 
 @RunWith(Parameterized.class)
 public class LessonTest {

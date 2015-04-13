@@ -21,13 +21,10 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.User;
 import plm.core.model.tracking.GitUtils;
-import plm.core.utils.FileUtils;
 
 public class GitUtilsTest {
 

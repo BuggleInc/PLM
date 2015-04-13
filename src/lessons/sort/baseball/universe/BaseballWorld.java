@@ -131,20 +131,20 @@ public class BaseballWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof BaseballWorld))
-			return Game.i18n.tr("This is not a baseball world :-(");
+			return getGame().i18n.tr("This is not a baseball world :-(");
 
 		BaseballWorld other = (BaseballWorld) o;
 		if (getBasesAmount() != other.getBasesAmount())
-			return Game.i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
+			return getGame().i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
 
 		if (getPositionsAmount() != ((BaseballWorld) o).getPositionsAmount())
-			return Game.i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
+			return getGame().i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
 		for (int base = 0; base< baseAmount; base++)
 			for (int pos=0; pos<posAmount; pos++)
 				if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
-					sb.append(Game.i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
+					sb.append(getGame().i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
 		return sb.toString();
 	}
@@ -330,7 +330,7 @@ public class BaseballWorld extends World {
 		}
 		sb.append("}");
 
-		String msg =Game.i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
+		String msg =getGame().i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
 				"Exercise: {0}; Amount of bases: {1}; Initial situation: {2}", exercise, getBasesAmount(),sb.toString());
 		System.err.println(msg);
 		throw new RuntimeException(msg);
@@ -367,10 +367,10 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -379,7 +379,7 @@ public class BaseballWorld extends World {
 			 && (holeBase != getBasesAmount()-1 || base != 0 )
 			 && (holeBase != base ) )
 			
-			throw new IllegalArgumentException(Game.i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
+			throw new IllegalArgumentException(getGame().i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
 					position,base,holeBase));
 
 		// All clear. Proceed.

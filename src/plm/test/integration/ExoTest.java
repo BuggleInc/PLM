@@ -28,7 +28,6 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bat.BatExercise;
@@ -149,7 +148,7 @@ public class ExoTest {
 			
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
-					lang.runEntity(ent,exo.lastResult);
+					lang.runEntity(ent,exo.lastResult, g.i18n);
 			
 			exo.check();
 		} catch (PLMCompilerException e) {

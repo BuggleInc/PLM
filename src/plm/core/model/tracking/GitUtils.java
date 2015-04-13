@@ -74,7 +74,7 @@ public class GitUtils {
 		try {
 			cfg.save();
 		} catch (IOException e) {
-			game.getLogger().log(Game.i18n.tr("An error occurred while configuring the repository..."));
+			game.getLogger().log(getGame().i18n.tr("An error occurred while configuring the repository..."));
 			e.printStackTrace();
 		}
 	}
@@ -83,7 +83,7 @@ public class GitUtils {
 		if(!Game.getProperty(trackUserProperty).equals("true")) {
 			return false;
 		}
-		game.getLogger().log(Game.i18n.tr("Retrieving your session from the servers..."));
+		game.getLogger().log(getGame().i18n.tr("Retrieving your session from the servers..."));
 		try {
 			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
 		} catch (GitAPIException ex) {
@@ -117,7 +117,7 @@ public class GitUtils {
 		try {
 			git.checkout().setName(userBranchHash).call();
 		} catch (GitAPIException e) {
-			game.getLogger().log(Game.i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
+			game.getLogger().log(getGame().i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
 			// FIXME: display the stacktrace if debug mode is enabled
 			//e.printStackTrace();
 			success = false;
@@ -130,13 +130,13 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 			
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				game.getLogger().log(Game.i18n.tr("last session data successfully retrieved"));
+				game.getLogger().log(getGame().i18n.tr("last session data successfully retrieved"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				game.getLogger().log(Game.i18n.tr("last session data successfully merged"));
+				game.getLogger().log(getGame().i18n.tr("last session data successfully merged"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
-				game.getLogger().log(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				game.getLogger().log(getGame().i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
@@ -164,14 +164,14 @@ public class GitUtils {
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
 				// TODO: handle this case
-				game.getLogger().log(Game.i18n.tr("Canceled the merge operation because of the following failures:"));
+				game.getLogger().log(getGame().i18n.tr("Canceled the merge operation because of the following failures:"));
 				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
 				for(String path : allFailures.keySet()) {
 					game.getLogger().log(path + " : " + allFailures.get(path));
 				}
 			}
 		} catch (Exception ex) {
-			System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
+			System.err.println(getGame().i18n.tr("Can't merge data retrieved from server with local session data."));
 			throw ex;
 		}
 	}
@@ -212,7 +212,7 @@ public class GitUtils {
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
 		} catch (TransportException e) {
-			game.getLogger().log(Game.i18n.tr("Cannot synchronize your session with the servers (network down)."));
+			game.getLogger().log(getGame().i18n.tr("Cannot synchronize your session with the servers (network down)."));
 			if (game.isDebugEnabled())
 				e.printStackTrace();
 		} catch (GitAPIException e) {
@@ -239,21 +239,21 @@ public class GitUtils {
 
 		// push
 		if(pushChanges(userBranchHash, progress, cp)) {
-			game.getLogger().log(Game.i18n.tr("Your session has been successfully saved into the clouds."));
+			game.getLogger().log(getGame().i18n.tr("Your session has been successfully saved into the clouds."));
 		}
 		else {
 			// An error occurred while pushing
-			game.getLogger().log(Game.i18n.tr("Fetching the server's last version..."));
+			game.getLogger().log(getGame().i18n.tr("Fetching the server's last version..."));
 			try {
 				// Try to synchronize with the remote branch before pushing again
 				if (fetchBranchFromRemoteBranch(userBranchHash)) {
 					mergeRemoteIntoLocalBranch(userBranchHash);
 				}
 				if(!pushChanges(userBranchHash, progress, cp)) {
-					game.getLogger().log(Game.i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
+					game.getLogger().log(getGame().i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
 				}
 			} catch (Exception e) {
-				game.getLogger().log(Game.i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
+				game.getLogger().log(getGame().i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
 				e.printStackTrace();
 			}
 		}
@@ -378,5 +378,9 @@ public class GitUtils {
 	
 	public Ref getRepoRef(String branch) throws IOException {
 		return git.getRepository().getRef(branch);
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

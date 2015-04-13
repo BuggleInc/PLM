@@ -3,7 +3,6 @@ package lessons.sort.dutchflag.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -25,7 +24,7 @@ public class DutchFlagEntity extends Entity {
 	
 	/** Instantiation Constructor (used by exercises to setup the world) */ 
 	public DutchFlagEntity(World world) {
-		super(Game.i18n.tr("Flag sorter"),world);
+		super("Flag sorter",world);
 	}
 
 	/** Swap two positions */

@@ -2,6 +2,8 @@ package plm.core.lang;
 
 import java.util.List;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
@@ -17,7 +19,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		
 		/* Nothing to do */
@@ -25,17 +27,17 @@ public class LangLightbot extends ProgrammingLanguage {
 	}
 
 	@Override
-	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate) {
+	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n) {
 		
 		return null; /* This is never called, no need to do anything here */
 	}
 
 	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress) {
+	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		try {
 			ent.run();
 		} catch (Exception e) {
-			String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
+			String msg = i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
 					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
 
 			for (StackTraceElement elm : e.getStackTrace())

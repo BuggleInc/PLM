@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
@@ -36,7 +38,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
@@ -58,7 +60,7 @@ public class LangScala extends JVMCompiledLang {
 				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
 			}
 		} catch (PLMCompilerException e) {
-			System.err.println(Game.i18n.tr("Compilation error:"));
+			System.err.println(i18n.tr("Compilation error:"));
 			System.err.println(e.getMessage());
 			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 

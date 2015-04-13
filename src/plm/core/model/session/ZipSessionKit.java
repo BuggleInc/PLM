@@ -248,14 +248,14 @@ public class ZipSessionKit implements ISessionKit {
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
-			Object[] options = { Game.i18n.tr("Ok, quit and lose my data"), Game.i18n.tr("Please stop! I'll save it myself first") };
-			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
+			Object[] options = { getGame().i18n.tr("Ok, quit and lose my data"), getGame().i18n.tr("Please stop! I'll save it myself first") };
+			int n = JOptionPane.showOptionDialog(null, getGame().i18n.tr("The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed so far)?",
 					lesson.getName(),ex.getClass().getSimpleName(),ex.getLocalizedMessage()),
-					Game.i18n.tr("Your changes are NOT saved"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					getGame().i18n.tr("Your changes are NOT saved"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, options, options[1]);
 			if (n == 1) {
-				throw new UserAbortException(Game.i18n.tr("User aborted saving on system error"),ex);
+				throw new UserAbortException(getGame().i18n.tr("User aborted saving on system error"),ex);
 			}
 
 
@@ -352,14 +352,14 @@ public class ZipSessionKit implements ISessionKit {
 		} catch (IOException ex) { // ZipExecption or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
-			Object[] options = { Game.i18n.tr("Proceed"), Game.i18n.tr("Abort") };
-			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("The PLM were unable to load your code for lesson {0} ({1}:{2}).\n\n"
+			Object[] options = { getGame().i18n.tr("Proceed"), getGame().i18n.tr("Abort") };
+			int n = JOptionPane.showOptionDialog(null, getGame().i18n.tr("The PLM were unable to load your code for lesson {0} ({1}:{2}).\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed previously)?",
 					lesson.getName(), ex.getClass().getSimpleName(), ex.getMessage()),
-					Game.i18n.tr("Error while loading your session"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					getGame().i18n.tr("Error while loading your session"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, options, options[1]);
 			if (n == 1) {
-				System.err.println(Game.i18n.tr("Abording on user request"));
+				System.err.println(getGame().i18n.tr("Abording on user request"));
 				// should throw exception to calling method, no System.exit() here !!!
 				System.exit(1);
 			}
@@ -384,5 +384,8 @@ public class ZipSessionKit implements ISessionKit {
 			}
 		}
 	}
-
+	
+	public Game getGame() {
+		return game;
+	}
 }

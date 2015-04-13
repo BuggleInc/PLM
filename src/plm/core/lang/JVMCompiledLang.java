@@ -3,9 +3,10 @@ package plm.core.lang;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
-import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -27,7 +28,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 
 	protected abstract Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException;
 	@Override
-	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException {
+	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n) throws PLMCompilerException {
 		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
 
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();
@@ -48,7 +49,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 					if (whatToMutate == StudentOrCorrection.STUDENT) {
 						/* FIXME: need to pass the current programming language as parameter
 						if (getGame().getProgrammingLanguage() == Game.SCALA)
-							throw new PLMCompilerException(Game.i18n.tr(
+							throw new PLMCompilerException(getGame().i18n.tr(
 									  "Your entity failed to start. Did you forgot to put your code within a method?\n\n"
 									+ "This problem often arises when the exercise expects you to put all the code within a \n"
 									+ "method e.g. run(), but you put some statements (e.g. forward()) outside of any method.\n\n"
@@ -57,7 +58,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 									+ "provided method."));
 						else
 						*/
-						throw new PLMCompilerException(Game.i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
+						throw new PLMCompilerException(i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
 					} else {
 						throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 					}
@@ -76,11 +77,11 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress) {
+	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		try {
 			ent.run();
 		} catch (Exception e) {
-			String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
+			String msg = i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
 					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
 
 			for (StackTraceElement elm : e.getStackTrace())

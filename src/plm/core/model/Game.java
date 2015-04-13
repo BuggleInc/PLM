@@ -60,7 +60,6 @@ import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.model.tracking.ServerSpyAppEngine;
-import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.IWorldView;
 import plm.universe.World;
@@ -150,7 +149,7 @@ public class Game implements IWorldView {
 	private static boolean ongoingInitialization = false;
 	
 	private Locale locale;
-	public  static I18n i18n;
+	public I18n i18n;
 	
 	public Game(LogHandler logger, Locale locale) {
 		this.logger = logger;
@@ -209,7 +208,7 @@ public class Game implements IWorldView {
 		try {
 			addProgressSpyListener(new GitSpy(this, SAVE_DIR, users));
 		} catch (IOException | GitAPIException e) {
-			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
+			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
 		}
 
@@ -350,7 +349,7 @@ public class Game implements IWorldView {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(Game.i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
+			throw new RuntimeException(i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
 		}
 	}
 	
@@ -535,7 +534,7 @@ public class Game implements IWorldView {
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
 				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
 					getLogger().log(
-							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
+							i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
 									+ "Please consider contributing to this project by adapting this exercise to this language.",
 									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 				setProgramingLanguage(fallback);
@@ -584,7 +583,7 @@ public class Game implements IWorldView {
 			}
 			fireSelectedWorldHasChanged(world);
 		} else {
-			throw new RuntimeException(Game.i18n.tr("The lecture {0} has no world that I can select",lect));
+			throw new RuntimeException(i18n.tr("The lecture {0} has no world that I can select",lect));
 		}
 	}
 

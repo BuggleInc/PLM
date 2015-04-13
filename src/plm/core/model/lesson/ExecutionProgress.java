@@ -6,8 +6,9 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
 public class ExecutionProgress {
@@ -63,10 +64,10 @@ public class ExecutionProgress {
 		executionError = msg;
 	}
 
-	public String getMsg() {
+	public String getMsg(I18n i18n) {
 		String res = "";
 		if(outcome == ExecutionProgress.outcomeKind.PASS) {
-			res = Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)", passedTests);
+			res = i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)", passedTests);
 		}
 		else if(outcome == ExecutionProgress.outcomeKind.COMPILE) {
 			res = compilationError;

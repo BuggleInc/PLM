@@ -69,16 +69,16 @@ public class DutchFlagWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof DutchFlagWorld))
-			return Game.i18n.tr("This world is not a dutch flag");
+			return getGame().i18n.tr("This world is not a dutch flag");
 
 		DutchFlagWorld other = (DutchFlagWorld) o;
 		if (content.length != other.content.length)
-			return Game.i18n.tr("The two worlds are of differing size");
+			return getGame().i18n.tr("The two worlds are of differing size");
 
 		StringBuffer res = new StringBuffer();
 		for ( int i = 0; i<content.length; i++) 
 			if ( content[i] != other.content[i] ) 
-				res.append(Game.i18n.tr(" Ray #{0} differs: color {1} is not color {2}\n",(i+1), content[i],other.content[i]));
+				res.append(getGame().i18n.tr(" Ray #{0} differs: color {1} is not color {2}\n",(i+1), content[i],other.content[i]));
 
 		return res.toString();
 	}
@@ -144,10 +144,10 @@ public class DutchFlagWorld extends World {
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		if ( from < 0 || from >= getSize())
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
 					from, to, from, getSize()-1));
 		if ( to < 0 || to >= getSize())
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
 					from, to, to, getSize()-1));
 		
 		int temp = content[from];
@@ -164,7 +164,7 @@ public class DutchFlagWorld extends World {
 	 */
 	public int getColor(int rank) {
 		if ( rank < 0 || rank >= getSize())
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the color of line #{0} because it''s not between 0 and {1}",rank, getSize()));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot get the color of line #{0} because it''s not between 0 and {1}",rank, getSize()));
 
 		return content[rank];
 	}
@@ -199,7 +199,7 @@ public class DutchFlagWorld extends World {
 		}
 		sb.append("}");
 
-		String msg =Game.i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
+		String msg =getGame().i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
 				"Initial situation: {0}", sb.toString());
 		System.err.println(msg);
 		throw new RuntimeException(msg);

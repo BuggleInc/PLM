@@ -24,7 +24,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -39,7 +39,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		

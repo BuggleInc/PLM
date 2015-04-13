@@ -70,12 +70,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// try to get the branch as stored remotely
 			if (gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
 				gitUtils.mergeRemoteIntoLocalBranch(userBranch);
-				game.getLogger().log(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
+				game.getLogger().log(getGame().i18n.tr("Your session {0} was automatically retrieved from the servers.",userBranch));
 			}
 			else {
 				// If no branch can be found remotely, create a new one.
-				//getGame().getLogger().log(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-				game.getLogger().log(Game.i18n.tr("Couldn't retrieve a corresponding session from the servers..."));
+				//getGame().getLogger().log(getGame().i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
+				game.getLogger().log(getGame().i18n.tr("Couldn't retrieve a corresponding session from the servers..."));
 			}
 
 			// Log into the git that the PLM just started
@@ -84,7 +84,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			// and push to ensure that everything remains in sync
 			gitUtils.maybePushToUserBranch(userBranch, progress); 
 		} catch (Exception e) {
-			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
+			System.err.println(getGame().i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();
 		}
 	}
@@ -162,7 +162,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	@Override
 	public void leave() {	
-		game.getLogger().log(Game.i18n.tr("Pushing to the remote repository before exiting"));
+		game.getLogger().log(getGame().i18n.tr("Pushing to the remote repository before exiting"));
 		
 		// push to the remote repository
 		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
@@ -410,5 +410,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 					+ "Please send a bug report with the following trace:");
 			e.printStackTrace();
 		}
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

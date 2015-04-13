@@ -7,6 +7,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
@@ -25,14 +27,14 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		
 		/* Nothing to do */
 	}
 
 	@Override
-	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) {
+	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n) {
 		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
 
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
@@ -76,13 +78,13 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress) {
+	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		ScriptEngine engine = null;		
 		try {
 			ScriptEngineManager manager = new ScriptEngineManager();       
 			engine = manager.getEngineByName(getLang().toLowerCase());
 			if (engine==null)
-				throw new RuntimeException(Game.i18n.tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",getLang()));
+				throw new RuntimeException(i18n.tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",getLang()));
 
 			/* Inject the entity into the scripting world so that it can forward script commands to the world */
 			engine.put("entity", ent);
@@ -91,7 +93,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			ent.getWorld().setupBindings(this,engine);
 
 			if (ent.getScript(this) == null) { 
-				System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against the PLM.",this,ent));
+				System.err.println(i18n.tr("No {0} script source for entity {1}. Please report that bug against the PLM.",this,ent));
 				return;
 			}
 			setupEntityBindings(ent); // Python wants to add extra definitions to intercept I/O
@@ -102,13 +104,13 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		} catch (ScriptException e) {
 			if (isDebugEnabled()) 
 				System.err.println("Here is the script in "+getLang()+" >>>>"+ent.getScript(this)+"<<<<");
-			if (!handleLangException(e,ent,progress)) {
-				System.err.println(Game.i18n.tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);
+			if (!handleLangException(e,ent,progress, i18n)) {
+				System.err.println(i18n.tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);
 				e.printStackTrace();
 			}
 
 		} catch (Exception e) {
-			String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
+			String msg = i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
 					" Please report this as a bug against the PLM, with all details allowing to reproduce it.\n" +
 					"Exception message: {1}\n",e.getClass(),e.getLocalizedMessage());
 			System.err.println(msg);
@@ -127,6 +129,6 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	 * 
 	 * @return true if it's an exception of that ProgrammingLanguage, and false if the exception should be handled elsewhere
 	 */
-	protected abstract boolean handleLangException(ScriptException e, Entity ent, ExecutionProgress progress);
+	protected abstract boolean handleLangException(ScriptException e, Entity ent, ExecutionProgress progress, I18n i18n);
 
 }

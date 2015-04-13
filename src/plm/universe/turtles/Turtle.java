@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
@@ -213,18 +212,18 @@ public class Turtle extends Entity {
 	
 	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
 	public void Left(double angle) { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
 	}
 	public void Right(double angle) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
 	public void brushDown(){
-		throw new RuntimeException(Game.i18n.tr(
+		throw new RuntimeException(getGame().i18n.tr(
 				"Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not brushes. Use penDown() instead."));
 	}
 	public void brushUp(){
-		throw new RuntimeException(Game.i18n.tr(
+		throw new RuntimeException(getGame().i18n.tr(
 				"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
 	}
 
@@ -406,9 +405,9 @@ public class Turtle extends Entity {
 
 		final Turtle other = (Turtle) obj;
 		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
-			return Game.i18n.tr("The turtle {0} is not heading to the right direction.",getName());
+			return getGame().i18n.tr("The turtle {0} is not heading to the right direction.",getName());
 		if (Math.abs(x-other.x) > Turtle.EPSILON || Math.abs(y-other.y) > Turtle.EPSILON)
-			return Game.i18n.tr("The turtle {0} is at the right location.",getName());
+			return getGame().i18n.tr("The turtle {0} is at the right location.",getName());
 		return "";
 
 	}
