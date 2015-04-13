@@ -27,7 +27,7 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	public String generateNullPointerErrorCode() {
 		return "public void run() {\n"
 				+ "    String s = null;\n"
-				+ "    getGame().getLogger().log(s.length());\n"
+				+ "    System.out.println(s.length());\n"
 				+ "}";
 	}
 
@@ -35,7 +35,7 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	public String generateOutOfBoundsErrorCode() {
 		return "public void run() {\n"
 				+ "    int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n"
-				+ "    getGame().getLogger().log(t[42]);\n"
+				+ "    System.out.println(t[42]);\n"
 				+ "}";
 	}
 
@@ -51,7 +51,7 @@ public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 		return "public void run() {\n"
 				+ "    ((SimpleWorld) world).setObjectif(true);\n"
 				+ "    int t[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n"
-				+ "    getGame().getLogger().log(t[42]);\n"
+				+ "    System.out.println(t[42]);\n"
 				+ "}";
 	}
 

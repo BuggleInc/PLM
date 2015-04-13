@@ -22,7 +22,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -34,7 +33,6 @@ import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitSpy;
-import plm.core.utils.FileUtils;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GitSpyTest {
@@ -59,7 +57,7 @@ public class GitSpyTest {
 		
 		utils = new Utils();
 		
-		game.getLogger().log("repoDir: "+ repoDir.getAbsolutePath());
+		System.out.println("repoDir: "+ repoDir.getAbsolutePath());
 	}
 	
 	@Before 

@@ -251,7 +251,7 @@
     </target>
 	
     <target name="unit-tests" depends="compile" description="launch all unit tests">
-	  <junit printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.test.UnitTests"/>		
