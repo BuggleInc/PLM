@@ -47,7 +47,6 @@ public class GitSpyTest {
 		User user = Mockito.mock(User.class);
 
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
-		
 		Game game = Mockito.mock(Game.class);
 		
 		userUUID = UUID.randomUUID().toString();
@@ -58,7 +57,7 @@ public class GitSpyTest {
 		
 		utils = new Utils();
 		
-		game.getLogger().log("repoDir: "+ repoDir.getAbsolutePath());
+		System.out.println("repoDir: "+ repoDir.getAbsolutePath());
 	}
 	
 	@Before 
