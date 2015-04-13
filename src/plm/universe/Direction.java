@@ -51,6 +51,22 @@ public class Direction {
 		return opposites[value];
 	}
 	
+	@Override
+	public String toString() {
+		switch (value) {
+		case NORTH_VALUE:
+			return "NORTH";
+		case EAST_VALUE:
+			return "EAST";
+		case SOUTH_VALUE:
+			return "SOUTH";
+		case WEST_VALUE:
+			return "WEST";
+		default:
+			return "Unknown direction";
+		}
+	}
+	
 	public String direction2translated(I18n i18n) {
 		switch (value) {
 		case NORTH_VALUE:
