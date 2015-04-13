@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import plm.universe.Entity;
 import plm.universe.sort.operations.CopyOperation;
+import plm.universe.sort.operations.CountOperation;
 import plm.universe.sort.operations.SetValOperation;
 import plm.universe.sort.operations.SwapOperation;
 
@@ -17,6 +18,7 @@ public class SortingEntity extends Entity {
 	public void copy(int from,int to) {
 		((SortingWorld) this.world).copy(from,to);
 		addOperation(new CopyOperation(this, to, from));
+		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
 		stepUI();
 	}
 
@@ -43,12 +45,14 @@ public class SortingEntity extends Entity {
 	public void setValue(int i,int val) {
 		((SortingWorld) this.world).setValue(i,val);
 		addOperation(new SetValOperation(this, val, i));
+		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
 		stepUI();
 	}
 
 	public void swap(int i, int j) {
 		((SortingWorld) this.world).swap(i,j);
 		addOperation(new SwapOperation(this, i, j));
+		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
 		stepUI();
 	}
 
@@ -60,7 +64,6 @@ public class SortingEntity extends Entity {
 
 	public boolean plusPetit(int i, int j) { return isSmaller(i, j); }	
 	public boolean plusPetitQue(int i, int value) { return isSmallerThan(i, value); }
-
 	public void echange(int i, int j) { swap(i,j); }
 	public void copie(int from,int to) { copy(from,to);}
 

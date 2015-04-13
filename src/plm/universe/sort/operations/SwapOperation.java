@@ -12,7 +12,6 @@ public class SwapOperation extends SortOperation{
 		super("swapOperation", entity);
 		this.source = source;
 		this.destination = destination;
-		Object args[] = {entity.getName(), source, destination };
 	}
 
 	public int getDestination() {
