@@ -13,6 +13,7 @@ public class SortingWorld extends World {
 	private int[] initValues;	// needed by the chronoview
 	private int readCount = 0;	// the count of the read made
 	private int writeCount = 0;	// the count of the write made
+	
 	/*
 	 * It's needed by the chronoview
 	 * This list contains all the Actions ( SetVal, CopyVal or Swap ) made on the world since 
@@ -386,7 +387,6 @@ public class SortingWorld extends World {
 		}
 		return ""+value;
 	}
-	
-	
+
 
 }
