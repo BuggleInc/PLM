@@ -15,10 +15,10 @@ public class SortingWorld extends World {
 	private int writeCount = 0;	// the count of the write made
 	/*
 	 * It's needed by the chronoview
-	 * This list contains all the operations ( SetVal, CopyVal or Swap ) made on the world since 
+	 * This list contains all the Actions ( SetVal, CopyVal or Swap ) made on the world since 
 	 * the moment where it has been shown to the user
 	 */
-	private ArrayList<Operation> operations = new ArrayList<Operation>(1) ;	
+	private ArrayList<Action> actions = new ArrayList<Action>(1) ;	
 
 	/** Copy constructor used by the PLM internals */
 	public SortingWorld(SortingWorld world) {
@@ -80,14 +80,14 @@ public class SortingWorld extends World {
 		if (! (this.writeCount == other.writeCount) )
 			return false;
 		
-		/* Do not compare the operation order as it's not part of the problem specification
+		/* Do not compare the Action order as it's not part of the problem specification
 		 * 
 		 * If you want to add this again, please make sure that swap(i,j) equals to swap(j,i)
 		 
-		if (operations.size() != other.operations.size())
+		if (Actions.size() != other.Actions.size())
 			return false;
-		for (int i = 0 ; i < this.operations.size() ; i++) 
-			if (! operations.get(i).equals( other.operations.get(i)) )
+		for (int i = 0 ; i < this.Actions.size() ; i++) 
+			if (! Actions.get(i).equals( other.Actions.get(i)) )
 				return false;
 		*/
 		return true;
@@ -168,7 +168,7 @@ public class SortingWorld extends World {
 		if (from>=getValueCount()) throw new RuntimeException("Out of bounds in copy("+from+","+to+"), "+from+">= value count");
 		if (to>=getValueCount()) throw new RuntimeException("Out of bounds in copy("+from+","+to+"), "+to+">= value count");
 
-		this.operations.add(new CopyVal(from, to));
+		this.actions.add(new CopyVal(from, to));
 
 		this.readCount++;
 		this.writeCount++;
@@ -183,10 +183,10 @@ public class SortingWorld extends World {
 	}
 
 	/**
-	 * Return the list of all the operations made on the world since its initialization/last reset
+	 * Return the list of all the Actions made on the world since its initialization/last reset
 	 */
-	public ArrayList<Operation> getOperations() {
-		return this.operations;
+	public ArrayList<Action> getActions() {
+		return this.actions;
 	}
 
 	/**
@@ -256,9 +256,9 @@ public class SortingWorld extends World {
 		this.initValues = world.initValues.clone();
 		this.readCount = world.readCount ;
 		this.writeCount = world.writeCount;
-		this.operations = new ArrayList<Operation>(1);
-		for ( Operation o: world.operations)
-			this.operations.add(o);
+		this.actions = new ArrayList<Action>(1);
+		for ( Action o: world.actions)
+			this.actions.add(o);
 	}
 
 	/**
@@ -315,7 +315,7 @@ public class SortingWorld extends World {
 	public int getValue(int i) {
 		if (i<0) throw new RuntimeException("Out of bounds in getValue("+i+"): "+i+"<0");
 		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in getValue("+i+"), "+i+">= value count");
-		this.operations.add(new GetVal(i));
+		this.actions.add(new GetVal(i));
 		readCount++;
 		return values[i];
 	}
@@ -330,7 +330,7 @@ public class SortingWorld extends World {
 		if (i<0) throw new RuntimeException("Out of bounds in setValue("+i+"): "+i+"<0");
 		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in setValue("+i+"), "+i+">= value count");
 
-		this.operations.add(new SetVal(i, val));
+		this.actions.add(new SetVal(i, val));
 
 		this.writeCount++;
 		this.values[i]=val;
@@ -348,7 +348,7 @@ public class SortingWorld extends World {
 		if (i>=getValueCount()) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
 		if (j>=getValueCount()) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
 
-		this.operations.add(new Swap(i, j));
+		this.actions.add(new Swap(i, j));
 
 		this.readCount+=2;
 		this.writeCount+=2;
@@ -386,5 +386,7 @@ public class SortingWorld extends World {
 		}
 		return ""+value;
 	}
+	
+	
 
 }
