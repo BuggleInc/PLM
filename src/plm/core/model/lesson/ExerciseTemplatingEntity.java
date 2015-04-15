@@ -82,7 +82,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		
 		javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
 		javaFile.setTemplate  ("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
-		//System.out.println("New template: "+sf.getTemplate());
+		//getGame().getLogger().log("New template: "+sf.getTemplate());
 		
 		if (getProgLanguages().contains(Game.SCALA)) {
 			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);

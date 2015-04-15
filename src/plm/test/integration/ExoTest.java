@@ -1,6 +1,7 @@
 package plm.test.integration;
 
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,13 +21,13 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bat.BatExercise;
@@ -55,8 +56,7 @@ public class ExoTest {
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
 		
-		FileUtils.setLocale(new Locale("en"));
-		g = new Game();
+		g = new Game(mock(LogHandler.class), new Locale("en"));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
@@ -70,7 +70,7 @@ public class ExoTest {
 				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
 				System.exit(1);
 			}
-			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
+			g.getLogger().log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
 				System.exit(1);
@@ -85,8 +85,8 @@ public class ExoTest {
 					alreadySeenExercises.add(l);
 				}
 		}
-		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
-		System.out.println("");
+		g.getLogger().log("There is currently "+result.size()+" exercises in our database. Yes sir.");
+		g.getLogger().log("");
 		
 		//g.switchDebug();		
 		g.setLocale(new Locale("en"));
@@ -148,7 +148,7 @@ public class ExoTest {
 			
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
-					lang.runEntity(ent,exo.lastResult);
+					lang.runEntity(ent,exo.lastResult, g.i18n);
 			
 			exo.check();
 		} catch (PLMCompilerException e) {

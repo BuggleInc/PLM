@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
@@ -119,7 +119,7 @@ public abstract class World {
 	}
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
-			System.out.println("Ignoring a request to remove an unknown entity");
+			getGame().getLogger().log("Ignoring a request to remove an unknown entity");
 		notifyEntityUpdateListeners();		
 	}
 
@@ -146,14 +146,16 @@ public abstract class World {
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
 		final ProgrammingLanguage pl = getGame().getProgrammingLanguage();
-		if (game.isDebugEnabled())
-			Logger.log("World:runEntities","Programming language: "+pl);
+		if (game.isDebugEnabled()) {
+			game.getLogger().log("World:runEntities");
+			game.getLogger().log("Programming language: "+pl);
+		}
 		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					game.statusArgAdd(getName());
-					pl.runEntity(b, progress);
+					pl.runEntity(b, progress, getGame().i18n);
 					game.statusArgRemove(getName());
 				}
 			});
@@ -164,7 +166,7 @@ public abstract class World {
 			    	if(ex instanceof ThreadDeath) {
 			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
 			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
-				        progress.setExecutionError(Game.i18n.tr(msg));
+				        progress.setExecutionError(getGame().i18n.tr(msg));
 				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
 			    	}
 			    }
@@ -304,7 +306,7 @@ public abstract class World {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, "html", true);
+				sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html", true);
 			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;

@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.LogHandler;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.universe.World;
@@ -73,7 +73,7 @@ public abstract class Exercise extends Lecture {
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
-					lastResult.executionError += Game.i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
+					lastResult.executionError += getGame().i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
 						lastResult.executionError += ":\n"+diff;
 					lastResult.executionError += "\n";
@@ -106,11 +106,11 @@ public abstract class Exercise extends Lecture {
 	 * 
 	 * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
 	 */
-	public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+	public void compileAll(LogHandler logger, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
-		getGame().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+		getGame().getProgrammingLanguage().compileExo(this, logger, whatToCompile, getGame().i18n);
 	}
 
 	/** get the list of source files for a given language, or create it if not existent yet */
@@ -164,7 +164,7 @@ public abstract class Exercise extends Lecture {
 			for (World current:worlds) {
 				if (current.getEntities().isEmpty())
 					throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
-				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate) );			
+				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate, getGame().i18n) );			
 			}
 		} catch (PLMCompilerException e) {
 			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage(), lang);

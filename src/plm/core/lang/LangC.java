@@ -10,9 +10,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -27,7 +29,7 @@ public class LangC extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		
 		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
@@ -40,13 +42,13 @@ public class LangC extends ProgrammingLanguage {
 
 		for (SourceFile sf : sfs){
 			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
-			compile(code,exo.getId(),exo.lastResult);
+			compile(code,exo.getId(),exo.lastResult, i18n);
 			
 		}
 	}
 
 
-	private void compile(String code, String executable, ExecutionProgress lastResult) throws PLMCompilerException{
+	private void compile(String code, String executable, ExecutionProgress lastResult, I18n i18n) throws PLMCompilerException{
 		
 		Runtime runtime = Runtime.getRuntime();
 
@@ -184,7 +186,7 @@ public class LangC extends ProgrammingLanguage {
 
 			if(resCompilationErr.length()>0){
 				PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
-				System.err.println(Game.i18n.tr("Compilation error:"));
+				System.err.println(i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 
@@ -199,13 +201,13 @@ public class LangC extends ProgrammingLanguage {
 
 	@Override
 	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old,
-			StudentOrCorrection whatToMutate) {
+			StudentOrCorrection whatToMutate, I18n i18n) {
 		
 		return old; /* Nothing to do, actually */
 	}
 
 	@Override
-	public void runEntity(final Entity ent, final ExecutionProgress progress) {
+	public void runEntity(final Entity ent, final ExecutionProgress progress, I18n i18n) {
 		Runtime runtime = Runtime.getRuntime();
 		final StringBuffer resCompilationErr = new StringBuffer();
 
@@ -260,14 +262,14 @@ public class LangC extends ProgrammingLanguage {
 			*/
 			File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 			if(!exec.exists()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
+				System.err.println(i18n.tr("Error, please recompile the exercise"));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
 				}
 				return;
 			}else if(!exec.canExecute() || !exec.isFile()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
+				System.err.println(i18n.tr("Error, please recompile the exercise"));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();

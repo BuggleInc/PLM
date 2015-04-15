@@ -38,7 +38,7 @@ void step(char* rule, Color* colors, int length) {
 			default:
 				printf("100 Unknown command associated to i=%d: %c\n",i,rule[i]);
 				fflush(stdout);
-				//System.out.println("Unknown command associated to i="+i+": "+rule[i]);
+				//getGame().getLogger().log("Unknown command associated to i="+i+": "+rule[i]);
 			}
 			setBrushColor(colors[(i+1) % length]);
 			brushDown();

@@ -50,7 +50,7 @@ public class ServerSpyAppEngine extends ServerSpy {
             br.close();
 
         } catch (IOException e) {
-            System.out.println("Unable to contact PLMServer to send request " + request);
+        	getGame().getLogger().log("Unable to contact PLMServer to send request " + request);
         }
 
         return response;

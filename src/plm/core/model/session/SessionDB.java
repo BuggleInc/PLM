@@ -181,7 +181,7 @@ public class SessionDB {
 		try {
 			data = (JSONObject) parser.parse(JSONString);
 		} catch (ParseException e) {
-			System.out.println("Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
+			game.getLogger().log("Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
 			return;
 		}
 

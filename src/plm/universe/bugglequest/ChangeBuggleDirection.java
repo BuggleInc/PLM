@@ -1,12 +1,14 @@
 package plm.universe.bugglequest;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.universe.Direction;
 
 public class ChangeBuggleDirection extends BuggleOperation {
 	private Direction oldDirection;
 	private Direction newDirection;
 	
-	public ChangeBuggleDirection(AbstractBuggle buggle, Direction oldDirection, Direction newDirection) {
+	public ChangeBuggleDirection(AbstractBuggle buggle, Direction oldDirection, Direction newDirection, I18n i18n) {
 		super("changeBuggleDirection", buggle);
 		this.oldDirection = oldDirection;
 		this.newDirection = newDirection;
@@ -26,7 +28,7 @@ public class ChangeBuggleDirection extends BuggleOperation {
 				direction = "west";
 				break;
 		}
-		String msg = getI18n().tr("Buggle {0} now faces the {1}.", buggle.getName(), direction);
+		String msg = i18n.tr("Buggle {0} now faces the {1}.", buggle.getName(), direction);
 		setMsg(msg);
 	}
 

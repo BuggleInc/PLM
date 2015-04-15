@@ -17,7 +17,7 @@ class ScalaSelectBaseballEntity extends BaseballEntity {
 	/* END TEMPLATE */
 	def out(msg:String) {
 		//if (false)
-		//	System.out.println(msg);
+		//	getGame().getLogger().log(msg);
 	}
 	
 	def bringPlayersHome(base:Int) {

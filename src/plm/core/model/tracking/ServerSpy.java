@@ -148,4 +148,8 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	 *            request in json to send to the server
 	 */
 	public abstract String sendRequest(String request);
+
+	public Game getGame() {
+		return game;
+	}
 }

@@ -80,14 +80,14 @@ public class SourceFile {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
 				if (pattern.getValue().contains("\n")) { 
-					System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
+					getGame().getLogger().log("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
 							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
-					System.out.println("pattern key: "+pattern.getKey());
-					System.out.println("pattern value: "+pattern.getValue());
-					System.out.println("Exercise: "+game.getCurrentLesson().getCurrentExercise().getName());
-					System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
-					System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
-					System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+					getGame().getLogger().log("pattern key: "+pattern.getKey());
+					getGame().getLogger().log("pattern value: "+pattern.getValue());
+					getGame().getLogger().log("Exercise: "+game.getCurrentLesson().getCurrentExercise().getName());
+					getGame().getLogger().log("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
+					getGame().getLogger().log("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
+					getGame().getLogger().log("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 				}
 			}
 		return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)

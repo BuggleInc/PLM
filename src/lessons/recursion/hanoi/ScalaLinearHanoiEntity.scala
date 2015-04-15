@@ -6,7 +6,7 @@ import plm.core.model.Game
 class ScalaLinearHanoiEntity extends HanoiEntity {
   override def move(from:Int, to:Int) {
     if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
-      throw new RuntimeException(Game.i18n.tr(
+      throw new RuntimeException(getGame().i18n.tr(
           "Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
     super.move(from,to);
   }

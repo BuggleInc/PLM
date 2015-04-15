@@ -108,17 +108,17 @@ public class SortingWorld extends World {
 			StringBuffer sb = new StringBuffer();
 			
 			if (this.values.length != other.values.length)
-				sb.append(Game.i18n.tr("This is very weird: There is not the same amount of values! Expected: {0}; Found: {1}\n",this.values.length,other.values.length));
+				sb.append(getGame().i18n.tr("This is very weird: There is not the same amount of values! Expected: {0}; Found: {1}\n",this.values.length,other.values.length));
 			
 			if ( this.readCount != other.readCount )
-				sb.append(Game.i18n.tr("Invalid read count. Expected: {0}; Found: {1}\n",this.readCount,other.readCount));
+				sb.append(getGame().i18n.tr("Invalid read count. Expected: {0}; Found: {1}\n",this.readCount,other.readCount));
 			
 			if ( this.writeCount != other.writeCount )
-				sb.append(Game.i18n.tr("Invalid write count. Expected: {0}; Found: {1}\n",this.writeCount,other.writeCount));
+				sb.append(getGame().i18n.tr("Invalid write count. Expected: {0}; Found: {1}\n",this.writeCount,other.writeCount));
 			
 			for (int i = 0 ; i < this.values.length ; i++) 
 				if ( this.values[i] != other.values[i] )
-					sb.append(Game.i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",
+					sb.append(getGame().i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",
 							i, val2str(values[i],values.length),  val2str(other.values[i],other.values.length)  ));
 					
 			s = sb.toString();
@@ -343,10 +343,10 @@ public class SortingWorld extends World {
 	 * @param j the index of the second cell concerned
 	 */
 	public void swap(int i, int j) {
-		if (i<0) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,i));
-		if (j<0) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,j));
-		if (i>=getValueCount()) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
-		if (j>=getValueCount()) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
+		if (i<0) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,i));
+		if (j<0) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,j));
+		if (i>=getValueCount()) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
+		if (j>=getValueCount()) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
 
 		this.operations.add(new Swap(i, j));
 

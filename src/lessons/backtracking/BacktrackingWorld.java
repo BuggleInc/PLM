@@ -76,7 +76,7 @@ public class BacktrackingWorld extends World {
 	protected BacktrackingPartialSolution bestSolution = null;
 	public void newBestSolution(BacktrackingPartialSolution solution) {
 		bestSolution = solution.clone();
-		System.out.println("XXXX New best solution: "+bestSolution);
+		getGame().getLogger().log("XXXX New best solution: "+bestSolution);
 	}
 	public BacktrackingPartialSolution getBestSolution() {
 		return bestSolution;
