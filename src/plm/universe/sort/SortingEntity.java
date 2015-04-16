@@ -6,6 +6,7 @@ import java.io.IOException;
 import plm.universe.Entity;
 import plm.universe.sort.operations.CopyOperation;
 import plm.universe.sort.operations.CountOperation;
+import plm.universe.sort.operations.GetValueOperation;
 import plm.universe.sort.operations.SetValOperation;
 import plm.universe.sort.operations.SwapOperation;
 
@@ -23,6 +24,8 @@ public class SortingEntity extends Entity {
 	}
 
 	public int getValue(int i) {
+		addOperation(new GetValueOperation(this, i));
+		stepUI();
 		return ((SortingWorld) this.world).getValue(i);
 	}
 
