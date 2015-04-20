@@ -53,7 +53,7 @@ public class SortingEntity extends Entity {
 	}
 
 	public void swap(int i, int j) {
-		((SortingWorld) this.world).swap(i,j);
+		((SortingWorld) this.world).swap(j,i);
 		addOperation(new SwapOperation(this, i, j));
 		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
 		stepUI();

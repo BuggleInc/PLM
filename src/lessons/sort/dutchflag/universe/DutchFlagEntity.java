@@ -3,6 +3,7 @@ package lessons.sort.dutchflag.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import lessons.sort.dutchflag.operations.DutchFlagSwap;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -30,6 +31,7 @@ public class DutchFlagEntity extends Entity {
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);
+		addOperation(new DutchFlagSwap(this,from,to));
 		stepUI();
 	}
 
