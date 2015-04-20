@@ -25,6 +25,7 @@ public class SortingEntity extends Entity {
 
 	public int getValue(int i) {
 		addOperation(new GetValueOperation(this, i));
+		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
 		stepUI();
 		return ((SortingWorld) this.world).getValue(i);
 	}
@@ -34,10 +35,14 @@ public class SortingEntity extends Entity {
 	}
 
 	public boolean isSmaller(int i, int j) {
+		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
+		stepUI();
 		return ((SortingWorld) this.world).isSmaller(i,j);
 	}
 
 	public boolean isSmallerThan(int i, int val) {
+		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
+		stepUI();
 		return ((SortingWorld) this.world).isSmallerThan(i,val);
 	}
 
