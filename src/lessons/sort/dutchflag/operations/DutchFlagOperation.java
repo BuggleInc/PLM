@@ -3,7 +3,7 @@ package lessons.sort.dutchflag.operations;
 import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import plm.universe.Operation;
 
-public class DutchFlagOperation extends Operation {
+public abstract class DutchFlagOperation extends Operation {
 
 	private DutchFlagEntity entity;
 	
