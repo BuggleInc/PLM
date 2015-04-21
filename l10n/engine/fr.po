@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-15 11:22+0200\n"
+"POT-Creation-Date: 2015-04-21 09:29+0200\n"
 "PO-Revision-Date: 2015-01-01 23:44+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -245,14 +245,14 @@ msgstr ""
 msgid " Pancake #{0} differs: {1} vs. {2}\n"
 msgstr " La crêpe numéro {0} diffère : {1} vs {2}\n"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:173
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:196
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il faut en retourner au "
 "moins une."
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:175
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:198
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
@@ -260,7 +260,7 @@ msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il n''y a que {1} crêpes sur "
 "la pile."
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:209
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:232
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
@@ -268,7 +268,7 @@ msgstr ""
 "Impossible d''obtenir la taille de la crêpe numéro {0} car ce n''est pas "
 "entre 0 et {1}"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:228
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:251
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "

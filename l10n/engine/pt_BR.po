@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-15 11:22+0200\n"
+"POT-Creation-Date: 2015-04-21 09:29+0200\n"
 "PO-Revision-Date: 2015-01-22 23:31-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
@@ -236,12 +236,12 @@ msgstr "Pilhas não foram viradas a mesma quantidade de tempo: {0} vs. {1}\n"
 msgid " Pancake #{0} differs: {1} vs. {2}\n"
 msgstr " Panqueca #{0} difere: {1} vs. {2}\n"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:173
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:196
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr "Foi pedido para virar {0}, mas você deve virar pelo menos uma"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:175
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:198
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
@@ -249,14 +249,14 @@ msgstr ""
 "Me foi pedido para virar {0} panquecas, mas existem apenas {1} panquecas "
 "nesta pilha"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:209
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:232
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgstr ""
 "Não posso obter o raio da panqueca #{0} pois ela não está entre 0 e {1}"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:228
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:251
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
