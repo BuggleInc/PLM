@@ -1,6 +1,6 @@
 package lessons.sort.pancake.universe;
 
-class Pancake {
+public class Pancake {
 	private int radius; // Radius of the pancake
 	private boolean upsideDown; // True if the burned face is facing the sky, else false
 	
