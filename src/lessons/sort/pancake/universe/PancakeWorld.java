@@ -127,6 +127,27 @@ public class PancakeWorld extends World {
 		this.moveCount = other.moveCount;
 		super.reset(world);		
 	}
+	
+	public Pancake[] getStack()
+	{
+		return pancakeStack;
+	}
+
+	public int getMoveCount() {
+		return moveCount;
+	}
+
+	public int getSelected() {
+		return selected;
+	}
+
+	public boolean isBurnedWorld() {
+		return burnedWorld;
+	}
+
+	public boolean isWasRandom() {
+		return wasRandom;
+	}
 
 	/** Ensures that the provided engine can be used to solve Pancake exercises */ 
 	@Override
@@ -154,6 +175,8 @@ public class PancakeWorld extends World {
 		} else {
 			throw new RuntimeException("No binding of PancakeWorld for "+lang);
 		}
+		
+		
 	}
 
 	/* --------------------------------------- */
@@ -317,5 +340,7 @@ class Pancake {
 		s+=" >";
 		return s;
 	}
+	
+	
 	
 }
