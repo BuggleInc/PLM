@@ -3,6 +3,7 @@ package lessons.sort.pancake.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import lessons.sort.pancake.universe.operations.FlipOperation;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -35,6 +36,7 @@ public class PancakeEntity extends Entity {
 	 */
 	public void flip(int numberOfPancakes) {
 		((PancakeWorld) world).flip(numberOfPancakes);
+		addOperation(new FlipOperation(this, numberOfPancakes));
 		stepUI();
 	}
 
