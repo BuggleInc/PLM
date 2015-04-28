@@ -21,7 +21,6 @@ import java.util.Collection;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.User;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -31,10 +30,10 @@ public class GitSessionKit implements ISessionKit {
 
 	private Game game;
 	private String reponame;
-	private User cachedUser = null;
 
-	public GitSessionKit(Game game) {
+	public GitSessionKit(Game game, String userUUID) {
 		this.game = game;
+		this.reponame = userUUID;
 	}
 
 	/**
@@ -46,8 +45,6 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
-
 		Collection<Lesson> lessons = this.game.getLoadedLessons();
 		for (Lesson lesson : lessons) {
 			File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
@@ -76,18 +73,10 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void loadAll(final File path) {
-		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
-
-		if (!game.getUsers().getCurrentUser().equals(cachedUser)) {
-			if (game.isDebugEnabled())
-				game.getLogger().log("The user changed! switch to the right branch");
-			cachedUser = game.getUsers().getCurrentUser();
-			
-			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
-			if (! gitDir.exists()) {
-				// It should never happen since the session content should be created by the git spy module.
-				game.getLogger().log(getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
-			}
+		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + reponame);
+		if (! gitDir.exists()) {
+			// It should never happen since the session content should be created by the git spy module.
+			game.getLogger().log(getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 		}
 
 		// Load bodies

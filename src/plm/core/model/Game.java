@@ -144,14 +144,12 @@ public class Game implements IWorldView {
 
 	public LogHandler logger;
 	
-	private Users users;
-
 	private static boolean ongoingInitialization = false;
 	
 	private Locale locale;
 	public I18n i18n;
 	
-	public Game(LogHandler logger, Locale locale) {
+	public Game(LogHandler logger, Locale locale, String userUUID) {
 		this.logger = logger;
 		this.locale = locale;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
@@ -198,15 +196,12 @@ public class Game implements IWorldView {
 		}
 
 		studentWork = new SessionDB(this);
-		
-		users = new Users(this, SAVE_DIR);
-		users.getCurrentUser();
 
 		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
-		sessionKit = new GitSessionKit(this);
+		sessionKit = new GitSessionKit(this, userUUID);
 
 		try {
-			addProgressSpyListener(new GitSpy(this, SAVE_DIR, users));
+			addProgressSpyListener(new GitSpy(this, SAVE_DIR, userUUID));
 		} catch (IOException | GitAPIException e) {
 			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
@@ -1149,14 +1144,6 @@ public class Game implements IWorldView {
 
 	public void setCurrentCourse(Course currentCourse) {
 		this.currentCourse = currentCourse;
-	}
-
-	public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
 	}
 
 	public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
