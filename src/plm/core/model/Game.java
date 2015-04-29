@@ -141,6 +141,7 @@ public class Game implements IWorldView {
 	public SessionDB studentWork;
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
+	private GitSpy gitSpy;
 
 	public LogHandler logger;
 	
@@ -149,7 +150,7 @@ public class Game implements IWorldView {
 	private Locale locale;
 	public I18n i18n;
 	
-	public Game(LogHandler logger, Locale locale, String userUUID) {
+	public Game(String userUUID, LogHandler logger, Locale locale) {
 		this.logger = logger;
 		this.locale = locale;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
@@ -201,7 +202,8 @@ public class Game implements IWorldView {
 		sessionKit = new GitSessionKit(this, userUUID);
 
 		try {
-			addProgressSpyListener(new GitSpy(this, SAVE_DIR, userUUID));
+			gitSpy = new GitSpy(this, SAVE_DIR, userUUID);
+			addProgressSpyListener(gitSpy);
 		} catch (IOException | GitAPIException e) {
 			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
@@ -365,7 +367,7 @@ public class Game implements IWorldView {
 		Lesson lesson = lessons.get(lessonName);
 		Lesson lessonLoaded = loadedLessons.get(lessonName);
 		statusArgAdd(lessonName);
-		if (lessonLoaded == null) { // we have to load it 
+		if (lessonLoaded == null) { // we have to load it
 			lesson.loadLesson();
 			loadedLessons.put(lessonName, lesson);
 		}
@@ -1218,6 +1220,25 @@ public class Game implements IWorldView {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}
+	}
+	
+	public void setUserUUID(String userUUID) {
+		try {
+			saveSession();
+		} catch (UserAbortException e) {
+			e.printStackTrace();
+		}
+		currentLesson = null;
+		lastExercise = null;
+		lessons.clear();		
+		loadedLessons.clear();
+		studentWork = new SessionDB(this);
+		sessionKit.setUserUUID(userUUID);
+		gitSpy.setUserUUID(userUUID);
+		
+		initLessons();
+		
+		loadSession();
 	}
 	
 	public LogHandler getLogger() {

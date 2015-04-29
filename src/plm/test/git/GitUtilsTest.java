@@ -46,7 +46,7 @@ public class GitUtilsTest {
 	
 	public GitUtilsTest() {
 		userBranch = UUID.randomUUID().toString();
-		game = new Game(mock(LogHandler.class), new Locale("en"), userBranch);
+		game = new Game(userBranch, mock(LogHandler.class), new Locale("en"));
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
 		
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);

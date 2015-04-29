@@ -232,4 +232,9 @@ public class GitSessionKit implements ISessionKit {
 	public Game getGame() {
 		return game;
 	}
+
+	@Override
+	public void setUserUUID(String userUUID) {
+		reponame = userUUID;
+	}
 }

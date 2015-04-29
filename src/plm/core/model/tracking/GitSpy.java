@@ -403,4 +403,9 @@ public class GitSpy implements ProgressSpyListener {
 	public Game getGame() {
 		return game;
 	}
+
+	public void setUserUUID(String userUUID) {
+		this.userUUID = userUUID;
+		userHasChanged();
+	}
 }
