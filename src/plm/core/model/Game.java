@@ -517,7 +517,6 @@ public class Game implements IWorldView {
 				switchCreative();
 			
 			this.currentLesson.setCurrentExercise(lect);
-			addHumanLangListener(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
 				Exercise exo = (Exercise) lect;
