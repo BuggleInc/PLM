@@ -1,0 +1,33 @@
+[{
+    "name": "Move",
+    "blocks": [{
+        "type": "move_forward"
+    }, {
+        "type": "move_backward"
+    }, {
+        "type": "turn_right"
+    }, {
+        "type": "turn_left"
+    }, {
+        "type": "turn_back"
+    }]
+}, {
+    "name": "Buggle",
+    "blocks": [{
+        "type": "buggle_facingWall"
+    }]
+}, {
+    "name": "World",
+    "blocks": [{
+        "type": "world_baggle_ground"
+    }, {
+        "type": "world_baggle_pickup"
+    }, {
+        "type": "world_baggle_drop"
+    }]
+}, {
+    "name": "Loops",
+    "blocks": [{
+        "type": "controls_whileUntil"
+    }]
+}]

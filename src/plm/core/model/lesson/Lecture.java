@@ -22,8 +22,8 @@ import plm.core.utils.FileUtils;
  * English today. Sorry. */
 public abstract class Lecture implements HumanLangChangesListener{
 	private String localId; // lecture's identifier WITHIN THE LESSON 
-	private String id; // global lecture's identifier 
-	
+	private String id; // global lecture's identifier
+
 	public static final String HTMLTipHeader = "<head>\n"+
 			"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
 			"  <style>\n"+
@@ -47,9 +47,10 @@ public abstract class Lecture implements HumanLangChangesListener{
 	private String mission = "";                        /** The text to display to present the lesson */
 	private Lesson lesson;
 	private Game game;
-	
+	private String toolbox;
+
 	protected Map<String, String> tips = new HashMap<String, String>();
-	
+
 	public Lecture(Game game, Lesson lesson,String basename) {
 		this.game = game;
 		this.lesson = lesson;
@@ -85,7 +86,7 @@ public abstract class Lecture implements HumanLangChangesListener{
 
 	public void loadHTMLMission() {
 		String filename = getLocalId().replace('.',File.separatorChar);
-	
+
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html",true);
@@ -94,14 +95,14 @@ public abstract class Lecture implements HumanLangChangesListener{
 			return;			
 		}
 		String str = sb.toString();
-	
+
 		/* search the mission name */
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
 			getGame().getLogger().log(getGame().i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		setName( m.group(1) );
-	
+
 		/* prepare the tips, if any */
 		Pattern p3 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\" alt=\"([^\"]+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
 		Matcher m3 = p3.matcher(str);
@@ -109,15 +110,15 @@ public abstract class Lecture implements HumanLangChangesListener{
 			tips.put("#"+m3.group(1), m3.group(3));
 		}
 		str = m3.replaceAll("<a href=\"#$1\">$2</a>");
-	
+
 		Pattern p4 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
 		Matcher m4 = p4.matcher(str);
 		while (m4.find()) {	
 			tips.put("#"+m4.group(1), m4.group(2));
 		}		
 		str=m4.replaceAll("<a href=\"#$1\">Show Tip</a>");				
-	
-	
+
+
 		/* get the mission explanation */
 		setMission(str);
 	}
@@ -142,8 +143,30 @@ public abstract class Lecture implements HumanLangChangesListener{
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		loadHTMLMission();
 	}
-	
+
 	public Game getGame() {
 		return game;
 	}
+
+	public void setToolbox(){
+
+		String filename = getLocalId().replace('.',File.separatorChar)+"Blocks";
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, null, "json",false);
+		} catch (IOException ex) {
+			setMission(getGame().i18n.tr("File {0}.json not found.",filename));
+			return;			
+		}
+		this.toolbox = sb.toString();
+	
+	}
+
+	public String getToolbox(){
+		return this.toolbox;
+	}
 }
+
+/*
+
+ */
