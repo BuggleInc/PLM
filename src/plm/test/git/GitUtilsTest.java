@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.UUID;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -21,9 +22,9 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
-import plm.core.model.User;
 import plm.core.model.tracking.GitUtils;
 
 public class GitUtilsTest {
@@ -38,17 +39,16 @@ public class GitUtilsTest {
 	private Git git;
 	private GitUtils gitUtils;
 	private File repoDirectory;
-	private User testUser;
 	private String userBranch;
 	private Utils utils;
 	private String oldTrackUserProperty;
 	private Game game;
 	
 	public GitUtilsTest() {
-		game = new Game(mock(LogHandler.class), new Locale("en"));
+		userBranch = UUID.randomUUID().toString();
+		game = new Game(userBranch, mock(LogHandler.class), new Locale("en"));
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
-		testUser = new User("testUser");
-		userBranch = testUser.getUserUUIDasString();
+		
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		gitUtils = new GitUtils(game);
 		utils = new Utils();

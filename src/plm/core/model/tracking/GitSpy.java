@@ -12,41 +12,35 @@ import org.eclipse.jgit.lib.NullProgressMonitor;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.json.simple.JSONObject;
 
-import plm.core.UserSwitchesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.User;
-import plm.core.model.Users;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
-public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
+public class GitSpy implements ProgressSpyListener {
 
 	private File plmDir;
 	private GitUtils gitUtils;
 	private Game game;
+	private String userUUID;
 	private ProgressMonitor progress = NullProgressMonitor.INSTANCE; //new TextProgressMonitor(new PrintWriter(System.out));
 
 
 	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
 	private File repoDir;
 
-	public GitSpy(Game game, File path, Users users) throws IOException, GitAPIException {
+	public GitSpy(Game game, File path, String userUUID) throws IOException, GitAPIException {
 		this.game = game;
 		this.plmDir = path;
-
+		this.userUUID = userUUID;
 		gitUtils = new GitUtils(game);
-		
-		users.addUserSwitchesListener(this);
-		userHasChanged(users.getCurrentUser());
+		userHasChanged();
 	}
 
 	/** 
 	 * Initialize locally the git repo for that user
 	 */
-	@Override
-	public void userHasChanged(User newUser) {
-		String userUUID = newUser.getUserUUIDasString();
+	public void userHasChanged() {
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		try {
@@ -103,7 +97,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			checkSuccess(exo);
 			
 			String commitMsg = writeCommitMessage(exo, null, "executed", new JSONObject());
-			String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 			gitUtils.removeFiles();
@@ -124,7 +117,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 			try {
 				String commitMsg = writeCommitMessage(lastExo, exo, "switched", new JSONObject());
-				String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 				String userBranch = "PLM"+GitUtils.sha1(userUUID);
 			
 				gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
@@ -140,7 +132,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 			deleteFiles(exo);
 
 			String commitMsg = writeCommitMessage(exo, null, "reverted", new JSONObject());
-			String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 			gitUtils.removeFiles();
@@ -166,7 +157,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		
 		// push to the remote repository
 		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
-		String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		try {
@@ -367,7 +357,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		JSONObject msg = new JSONObject();
 		msg.put("studentInput", studentInput);
 		String commitMsg = writeCommitMessage(lastExo, null, evt_type, msg);
-		String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		// push to the remote repository
@@ -400,7 +389,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		JSONObject msg = new JSONObject();
 		msg.put("id", id);
 		String commitMsg = writeCommitMessage(lastExo, null, "readTip", msg);
-		String userUUID = game.getUsers().getCurrentUser().getUserUUIDasString();
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 		
 		try {
@@ -414,5 +402,10 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	
 	public Game getGame() {
 		return game;
+	}
+
+	public void setUserUUID(String userUUID) {
+		this.userUUID = userUUID;
+		userHasChanged();
 	}
 }

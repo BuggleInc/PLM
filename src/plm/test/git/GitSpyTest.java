@@ -26,8 +26,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
-import plm.core.model.User;
-import plm.core.model.Users;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
@@ -44,16 +42,12 @@ public class GitSpyTest {
 	
 	public GitSpyTest() throws IOException, GitAPIException {
 		repoDir = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm-test");
-		Users users = Mockito.mock(Users.class);
-		User user = Mockito.mock(User.class);
 
-		Game game = new Game(mock(LogHandler.class), new Locale("en"));
-		
 		userUUID = UUID.randomUUID().toString();
 		
-		Mockito.when(user.getUserUUIDasString()).thenReturn(userUUID);
-		Mockito.when(users.getCurrentUser()).thenReturn(user);
-		gitSpy = new GitSpy(game, repoDir, users);
+		Game game = new Game(userUUID, mock(LogHandler.class), new Locale("en"));
+		
+		gitSpy = new GitSpy(game, repoDir, userUUID);
 		
 		utils = new Utils();
 		

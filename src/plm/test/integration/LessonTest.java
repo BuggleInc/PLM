@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -66,8 +67,9 @@ public class LessonTest {
 	public void tearDown() throws Exception {
 	}
 	
-	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {		
-		Game g = new Game(mock(LogHandler.class), new Locale("en"));
+	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		String userUUID = UUID.randomUUID().toString();
+		Game g = new Game(userUUID, mock(LogHandler.class), new Locale("en"));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
