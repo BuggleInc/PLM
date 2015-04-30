@@ -214,4 +214,14 @@ public class DutchFlagWorld extends World {
 		res.append("</DutchFlagWorld>");
 		return res.toString();
 	}
+	
+	public int[] getContent()
+	{
+		return content;
+	}
+	
+	public int getMove()
+	{
+		return moveCount;
+	}
 }
