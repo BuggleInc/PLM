@@ -1,0 +1,36 @@
+[{
+    "name": "Move",
+    "blocks": [{
+        "type": "move_forward"
+    }]
+}, {
+    "name": "World",
+    "blocks": [{
+        "type": "world_message_ground"
+    }]
+}, {
+    "name": "Variables",
+    "custom": "VARIABLE",
+    "blocks": [{
+        "type": "variables_get"
+    }, {
+        "type": "variables_set"
+    }]
+}, {
+    "name": "Logic",
+    "blocks": [{
+        "type": "logic_compare"
+    }]
+}, {
+    "name": "Loops",
+    "blocks": [{
+        "type": "controls_whileUntil"
+    }]
+}, {
+    "name": "Math",
+    "blocks": [{
+        "type": "math_number"
+    }, {
+        "type": "math_arithmetic"
+    }]
+}]

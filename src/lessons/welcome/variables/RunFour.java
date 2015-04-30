@@ -13,6 +13,7 @@ public class RunFour extends ExerciseTemplated {
 
 	public RunFour(Game game, Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(game, lesson);
+		setToolbox();
 		
 		/* Create initial situation */
 		World[] myWorlds = new World[] {

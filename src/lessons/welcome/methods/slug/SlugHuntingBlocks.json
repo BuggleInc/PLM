@@ -1,0 +1,63 @@
+[{
+    "name": "Move",
+    "blocks": [{
+        "type": "move_forward"
+    }, {
+        "type": "move_backward"
+    }, {
+        "type": "turn_left"
+    }]
+}, {
+    "name": "Buggle",
+    "blocks": [{
+        "type": "buggle_facingWall"
+    }]
+}, {
+    "name": "Brush",
+    "blocks": [{
+        "type": "brush_down"
+    }, {
+        "type": "brush_up"
+    }]
+}, {
+    "name": "World",
+    "blocks": [{
+        "type": "world_ground_color"
+    }]
+}, {
+    "name": "Procedures",
+    "custom": "PROCEDURE",
+    "blocks": [{
+        "type": "newprocedures_defnoreturn"
+    }, {
+        "type": "newprocedures_defreturn"
+    }, {
+        "type": "newprocedures_callnoreturn"
+    }, {
+        "type": "newprocedures_callreturn"
+    }]
+}, {
+    "name": "Variables",
+    "custom": "VARIABLE",
+    "blocks": [{
+        "type": "variables_get"
+    }, {
+        "type": "variables_set"
+    }]
+}, {
+    "name": "Logic",
+    "blocks": [{
+        "type": "controls_if"
+    }, {
+        "type": "logic_compare"
+    }, {
+        "type": "logic_negate"
+    }, {
+        "type": "logic_boolean"
+    }]
+}, {
+    "name": "Loops",
+    "blocks": [{
+        "type": "controls_whileUntil"
+    }]
+}]

@@ -1,0 +1,15 @@
+[{
+    "name": "Move",
+    "blocks": [{
+        "type": "move_forward"
+    }, {
+        "type": "turn_right"
+    }, {
+        "type": "turn_left"
+    }]
+}, {
+    "name": "Loops",
+    "blocks": [{
+        "type": "controls_repeat"
+    }]
+}]

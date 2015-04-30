@@ -14,6 +14,7 @@ public class Poucet2 extends ExerciseTemplated {
 	public Poucet2(Game game, Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(game, lesson);
 		tabName = "Poucet";
+		setToolbox();
 		
 		/* Create initial situation */
 		World[] myWorlds = new World[] {

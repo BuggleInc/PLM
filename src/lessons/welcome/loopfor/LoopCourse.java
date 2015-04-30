@@ -14,6 +14,7 @@ public class LoopCourse extends ExerciseTemplated{
 		public LoopCourse(Game game, Lesson lesson) throws IOException, BrokenWorldFileException {
 			super(game, lesson);
 			tabName = "Runner";
+			setToolbox();
 					
 			/* Create initial situation */
 			World[] myWorlds = new World[] {
