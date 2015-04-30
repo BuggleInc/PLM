@@ -97,7 +97,7 @@ public class Users {
 				e.printStackTrace();
 			}
 		} else {
-			System.err.println(Game.i18n.tr("User {0} exists already; don't add it again.", uuid));
+			System.err.println(getGame().i18n.tr("User {0} exists already; don't add it again.", uuid));
 		}
 		flushUsersToFile();
 	}
@@ -121,7 +121,7 @@ public class Users {
 				found = true;
 				getCurrentUser().setLastUsed(false);
 				user.setLastUsed(true);
-				System.err.println(Game.i18n.tr("Switched to user: {0}", newUser));
+				System.err.println(getGame().i18n.tr("Switched to user: {0}", newUser));
 			} 
 		}
 
@@ -174,7 +174,7 @@ public class Users {
 			User user = new User(username);
 			this.usersList.add(user);
 			flushUsersToFile();
-			System.err.println(Game.i18n.tr("A new PLM user has been created for you!"));
+			System.err.println(getGame().i18n.tr("A new PLM user has been created for you!"));
 			System.err.println(user);
 		} else {
 			JSONParser parser = new JSONParser();
@@ -200,7 +200,7 @@ public class Users {
 				}
 
 			} catch (ParseException | IOException pe) {
-				System.out.println(pe);
+				game.getLogger().log(pe.getLocalizedMessage());
 			}
 		}
 	}
@@ -224,7 +224,7 @@ public class Users {
 
 			StringWriter out = new StringWriter();
 			users.writeJSONString(out);
-			// System.out.println(out.toString());
+			// getGame().getLogger().log(out.toString());
 
 			bwUser.write(out.toString());
 			bwUser.close();
@@ -257,5 +257,9 @@ public class Users {
 	}
 	public void removeUserSwitchesListener(UserSwitchesListener l) {
 		this.userSwitchesListeners.remove(l);
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

@@ -8,15 +8,15 @@ class ScalaTreeEntity extends Turtle {
 
 	override def setX(i: Int)  {
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
 	override def setY(i: Int)  { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
 	override def setPos(x: Int, y:Int)  { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 	
 	val colors:Array[Color] = Array(Color.cyan,      Color.blue,   Color.magenta, 

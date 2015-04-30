@@ -53,14 +53,14 @@ void initLangton(char* name) {
 		} else if (name[i] == 'R') {
 			rule[0][i][NEXT_MOVE] = RIGHT;
 		} else {
-			//System.out.println("Unknown command in your ant's name: "+name.charAt(i));
+			//getGame().getLogger().log("Unknown command in your ant's name: "+name.charAt(i));
 			printf("100 Unknown command in your ant's name: %c\n",name[i]);
 			fflush(stdout);
 		}
 
 		rule[0][i][NEXT_STATE] = 0; /* only one state */
 
-		//		System.out.println("{"+rule[0][i][NEXT_COLOR]+","+rule[0][i][NEXT_MOVE]+","+rule[0][i][NEXT_STATE]+"}");
+		//		getGame().getLogger().log("{"+rule[0][i][NEXT_COLOR]+","+rule[0][i][NEXT_MOVE]+","+rule[0][i][NEXT_STATE]+"}");
 	}
 }
 void init() {

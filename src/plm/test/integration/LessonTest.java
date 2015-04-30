@@ -1,6 +1,7 @@
 package plm.test.integration;
 
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -18,9 +19,9 @@ import org.junit.runners.Parameterized.Parameters;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
-import plm.core.utils.FileUtils;
 
 @RunWith(Parameterized.class)
 public class LessonTest {
@@ -66,8 +67,7 @@ public class LessonTest {
 	}
 	
 	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {		
-		FileUtils.setLocale(new Locale("en"));
-		Game g = new Game();
+		Game g = new Game(mock(LogHandler.class), new Locale("en"));
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();

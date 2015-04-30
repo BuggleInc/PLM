@@ -20,7 +20,7 @@ class ScalaIterativeHanoiEntity extends HanoiEntity {
     do {
       if (count%2 == 0) {
         val next = (if (increasing) {small+1} else {small-1+3}) % 3;
-        //System.out.println("move("+small+","+next+")");
+        //getGame().getLogger().log("move("+small+","+next+")");
         move(small, next);
         small=next;
       }

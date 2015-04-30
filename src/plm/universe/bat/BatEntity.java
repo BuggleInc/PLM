@@ -2,7 +2,6 @@ package plm.universe.bat;
 
 import java.io.BufferedWriter;
 
-import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -35,7 +34,7 @@ public class BatEntity extends Entity {
 			try {
 				run(t);
 			} catch (Exception e) {
-				t.setResult(Game.i18n.tr("Exception {0}: {1}",e.getClass().getName(), e.getMessage()));
+				t.setResult(getGame().i18n.tr("Exception {0}: {1}",e.getClass().getName(), e.getMessage()));
 				e.printStackTrace();
 			}
 		addOperation(new BatOperation((BatWorld) world));

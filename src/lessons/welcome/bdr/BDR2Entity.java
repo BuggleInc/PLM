@@ -28,7 +28,7 @@ public class BDR2Entity extends SimpleBuggle {
 	boolean complained = false;
 	private void complain(String msg) {
 		if (!complained)
-			System.out.println("XXX "+msg);
+			getGame().getLogger().log("XXX "+msg);
 		complained = true;
 	}
 	private String fmt(char c) {

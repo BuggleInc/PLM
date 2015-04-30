@@ -245,10 +245,10 @@ public class TurtleWorld extends World {
 								int rmIdx;
 								if (l1.getLength()>l2.getLength()) {
 									rmIdx = j;
-//									System.out.println("1a: Kill "+shapes.get(j)+" because of "+shapes.get(i));
+//									getGame().getLogger().log("1a: Kill "+shapes.get(j)+" because of "+shapes.get(i));
 								} else {
 									rmIdx = i;
-//									System.out.println("1b: Kill "+shapes.get(i)+" because of "+shapes.get(j));
+//									getGame().getLogger().log("1b: Kill "+shapes.get(i)+" because of "+shapes.get(j));
 								}
 								shapes.remove(rmIdx);
 								if (i>=rmIdx && rmIdx>0)
@@ -261,7 +261,7 @@ public class TurtleWorld extends World {
 //								System.out.print("2: "+l2+" is after "+l1+".");
 								l1.x1 = l2.x1;
 								l1.y1 = l2.y1;
-//								System.out.println(" New l1: "+l1);
+//								getGame().getLogger().log(" New l1: "+l1);
 								
 								if (i>=j && i>0)
 									i--;
@@ -274,7 +274,7 @@ public class TurtleWorld extends World {
 //								System.out.print("3: "+l2+" is before "+l1+".");
 								l1.x2 = l2.x2;
 								l1.y2 = l2.y2;
-//								System.out.println(" New l1: "+l1);
+//								getGame().getLogger().log(" New l1: "+l1);
 								if (i>=j  && j>0)
 									i--;
 								shapes.remove(j);
@@ -338,7 +338,7 @@ public class TurtleWorld extends World {
 		
 		// First compare entities
 		if (other.entities.size() != entities.size())
-			return Game.i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
+			return getGame().i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
 		for (int i=0; i<other.entities.size();i++)
 			if (! other.entities.get(i).equals(entities.get(i)))
 				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i)));
@@ -353,13 +353,13 @@ public class TurtleWorld extends World {
 //			for (int i=0;i<other.shapes.size();i++)
 //				System.out.print("  "+other.shapes.get(i)+"\n");
 			do {
-//				System.out.println("Merge your solution");
+//				getGame().getLogger().log("Merge your solution");
 				Collections.sort(other.shapes, cmp);
 				killDuplicate(other.shapes);
 			} while (mergeLengthening(other.shapes));
 
 			do {
-//				System.out.println("Merge the correction");
+//				getGame().getLogger().log("Merge the correction");
 				Collections.sort(shapes, cmp);
 				killDuplicate(shapes);
 			} while (mergeLengthening(shapes));
@@ -367,9 +367,9 @@ public class TurtleWorld extends World {
 			// Same amount of shapes?
 			if (shapes.size() != other.shapes.size()) {
 				if (other.shapes.size() > shapes.size())
-					sb.append( Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+					sb.append( getGame().i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				else 
-					sb.append( Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+					sb.append( getGame().i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				
 				if (getGame().isDebugEnabled()) {
 					sb.append("Shapes available in the student's work (after mergin' madness):\n");
@@ -396,12 +396,12 @@ public class TurtleWorld extends World {
 					}
 				}
 				if (!studentShapes.isEmpty()) {
-					sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
+					sb.append(getGame().i18n.tr("Superflous shapes in your solution:\n"));
 					for (Shape s: studentShapes)
 						sb.append("   "+s+"\n");
 				}
 				if (!correctionShapes.isEmpty()) {
-					sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
+					sb.append(getGame().i18n.tr("Missing shapes in your solution:\n"));
 					for (Shape s: correctionShapes)
 						sb.append("   "+s+"\n");
 				}
@@ -412,8 +412,8 @@ public class TurtleWorld extends World {
 			// Same shapes?
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
-					sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n",
-							((Shape) other.shapes.get(i)).diffTo(shapes.get(i)),
+					sb.append(getGame().i18n.tr("  {0} (got {1} instead of {2})\n",
+							((Shape) other.shapes.get(i)).diffTo(shapes.get(i), getGame().i18n),
 							other.shapes.get(i),shapes.get(i)));
 		} }
 		return sb.toString();

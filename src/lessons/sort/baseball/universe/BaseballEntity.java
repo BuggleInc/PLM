@@ -127,7 +127,7 @@ public class BaseballEntity extends Entity {
 				((BaseballWorld) world).assertSorted(str);
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

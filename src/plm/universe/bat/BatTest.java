@@ -78,12 +78,12 @@ public class BatTest {
 			return false;
 		BatTest other = (BatTest) o;
 		if (other.parameters.length != parameters.length) {
-			//System.out.println("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
+			//getGame().getLogger().log("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
 			return false;
 		}
 		for (int i=0;i<parameters.length;i++) {
 			if (parameters[i] != null && !parameters[i].equals(other.parameters[i])) {
-				//System.out.println("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
+				//getGame().getLogger().log("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
 				return false;
 			}
 			if (parameters[i] == null && other.parameters[i]!=null)
@@ -102,9 +102,9 @@ public class BatTest {
 		} else {
 			/* Act as an usual equal method as we don't seem to be called from check(). From the UI maybe? */
 			if (! equalParameter(result, other.result)) 
-				//System.out.println("While comparing a Bat test, the result differs: null != "+other.result);
+				//getGame().getLogger().log("While comparing a Bat test, the result differs: null != "+other.result);
 				return false;
-			//System.out.println("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
+			//getGame().getLogger().log("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
 			return equalParameter(expected, other.expected);
 		}
 	}

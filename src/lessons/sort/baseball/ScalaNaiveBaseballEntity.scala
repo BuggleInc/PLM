@@ -19,9 +19,9 @@ class ScalaNaiveBaseballEntity extends BaseballEntity {
 					maxDistance = distance;
 					posNext = pos;
 				}
-//				System.out.println(world.toString()+"  baseNext:"+baseNext+" player:"+player+"  distance:"+distance+" (#bases:"+getBasesAmount()+")");
+//				getGame().getLogger().log(world.toString()+"  baseNext:"+baseNext+" player:"+player+"  distance:"+distance+" (#bases:"+getBasesAmount()+")");
 			}
-//			System.out.println("move "+baseNext+","+posNext);
+//			getGame().getLogger().log("move "+baseNext+","+posNext);
 			move(baseNext,posNext);
 		}
 		world.asInstanceOf[BaseballWorld].assertSorted("naive sort");

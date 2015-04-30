@@ -83,7 +83,7 @@ public class LightBotEntity extends Entity  {
 		if (getCellNeighbor(getDirection().toPoint()).getHeight() == getCell().getHeight())
 			move();
 		else 
-			System.out.println("facing wall");
+			getGame().getLogger().log("facing wall");
 	}
 	public void jump(){
 		int heightHere = getCell().getHeight();
@@ -93,7 +93,7 @@ public class LightBotEntity extends Entity  {
 		     (heightHere > heightThere /*jump down*/))
 			move();
 		else 
-			System.out.println("cannot jump here");
+			getGame().getLogger().log("cannot jump here");
 	}
 
 	private void move() {

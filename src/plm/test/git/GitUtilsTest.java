@@ -1,10 +1,15 @@
 package plm.test.git;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Locale;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -16,12 +21,10 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 import plm.core.model.User;
 import plm.core.model.tracking.GitUtils;
-import plm.core.utils.FileUtils;
 
 public class GitUtilsTest {
 
@@ -42,9 +45,7 @@ public class GitUtilsTest {
 	private Game game;
 	
 	public GitUtilsTest() {
-		game = new Game();
-		Game.loadProperties();
-		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		game = new Game(mock(LogHandler.class), new Locale("en"));
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
 		testUser = new User("testUser");
 		userBranch = testUser.getUserUUIDasString();
@@ -52,7 +53,7 @@ public class GitUtilsTest {
 		gitUtils = new GitUtils(game);
 		utils = new Utils();
 		
-		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
+		game.getLogger().log("repoDirectory: "+ repoDirectory.getAbsolutePath());
 	}
 	
 	@Before 
@@ -194,7 +195,7 @@ public class GitUtilsTest {
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
 		
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
-		System.out.println("Try to fetch from "+remoteUrl);
+		game.getLogger().log("Try to fetch from "+remoteUrl);
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 		
 		remoteGitUtils.dispose();

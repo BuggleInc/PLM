@@ -20,11 +20,11 @@ public class KnapsackSolver extends BacktrackingEntity {
 	}
 	
 	private void solve(int depth, KnapsackPartialSolution bag) {
-		System.out.println("solve("+depth+","+bag+"); " +
+		getGame().getLogger().log("solve("+depth+","+bag+"); " +
 				"bestSolution so far:"+getBestSolution());
 		/* BEGIN SOLUTION */
 		if (!bag.isValid()) {
-			System.out.println("solution invalid, backtrack");
+			getGame().getLogger().log("solution invalid, backtrack");
 			return;
 		}
 		if (bag.getValue()>bestknown) {
@@ -32,7 +32,7 @@ public class KnapsackSolver extends BacktrackingEntity {
 			newBestSolution(bag);
 		}
 		if (depth>=bag.size()) {
-			System.out.println("depth too large: "+depth);
+			getGame().getLogger().log("depth too large: "+depth);
 			return;
 		}
 		bag.take(depth);
