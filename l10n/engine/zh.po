@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-19 19:02+0100\n"
+"POT-Creation-Date: 2015-05-03 20:37+0200\n"
 "PO-Revision-Date: 2015-02-16 14:12+0100\n"
 "Last-Translator: Qiaoyang SU <suqiaoy@163.com>\n"
 "Language-Team: Chinese(中文)\n"
@@ -300,6 +300,7 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
+#: src/lessons/welcome/summative/LakesEntity.java:10
 #: src/lessons/welcome/summative/MoriaEntity.java:10
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -318,6 +319,7 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
+#: src/lessons/welcome/summative/LakesEntity.java:15
 #: src/lessons/welcome/summative/MoriaEntity.java:15
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
@@ -332,9 +334,7 @@ msgstr ""
 msgid ""
 "Sorry Dave, you cannot run backward that way. Exercising is hard enough -- "
 "please don't overplay."
-msgstr ""
-"对不起Dave，你不能后退。练习已经够难的了 -- "
-"请不要做得太过火"
+msgstr "对不起Dave，你不能后退。练习已经够难的了 -- 请不要做得太过火"
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
 msgid "You fall into water."
@@ -547,32 +547,32 @@ msgid ""
 "Exception message: {1}\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:169
+#: src/plm/core/model/Game.java:170
 msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala能正常运行。"
 
-#: src/plm/core/model/Game.java:171
+#: src/plm/core/model/Game.java:172
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
 
-#: src/plm/core/model/Game.java:173
+#: src/plm/core/model/Game.java:174
 msgid "Jython is usable on your machine. Congratulations."
 msgstr "Jython能正常运行"
 
-#: src/plm/core/model/Game.java:175
+#: src/plm/core/model/Game.java:176
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr "PLM需要安装Jython来运行python语言程序"
 
-#: src/plm/core/model/Game.java:177
+#: src/plm/core/model/Game.java:178
 msgid "C is usable on your machine. Congratulations."
 msgstr "C语言能正常运行"
 
-#: src/plm/core/model/Game.java:179
+#: src/plm/core/model/Game.java:180
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "PLM需要安装gcc来运行C语言程序"
 
-#: src/plm/core/model/Game.java:186
+#: src/plm/core/model/Game.java:187
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -585,80 +585,80 @@ msgid ""
 "({2}/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:192
+#: src/plm/core/model/Game.java:193
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:195
+#: src/plm/core/model/Game.java:196
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:198
+#: src/plm/core/model/Game.java:199
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:217
+#: src/plm/core/model/Game.java:218
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below"
 msgstr ""
 
-#: src/plm/core/model/Game.java:251
+#: src/plm/core/model/Game.java:252
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:260
+#: src/plm/core/model/Game.java:261
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 
-#: src/plm/core/model/Game.java:285
+#: src/plm/core/model/Game.java:286
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:324
+#: src/plm/core/model/Game.java:325
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:326
+#: src/plm/core/model/Game.java:327
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:361 src/plm/core/model/Game.java:362
+#: src/plm/core/model/Game.java:362 src/plm/core/model/Game.java:363
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "无法打开课程{0}: class Main not found"
 
-#: src/plm/core/model/Game.java:363
+#: src/plm/core/model/Game.java:364
 #, java-format
 msgid "Load lesson {0}"
 msgstr "读取课程{0}"
 
-#: src/plm/core/model/Game.java:379
+#: src/plm/core/model/Game.java:380
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
 
-#: src/plm/core/model/Game.java:380
+#: src/plm/core/model/Game.java:381
 msgid "Broken lesson"
 msgstr "跳出课程"
 
-#: src/plm/core/model/Game.java:512
+#: src/plm/core/model/Game.java:513
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -666,48 +666,48 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:520
+#: src/plm/core/model/Game.java:521
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/plm/core/model/Game.java:562
+#: src/plm/core/model/Game.java:563
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:990
+#: src/plm/core/model/Game.java:991
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:991
+#: src/plm/core/model/Game.java:992
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:995
+#: src/plm/core/model/Game.java:996
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:996
+#: src/plm/core/model/Game.java:997
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1000
+#: src/plm/core/model/Game.java:1001
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1001
+#: src/plm/core/model/Game.java:1002
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1006
+#: src/plm/core/model/Game.java:1007
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -716,7 +716,7 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1010
+#: src/plm/core/model/Game.java:1011
 msgid "C is still experimental"
 msgstr ""
 
@@ -1216,8 +1216,8 @@ msgstr ""
 #: src/plm/core/ui/ExercisePassedDialog.java:59
 #, java-format
 msgid ""
-"<html>Congratulations, you passed this exercise.<br>({0} tests passed)"
-"<br>Which exercise will you do now?</html>"
+"<html>Congratulations, you passed this exercise.<br>({0} tests "
+"passed)<br>Which exercise will you do now?</html>"
 msgstr ""
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
