@@ -150,7 +150,7 @@ public class Game implements IWorldView {
 	private Locale locale;
 	public I18n i18n;
 	
-	public Game(String userUUID, LogHandler logger, Locale locale) {
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage) {
 		this.logger = logger;
 		this.locale = locale;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
@@ -169,7 +169,6 @@ public class Game implements IWorldView {
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
 
-		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
