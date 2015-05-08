@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-02-14 21:21+0100\n"
-"PO-Revision-Date: 2015-03-22 23:57-0300\n"
+"PO-Revision-Date: 2015-02-14 21:24+0100\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1336,6 +1336,11 @@ msgid ""
 "instructions understood by your buggle can be found in \"Help/About this "
 "world\"."
 msgstr ""
+"Use seu pincel para marcar o chão à medida em que anda. Comece a\n"
+"marcar o chão com <code>brushDown()</code>, e pare com\n"
+"<code>brushUp()</code> (e.g., para entrar na sua casa sem marcar o\n"
+"chão). A lista completa de todas as instruções que o buggle entende\n"
+"pode ser encontrada em \"Ajuda/Sobre este mundo\"."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:75
@@ -1649,7 +1654,7 @@ msgstr ""
 msgid ""
 "The condition can be a <code>[!c]int[/!][!java]boolean[/!][!scala|"
 "python]Boolean[/!]</code> variable (we will come back on variables in a "
-"latter exercise, don't worry) or an arithmetic test, such as <code>x == 5</"
+"later exercise, don't worry) or an arithmetic test, such as <code>x == 5</"
 "code>, which checks whether the current value of <code>x</code> is 5, or "
 "such as <b>!=</b> (checking inequality, that is, returning [!c]1[/!][!java|"
 "scala]true[/!][!python]True[/!] only if the left-hand side is different from "
@@ -2059,7 +2064,7 @@ msgid ""
 "strings of chars. If you want to use a data several times, you need to store "
 "it within a <i>variable</i>, which is a memory cell containing a value: you "
 "put your data (say the value '5') in the variable (say 'length'), and you "
-"can retrieve it latter when you need it. That's very similar to a box of "
+"can retrieve it later when you need it. That's very similar to a box of "
 "label 'gift' in which you would put some stuff, like a bottle of perfume "
 "\"Channel N°5\"."
 msgstr ""
@@ -2299,14 +2304,14 @@ msgid ""
 "As you can see, the variables are not <b>typed</b> in Python, which means "
 "that they are not specialized in any type of data.  A given variable store "
 "any type of data of a given type: you can store a number in a variable and "
-"latter on store a number in the same variable.  The values themselves are "
+"later on store a number in the same variable.  The values themselves are "
 "still typed, but not the variable. Python is said to be <b>dynamically "
 "typed</b>."
 msgstr ""
 "As you can see, the variables are not <b>typed</b> in Python, which means "
 "that they are not specialized in any type of data.  A given variable store "
 "any type of data of a given type: you can store a number in a variable and "
-"latter on store a number in the same variable.  The values themselves are "
+"later on store a number in the same variable.  The values themselves are "
 "still typed, but not the variable. Python is said to be <b>dynamically "
 "typed</b>."
 
@@ -5858,6 +5863,11 @@ msgid ""
 "worlds). Add a parameter to your <code>isFacingTrail()</code> method to only "
 "follow the requested color, as the other colors lead to dead ends..."
 msgstr ""
+"Cuidado para não seguir pistas falsas! O método <code>hunt()</code>\n"
+"recebe um parâmetro para dizer que cor seguir (e não é o mesmo em\n"
+"todos os mundos). Adicione um parâmetro ao seu método\n"
+"<code>isFacingTrail()</code> para apenas seguir a cor requisitada,\n"
+"pois as outras cores vão levar a becos sem saída..."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
@@ -11022,6 +11032,8 @@ msgid ""
 "Returns the current position of the turtle.  Note that the point (0,0) is on "
 "the top left corner, as it is often the case in Computer Science."
 msgstr ""
+"Retorna a posição atual da tartaruga. Observe que o ponto (0,0) está\n"
+"no canto superior esquerdo, como é comum na ciência da computação."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:27
@@ -11209,7 +11221,7 @@ msgstr "Retorna se a tartaruga atual está selecionada na interface gráfica."
 #. type: Content of: <h3>
 #: src/lessons/turtleart/Main.html:2 src/lessons/turtleart/short_desc.html:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Turtle Art"
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:4
@@ -11218,14 +11230,22 @@ msgid ""
 "to draw nice figures on computer.  This lesson allows you to explore some of "
 "the classical figures, and draw your own."
 msgstr ""
+"Desde sua concepção nos anos 60, a tartaruga do LOGO fascinou por sua\n"
+"habilidade de desenhar belas figuras no computador. Este lição permite\n"
+"que você explore algumas das figuras clássicas, e desenhe as suas\n"
+"próprias."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:7
+#, fuzzy
 msgid ""
 "The language's syntax is absolutely not presented, but if you know a bit of "
 "it or if someone tells you, you can take these exercises even if you are an "
 "absolute beginner in programming."
 msgstr ""
+"A sintaxe da linguagem é \"absolutely not presented\", mas se você\n"
+"conhece um pouco ou se alguém te mostrar, você pode tentar estes\n"
+"exercícios mesmo sendo um completo iniciante em programação."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:10
@@ -11233,6 +11253,8 @@ msgid ""
 "Please send us your best contributions so that they get added to this "
 "gallery to inspire the next ones."
 msgstr ""
+"Por favor nos mande suas melhores contribuições para que sejam\n"
+"adicionadas a esta galeria para inspirar os próximos usuários."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:16
@@ -11243,6 +11265,14 @@ msgid ""
 "shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
 "shapes-challenges.html</a>."
 msgstr ""
+"Outros exercícios devem ser adicionados. Um conjunto completo de\n"
+"exercícios está disponível em\n"
+"<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
+"#sect4</a>\n"
+"ou em\n"
+"<a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges."
+"html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges."
+"html</a>."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
@@ -11250,6 +11280,8 @@ msgid ""
 "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
 "moving or by moving to the end of the arc."
 msgstr ""
+"Faltando: os built-ins arc() e arcTo(), que desenham um arco, tanto\n"
+"movendo ou sem mover para o final do arco."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:3
@@ -11257,6 +11289,8 @@ msgid ""
 "Draw beautiful figures with the Logo turtle, and learn programming while "
 "playing."
 msgstr ""
+"Desenhe belas figuras com a tartaruga do Logo, e aprenda a programar\n"
+"enquanto brinca."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:6
@@ -11265,6 +11299,9 @@ msgid ""
 "choose, but no exhaustive programming practice is required to take this "
 "lesson."
 msgstr ""
+"Você deve saber a sintaxe básica da linguagem de programação que\n"
+"escolher, mas técnicas avançadas de programação não são necessárias\n"
+"para fazer esta lição."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:2
@@ -11283,6 +11320,13 @@ msgid ""
 "ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
 "scala]lists of integers (<code>List[Int]</code>).[/!]"
 msgstr ""
+"Este mundo permite que você experimente com listas recursivas, pois\n"
+"ele foi introduzido primeiro em Lisp. É muito similar ao BatWorld, mas\n"
+"você deve escrever funções recursivas que funcionem em\n"
+"[!python|java]strings recursivas. pois [!thelang] não fornece tal\n"
+"contrução nativamente, o ConsWorld define listas recursivas do tipo\n"
+"<code>RecList</code>.[/!] [!scala]listas de inteiros\n"
+"(<code>List[Int]</code>).[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:12
@@ -11294,6 +11338,13 @@ msgid ""
 "tail</code>. Of course, the empty list has no head nor the tail, so trying "
 "to access these elements will result in an (unpleasant) error message."
 msgstr ""
+"Qualquer lista dada é ou a lista vazia (noted\n"
+"<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), ou um\n"
+"inteiro seguido de uma lista. Se uma lista não é vazia, você pode\n"
+"recuperar seu primeiro inteiro com <code>list.head</code> e a lista\n"
+"contendo os demais parâmetros com <code>list.tail</code>. Obviamente,\n"
+"a lista vazia não tem head nem tail, portanto, tentar acessar estes\n"
+"elementos vai resultar numa mensagem de erro (desagradável)."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:20
@@ -11303,6 +11354,10 @@ msgid ""
 "tail</code> Note that <code>::</code> is a generic operator in Scala to "
 "build lists.[/!]"
 msgstr ""
+"Para construir sua própria lista, você precisa concatenar um head e um\n"
+"tail como segue: [!java|python]<code>cons(head, tail)</code>[/!]\n"
+"[!scala]<code>head::tail</code> Observe que <code>::</code> é um\n"
+"operador genérico em Scala para construir listas.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:26
@@ -11310,40 +11365,41 @@ msgid ""
 "So, in summary, you can solve every exercises of this lesson with the "
 "following constructs."
 msgstr ""
+"Logo, resumindo, você pode resolver cada exercício desta lição com as\n"
+"seguintes construções."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
 msgid "<b>The empty list:</b>"
-msgstr ""
+msgstr "<b>A lista vazia:</b>"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
 #, fuzzy, no-wrap
-#| msgid "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
 msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
-msgstr "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+msgstr "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 msgid "<b>Get the first element of <code>l</code></b>"
-msgstr ""
+msgstr "<b>Obtém o primeiro elemento de <code>l</code></b>"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 #, no-wrap
 msgid "l.head"
-msgstr ""
+msgstr "l.head"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 msgid "<b>Get the rest of the list</b>, when the first element is removed:"
-msgstr ""
+msgstr "<b>Obtém o resto da lista</b>, quando o primeiro elemento é removido:"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 #, no-wrap
 msgid "l.tail"
-msgstr ""
+msgstr "l.tail"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:33
@@ -11351,23 +11407,25 @@ msgid ""
 "<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
 "java|python]"
 msgstr ""
+"<b>Constrói uma lista</b> a partir de um <code>valor</code> e uma "
+"<code>lista</code>: [!java|python]"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
 #, no-wrap
 msgid "cons(value, list)"
-msgstr ""
+msgstr "cons(value, list)"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #, no-wrap
 msgid "value::list"
-msgstr ""
+msgstr "value::list"
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Main.html:2
 msgid "Recursive Lists"
-msgstr ""
+msgstr "Listas Recursivas"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Main.html:3
@@ -11376,6 +11434,10 @@ msgid ""
 "is certainly not the most pleasant lesson to do, but I think that it is the "
 "easiest of the PLM lessons dealing with recursion."
 msgstr ""
+"Esta lição contém um monte de exercícios clássicos com listas\n"
+"recursivas. Ele com certeza não é a lição mais agradável para fazer,\n"
+"mas das lições do PLM que lidam com recursão, eu acho esta a mais\n"
+"fácil."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/Main.html:10
@@ -11384,6 +11446,9 @@ msgid ""
 "Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
 "report them as an issue."
 msgstr ""
+"Novos exercícios podem ser propostos, como\n"
+"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf\n"
+"Se você conhecer outros, favor abra uma \"issue\" para relatar."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/Main.html:13
@@ -11398,11 +11463,21 @@ msgid ""
 "pass a given threshold, but that sounds very difficult too. Any idea is "
 "welcome."
 msgstr ""
+"Pode ser interessante verificar a complexidade assintótica do código\n"
+"do estudante, mas isto não parece fácil de fazer. Em Python e Java\n"
+"(onde fornecemos uma classe RecList feita à mão), podemos contar a\n"
+"quantidade de cons por exercício, mas não é fácil relacionar isto ao\n"
+"BatTest correto. Para Scala, parece ainda mais difícil pois usamos os\n"
+"operadores :: clássicos da linguagem. Vai ser difícil fazer uma\n"
+"sobreposição (\"override\") para adicionar um mecanismod e\n"
+"contagem. Outra solução seria garantir que a pilha de chamadas não\n"
+"passe de um dado limiar,  mas parece muito difícil de fazer\n"
+"também. Quaisquer ideias são bem-vindas."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Length.html:2
 msgid "Length"
-msgstr ""
+msgstr "Comprimento"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Length.html:3
@@ -11411,6 +11486,9 @@ msgid ""
 "length[!scala] (without using its <code>size</code> method, of course)[/!].  "
 "[!java|python]"
 msgstr ""
+"Dada uma [!scala]Lista[Int][/!][!java|python]lista recursiva[/!],\n"
+"retorna seu comprimento[!scala] (sem usar o seu método\n"
+"<code>size</code>, claro)[/!].  [!java|python]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
@@ -12321,23 +12399,24 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:2
 msgid "Dragon curve (1)"
-msgstr ""
+msgstr "Curva do Dragão (1)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:4
 msgid "The dragon curve is a classical example of recursive method."
-msgstr ""
+msgstr "A curva do dragão é um exemplo clássico de método recursivo."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:6
 msgid "The definition of this curve is the following:"
-msgstr ""
+msgstr "A definição desta curva é a seguinte:"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 msgstr ""
+"A curva do dragão de ordem 1 é um vetor entre dois pontos P e Q arbitrários,"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:8
@@ -12348,6 +12427,11 @@ msgid ""
 "right of the PQ vector. Thus, if P and Q coordinates are (x, y)  and (z, t), "
 "the coordinate (u, v) of R are given by:"
 msgstr ""
+"A curva do dragão de ordem n é a curva do dragão de ordem n-1 entre P\n"
+"e R, seguida da mesma curva de ordem n-1 entre Q e R, onde PRQ é um\n"
+"triângulo isósceles com o ângulo em R sendo um ângulo reto, e R\n"
+"situado a direita do vetor PQ. Logo, se as coordenadas P e Q são (x,\n"
+"y) e (z, t), as coordenadas (u, v) de R são dadas por:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:14
@@ -12357,11 +12441,13 @@ msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
 "v = (y + t)/2 - (z - x)/2\n"
 msgstr ""
+"u = (x + z)/2 + (t - y)/2\n"
+"v = (y + t)/2 - (z - x)/2\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:18
 msgid "The prototype of the method drawing the curve is the following:"
-msgstr ""
+msgstr "O protótipo do método desenhando a curva é o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19
@@ -12377,11 +12463,14 @@ msgid ""
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
 "between the turtle position and the point(z,t)."
 msgstr ""
+"Você deve usar o método <code>setPos(x,y)</code> para colocar sua\n"
+"tartaruga nas coordenadas (x,y) e o método <code>moveTo(z,t)</code>\n"
+"para desenhar uma linha entre a posição da tartaruga e o ponto (z,t)."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:2
 msgid "The dragon curve (2)"
-msgstr ""
+msgstr "A curva do dragão (2)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:4
@@ -12392,6 +12481,11 @@ msgid ""
 "the second recursive call. That is why we had to use the method "
 "<code>setPos()</code>"
 msgstr ""
+"A solução anterior \"induz\" que a tartaruga se teletransporta para\n"
+"outro local, ou pelo menos, que ela levanta a caneta durante o\n"
+"desenho. Na verdade, o final do desenho da primeira chamada recursiva\n"
+"não coincide com o começo da segunda chamada recursiva. É por isto que\n"
+"nós temos que usar o método <code>setPos()</code>"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:10
@@ -12400,6 +12494,10 @@ msgid ""
 "dragon curve without taking the pen up. For that, we need another recursive "
 "method drawing the mirror side of the curve."
 msgstr ""
+"Nesta lição, você vai escrever um método recursivo que permita\n"
+"desenhar a curva do dragão sem levantar a caneta. Para isto,\n"
+"precisamos de outro método recursivo que desenhe o lado espelhado da\n"
+"curva."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:14
@@ -12409,6 +12507,11 @@ msgid ""
 "<code>dragonReverse()</code> is defined recursively using itself and "
 "<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
 msgstr ""
+"O método <code>dragon()</code> é então definido recursivamente usando\n"
+"ele próprio e <code>dragonReverse()</code>. Da mesma forma, o método\n"
+"<code>dragonReverse()</code> é definido recursivamente usando ele\n"
+"próprio e <code>dragon()</code>. Este é, portanto, um exemplo de\n"
+"<i>recursão mútua</i>."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:21
@@ -12416,6 +12519,7 @@ msgid ""
 "The prototype of the <code>dragon()</code> method remains unchanged from "
 "previous exercise:"
 msgstr ""
+"O protótipo do método <code>dragon()</code> é o mesmo do exercício anterior:"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:25
@@ -12423,11 +12527,12 @@ msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
 msgstr ""
+"A coordenada do novo ponto (u, v) introduzida pelo <code>dragon()</code> é:"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:31
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
-msgstr ""
+msgstr "O protótipo do método <code>dragonReverse</code> é similar:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:32
@@ -12441,6 +12546,8 @@ msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
 "code> are:"
 msgstr ""
+"A coordenada do novo ponto (u, v) introduzida pelo <code>dragonReverse()</"
+"code> é:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:36
@@ -12449,6 +12556,8 @@ msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
 "v = (y + t)/2 + (z - x)/2\n"
 msgstr ""
+"u = (x + z)/2 - (t - y)/2\n"
+"v = (y + t)/2 + (z - x)/2\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:40
@@ -12458,12 +12567,16 @@ msgid ""
 "line painted by the <code>dragonReverse()</code> must be blue (<code>Color."
 "blue</code>)."
 msgstr ""
+"Para deixar o trabalho de cada um dos dois métodos recursivos mais\n"
+"visível, a linha pintada pelo <code>dragon()</code> deve ser vermelha\n"
+"(<code>Color.red</code>) enquanto que a linha pintada pelo\n"
+"<code>dragonReverse()</code> deve ser azul(<code>Color.blue</code>)."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/hanoi/Main.html:2
 #: src/lessons/recursion/hanoi/short_desc.html:2
 msgid "Hanoi towers"
-msgstr ""
+msgstr "Torres de Hanoi"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:3
@@ -12511,7 +12624,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:3
 msgid "Here comes the super classical exercise on recursion."
-msgstr ""
+msgstr "Aqui está o exercício super-clássico de recursão."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:5
@@ -12519,11 +12632,13 @@ msgid ""
 "This is an application exercise of recursion, that you should master to take "
 "this lesson."
 msgstr ""
+"Este é um exercício de aplicação em recursão, que você deve dominar\n"
+"para fazer esta lição."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:2
 msgid "Tower of Hanoi"
-msgstr ""
+msgstr "Torre de Hanoi"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:4
@@ -12534,6 +12649,12 @@ msgid ""
 "The puzzle starts with the disks in a neat stack in ascending order of size "
 "on one peg, the smallest at the top, thus forming a pyramid."
 msgstr ""
+"A Torre de Hanoi (ou Torres de Hanoi), também conhecida como Torre de\n"
+"Brahma (ou Torres de Brahma), é um quebra-cabeça ou jogo\n"
+"matemático. Consiste de três varas, e uma quantidade de discos de\n"
+"tamanhos diferentes que podem encaixar em qualquer das varas. O jogo\n"
+"começa com os discos todos em uma vara ordenados em ordem crescente, o\n"
+"menor em cima, formando uma pirâmide."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/HanoiBoard.html:10
@@ -12541,11 +12662,13 @@ msgid ""
 "The objective of the puzzle is to move the entire stack to another peg, "
 "obeying the following rules:"
 msgstr ""
+"O objetivo do jogo é mover a pilha completa para outra vara,\n"
+"obedecendo as seguintes regras:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:12
 msgid "Only one disk may be moved at a time."
-msgstr ""
+msgstr "Apenas um disco pode ser movido por vez."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:14
@@ -12554,6 +12677,8 @@ msgid ""
 "it onto another peg, on top of the other disks that may already be present "
 "on that peg."
 msgstr ""
+"Cada movimentação consiste em pegar o disco de cima de uma vara e\n"
+"colocá-lo em outra vara, no topo dos discos que já estiverem presentes."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:18
