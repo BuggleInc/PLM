@@ -1226,8 +1226,14 @@ public class Game implements IWorldView {
 		} catch (UserAbortException e) {
 			e.printStackTrace();
 		}
+		if(currentLesson != null) {
+			removeHumanLangListener(currentLesson.getCurrentExercise());
+		}
 		currentLesson = null;
 		lastExercise = null;
+		for(Lesson lesson: lessons.values()) {
+			removeHumanLangListener(lesson);
+		}
 		lessons.clear();		
 		loadedLessons.clear();
 		studentWork = new SessionDB(this);
