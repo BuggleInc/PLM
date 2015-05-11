@@ -1,20 +1,20 @@
 # Portuguese translations for PLM package
 # Copyright (C) 2014 Free Software Foundation, Inc.
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the PLM package.
 # Automatically generated, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-02-14 21:21+0100\n"
-"PO-Revision-Date: 2015-05-10 18:11-0300\n"
-"Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
+"POT-Creation-Date: 2015-05-03 20:55+0200\n"
+"PO-Revision-Date: 2015-05-11 20:31-0300\n"
+"Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -1649,36 +1649,26 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:64
-#, fuzzy
-#| msgid ""
-#| "The condition can be a <code>[!c]int[/!][!java]boolean[/!][!scala|"
-#| "python]Boolean[/!]</code> variable (we will come back on variables in a "
-#| "later exercise, don't worry) or an arithmetic test, such as <code>x == 5</"
-#| "code>, which checks whether the current value of <code>x</code> is 5, or "
-#| "such as <b>!=</b> (checking inequality, that is, returning [!c]1[/!][!"
-#| "java|scala]true[/!][!python]True[/!] only if the left-hand side is "
-#| "different from the right-hand side), <b>&lt;</b> (smaller than), <b>&gt;</"
-#| "b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> "
-#| "(larger or equal to)."
 msgid ""
 "The condition can be a <code>[!c]int[/!][!java]boolean[/!][!scala|"
 "python]Boolean[/!]</code> variable (we will come back on variables in a "
-"latter exercise, don't worry) or an arithmetic test, such as <code>x == 5</"
+"later exercise, don't worry) or an arithmetic test, such as <code>x == 5</"
 "code>, which checks whether the current value of <code>x</code> is 5, or "
 "such as <b>!=</b> (checking inequality, that is, returning [!c]1[/!][!java|"
 "scala]true[/!][!python]True[/!] only if the left-hand side is different from "
 "the right-hand side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), "
 "<b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
-"A condição pode ser uma variável <code>[!c]int[/!][!java]boolean[/!][!scala|"
-"python]Boolean[/!]</code> (vamos voltar a falar de variáveis num próximo "
-"exercício, não se preocupe) ou um teste aritmético, como <code>x == 5</"
-"code>, que verifica se o valor atual de <code>x</code> é 5, ou algo como <b>!"
-"=</b> (verifica inequação, ou seja, retorna [!c]1[/!][!java|scala]true[/!][!"
-"python]True[/!] apenas se o lado esquerdo é diferente do direito), <b>&lt;</"
-"b> (smaller than - menor que), <b>&gt;</b> (larger than - maior que), <b>&lt;"
-"=</b> (smaller or equal to - menor ou igual a), <b>&gt;=</b> (larger or "
-"equal to - maior ou igual a)."
+"A condição pode ser uma variável\n"
+"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>\n"
+"(vamos voltar a falar de variáveis num próximo exercício, não se\n"
+"preocupe) ou um teste aritmético, como <code>x == 5</code>, que\n"
+"verifica se o valor atual de <code>x</code> é 5, ou algo como\n"
+"<b>!=</b> (verificando inequação, ou seja, retornando\n"
+"[!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado\n"
+"esquerdo é diferente do lado direito), <b>&lt;</b> (menor que),\n"
+"<b>&gt;</b> (maior que), <b>&lt;=</b> (menor ou igual a), <b>&gt;=</b>\n"
+"(maior ou igual a)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:71
@@ -1982,70 +1972,6 @@ msgstr ""
 "Deixe cada buggle encontrar seu baggle adaptando o código que você escreveu "
 "no exercício anterior (copie e cole o que você fez antes se você quiser)."
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:2
-msgid "Lost in the Moria"
-msgstr "Perdido em Moria"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:4
-msgid ""
-"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
-"exit, and you will have to clear your way to the exit. Well of course these "
-"are only baggles and you could simply walk away, but it will be easier to "
-"program the buggles so that they move those \"rocks\" than convincing them "
-"to walk away without solving the problem. Dwarfs are sometimes really "
-"stubborns..."
-msgstr ""
-"Seus buggles ficaram presos nas minas de Moria! Algumas pedras estão "
-"bloqueando a saída, e você terá que limpar seu caminho para a saída. Bem, é "
-"claro que são apenas baggles e você pode simplesmente sair andando, mas será "
-"mais fácil programar seu buggle de forma que ele mova estas \"pedras\" do "
-"que convencer seu buggle que ele pode sair andando facilmente sem resolver o "
-"problema. Anões podem ser bem teimosos..."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:11
-msgid ""
-"So, you have to find the first baggle blocking the exit (simply walk to the "
-"east until you are over a baggle), take it and move it back to the other "
-"side of the tunnel (walk to the west while you are not over a baggle, and "
-"then move back one step to the east and drop your baggle), and iterate until "
-"you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world. That's only a few more steps away."
-msgstr ""
-"Bem, você tem que encontrar o primeiro baggle bloqueando a saída "
-"(simplemente ande para o leste até que você esteja sobre um baggle), pegue "
-"ele e mova para o outro lado do túnel (ande para o oeste enquanto você ainda "
-"não estiver sobre um baggle, e então mova-se de volta um passo para o leste "
-"e solte seu baggle), e repita até você encontrar a saída (ou seja, a parede "
-"com o muro para o lado leste). Depois disto, mova-se para fora como no mundo "
-"objetivo. São só mais uns passos."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:18
-msgid ""
-"To make things worse, you have to write a program that works for every "
-"buggle, even if writing a specific program for each of them would be easier. "
-"It seems that using <code>while</code> loops is the only solution to move "
-"the buggles correctly."
-msgstr ""
-"Para piorar ainda mais as coisas, você tem que escrever um programa que "
-"funcione para qualquer buggle, mesmo se escrever um programa específico para "
-"cada um deles for mais fácil. Parece que usar loops <code>while</code> é a "
-"única solução para mover os buggles corretamente."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:23
-msgid ""
-"Once you manage to escape this trap, you can move forward to the next "
-"exercise.  This exercise is a bit more complex, so you can also leave it for "
-"now and come back later if you don't get it right now."
-msgstr ""
-"Once you manage to escape this trap, you can move forward to the next "
-"exercise.  This exercise is a bit more complex, so you can also leave it for "
-"now and come back later if you don't get it right now."
-
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:3
 msgid ""
@@ -2068,21 +1994,12 @@ msgstr "Dados em [!thelang]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:10
-#, fuzzy
-#| msgid ""
-#| "In a program, you can use several <i>types</i> of data, such as integers "
-#| "or strings of chars. If you want to use a data several times, you need to "
-#| "store it within a <i>variable</i>, which is a memory cell containing a "
-#| "value: you put your data (say the value '5') in the variable (say "
-#| "'length'), and you can retrieve it later when you need it. That's very "
-#| "similar to a box of label 'gift' in which you would put some stuff, like "
-#| "a bottle of perfume \"Channel N°5\"."
 msgid ""
 "In a program, you can use several <i>types</i> of data, such as integers or "
 "strings of chars. If you want to use a data several times, you need to store "
 "it within a <i>variable</i>, which is a memory cell containing a value: you "
 "put your data (say the value '5') in the variable (say 'length'), and you "
-"can retrieve it latter when you need it. That's very similar to a box of "
+"can retrieve it later when you need it. That's very similar to a box of "
 "label 'gift' in which you would put some stuff, like a bottle of perfume "
 "\"Channel N°5\"."
 msgstr ""
@@ -2318,19 +2235,11 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:72
-#, fuzzy
-#| msgid ""
-#| "As you can see, the variables are not <b>typed</b> in Python, which means "
-#| "that they are not specialized in any type of data.  A given variable "
-#| "store any type of data of a given type: you can store a number in a "
-#| "variable and later on store a number in the same variable.  The values "
-#| "themselves are still typed, but not the variable. Python is said to be "
-#| "<b>dynamically typed</b>."
 msgid ""
 "As you can see, the variables are not <b>typed</b> in Python, which means "
 "that they are not specialized in any type of data.  A given variable store "
 "any type of data of a given type: you can store a number in a variable and "
-"latter on store a number in the same variable.  The values themselves are "
+"later on store a number in the same variable.  The values themselves are "
 "still typed, but not the variable. Python is said to be <b>dynamically "
 "typed</b>."
 msgstr ""
@@ -4021,12 +3930,12 @@ msgid "You're up."
 msgstr "Você está pronto."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:2
+#: src/lessons/welcome/array/search/IndexOfValue.html:2
 msgid "Searching for a given value"
 msgstr "Buscando por um dado valor"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:4
+#: src/lessons/welcome/array/search/IndexOfValue.html:4
 msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
@@ -4035,7 +3944,7 @@ msgstr ""
 "sua posição."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
+#: src/lessons/welcome/array/search/IndexOfValue.html:6
 msgid ""
 "To that extend, you should fill the method <code>indexOf()</code>, which "
 "parameters are the array to explore, and the value to search. If the value "
@@ -4048,7 +3957,7 @@ msgstr ""
 "retornar -1."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
+#: src/lessons/welcome/array/search/IndexOfValue.html:10
 msgid ""
 "The idea of the algorithm is to sweep over the whole array, checking the "
 "value of each cell. If it's the searched value, you should return the index "
@@ -4059,7 +3968,7 @@ msgstr ""
 "está sendo verificada."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
+#: src/lessons/welcome/array/search/IndexOfValue.html:14
 msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
@@ -4069,7 +3978,7 @@ msgstr ""
 "com 3."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
+#: src/lessons/welcome/array/search/IndexOfValue.html:17
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved using "
 "the <code>length</code> attribute. So, if your array is called <code>tab</"
@@ -4084,7 +3993,7 @@ msgstr ""
 "como uma variável dentro de outro objeto (no caso, a array)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
+#: src/lessons/welcome/array/search/IndexOfValue.html:22
 msgid ""
 "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
@@ -4092,7 +4001,7 @@ msgstr ""
 "code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
+#: src/lessons/welcome/array/search/IndexOfValue.html:24
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved with the "
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
@@ -4103,19 +4012,19 @@ msgstr ""
 "seu tamanho pode ser recuperado como <code>len(tab)</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
+#: src/lessons/welcome/array/search/IndexOfValue.html:28
 msgid ""
 "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
 msgstr ""
 "Logo, o último valor de uma array é dado por <code>tab[ len(tab) - 1]</code>."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:2
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:2
 msgid "Index of the maximum value"
 msgstr "ìndice do valor máximo"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:4
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:4
 msgid ""
 "In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
@@ -4124,7 +4033,7 @@ msgstr ""
 "maior valor."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:6
 msgid ""
 "For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
 "the array to explore. Should the array contain the searched value several "
@@ -4135,7 +4044,7 @@ msgstr ""
 "você deve retornar o índice da primeira ocorrência."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:10
 msgid ""
 "To solve this exercise, you should sweep over the whole array. For each "
 "value, if it's bigger than the biggest value you saw so far, you must save "
@@ -4149,12 +4058,12 @@ msgstr ""
 "célula."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:2
+#: src/lessons/welcome/array/search/AverageValue.html:2
 msgid "Average value"
 msgstr "Valor médio"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:5
+#: src/lessons/welcome/array/search/AverageValue.html:5
 msgid ""
 "The objective of this exercise is to compute the average value of the "
 "integer values stored in an array."
@@ -4163,7 +4072,7 @@ msgstr ""
 "armazenados numa array."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:7
+#: src/lessons/welcome/array/search/AverageValue.html:7
 msgid ""
 "You have to fill the body of the method <code>average()</code> which takes "
 "as parameter the array of integers of which it computes and returns the "
@@ -4174,7 +4083,7 @@ msgstr ""
 "Por favor note que este método deve retornar um inteiro."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:9
+#: src/lessons/welcome/array/search/AverageValue.html:9
 msgid ""
 "To compute the average value of an integer, it is necessary to traverse the "
 "whole array and to compute the sum of all its values (so you will need a "
@@ -4187,7 +4096,7 @@ msgstr ""
 "pelo tamanho da array."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:11
+#: src/lessons/welcome/array/search/AverageValue.html:11
 msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, <code>myarray.length</"
@@ -4199,7 +4108,7 @@ msgstr ""
 "<code>length</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:16
+#: src/lessons/welcome/array/search/AverageValue.html:16
 msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
@@ -4208,12 +4117,12 @@ msgstr ""
 "fácil como chamar <code>len(myarray)</code>."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:2
+#: src/lessons/welcome/array/search/MaxValue.html:2
 msgid "Maximal value"
 msgstr "Valor maximal"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:4
+#: src/lessons/welcome/array/search/MaxValue.html:4
 msgid ""
 "In this exercise, you must compute the maximal value contained in an array.  "
 "For that, fill the <code>maximum()</code> method, which parameter is the "
@@ -4224,7 +4133,7 @@ msgstr ""
 "para explorar."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:8
+#: src/lessons/welcome/array/search/MaxValue.html:8
 msgid ""
 "To compute this value, sweep over the whole parameter. For each value, if "
 "it's bigger than the biggest value you saw so far, you must save this value "
@@ -4238,30 +4147,12 @@ msgstr ""
 "array."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/Extrema.html:2
-msgid "Maxima and Minima"
-msgstr "Máximo e Mínimo"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/maxvalue/Extrema.html:4
-msgid ""
-"In this exercise, you must return the difference between the maxima (i.e., "
-"the largest value of the array) and the minima (i.e., its smallest value). "
-"The returned value is then a positive number.  Beware, you can only do one "
-"traversal of the array to gather all informations that you need."
-msgstr ""
-"Neste exercício, você deve retornar a diferença entre o máximo (i.e., o "
-"maior valor da array) e o mínimo (i.e., o menor valor). O valor retornado é "
-"então um número positivo. Mas atenção, você só pode percorrer o array uma "
-"vez para obter todas as informações de que necessita."
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:2
 msgid "Occurrence of a value"
 msgstr "Ocorrência de um valor"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:4
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:4
 msgid ""
 "In this exercise, you must compute the amount of occurrences of a given "
 "value in an array (that is, the amount of time that this value appears in "
@@ -4275,7 +4166,7 @@ msgstr ""
 "o número de ocorrências de <code>lookingFor</code> em <code>tab</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:9
 msgid ""
 "To compute this value, simply sweep over the array counting for the amount "
 "of cells containing the searched value. You thus need an extra variable for "
@@ -4284,6 +4175,52 @@ msgstr ""
 "Para calcular este valor, simplesmente parcorra a array contando a "
 "quantidade de células contendo o valor procurado. Você vai precisar de uma "
 "variável extra para isto."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/search/Extrema.html:2
+msgid "Maxima and Minima"
+msgstr "Máximo e Mínimo"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/search/Extrema.html:4
+msgid ""
+"In this exercise, you must return the difference between the maxima (i.e., "
+"the largest value of the array) and the minima (i.e., its smallest value). "
+"The returned value is then a positive number.  Beware, you can only do one "
+"traversal of the array to gather all informations that you need."
+msgstr ""
+"Neste exercício, você deve retornar a diferença entre o máximo (i.e., o "
+"maior valor da array) e o mínimo (i.e., o menor valor). O valor retornado é "
+"então um número positivo. Mas atenção, você só pode percorrer o array uma "
+"vez para obter todas as informações de que necessita."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:2
+msgid "Second Biggest Value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:4
+#, fuzzy
+msgid ""
+"In this exercise, you must compute the second maximal value contained in an "
+"array, i.e. the value that becomes the maximum if you remove every instance "
+"of the current maximum from the array."
+msgstr ""
+"Neste exercício, você deve calcular o segundo valor maximal contido\n"
+"numa array, ou seja o valor que se torna máximo se você remover cada\n"
+"instância do máximo atual da array."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:7
+msgid ""
+"As usual, you should gather the information in only one traversal of the "
+"array.  You can assume that the second biggest value actual exists (there is "
+"at least two distinct values in the array), and that all values in the array "
+"are greater than [!python] -100000000.[/!] [!java|scala]<code>Integer."
+"MIN_VALUE</code> (which is the smallest representable integer existing in [!"
+"thelang]).[/!]"
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -7277,6 +7214,70 @@ msgstr ""
 "uma olhada no mundo objetivo para mais detalhes da ordem a percorrer\n"
 "pedida."
 
+#. type: Content of: <h2>
+#: src/lessons/welcome/summative/Moria.html:2
+msgid "Lost in the Moria"
+msgstr "Perdido em Moria"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:4
+msgid ""
+"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
+"exit, and you will have to clear your way to the exit. Well of course these "
+"are only baggles and you could simply walk away, but it will be easier to "
+"program the buggles so that they move those \"rocks\" than convincing them "
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
+msgstr ""
+"Seus buggles ficaram presos nas minas de Moria! Algumas pedras estão "
+"bloqueando a saída, e você terá que limpar seu caminho para a saída. Bem, é "
+"claro que são apenas baggles e você pode simplesmente sair andando, mas será "
+"mais fácil programar seu buggle de forma que ele mova estas \"pedras\" do "
+"que convencer seu buggle que ele pode sair andando facilmente sem resolver o "
+"problema. Anões podem ser bem teimosos..."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:11
+msgid ""
+"So, you have to find the first baggle blocking the exit (simply walk to the "
+"east until you are over a baggle), take it and move it back to the other "
+"side of the tunnel (walk to the west while you are not over a baggle, and "
+"then move back one step to the east and drop your baggle), and iterate until "
+"you find the exit (that is, the wall to the east side). Afterward, move out "
+"as in the objective world. That's only a few more steps away."
+msgstr ""
+"Bem, você tem que encontrar o primeiro baggle bloqueando a saída "
+"(simplemente ande para o leste até que você esteja sobre um baggle), pegue "
+"ele e mova para o outro lado do túnel (ande para o oeste enquanto você ainda "
+"não estiver sobre um baggle, e então mova-se de volta um passo para o leste "
+"e solte seu baggle), e repita até você encontrar a saída (ou seja, a parede "
+"com o muro para o lado leste). Depois disto, mova-se para fora como no mundo "
+"objetivo. São só mais uns passos."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:18
+msgid ""
+"To make things worse, you have to write a program that works for every "
+"buggle, even if writing a specific program for each of them would be easier. "
+"It seems that using <code>while</code> loops is the only solution to move "
+"the buggles correctly."
+msgstr ""
+"Para piorar ainda mais as coisas, você tem que escrever um programa que "
+"funcione para qualquer buggle, mesmo se escrever um programa específico para "
+"cada um deles for mais fácil. Parece que usar loops <code>while</code> é a "
+"única solução para mover os buggles corretamente."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:23
+msgid ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise.  This exercise is a bit more complex, so you can also leave it for "
+"now and come back later if you don't get it right now."
+msgstr ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise.  This exercise is a bit more complex, so you can also leave it for "
+"now and come back later if you don't get it right now."
+
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
 msgid "The turmites"
@@ -7727,7 +7728,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:46
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7741,11 +7742,11 @@ msgstr ""
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:49
 #, fuzzy
 msgid "This is much more easier to read (although longer) than the following:"
-msgstr "This is much more easier to read (although longer) than the following:"
+msgstr "Isto é muito mais fácil de se ler (embora seja mais longo) do que o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:50
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7795,9 +7796,8 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:69
-#, fuzzy
 msgid "Bibliographical notes"
-msgstr "Bibliographical notes"
+msgstr "Notas bibliográficas"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:70
@@ -7821,7 +7821,7 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:2
 #, fuzzy
 msgid "Creating Turmites"
-msgstr "Creating Turmites"
+msgstr "Criando Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:4
@@ -7842,7 +7842,7 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:11
 #, fuzzy
 msgid "Current color"
-msgstr "Current color"
+msgstr "Cor atual"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14
@@ -8600,19 +8600,17 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
-#, fuzzy
 msgid "Show Tip (Pseudo-code)"
 msgstr "Mostrar Dica (Pseudo-código)"
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:41
-#, fuzzy
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
-msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
+msgstr "O pseudo-código do algoritmo BubbleSort é o seguinte:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:42
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "do: \n"
 "        For each i in [0,len-2]\n"
@@ -9881,6 +9879,7 @@ msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:23
+#: src/lessons/sort/pancake/BubblePancake.html:10
 msgid "I don't get it. I need some help."
 msgstr "Não compreendi. preciso de ajuda."
 
@@ -9895,8 +9894,9 @@ msgstr ""
 "a segunda maior para cima dela, e depois a menor para o topo e assim\n"
 "por diante."
 
-#. type: Attribute 'alt' of: <p><div>
+#. type: Attribute 'alt' of: <p><p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:28
+#: src/lessons/sort/pancake/BubblePancake.html:13
 msgid "The first tip was not enough. I need another one."
 msgstr "A primeira dica não foi suficiente. Preciso de outra."
 
@@ -9921,6 +9921,64 @@ msgstr ""
 #: src/lessons/sort/pancake/BasicPancake.html:31
 msgid "How could you reach this situation from the current one?"
 msgstr "Como você pode atingir esta situação a partir da atual?"
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/BubblePancake.html:2
+#, fuzzy
+#| msgid "Burned Pancakes"
+msgid "Bubble Pancakes"
+msgstr "Panquecas queimadas"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:4
+#, fuzzy
+#| msgid ""
+#| "This exercise is similar to the previous one: you have to reproduce the "
+#| "color pattern of the first cell into the other ones."
+msgid ""
+"This problem is similar to the previous: you have to sort the pancakes, the "
+"smallest at the top and the biggest at the bottom, except you can only flip "
+"them to sort."
+msgstr ""
+"Este exercício é similar ao anterior: você tem que reproduzir o padrão de "
+"cores da primeira célula nas outras."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:6
+msgid ""
+"The purpose here is to sort them using the bubble algorithm, where one "
+"pancake is moved to the bottom until it encounters a bigger one. In "
+"graphical representations, it looks like a bubble takes the element and move "
+"them through the pile. This is where its name comes from."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:8
+msgid ""
+"Now, using pancakes makes it a little more difficult to write, because you "
+"have to find a way to swap only two pancakes at a time."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BubblePancake.html:11
+msgid ""
+"The bubble algorithm consists in browsing the whole pile from top to bottom, "
+"and making a comparision between two pancakes. Each time the top pancake is "
+"bigger than the one below, you have to swap them, then compare the bigger "
+"pancake you just swapped with one below, and so on. You have to browse "
+"through the entire pile until no swap has occurred, in which case the pile "
+"is sorted."
+msgstr ""
+
+#. type: Content of: <p><p><div>
+#: src/lessons/sort/pancake/BubblePancake.html:14
+msgid ""
+"If you don't understand the basic bubble sorting algorithm, you should try "
+"the exercises within the “Sorting algorithms” lesson. If you do, but can't "
+"figure a way to swap only two pancakes at a time, think of a situation where "
+"only two pancakes are swapped at a time, and find a way to reach that "
+"situation."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:2
@@ -16127,17 +16185,6 @@ msgstr ""
 #~ "<a href=\"plm://lessons.lightbot\">LightBot</a> neste pequeno jogo, você "
 #~ "deve programar graficamente um pequeno robô dizendo para ele como "
 #~ "desligar as luzes. É de rachar a cuca do programador."
-
-#, fuzzy
-#~ msgid ""
-#~ "<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
-#~ "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
-#~ msgstr ""
-#~ "<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> Algumas "
-#~ "atividades desenvolvidas para o Sciences Manuelles du Numérique"
-
-#~ msgid "Lesson chooser"
-#~ msgstr "Selecionador de lições"
 
 #~ msgid ""
 #~ "This isn't a real lesson, it's here that you can select a lesson among "
