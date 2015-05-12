@@ -1,20 +1,20 @@
 # Portuguese translations for PLM package
 # Copyright (C) 2014 Free Software Foundation, Inc.
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the PLM package.
 # Automatically generated, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-05-03 20:55+0200\n"
-"PO-Revision-Date: 2015-02-14 21:24+0100\n"
-"Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
+"PO-Revision-Date: 2015-05-11 20:31-0300\n"
+"Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -1336,13 +1336,16 @@ msgid ""
 "instructions understood by your buggle can be found in \"Help/About this "
 "world\"."
 msgstr ""
+"Use seu pincel para marcar o chão à medida em que anda. Comece a\n"
+"marcar o chão com <code>brushDown()</code>, e pare com\n"
+"<code>brushUp()</code> (e.g., para entrar na sua casa sem marcar o\n"
+"chão). A lista completa de todas as instruções que o buggle entende\n"
+"pode ser encontrada em \"Ajuda/Sobre este mundo\"."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:75
-#, fuzzy
-#| msgid "Goal of this exercise"
 msgid "After this exercise"
-msgstr "Objetivo deste exercício"
+msgstr "Depois deste exercício"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:76
@@ -1656,15 +1659,16 @@ msgid ""
 "the right-hand side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), "
 "<b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
-"A condição pode ser uma variável <code>[!c]int[/!][!java]boolean[/!][!scala|"
-"python]Boolean[/!]</code> (vamos voltar a falar de variáveis num próximo "
-"exercício, não se preocupe) ou um teste aritmético, como <code>x == 5</"
-"code>, que verifica se o valor atual de <code>x</code> é 5, ou algo como <b>!"
-"=</b> (verifica inequação, ou seja, retorna [!c]1[/!][!java|scala]true[/!][!"
-"python]True[/!] apenas se o lado esquerdo é diferente do direito), <b>&lt;</"
-"b> (smaller than - menor que), <b>&gt;</b> (larger than - maior que), <b>&lt;"
-"=</b> (smaller or equal to - menor ou igual a), <b>&gt;=</b> (larger or "
-"equal to - maior ou igual a)."
+"A condição pode ser uma variável\n"
+"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>\n"
+"(vamos voltar a falar de variáveis num próximo exercício, não se\n"
+"preocupe) ou um teste aritmético, como <code>x == 5</code>, que\n"
+"verifica se o valor atual de <code>x</code> é 5, ou algo como\n"
+"<b>!=</b> (verificando inequação, ou seja, retornando\n"
+"[!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado\n"
+"esquerdo é diferente do lado direito), <b>&lt;</b> (menor que),\n"
+"<b>&gt;</b> (maior que), <b>&lt;=</b> (menor ou igual a), <b>&gt;=</b>\n"
+"(maior ou igual a)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:71
@@ -4198,18 +4202,14 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:4
 #, fuzzy
-#| msgid ""
-#| "In this exercise, you must compute the maximal value contained in an "
-#| "array.  For that, fill the <code>maximum()</code> method, which parameter "
-#| "is the array to explore."
 msgid ""
 "In this exercise, you must compute the second maximal value contained in an "
 "array, i.e. the value that becomes the maximum if you remove every instance "
 "of the current maximum from the array."
 msgstr ""
-"Neste exercício, você deve calcular o valor maximal contido numa array. Para "
-"isto, preencha o método <code>maximum()</code>, cujo parâmetro é a array "
-"para explorar."
+"Neste exercício, você deve calcular o segundo valor maximal contido\n"
+"numa array, ou seja o valor que se torna máximo se você remover cada\n"
+"instância do máximo atual da array."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:7
@@ -5446,7 +5446,7 @@ msgid ""
 "color passed in parameter sounds like a good start, but it is probably not "
 "enough."
 msgstr ""
-"Para isto, você tem que escrever um método <code>plantarFlores()</code>\n"
+"Para isto, você tem que escrever um método <code>growFlowers()</code>\n"
 "que não recebe parâmetros e nem retorna nenhum resultado. Como o\n"
 "padrão é um pouco complexo, você deve tentar decompor este desenho em\n"
 "sub-passos de forma que seu código permaneça curto e fácil de ler. Um\n"
@@ -5467,32 +5467,32 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:18
 msgid "<tt>[!scala|java|python]Color.[/!]RED</tt>"
-msgstr "<tt>[!scala|java|python]Cor.[/!]VERMELHO</tt>"
+msgstr "<tt>[!scala|java|python]Color.[/!]RED</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:19
 msgid "<tt>[!scala|java|python]Color.[/!]PINK</tt>"
-msgstr "<tt>[!scala|java|python]Cor.[/!]ROSA</tt>"
+msgstr "<tt>[!scala|java|python]Color.[/!]PINK</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:20
 msgid "<tt>[!scala|java|python]Color.[/!]CYAN</tt>"
-msgstr "<tt>[!scala|java|python]Cor.[/!]CIANO</tt>"
+msgstr "<tt>[!scala|java|python]Color.[/!]CYAN</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:21
 msgid "<tt>[!scala|java|python]Color.[/!]ORANGE</tt>"
-msgstr "<tt>[!scala|java|python]Cor.[/!]LARANJA</tt>"
+msgstr "<tt>[!scala|java|python]Color.[/!]ORANGE</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:22
 msgid "<tt>[!scala|java|python]Color.[/!]GREEN</tt>"
-msgstr "<tt>[!scala|java|python]Cor.[/!]VERDE</tt>"
+msgstr "<tt>[!scala|java|python]Color.[/!]GREEN</tt>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:23
 msgid "<tt>[!scala|java|python]Color.[/!]YELLOW</tt>"
-msgstr "<tt>[!scala|java|python]Cor.[/!]AMARELO</tt>"
+msgstr "<tt>[!scala|java|python]Color.[/!]YELLOW</tt>"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:2
@@ -5826,6 +5826,11 @@ msgid ""
 "worlds). Add a parameter to your <code>isFacingTrail()</code> method to only "
 "follow the requested color, as the other colors lead to dead ends..."
 msgstr ""
+"Cuidado para não seguir pistas falsas! O método <code>hunt()</code>\n"
+"recebe um parâmetro para dizer que cor seguir (e não é o mesmo em\n"
+"todos os mundos). Adicione um parâmetro ao seu método\n"
+"<code>isFacingTrail()</code> para apenas seguir a cor requisitada,\n"
+"pois as outras cores vão levar a becos sem saída..."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/bdr/BDR.html:2
@@ -7104,10 +7109,12 @@ msgid ""
 "(0,0)  is on the top left corner. This may seem surprising, but it is very "
 "often so in Computer Science."
 msgstr ""
+"Cuidado, a primeira linha e coluna são numeradas com 0 e não com 1, e\n"
+"o ponto (0,0) fica no canto superior esquerdo. Isto pode parecer\n"
+"estranho, mas é bem comum em ciência da computação."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:32
-#, fuzzy
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
@@ -7643,17 +7650,17 @@ msgid ""
 "by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
 "(currentColor)[/!]</code>."
 msgstr ""
-"Once again, you just have to write the <code>step()</code> method, in\n"
-"charge of doing one turmite's step. Once again, you should first find\n"
-"the rank of the current's cell ground color in the color sequence. But\n"
-"this time, the <code>rule</code> data depends both on the current\n"
-"color and the current state.  <code>rule</code> actually contains 3\n"
-"information in each situation: the color to write, the move to do, and\n"
-"the next state value. For example,\n"
-"[!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the\n"
-"informations to use when <code>state==1</code> and\n"
-"<code>color==0</code>.  In other worlds, you can retrieve the\n"
-"information relative to your current situation by using\n"
+"Novamente, você tem que simplesmente escrever o método\n"
+"<code>step()</code>, encarregado de fazer o turmite dar um\n"
+"passo. Novamente, você deve primeiro encontrar o rank da cor do chão\n"
+"da célula atual na sequência de cores. Mas agora, o \"<code>rule</code>\n"
+"data\" depende tanto da cor atual quanto do estado atual.\n"
+"\"<code>rule</code>\" na verdade contém 3 informações em cada situação:\n"
+"a cor a escreve, o movimento a fazer e o valor do próximo estado. Por\n"
+"exemplo, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contém as\n"
+"informações para usar quando <code>state==1</code> e\n"
+"<code>color==0</code>. Em outros mundos, você pode recuperar a\n"
+"informação relativa à sua situação atual usando\n"
 "<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
 "(currentColor)[/!]</code>."
 
@@ -7669,14 +7676,14 @@ msgid ""
 "in a future state). Finally, the third integer is the next <code>state</"
 "code> value to go into after this iteration."
 msgstr ""
-"Each such information set contains 3 values. The first one is the rank\n"
-"of the color to write on the ground. The second is the move to do,\n"
-"with the following notation: 0=stop, 1=noturn, 2=left, 4=u-turn,\n"
-"8=right. Note that if the command is stop, you shouldn't even move\n"
-"forward on that step (but you shouldn't stop your program either: the\n"
-"next steps can do something else in a future state). Finally, the\n"
-"third integer is the next <code>state</code> value to go into after\n"
-"this iteration."
+"Cada um deste conjunto de informações contém 3 valores. O primeiro é o\n"
+"rank da cor para escrever no chão. O segundo é o movimento para fazer,\n"
+"com a seguinte notação: 0=stop, 1=noturn, 2=left, 4=u-turn,\n"
+"8=right. Observe que se o comando é stop, você não pode se mover nem\n"
+"para a frente neste passo (mas você não pode parar o programa também:\n"
+"os próximos passos podem fazer algo mais num estado\n"
+"futuro). Finalmente, o terceiro inteiro é o próximo valor do\n"
+"<code>state</code> a ir dentro da próxima iteração."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:32
@@ -7721,7 +7728,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:46
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7735,11 +7742,11 @@ msgstr ""
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:49
 #, fuzzy
 msgid "This is much more easier to read (although longer) than the following:"
-msgstr "This is much more easier to read (although longer) than the following:"
+msgstr "Isto é muito mais fácil de se ler (embora seja mais longo) do que o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:50
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7789,9 +7796,8 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:69
-#, fuzzy
 msgid "Bibliographical notes"
-msgstr "Bibliographical notes"
+msgstr "Notas bibliográficas"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:70
@@ -7815,7 +7821,7 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:2
 #, fuzzy
 msgid "Creating Turmites"
-msgstr "Creating Turmites"
+msgstr "Criando Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:4
@@ -7836,7 +7842,7 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:11
 #, fuzzy
 msgid "Current color"
-msgstr "Current color"
+msgstr "Cor atual"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14
@@ -8544,7 +8550,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:13
-#, fuzzy
 msgid ""
 "When your algorithm diverges from the expectation, understanding the "
 "difference between your code and the expected solution can reveal very "
@@ -8553,22 +8558,20 @@ msgid ""
 "contextual menu (right click)  to switch from the the view of the current "
 "state to the view of its history."
 msgstr ""
-"When your algorithm diverges from the expectation, understanding the "
-"difference between your code and the expected solution can reveal very "
-"difficult. To help in this process, it is posible to graphically explore the "
-"history of your sorting algorithm. Switch to the Objective view and use the "
-"contextual menu (right click)  to switch from the the view of the current "
-"state to the view of its history."
+"Quando seu algoritmo divergge das expectativas, entender a diferença\n"
+"entre seu código e a solução esperada pode ser muito difícil. Para\n"
+"ajudar neste processo, é possível explorar graficamente a história de\n"
+"seu algoritmo de ordenação. Alterne para a visão Objetivo e use o menu\n"
+"contextual (clique com o botão direito) para alternar da visão do\n"
+"estado atual para a visão de seu histórico."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:28
-#, fuzzy
 msgid "First attempt at BubbleSort"
-msgstr "First attempt at BubbleSort"
+msgstr "Primeira tentativa no BubbleSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:30
-#, fuzzy
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -8583,33 +8586,31 @@ msgid ""
 msgstr ""
 "O primeiro algoritmo de ordenação é o mais simples: Bubble sort\n"
 "consiste em progressivamente mover o menor elemento da array,\n"
-"como se eles fossem bolhas de ar subindo para a superfície de um líquido.\n"
+"como se fossem bolhas de ar subindo para a superfície de um líquido.\n"
 "O algoritmo percorre a array e compara qualquer par de elementos "
 "adjacentes.\n"
-"Se dois elementos adjacentes estiverem desordenados, eles são alternados.\n"
-"Once the array was completely traversed, the operation starts\n"
-"again from the beginning. When no elements were sorted after a full\n"
-"traversal, it means that the array is completely sorted: the algorithm\n"
-"can stop.  Bubble sort is studied because of its simplicity, but it is\n"
-"almost never used in practice because of its bad performance (O(n^2)\n"
-"on average)."
+"Se dois elementos adjacentes estiverem fora de ordem, eles são alternados.\n"
+"Quando a array estiver completamente percorrida, a operação começa de\n"
+"novo do começo. Quando nenhum elemento for ordenado após uma passagem\n"
+"completa, significa que a array está completamente ordenada: e o\n"
+"algoritmo pode parar.  Bubble sort é estudado por causa da sua\n"
+"simplicidade, mas quase nunca é usado na prática por causa de seu\n"
+"baixo desempenho (O(n^2) em média)."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
-#, fuzzy
 msgid "Show Tip (Pseudo-code)"
-msgstr "Show Tip (Pseudo-code)"
+msgstr "Mostrar Dica (Pseudo-código)"
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:41
-#, fuzzy
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
-msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
+msgstr "O pseudo-código do algoritmo BubbleSort é o seguinte:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:42
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "do: \n"
 "        For each i in [0,len-2]\n"
@@ -10613,6 +10614,12 @@ msgid ""
 "<code>0</code> is the dark blue one while the base <code>1</code> is the "
 "fuscia one."
 msgstr ""
+"As cores são representadas por inteiros, entre <code>0</code> e\n"
+"<code>quantidade de bases -1</code>.  O espaço vazio é representado por um\n"
+"valor especial <code>-1</code>. A cor de cada base é  seu rank. Logo,\n"
+"a base <code>1</code> é de cor <code>1</code>. Na interface gráfica, a\n"
+"base <code>0</code> é a azul escura enquanto que a base <code>1</code>\n"
+"é a fuscia."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:9
@@ -10620,11 +10627,14 @@ msgid ""
 "Once every players on the field are in their home base, the hole should be "
 "in the last base, that is of rank <code>getBasesAmount()-1</code>."
 msgstr ""
+"Uma vez que todos os jogadores no campo estejam em suas bases, o\n"
+"espaço vazio deve estar na última base, ou seja, a de rank\n"
+"<code>getBasesAmount()-1</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:12
 msgid "Functions to retrieve the world's dimensions"
-msgstr ""
+msgstr "FFunções para recuperar as dimensões do mundo"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:14
@@ -10635,7 +10645,7 @@ msgstr "[!java|c]int [/!]getQuantidadeDeBases() [!scala]:Int[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:15
 msgid "Returns the amount of bases on this field."
-msgstr ""
+msgstr "Retorna a quantidade de bases neste campo."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:17
@@ -10646,12 +10656,12 @@ msgstr "[!java|c]int [/!]getQuantidadeDePosições() [!scala]:Int[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:18
 msgid "Returns the amount of player's positions per base on this field."
-msgstr ""
+msgstr "Retorna a quantidade de posições de jogadores por base neste campo."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:20
 msgid "Functions to retrieve the world's state"
-msgstr ""
+msgstr "Funções para recuperar o estado do mundo"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:22
@@ -10662,18 +10672,18 @@ msgstr "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:23
 msgid "Returns the base in which the hole is located."
-msgstr ""
+msgstr "Retorna a base na qual o espaço vazio está localizado."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:25
 #, no-wrap
 msgid "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getPosiçãoDoBuraco() [!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:26
 msgid "Returns the hole position within its base"
-msgstr ""
+msgstr "Retorna a posição do espaço vazio na sua base"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:28
@@ -10684,12 +10694,13 @@ msgstr "[!java|c]int [/!]getCorDoJogador([!java|c]int [/!]base[!scala]:Int[/!], 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:29
 msgid "Returns the color of the player at a given location."
-msgstr ""
+msgstr "Retorna a cor do jogador numa dada posição."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:32
+#, fuzzy
 msgid "Returns whether all players of the field are at home."
-msgstr ""
+msgstr "Retorna se todos os jogadores em campo estão em seus \"home\"."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:34
@@ -10699,13 +10710,14 @@ msgstr "[!java]boolean [/!][!c]int [/!]baseEstáOrdenada([!java|c]int [/!]base) 
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:35
+#, fuzzy
 msgid "Returns whether all players of a given base are at home."
-msgstr ""
+msgstr "Retorna se todos os jogadores de uma dada base estão em \"home\"."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:39
 msgid "Functions to change the world"
-msgstr ""
+msgstr "Funções para mudar o mundo"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:41
@@ -10719,11 +10731,14 @@ msgid ""
 "Moves a given player into the hole. This throws an IllegalArgumentException "
 "if the specified player is not near the hole (at most one base away)."
 msgstr ""
+"Move um dado jogador para um espaço vazio. Vai levantar uma\n"
+"IllegalArgumentException se o jogador especificado não estiver próximo\n"
+"do espaço vazio (no máximo a uma base de distância)."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/NaiveBaseball.html:2
 msgid "Naive Rainbow Baseball"
-msgstr ""
+msgstr "Basebal do arco-íris simples"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:4
@@ -10735,6 +10750,13 @@ msgid ""
 "what they do happily: for a while, all attending buggle run at full speed in "
 "all directions around the field."
 msgstr ""
+"Hoje os buggles decidiram jogar um jogo de basebal, mas eles estão sem\n"
+"muita sorte, na verdade. Primeiro, eles esqueceram as regras,\n"
+"e... bem... eles não acharam as bolas e tacos de novo. Então eles\n"
+"decidiram \"adaptar um pouco\" as regras. Como eles não são bolas, tudo\n"
+"que podem fazer é correr ao redor do campo, o que fazem felizes da\n"
+"vida: Por um período, todos os buggles correram na máxima velocidade\n"
+"em todas as direções pelo campo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:10
@@ -10749,6 +10771,17 @@ msgid ""
 "rule that remains is that you can only run around the field, from one base "
 "to the next one, without crossing middle of the field."
 msgstr ""
+"Mas depois de algumas colisões eles decidiram inventar novas regras\n"
+"para organizar o jogo um pouco: eles fizeram um time por base e dois\n"
+"jogadores por time. Um dos times tem apenas um jogador de forma que\n"
+"sua base tem uma vaga. Então, os jogadores são despachados\n"
+"aleatoriamente entre as bases, e o jogo para eles é encontrar sua base\n"
+"de origem. O jogo como um todo pára quando todos os jogadores estão em\n"
+"suas bases de origem. Não existe um time vencedor: ou todo mundo ganha\n"
+"ou todo mundo perde. Na verdade, este jogo é muito diferente do\n"
+"basebal original. A única regra que sobrou é que você só pode correr\n"
+"ao redor do campo, de uma base para a próxima, sem cruzar o meio do\n"
+"campo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:18
@@ -10758,6 +10791,11 @@ msgid ""
 "round, from its position to the empty spot.  The maximal distance that a "
 "buggle can cover in one round is of one base."
 msgstr ""
+"Agora, eles estão pedindo a você que ajude eles a decidir quem deve se\n"
+"mover de forma que cada jogador retorne à sua base de origem. Apenas\n"
+"um buggle pode se mover por rodada, de sua posição para um espaço\n"
+"vazio. A distância máxima que um buggle pode percorrer em uma rodada é\n"
+"de uma base."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:22
@@ -10769,11 +10807,17 @@ msgid ""
 "same base than the empty spot can change its position, but that's not really "
 "helping."
 msgstr ""
+"Logo, em cada turno, o espaço vazio fica em uma base (digamos\n"
+"<code>B</code>), e você deve decidir que buggle vai entrar neste\n"
+"espaço vazio. Existem quatro candidatos (dois de base <code>B-1</code>\n"
+"e dois da base <code>B+1</code>). Na verdade, existe um quinto\n"
+"candidato pois o buggle que está na mesma base que o espaço vazio pode\n"
+"mudar de posição, mas isto não ajuda muito."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/NaiveBaseball.html:27
 msgid "The Naïve algorithm"
-msgstr ""
+msgstr "O algoritmo simplório"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:29
@@ -10785,6 +10829,13 @@ msgid ""
 "distance to cover to reach its base (turning clockwise). Click on the demo "
 "button: this works rather well in practice."
 msgstr ""
+"Neste exercício, vamos primeiramente explorar um algoritmo muito\n"
+"simples. Para decidir qual dos quatro buggles candidatos deve entrar\n"
+"no espaço vazio, vamos primeiro nos restringir e decidir que os\n"
+"buggles só podem andar no sentido horário. Então, dos dois candidatos\n"
+"restantes, pegamos o que tem a maior distância a percorrer para\n"
+"alcançar sua base (no sentido horário). Clique no botão demo: isto\n"
+"funciona melhor na prática."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:35
@@ -10797,6 +10848,14 @@ msgid ""
 "that should enter the empty spot, just use the <code>move</code> method on "
 "it, and iterate."
 msgstr ""
+"É difícil encontrar um algoritmo simples para este problema: Como não\n"
+"está ordenado, busque pela base contendo os buggles candidatos: se o\n"
+"vazio estiver na base <code>B</code>, será a base <code>B+1</code>,\n"
+"módulo a quantidade de bases. Então, calcule a distância que cada\n"
+"buggle daquela base ainda tem que andar para atingir sua própria base\n"
+"(0 se já estiver na própria base). Uma vez que você encontra o buggle\n"
+"que deve entrar no vazio, simplesmente use o método <code>move</code>\n"
+"nele, e itere."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:41
@@ -10807,11 +10866,18 @@ msgid ""
 "draw pictures on a paper to cover all possible cases. It should not be that "
 "difficult either: there is not that many cases after all."
 msgstr ""
+"A principal dificuldade deve ser obter corretamente as poucas\n"
+"equações: determinar a base próxima do espaço vazio deve ser fácil,\n"
+"mas determinar a distância que um jogador tem que cobrir pode se\n"
+"revelar um pouco desafiadora. Não hesite em desenhar esboços num papel\n"
+"para cobrir todas as possibilidades. Não vai ser tão difícil no final\n"
+"das contas: não existem tantos casos assim."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/SelectBaseball.html:2
+#, fuzzy
 msgid "Selection Baseball"
-msgstr ""
+msgstr "Selection Baseball"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:4
@@ -10823,12 +10889,20 @@ msgid ""
 "exercise is one of these unfortunate situations that drives our previous "
 "algorithm crazy."
 msgstr ""
+"O algoritmo anterior é muito agradável: ele é muito simples e muito\n"
+"rápido de implementar, mas infelizmente, ele é também bastante errado!\n"
+"Em alguns casos, ele nunca pára, o que é obviamente ruim. Se você não\n"
+"acredita, simplesmente copie e cole seu código anterior, e aperte no\n"
+"botão Rodar. O primeiro mundo deste exercício é uma destas situações\n"
+"infelizes que que deixam endoidam o algoritmo anterior."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:10
 msgid ""
 "So we have to find another algorithm, preferably one that works in all cases."
 msgstr ""
+"Portanto temos que encontrar outro algoritmo, preferencialmente um que\n"
+"funcione em todos os casos."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:12
@@ -10839,6 +10913,12 @@ msgid ""
 "make sure that the players are sorted by their colors and you're set. And "
 "while we are at it, let's generalize the game to allow more that 4 bases."
 msgstr ""
+"Para isto, a melhor solução é começar de um algoritmo bem conhecido ao\n"
+"invés de tentar inventar um novo do zero como nós fizemos. Quando você\n"
+"pensa um pouco sobre este problema, ele pode ser muito similar a um\n"
+"problema de ordenação: apenas se certifique de que todos os jogadores\n"
+"estão ordenados por suas cores. E enquanto fazemos isto, vamos\n"
+"generalizar o jogo para poder ter mais de 4 bases."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:18
@@ -11114,6 +11194,8 @@ msgid ""
 "Returns the current position of the turtle.  Note that the point (0,0) is on "
 "the top left corner, as it is often the case in Computer Science."
 msgstr ""
+"Retorna a posição atual da tartaruga. Observe que o ponto (0,0) está\n"
+"no canto superior esquerdo, como é comum na ciência da computação."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:27
@@ -11301,7 +11383,7 @@ msgstr "Retorna se a tartaruga atual está selecionada na interface gráfica."
 #. type: Content of: <h3>
 #: src/lessons/turtleart/Main.html:2 src/lessons/turtleart/short_desc.html:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Turtle Art"
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:4
@@ -11310,6 +11392,10 @@ msgid ""
 "to draw nice figures on computer.  This lesson allows you to explore some of "
 "the classical figures, and draw your own."
 msgstr ""
+"Desde sua concepção nos anos 60, a tartaruga do LOGO fascinou por sua\n"
+"habilidade de desenhar belas figuras no computador. Este lição permite\n"
+"que você explore algumas das figuras clássicas, e desenhe as suas\n"
+"próprias."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:7
@@ -11318,6 +11404,9 @@ msgid ""
 "it or if someone tells you, you can take these exercises even if you are an "
 "absolute beginner in programming."
 msgstr ""
+"A sintaxe da linguagem é não vai ser apresentada, mas se você\n"
+"conhece um pouco ou se alguém te mostrar, você pode tentar estes\n"
+"exercícios mesmo sendo um completo iniciante em programação."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:10
@@ -11325,6 +11414,8 @@ msgid ""
 "Please send us your best contributions so that they get added to this "
 "gallery to inspire the next ones."
 msgstr ""
+"Por favor nos mande suas melhores contribuições para que sejam\n"
+"adicionadas a esta galeria para inspirar os próximos usuários."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:16
@@ -11335,6 +11426,14 @@ msgid ""
 "shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
 "shapes-challenges.html</a>."
 msgstr ""
+"Outros exercícios devem ser adicionados. Um conjunto completo de\n"
+"exercícios está disponível em\n"
+"<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
+"#sect4</a>\n"
+"ou em\n"
+"<a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges."
+"html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges."
+"html</a>."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
@@ -11342,6 +11441,8 @@ msgid ""
 "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
 "moving or by moving to the end of the arc."
 msgstr ""
+"Faltando: os built-ins arc() e arcTo(), que desenham um arco, tanto\n"
+"movendo ou sem mover para o final do arco."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:3
@@ -11349,6 +11450,8 @@ msgid ""
 "Draw beautiful figures with the Logo turtle, and learn programming while "
 "playing."
 msgstr ""
+"Desenhe belas figuras com a tartaruga do Logo, e aprenda a programar\n"
+"enquanto brinca."
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:6
@@ -11357,13 +11460,15 @@ msgid ""
 "choose, but no exhaustive programming practice is required to take this "
 "lesson."
 msgstr ""
+"Você deve saber a sintaxe básica da linguagem de programação que\n"
+"escolher, mas técnicas avançadas de programação não são necessárias\n"
+"para fazer esta lição."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:2
 #, fuzzy
-#| msgid "Sorting World"
 msgid "ConsWorld"
-msgstr "Mundo da ordenação"
+msgstr "ConsWorld"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:4
@@ -11375,6 +11480,13 @@ msgid ""
 "ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
 "scala]lists of integers (<code>List[Int]</code>).[/!]"
 msgstr ""
+"Este mundo permite que você experimente com listas recursivas, pois\n"
+"ele foi introduzido primeiro em Lisp. É muito similar ao BatWorld, mas\n"
+"você deve escrever funções recursivas que funcionem em\n"
+"[!python|java]strings recursivas. pois [!thelang] não fornece tal\n"
+"contrução nativamente, o ConsWorld define listas recursivas do tipo\n"
+"<code>RecList</code>.[/!] [!scala]listas de inteiros\n"
+"(<code>List[Int]</code>).[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:12
@@ -11386,6 +11498,13 @@ msgid ""
 "tail</code>. Of course, the empty list has no head nor the tail, so trying "
 "to access these elements will result in an (unpleasant) error message."
 msgstr ""
+"Qualquer lista dada é ou a lista vazia (noted\n"
+"<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), ou um\n"
+"inteiro seguido de uma lista. Se uma lista não é vazia, você pode\n"
+"recuperar seu primeiro inteiro com <code>list.head</code> e a lista\n"
+"contendo os demais parâmetros com <code>list.tail</code>. Obviamente,\n"
+"a lista vazia não tem head nem tail, portanto, tentar acessar estes\n"
+"elementos vai resultar numa mensagem de erro (desagradável)."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:20
@@ -11395,6 +11514,10 @@ msgid ""
 "tail</code> Note that <code>::</code> is a generic operator in Scala to "
 "build lists.[/!]"
 msgstr ""
+"Para construir sua própria lista, você precisa concatenar um head e um\n"
+"tail como segue: [!java|python]<code>cons(head, tail)</code>[/!]\n"
+"[!scala]<code>head::tail</code> Observe que <code>::</code> é um\n"
+"operador genérico em Scala para construir listas.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:26
@@ -11402,40 +11525,41 @@ msgid ""
 "So, in summary, you can solve every exercises of this lesson with the "
 "following constructs."
 msgstr ""
+"Logo, resumindo, você pode resolver cada exercício desta lição com as\n"
+"seguintes construções."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
 msgid "<b>The empty list:</b>"
-msgstr ""
+msgstr "<b>A lista vazia:</b>"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:30
-#, fuzzy, no-wrap
-#| msgid "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+#, no-wrap
 msgid "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
-msgstr "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
+msgstr "[!java]null[/!][!scala]Nil[/!][!python]None[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 msgid "<b>Get the first element of <code>l</code></b>"
-msgstr ""
+msgstr "<b>Obtém o primeiro elemento de <code>l</code></b>"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 #, no-wrap
 msgid "l.head"
-msgstr ""
+msgstr "l.head"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 msgid "<b>Get the rest of the list</b>, when the first element is removed:"
-msgstr ""
+msgstr "<b>Obtém o resto da lista</b>, quando o primeiro elemento é removido:"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 #, no-wrap
 msgid "l.tail"
-msgstr ""
+msgstr "l.tail"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:33
@@ -11443,23 +11567,25 @@ msgid ""
 "<b>Build a list</b> from a <code>value</code> and a <code>list</code>: [!"
 "java|python]"
 msgstr ""
+"<b>Constrói uma lista</b> a partir de um <code>valor</code> e uma "
+"<code>lista</code>: [!java|python]"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
 #, no-wrap
 msgid "cons(value, list)"
-msgstr ""
+msgstr "cons(value, list)"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #, no-wrap
 msgid "value::list"
-msgstr ""
+msgstr "value::list"
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Main.html:2
 msgid "Recursive Lists"
-msgstr ""
+msgstr "Listas Recursivas"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Main.html:3
@@ -11468,6 +11594,10 @@ msgid ""
 "is certainly not the most pleasant lesson to do, but I think that it is the "
 "easiest of the PLM lessons dealing with recursion."
 msgstr ""
+"Esta lição contém um monte de exercícios clássicos com listas\n"
+"recursivas. Ele com certeza não é a lição mais agradável para fazer,\n"
+"mas das lições do PLM que lidam com recursão, eu acho esta a mais\n"
+"fácil."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/Main.html:10
@@ -11476,6 +11606,9 @@ msgid ""
 "Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
 "report them as an issue."
 msgstr ""
+"Novos exercícios podem ser propostos, como\n"
+"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf\n"
+"Se você conhecer outros, favor abra uma \"issue\" para relatar."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/Main.html:13
@@ -11490,11 +11623,21 @@ msgid ""
 "pass a given threshold, but that sounds very difficult too. Any idea is "
 "welcome."
 msgstr ""
+"Pode ser interessante verificar a complexidade assintótica do código\n"
+"do estudante, mas isto não parece fácil de fazer. Em Python e Java\n"
+"(onde fornecemos uma classe RecList feita à mão), podemos contar a\n"
+"quantidade de cons por exercício, mas não é fácil relacionar isto ao\n"
+"BatTest correto. Para Scala, parece ainda mais difícil pois usamos os\n"
+"operadores :: clássicos da linguagem. Vai ser difícil fazer uma\n"
+"sobreposição (\"override\") para adicionar um mecanismod e\n"
+"contagem. Outra solução seria garantir que a pilha de chamadas não\n"
+"passe de um dado limiar,  mas parece muito difícil de fazer\n"
+"também. Quaisquer ideias são bem-vindas."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Length.html:2
 msgid "Length"
-msgstr ""
+msgstr "Comprimento"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Length.html:3
@@ -11503,6 +11646,9 @@ msgid ""
 "length[!scala] (without using its <code>size</code> method, of course)[/!].  "
 "[!java|python]"
 msgstr ""
+"Dada uma [!scala]Lista[Int][/!][!java|python]lista recursiva[/!],\n"
+"retorna seu comprimento[!scala] (sem usar o seu método\n"
+"<code>size</code>, claro)[/!].  [!java|python]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
@@ -11541,10 +11687,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
-#, fuzzy
-#| msgid "Occurrence of a value"
 msgid "Occurrences"
-msgstr "Ocorrência de um valor"
+msgstr "Ocorrências"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Occurrence.html:3
@@ -11728,10 +11872,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Reverse.html:2
-#, fuzzy
-#| msgid "Inverse"
 msgid "Reverse"
-msgstr "Inversa"
+msgstr "Reverso"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Reverse.html:3
@@ -12042,7 +12184,7 @@ msgstr ""
 #: src/lessons/recursion/lego/koch/Koch.html:20
 #, fuzzy
 msgid "The pseudo-code of the general case is the following:"
-msgstr "The pseudo-code of the BubbleSort algorithm is the following:"
+msgstr "O pseudo-código do caso geral é o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/koch/Koch.html:22
@@ -12413,23 +12555,24 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:2
 msgid "Dragon curve (1)"
-msgstr ""
+msgstr "Curva do Dragão (1)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:4
 msgid "The dragon curve is a classical example of recursive method."
-msgstr ""
+msgstr "A curva do dragão é um exemplo clássico de método recursivo."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:6
 msgid "The definition of this curve is the following:"
-msgstr ""
+msgstr "A definição desta curva é a seguinte:"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 msgstr ""
+"A curva do dragão de ordem 1 é um vetor entre dois pontos P e Q arbitrários,"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:8
@@ -12440,6 +12583,11 @@ msgid ""
 "right of the PQ vector. Thus, if P and Q coordinates are (x, y)  and (z, t), "
 "the coordinate (u, v) of R are given by:"
 msgstr ""
+"A curva do dragão de ordem n é a curva do dragão de ordem n-1 entre P\n"
+"e R, seguida da mesma curva de ordem n-1 entre Q e R, onde PRQ é um\n"
+"triângulo isósceles com o ângulo em R sendo um ângulo reto, e R\n"
+"situado a direita do vetor PQ. Logo, se as coordenadas P e Q são (x,\n"
+"y) e (z, t), as coordenadas (u, v) de R são dadas por:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:14
@@ -12449,11 +12597,13 @@ msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
 "v = (y + t)/2 - (z - x)/2\n"
 msgstr ""
+"u = (x + z)/2 + (t - y)/2\n"
+"v = (y + t)/2 - (z - x)/2\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:18
 msgid "The prototype of the method drawing the curve is the following:"
-msgstr ""
+msgstr "O protótipo do método desenhando a curva é o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19
@@ -12469,11 +12619,14 @@ msgid ""
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
 "between the turtle position and the point(z,t)."
 msgstr ""
+"Você deve usar o método <code>setPos(x,y)</code> para colocar sua\n"
+"tartaruga nas coordenadas (x,y) e o método <code>moveTo(z,t)</code>\n"
+"para desenhar uma linha entre a posição da tartaruga e o ponto (z,t)."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:2
 msgid "The dragon curve (2)"
-msgstr ""
+msgstr "A curva do dragão (2)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:4
@@ -12484,6 +12637,11 @@ msgid ""
 "the second recursive call. That is why we had to use the method "
 "<code>setPos()</code>"
 msgstr ""
+"A solução anterior \"induz\" que a tartaruga se teletransporta para\n"
+"outro local, ou pelo menos, que ela levanta a caneta durante o\n"
+"desenho. Na verdade, o final do desenho da primeira chamada recursiva\n"
+"não coincide com o começo da segunda chamada recursiva. É por isto que\n"
+"nós temos que usar o método <code>setPos()</code>"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:10
@@ -12492,6 +12650,10 @@ msgid ""
 "dragon curve without taking the pen up. For that, we need another recursive "
 "method drawing the mirror side of the curve."
 msgstr ""
+"Nesta lição, você vai escrever um método recursivo que permita\n"
+"desenhar a curva do dragão sem levantar a caneta. Para isto,\n"
+"precisamos de outro método recursivo que desenhe o lado espelhado da\n"
+"curva."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:14
@@ -12501,6 +12663,11 @@ msgid ""
 "<code>dragonReverse()</code> is defined recursively using itself and "
 "<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
 msgstr ""
+"O método <code>dragon()</code> é então definido recursivamente usando\n"
+"ele próprio e <code>dragonReverse()</code>. Da mesma forma, o método\n"
+"<code>dragonReverse()</code> é definido recursivamente usando ele\n"
+"próprio e <code>dragon()</code>. Este é, portanto, um exemplo de\n"
+"<i>recursão mútua</i>."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:21
@@ -12508,6 +12675,7 @@ msgid ""
 "The prototype of the <code>dragon()</code> method remains unchanged from "
 "previous exercise:"
 msgstr ""
+"O protótipo do método <code>dragon()</code> é o mesmo do exercício anterior:"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:25
@@ -12515,11 +12683,12 @@ msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
 msgstr ""
+"A coordenada do novo ponto (u, v) introduzida pelo <code>dragon()</code> é:"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:31
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
-msgstr ""
+msgstr "O protótipo do método <code>dragonReverse</code> é similar:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:32
@@ -12533,6 +12702,8 @@ msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
 "code> are:"
 msgstr ""
+"A coordenada do novo ponto (u, v) introduzida pelo <code>dragonReverse()</"
+"code> é:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:36
@@ -12541,6 +12712,8 @@ msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
 "v = (y + t)/2 + (z - x)/2\n"
 msgstr ""
+"u = (x + z)/2 - (t - y)/2\n"
+"v = (y + t)/2 + (z - x)/2\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:40
@@ -12550,12 +12723,16 @@ msgid ""
 "line painted by the <code>dragonReverse()</code> must be blue (<code>Color."
 "blue</code>)."
 msgstr ""
+"Para deixar o trabalho de cada um dos dois métodos recursivos mais\n"
+"visível, a linha pintada pelo <code>dragon()</code> deve ser vermelha\n"
+"(<code>Color.red</code>) enquanto que a linha pintada pelo\n"
+"<code>dragonReverse()</code> deve ser azul(<code>Color.blue</code>)."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/hanoi/Main.html:2
 #: src/lessons/recursion/hanoi/short_desc.html:2
 msgid "Hanoi towers"
-msgstr ""
+msgstr "Torres de Hanoi"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:3
@@ -12603,7 +12780,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:3
 msgid "Here comes the super classical exercise on recursion."
-msgstr ""
+msgstr "Aqui está o exercício super-clássico de recursão."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:5
@@ -12611,11 +12788,13 @@ msgid ""
 "This is an application exercise of recursion, that you should master to take "
 "this lesson."
 msgstr ""
+"Este é um exercício de aplicação em recursão, que você deve dominar\n"
+"para fazer esta lição."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:2
 msgid "Tower of Hanoi"
-msgstr ""
+msgstr "Torre de Hanoi"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:4
@@ -12626,6 +12805,12 @@ msgid ""
 "The puzzle starts with the disks in a neat stack in ascending order of size "
 "on one peg, the smallest at the top, thus forming a pyramid."
 msgstr ""
+"A Torre de Hanoi (ou Torres de Hanoi), também conhecida como Torre de\n"
+"Brahma (ou Torres de Brahma), é um quebra-cabeça ou jogo\n"
+"matemático. Consiste de três varas, e uma quantidade de discos de\n"
+"tamanhos diferentes que podem encaixar em qualquer das varas. O jogo\n"
+"começa com os discos todos em uma vara ordenados em ordem crescente, o\n"
+"menor em cima, formando uma pirâmide."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/HanoiBoard.html:10
@@ -12633,11 +12818,13 @@ msgid ""
 "The objective of the puzzle is to move the entire stack to another peg, "
 "obeying the following rules:"
 msgstr ""
+"O objetivo do jogo é mover a pilha completa para outra vara,\n"
+"obedecendo as seguintes regras:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:12
 msgid "Only one disk may be moved at a time."
-msgstr ""
+msgstr "Apenas um disco pode ser movido por vez."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:14
@@ -12646,6 +12833,8 @@ msgid ""
 "it onto another peg, on top of the other disks that may already be present "
 "on that peg."
 msgstr ""
+"Cada movimentação consiste em pegar o disco de cima de uma vara e\n"
+"colocá-lo em outra vara, no topo dos discos que já estiverem presentes."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:18
@@ -12654,20 +12843,16 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/HanoiBoard.html:23
-#, fuzzy
-#| msgid ""
-#| "[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], [!java|"
-#| "c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]length[!scala]:Int[/!], "
-#| "[!java|c]int [/!]increment[!scala]:Int[/!])"
 msgid ""
 "Write the core of the method: <code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!"
 "java|c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], "
 "[!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!scala]:"
 "Int[/!])</code>"
 msgstr ""
-"[!java|c]void [/!]espiral([!java|c]int [/!]passos[!scala]:Int[/!], [!java|"
-"c]int [/!]ângulo[!scala]:Int[/!], [!java|c]int [/!]comprimento[!scala]:"
-"Int[/!], [!java|c]int [/!]incremento[!scala]:Int[/!])"
+"Escreva o núcleo do método: <code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!java|"
+"c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], [!"
+"java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!scala]:Int[/!])</"
+"code>"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:26
@@ -12749,18 +12934,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/InterleavedHanoi.html:8
-#, fuzzy
-#| msgid ""
-#| "<a name=\"Objectives\"> Complete the <code>hunt()</code> method. You "
-#| "probably want to copy over the <code>isFacingTrail()</code> method that "
-#| "you wrote in previous exercise.  </a>"
 msgid ""
 "You will probably need to reuse the <code>hanoi()</code> method that you "
 "wrote in the previous exercise."
 msgstr ""
-"<a name=\"Objetivos\"> Complete o método <code>caçar()</code>. Você não\n"
-"gostaria de copiar o método <code>estáDeFrenteParaRastro()</code> que\n"
-"você escreveu no exercício anterior?</a>"
+"Você provavelmente vai precisar reutilizar o método\n"
+"<code>hanoi()</code> que você escreveu no exercício anterior."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/InterleavedHanoi.html:10
@@ -12771,10 +12950,8 @@ msgstr ""
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/InterleavedHanoi.html:12
 #: src/lessons/recursion/hanoi/SplitHanoi1.html:12
-#, fuzzy
-#| msgid "Once this is done, the situation is the following:"
 msgid "If your initial situation is as follows:"
-msgstr "Uma vez isto feito, a situação é a seguinte:"
+msgstr "Se sua situação é a seguinte:"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/InterleavedHanoi.html:15
@@ -12895,10 +13072,8 @@ msgstr ""
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:15
-#, fuzzy
-#| msgid "I need an hint to start"
 msgid "I need a starter hint"
-msgstr "Preciso de uma dica para começar"
+msgstr "Preciso de uma dica de principiante"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:16
@@ -13078,10 +13253,8 @@ msgstr ""
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/LinearHanoi.html:20
-#, fuzzy
-#| msgid "The first tip was not enough. I need another one."
 msgid "That first tip was not enough"
-msgstr "A primeira dica não foi suficiente. Preciso de outra."
+msgstr "A primeira dica não foi suficiente"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/LinearHanoi.html:21
@@ -13412,10 +13585,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
-#, fuzzy, no-wrap
-#| msgid "[!java|c]int [/!]getRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getRaio([!java|c]int [/!]slot)[!scala]:Int[/!]"
+msgstr "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
@@ -16013,17 +16185,6 @@ msgstr ""
 #~ "<a href=\"plm://lessons.lightbot\">LightBot</a> neste pequeno jogo, você "
 #~ "deve programar graficamente um pequeno robô dizendo para ele como "
 #~ "desligar as luzes. É de rachar a cuca do programador."
-
-#, fuzzy
-#~ msgid ""
-#~ "<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
-#~ "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
-#~ msgstr ""
-#~ "<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> Algumas "
-#~ "atividades desenvolvidas para o Sciences Manuelles du Numérique"
-
-#~ msgid "Lesson chooser"
-#~ msgstr "Selecionador de lições"
 
 #~ msgid ""
 #~ "This isn't a real lesson, it's here that you can select a lesson among "
