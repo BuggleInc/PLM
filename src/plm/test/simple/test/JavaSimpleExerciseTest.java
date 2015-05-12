@@ -3,6 +3,7 @@ package plm.test.simple.test;
 import static org.mockito.Mockito.mock;
 
 import java.util.Locale;
+import java.util.UUID;
 
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
@@ -10,7 +11,7 @@ import plm.core.model.LogHandler;
 public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
 	public JavaSimpleExerciseTest() {
-		super(new Game(mock(LogHandler.class), new Locale("en")), Game.JAVA);
+		super(new Game(UUID.randomUUID().toString(), mock(LogHandler.class), new Locale("en"), "Java"), Game.JAVA);
 	}
 	
 	@Override

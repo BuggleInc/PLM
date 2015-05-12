@@ -388,4 +388,9 @@ public class ZipSessionKit implements ISessionKit {
 	public Game getGame() {
 		return game;
 	}
+
+	@Override
+	public void setUserUUID(String userUUID) { 
+		// Do nothing
+	}
 }

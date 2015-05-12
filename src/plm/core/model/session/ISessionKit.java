@@ -38,4 +38,6 @@ public interface ISessionKit {
 	
 	/** Removes all user content for all loaded lessons */
 	public void cleanLesson(File path, Lesson l);
+
+	public void setUserUUID(String userUUID);
 }
