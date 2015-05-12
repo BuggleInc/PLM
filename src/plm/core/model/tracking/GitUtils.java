@@ -46,8 +46,6 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import plm.core.model.Game;
 
 public class GitUtils {
-
-	final private String trackUserProperty = "plm.git.track.user";
 	
 	private Git git;
 	private Game game;
@@ -80,7 +78,7 @@ public class GitUtils {
 	}
 	
 	public boolean fetchBranchFromRemoteBranch(String userBranchHash) throws InvalidRemoteException, GitAPIException {
-		if(!Game.getProperty(trackUserProperty).equals("true")) {
+		if(!getGame().getTrackUser()) {
 			return false;
 		}
 		game.getLogger().log(getGame().i18n.tr("Retrieving your session from the servers..."));
@@ -226,7 +224,7 @@ public class GitUtils {
 	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
 	 */
 	public void forcefullyPushToUserBranch(String userBranchHash, ProgressMonitor progress) {
-		if(!Game.getProperty(trackUserProperty).equals("true")) {
+		if(!getGame().getTrackUser()) {
 			return;
 		}
 		
@@ -280,7 +278,7 @@ public class GitUtils {
      * 
 	 */
 	public void maybePushToUserBranch(final String userBranchHash, final ProgressMonitor progress) {
-		if(!Game.getProperty(trackUserProperty).equals("true")) {
+		if(!getGame().getTrackUser()) {
 			return;
 		}
 		
