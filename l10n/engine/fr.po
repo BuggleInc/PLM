@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-21 09:29+0200\n"
+"POT-Creation-Date: 2015-05-04 09:53+0200\n"
 "PO-Revision-Date: 2015-01-01 23:44+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -696,7 +696,7 @@ msgstr ""
 msgid "Broken lesson"
 msgstr "Leçon cassée"
 
-#: src/plm/core/model/Game.java:537
+#: src/plm/core/model/Game.java:536
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -707,16 +707,16 @@ msgstr ""
 "à la place. Vous pourriez contribuer au projet en ajoutant votre langage à "
 "cet exercice."
 
-#: src/plm/core/model/Game.java:544
+#: src/plm/core/model/Game.java:543
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
-#: src/plm/core/model/Game.java:586
+#: src/plm/core/model/Game.java:585
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:987
+#: src/plm/core/model/Game.java:986
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
@@ -725,11 +725,11 @@ msgstr ""
 "PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:988
+#: src/plm/core/model/Game.java:987
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:992
+#: src/plm/core/model/Game.java:991
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
@@ -739,11 +739,11 @@ msgstr ""
 "python.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:993
+#: src/plm/core/model/Game.java:992
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:997
+#: src/plm/core/model/Game.java:996
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
@@ -752,7 +752,7 @@ msgstr ""
 "Veuillez installer C et ses dépendances pour utiliser la PLM en C.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:998
+#: src/plm/core/model/Game.java:997
 msgid "C is missing"
 msgstr "C est manquant"
 
@@ -898,13 +898,13 @@ msgstr ""
 "Impossible d''écrire le monde de correction de {0}. Veuillez vérifier les "
 "permissions."
 
-#: src/plm/core/model/lesson/Lecture.java:93
+#: src/plm/core/model/lesson/Lecture.java:94
 #: src/plm/core/model/lesson/Lesson.java:103
 #, java-format
 msgid "File {0}.html not found."
 msgstr "Le fichier {0}.html est introuvable."
 
-#: src/plm/core/model/lesson/Lecture.java:102
+#: src/plm/core/model/lesson/Lecture.java:103
 #: src/plm/core/model/lesson/Lesson.java:113
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"

@@ -44,10 +44,10 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 
 	public static String filterHTML(String in, boolean showAll, ProgrammingLanguage language){
 
-		return filterHTML(in, showAll,false, null, language);
+		return filterHTMLBis(in, showAll,false, null, language);
 	}
 
-	public static String filterHTML(String in, boolean showAll, boolean showMulti, ProgrammingLanguage[] currLang, ProgrammingLanguage language) {
+	public static String filterHTMLBis(String in, boolean showAll, boolean showMulti, ProgrammingLanguage[] currLang, ProgrammingLanguage language) {
 		if (langColors == null) {
 			langColors = new HashMap<String, String>();
 			langColors.put("java", "FF0000");

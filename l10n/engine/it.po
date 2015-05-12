@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-21 09:29+0200\n"
+"POT-Creation-Date: 2015-05-04 09:53+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -681,7 +681,7 @@ msgstr ""
 msgid "Broken lesson"
 msgstr "Carica lezione"
 
-#: src/plm/core/model/Game.java:537
+#: src/plm/core/model/Game.java:536
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -692,16 +692,16 @@ msgstr ""
 "piacere considera di contribuire a questo progetto adattando questo "
 "esercizio a questo linguaggio."
 
-#: src/plm/core/model/Game.java:544
+#: src/plm/core/model/Game.java:543
 msgid "Operation cancelled by the user"
 msgstr "Operazione annullata dall'utente"
 
-#: src/plm/core/model/Game.java:586
+#: src/plm/core/model/Game.java:585
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lettura {0} non ha parole che io posso selezionare"
 
-#: src/plm/core/model/Game.java:987
+#: src/plm/core/model/Game.java:986
 #, fuzzy
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
@@ -710,11 +710,11 @@ msgstr ""
 "Per piacere istalla Scala versione 2.10 o maggiore per usarlo in PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:988
+#: src/plm/core/model/Game.java:987
 msgid "Scala is missing"
 msgstr "Scala è mancante"
 
-#: src/plm/core/model/Game.java:992
+#: src/plm/core/model/Game.java:991
 #, fuzzy
 msgid ""
 "Please install jython and its dependencies to use the python programming "
@@ -725,11 +725,11 @@ msgstr ""
 "linguaggio python in PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:993
+#: src/plm/core/model/Game.java:992
 msgid "Python is missing"
 msgstr "Python è mancante"
 
-#: src/plm/core/model/Game.java:997
+#: src/plm/core/model/Game.java:996
 #, fuzzy
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
@@ -740,7 +740,7 @@ msgstr ""
 "linguaggio python in PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:998
+#: src/plm/core/model/Game.java:997
 #, fuzzy
 msgid "C is missing"
 msgstr "Scala è mancante"
@@ -884,13 +884,13 @@ msgstr ""
 "Impossibile scrivere il mondo di risposta di {0}. Per piacere controlla i "
 "permessi."
 
-#: src/plm/core/model/lesson/Lecture.java:93
+#: src/plm/core/model/lesson/Lecture.java:94
 #: src/plm/core/model/lesson/Lesson.java:103
 #, java-format
 msgid "File {0}.html not found."
 msgstr "File {0}.html non trovato."
 
-#: src/plm/core/model/lesson/Lecture.java:102
+#: src/plm/core/model/lesson/Lecture.java:103
 #: src/plm/core/model/lesson/Lesson.java:113
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
