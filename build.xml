@@ -205,7 +205,6 @@
 	   That's unfortunate given the amount of ' we have in french and english but anyway.
 	   In addition, the strings without {0} are not passed to MessageFormat by i18n.tr().
 	   See: https://code.google.com/p/gettext-commons/issues/detail?id=55 
-
            Rq: check that a word does not appear in translations:
            msggrep -T -e  theworld  - -sort-by-file  l10n/missions/fr.po
 	   -->
@@ -276,11 +275,9 @@
     <property name="fr.lproj.dir" value="${mac.dir}/fr.lproj"/>
     <property name="mac.app.name" value="JavaLearningMachine"/>
     <property name="mac.bundle.dir" value="${dist.dir}/${mac.app.name}.app"/>
-
     <taskdef name="bundleapp"
              classname="com.oracle.appbundler.AppBundlerTask"   
              classpath="${lib.dir}/appbundler-1.0.jar" />
-
     <target name="build-Mac.app-bundle">
         <bundleapp outputdirectory="dist"
             name="${mac.app.name}"
