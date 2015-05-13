@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.UUID;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -55,8 +56,8 @@ public class ExoTest {
 	@Parameters
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
-		
-		g = new Game(mock(LogHandler.class), new Locale("en"));
+		String userUUID = UUID.randomUUID().toString();
+		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), "Java");
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
