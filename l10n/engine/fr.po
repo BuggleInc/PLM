@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-21 09:29+0200\n"
+"POT-Creation-Date: 2015-04-23 10:39+0200\n"
 "PO-Revision-Date: 2015-01-01 23:44+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -158,7 +158,7 @@ msgstr "Nombres de joueurs différents : {0} vs {1}"
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:333
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:338
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -169,18 +169,18 @@ msgstr ""
 "informations suivantes:\n"
 "Exercice: {0}; Nombre de bases:: {1}; Situation initiale: {2}"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:370
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:375
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr "Impossible de bouger de la base {0} car ce n''est pas entre 0 et {1}"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:373
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:378
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr ""
 "Impossible de bouger de la position {0} car ce n''est pas entre 0 et {1}"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:382
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:387
 #, java-format
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "

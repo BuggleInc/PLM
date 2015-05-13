@@ -298,18 +298,23 @@ public class BaseballWorld extends World {
 	}
 
 	/** Returns the last move made on the field */
-	protected BaseballMove getLastMove() {
+	public BaseballMove getLastMove() {
 		if (moves.size() == 0)
 			return null;
 		return moves.get(moves.size()-1);
 	}
 	/** Returns the amount of moves done so far */
-	protected int getMoveCount() {
+	public int getMoveCount() {
 		return moves.size();
 	}
 	/** Returns all moves done so far */
-	protected Vector<BaseballMove> getMoves() {
+	public Vector<BaseballMove> getMoves() {
 		return moves;
+	}
+	
+	public int[] getField()
+	{
+		return field;
 	}
 
 	/** Checks that the world is sorted, and display an helpful error message if not */

@@ -3,7 +3,7 @@ package lessons.sort.baseball.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
+import lessons.sort.baseball.operations.MoveOperation;
 import plm.universe.Entity;
 
 public class BaseballEntity extends Entity {
@@ -51,6 +51,7 @@ public class BaseballEntity extends Entity {
 	 */
 	public void move(int base, int position) {
 		((BaseballWorld) this.world).move(base,position);
+		addOperation(new MoveOperation(this, base, position));
 		stepUI();
 	}
 
