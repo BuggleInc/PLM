@@ -3,6 +3,7 @@ package lessons.recursion.hanoi.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import lessons.recursion.hanoi.operations.HanoiMove;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -49,6 +50,7 @@ public class HanoiEntity extends Entity {
 	public void regularMove(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
+		addOperation(new HanoiMove(this, src, dst));
 		stepUI();
 		/* END HIDDEN */
 	}

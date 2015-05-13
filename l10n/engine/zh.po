@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-21 09:29+0200\n"
+"POT-Creation-Date: 2015-05-13 13:01+0200\n"
 "PO-Revision-Date: 2015-02-16 14:12+0100\n"
 "Last-Translator: Qiaoyang SU <suqiaoy@163.com>\n"
 "Language-Team: Chinese(中文)\n"
@@ -77,7 +77,7 @@ msgid ""
 msgstr ""
 "对不起戴夫，我不能让你直接0和2插槽之间移动磁盘。使用在所有运动的中间支柱。"
 
-#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:60
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:62
 #, java-format
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
@@ -86,39 +86,39 @@ msgstr ""
 "对不起戴夫，我不能让你在相反的方向移动驱动器。从0到移动1，从1至2或2至0只，而"
 "不是从{0}到{1}。"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:151
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:152
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:158
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:159
 #, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:163
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:164
 #, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:184
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:185
 #, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:186
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:187
 #, java-format
 msgid "Cannot move from slot {0} to itself"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:188
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:189
 #, java-format
 msgid "No disc to move from slot {0}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:193
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:194
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "

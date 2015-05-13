@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-21 09:29+0200\n"
+"POT-Creation-Date: 2015-05-13 13:01+0200\n"
 "PO-Revision-Date: 2015-01-01 23:44+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -85,7 +85,7 @@ msgstr ""
 "les piquets 0 et 2 directement. Utilise le piquet intermédiaire dans tous "
 "les déplacements."
 
-#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:60
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:62
 #, java-format
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
@@ -95,23 +95,23 @@ msgstr ""
 "contraire. Seuls les déplacements de 0 à 1, de 1 à 2 ou de 2 à 0 sont "
 "autorisés, et tu as demandé de {0} à {1}."
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:151
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:152
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
 msgstr ""
 "Les disques n''ont pas été déplacés le même nombre de fois : {0} contre {1}\n"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:158
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:159
 #, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr "Le disque n°{0} du piquet {1} diffère : {2} vs {3}\n"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:163
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:164
 #, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr "La couleur du disque n°{0} au piquet {1} diffère : {2} vs {3}\n"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:184
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:185
 #, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
@@ -120,17 +120,17 @@ msgstr ""
 "Impossible de bouger du piquet {0} au piquet {1} car seuls les piquets "
 "numérotés de 0 à {1} existent."
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:186
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:187
 #, java-format
 msgid "Cannot move from slot {0} to itself"
 msgstr "Impossible de bouger du piquet {0} à lui-même"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:188
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:189
 #, java-format
 msgid "No disc to move from slot {0}"
 msgstr "Il n''y a pas de disque à déplacer sur le piquet {0}"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:193
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:194
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
