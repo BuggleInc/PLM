@@ -9,7 +9,6 @@ public abstract class PancakeOperation extends Operation {
 	
 	public PancakeOperation(String name, PancakeEntity entity) {
 		super(name);
-		this.entity = entity;
 	}
 	
 	public PancakeEntity getEntity()

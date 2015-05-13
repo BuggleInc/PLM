@@ -408,6 +408,4 @@ public class BaseballWorld extends World {
 		setPlayerColor(baseSrc, posSrc,   getPlayerColor(baseDst,posDst));
 		setPlayerColor(baseDst, posDst,   flyingMan);
 	}
-	
-	
 }
