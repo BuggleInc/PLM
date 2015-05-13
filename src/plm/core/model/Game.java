@@ -141,17 +141,16 @@ public class Game implements IWorldView {
 	public SessionDB studentWork;
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
+	private GitSpy gitSpy;
 
 	public LogHandler logger;
 	
-	private Users users;
-
 	private static boolean ongoingInitialization = false;
 	
 	private Locale locale;
 	public I18n i18n;
 	
-	public Game(LogHandler logger, Locale locale) {
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage) {
 		this.logger = logger;
 		this.locale = locale;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
@@ -170,7 +169,6 @@ public class Game implements IWorldView {
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
 
-		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
@@ -198,15 +196,13 @@ public class Game implements IWorldView {
 		}
 
 		studentWork = new SessionDB(this);
-		
-		users = new Users(this, SAVE_DIR);
-		users.getCurrentUser();
 
 		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
-		sessionKit = new GitSessionKit(this);
+		sessionKit = new GitSessionKit(this, userUUID);
 
 		try {
-			addProgressSpyListener(new GitSpy(this, SAVE_DIR, users));
+			gitSpy = new GitSpy(this, SAVE_DIR, userUUID);
+			addProgressSpyListener(gitSpy);
 		} catch (IOException | GitAPIException e) {
 			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
@@ -370,7 +366,7 @@ public class Game implements IWorldView {
 		Lesson lesson = lessons.get(lessonName);
 		Lesson lessonLoaded = loadedLessons.get(lessonName);
 		statusArgAdd(lessonName);
-		if (lessonLoaded == null) { // we have to load it 
+		if (lessonLoaded == null) { // we have to load it
 			lesson.loadLesson();
 			loadedLessons.put(lessonName, lesson);
 		}
@@ -517,7 +513,6 @@ public class Game implements IWorldView {
 				switchCreative();
 			
 			this.currentLesson.setCurrentExercise(lect);
-			addHumanLangListener(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
 				Exercise exo = (Exercise) lect;
@@ -1151,14 +1146,6 @@ public class Game implements IWorldView {
 		this.currentCourse = currentCourse;
 	}
 
-	public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
-	}
-
 	public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
 
 	public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
@@ -1231,6 +1218,31 @@ public class Game implements IWorldView {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}
+	}
+	
+	public void setUserUUID(String userUUID) {
+		try {
+			saveSession();
+		} catch (UserAbortException e) {
+			e.printStackTrace();
+		}
+		if(currentLesson != null) {
+			removeHumanLangListener(currentLesson.getCurrentExercise());
+		}
+		currentLesson = null;
+		lastExercise = null;
+		for(Lesson lesson: lessons.values()) {
+			removeHumanLangListener(lesson);
+		}
+		lessons.clear();		
+		loadedLessons.clear();
+		studentWork = new SessionDB(this);
+		sessionKit.setUserUUID(userUUID);
+		gitSpy.setUserUUID(userUUID);
+		
+		initLessons();
+		
+		loadSession();
 	}
 	
 	public LogHandler getLogger() {

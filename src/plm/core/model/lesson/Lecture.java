@@ -56,6 +56,7 @@ public abstract class Lecture implements HumanLangChangesListener{
 		localId = (basename!=null?basename:getClass().getName());
 		id = lesson.getId()+"."+ getLocalId();
 		loadHTMLMission();
+		game.addHumanLangListener(this);
 	}
 	public String getId() {
 		return id;
