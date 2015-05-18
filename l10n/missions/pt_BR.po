@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-05-03 20:55+0200\n"
-"PO-Revision-Date: 2015-05-11 20:31-0300\n"
+"PO-Revision-Date: 2015-05-17 10:04-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -4197,7 +4197,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:2
 msgid "Second Biggest Value"
-msgstr ""
+msgstr "Segundo Maior Valor"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:4
@@ -4221,6 +4221,12 @@ msgid ""
 "MIN_VALUE</code> (which is the smallest representable integer existing in [!"
 "thelang]).[/!]"
 msgstr ""
+"Como normalmente, você deve obter informações em apenas uma passagem\n"
+"pela array. Você pode assumir que o segundo maior valor \"actual\"\n"
+"existe (existe pelo menos dois valores distintos na array), e que\n"
+"todos os valores na array são maiores que [!python] -100000000.[/!]\n"
+"[!java|scala]<code>Integer.MIN_VALUE</code> (que é o menor inteiro\n"
+"representável que existe em [!thelang]).[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -9951,6 +9957,11 @@ msgid ""
 "graphical representations, it looks like a bubble takes the element and move "
 "them through the pile. This is where its name comes from."
 msgstr ""
+"O objetivo aqui é ordená-los usando o algoritmo da bolha (bubble),\n"
+"onde uma panqueca é movida para o fundo até encontrar uma maior que\n"
+"ela. Em representações gráficas, parece que uma bolha ocupa o lugar do\n"
+"elemento e move ele através da pilha. É daí que saiu o nome do\n"
+"algoritmo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BubblePancake.html:8
@@ -9958,9 +9969,13 @@ msgid ""
 "Now, using pancakes makes it a little more difficult to write, because you "
 "have to find a way to swap only two pancakes at a time."
 msgstr ""
+"Agora, usando panquecas torna as coisas um pouco mais difíceis de\n"
+"escrever, pois você tem que encontrar uma forma de alternar apenas\n"
+"duas panquecas por vez."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BubblePancake.html:11
+#, fuzzy
 msgid ""
 "The bubble algorithm consists in browsing the whole pile from top to bottom, "
 "and making a comparision between two pancakes. Each time the top pancake is "
@@ -9969,9 +9984,16 @@ msgid ""
 "through the entire pile until no swap has occurred, in which case the pile "
 "is sorted."
 msgstr ""
+"The bubble algorithm consists in browsing the whole pile from top to\n"
+"bottom, and making a comparision between two pancakes. Each time the\n"
+"top pancake is bigger than the one below, you have to swap them, then\n"
+"compare the bigger pancake you just swapped with one below, and so\n"
+"on. You have to browse through the entire pile until no swap has\n"
+"occurred, in which case the pile is sorted."
 
 #. type: Content of: <p><p><div>
 #: src/lessons/sort/pancake/BubblePancake.html:14
+#, fuzzy
 msgid ""
 "If you don't understand the basic bubble sorting algorithm, you should try "
 "the exercises within the “Sorting algorithms” lesson. If you do, but can't "
@@ -9979,6 +10001,11 @@ msgid ""
 "only two pancakes are swapped at a time, and find a way to reach that "
 "situation."
 msgstr ""
+"Se você não entende o algoritmo básico bubble sort, tente os\n"
+"exercícios da lição “Sorting algorithms”. Se você consegue, mas não\n"
+"imagina uma forma de alternar apenas duas panquecas por vez, pense na\n"
+"situação onde apenas duas panquecas são alternadas por vez, e encontre\n"
+"uma forma de chegar nesta situação."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:2
@@ -10929,6 +10956,12 @@ msgid ""
 "will grow an sorted area where all players are already sorted (and never "
 "changed) while the unsorted area shrinks."
 msgstr ""
+"Vamos adaptar o selection sort para nossa situação. As linhas grandes\n"
+"do algoritmo se tornam \"para cada base, selecione os jogadores que\n"
+"devem ocupar esta base e garanta que eles venham para as suas\n"
+"posições\". Desta forma, vamos aumentar uma área ordenada onde todos os\n"
+"jogadores já estão ordenados (e nunca deixam de estar) enquanto a área\n"
+"não-ordenada se reduz."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:24
@@ -10937,16 +10970,21 @@ msgid ""
 "methods such as <code>findPlayer()</code> or <code>findPlayerBase()</code>. "
 "This will ensure that your code remains understandable."
 msgstr ""
+"Selecionar o jogador não deve ser um problema; Não hesite para definir\n"
+"alguns métodos como <code>findPlayer()</code> ou\n"
+"<code>findPlayerBase()</code>. Isto vai garantir que seu código\n"
+"permaneça entendível."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:28
+#, fuzzy
 msgid ""
 "The most problematic aspect is to move the selected players into position. "
 "For that, you have to move the hole to the position where the player is, and "
 "then move both the player and the hole to the base that is next to the "
 "player's goal (probably in a loop), and finally put the player in the right "
 "position of its target base."
-msgstr ""
+msgstr "O aspecto mais problemático é mover os jogadores selecionados para suas posições. Para isto, você tem que mover o espaço vazio para a posição onde o jogador está, e então mover ambos os jogadores e o espaço vazio para a base que estiver próxima do objetivo do jogador (provavelmente com um loop), e finalmente colocar o jogador na posição correta de sua base \"target\"."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:33
