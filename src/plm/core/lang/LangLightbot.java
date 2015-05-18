@@ -15,7 +15,7 @@ import plm.universe.Entity;
 public class LangLightbot extends ProgrammingLanguage {
 
 	public LangLightbot(boolean isDebugEnabled) {
-		super("lightbot","ignored", isDebugEnabled);
+		super("lightbot", "ignored", isDebugEnabled);
 	}
 
 	@Override
