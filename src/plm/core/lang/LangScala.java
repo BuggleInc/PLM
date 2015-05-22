@@ -33,7 +33,7 @@ public class LangScala extends JVMCompiledLang {
 	ScalaCompiler compiler;
 	
 	public LangScala(boolean isDebugEnabled) {
-		super("Scala","scala", isDebugEnabled);
+		super("Scala", "scala", isDebugEnabled);
 		compiler = new ScalaCompiler(isDebugEnabled);
 	}
 

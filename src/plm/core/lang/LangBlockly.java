@@ -12,7 +12,8 @@ import plm.universe.Entity;
 public class LangBlockly extends ScriptingLanguage {
 
 	public LangBlockly(boolean isDebugEnabled) {
-		super("Blockly","blockly", isDebugEnabled);
+		super("Blockly", "blockly", isDebugEnabled);
+		this.visualFile = true;
 	}
 
 	protected void setupEntityBindings(Entity ent) {

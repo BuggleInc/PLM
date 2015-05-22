@@ -101,7 +101,7 @@ public class Game implements IWorldView {
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
 		"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi",
 		"lessons.lightbot", "lessons.bat.string1", "lessons.lander"
-		};
+	};
 	public static final ProgrammingLanguage JAVA =       new LangJava(false);
 	public static final ProgrammingLanguage PYTHON =     new LangPython(false);
 	public static final ProgrammingLanguage SCALA =      new LangScala(false);
@@ -110,7 +110,7 @@ public class Game implements IWorldView {
 	public static final ProgrammingLanguage RUBY =       new LangRuby(false);
 	public static final ProgrammingLanguage LIGHTBOT =   new LangLightbot(false);
 	public static final ProgrammingLanguage BLOCKLY =      new LangBlockly(false);
-	
+
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
 		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C, BLOCKLY // TODO: re-add JAVASCRIPT to this list once it works at least a bit
 	};
@@ -127,7 +127,7 @@ public class Game implements IWorldView {
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
-	
+
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
@@ -146,12 +146,12 @@ public class Game implements IWorldView {
 	private GitSpy gitSpy;
 
 	public LogHandler logger;
-	
+
 	private static boolean ongoingInitialization = false;
-	
+
 	private Locale locale;
 	public I18n i18n;
-	
+
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage) {
 		this.logger = logger;
 		this.locale = locale;
@@ -222,11 +222,11 @@ public class Game implements IWorldView {
 
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine(this));
-		
+
 		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
-	        currentCourse = new CourseAppEngine(logger);
+			currentCourse = new CourseAppEngine(logger);
 		}
-		
+
 		loadSession();
 	}
 
@@ -306,8 +306,8 @@ public class Game implements IWorldView {
 		}
 		return canC;
 	}
-	
-	
+
+
 	public boolean canBlockly = false;
 	String BlocklyError = "";
 	private boolean checkBlockly(){
@@ -343,7 +343,7 @@ public class Game implements IWorldView {
 			addLesson(lessonName);			
 		}
 	}
-	
+
 	public void addLesson(String lessonName) {
 		Lesson lesson = null;
 		try {
@@ -366,7 +366,7 @@ public class Game implements IWorldView {
 			throw new RuntimeException(i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
 		}
 	}
-	
+
 	/** Change the current lesson.
 	 * 
 	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
@@ -404,7 +404,7 @@ public class Game implements IWorldView {
 					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
 			return null;
 		}
-			
+
 		setCurrentLesson(lesson);
 		this.setState(GameState.LOADING_DONE);
 		return lesson;
@@ -489,7 +489,7 @@ public class Game implements IWorldView {
 	public Collection<Lesson> getLoadedLessons() {
 		return this.loadedLessons.values();
 	}
-	
+
 	public Lesson getCurrentLesson() {
 		if (this.currentLesson == null && this.loadedLessons.size() > 0) {
 			setCurrentLesson(loadedLessons.get(lessonsName[0]));
@@ -520,16 +520,16 @@ public class Game implements IWorldView {
 		try {
 			saveSession(); // don't loose user changes
 			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
-			
+
 			if (this.currentLesson != lect.getLesson()) {
 				this.currentLesson = lect.getLesson();
 				addHumanLangListener(currentLesson);
 			}
-				
+
 			/* if the user changes the exercise, you can assume that he wants to test another challenge */
 			if (isCreativeEnabled())
 				switchCreative();
-			
+
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
 			if (lect instanceof Exercise) {
@@ -640,7 +640,7 @@ public class Game implements IWorldView {
 		DemoRunner runner = new DemoRunner(this, this.demoRunners);
 		runner.start();
 	}
-	
+
 	public void startExerciseStepExecution() {
 		stepMode = true;
 		startExerciseExecution();
@@ -688,7 +688,7 @@ public class Game implements IWorldView {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
 
 			saveSession();
-			
+
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
 				spyListener.leave();
@@ -894,13 +894,13 @@ public class Game implements IWorldView {
 			l.executed(exo);
 		}
 	}
-	
+
 	public void fireCallForHelpSpy(String studentInput) {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.callForHelp(studentInput);
 		}
 	}
-	
+
 	public void fireCancelCallForHelpSpy() {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.cancelCallForHelp();
@@ -912,7 +912,7 @@ public class Game implements IWorldView {
 			l.readTip(id, mission);
 		}
 	}
-	
+
 	@Override
 	public void worldHasChanged() {
 		if (selectedWorld.getEntityCount()>0)
@@ -976,7 +976,7 @@ public class Game implements IWorldView {
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", lang, I18nFactory.FALLBACK);
 		fireHumanLangChange(lang);
 	}
-	
+
 	public Locale getLocale(){
 		return locale;
 	}
@@ -1129,7 +1129,7 @@ public class Game implements IWorldView {
 	public boolean isBatchExecution() {
 		return doBatch;
 	}
-	
+
 	private boolean doCreative = false;		
 	public void switchCreative() {
 		doCreative =  !doCreative;
@@ -1190,7 +1190,7 @@ public class Game implements IWorldView {
 		"z:"     + File.separator + "plm",
 	};
 	private static File SAVE_DIR = initializeSaveDir();
-	
+
 	// FIXME: Should not be static
 	private static File initializeSaveDir() {
 		StringBuffer sb = new StringBuffer();
@@ -1230,19 +1230,20 @@ public class Game implements IWorldView {
 			return;
 
 		Exercise ex = (Exercise) lect;
-		for (ProgrammingLanguage lang: ex.getProgLanguages())
+		for (ProgrammingLanguage lang: ex.getProgLanguages()){
 			for (int i=0; i<ex.getSourceFileCount(lang); i++) {
 				SourceFile sf = ex.getSourceFile(lang,i);
 				if (sf instanceof SourceFileRevertable)
 					((SourceFileRevertable) sf).revert();
 			}
+		}
 		for (ProgrammingLanguage pl:Game.programmingLanguages)
 			studentWork.setPassed(ex, pl, false);
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}
 	}
-	
+
 	public void setUserUUID(String userUUID) {
 		try {
 			saveSession();
@@ -1262,12 +1263,12 @@ public class Game implements IWorldView {
 		studentWork = new SessionDB(this);
 		sessionKit.setUserUUID(userUUID);
 		gitSpy.setUserUUID(userUUID);
-		
+
 		initLessons();
-		
+
 		loadSession();
 	}
-	
+
 	public LogHandler getLogger() {
 		return logger;
 	}
