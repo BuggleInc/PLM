@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-21 10:26+0200\n"
+"POT-Creation-Date: 2015-05-07 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:333
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:338
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -148,17 +148,17 @@ msgid ""
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:370
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:375
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:373
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:378
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:382
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:387
 #, java-format
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
