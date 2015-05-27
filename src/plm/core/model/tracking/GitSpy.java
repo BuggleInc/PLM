@@ -259,8 +259,8 @@ public class GitSpy implements ProgressSpyListener {
 
 			// write the workspace code of the exercise into the file if it exist
 			if(lastResult.language.getVisualFile()){
-				String wksCode = exo.getSourceFile(lastResult.language, 1).getBody();
-				File wksFile = new File(repoDir, exo.getId() + ext + ".workspace");
+				String wksCode = exo.getSourceFile(lastResult.language, lastResult.language.getVisualIndex()).getBody();
+				File wksFile = new File(repoDir, exo.getId() + ext + lastResult.language.getVisualExt());
 				FileWriter fwWks = new FileWriter(wksFile.getAbsoluteFile());
 				BufferedWriter bwWks = new BufferedWriter(fwWks);
 				bwWks.write(exoCode == null ? "" : wksCode);

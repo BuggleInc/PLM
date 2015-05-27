@@ -136,7 +136,7 @@ public abstract class Exercise extends Lecture {
 		switch (lang.getLang()){
 		case "Blockly":
 			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));
-			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name+"Blocks", "", "", offset,""));
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name+"Blocks", initialContent, template, offset,correctionCtn));
 			break;
 		default:
 			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));

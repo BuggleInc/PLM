@@ -163,8 +163,7 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercise already done correctly
-					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".DONE";
+					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + ".DONE";
 					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
 						game.studentWork.setPassed(exercise, lang, true);
 					} else {
@@ -172,8 +171,7 @@ public class GitSessionKit implements ISessionKit {
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
-					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".workspace";
+					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + lang.getVisualExt();
 					//getGame().getLogger().log(fileName);
 					String line;
 					StringBuilder b = new StringBuilder();
