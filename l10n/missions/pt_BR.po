@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-05-03 20:55+0200\n"
-"PO-Revision-Date: 2015-05-11 20:31-0300\n"
+"PO-Revision-Date: 2015-05-24 19:08-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -964,7 +964,7 @@ msgid ""
 "If you are not sure, go for this lesson that will teach you the bases of "
 "programming."
 msgstr ""
-"Se você está perdido, venha para esta lição que ela irá te ensinar as\n"
+"Se você está perdido, venha para esta lição que ela irá te ensinar as "
 "bases da programação."
 
 #. type: Content of: <p>
@@ -978,14 +978,15 @@ msgid ""
 "language, but you can change it from the Language menu if you want, or by "
 "clicking on the [!thelang/] icon at the right of the status bar below."
 msgstr ""
-"Você acaba de iniciar o Programmer's Learning Machine. Este é um\n"
-"sistema de gestão de aprendizagem para ensinar a arte de programação\n"
-"de computadores através de exercícios interativos. É formado por um\n"
-"conjunto de exercícios agrupados por lições, para que você possa\n"
-"aprender no seu tempo. Atualmente, o ambiente está configurado para ser\n"
-"programado na linguagem de programação [!thelang/], mas você pode\n"
-"mudar isto no menu de Idioma/linguagem se você quiser, ou clicando no\n"
-"ícone [!thelang/] na direita da barra de status."
+"Você acaba de iniciar o Programmer's Learning Machine (ou Máquina de "
+"Aprendizado do Programador). Este é um sistema de gestão de "
+"aprendizagem para ensinar a arte da programação de computadores "
+"através de exercícios interativos. É formado por um conjunto de "
+"exercícios agrupados por lições, para que você possa aprender no seu "
+"tempo. Atualmente, o ambiente está configurado para ser programado na "
+"linguagem de programação [!thelang/], mas você pode mudar isto no menu "
+"de Idioma/linguagem se você quiser, ou clicando no ícone [!thelang/] "
+"na direita da barra de status."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:11
@@ -1011,13 +1012,13 @@ msgid ""
 "<i>Objective</i> one.  Depending on the exercise (and your settings in the "
 "Language menu), your code must be written in either C, Java, Python or Scala."
 msgstr ""
-"Os buggles são pequenos animais que obedecem a qualquer ordem que você\n"
-"dá a eles. Em cada exercício, você tem que fornecer a eles as\n"
-"instruções corretas para que o mundo se torne o objetivo do\n"
-"exercício. Por exemplo, neste exercício você deve instruir seu buggle\n"
-"a avançar um passo. Você pode ver isto verificando a diferença entre a\n"
-"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e\n"
-"suas configurações no menu Idioma/linguagem), seu código deve ser\n"
+"Os buggles são pequenos animais que obedecem a qualquer ordem que você "
+"dá a eles. Em cada exercício, você tem que fornecer a eles as "
+"instruções corretas para que o mundo se torne o objetivo do "
+"exercício. Por exemplo, neste exercício você deve instruir seu buggle "
+"a avançar um passo. Você pode ver isto verificando a diferença entre a "
+"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e "
+"suas configurações no menu Idioma/linguagem), seu código deve ser "
 "escrito em C, Java, Python ou Scala."
 
 #. type: Content of: <h3>
@@ -1050,14 +1051,15 @@ msgid ""
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You will see, with a bit of habit, we get used to it."
 msgstr ""
-"Se seu código tem erros (e qualquer código sempre vai ter em algum momento), "
-"o computador vai exibir mensagens de erro no console. Você obviamente terá "
-"que consertar os erros para passar nos exercícios. As mensagens que são "
-"mostradas podem soar assustadoras à primeira vista, mas não entre em pânico. "
-"O compilador é meio limitado nas suas capacidades de comunicação, mas ele "
-"não faz de má-vontade. Se você olhar de perto, a solução para o problema "
-"está escrita no meio daquelas mensagens ilegíveis. Você vai notar que com um "
-"pouco de hábito a gente se acostuma."
+"Se seu código tem erros (e qualquer código sempre vai ter em algum "
+"momento), o computador vai exibir mensagens de erro no console. Você "
+"obviamente terá que consertar os erros para passar nos exercícios. As "
+"mensagens que são mostradas podem soar assustadoras à primeira vista, "
+"mas não entre em pânico. O compilador é meio limitado nas suas "
+"capacidades de comunicação, mas ele não faz de má-vontade. Se você "
+"olhar de perto, a solução para o problema está escrita no meio "
+"daquelas mensagens complicadas. Você vai notar que com um pouco de "
+"hábito a gente se acostuma."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:39
@@ -1072,11 +1074,11 @@ msgid ""
 "following code (clicking on the interactive controls is not enough: You have "
 "to write the code after experimenting interactively)."
 msgstr ""
-"é chegada a hora de construir seu primeiro programa. Simplesmente peça a seu "
-"buggle para dar um passo para frente usando o painel de Código Fonte. Para "
-"isto, simplesmente escreva o seguinte código (clicar nos controles "
-"iterativos não é o suficiente: você tem que escrever  o código e depois "
-"experimentar interativamente)."
+"é chegada a hora de construir seu primeiro programa. Simplesmente peça "
+"a seu buggle para dar um passo para frente usando o painel SourceCode "
+"(Código Fonte). Para isto, simplesmente escreva o seguinte código "
+"(clicar nos controles iterativos não é o suficiente: você tem que "
+"escrever  o código e depois experimentar interativamente)."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/environment/Environment.html:45
@@ -1143,10 +1145,10 @@ msgid ""
 "that blindly apply them. The main difficulty is to explain stuff to "
 "something as stupid as a computer..."
 msgstr ""
-"Parabéns! Você acaba de escrever seu primeiro programa! Você agora captou a "
-"ideia: programar é simplesmente dar instruções simples para o computador que "
-"as segue cegamente. A maior dificuldade é explicar tudo para algo tão idiota "
-"quanto um computador..."
+"Parabéns! Você acaba de escrever seu primeiro programa! Você agora "
+"captou a ideia: programar nada mais é que dar instruções simples para "
+"o computador, que as realiza cegamente. A maior dificuldade é explicar "
+"tudo para algo tão idiota quanto um computador..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:9
@@ -1250,9 +1252,9 @@ msgid ""
 "python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and <b>right</b> "
 "buttons, you need to use respectively:"
 msgstr ""
-"Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|\" "
-"\"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> and "
-"<b>direita</b>, você precisa respectivamente:"
+"Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|"
+"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> e <b>direita</"
+"b>, você precisa respectivamente:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:50
@@ -1272,7 +1274,7 @@ msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
 msgstr ""
-"O botão <b>marcar</b> é diferente, pois corresponde a dois métodos: o\n"
+"O botão <b>marcar</b> é diferente, pois corresponde a dois métodos: o "
 "primeiro move a caneta para cima e o segundo move a caneta para baixo."
 
 #. type: Content of: <pre>
@@ -1336,10 +1338,10 @@ msgid ""
 "instructions understood by your buggle can be found in \"Help/About this "
 "world\"."
 msgstr ""
-"Use seu pincel para marcar o chão à medida em que anda. Comece a\n"
-"marcar o chão com <code>brushDown()</code>, e pare com\n"
-"<code>brushUp()</code> (e.g., para entrar na sua casa sem marcar o\n"
-"chão). A lista completa de todas as instruções que o buggle entende\n"
+"Use seu pincel para marcar o chão à medida em que anda. Comece a "
+"marcar o chão com <code>brushDown()</code>, e pare com "
+"<code>brushUp()</code> (e.g., para entrar na sua casa sem marcar o "
+"chão). A lista completa de todas as instruções que o buggle entende "
 "pode ser encontrada em \"Ajuda/Sobre este mundo\"."
 
 #. type: Content of: <h3>
@@ -1636,15 +1638,15 @@ msgid ""
 "java|scala]false[/!][!python]False[/!]</code> are constant values defined by "
 "[!thelang] directly, just as 0 or 1 in mathematics.[/!]"
 msgstr ""
-"A condição deve ser uma expressão\n"
-"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>. O\n"
-"bloco interno do código será executado se a expressão for calculada\n"
-"como <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e\n"
-"será ignorado se for\n"
-"<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.\n"
-"[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code>\n"
-"e <code>[!java|scala]false[/!][!python]False[/!]</code> são valores\n"
-"constantes definidos por [!thelang] diretamente, assim como 0 ou 1 na\n"
+"A condição deve ser uma expressão "
+"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>. O "
+"bloco interno do código será executado se a expressão for calculada "
+"como <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e "
+"será ignorado se for "
+"<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>. "
+"[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> "
+"e <code>[!java|scala]false[/!][!python]False[/!]</code> são valores "
+"constantes definidos por [!thelang] diretamente, assim como 0 ou 1 na "
 "matemática.[/!]"
 
 #. type: Content of: <p>
@@ -1659,15 +1661,15 @@ msgid ""
 "the right-hand side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), "
 "<b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
-"A condição pode ser uma variável\n"
-"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>\n"
-"(vamos voltar a falar de variáveis num próximo exercício, não se\n"
-"preocupe) ou um teste aritmético, como <code>x == 5</code>, que\n"
-"verifica se o valor atual de <code>x</code> é 5, ou algo como\n"
-"<b>!=</b> (verificando inequação, ou seja, retornando\n"
-"[!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado\n"
-"esquerdo é diferente do lado direito), <b>&lt;</b> (menor que),\n"
-"<b>&gt;</b> (maior que), <b>&lt;=</b> (menor ou igual a), <b>&gt;=</b>\n"
+"A condição pode ser uma variável "
+"<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> "
+"(vamos voltar a falar de variáveis num próximo exercício, não se "
+"preocupe) ou um teste aritmético, como <code>x == 5</code>, que "
+"verifica se o valor atual de <code>x</code> é 5, ou algo como "
+"<b>!=</b> (verificando inequação, ou seja, retornando "
+"[!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado "
+"esquerdo é diferente do lado direito), <b>&lt;</b> (menor que), "
+"<b>&gt;</b> (maior que), <b>&lt;=</b> (menor ou igual a), <b>&gt;=</b> "
 "(maior ou igual a)."
 
 #. type: Content of: <p>
@@ -3918,16 +3920,16 @@ msgid ""
 "retrieve the <code>i</code>th cell of an array of size <code>size</code> "
 "with an offset of <code>5</code>."
 msgstr ""
-"Então, para pegar a cor certa, o mais fácil é usar o operador <code>%</code> "
-"(módulo). Por exemplo, <code>(i + 5) % tamanho</code> serve para recuperar a "
-"<code>i</code>-ésima célula de uma array de tamanho <code>tamanho</code> com "
-"um deslocamento de <code>5</code>."
+"Então, para pegar a cor certa, o mais fácil é usar o operador\n"
+"<code>%</code> (operador módulo). Por exemplo, <code>(i + 5) %\n"
+"tam</code> serve para recuperar a <code>i</code>-ésima célula de uma\n"
+"array de tamanho <code>tam</code> com um deslocamento de\n"
+"<code>5</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:28
-#, fuzzy
 msgid "You're up."
-msgstr "Você está pronto."
+msgstr "Agora é com você."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/search/IndexOfValue.html:2
@@ -4197,18 +4199,17 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:2
 msgid "Second Biggest Value"
-msgstr ""
+msgstr "Segundo Maior Valor"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:4
-#, fuzzy
 msgid ""
 "In this exercise, you must compute the second maximal value contained in an "
 "array, i.e. the value that becomes the maximum if you remove every instance "
 "of the current maximum from the array."
 msgstr ""
-"Neste exercício, você deve calcular o segundo valor maximal contido\n"
-"numa array, ou seja o valor que se torna máximo se você remover cada\n"
+"Neste exercício, você deve calcular o segundo valor maximal contido "
+"numa array, ou seja o valor que se torna máximo se você remover cada "
 "instância do máximo atual da array."
 
 #. type: Content of: <p>
@@ -4221,6 +4222,12 @@ msgid ""
 "MIN_VALUE</code> (which is the smallest representable integer existing in [!"
 "thelang]).[/!]"
 msgstr ""
+"Como normalmente, você deve obter informações em apenas uma passagem "
+"pela array. Você pode assumir que o segundo maior valor \"actual\" "
+"existe (existe pelo menos dois valores distintos na array), e que "
+"todos os valores na array são maiores que [!python] -100000000.[/!] "
+"[!java|scala]<code>Integer.MIN_VALUE</code> (que é o menor inteiro "
+"representável que existe em [!thelang]).[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -4295,7 +4302,7 @@ msgid ""
 "This exercise was converted to PLM from the excellent exercising site http://"
 "codingbat.com/"
 msgstr ""
-"Este exercício foi convertido para o PLM do excelente sítio de\n"
+"Este exercício foi convertido para o PLM do excelente sítio de "
 "exercícios http://codingbat.com/"
 
 #. type: Content of: <h1>
@@ -4507,8 +4514,8 @@ msgid ""
 "sequence of altitudes? Actually, there is an iterative and a recursive "
 "solution to that problem."
 msgstr ""
-"Você poderia escrever um pequeno programa que calculasse a quantidade\n"
-"de níveis numa dada sequência de altitudes? Na verdade, existem uma\n"
+"Você poderia escrever um pequeno programa que calculasse a quantidade "
+"de níveis numa dada sequência de altitudes? Na verdade, existem uma "
 "solução iterativa e uma recursiva para este problema."
 
 #. type: Content of: <p>
@@ -4638,15 +4645,15 @@ msgid ""
 "a brief description of what this method does while any subsequent lines "
 "should provide any important details about the method."
 msgstr ""
-"comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!]\n"
-"começam com a marca <code>/**</code> (com dois asteriscos). Eles devem\n"
-"ser colocados exatamente antes do método que documentam para a\n"
-"ferramenta encontrá-los.[/!] [!python]comentários pydoc devem ser\n"
-"colocados no começo do corpo do método de forma que a ferramenta possa\n"
-"encontrá-los. Eles devem ser colocados entre <code>\"\"\"</code>, que\n"
-"marcam strings multilinhas em python.[/!] A primeira linha deve ser\n"
-"uma breve descrição do que o método faz enquanto que as linhas\n"
-"subsequentes devem fornecer qualquer detalhes importantes sobre o\n"
+"comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] "
+"começam com a marca <code>/**</code> (com dois asteriscos). Eles devem "
+"ser colocados exatamente antes do método que documentam para a "
+"ferramenta encontrá-los.[/!] [!python]comentários pydoc devem ser "
+"colocados no começo do corpo do método de forma que a ferramenta possa "
+"encontrá-los. Eles devem ser colocados entre <code>\"\"\"</code>, que "
+"marcam strings multilinhas em python.[/!] A primeira linha deve ser "
+"uma breve descrição do que o método faz enquanto que as linhas "
+"subsequentes devem fornecer qualquer detalhes importantes sobre o "
 "método."
 
 #. type: Content of: <pre>
@@ -4779,15 +4786,15 @@ msgid ""
 "[/!] [!java]You don't need to write the code calling <code>goAndGet()</code> "
 "yourself. It's automagically there already, even if you cannot see it.[/!]"
 msgstr ""
-"Este exercício é um pouco diferente por que você não vai precisar\n"
-"escrever todo o código executado pelo buggle. Ao invés disto, você\n"
-"deve apenas escrever um método que será chamado automagicamente quando\n"
-"você clica em <b>Iniciar</b>. Seu buggle vai chamar seu método\n"
-"<code>vaiEPega()</code> em cada linha, até que o baggle seja\n"
-"encontrado. [!python|scala]O código para isto já está pronto no método \n"
-"<code>vaiEPega()</code>, mas você provavelmente não vai querer mudar isto.\n"
-"[/!] [!java]Você não precisa escrever o código chamado\n"
-"<code>vaiEPega()</code>. Ele já está lá automaticamente, mesmo se você\n"
+"Este exercício é um pouco diferente por que você não vai precisar "
+"escrever todo o código executado pelo buggle. Ao invés disto, você "
+"deve apenas escrever um método que será chamado automagicamente quando "
+"você clica em <b>Iniciar</b>. Seu buggle vai chamar seu método "
+"<code>vaiEPega()</code> em cada linha, até que o baggle seja "
+"encontrado. [!python|scala]O código para isto já está pronto no método  "
+"<code>vaiEPega()</code>, mas você provavelmente não vai querer mudar isto. "
+"[/!] [!java]Você não precisa escrever o código chamado "
+"<code>vaiEPega()</code>. Ele já está lá automaticamente, mesmo se você "
 "não possa vê-lo.[/!]"
 
 #. type: Content of: <p>
@@ -4946,10 +4953,10 @@ msgid ""
 "in another method). It may be wise to write the <code>makeV()</code> so that "
 "it places directly the buggle in position for the next V."
 msgstr ""
-"Neste método, você deve usar os métodos <code>levantarPincel()</code>\n"
-"e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um\n"
-"método só para isto). É uma decisão inteligente escrever\n"
-"<code>fazerV()</code> para colocar o buggle diretamente em posição\n"
+"Neste método, você deve usar os métodos <code>levantarPincel()</code> "
+"e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um "
+"método só para isto). É uma decisão inteligente escrever "
+"<code>fazerV()</code> para colocar o buggle diretamente em posição "
 "para o próximo V."
 
 #. type: Content of: <p>
@@ -5046,20 +5053,20 @@ msgid ""
 "function is not further executed), and that the result is the value "
 "following the <code>return</code> keyword."
 msgstr ""
-"Frequentemente, você vai querer escrever um método que calcula algum\n"
-"valor e o retorna. Métodos retornando resultados são chamados\n"
-"<b>funções</b>. Escrever uma função não é realmente mais difícil do\n"
-"que escrever um simples método.  [!java|c]Você simplesmente tem que\n"
-"especificar o tipo de dados do resultado esperado entes do nome da\n"
-"função (onde nós previamente tínhamos <code>void</code>).[/!]\n"
-"[!scala]Você simplesmente tem que adicionar um dois-pontos (:) depois\n"
-"do parêntesis e escrever o tipo de dados que sua função vai retornar,\n"
-"e adicionar um símbolo de igualdade (=). Esta sintaxe é na verdade\n"
-"mais próxima de definir uma variável, com seu tipo, do que na verdade\n"
-"escrever uma função.[/!] Você pode usar a instrução\n"
-"<code>return</code> em qualquer lugar do corpo da sua função para\n"
-"especificar que o cálculo foi feito (a função não continuará sendo\n"
-"executada), e que o resultado é o valor que acompanha a palavra-chave\n"
+"Frequentemente, você vai querer escrever um método que calcula algum "
+"valor e o retorna. Métodos retornando resultados são chamados "
+"<b>funções</b>. Escrever uma função não é realmente mais difícil do "
+"que escrever um simples método.  [!java|c]Você simplesmente tem que "
+"especificar o tipo de dados do resultado esperado entes do nome da "
+"função (onde nós previamente tínhamos <code>void</code>).[/!] "
+"[!scala]Você simplesmente tem que adicionar um dois-pontos (:) depois "
+"do parêntesis e escrever o tipo de dados que sua função vai retornar, "
+"e adicionar um símbolo de igualdade (=). Esta sintaxe é na verdade "
+"mais próxima de definir uma variável, com seu tipo, do que na verdade "
+"escrever uma função.[/!] Você pode usar a instrução "
+"<code>return</code> em qualquer lugar do corpo da sua função para "
+"especificar que o cálculo foi feito (a função não continuará sendo "
+"executada), e que o resultado é o valor que acompanha a palavra-chave "
 "<code>return</code>."
 
 #. type: Content of: <pre>
@@ -5081,9 +5088,9 @@ msgid ""
 "do not return any result, to interupt the computation. Of course, you should "
 "not provide any value to return in that case."
 msgstr ""
-"Na verdade, você também pode usar a palavra-chave <code>return</code>\n"
-"em métodos que não retornam qualquer resultado, para interromper o\n"
-"cálculo. Obviamente que nestes casos você não passa nenhum valor para\n"
+"Na verdade, você também pode usar a palavra-chave <code>return</code> "
+"em métodos que não retornam qualquer resultado, para interromper o "
+"cálculo. Obviamente que nestes casos você não passa nenhum valor para "
 "retornar."
 
 #. type: Content of: <p>
@@ -5100,16 +5107,16 @@ msgid ""
 "some code after a <code>return</code>, it must be an error and the compiler "
 "warns you."
 msgstr ""
-"É possível ter várias instruções <code>return</code> em várias\n"
-"ramificações de um condicional. De fato, é proibido ter um caminho de\n"
-"execução no corpo da função sem nenhum <code>return</code>, ou\n"
-"escrever algum código depois da instrução <code>return</code>. Na\n"
-"verdade, se a máquina alcança o fim da função sem encontrar qualquer\n"
-"<code>return</code>, ela não sabe o real valor que deve retornar a\n"
-"quem chamou a função. Além disto, o <code>return</code> interrompe\n"
-"imediatamente a execução da função (por que se preocupar olhando além\n"
-"quando você sabe o resultado da função?). Então, se existe algum\n"
-"código depois de um <code>return</code>, deve ser um erro e o\n"
+"É possível ter várias instruções <code>return</code> em várias "
+"ramificações de um condicional. De fato, é proibido ter um caminho de "
+"execução no corpo da função sem nenhum <code>return</code>, ou "
+"escrever algum código depois da instrução <code>return</code>. Na "
+"verdade, se a máquina alcança o fim da função sem encontrar qualquer "
+"<code>return</code>, ela não sabe o real valor que deve retornar a "
+"quem chamou a função. Além disto, o <code>return</code> interrompe "
+"imediatamente a execução da função (por que se preocupar olhando além "
+"quando você sabe o resultado da função?). Então, se existe algum "
+"código depois de um <code>return</code>, deve ser um erro e o "
 "compilador irá te alertar disto."
 
 #. type: Content of: <pre>
@@ -5160,10 +5167,10 @@ msgid ""
 "whether the row in front of the buggle contains a baggle or not. The buggle "
 "will use it to search the first row containing a baggle, and stop here."
 msgstr ""
-"Você vai mais uma vez escrever uma função que o buggle vai usar. Seu\n"
-"nome deve ser <code>temBaggle</code>, e ela retorna um valor booleano\n"
-"indicando se a linha na frente do buggle contém um baggle ou não. O\n"
-"buggle vai usar isto para buscar a primeira linha contendo um baggle,\n"
+"Você vai mais uma vez escrever uma função que o buggle vai usar. Seu "
+"nome deve ser <code>temBaggle</code>, e ela retorna um valor booleano "
+"indicando se a linha na frente do buggle contém um baggle ou não. O "
+"buggle vai usar isto para buscar a primeira linha contendo um baggle, "
 "e parar nela."
 
 #. type: Content of: <p>
@@ -5173,9 +5180,9 @@ msgid ""
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. "
 "Its initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 msgstr ""
-"A forma fácil de fazer esta função é usar uma variável booleana\n"
-"chamada <code>baggleAvistado</code> indicando se nós vimos ou não um\n"
-"baggle até o momento. O valor inicial é\n"
+"A forma fácil de fazer esta função é usar uma variável booleana "
+"chamada <code>baggleAvistado</code> indicando se nós vimos ou não um "
+"baggle até o momento. O valor inicial é "
 "'[!python]False[/!][!scala|java]false[/!][!c]0[/!]'."
 
 #. type: Content of: <p>
@@ -5185,9 +5192,9 @@ msgid ""
 "one of them). For each cell, if it contains a baggle, we store true in "
 "<code>sawBaggle</code> (and we don't do anything but moving forward if not)."
 msgstr ""
-"Então mova 6 passos para frente (o mundo contém 7 células e nós já\n"
-"estamos em uma delas). Para cada célula, se ela contiver um baggle,\n"
-"vamos guardar true em <code>baggleVisto</code> (e se não, vamos\n"
+"Então mova 6 passos para frente (o mundo contém 7 células e nós já "
+"estamos em uma delas). Para cada célula, se ela contiver um baggle, "
+"vamos guardar true em <code>baggleVisto</code> (e se não, vamos "
 "simplesmente andar para frente)."
 
 #. type: Content of: <p>
@@ -5196,7 +5203,7 @@ msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
 msgstr ""
-"No final, vamos nos mover 6 passos para trás, e retornar o valor de\n"
+"No final, vamos nos mover 6 passos para trás, e retornar o valor de "
 "<code>baggleVisto</code> para quem chamou o método."
 
 #. type: Content of: <p>
@@ -5207,10 +5214,10 @@ msgid ""
 "that the world selection scrolling menu (right below the speed slider)  "
 "allows to switch the observed world."
 msgstr ""
-"Este exercício é um pouco diferente já que ele tem dois mundos\n"
-"iniciais, cada um com um objetivo específico. Seu código deve\n"
-"funcionar em ambos. Observe que o menu de seleção de mundo (logo\n"
-"abaixo do controle de velocidade) permite que você alterne entre os\n"
+"Este exercício é um pouco diferente já que ele tem dois mundos "
+"iniciais, cada um com um objetivo específico. Seu código deve "
+"funcionar em ambos. Observe que o menu de seleção de mundo (logo "
+"abaixo do controle de velocidade) permite que você alterne entre os "
 "mundos."
 
 #. type: Content of: <p>
@@ -5218,7 +5225,7 @@ msgstr ""
 msgid ""
 "When your function <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
-"Quando sua função <code>temBaggle</code> funcionar, siga para o\n"
+"Quando sua função <code>temBaggle</code> funcionar, siga para o "
 "próximo exercício."
 
 #. type: Content of: <p>
@@ -5244,10 +5251,10 @@ msgid ""
 "name. Then, you can use them in the method body as if it were variables "
 "defined in there, and which initial value is what the caller specified."
 msgstr ""
-"Felizmente, é possível passar <b>parâmetros</b> para seus\n"
-"métodos. Você tem que especificar o tipo e nome entre parêntesis\n"
-"depois do nome do método. Então, você pode usá-los no corpo do método\n"
-"como se eles fossem variáveis definidas lá, e com valores iniciais que\n"
+"Felizmente, é possível passar <b>parâmetros</b> para seus "
+"métodos. Você tem que especificar o tipo e nome entre parêntesis "
+"depois do nome do método. Então, você pode usá-los no corpo do método "
+"como se eles fossem variáveis definidas lá, e com valores iniciais que "
 "o \"caller\" especificou."
 
 #. type: Content of: <pre>
@@ -5268,7 +5275,7 @@ msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
 msgstr ""
-"Como o \"caller\", você deve especificar o valor inicial destas\n"
+"Como o \"caller\", você deve especificar o valor inicial destas "
 "\"variáveis\" entre parêntesis na chamada."
 
 #. type: Content of: <pre>
@@ -5283,7 +5290,7 @@ msgid ""
 "If you want several parameters, you need to separate them with comas (,)  "
 "both in the declaration and calls."
 msgstr ""
-"Se você quiser vários parâmetros, você precisa separar eles com\n"
+"Se você quiser vários parâmetros, você precisa separar eles com "
 "vírgulas (,) tanto na declaração quanto na chamada."
 
 #. type: Content of: <pre>
@@ -5327,8 +5334,8 @@ msgid ""
 "they don't have the same <b>signature</b>, that is, the same amount of "
 "parameters and the same parameters' types."
 msgstr ""
-"Em [!thelang], você pode declarar vários métodos de mesmo nome desde\n"
-"que eles não tenham a mesma <b>assinatura</b>, ou seja, a mesma\n"
+"Em [!thelang], você pode declarar vários métodos de mesmo nome desde "
+"que eles não tenham a mesma <b>assinatura</b>, ou seja, a mesma "
 "quantidade e tipo de parâmetros."
 
 #. type: Content of: <pre>
@@ -5386,12 +5393,12 @@ msgid ""
 "Int):Int[/!]</code>, we know that <code>x&lt;=y</code> because otherwise, "
 "the <tt>return</tt> of line 2 would have stopped the execution."
 msgstr ""
-"Observe que nós omitimos os ramos <tt>else</tt> de cada\n"
-"<tt>if</tt>. Isto funciona de qualquer jeito por que um\n"
-"<tt>return</tt> interrompe a execução do método. Se nós chegarmos à\n"
-"última linha de\n"
-"<code>[!java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>,\n"
-"vamos saber que <code>x&lt;=y</code> por que de outra forma, o\n"
+"Observe que nós omitimos os ramos <tt>else</tt> de cada "
+"<tt>if</tt>. Isto funciona de qualquer jeito por que um "
+"<tt>return</tt> interrompe a execução do método. Se nós chegarmos à "
+"última linha de "
+"<code>[!java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>, "
+"vamos saber que <code>x&lt;=y</code> por que de outra forma, o "
 "<tt>return</tt> da linha 2 deveria ter parado a execução."
 
 #. type: Content of: <p>
@@ -5416,8 +5423,8 @@ msgid ""
 "This time, there is only one world but seven buggles, all sharing the same "
 "code.  This code should not be really problematic for you to write, actually."
 msgstr ""
-"Desta vez existe apenas um mundo mas sete buggles, todos\n"
-"compartilhando o mesmo código. Este código não deve te dar muito\n"
+"Desta vez existe apenas um mundo mas sete buggles, todos "
+"compartilhando o mesmo código. Este código não deve te dar muito "
 "trabalho para escrever, na verdade."
 
 #. type: Content of: <h2>
@@ -5432,8 +5439,8 @@ msgid ""
 "reproducing the drawing of its dreams (check the \"Objective\" tab to see "
 "it)."
 msgstr ""
-"Seu buggle decidiu plantar umas flores no pote onde vive. Você tem que\n"
-"ajudar ele a reproduzir o desenho dos sonhos dele (verifique a aba\n"
+"Seu buggle decidiu plantar umas flores no pote onde vive. Você tem que "
+"ajudar ele a reproduzir o desenho dos sonhos dele (verifique a aba "
 "\"Objetivo\" para ver o sonho)."
 
 #. type: Content of: <p>
@@ -5446,11 +5453,11 @@ msgid ""
 "color passed in parameter sounds like a good start, but it is probably not "
 "enough."
 msgstr ""
-"Para isto, você tem que escrever um método <code>growFlowers()</code>\n"
-"que não recebe parâmetros e nem retorna nenhum resultado. Como o\n"
-"padrão é um pouco complexo, você deve tentar decompor este desenho em\n"
-"sub-passos de forma que seu código permaneça curto e fácil de ler. Um\n"
-"método para desenhar uma flor da cor passada como parâmetro parece um\n"
+"Para isto, você tem que escrever um método <code>growFlowers()</code> "
+"que não recebe parâmetros e nem retorna nenhum resultado. Como o "
+"padrão é um pouco complexo, você deve tentar decompor este desenho em "
+"sub-passos de forma que seu código permaneça curto e fácil de ler. Um "
+"método para desenhar uma flor da cor passada como parâmetro parece um "
 "bom começo, mas provavelmente não é o suficiente."
 
 #. type: Content of: <p>
@@ -5460,8 +5467,8 @@ msgid ""
 "[!java|scala|c]The data type of these constants is <code>Color</code>, that "
 "naturally describes a particular color.[/!]"
 msgstr ""
-"Para sua informação, este desenho usa cinco cores que estão\n"
-"listadas abaixo.  [!java|scala|c]o tipo de dados destas constantes é\n"
+"Para sua informação, este desenho usa cinco cores que estão "
+"listadas abaixo.  [!java|scala|c]o tipo de dados destas constantes é "
 "<code>Cor</code>, que naturalmente descreve uma cor particular.[/!]"
 
 #. type: Content of: <ul><li>
@@ -5506,8 +5513,8 @@ msgid ""
 "case! Your buggle can't help but starts flowering this gorgeous place. You "
 "should help it to prevent that it bumps into a wall..."
 msgstr ""
-"Uau! isto não é mais um potinho! É uma grande vitrine de flores!\n"
-"Seu buggle mal pode esperar para começar a florir este belo\n"
+"Uau! isto não é mais um potinho! É uma grande vitrine de flores! "
+"Seu buggle mal pode esperar para começar a florir este belo "
 "lugar. Você deve ajudá-lo a não bater nas paredes..."
 
 #. type: Content of: <p>
@@ -5528,10 +5535,10 @@ msgid ""
 "decomposition is to write a method in charge of drawing a V of the specified "
 "color from the current position. Its prototype can be:"
 msgstr ""
-"Se você observar cuidadosamente a figura para pintar, ela é\n"
-"constituída de quatro partes descrevendo um tipo de V usando uma cor\n"
-"diferente. Uma decomposição possível é escrever um método responsável\n"
-"por pintar um V de uma cor específica a partir da posição atual. Seu\n"
+"Se você observar cuidadosamente a figura para pintar, ela é "
+"constituída de quatro partes descrevendo um tipo de V usando uma cor "
+"diferente. Uma decomposição possível é escrever um método responsável "
+"por pintar um V de uma cor específica a partir da posição atual. Seu "
 "protótipo pode ser:"
 
 #. type: Content of: <pre>
@@ -5547,8 +5554,8 @@ msgid ""
 "Your code should probably call <code>makeV</code> with the following "
 "arguments (a different color for each call):"
 msgstr ""
-"O tipo de dados <code>Cor</code> descreve obviamente uma cor\n"
-"particular. Seu código provavelmente vai chamar <code>fazerV</code> com\n"
+"O tipo de dados <code>Cor</code> descreve obviamente uma cor "
+"particular. Seu código provavelmente vai chamar <code>fazerV</code> com "
 "os seguintes argumentos (uma cor diferente para cada chamada):"
 
 #. type: Content of: <ul><li>
@@ -5579,9 +5586,9 @@ msgid ""
 "as well as <code>brushUp()</code> and <code>brushDown()</code> to change the "
 "brush position."
 msgstr ""
-"Em <code>makeV()</code>, você deve usar o método\n"
-"<code>setBrushColor()</code> (pré-definido no buggle) para mudar a cor\n"
-"do pincel do buggle, assim como <code>levantarPincel()</code> e\n"
+"Em <code>makeV()</code>, você deve usar o método "
+"<code>setBrushColor()</code> (pré-definido no buggle) para mudar a cor "
+"do pincel do buggle, assim como <code>levantarPincel()</code> e "
 "<code>abaixarPincel()</code> para mudar a posição do pincel."
 
 #. type: Content of: <p>
@@ -5590,7 +5597,7 @@ msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
 msgstr ""
-"É recomendável escrever o código do <code>fazerV()</code> de forma que\n"
+"É recomendável escrever o código do <code>fazerV()</code> de forma que "
 "ele deixe o buggle na posição para o próximo V."
 
 #. type: Content of: <p>
@@ -5602,11 +5609,11 @@ msgid ""
 "code> keyword means more or less that anybody can call this method, which is "
 "good because the PLM infrastructure calls it directly.[/!]"
 msgstr ""
-"Agora é sua vez. tenho certeza de que você pode imaginar os outros\n"
-"métodos necessários para manter seu código simples e agradável de ler.\n"
-"Complete o método <code>run()</code> que será chamado automaticamente\n"
-"(uma vez).  [!java]a palavra-chave <code>public</code> significa mais\n"
-"ou menos que todo mundo pode chamar este método, o que é bom pois a\n"
+"Agora é sua vez. tenho certeza de que você pode imaginar os outros "
+"métodos necessários para manter seu código simples e agradável de ler. "
+"Complete o método <code>run()</code> que será chamado automaticamente "
+"(uma vez).  [!java]a palavra-chave <code>public</code> significa mais "
+"ou menos que todo mundo pode chamar este método, o que é bom pois a "
 "infraestrutura do PLM chama ele diretamente.[/!]"
 
 #. type: Content of: <h2>
@@ -5621,9 +5628,9 @@ msgid ""
 "pattern and factorize your code. Another solution is to <i>parametrize</i> "
 "your functions to reuse the code you wrote previously by changing the size."
 msgstr ""
-"Você agora tem que declarar ainda mais métodos para usar as repetições\n"
-"de padrões e fatorizar seu código. Outra soução é <i>parametrizar</i>\n"
-"suas funções para reusar o código que você escreveu previamente\n"
+"Você agora tem que declarar ainda mais métodos para usar as repetições "
+"de padrões e fatorizar seu código. Outra soução é <i>parametrizar</i> "
+"suas funções para reusar o código que você escreveu previamente "
 "mudando o tamanho."
 
 #. type: Content of: <p>
@@ -5647,7 +5654,7 @@ msgid ""
 "Here is yet another exercise where you have to reproduce the pattern "
 "provided in the \"Objective\" tab."
 msgstr ""
-"Aqui está outro exercício onde você tem que reproduzir o padrão\n"
+"Aqui está outro exercício onde você tem que reproduzir o padrão "
 "fornecido na aba \"Objetivo\"."
 
 #. type: Content of: <p>
@@ -5657,8 +5664,8 @@ msgid ""
 "repeating patterns, even if the color changes, and write a method drawing "
 "each of them."
 msgstr ""
-"Este é um pouco mais difícil do que o anterior. Procure por padrões de\n"
-"repetição, mesmo se a cor mudar, e escreva um método desenhando cada\n"
+"Este é um pouco mais difícil do que o anterior. Procure por padrões de "
+"repetição, mesmo se a cor mudar, e escreva um método desenhando cada "
 "um deles."
 
 #. type: Content of: <p>
@@ -5674,9 +5681,9 @@ msgid ""
 "write the code to organize the hunting party. Copy/paste your code from the "
 "previous exercise, and complete the <code>hunt()</code> method."
 msgstr ""
-"Agora que seu método <code>estáDeFrenteParaRastro()</code> está\n"
-"funcionando, é hora de escrever o código para organizar a festa da\n"
-"caçada. Copie-e-cole seu código do exercício anterior e complete o\n"
+"Agora que seu método <code>estáDeFrenteParaRastro()</code> está "
+"funcionando, é hora de escrever o código para organizar a festa da "
+"caçada. Copie-e-cole seu código do exercício anterior e complete o "
 "método <code>caçar()</code>."
 
 #. type: Content of: <p>
@@ -5687,9 +5694,9 @@ msgid ""
 "check whether the rest of the track is on your left or on your right, and "
 "follow it further."
 msgstr ""
-"Seguir uma trilha não é difícil: avance até você ter a trilha em\n"
-"frente a você. Se não houver trilha mais trilha em frente a você,\n"
-"verifique se o restante da trilha está a sua esquerda ou à sua\n"
+"Seguir uma trilha não é difícil: avance até você ter a trilha em "
+"frente a você. Se não houver trilha mais trilha em frente a você, "
+"verifique se o restante da trilha está a sua esquerda ou à sua "
 "direita, e vá nesta direção."
 
 #. type: Content of: <p>
@@ -5700,10 +5707,10 @@ msgid ""
 "<code>brushDown()</code> to put your brush down and mark the ground, and "
 "<code>brushUp()</code> to move it up again."
 msgstr ""
-"Para garantir que você não misture o caminho de onde você veio com o\n"
-"para onde você vai, a forma mais fácil é apagar o caminho por onde\n"
-"você passa. Use o método <code>abaixarPincel()</code> para abaixar seu\n"
-"pincel e marcar o chão, e <code>levantarPincel()</code> para\n"
+"Para garantir que você não misture o caminho de onde você veio com o "
+"para onde você vai, a forma mais fácil é apagar o caminho por onde "
+"você passa. Use o método <code>abaixarPincel()</code> para abaixar seu "
+"pincel e marcar o chão, e <code>levantarPincel()</code> para "
 "levantá-lo de novo."
 
 #. type: Content of: <p>
@@ -5712,7 +5719,7 @@ msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
 "<code>pickupBaggle()</code>)."
 msgstr ""
-"Finalmente, não esqueça de capturar sua presa quando encontrá-la\n"
+"Finalmente, não esqueça de capturar sua presa quando encontrá-la "
 "(usando <code>pickupBaggle()</code>)."
 
 #. type: Content of: outside any tag (error?)
@@ -5722,8 +5729,8 @@ msgid ""
 "probably want to copy over the <code>isFacingTrail()</code> method that you "
 "wrote in previous exercise.  </a>"
 msgstr ""
-"<a name=\"Objetivos\"> Complete o método <code>caçar()</code>. Você não\n"
-"gostaria de copiar o método <code>estáDeFrenteParaRastro()</code> que\n"
+"<a name=\"Objetivos\"> Complete o método <code>caçar()</code>. Você não "
+"gostaria de copiar o método <code>estáDeFrenteParaRastro()</code> que "
 "você escreveu no exercício anterior?</a>"
 
 #. type: Content of: <p>
@@ -5747,11 +5754,11 @@ msgid ""
 "should make sure that this method has no <b>side effect</b>, i.e. that it "
 "does not change the state of the calling buggle nor of its world."
 msgstr ""
-"Para atingir este objetivo, você tem que escrever um método booleano\n"
-"<tt>estáDeFrenteParaRastro</tt>, que determina se estamos virados para uma\n"
-"célula verde ou não. Obviamente, se nós estivermos virados para uma\n"
-"parede, ele deve retornar falso sem \"bumping\" nela. Você deve se\n"
-"certificar que este método não tem <b>efeitos colaterais</b>, i.e. que\n"
+"Para atingir este objetivo, você tem que escrever um método booleano "
+"<tt>estáDeFrenteParaRastro</tt>, que determina se estamos virados para uma "
+"célula verde ou não. Obviamente, se nós estivermos virados para uma "
+"parede, ele deve retornar falso sem \"bumping\" nela. Você deve se "
+"certificar que este método não tem <b>efeitos colaterais</b>, i.e. que "
 "ele não muda o estado do \"calling buggle\" ou do mundo."
 
 #. type: Content of: <p>
@@ -5768,15 +5775,15 @@ msgid ""
 "scala|python]Color.green[/!][!c]GREEN[/!]</code>, that represents the green "
 "color.[/!]"
 msgstr ""
-"Sua ferramenta para este objetivo é o <code>getCorDoChão()</code>\n"
-"que retorna a cor da célula atual. Simplesmente vá para a célula que\n"
-"você quer testar e execute esta função.  [!java]Você não pode testar\n"
-"se esta cor é igual a <code>Cor.verde</code> com um símbolo de\n"
-"<code>==</code> mas sim escrever algo como\n"
-"<code>getCorDoChão().equals(Cor.verde)</code>. Isto acontece por que\n"
-"verde é um  <i>objeto</i> em Java, e <code>.equals()</code> é a forma\n"
-"de testar igualdade entre objetos Java.[/!] [!python|scala]Então você\n"
-"tem que testar se a cor retornada é igual ao valor\n"
+"Sua ferramenta para este objetivo é o <code>getCorDoChão()</code> "
+"que retorna a cor da célula atual. Simplesmente vá para a célula que "
+"você quer testar e execute esta função.  [!java]Você não pode testar "
+"se esta cor é igual a <code>Cor.verde</code> com um símbolo de "
+"<code>==</code> mas sim escrever algo como "
+"<code>getCorDoChão().equals(Cor.verde)</code>. Isto acontece por que "
+"verde é um  <i>objeto</i> em Java, e <code>.equals()</code> é a forma "
+"de testar igualdade entre objetos Java.[/!] [!python|scala]Então você "
+"tem que testar se a cor retornada é igual ao valor "
 "<code>Cor.verde</code>, que representa a cor verde.[/!]"
 
 #. type: Content of: <p>
@@ -5785,7 +5792,7 @@ msgid ""
 "Complete the <code>isFacingTrail()</code> method (which gets called "
 "automatically)."
 msgstr ""
-"Complete o método <code>estáDeFrenteParaRastro()</code> (que será\n"
+"Complete o método <code>estáDeFrenteParaRastro()</code> (que será "
 "chamado automaticamente)."
 
 #. type: Content of: <h2>
@@ -5801,10 +5808,10 @@ msgid ""
 "second world, that's a big fat snail that awaits your buggle at the end of "
 "the orange trail."
 msgstr ""
-"Iuhu! Desta vez, seu buggle encontrou trilhas com muitas presas! No\n"
-"primeiro mundo, era uma bela lesma deliciosa (que deixava um rastro\n"
+"Iuhu! Desta vez, seu buggle encontrou trilhas com muitas presas! No "
+"primeiro mundo, era uma bela lesma deliciosa (que deixava um rastro "
 "rosa) e no segundo mundo, uma grande e gordo caracol que esperava seu "
-"buggle\n"
+"buggle "
 "no final do rastro laranja."
 
 #. type: Content of: <p>
@@ -5814,8 +5821,8 @@ msgid ""
 "take the color of the trail to follow as a parameter. Beside of this, your "
 "code should work as earlier."
 msgstr ""
-"Você tem que copiar/colar seu código de novo, e mudá-lo de forma que\n"
-"seus métodos fiquem com a cor do rastro para seguir como um\n"
+"Você tem que copiar/colar seu código de novo, e mudá-lo de forma que "
+"seus métodos fiquem com a cor do rastro para seguir como um "
 "parâmetro. E mesmo assim, seu código deve funcionar como antes."
 
 #. type: Content of: <p>
@@ -5826,10 +5833,10 @@ msgid ""
 "worlds). Add a parameter to your <code>isFacingTrail()</code> method to only "
 "follow the requested color, as the other colors lead to dead ends..."
 msgstr ""
-"Cuidado para não seguir pistas falsas! O método <code>hunt()</code>\n"
-"recebe um parâmetro para dizer que cor seguir (e não é o mesmo em\n"
-"todos os mundos). Adicione um parâmetro ao seu método\n"
-"<code>isFacingTrail()</code> para apenas seguir a cor requisitada,\n"
+"Cuidado para não seguir pistas falsas! O método <code>hunt()</code> "
+"recebe um parâmetro para dizer que cor seguir (e não é o mesmo em "
+"todos os mundos). Adicione um parâmetro ao seu método "
+"<code>isFacingTrail()</code> para apenas seguir a cor requisitada, "
 "pois as outras cores vão levar a becos sem saída..."
 
 #. type: Content of: <h2>
@@ -5846,10 +5853,10 @@ msgid ""
 "the screen, and following the music. But before that, we have some details "
 "to study first."
 msgstr ""
-"Depois destas corridas, é hora de festejar! Para isto, vamos ensinar\n"
-"os buggles a jogar Dance Revolution, este jogo amado por alguns\n"
-"estudantes: O jogador tem que mover os pés num carpete de acordo com\n"
-"as instruções apresentadas na tela, e seguir a música. Mas antes\n"
+"Depois destas corridas, é hora de festejar! Para isto, vamos ensinar "
+"os buggles a jogar Dance Revolution, este jogo amado por alguns "
+"estudantes: O jogador tem que mover os pés num carpete de acordo com "
+"as instruções apresentadas na tela, e seguir a música. Mas antes "
 "disto, temos alguns detalhes para estudar primeiro."
 
 #. type: Content of: outside any tag (error?)
@@ -5870,8 +5877,8 @@ msgid ""
 "contains only one instruction, then the curly braces become optional. So, "
 "the two chunk of code are equivalent:"
 msgstr ""
-"Existe um detalhe que nós omitimos sobre a sintaxe do condicional: se\n"
-"um ramo contém apenas uma instrução, então o colchetes se torna\n"
+"Existe um detalhe que nós omitimos sobre a sintaxe do condicional: se "
+"um ramo contém apenas uma instrução, então o colchetes se torna "
 "opcional. Portanto, estes dois pedaços de código são equivalentes:"
 
 #. type: Content of: <pre>
@@ -7311,7 +7318,7 @@ msgstr ""
 "poder: Uma trajetória de formiga pode ser usada para calcular qualquer\n"
 "circuito booleano, e logo uma formiga é capaz de qualquer cálculo\n"
 "universal. resumindo, qualquer cálculo possível pode ser alcançado\n"
-"usando uma turmite como dispocitivo computacional. Ainda outro assunto\n"
+"usando uma turmite como dispositivo computacional. Ainda outro assunto\n"
 "fascinante..."
 
 #. type: Content of: <p>
@@ -7370,7 +7377,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/Main.html:28
 msgid "We may want to write an exercise on the busy beaver, maybe?"
-msgstr "Quem sabe não escrevemos um exercício sobre os busy beavers?"
+msgstr "Quem sabe não escrevemos um exercício sobre os \"busy beavers\"?"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/short_desc.html:3
@@ -7636,7 +7643,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:13
-#, fuzzy
 msgid ""
 "Once again, you just have to write the <code>step()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
@@ -7653,20 +7659,19 @@ msgstr ""
 "Novamente, você tem que simplesmente escrever o método\n"
 "<code>step()</code>, encarregado de fazer o turmite dar um\n"
 "passo. Novamente, você deve primeiro encontrar o rank da cor do chão\n"
-"da célula atual na sequência de cores. Mas agora, o \"<code>rule</code>\n"
-"data\" depende tanto da cor atual quanto do estado atual.\n"
-"\"<code>rule</code>\" na verdade contém 3 informações em cada situação:\n"
-"a cor a escreve, o movimento a fazer e o valor do próximo estado. Por\n"
-"exemplo, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contém as\n"
+"da célula atual na sequência de cores. Mas agora, os dados de\n"
+"<code>rule</code> (regras) dependem tanto da cor atual quanto do\n"
+"estado atual. A <code>rule</code> na verdade contém 3 informações em\n"
+"cada situação: a cor que a escreve, o movimento a fazer e o valor do\n"
+"próximo estado. Por exemplo,\n"
+"[!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contém as\n"
 "informações para usar quando <code>state==1</code> e\n"
 "<code>color==0</code>. Em outros mundos, você pode recuperar a\n"
 "informação relativa à sua situação atual usando\n"
-"<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
-"(currentColor)[/!]</code>."
+"<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:25
-#, fuzzy
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
@@ -7676,7 +7681,7 @@ msgid ""
 "in a future state). Finally, the third integer is the next <code>state</"
 "code> value to go into after this iteration."
 msgstr ""
-"Cada um deste conjunto de informações contém 3 valores. O primeiro é o\n"
+"Cada um destes conjuntos de informações contém 3 valores. O primeiro é o\n"
 "rank da cor para escrever no chão. O segundo é o movimento para fazer,\n"
 "com a seguinte notação: 0=stop, 1=noturn, 2=left, 4=u-turn,\n"
 "8=right. Observe que se o comando é stop, você não pode se mover nem\n"
@@ -7687,7 +7692,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:32
-#, fuzzy
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, you "
 "should define a set of constants that you should use instead of the direct "
@@ -7702,29 +7706,29 @@ msgid ""
 "can still modify them, but that would be a very bad idea.[/!] You should "
 "write them out of any method so that they are globally visible."
 msgstr ""
-"Since these arbitrary notations are somehow difficult to remember, you\n"
-"should define a set of constants that you should use instead of the\n"
-"direct numerical values.  Their names could be NOTURN, LEFT, RIGHT and\n"
-"so on.  [!scala]Just declare them using the keyword <code>val</code>\n"
-"instead of <code>var</code>.  You should always use <code>val</code>\n"
-"instead of <code>var</code> when possible anyway.[/!] [!java]The\n"
-"modifiers <code>final static</code> before their type is the way to\n"
-"mark variables as constant in Java.  You should write for example\n"
-"<code>static final int NOTURN=1;</code> Sorry for the complexity of\n"
-"this notation. [/!] [!python]By convention, such constant variables\n"
-"are written in upper case in python.  Technically, you can still\n"
-"modify them, but that would be a very bad idea.[/!] You should write\n"
-"them out of any method so that they are globally visible."
+"Uma vez que estas notações arbitrárias são de certa forma difíceis de\n"
+"lembrar, você deve definir um conjunto de constantes que você deve\n"
+"usar no lugar dos valores numéricos diretos. Seus nomes podem ser\n"
+"NOTURN, LEFT, RIGHT etc. [!scala]Simplesmente declare elas usando\n"
+"keyword <code>val</code> no lugar de <code>var</code>.  Você deve\n"
+"sempre usar <code>val</code> no lugar de <code>var</code> quando\n"
+"possível de qualquer forma.[/!] [!java]Os modificadores <code>final\n"
+"static</code> antes do seu tipo é a forma de marcar variáveis como\n"
+"constantes em Java. Você deve escrever, por exemplo, <code>static\n"
+"final int NOTURN=1;</code> Desculpe pela complesxidade desta\n"
+"notação. [/!] [!python]Por convenção, tais variáveis constantes são\n"
+"escritas em maiúsculas no python.  Tecnicamente, você ainda pode\n"
+"modificá-las, mas isto é uma má ideia.[/!] Você deve escrevê-las fora\n"
+"de qualquer método para que elas se tornem visíveis globalmente."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:44
-#, fuzzy
 msgid ""
 "Using such constants greatly help making the code easier to read. Compare "
 "the next two code chunks:"
 msgstr ""
-"Using such constants greatly help making the code easier to\n"
-"read. Compare the next two code chunks:"
+"Usar tais constantes ajuda em muito a fazer o código mais\n"
+"legível. Compare os dois blocos de código a seguir:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:46
@@ -7740,9 +7744,9 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:49
-#, fuzzy
 msgid "This is much more easier to read (although longer) than the following:"
-msgstr "Isto é muito mais fácil de se ler (embora seja mais longo) do que o seguinte:"
+msgstr ""
+"Isto é muito mais fácil de se ler (embora seja mais longo) do que o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:50
@@ -7758,7 +7762,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
-#, fuzzy
 msgid ""
 "Finally, you probably want to write a <code>elif</code> branch for the "
 "<code>STOP</code> condition too. Having a <code>else</code> branch "
@@ -7770,29 +7773,27 @@ msgid ""
 "<code>pass</code> instruction as a placeholder: it says python that you have "
 "a branch here, and that it does not contain anything."
 msgstr ""
-"Finally, you probably want to write a <code>elif</code> branch for the\n"
-"<code>STOP</code> condition too. Having a <code>else</code> branch\n"
-"displaying an error message such as \"unknown case\" is a good practice:\n"
-"it makes your assumptions about your code more explicit, and you will\n"
-"get an error message if they fall short. When doing so, the next\n"
-"problem is that you have nothing to do in the <code>STOP</code> case,\n"
-"but python do not allows you to write empty <code>elif</code>\n"
-"branches. You should use the <code>pass</code> instruction as a\n"
-"placeholder: it says python that you have a branch here, and that it\n"
-"does not contain anything."
+"Finalmente, você provavelmente vai querer escrever um ramo\n"
+"<code>elif</code> para a condição <code>STOP</code> também. Ter um\n"
+"ramo <code>else</code> mostrando uma mensagem de erro tal como\n"
+"\"unknown case\" é uma boa prática: faz as suas suposições sobre seu\n"
+"código mais explícitas, e você tem uma mensagem de erro se elas\n"
+"falharem. Quando fizer isto, o próximo problema vai ser que você não\n"
+"tem nada para fazer no caso do <code>STOP</code>, mas python não\n"
+"permite que você escreva ramos <code>elif</code> vazios. Você deve\n"
+"usar a instrução <code>pass</code> como substituto: ela diz ao python\n"
+"que você tem um ramo aqui, e que ele não faz nada."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:63
-#, fuzzy
 msgid ""
 "You should probably use a [!java]switch case[/!][!scala]pattern matching[/!] "
 "construct to keep your code readable.  If you can't remember what it is, "
 "check <a href=\"plm://lessons.welcome/bdr.BDR2\">this exercise</a>."
 msgstr ""
-"You should probably use a [!java]switch case[/!][!scala]pattern\n"
-"matching[/!] construct to keep your code readable.  If you can't\n"
-"remember what it is, check <a\n"
-"href=\"plm://lessons.welcome/bdr.BDR2\">this exercise</a>."
+"Provavelmente você deve usar uma construção [!java]switch case[/!][!scala]pattern\n"
+"matching[/!] para manter seu código legível. Se você não lembra o que é isto, veja <a\n"
+"href=\"plm://lessons.welcome/bdr.BDR2\">este exercício</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:69
@@ -7801,7 +7802,6 @@ msgstr "Notas bibliográficas"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:70
-#, fuzzy
 msgid ""
 "According to wikipedia, turmites were invented independently by the end of "
 "the eighties. It has been shown that turmites in general are exactly "
@@ -7810,37 +7810,34 @@ msgid ""
 "program that you can think of could theoretically be computed on this "
 "device..."
 msgstr ""
-"According to wikipedia, turmites were invented independently by the\n"
-"end of the eighties. It has been shown that turmites in general are\n"
-"exactly equivalent in power to one-dimensional Turing machines with an\n"
-"infinite tape, as either can simulate the other. This means that\n"
-"absolutely any program that you can think of could theoretically be\n"
-"computed on this device..."
+"De acordo com a wikipédia, os turmites foram inventados\n"
+"independentemente no final dos anos oitenta. Foi provado que turmites\n"
+"em geral são exatamente equivalentes em capacidade a máquinas de\n"
+"turing uni-dimensionais com uma fita infinita, pois um pode simular o\n"
+"outro. Isto significa que qualquer programa que você possa conceber\n"
+"pode teoricamente ser executado neste dispositivo..."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:2
-#, fuzzy
 msgid "Creating Turmites"
 msgstr "Criando Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:4
-#, fuzzy
 msgid ""
 "This exercise allows you to build your own turmites. To pass the exercise, "
 "you should simply write a <code>init()</code> method which initializes the "
 "<code>rule</code> to use the following transitions table (from wikipedia), "
 "set the buggle initial position at (8;33), and ask for 8342 steps."
 msgstr ""
-"This exercise allows you to build your own turmites. To pass the\n"
-"exercise, you should simply write a <code>init()</code> method which\n"
-"initializes the <code>rule</code> to use the following transitions\n"
-"table (from wikipedia), set the buggle initial position at (8;33), and\n"
-"ask for 8342 steps."
+"Este exercício permite que você construa seus próprios turmites. Para\n"
+"passar neste exercício, você deve simplesmente escrever um método\n"
+"<code>init()</code> que inicializa a <code>rule</code> para usar a\n"
+"seguintes tabela de transições (da wikipédia), configure a posição\n"
+"inicial em (8;33), e peça por 8342 passos."
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:11
-#, fuzzy
 msgid "Current color"
 msgstr "Cor atual"
 
@@ -7867,14 +7864,12 @@ msgstr "1"
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:19
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:22
-#, fuzzy
 msgid "Write color"
-msgstr "Write color"
+msgstr "Escrever cor"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:20
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:23
-#, fuzzy
 msgid "Turn"
 msgstr "Turn"
 
@@ -7883,25 +7878,23 @@ msgstr "Turn"
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:24
 #, fuzzy
 msgid "Next state"
-msgstr "Next state"
+msgstr "Próximo estado"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:27
 #, fuzzy
 msgid "Current state"
-msgstr "Current state"
+msgstr "Estado atual"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:31
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:34
-#, fuzzy
 msgid "R"
 msgstr "R"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:41
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:44
-#, fuzzy
 msgid "N"
 msgstr "N"
 
@@ -7912,8 +7905,8 @@ msgid ""
 "where the direction to turn is one of <b>L</b> (90° left), <b>R</b> (90° "
 "right), <b>N</b> (no turn) and <b>U</b> (180° U-turn)."
 msgstr ""
-"where the direction to turn is one of <b>L</b> (90° left), <b>R</b>\n"
-"(90° right), <b>N</b> (no turn) and <b>U</b> (180° U-turn)."
+"Onde a direção para virar é <b>L</b> (90° left), <b>R</b>\n"
+"(90° right), <b>N</b> (não vira) e <b>U</b> (180° meia-volta)."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:51
@@ -9951,6 +9944,11 @@ msgid ""
 "graphical representations, it looks like a bubble takes the element and move "
 "them through the pile. This is where its name comes from."
 msgstr ""
+"O objetivo aqui é ordená-los usando o algoritmo da bolha (bubble),\n"
+"onde uma panqueca é movida para o fundo até encontrar uma maior que\n"
+"ela. Em representações gráficas, parece que uma bolha ocupa o lugar do\n"
+"elemento e move ele através da pilha. É daí que saiu o nome do\n"
+"algoritmo."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BubblePancake.html:8
@@ -9958,9 +9956,13 @@ msgid ""
 "Now, using pancakes makes it a little more difficult to write, because you "
 "have to find a way to swap only two pancakes at a time."
 msgstr ""
+"Agora, usando panquecas torna as coisas um pouco mais difíceis de\n"
+"escrever, pois você tem que encontrar uma forma de alternar apenas\n"
+"duas panquecas por vez."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BubblePancake.html:11
+#, fuzzy
 msgid ""
 "The bubble algorithm consists in browsing the whole pile from top to bottom, "
 "and making a comparision between two pancakes. Each time the top pancake is "
@@ -9969,9 +9971,16 @@ msgid ""
 "through the entire pile until no swap has occurred, in which case the pile "
 "is sorted."
 msgstr ""
+"The bubble algorithm consists in browsing the whole pile from top to\n"
+"bottom, and making a comparision between two pancakes. Each time the\n"
+"top pancake is bigger than the one below, you have to swap them, then\n"
+"compare the bigger pancake you just swapped with one below, and so\n"
+"on. You have to browse through the entire pile until no swap has\n"
+"occurred, in which case the pile is sorted."
 
 #. type: Content of: <p><p><div>
 #: src/lessons/sort/pancake/BubblePancake.html:14
+#, fuzzy
 msgid ""
 "If you don't understand the basic bubble sorting algorithm, you should try "
 "the exercises within the “Sorting algorithms” lesson. If you do, but can't "
@@ -9979,6 +9988,11 @@ msgid ""
 "only two pancakes are swapped at a time, and find a way to reach that "
 "situation."
 msgstr ""
+"Se você não entende o algoritmo básico bubble sort, tente os\n"
+"exercícios da lição “Sorting algorithms”. Se você consegue, mas não\n"
+"imagina uma forma de alternar apenas duas panquecas por vez, pense na\n"
+"situação onde apenas duas panquecas são alternadas por vez, e encontre\n"
+"uma forma de chegar nesta situação."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:2
@@ -10753,7 +10767,7 @@ msgstr ""
 "Hoje os buggles decidiram jogar um jogo de basebal, mas eles estão sem\n"
 "muita sorte, na verdade. Primeiro, eles esqueceram as regras,\n"
 "e... bem... eles não acharam as bolas e tacos de novo. Então eles\n"
-"decidiram \"adaptar um pouco\" as regras. Como eles não são bolas, tudo\n"
+"decidiram adaptar um pouco as regras. Como eles não são bolas, tudo\n"
 "que podem fazer é correr ao redor do campo, o que fazem felizes da\n"
 "vida: Por um período, todos os buggles correram na máxima velocidade\n"
 "em todas as direções pelo campo."
@@ -10929,6 +10943,12 @@ msgid ""
 "will grow an sorted area where all players are already sorted (and never "
 "changed) while the unsorted area shrinks."
 msgstr ""
+"Vamos adaptar o selection sort para nossa situação. As linhas grandes\n"
+"do algoritmo se tornam \"para cada base, selecione os jogadores que\n"
+"devem ocupar esta base e garanta que eles venham para as suas\n"
+"posições\". Desta forma, vamos aumentar uma área ordenada onde todos os\n"
+"jogadores já estão ordenados (e nunca deixam de estar) enquanto a área\n"
+"não-ordenada se reduz."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:24
@@ -10937,9 +10957,14 @@ msgid ""
 "methods such as <code>findPlayer()</code> or <code>findPlayerBase()</code>. "
 "This will ensure that your code remains understandable."
 msgstr ""
+"Selecionar o jogador não deve ser um problema; Não hesite para definir\n"
+"alguns métodos como <code>findPlayer()</code> ou\n"
+"<code>findPlayerBase()</code>. Isto vai garantir que seu código\n"
+"permaneça entendível."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:28
+#, fuzzy
 msgid ""
 "The most problematic aspect is to move the selected players into position. "
 "For that, you have to move the hole to the position where the player is, and "
@@ -10947,9 +10972,15 @@ msgid ""
 "player's goal (probably in a loop), and finally put the player in the right "
 "position of its target base."
 msgstr ""
+"O aspecto mais problemático é mover os jogadores selecionados para suas "
+"posições. Para isto, você tem que mover o espaço vazio para a posição onde o "
+"jogador está, e então mover ambos os jogadores e o espaço vazio para a base "
+"que estiver próxima do objetivo do jogador (provavelmente com um loop), e "
+"finalmente colocar o jogador na posição correta de sua base \"target\"."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:33
+#, fuzzy
 msgid ""
 "As often in programming, the devil is in the details: there is a bunch of "
 "corner cases that you should detect and deal with correctly, such as the "
@@ -10958,11 +10989,17 @@ msgid ""
 "when you sort the first base). But you will find and hunt these while "
 "debugging your code."
 msgstr ""
+"Como é comum em programação, o diabo esconde-se nos detalhes: existe\n"
+"um conjunto de \"corner cases\" que você deve detectar e lidar\n"
+"corretamente, como os casos onde o jogador já está na base (mas não na\n"
+"posição que você gostaria), ou quando o buraco está à direita do\n"
+"jogador (provavelmente quando você ordena a primeira base). Mas você\n"
+"vai caçar tais coisas enquanto depurar seu código."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/InsertBaseball.html:2
 msgid "Insertion Baseball"
-msgstr ""
+msgstr "Insertion Baseball"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:4
@@ -10975,6 +11012,14 @@ msgid ""
 "the selected player and then both the player and hole in position, and more. "
 "We can do better."
 msgstr ""
+"O aspecto bom de adaptar o selection sort para o problema do basebal é\n"
+"que nós sabemos que isto funciona (desde que nossa adaptação esteja\n"
+"correta). O que é muito melhor que o nosso primeiro e simplório\n"
+"algoritmo, que é incapaz de convergir para a solução em algumas\n"
+"situações. Mas na verdade, o selection sort também não é perfeito pois\n"
+"ele requer muitas trocas: nós temos que trazer o espaço vazio para e\n"
+"jogador selecionado e então levar o jogador e o espaço vazio para a\n"
+"posição, e mais. Podemos fazer melhor."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:10
@@ -10990,6 +11035,18 @@ msgid ""
 "left neighbor). This would at least reduce the travel of players to the "
 "sorted area as we use the first one on the border."
 msgstr ""
+"Por exemplo, cada jogador pode correr por uma longa distância de sua\n"
+"posição inicial para o objetivo. Portanto, pode ser mais interessante\n"
+"dividir o campo em duas partes: uma à esquerda onde todos os jogadores\n"
+"estejam ordenados relativamente uns aos outros, e outra a direita onde\n"
+"os jogadores ainda estejam em suas posições iniciais. Então, em cada\n"
+"iteração, pegaremos o jogador na fronteira entre as áreas ordenada e\n"
+"não-ordenada (ou sejam o jogador mais a esquerda da parte\n"
+"não-ordenada) e moveremos ele para a esquerda (dentro da parte\n"
+"ordenada) até que ele alcance sua posição (ou seja, até a posição onde\n"
+"ele seja maior que seu vizinho da esquerda). Isto pode, pelo menos,\n"
+"reduzir o trajeto dos jogadores para a área ordenada já que usamos o\n"
+"mais perto da fronteira."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:19
@@ -10999,6 +11056,11 @@ msgid ""
 "position within the sorted area. This is good, as we know that our algorithm "
 "is not inherently flawed since we adapt a well known one."
 msgstr ""
+"Na verdade, é exatamente isto que o insertion sort deve fazer: manter\n"
+"uma área ordenada na esquerda, e colocar iterativamente o jogador na\n"
+"fronteira com esta posição dentro da área ordenada. Isto é bom, já que\n"
+"nós sabemos que nosso algoritmo não é inerentemente \"flawed\" pois nós\n"
+"adaptamos um algoritmo bem conhecido."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:23
@@ -11015,9 +11077,23 @@ msgid ""
 "<code>index=base*2+pos</code> (this works because "
 "<code>getPositionsAmount()</code> always returns 2)."
 msgstr ""
+"A forma mais fácil de adaptar o insertion sort ao problema do basebal\n"
+"é considerar todas as posições como adjacentes e esquecer sobre as\n"
+"bases. Para isto, definimos os métodos\n"
+"<code>getColor[!c]Insert[/!](pos)</code>,\n"
+"<code>move[!c]Insert[/!](pos)</code> e\n"
+"<code>getHole[!c]Insert[/!]()</code> que usam, todos, um único inteiro\n"
+"para designar uma dada posição. Estas funções simplesmente convertem\n"
+"a forma de especificar uma posição para em seguida chamar as funções\n"
+"usuais para interagir com o mundo. Se você tem um <code>index</code> e\n"
+"quer converter ele em <code>base,pos</code>, para então em\n"
+"<code>base=index/2</code> e <code>pos=index%2</code>. Para calcular o\n"
+"reverso, <code>index=base*2+pos</code> (isto funciona pois\n"
+"<code>getPositionsAmount()</code> sempre retorna 2)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:32
+#, fuzzy
 msgid ""
 "For the algorithm itself, you should first move the hole to the position 1. "
 "The position 0 is considered to be the sorted area (of size 1 for now) while "
@@ -11029,6 +11105,17 @@ msgid ""
 "sorted area and the unsorted area, and then, the every elements of the "
 "sorted area are ... well sorted relatively to their neighbors."
 msgstr ""
+"Para o algoritmo em si, você deve primeiro mover o espaço vazio para a "
+"posição 1. A posição 0 é considerada como a área ordenada (de tamanho 1 por "
+"enquanto) enquanto que a área acima de 2 é a ŕea não-ordenada.  Então "
+"fazemos uma iteração para ordenar cada elemento da área não-ordenada. Já que "
+"esta iteração é um pouco complexa, você deve pensar em seu \"loop invariant"
+"\", ou seja, a condição que é verdadeira antes e depois do loop e que "
+"explica que o loop satisfaz seu objetivo. Aqui, o \"loop invariant\" é "
+"\"twofold\": Primeiro, o espaço vazio está entre a área ordenada e a não-"
+"ordenada is between the sorted area and the unsorted area, and then, the "
+"every elements of the sorted area are ... well sorted relatively to their "
+"neighbors."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:40
@@ -11039,6 +11126,12 @@ msgid ""
 "the hole back to its position between the sorted and unsorted areas (1 move "
 "per position)."
 msgstr ""
+"Então, o corpo do loop para ordenar um elemento deve primeiro empurrar\n"
+"para baixo o espaço vazio e os elementos dentro da área ordenada até\n"
+"que o elemento seja maior que o elemento que está depois na área\n"
+"ordenada (2 movimentos por posição para se mover), e então mover o\n"
+"espaço vazio de volta para sua posição entre as áreas ordenadas e\n"
+"não-ordenadas (1 movimento por posição)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:44
@@ -11048,14 +11141,20 @@ msgid ""
 "will require some little adjustments to your algorithm to make it work "
 "properly :)"
 msgstr ""
+"Uma vez que você insira o último elemento dentro da área ordenada, seu\n"
+"conjunto como um todo estará ordenado e você terá terminado. Vou\n"
+"deixar como surpresa os casos da fronteira que vão precisar de alguns\n"
+"pequenos ajustes no seu algoritmo para funcionar corretamente :)"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/BubbleBaseball.html:2
+#, fuzzy
 msgid "Bubble Baseball"
-msgstr ""
+msgstr "Bubble Baseball"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:4
+#, fuzzy
 msgid ""
 "Crap, we adapted the insertion sort because our selection sort required too "
 "much moves to get the selected players to their position, but the insertion "
@@ -11073,6 +11172,24 @@ msgid ""
 "it would probably only ensure that our insertion variant becomes as "
 "efficient as our selection variant, not dramatically better."
 msgstr ""
+"Putz, nós adaptamos o insertion sort por que o selection sort\n"
+"precisava de muitos movimentos para colocar os jogadores selecionados\n"
+"em suas posições, mas o insertion sort necessita de uma quantidade\n"
+"\"inordinate\" de mudanças para alcançar os elementos de fronteira para\n"
+"suas posições dentro da área ordenada sem bagunçar os elementos já\n"
+"ordenados. No final do dia, nossa \"selection variant\" era mais\n"
+"eficiente com pelo menos <code>3*amountOfBase</code> movimentos para\n"
+"ordenar um elemento (1 para alcançar o espaço vazio \"alongside\" com o\n"
+"jogador, e 2 para colocar o espaço vazio e o jogador em posição)\n"
+"enquanto nossa \"insertion variant\" precisa de no máximo\n"
+"<code>3*amountOfPlayers</code> para ordenar um elemento (2 para descer\n"
+"o espaço vazio e o jogador na posição, 1 para trazer o espaço vazio de\n"
+"volta para sua posição). Isto é duas vezes pior que ter dois jogadores\n"
+"por base. Pode ser possível melhorar o insertion sort movendo mais de\n"
+"um elemento enquanto desce, mas parece difícil (pelo menos, fazendo\n"
+"sem misturar os elementos já ordenados) e provavelmente isto apenas\n"
+"vai garantir que nosso \"insertion variant\" se torne tão eficiente\n"
+"quanto nosso \"selection variant\", não dramaticamente melhor."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:16
@@ -11104,9 +11221,13 @@ msgid ""
 "than two players per base.  But actually, that shouldn't block you very "
 "long, should it?"
 msgstr ""
+"Isto é tão fácil que vamos introduzir outra variante do problema, com\n"
+"mais de dois jogadores por base. Mas isto não vai te segurar por muito\n"
+"tempo, né?"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:25
+#, fuzzy
 msgid ""
 "Surprisingly, the bubble sort variant requires ways less moves than the "
 "other variants. This is astonishing because usually, the bubble sort "
@@ -11115,7 +11236,7 @@ msgid ""
 "rather often that a pleasantly written algorithm performs very decently. But "
 "this is not an universal rule either, as demonstrated by the naive algorithm "
 "of the first exercise, that was nice, simple and wrong ;)"
-msgstr ""
+msgstr "Surpreendentemente, a variante bubble sort precisa de \"less moves\" que as outras variantes. Isto é fantástico, por que normalmente, o bubble sort é muito pior que os outros algoritmos, mas isto é graças à boa combinação entre suas \"big lines\" e o universo do basebal. E na verdade acontece bastante de um algoritmo \"pleasantly written\" rodar de forma bem decente. Mas isto não é uma regra universal, como foi demontrado pelo algoritmo simplório do primeiro exercício, que era legal, simples e errado ;)"
 
 #. type: Content of: <h1>
 #: src/plm/universe/turtles/TurtleWorld.html:2
@@ -11392,9 +11513,9 @@ msgid ""
 "to draw nice figures on computer.  This lesson allows you to explore some of "
 "the classical figures, and draw your own."
 msgstr ""
-"Desde sua concepção nos anos 60, a tartaruga do LOGO fascinou por sua\n"
-"habilidade de desenhar belas figuras no computador. Este lição permite\n"
-"que você explore algumas das figuras clássicas, e desenhe as suas\n"
+"Desde sua concepção nos anos 60, a tartaruga do LOGO fascinou por sua "
+"habilidade de desenhar belas figuras no computador. Este lição permite "
+"que você explore algumas das figuras clássicas, e desenhe as suas "
 "próprias."
 
 #. type: Content of: <p>
@@ -11404,8 +11525,8 @@ msgid ""
 "it or if someone tells you, you can take these exercises even if you are an "
 "absolute beginner in programming."
 msgstr ""
-"A sintaxe da linguagem é não vai ser apresentada, mas se você\n"
-"conhece um pouco ou se alguém te mostrar, você pode tentar estes\n"
+"A sintaxe da linguagem é não vai ser apresentada, mas se você "
+"conhece um pouco ou se alguém te mostrar, você pode tentar estes "
 "exercícios mesmo sendo um completo iniciante em programação."
 
 #. type: Content of: <p>
@@ -11414,7 +11535,7 @@ msgid ""
 "Please send us your best contributions so that they get added to this "
 "gallery to inspire the next ones."
 msgstr ""
-"Por favor nos mande suas melhores contribuições para que sejam\n"
+"Por favor nos mande suas melhores contribuições para que sejam "
 "adicionadas a esta galeria para inspirar os próximos usuários."
 
 #. type: Content of: <ul><li>
@@ -11426,11 +11547,11 @@ msgid ""
 "shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
 "shapes-challenges.html</a>."
 msgstr ""
-"Outros exercícios devem ser adicionados. Um conjunto completo de\n"
-"exercícios está disponível em\n"
+"Outros exercícios devem ser adicionados. Um conjunto completo de "
+"exercícios está disponível em "
 "<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
-"#sect4</a>\n"
-"ou em\n"
+"#sect4</a> "
+"ou em "
 "<a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges."
 "html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges."
 "html</a>."
@@ -11441,7 +11562,7 @@ msgid ""
 "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
 "moving or by moving to the end of the arc."
 msgstr ""
-"Faltando: os built-ins arc() e arcTo(), que desenham um arco, tanto\n"
+"Faltando: os built-ins arc() e arcTo(), que desenham um arco, tanto "
 "movendo ou sem mover para o final do arco."
 
 #. type: Content of: <p>
@@ -11450,7 +11571,7 @@ msgid ""
 "Draw beautiful figures with the Logo turtle, and learn programming while "
 "playing."
 msgstr ""
-"Desenhe belas figuras com a tartaruga do Logo, e aprenda a programar\n"
+"Desenhe belas figuras com a tartaruga do Logo, e aprenda a programar "
 "enquanto brinca."
 
 #. type: Content of: <p>
@@ -11460,8 +11581,8 @@ msgid ""
 "choose, but no exhaustive programming practice is required to take this "
 "lesson."
 msgstr ""
-"Você deve saber a sintaxe básica da linguagem de programação que\n"
-"escolher, mas técnicas avançadas de programação não são necessárias\n"
+"Você deve saber a sintaxe básica da linguagem de programação que "
+"escolher, mas técnicas avançadas de programação não são necessárias "
 "para fazer esta lição."
 
 #. type: Content of: <h1>
@@ -11480,12 +11601,12 @@ msgid ""
 "ConsWorld defines recursive lists of type <code>RecList</code>.[/!] [!"
 "scala]lists of integers (<code>List[Int]</code>).[/!]"
 msgstr ""
-"Este mundo permite que você experimente com listas recursivas, pois\n"
-"ele foi introduzido primeiro em Lisp. É muito similar ao BatWorld, mas\n"
-"você deve escrever funções recursivas que funcionem em\n"
-"[!python|java]strings recursivas. pois [!thelang] não fornece tal\n"
-"contrução nativamente, o ConsWorld define listas recursivas do tipo\n"
-"<code>RecList</code>.[/!] [!scala]listas de inteiros\n"
+"Este mundo permite que você experimente com listas recursivas, pois "
+"ele foi introduzido primeiro em Lisp. É muito similar ao BatWorld, mas "
+"você deve escrever funções recursivas que funcionem em "
+"[!python|java]strings recursivas. pois [!thelang] não fornece tal "
+"contrução nativamente, o ConsWorld define listas recursivas do tipo "
+"<code>RecList</code>.[/!] [!scala]listas de inteiros "
 "(<code>List[Int]</code>).[/!]"
 
 #. type: Content of: <p>
@@ -11498,12 +11619,12 @@ msgid ""
 "tail</code>. Of course, the empty list has no head nor the tail, so trying "
 "to access these elements will result in an (unpleasant) error message."
 msgstr ""
-"Qualquer lista dada é ou a lista vazia (noted\n"
-"<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), ou um\n"
-"inteiro seguido de uma lista. Se uma lista não é vazia, você pode\n"
-"recuperar seu primeiro inteiro com <code>list.head</code> e a lista\n"
-"contendo os demais parâmetros com <code>list.tail</code>. Obviamente,\n"
-"a lista vazia não tem head nem tail, portanto, tentar acessar estes\n"
+"Qualquer lista dada é ou a lista vazia (noted "
+"<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), ou um "
+"inteiro seguido de uma lista. Se uma lista não é vazia, você pode "
+"recuperar seu primeiro inteiro com <code>list.head</code> e a lista "
+"contendo os demais parâmetros com <code>list.tail</code>. Obviamente, "
+"a lista vazia não tem head nem tail, portanto, tentar acessar estes "
 "elementos vai resultar numa mensagem de erro (desagradável)."
 
 #. type: Content of: <p>
@@ -11514,9 +11635,9 @@ msgid ""
 "tail</code> Note that <code>::</code> is a generic operator in Scala to "
 "build lists.[/!]"
 msgstr ""
-"Para construir sua própria lista, você precisa concatenar um head e um\n"
-"tail como segue: [!java|python]<code>cons(head, tail)</code>[/!]\n"
-"[!scala]<code>head::tail</code> Observe que <code>::</code> é um\n"
+"Para construir sua própria lista, você precisa concatenar um head e um "
+"tail como segue: [!java|python]<code>cons(head, tail)</code>[/!] "
+"[!scala]<code>head::tail</code> Observe que <code>::</code> é um "
 "operador genérico em Scala para construir listas.[/!]"
 
 #. type: Content of: <p>
@@ -11525,7 +11646,7 @@ msgid ""
 "So, in summary, you can solve every exercises of this lesson with the "
 "following constructs."
 msgstr ""
-"Logo, resumindo, você pode resolver cada exercício desta lição com as\n"
+"Logo, resumindo, você pode resolver cada exercício desta lição com as "
 "seguintes construções."
 
 #. type: Content of: <ul><li>
@@ -11594,9 +11715,9 @@ msgid ""
 "is certainly not the most pleasant lesson to do, but I think that it is the "
 "easiest of the PLM lessons dealing with recursion."
 msgstr ""
-"Esta lição contém um monte de exercícios clássicos com listas\n"
-"recursivas. Ele com certeza não é a lição mais agradável para fazer,\n"
-"mas das lições do PLM que lidam com recursão, eu acho esta a mais\n"
+"Esta lição contém um monte de exercícios clássicos com listas "
+"recursivas. Ele com certeza não é a lição mais agradável para fazer, "
+"mas das lições do PLM que lidam com recursão, eu acho esta a mais "
 "fácil."
 
 #. type: Content of: <ul><li>
@@ -11606,8 +11727,8 @@ msgid ""
 "Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
 "report them as an issue."
 msgstr ""
-"Novos exercícios podem ser propostos, como\n"
-"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf\n"
+"Novos exercícios podem ser propostos, como "
+"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf "
 "Se você conhecer outros, favor abra uma \"issue\" para relatar."
 
 #. type: Content of: <ul><li>
@@ -11623,15 +11744,15 @@ msgid ""
 "pass a given threshold, but that sounds very difficult too. Any idea is "
 "welcome."
 msgstr ""
-"Pode ser interessante verificar a complexidade assintótica do código\n"
-"do estudante, mas isto não parece fácil de fazer. Em Python e Java\n"
-"(onde fornecemos uma classe RecList feita à mão), podemos contar a\n"
-"quantidade de cons por exercício, mas não é fácil relacionar isto ao\n"
-"BatTest correto. Para Scala, parece ainda mais difícil pois usamos os\n"
-"operadores :: clássicos da linguagem. Vai ser difícil fazer uma\n"
-"sobreposição (\"override\") para adicionar um mecanismod e\n"
-"contagem. Outra solução seria garantir que a pilha de chamadas não\n"
-"passe de um dado limiar,  mas parece muito difícil de fazer\n"
+"Pode ser interessante verificar a complexidade assintótica do código "
+"do estudante, mas isto não parece fácil de fazer. Em Python e Java "
+"(onde fornecemos uma classe RecList feita à mão), podemos contar a "
+"quantidade de cons por exercício, mas não é fácil relacionar isto ao "
+"BatTest correto. Para Scala, parece ainda mais difícil pois usamos os "
+"operadores :: clássicos da linguagem. Vai ser difícil fazer uma "
+"sobreposição (\"override\") para adicionar um mecanismod e "
+"contagem. Outra solução seria garantir que a pilha de chamadas não "
+"passe de um dado limiar,  mas parece muito difícil de fazer "
 "também. Quaisquer ideias são bem-vindas."
 
 #. type: Content of: <h1>
@@ -11646,8 +11767,8 @@ msgid ""
 "length[!scala] (without using its <code>size</code> method, of course)[/!].  "
 "[!java|python]"
 msgstr ""
-"Dada uma [!scala]Lista[Int][/!][!java|python]lista recursiva[/!],\n"
-"retorna seu comprimento[!scala] (sem usar o seu método\n"
+"Dada uma [!scala]Lista[Int][/!][!java|python]lista recursiva[/!], "
+"retorna seu comprimento[!scala] (sem usar o seu método "
 "<code>size</code>, claro)[/!].  [!java|python]"
 
 #. type: Content of: <p>
@@ -11657,6 +11778,9 @@ msgid ""
 "specific type defined in this exercise. [/!] Please refer to the world's "
 "documentation for more information about recursive lists."
 msgstr ""
+"[!python]Cuidado, você não pode usar listas de Python, mas sim o tipo "
+"específico definido neste exercício. [/!] favor ver a documentação do "
+"mundo para mais informações a respeito de listas recursivas."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:10
@@ -11670,12 +11794,12 @@ msgstr ""
 #: src/lessons/recursion/cons/Remove.html:9
 #: src/lessons/recursion/cons/ButNfirst.html:6
 msgid "Your solution should be linear in time."
-msgstr ""
+msgstr "Sua solução deve ser linear no tempo."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/IsMember.html:2
 msgid "IsMember"
-msgstr ""
+msgstr "IsMember"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/IsMember.html:3
@@ -11684,11 +11808,14 @@ msgid ""
 "integer, return true if the given integer is one of the elements of the "
 "list, or false if it cannot be found."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um "
+"inteiro, retorna verdadeiro se o dado inteiro é um dos elementos "
+"desta lista, ou falso se ele não for encontrado."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
 msgid "Occurrences"
-msgstr "Ocorrências"
+msgstr "Occurrences"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Occurrence.html:3
@@ -11698,11 +11825,15 @@ msgid ""
 "If the integer is not a member of the list, the function should thus return "
 "0."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um "
+"inteiro, retorna a quantidade de ocorrências de um dado inteiro na "
+"lista. Se o inteiro não for um membro da lista, a função deve retornar "
+"0."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Last.html:2
 msgid "Last"
-msgstr ""
+msgstr "Last"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Last.html:3
@@ -11710,11 +11841,14 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
 "last element.  You can assume that the list is not empty."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!], "
+"retorna seu último elemento. Você pode assumir que a lista não é "
+"vazia."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Min.html:2
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Min.html:3
@@ -11723,11 +11857,15 @@ msgid ""
 "smallest of its values.  You will probably need an extra function, even if "
 "you can assume that the list is not empty."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!], "
+"retorna o menor dos seus valores. Você vai precisar provavelmente de "
+"uma função extra, mesmo se você puder assumir que a lista é não "
+"vazia."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Increasing.html:2
 msgid "Increasing"
-msgstr ""
+msgstr "Increasing"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Increasing.html:3
@@ -11736,11 +11874,14 @@ msgid ""
 "whether its elements form an increasing sequence (i.e., if the elements are "
 "sorted from the smallest to the largest one)."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!], "
+"retorna se seus elementos estão em ordem crescente (i.e., se os "
+"elementos são ordenados do menor para o maior)."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButLast.html:2
 msgid "But Last"
-msgstr ""
+msgstr "But Last"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButLast.html:3
@@ -11749,11 +11890,14 @@ msgid ""
 "list containing every elements but the last one.  You can assume that the "
 "list is not empty."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!], "
+"retorna a lista contendo todos os elementos exceto o último. Você pode "
+"assumir que a lista é não vazia."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/PlusOne.html:2
 msgid "PlusOne"
-msgstr ""
+msgstr "PlusOne"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/PlusOne.html:3
@@ -11761,11 +11905,14 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
 "list containing all elements of your parameter incremented by one."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!], "
+"retorne uma nova lista contendo todos os elementos de seu parâmetro "
+"incrementados de um."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Remove.html:2
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Remove.html:4
@@ -11774,11 +11921,15 @@ msgid ""
 "code>and an integer, return a new list containing all elements of <code>L</"
 "code> that are not equal to the value received as parameter."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] "
+"<code>L</code> e um inteiro, retorna uma nova lista contendo todos os "
+"elementos de <code>L</code> que não são iguais ao valor recebido como "
+"parâmetro."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Nth.html:2
 msgid "Nth"
-msgstr ""
+msgstr "Nth"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Nth.html:3
@@ -11786,6 +11937,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the <code>N</code>th element of the list."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um "
+"inteiro <code>N</code>, retorna o <code>N</code>-ésimo "
+"(<code>N</code>th) elemento da lista."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nth.html:6
@@ -11794,11 +11948,14 @@ msgid ""
 "You can assume that the list is long enough, i.e. that there is at least "
 "<code>N</code> elements.  Your solution should be linear in time."
 msgstr ""
+"Você pode assumir que a lista é longa o suficiente, i.e. que existe "
+"pelo menos <code>N</code> elementos. Sua solução deve ser linear no "
+"tempo."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Nfirst.html:2
 msgid "Nfirst"
-msgstr ""
+msgstr "Nfirst"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Nfirst.html:3
@@ -11808,11 +11965,15 @@ msgid ""
 "elements. You can assume that the list is long enough, i.e. that there is at "
 "least <code>N</code> elements."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um\n"
+"inteiro <code>N</code>, retorna a lista constituída dos primeiros\n"
+"<code>N</code> elementos. Você pode assumir que a lista é longa o\n"
+"suficiente, i.e. que existem pelo menos <code>N</code> elementos."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Nlast.html:2
 msgid "Nlast"
-msgstr ""
+msgstr "Nlast"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Nlast.html:3
@@ -11820,6 +11981,9 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list with only the <code>N</code> last elements."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um\n"
+"inteiro <code>N</code>, retorna a lista com apenas os últimos\n"
+"<code>N</code> elementos."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nlast.html:6
@@ -11829,6 +11993,8 @@ msgid ""
 "Your solution should be linear in time, but you will probably need to define "
 "several functions to achieve that complexity."
 msgstr ""
+"Sua solução deve ser linear no tempo, mas você provavelmente precisa\n"
+"definir várias funções para alcançar esta complexidade."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/cons/Nlast.html:8
@@ -11836,20 +12002,23 @@ msgstr ""
 #: src/lessons/recursion/cons/Reverse.html:8
 #: src/lessons/recursion/cons/Concat.html:8
 msgid "I cannot do it in linear time"
-msgstr ""
+msgstr "Eu não posso fazer isto em tempo linear"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/cons/Nlast.html:9
 #: src/lessons/recursion/cons/ButNlast.html:9
+#, fuzzy
 msgid ""
 "The trick is to compute only once (and beforehand) how many elements you "
 "should keep."
 msgstr ""
+"O segredo é calcular apenas uma vez (e \"beforehand\") quantos elementos\n"
+"você deve guardar."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButNfirst.html:2
 msgid "But Nfirst"
-msgstr ""
+msgstr "But Nfirst"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButNfirst.html:3
@@ -11857,11 +12026,14 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list without the <code>N</code> first elements."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um\n"
+"inteiro <code>N</code>, retorne a lista sem os primeiros\n"
+"<code>N</code> elementos."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButNlast.html:2
 msgid "But Nlast"
-msgstr ""
+msgstr "But Nlast"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButNlast.html:3
@@ -11869,11 +12041,14 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!] and an integer "
 "<code>N</code>, return the list without the <code>N</code> last elements."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!] e um\n"
+"inteiro <code>N</code>, retorna a lista sem os últimos <code>N</code>\n"
+"elementos."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Reverse.html:2
 msgid "Reverse"
-msgstr "Reverso"
+msgstr "Reverse"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Reverse.html:3
@@ -11881,6 +12056,8 @@ msgid ""
 "Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return a new "
 "list with all elements in reverse order."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!],\n"
+"retorna uma nova lista com todos os elementos em ordem inversa."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Reverse.html:5
@@ -11888,6 +12065,8 @@ msgid ""
 "This function is very important and you should not pass that challenge.  "
 "Your solution should be linear in time, with the help of helper functions."
 msgstr ""
+"Esta função é muito importante e você não deve pular este desafio. Sua\n"
+"solução deve ser linear no tempo, com a ajuda de funções auxiliares."
 
 #. type: Content of: <div>
 #: src/lessons/recursion/cons/Reverse.html:9
@@ -11895,11 +12074,13 @@ msgid ""
 "You need an helper function in which the result is accumulated (built) at "
 "each step."
 msgstr ""
+"Você precisa de uma função auxiliar na qual o resultado é acumulado\n"
+"(construído) em cada passo."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Concat.html:2
 msgid "Concat"
-msgstr ""
+msgstr "Concat"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Concat.html:3
@@ -11908,6 +12089,10 @@ msgid ""
 "code> and <code>l2</code>, return a new list with all elements of <code>l1</"
 "code> followed by the elements of <code>l2</code>."
 msgstr ""
+"Dadas duas [!scala]List[Int][/!][!java|python]recursive list[/!]\n"
+"<code>l1</code> e <code>l2</code>, retorna uma nova lista com todos os\n"
+"elementos de <code>l1</code> seguidos de todos os elementos de\n"
+"<code>l2</code>."
 
 #. type: Content of: <div>
 #: src/lessons/recursion/cons/Concat.html:9
@@ -11915,11 +12100,13 @@ msgid ""
 "You need to modify <code>l1</code> beforehand so that the computations at "
 "each step of the recursion are in constant time."
 msgstr ""
+"Você precisa modificar <code>l1</code> antes de forma que os cálculos\n"
+"em cada passo da recursão sejam em tempo constante."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/AllDifferent.html:2
 msgid "All Different"
-msgstr ""
+msgstr "All Different"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/AllDifferent.html:3
@@ -11928,6 +12115,9 @@ msgid ""
 "if any two elements of the list are different (ie, if no element appears "
 "more than once in the list)."
 msgstr ""
+"Dada uma [!scala]List[Int][/!][!java|python]recursive list[/!],\n"
+"retorne verdadeiro se quaisquer dois elementos da lista são diferentes\n"
+"(ie, se nenhum elemento aparece mais de uma vez na lista)."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/AllDifferent.html:6
@@ -11936,16 +12126,19 @@ msgid ""
 "You will probably have to define one extra function for that.  Another much "
 "more complex solution runs in O(n log(n))."
 msgstr ""
+"A solução mais simples é em O(n²), o que significa que executa em\n"
+"tempo quadrático. Você provavelmente terá que definir uma função extra\n"
+"para isto. Outra solução muito mais complexa executa em O(n log(n))."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/lego/Main.html:2
 msgid "Recursive algorithms"
-msgstr ""
+msgstr "Algoritmos recursivos"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/Main.html:3
 msgid "This lesson allows to experiment with recursive algorithms."
-msgstr ""
+msgstr "Esta lição permite que se experimente com algoritmos recursivos."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/Main.html:5
@@ -11954,11 +12147,14 @@ msgid ""
 "algorithms (in particular QuickSort and MergeSort) is planned in the future "
 "within the sorting lesson."
 msgstr ""
+"Se você precisa de mais algoritmos recursivos, um exercício em\n"
+"algoritmos de ordenação recursivos (em particular QuickSort e\n"
+"MergeSort) está planejado no futuro dentro da lição de ordenação."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/Main.html:9
 msgid "What can I do to improve this lesson?"
-msgstr ""
+msgstr "O que ru posso fazer para melhorar esta lição?"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/Main.html:11
@@ -11966,6 +12162,8 @@ msgid ""
 "As usual, there are several things that could be done in this lesson to "
 "improve it further:"
 msgstr ""
+"Como sempre, existem várias coisas que podem ser feitas nesta lição\n"
+"para melhorar ela ainda mais:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:13
@@ -11973,6 +12171,8 @@ msgid ""
 "The Sierpinski triangle can be drawn using a simpler L-system. See http://"
 "jpvallon.free.fr/recursivite.html"
 msgstr ""
+"O triângulo de Sierpinski pode ser desenhado usando um L-system mais\n"
+"simples. Veja em http://jpvallon.free.fr/recursivite.html"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:14
@@ -11980,27 +12180,29 @@ msgid ""
 "The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
 "sierpinski/sierpinskitriangle.shtml"
 msgstr ""
+"A curva \"arrowhead\" também é interessante:\n"
+"http://www.mathcurve.com/fractals/sierpinski/sierpinskitriangle.shtml"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:15
 msgid ""
 "The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
 "edu/~lriddle/ifs/heighway/heighway.htm"
-msgstr ""
+msgstr "A curva do dragão pode ser explicada como um L-system: http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:16
 msgid ""
 "The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/heighway/twindragon.htm"
-msgstr ""
+msgstr "A curva do dragão2 é chamada de \"twin dragon\": http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:17
 msgid ""
 "The space filling curves could be added (Peano, Hildebert, etc).  See: "
 "http://teachout1.net/village/fill.html"
-msgstr ""
+msgstr "As curvas de preenchimento de spaço podem ser adicionadas (Peano, Hildebert, etc).  Veja: http://teachout1.net/village/fill.html"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:19
@@ -12008,12 +12210,12 @@ msgid ""
 "We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
 "helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
 "html"
-msgstr ""
+msgstr "Podemos fazer outro exercício em polígonos \"embeeded\": http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/short_desc.html:2
 msgid "Bases of recursion"
-msgstr ""
+msgstr "As bases da recursão"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/short_desc.html:3
@@ -12021,11 +12223,13 @@ msgid ""
 "Discover the recursive way of thinking by drawing trees and other figures "
 "with the Logo turtle."
 msgstr ""
+"Descobrir a forma recursiva de pensar desenhando árvores e outras\n"
+"figuras com a tartaruga do Logo."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/square/FourSquare.html:2
 msgid "The small cousines of Buggles"
-msgstr ""
+msgstr "Os primos menores dos buggles"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:4
@@ -12036,6 +12240,11 @@ msgid ""
 "and the buggles are a variation on the idea invented by Lyn Turbak from "
 "Wellesley College later."
 msgstr ""
+"Hoje vamos conhecer os primos menores dos buggles: as tartarugas. Na\n"
+"verdade, as tartarugas são muito mais velhas que os buggles. Elas\n"
+"foram inventadas nos anos 70 por um cientista do MIT chamado Seymour\n"
+"Papert para ajudar no ensino de programação, e os buggles são uma\n"
+"variação da idéia seguinte de Lyn Turbak do Wellesley College."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:10
@@ -12066,11 +12275,11 @@ msgid ""
 "integer, but as a [!python]point number[/!][!java|scala|c]double[/!] (see "
 "\"About this world\" for more details)."
 msgstr ""
-"De um ponto de vista prático, a maioria dos métodos que você conhece\n"
-"sobre buggles ainda funciona com tartarugas, com pequenas\n"
-"adaptações. Em particular, o método <code>forward()</code> pega a\n"
-"quantidade de passos a dar não como inteiro, mas como [!python]point\n"
-"number[/!][!java|scala|c]double[/!] (veja \"Sobre este mundo\" para\n"
+"De um ponto de vista prático, a maioria dos métodos que você conhece "
+"sobre buggles ainda funciona com tartarugas, com pequenas "
+"adaptações. Em particular, o método <code>forward()</code> pega a "
+"quantidade de passos a dar não como inteiro, mas como [!python]point "
+"number[/!][!java|scala|c]double[/!] (veja \"Sobre este mundo\" para "
 "maiores detalhes)."
 
 #. type: Content of: <h3>
@@ -12182,7 +12391,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:20
-#, fuzzy
 msgid "The pseudo-code of the general case is the following:"
 msgstr "O pseudo-código do caso geral é o seguinte:"
 
