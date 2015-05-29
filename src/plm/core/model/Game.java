@@ -680,7 +680,6 @@ public class Game implements IWorldView {
 				heartBeatSpy.die();
 
 			storeProperties();
-			System.exit(0);
 		} catch (UserAbortException e) {
 			// Ok, user decided to not quit (to get a chance to export the session)
 			getLogger().log("Exit aborted");
