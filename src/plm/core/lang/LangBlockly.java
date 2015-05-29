@@ -13,12 +13,9 @@ public class LangBlockly extends ScriptingLanguage {
 
 	public LangBlockly(boolean isDebugEnabled) {
 		super("Blockly", "blockly", isDebugEnabled);
+		this.visualExt = ".workspace";
 		this.visualIndex = 1;
 		this.visualFile = true;
-	}
-	
-	public String getVisualExt(){
-		return ".workspace";
 	}
 
 	protected void setupEntityBindings(Entity ent) {

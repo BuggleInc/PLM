@@ -28,17 +28,18 @@ import plm.universe.Entity;
 public abstract class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	String lang;
 	String ext;
+	boolean isDebugEnabled;
 	String visualExt;
 	int visualIndex;
 	boolean visualFile;
-	boolean isDebugEnabled;
 	
 	public ProgrammingLanguage(String l, String ext, boolean isDebugEnabled) {
 		lang = l;
 		this.ext = ext;
+		this.isDebugEnabled = isDebugEnabled;
+		this.visualExt = ".code";
 		this.visualIndex = 0;
 		this.visualFile = false;
-		this.isDebugEnabled = isDebugEnabled;
 	}
 	public boolean equals(Object o) {
 		if (!super.equals(o))
@@ -54,14 +55,15 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 		return ext;
 	}
 	public String getVisualExt() {
-		return ".code";
+		return this.visualExt;
 	}
 	public int getVisualIndex() {
-		return visualIndex;
+		return  this.visualIndex;
 	}
 	public boolean getVisualFile() {
-		return visualFile;
+		return  this.visualFile;
 	}
+	
 	@Override
 	public String toString() {
 		return lang;
