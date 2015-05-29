@@ -1245,6 +1245,10 @@ public class Game implements IWorldView {
 		loadSession();
 	}
 	
+	public void signalIdle(String start, String end, String duration) {
+		gitSpy.idle(start, end, duration);
+	}
+	
 	public LogHandler getLogger() {
 		return logger;
 	}

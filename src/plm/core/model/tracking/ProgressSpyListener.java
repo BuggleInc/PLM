@@ -19,4 +19,6 @@ public interface ProgressSpyListener {
 	public void cancelCallForHelp();
 
 	public void readTip(String id, String mission);
+	
+	public void idle(String begin, String end, String duration);
 }

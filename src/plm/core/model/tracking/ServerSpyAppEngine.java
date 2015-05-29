@@ -67,6 +67,9 @@ public class ServerSpyAppEngine extends ServerSpy {
 	}
 
 	@Override
+	public void idle(String start, String end, String duration) {}
+	
+	@Override
 	public void readTip(String id, String mission) {
 		// TODO Auto-generated method stub
 		
