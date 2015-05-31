@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-23 23:01-0300\n"
-"PO-Revision-Date: 2015-05-24 00:19-0300\n"
+"PO-Revision-Date: 2015-05-30 19:29-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "Language: pt_BR \n"
@@ -154,7 +154,7 @@ msgstr ""
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
 #: src/plm/core/ui/ChooseLessonDialog.java:192
 msgid "Go"
-msgstr "vai"
+msgstr "siga"
 
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
 #, java-format

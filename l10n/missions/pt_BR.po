@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-05-03 20:55+0200\n"
-"PO-Revision-Date: 2015-05-24 19:08-0300\n"
+"PO-Revision-Date: 2015-05-31 20:29-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1074,10 +1074,10 @@ msgid ""
 "following code (clicking on the interactive controls is not enough: You have "
 "to write the code after experimenting interactively)."
 msgstr ""
-"é chegada a hora de construir seu primeiro programa. Simplesmente peça "
-"a seu buggle para dar um passo para frente usando o painel SourceCode "
-"(Código Fonte). Para isto, simplesmente escreva o seguinte código "
-"(clicar nos controles iterativos não é o suficiente: você tem que "
+"É chegada a hora de construir seu primeiro programa. Simplesmente peça\n"
+"a seu buggle para dar um passo para frente usando o painel SourceCode\n"
+"(Código Fonte). Para isto, simplesmente escreva o seguinte código\n"
+"(clicar nos controles iterativos não é o suficiente: você tem que\n"
 "escrever  o código e depois experimentar interativamente)."
 
 #. type: Content of: <pre>
@@ -7876,13 +7876,11 @@ msgstr "Turn"
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:21
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:24
-#, fuzzy
 msgid "Next state"
 msgstr "Próximo estado"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:27
-#, fuzzy
 msgid "Current state"
 msgstr "Estado atual"
 
@@ -7900,23 +7898,20 @@ msgstr "N"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:49
-#, fuzzy
 msgid ""
 "where the direction to turn is one of <b>L</b> (90° left), <b>R</b> (90° "
 "right), <b>N</b> (no turn) and <b>U</b> (180° U-turn)."
 msgstr ""
-"Onde a direção para virar é <b>L</b> (90° left), <b>R</b>\n"
-"(90° right), <b>N</b> (não vira) e <b>U</b> (180° meia-volta)."
+"Onde a direção para virar é <b>L</b> (90° à esquerda), <b>R</b>\n"
+"(90° à direita), <b>N</b> (não vira) e <b>U</b> (meia-volta)."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:51
-#, fuzzy
 msgid "Going further"
-msgstr "Going further"
+msgstr "Indo mais além"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:52
-#, fuzzy
 msgid ""
 "This exercise is naturally an excuse to let you experiment with your own "
 "turmites.  Feel free to change the transition table and the amount of steps "
@@ -7924,11 +7919,12 @@ msgid ""
 "library useful. If you find new interesting patterns, send them per email so "
 "that we can integrate them to this list!"
 msgstr ""
-"This exercise is naturally an excuse to let you experiment with your\n"
-"own turmites.  Feel free to change the transition table and the amount\n"
-"of steps to experiment by yourself. To that extend, you may find the\n"
-"Ed Pegg Jr's library useful. If you find new interesting patterns,\n"
-"send them per email so that we can integrate them to this list!"
+"Este exercício é naturalmente uma desculpa para deixar você\n"
+"experimentar com seus próprios turmites. Sinta-se à vontade para mudar\n"
+"a tabela de transições e a quantidade de passos por conta\n"
+"própria. Nesta altura, você pode se interessar pela biblioteca de Pegg\n"
+"Jr. Se você encontrar novos padrões interessantes, envie-os por email\n"
+"para que eles possam integrar a lista!"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:58
@@ -7938,9 +7934,10 @@ msgid ""
 "turmites: only black and white ones are depicted.  You should consider "
 "submitting your creations directly to the free encyclopedia."
 msgstr ""
-"In addition, wikipedia is desperately missing some good looking\n"
-"colorful turmites: only black and white ones are depicted.  You should\n"
-"consider submitting your creations directly to the free encyclopedia."
+"Adicionalmente, a wikipédia está precisando desesperadamente de alguns\n"
+"turmites coloridos bem apresentáveis: apenas os preto e branco estão\n"
+"descritos. Você deveria considerar a possibilidade de enviar suas\n"
+"criações diretamente para a enciclopédia livre."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:63
@@ -7950,10 +7947,10 @@ msgid ""
 "com/Turmites/ [!python|scala]They are not written using the [!thelang] "
 "syntax, but converting them should be easy.[/!]"
 msgstr ""
-"Here are some 2-color turmites, extracted from\n"
-"http://demonstrations.wolfram.com/Turmites/ [!python|scala]They are\n"
-"not written using the [!thelang] syntax, but converting them should be\n"
-"easy.[/!]"
+"Aqui estão alguns turmites de 2 cores, extraídos de\n"
+"http://demonstrations.wolfram.com/Turmites/ [!python|scala]Eles não\n"
+"foram escritos usando o sintaxe de [!thelang], mas convertê-los não\n"
+"deve ser difícil.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
@@ -8164,21 +8161,19 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/turmites/universe/TurmiteWorld.html:2
-#, fuzzy
 msgid "Turmite universe"
-msgstr "Turmite universe"
+msgstr "Universo dos Turmites"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/universe/TurmiteWorld.html:4
-#, fuzzy
 msgid ""
 "This universe is very similar to the buggle one, but you will probably not "
 "use all buggles methods.  So, this page only recap the buggle methods that "
 "you will use."
 msgstr ""
-"This universe is very similar to the buggle one, but you will probably\n"
-"not use all buggles methods.  So, this page only recap the buggle\n"
-"methods that you will use."
+"Este universo é bastante similar ao dos buggles, mas você\n"
+"provavelmente não vai usar nenhum método dos buggles. Então, esta\n"
+"página apenas repacitula os métodos do buggle que você vai usar."
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:12
@@ -8617,7 +8612,6 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
-#, fuzzy
 msgid "BubbleSort (take 2)"
 msgstr "BubbleSort (take 2)"
 
@@ -8644,25 +8638,23 @@ msgstr ""
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:13
-#, fuzzy
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
-msgstr "The pseudo-code of the BubbleSort2 algorithm is the following:"
+msgstr "O pseudo-código do algoritmo BubbleSort2 é o seguinte:"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:14
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
 "          If cells j and j+1 must be swapped, do it\n"
 msgstr ""
-"For all i in [len-2,0] (traversing from biggest to smallest)\n"
-"       For all j in [0, i]\n"
-"          If cells j and j+1 must be swapped, do it\n"
+"Para todo i em [len-2,0] (percorrendo do maior para o menor)\n"
+"       Para todo j em [0, i]\n"
+"          Se células j e j+1 devem ser trocadas, troque\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:20
-#, fuzzy
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -8673,15 +8665,15 @@ msgid ""
 "than the base version. But the statistics on the amount of reads show that "
 "we saved about the fourth of the amount of reads, which is not bad."
 msgstr ""
-"Quando rodamos este algoritmo, it is quite disappointing to see that it\n"
-"runs approximately at the same speed than the basic version of\n"
-"BubbleSort. This is a graphical effect only since only value changes\n"
-"are graphically represented. Como esta variação evita algumas comparações "
-"inúteis, ela faz exatamente a mesma quantidade de trocar que a versão "
-"básica. It is thus quite logical that the graphical interface draws\n"
-"this version at the same pace than the base version. But the\n"
-"statistics on the amount of reads show that we saved about the fourth\n"
-"of the amount of reads, which is not bad."
+"Quando rodamos este algoritmo, é bastante desapontador ver que ele\n"
+"executa aproximadamente na mesma velocidade que a versão básica do\n"
+"BubbleSort. Isto é um elemento gráfico apenas já que apenas mudanças\n"
+"de valores são representadas graficamente. Como esta variação evita\n"
+"algumas comparações inúteis, ela faz exatamente a mesma quantidade de\n"
+"trocas que a versão básica. É portanto bastante lógico que a interface\n"
+"gráfica desenhe esta versão no mesmo ritmo que a versão básica. Mas as\n"
+"estatísticas da quantidade de leituras mostram que economizamos cerca\n"
+"de um quarto das leituras, o que não é nada mal."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:29
@@ -11236,7 +11228,15 @@ msgid ""
 "rather often that a pleasantly written algorithm performs very decently. But "
 "this is not an universal rule either, as demonstrated by the naive algorithm "
 "of the first exercise, that was nice, simple and wrong ;)"
-msgstr "Surpreendentemente, a variante bubble sort precisa de \"less moves\" que as outras variantes. Isto é fantástico, por que normalmente, o bubble sort é muito pior que os outros algoritmos, mas isto é graças à boa combinação entre suas \"big lines\" e o universo do basebal. E na verdade acontece bastante de um algoritmo \"pleasantly written\" rodar de forma bem decente. Mas isto não é uma regra universal, como foi demontrado pelo algoritmo simplório do primeiro exercício, que era legal, simples e errado ;)"
+msgstr ""
+"Surpreendentemente, a variante bubble sort precisa de \"less moves\" que\n"
+"as outras variantes. Isto é fantástico, por que normalmente, o bubble\n"
+"sort é muito pior que os outros algoritmos, mas isto é graças à boa\n"
+"combinação entre suas \"big lines\" e o universo do basebal. E na\n"
+"verdade acontece bastante de um algoritmo \"pleasantly written\" rodar\n"
+"de forma bem decente. Mas isto não é uma regra universal, como foi\n"
+"demontrado pelo algoritmo simplório do primeiro exercício, que era\n"
+"legal, simples e errado ;)"
 
 #. type: Content of: <h1>
 #: src/plm/universe/turtles/TurtleWorld.html:2
@@ -12188,21 +12188,27 @@ msgstr ""
 msgid ""
 "The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
 "edu/~lriddle/ifs/heighway/heighway.htm"
-msgstr "A curva do dragão pode ser explicada como um L-system: http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+msgstr ""
+"A curva do dragão pode ser explicada como um L-system:\n"
+"http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:16
 msgid ""
 "The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/heighway/twindragon.htm"
-msgstr "A curva do dragão2 é chamada de \"twin dragon\": http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+msgstr ""
+"A curva do dragão2 é chamada de \"twin dragon\":\n"
+"http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:17
 msgid ""
 "The space filling curves could be added (Peano, Hildebert, etc).  See: "
 "http://teachout1.net/village/fill.html"
-msgstr "As curvas de preenchimento de spaço podem ser adicionadas (Peano, Hildebert, etc).  Veja: http://teachout1.net/village/fill.html"
+msgstr ""
+"As curvas de preenchimento de spaço podem ser adicionadas (Peano,\n"
+"Hildebert, etc).  Veja: http://teachout1.net/village/fill.html"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:19
@@ -12210,7 +12216,9 @@ msgid ""
 "We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
 "helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
 "html"
-msgstr "Podemos fazer outro exercício em polígonos \"embeeded\": http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
+msgstr ""
+"Podemos fazer outro exercício em polígonos \"embeeded\":\n"
+"http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/short_desc.html:2
@@ -12254,9 +12262,14 @@ msgid ""
 "buggles, they leave a line on their path when they move (but the line is "
 "much smaller)."
 msgstr ""
+"Tartarugas então, são meio parecidas com buggles, mas menores. Como os\n"
+"buggles, você pode mandar que elas se movam para a frente, virem, se\n"
+"movam para trás, etc. Como os buggles, elas deixam uma linha no\n"
+"caminho por onde passam (mas a linha é muito menor)."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:15
+#, fuzzy
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
 "turtles can move of any arbitrary angles specified by a real number (a "
@@ -12265,6 +12278,13 @@ msgid ""
 "dropping objects, and there is sometimes walls in their worlds (but all this "
 "is completely above the capacities of turtles)."
 msgstr ""
+"A principal diferença é que enquanto os buggles podem se mover apenas\n"
+"em ângulos retos, as tartarugas podem se mover em qualquer ângulo\n"
+"especificado por um número real (um double). Isto dá a elas muito mais\n"
+"liberdade em seus movimentos. Já os buggles podem fazer vários outros\n"
+"truques, como ler e escrever mensagens, pegar e soltar objetos, e às\n"
+"vezes existem paredes nos mundos (mas isto está totalmente além da\n"
+"capacidade das tartarugas)."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:22
@@ -12285,12 +12305,12 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/square/FourSquare.html:29
 msgid "Doubles? But what is it?"
-msgstr ""
+msgstr "Doubles? Mas o que é isto?"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/square/FourSquare.html:30
 msgid "It's simply a point number. Example:"
-msgstr ""
+msgstr "é simplesmente um número com vírgula. Por exemplo:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/square/FourSquare.html:32
@@ -12310,6 +12330,19 @@ msgid ""
 "Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)\n"
 "[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 (“casted to double”, converted to double)\n"
 msgstr ""
+"double x = 3.72;\n"
+"x + 1.234 // Valor = 4.954\n"
+"x + 2. // Valor = 5.72 (2. significa 2.0)\n"
+"x + 2 // [!java|c]Value = 5.72 (2 convertido automaticamente em 2.0)[/!][!scala]Erro de tipo (o operador + não mistura Double e Int); é obrigatória a conversão manual[/!]\n"
+"x * 2. // Valor = 7.44 \n"
+"x / 2. // Valor = 1.86 \n"
+"[!java|c](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Valor = 1 (“fazendo cast para int”, convertido para integer truncando)\n"
+"Math.round(x) // Valor = 2 (1.86 arredondado para o inteiro mais próximo)\n"
+"Math.floor(x) // Valor = 1 (1.86 rounded toward minus infinity)\n"
+"Math.floor(-5.12) // Valor = -6 (rounded toward minus infinity)\n"
+"Math.ceiling(x) // Valor = 2 (1.86 rounded toward plus infinity)\n"
+"Math.ceiling(-5.12) // Valor = -5 (rounded toward plus infinity)\n"
+"[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Valor = 17.0 (“feito cast para double”, convertido para double)\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:49
@@ -12318,6 +12351,10 @@ msgid ""
 "have to write is not recursive. The goal is to get familiar with the turtle "
 "world before getting on serious matter."
 msgstr ""
+"Mesmo este sendo o primeiro exercício da lição de recursividade, o\n"
+"código que você tem que escrever não é recursivo. O objetivo é se\n"
+"familiarizar com o mundo da tartaruga antes da coisa começar a ficar\n"
+"séria."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:53
@@ -12327,11 +12364,15 @@ msgid ""
 "obviously a good idea to write a method to draw a square, and then use it in "
 "your code."
 msgstr ""
+"Você deve reproduzir uma pintura geometricamente simples de quatro\n"
+"quadrados de comprimento de 100 passos (veja o mundo objetivo para\n"
+"mais detalhes). É obviamente uma boa ideia escrever um método para\n"
+"desenhar um quadrado, e então usar ele em nosso código."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:2
 msgid "Fractal of polygons"
-msgstr ""
+msgstr "Fractal de polígonos"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:4
@@ -12339,6 +12380,9 @@ msgid ""
 "The fractal we will now draw is formed of a polygon, with little polygons on "
 "each corner. The prototype of the method drawing it is the following:"
 msgstr ""
+"O fractal que vamos desenhar agora é formado de um polígono, com\n"
+"pequenos polígonos em cada canto. O protótipo do método que vai\n"
+"desenhar ele é o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:6
@@ -12354,11 +12398,13 @@ msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
 msgstr ""
+"Dê uma olhada em cada visão de mundo objetivo para entender como\n"
+"escrever a função."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/koch/Koch.html:2
 msgid "Snow flake"
-msgstr ""
+msgstr "Floco de neve"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/koch/Koch.html:4
@@ -12366,6 +12412,8 @@ msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
 "geometric pattern repeated at every scale."
 msgstr ""
+"Vamos agora desenhar flocos de neve usando o Koch fractal. Um fractal\n"
+"é um padrão geométrico repetido em cada escala."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:7
@@ -12376,6 +12424,12 @@ msgid ""
 "sides are represented in a specific color. Just draw the red things (without "
 "changing your pen color), and the other colors will be drawn automatically."
 msgstr ""
+"A forma geral é um triângulo, com cada lado dado por várias chamadas\n"
+"recursivas. Seu trabalho é apenas escrever o código do método\n"
+"<code>snowSide</code> de forma que ele desenhe um lado do\n"
+"triângulo. Para facilitar, cada um dos lados é representado numa cor\n"
+"específica. Simplesmente desenhe as coisas vermelhas (sem mudar a cor\n"
+"da sua caneta), e as outras cores serão desenhadas automaticamente."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:13
@@ -12388,6 +12442,14 @@ msgid ""
 "each segments split in three parts and the middle part being replaced by the "
 "two sides of an equilateral triangle."
 msgstr ""
+"Observe o desenho em cada um dos mundos objetivo para entender a\n"
+"lógica do padrão, e então reproduza ele. No nível 0, a curva de Koch é\n"
+"apenas uma linha reta. No nível 1, a curva é dividida em três terços,\n"
+"e a parte média é substituída pelos dois lados de um triângulo\n"
+"equilátero do mesmo comprimento do segmento sendo removido. No nível\n"
+"2, o processo é repetido, com cada um dos segmentos dividido em três\n"
+"partes e a parte do meio sendo substituída pelos dois lados de um\n"
+"triângulo equilátero."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:20
@@ -12406,6 +12468,13 @@ msgid ""
 "  Turn 60 degrees to the left\n"
 "  Draw recursively a smaller segment\n"
 msgstr ""
+"  Desenhe recursivamente um segmento menor\n"
+"  Gire 60 graus para a esquerda\n"
+"  Desenhe recursivamente um segmento menor\n"
+"  Gire 120 graus para a direita\n"
+"  Desenhe recursivamente um segmento menor\n"
+"  Gire 60 graus para a esquerda\n"
+"  Desenhe recursivamente um segmento menor\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:30
@@ -12413,17 +12482,20 @@ msgid ""
 "As you can see, the function forward() is not called from the recursive "
 "case, only in the base case when there is no recursive call."
 msgstr ""
+"Como você pode ver, a função forward() não é chamada no caso\n"
+"recursivo, apenas no caso base quando não existe chamada recursiva."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/lego/koch/Koch.html:34
+#, fuzzy
 msgid "Too much letters. Please picture it."
-msgstr ""
+msgstr "Muitas letras. Favor \"picture it\"."
 
 #. type: Content of: <p><div><p>
 #: src/lessons/recursion/lego/koch/Koch.html:35
 #: src/lessons/recursion/lego/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
-msgstr ""
+msgstr "Aqui estão os resultados dos primeiro níveis da recursão."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:39
@@ -12432,11 +12504,14 @@ msgid ""
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
 "unexpected behaviors."
 msgstr ""
+"Você deve escrever o método <code>snowSide()</code>, que é recursivo\n"
+"mas <b>não chame snowFlake de dentro de snowSide</b>, ou vão acontecer\n"
+"resultados estranhos e inesperados."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/koch/SquareKoch.html:2
 msgid "Snow square"
-msgstr ""
+msgstr "Snow square"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/SquareKoch.html:4
@@ -12445,11 +12520,15 @@ msgid ""
 "The main difference is that we are growing little squares instead of "
 "triangles on the sides of the figure."
 msgstr ""
+"Este exercício é uma variação sobre o snow flake que vimos\n"
+"previamente. A principal diferença é que vamos fazer crescer pequenos\n"
+"quadrados ao invés de triângulos nos lados da figura."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/lego/koch/SquareKoch.html:8
+#, fuzzy
 msgid "I don't see it, sorry. Please picture it."
-msgstr ""
+msgstr "Desculpe, não vi isto. Favor \"picture it\"."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/SquareKoch.html:14
@@ -12458,11 +12537,14 @@ msgid ""
 "side of the figure, and the template will call it for all sides "
 "automatically (with one color per side)."
 msgstr ""
+"Como anteriormente, sua função <code>squareSide</code> deve apenas\n"
+"desenhar um lado da figura, e o template vai chamar ela para todos os\n"
+"lados automaticamente (com uma cor por lado)."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/koch/PentaKoch.html:2
 msgid "Snow pentagon"
-msgstr ""
+msgstr "Snow pentagon"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/PentaKoch.html:4
@@ -12471,6 +12553,9 @@ msgid ""
 "little pentagons (ie, polygons with five sides each). I'm sure you get it "
 "now."
 msgstr ""
+"Aqui vai outra variação da curva de Koch. desta vez, vamos crescer\n"
+"pequenos pentágonos (ie, polígonos com cinco lados cada). Tenho\n"
+"certeza que agora você pegou a ideia."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/PentaKoch.html:7
@@ -12479,6 +12564,9 @@ msgid ""
 "at each step anymore, but multiplied by 0.4. The curve looks better this "
 "way :)"
 msgstr ""
+"Outra diferença com o anterior é que o comprimento não é mais dividido\n"
+"por três em cada passo, mas multiplicado por 0.4. A curva parece\n"
+"melhor desta forma :)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/PentaKoch.html:10
@@ -12486,11 +12574,13 @@ msgid ""
 "We draw only one side in this exercise so your code will be called only once "
 "this time."
 msgstr ""
+"Desenhamos apnas um lado neste exercício de forma que seu código vai\n"
+"ser chamado apenas uma vez agora."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/koch/HexaKoch.html:2
 msgid "Snow hexagon"
-msgstr ""
+msgstr "Snow hexagon"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/HexaKoch.html:4
@@ -12499,6 +12589,9 @@ msgid ""
 "This means that you have to grow 6-sided polygons on the segments, and that "
 "the length should be multiplied by 0.14 at each recursion level."
 msgstr ""
+"Agora vamos desenhar a curva conhecida por curva (6, 0.14)-Koch. Isto\n"
+"significa que você tem que crescer polígonos de 6 lados nos segmentos\n"
+"e que o comprimento deve ser multiplicado por 0.14 em cada nível de recursão."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/HexaKoch.html:8
@@ -12509,6 +12602,12 @@ msgid ""
 "the menu and explore freely other Koch curves. Just change the initial call "
 "to hexaKoch to what you want."
 msgstr ""
+"Para registro, a curva de Koch original é a curva (3, 1/3)-Koch, a\n"
+"Snow square será a curva (4,1/3)-Koch enquanto que a Snow pentagon é\n"
+"também chamada de curva (5, 0.4)-Koch. Se você quiser, você pode\n"
+"trocar para o modo criativo no menu e explorar livremnete outras\n"
+"curvas de Koch. Simplesmente mude a chamada inicial de hexaKoch para o\n"
+"que você quiser."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/HexaKoch.html:13
@@ -12517,11 +12616,13 @@ msgid ""
 "~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/"
 "kcurve/kcurve.htm</a>."
 msgstr ""
+"Para mais referências, favor ler <a\n"
+"href=\"http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/koch/Crab.html:2
 msgid "Fractal Crab"
-msgstr ""
+msgstr "Carangueijo Fractal"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Crab.html:4
@@ -12531,6 +12632,12 @@ msgid ""
 "of the figure: the angle is 45 degrees, and the length is divided by [!java|"
 "scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!][!c]sqrt(2);[/!] at each step."
 msgstr ""
+"A curva do carangueijo não é exatamente uma curva de Koch, mas ainda é\n"
+"um fractal e e construída de forma similar. Desta vez, vamos crescer\n"
+"um triângulo retângulo na lateral da figura: o ângulo é de 45 graus, e\n"
+"o comprimento é dividido por\n"
+"[!java|scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!][!c]sqrt(2);[/!]\n"
+"em cada passo."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Crab.html:8
@@ -12538,11 +12645,13 @@ msgid ""
 "Check the figures produced by the first steps of recursion to understand the "
 "pattern."
 msgstr ""
+"Verifique as figuras produzidas pelos primeiros passos da recursão\n"
+"para entender o padrão."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/koch/Crab.html:10
 msgid "Bibliographical note"
-msgstr ""
+msgstr "nota bibliográfica"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Crab.html:11
@@ -12553,11 +12662,15 @@ msgid ""
 "www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c."
 "shtml</a>."
 msgstr ""
+"Esta curva, também chamada de curva C de Lévy foi inventada em 1938\n"
+"pelo matemático francês Paul Lévy in 1938. Como sempre, a página da\n"
+"wikipédia é bem instrutiva, além de fornecer ótimos extras: <a\n"
+"href=\"http://www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/tree/Tree.html:2
 msgid "Trees"
-msgstr ""
+msgstr "Árvores"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/tree/Tree.html:4
@@ -12565,6 +12678,8 @@ msgid ""
 "We will now draw trees. For that, we will write a method using double "
 "recursion following this prototype"
 msgstr ""
+"Vamos agora construir árvores. Para isto, vamos escrever um método\n"
+"usando recursão dupla seguindo este protótipo"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/tree/Tree.html:6
@@ -12580,6 +12695,11 @@ msgid ""
 "the given angle, draw another tree of level 3, and come back to your initial "
 "location. Don't forget to come back to the initial location!"
 msgstr ""
+"Para desenhar uma árvore de quatro níveis, você deve desenhar um\n"
+"tronco do comprimento dado, virar à direita num ângulo dado, desenhar\n"
+"uma árvore de nível 3, virar a esquerda duas vezes no ângulo dado,\n"
+"desenhar outra árvore de nível 3, e voltar para a posição inicial. Não\n"
+"esqueça de voltar para a posição inicial!"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/recursion/lego/tree/Tree.html:13
@@ -12587,6 +12707,8 @@ msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
 msgstr ""
+"Se um tronco da árvore é de comprimento 'len', o tronco da árvore no\n"
+"próximo nível será de comprimento 'len*shrink'."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/lego/tree/Tree.html:16
@@ -12594,6 +12716,8 @@ msgid ""
 "At the end, here is the pseudo-code of the general case (you should add the "
 "base case yourself):"
 msgstr ""
+"Finalmente, aqui está o pseudo-código do caso geral (você deve\n"
+"adicionar o caso base por si só):"
 
 #. type: Content of: <p><p><p><p><pre>
 #: src/lessons/recursion/lego/tree/Tree.html:18
@@ -12604,6 +12728,10 @@ msgid ""
 "  Draw (recursively) the left subtree\n"
 "  Move back to your initial position\n"
 msgstr ""
+"  Mova para a frente no comprimento desejado\n"
+"  Desenhe (recursivamente) a sub-árvore da direita\n"
+"  Desenhe (recursivamente) a sub-árvore da esquerda\n"
+"  Mova para trás para a posição inicial\n"
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/lego/tree/Tree.html:23
@@ -12612,6 +12740,9 @@ msgid ""
 "infinite loop.  Then, drawing the right subtree comes down to turn right and "
 "then draw the subtree."
 msgstr ""
+"Não esqueça de adicionar o caso base a seu código, ou seu buggle vai\n"
+"entrar num loop infinito. Então, desenhar a sub-árvore da direita é\n"
+"virar a direita e desenhar a sub-árvore."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/lego/tree/Tree.html:26
@@ -12622,6 +12753,11 @@ msgid ""
 "you.  Don't erase your great colors when you move back to your initial "
 "location."
 msgstr ""
+"Como você pode ver, cada nível de recursão é representado por uma cor\n"
+"diferente. Para isto, você tem que chamar o\n"
+"<code>current(step)</code>, passar o nível de recursão atual como\n"
+"parâmetro. Isto vai pegar a cor certa para você. Não apague suas belas\n"
+"cores quando se mover de volta para sua posição inicial."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/lego/tree/Tree.html:30
@@ -12635,11 +12771,21 @@ msgid ""
 "debug your code, but you have to change for a proper recursive call to your "
 "own code (once it works)  to get the colors right, and pass the exercise."
 msgstr ""
+"Se você fizer a função errado, pode rapidamente ficar muito difícil de\n"
+"depurar pois os erros vão aparecer em cada nível  da recursão, mudando\n"
+"completamente o desenho. Por questões de depuração, você pode usar o\n"
+"<code>subtree()</code> que vai desenhar uma sub-árvore\n"
+"corretamente. Esta função é portanto muito similar àquela que você\n"
+"está tentando escrever. A única diferença é que <code>subtree()</code>\n"
+"apenas desenha em preto. Logo, você pode usar ela no lugar da chamada\n"
+"recursiva para depurar seu código, mas você vai ter que mudar para uma\n"
+"chamada recursiva adequada no seu próprio código (uma vez que\n"
+"funcione) para obter as cores certas, e passar no exercício."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/sierpinski/Sierpinski.html:2
 msgid "Sierpinski's Triangle"
-msgstr ""
+msgstr "Triângulo de Sierpinski"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/sierpinski/Sierpinski.html:4
@@ -12648,6 +12794,9 @@ msgid ""
 "several smaller triangles are embedded. The prototype of the function to "
 "draw it is the following:"
 msgstr ""
+"O fractal que vamos desenhar é formado de um grande triângulo dentro\n"
+"do qual há vários pequenos triângulos. O protótipo da função que\n"
+"desenha isto é o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/sierpinski/Sierpinski.html:7
@@ -12663,11 +12812,16 @@ msgid ""
 "triangle (halve the length) and move forward by the requested length.  "
 "Globally, you have to draw 3 such sides and turn by 120 between each side."
 msgstr ""
+"Dê uma olhada em cada uma das visões do mundo objetivo para entender\n"
+"como escrever a função. Para desenhar um lado do triângulo, desenhe um\n"
+"triângulo recursivo menor (metade do comprimento) e mova para a frente\n"
+"no comprimento desejado. Globalmente, você tem que desenhar 3 destes\n"
+"lados e girar 120 graus entre cada lado."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/spiral/Spiral.html:2
 msgid "Spirals"
-msgstr ""
+msgstr "Espirais"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/spiral/Spiral.html:4
@@ -12676,6 +12830,9 @@ msgid ""
 "to draw different kind of spirals with the same function, which prototype is "
 "the following:"
 msgstr ""
+"Vamos agora desenhar nossa primeira função recursiva com a\n"
+"tartaruga. O objetivo é desenhar diferentes tipos de espirais com a\n"
+"mesma função, cujo protótipo é o seguinte:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/spiral/Spiral.html:7
@@ -12689,6 +12846,8 @@ msgid ""
 "To help you understanding how to write it, here is an example of how the "
 "parameters change during one specific call:"
 msgstr ""
+"Para ajudar a entender como escrever isto, aqui está um exemplo de\n"
+"como os parâmetros mudam durante uma chamada específica:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/spiral/Spiral.html:12
@@ -12731,7 +12890,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:2
 msgid "Drawing spirals"
-msgstr ""
+msgstr "Desenhando espirais"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:4
@@ -12743,6 +12902,13 @@ msgid ""
 "<code>spiral</code> function. You can move on to the next exercise if you "
 "are short on time, and come back later to play around."
 msgstr ""
+"Este exercício não é realmente um exercício pois você tem que\n"
+"simplesmente clicar no botão Rodar para ter uma recompensa: todo o\n"
+"código necessário já está pronto. Na verdade, você  pode explorar as\n"
+"possibilidades do código que você acabou de escrever mudando os\n"
+"parâmetros da chamada da função <code>spiral</code>. Você pode mover\n"
+"para o próximo exercício se estiver com pressa, e voltar depois para\n"
+"experimentar este."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:10
@@ -12752,6 +12918,10 @@ msgid ""
 "switch to the creative mode (from the Exercise menu)  to disable the world "
 "comparison when you explore with these spirals."
 msgstr ""
+"Aqui estão algumas figuras que você pode produzir com sua função\n"
+"<code>Spiral</code>, dado que você passe os parâmetros certos. Você\n"
+"pode trocar para o modo criativo (do menu Exercício) para desabilitar\n"
+"a comparação de mundos quando estiver explorando com estas espirais."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:21
@@ -12759,6 +12929,9 @@ msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
 msgstr ""
+"Se você descobrir uma figura legal, não esqueça de enviar seus\n"
+"parâmetros (menu Ajuda/\"Dizer o que achou\") para que possamos\n"
+"adicionar a esta lista!"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:2
@@ -12950,6 +13123,11 @@ msgid ""
 "some point, someone should also probably contribute these variations to "
 "wikipedia, as only the base problem is nicely described there."
 msgstr ""
+"Aqui está o exercício super-clássico sobre recursão junto com algumas\n"
+"variações. Se você tiver quaisquer outras variações legais, favor\n"
+"envie elas. Em algum momento, alguém deve enviar estas variações\n"
+"também para a wikipédia, pois por enquanto apenas o problema básico é\n"
+"descrito lá."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:8
