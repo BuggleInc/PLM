@@ -11,7 +11,7 @@ import plm.core.model.LogHandler;
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
 	public ScalaSimpleExerciseTest() {
-		super(new Game(UUID.randomUUID().toString(), mock(LogHandler.class), new Locale("en"), "Scala"), Game.SCALA);
+		super(new Game(UUID.randomUUID().toString(), mock(LogHandler.class), new Locale("en"), "Scala", false), Game.SCALA);
 	}
 	
 	@Override

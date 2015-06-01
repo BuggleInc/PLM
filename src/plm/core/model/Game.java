@@ -147,12 +147,16 @@ public class Game implements IWorldView {
 	
 	private static boolean ongoingInitialization = false;
 	
+	private boolean trackUser;
+	
 	private Locale locale;
 	public I18n i18n;
 	
-	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage) {
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
 		this.logger = logger;
 		this.locale = locale;
+		this.trackUser = trackUser;
+		
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
 		loadProperties();
 
@@ -1245,7 +1249,15 @@ public class Game implements IWorldView {
 	}
 	
 	public void signalIdle(String start, String end, String duration) {
-		gitSpy.idle(start, end, duration);
+		gitSpy.idle(start, end, duration);	
+	}
+	
+	public void setTrackUser(boolean trackUser) {
+		this.trackUser = trackUser;
+	}
+	
+	public boolean getTrackUser() {
+		return trackUser;
 	}
 	
 	public LogHandler getLogger() {
