@@ -672,7 +672,12 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-
+			
+			// Should kill all threads before quitting this instance
+			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
+				stopExerciseExecution();
+			}
+			
 			saveSession();
 			
 			// report user leave on the server
