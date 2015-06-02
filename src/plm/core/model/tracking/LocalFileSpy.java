@@ -78,6 +78,8 @@ public class LocalFileSpy implements ProgressSpyListener {
 		//TODO
 	}
 
+	public void idle(String start, String end, String duration) {}
+	
 	@Override
 	public void readTip(String id, String mission) {
 		// TODO Auto-generated method stub
