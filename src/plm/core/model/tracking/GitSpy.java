@@ -400,6 +400,27 @@ public class GitSpy implements ProgressSpyListener {
 		}
 	}
 	
+	@Override
+	@SuppressWarnings("unchecked")
+	public void idle(String start, String end, String duration) {
+		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
+		
+		JSONObject msg = new JSONObject();
+		msg.put("start", start);
+		msg.put("end", end);
+		msg.put("duration", duration);
+		String commitMsg = writeCommitMessage(lastExo, null, "idle", msg);
+		String userBranch = "PLM"+GitUtils.sha1(userUUID);
+		
+		try {
+			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
+		} catch (GitAPIException e) {
+			System.err.println("An error occurred while pushing the fact that you were idle...\n"
+					+ "Please send a bug report with the following trace:");
+			e.printStackTrace();
+		}
+	}
+	
 	public Game getGame() {
 		return game;
 	}

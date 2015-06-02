@@ -57,7 +57,7 @@ public class ExoTest {
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
 		String userUUID = UUID.randomUUID().toString();
-		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), "Java");
+		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), "Java", false);
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
