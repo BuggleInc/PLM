@@ -77,6 +77,9 @@ public abstract class Lecture implements HumanLangChangesListener{
 	public String getMission(ProgrammingLanguage lang) {
 		return PlmHtmlEditorKit.filterHTML(this.mission, game.isDebugEnabled(), lang);
 	}
+	public String getRawMission() {
+		return this.mission;
+	}
 	public void setMission(String mission) {
 		this.mission=mission;
 	}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-04 09:53+0200\n"
+"POT-Creation-Date: 2015-06-01 16:46+0200\n"
 "PO-Revision-Date: 2015-01-01 23:44+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -562,35 +562,35 @@ msgstr ""
 "nécessaires pour reproduire le problème.\n"
 "Message de l''exception: {1}\n"
 
-#: src/plm/core/model/Game.java:161
+#: src/plm/core/model/Game.java:160
 msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala est utilisable sur votre machine. Félicitations."
 
-#: src/plm/core/model/Game.java:163
+#: src/plm/core/model/Game.java:162
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 "Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la "
 "PLM."
 
-#: src/plm/core/model/Game.java:165
+#: src/plm/core/model/Game.java:164
 msgid "Jython is usable on your machine. Congratulations."
 msgstr "Jython est utilisable sur votre machine. Félicitations."
 
-#: src/plm/core/model/Game.java:167
+#: src/plm/core/model/Game.java:166
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr ""
 "Veuillez installer jython afin d'utiliser le langage python dans la PLM."
 
-#: src/plm/core/model/Game.java:169
+#: src/plm/core/model/Game.java:168
 msgid "C is usable on your machine. Congratulations."
 msgstr "C est utilisable sur votre machine. Félicitations."
 
-#: src/plm/core/model/Game.java:171
+#: src/plm/core/model/Game.java:170
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "Veuillez installer gcc afin d'utiliser le langage C dans la PLM."
 
-#: src/plm/core/model/Game.java:178
+#: src/plm/core/model/Game.java:176
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -612,7 +612,7 @@ msgstr ""
 "  Vous pouvez également changer la propriété {1} de votre fichier de "
 "configuration ({2}/plm.properties) pour cela."
 
-#: src/plm/core/model/Game.java:184
+#: src/plm/core/model/Game.java:182
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
@@ -620,7 +620,7 @@ msgstr ""
 "Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
 "Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:187
+#: src/plm/core/model/Game.java:185
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
@@ -628,7 +628,7 @@ msgstr ""
 "Vous utilisez python par défaut, mais votre installation de python est "
 "cassée. Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:190
+#: src/plm/core/model/Game.java:188
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
@@ -636,7 +636,7 @@ msgstr ""
 "Vous utilisez C par défaut, mais votre installation de C est cassée. "
 "Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:211
+#: src/plm/core/model/Game.java:207
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below"
@@ -644,19 +644,19 @@ msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
 
-#: src/plm/core/model/Game.java:248
+#: src/plm/core/model/Game.java:244
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr "Erreur {0} lors de l''obtention du numéro de version de Scala: {1}"
 
-#: src/plm/core/model/Game.java:257
+#: src/plm/core/model/Game.java:253
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 "Scala est trop vieux. La PLM nécessite la version 2.10 ou supérieure, mais "
 "la version trouvée est : {0}."
 
-#: src/plm/core/model/Game.java:282
+#: src/plm/core/model/Game.java:278
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
@@ -664,7 +664,7 @@ msgstr ""
 "Impossible de démarrer un engin de script pour python. Est ce que jython.jar "
 "et ses dépendances sont dans le classpath ?"
 
-#: src/plm/core/model/Game.java:321
+#: src/plm/core/model/Game.java:317
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
@@ -673,17 +673,17 @@ msgstr ""
 "La ressource {0} est introuvable dans le classpath.\n"
 "Vous devriez peut-être ajouter {1} à votre classpath pour y remédier."
 
-#: src/plm/core/model/Game.java:323
+#: src/plm/core/model/Game.java:319
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr "{0} reçue lors de la recherche de la ressource {1}: {2}"
 
-#: src/plm/core/model/Game.java:352
+#: src/plm/core/model/Game.java:348
 #, fuzzy, java-format
 msgid "Cannot load lesson {0}: class Main not found."
 msgstr "Impossible de passer à la leçon {0} : la classe Main est introuvable."
 
-#: src/plm/core/model/Game.java:389
+#: src/plm/core/model/Game.java:385
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
@@ -692,11 +692,11 @@ msgstr ""
 "La leçon {0} a rencontré un problème lors du chargement de ses exercices. "
 "Veuillez faire un rapport d'anomalie et choisir une autre leçon."
 
-#: src/plm/core/model/Game.java:390
+#: src/plm/core/model/Game.java:386
 msgid "Broken lesson"
 msgstr "Leçon cassée"
 
-#: src/plm/core/model/Game.java:536
+#: src/plm/core/model/Game.java:532
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -707,16 +707,16 @@ msgstr ""
 "à la place. Vous pourriez contribuer au projet en ajoutant votre langage à "
 "cet exercice."
 
-#: src/plm/core/model/Game.java:543
+#: src/plm/core/model/Game.java:539
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
-#: src/plm/core/model/Game.java:585
+#: src/plm/core/model/Game.java:581
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:986
+#: src/plm/core/model/Game.java:982
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
@@ -725,11 +725,11 @@ msgstr ""
 "PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:987
+#: src/plm/core/model/Game.java:983
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:991
+#: src/plm/core/model/Game.java:987
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
@@ -739,11 +739,11 @@ msgstr ""
 "python.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:992
+#: src/plm/core/model/Game.java:988
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:996
+#: src/plm/core/model/Game.java:992
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
@@ -752,23 +752,9 @@ msgstr ""
 "Veuillez installer C et ses dépendances pour utiliser la PLM en C.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:997
+#: src/plm/core/model/Game.java:993
 msgid "C is missing"
 msgstr "C est manquant"
-
-#: src/plm/core/model/Users.java:100
-#, java-format
-msgid "User {0} exists already; don't add it again."
-msgstr "L''utilisateur {0} existe déjà; il ne sera pas ajouté à nouveau. "
-
-#: src/plm/core/model/Users.java:124
-#, java-format
-msgid "Switched to user: {0}"
-msgstr "L''utilisateur est maintenant {0}"
-
-#: src/plm/core/model/Users.java:177
-msgid "A new PLM user has been created for you!"
-msgstr "Un nouvel utilisateur PLM a été créé pour vous !"
 
 #: src/plm/core/model/lesson/ExecutionProgress.java:70
 #, fuzzy, java-format
@@ -898,20 +884,20 @@ msgstr ""
 "Impossible d''écrire le monde de correction de {0}. Veuillez vérifier les "
 "permissions."
 
-#: src/plm/core/model/lesson/Lecture.java:94
+#: src/plm/core/model/lesson/Lecture.java:97
 #: src/plm/core/model/lesson/Lesson.java:103
 #, java-format
 msgid "File {0}.html not found."
 msgstr "Le fichier {0}.html est introuvable."
 
-#: src/plm/core/model/lesson/Lecture.java:103
+#: src/plm/core/model/lesson/Lecture.java:106
 #: src/plm/core/model/lesson/Lesson.java:113
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
 msgstr "Impossible de trouver le nom de la mission dans {0}.html"
 
 #. It should never happen since the session content should be created by the git spy module.
-#: src/plm/core/model/session/GitSessionKit.java:89
+#: src/plm/core/model/session/GitSessionKit.java:79
 msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
@@ -974,18 +960,18 @@ msgstr "Erreur lors du chargement de votre session"
 msgid "Abording on user request"
 msgstr "Abandon, comme demandé par l'utilisateur"
 
-#: src/plm/core/model/tracking/GitSpy.java:73
+#: src/plm/core/model/tracking/GitSpy.java:67
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr "Votre session {0} a été récupérée automatiquement depuis les serveurs."
 
 #. If no branch can be found remotely, create a new one.
 #. getGame().getLogger().log(getGame().i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-#: src/plm/core/model/tracking/GitSpy.java:78
+#: src/plm/core/model/tracking/GitSpy.java:72
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr "Impossible de récupérer une session adéquate sur les serveurs..."
 
-#: src/plm/core/model/tracking/GitSpy.java:87
+#: src/plm/core/model/tracking/GitSpy.java:81
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
@@ -993,7 +979,7 @@ msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
 
-#: src/plm/core/model/tracking/GitSpy.java:165
+#: src/plm/core/model/tracking/GitSpy.java:156
 msgid "Pushing to the remote repository before exiting"
 msgstr "Envoi de vos changements sur le serveur avant de quitter."
 
@@ -1667,6 +1653,15 @@ msgstr "Formes manquantes dans votre solution : \n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
+
+#~ msgid "User {0} exists already; don't add it again."
+#~ msgstr "L''utilisateur {0} existe déjà; il ne sera pas ajouté à nouveau. "
+
+#~ msgid "Switched to user: {0}"
+#~ msgstr "L''utilisateur est maintenant {0}"
+
+#~ msgid "A new PLM user has been created for you!"
+#~ msgstr "Un nouvel utilisateur PLM a été créé pour vous !"
 
 #~ msgid "Flag sorter"
 #~ msgstr "Trieur de drapeau"
