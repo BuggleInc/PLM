@@ -156,7 +156,6 @@ public abstract class Lecture implements HumanLangChangesListener{
 		try {
 			sb = FileUtils.readContentAsText(filename, null, "json",false);
 		} catch (IOException ex) {
-			setMission(getGame().i18n.tr("File {0}.json not found.",filename));
 			return;			
 		}
 		this.toolbox = sb.toString();
