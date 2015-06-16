@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -206,6 +207,17 @@ public class HanoiWorld extends World {
 	public int getRadius(int slot) {
 		return slotsVal[slot].isEmpty()?99:slotsVal[slot].lastElement();
 	}
+	
+	public Vector<Integer>[] getSlot()
+	{
+		return slotsVal;
+	}
+	
+	public int getMoveCount()
+	{
+		return this.moveCount;
+	}
+	
 	public Color getColor(int slot, int pos) {
 		if (slot >= getSlotAmount() || slot < 0)
 			throw new RuntimeException("Invalid slot: "+slot);
