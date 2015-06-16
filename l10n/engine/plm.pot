@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 13:06+0200\n"
+"POT-Creation-Date: 2015-06-16 13:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,46 +75,46 @@ msgid ""
 "Use the intermediate slot in all moves."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:60
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:62
 #, java-format
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:151
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:152
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:158
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:159
 #, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:163
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:164
 #, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:184
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:185
 #, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:186
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:187
 #, java-format
 msgid "Cannot move from slot {0} to itself"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:188
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:189
 #, java-format
 msgid "No disc to move from slot {0}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:193
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:194
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
@@ -471,32 +471,32 @@ msgid ""
 "Exception message: {1}\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:161
+#: src/plm/core/model/Game.java:164
 msgid "Scala is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:163
+#: src/plm/core/model/Game.java:166
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:165
+#: src/plm/core/model/Game.java:168
 msgid "Jython is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:167
+#: src/plm/core/model/Game.java:170
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:169
+#: src/plm/core/model/Game.java:172
 msgid "C is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:171
+#: src/plm/core/model/Game.java:174
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:178
+#: src/plm/core/model/Game.java:180
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -509,19 +509,19 @@ msgid ""
 "({2}/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:184
+#: src/plm/core/model/Game.java:186
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:187
+#: src/plm/core/model/Game.java:189
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:190
+#: src/plm/core/model/Game.java:192
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
@@ -577,7 +577,7 @@ msgstr ""
 msgid "Broken lesson"
 msgstr ""
 
-#: src/plm/core/model/Game.java:537
+#: src/plm/core/model/Game.java:536
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -585,59 +585,45 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:544
+#: src/plm/core/model/Game.java:543
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/plm/core/model/Game.java:586
+#: src/plm/core/model/Game.java:585
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:987
+#: src/plm/core/model/Game.java:990
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:988
+#: src/plm/core/model/Game.java:991
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:992
+#: src/plm/core/model/Game.java:995
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:993
+#: src/plm/core/model/Game.java:996
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:997
+#: src/plm/core/model/Game.java:1000
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:998
+#: src/plm/core/model/Game.java:1001
 msgid "C is missing"
-msgstr ""
-
-#: src/plm/core/model/Users.java:100
-#, java-format
-msgid "User {0} exists already; don't add it again."
-msgstr ""
-
-#: src/plm/core/model/Users.java:124
-#, java-format
-msgid "Switched to user: {0}"
-msgstr ""
-
-#: src/plm/core/model/Users.java:177
-msgid "A new PLM user has been created for you!"
 msgstr ""
 
 #: src/plm/core/model/lesson/ExecutionProgress.java:70
@@ -743,20 +729,20 @@ msgstr ""
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
 
-#: src/plm/core/model/lesson/Lecture.java:93
+#: src/plm/core/model/lesson/Lecture.java:94
 #: src/plm/core/model/lesson/Lesson.java:103
 #, java-format
 msgid "File {0}.html not found."
 msgstr ""
 
-#: src/plm/core/model/lesson/Lecture.java:102
+#: src/plm/core/model/lesson/Lecture.java:103
 #: src/plm/core/model/lesson/Lesson.java:113
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
 msgstr ""
 
 #. It should never happen since the session content should be created by the git spy module.
-#: src/plm/core/model/session/GitSessionKit.java:89
+#: src/plm/core/model/session/GitSessionKit.java:79
 msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
@@ -810,82 +796,82 @@ msgstr ""
 msgid "Abording on user request"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:73
+#: src/plm/core/model/tracking/GitSpy.java:67
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
 
 #. If no branch can be found remotely, create a new one.
 #. getGame().getLogger().log(getGame().i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-#: src/plm/core/model/tracking/GitSpy.java:78
+#: src/plm/core/model/tracking/GitSpy.java:72
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:87
+#: src/plm/core/model/tracking/GitSpy.java:81
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:165
+#: src/plm/core/model/tracking/GitSpy.java:156
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:77
+#: src/plm/core/model/tracking/GitUtils.java:75
 msgid "An error occurred while configuring the repository..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:86
+#: src/plm/core/model/tracking/GitUtils.java:84
 msgid "Retrieving your session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:120
+#: src/plm/core/model/tracking/GitUtils.java:118
 msgid "An error occurred while checking out the user's branch: "
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:133
+#: src/plm/core/model/tracking/GitUtils.java:131
 msgid "last session data successfully retrieved"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:136
+#: src/plm/core/model/tracking/GitUtils.java:134
 msgid "last session data successfully merged"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:139
+#: src/plm/core/model/tracking/GitUtils.java:137
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
 msgstr ""
 
 #. TODO: handle this case
-#: src/plm/core/model/tracking/GitUtils.java:167
+#: src/plm/core/model/tracking/GitUtils.java:165
 msgid "Canceled the merge operation because of the following failures:"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:174
+#: src/plm/core/model/tracking/GitUtils.java:172
 msgid "Can't merge data retrieved from server with local session data."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:215
+#: src/plm/core/model/tracking/GitUtils.java:213
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:242
+#: src/plm/core/model/tracking/GitUtils.java:240
 msgid "Your session has been successfully saved into the clouds."
 msgstr ""
 
 #. An error occurred while pushing
-#: src/plm/core/model/tracking/GitUtils.java:246
+#: src/plm/core/model/tracking/GitUtils.java:244
 msgid "Fetching the server's last version..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:253
+#: src/plm/core/model/tracking/GitUtils.java:251
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:256
+#: src/plm/core/model/tracking/GitUtils.java:254
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
