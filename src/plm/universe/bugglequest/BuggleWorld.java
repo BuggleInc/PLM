@@ -399,7 +399,7 @@ public class BuggleWorld extends GridWorld {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang.equals(Game.PYTHON) || lang.equals(Game.BLOCKLY)) {
 			engine.put("Direction", Direction.class);
 			engine.put("Color", Color.class);
 			engine.eval(

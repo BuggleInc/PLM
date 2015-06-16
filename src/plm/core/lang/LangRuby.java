@@ -10,7 +10,7 @@ import plm.universe.Entity;
 public class LangRuby extends ScriptingLanguage {
 
 	public LangRuby(boolean isDebugEnabled) {
-		super("Ruby","rb",isDebugEnabled);
+		super("Ruby", "rb",isDebugEnabled);
 	}
 
 	@Override

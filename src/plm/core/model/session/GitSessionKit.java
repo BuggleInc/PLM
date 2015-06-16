@@ -51,7 +51,7 @@ public class GitSessionKit implements ISessionKit {
 
 			// First save the bodies
 			storeLesson(repoDir, lesson);
-			
+
 			// Recompute the summaries
 			File summary = new File(repoDir, lesson.getId() + ".summary");
 			try {
@@ -83,7 +83,7 @@ public class GitSessionKit implements ISessionKit {
 		for (Lesson lesson : this.game.getLessons()) {
 			loadLesson(path, lesson);
 		}
-		
+
 		// Load summary from the lastly saved files, 
 		// but don't trust the game.getLessons that is empty at startup, so search for existing files on disk
 		String pattern = "*.summary";
@@ -95,7 +95,7 @@ public class GitSessionKit implements ISessionKit {
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 				if (! matcher.matches(file.getFileName()))  // Not a summary file. Who cares?
 					return FileVisitResult.CONTINUE;			
-				
+
 				String lessonId = file.getFileName().toString();
 				lessonId = lessonId.substring(0,lessonId.length() - ".summary".length());
 
@@ -121,14 +121,14 @@ public class GitSessionKit implements ISessionKit {
 							// I don't care about not being able to close a file that I *read*
 						}
 				}
-				
+
 				// 2. Pass that string to the sessionDB
 				game.studentWork.lessonSummaryParse(lessonId, sb.toString());
-				
+
 				return FileVisitResult.CONTINUE;			
 			}
 		};
-				
+
 		try {
 			Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
 		} catch (IOException ex) {
@@ -137,7 +137,7 @@ public class GitSessionKit implements ISessionKit {
 
 
 	}
-	
+
 	/**
 	 * Store the user source code for a specified lesson
 	 *
@@ -163,17 +163,15 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercise already done correctly
-					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".DONE";
+					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + ".DONE";
 					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
 						game.studentWork.setPassed(exercise, lang, true);
 					} else {
 						game.studentWork.setPassed(exercise, lang, false);
 					}
-					// load source code 
-					SourceFile srcFile = exercise.getSourceFile(lang, 0);
-					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".code";
+					// load source code
+					SourceFile srcFile = exercise.getSourceFile(lang, lang.getVisualIndex());
+					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + lang.getVisualExt();
 					//getGame().getLogger().log(fileName);
 					String line;
 					StringBuilder b = new StringBuilder();

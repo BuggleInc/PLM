@@ -14,6 +14,7 @@ public class Conditions extends ExerciseTemplated {
 	public Conditions(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "Program";
+		this.setToolbox();
 				
 		BuggleWorld myWorld = new BuggleWorld(game, "Closed World",7,7);
 		for (int i=0;i<7;i++) { 

@@ -14,6 +14,7 @@ public class Snake extends ExerciseTemplated {
 	public Snake(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "SnakeBuggle";
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Desert",7,7);
 		for (int i=0; i<7;i++) {

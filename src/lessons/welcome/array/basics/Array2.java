@@ -13,6 +13,7 @@ public class Array2 extends ExerciseTemplated {
 
 	public Array2(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 		BuggleWorld[] myWorlds = new BuggleWorld[3];
 
 		myWorlds[0] = new BuggleWorld(game, "Pattern 1",6,6);

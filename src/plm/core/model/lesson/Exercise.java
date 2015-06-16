@@ -25,11 +25,11 @@ public abstract class Exercise extends Lecture {
 	public static enum StudentOrCorrection {STUDENT, CORRECTION}
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
-	
+
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
 		return getClass().getCanonicalName() + "Entity";
 	}
-	
+
 	public String getTabName() {
 		return tabName;
 	}
@@ -133,7 +133,15 @@ public abstract class Exercise extends Lecture {
 	}
 
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));
+		switch (lang.getLang()){
+		case "Blockly":
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name+"Blocks", initialContent, template, offset,correctionCtn));
+			break;
+		default:
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));
+			break;
+		}
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
@@ -219,7 +227,7 @@ public abstract class Exercise extends Lecture {
 	protected void addProgLanguage(ProgrammingLanguage newL) {
 		progLanguages.add(newL);
 	}
-	
+
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		super.currentHumanLanguageHasChanged(newLang);
 		initialWorld.get(0).resetAbout();
