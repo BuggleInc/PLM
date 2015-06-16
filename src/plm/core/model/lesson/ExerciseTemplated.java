@@ -212,7 +212,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C) { 
+		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C || lang == Game.BLOCKLY) { 
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {
@@ -358,7 +358,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						getGame().getLogger().log("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
-					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
+					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA) || lang.equals(Game.BLOCKLY)) 
 						getGame().getLogger().log("No templating entity found: "+e);
 						
 					if (getProgLanguages().contains(lang)) 

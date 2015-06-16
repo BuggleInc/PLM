@@ -13,6 +13,7 @@ public class PatternPicture extends ExerciseTemplated {
 
 	public PatternPicture(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 		BuggleWorld myWorld =  new BuggleWorld(game, "World",8,8);
 		
 		for (int i=0;i<8;i++) {

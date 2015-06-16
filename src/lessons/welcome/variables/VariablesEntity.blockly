@@ -1,0 +1,11 @@
+# BEGIN SOLUTION 
+cpt = 0
+while not isOverBaggle():
+  cpt += 1 
+  forward()
+pickupBaggle()
+while cpt>0:
+  backward()
+  cpt -= 1
+dropBaggle()
+# END SOLUTION
