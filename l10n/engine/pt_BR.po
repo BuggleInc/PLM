@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-23 23:01-0300\n"
-"PO-Revision-Date: 2015-06-09 23:41-0300\n"
+"PO-Revision-Date: 2015-06-23 18:10-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "Language: pt_BR \n"
@@ -1114,7 +1114,7 @@ msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:214
 msgid "Cannot synchronize your session with the servers (network down)."
-msgstr ""
+msgstr "Não consigo sincronizar sua sessão com os servidores (sem rede)."
 
 #: src/plm/core/model/tracking/GitUtils.java:241
 msgid "Your session has been successfully saved into the clouds."
@@ -1370,6 +1370,9 @@ msgid ""
 "You can find below the detailed error message (as given by {0}).<br>\n"
 "Please read it carefully to understand the problem, and fix your code.</html>"
 msgstr ""
+"<html>Erro de compilação.<br>\n"
+"Veja abaixo a mensagem de erro detalhada (como dada por {0}).<br>\n"
+"Favor ler cuidadosamente para entender o problema e consertar seu código.</html>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:82
 #: src/plm/core/ui/ExerciseFailedDialog.java:89
@@ -1806,35 +1809,35 @@ msgstr "marcação <img> sem atributo src em offset {0}."
 #: src/plm/core/ui/PlmHtmlEditorKit.java:322
 #, java-format
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
-msgstr ""
+msgstr "etiqueta <img> sem atributo src no exercício {0} em offset {1}"
 
 #: src/plm/core/ui/StatusBar.java:154
 msgid "Saving"
-msgstr ""
+msgstr "Gravando"
 
 #: src/plm/core/ui/StatusBar.java:159
 msgid "Compiling"
-msgstr ""
+msgstr "compilando"
 
 #: src/plm/core/ui/StatusBar.java:175
 msgid "Running "
-msgstr ""
+msgstr "Rodando "
 
 #: src/plm/core/ui/StatusBar.java:180
 msgid "Playing demo "
-msgstr ""
+msgstr "Rodando a demonstração "
 
 #: src/plm/core/ui/StatusBar.java:185
 msgid "Loading "
-msgstr ""
+msgstr "Carregando "
 
 #: src/plm/core/ui/TipsDialog.java:20
 msgid "Tips"
-msgstr ""
+msgstr "Dicas"
 
 #: src/plm/core/ui/TipsDialog.java:21
 msgid "(no tips to display)"
-msgstr ""
+msgstr "(sem dicas para exibir)"
 
 #: src/plm/core/ui/action/AddUser.java:27
 msgid ""
