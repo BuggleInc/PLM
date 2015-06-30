@@ -25,6 +25,7 @@ import plm.core.utils.FileUtils;
 public abstract class World {
 	private boolean isDelayed = false; // whether we display interactively or not
 	private boolean isAnswer = false;
+	private boolean isError = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
 
 	protected List<Entity> entities = new ArrayList<Entity>();
@@ -115,6 +116,12 @@ public abstract class World {
 	}
 	public boolean isAnswerWorld() {
 		return isAnswer;
+	}
+	public void setErrorWorld() {
+		isError = true;
+	}
+	public boolean isErrorWorld() {
+		return isError;
 	}
 
 	public void addEntity(Entity b) {

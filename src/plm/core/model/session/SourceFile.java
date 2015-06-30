@@ -18,13 +18,15 @@ public class SourceFile {
 	private String body;
 	private int offset;
 	private String correction;
+	private String error;
 	private ISourceFileListener listener = null;
 
-	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn) {
+	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
 		this.name = name;
 		this.body = initialBody;
 		this.offset = _offset;
 		this.correction = _correctionCtn;
+		this.error = _errorCtn;
 		setTemplate( template );
 	}
 
@@ -55,6 +57,12 @@ public class SourceFile {
 	public String getCorrection() {
 		return this.correction;
 	}
+	public void setError(String e) {
+		this.error = e;
+	}
+	public String getError() {
+		return this.error;
+	}
 
 	public String getCompilableContent(StudentOrCorrection whatToRetrieve) {
 		return getCompilableContent(null,whatToRetrieve);
@@ -73,6 +81,8 @@ public class SourceFile {
 
 		if (whatToRetrieve == StudentOrCorrection.CORRECTION) {
 			res = correction;
+		} else if(whatToRetrieve == StudentOrCorrection.ERROR) {
+			res = error;
 		} else if (template != null) {
 			res = template.replaceAll("\\$body", this.body+" \n");;			
 		} else {

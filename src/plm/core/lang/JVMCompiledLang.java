@@ -30,8 +30,14 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 	protected abstract Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException;
 	@Override
 	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException {
-		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
-
+		//String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
+		String newClassName = "";
+		switch(whatToMutate) {
+		case STUDENT: newClassName = exo.getTabName(); break;
+		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
+		case ERROR: newClassName = nameOfCommonError(exo, 0); break;
+		}
+		
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();
 		for (Entity old : olds) {
 			/* Instantiate a new entity of the new type */

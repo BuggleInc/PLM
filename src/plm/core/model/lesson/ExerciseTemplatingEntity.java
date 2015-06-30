@@ -107,7 +107,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		if (this.getProgLanguages().contains(Game.PYTHON))
 			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body",0,"");
+		newSource(Game.PYTHON, entName, initialCode, "$body",0,"","");
 		corrections.put(Game.PYTHON, initialCode+correction);
 		addProgLanguage(Game.PYTHON);
 	}
@@ -147,7 +147,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		skeleton.append("}\n");
 		
 		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",14,
-				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
+				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction,"Error");
 		addProgLanguage(Game.SCALA);
 	}
 	public boolean isSetup() {

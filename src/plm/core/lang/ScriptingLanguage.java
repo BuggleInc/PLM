@@ -34,8 +34,13 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
 	@Override
 	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) {
-		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
-
+		//String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
+		String newClassName = "";
+		switch(whatToMutate) {
+		case STUDENT: newClassName = exo.getTabName(); break;
+		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
+		case ERROR: newClassName = nameOfCommonError(exo, 0); break;
+		}
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
 			boolean foundScript = false;
 
@@ -59,12 +64,24 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
 			}
-		} else { // whatToMutate == StudentOrCorrection.CORRECTION
+		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
 			StringBuffer sb = null;
 			try {
 				sb = FileUtils.readContentAsText(this.nameOfCorrectionEntity(exo), getExt(), false);
 			} catch (IOException ex) {
 				throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionEntity(exo)+"."+getExt()+" since I cannot read it (error was: "+
+						ex.getLocalizedMessage());
+			}
+			String script = sb.toString();
+
+			for (Entity ent : olds) 
+				ent.setScript(this, script);
+		} else {
+			StringBuffer sb = null;
+			try {
+				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,0), getExt(), false);
+			} catch (IOException ex) {
+				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,0)+"."+getExt()+" since I cannot read it (error was: "+
 						ex.getLocalizedMessage());
 			}
 			String script = sb.toString();

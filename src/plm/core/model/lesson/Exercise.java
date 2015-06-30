@@ -23,13 +23,17 @@ import plm.universe.World;
 
 
 public abstract class Exercise extends Lecture {
-	public static enum WorldKind {INITIAL,CURRENT, ANSWER}
-	public static enum StudentOrCorrection {STUDENT, CORRECTION}
+	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
+	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 	
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
 		return getClass().getCanonicalName() + "Entity";
+	}
+	
+	public String nameOfCommonError(int i) {
+		return getClass().getCanonicalName() + "CommonErr" + i;
 	}
 	
 	public String getTabName() {
@@ -41,6 +45,8 @@ public abstract class Exercise extends Lecture {
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
+	protected Vector<World> errorWorld;
+	protected Vector<Vector<World>> commonErrors;
 
 
 	public ExecutionProgress lastResult;
@@ -55,13 +61,21 @@ public abstract class Exercise extends Lecture {
 		currentWorld = new Vector<World>(w.length);
 		initialWorld = new Vector<World>(w.length);
 		answerWorld  = new Vector<World>(w.length);
+		errorWorld   = new Vector<World>(w.length);
 		for (int i=0; i<w.length; i++) {
 			if (w[i] == null) 
 				throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
 			currentWorld.add( w[i].copy() );
 			initialWorld.add( w[i].copy() );
 			answerWorld. add( w[i].copy() );
+			errorWorld.  add( w[i].copy() );
+			commonErrors = new Vector<Vector<World>>(2);
+			addError(errorWorld);
 		}
+	}
+	
+	public void addError(Vector<World> error) {
+		commonErrors.add(errorWorld);
 	}
 
 	public abstract void run(List<Thread> runnerVect);	
@@ -76,6 +90,9 @@ public abstract class Exercise extends Lecture {
 				lastResult.totalTests++;
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
+					if(currentWorld.get(i).winning(errorWorld.get(i))) {
+						lastResult.executionError += "You just had to write \"forward();\" to win this exercise...\n\n";
+					}
 					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 					lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
@@ -133,8 +150,8 @@ public abstract class Exercise extends Lecture {
 		return getSourceFilesList(lang).get(i);
 	}
 
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn));
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn,String errorCtn) {
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn,errorCtn));
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
@@ -145,6 +162,7 @@ public abstract class Exercise extends Lecture {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;
 		case ANSWER:  worlds = answerWorld;  break;
+		case ERROR:   worlds = errorWorld;   break;
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
 
@@ -177,6 +195,7 @@ public abstract class Exercise extends Lecture {
 		case INITIAL: return initialWorld;
 		case CURRENT: return currentWorld;
 		case ANSWER:  return answerWorld;
+		case ERROR:   return errorWorld;
 		default: throw new RuntimeException("Unhandled kind of world: "+kind);
 		}
 	}

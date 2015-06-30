@@ -317,10 +317,10 @@ public abstract class ExerciseTemplated extends Exercise {
 			 * (TL;DR: entities in ExerciseTemplatingEntities are Frankenstein monsters built manually from scratch) 
 			 */
 			newSource(lang, name, initialContent, skelContent,offset,
-					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString());
+					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString(),"Error");
 		} else {
 			newSource(lang, name, initialContent, template,offset,
-					correction.toString().replaceAll("SimpleBuggle","AbstractBuggle")); // We don't want to have little dialogs when testing
+					correction.toString().replaceAll("SimpleBuggle","AbstractBuggle"),"Error"); // We don't want to have little dialogs when testing
 		}
 	}
 
@@ -330,8 +330,10 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected <W extends World> void setup(W[] ws) {
 		boolean foundALanguage=false;
 		setupWorlds(ws);
+		File f = null;
 
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
+			f = new File(lang.nameOfCommonError(this, 0));
 			boolean foundThisLanguage = false;
 			String searchedName = null;
 			for (SourceFile sf : getSourceFilesList(lang)) {
@@ -343,6 +345,15 @@ public abstract class ExerciseTemplated extends Exercise {
 					p = Pattern.compile("Entity$");
 					m = p.matcher(searchedName);
 					searchedName = m.replaceAll("");
+					
+					Pattern pce = Pattern.compile(".*?([^.]*)$");
+					Matcher mce = pce.matcher(lang.nameOfCommonError(this,0));
+					if (mce.matches())
+						searchedName = mce.group(1);
+					pce = Pattern.compile("CommonErr[0-9]*$");
+					mce = pce.matcher(searchedName);
+					searchedName = mce.replaceAll("");
+					
 				}
 				if (Game.getInstance().isDebugEnabled())
 					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
@@ -375,6 +386,61 @@ public abstract class ExerciseTemplated extends Exercise {
 			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
 				
 		computeAnswer();
+		computeError(f);
+	}
+	
+	protected void computeError(File f) {
+		final String id = this.getId();
+		if(new File("src/"+f.getPath().replaceAll("\\.", "/")+".java").exists() && new File("src/"+f.getPath().replaceAll("\\.", "/")+".py").exists()
+				&& new File("src/"+f.getPath().replaceAll("\\.", "/")+".scala").exists()) {
+			Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+				
+				@Override
+				public void uncaughtException(Thread th, Throwable ex) {
+					if(ex instanceof PLMEntityNotFound) {
+						getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
+					}
+					System.err.println("Uncaught exception while computing error: " + ex);
+				}
+			};
+			Thread t = new Thread() {
+				@Override
+				public void run() {
+					Game.getInstance().statusArgAdd(getClass().getSimpleName());
+					ExecutionProgress progress = new ExecutionProgress();
+					mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR);
+					for(World ew : errorWorld) {
+						for(Entity ent : ew.getEntities()) {
+							ent.setScript(Game.C, id);
+							Game.getProgrammingLanguage().runEntity(ent, progress);
+						}
+						ew.setErrorWorld();
+					}
+					/* Try to write all files for next time */
+					if (errorWorld.get(0).haveIO()) {
+						int rank = 0;
+						for (World ew:errorWorld) {
+							String name = "src/"+worldFileName+"-error"+(rank++);
+							name = name.replaceAll("\\.", "/") + ".map";
+							if (new File(name).getParentFile().canWrite()) {
+								try {
+									ew.writeToFile(new File(name));
+								} catch (Exception e) {
+									System.err.println(i18n.tr("Error while writing error world of {0}:",name));
+									e.printStackTrace();
+								}
+							} else {
+								System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
+							}
+						}
+					}
+					Game.getInstance().statusArgRemove(getClass().getSimpleName());
+				}
+			};
+			t.setUncaughtExceptionHandler(h);
+			Game.addInitThread(t);
+			t.start();
+		}
 	}
 	
 	protected void computeAnswer() {

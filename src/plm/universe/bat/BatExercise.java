@@ -76,7 +76,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 		skeleton.append("))\n");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"");
+		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"","");
 		corrections.put(Game.PYTHON, initialCode+correction+"\n"+skeleton);
 		addProgLanguage(Game.PYTHON);
 	}
@@ -94,6 +94,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;
 		case ANSWER:  worlds = answerWorld;  break;
+		case ERROR:   worlds = errorWorld;   break;
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
 
