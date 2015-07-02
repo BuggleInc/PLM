@@ -29,13 +29,13 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 
 	protected abstract Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException;
 	@Override
-	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException {
+	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, int nbError) throws PLMCompilerException {
 		//String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
 		String newClassName = "";
 		switch(whatToMutate) {
 		case STUDENT: newClassName = exo.getTabName(); break;
 		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
-		case ERROR: newClassName = nameOfCommonError(exo, 0); break;
+		case ERROR: newClassName = nameOfCommonError(exo, nbError); break;
 		}
 		
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();

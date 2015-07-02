@@ -61,6 +61,7 @@ public class LessonRunner extends Thread {
 
 			if (!game.isCreativeEnabled())
 				exo.check();
+			
 			game.setState(Game.GameState.EXECUTION_ENDED);
 
 		} catch (InterruptedException e) {

@@ -114,7 +114,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					tw= (TurtleWorld) exo.getWorlds(WorldKind.ANSWER).get(0);
+					tw= (TurtleWorld) exo.getWorlds(WorldKind.ANSWER, -1).get(0);
 				} while (! tw.isAnswerWorld());
 				
 				((TurtleWorldView) tw.getView()).doPaint(cg,iconSize,iconSize,false);

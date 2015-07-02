@@ -26,7 +26,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	}
 
 	@Override
-	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate) {
+	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, int nbError) {
 		
 		return null; /* This is never called, no need to do anything here */
 	}

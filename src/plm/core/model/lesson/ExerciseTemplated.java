@@ -3,6 +3,7 @@ package plm.core.model.lesson;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,12 +34,12 @@ public abstract class ExerciseTemplated extends Exercise {
 	public ExerciseTemplated(Lesson lesson, String basename) {
 		super(lesson,basename);
 	}
-	
+
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
 		newSourceFromFile(lang, name, filename, "");
 	}
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
-		
+
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;
 		try {
@@ -66,9 +67,9 @@ public abstract class ExerciseTemplated extends Exercise {
 		StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
 		StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
 		StringBuffer tail = new StringBuffer("\n"); /* after the template (state 4) 
-		                                             *   This contains a preliminar \n to help python understanding that the following is not in the same block.
-		                                             *   Not doing Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
-		                                             */
+		 *   This contains a preliminar \n to help python understanding that the following is not in the same block.
+		 *   Not doing Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
+		 */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 		StringBuffer correction = new StringBuffer(); /* the unchanged content, but the package and className modification */
 		boolean containsLinePreprocessor=false;
@@ -77,7 +78,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (String line : content.split("\n")) {
 			//if (this.debug)
 			//	System.out.println(state+"->"+line);
-			
+
 			switch (state) {
 			case 0: /* initial content */
 				if (line.contains("class ")) {
@@ -157,7 +158,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
 						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
-						
+
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
@@ -181,7 +182,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (line.contains("END TEMPLATE"))  
 						if (!seenTemplate)
 							System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
-					
+
 					tail.append(line+"\n");
 				}
 				break;
@@ -222,7 +223,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		String template = (headContent+"$body"+tail);
 		int offset = headContent.split("\n").length;
-		
+
 		/* Remove the unnecessary leading spaces from the initial content */
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
 		if (lang != Game.PYTHON) {
@@ -289,11 +290,11 @@ public abstract class ExerciseTemplated extends Exercise {
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
-		
+
 		if (skelContent.length()>0) {
 			if (! (this instanceof ExerciseTemplatingEntity)) 
 				throw new RuntimeException(getName()+": You provided an exercise skeleton, but this is not an ExerciseTemplatingEntity. Are you trying to drive me nuts??");
-			
+
 			/* 
 			 * HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK
 			 *  
@@ -329,11 +330,21 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	protected <W extends World> void setup(W[] ws) {
 		boolean foundALanguage=false;
-		setupWorlds(ws);
-		File f = null;
-
+		ArrayList<File> f = new ArrayList<File>();
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-			f = new File(lang.nameOfCommonError(this, 0));
+			for(int i = 0 ; i < 5000 ; i++) {
+				if(lang.equals(Game.JAVA)) {
+					if(!new File("src/"+lang.nameOfCommonError(this, i).replaceAll("\\.", "/")+".java").exists()) {
+						break;
+					} else {
+						f.add(new File(lang.nameOfCommonError(this, i)));						
+					}
+				}
+			}
+		}
+		setupWorlds(ws,f);
+		//System.out.println("Length = "+f.size()+" / "+commonErrors.size());
+		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
 			for (SourceFile sf : getSourceFilesList(lang)) {
@@ -345,15 +356,16 @@ public abstract class ExerciseTemplated extends Exercise {
 					p = Pattern.compile("Entity$");
 					m = p.matcher(searchedName);
 					searchedName = m.replaceAll("");
-					
-					Pattern pce = Pattern.compile(".*?([^.]*)$");
-					Matcher mce = pce.matcher(lang.nameOfCommonError(this,0));
-					if (mce.matches())
-						searchedName = mce.group(1);
-					pce = Pattern.compile("CommonErr[0-9]*$");
-					mce = pce.matcher(searchedName);
-					searchedName = mce.replaceAll("");
-					
+
+					for(int i = 0 ; i < commonErrors.size() ; i++) {
+						Pattern pce = Pattern.compile(".*?([^.]*)$");
+						Matcher mce = pce.matcher(lang.nameOfCommonError(this,i));
+						if (mce.matches())
+							searchedName = mce.group(1);
+						pce = Pattern.compile("CommonErr[0-9]*$");
+						mce = pce.matcher(searchedName);
+						searchedName = mce.replaceAll("");
+					}
 				}
 				if (Game.getInstance().isDebugEnabled())
 					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
@@ -371,11 +383,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				} catch (NoSuchEntityException e) {
 					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
 						System.out.println("No templating entity found: "+e);
-						
+
 					if (getProgLanguages().contains(lang)) 
 						throw new RuntimeException(
 								Game.i18n.tr("Exercise {0} is said to be compatible with language {1}, but there is no entity for this language: {2}",
-								getName(),lang,e.toString()));
+										getName(),lang,e.toString()));
 					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
 				}
 			} else {
@@ -384,74 +396,82 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		if (!foundALanguage) 
 			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
-				
+
 		computeAnswer();
-		computeError(f);
+		for(int j = 0 ; j < commonErrors.size() ; j++)
+			computeError(f, j);
 	}
-	
-	protected void computeError(File f) {
+
+	protected void computeError(ArrayList<File> f, int j) {
 		final String id = this.getId();
-		if(new File("src/"+f.getPath().replaceAll("\\.", "/")+".java").exists() && new File("src/"+f.getPath().replaceAll("\\.", "/")+".py").exists()
-				&& new File("src/"+f.getPath().replaceAll("\\.", "/")+".scala").exists()) {
-			Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-				
-				@Override
-				public void uncaughtException(Thread th, Throwable ex) {
-					if(ex instanceof PLMEntityNotFound) {
-						getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
-					}
-					System.err.println("Uncaught exception while computing error: " + ex);
-				}
-			};
-			Thread t = new Thread() {
-				@Override
-				public void run() {
-					Game.getInstance().statusArgAdd(getClass().getSimpleName());
-					ExecutionProgress progress = new ExecutionProgress();
-					mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR);
-					for(World ew : errorWorld) {
-						for(Entity ent : ew.getEntities()) {
-							ent.setScript(Game.C, id);
-							Game.getProgrammingLanguage().runEntity(ent, progress);
+		for(int i = 0 ; i < f.size(); i++) {
+			if(new File("src/"+f.get(i).getPath().replaceAll("\\.", "/")+".java").exists()) {// && new File("src/"+f.getPath().replaceAll("\\.", "/")+".py").exists()
+				//&& new File("src/"+f.getPath().replaceAll("\\.", "/")+".scala").exists()) {
+				Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+
+					@Override
+					public void uncaughtException(Thread th, Throwable ex) {
+						if(ex instanceof PLMEntityNotFound) {
+							getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
 						}
-						ew.setErrorWorld();
+						System.err.println("Uncaught exception while computing error: " + ex);
 					}
-					/* Try to write all files for next time */
-					if (errorWorld.get(0).haveIO()) {
-						int rank = 0;
-						for (World ew:errorWorld) {
-							String name = "src/"+worldFileName+"-error"+(rank++);
-							name = name.replaceAll("\\.", "/") + ".map";
-							if (new File(name).getParentFile().canWrite()) {
-								try {
-									ew.writeToFile(new File(name));
-								} catch (Exception e) {
-									System.err.println(i18n.tr("Error while writing error world of {0}:",name));
-									e.printStackTrace();
+				};
+				Thread t = new Thread() {
+					@Override
+					public void run() {
+						Game.getInstance().statusArgAdd(getClass().getSimpleName());
+						ExecutionProgress progress = new ExecutionProgress();
+						//if(commonErrors.size()!=0) {
+						//for(int j = 0 ; j < commonErrors.size(); j++) {
+							mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR, j);
+							Vector<World> errorWorld = commonErrors.get(j);
+							for(World ew : errorWorld) {
+								for(Entity ent : ew.getEntities()) {
+									ent.setScript(Game.C, id);
+									Game.getProgrammingLanguage().runEntity(ent, progress);
 								}
-							} else {
-								System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
+								ew.setErrorWorld();
 							}
+							/* Try to write all files for next time */
+							/*if (errorWorld.get(0).haveIO()) { //TODO: Bientôt de retour, un peu de patience...
+									int rank = 0;
+									for (World ew:errorWorld) {
+										String name = "src/"+worldFileName+"-error"+(rank++);
+										name = name.replaceAll("\\.", "/") + ".map";
+										if (new File(name).getParentFile().canWrite()) {
+											try {
+												ew.writeToFile(new File(name));
+											} catch (Exception e) {
+												System.err.println(i18n.tr("Error while writing error world of {0}:",name));
+												e.printStackTrace();
+											}
+										} else {
+											System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
+										}
+									}
+								}*/
+							Game.getInstance().statusArgRemove(getClass().getSimpleName());
 						}
-					}
-					Game.getInstance().statusArgRemove(getClass().getSimpleName());
-				}
-			};
-			t.setUncaughtExceptionHandler(h);
-			Game.addInitThread(t);
-			t.start();
+					//}
+					//}
+				};
+				t.setUncaughtExceptionHandler(h);
+				Game.addInitThread(t);
+				t.start();
+			}
 		}
 	}
-	
+
 	protected void computeAnswer() {
 		final String id = this.getId();
 		Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-		    public void uncaughtException(Thread th, Throwable ex) {
-		    	if(ex instanceof PLMEntityNotFound) {
-		    		getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
-		    	}
-		        System.err.println("Uncaught exception while computing answer: " + ex);
-		    }
+			public void uncaughtException(Thread th, Throwable ex) {
+				if(ex instanceof PLMEntityNotFound) {
+					getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
+				}
+				System.err.println("Uncaught exception while computing answer: " + ex);
+			}
 		};
 		Thread t = new Thread() {
 			@Override
@@ -491,10 +511,10 @@ public abstract class ExerciseTemplated extends Exercise {
 						System.out.println(i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
 					}
 				}
-				
+
 				/* I/O didn't work. We have to load the files manually */
 				ExecutionProgress progress = new ExecutionProgress();
-				
+
 				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
 				if(Game.getProgrammingLanguage().equals(Game.C)){
 					try {
@@ -508,7 +528,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
 					}
 				}
-				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION,-1);
 
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
@@ -517,7 +537,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					}
 					aw.setAnswerWorld();
 				}
-				
+
 				/* Try to write all files for next time */
 				if (answerWorld.get(0).haveIO()) {
 					int rank = 0;
@@ -548,10 +568,10 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void run(List<Thread> runnerVect){
 		if (lastResult == null)
 			lastResult = new ExecutionProgress();
-		
-		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
-		for (World cw: getWorlds(WorldKind.CURRENT)) {
+		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT,-1);
+
+		for (World cw: getWorlds(WorldKind.CURRENT, -1)) {
 			cw.doDelay();
 			cw.runEntities(runnerVect, lastResult);
 		}
@@ -560,14 +580,14 @@ public abstract class ExerciseTemplated extends Exercise {
 	@Override
 	public void runDemo(List<Thread> runnerVect){
 		ExecutionProgress ignored = new ExecutionProgress();
-		
+
 		for (int i=0; i<initialWorld.size(); i++) { 
 			answerWorld.get(i).reset(initialWorld.get(i));
 			answerWorld.get(i).doDelay();
 		}
-		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION,-1);
 
-		for (World aw:getWorlds(WorldKind.ANSWER))
+		for (World aw:getWorlds(WorldKind.ANSWER, -1))
 			aw.runEntities(runnerVect,ignored);
 	}
 }

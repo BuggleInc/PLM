@@ -68,7 +68,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	}
 	protected void setup(World[] ws, String entName, String template) {
 		this.tabName=entName;
-		setupWorlds(ws);
+		setupWorlds(ws,null);
 		
 		
 		try {

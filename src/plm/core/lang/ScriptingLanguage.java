@@ -33,13 +33,13 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) {
+	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, int nbError) {
 		//String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
 		String newClassName = "";
 		switch(whatToMutate) {
 		case STUDENT: newClassName = exo.getTabName(); break;
 		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
-		case ERROR: newClassName = nameOfCommonError(exo, 0); break;
+		case ERROR: newClassName = nameOfCommonError(exo, nbError); break;
 		}
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
 			boolean foundScript = false;
@@ -79,9 +79,9 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		} else {
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,0), getExt(), false);
+				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,nbError), getExt(), false);
 			} catch (IOException ex) {
-				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,0)+"."+getExt()+" since I cannot read it (error was: "+
+				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,nbError)+"."+getExt()+" since I cannot read it (error was: "+
 						ex.getLocalizedMessage());
 			}
 			String script = sb.toString();

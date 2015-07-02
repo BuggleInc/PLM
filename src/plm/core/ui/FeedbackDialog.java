@@ -46,7 +46,7 @@ public class FeedbackDialog extends JDialog {
 			FeedbackDialog.instance = new FeedbackDialog();
 		}
 		StringBuffer worldInfo = new StringBuffer();
-		for (World w:((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+		for (World w:((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER, -1)) {
 			String s = w.getDebugInfo();
 			if (s != "") 
 				worldInfo.append("World: "+s+"\n");

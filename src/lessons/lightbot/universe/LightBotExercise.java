@@ -22,7 +22,7 @@ public class LightBotExercise extends ExerciseTemplated {
 		for (World w : ws) 
 			((LightBotWorld) w).rotateLeft();
 		
-		setupWorlds(ws);
+		setupWorlds(ws, null);
 		/* remove entities from the answer world: we don't care of where the bot is at the end */
 		for (World w :answerWorld)
 			w.emptyEntities();
@@ -80,7 +80,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 	
 	@Override
-	final public void mutateEntities(WorldKind kind, StudentOrCorrection what) {
+	final public void mutateEntities(WorldKind kind, StudentOrCorrection what, int nbError) {
 		throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! super.mutateEntities() is not ready for that.");
 	}
 }
