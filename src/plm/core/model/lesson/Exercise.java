@@ -1,6 +1,11 @@
 package plm.core.model.lesson;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -95,9 +100,31 @@ public abstract class Exercise extends Lecture {
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 					for(int j = 0 ; j < commonErrors.size() ; j++) {
-						System.out.println(currentWorld.size()+" > "+commonErrors.size()+" - "+commonErrors.get(j).size());
+						//System.out.println(currentWorld.size()+" > "+commonErrors.size()+" - "+commonErrors.get(j).size());
 						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) {
-							lastResult.executionError += "Nombre de fichiers leurre : "+commonErrors.size()+"\n\nYou just had to write \"forward();\" to win this exercise...\n\n";
+							//System.out.println("Here");
+							String[] brokenPath = this.getLocalId().split("\\.");
+							String path = "src/";
+							for(int k = 0 ; k < brokenPath.length ; k++) {
+								if(brokenPath.length-1 != k) {
+									path += brokenPath[k]+"/";
+								} else {
+									path += brokenPath[k];
+								}
+							}
+							InputStream is;
+							try {
+								is = new FileInputStream(path+"CommonErr"+j+".html");
+								InputStreamReader lect = new InputStreamReader(is);
+								BufferedReader buf = new BufferedReader(lect);
+								String error = "Hint: ";
+								error += buf.readLine();
+								lastResult.executionError += error+"\n";
+								buf.close();
+							} catch (IOException e) {
+								e.printStackTrace();
+							} 
+							//"Nombre de fichiers leurre : "+commonErrors.size()+"\n\nYou just had to write \"forward();\" to win this exercise...\n\n";
 							break;
 						} else {
 							System.out.println("Failed : "+j);
