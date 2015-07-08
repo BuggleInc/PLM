@@ -28,7 +28,6 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -50,12 +49,9 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
-import plm.core.model.session.GitSessionKit;
-import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
-import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
@@ -139,9 +135,6 @@ public class Game implements IWorldView {
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	public SessionDB studentWork;
-	//private ISessionKit sessionKit = new ZipSessionKit(this);
-	private ISessionKit sessionKit;
-	private GitSpy gitSpy;
 
 	public LogHandler logger;
 	
@@ -202,15 +195,6 @@ public class Game implements IWorldView {
 		studentWork = new SessionDB(this);
 
 		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
-		sessionKit = new GitSessionKit(this, userUUID);
-
-		try {
-			gitSpy = new GitSpy(this, SAVE_DIR, userUUID);
-			addProgressSpyListener(gitSpy);
-		} catch (IOException | GitAPIException e) {
-			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
-			e.printStackTrace();
-		}
 
 		initLessons();
 
@@ -375,8 +359,6 @@ public class Game implements IWorldView {
 			loadedLessons.put(lessonName, lesson);
 		}
 		// Prevent obvious error messages
-		if (sessionKit != null)
-			sessionKit.loadLesson(SAVE_DIR, lesson);
 		try {
 			waitInitThreads();
 		} catch (InterruptedException e) {
@@ -696,9 +678,6 @@ public class Game implements IWorldView {
 	}
 
 	public void clearSession() {
-		if (sessionKit == null)
-			return;
-		this.sessionKit.cleanAll(SAVE_DIR);
 		for (Lesson l : this.lessons.values())
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
@@ -709,29 +688,17 @@ public class Game implements IWorldView {
 	}
 
 	public void loadSession() {
-		if (sessionKit == null) {
-			System.exit(1);
-			return;
-		}
 		this.setState(GameState.LOADING);
-		this.sessionKit.loadAll(SAVE_DIR);
 		this.setState(GameState.LOADING_DONE);
 	}
 
 	public void saveSession() throws UserAbortException {
-		if (sessionKit == null)
-			return;
 		this.setState(GameState.SAVING);
-		this.sessionKit.storeAll(SAVE_DIR);
 		this.setState(GameState.SAVING_DONE);
 		storeProperties();
 	}
-
-	public ISessionKit getSessionKit() {
-		return this.sessionKit;
-	}
+	
 	public void removeSessionKit() {
-		sessionKit = null;
 		getLogger().log("Disabling the session kit on disk.");
 	}
 
@@ -1245,8 +1212,6 @@ public class Game implements IWorldView {
 		lessons.clear();		
 		loadedLessons.clear();
 		studentWork = new SessionDB(this);
-		sessionKit.setUserUUID(userUUID);
-		gitSpy.setUserUUID(userUUID);
 		
 		initLessons();
 		
@@ -1254,7 +1219,6 @@ public class Game implements IWorldView {
 	}
 	
 	public void signalIdle(String start, String end, String duration) {
-		gitSpy.idle(start, end, duration);	
 	}
 	
 	public void setTrackUser(boolean trackUser) {
