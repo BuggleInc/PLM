@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-06-07 12:28-0300\n"
-"PO-Revision-Date: 2015-06-24 16:26-0300\n"
+"PO-Revision-Date: 2015-07-12 13:30-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -10436,13 +10436,13 @@ msgid ""
 "two dimensional square grid. Much more information about these problems can "
 "be found on wikipedia, as usual."
 msgstr ""
-"Na literatura, a forma geral deste problema é conhecida como o "
-"\"Pebble motion problem\" (as bases podem ser conectadas por "
-"qualquer tipo de grafo, e a afinidade das \"pebbles\" com as bases pode "
-"ser diferente). Outra variante deste problema é o famoso problema "
-"15-puzzle, com um jogador por base, e um tabuleiro quadrado "
-"bidimensional. Mais informações sobre estes problemas podem ser "
-"encontradas na wikipédia em inglês, como sempre."
+"Na literatura, a forma geral deste problema é conhecida como o \"Pebble\n"
+"motion problem\" (as bases podem ser conectadas por qualquer tipo de\n"
+"grafo, e a afinidade das \"pebbles\" com as bases pode ser\n"
+"diferente). Outra variante deste problema é o famoso jogo do 15, com\n"
+"um jogador por base, e um tabuleiro quadrado bidimensional. Mais\n"
+"informações sobre estes problemas podem ser encontradas na wikipédia\n"
+"em inglês, como sempre."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/Main.html:13
@@ -10512,13 +10512,10 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/Main.html:34
-#, fuzzy
 msgid ""
 "Other exercises on other algorithms on this variant, or on other variants "
 "such as the 15-puzzle."
-msgstr ""
-"Outros exercícios em outros algoritmos desta variante, ou em outras "
-"variantes como o 15-puzzle."
+msgstr "Outros exercícios em outros algoritmos desta variante, ou em outras variantes como o jogo do 15."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
@@ -13041,11 +13038,10 @@ msgid ""
 "Palmer. Available at http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/"
 "Daniel%20W%20Palmer.pdf"
 msgstr ""
-"As variações intercalada e \"split\" vêm do seguinte artigo: \"Exploring "
-"Recursion with Variations on the Towers of Hanoi\", Daniel "
-"W. Palmer. Available at "
-"http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/Daniel%20W%20Palmer."
-"pdf"
+"As variações intercalada e separada vêm do seguinte artigo: \"Exploring\n"
+"Recursion with Variations on the Towers of Hanoi\", Daniel\n"
+"W. Palmer. Available at\n"
+"http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/Daniel%20W%20Palmer.pdf"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:13
@@ -13345,7 +13341,6 @@ msgstr "Intercalada"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:7
-#, fuzzy
 msgid "Split"
 msgstr "Split"
 
@@ -13661,7 +13656,6 @@ msgstr "Torres gêmeas de Hanoi Lineares"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:4
-#, fuzzy
 msgid ""
 "This is a mix between both the Split and Interleaved problems, and the "
 "linear problem.  We are given two stacks of disks, on three pegs. We are "
@@ -13684,7 +13678,6 @@ msgstr "Você vai usar três funções recursivas:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:12
-#, fuzzy
 msgid ""
 "<b>moveDouble(k,from, to)</b>: moves an interleaved stack of k pairs of "
 "disks, without changing the relative positions of disks of the same size. As "
@@ -13702,34 +13695,31 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:17
-#, fuzzy
 msgid ""
 "<b>gather(k)</b>: from the initial split situation, build on peg #2 an "
 "interleaved stack of k pairs of disks. You may parametrize your function so "
 "that it can be used to gather the disk on any peg passed as parameter, but "
 "in practice, your function will only be used to gather on the last peg."
 msgstr ""
-"<b>gather(k)</b>: da situação \"split\" inicial, construa na vara #2 uma\n"
+"<b>gather(k)</b>: da situação inicial do caso \"separado\", constroi na vara #2 uma\n"
 "pilha intercalada de k pares de discos. Você pode parametrizar sua\n"
-"função de forma que ela possa ser usada para obter (\"gather\") o disco\n"
+"função de forma que ela possa ser usada para obter o disco\n"
 "de qualquer vara passado como parâmetro, mas na prática, sua função\n"
 "vai apenas ser usada para obter na última vara."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:21
-#, fuzzy
 msgid ""
 "<b>scatter(k)</b>: from a situation where k pairs of disks are interleaved "
 "on peg #0, split it down by moving the white disks to peg #1 and black ones "
 "to peg #2."
 msgstr ""
 "<b>scatter(k)</b>: de uma situação onde k pares de discos são\n"
-"intercalados na vara #0, divida (\"split\") eles movendo os discos\n"
+"intercalados na vara #0, separe eles movendo os discos\n"
 "brancos para a vara #1 e os pretos para a vara #2."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:25
-#, fuzzy
 msgid ""
 "In <code>gather()</code>, the recursive call comes before two calls to "
 "<code>moveDouble()</code> while in <code>scatter()</code>, the calls to "
@@ -13741,9 +13731,9 @@ msgstr ""
 "chamadas a <code>moveDouble()</code> enquanto em\n"
 "<code>scatter()</code>, as chamadas para <code>moveDouble()</code> vem\n"
 "depois da chamada recursiva. A função principal que você deve escrever\n"
-"não é recursiva, mas simplesmente obtem (\"gather\") quase todos os\n"
-"discos, move os discos restantes diretamente, e então \"scatters\" de\n"
-"volta os discos menores."
+"não é recursiva, mas simplesmente obtem quase todos os discos, move os\n"
+"discos restantes diretamente, e então espalha (\"scatters\") de volta os\n"
+"discos menores."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:31
@@ -13876,7 +13866,6 @@ msgstr "Hanoi Tricolor: o Final"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi3.html:4
-#, fuzzy
 msgid ""
 "We are almost ready to write the whole tricolor algorithm. We just need the "
 "<code>scatter()</code> function, very inspired from the first one that we "
@@ -13887,10 +13876,10 @@ msgid ""
 "ensure that the bottom disks are in the correct order."
 msgstr ""
 "Estamos quase prontos para escrever o algoritmo tricolor. Precisamos\n"
-"apenas para função <code>scatter()</code>, bastante inspirada na\n"
-"primeira que escrevemos para o <a\n"
-"href=\"plm://lessons.recursion.hanoi/SplitHanoi1\">problema de Hanoi\n"
-"\"Split\"</a>. Assumindo que sua pilha intercalada esteja na vara do\n"
+"apenas da função <code>scatter()</code>, bastante inspirada na\n"
+"primeira que escrevemos para o\n"
+"<a href=\"plm://lessons.recursion.hanoi/SplitHanoi1\">problema de Hanoi Separado</a>.\n"
+"Assumindo que sua pilha intercalada esteja na vara do\n"
 "<code>meio</code>, espalhe os discos por todas as varas. Certifique-se\n"
 "de usar <code>move3()</code> uma quantidade par de vezes em cada nível\n"
 "recursivo para garantir que os discos de baixo estejam na ordem\n"
@@ -14394,7 +14383,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:32
-#, fuzzy
 msgid ""
 "The Pledge's algorithm does not leave the rightmost wall due to the total "
 "turning not being zero at that point. It follows the wall all the way "
@@ -14402,8 +14390,7 @@ msgid ""
 msgstr ""
 "O algoritmo de Pledge não deixa a parede mais à direita devido ao\n"
 "total de curvas não ser zero neste ponto. Ele segue a parede na volta\n"
-"toda, deixando finalmente ela apontando para a esquerda no \"bottom\n"
-"outside\""
+"toda, deixando finalmente ela apontando para a esquerda no \"fundo exterior\""
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:39
@@ -14711,11 +14698,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:8
-#, fuzzy
 msgid ""
 "Without even leaving his position, he can retrieve information about the "
 "world he is leaving in, with the following functions:"
-msgstr "Sem nem sequer dair da sua opsição, ele pode he can retrieve information about the world he is leaving in, with the following functions:"
+msgstr ""
+"Sem nem sequer sair da sua posição, ele pode recuperar informações\n"
+"sobre o mundo que está vivendo, com as seguintes funções:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:10
@@ -15168,64 +15156,63 @@ msgstr "Tarefas repetitivas"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board07Repeat.html:4
-#, fuzzy
 msgid "Functions are also of great use for repetitive tasks"
-msgstr "Functions are also of great use for repetitive tasks"
+msgstr "Funções também são muitos úteis para tarefas repetitivas"
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board08Rec.html:2
 msgid "Calling functions from functions"
-msgstr ""
+msgstr "Chamando funções de dentro de funções"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board08Rec.html:4
 msgid "It is perfectly okay to call a function from within a function!"
-msgstr ""
+msgstr "Não tem nada de errado em chamar uma função de dentro de uma função!"
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board09Castle.html:2
 msgid "Castle"
-msgstr ""
+msgstr "Castelo"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board09Castle.html:4
 msgid "You're getting good at this..."
-msgstr ""
+msgstr "Você está ficando bom nisto..."
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board10Wall.html:2
 msgid "Wall"
-msgstr ""
+msgstr "Parede"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board10Wall.html:4
 msgid "Ready to climb the wall?"
-msgstr ""
+msgstr "Preparado para subir a parede?"
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board11Sea.html:2
 msgid "Sea"
-msgstr ""
+msgstr "Mar"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board11Sea.html:4
 msgid "You now have to surf these waves of lamps."
-msgstr ""
+msgstr "Agora você vai ter que surfar neste mar de lâmpadas."
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board12Escher.html:2
 msgid "Escher Castle"
-msgstr ""
+msgstr "Castelo de Escher"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board12Escher.html:4
 msgid "This one aint easy."
-msgstr ""
+msgstr "Este não é fácil."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Close10.html:2
 msgid "Close to 10"
-msgstr ""
+msgstr "Próximo de 10"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Close10.html:3
@@ -15236,11 +15223,16 @@ msgid ""
 "the absolute value of a number.  This function can only be used if you "
 "imported the math module.[/!]"
 msgstr ""
+"Dados dois valores int, retorne o valor que for mais próximo do 10, ou\n"
+"retorne 0 no caso de um empate.  [!java|scala]Note que Math.abs(n)\n"
+"retorna o valor absoluto de um número.[/!] [!python]Note que\n"
+"math.fabs(n) retorna o valor absoluto de um número.  Esta função só\n"
+"pode ser usada se você importar o módulo math.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/CountTeen.html:2
 msgid "Count Teen"
-msgstr ""
+msgstr "Contar Adolescentes"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/CountTeen.html:3
@@ -15248,11 +15240,13 @@ msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 4 int values, return the amount of teen ones."
 msgstr ""
+"Vamos dizer que um número é \"adolescente\" se ele estiver no intervalo 13..19\n"
+"inclusive. Dados 4 valores int, retorne a quantidade de adolescentes."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Diff21.html:2
 msgid "Diff 21"
-msgstr ""
+msgstr "Diferença 21"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Diff21.html:3
@@ -15260,11 +15254,13 @@ msgid ""
 "Given an int n, return the absolute difference between n and 21, except "
 "return double the absolute difference if n is over 21."
 msgstr ""
+"Dado um int n, retorne a diferença absoluta entre n e 21, exceto se n\n"
+"for maior que 21, onde neste caso você retorna a diferença absoluta."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/HasTeen.html:2
 msgid "Has Teen"
-msgstr ""
+msgstr "Tem Adolescente"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/HasTeen.html:3
@@ -15272,35 +15268,38 @@ msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 3 int values, return true if 1 or more of them are teen."
 msgstr ""
+"Diremos que um número é \"adolescente\" se ele está entre 13..19\n"
+"inclusive. dados 3 valores int, retorne true se 1 ou mais deles são\n"
+"teen."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/IcyHot.html:2
 msgid "Icy Hot"
-msgstr ""
+msgstr "Frio Quente"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/IcyHot.html:3
 msgid ""
 "Given two temperatures, return true if one is less than 0 and the other is "
 "greater than 100."
-msgstr ""
+msgstr "Dadas duas temperaturas, retorne true se uma é menor que 0 e a outra é maior que 100."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/In1020.html:2
 msgid "In [10;20]"
-msgstr ""
+msgstr "In [10;20]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/In1020.html:3
 msgid ""
 "Given 2 int values, return true if either of them is in the range 10..20 "
 "inclusive."
-msgstr ""
+msgstr "Dados 2 valores int, retorne true se qualquer um deles estiver no intervalo 10..20 inclusive."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/In3050.html:2
 msgid "In [30;50]"
-msgstr ""
+msgstr "In [30;50]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/In3050.html:3
@@ -15308,11 +15307,14 @@ msgid ""
 "Given 2 int values, return true if they are both in the range 30..40 "
 "inclusive, or they are both in the range 40..50 inclusive."
 msgstr ""
+"Dados 2 valores int, retorne true se eles estão ambos no intervalo\n"
+"30..40 inclusive, ou se eles estão ambos no intervalo 40..50\n"
+"inclusive."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LastDigit.html:2
 msgid "LastDigit"
-msgstr ""
+msgstr "Último Dígito"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/LastDigit.html:3
@@ -15321,6 +15323,9 @@ msgid ""
 "digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
 "remainders, so 17 % 10 is 7."
 msgstr ""
+"Dados dois valores int não-negativos, retorne true se eles tem o mesmo\n"
+"dígito final, como com 27 e 57. Note que o operador % \"mod\" calcula os\n"
+"restos, logo, 17 % 10 is 7."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/LastDigit.html:10
@@ -15335,7 +15340,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
-msgstr ""
+msgstr "Lone Teen"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:3
@@ -15343,11 +15348,14 @@ msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 2 int values, return true if one or the other is teen, but not both."
 msgstr ""
+"Diremos que um número é \"teen\" se ele está no intervalo entre 13..19\n"
+"inclusive. Dados 2 valores, retorne true se um ou o outro é teen, mas\n"
+"não ambos."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Main.html:2
 msgid "Boolean fun"
-msgstr ""
+msgstr "Boolean fun"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Main.html:4
@@ -15356,6 +15364,10 @@ msgid ""
 "as you cannot write a not so simple boolean test under the minute, you "
 "probably will have a very bad time writing a real program."
 msgstr ""
+"Operações booleanas são algumas das mais básicas tarefas em\n"
+"programação. Enquanto você não puder escrever um teste booleano não\n"
+"muito simples em menos de um minuto, você provavelmente terá\n"
+"dificuldades em escrever programas do mundo real."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Main.html:9
@@ -15363,23 +15375,25 @@ msgid ""
 "That is why this lesson provides you a bunch of such exercises, so that you "
 "can get trained in this."
 msgstr ""
+"É por isto que esta lição fornece vários exercícios deste tipo, de\n"
+"forma que você fique treinado nisto."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Makes10.html:2
 msgid "Makes 10"
-msgstr ""
+msgstr "Makes 10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Makes10.html:3
 msgid ""
 "Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
 "10."
-msgstr ""
+msgstr "Dados 2 inteiros, a e b, retorne true se um deles é 10 ou se a a soma deles é 10."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Max1020.html:2
 msgid "Max1020"
-msgstr ""
+msgstr "Max1020"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Max1020.html:3
@@ -15387,6 +15401,9 @@ msgid ""
 "Given 2 positive int values, return the larger value that is in the range "
 "10..20 inclusive, or return 0 if neither is in that range."
 msgstr ""
+"Dados 2 valores int positivos, returne o maior valor que está no\n"
+"intervalo 10..20 inclusive, ou retorne 0 se nenhum dos dois estiver\n"
+"neste intervalo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
@@ -15394,11 +15411,13 @@ msgid ""
 "Note that Math.max(Int,Int):Int and Math.min(Int,Int):Int return the maximum "
 "and minimum of two integers"
 msgstr ""
+"Observe que Math.max(Int,Int):Int e Math.min(Int,Int):Int retornam o\n"
+"máximo e o mínimo de dois inteiros"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:2
 msgid "MonkeyTrouble"
-msgstr ""
+msgstr "MonkeyTrouble"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:4
@@ -15407,11 +15426,15 @@ msgid ""
 "if each is smiling.  We are in trouble if they are both smiling or if "
 "neither of them is smiling.  Return true if we are in trouble."
 msgstr ""
+"Temos dois macacos, a e b, e os parâmetros aSmile e bSmile indicam se\n"
+"cada um está sorrindo. Teremos problemas se os dois estiverem sorrindo\n"
+"ou nenhum deles estiver sorrindo. Retorne true se estivermos com\n"
+"problemas."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/NearHundred.html:2
 msgid "Near Hundred"
-msgstr ""
+msgstr "Near Hundred"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/NearHundred.html:3
@@ -15421,11 +15444,16 @@ msgid ""
 "python]Note that math.fabs(n) returns the absolute value of a number.  This "
 "function can only be used if you imported the math module.[/!]"
 msgstr ""
+"Dado um int n, retorna true se ele estiver entre 10 a 100 ou 200.\n"
+"[!java|scala]Note que Math.abs(n) retorna o valor absoluto de um\n"
+"número.[/!] [!python]Note que math.fabs(n) retorna o valor absoluto de\n"
+"um número. Esta função só pode ser usada se você importar o módulo\n"
+"math.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/ParotTrouble.html:2
 msgid "Parot Trouble"
-msgstr ""
+msgstr "Parot Trouble"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/ParotTrouble.html:4
@@ -15434,11 +15462,15 @@ msgid ""
 "time in the range 0..23. We are in trouble if the parrot is talking and the "
 "hour is before 7 or after 20. Return true if we are in trouble."
 msgstr ""
+"Temos um papagaio muito barulhento. o parâmetro \"hora\" é a hora atual\n"
+"no intervalo 0..23. Estamos com problemas se o papagaio fala e a hora\n"
+"for antes de 7 ou depois de 20. Retorne true se estivermos com\n"
+"problemas."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/PosNeg.html:2
 msgid "Positive Negative"
-msgstr ""
+msgstr "Positivo Negativo"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/PosNeg.html:3
@@ -15446,11 +15478,14 @@ msgid ""
 "Given 2 int values, return true if one is negative and one is positive. "
 "Unless negative is true, then they both must be negative."
 msgstr ""
+"Dados 2 valores int, retorne true se um é negativo e o outro é\n"
+"positivo. A menos que o negativo seja verdadeiro, neste caso ambos\n"
+"devem ser negativos."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/SleepIn.html:2
 msgid "SleepDay"
-msgstr ""
+msgstr "SleepDay"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/SleepIn.html:4
@@ -15459,11 +15494,15 @@ msgid ""
 "is true if we are on vacation. We sleep in if it is not a weekday or we're "
 "on vacation. Return true if we sleep in."
 msgstr ""
+"O parâmetro dia da semana é true se estivermos num dia de semana, e o\n"
+"parâmetro vacation (férias) é true se estivermos de férias. Nós\n"
+"dormimos de manhã se não for dia de semana ou se estivermos de\n"
+"férias. Retorne true se dormimos de manhã."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/SumDouble.html:2
 msgid "Sum Double"
-msgstr ""
+msgstr "Soma dupla"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/SumDouble.html:3
@@ -15471,11 +15510,13 @@ msgid ""
 "Given two int values, return their sum. Unless the two values are the same, "
 "then return double their sum."
 msgstr ""
+"Dados dois valores int, retorne sua soma. A menos que dois valores\n"
+"sejam os mesmos, neste caso retorne o dobro de sua soma."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/AlarmClock.html:2
 msgid "AlarmClock"
-msgstr ""
+msgstr "Despertador"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/AlarmClock.html:3
@@ -15487,11 +15528,18 @@ msgid ""
 "on vacation -- then on weekdays it should be \"10:00\" and weekends it "
 "should be \"off\"."
 msgstr ""
+"Dado o dia da semana, codificado da seguinte forma: 0=Domingo,\n"
+"1=Segunda, 2=Terça, ... 6=Sábado, e um booleano férias indicando se\n"
+"estamos de férias, retorne uma cadeia de caracteres da forma \"7:00\"\n"
+"indicando de que horas devemos botar o despertador. Nos dias da\n"
+"semana, devemos nos acordar às 7h e nos finais de semana às\n"
+"10h. Durante as férias, devemos nos acordar de 10h e nos finais de\n"
+"semana desligar o despertador."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/AnswerCell.html:2
 msgid "AnswerCell"
-msgstr ""
+msgstr "secretária eletrônica"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/AnswerCell.html:3
@@ -15500,11 +15548,14 @@ msgid ""
 "answer, except in the morning you only answer if it is your mom calling. In "
 "all cases, if you are asleep, you do not answer."
 msgstr ""
+"Seu celular toca. Retorne true se você deve atender. Normalmente você\n"
+"responde, exceto de manhã, quando você só atende sua mãe. De qualquer\n"
+"forma, se você estiver dormindo, você não responde."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/BlueTicket.html:2
 msgid "BlueTicket"
-msgstr ""
+msgstr "bilhete azul"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/BlueTicket.html:3
@@ -15515,11 +15566,16 @@ msgid ""
 "Otherwise if the ab sum is exactly 10 more than either bc or ac sums, the "
 "result is 5. Otherwise the result is 0."
 msgstr ""
+"Você tem um bilhete de loteria azul, com os inteiros a, b e c. Eles\n"
+"fazem três pares que chamaremos de ab, bc e ac. Considere a soma dos\n"
+"números de cada par. Se a soma de um dos pares vale exatamente 10, o\n"
+"resultado é 10. Senão, se a soma ab vale exatamente 10 mais bc ou ac,\n"
+"o resultado é 5. Senão, o resultado é 0."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:2
 msgid "CaughtSpeeding"
-msgstr ""
+msgstr "Radar de velocidade"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:3
@@ -15531,11 +15587,19 @@ msgid ""
 "result is 2. Unless it is your birthday -- on that day, your speed can be 5 "
 "higher in all cases."
 msgstr ""
+"Você está dirigindo um pouco rápido demais é um guarda te\n"
+"pára. Escreva o código para calcular o resultado, codificado na forma\n"
+"de um inteiro: 0=sem multa, 1=multa leve, 2=multa pesada. Se sua\n"
+"velocidade é inferior a 60, o resultado é 0. Se a velocidade está\n"
+"entre 61 e 80 (inclusive), o resultado é 1. Se a velocidade é 81 ou\n"
+"maior, o resultado é 2. Todos estes casos são para dias que não são\n"
+"seu aniversário. No seu dia de aniversário sua velocidade pode ser\n"
+"maior em 5 em todos os casos."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/CigarParty.html:2
 msgid "CigarParty"
-msgstr ""
+msgstr "Festa dos charutos"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/CigarParty.html:3
@@ -15545,11 +15609,15 @@ msgid ""
 "inclusive. Unless it is the weekend, in which case there is no upper bound "
 "on the number of cigars. Return true if the party with the"
 msgstr ""
+"Quando os esquilos fazem uma festa, eles gostam de ter charutos. Uma\n"
+"festa de esquilos é boa quando o número de charutos está entre 40 e 60\n"
+"(inclusive). Salvo nos finais de semana, onde não há limite superior\n"
+"para o número de charutos. Retorne true se a festa foi um sucesso."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/DateFashion.html:2
 msgid "DateFashion"
-msgstr ""
+msgstr "Encontro elegante"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/DateFashion.html:3
@@ -15562,11 +15630,19 @@ msgid ""
 "either of you has style of 2 or less, then the result is 0 (no). Otherwise "
 "the result is 1 (maybe)."
 msgstr ""
+"Você e seu par estão tentando conseguir uma mesa no restaurante. O\n"
+"parâmetro \"you\" (você) é o nível de elegância de suas roupas, no\n"
+"intervalo 0..10, e \"date\" (par) é o nível de elegância de seu par. O\n"
+"resultado da tentativa de obter uma mesa é codificado como um valor\n"
+"inteiro com 0=no (não), 1=maybe (talvez), 2=yes (sim). Se um de vocês\n"
+"está muito elegante, 8 ou mais, o resultado é 2 (yes). Com uma\n"
+"exceção. se um dos dois tem um estilo de 2 ou menos o resultado é 0\n"
+"(no). Caso contrário o resultado é 1 (maybe)."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:2
 msgid "Fizz Buzz"
-msgstr ""
+msgstr "Fizz Buzz"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:3
@@ -15577,6 +15653,12 @@ msgid ""
 "divisible by five with the word \"Buzz\". Any number that is divisible by "
 "both three and five is replaced with the string \"Fizz Buzz\"."
 msgstr ""
+"De acordo com a Wikipedia, Fizz buzz é um jogo de \"group word\" para\n"
+"crianças para ensinar divisão. Os jogadores jogam em turnos numéricos\n"
+"que vão aumentando, substituindo qualquer número divisível por três\n"
+"com a palavra \"Fizz\", e qualquer número divisível por cinco com a\n"
+"palavra \"Buzz\". Qualquer número que é divisível tanto por 3 quanto por\n"
+"5 é substituído pela palavra \"Fizz Buzz\"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:8
@@ -15586,11 +15668,16 @@ msgid ""
 "python]The function <code>str(a)</code> changes an integer <code>a</code> "
 "into a string.[/!]"
 msgstr ""
+"números que não são substituídos são simplesmente retornados como uma\n"
+"string.  [!java|scala]O eito mais fácil é usar esta construção em\n"
+"[!thelang]: <code>\"\"+a</code>[/!] [!python]A função\n"
+"<code>str(a)</code> transforma um inteiro <code>a</code> numa\n"
+"string.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:2
 msgid "GreenTicket"
-msgstr ""
+msgstr "bilhete verde"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:3
@@ -15600,11 +15687,15 @@ msgid ""
 "are the same, the result is 20. If two of the numbers are the same, the "
 "result is 10."
 msgstr ""
+"Você tem um bilhete de loteria verde, com os inteiros a, b e c\n"
+"inscritos nele. Se os números são todos diferentes uns dos outros, o\n"
+"resultado é 0. Se todos os números são idênticos, o resultado é 20. Se\n"
+"dois dos números são os mesmos, o resultado é 10."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/In1To10.html:2
 msgid "In1To10"
-msgstr ""
+msgstr "De 1 a 10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/In1To10.html:3
@@ -15613,11 +15704,14 @@ msgid ""
 "\"outsideMode\" is true, in which case return true if the number is less or "
 "equal to 1, or greater or equal to 10."
 msgstr ""
+"Seja um número n, retorne verdadeiro se n está no intervalo\n"
+"[1,10]. Exceto se \"outsideMode\" é verdadeiro, e neste caso retorne\n"
+"verdadeiro se o número é menor ou igual a 1 ou maior ou igual a 10."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/InOrderEqual.html:2
 msgid "InOrderEqual"
-msgstr ""
+msgstr "Em ordem crescente"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/InOrderEqual.html:3
@@ -15627,11 +15721,15 @@ msgid ""
 "exception that if \"equalOk\" is true, equality is allowed, such as 5 5 7 or "
 "5 5 5."
 msgstr ""
+"Dados três inteiros, a b c, retorne verdadeiro se eles estão em ordem\n"
+"estritamente crescente, como 2 5 11, ou 5 6 7, mas não 6 5 7 ou 5 5\n"
+"7. Entretanto, com a exceção de se \"equalOk\" for verdadeiro, igualdade\n"
+"é permitida, como 5 5 7 ou 5 5 5."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/InOrder.html:2
 msgid "InOrder"
-msgstr ""
+msgstr "Na ordem"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/InOrder.html:3
@@ -15640,11 +15738,14 @@ msgid ""
 "greater than b. However, with the exception that if \"bOk\" is true, b does "
 "not need to be greater than a."
 msgstr ""
+"Dados três inteiros, a b c, retorne verdadeiro se b é maior que a, e c\n"
+"é maior que b. Entretanto, com a exceção que se \"bOk\" é verdadeiro, b\n"
+"não precisa ser maior que a."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:2
 msgid "LastDigit 2"
-msgstr ""
+msgstr "Último dígito 2"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:3
@@ -15653,11 +15754,14 @@ msgid ""
 "rightmost digit. The ints are non-negative. Note: the % \"mod\" operator "
 "computes the remainder, e.g. 17 % 10 is 7."
 msgstr ""
+"Dados três inteiros, a b c, retorne verdadeiro se dois ou mais deles\n"
+"tem o mesmo último dígito. Os inteiros são não-negativos. Nota: o\n"
+"operador % \"mod\" calcula o resto, e.g. 17 % 10 is 7."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/LessBy10.html:2
 msgid "LessBy10"
-msgstr ""
+msgstr "Menor por 10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/LessBy10.html:3
@@ -15665,11 +15769,13 @@ msgid ""
 "Given three ints, a b c, return true if one of them is 10 or more less than "
 "one of the others."
 msgstr ""
+"Dados três inteiros, a b c, retorne verdadeiro se um deles é 10 ou\n"
+"menor que um dos outros."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/Main.html:2
 msgid "Boolean (even more) fun"
-msgstr ""
+msgstr "(mais) diversão com booleanos"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/Main.html:4
@@ -15677,11 +15783,13 @@ msgid ""
 "A very good introduction to this type is available here: http://codingbat."
 "com/doc/java-if-boolean-logic.html"
 msgstr ""
+"Uma ótima introdução a este tipo está disponível em:\n"
+"http://codingbat.com/doc/java-if-boolean-logic.html"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:2
 msgid "MaxMod5"
-msgstr ""
+msgstr "MaxMod5"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:3
@@ -15691,11 +15799,16 @@ msgid ""
 "smaller value. However, in all cases, if the two values are the same, return "
 "0.  Note: the % \"mod\" operator computes the remainder, e.g. 7 % 5 is 2."
 msgstr ""
+"Sejam dois valores inteiros, retorne o maior dos dois. Entretanto, se\n"
+"os dois valores possuem o mesmo resto quando divididos por 5, retorne\n"
+"o menor dos dois. Entretanto, em todo caso, se os dois valores forem\n"
+"iguais, retorne 0. Nota: o operador % \"mod\" calcula o resto, i.e. 7 %\n"
+"5 vale 2."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/NearTen.html:2
 msgid "NearTen"
-msgstr ""
+msgstr "Próximo de dez"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/NearTen.html:3
@@ -15704,11 +15817,14 @@ msgid ""
 "multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
 "5) is 2."
 msgstr ""
+"Seja um inteiro positivo \"num\", retorne verdadeiro se num está a uma\n"
+"diferença de 2 ou menos de um múltiplo de 10. Nota: ( a % b ) é o\n"
+"resto da divisão de a por b. Logo, (7 % 5) vale 2."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/RedTicket.html:2
 msgid "RedTicket"
-msgstr ""
+msgstr "Bilhete vermelho"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/RedTicket.html:3
@@ -15718,11 +15834,15 @@ msgid ""
 "are all the same, the result is 5. Otherwise so long as both b and c are "
 "different from a, the result is 1. Otherwise the result is 0."
 msgstr ""
+"Você tem um bilhete de loteria vermelho com três inteiros a, b e\n"
+"c. Cada um com o valor 0, 1, ou 2. Se todos tem o valor 2, o resultado\n"
+"vale 10. Senão, se eles são iguais, o resultado vale 5. Senão, e se b\n"
+"e c são diferentes de a, o resultado vale 1. Senão, o resultado é 0."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/ShareDigit.html:2
 msgid "ShareDigit"
-msgstr ""
+msgstr "dígitos compartilhados"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/ShareDigit.html:3
@@ -15732,11 +15852,15 @@ msgid ""
 "g. n/10, gives the left digit while the % \"mod\" n%10 gives the right "
 "digit.)"
 msgstr ""
+"Sejam dois inteiros, cada um no intervalo [10,99], retorne verdadeiro\n"
+"se existe um dígito que aparece nos dois números, como 2 em 12 e\n"
+"23. (Nota: divisão, i.e.  n/10, retorna o dígito à esquerda e % \"mod\"\n"
+"n%10 retorna o dígito a direita.)"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/SortaSum.html:2
 msgid "SortaSum"
-msgstr ""
+msgstr "Soma de inteiros"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/SortaSum.html:3
@@ -15744,11 +15868,14 @@ msgid ""
 "Given 2 ints, a and b, return their sum. However, sums in the range 10..19 "
 "inclusive, are forbidden, so in that case just return 20."
 msgstr ""
+"Dados 2 inteiros, a e b, retorne sua soma. Entretanto, somas no\n"
+"intervalo 10..19 inclusive, são proibidas. Neste caso, simplesmente\n"
+"retorne 20."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:2
 msgid "SquirrelPlay"
-msgstr ""
+msgstr "Jogo do Esquilo"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:3
@@ -15759,11 +15886,17 @@ msgid ""
 "and a boolean isSummer, return true if the squirrels play and false "
 "otherwise."
 msgstr ""
+"Os esquilos em Palo Alto passam a maior parte do dia jogando. Em\n"
+"particular, eles jogam se a temperatura está entre 60 e 90\n"
+"(inclusive). A menos que seja verão, e neste caso o limite superior é\n"
+"de 100 ao invés de 90. Seja uma temperatura inteira e um isSummer\n"
+"(éVerão) booleano. Retorne verdadeiro se eles jogam e falso caso\n"
+"contrário."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TeaParty.html:2
 msgid "TeaParty"
-msgstr ""
+msgstr "Festa do chá"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/TeaParty.html:3
@@ -15775,11 +15908,17 @@ msgid ""
 "in all cases, if either tea or candy is less than 5, the party is always bad "
 "(0)."
 msgstr ""
+"Estamos tendo uma festa com chá e doces. Retorne o resultado inteiro\n"
+"da festa codificado como 0=ruim, 1=bom, ou 2=excelente. Uma festa é\n"
+"boa (1) se o chá e os doces são pelo menos 5. Entretanto, se tanto os\n"
+"doces como o chá forem pelo menos o dobro do outro, a festa é\n"
+"excelente (2). Entretanto, em todo caso, se tanto o chá quanto os\n"
+"doces forem menos que 5, a festa é sempre ruim (0)."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TeenSum.html:2
 msgid "TeenSum"
-msgstr ""
+msgstr "Soma de adolescentes"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/TeenSum.html:3
@@ -15788,11 +15927,15 @@ msgid ""
 "range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
 "return 19."
 msgstr ""
+"Dados dois números inteiros (a e b), retorne sua soma. Entretanto, os\n"
+"valores adolescentes (no intervalo [13;19]) são particularmente\n"
+"sortudos. Portanto, se um dos números for um adolescente, retorne\n"
+"simplesmente 19."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:2
 msgid "TwoAsOne"
-msgstr ""
+msgstr "Dois como um"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:3
@@ -15800,11 +15943,13 @@ msgid ""
 "Given three ints, a b c, return true if it is possible to add two of the "
 "ints to get the third."
 msgstr ""
+"Dados três inteiros a, b e c, retorne verdadeiro se é possível\n"
+"adicionar dois deles e o resultado ser o terceiro."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:2
 msgid "WithoutDoubles"
-msgstr ""
+msgstr "Sem dobros"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:3
@@ -15813,11 +15958,14 @@ msgid ""
 "if noDoubles is true, if the two dice show the same value, increment one die "
 "to the next value, wrapping around to 1 if its value was 6."
 msgstr ""
+"Retorne a soma das rolagens de dois dados de 6 lados. entretanto, se\n"
+"noDoubles é verdadeiro e os dois dados derem o mesmo valor, incremente\n"
+"um dos dados para o valor seguinte, e volte a 1 se o valor for 6."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/Main.html:2
 msgid "String fun"
-msgstr ""
+msgstr "Diversão com Strings"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:4
@@ -15825,6 +15973,9 @@ msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
 "operations, such as getting the length of the string, or a substring of it."
 msgstr ""
+"Strings são os mais simples dos tipos de dados complexos :) Elas\n"
+"fornecem diferentes operações, como obter o tamanho da string ou uma\n"
+"sub-string."
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
@@ -15832,11 +15983,13 @@ msgid ""
 "A very good introduction to this type is available here: http://codingbat."
 "com/doc/java-string-introduction.html"
 msgstr ""
+"Uma introdução muito boa a este tipo pode ser encontrada em:\n"
+"http://codingbat.com/doc/java-string-introduction.html"
 
 #. type: Content of: <h3>
 #: src/lessons/bat/string1/short_desc.html:2
 msgid "Small exercises about strings"
-msgstr ""
+msgstr "Pequenos exercícios com strings"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/short_desc.html:4
@@ -15844,28 +15997,30 @@ msgid ""
 "These are some training exercises around strings. But unfortunately, its "
 "integration within PLM is still ongoing."
 msgstr ""
+"Aqui estão alguns exercícios sobre strings. Mas infelizmente, sua\n"
+"integração no PLM ainda está sendo construída."
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/short_desc.html:7
 msgid "Please be patient with us."
-msgstr ""
+msgstr "Por favor seja paciente conosco."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/AltPairs.html:2
 msgid "AltPairs"
-msgstr ""
+msgstr "Pares alternados"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/AltPairs.html:3
 msgid ""
 "Given a string, return a string made of the chars at indexes 0,1, 4,5, "
 "8,9 ... so \"kittens\" yields \"kien\"."
-msgstr ""
+msgstr "Dada uma string, retorne outra string feita com os caracteres de índices 0,1, 4,5, 8,9 ... por exemplo \"kittens\" retorna \"kien\"."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/FrontTimes.html:2
 msgid "FrontTimes"
-msgstr ""
+msgstr "FrontTimes"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/FrontTimes.html:3
@@ -15874,11 +16029,15 @@ msgid ""
 "string is the first 3 chars, or whatever is there if the string is less than "
 "length 3. Return n copies of the front;"
 msgstr ""
+"Seja uma string e um inteiro n.\n"
+"Definiremos o começo de uma string como seus três primeiros\n"
+"caracteres, ou ela toda se o comprimento dela é menor que 3. Retorne n\n"
+"cópias do começo de uma string."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/Last2.html:2
 msgid "Last2"
-msgstr ""
+msgstr "Último2"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Last2.html:4
@@ -15887,11 +16046,15 @@ msgid ""
 "as a substring of the string. So \"hixxxhi\" yields 1 (we won't count the "
 "end substring) while \"aaaNaa\" yields 2 (substrings may overlap)."
 msgstr ""
+"Dada uma string, retorne o número de vezes que os dois últimos dígitos\n"
+"aparecem. Por exemplo, \"hixxxhi\" retorna 1 (não contamos a última\n"
+"sub-string) enquanto que \"aaaNaa\" retorna 2 (as ocorrências podem se\n"
+"sobrepor parcialmente)."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringBits.html:2
 msgid "StringBits"
-msgstr ""
+msgstr "StringBits"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringBits.html:3
@@ -15899,11 +16062,14 @@ msgid ""
 "Given a string, return a new string made of every other char starting with "
 "the first, so \"Hello\" yields \"Hlo\"."
 msgstr ""
+"Dada uma string, retorne uma nova string formada pegando um caractere\n"
+"sim, outro não, começando com o primeiro. Assim, \"Primeiro\" se torna\n"
+"\"Pier\"."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringMatch.html:2
 msgid "StringMatch"
-msgstr ""
+msgstr "Comparação de string"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringMatch.html:3
@@ -15913,22 +16079,28 @@ msgid ""
 "since the \"xx\", \"aa\", and \"az\" substrings appear in the same place in "
 "both strings."
 msgstr ""
+"Sejam duas strings a e b.\n"
+"Retorne o número de posições onde elas contém a mesma substring de\n"
+"tamanho 2. Assim, \"xxcaazz\" e \"xxbaaz\" retornam 3, pois as substrings\n"
+"\"xx\", \"aa\", e \"az\" aparecem nas mesmas posições nas duas strings."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringSplosion.html:2
 msgid "StringSplosion"
-msgstr ""
+msgstr "Explosão de strings"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringSplosion.html:3
 msgid ""
 "Given a non-empty string like \"Code\" return a string like \"CCoCodCode\"."
 msgstr ""
+"Dada uma string não vazia como \"Code\".\n"
+"Retorne uma string como \"CCoCodCode\"."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringTimes.html:2
 msgid "StringTimes"
-msgstr ""
+msgstr "Multiplicação de strings"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringTimes.html:3
@@ -15936,11 +16108,13 @@ msgid ""
 "Given a string and a non-negative int n, return a larger string that is n "
 "copies of the original string."
 msgstr ""
+"Dada uma string e um inteiro positivo n.\n"
+"Retorne uma string mais que consiste em n cópias da string original."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringX.html:2
 msgid "StringX"
-msgstr ""
+msgstr "StringX"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringX.html:3
@@ -15948,11 +16122,13 @@ msgid ""
 "Given a string, return a version where all the \"x\" have been removed. "
 "Except an \"x\" at the very start or end should not be removed."
 msgstr ""
+"Dada uma string, retorne uma versão onde todos os \"x\" são removidos.\n"
+"Exceto os \"x\" no começo e no final que devem permanecer."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringYak.html:2
 msgid "StringYak"
-msgstr ""
+msgstr "StringYak"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringYak.html:3
@@ -15961,19 +16137,22 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
 "\" strings will not overlap."
 msgstr ""
+"A string \"yak\" não tem sorte. Dada uma stringd, retorne uma versão\n"
+"onde todas as \"yak\" são suprimidas (qualquer que seja o caractere no\n"
+"lugar do 'a'). As diferentes strings \"yak\" não se sobrepõe."
 
 #. type: Content of: <h2>
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:2
 msgid "Lunar Lander"
-msgstr ""
+msgstr "Módulo lunar"
 
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:4 src/lessons/lander/short_desc.html:4
 msgid ""
 "In this lesson you pilot a lunar landing module in increasingly complex "
 "situations."
-msgstr ""
+msgstr "Nesta lição você vai pilotar um módulo lunar em situações de complexidade crescente"
 
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:7
@@ -15981,25 +16160,27 @@ msgid ""
 "At each step of the simulation, the player issues a command controlling how "
 "much the angle and thrust of the lander should change"
 msgstr ""
+"Em cada passo da simulação, o jogador envia um comando controlando\n"
+"quanto o ângulo e a potência do módulo devem mudar"
 
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:10
 msgid "Ideas concerning the progression of exercises:"
-msgstr ""
+msgstr "Ideias a respeito da progressão dos exercícios:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:12
 msgid ""
 "A lander in vertical position above flat ground, the player can only control "
 "thrust (done)"
-msgstr ""
+msgstr "Um módulo em posição vertical sobre solo plano, o jogador só controla a potência (feito)"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:14
 msgid ""
 "A lander in vertical position not above flat ground, the player control "
 "thrust and angle (done)"
-msgstr ""
+msgstr "Um módulo em posição vertical sobre solo inclinado, o jogador controla potência e ângulo (feito)"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:16
@@ -16007,6 +16188,8 @@ msgid ""
 "A lander with difficult angle and speed not above flat ground, the player "
 "control thrust and angle"
 msgstr ""
+"Um módulo com com ângulo ruim e rápido sobre solo inclinado, o jogador\n"
+"controla potência e ângulo"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:18
@@ -16014,16 +16197,18 @@ msgid ""
 "A lander with difficult angle and speed not above flat ground, with "
 "difficult ground, the player control thrust and angle"
 msgstr ""
+"Um módulo com ângulo difícil e rápido sobre superfície inclinada, com\n"
+"solo difícil, o jogador controla potência e ângulo"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:20
 msgid "Same with wind?"
-msgstr ""
+msgstr "O mesmo com vento?"
 
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
 msgid "This lesson assumes some basic programming and physics skills."
-msgstr ""
+msgstr "Esta lição assume algum conhecimento de física e programação básica."
 
 #. type: Content of: <p>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:4
@@ -16032,11 +16217,14 @@ msgid ""
 "given the lander's position, speed, angle and thrust and must issue a "
 "command adjusting its angle and thrust."
 msgstr ""
+"Neste universo você pilota um módulo lunar. Em cada passo da simulação\n"
+"você recebe a posição, velocidade, ângulo e potência do módulo e deve\n"
+"enviar um comando ajustando o ângulo e a potência."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:12
 msgid "Get the X and Y position of the lander."
-msgstr "Obter (Get) as posições X e Y do \"lander\"."
+msgstr "Obter (Get) as posições X e Y do módulo."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:13
@@ -16051,7 +16239,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:15
 msgid "Get the horizontal and vertical speed of the lander."
-msgstr ""
+msgstr "Obter a velocidade horizontal e vertical do módulo."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:17
@@ -16066,7 +16254,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:19
 msgid "Get or set the angle of the lander."
-msgstr ""
+msgstr "Obter ou ajustar o ângulo do módulo."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:20
@@ -16076,6 +16264,11 @@ msgid ""
 "left-leaning lander, a negative angle a right-leaning one. You cannot lean "
 "more than by ±90°, and the angle can vary by at most ±5° in one step."
 msgstr ""
+"Um ângulo de 0° denota uma posição vertical onde a \"cabeça\" do módulo\n"
+"aponta para cima. Este é o ângulo que você deve pousar. Um ângulo\n"
+"positivo denota inclinação para a esquerda, um ângulo negativo denota\n"
+"inclinação para a direita. Você não pode inclinar mais que ±90°, e o\n"
+"ângulo pode sofrer uma variação de no máximo ±5° em cada passo."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:25
@@ -16090,7 +16283,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:27
 msgid "Get or set the thrust of the lander."
-msgstr ""
+msgstr "Obter ou ajustar a potência do módulo."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:27
@@ -16100,6 +16293,10 @@ msgid ""
 "the next step. If you ask for less than 0 (resp. more than 4), everything "
 "will be as if you had asked for 0 (resp. 4)."
 msgstr ""
+"Você só pode aumentar ou diminuir a potência de 1 a cada passo. logo,\n"
+"se a potência atual é 2 e você pede 4, ela vai mudar para 3 no próximo\n"
+"passo. Se você pedir menos que 0 (ou, respectivamente, mais que 4),\n"
+"vai ser como se você tivesse pedido 0 (ou, respectivamente, 4)."
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:33
@@ -16114,6 +16311,10 @@ msgid ""
 "lander consumes as many fuel units as the current thrust. Once you run out "
 "of fuel you're in free fall so beware!"
 msgstr ""
+"Obter o combustível restante no módulo. Em cada passo da simulação o\n"
+"módulo consome tantas unidades de combustível quanto a potência\n"
+"atual. Uma vez que você fique sem combustível você entra em queda\n"
+"livre. Portanto cuidado!"
 
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:38
@@ -16130,11 +16331,17 @@ msgid ""
 "code>.[/!] [!python]Each point is an array of two integers denoting "
 "respectively the X and Y coordinates of that point.[/!]"
 msgstr ""
+"Obter os vértices do perfil do solo da esquerda para a direita.\n"
+"[!java|scala]Você pode recuperar as coordenada X e Y de cada ponto com\n"
+"os métodos correspondentes do seu ponto: <code>p.x()</code> e\n"
+"<code>p.y()</code>.[/!] [!python]Cada ponto é uma array de de dois\n"
+"inteiros denotando respectivamente as coordenadas X e Y de cada\n"
+"ponto.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:2
 msgid "Lander 101"
-msgstr ""
+msgstr "Lander 101"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:4
@@ -16143,6 +16350,9 @@ msgid ""
 "kind enough to donate the Lunar Excursion Module for this mission, so that's "
 "what you'll be flying."
 msgstr ""
+"Parabéns! Você ganhou uma viagem (só de ida) para Marte numa caixa de\n"
+"cereais. A NASA está orgulhosa em doar o módulo da excursão lunar para\n"
+"esta missão, e é ele que você vai pilotar."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:8
@@ -16151,6 +16361,9 @@ msgid ""
 "shouldn't have to fly the lander if all goes as planned but, as they say, "
 "\"better safe than sorry\"."
 msgstr ""
+"Antes de pousar, você vai realizar algumas simulações de pouso. Você\n"
+"não tem que pilotar o módulo se tudo for como planejado mas, como\n"
+"dizem, \"é melhor prevenir que remediar\"."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:12
@@ -16160,6 +16373,10 @@ msgid ""
 "adjusting its angle or by adjusting its thrust. In this simulation we only "
 "care about adjusting the thrust, expressed in m/s²."
 msgstr ""
+"Sua missão é <b>pousar o módulo com velocidade vertical de no máximo\n"
+"10 m/s.</b> Existem duas formas de influenciar o curso do módulo:\n"
+"ajustando seu ângulo ou ajustando sua potência. Nesta simulação vamos\n"
+"nos preocupar apenas com ajustar a potência, expressa em m/s²."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:17
@@ -16176,6 +16393,20 @@ msgid ""
 "step. If you ask for less than 0 (resp. more than 4), everything will be as "
 "if you had asked for 0 (resp. 4)."
 msgstr ""
+"[!python]A função <code>step()</code> [/!][!scala|java|c]O código[/!]\n"
+"que você vai escrever agora vai ser\n"
+"chamad[!python]a[/!][!scala|java|c]o[/!] a cada 0.1 segundos durante a\n"
+"simulação. Certifique-se que seu código não demora muito para\n"
+"executar, sem usar loop while! Ele apenas deve ajustar a potência\n"
+"desejada para o próximo passo da simulação, chamando <code>[!java]void\n"
+"[/!]setDesiredThrust([!java]int\n"
+"[/!]desiredThrust[!scala]:Integer[/!])</code> onde\n"
+"<code>desiredThrust</code> é algum inteiro entre 0 e 4 (ou seja, uma\n"
+"potência entre 0 m/s² e 4 m/s²). Você só pode aumentar ou diminuir a\n"
+"potênciapor 1 entre dois passos da simulação. Portanto, se a potência\n"
+"atual é 2 e você pede 4, você vai conseguir apenas 3 no próximo\n"
+"passo. Se você pede por menos que 0 (ou, respectivamente, mais que 4),\n"
+"vai ser como se você tivesse pedido 0 (ou, respectivamente, 4)."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:28
@@ -16188,6 +16419,15 @@ msgid ""
 "Integer[/!]</code> in case you don't remember what you asked for. Remember "
 "that Mars' gravity is 3.711 m/s², it might come in handy."
 msgstr ""
+"Para tomar decisões informadas, você pode consultar o status do\n"
+"módulo. Nesta simulação você provavelmente vai estar interessado na\n"
+"posição vertical: <code>[!java]double\n"
+"[/!]getY()[!scala]:Double[/!]</code>, e na velocidade vertical:\n"
+"<code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. Você\n"
+"também pode pedir a potência com <code>[!java]int\n"
+"[/!]getThrust()[!scala]:Integer[/!]</code> caso você não lembre o que\n"
+"pediu. Lembre que a gravidade de Marte é 3.711 m/s². Isto pode ser\n"
+"útil."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:36
@@ -16198,11 +16438,17 @@ msgid ""
 "can consult the remaining amount of available fuel units using <code>[!"
 "java]int [/!]getFuel()[!scala]:Integer[/!]</code>."
 msgstr ""
+"Uma última coisa: o módulo é bem pequeno, logo você não tem muito\n"
+"combustível. Em cada passo da simulação o módulo consome tantas\n"
+"unidades de combustível quanto a potência atual. Uma vez que você\n"
+"fique sem combustível você vai cair em queda livre, portanto cuidado!\n"
+"Você pode consultar o quantidade de unidades de combustível restante\n"
+"usando <code>[!java]int [/!]getFuel()[!scala]:Integer[/!]</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:2
 msgid "Locate a Landing Zone"
-msgstr ""
+msgstr "Localizar uma área de pouso"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:4
@@ -16210,6 +16456,8 @@ msgid ""
 "After 200 days of traveling space and eating cereals you finally reach Mars. "
 "Time to land at last!"
 msgstr ""
+"Depois de 200 dias viajando no espaço e comendo cereais você\n"
+"finalmente chegou em Marte. Hora de pousar, finalmente!"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
@@ -16220,6 +16468,12 @@ msgid ""
 "<code>getLandingZone</code> function so that it returns a [!java|"
 "scala]<code>Segment</code> representing the zone of your choice."
 msgstr ""
+"O módulo está no piloto-automático e tudo que você tem que fazer é dar\n"
+"uma olhada e dizer ao módulo onde pousar. O módulo deve <b>pousar numa\n"
+"área plana</b> se você quiser ficar inteiro. Você indica ao módulo\n"
+"onde pousar modificando a função <code>getLandingZone</code> de forma\n"
+"que ela retorne um [!java|scala]<code>Segment</code> representando a\n"
+"área de sua escolha."
 
 #. type: Content of: <p><p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:13
@@ -16233,13 +16487,22 @@ msgid ""
 "<code>[!java]double [/!]x()[!scala]:Double[/!]</code> and <code>[!"
 "java]double [/!]y()[!scala]:Double[/!]</code> methods."
 msgstr ""
+"Um segmento é composto de dois <code>Ponto</code>s, cada um deles\n"
+"composto de dois <code>double</code>s. Um segmento é construído com o\n"
+"construtor <code>Segment([!java]Point [/!]start[!scala]:Point[/!],\n"
+"[!java]Point [/!]end[!scala]:Point[/!])</code>. Um ponto é construído\n"
+"com o construtor <code>Point([!java]double [/!]x[!scala]:Double[/!],\n"
+"[!java]double [/!]y[!scala]:Double[/!])</code>. As coordenadas de um\n"
+"ponto são acessíveis através de seus métodos <code>[!java]double\n"
+"[/!]x()[!scala]:Double[/!]</code> e <code>[!java]double\n"
+"[/!]y()[!scala]:Double[/!]</code>."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:18
 msgid ""
 "[/!] [!python]tuple of two X coordinates representing the zone of your "
 "choice.[/!]"
-msgstr ""
+msgstr "[/!] [!python]tupla de duas coordenadas X representando a área escolhida.[/!]"
 
 #. type: Content of: <p><p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:22
@@ -16249,6 +16512,11 @@ msgid ""
 "returns the vertices of the ground's profile as a list of [!java|"
 "scala]<code>Point</code>[/!] [!python]tuples (x,y)[/!]."
 msgstr ""
+"Para determinar para qual área retornar, você precisa chamar\n"
+"<code>[!java]List&lt;Point&gt;\n"
+"[/!]getGround()[!scala]List[Point][/!]</code>, que retorna os vértices\n"
+"do perfil do solo como uma lista de\n"
+"[!java|scala]<code>Point</code>s[/!] [!python]tuples (x,y)[/!]."
 
 #. type: Content of: <p><p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:27
@@ -16259,17 +16527,22 @@ msgid ""
 "the previous exercise. As usual, you can see the other existing worlds with "
 "the appropriate combobox."
 msgstr ""
+"Mais um detalhe: Sua função deve retornar uma área plana válida em\n"
+"qualquer situação, não apenas para a atualmente vista. Isto é por que\n"
+"ele não vai ser testado apenas neste mundo, mas também naquele do\n"
+"exercício anterior. Como sempre, você pode ver os outros mundo\n"
+"existentes com a combobox apropriada."
 
 #. type: Content of: <p><p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:33
 msgid ""
 "Have a safe landing! Don't forget to put on your space suit on your way out."
-msgstr ""
+msgstr "Tenha um bom pouso! Não esqueça de vestir se traje espacial quando for sair."
 
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:2
 msgid "Fly the Lander!"
-msgstr ""
+msgstr "Pilote o módulo!"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:4
@@ -16277,6 +16550,8 @@ msgid ""
 "After 30 days of staring at rocks and eating cereals you decide it's time to "
 "go explore other parts of the planet."
 msgstr ""
+"Depois de 30 dias olhando rochas e comendo cereais você decide que é\n"
+"hora de explorar outras partes do planeta."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:7
@@ -16287,6 +16562,12 @@ msgid ""
 "lander on a flat zone with a vertical speed less than 10 m/s, an horizontal "
 "speed less than 5 m/s and an angle of 0°.</b>"
 msgstr ""
+"Você voa por um tempo e repentinamente repara que está quase sem\n"
+"combustível. Infelizmente, você está numa situação delicada e o piloto\n"
+"altomático é inútil. Você vai ter que pilotar o módulo você mesmo. Sua\n"
+"missão é <b>pousar o módulo numa área plana com uma velocidade\n"
+"vertical menor que 10 m/s, uma velocidade horizontal menor que 5 m/s e\n"
+"um ângulo de 0°.</b>"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:13
@@ -16305,6 +16586,23 @@ msgid ""
 "negative angle a right-leaning one. You cannot lean more than by ±90°, and "
 "the angle can vary by at most ±5° in one step."
 msgstr ""
+"Você precisa definir duas funções: <code>[!java]void\n"
+"[/!]initialize()</code> e <code>[!java]void\n"
+"[/!]step()</code>. <code>initialize()</code> é chamada uma única vez\n"
+"depois de você apertar \"Rodar\". Você pode usar isto para escolher\n"
+"alguma área plana. Como antes, <code>step()</code> é chamado a cada\n"
+"0.1 segundos e é usada para ajustar a potência e ângulo do\n"
+"módulo. Como no primeiro exercício, a potência do módulo é ajustada\n"
+"através de <code>[!java]void [/!]setDesiredThrust([!java]int\n"
+"[/!]desiredThrust[!scala]:Integer[/!])</code>. Mas você também pode\n"
+"controlar seu ângulo através de <code>[!java]void\n"
+"[/!]setDesiredAngle([!java]double\n"
+"[/!]desiredAngle[!scala]:Double[/!])</code>.  Um ângulo de 0° denota\n"
+"uma posição vertical onde a \"cabeça\" do módulo aponta para cima. Este\n"
+"é o ângulo com o qual você deve pousar. Um ângulo positivo denota um\n"
+"módulo inclinado para a esquerda, um ângulo negativo um inclinado para\n"
+"a direita. Você não pode inclinar mais que ±90°, e o ângulo pode mudar\n"
+"por no máximo ±5° em cada passo."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:26
@@ -16314,6 +16612,11 @@ msgid ""
 "from left to right.  Please refer to the documentation (Help/About this "
 "world) for a reference manual of your lunar lander."
 msgstr ""
+"Como no exercício anterior, <code>[!java]List&lt;Point&gt;\n"
+"[/!]getGround()[!scala]:List[Point][/!]</code> retorna os vértices do\n"
+"perfil do solo da esquerda para a direita. Favor consulte a\n"
+"documentação (Ajuda/Sobre este mundo) para um manual de referência do\n"
+"módulo lunar."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:30
@@ -16321,6 +16624,8 @@ msgid ""
 "As before, your program must safely land the lander in all the situations "
 "encountered so far in addition to this new one."
 msgstr ""
+"Como antes, seu programa deve pousar com segurança o módulo em todas\n"
+"as situações encontradas além desta nova."
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:33
@@ -16729,7 +17034,6 @@ msgstr ""
 #~ "interativa como aquela usada aqui: http://interstices.info/jcms/c_19213/"
 #~ "le-probleme-du-sac-a-dos"
 
-#, fuzzy
 #~ msgid ""
 #~ "Although this exercise seems almost usable, there is a fundamental "
 #~ "difficulty to solve in the visualization. It is envisionned that the call "
