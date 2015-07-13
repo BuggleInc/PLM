@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-23 23:01-0300\n"
-"PO-Revision-Date: 2015-06-23 18:10-0300\n"
+"PO-Revision-Date: 2015-07-04 23:36-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "Language: pt_BR \n"
@@ -949,13 +949,13 @@ msgstr "Mundo {0} está quebrado ({1}). Recalcule todos os mundos resposta."
 #: src/plm/core/model/lesson/ExerciseTemplated.java:410
 #, java-format
 msgid "Cache file {0} is missing. Recompute all answer worlds."
-msgstr ""
+msgstr "Arquivo de cache {0} faltando. Recalcular todos os mundos resposta."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:414
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
-msgstr ""
+msgstr "Exceção de IO enquanto está lendo o mundo {0} ({1}). Recalcule todos os mundos resposta."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:425
 #, java-format
@@ -1087,26 +1087,26 @@ msgstr "Recuperando sua sessão dos servidores..."
 
 #: src/plm/core/model/tracking/GitUtils.java:119
 msgid "An error occurred while checking out the user's branch: "
-msgstr ""
+msgstr "Um erro ocorreu enquanto verificava o ramo do usuário: "
 
 #: src/plm/core/model/tracking/GitUtils.java:132
 msgid "last session data successfully retrieved"
-msgstr ""
+msgstr "Dados da última sessão recuperados com sucesso"
 
 #: src/plm/core/model/tracking/GitUtils.java:135
 msgid "last session data successfully merged"
-msgstr ""
+msgstr "dados da última sessão mesclados com sucesso"
 
 #: src/plm/core/model/tracking/GitUtils.java:138
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
-msgstr ""
+msgstr "Conflitos foram detectados enquanto sincronizava com dados da última sessão, tentando resolver isto..."
 
 #. TODO: handle this case
 #: src/plm/core/model/tracking/GitUtils.java:166
 msgid "Canceled the merge operation because of the following failures:"
-msgstr ""
+msgstr "Operação de mesclagem cancelada por causa dos seguintes erros:"
 
 #: src/plm/core/model/tracking/GitUtils.java:173
 msgid "Can't merge data retrieved from server with local session data."
