@@ -279,7 +279,7 @@ public class Game implements IWorldView {
 			runtime.exec("gcc --version");
 			canC=true;
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			canC=false;
 		}
 		return canC;
