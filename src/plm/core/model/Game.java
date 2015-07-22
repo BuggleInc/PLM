@@ -56,6 +56,7 @@ import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitSpy;
+import plm.core.model.tracking.GitUtils;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
@@ -152,7 +153,7 @@ public class Game implements IWorldView {
 	private Locale locale;
 	public I18n i18n;
 	
-	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser) {
 		this.logger = logger;
 		this.locale = locale;
 		this.trackUser = trackUser;
@@ -205,7 +206,7 @@ public class Game implements IWorldView {
 		sessionKit = new GitSessionKit(this, userUUID);
 
 		try {
-			gitSpy = new GitSpy(this, SAVE_DIR, userUUID);
+			gitSpy = new GitSpy(this, SAVE_DIR, gitUtils, userUUID);
 			addProgressSpyListener(gitSpy);
 		} catch (IOException | GitAPIException e) {
 			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
