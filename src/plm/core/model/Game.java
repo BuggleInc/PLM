@@ -156,7 +156,6 @@ public class Game implements IWorldView {
 	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
 		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils(), trackUser);
-		gitUtils.setGame(this);
 	}
 	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser) {
@@ -210,8 +209,8 @@ public class Game implements IWorldView {
 
 		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
 		sessionKit = new GitSessionKit(this, userUUID);
-
 		this.gitUtils = gitUtils;
+		gitUtils.setGame(this);
 		try {
 			gitSpy = new GitSpy(this, SAVE_DIR, gitUtils, userUUID);
 			addProgressSpyListener(gitSpy);
