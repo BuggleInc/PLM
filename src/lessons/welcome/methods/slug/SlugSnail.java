@@ -14,6 +14,7 @@ public class SlugSnail extends ExerciseTemplated {
 
 	public SlugSnail(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 

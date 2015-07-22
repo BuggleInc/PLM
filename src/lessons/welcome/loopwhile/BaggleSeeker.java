@@ -14,6 +14,7 @@ public class BaggleSeeker extends ExerciseTemplated {
 
 	public BaggleSeeker(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Kitchen",7,7);
 		for (int i=0;i<7;i++) {

@@ -13,6 +13,7 @@ public class PictureMono2 extends ExerciseTemplated {
 
 	public PictureMono2(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 		BuggleWorld myWorld =  new BuggleWorld(game, "World",21,21);
 		myWorld.setDelay(20);
 		new SimpleBuggle(myWorld, "Picasso", 0, 20, Direction.EAST, Color.black, Color.lightGray);
