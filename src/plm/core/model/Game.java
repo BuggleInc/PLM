@@ -143,6 +143,7 @@ public class Game implements IWorldView {
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
 	private GitSpy gitSpy;
+	private GitUtils gitUtils;
 
 	public LogHandler logger;
 	
@@ -152,6 +153,10 @@ public class Game implements IWorldView {
 	
 	private Locale locale;
 	public I18n i18n;
+	
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
+		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils(this), trackUser);
+	}
 	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser) {
 		this.logger = logger;
@@ -205,6 +210,7 @@ public class Game implements IWorldView {
 		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
 		sessionKit = new GitSessionKit(this, userUUID);
 
+		this.gitUtils = gitUtils;
 		try {
 			gitSpy = new GitSpy(this, SAVE_DIR, gitUtils, userUUID);
 			addProgressSpyListener(gitSpy);
@@ -287,6 +293,10 @@ public class Game implements IWorldView {
 		return true;
 	}
 
+
+	public GitUtils getGitUtils() {
+		return this.gitUtils;
+	}
 
 	public boolean canC = false;
 	String CError = "";
