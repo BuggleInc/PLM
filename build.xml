@@ -61,10 +61,10 @@
     <target name="compile" description="compile all source files">
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
-        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true"/>
+        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true" encoding="UTF-8" />
     </target>    
     
-    <target name="dist" depends="clean, i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">
+    <target name="dist" depends="clean, compile, updateversion" description="build a standalone application jar file">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/plm-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>

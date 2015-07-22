@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-13 13:01+0200\n"
+"POT-Creation-Date: 2015-07-08 13:47+0200\n"
 "PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,130 +17,130 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/lessons/lightbot/universe/LightBotExercise.java:56
+#: src\lessons\lightbot\universe\LightBotExercise.java:56
 msgid "A light is still off."
 msgstr ""
 
-#: src/lessons/lightbot/universe/LightBotExercise.java:58
+#: src\lessons\lightbot\universe\LightBotExercise.java:58
 #, java-format
 msgid "{0} lights (out of {1}) are still off."
 msgstr ""
 
-#: src/lessons/maze/island/IslandMazeEntity.java:9
-#: src/lessons/maze/pledge/PledgeMazeEntity.java:9
-#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:7
-#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:13
-#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:12
-#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:12
-#: src/lessons/recursion/lego/tree/TreeEntity.java:11
-#: src/lessons/welcome/array/basics/Array1Entity.java:9
-#: src/lessons/welcome/array/basics/Array2Entity.java:11
+#: src\lessons\maze\island\IslandMazeEntity.java:9
+#: src\lessons\maze\pledge\PledgeMazeEntity.java:9
+#: src\lessons\maze\randommouse\RandomMouseMazeEntity.java:7
+#: src\lessons\maze\shortestpath\ShortestPathMazeEntity.java:13
+#: src\lessons\maze\wallfindfollow\WallFindFollowMazeEntity.java:12
+#: src\lessons\maze\wallfollower\WallFollowerMazeEntity.java:12
+#: src\lessons\recursion\lego\tree\TreeEntity.java:11
+#: src\lessons\welcome\array\basics\Array1Entity.java:9
+#: src\lessons\welcome\array\basics\Array2Entity.java:11
 msgid ""
 "Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal "
 "instead."
 msgstr ""
 
-#: src/lessons/maze/island/IslandMazeEntity.java:14
-#: src/lessons/maze/pledge/PledgeMazeEntity.java:14
-#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:12
-#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:18
-#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:17
-#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:17
-#: src/lessons/recursion/lego/tree/TreeEntity.java:16
-#: src/lessons/welcome/array/basics/Array1Entity.java:14
-#: src/lessons/welcome/array/basics/Array2Entity.java:16
+#: src\lessons\maze\island\IslandMazeEntity.java:14
+#: src\lessons\maze\pledge\PledgeMazeEntity.java:14
+#: src\lessons\maze\randommouse\RandomMouseMazeEntity.java:12
+#: src\lessons\maze\shortestpath\ShortestPathMazeEntity.java:18
+#: src\lessons\maze\wallfindfollow\WallFindFollowMazeEntity.java:17
+#: src\lessons\maze\wallfollower\WallFollowerMazeEntity.java:17
+#: src\lessons\recursion\lego\tree\TreeEntity.java:16
+#: src\lessons\welcome\array\basics\Array1Entity.java:14
+#: src\lessons\welcome\array\basics\Array2Entity.java:16
 msgid ""
 "Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal "
 "instead."
 msgstr ""
 
-#: src/lessons/maze/island/IslandMazeEntity.java:19
-#: src/lessons/maze/pledge/PledgeMazeEntity.java:19
-#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:17
-#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:23
-#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:22
-#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:22
-#: src/lessons/recursion/lego/tree/TreeEntity.java:21
-#: src/lessons/welcome/array/basics/Array1Entity.java:19
-#: src/lessons/welcome/array/basics/Array2Entity.java:21
+#: src\lessons\maze\island\IslandMazeEntity.java:19
+#: src\lessons\maze\pledge\PledgeMazeEntity.java:19
+#: src\lessons\maze\randommouse\RandomMouseMazeEntity.java:17
+#: src\lessons\maze\shortestpath\ShortestPathMazeEntity.java:23
+#: src\lessons\maze\wallfindfollow\WallFindFollowMazeEntity.java:22
+#: src\lessons\maze\wallfollower\WallFollowerMazeEntity.java:22
+#: src\lessons\recursion\lego\tree\TreeEntity.java:21
+#: src\lessons\welcome\array\basics\Array1Entity.java:19
+#: src\lessons\welcome\array\basics\Array2Entity.java:21
 msgid ""
 "Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
 "goal instead."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/LinearHanoiEntity.java:10
-#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
+#: src\lessons\recursion\hanoi\LinearHanoiEntity.java:10
+#: src\lessons\recursion\hanoi\LinearTwinHanoiEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. "
 "Use the intermediate slot in all moves."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:62
+#: src\lessons\recursion\hanoi\universe\HanoiEntity.java:62
 #, java-format
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:152
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:152
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:159
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:159
 #, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:164
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:164
 #, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:185
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:185
 #, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:187
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:187
 #, java-format
 msgid "Cannot move from slot {0} to itself"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:189
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:189
 #, java-format
 msgid "No disc to move from slot {0}"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:194
+#: src\lessons\recursion\hanoi\universe\HanoiWorld.java:194
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
 "but {2} > {3}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:134
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:134
 msgid "This is not a baseball world :-("
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:138
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:138
 #, java-format
 msgid "Differing amount of bases: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:141
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:141
 #, java-format
 msgid "Differing amount of players: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:147
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:147
 #, java-format
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:338
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:338
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -148,49 +148,49 @@ msgid ""
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:375
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:375
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:378
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:378
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:387
+#: src\lessons\sort\baseball\universe\BaseballWorld.java:387
 #, java-format
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
 "it in one move"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:72
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:72
 msgid "This world is not a dutch flag"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:76
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:87
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:76
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:87
 msgid "The two worlds are of differing size"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:81
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:81
 #, java-format
 msgid " Ray #{0} differs: color {1} is not color {2}\n"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:147
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:150
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:147
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:150
 #, java-format
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:167
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:167
 #, java-format
 msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:202
+#: src\lessons\sort\dutchflag\universe\DutchFlagWorld.java:202
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -198,142 +198,142 @@ msgid ""
 "Initial situation: {0}"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:83
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:83
 msgid "This is not a world of pancakes"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:91
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:91
 #, java-format
 msgid "Stacks were not flipped the same amount of time: {0} vs. {1}\n"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:95
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:95
 #, java-format
 msgid " Pancake #{0} differs: {1} vs. {2}\n"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:196
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:196
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:198
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:198
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:232
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:232
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:251
+#: src\lessons\sort\pancake\universe\PancakeWorld.java:251
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}"
 msgstr ""
 
-#: src/lessons/welcome/loopdowhile/Poucet1Entity.java:8
-#: src/lessons/welcome/loopdowhile/Poucet2Entity.java:11
-#: src/lessons/welcome/loopfor/LoopCourseEntity.java:8
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:8
-#: src/lessons/welcome/loopfor/LoopForEntity.java:6
-#: src/lessons/welcome/loopfor/LoopStairsEntity.java:8
-#: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:9
-#: src/lessons/welcome/loopwhile/LoopWhileEntity.java:8
-#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:7
-#: src/lessons/welcome/summative/MoriaEntity.java:9
-#: src/lessons/welcome/variables/RunFourEntity.java:6
-#: src/lessons/welcome/variables/RunHalfEntity.java:8
-#: src/lessons/welcome/variables/VariablesEntity.java:6
+#: src\lessons\welcome\loopdowhile\Poucet1Entity.java:8
+#: src\lessons\welcome\loopdowhile\Poucet2Entity.java:11
+#: src\lessons\welcome\loopfor\LoopCourseEntity.java:8
+#: src\lessons\welcome\loopfor\LoopCourseForestEntity.java:8
+#: src\lessons\welcome\loopfor\LoopForEntity.java:6
+#: src\lessons\welcome\loopfor\LoopStairsEntity.java:8
+#: src\lessons\welcome\loopwhile\BaggleSeekerEntity.java:9
+#: src\lessons\welcome\loopwhile\LoopWhileEntity.java:8
+#: src\lessons\welcome\methods\returning\MethodsReturningEntity.java:7
+#: src\lessons\welcome\summative\MoriaEntity.java:9
+#: src\lessons\welcome\variables\RunFourEntity.java:6
+#: src\lessons\welcome\variables\RunHalfEntity.java:8
+#: src\lessons\welcome\variables\VariablesEntity.java:6
 msgid ""
 "Sorry Dave, I cannot let you use forward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
 
-#: src/lessons/welcome/loopdowhile/Poucet1Entity.java:12
-#: src/lessons/welcome/loopdowhile/Poucet2Entity.java:15
-#: src/lessons/welcome/loopfor/LoopCourseEntity.java:12
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:12
-#: src/lessons/welcome/loopfor/LoopForEntity.java:11
-#: src/lessons/welcome/loopfor/LoopStairsEntity.java:12
-#: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:14
-#: src/lessons/welcome/loopwhile/LoopWhileEntity.java:13
-#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:12
-#: src/lessons/welcome/summative/MoriaEntity.java:14
-#: src/lessons/welcome/variables/RunFourEntity.java:10
-#: src/lessons/welcome/variables/RunHalfEntity.java:12
-#: src/lessons/welcome/variables/VariablesEntity.java:11
+#: src\lessons\welcome\loopdowhile\Poucet1Entity.java:12
+#: src\lessons\welcome\loopdowhile\Poucet2Entity.java:15
+#: src\lessons\welcome\loopfor\LoopCourseEntity.java:12
+#: src\lessons\welcome\loopfor\LoopCourseForestEntity.java:12
+#: src\lessons\welcome\loopfor\LoopForEntity.java:11
+#: src\lessons\welcome\loopfor\LoopStairsEntity.java:12
+#: src\lessons\welcome\loopwhile\BaggleSeekerEntity.java:14
+#: src\lessons\welcome\loopwhile\LoopWhileEntity.java:13
+#: src\lessons\welcome\methods\returning\MethodsReturningEntity.java:12
+#: src\lessons\welcome\summative\MoriaEntity.java:14
+#: src\lessons\welcome\variables\RunFourEntity.java:10
+#: src\lessons\welcome\variables\RunHalfEntity.java:12
+#: src\lessons\welcome\variables\VariablesEntity.java:11
 msgid ""
 "Sorry Dave, I cannot let you use backward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
 
-#: src/lessons/welcome/loopfor/LoopCourseEntity.java:16
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:16
+#: src\lessons\welcome\loopfor\LoopCourseEntity.java:16
+#: src\lessons\welcome\loopfor\LoopCourseForestEntity.java:16
 msgid ""
 "Sorry Dave, you cannot run backward that way. Exercising is hard enough -- "
 "please don't overplay."
 msgstr ""
 
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:37
+#: src\lessons\welcome\loopfor\LoopCourseForestEntity.java:37
 msgid "You fall into water."
 msgstr ""
 
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:37
+#: src\lessons\welcome\loopfor\LoopCourseForestEntity.java:37
 #, fuzzy
 msgid "Test failed"
 msgstr "Exercise failed /o\\"
 
-#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:9
+#: src\lessons\welcome\methods\args\MethodsArgsEntity.java:9
 msgid ""
 "I cannot let you use forward with an argument in this exercise. Use a loop "
 "instead."
 msgstr ""
 
-#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:13
+#: src\lessons\welcome\methods\args\MethodsArgsEntity.java:13
 msgid ""
 "I cannot let you use backward with an argument in this exercise. Use a loop "
 "instead."
 msgstr ""
 
-#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
+#: src\lessons\welcome\methods\basics\MethodsDogHouseEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
 msgstr ""
 
-#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
+#: src\lessons\welcome\methods\basics\MethodsDogHouseEntity.java:26
 #, java-format
 msgid ""
 "Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
 "exercise. You can write left() only once in this exercise."
 msgstr ""
 
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:41
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:46
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:47
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:52
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:42
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:47
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:47
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:52
+#: src\lessons\welcome\traversal\column\TraversalByColumnEntity.java:41
+#: src\lessons\welcome\traversal\column\TraversalByColumnEntity.java:46
+#: src\lessons\welcome\traversal\diagonal\TraversalDiagonalEntity.java:47
+#: src\lessons\welcome\traversal\diagonal\TraversalDiagonalEntity.java:52
+#: src\lessons\welcome\traversal\line\TraversalByLineEntity.java:42
+#: src\lessons\welcome\traversal\line\TraversalByLineEntity.java:47
+#: src\lessons\welcome\traversal\zigzag\TraversalZigZagEntity.java:47
+#: src\lessons\welcome\traversal\zigzag\TraversalZigZagEntity.java:52
 msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
 msgstr ""
 
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:50
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:54
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:56
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:60
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:51
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:55
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:56
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:60
+#: src\lessons\welcome\traversal\column\TraversalByColumnEntity.java:50
+#: src\lessons\welcome\traversal\column\TraversalByColumnEntity.java:54
+#: src\lessons\welcome\traversal\diagonal\TraversalDiagonalEntity.java:56
+#: src\lessons\welcome\traversal\diagonal\TraversalDiagonalEntity.java:60
+#: src\lessons\welcome\traversal\line\TraversalByLineEntity.java:51
+#: src\lessons\welcome\traversal\line\TraversalByLineEntity.java:55
+#: src\lessons\welcome\traversal\zigzag\TraversalZigZagEntity.java:56
+#: src\lessons\welcome\traversal\zigzag\TraversalZigZagEntity.java:60
 msgid ""
 "Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
 "y) instead."
@@ -350,27 +350,27 @@ msgstr ""
 #. + "provided method."));
 #. else
 #.
-#: src/plm/core/lang/JVMCompiledLang.java:61
+#: src\plm\core\lang\JVMCompiledLang.java:61
 msgid ""
 "Your entity failed to start. Your constructor seems to be broken, but I have "
 "no clue."
 msgstr ""
 
-#: src/plm/core/lang/JVMCompiledLang.java:84
-#: src/plm/core/lang/LangLightbot.java:40
+#: src\plm\core\lang\JVMCompiledLang.java:84
+#: src\plm\core\lang\LangLightbot.java:40
 #, java-format
 msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
 " Please fix your code.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangC.java:189 src/plm/core/lang/LangJava.java:83
-#: src/plm/core/lang/LangScala.java:63
+#: src\plm\core\lang\LangC.java:189 src\plm\core\lang\LangJava.java:83
+#: src\plm\core\lang\LangScala.java:63
 #, fuzzy
 msgid "Compilation error:"
 msgstr "Compilation error"
 
-#: src/plm/core/lang/LangC.java:265 src/plm/core/lang/LangC.java:272
+#: src\plm\core\lang\LangC.java:265 src\plm\core\lang\LangC.java:272
 msgid "Error, please recompile the exercise"
 msgstr ""
 
@@ -380,12 +380,12 @@ msgstr ""
 #.
 #. for (String n:classes.keySet())
 #. System.out.println("File "+n+":\n"+classes.get(n));
-#: src/plm/core/lang/LangJava.java:350
+#: src\plm\core\lang\LangJava.java:350
 #, fuzzy
 msgid "Compilation failed."
 msgstr "Compilation error"
 
-#: src/plm/core/lang/LangPython.java:49
+#: src\plm\core\lang\LangPython.java:49
 #, java-format
 msgid ""
 "Syntax error: {0}\n"
@@ -393,7 +393,7 @@ msgid ""
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:58
+#: src\plm\core\lang\LangPython.java:58
 #, java-format
 msgid ""
 "Indentation error: {0}\n"
@@ -402,69 +402,69 @@ msgid ""
 "TAB keys to clean your indentation.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:66
+#: src\plm\core\lang\LangPython.java:66
 msgid ""
 "You interrupted the execution, did you fall into an infinite loop ?\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:72
+#: src\plm\core\lang\LangPython.java:72
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:76
+#: src\plm\core\lang\LangPython.java:76
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:80
+#: src\plm\core\lang\LangPython.java:80
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:87
+#: src\plm\core\lang\LangPython.java:87
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:89
+#: src\plm\core\lang\LangPython.java:89
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:91
+#: src\plm\core\lang\LangPython.java:91
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:93
+#: src\plm\core\lang\LangPython.java:93
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:96
+#: src\plm\core\lang\LangPython.java:96
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
 "Its value is: {1}"
 msgstr ""
 
-#: src/plm/core/lang/ScriptingLanguage.java:87
+#: src\plm\core\lang\ScriptingLanguage.java:87
 #, java-format
 msgid ""
 "No ScriptEngine for {0}. Please check your classpath and similar settings."
 msgstr ""
 
-#: src/plm/core/lang/ScriptingLanguage.java:96
+#: src\plm\core\lang\ScriptingLanguage.java:96
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against the PLM."
 msgstr ""
 
-#: src/plm/core/lang/ScriptingLanguage.java:108
+#: src\plm\core\lang\ScriptingLanguage.java:108
 #, java-format
 msgid "Received a ScriptException that does not come from the {0} language.\n"
 msgstr ""
 
-#: src/plm/core/lang/ScriptingLanguage.java:113
+#: src\plm\core\lang\ScriptingLanguage.java:113
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
@@ -474,32 +474,32 @@ msgid ""
 "Exception message: {1}\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:161
+#: src\plm\core\model\Game.java:160
 msgid "Scala is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:163
+#: src\plm\core\model\Game.java:162
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:165
+#: src\plm\core\model\Game.java:164
 msgid "Jython is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:167
+#: src\plm\core\model\Game.java:166
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:169
+#: src\plm\core\model\Game.java:168
 msgid "C is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:171
+#: src\plm\core\model\Game.java:170
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:178
+#: src\plm\core\model\Game.java:176
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -512,76 +512,70 @@ msgid ""
 "({2}/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:184
+#: src\plm\core\model\Game.java:182
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:187
+#: src\plm\core\model\Game.java:185
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:190
+#: src\plm\core\model\Game.java:188
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:211
-msgid ""
-"You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below"
-msgstr ""
-
-#: src/plm/core/model/Game.java:248
+#: src\plm\core\model\Game.java:244
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:257
+#: src\plm\core\model\Game.java:253
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 
-#: src/plm/core/model/Game.java:282
+#: src\plm\core\model\Game.java:278
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:321
+#: src\plm\core\model\Game.java:317
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:323
+#: src\plm\core\model\Game.java:319
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:352
+#: src\plm\core\model\Game.java:348
 #, java-format
 msgid "Cannot load lesson {0}: class Main not found."
 msgstr ""
 
-#: src/plm/core/model/Game.java:389
+#: src\plm\core\model\Game.java:385
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
 
-#: src/plm/core/model/Game.java:390
+#: src\plm\core\model\Game.java:386
 #, fuzzy
 msgid "Broken lesson"
 msgstr "Load lesson"
 
-#: src/plm/core/model/Game.java:537
+#: src\plm\core\model\Game.java:532
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -589,194 +583,180 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:544
+#: src\plm\core\model\Game.java:539
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/plm/core/model/Game.java:586
+#: src\plm\core\model\Game.java:581
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:987
+#: src\plm\core\model\Game.java:986
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:988
+#: src\plm\core\model\Game.java:987
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:992
+#: src\plm\core\model\Game.java:991
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:993
+#: src\plm\core\model\Game.java:992
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:997
+#: src\plm\core\model\Game.java:996
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:998
+#: src\plm\core\model\Game.java:997
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Users.java:100
-#, java-format
-msgid "User {0} exists already; don't add it again."
-msgstr ""
-
-#: src/plm/core/model/Users.java:124
-#, fuzzy, java-format
-msgid "Switched to user: {0}"
-msgstr "Switch to state view"
-
-#: src/plm/core/model/Users.java:177
-msgid "A new PLM user has been created for you!"
-msgstr ""
-
-#: src/plm/core/model/lesson/ExecutionProgress.java:70
+#: src\plm\core\model\lesson\ExecutionProgress.java:70
 #, fuzzy, java-format
 msgid "<html>Congratulations, you passed this exercise.<br>({0} tests passed)"
 msgstr ""
 "Congratulations, you passed this exercise.\n"
 " {0} tests passed.\n"
 
-#: src/plm/core/model/lesson/Exercise.java:76
+#: src\plm\core\model\lesson\Exercise.java:76
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:47
+#: src\plm\core\model\lesson\ExerciseTemplated.java:47
 #, java-format
 msgid "Source file {0}.{1} not found."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:120
+#: src\plm\core\model\lesson\ExerciseTemplated.java:120
 #, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:141
+#: src\plm\core\model\lesson\ExerciseTemplated.java:141
 #, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:159
-#: src/plm/core/model/lesson/ExerciseTemplated.java:183
+#: src\plm\core\model\lesson\ExerciseTemplated.java:159
+#: src\plm\core\model\lesson\ExerciseTemplated.java:183
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:163
+#: src\plm\core\model\lesson\ExerciseTemplated.java:163
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:203
+#: src\plm\core\model\lesson\ExerciseTemplated.java:203
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:208
+#: src\plm\core\model\lesson\ExerciseTemplated.java:208
 #, java-format
 msgid ""
 "{0}: End of file unexpected after the solution but within the template. "
 "Please fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:210
+#: src\plm\core\model\lesson\ExerciseTemplated.java:210
 #, java-format
 msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
 "template or solution? Please fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:366
+#: src\plm\core\model\lesson\ExerciseTemplated.java:366
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
 "entity for this language: {2}"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:375
+#: src\plm\core\model\lesson\ExerciseTemplated.java:375
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and such"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:406
+#: src\plm\core\model\lesson\ExerciseTemplated.java:406
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:410
+#: src\plm\core\model\lesson\ExerciseTemplated.java:410
 #, java-format
 msgid "Cache file {0} is missing. Recompute all answer worlds."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:414
+#: src\plm\core\model\lesson\ExerciseTemplated.java:414
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:425
+#: src\plm\core\model\lesson\ExerciseTemplated.java:425
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:465
+#: src\plm\core\model\lesson\ExerciseTemplated.java:465
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:469
+#: src\plm\core\model\lesson\ExerciseTemplated.java:469
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
 
-#: src/plm/core/model/lesson/Lecture.java:93
-#: src/plm/core/model/lesson/Lesson.java:103
+#: src\plm\core\model\lesson\Lecture.java:94
+#: src\plm\core\model\lesson\Lesson.java:103
 #, java-format
 msgid "File {0}.html not found."
 msgstr ""
 
-#: src/plm/core/model/lesson/Lecture.java:102
-#: src/plm/core/model/lesson/Lesson.java:113
+#: src\plm\core\model\lesson\Lecture.java:103
+#: src\plm\core\model\lesson\Lesson.java:113
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
 msgstr ""
 
 #. It should never happen since the session content should be created by the git spy module.
-#: src/plm/core/model/session/GitSessionKit.java:89
+#: src\plm\core\model\session\GitSessionKit.java:79
 msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:251
+#: src\plm\core\model\session\ZipSessionKit.java:251
 msgid "Ok, quit and lose my data"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:251
+#: src\plm\core\model\session\ZipSessionKit.java:251
 msgid "Please stop! I'll save it myself first"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:252
+#: src\plm\core\model\session\ZipSessionKit.java:252
 #, java-format
 msgid ""
 "The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
@@ -784,23 +764,23 @@ msgid ""
 " Would you like proceed anyway (and lose any solution typed so far)?"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:255
+#: src\plm\core\model\session\ZipSessionKit.java:255
 msgid "Your changes are NOT saved"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:258
+#: src\plm\core\model\session\ZipSessionKit.java:258
 msgid "User aborted saving on system error"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:355
+#: src\plm\core\model\session\ZipSessionKit.java:355
 msgid "Proceed"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:355
+#: src\plm\core\model\session\ZipSessionKit.java:355
 msgid "Abort"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:356
+#: src\plm\core\model\session\ZipSessionKit.java:356
 #, java-format
 msgid ""
 "The PLM were unable to load your code for lesson {0} ({1}:{2}).\n"
@@ -808,640 +788,644 @@ msgid ""
 " Would you like proceed anyway (and lose any solution typed previously)?"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:359
+#: src\plm\core\model\session\ZipSessionKit.java:359
 msgid "Error while loading your session"
 msgstr ""
 
-#: src/plm/core/model/session/ZipSessionKit.java:362
+#: src\plm\core\model\session\ZipSessionKit.java:362
 msgid "Abording on user request"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:73
+#: src\plm\core\model\tracking\GitSpy.java:67
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
 
 #. If no branch can be found remotely, create a new one.
 #. getGame().getLogger().log(getGame().i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-#: src/plm/core/model/tracking/GitSpy.java:78
+#: src\plm\core\model\tracking\GitSpy.java:72
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:87
+#: src\plm\core\model\tracking\GitSpy.java:81
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:165
+#: src\plm\core\model\tracking\GitSpy.java:156
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:77
+#: src\plm\core\model\tracking\GitUtils.java:75
 msgid "An error occurred while configuring the repository..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:86
+#: src\plm\core\model\tracking\GitUtils.java:84
 msgid "Retrieving your session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:120
+#: src\plm\core\model\tracking\GitUtils.java:118
 msgid "An error occurred while checking out the user's branch: "
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:133
+#: src\plm\core\model\tracking\GitUtils.java:131
 msgid "last session data successfully retrieved"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:136
+#: src\plm\core\model\tracking\GitUtils.java:134
 msgid "last session data successfully merged"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:139
+#: src\plm\core\model\tracking\GitUtils.java:137
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
 msgstr ""
 
 #. TODO: handle this case
-#: src/plm/core/model/tracking/GitUtils.java:167
+#: src\plm\core\model\tracking\GitUtils.java:165
 msgid "Canceled the merge operation because of the following failures:"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:174
+#: src\plm\core\model\tracking\GitUtils.java:172
 msgid "Can't merge data retrieved from server with local session data."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:215
+#: src\plm\core\model\tracking\GitUtils.java:213
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:242
+#: src\plm\core\model\tracking\GitUtils.java:240
 msgid "Your session has been successfully saved into the clouds."
 msgstr ""
 
 #. An error occurred while pushing
-#: src/plm/core/model/tracking/GitUtils.java:246
+#: src\plm\core\model\tracking\GitUtils.java:244
 msgid "Fetching the server's last version..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:253
+#: src\plm\core\model\tracking\GitUtils.java:251
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:256
+#: src\plm\core\model\tracking\GitUtils.java:254
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:58
+#: src\plm\core\utils\ColorMapper.java:58
 msgid "black"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:59
+#: src\plm\core\utils\ColorMapper.java:59
 msgid "blue"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:60
+#: src\plm\core\utils\ColorMapper.java:60
 msgid "cyan"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:61
+#: src\plm\core\utils\ColorMapper.java:61
 msgid "dark grey"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:62
+#: src\plm\core\utils\ColorMapper.java:62
 msgid "grey"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:63
+#: src\plm\core\utils\ColorMapper.java:63
 msgid "green"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:64
+#: src\plm\core\utils\ColorMapper.java:64
 msgid "light grey"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:65
+#: src\plm\core\utils\ColorMapper.java:65
 msgid "magenta"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:66
+#: src\plm\core\utils\ColorMapper.java:66
 msgid "orange"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:67
+#: src\plm\core\utils\ColorMapper.java:67
 msgid "pink"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:68
+#: src\plm\core\utils\ColorMapper.java:68
 msgid "red"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:69
+#: src\plm\core\utils\ColorMapper.java:69
 msgid "white"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:70
+#: src\plm\core\utils\ColorMapper.java:70
 msgid "yellow"
 msgstr ""
 
-#: src/plm/universe/Direction.java:73
+#: src\plm\universe\Direction.java:73
 msgid "NORTH"
 msgstr ""
 
-#: src/plm/universe/Direction.java:75
+#: src\plm\universe\Direction.java:75
 msgid "EAST"
 msgstr ""
 
-#: src/plm/universe/Direction.java:77
+#: src\plm\universe\Direction.java:77
 msgid "SOUTH"
 msgstr ""
 
-#: src/plm/universe/Direction.java:79
+#: src\plm\universe\Direction.java:79
 msgid "WEST"
 msgstr ""
 
-#: src/plm/universe/bat/BatEntity.java:37
+#: src\plm\universe\bat\BatEntity.java:37
 #, java-format
 msgid "Exception {0}: {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:85
+#: src\plm\universe\bugglequest\AbstractBuggle.java:85
 msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:89
+#: src\plm\universe\bugglequest\AbstractBuggle.java:89
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:170
-#: src/plm/universe/turtles/Turtle.java:215
+#: src\plm\universe\bugglequest\AbstractBuggle.java:170
+#: src\plm\universe\turtles\Turtle.java:215
 msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:173
-#: src/plm/universe/turtles/Turtle.java:218
+#: src\plm\universe\bugglequest\AbstractBuggle.java:173
+#: src\plm\universe\turtles\Turtle.java:218
 msgid ""
 "Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:193
+#: src\plm\universe\bugglequest\AbstractBuggle.java:193
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the minimal Y in this world is 0."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:199
+#: src\plm\universe\bugglequest\AbstractBuggle.java:199
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the minimal X in this world is 0."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:205
+#: src\plm\universe\bugglequest\AbstractBuggle.java:205
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:212
+#: src\plm\universe\bugglequest\AbstractBuggle.java:212
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:234
-#: src/plm/universe/bugglequest/AbstractBuggle.java:296
+#: src\plm\universe\bugglequest\AbstractBuggle.java:234
+#: src\plm\universe\bugglequest\AbstractBuggle.java:296
 #, java-format
 msgid "You tried to set X to {0}, but the minimal X in this world is 0."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:240
-#: src/plm/universe/bugglequest/AbstractBuggle.java:308
+#: src\plm\universe\bugglequest\AbstractBuggle.java:240
+#: src\plm\universe\bugglequest\AbstractBuggle.java:308
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:264
-#: src/plm/universe/bugglequest/AbstractBuggle.java:290
+#: src\plm\universe\bugglequest\AbstractBuggle.java:264
+#: src\plm\universe\bugglequest\AbstractBuggle.java:290
 #, java-format
 msgid "You tried to set Y {0}, but the minimal Y in this world is 0."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:270
-#: src/plm/universe/bugglequest/AbstractBuggle.java:302
+#: src\plm\universe\bugglequest\AbstractBuggle.java:270
+#: src\plm\universe\bugglequest\AbstractBuggle.java:302
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:434
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:126
+#: src\plm\universe\bugglequest\AbstractBuggle.java:434
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:126
 msgid "There is no baggle to pick up here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:439
+#: src\plm\universe\bugglequest\AbstractBuggle.java:439
 msgid "Your are already carrying a baggle."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:558
+#: src\plm\universe\bugglequest\AbstractBuggle.java:558
 msgid "Its value is 'null', which is never good."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:565
+#: src\plm\universe\bugglequest\AbstractBuggle.java:565
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:567
+#: src\plm\universe\bugglequest\AbstractBuggle.java:567
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:569
+#: src\plm\universe\bugglequest\AbstractBuggle.java:569
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:571
+#: src\plm\universe\bugglequest\AbstractBuggle.java:571
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:573
+#: src\plm\universe\bugglequest\AbstractBuggle.java:573
 msgid "    It should not carry that baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:575
+#: src\plm\universe\bugglequest\AbstractBuggle.java:575
 msgid "    It is not carrying any baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:577
+#: src\plm\universe\bugglequest\AbstractBuggle.java:577
 msgid "    It encountered an issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:579
+#: src\plm\universe\bugglequest\AbstractBuggle.java:579
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleAlreadyHaveBaggle.java:9
+#: src\plm\universe\bugglequest\BuggleAlreadyHaveBaggle.java:9
 #, java-format
 msgid "Buggle {0} tried to pick up a baggle while he had already one..."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleDontHaveBaggle.java:9
+#: src\plm\universe\bugglequest\BuggleDontHaveBaggle.java:9
 #, java-format
 msgid "Buggle {0} tried to drop a baggle but he doesn't have one..."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleEncounterWall.java:9
+#: src\plm\universe\bugglequest\BuggleEncounterWall.java:9
 #, java-format
 msgid "Buggle {0} encountered a wall..."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:105
+#: src\plm\universe\bugglequest\BuggleWorld.java:105
 #, java-format
 msgid ""
 "{0}: The path to the map on disk should not include the .map extension (or "
 "it won''t work in jarfiles). Please fix your exercise."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:113
+#: src\plm\universe\bugglequest\BuggleWorld.java:113
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty!)"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:119
+#: src\plm\universe\bugglequest\BuggleWorld.java:119
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:125
+#: src\plm\universe\bugglequest\BuggleWorld.java:125
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:130
+#: src\plm\universe\bugglequest\BuggleWorld.java:130
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:156
+#: src\plm\universe\bugglequest\BuggleWorld.java:156
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:170
+#: src\plm\universe\bugglequest\BuggleWorld.java:170
 #, java-format
 msgid "Invalid buggle''s direction: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:177
-#: src/plm/universe/bugglequest/BuggleWorld.java:184
+#: src\plm\universe\bugglequest\BuggleWorld.java:177
+#: src\plm\universe\bugglequest\BuggleWorld.java:184
 #, java-format
 msgid "Invalid buggle''s color name: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:201
+#: src\plm\universe\bugglequest\BuggleWorld.java:201
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:214
+#: src\plm\universe\bugglequest\BuggleWorld.java:214
 #, java-format
 msgid "Invalid color name: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:220
+#: src\plm\universe\bugglequest\BuggleWorld.java:220
 #, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:224
+#: src\plm\universe\bugglequest\BuggleWorld.java:224
 #, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:228
+#: src\plm\universe\bugglequest\BuggleWorld.java:228
 #, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:238
+#: src\plm\universe\bugglequest\BuggleWorld.java:238
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
 "baggles here, which is not allowed."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:254
+#: src\plm\universe\bugglequest\BuggleWorld.java:254
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:553
+#: src\plm\universe\bugglequest\BuggleWorld.java:553
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:557
+#: src\plm\universe\bugglequest\BuggleWorld.java:557
 #, java-format
 msgid "  In ({0},{1})"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:559
+#: src\plm\universe\bugglequest\BuggleWorld.java:559
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:563
+#: src\plm\universe\bugglequest\BuggleWorld.java:563
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:119
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:119
 msgid "There is already a baggle here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:199
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:199
 msgid ", there shouldn't be this baggle"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:201
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:201
 msgid ", there should be a baggle"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:204
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:204
 #, java-format
 msgid ", the ground should not be {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:206
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:206
 #, java-format
 msgid ", the ground is expected to be {0}, but it is {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:210
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:210
 #, java-format
 msgid ", the ground reads ''{0}'' (expected: ''{1}'')"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:213
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:213
 msgid ", there shouldn't be any wall at west"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:215
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:215
 msgid ", there should be a wall at west"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:218
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:218
 msgid ", there shouldn't be any wall at north"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:220
+#: src\plm\universe\bugglequest\BuggleWorldCell.java:220
 msgid ", there should be a wall at north"
 msgstr ""
 
-#: src/plm/universe/bugglequest/CellAlreadyHaveBaggle.java:9
+#: src\plm\universe\bugglequest\CellAlreadyHaveBaggle.java:9
 #, java-format
 msgid "Tried to drop a baggle but there is already one in ({0}, {1})..."
 msgstr ""
 
-#: src/plm/universe/bugglequest/ChangeBuggleBrushDown.java:16
+#: src\plm\universe\bugglequest\ChangeBuggleBrushDown.java:16
 #, java-format
 msgid "Buggle {0} is now painting the floor!"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ChangeBuggleBrushDown.java:19
+#: src\plm\universe\bugglequest\ChangeBuggleBrushDown.java:19
 #, java-format
 msgid "Buggle {0} put away its brush."
 msgstr ""
 
-#: src/plm/universe/bugglequest/ChangeBuggleCarryBaggle.java:16
+#: src\plm\universe\bugglequest\ChangeBuggleCarryBaggle.java:16
 #, java-format
 msgid "Buggle {0} is now carrying a baggle!"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ChangeBuggleCarryBaggle.java:19
+#: src\plm\universe\bugglequest\ChangeBuggleCarryBaggle.java:19
 #, java-format
 msgid "Buggle {0} drops the baggle."
 msgstr ""
 
-#: src/plm/universe/bugglequest/ChangeBuggleDirection.java:31
+#: src\plm\universe\bugglequest\ChangeBuggleDirection.java:31
 #, java-format
 msgid "Buggle {0} now faces the {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/ChangeCellContent.java:15
+#: src\plm\universe\bugglequest\ChangeCellContent.java:15
 #, java-format
 msgid "Cell ({0}, {1}) has new content: \"{2}\""
 msgstr ""
 
-#: src/plm/universe/bugglequest/MoveBuggleOperation.java:21
+#: src\plm\universe\bugglequest\MoveBuggleOperation.java:21
 #, java-format
 msgid "Buggle {0} moved from ({1}, {2}) to ({3}, {4})"
 msgstr ""
 
-#: src/plm/universe/bugglequest/NoBaggleUnderBuggle.java:9
+#: src\plm\universe\bugglequest\NoBaggleUnderBuggle.java:9
 #, java-format
 msgid "Buggle {0} tried to pick up a baggle while there were none..."
 msgstr ""
 
-#: src/plm/universe/bugglequest/exception/BuggleWallException.java:10
+#: src\plm\universe\bugglequest\exception\BuggleWallException.java:10
 msgid "Buggles cannot traverse walls"
 msgstr ""
 
-#: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:11
+#: src\plm\universe\bugglequest\exception\DontHaveBaggleException.java:11
 msgid "You have no baggle to drop"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:112
+#: src\plm\universe\sort\SortingWorld.java:112
 #, java-format
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:115
+#: src\plm\universe\sort\SortingWorld.java:115
 #, java-format
 msgid "Invalid read count. Expected: {0}; Found: {1}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:118
+#: src\plm\universe\sort\SortingWorld.java:118
 #, java-format
 msgid "Invalid write count. Expected: {0}; Found: {1}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:122
+#: src\plm\universe\sort\SortingWorld.java:122
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:347
-#: src/plm/universe/sort/SortingWorld.java:348
+#: src\plm\universe\sort\SortingWorld.java:347
+#: src\plm\universe\sort\SortingWorld.java:348
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:349
-#: src/plm/universe/sort/SortingWorld.java:350
+#: src\plm\universe\sort\SortingWorld.java:349
+#: src\plm\universe\sort\SortingWorld.java:350
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
 
-#: src/plm/universe/turtles/Circle.java:34
+#: src\plm\universe\turtles\Circle.java:34
 msgid "x differs"
 msgstr ""
 
-#: src/plm/universe/turtles/Circle.java:36
+#: src\plm\universe\turtles\Circle.java:36
 msgid "y differs"
 msgstr ""
 
-#: src/plm/universe/turtles/Circle.java:38
+#: src\plm\universe\turtles\Circle.java:38
 msgid "radius differs"
 msgstr ""
 
-#: src/plm/universe/turtles/Circle.java:39
+#: src\plm\universe\turtles\Circle.java:39
 msgid "I dont see the difference"
 msgstr ""
 
-#: src/plm/universe/turtles/Circle.java:41
+#: src\plm\universe\turtles\Circle.java:41
 msgid "That's not a line"
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:113
+#: src\plm\universe\turtles\Line.java:113
 msgid "x1 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:115
+#: src\plm\universe\turtles\Line.java:115
 msgid "x2 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:117
+#: src\plm\universe\turtles\Line.java:117
 msgid "y1 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:119
+#: src\plm\universe\turtles\Line.java:119
 msgid "y2 differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:121
+#: src\plm\universe\turtles\Line.java:121
 msgid "The color differs."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:122
+#: src\plm\universe\turtles\Line.java:122
 msgid "I dont see the difference (please report this bug)."
 msgstr ""
 
-#: src/plm/universe/turtles/Line.java:124
+#: src\plm\universe\turtles\Line.java:124
 msgid "That's not a line (please report this bug)."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:223
+#: src\plm\universe\turtles\Turtle.java:223
 msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:227
+#: src\plm\universe\turtles\Turtle.java:227
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:408
+#: src\plm\universe\turtles\Turtle.java:408
 #, java-format
 msgid "The turtle {0} is not heading to the right direction."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:410
+#: src\plm\universe\turtles\Turtle.java:410
 #, java-format
 msgid "The turtle {0} is at the right location."
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:341
+#: src\plm\universe\turtles\TurtleWorld.java:341
 #, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:370
+#: src\plm\universe\turtles\TurtleWorld.java:370
 #, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:372
+#: src\plm\universe\turtles\TurtleWorld.java:372
 #, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:399
+#: src\plm\universe\turtles\TurtleWorld.java:399
 msgid "Superflous shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:404
+#: src\plm\universe\turtles\TurtleWorld.java:404
 msgid "Missing shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:415
+#: src\plm\universe\turtles\TurtleWorld.java:415
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Switched to user: {0}"
+#~ msgstr "Switch to state view"
 
 #~ msgid "Switch to time view"
 #~ msgstr "Switch to time view"
