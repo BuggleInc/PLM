@@ -155,7 +155,8 @@ public class Game implements IWorldView {
 	public I18n i18n;
 	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
-		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils(this), trackUser);
+		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils(), trackUser);
+		gitUtils.setGame(this);
 	}
 	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser) {
@@ -231,6 +232,10 @@ public class Game implements IWorldView {
 		loadSession();
 	}
 
+	public GitUtils getGitUtils() {
+		return this.gitUtils;
+	}
+
 	boolean canScala = false;
 	String scalaError = "";
 
@@ -291,11 +296,6 @@ public class Game implements IWorldView {
 
 		canPython = true;
 		return true;
-	}
-
-
-	public GitUtils getGitUtils() {
-		return this.gitUtils;
 	}
 
 	public boolean canC = false;

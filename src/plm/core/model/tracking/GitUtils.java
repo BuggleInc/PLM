@@ -55,6 +55,14 @@ public class GitUtils {
 
 	private static boolean currentlyPushing = false;
 	
+	public GitUtils() {
+		
+	}
+	
+	public void setGame(Game g) {
+		this.game = g;
+	}
+	
 	public GitUtils(Game game) {
 		this.game = game;
 	}
