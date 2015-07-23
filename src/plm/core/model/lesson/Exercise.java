@@ -1,7 +1,6 @@
 package plm.core.model.lesson;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,15 +32,15 @@ public abstract class Exercise extends Lecture {
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
-	
+
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
 		return getClass().getCanonicalName() + "Entity";
 	}
-	
+
 	public String nameOfCommonError(int i) {
 		return getClass().getCanonicalName() + "CommonErr" + i;
 	}
-	
+
 	public String getTabName() {
 		return tabName;
 	}
@@ -62,7 +61,7 @@ public abstract class Exercise extends Lecture {
 		super(lesson,basename);
 	}
 
-	public void setupWorlds(World[] w, ArrayList<File> f) {
+	public void setupWorlds(World[] w, int size) {
 		currentWorld = new Vector<World>(w.length);
 		initialWorld = new Vector<World>(w.length);
 		answerWorld  = new Vector<World>(w.length);
@@ -73,18 +72,12 @@ public abstract class Exercise extends Lecture {
 			currentWorld.add( w[i].copy() );
 			initialWorld.add( w[i].copy() );
 			answerWorld. add( w[i].copy() );
-			if(f!=null) {
-				for(int j = 0 ; j < f.size() ; j++) {
-					errorWorld = new Vector<World>(w.length);
-					errorWorld.add(w[i].copy());
-					addError(errorWorld);
-				}
+			for(int j = 0 ; j < size ; j++) {
+				errorWorld = new Vector<World>(w.length);
+				errorWorld.add(w[i].copy());
+				commonErrors.add(errorWorld);
 			}
 		}
-	}
-	
-	public void addError(Vector<World> errorWorld) {
-		commonErrors.add(errorWorld);
 	}
 
 	public abstract void run(List<Thread> runnerVect);	
@@ -119,7 +112,7 @@ public abstract class Exercise extends Lecture {
 								BufferedReader buf = new BufferedReader(lect);
 								String error = "Hint: ";
 								error += buf.readLine();
-								lastResult.executionError += error+"\n";
+								lastResult.executionError += "\n"+error+"\n\n------------------------------------------\n\n";
 								buf.close();
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -195,22 +188,14 @@ public abstract class Exercise extends Lecture {
 		ProgrammingLanguage lang = Game.getProgrammingLanguage();
 
 		Vector<World> worlds = null;
-		if(nbError == -1) {
-			switch (kind) {
-			case INITIAL: worlds = initialWorld; break;
-			case CURRENT: worlds = currentWorld; break;
-			case ANSWER:  worlds = answerWorld;  break;
-			default: throw new RuntimeException("kind is invalid: "+kind);
-			}
-		} else {
-			if(kind==WorldKind.ERROR) {
-				if(nbError != -1) {
-					worlds = commonErrors.get(nbError);
-				} 
-			} else {
-				throw new RuntimeException("kind is invalid: "+kind);
-			}
+		switch (kind) {
+		case INITIAL: worlds = initialWorld; break;
+		case CURRENT: worlds = currentWorld; break;
+		case ANSWER:  worlds = answerWorld;  break;
+		case ERROR: worlds = commonErrors.get(nbError); break;
+		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
+
 
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {

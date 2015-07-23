@@ -331,19 +331,15 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected <W extends World> void setup(W[] ws) {
 		boolean foundALanguage=false;
 		ArrayList<File> f = new ArrayList<File>();
-		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-			for(int i = 0 ; i < 5000 ; i++) {
-				if(lang.equals(Game.JAVA)) {
-					if(!new File("src/"+lang.nameOfCommonError(this, i).replaceAll("\\.", "/")+".java").exists()) {
-						break;
-					} else {
-						f.add(new File(lang.nameOfCommonError(this, i)));						
-					}
-				}
+		ProgrammingLanguage lang2 = Game.JAVA;
+		int k = 0;
+		while((new File("src/"+lang2.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")).exists()) {
+			if(!f.contains(new File(lang2.nameOfCommonError(this, k)))) {
+				f.add(new File(lang2.nameOfCommonError(this, k)));
 			}
+			k++;
 		}
-		setupWorlds(ws,f);
-		//System.out.println("Length = "+f.size()+" / "+commonErrors.size());
+		setupWorlds(ws,f.size());
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
@@ -356,16 +352,6 @@ public abstract class ExerciseTemplated extends Exercise {
 					p = Pattern.compile("Entity$");
 					m = p.matcher(searchedName);
 					searchedName = m.replaceAll("");
-
-					for(int i = 0 ; i < commonErrors.size() ; i++) {
-						Pattern pce = Pattern.compile(".*?([^.]*)$");
-						Matcher mce = pce.matcher(lang.nameOfCommonError(this,i));
-						if (mce.matches())
-							searchedName = mce.group(1);
-						pce = Pattern.compile("CommonErr[0-9]*$");
-						mce = pce.matcher(searchedName);
-						searchedName = mce.replaceAll("");
-					}
 				}
 				if (Game.getInstance().isDebugEnabled())
 					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
@@ -398,15 +384,13 @@ public abstract class ExerciseTemplated extends Exercise {
 			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
 
 		computeAnswer();
-		for(int j = 0 ; j < commonErrors.size() ; j++)
-			computeError(f, j);
+		computeError(f);
 	}
 
-	protected void computeError(ArrayList<File> f, int j) {
-		final String id = this.getId();
+	protected void computeError(ArrayList<File> f) {
 		for(int i = 0 ; i < f.size(); i++) {
-			if(new File("src/"+f.get(i).getPath().replaceAll("\\.", "/")+".java").exists()) {// && new File("src/"+f.getPath().replaceAll("\\.", "/")+".py").exists()
-				//&& new File("src/"+f.getPath().replaceAll("\\.", "/")+".scala").exists()) {
+			final int i2 = i;
+			if(new File("src/"+f.get(i).getPath().replaceAll("\\.", "/")+".java").exists()) {
 				Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
 
 					@Override
@@ -422,39 +406,34 @@ public abstract class ExerciseTemplated extends Exercise {
 					public void run() {
 						Game.getInstance().statusArgAdd(getClass().getSimpleName());
 						ExecutionProgress progress = new ExecutionProgress();
-						//if(commonErrors.size()!=0) {
-						//for(int j = 0 ; j < commonErrors.size(); j++) {
-							mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR, j);
-							Vector<World> errorWorld = commonErrors.get(j);
-							for(World ew : errorWorld) {
-								for(Entity ent : ew.getEntities()) {
-									ent.setScript(Game.C, id);
-									Game.getProgrammingLanguage().runEntity(ent, progress);
-								}
-								ew.setErrorWorld();
+						mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR, i2);
+						Vector<World> errorWorld = commonErrors.get(i2);
+						for(World ew : errorWorld) {
+							for(Entity ent : ew.getEntities()) {
+								Game.JAVA.runEntity(ent, progress);
 							}
-							/* Try to write all files for next time */
-							/*if (errorWorld.get(0).haveIO()) { //TODO: Bientôt de retour, un peu de patience...
-									int rank = 0;
-									for (World ew:errorWorld) {
-										String name = "src/"+worldFileName+"-error"+(rank++);
-										name = name.replaceAll("\\.", "/") + ".map";
-										if (new File(name).getParentFile().canWrite()) {
-											try {
-												ew.writeToFile(new File(name));
-											} catch (Exception e) {
-												System.err.println(i18n.tr("Error while writing error world of {0}:",name));
-												e.printStackTrace();
-											}
-										} else {
-											System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
-										}
-									}
-								}*/
-							Game.getInstance().statusArgRemove(getClass().getSimpleName());
+							ew.setErrorWorld();
 						}
-					//}
-					//}
+						/* Try to write all files for next time */
+						if (errorWorld.get(0).haveIO()) { //TODO: Bientôt de retour, un peu de patience...
+							int rank = 0;
+							for (World ew:errorWorld) {
+								String name = "src/"+worldFileName+"-error"+(rank++);
+								name = name.replaceAll("\\.", "/") + ".map";
+								if (new File(name).getParentFile().canWrite()) {
+									try {
+										ew.writeToFile(new File(name));
+									} catch (Exception e) {
+										System.err.println(i18n.tr("Error while writing error world of {0}:",name));
+										e.printStackTrace();
+									}
+								} else {
+									System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
+								}
+							}
+						}
+						Game.getInstance().statusArgRemove(getClass().getSimpleName());
+					}
 				};
 				t.setUncaughtExceptionHandler(h);
 				Game.addInitThread(t);

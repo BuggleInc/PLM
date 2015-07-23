@@ -130,7 +130,7 @@ public class Turtle extends Entity {
 		double nX = newX;
 		double nY = newY;
 
-		while (nX < 0 || nX >= w || nY < 0 || nY >= h) { // need to clip			
+		while (nX < 0 || nX > w || nY < 0 || nY > h) { // need to clip			
 			// line equation y = y1+m(x-x1)
 			// where m=(y2-y1)/(x2-x1)
 			final double m = (nY - y) / (nX - x);

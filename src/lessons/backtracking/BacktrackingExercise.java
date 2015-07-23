@@ -27,7 +27,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			}
 
 		}
-		setupWorlds(ws, null);
+		setupWorlds(ws, 0);
 		try {
 			// FIXME: Java only aint good
 			newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java");
