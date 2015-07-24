@@ -227,7 +227,9 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("java", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
 		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
 		jsonObject.put("plm", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
-
+		jsonObject.put("webplm.version", game.getLocalProperty("webplm.version"));
+		jsonObject.put("webplm.user-agent", game.getLocalProperty("webplm.user-agent"));
+		
 		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
 		return "{\"kind\":\""+kind+"\","+jsonObject.toString().substring(1);
 	}

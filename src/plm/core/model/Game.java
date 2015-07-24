@@ -89,6 +89,8 @@ public class Game implements IWorldView {
 	private static Properties localGameProperties = new Properties();
 	private static File localGamePropertiesLoadedFile;
 
+	private Properties localProperties = new Properties();
+	
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Map<String, Lesson> loadedLessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
@@ -153,8 +155,12 @@ public class Game implements IWorldView {
 	
 	private Locale locale;
 	public I18n i18n;
-	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
+		this(userUUID, logger, locale, defaultProgrammingLanguage, trackUser, new Properties());
+	}
+	
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser, Properties localProperties) {
+		this.localProperties = localProperties;
 		this.logger = logger;
 		this.locale = locale;
 		this.trackUser = trackUser;
@@ -1291,5 +1297,13 @@ public class Game implements IWorldView {
 	
 	public LogHandler getLogger() {
 		return logger;
+	}
+	
+	public String getLocalProperty(String key) {
+		return localProperties.getProperty(key);
+	}
+	
+	public void setLocalProperty(String key, String value) {
+		localProperties.setProperty(key, value);
 	}
 }
