@@ -1,5 +1,6 @@
 package lessons.sort.baseball.universe;
 
+import java.util.Random;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
@@ -49,11 +50,13 @@ public class BaseballWorld extends World {
 			for (int pos = 0; pos < posAmount; pos++)
 				setPlayerColor(base, pos, base);
 		setPlayerColor(baseAmount-1, 0, COLOR_HOLE);
-				
+		
+		Random r = new Random(0);
+		
 		if (mix == MIX_RANDOM) {
 			for (int base = 0 ; base<getBasesAmount();base++)
 				for (int pos = 0 ; pos<getPositionsAmount();pos++)
-					swap(base, pos, (int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
+					swap(base, pos, (int) (r.nextDouble()*getBasesAmount()), (int) (r.nextDouble()*getPositionsAmount()));
 		
 		} else if (mix == MIX_NOBODY_HOME) {
 			// Ensure that nobody's home once it's mixed. 
@@ -68,9 +71,9 @@ public class BaseballWorld extends World {
 							swapped = true;
 							int newBase;
 							do {
-								newBase = (int) (Math.random()*getBasesAmount());
+								newBase = (int) (r.nextDouble()*getBasesAmount());
 							} while (newBase == base);
-							int newPos = (int) (Math.random()*getPositionsAmount());
+							int newPos = (int) (r.nextDouble()*getPositionsAmount());
 							swap(base, pos, newBase, newPos);							
 						}
 			} while (swapped);

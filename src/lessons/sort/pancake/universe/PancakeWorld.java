@@ -1,5 +1,7 @@
 package lessons.sort.pancake.universe;
 
+import java.util.Random;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import plm.core.lang.ProgrammingLanguage;
@@ -46,14 +48,15 @@ public class PancakeWorld extends World {
 			pancakeStack[i] = new Pancake(i + 1);
 		
 		/* Mix them */
+		Random r = new Random(0);
 		wasRandom = true;
 		while (isSorted()) 
 			for ( int rank = 0 ; rank < size ; rank++) {			
-				if ( Math.random() > 0.5) // Flipping time !
+				if ( r.nextDouble() > 0.5) // Flipping time !
 					pancakeStack[rank].flip(); 
 
-				if ( Math.random() > 0.5) // Swapping time !
-					swap(rank, (int)(Math.random()*size));
+				if ( r.nextDouble() > 0.5) // Swapping time !
+					swap(rank, (int)(r.nextDouble()*size));
 			}
 		
 		this.burnedWorld = burnedPancake;
