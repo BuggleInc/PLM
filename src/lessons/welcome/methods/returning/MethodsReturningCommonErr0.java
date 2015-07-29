@@ -1,8 +1,9 @@
-package lessons.welcome.variables;
+package lessons.welcome.methods.returning;
 
 import plm.core.model.Game;
 
-public class VariablesCommonErr0 extends plm.universe.bugglequest.SimpleBuggle {
+
+public class MethodsReturningCommonErr0 extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
@@ -13,30 +14,24 @@ public class VariablesCommonErr0 extends plm.universe.bugglequest.SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
-
 	@Override
-	public void run() {
-		int nbSteps = 0;
-		int backwardSteps = 0;
-			
-		while(!estSurBiscuit())
-		{
-			nbSteps = 0;
-			backwardSteps = 0;
-
+	public void run() { 
+		for (int i=0; i<7; i++) {
+			if (haveBaggle()) 
+				return;
+			right();
 			forward();
-			nbSteps++;
-
-			if(isOverBaggle())
-			{		
-				pickupBaggle();
-				while(backwardSteps != nbSteps)
-				{
-					backward();
-					backwardSteps++;
-				}
-				dropBaggle();
-			}
+			left();
 		}
+	}
+	boolean haveBaggle() {
+		boolean hasBaggle = false;
+		for (int i=0 ; i < 6 ; i++) {
+			forward();
+		}
+		for (int i = 0 ; i < 6 ; i++) {
+			backward();
+		}
+		return hasBaggle;
 	}
 }

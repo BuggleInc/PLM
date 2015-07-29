@@ -415,7 +415,7 @@ public abstract class ExerciseTemplated extends Exercise {
 							ew.setErrorWorld();
 						}
 						/* Try to write all files for next time */
-						if (errorWorld.get(0).haveIO()) { //TODO: Bientôt de retour, un peu de patience...
+						/*if (errorWorld.get(0).haveIO()) { //TODO: Bientôt de retour, un peu de patience...
 							int rank = 0;
 							for (World ew:errorWorld) {
 								String name = "src/"+worldFileName+"-error"+(rank++);
@@ -431,7 +431,7 @@ public abstract class ExerciseTemplated extends Exercise {
 									System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
 								}
 							}
-						}
+						}*/
 						Game.getInstance().statusArgRemove(getClass().getSimpleName());
 					}
 				};

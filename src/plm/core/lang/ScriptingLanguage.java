@@ -79,7 +79,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		} else {
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,nbError), getExt(), false);
+				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,nbError), "java", false);
 			} catch (IOException ex) {
 				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,nbError)+"."+getExt()+" since I cannot read it (error was: "+
 						ex.getLocalizedMessage());

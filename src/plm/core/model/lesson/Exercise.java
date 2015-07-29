@@ -72,12 +72,19 @@ public abstract class Exercise extends Lecture {
 			currentWorld.add( w[i].copy() );
 			initialWorld.add( w[i].copy() );
 			answerWorld. add( w[i].copy() );
-			for(int j = 0 ; j < size ; j++) {
-				errorWorld = new Vector<World>(w.length);
-				errorWorld.add(w[i].copy());
-				commonErrors.add(errorWorld);
-			}
 		}
+		for(int j = 0 ; j < size ; j++) { //size : nombre de fichiers d'erreur
+			errorWorld = new Vector<World>(w.length);
+			for (int i=0; i<w.length; i++) {
+				if (w[i] == null) 
+					throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
+				errorWorld.add(w[i].copy());
+//				System.out.println(errorWorld.size()+" / "+w.length);
+			}
+			commonErrors.add(errorWorld);
+		}
+//		if(commonErrors.size()!=0)
+//			System.out.println("Size of commonErrors = "+commonErrors.size()+"\nSize of element 0 = "+commonErrors.get(0).size());
 	}
 
 	public abstract void run(List<Thread> runnerVect);	
@@ -86,6 +93,7 @@ public abstract class Exercise extends Lecture {
 	public void check() {
 		boolean pass = true;
 		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+			System.out.println("Size of currentWorld = "+currentWorld.size());
 			for (int i=0; i<currentWorld.size(); i++) {
 				currentWorld.get(i).notifyWorldUpdatesListeners();
 
@@ -95,7 +103,6 @@ public abstract class Exercise extends Lecture {
 					for(int j = 0 ; j < commonErrors.size() ; j++) {
 						//System.out.println(currentWorld.size()+" > "+commonErrors.size()+" - "+commonErrors.get(j).size());
 						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) {
-							//System.out.println("Here");
 							String[] brokenPath = this.getLocalId().split("\\.");
 							String path = "src/";
 							for(int k = 0 ; k < brokenPath.length ; k++) {
@@ -117,17 +124,14 @@ public abstract class Exercise extends Lecture {
 							} catch (IOException e) {
 								e.printStackTrace();
 							} 
-							//"Nombre de fichiers leurre : "+commonErrors.size()+"\n\nYou just had to write \"forward();\" to win this exercise...\n\n";
 							break;
-						} else {
-							System.out.println("Failed : "+j);
 						}
 					}
 					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 					lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
 						lastResult.executionError += ":\n"+diff;
-					lastResult.executionError += "\n";
+					lastResult.executionError += "\n------------------------------------------\n";
 					pass = false;
 				} else {
 					lastResult.passedTests++;
