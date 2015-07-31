@@ -1,0 +1,36 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Ilha dos Buggles</h1>
+
+Você acaba de receber as anotações de viagem da sua velha tia que atravessou
+o país das Ilhas dos Buggles. Ela escreveu a altitude a cada quilômetro
+durante a viagem, resultando numa sequência de números como segue.
+
+<pre>0 0 1 1 2 2 1 1 0 1 2 2 1 1 0</pre>
+
+<p>Aqui está um corte das ilhas por este caminho:</p>
+
+<pre>
+       /***\       /*\         &lt;-- 2 metros acima do nível do mar
+   /***********\ /*******\     &lt;-- 1 metro acima do nível do mar
+***************************    &lt;-- nível do mar
+| | | | | | | | | | | | | |
+0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude em cada ponto
+</pre>
+
+<p>Este exemplo é constituído de quatro níveis de ilhas:</p>
+
+<ul>
+  <li>1 1 2 2 1 1 (a ilha da esquerda)</li>
+  <li>2 2 (o topo da montanha da ilha da esquerda)</li>
+  <li>1 2 1 1 (a ilha da direita)</li>
+  <li>2 (a montanha da direita)</li>
+</ul>
+
+<p>Isto também pode ser visualizado desta forma:</p>
+
+<pre>0 0(1 1(2 2)1 1)0(1(2)1 1)0</pre>
+
+<p>Você poderia escrever um pequeno programa que calculasse a quantidade de
+níveis numa dada sequência de altitudes? Na verdade, existem uma solução
+iterativa e uma recursiva para este problema.</p>

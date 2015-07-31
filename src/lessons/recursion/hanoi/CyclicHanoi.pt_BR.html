@@ -1,0 +1,19 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Torres de Hanoi cíclicas</h2>
+
+<p>Esta variação das torres de Hanoi é muito similar ao problema normal:
+você recebe uma pilha de discos e três varas, e você não pode mover um
+disco maior sobre um menor. A diferença é que você só pode mover
+discos no sentido horário: 0->1 ou 1->2 ou 2->0, mas nunca na outra
+direção.</p>
+
+<p>Obviamente, os movimentos não são simétricos de forma
+alguma. Movimentos de A para B são agora muito diferentes de
+movimentos de B para A. Como resultado, você precisa de duas funções
+recursivas dependendo de você estar movendo a pilha no sentido horário
+ou anti-horário.</p>
+
+<p>Dito isto, a decomposição do problema é muito similar ao Hanoi
+clássico. A diferença é que cada função chama a outra, constituindo um
+bom exemplo de recursão mútua.</p>

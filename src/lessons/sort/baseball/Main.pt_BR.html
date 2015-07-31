@@ -1,0 +1,52 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>O jogo do basebal multicores</h1>
+
+<p>Esta atividade é inspirada do jogo orange, do repositório de atividades
+"Computer Science Unplugged".  Ela foi entretanto profundamente alterada,
+primeiro para o CSIRL (meu repositório de atividades unplugged <i>livres</i>
+para introduzir a ciência da computação, disponível em
+http://www.loria.fr/~quinson/Mediation/SMN/) e agora para o PLM.</p>
+
+<p>Na literatura, a forma geral deste problema é conhecida como o "Pebble
+motion problem" (as bases podem ser conectadas por qualquer tipo de
+grafo, e a afinidade das "pebbles" com as bases pode ser
+diferente). Outra variante deste problema é o famoso jogo do 15, com
+um jogador por base, e um tabuleiro quadrado bidimensional. Mais
+informações sobre estes problemas podem ser encontradas na wikipédia
+em inglês, como sempre.</p>
+
+<h3>Como você sabe que o algoritmo simplório não vai entrar em loop nesta
+situação inicial?</h3>
+
+<p>Bem, nós simplemente testamos todas as situações possíveis para ver quando
+este algoritmo entra em loop e quando ele acha a solução correta. Nós
+verificamos que ele funciona em todas as situaçoes onde nenhum jogador está
+em sua casa (existem 84 situações destas para 4 bases, levando em conta as
+simetrias). Ele obviamente funciona para algumas situações que não respeitam
+este critério (such as all situations it encounters from one of those 84
+boards to the final state), mas isto é outra história. Dado tal critério
+podemos gerar situaões iniciais pseudo-aleatórias para o primeiro exercício
+para o qual o algoritmo que propomos com certeza funciona.</p>
+
+<p>Também exploramos instâncias maiores do problema, e infelizmente, não temos
+tal critério para elas. Com 5 bases, o algoritmo entra em loop de forma
+errada para 24 dos 1824 possíveis tabuleiros onde nenhum jogador está na sua
+casa (que dá 1.31%).  Com 6 bases, ele falha em 1251 dos 58860 tabuleiros
+(2.12%). Com 7 bases, ele falha para 84444 dos 2633940 (3.2%). Ainda estou
+procurando um critério que garanta que o algoritmo não vai entrar em
+loop. Se você descobrir um, por favor avise. Idealmente, deve ser simples
+garantir manualmente de forma que possamos usá-lo durante nossas atividades
+"unplugged".</p>
+
+<h3>O que eu posso fazer para melhorar este universo do PLM?</h3>
+
+<p>Como sempre, existem várias coisas que podem ser feitas no código deste
+universo para melhorá-lo:</p>
+<ul>
+  <li>Outras representações gráficas podem ser propostas, tais como uma linear
+(para os exercícios existentes) ou outros (como um grid ou uma árvore, se um
+exercício neste tipo de grafo se mostrar interessante).</li>
+  <li>Outros exercícios em outros algoritmos desta variante, ou em outras
+variantes como o jogo do 15.</li>
+</ul>

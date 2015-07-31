@@ -1,0 +1,48 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Escrevendo programas mais complexos</h2>
+  Agora que nós sabemos como desenhar coisas no tabuleiro, vamos aproveitar
+esta habilidade e desenhar um belo G (Veja o painel de Objetivo para
+detalhes). 
+
+  <p>Quando você escreve um programa bem complexo, por vezes é útil <b>adicionar
+comentários</b> para simplificar uma posterior revisão do código. Aqui, por
+exemplo, é fácil se perder no processo de desenho, e você pode querer
+adicionar comentários como <i>barra vertical desenhada</i> ou <i>terminei de
+desenhar o G. hora de voltar para posição inicial</i>. Comentar seu código é
+quase obrigatório se você (ou mais alguém) quiser lê-lo depois, embora
+comentar demais (descrevendo coisas óbvias) é ruim pois as ideias
+importantes se perdem no meio do ruído.</p>
+   
+  <p>Existem [!java]três[/!][!python|scala|c]dois[/!] tipos de comentários em
+[!thelang], que instruem o
+[!java|scala|c]compilador[/!][!python]interpretador[/!] a não ler o texto
+que você adiciona para humanos:</p>
+   
+  <ul>
+    <li><b>Comentários de uma única linha</b>. Quando o
+[!java|scala|c]compilador[/!][!python]interpretador[/!] encontra o símbolo
+[!java|scala|c]//[/!][!python]#[/!], ele ignora o resto da linha.</li>      
+    <li><b>Comentários em várias linhas</b>. O
+[!java|scala|c]compilador[/!][!python]interpretador[/!] ignora tudo entre
+[!java|scala|c]os símbolos /* e */ mesmo quando eles são postos em linhas
+diferentes.[/!] [!python]uma linha comaçando com ''' até a próxima linha
+terminado com '''.[/!]</li>
+  </ul>
+
+<pre>
+chamadaDeMétodoLidaPelo[!java|scala|c]Compilador[/!][!python]Interpretador[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] tudo isto é ignorado</span>
+outraChamada()[!java|c];[/!] [!java|scala|c]<span class="comment">/* Isto aqui</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> também é ignorado */</span>[/!]
+[!python]<span class="comment">''' Isto aqui</span>
+<span class="comment">também é ignorado  '''</span>[/!]
+maisUmaChamada()[!java|c];[/!]
+</pre>  
+  <p class="Java">Existe um terceiro tipo de comentário em Java, entre /** e */, que é lido
+por um programa específico chamado JavaDoc para gerar automaticamente a
+documentação explicando como usar o código. Estes comentários devem seguir
+um formalismo bem preciso.</p>
+
+  <p class="Python">Os comentários de várias linhas são frequentemente usados para documentar
+como usar o código, enquanto os outros são usados para descrever como este
+código funciona.</p>

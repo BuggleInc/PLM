@@ -1,0 +1,184 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Armazenando e manipulando dados</h2>
+  <p>Os programas que escrevemos até agora não tem um ponto fundamental da
+computação. Na verdade, é sobre processar <b>dados</b> através de
+<b>instruções</b> específicas. No mundo dos buggles, os dados principais
+estão escondidos atrás de uma representação gráfica, mas isto não é motivo
+para nunca manipular alguns dados explicitamente. </p>
+
+  <h3>Dados em [!thelang]</h3>
+<p>Num programas, você pode usar vários <i>tipos</i> de dados, tais como
+números inteiros ou cadeias de caracteres ou caracteres. Se você quiser usar
+um dado várias vezes, você precisa armazenar ele numa <i>variável</i>, que é
+uma célula de memória contendo um valor: você bota seu dado (digamos o valor
+'5') na variável (digamos 'comprimento'), e você pode recuperá-la mais tarde
+quando precisar dela. Isto é muito similar a uma caixa com o rótulo
+'presente' na qual você pode colocar alguma coisa, como um perfume "Channel
+N°5".  </p>
+
+<h3>Declaração de variáveis</h3>  
+
+<p><b>Declarar</b> (ie, criar) uma variável em [!thelang], é muito
+simples. Você simplesmente escreve [!java]seu tipo, um espaço, e o nome da
+variável.[/!] [!scala]a palavra-chave <code>var</code>, o nome da variável,
+um dois-pontos (:) e o tipo da variável, um sinal de igualdade (=) e um
+valor inicial.[/!] [!python]o nome da variável, um sinal de igual (=) e um
+valor inicial.[/!] O nome da variável é o rótulo para recuperar ela
+depois[!python].[/!] [!java|scala] enquanto o tipo é o tipo de dado que a
+variável aceita guardar.[/!] É proibido usar espaços em nomes de
+variáveis. Você pode nomear uma variável <code>quantidadeDePassos</code> se
+você quiser, mas <code>quantidade de passos</code> não é um nome válidos.
+  </p>
+
+[!c|java]
+  <p>Então, para criar uma variável chamada <b>x</b> para guardar inteiros, você
+deve escrever:</p> 
+  <pre>int x;</pre>
+  <p>Se você quiser, pode especificar o valor inicial da variável adicionando um
+símbolo de igual (=) seguido do valor depois da declaração.</p>
+  <pre>int x=5;</pre>
+[/!] [!python]
+  <p>Então se você quiser que a variável tenha o valor inicial de 5, você deve
+digitar: </p>
+  <pre>x = 5</pre>
+[/!] [!scala]
+  <p>Logo, para criar uma variável chamada <b>x</b> que vai guardar inteiros e
+com 42 como valor inicial, você deve escrever:</p> 
+  <pre>var x:Int = 42</pre>
+  <p>Na maioria dos casos, o compilador é capaz de adivinhar o tipo da variável
+baseado no valor inicial, e você pode omitir o tipo:</p>
+  <pre>var x = 42</pre>
+  <p>Você ainda tem que especificar se você usa alguns valores genéricos como uma
+inicialização, tais como o valor muito especial <code>null</code>, cujo tipo
+parece ser ambíguo. Mesmo quando o tipo é claro, você ainda pode especificar
+o tipo se preferir. Portanto, se você quiser que a variável contenha 5 como
+valor inicial, você deve digitar: </p>
+  <pre>var x: Int =  5 <span class="comment">// Eu posso definir o tipo se eu quiser</span>
+var y =  10      <span class="comment">// ou posso omitir o tipo se eu preferir</span></pre>
+[/!] [!java|scala|c]
+<p>Como você pode ver, as variáveis são <b>tipadas</b> em [!thelang], que
+significa que elas são de certa forma especializadas: Uma dada variável pode
+armazenar apenas dados de um tipo; nem pense em guardar números em uma
+variável que é feita para letras! Dizemos que a linguagem [!thelang] é
+<b>estaticamente tipada</b>.</p>
+<p>Outras linguages (como Python) são menos charas e permitem que você guarde
+qualquer tipo de dado em qualquer variável, sem restrições (estas linguagens
+são ditas <b>dinamicamente tipadas</b>). Parecem mais fáceis à primeira
+vista, mas este tipo de restrição permite que o compilador perceba mais
+erros de lógica para você, o que é bom. Num certo sentido, Python é mais
+fácil de escrever mas os erros surgem com mais frequencia do que em
+[!thelang].</p>
+<p>Aqui estão alguns dos tipos em [!thelang]:</p>
+<ul>
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, para inteiros;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, para números com vírgula;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, para booleanos, que
+são valores ou [!c]1[/!][!java|scala]true[/!] ou
+[!c]0[/!][!java|scala]false[/!];</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, para cadeias de caracteres.</li>
+</ul>
+[/!] [!python]
+<p>As you can see, the variables are not <b>typed</b> in Python, which means
+that they are not specialized in any type of data.  A given variable store
+any type of data of a given type: you can store a number in a variable and
+later on store a number in the same variable.  The values themselves are
+still typed, but not the variable. Python is said to be <b>dynamically
+typed</b>.</p>
+<p>Outras linguagens (como Java, Scala ou C), são muito mais exigentes e
+impedem que você misture tipos de dados numa certa variável (dizemos que
+elas são <b>esticamente tipadas</b>). Isto parece inconveniente à primeira
+vista, mas este tipo de restrição permite que o compilador capture mais
+erros de lógica para você, o que também é bom. Num certo sentido, Python é
+mais fácil de escrever mas erros podem surgir mais facilmente.</p>
+[/!]
+  
+
+<p class="scala">Se você sabe que o valor de sua "variável" nunca vai mudar (eg quando ela
+contém o tamanho da tela ou outro valor constante), então você deve fazer
+dela um <b>valor</b> ao invés de uma variável. Simplesmente mude a
+palavra-chave <code>var</code> para <code>val</code>. O compilador pode
+então verificar suas ações e capturar seu erro quando você inadvertidamente
+modificar o valor. Mais interessante ainda, o compilador pode produzir
+código mais rápido em alguns casos.</p>
+
+<p>Variáveis funcionam muito parecido com strings, números com vírgula e
+valores booleanos.</p>
+
+<pre class="c">char* nome = "Martin Quinson";
+double altura=1.77; <span class="comment">// em metros</span>
+int casado=1;<span class="comment">// 1 significa "verdadeiro"; falso é 0</span></pre>
+
+
+<pre class="java">String nome = "Martin Quinson";
+double altura=1.77; <span class="comment">// em metros</span>
+boolean casado=true;<span class="comment">// o contrário se escreve "false"</span></pre>
+
+<pre class="scala">val nome:String = "Martin Quinson"; <span class="comment">// isto não pode ser modificado (é um valor)</span>
+var altura: Double = 1.77; <span class="comment">// em metros</span>
+var casado = true; <span class="comment">// o contrário se escreve "false"</span>
+<span class="comment">// Scala sabe que 'true' é um valor Booleano, não precisa repetir</span></pre>
+
+<pre class="python">firstName = "Martin"
+lastName = 'Quinson' <span class="comment"># aspas e aspas simples funcionam aqui</span>
+frase = "uma gota d'água é sempre melhor que nada" <span class="comment"># uma aspas simples entre aspas duplas vale</span> 
+altura=1.77 <span class="comment"># em metros</span>
+casado=True <span class="comment"># o contrário se escreve "False"</span></pre>
+
+<h3>Atribuições</h3>
+
+<p>Uma vez que sua variável está declarada, você pode <b>atribuir</b> um novo
+valor para ela mais tarde no programa. Isto é bem fácil:</p> 
+<pre>x = 3[!java|c];[/!]</pre>
+
+<p>À esquerda do símbolo de igual você pode colocar uma expressão aritmética
+contendo constantes, variáveis e operações.</p>
+
+<pre>x = 3 + 2[!java|c];[/!]
+x = 3 * x[!java|c];[/!]
+[!java|scala|python]saudação = "Oi "+nome[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + é (também) a operação para concatenar (ie, para juntar) strings[/!]</span></pre> 
+
+<h3>Objetivo do exercício</h3>
+Agora vamos fazer exercícios mais desafiantes, certo? O objetivo agora é
+mover para a frente até encontrar um baggle, pegar ele e se mover para trás
+até a localização inicial antes de sotar o baggle.
+
+<h3>Como fazer isto?</h3> 
+<p>Para resolver este problema, você tem que docompor ele em sub-partes
+menores. Por exemplo, você pode querer fazer os passos seguintes:
+<ol>
+  <li>Mover para a frente até se colocar sobre um baggle</li>
+  <li>Pegar o baggle</li>
+  <li>Mover para trás a mesma quantidade de passos que deu no primeiro passo</li>
+  <li>Soltar o baggle de novo</li>
+</ol></p>
+
+<p>Naturalmente, é impossível dar a quantidade certa de passos para trás no
+passo 3 se você não contou a quantidade de passos dados na primeira
+fase. Você pode usar uma variável para isto, que pode ser chamada
+<code>quantidadeDePassos</code>.</p>
+
+<p>Crie uma variável inteira antes da fase 1, inicie ela com 0 e a cada vez que
+der um passo para frente, incremente ela de um (<code>quantidadeDePassos =
+quantidadeDePassos + 1;</code>[!java] ou <code>quantidadeDePassos++;</code>,
+ambas as sintaxes são equivalentes[/!]).  Tais variáveis que pegam cada
+valor de um dado intervalo são normalmente chamadas de <b>stepper</b>.</p>
+  
+[!python|scala]
+<p>Se você conhece Java ou outras linguagens, você provavelmente vai tentar
+usar o operador <code>++</code> para incrementar a variável, mas isto não é
+permitido em [!thelang].  Isto é por que seria difícil definir este operador
+para todos os tipos de dados.  Por exemplo, o que faria ++ quando aplicado a
+um valor complexo ou a uma String? O problema não ocorre em Java pois
+<code>int</code> não é um objeto e sim um tipo primitivo.  (se você não
+conhece o <code>++</code>, simplesmente ignore este parágrafo: ele não
+existe em [!thelang])</p>
+[/!]
+
+<p>Então, a fase 3 consiste em simplesmente criar uma nova variável inteira
+<code>passosDados</code> iniciada como 0, e dar um passos para trás enquanto
+<code>passosDados</code> não for igual a <code>quantidadeDePassos</code>,
+aumentando <code>passosDados</code> a cada vez. O operador <code>!=</code>
+deve ser usado para testar a inequação (quando um valor NÃO É igual).</p> 
+
+<p>É sua vez agora!</p>

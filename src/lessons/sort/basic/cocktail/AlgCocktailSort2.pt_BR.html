@@ -1,0 +1,19 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>CocktailSort (take 2)</h1>
+
+<p>Vamos agora aplicar ao CocktailSort a mesma otimização que o BubbleSort2 faz
+no BubbleSort. Devemos lembrar que os limites da parte do array que não está
+ordenada ainda, e percorrer ela alternativamente da esquerda para a direita
+e da diretia para a esquerda:</p>
+<pre>
+beg=0; end=len-2
+do
+  For all Pour i in [beg,end], do:
+      If cells i and i+1 must be swapped, do it    
+  end -= 1 (this means end = end - 1)
+  For all Pour i in [beg,end] (downwards), do:
+      If cells i and i+1 must be swapped, do it    
+  beg += 1 (this means beg = beg + 1)
+while at least one of the traversal swapped an element
+</pre>

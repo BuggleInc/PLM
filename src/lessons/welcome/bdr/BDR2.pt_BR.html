@@ -1,0 +1,169 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Buggle Dance Revolution 2 (BDR2)</h2>
+
+[!java|scala|c]
+<p>BDR é legal, mas um pouco caótico. Primeiro, os buggles balançam em todas as
+direções, o que faz com que o código que você tenha que escrever para
+fazê-los se mover seja um pouco difícil de ler. Apresentamos agora um novo
+mundo DBR onde os buggles dançam num suave círculo. Vamos aproveitar esta
+tranquilidade para limpar um pouco nosso código graças a novas construções
+que vamos introduzir.</p>
+
+<h3>[!java|c]condicionais <code>switch</code>[/!][!scala]busca de padrões[/!]</h3>
+
+<p>A parte mais difícil do código anterior é comn certeza a cascata de
+condicionais. Em algum ponto do seu código, você certamente tem algo como
+isto:</p>
+
+<pre>if ([!java|c]getIndicação() == 'R'[/!][!scala]lerMensagem() == "R"[/!]) {
+  direita();
+  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+} else if ([!java|c]getIndicação() == 'L'[/!][!scala]lerMensagem() == "L"[/!]) {
+  esquerda();
+  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+} else if ([!java|c]getIndicação() == 'I'[/!][!scala]lerMensagem() == "I"[/!]) {
+  voltar();
+  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+<span class="comment">/* other else if */</span>
+} else {
+  terminou = [!c]1[/!][!java|scala]true[/!];
+}
+</pre>
+
+<p>Quando você revisa este código, não fica claro à primeira vista que ele é
+simplesmente a escolha entre quatro ramos dependendo do valor de
+[!java|c]getIndicação()[/!][!scala]lerMensagem()[/!]. Para melhorar ele,
+vamos usar uma construção [!java|c]<code>switch</code>, que na sintaxe de
+Java é o seguinte:[/!] [!scala] de busca de padrões, que é bastante poderosa
+e generaliza muito o <code>if</code>. É com certeza uma das maiores
+vantagens de Scala quando comparada com linguagens como Java ou python. E
+nem é tão nova assim, já que outras linguagens como OCaml e Haskell já tem
+esta funcionalidade a muito tempo. Ela é bem legal![/!]</p>
+[/!] [!java|c]
+<pre>
+switch (<b>expression</b>) {
+  case <b>firstValue</b>: 
+    <b>whatToDoIfExpressionEqualsFirstValue();</b>
+    break;
+  case <b>secondValue</b>: 
+    <b>whatToDoIfExpressionEqualsSecondValue();</b>
+    break;
+  case <b>thirdValue</b>: 
+    <b>whatToDoIfExpressionEqualsThirdValue();</b>
+    break;
+    /* as much similar cases as you want */
+  default: 
+    <b>whatToDoIfExpressionDoesNotEqualsAnySeenValues();</b>
+}</pre>
+
+<p>Observe que cada ramo de um <tt>switch</tt> deve terminar com um
+<code>break</code>. se você esquecer dele, a máquina continua e executa o
+próximo ramo na lista depois do ramo para o qual ele pulou. Existem na
+verdade uns <b>raros</b> casos onde este comportamento é útil.</p>
+
+<p>É então possível reescrever o código do BDR anterior numa forma mais clara
+usando a construção <tt>switch</tt>:</p>
+
+<pre>switch (getIndicação()) {
+  case 'R':
+    direita(); 
+    [!c]avançarUmPasso()[/!][!java]avançar()[/!]; 
+    break;
+  case 'L':
+    esquerda();
+    [!c]avançarUmPasso()[/!][!java]avançar()[/!]; 
+    break;
+  case 'I':
+    voltar();
+    [!c]avançarUmPasso()[/!][!java]avançar()[/!];
+    break;
+  default: 
+    return;
+}</pre>
+[/!] [!scala]
+<pre><i>expressão</i> <b>match</b> {
+  <b>case</b> <i>um valor possível</i> <b>=></b> instruções
+  <b>case</b> <i>um outro valor</i>     <b>=></b> outras instruções
+  <b>case</b> <i>mais outro valor</i> <b>=></b> e outras instruções
+  <b>case _                 =></b> instruções padrão
+}
+</pre>
+<p>A espressão fornecida antes da palavra-chave <code>match</code>, e os ramos
+seguintes são avaliados um após o outro até encontrarmos um cujo valor
+fornecido entre <code>case</code> e <code>=&gt</code> seja igual ao valor da
+expressão. O símbolo <code>_</code> age como um coringa, logo o ramo
+<code>_</code> <i>sempre</i> casa. Aqui está um exemplo de onde uma variável
+<code>name</code> casa.</p>
+<pre>name match {
+  case "Martin" => println("Oi Martin, como vai?")
+  case "Gerald" => println("Oi Gerald! como vai você?")
+  case _            => println("Olá estranho.")
+}</pre>
+
+<p>é possível ter mais que uma instrução por ramo, e mesclar ramos quando os
+valores são separados por um símbolo | .</p>
+<pre>name match {
+  case "Martin" | "Gerald" => println("Oi "+name+", como vai?"); openTheDoor()
+  case _                            => println("Oi estranho. Favor não passar."); lockTheDoor()
+}</pre>
+
+<p>Você sempre pode adicionar guardas aos seus ramos. Estes são condições extra
+que devem ser respeitadas para que o ramo seja feito. São úteis se você
+quiser casar em intervalos de valores, como segue.</p>
+<pre>age match {
+  case i if i&lt;10 => println("Oi menino!")
+  case i if i&lt;20 => println("Oi cara!")
+  case i if i&lt;30 => println("Oi, meu caro")
+  case _           => println("Oi senhor")
+}</pre>
+<p>Observe que não há necessidade de verificar se o valor é maior que 10 na
+segunda linha por que o primeiro ramo "foi verificado". Então, se o segundo
+ramo está sendo verificado, o primeiro não aprovou.</p>
+
+<p>Finalmente, é possível também aprovar várias variáveis de uma vez!</p>
+<pre>(x,y) match {
+ case (0,0) => println("Esta é a origem")
+ case (_,0) => println("nas ordenadas")
+ case (0,_) => println("nas abscissas")
+ case (_,_) => println("algum ponto qualquer")
+}</pre>
+
+<p>Eu disse que reconhecimentod e padrões em scala é muito poderoso! Eu adoro
+esta funcionalidade!</p>
+[/!]
+
+<h3>Objetivo do exercício</h3>
+<p>[!java|scala|c]"Aplique" a melhoria que acabamos de ver para reescrever seu
+código do buggle com os seguintes passos de dança. [/!] [!python]Vamos
+ensinar um novo passo de dança para os buggles. É um pouco mais complexo mas
+na verdade vai ficar mais legal. Apesar disto, é a mesma história de
+sempre.[/!] Observe que nósagora vamos subir seis células em um passo de
+dança.</p>
+
+<table border="1">
+ <tr><td>Mensagem</td>
+     <td>O que fazer</td></tr>
+
+ <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Vire a direita (R de right) e mova um passo a frente</td></tr>
+ <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Vire a esquerda e mova um passo a frente</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Vire e dê um passo para frente</td></tr>
+
+ <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Mova um passo a frente</td></tr>
+ <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Mova dois passos a frente</td></tr>
+ <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Mova três passos a frente</td></tr>
+ <tr><td>[!java|c]'D'[/!][!scala|python]"D"[/!]</td><td>Mova quantro passos para frente</td></tr>
+ <tr><td>[!java|c]'E'[/!][!scala|python]"E"[/!]</td><td>Mova cinco passos para frente</td></tr>
+ <tr><td>[!java|c]'F'[/!][!scala|python]"F"[/!]</td><td>Mova seis passos para frente</td></tr>
+
+ <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Mova um passo para trás</td></tr>
+ <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Mova dois passos para trás</td></tr>
+ <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Mova três passos para trás</td></tr>
+ <tr><td>[!java|c]'W'[/!][!scala|python]"W"[/!]</td><td>Mova quatro passos para trás</td></tr>
+ <tr><td>[!java|c]'V'[/!][!scala|python]"V"[/!]</td><td>Mova cinco passos para trás</td></tr>
+ <tr><td>[!java|c]'U'[/!][!scala|python]"U"[/!]</td><td>Mova seis passos para trás</td></tr>
+ <tr><td><i>(qualquer outra coisa)</i></td><td>Parar de dançar.</td></tr>
+
+</table>
+
+<p>Quando seu programa funcionar de novo, vá para o próximo exercício.</p>

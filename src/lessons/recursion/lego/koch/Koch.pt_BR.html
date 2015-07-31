@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Floco de neve</h2>
+
+Vamos agora desenhar flocos de neve usando o Koch fractal. Um fractal é um
+padrão geométrico repetido em cada escala.
+
+<p>A forma geral é um triângulo, com cada lado dado por várias chamadas
+recursivas. Seu trabalho é apenas escrever o código do método
+<code>snowSide</code> de forma que ele desenhe um lado do triângulo. Para
+facilitar, cada um dos lados é representado numa cor
+específica. Simplesmente desenhe as coisas vermelhas (sem mudar a cor da sua
+caneta), e as outras cores serão desenhadas automaticamente. </p>
+
+<p>Observe o desenho em cada um dos mundos objetivo para entender a lógica do
+padrão, e então reproduza ele. No nível 0, a curva de Koch é apenas uma
+linha reta. No nível 1, a curva é dividida em três terços, e a parte média é
+substituída pelos dois lados de um triângulo equilátero do mesmo comprimento
+do segmento sendo removido. No nível 2, o processo é repetido, com cada um
+dos segmentos dividido em três partes e a parte do meio sendo substituída
+pelos dois lados de um triângulo equilátero.</p>
+
+<p>O pseudo-código do caso geral é o seguinte:</p>
+<pre>
+  Desenhe recursivamente um segmento menor
+  Gire 60 graus para a esquerda
+  Desenhe recursivamente um segmento menor
+  Gire 120 graus para a direita
+  Desenhe recursivamente um segmento menor
+  Gire 60 graus para a esquerda
+  Desenhe recursivamente um segmento menor
+</pre>
+<p>Como você pode ver, a função forward() não é chamada no caso recursivo,
+apenas no caso base quando não existe chamada recursiva.</p>
+
+
+<p><div class="tip" id="tip-1" alt="Muitas letras. Favor "picture it".">
+<p>Aqui estão os resultados dos primeiro níveis da recursão.</p>
+<img src="KochHint.png" />
+</div></p>
+
+<p>Você deve escrever o método <code>snowSide()</code>, que é recursivo mas
+<b>não chame snowFlake de dentro de snowSide</b>, ou vão acontecer
+resultados estranhos e inesperados.</p>

@@ -1,0 +1,84 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Funções</h2>
+
+<p>Frequentemente, você vai querer escrever um método que calcula algum valor e
+o retorna. Métodos retornando resultados são chamados
+<b>funções</b>. Escrever uma função não é realmente mais difícil do que
+escrever um simples método.  [!java|c]Você simplesmente tem que especificar
+o tipo de dados do resultado esperado entes do nome da função (onde nós
+previamente tínhamos <code>void</code>).[/!] [!scala]Você simplesmente tem
+que adicionar um dois-pontos (:) depois do parêntesis e escrever o tipo de
+dados que sua função vai retornar, e adicionar um símbolo de igualdade
+(=). Esta sintaxe é na verdade mais próxima de definir uma variável, com seu
+tipo, do que na verdade escrever uma função.[/!] Você pode usar a instrução
+<code>return</code> em qualquer lugar do corpo da sua função para
+especificar que o cálculo foi feito (a função não continuará sendo
+executada), e que o resultado é o valor que acompanha a palavra-chave
+<code>return</code>.</p>
+
+<pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>Na verdade, você também pode usar a palavra-chave <code>return</code> em
+métodos que não retornam qualquer resultado, para interromper o
+cálculo. Obviamente que nestes casos você não passa nenhum valor para
+retornar.</p>
+
+<p>É possível ter várias instruções <code>return</code> em várias ramificações
+de um condicional. De fato, é proibido ter um caminho de execução no corpo
+da função sem nenhum <code>return</code>, ou escrever algum código depois da
+instrução <code>return</code>. Na verdade, se a máquina alcança o fim da
+função sem encontrar qualquer <code>return</code>, ela não sabe o real valor
+que deve retornar a quem chamou a função. Além disto, o <code>return</code>
+interrompe imediatamente a execução da função (por que se preocupar olhando
+além quando você sabe o resultado da função?). Então, se existe algum código
+depois de um <code>return</code>, deve ser um erro e o compilador irá te
+alertar disto.</p>
+
+<pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
+    if (estáDeFrenteParaParede() == [!java|scala]true[/!][!c]1[/!]) {
+        return [!java|scala]false[/!][!c]0[/!];
+        <span class="comment">/* proibido colocar código aqui */</span>
+    } else {
+        return [!java|scala]true[/!][!c]1[/!];
+        <span class="comment">/* nem aqui */</span>
+    }
+    <span class="comment">/* e nem mesmo aqui. desista */</span>
+}[/!][!python]def livreEmFrente():
+    if estáDeFrenteParaParede() == True:
+        return False
+        <span class="comment"># proibido colocar código aqui</span>
+    else
+        return True
+        <span class="comment"># nem aqui</span>
+<span class="comment"># e nem mesmo aqui, desista</span>[/!]</pre>
+
+<h3>Objetivo do exercício</h3>Você vai mais uma vez escrever uma função que o buggle vai usar. Seu nome
+deve ser <code>temBaggle</code>, e ela retorna um valor booleano indicando
+se a linha na frente do buggle contém um baggle ou não. O buggle vai usar
+isto para buscar a primeira linha contendo um baggle, e parar nela.
+
+<p>A forma fácil de fazer esta função é usar uma variável booleana chamada
+<code>baggleAvistado</code> indicando se nós vimos ou não um baggle até o
+momento. O valor inicial é
+'[!python]False[/!][!scala|java]false[/!][!c]0[/!]'.</p>
+
+<p>Então mova 6 passos para frente (o mundo contém 7 células e nós já estamos
+em uma delas). Para cada célula, se ela contiver um baggle, vamos guardar
+true em <code>baggleVisto</code> (e se não, vamos simplesmente andar para
+frente).</p>
+
+<p>No final, vamos nos mover 6 passos para trás, e retornar o valor de
+<code>baggleVisto</code> para quem chamou o método.</p>
+
+
+<p>Este exercício é um pouco diferente já que ele tem dois mundos iniciais,
+cada um com um objetivo específico. Seu código deve funcionar em
+ambos. Observe que o menu de seleção de mundo (logo abaixo do controle de
+velocidade) permite que você alterne entre os mundos. </p>
+
+<p>Quando sua função <code>temBaggle</code> funcionar, siga para o próximo
+exercício.</p>
+

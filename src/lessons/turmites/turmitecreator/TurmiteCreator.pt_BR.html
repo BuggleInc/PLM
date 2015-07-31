@@ -1,0 +1,166 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Criando Turmites</h2>
+
+<p>Este exercício permite que você construa seus próprios turmites. Para passar
+neste exercício, você deve simplesmente escrever um método
+<code>init()</code> que inicializa a <code>rule</code> para usar a seguintes
+tabela de transições (da wikipédia), configure a posição inicial em (8;33),
+e peça por 8342 passos.</p> 
+
+<table border="1" style="text-align:center">
+<tr>
+<th rowspan="3" colspan="2"></th>
+<th colspan="6">Cor atual</th>
+</tr>
+<tr>
+<th colspan="3">0</th>
+<th colspan="3">1</th>
+
+</tr>
+<tr style="font-size:9pt">
+<th>Escrever cor</th>
+<th>Turn</th>
+<th>Próximo estado</th>
+<th>Escrever cor</th>
+<th>Turn</th>
+<th>Próximo estado</th>
+</tr>
+<tr>
+<th rowspan="2">Estado atual</th>
+
+<th>0</th>
+<td>1</td>
+<td>R</td>
+<td>0</td>
+<td>1</td>
+<td>R</td>
+<td>1</td>
+</tr>
+<tr>
+<th>1</th>
+
+<td>0</td>
+<td>N</td>
+<td>0</td>
+<td>0</td>
+<td>N</td>
+<td>1</td>
+</tr>
+</table>
+
+<p>Onde a direção para virar é <b>L</b> (90° à esquerda), <b>R</b> (90° à
+direita), <b>N</b> (não vira) e <b>U</b> (meia-volta).</p>
+
+<h2>Indo mais além</h2>
+<p>Este exercício é naturalmente uma desculpa para deixar você experimentar com
+seus próprios turmites. Sinta-se à vontade para mudar a tabela de transições
+e a quantidade de passos por conta própria. Nesta altura, você pode se
+interessar pela biblioteca de Pegg Jr. Se você encontrar novos padrões
+interessantes, envie-os por email para que eles possam integrar a lista!  </p>
+
+<p>Adicionalmente, a wikipédia está precisando desesperadamente de alguns
+turmites coloridos bem apresentáveis: apenas os preto e branco estão
+descritos. Você deveria considerar a possibilidade de enviar suas criações
+diretamente para a enciclopédia livre.</p>
+
+<p>Aqui estão alguns turmites de 2 cores, extraídos de
+http://demonstrations.wolfram.com/Turmites/ [!python|scala]Eles não foram
+escritos usando o sintaxe de [!thelang], mas convertê-los não deve ser
+difícil.[/!]</p> 
+
+<pre>
+{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: formiga de Langton
+{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: contador binário
+{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: (triâgulo preenchido)
+{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: espiral numa caixa
+{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: espiral stripe-filled
+{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: pirâmide inclinada
+{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: ilha contoured
+{{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: woven placemat
+{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: floco de neve
+{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: construtor de cidades lento
+{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 0}, {0, LEFT  , 1}}} # 11: framed computer art
+{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 1}, {1, LEFT  , 0}}} # 12: balloon bursting (makes a spreading highway)
+{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 13: makes a horizontal highway
+{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 1}, {1, RIGHT , 0}}} # 14: makes a 45 degree highway
+{{{1, LEFT  , 1}, {0, LEFT  , 1}}, {{1, RIGHT , 1}, {0, LEFT  , 0}}} # 15: makes a 45 degree highway
+{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{1, NOTURN, 0}, {1, RIGHT , 0}}} # 16: spiral in a filled box
+{{{1, LEFT  , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 17: glaciers
+{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 18: golden rectangle!
+{{{1, LEFT  , 1}, {1, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 19: fizzy spill
+{{{1, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 20: nested cabinets
+{{{1, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {1, NOTURN, 1}}} # 21: (cross)
+{{{1, NOTURN, 1}, {0, NOTURN, 0}}, {{0, RIGHT , 0}, {1, LEFT  , 0}}} # 22: saw-tipped growth
+{{{1, NOTURN, 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 23: curves in blocks growth
+{{{1, NOTURN, 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 24: textured growth
+{{{1, NOTURN, 1}, {0, RIGHT , 1}}, {{1, LEFT  , 0}, {1, RIGHT , 0}}} # 25: (diamond growth)
+{{{1, NOTURN, 1}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 26: coiled rope
+{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, NOTURN, 1}}} # 27: (growth)
+{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, RIGHT , 1}}} # 28: (square spiral)
+{{{1, RIGHT , 0}, {1, RIGHT , 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}} # 29: loopy growth with holes
+{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: Lanton's Ant drawn with squares
+{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 1}, {1, LEFT  , 0}}} # 31: growth with curves and blocks
+{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, NOTURN, 0}, {1, RIGHT , 1}}} # 32: distracted spiral builder
+{{{1, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 33: cauliflower stalk (45 deg highway)
+{{{1, RIGHT , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, RIGHT , 0}}} # 34: worm trails (eventually turns cyclic!)
+{{{1, RIGHT , 1}, {1, NOTURN, 0}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 35: eventually makes a two-way highway!
+{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, NOTURN, 0}, {0, NOTURN, 0}}} # 36: almost symmetric mould bloom
+{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, RIGHT , 0}, {1, NOTURN, 1}}} # 37: makes a 1 in 2 gradient highway
+{{{1, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 38: immediately makes a 1 in 3 highway
+{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{0, LEFT  , 2}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {1, LEFT  , 0}}} # 39: squares and diagonals growth
+{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{0, RIGHT , 2}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 40: streak at approx. an 8.1 in 1 gradient
+{{{1, LEFT  , 1}, {0, NOTURN, 2}}, {{0, RIGHT , 2}, {1, NOTURN, 1}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 41: streak at approx. a 1.14 in 1 gradient
+{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 2}}, {{0, LEFT  , 1}, {1, NOTURN, 1}}} # 42: maze-like growth
+{{{1, LEFT  , 2}, {0, RIGHT , 0}}, {{1, LEFT  , 0}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 43: growth by cornices 
+{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway
+{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway
+</pre> 
+
+<p>formigas de Langton podem não compartilhar do poder de expressão dos
+turmites, mas ainda assim são fascinantes. Você pode experimentar elas
+usando o método initLangton(), fornecido no seu template, que permite
+contruir uma tabela de transição do nome da formiga de Langton. Pequenas
+mudanças na formiga podem resultar em grandes mudanças. Por exemplo, "RRL"
+parece não levar a nenhum padrão, mesmo após um milhão de passos, mas, mas
+"RLL" começa a construir um padrão de estrada muito simples depois de menos
+de 100 passos!</p>  
+
+<p>Muitas das formigas de Langton constróem estradas: RL, claro, mas também
+RLRLRLLRLR (em cerca de 2500 passos). O comportamento caótico das formigas
+antes da estrada pode ser bastante curto (como no caso RLL que precisa de
+apenas 100 passos para convergir) ou muito longo, como LLLLLLRRLRRR que
+parece caótico até mais de 500.000 de passos antes de contruir a estrada, ou
+até mesmo RRLLLRRRLRRR que precisa de 1.170.000 para começar a
+convergir. Umas são estreitas, e outras bem largas, como em RRLRLLRLRR
+(200,000 passos). Esta formiga é também notável pois é meio quadrada mesmo
+antes da estrada começar, enquanto que as outras não exibem nada de especial
+antes da estrada.<p>
+
+<p>Algumas formiga preenchem setores sólidos, como RRLLLRLLLRRR(16,000 passos),
+RRLLLRLLLRRR (30,000 passos), RRLLLRRRRRLR (125,000 passos) ou RRLRLLRRRRRR
+(20,000 passos). Algumas preenchem até mesmo todo o plano (RRLRR depois de
+3000 passos). algumas das minhas favoritas são aquelas onde as formigas
+parecem ricochetear desntro de uma caixa que vai ficando maior em cada
+batida, como LRRRRRLLR (30,000 passos). LRRRRLLLRRR é ainda mais
+impressionante pois as ricocheteadas dantro da caixa são regulares e também
+por que ela converge mais rapidamente para o seu comportamento estável
+(15,000 passos são suficientes).</p>
+
+<p>Finalmente, algumas formigas fazem padrões simplesmente artísticos. Você
+pode verificar este vídeo com alguns deles:
+http://www.youtube.com/watch?v=1X-gtr4pEBU. Se você quiser convertê-los em
+código, você tem que transladar um caractere: por exemplo, aquele descrito
+no minuto 3:42 não será RRLRLRLLRL, mas sim RLRLRLLRLR (o primeiro movimento
+visível deve ser lido como o último).</p>
+
+<p>Como você pode ver ao explorar o conjunto de turmites acima, elas não são
+tão coloridas quanto as formigas, mas isto pode ser por que poucas cores são
+o suficientes para exibir comportamentos complexos. Por exemplo, existe uma
+classe específica de turmites chamada <i>busy beavers</i> que são turmites
+que escrevem várias coisas antes de parar (busy beavers normalmente são
+máquinas de turing clássicas, mas a ideia encaixa perfeitamente em turmites
+também). Existe um tipode competição internacional onde as pessoas tentam
+encontrar o turmite que cobre a maior área antes de parar. A página é esta:
+http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines 
+

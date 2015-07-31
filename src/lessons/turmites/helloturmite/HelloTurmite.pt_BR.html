@@ -1,0 +1,82 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Turmites</h2>
+
+<p>Este exercício explora uma nova forma de extender o conceito de formiga de
+Langton. Agora, o comportamento da formiga não depende apenas da cor no
+chão, mas também de seu estado interno (representado por um valor
+inteiro). A ideia de transformar a formiga em um autômato vem naturalmente
+do conceito de máquina de Turing. Isto explica o nome destes novos animais,
+que é um amálgama de <i>Turing</i> e <i>Termite</i> (se você não sabe o que
+uma máquina de Turing é, vá na wikipédia, por que é impossível ser um
+cientista da computação de verdade sem conhecê-la).</p>     
+
+<p>Novamente, você tem que simplesmente escrever o método <code>step()</code>,
+encarregado de fazer o turmite dar um passo. Novamente, você deve primeiro
+encontrar o rank da cor do chão da célula atual na sequência de cores. Mas
+agora, os dados de <code>rule</code> (regras) dependem tanto da cor atual
+quanto do estado atual. A <code>rule</code> na verdade contém 3 informações
+em cada situação: a cor que a escreve, o movimento a fazer e o valor do
+próximo estado. Por exemplo,
+[!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contém as informações
+para usar quando <code>state==1</code> e <code>color==0</code>. Em outros
+mundos, você pode recuperar a informação relativa à sua situação atual
+usando
+<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>.</p> 
+
+<p>Cada um destes conjuntos de informações contém 3 valores. O primeiro é o
+rank da cor para escrever no chão. O segundo é o movimento para fazer, com a
+seguinte notação: 0=stop, 1=noturn, 2=left, 4=u-turn, 8=right. Observe que
+se o comando é stop, você não pode se mover nem para a frente neste passo
+(mas você não pode parar o programa também: os próximos passos podem fazer
+algo mais num estado futuro). Finalmente, o terceiro inteiro é o próximo
+valor do <code>state</code> a ir dentro da próxima iteração.</p> 
+
+<p>Uma vez que estas notações arbitrárias são de certa forma difíceis de
+lembrar, você deve definir um conjunto de constantes que você deve usar no
+lugar dos valores numéricos diretos. Seus nomes podem ser NOTURN, LEFT,
+RIGHT etc. [!scala]Simplesmente declare elas usando keyword <code>val</code>
+no lugar de <code>var</code>.  Você deve sempre usar <code>val</code> no
+lugar de <code>var</code> quando possível de qualquer forma.[/!] [!java]Os
+modificadores <code>final static</code> antes do seu tipo é a forma de
+marcar variáveis como constantes em Java. Você deve escrever, por exemplo,
+<code>static final int NOTURN=1;</code> Desculpe pela complesxidade desta
+notação. [/!] [!python]Por convenção, tais variáveis constantes são escritas
+em maiúsculas no python.  Tecnicamente, você ainda pode modificá-las, mas
+isto é uma má ideia.[/!] Você deve escrevê-las fora de qualquer método para
+que elas se tornem visíveis globalmente.</p>
+
+<p>Usar tais constantes ajuda em muito a fazer o código mais legível. Compare
+os dois blocos de código a seguir:</p> 
+
+<pre>[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]
+    left()[!java];[/!]
+[!java|scala]}[/!]</pre>
+<p>Isto é muito mais fácil de se ler (embora seja mais longo) do que o
+seguinte:</p>
+<pre>[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]
+    left()[!java];[/!]
+[!java|scala]}[/!]</pre>
+ 
+[!python]<p>Finalmente, você provavelmente vai querer escrever um ramo <code>elif</code>
+para a condição <code>STOP</code> também. Ter um ramo <code>else</code>
+mostrando uma mensagem de erro tal como "unknown case" é uma boa prática:
+faz as suas suposições sobre seu código mais explícitas, e você tem uma
+mensagem de erro se elas falharem. Quando fizer isto, o próximo problema vai
+ser que você não tem nada para fazer no caso do <code>STOP</code>, mas
+python não permite que você escreva ramos <code>elif</code> vazios. Você
+deve usar a instrução <code>pass</code> como substituto: ela diz ao python
+que você tem um ramo aqui, e que ele não faz nada.</p>[/!] [!java|scala]<p>Provavelmente você deve usar uma construção [!java]switch
+case[/!][!scala]pattern matching[/!] para manter seu código legível. Se você
+não lembra o que é isto, veja <a href="plm://lessons.welcome/bdr.BDR2">este
+exercício</a>.</p>[/!]
+
+<p>Você agora tem informação o suficiente para conseguir.</p>
+
+<h2>Notas bibliográficas</h2>
+<p>De acordo com a wikipédia, os turmites foram inventados independentemente no
+final dos anos oitenta. Foi provado que turmites em geral são exatamente
+equivalentes em capacidade a máquinas de turing uni-dimensionais com uma
+fita infinita, pois um pode simular o outro. Isto significa que qualquer
+programa que você possa conceber pode teoricamente ser executado neste
+dispositivo...</p>

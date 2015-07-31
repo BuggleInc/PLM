@@ -1,0 +1,47 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Rainbow Baseball</h1>
+<p>As cores são representadas por inteiros, entre <code>0</code> e
+<code>quantidade de bases -1</code>.  O espaço vazio é representado por um
+valor especial <code>-1</code>. A cor de cada base é  seu rank. Logo, a base
+<code>1</code> é de cor <code>1</code>. Na interface gráfica, a base
+<code>0</code> é a azul escura enquanto que a base <code>1</code> é a
+fuscia.</p>
+
+<p>Uma vez que todos os jogadores no campo estejam em suas bases, o espaço
+vazio deve estar na última base, ou seja, a de rank
+<code>getBasesAmount()-1</code>.</p>
+
+<h2>FFunções para recuperar as dimensões do mundo</h2>
+
+<pre>[!java|c]int [/!]getQuantidadeDeBases() [!scala]:Int[/!]</pre>
+Retorna a quantidade de bases neste campo.
+
+<pre>[!java|c]int [/!]getQuantidadeDePosições() [!scala]:Int[/!]</pre>
+Retorna a quantidade de posições de jogadores por base neste campo.
+
+<h2>Funções para recuperar o estado do mundo</h2>
+
+<pre>[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]</pre>
+Retorna a base na qual o espaço vazio está localizado.
+
+<pre>[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]</pre>
+Retorna a posição do espaço vazio na sua base
+
+<pre>[!java|c]int [/!]getCorDoJogador([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])  [!scala]:Int[/!]</pre>
+Retorna a cor do jogador numa dada posição.
+
+<pre>[!java]boolean [/!][!c]int [/!]estáOrdenado()  [!scala]:Boolean[/!]</pre>
+Retorna se todos os jogadores em campo estão em seus "home".
+     
+<pre>[!java]boolean [/!][!c]int [/!]baseEstáOrdenada([!java|c]int [/!]base)  [!scala]:Boolean[/!]</pre>
+Retorna se todos os jogadores de uma dada base estão em "home".
+
+<pre>[!java]boolean [/!][!c]int [/!]estáSelecionado()  [!scala]:Boolean[/!]</pre>
+Retorna verdadeiro se o mundo atual estiver selecionado na interface.
+<h2>Funções para mudar o mundo</h2>
+
+<pre>[!java|c]void [/!]mover([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])</pre>
+Move um dado jogador para um espaço vazio. Vai levantar uma
+IllegalArgumentException se o jogador especificado não estiver próximo do
+espaço vazio (no máximo a uma base de distância).

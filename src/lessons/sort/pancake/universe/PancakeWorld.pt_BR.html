@@ -1,0 +1,27 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>PancakeWorld</h1>
+
+<p>Este universo é bastante simples, com apenas cinco funções fornecidas.</p>
+
+<pre>[!java|c]int [/!]getTamanhoDaPilha()  [!scala]:Int[/!]</pre>
+Retorna o tamanho da pilha, ou seja, a quantidade de panquecas nela.
+
+<pre>[!java|c]int [/!]getRaioPanqueca([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]</pre>
+Retorna o raio da panqueca passado como argumento, com o rank da panqueca
+mais acima sendo 0.
+
+<pre>[!java]boolean [/!][!c]int [/!]panquecaDeCabeçaPraBaixo([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]</pre>
+Retorna se a panqueca passada como argumento está de cabeça para baixo, ou
+seja, se o lado queimado está para cima. Como sempre, a panqueca mais acima
+é a de rank 0.
+
+<pre>[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])</pre>
+Vira as primeiras <code>amount</code> panquecas que compõe a pilha, do topo
+dela.
+
+<pre>[!java]boolean [/!][!c]int [/!]estáOrdenado()   [!scala]:Boolean[/!]</pre>
+Retorna verdadeiro se a pilha de panquecas estiver corretamente ordenada.
+
+<pre>[!java]boolean [/!][!c]int [/!]selecionado()   [!scala]:Boolean[/!]</pre>
+Retorna verdadeiro se o mundo atual está selecionado na interface gráfica.  

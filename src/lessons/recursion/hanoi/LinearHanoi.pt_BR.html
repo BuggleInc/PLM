@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Linear Towers of Hanoi</h2>
+
+<p>Esta é uma variação clássica das Torres de Hanoi onde alguns movimentos são
+proibidos. Especificamente, os disco não podem ser movidos diretamente da
+vara mais à esquerda para a vara mais a direita. A vara do meio deve ser
+envolvida em cada movimento.</p>
+
+<p>Apesar desta complexidade, o problema permanece o mesmo: você tem que mover
+toda a pilha de discos da vara numa extremidade para a vara na outra
+extremidade. Você só pode mover um disco por vez, e um disco não pode ficar
+sobre outro menor.</p>
+
+<p>Como na versão clássica, é muito fácil produzir uma solução recursiva, e
+você é totalmente capaz de "devise" esta solução se você pensar com atenção
+nela.</p>
+
+<div class="tip" id="tip-1" alt="Tentei, mas não consegui">
+O algortimo recursivo padrão para as torres de Hanoi clássicas é de
+complexidade <i>2^n-1</i> enquanto que o algoritmo recursivo padrão para
+esta variação é de complexidade <i>3^n-1</i>.
+</div>
+
+<div class="tip" id="tip-2" alt="A primeira dica não foi suficiente">
+A algoritmo recursivo padrão para as torres de Hanoi clássicas envolve duas
+chamadas recursivas sanduichando um movimento do disco maior, O algoritmo
+recursivo padrão para Hanoi Linear envolve três chamadas recursivas
+sanduichando dois movimentos do mesmo disco.
+</div>
