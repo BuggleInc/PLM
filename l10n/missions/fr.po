@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-07-31 10:14+0200\n"
-"PO-Revision-Date: 2015-08-01 11:22+0200\n"
+"PO-Revision-Date: 2015-08-02 10:39+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -4276,7 +4276,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:2
 msgid "Second Biggest Value"
-msgstr ""
+msgstr "La seconde plus grande valeur"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/search/SecondMaxValue.html:4
@@ -4298,7 +4298,7 @@ msgid ""
 "are greater than [!python] -100000000.[/!] [!java|scala]<code>Integer."
 "MIN_VALUE</code> (which is the smallest representable integer existing in [!"
 "thelang]).[/!]"
-msgstr ""
+msgstr "Comme d'habitude, vous ne devez effectuer qu'un seul parcours pour obtenir les informations nécessaires. Vous pouvez supposer que la seconde plus grande valeur existe effectivement (qu'il y a au moins deux valeurs dans le tableau) et que toutes les valeurs du tableau sont plus grandes que [!python] -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est le plus petit entier existant en [!thelang]).[/!] "
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
