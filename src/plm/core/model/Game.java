@@ -117,7 +117,11 @@ public class Game implements IWorldView {
 		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C, BLOCKLY // TODO: re-add JAVASCRIPT to this list once it works at least a bit
 	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
-
+	private boolean canScala = false;
+	private boolean canPython = false;
+	private boolean canBlockly = false;
+	private boolean canC = false;
+	
 	/* TODO: document these values elsewhere */
 	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
@@ -168,23 +172,10 @@ public class Game implements IWorldView {
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
 		loadProperties();
 
-		if (checkScala())
-			System.err.println(i18n.tr("Scala is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install Scala version 2.11 or higher to use it in the PLM."));
-		if (checkPython())
-			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install jython to use the python programming language in the PLM."));
-		if (checkC())
-			System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
-		if (checkBlockly())
-			System.err.println(i18n.tr("Blockly is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install jython to use the blockly programming language in the PLM."));
-
+		canScala = true;
+		canPython = true;
+		canBlockly = true;
+		
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
@@ -238,114 +229,6 @@ public class Game implements IWorldView {
 		}
 
 		loadSession();
-	}
-
-	boolean canScala = false;
-	String scalaError = "";
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private boolean checkScala() {
-		String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit",        "/scala/reflect/io/AbstractFile"};
-		String[] hints     = new String[] {"scala-compiler.jar",           "scala-library.jar",  "scala-reflect.jar"};
-		for (int i=0;i<resources.length;i++) {
-			scalaError = canResolve(resources[i],hints[i]);
-			if (!scalaError.isEmpty()) {
-				System.err.println(scalaError);
-				return canScala;
-			}
-		}
-
-		String version = null;
-		try {
-			Class props = Class.forName("scala.util.Properties");
-			Method meth = props.getMethod("versionString", new Class[] {});
-			version = (String) meth.invoke(props);
-		} catch (Exception e) {
-			scalaError = i18n.tr("Error {0} while retrieving the Scala version: {1}", e.getClass().getName() ,e.getLocalizedMessage());
-			System.err.println( scalaError );
-			return canScala;
-		}
-
-		if (version.contains("version 2.10") || version.contains("version 2.11")) {
-			canScala = true;
-			return canScala;
-		} else {
-			scalaError = i18n.tr("Scala is too ancient. Found {0} while I need 2.10 or higher.",version);
-			System.err.println(scalaError);
-			return canScala;
-		}
-	}
-
-	public boolean canPython = false;
-	String pythonError = "";
-	private boolean checkPython() {
-		String[] resources = new String[] {
-				"/org/python/jsr223/PyScriptEngineFactory", "/org/jruby/ext/posix/util/Platform","/org/antlr/runtime/CharStream",
-				"/org/objectweb/asm/Opcodes"
-		};
-		String[] hints     = new String[] {"jython.jar", "jruby.jar","antlr3-runtime.jar",
-		"asm3.jar"};
-		for (int i=0;i<resources.length;i++) {
-			pythonError = canResolve(resources[i],hints[i]);
-			if (!pythonError.isEmpty()) {
-				System.err.println(pythonError);
-				return canPython;
-			}
-		}
-
-		ScriptEngineManager manager = new ScriptEngineManager();       
-		if (manager.getEngineByName("python") == null) {
-			pythonError = i18n.tr("Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies in the classpath?");
-		}
-
-		canPython = true;
-		return true;
-	}
-
-
-	public boolean canC = false;
-	String CError = "";
-	private boolean checkC(){
-		Runtime runtime = Runtime.getRuntime();
-		try {
-			runtime.exec("gcc --version");
-			canC=true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			canC=false;
-		}
-		return canC;
-	}
-
-
-	public boolean canBlockly = false;
-	String BlocklyError = "";
-	private boolean checkBlockly(){
-		canBlockly = checkPython();
-		return canBlockly;
-	}
-
-
-	private String canResolve(String resource, String hint) {
-		try {
-			URL path = getClass().getResource(resource+".class");
-			if (path != null)
-				return ""; // Cool, found it.
-
-			path = ClassLoader.getSystemResource(resource+".class");
-			if (path != null)
-				return ""; // Cool, found it.
-
-			resource = resource.replaceAll("/", ".");
-			resource = resource.substring(1);
-			Class.forName(resource).newInstance();
-			return ""; // That's cool if I manage to create one such object
-
-		} catch (ClassNotFoundException ce) {
-			return i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?",resource,hint);
-		} catch (Exception e) {
-			return i18n.tr("{0} received while searching for resource {1}: {2}",e.getClass().getName(),resource,e.getLocalizedMessage());
-		}
 	}
 
 	private void initLessons() {
@@ -1009,27 +892,6 @@ public class Game implements IWorldView {
 			return;
 
 		if (isValidProgLanguage(newLanguage)) {
-			//.getLogger().log("Switch programming language to "+newLanguage);
-			if (newLanguage.equals(Game.SCALA) && !canScala) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.10 or higher to use it in the PLM.\n\n")+scalaError ,
-						i18n.tr("Scala is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
-			}
-			if (newLanguage.equals(Game.PYTHON) && !canPython) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install jython and its dependencies to use the python programming language in the PLM.\n\n")+pythonError,
-						i18n.tr("Python is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
-			}
-			if (newLanguage.equals(Game.C) && !canC) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install C and its dependencies to use the C programming language in the PLM.\n\n")+CError,
-						i18n.tr("C is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
-			}
-			if (newLanguage.equals(Game.BLOCKLY) && !canBlockly) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install jython and its dependencies to use the Blockly programming language in the PLM.\n\n")+CError,
-						i18n.tr("Blockly is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
-			}
 			this.programmingLanguage = newLanguage;
 			if(getCurrentLesson() != null)
 				((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress(newLanguage);
