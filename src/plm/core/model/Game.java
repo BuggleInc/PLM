@@ -114,7 +114,7 @@ public class Game implements IWorldView {
 	public static final ProgrammingLanguage BLOCKLY =      new LangBlockly(false);
 
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C, BLOCKLY // TODO: re-add JAVASCRIPT to this list once it works at least a bit
+		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, BLOCKLY // TODO: re-add C & JAVASCRIPT to this list once they work at least a bit
 	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
 	private boolean canScala = false;
