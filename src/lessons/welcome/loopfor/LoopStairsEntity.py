@@ -4,9 +4,11 @@ colors = [Color.blue,    Color.cyan, Color.green,  Color.yellow,
           Color.orange,  Color.red,  Color.magenta,Color.pink]
 
 step = -3
-def forward(i=-1):
+def forward(i=1):
     global step
-    if i==-1 or i==1:
+    if i>1:
+      errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
+    else:
       entity.forward()
       if step<0 or step%2 == 1 or (step/2)>=len(colors):
           if step < 0:
@@ -18,13 +20,11 @@ def forward(i=-1):
           brushDown()
           brushUp()
       step += 1
-    else:
-      errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
-def backward(i=-1):
-    if i==-1 or i==1:
-      entity.backward()
-    else:
+def backward(i=1):
+    if i>1:
       errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
+    else:
+      entity.backward()
       
 # BEGIN SOLUTION
 forward()

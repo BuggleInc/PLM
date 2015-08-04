@@ -7,11 +7,11 @@ public class SourceFileRevertable extends SourceFile {
 	private String initialBody; 
 	
 	public SourceFileRevertable(Game game, String name) {
-		this(game, name, "", null, 0,"");
+		this(game, name, "", null, 0,"","");
 	}
 
-	public SourceFileRevertable(Game game, String name, String initialBody, String template, int offset, String correctionCtn) {
-		super(game, name, initialBody, template, offset,correctionCtn);
+	public SourceFileRevertable(Game game, String name, String initialBody, String template, int offset, String correctionCtn, String errorCtn) {
+		super(game, name, initialBody, template, offset,correctionCtn, errorCtn);
 		this.initialBody = initialBody;
 	}
 	

@@ -76,24 +76,25 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 		skeleton.append("))\n");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"");
+		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"","");
 		corrections.put(Game.PYTHON, initialCode+correction+"\n"+skeleton);
 		addProgLanguage(Game.PYTHON);
 	}
 	
 	@Override 
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
+	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, int nbError) {
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
-			super.mutateEntities(kind, whatToMutate);
+			super.mutateEntities(kind, whatToMutate, nbError);
 			return;
 		}
 		/* compute the correction */
 			
-		Vector<World> worlds;
+		Vector<World> worlds = null;
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;
 		case ANSWER:  worlds = answerWorld;  break;
+		case ERROR:   if(nbError != -1) worlds = commonErrors.get(nbError);   break;
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
 

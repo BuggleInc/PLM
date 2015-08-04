@@ -1,5 +1,10 @@
 package plm.core.model.lesson;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,15 +26,19 @@ import plm.universe.World;
 
 
 public abstract class Exercise extends Lecture {
-	public static enum WorldKind {INITIAL,CURRENT, ANSWER}
-	public static enum StudentOrCorrection {STUDENT, CORRECTION}
+	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
+	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
-	
+
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
 		return getClass().getCanonicalName() + "Entity";
 	}
-	
+
+	public String nameOfCommonError(int i) {
+		return getClass().getCanonicalName() + "CommonErr" + i;
+	}
+
 	public String getTabName() {
 		return tabName;
 	}
@@ -39,6 +48,7 @@ public abstract class Exercise extends Lecture {
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
+	protected Vector<Vector<World>> commonErrors = new Vector<Vector<World>>();
 
 
 	public ExecutionProgress lastResult;
@@ -47,10 +57,11 @@ public abstract class Exercise extends Lecture {
 		super(game, lesson,basename);
 	}
 
-	public void setupWorlds(World[] w) {
+	public void setupWorlds(World[] w, int size) {
 		currentWorld = new Vector<World>(w.length);
 		initialWorld = new Vector<World>(w.length);
 		answerWorld  = new Vector<World>(w.length);
+		Vector<World> errorWorld   = new Vector<World>(w.length);
 		for (int i=0; i<w.length; i++) {
 			if (w[i] == null) 
 				throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
@@ -58,6 +69,18 @@ public abstract class Exercise extends Lecture {
 			initialWorld.add( w[i].copy() );
 			answerWorld. add( w[i].copy() );
 		}
+		for(int j = 0 ; j < size ; j++) { //size : nombre de fichiers d'erreur
+			errorWorld = new Vector<World>(w.length);
+			for (int i=0; i<w.length; i++) {
+				if (w[i] == null) 
+					throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
+				errorWorld.add(w[i].copy());
+//				System.out.println(errorWorld.size()+" / "+w.length);
+			}
+			commonErrors.add(errorWorld);
+		}
+//		if(commonErrors.size()!=0)
+//			System.out.println("Size of commonErrors = "+commonErrors.size()+"\nSize of element 0 = "+commonErrors.get(0).size());
 	}
 
 	public abstract void run(List<Thread> runnerVect);	
@@ -66,17 +89,45 @@ public abstract class Exercise extends Lecture {
 	public void check() {
 		boolean pass = true;
 		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+			System.out.println("Size of currentWorld = "+currentWorld.size());
 			for (int i=0; i<currentWorld.size(); i++) {
 				currentWorld.get(i).notifyWorldUpdatesListeners();
 
 				lastResult.totalTests++;
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
+					for(int j = 0 ; j < commonErrors.size() ; j++) {
+						//System.out.println(currentWorld.size()+" > "+commonErrors.size()+" - "+commonErrors.get(j).size());
+						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) {
+							String[] brokenPath = this.getLocalId().split("\\.");
+							String path = "src/";
+							for(int k = 0 ; k < brokenPath.length ; k++) {
+								if(brokenPath.length-1 != k) {
+									path += brokenPath[k]+"/";
+								} else {
+									path += brokenPath[k];
+								}
+							}
+							InputStream is;
+							try {
+								is = new FileInputStream(path+"CommonErr"+j+".html");
+								InputStreamReader lect = new InputStreamReader(is);
+								BufferedReader buf = new BufferedReader(lect);
+								String error = "Hint: ";
+								error += buf.readLine();
+								lastResult.executionError += "\n"+error+"\n\n------------------------------------------\n\n";
+								buf.close();
+							} catch (IOException e) {
+								e.printStackTrace();
+							} 
+							break;
+						}
+					}
 					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 					lastResult.executionError += getGame().i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
 						lastResult.executionError += ":\n"+diff;
-					lastResult.executionError += "\n";
+					lastResult.executionError += "\n------------------------------------------\n";
 					pass = false;
 				} else {
 					lastResult.passedTests++;
@@ -132,20 +183,22 @@ public abstract class Exercise extends Lecture {
 		return null;
 	}
 
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn));
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn,String errorCtn) {
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn,errorCtn));
 	}
 
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
+	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, int nbError) {
 		ProgrammingLanguage lang = getGame().getProgrammingLanguage();
 
-		Vector<World> worlds;
+		Vector<World> worlds = null;
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;
 		case ANSWER:  worlds = answerWorld;  break;
+		case ERROR: worlds = commonErrors.get(nbError); break;
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
+
 
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 		if (getGame().getProgrammingLanguage().equals(Game.JAVA)) {
@@ -164,18 +217,19 @@ public abstract class Exercise extends Lecture {
 			for (World current:worlds) {
 				if (current.getEntities().isEmpty())
 					throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
-				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate, getGame().i18n) );			
+				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate, nbError) );
 			}
 		} catch (PLMCompilerException e) {
 			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage(), lang);
 		}
 	}
 
-	public Vector<World> getWorlds(WorldKind kind) {
+	public Vector<World> getWorlds(WorldKind kind, int nbError) {
 		switch (kind) {
 		case INITIAL: return initialWorld;
 		case CURRENT: return currentWorld;
 		case ANSWER:  return answerWorld;
+		case ERROR:   if(nbError != -1) return commonErrors.get(nbError);
 		default: throw new RuntimeException("Unhandled kind of world: "+kind);
 		}
 	}
