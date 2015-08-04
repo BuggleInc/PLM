@@ -184,7 +184,7 @@ public abstract class Exercise extends Lecture {
 	}
 
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn,String errorCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn,errorCtn));
+		getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn,errorCtn));
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, int nbError) {
@@ -217,7 +217,7 @@ public abstract class Exercise extends Lecture {
 			for (World current:worlds) {
 				if (current.getEntities().isEmpty())
 					throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
-				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate, nbError) );
+				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate, getGame().i18n, nbError) );
 			}
 		} catch (PLMCompilerException e) {
 			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage(), lang);

@@ -5,7 +5,6 @@ import java.util.List;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
