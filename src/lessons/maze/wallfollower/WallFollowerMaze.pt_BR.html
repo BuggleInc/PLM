@@ -1,63 +1,66 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Following the walls</h2>
+<h2>Seguindo as paredes</h2>
 
-<p>This time, the maze is a bit more complicated. Random won't be enough, we
-ough to be smart!</p>
+<p>Neste momento, o labirinto é um pouco mais complicado. Aleatoriedade
+pode não ser suficiente, sejamos mais espertos!</p>
 
-<p>The good news is that this maze is simpler that it seems at the first
-glance: every wall are connected to each other. To get out of this kind of
-maze, the buggle only have to follow a wall (the one on its left or the one
-on its right, it doesn't matter).  While keeping a paw on the wall, the
-buggle must move forward until it finds the maze exit and this biscuit it
-loves so much.</p>
+<p>A boa notícia é que este labirinto é mais simples do que pode parecer
+à primeira vista: cada parede é conectada às outras. para sair deste
+tipo de labirinto, o buggle tem que simplesmente seguir uma parede (a
+que fica à sua esquerda ou à sua direita, não importa). Enquanto
+manter uma pata na parede, o buggle deve se mover para a frente até
+encontrar a saída do labirinto e o biscoitinho que ele tanto gosta.</p>
 
-<p>This works here because there is no island of isolated walls, so our buggle
-cannot loop around for ever without encountering its baggle.</p>
+<p>Isto funciona aqui por que não existem ilhas ou paredes isoladas, logo
+o nosso buggle não vai entrar num loop para sempre sem encontrar seu
+baggle.</p>
 
-<h3>Objetivo do exercício</h3>The goal of this exercise is to write an algorithm allowing the buggle to
-get out of this maze.
+<h3>Objetivo do exercício</h3>O objetivo deste exercício é escrever um algoritmo que permita que o
+buggle saia do labirinto.
 
-<p>As said earlier, it does not matter whether you decide to follow the left
-wall or the right one. Simply, the demo follows the left one, so you should
-do the same in your solution to ease the comparison of your solution and the
-demo.</p> 
+<p>Como dito anteriormente, não importa se você decide seguir a parede na
+esquerda ou da direita. Simplesmente, a demonstração segue a da
+esquerda, logo você deve fazer o mesmo em sua solução para facilitar a
+comparação de sua solução e da demonstração.</p> 
 
-<p>Write a method <code>keepHandOnSideWall()</code> which lets the buggle move
-one step forward while keeping the paw on the wall of the selected side. You
-must ensure that the buggle always keep the paw on the wall, but also that
-it won't crash into a wall. You can check the tip for more info on this, but
-only do so if you're stuck. Try to do it without the tip first.</p> 
+<p>Escreva um método <code>keepHandOnSideWall()</code> que faz o buggle
+andar uma casa para a frente enquanto mantém a pata na parede do lado
+selecionado. Você deve garantir que o buggle sempre mantenha a pata na
+parede, mas também que ele não bata numa parede. Você pode checar a
+dica para mais informações sobre isto, mas faça isto apenas se você
+estiver perdido. Tente primeiro fazer sem a dica.</p> 
 
-<p>Then, write the whole algorithm to traverse the maze step by step (using
-<code>keepHandOnSideWall()</code>) until it finds the biscuit and the
-exit. Don't forget to pick the baggle up once you've found it.</p>
+<p>Então, escreva o algoritmo inteiro para percorrer o labirinto passo a
+passo (usando <code>keepHandOnSideWall()</code>) até encontrar o
+biscoito e a saída. Não esqueça de pegar o baggle quando o encontrar.</p>
 
-<div class="tip" id="tip-1" alt="I'm lost, please give me some extra indications">
-<p>When your buggle has a wall on the left, there is three situations to
-consider, depending on the surrounding walls. The following table depicts
-each initial situation, and where you should let your buggle end after one
-step.</p>
+<div class="tip" id="tip-1" alt="Estou perdido, me dê orientações extra">
+<p>Quando seu buggle tem uma parede à esquerda, existem três situações a
+considerar, dependendo das paredes em volta. A tabela a seguir explica
+cada situação inicial, e onde você deve deixar seu buggle parar após
+cada passo.</p>
 <table border=1>
 <tr>
  <td></td>
- <td>Case 1</td>
- <td>Case 2</td>
- <td>Case 3</td>
+ <td>Caso 1</td>
+ <td>Caso 2</td>
+ <td>Caso 3</td>
 </tr><tr>
- <td>Initial situation</td>
+ <td>Situação inicial</td>
  <td><img src="lessons/maze/wallfollower/1A.png"/></td>
  <td><img src="lessons/maze/wallfollower/2A.png"/></td>
  <td><img src="lessons/maze/wallfollower/3A.png"/></td>
 </tr><tr>
- <td>Where is the next step</td>
+ <td>Onde é o próximo passo</td>
  <td><img src="lessons/maze/wallfollower/1B.png"/></td>
  <td><img src="lessons/maze/wallfollower/2B.png"/></td>
  <td><img src="lessons/maze/wallfollower/3B.png"/></td>
 </tr>
 </table>
-<p>If you do a <code>right()</code> in any case at the end of your function,
-it's possible to write it in 3 lines with a <code>while</code> loop.</p>
+<p>Se você faz um <code>right()</code> em qualquer caso no final da sua
+função, é possível escrever ela com 3 linhas com um loop
+<code>while</code>.</p>
 </div>
 
     

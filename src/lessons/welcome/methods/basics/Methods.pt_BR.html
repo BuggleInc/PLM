@@ -51,16 +51,15 @@ páginas html. A principal vantagem é que ele permite que a documentação
 fique junto ao código. Então, quando você mudar o código, você tem menos
 chances de esquecer de atualizar a documentação.</p>
 
-<p>comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!]
-começam com a marca <code>/**</code> (com dois asteriscos). Eles devem
-ser colocados exatamente antes do método que documentam para a
-ferramenta encontrá-los.[/!] [!python]comentários pydoc devem ser
-colocados no começo do corpo do método de forma que a ferramenta possa
-encontrá-los. Eles devem ser colocados entre <code>"""</code>, que
-marcam strings multilinhas em python.[/!] A primeira linha deve ser
-uma breve descrição do que o método faz enquanto que as linhas
-subsequentes devem fornecer qualquer detalhes importantes sobre o
-método.</p>
+<p>comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] começam
+com a marca <code>/**</code> (com dois asteriscos). Eles devem ser colocados
+exatamente antes do método que documentam para a ferramenta
+encontrá-los.[/!] [!python]comentários pydoc devem ser colocados no começo
+do corpo do método de forma que a ferramenta possa encontrá-los. Eles devem
+ser colocados entre <code>"""</code>, que marcam strings multilinhas em
+python.[/!] A primeira linha deve ser uma breve descrição do que o método
+faz enquanto que as linhas subsequentes devem fornecer qualquer detalhes
+importantes sobre o método.</p>
 
 <pre>[!java|scala]/**
  *  Vai, recupera o baggle na frente do buggle, e trás de volta 
@@ -113,16 +112,15 @@ futuro.</p>
 anterior (vai para a frente até estar sobre um baggle, pega ele, vai para
 trás até a posição inicial e solta o baggle).</p>
 
-<p>Este exercício é um pouco diferente por que você não vai precisar
-escrever todo o código executado pelo buggle. Ao invés disto, você
-deve apenas escrever um método que será chamado automagicamente quando
-você clica em <b>Iniciar</b>. Seu buggle vai chamar seu método
-<code>vaiEPega()</code> em cada linha, até que o baggle seja
-encontrado. [!python|scala]O código para isto já está pronto no método
-<code>vaiEPega()</code>, mas você provavelmente não vai querer mudar isto.
-[/!] [!java]Você não precisa escrever o código chamado
-<code>vaiEPega()</code>. Ele já está lá automaticamente, mesmo se você
-não possa vê-lo.[/!]</p> 
+<p>Este exercício é um pouco diferente por que você não vai precisar escrever
+todo o código executado pelo buggle. Ao invés disto, você deve apenas
+escrever um método que será chamado automagicamente quando você clica em
+<b>Iniciar</b>. Seu buggle vai chamar seu método <code>vaiEPega()</code> em
+cada linha, até que o baggle seja encontrado. [!python|scala]O código para
+isto já está pronto no método  <code>vaiEPega()</code>, mas você
+provavelmente não vai querer mudar isto. [/!] [!java]Você não precisa
+escrever o código chamado <code>vaiEPega()</code>. Ele já está lá
+automaticamente, mesmo se você não possa vê-lo.[/!]</p> 
 
 <p>Mas para isto funcionar, você tem que na verdade escrever este método
 <code>vaiEPega()</code> agora.</p>

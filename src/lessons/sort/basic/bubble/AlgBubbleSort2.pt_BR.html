@@ -1,0 +1,33 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BubbleSort (take 2)</h1>
+
+<p>Se você olhar atentamente para o comportamento do BubbleSort, uma primeira e
+fácil otimização aparece: depois de uma travesia, o último elemento da array
+é o maior de todos pois a travessia moveu ele para cima como uma bolha para
+a sua posição. Mais geralmente, depois de N travessias, sabemos que os
+últimos N elementos da array já estão ordenados. Portanto não é necessário
+compará-los de novo durante travessias subsequentes. Por agora, vamos ter
+tantas travessias quantos elementos na array.</p>
+
+<div class="tip" id="tip-2" alt="Mostrar Dica (Pseudo-código)">
+<p>O pseudo-código do algoritmo BubbleSort2 é o seguinte:</p>
+<pre>Para todo i em [len-2,0] (percorrendo do maior para o menor)
+       Para todo j em [0, i]
+          Se células j e j+1 devem ser trocadas, troque
+</pre>
+</div>
+
+<p>Quando rodamos este algoritmo, é bastante desapontador ver que ele executa
+aproximadamente na mesma velocidade que a versão básica do BubbleSort. Isto
+é um elemento gráfico apenas já que apenas mudanças de valores são
+representadas graficamente. Como esta variação evita algumas comparações
+inúteis, ela faz exatamente a mesma quantidade de trocas que a versão
+básica. É portanto bastante lógico que a interface gráfica desenhe esta
+versão no mesmo ritmo que a versão básica. Mas as estatísticas da quantidade
+de leituras mostram que economizamos cerca de um quarto das leituras, o que
+não é nada mal.</p>
+
+<p>Do ponto de vista da complexidade asimtótica, não existe nenhuma diferença:
+Esta variação ainda é O(n^2) no caso médio (nosso ganho é apenas no termo
+constante, ignorado quando se está calculando a complexidade asimtótica).</p>

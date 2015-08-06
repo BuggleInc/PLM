@@ -1,16 +1,17 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Creating Turmites</h2>
+<h2>Criando Turmites</h2>
 
-<p>This exercise allows you to build your own turmites. To pass the exercise,
-you should simply write a <code>init()</code> method which initializes the
-<code>rule</code> to use the following transitions table (from wikipedia),
-set the buggle initial position at (8;33), and ask for 8342 steps.</p> 
+<p>Este exercício permite que você construa seus próprios turmites. Para passar
+neste exercício, você deve simplesmente escrever um método
+<code>init()</code> que inicializa a <code>rule</code> para usar a seguintes
+tabela de transições (da wikipédia), configure a posição inicial em (8;33),
+e peça por 8342 passos.</p> 
 
 <table border="1" style="text-align:center">
 <tr>
 <th rowspan="3" colspan="2"></th>
-<th colspan="6">Current color</th>
+<th colspan="6">Cor atual</th>
 </tr>
 <tr>
 <th colspan="3">0</th>
@@ -18,15 +19,15 @@ set the buggle initial position at (8;33), and ask for 8342 steps.</p>
 
 </tr>
 <tr style="font-size:9pt">
-<th>Write color</th>
+<th>Escrever cor</th>
 <th>Turn</th>
-<th>Next state</th>
-<th>Write color</th>
+<th>Próximo estado</th>
+<th>Escrever cor</th>
 <th>Turn</th>
-<th>Next state</th>
+<th>Próximo estado</th>
 </tr>
 <tr>
-<th rowspan="2">Current state</th>
+<th rowspan="2">Estado atual</th>
 
 <th>0</th>
 <td>1</td>
@@ -48,35 +49,37 @@ set the buggle initial position at (8;33), and ask for 8342 steps.</p>
 </tr>
 </table>
 
-<p>where the direction to turn is one of <b>L</b> (90° left), <b>R</b> (90°
-right), <b>N</b> (no turn) and <b>U</b> (180° U-turn).</p>
+<p>Onde a direção para virar é <b>L</b> (90° à esquerda), <b>R</b> (90° à
+direita), <b>N</b> (não vira) e <b>U</b> (meia-volta).</p>
 
-<h2>Going further</h2>
-<p>This exercise is naturally an excuse to let you experiment with your own
-turmites.  Feel free to change the transition table and the amount of steps
-to experiment by yourself. To that extend, you may find the Ed Pegg Jr's
-library useful. If you find new interesting patterns, send them per email so
-that we can integrate them to this list!  </p>
+<h2>Indo mais além</h2>
+<p>Este exercício é naturalmente uma desculpa para deixar você experimentar com
+seus próprios turmites. Sinta-se à vontade para mudar a tabela de transições
+e a quantidade de passos por conta própria. Nesta altura, você pode se
+interessar pela biblioteca de Pegg Jr. Se você encontrar novos padrões
+interessantes, envie-os por email para que eles possam integrar a lista!  </p>
 
-<p>In addition, wikipedia is desperately missing some good looking colorful
-turmites: only black and white ones are depicted.  You should consider
-submitting your creations directly to the free encyclopedia.</p>
+<p>Adicionalmente, a wikipédia está precisando desesperadamente de alguns
+turmites coloridos bem apresentáveis: apenas os preto e branco estão
+descritos. Você deveria considerar a possibilidade de enviar suas criações
+diretamente para a enciclopédia livre.</p>
 
-<p>Here are some 2-color turmites, extracted from
-http://demonstrations.wolfram.com/Turmites/ [!python|scala]They are not
-written using the [!thelang] syntax, but converting them should be easy.[/!]</p> 
+<p>Aqui estão alguns turmites de 2 cores, extraídos de
+http://demonstrations.wolfram.com/Turmites/ [!python|scala]Eles não foram
+escritos usando o sintaxe de [!thelang], mas convertê-los não deve ser
+difícil.[/!]</p> 
 
 <pre>
-{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant
-{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: binary counter
-{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: (filled triangle)
-{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: spiral in a box
-{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: stripe-filled spiral
-{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: stepped pyramid
-{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: contoured island
+{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: formiga de Langton
+{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: contador binário
+{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: (triâgulo preenchido)
+{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: espiral numa caixa
+{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: espiral stripe-filled
+{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: pirâmide inclinada
+{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: ilha contoured
 {{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: woven placemat
-{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: snowflake-ish
-{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: slow city builder
+{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: floco de neve
+{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: construtor de cidades lento
 {{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 0}, {0, LEFT  , 1}}} # 11: framed computer art
 {{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 1}, {1, LEFT  , 0}}} # 12: balloon bursting (makes a spreading highway)
 {{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 13: makes a horizontal highway
@@ -114,47 +117,50 @@ written using the [!thelang] syntax, but converting them should be easy.[/!]</p>
 {{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway
 </pre> 
 
-<p>Langton's ants may not share the expressiveness power of the turmites, but
-they remain fascinating too. You can experiment with them using the
-initLangton() method, provided in your template, that allows to build a
-Turmite transition table from a Langton's ant name. Tiny changes in the ant
-may result huge changes. For example, "RRL" does not seem to lead to any
-constructed pattern, even after a million steps, but "RLL" starts building a
-very simple highway pattern after less than 100 steps!</p>  
+<p>formigas de Langton podem não compartilhar do poder de expressão dos
+turmites, mas ainda assim são fascinantes. Você pode experimentar elas
+usando o método initLangton(), fornecido no seu template, que permite
+contruir uma tabela de transição do nome da formiga de Langton. Pequenas
+mudanças na formiga podem resultar em grandes mudanças. Por exemplo, "RRL"
+parece não levar a nenhum padrão, mesmo após um milhão de passos, mas, mas
+"RLL" começa a construir um padrão de estrada muito simples depois de menos
+de 100 passos!</p>  
 
-<p>Quite a lot of Langton's ants build highways: RL, of course, but also
-RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before the
-highway can be very short (as with RLL that only need 100 steps to converge)
-or very long, as with LLLLLLRRLRRR which seems chaotic for more than 500,000
-steps before build the highway or even RRLLLRRRLRRR which needs 1170000 to
-start converging. Some are narrow, and others are very large, such as
-RRLRLLRLRR (200,000 steps). This ant is also notable since it is somehow
-squarish even before the highway start where most others do not show
-anything notable before their highway.<p>
+<p>Muitas das formigas de Langton constróem estradas: RL, claro, mas também
+RLRLRLLRLR (em cerca de 2500 passos). O comportamento caótico das formigas
+antes da estrada pode ser bastante curto (como no caso RLL que precisa de
+apenas 100 passos para convergir) ou muito longo, como LLLLLLRRLRRR que
+parece caótico até mais de 500.000 de passos antes de contruir a estrada, ou
+até mesmo RRLLLRRRLRRR que precisa de 1.170.000 para começar a
+convergir. Umas são estreitas, e outras bem largas, como em RRLRLLRLRR
+(200,000 passos). Esta formiga é também notável pois é meio quadrada mesmo
+antes da estrada começar, enquanto que as outras não exibem nada de especial
+antes da estrada.<p>
 
-<p>Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps),
-RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR
-(20,000 steps). Some even fill the whole space (RRLRR after 3000
-steps). Some of my personal favorite ones are the ones where the ant seem to
-be bouncing within a box that gets bigger on each bump, such as LRRRRRLLR
-(30,000 steps). LRRRRLLLRRR is even more impressing since the bounces within
-the box are regular and since it converges more rapidly to its stable
-behavior (15,000 steps are enough).</p>
+<p>Algumas formiga preenchem setores sólidos, como RRLLLRLLLRRR(16,000 passos),
+RRLLLRLLLRRR (30,000 passos), RRLLLRRRRRLR (125,000 passos) ou RRLRLLRRRRRR
+(20,000 passos). Algumas preenchem até mesmo todo o plano (RRLRR depois de
+3000 passos). algumas das minhas favoritas são aquelas onde as formigas
+parecem ricochetear desntro de uma caixa que vai ficando maior em cada
+batida, como LRRRRRLLR (30,000 passos). LRRRRLLLRRR é ainda mais
+impressionante pois as ricocheteadas dantro da caixa são regulares e também
+por que ela converge mais rapidamente para o seu comportamento estável
+(15,000 passos são suficientes).</p>
 
-<p>Finally, some ants are just build artistic patterns. You should check this
-video for some beautiful ones:
-http://www.youtube.com/watch?v=1X-gtr4pEBU. If you want to convert them into
-your code, you have to shift them by one: For example, the one depicted at
-3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the first visible move should be
-read as last one).</p>
+<p>Finalmente, algumas formigas fazem padrões simplesmente artísticos. Você
+pode verificar este vídeo com alguns deles:
+http://www.youtube.com/watch?v=1X-gtr4pEBU. Se você quiser convertê-los em
+código, você tem que transladar um caractere: por exemplo, aquele descrito
+no minuto 3:42 não será RRLRLRLLRL, mas sim RLRLRLLRLR (o primeiro movimento
+visível deve ser lido como o último).</p>
 
-<p>As you can see by exploring the above set of turmites, they are usually not
-as colorful as the ants, but this may be because very few colors suffice to
-exhibit complex behaviors. For example, there is a specific class of
-turmites called <i>busy beavers</i> which are turmites that write a lot of
-things before stopping (busy beavers are usually classical turing machines,
-but the idea fits perfectly to turmites too). There is a sort of
-international competition where people strive to find the turmite that
-covers the biggest area before stopping. The web page is here:
+<p>Como você pode ver ao explorar o conjunto de turmites acima, elas não são
+tão coloridas quanto as formigas, mas isto pode ser por que poucas cores são
+o suficientes para exibir comportamentos complexos. Por exemplo, existe uma
+classe específica de turmites chamada <i>busy beavers</i> que são turmites
+que escrevem várias coisas antes de parar (busy beavers normalmente são
+máquinas de turing clássicas, mas a ideia encaixa perfeitamente em turmites
+também). Existe um tipode competição internacional onde as pessoas tentam
+encontrar o turmite que cobre a maior área antes de parar. A página é esta:
 http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines 
 
