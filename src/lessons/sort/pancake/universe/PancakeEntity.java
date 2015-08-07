@@ -35,8 +35,9 @@ public class PancakeEntity extends Entity {
 	 * 			beginning from the top of the stack, that you want to flip.
 	 */
 	public void flip(int numberOfPancakes) {
+		int old = ((PancakeWorld) world).getLastMove();
 		((PancakeWorld) world).flip(numberOfPancakes);
-		addOperation(new FlipOperation(this, numberOfPancakes));
+		addOperation(new FlipOperation(this, numberOfPancakes, old));
 		stepUI();
 	}
 

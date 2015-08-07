@@ -15,6 +15,7 @@ public class MethodsReturning extends ExerciseTemplated {
 	public MethodsReturning(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "Program";
+		setToolbox();
 
 		BuggleWorld[] myWorld = new BuggleWorld[3];
 		for (int i=0; i<3;i++) {

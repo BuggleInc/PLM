@@ -25,7 +25,7 @@ import plm.universe.Entity;
 public class LangC extends ProgrammingLanguage {
 
 	public LangC(boolean isDebugEnabled) {
-		super("C","c", isDebugEnabled);
+		super("C", "c", isDebugEnabled);
 	}
 
 	@Override

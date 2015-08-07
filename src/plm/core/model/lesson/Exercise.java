@@ -1,7 +1,6 @@
 package plm.core.model.lesson;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,6 +27,8 @@ import plm.universe.World;
 public abstract class Exercise extends Lecture {
 	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
+	
+	private int nbError;
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
@@ -67,7 +68,7 @@ public abstract class Exercise extends Lecture {
 				throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
 			currentWorld.add( w[i].copy() );
 			initialWorld.add( w[i].copy() );
-			answerWorld. add( w[i].copy() );
+			answerWorld.add( w[i].copy() );
 		}
 		for(int j = 0 ; j < size ; j++) { //size : nombre de fichiers d'erreur
 			errorWorld = new Vector<World>(w.length);
@@ -75,12 +76,9 @@ public abstract class Exercise extends Lecture {
 				if (w[i] == null) 
 					throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
 				errorWorld.add(w[i].copy());
-//				System.out.println(errorWorld.size()+" / "+w.length);
 			}
 			commonErrors.add(errorWorld);
 		}
-//		if(commonErrors.size()!=0)
-//			System.out.println("Size of commonErrors = "+commonErrors.size()+"\nSize of element 0 = "+commonErrors.get(0).size());
 	}
 
 	public abstract void run(List<Thread> runnerVect);	
@@ -89,7 +87,6 @@ public abstract class Exercise extends Lecture {
 	public void check() {
 		boolean pass = true;
 		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			System.out.println("Size of currentWorld = "+currentWorld.size());
 			for (int i=0; i<currentWorld.size(); i++) {
 				currentWorld.get(i).notifyWorldUpdatesListeners();
 
@@ -97,25 +94,16 @@ public abstract class Exercise extends Lecture {
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 					for(int j = 0 ; j < commonErrors.size() ; j++) {
-						//System.out.println(currentWorld.size()+" > "+commonErrors.size()+" - "+commonErrors.get(j).size());
-						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) {
-							String[] brokenPath = this.getLocalId().split("\\.");
-							String path = "src/";
-							for(int k = 0 ; k < brokenPath.length ; k++) {
-								if(brokenPath.length-1 != k) {
-									path += brokenPath[k]+"/";
-								} else {
-									path += brokenPath[k];
-								}
-							}
+						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) { //winning do an equals, but it is the same
+							String path = "/"+Game.JAVA.nameOfCommonError(this, j).replaceAll("\\.", "/")+/*"."+getGame().getLocale().getLanguage()+*/".html";
 							InputStream is;
 							try {
-								is = new FileInputStream(path+"CommonErr"+j+".html");
+								is = getClass().getResourceAsStream(path);
 								InputStreamReader lect = new InputStreamReader(is);
 								BufferedReader buf = new BufferedReader(lect);
 								String error = "Hint: ";
 								error += buf.readLine();
-								lastResult.executionError += "\n"+error+"\n\n------------------------------------------\n\n";
+								lastResult.executionError += getGame().i18n.tr(error+"\n\n------------------------------------------\n\n");
 								buf.close();
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -183,11 +171,19 @@ public abstract class Exercise extends Lecture {
 		return null;
 	}
 
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn,String errorCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset,correctionCtn,errorCtn));
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn, String errorCtn) {
+		switch (lang.getLang()){
+		case "Blockly":
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset, correctionCtn, errorCtn));
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name+"Blocks", initialContent, template, offset, correctionCtn, errorCtn));
+			break;
+		default:
+			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset, correctionCtn, errorCtn));
+			break;
+		}
 	}
 
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, int nbError) {
+	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
 		ProgrammingLanguage lang = getGame().getProgrammingLanguage();
 
 		Vector<World> worlds = null;
@@ -224,7 +220,7 @@ public abstract class Exercise extends Lecture {
 		}
 	}
 
-	public Vector<World> getWorlds(WorldKind kind, int nbError) {
+	public Vector<World> getWorlds(WorldKind kind) {
 		switch (kind) {
 		case INITIAL: return initialWorld;
 		case CURRENT: return currentWorld;
@@ -273,11 +269,20 @@ public abstract class Exercise extends Lecture {
 	protected void addProgLanguage(ProgrammingLanguage newL) {
 		progLanguages.add(newL);
 	}
-	
+
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		super.currentHumanLanguageHasChanged(newLang);
 		initialWorld.get(0).resetAbout();
 		initialWorld.get(0).getAbout();
 	}
+	
+	public int getNbError() {
+		return nbError;
+	}
+	
+	public void setNbError(int nbError) {
+		this.nbError = nbError;
+	}
+	
 }
 

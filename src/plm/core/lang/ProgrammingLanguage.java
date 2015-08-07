@@ -29,11 +29,17 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	String lang;
 	String ext;
 	boolean isDebugEnabled;
+	String visualExt;
+	int visualIndex;
+	boolean visualFile;
 	
 	public ProgrammingLanguage(String l, String ext, boolean isDebugEnabled) {
 		lang = l;
 		this.ext = ext;
 		this.isDebugEnabled = isDebugEnabled;
+		this.visualExt = ".code";
+		this.visualIndex = 0;
+		this.visualFile = false;
 	}
 	public boolean equals(Object o) {
 		if (!super.equals(o))
@@ -48,6 +54,16 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	public String getExt() {
 		return ext;
 	}
+	public String getVisualExt() {
+		return this.visualExt;
+	}
+	public int getVisualIndex() {
+		return  this.visualIndex;
+	}
+	public boolean getVisualFile() {
+		return  this.visualFile;
+	}
+	
 	@Override
 	public String toString() {
 		return lang;

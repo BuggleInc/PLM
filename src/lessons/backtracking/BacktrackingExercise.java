@@ -53,7 +53,8 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 	}
 
 	protected void newBestSolution(BacktrackingPartialSolution sol) {
-		((BacktrackingWorld) getWorlds(WorldKind.CURRENT, -1).get(0)).newBestSolution(sol);
+		setNbError(-1);
+		((BacktrackingWorld) getWorlds(WorldKind.CURRENT).get(0)).newBestSolution(sol);
 	}
 
 }

@@ -13,6 +13,7 @@ public class Environment extends ExerciseTemplated {
 	public Environment(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "SourceCode";
+		setToolbox();
 		
 		BuggleWorld myWorld = new BuggleWorld(game, "Training Camp",7,7);
 		new SimpleBuggle(myWorld, "Noob", 3, 3, Direction.NORTH, Color.black, Color.lightGray);

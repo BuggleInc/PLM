@@ -82,19 +82,20 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	}
 	
 	@Override 
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, int nbError) {
+	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
-			super.mutateEntities(kind, whatToMutate, nbError);
+			super.mutateEntities(kind, whatToMutate);
 			return;
 		}
 		/* compute the correction */
 			
 		Vector<World> worlds = null;
+		int nbErrors = getNbError();
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;
 		case ANSWER:  worlds = answerWorld;  break;
-		case ERROR:   if(nbError != -1) worlds = commonErrors.get(nbError);   break;
+		case ERROR:   if(nbErrors != -1) worlds = commonErrors.get(nbErrors);   break;
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
 

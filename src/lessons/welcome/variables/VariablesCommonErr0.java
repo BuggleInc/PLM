@@ -15,27 +15,13 @@ public class VariablesCommonErr0 extends plm.universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {
-		int nbSteps = 0;
-		int backwardSteps = 0;
-			
-		while(!estSurBiscuit())
-		{
-			nbSteps = 0;
-			backwardSteps = 0;
-
-			forward();
-			nbSteps++;
-
-			if(isOverBaggle())
-			{		
-				pickupBaggle();
-				while(backwardSteps != nbSteps)
-				{
-					backward();
-					backwardSteps++;
-				}
-				dropBaggle();
+		if(!isOverBaggle()) {
+			while(!isOverBaggle()) {
+				forward();
 			}
+			pickupBaggle();
+			backward();
+			dropBaggle();
 		}
 	}
 }

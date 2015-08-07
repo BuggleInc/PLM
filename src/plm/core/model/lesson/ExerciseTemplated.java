@@ -208,7 +208,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C) { 
+		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C || lang == Game.BLOCKLY) { 
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {
@@ -325,16 +325,13 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	protected <W extends World> void setup(W[] ws) {
 		boolean foundALanguage=false;
-		ArrayList<File> f = new ArrayList<File>();
-		ProgrammingLanguage lang2 = Game.JAVA;
+		ArrayList<String> files = new ArrayList<String>();
 		int k = 0;
-		while((new File("src/"+lang2.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")).exists()) {
-			if(!f.contains(new File(lang2.nameOfCommonError(this, k)))) {
-				f.add(new File(lang2.nameOfCommonError(this, k)));
-			}
+		while(getClass().getResourceAsStream("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")!=null) {
+			files.add("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java");
 			k++;
 		}
-		setupWorlds(ws,f.size());
+		setupWorlds(ws,files.size());
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
@@ -362,9 +359,9 @@ public abstract class ExerciseTemplated extends Exercise {
 						getGame().getLogger().log("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
-					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
-						System.out.println("No templating entity found: "+e);
-
+					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA) || lang.equals(Game.BLOCKLY)) 
+						getGame().getLogger().log("No templating entity found: "+e);
+						
 					if (getProgLanguages().contains(lang)) 
 						throw new RuntimeException(
 								getGame().i18n.tr("Exercise {0} is said to be compatible with language {1}, but there is no entity for this language: {2}",
@@ -378,13 +375,13 @@ public abstract class ExerciseTemplated extends Exercise {
 		if (!foundALanguage)
 			throw new RuntimeException(getGame().i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
 		computeAnswer();
-		computeError(f);
+		computeError(files);
 	}
 
-	protected void computeError(ArrayList<File> f) {
-		for(int i = 0 ; i < f.size(); i++) {
-			final int i2 = i;
-			if(new File("src/"+f.get(i).getPath().replaceAll("\\.", "/")+".java").exists()) {
+	protected void computeError(ArrayList<String> files) {
+		for(int i = 0 ; i < files.size(); i++) {
+			 int copyOfi = i;
+			 if(getClass().getResourceAsStream(files.get(i))!=null) {
 				Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
 
 					@Override
@@ -400,11 +397,11 @@ public abstract class ExerciseTemplated extends Exercise {
 					public void run() {
 						getGame().statusArgAdd(getClass().getSimpleName());
 						ExecutionProgress progress = new ExecutionProgress(getGame().getProgrammingLanguage());
-						mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR, i2);
-						Vector<World> errorWorld = commonErrors.get(i2);
+						setNbError(copyOfi);
+						mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR);
+						Vector<World> errorWorld = commonErrors.get(copyOfi);
 						for(World ew : errorWorld) {
 							for(Entity ent : ew.getEntities()) {
-								getGame();
 								Game.JAVA.runEntity(ent, progress, getGame().i18n);
 							}
 							ew.setErrorWorld();
@@ -433,6 +430,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				t.setUncaughtExceptionHandler(h);
 				Game.addInitThread(t);
 				t.start();
+				try {
+					t.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -502,7 +504,8 @@ public abstract class ExerciseTemplated extends Exercise {
 						getGame().setState(Game.GameState.EXECUTION_ENDED);
 					}
 				}
-				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION,-1);
+				setNbError(-1);
+				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
@@ -542,9 +545,10 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void run(List<Thread> runnerVect){
 		if (lastResult == null)
 			lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
-		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT,-1);
+		setNbError(-1);
+		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
-		for (World cw: getWorlds(WorldKind.CURRENT, -1)) {
+		for (World cw: getWorlds(WorldKind.CURRENT)) {
 			cw.doDelay();
 			cw.runEntities(runnerVect, lastResult);
 		}
@@ -558,9 +562,10 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld.get(i).reset(initialWorld.get(i));
 			answerWorld.get(i).doDelay();
 		}
-		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION,-1);
+		setNbError(-1);
+		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
-		for (World aw:getWorlds(WorldKind.ANSWER, -1))
+		for (World aw:getWorlds(WorldKind.ANSWER))
 			aw.runEntities(runnerVect,ignored);
 	}
 }

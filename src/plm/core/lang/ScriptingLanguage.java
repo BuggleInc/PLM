@@ -28,7 +28,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	@Override
 	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
-		
+
 		/* Nothing to do */
 	}
 
@@ -47,7 +47,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				if (newClassName.equals(sf.getName())) {
 					String script = sf.getCompilableContent(whatToMutate);
 					int offset = sf.getOffset();
-					
+
 					for (Entity ent : olds) {
 						ent.setScript(this, script);
 						ent.setScriptOffset(this, offset);
@@ -88,7 +88,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			for (Entity ent : olds) 
 				ent.setScript(this, script);
 		}
-		
+
 		return olds;
 	}
 
@@ -96,8 +96,11 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		ScriptEngine engine = null;		
 		try {
-			ScriptEngineManager manager = new ScriptEngineManager();       
-			engine = manager.getEngineByName(getLang().toLowerCase());
+			ScriptEngineManager manager = new ScriptEngineManager();
+			if(getLang().equals("Blockly"))
+				engine = manager.getEngineByName("python");
+			else
+				engine = manager.getEngineByName(getLang().toLowerCase());
 			if (engine==null)
 				throw new RuntimeException(i18n.tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",getLang()));
 

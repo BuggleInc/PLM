@@ -35,7 +35,8 @@ public class BDR extends ExerciseTemplated {
 
 	public BDR(Game game, Lesson lesson) {
 		super(game, lesson);
-		tabName = "BDRBuggle";			
+		tabName = "BDRBuggle";
+		setToolbox();
 
 		myWorld = new BuggleWorld(game, "Dance Floor",7,7);
 		/* first dancer, plus its steps */
