@@ -1,0 +1,43 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Desenho colorido</h2>
+
+Neste exercício, vamos reproduzir o desenho geométrico que você pode ver na
+aba "Objetivo".
+
+<p>Seu objetivo (aqui e em qualquer programa bem escrito) é escrever o código
+mais simples possível. Para isto, você tem que decompor seu trabalho em
+sub-passos e escrever métodos específicos para cada sub-passo.</p>
+
+<p>Se você observar cuidadosamente a figura para pintar, ela é constituída de
+quatro partes descrevendo um tipo de V usando uma cor diferente. Uma
+decomposição possível é escrever um método responsável por pintar um V de
+uma cor específica a partir da posição atual. Seu protótipo pode ser:</p>
+<pre>[!java|c]void [/!]fazerV([!java|c]Cor [/!]c[!scala]: Cor[/!])[!python]  <span class="comment"># parâmetro c é do tipo Cor</span>[/!]</pre>
+
+<p>O tipo de dados <code>Cor</code> descreve obviamente uma cor particular. Seu
+código provavelmente vai chamar <code>fazerV</code> com os seguintes
+argumentos (uma cor diferente para cada chamada):</p>
+<ul>
+<li>[!java|scala|python]Cor.[/!]AMARELO</li>
+<li>[!java|scala|python]Cor.[/!]VERMELHO</li>
+<li>[!java|scala|python]Cor.[/!]AZUL</li>
+<li>[!java|scala|python]Cor.[/!]VERDE</li>
+</ul>
+
+<p>Em <code>makeV()</code>, você deve usar o método
+<code>setBrushColor()</code> (pré-definido no buggle) para mudar a cor do
+pincel do buggle, assim como <code>levantarPincel()</code> e
+<code>abaixarPincel()</code> para mudar a posição do pincel.</p>
+ 
+<p>É recomendável escrever o código do <code>fazerV()</code> de forma que ele
+deixe o buggle na posição para o próximo V.</p>
+ 
+[!java|scala]
+<p>Agora é sua vez. tenho certeza de que você pode imaginar os outros métodos
+necessários para manter seu código simples e agradável de ler. Complete o
+método <code>run()</code> que será chamado automaticamente (uma vez).
+[!java]a palavra-chave <code>public</code> significa mais ou menos que todo
+mundo pode chamar este método, o que é bom pois a infraestrutura do PLM
+chama ele diretamente.[/!] </p>
+[/!]

@@ -1,0 +1,43 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Trilhas de buggles</h2>
+
+<p>Seu buggle se perdeu num estranho labirinto, e você deve ajudá-lo a achar a
+saída que está representada em laranja. Você não pode simplesmente explicar
+o caminho para a saída com algo do tipo
+<code>direita();avançar();avançar();avançar()</code> por que você tem que
+salvar dois buggles ao mesmo tempo, que estão presos em mundos similares mas
+não iguais. Você pode alternar para o outro mundo usando o combobox acima da
+representação do mundo (onde está escrito 'Floresta Fechada' agora), e
+selecionar a outra entrada (que deve ler 'Floresta Mais Fechada').</p>
+
+<p>A boa nova é que o caminho para a saída está desenhado no chão. Como você
+pode ver, o mundo é feito de vários corredores, com baggles no chão. Depois
+de cada corredor, você deve virar à esquerda se o corredor tiver três
+baggels ou mais, e virar a direita se tiver apenas 2 ou menos baggles.</p>
+
+<p>Você deve contar exatamente 5 células por corredor. Aquela com a intersecção
+conta como a última do corredor anterior, não como a primeira depois de você
+virar. </p>     
+
+<p>Logo, a forma geral de seu código deve ser algo como "enquanto não encontrar
+a saída, pegue o próximo corredor para decidir se vira à esqueda ou à
+direita na próxima intersecção". Você pode determinar se você está na célula
+de saída (que é laranja) com o método <code>saídaAlcançada()</code>
+fornecido.</p>
+
+<p>Para entrar num corredor, você tem que simplesmente correr de uma
+intersecção para outra enquanto conta os baggles que vê no seu caminho. Isto
+é fácil: existem 5 passos em cada corredor, de forma que um simples loop
+<code>for</code> resolve.</p>
+
+
+<p><div class="tip" id="tip-1" alt="Eu não consigo imaginar como contar os baggles que eu vejo.">
+Você precisa de uma variável que é inicializada em 0, e incrementada cada
+vez que você vê um baggle no chão. Uma variável usada desta forma é
+frequentemente chamada de <i>contador</i>.<br/><br/>
+Não esqueça de resetar seu contador para 0 no começo de cada corredor! 
+</div></p>
+
+<p>Ah, e quando chegar na saída, não esqueça de dar um passo a mais para sair
+de fato do labirinto!</p> 

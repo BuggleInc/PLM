@@ -1,0 +1,79 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Perdido entre ilhas</h2>
+
+<p>Você acha que seu algoritmo é suficiente para escapar de labirintos?
+Bem, não de todos...
+</p>
+
+<p>O <i>algoritmo de seguir paredes</i> que usamos até agora só funciona
+se a entrada e a saída estão próximas de paredes conectadas ao muro
+externo. Mas se o buggle começa na metade do labirinto, podem existir
+sessões de paredes desconectadas da parede externa.
+
+<p>É por isto que a estratégia anterior pode deixar o buggle dando voltas
+para sempre. Na verdade, o labirinto do qual você deve escapar agora
+contém ilhas, e o buggle não começa próximo de um dos muros
+externos. Experimente se você quiser: copie seu código aqui, aperte o
+botão rodar e veja sua solução anterior falhar vergonhosamente.</p>
+
+<p>O método de seguir uma parede ainda é bom e permite escapar com muita
+eficiencia de algumas seções do labirinto, logo nós não precisamos
+remover ele inteiramente. Ao invés disto, queremos parar de seguir a
+parede sob certas condições. Observe que o baggle fica próximo da
+borda externa do labirinto. Logo, queremos chegar na borda e então
+seguir aquela parede. Precisamos, por exemplo, buscar a parede norte
+antes de seguí-la até o baggle.
+
+<p>Para encontrar a parede norte, você simplesmente anda para o norte
+enquanto for possível, e quando encontrar um obstáculo, você deve
+desviar dele (usando o método anterior).</p>
+
+<div class="tip" id="tip-1" alt="Estou perdido agora, por favor me dê algumas orientações extra">
+	Nosso novo método run() consistirá de dois modos: nosso buggle vai
+alternar entra o "modo de andar para o norte" e o "modo de seguir à
+esquerda". Você começa no "modo de andar para o norte", e alternar
+para "seguir à esquerda" quando você tiver uma parede a norte (não
+esqueça de garantir que você tem uma parede à sua esquerda antes de
+alternar para o modo "seguir a esquerda"). Você alterna para "andar
+para o norte" assim que seu buggle estiver olhando para o norte e não
+estiver em frente a um muro durante sua viagem ao redor de seu muro à
+esquerda. A forma mais fácil de escrever tal máquina de estado é algo
+como 
+<pre>[!scala]var state=0;
+state match  {
+  case 0 => // para o norte
+     ...
+     state = 1;
+  case 1 => // seguir a esquerda
+     ...
+     state = 0;
+  case _ => println("Isto não deveria acontecer. Favor me conserte")
+}[/!][!java|c]int state=0;
+switch (state) {
+  case 0: // para o norte
+     ...
+     state = 1;
+     break;
+  case 1: // seguir a esquerda
+     ...
+     state = 0;
+     break;
+}[/!][!python]northRunner = True
+if northRunner:
+     ...
+     northRunner = False
+else: # left follower
+     ...
+     northRunner = True[/!]</pre>
+     
+[!scala]<br/>Não esqueça do caso default (matching _), ou scala vai dar erro já que
+o seu "matching" vai estar incompleto.[/!]
+</div>
+	
+<p>Não esqueça de deixar o buggle pegar o baggle no final do código.</p>
+	
+	
+<p>Tudo pronto. Isto deve ser o suficiente para você descobrir como sair
+deste labirinto, e se este não for o caso, você sempre pode pedir uma
+dica. Mas você não vai precisar, correto?</p>

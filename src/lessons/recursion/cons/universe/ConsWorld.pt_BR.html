@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>ConsWorld</h1>
+
+<p>Este mundo permite que você experimente com listas recursivas, pois ele foi
+introduzido primeiro em Lisp. É muito similar ao BatWorld, mas você deve
+escrever funções recursivas que funcionem em [!python|java]strings
+recursivas. pois [!thelang] não fornece tal contrução nativamente, o
+ConsWorld define listas recursivas do tipo <code>RecList</code>.[/!]
+[!scala]listas de inteiros (<code>List[Int]</code>).[/!]</p>
+
+<p>Qualquer lista dada é ou a lista vazia (noted
+<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), ou um inteiro
+seguido de uma lista. Se uma lista não é vazia, você pode recuperar seu
+primeiro inteiro com <code>list.head</code> e a lista contendo os demais
+parâmetros com <code>list.tail</code>. Obviamente, a lista vazia não tem
+head nem tail, portanto, tentar acessar estes elementos vai resultar numa
+mensagem de erro (desagradável).</p>
+
+<p>Para construir sua própria lista, você precisa concatenar um head e um tail
+como segue: [!java|python]<code>cons(head, tail)</code>[/!]
+[!scala]<code>head::tail</code> Observe que <code>::</code> é um operador
+genérico em Scala para construir listas.[/!]</p>
+
+<p>Logo, resumindo, você pode resolver cada exercício desta lição com as
+seguintes construções.</p>
+
+<ul>
+<li><b>A lista vazia:</b> <pre>[!java]null[/!][!scala]Nil[/!][!python]None[/!]</pre></li>
+<li><b>Obtém o primeiro elemento de <code>l</code></b> <pre>l.head</pre></li>
+<li><b>Obtém o resto da lista</b>, quando o primeiro elemento é removido: <pre>l.tail</pre></li>
+<li><b>Constrói uma lista</b> a partir de um <code>valor</code> e uma
+<code>lista</code>: [!java|python]<pre>cons(value, list)</pre>[/!] [!scala]<pre>value::list</pre>[/!]</li>
+</ul>

@@ -1,0 +1,127 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Métodos</h2>
+
+<p>
+Nós vamos agora escrever nossos próprios métodos. Isto é como extender o
+vocabulário do buggle ensinando novos truques. 
+</p>
+<p>Por exemplo, nós vimos num exercício anterior como pedir ao buggle para
+pegar o baggle na frente dele, e trazê-lo de volta. Se existem vários
+baggles no tabuleiro, e se nós queremos trazê-los todos para a linha de
+baixo, você tem que repetir este código várias vezes, ou incluir ele num
+loop. Em qualquer caso, você deve evitar duplicar seu código para mantê-lo
+agradável de ler e fácil de entender. Será melhor se o buggle puder obedecer
+uma ordem <code>vaiEPega()</code> assim como entende uma
+<code>[!c]avançarUmPasso()[/!][!scala|java|python]avançar()[/!]</code>.</p>
+
+<h3>Definindo métodos</h3>
+
+<p>A sintaxe de [!thelang] para escrever um método simples chamado
+<code>vaiEPega</code> é a seguinte:</p>
+<pre>[!java|c]void vaiEPega() {[/!][!python]def vaiEPega():[/!][!scala]def vaiEPega() {[/!]
+  ações()[!java|c];[/!]
+  ações()[!java|c];[/!]
+  eMaisAções()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>O corpo do método [!java|scala](entre chaves)[/!][!python](o bloco
+indentado)[/!] será executado quando nós chamarmos o método mais tarde (ou
+seja, quando nós escrevermos <code>vaiEPega()</code> em algum lugar do
+código). Este corpo do método pode conter tantas instruções quanto você
+queira, e qualquer construção que nós queiramos (for, while, if, etc).
+[!java]A palavra-chave <code>void</code> significa que este método não
+retorna qualquer resultado. Por exemplo, o método
+<code>estáSobreBaggle()</code> retorna um resultado, que é um booleano
+indicando se o buggle está ou não localizado sobre um baggle. Vamos em breve
+aprender a definir tais métodos também. Por agora, apenas escreva
+<code>void</code> neste local.[/!]
+</p>
+
+<h3>Documentando métodos</h3>
+
+<p>Você deve se esforçar para documentar seu código para mantê-lo
+legível. Quando você escreve código, fica claro o objetivo e as limitações,
+mas na maioria das vezes, isto é esquecido. Você rapidamente esquecerá dos
+detalhes de cada método específico, e vai chegar o dia em que você ficará
+feliz em ler a documentação. No exemplo seguinte, nós usamos o formalismo
+específico de [!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], um
+programa que extrai a documentação do código-fonte de [!thelang] e produz
+páginas html. A principal vantagem é que ele permite que a documentação
+fique junto ao código. Então, quando você mudar o código, você tem menos
+chances de esquecer de atualizar a documentação.</p>
+
+<p>comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] começam
+com a marca <code>/**</code> (com dois asteriscos). Eles devem ser colocados
+exatamente antes do método que documentam para a ferramenta
+encontrá-los.[/!] [!python]comentários pydoc devem ser colocados no começo
+do corpo do método de forma que a ferramenta possa encontrá-los. Eles devem
+ser colocados entre <code>"""</code>, que marcam strings multilinhas em
+python.[/!] A primeira linha deve ser uma breve descrição do que o método
+faz enquanto que as linhas subsequentes devem fornecer qualquer detalhes
+importantes sobre o método.</p>
+
+<pre>[!java|scala]/**
+ *  Vai, recupera o baggle na frente do buggle, e trás de volta 
+ *
+ *  Não verifica se tem paredes, então cuidado para não chamar ele
+ *  quando uma parede estiver presente.
+ */[/!]
+[!java]void vaiEPega() {[/!]
+[!scala]def vaiEPega() {[/!]
+[!python]def vaiEPega():
+  """Vai, recupera o baggle na frente do buggle, e trás de volta.
+
+  Não verifica se tem paredes, então cuidado para não chamar ele
+  quando uma parede estiver presente."""[/!]
+  ações()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<h3>Convenções de nomes</h3>
+<p>A maioria das linguagens de programação proíbe o uso de espaços em
+indentificadores de métodos e variáveis (=seus nomes).  Letras acentuadas
+são algumas vezes permitidas (como em [!thelang]), mas elas geram problemas
+de portabilidade entre sistemas operacionais e devem ser evitadas sempre que
+possível.</p>
+
+<p>Entre todas as linguagens de programação, existem duas convenções para
+nomear variáveis e métodos. A primeira, consiste em concatenar todas as
+palavras com apenas a primeria letra de cada palavra em maiúscula. "vai e
+Pega" se torna vaiEPega(). Isto é chamado "CamelCase" por que
+identificadores escritos desta forma parecem graficamente com as costas de
+um camelo. A outra convenção, chamada "snake_case", é escrever todas as
+palavras em minúsculas, separadas com sublinhados (_). "vai e pega" se torna
+vai_e_pega().</p>
+
+<p>Que convenção usar é o tópico de discussões acaloradas entre
+desenvolvedores, mas cada linguagem de programação tem seus próprios
+hábitos. Em Python, Perl e C, o snake_case é normalmente usado para métodos
+e variáveis. Java e Scala preferemo lowerCamelCase (só a primeira letra
+inicial é minúscula) para isto.</p> 
+<p>A convenção CamelCase é sempre usada no PLM por que este programa foi
+escrito em Java, então mantivemos o hábito quando inserimos novas
+linguagens. Mas o fato de os vínculos Python do PLM usarem CamelCase e não
+snake_case é considerado um bug que será corrigido em algum lançamento
+futuro.</p>
+
+<h3>Objetivo do exercício</h3>
+<p>O objetivo deste exercício é escrever um método chamado
+<code>vaiEPega()</code> que faça a mesma coisa que foi feita num exercício
+anterior (vai para a frente até estar sobre um baggle, pega ele, vai para
+trás até a posição inicial e solta o baggle).</p>
+
+<p>Este exercício é um pouco diferente por que você não vai precisar escrever
+todo o código executado pelo buggle. Ao invés disto, você deve apenas
+escrever um método que será chamado automagicamente quando você clica em
+<b>Iniciar</b>. Seu buggle vai chamar seu método <code>vaiEPega()</code> em
+cada linha, até que o baggle seja encontrado. [!python|scala]O código para
+isto já está pronto no método  <code>vaiEPega()</code>, mas você
+provavelmente não vai querer mudar isto. [/!] [!java]Você não precisa
+escrever o código chamado <code>vaiEPega()</code>. Ele já está lá
+automaticamente, mesmo se você não possa vê-lo.[/!]</p> 
+
+<p>Mas para isto funcionar, você tem que na verdade escrever este método
+<code>vaiEPega()</code> agora.</p>
+

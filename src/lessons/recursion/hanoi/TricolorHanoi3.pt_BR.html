@@ -1,0 +1,21 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Hanoi Tricolor: o Final</h2>
+
+<p>Estamos quase prontos para escrever o algoritmo tricolor. Precisamos
+apenas da função <code>scatter()</code>, bastante inspirada na
+primeira que escrevemos para o
+<a href="plm://lessons.recursion.hanoi/SplitHanoi1">problema de Hanoi
+Separado</a>.
+Assumindo que sua pilha intercalada esteja na vara do
+<code>meio</code>, espalhe os discos por todas as varas. Certifique-se
+de usar <code>move3()</code> uma quantidade par de vezes em cada nível
+recursivo para garantir que os discos de baixo estejam na ordem
+correta.</p>
+
+<p>Como você pode ver, a situação inicial não é a esperada por
+<code>scatter()</code>. Primeiro você tem que aplicar
+<code>gather()</code> e <code>move3()</code> (duas vezes para colocar
+o trio do fundo na ordem correta). Estes poucos passos mais a nova
+função <code>scatter()</code> são o suficiente para resolver
+inteiramente o problema de Hanoi Tricolor.</p>

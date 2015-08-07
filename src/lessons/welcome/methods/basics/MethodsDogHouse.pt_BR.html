@@ -1,0 +1,50 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Construindo metodicamente</h2>
+
+Agora nós queremos ensinar ao buggle como construir uma casa de cachorro. A
+abordagem simplória consiste em escrever diretamente o código necessário
+como segue. Isto funciona por que o buggle deste exercício deixa um caminho
+vermelho à medida em que anda.
+
+<pre>[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+[!c]avançarUmPasso()[/!][!python|java|scala]avançar()[/!][!java|c];[/!]
+left()[!java|c];[/!]</pre>
+
+<p>Vai ficar mais difícil se tivermos que desenhar duas casas de cachorro:
+teremos que reescrever o mesmo código duas vezes, o que não é muito
+prático. Quando o código se torna um pouco longo como este, torna-se fácil
+ver por que nós insistimos já tem um tempinho namais pura maldade que
+duplicação de código representa. Na verdade, imagine um erro que se
+infiltrou no código que você copiou para vários lugares, você vai ter que
+corrigir várias vezes. E ai de você se esquercer de corrigir num destes
+lugares.</p> 
+
+<p>Existe até um nome para esta boa prática de programação: DRY/SPOT, que em
+inglês significa "Don't Repeat Yourself / Single Point Of Truth" (não se
+repita/ponto único de confiança). A última parte significa que cada
+informação deve ser escrita em apenas um local de seu programa para evitar
+que diferentes locais fiquem desincronizados quando você modificar o código.</p>
+
+<p>Portanto, vamos aplicar este bom princípio de programação e <b>fatorizar seu
+código</b>, ie escrever ele apenas uma vez, por exemplo em um método. Você
+pode ir até mais longe fatorizando o corpo do método com um loop
+<code>for</code>, como visto anteriormente. Se você faz isto corretamente (o
+que se espera), dá para você usar o método <code>esquerda()</code> apenas
+uma vez.</p>
+
+<h3>Objetivo do exercício</h3>
+<p>O objetivo deste exercício é escrever um método chamado
+<code>casaDeCachorro</code> que faz a mesma coisa que o código acima, mas
+com um loop for para mantê-lo curto. O buggle vai chamar sua criação para
+construir várias casas de cachorro neste mundo. </p>
+

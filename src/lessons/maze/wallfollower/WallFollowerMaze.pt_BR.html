@@ -1,0 +1,66 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Seguindo as paredes</h2>
+
+<p>Neste momento, o labirinto é um pouco mais complicado. Aleatoriedade
+pode não ser suficiente, sejamos mais espertos!</p>
+
+<p>A boa notícia é que este labirinto é mais simples do que pode parecer
+à primeira vista: cada parede é conectada às outras. para sair deste
+tipo de labirinto, o buggle tem que simplesmente seguir uma parede (a
+que fica à sua esquerda ou à sua direita, não importa). Enquanto
+manter uma pata na parede, o buggle deve se mover para a frente até
+encontrar a saída do labirinto e o biscoitinho que ele tanto gosta.</p>
+
+<p>Isto funciona aqui por que não existem ilhas ou paredes isoladas, logo
+o nosso buggle não vai entrar num loop para sempre sem encontrar seu
+baggle.</p>
+
+<h3>Objetivo do exercício</h3>O objetivo deste exercício é escrever um algoritmo que permita que o
+buggle saia do labirinto.
+
+<p>Como dito anteriormente, não importa se você decide seguir a parede na
+esquerda ou da direita. Simplesmente, a demonstração segue a da
+esquerda, logo você deve fazer o mesmo em sua solução para facilitar a
+comparação de sua solução e da demonstração.</p> 
+
+<p>Escreva um método <code>keepHandOnSideWall()</code> que faz o buggle
+andar uma casa para a frente enquanto mantém a pata na parede do lado
+selecionado. Você deve garantir que o buggle sempre mantenha a pata na
+parede, mas também que ele não bata numa parede. Você pode checar a
+dica para mais informações sobre isto, mas faça isto apenas se você
+estiver perdido. Tente primeiro fazer sem a dica.</p> 
+
+<p>Então, escreva o algoritmo inteiro para percorrer o labirinto passo a
+passo (usando <code>keepHandOnSideWall()</code>) até encontrar o
+biscoito e a saída. Não esqueça de pegar o baggle quando o encontrar.</p>
+
+<div class="tip" id="tip-1" alt="Estou perdido, me dê orientações extra">
+<p>Quando seu buggle tem uma parede à esquerda, existem três situações a
+considerar, dependendo das paredes em volta. A tabela a seguir explica
+cada situação inicial, e onde você deve deixar seu buggle parar após
+cada passo.</p>
+<table border=1>
+<tr>
+ <td></td>
+ <td>Caso 1</td>
+ <td>Caso 2</td>
+ <td>Caso 3</td>
+</tr><tr>
+ <td>Situação inicial</td>
+ <td><img src="lessons/maze/wallfollower/1A.png"/></td>
+ <td><img src="lessons/maze/wallfollower/2A.png"/></td>
+ <td><img src="lessons/maze/wallfollower/3A.png"/></td>
+</tr><tr>
+ <td>Onde é o próximo passo</td>
+ <td><img src="lessons/maze/wallfollower/1B.png"/></td>
+ <td><img src="lessons/maze/wallfollower/2B.png"/></td>
+ <td><img src="lessons/maze/wallfollower/3B.png"/></td>
+</tr>
+</table>
+<p>Se você faz um <code>right()</code> em qualquer caso no final da sua
+função, é possível escrever ela com 3 linhas com um loop
+<code>while</code>.</p>
+</div>
+
+    

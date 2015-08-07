@@ -1,0 +1,27 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>CocktailSort</h1>
+
+<p>Para melhorar ainda mais o algoritmo BubbleSort, precisamos ver seu
+comportamente bem de perto. Você pode perceber que os elementos grandes se
+movem bem rápido enquanto os pequenos se movem lentamente para seus
+destinos. Eles são então tradicionalmente chamados de "coelhos" e
+"tartarugas" respectivamente para valores grandes e rápidos e valores
+pequenos e lentos.</p>
+
+<p>Para ajudar as tartarugas a se mover rápido, o cocktail sort percorre
+alternativamente a array da direita para a esquerda e da esquerda para a
+direita. Aqui está o pseudo-código:</p>
+
+<pre>
+Do
+  For all i in [0,len-2], do:
+    if i and i+1 must be swapped, do it
+  For all i in [len-2,0] (downward), do:
+    if i and i+1 must be swapped, do it
+while at least one of the traversal swapped an element
+</pre>
+
+<p>Podemos perceber que cocktail sort alcança exatamente a mesma quantidade de
+trocas que o bubble sort, mas melhora levemente na quantidade de
+leituras. Entretanto, ele é ainda pior que o BubbleSort2 neste assunto.</p> 

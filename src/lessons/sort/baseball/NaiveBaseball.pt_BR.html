@@ -1,0 +1,57 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Basebal do arco-íris simples</h1>
+
+<p>Hoje os buggles decidiram jogar um jogo de basebal, mas eles estão sem muita
+sorte, na verdade. Primeiro, eles esqueceram as regras, e... bem... eles não
+acharam as bolas e tacos de novo. Então eles decidiram adaptar um pouco as
+regras. Como eles não são bolas, tudo que podem fazer é correr ao redor do
+campo, o que fazem felizes da vida: Por um período, todos os buggles
+correram na máxima velocidade em todas as direções pelo campo.</p> 
+
+<p>Mas depois de algumas colisões eles decidiram inventar novas regras para
+organizar o jogo um pouco: eles fizeram um time por base e dois jogadores
+por time. Um dos times tem apenas um jogador de forma que sua base tem uma
+vaga. Então, os jogadores são despachados aleatoriamente entre as bases, e o
+jogo para eles é encontrar sua base de origem. O jogo como um todo pára
+quando todos os jogadores estão em suas bases de origem. Não existe um time
+vencedor: ou todo mundo ganha ou todo mundo perde. Na verdade, este jogo é
+muito diferente do basebal original. A única regra que sobrou é que você só
+pode correr ao redor do campo, de uma base para a próxima, sem cruzar o meio
+do campo.</p>
+
+<p>Agora, eles estão pedindo a você que ajude eles a decidir quem deve se mover
+de forma que cada jogador retorne à sua base de origem. Apenas um buggle
+pode se mover por rodada, de sua posição para um espaço vazio. A distância
+máxima que um buggle pode percorrer em uma rodada é de uma base.</p>
+
+<p>Logo, em cada turno, o espaço vazio fica em uma base (digamos
+<code>B</code>), e você deve decidir que buggle vai entrar neste espaço
+vazio. Existem quatro candidatos (dois de base <code>B-1</code> e dois da
+base <code>B+1</code>). Na verdade, existe um quinto candidato pois o buggle
+que está na mesma base que o espaço vazio pode mudar de posição, mas isto
+não ajuda muito.</p>
+
+<h3>O algoritmo simplório</h3>
+
+<p>Neste exercício, vamos primeiramente explorar um algoritmo muito
+simples. Para decidir qual dos quatro buggles candidatos deve entrar no
+espaço vazio, vamos primeiro nos restringir e decidir que os buggles só
+podem andar no sentido horário. Então, dos dois candidatos restantes,
+pegamos o que tem a maior distância a percorrer para alcançar sua base (no
+sentido horário). Clique no botão demo: isto funciona melhor na prática.</p>
+
+<p>É difícil encontrar um algoritmo simples para este problema: Como não está
+ordenado, busque pela base contendo os buggles candidatos: se o vazio
+estiver na base <code>B</code>, será a base <code>B+1</code>, módulo a
+quantidade de bases. Então, calcule a distância que cada buggle daquela base
+ainda tem que andar para atingir sua própria base (0 se já estiver na
+própria base). Uma vez que você encontra o buggle que deve entrar no vazio,
+simplesmente use o método <code>move</code> nele, e itere.</p>   
+
+<p>A principal dificuldade deve ser obter corretamente as poucas equações:
+determinar a base próxima do espaço vazio deve ser fácil, mas determinar a
+distância que um jogador tem que cobrir pode se revelar um pouco
+desafiadora. Não hesite em desenhar esboços num papel para cobrir todas as
+possibilidades. Não vai ser tão difícil no final das contas: não existem
+tantos casos assim.</p>  

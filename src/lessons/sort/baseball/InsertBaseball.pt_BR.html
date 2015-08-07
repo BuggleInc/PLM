@@ -1,0 +1,65 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Insertion Baseball</h1>
+
+<p>O aspecto bom de adaptar o selection sort para o problema do basebal é que
+nós sabemos que isto funciona (desde que nossa adaptação esteja correta). O
+que é muito melhor que o nosso primeiro e simplório algoritmo, que é incapaz
+de convergir para a solução em algumas situações. Mas na verdade, o
+selection sort também não é perfeito pois ele requer muitas trocas: nós
+temos que trazer o espaço vazio para e jogador selecionado e então levar o
+jogador e o espaço vazio para a posição, e mais. Podemos fazer melhor.</p>
+
+<p>Por exemplo, cada jogador pode correr por uma longa distância de sua posição
+inicial para o objetivo. Portanto, pode ser mais interessante dividir o
+campo em duas partes: uma à esquerda onde todos os jogadores estejam
+ordenados relativamente uns aos outros, e outra a direita onde os jogadores
+ainda estejam em suas posições iniciais. Então, em cada iteração, pegaremos
+o jogador na fronteira entre as áreas ordenada e não-ordenada (ou sejam o
+jogador mais a esquerda da parte não-ordenada) e moveremos ele para a
+esquerda (dentro da parte ordenada) até que ele alcance sua posição (ou
+seja, até a posição onde ele seja maior que seu vizinho da esquerda). Isto
+pode, pelo menos, reduzir o trajeto dos jogadores para a área ordenada já
+que usamos o mais perto da fronteira.</p>
+
+<p>Na verdade, é exatamente isto que o insertion sort deve fazer: manter uma
+área ordenada na esquerda, e colocar iterativamente o jogador na fronteira
+com esta posição dentro da área ordenada. Isto é bom, já que nós sabemos que
+nosso algoritmo não é inerentemente "flawed" pois nós adaptamos um algoritmo
+bem conhecido.</p>     
+
+<p>A forma mais fácil de adaptar o insertion sort ao problema do basebal é
+considerar todas as posições como adjacentes e esquecer sobre as bases. Para
+isto, definimos os métodos <code>getColor[!c]Insert[/!](pos)</code>,
+<code>move[!c]Insert[/!](pos)</code> e <code>getHole[!c]Insert[/!]()</code>
+que usam, todos, um único inteiro para designar uma dada posição. Estas
+funções simplesmente convertem a forma de especificar uma posição para em
+seguida chamar as funções usuais para interagir com o mundo. Se você tem um
+<code>index</code> e quer converter ele em <code>base,pos</code>, para então
+em <code>base=index/2</code> e <code>pos=index%2</code>. Para calcular o
+reverso, <code>index=base*2+pos</code> (isto funciona pois
+<code>getPositionsAmount()</code> sempre retorna 2).</p> 
+
+<p>Para o algoritmo em si, você deve primeiro mover o espaço vazio para a
+posição 1. A posição 0 é considerada como a área ordenada (de tamanho 1 por
+enquanto) enquanto que a área acima de 2 é a área não-ordenada. Então
+fazemos uma iteração para ordenar cada elemento da área não-ordenada. Já que
+esta iteração é um pouco complexa, você deve pensar em seu invariante do
+loop, ou seja, a condição que é verdadeira antes e depois do loop e que
+explica que o loop satisfaz seu objetivo. Aqui, o o invariante do loop é
+duplo: Primeiro, o espaço vazio está entre a área ordenada e a não-ordenada
+is between the sorted area and the unsorted area, and then, the every
+elements of the sorted area are ... well sorted relatively to their
+neighbors.</p>
+
+<p>Então, o corpo do loop para ordenar um elemento deve primeiro empurrar para
+baixo o espaço vazio e os elementos dentro da área ordenada até que o
+elemento seja maior que o elemento que está depois na área ordenada (2
+movimentos por posição para se mover), e então mover o espaço vazio de volta
+para sua posição entre as áreas ordenadas e não-ordenadas (1 movimento por
+posição).</p> 
+
+<p>Uma vez que você insira o último elemento dentro da área ordenada, seu
+conjunto como um todo estará ordenado e você terá terminado. Vou deixar como
+surpresa os casos da fronteira que vão precisar de alguns pequenos ajustes
+no seu algoritmo para funcionar corretamente :)</p>

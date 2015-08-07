@@ -1,0 +1,83 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Métodos com perâmetros</h2>
+
+<p>Você não está cansado de escrever o mesmo código várias vezes para se mover
+uma certa quantidade de passos? Por outro lado, escrever
+<tt>avançar2()</tt>, <tt>avançar3()</tt>, <tt>avançar4()</tt>, assim como
+<tt>recuar2()</tt>, <tt>recuar3()</tt>, <tt>recuar4()</tt> e etc também não
+ajudam, para dizer o mínimo.</p>
+
+<p>Felizmente, é possível passar <b>parâmetros</b> para seus métodos. Você tem
+que especificar o tipo e nome entre parêntesis depois do nome do
+método. Então, você pode usá-los no corpo do método como se eles fossem
+variáveis definidas lá, e com valores iniciais que o "caller" especificou.</p>
+
+<pre>[!java|c]double [/!]dividirPorDois([!java|c]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala|c]{[/!][!python]:[/!]
+     return x / 2[!java|c];[/!]
+[!scala|java|c]}[/!]</pre>
+
+<p>Como o "caller", você deve especificar o valor inicial destas "variáveis"
+entre parêntesis na chamada.</p>
+<pre>[!java|c]double [/!][!scala]val [/!]result = dividirPorDois(3.14)[!java|c];[/!]</pre>
+
+<p>Se você quiser vários parâmetros, você precisa separar eles com vírgulas (,)
+tanto na declaração quanto na chamada.</p>
+
+<pre>[!java|c]double dividir(double x, double y) {[/!]
+[!scala]def dividir(x:Double, y:Double): Double = {[/!]
+[!python]def dividir(x, y):[/!]
+     return x / y[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+<pre>[!java|c]double res = dividir(3.14 , 1.5);[/!]
+[!scala]val res = dividir(3.14 , 1.5)[/!]
+[!python]res = dividir(3.14 , 1.5)[/!]</pre>
+
+[!java|scala]
+<p>Em [!thelang], você pode declarar vários métodos de mesmo nome desde que
+eles não tenham a mesma <b>assinatura</b>, ou seja, a mesma quantidade e
+tipo de parâmetros.</p>
+
+<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, y:Double): Double =[/!] {
+  if (x > y) {
+    return x;
+  }
+  return y;
+}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, y:Int): Int =[/!] {
+  if (x > y) {
+    return x;
+  }
+  return y;
+}
+[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, y:Int, z:Int): Int =[/!] {
+  if (x > y && x > z) {
+    return x;
+  }
+  if (y > z) {
+    return y;
+  }
+  return z;
+}</pre>
+
+<p>Observe que nós omitimos os ramos <tt>else</tt> de cada <tt>if</tt>. Isto
+funciona de qualquer jeito por que um <tt>return</tt> interrompe a execução
+do método. Se nós chegarmos à última linha de
+<code>[!java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>, vamos
+saber que <code>x&lt;=y</code> por que de outra forma, o <tt>return</tt> da
+linha 2 deveria ter parado a execução.</p>
+<!-- introduce default value for parameters in Python language -->
+[/!]
+
+
+
+<h3>Objetivo do exercício</h3>
+<p>Agora você vai ter que escrever um método <code> [!java|c]mover(int
+contaPassos,[!java]boolean[/!][!c]int[/!] forward)[/!]
+[!scala]mover(contaPassos: Int,forward: Boolean)[/!]
+[!python]mover(contaPassos,forward)[/!] </code> que move para a frente
+<code>contaPassos</code> passos se <code>forward</code> for verdadeiro, e
+move para trás a mesmas quantidade de passos se o booleano for falso.</p>
+
+<p>Desta vez existe apenas um mundo mas sete buggles, todos compartilhando o
+mesmo código. Este código não deve te dar muito trabalho para escrever, na
+verdade.</p>
