@@ -380,7 +380,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	protected void computeError(ArrayList<String> files) {
 		for(int i = 0 ; i < files.size(); i++) {
-			 int copyOfi = i;
+			 final int copyOfi = i;
 			 if(getClass().getResourceAsStream(files.get(i))!=null) {
 				Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
 
