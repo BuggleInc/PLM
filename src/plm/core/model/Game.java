@@ -483,6 +483,7 @@ public class Game implements IWorldView {
 
 			int index = exo.indexOfWorld(this.selectedWorld);
 			this.answerOfSelectedWorld = exo.getAnswerOfWorld(index);
+			exo.setNbError(-1);
 			this.initialOfSelectedWorld = exo.getWorlds(WorldKind.INITIAL).get(index);
 			if (this.selectedWorld.getEntityCount()>0) {
 				this.selectedEntity = this.selectedWorld.getEntity(0);
@@ -526,6 +527,7 @@ public class Game implements IWorldView {
 		// We cannot kill them as they are computing the exercise's correction.
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
+			((Exercise) lecture).setNbError(-1);
 			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
 				w.doneDelay();
 	}
@@ -553,6 +555,7 @@ public class Game implements IWorldView {
 	public void allowOneStep() {
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
+			((Exercise) lecture).setNbError(-1);
 			for (World w: ((Exercise) lecture).getWorlds(WorldKind.CURRENT))
 				for (Entity e : w.getEntities())
 					e.allowOneStep();
@@ -968,6 +971,7 @@ public class Game implements IWorldView {
 			getLogger().log("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			getLogger().log("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
 			if(l!=null) {
+				((Exercise) l.getCurrentExercise()).setNbError(-1);
 				for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
 					String s = w.getDebugInfo();
 					if (s != "") 

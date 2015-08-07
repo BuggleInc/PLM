@@ -88,7 +88,8 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
-	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n) throws PLMCompilerException;
+	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
+
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
 	 * This task is not trivial given that it depends on the universe and the programming language:
@@ -113,5 +114,8 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	
 	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
 		return exo.nameOfCorrectionEntity();
+	}
+	public String nameOfCommonError(Exercise exo, int i) {
+		return exo.nameOfCommonError(i);
 	}
 }

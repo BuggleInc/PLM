@@ -201,7 +201,7 @@ public class LangC extends ProgrammingLanguage {
 
 	@Override
 	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old,
-			StudentOrCorrection whatToMutate, I18n i18n) {
+			StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
 		
 		return old; /* Nothing to do, actually */
 	}
