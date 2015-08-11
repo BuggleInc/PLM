@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-07-31 10:14+0200\n"
+"POT-Creation-Date: 2015-08-10 14:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1896,6 +1896,50 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:161
 msgid "It's your turn now!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr0.html:1
+msgid "Don't reinitialize your step values each time you enter in the loop !"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr1.html:1
+msgid ""
+"Don't forget to count how many forward steps you do in order to know how "
+"many backward steps you have to do to return back to the original place..."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr2.html:1
+msgid "Don't forget to take the baggle and to put it to the starting point !"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr3.html:1
+msgid ""
+"You need to use variables to get to the solution, in order to count the "
+"number of steps you do to arrive to the baggle, to know how many steps you "
+"have to do to return back to your home."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr4.html:1
+msgid "Don't forget to drop your baggle once you are arrived to the starting point!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr5.html:1
+msgid ""
+"You just have to return back to the original place now. Did you count how "
+"many steps you did to come here?"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr6.html:1
+msgid ""
+"You need to do as many backward steps as you did forward steps. And don't "
+"forget to drop your baggle..."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -3822,6 +3866,20 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:72
 msgid "When your function <code>haveBaggle</code> works, proceed to next exercise."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr0.html:1
+msgid ""
+"You do not check if you saw a baggle or not at every step you did. Check "
+"your line that changes the result boolean."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr1.html:1
+msgid ""
+"You don't have to stop over the baggle. Remember your method to know how "
+"many steps you have to do backward in another exercise... ;)"
 msgstr ""
 
 #. type: Content of: <p>
