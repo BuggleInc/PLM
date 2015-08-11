@@ -1,9 +1,6 @@
 package plm.core.model.lesson;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,6 +18,7 @@ import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 
@@ -86,6 +84,8 @@ public abstract class Exercise extends Lecture {
 
 	public void check() {
 		boolean pass = true;
+		lastResult.commonErrorText = "";
+		lastResult.commonErrorID = -1;
 		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
 			for (int i=0; i<currentWorld.size(); i++) {
 				currentWorld.get(i).notifyWorldUpdatesListeners();
@@ -95,16 +95,11 @@ public abstract class Exercise extends Lecture {
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 					for(int j = 0 ; j < commonErrors.size() ; j++) {
 						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) { //winning do an equals, but it is the same
-							String path = "/"+Game.JAVA.nameOfCommonError(this, j).replaceAll("\\.", "/")+/*"."+getGame().getLocale().getLanguage()+*/".html";
-							InputStream is;
+							String path = Game.JAVA.nameOfCommonError(this, j).replaceAll("\\.", "/");
 							try {
-								is = getClass().getResourceAsStream(path);
-								InputStreamReader lect = new InputStreamReader(is);
-								BufferedReader buf = new BufferedReader(lect);
-								String error = "Hint: ";
-								error += buf.readLine();
-								lastResult.executionError += getGame().i18n.tr(error+"\n\n------------------------------------------\n\n");
-								buf.close();
+								StringBuffer sb = FileUtils.readContentAsText(path, getGame().getLocale(), "html", true);
+								lastResult.commonErrorText = sb.toString();
+								lastResult.commonErrorID = j;
 							} catch (IOException e) {
 								e.printStackTrace();
 							} 
