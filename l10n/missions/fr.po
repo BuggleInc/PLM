@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-07-31 10:14+0200\n"
-"PO-Revision-Date: 2015-08-02 10:39+0200\n"
+"POT-Creation-Date: 2015-08-10 14:34+0200\n"
+"PO-Revision-Date: 2015-08-10 15:04+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -2521,6 +2521,66 @@ msgstr ""
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr0.html:1
+msgid "Don't reinitialize your step values each time you enter in the loop !"
+msgstr ""
+"Ne réinitialisez pas votre valeur de pas à chaque fois que vous entrez dans "
+"votre boucle !"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr1.html:1
+msgid ""
+"Don't forget to count how many forward steps you do in order to know how "
+"many backward steps you have to do to return back to the original place..."
+msgstr ""
+"N'oubliez pas de compter le nombre de pas en avant pour savoir combien de "
+"pas en arrière il va falloir faire pour retourner à la place originelle..."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr2.html:1
+msgid "Don't forget to take the baggle and to put it to the starting point !"
+msgstr ""
+"N'oubliez pas de ramasser le biscuit et de le déposer au point de départ !"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr3.html:1
+msgid ""
+"You need to use variables to get to the solution, in order to count the "
+"number of steps you do to arrive to the baggle, to know how many steps you "
+"have to do to return back to your home."
+msgstr ""
+"Vous devez utiliser une ou plusieurs variables pour arriver à la solution. "
+"Cela sert à compter le nombre de pas que fait la buggle pour atteindre le "
+"biscuit et pour savoir combien de pas elle doit faire pour retourner chez "
+"elle. "
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr4.html:1
+msgid ""
+"Don't forget to drop your baggle once you are arrived to the starting point!"
+msgstr ""
+"N'oubliez pas de déposer votre biscuit quand vous arrivez au point de "
+"départ !"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr5.html:1
+msgid ""
+"You just have to return back to the original place now. Did you count how "
+"many steps you did to come here?"
+msgstr ""
+"Il ne reste plus qu'à retourner au point de départ. Avez-vous bien compté le "
+"nombre de pas faits pour arriver ici ?"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr6.html:1
+msgid ""
+"You need to do as many backward steps as you did forward steps. And don't "
+"forget to drop your baggle..."
+msgstr ""
+"Vous devez faire autant de pas en arrière que de pas en avant. Et n'oubliez "
+"pas de déposer votre biscuit..."
+
 #. type: Content of: <h2>
 #: src/lessons/welcome/variables/RunFour.html:2
 msgid "Run Four bases"
@@ -4298,7 +4358,13 @@ msgid ""
 "are greater than [!python] -100000000.[/!] [!java|scala]<code>Integer."
 "MIN_VALUE</code> (which is the smallest representable integer existing in [!"
 "thelang]).[/!]"
-msgstr "Comme d'habitude, vous ne devez effectuer qu'un seul parcours pour obtenir les informations nécessaires. Vous pouvez supposer que la seconde plus grande valeur existe effectivement (qu'il y a au moins deux valeurs dans le tableau) et que toutes les valeurs du tableau sont plus grandes que [!python] -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est le plus petit entier existant en [!thelang]).[/!] "
+msgstr ""
+"Comme d'habitude, vous ne devez effectuer qu'un seul parcours pour obtenir "
+"les informations nécessaires. Vous pouvez supposer que la seconde plus "
+"grande valeur existe effectivement (qu'il y a au moins deux valeurs dans le "
+"tableau) et que toutes les valeurs du tableau sont plus grandes que [!"
+"python] -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est "
+"le plus petit entier existant en [!thelang]).[/!] "
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -5315,6 +5381,25 @@ msgid ""
 msgstr ""
 "Quand votre fonction <tt>haveBaggle</tt> fonctionne, passez à l'exercice "
 "suivant."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr0.html:1
+msgid ""
+"You do not check if you saw a baggle or not at every step you did. Check "
+"your line that changes the result boolean."
+msgstr ""
+"Vous ne vérifiez pas si vous avez vu ou non un biscuit à tous les pas "
+"d'exécution. Ajustez la ligne qui change le booléen du résultat. "
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr1.html:1
+msgid ""
+"You don't have to stop over the baggle. Remember your method to know how "
+"many steps you have to do backward in another exercise... ;)"
+msgstr ""
+"Vous ne devez pas vous arrêter sur le biscuit. Souvenez-vous de la méthode "
+"qui compte le nombre de pas à faire en arrière que vous avez écrite dans un "
+"autre exercice... ;)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:4

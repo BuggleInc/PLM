@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-03 20:55+0200\n"
+"POT-Creation-Date: 2015-08-10 14:34+0200\n"
 "PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2737,6 +2737,51 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:161
 msgid "It's your turn now!"
 msgstr "Ed adesso è il vostro turno!"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr0.html:1
+msgid "Don't reinitialize your step values each time you enter in the loop !"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr1.html:1
+msgid ""
+"Don't forget to count how many forward steps you do in order to know how "
+"many backward steps you have to do to return back to the original place..."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr2.html:1
+msgid "Don't forget to take the baggle and to put it to the starting point !"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr3.html:1
+msgid ""
+"You need to use variables to get to the solution, in order to count the "
+"number of steps you do to arrive to the baggle, to know how many steps you "
+"have to do to return back to your home."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr4.html:1
+msgid ""
+"Don't forget to drop your baggle once you are arrived to the starting point!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr5.html:1
+msgid ""
+"You just have to return back to the original place now. Did you count how "
+"many steps you did to come here?"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr6.html:1
+msgid ""
+"You need to do as many backward steps as you did forward steps. And don't "
+"forget to drop your baggle..."
+msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/variables/RunFour.html:2
@@ -5645,6 +5690,20 @@ msgid ""
 msgstr ""
 "Quando il tuo metodo <code>haveBaggle</code> funzionerà, procedi al prossimo "
 "esercizio."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr0.html:1
+msgid ""
+"You do not check if you saw a baggle or not at every step you did. Check "
+"your line that changes the result boolean."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr1.html:1
+msgid ""
+"You don't have to stop over the baggle. Remember your method to know how "
+"many steps you have to do backward in another exercise... ;)"
+msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:4
@@ -9119,7 +9178,7 @@ msgstr ""
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:9
 msgid ""
 "[!java|python|c]For that, simply use the <code>break</code> keyword, which "
-"breaks the current loop.  Beware, if you have several embedded loops, this "
+"breaks the current loop.  Beware, if you have several nested loops, this "
 "will apply to the internal one.[/!] [!scala]For that, simply quit the "
 "current function by calling <code>return</code> with no associated value.[/!]"
 msgstr ""
@@ -9460,7 +9519,7 @@ msgid ""
 "to the end of the array), but it is still possible to achieve better. "
 "ComboSort comes down to providing them a short cut: instead of comparing "
 "adjacent values, we compare values separated by a gap bigger than 1. That "
-"way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, we "
+"way, turtles will traverse <i>gap</i> cells at each traversal. Naturally, we "
 "have to apply the algorithm with decreasing gaps, and finish with <i>gap=1</"
 "i> to ensure that the array is correctly sorted afterward. Choosing the "
 "right gap and how to decrease it is a difficult question, but in practice, "
@@ -10130,8 +10189,8 @@ msgstr ""
 msgid ""
 "The basic idea is to grow sequences of sorted pancakes, not necessarily "
 "starting from the bottom.  We say that a sequence of ordered pancakes "
-"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
-"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
+"constitute a <b>block</b> while a pancake that is not part of a block is "
+"said to be <b>free</b>. The algorithm then considers the topmost pancake (of "
 "radius <code>t</code>) and search for the <code>t+1</code> or <code>t-1</"
 "code> pancakes (the considered neighbor is noted <code>t+o</code>). Eight "
 "cases may happen:"
@@ -10155,7 +10214,7 @@ msgstr ""
 #: src/lessons/sort/pancake/GatesPancake.html:25
 msgid ""
 "<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t"
-"+1</code> are the last elements of blocks.  Both blocs and <code>t</code> "
+"+1</code> are the last elements of blocks.  Both blocks and <code>t</code> "
 "are merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
 "<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
 "two flips are mandated."
@@ -12135,7 +12194,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/HexaKoch.html:8
 msgid ""
-"For the record, the origical Koch curve is the (3, 1/3)-Koch curve, the Snow "
+"For the record, the original Koch curve is the (3, 1/3)-Koch curve, the Snow "
 "square would be (4,1/3)-Koch curve while the Snow pentagon is also called "
 "the (5, 0.4)-Koch curve. If you want, you can switch to the creative mode in "
 "the menu and explore freely other Koch curves. Just change the initial call "
@@ -12180,10 +12239,9 @@ msgstr ""
 #: src/lessons/recursion/lego/koch/Crab.html:11
 msgid ""
 "This curve, also called the Lévy C curve was invented in 1938 by the French "
-"mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
-"instructive, and the page provide a very good additions: <a href=\"http://"
-"www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c."
-"shtml</a>."
+"mathematician Paul Lévy.  As usual, the wikipedia page is very instructive, "
+"and the page provide very good additions: <a href=\"http://www.mathcurve.com/"
+"fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -13088,9 +13146,9 @@ msgstr ""
 #: src/lessons/recursion/hanoi/LinearHanoi.html:21
 msgid ""
 "The standard recursive algorithm for classical Hanoi involves two recursive "
-"calls sandwiching one movement of the largest ring, the standard recursive "
+"calls sandwiching one movement of the largest disk, the standard recursive "
 "algorithm for Linear Hanoi involves three recursive calls sandwiched around "
-"two movements of the same ring."
+"two movements of the same disk."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -13717,7 +13775,7 @@ msgid ""
 "you should write the algorithm main loop. In other words, while your buggle "
 "did not find its biscuit, you have to move forward until next obstacle in "
 "the favorite direction. Then, put a paw on a wall (using "
-"(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
+"<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
 "the favorite direction is not free. Do that until you find your baggle."
 msgstr ""
 
@@ -14475,8 +14533,12 @@ msgstr "Ottieni 10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Makes10.html:3
+#, fuzzy
+#| msgid ""
+#| "Given 2 ints, a and b, return true if one if them is 10 or if their sum "
+#| "is 10."
 msgid ""
-"Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
+"Given 2 ints, a and b, return true if one of them is 10 or if their sum is "
 "10."
 msgstr ""
 "Dati due interi, a e b, ritorna vero se uno di loro è 10 o se la loro somma "
@@ -14693,11 +14755,17 @@ msgstr "Feste coi Sigari"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/CigarParty.html:3
+#, fuzzy
+#| msgid ""
+#| "When squirrels get together for a party, they like to have cigars. A "
+#| "squirrel party is successful when the number of cigars is between 40 and "
+#| "60, inclusive. Unless it is the weekend, in which case there is no upper "
+#| "bound on the number of cigars. Return true if the party with the"
 msgid ""
 "When squirrels get together for a party, they like to have cigars. A "
 "squirrel party is successful when the number of cigars is between 40 and 60, "
 "inclusive. Unless it is the weekend, in which case there is no upper bound "
-"on the number of cigars. Return true if the party with the"
+"on the number of cigars. Return true if the party was successful."
 msgstr ""
 "Quando gli scoiattoli si riuniscono assieme per una festa gli piace avere "
 "dei sigari. Una festa degli scoiattoli ha successo quado il numero dei "
@@ -15472,7 +15540,7 @@ msgstr ""
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
 msgid ""
 "The lander is on autopilot and all you have to do is look around and tell it "
-"where to land. The lander must <b>land on a flat zone</b> it you want to "
+"where to land. The lander must <b>land on a flat zone</b> if you want to "
 "remain in one piece. You indicate the lander where to land by modifying the "
 "<code>getLandingZone</code> function so that it returns a [!java|"
 "scala]<code>Segment</code> representing the zone of your choice."
