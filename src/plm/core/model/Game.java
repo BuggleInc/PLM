@@ -1076,7 +1076,7 @@ public class Game implements IWorldView {
 		"z:"     + File.separator + "_plm", /* windows-preferred directory name */
 		"z:"     + File.separator + "plm",
 	};
-	private static File SAVE_DIR = initializeSaveDir();
+	public static File SAVE_DIR = initializeSaveDir();
 
 	// FIXME: Should not be static
 	private static File initializeSaveDir() {
