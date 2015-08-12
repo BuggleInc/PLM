@@ -12,7 +12,7 @@ import plm.universe.Entity;
 public class LangPython extends ScriptingLanguage {
 
 	public LangPython(boolean isDebugEnabled) {
-		super("Python","py", isDebugEnabled);
+		super("Python", "py", isDebugEnabled);
 	}
 
 	protected void setupEntityBindings(Entity ent) {

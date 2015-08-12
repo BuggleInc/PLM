@@ -14,6 +14,7 @@ public class LoopWhile extends ExerciseTemplated {
 	public LoopWhile(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "Program";
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Closed world",7,7);
 		for (int i=0;i<7;i++) {

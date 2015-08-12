@@ -10,7 +10,6 @@ import javax.script.ScriptException;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -29,14 +28,18 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	@Override
 	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
-		
+
 		/* Nothing to do */
 	}
 
 	@Override
-	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n) {
-		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
-
+	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
+		String newClassName = "";
+		switch(whatToMutate) {
+		case STUDENT: newClassName = exo.getTabName(); break;
+		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
+		case ERROR: newClassName = nameOfCommonError(exo, nbError); break;
+		}
 		if (whatToMutate == StudentOrCorrection.STUDENT) {
 			boolean foundScript = false;
 
@@ -44,7 +47,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				if (newClassName.equals(sf.getName())) {
 					String script = sf.getCompilableContent(whatToMutate);
 					int offset = sf.getOffset();
-					
+
 					for (Entity ent : olds) {
 						ent.setScript(this, script);
 						ent.setScriptOffset(this, offset);
@@ -60,7 +63,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
 			}
-		} else { // whatToMutate == StudentOrCorrection.CORRECTION
+		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
 			StringBuffer sb = null;
 			try {
 				sb = FileUtils.readContentAsText(this.nameOfCorrectionEntity(exo), null, getExt(), false);
@@ -72,8 +75,20 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
 			for (Entity ent : olds) 
 				ent.setScript(this, script);
+		} else {
+			StringBuffer sb = null;
+			try {
+				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,nbError), i18n.getLocale(), "java", false);
+			} catch (IOException ex) {
+				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,nbError)+"."+getExt()+" since I cannot read it (error was: "+
+						ex.getLocalizedMessage());
+			}
+			String script = sb.toString();
+
+			for (Entity ent : olds) 
+				ent.setScript(this, script);
 		}
-		
+
 		return olds;
 	}
 
@@ -81,8 +96,11 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		ScriptEngine engine = null;		
 		try {
-			ScriptEngineManager manager = new ScriptEngineManager();       
-			engine = manager.getEngineByName(getLang().toLowerCase());
+			ScriptEngineManager manager = new ScriptEngineManager();
+			if(getLang().equals("Blockly"))
+				engine = manager.getEngineByName("python");
+			else
+				engine = manager.getEngineByName(getLang().toLowerCase());
 			if (engine==null)
 				throw new RuntimeException(i18n.tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",getLang()));
 

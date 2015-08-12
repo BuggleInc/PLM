@@ -42,6 +42,7 @@ public class BDR2 extends ExerciseTemplated {
 	public BDR2(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "BDR2";
+		setToolbox();
 		// TODO: May we have to specify that run() method is provided ? and that 'I' is not backward()
 
 		myWorld = new BuggleWorld(game, "Dance Floor",11,11);

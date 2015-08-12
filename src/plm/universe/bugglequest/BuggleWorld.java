@@ -399,7 +399,7 @@ public class BuggleWorld extends GridWorld {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang.equals(Game.PYTHON) || lang.equals(Game.BLOCKLY)) {
 			engine.put("Direction", Direction.class);
 			engine.put("Color", Color.class);
 			engine.eval(
@@ -482,9 +482,15 @@ public class BuggleWorld extends GridWorld {
 				
 				/* BINDINGS TRANSLATION: French */
 				"def avance(pas=1):\n"+
-				"	forward(pas)\n"+
+				"	if pas==1:\n"+
+				"		forward()\n"+
+				"	else:\n"+
+				"		forward(pas)\n"+
 				"def recule(pas=1):\n"+
-				"	backward(pas)\n"+
+				"	if pas==1:\n"+
+				"		backward()\n"+
+				"	else:\n"+
+				"		backward(pas)\n"+
 				"def gauche():\n"+
 				"	left()\n"+
 				"def retourne():\n"+

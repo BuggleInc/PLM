@@ -1,0 +1,24 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Hanoi de tricolor: movimentação de pilhas</h2>
+
+<p>Neste conjunto de exercícios, vamos "devise" um algoritmo para o
+problema de Hanoi Tricolor. vão existir 3 pilhas em 3 varas, cada
+pilha de uma cor diferente, e o problema é alternar a posição das
+pilhas seguindos as regras clássicas do movimento (um disco por vez,
+disco grande não pode ficar sobre disco pequeno).</p>
+
+<p>Como nos exercícios anteriores, nossa solução vai usar três funções:</p>
+<ul>
+ <li><code>move3(n, src, mid, dst)</code>: move uma pilha de discos
+intercalados, ie uma pilha de (n*3) discos de cores alternadas de uma
+vara <code>src</code> para uma vara <code>dst</code>.</li>
+ <li><code>gather()</code>: constrói uma pilha intercalada a partir de três
+pilhas "split".</li>
+ <li><code>scatter()</code>: separa uma pilha intercalada em três pilhas normais.</li>
+</ul>
+
+<p>O objetivo deste primeiro exercício na série é "devise" a função
+<code>move3()</code>. Esta tarefa inicial não deve segurar você muito,
+na verdade. Tudo bem se sua função muda a ordem do trio de discos mais
+no fundo, mas ela deve preservar a ordem dos outros trios.</p> 

@@ -14,6 +14,7 @@ public class TraversalByColumn extends ExerciseTemplated {
 	public TraversalByColumn(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "ColumnByColumn";
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Grid",7,7);
 		for (int i=0; i<7;i++) {
@@ -25,4 +26,5 @@ public class TraversalByColumn extends ExerciseTemplated {
 
 		setup(myWorld);
 	}
+	
 }

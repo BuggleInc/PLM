@@ -14,6 +14,7 @@ public class Instructions extends ExerciseTemplated {
 	public Instructions(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName="Program";
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Training World", 7,7);
 		new SimpleBuggle(myWorld, "Rookie", 2, 4, Direction.NORTH, Color.black, Color.lightGray);

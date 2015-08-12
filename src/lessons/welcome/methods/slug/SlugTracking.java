@@ -14,6 +14,7 @@ public class SlugTracking extends ExerciseTemplated {
 
 	public SlugTracking(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 

@@ -1,28 +1,28 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Dragon curve (1)</h2>
+<h2>Curva do Dragão (1)</h2>
 
-<p>The dragon curve is a classical example of recursive method.</p>
+<p>A curva do dragão é um exemplo clássico de método recursivo.</p>
 
-<p>The definition of this curve is the following:<br/> 
-the dragon curve of order 1 is a vector between to arbitrary points P and Q,<br/>
-the dragon curve of order n is the dragon curve of order n-1 between P and
-R, followed by the same curve of order n-1 between Q and R, where PRQ is an
-isosceles triangle with angle R being a right angle, and R being at the
-right of the PQ vector. Thus, if P and Q coordinates are (x, y)  and (z, t),
-the coordinate (u, v) of R are given by:</p>
+<p>A definição desta curva é a seguinte:<br/> 
+A curva do dragão de ordem 1 é um vetor entre dois pontos P e Q arbitrários,<br/>
+A curva do dragão de ordem n é a curva do dragão de ordem n-1 entre P e R,
+seguida da mesma curva de ordem n-1 entre Q e R, onde PRQ é um triângulo
+isósceles com o ângulo em R sendo um ângulo reto, e R situado a direita do
+vetor PQ. Logo, se as coordenadas P e Q são (x, y) e (z, t), as coordenadas
+(u, v) de R são dadas por:</p>
 <pre>
 u = (x + z)/2 + (t - y)/2
 v = (y + t)/2 - (z - x)/2
 </pre>
 
-<p>The prototype of the method drawing the curve is the following:</p>
+<p>O protótipo do método desenhando a curva é o seguinte:</p>
 <pre>[!java|c]void [/!]dragão([!java|c]int [/!]ordem[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
 
 
-<p>You should use the method <code>setPos(x,y)</code> to put your turtle at
-coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line
-between the turtle position and the point(z,t).</p>
+<p>Você deve usar o método <code>setPos(x,y)</code> para colocar sua tartaruga
+nas coordenadas (x,y) e o método <code>moveTo(z,t)</code> para desenhar uma
+linha entre a posição da tartaruga e o ponto (z,t).</p>
 
-<p>Have a look at each world's objective view to understand how to write the
-function.</p> 
+<p>Dê uma olhada em cada visão de mundo objetivo para entender como escrever a
+função.</p> 

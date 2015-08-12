@@ -13,6 +13,7 @@ public class RunHalf extends ExerciseTemplated {
 
 	public RunHalf(Game game, Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(game, lesson);
+		setToolbox();
 		
 		World[] myWorlds = new World[] {
 				BuggleWorld.newFromFile(game, "lessons/welcome/variables/RunHalf"),
