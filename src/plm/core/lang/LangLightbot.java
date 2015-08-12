@@ -5,7 +5,6 @@ import java.util.List;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -27,8 +26,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	}
 
 	@Override
-	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n) {
-		
+	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
 		return null; /* This is never called, no need to do anything here */
 	}
 

@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Better Split Towers of Hanoi</h2>
+
+<p>Surpreendentemente, nossa solução de dividir (split) as torres gera
+muito mais movimentos que a solução de intercalar elas. Como os
+problemas são simétricos, isto não deveria acontecer.</p>
+<table border="1">
+<tr><td>Quantidade de discos</td><td>Intercalada</td><td>Split</td></tr>
+<tr><td>5 pares</td>     <td> 62 movimentos</td>  <td> 88 movimentos</td></tr>
+<tr><td>6 pares</td>     <td>126 movimentos</td>  <td>183 movimentos</td></tr>
+<tr><td>7 pares</td>     <td>254 movimentos</td>  <td>374 movimentos</td></tr>
+</table>
+
+<p>Você consegue deixar o "split" tão eficiente quanto o intercalada?</p>
+
+<div class="tip" id="tip-1" alt="Preciso de uma dica de principiante">
+A fonte de discrepância é uma decomposição ineficiente do
+problema. Satisfeitos com o fato dele simplesmente funcionar, nós não
+procuramos mais por uma solução melhor. Manter os discos da torre
+intercalada na ordem correta durante cada movimento é desnecessário. De
+fato, podemos evitar completamente mover a torre intercalada. Uma
+decomposição melhor do problema divide o par de discos em duas torres
+coloridas à medida em que eles são removidos da torre intercalada.
+</div> 
+
+<br><br>
+<div class="tip" id="tip-2" alt="A dica de principiante não foi suficiente">
+Se alguém puder dividir os (n-1) pares de discos previamente, você poderia
+dividir o par restante?
+</div>
+
+<br><br>
+<div class="tip" id="tip-3" alt="Você precisa ser mais explícito">
+<ul>
+ <li>Primeiro divida os primeiros (n-1) pares de discos da pilha intercalada em
+uma torre branca e uma torre preta (chamando recursivamente sua função
+principal).</li>
+ <li>Então mova o disco branco grande para sua vara objetivo.</li>
+ <li>Então mova os (n-1) discos brancos menores para o topo do maior.</li>
+ <li>Então mova o disco preto grande para sua vara objetivo.</li>
+ <li>Então mova os discos pretos pequenos para a posição.</li>
+</ul>
+</div>

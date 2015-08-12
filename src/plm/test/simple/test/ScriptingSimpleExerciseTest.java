@@ -20,6 +20,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 	
 	@Test
 	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
+		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.CORRECTION);
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
@@ -35,6 +36,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 
 	@Test
 	public void testSolutionShouldPass() throws PLMCompilerException {
+		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.CORRECTION);
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {

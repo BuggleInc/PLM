@@ -18,7 +18,8 @@ public class ExecutionProgress {
 	
 	public String compilationError;
 	public String executionError = "";
-	public int passedTests, totalTests=0;
+	public String commonErrorText = "";
+	public int passedTests, totalTests=0, commonErrorID;
 	public Date date = new Date();
 	public ProgrammingLanguage language;
 

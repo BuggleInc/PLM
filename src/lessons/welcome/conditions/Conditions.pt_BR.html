@@ -2,11 +2,11 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Instruções condicionais</h2>
 
-Programas feito simplesmente de um conjunto de instruções similares ao do
-exercício anterior são bastante chatos. Eles sempre fazem a mesma coisa, e
-não reajem a condições externas. Um <b>condicional</b> faz o programa se
-adaptar fazendo coisas do tipo <i>se está chovendo, pegue um
-guarda-chuva</i>. 
+Programas feitos simplesmente de um conjunto de instruções similares
+ao do exercício anterior são bastante chatos. Eles sempre fazem a
+mesma coisa, e não reajem a condições externas. Um <b>condicional</b>
+faz o programa se adaptar fazendo coisas do tipo <i>se está chovendo,
+pegue um guarda-chuva</i>. 
 
 <p>A sintaxe de [!thelang] é a seguinte:</p>
 
@@ -68,24 +68,23 @@ resultar em erro.</p>
 
 <p>A condição deve ser uma expressão
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>. O
-bloco interno do código será executado se a expressão for calculada
-como <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e
-será ignorado se for
+bloco interno do código será executado se a expressão for calculada como
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e será ignorado
+se for
 <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
-[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code>
-e <code>[!java|scala]false[/!][!python]False[/!]</code> são valores
-constantes definidos por [!thelang] diretamente, assim como 0 ou 1 na
-matemática.[/!]</p>
+[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> e
+<code>[!java|scala]false[/!][!python]False[/!]</code> são valores constantes
+definidos por [!thelang] diretamente, assim como 0 ou 1 na matemática.[/!]</p>
 
 <p>A condição pode ser uma variável
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> (vamos
 voltar a falar de variáveis num próximo exercício, não se preocupe) ou um
 teste aritmético, como <code>x == 5</code>, que verifica se o valor atual de
-<code>x</code> é 5, ou algo como <b>!=</b> (verifica inequação, ou seja,
-retorna [!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado
-esquerdo é diferente do direito), <b>&lt;</b> (smaller than - menor que),
-<b>&gt;</b> (larger than - maior que), <b>&lt;=</b> (smaller or equal to -
-menor ou igual a), <b>&gt;=</b> (larger or equal to - maior ou igual a).</p>
+<code>x</code> é 5, ou algo como <b>!=</b> (verificando inequação, ou seja,
+retornando [!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado
+esquerdo é diferente do lado direito), <b>&lt;</b> (menor que), <b>&gt;</b>
+(maior que), <b>&lt;=</b> (menor ou igual a), <b>&gt;=</b> (maior ou igual
+a).</p>
 
 <p>Cuidado com um erro clássico, que é verificar a igualdade da variável usando
 = no lugar de ==. Ainda bem que o
@@ -94,11 +93,11 @@ problema na maior parte das vezes, mas às vezes passa (como quando você está
 atribuindo valor a uma variável
 [!c]int[/!][!java|python|scala]booleana[/!]). Então é bom ter cuidado...</p>
 
-<p>A condição pode também ser uma chamada para alguns métodos particulares que
-retornam booleano. Por exemplo, o método
+<p>A condição pode também ser uma chamada para alguns métodos
+particulares que retornam booleano. Por exemplo, o método
 <code>estáDeFrenteParaParede()</code> do buggle retorna
-[!c]1[/!][!java|python|scala]true[/!] se o buggle está olhando para uma
-parede, e falso caso contrário.</p>
+[!c]1[/!][!java|python|scala]true[/!] se o buggle está olhando para
+uma parede, e false caso contrário.</p>
 
 <p>Finalmente, uma condição pode ser composta de várias sub-condições
 conectadas por operadores booleanos:</p>

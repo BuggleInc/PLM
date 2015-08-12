@@ -27,7 +27,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			}
 
 		}
-		setupWorlds(ws);
+		setupWorlds(ws, 0);
 		try {
 			// FIXME: Java only aint good
 			newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java");
@@ -53,6 +53,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 	}
 
 	protected void newBestSolution(BacktrackingPartialSolution sol) {
+		setNbError(-1);
 		((BacktrackingWorld) getWorlds(WorldKind.CURRENT).get(0)).newBestSolution(sol);
 	}
 

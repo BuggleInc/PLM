@@ -104,6 +104,7 @@ public class ExoTest {
 	
 		// disable delay on world execution
 		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
+			exo.setNbError(-1);
 			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
 		}
 	}
@@ -141,12 +142,13 @@ public class ExoTest {
 			StudentOrCorrection what = StudentOrCorrection.CORRECTION;
 			if (lang == Game.JAVA || lang == Game.SCALA || lang == Game.C)
 				what = StudentOrCorrection.STUDENT;
+			exo.setNbError(-1);
 			exo.mutateEntities(WorldKind.CURRENT, what);
 			
 			if (exo instanceof BatExercise)
 				for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
 					t.objectiveTest = false; // we want to set the result for real, not the expected
-			
+			exo.setNbError(-1);
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
 					lang.runEntity(ent,exo.lastResult, g.i18n);

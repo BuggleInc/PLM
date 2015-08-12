@@ -3,8 +3,10 @@ import javax.swing.JOptionPane;
 colors = [Color(0,155,0), Color(50,155,0), Color(100,155,0), Color(140,155,0),
           Color(160,155,0), Color(180,155,0), Color(200,155,0), Color(210,155,0), Color.red]
 
-def forward(i=-1):
-    if i==-1:
+def forward(i=1):
+    if i>1:
+      errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
+    else:
         if not haveSeenError():
             entity.forward()
         c = getGroundColor()
@@ -23,13 +25,11 @@ def forward(i=-1):
           setBrushColor(c)    
           brushDown()
           brushUp()
-    else:
-      errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
-def backward(i=-1):
-    if i==-1:
-      errorMsg("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay.")
-    else:
+def backward(i=1):
+    if i>1:
       errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
+    else:
+      errorMsg("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay.")
 # BEGIN SOLUTION
 for i in range(7):
     for side in range(4):

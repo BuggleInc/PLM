@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-02-14 21:21+0100\n"
+"POT-Creation-Date: 2015-08-10 14:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1262,7 +1262,7 @@ msgstr ""
 msgid ""
 "The condition can be a "
 "<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> "
-"variable (we will come back on variables in a latter exercise, don't worry) "
+"variable (we will come back on variables in a later exercise, don't worry) "
 "or an arithmetic test, such as <code>x == 5</code>, which checks whether the "
 "current value of <code>x</code> is 5, or such as <b>!=</b> (checking "
 "inequality, that is, returning "
@@ -1486,50 +1486,6 @@ msgid ""
 "exercise (copy/paste what you've done before if you want)."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:2
-msgid "Lost in the Moria"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:4
-msgid ""
-"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
-"exit, and you will have to clear your way to the exit. Well of course these "
-"are only baggles and you could simply walk away, but it will be easier to "
-"program the buggles so that they move those \"rocks\" than convincing them "
-"to walk away without solving the problem. Dwarfs are sometimes really "
-"stubborns..."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:11
-msgid ""
-"So, you have to find the first baggle blocking the exit (simply walk to the "
-"east until you are over a baggle), take it and move it back to the other "
-"side of the tunnel (walk to the west while you are not over a baggle, and "
-"then move back one step to the east and drop your baggle), and iterate until "
-"you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world. That's only a few more steps away."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:18
-msgid ""
-"To make things worse, you have to write a program that works for every "
-"buggle, even if writing a specific program for each of them would be "
-"easier. It seems that using <code>while</code> loops is the only solution to "
-"move the buggles correctly."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:23
-msgid ""
-"Once you manage to escape this trap, you can move forward to the next "
-"exercise.  This exercise is a bit more complex, so you can also leave it for "
-"now and come back later if you don't get it right now."
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:3
 msgid ""
@@ -1552,7 +1508,7 @@ msgid ""
 "strings of chars. If you want to use a data several times, you need to store "
 "it within a <i>variable</i>, which is a memory cell containing a value: you "
 "put your data (say the value '5') in the variable (say 'length'), and you "
-"can retrieve it latter when you need it. That's very similar to a box of "
+"can retrieve it later when you need it. That's very similar to a box of "
 "label 'gift' in which you would put some stuff, like a bottle of perfume "
 "\"Channel N°5\"."
 msgstr ""
@@ -1737,7 +1693,7 @@ msgid ""
 "As you can see, the variables are not <b>typed</b> in Python, which means "
 "that they are not specialized in any type of data.  A given variable store "
 "any type of data of a given type: you can store a number in a variable and "
-"latter on store a number in the same variable.  The values themselves are "
+"later on store a number in the same variable.  The values themselves are "
 "still typed, but not the variable. Python is said to be <b>dynamically "
 "typed</b>."
 msgstr ""
@@ -1940,6 +1896,50 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:161
 msgid "It's your turn now!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr0.html:1
+msgid "Don't reinitialize your step values each time you enter in the loop !"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr1.html:1
+msgid ""
+"Don't forget to count how many forward steps you do in order to know how "
+"many backward steps you have to do to return back to the original place..."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr2.html:1
+msgid "Don't forget to take the baggle and to put it to the starting point !"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr3.html:1
+msgid ""
+"You need to use variables to get to the solution, in order to count the "
+"number of steps you do to arrive to the baggle, to know how many steps you "
+"have to do to return back to your home."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr4.html:1
+msgid "Don't forget to drop your baggle once you are arrived to the starting point!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr5.html:1
+msgid ""
+"You just have to return back to the original place now. Did you count how "
+"many steps you did to come here?"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/VariablesCommonErr6.html:1
+msgid ""
+"You need to do as many backward steps as you did forward steps. And don't "
+"forget to drop your baggle..."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -2978,19 +2978,19 @@ msgid "You're up."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:2
+#: src/lessons/welcome/array/search/IndexOfValue.html:2
 msgid "Searching for a given value"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:4
+#: src/lessons/welcome/array/search/IndexOfValue.html:4
 msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
+#: src/lessons/welcome/array/search/IndexOfValue.html:6
 msgid ""
 "To that extend, you should fill the method <code>indexOf()</code>, which "
 "parameters are the array to explore, and the value to search. If the value "
@@ -2999,7 +2999,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
+#: src/lessons/welcome/array/search/IndexOfValue.html:10
 msgid ""
 "The idea of the algorithm is to sweep over the whole array, checking the "
 "value of each cell. If it's the searched value, you should return the index "
@@ -3007,14 +3007,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
+#: src/lessons/welcome/array/search/IndexOfValue.html:14
 msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
+#: src/lessons/welcome/array/search/IndexOfValue.html:17
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved using "
 "the <code>length</code> attribute. So, if your array is called "
@@ -3024,12 +3024,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
+#: src/lessons/welcome/array/search/IndexOfValue.html:22
 msgid "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
+#: src/lessons/welcome/array/search/IndexOfValue.html:24
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved with the "
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
@@ -3037,24 +3037,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
+#: src/lessons/welcome/array/search/IndexOfValue.html:28
 msgid "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:2
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:2
 msgid "Index of the maximum value"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:4
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:4
 msgid ""
 "In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:6
 msgid ""
 "For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
 "the array to explore. Should the array contain the searched value several "
@@ -3062,7 +3062,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
+#: src/lessons/welcome/array/search/IndexOfMaxValue.html:10
 msgid ""
 "To solve this exercise, you should sweep over the whole array. For each "
 "value, if it's bigger than the biggest value you saw so far, you must save "
@@ -3071,19 +3071,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:2
+#: src/lessons/welcome/array/search/AverageValue.html:2
 msgid "Average value"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:5
+#: src/lessons/welcome/array/search/AverageValue.html:5
 msgid ""
 "The objective of this exercise is to compute the average value of the "
 "integer values stored in an array."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:7
+#: src/lessons/welcome/array/search/AverageValue.html:7
 msgid ""
 "You have to fill the body of the method <code>average()</code> which takes "
 "as parameter the array of integers of which it computes and returns the "
@@ -3091,7 +3091,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:9
+#: src/lessons/welcome/array/search/AverageValue.html:9
 msgid ""
 "To compute the average value of an integer, it is necessary to traverse the "
 "whole array and to compute the sum of all its values (so you will need a "
@@ -3100,7 +3100,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:11
+#: src/lessons/welcome/array/search/AverageValue.html:11
 msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, "
@@ -3109,19 +3109,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:16
+#: src/lessons/welcome/array/search/AverageValue.html:16
 msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:2
+#: src/lessons/welcome/array/search/MaxValue.html:2
 msgid "Maximal value"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:4
+#: src/lessons/welcome/array/search/MaxValue.html:4
 msgid ""
 "In this exercise, you must compute the maximal value contained in an array.  "
 "For that, fill the <code>maximum()</code> method, which parameter is the "
@@ -3129,7 +3129,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:8
+#: src/lessons/welcome/array/search/MaxValue.html:8
 msgid ""
 "To compute this value, sweep over the whole parameter. For each value, if "
 "it's bigger than the biggest value you saw so far, you must save this value "
@@ -3138,26 +3138,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/Extrema.html:2
-msgid "Maxima and Minima"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/maxvalue/Extrema.html:4
-msgid ""
-"In this exercise, you must return the difference between the maxima (i.e., "
-"the largest value of the array) and the minima (i.e., its smallest "
-"value). The returned value is then a positive number.  Beware, you can only "
-"do one traversal of the array to gather all informations that you need."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:2
 msgid "Occurrence of a value"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:4
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:4
 msgid ""
 "In this exercise, you must compute the amount of occurrences of a given "
 "value in an array (that is, the amount of time that this value appears in "
@@ -3167,11 +3153,49 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
+#: src/lessons/welcome/array/search/OccurrenceOfValue.html:9
 msgid ""
 "To compute this value, simply sweep over the array counting for the amount "
 "of cells containing the searched value. You thus need an extra variable for "
 "that."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/search/Extrema.html:2
+msgid "Maxima and Minima"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/search/Extrema.html:4
+msgid ""
+"In this exercise, you must return the difference between the maxima (i.e., "
+"the largest value of the array) and the minima (i.e., its smallest "
+"value). The returned value is then a positive number.  Beware, you can only "
+"do one traversal of the array to gather all informations that you need."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:2
+msgid "Second Biggest Value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:4
+msgid ""
+"In this exercise, you must compute the second maximal value contained in an "
+"array, i.e. the value that becomes the maximum if you remove every instance "
+"of the current maximum from the array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/search/SecondMaxValue.html:7
+msgid ""
+"As usual, you should gather the information in only one traversal of the "
+"array.  You can assume that the second biggest value actual exists (there is "
+"at least two distinct values in the array), and that all values in the array "
+"are greater than [!python] -100000000.[/!] "
+"[!java|scala]<code>Integer.MIN_VALUE</code> (which is the smallest "
+"representable integer existing in [!thelang]).[/!]"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -3842,6 +3866,20 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:72
 msgid "When your function <code>haveBaggle</code> works, proceed to next exercise."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr0.html:1
+msgid ""
+"You do not check if you saw a baggle or not at every step you did. Check "
+"your line that changes the result boolean."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/returning/MethodsReturningCommonErr1.html:1
+msgid ""
+"You don't have to stop over the baggle. Remember your method to know how "
+"many steps you have to do backward in another exercise... ;)"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5333,6 +5371,50 @@ msgid ""
 "world for more details on the requested traversal order."
 msgstr ""
 
+#. type: Content of: <h2>
+#: src/lessons/welcome/summative/Moria.html:2
+msgid "Lost in the Moria"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:4
+msgid ""
+"You buggles got stuck in the mines of Moria! Some rocks are blocking the "
+"exit, and you will have to clear your way to the exit. Well of course these "
+"are only baggles and you could simply walk away, but it will be easier to "
+"program the buggles so that they move those \"rocks\" than convincing them "
+"to walk away without solving the problem. Dwarfs are sometimes really "
+"stubborns..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:11
+msgid ""
+"So, you have to find the first baggle blocking the exit (simply walk to the "
+"east until you are over a baggle), take it and move it back to the other "
+"side of the tunnel (walk to the west while you are not over a baggle, and "
+"then move back one step to the east and drop your baggle), and iterate until "
+"you find the exit (that is, the wall to the east side). Afterward, move out "
+"as in the objective world. That's only a few more steps away."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:18
+msgid ""
+"To make things worse, you have to write a program that works for every "
+"buggle, even if writing a specific program for each of them would be "
+"easier. It seems that using <code>while</code> loops is the only solution to "
+"move the buggles correctly."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/summative/Moria.html:23
+msgid ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise.  This exercise is a bit more complex, so you can also leave it for "
+"now and come back later if you don't get it right now."
+msgstr ""
+
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
 msgid "The turmites"
@@ -6371,7 +6453,7 @@ msgstr ""
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:9
 msgid ""
 "[!java|python|c]For that, simply use the <code>break</code> keyword, which "
-"breaks the current loop.  Beware, if you have several embedded loops, this "
+"breaks the current loop.  Beware, if you have several nested loops, this "
 "will apply to the internal one.[/!] [!scala]For that, simply quit the "
 "current function by calling <code>return</code> with no associated "
 "value.[/!]"
@@ -6711,7 +6793,7 @@ msgid ""
 "to the end of the array), but it is still possible to achieve "
 "better. ComboSort comes down to providing them a short cut: instead of "
 "comparing adjacent values, we compare values separated by a gap bigger than "
-"1. That way, turtles we traverse <i>gap</i> cells at each "
+"1. That way, turtles will traverse <i>gap</i> cells at each "
 "traversal. Naturally, we have to apply the algorithm with decreasing gaps, "
 "and finish with <i>gap=1</i> to ensure that the array is correctly sorted "
 "afterward. Choosing the right gap and how to decrease it is a difficult "
@@ -7220,7 +7302,7 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:23
+#: src/lessons/sort/pancake/BasicPancake.html:23 src/lessons/sort/pancake/BubblePancake.html:10
 msgid "I don't get it. I need some help."
 msgstr ""
 
@@ -7232,8 +7314,8 @@ msgid ""
 "and so on."
 msgstr ""
 
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:28
+#. type: Attribute 'alt' of: <p><p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:28 src/lessons/sort/pancake/BubblePancake.html:13
 msgid "The first tip was not enough. I need another one."
 msgstr ""
 
@@ -7252,6 +7334,56 @@ msgstr ""
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:31
 msgid "How could you reach this situation from the current one?"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/BubblePancake.html:2
+msgid "Bubble Pancakes"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:4
+msgid ""
+"This problem is similar to the previous: you have to sort the pancakes, the "
+"smallest at the top and the biggest at the bottom, except you can only flip "
+"them to sort."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:6
+msgid ""
+"The purpose here is to sort them using the bubble algorithm, where one "
+"pancake is moved to the bottom until it encounters a bigger one. In "
+"graphical representations, it looks like a bubble takes the element and move "
+"them through the pile. This is where its name comes from."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BubblePancake.html:8
+msgid ""
+"Now, using pancakes makes it a little more difficult to write, because you "
+"have to find a way to swap only two pancakes at a time."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BubblePancake.html:11
+msgid ""
+"The bubble algorithm consists in browsing the whole pile from top to bottom, "
+"and making a comparision between two pancakes. Each time the top pancake is "
+"bigger than the one below, you have to swap them, then compare the bigger "
+"pancake you just swapped with one below, and so on. You have to browse "
+"through the entire pile until no swap has occurred, in which case the pile "
+"is sorted."
+msgstr ""
+
+#. type: Content of: <p><p><div>
+#: src/lessons/sort/pancake/BubblePancake.html:14
+msgid ""
+"If you don't understand the basic bubble sorting algorithm, you should try "
+"the exercises within the “Sorting algorithms” lesson. If you do, but can't "
+"figure a way to swap only two pancakes at a time, think of a situation where "
+"only two pancakes are swapped at a time, and find a way to reach that "
+"situation."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -7287,8 +7419,8 @@ msgstr ""
 msgid ""
 "The basic idea is to grow sequences of sorted pancakes, not necessarily "
 "starting from the bottom.  We say that a sequence of ordered pancakes "
-"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
-"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
+"constitute a <b>block</b> while a pancake that is not part of a block is "
+"said to be <b>free</b>. The algorithm then considers the topmost pancake (of "
 "radius <code>t</code>) and search for the <code>t+1</code> or "
 "<code>t-1</code> pancakes (the considered neighbor is noted "
 "<code>t+o</code>). Eight cases may happen:"
@@ -7312,7 +7444,7 @@ msgstr ""
 #: src/lessons/sort/pancake/GatesPancake.html:25
 msgid ""
 "<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and "
-"<code>t+1</code> are the last elements of blocks.  Both blocs and "
+"<code>t+1</code> are the last elements of blocks.  Both blocks and "
 "<code>t</code> are merged all together in 4 flips.  Beware, if either "
 "<code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> "
 "is 0 or max), only two flips are mandated."
@@ -9191,7 +9323,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/HexaKoch.html:8
 msgid ""
-"For the record, the origical Koch curve is the (3, 1/3)-Koch curve, the Snow "
+"For the record, the original Koch curve is the (3, 1/3)-Koch curve, the Snow "
 "square would be (4,1/3)-Koch curve while the Snow pentagon is also called "
 "the (5, 0.4)-Koch curve. If you want, you can switch to the creative mode in "
 "the menu and explore freely other Koch curves. Just change the initial call "
@@ -9236,8 +9368,8 @@ msgstr ""
 #: src/lessons/recursion/lego/koch/Crab.html:11
 msgid ""
 "This curve, also called the Lévy C curve was invented in 1938 by the French "
-"mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
-"instructive, and the page provide a very good additions: <a "
+"mathematician Paul Lévy.  As usual, the wikipedia page is very instructive, "
+"and the page provide very good additions: <a "
 "href=\"http://www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 msgstr ""
 
@@ -10084,9 +10216,9 @@ msgstr ""
 #: src/lessons/recursion/hanoi/LinearHanoi.html:21
 msgid ""
 "The standard recursive algorithm for classical Hanoi involves two recursive "
-"calls sandwiching one movement of the largest ring, the standard recursive "
+"calls sandwiching one movement of the largest disk, the standard recursive "
 "algorithm for Linear Hanoi involves three recursive calls sandwiched around "
-"two movements of the same ring."
+"two movements of the same disk."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -10702,7 +10834,7 @@ msgid ""
 "you should write the algorithm main loop. In other words, while your buggle "
 "did not find its biscuit, you have to move forward until next obstacle in "
 "the favorite direction. Then, put a paw on a wall (using "
-"(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
+"<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
 "the favorite direction is not free. Do that until you find your baggle."
 msgstr ""
 
@@ -11420,7 +11552,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Makes10.html:3
 msgid ""
-"Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
+"Given 2 ints, a and b, return true if one of them is 10 or if their sum is "
 "10."
 msgstr ""
 
@@ -11591,7 +11723,7 @@ msgid ""
 "When squirrels get together for a party, they like to have cigars. A "
 "squirrel party is successful when the number of cigars is between 40 and 60, "
 "inclusive. Unless it is the weekend, in which case there is no upper bound "
-"on the number of cigars. Return true if the party with the"
+"on the number of cigars. Return true if the party was successful."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -12258,7 +12390,7 @@ msgstr ""
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
 msgid ""
 "The lander is on autopilot and all you have to do is look around and tell it "
-"where to land. The lander must <b>land on a flat zone</b> it you want to "
+"where to land. The lander must <b>land on a flat zone</b> if you want to "
 "remain in one piece. You indicate the lander where to land by modifying the "
 "<code>getLandingZone</code> function so that it returns a "
 "[!java|scala]<code>Segment</code> representing the zone of your choice."

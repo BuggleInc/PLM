@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Selection Baseball</h1>
+
+<p>O algoritmo anterior é muito agradável: ele é muito simples e muito rápido
+de implementar, mas infelizmente, ele é também bastante errado! Em alguns
+casos, ele nunca pára, o que é obviamente ruim. Se você não acredita,
+simplesmente copie e cole seu código anterior, e aperte no botão Rodar. O
+primeiro mundo deste exercício é uma destas situações infelizes que que
+deixam endoidam o algoritmo anterior.</p>
+
+<p>Portanto temos que encontrar outro algoritmo, preferencialmente um que
+funcione em todos os casos.</p>
+
+<p>Para isto, a melhor solução é começar de um algoritmo bem conhecido ao invés
+de tentar inventar um novo do zero como nós fizemos. Quando você pensa um
+pouco sobre este problema, ele pode ser muito similar a um problema de
+ordenação: apenas se certifique de que todos os jogadores estão ordenados
+por suas cores. E enquanto fazemos isto, vamos generalizar o jogo para poder
+ter mais de 4 bases.</p>
+
+<p>Vamos adaptar o selection sort para nossa situação. As linhas grandes do
+algoritmo se tornam "para cada base, selecione os jogadores que devem ocupar
+esta base e garanta que eles venham para as suas posições". Desta forma,
+vamos aumentar uma área ordenada onde todos os jogadores já estão ordenados
+(e nunca deixam de estar) enquanto a área não-ordenada se reduz.</p>
+
+<p>Selecionar o jogador não deve ser um problema; Não hesite para definir
+alguns métodos como <code>findPlayer()</code> ou
+<code>findPlayerBase()</code>. Isto vai garantir que seu código permaneça
+entendível.</p>
+
+<p>O aspecto mais problemático é mover os jogadores selecionados para suas
+posições. Para isto, você tem que mover o espaço vazio para a posição onde o
+jogador está, e então mover ambos os jogadores e o espaço vazio para a base
+que estiver próxima do objetivo do jogador (provavelmente com um loop), e
+finalmente colocar o jogador na posição correta de sua base favorita.</p>
+
+<p>Como é comum em programação, o diabo esconde-se nos detalhes: existe um
+conjunto de casos particulares que você deve detectar e lidar corretamente,
+como os casos onde o jogador já está na base (mas não na posição que você
+gostaria), ou quando o buraco está à direita do jogador (provavelmente
+quando você ordena a primeira base). Mas você vai caçar tais coisas enquanto
+depurar seu código.</p>

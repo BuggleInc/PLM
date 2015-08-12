@@ -3,18 +3,18 @@
 <h2>Buggle Dance Revolution 2 (BDR2)</h2>
 
 [!java|scala|c]
-<p>BDR é legal, mas um pouco caótico. Primeiro, os buggles balançam em
-todas as direções, o que faz com que o código que você tenha que
-escrever para fazê-los se mover seja um pouco difícil de
-ler. Apresentamos agora um novo mundo DBR onde os buggles dançam num
-suave círculo. Vamos aproveitar esta tranquilidade para limpar um
-pouco nosso código graças a novas construções que vamos introduzir.</p>
+<p>BDR é legal, mas um pouco caótico. Primeiro, os buggles balançam em todas as
+direções, o que faz com que o código que você tenha que escrever para
+fazê-los se mover seja um pouco difícil de ler. Apresentamos agora um novo
+mundo DBR onde os buggles dançam num suave círculo. Vamos aproveitar esta
+tranquilidade para limpar um pouco nosso código graças a novas construções
+que vamos introduzir.</p>
 
 <h3>[!java|c]condicionais <code>switch</code>[/!][!scala]busca de padrões[/!]</h3>
 
 <p>A parte mais difícil do código anterior é comn certeza a cascata de
-condicionais. Em algum ponto do seu código, você certamente tem algo
-como isto:</p>
+condicionais. Em algum ponto do seu código, você certamente tem algo como
+isto:</p>
 
 <pre>if ([!java|c]getIndicação() == 'R'[/!][!scala]lerMensagem() == "R"[/!]) {
   direita();
@@ -31,16 +31,15 @@ como isto:</p>
 }
 </pre>
 
-<p>Quando você revisa este código, não fica claro à primeira vista que
-ele é simplesmente a escolha entre quatro ramos dependendo do
-valor de [!java|c]getIndicação()[/!][!scala]lerMensagem()[/!]. Para
-melhorar ele, vamos usar uma construção [!java|c]<code>switch</code>,
-que na sintaxe de Java é o seguinte:[/!] [!scala] de busca de padrões,
-que é bastante poderosa e generaliza muito o <code>if</code>. É com
-certeza uma das maiores vantagens de Scala quando comparada com
-linguagens como Java ou python. E nem é tão nova assim, já que outras
-linguagens como OCaml e Haskell já tem esta funcionalidade a muito
-tempo. Ela é bem legal![/!]</p>
+<p>Quando você revisa este código, não fica claro à primeira vista que ele é
+simplesmente a escolha entre quatro ramos dependendo do valor de
+[!java|c]getIndicação()[/!][!scala]lerMensagem()[/!]. Para melhorar ele,
+vamos usar uma construção [!java|c]<code>switch</code>, que na sintaxe de
+Java é o seguinte:[/!] [!scala] de busca de padrões, que é bastante poderosa
+e generaliza muito o <code>if</code>. É com certeza uma das maiores
+vantagens de Scala quando comparada com linguagens como Java ou python. E
+nem é tão nova assim, já que outras linguagens como OCaml e Haskell já tem
+esta funcionalidade a muito tempo. Ela é bem legal![/!]</p>
 [/!] [!java|c]
 <pre>
 switch (<b>expression</b>) {
@@ -59,13 +58,12 @@ switch (<b>expression</b>) {
 }</pre>
 
 <p>Observe que cada ramo de um <tt>switch</tt> deve terminar com um
-<code>break</code>. se você esquecer dele, a máquina continua e
-executa o próximo ramo na lista depois do ramo para o qual ele
-pulou. Existem na verdade uns <b>raros</b> casos onde este
-comportamento é útil.</p>
+<code>break</code>. se você esquecer dele, a máquina continua e executa o
+próximo ramo na lista depois do ramo para o qual ele pulou. Existem na
+verdade uns <b>raros</b> casos onde este comportamento é útil.</p>
 
-<p>É então possível reescrever o código do BDR anterior numa forma mais
-clara usando a construção <tt>switch</tt>:</p>
+<p>É então possível reescrever o código do BDR anterior numa forma mais clara
+usando a construção <tt>switch</tt>:</p>
 
 <pre>switch (getIndicação()) {
   case 'R':
@@ -91,37 +89,37 @@ clara usando a construção <tt>switch</tt>:</p>
   <b>case _                 =></b> instruções padrão
 }
 </pre>
-<p>A espressão fornecida antes da palavra-chave <code>match</code>, e os
-ramos seguintes são avaliados um após o outro até encontrarmos um cujo
-valor fornecido entre <code>case</code> e <code>=&gt</code> seja igual
-ao valor da expressão. O símbolo <code>_</code> age como um coringa,
-logo o ramo <code>_</code> <i>sempre</i> casa. Aqui está um exemplo de
-onde uma variável <code>name</code> casa.</p>
+<p>A espressão fornecida antes da palavra-chave <code>match</code>, e os ramos
+seguintes são avaliados um após o outro até encontrarmos um cujo valor
+fornecido entre <code>case</code> e <code>=&gt</code> seja igual ao valor da
+expressão. O símbolo <code>_</code> age como um coringa, logo o ramo
+<code>_</code> <i>sempre</i> casa. Aqui está um exemplo de onde uma variável
+<code>name</code> casa.</p>
 <pre>name match {
   case "Martin" => println("Oi Martin, como vai?")
   case "Gerald" => println("Oi Gerald! como vai você?")
   case _            => println("Olá estranho.")
 }</pre>
 
-<p>é possível ter mais que uma instrução por ramo, e mesclar ramos quando
-os valores são separados por um símbolo | .</p>
+<p>é possível ter mais que uma instrução por ramo, e mesclar ramos quando os
+valores são separados por um símbolo | .</p>
 <pre>name match {
   case "Martin" | "Gerald" => println("Oi "+name+", como vai?"); openTheDoor()
   case _                            => println("Oi estranho. Favor não passar."); lockTheDoor()
 }</pre>
 
-<p>Você sempre pode adicionar guardas aos seus ramos. Estes são condições
-extra que devem ser respeitadas para que o ramo seja feito. São úteis
-se você quiser casar em intervalos de valores, como segue.</p>
+<p>Você sempre pode adicionar guardas aos seus ramos. Estes são condições extra
+que devem ser respeitadas para que o ramo seja feito. São úteis se você
+quiser casar em intervalos de valores, como segue.</p>
 <pre>age match {
   case i if i&lt;10 => println("Oi menino!")
   case i if i&lt;20 => println("Oi cara!")
   case i if i&lt;30 => println("Oi, meu caro")
   case _           => println("Oi senhor")
 }</pre>
-<p>Observe que não há necessidade de verificar se o valor é maior que 10
-na segunda linha por que o primeiro ramo "foi verificado". Então, se o
-segundo ramo está sendo verificado, o primeiro não aprovou.</p>
+<p>Observe que não há necessidade de verificar se o valor é maior que 10 na
+segunda linha por que o primeiro ramo "foi verificado". Então, se o segundo
+ramo está sendo verificado, o primeiro não aprovou.</p>
 
 <p>Finalmente, é possível também aprovar várias variáveis de uma vez!</p>
 <pre>(x,y) match {
@@ -131,17 +129,17 @@ segundo ramo está sendo verificado, o primeiro não aprovou.</p>
  case (_,_) => println("algum ponto qualquer")
 }</pre>
 
-<p>Eu disse que reconhecimentod e padrões em scala é muito poderoso! Eu
-adoro esta funcionalidade!</p>
+<p>Eu disse que reconhecimentod e padrões em scala é muito poderoso! Eu adoro
+esta funcionalidade!</p>
 [/!]
 
 <h3>Objetivo do exercício</h3>
-<p>[!java|scala|c]"Aplique" a melhoria que acabamos de ver para
-reescrever seu código do buggle com os seguintes passos de dança. [/!]
-[!python]Vamos ensinar um novo passo de dança para os buggles. É um
-pouco mais complexo mas na verdade vai ficar mais legal. Apesar disto,
-é a mesma história de sempre.[/!] Observe que nósagora vamos subir
-seis células em um passo de dança.</p>
+<p>[!java|scala|c]"Aplique" a melhoria que acabamos de ver para reescrever seu
+código do buggle com os seguintes passos de dança. [/!] [!python]Vamos
+ensinar um novo passo de dança para os buggles. É um pouco mais complexo mas
+na verdade vai ficar mais legal. Apesar disto, é a mesma história de
+sempre.[/!] Observe que nósagora vamos subir seis células em um passo de
+dança.</p>
 
 <table border="1">
  <tr><td>Mensagem</td>
