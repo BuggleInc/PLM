@@ -1,6 +1,7 @@
 package plm.universe.sort;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -58,11 +59,12 @@ public class SortingWorld extends World {
 	}
 
 	private void scramble() {
+		Random r = new Random(0);
 		while( this.isSorted() )
 			for ( int caseNumber = 0 ; caseNumber < this.values.length ; caseNumber++)
 				// Swapping time !
-				if ( Math.random() > 0.5)
-					this.exchangeValues(caseNumber,(int)(Math.random()*this.values.length));
+				if ( r.nextDouble() > 0.5)
+					this.exchangeValues(caseNumber,(int)(r.nextDouble()*this.values.length));
 	}
 
 	public boolean equals(Object o) {

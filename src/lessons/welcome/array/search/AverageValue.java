@@ -14,7 +14,7 @@ public class AverageValue extends BatExercise {
 		super(game, lesson);
 		
 		int[] randomTab = new int[30];
-		Random r = new Random();
+		Random r = new Random(0);
 		for (int i=0; i<randomTab.length; i++) 
 			randomTab[i] = r.nextInt(35);
 		

@@ -1,5 +1,7 @@
 package lessons.sort.dutchflag.universe;
 
+import java.util.Random;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import plm.core.lang.ProgrammingLanguage;
@@ -29,8 +31,9 @@ public class DutchFlagWorld extends World {
 		
 		content = new int[size];
 		initialContent = new int[size];
+		Random rand = new Random(0);
 		for (int i=0; i<size; i++) {
-			double r = Math.random();
+			double r = rand.nextDouble();
 			if (r<1./3.)
 				content[i] = 0;
 			else if (r < 2./3.)
@@ -54,8 +57,9 @@ public class DutchFlagWorld extends World {
 		
 		content = new int[size];
 		initialContent = new int[size];
+		Random rand = new Random(0);
 		for (int i=0; i<size; i++) {
-			double r = Math.random();
+			double r = rand.nextDouble();
 			if (r<1./2.)
 				content[i] = color[colorRemoved][0];
 			else
