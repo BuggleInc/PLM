@@ -1153,6 +1153,10 @@ public class Game implements IWorldView {
 		gitSpy.idle(start, end, duration);	
 	}
 	
+	public void signalFeedbackCommonError(int commonErrorID, String accuracy, String help, String comment) {
+		gitSpy.feedbackCommonError(commonErrorID, accuracy, help, comment);
+	}
+	
 	public void setTrackUser(boolean trackUser) {
 		this.trackUser = trackUser;
 	}
