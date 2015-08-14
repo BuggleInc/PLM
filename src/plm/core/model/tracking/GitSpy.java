@@ -415,7 +415,7 @@ public class GitSpy implements ProgressSpyListener {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void feedbackCommonError(int commonErrorID, String accuracy, String help, String comment) {
+	public void commonErrorFeedback(int commonErrorID, int accuracy, int help, String comment) {
 		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
 		String ext = "." + game.getLocale();
 		File commonErrHTML = new File(repoDir, lastExo.getId() + ext + ".commonErrHTML");
@@ -452,7 +452,7 @@ public class GitSpy implements ProgressSpyListener {
 		msg.put("help", help);
 		msg.put("comment", comment);
 		msg.put("exoID", lastExo);
-		String commitMsg = writeCommitMessage(lastExo, null, "feedbackCommonError", msg);
+		String commitMsg = writeCommitMessage(lastExo, null, "commonErrorFeedback", msg);
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 
 		try {
