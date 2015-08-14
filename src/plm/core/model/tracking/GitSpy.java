@@ -16,6 +16,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
+import plm.core.utils.FileUtils;
 
 public class GitSpy implements ProgressSpyListener {
 
@@ -402,6 +403,56 @@ public class GitSpy implements ProgressSpyListener {
 		JSONObject msg = new JSONObject();
 		msg.put("id", id);
 		String commitMsg = writeCommitMessage(lastExo, null, "readTip", msg);
+		String userBranch = "PLM"+GitUtils.sha1(userUUID);
+
+		try {
+			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
+		} catch (GitAPIException e) {
+			System.err.println("An error occurred while pushing the fact that you took a look at the hint...\n"
+					+ "Please send a bug report with the following trace:");
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void feedbackCommonError(int commonErrorID, String accuracy, String help, String comment) {
+		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
+		String ext = "." + game.getLocale();
+		File commonErrHTML = new File(repoDir, lastExo.getId() + ext + ".commonErrHTML");
+		File commonErrJAVA = new File(repoDir, lastExo.getId() + ".commonErrJAVA");
+		
+		String path = Game.JAVA.nameOfCommonError(lastExo, commonErrorID).replaceAll("\\.", "/");
+		String commonErrorText = "", commonErrorCode = "";
+		try {
+			StringBuffer sbHtml = FileUtils.readContentAsText(path, getGame().getLocale(), "html", true);
+			StringBuffer sbJava = FileUtils.readContentAsText(path, null, "java", false);
+			commonErrorText = sbHtml.toString();
+			commonErrorCode = sbJava.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			// write the instructions of the exercise into the file
+			FileWriter fwHtml = new FileWriter(commonErrHTML.getAbsoluteFile());
+			BufferedWriter bwHtml = new BufferedWriter(fwHtml);
+			bwHtml.write(commonErrorText);
+			bwHtml.close();
+			FileWriter fwJava = new FileWriter(commonErrJAVA.getAbsoluteFile());
+			BufferedWriter bwJava = new BufferedWriter(fwJava);
+			bwJava.write(commonErrorCode);
+			bwJava.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		JSONObject msg = new JSONObject();
+		msg.put("commonErrorID", commonErrorID);
+		msg.put("accuracy", accuracy);
+		msg.put("help", help);
+		msg.put("comment", comment);
+		msg.put("exoID", lastExo);
+		String commitMsg = writeCommitMessage(lastExo, null, "feedbackCommonError", msg);
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 
 		try {
