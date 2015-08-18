@@ -306,6 +306,7 @@ public class Game implements IWorldView {
 	public void switchExercise(String exerciseID) {
 		this.selectedWorld = null; // Remove the previous selectedWorld
 		this.currentLesson.setCurrentExercise(exerciseID);
+		getSelectedWorld();
 	}
 
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
