@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-10 14:34+0200\n"
+"POT-Creation-Date: 2015-08-20 15:50+0200\n"
 "PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3117,6 +3117,18 @@ msgstr ""
 "luogo correttamente.  E quando avrai raggiunto il paradiso, fai alcuni passi "
 "nella tua nuova casa. Mentre prosegui semplicemente per la tua strada i "
 "colori appariranno magicamente da soli."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/loopfor/LoopStairsCommonErr0.html:1
+msgid ""
+"Don't forget to go forward to the first step of the stairs before climbing "
+"it!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/loopfor/LoopStairsCommonErr1.html:1
+msgid "You just have to walk three steps forward to finish this exercise."
+msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourse.html:2
@@ -8063,6 +8075,13 @@ msgstr ""
 "prossimo esercizio. Questo esercizio è un po' più complesso e quindi se non "
 "riuscite a risolverlo per ora potrete saltarlo per ritornarci in un secondo "
 "momento."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/summative/MoriaCommonErr0.html:1
+msgid ""
+"You should not put another while loop outside from you main loop that checks "
+"if the buggle is facing a wall..."
+msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
