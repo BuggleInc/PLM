@@ -186,27 +186,28 @@ public class GitSpy implements ProgressSpyListener {
 		logmsg.put("exo", exoFrom.getId());
 		logmsg.put("lang", lastResult.language.toString());
 
-		if (lastResult.outcome != null) {
-			switch (lastResult.outcome) {
-			case COMPILE:  logmsg.put("outcome", "compile");  break;
-			case FAIL:     logmsg.put("outcome", "fail");     break;
-			case PASS:     logmsg.put("outcome", "pass");     break;
-			default:       logmsg.put("outcome", "UNKNOWN");  break;
+		if(lastResult != null) {
+			if (lastResult.outcome != null) {
+				switch (lastResult.outcome) {
+				case COMPILE:  logmsg.put("outcome", "compile");  break;
+				case FAIL:     logmsg.put("outcome", "fail");     break;
+				case PASS:     logmsg.put("outcome", "pass");     break;
+				default:       logmsg.put("outcome", "UNKNOWN");  break;
+				}
 			}
+	
+			if (lastResult.totalTests > 0) {
+				logmsg.put("passedtests", lastResult.passedTests + "");
+				logmsg.put("totaltests", lastResult.totalTests + "");
+			}
+	
+			if (exoFrom.lastResult.feedbackDifficulty != null)
+				logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
+			if (exoFrom.lastResult.feedbackInterest != null)
+				logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
+			if (exoFrom.lastResult.feedback != null)
+				logmsg.put("exoComment", exoFrom.lastResult.feedback);
 		}
-
-		if (lastResult.totalTests > 0) {
-			logmsg.put("passedtests", lastResult.passedTests + "");
-			logmsg.put("totaltests", lastResult.totalTests + "");
-		}
-
-		if (exoFrom.lastResult.feedbackDifficulty != null)
-			logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
-		if (exoFrom.lastResult.feedbackInterest != null)
-			logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
-		if (exoFrom.lastResult.feedback != null)
-			logmsg.put("exoComment", exoFrom.lastResult.feedback);
-
 		if (exoTo != null)
 			logmsg.put("switchto", exoTo.getId());
 
