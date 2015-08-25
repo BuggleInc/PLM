@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-08-10 14:34+0200\n"
-"PO-Revision-Date: 2015-08-10 15:04+0100\n"
+"POT-Creation-Date: 2015-08-20 15:50+0200\n"
+"PO-Revision-Date: 2015-08-20 15:54+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -2900,6 +2900,19 @@ msgstr ""
 "nouvelle demeure.\n"
 "Chemin faisant, les couleurs apparaissent d'elles-mêmes sans que vous n'ayez "
 "rien à faire."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/loopfor/LoopStairsCommonErr0.html:1
+msgid ""
+"Don't forget to go forward to the first step of the stairs before climbing "
+"it!"
+msgstr ""
+"Pensez à avancer jusqu'à la première marche avant d'essayer de grimper !"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/loopfor/LoopStairsCommonErr1.html:1
+msgid "You just have to walk three steps forward to finish this exercise."
+msgstr "Il ne reste plus qu'à avancer de trois pas pour finir cet exercice !"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourse.html:2
@@ -7463,6 +7476,15 @@ msgstr ""
 "l'exercice suivant. Cet exercice est un peu plus difficile que les autres, "
 "et vous pouvez tout à fait le laisser momentanément de coté pour y revenir "
 "plus tard si vous n'y parvenez pas pour l'instant."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/summative/MoriaCommonErr0.html:1
+msgid ""
+"You should not put another while loop outside from you main loop that checks "
+"if the buggle is facing a wall..."
+msgstr ""
+"Vous ne devriez pas écrire une boucle while hors de la boucle principale "
+"(celle qui vérifie la présence d'un mur). "
 
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
