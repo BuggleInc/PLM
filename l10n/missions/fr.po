@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-08-27 13:27+0200\n"
-"PO-Revision-Date: 2015-08-27 13:29+0100\n"
+"POT-Creation-Date: 2015-08-27 16:27+0200\n"
+"PO-Revision-Date: 2015-08-27 16:29+0100\n"
 "Last-Translator: Matthieu Nicolas <nicolasmatthieu57@gmail.com>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -978,8 +978,8 @@ msgid ""
 "interactive exercises. It is constituted by a set of exercises grouped by "
 "lessons, allowing you to practice at your own pace. Currently, the "
 "environment is configured to be programmed in the [!thelang/] programming "
-"language, but you can change it from the Language menu if you want, or by "
-"clicking on the [!thelang/] icon at the right of the status bar below."
+"language, but you can change it from the dropdown menu in the top bar if you "
+"want."
 msgstr ""
 "Vous venez de lancer la PLM, l'exerciseur du programmeur (Programmer's "
 "Learning Machine). Il s'agit d'une plate-forme pédagogique destinée à "
@@ -987,8 +987,8 @@ msgstr ""
 "ensemble d'exercices groupés par leçons, pour vous permettre de progresser à "
 "votre rythme. Pour l'instant, l'outil est configuré pour vous permettre de "
 "programmer en [!thelang/], mais vous pouvez changer de langage de "
-"programmation grâce au menu Langage si vous le désirez, ou en cliquant sur "
-"l'icône du [!thelang/] à droite de la barre d'état (en bas de la fenêtre)."
+"programmation grâce au menu déroulant se trouvant dans la barre du haut si "
+"vous le désirez."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:11
@@ -1011,15 +1011,15 @@ msgid ""
 "world turns into the objective of the exercise. For example in this "
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the exercise (and your settings in the "
-"Language menu), your code must be written in either C, Java, Python or Scala."
+"<i>Objective</i> one.  Depending on the exercise and your settings, your "
+"code must be written in either C, Java, Python or Scala."
 msgstr ""
 "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
 "donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
 "pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par "
 "exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle "
 "avance d'un pas. Observez la différence entre l'état initial et l'objectif "
-"en utilisant les panneaux à droite. En fonction de l'exercice (et vos "
+"en utilisant les onglets ci-dessous. En fonction de l'exercice (et vos "
 "réglages), vous devez écrire vos programme dans l'un des langages de "
 "programmation suivant : Java, Python, Scala ou C (en fonction de l'exercice)."
 
@@ -1034,14 +1034,14 @@ msgid ""
 "Before going any further, get familiar with the working environment. Have a "
 "look at the several elements composing the main window, move your mouse over "
 "them to show the tooltip, and experiment with the elements to see what they "
-"do.  The white area below is the console: this is where errors and messages "
-"get displayed."
+"do.  The <i>Execution results</i> section below is the console: this is "
+"where errors and messages get displayed."
 msgstr ""
 "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez "
 "les différents éléments composant la fenêtre, placez la souris dessus pour "
-"voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La zone "
-"blanche en bas est la console : c'est là que les erreurs et messages sont "
-"affichés."
+"voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La section "
+"<i>Résultats de l'exécution</i> en bas est la console : c'est là que les "
+"erreurs et messages sont affichés."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:31
@@ -1072,31 +1072,28 @@ msgstr "Que dois-je faire ?"
 #: src/lessons/welcome/environment/Environment.html:41
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
-"step forward using the Source Code pane. For that, simply write the "
-"following code (clicking on the interactive controls is not enough: You have "
-"to write the code after experimenting interactively)."
+"step forward using the <i>Code editor</i> pane. For that, simply write the "
+"following code:"
 msgstr ""
 "Il est temps d'écrire votre premier programme. Demandez simplement de faire "
-"un pas en avant dans le panneau de Code Source. Pour cela, écrivez "
-"simplement le code suivant. Cliquer sur les contrôles interactifs ne suffit "
-"pas. Il faut écrire le code après avoir expérimenté interactivement."
+"un pas en avant dans le panneau <i>Éditeur de code</i>. Pour cela, écrivez "
+"simplement le code suivant.:"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:45
-#: src/lessons/welcome/instructions/Instructions.html:46
+#: src/lessons/welcome/environment/Environment.html:43
 #, no-wrap
-msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
-msgstr "[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]"
+msgid "<code class=\"code-container\">[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</code>"
+msgstr "<code class=\"code-container\">[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]</code>"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:46
+#: src/lessons/welcome/environment/Environment.html:44
 #: src/lessons/welcome/loopfor/LoopFor.html:57
 #: src/lessons/welcome/bdr/BDR.html:188
 msgid "[!java|c]"
 msgstr "[!java|c]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:46
+#: src/lessons/welcome/environment/Environment.html:44
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot <i>guess</"
@@ -1107,7 +1104,7 @@ msgstr ""
 "leur préciser des choses aussi simples)."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:48
+#: src/lessons/welcome/environment/Environment.html:46
 #: src/lessons/welcome/instructions/Instructions.html:35
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
@@ -1131,12 +1128,20 @@ msgid "[/!]"
 msgstr "[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:50
+#: src/lessons/welcome/environment/Environment.html:48
 msgid ""
-"Once done, click on run. You can proceed to next exercise once it works."
+"Once done, click on the button <a><i class=\"mdi mdi-play\"></i></a> in the "
+"<i>Test cases</i> panel to run your program. You can proceed to next "
+"exercise once it works. To move to the next exercise, click on the upper "
+"left button to show the sidebar. Then click on the next item of the "
+"exercises list."
 msgstr ""
-"Une fois terminé, cliquez sur «Exécuter». Quand cela fonctionne, vous pouvez "
-"passer à l'exercice suivant."
+"Une fois terminé, cliquez sur le bouton <a><i class=\"mdi mdi-play\"></i></"
+"a> se trouvant dans la section <i>Cas de tests</i> pour lancer votre "
+"programme. Quand cela fonctionne, vous pouvez passer à l'exercice suivant. "
+"Pour changer d'exercice, cliquez sur le bouton se trouvant en haut à gauche "
+"de votre écran pour faire apparaître le menu latéral. Sélectionnez ensuite "
+"le prochain élément de la liste d'exercices."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:4
@@ -1252,6 +1257,12 @@ msgstr ""
 "chose que le bouton <b>avance</b> (faire avancer la buggle d'un pas), il "
 "faut\n"
 "écrire dans l'éditeur :"
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/instructions/Instructions.html:46
+#, no-wrap
+msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
+msgstr "[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:47
