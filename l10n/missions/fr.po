@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-08-20 15:50+0200\n"
-"PO-Revision-Date: 2015-08-20 15:54+0100\n"
-"Last-Translator: Martin Quinson\n"
+"POT-Creation-Date: 2015-08-27 13:27+0200\n"
+"PO-Revision-Date: 2015-08-27 13:29+0100\n"
+"Last-Translator: Matthieu Nicolas <nicolasmatthieu57@gmail.com>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -9645,30 +9645,36 @@ msgstr ""
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:7
 msgid ""
 "If you think carefully, this can be done in linear time, where you sort a "
-"line at each iteration of the loop.  You may want to check again the <a href="
-"\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion sort</a>, "
-"of which the Dutch Flag sort is a variation. The main difference is that you "
-"have 3 insertion points, not only one..."
+"line at each iteration of the loop.  You may want to check again the <a ui-"
+"sref=\"exercise({ lessonID: 'sort.basic', exerciseID: 'sort.basic.lessons."
+"sort.basic.insertion.AlgInsertionSort' })\">insertion sort</a>, of which the "
+"Dutch Flag sort is a variation. The main difference is that you have 3 "
+"insertion points, not only one..."
 msgstr ""
 "À la réflexion, on peut le faire en temps linéaire, en triant un élément à "
 "chaque étape de la boucle. Vous devriez peut-être réviser comment se passe "
-"le <a href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">tri par "
-"insertion</a>, car le tri du drapeau hollandais est une variation sur le "
-"thème. La principale différence est que vous n'avez pas un seul point "
-"d'insertion, mais 3..."
+"le <a ui-sref=\"exercise({ lessonID: 'sort.basic', exerciseID: 'sort.basic."
+"lessons.sort.basic.insertion.AlgInsertionSort' })\">tri par insertion</a>, "
+"car le tri du drapeau hollandais est une variation sur le thème. La "
+"principale différence est que vous n'avez pas un seul point d'insertion, "
+"mais 3..."
 
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
-msgid "I need an hint to start"
-msgstr "J'ai besoin d'un indice pour commencer."
-
-#. type: Content of: <div>
+#. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:12
+msgid ""
+"<a href=\"\" data-reveal-id=\"myModal\" ng-click=\"exercise.readTip(1)\">I "
+"need an hint to start</a>"
+msgstr ""
+"<a href=\"\" data-reveal-id=\"myModal\" ng-click=\"exercise."
+"readTip(1)\">J'ai besoin d'un indice pour démarrer</a>"
+
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
 msgid "Do a traversal over your data, saving 3 indices:"
 msgstr "Traversez vos données, en maintenant trois indices :"
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:19
 msgid ""
 "<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
 "<code>afterBlue</code> is filled with blue elements."
@@ -9676,8 +9682,8 @@ msgstr ""
 "<code>apresBleu</code> est initialisé à 0. Assurez vous de n'avoir que des "
 "cellules bleues entre 0 et <code>apresBleu</code> à tout moment."
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:21
 msgid ""
 "<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
 "after <code>whiteRed</code> is filled with red elements."
@@ -9685,8 +9691,8 @@ msgstr ""
 "<code>blancRouge</code> est initialisé à taille-1. Assurez vous de n'avoir "
 "que des cellules rouges après <code>blancRouge</code>."
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:22
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
@@ -9696,8 +9702,8 @@ msgstr ""
 "que des cellules blanches entre <code>avantBlanc</code> et <code>blancRouge</"
 "code>."
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:18
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:24
 msgid ""
 "Note that the unsorted cells are always between <code>afterBlue</code> and "
 "<code>beforeWhite</code>."
@@ -9705,11 +9711,11 @@ msgstr ""
 "Remarques que les cellules non triées sont toujours entre <code>apresBleu</"
 "code> et <code>avantBlanc</code>."
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:20
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:25
 msgid ""
 "At each step of your traversal, check the color of the cell at "
-"<code>afterBlue</code> and do the required exchanges.  The loop ending "
+"<code>afterBlue</code> and do the required exchanges. The loop ending "
 "condition is when <code>afterBlue</code> becomes larger than "
 "<code>beforeWhite</code>."
 msgstr ""
@@ -9717,6 +9723,11 @@ msgstr ""
 "par <code>apresBleu</code> et effectuez les échanges qui s'imposent. La "
 "boucle s'arrête quand <code>apresBleu</code> devient plus grand que "
 "<code>avantBlanc</code>."
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:28
+msgid "<a class=\"close-reveal-modal\" aria-label=\"Close\">&#215;</a>"
+msgstr "<a class=\"close-reveal-modal\" aria-label=\"Close\">&#215;</a>"
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
@@ -17240,6 +17251,9 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
+
+#~ msgid "I need an hint to start"
+#~ msgstr "J'ai besoin d'un indice pour commencer."
 
 #~ msgid "Backtracking lesson"
 #~ msgstr "Leçon sur le \"backtracking\""

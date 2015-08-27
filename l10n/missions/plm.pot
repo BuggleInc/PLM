@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-20 15:50+0200\n"
+"POT-Creation-Date: 2015-08-27 13:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6984,57 +6984,65 @@ msgstr ""
 msgid ""
 "If you think carefully, this can be done in linear time, where you sort a "
 "line at each iteration of the loop.  You may want to check again the <a "
-"href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion "
+"ui-sref=\"exercise({ lessonID: 'sort.basic', exerciseID: "
+"'sort.basic.lessons.sort.basic.insertion.AlgInsertionSort' })\">insertion "
 "sort</a>, of which the Dutch Flag sort is a variation. The main difference "
 "is that you have 3 insertion points, not only one..."
 msgstr ""
 
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
-msgid "I need an hint to start"
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:12
+msgid ""
+"<a href=\"\" data-reveal-id=\"myModal\" ng-click=\"exercise.readTip(1)\">I "
+"need an hint to start</a>"
 msgstr ""
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:12
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
 msgid "Do a traversal over your data, saving 3 indices:"
 msgstr ""
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:19
 msgid ""
 "<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
 "<code>afterBlue</code> is filled with blue elements."
 msgstr ""
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:21
 msgid ""
 "<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
 "after <code>whiteRed</code> is filled with red elements."
 msgstr ""
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:22
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
 "with white elements."
 msgstr ""
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:18
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:24
 msgid ""
 "Note that the unsorted cells are always between <code>afterBlue</code> and "
 "<code>beforeWhite</code>."
 msgstr ""
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:20
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:25
 msgid ""
 "At each step of your traversal, check the color of the cell at "
-"<code>afterBlue</code> and do the required exchanges.  The loop ending "
+"<code>afterBlue</code> and do the required exchanges. The loop ending "
 "condition is when <code>afterBlue</code> becomes larger than "
 "<code>beforeWhite</code>."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:28
+msgid "<a class=\"close-reveal-modal\" aria-label=\"Close\">&#215;</a>"
 msgstr ""
 
 #. type: Content of: <h2>
