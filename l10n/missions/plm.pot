@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-27 16:27+0200\n"
+"POT-Creation-Date: 2015-08-27 16:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -873,7 +873,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:43
+#: src/lessons/welcome/environment/Environment.html:43 src/lessons/welcome/instructions/Instructions.html:45
 #, no-wrap
 msgid ""
 "<code "
@@ -894,7 +894,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -930,7 +930,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:14
 #, no-wrap
-msgid "nameOfTheMethod()"
+msgid "<code class=\"code-container\">nameOfTheMethod()</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -943,22 +943,23 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:22
+#: src/lessons/welcome/instructions/Instructions.html:21
 #, no-wrap
 msgid ""
-"meltTheChocolatePieces()[!java|c];[/!]\n"
+"<code class=\"code-container\">meltTheChocolatePieces()[!java|c];[/!]\n"
 "addSugar()[!java|c];[/!]\n"
 "coolMix()[!java|c];[/!]\n"
 "serve()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:28 src/lessons/welcome/variables/Variables.html:145
+#: src/lessons/welcome/instructions/Instructions.html:27 src/lessons/welcome/variables/Variables.html:145
 msgid "[!python|scala]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:29
+#: src/lessons/welcome/instructions/Instructions.html:28
 msgid ""
 "It could also be written in the following way, but it's generally considered "
 "as a bad practice to group several instructions on the same line since it "
@@ -966,13 +967,16 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:33
+#: src/lessons/welcome/instructions/Instructions.html:31
 #, no-wrap
-msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
+msgid ""
+"<code class=\"code-container\">\n"
+"meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:37
+#: src/lessons/welcome/instructions/Instructions.html:36
 msgid ""
 "Of course, these specific methods do not exist by default in [!thelang], but "
 "it may be possible to define them by yourself (we'll see later how to define "
@@ -980,7 +984,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:41
+#: src/lessons/welcome/instructions/Instructions.html:40
 msgid ""
 "For now, we'll simply go for the buggle instructions. There is a method for "
 "each button of the interactive control panel. To achieve the same effect "
@@ -988,14 +992,8 @@ msgid ""
 "you need to write the following in the editor:"
 msgstr ""
 
-#. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:46
-#, no-wrap
-msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
-msgstr ""
-
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:47
+#: src/lessons/welcome/instructions/Instructions.html:46
 msgid ""
 "Likewise, to achieve the same effect than the "
 "<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and "
@@ -1003,43 +1001,45 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:50
+#: src/lessons/welcome/instructions/Instructions.html:48
 #, no-wrap
 msgid ""
-"backward()[!java|c];[/!]\n"
+"<code class=\"code-container\">backward()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
 "right()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:55
+#: src/lessons/welcome/instructions/Instructions.html:53
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:58
+#: src/lessons/welcome/instructions/Instructions.html:55
 #, no-wrap
 msgid ""
-"brushUp()[!java|c];[/!]\n"
+"<code class=\"code-container\">brushUp()[!java|c];[/!]\n"
 "brushDown()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:61
+#: src/lessons/welcome/instructions/Instructions.html:58
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:65 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/instructions/Instructions.html:62 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:65
+#: src/lessons/welcome/instructions/Instructions.html:62
 msgid ""
 "<a name=\"Objectives\"/> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
@@ -1047,34 +1047,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:70
+#: src/lessons/welcome/instructions/Instructions.html:67
 msgid ""
 "Use your brush to mark the ground as you walk. Start marking the ground with "
 "<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward "
 "(e.g., to enter your house without marking its ground). The full list of all "
-"instructions understood by your buggle can be found in \"Help/About this "
-"world\"."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:75
-msgid "After this exercise"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:76
-msgid ""
-"When switching to the next exercise, please note that there is a "
-"sub-exercise following this one.  By default, it is hidden in the menu and "
-"you have to open the sub-menu to see it.  When you switch the exercise, most "
-"of the exercises are hidden because the tree is folded, as follows:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:81
-msgid ""
-"You have to click on the little symbol to the left of the buggle to unfold "
-"the tree, as follows:"
+"instructions understood by your buggle can be found by clicking on the "
+"button <i>API</i> of the <i>Code editor</i> section."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
