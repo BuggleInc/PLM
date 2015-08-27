@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-08-27 16:49+0200\n"
-"PO-Revision-Date: 2015-08-27 16:56+0100\n"
+"POT-Creation-Date: 2015-08-27 17:05+0200\n"
+"PO-Revision-Date: 2015-08-27 17:07+0100\n"
 "Last-Translator: Matthieu Nicolas <nicolasmatthieu57@gmail.com>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1440,25 +1440,27 @@ msgstr ""
 "'''.[/!]"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:28
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:27
 #, no-wrap
 msgid ""
-"methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>\n"
+"<code class=\"code-container\">methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>\n"
 "otherCall()[!java|c];[/!] [!java|scala|c]<span class=\"comment\">/* This is</span>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> also ignored */</span>[/!]\n"
 "[!python]<span class=\"comment\">''' This is</span>\n"
 "<span class=\"comment\">also ignored  '''</span>[/!]\n"
 "yetAnotherCall()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
-"methodeAppeleeParLe[!java|scala|c]Compilateur[/!][!python]Interpreteur[/!]()[!java|c];[/!] <span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] tout ceci est ignoré</span>\n"
+"<code class=\"code-container\">methodeAppeleeParLe[!java|scala|c]Compilateur[/!][!python]Interpreteur[/!]()[!java|c];[/!] <span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] tout ceci est ignoré</span>\n"
 "autreAppel()[!java|c];[/!] [!java|scala|c]<span class=\"comment\">/* Ceci est</span>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> également ignoré */</span>[/!]\n"
 "[!python]<span class=\"comment\">''' Ceci est</span>\n"
 "<span class=\"comment\">également ignoré '''</span>[/!]\n"
 "encoreUneAutreAppel()[!java|c];[/!]\n"
+"</code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:35
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:34
 msgid ""
 "There is a third kind of comments in Java, between /** and */, which are "
 "read by a specific program called JavaDoc to generate automatically the "
@@ -1471,7 +1473,7 @@ msgstr ""
 "suivre un formalisme précis."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:40
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:39
 msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."

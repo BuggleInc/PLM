@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-27 16:49+0200\n"
+"POT-Creation-Date: 2015-08-27 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1105,10 +1105,11 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:28
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:27
 #, no-wrap
 msgid ""
-"methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] "
+"<code "
+"class=\"code-container\">methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] "
 "<span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] all this is "
 "ignored</span>\n"
 "otherCall()[!java|c];[/!] [!java|scala|c]<span class=\"comment\">/* This "
@@ -1118,10 +1119,11 @@ msgid ""
 "[!python]<span class=\"comment\">''' This is</span>\n"
 "<span class=\"comment\">also ignored  '''</span>[/!]\n"
 "yetAnotherCall()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:35
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:34
 msgid ""
 "There is a third kind of comments in Java, between /** and */, which are "
 "read by a specific program called JavaDoc to generate automatically the "
@@ -1130,7 +1132,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:40
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:39
 msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."
