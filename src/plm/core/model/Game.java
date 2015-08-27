@@ -1158,6 +1158,10 @@ public class Game implements IWorldView {
 		gitSpy.commonErrorFeedback(commonErrorID, accuracy, help, comment);
 	}
 	
+	public void signalReadTip(String id) {
+		gitSpy.readTip(id, currentLesson.getCurrentExercise().getMission(programmingLanguage));
+	}
+	
 	public void setTrackUser(boolean trackUser) {
 		this.trackUser = trackUser;
 	}
