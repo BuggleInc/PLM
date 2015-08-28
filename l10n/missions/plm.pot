@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-28 15:07+0200\n"
+"POT-Creation-Date: 2015-08-28 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -894,7 +894,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/conditions/Conditions.html:57 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/conditions/Conditions.html:57 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/variables/Variables.html:85 src/lessons/welcome/variables/Variables.html:114 src/lessons/welcome/variables/Variables.html:160 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -954,7 +954,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:27 src/lessons/welcome/variables/Variables.html:145
+#: src/lessons/welcome/instructions/Instructions.html:27 src/lessons/welcome/variables/Variables.html:153
 msgid "[!python|scala]"
 msgstr ""
 
@@ -1034,7 +1034,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:62 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/instructions/Instructions.html:62 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:127 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
@@ -1547,7 +1547,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:31
 #, no-wrap
-msgid "int x;"
+msgid "<code class=\"code-container\">int x;</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1560,11 +1560,11 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:34
 #, no-wrap
-msgid "int x=5;"
+msgid "<code class=\"code-container\">int x=5;</code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:35 src/lessons/welcome/variables/Variables.html:69
+#: src/lessons/welcome/variables/Variables.html:35 src/lessons/welcome/variables/Variables.html:69 src/lessons/welcome/variables/Variables.html:106
 msgid "[/!] [!python]"
 msgstr ""
 
@@ -1578,11 +1578,11 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:39
 #, no-wrap
-msgid "x = 5"
+msgid "<code class=\"code-container\">x = 5</code>"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/loopfor/LoopFor.html:68 src/lessons/welcome/bdr/BDR2.html:83 src/lessons/recursion/cons/universe/ConsWorld.html:34
+#: src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:99 src/lessons/welcome/loopfor/LoopFor.html:68 src/lessons/welcome/bdr/BDR2.html:83 src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr ""
 
@@ -1596,7 +1596,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:44
 #, no-wrap
-msgid "var x:Int = 42"
+msgid "<code class=\"code-container\">var x:Int = 42</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1609,7 +1609,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:46
 #, no-wrap
-msgid "var x = 42"
+msgid "<code class=\"code-container\">var x = 42</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1626,10 +1626,10 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:50
 #, no-wrap
 msgid ""
-"var x: Int =  5 <span class=\"comment\">// I can define the type if I want "
-"to</span>\n"
+"<code class=\"code-container\">var x: Int =  5 <span class=\"comment\">// I "
+"can define the type if I want to</span>\n"
 "var y =  10      <span class=\"comment\">// or I can omit the type if I "
-"prefer</span>"
+"prefer</span></code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1721,50 +1721,60 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:86
+#: src/lessons/welcome/variables/Variables.html:87
 msgid ""
 "Variables work very similarly for strings, floating point numbers and "
 "boolean values."
 msgstr ""
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/Variables.html:89
+msgid "[!c]"
+msgstr ""
+
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:88
+#: src/lessons/welcome/variables/Variables.html:90
 #, no-wrap
 msgid ""
-"char* name = \"Martin Quinson\";\n"
+"<code class=\"code-container\">char* name = \"Martin Quinson\";\n"
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
 "int married=1;<span class=\"comment\">// 1 means \"true\"; \"false\" would "
-"be written 0</span>"
+"be written 0</span></code>"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/Variables.html:93
+msgid "[/!] [!java]"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:93
+#: src/lessons/welcome/variables/Variables.html:96
 #, no-wrap
 msgid ""
-"String name = \"Martin Quinson\";\n"
+"<code class=\"code-container\">String name = \"Martin Quinson\";\n"
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
 "boolean married=true;<span class=\"comment\">// the contrary would be "
-"written \"false\"</span>"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:97
-#, no-wrap
-msgid ""
-"val name:String = \"Martin Quinson\"; <span class=\"comment\">// this cannot "
-"be modified (it's a value)</span>\n"
-"var height: Double = 1.77; <span class=\"comment\">// in meters</span>\n"
-"var married = true; <span class=\"comment\">// the contrary would be written "
-"\"false\"</span>\n"
-"<span class=\"comment\">// Scala knows that 'true' is a Boolean value, no "
-"need to repeat it here</span>"
+"written \"false\"</span></code>"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:102
 #, no-wrap
 msgid ""
-"firstName = \"Martin\"\n"
+"<code class=\"code-container\">val name:String = \"Martin Quinson\"; <span "
+"class=\"comment\">// this cannot be modified (it's a value)</span>\n"
+"var height: Double = 1.77; <span class=\"comment\">// in meters</span>\n"
+"var married = true; <span class=\"comment\">// the contrary would be written "
+"\"false\"</span>\n"
+"<span class=\"comment\">// Scala knows that 'true' is a Boolean value, no "
+"need to repeat it here</span></code>"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/variables/Variables.html:109
+#, no-wrap
+msgid ""
+"<code class=\"code-container\">firstName = \"Martin\"\n"
 "lastName = 'Quinson' <span class=\"comment\"># both single and double quote "
 "work here</span>\n"
 "motto = \"I never finish anyth' (but I keep trying)\" <span "
@@ -1772,47 +1782,47 @@ msgid ""
 "\n"
 "height=1.77 <span class=\"comment\"># in meters</span>\n"
 "married=True <span class=\"comment\"># the contrary would be written "
-"\"False\"</span>"
+"\"False\"</span></code>"
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/variables/Variables.html:108
+#: src/lessons/welcome/variables/Variables.html:116
 msgid "Affectations"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:110
+#: src/lessons/welcome/variables/Variables.html:118
 msgid ""
 "Once your variable is declared, you can <b>affect</b> a new value to it "
 "later in the program. That's really easy:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:111
+#: src/lessons/welcome/variables/Variables.html:119
 #, no-wrap
-msgid "x = 3[!java|c];[/!]"
+msgid "<code class=\"code-container\">x = 3[!java|c];[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:113
+#: src/lessons/welcome/variables/Variables.html:121
 msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:115
+#: src/lessons/welcome/variables/Variables.html:123
 #, no-wrap
 msgid ""
-"x = 3 + 2[!java|c];[/!]\n"
+"<code class=\"code-container\">x = 3 + 2[!java|c];[/!]\n"
 "x = 3 * x[!java|c];[/!]\n"
 "[!java|scala|python]greeting = \"Hello \"+name[!java];[/!] <span "
 "class=\"comment\">[!python]#[/!][!scala|java]//[/!] + is (also) the "
-"operation to concatenate (ie, to join) strings[/!]</span>"
+"operation to concatenate (ie, to join) strings[/!]</span></code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:120
+#: src/lessons/welcome/variables/Variables.html:128
 msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
@@ -1820,39 +1830,39 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/variables/Variables.html:125
+#: src/lessons/welcome/variables/Variables.html:133
 msgid "How to do this?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:126
+#: src/lessons/welcome/variables/Variables.html:134
 msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:129
+#: src/lessons/welcome/variables/Variables.html:137
 msgid "Move forward until located over a baggle"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:130
+#: src/lessons/welcome/variables/Variables.html:138
 msgid "Pickup the baggle"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:131
+#: src/lessons/welcome/variables/Variables.html:139
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:132
+#: src/lessons/welcome/variables/Variables.html:140
 msgid "Drop back the baggle"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:135
+#: src/lessons/welcome/variables/Variables.html:143
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -1860,7 +1870,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:139
+#: src/lessons/welcome/variables/Variables.html:147
 msgid ""
 "Create an integer variable before phase 1, initialize it to 0, and each time "
 "you move one step forward, increment its value by one (<code>stepAmount = "
@@ -1870,7 +1880,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:146
+#: src/lessons/welcome/variables/Variables.html:154
 msgid ""
 "If you know Java or other languages, you will probably try to use the "
 "<code>++</code> operator to increment the variable, but it's not allowed in "
@@ -1883,7 +1893,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:154
+#: src/lessons/welcome/variables/Variables.html:162
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward as long as "
@@ -1893,7 +1903,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:161
+#: src/lessons/welcome/variables/Variables.html:169
 msgid "It's your turn now!"
 msgstr ""
 

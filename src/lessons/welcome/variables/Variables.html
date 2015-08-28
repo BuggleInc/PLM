@@ -28,27 +28,27 @@ some stuff, like a bottle of perfume "Channel N°5".  </p>
 
 [!c|java]
   <p>So, to create a variable named <b>x</b> intended to contain integers, one should write:</p> 
-  <pre>int x;</pre>
+  <pre><code class="code-container">int x;</code></pre>
   <p>If you want, you can specify the initial value of the variable by adding an equal sign (=) followed by the value 
      after the declaration.</p>
-  <pre>int x=5;</pre>
+<pre><code class="code-container">int x=5;</code></pre>
 [/!]
 
 [!python]
   <p>So, if you want that the variable contains 5 as initial value, you should type: </p>
-  <pre>x = 5</pre>
+<pre><code class="code-container">x = 5</code></pre>
 [/!]
 
 [!scala]
   <p>So, to create a variable named <b>x</b> intended to contain integers with 42 as initial value, one should write:</p> 
-  <pre>var x:Int = 42</pre>
+<pre><code class="code-container">var x:Int = 42</code></pre>
   <p>In most cases, the compiler is able to guess the type of the variable from the initialization value, and you can omit it:</p>
-  <pre>var x = 42</pre>
+<pre><code class="code-container">var x = 42</code></pre>
   <p>You still have to specify if you use some generic values as an initialization, such as the very particular 
      value <code>null</code>, which type happens to be ambiguous. Even when the type is clear, you can still specify it if you prefer.
    So you want that the variable contains 5 as initial value, you should type: </p>
-  <pre>var x: Int =  5 <span class="comment">// I can define the type if I want to</span>
-var y =  10      <span class="comment">// or I can omit the type if I prefer</span></pre>
+  <pre><code class="code-container">var x: Int =  5 <span class="comment">// I can define the type if I want to</span>
+var y =  10      <span class="comment">// or I can omit the type if I prefer</span></code></pre>
 [/!]
   
 [!java|scala|c]
@@ -77,44 +77,52 @@ var y =  10      <span class="comment">// or I can omit the type if I prefer</sp
   more logic errors for you, which is also good. In some sense, Python is easier to write but errors can sneak in more easily.</p>
 [/!]
   
-
-<p class="scala">If you know that the value of your "variable" will never change (eg because it contains the screen 
+[!scala]
+<p>If you know that the value of your "variable" will never change (eg because it contains the screen 
 size or some other constant value), then you should make it a <b>value</b> instead of a variable. Simply change the 
 <code>var</code> keyword with the <code>val</code> one. The compiler can then check your actions and catch your error 
 when you inadvertently modify the value. More interestingly, the compiler can produce faster code in some cases.</p>
+[/!]
 
 <p>Variables work very similarly for strings, floating point numbers and boolean values.</p>
 
-<pre class="c">char* name = "Martin Quinson";
+[!c]
+<pre><code class="code-container">char* name = "Martin Quinson";
 double height=1.77; <span class="comment">// in meters</span>
-int married=1;<span class="comment">// 1 means "true"; "false" would be written 0</span></pre>
+int married=1;<span class="comment">// 1 means "true"; "false" would be written 0</span></code></pre>
+[/!]
 
-
-<pre class="java">String name = "Martin Quinson";
+[!java]
+<pre><code class="code-container">String name = "Martin Quinson";
 double height=1.77; <span class="comment">// in meters</span>
-boolean married=true;<span class="comment">// the contrary would be written "false"</span></pre>
+boolean married=true;<span class="comment">// the contrary would be written "false"</span></code></pre>
+[/!]
 
-<pre class="scala">val name:String = "Martin Quinson"; <span class="comment">// this cannot be modified (it's a value)</span>
+[!scala]
+<pre><code class="code-container">val name:String = "Martin Quinson"; <span class="comment">// this cannot be modified (it's a value)</span>
 var height: Double = 1.77; <span class="comment">// in meters</span>
 var married = true; <span class="comment">// the contrary would be written "false"</span>
-<span class="comment">// Scala knows that 'true' is a Boolean value, no need to repeat it here</span></pre>
+<span class="comment">// Scala knows that 'true' is a Boolean value, no need to repeat it here</span></code></pre>
+[/!]
 
-<pre class="python">firstName = "Martin"
+[!python]
+<pre><code class="code-container">firstName = "Martin"
 lastName = 'Quinson' <span class="comment"># both single and double quote work here</span>
 motto = "I never finish anyth' (but I keep trying)" <span class="comment"># having single quote within double quote is fine</span> 
 height=1.77 <span class="comment"># in meters</span>
-married=True <span class="comment"># the contrary would be written "False"</span></pre>
+married=True <span class="comment"># the contrary would be written "False"</span></code></pre>
+[/!]
 
 <h3>Affectations</h3>
 
 <p>Once your variable is declared, you can <b>affect</b> a new value to it later in the program. That's really easy:</p> 
-<pre>x = 3[!java|c];[/!]</pre>
+<pre><code class="code-container">x = 3[!java|c];[/!]</code></pre>
 
 <p>To the right of the equal symbol, you can put an arithmetic expression containing constants, variables and operations.</p>
 
-<pre>x = 3 + 2[!java|c];[/!]
+<pre><code class="code-container">x = 3 + 2[!java|c];[/!]
 x = 3 * x[!java|c];[/!]
-[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></pre> 
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></code></pre> 
 
 <h3>Exercise goal</h3>
 It is now time to do more challenging exercises, don't you think? 
