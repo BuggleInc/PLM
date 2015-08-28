@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-28 09:48+0200\n"
+"POT-Creation-Date: 2015-08-28 14:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1395,10 +1395,10 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:8
 #, no-wrap
 msgid ""
-"[!java|scala|c]while (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]while (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
 "}[/!][!python]while <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1418,21 +1418,21 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:20
 msgid ""
 "Naturally, if the chosen action does not modify the value of the condition, "
-"the buggle will do the action endlessly. The <b>stop</b> button of the "
-"interface becomes then handy. To test this, you can try to type the "
-"following code in the editor:"
+"the buggle will do the action endlessly. The <b>stop</b> button <a><i "
+"class=\"mdi mdi-stop\"></i></a> of the interface becomes then handy. To test "
+"this, you can try to type the following code in the editor:"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:25
 #, no-wrap
 msgid ""
-"[!java|scala]while (true) {\n"
+"<code class=\"code-container\">[!java|scala]while (true) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
 "}[/!][!c]while (1) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
 "}[/!][!python]while True:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1440,7 +1440,9 @@ msgstr ""
 msgid ""
 "This will let the buggle turn left as long as "
 "<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true "
-"(ie, endlessly), or until you stop it manually using the stop button."
+"(ie, endlessly), or until you stop it manually using the stop button. In "
+"this particuliar case, we will also automatically stop the execution after "
+"10 seconds."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1454,15 +1456,15 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:39
 #, no-wrap
 msgid ""
-"while we are not facing a wall, do:\n"
-"&nbsp;&nbsp;moveForward()"
+"<code class=\"code-container\">while we are not facing a wall, do:\n"
+"&nbsp;&nbsp;moveForward()</code>"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
 msgid ""
-"Look at the documentation (in \"Help/About this world\") for the full list "
-"of buggles' methods."
+"Look at the documentation (button <i>API</i>) for the full list of buggles' "
+"methods."
 msgstr ""
 
 #. type: Content of: <p>
