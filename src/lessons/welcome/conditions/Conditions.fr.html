@@ -10,13 +10,13 @@ comme <i>S'il pleut, prend un parapluie</i>.
 
 <p>La syntaxe en [!thelang] est la suivante :</p>
 
-<pre>[!java|scala|c]if (<b>condition</b>) {
+<pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie();</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie();</b>
 }[/!][!python]if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie()</b>[/!]
-<b>aFaireDansTousLesCas()[!java|c];[/!]</b></pre>
+<b>aFaireDansTousLesCas()[!java|c];[/!]</b></code></pre>
 
 <p>Le mot <code>if</code> signifie «si» en anglais. Si la condition est vraie,
 alors le code du bloc suivant sera exécuté, puis l'exécution se poursuivra
@@ -57,21 +57,21 @@ indenté. Il est donc important que vous fassiez en sorte que votre code
 reste clair et lisible pour que le relire et le modifier reste plaisant et
 productif.</p>
 
-
-<p class="python">Toutes les instructions d'un bloc doivent avoir la même indentation, et il
+[!python]
+<p>Toutes les instructions d'un bloc doivent avoir la même indentation, et il
 n'est pas possible de couper un bloc. Les deux exemples suivants de code
 sont incorrects et vont générer des erreurs.</p>
-<pre class="python">if <b>condition</b>:
+<pre><code class="code-container">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class="comment"># une espace de trop</span>
 <b>quoiFaireDansTousLesCas()</b>
-</pre>
-<pre class="python">if <b>condition</b>:
+</code></pre>
+<pre><code class="code-container">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 <b>quoiFaireDansTousLesCas()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class="comment"># Ce bloc n'est rattaché à aucune ligne de condition</span>
-</pre>
-
+</code></pre>
+[/!]
 <p>La condition doit être une expression de type
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
 (expression booléenne).  Le sous-bloc sera exécuté seulement si cette
@@ -127,18 +127,18 @@ condition est fausse, en utilisant la syntaxe suivante («else» signifie
 «sinon» en anglais). Dans ce cas, l'instruction
 <code>aFaireSiLaConditionEstFausse()</code> ne sera exécutée que si la
 condition est fausse.</p>
- <pre>[!java|scala|c]if (<b>condition</b>) {
+ <pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse();</b>
 }[/!][!python]if (<b>condition</b>):
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie()</b>
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]</pre>
-
-<p class="Python">N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]</code></pre>
+[!python]
+<p>N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau
 bloc débute.</p>
-
+[/!]
 <h3>Objectif de cet exercice</h3><a name="Objectifs"/> Si la buggle est face à un mur, il faut reculer d'un
 pas; Sinon, il faut avancer d'un pas.
 Pour savoir si on est face à un mur, il suffit d'utiliser la méthode
@@ -148,5 +148,4 @@ prédéfinie des buggles nommée <code>estFaceMur()</code>.
 pour plusieurs buggles, chacune étant dans une situation initiale
 différente. Le même code sera utilisé pour chacune d'entre elles.</p>
 
-<p>Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché
-par défaut dans un sous-arbre de la fenêtre de sélection).</p>
+<p>Quand votre programme fonctionne enfin, passez à l'exercice suivant.</p>

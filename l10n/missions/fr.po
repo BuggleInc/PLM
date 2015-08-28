@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-08-27 17:05+0200\n"
-"PO-Revision-Date: 2015-08-27 17:07+0100\n"
+"POT-Creation-Date: 2015-08-28 09:48+0200\n"
+"PO-Revision-Date: 2015-08-28 09:48+0100\n"
 "Last-Translator: Matthieu Nicolas <nicolasmatthieu57@gmail.com>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1107,6 +1107,8 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:46
 #: src/lessons/welcome/instructions/Instructions.html:34
+#: src/lessons/welcome/conditions/Conditions.html:57
+#: src/lessons/welcome/conditions/Conditions.html:108
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
 #: src/lessons/welcome/loopfor/LoopFor.html:80
@@ -1505,21 +1507,21 @@ msgstr "La syntaxe en [!thelang] est la suivante :"
 #: src/lessons/welcome/conditions/Conditions.html:11
 #, no-wrap
 msgid ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>\n"
 "}[/!][!python]if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
-"<b>whatToDoAnyway()[!java|c];[/!]</b>"
+"<b>whatToDoAnyway()[!java|c];[/!]</b></code>"
 msgstr ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie();</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie();</b>\n"
 "}[/!][!python]if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie()</b>[/!]\n"
-"<b>aFaireDansTousLesCas()[!java|c];[/!]</b>"
+"<b>aFaireDansTousLesCas()[!java|c];[/!]</b></code>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:19
@@ -1596,6 +1598,16 @@ msgstr ""
 "reste clair et lisible pour que le relire et le modifier reste plaisant et "
 "productif."
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/conditions/Conditions.html:43
+#: src/lessons/welcome/conditions/Conditions.html:105
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
+#: src/lessons/welcome/array/basics/Array1.html:100
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:54
+#: src/lessons/maze/pledge/PledgeMaze.html:59
+msgid "[!python]"
+msgstr "[!python]"
+
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:44
 msgid ""
@@ -1610,29 +1622,33 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:47
 #, no-wrap
 msgid ""
-"if <b>condition</b>:\n"
+"<code class=\"code-container\">if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># one space too much </span>\n"
 "<b>whatToDoAnyway()</b>\n"
+"</code>"
 msgstr ""
-"if <b>condition</b>:\n"
+"<code class=\"code-container\">if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\"comment\"># une espace de trop</span>\n"
 "<b>quoiFaireDansTousLesCas()</b>\n"
+"</code>"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:52
 #, no-wrap
 msgid ""
-"if <b>condition</b>:\n"
+"<code class=\"code-container\">if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "<b>whatToDoAnyway()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># this block is not hanging to a condition line</span>\n"
+"</code>"
 msgstr ""
-"if <b>condition</b>:\n"
+"<code class=\"code-container\">if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>\n"
 "<b>quoiFaireDansTousLesCas()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\"comment\"># Ce bloc n'est rattaché à aucune ligne de condition</span>\n"
+"</code>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:58
@@ -1779,23 +1795,23 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:97
 #, no-wrap
 msgid ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
 "} else {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
 "}[/!][!python]if (<b>condition</b>):\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>\n"
 "else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</code>"
 msgstr ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>\n"
 "} else {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse();</b>\n"
 "}[/!][!python]if (<b>condition</b>):\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie()</b>\n"
 "else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]</code>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:106
@@ -1832,12 +1848,8 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:120
-msgid ""
-"When your program works, move forward to the next exercise, that is hidden "
-"in a sub-tree of the selection window."
-msgstr ""
-"Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché "
-"par défaut dans un sous-arbre de la fenêtre de sélection)."
+msgid "When your program works, move forward to the next exercise."
+msgstr "Quand votre programme fonctionne enfin, passez à l'exercice suivant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:4
@@ -3064,14 +3076,6 @@ msgstr ""
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25
 msgid "Executing the loop body at least once"
 msgstr "Exécuter le corps de boucle au moins une fois"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
-#: src/lessons/welcome/array/basics/Array1.html:100
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:54
-#: src/lessons/maze/pledge/PledgeMaze.html:59
-msgid "[!python]"
-msgstr "[!python]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:27
@@ -17249,6 +17253,13 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
+
+#~ msgid ""
+#~ "When your program works, move forward to the next exercise, that is "
+#~ "hidden in a sub-tree of the selection window."
+#~ msgstr ""
+#~ "Quand votre programme fonctionne, passez à l'exercice suivant (qui est "
+#~ "caché par défaut dans un sous-arbre de la fenêtre de sélection)."
 
 #~ msgid "nameOfTheMethod()"
 #~ msgstr "nomDeLaMethode()"
