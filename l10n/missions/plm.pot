@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-20 15:50+0200\n"
+"POT-Creation-Date: 2015-08-28 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -806,8 +806,8 @@ msgid ""
 "interactive exercises. It is constituted by a set of exercises grouped by "
 "lessons, allowing you to practice at your own pace. Currently, the "
 "environment is configured to be programmed in the [!thelang/] programming "
-"language, but you can change it from the Language menu if you want, or by "
-"clicking on the [!thelang/] icon at the right of the status bar below."
+"language, but you can change it from the dropdown menu in the top bar if you "
+"want."
 msgstr ""
 
 #. type: Content of: <p>
@@ -828,9 +828,8 @@ msgid ""
 "world turns into the objective of the exercise. For example in this "
 "exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the exercise (and your settings in the "
-"Language menu), your code must be written in either C, Java, Python or "
-"Scala."
+"<i>Objective</i> one.  Depending on the exercise and your settings, your "
+"code must be written in either C, Java, Python or Scala."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -844,8 +843,8 @@ msgid ""
 "Before going any further, get familiar with the working environment. Have a "
 "look at the several elements composing the main window, move your mouse over "
 "them to show the tooltip, and experiment with the elements to see what they "
-"do.  The white area below is the console: this is where errors and messages "
-"get displayed."
+"do.  The <i>Execution results</i> section below is the console: this is "
+"where errors and messages get displayed."
 msgstr ""
 
 #. type: Content of: <p>
@@ -869,24 +868,25 @@ msgstr ""
 #: src/lessons/welcome/environment/Environment.html:41
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
-"step forward using the Source Code pane. For that, simply write the "
-"following code (clicking on the interactive controls is not enough: You have "
-"to write the code after experimenting interactively)."
+"step forward using the <i>Code editor</i> pane. For that, simply write the "
+"following code:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:45 src/lessons/welcome/instructions/Instructions.html:46
+#: src/lessons/welcome/environment/Environment.html:43 src/lessons/welcome/instructions/Instructions.html:45
 #, no-wrap
-msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
+msgid ""
+"<code "
+"class=\"code-container\">[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/loopfor/LoopFor.html:57 src/lessons/welcome/bdr/BDR.html:188
+#: src/lessons/welcome/environment/Environment.html:44 src/lessons/welcome/loopfor/LoopFor.html:57 src/lessons/welcome/bdr/BDR.html:188
 msgid "[!java|c]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:46
+#: src/lessons/welcome/environment/Environment.html:44
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot "
@@ -894,13 +894,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/conditions/Conditions.html:57 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/variables/Variables.html:85 src/lessons/welcome/variables/Variables.html:114 src/lessons/welcome/variables/Variables.html:160 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:50
-msgid "Once done, click on run. You can proceed to next exercise once it works."
+#: src/lessons/welcome/environment/Environment.html:48
+msgid ""
+"Once done, click on the button <a><i class=\"mdi mdi-play\"></i></a> in the "
+"<i>Test cases</i> panel to run your program. You can proceed to next "
+"exercise once it works. To move to the next exercise, click on the upper "
+"left button to show the sidebar. Then click on the next item of the "
+"exercises list."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -925,7 +930,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:14
 #, no-wrap
-msgid "nameOfTheMethod()"
+msgid "<code class=\"code-container\">nameOfTheMethod()</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -938,22 +943,23 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:22
+#: src/lessons/welcome/instructions/Instructions.html:21
 #, no-wrap
 msgid ""
-"meltTheChocolatePieces()[!java|c];[/!]\n"
+"<code class=\"code-container\">meltTheChocolatePieces()[!java|c];[/!]\n"
 "addSugar()[!java|c];[/!]\n"
 "coolMix()[!java|c];[/!]\n"
 "serve()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:28 src/lessons/welcome/variables/Variables.html:145
+#: src/lessons/welcome/instructions/Instructions.html:27 src/lessons/welcome/variables/Variables.html:153
 msgid "[!python|scala]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:29
+#: src/lessons/welcome/instructions/Instructions.html:28
 msgid ""
 "It could also be written in the following way, but it's generally considered "
 "as a bad practice to group several instructions on the same line since it "
@@ -961,13 +967,16 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:33
+#: src/lessons/welcome/instructions/Instructions.html:31
 #, no-wrap
-msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
+msgid ""
+"<code class=\"code-container\">\n"
+"meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:37
+#: src/lessons/welcome/instructions/Instructions.html:36
 msgid ""
 "Of course, these specific methods do not exist by default in [!thelang], but "
 "it may be possible to define them by yourself (we'll see later how to define "
@@ -975,7 +984,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:41
+#: src/lessons/welcome/instructions/Instructions.html:40
 msgid ""
 "For now, we'll simply go for the buggle instructions. There is a method for "
 "each button of the interactive control panel. To achieve the same effect "
@@ -984,7 +993,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:47
+#: src/lessons/welcome/instructions/Instructions.html:46
 msgid ""
 "Likewise, to achieve the same effect than the "
 "<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and "
@@ -992,43 +1001,45 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:50
+#: src/lessons/welcome/instructions/Instructions.html:48
 #, no-wrap
 msgid ""
-"backward()[!java|c];[/!]\n"
+"<code class=\"code-container\">backward()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
 "right()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:55
+#: src/lessons/welcome/instructions/Instructions.html:53
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:58
+#: src/lessons/welcome/instructions/Instructions.html:55
 #, no-wrap
 msgid ""
-"brushUp()[!java|c];[/!]\n"
+"<code class=\"code-container\">brushUp()[!java|c];[/!]\n"
 "brushDown()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:61
+#: src/lessons/welcome/instructions/Instructions.html:58
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:65 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/instructions/Instructions.html:62 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:127 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:65
+#: src/lessons/welcome/instructions/Instructions.html:62
 msgid ""
 "<a name=\"Objectives\"/> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
@@ -1036,34 +1047,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:70
+#: src/lessons/welcome/instructions/Instructions.html:67
 msgid ""
 "Use your brush to mark the ground as you walk. Start marking the ground with "
 "<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward "
 "(e.g., to enter your house without marking its ground). The full list of all "
-"instructions understood by your buggle can be found in \"Help/About this "
-"world\"."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:75
-msgid "After this exercise"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:76
-msgid ""
-"When switching to the next exercise, please note that there is a "
-"sub-exercise following this one.  By default, it is hidden in the menu and "
-"you have to open the sub-menu to see it.  When you switch the exercise, most "
-"of the exercises are hidden because the tree is folded, as follows:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:81
-msgid ""
-"You have to click on the little symbol to the left of the buggle to unfold "
-"the tree, as follows:"
+"instructions understood by your buggle can be found by clicking on the "
+"button <i>API</i> of the <i>Code editor</i> section."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1115,10 +1105,11 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:28
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:27
 #, no-wrap
 msgid ""
-"methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] "
+"<code "
+"class=\"code-container\">methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] "
 "<span class=\"comment\">[!java|scala|c]//[/!][!python]#[/!] all this is "
 "ignored</span>\n"
 "otherCall()[!java|c];[/!] [!java|scala|c]<span class=\"comment\">/* This "
@@ -1128,10 +1119,11 @@ msgid ""
 "[!python]<span class=\"comment\">''' This is</span>\n"
 "<span class=\"comment\">also ignored  '''</span>[/!]\n"
 "yetAnotherCall()[!java|c];[/!]\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:35
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:34
 msgid ""
 "There is a third kind of comments in Java, between /** and */, which are "
 "read by a specific program called JavaDoc to generate automatically the "
@@ -1140,7 +1132,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:40
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:39
 msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."
@@ -1164,13 +1156,13 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:11
 #, no-wrap
 msgid ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>\n"
 "}[/!][!python]if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
-"<b>whatToDoAnyway()[!java|c];[/!]</b>"
+"<b>whatToDoAnyway()[!java|c];[/!]</b></code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1214,6 +1206,11 @@ msgid ""
 "up so that working on your code remains pleasant and productive."
 msgstr ""
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/conditions/Conditions.html:43 src/lessons/welcome/conditions/Conditions.html:105 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
+msgid "[!python]"
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:44
 msgid ""
@@ -1225,22 +1222,24 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:47
 #, no-wrap
 msgid ""
-"if <b>condition</b>:\n"
+"<code class=\"code-container\">if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span "
 "class=\"comment\"># one space too much </span>\n"
 "<b>whatToDoAnyway()</b>\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:52
 #, no-wrap
 msgid ""
-"if <b>condition</b>:\n"
+"<code class=\"code-container\">if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "<b>whatToDoAnyway()</b>\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># this "
 "block is not hanging to a condition line</span>\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1345,14 +1344,14 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:97
 #, no-wrap
 msgid ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
 "} else {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
 "}[/!][!python]if (<b>condition</b>):\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>\n"
 "else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1381,9 +1380,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:120
-msgid ""
-"When your program works, move forward to the next exercise, that is hidden "
-"in a sub-tree of the selection window."
+msgid "When your program works, move forward to the next exercise."
 msgstr ""
 
 #. type: Content of: <p>
@@ -1398,10 +1395,10 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:8
 #, no-wrap
 msgid ""
-"[!java|scala|c]while (<b>condition</b>) {\n"
+"<code class=\"code-container\">[!java|scala|c]while (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
 "}[/!][!python]while <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1421,21 +1418,21 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:20
 msgid ""
 "Naturally, if the chosen action does not modify the value of the condition, "
-"the buggle will do the action endlessly. The <b>stop</b> button of the "
-"interface becomes then handy. To test this, you can try to type the "
-"following code in the editor:"
+"the buggle will do the action endlessly. The <b>stop</b> button <a><i "
+"class=\"mdi mdi-stop\"></i></a> of the interface becomes then handy. To test "
+"this, you can try to type the following code in the editor:"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:25
 #, no-wrap
 msgid ""
-"[!java|scala]while (true) {\n"
+"<code class=\"code-container\">[!java|scala]while (true) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
 "}[/!][!c]while (1) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
 "}[/!][!python]while True:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
+"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1443,7 +1440,9 @@ msgstr ""
 msgid ""
 "This will let the buggle turn left as long as "
 "<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true "
-"(ie, endlessly), or until you stop it manually using the stop button."
+"(ie, endlessly), or until you stop it manually using the stop button. In "
+"this particuliar case, we will also automatically stop the execution after "
+"10 seconds."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1457,15 +1456,15 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:39
 #, no-wrap
 msgid ""
-"while we are not facing a wall, do:\n"
-"&nbsp;&nbsp;moveForward()"
+"<code class=\"code-container\">while we are not facing a wall, do:\n"
+"&nbsp;&nbsp;moveForward()</code>"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
 msgid ""
-"Look at the documentation (in \"Help/About this world\") for the full list "
-"of buggles' methods."
+"Look at the documentation (button <i>API</i>) for the full list of buggles' "
+"methods."
 msgstr ""
 
 #. type: Content of: <p>
@@ -1475,12 +1474,12 @@ msgid ""
 "biscuits that buggles can carry from one point to another. For that, they "
 "have to use specific methods such as <code>isOverBaggle(), "
 "isCarryingBaggle(), pickupBaggle()</code> or "
-"<code>dropBaggle()</code>. Check their documentation in \"Help/About this "
-"world\" for more details."
+"<code>dropBaggle()</code>. Click on the button <i>API</i> to check their "
+"documentation for more details."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:11
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
 msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before if you want)."
@@ -1548,7 +1547,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:31
 #, no-wrap
-msgid "int x;"
+msgid "<code class=\"code-container\">int x;</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1561,11 +1560,11 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:34
 #, no-wrap
-msgid "int x=5;"
+msgid "<code class=\"code-container\">int x=5;</code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:35 src/lessons/welcome/variables/Variables.html:69
+#: src/lessons/welcome/variables/Variables.html:35 src/lessons/welcome/variables/Variables.html:69 src/lessons/welcome/variables/Variables.html:106
 msgid "[/!] [!python]"
 msgstr ""
 
@@ -1579,11 +1578,11 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:39
 #, no-wrap
-msgid "x = 5"
+msgid "<code class=\"code-container\">x = 5</code>"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/loopfor/LoopFor.html:68 src/lessons/welcome/bdr/BDR2.html:83 src/lessons/recursion/cons/universe/ConsWorld.html:34
+#: src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:99 src/lessons/welcome/loopfor/LoopFor.html:68 src/lessons/welcome/bdr/BDR2.html:83 src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr ""
 
@@ -1597,7 +1596,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:44
 #, no-wrap
-msgid "var x:Int = 42"
+msgid "<code class=\"code-container\">var x:Int = 42</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1610,7 +1609,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:46
 #, no-wrap
-msgid "var x = 42"
+msgid "<code class=\"code-container\">var x = 42</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1627,10 +1626,10 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:50
 #, no-wrap
 msgid ""
-"var x: Int =  5 <span class=\"comment\">// I can define the type if I want "
-"to</span>\n"
+"<code class=\"code-container\">var x: Int =  5 <span class=\"comment\">// I "
+"can define the type if I want to</span>\n"
 "var y =  10      <span class=\"comment\">// or I can omit the type if I "
-"prefer</span>"
+"prefer</span></code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1722,50 +1721,60 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:86
+#: src/lessons/welcome/variables/Variables.html:87
 msgid ""
 "Variables work very similarly for strings, floating point numbers and "
 "boolean values."
 msgstr ""
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/Variables.html:89
+msgid "[!c]"
+msgstr ""
+
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:88
+#: src/lessons/welcome/variables/Variables.html:90
 #, no-wrap
 msgid ""
-"char* name = \"Martin Quinson\";\n"
+"<code class=\"code-container\">char* name = \"Martin Quinson\";\n"
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
 "int married=1;<span class=\"comment\">// 1 means \"true\"; \"false\" would "
-"be written 0</span>"
+"be written 0</span></code>"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/Variables.html:93
+msgid "[/!] [!java]"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:93
+#: src/lessons/welcome/variables/Variables.html:96
 #, no-wrap
 msgid ""
-"String name = \"Martin Quinson\";\n"
+"<code class=\"code-container\">String name = \"Martin Quinson\";\n"
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
 "boolean married=true;<span class=\"comment\">// the contrary would be "
-"written \"false\"</span>"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:97
-#, no-wrap
-msgid ""
-"val name:String = \"Martin Quinson\"; <span class=\"comment\">// this cannot "
-"be modified (it's a value)</span>\n"
-"var height: Double = 1.77; <span class=\"comment\">// in meters</span>\n"
-"var married = true; <span class=\"comment\">// the contrary would be written "
-"\"false\"</span>\n"
-"<span class=\"comment\">// Scala knows that 'true' is a Boolean value, no "
-"need to repeat it here</span>"
+"written \"false\"</span></code>"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:102
 #, no-wrap
 msgid ""
-"firstName = \"Martin\"\n"
+"<code class=\"code-container\">val name:String = \"Martin Quinson\"; <span "
+"class=\"comment\">// this cannot be modified (it's a value)</span>\n"
+"var height: Double = 1.77; <span class=\"comment\">// in meters</span>\n"
+"var married = true; <span class=\"comment\">// the contrary would be written "
+"\"false\"</span>\n"
+"<span class=\"comment\">// Scala knows that 'true' is a Boolean value, no "
+"need to repeat it here</span></code>"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/variables/Variables.html:109
+#, no-wrap
+msgid ""
+"<code class=\"code-container\">firstName = \"Martin\"\n"
 "lastName = 'Quinson' <span class=\"comment\"># both single and double quote "
 "work here</span>\n"
 "motto = \"I never finish anyth' (but I keep trying)\" <span "
@@ -1773,47 +1782,47 @@ msgid ""
 "\n"
 "height=1.77 <span class=\"comment\"># in meters</span>\n"
 "married=True <span class=\"comment\"># the contrary would be written "
-"\"False\"</span>"
+"\"False\"</span></code>"
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/variables/Variables.html:108
+#: src/lessons/welcome/variables/Variables.html:116
 msgid "Affectations"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:110
+#: src/lessons/welcome/variables/Variables.html:118
 msgid ""
 "Once your variable is declared, you can <b>affect</b> a new value to it "
 "later in the program. That's really easy:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:111
+#: src/lessons/welcome/variables/Variables.html:119
 #, no-wrap
-msgid "x = 3[!java|c];[/!]"
+msgid "<code class=\"code-container\">x = 3[!java|c];[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:113
+#: src/lessons/welcome/variables/Variables.html:121
 msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/variables/Variables.html:115
+#: src/lessons/welcome/variables/Variables.html:123
 #, no-wrap
 msgid ""
-"x = 3 + 2[!java|c];[/!]\n"
+"<code class=\"code-container\">x = 3 + 2[!java|c];[/!]\n"
 "x = 3 * x[!java|c];[/!]\n"
 "[!java|scala|python]greeting = \"Hello \"+name[!java];[/!] <span "
 "class=\"comment\">[!python]#[/!][!scala|java]//[/!] + is (also) the "
-"operation to concatenate (ie, to join) strings[/!]</span>"
+"operation to concatenate (ie, to join) strings[/!]</span></code>"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:120
+#: src/lessons/welcome/variables/Variables.html:128
 msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
@@ -1821,39 +1830,39 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/variables/Variables.html:125
+#: src/lessons/welcome/variables/Variables.html:133
 msgid "How to do this?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:126
+#: src/lessons/welcome/variables/Variables.html:134
 msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:129
+#: src/lessons/welcome/variables/Variables.html:137
 msgid "Move forward until located over a baggle"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:130
+#: src/lessons/welcome/variables/Variables.html:138
 msgid "Pickup the baggle"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:131
+#: src/lessons/welcome/variables/Variables.html:139
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr ""
 
 #. type: Content of: <p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:132
+#: src/lessons/welcome/variables/Variables.html:140
 msgid "Drop back the baggle"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:135
+#: src/lessons/welcome/variables/Variables.html:143
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -1861,7 +1870,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:139
+#: src/lessons/welcome/variables/Variables.html:147
 msgid ""
 "Create an integer variable before phase 1, initialize it to 0, and each time "
 "you move one step forward, increment its value by one (<code>stepAmount = "
@@ -1871,7 +1880,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:146
+#: src/lessons/welcome/variables/Variables.html:154
 msgid ""
 "If you know Java or other languages, you will probably try to use the "
 "<code>++</code> operator to increment the variable, but it's not allowed in "
@@ -1884,7 +1893,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:154
+#: src/lessons/welcome/variables/Variables.html:162
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward as long as "
@@ -1894,7 +1903,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:161
+#: src/lessons/welcome/variables/Variables.html:169
 msgid "It's your turn now!"
 msgstr ""
 
@@ -2284,11 +2293,6 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25
 msgid "Executing the loop body at least once"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
-msgid "[!python]"
 msgstr ""
 
 #. type: Content of: <p>
@@ -6984,57 +6988,65 @@ msgstr ""
 msgid ""
 "If you think carefully, this can be done in linear time, where you sort a "
 "line at each iteration of the loop.  You may want to check again the <a "
-"href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion "
+"ui-sref=\"exercise({ lessonID: 'sort.basic', exerciseID: "
+"'sort.basic.lessons.sort.basic.insertion.AlgInsertionSort' })\">insertion "
 "sort</a>, of which the Dutch Flag sort is a variation. The main difference "
 "is that you have 3 insertion points, not only one..."
 msgstr ""
 
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
-msgid "I need an hint to start"
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:12
+msgid ""
+"<a href=\"\" data-reveal-id=\"myModal\" ng-click=\"exercise.readTip(1)\">I "
+"need an hint to start</a>"
 msgstr ""
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:12
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
 msgid "Do a traversal over your data, saving 3 indices:"
 msgstr ""
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:19
 msgid ""
 "<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
 "<code>afterBlue</code> is filled with blue elements."
 msgstr ""
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:21
 msgid ""
 "<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
 "after <code>whiteRed</code> is filled with red elements."
 msgstr ""
 
-#. type: Content of: <div><ul><li>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:16
+#. type: Content of: <div><p><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:22
 msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
 "with white elements."
 msgstr ""
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:18
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:24
 msgid ""
 "Note that the unsorted cells are always between <code>afterBlue</code> and "
 "<code>beforeWhite</code>."
 msgstr ""
 
-#. type: Content of: <div>
-#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:20
+#. type: Content of: <div><p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:25
 msgid ""
 "At each step of your traversal, check the color of the cell at "
-"<code>afterBlue</code> and do the required exchanges.  The loop ending "
+"<code>afterBlue</code> and do the required exchanges. The loop ending "
 "condition is when <code>afterBlue</code> becomes larger than "
 "<code>beforeWhite</code>."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:28
+msgid "<a class=\"close-reveal-modal\" aria-label=\"Close\">&#215;</a>"
 msgstr ""
 
 #. type: Content of: <h2>

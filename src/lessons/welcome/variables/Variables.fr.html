@@ -39,30 +39,30 @@ fait</code> n'est pas un identificateur de variable valide.
 [!c|java]
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
 écrira :</p> 
-  <pre>int x;</pre>
+  <pre><code class="code-container">int x;</code></pre>
   <p>Si vous le souhaitez, vous pouvez donner une valeur initiale à votre
 variable en ajoutant le symbole égal (=) suivi d'une valeur après la
 déclaration.</p>
-  <pre>int x=5;</pre>
+<pre><code class="code-container">int x=5;</code></pre>
 [/!] [!python]
   <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire : </p>
-  <pre>x = 5</pre>
+<pre><code class="code-container">x = 5</code></pre>
 [/!] [!scala]
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers avec 42
 en valeur initiale, on écrira :</p> 
-  <pre>var x:Int = 42</pre>
+<pre><code class="code-container">var x:Int = 42</code></pre>
   <p>Dans la plupart des cas, le compilateur est capable de deviner le type de la
 variable d'après la valeur initiale. On peut alors omettre le type de la
 variable:</p>
-  <pre>var x = 42</pre>
+<pre><code class="code-container">var x = 42</code></pre>
   <p>Il est nécessaire de spécifier le type de la variable lorsque l'on
 initialise ses variables avec des valeurs génériques, telles que la valeur
 très particulière <code>null</code>, dont le type se trouve être
 ambigu. Même quand le type est clair, vous pouvez le spécifier si vous le
 souhaitez. Ainsi, pour une variable contenant 5 en valeur initiale, on peut
 écrire: </p>
-  <pre>var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
-var y = 10       <span class="comment">// ou bien je peux l'omettre</span></pre>
+  <pre><code class="code-container">var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
+var y = 10       <span class="comment">// ou bien je peux l'omettre</span></code></pre>
 [/!] [!java|scala|c]
 <p>Comme vous pouvez le voir, les variables sont <b>typées</b> en
 [!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une
@@ -99,10 +99,8 @@ contraignant à première vue, mais ce genre de restriction permet au
 compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine
 manière, il est plus facile d'écrire du Python, mais le typage de ces
 langages empêche certaines erreurs de se glisser dans les programmes.</p>
-[/!]
-  
-
-<p class="scala">Si vous savez que votre «variable» ne va jamais changer de valeur (par
+[/!] [!scala]
+<p>Si vous savez que votre «variable» ne va jamais changer de valeur (par
 exemple parce qu'il s'agit de la taille de l'écran ou une autre constante du
 genre), alors vous devriez en faire une <b>valeur</b> plutôt qu'une
 variable.
@@ -112,42 +110,44 @@ Le compilateur pourra alors faire plus de vérifications pour aider les
 étourdis cherchant à modifier les constantes. Plus intéressant, le
 compilateur parvient également à produire du code plus rapide dans certains
 cas.</p>
+[/!]
 
 <p>C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
 
-<pre class="c">char* nom = "Martin Quinson";
+[!c]
+<pre><code class="code-container">char* nom = "Martin Quinson";
 double taille=1.77; <span class="comment">// en mètres</span>
-boolean marie=1; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait 0</span></pre>
-
-
-<pre class="java">String nom = "Martin Quinson";
+boolean marie=1; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait 0</span></code></pre>
+[/!] [!java]
+<pre><code class="code-container">String nom = "Martin Quinson";
 double taille=1.77; <span class="comment">// en mètres</span>
-boolean marie=true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span></pre>
-
-<pre class="scala">val nom:String = "Martin Quinson"; <span class="comment">// impossible de le modifier (c'est une valeur)</span>
+boolean marie=true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span></code></pre>
+[/!] [!scala]
+<pre><code class="code-container">val nom:String = "Martin Quinson"; <span class="comment">// impossible de le modifier (c'est une valeur)</span>
 var taille: Double = 1.77; <span class="comment">// en metre</span>
 var marie = true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span>
-<span class="comment">// Scala sait que 'true' est une valeur de type Boolean, pas besoin de le répéter</span></pre>
-
-<pre class="python">prenom = "Martin"
+<span class="comment">// Scala sait que 'true' est une valeur de type Boolean, pas besoin de le répéter</span></code></pre>
+[/!] [!python]
+<pre><code class="code-container">prenom = "Martin"
 nom = 'Quinson' <span class="comment"># les simples et les doubles quotes fonctionnent ici</span>
 devise = "Je ne finis jam' (mais je continue d'essayer)" <span class="comment"># avoir des quotes simples dans des doubles quotes fonctionne</span> 
 taille=1.77 <span class="comment"># en mètre</span>
-marie=True <span class="comment"># Signifie 'vrai'; le contraire (faux) serait marqué 'False'</span></pre>
+marie=True <span class="comment"># Signifie 'vrai'; le contraire (faux) serait marqué 'False'</span></code></pre>
+[/!]
 
 <h3>Affectations</h3>
 
 <p>Une fois que votre variable est déclarée, vous pouvez y <i>affecter</i> une
 nouvelle valeur plus tard dans votre programme. C'est vraiment très simple :</p> 
-<pre>x = 3[!java|c];[/!]</pre>
+<pre><code class="code-container">x = 3[!java|c];[/!]</code></pre>
 
 <p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
 contenir des constantes, des variables et des opérations :</p>
 
-<pre>x = 3 + 2[!java|c];[/!]
+<pre><code class="code-container">x = 3 + 2[!java|c];[/!]
 x = 3 * x[!java|c];[/!]
-[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)[/!]</span></pre> 
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)[/!]</span></code></pre> 
 
 <h3>Objectif de cet exercice</h3>
 Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif

@@ -8,13 +8,13 @@ something like <i>if it's raining, take an umbrella</i>.
 
 <p>The [!thelang] syntax is the following:</p>
 
-<pre>[!java|scala|c]if (<b>condition</b>) {
+<pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>
 }[/!][!python]if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]
-<b>whatToDoAnyway()[!java|c];[/!]</b></pre>
+<b>whatToDoAnyway()[!java|c];[/!]</b></code></pre>
 
 <p>If the condition is true, the code of the next block will be executed and then it will continue with the rest of the code.
 If the condition is false, the next block is ignored and the execution continues after it.
@@ -40,21 +40,21 @@ code presentation standards.[/!]
 It is very easy to get lost in your own code if it's not properly indented, so you want to clean it up so that 
 working on your code remains pleasant and productive.</p>
 
-
-<p class="python">All indentations of a given block must be consistent, and it is not 
+[!python]
+<p>All indentations of a given block must be consistent, and it is not 
 possible to cut a block. The two following codes are incorrect and will raise
 errors.</p>
-<pre class="python">if <b>condition</b>:
+<pre><code class="code-container">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># one space too much </span>
 <b>whatToDoAnyway()</b>
-</pre>
-<pre class="python">if <b>condition</b>:
+</code></pre>
+<pre><code class="code-container">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 <b>whatToDoAnyway()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># this block is not hanging to a condition line</span>
-</pre>
-
+</code></pre>
+[/!]
 <p>The condition must be a <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> expression. 
 The inner block of code will get executed if the expression is evaluated to  <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> 
 and it will be ignored if it is <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
@@ -94,18 +94,18 @@ boolean operations:</p>
 <p>Last, it is possible to specify what to do when the condition is false
 using the following syntax. In this case, the instruction <code>whatToDoIfItsFalse</code>
 will be executed only if the condition is false.</p>
- <pre>[!java|scala|c]if (<b>condition</b>) {
+ <pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
 }[/!][!python]if (<b>condition</b>):
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</pre>
-
-<p class="Python">Don't forget the colon (:) after the else, it is indicating 
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</code></pre>
+[!python]
+<p>Don't forget the colon (:) after the else, it is indicating 
 that a new block is beginning.</p>
-
+[/!]
 <h3>Exercise goal</h3><a name="Objectives"/>
 
 If the buggle is facing a wall, you must move one step back. If not,
@@ -117,4 +117,4 @@ understands.
 each of them being in a specific initial condition. The same code will be
 executed for each of them.</p>
 
-<p>When your program works, move forward to the next exercise, that is hidden in a sub-tree of the selection window.</p>
+<p>When your program works, move forward to the next exercise.</p>
