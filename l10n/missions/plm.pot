@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-28 14:52+0200\n"
+"POT-Creation-Date: 2015-08-28 15:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1034,7 +1034,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:62 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/instructions/Instructions.html:62 src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
@@ -1474,12 +1474,12 @@ msgid ""
 "biscuits that buggles can carry from one point to another. For that, they "
 "have to use specific methods such as <code>isOverBaggle(), "
 "isCarryingBaggle(), pickupBaggle()</code> or "
-"<code>dropBaggle()</code>. Check their documentation in \"Help/About this "
-"world\" for more details."
+"<code>dropBaggle()</code>. Click on the button <i>API</i> to check their "
+"documentation for more details."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:11
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
 msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before if you want)."

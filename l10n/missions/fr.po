@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-08-28 14:52+0200\n"
-"PO-Revision-Date: 2015-08-28 14:53+0100\n"
+"POT-Creation-Date: 2015-08-28 15:07+0200\n"
+"PO-Revision-Date: 2015-08-28 16:14+0100\n"
 "Last-Translator: Matthieu Nicolas <nicolasmatthieu57@gmail.com>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1327,7 +1327,7 @@ msgstr ""
 #: src/lessons/welcome/instructions/Instructions.html:62
 #: src/lessons/welcome/conditions/Conditions.html:109
 #: src/lessons/welcome/loopwhile/LoopWhile.html:35
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:9
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
 #: src/lessons/welcome/variables/Variables.html:119
 #: src/lessons/welcome/loopfor/LoopFor.html:82
 #: src/lessons/welcome/methods/basics/Methods.html:96
@@ -1980,16 +1980,16 @@ msgid ""
 "biscuits that buggles can carry from one point to another. For that, they "
 "have to use specific methods such as <code>isOverBaggle(), "
 "isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
-"Check their documentation in \"Help/About this world\" for more details."
+"Click on the button <i>API</i> to check their documentation for more details."
 msgstr ""
 "Le monde des buggles contient parfois des petits biscuits ronds que les "
 "buggles peuvent déplacer d'un endroit à un autre. Pour cela, elles peuvent "
 "utiliser des fonctions spécifiques : <code>estSurBiscuit(), porteBiscuit(), "
-"prendBiscuit()<code> et <code>poseBiscuit()</code>. Tous les détails se "
-"trouvent dans la documentation accessible depuis «Aide/À propos de ce monde»."
+"prendBiscuit()</code> et <code>poseBiscuit()</code>. Tous les détails se "
+"trouvent dans la documentation accessible en cliquant sur <i>API</i>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:11
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
 msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before if you want)."
