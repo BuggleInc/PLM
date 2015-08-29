@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-28 17:22+0200\n"
+"POT-Creation-Date: 2015-08-29 18:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4389,21 +4389,21 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:16
 #, no-wrap
 msgid ""
-"if (<b>condition</b>) {\n"
+"<code class=\"code-container\">if (<b>condition</b>) {\n"
 "    <b>whatToDoIfTheConditionIsTrue();</b>\n"
 "} else {\n"
 "    <b>whatToDoElse();</b>\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:21
 #, no-wrap
 msgid ""
-"if (<b>condition</b>) \n"
+"<code class=\"code-container\">if (<b>condition</b>) \n"
 "    <b>whatToDoIfTheConditionIsTrue();</b>\n"
 "else\n"
-"    <b>whatToDoElse();</b>"
+"    <b>whatToDoElse();</b></code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4418,12 +4418,12 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:28
 #, no-wrap
 msgid ""
-"if (isOverBaggle())    \n"
+"<code class=\"code-container\">if (isOverBaggle())    \n"
 "     if (x == 5)\n"
 "          left();\n"
 "else\n"
 "     right();\n"
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"[!c]stepForward();[/!][!java|scala]forward();[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4440,12 +4440,12 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:40
 #, no-wrap
 msgid ""
-"if (isOverBaggle())    \n"
+"<code class=\"code-container\">if (isOverBaggle())    \n"
 "        if (x == 5)\n"
 "            left();\n"
 "        else\n"
 "            right();\n"
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"[!c]stepForward();[/!][!java|scala]forward();[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4465,8 +4465,8 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:55
 #, no-wrap
 msgid ""
-"if (isOverBaggle()) if (x == 5) left(); else right(); "
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"<code class=\"code-container\">if (isOverBaggle()) if (x == 5) left(); else "
+"right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4491,9 +4491,9 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:65
 #, no-wrap
 msgid ""
-"if it's raining, take an umbrella;\n"
+"<code class=\"code-container\">if it's raining, take an umbrella;\n"
 "if not, and if it's a hot day, take a bottle of water;\n"
-"if not and if it's July 4th, take an American flag"
+"if not and if it's July 4th, take an American flag</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4509,7 +4509,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:74
 #, no-wrap
 msgid ""
-"[!scala|c|java]if (rainy())\n"
+"<code class=\"code-container\">[!scala|c|java]if (rainy())\n"
 "    takeUmbrella();\n"
 "if (hot())\n"
 "    takeWater();\n"
@@ -4519,7 +4519,7 @@ msgid ""
 "if hot():\n"
 "    takeWater()\n"
 "if todayIsJuly4th():\n"
-"    takeFlag()[/!]"
+"    takeFlag()[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4535,7 +4535,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:92
 #, no-wrap
 msgid ""
-"[!java|scala|c]if (rainy()) {\n"
+"<code class=\"code-container\">[!java|scala|c]if (rainy()) {\n"
 "    takeUmbrella();\n"
 "} else {\n"
 "    if (hotDay()) {\n"
@@ -4552,7 +4552,7 @@ msgid ""
 "        takeWater()\n"
 "    else:\n"
 "        if todayIsJuly4th():\n"
-"            takeFlag()[/!]"
+"            takeFlag()[/!]</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4570,7 +4570,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:119
 #, no-wrap
 msgid ""
-"[!c|java|scala]if (rainy()) { \n"
+"<code class=\"code-container\">[!c|java|scala]if (rainy()) { \n"
 "    takeUmbrella();\n"
 "} else if (hotDay()) {\n"
 "    takeWater();\n"
@@ -4581,7 +4581,7 @@ msgid ""
 "elif hotDay():\n"
 "    takeWater()\n"
 "elif todayIsJuly4th():\n"
-"    takeFlag()[/!]"
+"    takeFlag()[/!]</code>"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -4888,8 +4888,8 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:16
 #, no-wrap
 msgid ""
-"if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == \"R\"[/!]) "
-"{\n"
+"<code class=\"code-container\">if ([!java|c]getIndication() == "
+"'R'[/!][!scala]readMessage() == \"R\"[/!]) {\n"
 "  right();\n"
 "  [!c]stepForward()[/!][!java|scala]forward()[/!];\n"
 "} else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == "
@@ -4904,6 +4904,7 @@ msgid ""
 "} else {\n"
 "  finished = [!c]1[/!][!java|scala]true[/!];\n"
 "}\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4926,9 +4927,10 @@ msgid "[/!] [!java|c]"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR2.html:44
+#: src/lessons/welcome/bdr/BDR2.html:43
 #, no-wrap
 msgid ""
+"<code class=\"code-container\">\n"
 "switch (<b>expression</b>) {\n"
 "  case <b>firstValue</b>: \n"
 "    <b>whatToDoIfExpressionEqualsFirstValue();</b>\n"
@@ -4942,7 +4944,7 @@ msgid ""
 "    /* as much similar cases as you want */\n"
 "  default: \n"
 "    <b>whatToDoIfExpressionDoesNotEqualsAnySeenValues();</b>\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4965,7 +4967,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:67
 #, no-wrap
 msgid ""
-"switch (getIndication()) {\n"
+"<code class=\"code-container\">switch (getIndication()) {\n"
 "  case 'R':\n"
 "    right(); \n"
 "    [!c]stepForward()[/!][!java]forward()[/!]; \n"
@@ -4980,19 +4982,20 @@ msgid ""
 "    break;\n"
 "  default: \n"
 "    return;\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR2.html:85
 #, no-wrap
 msgid ""
-"<i>expression</i> <b>match</b> {\n"
+"<code class=\"code-container\"><i>expression</i> <b>match</b> {\n"
 "  <b>case</b> <i>possible value</i> <b>=></b> instructions\n"
 "  <b>case</b> <i>other value</i>     <b>=></b> other instructions\n"
 "  <b>case</b> <i>another value</i> <b>=></b> yet another instructions\n"
 "  <b>case _                 =></b> default instructions\n"
 "}\n"
+"</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5010,11 +5013,11 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:97
 #, no-wrap
 msgid ""
-"name match {\n"
+"<code class=\"code-container\">name match {\n"
 "  case \"Martin\" => println(\"Hello Martin, how are you?\")\n"
 "  case \"Gerald\" => println(\"Hey Gerald! How are you doing?\")\n"
 "  case _            => println(\"Welcome stranger.\")\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5028,12 +5031,12 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:105
 #, no-wrap
 msgid ""
-"name match {\n"
+"<code class=\"code-container\">name match {\n"
 "  case \"Martin\" | \"Gerald\" => println(\"Hello \"+name+\", how are "
 "you?\"); openTheDoor()\n"
 "  case _                            => println(\"Hello stranger. Please do "
 "not pass.\"); lockTheDoor()\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5048,12 +5051,12 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:112
 #, no-wrap
 msgid ""
-"age match {\n"
+"<code class=\"code-container\">age match {\n"
 "  case i if i&lt;10 => println(\"Hey kid!\")\n"
 "  case i if i&lt;20 => println(\"Hey dude!\")\n"
 "  case i if i&lt;30 => println(\"Hello young man\")\n"
 "  case _           => println(\"Hello Sir\")\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5073,12 +5076,12 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:122
 #, no-wrap
 msgid ""
-"(x,y) match {\n"
+"<code class=\"code-container\">(x,y) match {\n"
 " case (0,0) => println(\"that's the origin\")\n"
 " case (_,0) => println(\"On the ordinate\")\n"
 " case (0,_) => println(\"On the abscissa\")\n"
 " case (_,_) => println(\"Some random point\")\n"
-"}"
+"}</code>"
 msgstr ""
 
 #. type: Content of: <p>

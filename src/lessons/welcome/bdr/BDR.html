@@ -13,36 +13,36 @@ There is one detail we omitted about the conditional syntax: if a branch
 contains only one instruction, then the curly braces become optional. So,
 the two chunk of code are equivalent:</p>
 
- <pre>if (<b>condition</b>) {
+ <pre><code class="code-container">if (<b>condition</b>) {
     <b>whatToDoIfTheConditionIsTrue();</b>
 } else {
     <b>whatToDoElse();</b>
-}</pre>
- <pre>if (<b>condition</b>) 
+}</code></pre>
+ <pre><code class="code-container">if (<b>condition</b>) 
     <b>whatToDoIfTheConditionIsTrue();</b>
 else
-    <b>whatToDoElse();</b></pre>
+    <b>whatToDoElse();</b></code></pre>
 
 <p>Actually, you can do the same for loops body that are reduced to one instruction only. 
 But beware, this becomes dangerous if you chain the <tt>if</tt> instructions like this: </p>
-<pre>if (isOverBaggle())    
+<pre><code class="code-container">if (isOverBaggle())    
      if (x == 5)
           left();
 else
      right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+[!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
 <p>In fact, it does not turn right when there is no baggle on the ground AND x
 equals 5, but when the buggle found a baggle on the ground and x equals
 anything but 5. Putting this otherwise, the buggle understands the previous
 code as if it were written the following way (note that the <tt>else</tt>
 were moved to the right):</p>
-<pre>if (isOverBaggle())    
+<pre><code class="code-container">if (isOverBaggle())    
         if (x == 5)
             left();
         else
             right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+[!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
 <p>The first lesson of this is that the indentation is very important to help
 humans understanding, even if it does not change the actual meaning of
@@ -52,7 +52,7 @@ really want to indent it correctly. That's for example the case if you want
 a professor to read it (to grade it or to answer a question about it), or if
 you want to reuse your code later, or even if you need to debug your code yourself.</p> 
 
-<pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+<pre><code class="code-container">if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
 <p>The second lesson is that a <tt>else</tt> branch always connects to the
 closest <tt>if</tt>. This may be a bit troublesome in some case, and it may
@@ -62,16 +62,16 @@ be easier to add more braces than strictly needed to remove any ambiguity.</p>
 <h3>Chaining conditionals</h3>
 
 <p>You sometimes want to ask the buggle something similar to:</p> 
-<pre>if it's raining, take an umbrella;
+<pre><code class="code-container">if it's raining, take an umbrella;
 if not, and if it's a hot day, take a bottle of water;
-if not and if it's July 4th, take an American flag</pre>
+if not and if it's July 4th, take an American flag</code></pre>
 
 <p>The trap is that we want at most one of these actions to be taken. That is
 to say, if it's raining a very hot July 4th, we don't want the buggle to get
 outside with an umbrella, some water and a flag, but simply with an
 umbrella. The following code is thus WRONG.</p>
 
-<pre>[!scala|c|java]if (rainy())
+<pre><code class="code-container">[!scala|c|java]if (rainy())
     takeUmbrella();
 if (hot())
     takeWater();
@@ -81,7 +81,7 @@ if (todayIsJuly4th())
 if hot():
     takeWater()
 if todayIsJuly4th():
-    takeFlag()[/!]</pre>
+    takeFlag()[/!]</code></pre>
 
 
 <p>Indeed, since the conditions are evaluated one after the other, there is a
@@ -89,7 +89,7 @@ risk that you go to the July 4th march on a rainy day. Instead, we should
 use something like this to ensure that once we found a true condition, we won't
 evaluate the next ones.</p>
 
-<pre>[!java|scala|c]if (rainy()) {
+<pre><code class="code-container">[!java|scala|c]if (rainy()) {
     takeUmbrella();
 } else {
     if (hotDay()) {
@@ -106,7 +106,7 @@ else:
         takeWater()
     else:
         if todayIsJuly4th():
-            takeFlag()[/!]</pre>
+            takeFlag()[/!]</code></pre>
 
 
 <p>Unfortunately, such a cascade of conditionals is quite difficult to read. It is better to 
@@ -116,7 +116,7 @@ even introduce a specific construct for these <tt>else if</tt>, but not [!thelan
 explicitly these "else if" branches.[/!]
 </p>
 
-<pre>[!c|java|scala]if (rainy()) { 
+<pre><code class="code-container">[!c|java|scala]if (rainy()) { 
     takeUmbrella();
 } else if (hotDay()) {
     takeWater();
@@ -127,7 +127,7 @@ explicitly these "else if" branches.[/!]
 elif hotDay():
     takeWater()
 elif todayIsJuly4th():
-    takeFlag()[/!]</pre>
+    takeFlag()[/!]</code></pre>
 
 <h3>Graffiti in the Buggle World</h3>
 
