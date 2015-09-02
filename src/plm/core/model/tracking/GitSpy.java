@@ -184,9 +184,11 @@ public class GitSpy implements ProgressSpyListener {
 		// Retrieve appropriate parameters regarding the current exercise
 		logmsg.put("course", game.getCourseID());
 		logmsg.put("exo", exoFrom.getId());
-		logmsg.put("lang", lastResult.language.toString());
 
 		if(lastResult != null) {
+			if(lastResult.language != null) {
+				logmsg.put("lang", lastResult.language.toString());
+			}
 			if (lastResult.outcome != null) {
 				switch (lastResult.outcome) {
 				case COMPILE:  logmsg.put("outcome", "compile");  break;
@@ -201,11 +203,11 @@ public class GitSpy implements ProgressSpyListener {
 				logmsg.put("totaltests", lastResult.totalTests + "");
 			}
 	
-			if (exoFrom.lastResult.feedbackDifficulty != null)
+			if (lastResult.feedbackDifficulty != null)
 				logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
-			if (exoFrom.lastResult.feedbackInterest != null)
+			if (lastResult.feedbackInterest != null)
 				logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
-			if (exoFrom.lastResult.feedback != null)
+			if (lastResult.feedback != null)
 				logmsg.put("exoComment", exoFrom.lastResult.feedback);
 		}
 		if (exoTo != null)
@@ -452,7 +454,7 @@ public class GitSpy implements ProgressSpyListener {
 		msg.put("accuracy", accuracy);
 		msg.put("help", help);
 		msg.put("comment", comment);
-		msg.put("exoID", lastExo);
+		msg.put("exoID", lastExo.getId());
 		String commitMsg = writeCommitMessage(lastExo, null, "commonErrorFeedback", msg);
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
 
