@@ -48,6 +48,7 @@ import plm.core.model.Game;
 public class GitUtils {
 	
 	private Git git;
+	private File repoDir;
 	private Game game;
 	
 	private String repoName = Game.getProperty("plm.git.server.username");
@@ -65,6 +66,10 @@ public class GitUtils {
 	
 	public GitUtils(Game game) {
 		this.game = game;
+	}
+	
+	public File getRepoDir() {
+		return repoDir;
 	}
 	
 	public void initLocalRepository(File repoDirectory) throws GitAPIException, IOException {
@@ -339,6 +344,7 @@ public class GitUtils {
 		if(git != null) {
 			git.close();
 		}
+		this.repoDir = repoDir;
 		git = Git.open(repoDir);
 	}
 
