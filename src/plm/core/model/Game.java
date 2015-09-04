@@ -387,6 +387,10 @@ public class Game implements IWorldView {
 			t.join();
 	}
 
+	public Map<String, Lesson> getMapLessons() {
+		return lessons;
+	}
+	
 	public Collection<Lesson> getLessons() {
 		return this.lessons.values();
 	}
