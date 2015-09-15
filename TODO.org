@@ -43,7 +43,7 @@ the existing exercises from the upstream authors.
 
 At least, that's the initial plan but in practice, I often change the
 exercises to integrate them in the gameplay of having buggles and also
-because I love changing the stuff that I integrate...
+because I love adapting the stuff that I integrate...
 
 - Karel the robot (it may be sufficient to build a loader of karel
   worlds within the buggle world)
@@ -54,9 +54,11 @@ because I love changing the stuff that I integrate...
 - Another classical recursive game:
   - http://www.cut-the-knot.org/recurrence/flavius.shtml
 ** Programmer games
-They may require a King of Hill mode, which will soon be easier to do
-(after the move to Web techno)
+They may require a King of Hill mode, but that's also doable.
 
+- Robozzle. This is very close to the Lightbot that we had before
+  moving to the web, but needs some specific improvements:
+  https://github.com/BuggleInc/PLM/issues/3
 - CodeRuler (strategy)
 - CodeRobot (fights between robots)
 - CodeRally (racing cars)
@@ -65,11 +67,9 @@ They may require a King of Hill mode, which will soon be easier to do
 - MARS (assembly) http://courses.missouristate.edu/kenvollmar/mars/
 - MMIX (assembly by Knuth) http://mmix.cs.hm.edu/index.html
 - Corewars
-
+  
 * Possible improvement to the graphical engine
-There is a bunch of ideas in this category, but these tasks are a bit
-post-ponned until after the ongoing move from Java Swing to Web stuff.
-- Use the same shortcuts than eclipse
+- Use the same shortcuts than eclipse (when possible)
 - Provide autocompletion on keywords and bindings
 - have the editor follow the execution point during stepped execution 
 - represent graphically the textual diff between the expected world
@@ -82,9 +82,6 @@ post-ponned until after the ongoing move from Java Swing to Web stuff.
   of values, but I'm not sure of how to do that. See
   https://github.com/oster/PLM/issues/379
 
-* Annoying small things.
-- In lightbot, the last instruction does not refresh the world when executed.
-- we should try to remove the *sys-package-mgr* processing messages when jython is loading
 * Various ideas
 ** Essential Math for Games Programmers
 - http://www.essentialmath.com/tutorial.htm
