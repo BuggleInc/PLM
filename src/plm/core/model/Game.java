@@ -173,7 +173,7 @@ public class Game implements IWorldView {
 	private Locale locale;
 	public I18n i18n;
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
-		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils(), trackUser, new Properties());
+		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils("dummy-username"), trackUser, new Properties());
 	}
 	
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser, Properties localProperties) {

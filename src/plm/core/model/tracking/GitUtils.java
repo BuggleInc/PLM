@@ -51,13 +51,13 @@ public class GitUtils {
 	private File repoDir;
 	private Game game;
 	
-	private String repoName = Game.getProperty("plm.git.server.username");
-	private String repoPassword = Game.getProperty("plm.git.server.password");
+	private String username = Game.getProperty("plm.git.server.username");
+	private String password = Game.getProperty("plm.git.server.password");
 
 	private static boolean currentlyPushing = false;
 	
-	public GitUtils() {
-		
+	public GitUtils(String username) {
+		this.username = username;
 	}
 	
 	public void setGame(Game g) {
@@ -246,7 +246,7 @@ public class GitUtils {
 		}
 		
 		// credentials
-		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
+		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(username, password);
 
 		// push
 		if(pushChanges(userBranchHash, progress, cp)) {
@@ -383,8 +383,8 @@ public class GitUtils {
 	}
 
 	public void dispose() {
-		repoName = null;
-		repoPassword = null;
+		username = null;
+		password = null;
 		git.close();
 	}
 	
