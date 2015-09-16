@@ -31,6 +31,10 @@ That being said, I have no strong feelings about the parts of
 informatics that should be taught in the PLM. I seriously think about
 adding a lesson on HPC programming in C with MPI, for example, even if
 that's *very* different from the existing content.
+** Improvements to the existing pedagogical content
+- There is some bug about exercises that should be slightly improved,
+  such as. They are all visible from that list:
+  https://github.com/BuggleInc/PLM/labels/Exercise
 ** Additional exercises
 There is naturally a huge body of things that we could add to the
 PLM. Take one book such as the Cormen or the Sedgewik and just pick
