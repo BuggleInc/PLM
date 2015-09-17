@@ -1,23 +1,26 @@
-This file presents some of the projects that we would like to tackle
-with the PLM. The current file is more about lessons that are not
-written yet. I don't feel like opening an issue for most of these
-things to not overload the issue tracker.
+You want to help the PLM project but don't know where to start? This
+file is for you! It contains many ideas that would improve the PLM so
+you just have to select one of them, contact us and here we go! You
+can contribute to the project!
 
-Other source of informations include:
+First of all, you want to get some context about the PLM. For that,
+check that presentation of Dec. 2014. It presents the project and
+gives a roadmap of future developments.
+http://webloria.loria.fr/~quinson/blog/2014/1204/PLM.pdf (in French, sorry)
 
-- http://webloria.loria.fr/~quinson/blog/2014/1204/PLM.pdf 
-  A presentation about the current state of the PLM (as of Dec. 2014),
-  and a roadmap of the future. That's in French, sorry.
+Then of course, you should have a look at the known bugs and
+issues. Any help to solve them is very welcome.
+https://github.com/oster/PLM/issues  and
+https://github.com/oster/webPLM/issues.
+We have 2 bug trackers because the project is modular :)
   
-- https://github.com/oster/PLM/issues 
-  The known bugs about the PLM. Some of them are hard issues about the
-  PLM core, but some others are smaller possible improvement of the
-  existing universes and exercises. 
-  
-In most existing lessons, some extension ideas are given in the
-"help"/"About this lesson" menu. You can find these files in the
+Third idea, some extension ideas are given in the "help"/"About this
+lesson" menu of most existing lessons. You can find these files in the
 archive by searching files named "Main.html" in the differing
-subdirectories. They are even translated to French, if that helps.
+subdirectories. They are even translated to other languages, if that helps.
+
+Finally, some less baked ideas are listed directly in this file,
+below. Do not hesitate to ask if you have any question.
 
 * Lessons and universes
 The important here is that I try to build lessons on important
