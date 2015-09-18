@@ -8,9 +8,7 @@ import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.turtles.operations.AddCircle;
-import plm.universe.turtles.operations.AddLine;
-import plm.universe.turtles.operations.MoveTurtle;
+import plm.universe.turtles.operations.*;
 
 public class Turtle extends Entity {
 
@@ -288,6 +286,7 @@ public class Turtle extends Entity {
 	}
 
 	protected void setHeadingRadian(double heading) {
+		addOperation(new RotateTurtle(this, toAngularUnit(this.heading), toAngularUnit(heading)));
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
 		if (world != null)
 			world.notifyWorldUpdatesListeners();
