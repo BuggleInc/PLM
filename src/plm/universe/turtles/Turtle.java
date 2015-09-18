@@ -8,6 +8,9 @@ import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
 import plm.universe.World;
+import plm.universe.turtles.operations.AddCircle;
+import plm.universe.turtles.operations.AddLine;
+import plm.universe.turtles.operations.MoveTurtle;
 
 public class Turtle extends Entity {
 
@@ -117,9 +120,20 @@ public class Turtle extends Entity {
 			}
 		}
 	}
+	
+	public void line(double x1, double y1, double x2, double y2, Color color) {
+		if (penDown) {
+			addOperation(new AddLine(this, x1, y1, x2, y2, color));
+			getWorld().addLine(x1, y1, x2, y2, color);
+		}
+	}
+	
 	public void circle(double radius) {
-		if (penDown)
+		if (penDown) {
+			addOperation(new AddCircle(this, x, y, radius, color));
 			getWorld().addCircle(x, y, radius, color);
+			stepUI();
+		}
 	}
 
 	public void moveTo(double newX, double newY) {
@@ -142,9 +156,7 @@ public class Turtle extends Entity {
 				final double xc = w;
 				final double yc = y + m * (w - x);
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(0., yc);
 				nX = nX - w;
 			}
@@ -156,9 +168,7 @@ public class Turtle extends Entity {
 				final double xc = (0 - this.y) / m + this.x;
 				final double yc = 0;
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(xc, h);
 				nY = nY + h;
 			}
@@ -170,9 +180,7 @@ public class Turtle extends Entity {
 				final double xc = 0;
 				final double yc = y + m * (0 - x);
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(w, yc);
 				nX = nX + w;
 			}
@@ -184,9 +192,7 @@ public class Turtle extends Entity {
 				final double xc = (h - this.y) / m + this.x;
 				final double yc = h;
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(xc, 0.);
 				nY = nY - h;
 			}
@@ -194,9 +200,8 @@ public class Turtle extends Entity {
 			}	
 		} 
 
-		if (this.penDown) {
-			this.getWorld().addLine(x, y, nX, nY, color);
-		}			
+		line(x, y, nX, nY, color);
+		addOperation(new MoveTurtle(this, x, y, nX, nY));
 		this.x = nX;
 		this.y = nY;		
 
