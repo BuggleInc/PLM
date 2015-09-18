@@ -243,10 +243,12 @@ public class Turtle extends Entity {
 	}
 
 	public void hide() {
+		addOperation(new ChangeTurtleVisible(this, this.visible, false));
 		this.visible = false;
 		stepUI();
 	}
 	public void show() {
+		addOperation(new ChangeTurtleVisible(this, this.visible, true));
 		this.visible = true;
 		stepUI();
 	}
