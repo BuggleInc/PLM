@@ -318,6 +318,7 @@ public class Turtle extends Entity {
 	}
 
 	public void setX(double x) {
+		addOperation(new MoveTurtle(this, this.x, y, x, y));
 		this.x = x;
 		stepUI();
 	}
@@ -327,11 +328,13 @@ public class Turtle extends Entity {
 	}
 
 	public void setY(double y) {
+		addOperation(new MoveTurtle(this, x, this.y, x, y));
 		this.y = y;
 		stepUI();
 	}
 
 	public void setPos(double x, double y) {
+		addOperation(new MoveTurtle(this, this.x, this.y, x, y));
 		this.x = x;
 		this.y = y;
 		stepUI();
