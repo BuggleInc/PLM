@@ -19,10 +19,7 @@ public class SizeHint implements ImageObserver {
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
-		if (msg != null)
-			text = msg;
-		else 
-			text = String.format("%.0f", Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
+		text = msg;
 	}
 	public void draw(Graphics2D g2) {
 		g2.setColor(color);

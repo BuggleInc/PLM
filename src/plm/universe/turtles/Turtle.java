@@ -381,11 +381,14 @@ public class Turtle extends Entity {
 		setPos((double) x, (double) y);
 	}
 
-	public void addSizeHint(int x1, int y1, int x2, int y2,String txt){
-		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,txt);
+	public void addSizeHint(int x1, int y1, int x2, int y2,String text){
+		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 	public void addSizeHint(int x1, int y1, int x2, int y2){
-		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,null);
+		String text = String.format("%.0f", Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
+		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 
 	@Override
