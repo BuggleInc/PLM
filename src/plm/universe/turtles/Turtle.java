@@ -256,7 +256,9 @@ public class Turtle extends Entity {
 		return this.visible;
 	}
 	public void clear() {
+		addOperation(new ClearCanvas(this));
 		getWorld().clear();
+		stepUI();
 	}
 
 	private double fromAngularUnit(double angle) {
