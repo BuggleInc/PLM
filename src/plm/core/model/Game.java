@@ -111,7 +111,7 @@ public class Game implements IWorldView {
 	public static final String [] lessonsName = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.maze", "lessons.turmites", "lessons.turtleart",
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
-		"lessons.recursion.cons", "lessons.recursion.hanoi",
+		"lessons.recursion.cons", "lessons.recursion.logo", "lessons.recursion.hanoi",
 		"lessons.bat.string1"
 	};
 	
