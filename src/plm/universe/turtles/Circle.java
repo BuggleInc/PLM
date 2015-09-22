@@ -6,8 +6,9 @@ import java.awt.Graphics2D;
 import org.xnap.commons.i18n.I18n;
 
 public class Circle implements Shape {
-	double x,y,radius;
-	Color color;
+	public double x,y,radius;
+	public Color color;
+
 	public Circle(double x,double y, double radius, Color color) {
 		this.x = x;
 		this.y = y;

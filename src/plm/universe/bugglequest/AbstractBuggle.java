@@ -136,10 +136,12 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setBodyColor(Color c) {
 		if (c != null) {
+			addOperation(new ChangeBuggleBodyColor(this, this.bodyColor, c));
 			this.bodyColor = c;
 			world.notifyWorldUpdatesListeners();
 			setChanged();
 			notifyObservers(BUGGLE_COLOR);
+			stepUI();
 		}
 	}
 

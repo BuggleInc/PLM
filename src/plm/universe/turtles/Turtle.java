@@ -8,6 +8,7 @@ import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
 import plm.universe.World;
+import plm.universe.turtles.operations.*;
 
 public class Turtle extends Entity {
 
@@ -117,9 +118,20 @@ public class Turtle extends Entity {
 			}
 		}
 	}
+	
+	public void line(double x1, double y1, double x2, double y2, Color color) {
+		if (penDown) {
+			addOperation(new AddLine(this, x1, y1, x2, y2, color));
+			getWorld().addLine(x1, y1, x2, y2, color);
+		}
+	}
+	
 	public void circle(double radius) {
-		if (penDown)
+		if (penDown) {
+			addOperation(new AddCircle(this, x, y, radius, color));
 			getWorld().addCircle(x, y, radius, color);
+			stepUI();
+		}
 	}
 
 	public void moveTo(double newX, double newY) {
@@ -142,9 +154,7 @@ public class Turtle extends Entity {
 				final double xc = w;
 				final double yc = y + m * (w - x);
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(0., yc);
 				nX = nX - w;
 			}
@@ -156,9 +166,7 @@ public class Turtle extends Entity {
 				final double xc = (0 - this.y) / m + this.x;
 				final double yc = 0;
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(xc, h);
 				nY = nY + h;
 			}
@@ -170,9 +178,7 @@ public class Turtle extends Entity {
 				final double xc = 0;
 				final double yc = y + m * (0 - x);
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(w, yc);
 				nX = nX + w;
 			}
@@ -184,9 +190,7 @@ public class Turtle extends Entity {
 				final double xc = (h - this.y) / m + this.x;
 				final double yc = h;
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(xc, 0.);
 				nY = nY - h;
 			}
@@ -194,9 +198,8 @@ public class Turtle extends Entity {
 			}	
 		} 
 
-		if (this.penDown) {
-			this.getWorld().addLine(x, y, nX, nY, color);
-		}			
+		line(x, y, nX, nY, color);
+		addOperation(new MoveTurtle(this, x, y, nX, nY));
 		this.x = nX;
 		this.y = nY;		
 
@@ -240,10 +243,12 @@ public class Turtle extends Entity {
 	}
 
 	public void hide() {
+		addOperation(new ChangeTurtleVisible(this, this.visible, false));
 		this.visible = false;
 		stepUI();
 	}
 	public void show() {
+		addOperation(new ChangeTurtleVisible(this, this.visible, true));
 		this.visible = true;
 		stepUI();
 	}
@@ -251,7 +256,9 @@ public class Turtle extends Entity {
 		return this.visible;
 	}
 	public void clear() {
+		addOperation(new ClearCanvas(this));
 		getWorld().clear();
+		stepUI();
 	}
 
 	private double fromAngularUnit(double angle) {
@@ -283,6 +290,7 @@ public class Turtle extends Entity {
 	}
 
 	protected void setHeadingRadian(double heading) {
+		addOperation(new RotateTurtle(this, toAngularUnit(this.heading), toAngularUnit(heading)));
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
 		if (world != null)
 			world.notifyWorldUpdatesListeners();
@@ -310,6 +318,7 @@ public class Turtle extends Entity {
 	}
 
 	public void setX(double x) {
+		addOperation(new MoveTurtle(this, this.x, y, x, y));
 		this.x = x;
 		stepUI();
 	}
@@ -319,11 +328,13 @@ public class Turtle extends Entity {
 	}
 
 	public void setY(double y) {
+		addOperation(new MoveTurtle(this, x, this.y, x, y));
 		this.y = y;
 		stepUI();
 	}
 
 	public void setPos(double x, double y) {
+		addOperation(new MoveTurtle(this, this.x, this.y, x, y));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -370,11 +381,14 @@ public class Turtle extends Entity {
 		setPos((double) x, (double) y);
 	}
 
-	public void addSizeHint(int x1, int y1, int x2, int y2,String txt){
-		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,txt);
+	public void addSizeHint(int x1, int y1, int x2, int y2,String text){
+		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 	public void addSizeHint(int x1, int y1, int x2, int y2){
-		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,null);
+		String text = String.format("%.0f", Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
+		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 
 	@Override
