@@ -8,13 +8,20 @@ check that presentation of Dec. 2014. It presents the project and
 gives a roadmap of future developments.
 http://webloria.loria.fr/~quinson/blog/2014/1204/PLM.pdf (in French, sorry)
 
+The level 0 of contribution is to report any glitch (either technical
+or pedagogical, or even typos in the mission texts)
+
 Then of course, you should have a look at the known bugs and
 issues. Any help to solve them is very welcome.
 https://github.com/oster/PLM/issues  and
 https://github.com/oster/webPLM/issues.
 We have 2 bug trackers because the project is modular :)
   
-Third idea, some extension ideas are given in the "help"/"About this
+Another idea is to help translating the material. How to do that is
+documented here:
+https://github.com/BuggleInc/PLM/wiki/Working-on-translations
+  
+Fourth idea, some extension ideas are given in the "help"/"About this
 lesson" menu of most existing lessons. You can find these files in the
 archive by searching files named "Main.html" in the differing
 subdirectories. They are even translated to other languages, if that helps.
