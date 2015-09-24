@@ -292,8 +292,7 @@ public class Turtle extends Entity {
 	protected void setHeadingRadian(double heading) {
 		addOperation(new RotateTurtle(this, toAngularUnit(this.heading), toAngularUnit(heading)));
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
-		if (world != null)
-			world.notifyWorldUpdatesListeners();
+		stepUI();
 	}
 
 	protected double getHeadingRadian() {
