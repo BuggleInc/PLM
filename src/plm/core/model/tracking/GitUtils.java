@@ -51,7 +51,7 @@ public class GitUtils {
 	private File repoDir;
 	private Game game;
 	
-	private String username = Game.getProperty("plm.git.server.username");
+	private String username = "";
 	private String password = Game.getProperty("plm.git.server.password");
 
 	private static boolean currentlyPushing = false;
