@@ -171,10 +171,10 @@ public class Game implements IWorldView {
 	private Locale locale;
 	public I18n i18n;
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
-		this(userUUID, logger, locale, defaultProgrammingLanguage, trackUser, new Properties());
+		this(userUUID, logger, locale, defaultProgrammingLanguage, "", trackUser, new Properties());
 	}
 	
-	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser, Properties localProperties) {
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, String repoName, boolean trackUser, Properties localProperties) {
 		this.localProperties = localProperties;
 		this.logger = logger;
 		this.locale = locale;
@@ -223,7 +223,7 @@ public class Game implements IWorldView {
 		sessionKit = new GitSessionKit(this, userUUID);
 
 		try {
-			gitSpy = new GitSpy(this, SAVE_DIR, userUUID);
+			gitSpy = new GitSpy(this, SAVE_DIR, userUUID, repoName);
 			addProgressSpyListener(gitSpy);
 		} catch (IOException | GitAPIException e) {
 			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));

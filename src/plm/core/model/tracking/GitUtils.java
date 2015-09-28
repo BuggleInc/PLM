@@ -50,13 +50,14 @@ public class GitUtils {
 	private Git git;
 	private Game game;
 	
-	private String repoName = Game.getProperty("plm.git.server.username");
+	private String repoName = "";
 	private String repoPassword = Game.getProperty("plm.git.server.password");
 
 	private static boolean currentlyPushing = false;
 	
-	public GitUtils(Game game) {
+	public GitUtils(Game game, String repoName) {
 		this.game = game;
+		this.repoName = repoName;
 	}
 	
 	public void initLocalRepository(File repoDirectory) throws GitAPIException, IOException {

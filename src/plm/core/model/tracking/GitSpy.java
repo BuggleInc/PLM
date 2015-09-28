@@ -30,11 +30,11 @@ public class GitSpy implements ProgressSpyListener {
 	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
 	private File repoDir;
 
-	public GitSpy(Game game, File path, String userUUID) throws IOException, GitAPIException {
+	public GitSpy(Game game, File path, String userUUID, String repoName) throws IOException, GitAPIException {
 		this.game = game;
 		this.plmDir = path;
 		this.userUUID = userUUID;
-		gitUtils = new GitUtils(game);
+		gitUtils = new GitUtils(game, repoName);
 		userHasChanged();
 	}
 
