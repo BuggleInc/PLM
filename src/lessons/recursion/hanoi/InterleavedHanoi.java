@@ -1,7 +1,9 @@
 package lessons.recursion.hanoi;
 
 import java.awt.Color;
+import java.util.Vector;
 
+import lessons.recursion.hanoi.universe.HanoiDisk;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
 import plm.core.model.Game;
@@ -16,30 +18,25 @@ public class InterleavedHanoi extends ExerciseTemplated {
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];
 		HanoiWorld w;
+
+		Vector<HanoiDisk> slot00 = HanoiDisk.generateHanoiDisks(new Integer[] {7,6,5,4,3,2,1}, Color.white);
+		Vector<HanoiDisk> slot01 = HanoiDisk.generateHanoiDisks(new Integer[] {7,6,5,4,3,2,1}, Color.black);
 		w = new HanoiWorld(game, "solve(0,1,2,3)",  
-				new Integer[] {7,6,5,4,3,2,1}, new Integer[] {7,6,5,4,3,2,1}, new Integer[0],new Integer[0]);
-		for (int i=0; i<w.getSlotSize(0);i++) 
-			w.setColor(0,i,Color.white);
-		for (int i=0; i<w.getSlotSize(1);i++) 
-			w.setColor(1,i,Color.black);
+				slot00, slot01, new Vector<HanoiDisk>(), new Vector<HanoiDisk>());
 		w.setParameter(new Integer[]{0,1,2,3});
 		myWorlds[0] = w;
 		
-		w = new HanoiWorld(game, "slove(0,2,3,1)",  
-				new Integer[] {6,5,4,3,2,1}, new Integer[0],new Integer[] {6,5,4,3,2,1},new Integer[0]);
-		for (int i=0; i<w.getSlotSize(0);i++) 
-			w.setColor(0,i,Color.black);
-		for (int i=0; i<w.getSlotSize(2);i++) 
-			w.setColor(2,i,Color.white);
+		Vector<HanoiDisk> slot10 = HanoiDisk.generateHanoiDisks(new Integer[] {6,5,4,3,2,1}, Color.black);
+		Vector<HanoiDisk> slot12 = HanoiDisk.generateHanoiDisks(new Integer[] {6,5,4,3,2,1}, Color.white);
+		w = new HanoiWorld(game, "solve(0,2,3,1)",  
+				slot10, new Vector<HanoiDisk>(), slot12, new Vector<HanoiDisk>());
 		w.setParameter(new Integer[]{0,2,3,1});
 		myWorlds[1] = w;
 		
+		Vector<HanoiDisk> slot20 = HanoiDisk.generateHanoiDisks(new Integer[] {5,4,3,2,1}, Color.white);
+		Vector<HanoiDisk> slot23 = HanoiDisk.generateHanoiDisks(new Integer[] {5,4,3,2,1}, Color.black);
 		w = new HanoiWorld(game, "solve(0,3,1,2)",  
-				new Integer[] {5,4,3,2,1}, new Integer[0],new Integer[0], new Integer[] {5,4,3,2,1});
-		for (int i=0; i<w.getSlotSize(0);i++) 
-			w.setColor(0,i,Color.white);
-		for (int i=0; i<w.getSlotSize(3);i++) 
-			w.setColor(3,i,Color.black);
+				slot20, new Vector<HanoiDisk>(), new Vector<HanoiDisk>(), slot23);
 		w.setParameter(new Integer[]{0,3,1,2});
 		myWorlds[2] = w;
 
