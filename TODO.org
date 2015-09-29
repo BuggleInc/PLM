@@ -9,7 +9,7 @@ gives a roadmap of future developments.
 http://webloria.loria.fr/~quinson/blog/2014/1204/PLM.pdf (in French, sorry)
 
 The level 0 of contribution is to report any glitch (either technical
-or pedagogical, or even typos in the mission texts)
+or pedagogical, or even typos in the mission texts).
 
 Then of course, you should have a look at the known bugs and
 issues. Any help to solve them is very welcome.
@@ -50,6 +50,12 @@ There is naturally a huge body of things that we could add to the
 PLM. Take one book such as the Cormen or the Sedgewik and just pick
 some random ideas.
 
+A particularly interesting lead would be to implement slightly
+different versions of the same exercise so that we can do some sort of
+https://en.wikipedia.org/wiki/A/B_testing. In particular, we'd like to
+evaluate this way whether students prefer large assignments with a
+large degree of freedom, or a longer list of very constrained
+challenges.
 ** Pedagogical micro-worlds
 Adding them could only require to reimplement an adapted universe
 (similar to BuggleWorld or TurtleWorld or SortingWorld), and import
@@ -67,6 +73,9 @@ because I love adapting the stuff that I integrate...
   - http://cs.wellesley.edu/~cs111/fall98/assignments.html
 - Another classical recursive game:
   - http://www.cut-the-knot.org/recurrence/flavius.shtml
+- We could try to adapt some ideas from similar frameworks, such as
+  http://javascool.gforge.inria.fr/ In particular, we could use some
+  kind of micro-world to teach the various graph algorithms as they do.
 ** Programmer games
 They may require a King of Hill mode, but that's also doable.
 
@@ -83,18 +92,19 @@ They may require a King of Hill mode, but that's also doable.
 - Corewars
   
 * Possible improvement to the graphical engine
+** Code editor improvements
 - Use the same shortcuts than eclipse (when possible)
 - Provide autocompletion on keywords and bindings
 - have the editor follow the execution point during stepped execution 
+- During step-by-step execution, it'd be great to display the content
+  of values. See https://github.com/oster/PLM/issues/116
+- Locations displayed in the console should be links that move the
+  editor.
+** World representation
 - represent graphically the textual diff between the expected world
   and the actual one. We would have red circles on cells that have an
   error (either wrong color or wrong message), red crosses on badly
   located buggles, etc.
-- Locations displayed in the console should be links that move the
-  editor.
-- During step-by-step execution, it'd be great to display the content
-  of values, but I'm not sure of how to do that. See
-  https://github.com/oster/PLM/issues/379
 
 * Various ideas
 ** Essential Math for Games Programmers
