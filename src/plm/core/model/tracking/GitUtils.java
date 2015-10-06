@@ -48,16 +48,24 @@ import plm.core.model.Game;
 public class GitUtils {
 	
 	private Git git;
+	private File repoDir;
 	private Game game;
 	
-	private String repoName = "";
-	private String repoPassword = Game.getProperty("plm.git.server.password");
+	private String username = "";
+	private String password = Game.getProperty("plm.git.server.password");
 
 	private static boolean currentlyPushing = false;
+		
+	public GitUtils(String username) {
+		this.username = username;
+	}
 	
-	public GitUtils(Game game, String repoName) {
-		this.game = game;
-		this.repoName = repoName;
+	public void setGame(Game g) {
+		this.game = g;
+	}
+	
+	public File getRepoDir() {
+		return repoDir;
 	}
 	
 	public void initLocalRepository(File repoDirectory) throws GitAPIException, IOException {
@@ -234,7 +242,7 @@ public class GitUtils {
 		}
 		
 		// credentials
-		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
+		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(username, password);
 
 		// push
 		if(pushChanges(userBranchHash, progress, cp)) {
@@ -332,6 +340,7 @@ public class GitUtils {
 		if(git != null) {
 			git.close();
 		}
+		this.repoDir = repoDir;
 		git = Git.open(repoDir);
 	}
 
@@ -370,8 +379,8 @@ public class GitUtils {
 	}
 
 	public void dispose() {
-		repoName = null;
-		repoPassword = null;
+		username = null;
+		password = null;
 		git.close();
 	}
 	

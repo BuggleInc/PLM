@@ -50,7 +50,8 @@ public class GitUtilsTest {
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
 		
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		gitUtils = new GitUtils(game, "");
+		gitUtils = new GitUtils("");
+		gitUtils.setGame(game);
 		utils = new Utils();
 		
 		game.getLogger().log("repoDirectory: "+ repoDirectory.getAbsolutePath());
@@ -163,7 +164,7 @@ public class GitUtilsTest {
 		game.setTrackUser(true);
 		
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils(game, "");
+		GitUtils remoteGitUtils = new GitUtils("");
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);
@@ -190,7 +191,7 @@ public class GitUtilsTest {
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfRemoteBranchNotExists () throws GitAPIException, IOException {
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils(game, "");
+		GitUtils remoteGitUtils = new GitUtils("");
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		Git remoteGit = utils.getGit(remoteGitUtils);
@@ -214,7 +215,7 @@ public class GitUtilsTest {
 		game.setTrackUser(true);
 		
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils(game, "");
+		GitUtils remoteGitUtils = new GitUtils("");
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);
@@ -253,7 +254,7 @@ public class GitUtilsTest {
 		
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils(game, "");
+		GitUtils remoteGitUtils = new GitUtils("");
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);
@@ -289,7 +290,7 @@ public class GitUtilsTest {
 	@Test
 	public void testPushChangesShouldReturnTrueIfNoConflicts() throws GitAPIException, IOException, InterruptedException {
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils(game, "");
+		GitUtils remoteGitUtils = new GitUtils("");
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		Git remoteGit = utils.getGit(remoteGitUtils);
@@ -314,7 +315,7 @@ public class GitUtilsTest {
 	public void testPushChangesShouldReturnFalseIfConflictsDetected() throws GitAPIException, IOException, InterruptedException {
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils(game, "");
+		GitUtils remoteGitUtils = new GitUtils("");
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
 		remoteGitUtils.createInitialCommit();
 		remoteGitUtils.createLocalUserBranch(userBranch);

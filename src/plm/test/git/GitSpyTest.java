@@ -47,7 +47,8 @@ public class GitSpyTest {
 		
 		Game game = new Game(userUUID, mock(LogHandler.class), new Locale("en"), "Java", false);
 		
-		gitSpy = new GitSpy(game, repoDir, userUUID, "");
+
+		gitSpy = new GitSpy(game, repoDir, game.getGitUtils(), userUUID);
 		
 		utils = new Utils();
 		

@@ -12,7 +12,7 @@ public class SecondMaxValue extends BatExercise {
 
 	public SecondMaxValue(Game game, Lesson lesson) {
 		super(game, lesson);
-		Random r = new Random();
+		Random r = new Random(0);
 		
 		int[] tab = new int[15];
 		for (int i=0; i<tab.length; i++) 

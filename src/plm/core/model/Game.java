@@ -57,6 +57,7 @@ import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitSpy;
+import plm.core.model.tracking.GitUtils;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
@@ -161,6 +162,7 @@ public class Game implements IWorldView {
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
 	private GitSpy gitSpy;
+	private GitUtils gitUtils;
 
 	public LogHandler logger;
 
@@ -171,10 +173,10 @@ public class Game implements IWorldView {
 	private Locale locale;
 	public I18n i18n;
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
-		this(userUUID, logger, locale, defaultProgrammingLanguage, "", trackUser, new Properties());
+		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils("dummy-username"), trackUser, new Properties());
 	}
 	
-	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, String repoName, boolean trackUser, Properties localProperties) {
+	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser, Properties localProperties) {
 		this.localProperties = localProperties;
 		this.logger = logger;
 		this.locale = locale;
@@ -221,9 +223,10 @@ public class Game implements IWorldView {
 
 		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
 		sessionKit = new GitSessionKit(this, userUUID);
-
+		this.gitUtils = gitUtils;
+		gitUtils.setGame(this);
 		try {
-			gitSpy = new GitSpy(this, SAVE_DIR, userUUID, repoName);
+			gitSpy = new GitSpy(this, SAVE_DIR, gitUtils, userUUID);
 			addProgressSpyListener(gitSpy);
 		} catch (IOException | GitAPIException e) {
 			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
@@ -241,7 +244,11 @@ public class Game implements IWorldView {
 
 		loadSession();
 	}
-
+	
+	public GitUtils getGitUtils() {
+		return this.gitUtils;
+	}
+	
 	private void initLessons() {
 		for(String lessonName: lessonsName) {
 			addLesson(lessonName);			
@@ -1085,7 +1092,7 @@ public class Game implements IWorldView {
 		"z:"     + File.separator + "_plm", /* windows-preferred directory name */
 		"z:"     + File.separator + "plm",
 	};
-	private static File SAVE_DIR = initializeSaveDir();
+	public static File SAVE_DIR = initializeSaveDir();
 
 	// FIXME: Should not be static
 	private static File initializeSaveDir() {

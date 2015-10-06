@@ -10,7 +10,7 @@ import plm.universe.bat.BatWorld;
 
 public class OccurrenceOfValue extends BatExercise {
 
-	Random r = new Random();
+	Random r = new Random(0);
 	
 	private int getIndex(int[] tab) {
 		return tab[r.nextInt(tab.length)];
