@@ -374,6 +374,8 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		if (!foundALanguage)
 			throw new RuntimeException(getGame().i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
+		computeAnswer();
+		computeError(files);
 	}
 
 	protected void computeError(ArrayList<String> files) {
