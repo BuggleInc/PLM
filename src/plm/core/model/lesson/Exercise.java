@@ -56,10 +56,14 @@ public abstract class Exercise extends Lecture {
 		super(game, lesson,basename);
 	}
 
+	public void initWorlds(int size) {
+		currentWorld = new Vector<World>(size);
+		initialWorld = new Vector<World>(size);
+		answerWorld  = new Vector<World>(size);
+	}
+	
 	public void setupWorlds(World[] w, int size) {
-		currentWorld = new Vector<World>(w.length);
-		initialWorld = new Vector<World>(w.length);
-		answerWorld  = new Vector<World>(w.length);
+		initWorlds(w.length);
 		Vector<World> errorWorld   = new Vector<World>(w.length);
 		for (int i=0; i<w.length; i++) {
 			if (w[i] == null) 

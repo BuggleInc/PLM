@@ -324,15 +324,8 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected final void setup(World w) {
 		setup(new World[] {w});
 	}
-	protected <W extends World> void setup(W[] ws) {
-		boolean foundALanguage=false;
-		ArrayList<String> files = new ArrayList<String>();
-		int k = 0;
-		while(getClass().getResourceAsStream("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")!=null) {
-			files.add("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java");
-			k++;
-		}
-		setupWorlds(ws,files.size());
+
+	public boolean initSourcesFiles() {
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
@@ -355,10 +348,9 @@ public abstract class ExerciseTemplated extends Exercise {
 				try {
 					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
 					super.addProgLanguage(lang);
-					foundALanguage = true;
 					if (getGame().isDebugEnabled())
 						getGame().getLogger().log("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
-
+					return true;
 				} catch (NoSuchEntityException e) {
 					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA) || lang.equals(Game.BLOCKLY))
 						getGame().getLogger().log("No templating entity found: "+e);
@@ -370,9 +362,23 @@ public abstract class ExerciseTemplated extends Exercise {
 					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
 				}
 			} else {
-				foundALanguage = true;
+				return true;
 			}
 		}
+		return false;
+	}
+	
+	
+	protected <W extends World> void setup(W[] ws) {
+		boolean foundALanguage=false;
+		ArrayList<String> files = new ArrayList<String>();
+		int k = 0;
+		while(getClass().getResourceAsStream("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")!=null) {
+			files.add("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java");
+			k++;
+		}
+		setupWorlds(ws,files.size());
+		foundALanguage = initSourcesFiles();
 		if (!foundALanguage)
 			throw new RuntimeException(getGame().i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
 		computeAnswer();
