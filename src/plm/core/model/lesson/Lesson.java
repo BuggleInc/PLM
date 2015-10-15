@@ -9,6 +9,9 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -234,5 +237,26 @@ public abstract class Lesson implements HumanLangChangesListener {
 	
 	public Game getGame() {
 		return game;
+	}
+	
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject();
+		json.put("id", id);
+		json.put("name", name);
+		json.put("exercises", getExercisesGraph(rootLectures));
+		return json;
+	}
+	
+	public JSONArray getExercisesGraph(Vector<Lecture> lectures) {
+		JSONArray json = new JSONArray();
+		for(Lecture lecture: lectures) {
+			JSONObject jsonLecture = new JSONObject();
+			jsonLecture.put("id", lecture.getId());
+			if(lecture.dependingLectures.size()>0) {
+				jsonLecture.put("dependingLectures", getExercisesGraph(lecture.getDependingLectures()));
+			}
+			json.add(jsonLecture);
+		}
+		return json;
 	}
 }
