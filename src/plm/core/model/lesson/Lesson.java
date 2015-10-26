@@ -243,7 +243,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		JSONObject json = new JSONObject();
 		json.put("id", id);
 		json.put("name", name);
-		json.put("exercises", getExercisesGraph(rootLectures));
+		json.put("lectures", getExercisesGraph(rootLectures));
 		return json;
 	}
 	
@@ -252,9 +252,8 @@ public abstract class Lesson implements HumanLangChangesListener {
 		for(Lecture lecture: lectures) {
 			JSONObject jsonLecture = new JSONObject();
 			jsonLecture.put("id", lecture.getId());
-			if(lecture.dependingLectures.size()>0) {
-				jsonLecture.put("dependingLectures", getExercisesGraph(lecture.getDependingLectures()));
-			}
+			jsonLecture.put("name", lecture.getName());
+			jsonLecture.put("dependingLectures", getExercisesGraph(lecture.getDependingLectures()));
 			json.add(jsonLecture);
 		}
 		return json;
