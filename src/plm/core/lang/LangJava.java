@@ -42,6 +42,7 @@ import javax.tools.ToolProvider;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
+import plm.core.PLMEntityNotFound;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
@@ -58,7 +59,16 @@ public class LangJava extends JVMCompiledLang {
 	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of existing entity classes */
 
+	public String getPackageName() {
+		return packageName();
+	}
 
+	public void compileExo(Map<String, String> sources, LogHandler logger, I18n i18n) throws PLMCompilerException {
+		DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
+		compiledClasses = compiler.compile(sources, errs, i18n);
+		if (logger != null)
+			logger.log(errs.toString());
+	}
 	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
@@ -96,6 +106,30 @@ public class LangJava extends JVMCompiledLang {
 	@Override
 	protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException {
 		return (Entity) compiledClasses.get(className(newClassName)).newInstance();
+	}
+	
+	public ArrayList<Entity> mutateEntities(String newClassName, List<Entity> olds) throws PLMCompilerException {
+		ArrayList<Entity> newEntities = new ArrayList<Entity>();
+		for (Entity old : olds) {
+			/* Instantiate a new entity of the new type */
+			Entity ent = null;
+			try {
+				ent = mutateEntity(newClassName);
+			} catch (InstantiationException e) {
+				throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException("Illegal access while instanciating entity of type "+className(newClassName), e);
+			} catch (NullPointerException e) {
+				throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e);
+			}
+			/* change fields of new entity to copy old one */
+			ent.copy(old);
+			ent.initDone();
+			/* Add new entity to the to be returned entities set */
+			newEntities.add(ent);
+
+		}
+		return newEntities;
 	}
 
 }

@@ -399,7 +399,7 @@ public abstract class AbstractBuggle extends Entity {
 			throw new BuggleWallException(getGame().i18n);
 		}
 			
-		addOperation(new MoveBuggleOperation(this, x, y, newx, newy, getGame().i18n));
+		//addOperation(new MoveBuggleOperation(this, x, y, newx, newy, getGame().i18n));
 
 		x = newx;
 		y = newy;

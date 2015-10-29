@@ -11,5 +11,4 @@ public abstract class LogHandler {
 	}
 	
 	public abstract void log(int type, String message);
-	public abstract void send(int type, String message);
 }

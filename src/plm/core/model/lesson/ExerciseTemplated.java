@@ -29,6 +29,10 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
+	public ExerciseTemplated(String id, String name) {
+		super(id, name);
+	}
+	
 	public ExerciseTemplated(Game game, Lesson lesson) {
 		super(game, lesson,null);
 	}
@@ -370,19 +374,24 @@ public abstract class ExerciseTemplated extends Exercise {
 	
 	
 	protected <W extends World> void setup(W[] ws) {
-		boolean foundALanguage=false;
+		//boolean foundALanguage=false;
 		ArrayList<String> files = new ArrayList<String>();
+		/*
 		int k = 0;
+		
 		while(getClass().getResourceAsStream("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")!=null) {
 			files.add("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java");
 			k++;
 		}
+		*/
 		setupWorlds(ws,files.size());
+		/*
 		foundALanguage = initSourcesFiles();
 		if (!foundALanguage)
 			throw new RuntimeException(getGame().i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
 		computeAnswer();
 		computeError(files);
+		*/
 	}
 
 	protected void computeError(ArrayList<String> files) {

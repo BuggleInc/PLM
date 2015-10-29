@@ -51,6 +51,8 @@ public abstract class Lecture implements HumanLangChangesListener{
 
 	protected Map<String, String> tips = new HashMap<String, String>();
 
+	public Lecture() {}
+	
 	public Lecture(Game game, Lesson lesson,String basename) {
 		this.game = game;
 		this.lesson = lesson;
@@ -59,6 +61,11 @@ public abstract class Lecture implements HumanLangChangesListener{
 		loadHTMLMission();
 		game.addHumanLangListener(this);
 	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getId() {
 		return id;
 	}

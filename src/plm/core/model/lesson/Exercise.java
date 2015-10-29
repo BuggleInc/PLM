@@ -43,6 +43,7 @@ public abstract class Exercise extends Lecture {
 	}
 
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
+	private Map<String, String> supportedProgrammingLanguages = new HashMap<String, String>();
 
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
@@ -52,6 +53,11 @@ public abstract class Exercise extends Lecture {
 
 	public ExecutionProgress lastResult;
 
+	public Exercise(String id, String name) {
+		setId(id);
+		setName(name);
+	}
+	
 	public Exercise(Game game, Lesson lesson,String basename) {
 		super(game, lesson,basename);
 	}
@@ -128,7 +134,7 @@ public abstract class Exercise extends Lecture {
 	}
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
-		lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
+		//lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
 
 		for (int i=0; i<initialWorld.size(); i++) 
 			currentWorld.get(i).reset(initialWorld.get(i));
@@ -282,6 +288,13 @@ public abstract class Exercise extends Lecture {
 	public void setNbError(int nbError) {
 		this.nbError = nbError;
 	}
+
+	public Map<String, String> getSupportedProgrammingLanguages() {
+		return supportedProgrammingLanguages;
+	}
 	
+	public String getCorrectionEntityPath(String progLang) {
+		return supportedProgrammingLanguages.get(progLang);
+	}
 }
 
