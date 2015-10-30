@@ -63,7 +63,20 @@ public class LangJava extends JVMCompiledLang {
 		return packageName();
 	}
 
-	public void compileExo(Map<String, String> sources, LogHandler logger, I18n i18n) throws PLMCompilerException {
+	public void compileExo(SourceFile sourceFile, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException {
+		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
+		packageNameSuffix++;
+		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
+
+
+		/* Prepare the source files */
+		Map<String, String> sources = new TreeMap<String, String>();
+		String source = sourceFile.getCompilableContent(runtimePatterns,whatToCompile);
+		sources.put(className(sourceFile.getName()), source); 
+
+		if (sources.isEmpty()) 
+			return;
+
 		DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 		compiledClasses = compiler.compile(sources, errs, i18n);
 		if (logger != null)

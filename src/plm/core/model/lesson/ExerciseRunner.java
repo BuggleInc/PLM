@@ -2,8 +2,6 @@ package plm.core.model.lesson;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.Vector;
 
 import org.xnap.commons.i18n.I18n;
@@ -14,7 +12,6 @@ import plm.core.model.LogHandler;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.session.SourceFile;
-import plm.core.model.session.TemplatedSourceFileFactory;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -30,25 +27,21 @@ public class ExerciseRunner {
 		this.i18n = i18n;
 	}
 
-	public void run(Exercise exo, LangJava programmingLanguage, String code) {
+	public void run(Exercise exo, LangJava progLang, String code) {
 		// FIXME: Handle ExecutionProgress
 
 		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
+		lastResult = new ExecutionProgress(progLang);
 
-		Map<String, String> sources = new TreeMap<String, String>();
-		TemplatedSourceFileFactory sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
-		SourceFile sf = sourceFileFactory.newSourceFromFile(exo.getId(), programmingLanguage, "");
-		sf.setBody(code);
-		String codeSource = sf.getCompilableContent(null, StudentOrCorrection.STUDENT);
-		sources.put(exo.getId(), codeSource);
-
-		lastResult = new ExecutionProgress(programmingLanguage);
+		exo.reset();
 		
 		/*
 		 *  Compilation time
 		 */
+		SourceFile sf = exo.getDefaultSourceFile(progLang);
+		sf.setBody(code);
 		try {
-			mutateEntities(programmingLanguage,currentWorlds, exo.getId(), sources);
+			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT);
 		} catch (PLMCompilerException e) {
 			lastResult.setCompilationError(e.getMessage());
 			e.printStackTrace();
@@ -57,9 +50,8 @@ public class ExerciseRunner {
 		/*
 		 * Execution time
 		 */
-		exo.reset();
 		for(World w : currentWorlds) {
-			runEntities(w, programmingLanguage, runnerVect, lastResult);
+			runEntities(w, progLang, runnerVect, lastResult);
 		}
 		while (runnerVect.size()>0) {
 			try {
@@ -81,12 +73,12 @@ public class ExerciseRunner {
 		}
 	}
 	
-	public void runDemo(Exercise exo, LangJava programmingLanguage) {
+	public void runDemo(Exercise exo, LangJava progLang) {
 		// FIXME: Factorize this code
 
 		exo.reset();
 		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
-			runEntities(w, programmingLanguage, runnerVect, null);
+			runEntities(w, progLang, runnerVect, null);
 		}
 		while (runnerVect.size()>0) {
 			try {
@@ -99,20 +91,33 @@ public class ExerciseRunner {
 		}
 	}
 
-	public void mutateEntities(LangJava programmingLanguage, Vector<World> worlds, String newClassName, Map<String, String> sources) throws PLMCompilerException {
-		programmingLanguage.compileExo(sources, logger, i18n);
-		for(World w : worlds) {
+	public void mutateEntities(Exercise exo, SourceFile sourceFile, LangJava progLang, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+		progLang.compileExo(sourceFile, whatToCompile, logger, i18n);
+		
+		WorldKind worldKind = null;
+		switch(whatToCompile) {
+		case STUDENT:
+			worldKind = WorldKind.CURRENT;
+			break;
+		case CORRECTION:
+			worldKind = WorldKind.ANSWER;
+			break;
+		default:
+			break;
+		}
+
+		for(World w : exo.getWorlds(worldKind)) {
 			List<Entity> entities = w.getEntities();
-			List<Entity> newEntities = programmingLanguage.mutateEntities(newClassName, entities);
+			List<Entity> newEntities = progLang.mutateEntities(exo.getId(), entities);
 			w.setEntities(newEntities);
 		}
 	}
 
-	private void runEntities(World w, LangJava programmingLanguage, List<Thread> runnerVect, final ExecutionProgress progress) {
+	private void runEntities(World w, LangJava progLang, List<Thread> runnerVect, final ExecutionProgress progress) {
 		for (final Entity entity : w.getEntities()) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
-					programmingLanguage.runEntity(entity, progress, i18n);
+					progLang.runEntity(entity, progress, i18n);
 				}
 			});
 
@@ -162,7 +167,7 @@ public class ExerciseRunner {
 					}
 				}
 				*/
-				String diff = answerWorld.diffTo(currentWorld);
+				String diff = ""; //answerWorld.diffTo(currentWorld);
 				lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
 				if (diff != null) 
 					lastResult.executionError += ":\n"+diff;

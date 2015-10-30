@@ -39,23 +39,19 @@ public class ExerciseFactory {
 			String entityName = progLang.nameOfCorrectionEntity(exo);
 			String entityPath = "exercises/" + entityName.replaceAll("\\.", "/")  + "." + progLang.getExt();
 			if(new File(entityPath).exists()) {
-				exo.getSupportedProgrammingLanguages().put(progLang.getLang(), entityPath);
+				TemplatedSourceFileFactory sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
+				SourceFile sourceFile = sourceFileFactory.newSourceFromFile(exo.getId(), progLang, entityPath);
+				exo.addDefaultSourceFile(progLang, sourceFile);
 			}
 		}
 	}
 
 	public void computeAnswer(Exercise exo, LangJava progLang) {
 		// TODO: Handle case if progLang is not supported
-		if(exo.getSupportedProgrammingLanguages().containsKey(progLang.getLang())) {
-			String entityPath = exo.getCorrectionEntityPath(progLang.getLang());
-			Map<String, String> sources = new TreeMap<String, String>();
-			TemplatedSourceFileFactory sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
-			SourceFile sf = sourceFileFactory.newSourceFromFile("EnvironmentBlabla", progLang, entityPath);
-			String codeSource = sf.getCompilableContent(null, StudentOrCorrection.CORRECTION);
-			codeSource = codeSource.replaceAll("\\$package", "package "+ progLang.getPackageName() +";import java.awt.Color;");
-			sources.put(progLang.getPackageName()+".EnvironmentBlabla", codeSource);
+		if(exo.isProgLangSupported(progLang)) {
+			SourceFile sf = exo.getDefaultSourceFile(progLang);
 			try {
-				exerciseRunner.mutateEntities(progLang, exo.getWorlds(WorldKind.ANSWER), "EnvironmentBlabla", sources);
+				exerciseRunner.mutateEntities(exo, sf, progLang, StudentOrCorrection.CORRECTION);
 			} catch (PLMCompilerException e) {
 				e.printStackTrace();
 			}

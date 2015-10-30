@@ -28,6 +28,10 @@ public class SourceFile {
 		setTemplate( template );
 	}
 
+	public SourceFile clone() {
+		return new SourceFile(null, name, body, template, offset, correction, error);
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -37,11 +41,14 @@ public class SourceFile {
 	}
 
 	public void setBody(String text) { 
+		/*
 		if (getGame().getProgrammingLanguage().equals(Game.PYTHON))
 			body = text.replaceAll("\\t", "    ");
 		else
 			body = text;
 		notifyListener();
+		*/
+		body = text;
 	}
 	public void setTemplate(String string) {
 		this.template = string;

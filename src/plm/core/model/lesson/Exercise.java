@@ -43,7 +43,7 @@ public abstract class Exercise extends Lecture {
 	}
 
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
-	private Map<String, String> supportedProgrammingLanguages = new HashMap<String, String>();
+	private Map<ProgrammingLanguage, SourceFile> defaultSourceFiles = new HashMap<ProgrammingLanguage, SourceFile>();
 
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
@@ -289,12 +289,16 @@ public abstract class Exercise extends Lecture {
 		this.nbError = nbError;
 	}
 
-	public Map<String, String> getSupportedProgrammingLanguages() {
-		return supportedProgrammingLanguages;
+	public boolean isProgLangSupported(ProgrammingLanguage progLang) {
+		return defaultSourceFiles.containsKey(progLang);
 	}
-	
-	public String getCorrectionEntityPath(String progLang) {
-		return supportedProgrammingLanguages.get(progLang);
+
+	public void addDefaultSourceFile(ProgrammingLanguage progLang, SourceFile sourceFile) {
+		defaultSourceFiles.put(progLang, sourceFile);
+	}
+
+	public SourceFile getDefaultSourceFile(ProgrammingLanguage progLang) {
+		return defaultSourceFiles.get(progLang).clone();
 	}
 }
 
