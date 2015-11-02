@@ -18,6 +18,7 @@ import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
+import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
 
@@ -45,6 +46,9 @@ public abstract class Exercise extends Lecture {
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
 	private Map<ProgrammingLanguage, SourceFile> defaultSourceFiles = new HashMap<ProgrammingLanguage, SourceFile>();
 
+	
+	private Map<String, String> missions = new HashMap<String, String>();
+	
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
@@ -299,6 +303,18 @@ public abstract class Exercise extends Lecture {
 
 	public SourceFile getDefaultSourceFile(ProgrammingLanguage progLang) {
 		return defaultSourceFiles.get(progLang).clone();
+	}
+	
+	public void addMission(String humanLang, String mission) {
+		missions.put(humanLang, mission);
+	}
+	
+	public String getMission(String humanLang, ProgrammingLanguage lang) {
+		String mission = missions.get("en");
+		if(missions.containsKey(humanLang)) {
+			mission = missions.get(humanLang);
+		}
+		return PlmHtmlEditorKit.filterHTML(mission, false, lang);
 	}
 }
 
