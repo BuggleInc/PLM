@@ -23,6 +23,8 @@ public class ExerciseFactory {
 	private ProgrammingLanguage[] programmingLanguages;
 	private Locale[] humanLanguages;
 
+	private String rootDirectory = "exercises";
+	
 	public ExerciseFactory(LogHandler logger, I18n i18n, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
 		this.logger = logger;
 		this.i18n = i18n;
@@ -39,8 +41,8 @@ public class ExerciseFactory {
 
 	public void computeSupportedProgrammingLanguages(Exercise exo) {
 		for(ProgrammingLanguage progLang: programmingLanguages) {
-			String entityName = progLang.nameOfCorrectionEntity(exo);
-			String entityPath = "exercises/" + entityName.replaceAll("\\.", "/")  + "." + progLang.getExt();
+			String entityName = progLang.nameOfCorrectionEntity(exo).replaceAll("\\.", "/") + "." + progLang.getExt();
+			String entityPath = rootDirectory + "/" + entityName;
 			if(new File(entityPath).exists()) {
 				exo.addProgLanguage(progLang);
 				TemplatedSourceFileFactory sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
@@ -52,10 +54,11 @@ public class ExerciseFactory {
 
 	public void computeMissions(Exercise exo) {
 		for(Locale humanLanguage: humanLanguages) {
-			String filename = "exercises/environment/" + exo.getId().replace('.',File.separatorChar);
+			String baseName = exo.getBaseName().replaceAll("\\.", "/");
+			String filename =  rootDirectory + "/" + baseName;
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, humanLanguage, "html",true);
+				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				exo.addMission(humanLanguage.getLanguage(), sb.toString());
 			} catch (IOException ex) {}			
 		}

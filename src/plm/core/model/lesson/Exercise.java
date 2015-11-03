@@ -31,12 +31,16 @@ public abstract class Exercise extends Lecture {
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
+	public String getBaseName() {
+		return getClass().getCanonicalName();
+	}
+	
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
-		return getClass().getCanonicalName() + "Entity";
+		return getBaseName() + "Entity";
 	}
 
 	public String nameOfCommonError(int i) {
-		return getClass().getCanonicalName() + "CommonErr" + i;
+		return getBaseName() + "CommonErr" + i;
 	}
 
 	public String getTabName() {

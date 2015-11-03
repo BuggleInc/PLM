@@ -34,7 +34,7 @@ public class ExerciseRunner {
 		lastResult = new ExecutionProgress(progLang);
 
 		exo.reset();
-		
+
 		/*
 		 *  Compilation time
 		 */
@@ -72,7 +72,7 @@ public class ExerciseRunner {
 			checkWorld(currentWorld, answerWorld);
 		}
 	}
-	
+
 	public void runDemo(Exercise exo, LangJava progLang) {
 		// FIXME: Factorize this code
 
@@ -93,7 +93,7 @@ public class ExerciseRunner {
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, LangJava progLang, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		progLang.compileExo(sourceFile, whatToCompile, logger, i18n);
-		
+
 		WorldKind worldKind = null;
 		switch(whatToCompile) {
 		case STUDENT:
