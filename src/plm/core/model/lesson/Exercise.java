@@ -70,6 +70,26 @@ public abstract class Exercise extends Lecture {
 		super(game, lesson,basename);
 	}
 
+	public Exercise(Exercise exo) {
+		setId(exo.getId());
+		setName(exo.getTrueName());
+		int nbWorlds = exo.getWorldCount();
+		initWorlds(nbWorlds);
+		for(int i=0; i<nbWorlds; i++) {
+			World baseInitialWorld = exo.getWorld(WorldKind.INITIAL, i);
+			World baseCurrentWorld = exo.getWorld(WorldKind.CURRENT, i);
+			World baseAnswerWorld = exo.getWorld(WorldKind.ANSWER, i);
+			initialWorld.add(baseInitialWorld);
+			currentWorld.add(baseCurrentWorld);
+			answerWorld.add(baseAnswerWorld);
+		}
+		for(ProgrammingLanguage progLang : exo.getProgLanguages()) {
+			addProgLanguage(progLang);
+			SourceFile sourceFile = exo.getDefaultSourceFile(progLang).clone();
+			addDefaultSourceFile(progLang, sourceFile);
+		}
+	}
+
 	public void initWorlds(int size) {
 		currentWorld = new Vector<World>(size);
 		initialWorld = new Vector<World>(size);
@@ -78,7 +98,7 @@ public abstract class Exercise extends Lecture {
 	
 	public void setupWorlds(World[] w, int size) {
 		initWorlds(w.length);
-		Vector<World> errorWorld   = new Vector<World>(w.length);
+		Vector<World> errorWorld = new Vector<World>(w.length);
 		for (int i=0; i<w.length; i++) {
 			if (w[i] == null) 
 				throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
@@ -252,6 +272,10 @@ public abstract class Exercise extends Lecture {
 	 */
 	public World getWorld(int index) {// FIXME: rename to getCurrentWorld or KILLME
 		return this.currentWorld.get(index);
+	}
+
+	public World getWorld(WorldKind worldKind, int index) {
+		return getWorlds(worldKind).get(index);
 	}
 
 	public int indexOfWorld(World w) {

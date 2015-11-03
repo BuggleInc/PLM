@@ -77,6 +77,10 @@ public abstract class Lecture implements HumanLangChangesListener{
 		return PlmHtmlEditorKit.filterHTML(name, false, getGame().getProgrammingLanguage());
 	}
 
+	public String getTrueName() {
+		return name;
+	}
+
 	public Lesson getLesson() {
 		return this.lesson;
 	}
