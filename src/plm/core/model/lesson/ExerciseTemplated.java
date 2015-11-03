@@ -40,6 +40,10 @@ public abstract class ExerciseTemplated extends Exercise {
 		super(game, lesson,basename);
 	}
 
+	public ExerciseTemplated(Exercise exo) {
+		super(exo);
+	}
+
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
 		newSourceFromFile(lang, name, filename, "");
 	}
