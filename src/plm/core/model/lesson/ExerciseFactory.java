@@ -33,6 +33,10 @@ public class ExerciseFactory {
 		this.humanLanguages = humanLanguages;
 	}
 
+	public Exercise cloneExercise(Exercise exo) {
+		return new BlankExercise(exo);
+	}
+	
 	public void initializeExercise(Exercise exo, LangJava progLang) {
 		computeSupportedProgrammingLanguages(exo);
 		computeMissions(exo);
