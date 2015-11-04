@@ -27,7 +27,7 @@ public class ExerciseRunner {
 		this.i18n = i18n;
 	}
 
-	public void run(Exercise exo, LangJava progLang, String code) {
+	public ExecutionProgress run(Exercise exo, LangJava progLang, String code) {
 		// FIXME: Handle ExecutionProgress
 
 		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
@@ -43,8 +43,9 @@ public class ExerciseRunner {
 		try {
 			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT);
 		} catch (PLMCompilerException e) {
-			lastResult.setCompilationError(e.getMessage());
 			e.printStackTrace();
+			lastResult.setCompilationError(e.getMessage());
+			return lastResult;
 		}
 
 		/*
@@ -63,6 +64,10 @@ public class ExerciseRunner {
 			}
 		}
 
+		if(lastResult.outcome == ExecutionProgress.outcomeKind.FAIL) {
+			return lastResult;
+		}
+
 		/*
 		 * Check time
 		 */
@@ -71,6 +76,8 @@ public class ExerciseRunner {
 			World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
 			checkWorld(currentWorld, answerWorld);
 		}
+
+		return lastResult;
 	}
 
 	public void runDemo(Exercise exo, LangJava progLang) {
