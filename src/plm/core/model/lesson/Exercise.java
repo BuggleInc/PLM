@@ -88,6 +88,10 @@ public abstract class Exercise extends Lecture {
 			SourceFile sourceFile = exo.getDefaultSourceFile(progLang).clone();
 			addDefaultSourceFile(progLang, sourceFile);
 		}
+		for(String humanLang : exo.getHumanLanguages()) {
+			String mission = exo.getDefaultMission(humanLang);
+			addMission(humanLang, mission);
+		}
 	}
 
 	public void initWorlds(int size) {
@@ -333,8 +337,16 @@ public abstract class Exercise extends Lecture {
 		return defaultSourceFiles.get(progLang).clone();
 	}
 	
+	public Set<String> getHumanLanguages() {
+		return missions.keySet();
+	}
+	
 	public void addMission(String humanLang, String mission) {
 		missions.put(humanLang, mission);
+	}
+	
+	private String getDefaultMission(String humanLang) {
+		return missions.get(humanLang);
 	}
 	
 	public String getMission(String humanLang, ProgrammingLanguage lang) {
