@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-07-31 10:14+0200\n"
-"PO-Revision-Date: 2015-07-12 13:30-0300\n"
+"PO-Revision-Date: 2015-11-10 21:13+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -14389,15 +14389,6 @@ msgstr "Mostre uma dica adicional"
 
 #. type: Content of: <div>
 #: src/lessons/maze/pledge/PledgeMaze.html:71
-#, fuzzy
-#| msgid ""
-#| "You should set your direction to your favorite one (NORTH is advised). "
-#| "Then, you should write the algorithm main loop. In other words, while "
-#| "your buggle did not find its biscuit, you have to move forward until next "
-#| "obstacle in the favorite direction. Then, put a paw on a wall (using "
-#| "(<code>keepHandOnSideWall()</code>) while the sum of turns is not null "
-#| "and the favorite direction is not free. Do that until you find your "
-#| "baggle."
 msgid ""
 "You should set your direction to your favorite one (NORTH is advised). Then, "
 "you should write the algorithm main loop. In other words, while your buggle "
@@ -15321,10 +15312,6 @@ msgstr "Makes 10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Makes10.html:3
-#, fuzzy
-#| msgid ""
-#| "Given 2 ints, a and b, return true if one if them is 10 or if their sum "
-#| "is 10."
 msgid ""
 "Given 2 ints, a and b, return true if one of them is 10 or if their sum is "
 "10."
@@ -15545,12 +15532,6 @@ msgstr "Festa dos charutos"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/CigarParty.html:3
-#, fuzzy
-#| msgid ""
-#| "When squirrels get together for a party, they like to have cigars. A "
-#| "squirrel party is successful when the number of cigars is between 40 and "
-#| "60, inclusive. Unless it is the weekend, in which case there is no upper "
-#| "bound on the number of cigars. Return true if the party with the"
 msgid ""
 "When squirrels get together for a party, they like to have cigars. A "
 "squirrel party is successful when the number of cigars is between 40 and 60, "
@@ -16417,13 +16398,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl2_locate_landing_zone/LocateLandingZone.html:7
-#, fuzzy
-#| msgid ""
-#| "The lander is on autopilot and all you have to do is look around and tell "
-#| "it where to land. The lander must <b>land on a flat zone</b> it you want "
-#| "to remain in one piece. You indicate the lander where to land by "
-#| "modifying the <code>getLandingZone</code> function so that it returns a [!"
-#| "java|scala]<code>Segment</code> representing the zone of your choice."
 msgid ""
 "The lander is on autopilot and all you have to do is look around and tell it "
 "where to land. The lander must <b>land on a flat zone</b> if you want to "
