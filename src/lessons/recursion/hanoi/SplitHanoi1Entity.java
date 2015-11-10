@@ -43,8 +43,8 @@ public class SplitHanoi1Entity extends HanoiEntity {
 		//getGame().getLogger().log("solve("+height+","+src1+","+src2+","+other+","+dst+")");
 		if (height > 0) {
 			moveDouble(height-1, src,dst1,dst2,other);
-			move(src,dst1);
 			move(src,dst2);
+			move(src,dst1);
 			splitHanoi(height-1, other,src,dst1, dst2);
 		}
 	}
