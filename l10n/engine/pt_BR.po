@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-23 23:01-0300\n"
+"POT-Creation-Date: 2015-11-10 20:50+0100\n"
 "PO-Revision-Date: 2015-07-04 23:36-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
@@ -327,6 +327,7 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
+#: src/lessons/welcome/summative/LakesEntity.java:10
 #: src/lessons/welcome/summative/MoriaEntity.java:10
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -347,6 +348,7 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
+#: src/lessons/welcome/summative/LakesEntity.java:15
 #: src/lessons/welcome/summative/MoriaEntity.java:15
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
@@ -625,8 +627,10 @@ msgid ""
 "reproduce it.\n"
 "Exception message: {1}\n"
 msgstr ""
-"execução do Script levantou uma exceção que não é uma ScriptException mas uma {0}.\n"
-" Favor relatar isto como um erro (bug) do PLM, com todos os detalhes para reproduzir o erro.\n"
+"execução do Script levantou uma exceção que não é uma ScriptException mas "
+"uma {0}.\n"
+" Favor relatar isto como um erro (bug) do PLM, com todos os detalhes para "
+"reproduzir o erro.\n"
 " Mensagem de exceção: {1}\n"
 
 #: src/plm/core/model/Game.java:170
@@ -840,13 +844,11 @@ msgstr ""
 msgid "C is still experimental"
 msgstr "C ainda é experimental"
 
-#: src/plm/core/model/HelpServer.java:27
-#: src/plm/core/ui/action/HelpMe.java:130
+#: src/plm/core/model/HelpServer.java:27 src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
 msgstr "Pedindo ajuda ao professor"
 
-#: src/plm/core/model/HelpServer.java:29
-#: src/plm/core/ui/action/HelpMe.java:133
+#: src/plm/core/model/HelpServer.java:29 src/plm/core/ui/action/HelpMe.java:133
 #: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
 msgstr "Cancelar o pedido de ajuda para o professor"
@@ -898,7 +900,8 @@ msgstr ""
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
-msgstr "{0}: Começar solução em \"template tail\". Mudar isto para BEGIN HIDDEN"
+msgstr ""
+"{0}: Começar solução em \"template tail\". Mudar isto para BEGIN HIDDEN"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
@@ -955,7 +958,9 @@ msgstr "Arquivo de cache {0} faltando. Recalcular todos os mundos resposta."
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
-msgstr "Exceção de IO enquanto está lendo o mundo {0} ({1}). Recalcule todos os mundos resposta."
+msgstr ""
+"Exceção de IO enquanto está lendo o mundo {0} ({1}). Recalcule todos os "
+"mundos resposta."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:425
 #, java-format
@@ -1101,7 +1106,9 @@ msgstr "dados da última sessão mesclados com sucesso"
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
-msgstr "Conflitos foram detectados enquanto sincronizava com dados da última sessão, tentando resolver isto..."
+msgstr ""
+"Conflitos foram detectados enquanto sincronizava com dados da última sessão, "
+"tentando resolver isto..."
 
 #. TODO: handle this case
 #: src/plm/core/model/tracking/GitUtils.java:166
@@ -1200,7 +1207,7 @@ msgid "Copying"
 msgstr "Copiar"
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:42
+#: src/plm/core/ui/ExerciseFailedDialog.java:43
 #: src/plm/core/ui/ExercisePassedDialog.java:100
 msgid "Close"
 msgstr "Fechar"
@@ -1315,6 +1322,10 @@ msgid "We learn from failure, not from success!"
 msgstr "Aprendemos no fracasso, não no sucesso!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:32
+msgid "Success comes after failure"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
@@ -1322,7 +1333,7 @@ msgstr ""
 "<i>O mestre falhou mais vezes que o iniciante que nunca tentou</i>,<br> é o "
 "que dizem."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
 "(Einstein)."
@@ -1330,7 +1341,7 @@ msgstr ""
 "<i>Qualquer pessoa que nunca cometeu um erro, nunca <br>tentou algo novo.</"
 "i> (Einstein)."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:34
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
 msgid ""
 "<i>Success does not consist in never making mistakes,<br> but in never "
 "making the same one a second time.</i> (Shaw)"
@@ -1338,11 +1349,11 @@ msgstr ""
 "<i>O sucesso não consiste em nunca ter cometido erros,<br> mas em nunca tê-"
 "los cometido pela segunda vez.</i> (Shaw)"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:37
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Mmm, not quite"
 msgstr "Mmm, quase"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:55
+#: src/plm/core/ui/ExerciseFailedDialog.java:56
 #, java-format
 msgid ""
 "<html>You didn''t manage to reach your objective this time. <br>\n"
@@ -1363,7 +1374,7 @@ msgstr ""
 "Se você não ver o erro, verifique os detalhes abaixo para uma <br>\n"
 "descrição textual desta diferença entre ambos os mundos.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:67
+#: src/plm/core/ui/ExerciseFailedDialog.java:68
 #, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -1372,14 +1383,15 @@ msgid ""
 msgstr ""
 "<html>Erro de compilação.<br>\n"
 "Veja abaixo a mensagem de erro detalhada (como dada por {0}).<br>\n"
-"Favor ler cuidadosamente para entender o problema e consertar seu código.</html>"
+"Favor ler cuidadosamente para entender o problema e consertar seu código.</"
+"html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:82
-#: src/plm/core/ui/ExerciseFailedDialog.java:89
+#: src/plm/core/ui/ExerciseFailedDialog.java:83
+#: src/plm/core/ui/ExerciseFailedDialog.java:90
 msgid "Details >>"
 msgstr "Detalhes >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:92
+#: src/plm/core/ui/ExerciseFailedDialog.java:93
 msgid "Details <<"
 msgstr "Detalhes <<"
 
@@ -1408,8 +1420,8 @@ msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br>Which exercise will you do now?</html>"
 msgstr ""
-"<html>Parabéns, você passou neste exercício.<br>({0} testes "
-"feitos)<br>Que exercício você vai fazer agora?</html>"
+"<html>Parabéns, você passou neste exercício.<br>({0} testes feitos)<br>Que "
+"exercício você vai fazer agora?</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
 msgid ""
@@ -2264,8 +2276,8 @@ msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
-"Desculpe Dave, não posso deixar você usar levantarCaneta() aqui. Os "
-"buggles tem pinceis, não canetas. Tente usar levantarPincel()."
+"Desculpe Dave, não posso deixar você usar levantarCaneta() aqui. Os buggles "
+"tem pinceis, não canetas. Tente usar levantarPincel()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:166
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2274,8 +2286,8 @@ msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar Esquerda(x) com uma "
-"maiúscula. Ao invés disto, use esquerda()."
+"Desculpe Dave, mas não posso deixar você usar Esquerda(x) com uma maiúscula. "
+"Ao invés disto, use esquerda()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:169
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
@@ -2284,8 +2296,8 @@ msgid ""
 "Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
 "instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar Direita() com uma "
-"maiúscula. Em vez disto, use direita()."
+"Desculpe Dave, mas não posso deixar você usar Direita() com uma maiúscula. "
+"Em vez disto, use direita()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:189
 #, java-format
@@ -2678,18 +2690,16 @@ msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar abaixarPincel() "
-"aqui. Tartarugas tem canetas, não pinceis. Use abaixarCaneta() ao "
-"invés disto."
+"Desculpe Dave, mas não posso deixar você usar abaixarPincel() aqui. "
+"Tartarugas tem canetas, não pinceis. Use abaixarCaneta() ao invés disto."
 
 #: src/plm/universe/turtles/Turtle.java:228
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixar você usar levantarPincel() "
-"aqui. Tartarugas tem canetas, não pinceis. Use levantarCaneta() ao "
-"invés disto."
+"Desculpe Dave, mas não posso deixar você usar levantarPincel() aqui. "
+"Tartarugas tem canetas, não pinceis. Use levantarCaneta() ao invés disto."
 
 #: src/plm/universe/turtles/Turtle.java:409
 #, java-format
