@@ -26,7 +26,7 @@ public class SplitHanoi1 extends ExerciseTemplated {
 		w.setParameter(new Integer[]{3,2,0,1});
 		myWorlds[0] = w;
 		
-		w = new HanoiWorld(game, "slove(1,3,0,2)",  
+		w = new HanoiWorld(game, "solve(1,3,0,2)",
 				new Integer[0], new Integer[]{6,6,5,5,4,4,3,3,2,2,1,1},new Integer[0],new Integer[0]);
 		for (int i=0; i<w.getSlotSize(1);i++)
 			if (i%2==0)
