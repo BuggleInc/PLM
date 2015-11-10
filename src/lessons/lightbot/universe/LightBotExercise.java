@@ -22,7 +22,7 @@ public class LightBotExercise extends ExerciseTemplated {
 		for (World w : ws) 
 			((LightBotWorld) w).rotateLeft();
 		
-		setupWorlds(ws);
+		setupWorlds(ws, 0);
 		/* remove entities from the answer world: we don't care of where the bot is at the end */
 		for (World w :answerWorld)
 			w.emptyEntities();

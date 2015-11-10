@@ -16,37 +16,37 @@ conditionnelles : si une branche ne contient qu'une seule instruction, les
 accolades sont optionnelles. Ainsi, les deux extraits suivants sont
 équivalents:</p>
 
- <pre>if (<b>condition</b>) {
+ <pre><code class="code-container">if (<b>condition</b>) {
     <b>quoiFaireSiLaConditionEstVraie();</b>
 } else {
     <b>quoiFaireSinon();</b>
-}</pre>
- <pre>if (<b>condition</b>)
+}</code></pre>
+ <pre><code class="code-container">if (<b>condition</b>)
     <b>quoiFaireSiLaConditionEstVraie();</b>
 else
-    <b>quoiFaireSinon();</b></pre>
+    <b>quoiFaireSinon();</b></code></pre>
 
 <p>Vous pouvez faire de même avec les boucles dont le corps se réduit à une
 seule instruction. Mais attention, ceci peut être dangereux si on enchaîne
 les <tt>if</tt> comme dans l'exemple suivant. </p>
-<pre>if (estSurBiscuit())    
+<pre><code class="code-container">if (estSurBiscuit())    
      if (x == 5)
           gauche();
 else
      droite();
-[!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
+[!c]avancePas();[/!][!java|scala]avance();[/!]</code></pre>
 
 <p>En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET
 que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une
 autre valeur. Autrement dit, la buggle lit le code précédent comme suit
 (notez que le <tt>else</tt> est décalé vers la droite par rapport à
 précédemment) :</p>
-<pre>if (estSurBiscuit())    
+<pre><code class="code-container">if (estSurBiscuit())    
         if (x == 5)
             gauche();
         else
             droite();
-[!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
+[!c]avancePas();[/!][!java|scala]avance();[/!]</code></pre>
 
 <p>La première leçon, c'est que l'indentation est très importante pour que les
 humains puissent comprendre le code, mais elle ne change pas la
@@ -58,7 +58,7 @@ professeur (pour qu'il le note ou pour lui poser une question), ou si vous
 comptez réutiliser votre code plus tard, ou même si vous devez debugger
 votre propre code après l'avoir écrit.</p> 
 
-<pre>if (estSurBiscuit()) if (x == 5) gauche(); else droite(); [!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
+<pre><code class="code-container">if (estSurBiscuit()) if (x == 5) gauche(); else droite(); [!c]avancePas();[/!][!java|scala]avance();[/!]</code></pre>
 
 <p>La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours
 au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il
@@ -69,16 +69,16 @@ ambiguïté.</p>
 <h3>Enchaînements de conditionnelles</h3>
 
 <p>Il arrive que l'on veuille demander à la buggle quelque chose similaire à :</p> 
-<pre>s'il pleut, prend un parapluie; 
+<pre><code class="code-container">s'il pleut, prend un parapluie; 
 si non, s'il fait chaud, prend une bouteille d'eau; 
-si non, si nous sommes le 14 juillet, prend un drapeau français</pre>
+si non, si nous sommes le 14 juillet, prend un drapeau français</code></pre>
 
 <p>Le piège étant que nous voudrions qu'au plus l'une de ces actions soient
 réalisées. C'est à dire, que s'il pleut un 14 juillet très chaud, on ne veut
 pas que la buggle sorte avec un parapluie, de l'eau et un drapeau, mais
 juste avec un parapluie. Le code suivant est donc faux.</p>
 
-<pre>[!java|c|scala]if (ilPleut())
+<pre><code class="code-container">[!java|c|scala]if (ilPleut())
     prendreParapluie();
 if (ilFaitChaud())
     prendreDeLEau();
@@ -88,7 +88,7 @@ if (sommes14Juillet())
 if ilFaitChaud():
     prendreDeLEau()
 if sommes14Juillet():
-    prendreDrapeau()[/!]</pre>
+    prendreDrapeau()[/!]</code></pre>
 
 
 <p>En effet, toutes les conditions sont évaluées les unes après les autres, et
@@ -96,7 +96,7 @@ on risque donc d'aller au défilé un jour de pluie. À la place, il faut donc
 écrire quelque chose comme ce qui suit pour s'assurer que si l'on trouve une
 condition vraie, on n'évalue pas les suivants.</p>
 
-<pre>[!java|scala|c]if (ilPleut()) {
+<pre><code class="code-container">[!java|scala|c]if (ilPleut()) {
     prendreParapluie();
 } else {
     if (ilFaitChaud()) {
@@ -113,7 +113,7 @@ else:
         prendreDeLEau()
     else:
         if sommes14Juillet():
-            prendreDrapeau()[/!]</pre>
+            prendreDrapeau()[/!]</code></pre>
 
 
 <p>Une telle cascade de conditionnelles est un peu difficile à lire, et il est
@@ -125,7 +125,7 @@ ces <tt>else if</tt> (mais pas [!thelang]).[/!]
 (abréviation de «else if») pour expliciter ces branches «sinon si».[/!]
 </p>
 
-<pre>[!c|java|scala]if (ilPleut()) { 
+<pre><code class="code-container">[!c|java|scala]if (ilPleut()) { 
     prendreParapluie();
 } else if (ilFaitChaud()) {
     prendreDeLEau();
@@ -136,7 +136,7 @@ ces <tt>else if</tt> (mais pas [!thelang]).[/!]
 elif ilFaitChaud():
     prendreDeLEau()
 elif sommes14Juillet():
-    prendreDrapeau()[/!]</pre>
+    prendreDrapeau()[/!]</code></pre>
 
 <h3>Les graffitis dans le monde des buggles</h3>
 

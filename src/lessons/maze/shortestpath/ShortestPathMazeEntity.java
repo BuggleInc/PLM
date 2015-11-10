@@ -25,6 +25,7 @@ public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggl
 
 	void setIndication(int x, int y, int i) {
 		BuggleWorldCell c = ((BuggleWorld) world).getCell(x,y);
+		generateOperationsChangeCellContent(c, c.getContent(), i+"", c.hasContent(), true);
 		c.setContent(""+i);
 	}
 	int getIndication(int x, int y) {

@@ -14,6 +14,7 @@ public class SlugHunting extends ExerciseTemplated {
 
 	public SlugHunting(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 

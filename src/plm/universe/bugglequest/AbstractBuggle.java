@@ -136,10 +136,12 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setBodyColor(Color c) {
 		if (c != null) {
+			addOperation(new ChangeBuggleBodyColor(this, this.bodyColor, c));
 			this.bodyColor = c;
 			world.notifyWorldUpdatesListeners();
 			setChanged();
 			notifyObservers(BUGGLE_COLOR);
+			stepUI();
 		}
 	}
 
@@ -480,10 +482,15 @@ public abstract class AbstractBuggle extends Entity {
 		boolean oldHasContent = getCell().hasContent();
 		getCell().addContent(msg);
 		String newContent = readMessage();
-		addOperation(new ChangeCellContent(getCell(), oldContent, newContent, getGame().i18n));
-		addOperation(new ChangeCellHasContent(getCell(), oldHasContent, true));
+		generateOperationsChangeCellContent(getCell(), oldContent, newContent, oldHasContent, true);
+	}
+	
+	public void generateOperationsChangeCellContent(BuggleWorldCell cell, String oldContent, String newContent, boolean oldHasContent, boolean newHasContent) {
+		addOperation(new ChangeCellContent(cell, oldContent, newContent, getGame().i18n));
+		addOperation(new ChangeCellHasContent(cell, oldHasContent, newHasContent));
 		stepUI();
 	}
+	
 	public void writeMessage(int nb) {
 		writeMessage(""+nb);
 	}

@@ -18,7 +18,8 @@ public class ExecutionProgress {
 	
 	public String compilationError;
 	public String executionError = "";
-	public int passedTests, totalTests=0;
+	public String commonErrorText = "";
+	public int passedTests, totalTests=0, commonErrorID=-1;
 	public Date date = new Date();
 	public ProgrammingLanguage language;
 
@@ -67,7 +68,7 @@ public class ExecutionProgress {
 	public String getMsg(I18n i18n) {
 		String res = "";
 		if(outcome == ExecutionProgress.outcomeKind.PASS) {
-			res = i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)", passedTests);
+			res = i18n.tr("Congratulations, you passed this exercise.({0} tests passed)", passedTests);
 		}
 		else if(outcome == ExecutionProgress.outcomeKind.COMPILE) {
 			res = compilationError;

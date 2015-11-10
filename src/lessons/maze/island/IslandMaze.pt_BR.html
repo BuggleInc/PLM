@@ -1,57 +1,61 @@
 
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Lost between islands</h2>
+<h2>Perdido entre ilhas</h2>
 
-<p>You thought that your algorithm was enough to escape mazes? Well, not every
-mazes...
+<p>Você acha que seu algoritmo é suficiente para escapar de labirintos?
+Bem, não de todos...
 </p>
 
-<p>The <i>wall follower algorithm</i> we used so far only works if the entry
-and the exit are placed near to walls connected to the external wall. But if
-the buggle begins in the middle of the maze, it may exist wall sections
-disconnected from the external wall.
+<p>O <i>algoritmo de seguir paredes</i> que usamos até agora só funciona
+se a entrada e a saída estão próximas de paredes conectadas ao muro
+externo. Mas se o buggle começa na metade do labirinto, podem existir
+sessões de paredes desconectadas da parede externa.
 
-<p>That is why the previous strategy would let the buggle round around for
-ever. Indeed, the maze you should now escape from contains islands, and the
-buggle does not start along one of the external walls. Just give it a try if
-you want: copy your code over, push the run button and see your previous
-solution failing miserabily.</p>
+<p>É por isto que a estratégia anterior pode deixar o buggle dando voltas
+para sempre. Na verdade, o labirinto do qual você deve escapar agora
+contém ilhas, e o buggle não começa próximo de um dos muros
+externos. Experimente se você quiser: copie seu código aqui, aperte o
+botão rodar e veja sua solução anterior falhar vergonhosamente.</p>
 
-<p>The method of following a wall is still good and allow to escape very
-efficiently some sections of the maze, so we do not want to remove it
-entierely. Instead, we want to stop following the wall under some
-conditions. Notice that the baggle lays near to the external border of the
-maze. So, we want to reach the border and then follow that wall. We need for
-example to search for the north wall before following it to the baggle.
+<p>O método de seguir uma parede ainda é bom e permite escapar com muita
+eficiencia de algumas seções do labirinto, logo nós não precisamos
+remover ele inteiramente. Ao invés disto, queremos parar de seguir a
+parede sob certas condições. Observe que o baggle fica próximo da
+borda externa do labirinto. Logo, queremos chegar na borda e então
+seguir aquela parede. Precisamos, por exemplo, buscar a parede norte
+antes de seguí-la até o baggle.
 
-<p>To find the north wall, you simply run to the north as long as it's
-possible, and when facing an obstacle, you avoid it (using previous method).</p>
+<p>Para encontrar a parede norte, você simplesmente anda para o norte
+enquanto for possível, e quando encontrar um obstáculo, você deve
+desviar dele (usando o método anterior).</p>
 
-<div class="tip" id="tip-1" alt="I'm lost now, please give me some extra indications">
-	Our new run() method will consist in two modes: our buggle will alternate
-between the "north runner mode" and the "left follower mode". You begin in
-"north runner mode", and switch to "left follower" when you have a wall at
-the north (do not forget to make sure you have a wall at your left before
-switching to "left follower" mode). You switch to "north runner" as soon as
-your buggle is facing north and is not in front of a wall during its trip
-around its left wall. The easiest way to write such a state machine is
-something like 
+<div class="tip" id="tip-1" alt="Estou perdido agora, por favor me dê algumas orientações extra">
+	Nosso novo método run() consistirá de dois modos: nosso buggle vai
+alternar entra o "modo de andar para o norte" e o "modo de seguir à
+esquerda". Você começa no "modo de andar para o norte", e alternar
+para "seguir à esquerda" quando você tiver uma parede a norte (não
+esqueça de garantir que você tem uma parede à sua esquerda antes de
+alternar para o modo "seguir a esquerda"). Você alterna para "andar
+para o norte" assim que seu buggle estiver olhando para o norte e não
+estiver em frente a um muro durante sua viagem ao redor de seu muro à
+esquerda. A forma mais fácil de escrever tal máquina de estado é algo
+como 
 <pre>[!scala]var state=0;
 state match  {
-  case 0 => // North runner
+  case 0 => // para o norte
      ...
      state = 1;
-  case 1 => // Left follower
+  case 1 => // seguir a esquerda
      ...
      state = 0;
-  case _ => println("This case should not happen. Please fix me")
+  case _ => println("Isto não deveria acontecer. Favor me conserte")
 }[/!][!java|c]int state=0;
 switch (state) {
-  case 0: // North runner
+  case 0: // para o norte
      ...
      state = 1;
      break;
-  case 1: // Left follower
+  case 1: // seguir a esquerda
      ...
      state = 0;
      break;
@@ -63,13 +67,13 @@ else: # left follower
      ...
      northRunner = True[/!]</pre>
      
-[!scala]<br/>Don't forget the default case (matching _), or scala will issue an error
-since your matching would be incomplete.[/!]
+[!scala]<br/>Não esqueça do caso default (matching _), ou scala vai dar erro já que
+o seu "matching" vai estar incompleto.[/!]
 </div>
 	
-<p>Don't forget to let the buggle pick the baggle at the end of your code.</p>
+<p>Não esqueça de deixar o buggle pegar o baggle no final do código.</p>
 	
 	
-<p>You're up. That should be enough for you to figure out how to escape this
-maze, but if not, you can always request for the tip. But you do not need
-any more help, do you?</p>
+<p>Tudo pronto. Isto deve ser o suficiente para você descobrir como sair
+deste labirinto, e se este não for o caso, você sempre pode pedir uma
+dica. Mas você não vai precisar, correto?</p>

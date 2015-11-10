@@ -16,6 +16,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
+import plm.core.utils.FileUtils;
 
 public class GitSpy implements ProgressSpyListener {
 
@@ -29,11 +30,11 @@ public class GitSpy implements ProgressSpyListener {
 	private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
 	private File repoDir;
 
-	public GitSpy(Game game, File path, String userUUID) throws IOException, GitAPIException {
+	public GitSpy(Game game, File path, GitUtils g, String userUUID) throws IOException, GitAPIException {
 		this.game = game;
 		this.plmDir = path;
 		this.userUUID = userUUID;
-		gitUtils = new GitUtils(game);
+		gitUtils = g;
 		userHasChanged();
 	}
 
@@ -42,7 +43,7 @@ public class GitSpy implements ProgressSpyListener {
 	 */
 	public void userHasChanged() {
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
-		
+
 		try {
 			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
 
@@ -52,7 +53,7 @@ public class GitSpy implements ProgressSpyListener {
 				// We must create an initial commit before creating a specific branch for the user
 				gitUtils.createInitialCommit();
 			}
-			
+
 			gitUtils.openRepo(repoDir);
 			if (gitUtils.getRepoRef(userBranch) != null) {
 				gitUtils.checkoutUserBranch(userBranch);
@@ -60,7 +61,7 @@ public class GitSpy implements ProgressSpyListener {
 			else {
 				gitUtils.createLocalUserBranch(userBranch);
 			}
-			
+
 			// try to get the branch as stored remotely
 			if (gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
 				gitUtils.mergeRemoteIntoLocalBranch(userBranch);
@@ -74,7 +75,7 @@ public class GitSpy implements ProgressSpyListener {
 
 			// Log into the git that the PLM just started
 			gitUtils.commit(writePLMStartedOrLeavedCommitMessage("started"));
-			
+
 			// and push to ensure that everything remains in sync
 			gitUtils.maybePushToUserBranch(userBranch, progress); 
 		} catch (Exception e) {
@@ -91,14 +92,14 @@ public class GitSpy implements ProgressSpyListener {
 			// if this case might happen, then you should also checkout back the current user branch...
 			//GitUtils gitUtils = new GitUtils(git);
 			//gitUtils.checkoutUserBranch(game.getUsers().getCurrentUser(), progress);
-			
+
 			// Change the files locally
 			createFiles(exo);
 			checkSuccess(exo);
-			
+
 			String commitMsg = writeCommitMessage(exo, null, "executed", new JSONObject());
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
-		
+
 			gitUtils.removeFiles();
 			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
 		} catch (GitAPIException e) {
@@ -118,7 +119,7 @@ public class GitSpy implements ProgressSpyListener {
 			try {
 				String commitMsg = writeCommitMessage(lastExo, exo, "switched", new JSONObject());
 				String userBranch = "PLM"+GitUtils.sha1(userUUID);
-			
+
 				gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
 			} catch (GitAPIException e) {
 				e.printStackTrace();
@@ -133,7 +134,7 @@ public class GitSpy implements ProgressSpyListener {
 
 			String commitMsg = writeCommitMessage(exo, null, "reverted", new JSONObject());
 			String userBranch = "PLM"+GitUtils.sha1(userUUID);
-		
+
 			gitUtils.removeFiles();
 			gitUtils.commit(commitMsg);
 			gitUtils.maybePushToUserBranch(userBranch, progress);
@@ -141,7 +142,7 @@ public class GitSpy implements ProgressSpyListener {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void heartbeat() {
 	}
@@ -154,11 +155,11 @@ public class GitSpy implements ProgressSpyListener {
 	@Override
 	public void leave() {	
 		game.getLogger().log(getGame().i18n.tr("Pushing to the remote repository before exiting"));
-		
+
 		// push to the remote repository
 		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
-		
+
 		try {
 			gitUtils.addFiles();
 			gitUtils.commit(commitMsg);
@@ -168,7 +169,7 @@ public class GitSpy implements ProgressSpyListener {
 			System.err.println("An error occurred while quitting the program, please report the following issue:");
 			e.printStackTrace();
 		}
-		
+
 		gitUtils.dispose();
 	}
 
@@ -183,29 +184,32 @@ public class GitSpy implements ProgressSpyListener {
 		// Retrieve appropriate parameters regarding the current exercise
 		logmsg.put("course", game.getCourseID());
 		logmsg.put("exo", exoFrom.getId());
-		logmsg.put("lang", lastResult.language.toString());
-		
-		if (lastResult.outcome != null) {
-			switch (lastResult.outcome) {
-			case COMPILE:  logmsg.put("outcome", "compile");  break;
-			case FAIL:     logmsg.put("outcome", "fail");     break;
-			case PASS:     logmsg.put("outcome", "pass");     break;
-			default:       logmsg.put("outcome", "UNKNOWN");  break;
+
+		if(lastResult != null) {
+			if(lastResult.language != null) {
+				logmsg.put("lang", lastResult.language.toString());
 			}
+			if (lastResult.outcome != null) {
+				switch (lastResult.outcome) {
+				case COMPILE:  logmsg.put("outcome", "compile");  break;
+				case FAIL:     logmsg.put("outcome", "fail");     break;
+				case PASS:     logmsg.put("outcome", "pass");     break;
+				default:       logmsg.put("outcome", "UNKNOWN");  break;
+				}
+			}
+	
+			if (lastResult.totalTests > 0) {
+				logmsg.put("passedtests", lastResult.passedTests + "");
+				logmsg.put("totaltests", lastResult.totalTests + "");
+			}
+	
+			if (lastResult.feedbackDifficulty != null)
+				logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
+			if (lastResult.feedbackInterest != null)
+				logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
+			if (lastResult.feedback != null)
+				logmsg.put("exoComment", exoFrom.lastResult.feedback);
 		}
-		
-		if (lastResult.totalTests > 0) {
-			logmsg.put("passedtests", lastResult.passedTests + "");
-			logmsg.put("totaltests", lastResult.totalTests + "");
-		}
-		
-		if (exoFrom.lastResult.feedbackDifficulty != null)
-			logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
-		if (exoFrom.lastResult.feedbackInterest != null)
-			logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
-		if (exoFrom.lastResult.feedback != null)
-			logmsg.put("exoComment", exoFrom.lastResult.feedback);
-		
 		if (exoTo != null)
 			logmsg.put("switchto", exoTo.getId());
 
@@ -227,7 +231,9 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("java", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
 		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
 		jsonObject.put("plm", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
-
+		jsonObject.put("webplm.version", game.getLocalProperty("webplm.version"));
+		jsonObject.put("webplm.user-agent", game.getLocalProperty("webplm.user-agent"));
+		
 		// Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
 		return "{\"kind\":\""+kind+"\","+jsonObject.toString().substring(1);
 	}
@@ -249,13 +255,23 @@ public class GitSpy implements ProgressSpyListener {
 		File errorFile = new File(repoDir, exo.getId() + ext + ".error");
 		File correctionFile = new File(repoDir, exo.getId() + ext + ".correction");
 		File missionFile = new File(repoDir, exo.getId() + ext + ".mission");
-		
+
 		try {
 			// write the code of the exercise into the file
 			FileWriter fwExo = new FileWriter(exoFile.getAbsoluteFile());
 			BufferedWriter bwExo = new BufferedWriter(fwExo);
 			bwExo.write(exoCode == null ? "" : exoCode);
 			bwExo.close();
+
+			// write the workspace code of the exercise into the file if it exist
+			if(lastResult.language.getVisualFile()){
+				String wksCode = exo.getSourceFile(lastResult.language, lastResult.language.getVisualIndex()).getBody();
+				File wksFile = new File(repoDir, exo.getId() + ext + lastResult.language.getVisualExt());
+				FileWriter fwWks = new FileWriter(wksFile.getAbsoluteFile());
+				BufferedWriter bwWks = new BufferedWriter(fwWks);
+				bwWks.write(exoCode == null ? "" : wksCode);
+				bwWks.close();
+			}
 
 			// write the compilation error of the exercise into the file
 			FileWriter fwError = new FileWriter(errorFile.getAbsoluteFile());
@@ -280,14 +296,15 @@ public class GitSpy implements ProgressSpyListener {
 	}
 
 	private void deleteFiles(Exercise exo) {
-		
+
 		List<String> suffixes = new ArrayList<String>();
 		suffixes.add(".code");
+		suffixes.add(".workspace");
 		suffixes.add(".error");
 		suffixes.add(".correction");
 		suffixes.add(".mission");
 		suffixes.add(".DONE");
-		
+
 		for(ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			String ext = "." + pl.getExt();	
 			for(String suffix:suffixes) {
@@ -298,7 +315,7 @@ public class GitSpy implements ProgressSpyListener {
 			}
 		}	
 	}
-	
+
 	/**
 	 * Create some files to know how many exercises there is by programming languages for this lesson. Also add a file
 	 * to know if the exercise has been done correctly.
@@ -335,7 +352,7 @@ public class GitSpy implements ProgressSpyListener {
 	public void cancelCallForHelp() {
 		recordHelpInGit("cancelCallForHelp",null);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void recordHelpInGit(String evt_type, String studentInput) {
 		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
@@ -343,7 +360,7 @@ public class GitSpy implements ProgressSpyListener {
 		String exoCode = lastExo.getSourceFile(execProg.language, 0).getBody();
 		String ext = "." + game.getProgrammingLanguage().getExt();
 		File exoFile = new File(repoDir, lastExo.getId() + ext + ".code");
-		
+
 		try {
 			// write the code of the exercise into the file
 			FileWriter fwExo = new FileWriter(exoFile.getAbsoluteFile());
@@ -353,12 +370,12 @@ public class GitSpy implements ProgressSpyListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			
+
 		JSONObject msg = new JSONObject();
 		msg.put("studentInput", studentInput);
 		String commitMsg = writeCommitMessage(lastExo, null, evt_type, msg);
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
-		
+
 		// push to the remote repository
 		try {
 			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
@@ -368,14 +385,14 @@ public class GitSpy implements ProgressSpyListener {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public void readTip(String id, String mission) {
 		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
 		String ext = "." + game.getProgrammingLanguage().getExt();
 		File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
-		
+
 		try {
 			// write the instructions of the exercise into the file
 			FileWriter fwMission = new FileWriter(missionFile.getAbsoluteFile());
@@ -385,12 +402,62 @@ public class GitSpy implements ProgressSpyListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		JSONObject msg = new JSONObject();
 		msg.put("id", id);
 		String commitMsg = writeCommitMessage(lastExo, null, "readTip", msg);
 		String userBranch = "PLM"+GitUtils.sha1(userUUID);
+
+		try {
+			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
+		} catch (GitAPIException e) {
+			System.err.println("An error occurred while pushing the fact that you took a look at the hint...\n"
+					+ "Please send a bug report with the following trace:");
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void commonErrorFeedback(int commonErrorID, int accuracy, int help, String comment) {
+		Exercise lastExo = (Exercise) game.getCurrentLesson().getCurrentExercise();
+		String ext = "." + game.getLocale();
+		File commonErrHTML = new File(repoDir, lastExo.getId() + ext + ".commonErrHTML");
+		File commonErrJAVA = new File(repoDir, lastExo.getId() + ".commonErrJAVA");
 		
+		String path = Game.JAVA.nameOfCommonError(lastExo, commonErrorID).replaceAll("\\.", "/");
+		String commonErrorText = "", commonErrorCode = "";
+		try {
+			StringBuffer sbHtml = FileUtils.readContentAsText(path, getGame().getLocale(), "html", true);
+			StringBuffer sbJava = FileUtils.readContentAsText(path, null, "java", false);
+			commonErrorText = sbHtml.toString();
+			commonErrorCode = sbJava.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			// write the instructions of the exercise into the file
+			FileWriter fwHtml = new FileWriter(commonErrHTML.getAbsoluteFile());
+			BufferedWriter bwHtml = new BufferedWriter(fwHtml);
+			bwHtml.write(commonErrorText);
+			bwHtml.close();
+			FileWriter fwJava = new FileWriter(commonErrJAVA.getAbsoluteFile());
+			BufferedWriter bwJava = new BufferedWriter(fwJava);
+			bwJava.write(commonErrorCode);
+			bwJava.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		JSONObject msg = new JSONObject();
+		msg.put("commonErrorID", commonErrorID);
+		msg.put("accuracy", accuracy);
+		msg.put("help", help);
+		msg.put("comment", comment);
+		msg.put("exoID", lastExo.getId());
+		String commitMsg = writeCommitMessage(lastExo, null, "commonErrorFeedback", msg);
+		String userBranch = "PLM"+GitUtils.sha1(userUUID);
+
 		try {
 			gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
 		} catch (GitAPIException e) {

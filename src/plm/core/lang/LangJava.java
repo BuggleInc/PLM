@@ -52,7 +52,7 @@ import plm.universe.Entity;
 
 public class LangJava extends JVMCompiledLang {
 	public LangJava(boolean isDebugEnabled) {
-		super("Java","java", isDebugEnabled);
+		super("Java", "java", isDebugEnabled);
 	}
 
 	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));

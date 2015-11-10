@@ -95,6 +95,9 @@ public class TurtleWorld extends World {
 		return shapes.iterator();
 	}
 	
+	public Iterator<SizeHint> sizeHints() {
+		return sizeHints.iterator();
+	}
 
 	public double getHeight() {
 		return height;

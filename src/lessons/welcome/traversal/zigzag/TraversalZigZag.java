@@ -14,6 +14,7 @@ public class TraversalZigZag extends ExerciseTemplated {
 	public TraversalZigZag(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "ZigZag";
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Grid",7,7);
 		for (int i=0; i<7;i++) {

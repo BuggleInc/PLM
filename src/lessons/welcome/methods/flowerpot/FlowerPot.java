@@ -12,6 +12,7 @@ public class FlowerPot extends ExerciseTemplated {
 
 	public FlowerPot(Game game, Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(game, lesson);
+		setToolbox();
 		BuggleWorld[] myWorlds = new BuggleWorld[] {
 				(BuggleWorld) BuggleWorld.newFromFile(game, "lessons/welcome/methods/flowerpot/FlowerPot")
 		};

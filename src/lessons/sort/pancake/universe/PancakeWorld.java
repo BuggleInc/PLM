@@ -1,5 +1,7 @@
 package lessons.sort.pancake.universe;
 
+import java.util.Random;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import plm.core.lang.ProgrammingLanguage;
@@ -38,6 +40,8 @@ public class PancakeWorld extends World {
 	 */
 	public PancakeWorld(Game game, String name, int size, boolean burnedPancake) {
 		super(game, name);
+		Random r = new Random(0);
+		
 		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */
@@ -49,11 +53,11 @@ public class PancakeWorld extends World {
 		wasRandom = true;
 		while (isSorted()) 
 			for ( int rank = 0 ; rank < size ; rank++) {			
-				if ( Math.random() > 0.5) // Flipping time !
+				if ( r.nextDouble() > 0.5) // Flipping time !
 					pancakeStack[rank].flip(); 
 
 				if ( Math.random() > 0.5) // Swapping time !
-					swap(rank, (int)(Math.random()*size));
+					swap(rank, (int)(r.nextDouble()*size));
 			}
 		
 		this.burnedWorld = burnedPancake;

@@ -13,6 +13,7 @@ public class MethodsPictureLarge extends ExerciseTemplated {
 
 	public MethodsPictureLarge(Game game, Lesson lesson) {
 		super(game, lesson);
+		setToolbox();
 		BuggleWorld myWorld =  new BuggleWorld(game, "World",45,45);
 		myWorld.setDelay(5);
 		new SimpleBuggle(myWorld, "Picasso", 0, 44, Direction.EAST, Color.black, Color.lightGray);

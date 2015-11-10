@@ -39,14 +39,6 @@ import plm.universe.bat.BatWorld;
 public class ExoTest {
 
 	static private Game g;
-	
-	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
-		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
-		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
-		"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi",
-		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
-		"lessons.bat.string1", "lessons.lander",
-		};
 
 	@BeforeClass
 	static public void setUpClass() {
@@ -57,16 +49,13 @@ public class ExoTest {
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
 		String userUUID = UUID.randomUUID().toString();
-		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), "Java", false);
+		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), Game.JAVA.getLang(), false);
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
-
-		/* Compute the answers with the java entities */
-		g.setProgramingLanguage(Game.JAVA);
 		
 		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
-		for (String lessonName : lessonNamesToTest) { 
+		for (String lessonName : Game.lessonsName) { 
 			if(g.switchLesson(lessonName, true)==null) {
 				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
 				System.exit(1);
@@ -104,6 +93,7 @@ public class ExoTest {
 	
 		// disable delay on world execution
 		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
+			exo.setNbError(-1);
 			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
 		}
 	}
@@ -141,12 +131,13 @@ public class ExoTest {
 			StudentOrCorrection what = StudentOrCorrection.CORRECTION;
 			if (lang == Game.JAVA || lang == Game.SCALA || lang == Game.C)
 				what = StudentOrCorrection.STUDENT;
+			exo.setNbError(-1);
 			exo.mutateEntities(WorldKind.CURRENT, what);
 			
 			if (exo instanceof BatExercise)
 				for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
 					t.objectiveTest = false; // we want to set the result for real, not the expected
-			
+			exo.setNbError(-1);
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
 					lang.runEntity(ent,exo.lastResult, g.i18n);

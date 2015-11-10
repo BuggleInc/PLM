@@ -43,20 +43,6 @@ public class Main extends Lesson {
 		addExercise(new TurtleGraphicalExercise(getGame(), this,"Kerr36",       300,300, 150,150));
 		addExercise(new TurtleGraphicalExercise(getGame(), this,"Kerr40",       300,300, 150,150));
 		addExercise(new TurtleGraphicalExercise(getGame(), this,"Flower3",      300,300, 150,150));
-		
-		setCurrentExercise(currentExercise); // recompute the missions
-	}
-
-	@Override
-	public void setCurrentExercise(Lecture exo) {
-		super.setCurrentExercise(exo);
-		try {
-			Game.waitInitThreads();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		for (Lecture l : exercises())
-			l.loadHTMLMission();		
 	}
 }
 
@@ -82,26 +68,5 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 	}
 
 	@Override
-	public void loadHTMLMission() {
-		StringBuffer res = new StringBuffer();
-		int exoCount = 0;
-		for (Lecture l : getLesson().exercises()) {
-			Exercise exo = (Exercise) l;
-			boolean isSelected = exo.equals(getLesson().getCurrentExercise());
-			boolean isPassed = getGame().studentWork.getPassed(exo, getGame().getProgrammingLanguage());
-			
-			String path = "TurtleGraphics/"+exo.getId()+(isSelected?"-selected":"")+(isPassed?"-passed":"")+".png";
-			    
-			String lessonPart = "lessons."+getLesson().getId().replace("/",".").replace(".Main","");
-			String exoPart = exo.getLocalId(); 
-			res.append("<a href=\"plm://"+lessonPart+"/"+exoPart+"\">");
-			res.append("<img src=\"");
-			res.append(path);
-			res.append("\"></a> ");
-			exoCount++;
-			if (exoCount % 5 == 0)
-				res.append("<br> ");
-		}
-		setMission(res.toString());
-	}
+	public void loadHTMLMission() {}
 }

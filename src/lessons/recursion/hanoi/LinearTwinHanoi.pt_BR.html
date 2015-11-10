@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Torres gêmeas de Hanoi Lineares</h2>
+
+<p>Esta é uma mistura entre os problemas "Split", Intercalado e linear. Temos
+duas pilhas de discos, em três varas. Devemos trocar a posição das pilhas
+respeitando as restrições clássicas de movimento (um disco por vez, disco
+grande não pode ficar sobre disco pequeno) e a restrição do movimento linear
+(proibido mudança diretamente da vara mais à esquerda para a vara mais à
+direita).</p>
+
+<p>Você vai usar três funções recursivas:</p>
+<ul>
+ <li><b>moveDouble(k,from, to)</b>: move uma pilha intercalada de k pares de
+discos, sem mudar as posições relativas dos discos de mesmo tamanho. Como no
+problema de hanoi "Split", uma pilha intercalada alterna discos brancos e
+pretos de cada tamanho. Esta função não é completamente nova: você escreveu
+uma versão com 4 varas (mas usando apenas 3 delas) para a primeira versão do
+problema de hanoi "split".</li>
+ <li><b>gather(k)</b>: da situação inicial do caso "separado", constroi na vara
+#2 uma
+pilha intercalada de k pares de discos. Você pode parametrizar sua
+função de forma que ela possa ser usada para obter o disco
+de qualquer vara passado como parâmetro, mas na prática, sua função
+vai apenas ser usada para obter na última vara.</li>
+ <li><b>scatter(k)</b>: de uma situação onde k pares de discos são
+intercalados na vara #0, separe eles movendo os discos
+brancos para a vara #1 e os pretos para a vara #2.</li>
+</ul>
+
+<p>Em <code>gather()</code>, a chamada recursiva vem antes das duas
+chamadas a <code>moveDouble()</code> enquanto em
+<code>scatter()</code>, as chamadas para <code>moveDouble()</code> vem
+depois da chamada recursiva. A função principal que você deve escrever
+não é recursiva, mas simplesmente obtem quase todos os discos, move os
+discos restantes diretamente, e então espalha ("scatters") de volta os
+discos menores.</p>
+
+<p>A linearidade naturalmente induz alguma complexidade extra pois você
+tem que decompor cada movimento entre as varas 0 e 2. Eu ainda estou
+confiante na sua capacidade de vencer este desafio :)</p> 
+
+<p>Observe que foi provado que o algoritmo requerido é ótimo para este
+problema, então você não precisa "fiddle" a performance desta vez.</p>

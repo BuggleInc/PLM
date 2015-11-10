@@ -14,6 +14,7 @@ public class Moria extends ExerciseTemplated {
 	public Moria(Game game, Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(game, lesson);
 		tabName = "DwarfCode";
+		this.setToolbox();
 		
 		/* Create initial situation */
 		World[] myWorlds = new World[] {
@@ -24,4 +25,5 @@ public class Moria extends ExerciseTemplated {
 		
 		setup(myWorlds);
 	}
+	
 }

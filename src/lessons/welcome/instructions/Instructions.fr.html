@@ -13,7 +13,7 @@ la machine. C'est assez comparable à une recette de cuisine où l'on dit
 <i>cassez les œufs puis ajoutez du sel puis mélangez le tout puis faites
 cuire</i>. Dans les programmes, de tels instructions  sont appelées
 fonctions ou méthodes, et vous devez les doter de parenthèses:</p>  
-		<pre>nomDeLaMethode()</pre>
+		<pre><code class="code-container">nomDeLaMethode()</code></pre>
 		
    <p>[!thelang] veut que les instructions soient séparées [!python|scala]soit
 [/!]par des points-virgules (;)[!python|scala], soit par des retours à la
@@ -22,21 +22,19 @@ L'exemple ci-dessus de recette s'écrirait donc à peu près comme ci-dessous.
 [!python|scala] (Vous pouvez aussi ajouter des points-virgules en fin de
 lignes, mais ce n'est pas indispensable)[/!].</p>
     
-<pre>
-casserLesOeufs()[!java|c];[/!]
+<pre><code class="code-container">casserLesOeufs()[!java|c];[/!]
 ajouterDuSel()[!java|c];[/!]
 melangerLeTout()[!java|c];[/!]
 faireCuire()[!java|c];[/!]
-</pre>
+</code></pre>
     
 [!python|scala]
    <p>Il serait également possible de l'écrire sous la forme suivante, mais placer
 plusieurs instructions sur la même ligne est généralement considéré comme
 une très mauvaise habitude car cela complique grandement la relecture du
 code après coup.</p>
-<pre>
-casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();
-</pre>
+<pre><code class="code-container">casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();
+</code></pre>
 [/!]
 
   <p>Bien entendu, ces méthodes n'existent pas en [!thelang], mais il serait
@@ -49,22 +47,20 @@ même
 chose que le bouton <b>avance</b> (faire avancer la buggle d'un pas), il
 faut
 écrire dans l'éditeur : </p>
-  <pre>[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]</pre>
+<pre><code class="code-container">[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]</code></pre>
   <p>De même, pour faire l'équivalent des boutons
 <b>[!java|scala|python]recule[/!][!c]reculePas[/!]</b>, <b>gauche</b> et
 <b>droite</b>, il faut utiliser respectivement :</p>
-<pre>
-recule()[!java|c];[/!]
+<pre><code class="code-container">recule()[!java|c];[/!]
 gauche()[!java|c];[/!]
 droite()[!java|c];[/!]
-</pre>
+</code></pre>
 
 	 <p>Le bouton <b>marquer</b> est un peu particulier, puisqu'il correspond à deux
 méthodes : la première lève le crayon, tandis que la seconde le baisse.</p>
-<pre>
-leveBrosse()[!java|c];[/!]
+<pre><code class="code-container">leveBrosse()[!java|c];[/!]
 baisseBrosse()[!java|c];[/!]
-</pre>
+</code></pre>
   <p>La buggle offre d'autres méthodes, présentées dans le menu "Aide/À propos de
 ce monde". Elles seront introduites au fur et à mesure des besoins.</p>
 
@@ -74,19 +70,9 @@ mais pas tellement. L'objectif de votre buggle est simplement de se dessiner
 une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif
 pour voir exactement ce que cela veut dire. 
 
-  <p>Use your brush to mark the ground as you walk. Start marking the ground with
-<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward
-(e.g., to enter your house without marking its ground). The full list of all
-instructions understood by your buggle can be found in "Help/About this
-world".</p>
-
-<h3>After this exercise</h3>
-<p>Quand vous changerez d'exercice, n'oubliez pas l'exercice d'application qui
-suit. Par défaut, il n'est pas visible dans la fenêtre de sélection, et il
-faut ouvrir le sous-arbre pour le voir. Lorsque vous ouvrez la fenêtre de
-sélection des exercices, la plupart d'entre eux sont cachés, comme cela:</p>
-<img src="sub-exercise-folded.png"/> 
-
-<p>Vous devez cliquer sur le petit symbole à gauche de la buggle pour déplier
-l'arbre, comme cela :</p>
-<img src="sub-exercise-unfolded.png"/> 
+  <p>Utilisez votre brosse pour marquer le sol pendant que vous vous
+déplacez. Commencez à marquer le sol avec <code>baisseBrosse()</code>, et
+arrêter avec <code>leveBrosse()</code> ensuite (e.g., pour entrer dans votre
+maison sans marquer son sol). La liste complète des instructions comprises
+par votre buggle peut être affichée en cliquant sur le bouton <i>API</i> de
+la section <i>Éditeur de code</i>.</p>

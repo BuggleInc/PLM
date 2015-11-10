@@ -1,0 +1,37 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Localizar uma área de pouso</h2>
+
+<p>Depois de 200 dias viajando no espaço e comendo cereais você
+finalmente chegou em Marte. Hora de pousar, finalmente!</p>
+
+<p>The lander is on autopilot and all you have to do is look around and tell it
+where to land. The lander must <b>land on a flat zone</b> if you want to
+remain in one piece. You indicate the lander where to land by modifying the
+<code>getLandingZone</code> function so that it returns a
+[!java|scala]<code>Segment</code> representing the zone of your choice.
+
+<p>Um segmento é composto de dois <code>Ponto</code>s, cada um deles
+composto de dois <code>double</code>s. Um segmento é construído com o
+construtor <code>Segment([!java]Point [/!]start[!scala]:Point[/!],
+[!java]Point [/!]end[!scala]:Point[/!])</code>. Um ponto é construído
+com o construtor <code>Point([!java]double [/!]x[!scala]:Double[/!],
+[!java]double [/!]y[!scala]:Double[/!])</code>. As coordenadas de um
+ponto são acessíveis através de seus métodos <code>[!java]double
+[/!]x()[!scala]:Double[/!]</code> e <code>[!java]double
+[/!]y()[!scala]:Double[/!]</code>.</p>[/!] [!python]tupla de duas coordenadas X representando a área
+escolhida.[/!]
+
+<p>Para determinar para qual área retornar, você precisa chamar
+<code>[!java]List&lt;Point&gt;
+[/!]getGround()[!scala]List[Point][/!]</code>, que retorna os vértices
+do perfil do solo como uma lista de
+[!java|scala]<code>Point</code>s[/!] [!python]tuples (x,y)[/!].</p>
+
+<p>Mais um detalhe: Sua função deve retornar uma área plana válida em
+qualquer situação, não apenas para a atualmente vista. Isto é por que
+ele não vai ser testado apenas neste mundo, mas também naquele do
+exercício anterior. Como sempre, você pode ver os outros mundo
+existentes com a combobox apropriada.</p>
+
+<p>Tenha um bom pouso! Não esqueça de vestir se traje espacial quando for sair.</p>

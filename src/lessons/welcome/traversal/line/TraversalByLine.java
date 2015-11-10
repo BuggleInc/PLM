@@ -14,6 +14,7 @@ public class TraversalByLine extends ExerciseTemplated {
 	public TraversalByLine(Game game, Lesson lesson) {
 		super(game, lesson);
 		tabName = "LineByLine";
+		setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(game, "Grid",7,7);
 		for (int i=0; i<7;i++) {

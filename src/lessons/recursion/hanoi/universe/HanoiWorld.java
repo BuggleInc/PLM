@@ -10,8 +10,11 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
 
-/* BEGIN TEMPLATE */
-public class HanoiWorld extends World {	
+public class HanoiWorld extends World {
+	
+	private Vector<HanoiDisk> slots[];
+	public int moveCount = 0;
+	
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)
 	 * 
 	 * There is normally no need to change it, but it must be present. 
@@ -31,50 +34,16 @@ public class HanoiWorld extends World {
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(Game game, String name, Integer[] A, Integer[] B, Integer[] C) {
+	public HanoiWorld(Game game, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
 		super(game, name);
-		setDelay(200); /* Delay (in ms) in default animations */
-		slotsVal = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
-		slotsColor = new Vector[] {new Vector<Color>(), new Vector<Color>(), new Vector<Color>()};
-		
-		for (int i=0; i<A.length; i++) {
-			slotsVal[0].add(A[i]);
-			slotsColor[0].add(Color.yellow);
-		}
-		for (int i=0; i<B.length; i++) { 
-			slotsVal[1].add(B[i]);
-			slotsColor[1].add(Color.yellow);
-		}
-		for (int i=0; i<C.length; i++) { 
-			slotsVal[2].add(C[i]);
-			slotsColor[2].add(Color.yellow);
-		}
+		slots = new Vector[] {A, B, C};
 	}
 
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(Game game, String name, Integer[] A, Integer[] B, Integer[] C, Integer[] D) {
+	public HanoiWorld(Game game, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
 		super(game, name);
 		setDelay(200); /* Delay (in ms) in default animations */
-		slotsVal = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
-		slotsColor = new Vector[] {new Vector<Color>(), new Vector<Color>(), new Vector<Color>(), new Vector<Color>()};
-		
-		for (int i=0; i<A.length; i++) {
-			slotsVal[0].add(A[i]);
-			slotsColor[0].add(Color.yellow);
-		}
-		for (int i=0; i<B.length; i++) { 
-			slotsVal[1].add(B[i]);
-			slotsColor[1].add(Color.yellow);
-		}
-		for (int i=0; i<C.length; i++) { 
-			slotsVal[2].add(C[i]);
-			slotsColor[2].add(Color.yellow);
-		}
-		for (int i=0; i<D.length; i++) {
-			slotsVal[3].add(D[i]);
-			slotsColor[3].add(Color.yellow);
-		}
-
+		slots = new Vector[] {A, B, C, D};		
 	}
 	
 	/** Reset the state of the current world to the one passed in argument
@@ -89,34 +58,30 @@ public class HanoiWorld extends World {
 	@Override
 	public void reset(World w) {
 		HanoiWorld other = (HanoiWorld)w;
-		slotsVal = new Vector[other.slotsVal.length];
-		slotsColor = new Vector[other.slotsColor.length];
-		for (int slot=0;slot<other.slotsVal.length;slot++) {
-			slotsVal[slot] = new Vector<Integer>();
-			slotsColor[slot] = new Vector<Color>();
-			for (int i=0; i<other.slotsVal[slot].size(); i++) {
-				slotsVal[slot].add( other.slotsVal[slot].elementAt(i));
-				slotsColor[slot].add( other.slotsColor[slot].elementAt(i));
+		slots = new Vector[other.slots.length];
+		for (int slot=0;slot<other.slots.length;slot++) {
+			slots[slot] = new Vector<HanoiDisk>();
+			for (int i=0; i<other.slots[slot].size(); i++) {
+				HanoiDisk copy = other.slots[slot].elementAt(i).copy();
+				slots[slot].add(copy);
 			}
 		}
 		moveCount = other.moveCount;
 		super.reset(w);		
 	}
 	
-	/* BEGIN HIDDEN */
 	@Override
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("HanoiWorld "+getName()+": ");
-		for (int s=0;s<slotsVal.length;s++) {
+		for (int s=0;s<slots.length;s++) {
 		sb.append("slot "+s+" [");
-		for (Object i:slotsVal[s].toArray()) 
+		for (Object i:slots[s].toArray()) 
 			sb.append(i+" ");
 		sb.append("]");
 		}
 		return sb.toString();
 	}
-	/* END HIDDEN */
 
 	/** Used to check whether the student code changed the world in the right state -- see exercise 4 */
 	@Override 
@@ -127,11 +92,10 @@ public class HanoiWorld extends World {
 		HanoiWorld other = (HanoiWorld) o;
 		if (this.moveCount != other.moveCount)
 			return false;
-		if (this.slotsVal.length != other.slotsVal.length)
+		if (this.slots.length != other.slots.length)
 			return false;
-		for (int i=0;i<slotsVal.length;i++) {
-			if (!(this.slotsVal  [i].equals(other.slotsVal[i])) ||
-				!(this.slotsColor[i].equals(other.slotsColor[i])))
+		for (int i=0;i<slots.length;i++) {
+			if (!(this.slots[i].equals(other.slots[i])))
 				return false;
 		}
 		/* END HIDDEN */
@@ -145,72 +109,57 @@ public class HanoiWorld extends World {
 			return "This is not a world of Hanoi";
 
 		HanoiWorld other = (HanoiWorld) o;
-		if (slotsVal.length != other.slotsVal.length)
+		if (slots.length != other.slots.length)
 			return "The worlds don't have the same amount of pegs";
 
 		if (other.moveCount != moveCount)
 			res.append(getGame().i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
 
-		for (int slot=0; slot<slotsVal.length; slot++)
-			for ( int pos = 0;pos< Math.max(slotsVal[slot].size(),other.slotsVal[slot].size()) ; pos++) {
-				String thisVal = pos >=  this.slotsVal[slot].size()?"--": this.slotsVal[slot].get(pos).toString();
-				String otherVal= pos >= other.slotsVal[slot].size()?"--":other.slotsVal[slot].get(pos).toString();
+		for (int slot=0; slot<slots.length; slot++)
+			for ( int pos = 0;pos< Math.max(slots[slot].size(),other.slots[slot].size()) ; pos++) {
+				String thisVal = pos >=  this.slots[slot].size()?"--": this.slots[slot].get(pos).toString();
+				String otherVal= pos >= other.slots[slot].size()?"--":other.slots[slot].get(pos).toString();
 				if (!thisVal.equals(otherVal)) {
 					res.append(getGame().i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisVal,otherVal));
-				} else {
-					Color thisColor = pos >=   this.slotsColor[slot].size()?null: this.slotsColor[slot].get(pos);
-					Color otherColor= pos >=  other.slotsColor[slot].size()?null:other.slotsColor[slot].get(pos);
-					if (!thisColor.equals(otherColor)) 
-						res.append(getGame().i18n.tr(" Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisColor,otherColor));						
 				}
 			}
 		return res.toString();
 	}
 	
 	/* Here comes the world logic */
-	/* BEGIN HIDDEN */
-	private Vector<Integer> slotsVal[];
-	private Vector<Color> slotsColor[];
-	public int moveCount = 0;
-	
-	/** This function is used by the view to retrieve the data to display */
-	protected Integer[] values(Integer	 i) {
-		return slotsVal[i].toArray(new Integer[slotsVal[i].size()]);
-	}
 	
 	/** This is the main function of the public interface 
 	 * @throws IllegalArgumentException if your move is not valid */
 	public void move(Integer src, Integer dst) {
-		if (src < 0 || src >= slotsVal.length || dst < 0 || dst >= slotsVal.length) 
+		if (src < 0 || src >= slots.length || dst < 0 || dst >= slots.length) 
 			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotAmount()-1));
 		if (src == dst)
 			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from slot {0} to itself",src));
-		if (slotsVal[src].size() == 0)
+		if (slots[src].size() == 0)
 			throw new IllegalArgumentException(getGame().i18n.tr("No disc to move from slot {0}",src));
 		
-		if (slotsVal[dst].size() > 0 &&
-				slotsVal[src].lastElement() > slotsVal[dst].lastElement())
+		if (slots[dst].size() > 0 &&
+				slots[src].lastElement().getSize() > slots[dst].lastElement().getSize())
 			throw new IllegalArgumentException(
 					getGame().i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
-							src,dst,slotsVal[src].lastElement(),slotsVal[dst].lastElement()));
+							src,dst,slots[src].lastElement().getSize(),slots[dst].lastElement().getSize()));
 		
 		moveCount  ++;
-		slotsVal[dst]  .add( slotsVal[src]  .remove(slotsVal[src].size()-1) );
-		slotsColor[dst].add( slotsColor[src].remove(slotsColor[src].size()-1) );
+		slots[dst].add(slots[src].remove(slots[src].size()-1));
 	}
 	public int getSlotAmount() {
-		return slotsVal.length;
+		return slots.length;
 	}
 	public int getSlotSize(int slot) {
-		return slotsVal[slot].size();
+		return slots[slot].size();
 	}
 	public int getRadius(int slot) {
-		return slotsVal[slot].isEmpty()?99:slotsVal[slot].lastElement();
+		return slots[slot].isEmpty()?99:slots[slot].lastElement().getSize();
 	}
 	
-	public Vector<Integer>[] getSlot()
+	public Vector<HanoiDisk>[] getSlot()
 	{
-		return slotsVal;
+		return slots;
 	}
 	
 	public int getMoveCount()
@@ -221,12 +170,12 @@ public class HanoiWorld extends World {
 	public Color getColor(int slot, int pos) {
 		if (slot >= getSlotAmount() || slot < 0)
 			throw new RuntimeException("Invalid slot: "+slot);
-		if (pos>= slotsColor[slot].size())
-			throw new RuntimeException("Slot "+slot+" is only "+slotsColor[slot].size()+" high; cannot take position "+pos);
-		return slotsColor[slot].get(pos);		
+		if (pos>= slots[slot].size())
+			throw new RuntimeException("Slot "+slot+" is only "+slots[slot].size()+" high; cannot take position "+pos);
+		return slots[slot].get(pos).getColor();		
 	}
 	public void setColor(int slot, int pos, Color c) {
-		slotsColor[slot].set(pos,c);
+		slots[slot].get(pos).setColor(c);
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
