@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2015-07-31 10:14+0200\n"
-"PO-Revision-Date: 2015-08-02 10:39+0200\n"
+"PO-Revision-Date: 2015-11-10 21:05+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1345,7 +1345,7 @@ msgid ""
 "(e.g., to enter your house without marking its ground). The full list of all "
 "instructions understood by your buggle can be found in \"Help/About this "
 "world\"."
-msgstr ""
+msgstr "Utilisez votre brosse pour marquer le sol en marchant. Commencez à marquer le sol avec <code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par exemple pour entrer dans votre maison sans marquer le sol). La liste complète des instructions comprises par votre buggle est accessible dans le menu \"Aide/À propos de ce monde\"."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:75
@@ -17133,9 +17133,6 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
-
-#~ msgid "Backtracking lesson"
-#~ msgstr "Leçon sur le \"backtracking\""
 
 #~ msgid ""
 #~ "This <b>experimental</b> lesson aims at teaching students about "
