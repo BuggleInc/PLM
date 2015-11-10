@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-03 20:37+0200\n"
-"PO-Revision-Date: 2015-01-01 23:44+0100\n"
+"POT-Creation-Date: 2015-11-10 20:50+0100\n"
+"PO-Revision-Date: 2015-11-10 21:08+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -862,13 +862,11 @@ msgstr ""
 msgid "C is still experimental"
 msgstr "C est encore expérimental"
 
-#: src/plm/core/model/HelpServer.java:27
-#: src/plm/core/ui/action/HelpMe.java:130
+#: src/plm/core/model/HelpServer.java:27 src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
 msgstr "Demander de l'aide à l'enseignant"
 
-#: src/plm/core/model/HelpServer.java:29
-#: src/plm/core/ui/action/HelpMe.java:133
+#: src/plm/core/model/HelpServer.java:29 src/plm/core/ui/action/HelpMe.java:133
 #: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
@@ -1265,7 +1263,7 @@ msgid "Copying"
 msgstr "Licence"
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:42
+#: src/plm/core/ui/ExerciseFailedDialog.java:43
 #: src/plm/core/ui/ExercisePassedDialog.java:100
 msgid "Close"
 msgstr "Fermer"
@@ -1379,6 +1377,10 @@ msgid "We learn from failure, not from success!"
 msgstr "Nous apprenons de nos échecs, pas de nos succès !"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:32
+msgid "Success comes after failure"
+msgstr "Le succès vient après l'échec"
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
@@ -1386,7 +1388,7 @@ msgstr ""
 "<i>Le maître s'est trompé plus de fois que le débutant n'a jamais fait<br>\n"
 "d'essais</i>, comme on dit."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
 "(Einstein)."
@@ -1394,7 +1396,7 @@ msgstr ""
 "<i>Ceux qui n'ont pas fait d'erreur de leur vie n'ont jamais rien essayé "
 "<br>de nouveau</i> (Einstein)."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:34
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
 msgid ""
 "<i>Success does not consist in never making mistakes,<br> but in never "
 "making the same one a second time.</i> (Shaw)"
@@ -1402,11 +1404,11 @@ msgstr ""
 "<i>La réussite n'est pas de ne jamais faire d'erreur, <br>mais de ne jamais "
 "faire la même deux fois</i>. (Shaw)"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:37
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Mmm, not quite"
 msgstr "Mmm, pas tout à fait"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:55
+#: src/plm/core/ui/ExerciseFailedDialog.java:56
 #, java-format
 msgid ""
 "<html>You didn''t manage to reach your objective this time. <br>\n"
@@ -1428,7 +1430,7 @@ msgstr ""
 "Si vous ne voyez pas l''erreur, consultez les détails ci-dessous pour<br>\n"
 "une description textuelle des différences entre les deux mondes.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:67
+#: src/plm/core/ui/ExerciseFailedDialog.java:68
 #, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -1441,12 +1443,12 @@ msgstr ""
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:82
-#: src/plm/core/ui/ExerciseFailedDialog.java:89
+#: src/plm/core/ui/ExerciseFailedDialog.java:83
+#: src/plm/core/ui/ExerciseFailedDialog.java:90
 msgid "Details >>"
 msgstr "Détails >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:92
+#: src/plm/core/ui/ExerciseFailedDialog.java:93
 msgid "Details <<"
 msgstr "Détails <<"
 
@@ -2306,57 +2308,55 @@ msgstr "Couleur du pinceau (nom ou r/g/b -- rouge/vert/bleu)"
 
 #: src/plm/core/utils/ColorMapper.java:59
 msgid "black"
-msgstr ""
+msgstr "noir"
 
 #: src/plm/core/utils/ColorMapper.java:60
 msgid "blue"
-msgstr ""
+msgstr "bleu"
 
 #: src/plm/core/utils/ColorMapper.java:61
 msgid "cyan"
-msgstr ""
+msgstr "cyan"
 
 #: src/plm/core/utils/ColorMapper.java:62
 msgid "dark grey"
-msgstr ""
+msgstr "gris foncé"
 
 #: src/plm/core/utils/ColorMapper.java:63
 msgid "grey"
-msgstr ""
+msgstr "gris"
 
 #: src/plm/core/utils/ColorMapper.java:64
 msgid "green"
-msgstr ""
+msgstr "vert"
 
 #: src/plm/core/utils/ColorMapper.java:65
 msgid "light grey"
-msgstr ""
+msgstr "gris clair"
 
 #: src/plm/core/utils/ColorMapper.java:66
 msgid "magenta"
-msgstr ""
+msgstr "magenta"
 
 #: src/plm/core/utils/ColorMapper.java:67
-#, fuzzy
 msgid "orange"
-msgstr "Changements"
+msgstr "orange"
 
 #: src/plm/core/utils/ColorMapper.java:68
 msgid "pink"
-msgstr ""
+msgstr "rose"
 
 #: src/plm/core/utils/ColorMapper.java:69
-#, fuzzy
 msgid "red"
-msgstr "Continuer"
+msgstr "rouge"
 
 #: src/plm/core/utils/ColorMapper.java:70
 msgid "white"
-msgstr ""
+msgstr "blanc"
 
 #: src/plm/core/utils/ColorMapper.java:71
 msgid "yellow"
-msgstr ""
+msgstr "jaune"
 
 #: src/plm/universe/Direction.java:59
 msgid "NORTH"
