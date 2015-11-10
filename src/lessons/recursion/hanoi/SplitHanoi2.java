@@ -16,7 +16,7 @@ public class SplitHanoi2 extends ExerciseTemplated {
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];
 		HanoiWorld w;
-		w = new HanoiWorld(game, "solve(3,2,0,1)",  
+		w = new HanoiWorld(game, "splitHanoi(7, 3,2,0,1)",  
 				new Integer[0], new Integer[0],new Integer[0], new Integer[] {7,7,6,6,5,5,4,4,3,3,2,2,1,1});
 		for (int i=0; i<w.getSlotSize(3);i++)
 			if (i%2==0)
@@ -26,7 +26,7 @@ public class SplitHanoi2 extends ExerciseTemplated {
 		w.setParameter(new Integer[]{3,2,0,1});
 		myWorlds[0] = w;
 		
-		w = new HanoiWorld(game, "slove(1,3,0,2)",  
+		w = new HanoiWorld(game, "splitHanoi(6, 1,3,0,2)",  
 				new Integer[0], new Integer[]{6,6,5,5,4,4,3,3,2,2,1,1},new Integer[0],new Integer[0]);
 		for (int i=0; i<w.getSlotSize(1);i++)
 			if (i%2==0)
@@ -36,7 +36,7 @@ public class SplitHanoi2 extends ExerciseTemplated {
 		w.setParameter(new Integer[]{1,3,0,2});
 		myWorlds[1] = w;
 		
-		w = new HanoiWorld(game, "solve(2,1,0,3)",  
+		w = new HanoiWorld(game, "splitHanoi(5, 2,1,0,3)",  
 				new Integer[0], new Integer[0],new Integer[]{5,5,4,4,3,3,2,2,1,1}, new Integer[0]);
 		for (int i=0; i<w.getSlotSize(2);i++)
 			if (i%2==0)
