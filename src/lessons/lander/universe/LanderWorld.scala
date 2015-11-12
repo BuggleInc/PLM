@@ -42,7 +42,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   // "inherited" methods
 
-  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine) {
+  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine):Unit= {
   		if (lang.equals(Game.PYTHON)) {
   			engine.put("Segment", Segment.getClass())
 			engine.eval(
@@ -115,7 +115,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   private def isUnderground(p: Point) =
     groundSegments.filter(new Ray(p, Point(0, 1)).intersects(_)).length % 2 == 1
 
-  def simulate(dt: Double) {
+  def simulate(dt: Double):Unit = {
     if (state == FLYING) {
       angle = clamp(-90.0 max (angle - 5), 90.0 min (angle + 5), desiredAngle)
       thrust = clamp(0 max (thrust - 1), 5 min (thrust + 1), desiredThrust) min fuel

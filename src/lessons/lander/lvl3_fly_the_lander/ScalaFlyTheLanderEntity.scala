@@ -11,7 +11,7 @@ class ScalaFlyTheLanderEntity extends LanderEntity {
   var targetStart=0.0
   var targetEnd=0.0
   /* END HIDDEN */
-  override def initialize() {
+  override def initialize():Unit = {
     /* BEGIN HIDDEN */
     var lastPoint:Point = getGround.get(0);
     for (point <- getGround()) {
@@ -26,7 +26,7 @@ class ScalaFlyTheLanderEntity extends LanderEntity {
     /* END HIDDEN */
   }
 
-  override def step() {
+  override def step():Unit = {
     /* BEGIN SOLUTION */
     if (getX() < targetStart) {
       setDesiredAngle(-30);

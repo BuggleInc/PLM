@@ -7,11 +7,11 @@ class LanderEntity extends Entity {
 
   private def landerWorld = getWorld().asInstanceOf[DelegatingLanderWorld].realWorld
 
-  override def command(command: String, out: java.io.BufferedWriter){
+  override def command(command: String, out: java.io.BufferedWriter):Unit ={
     
   }
   
-  override def run() = {
+  override def run():Unit = {
     initialize()
     while (isFlying()) {
       step()
@@ -35,16 +35,16 @@ class LanderEntity extends Entity {
   def getThrust(): Int = landerWorld.thrust
   def getFuel(): Int = landerWorld.fuel
 
-  def setDesiredAngle(desiredAngle: Double) {
+  def setDesiredAngle(desiredAngle: Double):Unit = {
     landerWorld.desiredAngle = desiredAngle
   }
-  def setDesiredThrust(desiredThrust: Int) {
+  def setDesiredThrust(desiredThrust: Int):Unit = {
     landerWorld.desiredThrust = desiredThrust
   }
   
   /* Internal commands used by the python entities to simulate the above run method */
   def isFlying(): Boolean = (landerWorld.state == LanderWorld.State.FLYING)
-  def simulateStep() = {
+  def simulateStep():Unit = {
     landerWorld.simulate(0.1)
     stepUI()
   }
