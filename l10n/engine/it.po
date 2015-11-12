@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-03 20:37+0200\n"
+"POT-Creation-Date: 2015-11-10 21:37+0100\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -837,13 +837,11 @@ msgstr ""
 msgid "C is still experimental"
 msgstr ""
 
-#: src/plm/core/model/HelpServer.java:27
-#: src/plm/core/ui/action/HelpMe.java:130
+#: src/plm/core/model/HelpServer.java:27 src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
 msgstr "Chiedi all'insegnante per avere aiuto"
 
-#: src/plm/core/model/HelpServer.java:29
-#: src/plm/core/ui/action/HelpMe.java:133
+#: src/plm/core/model/HelpServer.java:29 src/plm/core/ui/action/HelpMe.java:133
 #: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
 msgstr "Annulla la richiesta di aiuto all'insegnante"
@@ -1155,7 +1153,7 @@ msgstr "Riguardo PLM"
 msgid ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
 "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
-"span></h3><br/>&copy; 2008-2011 Contributors. All rights reserved.<br/><ul "
+"span></h3><br/>&copy; 2008-2015 Contributors. All rights reserved.<br/><ul "
 "style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
 "College)</i></li><li>Design and code: <i>M. Quinson and G. Oster</i></"
 "li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
@@ -1181,7 +1179,7 @@ msgstr "Cambiamenti"
 #: src/plm/core/ui/AboutPLMDialog.java:124
 #, fuzzy
 msgid ""
-"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2013.<br/> "
+"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2015.<br/> "
 "The PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git "
 "logs for the exact authorship of each file).</p> <p>The PLM software was "
 "written internally by the team. This software is distributed under the GNU "
@@ -1222,7 +1220,7 @@ msgid "Copying"
 msgstr "Licenza"
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:42
+#: src/plm/core/ui/ExerciseFailedDialog.java:43
 #: src/plm/core/ui/ExercisePassedDialog.java:100
 msgid "Close"
 msgstr "Chiudi"
@@ -1338,29 +1336,33 @@ msgid "We learn from failure, not from success!"
 msgstr ""
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:32
+msgid "Success comes after failure"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
 "(Einstein)."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:34
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
 msgid ""
 "<i>Success does not consist in never making mistakes,<br> but in never "
 "making the same one a second time.</i> (Shaw)"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:37
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
 #, fuzzy
 msgid "Mmm, not quite"
 msgstr "Mmm, ancora non ci siamo /o\\"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:55
+#: src/plm/core/ui/ExerciseFailedDialog.java:56
 #, fuzzy, java-format
 msgid ""
 "<html>You didn''t manage to reach your objective this time. <br>\n"
@@ -1378,7 +1380,7 @@ msgstr ""
 "Se non vedi l'errore controlla i dettagli in basso per una<br>\n"
 "descrizione testuale delle differenze fra i due mondi.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:67
+#: src/plm/core/ui/ExerciseFailedDialog.java:68
 #, fuzzy, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -1390,12 +1392,12 @@ msgstr ""
 "Per piacere leggilo attentamente per capire il problema e correggi il tuo "
 "codice.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:82
-#: src/plm/core/ui/ExerciseFailedDialog.java:89
+#: src/plm/core/ui/ExerciseFailedDialog.java:83
+#: src/plm/core/ui/ExerciseFailedDialog.java:90
 msgid "Details >>"
 msgstr "Dettagli >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:92
+#: src/plm/core/ui/ExerciseFailedDialog.java:93
 msgid "Details <<"
 msgstr "Dettagli <<"
 

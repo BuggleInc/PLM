@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2015-09-23 15:48+0200\n"
-"PO-Revision-Date: 2015-09-23 16:15+0100\n"
-"Last-Translator: Matthieu Nicolas <nicolasmatthieu57@gmail.com>\n"
+"POT-Creation-Date: 2015-07-31 10:14+0200\n"
+"PO-Revision-Date: 2015-11-10 21:05+0100\n"
+"Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1362,8 +1362,33 @@ msgid ""
 "Use your brush to mark the ground as you walk. Start marking the ground with "
 "<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward "
 "(e.g., to enter your house without marking its ground). The full list of all "
-"instructions understood by your buggle can be found by clicking on the "
-"button <i>API</i> of the <i>Code editor</i> section."
+"instructions understood by your buggle can be found in \"Help/About this "
+"world\"."
+msgstr "Utilisez votre brosse pour marquer le sol en marchant. Commencez à marquer le sol avec <code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par exemple pour entrer dans votre maison sans marquer le sol). La liste complète des instructions comprises par votre buggle est accessible dans le menu \"Aide/À propos de ce monde\"."
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/instructions/Instructions.html:75
+msgid "After this exercise"
+msgstr "Après cet exercice"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:76
+msgid ""
+"When switching to the next exercise, please note that there is a sub-"
+"exercise following this one.  By default, it is hidden in the menu and you "
+"have to open the sub-menu to see it.  When you switch the exercise, most of "
+"the exercises are hidden because the tree is folded, as follows:"
+msgstr ""
+"Quand vous changerez d'exercice, n'oubliez pas l'exercice d'application qui "
+"suit. Par défaut, il n'est pas visible dans la fenêtre de sélection, et il "
+"faut ouvrir le sous-arbre pour le voir. Lorsque vous ouvrez la fenêtre de "
+"sélection des exercices, la plupart d'entre eux sont cachés, comme cela:"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:81
+msgid ""
+"You have to click on the little symbol to the left of the buggle to unfold "
+"the tree, as follows:"
 msgstr ""
 "Utilisez votre brosse pour marquer le sol pendant que vous vous déplacez. "
 "Commencez à marquer le sol avec <code>baisseBrosse()</code>, et arrêter avec "
@@ -17290,80 +17315,6 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
-
-#~ msgid "[!java|c]void [/!]hide()"
-#~ msgstr "[!java|c]void [/!]cache()"
-
-#~ msgid "[!java|c]void [/!]show()"
-#~ msgstr "[!java|c]void [/!]montre()"
-
-#~ msgid "[!java|c]void [/!]clear()"
-#~ msgstr "[!java|c]void [/!]efface()"
-
-#~ msgid "[!java|c]void [/!]penUp()"
-#~ msgstr "[!java|c]void [/!]leveCrayon()"
-
-#~ msgid "[!java|c]void [/!]penDown()"
-#~ msgstr "[!java|c]void [/!]baisseCrayon()"
-
-#~ msgid "int x;"
-#~ msgstr "int x;"
-
-#~ msgid "int x=5;"
-#~ msgstr "int x=5;"
-
-#~ msgid "x = 5"
-#~ msgstr "x = 5"
-
-#~ msgid "var x:Int = 42"
-#~ msgstr "var x:Int = 42"
-
-#~ msgid "var x = 42"
-#~ msgstr "var x = 42"
-
-#~ msgid "x = 3[!java|c];[/!]"
-#~ msgstr "x = 3[!java|c];[/!]"
-
-#~ msgid ""
-#~ "When your program works, move forward to the next exercise, that is "
-#~ "hidden in a sub-tree of the selection window."
-#~ msgstr ""
-#~ "Quand votre programme fonctionne, passez à l'exercice suivant (qui est "
-#~ "caché par défaut dans un sous-arbre de la fenêtre de sélection)."
-
-#~ msgid "nameOfTheMethod()"
-#~ msgstr "nomDeLaMethode()"
-
-#~ msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
-#~ msgstr "[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]"
-
-#~ msgid "After this exercise"
-#~ msgstr "Après cet exercice"
-
-#~ msgid ""
-#~ "When switching to the next exercise, please note that there is a sub-"
-#~ "exercise following this one.  By default, it is hidden in the menu and "
-#~ "you have to open the sub-menu to see it.  When you switch the exercise, "
-#~ "most of the exercises are hidden because the tree is folded, as follows:"
-#~ msgstr ""
-#~ "Quand vous changerez d'exercice, n'oubliez pas l'exercice d'application "
-#~ "qui suit. Par défaut, il n'est pas visible dans la fenêtre de sélection, "
-#~ "et il faut ouvrir le sous-arbre pour le voir. Lorsque vous ouvrez la "
-#~ "fenêtre de sélection des exercices, la plupart d'entre eux sont cachés, "
-#~ "comme cela:"
-
-#~ msgid ""
-#~ "You have to click on the little symbol to the left of the buggle to "
-#~ "unfold the tree, as follows:"
-#~ msgstr ""
-#~ "Vous devez cliquer sur le petit symbole à gauche de la buggle pour "
-#~ "déplier l'arbre, comme cela :"
-
-#~ msgid "I need an hint to start"
-#~ msgstr "J'ai besoin d'un indice pour commencer."
-
-#~ msgid "Backtracking lesson"
-#~ msgstr "Leçon sur le \"backtracking\""
 
 #~ msgid ""
 #~ "This <b>experimental</b> lesson aims at teaching students about "

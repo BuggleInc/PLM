@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-02 01:19+0200\n"
+"POT-Creation-Date: 2015-11-10 21:37+0100\n"
 "PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -575,7 +575,66 @@ msgstr "Operation cancelled by the user"
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExecutionProgress.java:71
+#: src/plm/core/model/Game.java:991
+msgid ""
+"Please install Scala version 2.10 or higher to use it in the PLM.\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:992
+msgid "Scala is missing"
+msgstr ""
+
+#: src/plm/core/model/Game.java:996
+msgid ""
+"Please install jython and its dependencies to use the python programming "
+"language in the PLM.\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:997
+msgid "Python is missing"
+msgstr ""
+
+#: src/plm/core/model/Game.java:1001
+msgid ""
+"Please install C and its dependencies to use the C programming language in "
+"the PLM.\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:1002
+msgid "C is missing"
+msgstr ""
+
+#: src/plm/core/model/Game.java:1007
+msgid ""
+"The C langage is currently very experimental in the PLM.\n"
+"If you go for C, you may not be able to complete some exercises that\n"
+"are still in progress in C, although some other parts are already okay.\n"
+"\n"
+"Do you want to proceed anyway?"
+msgstr ""
+
+#: src/plm/core/model/Game.java:1011
+msgid "C is still experimental"
+msgstr ""
+
+#: src/plm/core/model/HelpServer.java:27 src/plm/core/ui/action/HelpMe.java:130
+msgid "Asking to the teacher for help"
+msgstr "Asking to the teacher for help"
+
+#: src/plm/core/model/HelpServer.java:29 src/plm/core/ui/action/HelpMe.java:133
+#: src/plm/core/ui/action/HelpMe.java:145
+msgid "Cancel call for help to the teacher"
+msgstr "Cancel call for help to the teacher"
+
+#: src/plm/core/model/Users.java:97
+#, java-format
+msgid "User {0} exists already; don't add it again."
+msgstr ""
+
+#: src/plm/core/model/Users.java:121
 #, fuzzy, java-format
 msgid "Congratulations, you passed this exercise.({0} tests passed)"
 msgstr ""
@@ -828,24 +887,92 @@ msgid ""
 "the following error:"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:58
-msgid "black"
+#: src/plm/core/ui/AboutLessonDialog.java:20
+msgid "About lesson - "
+msgstr "About lesson - "
+
+#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:429
+#: src/plm/core/ui/MainFrame.java:777
+#, fuzzy
+msgid "About the PLM"
+msgstr "About PLM"
+
+#: src/plm/core/ui/AboutPLMDialog.java:60
+#, java-format
+msgid ""
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
+"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
+"span></h3><br/>&copy; 2008-2015 Contributors. All rights reserved.<br/><ul "
+"style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
+"College)</i></li><li>Design and code: <i>M. Quinson and G. Oster</i></"
+"li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
+"ul><br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/></"
+"html>"
 msgstr ""
 
 #: src/plm/core/utils/ColorMapper.java:59
 msgid "blue"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:60
-msgid "cyan"
+#: src/plm/core/ui/AboutPLMDialog.java:124
+msgid ""
+"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2015.<br/> "
+"The PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git "
+"logs for the exact authorship of each file).</p> <p>The PLM software was "
+"written internally by the team. This software is distributed under the GNU "
+"general public license version 3 (GPLv3).</p> <p>The pedagogical material "
+"distributed with the PLM is covered both by the GPLv3 license (mainly for "
+"the included code) and by the CC-BY-SA license (mainly for the other media "
+"files). But the exact boundary here between the source code and the media is "
+"left as an exercise to the reader, so this material is distributed under "
+"both licenses for sake of simplicity.</p><p>The GPLv3 license can be found "
+"in the archive under the name LICENSE-GPL-3. The CC-BY-SA license can be "
+"found online: http://creativecommons.org/licenses/by-sa/3.0/</p><p>The whole "
+"artwork is free content, licenced under CC-BY-SA, GPL, LGPL and/or CC0-"
+"public domain. Some parts were done by us, other parts were borowed from "
+"free collections. The specific license and origin of each files is listed in "
+"the COPYING file distributed with the archive.</p>"
 msgstr ""
 
 #: src/plm/core/utils/ColorMapper.java:61
 msgid "dark grey"
 msgstr ""
 
-#: src/plm/core/utils/ColorMapper.java:62
-msgid "grey"
+#: src/plm/core/ui/AboutPLMDialog.java:156
+#: src/plm/core/ui/ExerciseFailedDialog.java:43
+#: src/plm/core/ui/ExercisePassedDialog.java:100
+msgid "Close"
+msgstr "Close"
+
+#: src/plm/core/ui/AboutWorldDialog.java:31
+#: src/plm/core/ui/AboutWorldDialog.java:50
+#, fuzzy, java-format
+msgid "About world - {0}"
+msgstr "About world - "
+
+#: src/plm/core/ui/ChooseLectureDialog.java:76
+#, fuzzy
+msgid "Choose your next exercise"
+msgstr "Choose your course"
+
+#: src/plm/core/ui/ChooseLessonDialog.java:46
+#, fuzzy
+msgid "Choose your lesson"
+msgstr "Choose your course"
+
+#: src/plm/core/ui/ChooseLessonDialog.java:66
+msgid ""
+"<table border=\"0\" align=\"center\"><tr>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the "
+"Programmer's Learning Machine</font>&nbsp;&nbsp;</td>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"</tr></table>\n"
+"\n"
+"<p><font size=\"+1\">The PLM is a Learning Management System (LMS) aiming at "
+"teaching the art of computer programming through interactive exercises. It "
+"offers an extensive set of varied exercises, allowing you to practice at "
+"your own pace.</font></p><br/>"
 msgstr ""
 
 #: src/plm/core/utils/ColorMapper.java:63
@@ -901,56 +1028,51 @@ msgstr ""
 msgid "Exception {0}: {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:85
+#: src/plm/core/ui/ExerciseFailedDialog.java:32
+msgid "Success comes after failure"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:89
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:170
-#: src/plm/universe/turtles/Turtle.java:215
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
 msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:173
-#: src/plm/universe/turtles/Turtle.java:218
-msgid ""
-"Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
-"instead."
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
+msgid "Mmm, not quite"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:193
+#: src/plm/core/ui/ExerciseFailedDialog.java:56
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the minimal Y in this world is 0."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:199
+#: src/plm/core/ui/ExerciseFailedDialog.java:68
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the minimal X in this world is 0."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:205
-#, java-format
-msgid ""
-"You tried to access a cell with Y={0}, but the maximal Y in this world is "
-"{1}."
+#: src/plm/core/ui/ExerciseFailedDialog.java:83
+#: src/plm/core/ui/ExerciseFailedDialog.java:90
+msgid "Details >>"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:212
-#, java-format
-msgid ""
-"You tried to access a cell with X={0}, but the maximal X in this world is "
-"{1}."
+#: src/plm/core/ui/ExerciseFailedDialog.java:93
+msgid "Details <<"
 msgstr ""
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:234
