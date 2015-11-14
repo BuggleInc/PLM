@@ -6,7 +6,7 @@ import java.awt.Color
 class ScalaCrabEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	def crab(levels:Int, length:Double) {
+	def crab(levels:Int, length:Double):Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -21,7 +21,7 @@ class ScalaCrabEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run():Unit = {
 		crab(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 }

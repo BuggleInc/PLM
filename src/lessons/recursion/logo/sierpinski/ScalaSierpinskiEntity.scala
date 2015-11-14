@@ -2,7 +2,7 @@ package lessons.recursion.logo.sierpinski;
 
 class ScalaSierpinskiEntity extends plm.universe.turtles.Turtle {
 	/* BEGIN TEMPLATE */
-	def sierpinski(level:Int, length:Double) {
+	def sierpinski(level:Int, length:Double):Unit = {
 		/* BEGIN SOLUTION */
 		if (level >= 0) {
 			for (i <- 1 to 3) {
@@ -15,7 +15,7 @@ class ScalaSierpinskiEntity extends plm.universe.turtles.Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run():Unit = {
 		sierpinski(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Double]);
 	}
 

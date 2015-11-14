@@ -4,14 +4,14 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.model.Game
 
 class ScalaIterativeHanoiEntity extends HanoiEntity {
-	override def run() {
+	override def run():Unit = {
     val initialPos=getParam(0).asInstanceOf[Int]
     val increasing=getParam(1).asInstanceOf[Boolean]
 		hanoi(initialPos, increasing);
 	}
 
 	/* BEGIN TEMPLATE */
-	def hanoi(initialPos:Int, increasing:Boolean) {
+	def hanoi(initialPos:Int, increasing:Boolean):Unit = {
 		/* BEGIN SOLUTION */
 		var small = initialPos
     var count = 0

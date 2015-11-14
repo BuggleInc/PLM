@@ -5,7 +5,7 @@ import plm.universe.turtles.Turtle;
 class ScalaDragonCurve1Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	def dragon(order:Int, x:Double, y:Double, z:Double, t:Double) {
+	def dragon(order:Int, x:Double, y:Double, z:Double, t:Double):Unit = {
 		/* BEGIN SOLUTION */
 		if (order == 1) {
 			setPos(x, y);
@@ -20,7 +20,7 @@ class ScalaDragonCurve1Entity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run():Unit = {
 		dragon(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Double], getParam(2).asInstanceOf[Double], 
 		    getParam(3).asInstanceOf[Double], getParam(4).asInstanceOf[Double]);
 	}

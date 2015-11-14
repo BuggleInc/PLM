@@ -3,7 +3,7 @@ package lessons.recursion.logo.spiral;
 class ScalaSpiralEntity extends plm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	def spiral(steps:Int, angle:Int, length:Int, increment:Int)	{
+	def spiral(steps:Int, angle:Int, length:Int, increment:Int):Unit = {
 		/* BEGIN SOLUTION */
 		if (steps <= 0) {
 			// do nothing
@@ -16,7 +16,7 @@ class ScalaSpiralEntity extends plm.universe.turtles.Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run():Unit = {
 		spiral(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Int],
 		    getParam(2).asInstanceOf[Int],getParam(3).asInstanceOf[Int]);
 	}

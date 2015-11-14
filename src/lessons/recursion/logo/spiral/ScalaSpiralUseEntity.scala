@@ -4,7 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class ScalaSpiralUseEntity extends Turtle {
 
-	def spiral(steps:Int, angle:Int, length:Int, increment:Int)	{
+	def spiral(steps:Int, angle:Int, length:Int, increment:Int):Unit = {
 		if (steps <= 0) {
 			return;
 		} else {
@@ -15,7 +15,7 @@ class ScalaSpiralUseEntity extends Turtle {
 	}
 
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run():Unit = {
 		spiral(100,91,1,2);
 	}
 	/* END TEMPLATE */

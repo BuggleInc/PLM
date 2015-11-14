@@ -5,16 +5,16 @@ import plm.core.model.Game
 
 class ScalaSplitHanoi3Entity extends HanoiEntity {
 
-	override def run() {
+	override def run():Unit = {
 		solve(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Int], getParam(2).asInstanceOf[Int], getParam(3).asInstanceOf[Int]);
 	}
 
-	def solve(src:Int,other:Int, dst1:Int, dst2:Int) {
+	def solve(src:Int,other:Int, dst1:Int, dst2:Int):Unit = {
 		splitHanoi(getSlotSize(src)/2, src,other, dst1,dst2);
 	}
 
 	/* BEGIN TEMPLATE */
-  def splitHanoi(height:Int, src:Int, other:Int, dst1:Int, dst2:Int) {
+  def splitHanoi(height:Int, src:Int, other:Int, dst1:Int, dst2:Int):Unit = {
 	  /* BEGIN SOLUTION */
     if (height > 0) {
       splitHanoi(height-1, src,dst1,dst2,other);
@@ -24,7 +24,7 @@ class ScalaSplitHanoi3Entity extends HanoiEntity {
       hanoi_extra(height-1, other,src,dst1,dst2);
     }    
   }
-  def hanoi_extra(height:Int, src:Int, other:Int, used:Int, dst:Int) {
+  def hanoi_extra(height:Int, src:Int, other:Int, used:Int, dst:Int):Unit = {
     //for (int i=6;i>height;i--) System.out.print(" ");
     //getGame().getLogger().log("Extra "+height+", "+src+", "+other+", "+used+", "+dst);
     if (height<=0)
@@ -38,7 +38,7 @@ class ScalaSplitHanoi3Entity extends HanoiEntity {
     }
   }
 
-  def hanoi(height:Int, src:Int, other:Int, dst:Int) {
+  def hanoi(height:Int, src:Int, other:Int, dst:Int):Unit = {
     if (height>0) {
       hanoi(height-1,  src,dst,other);
       move(src,dst);

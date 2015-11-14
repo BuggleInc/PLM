@@ -5,7 +5,7 @@ import plm.core.model.Game
 
 class ScalaTricolorHanoi1Entity extends HanoiEntity {
 
-	override def run() {
+	override def run():Unit = {
     val src = getParam(0).asInstanceOf[Int]
     val mid = getParam(1).asInstanceOf[Int]
     val dst = getParam(2).asInstanceOf[Int]
@@ -13,7 +13,7 @@ class ScalaTricolorHanoi1Entity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-  def move3(height:Int, src:Int, mid:Int, dst:Int) {
+  def move3(height:Int, src:Int, mid:Int, dst:Int):Unit = {
 	  /* BEGIN SOLUTION */
     if (height>0) {
 //      System.err.println("move3("+height+","+src+","+dst+")");

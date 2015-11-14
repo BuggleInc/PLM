@@ -6,7 +6,7 @@ import java.awt.Color
 class ScalaPentaKochEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	def pentaKoch(levels:Int, length:Double) {
+	def pentaKoch(levels:Int, length:Double):Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -27,7 +27,7 @@ class ScalaPentaKochEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run():Unit = {
 		pentaKoch(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 }

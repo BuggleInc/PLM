@@ -6,7 +6,7 @@ import java.awt.Color
 class ScalaKochEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	def snowFlake (levels:Int, length:Double) {
+	def snowFlake (levels:Int, length:Double):Unit = {
 		snowSide(levels, length);
 		right(120);
 		setColor(Color.blue);
@@ -16,7 +16,7 @@ class ScalaKochEntity extends Turtle {
 		snowSide(levels, length);
 		right(120);
 	}
-	def snowSide(levels:Int, length:Double) {
+	def snowSide(levels:Int, length:Double):Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -33,7 +33,7 @@ class ScalaKochEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run():Unit = {
 		snowFlake(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 }
