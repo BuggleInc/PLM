@@ -4,13 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.UUID;
+import java.util.concurrent.Semaphore;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -163,11 +164,7 @@ public class GitUtilsTest {
 	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfRemoteBranchExists () throws GitAPIException, IOException {		
 		game.setTrackUser(true);
 		
-		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils("");
-		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
-		remoteGitUtils.createInitialCommit();
-		remoteGitUtils.createLocalUserBranch(userBranch);
+		GitUtils remoteGitUtils = generateRemoteGitUtils();
 		Git remoteGit = utils.getGit(remoteGitUtils);
 	
 		generateCommits(remoteGit);
@@ -190,10 +187,7 @@ public class GitUtilsTest {
 	
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnFalseIfRemoteBranchNotExists () throws GitAPIException, IOException {
-		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils("");
-		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
-		remoteGitUtils.createInitialCommit();
+		GitUtils remoteGitUtils = generateRemoteGitUtils();
 		Git remoteGit = utils.getGit(remoteGitUtils);
 	
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
@@ -214,11 +208,7 @@ public class GitUtilsTest {
 	public void testMergeRemoteIntoLocalBranchShouldSynchronizeBranches() throws GitAPIException, IOException {
 		game.setTrackUser(true);
 		
-		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils("");
-		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
-		remoteGitUtils.createInitialCommit();
-		remoteGitUtils.createLocalUserBranch(userBranch);
+		GitUtils remoteGitUtils = generateRemoteGitUtils();
 		Git remoteGit = utils.getGit(remoteGitUtils);
 		
 		generateCommits(remoteGit);
@@ -254,10 +244,7 @@ public class GitUtilsTest {
 		
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils("");
-		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
-		remoteGitUtils.createInitialCommit();
-		remoteGitUtils.createLocalUserBranch(userBranch);
+		GitUtils remoteGitUtils = generateRemoteGitUtils();
 		Git remoteGit = utils.getGit(remoteGitUtils);
 		
 		String expectedContent1 = utils.generateRandomString(32);
@@ -289,10 +276,7 @@ public class GitUtilsTest {
 	
 	@Test
 	public void testPushChangesShouldReturnTrueIfNoConflicts() throws GitAPIException, IOException, InterruptedException {
-		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils("");
-		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
-		remoteGitUtils.createInitialCommit();
+		GitUtils remoteGitUtils = generateRemoteGitUtils();
 		Git remoteGit = utils.getGit(remoteGitUtils);
 		
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
@@ -315,10 +299,7 @@ public class GitUtilsTest {
 	public void testPushChangesShouldReturnFalseIfConflictsDetected() throws GitAPIException, IOException, InterruptedException {
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
-		GitUtils remoteGitUtils = new GitUtils("");
-		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
-		remoteGitUtils.createInitialCommit();
-		remoteGitUtils.createLocalUserBranch(userBranch);
+		GitUtils remoteGitUtils = generateRemoteGitUtils();
 		Git remoteGit = utils.getGit(remoteGitUtils);
 		
 		String expectedContent1 = utils.generateRandomString(32);
@@ -341,6 +322,91 @@ public class GitUtilsTest {
 		utils.deleteRepo(remotePlmTestDir);
 		
 		assertFalse(success);
+	}
+
+	@Test
+	public void testParallelCommitAndPush() throws GitAPIException, IOException, InterruptedException {
+		gitUtils.createLocalUserBranch(userBranch);
+
+		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
+
+		Semaphore semaphoreCommit = new Semaphore(0);
+		Semaphore semaphorePush = new Semaphore(0);
+
+		Thread tCommit = new Thread(new Runnable() {
+			public void run() {
+		    	// Rendez-vous
+				generateCommits(git);
+				semaphorePush.release();
+				for(int i=0; i<100; i++) {
+					try {
+			    		semaphoreCommit.acquire();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+						fail("Error in tCommit");
+					}
+			    	generateCommits(git);
+			    	semaphorePush.release();
+				}
+		     }
+		});
+		Thread tPush = new Thread(new Runnable() {
+			public void run() {
+				// Setup remote repository
+				GitUtils remoteGitUtils = generateRemoteGitUtils();
+
+				Git remoteGit = utils.getGit(remoteGitUtils);
+				String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
+
+				// Setup new gitUtils on the same local repository
+				// Will push the commits generated by the other thread
+				GitUtils gitUtilsBis = new GitUtils(userBranch);
+		    	gitUtilsBis.setGame(game);
+		    	try {
+		    		gitUtilsBis.openRepo(repoDirectory);
+		    	} catch (IOException e) {
+					e.printStackTrace();
+		    		fail("Error while opening repository twice");
+				}
+		    	gitUtilsBis.setUpRepoConfig(remoteUrl, userBranch);
+		    	// Rendez-vous
+		    	semaphoreCommit.release();
+		    	for(int i=0; i<100; i++) {
+		    		try {
+						semaphorePush.acquire();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+						fail("Error in tPush");
+					}
+		    		gitUtils.pushChanges(userBranch, progress, null);
+		    		semaphoreCommit.release();
+		    	}
+		    	remoteGitUtils.dispose();
+		     }
+		});
+		tCommit.start();
+		tPush.start();
+
+		tCommit.join();
+		tPush.join();
+
+		utils.deleteRepo(remotePlmTestDir);
+
+		assertTrue(true);
+	}
+
+	private GitUtils generateRemoteGitUtils() {
+		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
+		GitUtils remoteGitUtils = new GitUtils("");
+		try {
+			remoteGitUtils.initLocalRepository(remoteRepoDirectory);
+			remoteGitUtils.createInitialCommit();
+			remoteGitUtils.createLocalUserBranch(userBranch);
+		} catch (GitAPIException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return remoteGitUtils;
 	}
 	
 	private void generateCommits(Git git) {
