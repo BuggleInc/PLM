@@ -33,6 +33,21 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
+	public void compileExo(SourceFile sourceFile,
+			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
+			throws PLMCompilerException {
+		/* Nothing to do */
+		
+	}
+
+	@Override
+	public List<Entity> mutateEntities(String exerciseID, List<Entity> olds)
+			throws PLMCompilerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
 		String newClassName = "";
 		switch(whatToMutate) {

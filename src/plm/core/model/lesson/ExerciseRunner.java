@@ -7,7 +7,7 @@ import java.util.Vector;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.lang.LangJava;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -27,7 +27,7 @@ public class ExerciseRunner {
 		this.i18n = i18n;
 	}
 
-	public ExecutionProgress run(Exercise exo, LangJava progLang, String code) {
+	public ExecutionProgress run(Exercise exo, ProgrammingLanguage progLang, String code) {
 		// FIXME: Handle ExecutionProgress
 
 		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
@@ -80,7 +80,7 @@ public class ExerciseRunner {
 		return lastResult;
 	}
 
-	public void runDemo(Exercise exo, LangJava progLang) {
+	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
 		// FIXME: Factorize this code
 
 		exo.reset();
@@ -98,7 +98,7 @@ public class ExerciseRunner {
 		}
 	}
 
-	public void mutateEntities(Exercise exo, SourceFile sourceFile, LangJava progLang, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		progLang.compileExo(sourceFile, whatToCompile, logger, i18n);
 
 		WorldKind worldKind = null;
@@ -120,7 +120,7 @@ public class ExerciseRunner {
 		}
 	}
 
-	private void runEntities(World w, LangJava progLang, List<Thread> runnerVect, final ExecutionProgress progress) {
+	private void runEntities(World w, ProgrammingLanguage progLang, List<Thread> runnerVect, final ExecutionProgress progress) {
 		for (final Entity entity : w.getEntities()) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {

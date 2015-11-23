@@ -9,6 +9,7 @@ import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 
 public class LangLightbot extends ProgrammingLanguage {
@@ -45,6 +46,21 @@ public class LangLightbot extends ProgrammingLanguage {
 			progress.setExecutionError(msg);
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void compileExo(SourceFile sourceFile,
+			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
+			throws PLMCompilerException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Entity> mutateEntities(String newClassName, List<Entity> old)
+			throws PLMCompilerException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

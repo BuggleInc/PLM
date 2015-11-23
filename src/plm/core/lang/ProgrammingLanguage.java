@@ -15,6 +15,7 @@ import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 
 /**
@@ -88,7 +89,9 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
+	public abstract void compileExo(SourceFile sourceFile, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
+	public abstract List<Entity> mutateEntities(String newClassName, List<Entity> old) throws PLMCompilerException;
 
 	/** Make the entity run, according to the used universe and programming language.
 	 * 

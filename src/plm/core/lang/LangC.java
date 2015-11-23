@@ -409,4 +409,19 @@ public class LangC extends ProgrammingLanguage {
 		
 	}
 
+	@Override
+	public void compileExo(SourceFile sourceFile,
+			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
+			throws PLMCompilerException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Entity> mutateEntities(String newClassName, List<Entity> old)
+			throws PLMCompilerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

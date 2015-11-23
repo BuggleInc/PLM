@@ -81,6 +81,32 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 		return newEntities;
 	}
 
+	public ArrayList<Entity> mutateEntities(String newClassName, List<Entity> olds) throws PLMCompilerException {
+		ArrayList<Entity> newEntities = new ArrayList<Entity>();
+		for (Entity old : olds) {
+			/* Instantiate a new entity of the new type */
+			Entity ent = null;
+			try {
+				ent = mutateEntity(newClassName);
+			} catch (InstantiationException e) {
+				throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException("Illegal access while instanciating entity of type "+className(newClassName), e);
+			} catch (NullPointerException e) {
+				throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			/* change fields of new entity to copy old one */
+			ent.copy(old);
+			ent.initDone();
+			/* Add new entity to the to be returned entities set */
+			newEntities.add(ent);
+
+		}
+		return newEntities;
+	}
+
 	@Override
 	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		try {

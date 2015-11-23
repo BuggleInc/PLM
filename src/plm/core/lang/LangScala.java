@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.Vector;
+import java.util.ArrayList;
+
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaFileObject;
 
 import org.xnap.commons.i18n.I18n;
 
@@ -30,10 +35,33 @@ import scala.tools.nsc.reporters.AbstractReporter;
 public class LangScala extends JVMCompiledLang {
 
 	ScalaCompiler compiler;
-	
+
 	public LangScala(boolean isDebugEnabled) {
 		super("Scala", "scala", isDebugEnabled);
 		compiler = new ScalaCompiler(isDebugEnabled);
+	}
+
+	@Override
+	public void compileExo(plm.core.model.session.SourceFile sourceFile, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException {
+		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
+		packageNameSuffix++;
+		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
+
+
+		/* Prepare the source files */
+		List<plm.core.model.session.SourceFile> sfs = new ArrayList<plm.core.model.session.SourceFile>();
+		sfs.add(sourceFile);
+
+		try {
+			compiler.reset();
+			for (plm.core.model.session.SourceFile sf : sfs) {
+				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
+			}
+		} catch (PLMCompilerException e) {
+			System.err.println(i18n.tr("Compilation error:"));
+			System.err.println(e.getMessage());
+			throw e;
+		}
 	}
 
 	@Override
