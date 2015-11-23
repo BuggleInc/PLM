@@ -330,23 +330,11 @@ public class GitUtilsTest {
 
 		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
 
-		Semaphore semaphoreCommit = new Semaphore(0);
-		Semaphore semaphorePush = new Semaphore(0);
-
 		Thread tCommit = new Thread(new Runnable() {
 			public void run() {
-		    	// Rendez-vous
 				generateCommits(git);
-				semaphorePush.release();
 				for(int i=0; i<100; i++) {
-					try {
-			    		semaphoreCommit.acquire();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-						fail("Error in tCommit");
-					}
 			    	generateCommits(git);
-			    	semaphorePush.release();
 				}
 		     }
 		});
@@ -369,17 +357,8 @@ public class GitUtilsTest {
 		    		fail("Error while opening repository twice");
 				}
 		    	gitUtilsBis.setUpRepoConfig(remoteUrl, userBranch);
-		    	// Rendez-vous
-		    	semaphoreCommit.release();
 		    	for(int i=0; i<100; i++) {
-		    		try {
-						semaphorePush.acquire();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-						fail("Error in tPush");
-					}
 		    		gitUtils.pushChanges(userBranch, progress, null);
-		    		semaphoreCommit.release();
 		    	}
 		    	remoteGitUtils.dispose();
 		     }
