@@ -7,7 +7,6 @@ import java.util.Locale;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.lang.LangJava;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -37,7 +36,7 @@ public class ExerciseFactory {
 		return new BlankExercise(exo);
 	}
 	
-	public void initializeExercise(Exercise exo, LangJava progLang) {
+	public void initializeExercise(Exercise exo, ProgrammingLanguage progLang) {
 		computeSupportedProgrammingLanguages(exo);
 		computeMissions(exo);
 		computeAnswer(exo, progLang);
@@ -68,7 +67,7 @@ public class ExerciseFactory {
 		}
 	}
 
-	public void computeAnswer(Exercise exo, LangJava progLang) {
+	public void computeAnswer(Exercise exo, ProgrammingLanguage progLang) {
 		// TODO: Handle case if progLang is not supported
 		if(exo.isProgLangSupported(progLang)) {
 			SourceFile sf = exo.getDefaultSourceFile(progLang);
