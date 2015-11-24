@@ -10,6 +10,7 @@ import plm.core.PLMEntityNotFound;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 
 public abstract class JVMCompiledLang extends ProgrammingLanguage {
@@ -81,7 +82,7 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 		return newEntities;
 	}
 
-	public ArrayList<Entity> mutateEntities(String newClassName, List<Entity> olds) throws PLMCompilerException {
+	public ArrayList<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds) throws PLMCompilerException {
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();
 		for (Entity old : olds) {
 			/* Instantiate a new entity of the new type */
@@ -102,7 +103,6 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 			ent.initDone();
 			/* Add new entity to the to be returned entities set */
 			newEntities.add(ent);
-
 		}
 		return newEntities;
 	}

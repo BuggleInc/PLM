@@ -91,7 +91,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
 	public abstract void compileExo(SourceFile sourceFile, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
-	public abstract List<Entity> mutateEntities(String newClassName, List<Entity> old) throws PLMCompilerException;
+	public abstract List<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds) throws PLMCompilerException;
 
 	/** Make the entity run, according to the used universe and programming language.
 	 * 

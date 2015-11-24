@@ -41,10 +41,50 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public List<Entity> mutateEntities(String exerciseID, List<Entity> olds)
+	public List<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds)
 			throws PLMCompilerException {
-		// TODO Auto-generated method stub
-		return null;
+		if (whatToMutate == StudentOrCorrection.STUDENT) {
+			String script = sourceFile.getCompilableContent(whatToMutate);
+			int offset = sourceFile.getOffset();
+
+			for (Entity ent : olds) {
+				ent.setScript(this, script);
+				ent.setScriptOffset(this, offset);
+			}
+			// FIXME: Can we reach this case?
+			/*
+			if (!foundScript) {
+				StringBuffer sb = new StringBuffer();
+				for (SourceFile sf: exo.getSourceFilesList(this)) 
+					sb.append(sf.getName()+", ");
+
+				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
+				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
+			}
+			*/
+		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
+			String script = sourceFile.getCorrection();
+
+			for (Entity ent : olds) 
+				ent.setScript(this, script);
+		} 
+		// FIXME: Handle  the common errors' cases
+		/*
+		else {
+			StringBuffer sb = null;
+			try {
+				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,nbError), i18n.getLocale(), "java", false);
+			} catch (IOException ex) {
+				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,nbError)+"."+getExt()+" since I cannot read it (error was: "+
+						ex.getLocalizedMessage());
+			}
+			String script = 
+
+			for (Entity ent : olds) 
+				ent.setScript(this, script);
+		}
+		*/
+		return olds;
 	}
 
 	@Override

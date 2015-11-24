@@ -115,7 +115,7 @@ public class ExerciseRunner {
 
 		for(World w : exo.getWorlds(worldKind)) {
 			List<Entity> entities = w.getEntities();
-			List<Entity> newEntities = progLang.mutateEntities(exo.getId(), entities);
+			List<Entity> newEntities = progLang.mutateEntities(exo.getId(), sourceFile, whatToCompile, entities);
 			w.setEntities(newEntities);
 		}
 	}

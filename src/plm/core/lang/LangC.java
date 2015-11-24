@@ -418,7 +418,8 @@ public class LangC extends ProgrammingLanguage {
 	}
 
 	@Override
-	public List<Entity> mutateEntities(String newClassName, List<Entity> old)
+	public List<Entity> mutateEntities(String newClassName, SourceFile sourceFile,
+			StudentOrCorrection whatToCompile, List<Entity> old)
 			throws PLMCompilerException {
 		// TODO Auto-generated method stub
 		return null;

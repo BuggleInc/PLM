@@ -72,10 +72,7 @@ public class LangJava extends JVMCompiledLang {
 		/* Prepare the source files */
 		Map<String, String> sources = new TreeMap<String, String>();
 		String source = sourceFile.getCompilableContent(runtimePatterns,whatToCompile);
-		sources.put(className(sourceFile.getName()), source); 
-
-		if (sources.isEmpty()) 
-			return;
+		sources.put(className(sourceFile.getName()), source);
 
 		DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 		compiledClasses = compiler.compile(sources, errs, i18n);

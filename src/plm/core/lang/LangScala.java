@@ -47,16 +47,9 @@ public class LangScala extends JVMCompiledLang {
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
 
-
-		/* Prepare the source files */
-		List<plm.core.model.session.SourceFile> sfs = new ArrayList<plm.core.model.session.SourceFile>();
-		sfs.add(sourceFile);
-
 		try {
 			compiler.reset();
-			for (plm.core.model.session.SourceFile sf : sfs) {
-				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
-			}
+			compiler.compile(className(sourceFile.getName()), sourceFile.getCompilableContent(runtimePatterns,whatToCompile), sourceFile.getOffset());
 		} catch (PLMCompilerException e) {
 			System.err.println(i18n.tr("Compilation error:"));
 			System.err.println(e.getMessage());
