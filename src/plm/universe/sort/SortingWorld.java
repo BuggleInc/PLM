@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -272,7 +274,7 @@ public class SortingWorld extends World {
 	 */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang instanceof LangPython) {
 			e.eval(
 					"def getValueCount():\n" +
 					"  return entity.getValueCount()\n" +

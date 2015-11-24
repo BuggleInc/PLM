@@ -10,6 +10,9 @@ import java.util.regex.Pattern;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import plm.core.lang.LangBlockly;
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
@@ -399,7 +402,7 @@ public class BuggleWorld extends GridWorld {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON) || lang.equals(Game.BLOCKLY)) {
+		if (lang instanceof LangPython || lang instanceof LangBlockly) {
 			engine.put("Direction", Direction.class);
 			engine.put("Color", Color.class);
 			engine.eval(

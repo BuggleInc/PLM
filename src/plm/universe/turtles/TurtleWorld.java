@@ -10,6 +10,7 @@ import java.util.Vector;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.Entity;
@@ -124,7 +125,7 @@ public class TurtleWorld extends World {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang instanceof LangPython) {
 			e.put("Color", Color.class);
 			e.eval( "def backward(i):\n"+
 					"  entity.backward(i)\n"+
