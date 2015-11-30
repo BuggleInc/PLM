@@ -356,5 +356,12 @@ public abstract class Exercise extends Lecture {
 		}
 		return PlmHtmlEditorKit.filterHTML(mission, false, lang);
 	}
+
+	public String getWorldAPI(Locale humanLang, ProgrammingLanguage progLang) {
+		if(initialWorld.size() == 0) {
+			return "World is missing...";
+		}
+		return initialWorld.get(0).getAPI(humanLang, progLang);
+	}
 }
 

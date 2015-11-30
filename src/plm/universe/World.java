@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -307,6 +308,20 @@ public abstract class World {
 	}
 
 	String about = null;
+
+	public String getAPI(Locale humanLang, ProgrammingLanguage progLang) {
+		// TODO: Buffer and share APIs among instances
+		String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
+		String api = "File "+filename+".html not found.";
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, humanLang, "html", true);
+			api = PlmHtmlEditorKit.filterHTML(sb.toString(), false, progLang);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return api;
+	}
 
 	public String getAbout() {
 		if (about == null) {
