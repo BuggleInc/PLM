@@ -77,6 +77,26 @@ public abstract class Lecture implements HumanLangChangesListener{
 		return PlmHtmlEditorKit.filterHTML(name, false, getGame().getProgrammingLanguage());
 	}
 
+	public String getName(Locale locale) {
+		String name = "Name not found";
+		String filename = getLocalId().replace('.',File.separatorChar);
+
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, locale, "html",true);
+		} catch (IOException ex) {
+			return name;
+		}
+		String str = sb.toString();
+
+		/* search the mission name */
+		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
+		Matcher m = p.matcher(str);
+		if (m.find())
+			name = m.group(1);
+		return name;
+	}
+
 	public String getTrueName() {
 		return name;
 	}

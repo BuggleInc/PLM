@@ -3,8 +3,10 @@ package plm.core.model.lesson;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -239,6 +241,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		return game;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public JSONObject toJSON() {
 		JSONObject json = new JSONObject();
 		json.put("id", id);
@@ -247,12 +250,21 @@ public abstract class Lesson implements HumanLangChangesListener {
 		return json;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public JSONArray getExercisesGraph(Vector<Lecture> lectures) {
+		Locale[] locales = { new Locale("en"), new Locale("fr"), new Locale("pt_BR") };
+
 		JSONArray json = new JSONArray();
 		for(Lecture lecture: lectures) {
 			JSONObject jsonLecture = new JSONObject();
+
+			Map<String, String> names = new HashMap<String, String>();
+			for(Locale locale: locales) {
+				names.put(locale.getLanguage(), lecture.getName(locale));
+			}
+
 			jsonLecture.put("id", lecture.getId());
-			jsonLecture.put("name", lecture.getName());
+			jsonLecture.put("names", names);
 			jsonLecture.put("dependingLectures", getExercisesGraph(lecture.getDependingLectures()));
 			json.add(jsonLecture);
 		}
