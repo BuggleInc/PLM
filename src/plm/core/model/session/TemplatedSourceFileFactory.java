@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.lang.LangBlockly;
+import plm.core.lang.LangC;
+import plm.core.lang.LangPython;
+import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
@@ -194,7 +198,7 @@ public class TemplatedSourceFileFactory {
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C || lang == Game.BLOCKLY) { 
+		if (lang instanceof LangPython || lang instanceof LangScala || lang instanceof LangC || lang instanceof LangBlockly) { 
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {

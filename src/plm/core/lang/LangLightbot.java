@@ -49,7 +49,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(SourceFile sourceFile,
+	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
 			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
 			throws PLMCompilerException {
 		// TODO Auto-generated method stub

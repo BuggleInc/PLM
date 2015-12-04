@@ -42,7 +42,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(plm.core.model.session.SourceFile sourceFile, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException {
+	public void compileExo(plm.core.model.session.SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -53,6 +53,7 @@ public class LangScala extends JVMCompiledLang {
 		} catch (PLMCompilerException e) {
 			System.err.println(i18n.tr("Compilation error:"));
 			System.err.println(e.getMessage());
+			lastResult.setCompilationError(e.getMessage());
 			throw e;
 		}
 	}
@@ -221,7 +222,7 @@ class ScalaCompiler {
 		
 		@Override
 		public void display(Position pos, String message, Severity _severity) {
-			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
+			System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
 
 			String label = "";
 			int severity = severityRank(_severity);
@@ -242,6 +243,7 @@ class ScalaCompiler {
 			}
 
 			String name = pos.source().path();
+			System.err.println("Name: "+ name);
 			int lastDot = name.lastIndexOf('.');
 			if (lastDot != -1)
 				name = name.substring(lastDot+1);

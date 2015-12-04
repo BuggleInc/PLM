@@ -33,7 +33,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(SourceFile sourceFile,
+	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
 			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
 			throws PLMCompilerException {
 		/* Nothing to do */

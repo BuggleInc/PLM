@@ -15,7 +15,7 @@ public class ExecutionProgress {
 
 	public static enum outcomeKind { COMPILE, FAIL, PASS };
 	public outcomeKind outcome = outcomeKind.PASS;
-	
+
 	public String compilationError;
 	public String executionError = "";
 	public String commonErrorText = "";
@@ -28,10 +28,17 @@ public class ExecutionProgress {
 	public String feedbackInterest;
 	public String feedback; 
 
+	private I18n i18n;
+
 	public ExecutionProgress(ProgrammingLanguage language) {
 		this.language = language;
 	}
-	
+
+	public ExecutionProgress(ProgrammingLanguage language, I18n i18n) {
+		this(language);
+		this.i18n = i18n;
+	}
+
 	public static ExecutionProgress newCompilationError(String message, ProgrammingLanguage language) {
 		ExecutionProgress ep = new ExecutionProgress(language);
 		ep.compilationError = message;
@@ -54,12 +61,25 @@ public class ExecutionProgress {
 		}
 		return newCompilationError(sb.toString(), language);
 	}
-	
+
 	public void setCompilationError(String msg) {
 		outcome = ExecutionProgress.outcomeKind.COMPILE;
 		compilationError = msg;
 		passedTests = -1;
 	}
+
+	public void setCompilationError(DiagnosticCollector<JavaFileObject> diagnostics) {
+		StringBuffer sb = new StringBuffer();
+		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {	
+			if (diagnostic.getSource() == null) 
+				sb.append(i18n.tr("unknown source:")+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
+			else
+				sb.append(diagnostic.getSource().getName()+":"+(diagnostic.getLineNumber()-1)+":"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
+			sb.append("\n");
+		}
+		setCompilationError(sb.toString());
+	}
+
 	public void setExecutionError(String msg) {
 		outcome = ExecutionProgress.outcomeKind.FAIL;
 		executionError = msg;

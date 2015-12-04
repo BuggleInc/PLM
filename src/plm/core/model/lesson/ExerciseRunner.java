@@ -27,6 +27,10 @@ public class ExerciseRunner {
 		this.i18n = i18n;
 	}
 
+	public void setI18n(I18n i18n) {
+		this.i18n = i18n;
+	}
+
 	public ExecutionProgress run(Exercise exo, ProgrammingLanguage progLang, String code) {
 		// FIXME: Handle ExecutionProgress
 
@@ -44,7 +48,6 @@ public class ExerciseRunner {
 			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT);
 		} catch (PLMCompilerException e) {
 			e.printStackTrace();
-			lastResult.setCompilationError(e.getMessage());
 			return lastResult;
 		}
 
@@ -99,7 +102,7 @@ public class ExerciseRunner {
 	}
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile) throws PLMCompilerException {
-		progLang.compileExo(sourceFile, whatToCompile, logger, i18n);
+		progLang.compileExo(sourceFile, lastResult, whatToCompile, logger, i18n);
 
 		WorldKind worldKind = null;
 		switch(whatToCompile) {
