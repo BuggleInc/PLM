@@ -40,15 +40,8 @@ public class SourceFile {
 		return this.body;
 	}
 
-	public void setBody(String text) { 
-		/*
-		if (getGame().getProgrammingLanguage().equals(Game.PYTHON))
-			body = text.replaceAll("\\t", "    ");
-		else
-			body = text;
-		notifyListener();
-		*/
-		body = text;
+	public void setBody(String text) {
+		body = text.replaceAll("\\t", "  ");
 	}
 	public void setTemplate(String string) {
 		this.template = string;
