@@ -35,7 +35,7 @@ public class ExerciseRunner {
 		// FIXME: Handle ExecutionProgress
 
 		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
-		lastResult = new ExecutionProgress(progLang);
+		lastResult = new ExecutionProgress(progLang, i18n);
 
 		exo.reset();
 

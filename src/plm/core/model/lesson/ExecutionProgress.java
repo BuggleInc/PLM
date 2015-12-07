@@ -16,8 +16,8 @@ public class ExecutionProgress {
 	public static enum outcomeKind { COMPILE, FAIL, PASS };
 	public outcomeKind outcome = outcomeKind.PASS;
 
-	public String compilationError;
-	public String executionError;
+	public String compilationError = "";
+	public String executionError = "";
 	public String commonErrorText = "";
 	public int passedTests=0, totalTests=0, commonErrorID=-1;
 	public Date date = new Date();
