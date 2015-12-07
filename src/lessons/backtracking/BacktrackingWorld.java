@@ -2,6 +2,8 @@ package lessons.backtracking;
 
 import javax.script.ScriptEngine;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -86,7 +88,7 @@ public class BacktrackingWorld extends World {
 		throw new RuntimeException("No binding of BacktrackingWorld for "+lang);
 	}
 	@Override
-	public String diffTo(World world) {
+	public String diffTo(World world, I18n i18n) {
 		return null; // FIXME: implement a textual diff
 	}
 }

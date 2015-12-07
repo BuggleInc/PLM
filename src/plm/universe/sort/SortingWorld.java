@@ -6,6 +6,8 @@ import java.util.Random;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -104,7 +106,7 @@ public class SortingWorld extends World {
 	 * @return A textual description of the differences between the caller and world
 	 */
 	@Override
-	public String diffTo(World world) {
+	public String diffTo(World world, I18n i18n) {
 		String s ;
 		if (world == null || !(world instanceof SortingWorld)) {
 			s="This is not a world of sorting :(";
@@ -113,17 +115,17 @@ public class SortingWorld extends World {
 			StringBuffer sb = new StringBuffer();
 			
 			if (this.values.length != other.values.length)
-				sb.append(getGame().i18n.tr("This is very weird: There is not the same amount of values! Expected: {0}; Found: {1}\n",this.values.length,other.values.length));
+				sb.append(i18n.tr("This is very weird: There is not the same amount of values! Expected: {0}; Found: {1}\n",this.values.length,other.values.length));
 			
 			if ( this.readCount != other.readCount )
-				sb.append(getGame().i18n.tr("Invalid read count. Expected: {0}; Found: {1}\n",this.readCount,other.readCount));
+				sb.append(i18n.tr("Invalid read count. Expected: {0}; Found: {1}\n",this.readCount,other.readCount));
 			
 			if ( this.writeCount != other.writeCount )
-				sb.append(getGame().i18n.tr("Invalid write count. Expected: {0}; Found: {1}\n",this.writeCount,other.writeCount));
+				sb.append(i18n.tr("Invalid write count. Expected: {0}; Found: {1}\n",this.writeCount,other.writeCount));
 			
 			for (int i = 0 ; i < this.values.length ; i++) 
 				if ( this.values[i] != other.values[i] )
-					sb.append(getGame().i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",
+					sb.append(i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",
 							i, val2str(values[i],values.length),  val2str(other.values[i],other.values.length)  ));
 					
 			s = sb.toString();

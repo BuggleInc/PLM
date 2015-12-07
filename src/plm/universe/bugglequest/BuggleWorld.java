@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
@@ -555,22 +557,22 @@ public class BuggleWorld extends GridWorld {
 		}
 	}
 	@Override
-	public String diffTo(World world) {
+	public String diffTo(World world, I18n i18n) {
 		BuggleWorld other = (BuggleWorld) world;
 		StringBuffer sb = new StringBuffer();
 		if (! other.getName().equals(getName()))
-			sb.append(getGame().i18n.tr("  The world''s name is {0}",other.getName()));
+			sb.append(i18n.tr("  The world''s name is {0}",other.getName()));
 		for (int x=0; x<getWidth(); x++) 
 			for (int y=0; y<getHeight(); y++) 
 				if (!getCell(x, y).equals(other.getCell(x, y))) 
-					sb.append(getGame().i18n.tr("  In ({0},{1})",x,y)+  getCell(x, y).diffTo(other.getCell(x, y))+".\n");
+					sb.append(i18n.tr("  In ({0},{1})",x,y)+  getCell(x, y).diffTo(other.getCell(x, y), i18n)+".\n");
 		if (entities.size() != other.entities.size()) {
-			sb.append(getGame().i18n.tr("  There is {0} entities where {1} were expected.",other.entities.size(),entities.size()));
+			sb.append(i18n.tr("  There is {0} entities where {1} were expected.",other.entities.size(),entities.size()));
 		} else {
 			for (int i=0; i<entities.size(); i++)  
 				if (! entities.get(i).equals(other.entities.get(i))) 
-					sb.append(getGame().i18n.tr("  Something is wrong about buggle ''{0}'':\n",entities.get(i).getName())+
-							((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i)));
+					sb.append(i18n.tr("  Something is wrong about buggle ''{0}'':\n",entities.get(i).getName())+
+							((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i), i18n));
 		}
 		return sb.toString();
 	}

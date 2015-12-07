@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
@@ -408,7 +410,7 @@ public class Turtle extends Entity {
 		return result;
 	}
 
-	public String diffTo(Object obj) {
+	public String diffTo(Object obj, I18n i18n) {
 		if (this == obj)
 			return "";
 		if (obj == null)
@@ -418,9 +420,9 @@ public class Turtle extends Entity {
 
 		final Turtle other = (Turtle) obj;
 		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
-			return getGame().i18n.tr("The turtle {0} is not heading to the right direction.",getName());
+			return i18n.tr("The turtle {0} is not heading to the right direction.",getName());
 		if (Math.abs(x-other.x) > Turtle.EPSILON || Math.abs(y-other.y) > Turtle.EPSILON)
-			return getGame().i18n.tr("The turtle {0} is at the right location.",getName());
+			return i18n.tr("The turtle {0} is at the right location.",getName());
 		return "";
 
 	}

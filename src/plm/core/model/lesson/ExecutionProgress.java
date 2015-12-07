@@ -17,9 +17,9 @@ public class ExecutionProgress {
 	public outcomeKind outcome = outcomeKind.PASS;
 
 	public String compilationError;
-	public String executionError = "";
+	public String executionError;
 	public String commonErrorText = "";
-	public int passedTests, totalTests=0, commonErrorID=-1;
+	public int passedTests=0, totalTests=0, commonErrorID=-1;
 	public Date date = new Date();
 	public ProgrammingLanguage language;
 
@@ -64,7 +64,7 @@ public class ExecutionProgress {
 
 	public void setCompilationError(String msg) {
 		outcome = ExecutionProgress.outcomeKind.COMPILE;
-		compilationError = msg;
+		compilationError = i18n.tr("Compilation error:") + "\n" + msg;
 		passedTests = -1;
 	}
 

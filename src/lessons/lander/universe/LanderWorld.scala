@@ -1,7 +1,6 @@
 package lessons.lander.universe
 
 import java.lang.Math.PI
-
 import NumUtil.clamp
 import NumUtil.gameAngleToRadian
 import NumUtil.radianToVector
@@ -9,6 +8,7 @@ import javax.script.ScriptEngine
 import plm.core.lang.ProgrammingLanguage
 import plm.core.model.Game
 import plm.universe.World
+import org.xnap.commons.i18n.I18n
 
 object LanderWorld {
   object State extends Enumeration {
@@ -79,7 +79,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   /** Returns true if both worlds have same name and same state. */
   def winning(target: World): Boolean = state == LANDED
 
-  def diffTo(world: World): String = null
+  def diffTo(world: World, i18n: I18n): String = null
 
   def reset(initialWorld: LanderWorld): Unit = {
     width = initialWorld.width

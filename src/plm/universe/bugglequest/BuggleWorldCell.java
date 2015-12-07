@@ -2,6 +2,8 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.utils.ColorMapper;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
@@ -193,31 +195,31 @@ public class BuggleWorldCell extends GridWorldCell {
 		return true;
 	}
 	/* This function is called as answer.diffTo(current) */
-	public String diffTo(BuggleWorldCell current) {
+	public String diffTo(BuggleWorldCell current, I18n i18n) {
 		StringBuffer sb = new StringBuffer();
 		if (! hasBaggle && current.hasBaggle) 
-			sb.append(getWorld().getGame().i18n.tr(", there shouldn't be this baggle"));
+			sb.append(i18n.tr(", there shouldn't be this baggle"));
 		if (  hasBaggle && ! current.hasBaggle)
-			sb.append(getWorld().getGame().i18n.tr(", there should be a baggle"));
+			sb.append(i18n.tr(", there should be a baggle"));
 		if (color == null) {
 			if (current.color != null)
-				sb.append(getWorld().getGame().i18n.tr(", the ground should not be {0}",ColorMapper.color2translated(current.color,getWorld().getGame().i18n)));
+				sb.append(i18n.tr(", the ground should not be {0}",ColorMapper.color2translated(current.color, i18n)));
 		} else if (!color.equals(current.color)) {
-			sb.append(getWorld().getGame().i18n.tr(", the ground is expected to be {0}, but it is {1}", 
-					ColorMapper.color2translated(color, getWorld().getGame().i18n), ColorMapper.color2translated(current.color, getWorld().getGame().i18n)));
+			sb.append(i18n.tr(", the ground is expected to be {0}, but it is {1}", 
+					ColorMapper.color2translated(color, i18n), ColorMapper.color2translated(current.color, i18n)));
 		}
 		if (!content.equals(current.content))
-			sb.append(getWorld().getGame().i18n.tr(", the ground reads ''{0}'' (expected: ''{1}'')", current.content, content));
+			sb.append(i18n.tr(", the ground reads ''{0}'' (expected: ''{1}'')", current.content, content));
 		if (leftWall != current.leftWall)
 			if (current.leftWall)
-				sb.append(getWorld().getGame().i18n.tr(", there shouldn't be any wall at west"));
+				sb.append(i18n.tr(", there shouldn't be any wall at west"));
 			else
-				sb.append(getWorld().getGame().i18n.tr(", there should be a wall at west"));
+				sb.append(i18n.tr(", there should be a wall at west"));
 		if (topWall != current.topWall)
 			if (current.topWall)
-				sb.append(getWorld().getGame().i18n.tr(", there shouldn't be any wall at north"));
+				sb.append(i18n.tr(", there shouldn't be any wall at north"));
 			else
-				sb.append(getWorld().getGame().i18n.tr(", there should be a wall at north"));
+				sb.append(i18n.tr(", there should be a wall at north"));
 		return sb.toString();
 	}
 }

@@ -4,6 +4,9 @@ import java.util.Random;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -71,18 +74,18 @@ public class DutchFlagWorld extends World {
 
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
-	public String diffTo(World o) {
+	public String diffTo(World o, I18n i18n) {
 		if (o == null || !(o instanceof DutchFlagWorld))
-			return getGame().i18n.tr("This world is not a dutch flag");
+			return i18n.tr("This world is not a dutch flag");
 
 		DutchFlagWorld other = (DutchFlagWorld) o;
 		if (content.length != other.content.length)
-			return getGame().i18n.tr("The two worlds are of differing size");
+			return i18n.tr("The two worlds are of differing size");
 
 		StringBuffer res = new StringBuffer();
 		for ( int i = 0; i<content.length; i++) 
 			if ( content[i] != other.content[i] ) 
-				res.append(getGame().i18n.tr(" Ray #{0} differs: color {1} is not color {2}\n",(i+1), content[i],other.content[i]));
+				res.append(i18n.tr(" Ray #{0} differs: color {1} is not color {2}\n",(i+1), content[i],other.content[i]));
 
 		return res.toString();
 	}

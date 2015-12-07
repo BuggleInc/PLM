@@ -12,6 +12,8 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.xnap.commons.i18n.I18nFactory;
+
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -148,7 +150,7 @@ public abstract class Exercise extends Lecture {
 							break;
 						}
 					}
-					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
+					String diff = answerWorld.get(i).diffTo(currentWorld.get(i), I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", new Locale("en"), I18nFactory.FALLBACK));
 					lastResult.executionError += getGame().i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
 						lastResult.executionError += ":\n"+diff;

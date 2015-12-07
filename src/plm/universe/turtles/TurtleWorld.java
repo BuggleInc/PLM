@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
@@ -214,7 +218,7 @@ public class TurtleWorld extends World {
 		TurtleWorld other = (TurtleWorld) obj;
 		if (!other.getName().equals(getName()))
 			return false;
-		String diff = diffTo(other);
+		String diff = diffTo(other, I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", new Locale("en"), I18nFactory.FALLBACK));
 		if (diff.equals(""))
 			return true;
 		return false;
@@ -334,7 +338,7 @@ public class TurtleWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World world) {
+	public String diffTo(World world, I18n i18n) {
 		if (world == this)
 			return "";
 		StringBuffer sb = new StringBuffer();
@@ -342,10 +346,10 @@ public class TurtleWorld extends World {
 		
 		// First compare entities
 		if (other.entities.size() != entities.size())
-			return getGame().i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
+			return i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
 		for (int i=0; i<other.entities.size();i++)
 			if (! other.entities.get(i).equals(entities.get(i)))
-				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i)));
+				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i), i18n));
 		
 		// Compare shapes
 		synchronized (shapes) { synchronized (other.shapes) {
@@ -371,10 +375,10 @@ public class TurtleWorld extends World {
 			// Same amount of shapes?
 			if (shapes.size() != other.shapes.size()) {
 				if (other.shapes.size() > shapes.size())
-					sb.append( getGame().i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+					sb.append( i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
 				else 
-					sb.append( getGame().i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
-				
+					sb.append( i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size()) );
+				/*
 				if (getGame().isDebugEnabled()) {
 					sb.append("Shapes available in the student's work (after mergin' madness):\n");
 					for (int i=0;i<other.shapes.size();i++)
@@ -383,7 +387,7 @@ public class TurtleWorld extends World {
 					for (int i=0;i<shapes.size();i++)
 						sb.append("  "+shapes.get(i)+"\n");
 				}
-				
+				*/
 				Vector<Shape> studentShapes = new Vector<Shape>();
 				Vector<Shape> correctionShapes = new Vector<Shape>();
 				for (int i=0;i<other.shapes.size();i++)
@@ -400,12 +404,12 @@ public class TurtleWorld extends World {
 					}
 				}
 				if (!studentShapes.isEmpty()) {
-					sb.append(getGame().i18n.tr("Superflous shapes in your solution:\n"));
+					sb.append(i18n.tr("Superflous shapes in your solution:\n"));
 					for (Shape s: studentShapes)
 						sb.append("   "+s+"\n");
 				}
 				if (!correctionShapes.isEmpty()) {
-					sb.append(getGame().i18n.tr("Missing shapes in your solution:\n"));
+					sb.append(i18n.tr("Missing shapes in your solution:\n"));
 					for (Shape s: correctionShapes)
 						sb.append("   "+s+"\n");
 				}
@@ -416,7 +420,7 @@ public class TurtleWorld extends World {
 			// Same shapes?
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
-					sb.append(getGame().i18n.tr("  {0} (got {1} instead of {2})\n",
+					sb.append(i18n.tr("  {0} (got {1} instead of {2})\n",
 							((Shape) other.shapes.get(i)).diffTo(shapes.get(i), getGame().i18n),
 							other.shapes.get(i),shapes.get(i)));
 		} }

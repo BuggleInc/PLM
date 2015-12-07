@@ -11,6 +11,8 @@ import java.util.Locale;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
@@ -368,7 +370,7 @@ public abstract class World {
 	public abstract void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException;
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
-	public abstract String diffTo(World world);
+	public abstract String diffTo(World world, I18n i18n);
 	
 	public Game getGame() {
 		return game;

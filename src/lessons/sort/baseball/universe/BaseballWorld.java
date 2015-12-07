@@ -5,6 +5,9 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -130,22 +133,22 @@ public class BaseballWorld extends World {
 	 * @param o the world with which you want to compare your world
 	 */
 	@Override
-	public String diffTo(World o) {
+	public String diffTo(World o, I18n i18n) {
 		if (o == null || !(o instanceof BaseballWorld))
-			return getGame().i18n.tr("This is not a baseball world :-(");
+			return i18n.tr("This is not a baseball world :-(");
 
 		BaseballWorld other = (BaseballWorld) o;
 		if (getBasesAmount() != other.getBasesAmount())
-			return getGame().i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
+			return i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
 
 		if (getPositionsAmount() != ((BaseballWorld) o).getPositionsAmount())
-			return getGame().i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
+			return i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
 		for (int base = 0; base< baseAmount; base++)
 			for (int pos=0; pos<posAmount; pos++)
 				if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
-					sb.append(getGame().i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
+					sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
 		return sb.toString();
 	}

@@ -4,6 +4,9 @@ import java.util.Random;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -82,21 +85,21 @@ public class PancakeWorld extends World {
 	
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
-	public String diffTo(World o) {
+	public String diffTo(World o, I18n i18n) {
 		if (o == null || !(o instanceof PancakeWorld))
-			return getGame().i18n.tr("This is not a world of pancakes");
+			return i18n.tr("This is not a world of pancakes");
 
 		PancakeWorld other = (PancakeWorld) o;
 		if (pancakeStack.length != other.pancakeStack.length)
-			return getGame().i18n.tr("The two worlds are of differing size");
+			return i18n.tr("The two worlds are of differing size");
 
 		StringBuffer res = new StringBuffer();
 		if (other.moveCount != moveCount)
-			res.append(getGame().i18n.tr("Stacks were not flipped the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+			res.append(i18n.tr("Stacks were not flipped the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
 
 		for ( int i = 0;i< pancakeStack.length;i++) 
 			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld)) 
-				res.append(getGame().i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
+				res.append(i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
 
 		return res.toString();
 	}

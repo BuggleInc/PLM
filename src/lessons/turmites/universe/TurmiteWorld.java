@@ -5,6 +5,9 @@ import java.io.IOException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.BrokenWorldFileException;
@@ -71,15 +74,15 @@ public class TurmiteWorld extends BuggleWorld {
 		return super.equals(o);
 	}
 	@Override
-	public String diffTo(World other) {
+	public String diffTo(World other, I18n i18n) {
 		// hack hack hack: Avoid false negative with answer worlds that were serialized as BuggleWorlds 
 		if (other instanceof BuggleWorld && !(other instanceof TurmiteWorld))
-			return "other is not a turmiteWorld, but that's ok\n"+super.diffTo(other);
+			return "other is not a turmiteWorld, but that's ok\n"+super.diffTo(other, i18n);
 		
 		String res = "";
 		if (((TurmiteWorld) other).currStep != currStep && ((TurmiteWorld) other).currStep != 0)// allow other world to be a cache from disk
 			res += "The amount of steps is wrong: "+((TurmiteWorld) other).currStep +" is not "+ currStep+"\n";
-		return res+super.diffTo(other);
+		return res+super.diffTo(other, i18n);
 	}
 	
 	

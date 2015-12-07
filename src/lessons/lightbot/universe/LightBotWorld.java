@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 import javax.script.ScriptEngine;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.Entity;
@@ -184,7 +186,7 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
 		throw new RuntimeException("No binding of LightbotWorld for "+lang);
 	}
 	@Override
-	public String diffTo(World other) {
+	public String diffTo(World other, I18n i18n) {
 		return "null";
 	}
 }

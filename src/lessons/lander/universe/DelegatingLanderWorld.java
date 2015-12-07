@@ -3,6 +3,8 @@ package lessons.lander.universe;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -43,8 +45,8 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
-  public String diffTo(World world) {
-    return realWorld.diffTo(world);
+  public String diffTo(World world, I18n i18n) {
+    return realWorld.diffTo(world, i18n);
   }
 
   @Override

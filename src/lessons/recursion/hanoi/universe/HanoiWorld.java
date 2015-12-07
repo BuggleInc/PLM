@@ -6,6 +6,8 @@ import java.util.Vector;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -103,7 +105,7 @@ public class HanoiWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World o) {
+	public String diffTo(World o, I18n i18n) {
 		StringBuffer res = new StringBuffer();
 		if (o == null || !(o instanceof HanoiWorld))
 			return "This is not a world of Hanoi";
@@ -113,14 +115,14 @@ public class HanoiWorld extends World {
 			return "The worlds don't have the same amount of pegs";
 
 		if (other.moveCount != moveCount)
-			res.append(getGame().i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+			res.append(i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
 
 		for (int slot=0; slot<slots.length; slot++)
 			for ( int pos = 0;pos< Math.max(slots[slot].size(),other.slots[slot].size()) ; pos++) {
 				String thisVal = pos >=  this.slots[slot].size()?"--": this.slots[slot].get(pos).toString();
 				String otherVal= pos >= other.slots[slot].size()?"--":other.slots[slot].get(pos).toString();
 				if (!thisVal.equals(otherVal)) {
-					res.append(getGame().i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisVal,otherVal));
+					res.append(i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisVal,otherVal));
 				}
 			}
 		return res.toString();

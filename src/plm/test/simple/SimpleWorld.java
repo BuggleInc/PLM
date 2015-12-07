@@ -2,6 +2,9 @@ package plm.test.simple;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -44,7 +47,7 @@ public class SimpleWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World world) {
+	public String diffTo(World world, I18n i18n) {
 		SimpleWorld other = (SimpleWorld) world;
 		String s = "No diff";
 		if(this.objectif != other.objectif) {

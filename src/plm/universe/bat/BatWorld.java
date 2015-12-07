@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -65,7 +68,7 @@ public class BatWorld extends World {
 		}
 	}
 	@Override
-	public String diffTo(World w) {
+	public String diffTo(World w, I18n i18n) {
 		BatWorld other = (BatWorld) w;
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;

@@ -74,10 +74,12 @@ public class ExerciseRunner {
 		/*
 		 * Check time
 		 */
-		for(int i=0; i<currentWorlds.size(); i++) {
+		int i=0;
+		while(i<currentWorlds.size()) {
 			World currentWorld = currentWorlds.get(i);
 			World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
 			checkWorld(currentWorld, answerWorld);
+			i++;
 		}
 
 		return lastResult;
@@ -152,44 +154,35 @@ public class ExerciseRunner {
 	}
 
 	private void checkWorld(World currentWorld, World answerWorld) {
-		boolean pass = true;
 		lastResult.commonErrorText = "";
 		lastResult.commonErrorID = -1;
-		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			currentWorld.notifyWorldUpdatesListeners();
+		lastResult.totalTests++;
 
-			lastResult.totalTests++;
-
-			if (!currentWorld.winning(answerWorld)) {
-				// FIXME: Enable again commonErrors
-				/*
-				for(int j = 0 ; j < commonErrors.size() ; j++) {
-					if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) { //winning do an equals, but it is the same
-						String path = Game.JAVA.nameOfCommonError(this, j).replaceAll("\\.", "/");
-						try {
-							StringBuffer sb = FileUtils.readContentAsText(path, getGame().getLocale(), "html", true);
-							lastResult.commonErrorText = sb.toString();
-							lastResult.commonErrorID = j;
-						} catch (IOException e) {
-							e.printStackTrace();
-						} 
-						break;
-					}
+		if (!currentWorld.winning(answerWorld)) {
+			// FIXME: Enable again commonErrors
+			/*
+			for(int j = 0 ; j < commonErrors.size() ; j++) {
+				if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) { //winning do an equals, but it is the same
+					String path = Game.JAVA.nameOfCommonError(this, j).replaceAll("\\.", "/");
+					try {
+						StringBuffer sb = FileUtils.readContentAsText(path, getGame().getLocale(), "html", true);
+						lastResult.commonErrorText = sb.toString();
+						lastResult.commonErrorID = j;
+					} catch (IOException e) {
+						e.printStackTrace();
+					} 
+					break;
 				}
-				*/
-				String diff = ""; //answerWorld.diffTo(currentWorld);
-				lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
-				if (diff != null) 
-					lastResult.executionError += ":\n"+diff;
-				lastResult.executionError += "\n------------------------------------------\n";
-				pass = false;
-			} else {
-				lastResult.passedTests++;
 			}
-			if (pass)
-				lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
-			else 
-				lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
+			*/
+			String diff = answerWorld.diffTo(currentWorld, i18n);
+			lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
+			if (diff != null) 
+				lastResult.executionError += ":\n"+diff;
+			lastResult.executionError += "\n------------------------------------------\n";
+			lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
+		} else {
+			lastResult.passedTests++;
 		}
 	}
 }
