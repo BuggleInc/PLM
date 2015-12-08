@@ -27,6 +27,8 @@ public abstract class World {
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
+	private List<List<Operation>> steps = new ArrayList<List<Operation>>();
+
 	private String name;
 	private Game game;
 	
@@ -61,6 +63,7 @@ public abstract class World {
 	 * @param initialWorld
 	 */
 	public void reset(World initialWorld) {
+		steps = new ArrayList<List<Operation>>();
 		entities = new ArrayList<Entity>();
 		for (Entity oldEntity : initialWorld.entities) {
 			try {
@@ -374,5 +377,15 @@ public abstract class World {
 	
 	public Game getGame() {
 		return game;
+	}
+
+	public List<List<Operation>> getSteps() {
+		return steps;
+	}
+
+	public void addStep(List<Operation> operations) {
+		synchronized(steps) {
+			steps.add(operations);
+		}
 	}
 }

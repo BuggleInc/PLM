@@ -25,7 +25,6 @@ public abstract class Entity extends Observable {
 
 	protected World world;
 	
-	private boolean readyToSend = false;
 	private List<Operation> operations = new ArrayList<Operation>();
 	private Game game;
 	private Semaphore oneStepSemaphore = new Semaphore(0);
@@ -80,7 +79,9 @@ public abstract class Entity extends Observable {
 	 * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().  
 	 */
 	protected void stepUI() {
-		readyToSend = true;
+		if(operations.size()>0) {
+			addStep();
+		}
 		fireStackListener();
 		world.notifyWorldUpdatesListeners();
 	}
@@ -163,19 +164,16 @@ public abstract class Entity extends Observable {
 		operations.add(operation);
 	}
 	
-	public boolean isReadyToSend() {
-		return readyToSend == true;
-	}
-	
-	public void setReadyToSend(boolean readyToSend) {
-		this.readyToSend = readyToSend;
-	}
-	
 	public void setGame(Game game) {
 		this.game = game;
 	}
 	
 	public Game getGame() {
 		return game;
+	}
+
+	public void addStep() {
+		world.addStep(operations);
+		operations = new ArrayList<Operation>();
 	}
 }
