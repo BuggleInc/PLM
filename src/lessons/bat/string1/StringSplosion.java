@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringSplosion extends BatExercise {
-	public StringSplosion(Lesson lesson) {
-		super(lesson);
+	public StringSplosion(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("stringSplosion");
+		BatWorld myWorld = new BatWorld(game, "stringSplosion");
 		myWorld.addTest(VISIBLE, "Code") ;
 		myWorld.addTest(VISIBLE, "abc") ;
 		myWorld.addTest(VISIBLE, "x") ;
@@ -17,13 +18,13 @@ public class StringSplosion extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Good") ;
 		myWorld.addTest(INVISIBLE, "Bad") ;
 
-		templatePython("stringSplosion", 
+		templatePython("stringSplosion", new String[]{"String"},
 				"def stringSplosion(str):\n",
 				"  res = ''\n" +
 				"  for i in range(len(str)):\n" +
 				"    res += str[0:i+1]\n" +
 				"  return res\n");
-		templateScala("stringSplosion",new String[]{"String"}, 
+		templateScala("stringSplosion", new String[]{"String"}, 
 				"def stringSplosion(str:String):String = {\n",
 				"  var res = \"\"\n" +
 				"  for (i <- 0 to str.length-1) \n" +

@@ -19,7 +19,6 @@ import org.json.simple.parser.ParseException;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.Logger;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -54,8 +53,8 @@ public class ZipSessionKit implements ISessionKit {
 		for (String lessonName : this.game.studentWork.getLessonsNames()) {
 			JSONObject allLangs = new JSONObject();
 			for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-				int possible = Game.getInstance().studentWork.getPossibleExercises(lessonName, lang);
-				int passed = Game.getInstance().studentWork.getPassedExercises(lessonName, lang);
+				int possible = game.studentWork.getPossibleExercises(lessonName, lang);
+				int passed = game.studentWork.getPassedExercises(lessonName, lang);
 
 				if (possible>0) {
 					JSONObject oneLang = new JSONObject();
@@ -67,7 +66,7 @@ public class ZipSessionKit implements ISessionKit {
 			if (allLangs.size()>0) 
 				allLessons.put(lessonName, allLangs);
 		}
-		//System.out.println("JSON written: "+allLessons.toJSONString());
+		//getGame().getLogger().log("JSON written: "+allLessons.toJSONString());
 		
 
 		ZipOutputStream zos = null;
@@ -137,7 +136,7 @@ public class ZipSessionKit implements ISessionKit {
 		}
 		if (content == null)
 			return;
-		//System.out.println("JSON Read: "+content);
+		//getGame().getLogger().log("JSON Read: "+content);
 		
 		// now parse it
 		Object value = null;
@@ -163,8 +162,8 @@ public class ZipSessionKit implements ISessionKit {
 				JSONObject oneLang = (JSONObject) allLangs.get(langName);
 				int possible = Integer.parseInt(""+oneLang.get("possible"));
 				int passed = Integer.parseInt(""+oneLang.get("passed"));
-				Game.getInstance().studentWork.setPossibleExercises((String) lessonName, lang, possible);
-				Game.getInstance().studentWork.setPassedExercises((String) lessonName, lang, passed);
+				game.studentWork.setPossibleExercises((String) lessonName, lang, possible);
+				game.studentWork.setPassedExercises((String) lessonName, lang, passed);
 			}
 		}
 	}
@@ -205,7 +204,7 @@ public class ZipSessionKit implements ISessionKit {
 					Exercise exercise = (Exercise) lecture;
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						// flag successfully passed exercise
-						if (Game.getInstance().studentWork.getPassed(exercise, lang)) {
+						if (game.studentWork.getPassed(exercise, lang)) {
 							ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE."+lang.getExt());
 							zos.putNextEntry(ze);
 							byte[] bytes = new byte[1];
@@ -249,14 +248,14 @@ public class ZipSessionKit implements ISessionKit {
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
-			Object[] options = { Game.i18n.tr("Ok, quit and lose my data"), Game.i18n.tr("Please stop! I'll save it myself first") };
-			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("PLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
+			Object[] options = { getGame().i18n.tr("Ok, quit and lose my data"), getGame().i18n.tr("Please stop! I'll save it myself first") };
+			int n = JOptionPane.showOptionDialog(null, getGame().i18n.tr("The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed so far)?",
 					lesson.getName(),ex.getClass().getSimpleName(),ex.getLocalizedMessage()),
-					Game.i18n.tr("Your changes are NOT saved"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					getGame().i18n.tr("Your changes are NOT saved"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, options, options[1]);
 			if (n == 1) {
-				throw new UserAbortException(Game.i18n.tr("User aborted saving on system error"),ex);
+				throw new UserAbortException(getGame().i18n.tr("User aborted saving on system error"),ex);
 			}
 
 
@@ -289,7 +288,7 @@ public class ZipSessionKit implements ISessionKit {
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE."+lang.getExt());
 						if (entry != null) {
-							Game.getInstance().studentWork.setPassed(exercise, lang, true);
+							game.studentWork.setPassed(exercise, lang, true);
 						}
 
 						for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {
@@ -353,14 +352,14 @@ public class ZipSessionKit implements ISessionKit {
 		} catch (IOException ex) { // ZipExecption or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
-			Object[] options = { Game.i18n.tr("Proceed"), Game.i18n.tr("Abort") };
-			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("PLM were unable to load your code for lesson {0} ({1}:{2}).\n\n"
+			Object[] options = { getGame().i18n.tr("Proceed"), getGame().i18n.tr("Abort") };
+			int n = JOptionPane.showOptionDialog(null, getGame().i18n.tr("The PLM were unable to load your code for lesson {0} ({1}:{2}).\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed previously)?",
 					lesson.getName(), ex.getClass().getSimpleName(), ex.getMessage()),
-					Game.i18n.tr("Error while loading your session"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					getGame().i18n.tr("Error while loading your session"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, options, options[1]);
 			if (n == 1) {
-				System.err.println(Game.i18n.tr("Abording on user request"));
+				System.err.println(getGame().i18n.tr("Abording on user request"));
 				// should throw exception to calling method, no System.exit() here !!!
 				System.exit(1);
 			}
@@ -380,9 +379,18 @@ public class ZipSessionKit implements ISessionKit {
 
 		if (saveFile.exists()) {
 			if (saveFile.delete()) {
-				Logger.log("ZipSessionKit:cleanup", "cannot remove session store directory");
+				game.getLogger().log("ZipSessionKit:cleanup");
+				game.getLogger().log("cannot remove session store directory");
 			}
 		}
 	}
+	
+	public Game getGame() {
+		return game;
+	}
 
+	@Override
+	public void setUserUUID(String userUUID) { 
+		// Do nothing
+	}
 }

@@ -1,7 +1,9 @@
 package plm.core.model.lesson;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import plm.core.PLMCompilerException;
+import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
@@ -24,24 +28,24 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
-	public ExerciseTemplated(Lesson lesson) {
-		super(lesson,null);
+	public ExerciseTemplated(Game game, Lesson lesson) {
+		super(game, lesson,null);
 	}
-	public ExerciseTemplated(Lesson lesson, String basename) {
-		super(lesson,basename);
+	public ExerciseTemplated(Game game, Lesson lesson, String basename) {
+		super(game, lesson,basename);
 	}
-	
+
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
 		newSourceFromFile(lang, name, filename, "");
 	}
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
-		
+
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
+			sb = FileUtils.readContentAsText(filename, null, lang.getExt(), false);
 		} catch (IOException ex) {
-			throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.",filename.replaceAll("\\.","/"),lang.getExt()));			
+			throw new NoSuchEntityException(getGame().i18n.tr("Source file {0}.{1} not found.",filename.replaceAll("\\.","/"),lang.getExt()));			
 		}
 
 		String content;
@@ -63,18 +67,15 @@ public abstract class ExerciseTemplated extends Exercise {
 		StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
 		StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
 		StringBuffer tail = new StringBuffer("\n"); /* after the template (state 4) 
-		                                             *   This contains a preliminar \n to help python understanding that the following is not in the same block.
-		                                             *   Not doing Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
-		                                             */
+		 *   This contains a preliminar \n to help python understanding that the following is not in the same block.
+		 *   Not doing Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
+		 */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 		StringBuffer correction = new StringBuffer(); /* the unchanged content, but the package and className modification */
 		boolean containsLinePreprocessor=false;
 
 		boolean seenTemplate=false; // whether B/E SOLUTION seems included within B/E TEMPLATE
 		for (String line : content.split("\n")) {
-			//if (this.debug)
-			//	System.out.println(state+"->"+line);
-			
 			switch (state) {
 			case 0: /* initial content */
 				if (line.contains("class ")) {
@@ -114,7 +115,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 1: /* template head */
 				correction.append(line+"\n");
 				if (line.contains("BEGIN TEMPLATE")) {
-					System.out.println(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
+					getGame().getLogger().log(getGame().i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("public class ")){
 					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
@@ -135,7 +136,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 2: /* solution */
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
-					System.out.println(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
+					getGame().getLogger().log(getGame().i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					if (seenTemplate)
@@ -153,11 +154,10 @@ public abstract class ExerciseTemplated extends Exercise {
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
-						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
-						
+						getGame().getLogger().log(getGame().i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
+					throw new RuntimeException(getGame().i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
@@ -177,8 +177,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else {
 					if (line.contains("END TEMPLATE"))  
 						if (!seenTemplate)
-							System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
-					
+							getGame().getLogger().log(getGame().i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					tail.append(line+"\n");
 				}
 				break;
@@ -197,19 +196,19 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			default: 	
-				throw new RuntimeException(i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
+				throw new RuntimeException(getGame().i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
 			}
 		}
 		if (state == 3) {
 			if (seenTemplate)
-				System.out.println(i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
+				getGame().getLogger().log(getGame().i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
 		} else if (state != 4)
-			System.out.println(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
+			getGame().getLogger().log(getGame().i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C) { 
+		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C || lang == Game.BLOCKLY) { 
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {
@@ -219,7 +218,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		String template = (headContent+"$body"+tail);
 		int offset = headContent.split("\n").length;
-		
+
 		/* Remove the unnecessary leading spaces from the initial content */
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
 		if (lang != Game.PYTHON) {
@@ -270,8 +269,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (parts.length != 3 || !parts[0].equals("s")) 
 						throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
 
-					if (Game.getInstance().isDebugEnabled())
-						System.out.println("Replace all "+parts[1]+" to "+parts[2]);
+					if (getGame().isDebugEnabled())
+						getGame().getLogger().log("Replace all "+parts[1]+" to "+parts[2]);
 					template = template.replaceAll(parts[1], parts[2]);
 					initialContent = initialContent.replaceAll(parts[1], parts[2]);
 					skelContent = skelContent.replaceAll(parts[1], parts[2]);
@@ -281,16 +280,16 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		/*if (this.debug) {
-			System.out.println("<<<<<<<<template:"+template);
-			System.out.println("<<<<<<<<debugCtn:"+debugContent);
-			System.out.println("<<<<<<<<initialContent:"+initialContent);
-		    System.out.println("<<<<<<<<Skel: "+skelContent);
+			getGame().getLogger().log("<<<<<<<<template:"+template);
+			getGame().getLogger().log("<<<<<<<<debugCtn:"+debugContent);
+			getGame().getLogger().log("<<<<<<<<initialContent:"+initialContent);
+		    getGame().getLogger().log("<<<<<<<<Skel: "+skelContent);
 		}*/
-		
+
 		if (skelContent.length()>0) {
 			if (! (this instanceof ExerciseTemplatingEntity)) 
 				throw new RuntimeException(getName()+": You provided an exercise skeleton, but this is not an ExerciseTemplatingEntity. Are you trying to drive me nuts??");
-			
+
 			/* 
 			 * HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK
 			 *  
@@ -314,10 +313,10 @@ public abstract class ExerciseTemplated extends Exercise {
 			 * (TL;DR: entities in ExerciseTemplatingEntities are Frankenstein monsters built manually from scratch) 
 			 */
 			newSource(lang, name, initialContent, skelContent,offset,
-					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString());
+					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString(),"Error");
 		} else {
 			newSource(lang, name, initialContent, template,offset,
-					correction.toString().replaceAll("SimpleBuggle","AbstractBuggle")); // We don't want to have little dialogs when testing
+					correction.toString().replaceAll("SimpleBuggle","AbstractBuggle"),"Error"); // We don't want to have little dialogs when testing
 		}
 	}
 
@@ -326,8 +325,13 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	protected <W extends World> void setup(W[] ws) {
 		boolean foundALanguage=false;
-		setupWorlds(ws);
-
+		ArrayList<String> files = new ArrayList<String>();
+		int k = 0;
+		while(getClass().getResourceAsStream("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")!=null) {
+			files.add("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java");
+			k++;
+		}
+		setupWorlds(ws,files.size());
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
@@ -341,8 +345,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					m = p.matcher(searchedName);
 					searchedName = m.replaceAll("");
 				}
-				if (Game.getInstance().isDebugEnabled())
-					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
+				if (getGame().isDebugEnabled())
+					getGame().getLogger().log("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
 				if (sf.getName().equals(searchedName)||sf.getName().equals(tabName))
 					foundThisLanguage=true;
 			}
@@ -351,35 +355,104 @@ public abstract class ExerciseTemplated extends Exercise {
 					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
 					super.addProgLanguage(lang);
 					foundALanguage = true;
-					if (Game.getInstance().isDebugEnabled())
-						System.out.println("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
+					if (getGame().isDebugEnabled())
+						getGame().getLogger().log("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
-					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
-						System.out.println("No templating entity found: "+e);
+					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA) || lang.equals(Game.BLOCKLY)) 
+						getGame().getLogger().log("No templating entity found: "+e);
 						
 					if (getProgLanguages().contains(lang)) 
 						throw new RuntimeException(
-								Game.i18n.tr("Exercise {0} is said to be compatible with language {1}, but there is no entity for this language: {2}",
-								getName(),lang,e.toString()));
+								getGame().i18n.tr("Exercise {0} is said to be compatible with language {1}, but there is no entity for this language: {2}",
+										getName(),lang,e.toString()));
 					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
 				}
 			} else {
 				foundALanguage = true;
 			}
 		}
-		if (!foundALanguage) 
-			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
-				
+		if (!foundALanguage)
+			throw new RuntimeException(getGame().i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
 		computeAnswer();
+		computeError(files);
 	}
-	
+
+	protected void computeError(ArrayList<String> files) {
+		for(int i = 0 ; i < files.size(); i++) {
+			 final int copyOfi = i;
+			 if(getClass().getResourceAsStream(files.get(i))!=null) {
+				Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+
+					@Override
+					public void uncaughtException(Thread th, Throwable ex) {
+						if(ex instanceof PLMEntityNotFound) {
+							getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
+						}
+						System.err.println("Uncaught exception while computing error: " + ex);
+					}
+				};
+				Thread t = new Thread() {
+					@Override
+					public void run() {
+						getGame().statusArgAdd(getClass().getSimpleName());
+						ExecutionProgress progress = new ExecutionProgress(getGame().getProgrammingLanguage());
+						setNbError(copyOfi);
+						mutateEntities(WorldKind.ERROR, StudentOrCorrection.ERROR);
+						Vector<World> errorWorld = commonErrors.get(copyOfi);
+						for(World ew : errorWorld) {
+							for(Entity ent : ew.getEntities()) {
+								Game.JAVA.runEntity(ent, progress, getGame().i18n);
+							}
+							ew.setErrorWorld();
+						}
+						/* Try to write all files for next time */
+						/*if (errorWorld.get(0).haveIO()) { //TODO: Bientôt de retour, un peu de patience...
+							int rank = 0;
+							for (World ew:errorWorld) {
+								String name = "src/"+worldFileName+"-error"+(rank++);
+								name = name.replaceAll("\\.", "/") + ".map";
+								if (new File(name).getParentFile().canWrite()) {
+									try {
+										ew.writeToFile(new File(name));
+									} catch (Exception e) {
+										System.err.println(i18n.tr("Error while writing error world of {0}:",name));
+										e.printStackTrace();
+									}
+								} else {
+									System.err.println(i18n.tr("Cannot write error world of {0}. Please check the permissions.",name));
+								}
+							}
+						}*/
+						getGame().statusArgRemove(getClass().getSimpleName());
+					}
+				};
+				t.setUncaughtExceptionHandler(h);
+				Game.addInitThread(t);
+				t.start();
+				try {
+					t.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 	protected void computeAnswer() {
 		final String id = this.getId();
+		Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+			public void uncaughtException(Thread th, Throwable ex) {
+				if(ex instanceof PLMEntityNotFound) {
+					getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
+				}
+				System.err.println("Uncaught exception while computing answer: " + ex);
+			}
+		};
 		Thread t = new Thread() {
 			@Override
 			public void run() {
-				Game.getInstance().statusArgAdd(getClass().getSimpleName());
+				getGame().statusArgAdd(getClass().getSimpleName());
 				boolean allFound = true;
 				if (answerWorld.get(0).haveIO()) {
 					if (Game.getProperty(Game.PROP_ANSWER_CACHE, "true",true).equalsIgnoreCase("true")) {
@@ -392,51 +465,56 @@ public abstract class ExerciseTemplated extends Exercise {
 								nw.setAnswerWorld();
 								newAnswer.add(nw);
 							} catch (BrokenWorldFileException bwfe) {
-								System.err.println(i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
+								System.err.println(getGame().i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
+								allFound = false;
+								break;
+							} catch (FileNotFoundException fnf) {
+								System.err.println(getGame().i18n.tr("Cache file {0} is missing. Recompute all answer worlds.",name,fnf.getLocalizedMessage()));
 								allFound = false;
 								break;
 							} catch (IOException ioe) {
-								System.err.println(i18n.tr("IO exception while reading world {0} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
+								System.err.println(getGame().i18n.tr("IO exception while reading world {0} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
 								allFound = false;
 								break;
 							}
 						}
 						if (allFound) {
 							answerWorld = newAnswer;
-							Game.getInstance().statusArgRemove(getClass().getSimpleName());
+							getGame().statusArgRemove(getClass().getSimpleName());
 							return;
 						}
 					} else {
-						System.out.println(i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
+						getGame().getLogger().log(getGame().i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
 					}
 				}
-				
+
 				/* I/O didn't work. We have to load the files manually */
-				ExecutionProgress progress = new ExecutionProgress();
-				
+				ExecutionProgress progress = new ExecutionProgress(getGame().getProgrammingLanguage());
+
 				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
-				if(Game.getProgrammingLanguage().equals(Game.C)){
+				if(getGame().getProgrammingLanguage().equals(Game.C)){
 					try {
 						//TODO BAT remove if bat will be implemented in C
 						if(!id.contains("bat.string1.lessons.bat") && !id.contains("welcome.lessons.welcome.bat") && ! id.contains("welcome.lessons.welcome.array"))
-							compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+							compileAll(getGame().getLogger(), StudentOrCorrection.CORRECTION);
 					} catch (PLMCompilerException e) {
 						System.err.println("Severe error: the correction of exercise "+id+" cannot be compiled in C. Please go fix your PLM.");
 						e.printStackTrace();
-						Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
-						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
+						getGame().setState(Game.GameState.COMPILATION_ENDED);
+						getGame().setState(Game.GameState.EXECUTION_ENDED);
 					}
 				}
+				setNbError(-1);
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
 						ent.setScript(Game.C, id);
-						Game.getProgrammingLanguage().runEntity(ent,progress);
+						getGame().getProgrammingLanguage().runEntity(ent,progress, getGame().i18n);
 					}
 					aw.setAnswerWorld();
 				}
-				
+
 				/* Try to write all files for next time */
 				if (answerWorld.get(0).haveIO()) {
 					int rank = 0;
@@ -447,17 +525,18 @@ public abstract class ExerciseTemplated extends Exercise {
 							try {
 								aw.writeToFile(new File(name));
 							} catch (Exception e) {
-								System.err.println(i18n.tr("Error while writing answer world of {0}:",name));
+								System.err.println(getGame().i18n.tr("Error while writing answer world of {0}:",name));
 								e.printStackTrace();
 							}
 						} else {
-							System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions.",name));
+							System.err.println(getGame().i18n.tr("Cannot write answer world of {0}. Please check the permissions.",name));
 						}
 					}
 				}
-				Game.getInstance().statusArgRemove(getClass().getSimpleName());
+				getGame().statusArgRemove(getClass().getSimpleName());
 			}
 		};
+		t.setUncaughtExceptionHandler(h);
 		Game.addInitThread(t);
 		t.start();
 	}
@@ -465,8 +544,8 @@ public abstract class ExerciseTemplated extends Exercise {
 	@Override
 	public void run(List<Thread> runnerVect){
 		if (lastResult == null)
-			lastResult = new ExecutionProgress();
-		
+			lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
+		setNbError(-1);
 		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
 		for (World cw: getWorlds(WorldKind.CURRENT)) {
@@ -477,12 +556,13 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void runDemo(List<Thread> runnerVect){
-		ExecutionProgress ignored = new ExecutionProgress();
-		
+		ExecutionProgress ignored = new ExecutionProgress(getGame().getProgrammingLanguage());
+
 		for (int i=0; i<initialWorld.size(); i++) { 
 			answerWorld.get(i).reset(initialWorld.get(i));
 			answerWorld.get(i).doDelay();
 		}
+		setNbError(-1);
 		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 		for (World aw:getWorlds(WorldKind.ANSWER))

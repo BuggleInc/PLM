@@ -1,0 +1,46 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Módulo lunar</h2>
+
+<p>Neste universo você pilota um módulo lunar. Em cada passo da simulação
+você recebe a posição, velocidade, ângulo e potência do módulo e deve
+enviar um comando ajustando o ângulo e a potência.</p>
+
+<h2>Funções fornecidas</h2>
+
+<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+Obter (Get) as posições X e Y do módulo.
+<pre>[!java|c]double [/!]getVelocidadeX()[!scala]:Double[/!]
+[!java|c]double [/!]getVelocidadeY()[!scala]:Double[/!]</pre>
+Obter a velocidade horizontal e vertical do módulo.
+
+<pre>[!java|c]double [/!]getÂngulo()[!scala]:Double[/!]
+[!java|c]void [/!]setÂnguloDesejado([!java|c]double [/!]ÂnguloDesejado[!scala]:Double[/!])</pre>
+Obter ou ajustar o ângulo do módulo.<br/>
+Um ângulo de 0° denota uma posição vertical onde a "cabeça" do módulo
+aponta para cima. Este é o ângulo que você deve pousar. Um ângulo
+positivo denota inclinação para a esquerda, um ângulo negativo denota
+inclinação para a direita. Você não pode inclinar mais que ±90°, e o
+ângulo pode sofrer uma variação de no máximo ±5° em cada passo.
+
+<pre>[!java|c]int [/!]getImpulso()[!scala]:Int[/!]
+[!java|c]void [/!]setImpulsoDesejado([!java|c]int [/!]thrust[!scala]:Int[/!])</pre>
+Obter ou ajustar a potência do módulo. <br/>Você só pode aumentar ou diminuir a potência de 1 a cada passo. logo,
+se a potência atual é 2 e você pede 4, ela vai mudar para 3 no próximo
+passo. Se você pedir menos que 0 (ou, respectivamente, mais que 4),
+vai ser como se você tivesse pedido 0 (ou, respectivamente, 4).
+
+<pre>[!java|c]int [/!]getCombustível()[!scala]:Int[/!]</pre>
+Obter o combustível restante no módulo. Em cada passo da simulação o
+módulo consome tantas unidades de combustível quanto a potência
+atual. Uma vez que você fique sem combustível você entra em queda
+livre. Portanto cuidado!
+
+<pre>[!java]List&lt;Point&gt; [/!]getChão()[! scala]:List[Point][/!]</pre>
+Obter os vértices do perfil do solo da esquerda para a direita.
+[!java|scala]Você pode recuperar as coordenada X e Y de cada ponto com
+os métodos correspondentes do seu ponto: <code>p.x()</code> e
+<code>p.y()</code>.[/!] [!python]Cada ponto é uma array de de dois
+inteiros denotando respectivamente as coordenadas X e Y de cada
+ponto.[/!]

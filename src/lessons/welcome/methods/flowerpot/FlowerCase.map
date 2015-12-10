@@ -1,6 +1,6 @@
 BuggleWorld: Flower display case
 Size: 17x17
-Buggle(1,2): east,black,black,Jessie
+Buggle(1,2): east,black,black,Jessie,noBaggle,
 Cell(0,1): 200/113/55,nobaggle,notopwall,noleftwall,
 Cell(0,2): 200/113/55,nobaggle,notopwall,noleftwall,
 Cell(0,3): 200/113/55,nobaggle,notopwall,noleftwall,

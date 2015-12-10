@@ -1,0 +1,28 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Fast Split Towers of Hanoi</h2>
+
+<p>Again, our previous solution is working, but it is far from being optimal. 
+When moving the towers, we use the algorithm for 3 pegs even if we have 4 pegs. 
+Of course, movements to the last peg are restricted since it contains the other stack, 
+but we can always store the smallest disk on top of the other stack before moving our stack.</p>
+
+<p>For that, we need to devise a new function <code>hanoi_fast(height, src, free, full, dst)</code> that 
+moves the stack from <code>src</code> to <code>dst</code> using <code>free</code>, but storing the smallest 
+disk onto <code>full</code> beforehand.</p>
+
+<div class="tip" id="tip-1" alt="I'm lost">
+The <code>hanoi_fast(height, src, free, full, dst)</code> function is not recursive. 
+It moves the first disk and then call the regular <code>hanoi()</code> function.
+</div> <br>
+
+<p>This change greatly improve the performance, as you can see below. Of course, this trick could 
+also be used for the interleaved algorithm, leading as expected to the exact same performance.</p>
+<table border="1">
+<tr><td>Disks amount</td><td>Interleaved</td><td>Slow Split</td><td>Fast Split</td></tr>
+<tr><td>5 pairs</td>     <td> 62 moves</td>  <td> 88 moves </td><td> 46 moves</td></tr>
+<tr><td>6 pairs</td>     <td>126 moves</td>  <td>183 moves </td><td> 82 moves</td></tr>
+<tr><td>7 pairs</td>     <td>254 moves</td>  <td>374 moves </td><td>150 moves</td></tr>
+</table>
+
+<p>As a conclusion, most of us are satisfied with a working solution and we easily overlook possibilities
+to improve the problem decomposition. <b>You</b> should not do that ;)</p>

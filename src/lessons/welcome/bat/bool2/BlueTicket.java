@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class BlueTicket extends BatExercise {
-	public BlueTicket(Lesson lesson) {
-		super(lesson);
+	public BlueTicket(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("blueTicket");
+		BatWorld myWorld = new BatWorld(game, "blueTicket");
 		myWorld.addTest(VISIBLE, 9, 1, 0) ;
 		myWorld.addTest(VISIBLE, 9, 2, 0) ;
 		myWorld.addTest(VISIBLE, 6, 1, 4) ;
@@ -24,7 +25,7 @@ public class BlueTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 8, 4, 2) ;
 		myWorld.addTest(INVISIBLE, 8, 4, 1) ;
 
-		templatePython("blueTicket", 
+		templatePython("blueTicket", new String[]{"Int","Int","Int"},
 				"def blueTicket(a, b, c):\n",
 				"	ab = a + b\n"+
 				"	ac = a + c\n"+

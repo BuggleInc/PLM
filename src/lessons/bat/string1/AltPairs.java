@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AltPairs extends BatExercise {
-	public AltPairs(Lesson lesson) {
-		super(lesson);
+	public AltPairs(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("altPairs");
+		BatWorld myWorld = new BatWorld(game, "altPairs");
 		myWorld.addTest(VISIBLE, "kitten") ;
 		myWorld.addTest(VISIBLE, "Chocolate") ;
 		myWorld.addTest(VISIBLE, "CodingHorror") ;
@@ -18,7 +19,7 @@ public class AltPairs extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "ThisThatTheOther") ;
 
-		templatePython("altPairs", 
+		templatePython("altPairs", new String[]{"String"},
 				"def altPairs(str):\n",
 				"  res = ''\n" +
 				"  for i in range(0,len(str),4):\n" +

@@ -20,11 +20,17 @@ public class SessionDB {
 	private Map<String, Map<ProgrammingLanguage, Integer>> passedExercises = new HashMap<String, Map<ProgrammingLanguage,Integer>>();
 	private Map<String, Map<ProgrammingLanguage, Integer>> possibleExercises = new HashMap<String, Map<ProgrammingLanguage,Integer>>();
 	
+	private Game game;
+	
+	public SessionDB(Game game) {
+		this.game = game;
+	}
+	
 	public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String _body) {
 		if (exo == null)
-			exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
+			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo);
 		if (bodyE == null) {
@@ -41,9 +47,9 @@ public class SessionDB {
 	}
 	public String getBody(Lecture exo, ProgrammingLanguage lang, String sourceName) {
 		if (exo == null)
-			exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
+			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo.getId());
 		if (bodyE == null) 
@@ -57,9 +63,9 @@ public class SessionDB {
 
 	public void setPassed(Lecture exo, ProgrammingLanguage lang, boolean _passed) {
 		if (exo == null)
-			exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
+			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 		
 		if (getPassed(exo, lang) == _passed)
 			return;
@@ -77,9 +83,9 @@ public class SessionDB {
 	/** If the exercise was never attempted (not present in DB), it returns false */
 	public boolean getPassed(Lecture exo, ProgrammingLanguage lang) {
 		if (exo == null)
-			exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
+			exo = game.getCurrentLesson().getCurrentExercise();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Boolean> passedE = passed.get(exo.getId());
 		if (passedE == null)
@@ -92,9 +98,9 @@ public class SessionDB {
 	}
 	public Integer getPossibleExercises(String lesson, ProgrammingLanguage lang) {
 		if (lesson == null)
-			lesson = Game.getInstance().getCurrentLesson().getId();
+			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> passedL = possibleExercises.get(lesson);
 		if (passedL == null)
@@ -107,9 +113,9 @@ public class SessionDB {
 	}
 	public void setPassedExercises(String lesson, ProgrammingLanguage lang, int val) {
 		if (lesson == null)
-			lesson = Game.getInstance().getCurrentLesson().getId();
+			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
 		if (passedL == null) {
@@ -121,9 +127,9 @@ public class SessionDB {
 	}
 	public void setPossibleExercises(String lesson, ProgrammingLanguage lang, int val) {
 		if (lesson == null)
-			lesson = Game.getInstance().getCurrentLesson().getId();
+			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> possibleL = possibleExercises.get(lesson);
 		if (possibleL == null) {
@@ -135,9 +141,9 @@ public class SessionDB {
 	}
 	public Integer getPassedExercises(String lesson, ProgrammingLanguage lang) {
 		if (lesson == null)
-			lesson = Game.getInstance().getCurrentLesson().getId();
+			lesson = game.getCurrentLesson().getId();
 		if (lang == null)
-			lang = Game.getProgrammingLanguage();
+			lang = game.getProgrammingLanguage();
 
 		Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
 		if (passedL == null)
@@ -175,7 +181,7 @@ public class SessionDB {
 		try {
 			data = (JSONObject) parser.parse(JSONString);
 		} catch (ParseException e) {
-			System.out.println("Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
+			game.getLogger().log("Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
 			return;
 		}
 

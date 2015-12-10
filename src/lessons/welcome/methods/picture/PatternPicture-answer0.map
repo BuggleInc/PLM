@@ -1,6 +1,6 @@
 BuggleWorld: World
 Size: 8x8
-Buggle(4,3): east,black,green,Picasso
+Buggle(4,3): east,black,green,Picasso,noBaggle,
 Cell(0,0): white,nobaggle,topwall,leftwall,
 Cell(0,1): yellow,nobaggle,notopwall,leftwall,
 Cell(0,2): red,nobaggle,notopwall,leftwall,

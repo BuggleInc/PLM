@@ -1,0 +1,41 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Aux commandes du module</h1>
+
+<p>Après 30 jours à regarder des cailloux en mangeant des céréales, vous
+décidez qu'il est temps d'aller explorer d'autres coins de cette planète.</p>
+
+<p>Vous volez un moment, avant de réaliser soudain que vous êtes presque à
+court d'essence. Le pilote automatique est malheureusement inutile dans ce
+genre de situation périlleuse, et vous allez devoir vous poser en mode
+manuel. Votre mission et de vous <b>poser sur une zone plate, avec une
+vitesse verticale inférieure à 10 m/s, une vitesse horizontale inférieure à
+5 m/s et un angle de 0°</b>.</p>
+
+<p>Vous devez définir deux fonctions : <code>[!java]void
+[/!]initialize()</code> et <code>[!java]void
+[/!]step()</code>. <code>initialize()</code> est appelée au moment où l'on
+appuie sur le bouton «Exécuter». Vous pouvez l'utiliser pour choisir une
+zone plate. Comme avant, <code>step()</code> est appelée tous les dixièmes
+de seconde pour vous permettre d'ajuster la poussée (avec la fonction
+<code>[!java]void [/!]setPousseedesiree([!java]int
+[/!]poussee[!scala]:Integer[/!])</code>). Vous pouvez également contrôler
+l'angle du module avec la fonction <code>[!java]void
+[/!]setAngleDesire([!java]double [/!]angle[!scala]:Double[/!])</code>. Un
+angle de O° dénote une position verticale, avec le sommet du module dirigé
+vers le haut. C'est l'angle avec lequel vous devez vous poser. Un angle
+positif indique que le module penche vers la gauche tandis qu'un angle
+négatif indique au contraire qu'il penche à droite. Il est impossible de se
+pencher à plus de ±90°, et on ne peut pas pencher le module de plus de ±5°
+en une fois.</p>
+
+<p>Comme dans les exercices précédents, <code>[!java]List&lt;Point&gt;
+[/!]getSol()[!scala]:List[Point][/!]</code> retourne les points qui
+composent l'horizon. Le manuel de référence de votre module est disponible
+dans la documentation (Aide/À propos de ce monde).</p>
+
+<p>Comme d'habitude, votre programme doit se poser sans heurt dans toutes les
+situations que nous avons rencontré jusqu'à présent, ainsi que dans ce
+nouveau cas.</p>
+
+<p>Bonne chance. Essayez de ne pas vous scratcher ;)</p>

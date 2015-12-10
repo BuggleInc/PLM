@@ -1,0 +1,114 @@
+You want to help the PLM project but don't know where to start? This
+file is for you! It contains many ideas that would improve the PLM so
+you just have to select one of them, contact us and here we go! You
+can contribute to the project!
+
+First of all, you want to get some context about the PLM. For that,
+check that presentation of Dec. 2014. It presents the project and
+gives a roadmap of future developments.
+http://webloria.loria.fr/~quinson/blog/2014/1204/PLM.pdf (in French, sorry)
+
+The level 0 of contribution is to report any glitch (either technical
+or pedagogical, or even typos in the mission texts).
+
+Then of course, you should have a look at the known bugs and
+issues. Any help to solve them is very welcome.
+https://github.com/oster/PLM/issues  and
+https://github.com/oster/webPLM/issues.
+We have 2 bug trackers because the project is modular :)
+  
+Another idea is to help translating the material. How to do that is
+documented here:
+https://github.com/BuggleInc/PLM/wiki/Working-on-translations
+  
+Fourth idea, some extension ideas are given in the "help"/"About this
+lesson" menu of most existing lessons. You can find these files in the
+archive by searching files named "Main.html" in the differing
+subdirectories. They are even translated to other languages, if that helps.
+
+Finally, some less baked ideas are listed directly in this file,
+below. Do not hesitate to ask if you have any question.
+
+* Lessons and universes
+The important here is that I try to build lessons on important
+notions, not entertaining or particularly challenging things. That's
+the main editorial difference with projects like Codingame.com or
+other programming challenges. They want to find the best programmers
+out there, I want to teach everybody the things that good programmers
+need to know.
+
+That being said, I have no strong feelings about the parts of
+informatics that should be taught in the PLM. I seriously think about
+adding a lesson on HPC programming in C with MPI, for example, even if
+that's *very* different from the existing content.
+** Improvements to the existing pedagogical content
+- There is some bug about exercises that should be slightly improved,
+  such as. They are all visible from that list:
+  https://github.com/BuggleInc/PLM/labels/Exercise
+** Additional exercises
+There is naturally a huge body of things that we could add to the
+PLM. Take one book such as the Cormen or the Sedgewik and just pick
+some random ideas.
+
+A particularly interesting lead would be to implement slightly
+different versions of the same exercise so that we can do some sort of
+https://en.wikipedia.org/wiki/A/B_testing. In particular, we'd like to
+evaluate this way whether students prefer large assignments with a
+large degree of freedom, or a longer list of very constrained
+challenges.
+** Pedagogical micro-worlds
+Adding them could only require to reimplement an adapted universe
+(similar to BuggleWorld or TurtleWorld or SortingWorld), and import
+the existing exercises from the upstream authors.
+
+At least, that's the initial plan but in practice, I often change the
+exercises to integrate them in the gameplay of having buggles and also
+because I love adapting the stuff that I integrate...
+
+- Karel the robot (it may be sufficient to build a loader of karel
+  worlds within the buggle world)
+- PatchWorld. This one is very good for absolute learners.
+  http://cs.wellesley.edu/~cs111/fall07/notes/lectures/06_picture_world_intro_web.pdf
+- These people, who invented the whole buggle concept had many other ideas:
+  - http://cs.wellesley.edu/~cs111/fall98/assignments.html
+- Another classical recursive game:
+  - http://www.cut-the-knot.org/recurrence/flavius.shtml
+- We could try to adapt some ideas from similar frameworks, such as
+  http://javascool.gforge.inria.fr/ In particular, we could use some
+  kind of micro-world to teach the various graph algorithms as they do.
+** Programmer games
+They may require a King of Hill mode, but that's also doable.
+
+- Robozzle. This is very close to the Lightbot that we had before
+  moving to the web, but needs some specific improvements:
+  https://github.com/BuggleInc/PLM/issues/3
+- CodeRuler (strategy)
+- CodeRobot (fights between robots)
+- CodeRally (racing cars)
+- CodeInvaders (fight between spaceships)
+  https://www-927.ibm.com/ibm/cas/hspc/competition/
+- MARS (assembly) http://courses.missouristate.edu/kenvollmar/mars/
+- MMIX (assembly by Knuth) http://mmix.cs.hm.edu/index.html
+- Corewars
+  
+* Possible improvement to the graphical engine
+** Code editor improvements
+- Use the same shortcuts than eclipse (when possible)
+- Provide autocompletion on keywords and bindings
+- have the editor follow the execution point during stepped execution 
+- During step-by-step execution, it'd be great to display the content
+  of values. See https://github.com/oster/PLM/issues/116
+- Locations displayed in the console should be links that move the
+  editor.
+** World representation
+- represent graphically the textual diff between the expected world
+  and the actual one. We would have red circles on cells that have an
+  error (either wrong color or wrong message), red crosses on badly
+  located buggles, etc.
+
+* Various ideas
+** Essential Math for Games Programmers
+- http://www.essentialmath.com/tutorial.htm
+** Introduction to the algorithms behind the games
+- http://www.redblobgames.com/articles/visibility/
+ 

@@ -1,5 +1,9 @@
 package plm.universe.bat;
 
+import java.util.Vector;
+
+import org.python.core.PyInstance;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
@@ -13,12 +17,14 @@ public class BatTest {
 	private boolean correct,answered;
 	public boolean objectiveTest=false; // ExoTest messes with it, sorry
 	private String funName;
+	private Game game;
 	
-	public BatTest(String funName, boolean visible,Object parameters) {
+	public BatTest(Game game, String funName, boolean visible,Object parameters) {
 		this.funName = funName;
 		this.visible = visible;
 		this.correct = false;
 		this.answered = false;
+		this.game = game;
 		
 		/* Cast parameters into an array on need */
 		if (parameters.getClass().isArray()) {
@@ -27,15 +33,43 @@ public class BatTest {
 			this.parameters = new Object[] {parameters};
 		}
 	}
+
 	public BatTest copy() {
-		BatTest res = new BatTest(funName,visible,parameters.clone());
+		BatTest res = new BatTest(game, funName,visible,parameters.clone());
 		res.result = result;
 		res.expected = expected;
+		res.expectedHasValue = expectedHasValue;
 		return res;
 	}
 	
 	public boolean isVisible() {
 		return visible;
+	}
+	
+	@SuppressWarnings({ "rawtypes" })
+	private Object changeToPrimitiveArray(Object input) {
+		if (input == null) 
+			return null;
+		if (input instanceof java.util.List) {
+			java.util.List l = (java.util.List)input;
+			int[] res = new int[l.size()];
+			for (int i=0;i<l.size();i++) 
+				res[i] = (Integer)l.get(i);
+			
+			return res;
+		} if (input instanceof lessons.recursion.cons.universe.RecList) {
+			input = ((lessons.recursion.cons.universe.RecList)input).toArray();
+		} 
+		if (input.getClass().isArray() && input.getClass().getComponentType().equals(Integer.class)) {
+			Integer[] orig = (Integer[])input;
+			if (orig.length==0 || (orig.length == 1 && orig[0]==null))
+				return new int[]{};
+			int[] res = new int[orig.length];
+ 			for (int i=0;i<res.length;i++)
+				res[i] = orig[i];
+			return res;
+		} 
+		return input;
 	}
 	
 	@Override
@@ -44,54 +78,55 @@ public class BatTest {
 			return false;
 		BatTest other = (BatTest) o;
 		if (other.parameters.length != parameters.length) {
-			//System.out.println("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
+			//getGame().getLogger().log("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
 			return false;
 		}
-		for (int i=0;i<parameters.length;i++)
-			if (!parameters[i].equals(other.parameters[i])) {
-				//System.out.println("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
+		for (int i=0;i<parameters.length;i++) {
+			if (parameters[i] != null && !parameters[i].equals(other.parameters[i])) {
+				//getGame().getLogger().log("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
 				return false;
 			}
+			if (parameters[i] == null && other.parameters[i]!=null)
+				return false;
+		}
+		
+		
 		if (isObjective() && !other.isObjective()) {
 			/* We seem to be called as answer.equals(current) from the check() method. 
 			 * Act accordingly by comparing our expected to their result
 			 */
-			if (expected == null && other.result != null) {
-				return false;			
-			}
-			if (expected !=null && !expected.equals(other.result)) {
-				return false;
-			}
+			return equalParameter(expected, other.result);
 		} else if (!isObjective() && other.isObjective()) {
 			/* We seem to be called as current.equals(answer). Weird I thought it was impossible. Anyway. */
-			if (result == null && other.expected != null) {
-				return false;			
-			}
-			if (result !=null && !result.equals(other.expected)) {
-				return false;
-			}
+			return equalParameter(result, other.expected);
 		} else {
 			/* Act as an usual equal method as we don't seem to be called from check(). From the UI maybe? */
-			if (result == null && other.result != null) {
-				//System.out.println("While comparing a Bat test, the result differs: null != "+other.result);
-				return false;			
-			}
-			if (result !=null && !result.equals(other.result)) {
-				//System.out.println("While comparing a Bat test, the result differs: "+result+" != "+other.result);
+			if (! equalParameter(result, other.result)) 
+				//getGame().getLogger().log("While comparing a Bat test, the result differs: null != "+other.result);
 				return false;
-			}
-			if (expected == null && other.result != null) {
-				return false;			
-			}
-			if (expected != null && !expected.equals(other.expected)) {
-				//System.out.println("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
-				return false;
-			}
+			//getGame().getLogger().log("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
+			return equalParameter(expected, other.expected);
 		}
-		return true;
 	}
 
 	public Object getParameter(int i) {
+		if (parameters[i]!=null && parameters[i].getClass().isArray()) {
+			if (parameters[i].getClass().getComponentType().equals(Integer.TYPE)) {
+				int[] orig = (int[]) parameters[i];
+				int[] res = new int[orig.length];
+				for (int cpt=0;cpt<orig.length;cpt++)
+					res[cpt] = orig[cpt];
+				return res;
+			} else if (parameters[i].getClass().getComponentType().equals(Integer.class)) {
+				Integer[] orig = (Integer[]) parameters[i];
+				Integer[] res = new Integer[orig.length];
+				for (int cpt=0;cpt<orig.length;cpt++)
+					res[cpt] = orig[cpt];
+				return res;
+			} else {
+				throw new RuntimeException("Unhandled internal type (only Array<int> and Array<Integer> are handled so far)");
+			}
+		}
 		return parameters[i];
 	}
 
@@ -104,9 +139,40 @@ public class BatTest {
 	
 	private String name = null;
 
+	private boolean equalParameter(Object o1, Object o2) {
+		if (o1==null && o2==null)
+			return true;
+		if (o1==null || o2==null)
+			return false;
+		o1 = changeToPrimitiveArray(o1);
+		o2 = changeToPrimitiveArray(o2);
+		if (o1.getClass().isArray() && o2.getClass().isArray()) {
+			int[] tab1 = (int[])o1;
+			int[] tab2 = (int[])o2;
+			if (tab1.length != tab2.length)
+				return false;
+			for (int i=0; i<tab1.length;i++) 
+				if (tab1[i]!=tab2[i])
+					return false;
+			return true;
+		} 
+		if (o1.getClass().isArray() || o2.getClass().isArray())
+			return false; // The other cannot be an array because of previous test
+		return o1.equals(o2);
+	}
+	public String stringParameter(Object o) {
+		StringBuffer res = new StringBuffer();
+		displayParameter(o, res, game.getProgrammingLanguage());
+		return res.toString();
+	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
 		if (o == null) {
-			sb.append("null");
+			if (pl == Game.SCALA)
+				sb.append("Nil");
+			else if (pl == Game.PYTHON)
+				sb.append("None");
+			else
+				sb.append("null");
 			
 		} else if (o instanceof String[]) {
 			if (pl.equals(Game.JAVA)) {
@@ -134,7 +200,10 @@ public class BatTest {
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
-		} else if (o.getClass().isArray()){
+		} else if (o.getClass().equals(Vector.class) || o.getClass().isArray()){
+			if (o.getClass().equals(Vector.class))
+				o = changeToPrimitiveArray(o);
+			
 			if (pl.equals(Game.JAVA)) {
 				sb.append("{");
 			} else if (pl.equals(Game.SCALA)) {
@@ -151,8 +220,16 @@ public class BatTest {
 				
 				if (a.length > 0) // Don't kill the last comma if there is none
 					sb.deleteCharAt(sb.length()-1);
+			} else if (o.getClass().getComponentType().equals(Integer.class)) {
+				Integer[]a = (Integer[]) o;
+				for (Integer i:a) 
+					sb.append(i+",");
+				
+				if (a.length > 0) // Don't kill the last comma if there is none
+					sb.deleteCharAt(sb.length()-1);
+				
 			} else {
-				throw new RuntimeException("Unhandled internal type (only integer arrays are handled so far)");
+				throw new RuntimeException("Unhandled internal type (only Array<int> and Array<Integer> are handled so far)");
 			}
 			if (pl.equals(Game.JAVA)) {
 				sb.append("}");
@@ -174,12 +251,14 @@ public class BatTest {
 			}
 		} else if (o instanceof String && pl.equals(Game.PYTHON)) {
 			sb.append("\""+o+"\"");
+		} else if (o instanceof PyInstance) {
+			sb.append( ((PyInstance)o).__str__());
 		} else {
 			sb.append(o.toString());
 		}		
 	}
 	public String getName() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = game.getProgrammingLanguage();
 		if (name == null) {
 			StringBuffer sb=new StringBuffer(funName+"(");
 			
@@ -199,8 +278,13 @@ public class BatTest {
 		return objectiveTest;
 	}
 	
+	public String formatAsString() {
+		return getName()+"="+getResult()
+		+(isAnswered() && !isCorrect() ?" (expected: "+stringParameter(expected)+")":"");
+	}
+	
 	public String toString() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = game.getProgrammingLanguage();
 		StringBuffer res = new StringBuffer(getName());
 		res.append("=");
 		displayParameter(result, res, pl);
@@ -216,19 +300,26 @@ public class BatTest {
 		
 		if (o != null) {
 			StringBuffer sb = new StringBuffer();
-			displayParameter(o, sb, Game.getProgrammingLanguage());
+			displayParameter(o, sb, game.getProgrammingLanguage());
 			return sb.toString();
 		} else {
-			return "(null)";
+			if (game.getProgrammingLanguage() == Game.SCALA)
+				return "Nil";
+			if (game.getProgrammingLanguage() == Game.PYTHON)
+				return "None";
+			return "null";
 		}
 	}
+	private boolean expectedHasValue = false;
 	public void setResult(Object r) {
 		result = r;
-		if (expected == null) {
+		if (!expectedHasValue) {
 			expected = r; // The first time we're set, that's an answer which comes in
+			expectedHasValue = true;
+			result = null;
 		} else {
-			if (expected != null)
-				correct = expected.equals(result);
+			if (expectedHasValue)
+				correct = equalParameter(expected, result);
 			answered = true;
 		}
 	}

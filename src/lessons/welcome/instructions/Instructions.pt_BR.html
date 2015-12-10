@@ -3,9 +3,9 @@
 <h2>Instruções</h2>
 
 Parabéns! Você acaba de escrever seu primeiro programa! Você agora captou a
-ideia: programar é simplesmente dar instruções simples para o computador que
-as segue cegamente. A maior dificuldade é explicar tudo para algo tão idiota
-quanto um computador...  
+ideia: programar nada mais é que dar instruções simples para o computador,
+que as realiza cegamente. A maior dificuldade é explicar tudo para algo tão
+idiota quanto um computador...  
   
   <p>Programas são principalmente conjuntos de chamadas de métodos, que são nada
 mais que listas de ordens simples dadas à máquina. É muito semelhante a uma
@@ -36,26 +36,26 @@ derretaOsPedaçosDeChocolate(); adicioneAçucar(); mexa(); sirva()
 </pre>
 [/!]
 
-  <p>Obviamente, estes métodos específicos não existem por padrão em
-[!thelang], mas é possível definí-los você mesmo (vamos ver mais tarde
-como definir seus próprios métodos).</p>
+  <p>Obviamente, estes métodos específicos não existem por padrão em [!thelang],
+mas é possível definí-los você mesmo (vamos ver mais tarde como definir seus
+próprios métodos).</p>
   
   <p>Por enquanto, vamos ficar apenas com as instruções do buggle. Existe um
 método para cada botão do painel de controle interativo. Para alcançar o
 mesmo efeito que o botão <b>avançar</b> (fazendo o buggle avançar um passo),
 você precisa escrever o seguinte no editor: </p>
   <pre>[!java|scala|python]avançar()[!java];[/!][/!][!c]avançarUmPasso();[/!]</pre>
-  <p>Da mesma forma, para obter o mesmo efeito que os botões <b>[!java|scala|"
-"python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b> and
-<b>direita</b>, você precisa respectivamente:</p>
+  <p>Da mesma forma, para obter o mesmo efeito que os botões
+<b>[!java|scala|python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b>
+e <b>direita</b>, você precisa respectivamente:</p>
 <pre>
 recuar()[!java|c];[/!]
 esquerda()[!java|c];[/!]
 direita()[!java|c];[/!]
 </pre>
 
-	 <p>O botão <b>mark</b> é diferente, pois corresponde a dois métodos: o primeiro
-move a caneta para cima e o segundo move a caneta para baixo.</p>
+	 <p>O botão <b>marcar</b> é diferente, pois corresponde a dois métodos: o
+primeiro move a caneta para cima e o segundo move a caneta para baixo.</p>
 <pre>
 levantarPincel()[!java|c];[/!]
 abaixarPincel()[!java|c];[/!]
@@ -69,6 +69,13 @@ mas não muito. O objetivo é que seu buggle simplesmente desenhe uma casa (um
 quadrado), e se esconda dentro. Verifique o mundo objetivo para ver
 exatamente o que isto significa. 
 
+  <p>Use seu pincel para marcar o chão à medida em que anda. Comece a marcar o
+chão com <code>brushDown()</code>, e pare com <code>brushUp()</code> (e.g.,
+para entrar na sua casa sem marcar o chão). A lista completa de todas as
+instruções que o buggle entende pode ser encontrada em "Ajuda/Sobre este
+mundo".</p>
+
+<h3>Depois deste exercício</h3>
 <p>Quando for para o próximo exercício, observe que existe um sub-exercício
 depois deste.  Por padrão, ele fica escondido no menu e você tem que abrir o
 sub-menu para vê-lo. Quando você troca de exercício, a maioria dos

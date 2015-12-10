@@ -1,5 +1,6 @@
 package lessons.turmites.langtoncolors;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bugglequest.BuggleWorld;
@@ -7,11 +8,11 @@ import lessons.turmites.universe.TurmiteWorld;
 
 public class LangtonColors extends ExerciseTemplated {
 	BuggleWorld createWorld(String rule, int nbSteps, int width, int height, int buggleX, int buggleY) {
-		return new TurmiteWorld(rule+" ("+nbSteps+" steps)", nbSteps, rule.toCharArray(), width, height, buggleX, buggleY);
+		return new TurmiteWorld(getGame(), rule+" ("+nbSteps+" steps)", nbSteps, rule.toCharArray(), width, height, buggleX, buggleY);
 	}
 	
-	public LangtonColors(Lesson lesson) {
-		super(lesson);
+	public LangtonColors(Game game, Lesson lesson) {
+		super(game, lesson);
 		tabName = "LangtonsAnt";
 
 		BuggleWorld[] myWorlds = new BuggleWorld[] {

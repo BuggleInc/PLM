@@ -1,0 +1,36 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Monde des listes récursives</h1>
+
+<p>Ce monde vous permettra d'expérimenter avec les listes récursives, telles
+qu'elles ont été définies en Lisp à l'origine. Ce monde est assez similaire
+au BatWorld, mais vous êtes supposé écrire des fonctions récursives agissant
+sur des [!python|java]listes récursives. Comme [!thelang] ne propose rien de
+tel en natif, ce monde défini un nouveau type nommé <code>RecList</code>
+pour cela.[/!] [!scala]listes d'entiers (<code>List[Int]</code>).[/!]</p>
+
+<p>Une telle liste peut être soit la liste vide (notée
+<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), soit un
+entier suivi d'une liste. Si une liste n'est pas vide, vous pouvez retrouver
+son premier entier avec <code>list.head</code>. On dit qu'on extrait alors
+la tête de la liste.La liste contenant ses autres éléments (tous sauf la
+tête) peut être retrouvée avec <code>list.tail</code>. On dit qu'on extrait
+la suite de la liste.Bien entendu, la liste vide n'a ni tête ni suite, et
+vous ne devriez pas tenter d'accéder à ces éléments sous peine d'obtenir un
+message d'erreur (particulièrement déplaisant).</p>
+
+<p>Pour construire votre propre liste, vous devez concaténer une tête et une
+suite comme suit : [!java|python]<code>cons(tête, suite)</code>[/!]
+[!scala]<code>tête::suite</code>. Il se trouve que <code>::</code> est un
+opérateur générique du langage Scala pour construire des listes.[/!]</p>
+
+<p>En résumé, vous pouvez résoudre tous les exercices de cette leçon avec les
+constructions suivantes :</p>
+
+<ul>
+<li><b>La liste vide:</b> <pre>[!java|c]null[/!][!scala]Nil[/!][!python]None[/!]</pre></li>
+<li><b>Obtenir le premier élément de <code>l</code></b> <pre>l.head</pre></li>
+<li><b>Obtenir la suite de la liste</b>, privée de son premier élément: <pre>l.tail</pre></li>
+<li><b>Construire une liste</b> à partir d'une <code>valeur</code> et d'une
+<code>liste</code>: [!java|python]<pre>cons(valeur, liste)</pre>[/!] [!scala]<pre>valeur::liste</pre>[/!]</li>
+</ul>

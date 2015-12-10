@@ -5,24 +5,41 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javax.script.ScriptEngine;
-import javax.swing.ImageIcon;
 
 import lessons.lightbot.universe.LightBotEntity;
+
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
-import plm.core.model.LogWriter;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.universe.Entity;
 
+/**
+ * Captures the whole logic of a given programming language (compiling the user code, running it).
+ * 
+ * If you want to add a new programming language to the PLM, then you probably want to read that page:
+ * https://github.com/oster/PLM/wiki/Adding-a-new-programming-language
+ *
+ */
+
 public abstract class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	String lang;
 	String ext;
-	ImageIcon icon;
-	public ProgrammingLanguage(String l, String ext, ImageIcon i) {
+	boolean isDebugEnabled;
+	String visualExt;
+	int visualIndex;
+	boolean visualFile;
+	
+	public ProgrammingLanguage(String l, String ext, boolean isDebugEnabled) {
 		lang = l;
 		this.ext = ext;
-		this.icon = i;
+		this.isDebugEnabled = isDebugEnabled;
+		this.visualExt = ".code";
+		this.visualIndex = 0;
+		this.visualFile = false;
 	}
 	public boolean equals(Object o) {
 		if (!super.equals(o))
@@ -37,6 +54,16 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	public String getExt() {
 		return ext;
 	}
+	public String getVisualExt() {
+		return this.visualExt;
+	}
+	public int getVisualIndex() {
+		return  this.visualIndex;
+	}
+	public boolean getVisualFile() {
+		return  this.visualFile;
+	}
+	
 	@Override
 	public String toString() {
 		return lang;
@@ -54,13 +81,15 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 			return res;
 		return ext.compareTo(o.ext);
 	}
-	public ImageIcon getIcon() {
-		return icon;
+	
+	public boolean isDebugEnabled() {
+		return isDebugEnabled;
 	}
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
-	public abstract void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
-	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate);
+	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
+	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
+
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
 	 * This task is not trivial given that it depends on the universe and the programming language:
@@ -81,9 +110,12 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	 * 
 	 *  @see #run() that encodes the student logic in Java
 	 */
-	public abstract void runEntity(Entity ent, ExecutionProgress progress);
+	public abstract void runEntity(Entity ent, ExecutionProgress progress, I18n i18n);
 	
 	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
 		return exo.nameOfCorrectionEntity();
+	}
+	public String nameOfCommonError(Exercise exo, int i) {
+		return exo.nameOfCommonError(i);
 	}
 }

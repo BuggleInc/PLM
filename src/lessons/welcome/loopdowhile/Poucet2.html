@@ -1,0 +1,27 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>More buggles tracks</h2>
+
+<p>Hu oh! Your buggle got lost again in the same kind of maze, but this time, the corridors are not 
+always of the same size. Since there is no way to know the length of the corridor before taking it,
+a <code>for</code> will not suffice anymore. Instead, you will have to change your inner loop to use a 
+<code>while</code> loop, using the method <code>crossing()</code> that tells whether your buggle 
+currently stands on an intersection.</p>
+
+<p>The extra complexity is that at the beginning of a corridor, you obviously stand on an 
+intersection, but you still want to move on.
+[!java|scala|c]For that, the easiest is to use a <code>do / while</code> loop instead of 
+a regular <code>while</code> loop to move until the next intersection.[/!]
+[!python]For that, use an extra variable indicating whether you already entered the
+corridor,  as follows. This will ensure that you execute the loop body at least once (when
+<code>firstTime</code> is true) before we actually use the value returned by
+<code>crossing()</code> to determine to continue or not.[/!]</p>
+
+[!python]
+<pre>firstTime = True
+while firstTime or not crossing():
+  firstTime = False
+  (loop body)
+</pre>
+[/!] 
+
+<p>With that new trick, your buggle should exit this maze quite easily.</p>

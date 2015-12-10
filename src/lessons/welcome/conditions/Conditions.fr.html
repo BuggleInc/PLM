@@ -10,13 +10,13 @@ comme <i>S'il pleut, prend un parapluie</i>.
 
 <p>La syntaxe en [!thelang] est la suivante :</p>
 
-<pre>[!java|scala|c]if (<b>condition</b>) {
+<pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie();</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie();</b>
 }[/!][!python]if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie()</b>[/!]
-<b>aFaireDansTousLesCas()[!java|c];[/!]</b></pre>
+<b>aFaireDansTousLesCas()[!java|c];[/!]</b></code></pre>
 
 <p>Le mot <code>if</code> signifie «si» en anglais. Si la condition est vraie,
 alors le code du bloc suivant sera exécuté, puis l'exécution se poursuivra
@@ -26,45 +26,52 @@ après lui. Le bloc conditionnel peut contenir plusieurs instructions. Il
 peut même contenir d'autre tests, avec leurs sous-blocs associés.</p>
 
 <p>Dans cet exemple, les instructions <code>aFaireSiVraie()</code> et
-<code>aFaireSiVraie()</code> seront exécutée si (et seulement si) la
+<code>aFaireEnsuiteSiVraie()</code> seront exécutée si (et seulement si) la
 condition est vraie tandis que l'instruction
 <code>aFaireDansTousLesCas()</code> sera exécutée que la condition soit
 vraie ou fausse. 
 </p>
 
-<p>In [!thelang], the blocks of code are [!java|scala|c]enclosed between curly
-brackets: a { sign opens the block, while a } sign closes it.  White spaces
-are not important[/!][!java|c].[/!][!scala], provided that your instructions
-are still separated with a semi-column or an end of line.[/!]
-[!java|scala|c]It is still very important to correctly indent your code to
-keep it readable.[/!] [!python]marked by the indentation: every lines that
-are a bit shifted to the right with white spaces belong to the block. Quite
-often, people use 4 spaces for indentation, but it works if you use more or
-less spaces. Simply, any lines of the block must use the same amount of
-spaces.  The end of Python code blocks are not marked by any specific char.
-Indenting lines starts a block and unindenting ends it. Do not forget the
-colon (:) at the end of the <code>if</code> line, python needs it to know
-that a new block begins. The fact that python relies on indentation to
-delimit blocks is a very good property for beginners: it will force you to
-adhere to strict code presentation standards.[/!] It is very easy to get
-lost in your own code if it's not properly indented, so you want to clean it
-up so that working on your code remains pleasant and productive.</p>
+<p>En [!thelang], les blocs sont
+[!java|scala|c]délimités par des accolades : le symbole { commence un bloc
+tandis
+que le symbole } le ferme.  Les caractères blancs ne sont pas pris en
+compte[/!][!java|c].[/!][!scala], tant que les instructions restent séparées
+soit par des points-virgules, soit par des retour à la ligne.[/!]
+[!java|scala|c]Il reste très important d'indenter correctement votre code
+pour qu'il reste lisible.[/!]
+[!python]marqués par l'indentation : toutes les lignes indentés (=décalées
+vers la droite par des espaces) font partie du bloc. Il est assez courant
+d'utiliser quatre espaces pour indenter le code, mais cela fonctionne quel
+que soit le nombre de caractères blancs utilisés pour cela. Simplement,
+toutes les lignes d'un bloc donné doivent utiliser le même nombre de
+blancs. La fin des blocs de code n'est pas marquée par un symbole
+particulier: il s'arrête dès que les lignes ne sont plus
+indentées. N'oubliez pas les deux points (:) à la fin de la ligne
+<code>if</code>, python en a besoin pour savoir qu'un nouveau bloc commence.
+Le fait que python utilise l'indentation pour maquer les blocs est un
+avantage pour les débutants: cela vous forcera à respecter des critères
+stricts de mise en forme de votre code.[/!]
+Il est très facile de se perdre dans un code qui n'est pas correctement
+indenté. Il est donc important que vous fassiez en sorte que votre code
+reste clair et lisible pour que le relire et le modifier reste plaisant et
+productif.</p>
 
-
-<p class="python">Toutes les instructions d'un bloc doivent avoir la même indentation, et il
+[!python]
+<p>Toutes les instructions d'un bloc doivent avoir la même indentation, et il
 n'est pas possible de couper un bloc. Les deux exemples suivants de code
 sont incorrects et vont générer des erreurs.</p>
-<pre class="python">if <b>condition</b>:
+<pre><code class="code-container">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class="comment"># une espace de trop</span>
 <b>quoiFaireDansTousLesCas()</b>
-</pre>
-<pre class="python">if <b>condition</b>:
+</code></pre>
+<pre><code class="code-container">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 <b>quoiFaireDansTousLesCas()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class="comment"># Ce bloc n'est rattaché à aucune ligne de condition</span>
-</pre>
-
+</code></pre>
+[/!]
 <p>La condition doit être une expression de type
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
 (expression booléenne).  Le sous-bloc sera exécuté seulement si cette
@@ -94,7 +101,7 @@ attentif...</p>
 particulières, dont le résultat est un booléen. Par exemple, la méthode
 <tt>estFaceMur()</tt> de la buggle renvoie
 [!c]1[/!][!java|python|scala]vrai[/!] si la buggle est face à un mur, et
-faux sinon.</p>
+[!c]0[/!][!java|python|scala]faux[/!] sinon.</p>
 
 <p>Enfin, il est possible de construire une condition composée de plusieurs
 sous-conditions reliées par des opérations booléennes:</p>
@@ -106,7 +113,7 @@ sait déjà que la conjonction des deux propositions ne peut pas être vraie).</
   <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> est vraie si
 <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si
 <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on
-sait déjà que la disjonction des deux propositions est vraie).</li>
+sait déjà que la disjonction des deux propositions ne peut pas être fausse).</li>
   <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> est vraie si
 <tt>cond</tt> ne l'est pas.</li>
   <li>Quand les expressions deviennent compliquées, il est préférable d'ajouter
@@ -120,18 +127,18 @@ condition est fausse, en utilisant la syntaxe suivante («else» signifie
 «sinon» en anglais). Dans ce cas, l'instruction
 <code>aFaireSiLaConditionEstFausse()</code> ne sera exécutée que si la
 condition est fausse.</p>
- <pre>[!java|scala|c]if (<b>condition</b>) {
+ <pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse();</b>
 }[/!][!python]if (<b>condition</b>):
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie()</b>
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]</pre>
-
-<p class="Python">N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]</code></pre>
+[!python]
+<p>N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau
 bloc débute.</p>
-
+[/!]
 <h3>Objectif de cet exercice</h3><a name="Objectifs"/> Si la buggle est face à un mur, il faut reculer d'un
 pas; Sinon, il faut avancer d'un pas.
 Pour savoir si on est face à un mur, il suffit d'utiliser la méthode
@@ -141,5 +148,4 @@ prédéfinie des buggles nommée <code>estFaceMur()</code>.
 pour plusieurs buggles, chacune étant dans une situation initiale
 différente. Le même code sera utilisé pour chacune d'entre elles.</p>
 
-<p>Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché
-par défaut dans un sous-arbre de la fenêtre de sélection).</p>
+<p>Quand votre programme fonctionne enfin, passez à l'exercice suivant.</p>

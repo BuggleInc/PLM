@@ -6,9 +6,9 @@ import java.io.IOException;
 
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
-
 import plm.universe.Entity;
 import plm.universe.World;
+import plm.universe.turtles.operations.*;
 
 public class Turtle extends Entity {
 
@@ -118,9 +118,20 @@ public class Turtle extends Entity {
 			}
 		}
 	}
+	
+	public void line(double x1, double y1, double x2, double y2, Color color) {
+		if (penDown) {
+			addOperation(new AddLine(this, x1, y1, x2, y2, color));
+			getWorld().addLine(x1, y1, x2, y2, color);
+		}
+	}
+	
 	public void circle(double radius) {
-		if (penDown)
+		if (penDown) {
+			addOperation(new AddCircle(this, x, y, radius, color));
 			getWorld().addCircle(x, y, radius, color);
+			stepUI();
+		}
 	}
 
 	public void moveTo(double newX, double newY) {
@@ -130,7 +141,7 @@ public class Turtle extends Entity {
 		double nX = newX;
 		double nY = newY;
 
-		while (nX < 0 || nX >= w || nY < 0 || nY >= h) { // need to clip			
+		while (nX < 0 || nX > w || nY < 0 || nY > h) { // need to clip			
 			// line equation y = y1+m(x-x1)
 			// where m=(y2-y1)/(x2-x1)
 			final double m = (nY - y) / (nX - x);
@@ -143,9 +154,7 @@ public class Turtle extends Entity {
 				final double xc = w;
 				final double yc = y + m * (w - x);
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(0., yc);
 				nX = nX - w;
 			}
@@ -157,9 +166,7 @@ public class Turtle extends Entity {
 				final double xc = (0 - this.y) / m + this.x;
 				final double yc = 0;
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(xc, h);
 				nY = nY + h;
 			}
@@ -171,9 +178,7 @@ public class Turtle extends Entity {
 				final double xc = 0;
 				final double yc = y + m * (0 - x);
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(w, yc);
 				nX = nX + w;
 			}
@@ -185,9 +190,7 @@ public class Turtle extends Entity {
 				final double xc = (h - this.y) / m + this.x;
 				final double yc = h;
 
-				if (this.penDown) {
-					this.getWorld().addLine(x, y, xc, yc, color);
-				}
+				line(x, y, xc, yc, color);
 				setPos(xc, 0.);
 				nY = nY - h;
 			}
@@ -195,9 +198,8 @@ public class Turtle extends Entity {
 			}	
 		} 
 
-		if (this.penDown) {
-			this.getWorld().addLine(x, y, nX, nY, color);
-		}			
+		line(x, y, nX, nY, color);
+		addOperation(new MoveTurtle(this, x, y, nX, nY));
 		this.x = nX;
 		this.y = nY;		
 
@@ -207,9 +209,25 @@ public class Turtle extends Entity {
 	public void left(double angle) {
 		setHeadingRadian(heading - fromAngularUnit(angle));
 	}
-
 	public void right(double angle) {
 		setHeadingRadian(heading + fromAngularUnit(angle));
+	}
+	
+	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
+	public void Left(double angle) { 
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+	}
+	public void Right(double angle) {
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+	}
+
+	public void brushDown(){
+		throw new RuntimeException(getGame().i18n.tr(
+				"Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not brushes. Use penDown() instead."));
+	}
+	public void brushUp(){
+		throw new RuntimeException(getGame().i18n.tr(
+				"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
 	}
 
 	public boolean isPenDown() {
@@ -225,10 +243,12 @@ public class Turtle extends Entity {
 	}
 
 	public void hide() {
+		addOperation(new ChangeTurtleVisible(this, this.visible, false));
 		this.visible = false;
 		stepUI();
 	}
 	public void show() {
+		addOperation(new ChangeTurtleVisible(this, this.visible, true));
 		this.visible = true;
 		stepUI();
 	}
@@ -236,7 +256,9 @@ public class Turtle extends Entity {
 		return this.visible;
 	}
 	public void clear() {
+		addOperation(new ClearCanvas(this));
 		getWorld().clear();
+		stepUI();
 	}
 
 	private double fromAngularUnit(double angle) {
@@ -268,9 +290,9 @@ public class Turtle extends Entity {
 	}
 
 	protected void setHeadingRadian(double heading) {
+		addOperation(new RotateTurtle(this, toAngularUnit(this.heading), toAngularUnit(heading)));
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
-		if (world != null)
-			world.notifyWorldUpdatesListeners();
+		stepUI();
 	}
 
 	protected double getHeadingRadian() {
@@ -295,6 +317,7 @@ public class Turtle extends Entity {
 	}
 
 	public void setX(double x) {
+		addOperation(new MoveTurtle(this, this.x, y, x, y));
 		this.x = x;
 		stepUI();
 	}
@@ -304,11 +327,13 @@ public class Turtle extends Entity {
 	}
 
 	public void setY(double y) {
+		addOperation(new MoveTurtle(this, x, this.y, x, y));
 		this.y = y;
 		stepUI();
 	}
 
 	public void setPos(double x, double y) {
+		addOperation(new MoveTurtle(this, this.x, this.y, x, y));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -355,11 +380,14 @@ public class Turtle extends Entity {
 		setPos((double) x, (double) y);
 	}
 
-	public void addSizeHint(int x1, int y1, int x2, int y2,String txt){
-		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,txt);
+	public void addSizeHint(int x1, int y1, int x2, int y2,String text){
+		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 	public void addSizeHint(int x1, int y1, int x2, int y2){
-		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,null);
+		String text = String.format("%.0f", Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
+		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 
 	@Override
@@ -380,6 +408,22 @@ public class Turtle extends Entity {
 		return result;
 	}
 
+	public String diffTo(Object obj) {
+		if (this == obj)
+			return "";
+		if (obj == null)
+			return "I was not expecting a (null) turtle";
+		if (!(obj instanceof Turtle))
+			return "The turtle is not a turtle! It's a trap!";
+
+		final Turtle other = (Turtle) obj;
+		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
+			return getGame().i18n.tr("The turtle {0} is not heading to the right direction.",getName());
+		if (Math.abs(x-other.x) > Turtle.EPSILON || Math.abs(y-other.y) > Turtle.EPSILON)
+			return getGame().i18n.tr("The turtle {0} is at the right location.",getName());
+		return "";
+
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -390,11 +434,6 @@ public class Turtle extends Entity {
 			return false;
 
 		final Turtle other = (Turtle) obj;
-		if (color == null) {
-			if (other.color != null)
-				return false;
-		} else if (!color.equals(other.color))
-			return false;
 		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
 			return false;
 		if (Math.abs(x-other.x) > Turtle.EPSILON)
@@ -419,6 +458,8 @@ public class Turtle extends Entity {
 	public void allerVers(double x, double y) {moveTo(x,y);}
 	public double getCap()           { return getHeading(); }
 	public void setCap(double cap)   { setHeading(cap);     }
+	public void leveBrosse()         { brushUp(); }
+	public void baisseBrosse()       { brushDown(); }
 	public void leveCrayon()         { penUp(); }
 	public void baisseCrayon()       { penDown(); }
 	public boolean estCrayonBaisse() { return isPenDown();}
@@ -544,7 +585,7 @@ public class Turtle extends Entity {
 				out.write("\n");
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 
 			}

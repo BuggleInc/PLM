@@ -1,20 +1,12 @@
 package lessons.sort.baseball.universe;
 
+import java.util.Random;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class BaseballWorld extends World {
@@ -31,12 +23,10 @@ public class BaseballWorld extends World {
 	private int holeBase,holePos; // The coordinate of the hole
 	protected int[] initialField; 
 	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
-	private I18n i18n;
 
 	/** Copy constructor used internally by PLM */
 	public BaseballWorld(BaseballWorld other) {
 		super(other);
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		initialField = new int[other.initialField.length];
 		for (int i=0;i<initialField.length;i++)
 			initialField[i] = other.initialField[i];
@@ -44,14 +34,13 @@ public class BaseballWorld extends World {
 
 
 	/** Regular constructor used by exercises */
-	public BaseballWorld(String name, int baseAmount, int positionAmount) {
-		this(name,baseAmount,positionAmount,MIX_RANDOM);
+	public BaseballWorld(Game game, String name, int baseAmount, int positionAmount) {
+		this(game, name,baseAmount,positionAmount,MIX_RANDOM);
 	}
 
-	public BaseballWorld(String name, int baseAmount, int posAmount, int mix) {
-		super(name);
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
-
+	public BaseballWorld(Game game, String name, int baseAmount, int posAmount, int mix) {
+		super(game, name);
+		
 		// create the bases
 		this.baseAmount = baseAmount;
 		this.posAmount = posAmount;
@@ -61,11 +50,11 @@ public class BaseballWorld extends World {
 			for (int pos = 0; pos < posAmount; pos++)
 				setPlayerColor(base, pos, base);
 		setPlayerColor(baseAmount-1, 0, COLOR_HOLE);
-				
+		Random r = new Random(0);
 		if (mix == MIX_RANDOM) {
 			for (int base = 0 ; base<getBasesAmount();base++)
 				for (int pos = 0 ; pos<getPositionsAmount();pos++)
-					swap(base, pos, (int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
+					swap(base, pos, (int) (r.nextDouble()*getBasesAmount()), (int) (r.nextDouble()*getPositionsAmount()));
 		
 		} else if (mix == MIX_NOBODY_HOME) {
 			// Ensure that nobody's home once it's mixed. 
@@ -80,9 +69,9 @@ public class BaseballWorld extends World {
 							swapped = true;
 							int newBase;
 							do {
-								newBase = (int) (Math.random()*getBasesAmount());
+								newBase = (int) (r.nextDouble()*getBasesAmount());
 							} while (newBase == base);
-							int newPos = (int) (Math.random()*getPositionsAmount());
+							int newPos = (int) (r.nextDouble()*getPositionsAmount());
 							swap(base, pos, newBase, newPos);							
 						}
 			} while (swapped);
@@ -114,8 +103,8 @@ public class BaseballWorld extends World {
 	}
 
 
-	public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values) {
-		this(name, baseAmount, positionAmount, MIX_SORTED);
+	public BaseballWorld(Game game, String name, int baseAmount, int positionAmount, int[] values) {
+		this(game, name, baseAmount, positionAmount, MIX_SORTED);
 		if (baseAmount*posAmount != values.length)
 			throw new RuntimeException("Your values array is not of the right size");
 		field = values;
@@ -143,20 +132,20 @@ public class BaseballWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof BaseballWorld))
-			return i18n.tr("This is not a baseball world :-(");
+			return getGame().i18n.tr("This is not a baseball world :-(");
 
 		BaseballWorld other = (BaseballWorld) o;
 		if (getBasesAmount() != other.getBasesAmount())
-			return i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
+			return getGame().i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
 
 		if (getPositionsAmount() != ((BaseballWorld) o).getPositionsAmount())
-			return i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
+			return getGame().i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
 		for (int base = 0; base< baseAmount; base++)
 			for (int pos=0; pos<posAmount; pos++)
 				if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
-					sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
+					sb.append(getGame().i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
 		return sb.toString();
 	}
@@ -229,34 +218,7 @@ public class BaseballWorld extends World {
 			throw new RuntimeException("No binding of BaseballWorld for "+lang);
 		}
 	}
-
-	/** Returns the icon of the world */
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_baseball.png");
-	}
-	/** Returns a component able to display the world */
-	@Override
-	public WorldView getView() {
-		return new BaseballWorldView(this);
-	}
-	BaseballMovePanel panel = null; 
-	/** Returns a panel allowing to interact dynamically with the world */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		if (panel == null)
-			panel = new BaseballMovePanel();
-		return panel;
-	}
-	/** Passes the mouse selection from view to the control panel */ 
-	public void setPlayer(int base, int pos) {
-		panel.setPlayer(base, pos);
-	}
-	/** Passes the mouse action from the view to the control panel */
-	public void doMove() {
-		panel.doMove();
-	}
-
+	
 	/** 
 	 * Reset the state of the current world to the one passed in argument
 	 * @param the world which must be the new start of your current world
@@ -337,18 +299,23 @@ public class BaseballWorld extends World {
 	}
 
 	/** Returns the last move made on the field */
-	protected BaseballMove getLastMove() {
+	public BaseballMove getLastMove() {
 		if (moves.size() == 0)
 			return null;
 		return moves.get(moves.size()-1);
 	}
 	/** Returns the amount of moves done so far */
-	protected int getMoveCount() {
+	public int getMoveCount() {
 		return moves.size();
 	}
 	/** Returns all moves done so far */
-	protected Vector<BaseballMove> getMoves() {
+	public Vector<BaseballMove> getMoves() {
 		return moves;
+	}
+	
+	public int[] getField()
+	{
+		return field;
 	}
 
 	/** Checks that the world is sorted, and display an helpful error message if not */
@@ -369,7 +336,7 @@ public class BaseballWorld extends World {
 		}
 		sb.append("}");
 
-		String msg =Game.i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
+		String msg =getGame().i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
 				"Exercise: {0}; Amount of bases: {1}; Initial situation: {2}", exercise, getBasesAmount(),sb.toString());
 		System.err.println(msg);
 		throw new RuntimeException(msg);
@@ -406,10 +373,10 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -418,7 +385,7 @@ public class BaseballWorld extends World {
 			 && (holeBase != getBasesAmount()-1 || base != 0 )
 			 && (holeBase != base ) )
 			
-			throw new IllegalArgumentException(i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
+			throw new IllegalArgumentException(getGame().i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
 					position,base,holeBase));
 
 		// All clear. Proceed.

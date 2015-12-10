@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class LoneTeen extends BatExercise {
 
-	public LoneTeen(Lesson lesson) {
-		super(lesson);
+	public LoneTeen(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("loneTeen");
+		BatWorld myWorld = new BatWorld(game, "loneTeen");
 		myWorld.addTest(VISIBLE,  13,42);
 		myWorld.addTest(VISIBLE,  21,19);
 		myWorld.addTest(VISIBLE,  13,13);
@@ -26,12 +27,12 @@ public class LoneTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 42,13);
 		myWorld.addTest(INVISIBLE, 42,42);
 
-		templatePython("loneTeen", 
+		templatePython("loneTeen", new String[] {"Int","Int"},
 				"def loneTeen(a, b):\n",
 				"	teenA = a>12 and a<20\n"+
 				"	teenB = b>12 and b<20\n"+
 				"	return  (teenA and not teenB) or (teenB and not teenA)\n");
-		templateScala("loneTeen",new String[] {"Int","Int"}, 
+		templateScala("loneTeen", new String[] {"Int","Int"}, 
 				"def loneTeen(a:Int, b:Int):Boolean = {\n",
 				"	val teenA = a>12 && a<20\n"+
 				"	val teenB = b>12 && b<20\n"+

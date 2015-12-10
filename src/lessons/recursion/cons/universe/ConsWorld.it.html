@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>ConsWorld</h1>
+
+<p>This world allows you to experiment with the recursive lists, as they were
+first introduced in Lisp. It is very similar to the BatWorld, but you are
+supposed to write recursive functions working on [!python|java]recursive
+strings. Since [!thelang] does not provide such a construct natively, the
+ConsWorld defines recursive lists of type <code>RecList</code>.[/!]
+[!scala]lists of integers (<code>List[Int]</code>).[/!]</p>
+
+<p>Any given such list is either the empty list (noted
+<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), or an integer
+followed by a list. If a list is not empty, you can retrieve its first
+integer with <code>list.head</code> and the list containing its other
+parameters with <code>list.tail</code>. Of course, the empty list has no
+head nor the tail, so trying to access these elements will result in an
+(unpleasant) error message.</p>
+
+<p>To build your own list, you need to concatenate a head and a tail as
+follows: [!java|python]<code>cons(head, tail)</code>[/!]
+[!scala]<code>head::tail</code> Note that <code>::</code> is a generic
+operator in Scala to build lists.[/!]</p>
+
+<p>So, in summary, you can solve every exercises of this lesson with the
+following constructs.</p>
+
+<ul>
+<li><b>The empty list:</b> <pre>[!java]null[/!][!scala]Nil[/!][!python]None[/!]</pre></li>
+<li><b>Get the first element of <code>l</code></b> <pre>l.head</pre></li>
+<li><b>Get the rest of the list</b>, when the first element is removed: <pre>l.tail</pre></li>
+<li><b>Build a list</b> from a <code>value</code> and a <code>list</code>:
+[!java|python]<pre>cons(value, list)</pre>[/!] [!scala]<pre>value::list</pre>[/!]</li>
+</ul>

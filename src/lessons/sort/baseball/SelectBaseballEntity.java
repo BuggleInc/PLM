@@ -4,7 +4,6 @@ import lessons.sort.baseball.universe.BaseballEntity;
 import lessons.sort.baseball.universe.BaseballWorld;
 
 public class SelectBaseballEntity extends BaseballEntity {
-
 	
 	/* BEGIN TEMPLATE */
 	public void run() {
@@ -19,7 +18,7 @@ public class SelectBaseballEntity extends BaseballEntity {
 	/* BEGIN HIDDEN */
 	void out(String msg) {
 		//if (false)
-		//	System.out.println(msg);
+		//	getGame().getLogger().log(msg);
 	}
 	
 	public void bringPlayersHome(int base) {

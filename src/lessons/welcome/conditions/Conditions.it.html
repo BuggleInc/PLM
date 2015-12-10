@@ -76,7 +76,7 @@ defined by [!thelang] directly, just as 0 or 1 in mathematics.[/!]</p>
 
 <p>The condition can be a
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
-variable (we will come back on variables in a latter exercise, don't worry)
+variable (we will come back on variables in a later exercise, don't worry)
 or an arithmetic test, such as <code>x == 5</code>, which checks whether the
 current value of <code>x</code> is 5, or such as <b>!=</b> (checking
 inequality, that is, returning
@@ -95,7 +95,7 @@ you'd better to be careful...</p>
 <p>The condition can also be a call to some particular methods returning a
 boolean. For example, the <code>isFacingWall()</code> method of the buggle
 returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a
-wall, and false in the other case.</p>
+wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case.</p>
 
 <p>Infine una condizione può essere composta da altre condizioni interconnesse
 da operazioni booleane:</p>
@@ -107,7 +107,7 @@ conjunction of both propositions cannot be true).</li>
   <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if
 <tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true,
 <tt>cond2</tt> is not even evaluated as we already know that the disjunction
-of both propositions cannot be true).</li>
+of both propositions cannot be false).</li>
   <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> è true se
 <tt>cond</tt> è false.</li>
   <li>Quando l'espressione diventa complicata è meglio aggiungere delle parentesi

@@ -1,0 +1,19 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tricolor Hanoi: stack move</h2>
+
+<p>In this set of exercises, we will devise an algorithm for the Tricolor Hanoi problem.
+There will be 3 stacks on 3 pegs, each stack of a differing color, and the problem is to
+exchange the stacks' positions under the classical move rules (one disk at a time, 
+and no bigger disk over smaller disk).</p>
+
+<p>As in previous exercises, our solution will use three functions:</p>
+<ul>
+ <li><code>move3(n, src, mid, dst)</code>: moves a stack of interleaved disks, ie a stack of (n*3) disks 
+   of alternating colors from peg <code>src</code> to peg <code>dst</code>.</li>
+ <li><code>gather()</code>: builds an interleaved stack from the regular split ones.</li>
+ <li><code>scatter()</code>: splits an interleaved stack into several regular ones.</li>
+</ul>
+
+<p>The goal of this first exercise in the series is to devise the <code>move3()</code> function. 
+This starter task should not block you for too long, actually. It is ok if your function changes 
+the order of the bottom triplet of disks, but it must preserve the order of the other triplets.</p> 

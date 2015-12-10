@@ -3,6 +3,7 @@ package plm.core.utils;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.xnap.commons.i18n.I18n;
 
 
 public class ColorMapper {
@@ -51,6 +52,23 @@ public class ColorMapper {
 			if (colors[i].equals(c))
 				return i;
 		return -1;
+	}
+	
+	public static String color2translated(Color c, I18n i18n) {
+	  	     if (c == Color.black)     return i18n.tr("black");
+		else if (c == Color.blue)      return i18n.tr("blue");
+		else if (c == Color.cyan)      return i18n.tr("cyan");
+		else if (c == Color.darkGray)  return i18n.tr("dark grey");
+		else if (c == Color.gray)      return i18n.tr("grey");
+		else if (c == Color.green)     return i18n.tr("green");
+		else if (c == Color.lightGray) return i18n.tr("light grey");
+		else if (c == Color.magenta)   return i18n.tr("magenta");
+		else if (c == Color.orange)    return i18n.tr("orange");
+		else if (c == Color.pink)      return i18n.tr("pink");
+		else if (c == Color.red)       return i18n.tr("red");
+		else if (c == Color.white)     return i18n.tr("white");
+		else if (c == Color.yellow)    return i18n.tr("yellow");
+		else return c.toString();
 	}
 	
 	public static Color int2color(int c) throws InvalidColorNameException{

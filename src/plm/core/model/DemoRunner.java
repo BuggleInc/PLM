@@ -25,6 +25,27 @@ public class DemoRunner extends Thread {
 		this.runners.add(this);
 	}
 
+	public void runDemo(Exercise exo) throws Exception {
+		game.setState(Game.GameState.DEMO_STARTED);
+		
+		game.disableStepMode();
+		
+		if(game.getProgrammingLanguage().equals(Game.C)){
+			exo.compileAll(game.getLogger(), StudentOrCorrection.CORRECTION);
+		}
+		
+		exo.runDemo(runners);
+
+		Iterator<Thread> it = runners.iterator();
+		while (it.hasNext()) {
+			Thread t = it.next();
+			if (!t.equals(this)) { /* do not wait for myself */
+				t.join();
+				it.remove();
+			}
+		}
+	}
+	
 	@Override
 	public void run() {
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
@@ -35,36 +56,18 @@ public class DemoRunner extends Thread {
 		boolean stepModeWasActivated = this.game.stepModeEnabled();
 
 		try {
-			game.setState(Game.GameState.DEMO_STARTED);
-			
-			this.game.disableStepMode();
-			
-			if(Game.getProgrammingLanguage().equals(Game.C)){
-				exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.CORRECTION);
-			}
-			
-			exo.runDemo(runners);
-
-			Iterator<Thread> it = runners.iterator();
-			while (it.hasNext()) {
-				Thread t = it.next();
-				if (!t.equals(this)) { /* do not wait for myself */
-					t.join();
-					it.remove();
-				}
-			}
+			runDemo(exo);
 		} catch (InterruptedException e) {
-			game.getOutputWriter().log(e);
+			game.getLogger().log(e.getLocalizedMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (stepModeWasActivated) {
 				this.game.enableStepMode();
 			}
-			game.setState(Game.GameState.DEMO_ENDED);			
+			game.setState(Game.GameState.DEMO_ENDED);
 		}
 
 		runners.remove(this);
 	}
-
 }

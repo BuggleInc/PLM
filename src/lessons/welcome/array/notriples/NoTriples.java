@@ -1,14 +1,15 @@
 package lessons.welcome.array.notriples;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class NoTriples extends BatExercise {
-	public NoTriples(Lesson lesson) {
-		super(lesson);
+	public NoTriples(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("noTriples");
+		BatWorld myWorld = new BatWorld(game, "noTriples");
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 2, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 2, 2, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 1, 2, 2, 2, 1}) ;
@@ -19,14 +20,14 @@ public class NoTriples extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		templatePython("noTriples", 
+		templatePython("noTriples", new String[]{"Array[Int]"},
 				"def noTriples(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-2 ):\n"+
 				"    if (nums[i] == nums[i+1]) and (nums[i+1] == nums[i+2]):\n"+
 				"      return False\n"+
 				"  return True\n");
-		templateScala("noTriples",new String[]{"Array[Int]"}, 
+		templateScala("noTriples", new String[]{"Array[Int]"}, 
 				"def noTriples(nums:Array[Int]): Boolean = {\n",
 				"  var count=0\n"+
 				"  for (i <- 0 to nums.length-3)\n"+

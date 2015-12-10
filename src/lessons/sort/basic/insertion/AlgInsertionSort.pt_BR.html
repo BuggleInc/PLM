@@ -1,0 +1,56 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>InsertionSort</h1>
+
+<p>
+Este algoritmo de ordenação é muito simples de entender e escrever, mesmo se
+não for o mais eficiente possível. Sua complexidade assintótica é O(n2), mas
+ele é mais eficiente na prática (linear no melhor caso, ie quando a array já
+está ordenada, e N2/4 no caso médio).
+</p>
+<p>A ideia é percorrer todos os elementos da array, e inserir cada um deles em
+sua posição correta numa parte já ordenada da array. Quando nós olhamos para
+um elemento x, a situação é a seguinte: qualquer elemento da esquerda da
+array já está ordenado, e temos que inserir x na sua posição na array.</p>
+<div style="text-align:center">
+	<img src="lessons/sort/basic/insertion/InsertionsortBefore.png"/>
+</div>
+<p>Uma vez isto feito, a situação é a seguinte:</p>
+<div style="text-align:center">
+	<img src="lessons/sort/basic/insertion/InsertionsortAfter.png"/>
+</div>
+<p>O pseudo-código deste algoritmo é então o seguinte:</p>
+<pre>For each i in [1,len-1]
+  store the value of i in a variable v
+  copy the cell i-1 into i if i-1 contains a value bigger than v
+  copy the cell i-2 into i-1 if i-2 contains a value bigger than v
+  copy the cell i-3 into i-2 if i-3 contains a value bigger than v
+  copy the cell i-4 into i-3 if i-4 contains a value bigger than v
+  ...
+  copy v into the last cell copied above
+</pre>
+<p>
+Naturalmente, você deve usar um loop para escrever a grande permutação
+dentro do loop. Escrever ela desta forma deve ser na verdade
+... improdutivo.
+</p>
+<p>Se você já se perguntou o que cientistas da computação fazem nos dias de
+hoje, aqui está uma parte da resposta: Eles melhoram algoritmos fundamentais
+para que outras pessoas possam escrever programas eficientes.</p>
+
+<h2>Outra variação do insertion sort</h2>
+<p>
+TreeSort constrói uma árvore de busca binária para ordená-la. Ele consegue
+O(n log(n)) no caso médio, mas O(n^2) nos piores casos. Não vamos estudar
+este algoritmo aqui pois para entendê-lo temos que entender o que uma árvore
+binária é, o que está além de nossos objetivos atuais. 
+</p>
+<p>Existem variações do insertion sort, tais como o PatienceSort que constrói
+pilhas de valores e ordena cada pilha depois. Este algoritmo apresenta um
+tempo 0(n log(n)) no pior caso e uma complexidade de espaço de
+0(n). LibrarySort (proposto em 2004) também troca um pouco de espaço por
+tempo já que tem uma complexidade de tempo de O(n log(n)) mas precisa
+armazenar um pouco mais de dados.</p>
+ 
+<p>A Wikipédia fornece uma descrição detalhada de cada um destes algoritmos que
+não apresentamos aqui devido a limitações de tempo.</p> 

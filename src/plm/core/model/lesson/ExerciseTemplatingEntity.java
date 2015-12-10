@@ -63,12 +63,12 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected Map<ProgrammingLanguage,String> corrections = new HashMap<ProgrammingLanguage, String>();
 	private boolean isSetup = false;
 	
-	public ExerciseTemplatingEntity(Lesson lesson) {
-		super(lesson);
+	public ExerciseTemplatingEntity(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 	protected void setup(World[] ws, String entName, String template) {
 		this.tabName=entName;
-		setupWorlds(ws);
+		setupWorlds(ws,0);
 		
 		
 		try {
@@ -80,15 +80,16 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		
 		SourceFile javaFile = sourceFiles.get(Game.JAVA).get(0);
 		
-		javaFile.setCorrection("$package "+template+" public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
-		javaFile.setTemplate  ("$package "+template+" public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
-		//System.out.println("New template: "+sf.getTemplate());
+		javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
+		javaFile.setTemplate  ("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
+		//getGame().getLogger().log("New template: "+sf.getTemplate());
 		
 		if (getProgLanguages().contains(Game.SCALA)) {
 			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);
 			String header = "$package\n"
 					+ "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
 					+ "import plm.universe.World; \n"
+					+ "import scala.collection.JavaConverters._;\n"
 					+ "class "+entName+" extends BatEntity { ";
 			
 			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");
@@ -96,42 +97,76 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		}
 		
 		computeAnswer();
-		isSetup  = true;
+		setSetup(true);
 	}
 	protected void templatePython(String entName, String initialCode, String correction) {
 		/* The following test is intended to make sure that this function is called before setup() right above.
 		 * This is because setup() needs all programming languages to be declared when it runs */
-		if (isSetup)
+		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
 		if (this.getProgLanguages().contains(Game.PYTHON))
 			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body",0,"");
+		newSource(Game.PYTHON, entName, initialCode, "$body",0,"","");
 		corrections.put(Game.PYTHON, initialCode+correction);
 		addProgLanguage(Game.PYTHON);
 	}
 	protected void templateScala(String entName, String[] types, String initialCode, String correction) {
-		if (isSetup)
+		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
 		if (this.getProgLanguages().contains(Game.SCALA))
 			throw new RuntimeException("The exercise "+getName()+" has two Scala templates. Please fix this bug.");
 		
-		StringBuffer skeleton = new StringBuffer("   t.setResult( ");
+		StringBuffer skeleton = new StringBuffer(" val res = ");
 		skeleton.append(entName);
 		skeleton.append("( ");
 		for (int i=0;i<types.length;i++) {
 			if (i>0)
 				skeleton.append(", ");
-			skeleton.append("t.getParameter(");
-			skeleton.append(i);
-			skeleton.append(").asInstanceOf[");
-			skeleton.append(types[i]);
-			skeleton.append("]");
+			if (types[i].equals("List[Int]")) {
+				skeleton.append("(if (t.getParameter("+i+") == null) {");
+				skeleton.append("  Nil");
+				skeleton.append("} else if (t.getParameter("+i+").isInstanceOf[lessons.recursion.cons.universe.RecList]) {");
+				skeleton.append("  t.getParameter("+i+").asInstanceOf[lessons.recursion.cons.universe.RecList].toList().asInstanceOf[java.util.List[Int]].asScala.toList");
+				skeleton.append("} else {");
+				skeleton.append("  t.getParameter("+i+").asInstanceOf[java.util.List[Int]].asScala.toList");
+				skeleton.append("}) ");
+			} else {
+				skeleton.append("t.getParameter(");
+				skeleton.append(i);
+				skeleton.append(").asInstanceOf[");
+				skeleton.append(types[i]);
+				skeleton.append("]");
+			}
 		}
-		skeleton.append(") )");
+		skeleton.append(");\n");
+		skeleton.append("try {\n");
+		skeleton.append("   t.setResult(if (res==null||res == Nil) {null} else {res.asInstanceOf[List[Int]].asJava})\n");
+		skeleton.append("} catch {\n");
+		skeleton.append("  case e:java.lang.ClassCastException => t.setResult(res)\n"); // primitive types cannot be converted to java, but I don't care (and cannot test whether res is a primitive type)
+		skeleton.append("}\n");
 		
-		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",7,
-				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
+		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",14,
+				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction,"Error");
 		addProgLanguage(Game.SCALA);
+	}
+	/*protected void templateBlockly(String entName, String initialCode, String correction, String workspace) {
+		/* The following test is intended to make sure that this function is called before setup() right above.
+		 * This is because setup() needs all programming languages to be declared when it runs */
+		/*if (isSetup())
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
+		if (this.getProgLanguages().contains(Game.BLOCKLY))
+			throw new RuntimeException("The exercise "+getName()+" has two Blockly templates. Please fix this bug.");
+		
+		newSource(Game.BLOCKLY, entName, initialCode, "$body",0,"");
+		newSource(Game.BLOCKLY, entName, workspace, "",0,"");
+		corrections.put(Game.BLOCKLY, initialCode+correction);
+		addProgLanguage(Game.BLOCKLY);
+	}*/
+	public boolean isSetup() {
+		return isSetup;
+	}
+	public void setSetup(boolean isSetup) {
+		this.isSetup = isSetup;
 	}
 }

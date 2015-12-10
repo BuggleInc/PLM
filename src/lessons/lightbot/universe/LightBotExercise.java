@@ -9,12 +9,12 @@ import plm.core.model.lesson.Lesson;
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {
-	public LightBotExercise(Lesson lesson) {
-		super(lesson);
+	public LightBotExercise(Game game, Lesson lesson) {
+		super(game, lesson);
 		addProgLanguage(Game.LIGHTBOT);
 		if (getProgLanguages().size()>1) 
 			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
+		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile(game, "Code"));
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class LightBotExercise extends ExerciseTemplated {
 		for (World w : ws) 
 			((LightBotWorld) w).rotateLeft();
 		
-		setupWorlds(ws);
+		setupWorlds(ws, 0);
 		/* remove entities from the answer world: we don't care of where the bot is at the end */
 		for (World w :answerWorld)
 			w.emptyEntities();
@@ -40,7 +40,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 	@Override
 	public void check() {
-		lastResult = new ExecutionProgress();
+		lastResult = new ExecutionProgress(Game.LIGHTBOT);
 		for (int w=0;w<currentWorld.size();w++) {
 			LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
 			while (ci.hasNext()) {
@@ -53,10 +53,14 @@ public class LightBotExercise extends ExerciseTemplated {
 			}
 			int stillOff = lastResult.totalTests - lastResult.passedTests;
 			if (stillOff == 1) 
-				lastResult.details = "The light is still off";
+				lastResult.executionError = getGame().i18n.tr("A light is still off.");
 			if (stillOff > 1)
-				lastResult.details = stillOff + " lights (out of "+lastResult.totalTests+") are still off";
+				lastResult.executionError = getGame().i18n.tr("{0} lights (out of {1}) are still off.",stillOff,lastResult.totalTests);
 
+			if (stillOff == 0)
+				lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
+			else
+				lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
 		}
 	}
 	@Override

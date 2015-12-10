@@ -13,70 +13,71 @@ là où elles marchent et à qui on peut donner des ordres simples.</p>
 
 <h2>Fonctions pour déplacer la tortue</h2>
 
-<pre>[!java|c]void [/!]avance([!java|c]double [/!]nbPas[!scala]:Double[/!])
-[!java|c]void [/!]recule([!java|c]double [/!]nbPas[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]avance([!java|c]double [/!]nbPas[!scala]:Double[/!])
+[!java|c]void [/!]recule([!java|c]double [/!]nbPas[!scala]:Double[/!])</code></pre>
 Avance ou recule du nombre de pas demandé.
 
-<pre>[!java|c]void [/!]droite([!java|c]double [/!]angle[!scala]:Double[/!])
-[!java|c]void [/!]gauche([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]droite([!java|c]double [/!]angle[!scala]:Double[/!])
+[!java|c]void [/!]gauche([!java|c]double [/!]angle[!scala]:Double[/!])</code></pre>
 Tourne à gauche ou à droite de l'angle indiqué (en degrés).
 
-<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
-[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
-Retourne la position actuelle de la tortue.
+<pre><code class="code-container">[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</code></pre>
+Renvoie la position courante de la tortue. L'origine (0; 0) est dans le coin
+en haut à gauche, comme c'est souvent le cas en informatique.  
 
-<pre>[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
+<pre><code class="code-container">[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
 [!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])
-[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</code></pre>
 Téléporte la tortue à une nouvelle position (sans laisser de trace).
 
-<pre>[!java|c]void [/!]allerVers([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]allerVers([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</code></pre>
 Déplace la tortue à une nouvelle position.
 
-<pre>[!java|c]void [/!]cercle([!java|c]double [/!]rayon[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]cercle([!java|c]double [/!]rayon[!scala]:Double[/!])</code></pre>
 Dessine un cercle du rayon demandé et centré sur la tortue.
 
-<pre>[!java|c]void [/!]cache()</pre>
+<pre><code class="code-container">[!java|c]void [/!]cache()</code></pre>
 Cache la tortue.
 
-<pre>[!java|c]void [/!]montre()</pre>
+<pre><code class="code-container">[!java|c]void [/!]montre()</code></pre>
 Montre la tortue.
 
-<pre>[!java]boolean [/!][!c]int [/!]estVisible()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]estVisible()[!scala]:Boolean[/!]</code></pre>
 Renvoie vrai si la tortue est actuellement visible.
 
-<pre>[!java|c]void [/!]efface()</pre>
+<pre><code class="code-container">[!java|c]void [/!]efface()</code></pre>
 Efface toutes les traces de la feuille.
 
-<pre>[!java|c]double [/!]getCap()[!scala]:Double[/!]</pre>
+<pre><code class="code-container">[!java|c]double [/!]getCap()[!scala]:Double[/!]</code></pre>
 Retourne le cap actuel de la tortue (en degrés).
 
-<pre>[!java|c]void [/!]setCap([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]setCap([!java|c]double [/!]angle[!scala]:Double[/!])</code></pre>
 Change le cap de la tortue à l'angle indiqué (en degrés).
 
 <h2>Fonctions à propos du stylo</h2>
 
-<pre>[!java|c]void [/!]leveCrayon()</pre>
+<pre><code class="code-container">[!java|c]void [/!]leveCrayon()</code></pre>
 Remonte le crayon de la tortue (les tortues ont des crayons, pas des brosses
 comme les buggles). La tortue ne laissera plus de trace lors de ses
 déplacements suivants.
 
-<pre>[!java|c]void [/!]baisseCrayon()</pre>
+<pre><code class="code-container">[!java|c]void [/!]baisseCrayon()</code></pre>
 Descend le stylo. La tortue laissera une trace lors de ses prochains
 déplacements.
 
-<pre>[!java]boolean [/!][!c]int [/!]estCrayonBaisse()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]estCrayonBaisse()[!scala]:Boolean[/!]</code></pre>
 Retourne si le stylo est actuellement baissé ou non.
 
-<pre>[!java|c]Color [/!]getCouleur()[!scala]:Color[/!]</pre>
+<pre><code class="code-container">[!java|c]Color [/!]getCouleur()[!scala]:Color[/!]</code></pre>
 Retourne la couleur actuelle du stylo.
 
-<pre>[!java|c]void [/!]setCouleur([!java|c]Color [/!]couleur[!scala]:Color[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]setCouleur([!java|c]Color [/!]couleur[!scala]:Color[/!])</code></pre>
 Modifier la couleur du stylo.
 
 <h2>Autres fonctions</h2>
 
-<pre>[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]estChoisie()[!scala]:Boolean[/!]</code></pre>
 Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique.
 
 <h2>Couleurs valides</h2>

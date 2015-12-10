@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringX extends BatExercise {
-	public StringX(Lesson lesson) {
-		super(lesson);
+	public StringX(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("stringX");
+		BatWorld myWorld = new BatWorld(game, "stringX");
 		myWorld.addTest(VISIBLE, "xxHxix") ;
 		myWorld.addTest(VISIBLE, "abxxxcd") ;
 		myWorld.addTest(VISIBLE, "xabxxxcdx") ;
@@ -18,7 +19,7 @@ public class StringX extends BatExercise {
 		myWorld.addTest(INVISIBLE, "x") ;
 		myWorld.addTest(INVISIBLE, "") ;
 
-		templatePython("stringX", 
+		templatePython("stringX", new String[] {"String"},
 				"def stringX(str):\n",
 				"  res = ''\n" +
 				"  for i in range(len(str)):\n" +

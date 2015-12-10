@@ -3,8 +3,7 @@ package lessons.lander.lvl3_fly_the_lander;
 import java.util.Iterator;
 import scala.collection.JavaConversions._
 
-import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.Point;
+import lessons.lander.universe._;
 
 class ScalaFlyTheLanderEntity extends LanderEntity {
   /* BEGIN TEMPLATE */
@@ -12,7 +11,7 @@ class ScalaFlyTheLanderEntity extends LanderEntity {
   var targetStart=0.0
   var targetEnd=0.0
   /* END HIDDEN */
-  override def initialize() {
+  override def initialize():Unit = {
     /* BEGIN HIDDEN */
     var lastPoint:Point = getGround.get(0);
     for (point <- getGround()) {
@@ -27,7 +26,7 @@ class ScalaFlyTheLanderEntity extends LanderEntity {
     /* END HIDDEN */
   }
 
-  override def step() {
+  override def step():Unit = {
     /* BEGIN SOLUTION */
     if (getX() < targetStart) {
       setDesiredAngle(-30);

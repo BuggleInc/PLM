@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class IcyHot extends BatExercise {
 
-	public IcyHot(Lesson lesson) {
-		super(lesson);
+	public IcyHot(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("icyHot");
+		BatWorld myWorld = new BatWorld(game, "icyHot");
 		myWorld.addTest(VISIBLE, 120,-1);
 		myWorld.addTest(VISIBLE, -1,120);
 		myWorld.addTest(VISIBLE, 2,120);
@@ -19,7 +20,7 @@ public class IcyHot extends BatExercise {
 		myWorld.addTest(INVISIBLE, -2,-2);
 		myWorld.addTest(INVISIBLE, 120,120);
 
-		templatePython("icyHot", 
+		templatePython("icyHot", new String[]{"Int","Int"},
 				"def icyHot(temp1, temp2):\n",
 				"   return temp1<0 and temp2>100 or temp1>100 and temp2<0\n");
 		templateScala("icyHot",new String[]{"Int","Int"}, 

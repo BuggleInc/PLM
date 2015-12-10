@@ -5,17 +5,13 @@ import java.io.IOException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Direction;
 import plm.universe.World;
 import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
-import plm.universe.bugglequest.ui.BuggleWorldView;
 
 public class TurmiteWorld extends BuggleWorld {	
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)
@@ -33,8 +29,8 @@ public class TurmiteWorld extends BuggleWorld {
 	 * 
 	 * You can perfectly have several such constructor. 
 	 */
-	public TurmiteWorld(String title, int nbSteps, Object rule, int width, int height, int buggleX, int buggleY) {
-		super(title,width,height);
+	public TurmiteWorld(Game game, String title, int nbSteps, Object rule, int width, int height, int buggleX, int buggleY) {
+		super(game, title,width,height);
 		currStep = 0;
 		setDelay(1); 
 		setVisibleGrid(false);
@@ -59,16 +55,6 @@ public class TurmiteWorld extends BuggleWorld {
 		TurmiteWorld other = (TurmiteWorld)w;
 		currStep = other.currStep;
 		super.reset(w);		
-	}
-
-	/** Returns a component able of displaying the world */
-	@Override
-	public BuggleWorldView getView() {
-		return new TurmiteWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_buggle.png");
 	}
 	
 	/** Used to check whether the student code changed the world in the right state */
@@ -124,7 +110,7 @@ public class TurmiteWorld extends BuggleWorld {
 	
 	@Override
 	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
-		TurmiteWorld res = new TurmiteWorld("toto",1, "",1,1,1,1);
+		TurmiteWorld res = new TurmiteWorld(getGame(), "toto",1, "",1,1,1,1);
 		res.removeEntity(res.getEntity(0));
 		return res.readFromFile(path,"TurmiteWorld",res);
 	}

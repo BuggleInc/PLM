@@ -1,0 +1,96 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Faster Burned Pancake Sorting</h1>
+
+<p>O algoritmo de Gates que vimos no exercício anterior ordena rapidamente uma
+pilha de panquecas que não estão queimadas aumentando o tamanho dos blocos
+de panquecas já ordenadas. Isto é muito mais rápido que o algoritmo que move
+em cada passo a panqueca maior para o fundo das panquecas ainda não
+ordenadas. O algoritmo de Gates ordena uma pilha de <i>n</i> panquecas em
+menos que <i>(5n + 5)/3</i> passos no pior caso, enquanto que o algoritmo
+simplório precisa de no máximo <i>2n</i> passos. Gates é então cerca de 3
+vezes mais rápido no pior caso.</p>
+
+<p>Neste exercício, vamos explorar uma adaptação da mesma ideia das panquecas
+queimadas. Isto foi publicado primeiramente por David X. Cohen e Manuel
+Blum. David Cohen co-fundou uns anos depois a série de TV Futurama, cheia de
+piadas matemáticas. Definitivamente, pessoas interessantes estudaram este
+singelo problema da panqueca...</p>
+
+<p>O algoritmo de Cohen é um pouco mais fácil que o algoritmo de Gates já que
+ele distingue menos casos:</p>
+
+<p><b>Caso 1:</b> pelo menos uma panqueca está de cabeça para cima na
+pilha. Seja <i>p</i> a maior destas panquecas. Observe que <i>p + 1</i> deve
+portanto estar de cabeça para baixo, a menos que <i>p = n</i> (e neste caso
+não existe a panqueca <i>p + 1</i>).</p>
+
+<ul>
+  <li><b>Caso 1.a:</b> <i>p+1</i> é menor que <i>p</i> na pilha.  <div align="center"><img src="img/cohen-1a.png"/></div><br/></li>
+  <li><b>Caso 1.b:</b> <i>p+1</i> é maior que <i>p</i> na pilha. <div align="center"><img src="img/cohen-1b.png"/></div><br/></li>
+  <li><b>Caso 1.c:</b> Não existe <i>p+1</i> pois <i>p</i> é a maior panqueca da
+pilha, isto por que <i>p = n</i>.  Se a panqueca <i>p</i> já estiver na
+posição, não há nada a fazer. Se não, você pode movê-la para o fundo da
+pilha em duas viradas:
+     <div align="center"><img src="img/cohen-1c.png"/></div>
+     
+    <b>O truque é que a panqueca <i>p</i> nunca deve ser considerada de
+novo.</b> caso contrário, você vai considerar ela de novo e de novo pois ela
+está de cabeça pra cima, e já que é a maior panqueca. Para desconsiderar
+ela, você deve lembrar da tamanho da pilha que ainda está para ser
+ordenada. Qualquer travessia da pilha deve então considerar apenas estas
+panquecas, não mexendo nas que já estão posicionadas no fundo da pilha.
+     </li>
+</ul>
+   
+ 
+<p><b>Caso 2:</b> Todas as panquecas estão de cabeça para baixo. De novo,
+distinguimos dois sub-casos.</p>
+  
+<ul>
+ <li><b>Caso 2.a:</b> Existe pelo menos um <i>p</i> para o qual <i>p+1</i> é
+maior que <i>p</i> (se existem vários destes <i>p</i>, pegue o maior).
+   <div align="center"><img src="img/cohen-2a.png"/></div><br/>
+ </li>
+ <li><b>Caso 2.b:</b> Qualquer panqueca <i>p</i> é menor que a panqueca
+<i>p+1</i>. Neste caso, devemos ter a seguinte configuração:
+    <div align="center"><img src="img/cohen-2b.png"/></div>
+ </li>
+</ul>
+
+<p>Como você pode ver, alcançamos um "join" em duas viradas nos casos 1 ou
+2.a. Já que nós precisamos alcançar n junções para ordenar a pilha, podemos
+ordenar a pilha em <i>2n</i> passos se o caso 2.b não ocorrer.</p>
+
+<p>Este caso 2.b necessita um tratamento particular já que é obviamente
+impossível juntar duas panquecas em apenas duas viradas. Mas por sorte, uma
+única configuração bem específica da pilha cai neste caso da figura. Podemos
+então utilizar o algoritmo seguinte, conhecido por tirar vantagem desta
+configuração. Este algoritmo ordena toda a pilha em exatamente <i>2n</i>
+passos.</p>
+  
+<pre>
+Repita n vezes
+    vire a pilha toda de n panquecas
+    Vire as (n-1) panquecas mais de cima
+</pre>
+ 
+<p>Pode parecer mágica, mas funciona de verdade, como é mostrado no exemplo
+abaixo.</p>
+
+<p><div align="center"><img src="img/cohen-2b-algo.png"/></div></p>
+
+<p>Portanto, em todo caso, o algoritmo de Cohen trata de ordenar a pilha
+de panquecas queimadas em <i>2n</i> passos em todos os casos. Uma
+vitória sobre o algoritmo simplório para panquecas queimadas que
+precisa de <i>3n</i> passos.</p>
+
+<p><div class="tip" id="tip-1" alt="Não entendi direito.">
+Não se preocupe. Este exercício é muito difícil, então tudo bem se você não
+conseguir de primeira. Adicione alguns logs relevantes ao seu código para
+entender onde ele parou de funcionar corretamente. Certifique-se de usar o
+método <code>selecionado()</code> de forma que seus logs apenas apareçam no
+mundo que estiver sendo exibido no momento. Em particular, pode ajudar se
+você imprimir textualmente o estado do mundo cada vez que você adentrar no
+loop principal. 
+</div></p>

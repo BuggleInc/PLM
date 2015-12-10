@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class HasTeen extends BatExercise {
 
-	public HasTeen(Lesson lesson) {
-		super(lesson);
+	public HasTeen(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("hasTeen");
+		BatWorld myWorld = new BatWorld(game, "hasTeen");
 		myWorld.addTest(VISIBLE,  13,20,10);		
 		myWorld.addTest(VISIBLE,  20,19,10);
 		myWorld.addTest(VISIBLE,  20,10,13);
@@ -25,7 +26,7 @@ public class HasTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,22,22);
 
 
-		templatePython("hasTeen", 
+		templatePython("hasTeen", new String[] {"Int","Int","Int"},
 				"def hasTeen(a, b, c):\n",
 				"   return (a>12 and a<20) or (b>12 and b<20) or (c>12 and c<20)\n");
 		templateScala("hasTeen", new String[] {"Int","Int","Int"}, 

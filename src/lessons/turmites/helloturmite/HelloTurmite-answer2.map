@@ -1,6 +1,6 @@
 TurmiteWorld: stepped pyramid (4800 steps)
 Size: 65x65
-Buggle(13,38): east,red,white,ant
+Buggle(13,38): east,red,white,ant,noBaggle,
 Cell(3,54): black,nobaggle,notopwall,noleftwall,
 Cell(3,55): black,nobaggle,notopwall,noleftwall,
 Cell(4,52): black,nobaggle,notopwall,noleftwall,

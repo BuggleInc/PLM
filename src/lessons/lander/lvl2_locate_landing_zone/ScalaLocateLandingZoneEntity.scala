@@ -3,9 +3,7 @@ package lessons.lander.lvl2_locate_landing_zone;
 import java.util.Iterator;
 import scala.collection.JavaConversions._
 
-import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.Point;
-import lessons.lander.universe.Segment;
+import lessons.lander.universe._;
 
 class ScalaLocateLandingZoneEntity extends LanderEntity {
   /* BEGIN TEMPLATE */
@@ -27,13 +25,13 @@ class ScalaLocateLandingZoneEntity extends LanderEntity {
   var targetStart = 0.0;
   var targetEnd = 0.0;
 
-  override def initialize() {
+  override def initialize():Unit = {
     var landingZone = getLandingZone();
     targetStart = landingZone.start.x;
     targetEnd = landingZone.end.x;
   }
 
-  override def step() {
+  override def step():Unit = {
     if (getX() < targetStart) {
       setDesiredAngle(-30);
     } else if (getX() > targetEnd) {

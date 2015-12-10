@@ -1,0 +1,21 @@
+sudo: false
+language: scala
+scala:
+  - 2.10.5
+jdk:
+  - openjdk7
+env:
+  - TEST_SUITE=unit-tests
+  - TEST_SUITE=integration-tests
+script:
+  - ant $TEST_SUITE
+notifications:
+  recipients:
+    - martin.quinson@loria.fr
+    - gerald.oster@loria.fr
+    - matthieu.nicolas@loria.fr
+  email:
+    on_success: change
+    on_failure: always
+  template:
+    - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"

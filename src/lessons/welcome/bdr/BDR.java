@@ -2,6 +2,7 @@ package lessons.welcome.bdr;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -32,11 +33,12 @@ public class BDR extends ExerciseTemplated {
 	void left (int x, int y){  set(x, y, "L"); }
 	void back (int x, int y){  set(x, y, "I"); }
 
-	public BDR(Lesson lesson) {
-		super(lesson);
-		tabName = "BDRBuggle";			
+	public BDR(Game game, Lesson lesson) {
+		super(game, lesson);
+		tabName = "BDRBuggle";
+		setToolbox();
 
-		myWorld = new BuggleWorld("Dance Floor",7,7);
+		myWorld = new BuggleWorld(game, "Dance Floor",7,7);
 		/* first dancer, plus its steps */
 		new SimpleBuggle(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
 		plus1(0,6);

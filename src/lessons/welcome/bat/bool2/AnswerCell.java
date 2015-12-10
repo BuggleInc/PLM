@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AnswerCell extends BatExercise {
-	public AnswerCell(Lesson lesson) {
-		super(lesson);
+	public AnswerCell(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("answerCell");
+		BatWorld myWorld = new BatWorld(game, "answerCell");
 		myWorld.addTest(VISIBLE, false, false, false) ;
 		myWorld.addTest(VISIBLE, false, false, true) ;
 		myWorld.addTest(VISIBLE, true, false, false) ;
@@ -18,7 +19,7 @@ public class AnswerCell extends BatExercise {
 		myWorld.addTest(INVISIBLE, false, true, false) ;
 		myWorld.addTest(INVISIBLE, true, true, true) ;
 
-		templatePython("answerCell", 
+		templatePython("answerCell", new String[] {"Boolean","Boolean","Boolean"},
 				"def answerCell(isMorning, isMom, isAsleep):\n",
 				"   return (not isAsleep) and not (isMorning and not isMom)");
 		templateScala("answerCell",new String[] {"Boolean","Boolean","Boolean"}, 

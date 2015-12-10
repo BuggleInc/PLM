@@ -24,14 +24,13 @@
       [!python]a line beginning with ''' until the next line ending with '''.[/!]</li>
   </ul>
 
-<pre>
-methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>
+<pre><code class="code-container">methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>
 otherCall()[!java|c];[/!] [!java|scala|c]<span class="comment">/* This is</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>[/!]
 [!python]<span class="comment">''' This is</span>
 <span class="comment">also ignored  '''</span>[/!]
 yetAnotherCall()[!java|c];[/!]
-</pre>  
+</code></pre>  
   <p class="Java">There is a third kind of comments in Java, between /** and */, which are read by a
 specific program called JavaDoc to generate automatically the documentation
 explaining how to use the code. These comments must follow a very precise

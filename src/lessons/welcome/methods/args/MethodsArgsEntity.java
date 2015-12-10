@@ -1,17 +1,16 @@
 package lessons.welcome.methods.args;
 
-import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgsEntity extends SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException(Game.i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+		throw new RuntimeException(getGame().i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException(Game.i18n.tr("I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+		throw new RuntimeException(getGame().i18n.tr("I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
 

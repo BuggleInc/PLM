@@ -5,10 +5,10 @@ import plm.core.model.Game
 
 class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def forward(i: Int)  { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 	def isOverOrange():Boolean = {
 		return getGroundColor().equals(Color.orange);
@@ -16,14 +16,14 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BINDINGS TRANSLATION */
 	def estSurOrange():Boolean = { return isOverOrange(); }
 
-	/* BEGIN TEMPLATE */
 	override def run() {
+		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		var baggle:Int = 0;
 		var orange:Int = 0;
 		while (2 * baggle != orange + 1) {
 			//if (getName().equals("buggle2")) 
-			//	System.out.println("baggle: "+baggle+"; orange: "+orange+"; sum:"+(2*baggle-orange-1));
+			//	getGame().getLogger().log("baggle: "+baggle+"; orange: "+orange+"; sum:"+(2*baggle-orange-1));
 			forward();
 			if (isOverBaggle())
 				baggle += 1
@@ -31,6 +31,6 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 				orange += 1
 		}
 		/* END SOLUTION */
+		/* END TEMPLATE */
 	}
-	/* END TEMPLATE */
 }

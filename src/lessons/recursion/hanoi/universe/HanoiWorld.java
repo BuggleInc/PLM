@@ -1,20 +1,20 @@
 package lessons.recursion.hanoi.universe;
 
+import java.awt.Color;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
-/* BEGIN TEMPLATE */
-public class HanoiWorld extends World {	
+public class HanoiWorld extends World {
+	
+	private Vector<HanoiDisk> slots[];
+	public int moveCount = 0;
+	
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)
 	 * 
 	 * There is normally no need to change it, but it must be present. 
@@ -34,17 +34,16 @@ public class HanoiWorld extends World {
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C) {
-		super(name);
+	public HanoiWorld(Game game, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
+		super(game, name);
+		slots = new Vector[] {A, B, C};
+	}
+
+	@SuppressWarnings("unchecked")
+	public HanoiWorld(Game game, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
+		super(game, name);
 		setDelay(200); /* Delay (in ms) in default animations */
-		slots = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
-		
-		for (int i=0; i<A.length; i++) 
-			slots[0].add(A[i]);
-		for (int i=0; i<B.length; i++) 
-			slots[1].add(B[i]);
-		for (int i=0; i<C.length; i++) 
-			slots[2].add(C[i]);
+		slots = new Vector[] {A, B, C, D};		
 	}
 	
 	/** Reset the state of the current world to the one passed in argument
@@ -59,44 +58,30 @@ public class HanoiWorld extends World {
 	@Override
 	public void reset(World w) {
 		HanoiWorld other = (HanoiWorld)w;
-		slots = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
-		for (int slot=0;slot<3;slot++)
-			for (int i=0; i<other.slots[slot].size(); i++)
-				slots[slot].add( other.slots[slot].elementAt(i));
+		slots = new Vector[other.slots.length];
+		for (int slot=0;slot<other.slots.length;slot++) {
+			slots[slot] = new Vector<HanoiDisk>();
+			for (int i=0; i<other.slots[slot].size(); i++) {
+				HanoiDisk copy = other.slots[slot].elementAt(i).copy();
+				slots[slot].add(copy);
+			}
+		}
+		moveCount = other.moveCount;
 		super.reset(w);		
 	}
-
-	/* BEGIN HIDDEN */
-	/** Returns a component able of displaying the world -- will be used in third exercise 
-	 * You should comment this for the first exercises */
-	@Override
-	public WorldView getView() {
-		return new HanoiWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_hanoi.png");
-	}
-	/* END HIDDEN */
 	
-	/* BEGIN HIDDEN */
 	@Override
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("HanoiWorld "+getName()+": ");
-		sb.append("A: [");
-		for (Object i:slots[0].toArray()) 
-			sb.append(i+" ");
-		sb.append("] B: [");
-		for (Object i:slots[1].toArray()) 
-			sb.append(i+" ");
-		sb.append("] C: [");
-		for (Object i:slots[2].toArray()) 
+		for (int s=0;s<slots.length;s++) {
+		sb.append("slot "+s+" [");
+		for (Object i:slots[s].toArray()) 
 			sb.append(i+" ");
 		sb.append("]");
+		}
 		return sb.toString();
 	}
-	/* END HIDDEN */
 
 	/** Used to check whether the student code changed the world in the right state -- see exercise 4 */
 	@Override 
@@ -105,51 +90,92 @@ public class HanoiWorld extends World {
 		if (o == null || !(o instanceof HanoiWorld))
 			return false;
 		HanoiWorld other = (HanoiWorld) o;
-		for (int i=0;i<3;i++) {
+		if (this.moveCount != other.moveCount)
+			return false;
+		if (this.slots.length != other.slots.length)
+			return false;
+		for (int i=0;i<slots.length;i++) {
 			if (!(this.slots[i].equals(other.slots[i])))
 				return false;
 		}
 		/* END HIDDEN */
-		return true;
+		return getName().equals(other.getName());
 	}
 	
 	@Override
-	public String diffTo(World world) {
-		return null; // FIXME: how to represent this textually?
+	public String diffTo(World o) {
+		StringBuffer res = new StringBuffer();
+		if (o == null || !(o instanceof HanoiWorld))
+			return "This is not a world of Hanoi";
+
+		HanoiWorld other = (HanoiWorld) o;
+		if (slots.length != other.slots.length)
+			return "The worlds don't have the same amount of pegs";
+
+		if (other.moveCount != moveCount)
+			res.append(getGame().i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+
+		for (int slot=0; slot<slots.length; slot++)
+			for ( int pos = 0;pos< Math.max(slots[slot].size(),other.slots[slot].size()) ; pos++) {
+				String thisVal = pos >=  this.slots[slot].size()?"--": this.slots[slot].get(pos).toString();
+				String otherVal= pos >= other.slots[slot].size()?"--":other.slots[slot].get(pos).toString();
+				if (!thisVal.equals(otherVal)) {
+					res.append(getGame().i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisVal,otherVal));
+				}
+			}
+		return res.toString();
 	}
 	
 	/* Here comes the world logic */
-	/* BEGIN HIDDEN */
-	private Vector<Integer> slots[];
-	
-	/** This function is used by the view to retrieve the data to display */
-	protected Integer[] values(Integer	 i) {
-		return slots[i].toArray(new Integer[slots[i].size()]);
-	}
 	
 	/** This is the main function of the public interface 
 	 * @throws IllegalArgumentException if your move is not valid */
 	public void move(Integer src, Integer dst) {
-		if (src < 0 || src > 2 || dst < 0 || dst > 2) 
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are 0, 1 and 2",src,dst));
+		if (src < 0 || src >= slots.length || dst < 0 || dst >= slots.length) 
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotAmount()-1));
 		if (src == dst)
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to itself",src));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from slot {0} to itself",src));
 		if (slots[src].size() == 0)
-			throw new IllegalArgumentException(Game.i18n.tr("No disc to move from slot {0}",src));
+			throw new IllegalArgumentException(getGame().i18n.tr("No disc to move from slot {0}",src));
 		
 		if (slots[dst].size() > 0 &&
-				slots[src].lastElement() > slots[dst].lastElement())
+				slots[src].lastElement().getSize() > slots[dst].lastElement().getSize())
 			throw new IllegalArgumentException(
-					Game.i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
-							src,dst,slots[src].lastElement(),slots[dst].lastElement()));
+					getGame().i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
+							src,dst,slots[src].lastElement().getSize(),slots[dst].lastElement().getSize()));
 		
-		slots[dst].add( slots[src].remove(slots[src].size()-1) );
+		moveCount  ++;
+		slots[dst].add(slots[src].remove(slots[src].size()-1));
+	}
+	public int getSlotAmount() {
+		return slots.length;
 	}
 	public int getSlotSize(int slot) {
 		return slots[slot].size();
 	}
 	public int getRadius(int slot) {
-		return slots[slot].isEmpty()?99:slots[slot].lastElement();
+		return slots[slot].isEmpty()?99:slots[slot].lastElement().getSize();
+	}
+	
+	public Vector<HanoiDisk>[] getSlot()
+	{
+		return slots;
+	}
+	
+	public int getMoveCount()
+	{
+		return this.moveCount;
+	}
+	
+	public Color getColor(int slot, int pos) {
+		if (slot >= getSlotAmount() || slot < 0)
+			throw new RuntimeException("Invalid slot: "+slot);
+		if (pos>= slots[slot].size())
+			throw new RuntimeException("Slot "+slot+" is only "+slots[slot].size()+" high; cannot take position "+pos);
+		return slots[slot].get(pos).getColor();		
+	}
+	public void setColor(int slot, int pos, Color c) {
+		slots[slot].get(pos).setColor(c);
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
@@ -158,27 +184,28 @@ public class HanoiWorld extends World {
 					"  entity.move(src,dst)\n"+
 					"def getSlotSize(slot):\n"+
 					"  return entity.getSlotSize(slot)\n"+
-					"def getRadius(slot):\n"+
-					"  return entity.getRadius(slot)\n"+
+					"def getSlotAmount():\n"+
+					"  return entity.getSlotAmount()\n"+
+					"def getSlotRadius(slot):\n"+
+					"  return entity.getSlotRadius(slot)\n"+
+					
+					"def errorMsg(str):\n"+/* don't translate this one, there is no need*/
+					"  entity.seenError(str)\n"+
+
 					/* BINDINGS TRANSLATION: French */
 					"def deplace(src,dst):\n"+
 					"  entity.move(src,dst)\n"+
 					"def getTaillePiquet(slot):\n"+
 					"  return entity.getSlotSize(slot)\n"+
-			        "def getRayon(piquet):\n"+
-			        "  return entity.getRadius(piquet)\n");
+					"def getNbPiquet():\n"+
+					"  return entity.getSlotAmount()\n"+
+			        "def getRayonPiquet(piquet):\n"+
+			        "  return entity.getSlotRadius(piquet)\n");
 		} else {
 			throw new RuntimeException("No binding of HanoiWorld for "+lang);
 		}
 	}
 	
-	/**
-	 * Return the panel which let the user to interact dynamically with the world
-	 */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new HanoiMovePanel();
-	}
 	/* END HIDDEN */
 
 }

@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class NearHundred extends BatExercise {
 
-	public NearHundred(Lesson lesson) {
-		super(lesson);
+	public NearHundred(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("nearHundred");
+		BatWorld myWorld = new BatWorld(game, "nearHundred");
 		myWorld.addTest(VISIBLE, 93);
 		myWorld.addTest(VISIBLE, 90);
 		myWorld.addTest(VISIBLE, 89);
@@ -23,10 +24,10 @@ public class NearHundred extends BatExercise {
 		myWorld.addTest(INVISIBLE, 211);
 		myWorld.addTest(INVISIBLE, -100);
 
-		templatePython("nearHundred", 
+		templatePython("nearHundred", new String[]{"Int"},
 				"def nearHundred(n):\n",
 				"   return (90<=n and n<=110) or (190<=n and n<=210)\n");
-		templateScala("nearHundred",new String[]{"Int"},
+		templateScala("nearHundred", new String[]{"Int"},
 				"def nearHundred(n:Int): Boolean = {\n",
 				"  return (90<=n && n<=110)||(190<=n&&n<=210);\n"
 			  + "}");

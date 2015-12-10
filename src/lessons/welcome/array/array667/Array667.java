@@ -1,14 +1,15 @@
 package lessons.welcome.array.array667;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Array667 extends BatExercise {
-	public Array667(Lesson lesson) {
-		super(lesson);
+	public Array667(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("array667");
+		BatWorld myWorld = new BatWorld(game, "array667");
 		myWorld.addTest(VISIBLE, (Object)new int[] {6, 6, 2}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {6, 6, 2, 6}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {6, 7, 2, 6}) ;
@@ -23,7 +24,7 @@ public class Array667 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 5, 6}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 6, 6}) ;
 
-		templatePython("array667", 
+		templatePython("array667", new String[] {"Array[Int]"},
 				"def array667(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-1):\n"+

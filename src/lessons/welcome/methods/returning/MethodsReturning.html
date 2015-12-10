@@ -1,13 +1,14 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
-<h2>Methods returning a result</h2>
+<h2>Functions</h2>
 
-<p>Writing a method returning a result is not really more work than writing a
-method without any result. 
-[!java|c]You simply have to specify the data type of expected results before the method name (where we previously had <code>void</code>).[/!]
-[!scala]You simply have to add a colon (:) after the parenthesis and write the type of data that your method will return, and add an equal sign (=). This syntax is actually rather
+<p>Quite often, you want to write a method that compute some value and
+returns it. Methods returning results are called <b>functions</b>. 
+Writing a function is not really harder than writing a simple method.
+[!java|c]You simply have to specify the data type of expected results before the function name (where we previously had <code>void</code>).[/!]
+[!scala]You simply have to add a colon (:) after the parenthesis and write the type of data that your function will return, and add an equal sign (=). This syntax is actually rather
 close to defining a variable, with its type, that is actually a function.[/!]
-You can use the <code>return</code> instruction anywhere in your method body to 
-specify that the computation is done (the method is not further executed), and that 
+You can use the <code>return</code> instruction anywhere in your function body to 
+specify that the computation is done (the function is not further executed), and that 
 the result is the value following the <code>return</code> keyword.</p>
 
 <pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
@@ -21,10 +22,10 @@ value to return in that case.</p>
 branches of a conditional. In fact, it is forbidden to have any execution path of
 your body without any <code>return</code>, or to write some code after the
 <code>return</code> instruction. Indeed, if the machine reaches the end of the 
-method without finding any <code>return</code>, it cannot know what actual 
-value to give back to the method caller. 
-Moreover, <code>return</code> interrupts immediately the method execution 
-(why bother looking further when you know the method result?). So, if there is 
+function without finding any <code>return</code>, it cannot know what actual 
+value to give back to the function caller. 
+Moreover, <code>return</code> interrupts immediately the function execution 
+(why bother looking further when you know the function result?). So, if there is 
 some code after a <code>return</code>, it must be an error and the compiler 
 warns you.</p>
 
@@ -46,14 +47,14 @@ warns you.</p>
         <span class="comment"># here neither</span>
 <span class="comment"># even here, forget it</span>[/!]</pre>
 
-<h3>Exercise goal</h3>You will once again write a method that the buggle will use. Its name must
+<h3>Exercise goal</h3>You will once again write a function that the buggle will use. Its name must
 be <code>haveBaggle</code>, and it returns a boolean value indicating
 whether the row in front of the buggle contains a baggle or not. The buggle
 will use it to search the first row containing a baggle, and stop here.
 
-<p>The easier for this method is to use a boolean variable called
-<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It
-initial value is 'false'.</p>
+<p>The easier for this function is to use a boolean variable called
+<code>seenBaggle</code> indicating whether or not we saw a baggle so far. Its
+initial value is '[!python]False[/!][!scala|java]false[/!][!c]0[/!]'.</p>
 
 <p>Then, move 6 steps forward (the world contains 7 cells and we already are
 on one of them). For each cell, if it contains a baggle, we store true in
@@ -68,5 +69,5 @@ with a specific objective. Your code must work for each of them. Observe
 that the world selection scrolling menu (right below the speed slider)
 allows to switch the observed world. </p>
 
-<p>When your method <code>haveBaggle</code> works, proceed to next exercise.</p>
+<p>When your function <code>haveBaggle</code> works, proceed to next exercise.</p>
 

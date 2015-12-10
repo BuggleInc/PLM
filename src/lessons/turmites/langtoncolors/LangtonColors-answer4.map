@@ -1,6 +1,6 @@
 TurmiteWorld: RRLLLRLLLRRR (30001 steps)
 Size: 80x90
-Buggle(37,88): east,red,cyan,ant
+Buggle(37,88): east,red,cyan,ant,noBaggle,
 Cell(3,85): black,nobaggle,notopwall,noleftwall,
 Cell(3,86): black,nobaggle,notopwall,noleftwall,
 Cell(3,87): blue,nobaggle,notopwall,noleftwall,

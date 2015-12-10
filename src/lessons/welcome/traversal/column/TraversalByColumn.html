@@ -25,12 +25,14 @@ of the world. For this, you can use <code>getWorldWidth()</code> and
 and height. Your test is about comparing the buggle's current position (that
 you can access with <code>getX()</code> and <code>getY()</code>) to the
 world dimensions.<br/>
-Beware, the first line and column are numbered 0 and not 1...</p>  
+Beware, the first line and column are numbered 0 and not 1, and the point (0,0) 
+is on the top left corner. This may seem surprising, but it is very often so in 
+Computer Science.</p>  
 
 <p>Then, you have to write the code to reach the next position. In this
 exercise, you have to traverse the world row after row. So, if you are at
-the bottom of a row, you have to move to the top of next row, and you have
-to move to the cell below else.</p>
+the bottom of a row, you have to move to the top of next row. Else, you have
+to move to the cell below.</p>
 
 <p>At this point, you can launch your program to check that the buggle
 correctly traverse the world in the expected order, and that it stops when

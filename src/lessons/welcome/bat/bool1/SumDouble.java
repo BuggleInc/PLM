@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class SumDouble extends BatExercise {
 
-	public SumDouble(Lesson lesson) {
-		super(lesson);
+	public SumDouble(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("sumDouble");
+		BatWorld myWorld = new BatWorld(game, "sumDouble");
 		myWorld.addTest(VISIBLE,  1,2);
 		myWorld.addTest(VISIBLE,  3,2);
 		myWorld.addTest(VISIBLE,  2,2);
@@ -19,7 +20,7 @@ public class SumDouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,0);
 		myWorld.addTest(INVISIBLE, 0,1);
 
-		templatePython("sumDouble", 
+		templatePython("sumDouble", new String[]{"Integer","Integer"},
 				"def sumDouble(a, b):\n",
 				"  if a==b:\n"+
 				"    return (a+b)*2\n"+

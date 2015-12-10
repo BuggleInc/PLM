@@ -3,13 +3,8 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.swing.JScrollPane;
-
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.ui.JavaEditorPanel;
-
 
 public class SourceFile {
 
@@ -18,13 +13,17 @@ public class SourceFile {
 	private String body;
 	private int offset;
 	private String correction;
+	private String error;
 	private ISourceFileListener listener = null;
+	private Game game;
 
-	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn) {
+	public SourceFile(Game game, String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
+		this.game = game;
 		this.name = name;
 		this.body = initialBody;
 		this.offset = _offset;
 		this.correction = _correctionCtn;
+		this.error = _errorCtn;
 		setTemplate( template );
 	}
 
@@ -37,7 +36,7 @@ public class SourceFile {
 	}
 
 	public void setBody(String text) { 
-		if (Game.getProgrammingLanguage().equals(Game.PYTHON))
+		if (getGame().getProgrammingLanguage().equals(Game.PYTHON))
 			body = text.replaceAll("\\t", "    ");
 		else
 			body = text;
@@ -54,6 +53,12 @@ public class SourceFile {
 	}
 	public String getCorrection() {
 		return this.correction;
+	}
+	public void setError(String e) {
+		this.error = e;
+	}
+	public String getError() {
+		return this.error;
 	}
 
 	public String getCompilableContent(StudentOrCorrection whatToRetrieve) {
@@ -73,6 +78,8 @@ public class SourceFile {
 
 		if (whatToRetrieve == StudentOrCorrection.CORRECTION) {
 			res = correction;
+		} else if(whatToRetrieve == StudentOrCorrection.ERROR) {
+			res = error;
 		} else if (template != null) {
 			res = template.replaceAll("\\$body", this.body+" \n");;			
 		} else {
@@ -83,14 +90,14 @@ public class SourceFile {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
 				if (pattern.getValue().contains("\n")) { 
-					System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
+					getGame().getLogger().log("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
 							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
-					System.out.println("pattern key: "+pattern.getKey());
-					System.out.println("pattern value: "+pattern.getValue());
-					System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
-					System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
-					System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
-					System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+					getGame().getLogger().log("pattern key: "+pattern.getKey());
+					getGame().getLogger().log("pattern value: "+pattern.getValue());
+					getGame().getLogger().log("Exercise: "+game.getCurrentLesson().getCurrentExercise().getName());
+					getGame().getLogger().log("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
+					getGame().getLogger().log("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
+					getGame().getLogger().log("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 				}
 			}
 		return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
@@ -134,11 +141,11 @@ public class SourceFile {
 		return true;
 	}
 
-	public JScrollPane getEditorPanel(ProgrammingLanguage lang) {
-		return new JavaEditorPanel(this, lang);
-	}
-
 	public int getOffset() {
 		return offset;
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

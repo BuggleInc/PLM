@@ -1,14 +1,15 @@
 package lessons.welcome.array.arrayfront9;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ArrayFront9 extends BatExercise {
-	public ArrayFront9(Lesson lesson) {
-		super(lesson);
+	public ArrayFront9(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("arrayFront9");
+		BatWorld myWorld = new BatWorld(game, "arrayFront9");
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 2, 9, 3, 4}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 2, 3, 4, 9}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 2, 3, 4, 5}) ;
@@ -22,7 +23,7 @@ public class ArrayFront9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {3, 9, 2, 3, 3}) ;
 
-		templatePython("arrayFront9", 
+		templatePython("arrayFront9", new String[]{"Array[Int]"},
 				"def arrayFront9(nums):\n",
 				"  for i in range( min( len(nums), 4) ):\n" +
 				"    if nums[i] == 9:\n" +

@@ -1,0 +1,110 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Ondenação de Panqueca Rápida</h1>
+
+<p>Ao contrário de outros problemas de ordenação, a operação cara não é a
+comparação de valores, mas virar as panquecas. Neste exercício, vamos
+explorar outro algoritmo que tenta reduzir a quantidade de viradas da
+pilha. O engraçado é que este algoritmo mostrado primeiro por Bill Gates,
+antes de inventar o Windows.</p>
+
+<p>A ideia básica é aumentar as sequências de panquecas ordenadas, não
+necessariamente começando do fundo. Dizemos que uma sequência de panquecas
+ordenadas constitui um <b>bloco</b> enquanto uma panqueca que não é parte de
+um bloco é dita <b>livre</b>. O algoritmo então considera o panqueca mais de
+cima (de raio <code>t</code>) e busca pelas panquecas <code>t+1</code> ou
+<code>t-1</code> (a vizinhança considerada é <code>t+o</code>). Oito casos
+podem acontecer:</p>
+
+<ul>
+<li><b>Caso a</b>: tanto <code>t</code> quanto <code>t+o</code> são livres. elas
+são então juntadas em uma virada.<br/>
+<div align="center"><img src="img/gates-a.png"/></div>
+</li></ul>
+
+<ul><li><b>Caso b</b>: <code>t</code> é livre, e <code>t+o</code> é o primeiro de um
+bloco. Eles são juntados em uma virada.<br/>
+<div align="center"><img src="img/gates-b.png"/></div>
+</li></ul>
+
+<ul>
+<li><b>Caso c</b>: <code>t</code> é livre mas tanto <code>t-1</code> quanto
+<code>t+1</code> são últimos elementos de blocos. Os blocos e <code>t</code>
+são mesclados juntos em 4 viradas. Cuidado, se <code>t-1</code> ou
+<code>t+1</code> não existir (pois <code>t</code> é 0 ou max), apenas duas
+viradas são obrigatórias.
+<br/>
+<div align="center"><img src="img/gates-c.png"/></div>
+</li></ul>
+
+<ul>
+<li><b>Caso d</b>: <code>t</code> está num bloco mas <code>t+o</code> é
+livre. Eles são mesclados em uma virada.<br/>
+<div align="center"><img src="img/gates-d.png"/></div>
+</li></ul>
+
+<ul>
+<li><b>Caso e</b>: <code>t</code> está num bloco e <code>t+o</code> é o primeiro
+elemento de um bloco. Eles são mesclados em uma virada.<br/>
+<div align="center"><img src="img/gates-e.png"/></div>
+</li></ul>
+
+<ul><li><b>Caso f</b>: <code>t</code> está em um bloco e <code>t+o</code> é o último
+elemento de outro bloco. Eles são mesclados em 3 viradas como segue.<br/>
+<div align="center"><img src="img/gates-f.png"/></div></li></ul>
+
+<ul><li><b>Caso g</b>: <code>t</code> está em um bloco de comprimento k+1 (o último
+elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é tanto livre ou o
+último elemento é outro bloco. Ambos os blocos são mesclados em 2 viradas:<br/>
+<div align="center"><img src="img/gates-g.png"/></div><br/></li></ul>
+
+<ul><li><b>Caso h</b>: <code>t</code> está num bloco de comprimento k+1 (o último
+elemento é <code>t+ko</code>), <code>t+(k+1)o</code> é o primeiro elemento
+de outro bloco (a diferença com o caso g é que <code>t+(k+1)o</code> é agora
+o <i>primeiro</i> elemento de seu bloco). Ambos os blocos são mesclados em 2
+viradas:<br/>
+<div align="center"><img src="img/gates-h.png"/></div>
+</li></ul>
+
+<ul><li><b>Caso i</b>: <code>t</code> está num bloco de comprimento <code>n</code>
+(este bloco contém todas as panquecas). Se <code>t</code> não for 1, a pilha
+toda destá virada. O algoritmo então pára.</li></ul>    
+
+<p>Cada iteração aumenta o tamanho dos blocos, então o algoritmo eventualmente
+pára em todos os casos. Uma análise mais aprofundada mostrará que leva no
+máximo <code>(5n+5)/3</code> passos para ordenar a pilha. O que é melhor que
+o algoritmo simplório, que precisa de 2n-3 passos.</p>
+
+<h2>Sua vez</h2>
+<p>Você agora tem quase toda a informação necessária para implementar este
+algoritmo por si só. Temos apenas que remover as últimas ambiquidades para
+garantir que você implemente exatamente o mesmo algoritmo que a correção. Se
+vários casos se aplicam a sua situação, então você deve usar o primeiro que
+foi dado. Por exemplo, se tanto o caso a quanto o caso b se  se aplicam
+(e.g., com <code>t-1</code> no <b>a</b> e <code>t+1</code> no caso
+<b>b</b>), então você deve aplicar as viradas do caso <b>a</b>. Se um dado
+caso se aplica tanto para <code>t+1</code> quanto para <code>t-1</code>,
+então você deve aplicá-lo a <code>t+1</code>.</p>
+
+<p>Observe que este é de certa forma mais difícil que os outros exercícios que
+fizemos até agora, logo não se surpreenda se você precisar de mais tempo
+para terminar. Mas não desista, você pode conseguir!</p>
+
+<p><div class="tip" id="tip-1" alt="Bem, eu preciso de alguma ajuda para começar.">
+Primeiro escreva algumas funções auxiliares tais como <code>isFirst()</code>
+ou <code>isFree()</code>. Isto vai simplificar seu algoritmo principal, que
+vai poder ser escrito de forma muito similar à explicação acima com um
+conjunto de condições if. Fatorizar o código desta forma às vezes ajuda a
+tornar seu código mais legível.
+</div></p>
+
+<p><div class="tip" id="tip-2" alt="Meu código continua falhando e eu não sei como depurar ele.">
+Para depurar um mundo depois do outro e evitar que as mensagens de todos os
+mundos fiquem misturadas, você pode escrever sua função de depuração apenas
+se o método <code>selecionado()</code> retorna verdadeiro. Isto acontecerá
+apenas para a entidade que estiver selecionada na interface gráfica, que é
+provavelmente o mundo que você está depurando no momento. Isto vai ajudar
+dividindo a dificuldade em partes e depurando a situção uma após a outra.<br/>
+Em particular, escrever textualmente o estado do mundo cada vez que você
+entrar no loop principal pode ajudar. 
+</div></p>

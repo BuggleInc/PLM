@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class TeaParty extends BatExercise {
-	public TeaParty(Lesson lesson) {
-		super(lesson);
+	public TeaParty(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("teaParty");
+		BatWorld myWorld = new BatWorld(game, "teaParty");
 		myWorld.addTest(VISIBLE, 6, 8) ;
 		myWorld.addTest(VISIBLE, 3, 8) ;
 		myWorld.addTest(VISIBLE, 20, 6) ;
@@ -25,7 +26,7 @@ public class TeaParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 4) ;
 		myWorld.addTest(INVISIBLE, 10, 20) ;
 
-		templatePython("teaParty", 
+		templatePython("teaParty", new String[]{"Int","Int"},
 				"def teaParty(tea, candy):\n",
 				"	if (tea < 5 or candy < 5):\n"+
 				"		return 0\n"+

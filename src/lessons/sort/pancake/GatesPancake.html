@@ -7,8 +7,8 @@ attempt to reduce the amount of stack flipping. The funny side is that this algo
 introduced by Bill Gates, before invented Windows.</p>
 
 <p>The basic idea is to grow sequences of sorted pancakes, not necessarily starting from the bottom. 
-We say that a sequence of ordered pancakes constitute a <b>bloc</b> while a pancake that is not part
-of a bloc is said to be <b>free</b>. The algorithm then considers the topmost pancake (of radius 
+We say that a sequence of ordered pancakes constitute a <b>block</b> while a pancake that is not part
+of a block is said to be <b>free</b>. The algorithm then considers the topmost pancake (of radius 
 <code>t</code>) and search for the <code>t+1</code> or <code>t-1</code> pancakes (the considered 
 neighbor is noted <code>t+o</code>). Eight cases may happen:</p>
 
@@ -23,7 +23,7 @@ neighbor is noted <code>t+o</code>). Eight cases may happen:</p>
 
 <ul>
 <li><b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t+1</code> are the last elements of blocks. 
-Both blocs and <code>t</code> are merged all together in 4 flips. 
+Both blocks and <code>t</code> are merged all together in 4 flips. 
 Beware, if either <code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> is 0 or max), only two flips are mandated.
 <br/>
 <div align="center"><img src="img/gates-c.png"/></div>
@@ -66,7 +66,7 @@ on case <b>b</b>), then you should apply the flips of case <b>a</b>. If a given 
 then you should apply it to <code>t+1</code>.</p>
 
 <p>Note that it is somehow harder than the other exercises we did so far, so don't be surprised if you need more time to achieve this. 
-But do not give hope, you can do it!</p>
+But do not give up hope, you can do it!</p>
 
 <p><div class="tip" id="tip-1" alt="Well, I need some help to start.">
 First write some helper functions such as <code>isFirst()</code> or

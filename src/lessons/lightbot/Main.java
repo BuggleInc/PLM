@@ -1,22 +1,27 @@
 package lessons.lightbot;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
+	public Main(Game game) {
+		super(game);
+	}
+
 	@Override
 	protected void loadExercises() {
-		addExercise(new Board01TwoSteps(this));
-		addExercise(new Board02Turn(this));
-		addExercise(new Board03Jump(this));
-		addExercise(new Board04Stairs(this));
-		addExercise(new Board05Higher(this));
-		addExercise(new Board06Func(this));
-		addExercise(new Board07Repeat(this));
-		addExercise(new Board08Rec(this));
-		addExercise(new Board09Castle(this));
-		addExercise(new Board10Wall(this));
-		addExercise(new Board11Sea(this));
-		addExercise(new Board12Escher(this));
+		addExercise(new Board01TwoSteps(getGame(), this));
+		addExercise(new Board02Turn(getGame(), this));
+		addExercise(new Board03Jump(getGame(), this));
+		addExercise(new Board04Stairs(getGame(), this));
+		addExercise(new Board05Higher(getGame(), this));
+		addExercise(new Board06Func(getGame(), this));
+		addExercise(new Board07Repeat(getGame(), this));
+		addExercise(new Board08Rec(getGame(), this));
+		addExercise(new Board09Castle(getGame(), this));
+		addExercise(new Board10Wall(getGame(), this));
+		addExercise(new Board11Sea(getGame(), this));
+		addExercise(new Board12Escher(getGame(), this));
 	}
 }
 /* L6: not enough space? try creating functions 

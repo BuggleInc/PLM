@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AlarmClock extends BatExercise {
-	public AlarmClock(Lesson lesson) {
-		super(lesson);
+	public AlarmClock(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("alarmClock");
+		BatWorld myWorld = new BatWorld(game, "alarmClock");
 		myWorld.addTest(VISIBLE, 1, false) ;
 		myWorld.addTest(VISIBLE, 5, false) ;
 		myWorld.addTest(VISIBLE, 0, false) ;
@@ -21,7 +22,7 @@ public class AlarmClock extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3, true) ;
 		myWorld.addTest(INVISIBLE, 5, true) ;
 
-		templatePython("alarmClock", 
+		templatePython("alarmClock", new String[]{"int","bool"},
 				"def alarmClock(day, vacation):\n",
 				"	if not vacation:\n"+
 				"		if (day >= 1 and day <= 5):\n"+

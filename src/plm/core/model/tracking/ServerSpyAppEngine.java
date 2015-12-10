@@ -19,8 +19,8 @@ public class ServerSpyAppEngine extends ServerSpy {
 
     private URL server;
 
-    public ServerSpyAppEngine() {
-        super();
+    public ServerSpyAppEngine(Game game) {
+        super(game);
 
         try {
             server = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/student");
@@ -50,10 +50,29 @@ public class ServerSpyAppEngine extends ServerSpy {
             br.close();
 
         } catch (IOException e) {
-            System.out.println("Unable to contact PLMServer to send request " + request);
+        	getGame().getLogger().log("Unable to contact PLMServer to send request " + request);
         }
 
         return response;
     }
+
+	@Override
+	public void callForHelp(String studentInput) {
+		//TODO
+	}
+
+	@Override
+	public void cancelCallForHelp() {
+		//TODO
+	}
+
+	@Override
+	public void idle(String start, String end, String duration) {}
+	
+	@Override
+	public void readTip(String id, String mission) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

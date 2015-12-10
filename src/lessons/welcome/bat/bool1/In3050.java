@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class In3050 extends BatExercise {
 
-	public In3050(Lesson lesson) {
-		super(lesson);
+	public In3050(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("in3050");
+		BatWorld myWorld = new BatWorld(game, "in3050");
 		myWorld.addTest(VISIBLE,  30,31);
 		myWorld.addTest(VISIBLE,  30,41);
 		myWorld.addTest(VISIBLE,  40,50);
@@ -26,7 +27,7 @@ public class In3050 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 35,45);
 
 
-		templatePython("in3050", 
+		templatePython("in3050", new String[] {"Int","Int"},
 				"def in3050(a, b):\n",
 				"   return (a>29 and a<41 and b>29 and b<41) or (a>39 and a<51 and b>39 and b<51)\n");
 		templateScala("in3050", new String[] {"Int","Int"},

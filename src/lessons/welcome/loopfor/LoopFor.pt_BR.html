@@ -12,42 +12,48 @@ igual a <code>quantidadeDePassos</code>.</p>
 
 <p>Em tais situações, loops <code>for</code> se tornam úteis. Suas sintaxes são
 as seguintes:</p> 
-<pre>[!java|c]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
-    <b>action</b>();
-}[/!][!python]for <b>variable</b> in <b>sequence of values</b>:
-    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>firstValue</b> to <b>lastValue</b>) { 
-    <b>action</b>();
+<pre>[!java|c]for (<b>inicialização</b>; <b>condição</b>; <b>incremento</b>) {
+    <b>ação</b>();
+}[/!][!python]for <b>variável</b> in <b>sequência-de-valores</b>:
+    <b>ação</b>()[/!][!scala] for (<b>variável</b> &lt;- <b>primeiroValor</b> to <b>últimoValor</b>) { 
+    <b>ação</b>();
 }[/!]</pre>
 
-<p>For example to repeat the loop body <code>n</code> times, [!python] it is
-handy to use the instruction <code>range(n)</code> to generate the sequence
-n integer value from 0 to n-1.[/!] [!java|scala|c] one should write:[/!]</p>
-<pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
-    <b>action</b>();
-}[/!][!c]int stepper;
-for (stepper=0; stepper&lt;n; stepper++) {
-    <b>action</b>();
-}[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
-    <b>action</b>()[/!][!scala] for (<b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
-    <b>action</b>();
+<p>Por exemplo, para repetir o corpo do loop <code>n</code> vezes, [!python] é
+útil usar a instrução <code>range(n)</code> para gerar a sequência de n
+valores inteiros de 0 a n-1.[/!] [!java|scala|c] você deve escrever:[/!]</p>
+<pre>[!java]for (int iterador=0; iterador&lt;n; iterador++) {
+    <b>ação</b>();
+}[/!][!c]int iterador;
+for (iterador=0; iterador&lt;n; iterador++) {
+    <b>ação</b>();
+}[/!][!python]for <b>iterador</b> in <b>range(n)</b>:
+    <b>ação</b>()[/!][!scala] for (<b>iterador</b> &lt;- <b>1</b> to <b>n</b>) { 
+    <b>ação</b>();
 }[/!]</pre>
 
-<p>Este código é então complemtamente equivalente ao seguinte.</p>
-<pre>[!java|c]int stepper = 0;
-while (stepper &lt; n) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
-&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
-}[/!][!python]stepper=0
-while stepper &lt; n: 
-    action()
-    stepper = stepper + 1[/!][!scala]
-var stepper = 1
-while (stepper &lt;= n) {
-    <b>action</b>()
-    stepper = stepper + 1
+<p>Este código é então equivalente ao seguinte do ponto de vista do
+computador. Do ponto de vista do programador, uma forma ou outra pode ser
+mais difícil ou mais fácil de ler, dependendo da situação. Você deve
+escolher sabiamente em qual situação usar um loop for ou um loop while. Seu
+objetivo principal deve ser manter seu código simples e fácil de ler, para
+garantir que seu dia seja agradável e produtivo.
+</p>
+<pre>[!java|c]int iterador = 0;
+while (iterador &lt; n) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>ação</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iterador++</b>;
+}[/!][!python]iterador=0
+while iterador &lt; n: 
+    ação()
+    iterador = iterador + 1[/!][!scala]
+var iterador = 1
+while (iterador &lt;= n) {
+    <b>ação</b>()
+    iterador = iterador + 1
 }[/!]</pre>
 
-<p>O loop <code>for</code> é fácil de ler, não acha?</p>
+<p>Neste caso, o loop <code>for</code> é fácil de ler, não acha?</p>
 
 [!java|c]
 <p>É possível construir loops <tt>for</tt> mais avançados já que qualquer

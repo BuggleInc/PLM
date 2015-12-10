@@ -84,15 +84,14 @@ lista[/!], per esempio per inizializzare ogni cella:</p>
    [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]
 [!java|scala]}[/!]</pre>
 
-<p>[!java|scala]La notazione <code>T.length</code> recupera la lunghezza del
-vettore T,[/!] [!python]La funzione <code>len()</code> recupera la lunghezza
-della lista T,[/!] permettendo di costruire facilmente un classico ciclo
-for. [!python]La funzione <code>len()</code> è molto generica e permettere
-di recuperare la lunghezza di molti oggetti diversi. Applicandola per
-esempio a delle stringe essa ritorna il numero di caratteri di cui è
-composta.[/!] [!scala]Non dimenticatevi di iniziare a <code>0</code> e
-fermarvi a <code>T.length-1</code> invece che da <code>1 a
-T.length</code>.[/!]</p>
+<p>[!java|scala]The notation <code>T.length</code> retrieves the length of the
+array T,[/!] [!python]The function <code>len()</code> retrieves the length
+of the list T,[/!] allowing to build a classical for loop easily.
+[!python]Actually, the <code>len()</code> function is much more generic and
+can be used to retrieve the length of many objects.  Applied to strings for
+example, it returns the amount of chars in this string.[/!] [!scala]Don't
+forget to start at <code>0</code> and stop at <code>T.length-1</code>
+instead of <code>1</code> to <code>T.length</code> however.[/!]</p>
 
 <p>Se volete iterare solo sui valori di T senza tenere traccia dell'indice,
 potete semplicemente scrivere:</p>
@@ -132,8 +131,8 @@ L2.append(7)
 L2.append(9) 
 <span class="comment"># adesso il suo contenuto è lo stesso di L</span></pre> 
 [/!] [!java|scala]
-<p>Per dichiarare una variabile chiamata <b>T</b> contenente un vettore di
-interi dovete scrivere:</p>
+<p>To declare a variable named <b>T</b> that can store an array of integers,
+one should write:</p>
 <pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
 
 <p>[!java]<code>int</code> significa che gli elementi del vettore sono di tipo
@@ -168,17 +167,16 @@ in memoria viene creato un vettore di 10 celle di interi e la variabile
 creazione. Potremo conoscere la dimensione di <code>T</code> consultando la
 variabile <code>T.length</code>.</p>
 
-<p>Durante l'allocazione potete specificare la dimensione del vettore
-attraverso una variabile: <code>[!java]int[] T = new int[i];[/!][!scala]var
-T = new Array[Int](i);[/!]</code>, la dimensione del vettore sarà fissata al
-valore di <code>i</code> <i>mentre <code>new</code> viene
-invocato</i>. Nonostante ciò la dimensione dell'array non potrà essere
-cambiata: anche se la variabile <code>i</code> assumerà successivamente un
-altro valore, la dimensione del vettore rimarrà la stessa conferitagli
-durante l'allocazione. [!java]Inoltre è vietato scrivere qualcosa come
-<code>int T[10];</code> mentre si sta dichiarando la variabile. È richiesto
-l'utilizzo dell'istruzione <code>new</code> per allocare la variabile come
-in <code>int[] T = new int[10];</code> [/!]</p>
+<p>While allocating, you can specify the size with a variable:
+<code>[!java]int[] T = new int[i];[/!][!scala]var T = new
+Array[Int](i);[/!]</code> In this case, the array's size will be set to the
+value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size
+of the array still cannot be modified: even if the variable <code>i</code>
+changes afterward, the size remains to the value given when it was
+allocated.  [!java]Also, it is forbidden to write something like <code>int
+T[10];</code> when declaring the variable.  You are required to use the
+<code>new</code> instruction to allocate it, as in <code>int[] T = new
+int[10];</code> [/!]</p>
 
 <h4>Dichiarazione ed inizializzazione</h4>
 <p>Se siete già a conoscenza del contenuto del vostro vettore potete

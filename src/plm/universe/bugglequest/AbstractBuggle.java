@@ -5,7 +5,6 @@ import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
@@ -25,6 +24,7 @@ public abstract class AbstractBuggle extends Entity {
 	Color bodyColor = Color.red;
 	Color brushColor = Color.red;
 	
+	private boolean dontIgnoreDirectionDifference = true; // if the buggle direction matters for world equality
 
 
 	private int x = 0;
@@ -77,6 +77,16 @@ public abstract class AbstractBuggle extends Entity {
 		this.x = other.x;
 		this.y = other.y;
 		this.direction = other.direction;
+		this.carryBaggle = other.carryBaggle;
+	}
+
+	public void penDown(){
+		throw new RuntimeException(getGame().i18n.tr(
+				"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
+	}
+	public void penUp(){
+		throw new RuntimeException(getGame().i18n.tr(
+				"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
 	}
 
 	public boolean isBrushDown() {
@@ -85,7 +95,10 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void brushDown() {
 		this.brushDown = true;
+		addOperation(new ChangeBuggleBrushDown(this, false, true, getGame().i18n));
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
+		Color oldColor = getCell().getColor();
+		addOperation(new ChangeCellColor(cell, oldColor, brushColor));
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
 		setChanged();
@@ -94,6 +107,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void brushUp() {
 		if (k_seq[k_val]==4) k_val++; else k_val = 0;
+		addOperation(new ChangeBuggleBrushDown(this, true, false, getGame().i18n));
 		this.brushDown = false;
 		setChanged();
 		notifyObservers(BRUSH_STATE);
@@ -122,10 +136,12 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setBodyColor(Color c) {
 		if (c != null) {
+			addOperation(new ChangeBuggleBodyColor(this, this.bodyColor, c));
 			this.bodyColor = c;
 			world.notifyWorldUpdatesListeners();
 			setChanged();
 			notifyObservers(BUGGLE_COLOR);
+			stepUI();
 		}
 	}
 
@@ -135,6 +151,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setDirection(Direction direction) {
 		if (direction != null) {
+			addOperation(new ChangeBuggleDirection(this, this.direction, direction, getGame().i18n));
 			this.direction = direction;
 			stepUI();
 		}
@@ -148,6 +165,14 @@ public abstract class AbstractBuggle extends Entity {
 	public void right() {
 		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
+	}
+	
+	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
+	public void Left() { 
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+	}
+	public void Right() {
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
 	public void back() {
@@ -166,11 +191,31 @@ public abstract class AbstractBuggle extends Entity {
 	}
 	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException{
 		BuggleWorld bw = (BuggleWorld) world;
-		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
-		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
-
+		if(y<0) {
+			String message = getGame().i18n.tr("You tried to access a cell with Y={0}, but the minimal Y in this world is 0.",y);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if(x<0) {
+			String message = getGame().i18n.tr("You tried to access a cell with X={0}, but the minimal X in this world is 0.",x);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if (y>=bw.getHeight()) {
+			String message = getGame().i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+			
+		if (x>=bw.getWidth()) {
+			String message = getGame().i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
 		return (BuggleWorldCell) ((GridWorld)world).getCell(u, v);
 	}
 	protected BuggleWorldCell getCellFromLesson(int u, int v) {
@@ -187,8 +232,19 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setX(int x) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
-		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
+		if(x<0) {
+			String message = getGame().i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if (x>=bw.getWidth()) {
+			String message = getGame().i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		addOperation(new MoveBuggleOperation(this, this.x, y, x, y, getGame().i18n));
 		this.x = x;
 		stepUI();
 	}
@@ -206,8 +262,19 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setY(int y) throws BuggleInOuterSpaceException  {
 		BuggleWorld bw = (BuggleWorld) world;
-		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
+		if(y<0) {
+			String message = getGame().i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if (y>=bw.getHeight()) {
+			String message = getGame().i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		addOperation(new MoveBuggleOperation(this, x, this.y, x, y, getGame().i18n));
 		this.y = y;
 		stepUI();
 	}
@@ -221,10 +288,31 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
-		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
-		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
+		if(y<0) {
+			String message = getGame().i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if(x<0) {
+			String message = getGame().i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if (y>=bw.getHeight()) {
+			String message = getGame().i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		if (x>=bw.getWidth()) {
+			String message = getGame().i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
+			addOperation(new BuggleInOuterSpace(this, message));
+			stepUI();
+			throw new BuggleInOuterSpaceException(message);
+		}
+		addOperation(new MoveBuggleOperation(this, this.x, this.y, x, y, getGame().i18n));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -304,14 +392,20 @@ public abstract class AbstractBuggle extends Entity {
 			newy += getWorldHeight();
 
 		if (delta.equals(direction.toPoint())            && isFacingWall() ||
-				delta.equals(direction.opposite().toPoint()) && isBackingWall())	
-
-			throw new BuggleWallException();
+				delta.equals(direction.opposite().toPoint()) && isBackingWall()) {
+			addOperation(new BuggleEncounterWall(this, getGame().i18n));
+			stepUI();
+			throw new BuggleWallException(getGame().i18n);
+		}
+			
+		addOperation(new MoveBuggleOperation(this, x, y, newx, newy, getGame().i18n));
 
 		x = newx;
 		y = newy;
 
 		if (brushDown) {
+			Color oldColor = getCell().getColor();
+			addOperation(new ChangeCellColor(getCell(), oldColor, brushColor));
 			getCell().setColor(brushColor);
 		}
 
@@ -326,42 +420,77 @@ public abstract class AbstractBuggle extends Entity {
 		return this.carryBaggle;
 	}
 
-	@Deprecated
-	public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
-		pickupBaggle();
-	}
 	public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
 		if (k_seq[k_val]==5) k_val++; else k_val = 0;
 		if (k_val>k_seq.length-1) {
 			setName("Easter "+name);
-			System.out.println("EASTEEEER");
+			getGame().getLogger().log("EASTEEEER");
 			((BuggleWorld)world).easter= true;
 			k_val=0;
 			return;
 		}
 
-		if (!isOverBaggle())
-			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
-		if (isCarryingBaggle())
-			throw new AlreadyHaveBaggleException(Game.i18n.tr("Your are already carrying a baggle."));
+		if (!isOverBaggle()) {
+			addOperation(new NoBaggleUnderBuggle(this, getGame().i18n));
+			stepUI();
+			throw new NoBaggleUnderBuggleException(getGame().i18n.tr("There is no baggle to pick up here."));
+		}
+		if (isCarryingBaggle()) {
+			addOperation(new BuggleAlreadyHaveBaggle(this, getGame().i18n));
+			stepUI();
+			throw new AlreadyHaveBaggleException(getGame().i18n.tr("Your are already carrying a baggle."));
+		}
 		getCellFromLesson(this.x, this.y).baggleRemove();
 		carryBaggle = true;
+		addOperation(new ChangeCellHasBaggle(getCell(), true, false));
+		addOperation(new ChangeBuggleCarryBaggle(this, false, true, getGame().i18n));
+		stepUI();
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
-		if (! isCarryingBaggle())
-			throw new DontHaveBaggleException();
-		getCellFromLesson(this.x, this.y).baggleAdd();
+		if (! isCarryingBaggle()) {
+			addOperation(new BuggleDontHaveBaggle(this, getGame().i18n));
+			stepUI();
+			throw new DontHaveBaggleException(getGame().i18n);
+		}
+		BuggleWorldCell cell = getCellFromLesson(this.x, this.y);
+		try {
+			cell.baggleAdd();
+		}
+		catch (AlreadyHaveBaggleException e) {
+			addOperation(new CellAlreadyHaveBaggle(cell, getGame().i18n));
+			stepUI();
+			throw e;
+		}
 		carryBaggle = false;
+		addOperation(new ChangeCellHasBaggle(getCell(), false, true));
+		addOperation(new ChangeBuggleCarryBaggle(this, true, false, getGame().i18n));
+		stepUI();
 	}
-
+	
+	protected void doCarryBaggle() { /* This should not be used in user code, only in the world loading code */
+		carryBaggle = true;
+	}
+	
+	
 	public boolean isOverMessage() {
 		return getCell().hasContent();
 	}
 
 	public void writeMessage(String msg) {
+		String oldContent = readMessage();
+		boolean oldHasContent = getCell().hasContent();
 		getCell().addContent(msg);
+		String newContent = readMessage();
+		generateOperationsChangeCellContent(getCell(), oldContent, newContent, oldHasContent, true);
 	}
+	
+	public void generateOperationsChangeCellContent(BuggleWorldCell cell, String oldContent, String newContent, boolean oldHasContent, boolean newHasContent) {
+		addOperation(new ChangeCellContent(cell, oldContent, newContent, getGame().i18n));
+		addOperation(new ChangeCellHasContent(cell, oldHasContent, newHasContent));
+		stepUI();
+	}
+	
 	public void writeMessage(int nb) {
 		writeMessage(""+nb);
 	}
@@ -371,10 +500,14 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void clearMessage() {
+		String oldContent = readMessage();
+		boolean oldHasContent = getCell().hasContent();
 		getCell().emptyContent();
+		String newContent = readMessage();
+		addOperation(new ChangeCellContent(getCell(), oldContent, newContent, getGame().i18n));
+		addOperation(new ChangeCellHasContent(getCell(), oldHasContent, false));
+		stepUI();
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -395,6 +528,10 @@ public abstract class AbstractBuggle extends Entity {
 		return result;
 	}
 
+	public void ignoreDirectionDifference() {
+		dontIgnoreDirectionDifference = false;	
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -410,10 +547,10 @@ public abstract class AbstractBuggle extends Entity {
 				return false;
 		} else if (!bodyColor.equals(other.bodyColor))
 			return false;
-		if (direction == null) {
+		if (dontIgnoreDirectionDifference && direction == null) {
 			if (other.direction != null)
 				return false;
-		} else if (!direction.equals(other.direction))
+		} else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
 			return false;
 		if (seenError != other.seenError)
 			return false;
@@ -425,28 +562,28 @@ public abstract class AbstractBuggle extends Entity {
 	}
 	public String diffTo(AbstractBuggle other) {
 		if (other == null) 
-			return Game.i18n.tr("Its value is 'null', which is never good.");
+			return getGame().i18n.tr("Its value is 'null', which is never good.");
 		/* We cannot use a i18n defined in our class, as we have to pass the classname to the initialization of i18n, 
 		 *    but gettext don't seem to like the fact that we generate at runtime some package names that it does not know at compile time.
-		 * So, use Game.i18n instead.
+		 * So, use getGame().i18n instead.
 		 */
 		StringBuffer sb = new StringBuffer();
 		if (getX() != other.getX() || getY() != other.getY()) 
-			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-		if (getDirection() != other.getDirection()) 
-			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
+			sb.append(getGame().i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
+		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection()) 
+			sb.append(getGame().i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
 		if (getBodyColor() != other.getBodyColor()) 
-			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
+			sb.append(getGame().i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
 		if (getBrushColor() != other.getBrushColor())
-			sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
+			sb.append(getGame().i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
 		if (isCarryingBaggle() && !other.isCarryingBaggle())
-			sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
+			sb.append(getGame().i18n.tr("    It should not carry that baggle.\n"));
 		if (!isCarryingBaggle() && other.isCarryingBaggle())
-			sb.append(Game.i18n.tr("    It is not carrying any baggle.\n"));
+			sb.append(getGame().i18n.tr("    It is not carrying any baggle.\n"));
 		if (haveSeenError() && other.haveSeenError())
-			sb.append(Game.i18n.tr("    It encountered an issue, such as bumping into a wall.\n"));
+			sb.append(getGame().i18n.tr("    It encountered an issue, such as bumping into a wall.\n"));
 		if (haveSeenError() && !other.haveSeenError())
-			sb.append(Game.i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
+			sb.append(getGame().i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
 		return sb.toString();
 	}
 
@@ -462,6 +599,8 @@ public abstract class AbstractBuggle extends Entity {
 	public void setCouleurCorps(Color c)  { setBodyColor(c); }
 	public boolean estFaceMur()           { return isFacingWall(); }
 	public boolean estDosMur()            { return isBackingWall(); }
+	public void leveCrayon()              { penUp(); }
+	public void baisseCrayon()            { penDown(); }
 	public void leveBrosse()              { brushUp(); }
 	public void baisseBrosse()            { brushDown(); }
 	public boolean estBrosseBaissee()     { return isBrushDown(); }
@@ -482,6 +621,39 @@ public abstract class AbstractBuggle extends Entity {
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+	/* BINDINGS TRANSLATION: Brazilian Portuguese */
+	public void esquerda()        { left(); }
+	public void direita()         { right(); }
+	public void voltar()          { back(); }
+	public void avançar()          throws BuggleWallException { forward(); }
+	public void avançar(int steps) throws BuggleWallException { forward(steps); }
+	public void recuar()           throws BuggleWallException { backward(); }
+	public void recuar(int steps)  throws BuggleWallException { backward(steps); }
+	public Color getCorDoCorpo()        { return getBodyColor(); }
+	public void setCorDoCorpo(Color c)  { setBodyColor(c); }
+	public boolean estáDeFrenteParaParede() { return isFacingWall(); }
+	public boolean estáDeCostasParaParede() { return isBackingWall(); }
+	public void levantarCaneta()            { penUp(); }
+	public void abaixarCaneta()             { penDown(); }
+	public void levantarPincel()            { brushUp(); }
+	public void abaixarPincel()             { brushDown(); }
+    	public boolean pincelEstáAbaixado()     { return isBrushDown(); }
+	public Color getCorDoPincel()       { return getBrushColor(); }
+	public void setCorDoPincel(Color c) { setBrushColor(c); }
+	public Color getCorDoChão()          { return getGroundColor(); }
+	public boolean estáSobreBaggle()        { return isOverBaggle(); }
+	public boolean estáCarregandoBaggle()         { return isCarryingBaggle(); }
+	public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+	public void soltarBaggle()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
+	public boolean estáSobreMensagem()        { return isOverMessage(); }
+	public String lerMensagem()            { return readMessage(); }
+	public void escreverMensagem(String s)    { writeMessage(s); }
+	public void escrevermensagem(int i)       { writeMessage(i); }
+	public void limparMensagem()           { clearMessage(); }
+	public int getAlturaDoMundo()          { return getWorldHeight(); }
+	public int getLarguraDoMundo()          { return getWorldWidth(); }
+	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
+	public boolean estáSelecionado()           { return isSelected(); } 
 
 
 	@Override
@@ -596,7 +768,7 @@ public abstract class AbstractBuggle extends Entity {
 			case 131:
 				out.write(Integer.toString(ColorMapper.color2int(getBrushColor())));
 				out.write("\n");
-				System.out.println("a toi");
+				getGame().getLogger().log("a toi");
 				break;
 			case 132:
 				out.write(Integer.toString(ColorMapper.color2int(getGroundColor())));
@@ -640,7 +812,7 @@ public abstract class AbstractBuggle extends Entity {
 				out.write("\n");
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 
 			}

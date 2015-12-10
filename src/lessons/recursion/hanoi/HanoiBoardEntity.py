@@ -1,14 +1,12 @@
 # BEGIN TEMPLATE
-def solve(src,dst,other, height=-1):
-	if height==-1: # initial case
-		height=getSlotSize(src) 
+def hanoi(height, src,other,dst):
 	
 	# Your code here
 	# BEGIN SOLUTION
 	if height != 0:
-		solve(src,other,dst, height-1);
+		hanoi(height-1, src,dst,other);
 		move(src,dst);
-		solve(other,dst,src, height-1);
+		hanoi(height-1, other,src,dst);
 	# END SOLUTION
 # END TEMPLATE
-solve(getParam(0),getParam(1),getParam(2))
+hanoi(getSlotSize(getParam(0)), getParam(0),getParam(1),getParam(2))

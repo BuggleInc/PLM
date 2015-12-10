@@ -3,7 +3,7 @@
 <h1>Le monde des Buggles</h1>
 Ce monde a été inventé par Lyn Turbak, du Wellesley College. Il est peuplé
 de Buggles, petites bêtes qui comprennent des ordres simples, et offre de
-nombreuses possibilités d'interaction avec le monde : prendre ou poser des
+nombreuses possibilités d'interaction avec le monde : prendre ou poser des
 objets, colorier le sol, se cogner à des murs, etc.
 
 <h2>Méthodes comprises par les buggles</h2>
@@ -24,6 +24,8 @@ objets, colorier le sol, se cogner à des murs, etc.
           [!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])<br/>
           [!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int
 [/!]y[!scala]:Int[/!])</td></tr>
+<tr><td colspan=2>L'origine (0, 0) est dans le coin en haut à gauche, comme c'est souvent le
+cas en informatique.</td></tr>
 
 <tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>
   <tr><td><b>Obtenir la couleur de la buggle</b><br/>Changer la couleur de la buggle</b></td>
@@ -56,7 +58,7 @@ objets, colorier le sol, se cogner à des murs, etc.
   <tr><td><b>Obtenir la couleur du sol</b></td>
       <td>[!java|c]Color [/!]getCouleurSol()[!scala]:Color[/!]</td></tr>
 
-  <tr><td><b>Chercher un biscuit par terre<br/>Chercher un biscuit dans ses poches<br/>Prendre un biscuit<br/>Poser un biscuit</b><br/>
+  <tr><td><b>Vrai si biscuit par terre<br/>Vrai si on porte un biscuit<br/>Ramasse un biscuit<br/>Poser un biscuit</b><br/>
       (voir la note sur les exceptions)</td>
       <td>[!java]boolean [/!][!c]int [/!]estSurBiscuit()[!scala]:Boolean[/!]<br/>
           [!java]boolean [/!][!c]int [/!]porteBiscuit()[!scala]:Boolean[/!]<br/>
@@ -100,6 +102,6 @@ Tenter de déposer un biscuit sur une case qui en contient déjà lève une
 exception AlreadyHaveBaggleException.
 Tenter de poser un biscuit alors qu'on n'en a pas lève une exception
 DontHaveBaggleException.
-<p>Les "SimpleBuggles" (c.-à.-d., celles utilisées dans les premiers exercices)
-affiche un message d'erreur sans que vous ayez à vous soucier de ce qu'est
+<p>Les "SimpleBuggles" (c.-à-d., celles utilisées dans les premiers exercices)
+affichent un message d'erreur sans que vous ayez à vous soucier de ce qu'est
 une exception.</p>

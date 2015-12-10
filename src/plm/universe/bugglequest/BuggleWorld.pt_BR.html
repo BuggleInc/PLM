@@ -12,11 +12,10 @@ pintar o chão, bater em paredes, etc.
   <tr><td><b>Virar à esquerda<br/>Virar à direita<br/>Dar meia volta<br/>Mover para a frente<br/>Mover para trás</b></td>
       <td>[!java|c]void [/!]esquerda()<br/>
           [!java|c]void [/!]direita()<br/>
-          [!java|c]void [/!]paraTrás()<br/>
+          [!java|c]void [/!]voltar()<br/>
           [!java|c]void [/!][!python|java|scala]avançar()[/!][!c]avançarUmPasso()[/!]
 ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])<br/>
-          [!java|c]void
-[/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou
+          [!java|c]void [/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou
 [!java]void [/!]recuar([!java|c]int [/!]passos[!scala]:Int[/!])<br/></td></tr>
   <tr><td><b>Obter coordenada X<br/>Obter coordenada Y<br/>Ajustar coordenada X<br/>Ajustar coordenada Y<br/>Ajustar posição</b></td>
       <td>[!java|c]int [/!]getX()[!scala]:Int[/!]<br/>
@@ -25,6 +24,8 @@ ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])<br/>
           [!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])<br/>
           [!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int
 [/!]y[!scala]:Int[/!])</td></tr>
+<tr><td colspan=2>Observe que o ponto (0,0) está no canto superior esquerdo, o que é comum em
+ciência da computação.</td></tr>
 
 <tr><td colspan=2 align=center><b>Informações sobre o buggle</b></td></tr>
   <tr><td><b>Obter a cor do corpo<br/>Ajustar a cor do corpo</b></td>
@@ -38,11 +39,10 @@ ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])<br/>
           [!java|c]void [/!]ajustaDireção([!java|c]Direção
 [/!]dir[!scala]:Direção[/!])<br/>
           [!scala|java|python]Direção.[/!]NORTE,
-[!scala|java|python]Direção.[/!]LESTE,
-[!scala|java|python]Direção.[/!]SUL e
+[!scala|java|python]Direção.[/!]LESTE, [!scala|java|python]Direção.[/!]SUL e
 [!scala|java|python]Direção.[/!]OESTE</td></tr>
   <tr><td>Verifica se o buggle está atualmente <b>selecionado na interface</b></td>
-      <td>[!java]boolean [/!][!c]int [/!]selecionado()[!scala]:Boolean[/!]</td></tr>
+      <td>[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]</td></tr>
  
 <tr><td colspan=2 align=center><b>Sobre o pincel</b></td></tr>
   <tr><td><b>Abaixar pincel<br/>Levantar pincel<br/>Pegar a posição do pincel</td>

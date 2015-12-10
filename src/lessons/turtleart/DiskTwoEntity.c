@@ -6,7 +6,7 @@ void quadrant();
 void run() {
 	/* BEGIN SOLUTION */
 	int i;
-	for (i=0;i<18;i++) {
+	for (i=0;i<9;i++) {
 		setColor(black);
 		quadrant();
 		setColor(red);

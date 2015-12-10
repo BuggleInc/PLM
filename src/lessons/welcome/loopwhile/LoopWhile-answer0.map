@@ -1,12 +1,12 @@
 BuggleWorld: Closed world
 Size: 7x7
-Buggle(0,6): north,black,lightGray,Joker 1
-Buggle(1,5): north,black,lightGray,Joker 2
-Buggle(2,4): north,black,lightGray,Joker 3
-Buggle(3,3): north,black,lightGray,Joker 4
-Buggle(4,2): north,black,lightGray,Joker 5
-Buggle(5,1): north,black,lightGray,Joker 6
-Buggle(6,0): north,black,lightGray,Joker 7
+Buggle(0,6): north,black,lightGray,Joker 1,noBaggle,
+Buggle(1,5): north,black,lightGray,Joker 2,noBaggle,
+Buggle(2,4): north,black,lightGray,Joker 3,noBaggle,
+Buggle(3,3): north,black,lightGray,Joker 4,noBaggle,
+Buggle(4,2): north,black,lightGray,Joker 5,noBaggle,
+Buggle(5,1): north,black,lightGray,Joker 6,noBaggle,
+Buggle(6,0): north,black,lightGray,Joker 7,noBaggle,
 Cell(0,0): white,nobaggle,topwall,leftwall,
 Cell(0,1): white,nobaggle,notopwall,leftwall,
 Cell(0,2): white,nobaggle,notopwall,leftwall,

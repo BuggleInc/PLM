@@ -3,7 +3,7 @@ package lessons.sort.pancake.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
+import lessons.sort.pancake.universe.operations.FlipOperation;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -35,7 +35,9 @@ public class PancakeEntity extends Entity {
 	 * 			beginning from the top of the stack, that you want to flip.
 	 */
 	public void flip(int numberOfPancakes) {
+		int old = ((PancakeWorld) world).getLastMove();
 		((PancakeWorld) world).flip(numberOfPancakes);
+		addOperation(new FlipOperation(this, numberOfPancakes, old));
 		stepUI();
 	}
 
@@ -119,7 +121,7 @@ public class PancakeEntity extends Entity {
 				out.write("\n");
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

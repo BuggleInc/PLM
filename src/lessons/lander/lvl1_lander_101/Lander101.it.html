@@ -15,16 +15,18 @@ m/s.</b> There are two ways you can influence the lander's course: by
 adjusting its angle or by adjusting its thrust. In this simulation we only
 care about adjusting the thrust, expressed in m/s².</p>
 
-<p>The <code>step()</code> function that you should write now will be called
-every 0.1 second during the simulation. It should set the desired thrust of
-the next simulation step, by calling <code>[!java]void
-[/!]setDesiredThrust([!java]int
+<p>The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that
+you should write now will be called every 0.1 second during the
+simulation. Make sure that your code does not last too long, with no while
+loop! It should only set the desired thrust of the next simulation step, by
+calling <code>[!java]void [/!]setDesiredThrust([!java]int
 [/!]desiredThrust[!scala]:Integer[/!])</code> where
-<code>desiredThrust</code> is some integer between 0 and 4. You can only
-increment or decrement the thrust by 1 between two simulation steps, so if
-the current thrust is 2 and you ask for 4, you'll only get 3 in the next
-step. If you ask for less than 0 (resp. more than 4), everything will be as
-if you had asked for 0 (resp. 4).</p>
+<code>desiredThrust</code> is some integer between 0 and 4 (that is, a
+thrust between 0 m/s² and 4 m/s²). You can only increment or decrement the
+thrust by 1 between two simulation steps, so if the current thrust is 2 and
+you ask for 4, you'll only get 3 in the next step. If you ask for less than
+0 (resp. more than 4), everything will be as if you had asked for 0
+(resp. 4).</p>
 
 <p>In order to take informed decisions, you can query the lander's state. In
 this simulation you'll probably be interested in its vertical position:

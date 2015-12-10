@@ -1,6 +1,6 @@
 BuggleWorld: World
 Size: 45x45
-Buggle(0,44): east,black,green,Picasso
+Buggle(0,44): east,black,green,Picasso,noBaggle,
 Cell(0,1): green,nobaggle,notopwall,noleftwall,
 Cell(0,3): green,nobaggle,notopwall,noleftwall,
 Cell(0,6): green,nobaggle,notopwall,noleftwall,

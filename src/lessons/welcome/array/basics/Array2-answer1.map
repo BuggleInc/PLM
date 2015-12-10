@@ -1,6 +1,6 @@
 BuggleWorld: Pattern 2
 Size: 7x7
-Buggle(6,0): south,black,pink,Braque
+Buggle(6,0): south,black,pink,Braque,noBaggle,
 Cell(0,0): pink,nobaggle,topwall,leftwall,
 Cell(0,1): yellow,nobaggle,notopwall,leftwall,
 Cell(0,2): red,nobaggle,notopwall,leftwall,

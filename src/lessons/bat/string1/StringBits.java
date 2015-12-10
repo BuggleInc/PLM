@@ -1,27 +1,28 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringBits extends BatExercise {
-	public StringBits(Lesson lesson) {
-		super(lesson);
+	public StringBits(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("stringBits");
+		BatWorld myWorld = new BatWorld(game, "stringBits");
 		myWorld.addTest(VISIBLE, "Hello") ;
 		myWorld.addTest(VISIBLE, "Hi") ;
 		myWorld.addTest(VISIBLE, "HiHiHi") ;
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "Greetings") ;
 
-		templatePython("stringBits", 
+		templatePython("stringBits", new String[] {"String"},
 				"def stringBits(str):\n",
 				"  res = ''\n" +
 				"  for i in range(0,len(str),2):\n" +
 				"    res += str[i:i+1]\n" +
 				"  return res\n");
-		templateScala("stringBits",new String[] {"String"}, 
+		templateScala("stringBits", new String[] {"String"}, 
 				"def stringBits(str:String):String = {\n",
 				"  var res:String = \"\"\n" +
 				"  for (i <- 0 to str.length-1 by 2)\n" +

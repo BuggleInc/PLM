@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class CaughtSpeeding extends BatExercise {
-	public CaughtSpeeding(Lesson lesson) {
-		super(lesson);
+	public CaughtSpeeding(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("caughtSpeeding");
+		BatWorld myWorld = new BatWorld(game, "caughtSpeeding");
 		myWorld.addTest(VISIBLE, 60, false) ;
 		myWorld.addTest(VISIBLE, 65, false) ;
 		myWorld.addTest(VISIBLE, 65, true) ;
@@ -24,7 +25,7 @@ public class CaughtSpeeding extends BatExercise {
 		myWorld.addTest(INVISIBLE, 40, true) ;
 		myWorld.addTest(INVISIBLE, 90, false) ;
 
-		templatePython("caughtSpeeding", 
+		templatePython("caughtSpeeding", new String[] {"Int","Boolean"},
 				"def caughtSpeeding(speed, isBirthday):\n",
 				"	if ((isBirthday and speed <= 65) or (speed <= 60)):\n"+
 				"		return 0\n"+

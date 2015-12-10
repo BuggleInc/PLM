@@ -9,7 +9,7 @@ class ScalaDiskTwoEntity extends Turtle {
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
-		for (i <- 1  to 18) {
+		for (i <- 1  to 9) {
 			setColor(Color.BLACK);
 			quadrant();
 			setColor(Color.RED);

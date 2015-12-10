@@ -1,14 +1,15 @@
 package lessons.welcome.bat.bool1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Max1020 extends BatExercise {
-	public Max1020(Lesson lesson) {
-		super(lesson);
+	public Max1020(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("max1020");
+		BatWorld myWorld = new BatWorld(game, "max1020");
 		myWorld.addTest(VISIBLE, 11, 19) ;
 		myWorld.addTest(VISIBLE, 19, 11) ;
 		myWorld.addTest(VISIBLE, 11, 9) ;
@@ -21,7 +22,7 @@ public class Max1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 20) ;
 		myWorld.addTest(INVISIBLE, 17, 16) ;
 
-		templatePython("max1020", 
+		templatePython("max1020", new String[] {"Int","Int"},
 				"def max1020(a, b):\n",
 				"	A = max(a,b)\n"+
 				"	B = min(a,b)\n"+
@@ -30,7 +31,7 @@ public class Max1020 extends BatExercise {
 				"	if (B<21 and B>9):\n"+
 				"		return B\n"+
 				"	return 0\n");
-		templateScala("max1020",new String[] {"Int","Int"}, 
+		templateScala("max1020", new String[] {"Int","Int"}, 
 				"def max1020(a:Int, b:Int):Int = {\n",
 				"	val A = Math.max(a,b)\n"+
 				"	val B = Math.min(a,b)\n"+

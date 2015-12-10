@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,16 +8,16 @@ import plm.universe.bat.BatWorld;
 
 public class MonkeyTrouble extends BatExercise {
 
-	public MonkeyTrouble(Lesson lesson) {
-		super(lesson);
+	public MonkeyTrouble(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("monkeyTrouble");
+		BatWorld myWorld = new BatWorld(game, "monkeyTrouble");
 		myWorld.addTest(VISIBLE, true, true);
 		myWorld.addTest(VISIBLE, false, false);
 		myWorld.addTest(VISIBLE, true, false);
 		myWorld.addTest(INVISIBLE, false, true);
 
-		templatePython("monkeyTrouble", 
+		templatePython("monkeyTrouble", new String[] {"Boolean","Boolean"},
 				"def monkeyTrouble(aSmile, bSmile):\n",
 				"   return (aSmile and bSmile) or (not aSmile and not bSmile)\n");
 		templateScala("monkeyTrouble", new String[] {"Boolean","Boolean"}, 

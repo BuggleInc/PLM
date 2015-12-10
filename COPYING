@@ -64,6 +64,7 @@ We borrowed the following icons, that are CC-BY-SA too:
   img/btn-start.png       http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/media-playback-start-8.png
   img/btn-stop.png        http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/media-playback-stop-8.png
   img/btn-load-lesson.png http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/address-book-new-3.png
+  img/btn-switch-lesson.png http://apps.carleton.edu/campus/library/bridge_icons/
 * light for lightbot:
   img/lightbot_light.png  http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/help-hint.png
   img/world_lightbot.png  (same file)
@@ -71,7 +72,7 @@ We borrowed the following icons, that are CC-BY-SA too:
 
 The following icons are LGPL:
 
-* We borrowed several of them to the nuvola icon them for KDE 3.x 
+* We borrowed several of them to the nuvola icon theme for KDE 3.x 
   img/btn-alert-off.png:   nuvola/32x32/actions/irkickoff.png 
   img/btn-alert-on.png:    nuvola/32x32/actions/irkickflash.png
 
@@ -90,6 +91,16 @@ The following icons are LGPL:
 
   img/menu-locale.png:     nuvola/32x32/apps/locale.png
 
+=========================================================================
+
+The following images come from the LibreOffice icon set. They are thus
+MPL-1.1 | GPL-3+ | LGPL-3+
+
+  img/edit_lineadd.png     cmd/lc_insertrows.png
+  img/edit_linedel.png     cmd/lc_deleterows.png
+  img/edit_coladd.png      cmd/lc_insertcolumns.png
+  img/edit_coldel.png      cmd/lc_deletecolumns.png
+  
 =========================================================================
 
 The following logos are GPLv2:

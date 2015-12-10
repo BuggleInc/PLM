@@ -1,0 +1,38 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Les tours de Hanoï séparées rapides</h2>
+
+<p>Une fois encore, notre solution est fonctionnelle, mais elle est loin d'être
+optimale. Nous utilisons l'algorithme classique de déplacement des tours,
+celui inventé pour la situation avec trois piquets, alors que nous avons
+quatre piquets. Bien entendu, on ne peut pas disposer librement de ce
+quatrième piquet puisqu'il contient l'autre pile, mais nous pouvons toujours
+placer le plus petit disque au sommet de l'autre pile avant d'en déplacer
+une.</p>
+
+<p>Pour cela, il faut écrire une nouvelle fonction <code>hanoi_rapide(hauteur,
+src, libre, plein, dst)</code> qui déplace une pile depuis <code>src</code>
+vers <code>dst</code> en utilisant <code>libre</code> pour le stockage
+temporaire, après avoir placé le plus petit disque sur le piquet
+<code>plein</code>.</p>
+
+<div class="tip" id="tip-1" alt="Je suis perdu">
+La fonction <code>hanoi_rapide(hauteur, src, libre, plein, dst)</code> n'est
+pas récursive. Elle place le petit disque, puis appelle la fonction
+<code>hanoi()</code> classique.
+</div> <br>
+
+<p>Ce changement améliore considérablement les performances, comme vous pouvez
+le constater dans le tableau. Bien entendu, cette astuce pourrait être
+utilisée pour l'algorithme d'interclassement, ce qui boosterait les
+performances exactement de la même façon. </p>
+<table border="1">
+<tr><td>Nombre de disques</td><td>Interclassement</td><td>Séparation lente</td><td>Séparation rapide</td></tr>
+<tr><td>5 paires</td>     <td> 62 mouvements</td>  <td> 88 mouvements </td><td> 46 mouvements</td></tr>
+<tr><td>6 paires</td>     <td>126 mouvements</td>  <td>183 mouvements </td><td> 82 mouvements</td></tr>
+<tr><td>7 paires</td>     <td>254 mouvements</td>  <td>374 mouvements </td><td>150 mouvements</td></tr>
+</table>
+
+<p>En conclusion, nous nous contentons souvent d'une solution fonctionnelle, et
+nous manquons souvent des occasions d'améliorer la décomposition du
+problème. <b>Vous</b> ne devriez pas faire cela ;)</p>

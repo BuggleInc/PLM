@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LessBy10 extends BatExercise {
-	public LessBy10(Lesson lesson) {
-		super(lesson);
+	public LessBy10(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("lessBy10");
+		BatWorld myWorld = new BatWorld(game, "lessBy10");
 		myWorld.addTest(VISIBLE, 1, 7, 11) ;
 		myWorld.addTest(VISIBLE, 1, 7, 10) ;
 		myWorld.addTest(VISIBLE, 11, 1, 7) ;
@@ -26,7 +27,7 @@ public class LessBy10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 2, -8) ;
 		myWorld.addTest(INVISIBLE, 2, 8, 12) ;
 
-		templatePython("lessBy10", 
+		templatePython("lessBy10", new String[] {"Int","Int","Int"},
 				"def lessBy10(a, b, c):\n",
 				"	return ((a - b) >= 10) or ((b - a) >= 10) or ((b - c) >= 10) or ((c - b) >= 10) or ((a - c) >= 10) or ((c - a) >= 10)\n");
 		templateScala("lessBy10", new String[] {"Int","Int","Int"},

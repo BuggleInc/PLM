@@ -39,8 +39,8 @@ deve escrever:</p>
 símbolo de igual (=) seguido do valor depois da declaração.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
-  <p>So, if you want that the variable contains 5 as initial value, you should
-type: </p>
+  <p>Então se você quiser que a variável tenha o valor inicial de 5, você deve
+digitar: </p>
   <pre>x = 5</pre>
 [/!] [!scala]
   <p>Logo, para criar uma variável chamada <b>x</b> que vai guardar inteiros e
@@ -49,11 +49,11 @@ com 42 como valor inicial, você deve escrever:</p>
   <p>Na maioria dos casos, o compilador é capaz de adivinhar o tipo da variável
 baseado no valor inicial, e você pode omitir o tipo:</p>
   <pre>var x = 42</pre>
-  <p>You still have to specify the if you use some generic values as an
-initialization, such as the very particular value <code>null</code>, which
-type happens to be ambiguous. Even when the type is clear, you can still
-specify it if you prefer.  So you want that the variable contains 5 as
-initial value, you should type: </p>
+  <p>Você ainda tem que especificar se você usa alguns valores genéricos como uma
+inicialização, tais como o valor muito especial <code>null</code>, cujo tipo
+parece ser ambíguo. Mesmo quando o tipo é claro, você ainda pode especificar
+o tipo se preferir. Portanto, se você quiser que a variável contenha 5 como
+valor inicial, você deve digitar: </p>
   <pre>var x: Int =  5 <span class="comment">// Eu posso definir o tipo se eu quiser</span>
 var y =  10      <span class="comment">// ou posso omitir o tipo se eu preferir</span></pre>
 [/!] [!java|scala|c]
@@ -71,43 +71,43 @@ fácil de escrever mas os erros surgem com mais frequencia do que em
 [!thelang].</p>
 <p>Aqui estão alguns dos tipos em [!thelang]:</p>
 <ul>
-  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, for integers;</li>
-  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
-  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that
-are values being either [!c]1[/!][!java|scala]true[/!] or
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, para inteiros;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, para números com vírgula;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, para booleanos, que
+são valores ou [!c]1[/!][!java|scala]true[/!] ou
 [!c]0[/!][!java|scala]false[/!];</li>
-  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, for char strings.</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, para cadeias de caracteres.</li>
 </ul>
 [/!] [!python]
 <p>As you can see, the variables are not <b>typed</b> in Python, which means
 that they are not specialized in any type of data.  A given variable store
 any type of data of a given type: you can store a number in a variable and
-latter on store a number in the same variable.  The values themselves are
+later on store a number in the same variable.  The values themselves are
 still typed, but not the variable. Python is said to be <b>dynamically
 typed</b>.</p>
-<p>Other languages (such as Java, Scala or C) are much more picky and prevent
-you to mix data types in a given variable (they are said to be <b>statically
-typed</b>).  This seems annoying at the first glance, but this kind of
-restriction allows the compiler to catch more logic errors for you, which is
-also good. In some sense, Python is easier to write but errors can sneak in
-more easily.</p>
+<p>Outras linguagens (como Java, Scala ou C), são muito mais exigentes e
+impedem que você misture tipos de dados numa certa variável (dizemos que
+elas são <b>esticamente tipadas</b>). Isto parece inconveniente à primeira
+vista, mas este tipo de restrição permite que o compilador capture mais
+erros de lógica para você, o que também é bom. Num certo sentido, Python é
+mais fácil de escrever mas erros podem surgir mais facilmente.</p>
 [/!]
   
 
-<p class="scala">Se você sabe que o valor de sua "variável" nunca vai mudar (eg quando
-ela contém o tamanho da tela ou outro valor constante), então você
-deve fazer dela um <b>valor</b> ao invés de uma variável. Simplesmente
-mude a palavra-chave <code>var</code> para <code>val</code>. O
-compilador pode então verificar suas ações e capturar seu erro quando
-você inadvertidamente modificar o valor. Mais interessante ainda, o
-compilador pode produzir código mais rápido em alguns casos.</p>
+<p class="scala">Se você sabe que o valor de sua "variável" nunca vai mudar (eg quando ela
+contém o tamanho da tela ou outro valor constante), então você deve fazer
+dela um <b>valor</b> ao invés de uma variável. Simplesmente mude a
+palavra-chave <code>var</code> para <code>val</code>. O compilador pode
+então verificar suas ações e capturar seu erro quando você inadvertidamente
+modificar o valor. Mais interessante ainda, o compilador pode produzir
+código mais rápido em alguns casos.</p>
 
 <p>Variáveis funcionam muito parecido com strings, números com vírgula e
 valores booleanos.</p>
 
-<pre class="c">char* name = "Martin Quinson";
-double height=1.77; <span class="comment">// in meters</span>
-int married=1;<span class="comment">// 1 means "true"; "false" would be written 0</span></pre>
+<pre class="c">char* nome = "Martin Quinson";
+double altura=1.77; <span class="comment">// em metros</span>
+int casado=1;<span class="comment">// 1 significa "verdadeiro"; falso é 0</span></pre>
 
 
 <pre class="java">String nome = "Martin Quinson";
@@ -125,18 +125,18 @@ frase = "uma gota d'água é sempre melhor que nada" <span class="comment"># uma
 altura=1.77 <span class="comment"># em metros</span>
 casado=True <span class="comment"># o contrário se escreve "False"</span></pre>
 
-<h3>Affectations</h3>
+<h3>Atribuições</h3>
 
-<p>Once your variable is declared, you can <b>affect</b> a new value to it
-later in the program. That's really easy:</p> 
+<p>Uma vez que sua variável está declarada, você pode <b>atribuir</b> um novo
+valor para ela mais tarde no programa. Isto é bem fácil:</p> 
 <pre>x = 3[!java|c];[/!]</pre>
 
-<p>À esquerda do símbolo de igual você pode colocar uma expressão
-aritmética contendo constantes, variáveis e operações.</p>
+<p>À esquerda do símbolo de igual você pode colocar uma expressão aritmética
+contendo constantes, variáveis e operações.</p>
 
 <pre>x = 3 + 2[!java|c];[/!]
 x = 3 * x[!java|c];[/!]
-[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></pre> 
+[!java|scala|python]saudação = "Oi "+nome[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + é (também) a operação para concatenar (ie, para juntar) strings[/!]</span></pre> 
 
 <h3>Objetivo do exercício</h3>
 Agora vamos fazer exercícios mais desafiantes, certo? O objetivo agora é
@@ -158,11 +158,11 @@ passo 3 se você não contou a quantidade de passos dados na primeira
 fase. Você pode usar uma variável para isto, que pode ser chamada
 <code>quantidadeDePassos</code>.</p>
 
-<p>Create an integer variable before phase 1, initialize it to 0, and each time
-you move one step forward, increment its value by one (<code>stepAmount =
-stepAmount + 1;</code>[!java|c] or <code>stepAmount++;</code>, both syntaxes
-being equivalent[/!]).  Such variable which takes every values of a given
-range is often called a <b>stepper</b>.</p>
+<p>Crie uma variável inteira antes da fase 1, inicie ela com 0 e a cada vez que
+der um passo para frente, incremente ela de um (<code>quantidadeDePassos =
+quantidadeDePassos + 1;</code>[!java] ou <code>quantidadeDePassos++;</code>,
+ambas as sintaxes são equivalentes[/!]).  Tais variáveis que pegam cada
+valor de um dado intervalo são normalmente chamadas de <b>stepper</b>.</p>
   
 [!python|scala]
 <p>Se você conhece Java ou outras linguagens, você provavelmente vai tentar

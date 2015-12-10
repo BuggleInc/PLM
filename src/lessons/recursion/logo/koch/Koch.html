@@ -1,0 +1,41 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Snow flake</h2>
+
+We will now draw snow flakes using the Koch fractal. A fractal is a
+geometric pattern repeated at every scale.
+
+<p>The general form is a triangle, with each side given by several recursive
+calls. Your work is only to write the code of the <code>snowSide</code> method so 
+that it draws one side of the triangle. To make it easier, each sides are represented 
+in a specific color. Just draw the red things (without changing your pen color), 
+and the other colors will be drawn automatically. </p>
+
+<p>Observe the drawing in each world's objective to understand the pattern's
+logic, and then reproduce it. At level 0, the Koch curve is just a straight line. 
+At level 1, the curve is divided in three thirds, and the middle part is replaced by 
+the two sides of an equilateral triangle of the same length as the segment being removed.
+At level 2, the process is repeated, whith each segments split in three parts and the 
+middle part being replaced by the two sides of an equilateral triangle.</p>
+
+<p>The pseudo-code of the general case is the following:</p>
+<pre>
+  Draw recursively a smaller segment
+  Turn 60 degrees to the left
+  Draw recursively a smaller segment  
+  Turn 120 degrees to the right
+  Draw recursively a smaller segment
+  Turn 60 degrees to the left
+  Draw recursively a smaller segment
+</pre>
+<p>As you can see, the function forward() is not called from the recursive case, only 
+in the base case when there is no recursive call.</p>
+
+
+<p><div class="tip" id="tip-1" alt="Too much letters. Please picture it.">
+<p>Here are the results of the first levels of recursion.</p>
+<img src="KochHint.png" />
+</div></p>
+
+<p>You must write the <code>snowSide()</code> method, which is recursive but 
+<b>do not call snowFlake from snowSide</b>, or you will get very strange and unexpected 
+behaviors.</p>

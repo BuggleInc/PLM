@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class CountTeen extends BatExercise {
 
-	public CountTeen(Lesson lesson) {
-		super(lesson);
+	public CountTeen(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("countTeen");
+		BatWorld myWorld = new BatWorld(game, "countTeen");
 		myWorld.addTest(VISIBLE,  13,20,10,54);
 		myWorld.addTest(VISIBLE,  20,19,13,15);
 		myWorld.addTest(VISIBLE,  20,10,13,42);
@@ -25,7 +26,7 @@ public class CountTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,11,11,11);
 		myWorld.addTest(INVISIBLE, 15,15,15,15);
 
-		templatePython("countTeen", 
+		templatePython("countTeen", new String[] {"Integer","Integer","Integer","Integer"},
 				"def countTeen(a, b, c, d):\n",
 				"		ret=0\n"+
 				"		if (a>12 and a<20):\n"+

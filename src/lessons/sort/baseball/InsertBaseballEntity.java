@@ -44,7 +44,7 @@ public class InsertBaseballEntity extends BaseballEntity {
 	
 	void out(String msg) {
 		if (isSelected())
-			System.out.println(msg);
+			getGame().getLogger().log(msg);
 	}
 	/* END HIDDEN */
 }

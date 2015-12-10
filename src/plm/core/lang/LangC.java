@@ -10,44 +10,45 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
-import plm.core.ui.ResourcesCache;
 import plm.core.utils.ValgrindParser;
 import plm.universe.Entity;
 
 public class LangC extends ProgrammingLanguage {
 
-	public LangC() {
-		super("C","c",ResourcesCache.getIcon("img/lang_c.png"));
+	public LangC(boolean isDebugEnabled) {
+		super("C", "c", isDebugEnabled);
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		
 		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
 		if (sfs == null || sfs.isEmpty()) {
 			String msg = exo.getName()+": No source to compile";
 			System.err.println(msg);
-			exo.lastResult = ExecutionProgress.newCompilationError(msg);				
+			exo.lastResult = ExecutionProgress.newCompilationError(msg, this);	
 			throw new PLMCompilerException(msg, null, null);
 		}
 
 		for (SourceFile sf : sfs){
 			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
-			compile(code,exo.getId(),exo.lastResult);
+			compile(code,exo.getId(),exo.lastResult, i18n);
 			
 		}
 	}
 
 
-	private void compile(String code, String executable, ExecutionProgress lastResult) throws PLMCompilerException{
+	private void compile(String code, String executable, ExecutionProgress lastResult, I18n i18n) throws PLMCompilerException{
 		
 		Runtime runtime = Runtime.getRuntime();
 
@@ -95,7 +96,7 @@ public class LangC extends ProgrammingLanguage {
 				remote = "RemoteHanoi";
 			}else{
 				PLMCompilerException e = new PLMCompilerException("This world is not implemented", null, null);
-				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);				
 				throw e;
 			}
 			
@@ -185,9 +186,9 @@ public class LangC extends ProgrammingLanguage {
 
 			if(resCompilationErr.length()>0){
 				PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
-				System.err.println(Game.i18n.tr("Compilation error:"));
+				System.err.println(i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
-				lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 
 				throw e;
 			}
@@ -200,13 +201,13 @@ public class LangC extends ProgrammingLanguage {
 
 	@Override
 	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old,
-			StudentOrCorrection whatToMutate) {
+			StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
 		
 		return old; /* Nothing to do, actually */
 	}
 
 	@Override
-	public void runEntity(final Entity ent, final ExecutionProgress progress) {
+	public void runEntity(final Entity ent, final ExecutionProgress progress, I18n i18n) {
 		Runtime runtime = Runtime.getRuntime();
 		final StringBuffer resCompilationErr = new StringBuffer();
 
@@ -224,14 +225,17 @@ public class LangC extends ProgrammingLanguage {
 
 			final File valgrindFile=new File(tempdir+"/valgrind_"+nb+".xml");
 			String extension="";
-			String arg1[];
+			String arg1[] = {};
 			String os = System.getProperty("os.name").toLowerCase();
 			final StringBuffer valgrind=new StringBuffer("");
-			String executable;
+			String executable = "";
+			// FIXME: 
+			// How to find executable?
+			/*
 			if(ent.getScript(Game.C)!=null){
 				executable=ent.getScript(Game.C);
 			}else{
-				executable= Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+				executable= getGame().getCurrentLesson().getCurrentExercise().getId();
 			}
 			if (os.indexOf("win") >= 0) {
 				extension=".exe";
@@ -255,16 +259,17 @@ public class LangC extends ProgrammingLanguage {
 				arg1[1]="-c";
 				arg1[2]=valgrind+" "+saveDir.getAbsolutePath()+"/"+executable+""+extension+" "+randomFile.getAbsolutePath();
 			}
+			*/
 			File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 			if(!exec.exists()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
+				System.err.println(i18n.tr("Error, please recompile the exercise"));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
 				}
 				return;
 			}else if(!exec.canExecute() || !exec.isFile()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercice"));
+				System.err.println(i18n.tr("Error, please recompile the exercise"));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
@@ -313,7 +318,7 @@ public class LangC extends ProgrammingLanguage {
 								StringBuffer errmsg = ValgrindParser.parse(valgrindFile);
 								resCompilationErr.append(errmsg);
 								System.err.println(errmsg);
-								progress.details += errmsg;
+								progress.executionError += errmsg;
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}

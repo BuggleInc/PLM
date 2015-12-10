@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class RedTicket extends BatExercise {
-	public RedTicket(Lesson lesson) {
-		super(lesson);
+	public RedTicket(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("redTicket");
+		BatWorld myWorld = new BatWorld(game, "redTicket");
 		myWorld.addTest(VISIBLE, 2, 2, 2) ;
 		myWorld.addTest(VISIBLE, 2, 2, 1) ;
 		myWorld.addTest(VISIBLE, 0, 0, 0) ;
@@ -23,7 +24,7 @@ public class RedTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, 2, 0) ;
 		myWorld.addTest(INVISIBLE, 1, 1, 2) ;
 
-		templatePython("redTicket", 
+		templatePython("redTicket", new String[]{"Int","Int","Int"},
 				"def redTicket(a, b, c):\n",
 				"	if (a == b and b == c and c == 2):\n"+
 				"		return 10\n"+
@@ -33,7 +34,7 @@ public class RedTicket extends BatExercise {
 				"		return 1\n"+
 				"	else:\n"+
 				"		return 0\n");
-		templateScala("redTicket",new String[]{"Int","Int","Int"}, 
+		templateScala("redTicket", new String[]{"Int","Int","Int"}, 
 				"def redTicket(a:Int, b:Int, c:Int):Int = {\n",
 				"	if (a == b && b == c && c == 2)\n"+
 				"		return 10\n"+

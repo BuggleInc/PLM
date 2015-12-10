@@ -1,14 +1,15 @@
 package lessons.welcome.array.array123;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Array123 extends BatExercise {
-	public Array123(Lesson lesson) {
-		super(lesson);
+	public Array123(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("array123");
+		BatWorld myWorld = new BatWorld(game, "array123");
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 3, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 4, 1}) ;
 		myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 1, 2, 3}) ;
@@ -16,11 +17,13 @@ public class Array123 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 1, 2, 3}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1, 1}) ;
+		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1, 3}) ;
+		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 2, 3}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		templatePython("array123", 
+		templatePython("array123", new String[] {"Array[Int]"},
 				"def array123(nums):\n",
 				"  for i in range(len(nums)-2):\n" +
 				"    if nums[i]==1  and  nums[i+1]==2  and  nums[i+2]==3:\n"+

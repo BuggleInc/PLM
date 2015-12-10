@@ -1,0 +1,30 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Iterative Towers of Hanoi</h2>
+
+<p>In this last exercise of the series, we will implement an iterative algorithm
+for the base problem of the Towers of Hanoi (one stack, 3 pegs, no extra movement 
+restriction). </p>
+
+<p>This algorithm is actually very simple: On odd moves, the smallest disk is moved 
+in a given direction (either increasing 0-&gt;1-&gt;2-&gt;0 or decreasing
+2-&lt;1-&lt;0-&lt;2) while on even moves, the only possible move that does not imply the 
+smallest disk is made. You stop as soon as the stack is rebuilt on another location.</p> 
+
+<p>The function that you now need to write takes two parameters: the initial position of the 
+smallest disk (i.e., the peg initially containing the stack) and a boolean indicating whether 
+the smallest disk should move in the increasing order or not.</p>
+
+<p>The simplicity of this algorithm is actually almost deceiving. One could wonder on the 
+interest of the recursive algorithms when such a simple iterative algorithm exists. My personal 
+feeling is that this solution is nice to execute, but almost impossible to devise in the first
+place (I even suspect that the authors built this iterative solution from observations of the
+recursive execution)...</p>
+
+<p>Predicting the effect of this function is also
+difficult: When the small disk moves in the increasing order, the stack is reconstructed on the
+right peg with 5 disks but on the left with 6 disks.</p>
+
+<p>An interesting question is whether such simple iterative algorithms exist for the other 
+variation of the problem. Some were given in the literature (e.g. for
+the cyclic variation). I would happily integrate your solutions to the
+PLM, especially if you can hint (without spoiling) the solution to guide the next ones.</p>      

@@ -8,7 +8,7 @@ public class BacktrackingEntity extends Entity {
 	@Override
 	public void run() {
 		run((BacktrackingPartialSolution) world.getParameter(0));
-		System.out.println("Solution:"+((BacktrackingWorld) world).bestSolution);
+		getGame().getLogger().log("Solution:"+((BacktrackingWorld) world).bestSolution);
 	}
 	
 	protected void run(BacktrackingPartialSolution solution) {

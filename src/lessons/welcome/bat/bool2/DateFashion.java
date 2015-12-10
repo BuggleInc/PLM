@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class DateFashion extends BatExercise {
-	public DateFashion(Lesson lesson) {
-		super(lesson);
+	public DateFashion(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("dateFashion");
+		BatWorld myWorld = new BatWorld(game, "dateFashion");
 		myWorld.addTest(VISIBLE, 5, 10) ;
 		myWorld.addTest(VISIBLE, 5, 2) ;
 		myWorld.addTest(VISIBLE, 5, 5) ;
@@ -24,7 +25,7 @@ public class DateFashion extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 7) ;
 		myWorld.addTest(INVISIBLE, 6, 2) ;
 
-		templatePython("dateFashion", 
+		templatePython("dateFashion", new String[]{"Int","Int"},
 				"def dateFashion(you, date):\n",
 				"	if (you <= 2 or date <= 2):\n"+
 				"		return 0\n"+

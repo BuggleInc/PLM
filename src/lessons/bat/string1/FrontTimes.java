@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class FrontTimes extends BatExercise {
-	public FrontTimes(Lesson lesson) {
-		super(lesson);
+	public FrontTimes(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("frontTimes");
+		BatWorld myWorld = new BatWorld(game, "frontTimes");
 		myWorld.addTest(VISIBLE, "Chocolate", 2) ;
 		myWorld.addTest(VISIBLE, "Chocolate", 3) ;
 		myWorld.addTest(VISIBLE, "Abc", 3) ;
@@ -17,7 +18,7 @@ public class FrontTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "", 4) ;
 		myWorld.addTest(INVISIBLE, "Abc", 0) ;
 
-		templatePython("frontTimes", 
+		templatePython("frontTimes", new String[]{"String","Int"},
 				"def frontTimes(str, n):\n",
 				"  frontLen = 3\n" +
 				"  if frontLen > len(str):\n" +
