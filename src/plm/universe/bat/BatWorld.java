@@ -7,6 +7,7 @@ import javax.script.ScriptEngine;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -59,26 +60,33 @@ public class BatWorld extends World {
 
 	/* World logic */
 	public void addTest(boolean visible, Object...params) {
-		tests.add(new BatTest(getGame(), getName(),visible, params));
+		tests.add(new BatTest(getName(),visible, params));
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
-		if (lang == Game.PYTHON) {
+		if (lang instanceof LangPython) {
 			e.put("batTests", tests);
 		}
 	}
+
 	@Override
 	public String diffTo(World w, I18n i18n) {
+		// Won't use it
+		return "";
+	}
+
+	@Override
+	public String diffTo(World w, I18n i18n, ProgrammingLanguage progLang) {
 		BatWorld other = (BatWorld) w;
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;
 		for (int i=0;i<tests.size();i++) {
-			if (foundError && !tests.get(i).isVisible() && !getGame().isDebugEnabled()) 
+			if (foundError && !tests.get(i).isVisible()) 
 				return sb.toString();
 					
 			if (!tests.get(i).equals(other.tests.get(i))) { 
-				sb.append(other.tests.get(i).getName()+" returned "+other.tests.get(i).getResult()+
-						                               " while "+         tests.get(i).getResult()+" were expected.\n");
+				sb.append(other.tests.get(i).getName(progLang)+" returned "+other.tests.get(i).getResult(progLang)+
+						                               " while "+         tests.get(i).getResult(progLang)+" were expected.\n");
 				foundError = true;
 			}
 		}

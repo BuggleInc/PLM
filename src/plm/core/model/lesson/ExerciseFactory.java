@@ -16,28 +16,32 @@ import plm.core.utils.FileUtils;
 
 public class ExerciseFactory {
 
-	private LogHandler logger;
-	private I18n i18n;
 	private ExerciseRunner exerciseRunner;
 	private ProgrammingLanguage[] programmingLanguages;
 	private Locale[] humanLanguages;
+	private TemplatedSourceFileFactory sourceFileFactory;
 
 	private String rootDirectory = "exercises";
 	
 	public ExerciseFactory(LogHandler logger, I18n i18n, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
-		this.logger = logger;
-		this.i18n = i18n;
 		this.exerciseRunner = exerciseRunner;
 		this.programmingLanguages = programmingLanguages;
 		this.humanLanguages = humanLanguages;
+		this.sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
 	}
 
 	public Exercise cloneExercise(Exercise exo) {
 		return new BlankExercise(exo);
 	}
-	
+
 	public void initializeExercise(Exercise exo, ProgrammingLanguage progLang) {
-		computeSupportedProgrammingLanguages(exo);
+		if(exo instanceof ExerciseTemplatingEntity) {
+			ExerciseTemplatingEntity ete = (ExerciseTemplatingEntity) exo;
+			ete.initSourceFiles(sourceFileFactory, programmingLanguages);
+		}
+		else {
+			computeSupportedProgrammingLanguages(exo);
+		}
 		computeMissions(exo);
 		computeAnswer(exo, progLang);
 	}
@@ -48,7 +52,6 @@ public class ExerciseFactory {
 			String entityPath = rootDirectory + "/" + entityName;
 			if(new File(entityPath).exists()) {
 				exo.addProgLanguage(progLang);
-				TemplatedSourceFileFactory sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
 				SourceFile sourceFile = sourceFileFactory.newSourceFromFile(exo.getId(), progLang, entityPath);
 				exo.addDefaultSourceFile(progLang, sourceFile);
 			}

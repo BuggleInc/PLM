@@ -3,9 +3,13 @@ package plm.core.model.lesson;
 import java.util.HashMap;
 import java.util.Map;
 
+import plm.core.lang.LangJava;
+import plm.core.lang.LangPython;
+import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.session.SourceFile;
+import plm.core.model.session.TemplatedSourceFileFactory;
 import plm.universe.World;
 
 /** This class of Exercises are useful to merge the entity and world within the same class.
@@ -63,62 +67,95 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected Map<ProgrammingLanguage,String> corrections = new HashMap<ProgrammingLanguage, String>();
 	private boolean isSetup = false;
 	
+	private String javaInitialCode = "";
+	private String javaTemplate = "";
+	private int javaOffset = 0;
+	private String javaCorrection = "";
+	
+	private String scalaInitialCode = "";
+	private String scalaTemplate = "";
+	private int scalaOffset = 0;
+	private String scalaCorrection = "";
+	
+	private String pythonInitialCode = "";
+	protected String pythonTemplate = "";
+	private int pythonOffset = 0;
+	protected String pythonCorrection = "";
+	
 	public ExerciseTemplatingEntity(Game game, Lesson lesson) {
 		super(game, lesson);
 	}
-	protected void setup(World[] ws, String entName, String template) {
-		this.tabName=entName;
+	
+	public ExerciseTemplatingEntity(String id, String name) {
+		super(id, name);
+		tabName = Character.toLowerCase(id.charAt(0)) + id.substring(1);
+	}
+	
+	protected void setup(World[] ws, String extraImport, String extraBody) {
 		setupWorlds(ws,0);
-		
-		
-		try {
-			newSourceFromFile(Game.JAVA, entName, getClass().getCanonicalName());
-			addProgLanguage(Game.JAVA);
-		} catch (NoSuchEntityException e1) {
-			throw new RuntimeException("ExerciseTemplatingEntities must be templated in Java for now, and use langTemplate afterward. Sorry -- patch warmly welcome if you manage to improve that piece of mess.");
-		}
-		
-		SourceFile javaFile = sourceFiles.get(Game.JAVA).get(0);
-		
-		javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
-		javaFile.setTemplate  ("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
-		//getGame().getLogger().log("New template: "+sf.getTemplate());
-		
-		if (getProgLanguages().contains(Game.SCALA)) {
-			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);
-			String header = "$package\n"
-					+ "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
-					+ "import plm.universe.World; \n"
-					+ "import scala.collection.JavaConverters._;\n"
-					+ "class "+entName+" extends BatEntity { ";
-			
-			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");
-			scalaFile.setTemplate  (header+scalaFile.getTemplate()  +" }");
-		}
-		
-		computeAnswer();
-		setSetup(true);
 	}
+	
+	public void initSourceFiles(TemplatedSourceFileFactory sourceFileFactory, ProgrammingLanguage[] programmingLanguages)  {
+		for(ProgrammingLanguage progLang: programmingLanguages) {
+			if(progLang instanceof LangJava) {
+				generateJavaSourceFile(sourceFileFactory, (LangJava) progLang);
+			}
+			if(progLang instanceof LangScala) {
+				generateScalaSourceFile(sourceFileFactory, (LangScala) progLang);
+			}
+			if(progLang instanceof LangPython) {
+				generatePythonSourceFile(sourceFileFactory, (LangPython) progLang);
+			}
+		}
+	}
+	
+	protected void templateJava(String entName, String extraImport, String[] types, String initialCode, String correction) {
+		String header = "$package\n"
+				+ "import plm.universe.bat.BatEntity;\n"
+				+ "import plm.universe.bat.BatWorld;\n"
+				+ "import plm.universe.bat.BatTest;\n"
+				+ "import plm.universe.World; \n"
+				+ extraImport
+				+ "public class "+entName+" extends BatEntity { ";
+		
+		StringBuffer skeleton = new StringBuffer("t.setResult( ");
+		skeleton.append(tabName);
+		skeleton.append("( ");
+		for (int i=0;i<types.length;i++) {
+			if (i>0)
+				skeleton.append(", ");
+			skeleton.append("(" + types[i] + ")");
+			skeleton.append("t.getParameter("+i+")");
+		}
+		skeleton.append("));");
+
+		javaInitialCode = initialCode;
+		javaTemplate = header+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+skeleton+"}\n$body }";
+		javaOffset = 10;
+		javaCorrection = header+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+skeleton+"}\n"+initialCode + correction+" }";
+	}
+	
+	public void generateJavaSourceFile(TemplatedSourceFileFactory sourceFileFactory, LangJava java) {
+		SourceFile sourceFile = sourceFileFactory.newSourceFromParams(getId(), javaInitialCode, javaTemplate, javaOffset, javaCorrection, "Error");
+		addDefaultSourceFile(java, sourceFile);
+		addProgLanguage(java);
+	}
+	
 	protected void templatePython(String entName, String initialCode, String correction) {
-		/* The following test is intended to make sure that this function is called before setup() right above.
-		 * This is because setup() needs all programming languages to be declared when it runs */
-		if (isSetup())
-			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
-		if (this.getProgLanguages().contains(Game.PYTHON))
-			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
-		
-		newSource(Game.PYTHON, entName, initialCode, "$body",0,"","");
-		corrections.put(Game.PYTHON, initialCode+correction);
-		addProgLanguage(Game.PYTHON);
+		pythonInitialCode = initialCode;
+		pythonCorrection =  correction;
 	}
+	
+	public void generatePythonSourceFile(TemplatedSourceFileFactory sourceFileFactory, LangPython python) {
+		SourceFile sourceFile = sourceFileFactory.newSourceFromParams(getId(), pythonInitialCode, "$body\n" + pythonTemplate, pythonOffset, "", "");
+		corrections.put(python, pythonInitialCode+pythonCorrection+"\n"+pythonTemplate);
+		addDefaultSourceFile(python, sourceFile);
+		addProgLanguage(python);
+	}
+	
 	protected void templateScala(String entName, String[] types, String initialCode, String correction) {
-		if (isSetup())
-			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
-		if (this.getProgLanguages().contains(Game.SCALA))
-			throw new RuntimeException("The exercise "+getName()+" has two Scala templates. Please fix this bug.");
-		
 		StringBuffer skeleton = new StringBuffer(" val res = ");
-		skeleton.append(entName);
+		skeleton.append(tabName);
 		skeleton.append("( ");
 		for (int i=0;i<types.length;i++) {
 			if (i>0)
@@ -146,9 +183,23 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		skeleton.append("  case e:java.lang.ClassCastException => t.setResult(res)\n"); // primitive types cannot be converted to java, but I don't care (and cannot test whether res is a primitive type)
 		skeleton.append("}\n");
 		
-		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",14,
-				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction,"Error");
-		addProgLanguage(Game.SCALA);
+		
+		String header = "$package\n"
+				+ "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
+				+ "import plm.universe.World; \n"
+				+ "import scala.collection.JavaConverters._;\n"
+				+ "class "+tabName+" extends BatEntity { ";
+		
+		scalaInitialCode = initialCode;
+		scalaTemplate = header + "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body }";
+		scalaOffset = 14;
+		scalaCorrection =  header + "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction+" }";
+	}
+	
+	public void generateScalaSourceFile(TemplatedSourceFileFactory sourceFileFactory, LangScala scala) {
+		SourceFile sourceFile = sourceFileFactory.newSourceFromParams(getId(), scalaInitialCode, scalaTemplate, scalaOffset, scalaCorrection, "Error");
+		addDefaultSourceFile(scala, sourceFile);
+		addProgLanguage(scala);
 	}
 	/*protected void templateBlockly(String entName, String initialCode, String correction, String workspace) {
 		/* The following test is intended to make sure that this function is called before setup() right above.

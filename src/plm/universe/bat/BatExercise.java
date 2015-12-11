@@ -17,10 +17,14 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		super(game, lesson);
 	}
 
+	public BatExercise(String id, String name) {
+		super(id, name);
+	}
+
 	protected void setup(World[] ws) {
 		setup(ws,"","");
 	}
-	protected void setup(World[] ws,String extraImport, String extraBody) {
+	protected void setup(World[] ws, String extraImport, String extraBody) {
 		if (ws.length > 1)
 			throw new RuntimeException("Bat exercises must have at most one world");
 		
@@ -55,13 +59,6 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	 * The most elegant usage here is to pass the same argument than to the scala template, unless when you want a specific conversion 
 	 */
 	protected void templatePython(String entName, String[] types, String initialCode, String correction) {
-		/* The following test is intended to make sure that this function is called before setup() right above.
-		 * This is because setup() needs all programming languages to be declared when it runs */
-		if (isSetup())
-			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
-		if (this.getProgLanguages().contains(Game.PYTHON))
-			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
-		
 		StringBuffer skeleton = new StringBuffer();
 		skeleton.append("for t in batTests:\n");
 		skeleton.append("  t.setResult(");
@@ -76,9 +73,8 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 		skeleton.append("))\n");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"","");
-		corrections.put(Game.PYTHON, initialCode+correction+"\n"+skeleton);
-		addProgLanguage(Game.PYTHON);
+		pythonTemplate = skeleton.toString();
+		super.templatePython(entName, initialCode, correction);
 	}
 	
 	@Override 

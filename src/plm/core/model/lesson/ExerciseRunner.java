@@ -78,7 +78,7 @@ public class ExerciseRunner {
 		while(i<currentWorlds.size()) {
 			World currentWorld = currentWorlds.get(i);
 			World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
-			checkWorld(currentWorld, answerWorld);
+			checkWorld(currentWorld, answerWorld, progLang);
 			i++;
 		}
 
@@ -153,7 +153,7 @@ public class ExerciseRunner {
 		}
 	}
 
-	private void checkWorld(World currentWorld, World answerWorld) {
+	private void checkWorld(World currentWorld, World answerWorld, ProgrammingLanguage progLang) {
 		lastResult.commonErrorText = "";
 		lastResult.commonErrorID = -1;
 		lastResult.totalTests++;
@@ -175,7 +175,7 @@ public class ExerciseRunner {
 				}
 			}
 			*/
-			String diff = answerWorld.diffTo(currentWorld, i18n);
+			String diff = answerWorld.diffTo(currentWorld, i18n, progLang);
 			lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
 			if (diff != null) 
 				lastResult.executionError += ":\n"+diff;

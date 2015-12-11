@@ -28,6 +28,10 @@ public class TemplatedSourceFileFactory {
 		this.i18n = i18n;
 	}
 	
+	public SourceFile newSourceFromParams(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
+		return new SourceFile(null, name, initialBody, template, _offset, _correctionCtn, _errorCtn);
+	}
+
 	public SourceFile newSourceFromFile(String name, ProgrammingLanguage lang, String filename) throws NoSuchEntityException {
 		String patternString = "";
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();

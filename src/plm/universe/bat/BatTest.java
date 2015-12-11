@@ -4,6 +4,9 @@ import java.util.Vector;
 
 import org.python.core.PyInstance;
 
+import plm.core.lang.LangJava;
+import plm.core.lang.LangPython;
+import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
@@ -19,12 +22,11 @@ public class BatTest {
 	private String funName;
 	private Game game;
 	
-	public BatTest(Game game, String funName, boolean visible,Object parameters) {
+	public BatTest(String funName, boolean visible,Object parameters) {
 		this.funName = funName;
 		this.visible = visible;
 		this.correct = false;
 		this.answered = false;
-		this.game = game;
 		
 		/* Cast parameters into an array on need */
 		if (parameters.getClass().isArray()) {
@@ -35,7 +37,7 @@ public class BatTest {
 	}
 
 	public BatTest copy() {
-		BatTest res = new BatTest(game, funName,visible,parameters.clone());
+		BatTest res = new BatTest(funName,visible,parameters.clone());
 		res.result = result;
 		res.expected = expected;
 		res.expectedHasValue = expectedHasValue;
@@ -160,26 +162,26 @@ public class BatTest {
 			return false; // The other cannot be an array because of previous test
 		return o1.equals(o2);
 	}
-	public String stringParameter(Object o) {
+	public String stringParameter(ProgrammingLanguage progLang, Object o) {
 		StringBuffer res = new StringBuffer();
-		displayParameter(o, res, game.getProgrammingLanguage());
+		displayParameter(o, res, progLang);
 		return res.toString();
 	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
 		if (o == null) {
-			if (pl == Game.SCALA)
+			if (pl instanceof LangScala)
 				sb.append("Nil");
-			else if (pl == Game.PYTHON)
+			else if (pl instanceof LangPython)
 				sb.append("None");
 			else
 				sb.append("null");
 			
 		} else if (o instanceof String[]) {
-			if (pl.equals(Game.JAVA)) {
+			if (pl instanceof LangJava) {
 				sb.append("{");
-			} else if (pl.equals(Game.SCALA)) {
+			} else if (pl instanceof LangScala) {
 				sb.append("Array(");
-			} else if (pl.equals(Game.PYTHON)) { 
+			} else if (pl instanceof LangPython) { 
 				sb.append("[");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
@@ -191,11 +193,11 @@ public class BatTest {
 			}
 			
 			sb.deleteCharAt(sb.length()-1);
-			if (pl.equals(Game.JAVA)) {
+			if (pl instanceof LangJava) {
 				sb.append("}");
-			} else if (pl.equals(Game.SCALA)) {
+			} else if (pl instanceof LangScala) {
 				sb.append(")");
-			} else if (pl.equals(Game.PYTHON)) { 
+			} else if (pl instanceof LangPython) { 
 				sb.append("]");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
@@ -204,11 +206,11 @@ public class BatTest {
 			if (o.getClass().equals(Vector.class))
 				o = changeToPrimitiveArray(o);
 			
-			if (pl.equals(Game.JAVA)) {
+			if (pl instanceof LangJava) {
 				sb.append("{");
-			} else if (pl.equals(Game.SCALA)) {
+			} else if (pl instanceof LangScala) {
 				sb.append("Array(");
-			} else if (pl.equals(Game.PYTHON)) { // Python
+			} else if (pl instanceof LangPython) { // Python
 				sb.append("[");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
@@ -231,25 +233,25 @@ public class BatTest {
 			} else {
 				throw new RuntimeException("Unhandled internal type (only Array<int> and Array<Integer> are handled so far)");
 			}
-			if (pl.equals(Game.JAVA)) {
+			if (pl instanceof LangJava) {
 				sb.append("}");
-			} else if (pl.equals(Game.SCALA)) {
+			} else if (pl instanceof LangScala) {
 				sb.append(")");
-			} else if (pl.equals(Game.PYTHON)) { 
+			} else if (pl instanceof LangPython) { 
 				sb.append("]");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
 		} else if (o instanceof Boolean) {
 			Boolean b = (Boolean) o;
-			if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA)) {
+			if (pl instanceof LangJava || pl instanceof LangScala) {
 				sb.append(b ? "true":"false");
-			} else if (pl.equals(Game.PYTHON)) { 
+			} else if (pl instanceof LangPython) { 
 				sb.append(b ? "True" : "False");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
-		} else if (o instanceof String && pl.equals(Game.PYTHON)) {
+		} else if (o instanceof String && pl instanceof LangPython) {
 			sb.append("\""+o+"\"");
 		} else if (o instanceof PyInstance) {
 			sb.append( ((PyInstance)o).__str__());
@@ -257,8 +259,7 @@ public class BatTest {
 			sb.append(o.toString());
 		}		
 	}
-	public String getName() {
-		ProgrammingLanguage pl = game.getProgrammingLanguage();
+	public String getName(ProgrammingLanguage pl) {
 		if (name == null) {
 			StringBuffer sb=new StringBuffer(funName+"(");
 			
@@ -278,14 +279,13 @@ public class BatTest {
 		return objectiveTest;
 	}
 	
-	public String formatAsString() {
-		return getName()+"="+getResult()
-		+(isAnswered() && !isCorrect() ?" (expected: "+stringParameter(expected)+")":"");
+	public String formatAsString(ProgrammingLanguage progLang) {
+		return getName(progLang)+"="+getResult(progLang)
+		+(isAnswered() && !isCorrect() ?" (expected: "+stringParameter(progLang, expected)+")":"");
 	}
 	
-	public String toString() {
-		ProgrammingLanguage pl = game.getProgrammingLanguage();
-		StringBuffer res = new StringBuffer(getName());
+	public String toString(ProgrammingLanguage pl) {
+		StringBuffer res = new StringBuffer(getName(pl));
 		res.append("=");
 		displayParameter(result, res, pl);
 		res.append(" (expected: ");
@@ -293,19 +293,19 @@ public class BatTest {
 		res.append("; isObjective: "+isObjective()+")");
 		return res.toString();
 	}
-	public String getResult() {
+	public String getResult(ProgrammingLanguage progLang) {
 		Object o = result;
 		if (isObjective())
 			o = expected;
 		
 		if (o != null) {
 			StringBuffer sb = new StringBuffer();
-			displayParameter(o, sb, game.getProgrammingLanguage());
+			displayParameter(o, sb, progLang);
 			return sb.toString();
 		} else {
-			if (game.getProgrammingLanguage() == Game.SCALA)
+			if (progLang instanceof LangScala)
 				return "Nil";
-			if (game.getProgrammingLanguage() == Game.PYTHON)
+			if (progLang instanceof LangPython)
 				return "None";
 			return "null";
 		}
