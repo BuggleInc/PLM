@@ -313,14 +313,6 @@ public class BatTest {
 	private boolean expectedHasValue = false;
 	public void setResult(Object r) {
 		result = r;
-		if (!expectedHasValue) {
-			expected = r; // The first time we're set, that's an answer which comes in
-			expectedHasValue = true;
-			result = null;
-		} else {
-			if (expectedHasValue)
-				correct = equalParameter(expected, result);
-			answered = true;
-		}
+		answered = true;
 	}
 }

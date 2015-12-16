@@ -26,7 +26,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
+	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n)
 			throws PLMCompilerException {
 
 		/* Nothing to do */
@@ -37,7 +37,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
 			throws PLMCompilerException {
 		/* Nothing to do */
-		
+
 	}
 
 	@Override
@@ -55,19 +55,19 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			/*
 			if (!foundScript) {
 				StringBuffer sb = new StringBuffer();
-				for (SourceFile sf: exo.getSourceFilesList(this)) 
+				for (SourceFile sf: exo.getSourceFilesList(this))
 					sb.append(sf.getName()+", ");
 
 				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
-				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
+				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 			}
 			*/
 		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
 			String script = sourceFile.getCorrection();
 
-			for (Entity ent : olds) 
+			for (Entity ent : olds)
 				ent.setScript(this, script);
-		} 
+		}
 		// FIXME: Handle  the common errors' cases
 		/*
 		else {
@@ -78,9 +78,9 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,nbError)+"."+getExt()+" since I cannot read it (error was: "+
 						ex.getLocalizedMessage());
 			}
-			String script = 
+			String script = sb.toString();
 
-			for (Entity ent : olds) 
+			for (Entity ent : olds)
 				ent.setScript(this, script);
 		}
 		*/
@@ -108,15 +108,15 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 						ent.setScriptOffset(this, offset);
 					}
 					foundScript = true;
-				} 
+				}
 			}
 			if (!foundScript) {
 				StringBuffer sb = new StringBuffer();
-				for (SourceFile sf: exo.getSourceFilesList(this)) 
+				for (SourceFile sf: exo.getSourceFilesList(this))
 					sb.append(sf.getName()+", ");
 
 				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
-				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
+				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 			}
 		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
 			StringBuffer sb = null;
@@ -128,7 +128,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			}
 			String script = sb.toString();
 
-			for (Entity ent : olds) 
+			for (Entity ent : olds)
 				ent.setScript(this, script);
 		} else {
 			StringBuffer sb = null;
@@ -140,7 +140,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			}
 			String script = sb.toString();
 
-			for (Entity ent : olds) 
+			for (Entity ent : olds)
 				ent.setScript(this, script);
 		}
 
@@ -149,7 +149,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
 	@Override
 	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
-		ScriptEngine engine = null;		
+		ScriptEngine engine = null;
 		try {
 			ScriptEngineManager manager = new ScriptEngineManager();
 			if(getLang().equals("Blockly"))
@@ -165,7 +165,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			/* Inject commands' wrappers that forward the calls to the entity */
 			ent.getWorld().setupBindings(this,engine);
 
-			if (ent.getScript(this) == null) { 
+			if (ent.getScript(this) == null) {
 				System.err.println(i18n.tr("No {0} script source for entity {1}. Please report that bug against the PLM.",this,ent));
 				return;
 			}
@@ -175,7 +175,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			engine.eval(ent.getScript(this));
 
 		} catch (ScriptException e) {
-			if (isDebugEnabled()) 
+			if (isDebugEnabled())
 				System.err.println("Here is the script in "+getLang()+" >>>>"+ent.getScript(this)+"<<<<");
 			if (!handleLangException(e,ent,progress, i18n)) {
 				System.err.println(i18n.tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);
@@ -187,7 +187,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 					" Please report this as a bug against the PLM, with all details allowing to reproduce it.\n" +
 					"Exception message: {1}\n",e.getClass(),e.getLocalizedMessage());
 			System.err.println(msg);
-			for (StackTraceElement elm : e.getStackTrace()) 
+			for (StackTraceElement elm : e.getStackTrace())
 				msg += elm.toString()+"\n";
 
 			progress.setCompilationError(msg);
@@ -199,7 +199,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	protected abstract void setupEntityBindings(Entity ent);
 
 	/** Decipher an exception and produce a meaningful feedback to the user
-	 * 
+	 *
 	 * @return true if it's an exception of that ProgrammingLanguage, and false if the exception should be handled elsewhere
 	 */
 	protected abstract boolean handleLangException(ScriptException e, Entity ent, ExecutionProgress progress, I18n i18n);

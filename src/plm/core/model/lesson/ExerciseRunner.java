@@ -67,7 +67,8 @@ public class ExerciseRunner {
 			}
 		}
 
-		if(lastResult.outcome == ExecutionProgress.outcomeKind.FAIL) {
+		// We may encounter a outcomeKind.FAIL but in scripting languages, we can also have a outcomeKind.COMPILE
+		if(lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
 			return lastResult;
 		}
 

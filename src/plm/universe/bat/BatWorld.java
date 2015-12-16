@@ -7,6 +7,7 @@ import javax.script.ScriptEngine;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -18,7 +19,7 @@ public class BatWorld extends World {
 	public BatWorld(Game game, String funName) {
 		super(game, funName);
 		
-		addEntity(new BatEntity());
+		addEntity(new BatEntity(funName));
 	}
 	public BatWorld(BatWorld w2) {
 		super(w2);
@@ -64,7 +65,7 @@ public class BatWorld extends World {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
-		if (lang instanceof LangPython) {
+		if (lang instanceof LangPython || lang instanceof LangBlockly) {
 			e.put("batTests", tests);
 		}
 	}

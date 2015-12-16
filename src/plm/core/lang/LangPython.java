@@ -5,7 +5,6 @@ import javax.script.ScriptException;
 import org.python.core.PyException;
 import org.xnap.commons.i18n.I18n;
 
-import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
 
@@ -49,7 +48,7 @@ public class LangPython extends ScriptingLanguage {
 			msg.append(i18n.tr("Syntax error: {0}\nLine {1}: {2}\n" +
 					"In doubt, check your indentation, and that you don't mix tabs and spaces\n",
 					cause.value.__findattr__("msg"),
-					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
+					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(this)+1),
 					cause.value.__findattr__("text")
 					));
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
@@ -58,7 +57,7 @@ public class LangPython extends ScriptingLanguage {
 			msg.append(i18n.tr("Indentation error: {0}\nline {1}: {2}\n" +
 					"Please, check that you did not mix tabs and spaces. Use the TAB and shift-TAB keys to clean your indentation.\n",
 					cause.value.__findattr__("msg"),
-					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
+					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(this)+1),
 					cause.value.__findattr__("text")));
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
@@ -104,7 +103,7 @@ public class LangPython extends ScriptingLanguage {
 			 */
 			org.python.core.PyTraceback tb = cause.traceback;
 			while (tb != null) {
-				tb.tb_lineno-= ent.getScriptOffset(Game.PYTHON);
+				tb.tb_lineno-= ent.getScriptOffset(this);
 				if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
 					msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
 				} else {
