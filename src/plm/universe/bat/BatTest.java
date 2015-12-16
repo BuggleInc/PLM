@@ -8,7 +8,6 @@ import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 
 public class BatTest {
 	Object[] parameters;
@@ -20,7 +19,9 @@ public class BatTest {
 	private boolean correct,answered;
 	public boolean objectiveTest=false; // ExoTest messes with it, sorry
 	private String funName;
-	private Game game;
+
+	public static final boolean INVISIBLE = false;
+	public static final boolean VISIBLE = true;
 	
 	public BatTest(String funName, boolean visible,Object parameters) {
 		this.funName = funName;
