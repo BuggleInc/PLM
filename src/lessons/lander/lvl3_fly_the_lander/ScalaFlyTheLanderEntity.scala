@@ -3,7 +3,7 @@ package lessons.lander.lvl3_fly_the_lander;
 import java.util.Iterator;
 import scala.collection.JavaConversions._
 
-import lessons.lander.universe._;
+import plm.universe.lander._
 
 class ScalaFlyTheLanderEntity extends LanderEntity {
   /* BEGIN TEMPLATE */

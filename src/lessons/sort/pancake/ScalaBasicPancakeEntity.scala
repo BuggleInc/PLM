@@ -1,7 +1,7 @@
 package lessons.sort.pancake;
 
-import lessons.sort.pancake.universe.PancakeEntity;
 import plm.core.model.Game
+import plm.universe.pancake.PancakeEntity
 
 class ScalaBasicPancakeEntity extends PancakeEntity {
 

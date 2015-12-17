@@ -1,11 +1,11 @@
 package lessons.lightbot;
 
-import lessons.lightbot.universe.LightBotEntity;
-import lessons.lightbot.universe.LightBotExercise;
-import lessons.lightbot.universe.LightBotWorld;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
+import plm.universe.lightbot.LightBotEntity;
+import plm.universe.lightbot.LightBotExercise;
+import plm.universe.lightbot.LightBotWorld;
 
 public class Board11Sea extends LightBotExercise {
 

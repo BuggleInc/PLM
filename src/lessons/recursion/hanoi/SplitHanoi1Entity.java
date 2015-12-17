@@ -3,7 +3,7 @@ package lessons.recursion.hanoi;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.universe.hanoi.HanoiEntity;
 
 public class SplitHanoi1Entity extends HanoiEntity {
 	

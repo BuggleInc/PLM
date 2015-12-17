@@ -60,8 +60,8 @@ public class BatTest {
 				res[i] = (Integer)l.get(i);
 			
 			return res;
-		} if (input instanceof lessons.recursion.cons.universe.RecList) {
-			input = ((lessons.recursion.cons.universe.RecList)input).toArray();
+		} if (input instanceof plm.universe.cons.RecList) {
+			input = ((plm.universe.cons.RecList)input).toArray();
 		} 
 		if (input.getClass().isArray() && input.getClass().getComponentType().equals(Integer.class)) {
 			Integer[] orig = (Integer[])input;

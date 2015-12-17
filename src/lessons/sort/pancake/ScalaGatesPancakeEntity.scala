@@ -1,10 +1,9 @@
 package lessons.sort.pancake;
 
-import lessons.sort.pancake.universe.PancakeEntity
-import lessons.sort.pancake.universe.PancakeWorld;
+
 import plm.core.model.Game
-
-
+import plm.universe.pancake.PancakeWorld
+import plm.universe.pancake.PancakeEntity
 
 /* This is not exactly the gates algorithm. Here is the original text:
  * <ul><li><b>Case f</b>: <code>t</code> is in a block of length k+1 (the last element is <code>t+ko</code>), <code>t-o</code>

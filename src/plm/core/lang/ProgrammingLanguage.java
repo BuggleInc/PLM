@@ -6,8 +6,6 @@ import java.util.TreeMap;
 
 import javax.script.ScriptEngine;
 
-import lessons.lightbot.universe.LightBotEntity;
-
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
@@ -17,6 +15,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
+import plm.universe.lightbot.LightBotEntity;
 
 /**
  * Captures the whole logic of a given programming language (compiling the user code, running it).

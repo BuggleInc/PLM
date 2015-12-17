@@ -3,8 +3,8 @@ package lessons.sort.pancake;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import lessons.sort.pancake.universe.PancakeEntity;
-import lessons.sort.pancake.universe.PancakeWorld;
+import plm.universe.pancake.PancakeEntity;
+import plm.universe.pancake.PancakeWorld;
 
 public class CohenPancake extends ExerciseTemplated {
 	

@@ -1,9 +1,9 @@
 package lessons.sort.dutchflag;
 
-import lessons.sort.dutchflag.universe.DutchFlagWorld;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.universe.dutchflag.DutchFlagWorld;
 
 public class DutchFlagAlgo extends ExerciseTemplated {
 	

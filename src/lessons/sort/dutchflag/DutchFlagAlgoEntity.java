@@ -1,7 +1,7 @@
 package lessons.sort.dutchflag;
 
-import lessons.sort.dutchflag.universe.DutchFlagEntity;
-import lessons.sort.dutchflag.universe.DutchFlagWorld;
+import plm.universe.dutchflag.DutchFlagEntity;
+import plm.universe.dutchflag.DutchFlagWorld;
 
 public class DutchFlagAlgoEntity extends DutchFlagEntity {
 	

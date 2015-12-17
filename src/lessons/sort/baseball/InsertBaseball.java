@@ -1,9 +1,9 @@
 package lessons.sort.baseball;
 
-import lessons.sort.baseball.universe.BaseballWorld;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.universe.baseball.BaseballWorld;
 
 public class InsertBaseball extends ExerciseTemplated {
 

@@ -1,9 +1,9 @@
 package lessons.sort.dutchflag;
 
-import lessons.sort.dutchflag.universe.DutchFlagEntity._
-import lessons.sort.dutchflag.universe.DutchFlagEntity
-import lessons.sort.dutchflag.universe.DutchFlagWorld;
 import plm.core.model.Game
+import plm.universe.dutchflag.DutchFlagEntity
+import plm.universe.dutchflag.DutchFlagEntity._
+import plm.universe.dutchflag.DutchFlagWorld
 
 class ScalaDutchFlagAlgoEntity extends DutchFlagEntity {
 	

@@ -1,8 +1,8 @@
 package lessons.sort.pancake;
 
-import lessons.sort.pancake.universe.PancakeEntity
-import lessons.sort.pancake.universe.PancakeWorld;
 import plm.core.model.Game
+import plm.universe.pancake.PancakeWorld
+import plm.universe.pancake.PancakeEntity
 
 class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 

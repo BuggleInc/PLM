@@ -3,8 +3,8 @@ package lessons.sort.pancake;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import lessons.sort.pancake.universe.PancakeEntity;
-import lessons.sort.pancake.universe.PancakeWorld;
+import plm.universe.pancake.PancakeEntity;
+import plm.universe.pancake.PancakeWorld;
 
 
 

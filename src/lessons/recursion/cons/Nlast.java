@@ -1,12 +1,12 @@
 package lessons.recursion.cons;
 
-import lessons.recursion.cons.universe.ConsExercise;
-import lessons.recursion.cons.universe.ConsWorld;
-import lessons.recursion.cons.universe.RecList;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
+import plm.universe.cons.ConsExercise;
+import plm.universe.cons.ConsWorld;
+import plm.universe.cons.RecList;
 
 public class Nlast extends ConsExercise {
 

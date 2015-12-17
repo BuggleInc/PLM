@@ -1,7 +1,8 @@
 package lessons.sort.baseball;
 
-import lessons.sort.baseball.universe.BaseballEntity;
-import lessons.sort.baseball.universe.BaseballWorld;
+import plm.universe.baseball.BaseballWorld
+import plm.universe.baseball.BaseballEntity
+
 
 class ScalaSelectBaseballEntity extends BaseballEntity {
 

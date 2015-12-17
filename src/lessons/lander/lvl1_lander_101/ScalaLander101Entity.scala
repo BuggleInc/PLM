@@ -1,6 +1,6 @@
 package lessons.lander.lvl1_lander_101;
 
-import lessons.lander.universe._;
+import plm.universe.lander.LanderEntity
 
 class ScalaLander101Entity extends LanderEntity {
 	override def step():Unit = {

@@ -2,12 +2,12 @@ package lessons.recursion.hanoi;
 
 import java.util.Vector;
 
-import lessons.recursion.hanoi.universe.HanoiDisk;
-import lessons.recursion.hanoi.universe.HanoiEntity;
-import lessons.recursion.hanoi.universe.HanoiWorld;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.universe.hanoi.HanoiDisk;
+import plm.universe.hanoi.HanoiEntity;
+import plm.universe.hanoi.HanoiWorld;
 
 public class HanoiBoard extends ExerciseTemplated {
 

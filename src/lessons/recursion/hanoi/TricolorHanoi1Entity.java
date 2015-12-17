@@ -1,6 +1,6 @@
 package lessons.recursion.hanoi;
 
-import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.universe.hanoi.HanoiEntity;
 
 public class TricolorHanoi1Entity extends HanoiEntity {
 	

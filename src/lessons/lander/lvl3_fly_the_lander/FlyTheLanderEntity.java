@@ -2,8 +2,8 @@ package lessons.lander.lvl3_fly_the_lander;
 
 import java.util.List;
 
-import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.Point;
+import plm.universe.lander.LanderEntity;
+import plm.universe.lander.Point;
 
 public class FlyTheLanderEntity extends LanderEntity {
 	/* BEGIN TEMPLATE */

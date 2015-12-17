@@ -1,6 +1,6 @@
 package lessons.lander.lvl1_lander_101;
 
-import lessons.lander.universe.LanderEntity;
+import plm.universe.lander.LanderEntity;
 
 public class Lander101Entity extends LanderEntity {
   @Override

@@ -1,6 +1,6 @@
 package lessons.sort.pancake;
 
-import lessons.sort.pancake.universe.PancakeEntity;
+import plm.universe.pancake.PancakeEntity;
 
 public class BurnedPancakeEntity extends PancakeEntity {
 	
