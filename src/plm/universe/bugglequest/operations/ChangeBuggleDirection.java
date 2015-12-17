@@ -1,6 +1,7 @@
-package plm.universe.bugglequest;
+package plm.universe.bugglequest.operations;
 
 import plm.universe.Direction;
+import plm.universe.bugglequest.AbstractBuggle;
 
 public class ChangeBuggleDirection extends BuggleOperation {
 	private Direction oldDirection;

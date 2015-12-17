@@ -1,6 +1,7 @@
-package plm.universe.bugglequest;
+package plm.universe.bugglequest.operations;
 
 import plm.universe.Operation;
+import plm.universe.bugglequest.AbstractBuggle;
 
 public abstract class BuggleOperation extends Operation {
 	

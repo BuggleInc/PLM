@@ -1,6 +1,7 @@
-package plm.universe.bugglequest;
+package plm.universe.bugglequest.operations;
 
 import plm.universe.GridWorldCellOperation;
+import plm.universe.bugglequest.BuggleWorldCell;
 
 public abstract class BuggleWorldCellOperation extends GridWorldCellOperation {
 

@@ -1,4 +1,6 @@
-package plm.universe.bugglequest;
+package plm.universe.bugglequest.operations;
+
+import plm.universe.bugglequest.BuggleWorldCell;
 
 public class ChangeCellContent extends BuggleWorldCellOperation{
 

@@ -1,6 +1,8 @@
-package plm.universe.bugglequest;
+package plm.universe.bugglequest.operations;
 
 import java.awt.Color;
+
+import plm.universe.bugglequest.BuggleWorldCell;
 
 public class ChangeCellColor extends BuggleWorldCellOperation{
 

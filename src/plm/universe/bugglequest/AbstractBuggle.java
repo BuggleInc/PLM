@@ -19,6 +19,21 @@ import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import plm.universe.bugglequest.exception.BuggleWallException;
 import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
+import plm.universe.bugglequest.operations.BuggleAlreadyHaveBaggle;
+import plm.universe.bugglequest.operations.BuggleDontHaveBaggle;
+import plm.universe.bugglequest.operations.BuggleEncounterWall;
+import plm.universe.bugglequest.operations.BuggleInOuterSpace;
+import plm.universe.bugglequest.operations.CellAlreadyHaveBaggle;
+import plm.universe.bugglequest.operations.ChangeBuggleBodyColor;
+import plm.universe.bugglequest.operations.ChangeBuggleBrushDown;
+import plm.universe.bugglequest.operations.ChangeBuggleCarryBaggle;
+import plm.universe.bugglequest.operations.ChangeBuggleDirection;
+import plm.universe.bugglequest.operations.ChangeCellColor;
+import plm.universe.bugglequest.operations.ChangeCellContent;
+import plm.universe.bugglequest.operations.ChangeCellHasBaggle;
+import plm.universe.bugglequest.operations.ChangeCellHasContent;
+import plm.universe.bugglequest.operations.MoveBuggleOperation;
+import plm.universe.bugglequest.operations.NoBaggleUnderBuggle;
 
 public abstract class AbstractBuggle extends Entity {
 	int k_val = 0;
