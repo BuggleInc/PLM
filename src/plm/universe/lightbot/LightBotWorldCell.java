@@ -3,9 +3,6 @@ package plm.universe.lightbot;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 
-
-
-
 public class LightBotWorldCell extends GridWorldCell {
 	private boolean light=false; /* whether we have a light */
 	private boolean lightOn=false; /* if we have a light, whether it's on or off */
@@ -110,4 +107,8 @@ public class LightBotWorldCell extends GridWorldCell {
 		return "LBCell[x:"+this.x+";y:"+this.y+";z:"+this.height+";light:"+(light?(lightOn?"on":"off"):"none")+"]";
 	}	
 	
+	@Override
+	public boolean isDefaultCell() {
+		return !light && !lightOn && (height == 0);
+	}
 }

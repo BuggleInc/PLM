@@ -2,6 +2,7 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.utils.ColorMapper;
@@ -10,19 +11,21 @@ import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
+import java.util.Arrays;
+
 public class BuggleWorldCell extends GridWorldCell {
 	private Color color;
 
-	private Color msgColor = DEFAULT_MSG_COLOR; 
-	
+	private Color msgColor = DEFAULT_MSG_COLOR;
+
 	public static final Color DEFAULT_COLOR = Color.white;
 	public static final Color DEFAULT_MSG_COLOR = new Color(0.5f,0.5f,0.9f);
 	public static final Color DEFAULT_BAGGLE_COLOR = new Color(0.82f,0.41f,0.12f);
 
 	private boolean hasBaggle;
-	
+
 	private String content = "";
-	
+
 	private boolean leftWall;
 
 	private boolean topWall;
@@ -35,6 +38,20 @@ public class BuggleWorldCell extends GridWorldCell {
 		this((BuggleWorld) w, c.x, c.y, c.color, c.leftWall, c.topWall, c.hasBaggle(), null);
 		this.content = new String(c.content);
 	}
+
+	public BuggleWorldCell(JSONObject json) {
+		super(json);
+
+		int[] cellColor = (int[]) json.get("color");
+		color = new Color(cellColor[0], cellColor[1], cellColor[2]);
+
+		content = (String) json.get("content");
+
+		hasBaggle = (boolean) json.get("hasBaggle");
+		leftWall = (boolean) json.get("leftWall");
+		topWall = (boolean) json.get("topWall");
+	}
+
 	public BuggleWorldCell copy(GridWorld w) {
 		return new BuggleWorldCell(this,w);
 	}
@@ -60,12 +77,12 @@ public class BuggleWorldCell extends GridWorldCell {
 	public Color getColor() {
 		return this.color;
 	}
-	
+
 	public void setMsgColor(Color c) {
 		this.msgColor = c;
 		world.notifyWorldUpdatesListeners();
 	}
-	
+
 	public Color getMsgColor() {
 		return this.msgColor;
 	}
@@ -93,7 +110,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	@Override
 	public String toString() {
 		String cell;
-		if (hasContent()) 
+		if (hasContent())
 			cell = this.content;
 		if (hasBaggle())
 			cell = "o";
@@ -117,18 +134,18 @@ public class BuggleWorldCell extends GridWorldCell {
 	}
 
 	public void baggleAdd() throws AlreadyHaveBaggleException {
-		if (hasBaggle) 
+		if (hasBaggle)
 			throw new AlreadyHaveBaggleException(getWorld().getGame().i18n.tr("There is already a baggle here."));
 		hasBaggle = true;
-		world.notifyWorldUpdatesListeners();		
+		world.notifyWorldUpdatesListeners();
 	}
-	
+
 	public void baggleRemove() {
 		if (!hasBaggle)
 			throw new NoBaggleUnderBuggleException(getWorld().getGame().i18n.tr("There is no baggle to pick up here."));
 		hasBaggle = false;
 	}
-	
+
 	public boolean hasContent() {
 		return (!this.content.equals(""));
 	}
@@ -136,21 +153,21 @@ public class BuggleWorldCell extends GridWorldCell {
 	public String getContent() {
 		return this.content;
 	}
-	
+
 	public void setContent(String c) {
 		this.content = c;
 		world.notifyWorldUpdatesListeners();
 	}
-	
+
 	public void addContent(String c) {
 		this.content += c;
 		world.notifyWorldUpdatesListeners();
 	}
 	public void emptyContent() {
 		this.content = "";
-		world.notifyWorldUpdatesListeners();		
+		world.notifyWorldUpdatesListeners();
 	}
-			
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -197,7 +214,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	/* This function is called as answer.diffTo(current) */
 	public String diffTo(BuggleWorldCell current, I18n i18n) {
 		StringBuffer sb = new StringBuffer();
-		if (! hasBaggle && current.hasBaggle) 
+		if (! hasBaggle && current.hasBaggle)
 			sb.append(i18n.tr(", there shouldn't be this baggle"));
 		if (  hasBaggle && ! current.hasBaggle)
 			sb.append(i18n.tr(", there should be a baggle"));
@@ -205,7 +222,7 @@ public class BuggleWorldCell extends GridWorldCell {
 			if (current.color != null)
 				sb.append(i18n.tr(", the ground should not be {0}",ColorMapper.color2translated(current.color, i18n)));
 		} else if (!color.equals(current.color)) {
-			sb.append(i18n.tr(", the ground is expected to be {0}, but it is {1}", 
+			sb.append(i18n.tr(", the ground is expected to be {0}, but it is {1}",
 					ColorMapper.color2translated(color, i18n), ColorMapper.color2translated(current.color, i18n)));
 		}
 		if (!content.equals(current.content))
@@ -221,5 +238,23 @@ public class BuggleWorldCell extends GridWorldCell {
 			else
 				sb.append(i18n.tr(", there should be a wall at north"));
 		return sb.toString();
+	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = super.toJSON();
+
+		json.put("color", Arrays.toString(new int[] { color.getRed(), color.getGreen(), color.getBlue() }));
+		json.put("hasBaggle", hasBaggle);
+		json.put("content", content);
+		json.put("leftWall", leftWall);
+		json.put("topWall", topWall);
+
+		return json;
+	}
+
+	@Override
+	public boolean isDefaultCell() {
+		return color.equals(DEFAULT_COLOR) && !hasBaggle && !leftWall && !topWall && content.equals("");
 	}
 }

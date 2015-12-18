@@ -2,6 +2,9 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
+import org.json.simple.JSONObject;
+
+import plm.core.model.ToJSON;
 import plm.universe.Direction;
 
 public class SimpleBuggle extends AbstractBuggle  {
@@ -9,6 +12,11 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public SimpleBuggle() {
 		super();
 	}
+
+	public SimpleBuggle(JSONObject json) {
+		super(json);
+	}
+
 	public SimpleBuggle(BuggleWorld world, String name, int i, int j, Direction north, Color color, Color brush) {
 		super(world, name, i, j, north, color, brush);
 	}
@@ -16,7 +24,7 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public void run() {
 		// Overridden by children
 	}
-	
+
 	/* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
 	public void avance()          { forward(); }
 	public void avance(int steps) { forward(steps); }
@@ -32,4 +40,8 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public void pegarBaggle()    { pickupBaggle(); }
 	public void soltarBaggle()     { dropBaggle(); }
 
+	@Override
+	final public String getJSONType() {
+		return "plm.universe.bugglequest.SimpleBuggle";
+	}
 }

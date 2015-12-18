@@ -6,6 +6,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import plm.core.model.LogHandler;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.utils.ColorMapper;
@@ -86,6 +88,51 @@ public abstract class AbstractBuggle extends Entity {
 		this.y = y;
 		this.direction = direction;
 	}
+
+	public AbstractBuggle(JSONObject json) {
+		super(json);
+
+		JSONArray jsonBodyColors = (JSONArray) json.get("bodyColor");
+		bodyColor = new Color((int) jsonBodyColors.get(0), (int) jsonBodyColors.get(1), (int) jsonBodyColors.get(2));
+
+		JSONArray jsonBrushColors = (JSONArray) json.get("brushColor");
+		brushColor = new Color((int) jsonBrushColors.get(0), (int) jsonBrushColors.get(1), (int) jsonBrushColors.get(2));
+
+		dontIgnoreDirectionDifference = (boolean) json.get("dontIgnoreDirectionDifference");
+		x = (int) json.get("x");
+		y = (int) json.get("y");
+		direction = new Direction((int) json.get("direction"));
+		brushDown = (boolean) json.get("brushDown");
+		carryBaggle = (boolean) json.get("carryBaggle");
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = super.toJSON();
+
+		JSONArray jsonBodyColor = new JSONArray();
+		jsonBodyColor.add(bodyColor.getRed());
+		jsonBodyColor.add(bodyColor.getGreen());
+		jsonBodyColor.add(bodyColor.getBlue());
+
+		JSONArray jsonBrushColor = new JSONArray();
+		jsonBrushColor.add(brushColor.getRed());
+		jsonBrushColor.add(brushColor.getGreen());
+		jsonBrushColor.add(brushColor.getBlue());
+
+		json.put("bodyColor", jsonBodyColor);
+		json.put("brushColor", jsonBrushColor);
+		json.put("dontIgnoreDirectionDifference", dontIgnoreDirectionDifference);
+		json.put("x", x);
+		json.put("y", y);
+		json.put("direction", direction.intValue());
+		json.put("brushDown", brushDown);
+		json.put("carryBaggle", carryBaggle);
+
+		return json;
+	}
+
 	@Override
 	public void copy(Entity e) {
 		super.copy(e);
@@ -842,5 +889,4 @@ public abstract class AbstractBuggle extends Entity {
 		}
 
 	}
-
 }

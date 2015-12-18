@@ -1,5 +1,10 @@
 package plm.universe;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import plm.core.model.Game;
 
 public abstract class GridWorld extends World {
@@ -12,6 +17,33 @@ public abstract class GridWorld extends World {
 	public GridWorld(Game game, String name, int x, int y) {
 		super(game, name);
 		create(x, y);
+	}
+
+	public GridWorld(JSONObject json) {
+		super(json);
+	
+		int x = (int) json.get("sizeX");
+		int y = (int) json.get("sizeY");
+	
+		create(x, y);
+	
+		JSONArray jsonCells = (JSONArray) json.get("cells");
+		for(int i=0; i<jsonCells.size(); i++) {
+			JSONObject jsonCell = (JSONObject) jsonCells.get(i);
+	
+			String type = (String) jsonCell.get("type");
+			int xCell = (int) jsonCell.get("x");
+			int yCell = (int) jsonCell.get("y");
+	
+			try {
+				cells[xCell][yCell] = (GridWorldCell) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonCell);
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException
+					| NoSuchMethodException | SecurityException
+					| ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public GridWorld(GridWorld world2) {
@@ -90,5 +122,28 @@ public abstract class GridWorld extends World {
 	}
 	public void setVisibleGrid(boolean s) {
 		visibleGrid=s;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = super.toJSON();
+
+		// We just need to add the non-default cells
+		JSONArray jsonCells = new JSONArray();
+		for(GridWorldCell[] rowCell : cells) {
+			for(GridWorldCell cell : rowCell) {
+				if(!cell.isDefaultCell()) {
+					jsonCells.add(cell.toJSON());
+				}
+			}
+		}
+
+		json.put("sizeX", sizeX);
+		json.put("sizeY", sizeY);
+		json.put("visibleGrid", visibleGrid);
+		json.put("cells", jsonCells);
+
+		return json;
 	}
 }

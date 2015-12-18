@@ -27,7 +27,7 @@ public class Direction {
 
 	private static final Direction opposites[] = { SOUTH, WEST, NORTH, EAST };
 
-	private Direction(int d) {
+	public Direction(int d) {
 		value = d;
 	}
 

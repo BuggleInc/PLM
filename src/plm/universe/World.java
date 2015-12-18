@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -11,15 +12,18 @@ import java.util.Locale;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.ToJSON;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 
-public abstract class World {
+public abstract class World implements ToJSON {
 	private boolean isDelayed = false; // whether we display interactively or not
 	private boolean isAnswer = false;
 	private boolean isError = false;
@@ -35,6 +39,25 @@ public abstract class World {
 	public World(Game game, String name) {
 		this.name = name;
 		this.game = game;
+	}
+
+	public World(JSONObject json) {
+		this.name = (String) json.get("name");
+
+		JSONArray jsonEntities = (JSONArray) json.get("entities");
+		for(int i=0; i<jsonEntities.size(); i++) {
+			JSONObject jsonEntity = (JSONObject) jsonEntities.get(i);
+			String type = (String) jsonEntity.get("type");
+			try {
+				Entity e = (Entity) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonEntity);
+				entities.add(e);
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException
+					| NoSuchMethodException | SecurityException
+					| ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public World(World w2) {
@@ -391,5 +414,21 @@ public abstract class World {
 		synchronized(steps) {
 			steps.add(operations);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject();
+
+		JSONArray jsonEntities = new JSONArray();
+		for(Entity entity : entities) {
+			jsonEntities.add(entity.toJSON());
+		}
+
+		json.put("type", getJSONType());
+		json.put("name", name);
+		json.put("entities", jsonEntities);
+
+		return json;
 	}
 }

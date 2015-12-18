@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
@@ -32,6 +33,10 @@ public class ExerciseFactory {
 
 	public Exercise cloneExercise(Exercise exo) {
 		return new BlankExercise(exo);
+	}
+
+	public Exercise exerciseFromJson(JSONObject json) {
+		return new BlankExercise(json);
 	}
 
 	public void initializeExercise(Exercise exo, ProgrammingLanguage progLang) {

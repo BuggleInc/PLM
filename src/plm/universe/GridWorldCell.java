@@ -1,6 +1,10 @@
 package plm.universe;
 
-public abstract class GridWorldCell {
+import org.json.simple.JSONObject;
+
+import plm.core.model.ToJSON;
+
+public abstract class GridWorldCell implements ToJSON {
 
 	protected GridWorld world;
 	protected int x;
@@ -11,6 +15,12 @@ public abstract class GridWorldCell {
 		this.x = x;
 		this.y = y;
 	}
+
+	public GridWorldCell(JSONObject json) {
+		x = (int) json.get("x");
+		y = (int) json.get("y");
+	}
+
 	public abstract GridWorldCell copy(GridWorld world);
 
 	public GridWorld getWorld() {
@@ -36,4 +46,17 @@ public abstract class GridWorldCell {
 	public void setWorld(GridWorld w) {
 		this.world = w;
 	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject();
+		
+		json.put("type", getJSONType());
+		json.put("x", x);
+		json.put("y", y);
+		
+		return json;
+	}
+
+	public abstract boolean isDefaultCell();
 }

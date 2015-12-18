@@ -8,8 +8,11 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
 
+import org.json.simple.JSONObject;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.ToJSON;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static getGame().i18n instead.
  * 
@@ -20,7 +23,7 @@ import plm.core.model.Game;
  * Instead, the solution is to use the static field getGame().i18n, as it is done in AbstractBuggle::diffTo().
  */
 
-public abstract class Entity extends Observable {
+public abstract class Entity extends Observable implements ToJSON {
 	protected String name = "(noname)";
 
 	protected World world;
@@ -40,6 +43,10 @@ public abstract class Entity extends Observable {
 			w.addEntity(this);
 			game = world.getGame();
 		}
+	}
+
+	public Entity(JSONObject json) {
+		name = (String) json.get("name");
 	}
 
 	public String getName() {
@@ -175,5 +182,15 @@ public abstract class Entity extends Observable {
 	public void addStep() {
 		world.addStep(operations);
 		operations = new ArrayList<Operation>();
+	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject();
+		
+		json.put("type", getJSONType());
+		json.put("name", name);
+		
+		return json;
 	}
 }

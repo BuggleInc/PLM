@@ -12,20 +12,22 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
+import plm.core.model.ToJSON;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
 
-
-public abstract class Exercise extends Lecture {
+public abstract class Exercise extends Lecture implements ToJSON {
 	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 	
@@ -364,6 +366,44 @@ public abstract class Exercise extends Lecture {
 			return "World is missing...";
 		}
 		return initialWorld.get(0).getAPI(humanLang, progLang);
+	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json =  new JSONObject();
+
+		String entityType = "";
+
+		JSONArray jsonInitialWorlds = new JSONArray();
+		for(World world : initialWorld) {
+			JSONObject jsonInitialWorld = world.toJSON();
+			if(entityType.equals("")) {
+				JSONArray entities = (JSONArray) jsonInitialWorld.get("entities");
+				JSONObject entity = (JSONObject) entities.get(0);
+				entityType = (String) entity.get("type");
+			}
+			jsonInitialWorlds.add(jsonInitialWorld);
+		}
+
+		JSONArray jsonAnswerWorlds = new JSONArray();
+		for(World world : answerWorld) {
+			JSONObject jsonAnswerWorld = world.toJSON();
+
+			// Need to fix the type of the entities
+			JSONArray entities = (JSONArray) jsonAnswerWorld.get("entities");
+			for(int i=0; i<entities.size(); i++) {
+				JSONObject entity = (JSONObject) entities.get(i);
+				entity.put("type", entityType);
+			}
+			jsonAnswerWorlds.add(jsonAnswerWorld);
+		}
+
+		json.put("id", getId());
+		json.put("name", getTrueName());
+		json.put("initialWorlds", jsonInitialWorlds);
+		json.put("answerWorlds", jsonAnswerWorlds);
+
+		return json;
 	}
 }
 

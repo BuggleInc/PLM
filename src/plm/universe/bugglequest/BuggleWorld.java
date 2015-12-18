@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.LangBlockly;
@@ -34,12 +35,17 @@ public class BuggleWorld extends GridWorld {
 	public BuggleWorld(Game game, String name, int x, int y) {
 		super(game, name,x,y);
 	}
+
+	public BuggleWorld(JSONObject json) {
+		super(json);
+	}
+
 	@Override
 	public GridWorldCell newCell(int x, int y) {
 		return new BuggleWorldCell(this, x, y);
 	}
-	/** 
-	 * Create a new world being almost a copy of the first one. Beware, all the buggles of the copy are changed to BuggleRaw. 
+	/**
+	 * Create a new world being almost a copy of the first one. Beware, all the buggles of the copy are changed to BuggleRaw.
 	 * @param world2
 	 */
 	public BuggleWorld(BuggleWorld world2) {
@@ -61,7 +67,7 @@ public class BuggleWorld extends GridWorld {
 		easter=false;
 
 		super.reset(initialWorld);
-	}	
+	}
 	@Override
 	public void setWidth(int w) {
 		super.setWidth(w);
@@ -91,39 +97,39 @@ public class BuggleWorld extends GridWorld {
 	public boolean haveIO() {
 		return true;
 	}
-	
+
 	public static World newFromFile(Game game, String path) throws IOException, BrokenWorldFileException {
 		BuggleWorld res = new BuggleWorld(game, "toto", 1, 1);
 		return res.readFromFile(path);
 	}
-	
+
 	@Override
 	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
 		BuggleWorld res = new BuggleWorld(getGame(), "toto", 1, 1);
 
 		return readFromFile(path,"BuggleWorld",res);
 	}
-	
+
 	public World readFromFile(String path, String classname, BuggleWorld res) throws IOException, BrokenWorldFileException {
 		String name;
 		if (path.endsWith(".map"))
 			System.err.println(getGame().i18n.tr("{0}: The path to the map on disk should not include the .map extension (or it won''t work in jarfiles). Please fix your exercise.",path));
-		
+
 		BufferedReader reader = FileUtils.newFileReader(path, null, "map", false);
-		
+
 		/* Get the world name from the first line */
 		String line = reader.readLine();
 		if (line == null)
 			throw new BrokenWorldFileException(getGame().i18n.tr(
 					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty!)",path));
-		
+
 		Pattern p = Pattern.compile("^"+classname+": ");
 		Matcher m = p.matcher(line);
 		if (!m.find())
 			throw new RuntimeException(getGame().i18n.tr(
 					"{0}.map: This file does not seem to be a serialized BuggleWorld (malformated first line: {1})", path, line));
 		name = m.replaceAll("");
-		
+
 		/* Get the dimension from the second line that is eg "Size: 20x20" */
 		line = reader.readLine();
 		if (line == null)
@@ -131,17 +137,17 @@ public class BuggleWorld extends GridWorld {
 					"{0}.map: End of file reached before world size specification",path));
 		p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
 		m = p.matcher(line);
-		if (!m.find()) 
+		if (!m.find())
 			throw new RuntimeException(getGame().i18n.tr("{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''", line));
-		int width = Integer.parseInt(m.group(1)); 
+		int width = Integer.parseInt(m.group(1));
 		int height = Integer.parseInt(m.group(2));
 
 		res.setName(name);
 		res.setWidth(width);
 		res.setHeight(height);
-		
+
 		line = reader.readLine();
-		
+
 		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),([^,]+),([^,]+),([^,]+),([^,]+),$"); // direction, color, brush, name, haveBaggle|noBaggle
 		Matcher buggleMatcher = bugglePattern.matcher(line);
 		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): ([^,]+?),(\\w+),(\\w+),(\\w+),(.*)$";
@@ -152,7 +158,7 @@ public class BuggleWorld extends GridWorld {
 			cellMatcher = cellPattern.matcher(line);
 			buggleMatcher = bugglePattern.matcher(line);
 
-			if (buggleMatcher.matches()) { 
+			if (buggleMatcher.matches()) {
 				int x=Integer.parseInt( buggleMatcher.group(1) );
 				int y=Integer.parseInt( buggleMatcher.group(2) );
 
@@ -170,7 +176,7 @@ public class BuggleWorld extends GridWorld {
 					direction = Direction.EAST;
 				else if (dirName.equalsIgnoreCase("west"))
 					direction = Direction.WEST;
-				else 
+				else
 					throw new BrokenWorldFileException(getGame().i18n.tr(
 							"Invalid buggle''s direction: {0}", buggleMatcher.group(3)));
 
@@ -246,7 +252,7 @@ public class BuggleWorld extends GridWorld {
 				if (topWallFlag.equalsIgnoreCase("topwall"))
 					cell.putTopWall();
 				if (leftWallFlag.equalsIgnoreCase("leftwall"))
-					cell.putLeftWall();		
+					cell.putLeftWall();
 
 				cell.setColor(color);
 
@@ -256,7 +262,7 @@ public class BuggleWorld extends GridWorld {
 				res.setCell(cell, x, y);
 			} else {
 				throw new BrokenWorldFileException(getGame().i18n.tr(
-						"Parse error. I was expecting a cell or a buggle description but got: {0}",line));					
+						"Parse error. I was expecting a cell or a buggle description but got: {0}",line));
 			}
 
 			line = reader.readLine();
@@ -274,16 +280,16 @@ public class BuggleWorld extends GridWorld {
 		for (Entity e : getEntities()) {
 			AbstractBuggle b = (AbstractBuggle) e;
 			writer.write("Buggle("+b.getX()+","+b.getY()+"): ");
-			
-			if (b.getDirection().equals(Direction.NORTH)) 
+
+			if (b.getDirection().equals(Direction.NORTH))
 				writer.write("north,");
-			if (b.getDirection().equals(Direction.SOUTH)) 
+			if (b.getDirection().equals(Direction.SOUTH))
 				writer.write("south,");
-			if (b.getDirection().equals(Direction.EAST)) 
+			if (b.getDirection().equals(Direction.EAST))
 				writer.write("east,");
-			if (b.getDirection().equals(Direction.WEST)) 
+			if (b.getDirection().equals(Direction.WEST))
 				writer.write("west,");
-			
+
 			writer.write(ColorMapper.color2name(b.getBodyColor())+",");
 			writer.write(ColorMapper.color2name(b.getBrushColor())+",");
 			writer.write(b.getName()+",");
@@ -293,34 +299,34 @@ public class BuggleWorld extends GridWorld {
 				writer.write("noBaggle,");
 			writer.write("\n");
 		}
-			
-		
+
+
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
 				BuggleWorldCell cell = (BuggleWorldCell) getCell(x, y);
 
-				if ((!cell.getColor().equals(Color.white)) || cell.hasBaggle() || 
+				if ((!cell.getColor().equals(Color.white)) || cell.hasBaggle() ||
 						cell.hasLeftWall() || cell.hasTopWall() || cell.hasContent()
 						) {
-					
+
 					writer.write("Cell("+x+","+y+"): ");
 					writer.write(ColorMapper.color2name(cell.getColor())+",");
-					
-					if (cell.hasBaggle()) 
+
+					if (cell.hasBaggle())
 						writer.write("baggle,");
-					else 
+					else
 						writer.write("nobaggle,");
-					
-					if (cell.hasTopWall()) 
+
+					if (cell.hasTopWall())
 						writer.write("topwall,");
-					else 
+					else
 						writer.write("notopwall,");
 
-					if (cell.hasLeftWall()) 
+					if (cell.hasLeftWall())
 						writer.write("leftwall,");
-					else 
+					else
 						writer.write("noleftwall,");
-					
+
 					if (cell.hasContent())
 						writer.write(cell.getContent());
 					writer.write("\n");
@@ -331,7 +337,7 @@ public class BuggleWorld extends GridWorld {
 
 	@Override
 	public String toString() {
-		return super.toString(); 
+		return super.toString();
 	}
 	@Override
 	public int hashCode() {
@@ -344,7 +350,7 @@ public class BuggleWorld extends GridWorld {
 		return result;
 	}
 	public World ignoreDirectionDifference() {
-		for (Entity e: getEntities()) 
+		for (Entity e: getEntities())
 			((AbstractBuggle)e).ignoreDirectionDifference();
 		return this;
 	}
@@ -362,8 +368,8 @@ public class BuggleWorld extends GridWorld {
 			return false;
 		if (sizeY != other.sizeY)
 			return false;
-		for (int x=0; x<getWidth(); x++) 
-			for (int y=0; y<getHeight(); y++) 
+		for (int x=0; x<getWidth(); x++)
+			for (int y=0; y<getHeight(); y++)
 				if (!getCell(x, y).equals(other.getCell(x, y)))
 					return false;
 
@@ -381,7 +387,7 @@ public class BuggleWorld extends GridWorld {
 	public void unselectCell() {
 		selectedCell = null;
 	}
-	
+
 	/* adapters to the cells */
 	public BuggleWorldCell getCell(int x, int y) {
 		return (BuggleWorldCell) super.getCell(x, y);
@@ -396,11 +402,11 @@ public class BuggleWorld extends GridWorld {
 		getCell(x, y).baggleAdd();
 	}
 	public void putTopWall(int x, int y) {
-		getCell(x, y).putTopWall();		
+		getCell(x, y).putTopWall();
 	}
 
 	public void putLeftWall(int x, int y) {
-		getCell(x, y).putLeftWall();		
+		getCell(x, y).putLeftWall();
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
@@ -418,7 +424,7 @@ public class BuggleWorld extends GridWorld {
 				"	entity.back()\n"+
 				"def right():\n"+
 				"	entity.right()\n"+
-				
+
 				"def getWorldHeight():\n"+
 				"	return entity.getWorldHeight()\n"+
 				"def getWorldWidth():\n"+
@@ -451,14 +457,14 @@ public class BuggleWorld extends GridWorld {
 				"   return setBodyColor(c)\n"+
 				"def getGroundColor():\n"+
 				"   return entity.getGroundColor()\n"+
-				
+
 				"def errorMsg(str):\n"+
 				"  entity.seenError(str)\n"+
 				"def haveSeenError():\n"+
 				"  return entity.haveSeenError()\n"+
 				"def seenError():\n"+
 				"  entity.seenError()\n"+
-				
+
 				"def isOverBaggle():\n"+
 				"	return entity.isOverBaggle()\n"+
 				"def isCarryingBaggle():\n"+
@@ -467,7 +473,7 @@ public class BuggleWorld extends GridWorld {
 				"	return entity.pickupBaggle()\n"+
 				"def dropBaggle():\n"+
 				"	return entity.dropBaggle()\n"+
-				
+
 				"def isOverMessage():\n"+
 				"	return entity.isOverMessage()\n"+
 				"def readMessage():\n"+
@@ -476,15 +482,15 @@ public class BuggleWorld extends GridWorld {
 				"   entity.clearMessage()\n"+
 				"def writeMessage(msg):\n"+
 				"   entity.writeMessage(msg)\n"+
-				
+
 				"def getDirection():\n"+
 				"   return entity.getDirection()\n"+
-				
+
 				"def setBrushColor(c):\n"+
 				"    entity.setBrushColor(c)\n"+
 				"def getBrushColor():\n"+
 				"    return entity.getBrushColor()\n"+
-				
+
 				/* BINDINGS TRANSLATION: French */
 				"def avance(pas=1):\n"+
 				"	if pas==1:\n"+
@@ -519,7 +525,7 @@ public class BuggleWorld extends GridWorld {
 				"	return isBackingWall()\n"+
 				"def getCouleurSol():\n"+
 				"   return getGroundColor()\n"+
-				
+
 				"def estSurBiscuit():\n"+
 				"	return isOverBaggle()\n"+
 				"def porteBiscuit():\n"+
@@ -528,7 +534,7 @@ public class BuggleWorld extends GridWorld {
 				"	return pickupBaggle()\n"+
 				"def poseBiscuit():\n"+
 				"	return dropBaggle()\n"+
-				
+
 				"def estSurMessage():\n"+
 				"	return isOverMessage()\n"+
 				"def litMessage():\n"+
@@ -537,21 +543,21 @@ public class BuggleWorld extends GridWorld {
 				"   clearMessage()\n"+
 				"def ecritMessage(msg):\n"+
 				"   writeMessage(msg)\n"+
-				
+
 				"def getCouleurCorps():\n"+
 				"   return getBodyColor()\n"+
 				"def setCouleurCorps(c):\n"+
 				"   setBodyColor(c)\n"+
-				
+
 				"def setCouleurBrosse(c):\n"+
 				"    setBrushColor(c)\n"+
 				"def getCouleurBrosse():\n"+
 				"    return getBrushColor()\n"+
-				
+
 				"def errorMsg(str):\n"+
 				"  entity.seenError(str)\n"
-				
-						);		
+
+						);
 		} else {
 			throw new RuntimeException("No binding of BuggleWorld for "+lang);
 		}
@@ -562,19 +568,18 @@ public class BuggleWorld extends GridWorld {
 		StringBuffer sb = new StringBuffer();
 		if (! other.getName().equals(getName()))
 			sb.append(i18n.tr("  The world''s name is {0}",other.getName()));
-		for (int x=0; x<getWidth(); x++) 
-			for (int y=0; y<getHeight(); y++) 
-				if (!getCell(x, y).equals(other.getCell(x, y))) 
+		for (int x=0; x<getWidth(); x++)
+			for (int y=0; y<getHeight(); y++)
+				if (!getCell(x, y).equals(other.getCell(x, y)))
 					sb.append(i18n.tr("  In ({0},{1})",x,y)+  getCell(x, y).diffTo(other.getCell(x, y), i18n)+".\n");
 		if (entities.size() != other.entities.size()) {
 			sb.append(i18n.tr("  There is {0} entities where {1} were expected.",other.entities.size(),entities.size()));
 		} else {
-			for (int i=0; i<entities.size(); i++)  
-				if (! entities.get(i).equals(other.entities.get(i))) 
+			for (int i=0; i<entities.size(); i++)
+				if (! entities.get(i).equals(other.entities.get(i)))
 					sb.append(i18n.tr("  Something is wrong about buggle ''{0}'':\n",entities.get(i).getName())+
 							((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i), i18n));
 		}
 		return sb.toString();
 	}
-
 }
