@@ -93,15 +93,23 @@ public abstract class AbstractBuggle extends Entity {
 		super(json);
 
 		JSONArray jsonBodyColors = (JSONArray) json.get("bodyColor");
-		bodyColor = new Color((int) jsonBodyColors.get(0), (int) jsonBodyColors.get(1), (int) jsonBodyColors.get(2));
+		int r = ((Long) jsonBodyColors.get(0)).intValue();
+		int g = ((Long) jsonBodyColors.get(1)).intValue();
+		int b = ((Long) jsonBodyColors.get(2)).intValue();
+		bodyColor = new Color(r, g, b);
 
 		JSONArray jsonBrushColors = (JSONArray) json.get("brushColor");
-		brushColor = new Color((int) jsonBrushColors.get(0), (int) jsonBrushColors.get(1), (int) jsonBrushColors.get(2));
+		r = ((Long) jsonBrushColors.get(0)).intValue();
+		g = ((Long) jsonBrushColors.get(1)).intValue();
+		b = ((Long) jsonBrushColors.get(2)).intValue();
+		brushColor = new Color(r, g, b);
 
 		dontIgnoreDirectionDifference = (boolean) json.get("dontIgnoreDirectionDifference");
-		x = (int) json.get("x");
-		y = (int) json.get("y");
-		direction = new Direction((int) json.get("direction"));
+		x = ((Long) json.get("x")).intValue();
+		y = ((Long) json.get("y")).intValue();
+
+		int directionValue = ((Long) json.get("direction")).intValue();
+		direction = new Direction(directionValue);
 		brushDown = (boolean) json.get("brushDown");
 		carryBaggle = (boolean) json.get("carryBaggle");
 	}

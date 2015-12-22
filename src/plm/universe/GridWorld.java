@@ -21,20 +21,20 @@ public abstract class GridWorld extends World {
 
 	public GridWorld(JSONObject json) {
 		super(json);
-	
-		int x = (int) json.get("sizeX");
-		int y = (int) json.get("sizeY");
-	
+
+		int x = ((Long) json.get("sizeX")).intValue();
+		int y = ((Long) json.get("sizeY")).intValue();
+
 		create(x, y);
-	
+
 		JSONArray jsonCells = (JSONArray) json.get("cells");
 		for(int i=0; i<jsonCells.size(); i++) {
 			JSONObject jsonCell = (JSONObject) jsonCells.get(i);
-	
+
 			String type = (String) jsonCell.get("type");
-			int xCell = (int) jsonCell.get("x");
-			int yCell = (int) jsonCell.get("y");
-	
+			int xCell = ((Long) jsonCell.get("x")).intValue();
+			int yCell = ((Long) jsonCell.get("y")).intValue();
+
 			try {
 				cells[xCell][yCell] = (GridWorldCell) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonCell);
 			} catch (InstantiationException | IllegalAccessException
@@ -67,19 +67,19 @@ public abstract class GridWorld extends World {
 				setCell(newCell(i, j), i, j) ;
 	}
 	protected abstract GridWorldCell newCell(int x, int y);
-	
+
 	public void setWidth(int width) {
 		GridWorldCell[][] oldCells = cells;
 		this.cells = new GridWorldCell[width][sizeY];
-		for (int i = 0; i< Math.min(width, sizeX); i++) 
+		for (int i = 0; i< Math.min(width, sizeX); i++)
 			for (int j = 0; j < sizeY; j++)
 				cells[i][j] = oldCells[i][j];
-		
+
 		if (width>sizeX) // need to increase the table size
-			for (int i = sizeX; i< width; i++) 
+			for (int i = sizeX; i< width; i++)
 				for (int j = 0; j < sizeY; j++)
 					cells[i][j] = newCell(i, j);
-			
+
 		sizeX = width;
 	}
 
@@ -93,14 +93,14 @@ public abstract class GridWorld extends World {
 				for (int j = sizeY; j < height; j++)
 					cells[i][j] = newCell(i, j);
 		}
-		
+
 		sizeY = height;
 	}
 
 	public GridWorldCell[][] getCells() {
 		return cells;
 	}
-	
+
 	public GridWorldCell getCell(int x, int y) {
 		return this.cells[x][y];
 	}

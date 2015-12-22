@@ -17,8 +17,8 @@ public abstract class GridWorldCell implements ToJSON {
 	}
 
 	public GridWorldCell(JSONObject json) {
-		x = (int) json.get("x");
-		y = (int) json.get("y");
+		x = ((Long) json.get("x")).intValue();
+		y = ((Long) json.get("y")).intValue();
 	}
 
 	public abstract GridWorldCell copy(GridWorld world);
@@ -50,11 +50,11 @@ public abstract class GridWorldCell implements ToJSON {
 	@SuppressWarnings("unchecked")
 	public JSONObject toJSON() {
 		JSONObject json = new JSONObject();
-		
+
 		json.put("type", getJSONType());
 		json.put("x", x);
 		json.put("y", y);
-		
+
 		return json;
 	}
 
