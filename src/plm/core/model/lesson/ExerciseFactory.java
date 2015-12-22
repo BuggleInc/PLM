@@ -31,11 +31,11 @@ public class ExerciseFactory {
 		this.sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
 	}
 
-	public Exercise cloneExercise(Exercise exo) {
+	public static Exercise cloneExercise(Exercise exo) {
 		return new BlankExercise(exo);
 	}
 
-	public Exercise exerciseFromJson(JSONObject json) {
+	public static Exercise exerciseFromJson(JSONObject json) {
 		return new BlankExercise(json);
 	}
 
