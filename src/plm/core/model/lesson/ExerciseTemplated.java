@@ -11,6 +11,8 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.json.simple.JSONObject;
+
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
@@ -42,6 +44,10 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	public ExerciseTemplated(Exercise exo) {
 		super(exo);
+	}
+
+	public ExerciseTemplated(JSONObject json) {
+		super(json);
 	}
 
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {

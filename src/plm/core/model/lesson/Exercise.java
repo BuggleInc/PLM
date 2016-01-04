@@ -1,6 +1,7 @@
 package plm.core.model.lesson;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -75,8 +76,8 @@ public abstract class Exercise extends Lecture implements ToJSON {
 	}
 
 	public Exercise(Exercise exo) {
-		setId(exo.getId());
-		setName(exo.getTrueName());
+		this(exo.getId(), exo.getTrueName());
+
 		int nbWorlds = exo.getWorldCount();
 		initWorlds(nbWorlds);
 		for(int i=0; i<nbWorlds; i++) {
@@ -95,6 +96,58 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		for(String humanLang : exo.getHumanLanguages()) {
 			String mission = exo.getDefaultMission(humanLang);
 			addMission(humanLang, mission);
+		}
+	}
+
+	public Exercise(JSONObject json) {
+		this((String) json.get("id"), (String) json.get("name"));
+
+		initialWorld = new Vector<World>();
+		JSONArray jsonInitialWorlds = (JSONArray) json.get("initialWorlds");
+		for(int i=0; i<jsonInitialWorlds.size(); i++) {
+			JSONObject jsonWorld = (JSONObject) jsonInitialWorlds.get(i);
+			String type = (String) jsonWorld.get("type");
+			try {
+				World w = (World) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonWorld);
+				initialWorld.add(w);
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException
+					| NoSuchMethodException | SecurityException
+					| ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+		currentWorld = new Vector<World>();
+		for(World w : initialWorld) {
+			currentWorld.addElement(w.copy());
+		}
+
+		answerWorld = new Vector<World>();
+		JSONArray jsonAnswerWorlds = (JSONArray) json.get("answerWorlds");
+		for(int i=0; i<jsonAnswerWorlds.size(); i++) {
+			JSONObject jsonWorld = (JSONObject) jsonAnswerWorlds.get(i);
+			String type = (String) jsonWorld.get("type");
+			try {
+				World w = (World) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonWorld);
+				answerWorld.add(w);
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException
+					| NoSuchMethodException | SecurityException
+					| ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+		JSONObject jsonSourceFiles = (JSONObject) json.get("defaultSourceFiles");
+		for(Object key : jsonSourceFiles.keySet()) {
+			String progLangName = (String) key;
+			JSONObject jsonSourceFile = (JSONObject) jsonSourceFiles.get(progLangName);
+			
+			ProgrammingLanguage progLang = ProgrammingLanguage.getProgrammingLanguage(progLangName);
+			SourceFile sourceFile = new SourceFile(jsonSourceFile);
+			
+			defaultSourceFiles.put(progLang, sourceFile);
 		}
 	}
 
@@ -398,12 +451,17 @@ public abstract class Exercise extends Lecture implements ToJSON {
 			jsonAnswerWorlds.add(jsonAnswerWorld);
 		}
 
+		JSONObject jsonSourceFiles = new JSONObject();
+		for(ProgrammingLanguage progLang : defaultSourceFiles.keySet()) {
+			SourceFile sourceFile = defaultSourceFiles.get(progLang);
+			jsonSourceFiles.put(progLang.getLang(), sourceFile.toJSON());
+		}
+
 		json.put("id", getId());
 		json.put("name", getTrueName());
 		json.put("initialWorlds", jsonInitialWorlds);
 		json.put("answerWorlds", jsonAnswerWorlds);
-
+		json.put("defaultSourceFiles", jsonSourceFiles);
 		return json;
 	}
 }
-
