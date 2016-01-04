@@ -1,5 +1,6 @@
 package plm.core.lang;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -33,6 +34,9 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	int visualIndex;
 	boolean visualFile;
 	
+	public static ProgrammingLanguage defaultProgLang;
+	public static List<ProgrammingLanguage> supportedProgLangs = new ArrayList<ProgrammingLanguage>();
+
 	public ProgrammingLanguage(String l, String ext, boolean isDebugEnabled) {
 		lang = l;
 		this.ext = ext;
@@ -119,5 +123,22 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	}
 	public String nameOfCommonError(Exercise exo, int i) {
 		return exo.nameOfCommonError(i);
+	}
+
+	public static void registerSupportedProgLang(ProgrammingLanguage progLang) {
+		if(defaultProgLang == null) {
+			defaultProgLang = progLang;
+		}
+		supportedProgLangs.add(progLang);
+	}
+
+	public static ProgrammingLanguage getProgrammingLanguage(String progLangName) {
+	    ProgrammingLanguage newProgLang = defaultProgLang;
+	    for(ProgrammingLanguage progLang : supportedProgLangs) {
+	    	if(progLang.getLang().toLowerCase().equals(progLangName.toLowerCase())) {
+	    		newProgLang = progLang;
+		    }
+	    }
+	    return newProgLang;
 	}
 }
