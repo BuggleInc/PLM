@@ -3,11 +3,14 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.simple.JSONObject;
+
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
+import plm.core.model.ToJSON;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 
-public class SourceFile {
+public class SourceFile implements ToJSON {
 
 	protected String name;
 	private String template;
@@ -28,10 +31,36 @@ public class SourceFile {
 		setTemplate( template );
 	}
 
+	public SourceFile(JSONObject json) {
+		this(
+				null,
+				(String) json.get("name"),
+				(String) json.get("body"),
+				(String) json.get("correction"),
+				((Long) json.get("offset")).intValue(),
+				(String) json.get("error"),
+				(String) json.get("template")
+		);
+	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject();
+
+		json.put("name", name);
+		json.put("body", body);
+		json.put("offset", offset);
+		json.put("correction", correction);
+		json.put("error", error);
+		json.put("template", template);
+
+		return json;
+	}
+
 	public SourceFile clone() {
 		return new SourceFile(null, name, body, template, offset, correction, error);
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
@@ -68,7 +97,7 @@ public class SourceFile {
 
 	/**
 	 * Returns the source text that we should compile
-	 * @param runtimePatterns 
+	 * @param runtimePatterns
 	 * 			some last-minute replacement to do (such as package name adjustment)
 	 * @param whatKind
 	 * 			whether we want to retrieve the student-provided content or the correction
@@ -82,7 +111,7 @@ public class SourceFile {
 		} else if(whatToRetrieve == StudentOrCorrection.ERROR) {
 			res = error;
 		} else if (template != null) {
-			res = template.replaceAll("\\$body", this.body+" \n");;			
+			res = template.replaceAll("\\$body", this.body+" \n");;
 		} else {
 			res = this.body;
 		}
@@ -90,7 +119,7 @@ public class SourceFile {
 			for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
-				if (pattern.getValue().contains("\n")) { 
+				if (pattern.getValue().contains("\n")) {
 					getGame().getLogger().log(LogHandler.ERROR, "Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
 							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
 					getGame().getLogger().log(LogHandler.ERROR, "pattern key: "+pattern.getKey());
@@ -145,7 +174,7 @@ public class SourceFile {
 	public int getOffset() {
 		return offset;
 	}
-	
+
 	public Game getGame() {
 		return game;
 	}
