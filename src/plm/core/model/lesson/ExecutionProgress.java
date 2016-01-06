@@ -6,12 +6,14 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.ToJSON;
 
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
-public class ExecutionProgress {
+public class ExecutionProgress implements ToJSON {
 
 	public static enum outcomeKind { COMPILE, FAIL, PASS };
 	public outcomeKind outcome = outcomeKind.PASS;
@@ -39,6 +41,31 @@ public class ExecutionProgress {
 		this.i18n = i18n;
 	}
 
+	public ExecutionProgress(JSONObject json) {
+		outcome = outcomeKind.valueOf((String) json.get("outcome"));
+		compilationError = (String) json.get("compilationError");
+		executionError = (String) json.get("executionError");
+		passedTests = ((Long) json.get("passedTests")).intValue();
+		totalTests = ((Long) json.get("totalTests")).intValue();
+		date = new Date((Long) json.get("date"));
+		language = ProgrammingLanguage.getProgrammingLanguage((String) json.get("language"));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject();
+		
+		json.put("outcome", outcome.toString());
+		json.put("compilationError", compilationError);
+		json.put("executionError", executionError);
+		json.put("passedTests", passedTests);
+		json.put("totalTests", totalTests);
+		json.put("date", date.getTime());
+		json.put("language", language.getLang());
+		
+		return json;
+	}
+	
 	public static ExecutionProgress newCompilationError(String message, ProgrammingLanguage language) {
 		ExecutionProgress ep = new ExecutionProgress(language);
 		ep.compilationError = message;
