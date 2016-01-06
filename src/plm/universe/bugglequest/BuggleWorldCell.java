@@ -2,6 +2,7 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
@@ -10,8 +11,6 @@ import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
-
-import java.util.Arrays;
 
 public class BuggleWorldCell extends GridWorldCell {
 	private Color color;
@@ -42,8 +41,11 @@ public class BuggleWorldCell extends GridWorldCell {
 	public BuggleWorldCell(JSONObject json) {
 		super(json);
 
-		int[] cellColor = (int[]) json.get("color");
-		color = new Color(cellColor[0], cellColor[1], cellColor[2]);
+		JSONArray jsonCellColor = (JSONArray) json.get("color");
+		int r = ((Long) jsonCellColor.get(0)).intValue();
+		int g = ((Long) jsonCellColor.get(1)).intValue();
+		int b = ((Long) jsonCellColor.get(2)).intValue();
+		color = new Color(r, g, b);
 
 		content = (String) json.get("content");
 
@@ -244,7 +246,12 @@ public class BuggleWorldCell extends GridWorldCell {
 	public JSONObject toJSON() {
 		JSONObject json = super.toJSON();
 
-		json.put("color", Arrays.toString(new int[] { color.getRed(), color.getGreen(), color.getBlue() }));
+		JSONArray jsonCellColor = new JSONArray();
+		jsonCellColor.add(color.getRed());
+		jsonCellColor.add(color.getGreen());
+		jsonCellColor.add(color.getBlue());
+
+		json.put("color", jsonCellColor);
 		json.put("hasBaggle", hasBaggle);
 		json.put("content", content);
 		json.put("leftWall", leftWall);
