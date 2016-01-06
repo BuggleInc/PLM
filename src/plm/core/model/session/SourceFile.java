@@ -36,10 +36,10 @@ public class SourceFile implements ToJSON {
 				null,
 				(String) json.get("name"),
 				(String) json.get("body"),
-				(String) json.get("correction"),
+				(String) json.get("template"),
 				((Long) json.get("offset")).intValue(),
-				(String) json.get("error"),
-				(String) json.get("template")
+				(String) json.get("correction"),
+				(String) json.get("error")
 		);
 	}
 
