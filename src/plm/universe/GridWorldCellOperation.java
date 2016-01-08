@@ -1,5 +1,7 @@
 package plm.universe;
 
+import org.json.simple.JSONObject;
+
 public abstract class GridWorldCellOperation extends Operation {
 
 	private GridWorldCell cell;
@@ -11,5 +13,15 @@ public abstract class GridWorldCellOperation extends Operation {
 	
 	public GridWorldCell getCell() {
 		return cell;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = super.toJSON();
+
+		json.put("cell", cell.toJSON());
+
+		return json;
 	}
 }

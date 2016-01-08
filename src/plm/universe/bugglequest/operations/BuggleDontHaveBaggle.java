@@ -5,6 +5,6 @@ import plm.universe.bugglequest.AbstractBuggle;
 public class BuggleDontHaveBaggle extends BuggleOperation {
 	
 	public BuggleDontHaveBaggle(AbstractBuggle buggle) {
-		super("buggleDontHaveBaggle", buggle);
+		super("buggleDontHaveBaggle", buggle.getName());
 	}
 }

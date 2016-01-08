@@ -1,5 +1,7 @@
 package plm.universe.bugglequest.operations;
 
+import org.json.simple.JSONObject;
+
 import plm.universe.bugglequest.BuggleWorldCell;
 
 public class ChangeCellHasContent extends BuggleWorldCellOperation{
@@ -19,5 +21,15 @@ public class ChangeCellHasContent extends BuggleWorldCellOperation{
 
 	public boolean getNewHasContent() {
 		return newHasContent;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = super.toJSON();
+
+		json.put("oldHasContent", oldHasContent);
+		json.put("newHasContent", newHasContent);
+		return json;
 	}
 }

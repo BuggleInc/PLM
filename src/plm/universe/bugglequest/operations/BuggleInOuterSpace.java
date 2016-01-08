@@ -5,6 +5,6 @@ import plm.universe.bugglequest.AbstractBuggle;
 public class BuggleInOuterSpace extends BuggleOperation {
 		
 	public BuggleInOuterSpace(AbstractBuggle buggle) {
-		super("buggleInOuterSpace", buggle);
+		super("buggleInOuterSpace", buggle.getName());
 	}
 }
