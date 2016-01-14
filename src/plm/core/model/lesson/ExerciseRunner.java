@@ -3,6 +3,9 @@ package plm.core.model.lesson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.xnap.commons.i18n.I18n;
 
@@ -17,10 +20,16 @@ import plm.universe.World;
 
 public class ExerciseRunner {
 
+	public static int DEFAULT_NUMBER_OF_TRIES = 10;
+	public static long DEFAULT_WAITING_TIME = 1000;
+	
 	private LogHandler logger;
 	private I18n i18n;
 	private List<Thread> runnerVect = new ArrayList<Thread>();
-	private ExecutionProgress lastResult;
+	private boolean executionStopped = false;
+
+	private int maxNumberOfTries = DEFAULT_NUMBER_OF_TRIES;
+	private long waitingTime = DEFAULT_WAITING_TIME;
 
 	public ExerciseRunner(LogHandler logger, I18n i18n) {
 		this.logger = logger;
@@ -31,11 +40,14 @@ public class ExerciseRunner {
 		this.i18n = i18n;
 	}
 
-	public ExecutionProgress run(Exercise exo, ProgrammingLanguage progLang, String code) {
-		// FIXME: Handle ExecutionProgress
+	public CompletableFuture<ExecutionProgress> run(Exercise exo, ProgrammingLanguage progLang, String code) {
+		// FIXME: Clean this function
+		// FIXME: Don't share lastResult with mutatesEntities() and runEntities()
+
+		final CompletableFuture<ExecutionProgress> future = new CompletableFuture<>();
 
 		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
-		lastResult = new ExecutionProgress(progLang, i18n);
+		ExecutionProgress lastResult = new ExecutionProgress(progLang, i18n);
 
 		exo.reset();
 
@@ -45,45 +57,83 @@ public class ExerciseRunner {
 		SourceFile sf = exo.getDefaultSourceFile(progLang);
 		sf.setBody(code);
 		try {
-			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT);
+			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT, lastResult);
 		} catch (PLMCompilerException e) {
 			e.printStackTrace();
-			return lastResult;
+			return CompletableFuture.completedFuture(lastResult);
 		}
 
 		/*
-		 * Execution time
+		 *  Execution time
 		 */
-		for(World w : currentWorlds) {
-			runEntities(w, progLang, runnerVect, lastResult);
-		}
-		while (runnerVect.size()>0) {
-			try {
-				Thread t = runnerVect.get(0); // leave the thread into the set so that it remains interruptible
-				t.join();
-				runnerVect.remove(t);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+		ExecutorService mainExecutor = Executors.newCachedThreadPool();
+
+		Runnable runCode = new Runnable() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void run() {
+
+				executionStopped = false;
+
+				// Start entities in separate threads
+				for(int i=0; i<currentWorlds.size(); i++) {
+					World w = currentWorlds.get(i);
+					runEntities(w, progLang, runnerVect, lastResult);
+				}
+
+				int numberOfTries = maxNumberOfTries;
+
+				// Watch threads to timeout them if needed
+				// Also watch if user asked to stop the execution
+				while(!executionStopped && numberOfTries > 0 && runnerVect.size()>0) {
+					Thread t = runnerVect.get(0);
+
+					try {
+						t.join(waitingTime);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if(t.isAlive()) {
+						// The task is not done yet
+						numberOfTries--;
+					} else  {
+						numberOfTries = maxNumberOfTries;
+						runnerVect.remove(0);
+					}
+				}
+
+				/*
+				 *  Assessment time
+				 */
+				if(executionStopped || numberOfTries == 0) {
+					for(Thread t : runnerVect) {
+						t.stop();
+					}
+					runnerVect.clear();
+					if(executionStopped) {
+						lastResult.setStopError();
+						executionStopped = false;
+					}
+					else if(numberOfTries == 0) {
+						lastResult.setTimeoutError();
+					}
+					future.complete(lastResult);
+				} else {
+					int i=0;
+					while(lastResult.outcome == ExecutionProgress.outcomeKind.PASS && i<currentWorlds.size()) {
+						World currentWorld = currentWorlds.get(i);
+						World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
+						checkWorld(currentWorld, answerWorld, progLang, lastResult);
+						i++;
+					}
+					future.complete(lastResult);
+				}
 			}
-		}
+		};
 
-		// We may encounter a outcomeKind.FAIL but in scripting languages, we can also have a outcomeKind.COMPILE
-		if(lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			return lastResult;
-		}
+		mainExecutor.submit(runCode);
 
-		/*
-		 * Check time
-		 */
-		int i=0;
-		while(i<currentWorlds.size()) {
-			World currentWorld = currentWorlds.get(i);
-			World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
-			checkWorld(currentWorld, answerWorld, progLang);
-			i++;
-		}
-
-		return lastResult;
+		return future;
 	}
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
@@ -93,7 +143,7 @@ public class ExerciseRunner {
 		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
 			runEntities(w, progLang, runnerVect, null);
 		}
-		while (runnerVect.size()>0) {
+		while(runnerVect.size()>0) {
 			try {
 				Thread t = runnerVect.get(0);
 				t.join();
@@ -104,8 +154,8 @@ public class ExerciseRunner {
 		}
 	}
 
-	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile) throws PLMCompilerException {
-		progLang.compileExo(sourceFile, lastResult, whatToCompile, logger, i18n);
+	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile, ExecutionProgress progress) throws PLMCompilerException {
+		progLang.compileExo(sourceFile, progress, whatToCompile, logger, i18n);
 
 		WorldKind worldKind = null;
 		switch(whatToCompile) {
@@ -134,30 +184,17 @@ public class ExerciseRunner {
 				}
 			});
 
-			Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-			    public void uncaughtException(Thread th, Throwable ex) {
-			        
-			    	if(ex instanceof ThreadDeath) {
-			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
-			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
-				        progress.setExecutionError(i18n.tr(msg));
-				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
-			    	}
-			    }
-			};
-
 			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
 			runner.setPriority(Thread.MIN_PRIORITY);
-			runner.setUncaughtExceptionHandler(h);
 			runner.start();
 			runnerVect.add(runner);
 		}
 	}
 
-	private void checkWorld(World currentWorld, World answerWorld, ProgrammingLanguage progLang) {
-		lastResult.commonErrorText = "";
-		lastResult.commonErrorID = -1;
-		lastResult.totalTests++;
+	private void checkWorld(World currentWorld, World answerWorld, ProgrammingLanguage progLang, ExecutionProgress progress) {
+		progress.commonErrorText = "";
+		progress.commonErrorID = -1;
+		progress.totalTests++;
 
 		if (!currentWorld.winning(answerWorld)) {
 			// FIXME: Enable again commonErrors
@@ -177,13 +214,25 @@ public class ExerciseRunner {
 			}
 			*/
 			String diff = answerWorld.diffTo(currentWorld, i18n, progLang);
-			lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
+			progress.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
 			if (diff != null) 
-				lastResult.executionError += ":\n"+diff;
-			lastResult.executionError += "\n------------------------------------------\n";
-			lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
+				progress.executionError += ":\n"+diff;
+			progress.executionError += "\n------------------------------------------\n";
+			progress.outcome = ExecutionProgress.outcomeKind.FAIL;
 		} else {
-			lastResult.passedTests++;
+			progress.passedTests++;
 		}
+	}
+
+	public void stopExecution() {
+		executionStopped = true;
+	}
+
+	public void setMaxNumberOfTries(int maxNumberOfTries) {
+		this.maxNumberOfTries = maxNumberOfTries;
+	}
+
+	public void setWaitingTime(long waitingTime) {
+		this.waitingTime = waitingTime;
 	}
 }

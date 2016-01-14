@@ -112,6 +112,18 @@ public class ExecutionProgress implements ToJSON {
 		executionError = msg;
 	}
 
+	public void setTimeoutError() {
+		outcome = ExecutionProgress.outcomeKind.FAIL;
+		executionError = i18n.tr("The assessment of your code \"time out\". It may due to an infinite loop inside your program!\n") +
+                i18n.tr("However, if your program doesn't seems to have started, it may indicates that our servers are overloaded. Sorry for the inconvenience and please wait a few moments before submitting your program again.");
+	}
+
+	public void setStopError() {
+		outcome = ExecutionProgress.outcomeKind.FAIL;
+		executionError = i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n") +
+				i18n.tr("Your program must stop by itself to successfully pass the exercise.\n");
+	}
+
 	public String getMsg(I18n i18n) {
 		String res = "";
 		if(outcome == ExecutionProgress.outcomeKind.PASS) {

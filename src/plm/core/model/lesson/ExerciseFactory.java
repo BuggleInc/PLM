@@ -80,7 +80,7 @@ public class ExerciseFactory {
 		if(exo.isProgLangSupported(progLang)) {
 			SourceFile sf = exo.getDefaultSourceFile(progLang);
 			try {
-				exerciseRunner.mutateEntities(exo, sf, progLang, StudentOrCorrection.CORRECTION);
+				exerciseRunner.mutateEntities(exo, sf, progLang, StudentOrCorrection.CORRECTION, null);
 			} catch (PLMCompilerException e) {
 				e.printStackTrace();
 			}
