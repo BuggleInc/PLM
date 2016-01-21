@@ -3,6 +3,8 @@ package plm.core.utils;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.json.simple.JSONArray;
 import org.xnap.commons.i18n.I18n;
 
 
@@ -52,6 +54,27 @@ public class ColorMapper {
 			if (colors[i].equals(c))
 				return i;
 		return -1;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONArray color2json(Color c){
+		JSONArray jsonColor = new JSONArray();
+
+		jsonColor.add(c.getRed());
+		jsonColor.add(c.getGreen());
+		jsonColor.add(c.getBlue());
+		jsonColor.add(c.getAlpha());
+
+		return jsonColor;
+	}
+
+	public static Color json2color(JSONArray jsonColor) {
+		int r = ((Long) jsonColor.get(0)).intValue();
+		int g = ((Long) jsonColor.get(1)).intValue();
+		int b = ((Long) jsonColor.get(2)).intValue();
+		int a = ((Long) jsonColor.get(3)).intValue();
+
+		return new Color(r, g, b, a);
 	}
 	
 	public static String color2translated(Color c, I18n i18n) {

@@ -92,17 +92,11 @@ public abstract class AbstractBuggle extends Entity {
 	public AbstractBuggle(JSONObject json) {
 		super(json);
 
-		JSONArray jsonBodyColors = (JSONArray) json.get("bodyColor");
-		int r = ((Long) jsonBodyColors.get(0)).intValue();
-		int g = ((Long) jsonBodyColors.get(1)).intValue();
-		int b = ((Long) jsonBodyColors.get(2)).intValue();
-		bodyColor = new Color(r, g, b);
+		JSONArray jsonBodyColor = (JSONArray) json.get("bodyColor");
+		bodyColor = ColorMapper.json2color(jsonBodyColor);
 
-		JSONArray jsonBrushColors = (JSONArray) json.get("brushColor");
-		r = ((Long) jsonBrushColors.get(0)).intValue();
-		g = ((Long) jsonBrushColors.get(1)).intValue();
-		b = ((Long) jsonBrushColors.get(2)).intValue();
-		brushColor = new Color(r, g, b);
+		JSONArray jsonBrushColor = (JSONArray) json.get("brushColor");
+		brushColor = ColorMapper.json2color(jsonBrushColor);
 
 		dontIgnoreDirectionDifference = (boolean) json.get("dontIgnoreDirectionDifference");
 		x = ((Long) json.get("x")).intValue();
@@ -119,15 +113,8 @@ public abstract class AbstractBuggle extends Entity {
 	public JSONObject toJSON() {
 		JSONObject json = super.toJSON();
 
-		JSONArray jsonBodyColor = new JSONArray();
-		jsonBodyColor.add(bodyColor.getRed());
-		jsonBodyColor.add(bodyColor.getGreen());
-		jsonBodyColor.add(bodyColor.getBlue());
-
-		JSONArray jsonBrushColor = new JSONArray();
-		jsonBrushColor.add(brushColor.getRed());
-		jsonBrushColor.add(brushColor.getGreen());
-		jsonBrushColor.add(brushColor.getBlue());
+		JSONArray jsonBodyColor = ColorMapper.color2json(bodyColor);
+		JSONArray jsonBrushColor = ColorMapper.color2json(brushColor);
 
 		json.put("bodyColor", jsonBodyColor);
 		json.put("brushColor", jsonBrushColor);
@@ -464,11 +451,12 @@ public abstract class AbstractBuggle extends Entity {
 		if (newy < 0)
 			newy += getWorldHeight();
 
-		if (delta.equals(direction.toPoint())            && isFacingWall() ||
+		if (delta.equals(direction.toPoint()) && isFacingWall() ||
 				delta.equals(direction.opposite().toPoint()) && isBackingWall()) {
 			addOperation(new BuggleEncounterWall(this));
 			stepUI();
-			throw new BuggleWallException(getGame().i18n);
+			// FIXME: Re-enable translation
+			throw new BuggleWallException();
 		}
 
 		addOperation(new MoveBuggleOperation(this, x, y, newx, newy));

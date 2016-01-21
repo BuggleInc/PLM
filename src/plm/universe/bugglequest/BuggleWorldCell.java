@@ -42,10 +42,7 @@ public class BuggleWorldCell extends GridWorldCell {
 		super(json);
 
 		JSONArray jsonCellColor = (JSONArray) json.get("color");
-		int r = ((Long) jsonCellColor.get(0)).intValue();
-		int g = ((Long) jsonCellColor.get(1)).intValue();
-		int b = ((Long) jsonCellColor.get(2)).intValue();
-		color = new Color(r, g, b);
+		color = ColorMapper.json2color(jsonCellColor);
 
 		content = (String) json.get("content");
 
@@ -246,10 +243,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	public JSONObject toJSON() {
 		JSONObject json = super.toJSON();
 
-		JSONArray jsonCellColor = new JSONArray();
-		jsonCellColor.add(color.getRed());
-		jsonCellColor.add(color.getGreen());
-		jsonCellColor.add(color.getBlue());
+		JSONArray jsonCellColor = ColorMapper.color2json(color);
 
 		json.put("color", jsonCellColor);
 		json.put("hasBaggle", hasBaggle);

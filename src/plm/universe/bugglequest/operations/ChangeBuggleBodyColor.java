@@ -5,6 +5,7 @@ import java.awt.Color;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import plm.core.utils.ColorMapper;
 import plm.universe.bugglequest.AbstractBuggle;
 
 public class ChangeBuggleBodyColor extends BuggleOperation {
@@ -30,15 +31,8 @@ public class ChangeBuggleBodyColor extends BuggleOperation {
 	public JSONObject toJSON() {
 		JSONObject json = super.toJSON();
 		
-		JSONArray jsonOldBodyColor = new JSONArray();
-		jsonOldBodyColor.add(oldBodyColor.getRed());
-		jsonOldBodyColor.add(oldBodyColor.getGreen());
-		jsonOldBodyColor.add(oldBodyColor.getBlue());
-		
-		JSONArray jsonNewBodyColor = new JSONArray();
-		jsonNewBodyColor.add(newBodyColor.getRed());
-		jsonNewBodyColor.add(newBodyColor.getGreen());
-		jsonNewBodyColor.add(newBodyColor.getBlue());
+		JSONArray jsonOldBodyColor = ColorMapper.color2json(oldBodyColor);
+		JSONArray jsonNewBodyColor = ColorMapper.color2json(newBodyColor);
 		
 		json.put("oldBodyColor", jsonOldBodyColor);
 		json.put("newBodyColor", jsonNewBodyColor);

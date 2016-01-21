@@ -5,6 +5,7 @@ import java.awt.Color;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import plm.core.utils.ColorMapper;
 import plm.universe.bugglequest.BuggleWorldCell;
 
 public class ChangeCellColor extends BuggleWorldCellOperation{
@@ -31,18 +32,11 @@ public class ChangeCellColor extends BuggleWorldCellOperation{
 	public JSONObject toJSON() {
 		JSONObject json = super.toJSON();
 
-		JSONArray jsonOldColor = new JSONArray();
-		jsonOldColor.add(oldColor.getRed());
-		jsonOldColor.add(oldColor.getGreen());
-		jsonOldColor.add(oldColor.getBlue());
-
-		JSONArray jsonNewColor = new JSONArray();
-		jsonNewColor.add(newColor.getRed());
-		jsonNewColor.add(newColor.getGreen());
-		jsonNewColor.add(newColor.getBlue());
+		JSONArray jsonOldColor = ColorMapper.color2json(oldColor);
+		JSONArray jsonNewColor = ColorMapper.color2json(newColor);
 
 		json.put("oldColor", jsonOldColor);
-		json.put("newBodyColor", jsonNewColor);
+		json.put("newColor", jsonNewColor);
 		return json;
 	}
 }
