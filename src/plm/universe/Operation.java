@@ -26,7 +26,7 @@ public abstract class Operation implements ToJSON {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static String operationsBufferToMsg(JSONArray buffer) {
+	public static String operationsBufferToMsg(String cmd, JSONArray buffer) {
 		JSONObject bufferJson = new JSONObject();
 		bufferJson.put("buffer", buffer);
 
@@ -36,7 +36,7 @@ public abstract class Operation implements ToJSON {
 		String message = mapArgs.toString();
 
 		// Hack to start with {"cmd":"operations", ... }
-		message = "{\"cmd\":\"operations\"," + message.substring(1);
+		message = "{\"cmd\":\"" + cmd + "\"," + message.substring(1);
 
 		return message;
 	}
