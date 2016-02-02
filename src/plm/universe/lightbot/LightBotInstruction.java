@@ -49,7 +49,7 @@ public class LightBotInstruction {
 		}
 	}
 	public void run(LightBotEntity lb) {
-//		getGame().getLogger().log("exec "+toString());
+//		Logger.log("exec "+toString());
 		switch (kind) {
 		case FORWARD: lb.forward(); break;
 		case JUMP: lb.jump(); break;

@@ -5,8 +5,8 @@ import static org.mockito.Mockito.mock;
 import java.util.Locale;
 import java.util.UUID;
 
+import plm.core.log.LogHandler;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	

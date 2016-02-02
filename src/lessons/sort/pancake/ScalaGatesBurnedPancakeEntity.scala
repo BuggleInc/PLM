@@ -73,7 +73,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 		val o = getPancakeRadius(pos+1) - radius;
 		
 		if (o != -1 && o != 1) {
-			getGame().getLogger().log("Asked to compute the block length, but the step o is "+o+" instead of +1 or -1. " +
+			Logger.log("Asked to compute the block length, but the step o is "+o+" instead of +1 or -1. " +
 					"The length is then 1, but you are violating a precondition somehow");
 			return 1;
 		}
@@ -111,7 +111,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 			System.out.print("{");
 			for (rank <- 0 to stackSize -1) 
 				System.out.print(""+getPancakeRadius(rank)+", ");
-			getGame().getLogger().log("}");
+			Logger.log("}");
 		}
 		
 		while(true) {
@@ -148,14 +148,14 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 					if (rank == posT)
 						System.out.print("t;" );
 
-					getGame().getLogger().log("");
+					Logger.log("");
 				}
 			}
 
 			if (isFree(posT)) {			
 				if (isFree(posTPlus)) { /* CASE A: t and t+o free */
 					if (debug>0)
-						getGame().getLogger().log("Case A+");
+						Logger.log("Case A+");
 					if(isPancakeUpsideDown(posT)){
 						if(isPancakeUpsideDown(posTPlus)){
 							flip(posTPlus+1);
@@ -175,7 +175,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 					doneA = true;
 				} else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
 					if (debug>0)
-						getGame().getLogger().log("Case A-");
+						Logger.log("Case A-");
 					if(isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
 						flip(posTMinus+1);
 						flip(1);
@@ -197,7 +197,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 
 				} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
 					if (debug>0)
-						getGame().getLogger().log("Case B+");
+						Logger.log("Case B+");
 					if(!isPancakeUpsideDown(posT)){
 						flip(1);
 					}
@@ -205,7 +205,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 					doneB = true;
 				} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
 					if (debug>0)
-						getGame().getLogger().log("Case B-");
+						Logger.log("Case B-");
 					if(isPancakeUpsideDown(posT)){
 						flip(1);
 					}
@@ -214,7 +214,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 
 				} else if (Math.min(posTPlus,posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
 					if (debug>0)
-						getGame().getLogger().log("Case C");
+						Logger.log("Case C");
 					if(!isPancakeUpsideDown(posT) && posTMinus<posTPlus || isPancakeUpsideDown(posT) && posTMinus>posTPlus){
 						flip(1);
 					}
@@ -226,7 +226,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 
 				} else {
 					if (debug>0)
-						getGame().getLogger().log("Case Cbis");
+						Logger.log("Case Cbis");
 					if(isPancakeUpsideDown(posT) && posTMinus==(-99) || !isPancakeUpsideDown(posT) && posTPlus==(-99)){
 						flip(1);
 					}
@@ -240,18 +240,18 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 					if (tRadius != 1) // all reverse 
 						flip(stackSize);
 					if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && world.asInstanceOf[PancakeWorld].wasRandom) {
-						getGame().getLogger().log("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
+						Logger.log("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
 						System.out.print("{");
 						for (rank <- 0 to stackSize) 
 							System.out.print(""+origSizes(rank)+", ");
-						getGame().getLogger().log("}");
+						Logger.log("}");
 					}
 					return;
 				}
 
 				if (isFree(posTPlus)) {          /* CASE D: t in a block, t+1 free */
 					if (debug>0)
-						getGame().getLogger().log("Case D+");
+						Logger.log("Case D+");
 					if(isPancakeUpsideDown(posTPlus)){
 						flip(posTPlus+1);
 						flip(1);
@@ -262,7 +262,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 
 				} else if (isFree(posTMinus)) {  /* CASE D: t in a block, t-1 free */
 					if (debug>0)
-						getGame().getLogger().log("Case D-");
+						Logger.log("Case D-");
 					if(!isPancakeUpsideDown(posTMinus)){
 						flip(posTMinus+1);
 						flip(1);
@@ -273,20 +273,20 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 
 				} else if (isFirst(posTPlus)) {  /* CASE E: t in a block, t+1 first element */
 					if (debug>0)
-						getGame().getLogger().log("Case E+");
+						Logger.log("Case E+");
 					flip(posTPlus);
 					doneE = true;
 
 				} else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
 					if (debug>0)
-						getGame().getLogger().log("Case E-");
+						Logger.log("Case E-");
 					flip(posTMinus);
 					doneE = true;
 
 				}else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
 					doneF = true;
 					if (debug>0)
-						getGame().getLogger().log("Case F+");
+						Logger.log("Case F+");
 					flip(blockLength());
 					flip(posTPlus + 1);
 					val newPos = getRankOf(tRadius);
@@ -296,7 +296,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 				} else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
 					doneF = true;
 					if (debug>0)
-						getGame().getLogger().log("Case F-");
+						Logger.log("Case F-");
 					flip(blockLength());
 					flip(posTMinus + 1);
 					val newPos = getRankOf(tRadius);
@@ -309,7 +309,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 					if (isFree(pos) || isFirst(pos)) {
 						doneG = true;
 						if (debug>0)
-							getGame().getLogger().log("Case G");
+							Logger.log("Case G");
 						if((isPancakeUpsideDown(pos) && o>0) || (!isPancakeUpsideDown(pos) && o<0)){
 							flip(pos+1);
 							flip(1);
@@ -322,7 +322,7 @@ class ScalaGatesBurnedPancakeEntity extends PancakeEntity {
 					} else {
 						doneH = true;
 						if (debug>0)
-							getGame().getLogger().log("Case H");
+							Logger.log("Case H");
 						flip(pos+1);
 						flip(getRankOf(tRadius+k*o));
 					}

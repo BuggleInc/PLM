@@ -20,9 +20,10 @@ import org.junit.runners.Parameterized.Parameters;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.LogHandler;
+import plm.core.log.Logger;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -60,7 +61,7 @@ public class ExoTest {
 				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
 				System.exit(1);
 			}
-			g.getLogger().log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
+			Logger.log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
 				System.exit(1);
@@ -75,8 +76,8 @@ public class ExoTest {
 					alreadySeenExercises.add(l);
 				}
 		}
-		g.getLogger().log("There is currently "+result.size()+" exercises in our database. Yes sir.");
-		g.getLogger().log("");
+		Logger.log("There is currently "+result.size()+" exercises in our database. Yes sir.");
+		Logger.log("");
 		
 		//g.switchDebug();		
 		g.setLocale(new Locale("en"));
@@ -121,7 +122,7 @@ public class ExoTest {
 		exo.lastResult = new ExecutionProgress(lang);
 		
 		try {
-			exo.compileAll(null, StudentOrCorrection.CORRECTION);
+			exo.compileAll(StudentOrCorrection.CORRECTION);
 			if (exo.lastResult.compilationError != null && ! exo.lastResult.compilationError.equals(""))
 				fail(exo.getId()+": compilation error: " + exo.lastResult.compilationError);
 

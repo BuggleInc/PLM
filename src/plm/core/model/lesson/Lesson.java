@@ -16,6 +16,7 @@ import org.json.simple.JSONObject;
 
 import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
@@ -27,18 +28,18 @@ public abstract class Lesson implements HumanLangChangesListener {
 	private String id;
 	private String description;
 	private String imgPath;
-	
+
 	public static enum LoadingOutcome {SUCCESS,FAIL}
-	
+
 	private LoadingOutcome LoadingOutcomeState = LoadingOutcome.SUCCESS;
 
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
-	
+
 	protected Vector<Lecture> rootLectures = new Vector<Lecture>(); /* To display the graph */
-	
+
 	protected Lecture currentExercise;
-	
+
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
 	+ "  <style>\n"
 	+ "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
@@ -54,7 +55,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		id = getClass().getCanonicalName().replaceAll(".Main$","");
 		id = id.replaceAll("^lessons.", "");
 	}
-	
+
 	public void loadLesson() {
 		try {
 			loadExercises();
@@ -68,7 +69,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		} catch (InterruptedException e) {
 			System.err.println("Interrupted while waiting for the lesson to load.");
 			e.printStackTrace();
-		} 
+		}
 		/* Compute the lesson summary for the next time we start the PLM */
 		for (ProgrammingLanguage lang: Game.programmingLanguages) {
 			int possible = 0;
@@ -87,17 +88,17 @@ public abstract class Lesson implements HumanLangChangesListener {
 			game.studentWork.setPossibleExercises(id, lang, possible);
 		}
 	}
-	
+
 	public String getId() {
 		return id;
 	}
-	
+
 	private boolean aboutLoaded = false;
 
 	public void resetAboutLoaded() {
 		this.aboutLoaded = false;
 	}
-	
+
 	private void loadAboutAndName() {
 		aboutLoaded = true;		/* read it */
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
@@ -110,15 +111,15 @@ public abstract class Lesson implements HumanLangChangesListener {
 			return;
 		}
 		String str = sb.toString();
-		
+
 		/* search the mission name */
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			getGame().getLogger().log(getGame().i18n.tr("Cannot find the name of mission in {0}.html",filename));
+			Logger.log(getGame().i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		name = m.group(1);
 		/* get the mission explanation */
-		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		
+		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";
 	}
 	public String getName() {
 		if (!aboutLoaded)
@@ -137,7 +138,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		return rootLectures;
 	}
 	public Lecture addExercise(Lecture exo) {
-		lectures.add(exo);		
+		lectures.add(exo);
 		rootLectures.add(exo);
 		if (rootExo == null) {
 			rootExo = exo;
@@ -147,7 +148,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 	}
 	public Lecture addExercise(Lecture exo, Lecture previousExo) {
 		lectures.add(exo);
-		
+
 		if (rootExo == null) {
 			rootExo = exo;
 		}
@@ -172,7 +173,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 	public void setCurrentExercise(String exoName) {
 		setCurrentExercise(getExercise(exoName));
 	}
-	
+
 	public int exerciseCount() {
 		return this.lectures.size();
 	}
@@ -194,14 +195,14 @@ public abstract class Lesson implements HumanLangChangesListener {
 	public int getExerciseCount() {
 		return this.lectures.size();
 	}
-	
+
 	public LoadingOutcome getLoadingOutcomeState() {
 		return LoadingOutcomeState;
 	}
 	public void setLoadingOutcomeState(LoadingOutcome loadingOutcomeState) {
 		LoadingOutcomeState = loadingOutcomeState;
 	}
-	
+
 	public String getDescription() {
 		if(description == null) {
 			setDescription("short_desc");
@@ -211,13 +212,14 @@ public abstract class Lesson implements HumanLangChangesListener {
 
 	public void setDescription(String name) {
 		String filename = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
+		Logger.log("SetDescription: " + filename);
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html",true);
 		} catch (IOException ex) {
 			filename += ".html";
 		}
-		
+
 		description = sb != null? sb.toString() : "";
 	}
 
@@ -231,16 +233,16 @@ public abstract class Lesson implements HumanLangChangesListener {
 	public void setImgPath(String name) {
 		imgPath = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
 	}
-	
+
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		loadAboutAndName();
 		setDescription("short_desc");
 	}
-	
+
 	public Game getGame() {
 		return game;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public JSONObject toJSON() {
 		JSONObject json = new JSONObject();
@@ -249,7 +251,7 @@ public abstract class Lesson implements HumanLangChangesListener {
 		json.put("lectures", getExercisesGraph(rootLectures));
 		return json;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public JSONArray getExercisesGraph(Vector<Lecture> lectures) {
 		Locale[] locales = { new Locale("en"), new Locale("fr"), new Locale("pt_BR") };

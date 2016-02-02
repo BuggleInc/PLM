@@ -37,7 +37,7 @@ class ScalaInsertBaseballEntity extends BaseballEntity {
 	
 	def out(msg:String) {
 		if (isSelected())
-			getGame().getLogger().log(msg);
+			Logger.log(msg);
 	}
 	/* END HIDDEN */
 }

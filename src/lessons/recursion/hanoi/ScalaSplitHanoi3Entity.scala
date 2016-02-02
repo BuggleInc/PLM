@@ -26,7 +26,7 @@ class ScalaSplitHanoi3Entity extends HanoiEntity {
   }
   def hanoi_extra(height:Int, src:Int, other:Int, used:Int, dst:Int):Unit = {
     //for (int i=6;i>height;i--) System.out.print(" ");
-    //getGame().getLogger().log("Extra "+height+", "+src+", "+other+", "+used+", "+dst);
+    //Logger.log("Extra "+height+", "+src+", "+other+", "+used+", "+dst);
     if (height<=0)
       return;
     if (height==1) 

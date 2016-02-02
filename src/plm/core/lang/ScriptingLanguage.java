@@ -10,7 +10,6 @@ import javax.script.ScriptException;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -26,7 +25,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n)
+	public void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, I18n i18n)
 			throws PLMCompilerException {
 
 		/* Nothing to do */
@@ -34,7 +33,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
 	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
-			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
+			StudentOrCorrection whatToCompile, I18n i18n)
 			throws PLMCompilerException {
 		/* Nothing to do */
 

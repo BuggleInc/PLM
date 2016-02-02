@@ -24,8 +24,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.LogHandler;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;

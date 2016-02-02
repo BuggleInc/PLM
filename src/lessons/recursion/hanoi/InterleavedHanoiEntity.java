@@ -40,7 +40,7 @@ public class InterleavedHanoiEntity extends HanoiEntity {
 	public void interleavedHanoi(int height, int src1,int src2, int other, int dst) {
 		/* BEGIN SOLUTION */
 		//for (int i=4;i>height;i--) System.out.print(" ");
-		//getGame().getLogger().log("solve("+height+","+src1+","+src2+","+other+","+dst+")");
+		//Logger.log("solve("+height+","+src1+","+src2+","+other+","+dst+")");
 		if (height > 0) {
 			hanoi(height-1, src1,dst,other);
 			move(src1,dst);
@@ -51,7 +51,7 @@ public class InterleavedHanoiEntity extends HanoiEntity {
 	}
 	private void hanoi(int height, int src, int other, int dst) {
 		//for (int i=4;i>height;i--) System.out.print(" ");
-		//getGame().getLogger().log("hanoi("+height+","+src+","+other+","+dst+")");
+		//Logger.log("hanoi("+height+","+src+","+other+","+dst+")");
 		if (height>0) {
 			hanoi(height-1, src,dst,other);
 			move(src,dst);

@@ -18,8 +18,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import plm.core.log.LogHandler;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
 

@@ -3,6 +3,7 @@ package plm.universe.lightbot;
 import java.awt.Point;
 import java.io.BufferedWriter;
 
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
@@ -83,7 +84,7 @@ public class LightBotEntity extends Entity  {
 		if (getCellNeighbor(getDirection().toPoint()).getHeight() == getCell().getHeight())
 			move();
 		else 
-			getGame().getLogger().log("facing wall");
+			Logger.log("facing wall");
 	}
 	public void jump(){
 		int heightHere = getCell().getHeight();
@@ -93,7 +94,7 @@ public class LightBotEntity extends Entity  {
 		     (heightHere > heightThere /*jump down*/))
 			move();
 		else 
-			getGame().getLogger().log("cannot jump here");
+			Logger.log("cannot jump here");
 	}
 
 	private void move() {

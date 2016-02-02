@@ -17,7 +17,7 @@ public class IterativeHanoiEntity extends HanoiEntity {
 		do {
 			if (count%2 == 0) {
 				int next = (small+3+(increasing?1:-1)) % 3;
-				//getGame().getLogger().log("move("+small+","+next+")");
+				//Logger.log("move("+small+","+next+")");
 				move(small, next);
 				small=next;
 			}

@@ -3,6 +3,7 @@ package plm.universe.baseball;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.baseball.operations.MoveOperation;
 
@@ -128,7 +129,7 @@ public class BaseballEntity extends Entity {
 				((BaseballWorld) world).assertSorted(str);
 				break;
 			default:
-				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
+				Logger.log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

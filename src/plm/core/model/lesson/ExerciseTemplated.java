@@ -16,6 +16,7 @@ import org.json.simple.JSONObject;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
@@ -34,7 +35,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	public ExerciseTemplated(String id, String name) {
 		super(id, name);
 	}
-	
+
 	public ExerciseTemplated(Game game, Lesson lesson) {
 		super(game, lesson,null);
 	}
@@ -130,7 +131,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 1: /* template head */
 				correction.append(line+"\n");
 				if (line.contains("BEGIN TEMPLATE")) {
-					getGame().getLogger().log(LogHandler.ERROR, getGame().i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
+					Logger.log(getGame().i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("public class ")){
 					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
@@ -151,7 +152,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 2: /* solution */
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
-					getGame().getLogger().log(LogHandler.ERROR, getGame().i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
+					Logger.log(getGame().i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					if (seenTemplate)
@@ -169,7 +170,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
-						getGame().getLogger().log(LogHandler.ERROR, getGame().i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+						Logger.log(getGame().i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					throw new RuntimeException(getGame().i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
@@ -192,7 +193,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else {
 					if (line.contains("END TEMPLATE"))
 						if (!seenTemplate)
-							getGame().getLogger().log(LogHandler.ERROR, getGame().i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+							Logger.log(getGame().i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					tail.append(line+"\n");
 				}
 				break;
@@ -216,9 +217,9 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		if (state == 3) {
 			if (seenTemplate)
-				getGame().getLogger().log(LogHandler.ERROR, getGame().i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
+				Logger.log(getGame().i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
 		} else if (state != 4)
-			getGame().getLogger().log(LogHandler.ERROR, getGame().i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
+			Logger.log(getGame().i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
@@ -285,7 +286,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
 
 					if (getGame().isDebugEnabled())
-						getGame().getLogger().log("Replace all "+parts[1]+" to "+parts[2]);
+						Logger.log("Replace all "+parts[1]+" to "+parts[2]);
 					template = template.replaceAll(parts[1], parts[2]);
 					initialContent = initialContent.replaceAll(parts[1], parts[2]);
 					skelContent = skelContent.replaceAll(parts[1], parts[2]);
@@ -295,10 +296,10 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		/*if (this.debug) {
-			getGame().getLogger().log("<<<<<<<<template:"+template);
-			getGame().getLogger().log("<<<<<<<<debugCtn:"+debugContent);
-			getGame().getLogger().log("<<<<<<<<initialContent:"+initialContent);
-		    getGame().getLogger().log("<<<<<<<<Skel: "+skelContent);
+			Logger.log("<<<<<<<<template:"+template);
+			Logger.log("<<<<<<<<debugCtn:"+debugContent);
+			Logger.log("<<<<<<<<initialContent:"+initialContent);
+		    Logger.log("<<<<<<<<Skel: "+skelContent);
 		}*/
 
 		if (skelContent.length()>0) {
@@ -354,7 +355,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					searchedName = m.replaceAll("");
 				}
 				if (getGame().isDebugEnabled())
-					getGame().getLogger().log("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
+					Logger.log("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
 				if (sf.getName().equals(searchedName)||sf.getName().equals(tabName))
 					foundThisLanguage=true;
 			}
@@ -363,11 +364,11 @@ public abstract class ExerciseTemplated extends Exercise {
 					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
 					super.addProgLanguage(lang);
 					if (getGame().isDebugEnabled())
-						getGame().getLogger().log("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
+						Logger.log("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
 					return true;
 				} catch (NoSuchEntityException e) {
 					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA) || lang.equals(Game.BLOCKLY))
-						getGame().getLogger().log("No templating entity found: "+e);
+						Logger.log("No templating entity found: "+e);
 
 					if (getProgLanguages().contains(lang))
 						throw new RuntimeException(
@@ -381,14 +382,14 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		return false;
 	}
-	
-	
+
+
 	protected <W extends World> void setup(W[] ws) {
 		//boolean foundALanguage=false;
 		ArrayList<String> files = new ArrayList<String>();
 		/*
 		int k = 0;
-		
+
 		while(getClass().getResourceAsStream("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java")!=null) {
 			files.add("/"+Game.JAVA.nameOfCommonError(this, k).replaceAll("\\.", "/")+".java");
 			k++;
@@ -510,7 +511,7 @@ public abstract class ExerciseTemplated extends Exercise {
 							return;
 						}
 					} else {
-						getGame().getLogger().log(getGame().i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
+						Logger.log(getGame().i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
 					}
 				}
 
@@ -522,7 +523,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					try {
 						//TODO BAT remove if bat will be implemented in C
 						if(!id.contains("bat.string1.lessons.bat") && !id.contains("welcome.lessons.welcome.bat") && ! id.contains("welcome.lessons.welcome.array"))
-							compileAll(getGame().getLogger(), StudentOrCorrection.CORRECTION);
+							compileAll(StudentOrCorrection.CORRECTION);
 					} catch (PLMCompilerException e) {
 						System.err.println("Severe error: the correction of exercise "+id+" cannot be compiled in C. Please go fix your PLM.");
 						e.printStackTrace();

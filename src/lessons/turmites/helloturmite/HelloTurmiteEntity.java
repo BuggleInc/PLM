@@ -45,7 +45,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 		case RIGHT:  right();   forward(); break;
 		case BACK:   back();    forward(); break;
 		default:
-			getGame().getLogger().log("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
+			Logger.log("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
 		}
 
 		state = rule[state][currentColor][NEXT_STATE];

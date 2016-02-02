@@ -11,7 +11,6 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.session.SourceFile;
@@ -23,7 +22,6 @@ public class ExerciseRunner {
 	public static int DEFAULT_NUMBER_OF_TRIES = 10;
 	public static long DEFAULT_WAITING_TIME = 1000;
 	
-	private LogHandler logger;
 	private I18n i18n;
 	private List<Thread> runnerVect = new ArrayList<Thread>();
 	private boolean executionStopped = false;
@@ -31,8 +29,7 @@ public class ExerciseRunner {
 	private int maxNumberOfTries = DEFAULT_NUMBER_OF_TRIES;
 	private long waitingTime = DEFAULT_WAITING_TIME;
 
-	public ExerciseRunner(LogHandler logger, I18n i18n) {
-		this.logger = logger;
+	public ExerciseRunner(I18n i18n) {
 		this.i18n = i18n;
 	}
 
@@ -155,7 +152,7 @@ public class ExerciseRunner {
 	}
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile, ExecutionProgress progress) throws PLMCompilerException {
-		progLang.compileExo(sourceFile, progress, whatToCompile, logger, i18n);
+		progLang.compileExo(sourceFile, progress, whatToCompile, i18n);
 
 		WorldKind worldKind = null;
 		switch(whatToCompile) {

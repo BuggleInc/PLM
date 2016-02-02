@@ -42,9 +42,8 @@ import javax.tools.ToolProvider;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.PLMEntityNotFound;
+import plm.core.log.Logger;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -63,7 +62,7 @@ public class LangJava extends JVMCompiledLang {
 		return packageName();
 	}
 
-	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException {
+	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -77,14 +76,13 @@ public class LangJava extends JVMCompiledLang {
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 			compiledClasses = compiler.compile(sources, errs, i18n);
-			if (logger != null)
-				logger.log(errs.toString());
+			Logger.log(errs.toString());
 		} catch (PLMCompilerException e) {
 			lastResult.setCompilationError(e.getDiagnostics());
 			throw e;
 		}
 	}
-	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
+	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -102,13 +100,11 @@ public class LangJava extends JVMCompiledLang {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 			compiledClasses = compiler.compile(sources, errs, i18n);
 
-			if (logger != null)
-				logger.log(errs.toString());
+			Logger.log(errs.toString());
 		} catch (PLMCompilerException e) {
 			System.err.println(i18n.tr("Compilation error:"));
 			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics(), this);
-			if (logger != null)
-				logger.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+			Logger.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
 			if (isDebugEnabled())
 				for (SourceFile sf: exo.getSourceFilesList(Game.JAVA)) 

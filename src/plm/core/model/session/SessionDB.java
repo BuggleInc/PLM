@@ -9,6 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.lesson.Lecture;
@@ -159,7 +160,6 @@ public class SessionDB {
 		return possibleExercises.keySet();
 	}
 
-
 	@SuppressWarnings("unchecked")
 	public String lessonSummary(String lesson) {
 		JSONObject result = new JSONObject();
@@ -183,7 +183,7 @@ public class SessionDB {
 		try {
 			data = (JSONObject) parser.parse(JSONString);
 		} catch (ParseException e) {
-			game.getLogger().log(LogHandler.ERROR, "Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
+			Logger.log("Ignoring invalid lesson summary (parse error: "+e.getLocalizedMessage()+").");
 			return;
 		}
 

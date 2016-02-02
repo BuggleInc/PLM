@@ -21,7 +21,7 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 
 	@Test
 	public void testSolutionShouldPass() throws PLMCompilerException {
-		exo.compileAll(null, StudentOrCorrection.CORRECTION);
+		exo.compileAll(StudentOrCorrection.CORRECTION);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
@@ -38,7 +38,7 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 	
 	@Test
 	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
-		exo.compileAll(null, StudentOrCorrection.CORRECTION);
+		exo.compileAll(StudentOrCorrection.CORRECTION);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
@@ -56,12 +56,12 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 	@Test (expected = PLMCompilerException.class)
 	public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 	}
 	
 	@Test (expected = PLMCompilerException.class)
 	public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 	}
 }

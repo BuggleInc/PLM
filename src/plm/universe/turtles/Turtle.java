@@ -6,11 +6,18 @@ import java.io.IOException;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.log.Logger;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.turtles.operations.*;
+import plm.universe.turtles.operations.AddCircle;
+import plm.universe.turtles.operations.AddLine;
+import plm.universe.turtles.operations.AddSizeHint;
+import plm.universe.turtles.operations.ChangeTurtleVisible;
+import plm.universe.turtles.operations.ClearCanvas;
+import plm.universe.turtles.operations.MoveTurtle;
+import plm.universe.turtles.operations.RotateTurtle;
 
 public class Turtle extends Entity {
 
@@ -587,7 +594,7 @@ public class Turtle extends Entity {
 				out.write("\n");
 				break;
 			default:
-				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
+				Logger.log("COMMANDE INCONNUE : "+command);
 				break;
 
 			}

@@ -14,7 +14,6 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -29,7 +28,7 @@ public class LangC extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
+	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		
 		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
@@ -411,7 +410,7 @@ public class LangC extends ProgrammingLanguage {
 
 	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
-			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
+			StudentOrCorrection whatToCompile, I18n i18n)
 			throws PLMCompilerException {
 		// TODO Auto-generated method stub
 		

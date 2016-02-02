@@ -17,7 +17,7 @@ class ScalaLangtonColorsEntity extends SimpleBuggle {
 			  rule(i) match {
 			    case 'L' => left()
 			    case 'R' => right()
-			    case _   => getGame().getLogger().log("Unknown command associated to i="+i+": "+rule(i));
+			    case _   => Logger.log("Unknown command associated to i="+i+": "+rule(i));
 			  }
 
 			  setBrushColor(colors( (i+1) % colors.length ));

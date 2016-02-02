@@ -14,7 +14,6 @@ import javax.tools.JavaFileObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -42,7 +41,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(plm.core.model.session.SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException {
+	public void compileExo(plm.core.model.session.SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -59,7 +58,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
+	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;

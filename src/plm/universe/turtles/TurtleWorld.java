@@ -253,10 +253,10 @@ public class TurtleWorld extends World {
 								int rmIdx;
 								if (l1.getLength()>l2.getLength()) {
 									rmIdx = j;
-//									getGame().getLogger().log("1a: Kill "+shapes.get(j)+" because of "+shapes.get(i));
+//									Logger.log("1a: Kill "+shapes.get(j)+" because of "+shapes.get(i));
 								} else {
 									rmIdx = i;
-//									getGame().getLogger().log("1b: Kill "+shapes.get(i)+" because of "+shapes.get(j));
+//									Logger.log("1b: Kill "+shapes.get(i)+" because of "+shapes.get(j));
 								}
 								shapes.remove(rmIdx);
 								if (i>=rmIdx && rmIdx>0)
@@ -269,7 +269,7 @@ public class TurtleWorld extends World {
 //								System.out.print("2: "+l2+" is after "+l1+".");
 								l1.x1 = l2.x1;
 								l1.y1 = l2.y1;
-//								getGame().getLogger().log(" New l1: "+l1);
+//								Logger.log(" New l1: "+l1);
 								
 								if (i>=j && i>0)
 									i--;
@@ -282,7 +282,7 @@ public class TurtleWorld extends World {
 //								System.out.print("3: "+l2+" is before "+l1+".");
 								l1.x2 = l2.x2;
 								l1.y2 = l2.y2;
-//								getGame().getLogger().log(" New l1: "+l1);
+//								Logger.log(" New l1: "+l1);
 								if (i>=j  && j>0)
 									i--;
 								shapes.remove(j);
@@ -361,13 +361,13 @@ public class TurtleWorld extends World {
 //			for (int i=0;i<other.shapes.size();i++)
 //				System.out.print("  "+other.shapes.get(i)+"\n");
 			do {
-//				getGame().getLogger().log("Merge your solution");
+//				Logger.log("Merge your solution");
 				Collections.sort(other.shapes, cmp);
 				killDuplicate(other.shapes);
 			} while (mergeLengthening(other.shapes));
 
 			do {
-//				getGame().getLogger().log("Merge the correction");
+//				Logger.log("Merge the correction");
 				Collections.sort(shapes, cmp);
 				killDuplicate(shapes);
 			} while (mergeLengthening(shapes));

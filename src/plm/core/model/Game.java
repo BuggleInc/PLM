@@ -45,6 +45,8 @@ import plm.core.lang.LangRuby;
 import plm.core.lang.LangScala;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.LogHandler;
+import plm.core.log.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -164,8 +166,6 @@ public class Game implements IWorldView {
 	private GitSpy gitSpy;
 	private GitUtils gitUtils;
 
-	public LogHandler logger;
-
 	private static boolean ongoingInitialization = false;
 
 	private boolean trackUser;
@@ -178,7 +178,6 @@ public class Game implements IWorldView {
 
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser, Properties localProperties) {
 		this.localProperties = localProperties;
-		this.logger = logger;
 		this.locale = locale;
 		this.trackUser = trackUser;
 
@@ -462,7 +461,6 @@ public class Game implements IWorldView {
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
 				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
-					getLogger().log(LogHandler.INFO,
 							i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
 									+ "Please consider contributing to this project by adapting this exercise to this language.",
 									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
@@ -470,7 +468,7 @@ public class Game implements IWorldView {
 
 			}
 		} catch (UserAbortException e) {
-			getLogger().log(LogHandler.INFO, i18n.tr("Operation cancelled by the user"));
+			Logger.log(i18n.tr("Operation cancelled by the user"));
 		}
 	}
 
@@ -624,7 +622,7 @@ public class Game implements IWorldView {
 			storeProperties();
 		} catch (UserAbortException e) {
 			// Ok, user decided to not quit (to get a chance to export the session)
-			getLogger().log(LogHandler.INFO, "Exit aborted");
+			Logger.log("Exit aborted");
 		}
 	}
 
@@ -665,7 +663,7 @@ public class Game implements IWorldView {
 	}
 	public void removeSessionKit() {
 		sessionKit = null;
-		getLogger().log(LogHandler.INFO, "Disabling the session kit on disk.");
+		Logger.log("Disabling the session kit on disk.");
 	}
 
 	// FIXME: Should not be static
@@ -990,35 +988,35 @@ public class Game implements IWorldView {
 		doDebug = !doDebug;
 		if (doDebug) {
 			Lesson l = getCurrentLesson();
-			getLogger().log("Saving location: "+SAVE_DIR.getAbsolutePath());
-			getLogger().log("Lesson: "+(l==null?"None loaded yet":l.getName()));
-			getLogger().log("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
+			Logger.log("Saving location: "+SAVE_DIR.getAbsolutePath());
+			Logger.log("Lesson: "+(l==null?"None loaded yet":l.getName()));
+			Logger.log("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
 			if(l!=null) {
 				((Exercise) l.getCurrentExercise()).setNbError(-1);
 				for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
 					String s = w.getDebugInfo();
 					if (s != "")
-						getLogger().log("World: "+s);
+						Logger.log("World: "+s);
 				}
 			}
-			getLogger().log("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
-			getLogger().log("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
-			getLogger().log("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+			Logger.log("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
+			Logger.log("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
+			Logger.log("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 			for (ScriptEngineFactory sef : new ScriptEngineManager().getEngineFactories()) {
 				StringBuilder sb = new StringBuilder(sef.toString())
 				.append("  Engine: ")
 				.append(sef.getEngineName())
 				.append(" ")
 				.append(sef.getEngineVersion());
-				getLogger().log(sb.toString());
+				Logger.log(sb.toString());
 				sb = new StringBuilder("  Language: ")
 				.append(sef.getLanguageName())
 				.append(" ")
 				.append(sef.getLanguageVersion());
-				getLogger().log(sb.toString());
+				Logger.log(sb.toString());
 				sb = new StringBuilder("  Names: ")
 				.append(sef.getNames());
-				getLogger().log(sb.toString());
+				Logger.log(sb.toString());
 			}
 		}
 	}
@@ -1190,10 +1188,6 @@ public class Game implements IWorldView {
 
 	public boolean getTrackUser() {
 		return trackUser;
-	}
-
-	public LogHandler getLogger() {
-		return logger;
 	}
 
 	public String getLocalProperty(String key) {

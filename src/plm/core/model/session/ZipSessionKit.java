@@ -18,6 +18,7 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
@@ -66,7 +67,7 @@ public class ZipSessionKit implements ISessionKit {
 			if (allLangs.size()>0) 
 				allLessons.put(lessonName, allLangs);
 		}
-		//getGame().getLogger().log("JSON written: "+allLessons.toJSONString());
+		//Logger.log("JSON written: "+allLessons.toJSONString());
 		
 
 		ZipOutputStream zos = null;
@@ -136,7 +137,7 @@ public class ZipSessionKit implements ISessionKit {
 		}
 		if (content == null)
 			return;
-		//getGame().getLogger().log("JSON Read: "+content);
+		//Logger.log("JSON Read: "+content);
 		
 		// now parse it
 		Object value = null;
@@ -379,8 +380,8 @@ public class ZipSessionKit implements ISessionKit {
 
 		if (saveFile.exists()) {
 			if (saveFile.delete()) {
-				game.getLogger().log("ZipSessionKit:cleanup");
-				game.getLogger().log("cannot remove session store directory");
+				Logger.log("ZipSessionKit:cleanup");
+				Logger.log("cannot remove session store directory");
 			}
 		}
 	}

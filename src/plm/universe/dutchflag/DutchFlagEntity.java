@@ -3,6 +3,7 @@ package plm.universe.dutchflag;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.dutchflag.operations.DutchFlagSwap;
@@ -107,7 +108,7 @@ public class DutchFlagEntity extends Entity {
 				((DutchFlagWorld) world).assertSorted();
 				break;
 			default:
-				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
+				Logger.log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

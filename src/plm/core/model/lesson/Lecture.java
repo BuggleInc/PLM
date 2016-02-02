@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
@@ -132,7 +133,7 @@ public abstract class Lecture implements HumanLangChangesListener{
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			getGame().getLogger().log(getGame().i18n.tr("Cannot find the name of mission in {0}.html",filename));
+			Logger.log(getGame().i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		setName( m.group(1) );
 
 		/* prepare the tips, if any */

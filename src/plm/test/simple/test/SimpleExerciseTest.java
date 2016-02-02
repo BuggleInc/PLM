@@ -69,7 +69,7 @@ public abstract class SimpleExerciseTest {
 	@Test
 	public void testSolutionShouldCompil() {
 		try {
-			exo.compileAll(null, StudentOrCorrection.CORRECTION);
+			exo.compileAll(StudentOrCorrection.CORRECTION);
 		} catch (PLMCompilerException e) {
 			e.printStackTrace();
 		}
@@ -87,7 +87,7 @@ public abstract class SimpleExerciseTest {
 	@Test
 	public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateOutOfBoundsErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
@@ -105,7 +105,7 @@ public abstract class SimpleExerciseTest {
 	@Test
 	public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateNullPointerErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
@@ -122,7 +122,7 @@ public abstract class SimpleExerciseTest {
 	@Test
 	public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
@@ -140,7 +140,7 @@ public abstract class SimpleExerciseTest {
 	@Test
 	public void testWrongCodeShouldNotPass() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateWrongCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
@@ -160,7 +160,7 @@ public abstract class SimpleExerciseTest {
 	@Test
 	public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		

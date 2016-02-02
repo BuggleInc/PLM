@@ -2,7 +2,9 @@ package plm.universe.cons;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.universe.bat.BatWorld;
 
@@ -55,7 +57,7 @@ public class ConsWorld extends BatWorld {
 						"def cons(a,b):\n"+
 						"  return RecList(a,b)\n";
 				if (getGame().isDebugEnabled()) 
-					getGame().getLogger().log("Extra script chunk added by "+getClass()+":\n"+script);
+					Logger.log("Extra script chunk added by "+getClass()+":\n"+script);
 				e.eval(script);
 			} catch (ScriptException e1) {
 				e1.printStackTrace();

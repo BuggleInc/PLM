@@ -20,7 +20,6 @@ import org.xnap.commons.i18n.I18nFactory;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.ToJSON;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
@@ -239,11 +238,11 @@ public abstract class Exercise extends Lecture implements ToJSON {
 	 * 
 	 * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
 	 */
-	public void compileAll(LogHandler logger, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+	public void compileAll(StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
-		getGame().getProgrammingLanguage().compileExo(this, logger, whatToCompile, getGame().i18n);
+		getGame().getProgrammingLanguage().compileExo(this, whatToCompile, getGame().i18n);
 	}
 
 	/** get the list of source files for a given language, or create it if not existent yet */

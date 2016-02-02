@@ -3,6 +3,7 @@ package plm.universe.pancake;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.pancake.operations.FlipOperation;
@@ -121,7 +122,7 @@ public class PancakeEntity extends Entity {
 				out.write("\n");
 				break;
 			default:
-				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
+				Logger.log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

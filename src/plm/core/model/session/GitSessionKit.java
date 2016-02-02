@@ -20,6 +20,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
 import plm.core.model.UserAbortException;
@@ -61,7 +62,7 @@ public class GitSessionKit implements ISessionKit {
 				bwSummary.write(game.studentWork.lessonSummary(lesson.getId()));
 				bwSummary.close();
 			} catch (IOException ex) {
-				game.getLogger().log(LogHandler.ERROR, "Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
+				Logger.log("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
 			}
 		}
 	}
@@ -77,7 +78,7 @@ public class GitSessionKit implements ISessionKit {
 		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + reponame);
 		if (! gitDir.exists()) {
 			// It should never happen since the session content should be created by the git spy module.
-			game.getLogger().log(LogHandler.ERROR, getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
+			Logger.log(getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 		}
 
 		// Load bodies
@@ -173,7 +174,7 @@ public class GitSessionKit implements ISessionKit {
 					// load source code
 					SourceFile srcFile = exercise.getSourceFile(lang, lang.getVisualIndex());
 					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + lang.getVisualExt();
-					//getGame().getLogger().log(fileName);
+					//Logger.log(fileName);
 					String line;
 					StringBuilder b = new StringBuilder();
 					try {
@@ -198,7 +199,7 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
-		game.getLogger().log(LogHandler.INFO, "Clean all lessons. Your session is now lost.");
+		Logger.log("Clean all lessons. Your session is now lost.");
 		for (Lesson lesson : this.game.getLessons()) {
 			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}

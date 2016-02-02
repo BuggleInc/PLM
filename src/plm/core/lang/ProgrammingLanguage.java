@@ -10,7 +10,6 @@ import javax.script.ScriptEngine;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -91,8 +90,8 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	}
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
-	public abstract void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
-	public abstract void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n) throws PLMCompilerException;
+	public abstract void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
+	public abstract void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds) throws PLMCompilerException;
 

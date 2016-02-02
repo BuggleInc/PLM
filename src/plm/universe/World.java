@@ -17,6 +17,7 @@ import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.ToJSON;
 import plm.core.model.lesson.ExecutionProgress;
@@ -155,7 +156,7 @@ public abstract class World implements ToJSON {
 	}
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
-			getGame().getLogger().log("Ignoring a request to remove an unknown entity");
+			Logger.log("Ignoring a request to remove an unknown entity");
 		notifyEntityUpdateListeners();		
 	}
 
@@ -183,8 +184,8 @@ public abstract class World implements ToJSON {
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
 		final ProgrammingLanguage pl = getGame().getProgrammingLanguage();
 		if (game.isDebugEnabled()) {
-			game.getLogger().log("World:runEntities");
-			game.getLogger().log("Programming language: "+pl);
+			Logger.log("World:runEntities");
+			Logger.log("Programming language: "+pl);
 		}
 		
 		for (final Entity b : entities) {

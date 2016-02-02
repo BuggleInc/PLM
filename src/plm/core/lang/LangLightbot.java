@@ -5,7 +5,6 @@ import java.util.List;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -19,7 +18,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
+	public void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		
 		/* Nothing to do */
@@ -50,7 +49,7 @@ public class LangLightbot extends ProgrammingLanguage {
 
 	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
-			StudentOrCorrection whatToCompile, LogHandler logger, I18n i18n)
+			StudentOrCorrection whatToCompile, I18n i18n)
 			throws PLMCompilerException {
 		// TODO Auto-generated method stub
 		

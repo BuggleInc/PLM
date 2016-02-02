@@ -10,6 +10,8 @@ import java.net.URLConnection;
 
 import org.json.simple.JSONObject;
 
+import plm.core.log.Logger;
+
 /**
  * Implementation of HelpServer that sends requests to an App Engine server
  */
@@ -29,7 +31,7 @@ public class HelpAppEngine extends HelpServer {
     			e.printStackTrace();
     		}
     	} else {
-    		game.getLogger().log(LogHandler.INFO, "No course server configured");
+    		Logger.log("No course server configured");
     	}
     }
 
@@ -54,7 +56,7 @@ public class HelpAppEngine extends HelpServer {
             wr.close();
             br.close();
         } catch (IOException e) {
-        	game.getLogger().log(LogHandler.ERROR, "Unable to contact PLMServer to send request " + request);
+        	Logger.log("Unable to contact PLMServer to send request " + request);
         }
         return response;
     }
@@ -62,7 +64,8 @@ public class HelpAppEngine extends HelpServer {
     /**
      * Construct a request to ask teacher help in a course
      */
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public void setStatus(boolean isRequestingHelp){
     	super.setStatus(isRequestingHelp);
 

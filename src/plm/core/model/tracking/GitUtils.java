@@ -44,8 +44,8 @@ import org.eclipse.jgit.transport.RemoteRefUpdate;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.log.Logger;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 
 public class GitUtils {
 
@@ -55,13 +55,11 @@ public class GitUtils {
 
 	private String username = "";
 	private String password = Game.getProperty("plm.git.server.password");
-	private LogHandler logger;
 	private I18n i18n;
 
 	private static boolean currentlyPushing = false;
 
-	public GitUtils(LogHandler logger, I18n i18n) {
-		this.logger = logger;
+	public GitUtils(I18n i18n) {
 		this.i18n = i18n;
 	}
 
@@ -71,7 +69,6 @@ public class GitUtils {
 
 	public void setGame(Game g) {
 		this.game = g;
-		this.logger = g.getLogger();
 		this.i18n = g.i18n;
 	}
 
@@ -92,7 +89,7 @@ public class GitUtils {
 		try {
 			cfg.save();
 		} catch (IOException e) {
-			logger.log(i18n.tr("An error occurred while configuring the repository..."));
+			Logger.log(i18n.tr("An error occurred while configuring the repository..."));
 			e.printStackTrace();
 		}
 	}
@@ -101,7 +98,7 @@ public class GitUtils {
 		//if(!getGame().getTrackUser()) {
 		//	return false;
 		//}
-		logger.log(i18n.tr("Retrieving your session from the servers..."));
+		Logger.log(i18n.tr("Retrieving your session from the servers..."));
 		try {
 			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
 		} catch (GitAPIException ex) {
@@ -135,7 +132,7 @@ public class GitUtils {
 		try {
 			git.checkout().setName(userBranchHash).call();
 		} catch (GitAPIException e) {
-			logger.log(i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
+			Logger.log(i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
 			// FIXME: display the stacktrace if debug mode is enabled
 			//e.printStackTrace();
 			success = false;
@@ -148,13 +145,13 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				logger.log(i18n.tr("last session data successfully retrieved"));
+				Logger.log(i18n.tr("last session data successfully retrieved"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				logger.log(i18n.tr("last session data successfully merged"));
+				Logger.log(i18n.tr("last session data successfully merged"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
-				logger.log(i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				Logger.log(i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
@@ -173,7 +170,7 @@ public class GitUtils {
 					git.add().addFilepattern(path).call();
 				}
 				
-				logger.log("All conflicts have been manually handled ;)");
+				Logger.log("All conflicts have been manually handled ;)");
 				// TODO: check if the commit is mandatory
 				git.commit().setMessage("Manual merging")
 				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
@@ -182,10 +179,10 @@ public class GitUtils {
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
 				// TODO: handle this case
-				logger.log(i18n.tr("Canceled the merge operation because of the following failures:"));
+				Logger.log(i18n.tr("Canceled the merge operation because of the following failures:"));
 				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
 				for(String path : allFailures.keySet()) {
-					logger.log(path + " : " + allFailures.get(path));
+					Logger.log(path + " : " + allFailures.get(path));
 				}
 			}
 		} catch (Exception ex) {
@@ -230,7 +227,7 @@ public class GitUtils {
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
 		} catch (TransportException e) {
-			logger.log(i18n.tr("Cannot synchronize your session with the servers (network down)."));
+			Logger.log(i18n.tr("Cannot synchronize your session with the servers (network down)."));
 			if (game.isDebugEnabled())
 				e.printStackTrace();
 		} catch (GitAPIException e) {
@@ -257,21 +254,21 @@ public class GitUtils {
 
 		// push
 		if(pushChanges(userBranchHash, progress, cp)) {
-			logger.log(i18n.tr("Your session has been successfully saved into the clouds."));
+			Logger.log(i18n.tr("Your session has been successfully saved into the clouds."));
 		}
 		else {
 			// An error occurred while pushing
-			logger.log(i18n.tr("Fetching the server's last version..."));
+			Logger.log(i18n.tr("Fetching the server's last version..."));
 			try {
 				// Try to synchronize with the remote branch before pushing again
 				if (fetchBranchFromRemoteBranch(userBranchHash)) {
 					mergeRemoteIntoLocalBranch(userBranchHash);
 				}
 				if(!pushChanges(userBranchHash, progress, cp)) {
-					logger.log(i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
+					Logger.log(i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
 				}
 			} catch (Exception e) {
-				logger.log(i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
+				Logger.log(i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
 				e.printStackTrace();
 			}
 		}

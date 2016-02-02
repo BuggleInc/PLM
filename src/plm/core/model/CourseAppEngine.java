@@ -8,6 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import plm.core.log.LogHandler;
+
 /**
  * Implementation of Course which works with GAE
  * It overrides Course methods to send requests constructed by it

@@ -9,7 +9,6 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.TemplatedSourceFileFactory;
@@ -24,11 +23,11 @@ public class ExerciseFactory {
 
 	private String rootDirectory = "exercises";
 	
-	public ExerciseFactory(LogHandler logger, I18n i18n, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
+	public ExerciseFactory(I18n i18n, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
 		this.exerciseRunner = exerciseRunner;
 		this.programmingLanguages = programmingLanguages;
 		this.humanLanguages = humanLanguages;
-		this.sourceFileFactory = new TemplatedSourceFileFactory(logger, i18n);
+		this.sourceFileFactory = new TemplatedSourceFileFactory(i18n);
 	}
 
 	public static Exercise cloneExercise(Exercise exo) {

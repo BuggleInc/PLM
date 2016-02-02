@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.model.LogHandler;
 
@@ -51,7 +52,7 @@ public class ServerSpyAppEngine extends ServerSpy {
             br.close();
 
         } catch (IOException e) {
-        	getGame().getLogger().log(LogHandler.ERROR, "Unable to contact PLMServer to send request " + request);
+        	Logger.log("Unable to contact PLMServer to send request " + request);
         }
 
         return response;

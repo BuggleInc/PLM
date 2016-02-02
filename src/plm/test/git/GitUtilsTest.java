@@ -24,8 +24,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import plm.core.log.LogHandler;
+import plm.core.log.Logger;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.tracking.GitUtils;
 
 public class GitUtilsTest {
@@ -55,7 +56,7 @@ public class GitUtilsTest {
 		gitUtils.setGame(game);
 		utils = new Utils();
 		
-		game.getLogger().log("repoDirectory: "+ repoDirectory.getAbsolutePath());
+		Logger.log("repoDirectory: "+ repoDirectory.getAbsolutePath());
 	}
 	
 	@Before 
@@ -193,7 +194,7 @@ public class GitUtilsTest {
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
 		
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
-		game.getLogger().log("Try to fetch from "+remoteUrl);
+		Logger.log("Try to fetch from "+remoteUrl);
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 		
 		remoteGitUtils.dispose();

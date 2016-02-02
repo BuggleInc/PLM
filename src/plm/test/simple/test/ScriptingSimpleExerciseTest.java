@@ -53,7 +53,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 	@Test
 	public void testVariableErrorRisingCodeShouldCompil() throws PLMCompilerException {
 		exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
 			fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
 		}
@@ -62,7 +62,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 	@Test
 	public void testSyntaxErrorRisingCodeShouldCompil() throws PLMCompilerException  {
 		exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		exo.compileAll(StudentOrCorrection.STUDENT);
 		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
 			fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
 		}

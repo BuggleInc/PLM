@@ -13,18 +13,16 @@ import plm.core.lang.LangC;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.lesson.NoSuchEntityException;
 import plm.core.utils.FileUtils;
 
 public class TemplatedSourceFileFactory {
 
-	private LogHandler logger;
 	private I18n i18n;
 	
-	public TemplatedSourceFileFactory(LogHandler logger, I18n i18n) {
-		this.logger = logger;
+	public TemplatedSourceFileFactory(I18n i18n) {
 		this.i18n = i18n;
 	}
 	
@@ -109,7 +107,7 @@ public class TemplatedSourceFileFactory {
 			case 1: /* template head */
 				correction.append(line+"\n");
 				if (line.contains("BEGIN TEMPLATE")) {
-					logger.log(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
+					Logger.log(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("public class ")){
 					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
@@ -130,7 +128,7 @@ public class TemplatedSourceFileFactory {
 			case 2: /* solution */
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
-					logger.log(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
+					Logger.log(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					if (seenTemplate)
@@ -148,7 +146,7 @@ public class TemplatedSourceFileFactory {
 				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
-						logger.log(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+						Logger.log(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
@@ -171,7 +169,7 @@ public class TemplatedSourceFileFactory {
 				} else {
 					if (line.contains("END TEMPLATE"))  
 						if (!seenTemplate)
-							logger.log(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+							Logger.log(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					tail.append(line+"\n");
 				}
 				break;
@@ -195,9 +193,9 @@ public class TemplatedSourceFileFactory {
 		}
 		if (state == 3) {
 			if (seenTemplate)
-				logger.log(i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
+				Logger.log(i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
 		} else if (state != 4)
-			logger.log(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
+			Logger.log(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
@@ -274,10 +272,10 @@ public class TemplatedSourceFileFactory {
 		}
 
 		/*if (this.debug) {
-			getGame().getLogger().log("<<<<<<<<template:"+template);
-			getGame().getLogger().log("<<<<<<<<debugCtn:"+debugContent);
-			getGame().getLogger().log("<<<<<<<<initialContent:"+initialContent);
-		    getGame().getLogger().log("<<<<<<<<Skel: "+skelContent);
+			Logger.log("<<<<<<<<template:"+template);
+			Logger.log("<<<<<<<<debugCtn:"+debugContent);
+			Logger.log("<<<<<<<<initialContent:"+initialContent);
+		    Logger.log("<<<<<<<<Skel: "+skelContent);
 		}*/
 
 		if (skelContent.length()>0) {
