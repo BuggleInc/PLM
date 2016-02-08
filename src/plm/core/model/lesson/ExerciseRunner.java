@@ -129,6 +129,7 @@ public class ExerciseRunner {
 		};
 
 		mainExecutor.submit(runCode);
+		mainExecutor.shutdown();
 
 		return future;
 	}
