@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -32,7 +33,7 @@ public abstract class World implements ToJSON {
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
-	private List<List<Operation>> steps = new ArrayList<List<Operation>>();
+	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
 
 	private String name;
 	private Game game;
@@ -87,7 +88,7 @@ public abstract class World implements ToJSON {
 	 * @param initialWorld
 	 */
 	public void reset(World initialWorld) {
-		steps = new ArrayList<List<Operation>>();
+		steps = new ConcurrentLinkedDeque<List<Operation>>();
 		entities = new ArrayList<Entity>();
 		for (Entity oldEntity : initialWorld.entities) {
 			try {
@@ -407,14 +408,12 @@ public abstract class World implements ToJSON {
 		return game;
 	}
 
-	public List<List<Operation>> getSteps() {
+	public ConcurrentLinkedDeque<List<Operation>> getSteps() {
 		return steps;
 	}
 
 	public void addStep(List<Operation> operations) {
-		synchronized(steps) {
-			steps.add(operations);
-		}
+		steps.add(operations);
 	}
 
 	@SuppressWarnings("unchecked")
