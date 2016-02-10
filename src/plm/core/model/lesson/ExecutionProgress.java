@@ -15,7 +15,7 @@ import plm.core.model.ToJSON;
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
 public class ExecutionProgress implements ToJSON {
 
-	public static enum outcomeKind { COMPILE, FAIL, PASS };
+	public static enum outcomeKind { COMPILE, FAIL, PASS, TIMEOUT };
 	public outcomeKind outcome = outcomeKind.PASS;
 
 	public String compilationError = "";
@@ -113,7 +113,7 @@ public class ExecutionProgress implements ToJSON {
 	}
 
 	public void setTimeoutError() {
-		outcome = ExecutionProgress.outcomeKind.FAIL;
+		outcome = ExecutionProgress.outcomeKind.TIMEOUT;
 		executionError = i18n.tr("The assessment of your code \"time out\". It may due to an infinite loop inside your program!\n") +
                 i18n.tr("However, if your program doesn't seems to have started, it may indicates that our servers are overloaded. Sorry for the inconvenience and please wait a few moments before submitting your program again.");
 	}
