@@ -6,6 +6,8 @@ import java.util.Vector;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import org.xnap.commons.i18n.I18n;
 
@@ -60,48 +62,29 @@ public class ExerciseRunner {
 			return CompletableFuture.completedFuture(lastResult);
 		}
 
-		/*
-		 *  Execution time
-		 */
-		ExecutorService mainExecutor = Executors.newCachedThreadPool();
+		ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
 
-		Runnable runCode = new Runnable() {
+		Runnable monitorThreads = new Runnable() {
+			int numberOfTries = maxNumberOfTries;
+
 			@SuppressWarnings("deprecation")
 			@Override
 			public void run() {
-
-				executionStopped = false;
-
-				// Start entities in separate threads
-				for(int i=0; i<currentWorlds.size(); i++) {
-					World w = currentWorlds.get(i);
-					runEntities(w, progLang, runnerVect, lastResult);
+				boolean stillAlive = false;
+				boolean executionEnded = false;
+				if(!executionStopped && numberOfTries > 0 && runnerVect.size()>0) {
+					do {
+						if(runnerVect.get(0).isAlive()) {
+							numberOfTries--;
+							stillAlive = true;
+						}
+						else {
+							runnerVect.remove(0);
+							executionEnded = runnerVect.isEmpty();
+						}
+					} while(!stillAlive && runnerVect.size()>0);
 				}
 
-				int numberOfTries = maxNumberOfTries;
-
-				// Watch threads to timeout them if needed
-				// Also watch if user asked to stop the execution
-				while(!executionStopped && numberOfTries > 0 && runnerVect.size()>0) {
-					Thread t = runnerVect.get(0);
-
-					try {
-						t.join(waitingTime);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					if(t.isAlive()) {
-						// The task is not done yet
-						numberOfTries--;
-					} else  {
-						numberOfTries = maxNumberOfTries;
-						runnerVect.remove(0);
-					}
-				}
-
-				/*
-				 *  Assessment time
-				 */
 				if(executionStopped || numberOfTries == 0) {
 					for(Thread t : runnerVect) {
 						t.stop();
@@ -114,8 +97,13 @@ public class ExerciseRunner {
 					else if(numberOfTries == 0) {
 						lastResult.setTimeoutError();
 					}
+					ses.shutdown();
 					future.complete(lastResult);
-				} else {
+				}
+				else if(executionEnded) {
+					/*
+					 *  Assessment time
+					 */
 					int i=0;
 					while(lastResult.outcome == ExecutionProgress.outcomeKind.PASS && i<currentWorlds.size()) {
 						World currentWorld = currentWorlds.get(i);
@@ -123,8 +111,28 @@ public class ExerciseRunner {
 						checkWorld(currentWorld, answerWorld, progLang, lastResult);
 						i++;
 					}
+					ses.shutdown();
 					future.complete(lastResult);
 				}
+			}
+		};
+
+		/*
+		 *  Execution time
+		 */
+		ExecutorService mainExecutor = Executors.newCachedThreadPool();
+		Runnable runCode = new Runnable() {
+			@Override
+			public void run() {
+				executionStopped = false;
+
+				// Start entities in separate threads
+				for(int i=0; i<currentWorlds.size(); i++) {
+					World w = currentWorlds.get(i);
+					runEntities(w, progLang, runnerVect, lastResult);
+				}
+
+				ses.scheduleAtFixedRate(monitorThreads, 1000, waitingTime, TimeUnit.MILLISECONDS);
 			}
 		};
 
