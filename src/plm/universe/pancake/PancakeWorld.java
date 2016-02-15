@@ -1,5 +1,6 @@
 package plm.universe.pancake;
 
+import java.util.Locale;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -9,6 +10,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.World;
 
 public class PancakeWorld extends World {
@@ -84,7 +86,8 @@ public class PancakeWorld extends World {
 	
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
-	public String diffTo(World o, I18n i18n) {
+	public String diffTo(World o, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		if (o == null || !(o instanceof PancakeWorld))
 			return i18n.tr("This is not a world of pancakes");
 

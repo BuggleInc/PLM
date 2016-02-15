@@ -429,7 +429,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						Vector<World> errorWorld = commonErrors.get(copyOfi);
 						for(World ew : errorWorld) {
 							for(Entity ent : ew.getEntities()) {
-								Game.JAVA.runEntity(ent, progress, getGame().i18n);
+								Game.JAVA.runEntity(ent, progress, getGame().i18n.getLocale());
 							}
 							ew.setErrorWorld();
 						}
@@ -537,7 +537,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
 						ent.setScript(Game.C, id);
-						getGame().getProgrammingLanguage().runEntity(ent,progress, getGame().i18n);
+						getGame().getProgrammingLanguage().runEntity(ent,progress, getGame().i18n.getLocale());
 					}
 					aw.setAnswerWorld();
 				}

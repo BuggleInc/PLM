@@ -1,5 +1,6 @@
 package plm.universe.baseball;
 
+import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
 
@@ -10,6 +11,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.World;
 
 public class BaseballWorld extends World {
@@ -133,7 +135,8 @@ public class BaseballWorld extends World {
 	 * @param o the world with which you want to compare your world
 	 */
 	@Override
-	public String diffTo(World o, I18n i18n) {
+	public String diffTo(World o, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		if (o == null || !(o instanceof BaseballWorld))
 			return i18n.tr("This is not a baseball world :-(");
 

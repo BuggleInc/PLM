@@ -1,5 +1,6 @@
 package plm.universe.dutchflag;
 
+import java.util.Locale;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -9,6 +10,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.World;
 
 public class DutchFlagWorld extends World {
@@ -74,7 +76,8 @@ public class DutchFlagWorld extends World {
 
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
-	public String diffTo(World o, I18n i18n) {
+	public String diffTo(World o, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		if (o == null || !(o instanceof DutchFlagWorld))
 			return i18n.tr("This world is not a dutch flag");
 

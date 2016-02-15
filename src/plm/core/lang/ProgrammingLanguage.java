@@ -2,6 +2,7 @@ package plm.core.lang;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -90,8 +91,8 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	}
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
-	public abstract void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
-	public abstract void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException;
+	public abstract void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException;
+	public abstract void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds) throws PLMCompilerException;
 
@@ -115,7 +116,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	 * 
 	 *  @see #run() that encodes the student logic in Java
 	 */
-	public abstract void runEntity(Entity ent, ExecutionProgress progress, I18n i18n);
+	public abstract void runEntity(Entity ent, ExecutionProgress progress, Locale locale);
 	
 	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
 		return exo.nameOfCorrectionEntity();

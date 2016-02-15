@@ -186,7 +186,7 @@ public abstract class World implements ToJSON {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					game.statusArgAdd(getName());
-					pl.runEntity(b, progress, getGame().i18n);
+					pl.runEntity(b, progress, getGame().i18n.getLocale());
 					game.statusArgRemove(getName());
 				}
 			});
@@ -336,11 +336,11 @@ public abstract class World implements ToJSON {
 	public abstract void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException;
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
-	public String diffTo(World world, I18n i18n, ProgrammingLanguage progLang) {
-		return diffTo(world, i18n);
+	public String diffTo(World world, Locale locale, ProgrammingLanguage progLang) {
+		return diffTo(world, locale);
 	}
 
-	public abstract String diffTo(World world, I18n i18n);
+	public abstract String diffTo(World world, Locale locale);
 	
 	public Game getGame() {
 		return game;

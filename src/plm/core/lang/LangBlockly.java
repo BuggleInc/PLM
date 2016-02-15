@@ -1,11 +1,13 @@
 package plm.core.lang;
 
+import java.util.Locale;
+
 import javax.script.ScriptException;
 
 import org.python.core.PyException;
-import org.xnap.commons.i18n.I18n;
 
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
 
@@ -38,7 +40,8 @@ public class LangBlockly extends ScriptingLanguage {
 				ent.getScript(this));
 	}
 	
-	public boolean handleLangException (ScriptException e,Entity ent,ExecutionProgress progress,I18n i18n) {
+	@Override
+	public boolean handleLangException (ScriptException e,Entity ent,ExecutionProgress progress, Locale locale) {
 		if (!(e.getCause() instanceof org.python.core.PyException)) { // This seems to be the ancestor of all exceptions raised by jython
 			return false; // not for us
 		}
@@ -49,7 +52,7 @@ public class LangBlockly extends ScriptingLanguage {
 		StringBuffer msg = new StringBuffer();
 
 		if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
-			msg.append(i18n.tr("Syntax error: {0}\nLine {1}: {2}\n" +
+			msg.append(I18nManager.getI18n(locale).tr("Syntax error: {0}\nLine {1}: {2}\n" +
 					"In doubt, check your indentation, and that you don't mix tabs and spaces\n",
 					cause.value.__findattr__("msg"),
 					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
@@ -58,7 +61,7 @@ public class LangBlockly extends ScriptingLanguage {
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'exceptions.IndentationError'>")) {
-			msg.append(i18n.tr("Indentation error: {0}\nline {1}: {2}\n" +
+			msg.append(I18nManager.getI18n(locale).tr("Indentation error: {0}\nline {1}: {2}\n" +
 					"Please, check that you did not mix tabs and spaces. Use the TAB and shift-TAB keys to clean your indentation.\n",
 					cause.value.__findattr__("msg"),
 					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
@@ -66,37 +69,37 @@ public class LangBlockly extends ScriptingLanguage {
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'java.lang.ThreadDeath'>")) {
-			msg.append(i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n" +
+			msg.append(I18nManager.getI18n(locale).tr("You interrupted the execution, did you fall into an infinite loop ?\n" +
 					"Your program must stop by itself to successfully pass the exercise.\n"));
 
 		} else { /* It makes sense to display a backtrace for any errors but syntax ones */
 
 			if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
-				msg.append(i18n.tr("NameError raised: You seem to use a non-existent identifier; Please check for typos\n"));
+				msg.append(I18nManager.getI18n(locale).tr("NameError raised: You seem to use a non-existent identifier; Please check for typos\n"));
 				msg.append(cause.value+"\n");
 				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 			} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
-				msg.append(i18n.tr("TypeError raised: you are probably misusing a function or something.\n"));
+				msg.append(I18nManager.getI18n(locale).tr("TypeError raised: you are probably misusing a function or something.\n"));
 				msg.append(cause.value+"\n");
 				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 			} else if (cause.type.toString().equals("<type 'exceptions.UnboundLocalError'>")) {
-				msg.append(i18n.tr("UnboundLocalError raised: you are probably using a global variable that is not declared as such.\n"));
+				msg.append(I18nManager.getI18n(locale).tr("UnboundLocalError raised: you are probably using a global variable that is not declared as such.\n"));
 				msg.append(cause.value+"\n");
 				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 
 				/* FIXME: how could we factorize the world's error? */ 
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
-				msg.append(i18n.tr("Error: there is no baggle to pickup under the buggle"));
+				msg.append(I18nManager.getI18n(locale).tr("Error: there is no baggle to pickup under the buggle"));
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
-				msg.append(i18n.tr("Error: a buggle cannot carry more than one baggle at the same time"));
+				msg.append(I18nManager.getI18n(locale).tr("Error: a buggle cannot carry more than one baggle at the same time"));
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
-				msg.append(i18n.tr("Error: your buggle just teleported to the outer space..."));
+				msg.append(I18nManager.getI18n(locale).tr("Error: your buggle just teleported to the outer space..."));
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.BuggleWallException'>")) {
-				msg.append(i18n.tr("Error: your buggle just hit a wall. That hurts."));
+				msg.append(I18nManager.getI18n(locale).tr("Error: your buggle just hit a wall. That hurts."));
 
 			} else {
-				msg.append(i18n.tr("Unknown error (please report): {0}\nIts value is: {1}",
+				msg.append(I18nManager.getI18n(locale).tr("Unknown error (please report): {0}\nIts value is: {1}",
 						cause.type.toString(),cause.value+"\n"));
 
 			}

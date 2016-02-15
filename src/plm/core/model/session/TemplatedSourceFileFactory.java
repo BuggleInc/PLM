@@ -2,6 +2,7 @@ package plm.core.model.session;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,15 +16,16 @@ import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.NoSuchEntityException;
 import plm.core.utils.FileUtils;
 
 public class TemplatedSourceFileFactory {
 
-	private I18n i18n;
+	private Locale locale;
 	
-	public TemplatedSourceFileFactory(I18n i18n) {
-		this.i18n = i18n;
+	public TemplatedSourceFileFactory(Locale locale) {
+		this.locale = locale;
 	}
 	
 	public SourceFile newSourceFromParams(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
@@ -31,6 +33,7 @@ public class TemplatedSourceFileFactory {
 	}
 
 	public SourceFile newSourceFromFile(String name, ProgrammingLanguage lang, String filename) throws NoSuchEntityException {
+		I18n i18n = I18nManager.getI18n(locale);
 		String patternString = "";
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;

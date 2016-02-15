@@ -2,6 +2,8 @@ package plm.test.simple.test;
 
 import static org.junit.Assert.fail;
 
+import java.util.Locale;
+
 import org.junit.Test;
 
 import plm.core.PLMCompilerException;
@@ -25,7 +27,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult,  Locale.getDefault());
 			}
 		}
 		
@@ -41,7 +43,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult,  Locale.getDefault());
 			}
 		}
 		

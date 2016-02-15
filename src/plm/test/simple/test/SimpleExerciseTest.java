@@ -93,7 +93,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult, Locale.getDefault());
 			}
 		}
 		
@@ -111,7 +111,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult,  Locale.getDefault());
 			}
 		}
 		
@@ -128,7 +128,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult,  Locale.getDefault());
 			}
 		}
 		
@@ -146,7 +146,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult,  Locale.getDefault());
 			}
 		}
 		
@@ -166,7 +166,7 @@ public abstract class SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult, getGame().i18n);
+				pl.runEntity(ent,exo.lastResult,  Locale.getDefault());
 			}
 		}
 		

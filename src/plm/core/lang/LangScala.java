@@ -1,6 +1,7 @@
 package plm.core.lang;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,8 @@ import java.util.ArrayList;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import org.xnap.commons.i18n.I18n;
-
 import plm.core.PLMCompilerException;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -41,7 +41,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(plm.core.model.session.SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
+	public void compileExo(plm.core.model.session.SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -50,7 +50,7 @@ public class LangScala extends JVMCompiledLang {
 			compiler.reset();
 			compiler.compile(className(sourceFile.getName()), sourceFile.getCompilableContent(runtimePatterns,whatToCompile), sourceFile.getOffset());
 		} catch (PLMCompilerException e) {
-			System.err.println(i18n.tr("Compilation error:"));
+			System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
 			System.err.println(e.getMessage());
 			lastResult.setCompilationError(e.getMessage());
 			throw e;
@@ -58,7 +58,7 @@ public class LangScala extends JVMCompiledLang {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, I18n i18n) 
+	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, Locale locale) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
@@ -80,7 +80,7 @@ public class LangScala extends JVMCompiledLang {
 				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
 			}
 		} catch (PLMCompilerException e) {
-			System.err.println(i18n.tr("Compilation error:"));
+			System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
 			System.err.println(e.getMessage());
 			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 

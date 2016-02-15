@@ -202,7 +202,7 @@ public abstract class Exercise extends Lecture implements ToJSON {
 							break;
 						}
 					}
-					String diff = answerWorld.get(i).diffTo(currentWorld.get(i), I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", new Locale("en"), I18nFactory.FALLBACK));
+					String diff = answerWorld.get(i).diffTo(currentWorld.get(i), new Locale("en"));
 					lastResult.executionError += getGame().i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 					if (diff != null) 
 						lastResult.executionError += ":\n"+diff;
@@ -240,7 +240,7 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
-		getGame().getProgrammingLanguage().compileExo(this, whatToCompile, getGame().i18n);
+		getGame().getProgrammingLanguage().compileExo(this, whatToCompile, getGame().i18n.getLocale());
 	}
 
 	/** get the list of source files for a given language, or create it if not existent yet */

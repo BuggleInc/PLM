@@ -2,6 +2,7 @@ package plm.core.lang;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -10,6 +11,7 @@ import javax.script.ScriptException;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -25,7 +27,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, I18n i18n)
+	public void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, Locale locale)
 			throws PLMCompilerException {
 
 		/* Nothing to do */
@@ -33,7 +35,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
 	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
-			StudentOrCorrection whatToCompile, I18n i18n)
+			StudentOrCorrection whatToCompile, Locale locale)
 			throws PLMCompilerException {
 		/* Nothing to do */
 
@@ -147,7 +149,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
+	public void runEntity(Entity ent, ExecutionProgress progress, Locale locale) {
 		ScriptEngine engine = null;
 		try {
 			ScriptEngineManager manager = new ScriptEngineManager();
@@ -156,7 +158,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			else
 				engine = manager.getEngineByName(getLang().toLowerCase());
 			if (engine==null)
-				throw new RuntimeException(i18n.tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",getLang()));
+				throw new RuntimeException(I18nManager.getI18n(locale).tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",getLang()));
 
 			/* Inject the entity into the scripting world so that it can forward script commands to the world */
 			engine.put("entity", ent);
@@ -165,7 +167,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			ent.getWorld().setupBindings(this,engine);
 
 			if (ent.getScript(this) == null) {
-				System.err.println(i18n.tr("No {0} script source for entity {1}. Please report that bug against the PLM.",this,ent));
+				System.err.println(I18nManager.getI18n(locale).tr("No {0} script source for entity {1}. Please report that bug against the PLM.",this,ent));
 				return;
 			}
 			setupEntityBindings(ent); // Python wants to add extra definitions to intercept I/O
@@ -176,13 +178,13 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		} catch (ScriptException e) {
 			if (isDebugEnabled())
 				System.err.println("Here is the script in "+getLang()+" >>>>"+ent.getScript(this)+"<<<<");
-			if (!handleLangException(e,ent,progress, i18n)) {
-				System.err.println(i18n.tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);
+			if (!handleLangException(e,ent,progress, locale)) {
+				System.err.println(I18nManager.getI18n(locale).tr("Received a ScriptException that does not come from the {0} language.\n",getLang())+e);
 				e.printStackTrace();
 			}
 
 		} catch (Exception e) {
-			String msg = i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
+			String msg = I18nManager.getI18n(locale).tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
 					" Please report this as a bug against the PLM, with all details allowing to reproduce it.\n" +
 					"Exception message: {1}\n",e.getClass(),e.getLocalizedMessage());
 			System.err.println(msg);
@@ -201,6 +203,6 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	 *
 	 * @return true if it's an exception of that ProgrammingLanguage, and false if the exception should be handled elsewhere
 	 */
-	protected abstract boolean handleLangException(ScriptException e, Entity ent, ExecutionProgress progress, I18n i18n);
+	protected abstract boolean handleLangException(ScriptException e, Entity ent, ExecutionProgress progress, Locale locale);
 
 }

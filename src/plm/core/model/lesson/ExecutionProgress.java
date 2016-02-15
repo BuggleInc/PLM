@@ -1,6 +1,7 @@
 package plm.core.model.lesson;
 
 import java.util.Date;
+import java.util.Locale;
 
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -10,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.I18nManager;
 import plm.core.model.ToJSON;
 
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
@@ -30,15 +32,15 @@ public class ExecutionProgress implements ToJSON {
 	public String feedbackInterest;
 	public String feedback; 
 
-	private I18n i18n;
+	private Locale locale;
 
 	public ExecutionProgress(ProgrammingLanguage language) {
 		this.language = language;
 	}
 
-	public ExecutionProgress(ProgrammingLanguage language, I18n i18n) {
+	public ExecutionProgress(ProgrammingLanguage language, Locale locale) {
 		this(language);
-		this.i18n = i18n;
+		this.locale = locale;
 	}
 
 	public ExecutionProgress(JSONObject json) {
@@ -91,7 +93,7 @@ public class ExecutionProgress implements ToJSON {
 
 	public void setCompilationError(String msg) {
 		outcome = ExecutionProgress.outcomeKind.COMPILE;
-		compilationError = i18n.tr("Compilation error:") + "\n" + msg;
+		compilationError = I18nManager.getI18n(locale).tr("Compilation error:") + "\n" + msg;
 		passedTests = -1;
 	}
 
@@ -99,7 +101,7 @@ public class ExecutionProgress implements ToJSON {
 		StringBuffer sb = new StringBuffer();
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {	
 			if (diagnostic.getSource() == null) 
-				sb.append(i18n.tr("unknown source:")+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
+				sb.append(I18nManager.getI18n(locale).tr("unknown source:")+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
 			else
 				sb.append(diagnostic.getSource().getName()+":"+(diagnostic.getLineNumber()-1)+":"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
 			sb.append("\n");
@@ -114,20 +116,20 @@ public class ExecutionProgress implements ToJSON {
 
 	public void setTimeoutError() {
 		outcome = ExecutionProgress.outcomeKind.TIMEOUT;
-		executionError = i18n.tr("The assessment of your code \"time out\". It may due to an infinite loop inside your program!\n") +
-                i18n.tr("However, if your program doesn't seems to have started, it may indicates that our servers are overloaded. Sorry for the inconvenience and please wait a few moments before submitting your program again.");
+		executionError = I18nManager.getI18n(locale).tr("The assessment of your code \"time out\". It may due to an infinite loop inside your program!\n") +
+				I18nManager.getI18n(locale).tr("However, if your program doesn't seems to have started, it may indicates that our servers are overloaded. Sorry for the inconvenience and please wait a few moments before submitting your program again.");
 	}
 
 	public void setStopError() {
 		outcome = ExecutionProgress.outcomeKind.FAIL;
-		executionError = i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n") +
-				i18n.tr("Your program must stop by itself to successfully pass the exercise.\n");
+		executionError = I18nManager.getI18n(locale).tr("You interrupted the execution, did you fall into an infinite loop ?\n") +
+				I18nManager.getI18n(locale).tr("Your program must stop by itself to successfully pass the exercise.\n");
 	}
 
-	public String getMsg(I18n i18n) {
+	public String getMsg(Locale locale) {
 		String res = "";
 		if(outcome == ExecutionProgress.outcomeKind.PASS) {
-			res = i18n.tr("Congratulations, you passed this exercise.({0} tests passed)", passedTests);
+			res = I18nManager.getI18n(locale).tr("Congratulations, you passed this exercise.({0} tests passed)", passedTests);
 		}
 		else if(outcome == ExecutionProgress.outcomeKind.COMPILE) {
 			res = compilationError;

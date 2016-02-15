@@ -1,11 +1,10 @@
 package plm.universe.bat;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
-
-import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
@@ -71,13 +70,13 @@ public class BatWorld extends World {
 	}
 
 	@Override
-	public String diffTo(World w, I18n i18n) {
+	public String diffTo(World w, Locale locale) {
 		// Won't use it
 		return "";
 	}
 
 	@Override
-	public String diffTo(World w, I18n i18n, ProgrammingLanguage progLang) {
+	public String diffTo(World w, Locale locale, ProgrammingLanguage progLang) {
 		BatWorld other = (BatWorld) w;
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;

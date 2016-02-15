@@ -2,6 +2,7 @@ package plm.core.model.lesson;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -13,6 +14,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.session.SourceFile;
@@ -24,19 +26,19 @@ public class ExerciseRunner {
 	public static int DEFAULT_NUMBER_OF_TRIES = 10;
 	public static long DEFAULT_WAITING_TIME = 1000;
 	
-	private I18n i18n;
+	private Locale locale;
 	private List<Thread> runnerVect = new ArrayList<Thread>();
 	private boolean executionStopped = false;
 
 	private int maxNumberOfTries = DEFAULT_NUMBER_OF_TRIES;
 	private long waitingTime = DEFAULT_WAITING_TIME;
 
-	public ExerciseRunner(I18n i18n) {
-		this.i18n = i18n;
+	public ExerciseRunner(Locale locale) {
+		this.locale = locale;
 	}
 
-	public void setI18n(I18n i18n) {
-		this.i18n = i18n;
+	public void setI18n(Locale locale) {
+		this.locale = locale;
 	}
 
 	public CompletableFuture<ExecutionProgress> run(Exercise exo, ProgrammingLanguage progLang, String code) {
@@ -46,7 +48,7 @@ public class ExerciseRunner {
 		final CompletableFuture<ExecutionProgress> future = new CompletableFuture<>();
 
 		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
-		ExecutionProgress lastResult = new ExecutionProgress(progLang, i18n);
+		ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
 		exo.reset();
 
@@ -161,7 +163,7 @@ public class ExerciseRunner {
 	}
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile, ExecutionProgress progress) throws PLMCompilerException {
-		progLang.compileExo(sourceFile, progress, whatToCompile, i18n);
+		progLang.compileExo(sourceFile, progress, whatToCompile, locale);
 
 		WorldKind worldKind = null;
 		switch(whatToCompile) {
@@ -186,7 +188,7 @@ public class ExerciseRunner {
 		for (final Entity entity : w.getEntities()) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
-					progLang.runEntity(entity, progress, i18n);
+					progLang.runEntity(entity, progress, locale);
 				}
 			});
 
@@ -219,8 +221,8 @@ public class ExerciseRunner {
 				}
 			}
 			*/
-			String diff = answerWorld.diffTo(currentWorld, i18n, progLang);
-			progress.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.getName());
+			String diff = answerWorld.diffTo(currentWorld, locale, progLang);
+			progress.executionError += I18nManager.getI18n(locale).tr("The world ''{0}'' differs",currentWorld.getName());
 			if (diff != null) 
 				progress.executionError += ":\n"+diff;
 			progress.executionError += "\n------------------------------------------\n";

@@ -17,6 +17,7 @@ import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -214,7 +215,7 @@ public class TurtleWorld extends World {
 		TurtleWorld other = (TurtleWorld) obj;
 		if (!other.getName().equals(getName()))
 			return false;
-		String diff = diffTo(other, I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", new Locale("en"), I18nFactory.FALLBACK));
+		String diff = diffTo(other, Locale.getDefault());
 		if (diff.equals(""))
 			return true;
 		return false;
@@ -334,7 +335,8 @@ public class TurtleWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World world, I18n i18n) {
+	public String diffTo(World world, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		if (world == this)
 			return "";
 		StringBuffer sb = new StringBuffer();

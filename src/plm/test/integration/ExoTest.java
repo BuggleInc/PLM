@@ -141,7 +141,7 @@ public class ExoTest {
 			exo.setNbError(-1);
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
-					lang.runEntity(ent,exo.lastResult, g.i18n);
+					lang.runEntity(ent,exo.lastResult, Locale.getDefault());
 			
 			exo.check();
 		} catch (PLMCompilerException e) {

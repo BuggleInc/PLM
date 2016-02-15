@@ -23,11 +23,11 @@ public class ExerciseFactory {
 
 	private String rootDirectory = "exercises";
 	
-	public ExerciseFactory(I18n i18n, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
+	public ExerciseFactory(Locale locale, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
 		this.exerciseRunner = exerciseRunner;
 		this.programmingLanguages = programmingLanguages;
 		this.humanLanguages = humanLanguages;
-		this.sourceFileFactory = new TemplatedSourceFileFactory(i18n);
+		this.sourceFileFactory = new TemplatedSourceFileFactory(locale);
 	}
 
 	public static Exercise cloneExercise(Exercise exo) {

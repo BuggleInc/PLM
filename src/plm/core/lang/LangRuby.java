@@ -1,8 +1,8 @@
 package plm.core.lang;
 
-import javax.script.ScriptException;
+import java.util.Locale;
 
-import org.xnap.commons.i18n.I18n;
+import javax.script.ScriptException;
 
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
@@ -20,7 +20,7 @@ public class LangRuby extends ScriptingLanguage {
 	
 	@Override
 	protected boolean handleLangException(ScriptException e, Entity ent,
-			ExecutionProgress progress, I18n i18n) {
+			ExecutionProgress progress, Locale locale) {
 		// For now, we don't know how to decipher Ruby exceptions. 
 		return false;
 	}

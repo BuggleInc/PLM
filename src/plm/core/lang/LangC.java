@@ -9,11 +9,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.List;
+import java.util.Locale;
 
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -28,7 +30,7 @@ public class LangC extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, I18n i18n) 
+	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, Locale locale) 
 			throws PLMCompilerException {
 		
 		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
@@ -41,13 +43,13 @@ public class LangC extends ProgrammingLanguage {
 
 		for (SourceFile sf : sfs){
 			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
-			compile(code,exo.getId(),exo.lastResult, i18n);
+			compile(code,exo.getId(),exo.lastResult, locale);
 			
 		}
 	}
 
 
-	private void compile(String code, String executable, ExecutionProgress lastResult, I18n i18n) throws PLMCompilerException{
+	private void compile(String code, String executable, ExecutionProgress lastResult, Locale locale) throws PLMCompilerException{
 		
 		Runtime runtime = Runtime.getRuntime();
 
@@ -185,7 +187,7 @@ public class LangC extends ProgrammingLanguage {
 
 			if(resCompilationErr.length()>0){
 				PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
-				System.err.println(i18n.tr("Compilation error:"));
+				System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
 				System.err.println(e.getMessage());
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 
@@ -206,7 +208,8 @@ public class LangC extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void runEntity(final Entity ent, final ExecutionProgress progress, I18n i18n) {
+	public void runEntity(final Entity ent, final ExecutionProgress progress, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		Runtime runtime = Runtime.getRuntime();
 		final StringBuffer resCompilationErr = new StringBuffer();
 
@@ -410,7 +413,7 @@ public class LangC extends ProgrammingLanguage {
 
 	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
-			StudentOrCorrection whatToCompile, I18n i18n)
+			StudentOrCorrection whatToCompile, Locale locale)
 			throws PLMCompilerException {
 		// TODO Auto-generated method stub
 		

@@ -1,6 +1,7 @@
 package plm.universe.sort;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -11,6 +12,7 @@ import org.xnap.commons.i18n.I18n;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.World;
 
 public class SortingWorld extends World {
@@ -106,8 +108,9 @@ public class SortingWorld extends World {
 	 * @return A textual description of the differences between the caller and world
 	 */
 	@Override
-	public String diffTo(World world, I18n i18n) {
-		String s ;
+	public String diffTo(World world, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
+		String s;
 		if (world == null || !(world instanceof SortingWorld)) {
 			s="This is not a world of sorting :(";
 		} else {

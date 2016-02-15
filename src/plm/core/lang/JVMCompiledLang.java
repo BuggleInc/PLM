@@ -2,11 +2,13 @@ package plm.core.lang;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -108,11 +110,11 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
+	public void runEntity(Entity ent, ExecutionProgress progress, Locale locale) {
 		try {
 			ent.run();
 		} catch (Exception e) {
-			String msg = i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
+			String msg = I18nManager.getI18n(locale).tr("The execution of your program raised a {0} exception: {1}\n" + 
 					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
 
 			for (StackTraceElement elm : e.getStackTrace())

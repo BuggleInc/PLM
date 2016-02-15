@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +19,7 @@ import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
 import plm.core.utils.InvalidColorNameException;
@@ -563,7 +565,8 @@ public class BuggleWorld extends GridWorld {
 		}
 	}
 	@Override
-	public String diffTo(World world, I18n i18n) {
+	public String diffTo(World world, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		BuggleWorld other = (BuggleWorld) world;
 		StringBuffer sb = new StringBuffer();
 		if (! other.getName().equals(getName()))

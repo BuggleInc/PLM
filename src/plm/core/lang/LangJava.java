@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -44,6 +45,7 @@ import org.xnap.commons.i18n.I18n;
 import plm.core.PLMCompilerException;
 import plm.core.log.Logger;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -62,7 +64,7 @@ public class LangJava extends JVMCompiledLang {
 		return packageName();
 	}
 
-	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
+	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -75,14 +77,14 @@ public class LangJava extends JVMCompiledLang {
 
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-			compiledClasses = compiler.compile(sources, errs, i18n);
+			compiledClasses = compiler.compile(sources, errs, I18nManager.getI18n(locale));
 			Logger.log(errs.toString());
 		} catch (PLMCompilerException e) {
 			lastResult.setCompilationError(e.getDiagnostics());
 			throw e;
 		}
 	}
-	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, I18n i18n) throws PLMCompilerException {
+	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
@@ -98,11 +100,11 @@ public class LangJava extends JVMCompiledLang {
 
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-			compiledClasses = compiler.compile(sources, errs, i18n);
+			compiledClasses = compiler.compile(sources, errs, I18nManager.getI18n(locale));
 
 			Logger.log(errs.toString());
 		} catch (PLMCompilerException e) {
-			System.err.println(i18n.tr("Compilation error:"));
+			System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
 			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics(), this);
 			Logger.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 

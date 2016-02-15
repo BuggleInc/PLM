@@ -1,10 +1,13 @@
 package plm.core.lang;
 
+import java.util.Locale;
+
 import javax.script.ScriptException;
 
 import org.python.core.PyException;
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
 
@@ -14,6 +17,7 @@ public class LangPython extends ScriptingLanguage {
 		super("Python", "py", isDebugEnabled);
 	}
 
+	@Override
 	protected void setupEntityBindings(Entity ent) {
 		ent.setScriptOffset(this, ent.getScriptOffset(this)+11);
 		ent.setScript(this, 
@@ -34,7 +38,8 @@ public class LangPython extends ScriptingLanguage {
 				ent.getScript(this));
 	}
 	
-	public boolean handleLangException (ScriptException e,Entity ent,ExecutionProgress progress, I18n i18n) {
+	@Override
+	public boolean handleLangException (ScriptException e,Entity ent,ExecutionProgress progress, Locale locale) {
 		if (!(e.getCause() instanceof org.python.core.PyException)) { // This seems to be the ancestor of all exceptions raised by jython
 			return false; // not for us
 		}
@@ -43,6 +48,7 @@ public class LangPython extends ScriptingLanguage {
 		org.python.core.PyException cause = (PyException) e.getCause();
 
 		StringBuffer msg = new StringBuffer();
+		I18n i18n = I18nManager.getI18n(locale);
 
 		if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
 			msg.append(i18n.tr("Syntax error: {0}\nLine {1}: {2}\n" +

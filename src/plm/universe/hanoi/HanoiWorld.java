@@ -1,6 +1,7 @@
 package plm.universe.hanoi;
 
 import java.awt.Color;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
@@ -10,6 +11,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.World;
 
 public class HanoiWorld extends World {
@@ -105,7 +107,8 @@ public class HanoiWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World o, I18n i18n) {
+	public String diffTo(World o, Locale locale) {
+		I18n i18n = I18nManager.getI18n(locale);
 		StringBuffer res = new StringBuffer();
 		if (o == null || !(o instanceof HanoiWorld))
 			return "This is not a world of Hanoi";
