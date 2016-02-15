@@ -19,7 +19,6 @@ public class SourceFile implements ToJSON {
 	private int offset;
 	private String correction;
 	private String error;
-	private ISourceFileListener listener = null;
 	private Game game;
 
 	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
@@ -130,19 +129,6 @@ public class SourceFile implements ToJSON {
 				}
 			}
 		return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
-	}
-
-	public void setListener(ISourceFileListener l) {
-		this.listener = l;
-	}
-
-	public void removeListener() {
-		this.listener = null;
-	}
-
-	public void notifyListener() {
-		if (this.listener != null)
-			this.listener.sourceFileContentHasChanged();
 	}
 
 	@Override

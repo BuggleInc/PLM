@@ -51,15 +51,10 @@ public class ExoTest {
 		String userUUID = UUID.randomUUID().toString();
 		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), Game.JAVA.getLang(), false);
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
-		g.removeSessionKit();
 		g.setBatchExecution();
 		
 		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
 		for (String lessonName : Game.lessonsName) { 
-			if(g.switchLesson(lessonName, true)==null) {
-				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
-				System.exit(1);
-			}
 			Logger.log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");

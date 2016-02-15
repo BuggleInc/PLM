@@ -48,9 +48,6 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
-import plm.core.model.session.GitSessionKit;
-import plm.core.model.session.ISessionKit;
-import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitUtils;
@@ -144,9 +141,6 @@ public class Game {
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
 
-	public SessionDB studentWork;
-	//private ISessionKit sessionKit = new ZipSessionKit(this);
-	private ISessionKit sessionKit;
 	private GitUtils gitUtils;
 
 	private static boolean ongoingInitialization = false;
@@ -196,92 +190,11 @@ public class Game {
 				}
 		}
 
-		studentWork = new SessionDB(this);
-
-		sessionKit = new GitSessionKit(this, userUUID);
 		this.gitUtils = gitUtils;
-
-		initLessons();
-
-		loadSession();
 	}
 
 	public GitUtils getGitUtils() {
 		return this.gitUtils;
-	}
-
-	private void initLessons() {
-		for(String lessonName: lessonsName) {
-			addLesson(lessonName);
-		}
-	}
-
-	public void addLesson(String lessonName) {
-		Lesson lesson = null;
-		try {
-			// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
-			// We manually build a call to the constructor of this object, and fire it
-			// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
-			try {
-				lesson = (Lesson) Class.forName(lessonName + ".Main").getDeclaredConstructor(Game.class).newInstance(this);
-			} catch (IllegalArgumentException | InvocationTargetException
-					| NoSuchMethodException | SecurityException e) {
-				e.printStackTrace();
-			}
-			lessons.put(lessonName, lesson); // cache the newly created object
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(i18n.tr("Cannot load lesson {0}: class Main not found.",lessonName));
-		}
-	}
-
-	/** Change the current lesson.
-	 *
-	 * Also, initialize the newly used lesson on need. It must already be in the classpath
-	 * (use @loadLesson() if you want to load a lesson located in an external jar file)
-	 *
-	 * @param lessonName package name of the lesson to load
-	 */
-
-	public Lesson switchLesson(String lessonName, boolean failOnError) {
-		this.setState(GameState.LOADING);
-		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise
-		Lesson lesson = lessons.get(lessonName);
-		Lesson lessonLoaded = loadedLessons.get(lessonName);
-		statusArgAdd(lessonName);
-		if (lessonLoaded == null) { // we have to load it
-			lesson.loadLesson();
-			loadedLessons.put(lessonName, lesson);
-		}
-		// Prevent obvious error messages
-		if (sessionKit != null)
-			sessionKit.loadLesson(SAVE_DIR, lesson);
-		try {
-			waitInitThreads();
-		} catch (InterruptedException e) {
-			System.err.println("Interrupted while loading the lesson "+lesson.getName());
-			e.printStackTrace();
-		}
-		// If a problem arose while setting up the lesson, don't switch
-		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
-			JOptionPane.showMessageDialog(null,
-					i18n.tr("The lesson {0} encountered an issue while loading its exercises, please report the issue and choose another lesson.",lesson.getName()) ,
-					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE);
-			return null;
-		}
-
-		setCurrentLesson(lesson);
-		this.setState(GameState.LOADING_DONE);
-		return lesson;
-	}
-
-	public void switchExercise(String exerciseID) {
-		this.selectedWorld = null; // Remove the previous selectedWorld
-		this.currentLesson.setCurrentExercise(exerciseID);
-		getSelectedWorld();
 	}
 
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
@@ -336,9 +249,6 @@ public class Game {
 		String lessonPackage = manifest.getMainAttributes().getValue("LessonPackage");
 		if (lessonPackage == null)
 			throw new LessonLoadingException("Invalid lesson file (Attribute 'LessonPackage' not found in Manifest): "+jar.getName());
-
-		// We are ready to launch this lesson
-		switchLesson("lessons." + lessonPackage,false);
 	}//end method
 
 
@@ -381,41 +291,36 @@ public class Game {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
-		try {
-			saveSession(); // don't loose user changes
-			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
+		this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
 
-			if (this.currentLesson != lect.getLesson()) {
-				this.currentLesson = lect.getLesson();
+		if (this.currentLesson != lect.getLesson()) {
+			this.currentLesson = lect.getLesson();
+		}
+
+		/* if the user changes the exercise, you can assume that he wants to test another challenge */
+		if (isCreativeEnabled())
+			switchCreative();
+
+		this.currentLesson.setCurrentExercise(lect);
+		fireCurrentExerciseChanged(lect);
+		if (lect instanceof Exercise) {
+			Exercise exo = (Exercise) lect;
+			exo.reset();
+			setSelectedWorld(exo.getWorld(0));
+
+			ProgrammingLanguage fallback = null;
+			for (ProgrammingLanguage l:exo.getProgLanguages()) {
+				if (l.equals(programmingLanguage))
+					return; /* The exo accepts the language we currently have */
+				if (fallback == null)
+					fallback = l;
 			}
-
-			/* if the user changes the exercise, you can assume that he wants to test another challenge */
-			if (isCreativeEnabled())
-				switchCreative();
-
-			this.currentLesson.setCurrentExercise(lect);
-			fireCurrentExerciseChanged(lect);
-			if (lect instanceof Exercise) {
-				Exercise exo = (Exercise) lect;
-				exo.reset();
-				setSelectedWorld(exo.getWorld(0));
-
-				ProgrammingLanguage fallback = null;
-				for (ProgrammingLanguage l:exo.getProgLanguages()) {
-					if (l.equals(programmingLanguage))
-						return; /* The exo accepts the language we currently have */
-					if (fallback == null)
-						fallback = l;
-				}
-				/* Use the first (programming) language advertised by the exercise java as a fallback */
-				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
-							i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
-									+ "Please consider contributing to this project by adapting this exercise to this language.",
-									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
-
-			}
-		} catch (UserAbortException e) {
-			Logger.log(i18n.tr("Operation cancelled by the user"));
+			/* Use the first (programming) language advertised by the exercise java as a fallback */
+			if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
+				Logger.log(
+						i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
+								+ "Please consider contributing to this project by adapting this exercise to this language.",
+								lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 		}
 	}
 
@@ -512,60 +417,12 @@ public class Game {
 	}
 
 	public void quit() {
-		try {
-			// FIXME: this method is not called when pressing APPLE+Q on OSX
-			saveSession();
-
-			// report user leave on the server
-			for(ProgressSpyListener spyListener: progressSpyListeners){
-				spyListener.leave();
-			}
-
-			storeProperties();
-		} catch (UserAbortException e) {
-			// Ok, user decided to not quit (to get a chance to export the session)
-			Logger.log("Exit aborted");
+		// FIXME: this method is not called when pressing APPLE+Q on OSX
+		// report user leave on the server
+		for(ProgressSpyListener spyListener: progressSpyListeners){
+			spyListener.leave();
 		}
-	}
-
-	public void clearSession() {
-		if (sessionKit == null)
-			return;
-		this.sessionKit.cleanAll(SAVE_DIR);
-		for (Lesson l : this.lessons.values())
-			for (Lecture lect : l.exercises())
-				if (lect instanceof Exercise)
-					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages())
-						studentWork.setPassed(lect, lang, false);
-
-		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
-	}
-
-	public void loadSession() {
-		if (sessionKit == null) {
-			System.exit(1);
-			return;
-		}
-		this.setState(GameState.LOADING);
-		this.sessionKit.loadAll(SAVE_DIR);
-		this.setState(GameState.LOADING_DONE);
-	}
-
-	public void saveSession() throws UserAbortException {
-		if (sessionKit == null)
-			return;
-		this.setState(GameState.SAVING);
-		this.sessionKit.storeAll(SAVE_DIR);
-		this.setState(GameState.SAVING_DONE);
 		storeProperties();
-	}
-
-	public ISessionKit getSessionKit() {
-		return this.sessionKit;
-	}
-	public void removeSessionKit() {
-		sessionKit = null;
-		Logger.log("Disabling the session kit on disk.");
 	}
 
 	// FIXME: Should not be static
@@ -874,31 +731,18 @@ public class Game {
 					((SourceFileRevertable) sf).revert();
 			}
 		}
-		for (ProgrammingLanguage pl:Game.programmingLanguages)
-			studentWork.setPassed(ex, pl, false);
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}
 	}
 
 	public void setUserUUID(String userUUID) {
-		try {
-			saveSession();
-		} catch (UserAbortException e) {
-			e.printStackTrace();
-		}
 		currentLesson = null;
 		lastExercise = null;
 		for(Lesson lesson: lessons.values()) {
 		}
 		lessons.clear();
 		loadedLessons.clear();
-		studentWork = new SessionDB(this);
-		sessionKit.setUserUUID(userUUID);
-
-		initLessons();
-
-		loadSession();
 	}
 
 	public void setTrackUser(boolean trackUser) {

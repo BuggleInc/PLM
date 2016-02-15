@@ -37,14 +37,11 @@ public abstract class SimpleExerciseTest {
 		this.game = game;
 		
 		game.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
-		game.removeSessionKit();
 		game.setBatchExecution();
 		
 		if(!game.isDebugEnabled()) {
 			game.switchDebug();
 		}
-		game.addLesson("plm.test.simple");
-		game.switchLesson("plm.test.simple", true);
 		exo = (SimpleExercise) game.getCurrentLesson().getCurrentExercise();
 		game.setLocale(new Locale("en"));
 	}

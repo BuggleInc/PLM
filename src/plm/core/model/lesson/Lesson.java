@@ -55,39 +55,6 @@ public abstract class Lesson {
 		id = id.replaceAll("^lessons.", "");
 	}
 
-	public void loadLesson() {
-		try {
-			loadExercises();
-			Game.waitInitThreads();
-		} catch (IOException e) {
-			System.err.println("Cannot load the exercises. This lesson is severely broken..");
-			e.printStackTrace();
-		} catch (BrokenWorldFileException e) {
-			System.err.println("Cannot load the exercises. This lesson is severely broken..");
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			System.err.println("Interrupted while waiting for the lesson to load.");
-			e.printStackTrace();
-		}
-		/* Compute the lesson summary for the next time we start the PLM */
-		for (ProgrammingLanguage lang: Game.programmingLanguages) {
-			int possible = 0;
-			int passed = 0;
-			for (Lecture l: lectures) {
-				if (l instanceof Exercise) {
-					Exercise exo = (Exercise) l;
-					if (exo.getProgLanguages().contains(lang)) {
-						possible++;
-						if (game.studentWork.getPassed(l, lang))
-							passed++;
-					}
-				}
-			}
-			game.studentWork.setPassedExercises(id, lang, passed);
-			game.studentWork.setPossibleExercises(id, lang, possible);
-		}
-	}
-
 	public String getId() {
 		return id;
 	}

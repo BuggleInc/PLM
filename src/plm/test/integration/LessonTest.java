@@ -59,14 +59,8 @@ public class LessonTest {
 	}
 	
 	public Lesson loadLesson(String pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		String userUUID = UUID.randomUUID().toString();
-		Game g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), pl, false);
-		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
-		g.removeSessionKit();
-		g.setBatchExecution();
-
-		/* Compute the answers with the selected language entities */
-		return g.switchLesson(lessonName, true);
+		// FIXME: Re-implement me
+		return null;
 	}
 	
 	@Test
