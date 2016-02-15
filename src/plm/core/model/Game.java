@@ -32,11 +32,6 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
-import plm.core.GameListener;
-import plm.core.GameStateListener;
-import plm.core.HumanLangChangesListener;
-import plm.core.ProgLangChangesListener;
-import plm.core.StatusStateListener;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
 import plm.core.lang.LangLightbot;
@@ -142,15 +137,12 @@ public class Game {
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
 
-	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
 	private World initialOfSelectedWorld;
 	private Entity selectedEntity;
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
-
-	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	public SessionDB studentWork;
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
@@ -236,7 +228,6 @@ public class Game {
 					| NoSuchMethodException | SecurityException e) {
 				e.printStackTrace();
 			}
-			addHumanLangListener(lesson);
 			lessons.put(lessonName, lesson); // cache the newly created object
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -390,19 +381,12 @@ public class Game {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
-		// No need to stop the execution if no lesson is currently selected
-		if(currentLesson != null) {
-			// If already executing a program, stop it
-			removeHumanLangListener(currentLesson.getCurrentExercise());
-			removeHumanLangListener(currentLesson);
-		}
 		try {
 			saveSession(); // don't loose user changes
 			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
 
 			if (this.currentLesson != lect.getLesson()) {
 				this.currentLesson = lect.getLesson();
-				addHumanLangListener(currentLesson);
 			}
 
 			/* if the user changes the exercise, you can assume that he wants to test another challenge */
@@ -470,7 +454,6 @@ public class Game {
 			if (this.selectedWorld.getEntityCount()>0) {
 				this.selectedEntity = this.selectedWorld.getEntity(0);
 			}
-			fireSelectedWorldHasChanged(world);
 		} else {
 			throw new RuntimeException(i18n.tr("The lecture {0} has no world that I can select",lect));
 		}
@@ -482,7 +465,6 @@ public class Game {
 
 	public void setSelectedEntity(Entity b) {
 		this.selectedEntity = b;
-		fireSelectedEntityHasChanged();
 	}
 
 	public Entity getSelectedEntity() {
@@ -523,7 +505,6 @@ public class Game {
 
 	public void setState(GameState status) {
 		this.state = status;
-		fireStateChanged(status);
 	}
 
 	public GameState getState() {
@@ -670,58 +651,14 @@ public class Game {
 		}
 	}
 
-	public void addGameListener(GameListener l) {
-		this.listeners.add(l);
-	}
-
-	public void removeGameListener(GameListener l) {
-		this.listeners.remove(l);
-	}
-
 	protected void fireCurrentExerciseChanged(Lecture lect) {
 		if (stepModeEnabled())
 			disableStepMode();
-
-		for (GameListener v : this.listeners) {
-			v.currentExerciseHasChanged(lect);
-		}
-
 		if(lect instanceof Exercise){
 			for(ProgressSpyListener p: this.progressSpyListeners){
 				p.switched((Exercise)lect);
 			}
 		}
-	}
-
-	protected void fireSelectedWorldHasChanged(World w) {
-		for (GameListener v : this.listeners) {
-			v.selectedWorldHasChanged(w);
-		}
-	}
-
-	protected void fireSelectedWorldWasUpdated() {
-		for (GameListener v : this.listeners) {
-			v.selectedWorldWasUpdated();
-		}
-	}
-
-	protected void fireSelectedEntityHasChanged() {
-		for (GameListener v : this.listeners) {
-			v.selectedEntityHasChanged();
-		}
-	}
-
-	public void addGameStateListener(GameStateListener l) {
-		this.gameStateListeners.add(l);
-	}
-
-	public void removeGameStateListener(GameStateListener l) {
-		this.gameStateListeners.remove(l);
-	}
-
-	protected void fireStateChanged(GameState status) {
-		for (GameStateListener l : this.gameStateListeners)
-			l.stateChanged(status);
 	}
 
 	private ArrayList<ProgressSpyListener> progressSpyListeners = new ArrayList<ProgressSpyListener>();
@@ -755,14 +692,6 @@ public class Game {
 		}
 	}
 
-	/* Status bar label changing logic */
-	ArrayList<StatusStateListener> statusStateListeners = new ArrayList<StatusStateListener>();
-	public void addStatusStateListener(StatusStateListener l) {
-		this.statusStateListeners.add(l);
-	}
-	public void removeStatusStateListener(StatusStateListener l) {
-		this.statusStateListeners.remove(l);
-	}
 	ArrayList<String> statusArgs = new ArrayList<String>();
 	String stateTxt = "";
 	public void statusRootSet(String txt) {
@@ -798,13 +727,10 @@ public class Game {
 		}
 
 		String msg = first ? "" : sb.toString(); // remove everything if no argument at all
-		for (StatusStateListener l : this.statusStateListeners)
-			l.stateChanged(msg);
 	}
 	public void setLocale(Locale lang) {
 		this.locale = lang;
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", lang, I18nFactory.FALLBACK);
-		fireHumanLangChange(lang);
 	}
 
 	public Locale getLocale(){
@@ -826,45 +752,6 @@ public class Game {
 			if (pl.equals(newL))
 				return true;
 		return false;
-	}
-	private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
-	public void addProgLangListener(ProgLangChangesListener l) {
-		progLangListeners.add(0, l);
-	}
-	public void addProgLangListener(ProgLangChangesListener l, boolean last) {
-		if(last) {
-			progLangListeners.add(l);
-		}
-		else {
-			addProgLangListener(l);
-		}
-	}
-	public void fireProgLangChange(ProgrammingLanguage newLang) {
-		for (ProgLangChangesListener l : progLangListeners)
-			l.currentProgrammingLanguageHasChanged(newLang);
-	}
-	public void removeProgLangListener(ProgLangChangesListener l) {
-		this.progLangListeners.remove(l);
-	}
-
-	private List<HumanLangChangesListener> humanLangListeners = new Vector<HumanLangChangesListener>();
-	public void addHumanLangListener(HumanLangChangesListener l) {
-		humanLangListeners.add(0, l);
-	}
-	public void addHumanLangListener(HumanLangChangesListener l, boolean last) {
-		if(last) {
-			humanLangListeners.add(l);
-		}
-		else {
-			addHumanLangListener(l);
-		}
-	}
-	public void fireHumanLangChange(Locale newLang) {
-		for (HumanLangChangesListener l : humanLangListeners)
-			l.currentHumanLanguageHasChanged(newLang);
-	}
-	public void removeHumanLangListener(HumanLangChangesListener l) {
-		this.humanLangListeners.remove(l);
 	}
 
 	private boolean doDebug = false;
@@ -1000,13 +887,9 @@ public class Game {
 		} catch (UserAbortException e) {
 			e.printStackTrace();
 		}
-		if(currentLesson != null) {
-			removeHumanLangListener(currentLesson.getCurrentExercise());
-		}
 		currentLesson = null;
 		lastExercise = null;
 		for(Lesson lesson: lessons.values()) {
-			removeHumanLangListener(lesson);
 		}
 		lessons.clear();
 		loadedLessons.clear();

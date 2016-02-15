@@ -10,8 +10,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.tree.DefaultMutableTreeNode;
-
-import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.Game;
@@ -21,7 +19,7 @@ import plm.core.utils.FileUtils;
 /** Represents an element of the pedagogic sequence, be it a lecture or 
  * an exercise. A better name would be useful, but I feel limited in 
  * English today. Sorry. */
-public abstract class Lecture implements HumanLangChangesListener{
+public abstract class Lecture {
 	private String localId; // lecture's identifier WITHIN THE LESSON 
 	private String id; // global lecture's identifier
 
@@ -60,7 +58,6 @@ public abstract class Lecture implements HumanLangChangesListener{
 		localId = (basename!=null?basename:getClass().getName());
 		id = lesson.getId()+"."+ getLocalId();
 		loadHTMLMission();
-		game.addHumanLangListener(this);
 	}
 	
 	public void setId(String id) {
@@ -171,10 +168,6 @@ public abstract class Lecture implements HumanLangChangesListener{
 	}
 	public String getLocalId() {
 		return localId;
-	}
-
-	public void currentHumanLanguageHasChanged(Locale newLang) {
-		loadHTMLMission();
 	}
 
 	public Game getGame() {

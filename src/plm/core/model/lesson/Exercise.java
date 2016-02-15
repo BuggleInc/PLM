@@ -255,7 +255,6 @@ public abstract class Exercise extends Lecture implements ToJSON {
 	}
 
 	public void currentHumanLanguageHasChanged(Locale newLang) {
-		super.currentHumanLanguageHasChanged(newLang);
 		initialWorld.get(0).resetAbout();
 		initialWorld.get(0).getAbout();
 	}

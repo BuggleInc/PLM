@@ -14,14 +14,13 @@ import java.util.regex.Pattern;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 
-public abstract class Lesson implements HumanLangChangesListener {
+public abstract class Lesson {
 
 	private Game game;
 	private String name;
