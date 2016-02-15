@@ -57,38 +57,6 @@ public class LangScala extends JVMCompiledLang {
 		}
 	}
 
-	@Override
-	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, Locale locale) 
-			throws PLMCompilerException {
-		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
-		packageNameSuffix++;
-		runtimePatterns.put("\\$package", 
-				"package "+packageName()+";import java.awt.Color;");
-
-		List<plm.core.model.session.SourceFile> sfs = exo.getSourceFilesList(this);
-		if (sfs == null || sfs.isEmpty()) {
-			String msg = exo.getName()+": No source to compile";
-			System.err.println(msg);
-			PLMCompilerException e = new PLMCompilerException(msg, null, null);
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);				
-			throw e;
-		}
-
-		try {
-			compiler.reset();
-			for (plm.core.model.session.SourceFile sf : sfs) {
-				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
-			}
-		} catch (PLMCompilerException e) {
-			System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
-			System.err.println(e.getMessage());
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
-
-			throw e;
-		}
-		
-	}
-	
 	/** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
 	@Override
 	public String nameOfCorrectionEntity(Exercise exo){

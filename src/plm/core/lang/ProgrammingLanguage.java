@@ -91,9 +91,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	}
 	
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
-	public abstract void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException;
 	public abstract void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException;
-	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds) throws PLMCompilerException;
 
 	/** Make the entity run, according to the used universe and programming language.

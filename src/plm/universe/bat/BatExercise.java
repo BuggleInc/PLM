@@ -42,11 +42,6 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		        "public class "+entName+" extends BatEntity { "+
 		        extraBody);
 	}
-	
-	@Override
-	public void runDemo(List<Thread> runnerVect){
-		/* No demo in bat exercises */
-	}
 
 	public abstract void run(BatTest t);
 	
@@ -75,32 +70,5 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		
 		pythonTemplate = skeleton.toString();
 		super.templatePython(entName, initialCode, correction);
-	}
-	
-	@Override 
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
-		if (whatToMutate == StudentOrCorrection.STUDENT) {
-			super.mutateEntities(kind, whatToMutate);
-			return;
-		}
-		/* compute the correction */
-			
-		Vector<World> worlds = null;
-		int nbErrors = getNbError();
-		switch (kind) {
-		case INITIAL: worlds = initialWorld; break;
-		case CURRENT: worlds = currentWorld; break;
-		case ANSWER:  worlds = answerWorld;  break;
-		case ERROR:   if(nbErrors != -1) worlds = commonErrors.get(nbErrors);   break;
-		default: throw new RuntimeException("kind is invalid: "+kind);
-		}
-
-		for (ProgrammingLanguage pl : getProgLanguages()) {
-			if (!pl.equals(Game.JAVA) && !pl.equals(Game.SCALA)) 
-				worlds.get(0).getEntity(0).setScript(pl, corrections.get(pl));
-		}
-		
-		for (BatTest t : ((BatWorld)worlds.get(0)).tests) 
-			t.objectiveTest = true;
 	}
 }

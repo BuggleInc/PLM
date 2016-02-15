@@ -1,6 +1,5 @@
 package plm.universe.lightbot;
 
-import plm.core.model.Game;
 import plm.core.model.session.SourceFileRevertable;
 
 public class LightBotSourceFile extends SourceFileRevertable {
@@ -8,8 +7,8 @@ public class LightBotSourceFile extends SourceFileRevertable {
 	private LightBotInstruction[] func1;
 	private LightBotInstruction[] func2;
 
-	public LightBotSourceFile(Game game, String name) {
-		super(game, name);
+	public LightBotSourceFile(String name) {
+		super(name);
 		resetBody();
 	}
 	@Override

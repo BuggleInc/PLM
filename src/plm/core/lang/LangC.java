@@ -29,26 +29,6 @@ public class LangC extends ProgrammingLanguage {
 		super("C", "c", isDebugEnabled);
 	}
 
-	@Override
-	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, Locale locale) 
-			throws PLMCompilerException {
-		
-		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
-		if (sfs == null || sfs.isEmpty()) {
-			String msg = exo.getName()+": No source to compile";
-			System.err.println(msg);
-			exo.lastResult = ExecutionProgress.newCompilationError(msg, this);	
-			throw new PLMCompilerException(msg, null, null);
-		}
-
-		for (SourceFile sf : sfs){
-			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
-			compile(code,exo.getId(),exo.lastResult, locale);
-			
-		}
-	}
-
-
 	private void compile(String code, String executable, ExecutionProgress lastResult, Locale locale) throws PLMCompilerException{
 		
 		Runtime runtime = Runtime.getRuntime();
@@ -198,13 +178,6 @@ public class LangC extends ProgrammingLanguage {
 		} catch(InterruptedException e){
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public List<Entity> mutateEntities(Exercise exercise, List<Entity> old,
-			StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
-		
-		return old; /* Nothing to do, actually */
 	}
 
 	@Override

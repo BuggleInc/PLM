@@ -22,8 +22,7 @@ public class SourceFile implements ToJSON {
 	private ISourceFileListener listener = null;
 	private Game game;
 
-	public SourceFile(Game game, String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
-		this.game = game;
+	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
 		this.name = name;
 		this.body = initialBody;
 		this.offset = _offset;
@@ -34,7 +33,6 @@ public class SourceFile implements ToJSON {
 
 	public SourceFile(JSONObject json) {
 		this(
-				null,
 				(String) json.get("name"),
 				(String) json.get("body"),
 				(String) json.get("template"),
@@ -59,7 +57,7 @@ public class SourceFile implements ToJSON {
 	}
 
 	public SourceFile clone() {
-		return new SourceFile(null, name, body, template, offset, correction, error);
+		return new SourceFile(name, body, template, offset, correction, error);
 	}
 
 	public String getName() {

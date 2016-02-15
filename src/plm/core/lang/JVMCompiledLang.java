@@ -30,59 +30,6 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 	}
 
 	protected abstract Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException;
-	@Override
-	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException {
-		//String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
-		String newClassName = "";
-		switch(whatToMutate) {
-		case STUDENT: newClassName = exo.getTabName(); break;
-		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
-		case ERROR: newClassName = nameOfCommonError(exo, nbError); break;
-		}
-		ArrayList<Entity> newEntities = new ArrayList<Entity>();
-		for (Entity old : olds) {
-			/* Instantiate a new entity of the new type */
-			Entity ent = null;
-			try {
-				ent = mutateEntity(newClassName);
-			} catch (InstantiationException e) {
-				throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
-			} catch (IllegalAccessException e) {
-				throw new RuntimeException("Illegal access while instanciating entity of type "+className(newClassName), e);
-			} catch (NullPointerException e) {
-				/* this kind of entity was not written by student. try to get it from default class loader, or complain if it also fails */
-				try {
-					ent = (Entity)getClass().getClassLoader().loadClass(newClassName).newInstance(); 
-				} catch (Exception e2) {
-					if (whatToMutate == StudentOrCorrection.STUDENT) {
-						/* FIXME: need to pass the current programming language as parameter
-						if (getGame().getProgrammingLanguage() == Game.SCALA)
-							throw new PLMCompilerException(getGame().i18n.tr(
-									  "Your entity failed to start. Did you forgot to put your code within a method?\n\n"
-									+ "This problem often arises when the exercise expects you to put all the code within a \n"
-									+ "method e.g. run(), but you put some statements (e.g. forward()) outside of any method.\n\n"
-									+ "The easiest solution to sort it out is to copy all your code (Ctrl-A Ctrl-C), use the \n"
-									+ "'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code within the\n"
-									+ "provided method."));
-						else
-						*/
-						throw new PLMCompilerException(i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
-					} else {
-						throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
-					}
-				}
-			} catch (ClassNotFoundException e) {
-				throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
-			}
-			/* change fields of new entity to copy old one */
-			ent.copy(old);
-			ent.initDone();
-			/* Add new entity to the to be returned entities set */
-			newEntities.add(ent);
-
-		}
-		return newEntities;
-	}
 
 	public ArrayList<Entity> mutateEntities(String newClassName, SourceFile sourceFile, StudentOrCorrection whatToMutate, List<Entity> olds) throws PLMCompilerException {
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();

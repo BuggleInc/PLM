@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -61,9 +60,6 @@ public abstract class Exercise extends Lecture implements ToJSON {
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
 	protected Vector<Vector<World>> commonErrors = new Vector<Vector<World>>();
-
-
-	public ExecutionProgress lastResult;
 
 	public Exercise(String id, String name) {
 		setId(id);
@@ -177,70 +173,12 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		}
 	}
 
-	public abstract void run(List<Thread> runnerVect);	
-	public abstract void runDemo(List<Thread> runnerVect);	
-
-	public void check() {
-		boolean pass = true;
-		lastResult.commonErrorText = "";
-		lastResult.commonErrorID = -1;
-		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			for (int i=0; i<currentWorld.size(); i++) {
-				lastResult.totalTests++;
-
-				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
-					for(int j = 0 ; j < commonErrors.size() ; j++) {
-						if(currentWorld.get(i).winning((commonErrors.get(j)).get(i))) { //winning do an equals, but it is the same
-							String path = Game.JAVA.nameOfCommonError(this, j).replaceAll("\\.", "/");
-							try {
-								StringBuffer sb = FileUtils.readContentAsText(path, getGame().getLocale(), "html", true);
-								lastResult.commonErrorText = sb.toString();
-								lastResult.commonErrorID = j;
-							} catch (IOException e) {
-								e.printStackTrace();
-							} 
-							break;
-						}
-					}
-					String diff = answerWorld.get(i).diffTo(currentWorld.get(i), new Locale("en"));
-					lastResult.executionError += getGame().i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
-					if (diff != null) 
-						lastResult.executionError += ":\n"+diff;
-					lastResult.executionError += "\n------------------------------------------\n";
-					pass = false;
-				} else {
-					lastResult.passedTests++;
-				}
-			}
-			if (pass)
-				lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
-			else 
-				lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
-		}
-	}
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
 		//lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
 
 		for (int i=0; i<initialWorld.size(); i++) 
 			currentWorld.get(i).reset(initialWorld.get(i));
-	}
-
-	/**
-	 * Generate Java source from the user function
-	 * @param out 
-	 * 			where to display our errors
-	 * @param whatToCompile
-	 * 			either STUDENT's provided data or CORRECTION entity 
-	 * @throws PLMCompilerException 
-	 * 
-	 * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
-	 */
-	public void compileAll(StudentOrCorrection whatToCompile) throws PLMCompilerException {
-		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
-		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
-		 */
-		getGame().getProgrammingLanguage().compileExo(this, whatToCompile, getGame().i18n.getLocale());
 	}
 
 	/** get the list of source files for a given language, or create it if not existent yet */
@@ -260,55 +198,6 @@ public abstract class Exercise extends Lecture implements ToJSON {
 			return getSourceFilesList(lang).get(i);
 		}
 		return null;
-	}
-
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn, String errorCtn) {
-		switch (lang.getLang()){
-		case "Blockly":
-			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset, correctionCtn, errorCtn));
-			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name+"Blocks", initialContent, template, offset, correctionCtn, errorCtn));
-			break;
-		default:
-			getSourceFilesList(lang).add(new SourceFileRevertable(getGame(), name, initialContent, template, offset, correctionCtn, errorCtn));
-			break;
-		}
-	}
-
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
-		ProgrammingLanguage lang = getGame().getProgrammingLanguage();
-
-		Vector<World> worlds = null;
-		switch (kind) {
-		case INITIAL: worlds = initialWorld; break;
-		case CURRENT: worlds = currentWorld; break;
-		case ANSWER:  worlds = answerWorld;  break;
-		case ERROR: worlds = commonErrors.get(nbError); break;
-		default: throw new RuntimeException("kind is invalid: "+kind);
-		}
-
-
-		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-		if (getGame().getProgrammingLanguage().equals(Game.JAVA)) {
-			String[] forbidden = new String[] {"'","\""};
-			for (String stringPattern : forbidden) {
-				Pattern pattern = Pattern.compile(stringPattern);
-				Matcher matcher = pattern.matcher(tabName);
-
-				if (matcher.matches())
-					throw new RuntimeException(tabName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
-							"Your exercise uses a broken tabName.");
-			}
-		}
-
-		try {
-			for (World current:worlds) {
-				if (current.getEntities().isEmpty())
-					throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
-				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate, getGame().i18n, nbError) );
-			}
-		} catch (PLMCompilerException e) {
-			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage(), lang);
-		}
 	}
 
 	public Vector<World> getWorlds(WorldKind kind) {

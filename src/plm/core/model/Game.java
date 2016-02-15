@@ -191,20 +191,15 @@ public class Game {
 
 		if (defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && !canScala) {
 			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
 		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) && !canPython) {
 			System.err.println(i18n.tr("The default programming language is python, but your python installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
 		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) && !canC) {
 			System.err.println(i18n.tr("The default programming language is C, but your C installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
 		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.BLOCKLY.getLang()) && !canBlockly) {
 			System.err.println(i18n.tr("The default programming language is Blockly, but your Blockly installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
 		} else {
 			for (ProgrammingLanguage pl : Game.getProgrammingLanguages())
 				if (pl.getLang().equals(defaultProgrammingLanguage)) {
-					setProgramingLanguage(pl);
 					break;
 				}
 		}
@@ -433,7 +428,6 @@ public class Game {
 							i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
 									+ "Please consider contributing to this project by adapting this exercise to this language.",
 									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
-				setProgramingLanguage(fallback);
 
 			}
 		} catch (UserAbortException e) {
@@ -815,31 +809,6 @@ public class Game {
 
 	public Locale getLocale(){
 		return locale;
-	}
-
-	public void setProgrammingLanguage(String newLanguage) {
-		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			if (pl.getLang().equalsIgnoreCase(newLanguage)) {
-				setProgramingLanguage(pl);
-				break;
-			}
-		}
-	}
-
-	public void setProgramingLanguage(ProgrammingLanguage newLanguage) {
-		if (programmingLanguage.equals(newLanguage))
-			return;
-
-		if (isValidProgLanguage(newLanguage)) {
-			this.programmingLanguage = newLanguage;
-			if(getCurrentLesson() != null)
-				((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress(newLanguage);
-			fireProgLangChange(newLanguage);
-			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C) || newLanguage.equals(Game.BLOCKLY)) // Only save it if it's stable enough
-				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.getLang());
-			return;
-		}
-		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);
 	}
 
 	public ProgrammingLanguage getProgrammingLanguage() {

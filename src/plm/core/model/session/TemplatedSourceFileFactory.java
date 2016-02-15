@@ -29,7 +29,7 @@ public class TemplatedSourceFileFactory {
 	}
 	
 	public SourceFile newSourceFromParams(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
-		return new SourceFile(null, name, initialBody, template, _offset, _correctionCtn, _errorCtn);
+		return new SourceFile(name, initialBody, template, _offset, _correctionCtn, _errorCtn);
 	}
 
 	public SourceFile newSourceFromFile(String name, ProgrammingLanguage lang, String filename) throws NoSuchEntityException {
@@ -304,10 +304,10 @@ public class TemplatedSourceFileFactory {
 			 * See the comment at the beginning of  ExerciseTemplatingEntities for the motivation of this mess 
 			 * (TL;DR: entities in ExerciseTemplatingEntities are Frankenstein monsters built manually from scratch) 
 			 */
-			return new SourceFile(null, name, initialContent, skelContent,offset,
+			return new SourceFile(name, initialContent, skelContent,offset,
 					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString(),"Error");
 		} else {
-			return new SourceFile(null, name, initialContent, template,offset,
+			return new SourceFile(name, initialContent, template,offset,
 					correction.toString().replaceAll("SimpleBuggle","AbstractBuggle"),"Error"); // We don't want to have little dialogs when testing
 		}
 	}

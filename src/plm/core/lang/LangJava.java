@@ -84,38 +84,7 @@ public class LangJava extends JVMCompiledLang {
 			throw e;
 		}
 	}
-	public void compileExo(Exercise exo, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException {
-		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
-		packageNameSuffix++;
-		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
 
-		
-		/* Prepare the source files */
-		Map<String, String> sources = new TreeMap<String, String>();
-		for (SourceFile sf: exo.getSourceFilesList(Game.JAVA) )
-				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile)); 
-
-		if (sources.isEmpty()) 
-			return;
-
-		try {
-			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-			compiledClasses = compiler.compile(sources, errs, I18nManager.getI18n(locale));
-
-			Logger.log(errs.toString());
-		} catch (PLMCompilerException e) {
-			System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics(), this);
-			Logger.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
-
-			if (isDebugEnabled())
-				for (SourceFile sf: exo.getSourceFilesList(Game.JAVA)) 
-					System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns,whatToCompile)); 
-
-			throw e;
-		}
-
-	}
 	@Override
 	protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException {
 		return (Entity) compiledClasses.get(className(newClassName)).newInstance();

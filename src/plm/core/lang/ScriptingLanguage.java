@@ -27,13 +27,6 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void compileExo(Exercise exercise, StudentOrCorrection whatToCompile, Locale locale)
-			throws PLMCompilerException {
-
-		/* Nothing to do */
-	}
-
-	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
 			StudentOrCorrection whatToCompile, Locale locale)
 			throws PLMCompilerException {
@@ -85,66 +78,6 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				ent.setScript(this, script);
 		}
 		*/
-		return olds;
-	}
-
-	@Override
-	public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n, int nbError) {
-		String newClassName = "";
-		switch(whatToMutate) {
-		case STUDENT: newClassName = exo.getTabName(); break;
-		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
-		case ERROR: newClassName = nameOfCommonError(exo, nbError); break;
-		}
-		if (whatToMutate == StudentOrCorrection.STUDENT) {
-			boolean foundScript = false;
-
-			for (SourceFile sf : exo.getSourceFilesList(this)) {
-				if (newClassName.equals(sf.getName())) {
-					String script = sf.getCompilableContent(whatToMutate);
-					int offset = sf.getOffset();
-
-					for (Entity ent : olds) {
-						ent.setScript(this, script);
-						ent.setScriptOffset(this, offset);
-					}
-					foundScript = true;
-				}
-			}
-			if (!foundScript) {
-				StringBuffer sb = new StringBuffer();
-				for (SourceFile sf: exo.getSourceFilesList(this))
-					sb.append(sf.getName()+", ");
-
-				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
-				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
-			}
-		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
-			StringBuffer sb = null;
-			try {
-				sb = FileUtils.readContentAsText(this.nameOfCorrectionEntity(exo), null, getExt(), false);
-			} catch (IOException ex) {
-				throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionEntity(exo)+"."+getExt()+" since I cannot read it (error was: "+
-						ex.getLocalizedMessage());
-			}
-			String script = sb.toString();
-
-			for (Entity ent : olds)
-				ent.setScript(this, script);
-		} else {
-			StringBuffer sb = null;
-			try {
-				sb = FileUtils.readContentAsText(this.nameOfCommonError(exo,nbError), i18n.getLocale(), "java", false);
-			} catch (IOException ex) {
-				throw new RuntimeException("Cannot compute the error from file "+nameOfCommonError(exo,nbError)+"."+getExt()+" since I cannot read it (error was: "+
-						ex.getLocalizedMessage());
-			}
-			String script = sb.toString();
-
-			for (Entity ent : olds)
-				ent.setScript(this, script);
-		}
-
 		return olds;
 	}
 
