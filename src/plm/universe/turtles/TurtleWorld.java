@@ -74,25 +74,21 @@ public class TurtleWorld extends World {
 	public void addSizeHint(int x1, int y1, int x2, int y2, String text) {
 		synchronized (sizeHints) {
 			sizeHints.add(new SizeHint(x1, y1, x2, y2, text));
-			notifyWorldUpdatesListeners();
 		}
 	}
 	public void addLine(double x, double y, double newX, double newY, Color color) {
 		synchronized (shapes) {
 			shapes.add(new Line(x,y,newX,newY,color, getGame()));
-			notifyWorldUpdatesListeners();
 		}
 	}
 	public void addCircle(double x, double y, double radius, Color color) {
 		synchronized (shapes) {
 			shapes.add(new Circle(x,y,radius,color));
-			notifyWorldUpdatesListeners();
 		}
 	}
 	public void clear() {
 		synchronized (shapes) {
 			shapes.clear();
-			notifyWorldUpdatesListeners();
 		}
 	}
 

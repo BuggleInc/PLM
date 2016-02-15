@@ -102,8 +102,6 @@ public abstract class World implements ToJSON {
 		this.isDelayed = initialWorld.isDelayed;
 		this.delay = initialWorld.delay;
 		this.parameters = (initialWorld.parameters!=null?initialWorld.parameters.clone():null);
-		notifyEntityUpdateListeners();
-		notifyWorldUpdatesListeners();
 	}
 
 	public String getName() {
@@ -126,7 +124,6 @@ public abstract class World implements ToJSON {
 	 * Default value: 100ms */
 	public void setDelay(int d) {
 		this.delay = d;
-		notifyWorldUpdatesListeners(); // notify the speed slider model
 	}
 	/** set current UI delay to what was defined as max UI delay with setDelayUI() */
 	public void doDelay() {
@@ -153,22 +150,18 @@ public abstract class World implements ToJSON {
 		if (b.getWorld() != this)
 			b.setWorld(this);
 		entities.add(b);
-		notifyEntityUpdateListeners();
 	}
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
 			Logger.log("Ignoring a request to remove an unknown entity");
-		notifyEntityUpdateListeners();		
 	}
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();
-		notifyEntityUpdateListeners();
 	}
 
 	public void setEntities(List<Entity> l) {
 		entities = l;
-		notifyEntityUpdateListeners();
 	}
 
 	public int getEntityCount() {
@@ -215,58 +208,6 @@ public abstract class World implements ToJSON {
 			runner.setUncaughtExceptionHandler(h);
 			runner.start();
 			runnerVect.add(runner);
-		}
-	}
-
-	/* who's interested in every details of the world changes */
-	private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
-
-	public ArrayList<IWorldView> getWorldUpdatesListeners() {
-		return worldUpdatesListeners;
-	}
-	
-	/* who's only interested in entities creation and destructions */
-	private ArrayList<IWorldView> entitiesUpdateListeners = new ArrayList<IWorldView>();
-
-	public void addWorldUpdatesListener(IWorldView v) {
-		synchronized (this.worldUpdatesListeners) {
-			this.worldUpdatesListeners.add(v);
-		}
-	}
-
-	public void removeWorldUpdatesListener(IWorldView v) {
-		synchronized (this.worldUpdatesListeners) {
-			this.worldUpdatesListeners.remove(v);
-		}
-	}
-
-	public void notifyWorldUpdatesListeners() {
-		if (worldUpdatesListeners.isEmpty())
-			return;
-		synchronized (this.worldUpdatesListeners) {
-			for (IWorldView v : this.worldUpdatesListeners) {
-				v.worldHasMoved();
-			}
-		}
-	}
-
-	public void addEntityUpdateListener(IWorldView v) {
-		synchronized (this.entitiesUpdateListeners) {
-			this.entitiesUpdateListeners.add(v);
-		}
-	}
-
-	public void removeEntityUpdateListener(IWorldView v) {
-		synchronized (this.entitiesUpdateListeners) {
-			this.entitiesUpdateListeners.remove(v);
-		}
-	}
-
-	public void notifyEntityUpdateListeners() {
-		synchronized (this.entitiesUpdateListeners) {
-			for (IWorldView v : this.entitiesUpdateListeners) {
-				v.worldHasChanged();
-			}
 		}
 	}
 
@@ -387,9 +328,6 @@ public abstract class World implements ToJSON {
 		return parameters[i];
 	}
 
-	public void setSelectedEntity(Entity e) {
-		notifyWorldUpdatesListeners();//EntityUpdateListeners();
-	}
 	/** Returns the script except that must be injected within the environment before running user code
 	 * 
 	 * It should pass all order to the java entity, which were injected independently  

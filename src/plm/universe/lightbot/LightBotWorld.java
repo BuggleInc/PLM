@@ -71,8 +71,6 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
 			bot.setY(x);
 			bot.right();
 		}
-		
-		notifyWorldUpdatesListeners();
 	}
 	
 	public void rotateLeft() {
@@ -98,8 +96,6 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
 			bot.setY(this.sizeX-(x+1));
 			bot.left();
 		}
-		
-		notifyWorldUpdatesListeners();		
 	}
 	
 	@Override

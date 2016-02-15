@@ -161,7 +161,6 @@ public abstract class AbstractBuggle extends Entity {
 		Color oldColor = getCell().getColor();
 		addOperation(new ChangeCellColor(cell, oldColor, brushColor));
 		cell.setColor(brushColor);
-		world.notifyWorldUpdatesListeners();
 		setChanged();
 		notifyObservers(BRUSH_STATE);
 	}
@@ -199,7 +198,6 @@ public abstract class AbstractBuggle extends Entity {
 		if (c != null) {
 			addOperation(new ChangeBuggleBodyColor(this, this.bodyColor, c));
 			this.bodyColor = c;
-			world.notifyWorldUpdatesListeners();
 			setChanged();
 			notifyObservers(BUGGLE_COLOR);
 			stepUI();

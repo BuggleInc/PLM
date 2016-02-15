@@ -107,7 +107,6 @@ public abstract class GridWorld extends World {
 
 	public void setCell(GridWorldCell c, int x, int y) {
 		this.cells[x][y] = c;
-		notifyWorldUpdatesListeners();
 	}
 
 	public int getWidth() {

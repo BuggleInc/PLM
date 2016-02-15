@@ -30,7 +30,6 @@ public class PancakeWorld extends World {
 			this.selected = -1;
 		} else {
 			this.selected = rank;
-			notifyWorldUpdatesListeners();
 		}
 		
 	}

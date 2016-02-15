@@ -186,8 +186,6 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		lastResult.commonErrorID = -1;
 		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
 			for (int i=0; i<currentWorld.size(); i++) {
-				currentWorld.get(i).notifyWorldUpdatesListeners();
-
 				lastResult.totalTests++;
 
 				if (!currentWorld.get(i).winning(answerWorld.get(i))) {

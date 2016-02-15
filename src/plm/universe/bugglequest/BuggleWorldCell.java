@@ -70,7 +70,6 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public void setColor(Color c) {
 		this.color = c;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public Color getColor() {
@@ -79,7 +78,6 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public void setMsgColor(Color c) {
 		this.msgColor = c;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public Color getMsgColor() {
@@ -88,22 +86,18 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public void putTopWall() {
 		this.topWall = true;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public void removeTopWall() {
 		this.topWall = false;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public void putLeftWall() {
 		this.leftWall = true;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public void removeLeftWall() {
 		this.leftWall = false;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	@Override
@@ -136,7 +130,6 @@ public class BuggleWorldCell extends GridWorldCell {
 		if (hasBaggle)
 			throw new AlreadyHaveBaggleException(getWorld().getGame().i18n.tr("There is already a baggle here."));
 		hasBaggle = true;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public void baggleRemove() {
@@ -155,16 +148,13 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public void setContent(String c) {
 		this.content = c;
-		world.notifyWorldUpdatesListeners();
 	}
 
 	public void addContent(String c) {
 		this.content += c;
-		world.notifyWorldUpdatesListeners();
 	}
 	public void emptyContent() {
 		this.content = "";
-		world.notifyWorldUpdatesListeners();
 	}
 
 	@Override

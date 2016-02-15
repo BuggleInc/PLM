@@ -31,23 +31,18 @@ public class LightBotWorldCell extends GridWorldCell {
 	public void addLight() {
 		this.light = true;
 		this.lightOn = false;
-		world.notifyWorldUpdatesListeners();
 	}
 	public void removeLight() {
 		this.light = false;
-		world.notifyWorldUpdatesListeners();
 	}
 	public void lightSwitch() {
 		lightOn = !lightOn;
-		world.notifyWorldUpdatesListeners();
 	}
 	public void setLightOn() {
 		lightOn = true;
-		world.notifyWorldUpdatesListeners();
 	}
 	public void setLightOff() {
 		lightOn = false;
-		world.notifyWorldUpdatesListeners();
 	}
 	/** Returns true if the light is on, or if there is no light */
 	public boolean getLightOnOrNone(){

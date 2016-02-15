@@ -65,13 +65,12 @@ import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.model.tracking.ServerSpyAppEngine;
 import plm.universe.Entity;
-import plm.universe.IWorldView;
 import plm.universe.World;
 
 /*
  *  core model which contains all known exercises.
  */
-public class Game implements IWorldView {
+public class Game {
 	/** Current state of the engine: whether we are running the student code, a demo, saving to files, or whatever.
 	 *  Helps deciding which interface buttons are enabled/disabled for example.
 	 */
@@ -498,9 +497,7 @@ public class Game implements IWorldView {
 		if (lect instanceof Exercise) {
 			Exercise exo = (Exercise) lect;
 			if (this.selectedWorld != null)
-				this.selectedWorld.removeEntityUpdateListener(this);
 			this.selectedWorld = world;
-			this.selectedWorld.addEntityUpdateListener(this);
 
 			int index = exo.indexOfWorld(this.selectedWorld);
 			this.answerOfSelectedWorld = exo.getAnswerOfWorld(index);
@@ -832,18 +829,6 @@ public class Game implements IWorldView {
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.readTip(id, mission);
 		}
-	}
-
-	@Override
-	public void worldHasChanged() {
-		if (selectedWorld.getEntityCount()>0)
-			setSelectedEntity(this.selectedWorld.getEntity(0));
-		fireSelectedWorldWasUpdated();
-	}
-
-	@Override
-	public void worldHasMoved() {
-		// don't really care that something moved within the current world
 	}
 
 	/* Status bar label changing logic */

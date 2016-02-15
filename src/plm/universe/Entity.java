@@ -90,7 +90,6 @@ public abstract class Entity extends Observable implements ToJSON {
 			addStep();
 		}
 		fireStackListener();
-		world.notifyWorldUpdatesListeners();
 	}
 
 	/** Copy fields of the entity passed in argument */
