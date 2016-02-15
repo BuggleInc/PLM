@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
-
-import javax.swing.SwingWorker;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.MergeCommand;
@@ -41,35 +40,18 @@ import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
-import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
-import org.xnap.commons.i18n.I18n;
 
 import plm.core.log.Logger;
-import plm.core.model.Game;
+import plm.core.model.I18nManager;
 
 public class GitUtils {
 
 	private Git git;
 	private File repoDir;
-	private Game game;
+	private Locale locale;
 
-	private String username = "";
-	private String password = Game.getProperty("plm.git.server.password");
-	private I18n i18n;
-
-	private static boolean currentlyPushing = false;
-
-	public GitUtils(I18n i18n) {
-		this.i18n = i18n;
-	}
-
-	public GitUtils(String username) {
-		this.username = username;
-	}
-
-	public void setGame(Game g) {
-		this.game = g;
-		this.i18n = g.i18n;
+	public GitUtils(Locale locale) {
+		this.locale = locale;
 	}
 
 	public File getRepoDir() {
@@ -89,7 +71,7 @@ public class GitUtils {
 		try {
 			cfg.save();
 		} catch (IOException e) {
-			Logger.log(i18n.tr("An error occurred while configuring the repository..."));
+			Logger.log(I18nManager.getI18n(locale).tr("An error occurred while configuring the repository..."));
 			e.printStackTrace();
 		}
 	}
@@ -98,7 +80,7 @@ public class GitUtils {
 		//if(!getGame().getTrackUser()) {
 		//	return false;
 		//}
-		Logger.log(i18n.tr("Retrieving your session from the servers..."));
+		Logger.log(I18nManager.getI18n(locale).tr("Retrieving your session from the servers..."));
 		try {
 			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
 		} catch (GitAPIException ex) {
@@ -132,7 +114,7 @@ public class GitUtils {
 		try {
 			git.checkout().setName(userBranchHash).call();
 		} catch (GitAPIException e) {
-			Logger.log(i18n.tr("An error occurred while checking out the user's branch: ")+userBranchHash);
+			Logger.log(I18nManager.getI18n(locale).tr("An error occurred while checking out the user's branch: ")+userBranchHash);
 			// FIXME: display the stacktrace if debug mode is enabled
 			//e.printStackTrace();
 			success = false;
@@ -145,13 +127,13 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				Logger.log(i18n.tr("last session data successfully retrieved"));
+				Logger.log(I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				Logger.log(i18n.tr("last session data successfully merged"));
+				Logger.log(I18nManager.getI18n(locale).tr("last session data successfully merged"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
-				Logger.log(i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				Logger.log(I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
@@ -169,7 +151,7 @@ public class GitUtils {
 					}
 					git.add().addFilepattern(path).call();
 				}
-				
+
 				Logger.log("All conflicts have been manually handled ;)");
 				// TODO: check if the commit is mandatory
 				git.commit().setMessage("Manual merging")
@@ -179,14 +161,14 @@ public class GitUtils {
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
 				// TODO: handle this case
-				Logger.log(i18n.tr("Canceled the merge operation because of the following failures:"));
+				Logger.log(I18nManager.getI18n(locale).tr("Canceled the merge operation because of the following failures:"));
 				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
 				for(String path : allFailures.keySet()) {
 					Logger.log(path + " : " + allFailures.get(path));
 				}
 			}
 		} catch (Exception ex) {
-			System.err.println(i18n.tr("Can't merge data retrieved from server with local session data."));
+			System.err.println(I18nManager.getI18n(locale).tr("Can't merge data retrieved from server with local session data."));
 			throw ex;
 		}
 	}
@@ -227,100 +209,12 @@ public class GitUtils {
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
 		} catch (TransportException e) {
-			Logger.log(i18n.tr("Cannot synchronize your session with the servers (network down)."));
-			if (game.isDebugEnabled())
-				e.printStackTrace();
+			Logger.log(I18nManager.getI18n(locale).tr("Cannot synchronize your session with the servers (network down)."));
+			Logger.log(e.getStackTrace().toString());
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		}
 		return success;
-	}
-
-	/** Push the data to the github servers.
-	 *
-	 * Beware, you don't want to do that too much to not overload the github servers (see maybePushToUserBranch() below)
-	 */
-	public void forcefullyPushToUserBranch(String userBranchHash, ProgressMonitor progress) {
-		//if(!getGame().getTrackUser()) {
-		//return;
-		//}
-
-		synchronized(GitUtils.class) {
-			currentlyPushing = true;
-		}
-
-		// credentials
-		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(username, password);
-
-		// push
-		if(pushChanges(userBranchHash, progress, cp)) {
-			Logger.log(i18n.tr("Your session has been successfully saved into the clouds."));
-		}
-		else {
-			// An error occurred while pushing
-			Logger.log(i18n.tr("Fetching the server's last version..."));
-			try {
-				// Try to synchronize with the remote branch before pushing again
-				if (fetchBranchFromRemoteBranch(userBranchHash)) {
-					mergeRemoteIntoLocalBranch(userBranchHash);
-				}
-				if(!pushChanges(userBranchHash, progress, cp)) {
-					Logger.log(i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
-				}
-			} catch (Exception e) {
-				Logger.log(i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
-				e.printStackTrace();
-			}
-		}
-
-		synchronized(GitUtils.class) {
-			currentlyPushing = false;
-		}
-	}
-
-	/** try to push to the git servers, if no request is pending
-	 *
-	 * We had issues with the git servers that don't like having more than 1,200 concurrent push requests
-	 * from the same NATed IP address, and our PLM-data repo got temporarily disabled as a result. So now,
-	 * we only push at most once every 30 minutes (unless when the client quits, in which case
-	 * forcefullyPushToUserBranch() is used to get the data immediately out).
-	 *
-	 * Here is my understanding of the github incident:  We had 100 students using the PLM from the same
-	 * external IP address (our school is in a NATed network) at the same time for about 4 hours. Each
-  	 * of them was issuing git push requests each time that the "run" button is hit. Those requests where
-  	 * handled in a new thread to improve the UI reactivity. Since all branches derive from the master
-     * branch, it imposes the server to lock that branch for the commit to proceed. Things went seriously
-     * wrong at some point, probably because of the lock. As a result, the github servers got up to 1200
-     * concurrent push requests, triggering an alert that got the PLM-data repo to get temporarily disabled.
-     *
-	 */
-	public void maybePushToUserBranch(final String userBranchHash, final ProgressMonitor progress) {
-		if(!getGame().getTrackUser()) {
-			return;
-		}
-
-		synchronized(GitUtils.class) {
-			if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
-				return;
-			currentlyPushing = true;
-		}
-
-		new SwingWorker<Void, Integer>() {
-			@Override
-			protected Void doInBackground() {
-				// Reduce the load on the github servers by not pushing more often that once every 20 minutes
-				try {
-					Thread.sleep(1 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
-				} catch (InterruptedException e1) {
-					/* Ok, that's fine, what ever */
-				}
-
-				// Do it now, and allow next request to occur
-				forcefullyPushToUserBranch(userBranchHash, progress);
-
-				return null;
-			}
-		}.execute();
 	}
 
 	// Helper methods
@@ -379,24 +273,11 @@ public class GitUtils {
 
 	}
 
-	public void seqAddFilesToPush(String commitMsg, String userBranch,
-			ProgressMonitor progress) throws NoFilepatternException, GitAPIException {
-		addFiles();
-		commit(commitMsg);
-		maybePushToUserBranch(userBranch, progress);
-	}
-
 	public void dispose() {
-		username = null;
-		password = null;
 		git.close();
 	}
 
 	public Ref getRepoRef(String branch) throws IOException {
 		return git.getRepository().getRef(branch);
-	}
-
-	public Game getGame() {
-		return game;
 	}
 }

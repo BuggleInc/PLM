@@ -58,7 +58,6 @@ import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
-import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.GitUtils;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.universe.Entity;
@@ -156,7 +155,6 @@ public class Game {
 	public SessionDB studentWork;
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
-	private GitSpy gitSpy;
 	private GitUtils gitUtils;
 
 	private static boolean ongoingInitialization = false;
@@ -166,7 +164,7 @@ public class Game {
 	private Locale locale;
 	public I18n i18n;
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
-		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils("dummy-username"), trackUser, new Properties());
+		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils(locale), trackUser, new Properties());
 	}
 
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser, Properties localProperties) {
@@ -215,14 +213,6 @@ public class Game {
 
 		sessionKit = new GitSessionKit(this, userUUID);
 		this.gitUtils = gitUtils;
-		gitUtils.setGame(this);
-		try {
-			gitSpy = new GitSpy(this, SAVE_DIR, gitUtils, userUUID);
-			addProgressSpyListener(gitSpy);
-		} catch (IOException | GitAPIException e) {
-			System.err.println(i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
-			e.printStackTrace();
-		}
 
 		initLessons();
 
@@ -1053,23 +1043,10 @@ public class Game {
 		loadedLessons.clear();
 		studentWork = new SessionDB(this);
 		sessionKit.setUserUUID(userUUID);
-		gitSpy.setUserUUID(userUUID);
 
 		initLessons();
 
 		loadSession();
-	}
-
-	public void signalIdle(String start, String end, String duration) {
-		gitSpy.idle(start, end, duration);
-	}
-
-	public void signalCommonErrorFeedback(int commonErrorID, int accuracy, int help, String comment) {
-		gitSpy.commonErrorFeedback(commonErrorID, accuracy, help, comment);
-	}
-
-	public void signalReadTip(String id) {
-		gitSpy.readTip(id, currentLesson.getCurrentExercise().getMission(programmingLanguage));
 	}
 
 	public void setTrackUser(boolean trackUser) {
