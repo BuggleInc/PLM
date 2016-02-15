@@ -60,10 +60,7 @@ import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.GitUtils;
-import plm.core.model.tracking.HeartBeatSpy;
-import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
-import plm.core.model.tracking.ServerSpyAppEngine;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -96,7 +93,6 @@ public class Game {
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Map<String, Lesson> loadedLessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
-	private Course currentCourse;
 	private Lecture lastExercise;
 
 	public static final String [][] humanLangs = { {"English","en"}, {"Français","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"}, {"中文", "zh"} };
@@ -154,8 +150,6 @@ public class Game {
 	private Entity selectedEntity;
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
-
-	private HeartBeatSpy heartBeatSpy;
 
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -219,7 +213,6 @@ public class Game {
 
 		studentWork = new SessionDB(this);
 
-		addProgressSpyListener(new LocalFileSpy(this, SAVE_DIR));
 		sessionKit = new GitSessionKit(this, userUUID);
 		this.gitUtils = gitUtils;
 		gitUtils.setGame(this);
@@ -232,13 +225,6 @@ public class Game {
 		}
 
 		initLessons();
-
-		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
-			addProgressSpyListener(new ServerSpyAppEngine(this));
-
-		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
-			currentCourse = new CourseAppEngine(logger);
-		}
 
 		loadSession();
 	}
@@ -285,9 +271,6 @@ public class Game {
 	 */
 
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
-		if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
-			stopExerciseExecution();
-		}
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise
 		Lesson lesson = lessons.get(lessonName);
@@ -425,9 +408,6 @@ public class Game {
 		// No need to stop the execution if no lesson is currently selected
 		if(currentLesson != null) {
 			// If already executing a program, stop it
-			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
-				stopExerciseExecution();
-			}
 			removeHumanLangListener(currentLesson.getCurrentExercise());
 			removeHumanLangListener(currentLesson);
 		}
@@ -527,37 +507,6 @@ public class Game {
 
 	/* Actions of the toolbar buttons */
 	private boolean stepMode = false;
-	private LessonRunner runner;
-	public void startExerciseExecution() {
-		runner = new LessonRunner(this);
-		runner.start();
-	}
-	public void stopExerciseExecution() {
-		if (stepModeEnabled())
-			disableStepMode();
-
-		// Only forcefully stop the threads if they run the user code (not the correction)
-		if(state == GameState.EXECUTION_STARTED) {
-			runner.stopAll();
-		}
-
-		// "Stop" the demo threads too, but asking them to not wait for the UI
-		// We cannot kill them as they are computing the exercise's correction.
-		Lecture lecture = this.currentLesson.getCurrentExercise();
-		if (lecture instanceof Exercise)
-			((Exercise) lecture).setNbError(-1);
-			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
-				w.doneDelay();
-	}
-	public void startExerciseDemoExecution() {
-		DemoRunner runner = new DemoRunner(this, this.demoRunners);
-		runner.start();
-	}
-
-	public void startExerciseStepExecution() {
-		stepMode = true;
-		startExerciseExecution();
-	}
 
 	public void enableStepMode() {
 		this.stepMode = true;
@@ -600,21 +549,12 @@ public class Game {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-
-			// Should kill all threads before quitting this instance
-			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
-				stopExerciseExecution();
-			}
-
 			saveSession();
 
 			// report user leave on the server
 			for(ProgressSpyListener spyListener: progressSpyListeners){
 				spyListener.leave();
 			}
-			// stop the heartbeat report to PLMServer
-			if(heartBeatSpy != null)
-				heartBeatSpy.die();
 
 			storeProperties();
 		} catch (UserAbortException e) {
@@ -1023,41 +963,6 @@ public class Game {
 	public boolean isCreativeEnabled() {
 		return doCreative;
 	}
-
-	/*
-	 * Getter and Setter for the course ID for the current session.
-	 * This ID will be used by the ServerSpy, to associate this
-	 * PLM student with a course started by a teacher on the server
-	 */
-	public String getCourseID() {
-		if (this.currentCourse == null)
-			return "";
-		else
-			return currentCourse.getCourseId();
-	}
-
-	public String getCoursePassword(){
-		if(this.currentCourse == null)
-			return "";
-		else
-			return currentCourse.getPassword();
-	}
-
-	public void setCourseID(String courseID) {
-		this.currentCourse.setCourseId(courseID);
-	}
-
-	public Course getCurrentCourse() {
-		return currentCourse;
-	}
-
-	public void setCurrentCourse(Course currentCourse) {
-		this.currentCourse = currentCourse;
-	}
-
-	public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
-
-	public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
 
 	public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
 

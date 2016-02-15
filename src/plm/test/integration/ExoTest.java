@@ -22,7 +22,6 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.LogHandler;
 import plm.core.log.Logger;
-import plm.core.model.DemoRunner;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -101,18 +100,7 @@ public class ExoTest {
 	
 	/** Try to run the solution, fail if it's missing **/
 	private void testCorrectionEntityExists(ProgrammingLanguage lang) {
-		g.setProgramingLanguage(lang);
-		
-		DemoRunner demoRunner = new DemoRunner(g, new ArrayList<Thread>());
-		
-		exo.lastResult = new ExecutionProgress(lang);
-		try {
-			demoRunner.runDemo(exo);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			fail(exo.getId()+"'s solution failed to run...");
-		}
+		// FIXME: Re-implement me
 	}
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
