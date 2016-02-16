@@ -8,17 +8,21 @@ import org.junit.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
+;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.universe.Entity;
 import plm.universe.World;
 
-public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
+public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
+	public ScriptingSimpleExerciseTest(ProgrammingLanguage pl) {
+		super(pl);
+	}
 	
-	public JVMCompiledSimpleExerciseTest(Game game, ProgrammingLanguage pl) {
-		super(game, pl);
+	@Test
+	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
+		// FIXME: Re-implement me
 	}
 
 	@Test
@@ -27,17 +31,13 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 	}
 	
 	@Test
-	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
+	public void testVariableErrorRisingCodeShouldCompil() throws PLMCompilerException {
 		// FIXME: Re-implement me
 	}
 	
-	@Test (expected = PLMCompilerException.class)
-	public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
+	@Test
+	public void testSyntaxErrorRisingCodeShouldCompil() throws PLMCompilerException  {
 		// FIXME: Re-implement me
 	}
 	
-	@Test (expected = PLMCompilerException.class)
-	public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
-		// FIXME: Re-implement me
-	}
 }

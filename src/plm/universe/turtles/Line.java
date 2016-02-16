@@ -6,7 +6,7 @@ import java.awt.geom.Line2D;
 
 import org.xnap.commons.i18n.I18n;
 
-import plm.core.model.Game;
+;
 
 
 public class Line implements Shape {

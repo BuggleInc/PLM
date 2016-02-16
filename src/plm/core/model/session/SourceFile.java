@@ -6,8 +6,6 @@ import java.util.Map.Entry;
 import org.json.simple.JSONObject;
 
 import plm.core.log.Logger;
-import plm.core.model.Game;
-import plm.core.model.LogHandler;
 import plm.core.model.ToJSON;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 

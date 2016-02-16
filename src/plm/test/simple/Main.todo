@@ -2,13 +2,13 @@ package plm.test.simple;
 
 import java.io.IOException;
 
-import plm.core.model.Game;
-import plm.core.model.lesson.Lesson;
+;
+
 import plm.universe.BrokenWorldFileException;
 
-public class SimpleLesson extends Lesson {
+public class Main extends Lesson {
 
-	public SimpleLesson(Game game) {
+	public Main(Game game) {
 		super(game);
 	}
 

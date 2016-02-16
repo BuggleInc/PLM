@@ -6,7 +6,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.universe.World;
 import scala.collection.immutable.List;
 

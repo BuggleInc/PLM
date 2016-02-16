@@ -12,11 +12,10 @@ import org.junit.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
-import plm.core.model.lesson.Lesson;
+
 import plm.test.simple.SimpleExercise;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -24,26 +23,12 @@ import plm.universe.World;
 public abstract class SimpleExerciseTest {
 	
 	protected ProgrammingLanguage pl;
-	protected Lesson l;
 	protected SimpleExercise exo;
-	
-	public Game game;
 	
 	public SimpleExerciseTest() {}
 	
-	public SimpleExerciseTest(Game game, ProgrammingLanguage pl) {
+	public SimpleExerciseTest(ProgrammingLanguage pl) {
 		this.pl = pl;
-		
-		this.game = game;
-		
-		game.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
-		game.setBatchExecution();
-		
-		if(!game.isDebugEnabled()) {
-			game.switchDebug();
-		}
-		exo = (SimpleExercise) game.getCurrentLesson().getCurrentExercise();
-		game.setLocale(new Locale("en"));
 	}
 	
 	@BeforeClass
@@ -110,8 +95,4 @@ public abstract class SimpleExerciseTest {
 	public abstract String generateWrongCode();
 	
 	public abstract String generateSolutionFollowedByError();
-	
-	public Game getGame() {
-		return game;
-	}
 }

@@ -16,7 +16,6 @@ import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;

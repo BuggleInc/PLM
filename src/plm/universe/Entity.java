@@ -11,7 +11,6 @@ import java.util.concurrent.Semaphore;
 import org.json.simple.JSONObject;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.ToJSON;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static getGame().i18n instead.

@@ -23,7 +23,6 @@ import org.junit.Test;
 
 import plm.core.log.LogHandler;
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.core.model.tracking.GitUtils;
 
 public class GitUtilsTest {

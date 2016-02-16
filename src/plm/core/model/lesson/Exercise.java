@@ -1,38 +1,33 @@
 package plm.core.model.lesson;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.ToJSON;
 import plm.core.model.session.SourceFile;
-import plm.core.model.session.SourceFileRevertable;
 import plm.core.ui.PlmHtmlEditorKit;
-import plm.core.utils.FileUtils;
 import plm.universe.World;
 
-public abstract class Exercise extends Lecture implements ToJSON {
+public abstract class Exercise implements ToJSON {
 	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
-	
+
+	private String id;
+	private String name;
 	private int nbError;
 	private UserSettings settings;
 
+	private Map<String, String> tips = new HashMap<String, String>();
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
 	public String getBaseName() {
@@ -63,16 +58,12 @@ public abstract class Exercise extends Lecture implements ToJSON {
 	protected Vector<Vector<World>> commonErrors = new Vector<Vector<World>>();
 
 	public Exercise(String id, String name) {
-		setId(id);
-		setName(name);
-	}
-	
-	public Exercise(Game game, Lesson lesson,String basename) {
-		super(game, lesson,basename);
+		this.setId(id);
+		this.setName(name);
 	}
 
 	public Exercise(Exercise exo) {
-		this(exo.getId(), exo.getTrueName());
+		this(exo.getId(), exo.getName());
 
 		int nbWorlds = exo.getWorldCount();
 		initWorlds(nbWorlds);
@@ -287,6 +278,10 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		return missions.get(humanLang);
 	}
 	
+	public String getTip(String tipsId) {
+		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), false, settings.getProgLang());
+	}
+	
 	public String getMission() {
 		String humanLang = settings.getHumanLang().getLanguage();
 		ProgrammingLanguage lang = settings.getProgLang();
@@ -341,7 +336,7 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		}
 
 		json.put("id", getId());
-		json.put("name", getTrueName());
+		json.put("name", getName());
 		json.put("initialWorlds", jsonInitialWorlds);
 		json.put("answerWorlds", jsonAnswerWorlds);
 		json.put("defaultSourceFiles", jsonSourceFiles);
@@ -363,5 +358,21 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		for(World w : getWorlds(WorldKind.CURRENT)) {
 			w.setSettings(settings);
 		}
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

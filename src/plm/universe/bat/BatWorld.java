@@ -9,7 +9,6 @@ import javax.script.ScriptEngine;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.universe.World;
 
 public class BatWorld extends World {

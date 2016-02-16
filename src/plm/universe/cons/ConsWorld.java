@@ -6,7 +6,6 @@ import javax.script.ScriptException;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.universe.bat.BatWorld;
 
 public class ConsWorld extends BatWorld {

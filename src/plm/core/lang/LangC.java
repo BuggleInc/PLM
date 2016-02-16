@@ -14,7 +14,7 @@ import java.util.Locale;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.model.Game;
+
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;

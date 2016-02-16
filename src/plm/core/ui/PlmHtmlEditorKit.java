@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.swing.text.html.HTMLEditorKit;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
+;
 
 public class PlmHtmlEditorKit extends HTMLEditorKit {
 	private static final long serialVersionUID = 1L;

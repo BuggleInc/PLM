@@ -12,9 +12,6 @@ import org.json.simple.JSONObject;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.log.Logger;
-import plm.core.model.Game;
-import plm.core.model.LogHandler;
-import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -27,13 +24,6 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	public ExerciseTemplated(String id, String name) {
 		super(id, name);
-	}
-
-	public ExerciseTemplated(Game game, Lesson lesson) {
-		super(game, lesson,null);
-	}
-	public ExerciseTemplated(Game game, Lesson lesson, String basename) {
-		super(game, lesson,basename);
 	}
 
 	public ExerciseTemplated(Exercise exo) {

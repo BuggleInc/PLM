@@ -1,7 +1,7 @@
 package plm.universe.lander
 
 import plm.universe.World
-import plm.core.model.Game
+
 
 object Configurations {
   import NumUtil._

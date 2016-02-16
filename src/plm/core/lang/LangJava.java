@@ -43,8 +43,8 @@ import javax.tools.ToolProvider;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
+import plm.core.log.LogHandler;
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -68,7 +68,6 @@ public class LangJava extends JVMCompiledLang {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
-
 
 		/* Prepare the source files */
 		Map<String, String> sources = new TreeMap<String, String>();

@@ -73,7 +73,6 @@ public class TemplatedSourceFileFactory {
 		for (String line : content.split("\n")) {
 			switch (state) {
 			case 0: /* initial content */
-				ProgrammingLanguage C = ProgrammingLanguage.getProgrammingLanguage("C");
 				if (line.contains("class ")) {
 					String modified = line.replaceAll("class \\S*", "class "+name);
 					head.append(modified);
@@ -81,11 +80,11 @@ public class TemplatedSourceFileFactory {
 				} else if (line.contains("package")) {
 					head.append("$package \n");	
 					correction.append("$package \n");
-				} else if(line.contains("#line") && lang.equals(C)){
+				} else if(line.contains("#line") && lang instanceof LangC){
 					containsLinePreprocessor=true;
 					head.append(line+"\n");
 				}else if (line.contains("BEGIN TEMPLATE")) {
-					if(!containsLinePreprocessor && lang.equals(C)){
+					if(!containsLinePreprocessor && lang instanceof LangC){
 						head.append("#line 1 \""+name+".c\" \n");
 						containsLinePreprocessor=true;
 					}
@@ -93,7 +92,7 @@ public class TemplatedSourceFileFactory {
 					seenTemplate = true;
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					if(!containsLinePreprocessor && lang.equals(C)){
+					if(!containsLinePreprocessor && lang instanceof LangC){
 						head.append("#line 1 \""+name+".c\" \n");
 						containsLinePreprocessor=true;
 					}

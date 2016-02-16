@@ -2,19 +2,20 @@ package plm.universe.lightbot;
 
 import java.util.List;
 
-import plm.core.model.Game;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
+
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {
-	public LightBotExercise(Game game, Lesson lesson) {
-		super(game, lesson);
-		addProgLanguage(Game.LIGHTBOT);
+	public LightBotExercise(String id, String name) {
+		super(id, name);
+		ProgrammingLanguage lightbot = ProgrammingLanguage.getProgrammingLanguage("Lightbot");
+		addProgLanguage(lightbot);
 		if (getProgLanguages().size()>1) 
 			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
+		getSourceFilesList(lightbot).add(new LightBotSourceFile("Code"));
 	}
 
 	@Override

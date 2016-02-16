@@ -7,7 +7,6 @@ import java.util.Locale;
 import javax.script.ScriptEngine;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.GridWorld;
 import plm.universe.World;

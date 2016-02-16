@@ -7,7 +7,6 @@ import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.TemplatedSourceFileFactory;
 import plm.universe.World;
@@ -81,11 +80,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected String pythonTemplate = "";
 	private int pythonOffset = 0;
 	protected String pythonCorrection = "";
-	
-	public ExerciseTemplatingEntity(Game game, Lesson lesson) {
-		super(game, lesson);
-	}
-	
+
 	public ExerciseTemplatingEntity(String id, String name) {
 		super(id, name);
 		tabName = Character.toLowerCase(id.charAt(0)) + id.substring(1);

@@ -6,7 +6,7 @@ import NumUtil.gameAngleToRadian
 import NumUtil.radianToVector
 import javax.script.ScriptEngine
 import plm.core.lang.ProgrammingLanguage
-import plm.core.model.Game
+
 import plm.universe.World
 import org.xnap.commons.i18n.I18n
 import java.util.Locale

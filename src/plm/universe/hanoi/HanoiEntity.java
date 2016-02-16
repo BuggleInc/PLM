@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;

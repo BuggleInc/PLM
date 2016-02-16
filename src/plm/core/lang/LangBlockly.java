@@ -6,7 +6,6 @@ import javax.script.ScriptException;
 
 import org.python.core.PyException;
 
-import plm.core.model.Game;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;

@@ -4,18 +4,13 @@ import java.util.List;
 import java.util.Vector;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplatingEntity;
-import plm.core.model.lesson.Lesson;
+
 import plm.universe.World;
 
 public abstract class BatExercise extends ExerciseTemplatingEntity {
 	public static final boolean INVISIBLE = false;
 	public static final boolean VISIBLE = true;
-	
-	public BatExercise(Game game, Lesson lesson) {
-		super(game, lesson);
-	}
 
 	public BatExercise(String id, String name) {
 		super(id, name);

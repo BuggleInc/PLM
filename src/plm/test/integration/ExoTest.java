@@ -22,13 +22,10 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.LogHandler;
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
-import plm.core.model.lesson.Lecture;
-import plm.core.model.lesson.Lesson;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bat.BatExercise;
@@ -38,7 +35,6 @@ import plm.universe.bat.BatWorld;
 @RunWith(Parameterized.class)
 public class ExoTest {
 
-	static private Game g;
 
 	@BeforeClass
 	static public void setUpClass() {
@@ -48,12 +44,13 @@ public class ExoTest {
 	@Parameters
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
+		/*
 		String userUUID = UUID.randomUUID().toString();
 		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), Game.JAVA.getLang(), false);
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.setBatchExecution();
 		
-		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
+		Set<Exercise> alreadySeenExercises = new HashSet<Exercise>();  
 		for (String lessonName : Game.lessonsName) { 
 			Logger.log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
@@ -75,16 +72,14 @@ public class ExoTest {
 		
 		//g.switchDebug();		
 		g.setLocale(new Locale("en"));
-		
+		*/
 		return result;
 	}
 
 	private Exercise exo;
 
-	public ExoTest(Lesson l, Exercise e) {
+	public ExoTest(Exercise e) {
 		this.exo = e;
-		g.setCurrentLesson(l);
-		g.setCurrentExercise(exo);
 	
 		// disable delay on world execution
 		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
@@ -105,53 +100,53 @@ public class ExoTest {
 	
 	@Test(timeout=10000)
 	public void testJavaEntityExists() {
-		testCorrectionEntityExists(Game.JAVA);
+		testCorrectionEntityExists(ProgrammingLanguage.getProgrammingLanguage("Java"));
 	}
 	
 	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntityExists() {
-		if (!exo.getProgLanguages().contains(Game.SCALA)) 
+		if (!exo.getProgLanguages().contains(ProgrammingLanguage.getProgrammingLanguage("Scala"))) 
 			fail("Exercise "+exo.getId()+" does not support scala");
-		testCorrectionEntityExists(Game.SCALA);
+		testCorrectionEntityExists(ProgrammingLanguage.getProgrammingLanguage("Scala"));
 	}
 	
 //	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testCEntityExists() {
-		if (!exo.getProgLanguages().contains(Game.C)) 
+		if (!exo.getProgLanguages().contains(ProgrammingLanguage.getProgrammingLanguage("C"))) 
 			fail("Exercise "+exo.getId()+" does not support C");
-		testCorrectionEntityExists(Game.C);
+		testCorrectionEntityExists(ProgrammingLanguage.getProgrammingLanguage("C"));
 	}
 	
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntityExists() {
-		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
+		if (!exo.getProgLanguages().contains(ProgrammingLanguage.getProgrammingLanguage("Python"))) 
 			fail("Exercise "+exo.getId()+" does not support python");
-		testCorrectionEntityExists(Game.PYTHON);
+		testCorrectionEntityExists(ProgrammingLanguage.getProgrammingLanguage("Python"));
 	}
 	
 	@Test(timeout=10000)
 	public void testJavaEntity() {
-		testCorrectionEntity(Game.JAVA);
+		testCorrectionEntity(ProgrammingLanguage.getProgrammingLanguage("Java"));
 	}
 	
 	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntity() {
-		if (!exo.getProgLanguages().contains(Game.SCALA)) 
+		if (!exo.getProgLanguages().contains(ProgrammingLanguage.getProgrammingLanguage("Scala"))) 
 			fail("Exercise "+exo.getId()+" does not support scala");
-		testCorrectionEntity(Game.SCALA);
+		testCorrectionEntity(ProgrammingLanguage.getProgrammingLanguage("Scala"));
 	}
 	
 //	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testCEntity() {
-		if (!exo.getProgLanguages().contains(Game.C)) 
+		if (!exo.getProgLanguages().contains(ProgrammingLanguage.getProgrammingLanguage("C"))) 
 			fail("Exercise "+exo.getId()+" does not support C");
-		testCorrectionEntity(Game.C);
+		testCorrectionEntity(ProgrammingLanguage.getProgrammingLanguage("C"));
 	}
 	
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
-		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
+		if (!exo.getProgLanguages().contains(ProgrammingLanguage.getProgrammingLanguage("Python"))) 
 			fail("Exercise "+exo.getId()+" does not support python");
-		testCorrectionEntity(Game.PYTHON);
+		testCorrectionEntity(ProgrammingLanguage.getProgrammingLanguage("Python"));
 	}
 }

@@ -1,14 +1,12 @@
 package plm.universe.cons;
 
-import plm.core.model.Game;
-import plm.core.model.lesson.Lesson;
 import plm.universe.World;
 import plm.universe.bat.BatExercise;
 
 public abstract class ConsExercise extends BatExercise {
 
-	public ConsExercise(Game game, Lesson lesson) {
-		super(game, lesson);
+	public ConsExercise(String id, String name) {
+		super(id, name);
 	}
 
 	public RecList cons(int head, RecList tail){

@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import plm.core.log.LogHandler;
-import plm.core.model.Game;
+;
 
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
