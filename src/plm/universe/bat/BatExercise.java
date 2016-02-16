@@ -1,11 +1,6 @@
 package plm.universe.bat;
 
-import java.util.List;
-import java.util.Vector;
-
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.ExerciseTemplatingEntity;
-
 import plm.universe.World;
 
 public abstract class BatExercise extends ExerciseTemplatingEntity {

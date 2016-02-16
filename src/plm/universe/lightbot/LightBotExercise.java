@@ -1,11 +1,7 @@
 package plm.universe.lightbot;
 
-import java.util.List;
-
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExerciseTemplated;
-
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {

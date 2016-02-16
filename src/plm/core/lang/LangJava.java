@@ -43,11 +43,9 @@ import javax.tools.ToolProvider;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
-import plm.core.log.LogHandler;
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
-import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;

@@ -1,6 +1,5 @@
 package plm.universe.dutchflag;
 
-import java.util.Locale;
 import java.util.Random;
 
 import javax.script.ScriptEngine;

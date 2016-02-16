@@ -1,16 +1,10 @@
 package plm.test.integration;
 
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.mock;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,19 +12,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.LogHandler;
-import plm.core.log.Logger;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
-import plm.universe.Entity;
-import plm.universe.World;
-import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
-import plm.universe.bat.BatWorld;
 
 @RunWith(Parameterized.class)
 public class ExoTest {

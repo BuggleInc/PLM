@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Locale;
 
 import org.json.simple.JSONObject;
-import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;

@@ -1,19 +1,9 @@
 package plm.core.model.lesson;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 import org.json.simple.JSONObject;
 
-import plm.core.PLMCompilerException;
-import plm.core.PLMEntityNotFound;
-import plm.core.log.Logger;
-import plm.universe.BrokenWorldFileException;
-import plm.universe.Entity;
 import plm.universe.World;
 
 

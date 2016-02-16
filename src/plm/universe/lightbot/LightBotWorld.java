@@ -2,7 +2,6 @@ package plm.universe.lightbot;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Locale;
 
 import javax.script.ScriptEngine;
 

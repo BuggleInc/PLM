@@ -1,7 +1,6 @@
 package plm.universe.hanoi;
 
 import java.awt.Color;
-import java.util.Locale;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;

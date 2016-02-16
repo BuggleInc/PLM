@@ -8,8 +8,6 @@ import java.util.TreeMap;
 
 import javax.script.ScriptEngine;
 
-import org.xnap.commons.i18n.I18n;
-
 import plm.core.PLMCompilerException;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;

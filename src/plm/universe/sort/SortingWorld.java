@@ -1,7 +1,6 @@
 package plm.universe.sort;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Random;
 
 import javax.script.ScriptEngine;

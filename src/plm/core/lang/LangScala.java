@@ -1,16 +1,11 @@
 package plm.core.lang;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Vector;
-import java.util.ArrayList;
-
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaFileObject;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.I18nManager;

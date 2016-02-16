@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.xnap.commons.i18n.I18n;
-
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
-import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;

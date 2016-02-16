@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;

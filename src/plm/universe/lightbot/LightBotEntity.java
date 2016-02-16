@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.io.BufferedWriter;
 
 import plm.core.log.Logger;
-import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
 import plm.universe.Entity;
 import plm.universe.GridWorld;

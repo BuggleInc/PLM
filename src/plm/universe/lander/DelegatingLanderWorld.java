@@ -1,7 +1,5 @@
 package plm.universe.lander;
 
-import java.util.Locale;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 

@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import org.json.simple.JSONObject;
 
-import plm.core.model.ToJSON;
 import plm.universe.Direction;
 
 public class SimpleBuggle extends AbstractBuggle  {

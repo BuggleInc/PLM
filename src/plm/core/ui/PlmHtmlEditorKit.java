@@ -1,5 +1,4 @@
 package plm.core.ui;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
