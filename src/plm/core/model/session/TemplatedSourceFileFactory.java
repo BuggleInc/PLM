@@ -11,6 +11,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangC;
+import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
@@ -44,7 +45,7 @@ public class TemplatedSourceFileFactory {
 		}
 
 		String content;
-		if (lang.equals(Game.JAVA)) {
+		if (lang instanceof LangJava) {
 			/* Remove line comments since at some point, we put everything on one line only, 
 			 * so this would comment the end of the template and break everything */
 			Pattern lineCommentPattern = Pattern.compile("//.*$", Pattern.MULTILINE);
@@ -250,7 +251,7 @@ public class TemplatedSourceFileFactory {
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor 
 		 * Python: We should obviously not change blank signs in Python
 		 * Scala: no need since our compiler's front-end is aware of these offsets */ 
-		if (lang == Game.JAVA) {
+		if (lang instanceof LangJava) {
 			Matcher newLineMatcher = newLinePattern.matcher(template);
 			template = newLineMatcher.replaceAll(" ");
 		}

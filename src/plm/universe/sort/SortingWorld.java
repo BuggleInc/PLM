@@ -34,11 +34,11 @@ public class SortingWorld extends World {
 	}
 
 	/** Constructor used in the exercises */
-	public SortingWorld(Game game, String name, int nbValues) {
-		this(game, name, nbValues, true);
+	public SortingWorld(String name, int nbValues) {
+		this(name, nbValues, true);
 	}
-	public SortingWorld(Game game, String name, int nbValues, boolean someoneHomeOk) {
-		super(game, name);
+	public SortingWorld(String name, int nbValues, boolean someoneHomeOk) {
+		super(name);
 		if (nbValues>100)
 			setDelay(1);
 		else
@@ -108,8 +108,8 @@ public class SortingWorld extends World {
 	 * @return A textual description of the differences between the caller and world
 	 */
 	@Override
-	public String diffTo(World world, Locale locale) {
-		I18n i18n = I18nManager.getI18n(locale);
+	public String diffTo(World world) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		String s;
 		if (world == null || !(world instanceof SortingWorld)) {
 			s="This is not a world of sorting :(";
@@ -353,10 +353,11 @@ public class SortingWorld extends World {
 	 * @param j the index of the second cell concerned
 	 */
 	public void swap(int i, int j) {
-		if (i<0) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,i));
-		if (j<0) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,j));
-		if (i>=getValueCount()) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
-		if (j>=getValueCount()) throw new RuntimeException(getGame().i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
+		I18n i18n = I18nManager.getI18n(getLocale());
+		if (i<0) throw new RuntimeException(i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,i));
+		if (j<0) throw new RuntimeException(i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,j));
+		if (i>=getValueCount()) throw new RuntimeException(i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
+		if (j>=getValueCount()) throw new RuntimeException(i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
 
 		this.actions.add(new Swap(i, j));
 

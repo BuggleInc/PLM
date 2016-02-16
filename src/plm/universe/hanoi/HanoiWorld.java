@@ -38,14 +38,14 @@ public class HanoiWorld extends World {
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(Game game, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
-		super(game, name);
+	public HanoiWorld(String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
+		super(name);
 		slots = new Vector[] {A, B, C};
 	}
 
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(Game game, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
-		super(game, name);
+	public HanoiWorld(String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
+		super(name);
 		setDelay(200); /* Delay (in ms) in default animations */
 		slots = new Vector[] {A, B, C, D};		
 	}
@@ -107,8 +107,8 @@ public class HanoiWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World o, Locale locale) {
-		I18n i18n = I18nManager.getI18n(locale);
+	public String diffTo(World o) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		StringBuffer res = new StringBuffer();
 		if (o == null || !(o instanceof HanoiWorld))
 			return "This is not a world of Hanoi";
@@ -136,17 +136,18 @@ public class HanoiWorld extends World {
 	/** This is the main function of the public interface 
 	 * @throws IllegalArgumentException if your move is not valid */
 	public void move(Integer src, Integer dst) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if (src < 0 || src >= slots.length || dst < 0 || dst >= slots.length) 
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotAmount()-1));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotAmount()-1));
 		if (src == dst)
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from slot {0} to itself",src));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from slot {0} to itself",src));
 		if (slots[src].size() == 0)
-			throw new IllegalArgumentException(getGame().i18n.tr("No disc to move from slot {0}",src));
+			throw new IllegalArgumentException(i18n.tr("No disc to move from slot {0}",src));
 		
 		if (slots[dst].size() > 0 &&
 				slots[src].lastElement().getSize() > slots[dst].lastElement().getSize())
 			throw new IllegalArgumentException(
-					getGame().i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
+					i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
 							src,dst,slots[src].lastElement().getSize(),slots[dst].lastElement().getSize()));
 		
 		moveCount  ++;

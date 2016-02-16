@@ -6,6 +6,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
@@ -127,14 +128,16 @@ public class BuggleWorldCell extends GridWorldCell {
 	}
 
 	public void baggleAdd() throws AlreadyHaveBaggleException {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		if (hasBaggle)
-			throw new AlreadyHaveBaggleException(getWorld().getGame().i18n.tr("There is already a baggle here."));
+			throw new AlreadyHaveBaggleException(i18n.tr("There is already a baggle here."));
 		hasBaggle = true;
 	}
 
 	public void baggleRemove() {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		if (!hasBaggle)
-			throw new NoBaggleUnderBuggleException(getWorld().getGame().i18n.tr("There is no baggle to pick up here."));
+			throw new NoBaggleUnderBuggleException(i18n.tr("There is no baggle to pick up here."));
 		hasBaggle = false;
 	}
 

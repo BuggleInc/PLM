@@ -221,7 +221,7 @@ public class ExerciseRunner {
 				}
 			}
 			*/
-			String diff = answerWorld.diffTo(currentWorld, locale, progLang);
+			String diff = answerWorld.diffTo(currentWorld);
 			progress.executionError += I18nManager.getI18n(locale).tr("The world ''{0}'' differs",currentWorld.getName());
 			if (diff != null) 
 				progress.executionError += ":\n"+diff;

@@ -2,9 +2,12 @@ package plm.universe.bat;
 
 import java.io.BufferedWriter;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bat.operations.SetResult;
@@ -47,7 +50,8 @@ public class BatEntity extends Entity {
 				run(t);
 				generateSetResultOperation(i, t);
 			} catch (Exception e) {
-				t.setResult(getGame().i18n.tr("Exception {0}: {1}",e.getClass().getName(), e.getMessage()));
+				I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+				t.setResult(i18n.tr("Exception {0}: {1}",e.getClass().getName(), e.getMessage()));
 				e.printStackTrace();
 			}
 			i++;

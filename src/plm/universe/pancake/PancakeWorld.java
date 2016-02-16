@@ -42,8 +42,8 @@ public class PancakeWorld extends World {
 	 * @param amountOfPancakes : the amount of pancakes in the stack
 	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(Game game, String name, int size, boolean burnedPancake) {
-		super(game, name);
+	public PancakeWorld(String name, int size, boolean burnedPancake) {
+		super(name);
 		Random r = new Random(0);
 		
 		setDelay(200); // Delay (in ms) in default animations
@@ -72,8 +72,8 @@ public class PancakeWorld extends World {
 	 * @param sizes the size of each pancake. If negative, the pancake is upside down
 	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(Game game, String name, int[] sizes, boolean burnedPancake) {
-		super(game, name);
+	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
+		super(name);
 		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */
@@ -86,8 +86,8 @@ public class PancakeWorld extends World {
 	
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
-	public String diffTo(World o, Locale locale) {
-		I18n i18n = I18nManager.getI18n(locale);
+	public String diffTo(World o) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if (o == null || !(o instanceof PancakeWorld))
 			return i18n.tr("This is not a world of pancakes");
 
@@ -201,10 +201,11 @@ public class PancakeWorld extends World {
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
 	 */
 	public void flip(int numberOfPancakes) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if (numberOfPancakes < 1) 
-			throw new IllegalArgumentException(getGame().i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
+			throw new IllegalArgumentException(i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
 		if (numberOfPancakes > this.getStackSize()) 
-			throw new IllegalArgumentException(getGame().i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
+			throw new IllegalArgumentException(i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
 		
 		//System.err.println("Flip("+numberOfPancakes+")");
 		/* Invert the pancakes' position */
@@ -237,8 +238,9 @@ public class PancakeWorld extends World {
 	 * @return The radius of the expected pancake
 	 */
 	public int getPancakeRadius(int rank) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if ( rank < 0 || rank >= getStackSize())
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()-1));
+			throw new IllegalArgumentException(i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()-1));
 
 		return pancakeStack[rank].getRadius();
 	}
@@ -256,8 +258,9 @@ public class PancakeWorld extends World {
 	 * Returns if the specified pancake (counting from the stack top) is upside down
 	 */
 	public boolean isPancakeUpsideDown(int rank) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if ( rank < 0 || rank >= getStackSize())
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
+			throw new IllegalArgumentException(i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].isUpsideDown();
 	}

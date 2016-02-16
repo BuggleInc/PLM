@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.log.Logger;
+import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
@@ -224,18 +225,22 @@ public class Turtle extends Entity {
 	
 	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
 	public void Left(double angle) { 
-		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
 	}
 	public void Right(double angle) {
-		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
 	public void brushDown(){
-		throw new RuntimeException(getGame().i18n.tr(
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr(
 				"Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not brushes. Use penDown() instead."));
 	}
 	public void brushUp(){
-		throw new RuntimeException(getGame().i18n.tr(
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr(
 				"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
 	}
 

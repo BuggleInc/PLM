@@ -15,8 +15,8 @@ import plm.universe.World;
 public class BatWorld extends World {
 	public List<BatTest> tests = new Vector<BatTest>();
 	
-	public BatWorld(Game game, String funName) {
-		super(game, funName);
+	public BatWorld(String funName) {
+		super(funName);
 		
 		addEntity(new BatEntity(funName));
 	}
@@ -70,13 +70,7 @@ public class BatWorld extends World {
 	}
 
 	@Override
-	public String diffTo(World w, Locale locale) {
-		// Won't use it
-		return "";
-	}
-
-	@Override
-	public String diffTo(World w, Locale locale, ProgrammingLanguage progLang) {
+	public String diffTo(World w) {
 		BatWorld other = (BatWorld) w;
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;
@@ -85,8 +79,8 @@ public class BatWorld extends World {
 				return sb.toString();
 					
 			if (!tests.get(i).equals(other.tests.get(i))) { 
-				sb.append(other.tests.get(i).getName(progLang)+" returned "+other.tests.get(i).getResult(progLang)+
-						                               " while "+         tests.get(i).getResult(progLang)+" were expected.\n");
+				sb.append(other.tests.get(i).getName(getProgLang())+" returned "+other.tests.get(i).getResult(getProgLang())+
+						                               " while "+         tests.get(i).getResult(getProgLang())+" were expected.\n");
 				foundError = true;
 			}
 		}

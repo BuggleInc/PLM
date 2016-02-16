@@ -5,8 +5,6 @@ import java.lang.reflect.InvocationTargetException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import plm.core.model.Game;
-
 public abstract class GridWorld extends World {
 
 	protected GridWorldCell[][] cells;
@@ -14,8 +12,8 @@ public abstract class GridWorld extends World {
 	protected int sizeY;
 	protected boolean visibleGrid=true;
 
-	public GridWorld(Game game, String name, int x, int y) {
-		super(game, name);
+	public GridWorld(String name, int x, int y) {
+		super(name);
 		create(x, y);
 	}
 

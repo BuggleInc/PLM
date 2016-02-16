@@ -31,6 +31,7 @@ public abstract class Exercise extends Lecture implements ToJSON {
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 	
 	private int nbError;
+	private UserSettings settings;
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
@@ -254,11 +255,6 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		progLanguages.add(newL);
 	}
 
-	public void currentHumanLanguageHasChanged(Locale newLang) {
-		initialWorld.get(0).resetAbout();
-		initialWorld.get(0).getAbout();
-	}
-	
 	public int getNbError() {
 		return nbError;
 	}
@@ -291,7 +287,9 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		return missions.get(humanLang);
 	}
 	
-	public String getMission(String humanLang, ProgrammingLanguage lang) {
+	public String getMission() {
+		String humanLang = settings.getHumanLang().getLanguage();
+		ProgrammingLanguage lang = settings.getProgLang();
 		String mission = missions.get("en");
 		if(missions.containsKey(humanLang)) {
 			mission = missions.get(humanLang);
@@ -299,11 +297,11 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		return PlmHtmlEditorKit.filterHTML(mission, false, lang);
 	}
 
-	public String getWorldAPI(Locale humanLang, ProgrammingLanguage progLang) {
+	public String getWorldAPI() {
 		if(initialWorld.size() == 0) {
 			return "World is missing...";
 		}
-		return initialWorld.get(0).getAPI(humanLang, progLang);
+		return initialWorld.get(0).getAPI();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -348,5 +346,22 @@ public abstract class Exercise extends Lecture implements ToJSON {
 		json.put("answerWorlds", jsonAnswerWorlds);
 		json.put("defaultSourceFiles", jsonSourceFiles);
 		return json;
+	}
+
+	public UserSettings getSettings() {
+		return settings;
+	}
+
+	public void setSettings(UserSettings settings) {
+		this.settings = settings;
+		for(World w : getWorlds(WorldKind.INITIAL)) {
+			w.setSettings(settings);
+		}
+		for(World w : getWorlds(WorldKind.ANSWER)) {
+			w.setSettings(settings);
+		}
+		for(World w : getWorlds(WorldKind.CURRENT)) {
+			w.setSettings(settings);
+		}
 	}
 }

@@ -39,12 +39,12 @@ public class BaseballWorld extends World {
 
 
 	/** Regular constructor used by exercises */
-	public BaseballWorld(Game game, String name, int baseAmount, int positionAmount) {
-		this(game, name,baseAmount,positionAmount,MIX_RANDOM);
+	public BaseballWorld(String name, int baseAmount, int positionAmount) {
+		this(name,baseAmount,positionAmount,MIX_RANDOM);
 	}
 
-	public BaseballWorld(Game game, String name, int baseAmount, int posAmount, int mix) {
-		super(game, name);
+	public BaseballWorld(String name, int baseAmount, int posAmount, int mix) {
+		super(name);
 		
 		// create the bases
 		this.baseAmount = baseAmount;
@@ -108,8 +108,8 @@ public class BaseballWorld extends World {
 	}
 
 
-	public BaseballWorld(Game game, String name, int baseAmount, int positionAmount, int[] values) {
-		this(game, name, baseAmount, positionAmount, MIX_SORTED);
+	public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values) {
+		this(name, baseAmount, positionAmount, MIX_SORTED);
 		if (baseAmount*posAmount != values.length)
 			throw new RuntimeException("Your values array is not of the right size");
 		field = values;
@@ -135,8 +135,8 @@ public class BaseballWorld extends World {
 	 * @param o the world with which you want to compare your world
 	 */
 	@Override
-	public String diffTo(World o, Locale locale) {
-		I18n i18n = I18nManager.getI18n(locale);
+	public String diffTo(World o) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if (o == null || !(o instanceof BaseballWorld))
 			return i18n.tr("This is not a baseball world :-(");
 
@@ -342,7 +342,7 @@ public class BaseballWorld extends World {
 		}
 		sb.append("}");
 
-		String msg =getGame().i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
+		String msg = I18nManager.getI18n(getLocale()).tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
 				"Exercise: {0}; Amount of bases: {1}; Initial situation: {2}", exercise, getBasesAmount(),sb.toString());
 		System.err.println(msg);
 		throw new RuntimeException(msg);
@@ -379,10 +379,10 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(I18nManager.getI18n(getLocale()).tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(I18nManager.getI18n(getLocale()).tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -391,7 +391,7 @@ public class BaseballWorld extends World {
 			 && (holeBase != getBasesAmount()-1 || base != 0 )
 			 && (holeBase != base ) )
 			
-			throw new IllegalArgumentException(getGame().i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
+			throw new IllegalArgumentException(I18nManager.getI18n(getLocale()).tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
 					position,base,holeBase));
 
 		// All clear. Proceed.

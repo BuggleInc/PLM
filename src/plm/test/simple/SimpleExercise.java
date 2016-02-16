@@ -11,7 +11,7 @@ public class SimpleExercise extends ExerciseTemplated {
 	public SimpleExercise(Game game, Lesson lesson) {
 		super(game, lesson);
 		
-		SimpleWorld w = new SimpleWorld(game, "test");
+		SimpleWorld w = new SimpleWorld("test");
 		Entity newEntity = new SimpleExerciseEntity();
 		w.addEntity(newEntity);
 		setup( new World[] {

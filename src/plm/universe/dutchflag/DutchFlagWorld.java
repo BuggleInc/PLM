@@ -29,8 +29,8 @@ public class DutchFlagWorld extends World {
 	 * @param name : the name of the world
 	 * @param size : the amount of elements 
 	 */
-	public DutchFlagWorld(Game game, String name, int size) {
-		super(game, name);
+	public DutchFlagWorld(String name, int size) {
+		super(name);
 		setDelay(size>100?20:200); // Delay (in ms) in default animations
 		new DutchFlagEntity(this);
 		
@@ -50,8 +50,8 @@ public class DutchFlagWorld extends World {
 		}
 	}
 	
-	public DutchFlagWorld(Game game, String name, int size, int colorRemoved) {
-		super(game, name);
+	public DutchFlagWorld(String name, int size, int colorRemoved) {
+		super(name);
 		setDelay(size>100?20:200); // Delay (in ms) in default animations
 		new DutchFlagEntity(this);
 		int [][]color = {
@@ -76,8 +76,8 @@ public class DutchFlagWorld extends World {
 
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
-	public String diffTo(World o, Locale locale) {
-		I18n i18n = I18nManager.getI18n(locale);
+	public String diffTo(World o) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if (o == null || !(o instanceof DutchFlagWorld))
 			return i18n.tr("This world is not a dutch flag");
 
@@ -153,11 +153,12 @@ public class DutchFlagWorld extends World {
 	/* --------------------------------------- */
 	/** Swap two positions */
 	public void swap(int from, int to) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if ( from < 0 || from >= getSize())
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
+			throw new IllegalArgumentException(i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
 					from, to, from, getSize()-1));
 		if ( to < 0 || to >= getSize())
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
+			throw new IllegalArgumentException(i18n.tr("Cannot swap {0} and {1} because {2} is not between 0 and {3}",
 					from, to, to, getSize()-1));
 		
 		int temp = content[from];
@@ -173,8 +174,9 @@ public class DutchFlagWorld extends World {
 	 * @return The color of that ray (either 0, 1 or 2)
 	 */
 	public int getColor(int rank) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if ( rank < 0 || rank >= getSize())
-			throw new IllegalArgumentException(getGame().i18n.tr("Cannot get the color of line #{0} because it''s not between 0 and {1}",rank, getSize()));
+			throw new IllegalArgumentException(i18n.tr("Cannot get the color of line #{0} because it''s not between 0 and {1}",rank, getSize()));
 
 		return content[rank];
 	}
@@ -209,7 +211,8 @@ public class DutchFlagWorld extends World {
 		}
 		sb.append("}");
 
-		String msg =getGame().i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
+		I18n i18n = I18nManager.getI18n(getLocale());
+		String msg = i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
 				"Initial situation: {0}", sb.toString());
 		System.err.println(msg);
 		throw new RuntimeException(msg);

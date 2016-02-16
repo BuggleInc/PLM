@@ -14,9 +14,9 @@ public class DelegatingLanderWorld extends World {
 
   final LanderWorld realWorld;
 
-  public DelegatingLanderWorld(Game game, String name, int width, int height,
+  public DelegatingLanderWorld(String name, int width, int height,
       List<Point> ground, Point position, Point speed, double angle, int thrust, int fuel) {
-    super(game, name);
+    super(name);
     realWorld = new LanderWorld(this);
     realWorld.width_$eq(width);
     realWorld.height_$eq(height);
@@ -29,7 +29,7 @@ public class DelegatingLanderWorld extends World {
   }
 
   public DelegatingLanderWorld(DelegatingLanderWorld world) {
-    super(world.getGame(), world.getName());
+    super(world.getName());
     realWorld = new LanderWorld(this);
     reset(world);
   }
@@ -45,8 +45,8 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
-  public String diffTo(World world, Locale locale) {
-    return realWorld.diffTo(world, locale);
+  public String diffTo(World world) {
+    return realWorld.diffTo(world);
   }
 
   @Override

@@ -43,7 +43,6 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 	 */
 
 	public static String filterHTML(String in, boolean showAll, ProgrammingLanguage language){
-
 		return filterHTML(in, showAll,false, null, language);
 	}
 
@@ -108,9 +107,9 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 				res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]",
 						"<font color=\""+langColors.get(l)+"\">$1</font>");
 			}
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+			for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
 				String l = lang.getLang().toLowerCase();
-				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
+				for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
 					if (!lang2.equals(lang)) {
 						String l2 = lang2.getLang().toLowerCase();
 						res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2)+"\">$1</font>");
@@ -118,12 +117,12 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 				}
 			}
 
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+			for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
 				String l = lang.getLang().toLowerCase();
-				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
+				for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
 					if (!lang2.equals(lang)) {
 						String l2 = lang2.getLang().toLowerCase();
-						for (ProgrammingLanguage lang3 : Game.getProgrammingLanguages()) {
+						for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
 							if (!lang3.equals(lang) && !lang3.equals(lang2)) {
 								String l3 = lang3.getLang().toLowerCase();
 								res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");

@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.log.Logger;
+import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
@@ -142,11 +143,13 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void penDown(){
-		throw new RuntimeException(getGame().i18n.tr(
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr(
 				"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
 	}
 	public void penUp(){
-		throw new RuntimeException(getGame().i18n.tr(
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr(
 				"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
 	}
 
@@ -228,10 +231,12 @@ public abstract class AbstractBuggle extends Entity {
 
 	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
 	public void Left() {
-		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
 	}
 	public void Right() {
-		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+		throw new RuntimeException(i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
 	public void back() {
@@ -249,28 +254,29 @@ public abstract class AbstractBuggle extends Entity {
 		return (BuggleWorldCell) ((GridWorld)world).getCell(x, y);
 	}
 	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException{
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		BuggleWorld bw = (BuggleWorld) world;
 		if(y<0) {
-			String message = getGame().i18n.tr("You tried to access a cell with Y={0}, but the minimal Y in this world is 0.",y);
+			String message = i18n.tr("You tried to access a cell with Y={0}, but the minimal Y in this world is 0.",y);
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if(x<0) {
-			String message = getGame().i18n.tr("You tried to access a cell with X={0}, but the minimal X in this world is 0.",x);
+			String message = i18n.tr("You tried to access a cell with X={0}, but the minimal X in this world is 0.",x);
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if (y>=bw.getHeight()) {
-			String message = getGame().i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
+			String message = i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 
 		if (x>=bw.getWidth()) {
-			String message = getGame().i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
+			String message = i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
@@ -290,15 +296,16 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void setX(int x) throws BuggleInOuterSpaceException {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		BuggleWorld bw = (BuggleWorld) world;
 		if(x<0) {
-			String message = getGame().i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
+			String message = i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if (x>=bw.getWidth()) {
-			String message = getGame().i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
+			String message = i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
@@ -319,16 +326,17 @@ public abstract class AbstractBuggle extends Entity {
 		return y;
 	}
 
-	public void setY(int y) throws BuggleInOuterSpaceException  {
+	public void setY(int y) throws BuggleInOuterSpaceException {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		BuggleWorld bw = (BuggleWorld) world;
 		if(y<0) {
-			String message = getGame().i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
+			String message = i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if (y>=bw.getHeight()) {
-			String message = getGame().i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
+			String message = i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
@@ -346,27 +354,28 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		BuggleWorld bw = (BuggleWorld) world;
 		if(y<0) {
-			String message = getGame().i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
+			String message = i18n.tr("You tried to set Y {0}, but the minimal Y in this world is 0.",y);
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if(x<0) {
-			String message = getGame().i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
+			String message = i18n.tr("You tried to set X to {0}, but the minimal X in this world is 0.",x);
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if (y>=bw.getHeight()) {
-			String message = getGame().i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
+			String message = i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1));
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
 		}
 		if (x>=bw.getWidth()) {
-			String message = getGame().i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
+			String message = i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1));
 			addOperation(new BuggleInOuterSpace(this));
 			stepUI();
 			throw new BuggleInOuterSpaceException(message);
@@ -481,6 +490,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		if (k_seq[k_val]==5) k_val++; else k_val = 0;
 		if (k_val>k_seq.length-1) {
 			setName("Easter "+name);
@@ -493,12 +503,12 @@ public abstract class AbstractBuggle extends Entity {
 		if (!isOverBaggle()) {
 			addOperation(new NoBaggleUnderBuggle(this));
 			stepUI();
-			throw new NoBaggleUnderBuggleException(getGame().i18n.tr("There is no baggle to pick up here."));
+			throw new NoBaggleUnderBuggleException(i18n.tr("There is no baggle to pick up here."));
 		}
 		if (isCarryingBaggle()) {
 			addOperation(new BuggleAlreadyHaveBaggle(this));
 			stepUI();
-			throw new AlreadyHaveBaggleException(getGame().i18n.tr("Your are already carrying a baggle."));
+			throw new AlreadyHaveBaggleException(i18n.tr("Your are already carrying a baggle."));
 		}
 		getCellFromLesson(this.x, this.y).baggleRemove();
 		carryBaggle = true;
@@ -508,10 +518,11 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		if (! isCarryingBaggle()) {
 			addOperation(new BuggleDontHaveBaggle(this));
 			stepUI();
-			throw new DontHaveBaggleException(getGame().i18n);
+			throw new DontHaveBaggleException(i18n);
 		}
 		BuggleWorldCell cell = getCellFromLesson(this.x, this.y);
 		try {

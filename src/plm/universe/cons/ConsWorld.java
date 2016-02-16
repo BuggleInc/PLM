@@ -12,8 +12,8 @@ public class ConsWorld extends BatWorld {
 	public ConsWorld(ConsWorld other) {
 		super(other);
 	}
-	public ConsWorld(Game game, String funName) {
-		super(game, funName);
+	public ConsWorld(String funName) {
+		super(funName);
 	}
 
 	@Override
@@ -56,8 +56,7 @@ public class ConsWorld extends BatWorld {
 						"\n"+*/
 						"def cons(a,b):\n"+
 						"  return RecList(a,b)\n";
-				if (getGame().isDebugEnabled()) 
-					Logger.log("Extra script chunk added by "+getClass()+":\n"+script);
+				Logger.log("Extra script chunk added by "+getClass()+":\n"+script);
 				e.eval(script);
 			} catch (ScriptException e1) {
 				e1.printStackTrace();

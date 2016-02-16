@@ -15,13 +15,11 @@ import javax.script.ScriptException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.core.model.ToJSON;
-import plm.core.model.lesson.ExecutionProgress;
+import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 
@@ -30,17 +28,16 @@ public abstract class World implements ToJSON {
 	private boolean isAnswer = false;
 	private boolean isError = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
+	private UserSettings settings;
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
 	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
 
 	private String name;
-	private Game game;
 	
-	public World(Game game, String name) {
+	public World(String name) {
 		this.name = name;
-		this.game = game;
 	}
 
 	public World(JSONObject json) {
@@ -63,7 +60,7 @@ public abstract class World implements ToJSON {
 	}
 
 	public World(World w2) {
-		this(w2.game, w2.getName());
+		this(w2.getName());
 		reset(w2);
 	}
 
@@ -174,42 +171,6 @@ public abstract class World implements ToJSON {
 	public List<Entity> getEntities() {
 		return entities;
 	}
-	
-	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
-		final ProgrammingLanguage pl = getGame().getProgrammingLanguage();
-		if (game.isDebugEnabled()) {
-			Logger.log("World:runEntities");
-			Logger.log("Programming language: "+pl);
-		}
-		
-		for (final Entity b : entities) {
-			Thread runner = new Thread(new Runnable() {
-				public void run() {
-					game.statusArgAdd(getName());
-					pl.runEntity(b, progress, getGame().i18n.getLocale());
-					game.statusArgRemove(getName());
-				}
-			});
-
-			Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-			    public void uncaughtException(Thread th, Throwable ex) {
-			        
-			    	if(ex instanceof ThreadDeath) {
-			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
-			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
-				        progress.setExecutionError(getGame().i18n.tr(msg));
-				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
-			    	}
-			    }
-			};
-			
-			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
-			runner.setPriority(Thread.MIN_PRIORITY);
-			runner.setUncaughtExceptionHandler(h);
-			runner.start();
-			runnerVect.add(runner);
-		}
-	}
 
 	/* IO related */
 	/** Returns whether this universe implements world I/O */
@@ -280,14 +241,14 @@ public abstract class World implements ToJSON {
 
 	String about = null;
 
-	public String getAPI(Locale humanLang, ProgrammingLanguage progLang) {
+	public String getAPI() {
 		// TODO: Buffer and share APIs among instances
 		String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 		String api = "File "+filename+".html not found.";
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, humanLang, "html", true);
-			api = PlmHtmlEditorKit.filterHTML(sb.toString(), false, progLang);
+			sb = FileUtils.readContentAsText(filename, settings.getHumanLang(), "html", true);
+			api = PlmHtmlEditorKit.filterHTML(sb.toString(), false, getProgLang());
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -299,7 +260,7 @@ public abstract class World implements ToJSON {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html", true);
+				sb = FileUtils.readContentAsText(filename, settings.getHumanLang(), "html", true);
 			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;
@@ -307,7 +268,7 @@ public abstract class World implements ToJSON {
 			/* read it */
 			about = sb.toString();
 		}
-		return PlmHtmlEditorKit.filterHTML(about, game.isDebugEnabled(), getGame().getProgrammingLanguage());
+		return PlmHtmlEditorKit.filterHTML(about, false, getProgLang());
 	}
 	
 	/**
@@ -336,15 +297,7 @@ public abstract class World implements ToJSON {
 	public abstract void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException;
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
-	public String diffTo(World world, Locale locale, ProgrammingLanguage progLang) {
-		return diffTo(world, locale);
-	}
-
-	public abstract String diffTo(World world, Locale locale);
-	
-	public Game getGame() {
-		return game;
-	}
+	public abstract String diffTo(World world);
 
 	public ConcurrentLinkedDeque<List<Operation>> getSteps() {
 		return steps;
@@ -368,5 +321,24 @@ public abstract class World implements ToJSON {
 		json.put("entities", jsonEntities);
 
 		return json;
+	}
+
+	public UserSettings getSettings() {
+		return settings;
+	}
+
+	public void setSettings(UserSettings settings) {
+		this.settings = settings;
+	}
+	
+	public Locale getLocale() {
+		if(settings != null) {
+			return settings.getHumanLang();
+		}
+		return Locale.getDefault();
+	}
+	
+	public ProgrammingLanguage getProgLang() {
+		return settings.getProgLang();
 	}
 }

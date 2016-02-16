@@ -29,12 +29,12 @@ public class TurtleWorld extends World {
 	private double width;
 	private double height;
 	
-	public TurtleWorld(Game game, String name) {
-		super(game, name);
+	public TurtleWorld(String name) {
+		super(name);
 	}
 
-	public TurtleWorld(Game game, String name, int width, int height) {
-		super(game, name);
+	public TurtleWorld(String name, int width, int height) {
+		super(name);
 		this.width = width;
 		this.height = height;
 	}
@@ -79,7 +79,7 @@ public class TurtleWorld extends World {
 	}
 	public void addLine(double x, double y, double newX, double newY, Color color) {
 		synchronized (shapes) {
-			shapes.add(new Line(x,y,newX,newY,color, getGame()));
+			shapes.add(new Line(x,y,newX,newY,color));
 		}
 	}
 	public void addCircle(double x, double y, double radius, Color color) {
@@ -215,7 +215,7 @@ public class TurtleWorld extends World {
 		TurtleWorld other = (TurtleWorld) obj;
 		if (!other.getName().equals(getName()))
 			return false;
-		String diff = diffTo(other, Locale.getDefault());
+		String diff = diffTo(other);
 		if (diff.equals(""))
 			return true;
 		return false;
@@ -335,8 +335,8 @@ public class TurtleWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World world, Locale locale) {
-		I18n i18n = I18nManager.getI18n(locale);
+	public String diffTo(World world) {
+		I18n i18n = I18nManager.getI18n(getLocale());
 		if (world == this)
 			return "";
 		StringBuffer sb = new StringBuffer();
@@ -419,7 +419,7 @@ public class TurtleWorld extends World {
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
 					sb.append(i18n.tr("  {0} (got {1} instead of {2})\n",
-							((Shape) other.shapes.get(i)).diffTo(shapes.get(i), getGame().i18n),
+							((Shape) other.shapes.get(i)).diffTo(shapes.get(i), i18n),
 							other.shapes.get(i),shapes.get(i)));
 		} }
 		return sb.toString();

@@ -10,9 +10,9 @@ object Configurations {
 
   private case class Terrain(width: Int, height: Int, ground: List[Point])
 
-  private def makeWorld(game: Game, name: String, terrain: Terrain, position: Point, speed: Point,
+  private def makeWorld(name: String, terrain: Terrain, position: Point, speed: Point,
       angle: Double, thrust: Int, fuel: Int) =
-    new DelegatingLanderWorld(game, name, terrain.width, terrain.height, terrain.ground, position, speed,
+    new DelegatingLanderWorld(name, terrain.width, terrain.height, terrain.ground, position, speed,
         angle, thrust, fuel)
 
   // helper geometric functions
@@ -40,11 +40,10 @@ object Configurations {
 
   // worlds
 
-  def makeWorld(game: Game, config: String): DelegatingLanderWorld = {
+  def makeWorld(config: String): DelegatingLanderWorld = {
     config match {
       case "SIMPLE_TERRAIN_TRIVIAL_CONFIG" =>
         makeWorld(
-          game = game,
           name = "Simple Terrain, Simple Configuration",
           terrain = SIMPLE_TERRAIN,
           position = Point(1200, 700),
@@ -54,7 +53,6 @@ object Configurations {
           fuel = 3000)
       case "CHALLENGING_TERRAIN_SIMPLE_CONFIG" =>
         makeWorld(
-          game = game,
           name = "Challenging Terrain, Simple Configuration",
           terrain = CHALLENGING_TERRAIN,
           position = Point(530, 600),
@@ -64,7 +62,6 @@ object Configurations {
           fuel = 3000)
       case "SIMPLE_TERRAIN_CHALLENGING_CONFIG" =>
         makeWorld(
-          game = game,
           name = "Simple Terrain, Challenging Configuration",
           terrain = SIMPLE_TERRAIN,
           position = Point(500, 500),
@@ -74,7 +71,6 @@ object Configurations {
           fuel = 3000)
       case "SIMPLE_TERRAIN_HARD_CONFIG" =>
         makeWorld(
-          game = game,
           name = "Simple Terrain, Hard Configuration",
           terrain = SIMPLE_TERRAIN,
           position = Point(1900, 900),

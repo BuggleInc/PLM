@@ -3,8 +3,11 @@ package plm.universe.hanoi;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.log.Logger;
 import plm.core.model.Game;
+import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.hanoi.operations.HanoiMove;
@@ -56,10 +59,11 @@ public class HanoiEntity extends Entity {
 		/* END HIDDEN */
 	}
 	public void cyclicMove(int from, int to){
+		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
 		if ((from==0 && to!=1) ||
 			(from==1 && to!=2) ||
 			(from==2 && to!=0))
-			throw new RuntimeException(getGame().i18n.tr(
+			throw new RuntimeException(i18n.tr(
 					"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.",from, to));
 		regularMove(from,to);
 	}

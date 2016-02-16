@@ -156,8 +156,9 @@ public class LightBotEntity extends Entity  {
 
 	LightBotSourceFile sf;
 	@Override
+	// FIXME: Need to re-implement how to run LightBot exercises
 	public void run() {
-		sf = (LightBotSourceFile) ((Exercise) getGame().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.LIGHTBOT,0);
+		sf = null; //(LightBotSourceFile) ((Exercise) getGame().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.LIGHTBOT,0);
 				
 		/* Run main */
 		run("main",sf.getMain());

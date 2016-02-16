@@ -13,11 +13,11 @@ public class SimpleWorld extends World {
 
 	private boolean objectif = false;
 	
-	public SimpleWorld(Game game, String name) {
-		super(game, name);
+	public SimpleWorld(String name) {
+		super(name);
 	}
-	public SimpleWorld(Game game, String name, boolean objectif) {
-		super(game, name);
+	public SimpleWorld(String name, boolean objectif) {
+		super(name);
 		this.objectif = objectif;
 	}
 	
@@ -47,7 +47,7 @@ public class SimpleWorld extends World {
 	}
 	
 	@Override
-	public String diffTo(World world, Locale locale) {
+	public String diffTo(World world) {
 		SimpleWorld other = (SimpleWorld) world;
 		String s = "No diff";
 		if(this.objectif != other.objectif) {

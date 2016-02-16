@@ -29,7 +29,6 @@ public abstract class Entity extends Observable implements ToJSON {
 	protected World world;
 	
 	private List<Operation> operations = new ArrayList<Operation>();
-	private Game game;
 	private Semaphore oneStepSemaphore = new Semaphore(0);
 
 	public Entity() {}
@@ -41,7 +40,6 @@ public abstract class Entity extends Observable implements ToJSON {
 		this.name=name;
 		if (w != null) {
 			w.addEntity(this);
-			game = world.getGame();
 		}
 	}
 
@@ -94,7 +92,6 @@ public abstract class Entity extends Observable implements ToJSON {
 
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {
-		setGame(other.game);
 		setName(other.getName());
 		setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
 	}
@@ -133,7 +130,8 @@ public abstract class Entity extends Observable implements ToJSON {
 
 	/** Returns whether this is the entity selected in the interface */
 	public boolean isSelected() {
-		return this == game.getSelectedEntity();
+		// FIXME: Re-implement me or not needed anymore?
+		return false;
 	}
 
 	/** Run this specific entity, encoding the student logic to solve a given exercise. 
@@ -168,14 +166,6 @@ public abstract class Entity extends Observable implements ToJSON {
 	
 	public void addOperation(Operation operation) {
 		operations.add(operation);
-	}
-	
-	public void setGame(Game game) {
-		this.game = game;
-	}
-	
-	public Game getGame() {
-		return game;
 	}
 
 	public void addStep() {

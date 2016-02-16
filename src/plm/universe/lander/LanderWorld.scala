@@ -80,7 +80,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   /** Returns true if both worlds have same name and same state. */
   def winning(target: World): Boolean = state == LANDED
 
-  def diffTo(world: World, locale: Locale): String = null
+  def diffTo(world: World): String = null
 
   def reset(initialWorld: LanderWorld): Unit = {
     width = initialWorld.width
