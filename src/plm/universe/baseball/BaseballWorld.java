@@ -9,6 +9,7 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.I18nManager;
@@ -180,7 +181,7 @@ public class BaseballWorld extends World {
 	 * @throws ScriptException */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang instanceof LangPython) {
 			engine.eval(
 					"def getBasesAmount():\n" +
 					"  return entity.getBasesAmount()\n" +

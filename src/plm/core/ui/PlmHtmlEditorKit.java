@@ -1,22 +1,12 @@
 package plm.core.ui;
-import java.awt.Graphics;
-import java.awt.Shape;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.text.Element;
-import javax.swing.text.IconView;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.View;
-import javax.swing.text.ViewFactory;
-import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.lesson.Lecture;
-
 
 public class PlmHtmlEditorKit extends HTMLEditorKit {
 	private static final long serialVersionUID = 1L;
@@ -97,12 +87,13 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			langColors.put("java|c|python", "333333");
 		}
 		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
-		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties".replaceAll("\\\\", "\\\\"));
+		// FIXME: what is it for?
+		// res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties".replaceAll("\\\\", "\\\\"));
 
 		/* Display everything when in debug mode, with shiny colors */
 		if (showAll) {
 			// Process any block with one language first so that they can be nested in blocks with more than one language.
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+			for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
 				String l = lang.getLang().toLowerCase();
 				res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]",
 						"<font color=\""+langColors.get(l)+"\">$1</font>");
@@ -189,102 +180,5 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 		}
 
 		return res;
-	}
-
-	private static boolean hideLang(String cssClass, ProgrammingLanguage language) {
-		if (cssClass == null)
-			return false;
-		if (cssClass.toLowerCase().equals(language.getLang().toLowerCase())) 
-			return false;
-		return true;
-	}
-
-	public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
-		boolean visible=false;
-		@Override
-		public View create(Element element) {
-			Element iterElem = element;
-			String theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
-			/*
-			while (theCSSClass == null && iterElem != null) {
-				iterElem = iterElem.getParentElement();
-				if (iterElem != null)
-					theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
-			}
-			 */
-			/*
-			if (!game.isDebugEnabled() // Display everything when in debug mode 
-					&& hideLang(theCSSClass)) {
-				return new EmptyView(element);
-			}
-			*/
-			Object tagName = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
-			if (tagName instanceof HTML.Tag) {
-				HTML.Tag tag = (HTML.Tag) tagName;
-			}
-			return super.create(element);
-		}
-	}
-
-	protected static Lecture baseExercise = null;
-	public PlmHtmlEditorKit() {
-		baseExercise = null;
-	}
-
-	public PlmHtmlEditorKit(Lecture _baseExercise) {
-		baseExercise = _baseExercise;
-	}
-
-	@Override
-	public ViewFactory getViewFactory() {
-		return new HTMLFactoryX();
-	}
-	public static String getCSS() {
-		String header = "  <style type=\"text/css\">\n"+
-				"    body { font-family: tahoma, \"Times New Roman\", serif; font-size:"+Game.getProperty(Game.PROP_FONT_SIZE, "10px", true)+"; margin:10px; }\n"+
-				"    code { background:#EEEEEE; }\n"+
-				"    pre { background: #EEEEEE;\n"+
-				"          margin: 5px;\n"+
-				"          padding: 6px;\n"+
-				"          border: 1px inset;\n"+
-				"          width: 640px;\n"+
-				"          overflow: auto;\n"+
-				"          text-align: left;\n"+
-				"          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-				"   .comment { background:#EEEEEE;\n"+
-				"              font-family: \"Times New Roman\", serif;\n"+
-				"              color:#00AA00;\n"+
-				"              font-style: italic; }\n";
-		/*
-		String res;
-		if (game.isDebugEnabled()) {
-			/* In debugging mode, all languages are displayed, with differing colors */
-			/*
-			res = header;
-			res += ".Java   {visibility: visible; color:#FF0000}\n";
-			res += ".java   {visibility: visible; color:#FF0000}\n";
-			res += ".python {visibility: visible; color:#008000}\n";
-			res += ".Python {visibility: visible; color:#008000}\n";
-			res += ".scala  {visibility: visible; color:#0000FF}\n";
-			res += ".Scala  {visibility: visible; color:#0000FF}\n";
-			res +=  "  </style>\n";
-			return res;
-		}
-		*/
-		return header+"  </style>\n";
-	}
-}
-
-class EmptyView extends IconView {
-
-	public EmptyView(Element elem) {
-		super(elem);
-	}
-	@Override
-	public float getPreferredSpan(int axis) {
-		return 0;
-	}
-	@Override
-	public void paint(Graphics g, Shape a) {
 	}
 }

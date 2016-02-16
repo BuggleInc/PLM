@@ -8,6 +8,7 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.I18nManager;
@@ -161,7 +162,7 @@ public class PancakeWorld extends World {
 	/** Ensures that the provided engine can be used to solve Pancake exercises */ 
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang instanceof LangPython) {
 			e.eval(
 				"def getStackSize():\n" +
 				"  return entity.getStackSize()\n" +

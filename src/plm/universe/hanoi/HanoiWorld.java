@@ -9,6 +9,7 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.I18nManager;
@@ -185,7 +186,7 @@ public class HanoiWorld extends World {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
+		if (lang instanceof LangPython) {
 			e.eval( "def move(src,dst):\n"+
 					"  entity.move(src,dst)\n"+
 					"def getSlotSize(slot):\n"+

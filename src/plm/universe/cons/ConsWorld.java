@@ -3,6 +3,7 @@ package plm.universe.cons;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.Game;
@@ -19,7 +20,7 @@ public class ConsWorld extends BatWorld {
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
 		super.setupBindings(lang, e);
-		if (lang == Game.PYTHON) {
+		if (lang instanceof LangPython) {
 			try {
 				e.put("RecList", RecList.class);
 				String script = 

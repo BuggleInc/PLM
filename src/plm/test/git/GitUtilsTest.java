@@ -28,8 +28,6 @@ import plm.core.model.tracking.GitUtils;
 
 public class GitUtilsTest {
 
-	final private String trackUserProperty = "plm.git.track.user";
-
 	private final File plmTestDir = new File(System.getProperty("user.home") + System.getProperty("file.separator")
 			+ ".plm-test");
 	private final File remotePlmTestDir = new File(System.getProperty("user.home") + System.getProperty("file.separator")
@@ -40,14 +38,9 @@ public class GitUtilsTest {
 	private File repoDirectory;
 	private String userBranch;
 	private Utils utils;
-	private String oldTrackUserProperty;
-	private Game game;
 
 	public GitUtilsTest() {
 		userBranch = UUID.randomUUID().toString();
-		game = new Game(userBranch, mock(LogHandler.class), new Locale("en"), "Java", false);
-		oldTrackUserProperty = Game.getProperty(trackUserProperty);
-
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		gitUtils = new GitUtils(new Locale("en"));
 		utils = new Utils();
@@ -57,9 +50,7 @@ public class GitUtilsTest {
 
 	@Before
 	public void setUp() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
-		Game.setProperty(trackUserProperty, "true");
 		try {
-			game.setTrackUser(false);
 			gitUtils.initLocalRepository(repoDirectory);
 			gitUtils.createInitialCommit();
 		} catch (GitAPIException | IOException e) {
@@ -71,7 +62,6 @@ public class GitUtilsTest {
 
 	@After
 	public void tearDown() {
-		Game.setProperty(trackUserProperty, oldTrackUserProperty);
 		gitUtils.dispose();
 		utils.deleteRepo(repoDirectory);
 	}
@@ -159,8 +149,6 @@ public class GitUtilsTest {
 
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfRemoteBranchExists () throws GitAPIException, IOException {
-		game.setTrackUser(true);
-
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		GitUtils remoteGitUtils = new GitUtils(new Locale("en"));
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
@@ -210,8 +198,6 @@ public class GitUtilsTest {
 
 	@Test
 	public void testMergeRemoteIntoLocalBranchShouldSynchronizeBranches() throws GitAPIException, IOException {
-		game.setTrackUser(true);
-
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		GitUtils remoteGitUtils = new GitUtils(new Locale("en"));
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
@@ -248,8 +234,6 @@ public class GitUtilsTest {
 
 	@Test
 	public void testMergeRemoteIntoLocalBranchShouldHandleConflicts() throws GitAPIException, IOException, InterruptedException {
-		game.setTrackUser(true);
-
 		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 

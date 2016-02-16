@@ -10,6 +10,7 @@ import plm.core.model.Game
 import plm.universe.World
 import org.xnap.commons.i18n.I18n
 import java.util.Locale
+import plm.core.lang.LangPython
 
 object LanderWorld {
   object State extends Enumeration {
@@ -43,8 +44,8 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   // "inherited" methods
 
-  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine):Unit= {
-  		if (lang.equals(Game.PYTHON)) {
+  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine) {
+  		if (lang.isInstanceOf[LangPython]) {
   			engine.put("Segment", Segment.getClass())
 			engine.eval(
 			    "def isFlying():\n"+

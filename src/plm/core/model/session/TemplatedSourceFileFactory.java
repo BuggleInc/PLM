@@ -16,7 +16,6 @@ import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
-import plm.core.model.Game;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.NoSuchEntityException;
 import plm.core.utils.FileUtils;
@@ -74,6 +73,7 @@ public class TemplatedSourceFileFactory {
 		for (String line : content.split("\n")) {
 			switch (state) {
 			case 0: /* initial content */
+				ProgrammingLanguage C = ProgrammingLanguage.getProgrammingLanguage("C");
 				if (line.contains("class ")) {
 					String modified = line.replaceAll("class \\S*", "class "+name);
 					head.append(modified);
@@ -81,11 +81,11 @@ public class TemplatedSourceFileFactory {
 				} else if (line.contains("package")) {
 					head.append("$package \n");	
 					correction.append("$package \n");
-				} else if(line.contains("#line") && lang.equals(Game.C)){
+				} else if(line.contains("#line") && lang.equals(C)){
 					containsLinePreprocessor=true;
 					head.append(line+"\n");
 				}else if (line.contains("BEGIN TEMPLATE")) {
-					if(!containsLinePreprocessor && lang.equals(Game.C)){
+					if(!containsLinePreprocessor && lang.equals(C)){
 						head.append("#line 1 \""+name+".c\" \n");
 						containsLinePreprocessor=true;
 					}
@@ -93,7 +93,7 @@ public class TemplatedSourceFileFactory {
 					seenTemplate = true;
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					if(!containsLinePreprocessor && lang.equals(Game.C)){
+					if(!containsLinePreprocessor && lang.equals(C)){
 						head.append("#line 1 \""+name+".c\" \n");
 						containsLinePreprocessor=true;
 					}
@@ -217,7 +217,7 @@ public class TemplatedSourceFileFactory {
 
 		/* Remove the unnecessary leading spaces from the initial content */
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
-		if (lang != Game.PYTHON) {
+		if (!(lang instanceof LangPython)) {
 			initialContent = initialContent.replaceAll("\t","    ");
 			String[] ctn = newLinePattern.split(initialContent);
 			/* Compute the minimal amount of leading spaces on all lines */

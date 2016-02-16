@@ -42,6 +42,7 @@ public class LangBlockly extends ScriptingLanguage {
 	
 	@Override
 	public boolean handleLangException (ScriptException e,Entity ent,ExecutionProgress progress, Locale locale) {
+		ProgrammingLanguage python = ProgrammingLanguage.getProgrammingLanguage("python");
 		if (!(e.getCause() instanceof org.python.core.PyException)) { // This seems to be the ancestor of all exceptions raised by jython
 			return false; // not for us
 		}
@@ -55,7 +56,7 @@ public class LangBlockly extends ScriptingLanguage {
 			msg.append(I18nManager.getI18n(locale).tr("Syntax error: {0}\nLine {1}: {2}\n" +
 					"In doubt, check your indentation, and that you don't mix tabs and spaces\n",
 					cause.value.__findattr__("msg"),
-					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
+					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(python)+1),
 					cause.value.__findattr__("text")
 					));
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
@@ -64,7 +65,7 @@ public class LangBlockly extends ScriptingLanguage {
 			msg.append(I18nManager.getI18n(locale).tr("Indentation error: {0}\nline {1}: {2}\n" +
 					"Please, check that you did not mix tabs and spaces. Use the TAB and shift-TAB keys to clean your indentation.\n",
 					cause.value.__findattr__("msg"),
-					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
+					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(python)+1),
 					cause.value.__findattr__("text")));
 			errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
@@ -110,7 +111,7 @@ public class LangBlockly extends ScriptingLanguage {
 			 */
 			org.python.core.PyTraceback tb = cause.traceback;
 			while (tb != null) {
-				tb.tb_lineno-= ent.getScriptOffset(Game.PYTHON);
+				tb.tb_lineno-= ent.getScriptOffset(python);
 				if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
 					msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
 				} else {

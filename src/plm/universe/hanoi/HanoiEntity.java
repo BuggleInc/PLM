@@ -35,12 +35,6 @@ public class HanoiEntity extends Entity {
 		super(name);
 		/* END HIDDEN */
 	}
-	/** Must exist too. Calling HanoiEntity("dummy name") is ok */
-	public HanoiEntity(Game game) {
-		/* BEGIN HIDDEN */
-		this("Hanoi Entity");
-		/* END HIDDEN */
-	}
 
 	/** Must exist so that exercises can instantiate your entity (Entity is abstract) */
 	@Override
