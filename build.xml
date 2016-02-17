@@ -32,6 +32,7 @@
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
     <property name="src.dir" value="${base.dir}/src"/>
+	<property name="test.dir" value="${base.dir}/test"/>
     <property name="site.dir" value="${base.dir}/site"/>
     <property name="classes.dir" value="${site.dir}/bin"/>
 
@@ -62,6 +63,7 @@
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
         <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true"/>
+        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${test.dir}" includeantruntime="false" fork="true"/>
     </target>
 
     <!-- <target name="dist" depends="clean, i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">  -->
@@ -278,7 +280,7 @@
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.test.AllTests"/>
+        <test name="suite.AllTests"/>
 	  </junit>
     </target>
 
@@ -286,12 +288,14 @@
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.test.UnitTests"/>
+        <test name="suite.UnitTests"/>		
 	  </junit>
     </target>
 
-    <target name="integration-tests" depends="compile" description="launch all integration tests">
+<!--
+	<target name="integration-tests" depends="compile" description="launch all integration tests">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
+>>>>>>> Move tests to own source folder
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.test.IntegrationTests"/>

@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry including="**" kind="src" path="src"/>
 	<classpathentry excluding="*" including="img/*.png|img/*/*.png" kind="src" path=""/>
+	<classpathentry including="**" kind="src" path="test"/>
 	<classpathentry excluding="*.jar" including="resources|resources/" kind="src" path="lib"/>
 	<classpathentry kind="lib" path="lib/miglayout-4.2.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.9.5.jar"/>
