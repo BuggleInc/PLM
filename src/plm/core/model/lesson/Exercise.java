@@ -33,7 +33,7 @@ public abstract class Exercise implements ToJSON {
 	public String getBaseName() {
 		return getClass().getCanonicalName();
 	}
-	
+
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
 		return getBaseName() + "Entity";
 	}
@@ -49,9 +49,8 @@ public abstract class Exercise implements ToJSON {
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
 	private Map<ProgrammingLanguage, SourceFile> defaultSourceFiles = new HashMap<ProgrammingLanguage, SourceFile>();
 
-	
 	private Map<String, String> missions = new HashMap<String, String>();
-	
+
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
@@ -76,7 +75,6 @@ public abstract class Exercise implements ToJSON {
 			answerWorld.add(baseAnswerWorld);
 		}
 		for(ProgrammingLanguage progLang : exo.getProgLanguages()) {
-			addProgLanguage(progLang);
 			SourceFile sourceFile = exo.getDefaultSourceFile(progLang).clone();
 			addDefaultSourceFile(progLang, sourceFile);
 		}
@@ -236,22 +234,16 @@ public abstract class Exercise implements ToJSON {
 		return getName();
 	}
 
-	/* setters and getter of the programming language that this exercise accepts */ 
-	private Set<ProgrammingLanguage> progLanguages = new HashSet<ProgrammingLanguage>();
-
-	public Set<ProgrammingLanguage> getProgLanguages() {
-		return progLanguages;
-	}
-	protected void addProgLanguage(ProgrammingLanguage newL) {
-		progLanguages.add(newL);
-	}
-
 	public int getNbError() {
 		return nbError;
 	}
-	
+
 	public void setNbError(int nbError) {
 		this.nbError = nbError;
+	}
+
+	public Set<ProgrammingLanguage> getProgLanguages() {
+		return defaultSourceFiles.keySet();
 	}
 
 	public boolean isProgLangSupported(ProgrammingLanguage progLang) {
@@ -263,25 +255,28 @@ public abstract class Exercise implements ToJSON {
 	}
 
 	public SourceFile getDefaultSourceFile(ProgrammingLanguage progLang) {
-		return defaultSourceFiles.get(progLang).clone();
+		if(isProgLangSupported(progLang)) {
+			return defaultSourceFiles.get(progLang).clone();
+		}
+		return null;
 	}
-	
+
 	public Set<String> getHumanLanguages() {
 		return missions.keySet();
 	}
-	
+
 	public void addMission(String humanLang, String mission) {
 		missions.put(humanLang, mission);
 	}
-	
+
 	private String getDefaultMission(String humanLang) {
 		return missions.get(humanLang);
 	}
-	
+
 	public String getTip(String tipsId) {
 		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), false, settings.getProgLang());
 	}
-	
+
 	public String getMission() {
 		String humanLang = settings.getHumanLang().getLanguage();
 		ProgrammingLanguage lang = settings.getProgLang();

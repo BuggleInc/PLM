@@ -288,7 +288,7 @@
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="suite.UnitTests"/>		
+        <test name="suite.UnitTests"/>
 	  </junit>
     </target>
 
@@ -302,7 +302,7 @@
 	  </junit>
     </target>
 
-<!--  This requires Java7 to work, but I'd prefer to support for Java6
+	  This requires Java7 to work, but I'd prefer to support for Java6
       a bit longer if possible. Disable this for now, sorry Franck.
 
 

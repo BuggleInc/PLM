@@ -48,7 +48,6 @@ public class ExerciseFactory {
 			String entityName = progLang.nameOfCorrectionEntity(exo).replaceAll("\\.", "/") + "." + progLang.getExt();
 			String entityPath = rootDirectory + "/" + entityName;
 			if(new File(entityPath).exists()) {
-				exo.addProgLanguage(progLang);
 				SourceFile sourceFile = sourceFileFactory.newSourceFromFile(exo.getId(), progLang, entityPath);
 				exo.addDefaultSourceFile(progLang, sourceFile);
 			}

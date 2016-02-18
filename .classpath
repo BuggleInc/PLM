@@ -27,5 +27,5 @@
 	<classpathentry kind="lib" path="lib/jsch-0.1.50.jar"/>
 	<classpathentry kind="lib" path="lib/scala/scala-reflect-2.11.4.jar"/>
 	<classpathentry kind="lib" path="lib/scala/scala-compiler-2.11.4.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="site/bin"/>
 </classpath>
