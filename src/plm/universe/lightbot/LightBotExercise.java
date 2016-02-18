@@ -8,7 +8,6 @@ public class LightBotExercise extends ExerciseTemplated {
 	public LightBotExercise(String id, String name) {
 		super(id, name);
 		ProgrammingLanguage lightbot = ProgrammingLanguage.getProgrammingLanguage("Lightbot");
-		addProgLanguage(lightbot);
 		if (getProgLanguages().size()>1) 
 			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
 		getSourceFilesList(lightbot).add(new LightBotSourceFile("Code"));

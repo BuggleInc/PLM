@@ -1,9 +1,8 @@
 package plm.universe.cons;
 
-import plm.universe.World;
-import plm.universe.bat.BatExercise;
+import plm.core.model.lesson.ExerciseTemplated;
 
-public abstract class ConsExercise extends BatExercise {
+public abstract class ConsExercise extends ExerciseTemplated {
 
 	public ConsExercise(String id, String name) {
 		super(id, name);
@@ -17,14 +16,16 @@ public abstract class ConsExercise extends BatExercise {
 		return RecList.fromArray(d);
 	}
 
+	/*
 	protected void setup(World[] ws) {
 		super.setup(ws,
 				/* Extra imports */
-				"import lessons.recursion.cons.universe.*;"+
+	/*			"import lessons.recursion.cons.universe.*;"+
 				"import java.util.Vector;",
 				/* Extra entity body */
-				"public RecList cons(int head, RecList tail){"+
+	/*			"public RecList cons(int head, RecList tail){"+
 				"  return new RecList(head, tail);"+
 				"}");
 	}
+	*/
 }

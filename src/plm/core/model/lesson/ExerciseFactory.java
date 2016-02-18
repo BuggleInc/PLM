@@ -38,13 +38,7 @@ public class ExerciseFactory {
 	}
 
 	public void initializeExercise(Exercise exo, ProgrammingLanguage progLang) {
-		if(exo instanceof ExerciseTemplatingEntity) {
-			ExerciseTemplatingEntity ete = (ExerciseTemplatingEntity) exo;
-			ete.initSourceFiles(sourceFileFactory, programmingLanguages);
-		}
-		else {
-			computeSupportedProgrammingLanguages(exo);
-		}
+		computeSupportedProgrammingLanguages(exo);
 		computeMissions(exo);
 		computeAnswer(exo, progLang);
 	}
@@ -84,5 +78,13 @@ public class ExerciseFactory {
 			}
 			exerciseRunner.runDemo(exo, progLang);
 		}
+	}
+	
+	public String getRootDirectory() {
+		return rootDirectory;
+	}
+
+	public void setRootDirectory(String rootDirectory) {
+		this.rootDirectory = rootDirectory;
 	}
 }
