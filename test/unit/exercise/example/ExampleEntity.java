@@ -6,7 +6,7 @@ public class ExampleEntity extends AbstractExampleEntity {
 
 	@Override
 	/* BEGIN TEMPLATE */
-	public void run() throws Exception {
+	public void run() {
 		/* BEGIN SOLUTION */
 		setObjective(true);
 		/* END SOLUTION */
