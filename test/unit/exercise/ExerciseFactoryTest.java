@@ -1,8 +1,10 @@
 package unit.exercise;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Set;
 
@@ -20,6 +22,7 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
 import plm.core.model.session.SourceFile;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 import unit.exercise.example.Example;
 import unit.exercise.universe.ExampleWorld;
@@ -35,7 +38,8 @@ public class ExerciseFactoryTest {
 	private Locale locale = new Locale("en");
 	private ExerciseRunner exerciseRunner;
 	private ProgrammingLanguage[] programmingLanguages =  { java, scala, python };
-	private Locale[] humanLanguages = { locale };
+	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
+	private String rootDirectory = "test";
 
 	public ExerciseFactoryTest() {
 	}
@@ -44,7 +48,7 @@ public class ExerciseFactoryTest {
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
 		exerciseFactory = new ExerciseFactory(locale, exerciseRunner, programmingLanguages, humanLanguages);
-		exerciseFactory.setRootDirectory("test");
+		exerciseFactory.setRootDirectory(rootDirectory);
 		exo = new Example();
 		exerciseFactory.initializeExercise(exo, java);
 	}
@@ -57,7 +61,7 @@ public class ExerciseFactoryTest {
 	}
 
 	@Test
-	public void testInitializeExerciseShouldAddSupportedLanguages() {
+	public void testInitializeExerciseShouldAddSupportedProgLang() {
 		ProgrammingLanguage[] expectedSupportedProgLangs = { java, python };
 
 		for(ProgrammingLanguage expectedSupportedProgLang : expectedSupportedProgLangs) {
@@ -68,14 +72,14 @@ public class ExerciseFactoryTest {
 	}
 
 	@Test
-	public void testInitializeExerciseShouldNotAddNonSupportedLanguagesByExercise() {
+	public void testInitializeExerciseShouldNotAddNonSupportedProgLangByExercise() {
 		boolean actual = exo.isProgLangSupported(scala);
 
 		assertFalse("Should not mark as supported progLang not supported by the exercise", actual);
 	}
 
 	@Test
-	public void testInitializeExerciseShouldNotAddNonSupportedLanguagesByFactory() {
+	public void testInitializeExerciseShouldNotAddNonSupportedProgLangByFactory() {
 		boolean actual = exo.isProgLangSupported(blockly);
 
 		assertFalse("Should not mark as supported progLang not supported by the factory", actual);
@@ -100,6 +104,24 @@ public class ExerciseFactoryTest {
 			boolean actual = exo.getDefaultSourceFile(nonSupportedProgLang) == null;
 
 			assertTrue("Should have not generated a source file for non supported progLang", actual);
+		}
+	}
+
+	@Test
+	public void testInitializeExerciseShouldGenerateMissionsForEachSupportedHumanLang() {
+		for(Locale humanLanguage : humanLanguages) {
+			String expected = "";
+			
+			String baseName = exo.getBaseName().replaceAll("\\.", "/");
+			String filename =  rootDirectory + "/" + baseName;
+			StringBuffer sb = null;
+			try {
+				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				expected = sb.toString();
+			} catch (IOException ex) {}
+			
+			String actual = exo.getMission(humanLanguage, java);
+			assertEquals("Should have retrieve the same content", expected, actual);
 		}
 	}
 

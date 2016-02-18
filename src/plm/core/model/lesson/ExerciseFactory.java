@@ -62,7 +62,7 @@ public class ExerciseFactory {
 			try {
 				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				exo.addMission(humanLanguage.getLanguage(), sb.toString());
-			} catch (IOException ex) {}			
+			} catch (IOException ex) {}
 		}
 	}
 

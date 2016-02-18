@@ -3,8 +3,8 @@ package plm.core.model.lesson;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -278,13 +278,16 @@ public abstract class Exercise implements ToJSON {
 	}
 
 	public String getMission() {
-		String humanLang = settings.getHumanLang().getLanguage();
-		ProgrammingLanguage lang = settings.getProgLang();
+		return getMission(settings.getHumanLang(), settings.getProgLang());
+	}
+
+	public String getMission(Locale locale, ProgrammingLanguage progLang) {
+		String humanLang = locale.getLanguage();
 		String mission = missions.get("en");
 		if(missions.containsKey(humanLang)) {
 			mission = missions.get(humanLang);
 		}
-		return PlmHtmlEditorKit.filterHTML(mission, false, lang);
+		return PlmHtmlEditorKit.filterHTML(mission, false, progLang);
 	}
 
 	public String getWorldAPI() {
