@@ -4,7 +4,6 @@ scala:
   - 2.11.4
   - 2.11.7
 jdk:
-  - openjdk8
   - oraclejdk8
 env:
   - TEST_SUITE=unit-tests
