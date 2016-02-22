@@ -43,8 +43,13 @@ public class ExerciseRunnerTest {
 	private ProgrammingLanguage progLang;
 
 	@Parameterized.Parameters
-	public static Collection<ProgrammingLanguage> programmingLanguages() {
-		return Arrays.asList(programmingLanguages);
+	public static Collection<Object[]> programmingLanguages() {
+		return Arrays.asList(new Object[][] {
+	         { java },
+	         { scala },
+	         { python },
+	         { blockly }
+	      });
 	}
 
 	public ExerciseRunnerTest(ProgrammingLanguage progLang) {
