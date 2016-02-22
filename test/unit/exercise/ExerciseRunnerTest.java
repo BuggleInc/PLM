@@ -1,13 +1,17 @@
 package unit.exercise;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangJava;
@@ -15,35 +19,44 @@ import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
+import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
-import plm.core.model.lesson.ExecutionProgress.outcomeKind;
-import unit.exercise.example.Example;
+import unit.exercise.examplerunner.ExampleRunner;
 
+@RunWith(Parameterized.class)
 public class ExerciseRunnerTest {
 
-	private LangJava java = new LangJava(true);
-	private LangScala scala = new LangScala(true);
-	private LangPython python = new LangPython(true);
-	private LangBlockly blockly = new LangBlockly(true);
+	private static LangJava java = new LangJava(true);
+	private static LangScala scala = new LangScala(true);
+	private static LangPython python = new LangPython(true);
+	private static LangBlockly blockly = new LangBlockly(true);
+	private static ProgrammingLanguage[] programmingLanguages =  { java, scala, python, blockly };
 
 	private ExerciseFactory exerciseFactory;
 	private Exercise exo;
 	private Locale locale = new Locale("en");
 	private ExerciseRunner exerciseRunner;
-	private ProgrammingLanguage[] programmingLanguages =  { java, scala, python };
-	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
+	private Locale[] humanLanguages = { locale };
 	private String rootDirectory = "test";
+	private ProgrammingLanguage progLang;
 
-	public ExerciseRunnerTest() {}
+	@Parameterized.Parameters
+	public static Collection<ProgrammingLanguage> programmingLanguages() {
+		return Arrays.asList(programmingLanguages);
+	}
+
+	public ExerciseRunnerTest(ProgrammingLanguage progLang) {
+		this.progLang = progLang;
+	}
 
 	@Before 
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
 		exerciseFactory = new ExerciseFactory(locale, exerciseRunner, programmingLanguages, humanLanguages);
 		exerciseFactory.setRootDirectory(rootDirectory);
-		exo = new Example();
+		exo = new ExampleRunner();
 		exerciseFactory.initializeExercise(exo, java);
 	}
 
@@ -60,7 +73,18 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(true)"
 				+ "}";
-		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, java, code);
+		if(progLang == scala) {
+			code = 
+					"def run(): Unit {"
+					+ "setObjective(true)"
+					+ "}";
+		}
+		else if(progLang == python || progLang == blockly) {
+			code =
+					"def run():\n"
+					+ "  setObjective(true)";
+		}
+		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.COMPILE;
 		outcomeKind actual = result.outcome;
@@ -75,7 +99,20 @@ public class ExerciseRunnerTest {
 				+ "String s = null;"
 				+ "int length = s.length();"
 				+ "}";
-		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, java, code);
+		if(progLang == scala) {
+			code = 
+					"def run(): Unit = {"
+					+ "var s: String = null;"
+					+ "var length: Int = s.length;"
+					+ "}";
+		}
+		else if(progLang == python || progLang == blockly) {
+			code =
+					"def run():\n"
+					+ "  truc = None\n"
+					+ "  print truc.toto";
+		}
+		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.FAIL;
 		outcomeKind actual = result.outcome;
@@ -89,7 +126,18 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(false);"
 				+ "}";
-		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, java, code);
+		if(progLang == scala) {
+			code = 
+					"def run(): Unit = {"
+					+ "setObjective(false)"
+					+ "}";
+		}
+		else if(progLang == python || progLang == blockly) {
+			code =
+					"def run():\n"
+					+ "  setObjective(False)";
+		}
+		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.FAIL;
 		outcomeKind actual = result.outcome;
@@ -103,12 +151,25 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "while(true) {}"
 				+ "}";
+		if(progLang == scala) {
+			code = 
+					"def run(): Unit = {"
+					+ "while(true) {};"
+					+ "}";
+		}
+		else if(progLang == python || progLang == blockly) {
+			code =
+					"def run():\n"
+					+ "  i = 0\n"
+					+ "  while(True):\n"
+					+ "    i = i + 1";
+		}
 
 		// We don't want to wait 10s each time
 		exerciseRunner.setWaitingTime(500);
 		exerciseRunner.setMaxNumberOfTries(5);
 
-		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, java, code);
+		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.TIMEOUT;
 		outcomeKind actual = result.outcome;
@@ -122,7 +183,18 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(true);"
 				+ "}";
-		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, java, code);
+		if(progLang == scala) {
+			code = 
+					"def run(): Unit = {"
+					+ "setObjective(true)"
+					+ "}";
+		}
+		else if(progLang == python || progLang == blockly) {
+			code =
+					"def run():\n"
+					+ "  setObjective(True)";
+		}
+		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.PASS;
 		outcomeKind actual = result.outcome;

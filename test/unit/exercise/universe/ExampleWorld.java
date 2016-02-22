@@ -3,6 +3,7 @@ package unit.exercise.universe;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.universe.World;
@@ -26,13 +27,6 @@ public class ExampleWorld extends World {
 		ExampleWorld initialWorld = (ExampleWorld)iw;
 		objective = initialWorld.objective;
 		super.reset(initialWorld);
-	}
-
-	@Override
-	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
-		if (lang instanceof LangPython) {
-			engine.put("w", this);
-		}
 	}
 
 	@Override
@@ -63,5 +57,15 @@ public class ExampleWorld extends World {
 
 	public void setObjective(boolean objective) {
 		this.objective = objective;
+	}
+	
+	@Override
+	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
+		if (lang instanceof LangPython || lang instanceof LangBlockly) {
+			engine.put("w", this);
+			engine.eval(
+				"def setObjective(objective):\n"+
+				"	entity.setObjective(objective)\n");
+		}
 	}
 }
