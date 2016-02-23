@@ -9,6 +9,8 @@ import org.json.simple.JSONObject;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.tip.AbstractTipFactory;
+import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.TemplatedSourceFileFactory;
 import plm.core.utils.FileUtils;
@@ -19,9 +21,10 @@ public class ExerciseFactory {
 	private ProgrammingLanguage[] programmingLanguages;
 	private Locale[] humanLanguages;
 	private TemplatedSourceFileFactory sourceFileFactory;
+	private AbstractTipFactory tipsFactory = new DefaultTipFactory();
 
 	private String rootDirectory = "exercises";
-	
+
 	public ExerciseFactory(Locale locale, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages) {
 		this.exerciseRunner = exerciseRunner;
 		this.programmingLanguages = programmingLanguages;
@@ -61,7 +64,8 @@ public class ExerciseFactory {
 			StringBuffer sb = null;
 			try {
 				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
-				exo.addMission(humanLanguage.getLanguage(), sb.toString());
+				String mission = tipsFactory.computeTips(exo, humanLanguage, sb.toString());
+				exo.addMission(humanLanguage.getLanguage(), mission);
 			} catch (IOException ex) {}
 		}
 	}
@@ -78,12 +82,16 @@ public class ExerciseFactory {
 			exerciseRunner.runDemo(exo, progLang);
 		}
 	}
-	
+
 	public String getRootDirectory() {
 		return rootDirectory;
 	}
 
 	public void setRootDirectory(String rootDirectory) {
 		this.rootDirectory = rootDirectory;
+	}
+
+	public void setTipFactory(AbstractTipFactory tipsFactory) {
+		this.tipsFactory = tipsFactory;
 	}
 }

@@ -27,7 +27,7 @@ public abstract class Exercise implements ToJSON {
 	private int nbError;
 	private UserSettings settings;
 
-	private Map<String, String> tips = new HashMap<String, String>();
+	private Map<String, Map<String, String>> tips = new HashMap<String, Map<String, String>>();
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
 	public String getBaseName() {
@@ -273,10 +273,6 @@ public abstract class Exercise implements ToJSON {
 		return missions.get(humanLang);
 	}
 
-	public String getTip(String tipsId) {
-		return PlmHtmlEditorKit.filterHTML(this.tips.get(tipsId), false, settings.getProgLang());
-	}
-
 	public String getMission() {
 		return getMission(settings.getHumanLang(), settings.getProgLang());
 	}
@@ -372,5 +368,17 @@ public abstract class Exercise implements ToJSON {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void addTips(String humanLang, String id, String content) {
+		Map<String, String> localizedTips;
+		if(tips.containsKey(humanLang)) {
+			localizedTips = tips.get(humanLang);
+		}
+		else {
+			localizedTips = new HashMap<String, String>();
+			tips.put(humanLang, localizedTips);
+		}
+		localizedTips.put(id, content);
 	}
 }
