@@ -5,6 +5,9 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
@@ -25,6 +28,16 @@ public class BatWorld extends World {
 			tests.add(t.copy());
 	}
 	
+	public BatWorld(JSONObject json) {
+		super(json);
+		this.tests = new Vector<BatTest>();
+		JSONArray jsonBatTests = (JSONArray) json.get("tests");
+		for(int i=0; i<jsonBatTests.size(); i++) {
+			JSONObject jsonBatTest = (JSONObject) jsonBatTests.get(i);
+			tests.add(new BatTest(jsonBatTest));
+		}
+	}
+
 	@Override
 	public void reset(World w) {
 		BatWorld anotherWorld = (BatWorld) w;
@@ -83,5 +96,20 @@ public class BatWorld extends World {
 			}
 		}
 		return sb.toString();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public JSONObject toJSON() {
+		JSONObject json = super.toJSON();
+
+		// We just need to add the non-default cells
+		JSONArray jsonBatTests = new JSONArray();
+		for(BatTest batTest : tests) {
+			jsonBatTests.add(batTest.toJSON());
+		}
+		json.put("tests", jsonBatTests);
+
+		return json;
 	}
 }

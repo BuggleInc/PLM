@@ -2,6 +2,7 @@ package plm.universe.bat;
 
 import java.io.BufferedWriter;
 
+import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.LangBlockly;
@@ -32,6 +33,10 @@ public class BatEntity extends Entity {
 	public BatEntity(BatEntity other) {
 		super();
 		copy(other);
+	}
+
+	public BatEntity(JSONObject json) {
+		super(json);
 	}
 
 	@Override
