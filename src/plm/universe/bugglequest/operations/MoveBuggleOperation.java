@@ -1,7 +1,5 @@
 package plm.universe.bugglequest.operations;
 
-import org.json.simple.JSONObject;
-
 import plm.universe.bugglequest.AbstractBuggle;
 
 public class MoveBuggleOperation extends BuggleOperation {
@@ -34,16 +32,5 @@ public class MoveBuggleOperation extends BuggleOperation {
 
 	public int getNewY() {
 		return newY;
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-		json.put("oldX", oldX);
-		json.put("oldY", oldY);
-		json.put("newX", newX);
-		json.put("newY", newY);
-		return json;
 	}
 }

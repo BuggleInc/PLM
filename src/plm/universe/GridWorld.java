@@ -1,10 +1,5 @@
 package plm.universe;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 public abstract class GridWorld extends World {
 
 	protected GridWorldCell[][] cells;
@@ -15,33 +10,6 @@ public abstract class GridWorld extends World {
 	public GridWorld(String name, int x, int y) {
 		super(name);
 		create(x, y);
-	}
-
-	public GridWorld(JSONObject json) {
-		super(json);
-
-		int x = ((Long) json.get("sizeX")).intValue();
-		int y = ((Long) json.get("sizeY")).intValue();
-
-		create(x, y);
-
-		JSONArray jsonCells = (JSONArray) json.get("cells");
-		for(int i=0; i<jsonCells.size(); i++) {
-			JSONObject jsonCell = (JSONObject) jsonCells.get(i);
-
-			String type = (String) jsonCell.get("type");
-			int xCell = ((Long) jsonCell.get("x")).intValue();
-			int yCell = ((Long) jsonCell.get("y")).intValue();
-
-			try {
-				cells[xCell][yCell] = (GridWorldCell) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonCell);
-			} catch (InstantiationException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException
-					| NoSuchMethodException | SecurityException
-					| ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	public GridWorld(GridWorld world2) {
@@ -119,28 +87,5 @@ public abstract class GridWorld extends World {
 	}
 	public void setVisibleGrid(boolean s) {
 		visibleGrid=s;
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-
-		// We just need to add the non-default cells
-		JSONArray jsonCells = new JSONArray();
-		for(GridWorldCell[] rowCell : cells) {
-			for(GridWorldCell cell : rowCell) {
-				if(!cell.isDefaultCell()) {
-					jsonCells.add(cell.toJSON());
-				}
-			}
-		}
-
-		json.put("sizeX", sizeX);
-		json.put("sizeY", sizeY);
-		json.put("visibleGrid", visibleGrid);
-		json.put("cells", jsonCells);
-
-		return json;
 	}
 }

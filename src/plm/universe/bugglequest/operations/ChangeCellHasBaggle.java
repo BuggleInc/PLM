@@ -22,14 +22,4 @@ public class ChangeCellHasBaggle extends BuggleWorldCellOperation{
 	public boolean getNewHasBaggle() {
 		return newHasBaggle;
 	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-
-		json.put("oldHasBaggle", oldHasBaggle);
-		json.put("newHasBaggle", newHasBaggle);
-		return json;
-	}
 }

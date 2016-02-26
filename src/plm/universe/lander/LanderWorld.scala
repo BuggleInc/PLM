@@ -39,7 +39,6 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   var desiredAngle: Double = 0
   var desiredThrust: Int = 0
 
-  parent.setDelay(10)
   parent.addEntity(new LanderEntity())
 
   // "inherited" methods

@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -13,21 +12,19 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
-import plm.core.model.ToJSON;
 import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 
-public abstract class World implements ToJSON {
-	private boolean isDelayed = false; // whether we display interactively or not
-	private boolean isAnswer = false;
-	private boolean isError = false;
-	private int delay = 100; // delay between two instruction executions of an entity.
+@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
+public abstract class World  {
 	private UserSettings settings;
 
 	protected List<Entity> entities = new ArrayList<Entity>();
@@ -38,25 +35,6 @@ public abstract class World implements ToJSON {
 	
 	public World(String name) {
 		this.name = name;
-	}
-
-	public World(JSONObject json) {
-		this.name = (String) json.get("name");
-
-		JSONArray jsonEntities = (JSONArray) json.get("entities");
-		for(int i=0; i<jsonEntities.size(); i++) {
-			JSONObject jsonEntity = (JSONObject) jsonEntities.get(i);
-			String type = (String) jsonEntity.get("type");
-			try {
-				Entity e = (Entity) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonEntity);
-				entities.add(e);
-			} catch (InstantiationException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException
-					| NoSuchMethodException | SecurityException
-					| ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	public World(World w2) {
@@ -106,8 +84,6 @@ public abstract class World implements ToJSON {
 				throw new RuntimeException("Cannot copy entity of class "+ oldEntity.getClass().getName(), e);
 			}
 		}
-		this.isDelayed = initialWorld.isDelayed;
-		this.delay = initialWorld.delay;
 		this.parameters = (initialWorld.parameters!=null?initialWorld.parameters.clone():null);
 	}
 
@@ -117,40 +93,6 @@ public abstract class World implements ToJSON {
 
 	public void setName(String n) {
 		name = n;
-	}
-
-	public boolean isDelayed() {
-		return isDelayed;
-	}
-	/** returns the delay to apply */
-	public int getDelay() {
-		return this.delay;
-	}
-	/** set the value of the UI delay which will be used on doDelay() 
-	 * 
-	 * Default value: 100ms */
-	public void setDelay(int d) {
-		this.delay = d;
-	}
-	/** set current UI delay to what was defined as max UI delay with setDelayUI() */
-	public void doDelay() {
-		isDelayed = true;
-	}
-	/** set current UI delay to 0 */
-	public void doneDelay() {
-		isDelayed = false;
-	}
-	public void setAnswerWorld() {
-		isAnswer = true;
-	}
-	public boolean isAnswerWorld() {
-		return isAnswer;
-	}
-	public void setErrorWorld() {
-		isError = true;
-	}
-	public boolean isErrorWorld() {
-		return isError;
 	}
 
 	public void addEntity(Entity b) {
@@ -178,6 +120,7 @@ public abstract class World implements ToJSON {
 	public Entity getEntity(int i) {
 		return entities.get(i);
 	}
+	@JsonManagedReference
 	public List<Entity> getEntities() {
 		return entities;
 	}
@@ -257,7 +200,7 @@ public abstract class World implements ToJSON {
 		String api = "File "+filename+".html not found.";
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, settings.getHumanLang(), "html", true);
+			sb = FileUtils.readContentAsText(filename, getLocale(), "html", true);
 			api = PlmHtmlEditorKit.filterHTML(sb.toString(), false, getProgLang());
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -309,6 +252,7 @@ public abstract class World implements ToJSON {
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);
 
+	@JsonIgnore
 	public ConcurrentLinkedDeque<List<Operation>> getSteps() {
 		return steps;
 	}
@@ -317,22 +261,7 @@ public abstract class World implements ToJSON {
 		steps.add(operations);
 	}
 
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = new JSONObject();
-
-		JSONArray jsonEntities = new JSONArray();
-		for(Entity entity : entities) {
-			jsonEntities.add(entity.toJSON());
-		}
-
-		json.put("type", getJSONType());
-		json.put("name", name);
-		json.put("entities", jsonEntities);
-
-		return json;
-	}
-
+	@JsonIgnore
 	public UserSettings getSettings() {
 		return settings;
 	}
@@ -341,6 +270,7 @@ public abstract class World implements ToJSON {
 		this.settings = settings;
 	}
 	
+	@JsonIgnore
 	public Locale getLocale() {
 		if(settings != null) {
 			return settings.getHumanLang();
@@ -348,6 +278,7 @@ public abstract class World implements ToJSON {
 		return Locale.getDefault();
 	}
 	
+	@JsonIgnore
 	public ProgrammingLanguage getProgLang() {
 		return settings.getProgLang();
 	}

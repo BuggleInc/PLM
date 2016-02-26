@@ -1,6 +1,5 @@
 package plm.core.model.lesson;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,22 +8,22 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.ToJSON;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.universe.World;
 
-public abstract class Exercise implements ToJSON {
+public abstract class Exercise  {
 	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 
 	private String id;
 	private String name;
+	@JsonIgnore
 	private int nbError;
+	@JsonIgnore
 	private UserSettings settings;
 
 	private Map<String, Map<String, String>> tips = new HashMap<String, Map<String, String>>();
@@ -49,6 +48,7 @@ public abstract class Exercise implements ToJSON {
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
 	private Map<ProgrammingLanguage, SourceFile> defaultSourceFiles = new HashMap<ProgrammingLanguage, SourceFile>();
 
+	@JsonIgnore
 	private Map<String, String> missions = new HashMap<String, String>();
 
 	protected Vector<World> currentWorld; /* the one displayed */
@@ -81,58 +81,6 @@ public abstract class Exercise implements ToJSON {
 		for(String humanLang : exo.getHumanLanguages()) {
 			String mission = exo.getDefaultMission(humanLang);
 			addMission(humanLang, mission);
-		}
-	}
-
-	public Exercise(JSONObject json) {
-		this((String) json.get("id"), (String) json.get("name"));
-
-		initialWorld = new Vector<World>();
-		JSONArray jsonInitialWorlds = (JSONArray) json.get("initialWorlds");
-		for(int i=0; i<jsonInitialWorlds.size(); i++) {
-			JSONObject jsonWorld = (JSONObject) jsonInitialWorlds.get(i);
-			String type = (String) jsonWorld.get("type");
-			try {
-				World w = (World) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonWorld);
-				initialWorld.add(w);
-			} catch (InstantiationException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException
-					| NoSuchMethodException | SecurityException
-					| ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-
-		currentWorld = new Vector<World>();
-		for(World w : initialWorld) {
-			currentWorld.addElement(w.copy());
-		}
-
-		answerWorld = new Vector<World>();
-		JSONArray jsonAnswerWorlds = (JSONArray) json.get("answerWorlds");
-		for(int i=0; i<jsonAnswerWorlds.size(); i++) {
-			JSONObject jsonWorld = (JSONObject) jsonAnswerWorlds.get(i);
-			String type = (String) jsonWorld.get("type");
-			try {
-				World w = (World) Class.forName(type).getDeclaredConstructor(JSONObject.class).newInstance(jsonWorld);
-				answerWorld.add(w);
-			} catch (InstantiationException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException
-					| NoSuchMethodException | SecurityException
-					| ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-
-		JSONObject jsonSourceFiles = (JSONObject) json.get("defaultSourceFiles");
-		for(Object key : jsonSourceFiles.keySet()) {
-			String progLangName = (String) key;
-			JSONObject jsonSourceFile = (JSONObject) jsonSourceFiles.get(progLangName);
-			
-			ProgrammingLanguage progLang = ProgrammingLanguage.getProgrammingLanguage(progLangName);
-			SourceFile sourceFile = new SourceFile(jsonSourceFile);
-			
-			defaultSourceFiles.put(progLang, sourceFile);
 		}
 	}
 
@@ -198,6 +146,22 @@ public abstract class Exercise implements ToJSON {
 		case ERROR:   if(nbError != -1) return commonErrors.get(nbError);
 		default: throw new RuntimeException("Unhandled kind of world: "+kind);
 		}
+	}
+
+	public Vector<World> getInitialWorld() {
+		return initialWorld;
+	}
+
+	public void setInitialWorld(Vector<World> initialWorld) {
+		this.initialWorld = initialWorld;
+	}
+
+	public Vector<World> getAnswerWorld() {
+		return answerWorld;
+	}
+
+	public void setAnswerWorld(Vector<World> answerWorld) {
+		this.answerWorld = answerWorld;
 	}
 
 	public int getWorldCount() {
@@ -291,50 +255,6 @@ public abstract class Exercise implements ToJSON {
 			return "World is missing...";
 		}
 		return initialWorld.get(0).getAPI();
-	}
-
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json =  new JSONObject();
-
-		String entityType = "";
-
-		JSONArray jsonInitialWorlds = new JSONArray();
-		for(World world : initialWorld) {
-			JSONObject jsonInitialWorld = world.toJSON();
-			if(entityType.equals("")) {
-				JSONArray entities = (JSONArray) jsonInitialWorld.get("entities");
-				JSONObject entity = (JSONObject) entities.get(0);
-				entityType = (String) entity.get("type");
-			}
-			jsonInitialWorlds.add(jsonInitialWorld);
-		}
-
-		JSONArray jsonAnswerWorlds = new JSONArray();
-		for(World world : answerWorld) {
-			JSONObject jsonAnswerWorld = world.toJSON();
-
-			// Need to fix the type of the entities
-			JSONArray entities = (JSONArray) jsonAnswerWorld.get("entities");
-			for(int i=0; i<entities.size(); i++) {
-				JSONObject entity = (JSONObject) entities.get(i);
-				entity.put("type", entityType);
-			}
-			jsonAnswerWorlds.add(jsonAnswerWorld);
-		}
-
-		JSONObject jsonSourceFiles = new JSONObject();
-		for(ProgrammingLanguage progLang : defaultSourceFiles.keySet()) {
-			SourceFile sourceFile = defaultSourceFiles.get(progLang);
-			jsonSourceFiles.put(progLang.getLang(), sourceFile.toJSON());
-		}
-
-		json.put("id", getId());
-		json.put("name", getName());
-		json.put("initialWorlds", jsonInitialWorlds);
-		json.put("answerWorlds", jsonAnswerWorlds);
-		json.put("defaultSourceFiles", jsonSourceFiles);
-		return json;
 	}
 
 	public UserSettings getSettings() {

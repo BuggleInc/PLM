@@ -14,7 +14,6 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
 
 	public LightBotWorld(String name, int x, int y) {
 		super(name,x,y);
-		setDelay(200);
 	}
 	protected LightBotWorldCell newCell(int x, int y) {
 		return new LightBotWorldCell(this, x, y);

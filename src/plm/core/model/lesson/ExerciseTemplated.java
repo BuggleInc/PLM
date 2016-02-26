@@ -2,11 +2,9 @@ package plm.core.model.lesson;
 
 import java.util.ArrayList;
 
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import plm.universe.World;
-
-
 
 public abstract class ExerciseTemplated extends Exercise {
 
@@ -20,14 +18,12 @@ public abstract class ExerciseTemplated extends Exercise {
 		super(exo);
 	}
 
-	public ExerciseTemplated(JSONObject json) {
-		super(json);
-	}
-
+	@JsonIgnore
 	protected final void setup(World w) {
 		setup(new World[] {w});
 	}
 
+	@JsonIgnore
 	protected <W extends World> void setup(W[] ws) {
 		//boolean foundALanguage=false;
 		ArrayList<String> files = new ArrayList<String>();

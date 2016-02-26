@@ -1,11 +1,13 @@
 package plm.universe;
 
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
-import plm.core.model.ToJSON;
+@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
+public abstract class GridWorldCell {
 
-public abstract class GridWorldCell implements ToJSON {
-
+	@JsonIgnore
 	protected GridWorld world;
 	protected int x;
 	protected int y;
@@ -14,11 +16,6 @@ public abstract class GridWorldCell implements ToJSON {
 		world = w;
 		this.x = x;
 		this.y = y;
-	}
-
-	public GridWorldCell(JSONObject json) {
-		x = ((Long) json.get("x")).intValue();
-		y = ((Long) json.get("y")).intValue();
 	}
 
 	public abstract GridWorldCell copy(GridWorld world);
@@ -45,17 +42,6 @@ public abstract class GridWorldCell implements ToJSON {
 
 	public void setWorld(GridWorld w) {
 		this.world = w;
-	}
-
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = new JSONObject();
-
-		json.put("type", getJSONType());
-		json.put("x", x);
-		json.put("y", y);
-
-		return json;
 	}
 
 	public abstract boolean isDefaultCell();

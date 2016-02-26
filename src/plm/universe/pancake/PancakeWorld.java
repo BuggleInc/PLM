@@ -45,8 +45,6 @@ public class PancakeWorld extends World {
 		super(name);
 		Random r = new Random(0);
 		
-		setDelay(200); // Delay (in ms) in default animations
-		
 		/* Create the pancakes */
 		this.pancakeStack =  new Pancake[size];
 		for (int i = 0; i < size; i++) 
@@ -73,7 +71,6 @@ public class PancakeWorld extends World {
 	 */
 	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
 		super(name);
-		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */
 		this.pancakeStack =  new Pancake[sizes.length];

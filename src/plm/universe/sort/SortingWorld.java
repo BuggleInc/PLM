@@ -37,10 +37,6 @@ public class SortingWorld extends World {
 	}
 	public SortingWorld(String name, int nbValues, boolean someoneHomeOk) {
 		super(name);
-		if (nbValues>100)
-			setDelay(1);
-		else
-			setDelay(50);
 		this.values = new int[nbValues];
 		for (int i=0 ; i< this.values.length ; i++) 
 			this.values[i] = i;

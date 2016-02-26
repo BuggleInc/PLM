@@ -45,7 +45,6 @@ public class HanoiWorld extends World {
 	@SuppressWarnings("unchecked")
 	public HanoiWorld(String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
 		super(name);
-		setDelay(200); /* Delay (in ms) in default animations */
 		slots = new Vector[] {A, B, C, D};		
 	}
 	

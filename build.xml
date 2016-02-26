@@ -101,6 +101,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-core-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-annotations-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-databind-2.7.0.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
 

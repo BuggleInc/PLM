@@ -2,24 +2,30 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
+import plm.core.utils.CustomColorSerializer;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public class BuggleWorldCell extends GridWorldCell {
+	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color color;
 
+	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color msgColor = DEFAULT_MSG_COLOR;
 
+	@JsonSerialize(using = CustomColorSerializer.class)
 	public static final Color DEFAULT_COLOR = Color.white;
+	@JsonSerialize(using = CustomColorSerializer.class)
 	public static final Color DEFAULT_MSG_COLOR = new Color(0.5f,0.5f,0.9f);
+	@JsonSerialize(using = CustomColorSerializer.class)
 	public static final Color DEFAULT_BAGGLE_COLOR = new Color(0.82f,0.41f,0.12f);
 
 	private boolean hasBaggle;
@@ -37,19 +43,6 @@ public class BuggleWorldCell extends GridWorldCell {
 	public BuggleWorldCell(BuggleWorldCell c, GridWorld w) {
 		this((BuggleWorld) w, c.x, c.y, c.color, c.leftWall, c.topWall, c.hasBaggle(), null);
 		this.content = new String(c.content);
-	}
-
-	public BuggleWorldCell(JSONObject json) {
-		super(json);
-
-		JSONArray jsonCellColor = (JSONArray) json.get("color");
-		color = ColorMapper.json2color(jsonCellColor);
-
-		content = (String) json.get("content");
-
-		hasBaggle = (boolean) json.get("hasBaggle");
-		leftWall = (boolean) json.get("leftWall");
-		topWall = (boolean) json.get("topWall");
 	}
 
 	public BuggleWorldCell copy(GridWorld w) {
@@ -230,21 +223,6 @@ public class BuggleWorldCell extends GridWorldCell {
 			else
 				sb.append(i18n.tr(", there should be a wall at north"));
 		return sb.toString();
-	}
-
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-
-		JSONArray jsonCellColor = ColorMapper.color2json(color);
-
-		json.put("color", jsonCellColor);
-		json.put("hasBaggle", hasBaggle);
-		json.put("content", content);
-		json.put("leftWall", leftWall);
-		json.put("topWall", topWall);
-
-		return json;
 	}
 
 	@Override

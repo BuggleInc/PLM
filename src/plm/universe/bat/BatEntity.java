@@ -35,10 +35,6 @@ public class BatEntity extends Entity {
 		copy(other);
 	}
 
-	public BatEntity(JSONObject json) {
-		super(json);
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof BatEntity)) {

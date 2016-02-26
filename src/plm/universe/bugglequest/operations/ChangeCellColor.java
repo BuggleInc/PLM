@@ -26,17 +26,4 @@ public class ChangeCellColor extends BuggleWorldCellOperation{
 	public Color getNewColor() {
 		return newColor;
 	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-
-		JSONArray jsonOldColor = ColorMapper.color2json(oldColor);
-		JSONArray jsonNewColor = ColorMapper.color2json(newColor);
-
-		json.put("oldColor", jsonOldColor);
-		json.put("newColor", jsonNewColor);
-		return json;
-	}
 }

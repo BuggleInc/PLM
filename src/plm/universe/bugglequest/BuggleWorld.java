@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.LangBlockly;
@@ -29,15 +28,10 @@ import plm.universe.GridWorldCell;
 import plm.universe.World;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
-
 public class BuggleWorld extends GridWorld {
 
 	public BuggleWorld(String name, int x, int y) {
 		super(name,x,y);
-	}
-
-	public BuggleWorld(JSONObject json) {
-		super(json);
 	}
 
 	@Override

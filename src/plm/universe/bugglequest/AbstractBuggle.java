@@ -5,14 +5,15 @@ import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import plm.core.model.LogHandler;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
+import plm.core.utils.CustomColorSerializer;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
 import plm.universe.Entity;
@@ -43,11 +44,12 @@ public abstract class AbstractBuggle extends Entity {
 	int k_val = 0;
 	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
 
+	@JsonSerialize(using = CustomColorSerializer.class)
 	Color bodyColor = Color.red;
+	@JsonSerialize(using = CustomColorSerializer.class)
 	Color brushColor = Color.red;
 
 	private boolean dontIgnoreDirectionDifference = true; // if the buggle direction matters for world equality
-
 
 	private int x = 0;
 	private int y = 0;
@@ -89,45 +91,6 @@ public abstract class AbstractBuggle extends Entity {
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
-	}
-
-	public AbstractBuggle(JSONObject json) {
-		super(json);
-
-		JSONArray jsonBodyColor = (JSONArray) json.get("bodyColor");
-		bodyColor = ColorMapper.json2color(jsonBodyColor);
-
-		JSONArray jsonBrushColor = (JSONArray) json.get("brushColor");
-		brushColor = ColorMapper.json2color(jsonBrushColor);
-
-		dontIgnoreDirectionDifference = (boolean) json.get("dontIgnoreDirectionDifference");
-		x = ((Long) json.get("x")).intValue();
-		y = ((Long) json.get("y")).intValue();
-
-		int directionValue = ((Long) json.get("direction")).intValue();
-		direction = new Direction(directionValue);
-		brushDown = (boolean) json.get("brushDown");
-		carryBaggle = (boolean) json.get("carryBaggle");
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-
-		JSONArray jsonBodyColor = ColorMapper.color2json(bodyColor);
-		JSONArray jsonBrushColor = ColorMapper.color2json(brushColor);
-
-		json.put("bodyColor", jsonBodyColor);
-		json.put("brushColor", jsonBrushColor);
-		json.put("dontIgnoreDirectionDifference", dontIgnoreDirectionDifference);
-		json.put("x", x);
-		json.put("y", y);
-		json.put("direction", direction.intValue());
-		json.put("brushDown", brushDown);
-		json.put("carryBaggle", carryBaggle);
-
-		return json;
 	}
 
 	@Override
@@ -176,6 +139,7 @@ public abstract class AbstractBuggle extends Entity {
 		notifyObservers(BRUSH_STATE);
 	}
 
+	@JsonIgnore
 	public Color getGroundColor() {
 		return getCell().getColor();
 	}
@@ -243,13 +207,16 @@ public abstract class AbstractBuggle extends Entity {
 		setDirection(direction.opposite());
 	}
 
+	@JsonIgnore
 	public int getWorldHeight() {
 		return ((GridWorld) world).getHeight();
 	}
 
+	@JsonIgnore
 	public int getWorldWidth() {
 		return ((GridWorld) world).getWidth();
 	}
+
 	protected BuggleWorldCell getCell(){
 		return (BuggleWorldCell) ((GridWorld)world).getCell(x, y);
 	}
@@ -441,9 +408,11 @@ public abstract class AbstractBuggle extends Entity {
 		default: throw new RuntimeException("Invalid direction: "+delta);
 		}
 	}
+	@JsonIgnore
 	public boolean isFacingWall() {
 		return lookAtWall(true);
 	}
+	@JsonIgnore
 	public boolean isBackingWall() {
 		return lookAtWall(false);
 	}
@@ -481,6 +450,7 @@ public abstract class AbstractBuggle extends Entity {
 		stepUI();
 	}
 
+	@JsonIgnore
 	public boolean isOverBaggle() {
 		return getCellFromLesson(this.x, this.y).hasBaggle();
 	}
@@ -666,31 +636,44 @@ public abstract class AbstractBuggle extends Entity {
 	public void avance(int steps) throws BuggleWallException { forward(steps); }
 	public void recule()          throws BuggleWallException { backward(); }
 	public void recule(int steps) throws BuggleWallException { backward(steps); }
+	@JsonIgnore
 	public Color getCouleurCorps()        { return getBodyColor(); }
 	public void setCouleurCorps(Color c)  { setBodyColor(c); }
+	@JsonIgnore
 	public boolean estFaceMur()           { return isFacingWall(); }
+	@JsonIgnore
 	public boolean estDosMur()            { return isBackingWall(); }
 	public void leveCrayon()              { penUp(); }
 	public void baisseCrayon()            { penDown(); }
 	public void leveBrosse()              { brushUp(); }
 	public void baisseBrosse()            { brushDown(); }
+	@JsonIgnore
 	public boolean estBrosseBaissee()     { return isBrushDown(); }
+	@JsonIgnore
 	public Color getCouleurBrosse()       { return getBrushColor(); }
 	public void setCouleurBrosse(Color c) { setBrushColor(c); }
+	@JsonIgnore
 	public Color getCouleurSol()          { return getGroundColor(); }
+	@JsonIgnore
 	public boolean estSurBiscuit()        { return isOverBaggle(); }
+	@JsonIgnore
 	public boolean porteBiscuit()         { return isCarryingBaggle(); }
 	public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
 	public void poseBiscuit()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
+	@JsonIgnore
 	public boolean estSurMessage()        { return isOverMessage(); }
 	public String litMessage()            { return readMessage(); }
 	public void ecritMessage(String s)    { writeMessage(s); }
 	public void ecritMessage(int i)       { writeMessage(i); }
 	public void effaceMessage()           { clearMessage(); }
+	@JsonIgnore
 	public int getMondeHauteur()          { return getWorldHeight(); }
+	@JsonIgnore
 	public int getMondeLargeur()          { return getWorldWidth(); }
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
+	@JsonIgnore
 	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
+	@JsonIgnore
 	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
 	/* BINDINGS TRANSLATION: Brazilian Portuguese */
 	public void esquerda()        { left(); }
@@ -700,32 +683,44 @@ public abstract class AbstractBuggle extends Entity {
 	public void avançar(int steps) throws BuggleWallException { forward(steps); }
 	public void recuar()           throws BuggleWallException { backward(); }
 	public void recuar(int steps)  throws BuggleWallException { backward(steps); }
+	@JsonIgnore
 	public Color getCorDoCorpo()        { return getBodyColor(); }
 	public void setCorDoCorpo(Color c)  { setBodyColor(c); }
+	@JsonIgnore
 	public boolean estáDeFrenteParaParede() { return isFacingWall(); }
+	@JsonIgnore
 	public boolean estáDeCostasParaParede() { return isBackingWall(); }
 	public void levantarCaneta()            { penUp(); }
 	public void abaixarCaneta()             { penDown(); }
 	public void levantarPincel()            { brushUp(); }
 	public void abaixarPincel()             { brushDown(); }
-    	public boolean pincelEstáAbaixado()     { return isBrushDown(); }
+	@JsonIgnore
+	public boolean pincelEstáAbaixado()     { return isBrushDown(); }
+	@JsonIgnore
 	public Color getCorDoPincel()       { return getBrushColor(); }
 	public void setCorDoPincel(Color c) { setBrushColor(c); }
+	@JsonIgnore
 	public Color getCorDoChão()          { return getGroundColor(); }
+	@JsonIgnore
 	public boolean estáSobreBaggle()        { return isOverBaggle(); }
+	@JsonIgnore
 	public boolean estáCarregandoBaggle()         { return isCarryingBaggle(); }
 	public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
 	public void soltarBaggle()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
+	@JsonIgnore
 	public boolean estáSobreMensagem()        { return isOverMessage(); }
+	@JsonIgnore
 	public String lerMensagem()            { return readMessage(); }
 	public void escreverMensagem(String s)    { writeMessage(s); }
 	public void escrevermensagem(int i)       { writeMessage(i); }
 	public void limparMensagem()           { clearMessage(); }
+	@JsonIgnore
 	public int getAlturaDoMundo()          { return getWorldHeight(); }
+	@JsonIgnore
 	public int getLarguraDoMundo()          { return getWorldWidth(); }
 	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
+	@JsonIgnore
 	public boolean estáSelecionado()           { return isSelected(); }
-
 
 	@Override
 	public void command(String command, BufferedWriter out){

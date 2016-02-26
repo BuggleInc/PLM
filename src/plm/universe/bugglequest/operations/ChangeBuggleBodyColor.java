@@ -25,17 +25,4 @@ public class ChangeBuggleBodyColor extends BuggleOperation {
 	public Color getNewBodyColor() {
 		return newBodyColor;
 	}
-	
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-		
-		JSONArray jsonOldBodyColor = ColorMapper.color2json(oldBodyColor);
-		JSONArray jsonNewBodyColor = ColorMapper.color2json(newBodyColor);
-		
-		json.put("oldBodyColor", jsonOldBodyColor);
-		json.put("newBodyColor", jsonNewBodyColor);
-		return json;
-	}
 }

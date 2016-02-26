@@ -1,7 +1,5 @@
 package plm.universe.bugglequest.operations;
 
-import org.json.simple.JSONObject;
-
 import plm.universe.Operation;
 import plm.universe.bugglequest.AbstractBuggle;
 
@@ -16,13 +14,5 @@ public abstract class BuggleOperation extends Operation {
 
 	public AbstractBuggle getBuggle() {
 		return null;
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-		json.put("buggleID", buggleID);
-		return json;
 	}
 }

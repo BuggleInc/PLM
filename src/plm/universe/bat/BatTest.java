@@ -10,9 +10,8 @@ import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.ToJSON;
 
-public class BatTest implements ToJSON {
+public class BatTest {
 	Object[] parameters;
 
 	protected Object result;
@@ -40,58 +39,6 @@ public class BatTest implements ToJSON {
 		}
 	}
 
-	public BatTest(JSONObject json) {
-		this.funName = (String) json.get("funName");
-		this.visible = (boolean) json.get("visible");
-		this.correct = (boolean) json.get("correct");
-		this.answered = (boolean) json.get("answered");
-
-		this.result = json.get("result");
-		this.expected = json.get("expected");
-
-		JSONArray jsonParameters = (JSONArray) json.get("parameters");
-		this.parameters = new Object[jsonParameters.size()];
-		for(int i=0; i<jsonParameters.size(); i++) {
-			JSONObject jsonParameter = (JSONObject) jsonParameters.get(i);
-			String type = (String) jsonParameter.get("type");
-			Object parameter = jsonParameter.get("parameter");
-			if(type.equals("java.lang.Long")) {
-				parameter = ((Long) parameter).intValue();
-			}
-			parameters[i] = parameter;
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public JSONObject toJSON() {
-		JSONObject json = new JSONObject();
-
-		JSONArray jsonParameters = new JSONArray();
-		for(Object parameter : parameters) {
-			JSONObject jsonParameter = new JSONObject();
-			String type = "";
-			if (parameter instanceof Integer) {
-				type = "java.lang.Long";
-			}
-			else {
-				type = parameter.getClass().getName();
-			}
-			jsonParameter.put("type", type);
-			jsonParameter.put("parameter", parameter);
-			jsonParameters.add(jsonParameter);
-		}
-		json.put("funName", funName);
-		json.put("visible", visible);
-		json.put("correct", correct);
-		json.put("answered", answered);
-		json.put("result", result);
-		json.put("expected", expected);
-		json.put("parameters", jsonParameters);
-
-		return json;
-	}
-	
 	public BatTest copy() {
 		BatTest res = new BatTest(funName,visible,parameters.clone());
 		res.result = result;

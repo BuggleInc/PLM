@@ -68,7 +68,6 @@ public class ExoTest {
 		// disable delay on world execution
 		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
 			exo.setNbError(-1);
-			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
 		}
 	}
 	

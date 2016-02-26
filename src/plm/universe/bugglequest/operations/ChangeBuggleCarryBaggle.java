@@ -21,13 +21,4 @@ public class ChangeBuggleCarryBaggle extends BuggleOperation {
 	public boolean getNewCarryBaggle() {
 		return newCarryBaggle;
 	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-		json.put("oldCarryBaggle", oldCarryBaggle);
-		json.put("newCarryBaggle", newCarryBaggle);
-		return json;
-	}
 }

@@ -22,14 +22,4 @@ public class ChangeBuggleDirection extends BuggleOperation {
 	public Direction getNewDirection() {
 		return newDirection;
 	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-
-		json.put("oldDirection", oldDirection.intValue());
-		json.put("newDirection", newDirection.intValue());
-		return json;
-	}
 }

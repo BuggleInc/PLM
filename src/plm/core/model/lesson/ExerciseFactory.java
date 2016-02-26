@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
-import org.json.simple.JSONObject;
-
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -34,10 +32,6 @@ public class ExerciseFactory {
 
 	public static Exercise cloneExercise(Exercise exo) {
 		return new BlankExercise(exo);
-	}
-
-	public static Exercise exerciseFromJson(JSONObject json) {
-		return new BlankExercise(json);
 	}
 
 	public void initializeExercise(Exercise exo, ProgrammingLanguage progLang) {

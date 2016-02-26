@@ -122,7 +122,15 @@ public class Direction {
 			return false;
 		return true;
 	}
-	
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
 	/* BINDINGS TRANSLATION: French */
 	public static final Direction NORD = NORTH;
 	public static final Direction EST = EAST;

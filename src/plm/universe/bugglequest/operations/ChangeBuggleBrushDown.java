@@ -21,13 +21,4 @@ public class ChangeBuggleBrushDown extends BuggleOperation {
 	public boolean getNewBrushDown() {
 		return newBrushDown;
 	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-		json.put("oldBrushDown", oldBrushDown);
-		json.put("newBrushDown", newBrushDown);
-		return json;
-	}
 }

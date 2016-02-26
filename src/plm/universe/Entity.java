@@ -8,10 +8,15 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
 
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.ToJSON;
+import plm.universe.bugglequest.AbstractBuggle;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static getGame().i18n instead.
  * 
@@ -22,9 +27,11 @@ import plm.core.model.ToJSON;
  * Instead, the solution is to use the static field getGame().i18n, as it is done in AbstractBuggle::diffTo().
  */
 
-public abstract class Entity extends Observable implements ToJSON {
+@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
+public abstract class Entity extends Observable {
 	protected String name = "(noname)";
 
+	@JsonBackReference
 	protected World world;
 	
 	private List<Operation> operations = new ArrayList<Operation>();
@@ -40,10 +47,6 @@ public abstract class Entity extends Observable implements ToJSON {
 		if (w != null) {
 			w.addEntity(this);
 		}
-	}
-
-	public Entity(JSONObject json) {
-		name = (String) json.get("name");
 	}
 
 	public String getName() {
@@ -115,6 +118,7 @@ public abstract class Entity extends Observable implements ToJSON {
 		for (IEntityStackListener l:stackListeners)
 			l.entityTraceChanged(this, trace);		
 	}
+	@JsonIgnore
 	public StackTraceElement[] getCurrentStack() {
 		return Thread.currentThread().getStackTrace();
 	}
@@ -159,6 +163,7 @@ public abstract class Entity extends Observable implements ToJSON {
 		return res == null ? 0:res;
 	}
 	
+	@JsonIgnore
 	public List<Operation> getOperations() {
 		return operations;
 	}
@@ -170,15 +175,5 @@ public abstract class Entity extends Observable implements ToJSON {
 	public void addStep() {
 		world.addStep(operations);
 		operations = new ArrayList<Operation>();
-	}
-
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = new JSONObject();
-		
-		json.put("type", getJSONType());
-		json.put("name", name);
-		
-		return json;
 	}
 }

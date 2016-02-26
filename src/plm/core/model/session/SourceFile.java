@@ -3,13 +3,10 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.json.simple.JSONObject;
-
 import plm.core.log.Logger;
-import plm.core.model.ToJSON;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 
-public class SourceFile implements ToJSON {
+public class SourceFile {
 
 	protected String name;
 	private String template;
@@ -25,31 +22,6 @@ public class SourceFile implements ToJSON {
 		this.correction = _correctionCtn;
 		this.error = _errorCtn;
 		setTemplate( template );
-	}
-
-	public SourceFile(JSONObject json) {
-		this(
-				(String) json.get("name"),
-				(String) json.get("body"),
-				(String) json.get("template"),
-				((Long) json.get("offset")).intValue(),
-				(String) json.get("correction"),
-				(String) json.get("error")
-		);
-	}
-
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = new JSONObject();
-
-		json.put("name", name);
-		json.put("body", body);
-		json.put("offset", offset);
-		json.put("correction", correction);
-		json.put("error", error);
-		json.put("template", template);
-
-		return json;
 	}
 
 	public SourceFile clone() {

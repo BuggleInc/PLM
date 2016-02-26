@@ -2,18 +2,12 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
-import org.json.simple.JSONObject;
-
 import plm.universe.Direction;
 
 public class SimpleBuggle extends AbstractBuggle  {
 	/* Make it possible to instantiate SimpleBuggles from exercises so that Python also gets graphical window showing */
 	public SimpleBuggle() {
 		super();
-	}
-
-	public SimpleBuggle(JSONObject json) {
-		super(json);
 	}
 
 	public SimpleBuggle(BuggleWorld world, String name, int i, int j, Direction north, Color color, Color brush) {
@@ -38,9 +32,4 @@ public class SimpleBuggle extends AbstractBuggle  {
 	public void recuar(int steps) { backward(steps); }
 	public void pegarBaggle()    { pickupBaggle(); }
 	public void soltarBaggle()     { dropBaggle(); }
-
-	@Override
-	final public String getJSONType() {
-		return "plm.universe.bugglequest.SimpleBuggle";
-	}
 }

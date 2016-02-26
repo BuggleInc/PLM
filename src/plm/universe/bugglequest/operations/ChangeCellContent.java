@@ -22,14 +22,4 @@ public class ChangeCellContent extends BuggleWorldCellOperation{
 	public String getNewContent() {
 		return newContent;
 	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = super.toJSON();
-				
-		json.put("oldContent", oldContent);
-		json.put("newContent", newContent);
-		return json;
-	}
 }

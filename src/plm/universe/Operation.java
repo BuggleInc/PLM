@@ -5,9 +5,7 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import plm.core.model.ToJSON;
-
-public abstract class Operation implements ToJSON {
+public abstract class Operation {
 	private String name;
 
 	@SuppressWarnings("unchecked")
@@ -16,7 +14,7 @@ public abstract class Operation implements ToJSON {
 
 		JSONArray jsonOperations = new JSONArray();
 		for(Operation operation: operations) {
-			jsonOperations.add(operation.toJSON());
+			//jsonOperations.add(operation.toJSON());
 		}
 
 		mapArgs.put("operations", jsonOperations);
@@ -51,11 +49,4 @@ public abstract class Operation implements ToJSON {
 	
 	// TODO: Implement in all subclasses
 	// public abstract Operation clone();
-
-	@SuppressWarnings("unchecked")
-	public JSONObject toJSON() {
-		JSONObject json = new JSONObject();
-		json.put("type",  name);
-		return json;
-	}
 }
