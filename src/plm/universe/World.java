@@ -61,6 +61,16 @@ public abstract class World implements ToJSON {
 
 	public World(World w2) {
 		this(w2.getName());
+		// TODO: Implement clone() in all Operation's subclasses
+		/*
+		for(List<Operation> operations : steps) {
+			List<Operation> clone = new ArrayList<Operation>();
+			for(Operation operation : operations) {
+				clone.add(operation.clone());
+			}
+			steps.addFirst(clone);
+		}
+		*/
 		reset(w2);
 	}
 

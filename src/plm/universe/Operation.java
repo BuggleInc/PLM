@@ -48,6 +48,9 @@ public abstract class Operation implements ToJSON {
 	public String getName() {
 		return name;
 	}
+	
+	// TODO: Implement in all subclasses
+	// public abstract Operation clone();
 
 	@SuppressWarnings("unchecked")
 	public JSONObject toJSON() {

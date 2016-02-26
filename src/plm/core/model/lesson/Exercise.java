@@ -70,9 +70,9 @@ public abstract class Exercise implements ToJSON {
 			World baseInitialWorld = exo.getWorld(WorldKind.INITIAL, i);
 			World baseCurrentWorld = exo.getWorld(WorldKind.CURRENT, i);
 			World baseAnswerWorld = exo.getWorld(WorldKind.ANSWER, i);
-			initialWorld.add(baseInitialWorld);
-			currentWorld.add(baseCurrentWorld);
-			answerWorld.add(baseAnswerWorld);
+			initialWorld.add(baseInitialWorld.copy());
+			currentWorld.add(baseCurrentWorld.copy());
+			answerWorld.add(baseAnswerWorld.copy());
 		}
 		for(ProgrammingLanguage progLang : exo.getProgLanguages()) {
 			SourceFile sourceFile = exo.getDefaultSourceFile(progLang).clone();
