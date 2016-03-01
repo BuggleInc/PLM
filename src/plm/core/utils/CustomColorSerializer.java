@@ -15,8 +15,8 @@ public class CustomColorSerializer extends JsonSerializer<Color> {
       throws IOException, JsonProcessingException {
 		gen.writeStartArray();
 		gen.writeNumber(color.getRed());
-		gen.writeNumber(color.getBlue());
 		gen.writeNumber(color.getGreen());
+		gen.writeNumber(color.getBlue());
 		gen.writeNumber(color.getAlpha());
         gen.writeEndArray();
     }
