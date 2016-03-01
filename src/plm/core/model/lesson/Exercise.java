@@ -29,10 +29,12 @@ public abstract class Exercise  {
 	private Map<String, Map<String, String>> tips = new HashMap<String, Map<String, String>>();
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
+	@JsonIgnore
 	public String getBaseName() {
 		return getClass().getCanonicalName();
 	}
 
+	@JsonIgnore
 	public String nameOfCorrectionEntity() { // This will be redefined by TurtleArt to reduce the amount of code
 		return getBaseName() + "Entity";
 	}
@@ -164,6 +166,7 @@ public abstract class Exercise  {
 		this.answerWorld = answerWorld;
 	}
 
+	@JsonIgnore
 	public int getWorldCount() {
 		return this.initialWorld.size();
 	}
@@ -206,6 +209,7 @@ public abstract class Exercise  {
 		this.nbError = nbError;
 	}
 
+	@JsonIgnore
 	public Set<ProgrammingLanguage> getProgLanguages() {
 		return defaultSourceFiles.keySet();
 	}
@@ -225,6 +229,7 @@ public abstract class Exercise  {
 		return null;
 	}
 
+	@JsonIgnore
 	public Set<String> getHumanLanguages() {
 		return missions.keySet();
 	}
@@ -237,6 +242,7 @@ public abstract class Exercise  {
 		return missions.get(humanLang);
 	}
 
+	@JsonIgnore
 	public String getMission() {
 		return getMission(settings.getHumanLang(), settings.getProgLang());
 	}
@@ -250,6 +256,7 @@ public abstract class Exercise  {
 		return PlmHtmlEditorKit.filterHTML(mission, false, progLang);
 	}
 
+	@JsonIgnore
 	public String getWorldAPI() {
 		if(initialWorld.size() == 0) {
 			return "World is missing...";
@@ -257,6 +264,7 @@ public abstract class Exercise  {
 		return initialWorld.get(0).getAPI();
 	}
 
+	@JsonIgnore
 	public UserSettings getSettings() {
 		return settings;
 	}

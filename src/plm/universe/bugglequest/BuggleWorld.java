@@ -13,6 +13,10 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
@@ -30,7 +34,8 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class BuggleWorld extends GridWorld {
 
-	public BuggleWorld(String name, int x, int y) {
+	@JsonCreator
+	public BuggleWorld(@JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
 		super(name,x,y);
 	}
 
@@ -373,6 +378,7 @@ public class BuggleWorld extends GridWorld {
 
 	/* Cell selection is particularly important to world edition */
 	BuggleWorldCell selectedCell=null;
+	@JsonIgnore
 	public BuggleWorldCell getSelectedCell() {
 		return selectedCell;
 	}

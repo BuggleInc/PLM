@@ -12,18 +12,23 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
+import plm.universe.bugglequest.BuggleWorld;
 
 @JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@jsonId")
 public abstract class World  {
 	private UserSettings settings;
 
@@ -62,6 +67,7 @@ public abstract class World  {
 		}
 		return res;
 	}
+	@JsonIgnore
 	public String getDebugInfo() {
 		return "";
 	}
@@ -113,6 +119,7 @@ public abstract class World  {
 		entities = l;
 	}
 
+	@JsonIgnore
 	public int getEntityCount() {
 		return entities.size();
 	}
@@ -120,7 +127,7 @@ public abstract class World  {
 	public Entity getEntity(int i) {
 		return entities.get(i);
 	}
-	@JsonManagedReference
+
 	public List<Entity> getEntities() {
 		return entities;
 	}
@@ -194,6 +201,7 @@ public abstract class World  {
 
 	String about = null;
 
+	@JsonIgnore
 	public String getAPI() {
 		// TODO: Buffer and share APIs among instances
 		String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
@@ -213,7 +221,7 @@ public abstract class World  {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, settings.getHumanLang(), "html", true);
+				sb = FileUtils.readContentAsText(filename, getLocale(), "html", true);
 			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;

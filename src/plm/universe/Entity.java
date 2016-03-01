@@ -8,15 +8,11 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.universe.bugglequest.AbstractBuggle;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static getGame().i18n instead.
  * 
@@ -31,7 +27,6 @@ import plm.universe.bugglequest.AbstractBuggle;
 public abstract class Entity extends Observable {
 	protected String name = "(noname)";
 
-	@JsonBackReference
 	protected World world;
 	
 	private List<Operation> operations = new ArrayList<Operation>();
@@ -132,6 +127,7 @@ public abstract class Entity extends Observable {
 	}
 
 	/** Returns whether this is the entity selected in the interface */
+	@JsonIgnore
 	public boolean isSelected() {
 		// FIXME: Re-implement me or not needed anymore?
 		return false;

@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.xnap.commons.i18n.I18n;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.log.Logger;
@@ -281,6 +282,8 @@ public abstract class AbstractBuggle extends Entity {
 		this.x = x;
 		stepUI();
 	}
+
+	@JsonIgnore
 	public void setXFromLesson(int x)  {
 		try {
 			setX(x);
@@ -312,6 +315,8 @@ public abstract class AbstractBuggle extends Entity {
 		this.y = y;
 		stepUI();
 	}
+	
+	@JsonIgnore
 	public void setYFromLesson(int y)  {
 		try {
 			setY(y);
@@ -455,6 +460,7 @@ public abstract class AbstractBuggle extends Entity {
 		return getCellFromLesson(this.x, this.y).hasBaggle();
 	}
 
+	@JsonIgnore
 	public boolean isCarryingBaggle() {
 		return this.carryBaggle;
 	}
@@ -513,7 +519,7 @@ public abstract class AbstractBuggle extends Entity {
 		carryBaggle = true;
 	}
 
-
+	@JsonIgnore
 	public boolean isOverMessage() {
 		return getCell().hasContent();
 	}

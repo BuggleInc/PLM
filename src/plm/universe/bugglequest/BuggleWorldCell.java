@@ -4,6 +4,9 @@ import java.awt.Color;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.model.I18nManager;
@@ -32,8 +35,10 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	private String content = "";
 
+	@JsonProperty("leftWall")
 	private boolean leftWall;
 
+	@JsonProperty("topWall")
 	private boolean topWall;
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y) {
@@ -49,7 +54,8 @@ public class BuggleWorldCell extends GridWorldCell {
 		return new BuggleWorldCell(this,w);
 	}
 
-	public BuggleWorldCell(BuggleWorld w, int x, int y, Color color, boolean leftWall, boolean topWall) {
+	@JsonCreator
+	public BuggleWorldCell(@JsonProperty("world")BuggleWorld w, @JsonProperty("x")int x, @JsonProperty("y")int y, @JsonProperty("color")Color color, @JsonProperty("leftWall")boolean leftWall, @JsonProperty("topWall")boolean topWall) {
 		this(w, x, y, color, leftWall, topWall, false, "");
 	}
 
@@ -78,6 +84,7 @@ public class BuggleWorldCell extends GridWorldCell {
 		return this.msgColor;
 	}
 
+	@JsonProperty("topWall")
 	public void putTopWall() {
 		this.topWall = true;
 	}
@@ -86,6 +93,7 @@ public class BuggleWorldCell extends GridWorldCell {
 		this.topWall = false;
 	}
 
+	@JsonProperty("leftWall")
 	public void putLeftWall() {
 		this.leftWall = true;
 	}
@@ -108,10 +116,12 @@ public class BuggleWorldCell extends GridWorldCell {
 		return cell;
 	}
 
+	@JsonProperty("topWall")
 	public boolean hasTopWall() {
 		return this.topWall;
 	}
 
+	@JsonProperty("leftWall")
 	public boolean hasLeftWall() {
 		return this.leftWall;
 	}
@@ -226,6 +236,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	}
 
 	@Override
+	@JsonIgnore
 	public boolean isDefaultCell() {
 		return color.equals(DEFAULT_COLOR) && !hasBaggle && !leftWall && !topWall && content.equals("");
 	}

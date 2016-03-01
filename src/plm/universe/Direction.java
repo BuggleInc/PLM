@@ -4,6 +4,9 @@ import java.awt.Point;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 // TODO: rewrite using enumeration
 public class Direction {
 	private int value;
@@ -27,7 +30,8 @@ public class Direction {
 
 	private static final Direction opposites[] = { SOUTH, WEST, NORTH, EAST };
 
-	public Direction(int d) {
+	@JsonCreator
+	public Direction(@JsonProperty("value")int d) {
 		value = d;
 	}
 

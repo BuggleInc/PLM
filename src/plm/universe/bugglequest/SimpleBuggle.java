@@ -2,12 +2,20 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.universe.Direction;
 
 public class SimpleBuggle extends AbstractBuggle  {
 	/* Make it possible to instantiate SimpleBuggles from exercises so that Python also gets graphical window showing */
 	public SimpleBuggle() {
 		super();
+	}
+
+	@JsonCreator
+	public SimpleBuggle(@JsonProperty("name")String name, @JsonProperty("x")int i, @JsonProperty("y")int j, @JsonProperty("direction")Direction north, @JsonProperty("bodyColor")Color color, @JsonProperty("brushColor")Color brush) {
+		super(null, name, i, j, north, color, brush);
 	}
 
 	public SimpleBuggle(BuggleWorld world, String name, int i, int j, Direction north, Color color, Color brush) {
