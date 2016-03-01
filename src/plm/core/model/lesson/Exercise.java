@@ -242,9 +242,10 @@ public abstract class Exercise  {
 		return missions.get(humanLang);
 	}
 
-	@JsonIgnore
-	public String getMission() {
-		return getMission(settings.getHumanLang(), settings.getProgLang());
+	public Map<String, String> getMission() {
+		final Map<String, String> map = new HashMap<String, String>();
+		map.put(settings.getHumanLang().getLanguage(), getMission(settings.getHumanLang(), settings.getProgLang()));
+		return map;
 	}
 
 	public String getMission(Locale locale, ProgrammingLanguage progLang) {
