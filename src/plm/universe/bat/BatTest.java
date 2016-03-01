@@ -2,9 +2,11 @@ package plm.universe.bat;
 
 import java.util.Vector;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.python.core.PyInstance;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
@@ -25,7 +27,8 @@ public class BatTest {
 	public static final boolean INVISIBLE = false;
 	public static final boolean VISIBLE = true;
 
-	public BatTest(String funName, boolean visible,Object parameters) {
+	@JsonCreator
+	public BatTest(@JsonProperty("funName")String funName, @JsonProperty("visible")boolean visible, @JsonProperty("parameters")Object parameters) {
 		this.funName = funName;
 		this.visible = visible;
 		this.correct = false;
@@ -112,6 +115,10 @@ public class BatTest {
 			//Logger.log("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
 			return equalParameter(expected, other.expected);
 		}
+	}
+
+	public Object[] getParameters() {
+		return parameters;
 	}
 
 	public Object getParameter(int i) {
@@ -278,6 +285,8 @@ public class BatTest {
 		}
 		return name;
 	}
+
+	@JsonIgnore
 	public boolean isObjective() {
 		return objectiveTest;
 	}

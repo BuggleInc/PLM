@@ -25,7 +25,7 @@ public class BlankExercise extends ExerciseTemplated {
 	public void setupCurrentWorld() {
 		currentWorld = new Vector<World>();
 		for(World w : initialWorld) {
-			currentWorld.addElement(w);
+			currentWorld.addElement(w.copy());
 		}
 	}
 }

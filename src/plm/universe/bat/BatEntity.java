@@ -2,8 +2,10 @@ package plm.universe.bat;
 
 import java.io.BufferedWriter;
 
-import org.json.simple.JSONObject;
 import org.xnap.commons.i18n.I18n;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
@@ -26,7 +28,8 @@ public class BatEntity extends Entity {
 		setName(funName);
 	}
 	
-	public BatEntity(String name, World w) {
+	@JsonCreator
+	public BatEntity(@JsonProperty("name")String name, @JsonProperty("world")World w) {
 		super(name,w);
 	}
 

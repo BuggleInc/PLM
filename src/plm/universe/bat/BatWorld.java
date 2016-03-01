@@ -8,6 +8,9 @@ import javax.script.ScriptEngine;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
@@ -27,7 +30,13 @@ public class BatWorld extends World {
 		for (BatTest t:w2.tests) 
 			tests.add(t.copy());
 	}
-	
+
+	@JsonCreator
+	public BatWorld(@JsonProperty("name")String name, @JsonProperty("tests")Vector<BatTest> tests) {
+		super(name);
+		this.tests = tests;
+	}
+
 	@Override
 	public void reset(World w) {
 		BatWorld anotherWorld = (BatWorld) w;
