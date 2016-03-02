@@ -1,4 +1,4 @@
-package plm.core.utils;
+package plm.core.model.json;
 
 import java.awt.Color;
 import java.io.IOException;

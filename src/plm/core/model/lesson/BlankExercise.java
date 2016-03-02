@@ -6,6 +6,8 @@ import java.util.Vector;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.session.SourceFile;
 import plm.universe.World;
 
 public class BlankExercise extends ExerciseTemplated {
@@ -15,10 +17,14 @@ public class BlankExercise extends ExerciseTemplated {
 	}
 
 	@JsonCreator
-	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("mission")Map<String, String> mission) {
+	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("mission")Map<String, String> mission, @JsonProperty("defaultSourceFile")Map<String, SourceFile> defaultSourceFile) {
 		super(id, name);
 		for(String humanLang : mission.keySet()) {
 			addMission(humanLang, mission.get(humanLang));
+		}
+		for(String progLangName : defaultSourceFile.keySet()) {
+			ProgrammingLanguage progLang = ProgrammingLanguage.getProgrammingLanguage(progLangName);
+			addDefaultSourceFile(progLang, defaultSourceFile.get(progLangName));
 		}
 	}
 	

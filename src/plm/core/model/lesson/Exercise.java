@@ -222,6 +222,12 @@ public abstract class Exercise  {
 		defaultSourceFiles.put(progLang, sourceFile);
 	}
 
+	public Map<String, SourceFile> getDefaultSourceFile() {
+		final Map<String, SourceFile> map = new HashMap<String, SourceFile>();
+		map.put(settings.getProgLang().getLang(), getDefaultSourceFile(settings.getProgLang()));
+		return map;
+	}
+
 	public SourceFile getDefaultSourceFile(ProgrammingLanguage progLang) {
 		if(isProgLangSupported(progLang)) {
 			return defaultSourceFiles.get(progLang).clone();

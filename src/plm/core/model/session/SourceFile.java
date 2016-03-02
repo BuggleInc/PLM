@@ -3,6 +3,9 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.log.Logger;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 
@@ -15,7 +18,8 @@ public class SourceFile {
 	private String correction;
 	private String error;
 
-	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn, String _errorCtn) {
+	@JsonCreator
+	public SourceFile(@JsonProperty("name")String name, @JsonProperty("body")String initialBody, @JsonProperty("template")String template, @JsonProperty("offset")int _offset, @JsonProperty("correction")String _correctionCtn, @JsonProperty("error")String _errorCtn) {
 		this.name = name;
 		this.body = initialBody;
 		this.offset = _offset;

@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.model.I18nManager;
+import plm.core.model.json.CustomColorSerializer;
 import plm.core.utils.ColorMapper;
-import plm.core.utils.CustomColorSerializer;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;

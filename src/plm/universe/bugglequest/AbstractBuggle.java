@@ -8,13 +8,12 @@ import java.io.IOException;
 import org.xnap.commons.i18n.I18n;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
+import plm.core.model.json.CustomColorSerializer;
 import plm.core.utils.ColorMapper;
-import plm.core.utils.CustomColorSerializer;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
 import plm.universe.Entity;
