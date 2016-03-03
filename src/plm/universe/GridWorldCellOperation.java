@@ -2,18 +2,28 @@ package plm.universe;
 
 public abstract class GridWorldCellOperation extends Operation {
 
-	private GridWorldCell cell;
 	private int x;
 	private int y;
 	
 	public GridWorldCellOperation(String name, GridWorldCell cell) {
 		super(name);
-		this.cell = cell;
-		this.x = cell.x;
-		this.y = cell.y;
+		this.setX(cell.x);
+		this.setY(cell.y);
 	}
-	
-	public GridWorldCell getCell() {
-		return cell;
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }

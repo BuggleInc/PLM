@@ -1,7 +1,6 @@
 package plm.universe.bugglequest.operations;
 
 import plm.universe.Operation;
-import plm.universe.bugglequest.AbstractBuggle;
 
 public abstract class BuggleOperation extends Operation {
 
@@ -9,10 +8,14 @@ public abstract class BuggleOperation extends Operation {
 
 	public BuggleOperation(String name, String buggleID) {
 		super(name);
-		this.buggleID = buggleID;
+		this.setBuggleID(buggleID);
 	}
 
-	public AbstractBuggle getBuggle() {
-		return null;
+	public String getBuggleID() {
+		return buggleID;
+	}
+
+	public void setBuggleID(String buggleID) {
+		this.buggleID = buggleID;
 	}
 }

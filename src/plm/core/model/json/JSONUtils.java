@@ -2,6 +2,9 @@ package plm.core.model.json;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -12,6 +15,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import plm.core.model.lesson.BlankExercise;
 import plm.core.model.lesson.Exercise;
+import plm.universe.Direction;
+import plm.universe.Operation;
+import plm.universe.World;
 
 public class JSONUtils {
 	public static ObjectMapper mapper = initMapper();
@@ -20,6 +26,7 @@ public class JSONUtils {
 		ObjectMapper mapper = new ObjectMapper();
 		SimpleModule module  = new SimpleModule();
         module.addDeserializer(Color.class, new CustomColorDeserializer());
+        module.addDeserializer(Direction.class, new CustomDirectionDeserializer());
         mapper.registerModule(module);
 		return mapper;
 	}
@@ -35,24 +42,50 @@ public class JSONUtils {
 	    return exercise;
 	}
 
-	public static String exerciseToJudgeJSON(Exercise exercise) {
+	public static ObjectNode exerciseToJudgeJSON(Exercise exercise) {
 		ObjectNode root = (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
-        String typeEntities = root.path("initialWorld").path(0).path("entities").path(0).path("type").asText();
+        String typeEntities = root.path("initialWorlds").path(0).path("entities").path(0).path("type").asText();
         int nbWorlds = exercise.getWorldCount();
         for(int i=0; i<nbWorlds; i++) {
-        	int nbEntities = exercise.getInitialWorld().get(i).getEntityCount();
+        	int nbEntities = exercise.getInitialWorlds().get(i).getEntityCount();
         	for(int j=0; j<nbEntities; j++) {
-        		ObjectNode entity = (ObjectNode) root.path("answerWorld").path(i).path("entities").path(j);
+        		ObjectNode entity = (ObjectNode) root.path("answerWorlds").path(i).path("entities").path(j);
         		entity.put("type", typeEntities);
         	}
         }
-        return root.toString();
+        return root;
 	}
 
-	public static String exerciseToClientJSON(Exercise exercise) {
+	public static ObjectNode exerciseToClientJSON(Exercise exercise, String code, String selectedWorldID, String toolbox) {
 		ObjectNode root = (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
         root.remove("defaultSourceFile");
-        return root.toString();
+        root.put("code", code);
+        root.put("selectedWorldID", selectedWorldID);
+        root.put("toolbox", toolbox);
+        return root;
+	}
+
+	public static String operationsToJSON(World world, int bufferSize) {
+		int nbSteps = world.getSteps().size();
+
+		List<List<Operation>> steps = new ArrayList<List<Operation>>();
+        for(int i=0; i<bufferSize && i<nbSteps; i++) {
+        	steps.add(world.getSteps().poll());
+        }
+
+        Map<String, Object> mapArgs = new HashMap<String, Object>();
+		mapArgs.put("worldID", world.getName());
+        mapArgs.put("steps", steps);
+
+        return createMessage("operations", mapArgs);
+	}
+
+	public static String demoOperationsToJSON(World world) {
+		Map<String, Object> mapArgs = new HashMap<String, Object>();
+        mapArgs.put("worldID", world.getName());
+        mapArgs.put("steps", world.getSteps());
+
+        return createMessage("demoOperations", mapArgs);
 	}
 
 	public static String mapToJSON(Map<String, Object> map) {
@@ -63,5 +96,12 @@ public class JSONUtils {
 			e.printStackTrace();
 		}
 		return json;
+	}
+
+	public static String createMessage(String cmd, Map<String, Object> mapArgs) {
+		Map<String, Object> msg = new HashMap<String, Object>();
+        msg.put("cmd", cmd);
+        msg.put("args", mapArgs);
+        return mapToJSON(msg);
 	}
 }

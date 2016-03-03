@@ -1,7 +1,5 @@
 package plm.universe.bugglequest.operations;
 
-import org.json.simple.JSONObject;
-
 import plm.universe.bugglequest.AbstractBuggle;
 
 public class ChangeBuggleCarryBaggle extends BuggleOperation {

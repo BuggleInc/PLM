@@ -2,15 +2,16 @@ package plm.universe.bugglequest.operations;
 
 import java.awt.Color;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import plm.core.utils.ColorMapper;
+import plm.core.model.json.CustomColorSerializer;
 import plm.universe.bugglequest.BuggleWorldCell;
 
 public class ChangeCellColor extends BuggleWorldCellOperation{
 
+	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color oldColor;
+	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color newColor;
 
 	public ChangeCellColor(BuggleWorldCell cell, Color oldColor, Color newColor) {

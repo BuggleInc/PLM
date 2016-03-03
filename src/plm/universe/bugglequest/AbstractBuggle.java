@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.model.json.CustomColorSerializer;
+import plm.core.model.json.CustomDirectionSerializer;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
@@ -54,6 +55,7 @@ public abstract class AbstractBuggle extends Entity {
 	private int x = 0;
 	private int y = 0;
 
+	@JsonSerialize(using = CustomDirectionSerializer.class)
 	Direction direction = Direction.NORTH;
 
 	boolean brushDown;

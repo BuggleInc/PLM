@@ -72,9 +72,9 @@ public abstract class Exercise  {
 			World baseInitialWorld = exo.getWorld(WorldKind.INITIAL, i);
 			World baseCurrentWorld = exo.getWorld(WorldKind.CURRENT, i);
 			World baseAnswerWorld = exo.getWorld(WorldKind.ANSWER, i);
-			initialWorld.add(baseInitialWorld.copy());
+			initialWorld.add(baseInitialWorld);
 			currentWorld.add(baseCurrentWorld.copy());
-			answerWorld.add(baseAnswerWorld.copy());
+			answerWorld.add(baseAnswerWorld);
 		}
 		for(ProgrammingLanguage progLang : exo.getProgLanguages()) {
 			SourceFile sourceFile = exo.getDefaultSourceFile(progLang).clone();
@@ -150,19 +150,19 @@ public abstract class Exercise  {
 		}
 	}
 
-	public Vector<World> getInitialWorld() {
+	public Vector<World> getInitialWorlds() {
 		return initialWorld;
 	}
 
-	public void setInitialWorld(Vector<World> initialWorld) {
+	public void setInitialWorlds(Vector<World> initialWorld) {
 		this.initialWorld = initialWorld;
 	}
 
-	public Vector<World> getAnswerWorld() {
+	public Vector<World> getAnswerWorlds() {
 		return answerWorld;
 	}
 
-	public void setAnswerWorld(Vector<World> answerWorld) {
+	public void setAnswerWorlds(Vector<World> answerWorld) {
 		this.answerWorld = answerWorld;
 	}
 
