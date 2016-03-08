@@ -68,8 +68,14 @@ public class JSONUtils {
 	public static String operationsToJSON(World world, int bufferSize) {
 		int nbSteps = world.getSteps().size();
 
+		if(bufferSize <= 0 ) {
+			bufferSize = nbSteps;
+		} else {
+			bufferSize = Math.min(nbSteps, bufferSize);
+		}
+
 		List<List<Operation>> steps = new ArrayList<List<Operation>>();
-        for(int i=0; i<bufferSize && i<nbSteps; i++) {
+        for(int i=0; i<bufferSize; i++) {
         	steps.add(world.getSteps().poll());
         }
 
