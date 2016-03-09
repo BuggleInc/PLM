@@ -110,14 +110,14 @@ public abstract class Lecture implements HumanLangChangesListener{
 		while (m3.find()) {	
 			tips.put("#"+m3.group(1), m3.group(3));
 		}
-		str = m3.replaceAll("<a href=\"#$1\">$2</a>");
+		str = m3.replaceAll("<tips data-tipid=\"$1\" data-title=\"$2\">$3</tips>");
 
 		Pattern p4 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
 		Matcher m4 = p4.matcher(str);
 		while (m4.find()) {	
 			tips.put("#"+m4.group(1), m4.group(2));
 		}		
-		str=m4.replaceAll("<a href=\"#$1\">Show Tip</a>");				
+		str=m4.replaceAll("<tips data-tipid=\"$1\" data-title=\"" + getGame().i18n.tr("Show Tip") + "\">$2</tips>");
 
 
 		/* get the mission explanation */
