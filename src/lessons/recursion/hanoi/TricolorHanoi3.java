@@ -21,15 +21,15 @@ public class TricolorHanoi3 extends ExerciseTemplated {
 		Vector<HanoiDisk> slot0 = HanoiDisk.generateHanoiDisks(new Integer[] {4,3,2,1}, Color.white);
 		Vector<HanoiDisk> slot1 = HanoiDisk.generateHanoiDisks(new Integer[] {4,3,2,1}, Color.yellow);
 		Vector<HanoiDisk> slot2 = HanoiDisk.generateHanoiDisks(new Integer[] {4,3,2,1}, Color.black);
-		w = new HanoiWorld(game, "gather(0,1,2)", slot0, slot1, slot2);
+		w = new HanoiWorld(game, "tricolor(0,1,2)", slot0, slot1, slot2);
 		w.setParameter(new Object[] {0,1,2});		
 		myWorlds[0] = w;
 		
-		w = new HanoiWorld(game, "gather(1,2,0)", slot0, slot1, slot2);
+		w = new HanoiWorld(game, "tricolor(1,2,0)", slot0, slot1, slot2);
 		w.setParameter(new Object[] {1,2,0});		
 		myWorlds[1] = w;
 
-		w = new HanoiWorld(game, "gather(2,0,1)", slot0, slot1, slot2);
+		w = new HanoiWorld(game, "tricolor(2,0,1)", slot0, slot1, slot2);
 		w.setParameter(new Object[] {2,0,1});		
 		myWorlds[2] = w;
 
