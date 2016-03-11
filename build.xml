@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist" name="PLM">
-	
+
     <!-- load ChangeLog and set property plm.minor.version accordingly -->
     <loadfile property="plm.minor.version" srcFile="ChangeLog">
         <filterchain>
             <linecontainsregexp>
               <regexp pattern="[0-9]+:.*"/>
-            </linecontainsregexp>          
+            </linecontainsregexp>
           <headfilter lines="1"/>
           <striplinebreaks/>
           <tokenfilter>
@@ -14,12 +14,12 @@
 	  </tokenfilter>
         </filterchain>
     </loadfile>
-    
+
     <loadfile property="plm.major.version" srcFile="lib/resources/plm.configuration.properties">
         <filterchain>
             <linecontainsregexp>
               <regexp pattern="plm.major.version=.*"/>
-            </linecontainsregexp>          
+            </linecontainsregexp>
           <headfilter lines="1"/>
           <striplinebreaks/>
           <tokenfilter>
@@ -27,7 +27,7 @@
 	  </tokenfilter>
         </filterchain>
     </loadfile>
-    
+
     <property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
@@ -38,10 +38,10 @@
     <property file="${base.dir}/keystore.properties"/>
 
     <path id="project.class.path">
-            <pathelement path="${classes.dir}"/>    
+            <pathelement path="${classes.dir}"/>
             <fileset dir="${lib.dir}">
-                    <include name="**/*.jar"/>                      
-            </fileset>      
+                    <include name="**/*.jar"/>
+            </fileset>
     </path>
 
     <target name="clean" description="clean project">
@@ -57,15 +57,15 @@
         <pathelement location="${lib.dir}/scala/scala-reflect-2.11.4.jar" />
       </classpath>
     </taskdef>
-	
+
     <target name="compile" description="compile all source files">
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
         <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true"/>
-    </target>    
+    </target>
 
     <!-- <target name="dist" depends="clean, i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">  -->
-    
+
     <target name="dist" depends="clean, compile, updateversion" description="build a standalone application jar file">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/plm-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
@@ -79,10 +79,10 @@
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${base.dir}" includes="ChangeLog" />
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
-                        
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.11.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.11.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-reflect-2.11.4.jar"/>
@@ -97,11 +97,43 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.3.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
-            
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
-            
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
-            
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
+	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
+	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
+
+        </jar>
+
+        <jar destfile="${dist.dir}/plm-engine-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Built-By" value="M. Quinson, G. Oster and others" />
+                <attribute name="Main-Class" value="plm.core.ui.ProgrammersLearningMachine" />
+                <attribute name="Class-Path" value="." />
+            </manifest>
+            <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
+            <fileset dir="${src.dir}" includes="**/*.py **/*.c **/*.scala **/*.java **/*.blockly **/*.html **/*.css **/*.png **/*.map **/*.json" excludes="**/.gitignore"/>
+            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
+            <fileset dir="${base.dir}" includes="ChangeLog" />
+            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
@@ -120,7 +152,7 @@
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${base.dir}" includes="ChangeLog" />
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/engine/* l10n/missions/*"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
 
@@ -130,11 +162,11 @@
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
-            
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
-            
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
-            
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
@@ -143,7 +175,7 @@
         </jar>
 
     </target>
-    
+
     <target name="dist-web" depends="compile, updateversion" description="build webstart application jar files">
         <mkdir dir="${site.dir}/lib"/>
         <jar destfile="${site.dir}/lib/plm-webstart.jar" filesetmanifest="mergewithoutmain">
@@ -153,7 +185,7 @@
                 <attribute name="Class-Path" value="." />
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-            <fileset dir="${src.dir}" includes="**/*.java **/*.py **/*.html **/*.css **/*.map **/*.png" excludes="**/.gitignore"/> 
+            <fileset dir="${src.dir}" includes="**/*.java **/*.py **/*.html **/*.css **/*.map **/*.png" excludes="**/.gitignore"/>
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${lib.dir}" excludes="*.jar"/>
         </jar>
@@ -168,10 +200,10 @@
           </path>
         </signjar>
     </target>
-    
+
     <target name="javadoc" description="Create Javadocs">
         <mkdir dir="${site.dir}/javadoc/"/>
-        <javadoc 
+        <javadoc
             destdir="${site.dir}/javadoc/">
             <fileset dir="${src.dir}/plm" includes="**/*.java" />
             <fileset dir="${src.dir}/lessons" includes="**/*.java" />
@@ -201,10 +233,10 @@
     </target>
     <target name="i18n-check" description="Checks that the extracted messages are correct" depends="i18n-update">
       <!-- single quote sign is used to escape the format strings in MessageFormat;
-           '' has to be used to get a single quote displayed. 
+           '' has to be used to get a single quote displayed.
 	   That's unfortunate given the amount of ' we have in french and english but anyway.
 	   In addition, the strings without {0} are not passed to MessageFormat by i18n.tr().
-	   See: https://code.google.com/p/gettext-commons/issues/detail?id=55 
+	   See: https://code.google.com/p/gettext-commons/issues/detail?id=55
            Rq: check that a word does not appear in translations:
            msggrep -T -e  theworld  - -sort-by-file  l10n/missions/fr.po
 	   -->
@@ -214,7 +246,7 @@
 	   <arg value="[^']'[^'].*{"/>
 	   <arg value="--sort-by-file"/>
 	   <arg value="l10n/engine/fr.po"/>
-	   <redirector output="errors-msgid.txt" alwayslog="true"/>           
+	   <redirector output="errors-msgid.txt" alwayslog="true"/>
       </exec>
       <exec executable="msggrep">
            <arg value="-T"/>
@@ -222,11 +254,11 @@
 	   <arg value="[^']'[^'].*{"/>
 	   <arg value="--sort-by-file"/>
 	   <arg value="l10n/engine/fr.po"/>
-	   <redirector output="errors-msgstr.txt" alwayslog="true"/>           
+	   <redirector output="errors-msgstr.txt" alwayslog="true"/>
       </exec>
       <exec executable="perl"><arg value="check_pseudoMD.pl"/></exec>
     </target>
-    
+
     <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update, i18n-check">
       <mkdir dir="${site.dir}/po"/>
       <gettext-dist targetBundle="org.plm.i18n.Messages" poDirectory="l10n/engine" outputDirectory="${site.dir}/po" />
@@ -235,48 +267,48 @@
     </target>
 
     <target name="test-all-exos" depends="compile" description="tests compilation of provided solutions of all exos">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.core.ExoTest"/>		
+        <test name="plm.core.ExoTest"/>
 	  </junit>
     </target>
 
     <target name="all-tests" depends="compile" description="launch all tests">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.test.AllTests"/>		
+        <test name="plm.test.AllTests"/>
 	  </junit>
     </target>
-	
+
     <target name="unit-tests" depends="compile" description="launch all unit tests">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.test.UnitTests"/>		
+        <test name="plm.test.UnitTests"/>
 	  </junit>
     </target>
-	
+
     <target name="integration-tests" depends="compile" description="launch all integration tests">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.test.IntegrationTests"/>		
+        <test name="plm.test.IntegrationTests"/>
 	  </junit>
     </target>
-	
+
 <!--  This requires Java7 to work, but I'd prefer to support for Java6
       a bit longer if possible. Disable this for now, sorry Franck.
-      
-      
-      
+
+
+
     <property name="mac.dir" value="${lib.dir}/mac-resources"/>
     <property name="fr.lproj.dir" value="${mac.dir}/fr.lproj"/>
     <property name="mac.app.name" value="JavaLearningMachine"/>
     <property name="mac.bundle.dir" value="${dist.dir}/${mac.app.name}.app"/>
     <taskdef name="bundleapp"
-             classname="com.oracle.appbundler.AppBundlerTask"   
+             classname="com.oracle.appbundler.AppBundlerTask"
              classpath="${lib.dir}/appbundler-1.0.jar" />
     <target name="build-Mac.app-bundle">
         <bundleapp outputdirectory="dist"
@@ -291,9 +323,9 @@
 			<fileset dir="${fr.lproj.dir}"/>
 		</copy>
     </target>
-	
-	
+
+
 	<target name="Mac.app" depends="dist, build-Mac.app-bundle">
 	</target>
--->	
+-->
 </project>
