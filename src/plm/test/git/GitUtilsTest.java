@@ -328,7 +328,7 @@ public class GitUtilsTest {
 	public void testParallelCommitAndPush() throws GitAPIException, IOException, InterruptedException {
 		gitUtils.createLocalUserBranch(userBranch);
 
-		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
+		final ProgressMonitor progress = NullProgressMonitor.INSTANCE;
 
 		Thread tCommit = new Thread(new Runnable() {
 			public void run() {
