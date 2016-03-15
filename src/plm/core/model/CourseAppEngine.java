@@ -73,7 +73,7 @@ public class CourseAppEngine extends Course {
             wr.close();
             br.close();
         } catch (IOException e) {
-        	logger.log("Unable to contact PLMServer to send request " + request);
+        	logger.log(LogHandler.ERROR, "Unable to contact PLMServer to send request " + request);
             throw new IOException(e);
         }
         return response;

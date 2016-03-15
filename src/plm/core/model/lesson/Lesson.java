@@ -206,7 +206,6 @@ public abstract class Lesson implements HumanLangChangesListener {
 
 	public void setDescription(String name) {
 		String filename = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
-		getGame().getLogger().log("SetDescription: " + filename);
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html",true);

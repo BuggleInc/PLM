@@ -21,6 +21,7 @@ import java.util.Collection;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -60,7 +61,7 @@ public class GitSessionKit implements ISessionKit {
 				bwSummary.write(game.studentWork.lessonSummary(lesson.getId()));
 				bwSummary.close();
 			} catch (IOException ex) {
-				game.getLogger().log("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
+				game.getLogger().log(LogHandler.ERROR, "Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
 			}
 		}
 	}
@@ -76,7 +77,7 @@ public class GitSessionKit implements ISessionKit {
 		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + reponame);
 		if (! gitDir.exists()) {
 			// It should never happen since the session content should be created by the git spy module.
-			game.getLogger().log(getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
+			game.getLogger().log(LogHandler.ERROR, getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 		}
 
 		// Load bodies
@@ -84,7 +85,7 @@ public class GitSessionKit implements ISessionKit {
 			loadLesson(path, lesson);
 		}
 
-		// Load summary from the lastly saved files, 
+		// Load summary from the lastly saved files,
 		// but don't trust the game.getLessons that is empty at startup, so search for existing files on disk
 		String pattern = "*.summary";
 		FileSystem fs = FileSystems.getDefault();
@@ -94,7 +95,7 @@ public class GitSessionKit implements ISessionKit {
 			@Override
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 				if (! matcher.matches(file.getFileName()))  // Not a summary file. Who cares?
-					return FileVisitResult.CONTINUE;			
+					return FileVisitResult.CONTINUE;
 
 				String lessonId = file.getFileName().toString();
 				lessonId = lessonId.substring(0,lessonId.length() - ".summary".length());
@@ -107,7 +108,7 @@ public class GitSessionKit implements ISessionKit {
 					fr = new FileReader(file.toFile().getAbsoluteFile());
 					br = new BufferedReader(fr);
 					String line;
-					while ((line = br.readLine()) != null) 
+					while ((line = br.readLine()) != null)
 						sb.append(line);
 				} catch (FileNotFoundException e) {
 					// If there is no summary file, then don't do nothing for that lesson
@@ -125,7 +126,7 @@ public class GitSessionKit implements ISessionKit {
 				// 2. Pass that string to the sessionDB
 				game.studentWork.lessonSummaryParse(lessonId, sb.toString());
 
-				return FileVisitResult.CONTINUE;			
+				return FileVisitResult.CONTINUE;
 			}
 		};
 
@@ -197,7 +198,7 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
-		game.getLogger().log("Clean all lessons. Your session is now lost.");
+		game.getLogger().log(LogHandler.INFO, "Clean all lessons. Your session is now lost.");
 		for (Lesson lesson : this.game.getLessons()) {
 			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}

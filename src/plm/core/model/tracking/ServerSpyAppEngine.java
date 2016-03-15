@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 
 /**
  * Implementation of the ServerSpy class, to indicate how/where to send json requests
@@ -50,7 +51,7 @@ public class ServerSpyAppEngine extends ServerSpy {
             br.close();
 
         } catch (IOException e) {
-        	getGame().getLogger().log("Unable to contact PLMServer to send request " + request);
+        	getGame().getLogger().log(LogHandler.ERROR, "Unable to contact PLMServer to send request " + request);
         }
 
         return response;
@@ -68,11 +69,11 @@ public class ServerSpyAppEngine extends ServerSpy {
 
 	@Override
 	public void idle(String start, String end, String duration) {}
-	
+
 	@Override
 	public void readTip(String id, String mission) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

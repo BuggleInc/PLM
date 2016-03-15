@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.model.LogHandler;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
@@ -424,7 +425,7 @@ public abstract class AbstractBuggle extends Entity {
 		if (k_seq[k_val]==5) k_val++; else k_val = 0;
 		if (k_val>k_seq.length-1) {
 			setName("Easter "+name);
-			getGame().getLogger().log("EASTEEEER");
+			getGame().getLogger().log(LogHandler.INFO, "EASTEEEER");
 			((BuggleWorld)world).easter= true;
 			k_val=0;
 			return;

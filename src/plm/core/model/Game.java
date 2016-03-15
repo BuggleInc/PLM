@@ -70,14 +70,14 @@ import plm.universe.World;
  *  core model which contains all known exercises.
  */
 public class Game implements IWorldView {
-	/** Current state of the engine: whether we are running the student code, a demo, saving to files, or whatever. 
+	/** Current state of the engine: whether we are running the student code, a demo, saving to files, or whatever.
 	 *  Helps deciding which interface buttons are enabled/disabled for example.
 	 */
 	public enum GameState {
-		IDLE, 
+		IDLE,
 		SAVING, SAVING_DONE,
 		LOADING, LOADING_DONE,
-		COMPILATION_STARTED, COMPILATION_ENDED, 
+		COMPILATION_STARTED, COMPILATION_ENDED,
 		EXECUTION_STARTED, EXECUTION_ENDED,
 		DEMO_STARTED, DEMO_ENDED,
 	}
@@ -91,7 +91,7 @@ public class Game implements IWorldView {
 	private static File localGamePropertiesLoadedFile;
 
 	private Properties localProperties = new Properties();
-	
+
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Map<String, Lesson> loadedLessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
@@ -99,23 +99,23 @@ public class Game implements IWorldView {
 	private Lecture lastExercise;
 
 	public static final String [][] humanLangs = { {"English","en"}, {"Français","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"}, {"中文", "zh"} };
-	
+
 	/*
 	public static final String [] lessonsName = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
-		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
+		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake",
 		"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi",
 		"lessons.lightbot", "lessons.bat.string1", "lessons.lander"
 	};
 	*/
-	
+
 	public static final String [] lessonsName = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
 		"lessons.welcome", "lessons.maze", "lessons.turmites", "lessons.turtleart",
-		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
+		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake",
 		"lessons.recursion.cons", "lessons.recursion.logo", "lessons.recursion.hanoi",
 		"lessons.bat.string1"
 	};
-	
+
 	public static final ProgrammingLanguage JAVA =       new LangJava(false);
 	public static final ProgrammingLanguage PYTHON =     new LangPython(false);
 	public static final ProgrammingLanguage SCALA =      new LangScala(false);
@@ -133,10 +133,10 @@ public class Game implements IWorldView {
 	private boolean canPython = false;
 	private boolean canBlockly = false;
 	private boolean canC = false;
-	
+
 	/* TODO: document these values elsewhere */
 	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
-	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
+	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true.
 	// Turning to false will slow down the startup process, but avoid out of date files
 
 	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
@@ -167,33 +167,33 @@ public class Game implements IWorldView {
 	public LogHandler logger;
 
 	private static boolean ongoingInitialization = false;
-	
+
 	private boolean trackUser;
-	
+
 	private Locale locale;
 	public I18n i18n;
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, boolean trackUser) {
 		this(userUUID, logger, locale, defaultProgrammingLanguage, new GitUtils("dummy-username"), trackUser, new Properties());
 	}
-	
+
 	public Game(String userUUID, LogHandler logger, Locale locale, String defaultProgrammingLanguage, GitUtils gitUtils, boolean trackUser, Properties localProperties) {
 		this.localProperties = localProperties;
 		this.logger = logger;
 		this.locale = locale;
 		this.trackUser = trackUser;
-		
+
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", locale, I18nFactory.FALLBACK);
 		loadProperties();
 
 		canScala = true;
 		canPython = true;
 		canBlockly = true;
-		
+
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) && 
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.BLOCKLY.getLang())) 
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) &&
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) &&
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.BLOCKLY.getLang()))
 			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' or ''Blockly'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart the PLM before proceeding.\n"+
@@ -212,7 +212,7 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("The default programming language is Blockly, but your Blockly installation is not usable. Switching to Java instead.\n"));
 			setProgramingLanguage(JAVA);
 		} else {
-			for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) 
+			for (ProgrammingLanguage pl : Game.getProgrammingLanguages())
 				if (pl.getLang().equals(defaultProgrammingLanguage)) {
 					setProgramingLanguage(pl);
 					break;
@@ -244,14 +244,14 @@ public class Game implements IWorldView {
 
 		loadSession();
 	}
-	
+
 	public GitUtils getGitUtils() {
 		return this.gitUtils;
 	}
-	
+
 	private void initLessons() {
 		for(String lessonName: lessonsName) {
-			addLesson(lessonName);			
+			addLesson(lessonName);
 		}
 	}
 
@@ -279,11 +279,11 @@ public class Game implements IWorldView {
 	}
 
 	/** Change the current lesson.
-	 * 
-	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
+	 *
+	 * Also, initialize the newly used lesson on need. It must already be in the classpath
 	 * (use @loadLesson() if you want to load a lesson located in an external jar file)
-	 *  
-	 * @param lessonName package name of the lesson to load 
+	 *
+	 * @param lessonName package name of the lesson to load
 	 */
 
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
@@ -291,7 +291,7 @@ public class Game implements IWorldView {
 			stopExerciseExecution();
 		}
 		this.setState(GameState.LOADING);
-		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
+		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise
 		Lesson lesson = lessons.get(lessonName);
 		Lesson lessonLoaded = loadedLessons.get(lessonName);
 		statusArgAdd(lessonName);
@@ -308,11 +308,11 @@ public class Game implements IWorldView {
 			System.err.println("Interrupted while loading the lesson "+lesson.getName());
 			e.printStackTrace();
 		}
-		// If a problem arose while setting up the lesson, don't switch 
+		// If a problem arose while setting up the lesson, don't switch
 		if(lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
-			JOptionPane.showMessageDialog(null, 
+			JOptionPane.showMessageDialog(null,
 					i18n.tr("The lesson {0} encountered an issue while loading its exercises, please report the issue and choose another lesson.",lesson.getName()) ,
-					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
+					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 
@@ -329,10 +329,10 @@ public class Game implements IWorldView {
 
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
 	/** Load a new lesson from an external JAR file.
-	 *  
-	 * This will only work if the system classloader is an URLClassLoader. 
-	 * If your JVM gave you something else (and if you failed to change it from the command line or whatever), this will fail with an exception. 
-	 * 
+	 *
+	 * This will only work if the system classloader is an URLClassLoader.
+	 * If your JVM gave you something else (and if you failed to change it from the command line or whatever), this will fail with an exception.
+	 *
 	 * @param path Path to the JAR file
 	 * @throws LessonLoadingException if the JAR file is inexistent or invalid (or if the system classloader does not accept URLs)
 	 */
@@ -343,7 +343,7 @@ public class Game implements IWorldView {
 
 
 		// Check if the JAR has already been added. If not, load it in the classloader.
-		if (!usedJARs.contains(jar.getAbsolutePath())) {	
+		if (!usedJARs.contains(jar.getAbsolutePath())) {
 			URLClassLoader sysloader = (URLClassLoader)ClassLoader.getSystemClassLoader();
 			Class<URLClassLoader> sysclass = URLClassLoader.class;
 
@@ -390,14 +390,14 @@ public class Game implements IWorldView {
 		initRunners.add(t);
 	}
 	public static void waitInitThreads() throws InterruptedException {
-		for (Thread t:initRunners) 
+		for (Thread t:initRunners)
 			t.join();
 	}
 
 	public Map<String, Lesson> getMapLessons() {
 		return lessons;
 	}
-	
+
 	public Collection<Lesson> getLessons() {
 		return this.lessons.values();
 	}
@@ -462,15 +462,15 @@ public class Game implements IWorldView {
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
 				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
-					getLogger().log(
+					getLogger().log(LogHandler.INFO,
 							i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
 									+ "Please consider contributing to this project by adapting this exercise to this language.",
 									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 				setProgramingLanguage(fallback);
 
 			}
-		} catch (UserAbortException e) { 
-			getLogger().log(i18n.tr("Operation cancelled by the user"));
+		} catch (UserAbortException e) {
+			getLogger().log(LogHandler.INFO, i18n.tr("Operation cancelled by the user"));
 		}
 	}
 
@@ -538,13 +538,13 @@ public class Game implements IWorldView {
 		runner.start();
 	}
 	public void stopExerciseExecution() {
-		if (stepModeEnabled()) 
+		if (stepModeEnabled())
 			disableStepMode();
 
 		// Only forcefully stop the threads if they run the user code (not the correction)
 		if(state == GameState.EXECUTION_STARTED) {
 			runner.stopAll();
-		}			
+		}
 
 		// "Stop" the demo threads too, but asking them to not wait for the UI
 		// We cannot kill them as they are computing the exercise's correction.
@@ -605,12 +605,12 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-			
+
 			// Should kill all threads before quitting this instance
 			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
 				stopExerciseExecution();
 			}
-			
+
 			saveSession();
 
 			// report user leave on the server
@@ -624,7 +624,7 @@ public class Game implements IWorldView {
 			storeProperties();
 		} catch (UserAbortException e) {
 			// Ok, user decided to not quit (to get a chance to export the session)
-			getLogger().log("Exit aborted");
+			getLogger().log(LogHandler.INFO, "Exit aborted");
 		}
 	}
 
@@ -635,7 +635,7 @@ public class Game implements IWorldView {
 		for (Lesson l : this.lessons.values())
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
-					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages()) 
+					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages())
 						studentWork.setPassed(lect, lang, false);
 
 		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
@@ -665,7 +665,7 @@ public class Game implements IWorldView {
 	}
 	public void removeSessionKit() {
 		sessionKit = null;
-		getLogger().log("Disabling the session kit on disk.");
+		getLogger().log(LogHandler.INFO, "Disabling the session kit on disk.");
 	}
 
 	// FIXME: Should not be static
@@ -736,9 +736,9 @@ public class Game implements IWorldView {
 		return Game.getProperty(key, "", false);
 	}
 
-	/** 
+	/**
 	 * Gets the value from either the local properties set (in ~/.plm) or the global one (in the jar file).
-	 * If the value is not defined in either of them, use the default value. If so and if the save parameter is true, this is saved back to the local properties file. 
+	 * If the value is not defined in either of them, use the default value. If so and if the save parameter is true, this is saved back to the local properties file.
 	 */
 	public static String getProperty(String key, String defaultValue, boolean save) {
 		if (Game.localGameProperties.containsKey(key)) {
@@ -801,7 +801,7 @@ public class Game implements IWorldView {
 	}
 
 	protected void fireStateChanged(GameState status) {
-		for (GameStateListener l : this.gameStateListeners) 
+		for (GameStateListener l : this.gameStateListeners)
 			l.stateChanged(status);
 	}
 
@@ -890,8 +890,8 @@ public class Game implements IWorldView {
 			sb.append(s);
 		}
 
-		String msg = first ? "" : sb.toString(); // remove everything if no argument at all 
-		for (StatusStateListener l : this.statusStateListeners) 
+		String msg = first ? "" : sb.toString(); // remove everything if no argument at all
+		for (StatusStateListener l : this.statusStateListeners)
 			l.stateChanged(msg);
 	}
 	public void setLocale(Locale lang) {
@@ -997,7 +997,7 @@ public class Game implements IWorldView {
 				((Exercise) l.getCurrentExercise()).setNbError(-1);
 				for (World w:((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
 					String s = w.getDebugInfo();
-					if (s != "") 
+					if (s != "")
 						getLogger().log("World: "+s);
 				}
 			}
@@ -1033,7 +1033,7 @@ public class Game implements IWorldView {
 		return doBatch;
 	}
 
-	private boolean doCreative = false;		
+	private boolean doCreative = false;
 	public void switchCreative() {
 		doCreative =  !doCreative;
 	}
@@ -1083,7 +1083,7 @@ public class Game implements IWorldView {
 	private static String HOME_DIR = System.getProperty("user.home");
 
 	/* These names are tested one after the other, searching for one that exist or that we can create */
-	static String[] rootDirNames = new String[] { 
+	static String[] rootDirNames = new String[] {
 		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */
 		HOME_DIR + File.separator + "_plm", /* Some paranoid administrator refuse directories which name starts with a dot */
 		HOME_DIR + File.separator + "plm",  /* one day, hidden directories with make trouble... */
@@ -1129,7 +1129,7 @@ public class Game implements IWorldView {
 
 	public void revertExo() {
 		Lecture lect = getCurrentLesson().getCurrentExercise();
-		if (! (lect instanceof Exercise)) 
+		if (! (lect instanceof Exercise))
 			return;
 
 		Exercise ex = (Exercise) lect;
@@ -1161,7 +1161,7 @@ public class Game implements IWorldView {
 		for(Lesson lesson: lessons.values()) {
 			removeHumanLangListener(lesson);
 		}
-		lessons.clear();		
+		lessons.clear();
 		loadedLessons.clear();
 		studentWork = new SessionDB(this);
 		sessionKit.setUserUUID(userUUID);
@@ -1171,35 +1171,35 @@ public class Game implements IWorldView {
 
 		loadSession();
 	}
-	
+
 	public void signalIdle(String start, String end, String duration) {
-		gitSpy.idle(start, end, duration);	
+		gitSpy.idle(start, end, duration);
 	}
-	
+
 	public void signalCommonErrorFeedback(int commonErrorID, int accuracy, int help, String comment) {
 		gitSpy.commonErrorFeedback(commonErrorID, accuracy, help, comment);
 	}
-	
+
 	public void signalReadTip(String id) {
 		gitSpy.readTip(id, currentLesson.getCurrentExercise().getMission(programmingLanguage));
 	}
-	
+
 	public void setTrackUser(boolean trackUser) {
 		this.trackUser = trackUser;
 	}
-	
+
 	public boolean getTrackUser() {
 		return trackUser;
 	}
-	
+
 	public LogHandler getLogger() {
 		return logger;
 	}
-	
+
 	public String getLocalProperty(String key) {
 		return localProperties.getProperty(key);
 	}
-	
+
 	public void setLocalProperty(String key, String value) {
 		localProperties.setProperty(key, value);
 	}

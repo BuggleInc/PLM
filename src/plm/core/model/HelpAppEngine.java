@@ -18,7 +18,7 @@ public class HelpAppEngine extends HelpServer {
     private static URL helpServer;
 
     private Game game;
-    
+
     public HelpAppEngine(Game game) {
     	this.game = game;
     	String url = Game.getProperty(Game.PROP_APPENGINE_URL);
@@ -29,7 +29,7 @@ public class HelpAppEngine extends HelpServer {
     			e.printStackTrace();
     		}
     	} else {
-    		game.getLogger().log("No course server configured");
+    		game.getLogger().log(LogHandler.INFO, "No course server configured");
     	}
     }
 
@@ -54,11 +54,11 @@ public class HelpAppEngine extends HelpServer {
             wr.close();
             br.close();
         } catch (IOException e) {
-        	game.getLogger().log("Unable to contact PLMServer to send request " + request);
+        	game.getLogger().log(LogHandler.ERROR, "Unable to contact PLMServer to send request " + request);
         }
         return response;
     }
-    
+
     /**
      * Construct a request to ask teacher help in a course
      */
@@ -77,4 +77,3 @@ public class HelpAppEngine extends HelpServer {
     }
 
 }
-

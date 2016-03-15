@@ -58,7 +58,7 @@ public class DemoRunner extends Thread {
 		try {
 			runDemo(exo);
 		} catch (InterruptedException e) {
-			game.getLogger().log(e.getLocalizedMessage());
+			game.getLogger().log(LogHandler.ERROR, e.getLocalizedMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
