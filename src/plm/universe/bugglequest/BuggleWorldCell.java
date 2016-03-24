@@ -126,6 +126,7 @@ public class BuggleWorldCell extends GridWorldCell {
 		return this.leftWall;
 	}
 
+	@JsonProperty("hasBaggle")
 	public boolean hasBaggle() {
 		return hasBaggle;
 	}
