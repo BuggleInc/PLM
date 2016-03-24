@@ -5,9 +5,6 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -17,8 +14,10 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.universe.World;
 
 public class BatWorld extends World {
+
+	@JsonProperty("batTests")
 	public List<BatTest> tests = new Vector<BatTest>();
-	
+
 	public BatWorld(String funName) {
 		super(funName);
 		
@@ -32,7 +31,7 @@ public class BatWorld extends World {
 	}
 
 	@JsonCreator
-	public BatWorld(@JsonProperty("name")String name, @JsonProperty("tests")Vector<BatTest> tests) {
+	public BatWorld(@JsonProperty("name")String name, @JsonProperty("batTests")Vector<BatTest> tests) {
 		super(name);
 		this.tests = tests;
 	}
@@ -62,7 +61,7 @@ public class BatWorld extends World {
 			}
 		return true;
 	}
-	
+
 	/* So that the view can display them */
 	public List<BatTest> getTests() {
 		return tests;

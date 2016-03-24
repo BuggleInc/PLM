@@ -5,19 +5,19 @@ import plm.universe.bat.BatTest;
 public class SetResult extends BatOperation {
 	
 	private int index;
-	private BatTest batTest;
+	private Object result;
 	
 	public SetResult(int index, BatTest batTest) {
 		super("setResult");
 		this.index = index;
-		this.batTest = batTest;
+		this.result = batTest.getResult();
 	}
 
 	public int getIndex() {
 		return index;
 	}
 
-	public BatTest getBatTest() {
-		return batTest;
+	public Object getResult() {
+		return result;
 	}
 }

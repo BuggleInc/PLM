@@ -322,6 +322,15 @@ public class BatTest {
 			return "null";
 		}
 	}
+
+	public Object getResult() {
+		return result;
+	}
+
+	public String getFunName() {
+		return funName;
+	}
+
 	private boolean expectedHasValue = false;
 	public void setResult(Object r) {
 		result = r;
