@@ -17,11 +17,8 @@ public class BlankExercise extends ExerciseTemplated {
 	}
 
 	@JsonCreator
-	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("mission")Map<String, String> mission, @JsonProperty("defaultSourceFile")Map<String, SourceFile> defaultSourceFile) {
+	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("defaultSourceFile")Map<String, SourceFile> defaultSourceFile) {
 		super(id, name);
-		for(String humanLang : mission.keySet()) {
-			addMission(humanLang, mission.get(humanLang));
-		}
 		for(String progLangName : defaultSourceFile.keySet()) {
 			ProgrammingLanguage progLang = ProgrammingLanguage.getProgrammingLanguage(progLangName);
 			addDefaultSourceFile(progLang, defaultSourceFile.get(progLangName));
