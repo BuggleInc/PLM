@@ -106,8 +106,7 @@ public class JSONUtils {
 
 	public static String createMessage(String cmd, Map<String, Object> mapArgs) {
 		Map<String, Object> msg = new HashMap<String, Object>();
-        msg.put("cmd", cmd);
         msg.put("args", mapArgs);
-        return mapToJSON(msg);
+        return "{\"cmd\":\""+cmd+"\","+ mapToJSON(msg).substring(1);
 	}
 }
