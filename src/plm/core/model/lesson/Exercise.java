@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
@@ -248,8 +249,13 @@ public abstract class Exercise  {
 		return missions.get(humanLang);
 	}
 
-	public String getMission() {
+	public String getInstructions() {
 		return getMission(settings.getHumanLang(), settings.getProgLang());
+	}
+
+	@JsonIgnore
+	public void setInstructions(String instructions) {
+		// Needed for jackson's config
 	}
 
 	public String getMission(Locale locale, ProgrammingLanguage progLang) {
