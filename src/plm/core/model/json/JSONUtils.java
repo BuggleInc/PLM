@@ -31,10 +31,10 @@ public class JSONUtils {
 		return mapper;
 	}
 
-	public static Exercise jsonToExercise(String json) {
+	public static Exercise jsonToExercise(JsonNode json) {
 		Exercise exercise = null;
 		try {
-			exercise = mapper.readValue(json, BlankExercise.class);
+			exercise = mapper.treeToValue(json, BlankExercise.class);
 			((BlankExercise) exercise).setupCurrentWorld();
 		} catch (IOException e) {
 			e.printStackTrace();
