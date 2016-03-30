@@ -7,6 +7,9 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 
@@ -21,6 +24,8 @@ public class ExecutionProgress {
 	public String commonErrorText = "";
 	public int passedTests=0, totalTests=0, commonErrorID=-1;
 	public Date date = new Date();
+	
+	@JsonIgnore
 	public ProgrammingLanguage language;
 
 	/* The feedback from the student in the ExecisePassedDialog */
@@ -37,6 +42,19 @@ public class ExecutionProgress {
 	public ExecutionProgress(ProgrammingLanguage language, Locale locale) {
 		this(language);
 		this.locale = locale;
+	}
+	
+	public ExecutionProgress(
+			@JsonProperty("outcome")outcomeKind outcome,
+			@JsonProperty("compilationError")String compilationError,
+			@JsonProperty("executionError")String executionError,
+			@JsonProperty("passedTests")int passedTests,
+			@JsonProperty("totalTests")int totalTests) {
+		this.outcome = outcome;
+		this.compilationError = compilationError;
+		this.executionError = executionError;
+		this.passedTests = passedTests;
+		this.totalTests = totalTests;
 	}
 	
 	public static ExecutionProgress newCompilationError(String message, ProgrammingLanguage language) {
