@@ -249,6 +249,7 @@ public abstract class Exercise  {
 		return missions.get(humanLang);
 	}
 
+	@JsonProperty
 	public String getInstructions() {
 		return getMission(settings.getHumanLang(), settings.getProgLang());
 	}
