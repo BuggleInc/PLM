@@ -27,8 +27,7 @@ public class BatTest {
 	public static final boolean INVISIBLE = false;
 	public static final boolean VISIBLE = true;
 
-	@JsonCreator
-	public BatTest(@JsonProperty("funName")String funName, @JsonProperty("visible")boolean visible, @JsonProperty("parameters")Object parameters) {
+	public BatTest(String funName, boolean visible, Object parameters) {
 		this.funName = funName;
 		this.visible = visible;
 		this.correct = false;
@@ -40,6 +39,16 @@ public class BatTest {
 		} else {
 			this.parameters = new Object[] {parameters};
 		}
+	}
+
+	@JsonCreator
+	public BatTest(@JsonProperty("funName")String funName, @JsonProperty("visible")boolean visible, @JsonProperty("parameters")Object[] parameters, @JsonProperty("result")Object result) {
+		this.funName = funName;
+		this.visible = visible;
+		this.correct = false;
+		this.answered = false;
+		this.result = result;
+		this.parameters = parameters;
 	}
 
 	public BatTest copy() {
