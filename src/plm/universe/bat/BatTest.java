@@ -8,6 +8,8 @@ import org.python.core.PyInstance;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
@@ -15,6 +17,7 @@ import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 
 public class BatTest {
+	@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 	Object[] parameters;
 
 	protected Object result;
