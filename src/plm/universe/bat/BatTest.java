@@ -1,5 +1,6 @@
 package plm.universe.bat;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.python.core.PyInstance;
@@ -98,32 +99,10 @@ public class BatTest {
 			//Logger.log("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
 			return false;
 		}
-		for (int i=0;i<parameters.length;i++) {
-			if (parameters[i] != null && !parameters[i].equals(other.parameters[i])) {
-				//Logger.log("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
-				return false;
-			}
-			if (parameters[i] == null && other.parameters[i]!=null)
-				return false;
+		if(!Arrays.deepEquals(parameters, other.parameters)) {
+			return false;
 		}
-		
-		
-		if (isObjective() && !other.isObjective()) {
-			/* We seem to be called as answer.equals(current) from the check() method. 
-			 * Act accordingly by comparing our expected to their result
-			 */
-			return equalParameter(expected, other.result);
-		} else if (!isObjective() && other.isObjective()) {
-			/* We seem to be called as current.equals(answer). Weird I thought it was impossible. Anyway. */
-			return equalParameter(result, other.expected);
-		} else {
-			/* Act as an usual equal method as we don't seem to be called from check(). From the UI maybe? */
-			if (! equalParameter(result, other.result)) 
-				//Logger.log("While comparing a Bat test, the result differs: null != "+other.result);
-				return false;
-			//Logger.log("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
-			return equalParameter(expected, other.expected);
-		}
+		return equalParameter(result, other.result);
 	}
 
 	public Object[] getParameters() {
