@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
@@ -223,10 +222,8 @@ public abstract class Exercise  {
 		defaultSourceFiles.put(progLang, sourceFile);
 	}
 
-	public Map<String, SourceFile> getDefaultSourceFile() {
-		final Map<String, SourceFile> map = new HashMap<String, SourceFile>();
-		map.put(settings.getProgLang().getLang(), getDefaultSourceFile(settings.getProgLang()));
-		return map;
+	public Map<ProgrammingLanguage, SourceFile> getDefaultSourceFiles() {
+		return defaultSourceFiles;
 	}
 
 	public SourceFile getDefaultSourceFile(ProgrammingLanguage progLang) {
@@ -249,14 +246,13 @@ public abstract class Exercise  {
 		return missions.get(humanLang);
 	}
 
-	@JsonProperty
-	public String getInstructions() {
-		return getMission(settings.getHumanLang(), settings.getProgLang());
+	public Map<String, String> getInstructions() {
+		return missions;
 	}
 
-	@JsonIgnore
-	public void setInstructions(String instructions) {
+	public void setInstructions(Map<String, String> instructions) {
 		// Needed for jackson's config
+		missions = instructions;
 	}
 
 	public String getMission(Locale locale, ProgrammingLanguage progLang) {

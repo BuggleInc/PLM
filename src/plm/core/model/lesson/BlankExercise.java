@@ -17,11 +17,11 @@ public class BlankExercise extends ExerciseTemplated {
 	}
 
 	@JsonCreator
-	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("defaultSourceFile")Map<String, SourceFile> defaultSourceFile) {
+	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("defaultSourceFiles")Map<String, SourceFile> defaultSourceFiles) {
 		super(id, name);
-		for(String progLangName : defaultSourceFile.keySet()) {
+		for(String progLangName : defaultSourceFiles.keySet()) {
 			ProgrammingLanguage progLang = ProgrammingLanguage.getProgrammingLanguage(progLangName);
-			addDefaultSourceFile(progLang, defaultSourceFile.get(progLangName));
+			addDefaultSourceFile(progLang, defaultSourceFiles.get(progLangName));
 		}
 	}
 	
