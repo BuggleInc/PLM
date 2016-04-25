@@ -1,6 +1,7 @@
 package plm.core.model.json;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,17 @@ public class JSONUtils {
         module.addDeserializer(Direction.class, new CustomDirectionDeserializer());
         mapper.registerModule(module);
 		return mapper;
+	}
+
+	public static Exercise fileToExercise(String path) {
+		Exercise exercise = null;
+		try {
+			exercise = mapper.readValue(new File(path), BlankExercise.class);
+			((BlankExercise) exercise).setupCurrentWorld();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    return exercise;
 	}
 
 	public static Exercise jsonToExercise(JsonNode json) {
