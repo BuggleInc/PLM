@@ -14,8 +14,6 @@ import javax.script.ScriptException;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -25,7 +23,6 @@ import plm.core.log.Logger;
 import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
-import plm.universe.bugglequest.BuggleWorld;
 
 @JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@jsonId")
@@ -260,9 +257,12 @@ public abstract class World  {
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);
 
-	@JsonIgnore
 	public ConcurrentLinkedDeque<List<Operation>> getSteps() {
 		return steps;
+	}
+
+	public void setSteps(ConcurrentLinkedDeque<List<Operation>> steps) {
+		this.steps = steps;
 	}
 
 	public void addStep(List<Operation> operations) {
