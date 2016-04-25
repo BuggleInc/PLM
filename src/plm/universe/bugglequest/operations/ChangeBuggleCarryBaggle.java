@@ -1,13 +1,15 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.AbstractBuggle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChangeBuggleCarryBaggle extends BuggleOperation {
 	private boolean oldCarryBaggle;
 	private boolean newCarryBaggle;
 
-	public ChangeBuggleCarryBaggle(AbstractBuggle buggle, boolean oldCarryBaggle, boolean newCarryBaggle) {
-		super("changeBuggleCarryBaggle", buggle.getName());
+	@JsonCreator
+	public ChangeBuggleCarryBaggle(@JsonProperty("buggleID")String buggleID, @JsonProperty("oldCarryBaggle")boolean oldCarryBaggle, @JsonProperty("newCarryBaggle")boolean newCarryBaggle) {
+		super("changeBuggleCarryBaggle", buggleID);
 		this.oldCarryBaggle = oldCarryBaggle;
 		this.newCarryBaggle = newCarryBaggle;
 	}
@@ -18,5 +20,13 @@ public class ChangeBuggleCarryBaggle extends BuggleOperation {
 
 	public boolean getNewCarryBaggle() {
 		return newCarryBaggle;
+	}
+
+	public void setOldCarryBaggle(boolean oldCarryBaggle) {
+		this.oldCarryBaggle = oldCarryBaggle;
+	}
+
+	public void setNewCarryBaggle(boolean newCarryBaggle) {
+		this.newCarryBaggle = newCarryBaggle;
 	}
 }

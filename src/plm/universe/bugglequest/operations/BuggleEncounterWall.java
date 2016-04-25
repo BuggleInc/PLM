@@ -1,11 +1,13 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.AbstractBuggle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BuggleEncounterWall extends BuggleOperation {
 	
-	public BuggleEncounterWall(AbstractBuggle buggle) {
-		super("buggleEncounterWall", buggle.getName());
+	@JsonCreator
+	public BuggleEncounterWall(@JsonProperty("buggleID")String buggleID) {
+		super("buggleEncounterWall", buggleID);
 	}
 
 }

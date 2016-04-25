@@ -2,10 +2,11 @@ package plm.universe.bugglequest.operations;
 
 import java.awt.Color;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.model.json.CustomColorSerializer;
-import plm.universe.bugglequest.AbstractBuggle;
 
 public class ChangeBuggleBodyColor extends BuggleOperation {
 	
@@ -14,8 +15,9 @@ public class ChangeBuggleBodyColor extends BuggleOperation {
 	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color newBodyColor;
 	
-	public ChangeBuggleBodyColor(AbstractBuggle buggle, Color oldBodyColor, Color newBodyColor) {
-		super("changeBuggleBodyColor", buggle.getName());
+	@JsonCreator
+	public ChangeBuggleBodyColor(@JsonProperty("buggleID")String buggleID, @JsonProperty("oldBodyColor")Color oldBodyColor, @JsonProperty("newBodyColor")Color newBodyColor) {
+		super("changeBuggleBodyColor", buggleID);
 		this.oldBodyColor = oldBodyColor;
 		this.newBodyColor = newBodyColor;
 	}
@@ -26,5 +28,13 @@ public class ChangeBuggleBodyColor extends BuggleOperation {
 
 	public Color getNewBodyColor() {
 		return newBodyColor;
+	}
+
+	public void setOldBodyColor(Color oldBodyColor) {
+		this.oldBodyColor = oldBodyColor;
+	}
+
+	public void setNewBodyColor(Color newBodyColor) {
+		this.newBodyColor = newBodyColor;
 	}
 }

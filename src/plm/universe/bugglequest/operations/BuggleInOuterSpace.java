@@ -1,10 +1,10 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.AbstractBuggle;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BuggleInOuterSpace extends BuggleOperation {
 		
-	public BuggleInOuterSpace(AbstractBuggle buggle) {
-		super("buggleInOuterSpace", buggle.getName());
+	public BuggleInOuterSpace(@JsonProperty("buggleID")String buggleID) {
+		super("buggleInOuterSpace", buggleID);
 	}
 }

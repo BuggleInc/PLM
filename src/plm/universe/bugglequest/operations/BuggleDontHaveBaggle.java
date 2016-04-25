@@ -1,10 +1,12 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.AbstractBuggle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BuggleDontHaveBaggle extends BuggleOperation {
 	
-	public BuggleDontHaveBaggle(AbstractBuggle buggle) {
-		super("buggleDontHaveBaggle", buggle.getName());
+	@JsonCreator
+	public BuggleDontHaveBaggle(@JsonProperty("buggleID")String buggleID) {
+		super("buggleDontHaveBaggle", buggleID);
 	}
 }

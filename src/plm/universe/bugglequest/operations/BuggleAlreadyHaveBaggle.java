@@ -1,10 +1,12 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.AbstractBuggle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BuggleAlreadyHaveBaggle extends BuggleOperation {
 	
-	public BuggleAlreadyHaveBaggle(AbstractBuggle buggle) {
-		super("buggleAlreadyHaveBaggle", buggle.getName());
+	@JsonCreator
+	public BuggleAlreadyHaveBaggle(@JsonProperty("buggleID")String buggleID) {
+		super("buggleAlreadyHaveBaggle", buggleID);
 	}
 }

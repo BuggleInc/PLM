@@ -1,6 +1,7 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.AbstractBuggle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MoveBuggleOperation extends BuggleOperation {
 
@@ -9,9 +10,10 @@ public class MoveBuggleOperation extends BuggleOperation {
 	private int newX;
 	private int newY;
 
-	public MoveBuggleOperation(AbstractBuggle buggle, int oldX,
-			int oldY, int newX, int newY) {
-		super("moveBuggleOperation", buggle.getName());
+	@JsonCreator
+	public MoveBuggleOperation(@JsonProperty("buggleID")String buggleID, @JsonProperty("oldX")int oldX,
+			@JsonProperty("oldY")int oldY, @JsonProperty("newX")int newX, @JsonProperty("newY")int newY) {
+		super("moveBuggleOperation", buggleID);
 		this.oldX = oldX;
 		this.oldY = oldY;
 		this.newX = newX;

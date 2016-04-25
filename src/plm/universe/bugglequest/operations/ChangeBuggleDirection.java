@@ -1,10 +1,11 @@
 package plm.universe.bugglequest.operations;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import plm.core.model.json.CustomDirectionSerializer;
 import plm.universe.Direction;
-import plm.universe.bugglequest.AbstractBuggle;
 
 public class ChangeBuggleDirection extends BuggleOperation {
 	@JsonSerialize(using = CustomDirectionSerializer.class)
@@ -12,8 +13,9 @@ public class ChangeBuggleDirection extends BuggleOperation {
 	@JsonSerialize(using = CustomDirectionSerializer.class)
 	private Direction newDirection;
 
-	public ChangeBuggleDirection(AbstractBuggle buggle, Direction oldDirection, Direction newDirection) {
-		super("changeBuggleDirection", buggle.getName());
+	@JsonCreator
+	public ChangeBuggleDirection(@JsonProperty("buggleID")String buggleID, @JsonProperty("oldDirection")Direction oldDirection, @JsonProperty("newDirection")Direction newDirection) {
+		super("changeBuggleDirection", buggleID);
 		this.oldDirection = oldDirection;
 		this.newDirection = newDirection;
 	}
@@ -24,5 +26,13 @@ public class ChangeBuggleDirection extends BuggleOperation {
 
 	public Direction getNewDirection() {
 		return newDirection;
+	}
+
+	public void setOldDirection(Direction oldDirection) {
+		this.oldDirection = oldDirection;
+	}
+
+	public void setNewDirection(Direction newDirection) {
+		this.newDirection = newDirection;
 	}
 }
