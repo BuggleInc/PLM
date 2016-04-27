@@ -109,17 +109,16 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldGenerateMissionsForEachSupportedHumanLang() {
+		String baseName = exo.getBaseName().replaceAll("\\.", "/");
+		String filename =  rootDirectory + "/" + baseName;
 		for(Locale humanLanguage : humanLanguages) {
 			String expected = "";
-			
-			String baseName = exo.getBaseName().replaceAll("\\.", "/");
-			String filename =  rootDirectory + "/" + baseName;
 			StringBuffer sb = null;
 			try {
 				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				expected = sb.toString();
 			} catch (IOException ex) {}
-			
+
 			String actual = exo.getMission(humanLanguage, java);
 			assertEquals("Should have retrieve the same content", expected, actual);
 		}
