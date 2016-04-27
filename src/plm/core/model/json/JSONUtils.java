@@ -11,6 +11,7 @@ import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -30,6 +31,18 @@ public class JSONUtils {
         module.addDeserializer(Direction.class, new CustomDirectionDeserializer());
         mapper.registerModule(module);
 		return mapper;
+	}
+
+	public static void exerciseToFile(String path, Exercise exercise) {
+		mapper.enable(SerializationFeature.INDENT_OUTPUT);
+		try {
+			ObjectNode root = (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
+			fixTypeEntities(exercise, root);
+			mapper.writeValue(new File(path + ".json"), root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mapper.disable(SerializationFeature.INDENT_OUTPUT);
 	}
 
 	public static Exercise fileToExercise(String path) {
