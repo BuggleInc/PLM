@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.BlankExercise;
 import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
@@ -36,7 +38,7 @@ public class JSONUtils {
 	public static void exerciseToFile(String path, Exercise exercise) {
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		try {
-			ObjectNode root = (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
+			ObjectNode root = exerciseToJSON(exercise);
 			fixTypeEntities(exercise, root);
 			mapper.writeValue(new File(path + ".json"), root);
 		} catch (IOException e) {
@@ -67,27 +69,52 @@ public class JSONUtils {
 	    return exercise;
 	}
 
+	public static ObjectNode exerciseToJSON(Exercise exercise) {
+		return (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
+	}
+
 	public static ObjectNode exerciseToJudgeJSON(Exercise exercise) {
-		ObjectNode root = (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
-        String typeEntities = root.path("initialWorlds").path(0).path("entities").path(0).path("type").asText();
-        int nbWorlds = exercise.getWorldCount();
-        for(int i=0; i<nbWorlds; i++) {
-        	int nbEntities = exercise.getInitialWorlds().get(i).getEntityCount();
-        	for(int j=0; j<nbEntities; j++) {
-        		ObjectNode entity = (ObjectNode) root.path("answerWorlds").path(i).path("entities").path(j);
-        		entity.put("type", typeEntities);
-        	}
-        }
+		ObjectNode root = exerciseToJSON(exercise);
+        root.remove("instructions");
+		fixTypeEntities(exercise, root);
         return root;
 	}
 
 	public static ObjectNode exerciseToClientJSON(Exercise exercise, String code, String selectedWorldID, String toolbox) {
-		ObjectNode root = (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
-        root.remove("defaultSourceFile");
-        root.put("code", code);
+		ObjectNode root = exerciseToJSON(exercise);
+		Locale humanLang = exercise.getSettings().getHumanLang();
+		ProgrammingLanguage progLang = exercise.getSettings().getProgLang();
+
+        root.remove("defaultSourceFiles");
+        removeSteps(exercise, root);
+
+        root.put("instructions", exercise.getMission(humanLang, progLang));
+		root.put("code", code);
         root.put("selectedWorldID", selectedWorldID);
         root.put("toolbox", toolbox);
+
         return root;
+	}
+
+	public static void fixTypeEntities(Exercise exercise, ObjectNode json) {
+		String typeEntities = json.path("initialWorlds").path(0).path("entities").path(0).path("type").asText();
+        int nbWorlds = exercise.getWorldCount();
+        for(int i=0; i<nbWorlds; i++) {
+        	int nbEntities = exercise.getInitialWorlds().get(i).getEntityCount();
+        	for(int j=0; j<nbEntities; j++) {
+        		ObjectNode entity = (ObjectNode) json.path("answerWorlds").path(i).path("entities").path(j);
+        		entity.put("type", typeEntities);
+        	}
+        }
+	}
+
+	public static void removeSteps(Exercise exercise, ObjectNode json) {
+		// Only need to remove steps from answerWorlds
+		int nbWorlds = exercise.getWorldCount();
+		for(int i=0; i<nbWorlds; i++) {
+			ObjectNode answerWorld = (ObjectNode) json.path("answerWorlds").path(i);
+			answerWorld.remove("steps");
+		}
 	}
 
 	public static String operationsToJSON(World world, int bufferSize) {
