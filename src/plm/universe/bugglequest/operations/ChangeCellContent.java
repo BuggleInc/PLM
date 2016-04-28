@@ -1,14 +1,16 @@
 package plm.universe.bugglequest.operations;
 
-import plm.universe.bugglequest.BuggleWorldCell;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChangeCellContent extends BuggleWorldCellOperation{
 
 	private String oldContent;
 	private String newContent;
 
-	public ChangeCellContent(BuggleWorldCell cell, String oldContent, String newContent) {
-		super("changeCellContent", cell);
+	@JsonCreator
+	public ChangeCellContent(@JsonProperty("x")int x, @JsonProperty("y")int y, @JsonProperty("oldContent")String oldContent, @JsonProperty("newContent")String newContent) {
+		super("changeCellContent", x, y);
 		this.oldContent = oldContent;
 		this.newContent = newContent;
 	}

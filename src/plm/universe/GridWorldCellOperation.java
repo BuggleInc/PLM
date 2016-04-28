@@ -5,10 +5,10 @@ public abstract class GridWorldCellOperation extends Operation {
 	private int x;
 	private int y;
 	
-	public GridWorldCellOperation(String name, GridWorldCell cell) {
+	public GridWorldCellOperation(String name, int x, int y) {
 		super(name);
-		this.setX(cell.x);
-		this.setY(cell.y);
+		this.setX(x);
+		this.setY(y);
 	}
 
 	public int getX() {

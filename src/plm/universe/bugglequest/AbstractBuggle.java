@@ -127,7 +127,7 @@ public abstract class AbstractBuggle extends Entity {
 		addOperation(new ChangeBuggleBrushDown(name, false, true));
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 		Color oldColor = getCell().getColor();
-		addOperation(new ChangeCellColor(cell, oldColor, brushColor));
+		addOperation(new ChangeCellColor(cell.getX(), cell.getY(), oldColor, brushColor));
 		cell.setColor(brushColor);
 		setChanged();
 		notifyObservers(BRUSH_STATE);
@@ -449,7 +449,7 @@ public abstract class AbstractBuggle extends Entity {
 
 		if (brushDown) {
 			Color oldColor = getCell().getColor();
-			addOperation(new ChangeCellColor(getCell(), oldColor, brushColor));
+			addOperation(new ChangeCellColor(getCell().getX(), getCell().getY(), oldColor, brushColor));
 			getCell().setColor(brushColor);
 		}
 
@@ -489,7 +489,7 @@ public abstract class AbstractBuggle extends Entity {
 		}
 		getCellFromLesson(this.x, this.y).baggleRemove();
 		carryBaggle = true;
-		addOperation(new ChangeCellHasBaggle(getCell(), true, false));
+		addOperation(new ChangeCellHasBaggle(getCell().getX(), getCell().getY(), true, false));
 		addOperation(new ChangeBuggleCarryBaggle(name, false, true));
 		stepUI();
 	}
@@ -506,12 +506,12 @@ public abstract class AbstractBuggle extends Entity {
 			cell.baggleAdd();
 		}
 		catch (AlreadyHaveBaggleException e) {
-			addOperation(new CellAlreadyHaveBaggle(cell));
+			addOperation(new CellAlreadyHaveBaggle(getCell().getX(), getCell().getY()));
 			stepUI();
 			throw e;
 		}
 		carryBaggle = false;
-		addOperation(new ChangeCellHasBaggle(getCell(), false, true));
+		addOperation(new ChangeCellHasBaggle(getCell().getX(), getCell().getY(), false, true));
 		addOperation(new ChangeBuggleCarryBaggle(name, true, false));
 		stepUI();
 	}
@@ -534,8 +534,8 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void generateOperationsChangeCellContent(BuggleWorldCell cell, String oldContent, String newContent, boolean oldHasContent, boolean newHasContent) {
-		addOperation(new ChangeCellContent(cell, oldContent, newContent));
-		addOperation(new ChangeCellHasContent(cell, oldHasContent, newHasContent));
+		addOperation(new ChangeCellContent(getCell().getX(), getCell().getY(), oldContent, newContent));
+		addOperation(new ChangeCellHasContent(getCell().getX(), getCell().getY(), oldHasContent, newHasContent));
 		stepUI();
 	}
 
@@ -552,8 +552,8 @@ public abstract class AbstractBuggle extends Entity {
 		boolean oldHasContent = getCell().hasContent();
 		getCell().emptyContent();
 		String newContent = readMessage();
-		addOperation(new ChangeCellContent(getCell(), oldContent, newContent));
-		addOperation(new ChangeCellHasContent(getCell(), oldHasContent, false));
+		addOperation(new ChangeCellContent(getCell().getX(), getCell().getY(), oldContent, newContent));
+		addOperation(new ChangeCellHasContent(getCell().getX(), getCell().getY(), oldHasContent, false));
 		stepUI();
 	}
 
