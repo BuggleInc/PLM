@@ -53,8 +53,8 @@ public class ExerciseFactory {
 
 	public void computeMissions(Exercise exo) {
 		for(Locale humanLanguage: humanLanguages) {
-			String baseName = exo.getId().replaceAll("\\.", "/");
-			String filename =  rootDirectory + "/" + baseName.toLowerCase() + "/" + baseName;
+			String baseName = exo.getBaseName().replaceAll("\\.", "/");
+			String filename =  rootDirectory + "/" + baseName;
 			StringBuffer sb = null;
 			try {
 				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
