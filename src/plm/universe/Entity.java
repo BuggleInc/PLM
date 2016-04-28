@@ -9,6 +9,7 @@ import java.util.Observable;
 import java.util.concurrent.Semaphore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
@@ -24,6 +25,7 @@ import plm.core.lang.ProgrammingLanguage;
  */
 
 @JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Entity extends Observable {
 	protected String name = "(noname)";
 
