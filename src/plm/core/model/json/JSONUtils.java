@@ -77,6 +77,7 @@ public class JSONUtils {
 		ObjectNode root = exerciseToJSON(exercise);
         root.remove("instructions");
 		fixTypeEntities(exercise, root);
+		removeSteps(exercise, root);
         return root;
 	}
 
