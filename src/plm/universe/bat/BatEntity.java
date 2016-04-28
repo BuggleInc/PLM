@@ -88,7 +88,7 @@ public class BatEntity extends Entity {
 	}
 
 	public void generateSetResultOperation(int index, BatTest t) {
-		addOperation(new SetResult(index, t));
+		addOperation(new SetResult(index, t.getResult()));
 		stepUI();
 	}
 
