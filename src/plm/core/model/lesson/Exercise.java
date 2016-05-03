@@ -19,6 +19,8 @@ public abstract class Exercise  {
 	public static enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
 	public static enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 
+	public static String directory = "";
+
 	private String id;
 	private String name;
 	@JsonIgnore
