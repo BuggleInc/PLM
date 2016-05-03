@@ -534,8 +534,8 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void generateOperationsChangeCellContent(BuggleWorldCell cell, String oldContent, String newContent, boolean oldHasContent, boolean newHasContent) {
-		addOperation(new ChangeCellContent(getCell().getX(), getCell().getY(), oldContent, newContent));
-		addOperation(new ChangeCellHasContent(getCell().getX(), getCell().getY(), oldHasContent, newHasContent));
+		addOperation(new ChangeCellContent(cell.getX(), cell.getY(), oldContent, newContent));
+		addOperation(new ChangeCellHasContent(cell.getX(), cell.getY(), oldHasContent, newHasContent));
 		stepUI();
 	}
 
