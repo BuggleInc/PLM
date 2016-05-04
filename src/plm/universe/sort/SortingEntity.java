@@ -3,6 +3,8 @@ package plm.universe.sort;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import plm.universe.Entity;
 import plm.universe.sort.operations.CopyOperation;
 import plm.universe.sort.operations.CountOperation;
@@ -12,22 +14,25 @@ import plm.universe.sort.operations.SwapOperation;
 
 public class SortingEntity extends Entity {
 
+	@JsonCreator
 	public SortingEntity() {
 		super();
 	}
 
 	public void copy(int from,int to) {
-		((SortingWorld) this.world).copy(from,to);
-		addOperation(new CopyOperation(this, to, from));
-		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
+		SortingWorld sortingWorld = (SortingWorld) this.world;
+		sortingWorld.copy(from,to);
+		addOperation(new CopyOperation(to, from));
+		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 	}
 
 	public int getValue(int i) {
-		addOperation(new GetValueOperation(this, i));
-		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
+		SortingWorld sortingWorld = (SortingWorld) this.world;
+		addOperation(new GetValueOperation(i));
+		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
-		return ((SortingWorld) this.world).getValue(i);
+		return sortingWorld.getValue(i);
 	}
 
 	public int getValueCount() {
@@ -35,13 +40,15 @@ public class SortingEntity extends Entity {
 	}
 
 	public boolean isSmaller(int i, int j) {
-		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
-		return ((SortingWorld) this.world).isSmaller(i,j);
+		SortingWorld sortingWorld = (SortingWorld) this.world;
+		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		return sortingWorld.isSmaller(i,j);
 	}
 
 	public boolean isSmallerThan(int i, int val) {
-		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
-		return ((SortingWorld) this.world).isSmallerThan(i,val);
+		SortingWorld sortingWorld = (SortingWorld) this.world;
+		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		return sortingWorld.isSmallerThan(i,val);
 	}
 
 	public void run() {
@@ -49,16 +56,18 @@ public class SortingEntity extends Entity {
 	}
 
 	public void setValue(int i,int val) {
-		((SortingWorld) this.world).setValue(i,val);
-		addOperation(new SetValOperation(this, val, i));
-		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
+		SortingWorld sortingWorld = (SortingWorld) this.world;
+		sortingWorld.setValue(i,val);
+		addOperation(new SetValOperation(val, i));
+		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 	}
 
 	public void swap(int i, int j) {
-		((SortingWorld) this.world).swap(j,i);
-		addOperation(new SwapOperation(this, i, j));
-		addOperation(new CountOperation(this, ((SortingWorld) this.world).getReadCount(), ((SortingWorld) this.world).getWriteCount()));
+		SortingWorld sortingWorld = (SortingWorld) this.world;
+		sortingWorld.swap(j,i);
+		addOperation(new SwapOperation(i, j));
+		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 	}
 
@@ -128,8 +137,5 @@ public class SortingEntity extends Entity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
-
 	}
 }

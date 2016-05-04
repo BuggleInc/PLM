@@ -1,17 +1,17 @@
 package plm.universe.sort.operations;
 
-import plm.universe.sort.SortingEntity;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CopyOperation extends SortOperation {
-
 
 	private int destination;
 	private int source;
 	private int oldValue;
-	
-	public CopyOperation(SortingEntity entity, int destination, int source) {
-		super("copyOperation", entity);
+
+	@JsonCreator
+	public CopyOperation(@JsonProperty("destination")int destination, @JsonProperty("source")int source) {
+		super("copyOperation");
 		this.source = source;
 		this.destination = destination;
 	}
@@ -23,12 +23,20 @@ public class CopyOperation extends SortOperation {
 	public int getSource() {
 		return source;
 	}
-	
-	public int getOldValue()
-	{
-		return this.oldValue;
-	}
-	
-	
 
+	public void setDestination(int destination) {
+		this.destination = destination;
+	}
+
+	public void setSource(int source) {
+		this.source = source;
+	}
+
+	public int getOldValue() {
+		return oldValue;
+	}
+
+	public void setOldValue(int oldValue) {
+		this.oldValue = oldValue;
+	}
 }

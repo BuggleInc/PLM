@@ -7,6 +7,10 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
@@ -48,6 +52,11 @@ public class SortingWorld extends World {
 		}
 		this.initValues = this.values;
 		addEntity(new SortingEntity());
+	}
+
+	@JsonCreator
+	public SortingWorld(@JsonProperty("name")String name/*, int[] initValues, int[] values, int readCount, int writeCount*/) {
+		super(name);
 	}
 
 	private void scramble() {
@@ -184,6 +193,7 @@ public class SortingWorld extends World {
 	}
 
 	/** Returns the amount of values in the array */
+	@JsonIgnore
 	public int getValueCount() {
 		return values.length;
 	}
