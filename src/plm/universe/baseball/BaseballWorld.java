@@ -1,7 +1,6 @@
 package plm.universe.baseball;
 
 import java.util.Random;
-import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -26,7 +25,6 @@ public class BaseballWorld extends World {
 	private int baseAmount,posAmount; // field dimensions
 	private int holeBase,holePos; // The coordinate of the hole
 	protected int[] initialField; 
-	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
 
 	/** Copy constructor used internally by PLM */
 	public BaseballWorld(BaseballWorld other) {
@@ -233,10 +231,6 @@ public class BaseballWorld extends World {
 
 		BaseballWorld other = (BaseballWorld) world;
 		
-		moves = new Vector<BaseballMove>();
-		for (BaseballMove m : other.moves)
-			moves.add(m);
-		
 		holeBase = other.holeBase;
 		holePos = other.holePos;
 
@@ -301,21 +295,6 @@ public class BaseballWorld extends World {
 	/** Returns the position in the base where is hole is located */
 	public int getHolePosition(){
 		return this.holePos;
-	}
-
-	/** Returns the last move made on the field */
-	public BaseballMove getLastMove() {
-		if (moves.size() == 0)
-			return null;
-		return moves.get(moves.size()-1);
-	}
-	/** Returns the amount of moves done so far */
-	public int getMoveCount() {
-		return moves.size();
-	}
-	/** Returns all moves done so far */
-	public Vector<BaseballMove> getMoves() {
-		return moves;
 	}
 	
 	public int[] getField()
@@ -394,7 +373,6 @@ public class BaseballWorld extends World {
 					position,base,holeBase));
 
 		// All clear. Proceed.
-		moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position),this));
 		swap(base, position, holeBase,holePos);
 		holeBase = base;
 		holePos = position;
