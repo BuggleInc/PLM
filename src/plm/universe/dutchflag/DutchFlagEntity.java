@@ -3,6 +3,8 @@ package plm.universe.dutchflag;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -15,6 +17,7 @@ public class DutchFlagEntity extends Entity {
 	public final static int RED = 2;
 	
 	/** Required by the PLM infrastructure */
+	@JsonCreator
 	public DutchFlagEntity() {
 		super("DutchFlag Entity");
 	}
@@ -32,7 +35,7 @@ public class DutchFlagEntity extends Entity {
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);
-		addOperation(new DutchFlagSwap(this,from,to));
+		addOperation(new DutchFlagSwap(from,to));
 		stepUI();
 	}
 

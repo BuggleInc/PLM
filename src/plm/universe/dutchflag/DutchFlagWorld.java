@@ -7,6 +7,10 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
@@ -17,7 +21,7 @@ public class DutchFlagWorld extends World {
 	int[] content;
 	int moveCount = 0;
 	
-	/** Copy constructor */ 
+	/** Copy constructor */
 	public DutchFlagWorld(DutchFlagWorld world) {
 		super(world);
 	}
@@ -71,6 +75,11 @@ public class DutchFlagWorld extends World {
 		}
 	}
 
+	@JsonCreator
+	public DutchFlagWorld(@JsonProperty("name")String name) {
+		super(name);
+	}
+
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
 	public String diffTo(World o) {
@@ -109,6 +118,9 @@ public class DutchFlagWorld extends World {
 	@Override
 	public void reset(World world) {
 		DutchFlagWorld other = (DutchFlagWorld) world;
+		this.initialContent = new int[other.initialContent.length];
+		for (int i=0;i<initialContent.length;i++)
+			initialContent[i] = other.initialContent[i];
 		this.content = new int[other.content.length];
 		for (int i=0;i<content.length;i++)
 			content[i] = other.content[i];
@@ -179,12 +191,14 @@ public class DutchFlagWorld extends World {
 	}
 	
 	/** Returns the amount of rays in this flag */
+	@JsonIgnore
 	public int getSize() {
 		return content.length;
 	}
 	
 	
 	/** Returns whether the flag is correctly sorted */
+	@JsonIgnore
 	public boolean isSorted() {
 		int currentColor = 0;
 		for ( int rank = 0 ; rank < content.length ; rank++) {
@@ -224,12 +238,29 @@ public class DutchFlagWorld extends World {
 		res.append("</DutchFlagWorld>");
 		return res.toString();
 	}
-	
+
+	public void setMoveCount(int moveCount) {
+		this.moveCount = moveCount;
+	}
+
+	public int[] getInitialContent() {
+		return initialContent;
+	}
+
+	public void setInitialContent(int[] initialContent) {
+		this.initialContent = initialContent;
+	}
+
+	public void setContent(int[] content) {
+		this.content = content;
+	}
+
 	public int[] getContent()
 	{
 		return content;
 	}
-	
+
+	@JsonProperty("moveCount")
 	public int getMove()
 	{
 		return moveCount;
