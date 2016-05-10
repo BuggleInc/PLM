@@ -126,7 +126,6 @@ public class BaseballWorld extends World {
 		
 	}
 
-
 	/**
 	 * Returns a textual description of the differences between the caller and world
 	 * @param o the world with which you want to compare your world
