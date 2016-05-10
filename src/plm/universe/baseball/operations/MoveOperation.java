@@ -1,6 +1,7 @@
 package plm.universe.baseball.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MoveOperation extends BaseballOperation {
 
@@ -8,7 +9,7 @@ public class MoveOperation extends BaseballOperation {
 	private int position;
 
 	@JsonCreator
-	public MoveOperation(int base, int position) {
+	public MoveOperation(@JsonProperty("base")int base, @JsonProperty("position")int position) {
 		super("moveOperation");
 		this.base = base;
 		this.position = position;
