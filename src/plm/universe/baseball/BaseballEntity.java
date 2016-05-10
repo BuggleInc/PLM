@@ -3,21 +3,27 @@ package plm.universe.baseball;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.baseball.operations.MoveOperation;
 
 public class BaseballEntity extends Entity {
-	
+
+	@JsonCreator
 	public BaseballEntity() {
 		super();
 	}
 	
 	/** Returns the amount of bases on your field */
+	@JsonIgnore
 	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();
 	}
 	/** Returns the amount of players locations available on each base of the field */
+	@JsonIgnore
 	public int getPositionsAmount() {
 		return ((BaseballWorld) this.world).getPositionsAmount();
 	}
@@ -31,20 +37,21 @@ public class BaseballEntity extends Entity {
 		return ((BaseballWorld) this.world).isBaseSorted(base);
 	}
 	/** Returns if every player of the field is on the right base */
+	@JsonIgnore
 	public boolean isSorted() {
 		return ((BaseballWorld) this.world).isSorted();
 	}
 
 	/** Returns the base in which the hole is located */
+	@JsonIgnore
 	public int getHoleBase() {
 		return ((BaseballWorld) this.world).getHoleBase();
 	}
 	/** Returns the hole position within its base */
+	@JsonIgnore
 	public int getHolePosition(){
 		return ((BaseballWorld) this.world).getHolePosition();
 	}
-
-
 
 	/**
 	 * Moves the specified player to the hole
@@ -67,16 +74,22 @@ public class BaseballEntity extends Entity {
 	}
 	
 	/* BINDINGS TRANSLATION: French */
+	@JsonIgnore
 	public int getNombreBases()     { return getBasesAmount(); }
+	@JsonIgnore
 	public int getNombrePositions() { return getPositionsAmount(); }
 	public int getCouleurJoueur(int base, int position) { return getPlayerColor(base,position); }
 	public boolean estBaseTriee(int base) { return isBaseSorted(base); }
+	@JsonIgnore
 	public boolean estTrie()              { return isSorted(); }
 
+	@JsonIgnore
 	public int getTrouBase()     { return getHoleBase(); }
+	@JsonIgnore
 	public int getTrouPosition() { return getHolePosition(); }
 	public void deplace(int base, int position) { move(base, position); }
 	
+	@JsonIgnore
 	public boolean estSelectionne() { return isSelected(); }
 	@Override
 	public void command(String command, BufferedWriter out) {

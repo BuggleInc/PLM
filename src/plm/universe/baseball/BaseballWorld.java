@@ -7,6 +7,10 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
@@ -22,9 +26,10 @@ public class BaseballWorld extends World {
 	public static final int COLOR_HOLE = -1;
 
 	private int[] field; // the bases which composed the field
-	private int baseAmount,posAmount; // field dimensions
-	private int holeBase,holePos; // The coordinate of the hole
+	private int basesAmount,positionsAmount; // field dimensions
+	private int holeBase,holePosition; // The coordinate of the hole
 	protected int[] initialField; 
+	private int moveCount = 0;
 
 	/** Copy constructor used internally by PLM */
 	public BaseballWorld(BaseballWorld other) {
@@ -40,18 +45,18 @@ public class BaseballWorld extends World {
 		this(name,baseAmount,positionAmount,MIX_RANDOM);
 	}
 
-	public BaseballWorld(String name, int baseAmount, int posAmount, int mix) {
+	public BaseballWorld(String name, int basesAmount, int positionsAmount, int mix) {
 		super(name);
 		
 		// create the bases
-		this.baseAmount = baseAmount;
-		this.posAmount = posAmount;
+		this.basesAmount = basesAmount;
+		this.positionsAmount = positionsAmount;
 		
-		this.field = new int[baseAmount*posAmount];
-		for (int base = 0 ; base < baseAmount ; base++)
-			for (int pos = 0; pos < posAmount; pos++)
+		this.field = new int[basesAmount*positionsAmount];
+		for (int base = 0 ; base < basesAmount ; base++)
+			for (int pos = 0; pos < positionsAmount; pos++)
 				setPlayerColor(base, pos, base);
-		setPlayerColor(baseAmount-1, 0, COLOR_HOLE);
+		setPlayerColor(basesAmount-1, 0, COLOR_HOLE);
 		Random r = new Random(0);
 		if (mix == MIX_RANDOM) {
 			for (int base = 0 ; base<getBasesAmount();base++)
@@ -98,7 +103,7 @@ public class BaseballWorld extends World {
 			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
 				if ( getPlayerColor(base,pos)== COLOR_HOLE) {
 					holeBase = base;
-					holePos = pos;
+					holePosition = pos;
 					return;
 				}
 		
@@ -107,7 +112,7 @@ public class BaseballWorld extends World {
 
 	public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values) {
 		this(name, baseAmount, positionAmount, MIX_SORTED);
-		if (baseAmount*posAmount != values.length)
+		if (baseAmount*positionsAmount != values.length)
 			throw new RuntimeException("Your values array is not of the right size");
 		field = values;
 		
@@ -120,10 +125,15 @@ public class BaseballWorld extends World {
 			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
 				if ( getPlayerColor(base,pos)== COLOR_HOLE) {
 					holeBase = base;
-					holePos = pos;
+					holePosition = pos;
 					return;
 				}
 		
+	}
+
+	@JsonCreator
+	public BaseballWorld(@JsonProperty("name")String name) {
+		super(name);
 	}
 
 	/**
@@ -144,8 +154,8 @@ public class BaseballWorld extends World {
 			return i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
-		for (int base = 0; base< baseAmount; base++)
-			for (int pos=0; pos<posAmount; pos++)
+		for (int base = 0; base< basesAmount; base++)
+			for (int pos=0; pos<positionsAmount; pos++)
 				if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
 					sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
@@ -158,14 +168,14 @@ public class BaseballWorld extends World {
 
 		BaseballWorld otherField = (BaseballWorld) other;
 		if (   this.holeBase != otherField.holeBase
-				|| this.holePos != otherField.holePos
+				|| this.holePosition != otherField.holePosition
 				|| this.getBasesAmount() != otherField.getBasesAmount()
 				|| this.getPositionsAmount() != otherField.getPositionsAmount())
 
 			return false;
 
-		for (int base = 0; base< baseAmount; base++)
-			for (int pos=0; pos<posAmount; pos++)
+		for (int base = 0; base< basesAmount; base++)
+			for (int pos=0; pos<positionsAmount; pos++)
 				if (getPlayerColor(base, pos) != otherField.getPlayerColor(base, pos))
 					return false;
 
@@ -231,14 +241,15 @@ public class BaseballWorld extends World {
 		BaseballWorld other = (BaseballWorld) world;
 		
 		holeBase = other.holeBase;
-		holePos = other.holePos;
+		holePosition = other.holePosition;
 
-		baseAmount = other.baseAmount;
-		posAmount = other.posAmount;
-		field= new int[other.baseAmount*other.posAmount];
-		for (int base=0; base<baseAmount; base++)
-			for (int pos=0; pos<posAmount; pos++)
+		basesAmount = other.basesAmount;
+		positionsAmount = other.positionsAmount;
+		field= new int[other.basesAmount*other.positionsAmount];
+		for (int base=0; base<basesAmount; base++)
+			for (int pos=0; pos<positionsAmount; pos++)
 				setPlayerColor(base, pos, other.getPlayerColor(base, pos));
+		moveCount = other.moveCount;
 	}
 
 	/** Returns a string representation of the world */
@@ -246,10 +257,10 @@ public class BaseballWorld extends World {
 		StringBuffer sb = new StringBuffer();
 		sb.append("BaseballWorld "+getName()+": {");
 
-		for (int base = 0 ; base < baseAmount ; base++) {
+		for (int base = 0 ; base < basesAmount ; base++) {
 			if (base!=0)
 				sb.append(" , ");
-			for (int pos = 0 ; pos < posAmount ; pos++) {
+			for (int pos = 0 ; pos < positionsAmount ; pos++) {
 				if (pos!=0)
 					sb.append(",");
 				sb.append(getPlayerColor(base,pos));
@@ -261,20 +272,25 @@ public class BaseballWorld extends World {
 
 	/** Returns the number of bases on your field */
 	public int getBasesAmount() {
-		return baseAmount;
+		return basesAmount;
 	}
 	/** Returns the amount of players per base on this field */
 	public int getPositionsAmount() {
-		return posAmount;
+		return positionsAmount;
 	}
 
+	/** Returns the amount of moves done so far */
+	public int getMoveCount() {
+		return moveCount;
+	}
+	
 	/**
 	 * Returns the color of the player in base baseIndex at position playerLocation
 	 * @param base the index of the base we are looking for
 	 * @param pos  the position within that base (between 0 and getLocationsAmount()-1 )
 	 */
 	public int getPlayerColor(int base, int pos)  {
-		return field[base*posAmount+pos];
+		return field[base*positionsAmount+pos];
 	}
 	/**
 	 * Sets the color of the player in the specified base at the specified position to the specified value 
@@ -283,7 +299,7 @@ public class BaseballWorld extends World {
 	 * @param color the new value
 	 */
 	public void setPlayerColor(int base, int pos, int color)  {
-		field[base*posAmount+pos] = color;
+		field[base*positionsAmount+pos] = color;
 	}
 
 	/** Returns the index of the base where is hole is located */
@@ -293,9 +309,13 @@ public class BaseballWorld extends World {
 
 	/** Returns the position in the base where is hole is located */
 	public int getHolePosition(){
-		return this.holePos;
+		return this.holePosition;
 	}
 	
+	public int[] getInitialField() {
+		return initialField;
+	}
+
 	public int[] getField()
 	{
 		return field;
@@ -308,10 +328,10 @@ public class BaseballWorld extends World {
 		
 		StringBuffer sb = new StringBuffer("{");
 
-		for (int base = 0 ; base < baseAmount ; base++) {
+		for (int base = 0 ; base < basesAmount ; base++) {
 			if (base!=0)
 				sb.append(" , ");
-			for (int pos = 0 ; pos < posAmount ; pos++) {
+			for (int pos = 0 ; pos < positionsAmount ; pos++) {
 				if (pos!=0)
 					sb.append(",");
 				sb.append(initialField[base*getPositionsAmount()+ pos]);
@@ -326,10 +346,11 @@ public class BaseballWorld extends World {
 
 	}
 	/** Returns if every player of the field is on the right base */
+	@JsonIgnore
 	public boolean isSorted() {
-		for (int base=0; base<baseAmount; base++)
-			for (int pos=0; pos<posAmount; pos++)
-				if (base==baseAmount-1) {// last base, may contain the hole
+		for (int base=0; base<basesAmount; base++)
+			for (int pos=0; pos<positionsAmount; pos++)
+				if (base==basesAmount-1) {// last base, may contain the hole
 					if (   getPlayerColor(base, pos) != COLOR_HOLE 
 					    && getPlayerColor(base, pos) != base)
 						return false;
@@ -339,8 +360,8 @@ public class BaseballWorld extends World {
 	}
 	/** Returns if every player of the specified base is on the right base */
 	public boolean isBaseSorted(int base) {
-		for (int pos=0;pos<posAmount;pos++)
-			if (base==baseAmount-1) // last base, may contain the hole
+		for (int pos=0;pos<positionsAmount;pos++)
+			if (base==basesAmount-1) // last base, may contain the hole
 				if (   getPlayerColor(base, pos) != COLOR_HOLE 
 				    && getPlayerColor(base, pos) != base)
 					return false;
@@ -372,9 +393,10 @@ public class BaseballWorld extends World {
 					position,base,holeBase));
 
 		// All clear. Proceed.
-		swap(base, position, holeBase,holePos);
+		swap(base, position, holeBase,holePosition);
 		holeBase = base;
-		holePos = position;
+		holePosition = position;
+		moveCount++;
 	}
 
 
