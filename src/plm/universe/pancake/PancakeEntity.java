@@ -3,6 +3,10 @@ package plm.universe.pancake;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -21,7 +25,8 @@ public class PancakeEntity extends Entity {
 	}
 
 	/** Copy constructor (used internally) */
-	public PancakeEntity(String name) {
+	@JsonCreator
+	public PancakeEntity(@JsonProperty("name")String name) {
 		super(name);
 	}
 	
@@ -52,6 +57,7 @@ public class PancakeEntity extends Entity {
 	}
 
 	/** Returns the size of the pancake stack */
+	@JsonIgnore
 	public int getStackSize() {
 		return ((PancakeWorld) world).getStackSize();
 	}
@@ -66,6 +72,7 @@ public class PancakeEntity extends Entity {
 	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
 	 */
+	@JsonIgnore
 	public boolean isSorted() {
 		return ( (PancakeWorld) this.world).isSorted();
 	}
@@ -84,9 +91,12 @@ public class PancakeEntity extends Entity {
 	/* BINDINGS TRANSLATION: French */
 	public void retourne(int numberOfPancakes) { flip(numberOfPancakes); }
 	public int getRayonCrepe(int rank) { return getPancakeRadius(rank); }
+	@JsonIgnore
 	public int getTaillePile() { return getStackSize(); }
 	public boolean estCrepeRetournee(int rank) { return isPancakeUpsideDown(rank); }
+	@JsonIgnore
 	public boolean estTriee() { return isSorted(); }
+	@JsonIgnore
 	public boolean estChoisi() { return isSelected(); }
 
 	@Override

@@ -7,6 +7,10 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
@@ -19,7 +23,8 @@ public class PancakeWorld extends World {
 	private int selected = -1;
 	private boolean burnedWorld ;
 	public boolean wasRandom = false;
-	
+	private Pancake[] pancakeStack; // The stack of pancakes
+
 	/** Copy constructor */ 
 	public PancakeWorld(PancakeWorld world) {
 		super(world);
@@ -80,6 +85,11 @@ public class PancakeWorld extends World {
 		this.burnedWorld = burnedPancake;
 	}
 	
+	@JsonCreator
+	public PancakeWorld(@JsonProperty("name")String name) {
+		super(name);
+	}
+
 	/** Returns a textual description of the differences between the caller and the parameter */
 	@Override
 	public String diffTo(World o) {
@@ -130,12 +140,16 @@ public class PancakeWorld extends World {
 		this.burnedWorld = other.burnedWorld;
 		this.lastMove = other.lastMove;
 		this.moveCount = other.moveCount;
-		super.reset(world);		
+		super.reset(world);
 	}
 	
-	public Pancake[] getStack()
-	{
+	@JsonProperty("pancakeStack")
+	public Pancake[] getStack() {
 		return pancakeStack;
+	}
+
+	public void setPancakeStack(Pancake[] pancakeStack) {
+		this.pancakeStack = pancakeStack;
 	}
 
 	public int getMoveCount() {
@@ -150,6 +164,7 @@ public class PancakeWorld extends World {
 		return burnedWorld;
 	}
 
+	@JsonIgnore
 	public boolean isWasRandom() {
 		return wasRandom;
 	}
@@ -185,7 +200,6 @@ public class PancakeWorld extends World {
 	}
 
 	/* --------------------------------------- */
-	private Pancake[] pancakeStack; // The stack of pancakes
 
 	private void swap(int from, int to) {
 		Pancake temp = pancakeStack[from];
@@ -221,9 +235,11 @@ public class PancakeWorld extends World {
 	
 	
 	/** Returns the index of the last flipped pancake */
+	@JsonIgnore
 	protected int getLastMove() {
 		return lastMove;
 	}
+	@JsonIgnore
 	protected int getSelectedPancake() {
 		return selected;
 	}
@@ -245,6 +261,7 @@ public class PancakeWorld extends World {
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
 	 */
+	@JsonIgnore
 	public int getStackSize() {
 		return pancakeStack.length;
 	}
@@ -262,6 +279,7 @@ public class PancakeWorld extends World {
 	}
 	
 	/** Returns whether the stack of pancakes is correctly sorted according to the control freak pancake seller */
+	@JsonIgnore
 	public boolean isSorted() {
 		for ( int rank = 0 ; rank < pancakeStack.length ; rank++) {
 			Pancake pancake = pancakeStack[rank];
@@ -283,6 +301,7 @@ public class PancakeWorld extends World {
 	}
 
 	/** Returns whether we pay attention to the burned side or not */
+	@JsonIgnore
 	public boolean isBurnedPancake() {
 		return burnedWorld;
 	}

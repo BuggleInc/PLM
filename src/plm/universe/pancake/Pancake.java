@@ -1,11 +1,16 @@
 package plm.universe.pancake;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Pancake {
 	private int radius; // Radius of the pancake
 	private boolean upsideDown; // True if the burned face is facing the sky, else false
 	
 	/** Create a new pancake of that radius. If the given radius is negative, the pancake is upside down */
-	public Pancake(int radius) {
+	@JsonCreator
+	public Pancake(@JsonProperty("radius")int radius) {
 		this.radius = Math.abs(radius);
 		this.upsideDown = radius<0;
 	}
@@ -46,7 +51,12 @@ public class Pancake {
 		return this.radius;
 	}
 	
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
 	/** Returns whether the pancake is upside down */
+	@JsonIgnore
 	public boolean isUpsideDown() {
 		return this.upsideDown;
 	}
