@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.universe.Entity;
@@ -13,6 +15,7 @@ import plm.universe.hanoi.operations.HanoiMove;
 
 public class HanoiEntity extends Entity {
 	
+	@JsonCreator
 	public HanoiEntity() {
 		super();
 	}
@@ -47,7 +50,7 @@ public class HanoiEntity extends Entity {
 	public void regularMove(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
-		addOperation(new HanoiMove(this, src, dst));
+		addOperation(new HanoiMove(src, dst));
 		stepUI();
 		/* END HIDDEN */
 	}

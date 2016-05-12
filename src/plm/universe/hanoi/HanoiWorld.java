@@ -8,6 +8,10 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
@@ -46,6 +50,11 @@ public class HanoiWorld extends World {
 	public HanoiWorld(String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
 		super(name);
 		slots = new Vector[] {A, B, C, D};		
+	}
+	
+	@JsonCreator
+	public HanoiWorld(@JsonProperty("name")String name) {
+		super(name);
 	}
 	
 	/** Reset the state of the current world to the one passed in argument
@@ -136,7 +145,7 @@ public class HanoiWorld extends World {
 	public void move(Integer src, Integer dst) {
 		I18n i18n = I18nManager.getI18n(getLocale());
 		if (src < 0 || src >= slots.length || dst < 0 || dst >= slots.length) 
-			throw new IllegalArgumentException(i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotAmount()-1));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotsAmount()-1));
 		if (src == dst)
 			throw new IllegalArgumentException(i18n.tr("Cannot move from slot {0} to itself",src));
 		if (slots[src].size() == 0)
@@ -151,7 +160,9 @@ public class HanoiWorld extends World {
 		moveCount  ++;
 		slots[dst].add(slots[src].remove(slots[src].size()-1));
 	}
-	public int getSlotAmount() {
+
+	@JsonIgnore
+	public int getSlotsAmount() {
 		return slots.length;
 	}
 	public int getSlotSize(int slot) {
@@ -161,18 +172,23 @@ public class HanoiWorld extends World {
 		return slots[slot].isEmpty()?99:slots[slot].lastElement().getSize();
 	}
 	
-	public Vector<HanoiDisk>[] getSlot()
+	public Vector<HanoiDisk>[] getSlots()
 	{
 		return slots;
 	}
-	
+
+	public void setSlots(Vector<HanoiDisk>[] slots)
+	{
+		this.slots = slots;
+	}
+
 	public int getMoveCount()
 	{
 		return this.moveCount;
 	}
 	
 	public Color getColor(int slot, int pos) {
-		if (slot >= getSlotAmount() || slot < 0)
+		if (slot >= getSlotsAmount() || slot < 0)
 			throw new RuntimeException("Invalid slot: "+slot);
 		if (pos>= slots[slot].size())
 			throw new RuntimeException("Slot "+slot+" is only "+slots[slot].size()+" high; cannot take position "+pos);

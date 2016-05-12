@@ -3,15 +3,23 @@ package plm.universe.hanoi;
 import java.awt.Color;
 import java.util.Vector;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import plm.core.model.json.CustomColorSerializer;
+
 public class HanoiDisk {
 	private int size;
+	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color color;
 	
 	public HanoiDisk(int size) {
 		this(size, Color.yellow);
 	}
 	
-	public HanoiDisk(int size, Color color) {
+	@JsonCreator
+	public HanoiDisk(@JsonProperty("size")int size, @JsonProperty("color")Color color) {
 		this.size = size;
 		this.color = color;
 	}
