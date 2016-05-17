@@ -5,6 +5,7 @@ import java.awt.Color;
 import org.xnap.commons.i18n.I18n;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -17,6 +18,7 @@ import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
+@JsonFilter("buggleWorldCellFilter")
 public class BuggleWorldCell extends GridWorldCell {
 	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color color;
@@ -31,17 +33,18 @@ public class BuggleWorldCell extends GridWorldCell {
 	@JsonSerialize(using = CustomColorSerializer.class)
 	public static final Color DEFAULT_BAGGLE_COLOR = new Color(0.82f,0.41f,0.12f);
 
-	private boolean hasBaggle;
+	private boolean hasBaggle = false;
 
 	private String content = "";
 
 	@JsonProperty("leftWall")
-	private boolean leftWall;
+	private boolean leftWall = false;
 
 	@JsonProperty("topWall")
-	private boolean topWall;
+	private boolean topWall = false;
 
-	public BuggleWorldCell(BuggleWorld w, int x, int y) {
+	@JsonCreator
+	public BuggleWorldCell(@JsonProperty("world")BuggleWorld w, @JsonProperty("x")int x, @JsonProperty("y")int y) {
 		this(w, x, y, DEFAULT_COLOR, false, false, false, "");
 	}
 
@@ -52,11 +55,6 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public BuggleWorldCell copy(GridWorld w) {
 		return new BuggleWorldCell(this,w);
-	}
-
-	@JsonCreator
-	public BuggleWorldCell(@JsonProperty("world")BuggleWorld w, @JsonProperty("x")int x, @JsonProperty("y")int y, @JsonProperty("color")Color color, @JsonProperty("leftWall")boolean leftWall, @JsonProperty("topWall")boolean topWall) {
-		this(w, x, y, color, leftWall, topWall, false, "");
 	}
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, boolean baggle, String content) {
