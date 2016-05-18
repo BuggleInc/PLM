@@ -1,20 +1,22 @@
 package plm.universe.turtles.operations;
 
 import plm.universe.Operation;
-import plm.universe.turtles.Turtle;
 
 public abstract class TurtleOperation extends Operation
 {
 	
-	private Turtle turtle;
+	private String turtleID;
 
-	public TurtleOperation(String name, Turtle turtle) {
+	public TurtleOperation(String name, String turtleID) {
 		super(name);
-		this.turtle = turtle;
+		this.turtleID = turtleID;
 	}
 	
-	public Turtle getTurtle() {
-		return turtle;
+	public String getTurtleID() {
+		return turtleID;
 	}
 	
+	public void setTurtleID(String turtleID) {
+		this.turtleID = turtleID;
+	}
 }

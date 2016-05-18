@@ -1,14 +1,19 @@
 package plm.universe.turtles.operations;
 
-import plm.universe.turtles.Turtle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AddSizeHint extends TurtleOperation {
 
 	private int x1, y1, x2, y2;
 	private String text;
 	
-	public AddSizeHint(Turtle turtle, int x1, int y1, int x2, int y2, String text) {
-		super("addSizeHint", turtle);
+	@JsonCreator
+	public AddSizeHint(@JsonProperty("turtleID")String turtleID,
+			@JsonProperty("x1")int x1, @JsonProperty("y1")int y1,
+			@JsonProperty("x2")int x2, @JsonProperty("y2")int y2,
+			@JsonProperty("text")String text) {
+		super("addSizeHint", turtleID);
 		this.x1 = x1;
 		this.y1 = y1;
 		this.x2 = x2;

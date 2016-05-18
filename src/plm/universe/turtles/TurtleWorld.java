@@ -12,6 +12,9 @@ import javax.script.ScriptException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
@@ -30,7 +33,8 @@ public class TurtleWorld extends World {
 		super(name);
 	}
 
-	public TurtleWorld(String name, int width, int height) {
+	@JsonCreator
+	public TurtleWorld(@JsonProperty("name")String name, @JsonProperty("width")int width, @JsonProperty("height")int height) {
 		super(name);
 		this.width = width;
 		this.height = height;
@@ -88,6 +92,14 @@ public class TurtleWorld extends World {
 		synchronized (shapes) {
 			shapes.clear();
 		}
+	}
+
+	public ArrayList<Shape> getShapes() {
+		return shapes;
+	}
+
+	public ArrayList<SizeHint> getSizeHints() {
+		return sizeHints;
 	}
 
 	public Iterator<Shape> shapes() {

@@ -1,13 +1,17 @@
 package plm.universe.turtles.operations;
 
-import plm.universe.turtles.Turtle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MoveTurtle extends TurtleOperation {
 
 	private double oldX, oldY, newX, newY;
 	
-	public MoveTurtle(Turtle turtle, double oldX, double oldY, double newX, double newY) {
-		super("moveTurtle", turtle);
+	@JsonCreator
+	public MoveTurtle(@JsonProperty("turtleID")String turtleID,
+			@JsonProperty("oldX")double oldX, @JsonProperty("oldY")double oldY,
+			@JsonProperty("newX")double newX, @JsonProperty("newY")double newY) {
+		super("moveTurtle", turtleID);
 		this.oldX = oldX;
 		this.oldY = oldY;
 		this.newX = newX;

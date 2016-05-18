@@ -1,25 +1,29 @@
 package plm.universe.turtles;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import plm.core.model.json.CustomColorSerializer;
+
 public class Circle implements Shape {
 	public double x,y,radius;
+	@JsonSerialize(using = CustomColorSerializer.class)
 	public Color color;
 
-	public Circle(double x,double y, double radius, Color color) {
+	@JsonCreator
+	public Circle(@JsonProperty("x")double x, @JsonProperty("y")double y, 
+			@JsonProperty("radius")double radius, @JsonProperty("color")Color color) {
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
 		this.color = color;
 	}
-	@Override
-	public void draw(Graphics2D g) {
-		g.setColor(color);
-		g.drawOval((int) (x-radius), (int) (y-radius), (int) (2.*radius), (int) (2.*radius));
-	}
+
 	@Override
 	public Shape copy() {
 		return new Circle(x, y, radius, color);

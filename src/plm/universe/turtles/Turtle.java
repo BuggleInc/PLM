@@ -6,8 +6,14 @@ import java.io.IOException;
 
 import org.xnap.commons.i18n.I18n;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
+import plm.core.model.json.CustomColorSerializer;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
@@ -26,6 +32,7 @@ public class Turtle extends Entity {
 	public final static int RADIAN = 2;
 	public static final double EPSILON = .0000001;
 
+	@JsonSerialize(using = CustomColorSerializer.class)
 	private Color color = Color.black;
 
 	private double x = 0.;
@@ -72,6 +79,13 @@ public class Turtle extends Entity {
 		this.penDown = t.penDown;
 	}
 
+	@JsonCreator
+	public Turtle(@JsonProperty("name")String name, @JsonProperty("x")double x, @JsonProperty("y")double y) {
+		super(name);
+		this.x = x;
+		this.y = y;
+	}
+
 	@Override
 	public void copy(Entity e) {
 		super.copy(e);
@@ -93,6 +107,7 @@ public class Turtle extends Entity {
 		moveTo(x + dist * Math.cos(heading + Math.PI), y + dist * Math.sin(heading + Math.PI));
 	}
 
+	@JsonIgnore
 	public Direction getHeadingDirection() {
 		final double w = getWorld().getWidth();
 		final double h = getWorld().getHeight();
@@ -131,14 +146,14 @@ public class Turtle extends Entity {
 	
 	public void line(double x1, double y1, double x2, double y2, Color color) {
 		if (penDown) {
-			addOperation(new AddLine(this, x1, y1, x2, y2, color));
+			addOperation(new AddLine(getName(), x1, y1, x2, y2, color));
 			getWorld().addLine(x1, y1, x2, y2, color);
 		}
 	}
 	
 	public void circle(double radius) {
 		if (penDown) {
-			addOperation(new AddCircle(this, x, y, radius, color));
+			addOperation(new AddCircle(getName(), x, y, radius, color));
 			getWorld().addCircle(x, y, radius, color);
 			stepUI();
 		}
@@ -209,7 +224,7 @@ public class Turtle extends Entity {
 		} 
 
 		line(x, y, nX, nY, color);
-		addOperation(new MoveTurtle(this, x, y, nX, nY));
+		addOperation(new MoveTurtle(getName(), x, y, nX, nY));
 		this.x = nX;
 		this.y = nY;		
 
@@ -244,6 +259,7 @@ public class Turtle extends Entity {
 				"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
 	}
 
+	@JsonIgnore
 	public boolean isPenDown() {
 		return penDown;
 	}
@@ -257,20 +273,21 @@ public class Turtle extends Entity {
 	}
 
 	public void hide() {
-		addOperation(new ChangeTurtleVisible(this, this.visible, false));
+		addOperation(new ChangeTurtleVisible(getName(), this.visible, false));
 		this.visible = false;
 		stepUI();
 	}
 	public void show() {
-		addOperation(new ChangeTurtleVisible(this, this.visible, true));
+		addOperation(new ChangeTurtleVisible(getName(), this.visible, true));
 		this.visible = true;
 		stepUI();
 	}
+	@JsonIgnore
 	public boolean isVisible() {
 		return this.visible;
 	}
 	public void clear() {
-		addOperation(new ClearCanvas(this));
+		addOperation(new ClearCanvas(getName()));
 		getWorld().clear();
 		stepUI();
 	}
@@ -295,16 +312,18 @@ public class Turtle extends Entity {
 		throw new RuntimeException("Unknown angular unit:" + angularUnit + " (please report this bug)");
 	}
 
+	@JsonProperty("direction")
 	public double getHeading() {
 		return toAngularUnit(heading);
 	}
 
+	@JsonProperty("direction")
 	public void setHeading(double heading) {
 		setHeadingRadian(fromAngularUnit(heading));
 	}
 
 	protected void setHeadingRadian(double heading) {
-		addOperation(new RotateTurtle(this, toAngularUnit(this.heading), toAngularUnit(heading)));
+		addOperation(new RotateTurtle(getName(), toAngularUnit(this.heading), toAngularUnit(heading)));
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
 		stepUI();
 	}
@@ -331,7 +350,7 @@ public class Turtle extends Entity {
 	}
 
 	public void setX(double x) {
-		addOperation(new MoveTurtle(this, this.x, y, x, y));
+		addOperation(new MoveTurtle(getName(), this.x, y, x, y));
 		this.x = x;
 		stepUI();
 	}
@@ -340,14 +359,24 @@ public class Turtle extends Entity {
 		return y;
 	}
 
+	@JsonProperty("x")
+	public void initializeX(double x) {
+		this.x = x;
+	}
+
+	@JsonProperty("y")
+	public void initializeY(double y) {
+		this.y = y;
+	}
+
 	public void setY(double y) {
-		addOperation(new MoveTurtle(this, x, this.y, x, y));
+		addOperation(new MoveTurtle(getName(), x, this.y, x, y));
 		this.y = y;
 		stepUI();
 	}
 
 	public void setPos(double x, double y) {
-		addOperation(new MoveTurtle(this, this.x, this.y, x, y));
+		addOperation(new MoveTurtle(getName(), this.x, this.y, x, y));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -395,12 +424,12 @@ public class Turtle extends Entity {
 	}
 
 	public void addSizeHint(int x1, int y1, int x2, int y2,String text){
-		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		addOperation(new AddSizeHint(getName(), x1, y1, x2, y2, text));
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 	public void addSizeHint(int x1, int y1, int x2, int y2){
 		String text = String.format("%.0f", Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
-		addOperation(new AddSizeHint(this, x1, y1, x2, y2, text));
+		addOperation(new AddSizeHint(getName(), x1, y1, x2, y2, text));
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 
@@ -470,6 +499,7 @@ public class Turtle extends Entity {
 	public void cercle(double radius){ circle(radius); }
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public void allerVers(double x, double y) {moveTo(x,y);}
+	@JsonIgnore
 	public double getCap()           { return getHeading(); }
 	public void setCap(double cap)   { setHeading(cap);     }
 	public void leveBrosse()         { brushUp(); }
@@ -477,6 +507,7 @@ public class Turtle extends Entity {
 	public void leveCrayon()         { penUp(); }
 	public void baisseCrayon()       { penDown(); }
 	public boolean estCrayonBaisse() { return isPenDown();}
+	@JsonIgnore
 	public Color getCouleur()        { return getColor(); }
 	public void setCouleur(Color c)  { setColor(c); }
 	public boolean estChoisi()       { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only

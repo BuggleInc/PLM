@@ -1,11 +1,12 @@
 package plm.universe.turtles.operations;
 
-import plm.universe.turtles.Turtle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClearCanvas extends TurtleOperation {
 
-	
-	public ClearCanvas(Turtle turtle) {
-		super("clearCanvas", turtle);
+	@JsonCreator
+	public ClearCanvas(@JsonProperty("turtleID")String turtleID) {
+		super("clearCanvas", turtleID);
 	}
 }

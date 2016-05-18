@@ -1,20 +1,27 @@
 package plm.universe.turtles;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.geom.Line2D;
 
 import org.xnap.commons.i18n.I18n;
 
-;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import plm.core.model.json.CustomColorSerializer;
+
 
 
 public class Line implements Shape {
 	public double x1, y1,  x2, y2;
+	@JsonSerialize(using = CustomColorSerializer.class)
 	public Color color;
 	private double length = -1;
 	
-	public Line(double x1, double y1, double x2, double y2, Color color) {
+	@JsonCreator
+	public Line(@JsonProperty("x1")double x1, @JsonProperty("y1")double y1,
+			@JsonProperty("x2")double x2, @JsonProperty("y2")double y2,
+			@JsonProperty("color")Color color) {
 		this.color = color;
 		/* make sure that the first point of each segment is before the second point in comparison order */ 
 		if (doubleEqual(x1, x2)) { // Don't check if x1<x2 before checking their approximate equality
@@ -40,11 +47,6 @@ public class Line implements Shape {
 			this.x2 = x1;
 			this.y2 = y1;			
 		}
-	}
-	
-	public void draw(Graphics2D g){
-		g.setColor(color);
-		g.draw(new Line2D.Double(x1,y1,x2,y2));
 	}
 
 	public Line copy() {

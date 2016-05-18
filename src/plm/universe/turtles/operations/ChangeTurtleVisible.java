@@ -1,12 +1,16 @@
 package plm.universe.turtles.operations;
 
-import plm.universe.turtles.Turtle;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChangeTurtleVisible extends TurtleOperation {
 	private boolean oldVisible, newVisible;
 	
-	public ChangeTurtleVisible(Turtle turtle, boolean oldVisible, boolean newVisible) {
-		super("changeTurtleVisible", turtle);
+	@JsonCreator
+	public ChangeTurtleVisible(@JsonProperty("turtleID")String turtleID,
+			@JsonProperty("oldVisible")boolean oldVisible,
+			@JsonProperty("newVisible")boolean newVisible) {
+		super("changeTurtleVisible", turtleID);
 		this.oldVisible = oldVisible;
 		this.newVisible = newVisible;
 	}
