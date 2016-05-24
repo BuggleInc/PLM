@@ -1,19 +1,36 @@
 package plm.universe.cons;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /** Recursive sequence of integers */
 
 public class RecList {
+	@JsonIgnore
 	public int head;
+	@JsonIgnore
 	public RecList tail;
 
 	public RecList (int car, RecList cdr) {    // constructor
 		head = car;  tail = cdr; 
 	}
 	
+	@JsonCreator
+	public RecList(@JsonProperty("list")int[] list) {
+		int length = list.length;
+		if(length > 0) {
+			this.head = list[0];
+			if(length > 1) {
+				this.tail = new RecList(Arrays.copyOfRange(list, 1, length));
+			}
+		}
+	}
+
 	/* Constructor from an array of integers. Not a constructor as it returns sometimes null */
 	public static RecList fromArray(int[] a) {
 		return fromArray(a,0);
@@ -43,6 +60,7 @@ public class RecList {
 		return res;
 	}
 
+	@JsonProperty("list")
 	public List<Integer> toList() {
 		List<Integer> res = new ArrayList<Integer>();
 		RecList ptr = this;
@@ -52,6 +70,7 @@ public class RecList {
 		}
 		return res;
 	}
+
 	public String toString() {
 		StringBuffer res = new StringBuffer();
 		res.append(" [");
@@ -67,6 +86,19 @@ public class RecList {
 		}
 		res.append("] ");
 		return res.toString();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof RecList)) {
+			return false;
+		}
+		RecList other = (RecList) o;
+
+		int[] list1 = this.toArray();
+		int[] list2 = other.toArray();
+
+		return Arrays.equals(list1, list2);
 	}
 
 	public int plmInsiderLength() {

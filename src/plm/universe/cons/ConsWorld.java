@@ -1,11 +1,17 @@
 package plm.universe.cons;
 
+import java.util.Vector;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
+import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ConsWorld extends BatWorld {
@@ -14,6 +20,11 @@ public class ConsWorld extends BatWorld {
 	}
 	public ConsWorld(String funName) {
 		super(funName);
+	}
+
+	@JsonCreator
+	public ConsWorld(@JsonProperty("name")String name, @JsonProperty("batTests")Vector<BatTest> tests) {
+		super(name, tests);
 	}
 
 	@Override
