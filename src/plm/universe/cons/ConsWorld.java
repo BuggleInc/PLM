@@ -20,6 +20,8 @@ public class ConsWorld extends BatWorld {
 	}
 	public ConsWorld(String funName) {
 		super(funName);
+		getEntities().clear();
+		addEntity(new ConsEntity(funName));
 	}
 
 	@JsonCreator
@@ -74,6 +76,4 @@ public class ConsWorld extends BatWorld {
 			}
 		}
 	}
-
-
 }

@@ -19,7 +19,7 @@ public class RecList {
 	public RecList (int car, RecList cdr) {    // constructor
 		head = car;  tail = cdr; 
 	}
-	
+
 	@JsonCreator
 	public RecList(@JsonProperty("list")int[] list) {
 		int length = list.length;
@@ -40,6 +40,12 @@ public class RecList {
 			return null;
 		return new RecList(seq[rank], fromArray(seq,rank+1) );
 	}
+
+	@SuppressWarnings("unchecked")
+	public static scala.collection.immutable.List<scala.Int> fromArraytoScalaList(int[] list) {
+		return (scala.collection.immutable.List) RecListWrapper$.MODULE$.toList(list);
+	}
+
 	public int[] toArray() {
 		int len = 0;
 		RecList ptr = this;

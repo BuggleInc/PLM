@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import org.xnap.commons.i18n.I18n;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangBlockly;
@@ -67,24 +68,29 @@ public class BatEntity extends Entity {
 		String extraScript = "";
 		if((lang instanceof LangPython || lang instanceof LangBlockly) && !addedExtraScript) {
 			// FIXME: Find a better workflow to add this script to all BatEntity
-			BatWorld batWorld = (BatWorld) world;
-			int nbParameters = batWorld.getTests().get(0).parameters.length;
-			String parameters = "";
-			for( int i=0; i<nbParameters; i++) {
-				if(i>0) {
-					parameters += ", ";
-				}
-				parameters += "t.getParameter(" + i + ")";
-			}
 			addedExtraScript = true;
-			extraScript = 
-					"i = 0\n" +
-					"for t in batTests:\n" +
-					"  t.setResult( "+name+"( "+ parameters +" ) )\n" +
-					"  entity.generateSetResultOperation(i, t)\n" +
-					"  i += 1\n";	
+			extraScript = getScript();
 		}
 		super.setScript(lang, s + extraScript);
+	}
+
+	@JsonIgnore
+	public String getScript() {
+		BatWorld batWorld = (BatWorld) world;
+		int nbParameters = batWorld.getTests().get(0).parameters.length;
+		String parameters = "";
+		for( int i=0; i<nbParameters; i++) {
+			if(i>0) {
+				parameters += ", ";
+			}
+			parameters += "t.getParameter(" + i + ")";
+		}
+		return
+				"i = 0\n" +
+				"for t in batTests:\n" +
+				"  t.setResult( "+name+"( "+ parameters +" ) )\n" +
+				"  entity.generateSetResultOperation(i, t)\n" +
+				"  i += 1\n";	
 	}
 
 	public void generateSetResultOperation(int index, BatTest t) {
