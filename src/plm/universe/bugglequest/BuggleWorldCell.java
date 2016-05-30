@@ -2,14 +2,11 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 
-import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
-
-
 
 public class BuggleWorldCell extends GridWorldCell {
 	private Color color;
@@ -119,14 +116,14 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public void baggleAdd() throws AlreadyHaveBaggleException {
 		if (hasBaggle) 
-			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
+			throw new AlreadyHaveBaggleException(getWorld().getGame().i18n.tr("There is already a baggle here."));
 		hasBaggle = true;
 		world.notifyWorldUpdatesListeners();		
 	}
 	
 	public void baggleRemove() {
 		if (!hasBaggle)
-			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
+			throw new NoBaggleUnderBuggleException(getWorld().getGame().i18n.tr("There is no baggle to pick up here."));
 		hasBaggle = false;
 	}
 	
@@ -199,28 +196,28 @@ public class BuggleWorldCell extends GridWorldCell {
 	public String diffTo(BuggleWorldCell current) {
 		StringBuffer sb = new StringBuffer();
 		if (! hasBaggle && current.hasBaggle) 
-			sb.append(this.world.i18n.tr(", there shouldn't be this baggle"));
+			sb.append(getWorld().getGame().i18n.tr(", there shouldn't be this baggle"));
 		if (  hasBaggle && ! current.hasBaggle)
-			sb.append(this.world.i18n.tr(", there should be a baggle"));
+			sb.append(getWorld().getGame().i18n.tr(", there should be a baggle"));
 		if (color == null) {
 			if (current.color != null)
-				sb.append(this.world.i18n.tr(", the ground should not be {0}",ColorMapper.color2translated(current.color)));
+				sb.append(getWorld().getGame().i18n.tr(", the ground should not be {0}",ColorMapper.color2translated(current.color,getWorld().getGame().i18n)));
 		} else if (!color.equals(current.color)) {
-			sb.append(this.world.i18n.tr(", the ground is expected to be {0}, but it is {1}", 
-					ColorMapper.color2translated(color), ColorMapper.color2translated(current.color)));
+			sb.append(getWorld().getGame().i18n.tr(", the ground is expected to be {0}, but it is {1}", 
+					ColorMapper.color2translated(color, getWorld().getGame().i18n), ColorMapper.color2translated(current.color, getWorld().getGame().i18n)));
 		}
 		if (!content.equals(current.content))
-			sb.append(this.world.i18n.tr(", the ground reads ''{0}'' (expected: ''{1}'')", current.content, content));
+			sb.append(getWorld().getGame().i18n.tr(", the ground reads ''{0}'' (expected: ''{1}'')", current.content, content));
 		if (leftWall != current.leftWall)
 			if (current.leftWall)
-				sb.append(this.world.i18n.tr(", there shouldn't be any wall at west"));
+				sb.append(getWorld().getGame().i18n.tr(", there shouldn't be any wall at west"));
 			else
-				sb.append(this.world.i18n.tr(", there should be a wall at west"));
+				sb.append(getWorld().getGame().i18n.tr(", there should be a wall at west"));
 		if (topWall != current.topWall)
 			if (current.topWall)
-				sb.append(this.world.i18n.tr(", there shouldn't be any wall at north"));
+				sb.append(getWorld().getGame().i18n.tr(", there shouldn't be any wall at north"));
 			else
-				sb.append(this.world.i18n.tr(", there should be a wall at north"));
+				sb.append(getWorld().getGame().i18n.tr(", there should be a wall at north"));
 		return sb.toString();
 	}
 }

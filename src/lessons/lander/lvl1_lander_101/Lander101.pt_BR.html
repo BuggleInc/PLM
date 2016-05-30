@@ -1,0 +1,50 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Lander 101</h1>
+
+<p>Parabéns! Você ganhou uma viagem (só de ida) para Marte numa caixa de
+cereais. A NASA está orgulhosa em doar o módulo da excursão lunar para
+esta missão, e é ele que você vai pilotar.</p>
+
+<p>Antes de pousar, você vai realizar algumas simulações de pouso. Você
+não tem que pilotar o módulo se tudo for como planejado mas, como
+dizem, "é melhor prevenir que remediar".</p>
+
+<p>Sua missão é <b>pousar o módulo com velocidade vertical de no máximo
+10 m/s.</b> Existem duas formas de influenciar o curso do módulo:
+ajustando seu ângulo ou ajustando sua potência. Nesta simulação vamos
+nos preocupar apenas com ajustar a potência, expressa em m/s².</p>
+
+<p>[!python]A função <code>step()</code> [/!][!scala|java|c]O código[/!]
+que você vai escrever agora vai ser
+chamad[!python]a[/!][!scala|java|c]o[/!] a cada 0.1 segundos durante a
+simulação. Certifique-se que seu código não demora muito para
+executar, sem usar loop while! Ele apenas deve ajustar a potência
+desejada para o próximo passo da simulação, chamando <code>[!java]void
+[/!]setDesiredThrust([!java]int
+[/!]desiredThrust[!scala]:Integer[/!])</code> onde
+<code>desiredThrust</code> é algum inteiro entre 0 e 4 (ou seja, uma
+potência entre 0 m/s² e 4 m/s²). Você só pode aumentar ou diminuir a
+potênciapor 1 entre dois passos da simulação. Portanto, se a potência
+atual é 2 e você pede 4, você vai conseguir apenas 3 no próximo
+passo. Se você pede por menos que 0 (ou, respectivamente, mais que 4),
+vai ser como se você tivesse pedido 0 (ou, respectivamente, 4).</p>
+
+<p>Para tomar decisões informadas, você pode consultar o status do
+módulo. Nesta simulação você provavelmente vai estar interessado na
+posição vertical: <code>[!java]double
+[/!]getY()[!scala]:Double[/!]</code>, e na velocidade vertical:
+<code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. Você
+também pode pedir a potência com <code>[!java]int
+[/!]getThrust()[!scala]:Integer[/!]</code> caso você não lembre o que
+pediu. Lembre que a gravidade de Marte é 3.711 m/s². Isto pode ser
+útil.</p>
+
+<p>Uma última coisa: o módulo é bem pequeno, logo você não tem muito
+combustível. Em cada passo da simulação o módulo consome tantas
+unidades de combustível quanto a potência atual. Uma vez que você
+fique sem combustível você vai cair em queda livre, portanto cuidado!
+Você pode consultar o quantidade de unidades de combustível restante
+usando <code>[!java]int [/!]getFuel()[!scala]:Integer[/!]</code>.</p>
+
+<p>Boa Sorte!</p>

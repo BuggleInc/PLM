@@ -11,27 +11,26 @@ as a computer...
    <i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. 
    In your programs, such built instructions are called functions or methods, and you 
    should add parenthesis to invoke them:</p>  
-		<pre>nameOfTheMethod()</pre>
+		<pre><code class="code-container">nameOfTheMethod()</code></pre>
 		
    <p>[!thelang] wants to have the instructions separated by semi-columns 
     (;)[!python|scala] or by new lines[/!].
     The previous example would thus be written in the following 
     way[!python|scala] (you can also add semi-columns at the end of the lines, but this is not mandatory)[/!].</p>
     
-<pre>
-meltTheChocolatePieces()[!java|c];[/!]
+<pre><code class="code-container">meltTheChocolatePieces()[!java|c];[/!]
 addSugar()[!java|c];[/!]
 coolMix()[!java|c];[/!]
 serve()[!java|c];[/!]
-</pre>
+</code></pre>
     
 [!python|scala]
    <p>It could also be written in the following way, but it's generally considered as a bad 
    practice to group several instructions on the same line since it greatly hinders the 
    readability.</p>
-<pre>
+<pre><code class="code-container">
 meltTheChocolatePieces(); addSugar(); coolMix(); serve()
-</pre>
+</code></pre>
 [/!]
 
   <p>Of course, these specific methods do not exist by default in [!thelang],
@@ -43,21 +42,19 @@ meltTheChocolatePieces(); addSugar(); coolMix(); serve()
   interactive control panel. To achieve the same effect than the <b>forward</b> button 
   (making the buggle moving one step forward), you need to write the following in the
   editor: </p>
-  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+<pre><code class="code-container">[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</code></pre>
   <p>Likewise, to achieve the same effect than the <b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b>
   and <b>right</b> buttons, you need to use respectively:</p>
-<pre>
-backward()[!java|c];[/!]
+<pre><code class="code-container">backward()[!java|c];[/!]
 left()[!java|c];[/!]
 right()[!java|c];[/!]
-</pre>
+</code></pre>
 
 	 <p>The <b>mark</b> button is a bit particular, since it correspond to two
 methods: the first one moves the pen up while the second moves it down.</p>
-<pre>
-brushUp()[!java|c];[/!]
+<pre><code class="code-container">brushUp()[!java|c];[/!]
 brushDown()[!java|c];[/!]
-</pre>
+</code></pre>
   <p>The buggle offers other methods, that are presented from the "Help/about
    this world" menu and will be introduced on need.</p>
 
@@ -70,13 +67,4 @@ brushDown()[!java|c];[/!]
   <p>Use your brush to mark the ground as you walk. Start marking the ground with 
   <code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward 
   (e.g., to enter your house without marking its ground). The full list of all 
-  instructions understood by your buggle can be found in "Help/About this world".</p>
-
-<h3>After this exercise</h3>
-<p>When switching to the next exercise, please note that there is a sub-exercise following this one. 
-By default, it is hidden in the menu and you have to open the sub-menu to see it. 
-When you switch the exercise, most of the exercises are hidden because the tree is folded, as follows:</p>
-<img src="sub-exercise-folded.png"/> 
-
-<p>You have to click on the little symbol to the left of the buggle to unfold the tree, as follows:</p>
-<img src="sub-exercise-unfolded.png"/> 
+  instructions understood by your buggle can be found by clicking on the button <i>API</i> of the <i>Code editor</i> section.</p>

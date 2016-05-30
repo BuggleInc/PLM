@@ -1,12 +1,12 @@
 package lessons.recursion.hanoi;
 
-import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class LinearTwinHanoiEntity extends HanoiEntity {
+	
 	public void move(int from, int to) {
 		if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
-			throw new RuntimeException(Game.i18n.tr(
+			throw new RuntimeException(getGame().i18n.tr(
 					"Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
 		super.move(from,to);
 	}

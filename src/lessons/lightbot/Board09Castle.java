@@ -3,16 +3,17 @@ package lessons.lightbot;
 import lessons.lightbot.universe.LightBotEntity;
 import lessons.lightbot.universe.LightBotExercise;
 import lessons.lightbot.universe.LightBotWorld;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
 
 public class Board09Castle extends LightBotExercise {
 
-	public Board09Castle(Lesson lesson) {
-		super(lesson);
+	public Board09Castle(Game game, Lesson lesson) {
+		super(game, lesson);
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Board 9", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld(game, "Board 9", 8, 8);
 		
 		new LightBotEntity(myWorld, "D2R2", 2, 1, Direction.SOUTH);
 

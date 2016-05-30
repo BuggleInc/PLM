@@ -2,6 +2,7 @@ package lessons.welcome.methods.slug;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -11,12 +12,13 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class SlugSnail extends ExerciseTemplated {
 
-	public SlugSnail(Lesson lesson) {
-		super(lesson);
+	public SlugSnail(Game game, Lesson lesson) {
+		super(game, lesson);
+		setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 
-		BuggleWorld myWorld = new BuggleWorld("Kitty", 8, 7);
+		BuggleWorld myWorld = new BuggleWorld(game, "Kitty", 8, 7);
 		for (int i = 5; i >= 2; i--)
 			myWorld.setColor(6, i,Color.pink);
 		myWorld.setColor(6, 1, Color.orange);
@@ -37,7 +39,7 @@ public class SlugSnail extends ExerciseTemplated {
 		}
 		myWorlds[0] = myWorld;
 
-		myWorld = new BuggleWorld("Snail", 8, 7);
+		myWorld = new BuggleWorld(game, "Snail", 8, 7);
 		for (int i = 5; i >= 2; i--)
 		    myWorld.setColor(6, i,Color.orange);
 		myWorld.putTopWall(6, 2);

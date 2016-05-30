@@ -1,10 +1,11 @@
 package lessons.recursion.hanoi;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.core.model.Game
 
 class ScalaTricolorHanoi2Entity extends HanoiEntity {
 
-	override def run() {
+	override def run():Unit = {
     val src = getParam(0).asInstanceOf[Int]
     val mid = getParam(1).asInstanceOf[Int]
     val dst = getParam(2).asInstanceOf[Int]
@@ -12,7 +13,7 @@ class ScalaTricolorHanoi2Entity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-	def gather(height:Int, src:Int, mid:Int, dst:Int) {
+	def gather(height:Int, src:Int, mid:Int, dst:Int):Unit = {
 		/* BEGIN SOLUTION */
     if (height >0) {
       gather(height-1,src,mid,dst);
@@ -24,7 +25,7 @@ class ScalaTricolorHanoi2Entity extends HanoiEntity {
     }
 	}
 
-  def move3(height:Int, src:Int, mid:Int, dst:Int) {
+  def move3(height:Int, src:Int, mid:Int, dst:Int):Unit = {
     if (height>0) {
       move3(height-1, src, dst, mid);
       move(src,dst);

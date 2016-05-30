@@ -63,12 +63,12 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected Map<ProgrammingLanguage,String> corrections = new HashMap<ProgrammingLanguage, String>();
 	private boolean isSetup = false;
 	
-	public ExerciseTemplatingEntity(Lesson lesson) {
-		super(lesson);
+	public ExerciseTemplatingEntity(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 	protected void setup(World[] ws, String entName, String template) {
 		this.tabName=entName;
-		setupWorlds(ws);
+		setupWorlds(ws,0);
 		
 		
 		try {
@@ -82,7 +82,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		
 		javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
 		javaFile.setTemplate  ("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
-		//System.out.println("New template: "+sf.getTemplate());
+		//getGame().getLogger().log("New template: "+sf.getTemplate());
 		
 		if (getProgLanguages().contains(Game.SCALA)) {
 			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);
@@ -107,7 +107,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		if (this.getProgLanguages().contains(Game.PYTHON))
 			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body",0,"");
+		newSource(Game.PYTHON, entName, initialCode, "$body",0,"","");
 		corrections.put(Game.PYTHON, initialCode+correction);
 		addProgLanguage(Game.PYTHON);
 	}
@@ -147,9 +147,22 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		skeleton.append("}\n");
 		
 		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",14,
-				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
+				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction,"Error");
 		addProgLanguage(Game.SCALA);
 	}
+	/*protected void templateBlockly(String entName, String initialCode, String correction, String workspace) {
+		/* The following test is intended to make sure that this function is called before setup() right above.
+		 * This is because setup() needs all programming languages to be declared when it runs */
+		/*if (isSetup())
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
+		if (this.getProgLanguages().contains(Game.BLOCKLY))
+			throw new RuntimeException("The exercise "+getName()+" has two Blockly templates. Please fix this bug.");
+		
+		newSource(Game.BLOCKLY, entName, initialCode, "$body",0,"");
+		newSource(Game.BLOCKLY, entName, workspace, "",0,"");
+		corrections.put(Game.BLOCKLY, initialCode+correction);
+		addProgLanguage(Game.BLOCKLY);
+	}*/
 	public boolean isSetup() {
 		return isSetup;
 	}

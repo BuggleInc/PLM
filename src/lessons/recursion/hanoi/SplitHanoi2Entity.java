@@ -6,7 +6,7 @@ import java.io.IOException;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class SplitHanoi2Entity extends HanoiEntity {
-	
+
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
@@ -40,7 +40,7 @@ public class SplitHanoi2Entity extends HanoiEntity {
 	public void splitHanoi(int height, int src,int other, int dst1, int dst2) {
 		/* BEGIN SOLUTION */
 		//for (int i=4;i>height;i--) System.out.print(" ");
-		//System.out.println("solve("+height+","+src1+","+src2+","+other+","+dst+")");
+		//getGame().getLogger().log("solve("+height+","+src1+","+src2+","+other+","+dst+")");
 		if (height > 0) {
 			splitHanoi(height-1, src,dst1,dst2,other);
 			move(src,dst1);
@@ -51,7 +51,7 @@ public class SplitHanoi2Entity extends HanoiEntity {
 	}
 	private void hanoi(int height, int src, int other, int dst) {
 		//for (int i=4;i>height;i--) System.out.print(" ");
-		//System.out.println("hanoi("+height+","+src+","+other+","+dst+")");
+		//getGame().getLogger().log("hanoi("+height+","+src+","+other+","+dst+")");
 		if (height>0) {
 			hanoi(height-1, src,dst,other);
 			move(src,dst);

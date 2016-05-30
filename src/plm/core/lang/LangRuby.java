@@ -2,14 +2,15 @@ package plm.core.lang;
 
 import javax.script.ScriptException;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.model.lesson.ExecutionProgress;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 
 public class LangRuby extends ScriptingLanguage {
 
-	public LangRuby() {
-		super("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
+	public LangRuby(boolean isDebugEnabled) {
+		super("Ruby", "rb",isDebugEnabled);
 	}
 
 	@Override
@@ -19,7 +20,7 @@ public class LangRuby extends ScriptingLanguage {
 	
 	@Override
 	protected boolean handleLangException(ScriptException e, Entity ent,
-			ExecutionProgress progress) {
+			ExecutionProgress progress, I18n i18n) {
 		// For now, we don't know how to decipher Ruby exceptions. 
 		return false;
 	}

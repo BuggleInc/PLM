@@ -4,19 +4,15 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
 import plm.universe.World;
 
 public class BatWorld extends World {
 	public List<BatTest> tests = new Vector<BatTest>();
 	
-	public BatWorld(String funName) {
-		super(funName);
+	public BatWorld(Game game, String funName) {
+		super(game, funName);
 		
 		addEntity(new BatEntity());
 	}
@@ -42,7 +38,7 @@ public class BatWorld extends World {
 		}
 		BatWorld other = (BatWorld) o;
 		if (other.tests.size() != tests.size()) {
-			//System.out.println("Amount of tests differ between worlds: "+tests.size()+" != "+other.tests.size());
+			//getGame().getLogger().log("Amount of tests differ between worlds: "+tests.size()+" != "+other.tests.size());
 			return false;
 		}
 		for (int i=0;i<tests.size();i++)
@@ -52,23 +48,15 @@ public class BatWorld extends World {
 			}
 		return true;
 	}
-	@Override
-	public WorldView getView() {
-		return new BatWorldView(this);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_bat.png");
-	}
 	
 	/* So that the view can display them */
-	protected List<BatTest> getTests() {
+	public List<BatTest> getTests() {
 		return tests;
 	}
 
 	/* World logic */
 	public void addTest(boolean visible, Object...params) {
-		tests.add(new BatTest(getName(),visible, params));
+		tests.add(new BatTest(getGame(), getName(),visible, params));
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
@@ -82,7 +70,7 @@ public class BatWorld extends World {
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;
 		for (int i=0;i<tests.size();i++) {
-			if (foundError && !tests.get(i).isVisible() && !Game.getInstance().isDebugEnabled()) 
+			if (foundError && !tests.get(i).isVisible() && !getGame().isDebugEnabled()) 
 				return sb.toString();
 					
 			if (!tests.get(i).equals(other.tests.get(i))) { 

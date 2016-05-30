@@ -1,7 +1,10 @@
-20150202: wannabe 2.6
+20151010: 2.6
+
+  The Long Awaited release.
 
   * Improved translations:
-    - Brazilian: missions at 62%, engine at 38%
+    - French: missions and engine at 100%
+    - Brazilian: missions at 100%, engine at 65%
     - Chinese: engine at 39%
   * Engine:
     - Ask loudly before pushing anything to the remote servers
@@ -28,6 +31,7 @@
     - #428: Instructions: typo in english
     - New exercise, searching for the second biggest value in array
     - #433: New exercise: BubblePancake [Tydax]
+    - #447: Make Dave and localization work together in Python
   * Internal organization:
     - Automatically check for classical errors in [!python] and such
     - New package in welcome lesson for summative exercises

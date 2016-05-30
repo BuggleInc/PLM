@@ -2,6 +2,7 @@ package lessons.welcome.traversal.column;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -10,11 +11,12 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalByColumn extends ExerciseTemplated {
 
-	public TraversalByColumn(Lesson lesson) {
-		super(lesson);
+	public TraversalByColumn(Game game, Lesson lesson) {
+		super(game, lesson);
 		tabName = "ColumnByColumn";
+		setToolbox();
 
-		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);
+		BuggleWorld myWorld = new BuggleWorld(game, "Grid",7,7);
 		for (int i=0; i<7;i++) {
 			myWorld.putTopWall(i, 0);
 			myWorld.putLeftWall(0, i);
@@ -24,4 +26,5 @@ public class TraversalByColumn extends ExerciseTemplated {
 
 		setup(myWorld);
 	}
+	
 }

@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class FizzBuzz extends BatExercise {
-	public FizzBuzz(Lesson lesson) {
-		super(lesson);
+	public FizzBuzz(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("fizzBuzz");
+		BatWorld myWorld = new BatWorld(game, "fizzBuzz");
 		myWorld.addTest(VISIBLE, 2) ;
 		myWorld.addTest(VISIBLE, 3) ;
 		myWorld.addTest(VISIBLE, 4) ;

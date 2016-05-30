@@ -1,6 +1,7 @@
 package plm.test.git;
 
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,6 +12,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -20,18 +22,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.User;
-import plm.core.model.Users;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitSpy;
-import plm.core.utils.FileUtils;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GitSpyTest {
@@ -43,16 +42,13 @@ public class GitSpyTest {
 	
 	public GitSpyTest() throws IOException, GitAPIException {
 		repoDir = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm-test");
-		Users users = Mockito.mock(Users.class);
-		User user = Mockito.mock(User.class);
 
-		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
-		
 		userUUID = UUID.randomUUID().toString();
 		
-		Mockito.when(user.getUserUUIDasString()).thenReturn(userUUID);
-		Mockito.when(users.getCurrentUser()).thenReturn(user);
-		gitSpy = new GitSpy(repoDir, users);
+		Game game = new Game(userUUID, mock(LogHandler.class), new Locale("en"), "Java", false);
+		
+
+		gitSpy = new GitSpy(game, repoDir, game.getGitUtils(), userUUID);
 		
 		utils = new Utils();
 		

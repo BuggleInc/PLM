@@ -1,5 +1,6 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -7,10 +8,10 @@ import plm.universe.bat.BatWorld;
 
 public class Diff21 extends BatExercise {
 
-	public Diff21(Lesson lesson) {
-		super(lesson);
+	public Diff21(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("diff21");
+		BatWorld myWorld = new BatWorld(game, "diff21");
 		myWorld.addTest(VISIBLE,  2);
 		myWorld.addTest(VISIBLE,  11);
 		myWorld.addTest(VISIBLE,  0);

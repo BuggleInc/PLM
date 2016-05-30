@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -13,17 +14,18 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
-	public ScriptingSimpleExerciseTest(ProgrammingLanguage pl) {
-		super(pl);
+	public ScriptingSimpleExerciseTest(Game game, ProgrammingLanguage pl) {
+		super(game, pl);
 	}
 	
 	@Test
 	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
+		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.CORRECTION);
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		
@@ -34,11 +36,12 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 
 	@Test
 	public void testSolutionShouldPass() throws PLMCompilerException {
+		exo.setNbError(-1);
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.CORRECTION);
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
+				pl.runEntity(ent,exo.lastResult, getGame().i18n);
 			}
 		}
 		

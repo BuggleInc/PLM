@@ -1,0 +1,54 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Percorrer pelas colunas</h2>
+
+<p>O objetivo desta série de exercícios é fazer o buggle percorrer seu
+mundo. Ele deve numerar as células por onde passa para mostrar a ordem do
+caminho.</p>
+
+<p>O loop principal de seu código deve ser algo como:</p>
+<pre>
+ enquanto não estiver na posição final
+   vá para a próxima posição
+   rotule a célula com um número
+</pre>
+
+<p>Ao contrário dos exercícios que vimos até agora, não vamos usar os métodos
+<code>avançar()</code>, <code>recuar()</code> e similares. Ao invés disto,
+vamos calcular as coordenadas da próxima posição de buggle e usar o método
+<code>setPos(x, y)</code> para <i>teletransportar</i> o buggle diretamente
+para esta posição. Por exemplo, <code>setPos(3, 5)</code> teletransporta o
+buggle para a célula onde x=3 e y=5.</p>
+
+<p>Sua primeira tarefa é escrever uma função booleana indicando se o buggle
+alcançou a posição final ou não, ou seja se ele alcançou o canto inferior
+direito do mundo. Para isto, você pode usar <code>getLarguraDoMundo()</code>
+e <code>getAlturaDoMundo()</code> que retornam respectivamente a largura e
+altura do mundo. Seu teste deve comparar a posição atual do buggle (que você
+pode acessar com <code>getX()</code> e <code>getY()</code>) com as dimensões
+do mundo.<br/>
+Cuidado, a primeira linha e coluna são numeradas com 0 e não com 1, e o
+ponto (0,0) fica no canto superior esquerdo. Isto pode parecer estranho, mas
+é bem comum em ciência da computação.</p>  
+
+<p>Então, você tem que escrever o código para alcançar a próxima posição. Neste
+exercício, você tem que percorrer o mundo linha após linha. Logo, se você
+está no fundo de uma linha, você tem que se mover para o topo da próxima,
+caso contrário você tem que se mover para a célula abaixo.</p>
+
+<p>Neste ponto, você pode lançar seu programa para verificar se o buggle
+percorre corretamente o mundo na ordem esperada, e que ele pára quando tem
+que parar. Use oo botão <b>stop</b> se o buggle não parar corretamente.</p>
+
+<p>Agora é hora de escrever os números das células. Para isto, você vai
+precisar de um contador iniciando em zero no começo do seu código, e
+incrementar de um em cada passo (por exemplo com <code>counter +=
+1;</code>).  Então, você terá que usar <code>escreverMensagem()</code> para
+escrever o valor no chão.
+</p>
+
+<p>Você provavelmente vai precisar escrever o primeiro [!java|scala|c]ou último
+[/!]valor fora do loop principal [!java|scala|c], dependendo se você prefere
+usar um <code>while</code> ou um <code>do/while</code>[/!].</p>
+
+<p>Sua vez...</p>

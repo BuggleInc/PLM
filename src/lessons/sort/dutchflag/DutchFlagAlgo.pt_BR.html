@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>O problema da bandeira holandesa</h1>
+
+<p>Seu trabalho é ordenar todas as cores da bandeira holandesa, e a única
+primitiva fornecida é trocar duas linhas dadas. Adicionalmente, você não
+deve criar quaisquer variáveis adicionais (exceto alguns índices).</p>
+
+<p>Se você pensar com carinho, isto pode ser feito em tempo linear, onde você
+ordena uma linha a cada iteração do loop. Você pode querer dar mais uma
+olhada no <a
+href="plm://lessons.sort.basic/insertion.AlgInsertionSort">insertion
+sort</a>, do qual o Dutch Flag sort é uma variação. A principal diferença é
+que você tem 3 pontos de inserção, e não apenas um...</p>
+
+ <div class="tip" id="tip-1" alt="Preciso de uma dica para começar">
+ Atravesse seus dados, guardando 3 índices:
+ <ul>
+  <li><code>afterBlue</code> é iniciado como 0. Certifique-se de que cada célula
+abaixo de <code>afterBlue</code> é preenchida com elementos azuis.</li>
+  <li><code>whiteRed</code> é iniciado como size-1. Certifique-se de que cada
+célula depois de <code>whiteRed</code> é preenchida com elementos vermelhos.</li>
+  <li><code>beforeWhite</code> é iniciado com size-1. Certifiqeu-se de que cada
+célula depois de <code>beforeWhite</code> e antes de <code>whiteRed</code> é
+preenchida com elementos brancos.</li>
+ </ul> 
+ Observe que as células não-ordenadas ficam sempre entre
+<code>afterBlue</code> e <code>beforeWhite</code>.<br/>
+ 
+ Em cada passo de sua travessia, verifique a cor da célula em
+<code>afterBlue</code> e faça as mudanças necessárias. A condição de fim de
+loop é quando <code>afterBlue</code> se torna maior que
+<code>beforeWhite</code>.<br/>
+ </div>

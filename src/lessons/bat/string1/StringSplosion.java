@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringSplosion extends BatExercise {
-	public StringSplosion(Lesson lesson) {
-		super(lesson);
+	public StringSplosion(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("stringSplosion");
+		BatWorld myWorld = new BatWorld(game, "stringSplosion");
 		myWorld.addTest(VISIBLE, "Code") ;
 		myWorld.addTest(VISIBLE, "abc") ;
 		myWorld.addTest(VISIBLE, "x") ;

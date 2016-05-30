@@ -21,7 +21,7 @@ import java.util.Collection;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.User;
+import plm.core.model.LogHandler;
 import plm.core.model.UserAbortException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -31,10 +31,10 @@ public class GitSessionKit implements ISessionKit {
 
 	private Game game;
 	private String reponame;
-	private User cachedUser = null;
 
-	public GitSessionKit(Game game) {
+	public GitSessionKit(Game game, String userUUID) {
 		this.game = game;
+		this.reponame = userUUID;
 	}
 
 	/**
@@ -46,24 +46,22 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
-
-		Collection<Lesson> lessons = this.game.getLessons();
+		Collection<Lesson> lessons = this.game.getLoadedLessons();
 		for (Lesson lesson : lessons) {
 			File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
 
 			// First save the bodies
 			storeLesson(repoDir, lesson);
-			
+
 			// Recompute the summaries
 			File summary = new File(repoDir, lesson.getId() + ".summary");
 			try {
 				FileWriter fwSummary = new FileWriter(summary.getAbsoluteFile());
 				BufferedWriter bwSummary = new BufferedWriter(fwSummary);
-				bwSummary.write(Game.getInstance().studentWork.lessonSummary(lesson.getId()));
+				bwSummary.write(game.studentWork.lessonSummary(lesson.getId()));
 				bwSummary.close();
 			} catch (IOException ex) {
-				System.out.println("Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
+				game.getLogger().log(LogHandler.ERROR, "Failed to write the lesson summary on disk: "+ex.getLocalizedMessage());
 			}
 		}
 	}
@@ -76,26 +74,18 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void loadAll(final File path) {
-		reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
-
-		if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
-			if (Game.getInstance().isDebugEnabled())
-				System.out.println("The user changed! switch to the right branch");
-			cachedUser = Game.getInstance().getUsers().getCurrentUser();
-			
-			File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
-			if (! gitDir.exists()) {
-				// It should never happen since the session content should be created by the git spy module.
-				System.out.println(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
-			}
+		File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + reponame);
+		if (! gitDir.exists()) {
+			// It should never happen since the session content should be created by the git spy module.
+			game.getLogger().log(LogHandler.ERROR, getGame().i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
 		}
 
 		// Load bodies
 		for (Lesson lesson : this.game.getLessons()) {
 			loadLesson(path, lesson);
 		}
-		
-		// Load summary from the lastly saved files, 
+
+		// Load summary from the lastly saved files,
 		// but don't trust the game.getLessons that is empty at startup, so search for existing files on disk
 		String pattern = "*.summary";
 		FileSystem fs = FileSystems.getDefault();
@@ -105,8 +95,8 @@ public class GitSessionKit implements ISessionKit {
 			@Override
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 				if (! matcher.matches(file.getFileName()))  // Not a summary file. Who cares?
-					return FileVisitResult.CONTINUE;			
-				
+					return FileVisitResult.CONTINUE;
+
 				String lessonId = file.getFileName().toString();
 				lessonId = lessonId.substring(0,lessonId.length() - ".summary".length());
 
@@ -118,7 +108,7 @@ public class GitSessionKit implements ISessionKit {
 					fr = new FileReader(file.toFile().getAbsoluteFile());
 					br = new BufferedReader(fr);
 					String line;
-					while ((line = br.readLine()) != null) 
+					while ((line = br.readLine()) != null)
 						sb.append(line);
 				} catch (FileNotFoundException e) {
 					// If there is no summary file, then don't do nothing for that lesson
@@ -132,14 +122,14 @@ public class GitSessionKit implements ISessionKit {
 							// I don't care about not being able to close a file that I *read*
 						}
 				}
-				
+
 				// 2. Pass that string to the sessionDB
-				Game.getInstance().studentWork.lessonSummaryParse(lessonId, sb.toString());
-				
-				return FileVisitResult.CONTINUE;			
+				game.studentWork.lessonSummaryParse(lessonId, sb.toString());
+
+				return FileVisitResult.CONTINUE;
 			}
 		};
-				
+
 		try {
 			Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
 		} catch (IOException ex) {
@@ -148,7 +138,7 @@ public class GitSessionKit implements ISessionKit {
 
 
 	}
-	
+
 	/**
 	 * Store the user source code for a specified lesson
 	 *
@@ -174,18 +164,16 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercise already done correctly
-					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".DONE";
+					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + ".DONE";
 					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
-						Game.getInstance().studentWork.setPassed(exercise, lang, true);
+						game.studentWork.setPassed(exercise, lang, true);
 					} else {
-						Game.getInstance().studentWork.setPassed(exercise, lang, false);
+						game.studentWork.setPassed(exercise, lang, false);
 					}
-					// load source code 
-					SourceFile srcFile = exercise.getSourceFile(lang, 0);
-					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".code";
-					//System.out.println(fileName);
+					// load source code
+					SourceFile srcFile = exercise.getSourceFile(lang, lang.getVisualIndex());
+					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() + "." + lang.getExt() + lang.getVisualExt();
+					//getGame().getLogger().log(fileName);
 					String line;
 					StringBuilder b = new StringBuilder();
 					try {
@@ -210,7 +198,7 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
-		System.out.println("Clean all lessons. Your session is now lost.");
+		game.getLogger().log(LogHandler.INFO, "Clean all lessons. Your session is now lost.");
 		for (Lesson lesson : this.game.getLessons()) {
 			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
@@ -240,4 +228,12 @@ public class GitSessionKit implements ISessionKit {
 		}
 	}
 
+	public Game getGame() {
+		return game;
+	}
+
+	@Override
+	public void setUserUUID(String userUUID) {
+		reponame = userUUID;
+	}
 }

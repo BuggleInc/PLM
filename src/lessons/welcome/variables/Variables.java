@@ -2,6 +2,7 @@ package lessons.welcome.variables;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -11,10 +12,11 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class Variables extends ExerciseTemplated {
 
-	public Variables(Lesson lesson) {
-		super(lesson);
+	public Variables(Game game, Lesson lesson) {
+		super(game, lesson);
+		setToolbox();
 
-		BuggleWorld myWorld = new BuggleWorld("Kitchen",7,7);
+		BuggleWorld myWorld = new BuggleWorld(game, "Kitchen",7,7);
 		for (int i=0;i<7;i++) {
 			new SimpleBuggle(myWorld, "Cooker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 

@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Last2 extends BatExercise {
-	public Last2(Lesson lesson) {
-		super(lesson);
+	public Last2(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("last2");
+		BatWorld myWorld = new BatWorld(game, "last2");
 		myWorld.addTest(VISIBLE, "hixxhi") ;
 		myWorld.addTest(VISIBLE, "xaxxaxaxx") ;
 		myWorld.addTest(VISIBLE, "axxxaaxx") ;

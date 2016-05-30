@@ -15,9 +15,9 @@ void run() {
 				maxDistance = distance;
 				posNext = pos;
 			}
-//				System.out.println(world.toString()+"  baseNext:"+baseNext+" player:"+player+"  distance:"+distance+" (#bases:"+getBasesAmount()+")");
+//				getGame().getLogger().log(world.toString()+"  baseNext:"+baseNext+" player:"+player+"  distance:"+distance+" (#bases:"+getBasesAmount()+")");
 		}
-//			System.out.println("move "+baseNext+","+posNext);
+//			getGame().getLogger().log("move "+baseNext+","+posNext);
 		move(baseNext,posNext);
 	}
 	assertSorted("naive sort");

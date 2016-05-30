@@ -10,11 +10,13 @@ import Math.PI
 import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
+import plm.core.model.Game
 
-class FlyTheLander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+class FlyTheLander(game: Game, lesson: Lesson) extends ExerciseTemplated(game, lesson, null) {
   tabName = "Lander"
   setup(Array(
-      SIMPLE_TERRAIN_CHALLENGING_CONFIG,
-      CHALLENGING_TERRAIN_SIMPLE_CONFIG,
-      SIMPLE_TERRAIN_TRIVIAL_CONFIG))
+      makeWorld(game, "SIMPLE_TERRAIN_CHALLENGING_CONFIG"),
+      makeWorld(game, "CHALLENGING_TERRAIN_SIMPLE_CONFIG"),
+      makeWorld(game, "SIMPLE_TERRAIN_TRIVIAL_CONFIG") 
+  ))
 }

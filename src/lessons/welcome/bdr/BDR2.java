@@ -2,6 +2,7 @@ package lessons.welcome.bdr;
 
 import java.awt.Color;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
@@ -38,12 +39,13 @@ public class BDR2 extends ExerciseTemplated {
 	void left (int x, int y){  set(x, y, "L"); }
 	void back (int x, int y){  set(x, y, "I"); }
 
-	public BDR2(Lesson lesson) {
-		super(lesson);
+	public BDR2(Game game, Lesson lesson) {
+		super(game, lesson);
 		tabName = "BDR2";
+		setToolbox();
 		// TODO: May we have to specify that run() method is provided ? and that 'I' is not backward()
 
-		myWorld = new BuggleWorld("Dance Floor",11,11);
+		myWorld = new BuggleWorld(game, "Dance Floor",11,11);
 		/* please applause the dancers*/
 		new SimpleBuggle(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
 		new SimpleBuggle(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);

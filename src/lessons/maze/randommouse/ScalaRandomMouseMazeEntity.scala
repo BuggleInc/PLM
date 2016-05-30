@@ -3,21 +3,21 @@ package lessons.maze.randommouse;
 import plm.core.model.Game;
 
 class ScalaRandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def setX(i: Int)  {
+	override def setX(i: Int):Unit = {
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
-	override def setY(i: Int)  { 
+	override def setY(i: Int):Unit = { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
-	override def setPos(x: Int, y:Int)  { 
+	override def setPos(x: Int, y:Int):Unit = { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
 	/* BEGIN TEMPLATE */ 
-	override def run() {
+	override def run():Unit = {
 		// Your code here 
 		/* BEGIN SOLUTION */ 
 		while (!isOverBaggle()) {

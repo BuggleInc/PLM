@@ -3,11 +3,17 @@ package lessons.recursion.hanoi.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import lessons.recursion.hanoi.operations.HanoiMove;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
 public class HanoiEntity extends Entity {
+	
+	public HanoiEntity() {
+		super();
+	}
+	
 	/** Instantiation Constructor (used by exercises to setup the world) 
 	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
 	 */
@@ -26,7 +32,7 @@ public class HanoiEntity extends Entity {
 		/* END HIDDEN */
 	}
 	/** Must exist too. Calling HanoiEntity("dummy name") is ok */
-	public HanoiEntity() {
+	public HanoiEntity(Game game) {
 		/* BEGIN HIDDEN */
 		this("Hanoi Entity");
 		/* END HIDDEN */
@@ -44,6 +50,7 @@ public class HanoiEntity extends Entity {
 	public void regularMove(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
+		addOperation(new HanoiMove(this, src, dst));
 		stepUI();
 		/* END HIDDEN */
 	}
@@ -51,7 +58,7 @@ public class HanoiEntity extends Entity {
 		if ((from==0 && to!=1) ||
 			(from==1 && to!=2) ||
 			(from==2 && to!=0))
-			throw new RuntimeException(Game.i18n.tr(
+			throw new RuntimeException(getGame().i18n.tr(
 					"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.",from, to));
 		regularMove(from,to);
 	}
@@ -70,11 +77,6 @@ public class HanoiEntity extends Entity {
 		return "HanoiEntity (" + this.getClass().getName() + ")";
 	}
 	/* END HIDDEN */
-
-
-	/* BINDINGS TRANSLATION: French */
-	public void deplace(int src,int dst) { move(src, dst); }
-	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
 
 	@Override
 	public void command(String command, BufferedWriter out) {
@@ -97,7 +99,7 @@ public class HanoiEntity extends Entity {
 				out.write("\n");
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();
@@ -106,5 +108,10 @@ public class HanoiEntity extends Entity {
 		}
 
 	}
+	
+	/* BINDINGS TRANSLATION: French */
+	public void deplace(int src,int dst) { move(src, dst); }
+	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
+	public int  getRayonPiquet(int rank) { return getSlotRadius(rank); }
 }
 /* END TEMPLATE */

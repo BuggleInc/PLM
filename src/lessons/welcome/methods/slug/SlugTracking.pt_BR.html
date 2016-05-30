@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Rastreando a lesma</h2>
+<p>
+Seu buggle está super-feliz! Ele acabou de encontrar o rastro verde e úmido,
+certamente deixado por um apetitosa e grande lesma.  No seu final, o buggle
+tem certeza de que vai se divertir com est deliciosa lesma (representada por
+um baggle). 
+</p>
+
+<p>Para atingir este objetivo, você tem que escrever um método booleano
+<tt>estáDeFrenteParaRastro</tt>, que determina se estamos virados para uma
+célula verde ou não. Obviamente, se nós estivermos virados para uma parede,
+ele deve retornar falso sem "bumping" nela. Você deve se certificar que este
+método não tem <b>efeitos colaterais</b>, i.e. que ele não muda o estado do
+"calling buggle" ou do mundo.</p>
+
+<p>Sua ferramenta para este objetivo é o <code>getCorDoChão()</code> que
+retorna a cor da célula atual. Simplesmente vá para a célula que você quer
+testar e execute esta função.  [!java]Você não pode testar se esta cor é
+igual a <code>Cor.verde</code> com um símbolo de <code>==</code> mas sim
+escrever algo como <code>getCorDoChão().equals(Cor.verde)</code>. Isto
+acontece por que verde é um  <i>objeto</i> em Java, e <code>.equals()</code>
+é a forma de testar igualdade entre objetos Java.[/!] [!python|scala]Então
+você tem que testar se a cor retornada é igual ao valor
+<code>Cor.verde</code>, que representa a cor verde.[/!]</p>   
+
+<h3>Objetivo do exercício</h3>
+<p>Complete o método <code>estáDeFrenteParaRastro()</code> (que será chamado
+automaticamente).</p>

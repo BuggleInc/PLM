@@ -1,0 +1,147 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Instruções condicionais</h2>
+
+Programas feitos simplesmente de um conjunto de instruções similares
+ao do exercício anterior são bastante chatos. Eles sempre fazem a
+mesma coisa, e não reajem a condições externas. Um <b>condicional</b>
+faz o programa se adaptar fazendo coisas do tipo <i>se está chovendo,
+pegue um guarda-chuva</i>. 
+
+<p>A sintaxe de [!thelang] é a seguinte:</p>
+
+<pre>[!java|scala|c]if (<b>condição</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade();</b>
+}[/!][!python]if <b>condição</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForVerdade()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepoisSeForVerdade()</b>[/!]
+<b>oQueFazerDeUmJeitoOuDeOutro()[!java|c];[/!]</b></pre>
+
+<p>Se a condição for verdade, o código do próximo bloco será executado e então
+o resto do código continua. Se a condição for falsa, o próximo bloco é
+ignorado e a execução continua depois disto. O bloco condicional pode conter
+várias instruções, pode até mesmo conter outros testes, com seus próprios
+sub-testes.</p>
+
+<p>Neste exemplo, as instruções <code>oQueFazerSeForVerdade()</code> e
+<code>oQueFazerDepoisSeForVerdade()</code> serão executadas se e somente se
+a condição for verdadeira, mas a instrução
+<code>oQueFazerDeUmJeitoOuDeOutro()</code> vai ser executada se a condição
+for verdadeira ou não. 
+</p>
+
+<p>Em [!thelang], os blocos de código são [!java|scala|c]envolvidos entre
+chaves: um { abre o bloco, e um } fecha. Espaços em branco não são
+importantes[/!][!java|c].[/!][!scala], uma vez que suas instruções ainda
+estejam separadas com um ponto-e-vírgula ou um fim-de-linha.[/!]
+[!java|scala|c]Ainda assim é muito importante indentar corretamente seu
+código para mantê-lo legível.[/!] [!python]marcados pela indentação: todas
+as linhas que estiverem um pouco deslocadas para a direita com espaços
+pertencem ao bloco. Frequentemente se usam 4 espaços para indentação, mas
+funciona se você usar mais ou menos espaços. Resumindo, quaisquer linhas do
+bloco devem usar a mesma quantidade de espaços. O fim do bloco de código
+Python não é marcado por nenhum caractere específico. Indentar linhas começa
+um bloco e parar de indentar termina o bloco. Não esqueça do dois-pontos (:)
+no final da linha do <code>if</code>, python precisa dele para saber que um
+novo bloco vai começar. O fato de que python se baseia em indentação para
+delimitar blocos é uma ótima propriedade para iniciantes: vai forçar você a
+aderir a padrões de apresentação de código estritos.[/!] É muito fácil se
+perder no seu próprio código se ele não for corretamente indentado, então
+você precisa deixar ele bem arrumado para que trabalhar nele continue sendo
+agradável e produtivo.</p>
+
+
+<p class="python">Todas as indentações de um dado bloco devem ser consistentes, e não é
+possível cortar um bloco. os dois códigos a seguir estão incorretos e devem
+resultar em erro.</p>
+<pre class="python">if <b>condição</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerDepois()</b> <span class="comment"># um espaço a mais </span>
+<b>oQueFazerDeUmJeitoOuDeOutro()</b>
+</pre>
+<pre class="python">se <b>condição</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazer()</b>
+<b>oQueFazerDeUmJeitoOuDeOutro()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerASeguir()</b> <span class="comment"># este bloco não está condicionado a uma linha de condição</span>
+</pre>
+
+<p>A condição deve ser uma expressão
+<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>. O
+bloco interno do código será executado se a expressão for calculada como
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> e será ignorado
+se for
+<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
+[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> e
+<code>[!java|scala]false[/!][!python]False[/!]</code> são valores constantes
+definidos por [!thelang] diretamente, assim como 0 ou 1 na matemática.[/!]</p>
+
+<p>A condição pode ser uma variável
+<code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> (vamos
+voltar a falar de variáveis num próximo exercício, não se preocupe) ou um
+teste aritmético, como <code>x == 5</code>, que verifica se o valor atual de
+<code>x</code> é 5, ou algo como <b>!=</b> (verificando inequação, ou seja,
+retornando [!c]1[/!][!java|scala]true[/!][!python]True[/!] apenas se o lado
+esquerdo é diferente do lado direito), <b>&lt;</b> (menor que), <b>&gt;</b>
+(maior que), <b>&lt;=</b> (menor ou igual a), <b>&gt;=</b> (maior ou igual
+a).</p>
+
+<p>Cuidado com um erro clássico, que é verificar a igualdade da variável usando
+= no lugar de ==. Ainda bem que o
+[!java|scala|c]compilador[/!][!python]interpretador[/!] detecta este
+problema na maior parte das vezes, mas às vezes passa (como quando você está
+atribuindo valor a uma variável
+[!c]int[/!][!java|python|scala]booleana[/!]). Então é bom ter cuidado...</p>
+
+<p>A condição pode também ser uma chamada para alguns métodos
+particulares que retornam booleano. Por exemplo, o método
+<code>estáDeFrenteParaParede()</code> do buggle retorna
+[!c]1[/!][!java|python|scala]true[/!] se o buggle está olhando para
+uma parede, e false caso contrário.</p>
+
+<p>Finalmente, uma condição pode ser composta de várias sub-condições
+conectadas por operadores booleanos:</p>
+<ul>
+  <li><code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> é verdadeiro
+(true) quando <tt>cond1</tt> <b>e</b> <tt>cond2</tt> são ambos verdadeiros
+(se <tt>cond1</tt> é falso (false), <tt>cond2</tt> não é nem sequer
+calculado pois sabe-se previamente que a conjunção das duas proposições não
+pode ser verdadeira).</li> 
+  <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> é verdadeiro
+se <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> é verdadeiro (se <tt>cond1</tt> é
+verdadeiro, <tt>cond2</tt> não é nem sequer calculada pois já se sabe que a
+disjunção de ambas as proposições não pode ser verdadeira).</li>
+  <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> é verdadeira se
+<tt>cond</tt> é falsa.</li>
+  <li>Quando a expressão se torna complicada, é melhor adicionar parêntesis para
+forçar a ordem de cálculo. Não hesite em adicionar mais parêntesis para
+remover ambiguidades que apareçam na expressão.</li>
+</ul> 
+
+<p>Por fim, é possível especificar o que fazer quando a condição é falsa usando
+a seguinte sintaxe. Neste caso, a instrução <code>oQueFazerSeForFalso</code>
+será executada apenas se a condição for falsa.</p>
+ <pre>[!java|scala|c]if (<b>condição</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeCondiçãoÉVerdadeira();</b>
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForFalsa();</b>
+}[/!][!python]if (<b>condição</b>):
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeCondiçãoÉVerdadeira()</b>
+else:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>oQueFazerSeForFalsa()</b>[/!]</pre>
+
+<p class="Python">Não esqueça do dois-pontos (:) depois do else, ele indica que um novo bloco
+está começando.</p>
+
+<h3>Objetivo do exercício</h3><a name="Objectives"/> Se o buggle está de cara numa parede, você deve se
+mover um passo para trás. Se não, você deve se mover um passo para
+frente. para detectar se você está de cara para uma parede, simplesmente use
+a função pré-fabricada <code>estáDeFrenteParaParede()</code>, que todo
+buggle entende. 
+
+<p>Este exercício é um pouco diferente: seu código tem que funcionar para
+vários buggles, cada um começando numa posição diferente. O mesmo código
+será executado para cada um deles.</p>
+
+<p>Quando seu programa funcionar, vá para o próximo exercício, que está
+escondido numa sub-árvore da janela de seleção.</p>

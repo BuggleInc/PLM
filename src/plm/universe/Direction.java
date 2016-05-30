@@ -2,8 +2,7 @@ package plm.universe;
 
 import java.awt.Point;
 
-import plm.core.model.Game;
-
+import org.xnap.commons.i18n.I18n;
 
 // TODO: rewrite using enumeration
 public class Direction {
@@ -51,18 +50,33 @@ public class Direction {
 	public Direction opposite() {
 		return opposites[value];
 	}
-
+	
 	@Override
 	public String toString() {
 		switch (value) {
 		case NORTH_VALUE:
-			return Game.i18n.tr("NORTH");
+			return "NORTH";
 		case EAST_VALUE:
-			return Game.i18n.tr("EAST");
+			return "EAST";
 		case SOUTH_VALUE:
-			return Game.i18n.tr("SOUTH");
+			return "SOUTH";
 		case WEST_VALUE:
-			return Game.i18n.tr("WEST");
+			return "WEST";
+		default:
+			return "Unknown direction";
+		}
+	}
+	
+	public String direction2translated(I18n i18n) {
+		switch (value) {
+		case NORTH_VALUE:
+			return i18n.tr("NORTH");
+		case EAST_VALUE:
+			return i18n.tr("EAST");
+		case SOUTH_VALUE:
+			return i18n.tr("SOUTH");
+		case WEST_VALUE:
+			return i18n.tr("WEST");
 		default:
 			return "Unknown direction";
 		}

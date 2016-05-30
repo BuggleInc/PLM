@@ -2,23 +2,16 @@ package lessons.recursion.cons.universe;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
 import plm.universe.bat.BatWorld;
 
 public class ConsWorld extends BatWorld {
 	public ConsWorld(ConsWorld other) {
 		super(other);
 	}
-	public ConsWorld(String funName) {
-		super(funName);
-	}
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_cons.png");
+	public ConsWorld(Game game, String funName) {
+		super(game, funName);
 	}
 
 	@Override
@@ -61,8 +54,8 @@ public class ConsWorld extends BatWorld {
 						"\n"+*/
 						"def cons(a,b):\n"+
 						"  return RecList(a,b)\n";
-				if (Game.getInstance().isDebugEnabled()) 
-					System.out.println("Extra script chunk added by "+getClass()+":\n"+script);
+				if (getGame().isDebugEnabled()) 
+					getGame().getLogger().log("Extra script chunk added by "+getClass()+":\n"+script);
 				e.eval(script);
 			} catch (ScriptException e1) {
 				e1.printStackTrace();

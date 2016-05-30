@@ -1,11 +1,17 @@
 package plm.test.simple.test;
 
+import static org.mockito.Mockito.mock;
+
+import java.util.Locale;
+import java.util.UUID;
+
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 
 public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 
 	public PythonSimpleExerciseTest() {
-		super(Game.PYTHON);
+		super(new Game(UUID.randomUUID().toString(), mock(LogHandler.class), new Locale("en"), "Python", false), Game.PYTHON);
 	}
 
 	@Override

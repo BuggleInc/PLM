@@ -1,0 +1,89 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Loops for</h2>
+
+<p>loops 'while' são bem adaptados a situações onde você precise realizar uma
+ação enquanto uma condição se mantém verdadeira, mas são menos preparados
+para realizar uma ação num número de vezes predeterminado. Por exemplo,
+quando nós quisemos nos mover <code>quantidadeDePassos</code> para trás num
+exercício anterior, nós tivemos que criar uma nova variável, inicializar ela
+e mover para trás enquanto aumentávamos esta variável até ela se tornar
+igual a <code>quantidadeDePassos</code>.</p> 
+
+<p>Em tais situações, loops <code>for</code> se tornam úteis. Suas sintaxes são
+as seguintes:</p> 
+<pre>[!java|c]for (<b>inicialização</b>; <b>condição</b>; <b>incremento</b>) {
+    <b>ação</b>();
+}[/!][!python]for <b>variável</b> in <b>sequência-de-valores</b>:
+    <b>ação</b>()[/!][!scala] for (<b>variável</b> &lt;- <b>primeiroValor</b> to <b>últimoValor</b>) { 
+    <b>ação</b>();
+}[/!]</pre>
+
+<p>Por exemplo, para repetir o corpo do loop <code>n</code> vezes, [!python] é
+útil usar a instrução <code>range(n)</code> para gerar a sequência de n
+valores inteiros de 0 a n-1.[/!] [!java|scala|c] você deve escrever:[/!]</p>
+<pre>[!java]for (int iterador=0; iterador&lt;n; iterador++) {
+    <b>ação</b>();
+}[/!][!c]int iterador;
+for (iterador=0; iterador&lt;n; iterador++) {
+    <b>ação</b>();
+}[/!][!python]for <b>iterador</b> in <b>range(n)</b>:
+    <b>ação</b>()[/!][!scala] for (<b>iterador</b> &lt;- <b>1</b> to <b>n</b>) { 
+    <b>ação</b>();
+}[/!]</pre>
+
+<p>Este código é então equivalente ao seguinte do ponto de vista do
+computador. Do ponto de vista do programador, uma forma ou outra pode ser
+mais difícil ou mais fácil de ler, dependendo da situação. Você deve
+escolher sabiamente em qual situação usar um loop for ou um loop while. Seu
+objetivo principal deve ser manter seu código simples e fácil de ler, para
+garantir que seu dia seja agradável e produtivo.
+</p>
+<pre>[!java|c]int iterador = 0;
+while (iterador &lt; n) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>ação</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iterador++</b>;
+}[/!][!python]iterador=0
+while iterador &lt; n: 
+    ação()
+    iterador = iterador + 1[/!][!scala]
+var iterador = 1
+while (iterador &lt;= n) {
+    <b>ação</b>()
+    iterador = iterador + 1
+}[/!]</pre>
+
+<p>Neste caso, o loop <code>for</code> é fácil de ler, não acha?</p>
+
+[!java|c]
+<p>É possível construir loops <tt>for</tt> mais avançados já que qualquer
+instrução válida pode ser usada como inicialização, condição e instrução de
+incrementação. O exemplo seguinte é um pouco extremo pois não existe
+necessidade para um corpo de loop mover um buggle para frente até ele
+alcançar a parede, mas funciona bem: todo o trabalho é feito nas instruções
+de condição e incremento.</p>
+
+<pre>for (; !estáDeFrenteParaParede() ; avançar()) { 
+   <span class="comment">/* nada no corpo do loop */</span>
+}
+<span class="comment">/* o buggle agora está de cara para uma parede */</span></pre>
+[/!] [!scala]
+<p>Se você quer aninhar vários loops, você pode fazer isto em uma linha no
+Scala. Isto significa que os dois blocos seguintes são equivalentes:</p>
+<pre>for (iterador1 &lt;- 1 to n) {
+    for (iterador2 &lt;- 1 to m) {
+       ações()
+    }
+}</pre> 
+<pre>for (iterador1 &lt;- 1 to n; iterador2 &lt;- 1 to m) { <span class="comment">// Simplesmente separe as duas condições de loop com um ponto-e-vírgula</span>
+    ações()
+}</pre> 
+[/!]
+
+<h3>Objetivo do exercício</h3>
+<p> Você agora tem que refazer o mesmo exercício de antes (mover para frente até
+estar sobre um baggle, pegá-lo, mover para trás até a localização original,
+soltar o baggle), mas usando um loop <code>for</code> no lugar de um loop
+<code>while</code> para mover de volta ao local inicial.</p>
+
+<p>Uma vez feito, você pode seguir para o próximo exercício.</p>

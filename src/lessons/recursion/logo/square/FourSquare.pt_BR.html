@@ -1,0 +1,59 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Os primos menores dos buggles</h2>
+<p>
+Hoje vamos conhecer os primos menores dos buggles: as tartarugas. Na
+verdade, as tartarugas são muito mais velhas que os buggles. Elas foram
+inventadas nos anos 70 por um cientista do MIT chamado Seymour Papert para
+ajudar no ensino de programação, e os buggles são uma variação da idéia
+seguinte de Lyn Turbak do Wellesley College.
+</p>
+<p>Tartarugas então, são meio parecidas com buggles, mas menores. Como os
+buggles, você pode mandar que elas se movam para a frente, virem, se movam
+para trás, etc. Como os buggles, elas deixam uma linha no caminho por onde
+passam (mas a linha é muito menor).</p>
+
+<p>A principal diferença é que enquanto os buggles podem se mover apenas
+em ângulos retos, as tartarugas podem se mover em qualquer ângulo
+especificado por um número real (um double). Isto dá a elas muito mais
+liberdade em seus movimentos. Já os buggles podem fazer vários outros
+truques, como ler e escrever mensagens, pegar e soltar objetos, e às
+vezes lidar com paredes existentes nos mundos (mas isto está
+totalmente além da capacidade das tartarugas).</p>
+
+<p>De um ponto de vista prático, a maioria dos métodos que você conhece sobre
+buggles ainda funciona com tartarugas, com pequenas adaptações. Em
+particular, o método <code>forward()</code> pega a quantidade de passos a
+dar não como inteiro, mas como [!python]point
+number[/!][!java|scala|c]double[/!] (veja "Sobre este mundo" para maiores
+detalhes).</p>
+
+[!java|scala|c]
+<h3>Doubles? Mas o que é isto?</h3>
+é simplesmente um número com vírgula. Por exemplo:
+<pre>
+double x = 3.72;
+x + 1.234 // Valor = 4.954
+x + 2. // Valor = 5.72 (2. significa 2.0)
+x + 2 // [!java|c]Value = 5.72 (2 convertido automaticamente em 2.0)[/!][!scala]Erro de tipo (o operador + não mistura Double e Int); é obrigatória a conversão manual[/!]
+x * 2. // Valor = 7.44 
+x / 2. // Valor = 1.86 
+[!java|c](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Valor = 1 (“fazendo cast para int”, convertido para integer truncando)
+Math.round(x) // Valor = 2 (1.86 arredondado para o inteiro mais próximo)
+Math.floor(x) // Valor = 1 (1.86 rounded toward minus infinity)
+Math.floor(-5.12) // Valor = -6 (rounded toward minus infinity)
+Math.ceiling(x) // Valor = 2 (1.86 rounded toward plus infinity)
+Math.ceiling(-5.12) // Valor = -5 (rounded toward plus infinity)
+[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Valor = 17.0 (“feito cast para double”, convertido para double)
+</pre>
+[/!]
+
+<h3>Objetivo deste exercício</h3>
+<p>Mesmo este sendo o primeiro exercício da lição de recursividade, o código
+que você tem que escrever não é recursivo. O objetivo é se familiarizar com
+o mundo da tartaruga antes da coisa começar a ficar séria.</p>
+
+<p>Você deve reproduzir uma pintura geometricamente simples de quatro quadrados
+de comprimento de 100 passos (veja o mundo objetivo para mais detalhes). É
+obviamente uma boa ideia escrever um método para desenhar um quadrado, e
+então usar ele em nosso código.</p>

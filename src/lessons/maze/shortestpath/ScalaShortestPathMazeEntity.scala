@@ -6,21 +6,22 @@ import plm.universe.bugglequest.BuggleWorldCell;
 import plm.core.model.Game
 
 class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def setX(i: Int)  {
+	override def setX(i: Int):Unit = {
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
-	override def setY(i: Int)  { 
+	override def setY(i: Int):Unit = { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
-	override def setPos(x: Int, y:Int)  { 
+	override def setPos(x: Int, y:Int):Unit = { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
-	def setIndication(x:Int, y:Int, i:Int) {
+	def setIndication(x:Int, y:Int, i:Int):Unit = {
 		val c = world.asInstanceOf[BuggleWorld].getCell(x,y);
+    generateOperationsChangeCellContent(c, c.getContent, i+"", c.hasContent, true);
 		c.setContent(""+i);
 	}
 	def getIndication(x:Int, y:Int): Int =  {
@@ -34,7 +35,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 	def hasLeftWall(x:Int, y:Int): Boolean = world.asInstanceOf[BuggleWorld].getCell(x,y).hasLeftWall();
 
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run():Unit = {
 		// Your code here
 		/* BEGIN SOLUTION */
 		evaluatePaths(); // write on each case the distance to the maze exit
@@ -54,7 +55,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		return false;
 	}
 
-	def evaluatePaths() {
+	def evaluatePaths():Unit = {
 		// looking for labyrinth exit	
 		for (x <- 0 to getWorldWidth() -1; y <- 0 to getWorldHeight()-1)        
 			if (hasBaggle(x,y))
@@ -83,7 +84,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		}
 	}
 
-	def followShortestPath() {
+	def followShortestPath():Unit = {
 		while (! isOverBaggle()) {
 
 			var x = getX();

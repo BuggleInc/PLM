@@ -1,6 +1,7 @@
 package plm.test.integration;
 
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.UUID;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,13 +22,13 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bat.BatExercise;
@@ -36,13 +38,7 @@ import plm.universe.bat.BatWorld;
 @RunWith(Parameterized.class)
 public class ExoTest {
 
-	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
-		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
-		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
-		"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi",
-		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
-		"lessons.bat.string1", "lessons.lander",
-		};
+	static private Game g;
 
 	@BeforeClass
 	static public void setUpClass() {
@@ -52,30 +48,26 @@ public class ExoTest {
 	@Parameters
 	static public Collection<Object[]> exercises() {
 		List<Object[]> result = new LinkedList<Object[]>();
-		
-		FileUtils.setLocale(new Locale("en"));
-		Game g = Game.getInstance();
+		String userUUID = UUID.randomUUID().toString();
+		g = new Game(userUUID, mock(LogHandler.class), new Locale("en"), Game.JAVA.getLang(), false);
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
 		g.removeSessionKit();
 		g.setBatchExecution();
-
-		/* Compute the answers with the java entities */
-		Game.getInstance().setProgramingLanguage(Game.JAVA);
 		
 		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
-		for (String lessonName : lessonNamesToTest) { 
+		for (String lessonName : Game.lessonsName) { 
 			if(g.switchLesson(lessonName, true)==null) {
 				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
 				System.exit(1);
 			}
-			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
+			g.getLogger().log("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
 				System.exit(1);
 			}
 			for (Lecture l : g.getCurrentLesson().exercises()) 
 				if (l instanceof Exercise) {
-					result.add(new Object[] { Game.getInstance().getCurrentLesson(), l });
+					result.add(new Object[] { g.getCurrentLesson(), l });
 					if (alreadySeenExercises.contains(l)) {
 						System.err.println("Warning, I tried to add the exercise "+l.getName()+" twice. Something's wrong here");
 						System.exit(1);
@@ -83,8 +75,8 @@ public class ExoTest {
 					alreadySeenExercises.add(l);
 				}
 		}
-		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
-		System.out.println("");
+		g.getLogger().log("There is currently "+result.size()+" exercises in our database. Yes sir.");
+		g.getLogger().log("");
 		
 		//g.switchDebug();		
 		g.setLocale(new Locale("en"));
@@ -96,22 +88,23 @@ public class ExoTest {
 
 	public ExoTest(Lesson l, Exercise e) {
 		this.exo = e;
-		Game.getInstance().setCurrentLesson(l);
-		Game.getInstance().setCurrentExercise(exo);
+		g.setCurrentLesson(l);
+		g.setCurrentExercise(exo);
 	
 		// disable delay on world execution
 		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
+			exo.setNbError(-1);
 			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
 		}
 	}
 	
 	/** Try to run the solution, fail if it's missing **/
 	private void testCorrectionEntityExists(ProgrammingLanguage lang) {
-		Game.getInstance().setProgramingLanguage(lang);
+		g.setProgramingLanguage(lang);
 		
-		DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
+		DemoRunner demoRunner = new DemoRunner(g, new ArrayList<Thread>());
 		
-		exo.lastResult = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress(lang);
 		try {
 			demoRunner.runDemo(exo);
 		}
@@ -123,9 +116,9 @@ public class ExoTest {
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
 	private void testCorrectionEntity(ProgrammingLanguage lang) {
-		Game.getInstance().setProgramingLanguage(lang);
+		g.setProgramingLanguage(lang);
 		
-		exo.lastResult = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress(lang);
 		
 		try {
 			exo.compileAll(null, StudentOrCorrection.CORRECTION);
@@ -138,15 +131,16 @@ public class ExoTest {
 			StudentOrCorrection what = StudentOrCorrection.CORRECTION;
 			if (lang == Game.JAVA || lang == Game.SCALA || lang == Game.C)
 				what = StudentOrCorrection.STUDENT;
+			exo.setNbError(-1);
 			exo.mutateEntities(WorldKind.CURRENT, what);
 			
 			if (exo instanceof BatExercise)
 				for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
 					t.objectiveTest = false; // we want to set the result for real, not the expected
-			
+			exo.setNbError(-1);
 			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 				for (Entity ent: w.getEntities())  
-					lang.runEntity(ent,exo.lastResult);
+					lang.runEntity(ent,exo.lastResult, g.i18n);
 			
 			exo.check();
 		} catch (PLMCompilerException e) {

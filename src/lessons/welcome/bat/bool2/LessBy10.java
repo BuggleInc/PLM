@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LessBy10 extends BatExercise {
-	public LessBy10(Lesson lesson) {
-		super(lesson);
+	public LessBy10(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("lessBy10");
+		BatWorld myWorld = new BatWorld(game, "lessBy10");
 		myWorld.addTest(VISIBLE, 1, 7, 11) ;
 		myWorld.addTest(VISIBLE, 1, 7, 10) ;
 		myWorld.addTest(VISIBLE, 11, 1, 7) ;

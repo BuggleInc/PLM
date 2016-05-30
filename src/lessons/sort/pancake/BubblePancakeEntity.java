@@ -3,7 +3,6 @@ package lessons.sort.pancake;
 import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BubblePancakeEntity extends PancakeEntity {
-
 	
 	public void run() {
 		this.solve();

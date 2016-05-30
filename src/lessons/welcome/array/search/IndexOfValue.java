@@ -2,6 +2,7 @@ package lessons.welcome.array.search;
 
 import java.util.Random;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
@@ -9,14 +10,14 @@ import plm.universe.bat.BatWorld;
 
 public class IndexOfValue extends BatExercise {
 
-	Random r = new Random();
+	Random r = new Random(0);
 	
 	private int getIndex(int[] tab) {
 		return tab[r.nextInt(tab.length)];
 	}
 	
-	public IndexOfValue(Lesson lesson) {
-		super(lesson);
+	public IndexOfValue(Game game, Lesson lesson) {
+		super(game, lesson);
 
 		int[] tab = new int[15];
 		for (int i=0; i<tab.length; i++) 
@@ -34,7 +35,7 @@ public class IndexOfValue extends BatExercise {
 		for (int i=0; i<tab4.length; i++) 
 			tab4[i] = r.nextInt(35)-15;
 
-		BatWorld myWorld = new BatWorld("indexOfValue");
+		BatWorld myWorld = new BatWorld(game, "indexOfValue");
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
 		myWorld.addTest(VISIBLE, tab, r.nextInt(35)-15);

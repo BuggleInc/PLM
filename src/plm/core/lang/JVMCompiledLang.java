@@ -3,19 +3,18 @@ package plm.core.lang;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
+import org.xnap.commons.i18n.I18n;
 
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
-import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.universe.Entity;
 
 public abstract class JVMCompiledLang extends ProgrammingLanguage {
-	public JVMCompiledLang(String lang, String ext, ImageIcon i) {
-		super(lang, ext, i);
+	public JVMCompiledLang(String lang, String ext, boolean isDebugEnabled) {
+		super(lang, ext, isDebugEnabled);
 	}
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	protected static final String packageNamePrefix = "plm.runtime";
@@ -29,9 +28,14 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 
 	protected abstract Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException;
 	@Override
-	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException {
-		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
-
+	public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate, I18n i18n, int nbError) throws PLMCompilerException {
+		//String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
+		String newClassName = "";
+		switch(whatToMutate) {
+		case STUDENT: newClassName = exo.getTabName(); break;
+		case CORRECTION: newClassName = nameOfCorrectionEntity(exo); break;
+		case ERROR: newClassName = nameOfCommonError(exo, nbError); break;
+		}
 		ArrayList<Entity> newEntities = new ArrayList<Entity>();
 		for (Entity old : olds) {
 			/* Instantiate a new entity of the new type */
@@ -48,8 +52,9 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 					ent = (Entity)getClass().getClassLoader().loadClass(newClassName).newInstance(); 
 				} catch (Exception e2) {
 					if (whatToMutate == StudentOrCorrection.STUDENT) {
-						if (Game.getProgrammingLanguage() == Game.SCALA)
-							throw new PLMCompilerException(Game.i18n.tr(
+						/* FIXME: need to pass the current programming language as parameter
+						if (getGame().getProgrammingLanguage() == Game.SCALA)
+							throw new PLMCompilerException(getGame().i18n.tr(
 									  "Your entity failed to start. Did you forgot to put your code within a method?\n\n"
 									+ "This problem often arises when the exercise expects you to put all the code within a \n"
 									+ "method e.g. run(), but you put some statements (e.g. forward()) outside of any method.\n\n"
@@ -57,7 +62,8 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 									+ "'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code within the\n"
 									+ "provided method."));
 						else
-							throw new PLMCompilerException(Game.i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
+						*/
+						throw new PLMCompilerException(i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
 					} else {
 						throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 					}
@@ -76,11 +82,11 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 	}
 
 	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress) {
+	public void runEntity(Entity ent, ExecutionProgress progress, I18n i18n) {
 		try {
 			ent.run();
 		} catch (Exception e) {
-			String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
+			String msg = i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
 					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
 
 			for (StackTraceElement elm : e.getStackTrace())

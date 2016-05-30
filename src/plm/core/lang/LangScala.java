@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import org.xnap.commons.i18n.I18n;
+
 import plm.core.PLMCompilerException;
-import plm.core.model.Game;
-import plm.core.model.LogWriter;
+import plm.core.model.LogHandler;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 import scala.Option;
 import scala.collection.JavaConverters;
@@ -29,14 +29,15 @@ import scala.tools.nsc.reporters.AbstractReporter;
 
 public class LangScala extends JVMCompiledLang {
 
-	ScalaCompiler compiler = new ScalaCompiler();
+	ScalaCompiler compiler;
 	
-	public LangScala() {
-		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
+	public LangScala(boolean isDebugEnabled) {
+		super("Scala", "scala", isDebugEnabled);
+		compiler = new ScalaCompiler(isDebugEnabled);
 	}
 
 	@Override
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
+	public void compileExo(Exercise exo, LogHandler logger, StudentOrCorrection whatToCompile, I18n i18n) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
@@ -48,7 +49,7 @@ public class LangScala extends JVMCompiledLang {
 			String msg = exo.getName()+": No source to compile";
 			System.err.println(msg);
 			PLMCompilerException e = new PLMCompilerException(msg, null, null);
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);				
 			throw e;
 		}
 
@@ -58,9 +59,9 @@ public class LangScala extends JVMCompiledLang {
 				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
 			}
 		} catch (PLMCompilerException e) {
-			System.err.println(Game.i18n.tr("Compilation error:"));
+			System.err.println(i18n.tr("Compilation error:"));
 			System.err.println(e.getMessage());
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage(), this);
 
 			throw e;
 		}
@@ -100,9 +101,11 @@ class ScalaCompiler {
 	private Global global;
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
+	private boolean isDebugEnabled;
 	
-	public ScalaCompiler() {
+	public ScalaCompiler(boolean isDebugEnabled) {
 		super();
+		this.isDebugEnabled = isDebugEnabled;
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
 
@@ -112,7 +115,7 @@ class ScalaCompiler {
 		
 		settings.usejavacp().tryToSetFromPropertyValue("true");
 		//settings.usemanifestcp().tryToSetFromPropertyValue("true");
-		reporter = new PLMReporter(settings);
+		reporter = new PLMReporter(settings, isDebugEnabled);
 		global = new Global(settings,reporter);
 	}
 
@@ -125,7 +128,7 @@ class ScalaCompiler {
 	}
 
 	public void compile(String name,String content,int offset) throws PLMCompilerException {
-		if (Game.getInstance().isDebugEnabled()) 
+		if (isDebugEnabled) 
 			System.out.println("Compiline souce "+name+" to scala (offset:"+offset+"):\n"+content);
 		
 		Run compiler = global.new Run();
@@ -136,7 +139,7 @@ class ScalaCompiler {
 		
 		compiler.compileSources(JavaConverters.asScalaBufferConverter(sources).asScala().toList());
 		
-		if (Game.getInstance().isDebugEnabled() && reporter.hasErrors())
+		if (isDebugEnabled && reporter.hasErrors())
 			System.out.println("Here is the scala source code of "+name+" (offset:"+offset+"): "+content);
 		reporter.throwExceptionOnNeed();
 	}
@@ -162,11 +165,13 @@ class ScalaCompiler {
 		final static int ERROR = 2;
 		final int[] counts = new int[] {0, 0, 0};
 		int offset=0;
+		boolean isDebugEnabled;
 		Vector<String> messages = new Vector<String>();
 		Settings settings;
 
-		public PLMReporter(Settings s) {
+		public PLMReporter(Settings s, boolean isDebugEnabled) {
 			settings = s;
+			this.isDebugEnabled = isDebugEnabled;
 		}
 		public void setOffset(int _offset) {
 			this.offset = _offset;
@@ -192,13 +197,14 @@ class ScalaCompiler {
 				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt the PLM to this new version of scala (or whatever).");
 			return severity;
 		}
+		
 		@Override
 		public void display(Position pos, String message, Severity _severity) {
 			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
 
 			String label = "";
 			int severity = severityRank(_severity);
-			if (severity == INFO && !Game.getInstance().isDebugEnabled()) 
+			if (severity == INFO && isDebugEnabled) 
 				return;
 			if (severity == WARNING)
 				label = "warning: ";

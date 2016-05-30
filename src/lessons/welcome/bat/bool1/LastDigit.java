@@ -1,15 +1,16 @@
 package lessons.welcome.bat.bool1;
 
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LastDigit extends BatExercise {
-	public LastDigit(Lesson lesson) {
-		super(lesson);
+	public LastDigit(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("lastDigit");
+		BatWorld myWorld = new BatWorld(game, "lastDigit");
 		myWorld.addTest(VISIBLE, 7, 17) ;
 		myWorld.addTest(VISIBLE, 6, 17) ;
 		myWorld.addTest(VISIBLE, 3, 113) ;

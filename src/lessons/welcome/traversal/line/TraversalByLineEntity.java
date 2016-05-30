@@ -1,6 +1,5 @@
 package lessons.welcome.traversal.line;
 
-import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalByLineEntity extends SimpleBuggle {
@@ -40,19 +39,19 @@ public class TraversalByLineEntity extends SimpleBuggle {
 
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
 	}
 	@Override
 	public void forward()  {
 		if (isInited())
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
+			throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
 	}
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
 	@Override
 	public void backward() {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
 }

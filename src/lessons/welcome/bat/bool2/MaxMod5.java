@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class MaxMod5 extends BatExercise {
-	public MaxMod5(Lesson lesson) {
-		super(lesson);
+	public MaxMod5(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("maxMod5");
+		BatWorld myWorld = new BatWorld(game, "maxMod5");
 		myWorld.addTest(VISIBLE, 2, 3) ;
 		myWorld.addTest(VISIBLE, 6, 2) ;
 		myWorld.addTest(VISIBLE, 3, 2) ;

@@ -1,13 +1,13 @@
 package plm.universe.bugglequest.exception;
 
-import plm.core.PLMException;
-import plm.core.model.Game;
+import org.xnap.commons.i18n.I18n;
 
+import plm.core.PLMException;
 
 public class BuggleWallException extends PLMException {
 
-	public BuggleWallException() {
-		super(Game.i18n.tr("Buggles cannot traverse walls"));
+	public BuggleWallException(I18n i18n) {
+		super(i18n.tr("Buggles cannot traverse walls"));
 	}
 
 	private static final long serialVersionUID = -7246709356730960089L;

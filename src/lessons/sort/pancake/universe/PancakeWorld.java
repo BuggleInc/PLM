@@ -1,14 +1,11 @@
 package lessons.sort.pancake.universe;
 
+import java.util.Random;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.ui.ResourcesCache;
-import plm.core.ui.WorldView;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class PancakeWorld extends World {
@@ -24,44 +21,16 @@ public class PancakeWorld extends World {
 		super(world);
 	}
 	
-	/** Returns a component able of displaying the world */
-	@Override
-	public WorldView getView() {
-		return new PancakeWorldView(this);
-	}
-	/** Returns the icon of the universe */
-	// http://omgwtflols.deviantart.com/
-	// http://fc06.deviantart.net/fs71/f/2012/118/5/7/pixel_art__pancakes_with_s236rup_b236_omgwtflols-d4xu72c.gif
-	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"world_pancake.png");
-	}
-	PancakeFlipButtonPanel panel = null;
-	/** Returns the panel which let the user to interact dynamically with the world */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		if (panel == null)
-			panel = new PancakeFlipButtonPanel();
-		return panel;
-	}
 	/** Passes the mouse selection from view to the control panel */ 
 	public void setSelectedPancake(int rank) {
 		if (rank < 1 || rank > getStackSize() || (rank==1&&!burnedWorld) ) {
 			this.selected = -1;
-			panel.setSelectedPancake(selected);
 		} else {
 			this.selected = rank;
-			panel.setSelectedPancake(selected);
 			notifyWorldUpdatesListeners();
 		}
 		
 	}
-	/** Passes the mouse action from the view to the control panel */
-	public void doMove() {
-		panel.doMove();
-	}
-	
 	
 	/** 
 	 * Regular PancakeWorld constructor that creates a random plate
@@ -69,8 +38,10 @@ public class PancakeWorld extends World {
 	 * @param amountOfPancakes : the amount of pancakes in the stack
 	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(String name, int size, boolean burnedPancake) {
-		super(name);
+	public PancakeWorld(Game game, String name, int size, boolean burnedPancake) {
+		super(game, name);
+		Random r = new Random(0);
+		
 		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */
@@ -82,11 +53,11 @@ public class PancakeWorld extends World {
 		wasRandom = true;
 		while (isSorted()) 
 			for ( int rank = 0 ; rank < size ; rank++) {			
-				if ( Math.random() > 0.5) // Flipping time !
+				if ( r.nextDouble() > 0.5) // Flipping time !
 					pancakeStack[rank].flip(); 
 
 				if ( Math.random() > 0.5) // Swapping time !
-					swap(rank, (int)(Math.random()*size));
+					swap(rank, (int)(r.nextDouble()*size));
 			}
 		
 		this.burnedWorld = burnedPancake;
@@ -97,8 +68,8 @@ public class PancakeWorld extends World {
 	 * @param sizes the size of each pancake. If negative, the pancake is upside down
 	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
-		super(name);
+	public PancakeWorld(Game game, String name, int[] sizes, boolean burnedPancake) {
+		super(game, name);
 		setDelay(200); // Delay (in ms) in default animations
 		
 		/* Create the pancakes */
@@ -113,19 +84,19 @@ public class PancakeWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof PancakeWorld))
-			return Game.i18n.tr("This is not a world of pancakes");
+			return getGame().i18n.tr("This is not a world of pancakes");
 
 		PancakeWorld other = (PancakeWorld) o;
 		if (pancakeStack.length != other.pancakeStack.length)
-			return Game.i18n.tr("The two worlds are of differing size");
+			return getGame().i18n.tr("The two worlds are of differing size");
 
 		StringBuffer res = new StringBuffer();
 		if (other.moveCount != moveCount)
-			res.append(Game.i18n.tr("Stacks were not flipped the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+			res.append(getGame().i18n.tr("Stacks were not flipped the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
 
 		for ( int i = 0;i< pancakeStack.length;i++) 
 			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld)) 
-				res.append(Game.i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
+				res.append(getGame().i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
 
 		return res.toString();
 	}
@@ -160,6 +131,27 @@ public class PancakeWorld extends World {
 		this.moveCount = other.moveCount;
 		super.reset(world);		
 	}
+	
+	public Pancake[] getStack()
+	{
+		return pancakeStack;
+	}
+
+	public int getMoveCount() {
+		return moveCount;
+	}
+
+	public int getSelected() {
+		return selected;
+	}
+
+	public boolean isBurnedWorld() {
+		return burnedWorld;
+	}
+
+	public boolean isWasRandom() {
+		return wasRandom;
+	}
 
 	/** Ensures that the provided engine can be used to solve Pancake exercises */ 
 	@Override
@@ -187,6 +179,8 @@ public class PancakeWorld extends World {
 		} else {
 			throw new RuntimeException("No binding of PancakeWorld for "+lang);
 		}
+		
+		
 	}
 
 	/* --------------------------------------- */
@@ -203,9 +197,9 @@ public class PancakeWorld extends World {
 	 */
 	public void flip(int numberOfPancakes) {
 		if (numberOfPancakes < 1) 
-			throw new IllegalArgumentException(Game.i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
+			throw new IllegalArgumentException(getGame().i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
 		if (numberOfPancakes > this.getStackSize()) 
-			throw new IllegalArgumentException(Game.i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
+			throw new IllegalArgumentException(getGame().i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
 		
 		//System.err.println("Flip("+numberOfPancakes+")");
 		/* Invert the pancakes' position */
@@ -239,7 +233,7 @@ public class PancakeWorld extends World {
 	 */
 	public int getPancakeRadius(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()-1));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()-1));
 
 		return pancakeStack[rank].getRadius();
 	}
@@ -258,7 +252,7 @@ public class PancakeWorld extends World {
 	 */
 	public boolean isPancakeUpsideDown(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
+			throw new IllegalArgumentException(getGame().i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].isUpsideDown();
 	}
@@ -290,65 +284,3 @@ public class PancakeWorld extends World {
 	}
 }
 
-class Pancake {
-	private int radius; // Radius of the pancake
-	private boolean upsideDown; // True if the burned face is facing the sky, else false
-	
-	/** Create a new pancake of that radius. If the given radius is negative, the pancake is upside down */
-	public Pancake(int radius) {
-		this.radius = Math.abs(radius);
-		this.upsideDown = radius<0;
-	}
-	
-	/**
-	 * Make a copy of the caller
-	 * @return a copy of the method caller
-	 */
-	public Pancake copy() {
-		Pancake res = new Pancake(this.getRadius());
-		if (this.isUpsideDown())
-			res.flip();
-		return res;
-	}
-	
-	/**
-	 * Indicate whether some other pancake is "equal to" this one
-	 * @param burnedMatter if we take care of the position of the burned part
-	 * @param Pancake other: the other pancake with which to compare
-	 * @return If the two pancakes are equals
-	 */
-	public boolean equals(Pancake other, boolean burnedMatter) {
-		if (getRadius() != other.getRadius())
-			return false;
-		if (burnedMatter && isUpsideDown() != other.isUpsideDown())
-			return false;
-				
-		return true;
-	}
-	
-	/** Flip a pancake, which leads to changing upsideDown */
-	public void flip() {
-		upsideDown = !upsideDown;
-	}
-	
-	/** Returns the radius of the pancake */
-	public int getRadius() {
-		return this.radius;
-	}
-	
-	/** Returns whether the pancake is upside down */
-	public boolean isUpsideDown() {
-		return this.upsideDown;
-	}
-	
-	/** Returns a string representation of the pancake */
-	public String toString() {
-		String s = "< Radius: "+this.getRadius();
-		if ( this.isUpsideDown())
-			s+=" , upside down";
-		
-		s+=" >";
-		return s;
-	}
-	
-}

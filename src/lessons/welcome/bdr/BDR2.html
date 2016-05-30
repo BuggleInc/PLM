@@ -13,7 +13,7 @@ thanks to the new constructs we will introduce.</p>
 <p>The hardest part of previous code is certainly the conditional
 cascading. Somewhere in your code, you certainly had something similar to:</p>
 
-<pre>if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == "R"[/!]) {
+<pre><code class="code-container">if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == "R"[/!]) {
   right();
   [!c]stepForward()[/!][!java|scala]forward()[/!];
 } else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == "L"[/!]) {
@@ -26,7 +26,7 @@ cascading. Somewhere in your code, you certainly had something similar to:</p>
 } else {
   finished = [!c]1[/!][!java|scala]true[/!];
 }
-</pre>
+</code></pre>
 
 <p>When you review this code, it may not be clear at the first glance that it
 is simply a choice with 4 branches depending on the value of
@@ -40,7 +40,7 @@ It's really cool![/!]</p>
 [/!]
 
 [!java|c]
-<pre>
+<pre><code class="code-container">
 switch (<b>expression</b>) {
   case <b>firstValue</b>: 
     <b>whatToDoIfExpressionEqualsFirstValue();</b>
@@ -54,7 +54,7 @@ switch (<b>expression</b>) {
     /* as much similar cases as you want */
   default: 
     <b>whatToDoIfExpressionDoesNotEqualsAnySeenValues();</b>
-}</pre>
+}</code></pre>
 
 <p>Observe that each branch of a <tt>switch</tt> must be ended by a
 <code>break</code>. If you forget this, the machine keeps going and execute
@@ -64,7 +64,7 @@ some <b>rare</b> cases where this behavior reveals helpful.</p>
 <p>It is then possible to rewrite previous BDR code in a cleaner way using the
 <tt>switch</tt> construct:</p>
 
-<pre>switch (getIndication()) {
+<pre><code class="code-container">switch (getIndication()) {
   case 'R':
     right(); 
     [!c]stepForward()[/!][!java]forward()[/!]; 
@@ -79,52 +79,52 @@ some <b>rare</b> cases where this behavior reveals helpful.</p>
     break;
   default: 
     return;
-}</pre>
+}</code></pre>
 [/!]
 [!scala]
-<pre><i>expression</i> <b>match</b> {
+<pre><code class="code-container"><i>expression</i> <b>match</b> {
   <b>case</b> <i>possible value</i> <b>=></b> instructions
   <b>case</b> <i>other value</i>     <b>=></b> other instructions
   <b>case</b> <i>another value</i> <b>=></b> yet another instructions
   <b>case _                 =></b> default instructions
 }
-</pre>
+</code></pre>
 <p>The expression provided before the keyword <code>match</code>, and then
 the branches are evaluated one after the other until we find one which value provided 
 between <code>case</code> and <code>=&gt</code> is equal to the expression's value. 
 The <code>_</code> symbol  acts as a wildcard, so the <code>_</code> branch <i>always</i> matches. 
 Here is an example where a variable <code>name</code> is matched.</p>
-<pre>name match {
+<pre><code class="code-container">name match {
   case "Martin" => println("Hello Martin, how are you?")
   case "Gerald" => println("Hey Gerald! How are you doing?")
   case _            => println("Welcome stranger.")
-}</pre>
+}</code></pre>
 
 <p>It is possible to have more than one instruction per branch, and merge branches when the values are 
 separated by a | symbol.</p>
-<pre>name match {
+<pre><code class="code-container">name match {
   case "Martin" | "Gerald" => println("Hello "+name+", how are you?"); openTheDoor()
   case _                            => println("Hello stranger. Please do not pass."); lockTheDoor()
-}</pre>
+}</code></pre>
 
 <p>You can even add guards to your branches. These are extra conditions that must be respected for the branch 
 to get applied. This is handy if you want match on value ranges, as follows.</p>
-<pre>age match {
+<pre><code class="code-container">age match {
   case i if i&lt;10 => println("Hey kid!")
   case i if i&lt;20 => println("Hey dude!")
   case i if i&lt;30 => println("Hello young man")
   case _           => println("Hello Sir")
-}</pre>
+}</code></pre>
 <p>Note that there is no need to check whether the value is higher than 10 on the second line because the first 
 matching branch is used. So, if the second branch gets evaluated, then the first one did not match.</p>
 
 <p>Finally, it is possible also to match several variables in one shoot!</p>
-<pre>(x,y) match {
+<pre><code class="code-container">(x,y) match {
  case (0,0) => println("that's the origin")
  case (_,0) => println("On the ordinate")
  case (0,_) => println("On the abscissa")
  case (_,_) => println("Some random point")
-}</pre>
+}</code></pre>
 
 <p>I told you that scala's pattern matching is very powerful! I actually love this feature!</p>
 [/!]

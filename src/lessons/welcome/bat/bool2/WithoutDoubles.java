@@ -1,16 +1,17 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class WithoutDoubles extends BatExercise {
-	public WithoutDoubles(Lesson lesson) {
-		super(lesson);
+	public WithoutDoubles(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("withoutDoubles");
+		BatWorld myWorld = new BatWorld(game, "withoutDoubles");
 		myWorld.addTest(VISIBLE, 2, 3, true) ;
 		myWorld.addTest(VISIBLE, 3, 3, true) ;
 		myWorld.addTest(VISIBLE, 3, 3, false) ;

@@ -24,21 +24,10 @@ import plm.core.model.lesson.ExerciseTemplated;
  *  English version. This is done through the locale static variable. Yeah, that's not 
  *  clean but it just works.
  */
-public class FileUtils {
-	private static Locale locale;
-	
+public class FileUtils {	
 	private final static String[] directories = { "", "lib/", "src/" };                
-
 	
-	/** Specifies the locale that we have to use when looking for translated files */
-	public static void setLocale(Locale l) {
-		locale = l;
-	}
-	public static Locale getLocale() {
-		return locale==null?new Locale("en"):locale;
-	}
-	
-	public static BufferedReader newFileReader(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
+	public static BufferedReader newFileReader(String file, Locale locale, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
 		/* first check if we can find it unmodified */
 		int i = 0;
 		if (!translatable) { // extension is ignored in this case. That's useful to get it from a file chooser
@@ -51,8 +40,10 @@ public class FileUtils {
 			}
 		}
 		
-		if (translatable && locale == null)
-			throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
+		if (translatable && locale == null) {
+				throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
+		}
+			
 		
 		/* Build the list of filenames we will iterate (translated if any, and raw) */
 		String[] fileNames;
@@ -111,8 +102,8 @@ public class FileUtils {
 		throw new FileNotFoundException(file + " with extension " + extension + " could not be found.");
 	}	
 	
-	public static StringBuffer readContentAsText(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
-		BufferedReader br = FileUtils.newFileReader(file, extension, translatable);
+	public static StringBuffer readContentAsText(String file, Locale locale, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
+		BufferedReader br = FileUtils.newFileReader(file, locale, extension, translatable);
 		String newLine = System.getProperty("line.separator");
 		
 		StringBuffer sb = new StringBuffer();

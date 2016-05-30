@@ -6,13 +6,13 @@ import plm.core.model.Game
 
 class ScalaLoopCourseForestEntity extends SimpleBuggle {
 	override def forward(i: Int)  { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward() {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay."));
+		throw new RuntimeException(getGame().i18n.tr("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay."));
 	}
 
 	var colors = Array(
@@ -32,7 +32,7 @@ class ScalaLoopCourseForestEntity extends SimpleBuggle {
 		var c = getGroundColor();
 		if (c.equals(Color.blue)) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("You fall into water."), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, getGame().i18n.tr("You fall into water."), getGame().i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		} else {
 			var nextColor:Color = null;

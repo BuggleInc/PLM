@@ -16,7 +16,7 @@ nouveaux éléments que nous allons maintenant étudier.</p>
 conditionnelles. Quelque part dans votre programme, vous avez sans doute
 écrit quelque chose comme:</p>
 
-<pre>if ([!java|c]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
+<pre><code class="code-container">if ([!java|c]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
   droite();
   avance();
 } else if ([!java|c]getIndication() == 'L'[/!][!scala]litMessage() == "L"[/!]) {
@@ -29,7 +29,7 @@ conditionnelles. Quelque part dans votre programme, vous avez sans doute
 } else {
   fini = true;
 }
-</pre>
+</code></pre>
 
 <p>À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un
 choix avec 4 branches en fonction du résultat de
@@ -43,8 +43,7 @@ le Java ou le Python. Cette construction n'est cependant pas révolutionnaire
 puisqu'elle existe depuis assez longtemps dans des langages comme OCaml ou
 Haskell, mais il n'empêche. Elle est carrément cool![/!]</p>
 [/!] [!java|c]
-<pre>
-switch (<b>expression</b>) {
+<pre><code class="code-container">switch (<b>expression</b>) {
   case <b>premierValeur</b>: 
     <b>queFaireSiExpressionVautPremiereValeur();</b>
     break;
@@ -57,7 +56,7 @@ switch (<b>expression</b>) {
     /* autant de cas sur le même modèle qu'on le souhaite */
   default: 
     <b>queFaireSiExpressionVautAucuneDesValeursProposees();</b>
-}</pre>
+}</code></pre>
 
 <p>Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un
 <code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
@@ -68,7 +67,7 @@ pratique.</p>
 <p>On peut réécrire le code BDR précédent bien plus clairement grâce à la
 construction <tt>switch</tt> de la façon suivante.</p>
 
-<pre>switch (getIndication()) {
+<pre><code class="code-container">switch (getIndication()) {
   case 'R':
     droite(); 
     [!c]avancePas()[/!][!java]avance()[/!]; 
@@ -83,15 +82,15 @@ construction <tt>switch</tt> de la façon suivante.</p>
     break;
   default: 
     return;
-}</pre>
+}</code></pre>
 [/!] [!scala]
-<pre><i>expression</i> <b>match</b> {
+<pre><code class="code-container"><i>expression</i> <b>match</b> {
   <b>case</b> <i>valeur possible</i>  <b>=></b> instructions
   <b>case</b> <i>autre valeur</i>     <b>=></b> d'autres instructions
   <b>case</b> <i>troisième valeur</i> <b>=></b> encore d'autres instructions
   <b>case _                 =></b> instructions par défaut
 }
-</pre>
+</code></pre>
 <p>L'expression fournie avant le mot-clé <code>match</code> est évaluée, et
 ensuite, les branches sont évaluées les unes après les autres jusqu'à en
 trouver une où la valeur entre le <code>case</code> et le <code>=&gt;</code>
@@ -100,42 +99,42 @@ un joker qui correspond à tout. Cela veut dire que la dernière ligne telle
 qu'elle est écrite correspond toujours à la valeur fournie, quelle qu'elle
 soit. Voici un petit exemple où une variable <code>nom</code> est mis en
 correspondance.</p>
-<pre>nom match {
+<pre><code class="code-container">nom match {
   case "Martin" => println("Salut Martin, comment vas-tu?")
   case "Gerald" => println("He Gerald! Ça va?")
   case _            => println("Bonjour, étranger.")
-}</pre>
+}</code></pre>
 
 <p>Il est aussi possible d'avoir plusieurs instructions par branches, et même
 d'avoir plusieurs valeurs sur une branche donnée, séparées par le caractère
 <code>|</code>.</p>
-<pre>nom match {
+<pre><code class="code-container">nom match {
   case "Martin" | "Gerald" => println("Bonjour "+nom+", entre."); ouvreLaPorte()
   case _                            => println("Bonjour étranger. Passe ton chemin sans entrer."); fermeLaPorte()
-}</pre>
+}</code></pre>
 
 <p>Il est même possible d'ajouter des gardes à vos branches. Il s'agit de
 conditions supplémentaires qui doivent être respectées pour que la branche
 soit appliquée. C'est par exemple pratique pour faire du filtrage sur un
 ensemble de valeurs.</p>
-<pre>age match {
+<pre><code class="code-container">age match {
   case i if i&lt;10 => println("Salut gamin!")
   case i if i&lt;20 => println("Salut mec")
   case i if i&lt;30 => println("Bonjour jeune homme")
   case _           => println("Bonjour monsieur")
-}</pre>
+}</code></pre>
 <p>Remarquez qu'il n'est pas nécessaire de vérifier à la seconde ligne que la
 valeur est supérieure à 10 puisque les lignes sont considérées dans
 l'ordre. Si la seconde ligne est considérée, c'est que la première ne
 correspondait pas.</p>
 
 <p>Enfin, il est même possible de filtrer sur plusieurs variables à la fois!</p>
-<pre>(x,y) match {
+<pre><code class="code-container">(x,y) match {
  case (0,0) => println("C'est le point origine")
  case (_,0) => println("C'est un point de l'ordonnée")
  case (0,_) => println("C'est un point de l'abscisse")
  case (_,_) => println("C'est un point quelconque")
-}</pre>
+}</code></pre>
 
 <p>Je vous avais bien dit que le filtrage scala était une construction
 surpuissante ! Je l'adore !</p>

@@ -3,16 +3,17 @@ package lessons.recursion.cons;
 import lessons.recursion.cons.universe.ConsExercise;
 import lessons.recursion.cons.universe.ConsWorld;
 import lessons.recursion.cons.universe.RecList;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AllDifferent extends ConsExercise {
 
-	public AllDifferent(Lesson lesson) {
-		super(lesson);
+	public AllDifferent(Game game, Lesson lesson) {
+		super(game, lesson);
 		
-		BatWorld myWorld = new ConsWorld("allDifferent");
+		BatWorld myWorld = new ConsWorld(game, "allDifferent");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 2, 4}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 1, 1}));

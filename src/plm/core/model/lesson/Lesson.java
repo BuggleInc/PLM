@@ -4,19 +4,24 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import plm.core.HumanLangChangesListener;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 
+public abstract class Lesson implements HumanLangChangesListener {
 
-public abstract class Lesson {
+	private Game game;
 	private String name;
 	private String id;
+	private String description;
+	private String imgPath;
 	
 	public static enum LoadingOutcome {SUCCESS,FAIL}
 	
@@ -39,10 +44,13 @@ public abstract class Lesson {
 	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
 	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 
-	public Lesson() {
+	public Lesson(Game game) {
+		this.game = game;
 		id = getClass().getCanonicalName().replaceAll(".Main$","");
 		id = id.replaceAll("^lessons.", "");
-		
+	}
+	
+	public void loadLesson() {
 		try {
 			loadExercises();
 			Game.waitInitThreads();
@@ -65,15 +73,16 @@ public abstract class Lesson {
 					Exercise exo = (Exercise) l;
 					if (exo.getProgLanguages().contains(lang)) {
 						possible++;
-						if (Game.getInstance().studentWork.getPassed(l, lang))
+						if (game.studentWork.getPassed(l, lang))
 							passed++;
 					}
 				}
 			}
-			Game.getInstance().studentWork.setPassedExercises(id, lang, passed);
-			Game.getInstance().studentWork.setPossibleExercises(id, lang, possible);
+			game.studentWork.setPassedExercises(id, lang, passed);
+			game.studentWork.setPossibleExercises(id, lang, possible);
 		}
 	}
+	
 	public String getId() {
 		return id;
 	}
@@ -89,9 +98,9 @@ public abstract class Lesson {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename,"html",true);
+			sb = FileUtils.readContentAsText(filename,getGame().getLocale(),"html",true);
 		} catch (IOException ex) {
-			about = Game.i18n.tr("File {0}.html not found.",filename);
+			about = getGame().i18n.tr("File {0}.html not found.",filename);
 			name = filename;
 			return;
 		}
@@ -101,7 +110,7 @@ public abstract class Lesson {
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
+			getGame().getLogger().log(getGame().i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		name = m.group(1);
 		/* get the mission explanation */
 		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		
@@ -186,5 +195,44 @@ public abstract class Lesson {
 	}
 	public void setLoadingOutcomeState(LoadingOutcome loadingOutcomeState) {
 		LoadingOutcomeState = loadingOutcomeState;
+	}
+	
+	public String getDescription() {
+		if(description == null) {
+			setDescription("short_desc");
+		}
+		return description;
+	}
+
+	public void setDescription(String name) {
+		String filename = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html",true);
+		} catch (IOException ex) {
+			filename += ".html";
+		}
+		
+		description = sb != null? sb.toString() : "";
+	}
+
+	public String getImgPath() {
+		if(imgPath == null) {
+			setImgPath("icon.png");
+		}
+		return imgPath;
+	}
+
+	public void setImgPath(String name) {
+		imgPath = "lessons" + File.separatorChar + id.replace('.',File.separatorChar)+ File.separatorChar + name;
+	}
+	
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		loadAboutAndName();
+		setDescription("short_desc");
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

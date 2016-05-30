@@ -9,36 +9,31 @@ import java.util.List;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.PlmHtmlEditorKit;
-import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
 
 public abstract class World {
 	private boolean isDelayed = false; // whether we display interactively or not
 	private boolean isAnswer = false;
+	private boolean isError = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
 	private String name;
-
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
-
-	public World(String name) {
+	private Game game;
+	
+	public World(Game game, String name) {
 		this.name = name;
+		this.game = game;
 	}
 
 	public World(World w2) {
-		this(w2.getName());
+		this(w2.game, w2.getName());
 		reset(w2);
 	}
 
@@ -116,6 +111,12 @@ public abstract class World {
 	public boolean isAnswerWorld() {
 		return isAnswer;
 	}
+	public void setErrorWorld() {
+		isError = true;
+	}
+	public boolean isErrorWorld() {
+		return isError;
+	}
 
 	public void addEntity(Entity b) {
 		if (b.getWorld() != this)
@@ -125,7 +126,7 @@ public abstract class World {
 	}
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
-			System.out.println("Ignoring a request to remove an unknown entity");
+			getGame().getLogger().log("Ignoring a request to remove an unknown entity");
 		notifyEntityUpdateListeners();		
 	}
 
@@ -151,16 +152,18 @@ public abstract class World {
 	}
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
-		final ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (Game.getInstance().isDebugEnabled())
-			Logger.log("World:runEntities","Programming language: "+pl);
+		final ProgrammingLanguage pl = getGame().getProgrammingLanguage();
+		if (game.isDebugEnabled()) {
+			game.getLogger().log("World:runEntities");
+			game.getLogger().log("Programming language: "+pl);
+		}
 		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
-					Game.getInstance().statusArgAdd(getName());
-					pl.runEntity(b, progress);
-					Game.getInstance().statusArgRemove(getName());
+					game.statusArgAdd(getName());
+					pl.runEntity(b, progress, getGame().i18n);
+					game.statusArgRemove(getName());
 				}
 			});
 
@@ -170,7 +173,7 @@ public abstract class World {
 			    	if(ex instanceof ThreadDeath) {
 			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
 			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
-				        progress.setExecutionError(Game.i18n.tr(msg));
+				        progress.setExecutionError(getGame().i18n.tr(msg));
 				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
 			    	}
 			    }
@@ -187,6 +190,10 @@ public abstract class World {
 	/* who's interested in every details of the world changes */
 	private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
 
+	public ArrayList<IWorldView> getWorldUpdatesListeners() {
+		return worldUpdatesListeners;
+	}
+	
 	/* who's only interested in entities creation and destructions */
 	private ArrayList<IWorldView> entitiesUpdateListeners = new ArrayList<IWorldView>();
 
@@ -257,28 +264,7 @@ public abstract class World {
 				bw.close();
 		}
 	}
-
-	/* Find my UI */
-	public WorldView getView() {
-		return new WorldView(this) {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public boolean isWorldCompatible(World world) {
-				return false;
-			}
-		};
-	}
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void setEnabledControl(boolean enabled) {
-			}
-		};
-	}
-	public abstract ImageIcon getIcon();
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -327,7 +313,7 @@ public abstract class World {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, "html", true);
+				sb = FileUtils.readContentAsText(filename, getGame().getLocale(), "html", true);
 			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;
@@ -335,7 +321,7 @@ public abstract class World {
 			/* read it */
 			about = sb.toString();
 		}
-		return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
+		return PlmHtmlEditorKit.filterHTML(about, game.isDebugEnabled(), getGame().getProgrammingLanguage());
 	}
 	
 	/**
@@ -368,4 +354,8 @@ public abstract class World {
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);
+	
+	public Game getGame() {
+		return game;
+	}
 }

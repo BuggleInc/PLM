@@ -10,8 +10,8 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {
-	public BacktrackingExercise(Lesson lesson) {
-		super(lesson);
+	public BacktrackingExercise(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 	protected void setup(World[] ws,BacktrackingEntity solver) {
 		for (World w:ws) {
@@ -27,7 +27,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			}
 
 		}
-		setupWorlds(ws);
+		setupWorlds(ws, 0);
 		try {
 			// FIXME: Java only aint good
 			newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java");
@@ -39,13 +39,13 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		computeAnswer();
 	}
 	protected void computeAnswer() {
-		ExecutionProgress progress = new ExecutionProgress();
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = getGame().getProgrammingLanguage();
+		ExecutionProgress progress = new ExecutionProgress(pl);
 		
 		for (World aw : answerWorld) {
-			System.out.println("Compute answer for world "+aw.getName());
+			getGame().getLogger().log("Compute answer for world "+aw.getName());
 			try {
-				pl.runEntity(aw.getEntity(0),progress);
+				pl.runEntity(aw.getEntity(0),progress, getGame().i18n);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
@@ -53,6 +53,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 	}
 
 	protected void newBestSolution(BacktrackingPartialSolution sol) {
+		setNbError(-1);
 		((BacktrackingWorld) getWorlds(WorldKind.CURRENT).get(0)).newBestSolution(sol);
 	}
 

@@ -3,7 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class TricolorHanoi2Entity extends HanoiEntity {
-
+	
 	public void run() {
 		int src = (Integer)getParam(0);
 		int mid = (Integer)getParam(1);

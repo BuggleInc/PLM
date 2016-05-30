@@ -1,0 +1,48 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Loops while (enquanto)</h2>
+		
+<p>Além dos condicionais, outra construção bem útil é a habilidade de repetir
+uma ação enquanto uma condição específica  não acontece. Um loop 'while' é
+usado para isto, com a seguinte sintaxe.</p>
+ 
+<pre>[!java|scala|c]while (<b>condição</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>ação()</b>;
+}[/!][!python]while <b>condição</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>ação()</b>[/!]</pre>
+
+<p>O bloco interno é então executado várias e várias vezes, enquanto a condição
+se mantiver verdadeira. Mais especificamente, o buggle testa o valor da
+condição. Se for falsa, ele ignora o bloco e continua abaixo. Se for
+verdadeira, ele executa o bloco. Depois disto, ele testa a condição. Se ela
+agora for falsa (por exemplo, por que os movimentos do bloco nos deixaram de
+cara pra parede), ele agora ignora o bloco e continua. Se ele ainda for
+verdadeiro, ele executa o bloco e reavalia a condição. Ele faz isto enquanto
+a condição se mantém verdadeira.</p>
+
+<p>Naturalmente, se a ação escolhida não modifica o valor da condição, o buggle
+vai fazer a ação infinitamente. O botão <b>stop</b> na interface se torna
+útil nestes casos. Para testar isto, você pode tentar digitar o seguinte
+código no editor:</p>
+
+<pre>[!java|scala]while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;esquerda();
+}[/!][!c]while (1) {
+&nbsp;&nbsp;&nbsp;&nbsp;esquerda();
+}[/!][!python]while True:
+&nbsp;&nbsp;&nbsp;&nbsp;esquerda()[/!]</pre>
+
+<p>Isto vai fazer o buggle virar à esquerda enquanto
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> permanecer true
+(ou seja, infinitamente), ou até que você pare manualmente usando o botão
+parar.</p>
+
+<h3>Objetivo do exercício</h3>
+Agora você tem que escrever algum código para seus buggles se moverem para a
+frente até que eles encontrem uma parede. A ideia é então fazer algo assim:
+
+<pre>Enquanto não estiver de cara para uma parede, faça:
+&nbsp;&nbsp;avançar()</pre>
+
+<p>Procure na documentação (em "Ajuda/Sobre este mundo") para a lista completa
+dos métodos dos buggles.</p>

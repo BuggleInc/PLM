@@ -28,10 +28,10 @@ public class DemoRunner extends Thread {
 	public void runDemo(Exercise exo) throws Exception {
 		game.setState(Game.GameState.DEMO_STARTED);
 		
-		this.game.disableStepMode();
+		game.disableStepMode();
 		
-		if(Game.getProgrammingLanguage().equals(Game.C)){
-			exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.CORRECTION);
+		if(game.getProgrammingLanguage().equals(Game.C)){
+			exo.compileAll(game.getLogger(), StudentOrCorrection.CORRECTION);
 		}
 		
 		exo.runDemo(runners);
@@ -58,14 +58,14 @@ public class DemoRunner extends Thread {
 		try {
 			runDemo(exo);
 		} catch (InterruptedException e) {
-			game.getOutputWriter().log(e);
+			game.getLogger().log(LogHandler.ERROR, e.getLocalizedMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (stepModeWasActivated) {
 				this.game.enableStepMode();
 			}
-			game.setState(Game.GameState.DEMO_ENDED);			
+			game.setState(Game.GameState.DEMO_ENDED);
 		}
 
 		runners.remove(this);

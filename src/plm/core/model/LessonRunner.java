@@ -1,18 +1,13 @@
 package plm.core.model;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
-
-import javax.swing.SwingUtilities;
 
 import plm.core.PLMCompilerException;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
-import plm.core.ui.ExerciseFailedDialog;
-import plm.core.ui.ExercisePassedDialog;
 
 /** 
  * This class runs the student code of the current exercise in a separated thread 
@@ -39,13 +34,13 @@ public class LessonRunner extends Thread {
 			return;
 		final Exercise exo = (Exercise) lect;
 
-		exo.lastResult = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress(game.getProgrammingLanguage());
 
 		try {
 			game.saveSession(); // for safety reasons;
 
 			game.setState(Game.GameState.COMPILATION_STARTED);
-			exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.STUDENT);
+			exo.compileAll(this.game.getLogger(), StudentOrCorrection.STUDENT);
 			game.setState(Game.GameState.COMPILATION_ENDED);
 
 			game.setState(Game.GameState.EXECUTION_STARTED);
@@ -61,6 +56,7 @@ public class LessonRunner extends Thread {
 
 			if (!game.isCreativeEnabled())
 				exo.check();
+			
 			game.setState(Game.GameState.EXECUTION_ENDED);
 
 		} catch (InterruptedException e) {
@@ -76,29 +72,10 @@ public class LessonRunner extends Thread {
 		}
 
 		if (!game.isCreativeEnabled()) {
-			try {
-				if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-					Game.getInstance().studentWork.setPassed(exo, null, true);
-
-					SwingUtilities.invokeAndWait(new Runnable() {
-						@Override
-						public void run() {
-							new ExercisePassedDialog(exo);
-						}
-					});
-				} else {
-					SwingUtilities.invokeAndWait(new Runnable() {
-						public void run() {
-							new ExerciseFailedDialog(exo.lastResult);
-						}
-					});
-
-				}
-			} catch (InvocationTargetException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if (exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
+				game.studentWork.setPassed(exo, null, true);
 			}
-			Game.getInstance().fireProgressSpy(exo);									
+			game.fireProgressSpy(exo);
 		}
 		runners.remove(this);
 	}

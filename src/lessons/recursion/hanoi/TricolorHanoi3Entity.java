@@ -5,7 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 //http://en.wikipedia.org/wiki/Tower_of_Hanoi#Cyclic_Hanoi
 
 public class TricolorHanoi3Entity extends HanoiEntity {
-
+	
 	public void run() {
 		int src = (Integer)getParam(0);
 		int mid = (Integer)getParam(1);

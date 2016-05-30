@@ -1,14 +1,15 @@
 package lessons.bat.string1;
+import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringYak extends BatExercise {
-	public StringYak(Lesson lesson) {
-		super(lesson);
+	public StringYak(Game game, Lesson lesson) {
+		super(game, lesson);
 
-		BatWorld myWorld = new BatWorld("stringYak");
+		BatWorld myWorld = new BatWorld(game, "stringYak");
 		myWorld.addTest(VISIBLE, "yakpak") ;
 		myWorld.addTest(VISIBLE, "pakyak") ;
 		myWorld.addTest(VISIBLE, "yak123ya") ;

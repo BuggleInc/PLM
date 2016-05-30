@@ -17,12 +17,14 @@ public class BatTest {
 	private boolean correct,answered;
 	public boolean objectiveTest=false; // ExoTest messes with it, sorry
 	private String funName;
+	private Game game;
 	
-	public BatTest(String funName, boolean visible,Object parameters) {
+	public BatTest(Game game, String funName, boolean visible,Object parameters) {
 		this.funName = funName;
 		this.visible = visible;
 		this.correct = false;
 		this.answered = false;
+		this.game = game;
 		
 		/* Cast parameters into an array on need */
 		if (parameters.getClass().isArray()) {
@@ -33,7 +35,7 @@ public class BatTest {
 	}
 
 	public BatTest copy() {
-		BatTest res = new BatTest(funName,visible,parameters.clone());
+		BatTest res = new BatTest(game, funName,visible,parameters.clone());
 		res.result = result;
 		res.expected = expected;
 		res.expectedHasValue = expectedHasValue;
@@ -76,12 +78,12 @@ public class BatTest {
 			return false;
 		BatTest other = (BatTest) o;
 		if (other.parameters.length != parameters.length) {
-			//System.out.println("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
+			//getGame().getLogger().log("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
 			return false;
 		}
 		for (int i=0;i<parameters.length;i++) {
 			if (parameters[i] != null && !parameters[i].equals(other.parameters[i])) {
-				//System.out.println("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
+				//getGame().getLogger().log("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
 				return false;
 			}
 			if (parameters[i] == null && other.parameters[i]!=null)
@@ -100,9 +102,9 @@ public class BatTest {
 		} else {
 			/* Act as an usual equal method as we don't seem to be called from check(). From the UI maybe? */
 			if (! equalParameter(result, other.result)) 
-				//System.out.println("While comparing a Bat test, the result differs: null != "+other.result);
+				//getGame().getLogger().log("While comparing a Bat test, the result differs: null != "+other.result);
 				return false;
-			//System.out.println("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
+			//getGame().getLogger().log("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
 			return equalParameter(expected, other.expected);
 		}
 	}
@@ -160,7 +162,7 @@ public class BatTest {
 	}
 	public String stringParameter(Object o) {
 		StringBuffer res = new StringBuffer();
-		displayParameter(o, res, Game.getProgrammingLanguage());
+		displayParameter(o, res, game.getProgrammingLanguage());
 		return res.toString();
 	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
@@ -256,7 +258,7 @@ public class BatTest {
 		}		
 	}
 	public String getName() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = game.getProgrammingLanguage();
 		if (name == null) {
 			StringBuffer sb=new StringBuffer(funName+"(");
 			
@@ -276,8 +278,13 @@ public class BatTest {
 		return objectiveTest;
 	}
 	
+	public String formatAsString() {
+		return getName()+"="+getResult()
+		+(isAnswered() && !isCorrect() ?" (expected: "+stringParameter(expected)+")":"");
+	}
+	
 	public String toString() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		ProgrammingLanguage pl = game.getProgrammingLanguage();
 		StringBuffer res = new StringBuffer(getName());
 		res.append("=");
 		displayParameter(result, res, pl);
@@ -293,12 +300,12 @@ public class BatTest {
 		
 		if (o != null) {
 			StringBuffer sb = new StringBuffer();
-			displayParameter(o, sb, Game.getProgrammingLanguage());
+			displayParameter(o, sb, game.getProgrammingLanguage());
 			return sb.toString();
 		} else {
-			if (Game.getProgrammingLanguage() == Game.SCALA)
+			if (game.getProgrammingLanguage() == Game.SCALA)
 				return "Nil";
-			if (Game.getProgrammingLanguage() == Game.PYTHON)
+			if (game.getProgrammingLanguage() == Game.PYTHON)
 				return "None";
 			return "null";
 		}
@@ -309,6 +316,7 @@ public class BatTest {
 		if (!expectedHasValue) {
 			expected = r; // The first time we're set, that's an answer which comes in
 			expectedHasValue = true;
+			result = null;
 		} else {
 			if (expectedHasValue)
 				correct = equalParameter(expected, result);

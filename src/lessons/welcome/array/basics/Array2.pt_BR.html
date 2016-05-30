@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Arrays[/!][!python]Lists[/!], Nós e Módulos</h1>
+
+<p>Este exercício é similar ao anterior: você tem que reproduzir o padrão de
+cores da primeira célula nas outras.</p>
+
+<p>A primeira diferença é que o mundo é cercado de muros: você portanto tem que
+modificar levemente sua trajetória para garantir que o buggle não bata num
+muro. O jeito mais simples é manipular a primeira célula fora do loop
+<code>for</code> e fazer apenas <code>getAlturaDoMundo()-1</code> passos no
+loop.</p>
+
+<p>A outra diferença é que o deslocamento para aplicar entre as colunas não é
+fixo, mas está escrito na primeira célula de cada coluna. Para obter a
+informação como um inteiro, podemos usar:</p>
+
+<pre>[!java]int deslocamento = Integer.parseInt(readMessage())[/!][!python]deslocamento = int( readMessage() )[/!][!scala]val deslocamento = readMessage().toInt[/!]</pre>
+
+<p><code>readMessage()</code> obtém a mensagem no chão como uma
+[!java|scala]String[/!][!python]string[/!], enquanto
+<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code>
+transforma a string <code>str</code> em um inteiro ao <i>ler</i> ela.</p>
+
+<p>Então, para pegar a cor certa, o mais fácil é usar o operador <code>%</code>
+(operador módulo). Por exemplo, <code>(i + 5) % tam</code> serve para
+recuperar a <code>i</code>-ésima célula de uma array de tamanho
+<code>tam</code> com um deslocamento de <code>5</code>.</p>
+
+<p>Agora é com você.</p>

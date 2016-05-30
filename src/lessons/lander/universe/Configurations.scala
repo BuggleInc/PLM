@@ -1,6 +1,7 @@
 package lessons.lander.universe
 
 import plm.universe.World
+import plm.core.model.Game
 
 object Configurations {
   import NumUtil._
@@ -9,9 +10,9 @@ object Configurations {
 
   private case class Terrain(width: Int, height: Int, ground: List[Point])
 
-  private def makeWorld(name: String, terrain: Terrain, position: Point, speed: Point,
+  private def makeWorld(game: Game, name: String, terrain: Terrain, position: Point, speed: Point,
       angle: Double, thrust: Int, fuel: Int) =
-    new DelegatingLanderWorld(name, terrain.width, terrain.height, terrain.ground, position, speed,
+    new DelegatingLanderWorld(game, name, terrain.width, terrain.height, terrain.ground, position, speed,
         angle, thrust, fuel)
 
   // helper geometric functions
@@ -39,6 +40,52 @@ object Configurations {
 
   // worlds
 
+  def makeWorld(game: Game, config: String): DelegatingLanderWorld = {
+    config match {
+      case "SIMPLE_TERRAIN_TRIVIAL_CONFIG" =>
+        makeWorld(
+          game = game,
+          name = "Simple Terrain, Simple Configuration",
+          terrain = SIMPLE_TERRAIN,
+          position = Point(1200, 700),
+          speed = Point(0, 0),
+          angle = 0.0,
+          thrust = 0,
+          fuel = 3000)
+      case "CHALLENGING_TERRAIN_SIMPLE_CONFIG" =>
+        makeWorld(
+          game = game,
+          name = "Challenging Terrain, Simple Configuration",
+          terrain = CHALLENGING_TERRAIN,
+          position = Point(530, 600),
+          speed = Point(0, 10),
+          angle = 0,
+          thrust = 4,
+          fuel = 3000)
+      case "SIMPLE_TERRAIN_CHALLENGING_CONFIG" =>
+        makeWorld(
+          game = game,
+          name = "Simple Terrain, Challenging Configuration",
+          terrain = SIMPLE_TERRAIN,
+          position = Point(500, 500),
+          speed = angleToSpeed(-20, 20),
+          angle = -20,
+          thrust = 3,
+          fuel = 3000)
+      case "SIMPLE_TERRAIN_HARD_CONFIG" =>
+        makeWorld(
+          game = game,
+          name = "Simple Terrain, Hard Configuration",
+          terrain = SIMPLE_TERRAIN,
+          position = Point(1900, 900),
+          speed = angleToSpeed(90, 80),
+          angle = 90,
+          thrust = 4,
+          fuel = 3000)
+    }
+  }
+          
+  /*
   val SIMPLE_TERRAIN_TRIVIAL_CONFIG = makeWorld(
       name = "Simple Terrain, Simple Configuration",
       terrain = SIMPLE_TERRAIN,
@@ -74,4 +121,5 @@ object Configurations {
       angle = 90,
       thrust = 4,
       fuel = 3000)
+   */
 }

@@ -13,8 +13,8 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	public static final boolean INVISIBLE = false;
 	public static final boolean VISIBLE = true;
 	
-	public BatExercise(Lesson lesson) {
-		super(lesson);
+	public BatExercise(Game game, Lesson lesson) {
+		super(game, lesson);
 	}
 
 	protected void setup(World[] ws) {
@@ -76,7 +76,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 		skeleton.append("))\n");
 		
-		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"");
+		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"","");
 		corrections.put(Game.PYTHON, initialCode+correction+"\n"+skeleton);
 		addProgLanguage(Game.PYTHON);
 	}
@@ -89,11 +89,13 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 		/* compute the correction */
 			
-		Vector<World> worlds;
+		Vector<World> worlds = null;
+		int nbErrors = getNbError();
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;
 		case ANSWER:  worlds = answerWorld;  break;
+		case ERROR:   if(nbErrors != -1) worlds = commonErrors.get(nbErrors);   break;
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
 

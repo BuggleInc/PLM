@@ -3,10 +3,15 @@ package lessons.sort.baseball.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
+import lessons.sort.baseball.operations.MoveOperation;
 import plm.universe.Entity;
 
 public class BaseballEntity extends Entity {
+	
+	public BaseballEntity() {
+		super();
+	}
+	
 	/** Returns the amount of bases on your field */
 	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();
@@ -46,6 +51,7 @@ public class BaseballEntity extends Entity {
 	 */
 	public void move(int base, int position) {
 		((BaseballWorld) this.world).move(base,position);
+		addOperation(new MoveOperation(this, base, position));
 		stepUI();
 	}
 
@@ -122,7 +128,7 @@ public class BaseballEntity extends Entity {
 				((BaseballWorld) world).assertSorted(str);
 				break;
 			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
+				getGame().getLogger().log("COMMANDE INCONNUE : "+command);
 				break;
 			}
 			out.flush();

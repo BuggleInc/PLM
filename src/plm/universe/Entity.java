@@ -3,6 +3,7 @@ package plm.universe;
 import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
@@ -10,20 +11,23 @@ import java.util.concurrent.Semaphore;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
-/* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
+/* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static getGame().i18n instead.
  * 
  * This is because we have to pass the classname to the I18nFactory, but it seems to break 
  * stuff that our code generate new package names. This later case being forced by our use 
  * of the compiler, we cannot initialize an I18n stuff. 
  * 
- * Instead, the solution is to use the static field Game.i18n, as it is done in AbstractBuggle::diffTo().
+ * Instead, the solution is to use the static field getGame().i18n, as it is done in AbstractBuggle::diffTo().
  */
 
 public abstract class Entity extends Observable {
 	protected String name = "(noname)";
 
 	protected World world;
-
+	
+	private boolean readyToSend = false;
+	private List<Operation> operations = new ArrayList<Operation>();
+	private Game game;
 	private Semaphore oneStepSemaphore = new Semaphore(0);
 
 	public Entity() {}
@@ -33,8 +37,10 @@ public abstract class Entity extends Observable {
 	}
 	public Entity(String name, World w) {
 		this.name=name;
-		if (w != null)
+		if (w != null) {
 			w.addEntity(this);
+			game = world.getGame();
+		}
 	}
 
 	public String getName() {
@@ -73,25 +79,15 @@ public abstract class Entity extends Observable {
 	 *  
 	 * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().  
 	 */
-	protected void stepUI() {		
+	protected void stepUI() {
+		readyToSend = true;
 		fireStackListener();
 		world.notifyWorldUpdatesListeners();
-		if (world.isDelayed()) {
-			if (Game.getInstance().stepModeEnabled()) {
-				this.oneStepSemaphore.acquireUninterruptibly();
-			} else {	
-				try {
-					if (world.getDelay()>0) // seems that sleep(0) takes time (yield thread?)
-						Thread.sleep(world.getDelay());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}		
 	}
 
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {
+		setGame(other.game);
 		setName(other.getName());
 		setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
 	}
@@ -130,7 +126,7 @@ public abstract class Entity extends Observable {
 
 	/** Returns whether this is the entity selected in the interface */
 	public boolean isSelected() {
-		return this == Game.getInstance().getSelectedEntity();
+		return this == game.getSelectedEntity();
 	}
 
 	/** Run this specific entity, encoding the student logic to solve a given exercise. 
@@ -157,5 +153,29 @@ public abstract class Entity extends Observable {
 	public Integer getScriptOffset(ProgrammingLanguage lang) {
 		Integer res = scriptOffset.get(lang);
 		return res == null ? 0:res;
+	}
+	
+	public List<Operation> getOperations() {
+		return operations;
+	}
+	
+	public void addOperation(Operation operation) {
+		operations.add(operation);
+	}
+	
+	public boolean isReadyToSend() {
+		return readyToSend == true;
+	}
+	
+	public void setReadyToSend(boolean readyToSend) {
+		this.readyToSend = readyToSend;
+	}
+	
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

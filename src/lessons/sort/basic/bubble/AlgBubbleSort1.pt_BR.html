@@ -1,0 +1,51 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BubbleSort</h1>
+
+<p>Bem vindo ao universo da ordenação. Ele permite que você experimente os
+algoritmos de ordenação existentes. A lista de "buildins" que você pode usar
+nos seus algoritmos está disponível na documentação de referência do mundo
+("Ajuda"-&gt;"Sobre este mundo").</p>
+
+<p>Não é suficiente ordenar a array para passar nos exercícios. Sua solução
+deve seguir estritamente o comportamento esperado em cada exercício. Isto é
+reforçado verificando que seu algoritmo precisa da mesma quantidade de
+operações de escrita e leitura para ordenar a array. </p>
+
+<p>Quando seu algoritmo divergge das expectativas, entender a diferença entre
+seu código e a solução esperada pode ser muito difícil. Para ajudar neste
+processo, é possível explorar graficamente a história de seu algoritmo de
+ordenação. Alterne para a visão Objetivo e use o menu contextual (clique com
+o botão direito) para alternar da visão do estado atual para a visão de seu
+histórico.</p>
+
+<p>A visão do histórico é um pouco bagunçada à primeira vista, mas na verdade é
+bem simples: o tempo anda da esquerda para a direita neste gráfico, e cada
+linha é uma célula de sua array. As linhas curvas que navegam entre linhas
+representam um certo valor de um dado. Quando duas linhas se cruzam,
+significa que dois valores foram alternados neste momento; uma bifurcação
+numa linha representa uma cópia de valor; quando um valor é magenta e
+seguido de uma interrogação (?), foi lido usando getValor(); Se o valor é
+vermelho e seguido de uma exclamação (!), foi escrito com setValor().</p> 
+
+<h2>Primeira tentativa no BubbleSort</h2>
+
+<p>O primeiro algoritmo de ordenação é o mais simples: Bubble sort consiste em
+progressivamente mover o menor elemento da array, como se fossem bolhas de
+ar subindo para a superfície de um líquido. O algoritmo percorre a array e
+compara qualquer par de elementos adjacentes. Se dois elementos adjacentes
+estiverem fora de ordem, eles são alternados. Quando a array estiver
+completamente percorrida, a operação começa de novo do começo. Quando nenhum
+elemento for ordenado após uma passagem completa, significa que a array está
+completamente ordenada: e o algoritmo pode parar.  Bubble sort é estudado
+por causa da sua simplicidade, mas quase nunca é usado na prática por causa
+de seu baixo desempenho (O(n^2) em média).</p>
+
+<div class="tip" id="tip-1" alt="Mostrar Dica (Pseudo-código)">
+<p>O pseudo-código do algoritmo BubbleSort é o seguinte:</p>
+<pre>faça: 
+        Para cada i em [0,len-2]
+          Se a célula i e i+1 devem ser alternadas, alterne
+enquanto algo foi alternado na última passagem
+</pre>
+</div>

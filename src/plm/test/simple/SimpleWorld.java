@@ -2,8 +2,6 @@ package plm.test.simple;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.universe.World;
@@ -12,11 +10,11 @@ public class SimpleWorld extends World {
 
 	private boolean objectif = false;
 	
-	public SimpleWorld(String name) {
-		super(name);
+	public SimpleWorld(Game game, String name) {
+		super(game, name);
 	}
-	public SimpleWorld(String name, boolean objectif) {
-		super(name);
+	public SimpleWorld(Game game, String name, boolean objectif) {
+		super(game, name);
 		this.objectif = objectif;
 	}
 	
@@ -25,17 +23,6 @@ public class SimpleWorld extends World {
 		this.objectif = w.objectif;
 	}
 	
-	public SimpleWorld copy(SimpleWorld w) {
-		SimpleWorld res = new SimpleWorld(w);
-		return res;
-	}
-	
-	@Override
-	public ImageIcon getIcon() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine)
 			throws ScriptException {

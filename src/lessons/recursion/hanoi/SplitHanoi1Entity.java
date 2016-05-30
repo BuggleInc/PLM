@@ -40,17 +40,17 @@ public class SplitHanoi1Entity extends HanoiEntity {
 	public void splitHanoi(int height, int src,int other, int dst1, int dst2) {
 		/* BEGIN SOLUTION */
 		//for (int i=4;i>height;i--) System.out.print(" ");
-		//System.out.println("solve("+height+","+src1+","+src2+","+other+","+dst+")");
+		//getGame().getLogger().log("solve("+height+","+src1+","+src2+","+other+","+dst+")");
 		if (height > 0) {
 			moveDouble(height-1, src,dst1,dst2,other);
-			move(src,dst1);
 			move(src,dst2);
+			move(src,dst1);
 			splitHanoi(height-1, other,src,dst1, dst2);
 		}
 	}
 	private void moveDouble(int height, int src, int other1, int other2, int dst) {
 		//for (int i=4;i>height;i--) System.out.print(" ");
-		//System.out.println("hanoi("+height+","+src+","+other+","+dst+")");
+		//getGame().getLogger().log("hanoi("+height+","+src+","+other+","+dst+")");
 		if (height>0) {
 			moveDouble(height-1, src,other1,dst,other2);
 			move(src,other1);

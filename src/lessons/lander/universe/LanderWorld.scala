@@ -1,13 +1,13 @@
 package lessons.lander.universe
 
-import Math.PI
+import java.lang.Math.PI
 
+import NumUtil.clamp
+import NumUtil.gameAngleToRadian
+import NumUtil.radianToVector
 import javax.script.ScriptEngine
-import javax.swing.ImageIcon
 import plm.core.lang.ProgrammingLanguage
 import plm.core.model.Game
-import plm.core.lang.ProgrammingLanguage
-import plm.core.ui.ResourcesCache
 import plm.universe.World
 
 object LanderWorld {
@@ -42,9 +42,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   // "inherited" methods
 
-  def getIcon = ResourcesCache.getIcon("img/world_lander.png");
-
-  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine) {
+  def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine):Unit= {
   		if (lang.equals(Game.PYTHON)) {
   			engine.put("Segment", Segment.getClass())
 			engine.eval(
@@ -97,8 +95,6 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     desiredThrust = thrust
   }
 
-  def getView() = new LanderWorldView(parent)
-
   override def toString() = "scala lander world"
 
   // simulation
@@ -119,7 +115,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   private def isUnderground(p: Point) =
     groundSegments.filter(new Ray(p, Point(0, 1)).intersects(_)).length % 2 == 1
 
-  def simulate(dt: Double) {
+  def simulate(dt: Double):Unit = {
     if (state == FLYING) {
       angle = clamp(-90.0 max (angle - 5), 90.0 min (angle + 5), desiredAngle)
       thrust = clamp(0 max (thrust - 1), 5 min (thrust + 1), desiredThrust) min fuel

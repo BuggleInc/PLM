@@ -16,9 +16,11 @@ public class CourseAppEngine extends Course {
 
     private static URL teacherServer;
     private static URL courseServer;
-
-    public CourseAppEngine() {
-        this(null);
+    private LogHandler logger;
+    
+    public CourseAppEngine(LogHandler logger) {
+        this("");
+        this.logger = logger;
     }
 
     public CourseAppEngine(String id) {
@@ -71,7 +73,7 @@ public class CourseAppEngine extends Course {
             wr.close();
             br.close();
         } catch (IOException e) {
-            System.out.println("Unable to contact PLMServer to send request " + request);
+        	logger.log(LogHandler.ERROR, "Unable to contact PLMServer to send request " + request);
             throw new IOException(e);
         }
         return response;

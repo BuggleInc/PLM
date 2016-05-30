@@ -1,0 +1,217 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Buggle Dance Revolution (BDR)</h2>
+
+<p>Depois destas corridas, é hora de festejar! Para isto, vamos ensinar os
+buggles a jogar Dance Revolution, este jogo amado por alguns estudantes: O
+jogador tem que mover os pés num carpete de acordo com as instruções
+apresentadas na tela, e seguir a música. Mas antes disto, temos alguns
+detalhes para estudar primeiro.</p>
+
+[!java|scala|c]
+<h3>Condicionais sem colchetes</h3>
+<p>
+Existe um detalhe que nós omitimos sobre a sintaxe do condicional: se um
+ramo contém apenas uma instrução, então o colchetes se torna
+opcional. Portanto, estes dois pedaços de código são equivalentes:</p>
+
+ <pre>if (<b>condition</b>) {
+    <b>whatToDoIfTheConditionIsTrue();</b>
+} else {
+    <b>whatToDoElse();</b>
+}</pre>
+ <pre>if (<b>condição</b>) 
+    <b>oQueFazerSeACondiçãoÉVerdadeira();</b>
+else
+    <b>oQueFazerCasoContrário();</b></pre>
+
+<p>Na verdade, você pode fazer o mesmo em corpos de loop que se reduzem a
+apenas uma instrução. Mas cuidado, isto se torna perigoso se sua cadeia de
+instruções <tt>if</tt> parece com isto: </p>
+<pre>if (estáSobreBaggle())    
+     if (x == 5)
+          esquerda();
+else
+     direita();
+[!c]avançarUmPasso();[/!][!java|scala]avançar();[/!]</pre>
+
+<p>De fato, não é para virar à direita quando não existe baggle no chão E x é
+igual a 5, mas quando o buggle encontra um baggle no chão e x é diferente de
+5. Colocando de outra forma, o buggle entende o código anterior como se ele
+fosse escrito da seguinte forma (note que o <tt>else</tt> foi movido para a
+direita):</p>
+<pre>if (estáSobreBaggle())    
+        if (x == 5)
+            esquerda();
+        else
+            direita();
+avançar();</pre>
+
+<p>A primeira lição a tirar daí é que identação é muito importante para ajudar
+os humanos a entender, mesmo que não mude o significado do código. Nós
+poderíamos ter escrito o seguinte código e teríamos obtido o mesmo
+resultado. Mas se você quer que um humano leia e revise seu código, você vai
+com certeza querer indentar ele corretamente. Este é o caso, por exemplo, se
+você quer que um professor leia ele (para dar nota ou tirar uma dúvida), ou
+se você quiser reutilizar seu código mais tarde, ou mesmo se você quiser
+depurar você mesmo seu código.</p> 
+
+<pre>if (estáSobreBaggle()) if (x == 5) esquerda(); else direita(); [!c]avançarUmPasso();[/!][!java|scala]avançar();[/!]</pre>
+
+<p>A segunda lição é que o ramo do <tt>else</tt> sempre se conecta ao
+<tt>if</tt> mais próximo. Isto pode se tornar confuso em alguns casos, e
+torna-se mais fácil adicionar mais chaves do que o estritamente necessário
+para remover quaisquer ambiguidades.</p>
+[/!]
+
+<h3>Encadeando condicionais</h3>
+
+<p>Algumas vezes você quer perguntar ao buggle algo similar a:</p> 
+<pre>se está chovendo, pegue um guarda-chuva;
+se não, e se está quente, pegue uma garrafa de água;
+se não e se hoje é 4 de Julho, pegue uma bandeira dos estados unidos</pre>
+
+<p>O armadilha é que nós queremos que pelo menos uma destas ações sejam
+feitas.É como dizer, se está chovendo num 4 de Julho quente, não queremos
+que o buggle vá para fora com um guarda-chuva, água e um bandeira, mas
+simplesmente com um guarda-chuva. O código seguinte está, então, ERRADO.</p>
+
+<pre>[!scala|c|java]if (chovendo())
+    pegueGuarda-Chuva();
+if (quente())
+    pegueAgua();
+if (hoje4Julho())
+    pegueBandeira();[/!][!python]if chovendo():
+    pegueGuarda-Chuva()
+if quente():
+    pegueAgua()
+if hoje4Julho():
+    pegueBandeira()[/!]</pre>
+
+
+<p>Na verdade, já que as condições são calculadas uma depois da outra, existe
+um risco de que você vá para a marcha de 4 de Julho num dia chuvoso. Na
+verdade, nós devemos usar algo como isto para garantir que uma vez que
+encontremos a condição verdadeira, não passemos para as próximas.</p>
+
+<pre>[!java|scala|c]if (chuvoso()) {
+    pegarGuardaChuva();
+} else {
+    if (diaQuente()) {
+        pegarAgua();
+    } else {
+        if (jogoDaCopa()) {
+            pegarBandeira();
+        }
+    }
+}[/!][!python]if chuvoso():
+    pegarGuardaChuva()
+else:
+    if diaQuente():
+        pegarAgua()
+    else:
+        if jogoDaCopa():
+            pegarBandeira()[/!]</pre>
+
+
+<p>Infelizmente, tal cascata de condicionais é bastante difícil de ler. É
+melhor [!java|scala|c]omitir as chaves para as assertivas
+<tt>else</tt>. Algumas linguagens até mesmo introduzem uma construção
+específica para estes <tt>else if</tt>, mas não [!thelang].[/!]
+[!python]mudar os sub-blocos usando a palavra-chave <code>elif</code> para
+marcar explicitamente estes ramos "else if".[/!]
+</p>
+
+<pre>[!c|java|scala]if (chuvoso()) { 
+    pegarGuardaChuva();
+} else if (diaQuente()) {
+    pegarAgua();
+} else if (jogoDaCopa()) {
+    pegarBandeira();
+}[/!][!python]if chuvoso():
+    pegarGuardaChuva()
+elif diaQuente():
+    pegarAgua()
+elif jogoDaCopa():
+    pegarBandeira()[/!]</pre>
+
+<h3>Grafitagem no mundo dos Buggles</h3>
+
+<p>Os buggles podem grafitar no chão de seu mundo. Para isto, use os quatro
+métodos seguintes:</p>
+
+<ul>
+  <li><code>[!c]int[/!][!java]boolean[/!]
+estaSobreMensagem()[!scala]:Boolean[/!]</code>: returns
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> se e somente se
+existe uma mensagem no chão.</li>
+  <li><code>[!c]char*[/!][!java]String[/!] lerMensagem()[!scala]:
+String[/!]</code>: retorna a mensagem lida no chão (ou uma string vazia se
+não há nada escrito ).</li>
+  <li><code>[!java|c]void[/!] escreverMensagem([!c]char*[/!][!java]String
+[/!]msg[!scala]: String[/!])</code>: escreve a mensagem especificada no
+chão. Se já existe uma mensagem no chão, a nova é adicionada no final da
+mensagem existente.</li>
+  <li><code>[!java|c]void [/!]limparMensagem()</code>: limpa o que está escrito no
+chão.</li>
+</ul>
+
+
+<h3>Objetivo do exercício</h3>O objetivo é então organizar um jogo de BDR entre os buggles ensinando eles
+a se mover de acordo com as instruções escritas no chão. Estas instruções
+são mensagens escritas no chão, com o seguinte significado:
+
+<table border="1">
+ <tr><td>Mensagem</td>
+     <td>O que fazer</td>
+     <td>Mnemônico</td></tr>
+
+ <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Vire a direita (R de right) e mova um passo a frente</td><td>Direita</td></tr>
+ <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Vire a esquerda e mova um passo a frente</td><td>Esquerda</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Vire para trás (meia-volta) e mova um passo a frente</td><td>Inversa</td></tr>
+
+ <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Mova um passo a frente</td><td>Primeira letra do alfabeto</td></tr>
+ <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Mova dois passos a frente</td><td>Segunda letra do alfabeto</td></tr>
+ <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Mova três passos a frente</td><td>Terceira letra do alfabeto</td></tr>
+
+ <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Mova um passo para trás</td><td>última letra do alfabeto</td></tr>
+ <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Mova dois passos para trás</td><td>penúltima letra do alfabeto</td></tr>
+ <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Mova três passos para trás</td><td>Antepenúltima letra do alfabeto</td></tr>
+ <tr><td><i>(qualquer outra coisa)</i></td><td>Parar de dançar.</td><td></td></tr>
+</table>
+
+<h3>Indicações</h3>
+
+Este exercício pode parecer um pouco complexo à primeira vista, mas ele vem
+para resumir a informação na tabela numa sequência de condicionais.
+
+<p>Você tem que se manter dançando enquanto houverem passos de dança para
+fazer, i.e., enquanto estivermos numa célula cujo conteúdo esteja contido na
+tabela. a forma mais fácil de fazer isto é usando uma variável booleana
+(<code>terminou</code>) como condição de término para o loop
+<code>while</code>. Ela deve ser iniciada como
+<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>, e trocada
+para <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> assim que
+o buggle encontre uma célula com um valor não descrito na tabela. Assim, o
+loop pára e o programa termina. </p>
+
+[!java|c]
+<p>Outro detalhe é que detectar se strings são iguais é um pouco chato em
+Java. Então, usamos o <code>char getIndication[!c]Bdr[/!]()</code> ao invés
+do <code>[!java]String[/!][!c]char*[/!] lerMensagem()</code>. Este método,
+conhecido apenas pelos buggles deste exercício, retorna o primeiro caractere
+da mensagem escrita no chão (ou ' ' -- o caractere para espaço -- se não tem
+nada escrito). Ele habilita que se trabalhe com caracteres ao invés de
+strings, que é muito mais simples em [!thelang].</p>
+[/!]
+
+<h3>Dicas</h3>
+
+Se você não entendeu por que o buggle não fez os passos esperados, tente
+adicionar <code>abaixarPincel()</code> no seu método. Isto pede ao buggle
+para abaixar um pincel deixando um rastro por onde passar. Isto pode ajudar
+você a entender a trajetória dele, mas não esqueça de remover esta chamada
+quando você quiser testar se seu código é uma solução válida para o
+exercício: você pode fazer o buggle dançar, mas não pichar a pista de dança.
+
+<p>Quando seu programa finalmente funcionar, vá para o próximo exercício.</p>

@@ -1,0 +1,47 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Mundo das cobras</h2>
+
+<p>Agora vamos ensinar o buggle a explorar seu mundo. Sua posição inicial é o
+canto inferior esquerdo, e ele deve visitar todas as células até o topo
+(colorindo o chão onde for passando. O loop principal de seu código é algo
+assim:</p>
+<pre>
+ abaixe o pincel
+ enquanto não chegar na posição final
+   se mova como uma cobra
+</pre>
+
+<p>Então nós temos que escrever dois métodos específicos: o primeiro retorna um
+booleano indicando se nós estamos numa posição final enquanto o segundo um
+"snake step" para frente.</p>
+
+<p>Chegamos na posição final se e apenas se ambas as condições são verdadeiras:</p>
+<ul>
+  <li>Estamos de frente para uma parede</li>
+  <li>Existe uma parede no norte do buggle. Então, se o buggle está olhando para o
+leste, você deve verificar se existe uma parede à esquerda, e se o buggle
+está olhando para o oeste, você deve verificar do lado direito.<br/>
+      Nós podemos obter a direção atual do buggle usando o
+<code>getDireção()</code>, e nós sabemos se ele está apontando para o leste
+usando <code>getDireção() == [!scala|python|java]Direção.[/!]LESTE</code>
+(OESTE para oeste).<br/>
+      Para verificar, não tem mágica: você tem que virar o buggle e verificar em
+seguinda se ele está olhando para uma parede.</li>
+</ul>
+
+<p>Então, um passo de cobra pode ser conseguido movendo um passo para a frente
+se nós não estivermos de cara para a parede, e movendo para a linha acima
+caso contrário (i.e., se você olha para o oeste e está de cara para uma
+parede, tem que virar a direita, andar e virar a direita).</p>
+
+<p>Dica: o loop principal do seu código deve continuar enquanto a função de
+teste retorna falso. Existem duas formas de fazer isto:</p>
+<pre>while (testingFunction() == [!c]0) {[/!][!java|scala]false) {[/!][!python]False):[/!]</pre>
+<p>[!python]Você pode preferir escrever como:[/!] [!java|scala|c]Já que a marca
+de exclamação (!) denota a negação booleana em [!thelang], você pode
+escrever como:[/!]</p>
+<pre>while ([!java|scala|c]![/!][!python]not [/!]testingFunction())[!java|scala|c] {[/!][!python]:[/!]</pre>
+
+<p>Sua vez...</p>
+
