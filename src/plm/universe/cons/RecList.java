@@ -41,7 +41,7 @@ public class RecList {
 		return new RecList(seq[rank], fromArray(seq,rank+1) );
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static scala.collection.immutable.List<scala.Int> fromArraytoScalaList(int[] list) {
 		return (scala.collection.immutable.List) RecListWrapper$.MODULE$.toList(list);
 	}
