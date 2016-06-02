@@ -1,11 +1,14 @@
 package plm.core.model.lesson;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.LogHandler;
+import plm.core.log.Logger;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.tip.AbstractTipFactory;
 import plm.core.model.lesson.tip.DefaultTipFactory;
@@ -60,7 +63,14 @@ public class ExerciseFactory {
 				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				String mission = tipsFactory.computeTips(exo, humanLanguage, sb.toString());
 				exo.addMission(humanLanguage.getLanguage(), mission);
-			} catch (IOException ex) {}
+			}
+			catch (FileNotFoundException e) {
+				Logger.log(LogHandler.INFO, "No mission found for: " + exo.getId());
+				exo.addMission(humanLanguage.getLanguage(), "");
+			}
+			catch (IOException ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 
