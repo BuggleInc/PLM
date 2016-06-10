@@ -15,11 +15,13 @@ import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.utils.ScalaHelper$;
 
 public class BatTest {
 	@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 	Object[] parameters;
 
+	@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 	protected Object result;
 	protected Object expected;
 
@@ -78,9 +80,7 @@ public class BatTest {
 				res[i] = (Integer)l.get(i);
 			
 			return res;
-		} if (input instanceof plm.universe.cons.RecList) {
-			input = ((plm.universe.cons.RecList)input).toArray();
-		} 
+		}
 		if (input.getClass().isArray() && input.getClass().getComponentType().equals(Integer.class)) {
 			Integer[] orig = (Integer[])input;
 			if (orig.length==0 || (orig.length == 1 && orig[0]==null))
@@ -94,7 +94,7 @@ public class BatTest {
 	}
 	
 	@Override
-	public boolean equals(Object o) {  
+	public boolean equals(Object o) {
 		if (!(o instanceof BatTest)) 
 			return false;
 		BatTest other = (BatTest) o;
@@ -143,10 +143,15 @@ public class BatTest {
 	private String name = null;
 
 	private boolean equalParameter(Object o1, Object o2) {
-		if (o1==null && o2==null)
+		if (o1==null && o2==null) {
 			return true;
-		if (o1==null || o2==null)
+		}
+		if(ScalaHelper$.MODULE$.compareNullToNil(o1, o2)) {
+			return true;
+		}
+		if (o1==null || o2==null) {
 			return false;
+		}
 		o1 = changeToPrimitiveArray(o1);
 		o2 = changeToPrimitiveArray(o2);
 		if (o1.getClass().isArray() && o2.getClass().isArray()) {
@@ -159,8 +164,9 @@ public class BatTest {
 					return false;
 			return true;
 		} 
-		if (o1.getClass().isArray() || o2.getClass().isArray())
+		if (o1.getClass().isArray() || o2.getClass().isArray()) {
 			return false; // The other cannot be an array because of previous test
+		}
 		return o1.equals(o2);
 	}
 	public String stringParameter(ProgrammingLanguage progLang, Object o) {

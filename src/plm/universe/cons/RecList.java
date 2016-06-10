@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import plm.core.utils.ScalaHelper$;
+
 /** Recursive sequence of integers */
 
 public class RecList {
@@ -43,9 +45,10 @@ public class RecList {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static scala.collection.immutable.List<scala.Int> fromArraytoScalaList(int[] list) {
-		return (scala.collection.immutable.List) RecListWrapper$.MODULE$.toList(list);
+		return (scala.collection.immutable.List) ScalaHelper$.MODULE$.toList(list);
 	}
 
+	@JsonProperty("list")
 	public int[] toArray() {
 		int len = 0;
 		RecList ptr = this;
@@ -66,7 +69,6 @@ public class RecList {
 		return res;
 	}
 
-	@JsonProperty("list")
 	public List<Integer> toList() {
 		List<Integer> res = new ArrayList<Integer>();
 		RecList ptr = this;
@@ -96,6 +98,9 @@ public class RecList {
 
 	@Override
 	public boolean equals(Object o) {
+		if(o instanceof scala.collection.immutable.List) {
+			return RecListWrapper$.MODULE$.equalsToScalaList(this, o);
+		}
 		if (!(o instanceof RecList)) {
 			return false;
 		}

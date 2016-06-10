@@ -202,7 +202,7 @@ public class ExerciseRunner {
 		progress.commonErrorID = -1;
 		progress.totalTests++;
 
-		if (!currentWorld.winning(answerWorld)) {
+		if (!answerWorld.winning(currentWorld)) {
 			// FIXME: Enable again commonErrors
 			/*
 			for(int j = 0 ; j < commonErrors.size() ; j++) {
