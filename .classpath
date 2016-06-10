@@ -9,6 +9,9 @@
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-core-2.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-databind-2.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-module-scala_2.11-2.7.4.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-module-paranamer-2.7.4.jar"/>
+	<classpathentry kind="lib" path="lib/paranamer-2.8.jar"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/httpclient-4.3.4.jar"/>

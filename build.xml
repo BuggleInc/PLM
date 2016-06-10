@@ -104,6 +104,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-core-2.7.0.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-annotations-2.7.0.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-databind-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-module-scala_2.11-2.7.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-module-paranamer-2.7.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/paranamer-2.8.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
 

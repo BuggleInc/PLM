@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.PropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.fasterxml.jackson.module.scala.DefaultScalaModule;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.BlankExercise;
@@ -35,6 +36,7 @@ public class JSONUtils {
         module.addDeserializer(Color.class, new CustomColorDeserializer());
         module.addDeserializer(Direction.class, new CustomDirectionDeserializer());
         mapper.registerModule(module);
+        mapper.registerModule(new DefaultScalaModule());
 
 		PropertyFilter buggleWorldCellFilter = new BuggleWorldCellFilter();
 		FilterProvider filters = new SimpleFilterProvider().addFilter("buggleWorldCellFilter", buggleWorldCellFilter);
