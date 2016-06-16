@@ -37,10 +37,13 @@ import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.merge.ResolveMerger.MergeFailureReason;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
+import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
+import org.eclipse.jgit.transport.TrackingRefUpdate;
 
+import plm.core.log.LogHandler;
 import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 
@@ -82,7 +85,10 @@ public class GitUtils {
 		//}
 		Logger.log(I18nManager.getI18n(locale).tr("Retrieving your session from the servers..."));
 		try {
-			git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
+			FetchResult result = git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
+			if(result.getTrackingRefUpdates().isEmpty()) {
+				return false;
+			}
 		} catch (GitAPIException ex) {
 			// FIXME: should display the stacktrace is an error occurs
 			/*
@@ -90,6 +96,7 @@ public class GitUtils {
 				ex.printStackTrace();
 			}
 			*/
+			ex.printStackTrace();
 			if (ex.getMessage().equals("Remote does not have refs/heads/"+userBranchHash+" available for fetch.")) {
 				return false;
 			}
@@ -127,13 +134,13 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				Logger.log(I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
+				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				Logger.log(I18nManager.getI18n(locale).tr("last session data successfully merged"));
+				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("last session data successfully merged"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
-				Logger.log(I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
@@ -152,7 +159,7 @@ public class GitUtils {
 					git.add().addFilepattern(path).call();
 				}
 
-				Logger.log("All conflicts have been manually handled ;)");
+				Logger.log(LogHandler.ERROR, "All conflicts have been manually handled ;)");
 				// TODO: check if the commit is mandatory
 				git.commit().setMessage("Manual merging")
 				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
@@ -161,13 +168,14 @@ public class GitUtils {
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
 				// TODO: handle this case
-				Logger.log(I18nManager.getI18n(locale).tr("Canceled the merge operation because of the following failures:"));
+				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("Canceled the merge operation because of the following failures:"));
 				Map<String, MergeFailureReason> allFailures = res.getFailingPaths();
 				for(String path : allFailures.keySet()) {
-					Logger.log(path + " : " + allFailures.get(path));
+					Logger.log(LogHandler.ERROR, path + " : " + allFailures.get(path));
 				}
 			}
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			System.err.println(I18nManager.getI18n(locale).tr("Can't merge data retrieved from server with local session data."));
 			throw ex;
 		}
