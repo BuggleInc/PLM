@@ -101,7 +101,8 @@ public class JSONUtils {
         removeSteps(exercise, root);
 
         root.put("instructions", exercise.getMission(humanLang, progLang));
-		root.put("code", code);
+        root.put("help", exercise.getHelp(humanLang, progLang));
+        root.put("code", code);
         root.put("selectedWorldID", selectedWorldID);
         root.put("toolbox", toolbox);
 

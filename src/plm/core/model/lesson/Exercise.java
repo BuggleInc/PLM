@@ -54,7 +54,9 @@ public abstract class Exercise  {
 
 	@JsonIgnore
 	private Map<String, String> missions = new HashMap<String, String>();
-
+	@JsonIgnore
+	private Map<String, String> helps = new HashMap<String, String>();
+	
 	protected Vector<World> currentWorld; /* the one displayed */
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
@@ -85,6 +87,9 @@ public abstract class Exercise  {
 		for(String humanLang : exo.getHumanLanguages()) {
 			String mission = exo.getDefaultMission(humanLang);
 			addMission(humanLang, mission);
+			
+			String help = exo.getDefaultHelp(humanLang);
+			addHelp(humanLang, help);
 		}
 	}
 
@@ -318,5 +323,22 @@ public abstract class Exercise  {
 			tips.put(humanLang, localizedTips);
 		}
 		localizedTips.put(id, content);
+	}
+
+	public void addHelp(String humanLang, String help) {
+		helps.put(humanLang, help);
+	}
+	
+	private String getDefaultHelp(String humanLang) {
+		return helps.get(humanLang);
+	}
+	
+	public String getHelp(Locale locale, ProgrammingLanguage progLang) {
+		String humanLang = locale.getLanguage();
+		String help = helps.get("en");
+		if(helps.containsKey(humanLang)) {
+			help = helps.get(humanLang);
+		}
+		return PlmHtmlEditorKit.filterHTML(help, false, progLang);
 	}
 }

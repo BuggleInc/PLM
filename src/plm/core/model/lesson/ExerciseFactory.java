@@ -40,6 +40,7 @@ public class ExerciseFactory {
 	public void initializeExercise(Exercise exo, ProgrammingLanguage progLang) {
 		computeSupportedProgrammingLanguages(exo);
 		computeMissions(exo);
+		computeHelps(exo);
 		computeAnswer(exo, progLang);
 	}
 
@@ -55,9 +56,9 @@ public class ExerciseFactory {
 	}
 
 	public void computeMissions(Exercise exo) {
+		String baseName = exo.getBaseName().replaceAll("\\.", "/");
+		String filename =  rootDirectory + "/" + baseName;
 		for(Locale humanLanguage: humanLanguages) {
-			String baseName = exo.getBaseName().replaceAll("\\.", "/");
-			String filename =  rootDirectory + "/" + baseName;
 			StringBuffer sb = null;
 			try {
 				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
@@ -67,6 +68,25 @@ public class ExerciseFactory {
 			catch (FileNotFoundException e) {
 				Logger.log(LogHandler.INFO, "No mission found for: " + exo.getId());
 				exo.addMission(humanLanguage.getLanguage(), "");
+			}
+			catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	public void computeHelps(Exercise exo) {
+		String baseName = exo.getInitialWorlds().get(0).getClass().getName();
+		String filename = baseName.replaceAll("\\.", "/");
+		for(Locale humanLanguage: humanLanguages) {
+			StringBuffer sb = null;
+			try {
+				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				exo.addHelp(humanLanguage.getLanguage(), sb.toString());
+			}
+			catch (FileNotFoundException e) {
+				Logger.log(LogHandler.INFO, "No help found for: " + exo.getId());
+				exo.addHelp(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
 				ex.printStackTrace();
