@@ -41,7 +41,6 @@ import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
-import org.eclipse.jgit.transport.TrackingRefUpdate;
 
 import plm.core.log.LogHandler;
 import plm.core.log.Logger;
@@ -80,9 +79,6 @@ public class GitUtils {
 	}
 
 	public boolean fetchBranchFromRemoteBranch(String userBranchHash) throws InvalidRemoteException, GitAPIException {
-		//if(!getGame().getTrackUser()) {
-		//	return false;
-		//}
 		Logger.log(I18nManager.getI18n(locale).tr("Retrieving your session from the servers..."));
 		try {
 			FetchResult result = git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
@@ -90,13 +86,6 @@ public class GitUtils {
 				return false;
 			}
 		} catch (GitAPIException ex) {
-			// FIXME: should display the stacktrace is an error occurs
-			/*
-			if(game.isDebugEnabled()) {
-				ex.printStackTrace();
-			}
-			*/
-			ex.printStackTrace();
 			if (ex.getMessage().equals("Remote does not have refs/heads/"+userBranchHash+" available for fetch.")) {
 				return false;
 			}
