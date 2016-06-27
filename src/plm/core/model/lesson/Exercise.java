@@ -54,7 +54,6 @@ public abstract class Exercise  {
 
 	@JsonIgnore
 	private Map<String, String> missions = new HashMap<String, String>();
-	@JsonIgnore
 	private Map<String, String> helps = new HashMap<String, String>();
 	
 	protected Vector<World> currentWorld; /* the one displayed */
@@ -340,5 +339,9 @@ public abstract class Exercise  {
 			help = helps.get(humanLang);
 		}
 		return PlmHtmlEditorKit.filterHTML(help, false, progLang);
+	}
+
+	public Map<String, String> getHelps() {
+		return helps;
 	}
 }
