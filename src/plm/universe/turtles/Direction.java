@@ -2,6 +2,6 @@ package plm.universe.turtles;
 
 public enum Direction {
 
-	EAST, NORTH, WEST, SOUTH;
+	EAST, NORTH, WEST, SOUTH
 
 }

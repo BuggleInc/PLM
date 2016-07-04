@@ -353,7 +353,7 @@ public class TurtleWorld extends World {
 		
 		// First compare entities
 		if (other.entities.size() != entities.size())
-			return i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());;
+			return i18n.tr("  There is {0} entities, but {1} entities were expected\n",other.entities.size(),entities.size());
 		for (int i=0; i<other.entities.size();i++)
 			if (! other.entities.get(i).equals(entities.get(i)))
 				sb.append(((Turtle) other.entities.get(i)).diffTo(entities.get(i), i18n));

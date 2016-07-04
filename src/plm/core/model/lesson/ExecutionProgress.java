@@ -16,7 +16,8 @@ import plm.core.model.I18nManager;
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
 public class ExecutionProgress {
 
-	public static enum outcomeKind { COMPILE, FAIL, PASS, TIMEOUT };
+	public enum outcomeKind { COMPILE, FAIL, PASS, TIMEOUT }
+
 	public outcomeKind outcome = outcomeKind.PASS;
 
 	public String compilationError = "";

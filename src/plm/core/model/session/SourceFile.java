@@ -82,7 +82,7 @@ public class SourceFile {
 		} else if(whatToRetrieve == StudentOrCorrection.ERROR) {
 			res = error;
 		} else if (template != null) {
-			res = template.replaceAll("\\$body", this.body+" \n");;
+			res = template.replaceAll("\\$body", this.body+" \n");
 		} else {
 			res = this.body;
 		}

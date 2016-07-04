@@ -1,7 +1,7 @@
 package plm.universe.sort.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty; ;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CountOperation extends SortOperation
 {

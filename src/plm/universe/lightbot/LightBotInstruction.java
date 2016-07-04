@@ -7,7 +7,7 @@ public class LightBotInstruction {
 	public final static String[] instructionNames = { "noop","forward", "jump", "left", "right", "light", "f1","f2" };
 
 	private enum InstructionKind {
-		NOOP,FORWARD,JUMP,LIGHT,LEFT,RIGHT,F1,F2;		
+		NOOP,FORWARD,JUMP,LIGHT,LEFT,RIGHT,F1,F2
 	}
 
 	InstructionKind kind;

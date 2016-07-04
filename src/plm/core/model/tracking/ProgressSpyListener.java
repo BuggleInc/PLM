@@ -3,22 +3,22 @@ package plm.core.model.tracking;
 import plm.core.model.lesson.Exercise;
 
 public interface ProgressSpyListener {
-	public void executed(Exercise exo);
+	void executed(Exercise exo);
 
-    public void switched(Exercise exo);
+    void switched(Exercise exo);
 
-    public void reverted(Exercise exo);
-    
-    public void heartbeat();
+    void reverted(Exercise exo);
 
-    public String join();
+    void heartbeat();
 
-    public void leave();
-	
-	public void callForHelp(String studentInput);
-	public void cancelCallForHelp();
+    String join();
 
-	public void readTip(String id, String mission);
-	
-	public void idle(String begin, String end, String duration);
+    void leave();
+
+	void callForHelp(String studentInput);
+	void cancelCallForHelp();
+
+	void readTip(String id, String mission);
+
+	void idle(String begin, String end, String duration);
 }

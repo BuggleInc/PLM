@@ -1,7 +1,5 @@
 package plm.universe.bugglequest.exception;
 
-import org.xnap.commons.i18n.I18n;
-
 import plm.core.PLMException;
 
 public class BuggleWallException extends PLMException {

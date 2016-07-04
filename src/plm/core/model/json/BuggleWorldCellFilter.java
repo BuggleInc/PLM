@@ -99,4 +99,4 @@ public class BuggleWorldCellFilter extends SimpleBeanPropertyFilter {
 	protected boolean include(PropertyWriter writer) {
 		return true;
 	}
-};
+}

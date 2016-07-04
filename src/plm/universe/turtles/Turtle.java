@@ -302,7 +302,7 @@ public class Turtle extends Entity {
 		throw new RuntimeException("Unknown angular unit:" + angularUnit + " (please report this bug)");
 	}
 
-	private final double toAngularUnit(double angle) {
+	private double toAngularUnit(double angle) {
 		switch (angularUnit) {
 		case Turtle.DEGREE:
 			return Math.toDegrees(angle);
