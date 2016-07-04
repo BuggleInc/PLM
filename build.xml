@@ -139,6 +139,12 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-core-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-annotations-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-databind-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-module-scala_2.11-2.7.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-module-paranamer-2.7.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/paranamer-2.8.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
 
@@ -274,14 +280,6 @@
       <delete dir="${site.dir}/po"/>
     </target>
 
-    <target name="test-all-exos" depends="compile" description="tests compilation of provided solutions of all exos">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
-		<classpath refid="project.class.path"/>
-		<formatter type="plain"/>
-        <test name="plm.core.ExoTest"/>
-	  </junit>
-    </target>
-
     <target name="all-tests" depends="compile" description="launch all tests">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
@@ -301,7 +299,6 @@
 <!--
 	<target name="integration-tests" depends="compile" description="launch all integration tests">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
->>>>>>> Move tests to own source folder
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.test.IntegrationTests"/>
