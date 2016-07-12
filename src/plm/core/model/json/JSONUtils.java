@@ -69,6 +69,17 @@ public class JSONUtils {
 	    return exercise;
 	}
 
+	public static Exercise jsonStringToExercise(String jsonString) {
+		Exercise exercise = null;
+		try {
+			exercise = mapper.readValue(jsonString, BlankExercise.class);
+			((BlankExercise) exercise).setupCurrentWorld();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return exercise;
+	}
+
 	public static Exercise jsonToExercise(JsonNode json) {
 		Exercise exercise = null;
 		try {
