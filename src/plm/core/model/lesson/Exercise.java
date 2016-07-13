@@ -19,7 +19,7 @@ public abstract class Exercise  {
 	public enum WorldKind {INITIAL, CURRENT, ANSWER, ERROR}
 	public enum StudentOrCorrection {STUDENT, CORRECTION, ERROR}
 
-	public static String directory = "";
+	public static String directory = "exercises";
 
 	private String id;
 	private String name;
