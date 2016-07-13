@@ -175,9 +175,12 @@ public class ExerciseRunner {
 			break;
 		}
 
+		String[] bits = exo.getId().split("\\.");
+		String entityName = bits[bits.length - 1];
+
 		for(World w : exo.getWorlds(worldKind)) {
 			List<Entity> entities = w.getEntities();
-			List<Entity> newEntities = progLang.mutateEntities(exo.getId(), sourceFile, whatToCompile, entities);
+			List<Entity> newEntities = progLang.mutateEntities(entityName, sourceFile, whatToCompile, entities);
 			w.setEntities(newEntities);
 		}
 	}

@@ -18,7 +18,8 @@ public class BlankExercise extends ExerciseTemplated {
 
 	@JsonCreator
 	public BlankExercise(@JsonProperty("id")String id, @JsonProperty("name")String name, @JsonProperty("defaultSourceFiles")Map<String, SourceFile> defaultSourceFiles) {
-		super(id, name);
+		super(name);
+		setId(id);
 		for(String progLangName : defaultSourceFiles.keySet()) {
 			ProgrammingLanguage progLang = ProgrammingLanguage.getProgrammingLanguage(progLangName);
 			addDefaultSourceFile(progLang, defaultSourceFiles.get(progLangName));

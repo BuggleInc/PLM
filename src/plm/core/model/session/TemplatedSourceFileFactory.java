@@ -32,8 +32,10 @@ public class TemplatedSourceFileFactory {
 		return new SourceFile(name, initialBody, template, _offset, _correctionCtn, _errorCtn);
 	}
 
-	public SourceFile newSourceFromFile(String name, ProgrammingLanguage lang, String filename) throws NoSuchEntityException {
+	public SourceFile newSourceFromFile(String id, ProgrammingLanguage lang, String filename) throws NoSuchEntityException {
 		I18n i18n = I18nManager.getI18n(locale);
+		String[] bits = id.split("\\.");
+		String name = bits[bits.length - 1];
 		String patternString = "";
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;

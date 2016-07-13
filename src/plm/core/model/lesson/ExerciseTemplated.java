@@ -11,7 +11,12 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
 	public ExerciseTemplated(String id, String name) {
-		super(id, name);
+		this(name);
+	}
+
+	public ExerciseTemplated(String name) {
+		super(name, name);
+		setId(getClass().getCanonicalName());
 	}
 
 	public ExerciseTemplated(Exercise exo) {
