@@ -17,6 +17,16 @@ public class CustomColorDeserializer extends JsonDeserializer<Color> {
     public Color deserialize(JsonParser jp, DeserializationContext ctxt) 
       throws IOException, JsonProcessingException {
     	JsonNode node = jp.getCodec().readTree(jp);
-        return new Color(node.get(0).asInt(), node.get(1).asInt(), node.get(2).asInt(), node.get(3).asInt());
+        if(node.isArray()) {
+            return new Color(node.get(0).asInt(), node.get(1).asInt(), node.get(2).asInt(), node.get(3).asInt());
+        } else {
+            // Field has not been serialized using CustomColorSerializer
+            // Fallback to default deserialization
+            int r = node.get("red").asInt();
+            int g = node.get("green").asInt();
+            int b = node.get("blue").asInt();
+            int a = node.get("alpha").asInt();
+            return new Color(r, g, b, a);
+        }
     }
 }
