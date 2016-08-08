@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.lesson.UserSettings;
@@ -34,7 +35,7 @@ public abstract class World  {
 	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
 
 	private String name;
-	
+
 	public World(String name) {
 		this.name = name;
 	}
@@ -236,6 +237,7 @@ public abstract class World  {
 		this.about = null ;
 	}
 
+	@JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 	protected Object[] parameters = null;
 	public void setParameter(Object[] parameters) {
 		this.parameters = parameters;		
