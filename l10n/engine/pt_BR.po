@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-10 21:37+0100\n"
-"PO-Revision-Date: 2015-11-10 21:38+0100\n"
+"PO-Revision-Date: 2016-05-30 19:51-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "Language: pt_BR \n"
@@ -1118,6 +1118,8 @@ msgstr "Operação de mesclagem cancelada por causa dos seguintes erros:"
 #: src/plm/core/model/tracking/GitUtils.java:173
 msgid "Can't merge data retrieved from server with local session data."
 msgstr ""
+"Não posso mesclar dados trazidos do servidor com dados de\n"
+"sessão local."
 
 #: src/plm/core/model/tracking/GitUtils.java:214
 msgid "Cannot synchronize your session with the servers (network down)."
@@ -1130,23 +1132,27 @@ msgstr "Sua sessão foi gravada na nuvem."
 #. An error occurred while pushing
 #: src/plm/core/model/tracking/GitUtils.java:245
 msgid "Fetching the server's last version..."
-msgstr ""
+msgstr "Recuperando a última versão do servidor..."
 
 #: src/plm/core/model/tracking/GitUtils.java:252
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
 msgstr ""
+"Recuperar a última versão dos dados não resolveu o problema.\n"
+"Por favor, relate este bug."
 
 #: src/plm/core/model/tracking/GitUtils.java:255
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
 msgstr ""
+"Um erro ocorreu enquanto sincronizava seus dados com\n"
+"o servidor. Por favor relate o seguinte erro:"
 
 #: src/plm/core/ui/AboutLessonDialog.java:20
 msgid "About lesson - "
-msgstr ""
+msgstr "Lição Sobre - "
 
 #: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:429
 #: src/plm/core/ui/MainFrame.java:777
@@ -1193,6 +1199,25 @@ msgid ""
 "free collections. The specific license and origin of each files is listed in "
 "the COPYING file distributed with the archive.</p>"
 msgstr ""
+"<h2>O PLM é um software orgulhosamente Livre</h2><p>Copyright (c)\n"
+"2008-2015.<br/> O time PLM: Martin Quinson, Gérald Oster e\n"
+"outros.<br/> (veja os logs do git para a autoria exata de cada\n"
+"arquivo).</p> <p>O softwtare PLM foi escrito internamente pelo\n"
+"time. Este software é distribuído sob a GNU general public license\n"
+"version 3 (GPLv3).</p> <p>O material pedagógico distribuído com o PLM\n"
+"é coberto tanto pela licença GPLv3 (principalmente o código incluso) e\n"
+"pela licença CC-BY-SA (principalmente os outros arquivos de\n"
+"mídia). Mas a fronteira exata aqui entre o código-fonte e a mídia é\n"
+"deixada como exercício para o leitor, logo, este material é\n"
+"distribuído sob as duas licenças por questão de simplicidade.</p><p>A\n"
+"licneça GPLv3 pode ser encontrada no arquivamento sob o nome\n"
+"LICENSE-GPL-3. A licença CC-BY-SA pode ser encontrada online:\n"
+"http://creativecommons.org/licenses/by-sa/3.0/</p><p>Toda a parte\n"
+"artística é conteúdo livre, licenciado sob a CC-BY-SA, GPL, LGPL e/ou\n"
+"CC0-public domain. Algumas partes foram feitas por nós, outras partes\n"
+"foram pegas emprestado de coleções livres. A licença específica e\n"
+"original de cada um dos arquivos é listada no arquivo COPYING\n"
+"distribuído com o arquivamento.</p>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:150
 msgid "Copying"
@@ -1315,7 +1340,7 @@ msgstr "Aprendemos no fracasso, não no sucesso!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:32
 msgid "Success comes after failure"
-msgstr ""
+msgstr "O sucesso vem depois do fracasso"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
@@ -1419,7 +1444,7 @@ msgstr ""
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>Which exercise will you "
 "do now?</html>"
-msgstr ""
+msgstr "<html>Parabéns, você passou deste exercício.<br>Que exercício você vai fazer agora?</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid "Give feedback"
@@ -1542,10 +1567,24 @@ msgid ""
 "--------------------[ Technical Information ]--------------------\n"
 "(This can help us fixing your problem, please don't erase)\n"
 msgstr ""
+"Por favor escreva sua sugestão aqui, com todos os detalhes necessários\n"
+"(se possível em inglês ou francês).\n"
+"\n"
+"Quando encontrar um erro de digitação ou uma frase difícil de\n"
+"entender, ajudaria muito se você mandasse uma sugestão de como deveria\n"
+"estar escrito.\n"
+"\n"
+"Se você encontrar um bug técnico, por favor nos diga o que fez, o que\n"
+"esperava que acontecesse e o que aconteceu ao invés disto.\n"
+"\n"
+"  mas NUNCA COLOQUE UMA SENHA num sistema de bugs. Nunca.\n"
+"\n"
+"--------------------[ Technical Information ]--------------------\n"
+"(Isto pode nos ajudar a consertar seu problema, favor não apagar)\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:86
 msgid "Report your feedback"
-msgstr ""
+msgstr "Relate seu feedback"
 
 #: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Issue title:"
@@ -1579,11 +1618,11 @@ msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:138
 msgid "Thanks for your suggestion"
-msgstr ""
+msgstr "Obrigado por sua sugestão"
 
 #: src/plm/core/ui/FeedbackDialog.java:147
 msgid "Error while uploading your feedback"
-msgstr ""
+msgstr "Erro ao enviar seu feedback"
 
 #: src/plm/core/ui/FeedbackDialog.java:154
 msgid ""
@@ -1591,16 +1630,20 @@ msgid ""
 "please fix the following issue(s):\n"
 "\n"
 msgstr ""
+"Seu feeedback precisa de algumas mudanças antes de ser enviado. Favor\n"
+"consertar o(s) seguinte(s) problema(s):\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:155
 msgid "Incorrect feedback"
-msgstr ""
+msgstr "Feedback incorreto"
 
 #: src/plm/core/ui/FeedbackDialog.java:180
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
 msgstr ""
+"O título do feedback ainda é o padrão. Especifique um título\n"
+"relevante.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:184
 msgid "The current title is empty, please specify a relevant title.\n"
