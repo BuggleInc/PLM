@@ -11,6 +11,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import plm.core.PLMCompilerException;
+import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -59,6 +60,11 @@ public class ExerciseRunner {
 			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT, lastResult);
 		} catch (PLMCompilerException e) {
 			e.printStackTrace();
+			return CompletableFuture.completedFuture(lastResult);
+		} catch (PLMEntityNotFound e) {
+			e.printStackTrace();
+			String msg = "An error occurred while running your program. Usually, it means that you wrote some code (others than methods or functions) outside the run() method. Please check your code.";
+			lastResult.setExecutionError(msg);
 			return CompletableFuture.completedFuture(lastResult);
 		}
 
