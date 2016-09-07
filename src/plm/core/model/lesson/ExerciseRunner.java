@@ -32,6 +32,8 @@ public class ExerciseRunner {
 	private int maxNumberOfTries = DEFAULT_NUMBER_OF_TRIES;
 	private long waitingTime = DEFAULT_WAITING_TIME;
 
+	private ExecutorService mainExecutor = Executors.newCachedThreadPool();
+
 	public ExerciseRunner(Locale locale) {
 		this.locale = locale;
 	}
@@ -126,7 +128,6 @@ public class ExerciseRunner {
 		/*
 		 *  Execution time
 		 */
-		ExecutorService mainExecutor = Executors.newCachedThreadPool();
 		Runnable runCode = new Runnable() {
 			@Override
 			public void run() {
@@ -143,7 +144,6 @@ public class ExerciseRunner {
 		};
 
 		mainExecutor.submit(runCode);
-		mainExecutor.shutdown();
 
 		return future;
 	}
