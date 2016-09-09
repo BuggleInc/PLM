@@ -56,8 +56,7 @@ public class ExerciseFactory {
 	}
 
 	public void computeMissions(Exercise exo) {
-		String baseName = exo.getId().replaceAll("\\.", "/");
-		String filename =  rootDirectory + "/" + baseName;
+		String filename = exo.getId().replaceAll("\\.", "/");
 		for(Locale humanLanguage: humanLanguages) {
 			StringBuffer sb = null;
 			try {

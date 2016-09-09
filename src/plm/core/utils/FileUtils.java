@@ -72,9 +72,9 @@ public class FileUtils {
 					return new BufferedReader(new FileReader(directories[i] + fileName));
 				} else {
 					i++;
-				}   	
+				}
 			}
-        
+
 			// external HTML file of this exercise not found on file system. Try as resource, in case we are in a jar file
 			String resourceName =  "/"+fileName;
         	resourceName = resourceName.replace('\\', '/'); /* just in case we were passed a windows path */
