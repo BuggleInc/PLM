@@ -618,12 +618,10 @@ public abstract class AbstractBuggle extends Entity {
 		StringBuffer sb = new StringBuffer();
 		if (getX() != other.getX() || getY() != other.getY())
 			sb.append(i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection())
+		if (dontIgnoreDirectionDifference && getDirection() != other.getDirection())
 			sb.append(i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
-		if (getBodyColor() != other.getBodyColor())
+		if (! getBodyColor().equals( other.getBodyColor() ))
 			sb.append(i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
-		if (getBrushColor() != other.getBrushColor())
-			sb.append(i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
 		if (isCarryingBaggle() && !other.isCarryingBaggle())
 			sb.append(i18n.tr("    It should not carry that baggle.\n"));
 		if (!isCarryingBaggle() && other.isCarryingBaggle())
