@@ -112,12 +112,10 @@ public class ExerciseRunner {
 					/*
 					 *  Assessment time
 					 */
-					int i=0;
-					while(lastResult.outcome == ExecutionProgress.outcomeKind.PASS && i<currentWorlds.size()) {
+					for(int i=0; i<currentWorlds.size(); i++) {
 						World currentWorld = currentWorlds.get(i);
 						World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
 						checkWorld(currentWorld, answerWorld, progLang, lastResult);
-						i++;
 					}
 					ses.shutdown();
 					future.complete(lastResult);
