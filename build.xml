@@ -88,10 +88,7 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.11.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-reflect-2.11.4.jar"/>
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jruby-1.5.6-5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython-standalone-2.7.0.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.3.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.3.2.jar"/>
@@ -130,9 +127,7 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython-standalone-2.7.0.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
 
