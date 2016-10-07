@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-10 21:37+0100\n"
-"PO-Revision-Date: 2016-05-30 19:51-0300\n"
+"PO-Revision-Date: 2016-10-07 02:10-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "Language: pt_BR \n"
@@ -84,7 +84,7 @@ msgstr ""
 "diretamente. Use o slot intermediário em todos os movimentos."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
-#, fuzzy, java-format
+#, java-format, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
@@ -107,29 +107,28 @@ msgid "Invalid move"
 msgstr "Movimento inválido"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
-#, fuzzy, java-format
+#, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
-msgstr ""
-"Os discos não foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
+msgstr "Os discos não foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
-#, fuzzy, java-format
+#, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
-msgstr "Jogador na base {0}, pos {1} difere: {2} vs {3}\n"
+msgstr "Disco #{0} do espaço #{1} difere: {2} vs. {3}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
-#, fuzzy, java-format
+#, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
-msgstr "Jogador na base {0}, pos {1} difere: {2} vs {3}\n"
+msgstr "Cor do disco #{0} do espaço #{1} difere: {2} vs. {3}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}"
 msgstr ""
-"Não posso me mover do slot {0} para o {1}: os únicos slots existentes são 0, "
-"1 e 2"
+"Não posso me mover do espaço {0} para o {1}: os únicos espaços\n"
+"existentes são os numerados de 0 a {2}"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
 #, java-format
@@ -1647,17 +1646,19 @@ msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:184
 msgid "The current title is empty, please specify a relevant title.\n"
-msgstr ""
+msgstr "O título atual está vazio. Por favor especifique um título relevante.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:188
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
 msgstr ""
+"O feedback ainda contém o texto de explicação (sobre a linha de\n"
+"---------). Por favor remova ele.\n"
 
 #: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
 msgid "Where error and other messages get written"
-msgstr ""
+msgstr "Onde mensagens de erro e outras são escritas"
 
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
@@ -1891,61 +1892,69 @@ msgid ""
 "If you already have a UUID, paste it here. If not, you can use that randomly "
 "generated identifier."
 msgstr ""
+"Se você já tem um UUID, cole ele aqui. Se não, você pode usar este\n"
+"identificador gerado aleatoriamente."
 
 #: src/plm/core/ui/action/AddUser.java:29
 msgid "Username:"
-msgstr ""
+msgstr "Nome de usuário:"
 
 #: src/plm/core/ui/action/AddUser.java:30
 msgid "Secret UUID:"
-msgstr ""
+msgstr "UUID secreto:"
 
 #: src/plm/core/ui/action/AddUser.java:38
 msgid ""
 "Your new user has been added successfully!\n"
 "You were automatically switched to that user."
 msgstr ""
+"Seu novo usuário foi adicionado com sucesso!\n"
+"Você foi alternado automaticamente para este usuário."
 
 #: src/plm/core/ui/action/AddUser.java:41
 msgid ""
 "Invalid UUID! Either paste a correct identifier or use the randomly "
 "generated one."
 msgstr ""
+"UUID invélido! Ou cole um identificador correto ou use o gerado\n"
+"aleatoriamente."
 
 #: src/plm/core/ui/action/HelpMe.java:69
 msgid "Please ask here your question for the teacher:"
-msgstr ""
+msgstr "Por favor faça aqui a pergunta para o professor:"
 
 #: src/plm/core/ui/action/HelpMe.java:70
 msgid "Call for help"
-msgstr ""
+msgstr "Peça ajuda"
 
 #: src/plm/core/ui/action/HelpMe.java:136
 #: src/plm/core/ui/action/HelpMe.java:143
 msgid "Cancel call"
-msgstr ""
+msgstr "Cancelar chamado"
 
 #: src/plm/core/ui/action/PlayDemo.java:27
 msgid "Run the demo of what you should code for this exercise"
-msgstr ""
+msgstr "Rode o demo do que você deveria ter codificado para este exercício"
 
 #: src/plm/core/ui/action/PlayDemo.java:28
 msgid "Impossible to run the demo right now"
-msgstr ""
+msgstr "Impossível rodar o demo agora"
 
 #: src/plm/core/ui/action/QuitGame.java:29
 msgid "Quit the application"
-msgstr ""
+msgstr "Sair da aplicação"
 
 #: src/plm/core/ui/action/QuitGame.java:29
 msgid "Impossible to quit the application right now"
-msgstr ""
+msgstr "Impossível sair da aplicação agora"
 
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid ""
 "<html>Please choose from the drop-down menu the user you want to remove.</"
 "html>"
 msgstr ""
+"<html>Por favor escolha do menu drop-down o usuário que você quer\n"
+"remover.</html>"
 
 #: src/plm/core/ui/action/RemoveUser.java:35
 #, java-format
@@ -1954,23 +1963,26 @@ msgid ""
 "full UUID (something like 110E8400-E29B-11D4-A716-446655440000).\n"
 "Are you sure that you want to delete the user {0}?"
 msgstr ""
+"Um usuário removido é perdido para sempre se você não souber seu \n"
+"UUID completo (algo como 110E8400-E29B-11D4-A716-446655440000).\n"
+"Tem certeza que quer apagar o usuário {0}?"
 
 #: src/plm/core/ui/action/RemoveUser.java:38
 msgid "Confirm user deletion"
-msgstr ""
+msgstr "Confirme remoção de usuário"
 
 #: src/plm/core/ui/action/RemoveUser.java:41
 #, java-format
 msgid "User {0} successfully deleted"
-msgstr ""
+msgstr "Usuário {0} removido com sucesso"
 
 #: src/plm/core/ui/action/RemoveUser.java:44
 msgid "Sorry, you can't delete the current user."
-msgstr ""
+msgstr "Desculpe, você não pode apagar o usuário atual."
 
 #: src/plm/core/ui/action/RemoveUser.java:44
 msgid "Try again"
-msgstr ""
+msgstr "Tente de novo"
 
 #: src/plm/core/ui/action/Reset.java:29
 msgid "Reset your world to the initial state"
@@ -1989,18 +2001,20 @@ msgid ""
 "Reverting this exercise will erase all your work and cannot be undone.\n"
 " Are you sure that you want to proceed?"
 msgstr ""
+"Ao reverter este exercício você vai apagar todo o seu trabalho e não\n"
+"tem volta. Tem certeza que quer continuar?"
 
 #: src/plm/core/ui/action/RevertExercise.java:24
 msgid "Warning"
-msgstr ""
+msgstr "Cuidado"
 
 #: src/plm/core/ui/action/RevertExercise.java:28
 msgid "Revert canceled on user request -- your work was preserved."
-msgstr ""
+msgstr "Reversão cancelada a pedido do usuário -- seu trabalho foi preservado."
 
 #: src/plm/core/ui/action/RevertExercise.java:39
 msgid "Exercise reverted"
-msgstr ""
+msgstr "Exercício revertido"
 
 #: src/plm/core/ui/action/StartExecution.java:32
 msgid ""
@@ -2011,7 +2025,7 @@ msgid ""
 " programming. No nominative information is stored, only the source code "
 "written\n"
 "to solve the challenges.\n"
-msgstr ""
+msgstr "O PLM pode gravar seus dados anonimamente nos servidores remotos. Desta forma, você pode recuperar sua sessão com sua etiqueta anônima em qualquer computador conectado. Estes dados anônimos também ajudam os cientistas a entender como as pessoas aprendem a programar. Nenhuma informação pessoal é armazenada, apenas o código-fonte escrito para resolver os desafios.\n"
 
 #: src/plm/core/ui/action/StartExecution.java:37
 msgid "Do you want to store your data online?"
@@ -2019,15 +2033,15 @@ msgstr "Você quer guardar seus dados online?"
 
 #: src/plm/core/ui/action/StartExecution.java:38
 msgid "Ok, save my data online"
-msgstr ""
+msgstr "Certo, grave meus dados online"
 
 #: src/plm/core/ui/action/StartExecution.java:38
 msgid "No, keep everything local"
-msgstr ""
+msgstr "Não, guarde tudo localmente"
 
 #: src/plm/core/ui/action/StartExecution.java:38
 msgid "Let me decide later"
-msgstr ""
+msgstr "Deixe-me decidir mais tarde"
 
 #: src/plm/core/ui/action/StartExecution.java:65
 msgid "Launch the execution of your code"
@@ -2037,7 +2051,7 @@ msgstr "Começa a execução de seu código"
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
 "activity with the stop button"
-msgstr ""
+msgstr "Não posso lançar a execução agora. Espere um pouco, ou interrompa a atividade atual com o botão Parar"
 
 #: src/plm/core/ui/action/StepExecution.java:22
 msgid "Execute one step of your code"
@@ -2098,26 +2112,26 @@ msgstr "Erro enquanto lia {0}"
 
 #: src/plm/core/ui/editor/MissionEditor.java:260
 msgid "You did not save you changes. Do you want to save it before quiting?"
-msgstr ""
+msgstr "Você não gravou suas alterações. Quer gravar antes de sair?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:261
 #: src/plm/core/ui/editor/MissionEditor.java:380
 msgid "Save or loose your change?"
-msgstr ""
+msgstr "Gravar ou perder sua mudança?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:372
 msgid "Open Mission..."
-msgstr ""
+msgstr "Abrir Missão..."
 
 #: src/plm/core/ui/editor/MissionEditor.java:379
 msgid ""
 "You did not save you changes. Do you want to save it before opening another "
 "file?"
-msgstr ""
+msgstr "Você não gravou suas alterações. Quer gravar elas antes de abrir outro arquivo?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:397
 msgid "HTML files"
-msgstr ""
+msgstr "Arquivos HTML"
 
 #: src/plm/core/ui/editor/MissionEditor.java:405
 #, java-format
@@ -2129,94 +2143,98 @@ msgid ""
 "\n"
 "Proceed anyway?"
 msgstr ""
+"Você escolheu um texto de missão traduzido para edição ({0}).\n"
+"Isto está errado. As traduções devem ser manipuladas com o po4a no PLM. Leia https://github.com/oster/PLM/wiki/Working-with-the-translations para mais informações.\n"
+"\n"
+"Continuar mesmo assim?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:409
 msgid "This is a translated mission text"
-msgstr ""
+msgstr "Este é um texto de missão traduzido"
 
 #: src/plm/core/ui/editor/MissionEditor.java:426
 msgid "Quit Map Editor"
-msgstr ""
+msgstr "Sair do Editor de Mapa"
 
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:188
 msgid "Create New Map"
-msgstr ""
+msgstr "Criar Novo Mapa"
 
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:240
 msgid "Open Map..."
-msgstr ""
+msgstr "Abrir Mapa..."
 
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:246
 msgid "PLM map files"
-msgstr ""
+msgstr "Arquivos de mapa do PLM"
 
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:57
 msgid "Property"
-msgstr ""
+msgstr "Propriedade"
 
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:57
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #. The editor for the name
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:71
 msgid "World name"
-msgstr ""
+msgstr "Nome do mundo"
 
 #. ---------- world width ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:83
 msgid "World width"
-msgstr ""
+msgstr "Largura do mundo"
 
 #. ---------- world height ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:103
 msgid "World height"
-msgstr ""
+msgstr "Altura do mundo"
 
 #. ---------- selected cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:123
 msgid "Selected cell X"
-msgstr ""
+msgstr "Célula X selecionada"
 
 #. ---------- selected cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:145
 msgid "Selected cell Y"
-msgstr ""
+msgstr "Célula Y selecionada"
 
 #. ---------- Ground color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:166
 msgid "Ground color (name or r/g/b)"
-msgstr ""
+msgstr "Cor do chão (nome ou r/g/b)"
 
 #. ---------- top wall cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:183
 msgid "Top wall?"
-msgstr ""
+msgstr "Parede superior?"
 
 #. ---------- left wall cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:205
 msgid "Left wall?"
-msgstr ""
+msgstr "Parede da esquerda?"
 
 #. ---------- have baggle ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:227
 msgid "Baggle?"
-msgstr ""
+msgstr "Baggle?"
 
 #. ---------- Buggle name ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:258
 msgid "Buggle name"
-msgstr ""
+msgstr "Nome do buggle"
 
 #. ---------- Buggle direction ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:269
 msgid "Buggle direction (N|S|E|W)"
-msgstr ""
+msgstr "Direção do Buggle (N|S|E|W)"
 
 #. ---------- Buggle color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:298
 msgid "Buggle color (name or r/g/b)"
-msgstr ""
+msgstr "Cor do Buggle (nome ou r/g/b)"
 
 #. ---------- Buggle color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:314
@@ -2225,78 +2243,76 @@ msgstr "Cor do pincel (nome ou r/g/b)"
 
 #: src/plm/core/utils/ColorMapper.java:59
 msgid "black"
-msgstr ""
+msgstr "preto"
 
 #: src/plm/core/utils/ColorMapper.java:60
 msgid "blue"
-msgstr ""
+msgstr "Azul"
 
 #: src/plm/core/utils/ColorMapper.java:61
 msgid "cyan"
-msgstr ""
+msgstr "ciano"
 
 #: src/plm/core/utils/ColorMapper.java:62
 msgid "dark grey"
-msgstr ""
+msgstr "cinza escuro"
 
 #: src/plm/core/utils/ColorMapper.java:63
 msgid "grey"
-msgstr ""
+msgstr "cinza"
 
 #: src/plm/core/utils/ColorMapper.java:64
 msgid "green"
-msgstr ""
+msgstr "verde"
 
 #: src/plm/core/utils/ColorMapper.java:65
 msgid "light grey"
-msgstr ""
+msgstr "verde claro"
 
 #: src/plm/core/utils/ColorMapper.java:66
 msgid "magenta"
-msgstr ""
+msgstr "magenta"
 
 #: src/plm/core/utils/ColorMapper.java:67
-#, fuzzy
 msgid "orange"
-msgstr "Mudanças"
+msgstr "laranja"
 
 #: src/plm/core/utils/ColorMapper.java:68
 msgid "pink"
-msgstr ""
+msgstr "rosa"
 
 #: src/plm/core/utils/ColorMapper.java:69
-#, fuzzy
 msgid "red"
-msgstr "Prosseguir"
+msgstr "vermelho"
 
 #: src/plm/core/utils/ColorMapper.java:70
 msgid "white"
-msgstr ""
+msgstr "branco"
 
 #: src/plm/core/utils/ColorMapper.java:71
 msgid "yellow"
-msgstr ""
+msgstr "amarelo"
 
 #: src/plm/universe/Direction.java:59
 msgid "NORTH"
-msgstr ""
+msgstr "NORTH"
 
 #: src/plm/universe/Direction.java:61
 msgid "EAST"
-msgstr ""
+msgstr "EAST"
 
 #: src/plm/universe/Direction.java:63
 msgid "SOUTH"
-msgstr ""
+msgstr "SOUTH"
 
 #: src/plm/universe/Direction.java:65
 msgid "WEST"
-msgstr ""
+msgstr "WEST"
 
 #: src/plm/universe/bat/BatEntity.java:38
 #, java-format
 msgid "Exception {0}: {1}"
-msgstr ""
+msgstr "Exceção {0}: {1}"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:86
 msgid ""
@@ -2347,13 +2363,13 @@ msgstr ""
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
-msgstr ""
+msgstr "Você tentou acessar uma célula com X={0}, mas o X máximo neste mundo é {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:210
 #: src/plm/universe/bugglequest/AbstractBuggle.java:246
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
-msgstr ""
+msgstr "Você tentou ajustar X para {0}, mas o X máximo neste mundo é {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:229
 #: src/plm/universe/bugglequest/AbstractBuggle.java:244
@@ -2422,29 +2438,29 @@ msgstr ""
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty!)"
-msgstr ""
+msgstr "{0}.map: este arquivo não parece um BuggleWorld serializado (o arquivo está vazio!)"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:136
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})"
-msgstr ""
+msgstr "{0}.map: Este arquivo não parece ser um BuggleWorld serializado (primeira linha malformada: {1})"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:142
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
-msgstr ""
+msgstr "{0}.map: Fim de arquivo encontrado antes da especificação de tamanho do mundo"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:147
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
-msgstr ""
+msgstr "{0}.map:1: Esperava ''Size: NNxMM'' mas encontrei ''{0}''"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:173
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
-msgstr ""
+msgstr "Não posso colocar um buggle na coordenada {0},{1}: É fora do mundo"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:187
 #, java-format
@@ -2460,7 +2476,7 @@ msgstr ""
 #: src/plm/universe/bugglequest/BuggleWorld.java:218
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
-msgstr ""
+msgstr "Não posso definir uma célula na coordenada {0},{1}: é fora do mundo"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:231
 #, java-format
@@ -2470,30 +2486,30 @@ msgstr ""
 #: src/plm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
-msgstr ""
+msgstr "Esperava ''baggle'' ou ''nobaggle'' mas encontrei {0} no lugar"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:241
 #, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
-msgstr ""
+msgstr "Esperava ''topwall'' ou ''notopwall'' mas encontrei {0} no lugar"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:245
 #, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
-msgstr ""
+msgstr "Esperava ''leftwall'' ou ''noleftwall'' mas encontrei {0} no lugar"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:255
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
 "baggles here, which is not allowed."
-msgstr ""
+msgstr "A célula {0},{1} parece ter sido definida mais de uma vez. Pelo menos, existem dois baggles aqui, o que não é permitido."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:271
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
-msgstr ""
+msgstr "Erro de sintaxe. Esperava encontrar uma célula ou uma descrição de buggle mas encontrei: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:570
 #, java-format
@@ -2626,7 +2642,7 @@ msgstr ""
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:223
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
-msgstr ""
+msgstr "Seu buggle colidiu com uma parede. Isso dói muito ! ='("
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:236
 msgid "Brush Color"
@@ -2663,22 +2679,22 @@ msgstr ""
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
-msgstr ""
+msgstr "Isto é muito estranho: Não tem a mesma quantidade de valores! Esperava: {0}; Encontrei: {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:119
 #, java-format
 msgid "Invalid read count. Expected: {0}; Found: {1}\n"
-msgstr ""
+msgstr "Contador de leituras inválido. Esperava: {0}; Encontrei: {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:122
 #, java-format
 msgid "Invalid write count. Expected: {0}; Found: {1}\n"
-msgstr ""
+msgstr "Contador de escritas inválido. Esperava: {0}; Encontrei: {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:126
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
-msgstr ""
+msgstr "Valor no índice {0} diverge. Esperado {1}; Encontrado {2}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:368
 #: src/plm/universe/sort/SortingWorld.java:369
@@ -2710,15 +2726,15 @@ msgstr ""
 
 #: src/plm/universe/turtles/Line.java:117
 msgid "The color differs."
-msgstr ""
+msgstr "A cor diverge."
 
 #: src/plm/universe/turtles/Line.java:118
 msgid "I dont see the difference (please report this bug)."
-msgstr ""
+msgstr "Não veja a diferença (favor reportar este bug)."
 
 #: src/plm/universe/turtles/Line.java:120
 msgid "That's not a line (please report this bug)."
-msgstr ""
+msgstr "Isto não é uma linha (favor reportar este bug)."
 
 #: src/plm/universe/turtles/Turtle.java:224
 msgid ""
@@ -2739,17 +2755,17 @@ msgstr ""
 #: src/plm/universe/turtles/Turtle.java:409
 #, java-format
 msgid "The turtle {0} is not heading to the right direction."
-msgstr ""
+msgstr "A tartarugag {0} não está virada para a direção certa."
 
 #: src/plm/universe/turtles/Turtle.java:411
 #, java-format
 msgid "The turtle {0} is at the right location."
-msgstr ""
+msgstr "A tartaruga {0} está no local correto."
 
 #: src/plm/universe/turtles/TurtleWorld.java:359
 #, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
-msgstr ""
+msgstr "Existem {0} entidades, mas {1} eram esperadas\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:388
 #, java-format
