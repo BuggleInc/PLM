@@ -439,7 +439,7 @@ public abstract class AbstractBuggle extends Entity {
 		if (isCarryingBaggle()) {
 			addOperation(new BuggleAlreadyHaveBaggle(this, getGame().i18n));
 			stepUI();
-			throw new AlreadyHaveBaggleException(getGame().i18n.tr("Your are already carrying a baggle."));
+			throw new AlreadyHaveBaggleException(getGame().i18n.tr("You are already carrying a baggle."));
 		}
 		getCellFromLesson(this.x, this.y).baggleRemove();
 		carryBaggle = true;
