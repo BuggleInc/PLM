@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-10 21:37+0100\n"
-"PO-Revision-Date: 2016-10-07 02:10-0300\n"
+"PO-Revision-Date: 2016-11-06 21:57-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
 "Language: pt_BR \n"
@@ -84,14 +84,11 @@ msgstr ""
 "diretamente. Use o slot intermediário em todos os movimentos."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
-#, java-format, fuzzy
+#, java-format
 msgid ""
 "Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to "
 "1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
-msgstr ""
-"Desculpe Dave, não posso deixar você usar mover discos no sentido anti-"
-"horário. Mova de 0 para 1, de 1 para 2 ou de 2 para 0 apenas, não de {0} "
-"para {1}."
+msgstr "Desculpe Dave, não posso deixar você usar mover discos no sentido anti-horário. Mova de 0 para 1, de 1 para 2 ou de 2 para 0 apenas, não de {0} para {1}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
@@ -200,7 +197,7 @@ msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr "Não pode se mover para da base {0} pois ela não está entre 0 e {1}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:412
-#, fuzzy, java-format
+#, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr "Não pode se mover da posição {0} pois não está entre 0 e {1})"
 
@@ -361,13 +358,10 @@ msgstr ""
 
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:18
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:18
-#, fuzzy
 msgid ""
 "Sorry Dave, you cannot run backward that way. Exercising is hard enough -- "
 "please don't overplay."
-msgstr ""
-"Desculpe Dave, você não pode recuar deste jeito. 'Exercising' é difícil o "
-"suficiente -- por favor não exagere."
+msgstr "Desculpe Dave, você não pode recuar deste jeito. Se exercitar é difícil o suficiente -- por favor não exagere."
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
 msgid "You fall into water."
@@ -877,16 +871,15 @@ msgid "Source file {0}.{1} not found."
 msgstr "Arquivo fonte {0}.{1} não encontrado."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:120
-#, fuzzy, java-format
+#, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
-msgstr "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
+msgstr "{0}: BEGIN TEMPLATE dentro do modelo. Favor conserte sua entidade."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:141
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
-msgstr ""
-"{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
+msgstr "{0}: BEGIN SOLUTION termina com END TEMPLATE. Favor conserte sua entidade."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:159
 #: src/plm/core/model/lesson/ExerciseTemplated.java:183
@@ -938,10 +931,9 @@ msgstr ""
 "entidade para esta linguagem: {2}"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
-#, fuzzy, java-format
+#, java-format
 msgid "{0}: No entity found. You should fix your paths and such"
-msgstr ""
-"{0}: Nenhuma entidade encontrada. Você deve consertar seus caminhos e tal"
+msgstr "{0}: Nenhuma entidade encontrada. Você deve consertar seus caminhos e tal"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
@@ -2375,20 +2367,20 @@ msgstr "Você tentou ajustar X para {0}, mas o X máximo neste mundo é {1}."
 #: src/plm/universe/bugglequest/AbstractBuggle.java:244
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
-msgstr ""
+msgstr "Você tentou configurar Y para {0}, mas o Y máximo neste mundo é {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:363
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:129
 msgid "There is no baggle to pick up here."
-msgstr ""
+msgstr "Não tem baggle para pegar aqui."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:365
 msgid "Your are already carrying a baggle."
-msgstr ""
+msgstr "Você já está carregando um baggle."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:456
 msgid "Its value is 'null', which is never good."
-msgstr ""
+msgstr "Seu valor é 'null', que nunca é bom."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:463
 #, java-format
@@ -2398,40 +2390,40 @@ msgstr "    Sua posição é ({0},{1}); esperado: ({2},{3}).\n"
 #: src/plm/universe/bugglequest/AbstractBuggle.java:465
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    Sua direção é {0}; esperada: {1}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:467
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    Sua cor é {0}; esperada: {1}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:469
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    A cor de seu pincel é {0}; esperada: {1}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:471
 msgid "    It should not carry that baggle.\n"
-msgstr ""
+msgstr "    Não deveria carregar este baggle.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:473
 msgid "    It is not carrying any baggle.\n"
-msgstr ""
+msgstr "    Não está carregando nenhum baggle.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:475
 msgid "    It encountered an issue, such as bumping into a wall.\n"
-msgstr ""
+msgstr "    Encontrou um problema, talvez esteja batendo numa parede.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:477
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
-msgstr ""
+msgstr "    Não encontrou nenhuma problema, como bater numa parede.\n"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:122
 #, java-format
 msgid ""
 "{0}: The path to the map on disk should not include the .map extension (or "
 "it won''t work in jarfiles). Please fix your exercise."
-msgstr ""
+msgstr "{0}: O caminho para o mapa no disco não deve incluir uma extensão .map (senão falha em arquivos jar). Favor consertar seu exercício."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:130
 #, java-format
@@ -2465,13 +2457,13 @@ msgstr "Não posso colocar um buggle na coordenada {0},{1}: É fora do mundo"
 #: src/plm/universe/bugglequest/BuggleWorld.java:187
 #, java-format
 msgid "Invalid buggle''s direction: {0}"
-msgstr ""
+msgstr "Direção inválida do buggle: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:194
 #: src/plm/universe/bugglequest/BuggleWorld.java:201
 #, java-format
 msgid "Invalid buggle''s color name: {0}"
-msgstr ""
+msgstr "Nome de cor do buggle inválido: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:218
 #, java-format
@@ -2481,7 +2473,7 @@ msgstr "Não posso definir uma célula na coordenada {0},{1}: é fora do mundo"
 #: src/plm/universe/bugglequest/BuggleWorld.java:231
 #, java-format
 msgid "Invalid color name: {0}"
-msgstr ""
+msgstr "Nome de cor inválido: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
@@ -2514,7 +2506,7 @@ msgstr "Erro de sintaxe. Esperava encontrar uma célula ou uma descrição de bu
 #: src/plm/universe/bugglequest/BuggleWorld.java:570
 #, java-format
 msgid "  The world''s name is {0}"
-msgstr ""
+msgstr "  O nome do mundo é {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:574
 #, java-format
@@ -2524,7 +2516,7 @@ msgstr " Em ({0},{1})"
 #: src/plm/universe/bugglequest/BuggleWorld.java:576
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
-msgstr ""
+msgstr "  Existe {0} entidades onde espera-se {1}."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:580
 #, java-format
@@ -2533,20 +2525,20 @@ msgstr "  Tem algo errado com o buggle ''{0}'':\n"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:122
 msgid "There is already a baggle here."
-msgstr ""
+msgstr "Já existe um baggle aqui."
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:202
 msgid ", there shouldn't be this baggle"
-msgstr ""
+msgstr ", não deve ser este baggle"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:204
 msgid ", there should be a baggle"
-msgstr ""
+msgstr ", deve ser um baggle"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:207
 #, java-format
 msgid ", the ground should not be {0}"
-msgstr ""
+msgstr ", o solo não deve ser {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:209
 #, java-format
@@ -2556,31 +2548,31 @@ msgstr ", espera-se um chão {0}, mas ele é {1}"
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:213
 #, java-format
 msgid ", the ground reads ''{0}'' (expected: ''{1}'')"
-msgstr ""
+msgstr ", o solo lê ''{0}'' (esperado: ''{1}'')"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:216
 msgid ", there shouldn't be any wall at west"
-msgstr ""
+msgstr ", não deve haver nenhuma parede a oeste"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:218
 msgid ", there should be a wall at west"
-msgstr ""
+msgstr ", deve haver uma parede a oeste"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:221
 msgid ", there shouldn't be any wall at north"
-msgstr ""
+msgstr ", não deve haver nenhuma parede a norte"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:223
 msgid ", there should be a wall at north"
-msgstr ""
+msgstr ", deve haver uma parede a norte"
 
 #: src/plm/universe/bugglequest/exception/BuggleWallException.java:10
 msgid "Buggles cannot traverse walls"
-msgstr ""
+msgstr "Buggles não podem atravessar paredes"
 
 #: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:10
 msgid "You have no baggle to drop"
-msgstr ""
+msgstr "Você não tem baggle para soltar"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:59
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:232
@@ -2634,11 +2626,11 @@ msgstr "abaixarPincel()"
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:146
 #, java-format
 msgid "setBrushColor(Color.{0})"
-msgstr ""
+msgstr "setBrushColor(Color.{0})"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:222
 msgid "Wall hugging error"
-msgstr ""
+msgstr "Erro de hugging de parede"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:223
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
@@ -2650,17 +2642,17 @@ msgstr "Cor do pincel"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:59
 msgid "go"
-msgstr ""
+msgstr "vai"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:74
 #, java-format
 msgid "setValue({0},{1})"
-msgstr ""
+msgstr "setValue({0},{1})"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:78
 #, java-format
 msgid "copy({0},{1})"
-msgstr ""
+msgstr "copy({0},{1})"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "swap"
@@ -2668,11 +2660,11 @@ msgstr "alternar"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "setValue"
-msgstr ""
+msgstr "setValue"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
-msgstr ""
+msgstr "copiar"
 
 #: src/plm/universe/sort/SortingWorld.java:116
 #, java-format
@@ -2710,19 +2702,19 @@ msgstr "Fora dos limites em alternar({0},{1}): {2}>contador de valores"
 
 #: src/plm/universe/turtles/Line.java:109
 msgid "x1 differs."
-msgstr ""
+msgstr "x1 está diferente."
 
 #: src/plm/universe/turtles/Line.java:111
 msgid "x2 differs."
-msgstr ""
+msgstr "x2 está diferente."
 
 #: src/plm/universe/turtles/Line.java:113
 msgid "y1 differs."
-msgstr ""
+msgstr "y1 está diferente."
 
 #: src/plm/universe/turtles/Line.java:115
 msgid "y2 differs."
-msgstr ""
+msgstr "y2 está diferente."
 
 #: src/plm/universe/turtles/Line.java:117
 msgid "The color differs."
@@ -2770,22 +2762,22 @@ msgstr "Existem {0} entidades, mas {1} eram esperadas\n"
 #: src/plm/universe/turtles/TurtleWorld.java:388
 #, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
-msgstr ""
+msgstr "  Existem {0} formas, mas espera-se apenas {1}\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:390
 #, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
-msgstr ""
+msgstr "  Existem apenas {0} formas, mas espera-se {1}\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:417
 msgid "Superflous shapes in your solution:\n"
-msgstr ""
+msgstr "formas supérfluas em sua solução:\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:422
 msgid "Missing shapes in your solution:\n"
-msgstr ""
+msgstr "Formas faltando em sua solução:\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:433
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
-msgstr ""
+msgstr "  {0} (tem {1} ao invés de {2})\n"
