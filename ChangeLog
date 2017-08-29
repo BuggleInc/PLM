@@ -9,6 +9,11 @@ not released: 2.7
   * Remove non-working features
     - Link identities (the target server was turned off)
     - "Call for Help" button
+    - Switch Course (no course server anymore)
+    
+  * Unclutter the interface
+    - Remove the "load exercise" menu. Redundent with choose box, and
+      not really useful anyway since no loadable exercise exist.
 
 20151010: 2.6
 

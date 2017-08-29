@@ -84,7 +84,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JButton lessonChangeButton;
     
     private JMenu menuFile;
-    private JMenuItem miFileSavePicture,miExoLoad,miExoSwitch,miExoExercise,miExoCourse,miFileQuit;
+    private JMenuItem miFileSavePicture,miExoSwitch,miExoExercise,miFileQuit;
     private JMenu menuExercise;
     private JMenuItem miExoRevert, miExoDebug, miExoCreative;
 
@@ -236,28 +236,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuExercise = new JMenu(i18n.tr("Exercise"));
 		menuExercise.setMnemonic(KeyEvent.VK_E);
 		menuBar.add(menuExercise);
-		menuExercise.setEnabled(true);
-		miExoLoad = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, KeyEvent.VK_L) {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PLM lesson files"), "plm"));
-				fc.setDialogType(JFileChooser.OPEN_DIALOG);
-				fc.showOpenDialog(MainFrame.getInstance());
-				File selectedFile = fc.getSelectedFile();
-
-				try {
-					if (selectedFile != null)
-						game.loadLessonFromJAR(fc.getSelectedFile());
-				} catch (LessonLoadingException lle) {
-					JOptionPane.showMessageDialog(null, lle.getMessage(), i18n.tr("Error"), JOptionPane.ERROR_MESSAGE); 
-				}
-			}
-		});
-		menuExercise.add(miExoLoad);
-		
+		menuExercise.setEnabled(true);		
 		
 		miExoSwitch = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
@@ -282,25 +261,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miExoExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		menuExercise.add(miExoExercise);
 		        
-        // Menu item to change the current Course
-        miExoCourse = new JMenuItem(new AbstractGameAction(g, i18n.tr("Choose your course")) {
-
-			private static final long serialVersionUID = 1L;
-			private ChooseCourseDialog dialog = null;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // launch a dialog to choose the course
-                if (dialog == null) {
-					dialog = new ChooseCourseDialog();
-				}
-				dialog.setVisible(true);
-            }
-        });
-
-        miExoCourse.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
-        menuExercise.add(miExoCourse);
-
 		miExoRevert = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"), null));
 		menuExercise.add(miExoRevert);
 		menuExercise.addSeparator();
@@ -735,10 +695,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         miFileQuit.setText(i18n.tr("Quit"));
 
 		menuExercise.setText(i18n.tr("Exercise"));
-        miExoLoad.setText(i18n.tr("Load lesson"));
         miExoSwitch.setText(i18n.tr("Switch lesson"));
         miExoExercise.setText(i18n.tr("Switch exercise"));
-        miExoCourse.setText(i18n.tr("Choose your course"));
         miExoRevert.setText(i18n.tr("Revert Exercise"));
         miExoDebug.setText(i18n.tr("Debug mode"));
         miExoCreative.setText(i18n.tr("Creative mode"));

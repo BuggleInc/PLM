@@ -60,7 +60,6 @@ import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
-import plm.core.model.tracking.ServerSpyAppEngine;
 import plm.core.ui.MainFrame;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
@@ -116,9 +115,6 @@ public class Game implements IWorldView {
 	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
 	// Turning to false will slow down the startup process, but avoid out of date files
-
-	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
-	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
 
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
@@ -217,14 +213,6 @@ public class Game implements IWorldView {
 		} catch (IOException | GitAPIException e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
-		}
-
-
-		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
-			addProgressSpyListener(new ServerSpyAppEngine());
-		
-		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
-	        currentCourse = new CourseAppEngine();
 		}
 	}
 
