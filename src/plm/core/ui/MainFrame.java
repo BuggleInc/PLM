@@ -80,7 +80,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
-    private JToggleButton helpMeButton;
     private JButton exoChangeButton;
     private JButton lessonChangeButton;
     
@@ -485,17 +484,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
-        helpMeButton = new PropagatingToggleButton(new HelpMe(g, i18n.tr("Call for Help"),
-                ResourcesCache.getIcon("img/btn-alert-off.png")));
-        if (Game.getProperty(Game.PROP_PROGRESS_APPENGINE,"false",true).equals("false")) // Turned off
-        	helpMeButton.setEnabled(true);
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
-        toolBar.add(helpMeButton);
 
         toolBar.addSeparator();
 
@@ -733,7 +727,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		stopButton.setText(i18n.tr("Stop"));
 		resetButton.setText(i18n.tr("Reset"));
 		demoButton.setText(i18n.tr("Demo"));
-        helpMeButton.setText(i18n.tr("Call for Help"));
         exoChangeButton.setText(i18n.tr("Switch exercise"));
 
         // Menus

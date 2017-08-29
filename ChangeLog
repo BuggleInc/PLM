@@ -8,6 +8,7 @@ not released: 2.7
 
   * Remove non-working features
     - Link identities (the target server was turned off)
+    - "Call for Help" button
 
 20151010: 2.6
 
