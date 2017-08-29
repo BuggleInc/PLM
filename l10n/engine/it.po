@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-10 21:37+0100\n"
+"POT-Creation-Date: 2017-08-30 00:30+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -331,7 +331,6 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
-#: src/lessons/welcome/summative/LakesEntity.java:10
 #: src/lessons/welcome/summative/MoriaEntity.java:10
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -352,7 +351,6 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
-#: src/lessons/welcome/summative/LakesEntity.java:15
 #: src/lessons/welcome/summative/MoriaEntity.java:15
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
