@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 00:30+0200\n"
+"POT-Creation-Date: 2017-08-30 01:49+0200\n"
 "PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -544,32 +544,32 @@ msgid ""
 "Exception message: {1}\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:170
+#: src/plm/core/model/Game.java:166
 msgid "Scala is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:172
+#: src/plm/core/model/Game.java:168
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:174
+#: src/plm/core/model/Game.java:170
 msgid "Jython is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:176
+#: src/plm/core/model/Game.java:172
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:178
+#: src/plm/core/model/Game.java:174
 msgid "C is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:180
+#: src/plm/core/model/Game.java:176
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:187
+#: src/plm/core/model/Game.java:183
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -582,81 +582,81 @@ msgid ""
 "({2}/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:193
+#: src/plm/core/model/Game.java:189
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:196
+#: src/plm/core/model/Game.java:192
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:199
+#: src/plm/core/model/Game.java:195
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:218
+#: src/plm/core/model/Game.java:214
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below"
 msgstr ""
 
-#: src/plm/core/model/Game.java:252
+#: src/plm/core/model/Game.java:240
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:261
+#: src/plm/core/model/Game.java:249
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 
-#: src/plm/core/model/Game.java:286
+#: src/plm/core/model/Game.java:274
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:325
+#: src/plm/core/model/Game.java:313
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:327
+#: src/plm/core/model/Game.java:315
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:362 src/plm/core/model/Game.java:363
+#: src/plm/core/model/Game.java:350 src/plm/core/model/Game.java:351
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/plm/core/model/Game.java:364
+#: src/plm/core/model/Game.java:352
 #, fuzzy, java-format
 msgid "Load lesson {0}"
 msgstr "Load lesson"
 
-#: src/plm/core/model/Game.java:380
+#: src/plm/core/model/Game.java:368
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
 
-#: src/plm/core/model/Game.java:381
+#: src/plm/core/model/Game.java:369
 #, fuzzy
 msgid "Broken lesson"
 msgstr "Load lesson"
 
-#: src/plm/core/model/Game.java:513
+#: src/plm/core/model/Game.java:501
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -664,48 +664,48 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:521
+#: src/plm/core/model/Game.java:509
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/plm/core/model/Game.java:563
+#: src/plm/core/model/Game.java:551
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:991
+#: src/plm/core/model/Game.java:979
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:992
+#: src/plm/core/model/Game.java:980
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:996
+#: src/plm/core/model/Game.java:984
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:997
+#: src/plm/core/model/Game.java:985
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1001
+#: src/plm/core/model/Game.java:989
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1002
+#: src/plm/core/model/Game.java:990
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1007
+#: src/plm/core/model/Game.java:995
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -714,7 +714,7 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1011
+#: src/plm/core/model/Game.java:999
 msgid "C is still experimental"
 msgstr ""
 
@@ -991,8 +991,8 @@ msgstr ""
 msgid "About lesson - "
 msgstr "About lesson - "
 
-#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:429
-#: src/plm/core/ui/MainFrame.java:777
+#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:384
+#: src/plm/core/ui/MainFrame.java:724
 #, fuzzy
 msgid "About the PLM"
 msgstr "About PLM"
@@ -1081,12 +1081,10 @@ msgid ""
 msgstr ""
 
 #: src/plm/core/ui/ChooseLessonDialog.java:144
-#: src/plm/core/ui/MainFrame.java:248
 msgid "PLM lesson files"
 msgstr "PLM lesson files"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:153
-#: src/plm/core/ui/MainFrame.java:257
 msgid "Error"
 msgstr "Error"
 
@@ -1435,179 +1433,160 @@ msgstr "Where error and other messages get written"
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/plm/core/ui/MainFrame.java:184 src/plm/core/ui/MainFrame.java:744
+#: src/plm/core/ui/MainFrame.java:182 src/plm/core/ui/MainFrame.java:693
 msgid "File"
 msgstr "File"
 
-#: src/plm/core/ui/MainFrame.java:186
+#: src/plm/core/ui/MainFrame.java:184
 msgid "File related functions"
 msgstr "File related functions"
 
-#: src/plm/core/ui/MainFrame.java:188 src/plm/core/ui/MainFrame.java:745
+#: src/plm/core/ui/MainFrame.java:186 src/plm/core/ui/MainFrame.java:694
 msgid "Save a picture"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:194
+#: src/plm/core/ui/MainFrame.java:192
 #, fuzzy
 msgid "PNG Image Files"
 msgstr "PLM lesson files"
 
-#: src/plm/core/ui/MainFrame.java:202
+#: src/plm/core/ui/MainFrame.java:200
 #, java-format
 msgid "Do you want to overwrite {0}?"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:203
+#: src/plm/core/ui/MainFrame.java:201
 #, java-format
 msgid "{0} exists"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:222
+#: src/plm/core/ui/MainFrame.java:220
 #, java-format
 msgid "Image saved into {0}."
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:231 src/plm/core/ui/MainFrame.java:746
+#: src/plm/core/ui/MainFrame.java:229 src/plm/core/ui/MainFrame.java:695
 msgid "Quit"
 msgstr "Quit"
 
-#: src/plm/core/ui/MainFrame.java:238 src/plm/core/ui/MainFrame.java:748
+#: src/plm/core/ui/MainFrame.java:236 src/plm/core/ui/MainFrame.java:697
 #, fuzzy
 msgid "Exercise"
 msgstr "Revert Exercise"
 
-#: src/plm/core/ui/MainFrame.java:242 src/plm/core/ui/MainFrame.java:749
-msgid "Load lesson"
-msgstr "Load lesson"
-
-#: src/plm/core/ui/MainFrame.java:264 src/plm/core/ui/MainFrame.java:506
-#: src/plm/core/ui/MainFrame.java:750
+#: src/plm/core/ui/MainFrame.java:241 src/plm/core/ui/MainFrame.java:456
+#: src/plm/core/ui/MainFrame.java:698
 msgid "Switch lesson"
 msgstr "Switch lesson"
 
-#: src/plm/core/ui/MainFrame.java:276 src/plm/core/ui/MainFrame.java:509
-#: src/plm/core/ui/MainFrame.java:741 src/plm/core/ui/MainFrame.java:751
+#: src/plm/core/ui/MainFrame.java:253 src/plm/core/ui/MainFrame.java:459
+#: src/plm/core/ui/MainFrame.java:690 src/plm/core/ui/MainFrame.java:699
 msgid "Switch exercise"
 msgstr "Switch exercise"
 
-#. Menu item to change the current Course
-#: src/plm/core/ui/MainFrame.java:288 src/plm/core/ui/MainFrame.java:752
-msgid "Choose your course"
-msgstr "Choose your course"
-
-#: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:753
+#: src/plm/core/ui/MainFrame.java:264 src/plm/core/ui/MainFrame.java:700
 msgid "Revert Exercise"
 msgstr "Revert Exercise"
 
-#: src/plm/core/ui/MainFrame.java:310 src/plm/core/ui/MainFrame.java:754
+#: src/plm/core/ui/MainFrame.java:268 src/plm/core/ui/MainFrame.java:701
 msgid "Debug mode"
 msgstr "Debug mode"
 
-#: src/plm/core/ui/MainFrame.java:322 src/plm/core/ui/MainFrame.java:755
+#: src/plm/core/ui/MainFrame.java:280 src/plm/core/ui/MainFrame.java:702
 msgid "Creative mode"
 msgstr ""
 
 #. === Session menu ===
-#: src/plm/core/ui/MainFrame.java:336 src/plm/core/ui/MainFrame.java:757
+#: src/plm/core/ui/MainFrame.java:294 src/plm/core/ui/MainFrame.java:704
 msgid "Session"
 msgstr "Session"
 
-#: src/plm/core/ui/MainFrame.java:342 src/plm/core/ui/MainFrame.java:759
+#: src/plm/core/ui/MainFrame.java:300 src/plm/core/ui/MainFrame.java:706
 msgid "Export Session Cache"
 msgstr "Export Session Cache"
 
-#: src/plm/core/ui/MainFrame.java:345 src/plm/core/ui/MainFrame.java:760
+#: src/plm/core/ui/MainFrame.java:303 src/plm/core/ui/MainFrame.java:707
 msgid "Import Session Cache"
 msgstr "Import Session Cache"
 
-#: src/plm/core/ui/MainFrame.java:350 src/plm/core/ui/MainFrame.java:763
+#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:710
 #: src/plm/core/ui/action/AddUser.java:33
 msgid "Add user"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:353 src/plm/core/ui/MainFrame.java:764
+#: src/plm/core/ui/MainFrame.java:311 src/plm/core/ui/MainFrame.java:711
 #: src/plm/core/ui/action/SwitchUser.java:30
 #, fuzzy
 msgid "Switch user"
 msgstr "Switch exercise"
 
-#: src/plm/core/ui/MainFrame.java:356 src/plm/core/ui/MainFrame.java:765
+#: src/plm/core/ui/MainFrame.java:314 src/plm/core/ui/MainFrame.java:712
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid "Remove user"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:359
-msgid "Link identity"
-msgstr ""
-
 #. === Language menu ===
-#: src/plm/core/ui/MainFrame.java:363 src/plm/core/ui/MainFrame.java:768
+#: src/plm/core/ui/MainFrame.java:318 src/plm/core/ui/MainFrame.java:715
 msgid "Language"
 msgstr "Language"
 
 #. === Programming language changing ===
-#: src/plm/core/ui/MainFrame.java:368 src/plm/core/ui/MainFrame.java:769
+#: src/plm/core/ui/MainFrame.java:323 src/plm/core/ui/MainFrame.java:716
 msgid "Human"
 msgstr "Human"
 
-#: src/plm/core/ui/MainFrame.java:382 src/plm/core/ui/MainFrame.java:770
+#: src/plm/core/ui/MainFrame.java:337 src/plm/core/ui/MainFrame.java:717
 msgid "Computer"
 msgstr "Computer"
 
 #. === Help menu ===
-#: src/plm/core/ui/MainFrame.java:386 src/plm/core/ui/MainFrame.java:772
+#: src/plm/core/ui/MainFrame.java:341 src/plm/core/ui/MainFrame.java:719
 msgid "Help"
 msgstr "Help"
 
-#: src/plm/core/ui/MainFrame.java:390 src/plm/core/ui/MainFrame.java:773
+#: src/plm/core/ui/MainFrame.java:345 src/plm/core/ui/MainFrame.java:720
 msgid "Provide feedback"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:400 src/plm/core/ui/MainFrame.java:774
+#: src/plm/core/ui/MainFrame.java:355 src/plm/core/ui/MainFrame.java:721
 msgid "About this lesson"
 msgstr "About this lesson"
 
-#: src/plm/core/ui/MainFrame.java:413 src/plm/core/ui/MainFrame.java:775
+#: src/plm/core/ui/MainFrame.java:368 src/plm/core/ui/MainFrame.java:722
 msgid "About this world"
 msgstr "About this world"
 
 #. Buttons
-#: src/plm/core/ui/MainFrame.java:465 src/plm/core/ui/MainFrame.java:735
+#: src/plm/core/ui/MainFrame.java:420 src/plm/core/ui/MainFrame.java:685
 msgid "Run"
 msgstr "Run"
 
-#: src/plm/core/ui/MainFrame.java:469 src/plm/core/ui/MainFrame.java:572
-#: src/plm/core/ui/MainFrame.java:736
+#: src/plm/core/ui/MainFrame.java:424 src/plm/core/ui/MainFrame.java:522
+#: src/plm/core/ui/MainFrame.java:686
 msgid "Step"
 msgstr "Step"
 
-#: src/plm/core/ui/MainFrame.java:474 src/plm/core/ui/MainFrame.java:737
+#: src/plm/core/ui/MainFrame.java:429 src/plm/core/ui/MainFrame.java:687
 msgid "Stop"
 msgstr "Stop"
 
-#: src/plm/core/ui/MainFrame.java:480 src/plm/core/ui/MainFrame.java:738
+#: src/plm/core/ui/MainFrame.java:435 src/plm/core/ui/MainFrame.java:688
 msgid "Reset"
 msgstr "Reset"
 
-#: src/plm/core/ui/MainFrame.java:486 src/plm/core/ui/MainFrame.java:739
+#: src/plm/core/ui/MainFrame.java:441 src/plm/core/ui/MainFrame.java:689
 msgid "Demo"
 msgstr "Demo"
 
-#: src/plm/core/ui/MainFrame.java:492 src/plm/core/ui/MainFrame.java:740
-#: src/plm/core/ui/action/HelpMe.java:136
-#: src/plm/core/ui/action/HelpMe.java:143
-msgid "Call for Help"
-msgstr "Call for Help"
-
-#: src/plm/core/ui/MainFrame.java:557
+#: src/plm/core/ui/MainFrame.java:507
 msgid "Next"
 msgstr "Next"
 
-#: src/plm/core/ui/MainFrame.java:624
+#: src/plm/core/ui/MainFrame.java:574
 msgid "Please wait, while the PLM is saving your session data."
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:758
+#: src/plm/core/ui/MainFrame.java:705
 msgid "Lesson related functions"
 msgstr "Lesson related functions"
 
@@ -1702,6 +1681,11 @@ msgstr "Call for Help"
 #: src/plm/core/ui/action/HelpMe.java:143
 msgid "Cancel call"
 msgstr "Cancel call"
+
+#: src/plm/core/ui/action/HelpMe.java:136
+#: src/plm/core/ui/action/HelpMe.java:143
+msgid "Call for Help"
+msgstr "Call for Help"
 
 #: src/plm/core/ui/action/PlayDemo.java:27
 msgid "Run the demo of what you should code for this exercise"
@@ -2545,6 +2529,12 @@ msgstr ""
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr ""
+
+#~ msgid "Load lesson"
+#~ msgstr "Load lesson"
+
+#~ msgid "Choose your course"
+#~ msgstr "Choose your course"
 
 #, fuzzy
 #~ msgid "The lesson "
