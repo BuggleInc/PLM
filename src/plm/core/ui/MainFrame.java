@@ -52,7 +52,6 @@ import plm.core.ui.action.AddUser;
 import plm.core.ui.action.ExportSession;
 import plm.core.ui.action.HelpMe;
 import plm.core.ui.action.ImportSession;
-import plm.core.ui.action.LinkUser;
 import plm.core.ui.action.PlayDemo;
 import plm.core.ui.action.QuitGame;
 import plm.core.ui.action.RemoveUser;
@@ -91,7 +90,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenuItem miExoRevert, miExoDebug, miExoCreative;
 
     private JMenu menuSession;
-    private JMenuItem miSessionExport, miSessionImport, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity;
+    private JMenuItem miSessionExport, miSessionImport, miAddUser, miSwitchUser, miRemoveUser;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -356,9 +355,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miRemoveUser = new JMenuItem(new RemoveUser(g, i18n.tr("Remove user"), null, this));
 		menuSession.add(miRemoveUser);
 		
-		miLinkIdentity = new JMenuItem(new LinkUser(g, i18n.tr("Link identity"), null, this));
-		menuSession.add(miLinkIdentity);
-
 		/* === Language menu === */
 		menuLanguage = new JMenu(i18n.tr("Language"));
 		menuLanguage.setMnemonic(KeyEvent.VK_L);
