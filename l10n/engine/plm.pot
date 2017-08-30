@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 01:49+0200\n"
+"POT-Creation-Date: 2017-08-30 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -997,7 +997,7 @@ msgstr ""
 msgid ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
 "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
-"span></h3><br/>&copy; 2008-2015 Contributors. All rights reserved.<br/><ul "
+"span></h3><br/>&copy; 2008-2017 Contributors. All rights reserved.<br/><ul "
 "style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
 "College)</i></li><li>Design and code: <i>M. Quinson and G. Oster</i></"
 "li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
@@ -1015,7 +1015,7 @@ msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:124
 msgid ""
-"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2015.<br/> "
+"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2017.<br/> "
 "The PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git "
 "logs for the exact authorship of each file).</p> <p>The PLM software was "
 "written internally by the team. This software is distributed under the GNU "
@@ -1365,43 +1365,43 @@ msgstr ""
 msgid "Send feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:137
+#: src/plm/core/ui/FeedbackDialog.java:149
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:138
+#: src/plm/core/ui/FeedbackDialog.java:150
 msgid "Thanks for your suggestion"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:147
+#: src/plm/core/ui/FeedbackDialog.java:159
 msgid "Error while uploading your feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:154
+#: src/plm/core/ui/FeedbackDialog.java:166
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:155
+#: src/plm/core/ui/FeedbackDialog.java:167
 msgid "Incorrect feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:180
+#: src/plm/core/ui/FeedbackDialog.java:192
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:184
+#: src/plm/core/ui/FeedbackDialog.java:196
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:188
+#: src/plm/core/ui/FeedbackDialog.java:200
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"

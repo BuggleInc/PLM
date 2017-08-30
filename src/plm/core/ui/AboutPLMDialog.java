@@ -62,7 +62,7 @@ public class AboutPLMDialog extends JDialog {
 				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</span>"+
 				"</h3>"+
 				"<br/>"+
-				"&copy; 2008-2015 Contributors. All rights reserved.<br/>"+
+				"&copy; 2008-2017 Contributors. All rights reserved.<br/>"+
 				"<ul style=\"margin-left:20px;\">" +
 				"<li>Original idea: <i>L. Turbak (Wellesley College)</i></li>"+
 				"<li>Design and code: <i>M. Quinson and G. Oster</i></li>"+
@@ -123,7 +123,7 @@ public class AboutPLMDialog extends JDialog {
 		licenseArea.setText(Game.i18n.tr(
 				  "<h2>The PLM is proudly Free Software</h2>"
 				+ ""
-				+ "<p>Copyright (c) 2008-2015.<br/> "
+				+ "<p>Copyright (c) 2008-2017.<br/> "
 				+ "The PLM Team: Martin Quinson, Gérald Oster and others.<br/> "
 				+ "(see the git logs for the exact authorship of each file).</p> "
 				+ ""
