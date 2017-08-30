@@ -75,7 +75,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			langColors.put("scala|python", "0080FF");
 			langColors.put("scala|c", "00FFFF");
 
-			// sclala python c
+			// scala python c
 			langColors.put("scala|python|c", "00AFFF");
 			langColors.put("scala|c|python", "00AFFF");
 			langColors.put("python|c|scala", "00AFFF");
@@ -181,21 +181,46 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 
 			
 			String strtemp="";
-			String cls[] = {Game.getProgrammingLanguage().getLang().toLowerCase()};
 			
 			while(!strtemp.equals(res)){
 				strtemp=res.toString();
-				for (String cl : cls) {
-					res = res.replaceAll("(?s)\\[!"+cl+"\\](.*?)\\[/!\\]",   "\\[!#\\]$1\\[/!\\]");
-					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+cl+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "\\[!#\\]$7\\[/!\\]");
-					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+cl+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "\\[!#\\]$7\\[/!\\]");
+				
+				// Process any block with one language first so that they can be nested in blocks with more than one language.
+				for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+					String l = lang.getLang().toLowerCase();
+					if (lang.equals(Game.getProgrammingLanguage())) 
+						res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]", "$1"); // Keep it
+					else 
+						res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]", ""); // Not for us
 				}
-				res = res.replaceAll("(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+"[a-z]*"+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+"[a-z]*"+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll(      "(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll(      "(?s)\\[!#\\](.*?)\\[/!\\]",   "$1");
+				for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+					String l = lang.getLang().toLowerCase();
+					for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
+						String l2 = lang2.getLang().toLowerCase();
+						if (lang.equals(Game.getProgrammingLanguage()) || lang2.equals(Game.getProgrammingLanguage()))
+							res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","$1"); // Keep it
+						else 
+							res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]",""); // Not for us
+					}
+				}
 
+				for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+					String l = lang.getLang().toLowerCase();
+					for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
+						if (!lang2.equals(lang)) {
+							String l2 = lang2.getLang().toLowerCase();
+							for (ProgrammingLanguage lang3 : Game.getProgrammingLanguages()) {
+								if (!lang3.equals(lang) && !lang3.equals(lang2)) {
+									String l3 = lang3.getLang().toLowerCase();
+									if (lang.equals(Game.getProgrammingLanguage()) || lang2.equals(Game.getProgrammingLanguage()) || lang3.equals((Game.getProgrammingLanguage())))
+										res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","$1");
+									else
+										res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","");
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 
