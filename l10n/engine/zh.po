@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 10:22+0200\n"
+"POT-Creation-Date: 2017-08-30 10:39+0200\n"
 "PO-Revision-Date: 2015-02-16 14:12+0100\n"
 "Last-Translator: Qiaoyang SU <suqiaoy@163.com>\n"
 "Language-Team: Chinese(中文)\n"
@@ -1053,7 +1053,7 @@ msgstr "关闭"
 msgid "About world - {0}"
 msgstr "关于这个世界"
 
-#: src/plm/core/ui/ChooseLectureDialog.java:76
+#: src/plm/core/ui/ChooseLectureDialog.java:100
 msgid "Choose your next exercise"
 msgstr "选择你的下一个练习"
 

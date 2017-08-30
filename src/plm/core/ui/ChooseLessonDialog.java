@@ -94,7 +94,7 @@ public class ChooseLessonDialog extends JFrame {
 		add(mainPane, BorderLayout.CENTER);
 
 		pack();
-		setSize(750, 500);
+		setSize(780, 500);
 		setVisible(true);
 		setResizable(false);
 	}

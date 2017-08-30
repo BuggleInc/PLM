@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 10:22+0200\n"
+"POT-Creation-Date: 2017-08-30 10:39+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1229,7 +1229,7 @@ msgstr "Chiudi"
 msgid "About world - {0}"
 msgstr "Riguardo il mondo - {0}"
 
-#: src/plm/core/ui/ChooseLectureDialog.java:76
+#: src/plm/core/ui/ChooseLectureDialog.java:100
 msgid "Choose your next exercise"
 msgstr "Scegli il tuo prossimo esercizio"
 
