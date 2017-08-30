@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-08-30 02:18+0200\n"
-"PO-Revision-Date: 2015-11-10 21:05+0100\n"
+"POT-Creation-Date: 2017-08-30 02:33+0200\n"
+"PO-Revision-Date: 2017-08-30 02:38+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -971,80 +971,66 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/environment/Environment.html:3
 msgid "Welcome to the PLM"
-msgstr ""
+msgstr "Bienvenus dans la PLM"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:5
 msgid ""
 "The goal of this first exercise is to instruct your buggle to move forward "
-"by one step. Switch between the <i>World</i> view and the <i>Objective</i> "
-"one for more details."
+"by one step. Switch between the views on the right for more info. <i>World</"
+"i> depicts the world as it is now, while <i>Objective</i> depicts what you "
+"should get."
 msgstr ""
+"L'objectif de ce premier exercice est de faire avancer votre buggle\n"
+"d'un pas. Alternez entre les vues à droite pour plus de détail:\n"
+"<i>Monde</i> montre le monde tel qu'il est pour l'instant, tandis que\n"
+"<i>Objectif</i> montre ce que vous devez obtenir."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/environment/Environment.html:9
-#, fuzzy
-#| msgid "The <i>buggles</i>? What is this??"
+#: src/lessons/welcome/environment/Environment.html:10
 msgid "My <i>buggle</i>? What is this??"
-msgstr "Les <i>buggles</i> ? Qu'est ce que c'est ??"
+msgstr "Ma <i>buggle</i> ? Qu'est ce que c'est ??"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:11
-#, fuzzy
-#| msgid ""
-#| "The buggles are little animals obeying any order you may give them. In "
-#| "each exercise, you have to provide them with the right instructions so "
-#| "that the world turns into the objective of the exercise. For example in "
-#| "this exercise, you should instruct your buggle to move forward once. You "
-#| "can see that by checking the difference between the <i>World</i> view and "
-#| "the <i>Objective</i> one.  Depending on the exercise (and your settings "
-#| "in the Language menu), your code must be written in either C, Java, "
-#| "Python or Scala."
+#: src/lessons/welcome/environment/Environment.html:12
 msgid ""
 "Buggles are little animals obeying any order you may give them. Currently, "
 "you must use the [!thelang/] programming language for that, but you can "
 "change the language from the menu, or by clicking the icon in the status bar."
 msgstr ""
-"Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
-"donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
-"pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par "
-"exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle "
-"avance d'un pas. Observez la différence entre l'état initial et l'objectif "
-"en utilisant les panneaux à droite. En fonction de l'exercice (et vos "
-"réglages), vous devez écrire vos programme dans l'un des langages de "
-"programmation suivant : Java, Python, Scala ou C (en fonction de l'exercice)."
+"Les buggles sont de petites bêtes qui obéissent aux ordres que vous\n"
+"leur donnez. Pour l'instant, vous devez utiliser le langage\n"
+"[!thelang/] pour cela, mais vous pouvez en changer dans le menu ou en\n"
+"cliquant sur l'icone dans la barre du bas."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/environment/Environment.html:16
-#, fuzzy
-#| msgid "How to do this?"
+#: src/lessons/welcome/environment/Environment.html:17
 msgid "How to proceed?"
 msgstr "Comment faire ?"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:18
-msgid ""
-"Write the code to move your buggle by one step forward in the Code pane "
-"(using the interactive controls is not enough). Your code should read as "
-"follows:"
+#: src/lessons/welcome/environment/Environment.html:19
+msgid "Write your program in the \"Code\" pane. It should read as follows:"
 msgstr ""
+"Écrivez votre programme dans l'onglet \"Code\". Il devrait ressembler à\n"
+"ceci :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:21
+#: src/lessons/welcome/environment/Environment.html:20
 #: src/lessons/welcome/instructions/Instructions.html:46
 #, no-wrap
 msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 msgstr "[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:22
+#: src/lessons/welcome/environment/Environment.html:21
 #: src/lessons/welcome/loopfor/LoopFor.html:57
 #: src/lessons/welcome/bdr/BDR.html:188
 msgid "[!java|c]"
 msgstr "[!java|c]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:22
+#: src/lessons/welcome/environment/Environment.html:21
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot <i>guess</"
@@ -1055,7 +1041,7 @@ msgstr ""
 "leur préciser des choses aussi simples)."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:24
+#: src/lessons/welcome/environment/Environment.html:23
 #: src/lessons/welcome/instructions/Instructions.html:35
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
@@ -1079,44 +1065,25 @@ msgid "[/!]"
 msgstr "[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:26
-#, fuzzy
-#| msgid ""
-#| "Once done, click on run. You can proceed to next exercise once it works."
+#: src/lessons/welcome/environment/Environment.html:25
 msgid "Once done, click on Run to execute your code."
-msgstr ""
-"Une fois terminé, cliquez sur «Exécuter». Quand cela fonctionne, vous pouvez "
-"passer à l'exercice suivant."
+msgstr "Une fois terminé, cliquez sur «Exécuter» pour lancer votre programme."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:28
-#, fuzzy
-#| msgid ""
-#| "If your code contains errors (and code always do at some point), the "
-#| "computer will display error messages in the console. You obviously have "
-#| "to fix the errors to pass the exercises. The messages that get displayed "
-#| "may sound scary at first glance, but don't panic. The compiler is only "
-#| "somehow limited in its communication abilities, but he's not mean. If you "
-#| "look closer, the solution to solve your issue is written in the middle of "
-#| "those cryptic messages. You will see, with a bit of habit, we get used to "
-#| "it."
+#: src/lessons/welcome/environment/Environment.html:27
 msgid ""
 "If your code contains errors, that's perfectly OK: Even talented programmers "
-"sometimes struggle on their code.  The computer will display error messages "
-"in the console to help you fixing them. The displayed messages may sound "
-"scary at first glance, but don't panic. The compiler is only somehow limited "
-"in its communication abilities, but it's not mean. If you look closer, the "
-"solution to solve your issue is written somewhere in those cryptic messages. "
-"You will see, with a bit of habit, we get used to it."
+"struggle on their code.  The computer will display error messages in the "
+"console to help you fixing them. These messages may sound scary at first "
+"glance, but don't panic. The compiler is only somehow limited in its "
+"communication abilities, but it's not mean. If you look closer, the solution "
+"to solve your issue is written somewhere in those cryptic messages. You will "
+"see, with a bit of habit, we get used to it."
 msgstr ""
-"Si votre code contient des erreurs (et les programmes finissent toujours par "
-"en contenir), l'ordinateur affichera les messages d'erreur sur la console. "
-"Vous devez bien entendu corriger ces erreurs pour réussir les exercices. Les "
-"messages affichés peuvent paraître inquiétant au premier abord, mais pas de "
-"panique. Le compilateur est seulement pas très doué pour communiquer, il "
-"n'est pas fondamentalement méchant. En regardant de plus près, la solution "
-"pour corriger les problèmes est inscrite dans ces messages cryptiques. Vous "
-"verrez, avec un peu d'entraînement, vous vous y habituerez."
+"Si votre code contient des erreurs, c'est tout à fait normal : même\n"
+"les meilleurs programmeurs se creusent la tête sur leur\n"
+"code. L'ordinateur affichera les messages d'erreur sur la console pour\n"
+"vous aider à les résoudre. Les messages affichés peuvent paraître inquiétant au premier abord, mais pas de panique. Le compilateur est seulement pas très doué pour communiquer, il n'est pas fondamentalement méchant. En regardant de plus près, la solution pour corriger les problèmes est inscrite dans ces messages cryptiques. Vous verrez, avec un peu d'entraînement, vous vous y habituerez."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:4
@@ -17120,69 +17087,6 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
-
-#, fuzzy
-#~| msgid "How to do this?"
-#~ msgid "How can I do that?"
-#~ msgstr "Comment faire ?"
-
-#~ msgid ""
-#~ "You just started the Programmer's Learning Machine. This is a Learning "
-#~ "Management System aiming at teaching the art of computer programming "
-#~ "through interactive exercises. It is constituted by a set of exercises "
-#~ "grouped by lessons, allowing you to practice at your own pace. Currently, "
-#~ "the environment is configured to be programmed in the [!thelang/] "
-#~ "programming language, but you can change it from the Language menu if you "
-#~ "want, or by clicking on the [!thelang/] icon at the right of the status "
-#~ "bar below."
-#~ msgstr ""
-#~ "Vous venez de lancer la PLM, l'exerciseur du programmeur (Programmer's "
-#~ "Learning Machine). Il s'agit d'une plate-forme pédagogique destinée à "
-#~ "simplifier l'apprentissage de la programmation. Il est constitué d'un "
-#~ "ensemble d'exercices groupés par leçons, pour vous permettre de "
-#~ "progresser à votre rythme. Pour l'instant, l'outil est configuré pour "
-#~ "vous permettre de programmer en [!thelang/], mais vous pouvez changer de "
-#~ "langage de programmation grâce au menu Langage si vous le désirez, ou en "
-#~ "cliquant sur l'icône du [!thelang/] à droite de la barre d'état (en bas "
-#~ "de la fenêtre)."
-
-#~ msgid ""
-#~ "In this first lesson, the buggles will lead your first steps in "
-#~ "programming."
-#~ msgstr ""
-#~ "Dans cette première leçon, les buggles guideront vos premiers pas en "
-#~ "programmation."
-
-#~ msgid "What am I supposed to do?"
-#~ msgstr "Que dois-je faire ?"
-
-#~ msgid ""
-#~ "It's time to write your first program. Simply ask your buggle to move one "
-#~ "step forward using the Source Code pane. For that, simply write the "
-#~ "following code (clicking on the interactive controls is not enough: You "
-#~ "have to write the code after experimenting interactively)."
-#~ msgstr ""
-#~ "Il est temps d'écrire votre premier programme. Demandez simplement de "
-#~ "faire un pas en avant dans le panneau de Code Source. Pour cela, écrivez "
-#~ "simplement le code suivant. Cliquer sur les contrôles interactifs ne "
-#~ "suffit pas. Il faut écrire le code après avoir expérimenté "
-#~ "interactivement."
-
-#~ msgid "Working environment"
-#~ msgstr "L'environnement de travail"
-
-#~ msgid ""
-#~ "Before going any further, get familiar with the working environment. Have "
-#~ "a look at the several elements composing the main window, move your mouse "
-#~ "over them to show the tooltip, and experiment with the elements to see "
-#~ "what they do.  The white area below is the console: this is where errors "
-#~ "and messages get displayed."
-#~ msgstr ""
-#~ "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez "
-#~ "les différents éléments composant la fenêtre, placez la souris dessus "
-#~ "pour voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La "
-#~ "zone blanche en bas est la console : c'est là que les erreurs et messages "
-#~ "sont affichés."
 
 #~ msgid ""
 #~ "This <b>experimental</b> lesson aims at teaching students about "

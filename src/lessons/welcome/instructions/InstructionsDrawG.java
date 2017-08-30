@@ -12,7 +12,7 @@ public class InstructionsDrawG extends ExerciseTemplated {
 
 	public InstructionsDrawG(Lesson lesson) {
 		super(lesson);
-		tabName = "Source";
+		tabName = "Code";
 
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7, 7);
 		new SimpleBuggle(myWorld, "Rookie", 5, 1, Direction.NORTH, Color.black, Color.blue);

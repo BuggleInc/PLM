@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-08-30 02:18+0200\n"
+"POT-Creation-Date: 2017-08-30 02:33+0200\n"
 "PO-Revision-Date: 2015-11-10 21:13+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
@@ -974,19 +974,20 @@ msgstr ""
 #: src/lessons/welcome/environment/Environment.html:5
 msgid ""
 "The goal of this first exercise is to instruct your buggle to move forward "
-"by one step. Switch between the <i>World</i> view and the <i>Objective</i> "
-"one for more details."
+"by one step. Switch between the views on the right for more info. <i>World</"
+"i> depicts the world as it is now, while <i>Objective</i> depicts what you "
+"should get."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/environment/Environment.html:9
+#: src/lessons/welcome/environment/Environment.html:10
 #, fuzzy
 #| msgid "The <i>buggles</i>? What is this??"
 msgid "My <i>buggle</i>? What is this??"
 msgstr "Os <i>buggles</i>? O que é isso??"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:11
+#: src/lessons/welcome/environment/Environment.html:12
 #, fuzzy
 #| msgid ""
 #| "The buggles are little animals obeying any order you may give them. In "
@@ -1011,36 +1012,33 @@ msgstr ""
 "linguagem), seu código deve ser escrito em C, Java, Python ou Scala."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/environment/Environment.html:16
+#: src/lessons/welcome/environment/Environment.html:17
 #, fuzzy
 #| msgid "How to do this?"
 msgid "How to proceed?"
 msgstr "Como fazer isto?"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:18
-msgid ""
-"Write the code to move your buggle by one step forward in the Code pane "
-"(using the interactive controls is not enough). Your code should read as "
-"follows:"
+#: src/lessons/welcome/environment/Environment.html:19
+msgid "Write your program in the \"Code\" pane. It should read as follows:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:21
+#: src/lessons/welcome/environment/Environment.html:20
 #: src/lessons/welcome/instructions/Instructions.html:46
 #, no-wrap
 msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 msgstr "[!java|scala|python]avançar()[!java];[/!][/!][!c]avançarUmPasso();[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:22
+#: src/lessons/welcome/environment/Environment.html:21
 #: src/lessons/welcome/loopfor/LoopFor.html:57
 #: src/lessons/welcome/bdr/BDR.html:188
 msgid "[!java|c]"
 msgstr "[!java|c]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:22
+#: src/lessons/welcome/environment/Environment.html:21
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot <i>guess</"
@@ -1051,7 +1049,7 @@ msgstr ""
 "<i>adivinhar</i> coisas óbvias como isto)."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:24
+#: src/lessons/welcome/environment/Environment.html:23
 #: src/lessons/welcome/instructions/Instructions.html:35
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
@@ -1075,7 +1073,7 @@ msgid "[/!]"
 msgstr "[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:26
+#: src/lessons/welcome/environment/Environment.html:25
 #, fuzzy
 #| msgid ""
 #| "Once done, click on run. You can proceed to next exercise once it works."
@@ -1085,7 +1083,7 @@ msgstr ""
 "assim que este funcionar."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:28
+#: src/lessons/welcome/environment/Environment.html:27
 #, fuzzy
 #| msgid ""
 #| "If your code contains errors (and code always do at some point), the "
@@ -1098,12 +1096,12 @@ msgstr ""
 #| "it."
 msgid ""
 "If your code contains errors, that's perfectly OK: Even talented programmers "
-"sometimes struggle on their code.  The computer will display error messages "
-"in the console to help you fixing them. The displayed messages may sound "
-"scary at first glance, but don't panic. The compiler is only somehow limited "
-"in its communication abilities, but it's not mean. If you look closer, the "
-"solution to solve your issue is written somewhere in those cryptic messages. "
-"You will see, with a bit of habit, we get used to it."
+"struggle on their code.  The computer will display error messages in the "
+"console to help you fixing them. These messages may sound scary at first "
+"glance, but don't panic. The compiler is only somehow limited in its "
+"communication abilities, but it's not mean. If you look closer, the solution "
+"to solve your issue is written somewhere in those cryptic messages. You will "
+"see, with a bit of habit, we get used to it."
 msgstr ""
 "Se seu código tem erros (e qualquer código sempre vai ter em algum momento), "
 "o computador vai exibir mensagens de erro no console. Você obviamente terá "
