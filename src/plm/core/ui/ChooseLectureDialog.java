@@ -2,6 +2,7 @@ package plm.core.ui;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.Enumeration;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -24,6 +25,28 @@ import plm.core.model.lesson.Lesson;
 public class ChooseLectureDialog implements TreeSelectionListener {
 	private JTree tree;
 
+    private void expandTree(JTree tree) {
+        TreeNode root = (TreeNode) tree.getModel().getRoot();
+        expandAll(tree, new TreePath(root));
+    }
+
+    private void expandAll(JTree tree, TreePath path) {
+        TreeNode node = (TreeNode) path.getLastPathComponent();
+
+        if (node.getChildCount() >= 0) {
+            Enumeration enumeration = node.children();
+            while (enumeration.hasMoreElements()) {
+                TreeNode n = (TreeNode) enumeration.nextElement();
+                TreePath p = path.pathByAddingChild(n);
+
+                expandAll(tree, p);
+            }
+        }
+
+        tree.expandPath(path);
+    }
+
+	
 	public ChooseLectureDialog() {
 		Lesson l = Game.getInstance().getCurrentLesson();
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode();
@@ -60,6 +83,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 		});
 		
 		/* Build the selection */
+		expandTree(tree);
 		tree.setExpandsSelectedPaths(true);
 		TreeNode[] nodes = l.getCurrentExercise().getNode().getPath();
 		TreePath path = new TreePath(nodes);
