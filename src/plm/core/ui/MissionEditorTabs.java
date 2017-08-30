@@ -21,7 +21,6 @@ import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
-import plm.core.model.lesson.Lesson;
 import plm.core.model.session.SourceFile;
 import plm.universe.IEntityStackListener;
 import plm.universe.World;
@@ -64,28 +63,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 					}
 					if (desc.startsWith("plm://")) {
 						//Load a regular lesson
-						String lessonName = desc.substring(new String("plm://").length());
-						String exoName = null;
-						int sep = lessonName.indexOf("/");
-						if (sep != -1) {
-							exoName = lessonName.substring(sep+1);
-							lessonName = lessonName.substring(0, sep);
-							if (exoName.length()==0)
-								exoName = null;
-						}
-						if (Game.getInstance().isDebugEnabled()) 
-							System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
-								
-						Lesson lesson = Game.getInstance().switchLesson(lessonName,false);
-						Game.getInstance().setCurrentLesson(lesson);
-						if (exoName != null && exoName.length()>0) {
-							Lecture lect = lesson.getExercise(exoName);
-							if (lect != null) {
-								Game.getInstance().setCurrentExercise(lect);
-							} else {
-								System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
-							}
-						}					 
+						Game.getInstance().setCurrentExercise(desc);
 					}
 				}
 			}

@@ -16,8 +16,9 @@ public class ProgrammersLearningMachine {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				ChooseLessonDialog cld = new ChooseLessonDialog();
-				cld.setVisible(true);
+				String exoUrl = Game.getProperty(Game.PROP_CURRENT_EXERCISE, "plm://lessons.welcome/", true);
+				Game.getInstance().setCurrentExercise(exoUrl);
+				MainFrame.getInstance().setVisible(true);
 			}
 		});
 

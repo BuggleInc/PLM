@@ -117,6 +117,7 @@ public class Game implements IWorldView {
 	// Turning to false will slow down the startup process, but avoid out of date files
 
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
+	public static final String PROP_CURRENT_EXERCISE = "plm.currentExercise";
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
 
@@ -463,16 +464,19 @@ public class Game implements IWorldView {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
+
 		// No need to stop the execution if no lesson is currently selected
 		if(currentLesson != null) {
 			// If already executing a program, stop it
 			if(state==GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
 				stopExerciseExecution();
 			}
+			
+			setProperty(PROP_CURRENT_EXERCISE, "plm://lessons."+currentLesson.getId()+"/"+lect.getId());
 		}
 		try {
 			saveSession(); // don't loose user changes
-			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching7
+			this.lastExercise = (currentLesson==null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching
 			
 			if (this.currentLesson != lect.getLesson())
 				this.currentLesson = lect.getLesson();
@@ -509,7 +513,40 @@ public class Game implements IWorldView {
 			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}
 	}
-
+	
+	/** Switch to an exercise identified by an URL such as plm://lessons.recursion.hanoi/InterleavedHanoi */
+	public void setCurrentExercise(String url) {
+		if (! url.startsWith("plm://")) {
+			System.err.println("Cannot load the exercise '"+url+"': Malformed URL");
+			return;
+		}
+		String lessonName = url.substring(new String("plm://").length());
+		String exoName = null;
+		int sep = lessonName.indexOf("/");
+		if (sep != -1) {
+			exoName = lessonName.substring(sep+1);
+			lessonName = lessonName.substring(0, sep);
+			if (exoName.length()==0)
+				exoName = null;
+		}
+		if (Game.getInstance().isDebugEnabled()) 
+			System.out.println("Switching to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
+				
+		Lesson lesson = Game.getInstance().switchLesson(lessonName,false);
+		Game.getInstance().setCurrentLesson(lesson);
+		if (exoName != null && exoName.length()>0) {
+			Lecture lect = lesson.getExercise(exoName);
+			if (lect != null) {
+				Game.getInstance().setCurrentExercise(lect);
+			} else {
+				System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
+			}
+			setProperty(PROP_CURRENT_EXERCISE, "plm://lessons."+lesson.getId()+"/"+lect.getId());
+		} else {
+			setProperty(PROP_CURRENT_EXERCISE, "plm://lessons."+lesson.getId());			
+		}
+	}
+	
 	public World getSelectedWorld() {
 		if (this.currentLesson == null)
 			return null;

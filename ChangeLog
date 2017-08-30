@@ -15,6 +15,7 @@
     - Remove the "load exercise" menu. Redundent with choose box, and
       not really useful anyway since no loadable exercise exist.
     - Rewrite the first exercise to fit in one page only
+    - Restart for the last used exercise automatically
     
   * Fix broken features
     - Bug report should work again
