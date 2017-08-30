@@ -14,6 +14,11 @@ not released: 2.7
   * Unclutter the interface
     - Remove the "load exercise" menu. Redundent with choose box, and
       not really useful anyway since no loadable exercise exist.
+    - Rewrite the first exercise to fit in one page only
+    
+  * Fix broken features
+    - Bug report should work again
+
 
 20151010: 2.6
 

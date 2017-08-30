@@ -126,13 +126,25 @@ public class FeedbackDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isCorrect()) {
-					client.setOAuth2Token(Game.getProperty("plm.github.oauth"));
+					String rot13 = "apa3a7aqana0a5ara6asana8a7aoa1ana9a2aqa1a5a9a2aoa2a5a2ara5aqaqa8apa8a1a4a4apaoa3";
+					StringBuffer token = new StringBuffer();
+					for (int i=1; i<rot13.length(); i+=2) {
+			            char c = rot13.charAt(i);
+			            if      (c >= 'a' && c <= 'm') c += 13;
+			            else if (c >= 'A' && c <= 'M') c += 13;
+			            else if (c >= 'n' && c <= 'z') c -= 13;
+			            else if (c >= 'N' && c <= 'Z') c -= 13;
+			            else if (c>= '0' && c <= '4') c +=5;
+			            else if (c>= '5' && c <= '9') c -=5;
+			            token.append(c);
+					}
+					client.setOAuth2Token(token.toString());
 					Issue issue = new Issue();
 					issue.setTitle(title.getText());
 					issue.setBody(feedback.getText());
 					IssueService issueService = new IssueService(client);
 					try {
-						Issue i = issueService.createIssue(Game.getProperty("plm.github.owner"), Game.getProperty("plm.github.repo"), issue);
+						Issue i = issueService.createIssue("BuggleInc", "PLM", issue);
 						JOptionPane.showMessageDialog(sendBtn, i18n.tr(
 								  "Thank you for your remark, we will do our best to integrate it.\n"
 								+ "Follow our progress at {0}.",i.getHtmlUrl()), i18n.tr("Thanks for your suggestion"), JOptionPane.INFORMATION_MESSAGE);
