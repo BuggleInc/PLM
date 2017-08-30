@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-08-30 02:33+0200\n"
+"POT-Creation-Date: 2017-08-30 10:34+0200\n"
 "PO-Revision-Date: 2015-11-10 21:13+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
@@ -1318,33 +1318,6 @@ msgstr ""
 "para entrar na sua casa sem marcar o chão). A lista completa de todas as "
 "instruções que o buggle entende pode ser encontrada em \"Ajuda/Sobre este "
 "mundo\"."
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:75
-msgid "After this exercise"
-msgstr "Depois deste exercício"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:76
-msgid ""
-"When switching to the next exercise, please note that there is a sub-"
-"exercise following this one.  By default, it is hidden in the menu and you "
-"have to open the sub-menu to see it.  When you switch the exercise, most of "
-"the exercises are hidden because the tree is folded, as follows:"
-msgstr ""
-"Quando for para o próximo exercício, observe que existe um sub-exercício "
-"depois deste.  Por padrão, ele fica escondido no menu e você tem que abrir o "
-"sub-menu para vê-lo. Quando você troca de exercício, a maioria dos "
-"exercícios fica escondida por que a árvore está recolhida, como segue:"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:81
-msgid ""
-"You have to click on the little symbol to the left of the buggle to unfold "
-"the tree, as follows:"
-msgstr ""
-"Você tem que clicar no pequeno símbolo a esquerda do buggle para expandir a "
-"árvore, como segue:"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:3
@@ -16780,6 +16753,27 @@ msgid ""
 msgstr ""
 "O botão <b>Marcar</b> pede que o seu \"buggle\" deixe uma marca atrás dele "
 "depois que sair."
+
+#~ msgid "After this exercise"
+#~ msgstr "Depois deste exercício"
+
+#~ msgid ""
+#~ "When switching to the next exercise, please note that there is a sub-"
+#~ "exercise following this one.  By default, it is hidden in the menu and "
+#~ "you have to open the sub-menu to see it.  When you switch the exercise, "
+#~ "most of the exercises are hidden because the tree is folded, as follows:"
+#~ msgstr ""
+#~ "Quando for para o próximo exercício, observe que existe um sub-exercício "
+#~ "depois deste.  Por padrão, ele fica escondido no menu e você tem que "
+#~ "abrir o sub-menu para vê-lo. Quando você troca de exercício, a maioria "
+#~ "dos exercícios fica escondida por que a árvore está recolhida, como segue:"
+
+#~ msgid ""
+#~ "You have to click on the little symbol to the left of the buggle to "
+#~ "unfold the tree, as follows:"
+#~ msgstr ""
+#~ "Você tem que clicar no pequeno símbolo a esquerda do buggle para expandir "
+#~ "a árvore, como segue:"
 
 #, fuzzy
 #~| msgid "How to do this?"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-08-30 02:33+0200\n"
+"POT-Creation-Date: 2017-08-30 10:34+0200\n"
 "PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1417,35 +1417,6 @@ msgid ""
 "instructions understood by your buggle can be found in \"Help/About this "
 "world\"."
 msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:75
-#, fuzzy
-#| msgid "Goal of this exercise"
-msgid "After this exercise"
-msgstr "Traguardo dell'esercizio"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:76
-msgid ""
-"When switching to the next exercise, please note that there is a sub-"
-"exercise following this one.  By default, it is hidden in the menu and you "
-"have to open the sub-menu to see it.  When you switch the exercise, most of "
-"the exercises are hidden because the tree is folded, as follows:"
-msgstr ""
-"Quando passerai al prossimo esercizio nota che ce n'è uno incluso "
-"all'interno di quello attuale. Di norma bisogna espandere la voce di menù "
-"per poterlo vedere. Al cambio di esercizio molti di questi saranno nascosti "
-"perché l'albero è contratto come nella figura seguente:"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:81
-msgid ""
-"You have to click on the little symbol to the left of the buggle to unfold "
-"the tree, as follows:"
-msgstr ""
-"Dovete cliccare sul piccolo simbolo a sinistra del buggle per espandere/"
-"collassare l'albero, come segue:"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:3
@@ -15708,6 +15679,29 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Goal of this exercise"
+#~ msgid "After this exercise"
+#~ msgstr "Traguardo dell'esercizio"
+
+#~ msgid ""
+#~ "When switching to the next exercise, please note that there is a sub-"
+#~ "exercise following this one.  By default, it is hidden in the menu and "
+#~ "you have to open the sub-menu to see it.  When you switch the exercise, "
+#~ "most of the exercises are hidden because the tree is folded, as follows:"
+#~ msgstr ""
+#~ "Quando passerai al prossimo esercizio nota che ce n'è uno incluso "
+#~ "all'interno di quello attuale. Di norma bisogna espandere la voce di menù "
+#~ "per poterlo vedere. Al cambio di esercizio molti di questi saranno "
+#~ "nascosti perché l'albero è contratto come nella figura seguente:"
+
+#~ msgid ""
+#~ "You have to click on the little symbol to the left of the buggle to "
+#~ "unfold the tree, as follows:"
+#~ msgstr ""
+#~ "Dovete cliccare sul piccolo simbolo a sinistra del buggle per espandere/"
+#~ "collassare l'albero, come segue:"
 
 #, fuzzy
 #~| msgid "How to do this?"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-08-30 02:33+0200\n"
+"POT-Creation-Date: 2017-08-30 10:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1017,27 +1017,6 @@ msgid ""
 "(e.g., to enter your house without marking its ground). The full list of all "
 "instructions understood by your buggle can be found in \"Help/About this "
 "world\"."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:75
-msgid "After this exercise"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:76
-msgid ""
-"When switching to the next exercise, please note that there is a "
-"sub-exercise following this one.  By default, it is hidden in the menu and "
-"you have to open the sub-menu to see it.  When you switch the exercise, most "
-"of the exercises are hidden because the tree is folded, as follows:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:81
-msgid ""
-"You have to click on the little symbol to the left of the buggle to unfold "
-"the tree, as follows:"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
