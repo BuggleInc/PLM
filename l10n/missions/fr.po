@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-08-30 10:34+0200\n"
-"PO-Revision-Date: 2017-08-30 02:38+0200\n"
+"POT-Creation-Date: 2017-08-31 23:50+0200\n"
+"PO-Revision-Date: 2017-09-01 00:02+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1017,7 +1017,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/environment/Environment.html:20
-#: src/lessons/welcome/instructions/Instructions.html:46
+#: src/lessons/welcome/instructions/Instructions.html:53
 #, no-wrap
 msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 msgstr "[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]"
@@ -1042,7 +1042,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:23
-#: src/lessons/welcome/instructions/Instructions.html:35
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
 #: src/lessons/welcome/loopfor/LoopFor.html:80
@@ -1107,42 +1106,52 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:9
 msgid ""
-"Programs are mainly suites of method calls, which are no more than a list of "
-"simple orders given to the machine. It is very similar to a recipe stating "
-"<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  In "
-"your programs, such built instructions are called functions or methods, and "
-"you should add parenthesis to invoke them:"
-msgstr ""
-"Le programme le plus simple est formé d'une suite d'ordres simples donnés à "
-"la machine. C'est assez comparable à une recette de cuisine où l'on dit "
-"<i>cassez les œufs puis ajoutez du sel puis mélangez le tout puis faites "
-"cuire</i>. Dans les programmes, de tels instructions  sont appelées "
-"fonctions ou méthodes, et vous devez les doter de parenthèses:"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:14
-#, no-wrap
-msgid "nameOfTheMethod()"
-msgstr "nomDeLaMethode()"
+"Our second program will be a bit more complicated, but not much. The goal "
+"for your buggle is simply to draw a house (a box), and hide inside. Check "
+"the objective world to see exactly what this means."
+msgstr "Notre second programme sera un peu plus compliqué, mais pas tellement. L'objectif de votre buggle est simplement de se dessiner une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif pour voir exactement ce que cela veut dire."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:16
+#: src/lessons/welcome/instructions/Instructions.html:14
 msgid ""
-"[!thelang] wants to have the instructions separated by semi-columns (;)[!"
-"python|scala] or by new lines[/!].  The previous example would thus be "
-"written in the following way[!python|scala] (you can also add semi-columns "
-"at the end of the lines, but this is not mandatory)[/!]."
+"For that, you will need <code>forward()</code>, <code>left()</code> and "
+"<code>right()</code>. Use your brush to mark the ground as you walk. Start "
+"marking the ground with <code>brushDown()</code>, and stop it with "
+"<code>brushUp()</code> afterward (e.g., to enter your house without marking "
+"its ground)."
 msgstr ""
-"[!thelang] veut que les instructions soient séparées [!python|scala]soit "
-"[/!]par des points-virgules (;)[!python|scala], soit par des retours à la "
-"ligne[/!].\n"
-"L'exemple ci-dessus de recette s'écrirait donc à peu près comme ci-"
-"dessous. \n"
-"[!python|scala] (Vous pouvez aussi ajouter des points-virgules en fin de "
-"lignes, mais ce n'est pas indispensable)[/!]."
+"Pour cela, vous aurez besoin de <code>avance()</code>,\n"
+"<code>gauche()</code> et <code>droite()</code>. Utilisez votre brosse pour marquer le sol en marchant. Commencez à marquer le sol avec <code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par exemple pour entrer dans votre maison sans marquer le sol)."
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/instructions/Instructions.html:20
+msgid "What exactly is a program?"
+msgstr "Qu'est exactement qu'un programme ?"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:22
+msgid ""
+"Programs are mainly suites of method calls, which are no more than a list of "
+"simple orders given to the machine. It is very similar to a recipe stating "
+"<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  [!"
+"thelang] wants to have the instructions separated by semi-columns (;)[!"
+"python|scala] or by new lines[/!], and followed by parenthesis. Our little "
+"receipe would thus be written in the following way[!python|scala] (you can "
+"also add semi-columns at the end of the lines, but this is not mandatory)"
+"[/!]."
+msgstr ""
+"Les programmes sont des enchaînements d'appels de méthodes, qui\n"
+"forment des listes d'ordres simples donnés à la machine. C'est assez\n"
+"comparable à une recette de cuisine où l'on dit <i>cassez les œufs\n"
+"puis ajoutez du sel puis mélangez le tout puis faites\n"
+"cuire</i>. En [!thelang], il faut séparer ces instructions par des\n"
+"symboles point-virgule (;)[!python|scala] ou par des retours à la\n"
+"ligne[/!], et suivis de parenthèses. Notre recette s'écrirait de la\n"
+"façon suivante [!python|scala](vous pourriez aussi ajouter des\n"
+"points-virgules à la fin des lignes, mais c'est optionel)[/!] :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:22
+#: src/lessons/welcome/instructions/Instructions.html:33
 #, no-wrap
 msgid ""
 "meltTheChocolatePieces()[!java|c];[/!]\n"
@@ -1155,58 +1164,40 @@ msgstr ""
 "melangerLeTout()[!java|c];[/!]\n"
 "faireCuire()[!java|c];[/!]\n"
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:28
-#: src/lessons/welcome/variables/Variables.html:145
-msgid "[!python|scala]"
-msgstr "[!python|scala]"
-
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:29
+#: src/lessons/welcome/instructions/Instructions.html:39
 msgid ""
-"It could also be written in the following way, but it's generally considered "
-"as a bad practice to group several instructions on the same line since it "
-"greatly hinders the readability."
+"Do not write it all on one line only even if the computer would accept it [!"
+"python|scala](provided that you don't omit the semi-columns)[/!]. This is a "
+"<b>really bad idea</b>, hindering the readability.  <i>Programs must be "
+"written for people to read, and only incidentally for machines to execute,</"
+"i> as said Harold Abelson."
 msgstr ""
-"Il serait également possible de l'écrire sous la forme suivante, mais placer "
-"plusieurs instructions sur la même ligne est généralement considéré comme "
-"une très mauvaise habitude car cela complique grandement la relecture du "
-"code après coup."
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:33
-#, no-wrap
-msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
-msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
+"N'écrivez pas tout sur la même ligne, même si cela ne fait aucune\n"
+"différence pour l'ordinateur[!python|scala] (si vous ajoutez les\n"
+"points-virgules)[/!]. C'est une <b>très mauvaise idée</b> car cela\n"
+"rend le code plus difficile à relire. Comme disait Harold Abelson,\n"
+"<i>les programmes doivent surtout être écrits pour être lisibles par\n"
+"les humains, et accessoirement pour être exécutables par les\n"
+"machines.</i>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:37
+#: src/lessons/welcome/instructions/Instructions.html:46
 msgid ""
-"Of course, these specific methods do not exist by default in [!thelang], but "
-"it may be possible to define them by yourself (we'll see later how to define "
-"your how methods)."
+"There is a limited set of instructions that buggles understand, and we will "
+"eventually learn how to define new ones. For now, there is a method for each "
+"button of the interactive control panel. To achieve the same effect than the "
+"<b>forward</b> button (making the buggle moving one step forward), you need "
+"to write the following in the editor:"
 msgstr ""
-"Bien entendu, ces méthodes n'existent pas en [!thelang], mais il serait "
-"possible de les définir par vous même (nous verrons plus tard comment "
-"définir vos propres méthodes)."
+"Les buggles peuvent comprendre un ensemble fini d'instructions (et\n"
+"nous verrons plus tard comment leur apprendre de nouveaux trucs). Il y\n"
+"a une méthode associée à chaque bouton du panneau de commande\n"
+"interactive.  Pour faire la même chose que le bouton <b>avance</b>\n"
+"(faire avancer la buggle d'un pas), il faut écrire dans l'éditeur :"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:41
-msgid ""
-"For now, we'll simply go for the buggle instructions. There is a method for "
-"each button of the interactive control panel. To achieve the same effect "
-"than the <b>forward</b> button (making the buggle moving one step forward), "
-"you need to write the following in the editor:"
-msgstr ""
-"Pour l'instant, nous allons utiliser les instructions de la buggle. Il\n"
-"y a une méthode pour chaque bouton du contrôle interactif.  Pour faire la "
-"même\n"
-"chose que le bouton <b>avance</b> (faire avancer la buggle d'un pas), il "
-"faut\n"
-"écrire dans l'éditeur :"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:47
+#: src/lessons/welcome/instructions/Instructions.html:54
 msgid ""
 "Likewise, to achieve the same effect than the <b>[!java|scala|"
 "python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and <b>right</b> "
@@ -1217,7 +1208,7 @@ msgstr ""
 "faut utiliser respectivement :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:50
+#: src/lessons/welcome/instructions/Instructions.html:58
 #, no-wrap
 msgid ""
 "backward()[!java|c];[/!]\n"
@@ -1229,7 +1220,7 @@ msgstr ""
 "droite()[!java|c];[/!]\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:55
+#: src/lessons/welcome/instructions/Instructions.html:63
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
@@ -1238,7 +1229,7 @@ msgstr ""
 "méthodes : la première lève le crayon, tandis que la seconde le baisse."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/instructions/Instructions.html:58
+#: src/lessons/welcome/instructions/Instructions.html:67
 #, no-wrap
 msgid ""
 "brushUp()[!java|c];[/!]\n"
@@ -1248,61 +1239,13 @@ msgstr ""
 "baisseBrosse()[!java|c];[/!]\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:61
+#: src/lessons/welcome/instructions/Instructions.html:71
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
 msgstr ""
 "La buggle offre d'autres méthodes, présentées dans le menu \"Aide/À propos "
 "de ce monde\". Elles seront introduites au fur et à mesure des besoins."
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:65
-#: src/lessons/welcome/conditions/Conditions.html:109
-#: src/lessons/welcome/loopwhile/LoopWhile.html:35
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:9
-#: src/lessons/welcome/variables/Variables.html:119
-#: src/lessons/welcome/loopfor/LoopFor.html:82
-#: src/lessons/welcome/methods/basics/Methods.html:96
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
-#: src/lessons/welcome/methods/args/MethodsArgs.html:70
-#: src/lessons/welcome/methods/slug/SlugHunting.html:19
-#: src/lessons/welcome/methods/slug/SlugTracking.html:23
-#: src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132
-#: src/lessons/maze/wallfollower/WallFollowerMaze.html:18
-#: src/lessons/maze/pledge/PledgeMaze.html:37
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
-#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
-msgid "Exercise goal"
-msgstr "Objectif de cet exercice"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:65
-msgid ""
-"<a name=\"Objectives\"/> Our second program will be a bit more complicated, "
-"but not much. The goal for your buggle is simply to draw a house (a box), "
-"and hide inside. Check the objective world to see exactly what this means."
-msgstr ""
-"<a name=\"Objectives\"/> Notre second programme sera un peu plus compliqué, "
-"mais pas tellement. L'objectif de votre buggle est simplement de se dessiner "
-"une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif "
-"pour voir exactement ce que cela veut dire."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/Instructions.html:70
-msgid ""
-"Use your brush to mark the ground as you walk. Start marking the ground with "
-"<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward "
-"(e.g., to enter your house without marking its ground). The full list of all "
-"instructions understood by your buggle can be found in \"Help/About this "
-"world\"."
-msgstr ""
-"Utilisez votre brosse pour marquer le sol en marchant. Commencez à marquer "
-"le sol avec <code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</"
-"code> (par exemple pour entrer dans votre maison sans marquer le sol). La "
-"liste complète des instructions comprises par votre buggle est accessible "
-"dans le menu \"Aide/À propos de ce monde\"."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:3
@@ -1737,6 +1680,26 @@ msgid ""
 msgstr ""
 "N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau "
 "bloc débute."
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/conditions/Conditions.html:109
+#: src/lessons/welcome/loopwhile/LoopWhile.html:35
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:9
+#: src/lessons/welcome/variables/Variables.html:119
+#: src/lessons/welcome/loopfor/LoopFor.html:82
+#: src/lessons/welcome/methods/basics/Methods.html:96
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
+#: src/lessons/welcome/methods/args/MethodsArgs.html:70
+#: src/lessons/welcome/methods/slug/SlugHunting.html:19
+#: src/lessons/welcome/methods/slug/SlugTracking.html:23
+#: src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:18
+#: src/lessons/maze/pledge/PledgeMaze.html:37
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+msgid "Exercise goal"
+msgstr "Objectif de cet exercice"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/conditions/Conditions.html:109
@@ -2410,6 +2373,11 @@ msgstr ""
 "l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1 "
 "(<code>nbPas = nbPas + 1;</code>[!java|c] ou <code>nbPas++;</code>, les deux "
 "écritures sont équivalentes[/!])."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/variables/Variables.html:145
+msgid "[!python|scala]"
+msgstr "[!python|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:146
@@ -17065,28 +17033,6 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
-
-#~ msgid "After this exercise"
-#~ msgstr "Après cet exercice"
-
-#~ msgid ""
-#~ "When switching to the next exercise, please note that there is a sub-"
-#~ "exercise following this one.  By default, it is hidden in the menu and "
-#~ "you have to open the sub-menu to see it.  When you switch the exercise, "
-#~ "most of the exercises are hidden because the tree is folded, as follows:"
-#~ msgstr ""
-#~ "Quand vous changerez d'exercice, n'oubliez pas l'exercice d'application "
-#~ "qui suit. Par défaut, il n'est pas visible dans la fenêtre de sélection, "
-#~ "et il faut ouvrir le sous-arbre pour le voir. Lorsque vous ouvrez la "
-#~ "fenêtre de sélection des exercices, la plupart d'entre eux sont cachés, "
-#~ "comme cela:"
-
-#~ msgid ""
-#~ "You have to click on the little symbol to the left of the buggle to "
-#~ "unfold the tree, as follows:"
-#~ msgstr ""
-#~ "Vous devez cliquer sur le petit symbole à gauche de la buggle pour "
-#~ "déplier l'arbre, comme cela :"
 
 #~ msgid ""
 #~ "This <b>experimental</b> lesson aims at teaching students about "

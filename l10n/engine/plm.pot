@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 10:39+0200\n"
+"POT-Creation-Date: 2017-08-31 15:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -541,32 +541,32 @@ msgid ""
 "Exception message: {1}\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:166
+#: src/plm/core/model/Game.java:167
 msgid "Scala is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:168
+#: src/plm/core/model/Game.java:169
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:170
+#: src/plm/core/model/Game.java:171
 msgid "Jython is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:172
+#: src/plm/core/model/Game.java:173
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:174
+#: src/plm/core/model/Game.java:175
 msgid "C is usable on your machine. Congratulations."
 msgstr ""
 
-#: src/plm/core/model/Game.java:176
+#: src/plm/core/model/Game.java:177
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:183
+#: src/plm/core/model/Game.java:184
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -579,80 +579,80 @@ msgid ""
 "({2}/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:189
+#: src/plm/core/model/Game.java:190
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:192
+#: src/plm/core/model/Game.java:193
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:195
+#: src/plm/core/model/Game.java:196
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:214
+#: src/plm/core/model/Game.java:215
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below"
 msgstr ""
 
-#: src/plm/core/model/Game.java:240
+#: src/plm/core/model/Game.java:241
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:249
+#: src/plm/core/model/Game.java:250
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 
-#: src/plm/core/model/Game.java:274
+#: src/plm/core/model/Game.java:275
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:313
+#: src/plm/core/model/Game.java:314
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:315
+#: src/plm/core/model/Game.java:316
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:350 src/plm/core/model/Game.java:351
+#: src/plm/core/model/Game.java:351 src/plm/core/model/Game.java:352
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/plm/core/model/Game.java:352
+#: src/plm/core/model/Game.java:353
 #, java-format
 msgid "Load lesson {0}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:368
+#: src/plm/core/model/Game.java:369
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
 
-#: src/plm/core/model/Game.java:369
+#: src/plm/core/model/Game.java:370
 msgid "Broken lesson"
 msgstr ""
 
-#: src/plm/core/model/Game.java:501
+#: src/plm/core/model/Game.java:505
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -660,48 +660,48 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:509
+#: src/plm/core/model/Game.java:513
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/plm/core/model/Game.java:551
+#: src/plm/core/model/Game.java:588
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:979
+#: src/plm/core/model/Game.java:1016
 msgid ""
 "Please install Scala version 2.10 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:980
+#: src/plm/core/model/Game.java:1017
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:984
+#: src/plm/core/model/Game.java:1021
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:985
+#: src/plm/core/model/Game.java:1022
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:989
+#: src/plm/core/model/Game.java:1026
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:990
+#: src/plm/core/model/Game.java:1027
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:995
+#: src/plm/core/model/Game.java:1032
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -710,7 +710,7 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:999
+#: src/plm/core/model/Game.java:1036
 msgid "C is still experimental"
 msgstr ""
 
@@ -1568,25 +1568,25 @@ msgstr ""
 msgid "Lesson related functions"
 msgstr ""
 
-#: src/plm/core/ui/MissionEditorTabs.java:94
+#: src/plm/core/ui/MissionEditorTabs.java:72
 msgid "Mission"
 msgstr ""
 
-#: src/plm/core/ui/MissionEditorTabs.java:95
+#: src/plm/core/ui/MissionEditorTabs.java:73
 msgid "Description of the work to do"
 msgstr ""
 
 #. Create the tab with the code editor as content
-#: src/plm/core/ui/MissionEditorTabs.java:164
+#: src/plm/core/ui/MissionEditorTabs.java:142
 msgid "Type your code here"
 msgstr ""
 
-#: src/plm/core/ui/PlmHtmlEditorKit.java:320
+#: src/plm/core/ui/PlmHtmlEditorKit.java:345
 #, java-format
 msgid "<img> tag without src attribute at offset {0}."
 msgstr ""
 
-#: src/plm/core/ui/PlmHtmlEditorKit.java:322
+#: src/plm/core/ui/PlmHtmlEditorKit.java:347
 #, java-format
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
 msgstr ""

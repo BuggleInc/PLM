@@ -1,22 +1,33 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Instructions</h2>
 
-Congratulations! You just wrote your first program! You got the idea now: 
-programming is nothing more than giving simple instructions to the computer that 
-blindly apply them. The main difficulty is to explain stuff to something as stupid 
-as a computer...  
-  
-  <p>Programs are mainly suites of method calls, which are no more than a list of
-   simple orders given to the machine. It is very similar to a recipe stating
-   <i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. 
-   In your programs, such built instructions are called functions or methods, and you 
-   should add parenthesis to invoke them:</p>  
-		<pre>nameOfTheMethod()</pre>
-		
-   <p>[!thelang] wants to have the instructions separated by semi-columns 
-    (;)[!python|scala] or by new lines[/!].
-    The previous example would thus be written in the following 
-    way[!python|scala] (you can also add semi-columns at the end of the lines, but this is not mandatory)[/!].</p>
+Congratulations! You just wrote your first program! You got the idea
+now: programming is nothing more than giving simple instructions to
+the computer that blindly apply them. The main difficulty is to
+explain stuff to something as stupid as a computer...
+
+<p>Our second program will be a bit more complicated, but not
+  much. The goal for your buggle is simply to draw a house (a box),
+  and hide inside. Check the objective world to see exactly what this
+  means.</p>
+
+<p>For that, you will need <code>forward()</code>, <code>left()</code>
+  and <code>right()</code>. Use your brush to mark the ground as you
+  walk. Start marking the ground with <code>brushDown()</code>, and
+  stop it with <code>brushUp()</code> afterward (e.g., to enter your
+  house without marking its ground).</p>
+
+<h3>What exactly is a program?</h3>
+
+<p>Programs are mainly suites of method calls, which are no more than
+  a list of simple orders given to the machine. It is very similar to
+  a recipe stating <i>Melt the chocolate pieces, add sugar, cool the
+  mix and serve</i>.  [!thelang] wants to have the instructions
+  separated by semi-columns (;)[!python|scala] or by new lines[/!],
+  and followed by parenthesis. Our little receipe would thus be
+  written in the following way[!python|scala] (you can also add
+  semi-columns at the end of the lines, but this is not
+  mandatory)[/!].</p>
     
 <pre>
 meltTheChocolatePieces()[!java|c];[/!]
@@ -25,26 +36,23 @@ coolMix()[!java|c];[/!]
 serve()[!java|c];[/!]
 </pre>
     
-[!python|scala]
-   <p>It could also be written in the following way, but it's generally considered as a bad 
-   practice to group several instructions on the same line since it greatly hinders the 
-   readability.</p>
-<pre>
-meltTheChocolatePieces(); addSugar(); coolMix(); serve()
-</pre>
-[/!]
+<p>Do not write it all on one line only even if the computer would
+  accept it [!python|scala](provided that you don't omit the
+  semi-columns)[/!]. This is a <b>really bad idea</b>, hindering the
+  readability.  <i>Programs must be written for people to read, and
+  only incidentally for machines to execute,</i> as said Harold
+  Abelson.</p>
 
-  <p>Of course, these specific methods do not exist by default in [!thelang],
-  but it may be possible to define them by yourself (we'll see later how to 
-  define your how methods).</p>
-  
-  <p>For now, 
-  we'll simply go for the buggle instructions. There is a method for each button of the 
-  interactive control panel. To achieve the same effect than the <b>forward</b> button 
-  (making the buggle moving one step forward), you need to write the following in the
+<p>There is a limited set of instructions that buggles understand, and
+  we will eventually learn how to define new ones. For now, there is a
+  method for each button of the interactive control panel. To achieve
+  the same effect than the <b>forward</b> button (making the buggle
+  moving one step forward), you need to write the following in the
   editor: </p>
-  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
-  <p>Likewise, to achieve the same effect than the <b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b>
+
+<pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+<p>Likewise, to achieve the same effect than
+  the <b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b>
   and <b>right</b> buttons, you need to use respectively:</p>
 <pre>
 backward()[!java|c];[/!]
@@ -52,22 +60,14 @@ left()[!java|c];[/!]
 right()[!java|c];[/!]
 </pre>
 
-	 <p>The <b>mark</b> button is a bit particular, since it correspond to two
-methods: the first one moves the pen up while the second moves it down.</p>
+<p>The <b>mark</b> button is a bit particular, since it correspond to
+  two methods: the first one moves the pen up while the second moves
+  it down.</p>
 <pre>
 brushUp()[!java|c];[/!]
 brushDown()[!java|c];[/!]
 </pre>
-  <p>The buggle offers other methods, that are presented from the "Help/about
-   this world" menu and will be introduced on need.</p>
 
+<p>The buggle offers other methods, that are presented from the
+   "Help/about this world" menu and will be introduced on need.</p>
 
-  <h3>Exercise goal</h3><a name="Objectives"/>
-  Our second program will be a bit more complicated, but not much. The goal for 
-  your buggle is simply to draw a house (a box), and hide inside. Check the 
-  objective world to see exactly what this means. 
-
-  <p>Use your brush to mark the ground as you walk. Start marking the ground with 
-  <code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward 
-  (e.g., to enter your house without marking its ground). The full list of all 
-  instructions understood by your buggle can be found in "Help/About this world".</p>
