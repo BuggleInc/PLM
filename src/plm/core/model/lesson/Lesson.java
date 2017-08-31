@@ -118,7 +118,7 @@ public abstract class Lesson {
 		return about;
 	}
 
-	Lecture rootExo, lastAdded;
+	Lecture rootExo;
 	public Vector<Lecture> getRootLectures() {
 		return rootLectures;
 	}
@@ -128,7 +128,6 @@ public abstract class Lesson {
 		if (rootExo == null) {
 			rootExo = exo;
 		}
-		lastAdded = exo;
 		return exo;
 	}
 	public Lecture addExercise(Lecture exo, Lecture previousExo) {
@@ -137,7 +136,6 @@ public abstract class Lesson {
 		if (rootExo == null) {
 			rootExo = exo;
 		}
-		lastAdded = exo;
 		previousExo.dependingLectures.add(exo);
 		return exo;
 	}
