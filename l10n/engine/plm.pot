@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-31 15:10+0200\n"
+"POT-Creation-Date: 2017-09-01 00:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1211,13 +1211,13 @@ msgstr ""
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
-"passed)<br>Which exercise will you do now?</html>"
+"passed)<br><br><br>Select your next exercise:</html>"
 msgstr ""
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
 msgid ""
-"<html>Congratulations, you passed this exercise.<br>Which exercise will you "
-"do now?</html>"
+"<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
+"next exercise:</html>"
 msgstr ""
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-31 15:10+0200\n"
+"POT-Creation-Date: 2017-09-01 00:23+0200\n"
 "PO-Revision-Date: 2015-11-10 21:38+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
@@ -1411,19 +1411,20 @@ msgid "<html>Congratulations, you passed this exercise.</html>"
 msgstr "<html>Parabéns, você passou deste exercício.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:59
-#, java-format
+#, fuzzy, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
-"passed)<br>Which exercise will you do now?</html>"
+"passed)<br><br><br>Select your next exercise:</html>"
 msgstr ""
-"<html>Parabéns, você passou neste exercício.<br>({0} testes feitos)<br>Que "
-"exercício você vai fazer agora?</html>"
+"<html>Parabéns, você passou deste exercício.<br>{0} testes feitos.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
+#, fuzzy
 msgid ""
-"<html>Congratulations, you passed this exercise.<br>Which exercise will you "
-"do now?</html>"
+"<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
+"next exercise:</html>"
 msgstr ""
+"<html>Parabéns, você passou deste exercício.<br>{0} testes feitos.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid "Give feedback"
@@ -2720,6 +2721,13 @@ msgstr ""
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr ""
+
+#~ msgid ""
+#~ "<html>Congratulations, you passed this exercise.<br>({0} tests "
+#~ "passed)<br>Which exercise will you do now?</html>"
+#~ msgstr ""
+#~ "<html>Parabéns, você passou neste exercício.<br>({0} testes "
+#~ "feitos)<br>Que exercício você vai fazer agora?</html>"
 
 #~ msgid "Load lesson"
 #~ msgstr "Carregar lição"

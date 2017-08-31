@@ -129,8 +129,24 @@ public abstract class Lecture {
 		}
 		return myNode;
 	}
-	public Vector<Lecture> getDependingLectures() {
-		return dependingLectures;
+	public Vector<Lecture> getNextLectures() {
+		if (!dependingLectures.isEmpty())
+			return dependingLectures;
+		Vector<Lecture> res = new Vector<Lecture>();
+		boolean found = false;
+		for (Lecture l : Game.getInstance().getCurrentLesson().exercises()) {
+			if (found) { // previous loop iteration found the current exo. I'm now seeing the next one
+				res.add(l); // Return this next exo.
+				return res;
+			}
+			if (l.equals(this))
+				found = true;
+		}
+		// Being here is OK only if "this" is the last of its lesson
+		if (!found) { 
+			System.err.println("Current exercise not part of current lesson while searching for the next thing to do.");
+		}
+		return res;
 	}
 	public String getLocalId() {
 		return localId;

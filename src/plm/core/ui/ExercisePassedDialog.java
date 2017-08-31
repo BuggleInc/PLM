@@ -38,7 +38,7 @@ public class ExercisePassedDialog extends JDialog {
 		congratsPane.setLayout(new MigLayout("fill"));
 		
 		JLabel msg = new JLabel();		
-		Vector<Lecture> nextExercises =  exo.getDependingLectures();	
+		Vector<Lecture> nextExercises =  exo.getNextLectures();	
 		final JComboBox<Lecture> exoChooser = nextExercises.isEmpty()? null : new JComboBox<Lecture>(nextExercises);
 		
 		if ( nextExercises.size() == 0) {
@@ -56,15 +56,15 @@ public class ExercisePassedDialog extends JDialog {
 		} else {
 			
 			if (exo.lastResult.passedTests > 1) {
-				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)<br>Which exercise will you do now?</html>",
+				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)<br><br><br>Select your next exercise:</html>",
 								exo.lastResult.passedTests)); 
 			} else {
-				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>Which exercise will you do now?</html>"));
+				msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br><br><br><br>Select your next exercise:</html>"));
 			}
 			
 			congratsPane.add(new JLabel( ResourcesCache.getIcon("img/trophy.png") ), "spany 2");
 			congratsPane.add(msg, "wrap,grow,aligny 50%");
-			congratsPane.add(exoChooser,"wrap,alignx 50%");
+			congratsPane.add(exoChooser,"wrap,alignx 50%,aligny 5%");
 		}
 		
 		/* ------------ The feedback panel ------------ */
