@@ -1,4 +1,4 @@
-2017(not released): 2.7
+20170901: 2.7
 
   The Pragmatic and thus Despicable release.
   
@@ -10,15 +10,16 @@
     - Link identities (the target server was turned off)
     - "Call for Help" button
     - Switch Course (no course server anymore)
-    
   * Unclutter the interface
     - Remove the "load exercise" menu. Redundent with choose box, and
       not really useful anyway since no loadable exercise exist.
-    - Rewrite the first exercise to fit in one page only
     - Restart for the last used exercise automatically
-    
+    - Display a "next exo" on success even if there is no child exo
   * Fix broken features
     - Bug report should work again
+  * Pedagogical content:
+    - Rewrite some exercises' mission text to fit in one page only
+
 
 
 20151010: 2.6
