@@ -1,3 +1,11 @@
+20170902: 2.7.1
+
+  The first Payload of fixes.
+  
+  * Worlds:
+    - Buggle/Python: Let the translation play nice with the exercises
+      forbidding forward() with a parameter.
+
 20170901: 2.7
 
   The Pragmatic and thus Despicable release.

@@ -499,9 +499,15 @@ public class BuggleWorld extends GridWorld {
 				
 				/* BINDINGS TRANSLATION: French */
 				"def avance(pas=1):\n"+
-				"	forward(pas)\n"+
+				"	if pas == 1:\n"+
+				"		forward()\n"+
+				"	else:\n"+
+				"		forward(pas)\n"+
 				"def recule(pas=1):\n"+
-				"	backward(pas)\n"+
+				"	if pas == 1:\n"+
+				"		backward()\n"+
+				"	else:\n"+
+				"		backward(pas)\n"+
 				"def gauche():\n"+
 				"	left()\n"+
 				"def retourne():\n"+
