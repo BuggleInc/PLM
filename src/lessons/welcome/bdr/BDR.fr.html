@@ -32,15 +32,18 @@ les <tt>if</tt> comme dans l'exemple suivant. </p>
 <pre>if (estSurBiscuit())    
      if (x == 5)
           gauche();
-else
+else // N'écrivez pas les choses ainsi, c'est trompeur
      droite();
 [!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
 
-<p>En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET
-que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une
-autre valeur. Autrement dit, la buggle lit le code précédent comme suit
-(notez que le <tt>else</tt> est décalé vers la droite par rapport à
-précédemment) :</p>
+<p>Vous pensez que <code>droite()</code> se réfère au premier
+<code>if</code> et qu'il sera exécuté quand
+<code>estSurBiscuit()</code> renvoie faux, mais en fait il se ratache
+au premier <code>if</code> et sera exécuté quand
+<code>estSurBiscuit()</code> renvoie vrai et que <code>x !=
+5</code>. Oui, malgré l'indentation, la buggle comprend le code
+précédent comme suit:</p>
+  
 <pre>if (estSurBiscuit())    
         if (x == 5)
             gauche();
@@ -48,23 +51,21 @@ précédemment) :</p>
             droite();
 [!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
 
-<p>La première leçon, c'est que l'indentation est très importante pour que les
-humains puissent comprendre le code, mais elle ne change pas la
-signification du code pour la machine. On aurait tout aussi bien pu écrire
-le code suivant et obtenir le même résultat. Mais attention, si on veut
-qu'un humain puisse relire le code, l'indentation est quasi
-indispensable. C'est par exemple le cas si votre code doit être relu par un
-professeur (pour qu'il le note ou pour lui poser une question), ou si vous
-comptez réutiliser votre code plus tard, ou même si vous devez debugger
-votre propre code après l'avoir écrit.</p> 
+<p>En [!thelang], l'ordinateur connecte une branche <code>else</code> au
+<code>if</code> le plus proche. Si vous trouvez cela ambigu, n'hésitez
+pas à mettre plus de parenthèses que strictement nécessaire pour
+rendre votre code lisible. Les ordinateurs ne regardent même pas
+l'indentation en [!thelang], et le code précédent pourrait même être
+écrit de la manière suivante :</p>
 
 <pre>if (estSurBiscuit()) if (x == 5) gauche(); else droite(); [!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
 
-<p>La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours
-au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il
-est préférable d'ajouter plus d'accolades que nécessaire pour lever toute
-ambiguïté.</p>
-[/!]
+<p>Mais pour les humains, <b>il est indispensable d'indenter son code
+correctement</b>. Cela vaut si vous voulez qu'un enseignant relise
+voire note votre code, si vous comptez réutiliser votre code plus
+tard, ou même si vous devez debugger votre propre code après l'avoir
+écrit. Exactement. Vous devez écrire du code lisible pour votre propre
+confort.</p>  [/!]
 
 <h3>Enchaînements de conditionnelles</h3>
 

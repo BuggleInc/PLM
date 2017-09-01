@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-09-01 21:52+0200\n"
+"POT-Creation-Date: 2017-09-01 22:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -843,7 +843,7 @@ msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:21 src/lessons/welcome/loopfor/LoopFor.html:57 src/lessons/welcome/bdr/BDR.html:188
+#: src/lessons/welcome/environment/Environment.html:21 src/lessons/welcome/loopfor/LoopFor.html:57 src/lessons/welcome/bdr/BDR.html:189
 msgid "[!java|c]"
 msgstr ""
 
@@ -856,7 +856,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:23 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet2.html:25 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:23 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet2.html:25 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:61 src/lessons/welcome/bdr/BDR.html:196 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -1288,7 +1288,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:151 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
@@ -4327,23 +4327,24 @@ msgid ""
 "if (isOverBaggle())    \n"
 "     if (x == 5)\n"
 "          left();\n"
-"else\n"
-"     right();\n"
+"else // Do not write it this way, it's misleading!\n"
+"     right(); \n"
 "[!c]stepForward();[/!][!java|scala]forward();[/!]"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:35
 msgid ""
-"In fact, it does not turn right when there is no baggle on the ground AND x "
-"equals 5, but when the buggle found a baggle on the ground and x equals "
-"anything but 5. Putting this otherwise, the buggle understands the previous "
-"code as if it were written the following way (note that the <tt>else</tt> "
-"were moved to the right):"
+"You think that <code>right()</code> refers to the first <code>if</code> and "
+"get executed when <code>isOverBaggle()</code> returns false, but in fact, it "
+"refers to the second one <code>if</code> and will be executed when "
+"<code>isOverBaggle()</code> returns true and <code>x != 5</code>. Yes, "
+"despite the indentation, the buggle understands the previous code as "
+"follows:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:40
+#: src/lessons/welcome/bdr/BDR.html:42
 #, no-wrap
 msgid ""
 "if (isOverBaggle())    \n"
@@ -4355,16 +4356,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:47
+#: src/lessons/welcome/bdr/BDR.html:49
 msgid ""
-"The first lesson of this is that the indentation is very important to help "
-"humans understanding, even if it does not change the actual meaning of the "
-"code. We could have written the following code and obtain the same "
-"result. But if you want a human to read and review your code, you really "
-"want to indent it correctly. That's for example the case if you want a "
-"professor to read it (to grade it or to answer a question about it), or if "
-"you want to reuse your code later, or even if you need to debug your code "
-"yourself."
+"In [!thelang] the computer connects a <tt>else</tt> branch to the closest "
+"<tt>if</tt>. If you find it ambiguous, you should add more braces than "
+"strictly necessary. Computers don't even look at the indentation in "
+"[!thelang]. The previous code could even be written as follows and lead to "
+"the same result."
 msgstr ""
 
 #. type: Content of: <pre>
@@ -4378,23 +4376,25 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:57
 msgid ""
-"The second lesson is that a <tt>else</tt> branch always connects to the "
-"closest <tt>if</tt>. This may be a bit troublesome in some case, and it may "
-"be easier to add more braces than strictly needed to remove any ambiguity."
+"But for humans, <b>you really want to indent your code correctly "
+"correctly</b>. For example if you want a professor to review or even grade "
+"your code, if you want to reuse your own code later, or even if you need to "
+"debug it. That is right: you need to write readable code for your own "
+"comfort."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:62
+#: src/lessons/welcome/bdr/BDR.html:63
 msgid "Chaining conditionals"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:64
+#: src/lessons/welcome/bdr/BDR.html:65
 msgid "You sometimes want to ask the buggle something similar to:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:65
+#: src/lessons/welcome/bdr/BDR.html:66
 #, no-wrap
 msgid ""
 "if it's raining, take an umbrella;\n"
@@ -4403,7 +4403,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:69
+#: src/lessons/welcome/bdr/BDR.html:70
 msgid ""
 "The trap is that we want at most one of these actions to be taken. That is "
 "to say, if it's raining a very hot July 4th, we don't want the buggle to get "
@@ -4412,7 +4412,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:74
+#: src/lessons/welcome/bdr/BDR.html:75
 #, no-wrap
 msgid ""
 "[!scala|c|java]if (rainy())\n"
@@ -4429,7 +4429,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:87
+#: src/lessons/welcome/bdr/BDR.html:88
 msgid ""
 "Indeed, since the conditions are evaluated one after the other, there is a "
 "risk that you go to the July 4th march on a rainy day. Instead, we should "
@@ -4438,7 +4438,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:92
+#: src/lessons/welcome/bdr/BDR.html:93
 #, no-wrap
 msgid ""
 "[!java|scala|c]if (rainy()) {\n"
@@ -4462,7 +4462,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:112
+#: src/lessons/welcome/bdr/BDR.html:113
 msgid ""
 "Unfortunately, such a cascade of conditionals is quite difficult to read. It "
 "is better to [!java|scala|c]omit the curly braces for the <tt>else</tt> "
@@ -4473,7 +4473,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:119
+#: src/lessons/welcome/bdr/BDR.html:120
 #, no-wrap
 msgid ""
 "[!c|java|scala]if (rainy()) { \n"
@@ -4491,19 +4491,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:132
+#: src/lessons/welcome/bdr/BDR.html:133
 msgid "Graffiti in the Buggle World"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:134
+#: src/lessons/welcome/bdr/BDR.html:135
 msgid ""
 "Buggles can tag graffitis on the ground of their world. For that, they use "
 "the four following methods:"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:138
+#: src/lessons/welcome/bdr/BDR.html:139
 msgid ""
 "<code>[!c]int[/!][!java]boolean[/!] "
 "isOverMessage()[!scala]:Boolean[/!]</code>: returns "
@@ -4512,7 +4512,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:141
+#: src/lessons/welcome/bdr/BDR.html:142
 msgid ""
 "<code>[!c]char*[/!][!java]String[/!] readMessage()[!scala]: "
 "String[/!]</code>: returns the message written on the ground (or an empty "
@@ -4520,7 +4520,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:143
+#: src/lessons/welcome/bdr/BDR.html:144
 msgid ""
 "<code>[!java|c]void[/!] writeMessage([!c]char*[/!][!java]String "
 "[/!]msg[!scala]: String[/!])</code>: writes the specified message down on "
@@ -4529,14 +4529,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:146
+#: src/lessons/welcome/bdr/BDR.html:147
 msgid ""
 "<code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the "
 "ground."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:150
+#: src/lessons/welcome/bdr/BDR.html:151
 msgid ""
 "The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
@@ -4545,179 +4545,179 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:156 src/lessons/welcome/bdr/BDR2.html:139
+#: src/lessons/welcome/bdr/BDR.html:157 src/lessons/welcome/bdr/BDR2.html:139
 msgid "Message"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:157 src/lessons/welcome/bdr/BDR2.html:140
+#: src/lessons/welcome/bdr/BDR.html:158 src/lessons/welcome/bdr/BDR2.html:140
 msgid "What to do"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:158
+#: src/lessons/welcome/bdr/BDR.html:159
 msgid "Mnemonic"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:160 src/lessons/welcome/bdr/BDR2.html:142
+#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:142
 msgid "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:160 src/lessons/welcome/bdr/BDR2.html:142
+#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:142
 msgid "Turn right and move one step forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:160
+#: src/lessons/welcome/bdr/BDR.html:161
 msgid "Right"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:143
+#: src/lessons/welcome/bdr/BDR.html:162 src/lessons/welcome/bdr/BDR2.html:143
 msgid "[!java|c]'L'[/!][!scala|python]\"L\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:143
+#: src/lessons/welcome/bdr/BDR.html:162 src/lessons/welcome/bdr/BDR2.html:143
 msgid "Turn left and move one step forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:161
+#: src/lessons/welcome/bdr/BDR.html:162
 msgid "Left"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:162 src/lessons/welcome/bdr/BDR2.html:144
+#: src/lessons/welcome/bdr/BDR.html:163 src/lessons/welcome/bdr/BDR2.html:144
 msgid "[!java|c]'I'[/!][!scala|python]\"I\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:162
+#: src/lessons/welcome/bdr/BDR.html:163
 msgid "Turn back (U-turn) and move one step forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:162
+#: src/lessons/welcome/bdr/BDR.html:163
 msgid "Inverse"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:164 src/lessons/welcome/bdr/BDR2.html:146
+#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:146
 msgid "[!java|c]'A'[/!][!scala|python]\"A\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:164 src/lessons/welcome/bdr/BDR2.html:146
+#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:146
 msgid "Move one step forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:164
+#: src/lessons/welcome/bdr/BDR.html:165
 msgid "First letter of the alphabet"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:147
+#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:147
 msgid "[!java|c]'B'[/!][!scala|python]\"B\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:147
+#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:147
 msgid "Move two steps forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:165
+#: src/lessons/welcome/bdr/BDR.html:166
 msgid "Second letter of the alphabet"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:148
+#: src/lessons/welcome/bdr/BDR.html:167 src/lessons/welcome/bdr/BDR2.html:148
 msgid "[!java|c]'C'[/!][!scala|python]\"C\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:148
+#: src/lessons/welcome/bdr/BDR.html:167 src/lessons/welcome/bdr/BDR2.html:148
 msgid "Move three steps forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:166
+#: src/lessons/welcome/bdr/BDR.html:167
 msgid "Third letter of the alphabet"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:168 src/lessons/welcome/bdr/BDR2.html:153
+#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:153
 msgid "[!java|c]'Z'[/!][!scala|python]\"Z\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:168 src/lessons/welcome/bdr/BDR2.html:153
+#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:153
 msgid "Move one step backward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:168
+#: src/lessons/welcome/bdr/BDR.html:169
 msgid "One letter before the end of the alphabet"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:154
+#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:154
 msgid "[!java|c]'Y'[/!][!scala|python]\"Y\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:154
+#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:154
 msgid "Move two steps backward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:169
+#: src/lessons/welcome/bdr/BDR.html:170
 msgid "Two letters before the end of the alphabet"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:155
+#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:155
 msgid "[!java|c]'X'[/!][!scala|python]\"X\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:155
+#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:155
 msgid "Move three steps backward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:170
+#: src/lessons/welcome/bdr/BDR.html:171
 msgid "Three letters before the end of the alphabet"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:159
+#: src/lessons/welcome/bdr/BDR.html:172 src/lessons/welcome/bdr/BDR2.html:159
 msgid "<i>(anything else)</i>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:159
+#: src/lessons/welcome/bdr/BDR.html:172 src/lessons/welcome/bdr/BDR2.html:159
 msgid "Stop dancing."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:174
+#: src/lessons/welcome/bdr/BDR.html:175
 msgid "Indications"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:176
+#: src/lessons/welcome/bdr/BDR.html:177
 msgid ""
 "This exercise may seem a bit complex at the first glance, but it comes down "
 "to summarizing the information of the table in a sequence of conditionals."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:179
+#: src/lessons/welcome/bdr/BDR.html:180
 msgid ""
 "You have to keep dancing as long as there is some dancing steps to do, i.e., "
 "as long as we are in a cell which content is described in the table.  The "
@@ -4731,7 +4731,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:189
+#: src/lessons/welcome/bdr/BDR.html:190
 msgid ""
 "Another subtlety is that detecting if strings are equals is a bit annoying "
 "in [!thelang].  So, we use the <code>char getIndication[!c]Bdr[/!]()</code> "
@@ -4743,12 +4743,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:197
+#: src/lessons/welcome/bdr/BDR.html:198
 msgid "Tips and Hints"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:199
+#: src/lessons/welcome/bdr/BDR.html:200
 msgid ""
 "If you fail to understand why the buggle does not execute the expected "
 "steps, try adding <code>brushDown()</code> in your method. This asks the "
@@ -4759,7 +4759,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:206
+#: src/lessons/welcome/bdr/BDR.html:207
 msgid "When your program finally works, move on to the next exercise."
 msgstr ""
 

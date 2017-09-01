@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-09-01 13:21+0200\n"
+"POT-Creation-Date: 2017-09-01 22:40+0200\n"
 "PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1130,7 +1130,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:21
 #: src/lessons/welcome/loopfor/LoopFor.html:57
-#: src/lessons/welcome/bdr/BDR.html:188
+#: src/lessons/welcome/bdr/BDR.html:189
 msgid "[!java|c]"
 msgstr "[!java|c]"
 
@@ -1156,7 +1156,7 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1.html:209
 #: src/lessons/welcome/methods/args/MethodsArgs.html:66
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:40
-#: src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195
+#: src/lessons/welcome/bdr/BDR.html:61 src/lessons/welcome/bdr/BDR.html:196
 #: src/lessons/welcome/bdr/BDR2.html:130
 #: src/lessons/turmites/langton/Langton.html:32
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:65
@@ -1897,7 +1897,7 @@ msgstr ""
 #: src/lessons/welcome/methods/args/MethodsArgs.html:70
 #: src/lessons/welcome/methods/slug/SlugHunting.html:19
 #: src/lessons/welcome/methods/slug/SlugTracking.html:23
-#: src/lessons/welcome/bdr/BDR.html:150 src/lessons/welcome/bdr/BDR2.html:132
+#: src/lessons/welcome/bdr/BDR.html:151 src/lessons/welcome/bdr/BDR2.html:132
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:18
 #: src/lessons/maze/pledge/PledgeMaze.html:37
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
@@ -6410,8 +6410,8 @@ msgid ""
 "if (isOverBaggle())    \n"
 "     if (x == 5)\n"
 "          left();\n"
-"else\n"
-"     right();\n"
+"else // Do not write it this way, it's misleading!\n"
+"     right(); \n"
 "[!c]stepForward();[/!][!java|scala]forward();[/!]"
 msgstr ""
 "if (isOverBaggle())    \n"
@@ -6424,19 +6424,15 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:35
 msgid ""
-"In fact, it does not turn right when there is no baggle on the ground AND x "
-"equals 5, but when the buggle found a baggle on the ground and x equals "
-"anything but 5. Putting this otherwise, the buggle understands the previous "
-"code as if it were written the following way (note that the <tt>else</tt> "
-"were moved to the right):"
+"You think that <code>right()</code> refers to the first <code>if</code> and "
+"get executed when <code>isOverBaggle()</code> returns false, but in fact, it "
+"refers to the second one <code>if</code> and will be executed when "
+"<code>isOverBaggle()</code> returns true and <code>x != 5</code>. Yes, "
+"despite the indentation, the buggle understands the previous code as follows:"
 msgstr ""
-"Infatti, il buggle non gira a destra quando non ci sono baggle a terra ma "
-"quando il buggle trova un baggle a terra e x è diverso da 5. In altre "
-"parole, il buggle capisce il precedente codice come quello scritto quì sotto "
-"(nota che l'<tt>else</tt> è spostato più a destra):"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:40
+#: src/lessons/welcome/bdr/BDR.html:42
 #, fuzzy, no-wrap
 #| msgid ""
 #| "if (isOverBaggle())    \n"
@@ -6461,24 +6457,14 @@ msgstr ""
 "forward();"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:47
+#: src/lessons/welcome/bdr/BDR.html:49
 msgid ""
-"The first lesson of this is that the indentation is very important to help "
-"humans understanding, even if it does not change the actual meaning of the "
-"code. We could have written the following code and obtain the same result. "
-"But if you want a human to read and review your code, you really want to "
-"indent it correctly. That's for example the case if you want a professor to "
-"read it (to grade it or to answer a question about it), or if you want to "
-"reuse your code later, or even if you need to debug your code yourself."
+"In [!thelang] the computer connects a <tt>else</tt> branch to the closest "
+"<tt>if</tt>. If you find it ambiguous, you should add more braces than "
+"strictly necessary. Computers don't even look at the indentation in [!"
+"thelang]. The previous code could even be written as follows and lead to the "
+"same result."
 msgstr ""
-"La prima lezione da imparare è che l'indentazione è molto importante per "
-"aiutare le persone a capire anche se non cambia il significato del codice. "
-"Avremmo potuto scrivere il codice seguente ottenendo lo stesso risultato. Ma "
-"se volete che un umano legga e revisioni il vostro codice lo dovete "
-"indentare correttamente. Ad esempio se voleste che un professore legga il "
-"vostro codice (per valutarlo oppure rispondere ad una domanda su di esso) "
-"oppure se voleste riusarlo più tardi o doveste debuggarlo (correggerlo) da "
-"soli."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:55
@@ -6489,28 +6475,43 @@ msgstr "if (isOverBaggle()) if (x == 5) left(); else right(); forward();"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:57
+#, fuzzy
+#| msgid ""
+#| "The first lesson of this is that the indentation is very important to "
+#| "help humans understanding, even if it does not change the actual meaning "
+#| "of the code. We could have written the following code and obtain the same "
+#| "result. But if you want a human to read and review your code, you really "
+#| "want to indent it correctly. That's for example the case if you want a "
+#| "professor to read it (to grade it or to answer a question about it), or "
+#| "if you want to reuse your code later, or even if you need to debug your "
+#| "code yourself."
 msgid ""
-"The second lesson is that a <tt>else</tt> branch always connects to the "
-"closest <tt>if</tt>. This may be a bit troublesome in some case, and it may "
-"be easier to add more braces than strictly needed to remove any ambiguity."
+"But for humans, <b>you really want to indent your code correctly correctly</"
+"b>. For example if you want a professor to review or even grade your code, "
+"if you want to reuse your own code later, or even if you need to debug it. "
+"That is right: you need to write readable code for your own comfort."
 msgstr ""
-"La seconda lezione da imparare è che l'alternativa <tt>else</tt> è sempre "
-"connessa alla <tt>if</tt> più vicina. Questo potrebbe essere un po' "
-"fastidioso in certi casi e potrebbe essere meglio aggiungere più parentesi "
-"di quelle che sono strettamente necessarie per rimuovere ogni ambiguità."
+"La prima lezione da imparare è che l'indentazione è molto importante per "
+"aiutare le persone a capire anche se non cambia il significato del codice. "
+"Avremmo potuto scrivere il codice seguente ottenendo lo stesso risultato. Ma "
+"se volete che un umano legga e revisioni il vostro codice lo dovete "
+"indentare correttamente. Ad esempio se voleste che un professore legga il "
+"vostro codice (per valutarlo oppure rispondere ad una domanda su di esso) "
+"oppure se voleste riusarlo più tardi o doveste debuggarlo (correggerlo) da "
+"soli."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:62
+#: src/lessons/welcome/bdr/BDR.html:63
 msgid "Chaining conditionals"
 msgstr "Concatenamenti delle condizioni"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:64
+#: src/lessons/welcome/bdr/BDR.html:65
 msgid "You sometimes want to ask the buggle something similar to:"
 msgstr "A volte vorrete chiedere al buggle qualcosa come questo:"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:65
+#: src/lessons/welcome/bdr/BDR.html:66
 #, no-wrap
 msgid ""
 "if it's raining, take an umbrella;\n"
@@ -6522,7 +6523,7 @@ msgstr ""
 "altrimenti se è il 4 luglio prendi la bandiera americana"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:69
+#: src/lessons/welcome/bdr/BDR.html:70
 msgid ""
 "The trap is that we want at most one of these actions to be taken. That is "
 "to say, if it's raining a very hot July 4th, we don't want the buggle to get "
@@ -6535,7 +6536,7 @@ msgstr ""
 "l'ombrello. Il seguente codice è quindi SBAGLIATO"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:74
+#: src/lessons/welcome/bdr/BDR.html:75
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java|scala]if (rainy())\n"
@@ -6575,7 +6576,7 @@ msgstr ""
 "    prendiBandiera()[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:87
+#: src/lessons/welcome/bdr/BDR.html:88
 msgid ""
 "Indeed, since the conditions are evaluated one after the other, there is a "
 "risk that you go to the July 4th march on a rainy day. Instead, we should "
@@ -6588,7 +6589,7 @@ msgstr ""
 "condizione vera non venga valutata la successiva."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:92
+#: src/lessons/welcome/bdr/BDR.html:93
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java|scala]if (rainy()) {\n"
@@ -6649,7 +6650,7 @@ msgstr ""
 "            prendiBandiera()[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:112
+#: src/lessons/welcome/bdr/BDR.html:113
 #, fuzzy
 #| msgid ""
 #| "Unfortunately, such a cascade of conditionals is quite difficult to read. "
@@ -6674,7 +6675,7 @@ msgstr ""
 "contraddistinguere eplicitamente le alternative \"else if\"'.[/!]"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/BDR.html:119
+#: src/lessons/welcome/bdr/BDR.html:120
 #, fuzzy, no-wrap
 #| msgid ""
 #| "[!java|scala]if (rainy()) { \n"
@@ -6717,12 +6718,12 @@ msgstr ""
 "    prendiBandiera()[/!]"
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:132
+#: src/lessons/welcome/bdr/BDR.html:133
 msgid "Graffiti in the Buggle World"
 msgstr "Graffiti nel Mondo dei Buggle"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:134
+#: src/lessons/welcome/bdr/BDR.html:135
 msgid ""
 "Buggles can tag graffitis on the ground of their world. For that, they use "
 "the four following methods:"
@@ -6731,7 +6732,7 @@ msgstr ""
 "questo essi usano i seguenti quattro metodi:"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:138
+#: src/lessons/welcome/bdr/BDR.html:139
 #, fuzzy
 #| msgid ""
 #| "<code>[!java]boolean[/!] isOverMessage()[!scala]:Boolean[/!]</code>: "
@@ -6747,7 +6748,7 @@ msgstr ""
 "messaggi a terra."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:141
+#: src/lessons/welcome/bdr/BDR.html:142
 #, fuzzy
 #| msgid ""
 #| "<code>[!java]String[/!] readMessage()[!scala]: String[/!]</code>: returns "
@@ -6763,7 +6764,7 @@ msgstr ""
 "niente)."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:143
+#: src/lessons/welcome/bdr/BDR.html:144
 #, fuzzy
 #| msgid ""
 #| "<code>[!java]void[/!] writeMessage([!java]String [/!]msg[!scala]: "
@@ -6782,7 +6783,7 @@ msgstr ""
 "messaggio preesistente."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/bdr/BDR.html:146
+#: src/lessons/welcome/bdr/BDR.html:147
 #, fuzzy
 #| msgid ""
 #| "<code>[!java]void [/!]clearMessage()</code>: clears what is written on "
@@ -6795,7 +6796,7 @@ msgstr ""
 "terra."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:150
+#: src/lessons/welcome/bdr/BDR.html:151
 msgid ""
 "The goal is then to organize a BDR game between the buggles by teaching them "
 "to move according to the instructions written on the ground. These "
@@ -6807,190 +6808,190 @@ msgstr ""
 "messaggi scritti a terra con il seguente significato:"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:156 src/lessons/welcome/bdr/BDR2.html:139
+#: src/lessons/welcome/bdr/BDR.html:157 src/lessons/welcome/bdr/BDR2.html:139
 msgid "Message"
 msgstr "Messaggi"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:157 src/lessons/welcome/bdr/BDR2.html:140
+#: src/lessons/welcome/bdr/BDR.html:158 src/lessons/welcome/bdr/BDR2.html:140
 msgid "What to do"
 msgstr "Cosa fa"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:158
+#: src/lessons/welcome/bdr/BDR.html:159
 msgid "Mnemonic"
 msgstr "Mnemonico"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:160 src/lessons/welcome/bdr/BDR2.html:142
+#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:142
 #, fuzzy
 #| msgid "[!java]'R'[/!][!scala|python]\"R\"[/!]"
 msgid "[!java|c]'R'[/!][!scala|python]\"R\"[/!]"
 msgstr "[!java]'R'[/!][!scala|python]\"R\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:160 src/lessons/welcome/bdr/BDR2.html:142
+#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:142
 msgid "Turn right and move one step forward"
 msgstr "Gira a destra e muoviti un passo in avanti"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:160
+#: src/lessons/welcome/bdr/BDR.html:161
 msgid "Right"
 msgstr "Right"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:143
+#: src/lessons/welcome/bdr/BDR.html:162 src/lessons/welcome/bdr/BDR2.html:143
 #, fuzzy
 #| msgid "[!java]'L'[/!][!scala|python]\"L\"[/!]"
 msgid "[!java|c]'L'[/!][!scala|python]\"L\"[/!]"
 msgstr "[!java]'L'[/!][!scala|python]\"L\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:143
+#: src/lessons/welcome/bdr/BDR.html:162 src/lessons/welcome/bdr/BDR2.html:143
 msgid "Turn left and move one step forward"
 msgstr "Gira a sinistra e muoviti un passo in avanti"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:161
+#: src/lessons/welcome/bdr/BDR.html:162
 msgid "Left"
 msgstr "Left"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:162 src/lessons/welcome/bdr/BDR2.html:144
+#: src/lessons/welcome/bdr/BDR.html:163 src/lessons/welcome/bdr/BDR2.html:144
 #, fuzzy
 #| msgid "[!java]'I'[/!][!scala|python]\"I\"[/!]"
 msgid "[!java|c]'I'[/!][!scala|python]\"I\"[/!]"
 msgstr "[!java]'I'[/!][!scala|python]\"I\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:162
+#: src/lessons/welcome/bdr/BDR.html:163
 msgid "Turn back (U-turn) and move one step forward"
 msgstr "Gira indietro (curva a U) e muoviti un passo in avanti"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:162
+#: src/lessons/welcome/bdr/BDR.html:163
 msgid "Inverse"
 msgstr "Inverse"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:164 src/lessons/welcome/bdr/BDR2.html:146
+#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:146
 #, fuzzy
 #| msgid "[!java]'A'[/!][!scala|python]\"A\"[/!]"
 msgid "[!java|c]'A'[/!][!scala|python]\"A\"[/!]"
 msgstr "[!java]'A'[/!][!scala|python]\"A\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:164 src/lessons/welcome/bdr/BDR2.html:146
+#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:146
 msgid "Move one step forward"
 msgstr "Muoviti un passo avanti"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:164
+#: src/lessons/welcome/bdr/BDR.html:165
 msgid "First letter of the alphabet"
 msgstr "Prima lettera dell'alfabeto"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:147
+#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:147
 #, fuzzy
 #| msgid "[!java]'B'[/!][!scala|python]\"B\"[/!]"
 msgid "[!java|c]'B'[/!][!scala|python]\"B\"[/!]"
 msgstr "[!java]'B'[/!][!scala|python]\"B\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:147
+#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:147
 msgid "Move two steps forward"
 msgstr "Muoviti due passi in avanti"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:165
+#: src/lessons/welcome/bdr/BDR.html:166
 msgid "Second letter of the alphabet"
 msgstr "Seconda lettera dell'alfabeto"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:148
+#: src/lessons/welcome/bdr/BDR.html:167 src/lessons/welcome/bdr/BDR2.html:148
 #, fuzzy
 #| msgid "[!java]'C'[/!][!scala|python]\"C\"[/!]"
 msgid "[!java|c]'C'[/!][!scala|python]\"C\"[/!]"
 msgstr "[!java]'C'[/!][!scala|python]\"C\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:148
+#: src/lessons/welcome/bdr/BDR.html:167 src/lessons/welcome/bdr/BDR2.html:148
 msgid "Move three steps forward"
 msgstr "Muoviti tre passi in avanti"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:166
+#: src/lessons/welcome/bdr/BDR.html:167
 msgid "Third letter of the alphabet"
 msgstr "Terza lettera dell'alfabeto"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:168 src/lessons/welcome/bdr/BDR2.html:153
+#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:153
 #, fuzzy
 #| msgid "[!java]'Z'[/!][!scala|python]\"Z\"[/!]"
 msgid "[!java|c]'Z'[/!][!scala|python]\"Z\"[/!]"
 msgstr "[!java]'Z'[/!][!scala|python]\"Z\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:168 src/lessons/welcome/bdr/BDR2.html:153
+#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:153
 msgid "Move one step backward"
 msgstr "Muoviti un passo indietro"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:168
+#: src/lessons/welcome/bdr/BDR.html:169
 msgid "One letter before the end of the alphabet"
 msgstr "Ultima lettera dell'alfabeto"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:154
+#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:154
 #, fuzzy
 #| msgid "[!java]'Y'[/!][!scala|python]\"Y\"[/!]"
 msgid "[!java|c]'Y'[/!][!scala|python]\"Y\"[/!]"
 msgstr "[!java]'Y'[/!][!scala|python]\"Y\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:154
+#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:154
 msgid "Move two steps backward"
 msgstr "Muoviti due passi indietro"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:169
+#: src/lessons/welcome/bdr/BDR.html:170
 msgid "Two letters before the end of the alphabet"
 msgstr "Penultima lettera dell'alfabeto"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:155
+#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:155
 #, fuzzy
 #| msgid "[!java]'X'[/!][!scala|python]\"X\"[/!]"
 msgid "[!java|c]'X'[/!][!scala|python]\"X\"[/!]"
 msgstr "[!java]'X'[/!][!scala|python]\"X\"[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:155
+#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:155
 msgid "Move three steps backward"
 msgstr "Muoviti tre passi indietro"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:170
+#: src/lessons/welcome/bdr/BDR.html:171
 msgid "Three letters before the end of the alphabet"
 msgstr "Terzultima lettera dell'alfabeto"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:159
+#: src/lessons/welcome/bdr/BDR.html:172 src/lessons/welcome/bdr/BDR2.html:159
 msgid "<i>(anything else)</i>"
 msgstr "<i>(qualsiasi altra cosa)</i>"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:159
+#: src/lessons/welcome/bdr/BDR.html:172 src/lessons/welcome/bdr/BDR2.html:159
 msgid "Stop dancing."
 msgstr "Fine delle danze"
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:174
+#: src/lessons/welcome/bdr/BDR.html:175
 msgid "Indications"
 msgstr "Indicazioni"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:176
+#: src/lessons/welcome/bdr/BDR.html:177
 msgid ""
 "This exercise may seem a bit complex at the first glance, but it comes down "
 "to summarizing the information of the table in a sequence of conditionals."
@@ -7000,7 +7001,7 @@ msgstr ""
 "di istruzioni condizionali."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:179
+#: src/lessons/welcome/bdr/BDR.html:180
 #, fuzzy
 #| msgid ""
 #| "You have to keep dancing as long as there is some dancing steps to do, i."
@@ -7032,7 +7033,7 @@ msgstr ""
 "loop si fermerà e il programma avrà termine."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:189
+#: src/lessons/welcome/bdr/BDR.html:190
 #, fuzzy
 #| msgid ""
 #| "Another subtlety is that detecting if strings are equals is a bit "
@@ -7060,12 +7061,12 @@ msgstr ""
 "stringhe che è molto più semplice in Java."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/BDR.html:197
+#: src/lessons/welcome/bdr/BDR.html:198
 msgid "Tips and Hints"
 msgstr "Consigli e Suggerimenti"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:199
+#: src/lessons/welcome/bdr/BDR.html:200
 msgid ""
 "If you fail to understand why the buggle does not execute the expected "
 "steps, try adding <code>brushDown()</code> in your method. This asks the "
@@ -7083,7 +7084,7 @@ msgstr ""
 "vandalizzare la pista da ballo!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/BDR.html:206
+#: src/lessons/welcome/bdr/BDR.html:207
 msgid "When your program finally works, move on to the next exercise."
 msgstr ""
 "Quando il vostro programma finalmente funzionerà, muovetevi nel prossimo "
@@ -15743,6 +15744,30 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr ""
+
+#~ msgid ""
+#~ "In fact, it does not turn right when there is no baggle on the ground AND "
+#~ "x equals 5, but when the buggle found a baggle on the ground and x equals "
+#~ "anything but 5. Putting this otherwise, the buggle understands the "
+#~ "previous code as if it were written the following way (note that the "
+#~ "<tt>else</tt> were moved to the right):"
+#~ msgstr ""
+#~ "Infatti, il buggle non gira a destra quando non ci sono baggle a terra ma "
+#~ "quando il buggle trova un baggle a terra e x è diverso da 5. In altre "
+#~ "parole, il buggle capisce il precedente codice come quello scritto quì "
+#~ "sotto (nota che l'<tt>else</tt> è spostato più a destra):"
+
+#~ msgid ""
+#~ "The second lesson is that a <tt>else</tt> branch always connects to the "
+#~ "closest <tt>if</tt>. This may be a bit troublesome in some case, and it "
+#~ "may be easier to add more braces than strictly needed to remove any "
+#~ "ambiguity."
+#~ msgstr ""
+#~ "La seconda lezione da imparare è che l'alternativa <tt>else</tt> è sempre "
+#~ "connessa alla <tt>if</tt> più vicina. Questo potrebbe essere un po' "
+#~ "fastidioso in certi casi e potrebbe essere meglio aggiungere più "
+#~ "parentesi di quelle che sono strettamente necessarie per rimuovere ogni "
+#~ "ambiguità."
 
 #~ msgid "nameOfTheMethod()"
 #~ msgstr "nomeDelMetodo()"

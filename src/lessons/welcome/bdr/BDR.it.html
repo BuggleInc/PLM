@@ -32,14 +32,17 @@ istruzioni <tt>if</tt> come in questo esempio: </p>
 <pre>if (isOverBaggle())    
      if (x == 5)
           left();
-else
-     right();
+else // Do not write it this way, it's misleading!
+     right(); 
 [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
 
-<p>Infatti, il buggle non gira a destra quando non ci sono baggle a terra ma
-quando il buggle trova un baggle a terra e x è diverso da 5. In altre
-parole, il buggle capisce il precedente codice come quello scritto quì sotto
-(nota che l'<tt>else</tt> è spostato più a destra):</p>
+<p>You think that <code>right()</code> refers to the first <code>if</code> and
+get executed when <code>isOverBaggle()</code> returns false, but in fact, it
+refers to the second one <code>if</code> and will be executed when
+<code>isOverBaggle()</code> returns true and <code>x != 5</code>. Yes,
+despite the indentation, the buggle understands the previous code as
+follows:</p>
+  
 <pre>if (isOverBaggle())    
         if (x == 5)
             left();
@@ -47,22 +50,19 @@ parole, il buggle capisce il precedente codice come quello scritto quì sotto
             right();
 [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
 
-<p>La prima lezione da imparare è che l'indentazione è molto importante per
-aiutare le persone a capire anche se non cambia il significato del
-codice. Avremmo potuto scrivere il codice seguente ottenendo lo stesso
-risultato. Ma se volete che un umano legga e revisioni il vostro codice lo
-dovete indentare correttamente. Ad esempio se voleste che un professore
-legga il vostro codice (per valutarlo oppure rispondere ad una domanda su di
-esso) oppure se voleste riusarlo più tardi o doveste debuggarlo
-(correggerlo) da soli.</p> 
+<p>In [!thelang] the computer connects a <tt>else</tt> branch to the closest
+<tt>if</tt>. If you find it ambiguous, you should add more braces than
+strictly necessary. Computers don't even look at the indentation in
+[!thelang]. The previous code could even be written as follows and lead to
+the same result.</p>
 
 <pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
 
-<p>La seconda lezione da imparare è che l'alternativa <tt>else</tt> è sempre
-connessa alla <tt>if</tt> più vicina. Questo potrebbe essere un po'
-fastidioso in certi casi e potrebbe essere meglio aggiungere più parentesi
-di quelle che sono strettamente necessarie per rimuovere ogni ambiguità.</p>
-[/!]
+<p>But for humans, <b>you really want to indent your code correctly
+correctly</b>. For example if you want a professor to review or even grade
+your code, if you want to reuse your own code later, or even if you need to
+debug it. That is right: you need to write readable code for your own
+comfort.</p>  [/!]
 
 <h3>Concatenamenti delle condizioni</h3>
 
