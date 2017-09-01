@@ -7,10 +7,9 @@
       forbidding forward() with a parameter.
   * Pedagogical Content:
     - SlugHunting.py: align the code template with the mission text
-    - #482: Typo in Condition's French translation
     - #488, #496: Poucet2 was not marked for translation
     - #495: Fix pseudo-markdown in MethodReturning in French
-    - #498, #500: Glitch in French translation
+    - #482, #489, #498, #500: Glitches and typos in French translation
   * Internal organization:
     - #495: Strenghten the checks for errors in [!python] and such
 
