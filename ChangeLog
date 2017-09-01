@@ -5,6 +5,8 @@
   * Worlds:
     - Buggle/Python: Let the translation play nice with the exercises
       forbidding forward() with a parameter.
+  * Pedagogical Content:
+    - SlugHunting.py: align the code template with the mission text
 
 20170901: 2.7
 
