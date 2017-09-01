@@ -24,7 +24,7 @@ public class InterleavedHanoi extends ExerciseTemplated {
 		w.setParameter(new Integer[]{0,1,2,3});
 		myWorlds[0] = w;
 		
-		w = new HanoiWorld("slove(0,2,3,1)",  
+		w = new HanoiWorld("solve(0,2,3,1)",  
 				new Integer[] {6,5,4,3,2,1}, new Integer[0],new Integer[] {6,5,4,3,2,1},new Integer[0]);
 		for (int i=0; i<w.getSlotSize(0);i++) 
 			w.setColor(0,i,Color.black);
