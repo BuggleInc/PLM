@@ -13332,7 +13332,7 @@ msgstr ""
 "Le troisième paramètre (nommé <code>other</code>) est l'index du piquet "
 "inutilisé,\n"
 "tandis que le quatrième paramètre (nommé <code>dst</code>) est l'index du "
-"piquet vers lequel la pile dont être déplacée."
+"piquet vers lequel la pile doit être déplacée."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:32
