@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-08-31 23:50+0200\n"
+"POT-Creation-Date: 2017-09-01 13:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -856,7 +856,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:23 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:23 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet2.html:25 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:195 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -2166,7 +2166,7 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet2.html:19 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
 msgid "[!python]"
 msgstr ""
 
@@ -2296,6 +2296,51 @@ msgstr ""
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:2
+msgid "More buggles tracks"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:4
+msgid ""
+"Hu oh! Your buggle got lost again in the same kind of maze, but this time, "
+"the corridors are not always of the same size. Since there is no way to know "
+"the length of the corridor before taking it, a <code>for</code> will not "
+"suffice anymore. Instead, you will have to change your inner loop to use a "
+"<code>while</code> loop, using the method <code>crossing()</code> that tells "
+"whether your buggle currently stands on an intersection."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:10
+msgid ""
+"The extra complexity is that at the beginning of a corridor, you obviously "
+"stand on an intersection, but you still want to move on.  [!java|scala|c]For "
+"that, the easiest is to use a <code>do / while</code> loop instead of a "
+"regular <code>while</code> loop to move until the next intersection.[/!] "
+"[!python]For that, use an extra variable indicating whether you already "
+"entered the corridor, as follows. This will ensure that you execute the loop "
+"body at least once (when <code>firstTime</code> is true) before we actually "
+"use the value returned by <code>crossing()</code> to determine to continue "
+"or not.[/!]"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:20
+#, no-wrap
+msgid ""
+"firstTime = True\n"
+"while firstTime or not crossing():\n"
+"  firstTime = False\n"
+"  (loop body)\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:27
+msgid "With that new trick, your buggle should exit this maze quite easily."
 msgstr ""
 
 #. type: Content of: <h1>

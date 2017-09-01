@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-08-31 23:50+0200\n"
-"PO-Revision-Date: 2017-09-01 00:02+0200\n"
+"POT-Creation-Date: 2017-09-01 13:21+0200\n"
+"PO-Revision-Date: 2017-09-01 13:30+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -1046,6 +1046,7 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:152
 #: src/lessons/welcome/loopfor/LoopFor.html:80
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:54
+#: src/lessons/welcome/loopdowhile/Poucet2.html:25
 #: src/lessons/welcome/array/basics/Array1.html:183
 #: src/lessons/welcome/array/basics/Array1.html:209
 #: src/lessons/welcome/methods/args/MethodsArgs.html:66
@@ -1109,7 +1110,11 @@ msgid ""
 "Our second program will be a bit more complicated, but not much. The goal "
 "for your buggle is simply to draw a house (a box), and hide inside. Check "
 "the objective world to see exactly what this means."
-msgstr "Notre second programme sera un peu plus compliqué, mais pas tellement. L'objectif de votre buggle est simplement de se dessiner une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif pour voir exactement ce que cela veut dire."
+msgstr ""
+"Notre second programme sera un peu plus compliqué, mais pas tellement. "
+"L'objectif de votre buggle est simplement de se dessiner une maison (une "
+"boîte), et de se cacher dedans. Vérifiez le monde objectif pour voir "
+"exactement ce que cela veut dire."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:14
@@ -1121,7 +1126,10 @@ msgid ""
 "its ground)."
 msgstr ""
 "Pour cela, vous aurez besoin de <code>avance()</code>,\n"
-"<code>gauche()</code> et <code>droite()</code>. Utilisez votre brosse pour marquer le sol en marchant. Commencez à marquer le sol avec <code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par exemple pour entrer dans votre maison sans marquer le sol)."
+"<code>gauche()</code> et <code>droite()</code>. Utilisez votre brosse pour "
+"marquer le sol en marchant. Commencez à marquer le sol avec "
+"<code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par "
+"exemple pour entrer dans votre maison sans marquer le sol)."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:20
@@ -2894,6 +2902,7 @@ msgstr "Exécuter le corps de boucle au moins une fois"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
+#: src/lessons/welcome/loopdowhile/Poucet2.html:19
 #: src/lessons/welcome/array/basics/Array1.html:100
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
@@ -3080,6 +3089,75 @@ msgid ""
 msgstr ""
 "Oh, et quand vous parviendrez à trouver la sortie, n'oubliez pas de faire un "
 "pas de plus pour vous échapper effectivement."
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:2
+msgid "More buggles tracks"
+msgstr "Nouvelles pistes"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:4
+msgid ""
+"Hu oh! Your buggle got lost again in the same kind of maze, but this time, "
+"the corridors are not always of the same size. Since there is no way to know "
+"the length of the corridor before taking it, a <code>for</code> will not "
+"suffice anymore. Instead, you will have to change your inner loop to use a "
+"<code>while</code> loop, using the method <code>crossing()</code> that tells "
+"whether your buggle currently stands on an intersection."
+msgstr ""
+"Et mince ! Votre buggle s'est encore perdue dans le même genre de\n"
+"labyrinthes, mais cette fois les corridors ne sont pas tous de la même\n"
+"taille. Comme il n'y a aucun moyen de connaître à l'avance la longueur\n"
+"du corridor que l'on commence à explorer, une boucle <code>for</code>\n"
+"semble mal adaptée. Au lieu de cela, vous devriez changer votre boucle\n"
+"interne en un <code>while</code>. Utilisez la méthode\n"
+"<code>crossing()</code>, qui indique si votre buggle se trouve\n"
+"actuellement à un embranchement."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:10
+msgid ""
+"The extra complexity is that at the beginning of a corridor, you obviously "
+"stand on an intersection, but you still want to move on.  [!java|scala|c]For "
+"that, the easiest is to use a <code>do / while</code> loop instead of a "
+"regular <code>while</code> loop to move until the next intersection.[/!] [!"
+"python]For that, use an extra variable indicating whether you already "
+"entered the corridor, as follows. This will ensure that you execute the loop "
+"body at least once (when <code>firstTime</code> is true) before we actually "
+"use the value returned by <code>crossing()</code> to determine to continue "
+"or not.[/!]"
+msgstr ""
+"Le problème, c'est que lorsque vous commencez l'exploration d'un\n"
+"corridor, vous vous trouvez à une intersection mais vous voulez\n"
+"avancer quand même. [!java|scala|c]La solution la plus simple est\n"
+"alors d'utiliser une boucle <code>do / while</code> au lieu d'un\n"
+"simple <code>while</code> pour bouger <b>jusqu'à</b> la prochaine\n"
+"intersection.[/!] [!python]Utilisez pour cela une variable\n"
+"supplémentaire indiquant si vous êtes déjà entré dans un\n"
+"corridor. Cela vous permettra d'exécuter le core de boucle au moins\n"
+"une fois (quand <code>premiereFois</code> est vraie) avant de tester\n"
+"la valeur retournée par <code>crossing()</code>.[/!]"
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:20
+#, no-wrap
+msgid ""
+"firstTime = True\n"
+"while firstTime or not crossing():\n"
+"  firstTime = False\n"
+"  (loop body)\n"
+msgstr ""
+"premiereFois = True\n"
+"while premiereFois or not crossing():\n"
+"  premiereFois = False\n"
+"  (le corps de la boucle)\n"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet2.html:27
+msgid "With that new trick, your buggle should exit this maze quite easily."
+msgstr ""
+"Avec ces nouvelles astuces, votre buggle devrait parvenir à s'échapper\n"
+"assez facilement."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array1.html:2
@@ -7709,8 +7787,8 @@ msgid ""
 "can still modify them, but that would be a very bad idea.[/!] You should "
 "write them out of any method so that they are globally visible."
 msgstr ""
-"Puisque ces notations arbitraires sont parfois difficiles à mémoriser, "
-"vous devriez définir un ensemble de constantes que vous pouvez utiliser à la "
+"Puisque ces notations arbitraires sont parfois difficiles à mémoriser, vous "
+"devriez définir un ensemble de constantes que vous pouvez utiliser à la "
 "place des valeurs numériques. Leurs noms pourraient être GAUCHE, DROITE, "
 "etc.\n"
 "[!scala]Déclarez simplement ces valeurs avec le mot-clé <code>val</code> au "

@@ -8,6 +8,7 @@
   * Pedagogical Content:
     - SlugHunting.py: align the code template with the mission text
     - #482: Typo in Condition's French translation
+    - #488, 496: Poucet2 was not marked for translation
     - #498: Glitch in French translation
 
 20170901: 2.7
