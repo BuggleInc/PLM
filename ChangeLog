@@ -7,7 +7,8 @@
       forbidding forward() with a parameter.
   * Pedagogical Content:
     - SlugHunting.py: align the code template with the mission text
-    - #482: Typo in Condition French translation
+    - #482: Typo in Condition's French translation
+    - #498: Glitch in French translation
 
 20170901: 2.7
 
