@@ -1,4 +1,4 @@
-20170902: 2.7.1
+2017????: 2.8
 
   The first Payload of fixes.
   
@@ -11,6 +11,8 @@
     - #488, #496: Poucet2 was not marked for translation
     - #495: Fix pseudo-markdown in MethodReturning in French
     - #498, #500: Glitch in French translation
+  * Internal organization:
+    - #495: Strenghten the checks for errors in [!python] and such
 
 20170901: 2.7
 
