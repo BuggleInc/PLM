@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-09-01 22:40+0200\n"
+"POT-Creation-Date: 2017-09-01 22:56+0200\n"
 "PO-Revision-Date: 2015-11-10 21:13+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
@@ -3029,17 +3029,22 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet1.html:14
+#, fuzzy
+#| msgid ""
+#| "You should count exactly 5 cells per corridor, the one at the "
+#| "intersection counting as the last cell of the previous corridor, not as "
+#| "the first cell after your turn."
 msgid ""
-"You should count exactly 5 cells per corridor, the one at the intersection "
-"counting as the last cell of the previous corridor, not as the first cell "
-"after your turn."
+"You should count exactly 5 cells per corridor, from intersection to "
+"intersection.  Consider in your count the intersection ending the corridor "
+"but not the intersection before the corridor."
 msgstr ""
 "Você deve contar exatamente 5 células por corredor. Aquela com a intersecção "
 "conta como a última do corredor anterior, não como a primeira depois de você "
 "virar."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet1.html:17
+#: src/lessons/welcome/loopdowhile/Poucet1.html:18
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -3054,7 +3059,7 @@ msgstr ""
 "fornecido."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet1.html:21
+#: src/lessons/welcome/loopdowhile/Poucet1.html:22
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
 "another while counting the baggles you see on your path. That's easy: there "
@@ -3066,12 +3071,12 @@ msgstr ""
 "<code>for</code> resolve."
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet1.html:25
+#: src/lessons/welcome/loopdowhile/Poucet1.html:26
 msgid "I cannot imagine how to count the baggles I see."
 msgstr "Eu não consigo imaginar como contar os baggles que eu vejo."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet1.html:26
+#: src/lessons/welcome/loopdowhile/Poucet1.html:27
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -3082,13 +3087,13 @@ msgstr ""
 "frequentemente chamada de <i>contador</i>."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet1.html:28
+#: src/lessons/welcome/loopdowhile/Poucet1.html:29
 msgid ""
 "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr "Não esqueça de resetar seu contador para 0 no começo de cada corredor!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet1.html:31
+#: src/lessons/welcome/loopdowhile/Poucet1.html:32
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"

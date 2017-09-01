@@ -11,8 +11,9 @@ You can switch to the other world by using the combobox above the world represen
 of several corridors, with baggles on the ground. After each corridor, you should turn left if the corridor contains
 three baggels or more, and you have to turn right if there is only 2 baggles or less.</p>
 
-<p>You should count exactly 5 cells per corridor, the one at the intersection counting as the last cell of the 
-previous corridor, not as the first cell after your turn. </p>     
+<p>You should count exactly 5 cells per corridor, from intersection to
+  intersection.  Consider in your count the intersection ending the
+  corridor but not the intersection before the corridor.</p>
 
 <p>So, the general form of your code must be something like "while I did not find the exit, take the next corridor 
 to decide whether I should turn left or right at the next intersection". You can determine whether you are on the 
