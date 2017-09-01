@@ -16276,8 +16276,8 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:38
 #, no-wrap
-msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
-msgstr "[!java]List&lt;Point&gt; [/!]getChão()[! scala]:List[Point][/!]"
+msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
+msgstr "[!java]List&lt;Point&gt; [/!]getChão() [!scala]:List[Point][/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:39

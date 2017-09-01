@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-09-01 13:21+0200\n"
+"POT-Creation-Date: 2017-09-01 21:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12213,7 +12213,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:38
 #, no-wrap
-msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
+msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)

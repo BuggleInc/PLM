@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2017-09-01 13:21+0200\n"
-"PO-Revision-Date: 2017-09-01 14:23+0200\n"
+"PO-Revision-Date: 2017-09-01 21:57+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -14840,9 +14840,7 @@ msgstr ""
 msgid ""
 "Don't forget the default case (matching _), or scala will issue an error "
 "since your matching would be incomplete.[/!]"
-msgstr ""
-"N'oubliez pas le cas par défaut (qui accepte _), ou scala vous donnera un "
-"message d'erreur en échange de votre filtrage incomplet."
+msgstr "N'oubliez pas le cas par défaut (qui accepte _), ou scala vous donnera un message d'erreur en échange de votre filtrage incomplet.[/!]"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/maze/island/IslandMaze.html:70
@@ -16561,8 +16559,8 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:38
 #, no-wrap
-msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
-msgstr "[!java]List&lt;Point&gt; [/!]getSol()[! scala]:List[Point][/!]"
+msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
+msgstr "[!java]List&lt;Point&gt; [/!]getSol() [!scala]:List[Point][/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:39

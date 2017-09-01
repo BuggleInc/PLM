@@ -15361,7 +15361,7 @@ msgstr ""
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:38
 #, fuzzy, no-wrap
 #| msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
-msgid "[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]"
+msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
 msgstr "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 
 #. type: Content of: outside any tag (error?)
