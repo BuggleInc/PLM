@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-01 00:23+0200\n"
+"POT-Creation-Date: 2017-09-01 14:24+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2496,22 +2496,22 @@ msgstr ""
 "Errore del parse: Mi aspettavo la descrizione di una cella o di un buggle ma "
 "ho ricevuto: {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:570
+#: src/plm/universe/bugglequest/BuggleWorld.java:576
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr "  Il nome del mondo è {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:574
+#: src/plm/universe/bugglequest/BuggleWorld.java:580
 #, java-format
 msgid "  In ({0},{1})"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:576
+#: src/plm/universe/bugglequest/BuggleWorld.java:582
 #, fuzzy, java-format
 msgid "  There is {0} entities where {1} were expected."
 msgstr "  Ci sono le figure {0}, ma ci si aspettava le figure {1}\n"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:580
+#: src/plm/universe/bugglequest/BuggleWorld.java:586
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr "  Qualcosa è andato storto con il buggle ''{0}'':\n"

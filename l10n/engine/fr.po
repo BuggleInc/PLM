@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-01 00:23+0200\n"
+"POT-Creation-Date: 2017-09-01 14:24+0200\n"
 "PO-Revision-Date: 2017-09-01 00:25+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -1473,13 +1473,17 @@ msgstr "<html>Félicitations, vous avez réussi cet exercice.</html>"
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br><br><br>Select your next exercise:</html>"
-msgstr "<html>Félicitations, vous avez réussi cet exercice.<br>({0} tests passés)<br><br><br>Choisissez votre prochain exercice :</html>"
+msgstr ""
+"<html>Félicitations, vous avez réussi cet exercice.<br>({0} tests "
+"passés)<br><br><br>Choisissez votre prochain exercice :</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
 msgid ""
 "<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
 "next exercise:</html>"
-msgstr "<html>Félicitations, vous avez réussi cet exercice.<br><br><br><br>Choisissez votre prochain exercice :</html>"
+msgstr ""
+"<html>Félicitations, vous avez réussi cet exercice."
+"<br><br><br><br>Choisissez votre prochain exercice :</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid "Give feedback"
@@ -2578,22 +2582,22 @@ msgstr ""
 "Erreur de syntaxe. J''attendais la description d''une cellule ou d''un "
 "buggle mais j''ai eu : {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:570
+#: src/plm/universe/bugglequest/BuggleWorld.java:576
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr "  Le nom du monde est {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:574
+#: src/plm/universe/bugglequest/BuggleWorld.java:580
 #, java-format
 msgid "  In ({0},{1})"
 msgstr "  En ({0},{1})"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:576
+#: src/plm/universe/bugglequest/BuggleWorld.java:582
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
 msgstr "  Il y a {0} formes là où {1} formes étaient attendues"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:580
+#: src/plm/universe/bugglequest/BuggleWorld.java:586
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr "  Il y a quelque chose qui cloche avec la buggle «{0}»:\n"

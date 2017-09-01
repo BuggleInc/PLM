@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-01 00:23+0200\n"
+"POT-Creation-Date: 2017-09-01 14:24+0200\n"
 "PO-Revision-Date: 2015-11-10 21:38+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
@@ -2443,22 +2443,22 @@ msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:570
+#: src/plm/universe/bugglequest/BuggleWorld.java:576
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:574
+#: src/plm/universe/bugglequest/BuggleWorld.java:580
 #, java-format
 msgid "  In ({0},{1})"
 msgstr " Em ({0},{1})"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:576
+#: src/plm/universe/bugglequest/BuggleWorld.java:582
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:580
+#: src/plm/universe/bugglequest/BuggleWorld.java:586
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr "  Tem algo errado com o buggle ''{0}'':\n"
