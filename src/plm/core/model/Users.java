@@ -149,37 +149,39 @@ public class Users {
 	 */
 	@SuppressWarnings("rawtypes")
 	private void loadUsersFromFile(File userDBFile) {
-		this.usersList = new ArrayList<User>();
+		synchronized (this) {
+			this.usersList = new ArrayList<User>();
 
-		if (!this.userDBFile.exists()) {
-			// if the plm.users file doesn't exist yet, it means that no users
-			// have been created, so we create one first user.
-			
-			this.usersList.add(new User());
-			flushUsersToFile();
-		} else {
-			JSONParser parser = new JSONParser();
-			ContainerFactory containerFactory = new ContainerFactory() {
-				public List creatArrayContainer() {
-					return new LinkedList();
+			if (!this.userDBFile.exists()) {
+				// if the plm.users file doesn't exist yet, it means that no users
+				// have been created, so we create one first user.
+
+				this.usersList.add(new User());
+				flushUsersToFile();
+			} else {
+				JSONParser parser = new JSONParser();
+				ContainerFactory containerFactory = new ContainerFactory() {
+					public List creatArrayContainer() {
+						return new LinkedList();
+					}
+
+					public Map createObjectContainer() {
+						return new LinkedHashMap();
+					}
+				};
+				try {
+					List json = (List) parser.parse(new FileReader(userDBFile), containerFactory);
+					Iterator iter = json.iterator();
+
+					while (iter.hasNext()) {
+						@SuppressWarnings("unchecked")
+						HashMap<String,Object> entry = (HashMap<String,Object>) iter.next();
+						usersList.add(new User(entry));
+					}
+
+				} catch (ParseException | IOException pe) {
+					System.out.println(pe);
 				}
-
-				public Map createObjectContainer() {
-					return new LinkedHashMap();
-				}
-			};
-			try {
-				List json = (List) parser.parse(new FileReader(userDBFile), containerFactory);
-				Iterator iter = json.iterator();
-
-				while (iter.hasNext()) {
-					@SuppressWarnings("unchecked")
-					HashMap<String,Object> entry = (HashMap<String,Object>) iter.next();
-					usersList.add(new User(entry));
-				}
-
-			} catch (ParseException | IOException pe) {
-				System.out.println(pe);
 			}
 		}
 	}
@@ -189,28 +191,29 @@ public class Users {
 	 * latest changes. This method should always be called after using a Setter from User.
 	 */
 	public void flushUsersToFile() {
-		FileWriter fwUser;
+		synchronized (this) {
+			FileWriter fwUser;
 
-		try {
-			fwUser = new FileWriter(userDBFile);
-			BufferedWriter bwUser = new BufferedWriter(fwUser);
+			try {
+				fwUser = new FileWriter(userDBFile);
+				BufferedWriter bwUser = new BufferedWriter(fwUser);
 
-			StringWriter out = new StringWriter();
-			out.append("[\n");
-			for (int rank = 0 ; rank < usersList.size(); rank++) {
-				out.append("  ");
-				usersList.get(rank).writeJSONString(out);
-				if (rank < usersList.size()-1)
-					out.append(",");
-				out.append("\n");
+				StringWriter out = new StringWriter();
+				out.append("[\n");
+				for (int rank = 0 ; rank < usersList.size(); rank++) {
+					out.append("  ");
+					usersList.get(rank).writeJSONString(out);
+					if (rank < usersList.size()-1)
+						out.append(",");
+					out.append("\n");
+				}
+				out.append("]\n");
+
+				bwUser.write(out.toString());
+				bwUser.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			out.append("]\n");
-	
-			System.out.println(out.toString());
-			bwUser.write(out.toString());
-			bwUser.close();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 

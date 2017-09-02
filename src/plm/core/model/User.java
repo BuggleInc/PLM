@@ -11,9 +11,12 @@ import org.json.simple.JSONStreamAware;
 import org.json.simple.JSONValue;
 
 public class User implements JSONStreamAware {
+	static final String DEFAULT_EXERCISE = "plm://lessons.welcome/";
+	
 	private String username;
 	private boolean lastUsed;
 	private UUID userUUID;
+	private String currentExo = DEFAULT_EXERCISE;
 
 	public User() {
 		username = System.getenv("USER");
@@ -50,6 +53,7 @@ public class User implements JSONStreamAware {
 		} else {
 			this.userUUID = UUID.fromString(strUUID);
 		}
+		currentExo = (String) getOr(map, "exercise", DEFAULT_EXERCISE);
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void writeJSONString(Writer out) throws IOException {
@@ -57,6 +61,7 @@ public class User implements JSONStreamAware {
 		obj.put("username", username);
 		obj.put("lastUsed", lastUsed);
 		obj.put("userUUID", String.valueOf(userUUID));
+		obj.put("exercise", currentExo);
 		JSONValue.writeJSONString(obj, out);
 	}
 
@@ -75,9 +80,9 @@ public class User implements JSONStreamAware {
 	public String getUsername() {
 		return username;
 	}
-
 	public void setUsername(String username) {
 		this.username = username;
+		Game.getInstance().getUsers().flushUsersToFile();
 	}
 
 	public boolean isLastUsed() {
@@ -92,9 +97,16 @@ public class User implements JSONStreamAware {
 	public String getUserUUIDasString() {
 		return this.userUUID.toString();
 	}
-	
 	public UUID getUserUUID() {
 		return userUUID;
+	}
+	
+	public String getCurrentExercise() {
+		return currentExo;
+	}
+	public void setCurrentExercise(String curExo) {
+		currentExo = curExo;
+		Game.getInstance().getUsers().flushUsersToFile();
 	}
 	
 	@Override

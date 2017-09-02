@@ -116,7 +116,6 @@ public class Game implements IWorldView {
 	// Turning to false will slow down the startup process, but avoid out of date files
 
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
-	public static final String PROP_CURRENT_EXERCISE = "plm.currentExercise";
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
 
@@ -470,7 +469,7 @@ public class Game implements IWorldView {
 				stopExerciseExecution();
 			}
 			
-			setProperty(PROP_CURRENT_EXERCISE, "plm://lessons."+currentLesson.getId()+"/"+lect.getId());
+			users.getCurrentUser().setCurrentExercise("plm://lessons."+currentLesson.getId()+"/"+lect.getId());
 		}
 		try {
 			saveSession(); // don't loose user changes
@@ -539,9 +538,6 @@ public class Game implements IWorldView {
 			} else {
 				System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
 			}
-			setProperty(PROP_CURRENT_EXERCISE, "plm://lessons."+lesson.getId()+"/"+lect.getId());
-		} else {
-			setProperty(PROP_CURRENT_EXERCISE, "plm://lessons."+lesson.getId());			
 		}
 	}
 	

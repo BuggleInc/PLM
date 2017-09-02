@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import plm.core.model.Game;
+import plm.core.model.User;
 import plm.core.utils.FileUtils;
 
 
@@ -16,8 +17,9 @@ public class ProgrammersLearningMachine {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				String exoUrl = Game.getProperty(Game.PROP_CURRENT_EXERCISE, "plm://lessons.welcome/", true);
-				Game.getInstance().setCurrentExercise(exoUrl);
+				User user = Game.getInstance().getUsers().getCurrentUser();
+				Game.getInstance().setCurrentExercise(user.getCurrentExercise());
+				
 				MainFrame.getInstance().setVisible(true);
 			}
 		});
