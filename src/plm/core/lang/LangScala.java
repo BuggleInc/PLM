@@ -126,7 +126,7 @@ class ScalaCompiler {
 
 	public void compile(String name,String content,int offset) throws PLMCompilerException {
 		if (Game.getInstance().isDebugEnabled()) 
-			System.out.println("Compiline souce "+name+" to scala (offset:"+offset+"):\n"+content);
+			System.out.println("Compiling souce "+name+" to scala (offset:"+offset+"):\n"+content);
 		
 		Run compiler = global.new Run();
 		List<SourceFile> sources = new LinkedList<SourceFile>();
