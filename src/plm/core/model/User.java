@@ -14,16 +14,26 @@ public class User implements JSONStreamAware {
 	private boolean lastUsed;
 	private UUID userUUID;
 
-	public User(String username) {
-		this.username = username;
-		this.lastUsed = false;
-		this.userUUID = UUID.randomUUID();
+	public User() {
+		String username = System.getenv("USER");
+		if (username == null) 
+			username = System.getenv("USERNAME");
+		if (username == null) 
+			username = "John Doe";
+
+		lastUsed = false;
+		userUUID = UUID.randomUUID();
+		System.err.println(Game.i18n.tr("A new PLM user has been created for you: {0}", this));
 	}
 
-	public User(String username, boolean lastUsed, UUID userUUID) {
+	public User(String username, boolean lastUsed, String uuid) {
 		this.username = username;
 		this.lastUsed = lastUsed;
-		this.userUUID = userUUID;
+		if (uuid == null || uuid.equals("")) {
+			this.userUUID = UUID.randomUUID();
+		} else {
+			this.userUUID = UUID.fromString(uuid);
+		}
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

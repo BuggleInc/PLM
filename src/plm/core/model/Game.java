@@ -204,7 +204,6 @@ public class Game implements IWorldView {
 		}
 
 		users = new Users(SAVE_DIR);
-		users.getCurrentUser();
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		sessionKit = new GitSessionKit(this);

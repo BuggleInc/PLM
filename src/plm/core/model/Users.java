@@ -12,7 +12,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
@@ -69,21 +68,16 @@ public class Users {
 	}
 	
 	/**
-	 * Add a new user.
+	 * Create a new user.
 	 * 
-	 * @param username
-	 *            the name of the new user
-	 * @param uuid the UUID to pick for that user (or null or empty if the UUID should be generated)
+	 * @param username   the name of the new user
+	 * @param uuid       the UUID to pick for that user (or null or empty if the UUID should be generated)
+	 * 
 	 * @throws IllegalArgumentException
 	 * 		      if the provided UUID is not valid
 	 */
 	public void addUser(String username, String uuid) throws IllegalArgumentException {
-		User user;
-		if (uuid == null || uuid.equals("")) {
-			user = new User(username);
-		} else {
-			user = new User(username, false, UUID.fromString(uuid));
-		}
+		User user = new User(username, false, uuid);
 		
 		if(!usersList.contains(user)) {
 			usersList.add(user);
@@ -160,19 +154,9 @@ public class Users {
 		if (!this.userDBFile.exists()) {
 			// if the plm.users file doesn't exist yet, it means that no users
 			// have been created, so we create one first user.
-
-			String username = System.getenv("USER");
-			if (username == null) {
-				username = System.getenv("USERNAME");
-			}
-			if (username == null) {
-				username = "John Doe";
-			}
-			User user = new User(username);
-			this.usersList.add(user);
+			
+			this.usersList.add(new User());
 			flushUsersToFile();
-			System.err.println(Game.i18n.tr("A new PLM user has been created for you!"));
-			System.err.println(user);
 		} else {
 			JSONParser parser = new JSONParser();
 			ContainerFactory containerFactory = new ContainerFactory() {
@@ -192,8 +176,7 @@ public class Users {
 					LinkedHashMap entry = (LinkedHashMap) iter.next();
 					String username = (String) entry.get("username");
 					boolean lastUsed = (Boolean) entry.get("lastUsed");
-					UUID userUUID = UUID.fromString((String) entry.get("userUUID"));
-					usersList.add(new User(username, lastUsed, userUUID));
+					usersList.add(new User(username, lastUsed, (String) entry.get("userUUID")));
 				}
 
 			} catch (ParseException | IOException pe) {
