@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2017-09-01 22:56+0200\n"
+"POT-Creation-Date: 2017-09-02 12:32+0200\n"
 "PO-Revision-Date: 2015-11-10 21:13+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
@@ -5455,10 +5455,38 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:7
+#, fuzzy
+#| msgid ""
+#| "For that, you have to write a <code>growFlowers()</code> method that does "
+#| "not take any parameter and does not return any result. As the pattern is "
+#| "a bit complex, you should try to decompose this drawing in sub-steps so "
+#| "that your code remains short and easy to read. A method to draw one "
+#| "flower of the color passed in parameter sounds like a good start, but it "
+#| "is probably not enough."
 msgid ""
 "For that, you have to write a <code>growFlowers()</code> method that does "
-"not take any parameter and does not return any result. As the pattern is a "
-"bit complex, you should try to decompose this drawing in sub-steps so that "
+"not take any parameter and does not return any result. You could probably "
+"make it without defining this method, but this is part of the assignment."
+msgstr ""
+"Para isto, você tem que escrever um método <code>growFlowers()</code> que "
+"não recebe parâmetros e nem retorna nenhum resultado. Como o padrão é um "
+"pouco complexo, você deve tentar decompor este desenho em sub-passos de "
+"forma que seu código permaneça curto e fácil de ler. Um método para desenhar "
+"uma flor da cor passada como parâmetro parece um bom começo, mas "
+"provavelmente não é o suficiente."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:11
+#, fuzzy
+#| msgid ""
+#| "For that, you have to write a <code>growFlowers()</code> method that does "
+#| "not take any parameter and does not return any result. As the pattern is "
+#| "a bit complex, you should try to decompose this drawing in sub-steps so "
+#| "that your code remains short and easy to read. A method to draw one "
+#| "flower of the color passed in parameter sounds like a good start, but it "
+#| "is probably not enough."
+msgid ""
+"Also, you should try to decompose this complex drawing in sub-steps so that "
 "your code remains short and easy to read. A method to draw one flower of the "
 "color passed in parameter sounds like a good start, but it is probably not "
 "enough."
@@ -5471,7 +5499,7 @@ msgstr ""
 "provavelmente não é o suficiente."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:13
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:15
 msgid ""
 "For your information, this drawing uses five colors that are listed below.  "
 "[!java|scala|c]The data type of these constants is <code>Color</code>, that "
@@ -5482,33 +5510,45 @@ msgstr ""
 "code>, que naturalmente descreve uma cor particular.[/!]"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:18
-msgid "<tt>[!scala|java|python]Color.[/!]RED</tt>"
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:20
+#, fuzzy
+#| msgid "<tt>[!scala|java|python]Color.[/!]RED</tt>"
+msgid "<code>[!scala|java|python]Color.[/!]RED</code>"
 msgstr "<tt>[!scala|java|python]Color.[/!]RED</tt>"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:19
-msgid "<tt>[!scala|java|python]Color.[/!]PINK</tt>"
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:21
+#, fuzzy
+#| msgid "<tt>[!scala|java|python]Color.[/!]PINK</tt>"
+msgid "<code>[!scala|java|python]Color.[/!]PINK</code>"
 msgstr "<tt>[!scala|java|python]Color.[/!]PINK</tt>"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:20
-msgid "<tt>[!scala|java|python]Color.[/!]CYAN</tt>"
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:22
+#, fuzzy
+#| msgid "<tt>[!scala|java|python]Color.[/!]CYAN</tt>"
+msgid "<code>[!scala|java|python]Color.[/!]CYAN</code>"
 msgstr "<tt>[!scala|java|python]Color.[/!]CYAN</tt>"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:21
-msgid "<tt>[!scala|java|python]Color.[/!]ORANGE</tt>"
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:23
+#, fuzzy
+#| msgid "<tt>[!scala|java|python]Color.[/!]ORANGE</tt>"
+msgid "<code>[!scala|java|python]Color.[/!]ORANGE</code>"
 msgstr "<tt>[!scala|java|python]Color.[/!]ORANGE</tt>"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:22
-msgid "<tt>[!scala|java|python]Color.[/!]GREEN</tt>"
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:24
+#, fuzzy
+#| msgid "<tt>[!scala|java|python]Color.[/!]GREEN</tt>"
+msgid "<code>[!scala|java|python]Color.[/!]GREEN</code>"
 msgstr "<tt>[!scala|java|python]Color.[/!]GREEN</tt>"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:23
-msgid "<tt>[!scala|java|python]Color.[/!]YELLOW</tt>"
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:25
+#, fuzzy
+#| msgid "<tt>[!scala|java|python]Color.[/!]YELLOW</tt>"
+msgid "<code>[!scala|java|python]Color.[/!]YELLOW</code>"
 msgstr "<tt>[!scala|java|python]Color.[/!]YELLOW</tt>"
 
 #. type: Content of: <h2>
