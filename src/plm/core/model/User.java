@@ -16,7 +16,7 @@ public class User implements JSONStreamAware {
 	private UUID userUUID;
 
 	public User() {
-		String username = System.getenv("USER");
+		username = System.getenv("USER");
 		if (username == null) 
 			username = System.getenv("USERNAME");
 		if (username == null) 
