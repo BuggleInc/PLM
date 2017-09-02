@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -77,7 +78,7 @@ public class Users {
 	 * 		      if the provided UUID is not valid
 	 */
 	public void addUser(String username, String uuid) throws IllegalArgumentException {
-		User user = new User(username, false, uuid);
+		User user = new User(username, uuid);
 		
 		if(!usersList.contains(user)) {
 			usersList.add(user);
@@ -173,10 +174,9 @@ public class Users {
 				Iterator iter = json.iterator();
 
 				while (iter.hasNext()) {
-					LinkedHashMap entry = (LinkedHashMap) iter.next();
-					String username = (String) entry.get("username");
-					boolean lastUsed = (Boolean) entry.get("lastUsed");
-					usersList.add(new User(username, lastUsed, (String) entry.get("userUUID")));
+					@SuppressWarnings("unchecked")
+					HashMap<String,Object> entry = (HashMap<String,Object>) iter.next();
+					usersList.add(new User(entry));
 				}
 
 			} catch (ParseException | IOException pe) {

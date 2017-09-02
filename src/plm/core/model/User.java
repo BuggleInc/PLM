@@ -2,6 +2,7 @@ package plm.core.model;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.UUID;
@@ -25,17 +26,31 @@ public class User implements JSONStreamAware {
 		userUUID = UUID.randomUUID();
 		System.err.println(Game.i18n.tr("A new PLM user has been created for you: {0}", this));
 	}
-
-	public User(String username, boolean lastUsed, String uuid) {
+	
+	public User(String username, String uuid) {
 		this.username = username;
-		this.lastUsed = lastUsed;
 		if (uuid == null || uuid.equals("")) {
 			this.userUUID = UUID.randomUUID();
 		} else {
 			this.userUUID = UUID.fromString(uuid);
 		}
 	}
+	private Object getOr(HashMap<String, Object> map, String key, Object defaultValue) {
+		if (map.containsKey(key))
+			return map.get(key);
+		return defaultValue;
+	}
 
+	public User(HashMap<String, Object> map) {
+		username = (String) getOr(map, "username", "John Doe");
+		lastUsed = (Boolean) getOr(map, "lastUsed", false);
+		String strUUID = (String) getOr(map, "userUUID", "");
+		if (strUUID.equals("")) {
+			this.userUUID = UUID.randomUUID();
+		} else {
+			this.userUUID = UUID.fromString(strUUID);
+		}
+	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void writeJSONString(Writer out) throws IOException {
 		LinkedHashMap obj = new LinkedHashMap();
