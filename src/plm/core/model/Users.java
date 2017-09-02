@@ -9,13 +9,9 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Vector;
 
-import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -160,17 +156,8 @@ public class Users {
 				flushUsersToFile();
 			} else {
 				JSONParser parser = new JSONParser();
-				ContainerFactory containerFactory = new ContainerFactory() {
-					public List creatArrayContainer() {
-						return new LinkedList();
-					}
-
-					public Map createObjectContainer() {
-						return new LinkedHashMap();
-					}
-				};
 				try {
-					List json = (List) parser.parse(new FileReader(userDBFile), containerFactory);
+					List json = (List) parser.parse(new FileReader(userDBFile));
 					Iterator iter = json.iterator();
 
 					while (iter.hasNext()) {
