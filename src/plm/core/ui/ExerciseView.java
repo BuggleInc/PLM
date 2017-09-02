@@ -19,11 +19,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.EventListenerList;
 
-import net.miginfocom.swing.MigLayout;
-
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
+import net.miginfocom.swing.MigLayout;
 import plm.core.GameListener;
 import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
