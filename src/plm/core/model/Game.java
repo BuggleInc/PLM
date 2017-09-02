@@ -93,7 +93,6 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
-	private Course currentCourse;
 	private Lecture lastExercise;
 
 	public static final String [][] humanLangs = { {"English","en"}, {"Français","fr"}, {"Italiano","it"}, {"Português brasileiro", "pt_BR"}, {"中文", "zh"} };
@@ -1137,37 +1136,6 @@ public class Game implements IWorldView {
 	}
 	public boolean isCreativeEnabled() {
 		return doCreative;
-	}
-
-	/*
-	 * Getter and Setter for the course ID for the current session.
-	 * This ID will be used by the ServerSpy, to associate this
-	 * PLM student with a course started by a teacher on the server
-	 */
-	public String getCourseID() {
-		if (this.currentCourse == null)
-			return "";
-		else
-			return currentCourse.getCourseId();
-	}
-
-	public String getCoursePassword(){
-		if(this.currentCourse == null)
-			return "";
-		else
-			return currentCourse.getPassword();
-	}
-
-	public void setCourseID(String courseID) {
-		this.currentCourse.setCourseId(courseID);
-	}
-
-	public Course getCurrentCourse() {
-		return currentCourse;
-	}
-
-	public void setCurrentCourse(Course currentCourse) {
-		this.currentCourse = currentCourse;
 	}
 
 	public Users getUsers() {

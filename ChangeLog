@@ -18,6 +18,7 @@
     - #494: Make sure that the tooltip always appear on the speed slider
   * Internal organization:
     - #495: Strenghten the checks for errors in [!python] and such
+    - Kill the broken feature of Courses. Should be redone another way.
 
 20170901: 2.7
 
