@@ -24,7 +24,6 @@ foreach my $file (qx(find src -name '*html')) {
 	my $text = join(":", @arr);
 	
 	$text =~ s#\[\!thelang/?\]#\[\!java\]Java\[/\!\]\[\!python\]python\[/\!\]\[\!scala\]Scala\[/\!\]\[\!c\]C\[/\!\]#sg;
-	$text =~ s#\[\!configfile/?\]#blah#sg;
 
 	# Check for typos
 	for my $lang1 (@langs) {

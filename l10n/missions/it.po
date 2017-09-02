@@ -15995,14 +15995,6 @@ msgstr ""
 #~ msgid "Color.yellow"
 #~ msgstr "Color.yellow"
 
-#~ msgid ""
-#~ "If you prefer not to post your successes online, just change the relevant "
-#~ "properties in your configuration file, that is [!configfile] in your case."
-#~ msgstr ""
-#~ "Se preferite non postare i vostri successi online cambiate la proprietà "
-#~ "relativa del vostro file di configurazione, nel vostro caso esso è in [!"
-#~ "configfile] ."
-
 #~ msgid "forward()[!java];[/!]"
 #~ msgstr "forward()[!java];[/!]"
 

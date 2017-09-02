@@ -17383,14 +17383,6 @@ msgstr ""
 #~ "Esta não é uma lição real, está aqui para que você possa selecionar uma "
 #~ "lição dentre outras."
 
-#~ msgid ""
-#~ "If you prefer not to post your successes online, just change the relevant "
-#~ "properties in your configuration file, that is [!configfile] in your case."
-#~ msgstr ""
-#~ "Se você prefere não publicar seus sucessos online, simplesmente mude as "
-#~ "propriedades relevantes no seu arquivo de configuração, que é [!"
-#~ "configfile] no seu caso."
-
 #~ msgid "forward()[!java];[/!]"
 #~ msgstr "avançar()[!java];[/!]"
 

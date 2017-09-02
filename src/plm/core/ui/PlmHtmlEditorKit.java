@@ -48,7 +48,6 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 	 * 
 	 * Other automagic conversions:
 	 *  [!thelang] displays the name of the current programming language.
-	 *  [!configfile] displays where the PLM config file is stored on disk.
 	 * 
 	 */
 
@@ -108,7 +107,6 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			langColors.put("java|c|python", "333333");
 		}
 		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
-		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties".replaceAll("\\\\", "\\\\"));
 
 		/* Display everything when in debug mode, with shiny colors */
 		if (showAll) {
