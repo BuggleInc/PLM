@@ -233,15 +233,15 @@
       <delete dir="${site.dir}/po"/>
     </target>
 
-    <target name="test-all-exos" depends="compile" description="tests compilation of provided solutions of all exos">
+    <target name="test-exos" depends="compile" description="tests compilation of provided solutions of all exos">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.core.ExoTest"/>		
+        <test name="plm.test.integration.ExoTest"/>		
 	  </junit>
     </target>
 
-    <target name="all-tests" depends="compile" description="launch all tests">
+    <target name="test-all" depends="compile" description="launch all tests">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
@@ -249,7 +249,7 @@
 	  </junit>
     </target>
 	
-    <target name="unit-tests" depends="compile" description="launch all unit tests">
+    <target name="test-unit" depends="compile" description="launch all unit tests">
 	  <junit printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
@@ -257,7 +257,7 @@
 	  </junit>
     </target>
 	
-    <target name="integration-tests" depends="compile" description="launch all integration tests">
+    <target name="test-integration" depends="compile" description="launch all integration tests">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
