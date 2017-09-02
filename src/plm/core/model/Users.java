@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import org.json.simple.JSONArray;
 import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -189,23 +188,25 @@ public class Users {
 	 * Write the ArrayList of User in the JSONArray users. Doing so means that we update the plm.users file with the
 	 * latest changes. This method should always be called after using a Setter from User.
 	 */
-	@SuppressWarnings("unchecked")
 	public void flushUsersToFile() {
 		FileWriter fwUser;
-		JSONArray users = new JSONArray();
 
 		try {
 			fwUser = new FileWriter(userDBFile);
 			BufferedWriter bwUser = new BufferedWriter(fwUser);
 
-			for (User user : usersList) {
-				users.add(user);
-			}
-
 			StringWriter out = new StringWriter();
-			users.writeJSONString(out);
-			// System.out.println(out.toString());
-
+			out.append("[\n");
+			for (int rank = 0 ; rank < usersList.size(); rank++) {
+				out.append("  ");
+				usersList.get(rank).writeJSONString(out);
+				if (rank < usersList.size()-1)
+					out.append(",");
+				out.append("\n");
+			}
+			out.append("]\n");
+	
+			System.out.println(out.toString());
 			bwUser.write(out.toString());
 			bwUser.close();
 		} catch (IOException e) {

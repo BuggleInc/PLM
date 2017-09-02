@@ -190,7 +190,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		ExecutionProgress lastResult = exoFrom.lastResult;
 
 		// Retrieve appropriate parameters regarding the current exercise
-		logmsg.put("course", Game.getInstance().getCourseID());
 		logmsg.put("exo", exoFrom.getId());
 		logmsg.put("lang", lastResult.language.toString());
 		
