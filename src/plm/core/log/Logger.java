@@ -15,8 +15,14 @@ public class Logger {
 		logger = l;
 	}
 
-	public static void log(String message) {
+	public static void debug(String message) {
 		log(LogHandler.DEBUG, message);
+	}
+	public static void info(String message) {
+		log(LogHandler.INFO, message);
+	}
+	public static void error(String message) {
+		log(LogHandler.ERROR, message);
 	}
 
 	public static void log(int type, String message) {

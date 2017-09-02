@@ -91,13 +91,13 @@ public class SourceFile {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
 				if (pattern.getValue().contains("\n")) {
-					Logger.log("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
+					Logger.debug("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
 							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
-					Logger.log("pattern key: "+pattern.getKey());
-					Logger.log("pattern value: "+pattern.getValue());
+					Logger.debug("pattern key: "+pattern.getKey());
+					Logger.debug("pattern value: "+pattern.getValue());
 					// Logger.log("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
-					Logger.log("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
-					Logger.log("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+					Logger.debug("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
+					Logger.debug("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 				}
 			}
 		return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)

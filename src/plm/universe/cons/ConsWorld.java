@@ -69,7 +69,7 @@ public class ConsWorld extends BatWorld {
 						"\n"+*/
 						"def cons(a,b):\n"+
 						"  return RecList(a,b)\n";
-				Logger.log("Extra script chunk added by "+getClass()+":\n"+script);
+				Logger.debug("Extra script chunk added by "+getClass()+":\n"+script);
 				e.eval(script);
 			} catch (ScriptException e1) {
 				e1.printStackTrace();

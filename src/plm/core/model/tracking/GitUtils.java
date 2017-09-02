@@ -73,13 +73,13 @@ public class GitUtils {
 		try {
 			cfg.save();
 		} catch (IOException e) {
-			Logger.log(I18nManager.getI18n(locale).tr("An error occurred while configuring the repository..."));
+			Logger.debug(I18nManager.getI18n(locale).tr("An error occurred while configuring the repository..."));
 			e.printStackTrace();
 		}
 	}
 
 	public boolean fetchBranchFromRemoteBranch(String userBranchHash) throws InvalidRemoteException, GitAPIException {
-		Logger.log(I18nManager.getI18n(locale).tr("Retrieving your session from the servers..."));
+		Logger.debug(I18nManager.getI18n(locale).tr("Retrieving your session from the servers..."));
 		try {
 			FetchResult result = git.fetch().setCheckFetchedObjects(true).setRefSpecs(new RefSpec("+refs/heads/"+userBranchHash+":refs/remotes/origin/"+userBranchHash)).call();
 			if(result.getTrackingRefUpdates().isEmpty()) {
@@ -110,7 +110,7 @@ public class GitUtils {
 		try {
 			git.checkout().setName(userBranchHash).call();
 		} catch (GitAPIException e) {
-			Logger.log(I18nManager.getI18n(locale).tr("An error occurred while checking out the user's branch: ")+userBranchHash);
+			Logger.debug(I18nManager.getI18n(locale).tr("An error occurred while checking out the user's branch: ")+userBranchHash);
 			// FIXME: display the stacktrace if debug mode is enabled
 			//e.printStackTrace();
 			success = false;
@@ -123,13 +123,13 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
+				Logger.error(I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("last session data successfully merged"));
+				Logger.error(I18nManager.getI18n(locale).tr("last session data successfully merged"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
-				Logger.log(LogHandler.ERROR, I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				Logger.error(I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
@@ -206,8 +206,8 @@ public class GitUtils {
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
 		} catch (TransportException e) {
-			Logger.log(I18nManager.getI18n(locale).tr("Cannot synchronize your session with the servers (network down)."));
-			Logger.log(e.getStackTrace().toString());
+			Logger.debug(I18nManager.getI18n(locale).tr("Cannot synchronize your session with the servers (network down)."));
+			Logger.debug(e.getStackTrace().toString());
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		}

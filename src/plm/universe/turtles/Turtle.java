@@ -630,7 +630,7 @@ public class Turtle extends Entity {
 				out.write("\n");
 				break;
 			default:
-				Logger.log("COMMANDE INCONNUE : "+command);
+				Logger.debug("COMMANDE INCONNUE : "+command);
 				break;
 
 			}

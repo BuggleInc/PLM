@@ -106,7 +106,7 @@ public abstract class World  {
 	}
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
-			Logger.log("Ignoring a request to remove an unknown entity");
+			Logger.debug("Ignoring a request to remove an unknown entity");
 	}
 
 	public void emptyEntities() {

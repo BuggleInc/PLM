@@ -44,7 +44,7 @@ public class GitUtilsTest {
 		gitUtils = new GitUtils(new Locale("en"));
 		utils = new Utils();
 
-		Logger.log("repoDirectory: "+ repoDirectory.getAbsolutePath());
+		Logger.debug("repoDirectory: "+ repoDirectory.getAbsolutePath());
 	}
 
 	@Before
@@ -184,7 +184,7 @@ public class GitUtilsTest {
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
 
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
-		Logger.log("Try to fetch from "+remoteUrl);
+		Logger.debug("Try to fetch from "+remoteUrl);
 		boolean success = gitUtils.fetchBranchFromRemoteBranch(userBranch);
 
 		remoteGitUtils.dispose();

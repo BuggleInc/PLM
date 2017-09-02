@@ -75,7 +75,7 @@ public class LangJava extends JVMCompiledLang {
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 			compiledClasses = compiler.compile(sources, errs, I18nManager.getI18n(locale));
-			Logger.log(errs.toString());
+			Logger.debug(errs.toString());
 		} catch (PLMCompilerException e) {
 			lastResult.setCompilationError(e.getDiagnostics());
 			throw e;

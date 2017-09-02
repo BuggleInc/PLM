@@ -65,7 +65,7 @@ public class ExerciseFactory {
 				exo.addMission(humanLanguage.getLanguage(), mission);
 			}
 			catch (FileNotFoundException e) {
-				Logger.log(LogHandler.INFO, "No mission found for: " + exo.getId());
+				Logger.info("No mission found for: " + exo.getId());
 				exo.addMission(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
@@ -84,7 +84,7 @@ public class ExerciseFactory {
 				exo.addHelp(humanLanguage.getLanguage(), sb.toString());
 			}
 			catch (FileNotFoundException e) {
-				Logger.log(LogHandler.INFO, "No help found for: " + exo.getId());
+				Logger.info("No help found for: " + exo.getId());
 				exo.addHelp(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
