@@ -2,6 +2,13 @@ package plm.test.simple.test;
 
 import plm.core.model.Game;
 
+
+
+/* FIXME : THIS IS DISABLED IN AllSimpleExercises */
+
+
+
+
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
 	public ScalaSimpleExerciseTest() {

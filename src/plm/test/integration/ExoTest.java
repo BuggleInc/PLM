@@ -196,7 +196,8 @@ public class ExoTest {
 		testCorrectionEntity(Game.JAVA);
 	}
 	
-	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
+	// FIXME: Test this!
+	//@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntity() {
 		if (!exo.getProgLanguages().contains(Game.SCALA)) 
 			fail("Exercise "+exo.getId()+" does not support scala");

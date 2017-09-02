@@ -8,6 +8,6 @@ import plm.test.integration.ExoTest;
 import plm.test.integration.LessonTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ExoTest.class, LessonTest.class})
+@SuiteClasses({ LessonTest.class, ExoTest.class })
 public class IntegrationTests {
 }
