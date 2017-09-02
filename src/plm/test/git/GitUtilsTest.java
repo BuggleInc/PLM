@@ -44,7 +44,7 @@ public class GitUtilsTest {
 		Game.loadProperties();
 		Game.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		oldTrackUserProperty = Game.getProperty(trackUserProperty);
-		testUser = new User("testUser");
+		testUser = new User("testUser","");
 		userBranch = testUser.getUserUUIDasString();
 		repoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		gitUtils = new GitUtils();
