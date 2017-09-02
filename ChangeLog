@@ -14,6 +14,8 @@
     - #490, #493 : Make clear that writing growFlowers() is part
             of the FlowerPot assignment
     - #482, #489, #498, #500, #503: Glitches and typos in French translation
+  * Java UI
+    - #494: Make sure that the tooltip always appear on the speed slider
   * Internal organization:
     - #495: Strenghten the checks for errors in [!python] and such
 

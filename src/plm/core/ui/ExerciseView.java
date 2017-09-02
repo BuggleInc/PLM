@@ -84,6 +84,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		speedSlider.setMinorTickSpacing(10);
 		speedSlider.setPaintTicks(true);
 		speedSlider.setPaintLabels(true);
+		speedSlider.setToolTipText(i18n.tr("Change the speed of execution"));
 		upperPane.add(speedSlider, "growx");
 
 		tabPane = new JTabbedPane();
