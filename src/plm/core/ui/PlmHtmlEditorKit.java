@@ -23,6 +23,7 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.lesson.Exercise;
 
 
@@ -305,6 +306,8 @@ class MyIconView extends View {
 			
 			c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
 		} else {
+			Logger.error("Cannot load icon "+filename+" until after the ResourceCache is restored.");
+			/*
 			c = ResourcesCache.getIcon(filename,true);
 			if (c != null)
 				return;
@@ -329,6 +332,7 @@ class MyIconView extends View {
 				e.printStackTrace();
 				c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
 			}
+			*/
 		}
 	}
 
