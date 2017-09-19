@@ -27,7 +27,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.FileObject;
 import javax.tools.ForwardingJavaFileManager;
@@ -61,6 +64,9 @@ public class LangJava extends JVMCompiledLang {
 	public String getPackageName() {
 		return packageName();
 	}
+	
+    boolean warnedJava7= false;
+    Pattern isJava7Pattern = Pattern.compile("major version 52 is newer than 51, the highest major version supported by this compiler");
 
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
@@ -75,7 +81,18 @@ public class LangJava extends JVMCompiledLang {
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 			compiledClasses = compiler.compile(sources, errs, I18nManager.getI18n(locale));
-			Logger.debug(errs.toString());
+            for (Diagnostic<? extends JavaFileObject> diagnostic : errs.getDiagnostics()) {
+            	String msg = diagnostic.getMessage(locale);
+            	Matcher isJava6Matcher = isJava7Pattern.matcher(msg);
+            	if (isJava6Matcher.find()) {
+            		if (!warnedJava7)
+            			Logger.debug("You are using a PLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is believed to work.\n");
+            		warnedJava7 = true;
+                } else {
+                	String errorSrc = diagnostic.getSource() == null ? "(null)" : diagnostic.getSource().getName();
+                	Logger.error(errorSrc+":"+diagnostic.getLineNumber()+": "+ msg);
+                }
+            }
 		} catch (PLMCompilerException e) {
 			lastResult.setCompilationError(e.getDiagnostics());
 			throw e;

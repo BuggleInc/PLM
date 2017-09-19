@@ -7,6 +7,7 @@ import javax.script.ScriptException;
 import org.python.core.PyException;
 import org.xnap.commons.i18n.I18n;
 
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.universe.Entity;
@@ -120,15 +121,13 @@ public class LangPython extends ScriptingLanguage {
 			}
 		}				
 
-		if (isDebugEnabled()) {
-			System.err.println("CAUSE: "+cause.value.toString());
-			System.err.println("MSG: "+e.getMessage());
-			System.err.println("BT: "+msg);
-		}
-		
-		if (errorKind == ExecutionProgress.outcomeKind.COMPILE)
+		Logger.error("CAUSE: "+cause.value.toString());
+		Logger.error("MSG: "+e.getMessage());
+		Logger.error("BT: "+msg);
+
+		//if (errorKind == ExecutionProgress.outcomeKind.COMPILE)
 			progress.setCompilationError(msg.toString());
-		else 
+		//else
 			progress.setExecutionError(msg.toString());
 
 		return true; // That was indeed a Python exception
