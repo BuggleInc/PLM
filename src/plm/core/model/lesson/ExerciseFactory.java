@@ -94,7 +94,6 @@ public class ExerciseFactory {
 	}
 
 	public void computeAnswer(Exercise exo, ProgrammingLanguage progLang) {
-		// TODO: Handle case if progLang is not supported
 		if(exo.isProgLangSupported(progLang)) {
 			SourceFile sf = exo.getDefaultSourceFile(progLang);
 			try {
@@ -103,6 +102,9 @@ public class ExerciseFactory {
 				e.printStackTrace();
 			}
 			exerciseRunner.runDemo(exo, progLang);
+		} else {
+			// TODO: Handle case if progLang is not supported
+			Logger.error("Exercise "+exo.getId()+" does not support "+progLang.getLang()+". Exercise left uninitialized.");
 		}
 	}
 
