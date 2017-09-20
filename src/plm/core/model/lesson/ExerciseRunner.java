@@ -73,7 +73,7 @@ public class ExerciseRunner {
 		ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
 
 		Runnable monitorThreads = new Runnable() {
-			int numberOfTries = maxNumberOfTries;
+			int numberOfTries = maxNumberOfTries*500; // maxNumberOfTries is in second, with a 20ms inter-run delay in the scheduler 
 
 			@SuppressWarnings("deprecation")
 			@Override
@@ -137,7 +137,7 @@ public class ExerciseRunner {
 					runEntities(w, progLang, runnerVect, lastResult);
 				}
 
-				ses.scheduleAtFixedRate(monitorThreads, 1000, waitingTime, TimeUnit.MILLISECONDS);
+				ses.scheduleAtFixedRate(monitorThreads, 20, waitingTime, TimeUnit.MILLISECONDS);
 			}
 		};
 
