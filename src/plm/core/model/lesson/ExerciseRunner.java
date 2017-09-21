@@ -23,7 +23,7 @@ import plm.universe.World;
 public class ExerciseRunner {
 
 	public static int DEFAULT_NUMBER_OF_TRIES = 10;
-	public static long DEFAULT_WAITING_TIME = 1000;
+	public static long DEFAULT_WAITING_TIME = 20;
 	
 	private Locale locale;
 	private List<Thread> runnerVect = new ArrayList<Thread>();

@@ -24,7 +24,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 	@Override
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult,
 			StudentOrCorrection whatToCompile, Locale locale)
-			throws PLMCompilerException {
+					throws PLMCompilerException {
 		/* Nothing to do */
 
 	}
@@ -50,7 +50,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 				System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 				throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 			}
-			*/
+			 */
 		} else if(whatToMutate == StudentOrCorrection.CORRECTION) {
 			String script = sourceFile.getCorrection();
 
@@ -72,7 +72,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 			for (Entity ent : olds)
 				ent.setScript(this, script);
 		}
-		*/
+		 */
 		return olds;
 	}
 
@@ -81,7 +81,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 		ScriptEngine engine = null;
 		try {
 			ScriptEngineManager manager = new ScriptEngineManager();
-			if(getLang().equals("Blockly"))
+			if(getLang().equals("Blockly")) 
 				engine = manager.getEngineByName("python");
 			else
 				engine = manager.getEngineByName(getLang().toLowerCase());
