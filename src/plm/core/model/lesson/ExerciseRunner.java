@@ -132,10 +132,8 @@ public class ExerciseRunner {
 				executionStopped = false;
 
 				// Start entities in separate threads
-				for(int i=0; i<currentWorlds.size(); i++) {
-					World w = currentWorlds.get(i);
-					runEntities(w, progLang, runnerVect, lastResult);
-				}
+				for (World w : currentWorlds) 
+					w.runEntities(progLang, runnerVect, lastResult, locale);
 
 				ses.scheduleAtFixedRate(monitorThreads, 20, waitingTime, TimeUnit.MILLISECONDS);
 			}
@@ -151,7 +149,7 @@ public class ExerciseRunner {
 
 		exo.reset();
 		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
-			runEntities(w, progLang, runnerVect, null);
+			w.runEntities(progLang, runnerVect, null, locale);
 		}
 		while(runnerVect.size()>0) {
 			try {
@@ -186,21 +184,6 @@ public class ExerciseRunner {
 			List<Entity> entities = w.getEntities();
 			List<Entity> newEntities = progLang.mutateEntities(entityName, sourceFile, whatToCompile, entities);
 			w.setEntities(newEntities);
-		}
-	}
-
-	private void runEntities(World w, ProgrammingLanguage progLang, List<Thread> runnerVect, final ExecutionProgress progress) {
-		for (final Entity entity : w.getEntities()) {
-			Thread runner = new Thread(new Runnable() {
-				public void run() {
-					progLang.runEntity(entity, progress, locale);
-				}
-			});
-
-			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
-			runner.setPriority(Thread.MIN_PRIORITY);
-			runner.start();
-			runnerVect.add(runner);
 		}
 	}
 

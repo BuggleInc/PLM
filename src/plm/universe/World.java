@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
+import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
@@ -107,6 +108,23 @@ public abstract class World  {
 	public void removeEntity(Entity b) {
 		if (!entities.remove(b)) 
 			Logger.debug("Ignoring a request to remove an unknown entity");
+	}
+
+	/** Run all entities of the world, until their natural end (or somebody from outside kill them on timeout) */
+	public void runEntities(ProgrammingLanguage progLang, List<Thread> runnerVect, 
+			final ExecutionProgress progress, Locale locale) {
+		for (final Entity entity : getEntities()) {
+			Thread runner = new Thread(new Runnable() {
+				public void run() {
+					progLang.runEntity(entity, progress, locale);
+				}
+			});
+
+			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
+			runner.setPriority(Thread.MIN_PRIORITY);
+			runner.start();
+			runnerVect.add(runner);
+		}
 	}
 
 	public void emptyEntities() {
