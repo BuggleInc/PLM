@@ -32,8 +32,6 @@ public class ExerciseRunner {
 	private int maxNumberOfTries = DEFAULT_NUMBER_OF_TRIES;
 	private long waitingTime = DEFAULT_WAITING_TIME;
 
-	private ExecutorService mainExecutor = Executors.newCachedThreadPool();
-
 	public ExerciseRunner(Locale locale) {
 		this.locale = locale;
 	}
@@ -69,6 +67,19 @@ public class ExerciseRunner {
 			return CompletableFuture.completedFuture(lastResult);
 		}
 
+		/*
+		 *  Execution time
+		 */
+		executionStopped = false;
+
+		// Start entities in separate threads
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
+			w.runEntities(progLang, runnerVect, lastResult, locale);
+
+		
+		/*
+		 *  Watchdog to take care of the timeouts
+		 */
 		ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
 
 		Runnable monitorThreads = new Runnable() {
@@ -122,24 +133,7 @@ public class ExerciseRunner {
 				}
 			}
 		};
-
-		/*
-		 *  Execution time
-		 */
-		Runnable runCode = new Runnable() {
-			@Override
-			public void run() {
-				executionStopped = false;
-
-				// Start entities in separate threads
-				for (World w : exo.getWorlds(WorldKind.CURRENT)) 
-					w.runEntities(progLang, runnerVect, lastResult, locale);
-
-				ses.scheduleAtFixedRate(monitorThreads, 20, waitingTime, TimeUnit.MILLISECONDS);
-			}
-		};
-
-		mainExecutor.submit(runCode);
+		ses.scheduleAtFixedRate(monitorThreads, 20, waitingTime, TimeUnit.MILLISECONDS);
 
 		return future;
 	}
