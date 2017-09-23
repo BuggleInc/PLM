@@ -22,7 +22,7 @@ import plm.universe.World;
 
 public class ExerciseRunner {
 
-	public static int DEFAULT_NUMBER_OF_TRIES = 10;
+	public static int DEFAULT_NUMBER_OF_TRIES = 3;
 	public static long DEFAULT_WAITING_TIME = 20;
 	
 	private Locale locale;
@@ -48,7 +48,6 @@ public class ExerciseRunner {
 
 		final CompletableFuture<ExecutionProgress> future = new CompletableFuture<>();
 
-		Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
 		ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
 		exo.reset();
@@ -112,6 +111,7 @@ public class ExerciseRunner {
 					/*
 					 *  Assessment time
 					 */
+					Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
 					for(int i=0; i<currentWorlds.size(); i++) {
 						World currentWorld = currentWorlds.get(i);
 						World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
@@ -132,7 +132,7 @@ public class ExerciseRunner {
 				executionStopped = false;
 
 				// Start entities in separate threads
-				for (World w : currentWorlds) 
+				for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 					w.runEntities(progLang, runnerVect, lastResult, locale);
 
 				ses.scheduleAtFixedRate(monitorThreads, 20, waitingTime, TimeUnit.MILLISECONDS);
@@ -148,10 +148,10 @@ public class ExerciseRunner {
 		// FIXME: Factorize this code
 
 		exo.reset();
-		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
+		for(World w : exo.getWorlds(WorldKind.ANSWER)) 
 			w.runEntities(progLang, runnerVect, null, locale);
-		}
-		while(runnerVect.size()>0) {
+		
+		while (runnerVect.size()>0) {
 			try {
 				Thread t = runnerVect.get(0);
 				t.join();
@@ -222,13 +222,5 @@ public class ExerciseRunner {
 
 	public void stopExecution() {
 		executionStopped = true;
-	}
-
-	public void setMaxNumberOfTries(int maxNumberOfTries) {
-		this.maxNumberOfTries = maxNumberOfTries;
-	}
-
-	public void setWaitingTime(long waitingTime) {
-		this.waitingTime = waitingTime;
 	}
 }
