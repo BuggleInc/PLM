@@ -170,10 +170,6 @@ public class ExerciseRunnerTest {
 					+ "    i = i + 1";
 		}
 
-		// We don't want to wait 10s each time
-		exerciseRunner.setWaitingTime(500);
-		exerciseRunner.setMaxNumberOfTries(5);
-
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.TIMEOUT;
