@@ -84,7 +84,8 @@ public abstract class Entity extends Observable {
 	 */
 	protected void stepUI() {
 		if(operations.size()>0) {
-			addStep();
+			world.addStep(operations);
+			operations = new ArrayList<Operation>();
 		}
 		fireStackListener();
 	}
@@ -168,10 +169,5 @@ public abstract class Entity extends Observable {
 	
 	public void addOperation(Operation operation) {
 		operations.add(operation);
-	}
-
-	public void addStep() {
-		world.addStep(operations);
-		operations = new ArrayList<Operation>();
 	}
 }
