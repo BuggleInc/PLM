@@ -90,9 +90,6 @@
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython-standalone-2.7.0.jar"/>
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.3.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.3.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.3.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
 
@@ -111,7 +108,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
-	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
 
         </jar>
 
@@ -148,8 +144,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
-	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
-
         </jar>
 
         <jar destfile="${dist.dir}/plm-light-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
@@ -166,10 +160,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.3.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.3.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.3.4.jar"/>
-
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
 
@@ -180,7 +170,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
-			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
 
         </jar>
 
