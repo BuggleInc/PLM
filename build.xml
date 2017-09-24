@@ -110,69 +110,6 @@
 	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
 
         </jar>
-
-        <jar destfile="${dist.dir}/plm-engine-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
-            <manifest>
-                <attribute name="Built-By" value="M. Quinson, G. Oster and others" />
-                <attribute name="Main-Class" value="plm.core.ui.ProgrammersLearningMachine" />
-                <attribute name="Class-Path" value="." />
-            </manifest>
-            <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-            <fileset dir="${src.dir}" includes="**/*.py **/*.c **/*.scala **/*.java **/*.blockly **/*.html **/*.css **/*.png **/*.map **/*.json" excludes="**/.gitignore"/>
-            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
-            <fileset dir="${base.dir}" includes="ChangeLog" />
-            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython-standalone-2.7.0.jar"/>
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-core-2.7.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-annotations-2.7.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-databind-2.7.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-module-scala_2.11-2.7.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jackson-module-paranamer-2.7.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/paranamer-2.8.jar"/>
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/rabbitmq-client.jar" />
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
-	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
-        </jar>
-
-        <jar destfile="${dist.dir}/plm-light-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
-            <manifest>
-                <attribute name="Built-By" value="M. Quinson and G. Oster" />
-                <attribute name="Main-Class" value="plm.core.ui.ProgrammersLearningMachine" />
-                <attribute name="Class-Path" value="." />
-            </manifest>
-            <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-            <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map **/*.json" excludes="**/.gitignore"/>
-            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
-            <fileset dir="${base.dir}" includes="ChangeLog" />
-            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/engine/* l10n/missions/*"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
-
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
-			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
-
-        </jar>
-
     </target>
 
     <target name="dist-web" depends="compile, updateversion" description="build webstart application jar files">
