@@ -105,6 +105,8 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/paranamer-2.8.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
+	    
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/rabbitmq-client.jar" />
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
@@ -140,6 +142,8 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/paranamer-2.8.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
+
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/rabbitmq-client.jar" />
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
