@@ -5,6 +5,7 @@ keystore.properties
 *~
 lib/jython/cachedir
 lib/cachedir/
+target
 *.mo
 .DS_Store
 .cache
