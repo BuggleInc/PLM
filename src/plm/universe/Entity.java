@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static getGame().i18n instead.
  * 
@@ -32,7 +33,8 @@ public abstract class Entity extends Observable {
 	protected World world;
 	
 	private List<Operation> operations = new ArrayList<Operation>();
-	private Semaphore oneStepSemaphore = new Semaphore(0);
+	Semaphore stepBegin = new Semaphore(0);
+	Semaphore stepEnd = new Semaphore(0);
 
 	public Entity() {}
 
@@ -74,8 +76,14 @@ public abstract class Entity extends Observable {
 		inited = true;		
 	}
 
+	/** Called from the maestro to let the entity do one step */
 	public void allowOneStep() {
-		this.oneStepSemaphore.release();
+		//Logger.info("(maestro): Start step for "+getName()+"@"+getWorld().getName());
+		this.stepBegin.release();
+	}
+	/** Called from the maestro to wait until the entity is done doing its step. The entity signals so with stepUI() */
+	public void waitStepEnd() {
+		this.stepEnd.acquireUninterruptibly();
 	}
 
 	/** Delays the entity to let the user understand what's going on.
@@ -88,6 +96,11 @@ public abstract class Entity extends Observable {
 			operations = new ArrayList<Operation>();
 		}
 		fireStackListener();
+		//Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
+		if (inited) {
+			stepEnd.release();
+			stepBegin.acquireUninterruptibly();
+		}
 	}
 
 	/** Copy fields of the entity passed in argument */

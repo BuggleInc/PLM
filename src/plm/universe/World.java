@@ -111,20 +111,42 @@ public abstract class World  {
 	}
 
 	/** Run all entities of the world, until their natural end (or somebody from outside kill them on timeout) */
-	public void runEntities(ProgrammingLanguage progLang, List<Thread> runnerVect, 
-			final ExecutionProgress progress, Locale locale) {
-		for (final Entity entity : getEntities()) {
-			Thread runner = new Thread(new Runnable() {
-				public void run() {
-					progLang.runEntity(entity, progress, locale);
-				}
-			});
+	public void runEntities(final ProgrammingLanguage progLang, final List<Thread> runnerVect, 
+			final ExecutionProgress progress, final Locale locale) {
+		
+		Thread maestro = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				List<EntityRunner> allRunners = new ArrayList<EntityRunner>();  
+				
+				for (final Entity entity : getEntities()) {
+					EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
 
-			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
-			runner.setPriority(Thread.MIN_PRIORITY);
-			runner.start();
-			runnerVect.add(runner);
-		}
+					// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
+					runner.setPriority(Thread.MIN_PRIORITY);
+					runner.start();
+					runnerVect.add(runner);
+					allRunners.add(runner);
+				}
+
+				//Logger.info("Start exercise "+getName());
+				List<EntityRunner> trash = new ArrayList<EntityRunner>();  
+				while (!allRunners.isEmpty()) {
+					for (EntityRunner runner : allRunners) {
+						runner.entity.allowOneStep();
+						runner.entity.waitStepEnd();
+						if (!runner.isExecuting())
+							trash.add(runner);
+					}
+					for (EntityRunner dead : trash)
+						allRunners.remove(dead);
+				}
+				//Logger.info("Done with exercise "+getName());
+			}
+		});
+		maestro.start();
+		runnerVect.add(maestro);
 	}
 
 	public void emptyEntities() {
