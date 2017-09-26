@@ -7,7 +7,6 @@ import java.util.Locale;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.LogHandler;
 import plm.core.log.Logger;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.tip.AbstractTipFactory;

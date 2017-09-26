@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,15 +23,9 @@ import plm.universe.World;
 
 public class ExerciseRunner {
 
-	public static int DEFAULT_NUMBER_OF_TRIES = 3;
-	public static long DEFAULT_WAITING_TIME = 20;
-	
 	private Locale locale;
-	private List<Thread> runnerVect = new ArrayList<Thread>();
-	private boolean executionStopped = false;
 
-	private int maxNumberOfTries = DEFAULT_NUMBER_OF_TRIES;
-	private long waitingTime = DEFAULT_WAITING_TIME;
+	final long timeoutMilli = 3000;
 
 	public ExerciseRunner(Locale locale) {
 		this.locale = locale;
@@ -70,90 +65,41 @@ public class ExerciseRunner {
 		/*
 		 *  Execution time
 		 */
-		executionStopped = false;
-
-		// Start entities in separate threads
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
-			w.runEntities(progLang, runnerVect, lastResult, locale);
-
+		CompletableFuture<?>[] worldRunners =
+				exo.getWorlds(WorldKind.CURRENT)
+				.stream()
+				.map(world -> world.runEntities(progLang, lastResult, locale, timeoutMilli))
+				.toArray(CompletableFuture[]::new);
 		
 		/*
-		 *  Watchdog to take care of the timeouts
+		 *  Assessment time
 		 */
-		final ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
-
-		Runnable monitorThreads = new Runnable() {
-			int numberOfTries = maxNumberOfTries*500; // maxNumberOfTries is in second, with a 20ms inter-run delay in the scheduler 
-
-			@SuppressWarnings("deprecation")
-			@Override
-			public void run() {
-				boolean stillAlive = false;
-				boolean executionEnded = false;
-				if(!executionStopped && numberOfTries > 0 && runnerVect.size()>0) {
-					do {
-						if(runnerVect.get(0).isAlive()) {
-							numberOfTries--;
-							stillAlive = true;
-						}
-						else {
-							runnerVect.remove(0);
-							executionEnded = runnerVect.isEmpty();
-						}
-					} while(!stillAlive && runnerVect.size()>0);
-				}
-
-				if(executionStopped || numberOfTries == 0) {
-					for(Thread t : runnerVect) {
-						t.stop();
-					}
-					runnerVect.clear();
-					if(executionStopped) {
-						lastResult.setStopError();
-						executionStopped = false;
-					}
-					else if(numberOfTries == 0) {
-						lastResult.setTimeoutError();
-					}
-					ses.shutdown();
-					future.complete(lastResult);
-				}
-				else if(executionEnded) {
-					/*
-					 *  Assessment time
-					 */
+		return CompletableFuture.allOf(worldRunners)
+				.thenApply(unused -> {
 					Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
 					for(int i=0; i<currentWorlds.size(); i++) {
 						World currentWorld = currentWorlds.get(i);
 						World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
 						checkWorld(currentWorld, answerWorld, progLang, lastResult);
 					}
-					ses.shutdown();
-					future.complete(lastResult);
-				}
-			}
-		};
-		ses.scheduleAtFixedRate(monitorThreads, 20, waitingTime, TimeUnit.MILLISECONDS);
-
-		return future;
+					return lastResult;
+				});
 	}
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
-		// FIXME: Factorize this code
 
 		exo.reset();
-		for(World w : exo.getWorlds(WorldKind.ANSWER)) 
-			w.runEntities(progLang, runnerVect, null, locale);
-		
-		while (runnerVect.size()>0) {
-			try {
-				Thread t = runnerVect.get(0);
-				t.join();
-				runnerVect.remove(t);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+		CompletableFuture<?>[] worldRunners =
+					exo.getWorlds(WorldKind.ANSWER)
+							.stream()
+							.map(world -> world.runEntities(progLang, null, locale, timeoutMilli))
+							.toArray(CompletableFuture[]::new);
+
+		try {
+			CompletableFuture.allOf(worldRunners).get();
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}			
 	}
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile, ExecutionProgress progress) throws PLMCompilerException {
@@ -212,9 +158,5 @@ public class ExerciseRunner {
 		} else {
 			progress.passedTests++;
 		}
-	}
-
-	public void stopExecution() {
-		executionStopped = true;
 	}
 }
