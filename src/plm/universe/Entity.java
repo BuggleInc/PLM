@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -81,9 +82,24 @@ public abstract class Entity extends Observable {
 		//Logger.info("(maestro): Start step for "+getName()+"@"+getWorld().getName());
 		this.stepBegin.release();
 	}
-	/** Called from the maestro to wait until the entity is done doing its step. The entity signals so with stepUI() */
-	public void waitStepEnd() {
-		this.stepEnd.acquireUninterruptibly();
+	/** Called from the maestro to wait until the entity is done doing its step, or until the timeout occurs.
+	 *  The entity signals being done with its step using stepUI()
+	 *   
+	 *  If the calling thread gets interrupted, it will still go down to its timeout value before stopping.
+	 *   
+	 * @return true if the step ended properly, false on timeout  
+	 */
+	public boolean waitStepEnd(long timeoutMilli) {
+		boolean interrupted = true;
+		long startTime = System.currentTimeMillis();
+		while (interrupted) {
+			try {
+				long now = System.currentTimeMillis();
+				return stepEnd.tryAcquire(timeoutMilli - (now-startTime), TimeUnit.MILLISECONDS);
+			} catch (InterruptedException e) {
+			}
+		}
+		return false; // Will never happen
 	}
 
 	/** Delays the entity to let the user understand what's going on.

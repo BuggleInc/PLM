@@ -40,13 +40,13 @@ public class ExerciseRunner {
 		this.locale = locale;
 	}
 
-	public CompletableFuture<ExecutionProgress> run(Exercise exo, ProgrammingLanguage progLang, String code) {
+	public CompletableFuture<ExecutionProgress> run(final Exercise exo, final ProgrammingLanguage progLang, String code) {
 		// FIXME: Clean this function
 		// FIXME: Don't share lastResult with mutatesEntities() and runEntities()
 
 		final CompletableFuture<ExecutionProgress> future = new CompletableFuture<>();
 
-		ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
+		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
 		exo.reset();
 
@@ -62,7 +62,7 @@ public class ExerciseRunner {
 			return CompletableFuture.completedFuture(lastResult);
 		} catch (PLMEntityNotFound e) {
 			e.printStackTrace();
-			String msg = "An error occurred while running your program. Usually, it means that you wrote some code (others than methods or functions) outside the run() method. Please check your code.";
+			String msg = "Your program failed to start. One possible cause is some code laying around, out of any function or method. Please make sure that all your code (but your function declaraitons) is written in the run() method.";
 			lastResult.setExecutionError(msg);
 			return CompletableFuture.completedFuture(lastResult);
 		}
@@ -80,7 +80,7 @@ public class ExerciseRunner {
 		/*
 		 *  Watchdog to take care of the timeouts
 		 */
-		ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
+		final ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
 
 		Runnable monitorThreads = new Runnable() {
 			int numberOfTries = maxNumberOfTries*500; // maxNumberOfTries is in second, with a 20ms inter-run delay in the scheduler 

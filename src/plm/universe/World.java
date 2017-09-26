@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.TimeUnit;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -115,32 +116,52 @@ public abstract class World  {
 			final ExecutionProgress progress, final Locale locale) {
 		
 		Thread maestro = new Thread(new Runnable() {
+			final long timeoutMilli = 3000;
 			
 			@Override
 			public void run() {
 				List<EntityRunner> allRunners = new ArrayList<EntityRunner>();  
+				long startTime = System.currentTimeMillis();
 				
+				// Start all entities, each in one thread
 				for (final Entity entity : getEntities()) {
 					EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
 
-					// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
+					// So that we can still stop it from the maestro Thread, even if an infinite loop occurs
 					runner.setPriority(Thread.MIN_PRIORITY);
 					runner.start();
 					runnerVect.add(runner);
 					allRunners.add(runner);
 				}
 
-				//Logger.info("Start exercise "+getName());
+				// Run all entities, step after step. 
+				// Kill everyone as soon as the timeout occurs  
 				List<EntityRunner> trash = new ArrayList<EntityRunner>();  
-				while (!allRunners.isEmpty()) {
+				boolean timeout = false;
+				while (!timeout && !allRunners.isEmpty()) {
 					for (EntityRunner runner : allRunners) {
 						runner.entity.allowOneStep();
-						runner.entity.waitStepEnd();
+						
+						long now = System.currentTimeMillis();
+						long elapsed = now-startTime;
+						if (runner.entity.waitStepEnd(timeoutMilli - elapsed) == false) {
+							timeout = true;
+							Logger.error("TIMEOUT after "+(System.currentTimeMillis()-startTime));
+							break; // Don't run the other entities once the timeout fires
+						}
 						if (!runner.isExecuting())
 							trash.add(runner);
 					}
+					
+					/* HERE, we should generate a frame of the world */
+					
 					for (EntityRunner dead : trash)
 						allRunners.remove(dead);
+					if (timeout) {
+						for (EntityRunner runner : allRunners) 
+							runner.stop();
+						progress.setTimeoutError();
+					}
 				}
 				//Logger.info("Done with exercise "+getName());
 			}
