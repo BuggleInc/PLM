@@ -64,26 +64,25 @@ public class ExerciseRunner {
 
 		/*
 		 *  Execution time
+		 *  
+		 *  build one future per world in charge of executing this, 
+		 *  and then chain another one to compare if it's the correct solution
 		 */
-		CompletableFuture<?>[] worldRunners =
-				exo.getWorlds(WorldKind.CURRENT)
-				.stream()
-				.map(world -> world.runEntities(progLang, lastResult, locale, timeoutMilli))
-				.toArray(CompletableFuture[]::new);
+		int worldCount = exo.getWorlds(WorldKind.CURRENT).size(); 
+		CompletableFuture<?>[] worldRunners = new CompletableFuture[worldCount];
+		for(int i=0; i<worldCount; i++) {
+			World currentWorld = exo.getWorlds(WorldKind.CURRENT).get(i);
+			World answerWorld =  exo.getWorlds(WorldKind.ANSWER).get(i);
+			worldRunners[i] = currentWorld.runEntities(progLang, lastResult, locale, timeoutMilli)
+					            .thenRun( () -> checkWorld(currentWorld, answerWorld, progLang, lastResult) );
+		}
+
 		
 		/*
-		 *  Assessment time
+		 *  After all worlds are done executing, we should return the ExecutionProgress as a result
 		 */
 		return CompletableFuture.allOf(worldRunners)
-				.thenApply(unused -> {
-					Vector<World> currentWorlds = exo.getWorlds(WorldKind.CURRENT);
-					for(int i=0; i<currentWorlds.size(); i++) {
-						World currentWorld = currentWorlds.get(i);
-						World answerWorld = exo.getWorlds(WorldKind.ANSWER).get(i);
-						checkWorld(currentWorld, answerWorld, progLang, lastResult);
-					}
-					return lastResult;
-				});
+				.thenApply(unused -> lastResult);
 	}
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
