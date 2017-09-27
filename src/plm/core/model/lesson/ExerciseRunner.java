@@ -1,15 +1,9 @@
 package plm.core.model.lesson;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Vector;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
@@ -35,11 +29,33 @@ public class ExerciseRunner {
 		this.locale = locale;
 	}
 
-	public CompletableFuture<ExecutionProgress> run(final Exercise exo, final ProgrammingLanguage progLang, String code) {
-		// FIXME: Clean this function
+	/** Build a Future that will execute the provided exercise in the provided progLanguage, 
+	 *  assuming that the code of all entities is the string passed as last parameter.
+	 *
+	 * For that, it first "mutates" all entities of all worlds in the exercise:
+	 *   - Compile the provided code as a new Entity subclass
+	 *   - Instantiate new entities from this subclass
+	 *   - Make each new entity actually copy the fields of one old entity of the world
+	 *     (see Entity.copy() in e.g. AbstractBuggle.java and other subclasses)
+	 *   - put the newly created and initialized entities in place of the old ones in the world.
+	 *   
+	 * Then, it "runs" each worlds:
+	 *   - it resets the world to its initial configuration (given by the exercise)
+	 *   - it runs all entities, ie start one thread per entity, and run them in a synchronized 
+	 *     way. All entities are run in a round-robin manner to execute one animation step, and
+	 *     the animation steps are all computed until all entities are done, or until a timeout.
+	 *
+	 * Finally, each worlds are compared to was was expected by the exercise, to see whether
+	 * the correct solution was actually found.
+	 *
+	 * @param exo
+	 * @param progLang
+	 * @param code
+	 * @return The future to way onto to get the final result
+	 */
+	public CompletableFuture<ExecutionProgress> run(final Exercise exo, 
+			final ProgrammingLanguage progLang, String code) {
 		// FIXME: Don't share lastResult with mutatesEntities() and runEntities()
-
-		final CompletableFuture<ExecutionProgress> future = new CompletableFuture<>();
 
 		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
