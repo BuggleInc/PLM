@@ -39,7 +39,8 @@ public class Main {
 		Judge judge = new Judge(connector);
 
 		// Let the judge handle one request before exiting
-		judge.handleMessage();
+		for (int i=0; i<100; i++)
+			judge.handleMessage();
 
 		connector.closeConnections();
 		System.exit(0);
