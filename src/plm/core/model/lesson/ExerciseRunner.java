@@ -19,7 +19,7 @@ public class ExerciseRunner {
 
 	private Locale locale;
 
-	final long timeoutMilli = 3000;
+	final long timeoutMilli = 5000; // 5sec
 
 	public ExerciseRunner(Locale locale) {
 		this.locale = locale;
