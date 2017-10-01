@@ -98,8 +98,18 @@ public class JSONUtils {
 	public static ObjectNode exerciseToJudgeJSON(Exercise exercise) {
 		ObjectNode root = exerciseToJSON(exercise);
         root.remove("instructions");
+        root.remove("helps");
 		fixTypeEntities(exercise, root);
 		removeSteps(exercise, root);
+
+		// Remove the doc of the worlds
+		for(int i=0; i<exercise.getWorldCount(); i++) {
+			ObjectNode w = (ObjectNode) root.path("answerWorlds").path(i);
+			w.remove("about");
+			w = (ObjectNode) root.path("initialWorlds").path(i);
+			w.remove("about");
+		}
+
         return root;
 	}
 
