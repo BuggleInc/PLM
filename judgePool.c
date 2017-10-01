@@ -9,7 +9,7 @@
  *  tests back to back).
  * 
  *  This is because a judge needs 2 to 7 seconds to start, load all involved classes, and warmup the embeeded 
- *  compilers while most exercises run in less than 150ms. So, there is a 1/20 ratio between the duration where
+ *  compilers while most exercises run in less than 150ms. So, there is a 1/200 ratio between the duration where
  *  the judge is actually useful, and the time it takes to boot up.
  * 
  *  Having a bunch of judges already started helps to handle load bursts, but cannot help against a
@@ -25,7 +25,8 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#define CHILDCOUNT 20
+#define CHILDCOUNT 4
+#define DELAY 8 /* inter-child delay during the warmup */
 
 int pids[CHILDCOUNT];
 
@@ -51,8 +52,10 @@ static void inthandler(int ignored) {
 
 int main(int argc, char* argv[]) {
    
+   pid_t pid;
+   
    printf("Rebuild the jarfile\n");
-   pid_t pid = fork();
+   pid = fork();
    if (pid==0) {// child
       execlp("ant", "ant", "dist", NULL);
       perror("execlp ant failed");
@@ -65,7 +68,11 @@ int main(int argc, char* argv[]) {
       pids[i] = fork();
       if (pids[i] == 0) 
 	runchild();
+      printf(" launch child #%d\n",i);
+      fflush(stdout);
+      sleep(DELAY);
    }
+   printf("All childs are launched\n");
    
    /* Kill everyone on Ctrl-C */
    signal(SIGINT, inthandler);

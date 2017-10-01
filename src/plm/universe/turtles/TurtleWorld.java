@@ -34,7 +34,9 @@ public class TurtleWorld extends World {
 	}
 
 	@JsonCreator
-	public TurtleWorld(@JsonProperty("name")String name, @JsonProperty("width")int width, @JsonProperty("height")int height) {
+	public TurtleWorld(@JsonProperty("name")String name, 
+			           @JsonProperty("width")int width, 
+			           @JsonProperty("height")int height) {
 		super(name);
 		this.width = width;
 		this.height = height;
