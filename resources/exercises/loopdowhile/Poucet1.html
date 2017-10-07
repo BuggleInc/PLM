@@ -1,0 +1,31 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tracks of buggles</h2>
+
+<p>Your buggle got lost in a strange maze, and you must help it to find the exit that is represented in orange.
+You cannot simply explain the path to the exit in something like <code>right();forward();forward();forward()</code> 
+because you have to save two buggles at the same time, that are lost in similar but not identical worlds. 
+You can switch to the other world by using the combobox above the world representation (where it's written 
+'Deep Forest' right now), and selecting the other entry (that should read 'Deeper Forest').</p>
+
+<p>The good news is that the path to the exit is written on the ground. As you can see, the world is made 
+of several corridors, with baggles on the ground. After each corridor, you should turn left if the corridor contains
+three baggels or more, and you have to turn right if there is only 2 baggles or less.</p>
+
+<p>You should count exactly 5 cells per corridor, the one at the intersection counting as the last cell of the 
+previous corridor, not as the first cell after your turn. </p>     
+
+<p>So, the general form of your code must be something like "while I did not find the exit, take the next corridor 
+to decide whether I should turn left or right at the next intersection". You can determine whether you are on the 
+exit cell (that is orange) with the provided <code>exitReached()</code> method.</p>
+
+<p>To take one corridor, you simply have to run from one intersection to another while counting the baggles you see 
+on your path. That's easy: there is 5 steps in each corridors so a simple <code>for</code> loop suffices.</p>
+
+
+<p><div class="tip" id="tip-1" alt="I cannot imagine how to count the baggles I see.">
+You need a variable that is initialized to 0, and incremented each time you see a 
+baggle on the ground. A variable used this way is often called <i>counter</i>.<br/><br/>
+Don't forget to reset your counter to 0 at the beginning of each corridor! 
+</div></p>
+
+<p>Oh, and when you reach the exit, don't forget to take an extra step to actually exit the maze!</p> 

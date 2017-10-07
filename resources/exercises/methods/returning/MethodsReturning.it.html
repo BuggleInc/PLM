@@ -1,0 +1,80 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Functions</h2>
+
+<p>Quite often, you want to write a method that compute some value and returns
+it. Methods returning results are called <b>functions</b>.  Writing a
+function is not really harder than writing a simple method.  [!java|c]You
+simply have to specify the data type of expected results before the function
+name (where we previously had <code>void</code>).[/!] [!scala]You simply
+have to add a colon (:) after the parenthesis and write the type of data
+that your function will return, and add an equal sign (=). This syntax is
+actually rather close to defining a variable, with its type, that is
+actually a function.[/!] You can use the <code>return</code> instruction
+anywhere in your function body to specify that the computation is done (the
+function is not further executed), and that the result is the value
+following the <code>return</code> keyword.</p>
+
+<pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>Si può anche utlizzare la parola chiave <code>return</code> solamente per
+interrompere l'esecuzione del metodo, non ritornando alcun
+risultato. Ovviamente in questo caso non bisognerà specificare un valore di
+ritorno.</p>
+
+<p>It is possible to have several <code>return</code> instructions in several
+branches of a conditional. In fact, it is forbidden to have any execution
+path of your body without any <code>return</code>, or to write some code
+after the <code>return</code> instruction. Indeed, if the machine reaches
+the end of the function without finding any <code>return</code>, it cannot
+know what actual value to give back to the function caller.  Moreover,
+<code>return</code> interrupts immediately the function execution (why
+bother looking further when you know the function result?). So, if there is
+some code after a <code>return</code>, it must be an error and the compiler
+warns you.</p>
+
+<pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
+    if (isFacingWall() == [!java|scala]true[/!][!c]1[/!]) {
+        return [!java|scala]false[/!][!c]0[/!];
+        <span class="comment">/* no code allowed here */</span>
+    } else {
+        return [!java|scala]true[/!][!c]1[/!];
+        <span class="comment">/* here neither */</span>
+    }
+    <span class="comment">/* even here, forget it */</span>
+}[/!][!python]def isFrontFree():
+    if isFacingWall() == True:
+        return False
+        <span class="comment"># no code allowed here</span>
+    else
+        return True
+        <span class="comment"># here neither</span>
+<span class="comment"># even here, forget it</span>[/!]</pre>
+
+<h3>Traguardo dell'esercizio</h3>You will once again write a function that the buggle will use. Its name must
+be <code>haveBaggle</code>, and it returns a boolean value indicating
+whether the row in front of the buggle contains a baggle or not. The buggle
+will use it to search the first row containing a baggle, and stop here.
+
+<p>The easier for this function is to use a boolean variable called
+<code>seenBaggle</code> indicating whether or not we saw a baggle so
+far. Its initial value is
+'[!python]False[/!][!scala|java]false[/!][!c]0[/!]'.</p>
+
+<p>Then, move 6 steps forward (the world contains 7 cells and we already are on
+one of them). For each cell, if it contains a baggle, we store true in
+<code>sawBaggle</code> (and we don't do anything but moving forward if not).</p>
+
+<p>Alla fine dovremo tornare indietro di 6 passi e ritornare il valore della
+variabile <code>baggleVisto</code> al chiamante.</p>
+
+
+<p>Questo esercizio si distinge un po' perché ci sono tre mondi iniziali,
+ognuno con il suo specifico objective. Il tuo codice deve funzinoare per
+tutti loro. Nota che il menù scorrevole world selection (al di sotto dello
+speed slider) permette di cambiare il mondo osservato. </p>
+
+<p>When your function <code>haveBaggle</code> works, proceed to next exercise.</p>
+

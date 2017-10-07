@@ -1,0 +1,87 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Algorithme de Pledge</h2>
+
+<p>Une fois de plus, vous pensiez que votre algorithme vous permettait de vous
+échapper des labyrinthes, et une fois de plus, votre buggle est prise dans
+un labyrinthe mettant votre algorithme en défaut. Essayez de copier votre
+code et de l'exécuter pour voir : votre création précédente échoue
+lamentablement. Le piège a la forme d'un «G» majuscule : la buggle entre
+dans le piège, suit le bord interne. Au bout d'un moment, la direction nord
+est libre et votre buggle se met donc à courir dans cette direction. Pour
+retomber dans le piège...
+</p>
+
+<p>L'algorithme de Pledge (nommé d'après Jon Pledge d'Exeter) peut sortir de ce
+labyrinthe.</p> 
+
+<p>Cet algorithme est une version modifiée de l'algorithme précédent conçu pour
+éviter les obstacles. Il nécessite de choisir de manière arbitraire une
+direction vers laquelle la buggle se dirigera. Quand un obstacle est
+rencontré, une patte (disons la patte de gauche) est gardée le long des
+obstacles tandis que les virages sont comptabilisés. Quand la buggle est
+face à nouveau à la direction originale, et que la somme des virages est
+égale à 0, la buggle quitte l'obstacle et continue de se déplacer dans sa
+direction d'origine. </p>
+
+<p>Notez que l'utilisation de la "somme des virages" à la place de la
+"direction courante" permet à l'algorithme d'éviter les pièges tel que les
+formes en "G" majuscule. Si l'on rentre par la gauche dans le piège, on
+tourne de 360 degrés autour des murs. Un algorithme qui se contenterait
+naïvement de se retrouver dans la même direction qu'à l'origine rentre dans
+un cycle infini puisque qu'il quitte le mur le plus à droite en étant dirigé
+vers la gauche, et entre à nouveau dans la section incurvée.</p>
+
+<p>L'algorithme de Pledge ne quitte pas le mur en bas à droite puisque la somme
+des virages ne vaut pas zéro à ce moment. Il continue de suivre le mur
+jusqu'à avoir complètement fait le tour, et le quitte en regardant à gauche
+une fois parvenu sous l'obstacle.</p>
+
+
+<h3>Objectif de cet exercice</h3>
+
+<p><a name="Objectifs"/> L'objectif de cet exercice est d'écrire une
+implémentation de l'algorithme de Pledge qui permettra à votre buggle de
+sortir du labyrinthe.</p>
+
+<p>Reprenez la méthode <code>keepHandOnSideWall()</code> de l'exercice
+précédent. Modifiez cette méthode pour compter les virages pris par votre
+buggle (+1 lorsqu'il a tourné à gauche par rapport à son origine, -1
+lorsqu'il a tourné à droite). Pour comptabiliser vous aurez besoin d'ajouter
+une variable <code>sommeAngle</code> de type entière à votre programme.</p>
+
+<p>Écrivez une méthode booléenne <code>isDirectionFree(dir)</code> indiquant si
+la direction fournie en paramètre est libre, c'est-à-dire si vous pouvez
+vous déplacer dans cette direction. Notez que la démo utilise la direction
+NORD pour cela. Vous pouvez retrouver la direction courante de la buggle en
+utilisant la méthode <code>Direction getDirection()</code>.  Vous pouvez
+diriger (sans se déplacer) votre buggle dans une direction en utilisant la
+méthode <code>setDirection(dir)</code>.  Pensez à mémoriser (dans une
+variable dédiée) la direction courante de votre buggle avant de vérifier si
+votre buggle peut se diriger vers sa direction de prédilection pour pouvoir
+restaurer l'état après coup.</p>
+
+<p>Vous pouvez être amenés à modifier également le reste de votre code, mais
+ces changements devraient rester limités.</p>
+
+[!python]<p>N'oubliez pas que si l'une de vos méthodes modifie une variable globale
+(telle que sommeAngles), vous devez vous assurer qu'elle définie cette
+globale correctement. Sinon, la méthode crée une nouvelle variable locale de
+même nom, et la globale n'est jamais modifiée.</p>
+<pre>def myMethod():
+  global sommeAngle
+  ...
+  sommeAngle = sommeAngle + 1
+</pre>
+[/!]
+
+<div class="tip" id="tip-1" alt="Montrer un indice supplémentaire">
+Vous devez changer votre cap vers votre direction favorite (probablement le
+nord -- Direction.NORD). Il vous faut ensuite écrire la boucle principale de
+votre algorithme. Tant que votre buggle n'a pas trouvé son biscuit, il faut
+avancer jusqu'à un obstacle dans la direction de prédilection. Quand un
+obstacle est rencontré, il faut garder la patte sur un mur (en utilisant
+<code>keepHandOnSideWall()</code>) tant que la somme des virages n'est pas
+nulle et que la direction de prédilection n'est pas libre. Faites cela
+jusqu'à trouver votre biscuit.</div>
+	

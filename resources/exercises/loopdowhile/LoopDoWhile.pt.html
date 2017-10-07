@@ -1,0 +1,60 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Loops Do .. while (faça .. enquanto)</h2>
+
+<p>Algumas células do mundo são amarelas, mas seu buggle não pode ficar sobre
+estas células. Escreva o código necessário para mover para a frente até que
+o chão fique branco. Para isto use o método fornecido
+<code>chãoBranco()</code>.</p>
+
+<p>O truque é que a maioria dos buggles deste mundo ficam sobre o chão amarelo
+que eles não gostam. é por isto que eles estão em pânico, e cada buggle
+"rushes" uma célula para a frente, mesmo aqueles que não estavam numa célula
+amarela no começo. Em outras palavras, mesmo se o chão for branco na
+primeira célula, você ainda vai querer se mover para a próxima célula.</p>    
+
+<p>A ideia geral é fazer algo como: </p>
+<pre>Mover para a frente até estar numa célula branca</pre>
+
+<p>A coisa mais difícil é que nós queremos executar o corpo do loop uma vez,
+mesmo se já estivermos numa célula branca. Isto é fácil duplicando o código
+do loop'antes do loop em si, mas esta é uma má ideia: diplicação de código é
+um hábito <b>muito</b> ruim, e você deve evitar isto <b>sempre</b>.</p>
+
+<p>Duplicação de código faz da manutenção de código um pesadelo rapidamente: é
+fdifícil ler o código e o leitor tem que garantir que nenhuma pequena
+diferença exista entre as versões. Depurar o código se torna difícil, pois
+os bugs devem ser consertados em todas as versões. Na verdade, cada
+modificação do código se torna difícil. Então, na verdade, você deve
+<b>sempre</b> se esforçar para não duplicar seu código sempre que
+possível. Mas a boa notícia é que você sempre pode...</p>
+
+<h3>Executando o corpo do loop pelo menos uma vez</h3>
+[!python]
+<p>Algumas linguagens tem construções específicas para isto, mas não a
+linguagem Python. Sem problemas, podemos fazer isto nós mesmos! Uma boa
+forma é ter uma variável dedicada indicando se estamos entrando no loop a
+primeira vez ou não, como segue.</p>
+<pre>primeiraVez = True
+while primeiraVez or (outras condições):
+  primeiraVez = False
+  (corpo do loop)
+</pre>
+
+<p>Quando <code>primeiraVez</code> é true, o corpo do loop é executado mesmo se
+as outras condições digam o contrário.  uma vez que o loop tenha sido
+executado uma vez, esta variável vira false e nunca mais impacta na decisão
+de entrar ou não no loop.</p>
+[/!] [!java|scala|c]
+<p>Num loop <tt>while</tt>, a condição é calculada antes de qualquer coisa, e
+se for falsa, o corpo do loop nunca é executado. Algumas vezes (mas não
+muito frequentemente), você pode preferir que o corpo do loop seja executado
+pelo menos uma vez, mesmo se a condição seja inicialmente falsa. Para isto,
+uma variação do loop <tt>while</tt> é usada, com a seguinte sintaxe em
+[!thelang].  [!java|c]Não esqueça o ponto-e-vírgula (;) depois da condição,
+que é obrigatório.[/!]
+
+<pre>do {
+    <b>ação()</b>[!java];[/!]
+} while (<b>condição</b>)[!java];[/!]</pre></p>
+[/!]

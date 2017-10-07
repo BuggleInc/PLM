@@ -1,0 +1,32 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tracciamento della Lumaca</h2>
+<p>
+Il tuo buggle è felicissimo! Ha appena trovato una bavosa traccia verde
+sicuramente lasciata da una grossa e deliziosa lumaca.  Il buggle è certo
+che alla sua fine si intratterrà con un con questa appetitosa lumaca
+(rappresentata con un baggle). 
+</p>
+
+<p>Per raggiungere l'obbiettivo dovrai scrivere il metodo booleano
+<tt>isFacingTrail</tt> (Ndt davantiTraccia) che determinerà di fronte
+abbiamo una cella verde oppure no. Ovviamente se ad esempio sarete davanti
+ad un muro esso dovrà ritornale false senza andarci a sbattere. Dovrete
+assicurarvi che questo metodo non avrà <b>effetti collaterali</b> e cioé che
+non cambi il buggle che lo sta chiamando o il mondo che lo circonda.</p>
+
+<p>Your tool to that end is the <code>getGroundColor()</code> that returns the
+color of the current cell. Just go to the cell you want to test and run that
+function.  [!java]You cannot test whether this color is equal to
+<code>Color.green</code> with an <code>==</code> sign but instead you have
+to write something like
+<code>getGroundColor().equals(Color.green)</code>. This is because green is
+an <i>object</i> in Java, and <code>.equals()</code> is the way to go to
+test equality between Java objects.[/!] [!python|scala|c]So you just have to
+test whether the returned color is equal to the value
+<code>[!scala|python]Color.green[/!][!c]GREEN[/!]</code>, that represents
+the green color.[/!]</p>   
+
+<h3>Traguardo dell'esercizio</h3>
+<p>Scrivi il metodo <code>isFacingTrail()</code> (che sarà chiamato
+automaticamente dal buggle).</p>

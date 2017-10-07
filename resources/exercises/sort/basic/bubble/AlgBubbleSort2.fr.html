@@ -1,0 +1,35 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Tri à bulle (deuxième version)</h1>
+
+<p>En étudiant le comportement du tri à bulle, on peut voir une première
+optimisation facile à effectuer: Après un parcours, le dernier élément du
+tableau est forcément le plus grand d'entre tous car le parcours l'a fait
+remonter comme une bulle à sa position. Plus généralement, après N parcours,
+on sait que les N derniers éléments du tableau sont déjà triés. En
+conclusion, il n'est pas utile de les recomparer sur les parcours
+suivants. Dans un premier temps, nous ferons autant de parcours qu'il y a
+d'éléments dans le tableau.</p>
+
+<div class="tip" id="tip-2" alt="Montrer l'indice (le pseudo-code)">
+<p>Le pseudo-code de l'algorithme BubbleSort2 est le suivant :</p>
+<pre>Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)
+       Pour tout j dans [0, i]
+          Si les cases j et j+1 doivent être inversées, le faire
+</pre>
+</div>
+
+<p>Lorsqu'on exécute cet algorithme, il peut être un peu décevant de constater
+qu'il s'exécute à la même vitesse que la version de base de
+BubbleSort. C'est un effet graphique seulement puisque seules les
+changements de valeurs dans le tableau sont représentées. Comme cette
+variante consiste à éviter des comparaisons inutiles, elle effectue très
+exactement le même nombre d'échanges que la version de base. Il est donc
+normal que notre interface graphique la représente à la même vitesse que la
+version de base. Mais les statistiques sur le nombre de lectures montrent
+bien que l'on a économisé plus d'un quart du nombre de lectures, ce qui
+n'est pas si mal.</p>
+
+<p>D'un point de vue complexité algorithmique, cela ne change rien: cette
+variante est toujours en O(n2) en moyenne (on ne gagne que sur la
+constante).</p>

@@ -1,0 +1,50 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tower of Hanoi</h2>
+
+<p>The Tower of Hanoi or Towers of Hanoi, also called the Tower of Brahma or
+Towers of Brahma, is a mathematical game or puzzle. It consists of three pegs,
+and a number of disks of different sizes which can slide onto any peg. The
+puzzle starts with the disks in a neat stack in ascending order of size on one
+peg, the smallest at the top, thus forming a pyramid.</p>
+
+The objective of the puzzle is to move the entire stack to another peg, obeying the following rules:
+<ul>
+  <li>Only one disk may be moved at a time.</li>
+
+  <li>Each move consists of taking the upper disk from one of the pegs and
+  sliding it onto another peg, on top of the other disks that may already be
+  present on that peg.</li>
+
+  <li>No disk may be placed on top of a smaller disk.</li>
+</ul>
+
+<h3>Goal of this exercise</h3> 
+
+Write the core of the method: 
+<code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!java|c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], [!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!scala]:Int[/!])</code>
+
+<p>This method will recursively solve the presented problem. The first parameter
+named <code>height</code> is the height of the tower to move; The second parameter
+<code>src</code> is the index of the initial tower, the third parameter
+<code>other</code> is the index of the unused peg while the fourth parameter
+<code>dst</code> is the index of the expected final tower.</p>
+
+<p>A key to solving this puzzle is to recognize that it can be solved by breaking
+the problem down into a collection of smaller problems and further breaking
+those problems down into even smaller problems until a solution is reached.</p>
+
+<div class="tip" id="tip-1" alt="I don't get it, please give me some extra indications">
+Here is the pseudo-code of the solution:
+<ul>
+  <li>label the pegs A, B, C (these labels may move at different steps)</li>
+  <li>let n be the total number of discs (the height of the initial tower)</li>
+  <li>number the discs from 1 (smallest, topmost) to n (largest, bottommost)</li>
+</ul>
+
+To move n discs from peg A to peg C:
+<ul>
+  <li>move n−1 discs from A to B. This leaves disc number n alone on peg A</li>
+  <li>move disc number n from A to C</li>
+  <li>move n−1 discs from B to C so they sit on disc number n</li>
+</ul>
+</div>

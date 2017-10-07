@@ -1,0 +1,19 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Les tours de Hanoï cycliques</h2>
+
+<p>Cette variante des tours de Hanoï est très similaire au problème de base :
+vous avez une pile de disques, trois piquets et il est interdit de placer un
+gros disque sur un disque plus petit. La nouveauté est que vous ne pouvez
+bouger les disques que dans un seul sens : 0->1 ou 1->2 ou 2->0, mais jamais
+dans l'autre sens.</p>
+
+<p>Manifestement, les mouvements ne sont plus symétriques. Déplacer un disque
+de A vers B est maintenant très différent de le déplacer de B vers A. Du
+coup, vous aurez besoin de deux fonctions récursives permettant
+respectivement de déplacer la pile dans le sens indiqué
+(<code>clockwise</code>), ou dans l'autre sens.</p>
+
+<p>Ceci étant, la décomposition récursive du problème est très similaire à
+celle du problème classique. Simplement, chacune des deux fonctions appelle
+l'autre, constituant un bel exemple de récursivité mutuelle.</p>

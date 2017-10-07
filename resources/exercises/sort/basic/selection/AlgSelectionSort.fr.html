@@ -1,0 +1,25 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Tri par sélection</h1>
+
+Cet exercice est l'occasion d'implémenter un autre algorithme très classique
+: le tri par sélection.
+
+<p>Son principe est simplement de sélectionner pour chaque case du tableau la
+plus petite valeur de la partie pas encore triée. Ainsi, pour la première
+case, je prend la plus petite valeur du tableau. Pour la seconde, je prend
+la seconde plus petite valeur, qui se trouve être la plus petite des cases
+n'étant pas encore triées. Bien entendu, il n'est pas nécessaire de trier la
+dernière case du tableau, puisqu'elle est déjà triée lorsque vous la
+considérez.
+
+<p>Plus généralement, pour la case N, je cherche la case M de [N;lgr] contenant
+la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N
+et celui de la case M. 
+
+<h2>Variantes possibles</h2>
+Un autre algorithme classique dont le principe repose sur la sélection des
+bons éléments est le tri par tas, mais il utilise une structure de données
+en tas, que nous n'avons pas encore introduite. Sachez simplement que ce tri
+présente un coût en O(n log n) dans le pire des cas, ce qui en fait un
+algorithme très intéressant en pratique. 

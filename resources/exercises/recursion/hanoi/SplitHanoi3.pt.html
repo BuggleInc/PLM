@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Fast Split Towers of Hanoi</h2>
+
+<p>Novamente, nossas soluções anteriores funcionam, mas estão longe de serem
+ótimas. Quando movemos as torres, usamos o algoritmo de 3 varas mesmo quando
+temos 4 varas. Obviamente, movimentos para a última vara são restritos pois
+ela contém a outra pilha, mas podemos sempre armazenar o menor disco no topo
+da outra pilha antes de mover nossa pilha.</p>
+
+<p>Para isto, nós precisamos criar uma nova função
+<code>hanoi_fast(height, src, free, full, dst)</code> que move a pilha
+de <code>src</code> para <code>dst</code> usando <code>free</code>,
+mas armazenando o menor disco em <code>full</code> antes.</p>
+
+<div class="tip" id="tip-1" alt="Estou perdido">
+A função <code>hanoi_fast(height, src, free, full, dst)</code> não é
+recursiva. Ela move o primeiro disco e então chama a função regular
+<code>hanoi()</code>.
+</div> <br>
+
+<p>Esta mudança melhora enormemente a eficiência, como você pode ver
+abaixo. Obviamente, este truque também pode ser usado para o algoritmo
+intercalado, levando, como esperado, a exatamente a mesma eficiência.</p>
+<table border="1">
+<tr><td>Quantidade de discos</td><td>Intercalada</td><td>Slow Split</td><td>Fast Split</td></tr>
+<tr><td>5 pares</td>     <td> 62 movimentos</td>  <td> 88 movimentos </td><td> 46 movimentos</td></tr>
+<tr><td>6 pares</td>     <td>126 movimentos</td>  <td>183 movimentos </td><td> 82 movimentos</td></tr>
+<tr><td>7 pares</td>     <td>254 movimentos</td>  <td>374 movimentos </td><td>150 movimentos</td></tr>
+</table>
+
+<p>Como uma conclusão, a maioria das pessoas se satisfaz com uma solução que
+funcione e rapidamente ignora possibilidades para melhorar a decomposição do
+problema. <b>Você</b> não deve fazer isto ;)</p>

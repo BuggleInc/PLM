@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Courbe du Dragon (1)</h2>
+
+<p>Un exemple classique de la méthode récursive est la courbe du Dragon.</p>
+
+<p>La définition de cette courbe est la suivante :<br/> 
+la courbe du Dragon d'ordre 1 est un vecteur entre deux points quelconques P
+et Q,<br/>
+la courbe du Dragon d'ordre n est la courbe du Dragon d'ordre n-1 entre P et
+R suivie de la même courbe d'ordre n-1 entre Q et R, où PRQ est le triangle
+isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, si P et Q
+sont les points de coordonnées (x, y) et (z,t), les coordonnées (u, v) de R
+sont les suivantes:</p>
+<pre>
+u = (x + z)/2 + (t - y)/2
+v = (y + t)/2 - (z - x)/2
+</pre>
+
+<p>Le prototype de la méthode traçant la courbe est le suivant :</p>
+<pre>[!java|c]void [/!]dragon([!java|c]int [/!]ordre[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
+
+
+<p>Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre
+tortue aux coordonnées (x,y) et la méthode <code>allerVers(z,t)</code> pour
+tracer un trait depuis le point où la tortue est positionnée vers le point
+de coordonnées (z,t)</p>
+
+<p>Consultez les objectifs de chaque monde pour comprendre comment écrire la
+fonction.</p> 

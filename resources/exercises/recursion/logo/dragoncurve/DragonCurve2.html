@@ -1,0 +1,46 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>The dragon curve (2)</h2>
+
+<p>Previous solution induce that the turtle teleports to other location, or at
+the very least, that it moves its pen up during the drawing. Indeed, the end
+of the drawing of the first recursive call does not match the beginning of
+the second recursive call. That is why we had to use the method
+<code>setPos()</code></p>	
+
+<p>In this lesson, you will write a recursive method allowing to draw the
+dragon curve without taking the pen up. For that, we need another recursive
+method drawing the mirror side of the curve.</p>
+
+<p>The method <code>dragon()</code> is then recursively defined using itself
+and <code>dragonReverse()</code>. Likewise, the method
+<code>dragonReverse()</code> is defined recursively using itself and
+<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>.
+</p>
+
+<p>
+The prototype of the <code>dragon()</code> method remains unchanged from
+previous exercise:</p>
+<pre>[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
+
+<p>The new point's coordinate (u, v) introduced by the <code>dragon()</code> are:</p>
+<pre>
+u = (x + z)/2 + (t - y)/2
+v = (y + t)/2 - (z - x)/2
+</pre>
+
+<p>The prototype of the method <code>dragonReverse</code> is similar:</p>
+<pre>[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
+
+<p>The new point's coordinate (u, v) introduced by the <code>dragonReverse()</code> are:</p>
+<pre>
+u = (x + z)/2 - (t - y)/2
+v = (y + t)/2 + (z - x)/2
+</pre>
+
+<p>To make the work of each method recursiv more visible, the line painted by
+the <code>dragon()</code> must be red (<code>Color.red</code>) while the
+line painted by the <code>dragonReverse()</code> must be blue
+(<code>Color.blue</code>).</p>
+
+<p>Have a look at each world's objective view to understand how to write the
+function.</p> 

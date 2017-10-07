@@ -1,0 +1,194 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Stocker et manipuler des données</h2>
+  <p>Les programmes que nous avons écrit jusque là passent à coté d'un point
+fondamental en informatique. En effet, la science informatique est celle de
+traiter des <b>données</b> grâce à des <b>instructions</b>. Dans le monde
+des buggles, les principales données sont cachées derrière la représentation
+graphique, mais ce n'est pas une raison pour ne jamais manipuler
+explicitement des données. </p>
+
+  <h3>Les données en [!thelang]</h3>
+<p>Dans un programme, on peut utiliser différents <i>types</i> de données, tels
+que les entiers, les nombres à virgules ou les chaînes de caractères. Si on
+veut utiliser une donnée plusieurs fois, il faut la stocker dans une
+<i>variable</i>, qui est une sorte de case contenant une valeur: vous rangez
+votre donnée (disons '5') dans la variable (disons «longueur»), et vous
+pouvez la retrouver plus tard quand vous en avez besoin. C'est exactement
+comme prendre une boîte avec une étiquette (disons «cadeau») et d'y ranger
+quelque chose dedans (disons, un flacon de Channel Numéro 5).  </p>
+
+<h3>Déclaration de Variables</h3>  
+
+<p>Il est très simple de <b>déclarer</b> (c'est-à-dire, créer) une variable en
+[!thelang]. Il suffit d'écrire
+[!java]son type, une espace et le nom de la variable.[/!]
+[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:),
+le type de la variable, un signe égal (=) et une valeur initiale.[/!]
+[!python]le nom de la variable, un signe égal (=) et sa valeur initiale.[/!]
+
+Le nom de la variable est un label pour la retrouver plus tard[!python].[/!]
+
+[!java|scala] tandis que son type est le genre de données qu'on va pouvoir
+stocker dans cette variable.[/!]
+Il est interdit de mettre des espaces dans les noms de variable.
+On peut nommer une variable <code>dejaFait</code>, mais <code>deja
+fait</code> n'est pas un identificateur de variable valide.
+  </p>
+
+[!c|java]
+  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
+écrira :</p> 
+  <pre><code class="code-container">int x;</code></pre>
+  <p>Si vous le souhaitez, vous pouvez donner une valeur initiale à votre
+variable en ajoutant le symbole égal (=) suivi d'une valeur après la
+déclaration.</p>
+<pre><code class="code-container">int x=5;</code></pre>
+[/!] [!python]
+  <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire : </p>
+<pre><code class="code-container">x = 5</code></pre>
+[/!] [!scala]
+  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers avec 42
+en valeur initiale, on écrira :</p> 
+<pre><code class="code-container">var x:Int = 42</code></pre>
+  <p>Dans la plupart des cas, le compilateur est capable de deviner le type de la
+variable d'après la valeur initiale. On peut alors omettre le type de la
+variable:</p>
+<pre><code class="code-container">var x = 42</code></pre>
+  <p>Il est nécessaire de spécifier le type de la variable lorsque l'on
+initialise ses variables avec des valeurs génériques, telles que la valeur
+très particulière <code>null</code>, dont le type se trouve être
+ambigu. Même quand le type est clair, vous pouvez le spécifier si vous le
+souhaitez. Ainsi, pour une variable contenant 5 en valeur initiale, on peut
+écrire: </p>
+  <pre><code class="code-container">var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
+var y = 10       <span class="comment">// ou bien je peux l'omettre</span></code></pre>
+[/!] [!java|scala|c]
+<p>Comme vous pouvez le voir, les variables sont <b>typées</b> en
+[!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une
+variable donnée ne peut stocker qu'un type de données spécifique. N'essayez
+même pas de ranger des nombres dans une variable faite pour recevoir des
+lettres ! On dit que [!thelang] est un langage <b>typé statiquement</b>.</p>
+<p>D'autres langages (comme le python) sont moins regardants, et on peut ranger
+n'importe quel type de données dans n'importe quelle variable sans
+restriction. À première vue, cela semble plus simple, mais ce genre de
+restriction permet au compilateur de détecter plus d'erreurs de logiques
+pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile
+d'écrire du python, mais le typage empêche certaines erreurs de se glisser
+dans vos programmes.</p>
+<p>Voici quelque uns des types de données existants en [!thelang] :</p>
+<ul>
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, pour les entiers;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, pour les booléens,
+c'est-à-dire les variables dont la valeur est soit
+"[!c]1[/!][!java|scala]vrai[/!]" soit "[!c]0[/!][!java|scala]faux[/!]";</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, pour les chaînes de caractères.</li>
+</ul>
+[/!] [!python]
+<p>Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en
+Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de
+données particulier. Il est tout à fait envisageable de stocker des nombres
+dans une variable, puis d'y mettre des lettres un peu plus tard. Les valeurs
+elles-mêmes ont bien entendu un type, mais pas les variables. On dit alors
+que python est un langage <b>dynamiquement typé</b>.</p>
+<p>D'autres langages (comme le Java, le Scala ou le C) sont plus restrictifs et
+imposent de spécialiser chaque variable pour un type donné (on dit que ce
+sont des langages <b>statiquement typés</b>). Cela semble bien plus
+contraignant à première vue, mais ce genre de restriction permet au
+compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine
+manière, il est plus facile d'écrire du Python, mais le typage de ces
+langages empêche certaines erreurs de se glisser dans les programmes.</p>
+[/!] [!scala]
+<p>Si vous savez que votre «variable» ne va jamais changer de valeur (par
+exemple parce qu'il s'agit de la taille de l'écran ou une autre constante du
+genre), alors vous devriez en faire une <b>valeur</b> plutôt qu'une
+variable.
+Utilisez simplement le mot-clé <code>val</code> au lieu de
+<code>var</code>.
+Le compilateur pourra alors faire plus de vérifications pour aider les
+étourdis cherchant à modifier les constantes. Plus intéressant, le
+compilateur parvient également à produire du code plus rapide dans certains
+cas.</p>
+[/!]
+
+<p>C'est la même histoire pour les chaînes, nombres à virgule flottante et les
+booléens.</p>
+
+[!c]
+<pre><code class="code-container">char* nom = "Martin Quinson";
+double taille=1.77; <span class="comment">// en mètres</span>
+boolean marie=1; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait 0</span></code></pre>
+[/!] [!java]
+<pre><code class="code-container">String nom = "Martin Quinson";
+double taille=1.77; <span class="comment">// en mètres</span>
+boolean marie=true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span></code></pre>
+[/!] [!scala]
+<pre><code class="code-container">val nom:String = "Martin Quinson"; <span class="comment">// impossible de le modifier (c'est une valeur)</span>
+var taille: Double = 1.77; <span class="comment">// en metre</span>
+var marie = true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span>
+<span class="comment">// Scala sait que 'true' est une valeur de type Boolean, pas besoin de le répéter</span></code></pre>
+[/!] [!python]
+<pre><code class="code-container">prenom = "Martin"
+nom = 'Quinson' <span class="comment"># les simples et les doubles quotes fonctionnent ici</span>
+devise = "Je ne finis jam' (mais je continue d'essayer)" <span class="comment"># avoir des quotes simples dans des doubles quotes fonctionne</span> 
+taille=1.77 <span class="comment"># en mètre</span>
+marie=True <span class="comment"># Signifie 'vrai'; le contraire (faux) serait marqué 'False'</span></code></pre>
+[/!]
+
+<h3>Affectations</h3>
+
+<p>Une fois que votre variable est déclarée, vous pouvez y <i>affecter</i> une
+nouvelle valeur plus tard dans votre programme. C'est vraiment très simple :</p> 
+<pre><code class="code-container">x = 3[!java|c];[/!]</code></pre>
+
+<p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
+contenir des constantes, des variables et des opérations :</p>
+
+<pre><code class="code-container">x = 3 + 2[!java|c];[/!]
+x = 3 * x[!java|c];[/!]
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)[/!]</span></code></pre> 
+
+<h3>Objectif de cet exercice</h3>
+Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif
+cette fois est d'avancer jusqu'au biscuit qui se trouve devant la buggle, le
+ramasser, revenir à la position initiale, puis de poser le biscuit.
+
+<h3>Comment faire ?</h3> 
+<p>Pour résoudre ce problème, il faut le décomposer en parties que vous savez
+résoudre. Par exemple, on peut vouloir faire les étapes suivantes :
+<ol>
+  <li>Avancer jusqu'à se trouver sur un biscuit</li>
+  <li>Ramasser le biscuit au sol</li>
+  <li>Reculer du même nombre de cases que ce qu'on a avancé</li>
+  <li>Reposer le biscuit au sol</li>
+</ol></p>
+
+<p>Bien entendu, il est impossible de reculer du bon nombre de case à l'étape 3
+si l'on a pas compté le nombre de pas faits à la première étape. On va pour
+cela utiliser une variable, que l'on peut nommer <code>nbPas</code>.</p>
+
+<p>On crée cette variable (de type <code>int</code>) avant l'étape 1, on
+l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
+(<code>nbPas = nbPas + 1;</code>[!java|c] ou <code>nbPas++;</code>, les deux
+écritures sont équivalentes[/!]).</p>
+  
+[!python|scala]
+<p>Si vous connaissez le Java ou d'autres langages du genre, vous serez
+probablement tenté d'utiliser l'opérateur <code>++</code> pour incrémenter
+la variable. Malheureusement, cet opérateur n'existe pas en
+[!thelang]. C'est parce qu'il serait difficile de savoir quoi faire quand on
+l'applique à un nombre complexe ou à une chaîne de caractères. Le problème
+ne se pose pas en Java, où ++ est défini pour le type <code>int</code> qui
+n'est pas un type d'objet mais un type primitif (si vous ne connaissez pas
+l'opérateur ++, ignorez simplement ce paragraphe : cela n'existe pas en
+[!thelang]).</p>
+[/!]
+
+<p>Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière
+<code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que
+<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant
+<code>dejaFait</code> à chaque fois. Il faut utiliser l'opérateur
+<code>!=</code> pour tester l'inégalité entre deux valeurs.</p> 
+
+<p>À vous de jouer !</p>

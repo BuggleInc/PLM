@@ -1,0 +1,31 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Spirales</h2>
+
+Nous allons maintenant écrire notre première fonction récursive avec les
+tortues. L'objectif est de dessiner des spirales de différentes formes avec
+la même fonction, dont le prototype est le suivant: 
+<pre>[!java|c]void [/!]spiral([!java|c]int [/!]nbPas[!scala]:Int[/!], [!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]longueur[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])</pre>
+
+Pour vous aider à comprendre comment l'écrire, voici un exemple de la suite
+des différentes valeurs prises par les paramètres dans un cas:
+<pre>
+spiral(5, 90, 0, 3);
+  avance(0);
+  gauche(90);
+  spiral(4,90,3,3);
+    avance(3);
+    gauche(90);
+    spiral(3,90,6,3);
+      avance(6);
+      gauche(90);
+      spiral(2,90,9,3);
+        avance(9);
+        gauche(90);
+        spiral(1,90,12,3);
+          avance(12);
+          gauche(90);
+          spiral(0,90,12,3);
+</pre>
+
+

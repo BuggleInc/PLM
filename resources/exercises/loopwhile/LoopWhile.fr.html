@@ -1,0 +1,52 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Boucles tant que <tt>(while)</tt></h2>
+		
+<p>En plus des instructions conditionnelles, une autre construction pratique
+est de pouvoir répéter une action tant qu'une condition particulière n'est
+pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe
+est la suivante :</p>
+ 
+<pre><code class="code-container">[!java|scala|c]while (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;
+}[/!][!python]while <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</code></pre>
+
+<p>Le bloc est alors exécuté encore et encore, tant que la condition est
+vraie. Plus précisément, la buggle teste la valeur de la condition. Si elle
+est fausse, le bloc est ignoré et l'exécution continue avec la suite. Si la
+condition est vraie, le bloc est exécuté. Ensuite, la buggle réévalue la
+condition. Si elle est devenue fausse (par exemple parce que les
+déplacements du bloc nous ont mis face au mur), le bloc est maintenant
+ignoré et on continue avec la suite. Mais si la condition est toujours
+vraie, on exécute une nouvelle fois le bloc avant de réévaluer une fois de
+plus la condition. Cela continue ainsi tant que la condition reste vraie.</p>
+
+<p>Évidement, si l'action en question ne modifie pas la valeur de la condition,
+la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le
+bouton <b>stop</b>  <a><i class="mdi mdi-stop"></i></a>  de l'interface
+devient utile. Pour tester cela, vous pouvez essayer de taper le code
+suivant dans l'éditeur :</p>
+
+<pre><code class="code-container">[!java|scala]while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;gauche();
+}[/!][!c]while (1) {
+&nbsp;&nbsp;&nbsp;&nbsp;gauche();
+}[/!][!python]while True:
+&nbsp;&nbsp;&nbsp;&nbsp;gauche()[/!]</code></pre>
+
+<p>La buggle va tourner vers la gauche tant que
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> est vrai (sans
+fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton
+stop. Dans ce cas particulier, nous allons aussi stopper l'exécution
+automatiquement au bout de 10 secondes.</p>
+
+<h3>Objectif de cet exercice</h3>
+Il vous faut maintenant écrire le code nécessaire pour que vos buggles
+avancent jusqu'à rencontrer un mur. L'idée est donc de faire :
+
+<pre><code class="code-container">tant que l'on est pas face à un mur, faire :
+&nbsp;&nbsp;avancer();</code></pre>
+
+<p>Référez-vous à la documentation (bouton <i>API</i>) pour la liste complète
+des méthodes comprises par les buggles.</p>

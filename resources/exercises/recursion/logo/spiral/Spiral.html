@@ -1,0 +1,30 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Spirals</h2>
+
+We will now draw our first recursive function with the turtle. The goal is
+to draw different kind of spirals with the same function, which prototype is
+the following: 
+<pre>[!java|c]void [/!]spiral([!java|c]int [/!]steps[!scala]:Int[/!], [!java|c]int [/!]angle[!scala]:Int[/!], [!java|c]int [/!]length[!scala]:Int[/!], [!java|c]int [/!]increment[!scala]:Int[/!])</pre>
+
+To help you understanding how to write it, here is an example of how the
+parameters change during one specific call:
+<pre>
+spiral(5, 90, 0, 3);
+  forward(0);
+  left(90);
+  spiral(4,90,3,3);
+    forward(3);
+    left(90);
+    spiral(3,90,6,3);
+      forward(6);
+      left(90);
+      spiral(2,90,9,3);
+        forward(9);
+        left(90);
+        spiral(1,90,12,3);
+          forward(12);
+          left(90);
+          spiral(0,90,12,3);
+</pre>
+
+

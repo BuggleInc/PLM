@@ -1,0 +1,45 @@
+{
+  "name" : null,
+  "lectures" : [ {
+    "names" : {
+      "en" : "Pancake Sorting",
+      "pt" : "Ordenação da panqueca",
+      "fr" : "Trier des crêpes"
+    },
+    "id" : "sort.pancake.BasicPancake",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Bubble Pancakes",
+      "pt" : "Bubble Pancakes",
+      "fr" : "Crêpes et bulle"
+    },
+    "id" : "sort.pancake.BubblePancake",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Burned Pancakes",
+      "pt" : "Panquecas queimadas",
+      "fr" : "Crêpes brûlées"
+    },
+    "id" : "sort.pancake.BurnedPancake",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Faster Pancake Sorting",
+      "pt" : "Ondenação de Panqueca Rápida",
+      "fr" : "Tri rapide de crêpes"
+    },
+    "id" : "sort.pancake.GatesPancake",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Faster Burned Pancake Sorting",
+      "pt" : "Faster Burned Pancake Sorting",
+      "fr" : "Tri rapide de crêpes brûlées"
+    },
+    "id" : "sort.pancake.CohenPancake",
+    "dependingLectures" : [ ]
+  } ],
+  "id" : "sort.pancake"
+}

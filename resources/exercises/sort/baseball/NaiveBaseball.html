@@ -1,0 +1,44 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Naive Rainbow Baseball</h1>
+
+<p>Today, the buggles decided to play a baseball game, but they are rather out of luck, actually.
+First, kinda forgot the rules, and ... well ... they cannot find the ball and bats again. 
+So they decided to "adapt a bit" the rules. As the are no ball, the buggles can only running 
+around the field, what they do happily: for a while, all attending buggle run at full speed in
+all directions around the field.</p> 
+
+<p>But after a few collisions, they decide to invent new rules to organize a bit the game: 
+They make one team per base and two players per team. One of the teams has only one player so 
+that its base has an empty location. Then, the players are dispatched randomly around the bases, 
+and the game for them is to reach their home base. The whole game stops when all players are home. 
+There is no winning team: either all players win, or they all lose. Actually, this game is very
+different from the original baseball. The only rule that remains is that you can only run around 
+the field, from one base to the next one, without crossing middle of the field.</p>
+
+<p>Now, they are asking you to help them deciding who and when should move so that each player 
+returns to its base. Only one buggle can move at each round, from its position to the empty spot. 
+The maximal distance that a buggle can cover in one round is of one base.</p>
+
+<p>So, at each round, the empty spot is on one base (say <code>B</code>), and you should decide 
+which buggle enters that empty spot. There is four candidates (two from base <code>B-1</code> 
+and two from base <code>B+1</code>). Actually, there is a fifth candidate since the buggle that 
+is on the same base than the empty spot can change its position, but that's not really helping.</p>
+
+<h3>The Naïve algorithm</h3>
+
+<p>In this exercise, we will first explore a very simple algorithm. To decide which of the four 
+candidate buggles should enter the empty spot, we first restrict ourselves and decide that buggles
+can only turn clockwise. Then, from the two remaining candidates, we pick the one that has the 
+largest distance to cover to reach its base (turning clockwise). Click on the demo button: this 
+works rather well in practice.</p>
+
+<p>It's hard to find a simpler algorithm for this problem: While it's not sorted, search for 
+the base containing the candidate buggles: if the hole is in base <code>B</code>, it's the base 
+<code>B+1</code>, modulo the amount of bases. Then, compute the distance that each buggle of that 
+base still has to run to reach its base (0 if it's already home). Once you found the buggle that 
+should enter the empty spot, just use the <code>move</code> method on it, and iterate.</p>   
+
+<p>The main difficulty should be to get the few equations right: determining the base next to the 
+hole should be easy, but determining the distance that a player has to cover may reveal a bit more
+challenging. Don't hesitate to draw pictures on a paper to cover all possible cases. It should not
+be that difficult either: there is not that many cases after all.</p>  

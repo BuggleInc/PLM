@@ -1,0 +1,62 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Boucles jusqu'à<tt> (do ... while)</tt></h2>
+
+<p>Certaines cases du monde sont jaunes, mais les buggles ne supportent pas de
+s'y trouver. Écrivez le code nécessaire pour avancer jusqu'à ce que le sol
+devienne blanc. Vous pourrez utiliser la méthode <code>estSurBlanc()</code>
+qui retourne vrai si le sol est blanc..</p>
+
+<p>Le truc est que la plupart des buggles de ce monde se trouvent actuellement
+sur ce sol jaune qui les énerve tant. Cela explique sans doute leur état de
+panique, et le fait que toutes les buggles se ruent vers l'avant au début,
+même la buggle qui ne se trouve pas sur du jaune. En d'autres mots, même si
+le sol est blanc le premier coup, il faut quand même avancer d'un pas.</p>    
+
+<p>L'idée générale est donc de faire: </p>
+<pre>avancer jusqu'à se trouver sur une case blanche</pre>
+
+<p>La principale difficulté est que nous voulons exécuter le corps de boucle au
+moins une fois, même si la buggle se trouve déjà sur une case blanche. Il
+serait facile de dupliquer le corps de la boucle avant la boucle pour cela,
+mais  ça serait une <b>très mauvaise idée</b>. Dupliquer du code est une
+<b>très mauvaise habitude</b> et il faut toujours éviter de le faire.</p>
+
+<p>Quand on duplique le code, sa maintenance tourne facilement au cauchemar :
+la lecture du code est très pénible puisque le lecteur doit s'assurer qu'il
+n'y a effectivement aucune différence, même minime, entre les versions du
+même code. Debugger le code devient plus long, puisqu'il faut corriger
+toutes les versions. En fait, toutes les modifications deviennent
+pénibles. Alors, vraiment, vous devrez <b>toujours</b> vous efforcer
+d'éviter la duplication du code quand c'est possible. Et la bonne nouvelle
+est que c'est toujours possible...</p>
+
+<h3>Exécuter le corps de boucle au moins une fois</h3>
+[!python]
+<p>Certain langage ont une construction spécifique pour cela, mais pas
+Python. Qu'à cela ne tienne, on s'en sort très bien sans. Une bonne manière
+est d'avoir une variable dédiée indiquant si c'est la première fois que l'on
+rentre dans la boucle :</p>
+<pre>premiereFois = True
+while premiereFois or (les autres conditions):
+  premiereFois = False
+  (le corps de la boucle)
+</pre>
+
+<p>Quand <code>premiereFois</code> est vraie, le corps de la boucle est exécuté
+même si les autres conditions impliqueraient le contraire. Une fois que le
+corps de boucle a été exécuté, <code>premiereFois</code> est mis à faux et
+n'influe plus jamais la décision d'entrer dans le corps de boucle.</p>
+[/!] [!java|scala|c]
+<p>Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
+et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
+parfois que l'on veuille que le corps de la boucle soit évalué au moins une
+fois, même si la condition est initialement fausse. On utilise pour cela une
+variante de la boucle <tt>while</tt>, dont la syntaxe est la suivante en
+[!thelang].[!java|c]Ne pas oublier le point virgule (;) après la condition,
+c'est obligatoire.[/!]
+
+<pre>do {
+    <b>action()</b>[!java];[/!]
+} while (<b>condition</b>)[!java];[/!]</pre></p>
+[/!]

@@ -1,0 +1,48 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Écrire des programmes plus complexes</h2>
+  Maintenant que vous savez écrire des choses sur le sol, nous allons utiliser
+cette compétence pour dessiner un merveilleux G par terre. Consultez le
+panneau d'objectif pour les détails de ce qui est attendu. 
+
+  <p>Quand vous écrivez un programme un peu complexe, il est souvent pratique
+d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après
+coup. Ici par exemple, il est assez facile de se perdre dans les ordres
+nécessaires au dessin. Il peut être pratique d'ajouter des commentaires
+comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le
+G. Retournons à la position initiale</i>. Documenter votre code est presque
+toujours nécessaire si quelqu'un (vous ou quelqu'un d'autre) veut le lire
+après coup. Cependant, sur-commenter des choses triviales est une mauvaise
+idée car cela dilue les informations dans des commentaires trop verbeux.</p>
+   
+  <p>Il y a [!java]trois[/!][!python|scala|c]deux[/!] sortes de commentaires en
+[!thelang], indiquant [!java|scala|c]au compilateur[/!][!python]à
+l'interpréteur[/!] qu'il ne doit pas lire le texte ajouté pour les humains.</p>
+   
+  <ul>
+    <li><b>Commentaires sur une seule ligne</b>. Quand le
+[!java|scala|c]compilateur[/!][!python]interpréteur[/!] rencontre le symbole
+[!java|scala|c]//[/!][!python]#[/!], il ignore la fin de la ligne.</li>      
+    <li><b>Commentaires sur plusieurs lignes</b>. [!java|scala|c]Le
+compilateur[/!][!python]L'interpréteur[/!] ignore tout ce qui se trouve
+entre [!java|scala|c]les symboles /* et */, même s'ils sont sur des lignes
+différentes.[/!]
+[!python]une ligne commençant par ''' et la prochaine ligne terminant par
+'''.[/!]</li>
+  </ul>
+
+<pre><code class="code-container">methodeAppeleeParLe[!java|scala|c]Compilateur[/!][!python]Interpreteur[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] tout ceci est ignoré</span>
+autreAppel()[!java|c];[/!] [!java|scala|c]<span class="comment">/* Ceci est</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> également ignoré */</span>[/!]
+[!python]<span class="comment">''' Ceci est</span>
+<span class="comment">également ignoré '''</span>[/!]
+encoreUneAutreAppel()[!java|c];[/!]
+</code></pre>  
+  <p class="Java">Il existe une troisième forme de commentaires en Java, entre /** et */, qui
+sont lus par un programme nommé JavaDoc pour générer automatiquement la
+documentation expliquant comment utiliser le code. Ces commentaires doivent
+suivre un formalisme précis.</p>
+
+  <p class="Python">Les commentaires sur plusieurs lignes sont souvent utilisés pour documenter
+comment utiliser le code, tandis que les autres types de commentaires sont
+souvent utilisés pour documenter comment le code fonctionne.</p>

@@ -1,0 +1,12 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tricolor Hanoi: the Final</h2>
+
+<p>We are almost ready to write the whole tricolor algorithm. We just need the <code>scatter()</code> 
+function, very inspired from the first one that we wrote for the 
+<a href="plm://lessons.recursion.hanoi/SplitHanoi1">Split Hanoi problem</a>. Assuming that your interleaved stack 
+is placed on the <code>mid</code> peg, spread the disks over all pegs. Make sure to use <code>move3()</code> an even 
+amount of time at each recursive level to ensure that the bottom disks are in the correct order.</p>
+
+<p>As you can see, the initial situation is not the one expected by <code>scatter()</code>. You first have to apply
+<code>gather()</code> and <code>move3()</code> (twice to get the bottom triplet in the right order). These few steps
+plus the new <code>scatter()</code> function are enough to entirely solve the Tricolor Hanoi problem.</p>

@@ -1,0 +1,41 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>formiga de Langton multicolorida</h2>
+
+<p>Existem várias formas de extender o conceito de formiga de Langton. Neste
+exercício, vamos explorar a primeira, usando mais que duas cores. Ela se
+mantem muito similar ao caso base: o comportamento em cada passo ainda
+depende da cor do chão, mas você tem mais que duas possibilidades. Você pode
+ter mais que um tipo de formiga, dependendo do que você decide fazer para
+cada cor. Por exemplo, a formiga LRL recebe 3 cores. Ela vira a esquerda na
+primiera cor, a direita na segunda e a esquerda na terceira. De acordo com
+esta definição, a formiga básica é uma RL (já que ela vira a direita em
+células brancas e a esquerda em pretas).</p>
+
+<p>Algumas destas formigas desenham padrões fascinantes (alterne o mundo para
+vê-los): LLRR constrói uma figura simétrica semelhante a uma bola, LRRRRRLLR
+desenha um quadrado, LLRRRLRLRLLR desenha um padrão regular convolucionado
+depois de um período de aparente caos, e RRLLLRLLLRRR parece preencher uma
+ampulheta...</p>  
+
+<p>Transformar seu buggle numa formiga de Langton genérica não é muito
+complicado, embora não seja totalmente trivial. Como anteriormente, você tem
+que escrever uma função <code>step</code>. Mas desta vez, ela recebe duas
+arrays como parâmetros. A primeira define as regras para seguir dependendo
+da cor do chão enquanto a segunda dá a sequência de cores a usar. Por
+exemplo, a formiga básica deve ter [!java]<code>{'R', 'L'}</code> e
+<code>{Cor.branco, Cor.preto}</code>[/!] [!python]<code>['R', 'L']</code> e
+<code>[Cor.branco, Cor.preto]</code>[/!] [!scala]<code>Array('R',
+'L')</code> e <code>Array(Cor.branco, Cor.preto)</code>[/!] como argumentos.</p>
+
+<p>Em cada passo, você deve então ter que aplicar o seguinte pseudo-código:</p>
+<ul>
+ <li>Encontre a posição da cor do chão na sequência de cores;</li>
+ <li>Vire a esquerda ou direita dependendo do conteúdo da array de regras nesta
+posição;</li>
+ <li>Marque o chão com a próxima cor na sequência (a cor seguinte à última é a
+primeira);</li>
+ <li>ande um passo para frente.</li>
+</ul> 
+
+<p>Você agora tem informação o suficiente para conseguir.</p>

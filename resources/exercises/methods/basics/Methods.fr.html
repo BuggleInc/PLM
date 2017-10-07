@@ -1,0 +1,135 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Méthodes</h2>
+
+<p>
+Nous allons maintenant voir comment écrire nos propres méthodes. Il s'agit
+en quelque sorte d'étendre le vocabulaire de la buggle en lui apprenant à
+faire de nouvelles choses. 
+</p>
+<p>Par exemple, nous avons vu dans un exercice précédent comment demander à la
+buggle d'aller chercher le biscuit qui se trouve devant elle, et la ramener
+à sa position initiale. S'il y a maintenant plusieurs biscuits sur le
+plateau, et que nous voulons tous les ramener sur la ligne du bas, il faut
+soit répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans
+les deux cas, il faut que vous évitiez de dupliquer votre code pour qu'il
+reste simple et lisible. Il serait mieux que la buggle comprenne un ordre de
+type <code>vaChercher()</code> tout comme elle comprend un
+<code>[!c]avancePas()[/!][!scala|java|python]avance()[/!]</code>.</p>
+
+<h3>Définir des méthodes</h3>
+
+<p>La syntaxe [!thelang] pour écrire une méthode simple nommée
+<code>vaChercher</code> est la suivante:</p>
+<pre>[!java|c]void vaChercher() {[/!][!python]def vaChercher():[/!][!scala]def vaChercher() {[/!]
+  actions()[!java|c];[/!]
+  encoreDesActions()[!java|c];[/!]
+  dautresTrucs()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>Le corps de la méthode
+[!java|scala|c](c'est-à-dire le bloc entre accolades)[/!]
+[!python](c'est-à-dire le bloc indenté)[/!]
+sera exécuté à chaque appel de cette méthode (c'est-à-dire à chaque fois que
+nous écrirons <code>vaChercher()</code> quelque part dans notre code).
+Ce corps de boucle peut contenir autant d'instructions que l'on veut, et
+toutes les constructions que nous avions vu jusque là (comme les boucles et
+les conditionnelles).
+[!java]Le mot-clé <code>void</code> («néant» en anglais) signifie que cette
+méthode ne renvoie pas de résultat. Au contraire, la méthode
+<code>estSurBiscuit()</code> renvoie un résultat booléen indiquant si nous
+nous trouvons oui ou non sur un biscuit. Nous apprendrons bientôt à faire de
+telles méthodes. En attendant, écrivez juste <code>void</code> à cet
+endroit.[/!]
+</p>
+
+<h3>Documenter les méthodes</h3>
+
+<p>Vous devez toujours vous efforcer de documenter votre code pour qu'il reste
+lisible. À l'instant où vous l'écrivez, son objectif et ses limitations vous
+semblent clairs, mais la plupart du temps, ça ne dure pas. On oublie vite
+les détails d'une méthode particulière, et quand cela arrive, on est content
+de pouvoir lire sa documentation.
+Dans l'exemple ci-dessous, nous utilisons le formalisme spécifique de
+[!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], un programme qui
+extrait la documentation du code source pour en faire de belles pages
+web. Le principal avantage de cette approche est que la documentation se
+trouve à coté du code. Donc, quand on change le code, il y a un peu plus de
+chance pour qu'on pense à mettre la documentation à jour.</p>
+
+<p>[!java|scala]Les commentaires [!java]javadoc[/!][!scala]scaladoc[/!]
+commencent avec le marqueur <code>/**</code> (avec deux étoiles). Ces
+commentaires doivent être placés juste avant la méthode qu'ils documentent
+pour que l'outil les trouve[/!]
+[!python]Les commentaire pydoc doivent être placés au début du corps de la
+méthode pour que l'outil les trouve. Ils doivent être placés entre
+<code>"""</code>, qui marquent les chaînes de caractères sur plusieurs
+lignes en python.[/!]
+La première ligne devrait décrire brièvement la méthode tandis que le reste
+de la documentation devrait donner tous les points importants de la méthode.</p>
+
+<pre>[!java|scala|c]/**
+ *  Avance, récupère le biscuit, et le ramène à la position d'origine
+ *
+ *  Ne vérifie pas la présence de mur; à ne pas l'utiliser en cas de risques de mur.
+ */[/!]
+[!java|c]void goAndGet() {[/!]
+[!scala]def goAndGet() {[/!]
+[!python]def goAndGet():
+  """Avance, récupère le biscuit, et le ramène à la position d'origine
+
+  Ne vérifie pas la présence de mur; à ne pas l'utiliser en cas de risques de mur."""[/!]
+  actions()[!java|c];[/!]
+  a()[!java|c];[/!]
+  faire()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<h3>Conventions de nommage</h3>
+<p>La plupart des langages de programmation interdisent d'utiliser des espaces
+dans les noms de variables et de méthodes. Certains langages (comme le
+[!thelang]) autorisent l'usage des caractères accentués dans ces
+identificateurs, mais cela pose parfois des problèmes de portabilité entre
+les systèmes d'exploitation. C'est pourquoi PLM n'utilise pas d'accents dans
+les identificateurs, même si c'est parfois désagréable en français.</p>
+
+<p>Parmi tous les langages de programmation, il y a deux conventions de nomage
+majeures. La première consiste à concaténer tous les mots en ne laissant que
+la première lettre de chaque mot en majuscule. «va chercher le biscuit»
+devient VaChercherLeBiscuit(). Cette convention est nommée CamelCase en
+anglais, c'est-à-dire casse du chameau, car les identificateurs écrits de
+cette façon font un peu penser au dos d'un chameau. L'autre convention,
+nommée snake_case (casse du serpent), consiste à concaténer tous les mots en
+minuscule en les séparant du caractère souligné (_). «va chercher le
+biscuit» devient va_chercher_le_biscuit().</p>
+
+<p>Le choix de la convention de nommage est le sujet de «discussions» très
+animées entre programmeurs, mais certaines habitudes prédominent pour chaque
+langage. En Python, Ruby, Perl ou en langage C, la casse_du_serpent
+prédomine pour les noms de variables et de méthodes. En Java et en Scala, on
+préfère habituellement la casseDuChameau, en laissant la toute première
+lettre en minuscule.</p> 
+<p>La casseDuChameau est utilisé partout dans PLM car c'est un programme écrit
+en Java à la base, et que nous avons gardé nos habitudes en écrivant le
+support pour d'autres langages. Mais nous considérons le fait Python ne soit
+pas en casse_du_serpent comme un bug, que nous corrigerons dans une version
+future.</p>
+
+<h3>Objectif de cet exercice</h3>
+<p>L'objectif de cet exercice est donc d'écrire une méthode nommée
+<code>goAndGet()</code> (va chercher) et qui fait la même chose que dans un
+exercice précédent (avance tant qu'on ne trouve pas de baggle, ramasser le
+baggle, reculer à la case départ, poser le baggle).</p>
+
+<p>Cet exercice est un peu différent : vous n'allez pas écrire tout le code
+exécuté par la buggle, mais juste une méthode qui sera invoquée
+automagiquement quand vous exécutez l'exercice. Votre buggle va alors
+appeler votre méthode <code>goAndGet()</code> sur chaque colonne du monde,
+jusqu'à trouver le biscuit. [!python|scala]Le code pour cela est déjà donné
+(en anglais) sous la méthode <code>goAndGet()</code> qui reste à écrire,
+mais vous ne devriez pas le modifier.[/!] [!java]Vous n'avez pas à écrire
+vous-même le code qui va appeler<code>goAndGet()</code>. Il est
+automagiquement donné, même si vous ne pouvez pas le voir.[/!]</p> 
+
+<p>Mais pour que cela fonctionne, il faut que vous écriviez maintenant cette
+fonction <code>goAndGet()</code>...</p>
+

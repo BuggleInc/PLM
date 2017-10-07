@@ -1,0 +1,37 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Selection Baseball</h1>
+
+<p>The previous algorithm is very pleasant: it's rather simple and rather fast to implement, 
+but unfortunately, it is also rather wrong! In some cases, it never stops, which is obviously 
+bad. If you don't believe it, just copy paste your previous code, and hit the run button. The 
+first world of this exercise is one of these unfortunate situations that drives our previous
+algorithm crazy.</p>
+
+<p>So we have to find another algorithm, preferably one that works in all cases.</p>
+
+<p>For that, the best solution is to start from a well known algorithm instead of trying to 
+invent a new one from scratch as we just did. When you think a bit about this problem, this 
+can is very similar to a sorting problem: Just make sure that the players are sorted by their 
+colors and you're set. And while we are at it, let's generalize the game to allow more that 4 
+bases.</p>
+
+<p>Let's adapt the selection sort to our situation. The big lines of
+the algorithm is then "for each base, select the players that should
+occupy this base and make sure that they come to their position". This
+way, we will grow an sorted area where all players are already sorted
+(and never changed) while the unsorted area shrinks.</p>
+
+<p>Selecting the player should be no problem; Do not hesitate to define some methods such as 
+<code>findPlayer()</code> or <code>findPlayerBase()</code>. This will ensure that your code 
+remains understandable.</p>
+
+<p>The most problematic aspect is to move the selected players into position. For that, you 
+have to move the hole to the position where the player is, and then move both the player and 
+the hole to the base that is next to the player's goal (probably in a loop), and finally
+put the player in the right position of its target base.</p>
+
+<p>As often in programming, the devil is in the details: there is a bunch of corner cases that
+you should detect and deal with correctly, such as the cases where the player is already in the 
+base (but not in the position that you would like), or when the hole is on the right of the 
+player (probably when you sort the first base). But you will find and hunt these while debugging 
+your code.</p>

@@ -1,0 +1,171 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Créer des Turmites</h2>
+
+<p>Cet exercice vous permet de construire vos propres turmites. Pour réussir
+cet exercice, vous devez simplement écrire une méthode <code>init()</code>
+qui initialise <code>rule</code> pour utiliser les tables de transitions
+suivantes (de Wikipedia), met la position initiale de la buggle à (8;33), et
+demande de faire 8342 pas.</p> 
+
+<table border="1" style="text-align:center">
+<tr>
+<th rowspan="3" colspan="2"></th>
+<th colspan="6">Couleur actuelle</th>
+</tr>
+<tr>
+<th colspan="3">0</th>
+<th colspan="3">1</th>
+
+</tr>
+<tr style="font-size:9pt">
+<th>Couleur à mettre</th>
+<th>Virage</th>
+<th>État suivant</th>
+<th>Couleur à mettre</th>
+<th>Virage</th>
+<th>État suivant</th>
+</tr>
+<tr>
+<th rowspan="2">État courant</th>
+
+<th>0</th>
+<td>1</td>
+<td>R</td>
+<td>0</td>
+<td>1</td>
+<td>R</td>
+<td>1</td>
+</tr>
+<tr>
+<th>1</th>
+
+<td>0</td>
+<td>N</td>
+<td>0</td>
+<td>0</td>
+<td>N</td>
+<td>1</td>
+</tr>
+</table>
+
+<p>Où les virages à effectuer sont
+<b>L</b> (90° vers la gauche -- left),
+<b>R</b> (90° vers la droite -- right),
+<b>N</b> (rien -- no turn),
+<b>U</b> (demi tour de 180° -- U-turn).</p>
+
+<h2>Aller plus loin</h2>
+<p>Cet exercice est naturellement une excuse pour vous laisser expérimenter vos
+propres turmites. Vous êtes libres de changer la table de transition et le
+nombre de pas pour expérimenter par vous-même. A ce propos, vous pouvez
+trouver la bibliothèque Ed Pegg Jr's utile. Si vous trouvez de nouveaux
+schémas intéressants, envoyez-les nous pas email afin que nous les puissions
+les ajouter à cette liste.  </p>
+
+<p>De plus, Wikipedia manque désespérément de quelques beaux et colorés
+turmites : seuls des noirs et blancs sont décrits. Vous pouvez considérer
+l'idée de soumettre vos créations directement à l'encyclopédie libre.</p>
+
+<p>Voici quelques turmites bicolores, issues de
+http://demonstrations.wolfram.com/Turmites/
+[!scala|python]Elles n'ont pas été écrites avec la syntaxe [!thelang], mais
+les convertir ne devrait pas poser beaucoup de problèmes.[/!]</p> 
+
+<pre>
+{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: La fourmi de Langton
+{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: Compteur binaire
+{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: Triangle rempli
+{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: Spirale dans une boite
+{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: Spirale rayurée
+{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: Pyramide à étages
+{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: Île entourée
+{{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: Set tissé
+{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: Sorte de flocon de neige
+{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: Constructeur de ville lent
+{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 0}, {0, LEFT  , 1}}} # 11: Art informatisé en boîte
+{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 1}, {1, LEFT  , 0}}} # 12: Décollage de ballon (fait une autoroute)
+{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 13: Autoroute horizontale
+{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 1}, {1, RIGHT , 0}}} # 14: Autoroute à 45 degrés
+{{{1, LEFT  , 1}, {0, LEFT  , 1}}, {{1, RIGHT , 1}, {0, LEFT  , 0}}} # 15: Autoroute à 45 degrés
+{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{1, NOTURN, 0}, {1, RIGHT , 0}}} # 16: Spirale dans une boîte remplie
+{{{1, LEFT  , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 17: glaciers
+{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 18: Rectangle doré!
+{{{1, LEFT  , 1}, {1, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 19: Fontaine pétillante
+{{{1, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 20: Armoires imbriquées
+{{{1, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {1, NOTURN, 1}}} # 21: Croix
+{{{1, NOTURN, 1}, {0, NOTURN, 0}}, {{0, RIGHT , 0}, {1, LEFT  , 0}}} # 22: Croissance en dents de scie
+{{{1, NOTURN, 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 23: Croissance par blocs
+{{{1, NOTURN, 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 24: Croissance texturée
+{{{1, NOTURN, 1}, {0, RIGHT , 1}}, {{1, LEFT  , 0}, {1, RIGHT , 0}}} # 25: Croissance en diamands
+{{{1, NOTURN, 1}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 26: Corde enroulée
+{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, NOTURN, 1}}} # 27: (croissance)
+{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, RIGHT , 1}}} # 28: (spirale carrée)
+{{{1, RIGHT , 0}, {1, RIGHT , 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}} # 29: Croissance ébourifée
+{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: La fourmi de Langton en carrés
+{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 1}, {1, LEFT  , 0}}} # 31: Croissance avec des courbes et des blocs
+{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, NOTURN, 0}, {1, RIGHT , 1}}} # 32: Constructeur de spirales distrait
+{{{1, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 33: Tige de choux-fleur (autoroute à 45 degrés)
+{{{1, RIGHT , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, RIGHT , 0}}} # 34: Piste de vers (croissance cyclique!)
+{{{1, RIGHT , 1}, {1, NOTURN, 0}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 35: Fini par faire une autoroute à deux voies!
+{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, NOTURN, 0}, {0, NOTURN, 0}}} # 36: Éclosion de moisissure presque symétrique
+{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, RIGHT , 0}, {1, NOTURN, 1}}} # 37: Fait un 1 dans une autoroute à deux gradients
+{{{1, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 38: Fait immédiatement un 1 dans une autoroute à 3
+{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{0, LEFT  , 2}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {1, LEFT  , 0}}} # 39: Croissance de carrés et diagonales
+{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{0, RIGHT , 2}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 40: streak at approx. an 8.1 in 1 gradient
+{{{1, LEFT  , 1}, {0, NOTURN, 2}}, {{0, RIGHT , 2}, {1, NOTURN, 1}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 41: streak at approx. a 1.14 in 1 gradient
+{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 2}}, {{0, LEFT  , 1}, {1, NOTURN, 1}}} # 42: Croissance en labyrinthe
+{{{1, LEFT  , 2}, {0, RIGHT , 0}}, {{1, LEFT  , 0}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 43: Croissance en corniches
+{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway
+{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway
+</pre> 
+
+<p>Les fourmis de Langton ne partagent peut être pas la capacité d'expression
+des turmites, mais elles restent fascinantes elles aussi. Vous pouvez
+expérimenter avec elles en utilisant la méthode initLangton(), fournie dans
+le code de base, qui vous permet de construire une table de transition pour
+Turmite a partir du nom d'une fourmi de Langton. De petits changements
+peuvent engendrer de grandes choses. Par exemple, "RRL" ne semble pas mener
+à un quelconque schéma, même après un million de pas, mais "RLL" commence à
+construire un dessin très simple de route au bout de moins de 100 pas !</p>  
+
+<p>Beaucoup de fourmis de Langton construisent des routes: RL, bien entendu,
+mais aussi RLRLRLLRLR (environ 2500 pas). Le comportement chaotique des
+fourmis avant la route peut être très court (comme avec RLL qui a seulement
+besoin de 100 pas pour converger) ou très long, comme avec LLLLLLRRLRRR qui
+semble chaotique jusqu'à plus de 500 000 pas avant de construire la route ou
+encore RRLLLRRRLRRR qui nécessite 1 170 000 pour commencer à
+converger. Certaines sont étroites, d'autres très larges, comme avec
+RRLRLLRLRR (200 000 pas). Cette fourmi est aussi notable puisque c'est
+quelque peu carré avant même que la route commence, là où d'autres ne
+montrent rien de transcendant avant leur route.<p>
+
+<p>Certaines fourmis remplissent des secteurs entiers, comme avec RRLLLRLLLRRR
+(16 000 pas), RRLLLRLLLRRR (30 000 pas), RRLLLRRRRRLR (125 000 pas) ou
+RRLRLLRRRRRR (20 000 pas). D'autres encore remplissent tout l'espace (RRLRR
+après 3000 pas). Certaines de mes favorites sont celles où la fourmi semble
+rebondir dans une boite qui devient plus grande à chaque rebond, comme avec
+LRRRRRLLR (30 000 pas). LRRRRLLLRRR est encore plus impressionnant puisque
+les rebonds dans la boite sont réguliers et puisque la fourmi atteint
+rapidement son comportement stable (15 000 pas suffisent).</p>
+
+<p>Enfin, certaines fourmis construisent juste des schémas artistiques. Vous
+devriez regarder cette vidéo pour un bel aperçu :
+http://www.youtube.com/watch?v=1X-gtr4pEBU .
+Si vous voulez les implémenter dans votre code, vous devez les permuter de
+un : Par exemple, celle décrite à 3:42 n'est pas RRLRLRLLRL, mais RLRLRLLRLR
+(le premier mouvement visible doit être vu comme le dernier).</p>
+
+<p>Comme vous pouvez le constater en explorant l'ensemble ci-dessus de
+turmites, elles ne sont généralement pas aussi colorées que les fourmis,
+mais c'est peut-être car très peu de couleurs sont nécessaires pour
+expliciter des comportements complexes. Par exemple, il y a un classe
+spécifique de turmites appelée <i>busy beavers</i> qui sont des turmites qui
+écrivent énormément de choses avant de s'arrêter ( les <i>busy beavers</i>
+sont généralement des machines de Turing classiques, mais l'idée correspond
+parfaitement aux turmites). Il y a une sorte de compétition internationale
+où les participants font tout leur possible pour trouver le turmite qui
+couvre la plus grande surface avant de s'arrêter.
+La page web est ici :
+http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines 
+

@@ -1,0 +1,31 @@
+BuggleWorld: Dance Floor
+Size: 7x7
+Buggle(2,3): east,red,lightGray,John Travolta,noBaggle,
+Buggle(4,3): west,magenta,lightGray,Break Dancer,noBaggle,
+Buggle(3,2): south,pink,lightGray,Moon Walker,noBaggle,
+Buggle(3,4): north,blue,lightGray,Elwood Blues,noBaggle,
+Cell(0,0): white,nobaggle,notopwall,noleftwall,Z
+Cell(0,3): white,nobaggle,notopwall,noleftwall,X
+Cell(0,6): white,nobaggle,notopwall,noleftwall,A
+Cell(1,0): white,nobaggle,notopwall,noleftwall,L
+Cell(1,1): white,nobaggle,notopwall,noleftwall,B
+Cell(1,3): white,nobaggle,notopwall,noleftwall,R
+Cell(1,5): white,nobaggle,notopwall,noleftwall,B
+Cell(1,6): white,nobaggle,notopwall,noleftwall,L
+Cell(2,6): white,nobaggle,notopwall,noleftwall,Z
+Cell(3,0): white,nobaggle,notopwall,noleftwall,L
+Cell(3,1): white,nobaggle,notopwall,noleftwall,B
+Cell(3,3): white,nobaggle,notopwall,noleftwall,Z
+Cell(3,5): white,nobaggle,notopwall,noleftwall,B
+Cell(3,6): white,nobaggle,notopwall,noleftwall,R
+Cell(4,0): white,nobaggle,notopwall,noleftwall,A
+Cell(4,6): white,nobaggle,notopwall,noleftwall,B
+Cell(5,0): white,nobaggle,notopwall,noleftwall,L
+Cell(5,1): white,nobaggle,notopwall,noleftwall,B
+Cell(5,2): white,nobaggle,notopwall,noleftwall,B
+Cell(5,3): white,nobaggle,notopwall,noleftwall,I
+Cell(5,4): white,nobaggle,notopwall,noleftwall,B
+Cell(5,5): white,nobaggle,notopwall,noleftwall,B
+Cell(5,6): white,nobaggle,notopwall,noleftwall,R
+Cell(6,0): white,nobaggle,notopwall,noleftwall,A
+Cell(6,6): white,nobaggle,notopwall,noleftwall,A

@@ -1,0 +1,9 @@
+BuggleWorld: Buggles Party
+Size: 7x7
+Buggle(0,0): north,black,lightGray,Homer,noBaggle,
+Buggle(1,0): south,black,lightGray,Bart,noBaggle,
+Buggle(2,0): south,black,lightGray,Lisa,noBaggle,
+Buggle(3,0): south,black,lightGray,Maggie,noBaggle,
+Buggle(4,0): south,black,lightGray,Marge,noBaggle,
+Buggle(5,0): north,black,lightGray,Itchy,noBaggle,
+Buggle(6,0): north,black,lightGray,Scratchy,noBaggle,

@@ -1,0 +1,4 @@
+BuggleWorld: World 2
+Size: 7x7
+Buggle(5,6): north,black,lightGray,Searcher,noBaggle,
+Cell(5,1): white,baggle,notopwall,noleftwall,

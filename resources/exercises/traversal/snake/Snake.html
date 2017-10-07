@@ -1,0 +1,41 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Snake World</h2>
+
+<p>We will now teach the buggle to explore its world. Its initial position is
+the bottom left corner, and it should visit any cells up to the top
+(coloring the ground on its path. The main loop of your code is something like:</p>
+<pre>
+ move brush down
+ while we did not reach the final position
+   move like a snake
+</pre>
+
+<p>We thus have to write two specific methods: The first one
+returns a boolean indicating whether we are on a final position while the
+second moves one snake step forward.</p>
+
+<p>We reached the final position if and only if both conditions are true:</p>
+<ul>
+  <li>We are facing a wall</li>
+  <li>There is a wall on the north of the buggle. So, if the buggle is facing
+east, you should check whether there is a wall on the left, and if the
+buggle is facing west, you should check on the right side.<br/>
+      We can get the current heading of the buggle using the
+<code>getDirection()</code>, and we know whether it looks east using
+<code>getDirection() == [!scala|python|java]Direction.[/!]EAST</code> (WEST for west).<br/>
+      To check, nothing magical: you have to turn the buggle and check whether it is facing a wall afterward.</li>
+</ul>
+
+<p>Then, a snake step can be achieved by moving one step forward if we are not
+facing a wall, and moving to the upper line else (i.e., if you look to the
+west facing a wall, you have to turn right, forward and turn right).</p>
+
+<p>Hint: the main loop of your code must continue while the
+testing function returns false. There is two ways of writing it:</p>
+<pre>while (testingFunction() == [!c]0) {[/!][!java|scala]false) {[/!][!python]False):[/!]</pre>
+<p>[!python]You may prefer to write it as:[/!]
+[!java|scala|c]Since the exclamation mark (!) denotes the boolean negation in [!thelang], you may write it as:[/!]</p>
+<pre>while ([!java|scala|c]![/!][!python]not [/!]testingFunction())[!java|scala|c] {[/!][!python]:[/!]</pre>
+
+<p>Your turn...</p>
+

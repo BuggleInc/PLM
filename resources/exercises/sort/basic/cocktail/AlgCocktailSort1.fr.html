@@ -1,0 +1,27 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Tri Cocktail</h1>
+
+<p>Pour améliorer encore notre algorithme, il faut regarder un peu plus en
+détail son comportement. On peut constater que les grands éléments sont très
+rapidement mis en place tandis que les petits éléments se déplacent très
+lentement vers leur destination. On parle classiquement de lièvres et de
+tortues pour désigner respectivement les grandes valeurs et les petites
+valeurs.</p>
+
+<p>Pour permettre aux tortues d'aller plus vite, le tri cocktail parcours
+alternativement le tableau de gauche à droite et de droite à gauche. Voici
+son pseudo-code:</p>
+
+<pre>
+Faire
+  Pour tout i dans [0,lgr-2], faire:
+    si i et i+1 doivent être échangées, le faire
+  Pour tout i dans [lgr-2,0] en descendant, faire:
+    si i et i+1 doivent être échangées, le faire
+tant qu'au moins l'un des parcours a inversé un élément
+</pre>
+
+<p>On constate que le tri cocktail fait très exactement le même nombre
+d'échanges que le tri à bulle, mais qu'il améliore les choses sur le nombre
+de lectures. Il reste cependant moins bon que BubbleSort2 en la matière.</p> 

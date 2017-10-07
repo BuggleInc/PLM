@@ -1,0 +1,50 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Scrivere programmi più complessi</h2>
+  Ora che sappiamo come disegnare delle cose sulla nostra superfice possiamo
+goderci quest'abilità e disegnare una bellissima G (controlla l' Objective
+panel per i dettagli su cosa ci si aspetta). 
+
+  <p>Quando scrivete un programma abbastanza complesso talvota può tornare utile
+<b>aggiungere commenti</b> per semplificare la successiva revisione del
+codice. Quì per esempio è molto facile perdersi nel processo di disegno e
+potresti voler aggiungere commenti come <i>barra verticale completata</i>
+oppure <i>finito di disegnare la G., è tempo di tornare alla posizione
+iniziale</i>. Commentare il proprio codice è piuttosto obbligatorio se voi
+(o qualcun'altro) intendete leggerlo successivamente sebbene commentare
+troppo (descrivendo cose ovvie) è una cattiva idea poiché il pensiero
+fondamentale potrebbe perdersi nel rumore causato.</p>
+   
+  <p>Ci sono [!java]tre[/!][!python|scala|c]due[/!] tipi di commenti in
+[!thelang] che dicono [!java|scala|c]al
+compilatore[/!][!python]all'interprete[/!] di non leggere il testo che è
+stato inserito per gli esseri umani:</p>
+   
+  <ul>
+    <li><b>Commenti su una singola riga</b> Quando [!java|scala|c]il
+compilatore[/!][!python]l'interprete[/!] incontra il simbolo
+[!java|scala|c]//[/!][!python]#[/!] ignora tutto ciò che gli segue fino alla
+fine della riga.</li>      
+    <li><b>Comments on several lines</b>. The
+[!java|scala|c]compiler[/!][!python]interpreter[/!] ignores anything placed
+between [!java|scala|c]the symbols /* and */ even if they are placed on
+differing lines.[/!] [!python]a line beginning with ''' until the next line
+ending with '''.[/!]</li>
+  </ul>
+
+<pre>
+chiamataAlMetodoLettaDal[!java|scala|c]Compilatore[/!][!python]lInterprete[/!]()[!java];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] tutto questo viene ignorato</span>
+altraChiamata()[!java|c];[/!] [!java|scala|c]<span class="comment">/* Questo anche</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> viene ignorato */</span>[/!]
+[!python]<span class="comment">''' Questo anche</span>
+<span class="comment">viene ignorato  '''</span>[/!]
+ulterioreChiamata()[!java|c];[/!]
+</pre>  
+  <p class="Java">In Java c'è un terzo tipo di commenti compresi fra /** ed */ che sono letti
+da uno specifico programma chiamato JavaDoc per generare automaticamente la
+documentazione che spiega come usare il codice. Questi commenti devono
+rispettare una precisa forma.</p>
+
+  <p class="Python">I commenti su più righe sono spesso usati per documentare sull'uso del
+codice mentre gli altri sono più usati per descrivere come effettivamente
+funziona il codice.</p>

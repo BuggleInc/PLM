@@ -1,0 +1,88 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>For loops</h2>
+
+<p>While loops are well adapted to situations where you want to achieve an
+action while a condition stays true, but it is less adapted to achieve a
+given action a predetermined amount of time. For example, when we wanted to
+move <code>stepAmount</code> steps backward in a previous exercise, we had to
+create a new variable, initialize it, and move backward while incrementing 
+this variable until it became equal to <code>stepAmount</code>.</p> 
+
+<p>In such situations, <code>for</code> loops become handy. Their syntax is the
+following:</p> 
+<pre>[!java|c]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
+    <b>action</b>();
+}[/!][!python]for <b>variable</b> in <b>sequence of values</b>:
+    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>firstValue</b> to <b>lastValue</b>) { 
+    <b>action</b>();
+}[/!]</pre>
+
+<p>For example to repeat the loop body <code>n</code> times, 
+[!python] it is handy to use the instruction <code>range(n)</code> to generate the sequence n integer value from 0 to n-1.[/!]
+[!java|scala|c] one should write:[/!]</p>
+<pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
+}[/!][!c]int stepper;
+for (stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
+}[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
+    <b>action</b>()[/!][!scala] for (<b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
+    <b>action</b>();
+}[/!]</pre>
+
+<p>This code is then equivalent to the following one from the computer
+   point of view. From the programmer point of view, one form or the other
+   can make the source code easier to read, depending on the
+   situation. You should chose wisely in each situation whether you want
+   to use a for loop or a while loop. Your uttermost goal should
+   remain to keep your code simple and easy to read, to ensure that your
+   day remain pleasant and productive.
+</p>
+<pre>[!java|c]int stepper = 0;
+while (stepper &lt; n) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
+}[/!][!python]stepper=0
+while stepper &lt; n: 
+    action()
+    stepper = stepper + 1[/!][!scala]
+var stepper = 1
+while (stepper &lt;= n) {
+    <b>action</b>()
+    stepper = stepper + 1
+}[/!]</pre>
+
+<p>In that case, the <code>for</code> loop is easier to read, don't you think?</p>
+
+[!java|c]
+<p>It is possible to build more advanced <tt>for</tt> loops since any valid
+instruction can be used as initialization, condition and incrementing instruction. The
+following example is a bit extreme as there is no need for a loop body to move 
+the buggle forward until it reaches the wall, but it works well: all the work is 
+done in the condition and incrementing instruction.</p>
+
+<pre>for (; !isFacingWall() ; forward()) { 
+   <span class="comment">/* nothing in the loop body */</span>
+}
+<span class="comment">/* the buggle now faces a wall */</span></pre>
+[/!]
+
+[!scala]
+<p>If you want to nest several loops, you can do it on one line in Scala. This means that the two following chunks are equivalent:</p>
+<pre>for (stepper1 &lt;- 1 to n) {
+    for (stepper2 &lt;- 1 to m) {
+       actions()
+    }
+}</pre> 
+<pre>for (stepper1 &lt;- 1 to n; stepper2 &lt;- 1 to m) { <span class="comment">// Simply separate both loop conditions with a semi-column</span>
+    actions()
+}</pre> 
+[/!]
+
+<h3>Exercise goal</h3>
+<p> You now have to redo the same exercise than previously
+(move forward until being over a baggle, pick it up, move back to your
+original location, drop the baggle), but using a <code>for</code> loop instead
+of a <code>while</code> loop to move back to the initial location.</p>
+
+<p>Once done, you can proceed to next exercise.</p>

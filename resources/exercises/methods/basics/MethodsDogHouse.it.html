@@ -1,0 +1,52 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Costruire metodicamente</h2>
+
+Ora vorremmo insegnare al buggle come costruire una doghouse (Ndt cuccia,
+non posso cambiarlo perché il metodo si dovrà chiamare esattamente così
+perché il buggle lo possa eseguire). L'approccio ingenuo consiste nello
+scrivere direttamente il codice occorrente come scritto in seguito. Ciò avrà
+luogo perché il buggle di questo esercizio lascia una scia rosa al suo
+passaggio.
+
+<pre>[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]</pre>
+
+<p>Ma se già dobbiamo disegnare due cuccie diventa più difficile: noi dobbiamo
+riscrivere lo stesso codice di nuovo e non è una cosa molto comoda. Quando
+il codice comincia ad essere abbastanza lungo come questo diventa più facile
+capire perché insistiamo tanto sul fatto che duplicare codice sia
+diabolico.  Difatti, se vi accorgerete di un errore nascosto all'interno del
+codice che avete copiato in diversi punti dovrete correggerlo più volte. E
+badate bene di non dimenticarvi di nessuna di loro.</p> 
+
+<p>C'è anche una denominazione per questo buon principio di programmazione:
+DRY/SPOT che significa "Don't Repeat Yourself / Single Point Of Truth" (Ndt
+"non ripeterti / singolo punto di verità") La parte finale significa che
+ogni informazione deve essere scritta in un solo punto del programma per
+evitare che le molteplici ripetizioni finiscano fuori sincrono l'un l'altra
+quando modifichi il codice.</p>
+
+<p>E quindi applichiamo questo buon principio e <b>fattorizziamo il nostro
+codice</b>, cioé scriviamolo una sola volta, ad esempio in un
+metodo. Bisognerebbe anche andare oltre e fattorizzare il corpo del metodo
+con un ciclo <code>for</code> come visto in precedenza. Se lo farete
+correttamente (come andrebbe fatto) sarà possibile usare il metodo
+<code>left()</code> una sola volta.</p>
+
+<h3>Traguardo dell'esercizio</h3>
+<p>Lo scopo di questo esercizio è di scrivere un metodo chiamato
+<code>dogHouse</code> ottenendo lo stesso risultato del codice soprastante
+ma con un ciclo for per rimanere concisi. Il buggle invocherà la tua
+creazione per creare diverse cuccie intorno al suo mondo. </p>
+

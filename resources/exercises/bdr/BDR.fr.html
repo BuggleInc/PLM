@@ -1,0 +1,224 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Buggle Dance Revolution (BDR)</h2>
+
+<p>Après toutes ces courses, il est temps de faire la fête ! Pour cela, nous
+allons apprendre à nos buggles à jouer à Dance Revolution, ce jeu très prisé
+de certains étudiants où le joueur doit bouger sur un tapis prévu à cet
+effet en fonction des consignes présentées à l'écran en rythme avec la
+musique. Mais avant cela, nous avons quelques détails à étudier.</p>
+
+[!java|scala|c]
+<h3>Conditionnelles sans accolades</h3>
+<p>
+Il y a un détail que nous avons omis à propos de la syntaxe des
+conditionnelles : si une branche ne contient qu'une seule instruction, les
+accolades sont optionnelles. Ainsi, les deux extraits suivants sont
+équivalents:</p>
+
+ <pre><code class="code-container">if (<b>condition</b>) {
+    <b>quoiFaireSiLaConditionEstVraie();</b>
+} else {
+    <b>quoiFaireSinon();</b>
+}</code></pre>
+ <pre><code class="code-container">if (<b>condition</b>)
+    <b>quoiFaireSiLaConditionEstVraie();</b>
+else
+    <b>quoiFaireSinon();</b></code></pre>
+
+<p>Vous pouvez faire de même avec les boucles dont le corps se réduit à une
+seule instruction. Mais attention, ceci peut être dangereux si on enchaîne
+les <tt>if</tt> comme dans l'exemple suivant. </p>
+<pre><code class="code-container">if (estSurBiscuit())    
+     if (x == 5)
+          gauche();
+else
+     droite();
+[!c]avancePas();[/!][!java|scala]avance();[/!]</code></pre>
+
+<p>En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET
+que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une
+autre valeur. Autrement dit, la buggle lit le code précédent comme suit
+(notez que le <tt>else</tt> est décalé vers la droite par rapport à
+précédemment) :</p>
+<pre><code class="code-container">if (estSurBiscuit())    
+        if (x == 5)
+            gauche();
+        else
+            droite();
+[!c]avancePas();[/!][!java|scala]avance();[/!]</code></pre>
+
+<p>La première leçon, c'est que l'indentation est très importante pour que les
+humains puissent comprendre le code, mais elle ne change pas la
+signification du code pour la machine. On aurait tout aussi bien pu écrire
+le code suivant et obtenir le même résultat. Mais attention, si on veut
+qu'un humain puisse relire le code, l'indentation est quasi
+indispensable. C'est par exemple le cas si votre code doit être relu par un
+professeur (pour qu'il le note ou pour lui poser une question), ou si vous
+comptez réutiliser votre code plus tard, ou même si vous devez debugger
+votre propre code après l'avoir écrit.</p> 
+
+<pre><code class="code-container">if (estSurBiscuit()) if (x == 5) gauche(); else droite(); [!c]avancePas();[/!][!java|scala]avance();[/!]</code></pre>
+
+<p>La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours
+au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il
+est préférable d'ajouter plus d'accolades que nécessaire pour lever toute
+ambiguïté.</p>
+[/!]
+
+<h3>Enchaînements de conditionnelles</h3>
+
+<p>Il arrive que l'on veuille demander à la buggle quelque chose similaire à :</p> 
+<pre><code class="code-container">s'il pleut, prend un parapluie; 
+si non, s'il fait chaud, prend une bouteille d'eau; 
+si non, si nous sommes le 14 juillet, prend un drapeau français</code></pre>
+
+<p>Le piège étant que nous voudrions qu'au plus l'une de ces actions soient
+réalisées. C'est à dire, que s'il pleut un 14 juillet très chaud, on ne veut
+pas que la buggle sorte avec un parapluie, de l'eau et un drapeau, mais
+juste avec un parapluie. Le code suivant est donc faux.</p>
+
+<pre><code class="code-container">[!java|c|scala]if (ilPleut())
+    prendreParapluie();
+if (ilFaitChaud())
+    prendreDeLEau();
+if (sommes14Juillet())
+    prendreDrapeau();[/!][!python]if ilPleut():
+    prendreParapluie()
+if ilFaitChaud():
+    prendreDeLEau()
+if sommes14Juillet():
+    prendreDrapeau()[/!]</code></pre>
+
+
+<p>En effet, toutes les conditions sont évaluées les unes après les autres, et
+on risque donc d'aller au défilé un jour de pluie. À la place, il faut donc
+écrire quelque chose comme ce qui suit pour s'assurer que si l'on trouve une
+condition vraie, on n'évalue pas les suivants.</p>
+
+<pre><code class="code-container">[!java|scala|c]if (ilPleut()) {
+    prendreParapluie();
+} else {
+    if (ilFaitChaud()) {
+        prendreDeLEau();
+    } else {
+        if (sommes14Juillet()) {
+            prendreDrapeau();
+        }
+    }
+}[/!][!python]if ilPleut():
+    prendreParapluie()
+else:
+    if ilFaitChaud():
+        prendreDeLEau()
+    else:
+        if sommes14Juillet():
+            prendreDrapeau()[/!]</code></pre>
+
+
+<p>Une telle cascade de conditionnelles est un peu difficile à lire, et il est
+préférable
+[!java|scala|c] d'omettre les accolades associées aux <tt>else</tt> comme
+suit. Il y a même certains langages qui introduisent un mot-clé spécial pour
+ces <tt>else if</tt> (mais pas [!thelang]).[/!]
+[!python] d'introduire les sous-blocs avec le mot-clé <code>elif</code>
+(abréviation de «else if») pour expliciter ces branches «sinon si».[/!]
+</p>
+
+<pre><code class="code-container">[!c|java|scala]if (ilPleut()) { 
+    prendreParapluie();
+} else if (ilFaitChaud()) {
+    prendreDeLEau();
+} else if (sommes14Juillet()) {
+    prendreDrapeau();
+}[/!][!python]if ilPleut():
+    prendreDrapeau()
+elif ilFaitChaud():
+    prendreDeLEau()
+elif sommes14Juillet():
+    prendreDrapeau()[/!]</code></pre>
+
+<h3>Les graffitis dans le monde des buggles</h3>
+
+<p>Les buggles peuvent écrire des choses par terre dans leur monde. Pour ce
+faire, elles utilisent les quatre méthodes suivantes:</p>
+
+<ul>
+  <li><code>[!c]int[/!][!java]boolean[/!]
+estSurMessage()[!scala]:Boolean[/!]</code>: renvoie
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> si et seulement
+s'il y a un message écrit par terre.</li>
+  <li><code>[!c]char*[/!][!java]String [/!]litMessage()[!scala]: String[/!]</code>
+: renvoie le message qu'il y a écrit par terre (s'il y a rien, on obtient
+une chaîne vide).</li>
+  <li><code>[!java|c]void[/!] ecritMessage([!c]char*[/!][!java]String
+[/!]msg[!scala]: String[/!])</code> : écrit le message spécifié en argument
+par terre. S'il y a déjà quelque chose écrit par terre, on ajoute le nouveau
+message à la fin du précédent.</li>
+  <li><code>[!java|c]void [/!]clearMessage()</code> : efface ce qui est écrit par
+terre.</li>
+</ul>
+
+
+<h3>Objectif de cet exercice</h3>L'objectif est donc d'organiser une partie de BDR entre les buggles en leur
+apprenant à bouger en fonction des indications écrites par terre.  Ces
+indications sont des messages au sol, avec le code suivant:
+
+<table border="1">
+ <tr><td>Indication</td>
+     <td>Quoi faire</td>
+     <td>Mnémotechnique</td></tr>
+
+ <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Tourner à droite et avancer d'une case</td><td>Right (signifie «droite» en anglais)</td></tr>
+ <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Tourner à gauche et avancer d'une case</td><td>Left (signifie «gauche» en anglais)</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Se retourner (demi-tour) et avancer d'une case</td><td>Inverse</td></tr>
+
+ <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Avancer d'une case</td><td>Première lettre de l'alphabet</td></tr>
+ <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Avancer de deux cases</td><td>Deuxième lettre de l'alphabet</td></tr>
+ <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Avancer de trois cases</td><td>Troisième lettre de l'alphabet</td></tr>
+
+ <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Reculer d'une case</td><td>A une lettre de la fin de l'alphabet</td></tr>
+ <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Reculer de deux cases</td><td>A deux lettres de la fin de l'alphabet</td></tr>
+ <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Reculer de trois cases</td><td>A trois lettres de la fin de l'alphabet</td></tr>
+ <tr><td><i>(n'importe quoi d'autre)</i></td><td>Arrêter de danser.</td><td></td></tr>
+</table>
+
+<h3>Indications</h3>
+
+Cet exercice peut sembler un peu compliqué, mais il s'agit principalement de
+traduire le contenu du tableau ci-dessus dans un enchaînement de
+conditionnelles.
+
+<p>Vous devez continuer à danser tant qu'il reste des pas de danse à
+faire. c-à-d tant qu'on est sur une case décrite dans le tableau. Le plus
+simple pour cela est d'utiliser une variable booléenne (<code>fini</code>)
+en condition d'arrêt d'une boucle while. Cette variable est initialisée à la
+valeur faux
+(<code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>). Si on
+trouve une case ne répondant à aucune ligne du tableau, on change la valeur
+de cette variable à vrai
+(<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code>). Cela arrête
+la boucle, et le programme. </p>
+
+[!java|c]
+<p>Une autre subtilité est qu'il est un peu pénible en Java de déterminer si
+deux chaînes de caractères sont identiques. Nous utiliserons donc la méthode
+<code>char getIndication[!c]Bdr[/!]()</code> à la place de
+<code>[!java]String[/!][!c]char*[/!] litMessage()</code>. Cette méthode, qui
+n'est connue que des buggles des exercices BDR, renvoie le premier caractère
+du message au sol (ou ' ' --une espace-- s'il n'y a rien d'écrit au
+sol). Cela nous permet de travailler avec des caractères
+(<code>char</code>), qui sont moins pénibles que les chaînes en [!thelang].</p>
+[/!]
+
+<h3>Trucs et astuces</h3>
+
+Si vous ne parvenez plus à comprendre pourquoi votre buggle n'exécute pas
+les pas de danse demandés, essayez d'ajouter <code>baisseBrosse()</code>
+dans votre méthode. Cela demandera à la buggle de poser une brosse par
+terre, laissant une trace au sol quand elle avance. Cela devrait vous aider
+à suivre sa trajectoire, mais pensez à retirer cette appel lorsque vous
+voulez tester si votre solution marche : on vous demande de faire danser les
+buggles, pas de dégrader le dance floor.
+
+<p>Quand votre programme fonctionne enfin, passez à l'exercice suivant.</p>

@@ -1,0 +1,91 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Ciclo for</h2>
+
+<p>I cicli while sono utili per le situazioni dove voi volete compiere
+un'azione fintantoché una condizione rimane true ma si adattano meno per
+compiere un'azione un determinato numero di volte. Per esempio in un
+precedente esercizio, quando volevamo muoverci <code>passiTotali</code>
+volte indietro, abbiamo dovuto creare una nuova variabile, iniziallizarla e
+muoverci indietro finché l'incremento di questa variabile non l'avrebbe resa
+uguale a <code>passiTotali</code>.</p> 
+
+<p>In situazioni simili i cicli <code>for</code> diventano utili. La loro
+sintassi è la seguente:</p> 
+<pre>[!java|c]for (<b>inizializzazione</b>; <b>condizione</b>; <b>incremento</b>) {
+    <b>azione</b>();
+}[/!][!python]for <b>variabile</b> in <b>sequenza di valori</b>:
+    <b>azione</b>()[/!][!scala] for (<b>variabile</b> &lt;- <b>primoValore</b> to <b>ultimoValore</b>) { 
+    <b>azione</b>();
+}[/!]</pre>
+
+<p>Per esempio per ripente il contenuto del ciclo <code>n</code> volte[!python]
+è utile usare l'istruzione <code>range(n)</code> per generare una sequenza
+di n valori interi da 0 fino ad n-1.[/!][!java|scala|c] dovreste
+scrivere:[/!]</p>
+<pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
+}[/!][!c]int stepper;
+for (stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
+}[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
+    <b>action</b>()[/!][!scala] for (<b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
+    <b>action</b>();
+}[/!]</pre>
+
+<p>This code is then equivalent to the following one from the computer point of
+view. From the programmer point of view, one form or the other can make the
+source code easier to read, depending on the situation. You should chose
+wisely in each situation whether you want to use a for loop or a while
+loop. Your uttermost goal should remain to keep your code simple and easy to
+read, to ensure that your day remain pleasant and productive.
+</p>
+<pre>[!java|c]int stepper = 0;
+while (stepper &lt; n) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
+}[/!][!python]stepper=0
+while stepper &lt; n: 
+    action()
+    stepper = stepper + 1[/!][!scala]
+var stepper = 1
+while (stepper &lt;= n) {
+    <b>action</b>()
+    stepper = stepper + 1
+}[/!]</pre>
+
+<p>In that case, the <code>for</code> loop is easier to read, don't you think?</p>
+
+[!java|c]
+<p>È possibile costruire cicli <tt>for</tt> più avanzati dato che qualsiasi
+istruzione valida può essere usata come inizializzazione, condizione ed
+incremento. Il seguente esempio è un po' estremo e mostra come non serva il
+contenuto di un ciclo per muovere i buggle in avanti fino ad arrivare al
+muro, ma funziona bene: tutto il lavoro viene svolto nelle istruzioni della
+condizione e dell'incremento.</p>
+
+<pre>for (; !isFacingWall() ; forward()) { 
+   <span class="comment">/* niente nel contenuto del ciclo */</span>
+}
+<span class="comment">/* ora i buggle fronteggiano il muro */</span></pre>
+[/!] [!scala]
+<p>se volete annidare diversi cicli in Scala potete farlo su una sola
+riga. Questo significa che i due seguenti spezzoni di codice sono
+equivalenti:</p>
+<pre>for (stepper1 &lt;- 1 to n) {
+    for (stepper2 &lt;- 1 to m) {
+       azioni()
+    }
+}</pre> 
+<pre>for (stepper1 &lt;- 1 to n; stepper2 &lt;- 1 to m) { <span class="comment">// Separare semplicemente le condizioni di entrambi i loop con un punto e virgola</span>
+    azioni()
+}</pre> 
+[/!]
+
+<h3>Traguardo dell'esercizio</h3>
+<p> Ora dovete rifare lo stesso vecchio esercizio (muoversi avanti fino a
+sormontare un baggle, prenderlo, ritornare indietro alla posizione iniziale,
+posare il baggle) ma usando un ciclo <code>for</code> invece che un ciclo
+<code>while</code> per tornare indietro alla posizione iniziale.</p>
+
+<p>Quando avrete finito potrete procedere al prossimo esercizio.</p>

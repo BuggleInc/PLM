@@ -1,0 +1,46 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>La fourmi de Langton multicolore</h2>
+
+<p>Il y a plusieurs façons de changer le concept de la fourmi de Langton. Dans
+cet exercice, nous allons tout d'abord étudier le fait d'utiliser plus de
+deux couleurs. Cela reste très similaire au cas de base : le comportement à
+chaque pas dépendra toujours de la couleur du sol, mais vous aurez plus de
+deux possibilités. Cela permet d'avoir plus qu'une seule sorte de fourmi,
+selon ce que l'on décide de faire pour chaque couleur. Par exemple, la
+fourmi LRL reconnaît trois couleurs. Elle tourne à gauche sur la première, à
+droite sur la seconde et à gauche sur la troisième. Selon cette définition,
+la fourmi de base est de type RL ( puisqu'elle tourne à droite sur les cases
+blanches et à gauche sur les noires).</p>
+
+<p>Certaines de ces fourmis dessinent des schémas fascinants ( changez de monde
+pour les voir ):LLRR construit une figure symétrique ressemblant vaguement à
+une balle. LRRRRRLLR dessine un carré, LLRRRLRLRLLR dessine un schéma
+régulier tordu après une période ressemblant à un comportement chaotique, et
+RRLLLRLLLRRR semble remplir un sablier...</p>  
+
+<p>Métamorphoser votre buggle en une fourmi de Langton générique n'est pas très
+compliqué, même si ce n'est pas complètement trivial. Comme précédemment,
+vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle
+reçoit deux tableaux comme paramètres. Le premier définit les règles à
+suivre selon la couleur du sol tandis que le deuxième donne la séquence de
+couleurs à utiliser. Par exemple, la fourmi de base aurait
+[!java]<code>{'R', 'L'}</code> et <code>{Color.white,
+Color.black}</code>[/!]
+[!python]<code>['R', 'L']</code> et <code>[Color.white,
+Color.black]</code>[/!]
+[!scala]<code>Array('R', 'L')</code> et <code>Array(Color.white,
+Color.black)</code>[/!]
+comme arguments.</p>
+
+<p>A chaque pas, vous avez toujours à appliquer le pseudo-code suivant :</p>
+<ul>
+ <li>Trouver la position de la couleur du sol dans la séquence de couleur;</li>
+ <li>Tourner à gauche ou à droite selon le contenu du tableau de règle à cette
+position;</li>
+ <li>Marquer le sol de la case courante avec la prochaine couleur dans la
+séquence ( la dernière couleur est suivie par la première);</li>
+ <li>Avancer d'un pas</li>
+</ul> 
+
+<p>Vous devriez maintenant avoir assez d'informations pour réussir.</p>

@@ -1,0 +1,54 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Do .. while loops</h2>
+
+<p>Some cells of the world are yellow, but your buggle cannot stand being in 
+such cells. Write the necessary code to move forward until the ground 
+gets white. For that, use the provided method <code>isGroundWhite()</code>.</p>
+
+<p>The trick is that most buggles of this world are currently on this yellow ground 
+that they dislike so much. That is why they are in panic, and every buggle rushes 
+one cell forward, even the buggle that was not on a yellow cell at first. In other worlds,  
+even if the ground is white on the first cell, you still want to move forward to the next cell.</p>    
+
+<p>The general idea is to do something like: </p>
+<pre>move forward until located in a white cell</pre>
+
+<p>The main difficulty is that we want this loop body to be executed once, even we are already on a white cell. 
+It would be easy to do so by duplicating the loop content before the actual loop, but this would be a bad idea: 
+code duplication is a <b>very</b> bad habit, and you should <b>always</b> avoid it.</p>
+
+<p>Code duplication easily turns code maintenance into a nightmare: reading the code becomes difficult as the reader must ensure 
+that no slight difference exist between the versions. Debugging the code becomes difficult, as bugs have to be fixed 
+in all versions. Actually, every modification of the code becomes difficult. So, really, you should <b>always</b> 
+strive to not duplicate your code if you can avoid. And the good news is that you always can...</p>
+
+<h3>Executing the loop body at least once</h3>
+[!python]
+<p>Some languages
+have specific constructs for that, but not the Python language. No problem, we can do it
+on our own! A good way is to have a dedicated variable indicating whether we are taking
+the loop for the first time or not, as follows.</p>
+<pre>firstTime = True
+while firstTime or (other conditions):
+  firstTime = False
+  (loop body)
+</pre>
+
+<p>When <code>firstTime</code> is true, the loop body is executed even if the other conditions would imply the contrary. 
+Once the loop body has been executed once, it is set to false and never impact again the decision to enter the body or not.</p>
+[/!]
+
+
+[!java|scala|c]
+<p>In a <tt>while</tt> loop, the condition is evaluated before anything else,
+and if it's false, the loop body is never evaluated. Sometimes (although not 
+that often), you would prefer the
+loop body to get evaluated at least once, even if the condition is initially
+false. For that, a variation of the <tt>while</tt> loop gets used, using the
+following syntax in [!thelang]. 
+[!java|c]Do not forget the semi-column (;) after the condition, it is mandatory.[/!]
+
+<pre>do {
+    <b>action()</b>[!java];[/!]
+} while (<b>condition</b>)[!java];[/!]</pre></p>
+[/!]

@@ -1,0 +1,60 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Les petites cousines des Buggles</h2>
+<p>
+Aujourd'hui, nous allons faire la connaissance des petites cousines des
+buggles : les tortues. En fait, les tortues sont bien plus vieilles que les
+buggles. Elles ont été inventées dans les années 70 par un scientifique du
+MIT nommé Seymour Papert pour aider à l'enseignement de la programmation, et
+les buggles sont une variation sur le thème inventée par Lyn Turbak du
+Wellesley College plus tard.
+</p>
+<p>Les tortues sont donc un peu comme les buggles, en plus petit.  Comme les
+buggles, vous pouvez leur demander d'avancer, de tourner, de reculer,
+etc. Comme les buggles, elles laissent une trace sur leur passage quand
+elles avancent (simplement, le trait est bien plus fin).</p>
+
+<p>La principale différence est que là où les buggles ne peuvent tourner que de
+quarts de tour, les tortues peuvent tourner d'un angle quelconque précisé
+par un nombre réel (double). Cela leur donne bien plus de liberté dans leur
+mouvement. Les buggles savent faire plusieurs trucs qui échappent aux
+tortues, comme lire et écrire des messages sur le sol ou ramasser des
+objets, et il y a parfois des murs dans leur univers, mais tout cela dépasse
+complètement les tortues.</p>
+
+<p>D'un point de vue pratique, la plupart des méthodes que vous connaissez à
+propos des buggles fonctionnent également avec les tortues, à quelques
+variantes près. En particulier, la méthode <code>avance</code> prend en
+argument le nombre de pas donné comme un [!python]nombre à
+virgule[/!][!java|scala|c]double[/!] (voir «Aide / À propos de ce monde»
+dans le menu pour plus de détails).</p>
+
+[!java|scala|c]
+<h3>Des doubles ? Mais qu'est ce que c'est ?</h3>
+C'est simplement un nombre à virgule. Exemple:
+<pre>
+double x = 3.72;
+x + 1.234 // Valeur = 4.954
+x + 2. // Valeur = 5.72 (2. signifie 2.0)
+x + 2 // [!java|c]Valeur = 5.72 (2 converti en 2.0 automatiquement)[/!][!scala]Erreur de typage (l'opérateur + operator ne mélange pas les Double avec les Int). Il faut convertir explicitement[/!]
+x * 2. // Valeur = 7.44
+x / 2. // Valeur = 1.86 (2 converti en 2.0 automatiquement)
+[!java|c](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Valeur = 1 (“transtypage en int”, converti en entier en tronquant)
+Math.round(x) // Valeur = 2 (1.86 arrondi à l'entier le plus proche)
+Math.floor(x) // Valeur = 1 (1.86 arrondi en direction de moins l'infini)
+Math.floor(-5.12) // Vale = -6 (Arrondi en direction de moins l'infini)
+Math.ceiling(x) // Value = 2 (1.86 arrondi en direction de plus l'infini)
+Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)
+[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 (“transtypage en double”, converti en double)
+</pre>
+[/!]
+
+<h3>Objectif de l'exercice</h3>
+<p>Bien que ce soit le premier exercice de la leçon sur la récursivité, le code
+que vous devez écrire n'est pas récursif. L'objectif est de se familiariser
+avec le monde des tortues avant d'attaquer les choses sérieuses.</p>
+
+<p>Vous devez reproduire une forme géométrique simple faite de quatre carrés de
+longueur 100 de coté (voir le monde objectif pour plus de détails). C'est
+sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la
+réutiliser lors de l'écriture de votre code.</p>

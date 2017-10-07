@@ -21,6 +21,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
+import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
@@ -39,16 +40,15 @@ public class ExerciseFactoryTest {
 	private ExerciseRunner exerciseRunner;
 	private ProgrammingLanguage[] programmingLanguages =  { java, scala, python };
 	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
-	private String rootDirectory = "test";
 
 	public ExerciseFactoryTest() {
 	}
 
-	@Before 
+	@Before
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
-		exerciseFactory = new ExerciseFactory(locale, exerciseRunner, programmingLanguages, humanLanguages);
-		exerciseFactory.setRootDirectory(rootDirectory);
+		exerciseFactory = new ExerciseFactory(
+			locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
 		exo = new Example();
 		exerciseFactory.initializeExercise(exo, java);
 	}
@@ -109,8 +109,7 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldGenerateMissionsForEachSupportedHumanLang() {
-		String baseName = exo.getBaseName().replaceAll("\\.", "/");
-		String filename =  rootDirectory + "/" + baseName;
+		String filename = exo.getBaseName().replaceAll("\\.", "/");
 		for(Locale humanLanguage : humanLanguages) {
 			String expected = "";
 			StringBuffer sb = null;

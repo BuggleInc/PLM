@@ -1,0 +1,47 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Ciclo while</h2>
+		
+<p>In aggiunta alle condizioni un altra utile costruzione è la possibilità di
+ripetere un azione fintantoché non si verifichi una condizione. Il ciclo
+while è usato per questo, con la seguente sintassi.</p>
+ 
+<pre>[!java|scala|c]while (<b>condizione</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>azione()</b>;
+}[/!][!python]while <b>condizione</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>azione()</b>[/!]</pre>
+
+<p>Il blocco interno viene quindi eseguito ancora ed ancora finché la
+condizione rimane vera. Più in dettaglio, il buggle testa il valore della
+condizione. Se è false ignora il blocco e continua sotto. Se è true esegue
+il blocco. Dopo di questo lui ritesta la condizione. Se è ancora false (per
+esempio perché un movimento gli ha fatto fronteggiare un muro) lui ignora il
+blocco e continua. Se è ancora true, esso esegue il blocco e rivaluta la
+condizione. Esso continuerà finché la condizione rimarrà true.</p>
+
+<p>Naturalmente se le azioni scelte non influenzeranno il valore della
+condizione, il buggle continuerà ad eseguire l'azione all'infinito. In
+questo caso il pulsante <b>stop</b> dell'interfaccia diventerà utile. Per
+testare questo puoi provare a scrivere il seguente codice nell'editor:</p>
+
+<pre>[!java|scala]while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;left();
+}[/!][!c]while (1) {
+&nbsp;&nbsp;&nbsp;&nbsp;left();
+}[/!][!python]while True:
+&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</pre>
+
+<p>This will let the buggle turn left as long as
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true
+(ie, endlessly), or until you stop it manually using the stop button.</p>
+
+<h3>Traguardo dell'esercizio</h3>
+Ora dovete scrivere del codice in modo che i vostri buggles si sposteranno
+avanti fintanto che non incontreranno un muro. L'idea è quindi quella di
+fare qualcosa come:
+
+<pre>mentre non stiamo fronteggiando un muro, eseguiamo:
+&nbsp;&nbsp;muoversiAvanti()</pre>
+
+<p>Look at the documentation (in "Help/About this world") for the full list of
+buggles' methods.</p>

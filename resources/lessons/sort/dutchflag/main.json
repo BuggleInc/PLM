@@ -1,0 +1,13 @@
+{
+  "name" : null,
+  "lectures" : [ {
+    "names" : {
+      "en" : "The Dutch Flag Problem",
+      "pt" : "O problema da bandeira holandesa",
+      "fr" : "Le problème du drapeau hollandais"
+    },
+    "id" : "sort.dutchflag.DutchFlagAlgo",
+    "dependingLectures" : [ ]
+  } ],
+  "id" : "sort.dutchflag"
+}
