@@ -23,6 +23,7 @@ import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
+import plm.core.model.lesson.tip.DefaultTipFactory;
 import unit.exercise.examplerunner.ExampleRunner;
 
 @RunWith(Parameterized.class)
@@ -59,8 +60,8 @@ public class ExerciseRunnerTest {
 	@Before 
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
-		exerciseFactory = new ExerciseFactory(locale, exerciseRunner, programmingLanguages, humanLanguages);
-		exerciseFactory.setRootDirectory(rootDirectory);
+		exerciseFactory = new ExerciseFactory(
+		    locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
 		exo = new ExampleRunner();
 		exerciseFactory.initializeExercise(exo, java);
 	}

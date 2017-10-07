@@ -1,0 +1,25 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>CocktailSort</h1>
+
+<p>To improve further the BubbleSort algorithm, we need to look closer its behavior. One
+can notice that big elements are moved very quickly in position while small
+ones move very slowly to their destination. They are thus traditionally
+referred to as "rabbits" and "turtles" respectively for big fast values and
+small slow ones.</p>
+
+<p>To help the turtles moving faster, the cocktail sort traverse alternatively
+the array from right to left and from left to right. Here is the
+pseudo-code:</p>
+
+<pre>
+Do
+  For all i in [0,len-2], do:
+    if i and i+1 must be swapped, do it
+  For all i in [len-2,0] (downward), do:
+    if i and i+1 must be swapped, do it
+while at least one of the traversal swapped an element
+</pre>
+
+<p>One can see that cocktail sort achieves exactly the same amount of swaps
+than the bubble sort, but improves slightly on read amount. It is however
+still worse than BubbleSort2 to that extend.</p> 

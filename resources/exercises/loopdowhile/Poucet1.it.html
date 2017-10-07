@@ -1,0 +1,42 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Tracciato dei buggle</h2>
+
+<p>Your buggle got lost in a strange maze, and you must help it to find the
+exit that is represented in orange.  You cannot simply explain the path to
+the exit in something like
+<code>right();forward();forward();forward()</code> because you have to save
+two buggles at the same time, that are lost in similar but not identical
+worlds.  You can switch to the other world by using the combobox above the
+world representation (where it's written 'Deep Forest' right now), and
+selecting the other entry (that should read 'Deeper Forest').</p>
+
+<p>La buona notizia è che il percorso d'uscita è scritto sul terreno. Come
+potete vedere il mondo è composto da diversi corridoi con dei baggle sul
+pavimento. Dopo ogni corridoio se si è incontrato tre o più baggle bisognerà
+girare a sinistra mentre per due o meno a destra.</p>
+
+<p>Dovresti contare esattamente 5 celle per corridoio, quella dell'incrocio
+conta come l'ultima cella del corridoio appena percorso e non come prima
+cella del successivo, dopo aver girato. </p>     
+
+<p>Quindi la forma generale del vostro codice deve essere qualcosa come "finché
+non trovo l'uscita prendo il prossimo corridoio per decidere se dovrò girare
+a destra o a sinistra al prossimo incrocio".  Puoi determinare se ti trovi
+sulla cella di uscita (in arancione) con il metodo
+<code>exitReached()</code></p>
+
+<p>To take one corridor, you simply have to run from one intersection to
+another while counting the baggles you see on your path. That's easy: there
+is 5 steps in each corridors so a simple <code>for</code> loop suffices.</p>
+
+
+<p><div class="tip" id="tip-1" alt="Non riesco ad immaginare come contare i baggle che vedo.">
+Hai bisogno di una variabile inizializzata a 0 e incrementarla ogni volta
+che vedi un baggle sul pavimento. Una variabile usata in questo modo è
+spesso chiamanta <i>contatore</i>.<br/><br/>
+Non dimenticare di azzerare il tuo contatore all'inizio di ogni corridoio! 
+</div></p>
+
+<p>Ah, e quando avrai raggiunto l'uscita, non dimenticare di fare uno step
+extra per uscire effettivamente dal labirinto.</p> 

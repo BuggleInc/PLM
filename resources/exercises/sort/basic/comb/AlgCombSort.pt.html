@@ -1,0 +1,51 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>CombSort</h1>
+ 
+<p>Vimos que CocktailSort melhora um pouco as coisas para as tartarugas
+(i.e. pequenos valores próximos do fim da array), mas ainda é possível fazer
+melhor. ComboSort vem para fornecer a elas um atalho: ao invés de comparar
+valores adjacentes, comparamos valores separados por um intervalo ("gap")
+maior que 1. Desta forma, as tartarugas vão percorrer <i>gap</i> células em
+cada passagem. Naturalmente, temos que aplicar o algoritmo com distâncias
+decrescentes, e terminar com <i>gap=1</i> para garantir que a array está
+corretamente ordenada ao final. Escolher a distância correta e como
+diminuí-la é uma questão difícil, mas na prática, dividir por 1.3 depois de
+cada passagem leva a uma boa performance. Aqui está o pseudo-código
+correspondente:</p>
+ 
+ <pre>
+gap = len;
+do
+   if gap>1 then
+     gap = gap / 1.3
+   i = O
+   while i+gap &lt; len do:
+     if i and i+gap must be swapped, do it
+     increase i by one
+while the gap is bigger than 1 or the last traversal swapped at least one pair
+</pre>
+
+[!scala]<p>Um detalhe perigoso é que temos que dividir o intervalo, que é um inteiro
+(ou do tipo Int), por 1.3, que é um Double. O sistema de tipos do scala não
+nos deixa fazer isto, por que tal discrepância normalmente significa um erro
+de programação. Como isto não é um erro neste caso, vamos ter que converter
+o intervalo para Double para o momento da operação, e então converter o
+resultado de volta para Int para armazená-lo no intervalo. Isto deve ser
+escrito desta forma:</p>
+<pre>gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]</pre>
+<p>Isto é meio exagerado, mas na verdade, esta notação não é muito complexa. E
+lembre que o verificador de sintaxe é seu amigo. Ele às vezes é chato e
+irritante (como neste caso), mas frequentemente pega bugs esquisitos que
+seriam trabalhosos para depurar se não fosse o verificador de sintaxe. E
+como os autores do Scala são pragmáticos, a expressão anterior pode ser
+simplificada:</p>
+<pre>gap = (gap.toDouble / 1.3).toInt</pre>
+<p><code>toDouble</code> e <code>toInt</code> são apenas atalhos para as
+expressões correspondentes <code>asInstanceOf[Double]</code> e
+<code>asInstanceOf[Int]</code>. Não é muito genérico, mas é bem prático.</p>
+[/!]
+
+<p>Este algoritmo foi inventanndo por Wlodek Dobosiewicz em 1980, e depois
+redescoberto e popularizado por Stephen Lacey e Richard Box, que o
+descreveram na Byte Magazine em Abril de 1991.</p>

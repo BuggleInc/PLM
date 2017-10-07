@@ -1,0 +1,29 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>The Dutch Flag Problem</h1>
+
+<p>Your work is to sort all the colors of the Dutch flag, and the only provided primitive is to exchange two given lines. 
+In addition, you should not create any additional variables (but a few indices).</p>
+
+<p>If you think carefully, this can be done in linear time, where you sort a line at each iteration of the loop. 
+You may want to check again the <a ui-sref="exercise({ lessonID: 'sort.basic', exerciseID: 'sort.basic.lessons.sort.basic.insertion.AlgInsertionSort' })">insertion sort</a>, 
+of which the Dutch Flag sort is a variation. The main difference is that you have 3 insertion points, not only one...</p>
+
+
+<a href="" data-reveal-id="myModal" ng-click="exercise.readTip(1)">I need an hint to start</a>
+
+<div id="myModal" class="reveal-modal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <p>
+    Do a traversal over your data, saving 3 indices:
+    <ul>
+      <li>
+        <code>afterBlue</code> is initialized to 0. Make sure that every cell below <code>afterBlue</code> is filled with blue elements.
+      </li>
+      <li><code>whiteRed</code> is initialized to size-1. Make sure that every cell after <code>whiteRed</code> is filled with red elements.</li>
+      <li><code>beforeWhite</code> is initialized to size-1. Make sure that every cell after <code>beforeWhite</code> and before <code>whiteRed</code> is filled with white elements.</li>
+    </ul>
+    Note that the unsorted cells are always between <code>afterBlue</code> and <code>beforeWhite</code>.
+    <br/> At each step of your traversal, check the color of the cell at <code>afterBlue</code> and do the required exchanges. The loop ending condition is when <code>afterBlue</code> becomes larger than <code>beforeWhite</code>.
+    <br/>
+  </p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

@@ -1,0 +1,101 @@
+{
+  "name" : null,
+  "lectures" : [ {
+    "names" : {
+      "en" : "Tower of Hanoi",
+      "pt" : "Torre de Hanoi",
+      "fr" : "Les tours de Hanoï"
+    },
+    "id" : "recursion.hanoi.HanoiBoard",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Interleaved Towers of Hanoi",
+      "pt" : "Torres de Hanoi Intercaladas",
+      "fr" : "Les tours de Hanoï interclassées"
+    },
+    "id" : "recursion.hanoi.InterleavedHanoi",
+    "dependingLectures" : [ {
+      "names" : {
+        "en" : "Split Towers of Hanoi",
+        "pt" : "Torres de hanoi Separadas",
+        "fr" : "Les tours de Hanoï séparées"
+      },
+      "id" : "recursion.hanoi.SplitHanoi1",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "Better Split Towers of Hanoi",
+        "pt" : "Better Split Towers of Hanoi",
+        "fr" : "De meilleures tours de Hanoï séparées"
+      },
+      "id" : "recursion.hanoi.SplitHanoi2",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "Fast Split Towers of Hanoi",
+        "pt" : "Fast Split Towers of Hanoi",
+        "fr" : "Les tours de Hanoï séparées rapides"
+      },
+      "id" : "recursion.hanoi.SplitHanoi3",
+      "dependingLectures" : [ ]
+    } ]
+  }, {
+    "names" : {
+      "en" : "Linear Towers of Hanoi",
+      "pt" : "Linear Towers of Hanoi",
+      "fr" : "Les tours de Hanoï linéaires"
+    },
+    "id" : "recursion.hanoi.LinearHanoi",
+    "dependingLectures" : [ {
+      "names" : {
+        "en" : "Linear Twin Towers of Hanoi",
+        "pt" : "Torres gêmeas de Hanoi Lineares",
+        "fr" : "Les tours jumelles de Hanoï linéaire"
+      },
+      "id" : "recursion.hanoi.LinearTwinHanoi",
+      "dependingLectures" : [ ]
+    } ]
+  }, {
+    "names" : {
+      "en" : "Tricolor Hanoi: stack move",
+      "pt" : "Hanoi de tricolor: movimentação de pilhas",
+      "fr" : "Tours de Hanoï tricolores : déplacer"
+    },
+    "id" : "recursion.hanoi.TricolorHanoi1",
+    "dependingLectures" : [ {
+      "names" : {
+        "en" : "Tricolor Hanoi: the Gathering",
+        "pt" : "Tricolor Hanoi: the Gathering",
+        "fr" : "Tours de Hanoï tricolores : rassembler"
+      },
+      "id" : "recursion.hanoi.TricolorHanoi2",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "Tricolor Hanoi: the Final",
+        "pt" : "Hanoi Tricolor: o Final",
+        "fr" : "Tours de Hanoï tricolores : séparer et terminer"
+      },
+      "id" : "recursion.hanoi.TricolorHanoi3",
+      "dependingLectures" : [ ]
+    } ]
+  }, {
+    "names" : {
+      "en" : "Cyclic Towers of Hanoi",
+      "pt" : "Torres de Hanoi cíclicas",
+      "fr" : "Les tours de Hanoï cycliques"
+    },
+    "id" : "recursion.hanoi.CyclicHanoi",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Iterative Towers of Hanoi",
+      "pt" : "Torres de Hanoi Iterativas",
+      "fr" : "Les tours de Hanoï itératives"
+    },
+    "id" : "recursion.hanoi.IterativeHanoi",
+    "dependingLectures" : [ ]
+  } ],
+  "id" : "recursion.hanoi"
+}

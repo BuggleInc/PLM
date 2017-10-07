@@ -1,0 +1,42 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Building methodically</h2>
+
+We now would like to teach the buggle to build a doghouse. The naive
+approach consists in directly writing the needed code as follows.  This
+works because the buggle of this exercise leaves a red path as it moves.
+
+<pre>[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]</pre>
+
+<p>It becomes harder when we want to draw two doghouses: we have to rewrite the
+same code twice, which is not really handy. When the code becomes a bit long as this
+one, it becomes easier to see why we insist since a while on the pure evilness that code
+duplication represents. Indeed, if you realize that an error sneaked into a code that you
+copied at several locations, you will have to fix it several times. And mind your back if you forget one of these locations.</p> 
+
+<p>There is even a name to this good principle in programming: DRY/SPOT, which means
+"Don't Repeat Yourself / Single Point Of Truth". The latter part means that each information
+must be written in only one location of your program to avoid the differing locations to get
+out of synch when you modify your code.</p>
+
+<p>So, let's apply this good principle and <b>factorize our code</b>, 
+ie to write it only once, for example in a method. You should even to go further by 
+factorizing the method body with a <code>for</code> loop, as seen previously.
+If you do it correctly (what you should), you can use the method <code>left()</code> only 
+once.</p>
+
+<h3>Exercise goal</h3>
+<p>The goal of this exercise is to write a method called <code>dogHouse</code>
+achieving the same result than the code above, but with a for loop to keep it short. 
+The buggle will call your creation to create several dog houses around its world. </p>
+

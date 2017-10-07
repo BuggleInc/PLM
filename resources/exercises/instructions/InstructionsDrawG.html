@@ -1,0 +1,40 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Writing more complex programs</h2>
+  Now that we know how to draw things on the board, we'll enjoy this ability and 
+  draw a beautiful G on the board (check Objective panel for details on what is 
+  expected). 
+
+  <p>When you write a quite complex program, it is sometimes useful to <b>add
+   comments</b> to simplify the code reviews afterward. Here for example, it's 
+   quite easy to get lost in the drawing process, and you may want to add 
+   comments like <i>vertical bar done</i> or <i>finished drawing the G. Time to 
+   move back to initial position</i>. Commenting your code is almost mandatory if you 
+   (or someone else) want to read it afterward, although over-commenting 
+   (describing obvious stuff) is a bad idea as the important idea get lost in the noise.</p>
+   
+  <p>There is [!java]three[/!][!python|scala|c]two[/!] types of comments in [!thelang], instructing 
+  the [!java|scala|c]compiler[/!][!python]interpreter[/!] to not read the text you add for humans:</p>
+   
+  <ul>
+    <li><b>Comments on a single line</b>. When the [!java|scala|c]compiler[/!][!python]interpreter[/!]
+      encounters the symbol [!java|scala|c]//[/!][!python]#[/!], it ignores the end of the line.</li>      
+    <li><b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!python]interpreter[/!]
+      ignores anything placed between 
+      [!java|scala|c]the symbols /* and */ even if they are placed on differing lines.[/!]
+      [!python]a line beginning with ''' until the next line ending with '''.[/!]</li>
+  </ul>
+
+<pre><code class="code-container">methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>
+otherCall()[!java|c];[/!] [!java|scala|c]<span class="comment">/* This is</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>[/!]
+[!python]<span class="comment">''' This is</span>
+<span class="comment">also ignored  '''</span>[/!]
+yetAnotherCall()[!java|c];[/!]
+</code></pre>  
+  <p class="Java">There is a third kind of comments in Java, between /** and */, which are read by a
+specific program called JavaDoc to generate automatically the documentation
+explaining how to use the code. These comments must follow a very precise
+formalism.</p>
+
+  <p class="Python">The comments on several lines are often used to document how to use the code, while others 
+  are more used to describe how this code works.</p>

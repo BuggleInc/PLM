@@ -1,0 +1,14 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Triângulo de Sierpinski</h2>
+
+<p>O fractal que vamos desenhar é formado de um grande triângulo dentro do qual
+há vários pequenos triângulos. O protótipo da função que desenha isto é o
+seguinte:</p>
+<pre>[!java|c]void [/!]sierpinski([!java|c]int [/!]nível[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!])</pre>
+
+<p>Dê uma olhada em cada uma das visões do mundo objetivo para entender como
+escrever a função. Para desenhar um lado do triângulo, desenhe um triângulo
+recursivo menor (metade do comprimento) e mova para a frente no comprimento
+desejado. Globalmente, você tem que desenhar 3 destes lados e girar 120
+graus entre cada lado.</p> 

@@ -1,0 +1,177 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Buggle Dance Revolution 2 (BDR2)</h2>
+
+[!java|scala|c]
+<p>Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les buggles
+gigotent en tout sens, et en plus, le code que vous avez écrit pour les
+faire bouger est très difficile à lire. Voici un nouveau monde de BDR, où
+les buggles vont faire une gentille petite ronde plus reposante. Nous
+profiterons de cette accalmie pour nettoyer un peu le code grâce aux
+nouveaux éléments que nous allons maintenant étudier.</p>
+
+<h3>[!java|c]Conditionnelle <code>switch</code>[/!][!scala]Les filtrages[/!]</h3>
+
+<p>Le plus difficile à lire du code précédent est certainement la cascade de
+conditionnelles. Quelque part dans votre programme, vous avez sans doute
+écrit quelque chose comme:</p>
+
+<pre><code class="code-container">if ([!java|c]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
+  droite();
+  avance();
+} else if ([!java|c]getIndication() == 'L'[/!][!scala]litMessage() == "L"[/!]) {
+  gauche();
+  avance();
+} else if ([!java|c]getIndication() == 'I'[/!][!scala]litMessage() == "I"[/!]) {
+  retourne();
+  avance();
+<span class="comment">/* d'autre if */</span>
+} else {
+  fini = true;
+}
+</code></pre>
+
+<p>À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un
+choix avec 4 branches en fonction du résultat de
+[!java]getIndication()[/!][!scala]litMessage()[/!].
+Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>,
+dont la syntaxe est la suivante en Java.[/!]
+[!scala] un filtrage (pattern matching en anglais), qui est une construction
+très agréable généralisant le <code>if</code>. Il s'agit sans aucun doute de
+l'un des avantages majeurs du langage Scala par rapport à d'autres tels que
+le Java ou le Python. Cette construction n'est cependant pas révolutionnaire
+puisqu'elle existe depuis assez longtemps dans des langages comme OCaml ou
+Haskell, mais il n'empêche. Elle est carrément cool![/!]</p>
+[/!] [!java|c]
+<pre><code class="code-container">switch (<b>expression</b>) {
+  case <b>premierValeur</b>: 
+    <b>queFaireSiExpressionVautPremiereValeur();</b>
+    break;
+  case <b>deuxiemeValeur</b>: 
+    <b>queFaireSiExpressionVautDeuxiemeValeur();</b>
+    break;
+  case <b>troisiemeValeur</b>: 
+    <b>queFaireSiExpressionVautTroisiemeValeur();</b>
+    break;
+    /* autant de cas sur le même modèle qu'on le souhaite */
+  default: 
+    <b>queFaireSiExpressionVautAucuneDesValeursProposees();</b>
+}</code></pre>
+
+<p>Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un
+<code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
+suivant dans la liste quand elle a fini le code du cas où elle a sauté dans
+le switch. Il y a même quelques <b>très rares</b> cas où ce comportement est
+pratique.</p>
+
+<p>On peut réécrire le code BDR précédent bien plus clairement grâce à la
+construction <tt>switch</tt> de la façon suivante.</p>
+
+<pre><code class="code-container">switch (getIndication()) {
+  case 'R':
+    droite(); 
+    [!c]avancePas()[/!][!java]avance()[/!]; 
+    break;
+  case 'L':
+    gauche();
+    [!c]avancePas()[/!][!java]avance()[/!]; 
+    break;
+  case 'I':
+    retourne();
+    [!c]avancePas()[/!][!java]avance()[/!];
+    break;
+  default: 
+    return;
+}</code></pre>
+[/!] [!scala]
+<pre><code class="code-container"><i>expression</i> <b>match</b> {
+  <b>case</b> <i>valeur possible</i>  <b>=></b> instructions
+  <b>case</b> <i>autre valeur</i>     <b>=></b> d'autres instructions
+  <b>case</b> <i>troisième valeur</i> <b>=></b> encore d'autres instructions
+  <b>case _                 =></b> instructions par défaut
+}
+</code></pre>
+<p>L'expression fournie avant le mot-clé <code>match</code> est évaluée, et
+ensuite, les branches sont évaluées les unes après les autres jusqu'à en
+trouver une où la valeur entre le <code>case</code> et le <code>=&gt;</code>
+correspond à la valeur de l'expression. Le symbole <code>_</code> agit comme
+un joker qui correspond à tout. Cela veut dire que la dernière ligne telle
+qu'elle est écrite correspond toujours à la valeur fournie, quelle qu'elle
+soit. Voici un petit exemple où une variable <code>nom</code> est mis en
+correspondance.</p>
+<pre><code class="code-container">nom match {
+  case "Martin" => println("Salut Martin, comment vas-tu?")
+  case "Gerald" => println("He Gerald! Ça va?")
+  case _            => println("Bonjour, étranger.")
+}</code></pre>
+
+<p>Il est aussi possible d'avoir plusieurs instructions par branches, et même
+d'avoir plusieurs valeurs sur une branche donnée, séparées par le caractère
+<code>|</code>.</p>
+<pre><code class="code-container">nom match {
+  case "Martin" | "Gerald" => println("Bonjour "+nom+", entre."); ouvreLaPorte()
+  case _                            => println("Bonjour étranger. Passe ton chemin sans entrer."); fermeLaPorte()
+}</code></pre>
+
+<p>Il est même possible d'ajouter des gardes à vos branches. Il s'agit de
+conditions supplémentaires qui doivent être respectées pour que la branche
+soit appliquée. C'est par exemple pratique pour faire du filtrage sur un
+ensemble de valeurs.</p>
+<pre><code class="code-container">age match {
+  case i if i&lt;10 => println("Salut gamin!")
+  case i if i&lt;20 => println("Salut mec")
+  case i if i&lt;30 => println("Bonjour jeune homme")
+  case _           => println("Bonjour monsieur")
+}</code></pre>
+<p>Remarquez qu'il n'est pas nécessaire de vérifier à la seconde ligne que la
+valeur est supérieure à 10 puisque les lignes sont considérées dans
+l'ordre. Si la seconde ligne est considérée, c'est que la première ne
+correspondait pas.</p>
+
+<p>Enfin, il est même possible de filtrer sur plusieurs variables à la fois!</p>
+<pre><code class="code-container">(x,y) match {
+ case (0,0) => println("C'est le point origine")
+ case (_,0) => println("C'est un point de l'ordonnée")
+ case (0,_) => println("C'est un point de l'abscisse")
+ case (_,_) => println("C'est un point quelconque")
+}</code></pre>
+
+<p>Je vous avais bien dit que le filtrage scala était une construction
+surpuissante ! Je l'adore !</p>
+[/!]
+
+<h3>Objectif de cet exercice</h3>
+<p>[!java|scala|c]Appliquez les améliorations que nous venons de voir pour
+adapter le code de votre buggle au nouveau pas de danse explicité
+ci-dessous.[/!]
+[!python]Nous allons maintenant apprendre un nouveau pas de danse à nos
+buggles. Il est un peu plus complexe, mais sinon, c'est toujours la même
+histoire.[/!]
+Remarquez qu'il est maintenant possible d'avancer jusqu'à 6 cases à la fois.</p>
+
+<table border="1">
+ <tr><td>Indication</td>
+     <td>Quoi faire</td></tr>
+
+ <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Tourner à droite et avancer d'une case</td></tr>
+ <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Tourner à gauche et avancer d'une case</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Se retourner (faire demi-tour) et avancer d'une case</td></tr>
+
+ <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Avancer d'une case</td></tr>
+ <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Avancer de deux cases</td></tr>
+ <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Avancer de trois cases</td></tr>
+ <tr><td>[!java|c]'D'[/!][!scala|python]"D"[/!]</td><td>Avancer de quatre cases</td></tr>
+ <tr><td>[!java|c]'E'[/!][!scala|python]"E"[/!]</td><td>Avancer de cinq cases</td></tr>
+ <tr><td>[!java|c]'F'[/!][!scala|python]"F"[/!]</td><td>Avancer de six cases</td></tr>
+
+ <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Reculer d'une case</td></tr>
+ <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Reculer de deux cases</td></tr>
+ <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Reculer de trois cases</td></tr>
+ <tr><td>[!java|c]'W'[/!][!scala|python]"W"[/!]</td><td>Reculer de quatre cases</td></tr>
+ <tr><td>[!java|c]'V'[/!][!scala|python]"V"[/!]</td><td>Reculer de cinq cases</td></tr>
+ <tr><td>[!java|c]'U'[/!][!scala|python]"U"[/!]</td><td>Reculer de six cases</td></tr>
+ <tr><td><i>(n'importe quoi d'autre)</i></td><td>Arrêter de danser.</td></tr>
+
+</table>
+
+<p>Quand votre programme fonctionne de nouveau, passez à l'exercice suivant.</p>

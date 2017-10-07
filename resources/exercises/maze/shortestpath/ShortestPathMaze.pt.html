@@ -1,0 +1,52 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Algoritmo básico do caminho mais curto</h2>
+
+<p>Para concluir com esta lição introdutória em algoritmos de resolução
+de labirintos, vamos investigar outra forma de encontrar a saída. O
+buggle nesta lição é um buggle especial: ele é um jedi. Ele pode
+sentir a Força. Isto significa que ele é capaz de sentir o ambiente.</p>
+
+<p>Sem nem sequer sair da sua posição, ele pode recuperar informações
+sobre o mundo que está vivendo, com as seguintes funções:</p>
+<ul>
+  <li><code>getWorldWidth()</code> da a largura ("width") do mundo.</li>
+  <li><code>getWorldHeight()</code> da a altura ("height") do mundo.</li>
+  <li><code>hasTopWall(x,y)</code> diz se a célula (x,y) deste mundo tem uma
+parede no topo.</li>
+  <li><code>hasLeftWall(x,y)</code> diz se a célula (x,y) deste mundo tem uma
+parede na esquerda.</li>
+  <li><code>hasBaggle(x,y)</code> diz se a célula (x,y) deste mundo tem um baggle.</li>
+  <li><code>setIndication(x,y,i)</code> adiciona a indicação inteira
+<code>i</code> à célula (x,y).</li>  
+  <li><code>getIndication(x,y,i)</code> obtém a indicação inteira da célula (x,y)
+(ou 9999 se não houver indicação).</li>  
+</ul>
+
+<p>Note que não é possível construir uma parede na borda de baixo ou na
+borda à direita de uma célula. portanto, se tal parede existe,
+significa que foi construído nas células vizinhas -- como uma parede
+na borda de cima (respectivamente da esquerda) da célula que é localizada
+abaixo (respectivamente à direita) da célula atual.</p>
+
+<h3>Objetivo do exercício</h3>
+
+<p>Seu buggle deve primeiro escrever a distância para a saída em cada
+célula (ou pelo menos nas células úteis).<br/>
+Para isto, encontre a saída e escreva 0 lá. Então, escreve 1 em cada
+célula vizinha que não esteja separada da saída por uma parede. E
+então marque cada célula a partir da qual você possa alcançar a saída
+em 2 passos, e itere para todas as células até que todas as células
+estejam marcadas.</p>
+
+<p>Uma vez que as células estejam marcadas, leve seu buggle jedi para
+percorrer a caminho mais curto. Basicamente o buggle tem apenas que
+andar em cada caso com a menor distância à saída. Você pode usar o
+método <code>setDirection(direction)</code> para fazer seu buggle
+virar para a direção específica como
+<code>[!scala|java|python]Direction.[/!]NORTH</code> ou
+<code>[!scala|java|python]Direction.[/!]EAST</code>.</p>
+
+<div class="tip" id="tip-1" alt="Estou perdido agora. Por favor, me dê algumas indicações extra.">
+Usa a Força, Luke!
+</div>	

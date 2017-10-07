@@ -1,0 +1,26 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Linear Towers of Hanoi</h2>
+
+<p>This is a classical variation over the Towers of Hanoi where some moves are forbidden.
+Specifically, disks cannot move directly between the left-most and the right-most pegs. 
+The middle peg must be involved in every moves.</p>
+
+<p>Beside of that extra complexity, the problem remains unchanged: you are requested to 
+move the whole stack of disks from one extremity peg to the other one. You can only move 
+one disk at a time, and a bigger disk cannot be placed over a smaller one.</p>
+
+<p>As with the classical version, it is much easier to produce a recursive solution, and 
+you are absolutely able to devise this solution if you think hard enough about it.</p>
+
+<div class="tip" id="tip-1" alt="I tried, but I don't get it">
+The standard recursive algorithm for classical Hanoi is of complexity <i>2^n-1</i> 
+where the standard recursive algorithm for this variation is of complexity <i>3^n-1</i>.
+</div>
+
+<div class="tip" id="tip-2" alt="That first tip was not enough">
+The standard recursive algorithm for classical
+Hanoi involves two recursive calls sandwiching one
+movement of the largest disk, the standard
+recursive algorithm for Linear Hanoi involves three
+recursive calls sandwiched around two movements of the same disk.
+</div>

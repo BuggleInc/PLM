@@ -1,0 +1,197 @@
+{
+  "name" : null,
+  "lectures" : [ {
+    "names" : {
+      "en" : "Square",
+      "pt" : "Square",
+      "fr" : "Square"
+    },
+    "id" : "turtleart.square.Square",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "SmallSquare",
+      "pt" : "SmallSquare",
+      "fr" : "SmallSquare"
+    },
+    "id" : "turtleart.smallsquare.SmallSquare",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Stairs",
+      "pt" : "Stairs",
+      "fr" : "Stairs"
+    },
+    "id" : "turtleart.stairs.Stairs",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "TriangleFlat",
+      "pt" : "TriangleFlat",
+      "fr" : "TriangleFlat"
+    },
+    "id" : "turtleart.triangleflat.TriangleFlat",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Triangle",
+      "pt" : "Triangle",
+      "fr" : "Triangle"
+    },
+    "id" : "turtleart.triangle.Triangle",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "House",
+      "pt" : "House",
+      "fr" : "House"
+    },
+    "id" : "turtleart.house.House",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "HouseTree",
+      "pt" : "HouseTree",
+      "fr" : "HouseTree"
+    },
+    "id" : "turtleart.housetree.HouseTree",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "HouseMany",
+      "pt" : "HouseMany",
+      "fr" : "HouseMany"
+    },
+    "id" : "turtleart.housemany.HouseMany",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Polygon6",
+      "pt" : "Polygon6",
+      "fr" : "Polygon6"
+    },
+    "id" : "turtleart.polygon6.Polygon6",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Polygon7",
+      "pt" : "Polygon7",
+      "fr" : "Polygon7"
+    },
+    "id" : "turtleart.polygon7.Polygon7",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Polygon20",
+      "pt" : "Polygon20",
+      "fr" : "Polygon20"
+    },
+    "id" : "turtleart.polygon20.Polygon20",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Polygon360",
+      "pt" : "Polygon360",
+      "fr" : "Polygon360"
+    },
+    "id" : "turtleart.polygon360.Polygon360",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "CircleTwo",
+      "pt" : "CircleTwo",
+      "fr" : "CircleTwo"
+    },
+    "id" : "turtleart.circletwo.CircleTwo",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "CircleYing",
+      "pt" : "CircleYing",
+      "fr" : "CircleYing"
+    },
+    "id" : "turtleart.circleying.CircleYing",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "CircleSquare",
+      "pt" : "CircleSquare",
+      "fr" : "CircleSquare"
+    },
+    "id" : "turtleart.circlesquare.CircleSquare",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "CircleTen",
+      "pt" : "CircleTen",
+      "fr" : "CircleTen"
+    },
+    "id" : "turtleart.circleten.CircleTen",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "DiskFourth",
+      "pt" : "DiskFourth",
+      "fr" : "DiskFourth"
+    },
+    "id" : "turtleart.diskfourth.DiskFourth",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "DiskFour",
+      "pt" : "DiskFour",
+      "fr" : "DiskFour"
+    },
+    "id" : "turtleart.diskfour.DiskFour",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "DiskTwo",
+      "pt" : "DiskTwo",
+      "fr" : "DiskTwo"
+    },
+    "id" : "turtleart.disktwo.DiskTwo",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Star",
+      "pt" : "Star",
+      "fr" : "Star"
+    },
+    "id" : "turtleart.star.Star",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Flower",
+      "pt" : "Flower",
+      "fr" : "Flower"
+    },
+    "id" : "turtleart.flower.Flower",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Kerr36",
+      "pt" : "Kerr36",
+      "fr" : "Kerr36"
+    },
+    "id" : "turtleart.kerr36.Kerr36",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Kerr40",
+      "pt" : "Kerr40",
+      "fr" : "Kerr40"
+    },
+    "id" : "turtleart.kerr40.Kerr40",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Flower3",
+      "pt" : "Flower3",
+      "fr" : "Flower3"
+    },
+    "id" : "turtleart.flower3.Flower3",
+    "dependingLectures" : [ ]
+  } ],
+  "id" : "turtleart"
+}

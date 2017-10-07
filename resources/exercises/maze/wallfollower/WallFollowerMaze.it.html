@@ -1,0 +1,63 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Following the walls</h2>
+
+<p>This time, the maze is a bit more complicated. Random won't be enough, we
+ough to be smart!</p>
+
+<p>The good news is that this maze is simpler that it seems at the first
+glance: every wall are connected to each other. To get out of this kind of
+maze, the buggle only have to follow a wall (the one on its left or the one
+on its right, it doesn't matter).  While keeping a paw on the wall, the
+buggle must move forward until it finds the maze exit and this biscuit it
+loves so much.</p>
+
+<p>This works here because there is no island of isolated walls, so our buggle
+cannot loop around for ever without encountering its baggle.</p>
+
+<h3>Traguardo dell'esercizio</h3>The goal of this exercise is to write an algorithm allowing the buggle to
+get out of this maze.
+
+<p>As said earlier, it does not matter whether you decide to follow the left
+wall or the right one. Simply, the demo follows the left one, so you should
+do the same in your solution to ease the comparison of your solution and the
+demo.</p> 
+
+<p>Write a method <code>keepHandOnSideWall()</code> which lets the buggle move
+one step forward while keeping the paw on the wall of the selected side. You
+must ensure that the buggle always keep the paw on the wall, but also that
+it won't crash into a wall. You can check the tip for more info on this, but
+only do so if you're stuck. Try to do it without the tip first.</p> 
+
+<p>Then, write the whole algorithm to traverse the maze step by step (using
+<code>keepHandOnSideWall()</code>) until it finds the biscuit and the
+exit. Don't forget to pick the baggle up once you've found it.</p>
+
+<div class="tip" id="tip-1" alt="I'm lost, please give me some extra indications">
+<p>When your buggle has a wall on the left, there is three situations to
+consider, depending on the surrounding walls. The following table depicts
+each initial situation, and where you should let your buggle end after one
+step.</p>
+<table border=1>
+<tr>
+ <td></td>
+ <td>Case 1</td>
+ <td>Case 2</td>
+ <td>Case 3</td>
+</tr><tr>
+ <td>Initial situation</td>
+ <td><img src="lessons/maze/wallfollower/1A.png"/></td>
+ <td><img src="lessons/maze/wallfollower/2A.png"/></td>
+ <td><img src="lessons/maze/wallfollower/3A.png"/></td>
+</tr><tr>
+ <td>Where is the next step</td>
+ <td><img src="lessons/maze/wallfollower/1B.png"/></td>
+ <td><img src="lessons/maze/wallfollower/2B.png"/></td>
+ <td><img src="lessons/maze/wallfollower/3B.png"/></td>
+</tr>
+</table>
+<p>If you do a <code>right()</code> in any case at the end of your function,
+it's possible to write it in 3 lines with a <code>while</code> loop.</p>
+</div>
+
+    

@@ -1,0 +1,62 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Baseball multicolore naïf</h1>
+
+<p>Aujourd'hui, les buggles ont décidé de faire une partie de baseball, mais il
+faut avouer que ce n'est pas très bien engagé : elles ne se souviennent plus
+très bien des règles, et ... euh ... elles ont perdu les battes et les
+balles. Elles ont donc décidé «d'adapter un peu» les règles. Comme il n'y a
+plus de balle, la seule chose qu'elles peuvent faire est de courir sur le
+terrain. C'est d'ailleurs ce qu'elles ont fait pendant un moment : toutes
+les buggles présentes se sont mises à courir en tous sens sur le terrain.</p> 
+
+<p>Mais après quelques collisions plus ou moins douloureuses, elles décident
+d'inventer de nouvelles règles pour organiser la partie. Elles décident de
+faire une équipe par base sur le terrain et deux joueurs par équipes. L'une
+des équipes n'a qu'un seul joueur pour que l'une des bases ait un
+emplacement vide. Ensuite, les joueurs se répartissent aléatoirement sur les
+bases, et le jeu est de faire en sorte que chaque joueur retourne sur sa
+base. La partie s’arrête quand tous les joueurs sont chez eux. Il n'y a pas
+d'équipe gagnante : soit tous les joueurs remportent la partie, soit ils la
+perdent tous. Oui, c'est vrai, ce jeu est très différent du baseball
+habituel. La seule règle qui reste est qu'il faut courir autour du terrain,
+de base en base, sans jamais passer au centre du terrain.</p>
+
+<p>Maintenant, les buggles ont besoin de vous pour décider qui doit bouger à
+quel moment de façon à ce que chacune rejoigne sa base. Une seule buggle
+peut bouger à chaque tour, de sa position jusqu'à l'emplacement vide. De
+plus, la distance maximale qu'une buggle peut parcourir en un tour est de
+une seule base.</p>
+
+<p>Ainsi, à chaque tour, l'emplacement vide se trouve sur une base (disons
+<code>B</code>), et vous devez décider quelle buggle occupera cette
+place. Il y a quatre candidates : deux de la base <code>B-1<code>, et deux
+de la base <code>B+1</code>. En fait, il y a une cinquième candidate puisque
+la buggle qui se trouve sur la même base que le trou peut aller l'occuper,
+mais ça ne fait pas vraiment avancer le problème.</p>
+
+<h3>Algorithme naïf</h3>
+
+<p>Dans cet exercice, nous allons explorer un premier algorithme très
+simple. Pour décider laquelle des quatre candidates doit aller occuper
+l'emplacement vide, nous commençons par nous restreindre à tourner dans le
+sens des aiguilles d'une montre. Ensuite, parmi les deux candidates
+restantes, nous prenons celle qui a encore le plus de chemin à parcourir
+jusqu'à sa base (dans le sens des aiguilles d'une montre). Essayez la
+démonstration : cela marche plutôt bien en pratique.</p>
+
+<p>Il est difficile d'imaginer un algorithme plus simple pour ce problème :
+tant que ce n'est pas trié, chercher la base contenant les candidates. Si le
+trou est sur la base <code>B</code>, il s'agit de la base <code>B+1</code>
+(modulo le nombre de bases). Ensuite, il faut calculer la distance que
+chacune des buggles de cette base doit encore parcourir (0 si elle est déjà
+chez elle). Une fois que vous avez sélectionné l'heureuse élue, utilisez la
+méthode <code>deplace</code> pour la faire bouger, avant de passer à
+l'itération suivante.</p>   
+
+<p>La principale difficulté est peut-être d'écrire les quelques équations
+nécessaires sans se tromper. Trouver quelle est la base après le trou
+devrait être assez facile, mais calculer la distance que chaque joueur doit
+encore parcourir peut s'avérer plus problématique. N'hésitez pas à faire des
+dessins pour vérifier que votre équation marche dans tous les cas, il n'y a
+pas tant de cas possibles que cela après tout.</p>  

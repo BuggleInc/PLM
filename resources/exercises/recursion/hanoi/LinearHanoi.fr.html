@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Les tours de Hanoï linéaires</h2>
+
+<p>Voici une variante classique des tours de Hanoï où certains mouvements sont
+interdits. Plus précisément, les disques ne peuvent plus passer directement
+du piquet le plus à gauche au piquet le plus à droite. Le piquet central
+doit être utilisé dans tous les déplacements.</p>
+
+<p>À part cela, le problème reste inchangé : vous devez déplacer toute la pile
+de disques d'une extrémité à une autre. Vous ne pouvez déplacer qu'un seul
+disque à la fois, et il est interdit de placer un grand disque sur un disque
+plus petit.</p>
+
+<p>Comme dans la version classique, ce problème se résout plus facilement de
+manière récursive, et vous êtes tout à fait capable de trouver cette
+solution récursive si vous y réfléchissez suffisamment.</p>
+
+<div class="tip" id="tip-1" alt="J'ai essayé, mais je n'y arrive pas">
+L'algorithme récursif habituel pour le problème classique des tours de Hanoï
+est de complexité <i>2^n-1</i> tandis que l'algorithme récursif habituel
+pour cette variante est de complexité <i>3^n-1</i>.
+</div>
+
+<div class="tip" id="tip-2" alt="Ce premier indice n'était pas suffisant">
+L'algorithme récursif habituel pour le problème classique des tours de Hanoï
+implique deux appels récursifs enveloppant un mouvement du grand
+disque. L'algorithme récursif habituel pour les tours linéaires de Hanoï
+implique trois appels récursifs enveloppant deux mouvement de ce disque.
+</div>

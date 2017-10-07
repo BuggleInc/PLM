@@ -1,0 +1,51 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Construire avec méthode</h2>
+
+Nous souhaitons maintenant apprendre à la buggle à se faire une niche.  La
+première approche, la plus simple au premier abord, est d'écrire directement
+le code permettant de le faire, comme ci-dessous (cela marche car la buggle
+de cet exercice laisse une traînée rouge dans son sillage quand elle se
+déplace).
+
+<pre>[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+[!c]avancePas()[/!][!python|java|scala]avance()[/!][!java|c];[/!]
+left()[!java|c];[/!]</pre>
+
+<p>Les problèmes commencent quand nous voulons faire faire deux cabanes à la
+buggle : Il faut réécrire le code deux fois, ce qui n'est pas très
+pratique. Quand le code devient un peu long comme dans ce cas, on voit mieux
+pourquoi il faut toujours éviter de dupliquer du code. En effet, si vous
+vous rendez compte que vous vous êtes trompé dans votre code, et que vous
+l'avez recopier à plusieurs endroits, il va falloir le corriger plusieurs
+fois. Et gare si vous oubliez de corriger un exemplaire.</p> 
+
+<p>Ce principe de programmation a même un nom en anglais : DRY/SPOT (qui
+signifie «point sec»). C'est l'acronyme de «Don't Repeat Yourself» (ne vous
+répétez pas) et «Single Point Of Truth» (point unique de vérité). Chaque
+information doit se trouver à un seul endroit de votre programme pour éviter
+que les différentes copies ne se désynchronisent quand vous modifiez votre
+programme.</p>
+
+<p>Nous allons donc appliquer ce beau principe et <b>factoriser le code</b>,
+c'est-à-dire écrire le code une seule fois, par exemple dans une
+méthode. Vous devriez même aller plus loin en factorisant le code de la
+méthode avec une boucle <code>for</code> comme vu précédemment. Si vous vous
+y prenez bien (ce que vous devriez faire), vous n'écrirez qu'un seul appel à
+la méthode <code>gauche()</code> dans votre programme.</p>
+
+<h3>Objectif de cet exercice</h3>
+<p>L'objectif de cet exercice est d'écrire une méthode nommée
+<code>dogHouse()</code> et ayant un comportement identique au code
+ci-dessus. La buggle invoquera plusieurs fois votre œuvre afin de dessiner
+des cabanes un peu partout. </p>
+

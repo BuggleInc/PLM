@@ -1,0 +1,56 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>The small cousines of Buggles</h2>
+<p>
+Today, we will meet the small cousines of the buggles: the turtles. In fact,
+turtles are much olders than the buggles. They were invented in the 70's by
+a scientific from MIT called Seymour Papert to help teaching programming,
+and the buggles are a variation on the idea invented by Lyn Turbak from
+Wellesley College later.
+</p>
+<p>Turtles are thus a bit like buggles, but smaller. Just like buggles, you can
+order them to move forward, to turn, to move backward, etc. Just like
+buggles, they leave a line on their path when they move (but the line is
+much smaller).</p>
+
+<p>The main difference is that where buggles can only move of right angles,
+turtles can move of any arbitrary angles specified by a real number (a
+double). This gives them much more liberty in their movings. The buggles can
+do several other tricks, like reading and writting messages, picking or
+dropping objects, and there is sometimes walls in their worlds (but all this
+is completely above the capacities of turtles).</p>
+
+<p>From a practical point of view, most of the methods you knew about buggles
+still work with turtles, with some minor adaptations. In particular, the
+<code>forward()</code> method takes the amount of steps to do not as an integer, 
+but as a [!python]point number[/!][!java|scala|c]double[/!]
+(see "About this world" for more details).</p>
+
+[!java|scala|c]
+<h3>Doubles? But what is it?</h3>
+It's simply a point number. Example:
+<pre>
+double x = 3.72;
+x + 1.234 // Value = 4.954
+x + 2. // Value = 5.72 (2. means 2.0)
+x + 2 // [!java|c]Value = 5.72 (2 automatically converted to 2.0)[/!][!scala]Type error (+ operator don't mix Double and Int); manual conversion mandatory[/!]
+x * 2. // Value = 7.44 
+x / 2. // Value = 1.86 
+[!java|c](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Value = 1 (“casting to int”, converted to integer by truncating)
+Math.round(x) // Value = 2 (1.86 rounded to nearest integer)
+Math.floor(x) // Value = 1 (1.86 rounded toward minus infinity)
+Math.floor(-5.12) // Value = -6 (rounded toward minus infinity)
+Math.ceiling(x) // Value = 2 (1.86 rounded toward plus infinity)
+Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)
+[!java|c](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 (“casted to double”, converted to double)
+</pre>
+[/!]
+
+<h3>Goal of this exercise</h3>
+<p>Even if this is the first exercise on the recursivity lesson, the code you
+have to write is not recursive. The goal is to get familiar with the turtle
+world before getting on serious matter.</p>
+
+<p>You must reproduce a simple geometrical painting constituted of four 100
+steps long squares (see the objective world for more details). It is
+obviously a good idea to write a method to draw a square, and then use it in
+your code.</p>

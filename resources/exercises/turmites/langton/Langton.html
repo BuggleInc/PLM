@@ -1,0 +1,45 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Langton's ant</h2>
+
+<p>In this exercise, you will turn your buggle into a <i>Langton's ant</i>. These 
+artificial little animals are very interesting because they are given simple 
+rules that depend only on their local environment, and after a period of 
+apparent chaotic behavior, a general pattern <i>emerges</i>.</p>
+
+<p>The rules are absolutely trivial: to compute what the next step should be, 
+you should check the current color of the ground (using 
+<code>getGroundColor()</code>). If it's white, change it to black, turn right 
+and move forward by one cell. If the ground is currently black, change it to 
+white, turn left and move forward by one cell.</p> 
+
+<p>It's hard to come up with simpler rules isn't it? Well, let's go and code it 
+now. You have to complete the <code>step()</code> method, which encodes the 
+behavior of the ant at each step. You will probably use the <code>getGroundColor()</code> 
+method to retrieve the color of the cell on which the ant is currently. 
+Colors of interest are simply named <code>Color.black</code> and <code>Color.white</code>.</p>
+
+[!java]
+<p>To compare colors, you cannot use the equal signs (==), because these things are not 
+scalar values but objects. Instead, you need to write something like the following:</p> 
+<pre>
+Color c /* = some initialization */;
+if (c.equals(Color.black)) {
+  /* that's equal */
+} else {
+  /* that was not equal */
+}
+</pre>
+[/!]
+
+<p>Changing the ground color is not difficult, but a bit long: you have to 
+change the brush color of your buggle, set the brush down (to mark the current 
+cell -- with <code>brushDown()</code>), and set the brush back up (with 
+<code>brushUp()</code>) to avoid further issues when the buggle will 
+move. You are naturally free of organizing your code the way you want, but you may
+want to write a <code>setGroundColor(color)</code> method to factorize things a bit.</p>
+
+<p>As you can see from the execution of this exercise, the interest in this algorithm 
+is that after about 10000 steps of relative chaotic behavior, the ant start building 
+a regular pattern. This emergence of a regular pattern from the chaos is rather 
+fascinating, isn't it? Move on to the next exercise to see more of them.</p>   
+

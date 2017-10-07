@@ -1,0 +1,52 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Basic Shortest Path algorithm</h2>
+
+<p>To conclude with this introductory lesson to maze solving algorithms, we
+will investigate another way to find the exit. The buggle in this lesson is
+a special buggle: he is a jedi. He can feel the Force. This means he is able
+to feel his environment.</p>
+
+<p>Without even leaving his position, he can retrieve information about the
+world he is leaving in, with the following functions:</p>
+<ul>
+  <li><code>getWorldWidth()</code> gives the width of its world.</li>
+  <li><code>getWorldHeight()</code> gives the height of its world.</li>
+  <li><code>hasTopWall(x,y)</code> tells whether the cell (x,y) of this world has
+a wall on top.</li>
+  <li><code>hasLeftWall(x,y)</code> tells whether the cell (x,y) of this world has
+a wall on the left.</li>
+  <li><code>hasBaggle(x,y)</code> tells whether the cell (x,y) of this world has a
+baggle.</li>
+  <li><code>setIndication(x,y,i)</code> adds the integer indication <code>i</code>
+to the cell (x,y).</li>  
+  <li><code>getIndication(x,y,i)</code> retrieves the integer indication of the
+cell (x,y) (or 9999 if there is no indication).</li>  
+</ul>
+
+<p>It has to be noted that it is not possible to build a wall on the bottom
+edge or on the right edge of a cell.  Therefore when such wall exists, it
+means it was built on a sibling cells -- as a top (respectively left) wall
+on the cell that is located below (respectively at the right of) the current
+cell.</p>
+
+<h3>Traguardo dell'esercizio</h3>
+
+<p>Your buggle should first write the distance to the exit on each cell (or at
+least the useful ones).<br/>
+For that, find the exit and write 0 there.  Then, write 1 on every
+neighboring cells that is not separated from the exit with a wall.  And then
+mark every cells from which you can reach the exit in 2 steps, and iterate
+for all cells until all cells are marked.</p>
+
+<p>Once the cells are marked, get your jedi buggle to follow the shortest
+path.  Basically the buggle has only to walk on each case with the lesser
+distance from the exit. You can use the method
+<code>setDirection(direction)</code> to make your buggle look at the
+specific direction such as
+<code>[!scala|java|python]Direction.[/!]NORTH</code> or
+<code>[!scala|java|python]Direction.[/!]EAST</code>.</p>
+
+<div class="tip" id="tip-1" alt="I'm lost now. Please give me some extra indications.">
+Use the Force, Luke!
+</div>	

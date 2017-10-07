@@ -1,0 +1,46 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Insertion Baseball</h1>
+
+<p>The good point of adapting the selection sort to the baseball problem is that we know that
+it works (provided that our adaptation is correct). That's much better than the first naive 
+algorithm, that was unable to converge to the solution in some situations. But actually, the 
+selection sort is not perfect either as it requires a lot of swaps: we have to bring the hole 
+to the selected player and then both the player and hole in position, and more. We can do better.</p>
+
+<p>For example, each player can run quite a long way from its initial position to its target solution.
+Instead, it may be more interesting to split the field in two parts: one on the left where all players 
+are sorted relatively to each others, and one on the right where the players are still at their initial 
+positions. Then, at each iteration, we take the player at the border between the sorted and unsorted 
+areas (that is, the left-most player of the unsorted area) and move it to the left (within the sorted 
+area) until it reaches its position (that is, until the position where it's bigger that its left
+neighbor). This would at least reduce the travel of players to the sorted area as we use the first 
+one on the border.</p>
+
+<p>Actually, that's exactly what an insertion sort would do: maintain a sorted area on the left, and put 
+iteratively the player on the border to its position within the sorted area. This is good, as we know
+that our algorithm is not inherently flawed since we adapt a well known one.</p>     
+
+<p>The easiest to adapt the insertion sort to the baseball problem is to consider all positions as 
+adjacent and forget about bases. For that, we define the methods <code>getColor[!c]Insert[/!](pos)</code>, 
+<code>move[!c]Insert[/!](pos)</code> and <code>getHole[!c]Insert[/!]()</code> that all use a unique integer to designate a given 
+position. These functions simply convert between the way to specify a position and then call the 
+usual functions to interact with the world. If you have an <code>index</code> and want to convert it 
+into a <code>base,pos</code>, then <code>base=index/2</code> and <code>pos=index%2</code>. To compute 
+the reverse, <code>index=base*2+pos</code> (this works because <code>getPositionsAmount()</code> always 
+returns 2).</p> 
+
+<p>For the algorithm itself, you should first move the hole to the position 1. The position 0 is 
+considered to be the sorted area (of size 1 for now) while the area above 2 is the unsorted area. 
+Then comes an iteration to sort each element of the unsorted area. Since this iteration is a bit complex, 
+you should think of its loop invariant, that is, the condition that is true before and after the loop 
+and which explains that the loop fulfills its goal. Here, the loop invariant is twofold: First, the hole is  
+between the sorted area and the unsorted area, and then, the every elements of the sorted area are ... well 
+sorted relatively to their neighbors.</p>
+
+<p>Then, the loop body to sort an element should first descend the hole and the elements within the sorted 
+area until the element is larger than the element before in the sorted area (2 moves per position to travel), 
+and then move the hole back to its position between the sorted and unsorted areas (1 move per position).</p> 
+
+<p>Once you insert the last element within the sorted area, your whole set is sorted and you're done. 
+I preserve the surprise of the border cases that will require some little adjustments to your algorithm to 
+make it work properly :)</p>

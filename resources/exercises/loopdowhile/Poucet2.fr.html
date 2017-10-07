@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Nouvelles pistes</h2>
+
+<p>Et mince ! Votre buggle s'est encore perdue dans le même genre de
+labyrinthes, mais cette fois les corridors ne sont pas tous de la même
+taille. Comme il n'y a aucun moyen de connaître à l'avance la longueur
+du corridor que l'on commence à explorer, une boucle <code>for</code>
+semble mal adaptée. Au lieu de cela, vous devriez changer votre boucle
+interne en un <code>while</code>. Utilisez la méthode
+<code>crossing()</code>, qui indique si votre buggle se trouve
+actuellement à un embranchement.</p>
+
+<p>Le problème, c'est que lorsque vous commencez l'exploration d'un
+corridor, vous vous trouvez à une intersection mais vous voulez
+avancer quand même. [!java|scala|c]La solution la plus simple est
+alors d'utiliser une boucle <code>do / while</code> au lieu d'un
+simple <code>while</code> pour bouger <b>jusqu'à</b> la prochaine
+intersection.[/!] [!python]Utilisez pour cela une variable
+supplémentaire indiquant si vous êtes déjà entré dans un
+corridor. Cela vous permettra d'exécuter le core de boucle au moins
+une fois (quand <code>premiereFois</code> est vraie) avant de tester
+la valeur retournée par <code>crossing()</code>.[/!]</p>
+
+[!python]
+<pre>premiereFois = True
+while premiereFois or not crossing():
+  premiereFois = False
+  (le corps de la boucle)
+</pre>
+[/!] 
+
+<p>Avec ces nouvelles astuces, votre buggle devrait parvenir à s'échapper
+assez facilement.</p>

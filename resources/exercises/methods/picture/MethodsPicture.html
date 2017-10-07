@@ -1,0 +1,40 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Colorful drawing</h2>
+
+In this exercise, we will reproduce the geometric drawing that you can see
+in the "Objective" tab.
+
+<p>Your goal (here and in any well written program) is to write the simplest
+possible code. For that, you have to decompose your work in
+sub-steps, and write a specific method for each sub-step.</p>
+
+<p>If you observe carefully the picture to draw, it is constituted of four
+parts depicting a sort of V using a different color. A possible
+decomposition is to write a method in charge of drawing a V of the specified
+color from the current position. Its prototype can be:</p>
+<pre>[!java|c]void [/!]makeV([!java|c]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span>[/!]</pre>
+
+<p>The <code>Color</code> data type naturally describes a particular
+color. Your code should probably call <code>makeV</code> with the following arguments 
+(a different color for each call):</p>
+<ul>
+<li>[!java|scala|python]Color.[/!]YELLOW</li>
+<li>[!java|scala|python]Color.[/!]RED</li>
+<li>[!java|scala|python]Color.[/!]BLUE</li>
+<li>[!java|scala|python]Color.[/!]GREEN</li>
+</ul>
+
+<p>In <code>makeV()</code>, you should use the <code>setBrushColor()</code>
+method (predefined in the buggle) to change the color of the buggle's brush,
+as well as <code>brushUp()</code> and <code>brushDown()</code> to change the
+brush position.</p>
+ 
+<p>It may be wise to write the <code>makeV()</code> so that it places directly
+the buggle in position for the next V.</p>
+ 
+[!java|scala]
+<p>Your turn now. I'm sure you can imagine the other methods you need to keep your code simple and pleasant to read. 
+Complete the method <code>run()</code> that should be called automatically (once). 
+[!java]the <code>public</code> keyword means more or less that anybody can call this method, which is good because the PLM 
+infrastructure calls it directly.[/!] </p>
+[/!]

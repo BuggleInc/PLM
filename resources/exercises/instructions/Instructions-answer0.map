@@ -1,0 +1,11 @@
+BuggleWorld: Training World
+Size: 7x7
+Buggle(3,3): north,black,lightGray,Rookie,noBaggle,
+Cell(2,2): lightGray,nobaggle,notopwall,noleftwall,
+Cell(2,3): lightGray,nobaggle,notopwall,noleftwall,
+Cell(2,4): lightGray,nobaggle,notopwall,noleftwall,
+Cell(3,2): lightGray,nobaggle,notopwall,noleftwall,
+Cell(3,4): lightGray,nobaggle,notopwall,noleftwall,
+Cell(4,2): lightGray,nobaggle,notopwall,noleftwall,
+Cell(4,3): lightGray,nobaggle,notopwall,noleftwall,
+Cell(4,4): lightGray,nobaggle,notopwall,noleftwall,

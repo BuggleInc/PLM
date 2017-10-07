@@ -1,0 +1,29 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Finding the walls to follow</h2>
+
+<p>This is exactly the same maze than before, but the buggle does not
+start at the same location. In particular, it does not have any wall
+to its left at the beginning.</p>
+
+<p>As a result, the method you wrote for the previous exercise
+probably don't work for this one. If you use it here with
+no modification, your buggle probably start looping over the four free
+cells around its start position (if that's not the case, well, you
+didn't really stick to the mission on previous exercise. Feel lucky
+and proceed to the next :)</p>
+
+<p>This is because your <code>keepHandOnSideWall()</code> method has
+an implicit <b>pre-condition</b>: it works well if and only if the
+buggle has a wall to its left when you call it. Such pre-condition are
+very heavily used when programming. Specifying them explicitly helps
+understanding the code written by other, and they even allow sometimes
+to prove that the code works correctly.</p>
+
+<h3>Exercise goal</h3>
+
+<p>
+Fixing the problem should be very easy. Simply make sure that the
+pre-condition of <code>keepHandOnSideWall()</code> is verified before
+calling it. For that, update your code to first look for a
+wall on its left before the big <code>while</code> loop.
+</p>

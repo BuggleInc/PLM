@@ -1,0 +1,45 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Le problème du drapeau hollandais</h1>
+
+<p>Votre travail est de trier les couleurs du drapeau hollandais. La seule
+primitive à votre disposition permet d'échanger deux lignes données. De
+plus, vous ne devez pas créer de nouvelles variables (à l'exception de
+quelques indices).</p>
+
+<p>À la réflexion, on peut le faire en temps linéaire, en triant un élément à
+chaque étape de la boucle. Vous devriez peut-être réviser comment se passe
+le <a ui-sref="exercise({ lessonID: 'sort.basic', exerciseID:
+'sort.basic.lessons.sort.basic.insertion.AlgInsertionSort' })">tri par
+insertion</a>, car le tri du drapeau hollandais est une variation sur le
+thème. La principale différence est que vous n'avez pas un seul point
+d'insertion, mais 3...</p>
+
+
+<a href="" data-reveal-id="myModal" ng-click="exercise.readTip(1)">J'ai
+besoin d'un indice pour démarrer</a>
+
+<div id="myModal" class="reveal-modal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <p>
+    Traversez vos données, en maintenant trois indices :
+    <ul>
+      <li>
+        <code>apresBleu</code> est initialisé à 0. Assurez vous de n'avoir que des
+cellules bleues entre 0 et <code>apresBleu</code> à tout moment.
+      </li>
+      <li><code>blancRouge</code> est initialisé à taille-1. Assurez vous de n'avoir
+que des cellules rouges après <code>blancRouge</code>.</li>
+      <li><code>avantBlanc</code> est initialisé à taille-1. Assurez vous de n'avoir
+que des cellules blanches entre <code>avantBlanc</code> et
+<code>blancRouge</code>.</li>
+    </ul>
+    Remarques que les cellules non triées sont toujours entre
+<code>apresBleu</code> et <code>avantBlanc</code>.
+    <br/> À chaque étape de votre traversée, regardez la couleur de la case pointée
+par <code>apresBleu</code> et effectuez les échanges qui s'imposent. La
+boucle s'arrête quand <code>apresBleu</code> devient plus grand que
+<code>avantBlanc</code>.
+    <br/>
+  </p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

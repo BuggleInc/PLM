@@ -1,0 +1,27 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BubbleSort (take 3)</h1>
+
+<p>Vamos agora reintroduzir a pequena otimização que fizemos no passo anterior:
+se uma passagem não troca nenhum elemento, significa que a array já está
+ordenada. Neste caso, vamos parar todo o processo de ordenação.</p>
+
+<p>
+  [!java|python|c]Para isto, simplesmente use a palavra-chave
+<code>break</code>, que interrompe o loop atual. Cuidado, se você tem vários
+loops aninhados, isto só vai ter efeito no mais interno.[/!] [!scala]Para
+isto, simplesmente saia da função atual chamando <code>return</code> sem
+nenhum valor associado.[/!] 
+</p>
+
+<div class="tip" id="tip-3" alt="Se você quiser, esta dica mostra o pseudo-código.">
+<p></p>
+<pre>para todo i em [len-2,0] (percorrendo do maior para o menor)
+       Para todo j em [0, i]
+          Se células j e j+1 devem ser trocadas, troque
+       Se ao percorrer j não fez nenhuma troca, pare o loop
+</pre>
+</div>
+
+<p>Esta otimização é ainda mais desapontadora: ela só dá um ganho de alguns
+porcento sobre o BubbleSort2 no total de leituras.</p>

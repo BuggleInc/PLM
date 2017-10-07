@@ -1,0 +1,162 @@
+#include "RemoteBuggle.h"
+
+void step();
+
+Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
+
+/* Do not change these definitions */
+
+const int NEXT_COLOR = 0;
+const int NEXT_MOVE  = 1;
+const int NEXT_STATE = 2;
+
+
+
+int*** rule;
+
+Color* colors;
+int colorsLength;
+int state = 0;
+
+
+
+/* BEGIN TEMPLATE */
+const int STOP   = 0;
+const int NOTURN = 1;
+const int LEFT   = 2;
+const int BACK   = 4;
+const int RIGHT  = 8;
+
+int nbSteps;
+
+/** init the rule array from a string defining a Langton's ant
+ *
+ *  You can use this method inside your init() method if you want
+ *  to test langton's ant instead of full turmites.
+ */
+void initLangton(char* name) {
+	int nbColors = strlen(name); /* As many colors as letters in the ant's name */
+
+	//rule = new int[1][][]; /* one state only */
+	rule = (int***)malloc(sizeof(int**)*1);
+	//rule[0] = new int[nbColors][]; /* As many colors as letters in the ant's name */
+	rule[0] = (int**)malloc(sizeof(int*)*nbColors);
+	int i;
+	for (i=0; i<nbColors; i++) {
+		//rule[0][i] = new int[3]; /* every command set has 3 elements */
+		rule[0][i] = (int*)malloc(sizeof(int)*3);
+
+		rule[0][i][NEXT_COLOR] = (i+1) % nbColors;
+
+		if (name[i] == 'L') {
+			rule[0][i][NEXT_MOVE] = LEFT;
+		} else if (name[i] == 'R') {
+			rule[0][i][NEXT_MOVE] = RIGHT;
+		} else {
+			//Logger.log("Unknown command in your ant's name: "+name.charAt(i));
+			printf("100 Unknown command in your ant's name: %c\n",name[i]);
+			fflush(stdout);
+		}
+
+		rule[0][i][NEXT_STATE] = 0; /* only one state */
+
+		//		Logger.log("{"+rule[0][i][NEXT_COLOR]+","+rule[0][i][NEXT_MOVE]+","+rule[0][i][NEXT_STATE]+"}");
+	}
+}
+void init() {
+	/* Your code comes here. */
+
+	/* Something like
+	 *   nbSteps = 42;
+	 *   rule = new int[][][] {{{0, NOTURN, 0}, {0, NOTURN, 0}}};
+	 * but with possibly more states (ie, bigger second dimension), and more color (ie bigger third -- internal -- dimension)
+	 * and naturally, less boring than this turmite doing absolutely nothing (runs forward endlessly).
+	 */
+
+	/* It can also be something like
+	 *   nbSteps = 42;
+	 *   initLangton("RL");
+	 */
+
+	/* remember to send your best creations for inclusion in the gallery */
+	/* BEGIN SOLUTION */
+	nbSteps = 8342;
+	rule=(int***)malloc(sizeof(int**)*1);
+	rule[0]=(int**)malloc(sizeof(int*)*2);
+	rule[0][0]=(int*)malloc(sizeof(int)*3);
+	rule[0][1]=(int*)malloc(sizeof(int)*3);
+	rule[0][0][0]=1;
+	rule[0][0][1]=2;
+	rule[0][0][2]=0;
+	rule[0][0][0]=1;
+	rule[0][0][1]=2;
+	rule[0][0][2]=1;
+	rule[0][1][0]=0;
+	rule[0][1][1]=1;
+	rule[0][1][2]=0;
+	rule[0][1][0]=0;
+	rule[0][1][1]=1;
+	rule[0][1][2]=1;
+	setX(8); setY(33);
+	/* END SOLUTION */
+}
+/* END TEMPLATE */
+
+void run() {
+	init();
+
+	colors = (Color*)malloc(sizeof(Color)*2);//new Color[rule[0].length];
+	int i;
+	for (i=0; i<2/*Math.min(rule[0].length,allColors.length)*/; i++)
+		colors[i] = allColors[i];
+	/*
+	for (; i<rule[0].length; i++) {
+		Color newColor = null;
+		do {
+			newColor = new Color(
+					(int)(Math.random()*255.) ,
+					(int)(Math.random()*255.) ,
+					(int)(Math.random()*255.) );
+			for (int j=0;j<i;j++) {
+				if (colors[j].equals(newColor)) {
+					// Damn we already picked that color; take another one please
+					newColor = null;
+				}
+			}
+		} while (newColor == null);
+		colors[i] = newColor;
+	}*/
+
+	int vstep;
+	for (vstep=0;vstep<nbSteps;vstep++) {
+		step();
+		stepDone();
+	}
+}
+
+void step() {
+	int currentColor=0;
+	Color current = getGroundColor();
+	int i;
+	for (i=0;i<colorsLength;i++)
+		if (current==colors[i])
+			currentColor = i;
+
+	setBrushColor(colors[rule[state][currentColor][NEXT_COLOR] ]);
+	brushDown();
+	brushUp();
+
+	switch (rule[state][currentColor][NEXT_MOVE]) {
+	case 0:   /* nothing */;            break;
+	case 1: /* no turn */; forward(1); break;
+	case 2:   left();   	forward(1); break;
+	case 8:  right();   forward(1); break;
+	case 4:   back();    forward(1); break;
+	default:
+		printf("100 ploup\n");
+		fflush(stdout);
+	}
+
+	state = rule[state][currentColor][NEXT_STATE];
+}
+

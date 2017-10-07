@@ -1,0 +1,24 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Disegnare metodicamente</h2>
+
+In questo esercizio riprodurremo il disegno geometrico che puoi vedere nella
+scheda "Objective".
+
+<p>Il tuo scopo (quì come in ogni altro programma ben scritto) è di produrre
+codice più semplice possibile. Per far questo devi scomporre il lavoro in
+sottosezioni e scrivere un metodo specifico per ognuna di esse.</p>
+
+<p>If you observe carefully the picture to draw, it is constituted of four
+parts depicting a sort of V. A possible decomposition is to write a method
+in charge of drawing a V from the current position. Its prototype can be:
+<code>[!java|c]void [/!]makeV()</code></p>
+
+<p>In questo metodo dovresti inserire a loro volta i metodi
+<code>brushUp()</code> e <code>brushDown()</code> per marcare il terreno
+(possibilmente fattorizzando anche loro in un ulteriore metodo). Potrebbe
+essere saggio scrivere <code>makeV()</code> in modo tale che alla fine
+predisponga il buggle già nella posizione adatta a disegnare la V seguente.</p>
+ 
+<p>Your turn. Your code should not be longer than 4 lines (not counting
+<code>makeV</code>)...</p>

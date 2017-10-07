@@ -1,0 +1,87 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Istruzioni</h2>
+
+Congratulazioni! Hai appena scritto il tuo primo programma! Ora ti sei fatto
+un idea: programmare non è altro che dare semplici istruzioni al computer
+che le eseguirà ciecamente. La difficoltà maggiore è spiegare le cose a
+qualcuno tanto stupido come un computer...  
+  
+  <p>I programmi sono principalmente raccolte di chiamate a metodi, che non sono
+altro che liste di semplici ordini dati alla macchina. È molto simile ad una
+ricetta del tipo <i>Sciogliere il pezzo di cioccolata, aggiungere zucchero,
+raffreddare la mistura e servire</i>. Nei programmi, queste istruzioni sono
+chiamate funzioni o metodi e bisogna aggiungere le parentesi per invocarle:</p>  
+		<pre>nomeDelMetodo()</pre>
+		
+   <p>[!thelang] necessita di avere le istruzioni separate da un punto e virgola
+(;)[!python|scala] o da una nuova riga[/!]. Quindi il precedente esempio si
+scriverebbe nel modo seguente[!python|scala] (si può anche aggiungere un
+punto e virgola alla fine della riga ma questo non è obbligatorio)[/!]</p>
+    
+<pre>
+sciogliLaCioccolata()[!java|c];[/!]
+aggiungiZucchero()[!java|c];[/!]
+raffreddaLaMistura[!java|c];[/!]
+servire()[!java|c];[/!]
+</pre>
+    
+[!python|scala]
+   <p>Esso può anche essere scritto nel modo seguente ma è generalmente
+considerato una cattiva pratica raggruppare istruzioni sulla stessa riga
+poiché ne depreca la leggibilità.</p>
+<pre>
+sciogliLaCioccolata(); aggiungiZucchero(); raffreddaLaMistura(); servire()
+</pre>
+[/!]
+
+  <p>Of course, these specific methods do not exist by default in [!thelang], but
+it may be possible to define them by yourself (we'll see later how to define
+your how methods).</p>
+  
+  <p>Per ora ci occuperemo semplicemente di istruire il buggle. C'è un metodo per
+ogni pulsante dell'interactive control panel. Per ottenere lo stesso effetto
+del pulsante <b>forward</b> (facendo spostare il buggle di un passo in
+avanti) avete bisogno di scrivere ciò che segue nell'editor: </p>
+  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+  <p>In modo simile, per ottenere lo stesso effetto dei pulsanti
+<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> e
+<b>right</b> bisogna usare rispettivamente:</p>
+<pre>
+backward()[!java|c];[/!]
+left()[!java|c];[/!]
+right()[!java|c];[/!]
+</pre>
+
+	 <p>Il pulsante <b>mark</b> è un poco più particolare perché corrisponde a due
+metodi: il primo alza la penna ed il secondo la abbassa.</p>
+<pre>
+brushUp()[!java|c];[/!]
+brushDown()[!java|c];[/!]
+</pre>
+  <p>Il buggle offre altri metodi che sono prospettati dal menu "Help/about this
+world" e che saranno intodotti all'occorrenza.</p>
+
+
+  <h3>Traguardo dell'esercizio</h3><a name="Objectives"> Il nostro secondo programma sarà un po' più
+complicato, ma non di molto. L'obiettivo del buggle è semplicemente quello
+di disegnare una casa (un riquadro) e di nascondersi al suo
+interno. Controlla l'objective world per vedere esattamente quanto inteso.
+</a> 
+
+  <p>Use your brush to mark the ground as you walk. Start marking the ground with
+<code>brushDown()</code>, and stop it with <code>brushUp()</code> afterward
+(e.g., to enter your house without marking its ground). The full list of all
+instructions understood by your buggle can be found in "Help/About this
+world".</p>
+
+<h3>After this exercise</h3>
+<p>Quando passerai al prossimo esercizio nota che ce n'è uno incluso
+all'interno di quello attuale. Di norma bisogna espandere la voce di menù
+per poterlo vedere. Al cambio di esercizio molti di questi saranno nascosti
+perché l'albero è contratto come nella figura seguente:</p>
+<img src="sub-exercise-folded.png"/> 
+
+<p>Dovete cliccare sul piccolo simbolo a sinistra del buggle per
+espandere/collassare l'albero, come segue:</p>
+<img src="sub-exercise-unfolded.png"/> 

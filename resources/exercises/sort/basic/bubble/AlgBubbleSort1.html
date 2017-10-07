@@ -1,0 +1,47 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BubbleSort</h1>
+
+<p>Welcome to the sorting universe. It allows you to experiment with the existing
+sorting algorithms. The list of buildins that you can use in your algorithms 
+is available in the world reference documentation ("Help"-&gt;"About this world").</p>
+
+<p>It is not enough to sort the array to pass the exercises. Your solution 
+must strictly follow the expected behavior of each exercise. This is
+enforced by checking that your algorithm needs the same amount of read
+and write operations to sort the array. </p>
+
+<p>When your algorithm diverges from the expectation, understanding the difference 
+between your code and the expected solution can reveal very difficult. To help in 
+this process, it is posible to graphically explore the history of your sorting 
+algorithm. Switch to the Objective view and use the contextual menu (right click) 
+to switch from the the view of the current state to the view of its history.</p>
+
+<p>The history view is a bit hairly at the first glance, but actually rather
+simple: The time flows from left to right on this graph, and each row
+is a cell of your array. The curved lines that go navigate between
+rows represent a given data value. When two lines cross, this means
+that two values were swapped at this time stamp; A line fork represent a 
+value copy; When a value is magenta and followed by an interrogation 
+mark (?), it was read using getValue(); If the value is red and followed with 
+an exclamation point (!), it was written using setValue().</p> 
+
+<h2>First attempt at BubbleSort</h2>
+
+<p>This first sorting algorithm is the most simple one: Bubble sort consists in 
+progressively moving up the smaller elements of the array, as if they were air 
+bubbles moving up to the surface of a liquid. The algorithm traverse the array, 
+and compare any pair of adjacent elements. If two adjacent elements are wrongly 
+sorted, they are swapped. Once the array was completely traversed, the operation 
+starts again from the beginning. When no elements were sorted after a full 
+traversal, it means that the array is completely sorted: the algorithm can stop. 
+Bubble sort is studied because of its simplicity, but it is almost never used in 
+practice because of its bad performance (O(n^2) on average).</p>
+
+<div class="tip" id="tip-1" alt="Show Tip (Pseudo-code)">
+<p>The pseudo-code of the BubbleSort algorithm is the following:</p>
+<pre>do: 
+        For each i in [0,len-2]
+          If cells i and i+1 must be swapped, do it
+while we swapped something during last traversal
+</pre>
+</div>

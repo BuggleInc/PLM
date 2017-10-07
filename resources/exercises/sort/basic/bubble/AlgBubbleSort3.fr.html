@@ -1,0 +1,28 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Tri à bulle (troisième version)</h1>
+
+<p>Réintroduisons maintenant la petite optimisation que nous avions retiré à
+l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau
+est maintenant trié. Dans ce cas, il faut arrêter le processus de tri.</p>
+
+<p>
+  [!java|python|c]Pour cela, utilisez simplement le mot-clé
+<code>break></code>, qui coupe l'exécution de la boucle
+englobante. Attention, si vous avez plusieurs boucles imbriquées, c'est
+celle situé tout au fond (au plus près du mot-clé break) qui est cassée.[/!]
+[!scala]Pour cela, quittez simplement la fonction courante en appelant
+<code>return</code> sans lui associer de valeur.[/!] 
+</p>
+
+<div class="tip" id="tip-3" alt="Si vous le désirez, cet indice montre le pseudo-code.">
+<p></p>
+<pre>Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)
+       Pour tout j dans [0, i]
+          Si les cases j et j+1 doivent être inversées, le faire
+       Si le parcours sur les j n'a rien inversé, casser la boucle
+</pre>
+</div>
+
+<p>Cet optimisation est encore plus décevante : on ne gagne que quelques
+pour-cents en nombre de lectures sur BubbleSort2.</p>

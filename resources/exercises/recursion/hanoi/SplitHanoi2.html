@@ -1,0 +1,38 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Better Split Towers of Hanoi</h2>
+
+<p>Surprisingly, our solution to split the towers generates much more
+moves than our solution to interleave them. As both problems are symmetric, this should not be.</p>
+<table border="1">
+<tr><td>Disks amount</td><td>Interleaved</td><td>Split</td></tr>
+<tr><td>5 pairs</td>     <td> 62 moves</td>  <td> 88 moves</td></tr>
+<tr><td>6 pairs</td>     <td>126 moves</td>  <td>183 moves</td></tr>
+<tr><td>7 pairs</td>     <td>254 moves</td>  <td>374 moves</td></tr>
+</table>
+
+<p>Can you make the split tower as efficient as the interleaved one?</p>
+
+<div class="tip" id="tip-1" alt="I need a starter hint">
+The source of discrepancy is an inefficient problem decomposition. 
+Satisfied that it merely worked, we looked no futher for a better solution.
+Keeping the disks of the interleaved tower in the correct order during every move is unnecessary.
+In fact, we can avoid moving the interleaved tower at all.
+A better problem decomposition splits the pair of disks into two colored towers as they are removed from the interleaved tower.
+</div> 
+
+<br><br>
+<div class="tip" id="tip-2" alt="The starter hint was not enough">
+If someone could split the (n-1) pairs of disks beforehand, could you
+split the remaining pair?
+</div>
+
+<br><br>
+<div class="tip" id="tip-3" alt="You need to be more explicit">
+<ul>
+ <li>First split the first (n-1) pairs of disks from the interleaved stack into a white tower and a black tower (calling recursively your main function).</li>
+ <li>Then move the large white disk on its target pole.</li>
+ <li>Then move the (n-1) smaller white disks on top of the large one.</li>
+ <li>Then move the large black disk on its target pole.</li>
+ <li>Then move the smaller black disks in position.</li>
+</ul>
+</div>

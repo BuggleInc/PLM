@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Pistage de la limace</h2>
+<p>
+Votre buggle est super contente ! Elle vient de trouver une grosse traînée
+baveuse sur le sol, certainement laissée par une grosse limace. Au bout de
+cette piste, la buggle est sûre de se régaler d'un bon jus de limace
+(représentée par un baggle). 
+</p>
+
+<p>Pour arriver au résultat, vous devez écrire la méthode booléenne
+<code>isFacingTrail()</code>, qui permet de savoir si on est face à une case
+verte ou non. Bien sûr, si on est face à un mur, elle doit répondre faux
+sans se cogner. Il faudrait de plus que cette méthode soit <b>sans effet de
+bord</b>, c'est-à-dire qu'elle ne modifie ni la buggle qui l'appelle, ni le
+monde environnant.</p>
+
+<p>Votre outil pour cela est la méthode <code>getCouleurSol()</code> qui
+retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut
+vous rendre dans la case à tester avant d'appeler cette méthode.
+[!java]Vous ne pouvez pas simplement utiliser <code>==</code> pour tester si
+la couleur retournée est le vert, mais vous devez plutôt écrire quelque
+chose comme <code>getCouleurSol().equals(Color.green)</code>. C'est parce
+que les couleurs sont des <i>objets</i> en Java, et que
+<code>.equals()</code> est la marche à suivre pour tester l'égalité d'objets
+Java.[/!]
+[!python|scala|c]Il suffit ensuite de tester si la couleur renvoyée par
+cette fonction est égale à la valeur
+<code>[!scala|python]Color.green[/!][!c]GREEN[/!]</code>, qui représente la
+couleur verte.[/!]</p>   
+
+<h3>Objectif de cet exercice</h3>
+<p>Complétez la méthode <code>isFacingTrail()</code> qui sera appelée
+automatiquement comme il faut.</p>

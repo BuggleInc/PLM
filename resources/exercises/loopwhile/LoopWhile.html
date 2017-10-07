@@ -1,0 +1,42 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>While loops</h2>
+		
+<p>In addition to conditionals, another handy construction is the ability to
+repeat an action while a specific condition does not appear. A while loop is
+used for that, with the following syntax.</p>
+ 
+<pre><code class="code-container">[!java|scala|c]while (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;
+}[/!][!python]while <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</code></pre>
+
+<p>The inner bloc is then executed again and again, as long as the condition remains true. 
+More specifically, the buggle tests the value of the condition. If it's false, it ignores the bloc and continue below. 
+If it's true, it executes the bloc.
+After that, it tests the condition. If it's now false 
+(for example because the moves of the block made us facing the wall), it now ignores the bloc and continue.
+If it's still true, it execute the bloc and reevaluate the condition. It does so as long as the condition remains true.</p>
+
+<p>Naturally, if the chosen action does not modify the value of the condition,
+the buggle will do the action endlessly. The <b>stop</b> button <a><i class="mdi mdi-stop"></i></a> of the
+interface becomes then handy. To test this, you can try to type the
+following code in the editor:</p>
+
+<pre><code class="code-container">[!java|scala]while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;left();
+}[/!][!c]while (1) {
+&nbsp;&nbsp;&nbsp;&nbsp;left();
+}[/!][!python]while True:
+&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</code></pre>
+
+<p>This will let the buggle turn left as long as <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true (ie, endlessly),
+or until you stop it manually using the stop button. In this particuliar case, we will also automatically stop the execution after 10 seconds.</p>
+
+<h3>Exercise goal</h3>
+You now have to write some code so that your buggles move forward
+until they encounter a wall. The idea is thus to do something like:
+
+<pre><code class="code-container">while we are not facing a wall, do:
+&nbsp;&nbsp;moveForward()</code></pre>
+
+<p>Look at the documentation (button <i>API</i>) for the full list of buggles' methods.</p>

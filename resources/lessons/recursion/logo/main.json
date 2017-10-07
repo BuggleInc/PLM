@@ -1,0 +1,109 @@
+{
+  "name" : null,
+  "lectures" : [ {
+    "names" : {
+      "en" : "The small cousines of Buggles",
+      "pt" : "Os primos menores dos buggles",
+      "fr" : "Les petites cousines des Buggles"
+    },
+    "id" : "recursion.logo.square.FourSquare",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Spirals",
+      "pt" : "Espirais",
+      "fr" : "Spirales"
+    },
+    "id" : "recursion.logo.spiral.Spiral",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Drawing spirals",
+      "pt" : "Desenhando espirais",
+      "fr" : "Faire des spirales"
+    },
+    "id" : "recursion.logo.spiral.SpiralUse",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Trees",
+      "pt" : "Árvores",
+      "fr" : "Arbres"
+    },
+    "id" : "recursion.logo.tree.Tree",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Snow flake",
+      "pt" : "Floco de neve",
+      "fr" : "Flocons de neige"
+    },
+    "id" : "recursion.logo.koch.Koch",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Snow square",
+      "pt" : "Snow square",
+      "fr" : "Carrés de neige"
+    },
+    "id" : "recursion.logo.koch.SquareKoch",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Snow pentagon",
+      "pt" : "Snow pentagon",
+      "fr" : "Pentagone de neige"
+    },
+    "id" : "recursion.logo.koch.PentaKoch",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Snow hexagon",
+      "pt" : "Snow hexagon",
+      "fr" : "Hexagone de neige"
+    },
+    "id" : "recursion.logo.koch.HexaKoch",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Fractal Crab",
+      "pt" : "Carangueijo Fractal",
+      "fr" : "La fractale du crabe"
+    },
+    "id" : "recursion.logo.koch.Crab",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Sierpinski's Triangle",
+      "pt" : "Triângulo de Sierpinski",
+      "fr" : "Triangle de Sierpinski"
+    },
+    "id" : "recursion.logo.sierpinski.Sierpinski",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Fractal of polygons",
+      "pt" : "Fractal de polígonos",
+      "fr" : "Fractales de polygones"
+    },
+    "id" : "recursion.logo.polygonfractal.PolygonFractal",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Dragon curve (1)",
+      "pt" : "Curva do Dragão (1)",
+      "fr" : "Courbe du Dragon (1)"
+    },
+    "id" : "recursion.logo.dragoncurve.DragonCurve1",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "The dragon curve (2)",
+      "pt" : "A curva do dragão (2)",
+      "fr" : "Courbe du Dragon (2)"
+    },
+    "id" : "recursion.logo.dragoncurve.DragonCurve2",
+    "dependingLectures" : [ ]
+  } ],
+  "id" : "recursion.logo"
+}

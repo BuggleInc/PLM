@@ -1,0 +1,31 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BubbleSort (take 2)</h1>
+
+<p>If you look carefully at the behavior of BubbleSort, a first easy
+optimization appears: after one traversal, the last element of the array
+must be the biggest of all since the traversal moved it up like a bubble to
+its position. More generally, after N traversal, we know that the N last
+elements of the array are already sorted. It is thus not necessary to
+compare them again during the subsequent traversals. For now, we will have
+as many traversal as there is in the array.</p>
+
+<div class="tip" id="tip-2" alt="Show Tip (Pseudo-code)">
+<p>The pseudo-code of the BubbleSort2 algorithm is the following:</p>
+<pre>For all i in [len-2,0] (traversing from biggest to smallest)
+       For all j in [0, i]
+          If cells j and j+1 must be swapped, do it
+</pre>
+</div>
+
+<p>When we run this algorithm, it is quite disappointing to see that it runs
+approximately at the same speed than the basic version of BubbleSort. This
+is a graphical effect only since only value changes are graphically
+represented. Since this variation avoids some useless comparisons, it does
+exactly the same amount of swaps that the basic version. It is thus quite
+logical that the graphical interface draws this version at the same pace
+than the base version. But the statistics on the amount of reads show that we
+saved about the fourth of the amount of reads, which is not bad.</p>
+
+<p>From the asymptotic complexity point of view, there is absolutely no
+difference: this variation is still in O(n^2) on average (our gain is only
+on the constant term, ignored when computing the asymptotic complexity).</p>

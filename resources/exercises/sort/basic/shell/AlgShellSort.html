@@ -1,0 +1,44 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>ShellSort</h2>
+ 
+This algorithm is named after its author, Donald Shell, who published it in
+1959. It can be seen as an application of the CombSort idea (let elements
+having a long path to travel take shortcuts) to the insertion sort (CombSort
+is a variation of BubbleSort). Instead of comparing adjacent values during
+the insertion sort, it compares values separated by a bigger gap. The bigger
+the gap, the faster the elements are moved to their final destination, but
+also the less precise is this move. It is thus mandatory to apply the
+algorithm with a serie of decreasing gaps. At the last step, when the gap is
+one, InsertionSort is used, but onto an array which is almost already sorted
+by previous steps.
+
+<p>Donald Shell propose <code>len/2</code> as initial value of the gap, and
+then to divide it by 2 at each step. The pseudo-code is thus the following:
+<pre>
+gap=len/2
+while gap>0:
+  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.
+</pre>
+
+<p>Just like in CombSort, the sequence of values taken by the gap is crucial
+for Shell sort performance. In some rare pathological cases, the sequence we
+used above can lead to a O(n^2) performance. Other sequences were proposed:
+the Hibbard's increments of 2k − 1 lead to a complexity of O(n^(3/2)) in
+worst cases. Pratt's increments 2^i3^j lead to a O(nlog(n)log(n) performance
+in worst cases. The existance of a sequence leading to a O(n log(n)) was
+precluded by Poonen, Plaxton, and Suel. Thanks to this performance,
+ShellSort is a valid candidate for array of several hundred thousands when
+correctly implemented.</p>
+
+<p>In our case, the array are ways too small to benefit of these
+optimizations. If you ever need to do so, take as initial gap the biggest
+value of the targeted serie still smaller than the array size, and then use
+decreasing values of the serie.</p>
+
+<p>Interestingly enough, determining the best gap sequence for shell sort turns
+into a research issue of our century in computer science. For example, an
+article of 2001 introduces the following sequence, which seems to be optimal
+in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701,
+1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th
+International Symposium on Fundamentals of Computation Theory, LNCS 2001;
+Vol. 2138).</p> 

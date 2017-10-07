@@ -1,0 +1,69 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Baseball par insertion</h1>
+
+<p>Le coté positif d'adapter le tri par sélection à notre problème est que nous
+savons que cela fonctionne (à condition que notre adaptation soit
+correcte). C'est bien mieux que notre premier algorithme naïf, qui était
+incapable de converger vers la solution dans certains cas. Cependant, le tri
+par sélection n'est pas parfait non plus, puisqu'il requiert beaucoup
+d'échanges : il faut amener le trou jusqu'au joueur sélectionné puis amener
+le joueur ET le trou vers la bonne base. On doit pouvoir faire mieux.</p>
+
+<p>Par exemple, chaque joueur peut avoir à parcourir un chemin relativement
+long pour arriver à sa position finale. Au lieu de cela, il serait peut-être
+intéressant de couper le terrain en deux parties : l'une à gauche où tous
+les joueurs sont triés relativement les uns aux autres, et une autre à
+droite où les joueurs n'ont pas encore bougé de leur position de
+départ. Ensuite, à chaque itération, on prend le joueur à la frontière entre
+les deux zones (c'est à dire, le joueur le plus à gauche de la zone non
+triée) et on le déplace vers la gauche jusqu'à sa position dans la zone
+triée (c'est à dire, jusqu'à ce qu'il soit plus grand que son voisin de
+gauche). Cela réduirait au moins la distance que les joueurs doivent
+parcourir pour rentrer dans la zone triée, puisqu'on prend systématiquement
+le joueur à la frontière.</p>
+
+<p>En fait, c'est exactement ce qu'un tri par insertion ferait: maintenir une
+zone triée à gauche, et y insérer à chaque itération l'élément qui se trouve
+à la frontière en le décalant vers la gauche jusqu'à sa position dans la
+zone triée. C'est une bonne chose, car cela veut dire que notre algorithme
+n'est pas fondamentalement faux, puisqu'il s'agit d'une adaptation d'un
+algorithme connu.</p>     
+
+<p>Le plus simple pour adapter le tri par insertion au problème du baseball est
+de considérer toutes les positions comme adjacentes sans tenir compte des
+différentes bases. Pour cela, il faut définir les méthodes
+<code>couleurJoueur[!c]Insert[/!](pos)</code>,
+<code>deplace[!c]Insert[/!](pos)</code> et
+<code>trouveTrou[!c]Insert[/!]()</code> qui utilisent un seul entier pour
+désigner une position donnée et appellent les fonctions de base de cet
+univers pour faire leur travail. Pour convertir une position encodée sur un
+seul entier <code>index</code> en une position encodée sur deux entiers
+<code>base,pos</code>, il faut appliquer les formules suivantes:
+<code>base=index/2</code> et <code>pos=index%2</code>. Pour faire le calcul
+inverse, il faut utiliser <code>index=base*2+pos</code> (qui fonctionne car
+il y a deux positions par base).</p> 
+
+<p>Pour l'algorithme lui-même, vous devriez tout d'abord bouger le trou en
+position 1. On considère alors que la zone triée se limite pour l'instant à
+la position 0 (elle est alors de taille 1) tandis que la zone non triée
+commence à partir de la position 2. Ensuite, on fait une itération par
+élément à trier. Comme le corps de cet itération est un peu plus compliqué
+que ce que nous avons écrit jusque là, vous devriez réfléchir à l'invariant
+de cette boucle, c'est à dire à la condition qui est vraie avant et après un
+passage dans la boucle, et qui fait que la boucle fait son travail. Ici,
+l'invariant a deux parties : tout d'abord, l'emplacement vide se trouve
+entre les parties triées et non triées, et ensuite, la zone triée est
+... triée, c'est à dire que tous les éléments de cette zone sont bien triés
+par rapport à leurs voisins.</p>
+
+<p>Ensuite, le corps de la boucle devrait trier un élément en descendant cet
+élément et le trou dans la zone triée jusqu'au point où l'élément est à sa
+place dans la zone triée (cela demande deux déplacements par case à
+parcourir), avant de remonter le trou à sa place à la frontière (un
+déplacement par case à parcourir).</p> 
+
+<p>Une fois que vous avez inséré le dernier élément dans la zone triée, tout
+votre ensemble est trié et vous avez fini. Je vous laisse la surprise des
+cas limites nécessitant de petits ajustements à votre algorithme pour lui
+permettre de fonctionner dans tous les cas :)</p>

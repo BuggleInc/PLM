@@ -1,0 +1,78 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Pledge algorithm</h2>
+
+<p>Once again, you thought that your algorithm were good enough to
+escape the maze, and once again, you buggle is now in a maze where
+your previous algorithm fails. Just give it a try: copy/paste your
+code and hit the "Run"
+button and see your creation fail. The trap is shaped like an upper
+case "G". The buggle enters the trap and follows the inner border. At
+some point, it finds the north direction free, run into that
+direction, and falls again in the trap.
+</p>
+
+<p>The Pledge's algorithm (named after Jon Pledge of Exeter) can solve
+this maze.</p> 
+
+<p>This algorithm is a modification of the previous one thought to avoid
+obstacles. It randomly picks a heading and let the buggle move in that
+direction. When it encounters an obstacle, a paw (for example the left one)
+is kept on the wall following the obstacle while counting the turns. When
+the buggle is back to its original heading and when the sum of the turns is
+0, the buggle leaves the obstacle and continues keeping its original
+heading. </p>
+
+<p>Note that the use of "total turning" rather than just the "current
+direction" allows the algorithm to avoid G-shapped traps. If one
+proceeds left into the trap, one gets turned around a full 360 
+degrees by the walls. As we said before, the naive "current direction"
+algorithm gets into a limit cycle as it leaves the lower rightmost
+wall heading left and runs into the curved section on the left again.</p>
+
+<p>The Pledge's algorithm does not leave the rightmost wall due to the total
+turning not being zero at that point. It follows the wall all the way
+around, finally leaving it heading left on the bottom outside</p>
+
+
+<h3>Exercise goal</h3>
+
+<p><a name="Objective"/>You now have to modify your solution to implement the Pledge
+algorithm to escape this maze.</p>
+
+<p>Change your <code>keepHandOnSideWall()</code> method to count
+the amount of turns done by the buggle (+1 when it turns left, and -1
+when it turns right). This counting may require the addition of an
+<code>angleSum</code> integer value in your program.</p>
+
+<p>Write a boolean method <code>isDirectionFree(dir)</code> indicating if
+the provided direction is free, ie, if you can move in
+that direction (Note that the demo uses the NORTH direction for
+that).  You can retrieve the current direction of the
+buggle using the method <code>getDirection()</code>. You can
+change your direction (without moving) using <code>setDirection(dir)</code>. Don't forget to store the previous
+direction of your buggle (in a dedicated variable) before checking if your favorite
+direction is free in order to restore your state afterward.</p>
+
+<p>You may have to change the rest of your code also, but these
+changes should remain limited.</p>
+
+[!python]<p>Don't forget that if you have a method modifying a
+global variable (such as angleSum), you should ensure that it declares
+this variable as global. Without it, the method creates a new variable
+of the same name, and the global never gets modified.</p>
+<pre>def myMethod():
+  global angleSum
+  ...
+  angleSum = angleSum + 1
+</pre>
+[/!]
+
+<div class="tip" id="tip-1" alt="Show an additional tip">
+You should set your direction to your favorite
+one (NORTH is advised). Then, you should write the algorithm main
+loop. In other words, while your buggle did not find its biscuit, you have
+to move forward until next obstacle in the favorite direction. Then, put a
+paw on a wall (using <code>keepHandOnSideWall()</code>) while the sum
+of turns is not null and the favorite direction is not free. Do that until
+you find your baggle.</div>
+	

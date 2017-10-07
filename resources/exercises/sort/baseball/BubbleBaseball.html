@@ -1,0 +1,29 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Bubble Baseball</h1>
+
+<p>Crap, we adapted the insertion sort because our selection sort required too much moves to get
+the selected players to their position, but the insertion sort requires an inordinate amount of 
+changes to get the border elements to their position within the sorted area without mixing the already 
+sorted elements. At the end of the day, our selection variant was more efficient with at most 
+<code>3*amountOfBase</code> moves to sort one element (1 to get the hole alongside with the player, 
+and 2 to get the hole+player in position) while our insertion variant requires at most 
+<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole and player in position, 
+1 to get the hole back to its position). That's twice as bad as there is two players per base. It may 
+be possible to improve the insertion sort by moving by more than one element when descending, but it 
+seems uneasy (at least, while not mixing the already sorted elements) and it would probably only 
+ensure that our insertion variant becomes as efficient as our selection variant, not dramatically better.</p>
+
+<p>If we cannot make the sort faster, we can make it easier. If you think about it, it seems rather natural
+to adapt the bubble sort to this problem: the hole becomes the bubble that moves up and down, sorting a bit 
+the array during each traversal. The big lines are simply: "while it's not sorted, move the hole down to base 0 
+(moving the biggest player of each base at each step) and then back to the maximal base (moving the smallest 
+player of each base)". After a while, <code>isSorted()</code> will return true and your algorithm will stop.</p>
+
+<p>This is so easy that we introduce another variant of the problem, with more than two players per base. 
+But actually, that shouldn't block you very long, should it?</p>
+
+<p>Surprisingly, the bubble sort variant requires ways less moves than the other variants. This is astonishing
+because usually, the bubble sort performs much worse than the others sorts, but it comes from the very good
+match between its big lines and the baseball universe. It actually happens rather often that a pleasantly 
+written algorithm performs very decently. But this is not an universal rule either, as demonstrated by the naive 
+algorithm of the first exercise, that was nice, simple and wrong ;)</p>

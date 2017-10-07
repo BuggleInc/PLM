@@ -1,0 +1,53 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Tri à bulle</h1>
+
+<p>Bienvenue dans l'univers des tris. Il permet d'expérimenter avec les
+algorithmes de tri existants. La liste des primitives que vous pouvez
+utiliser dans vos programmes est disponible dans la documentation de
+référence du monde (Aide / À propos de cet univers).</p>
+
+<p>Il ne suffit pas de trier le tableau pour passer les exercices. Votre
+solution doit suivre scrupuleusement le comportement attendu de chaque
+exercice. Ceci est vérifié en comptant le nombre d'opérations de lecture et
+d'écriture sur le tableau effectuées lors de ce tri. </p>
+
+<p>Quand votre algorithme diverge de l'attendu, il peut être difficile de
+comprendre la différence de comportement. Pour cela, il est possible
+d'explorer graphiquement l'historique de n'importe quel monde de tri. Passez
+par exemple au monde Objectif et utilisez son menu contextuel (clic droit)
+pour choisir entre la vue de l'état courant du monde et la vue de son
+histoire.</p>
+
+<p>La vue de l'historique n'est pas aussi complexe qu'elle en a l'air à
+première vue. Le temps s'écoule de gauche à droite, et les cases du tableau
+sont représentée de haut en bas. Les lignes de différentes couleurs qui
+serpentent représentent les différentes valeurs contenues dans le
+tableau. Quand deux lignes se croisent, cela signifie que les valeurs du
+tableau ont été échangées à ce moment de l'historique; un embranchement
+signifie que la valeur a été copiée; une valeur en violet suivie d'un point
+d'interrogation a été lue avec getValeur() et une valeur en rouge suivie
+d'un point d'exclamation a été écrite avec setValeur().</p> 
+
+<h2>Première tentative pour le tri à bulle</h2>
+
+<p>Le premier algorithme de tri est le plus simple existant : le tri à bulles
+ou tri par propagation consiste à faire remonter progressivement les plus
+petits éléments d'une liste, comme les bulles d'air remontent à la surface
+d'un liquide. L'algorithme parcourt la liste, et compare les couples
+d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans
+l'ordre croissant, ils sont échangés. Après chaque parcours complet de la
+liste, l'algorithme recommence l'opération. Lorsque aucun échange n'a lieu
+pendant un parcours, cela signifie que la liste est triée : l'algorithme
+peut s'arrêter.  La simplicité de cet algorithme justifie son étude, mais
+ses piètres performances (O(n^2) en moyenne) font qu'il n'est quasiment
+jamais utilisé en pratique.</p>
+
+<div class="tip" id="tip-1" alt="Montrer l'indice (le pseudo-code)">
+<p>Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :</p>
+<pre>faire: 
+        Pour tout i dans [0,lgr-2]
+          Si les cases i et i+1 doivent être inversées, le faire
+     tant qu'on a inversé des choses lors du dernier parcours
+</pre>
+</div>

@@ -1,0 +1,120 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Conditional instructions</h2>
+
+Programs made of simple suite of instructions similar to previous exercise
+are quite boring. They always do the same thing, and cannot react to
+external conditions. A <b>conditional</b> let the program adapt by doing
+something like <i>if it's raining, take an umbrella</i>. 
+
+<p>The [!thelang] syntax is the following:</p>
+
+<pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>
+}[/!][!python]if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]
+<b>whatToDoAnyway()[!java|c];[/!]</b></code></pre>
+
+<p>If the condition is true, the code of the next block will be executed and then it will continue with the rest of the code.
+If the condition is false, the next block is ignored and the execution continues after it.
+The conditional block can contain several instructions, it can even contain other tests, along with their sub-blocks.</p>
+
+<p>In this example, the instructions <code>whatToDoIfTrue()</code> and <code>whatToDoNextIfTrue()</code> 
+will be executed if and only if the condition is true, 
+while the instruction <code>whatToDoAnyway()</code> will be executed whether or not the condition is true. 
+</p>
+
+<p>In [!thelang], the blocks of code are
+[!java|scala|c]enclosed between curly brackets: a { sign opens the block, while a } sign closes it. 
+White spaces are not important[/!][!java|c].[/!][!scala], provided that your instructions are still separated with a semi-column or an end of line.[/!]
+[!java|scala|c]It is still very important to correctly indent your code to keep it readable.[/!]
+[!python]marked by the indentation: every lines that are a bit shifted to the right with 
+white spaces belong to the block. Quite often, people use 4 spaces for indentation, 
+but it works if you use more or less spaces. Simply, any lines of the block must use the same amount of spaces.
+The end of Python code blocks are not marked by any specific char.
+Indenting lines starts a block and unindenting ends it. Do not forget the colon (:) at the end of 
+the <code>if</code> line, python needs it to know that a new block begins. The fact that python relies on 
+indentation to delimit blocks is a very good property for beginners: it will force you to adhere to strict 
+code presentation standards.[/!]
+It is very easy to get lost in your own code if it's not properly indented, so you want to clean it up so that 
+working on your code remains pleasant and productive.</p>
+
+[!python]
+<p>All indentations of a given block must be consistent, and it is not 
+possible to cut a block. The two following codes are incorrect and will raise
+errors.</p>
+<pre><code class="code-container">if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># one space too much </span>
+<b>whatToDoAnyway()</b>
+</code></pre>
+<pre><code class="code-container">if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+<b>whatToDoAnyway()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># this block is not hanging to a condition line</span>
+</code></pre>
+[/!]
+<p>The condition must be a <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> expression. 
+The inner block of code will get executed if the expression is evaluated to  <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> 
+and it will be ignored if it is <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
+[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> and <code>[!java|scala]false[/!][!python]False[/!]</code> are constant values 
+defined by [!thelang] directly, just as 0 or 1 in mathematics.[/!]</p>
+
+<p>The condition can be a <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> variable 
+(we will come back on variables in a later exercise, don't worry) or 
+an arithmetic test, such as <code>x == 5</code>, which checks whether the current value of 
+<code>x</code> is 5, or such as <b>!=</b> (checking inequality, that is, returning [!c]1[/!][!java|scala]true[/!][!python]True[/!] 
+only if the left-hand side is different from the right-hand side), <b>&lt;</b> (smaller than), 
+<b>&gt;</b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger or equal to).</p>
+
+<p>Beware of the classical trap, which consists in testing the equality of a
+variable using = instead of ==. Hopefully, the [!java|scala|c]compiler[/!][!python]interpreter[/!] 
+detects this problem most of the time, but it could get trapped is some cases (such as when you are 
+affecting a [!c]int[/!][!java|python|scala]boolean[/!] variable). So you'd better to be careful...</p>
+
+<p>The condition can also be a call to some particular methods returning a
+boolean. For example, the <code>isFacingWall()</code> method of the buggle
+returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a wall, and [!c]0[/!][!java|python|scala]false[/!] in the other case.</p>
+
+<p>Finally, a condition can be composed of several sub-conditions connected by
+boolean operations:</p>
+<ul>
+  <li><code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> is true when <tt>cond1</tt> <b>and</b>
+      <tt>cond2</tt> are both true (if <tt>cond1</tt> is false,
+      <tt>cond2</tt> is not even evaluated as we already know that the conjunction of both propositions cannot be true).</li> 
+  <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if <tt>cond1</tt> <b>or</b> 
+      <tt>cond2</tt> is true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated
+      as we already know that the disjunction of both propositions cannot be false).</li>
+  <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if <tt>cond</tt> is false.</li>
+  <li>When the expression becomes complicated, it is better to add parenthesis to force the order of evaluation.
+      Do not hesitate to add more parenthesis to remove any ambiguities that may appear in an expression.</li>
+</ul> 
+
+<p>Last, it is possible to specify what to do when the condition is false
+using the following syntax. In this case, the instruction <code>whatToDoIfItsFalse</code>
+will be executed only if the condition is false.</p>
+ <pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
+}[/!][!python]if (<b>condition</b>):
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>
+else:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</code></pre>
+[!python]
+<p>Don't forget the colon (:) after the else, it is indicating 
+that a new block is beginning.</p>
+[/!]
+<h3>Exercise goal</h3><a name="Objectives"/>
+
+If the buggle is facing a wall, you must move one step back. If not,
+you must move one step forward. To detect whether you are facing a wall, 
+simply use the <code>isFacingWall()</code> built-in, that every buggle 
+understands. 
+
+<p>This exercise is a bit different: your code has to work for several buggles,
+each of them being in a specific initial condition. The same code will be
+executed for each of them.</p>
+
+<p>When your program works, move forward to the next exercise.</p>

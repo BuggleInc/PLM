@@ -1,0 +1,24 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BubbleSort (take 3)</h1>
+
+<p>Let's now reintroduce the little optimization we removed at previous step:
+if a traversal does not swap any element, it means that the array is already
+sorted. In that case, we want to stop the whole sorting process.</p>
+
+<p>
+  [!java|python|c]For that, simply use the <code>break</code> keyword, which breaks the current loop.
+                Beware, if you have several nested loops, this will apply to the internal one.[/!]
+  [!scala]For that, simply quit the current function by calling <code>return</code> with no associated value.[/!] 
+</p>
+
+<div class="tip" id="tip-3" alt="If you want, this tip shows the pseudo-code.">
+<p></p>
+<pre>For all i in [len-2,0] (traversing from biggest to smallest)
+       For all j in [0, i]
+          If cells j and j+1 must be swapped, do it
+       If traversal on j did not swap anything, break the for loop
+</pre>
+</div>
+
+<p>This optimization is even more disappointing: it only provide a gain of a few
+percents on the amount of reads over BubbleSort2.</p>

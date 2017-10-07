@@ -1,0 +1,112 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Methods</h2>
+
+<p>
+We will now write our own methods. It somehow comes down to extending the
+buggle vocabulary by teaching it new tricks. 
+</p>
+<p>For example, we saw in a previous exercise how to ask the buggle to go get the
+baggle in front of it, and bring it back. If there is several baggles on the
+board, and if we want to bring all of them on the bottom line, you have to
+repeat this code several times, or include it in a loop. In any case, you should avoid
+to duplicate your code to keep it pleasant to read and easily understandable.
+It would be better if the buggle could obey an <code>goAndGet()</code> order 
+just like it understands a <code>[!c]stepForward()[/!][!scala|java|python]forward()[/!]</code> one.</p>
+
+<h3>Defining methods</h3>
+
+<p>The [!thelang] syntax to write a simple method called <code>goAndGet</code> is the
+following:</p>
+<pre>[!java|c]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
+  actions()[!java|c];[/!]
+  to()[!java|c];[/!]
+  do()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>The method body 
+[!java|scala|c](between curly braces)[/!][!python](the indented block)[/!] will be
+executed when we call the method later on (that is, when we write
+<code>goAndGet()</code> somewhere in our code). This method body  
+can contain as many instructions as you want, and any construction we saw so far 
+(for, while, if, etc). 
+[!java|c]The <code>void</code> keyword means that this method does not return any
+result. For example, the <code>isOverBaggle()</code> method does return a result,
+which is a [!c]int[/!][!java]boolean[/!] indicating whether or not the buggle is located over a baggle. We
+will soon learn to define such methods too. For now, just write <code>void</code> at
+this location.[/!]
+</p>
+
+<h3>Documenting methods</h3>
+
+<p>You should strive to document your code to keep it readable. When you
+write it, its purpose and limitations are clear to you, but most of the time, this does not
+last for long. You will soon forget about the details of every specific method, and this day
+you will be happy to read its documentation. In the following example, we use the 
+specific formalism of [!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], a program 
+that extracts the documentation of [!thelang] source code to produce html pages. The
+main advantage is that it allows to keep the documentation near to the code.  So, when
+you change your code, you have less chances to forget to update the documentation.</p>
+
+<p>[!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] comments begin with the
+<code>/**</code> marker (with two asterisks). They must be placed right before the
+method they document for the tool to find them.[/!]
+[!python]pydoc comments should be placed at the beginning of the method body so that
+the tool finds them. They should be placed between <code>"""</code>, which mark 
+multi-line strings in python.[/!]
+The first line should  be a brief description of what this method does while any subsequent
+lines should provide any important details about the method.</p>
+
+<pre>[!java|scala]/**
+ *  Go, retrieves the baggle in front of the buggle, and brings it back 
+ *
+ *   Does not check for walls, so be careful to not call it when walls are present.
+ */[/!]
+[!java]void goAndGet() {[/!]
+[!scala]def goAndGet() {[/!]
+[!python]def goAndGet():
+  """Go, retrieves the baggle in front of the buggle, and brings it back.
+
+  Does not check for walls, so be careful to not call it when walls are present."""[/!]
+  actions()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<h3>Naming conventions</h3>
+<p>Most programming language forbid the use of spaces in method and variable identifiers (=their names).  
+Accented letters are sometimes allowed (as in [!thelang]), but they can lead to
+portability issues between operating systems and should thus be avoided when possible.</p>
+
+<p>Across all programming languages, there is two main conventions to
+name variables and methods. The first one, consists in concatenating all words with 
+only the first letter of each word in upper case. "go and get" becomes goAndGet(). 
+It is called CamelCase because identifiers written this way graphically remind of a camel
+back. The other convention, called snake_case, is to write every words in lower case,
+separated with underscores symbols (_). "go and get" becomes go_and_get().</p>
+
+<p>Which convention to use is the topic of heated discussion across developers, but
+each programming language has its own habits. In Python, Perl and the C language, the 
+snake_case is often used for methods and variables. Java and Scala prefer the
+lowerCamelCase (the very first letter is lower case) for that.</p> 
+<p>The CamelCase convention is used everywhere in PLM because this program is written
+in Java itself, so we kept our habits when adding new languages. But the fact that the
+Python bindings of PLM use the CamelCase instead of the snake_case is considered as a
+bug that we will fix in further releases.</p>
+
+<h3>Exercise goal</h3>
+<p>The goal of this exercise is to write a method called <code>goAndGet()</code>
+which does the same than in a previous exercises (move forward until over a baggle, 
+pick it up, move back to initial position, drop baggle).</p>
+
+<p>This exercise is a bit different because you will not write all of
+the code executed by the buggle. Instead, you should only write one 
+method that get called automagically added when you click on
+<b>Start</b>. Your buggle calls your <code>goAndGet()</code> method on
+each row, until the baggle is found. [!python|scala]The code for that is already provided 
+under the <code>goAndGet()</code> method, but you probably don't want to change it.[/!]
+[!java]You don't need to write the code calling <code>goAndGet()</code> yourself. It's 
+automagically there already, even if you cannot see it.[/!]</p> 
+
+<p>But for that to work, you have to actually write this
+<code>goAndGet()</code> method now.</p>
+

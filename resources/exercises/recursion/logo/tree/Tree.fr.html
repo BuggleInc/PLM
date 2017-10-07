@@ -1,0 +1,45 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Arbres</h2>
+
+<p>Nous allons maintenant dessiner des arbres. Pour cela, nous allons écrire
+une fonction doublement récursive de prototype</p> 
+<pre>[!java|c]void [/!]tree([!java|c]int [/!]nbPas[!scala]:Int[/!], [!java|c]double [/!]longueur[!scala]:Double[/!], [!java|c]double [/!]angle[!scala]:Double[/!], [!java|c]double [/!]multiplicateur[!scala]:Double[/!])</pre>
+
+<p>Pour dessiner un arbre à quatre étages, il faut dessiner un tronc de la
+taille indiquée, tourner à droite de l'angle indiqué, faire un arbre à 3
+étages, tourner à gauche de deux fois l'angle indiqué, faire un autre arbre
+à 3 étages, puis revenir à sa position initiale. N'oubliez pas de revenir à
+la position initiale !<p>
+
+<p>Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à
+l'étage N+1.<p>
+
+<p>Au final, voici le pseudo-code du cas général de la récursivité (il manque
+bien sûr le cas de base, laissé en exercice).</p>
+<pre>
+Avancer de la longueur désirée
+Dessiner (récursivement) le sous-arbre de droite
+Dessiner (récursivement) le sous-arbre de gauche
+Reculer de la longueur désirée pour retourner au point de départ
+</pre> 
+<p>N'oubliez pas d'ajouter le cas de base dans votre code, ou la buggle va
+entrer en boucle infinie. De plus, dessiner le sous-arbre droit revient à
+tourner à droite puis dessiner un sous-arbre.</p>
+
+<p>Comme vous pouvez le voir, chaque étage de la récursion est représenté par
+une couleur distinctive. Pour cela, appelez la fonction
+<code>current(step)</code> en lui passant en paramètre l'étage actuel de la
+récursion. Elle se chargera de choisir la couleur adéquate. N'effacez pas
+vos couleurs quand vous retournez à votre position initiale.</p>
+
+<p>Si vous vous trompez dans votre fonction, il peut facilement devenir très
+compliqué de debugger votre code. Vos erreurs se produisant à tous les
+étages de la récursion, le dessin peut vite devenir illisible. Pour vous
+aider à debugger, vous pouvez utiliser la fonction <code>subtree()</code>
+qui dessine un sous-arbre correct. Cette fonction est très (très) semblable
+par ailleurs à la fonction que vous tentez d'écrire. La seule différence est
+que <code>subtree()</code> ne dessine qu'en noir. Vous pouvez donc
+l'utiliser à la place de vos appels récursifs pendant le debug, mais vous
+devez changer pour des appels récursifs à votre propre code (quand il
+marche) pour avoir les couleurs justes, et donc pour passer l'exercice.</p>  

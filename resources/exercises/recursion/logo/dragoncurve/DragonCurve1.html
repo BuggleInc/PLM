@@ -1,0 +1,27 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Dragon curve (1)</h2>
+
+<p>The dragon curve is a classical example of recursive method.</p>
+
+<p>The definition of this curve is the following:<br/> 
+the dragon curve of order 1 is a vector between to arbitrary points P and Q,<br/>
+the dragon curve of order n is the dragon curve of order n-1 between P and
+R, followed by the same curve of order n-1 between Q and R,
+where PRQ is an isosceles triangle with angle R being a right angle, and R
+being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y)
+and (z, t), the coordinate (u, v) of R are given by:</p>
+<pre>
+u = (x + z)/2 + (t - y)/2
+v = (y + t)/2 - (z - x)/2
+</pre>
+
+<p>The prototype of the method drawing the curve is the following:</p>
+<pre>[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
+
+
+<p>You should use the method <code>setPos(x,y)</code> to put your turtle at
+coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line
+between the turtle position and the point(z,t).</p>
+
+<p>Have a look at each world's objective view to understand how to write the
+function.</p> 

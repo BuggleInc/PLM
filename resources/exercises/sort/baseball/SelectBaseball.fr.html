@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Baseball par sélection</h1>
+
+<p>L'algorithme précédent est très plaisant : il est plutôt simple, assez
+rapide à implémenter, mais malheureusement, il est également carrément
+faux. Dans certains cas, il ne s'arrête jamais, ce qui n'est pas très
+bon. Si vous ne le croyez pas, copie/collez votre code et appuyez sur le
+bouton «Exécuter». Le premier monde de cet exercice est l'un de ces cas
+malheureux où notre algorithme devient fou.</p>
+
+<p>Il nous faut donc trouver un autre algorithme. De préférence un qui marche
+dans tous les cas.</p>
+
+<p>Pour cela, la meilleure solution est d'adapter un algorithme connu au lieu
+de tenter de partir de zéro comme nous venons de faire. Quand on réfléchi un
+peu à ce problème, on reconnaît un certain air de famille avec le problème
+du tri : il suffit de <b>trier</b> les joueurs en fonction de leur couleur
+pour le résoudre. Et tant que nous y sommes, nous pouvons généraliser un peu
+le problème en utilisant plus de quatre bases.</p>
+
+<p>Adaptons le tri par sélection à notre situation. Les grandes lignes de cet
+algorithme sont les suivantes : «pour chaque base, trouver dans la zone pas
+encore triée les joueurs qui doivent occuper cette base, puis les y
+placer». De la sorte, on va faire grandir une zone triée qu'on ne modifie
+plus jamais, tout en faisant réduire la taille de la zone pas encore triée.</p>
+
+<p>Choisir les joueurs à déplacer ne devrait pas poser de problème. N'hésitez
+pas à définir quelques fonctions comme <code>trouveJoueur</code> ou
+<code>trouveBaseJoueur()</code>. Cela améliorera la lisibilité de votre
+code, ce qui est toujours une bonne chose.</p>
+
+<p>L'aspect le plus problématique est de déplacer les joueurs sélectionnés
+jusqu'à leur position. Pour cela, il vous faut déplacer le trou jusqu'à la
+base où se trouve le joueur, puis bouger ensuite le trou et le joueur de
+base en base jusqu'à celle avant la cible (au moyen d'une boucle). Enfin, on
+peut mettre le joueur dans la bonne case de sa base de prédilection.</p>
+
+<p>Comme souvent en programmation, le diable est dans les détails, et il y a un
+certain nombre de cas particuliers à détecter et à gérer correctement, comme
+quand le joueur est déjà dans sa base de prédilection (mais pas dans la
+bonne position), ou quand le trou se trouve en fait à droite du joueur
+(probablement quand vous triez la première base). Mais vous allez trouver et
+résoudre ces problèmes quand vous débugguerez votre code.</p>

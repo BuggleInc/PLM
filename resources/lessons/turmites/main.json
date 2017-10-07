@@ -1,0 +1,37 @@
+{
+  "name" : null,
+  "lectures" : [ {
+    "names" : {
+      "en" : "Langton's ant",
+      "pt" : "formiga de Langton",
+      "fr" : "La fourmi de Langton"
+    },
+    "id" : "turmites.langton.Langton",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Multicolor Langton's ant",
+      "pt" : "formiga de Langton multicolorida",
+      "fr" : "La fourmi de Langton multicolore"
+    },
+    "id" : "turmites.langtoncolors.LangtonColors",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Turmites",
+      "pt" : "Turmites",
+      "fr" : "Turmites"
+    },
+    "id" : "turmites.helloturmite.HelloTurmite",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Creating Turmites",
+      "pt" : "Criando Turmites",
+      "fr" : "Créer des Turmites"
+    },
+    "id" : "turmites.turmitecreator.TurmiteCreator",
+    "dependingLectures" : [ ]
+  } ],
+  "id" : "turmites"
+}

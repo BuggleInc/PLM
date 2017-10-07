@@ -1,0 +1,36 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Buggles' Island</h1>
+
+You just received the traveling notes of your old aunt who traveled
+accross the country of the Buggles' Islands. She wrote down the
+altitude every kilometer during her trip, resulting in a sequence of
+numbers as follows.
+
+<pre>0 0 1 1 2 2 1 1 0 1 2 2 1 1 0</pre>
+
+<p>Here is a cut of the islands on that path:</p>
+
+<pre>
+       /***\       /*\         &lt;-- 2 meters above the see level
+   /***********\ /*******\     &lt;-- 1 meter above the see level
+***************************    &lt;-- see level
+| | | | | | | | | | | | | |
+0 0 1 1 2 2 1 1 0 1 2 1 1 0    &lt;-- altitude on each point
+</pre>
+
+<p>This example is constituted of four levels of island:</p>
+
+<ul>
+  <li>1 1 2 2 1 1 (the island on the left)</li>
+  <li>2 2 (the mountain topping the left island)</li>
+  <li>1 2 1 1 (the right island)</li>
+  <li>2 (the mountain on the right)</li>
+</ul>
+
+<p>This can also be visualized this way:</p>
+
+<pre>0 0(1 1(2 2)1 1)0(1(2)1 1)0</pre>
+
+<p>Could you write a little program to compute the amount of levels in
+a given sequence of altitudes? Actually, there is an iterative and a
+recursive solution to that problem.</p>

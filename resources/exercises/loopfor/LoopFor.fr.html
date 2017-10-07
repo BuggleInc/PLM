@@ -1,0 +1,93 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Boucles pour <tt>(for)</tt></h2>
+
+<p>Les boucles <tt>while</tt> sont bien adaptées aux situations où l'on veut
+réaliser une action tant qu'une condition est réalisée, mais elles sont
+moins pratiques pour réaliser une action un nombre prédéterminé de fois. Par
+exemple, lorsque nous voulions reculer de <code>nbPas</code> dans l'exercice
+précédent, il fallait créer une nouvelle variable, l'initialiser, et
+demander à reculer tant que la nouvelle variable n'était pas égale à
+<code>nbPas</code>, en incrémentant cette variable à la main à la fin du
+corps de la boucle.</p> 
+
+<p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus
+pratique. Leur syntaxe est la suivante :</p> 
+<pre>[!java|c]for (<b>initialisation</b>; <b>condition</b>; <b>increment</b>) {
+    <b>action</b>();
+}[/!][!python]for <b>variable</b> in <b>sequence de valeurs</b>:
+    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>premiereValeur</b> to <b>derniereValeur</b>) { 
+    <b>action</b>();
+}[/!]</pre>
+
+<p>Par exemple, pour répéter le corps de boucle <code>n</code> fois,
+[!python]il est pratique d'utiliser l'instruction <code>range(n)</code>
+  pour générer la séquence de n entiers allant de 0 à n-1.[/!]
+[!java|scala|c]il faut écrire:[/!]</p>
+<pre>[!java]for (int compteur=0; compteur&lt;n; compteur++) {
+    <b>action</b>();
+}[/!][!c]int compteur;
+for (compteur=0; compteur&lt;n; compteur++) {
+    <b>action</b>();
+}[/!][!python]for <b>compteur</b> in <b>range(n)</b>:
+    <b>action</b>()[/!][!scala] for (<b>compteur</b> &lt;- <b>1</b> to <b>10</b>) { 
+    <b>action</b>();
+}[/!]</pre>
+
+<p>Ce code est équivalent du point de vue de l'ordinateur, mais du point de vue
+du programmeur, ce n'est pas forcément la même chose. L'une ou l'autre forme
+peut rendre le code plus facile à lire, en fonction de la situation. C'est
+donc à vous, le programmeur, de choisir la forme de boucle est la plus
+adaptée à chaque cas. L'objectif absolu doit être de garder votre code aussi
+simple que possible en toute situation. De la sorte, vos journées resteront
+plaisantes et productives.
+</p>
+<pre>[!java|c]int compteur = 0;
+while (compteur &lt; n) {
+    <b>action</b>();
+    <b>compteur++</b>;
+}[/!][!python]compteur=0
+while compteur &lt; n: 
+    action()
+    compteur = compteur + 1[/!][!scala]
+var compteur = 0
+while (compteur &lt; n) {
+    <b>action</b>()
+    compteur = compteur + 1
+}[/!]</pre>
+
+<p>Dans ce cas, le code avec une boucle <code>for</code> est plus simple à
+lire, non?</p>
+
+[!java|c]
+<p>On peut imaginer des utilisations bien plus avancées des boucles
+<tt>for</tt> car toute instruction valide peut être utilisée comme
+initialisation, condition et incrémentation. L'exemple suivant est un peu
+extrême, puisqu'il n'y a même pas de corps de boucle. La buggle est avancée
+jusqu'à se retrouver face au mur dans la condition et l'incrémentation.</p>
+
+<pre>for (; !estFaceMur() ; avance()) { 
+   <span class="comment">/* rien dans le corps de boucle */</span>
+}
+<span class="comment">/* la buggle est maintenant face à un mur */</span></pre>
+[/!] [!scala]
+<p>Si vous avez l'intention d'imbriquer plusieurs boucles, il est possible de
+l'écrire en une seule ligne en Scala. Les deux morceaux de code sont
+équivalents:</p>
+<pre>for (compteur1 &lt;- 1 to n) {
+    for (compteur2 &lt;- 1 to m) {
+       actions()
+    }
+}</pre> 
+<pre>for (compteur1 &lt;- 1 to n; compteur2 &lt;- 1 to m) { <span class="comment">// Séparez simplement les deux conditions de boucle par un point-virgule (;)</span>
+    actions()
+}</pre> 
+[/!]
+
+<h3>Objectif de cet exercice</h3>
+<p> Il s'agit maintenant de refaire le même exercice que précédemment (avancer
+jusqu'à trouver un baggle, le ramasser, revenir là où on était au début puis
+reposer le baggle), mais en utilisant une boucle <tt>for</tt> pour revenir
+au point de départ à la place d'une boucle <code>while</code>.</p>
+
+<p>Une fois ceci fait, vous pouvez passez à l'exercice suivant.</p>

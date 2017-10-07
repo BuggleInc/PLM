@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Disegni Colorati</h2>
+
+In questo esercizio riprodurremo il disegno geometrico che puoi vedere nella
+scheda "Objective".
+
+<p>Il tuo scopo (quì come in ogni altro programma ben scritto) è di produrre
+codice più semplice possibile. Per far questo devi scomporre il lavoro in
+sottosezioni e scrivere un metodo specifico per ognuna di esse.</p>
+
+<p>Se osservi attentamente l'immagine da disegnare essa è costituita da due
+parti raffiguranti delle sorte di V di diversi colori. Una possibile
+scomposizione è quella di scrivere un metodo incaricato di disegnare una V
+dello specifico colore a partire dalla posizione corrente. Il suo prototipo
+potrebbe essere:</p>
+<pre>[!java|c]void [/!]makeV([!java|c]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span>[/!]</pre>
+
+<p>Naturalmente il tipo di dato <code>Color</code> descrive un colore
+particolare. Il tuo codice probabilmente dovrà invocare <code>creaV</code>
+con i seguenti argomenti (un differente colore per ogni chiamata):</p>
+<ul>
+<li>[!java|scala|python]Color.[/!]YELLOW</li>
+<li>[!java|scala|python]Color.[/!]RED</li>
+<li>[!java|scala|python]Color.[/!]BLUE</li>
+<li>[!java|scala|python]Color.[/!]GREEN</li>
+</ul>
+
+<p>In <code>creaV</code> dovrai usare il metodo predefinito dei buggle
+<code>setBrushColor()</code> per cambiare il colore dei loro pennello come
+anche <code>brushUp()</code> e <code>brushDown()</code> per cambiare la
+posizione del pennello.</p>
+ 
+<p>Potrebbe essere saggio scrivere <code>creaV()</code> in modo tale che alla
+fine predisponga il buggle già nella posizione adatta a disegnare la V
+seguente.</p>
+ 
+[!java|scala]
+<p>Your turn now. I'm sure you can imagine the other methods you need to keep
+your code simple and pleasant to read.  Complete the method
+<code>run()</code> that should be called automatically (once).  [!java]the
+<code>public</code> keyword means more or less that anybody can call this
+method, which is good because the PLM infrastructure calls it directly.[/!] </p>
+[/!]
