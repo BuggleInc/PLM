@@ -1,0 +1,44 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Lunar Lander</h2>
+
+<p>In this universe you pilot a lunar lander. At each simulation step you're
+given the lander's position, speed, angle and thrust and must issue a command
+adjusting its angle and thrust.</p>
+
+<h2>Provided functions</h2>
+
+<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+Get the X and Y position of the lander.
+<pre>[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]
+[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]</pre>
+Get the horizontal and vertical speed of the lander.
+
+<pre>[!java|c]double [/!]getAngle()[!scala]:Double[/!]
+[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])</pre>
+Get or set the angle of the lander.<br/>
+An angle of 0° denotes a vertical position where the "head" of the lander points up. 
+This is the angle you must land with. A positive angle denotes a left-leaning lander, 
+a negative angle a right-leaning one. You cannot lean more than by ±90°, and the angle can vary by
+at most ±5° in one step.
+
+<pre>[!java|c]int [/!]getThrust()[!scala]:Int[/!]
+[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])</pre>
+Get or set the thrust of the lander. <br/>You can only 
+increment or decrement the thrust by 1 between two simulation steps, so if the 
+current thrust is 2 and you ask for 4, you'll only get 3 in the next step. If 
+you ask for less than 0 (resp. more than 4), everything will be as if you had 
+asked for 0 (resp. 4).
+
+<pre>[!java|c]int [/!]getFuel()[!scala]:Int[/!]</pre>
+Get the remaining fuel in the lander.  At each step of the simulation the lander 
+consumes as many fuel units as the current thrust. Once you run out of fuel you're 
+in free fall so beware!
+
+<pre>[!java]List&lt;Point&gt; [/!]getGround()[! scala]:List[Point][/!]</pre>
+Get the vertices of the ground's profile from left to right. 
+[!java|scala]You can retrieve the X and Y coordinates of each point
+with the corresponding methods of your point: <code>p.x()</code> and
+<code>p.y()</code>.[/!]
+[!python]Each point is an array of two integers denoting respectively
+the X and Y coordinates of that point.[/!]

@@ -1,0 +1,42 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Lander 101</h1>
+
+<p>Congratulations! You won a (one-way) trip to Mars in a cereal box. NASA was
+kind enough to donate the Lunar Excursion Module for this mission, so
+that's what you'll be flying.</p>
+
+<p>Before you take off, you must go through some basic landing simulation. You
+shouldn't have to fly the lander if all goes as planned but, as they say,
+"better safe than sorry".</p>
+
+<p>Your mission is to <b>land the lander with a vertical speed of at most 10
+m/s.</b> There are two ways you can influence the lander's course: by adjusting
+its angle or by adjusting its thrust. In this simulation we only care about
+adjusting the thrust, expressed in m/s².</p>
+
+<p>The [!python]<code>step()</code> function[/!][!scala|java|c]code[/!] that you 
+should write now will be called every 0.1 second during the simulation. Make sure that your 
+code does not last too long, with no while loop! It should only
+set the desired thrust of the next simulation step, by calling 
+<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</code> 
+where <code>desiredThrust</code> is some integer between 0 and 4 (that is, a thrust 
+between 0 m/s² and 4 m/s²). You can only increment or decrement the thrust by 1 
+between two simulation steps, so if the current thrust is 2 and you ask for 4, 
+you'll only get 3 in the next step. If you ask for less than 0 (resp. more than 4), 
+everything will be as if you had asked for 0 (resp. 4).</p>
+
+<p>In order to take informed decisions, you can query the lander's state. In
+this simulation you'll probably be interested in its vertical position:
+<code>[!java]double [/!]getY()[!scala]:Double[/!]</code>, and its vertical speed: 
+<code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. You can also ask for 
+the thrust via <code>[!java]int [/!]getThrust()[!scala]:Integer[/!]</code> in case 
+you don't remember what you asked for. Remember that Mars' gravity is 3.711 m/s², 
+it might come in handy.</p>
+
+<p>One last thing: the lander is pretty small so you don't have much fuel. At
+each step of the simulation the lander consumes as many fuel units as the
+current thrust. Once you run out of fuel you're in free fall so beware! You can
+consult the remaining amount of available fuel units using 
+<code>[!java]int [/!]getFuel()[!scala]:Integer[/!]</code>.</p>
+
+<p>Good luck!</p>

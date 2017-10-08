@@ -1,0 +1,33 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Fly the Lander!</h1>
+
+<p>After 30 days of staring at rocks and eating cereals you decide it's time to
+go explore other parts of the planet.</p>
+
+<p>You fly for a while and suddenly realize you're almost out of fuel.
+Unfortunately you're in a delicate situation and the autopilot is helpless.
+You will have to pilot the lander yourself. Your mission is to <b>land the
+lander on a flat zone with a vertical speed less than 10 m/s, an horizontal
+speed less than 5 m/s and an angle of 0°.</b></p>
+
+<p>You must define two functions: <code>[!java]void [/!]initialize()</code> and 
+<code>[!java]void [/!]step()</code>. <code>initialize()</code> is called once just 
+after you press "Run". You can use it to chose some flat zone. As before, 
+<code>step()</code> is called every 0.1 second and is used for adjusting the 
+lander's thrust and angle. As in the first exercise the lander's thrust is adjusted 
+via <code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:Integer[/!])</code>. 
+But you can also control its angle via 
+<code>[!java]void [/!]setDesiredAngle([!java]double [/!]desiredAngle[!scala]:Double[/!])</code>. 
+An angle of 0° denotes a vertical position where the "head" of the lander points up. 
+This is the angle you must land with. A positive angle denotes a left-leaning lander, 
+a negative angle a right-leaning one. You cannot lean more than by ±90°, and the angle can vary by
+at most ±5° in one step.</p>
+
+<p>As in the previous exercise, <code>[!java]List&lt;Point&gt; [/!]getGround()[!scala]:List[Point][/!]</code> returns
+the vertices of the ground's profile from left to right. 
+Please refer to the documentation (Help/About this world) for a reference manual of your lunar lander.</p>
+
+<p>As before, your program must safely land the lander in all the situations
+encountered so far in addition to this new one.</p>
+
+<p>Good luck, try not to crash!</p>
