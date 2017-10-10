@@ -1,0 +1,282 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Vettori[/!][!python]Liste[/!] ed Intrecci</h1>
+
+L'obbiettivo di questo esercizio è di riprodurre lo stesso pattern presente
+sulla prima colonna nelle altre con uno sfasamento di una cella (guarda la
+scheda objective per capire). La grande differenza fra questo esercizio e
+gli altri dove avevamo dei pattern è che questa volta dobbiamo leggere il
+pattern (sulla prima colonna) prima di riprodurlo.  Non puoi fare
+diversamente perché lo stesso codice dovrà essere eseguito su tre differenti
+mondi, ognuno di essi avente un pattern specifico.
+
+<p>Una soluzione è quella di leggere la cella successiva e copiarla prima di
+tornare indietro a leggere la seconda cella. Ma visto che non è consentito
+l'utilizzo del metodo per teletrasportare il buggle in una specifica
+posizione (<code>setPos()</code> e simili), questo approccio sarebbe
+faticoso da implementare. </p>
+ 
+<p>Il modo più semplice è quello di salvare la sequenza di colori che
+costituisce l'intero pattern in un
+[!java|scala]<b>vettore</b>[/!][!python]<b>a lista</b>[/!]. Ma prima di
+poterlo fare dobbiamo imparare un po' di quello che c'è da sapere
+su[!java|scala]i vettori[/!][!python]lle liste[/!].</p>
+
+<h2>[!java|scala]Vettori[/!][!python]Liste[/!]</h2> 
+
+<p>[!java|scala]Un vettore[/!][!python]Una lista[/!] è una sequenza ordinata di
+variabili unite insieme. È in qualche modo simile ad una ripiano dove ogni
+scaffale può contenere un valore separato. Ogni variabile della sequenza
+viene identificata dalla sua posizione e può contenere un valore
+specifico. [!java|scala]Tutte le celle del vettore devono ospitare valori
+dello stesso tipo perché in [!thelang] i vettori sono omogenei. È possibile
+aggirare questa restrizione utilizzando il tipo di dato
+<code>[!java]Object[/!][!scala]Any[/!]</code> che può contenere
+[!java]quasi[/!] ogni altro tipo di dato. [!java]I tipi primitivi che
+abbiamo visto fin ora (int, boolean, double, char, ...) non possono essere
+memorizzati in un "Object" (Ndt Oggetto) variabile, ma le loro oggettificate
+controparti (Integer, Boolean, Double, Char, Boolean, etc) possono.[/!]
+Continua comunque ad essere una buona pratica quella di rendere il tipo di
+un vettore il più specifico possibile, e cioé se pianificate di memorizzare
+solo dei numeri interi in un vettore, create un vettore di interi, non un
+[!java]Object[/!][!scala]Any[/!].[/!] [!python]Le liste possono contenere
+mix di tipi di dato differenti, come valori interi in alcune celle e colori
+nelle atre.[/!]</p>
+
+<div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
+
+<p>T è il nome del[!java|scala] vettore[/!][!python]la lista[/!],
+[!java|python]T[0][/!][!scala]T(0)[/!] È il nome della prima cella,
+[!java|python]T[1][/!][!scala]T(1)[/!] quello della seconda,
+[!java|python]T[2][/!][!scala]T(2)[/!] quello della terza, ... Eh sì, la
+prima cella è numerata [!java|python]T[0][/!][!scala]T(0)[/!] mentre
+l'ultima di un[!java|scala] vettore[/!][!python]a lista[/!] di dimensione N
+è [!java|python]T[N-1][/!][!scala]T(N-1)[/!]. Potrebbe sembrare strano
+contare iniziando da 0 e non da 1 come si fa solitamente ma alcune ragioni
+storiche hanno reso questa pratica inevitabile.</p>
+
+<h3>Utilizzo di base</h3>
+
+<p>Possiamo utilizzare una variabile intera chiamata <i>i</i> per accedere alla
+cella attraverso [!java|python]T[i][/!][!scala]T(i)[/!]: quando il valore di
+<i>i</i> sarà 0, allora [!java|python]T[i][/!][!scala]T(i)[/!] accederà a
+[!java|python]T[0][/!][!scala]T(0)[/!] mentre se il valore di <i>i</i> è 10,
+allora [!java|python]T[i][/!][!scala]T(i)[/!] accederà a
+[!java|python]T[10][/!][!scala]T(10)[/!]. La variabile <i>i</i> viene
+chiamata <b>indice</b> di T.
+<code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> può essere usato alla
+stregua di una qualsiasi altra variabile. Possiamo assegnargli un nuovo
+valore:</p> 
+<pre>[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]</pre>
+
+<p>Possiamo recuperane ed usare il suo valore: </p>
+<pre>x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]</pre>
+
+<p>Possiamo testare il suo valore:</p>
+<pre>if ([!java|python]T[i][/!][!scala]T(i)[/!] &gt; 0) [!scala|java]{[/!][!python]:[/!]
+    [!java|scala]//[/!][!python]#[/!] instruzioni...
+[!java|scala]}[/!]</pre>
+
+<p>È molto semplice scorrere l'inter[!scala|java]o vettore[/!][!python]a
+lista[/!], per esempio per inizializzare ogni cella:</p>
+
+<pre>[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]
+   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<p>[!java|scala]The notation <code>T.length</code> retrieves the length of the
+array T,[/!] [!python]The function <code>len()</code> retrieves the length
+of the list T,[/!] allowing to build a classical for loop easily.
+[!python]Actually, the <code>len()</code> function is much more generic and
+can be used to retrieve the length of many objects.  Applied to strings for
+example, it returns the amount of chars in this string.[/!] [!scala]Don't
+forget to start at <code>0</code> and stop at <code>T.length-1</code>
+instead of <code>1</code> to <code>T.length</code> however.[/!]</p>
+
+<p>Se volete iterare solo sui valori di T senza tenere traccia dell'indice,
+potete semplicemente scrivere:</p>
+<pre>[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]
+  azioni()[!java];[/!]
+[!java|scala]}[/!]</pre>
+<p>[!java]Questo costrutto in Java è chiamato <i>extended loop</i> (Ndt non so
+tradurlo, è un ciclo for each). La variabile <i>i</i> prende tutti i valori
+del vettore posizionato a destra dei due punti (:), uno alla volta.[/!]
+[!python|scala]Quello che accade è molto simile a ciò che accadeva nel
+costrutto precedente. Semplicemente <code>[!python]range(n)[/!][!scala]i to
+j[/!]</code> ritorna una serie di numeri interi che il costrutto for
+utilizza per ripetersi. Attualmente [!thelang] offre modi più eleganti di
+scorrere [!python]una lista[/!][!scala]un vettore[/!] ed altri tipi di
+collezioni di dati ma questo sarà l'argomento di un'altra serie di esercizi
+a parte (che peraltro devono ancora essere scritti in PLM).[/!]</p>
+
+
+<h3>Dichiarare [!python]una lista[/!][!java|scala]un vettore[/!]</h3>
+
+[!python]
+<p>Se già conosci il contenuto della tua lista puoi assegnarli subito tutti i
+valori direttamente. Semplicemente metteteli fra parentesi quadrate e
+separateli con una virgola come nell'esempio seguente.</p>
+<pre>
+L = [1, 3, 5, 7, 9] 
+<span class="comment"># L è ora una lista di 5 valori, tutti loro sono interi</span></pre>
+<p>In alternativa potreste voler creare una lista vuota ed aggiungerle
+separatamente ogni valore.</p>
+<pre>
+L2 = [] 
+<span class="comment"># L2 è ora una lista vuota</span>
+L2.append(1)
+L2.append(3)
+L2.append(5)
+L2.append(7)
+L2.append(9) 
+<span class="comment"># adesso il suo contenuto è lo stesso di L</span></pre> 
+[/!] [!java|scala]
+<p>To declare a variable named <b>T</b> that can store an array of integers,
+one should write:</p>
+<pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
+
+<p>[!java]<code>int</code> significa che gli elementi del vettore sono di tipo
+intero; <code>[]</code> significa che stiamo parlando di un vettore e
+<code>T</code> è il nome della variabile. Per motivi storici è possibile
+anche scrivere <code>int T[]</code> (con le [] dopo il nome della variabile)
+ma questo è meno leggibile e andrebbe evitato.[/!] [!scala]La notazione
+<code>[Int]</code> specializza il tipo del vettore (che sarebbe generico)
+specificando che ogni sua cella contiene un intero. Similmente un vettore di
+booleani si scriverà <code>Array[Boolean]</code>.[/!]
+</p>
+
+<h3>Allocare un vettore</h3>
+
+<p>Dichiarare una variabile <code>T</code> fa semplicemente posto ad un vettore
+riservandogli il <b>nome</b> <code>T</code> per usi successivi ma non gli
+riserva dello spazio di memoria per contenere le sue celle. Il vettore non è
+ancora stato inizializzato: esso non ha nessun valore. Che potrebbe mai
+voler dire <code>[!java]T[4][/!][!scala]T(4)[/!]</code> se non abbiamo
+ancora stabilito che il vettore è lungo 5 celle?</p>
+
+<p>Prima di tutto dobbiamo dare un valore a <code>T</code>:</p>
+<pre>[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]</pre>
+
+<p><code>new</code> significa che noi vogliamo creare qualcosa e
+<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> significa che
+quello che vogliamo creare è un vettore di 10 valori interi. Di consegueza
+in memoria viene creato un vettore di 10 celle di interi e la variabile
+<code>T</code> ci <b>referenzierà</b> ad esso.</p>
+
+<p>La dimensione del vettore sarà fissa e non potrà essere cambiata dopo la sua
+creazione. Potremo conoscere la dimensione di <code>T</code> consultando la
+variabile <code>T.length</code>.</p>
+
+<p>While allocating, you can specify the size with a variable:
+<code>[!java]int[] T = new int[i];[/!][!scala]var T = new
+Array[Int](i);[/!]</code> In this case, the array's size will be set to the
+value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size
+of the array still cannot be modified: even if the variable <code>i</code>
+changes afterward, the size remains to the value given when it was
+allocated.  [!java]Also, it is forbidden to write something like <code>int
+T[10];</code> when declaring the variable.  You are required to use the
+<code>new</code> instruction to allocate it, as in <code>int[] T = new
+int[10];</code> [/!]</p>
+
+<h4>Dichiarazione ed inizializzazione</h4>
+<p>Se siete già a conoscenza del contenuto del vostro vettore potete
+dichiarare, allocare ed inizializzare tutto contemporaneamente, in un sol
+colpo:</p>
+<pre>[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]</pre>
+
+<p>Per conoscere la dimensione del vettore da allocare il compilatore conta i
+valori fornitigli. Questo codice è equivalente ad:</p>
+<pre>[!java]int[] T = new int[10];
+T[0] = 1;
+T[1] = 2;
+...
+T[9] = 10;[/!][!scala]var T = new Array[Int](10);
+T(0) = 1
+T(1) = 2
+...
+T(9) = 10[/!]</pre>
+
+<p>Che è anche equivalente a:</p>
+<pre>[!java]int[] T = new int[10];
+for (int i=0; i&lt;T.length; i++) {
+  T[i] = i+1;
+}[/!][!scala]var T = new Array[Int](10);
+for (i &lt;- 0 to T.length-1) {
+  T(i) = i+1
+}[/!]</pre>
+
+
+<!-- end of java|scala. python comes back -->
+[/!]
+
+<h3>[!python]Liste[/!][!scala|java]Vettori[/!] e parametri dei metodi</h3>
+<p>È perfettamente valido passare [!python]una lista[/!][!java|scala]un
+vettore[/!] come parametro di un metodo. Il metodo può quindi utilizzare
+questo parametro come se fosse stato definito localmente:</p>
+<pre>[!java]boolean haPrima42(int[] vettore) {
+    return array[0] == 42;
+}[/!][!python]def haPrima42(lista):
+  return lista[0] == 42[/!][!scala]def haPrima42(vettore:Array[Int]):Boolean = {
+  return vettore(0) == 42
+}[/!]</pre>
+
+<p>Anche dalla parte del chiamante del metodo la cosa è molto semplice:</p>
+<pre>[!java]int[] etichetta = new int[10];[/!][!scala]var etichetta = new Array[Int] (10)[/!][!python]etichetta = [1, 3, 5, 7, 9][/!]
+[!java|scala]<span class="comment">// Valore di inizializzazione omesso</span>
+[/!]if (haPrima42(etichetta))[!java|scala] {[/!][!python]:[/!]
+   <span class="comment">[!java|scala]//[/!][!python]#[/!] fai qualcosa</span>
+[!java|scala]}[/!]</pre>
+
+[!java]
+<p>Se cerchi di allocare ed inizializzare il vettore in un colpo solo la cosa
+si fa' un po più complicata perché il compilatore dovrà conoscere il tipo
+dei parametri che stai creando. Per poterlo fare utilizza questo (brutto)
+costrutto:</p>
+<pre>if (haPrima42(   new int[] {1, 3, 5, 7, 9}   ) {
+   <span class="comment">// fai qualcosa</span>
+}</pre>
+[/!]
+
+<p>I metodi possono anche ritornare [!java|scala]vettori[/!][!python]liste[/!]
+come risultati senza nessuna complicazione. Quì mostrato c'è un metodo che
+ritorna [!java|scala]un vettore[/!][!python]una lista[/!] della dimensione
+richiesta e riempito di 42.</p>
+
+<pre>[!java]int[] riempiDi42(int dimensione) {
+    int[] ris = new int[dimensione];
+    for (int i=0; i&lt;dimensione; i++) 
+        ris[i] = 42;
+    return ris;
+}[/!][!scala]def riempiDi42(dimensione:Int):Array[Int] = {
+    var ris = new Array[int] (dimensione)
+    for (i &lt;- 0 to dimensione -1) {
+        ris(i) = 42;
+    }
+    return ris;
+}[/!][!python]def riempiDi42(dimensione):
+    ris = []
+    for i in range(dimensione):
+        ris.append(42)
+    return ris[/!]</pre>
+
+<h2>Traguardo dell'esercizio</h2>
+
+<p>Finalmente! Dopo questa lunga spiegazione possiamo ritornare al nostro
+esercizio.</p>
+<p>La tua missione è abbastanza semplice. Il tuo codice dovrà memorizzare il
+patter di colori osservati nella prima colonna in [!java|scala]un
+vettore[/!][!python]una lista[/!]. [!python]Il modo più facile è quello di
+creare una lista vuota e dopo usare il metodo <code>append()</code> per
+inserirci i colori uno dopo l'altro nell'ordine in cui li leggi (con
+<code>getGroundColor()</code>).[/!] [!java|scala]Per poterlo fare devi
+dichiarare ed allocare un vettore di <code>Color</code>. Ma fai attenzione,
+ci sono diversi mondi di diverse dimensioni, usa la funzione
+<code>getWorldHeight()</code> per venire a conoscenza dell'altezza del mondo
+corrente. Quando il vettore sarà allocato, riempilo leggendo il colore sul
+pavimento in ogni locazione (con <code>getGroundColor()</code>).[/!]</p>  
+
+<p>Quando sarai riuscito a leggere ed a salvare il pattern della prima colonna
+dovrai riapplicarlo su tutte le altre, per esempio eseguendo il metodo che
+hai scritto a questo scopo un numero di volte pari al valore di ritorno di
+<code>getWorldHeight()</code>. (Ndt potrebbe essere utile sapere che esiste
+anche il metodo getWorldWidth() che ci dice la lunghezza del mondo)</p> 

@@ -1,0 +1,273 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Arrays[/!][!python]Lists[/!] e nós</h1>
+
+O objetivo deste exercício é reproduzir o padrão da primeira linha nas
+outras linhas com um deslocamento de uma célula (veja a aba Objetivo para
+detalhes). A maior diferença entre este exercício e os outros sobre padrões
+é que você tem que ler o padrão (na primeira linha) antes de
+reproduzí-lo. Você não pode fazer de outro jeito por que o mesmo código será
+executado em três mundos diferentes, cada um com seu próprio padrão.
+
+<p>Uma solução é ler a próxima célula, e copiar ela na posição antes de voltar
+para ler a segunda célula. Mas já que é proibido usar os métodos de
+teletransporte de buggle para uma posição específica (<code>setPos()</code>
+e similares), esta abordagem seria muito difícil de implementar. </p>
+ 
+<p>O mais simples é armazenar a sequência de cores que constituem o padrão
+inteiro numa [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  Mas
+antes de fazer isto, devemos aprender um pouco sobre o que
+[!java|scala]arrays[/!][!python]lists[/!] são.</p>
+
+<h2>[!java|scala]Arrays[/!][!python]List[/!]</h2> 
+
+<p>[!java|scala]Uma array[/!][!python]Uma list[/!] é uma sequência ordenada de
+variáveis que ficam juntas. é similar a uma estante onde em cada prateleira
+se coloca um valor separado. Cada variável da sequência é identificada por
+sua posição, e pode armazenar um valor específico. [!java|scala]todas as
+células da array devem armazenar valores do mesmo tipo por que arrays são
+homogêneas em [!thelang]. É possível burlar esta restrição usando tipos de
+dados <code>[!java]Object[/!][!scala]Any[/!]</code> que contenham
+[!java]praticamente[/!] qualquer outro tipo de dados. [!java]Tipos
+primitivos como aqueles que vimos anteriormente (int, boolean, double, char,
+etc) não podem ser armazenados numa variável Object, mas suas contrapartidas
+objetificadas (Integer, Boolean, Double, Char, Boolean, etc) podem.[/!]
+Entretanto, é boa prática fazer o tipo de uma array o mais específico
+possível, i.e., se você planeja armazenar alguns inteiros na sua array, faça
+dela uma array de inteiros, não de [!java]Object[/!][!scala]Any[/!].[/!]
+[!python]Lists podematé mesmo misturar valores de diferentes tipos, como
+valores inteiros em algumas células e cores em outras células.[/!]</p>
+
+<div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
+
+<p>T é o nome da [!java|scala]array[/!][!python]list[/!],
+[!java|python]T[0][/!][!scala]T(0)[/!] é o nome da primeira célula,
+[!java|python]T[1][/!][!scala]T(1)[/!] é o nome da segunda célula,
+[!java|python]T[2][/!][!scala]T(2)[/!] da terceira e etc. E sim, a primeira
+célula é numerada [!java|python]T[0][/!][!scala]T(0)[/!] e a última de uma
+[!java|scala]array[/!][!python]list[/!] de tamanho N é
+[!java|python]T[N-1][/!][!scala]T(N-1)[/!]. Pode parecer estranho contar a
+partir de 0 e não de 1 como normalmente, mas por motivos históricos isto
+agora é inevitável.</p>
+
+<h3>Uso básico</h3>
+
+<p>Podemos usar uma variável inteira <i>i</i> para acessar com
+[!java|python]T[i][/!][!scala]T(i)[/!] as células: quando o valor de
+<i>i</i> é 0, [!java|python]T[i][/!][!scala]T(i)[/!] acessa
+[!java|python]T[0][/!][!scala]T(0)[/!]; quando o valor de <i>i</i> é 10,
+[!java|python]T[i][/!][!scala]T(i)[/!] acessa
+[!java|python]T[10][/!][!scala]T(10)[/!]. Sizemos que <i>i</i> é o
+<b>índice</b> em T. <code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> pode
+ser usada simplesmente como qualquer variável. Podemos configurar um novo
+valor:</p> 
+<pre>[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]</pre>
+
+<p>Podemos recuperar e usar seu valor: </p>
+<pre>x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]</pre>
+
+<p>Podemos testar este valor:</p>
+<pre>if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) [!scala|java]{[/!][!python]:[/!]
+    [!java|scala]//[/!][!python]#[/!] instruções...
+[!java|scala]}[/!]</pre>
+
+<p>É muito fácil percorrer toda a [!scala|java]array[/!][!python]list[/!], por
+exemplo para iniciar as células.</p>
+
+<pre>[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]
+   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<p>[!java|scala]A notação <code>T.length</code> recupera o comprimento (length)
+da  array T,[/!] [!python]A função <code>len()</code> recupera o comprimento
+da lista T,[/!] permitindo que se construa um loop clássico facilmente.
+[!python]Na verdade, a função <code>len()</code> é muito mais genérica e
+pode ser usada para recuperar o comprimento de muitos objetos. Aplicada numa
+string, por exemplo, ela retorna a quantidade de caracteres na string.[/!]
+[!scala]Não esqueça de começar em <code>0</code> e terminar em
+<code>T.length-1</code> ao invés de ir de <code>1</code> até
+<code>T.length</code>.[/!]</p>
+
+<p>Se você quer simplesmente iterar nos valores de T sem controlar o índice,
+pode simplesmente escrever:</p>
+<pre>[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]
+  ação()[!java];[/!]
+[!java|scala]}[/!]</pre>
+<p>[!java]Esta construção é chamada um <i>loop extendido</i> em Java. A
+variável <i>i</i> assume todos os valores do conjunto localizado a direita
+do dois-pontos (:), um depois do outro.[/!] [!python|scala]Isto é na verdade
+muito similar à construção anterior. Simplesmente,
+<code>[!python]range(n)[/!][!scala]i to j[/!]</code> retorna um conjunto de
+inteiros sobre os quais o loop for itera. Na verdade, [!thelang] oferece
+formas muito mais elegantes de percorrer
+[!python]lists[/!][!scala]arrays[/!] e outras coleções de dados, mas isto
+fica para um conjunto específico de exercícios (que ainda será escrito no
+PLM).[/!]</p>
+
+
+<h3>Declarando uma [!python]list[/!][!java|scala]array[/!]</h3>
+
+[!python]
+<p>Se você sabe antecipadamente o conteúdo da sua lista, você pode atribuir os
+valores todos juntos. Coloque eles simplesmente entre colchetes e separados
+por vírgulas como segue:</p>
+<pre>
+L = [1, 3, 5, 7, 9] 
+<span class="comment"># L agora é uma array de 5 valores, todos eles inteiros</span></pre>
+<p>Por outro lado, você provavelmente vai querer criar uma lista vazia e então
+anexar os valores separadamente a ela:</p>
+<pre>
+L2 = [] 
+<span class="comment"># neste momento, L2 é uma lista vazia</span>
+L2.append(1)
+L2.append(3)
+L2.append(5)
+L2.append(7)
+L2.append(9) 
+<span class="comment"># E agora seu conteúdo é igual ao de L, vista antes</span></pre> 
+[/!] [!java|scala]
+<p>Para declarar uma variável chamada <b>T</b> que pode guardar uma array de
+inteiros, você deve escrever:</p>
+<pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
+
+<p>[!java]<code>int</code> significa que os elementos da array são do tipo
+inteiro; <code>[]</code> significa que estamos falando de uma array e
+<code>T</code> é o nome da variável. Por motivos históricos, também pode ser
+escrito como <code>int T[]</code> (com o [] depois do nome da variável), mas
+como assim é menos legível é melhor você evitar esta forma.[/!] [!scala]A
+notação <code>[Int]</code> especializa o tipo Array (que é genérico),
+especificando que cada célula desta array é um inteiro. Um array de
+booleanos deve ser escrito simplesmente como
+<code>Array[Boolean]</code>.[/!]
+</p>
+
+<h3>Alocando uma array</h3>
+
+<p>Declarar uma variável <code>T</code> que armazena uma array apenas reserva o
+<b>nome</b> <code>T</code> para uso futuro, mas não reserva a área de
+memória para armazenar as células. A array ainda não está inicializada: ela
+não tem qualquer valor. O que significa
+<code>[!java]T[4][/!][!scala]T(4)[/!]</code> se ainda não dissemos que a
+array tem 5 células?</p>
+
+<p>Primeiramente, temos que dar um valor a <code>T</code>:</p>
+<pre>[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]</pre>
+
+<p><code>new</code> (novo) significa que nós queremos criar algo, e
+<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> significa que é
+uma array de 10 valores inteiros. Como resultado, uma array de 10 células
+para valores inteiros é criada na memória, e a variável <code>T</code>
+<b>faz referência</b> a esta array.</p>
+
+<p>O tamanho de uma array é fixo e não pode ser mudado depois da criação da
+array. O tamanho de uma array <code>T</code> pode ser recuperado ao se
+consultar a variável <code>T.length</code>.</p>
+
+<p>Na hora da alocação, você pode especificar o tamanho com uma variável:
+<code>[!java]int[] T = new int[i];[/!][!scala]var T = new
+Array[Int](i);[/!]</code> Neste caso, o tamanho da array será ajustado para
+o valor de <code>i</code> <i>quando <code>new</code> for chamado</i>.  O
+tamanho da array ainda não pode ser modificado: mesmo se a variável
+<code>i</code> mudar depois disto, o tamanho permanece o do valor dado no
+momento da alocação.  [!java]Além disto, é proibido escrever algo como
+<code>int T[10];</code> no momento de declarar a variável. Você deve usar a
+instrução <code>new</code> para alocar o array, como em <code>int[] T = new
+int[10];</code> [/!]</p>
+
+<h4>Declaração e inicialização</h4>
+<p>Se você sabe previamente o conteúdo da sua array, você pode declarar, alocar
+e inicializar ela tudo de uma vez:</p>
+<pre>[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]</pre>
+
+<p>Para saber o tamanho da array para alocar, o compilador conta os valores
+dados. Este código é equivalente a:</p>
+<pre>[!java]int[] T = new int[10];
+T[0] = 1;
+T[1] = 2;
+...
+T[9] = 10;[/!][!scala]var T = new Array[Int](10);
+T(0) = 1
+T(1) = 2
+...
+T(9) = 10[/!]</pre>
+
+<p>também é equivalente a:</p>
+<pre>[!java]int[] T = new int[10];
+for (int i=0; i&lt;T.length; i++) {
+  T[i] = i+1;
+}[/!][!scala]var T = new Array[Int](10);
+for (i &lt;- 0 to T.length-1) {
+  T(i) = i+1
+}[/!]</pre>
+
+
+<!-- end of java|scala. python comes back -->
+[/!]
+
+<h3>[!python]Lists[/!][!scala|java]Arrays[/!] e parâmetros de métodos</h3>
+<p>Não tem nenhum problema passar uma [!python]list[/!][!java|scala]array[/!]
+para um método como parâmetro. Este método pode então usar este parâmetro
+como se ele fosse definido localmente:</p>
+<pre>[!java]boolean has42First(int[] array) {
+    return array[0] == 42;
+}[/!][!python]def has42First(list):
+  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = {
+  return array(0) == 42
+}[/!]</pre>
+
+<p>No lado de quem invoca também é bastante simples:</p>
+<pre>[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] (10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]
+[!java|scala]<span class="comment">// inicialização de valores omitida</span>
+[/!]if (has42First(tab))[!java|scala] {[/!][!python]:[/!]
+   <span class="comment">[!java|scala]//[/!][!python]#[/!] faz algo</span>
+[!java|scala]}[/!]</pre>
+
+[!java]
+<p>Se você quer alocar e inicializar o array de uma vez só, é um pouco mais
+complicado pois o compilador terá que saber o tipo do parâmetro que você
+está criando. Para isto, use a seguinte construção (feia):</p>
+<pre>if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {
+   <span class="comment">// faz algo</span>
+}</pre>
+[/!]
+
+<p>Métodos também podem retornar [!java|scala]arrays[/!][!python]lists[/!] como
+resultado sem nenhuma complicação. Aqui está um método que retorna uma
+[!java|scala]array[/!][!python]list[/!] do tamanho pedido, preenchido com
+42s.</p>
+
+<pre>[!java]int[] fill42(int size) {
+    int[] res = new int[size];
+    for (int i=0; i&lt;size; i++) 
+        res[i] = 42;
+    return res;
+}[/!][!scala]def fill42(size:Int):Array[Int] = {
+    var res = new Array[int] (size)
+    for (i &lt;- 0 to size -1) {
+        res(i) = 42;
+    }
+    return res;
+}[/!][!python]def fill42(size):
+    res = []
+    for i in range(size):
+        res.append(42)
+    return res[/!]</pre>
+
+<h2>Objetivo deste exercício</h2>
+
+<p>Finalmente! Depois desta longa explicação, podemos voltar ao exercício.</p>
+<p>Sua missão é bastante simples na verdade. Seu código deve guardar o padrão
+de cores observado na primeira linha numa
+[!java|scala]array[/!][!python]list[/!].  [!python]O mais fácil é criar uma
+lista vazia, e então usar <code>append()</code>para adicionar as cores uma
+por uma à medida em que você for lendo elas (com
+<code>getCorDoChão()</code>).[/!] [!java|scala]Para isto, você deve declarar
+e alocar uma array de <code>Cor</code>. Mas atencção, existem vários mundos,
+de diferentes tamanhos; use <code>getAlturaDoMundo()</code> para recuperar o
+tamanho do mundo atual. Uma que a array esteja alocada, preencha ela lendo a
+cor do chão em cada um dos pontos (com <code>getCorDoChão()</code>).[/!]</p>  
+
+<p>Uma vez que você conseguiu ler e gravar o padrão na primeira linha, você tem
+que reaplicar o padrão nas outras linhas, por exemplo executando
+<code>getAlturaDoMundo()</code> vezes um método escrito especificamente para
+isto.</p> 

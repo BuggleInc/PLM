@@ -1,0 +1,33 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Tableaux[/!][!python]Listes[/!], tricot et modulo</h1>
+
+<p>Cet exercice ressemble au précédent : il faut reproduire le motif de
+couleurs de la première colonne dans les colonnes suivantes.</p>
+
+<p>La première différence est que le monde est entouré d'un mur : il faut donc
+modifier légèrement les parcours pour s'assurer que la buggle ne se cogne
+pas sur les bords. Le plus simple est de traiter la première case de la
+colonne en dehors de la boucle <code>for</code> (avant la boucle), et faire
+seulement <code>getWorldHeight()-1</code> pas dans la boucle.</p>
+
+<p>La seconde différence est que le décalage à effectuer entre les colonnes
+n'est pas fixe, mais écrit sur la première case de chaque colonne. Pour
+obtenir l'information sous forme d'un entier, on peut utiliser:</p>
+
+<pre>[!java]int decalage = Integer.parseInt(litMessage())[/!][!python]decalage = int( litMessage() )[/!][!scala]val decalage = litMessage().toInt[/!]</pre>
+
+<p><code>litMessage()</code> lit l'indication au sol sous forme d'une chaîne de
+caractères,
+tandis que
+<code>[!java]Integer.parseInt(ch)[/!][!scala]ch.toInt[/!][!python]int(ch)[/!]</code>
+
+transforme la chaîne <code>ch</code> en un entier en la <i>lisant</i>.</p>
+
+<p>Ensuite, pour trouver la bonne couleur à utiliser, le plus simple est
+d'utiliser l'opérateur <code>%</code> (modulo). Par exemple, <code>(i + 5) %
+taille</code> permet de trouver la <code>i</code>ieme case d'un tableau de
+taille <code>taille</code> quand on applique un décalage de <code>5</code>
+cases.</p>
+
+<p>À vous de jouer.</p>

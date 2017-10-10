@@ -1,0 +1,32 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Vettori[/!][!python]Liste[/!], Intrecci e Modulo</h1>
+
+<p>Questo esercizio è simile al precedente: devi riprodurre il pattern di
+colori della prima cella nelle altre.</p>
+
+<p>La prima differenza è che il mondo è contornato da muri: dovrete quindi
+modificare la vostra traiettoria per assicurarvi che il buggle non colpisca
+un muro. Il modo più semplice è quello di occuparsi della prima cella
+all'infuori del ciclo <code>for</code> e compiere solo un numero di passi
+<code>getWorldHeight()-1</code> nel ciclo.</p>
+
+<p>L'altra differenza è che lo sfalsamento da applicare fra le colonne non è
+fisso ma scritto nella prima cella in alto di ogni colonna. Per ottenere
+l'informazione come un numero intero possiamo utilizzare:</p>
+
+<pre>[!java]int sfalsamento = Integer.parseInt(readMessage())[/!][!python]sfalsamento = int( readMessage() )[/!][!scala]val sfalsamento = readMessage().toInt[/!]</pre>
+
+<p><code>readMessage()</code> ottiene il messaggio da terra come una
+[!java|scala]String[/!][!python]string[/!], mentre
+<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code>
+trasforma la stringa <code>str</code> in un intero attraverso una
+<i>lettura</i> .</p>
+
+<p>Successivamente, per scegliere il giusto colore, il modo più semplice è
+usare l'operatore modulo <code>%</code>. Per esempio, <code>(i + 5) %
+dimensione</code> permette di ottenere la cella numero <code>i</code> del
+vettore di grandezza <code>dimensione</code> con uno sfalsamento di
+<code>5</code>.</p>
+
+<p>You're up.</p>

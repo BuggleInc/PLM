@@ -1,0 +1,301 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Tableaux[/!][!python]Listes[/!] et tricot</h1>
+
+L'objectif de cet exercice est de reproduire le motif de la première colonne
+en le décalant d'une case (voir l'onglet «Objectif» pour plus de
+détails). La grande différence entre cet exercice et les précédents sur les
+motifs, c'est qu'il faut maintenant lire (sur la première colonne) le motif
+souhaité, puis le reproduire ensuite. Il est impossible de faire autrement
+car votre programme sera exécuté par trois buggles dans trois mondes
+différents, chacune ayant un motif propre à reproduire.
+
+<p>Une possibilité est de lire la prochaine case, puis d'aller la recopier en
+position, avant de revenir lire la case suivante, etc. Mais comme vous
+n'avez pas le droit d'utiliser les méthodes permettant de téléporter la
+buggle à une case particulière (<code>setPos()</code> et autres), cette
+façon de faire va être très pénible à mettre en place. </p>
+ 
+<p>Le plus simple est de stocker l’enchaînement de couleurs constituant le
+motif dans
+[!java|scala]un <b>tableau</b>[/!][!python]une <b>liste</b>[/!].
+Mais avant de pouvoir faire cela, nous devons en apprendre un peu plus sur
+les [!java|scala]tableau[/!][!python]listes[/!].</p>
+
+<h2>[!java|scala]Les tableaux[/!][!python]Les listes[/!]</h2> 
+
+<p>[!java|scala]Un tableau[/!][!python]Une liste[/!] est une séquence ordonnée
+de variables qui marchent ensemble.
+C'est un peu similaire à une commode dont les différents tiroirs peuvent
+stocker des valeurs différentes.
+Chaque variable de la séquence est identifiée par sa position et peut
+stocker une valeur spécifique.
+[!java|scala]Toutes les cellules d'un tableau doivent stocker des valeurs du
+même type de données parce que les tableaux sont homogènes en [!thelang].
+Il est cependant possible de contourner cette restriction en utilisant le
+type de données <code>[!java]Object[/!][!scala]Any[/!]</code> qui peut
+contenir [!java]presque[/!] tous les autres type de données[!scala] («any»
+veut dire «n'importe» en anglais)[/!].
+[!java]Les types primitifs comme ceux que nous avons utilisé jusqu'à présent
+(int, boolean, double, char, etc) ne peuvent pas être stockés dans une
+variable Object, mais leurs variantes objectifiées (Integer, Boolean,
+Double, Char, Boolean, etc) peuvent l'être.[/!]
+Il est cependant raisonnable de rendre ses tableaux aussi spécifiques que
+possible. Si vous avez l'intention de stocker des entiers, faites en un
+tableau de [!java]integer[/!][!scala]Int[/!], pas de
+[!java]Object[/!][!scala]Any[/!].[/!]
+[!python]Les listes peuvent contenir des données de différents types, en
+mélangeant par exemple quelques valeurs entières dans certaines cellules
+avec des entiers dans d'autres cellules.[/!]</p>
+
+<div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
+
+<p>T est le nom [!python]de la liste[/!][!scala|java]du tableau[/!],
+[!java|python]T[0][/!][!scala]T(0)[/!] est le nom de la première case,
+[!java|python]T[1][/!][!scala]T(1)[/!] de la deuxième case,
+[!java|python]T[2][/!][!scala]T(2)[/!] de la troisième case, etc...
+Et oui, la première case est [!java|python]T[0][/!][!scala]T(0)[/!] et la
+dernière case
+[!python]d'une liste[/!][!scala|java]d'un tableau[/!] de taille N est
+[!java|python]T[N-1][/!][!scala]T(N-1)[/!].
+Cela peut sembler étrange de commencer à compter à partir de 0 et non de 1,
+mais c'est ainsi (et cela s'explique par des raisons historiques obscures).</p>
+
+<h3>Usage de base</h3>
+
+<p>On peut utiliser une variable entière <i>i</i> pour accéder avec
+[!java|python]T[i][/!][!scala]T(i)[/!] aux cases.
+Quand <i>i</i> vaut 0 alors [!java|python]T[i][/!][!scala]T(i)[/!] dénote la
+case [!java|python]T[0][/!][!scala]T(0)[/!];
+lorsque <i>i</i> vaut 10,  [!java|python]T[i][/!][!scala]T(i)[/!] dénote
+[!java|python]T[10][/!][!scala]T(10)[/!].
+On dit alors que <i>i</i> est un <b>indice</b> dans [!java|scala]le
+tableau[/!][!python]la liste[/!] T.
+<code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> peut être utilisé comme
+n'importe quelle variable.
+On peut lui affecter une nouvelle valeur:</p> 
+<pre>[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]</pre>
+
+<p>On peut réutiliser et tester cette valeur : </p>
+<pre>x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]</pre>
+
+<p>On peut tester cette valeur :</p>
+<pre>if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) [!scala|java]{[/!][!python]:[/!]
+    [!java|scala]//[/!][!python]#[/!] instructions...
+[!java|scala]}[/!]</pre>
+
+<p>Il est également très simple de parcourir [!java|scala]tout le
+tableau[/!][!python]toute la liste[/!], par exemple pour initialiser chaque
+cellule.</p>
+
+<pre>[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]
+   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<p>[!java|scala]La notation <code>T.length</code> permet d'accéder à la taille
+(«length» en anglais) du tableau T,[/!]
+[!python]La fonction <code>len()</code> renvoie la longueur de la liste
+T,[/!]
+ce qui permet de construire facilement la boucle.
+[!python]En fait, la fonction <code>len()</code> est bien plus générique et
+peut être utilisée pour calculer la taille de nombreux objets. Appliquée à
+une chaîne de caractères par exemple, elle retourne le nombre de caractères
+composant cette chaîne.[/!]
+[!scala]N'oubliez pas de commencer à <code>0</code> pour terminer à
+<code>T.length-1</code> au lieu de <code>1</code> to
+<code>T.length</code>![/!]</p>
+
+<p>Si vous souhaitez simplement parcourir les valeurs de T sans avoir besoin de
+l'index de chaque valeur, vous pouvez écrire simplement :</p>
+<pre>[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]
+  action()[!java];[/!]
+[!java|scala]}[/!]</pre>
+<p>[!java]Cette construction s'appelle une boucle <code>for</code> étendue en
+Java.
+La variable <i>i</i> prend successivement toutes les valeurs de l'ensemble
+placé à droite des deux-points (:).[/!]
+[!python|scala]Cette écriture est finalement très semblable à la
+précédente.
+Simplement, <code>[!python]range(n)[/!][!scala]i to j[/!]</code> retourne un
+ensemble d'entiers sur lequel la boucle <code>for</code> itère.
+En fait, [!thelang] offre d'autres moyens très élégants de traverser des
+[!python]listes[/!][!scala]tableaux[/!]
+et d'autres collections de données. Mais cela devrait être le sujet
+d'exercices spécifiques (qui restent à écrire dans PLM).[/!]</p>
+
+
+<h3>Déclarer [!python]une liste[/!][!java|scala]un tableau[/!]</h3>
+
+[!python]
+<p>Si vous connaissez à l'avance le contenu de votre liste, vous pouvez
+affecter ces valeurs directement. Placez-les simplement entre crochets et
+séparées par des virgules comme ceci&nbsp;:</p>
+<pre>
+L = [1, 3, 5, 7, 9] 
+<span class="comment"># L est maintenant une liste de 5 valeurs, toutes des entiers</span></pre>
+<p>Dans le cas contraire, le plus simple est de créer une liste vide puis
+d'ajouter chaque valeur séparément à la liste&nbsp;:</p>
+<pre>
+L2 = [] 
+<span class="comment"># L2 est maintenant une liste vide</span>
+L2.append(1)
+L2.append(3)
+L2.append(5)
+L2.append(7)
+L2.append(9) 
+<span class="comment"># Son contenu est maintenant le même que celui de L ci-dessus</span></pre> 
+[/!] [!java|scala]
+<p>Pour créer une variable nommée <b>T</b> pouvant contenir un tableau
+d'entiers, on écrira :</p>
+<pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
+
+<p>[!java]<code>int</code> indique que les éléments du tableau sont de type
+entier;
+<code>[]</code> indique que nous parlons d'un tableau tandis que
+<code>T</code> est le nom de la variable.
+Pour des raisons historiques, cela peut également être écrit sous la forme
+<code>int T[]</code> (avec [] à droite du nom de la variable),
+mais cette forme est moins lisible et devrait probablement être évitée.[/!]
+[!scala]La notation <code>[Int]</code> spécialise le type <code>Array</code>
+(«tableau» en anglais), qui est générique. Cela spécifie que chaque case du
+tableau est un entier. Le type d'un tableau de booléens s'écrirait
+simplement <code>Array[Boolean]</code>.[/!]
+</p>
+
+<h3>Allocation d'un tableau</h3>
+
+<p>Déclarer un tableau <code>T</code> nous réserve juste le nom <code>T</code>
+pour l'utiliser plus tard, mais pas la place en mémoire pour stocker les
+cases. Le tableau n'est pas initialisé : il n'a pas de valeur. Que voudrait
+dire <code>T[4]</code> si nous n'avons pas encore dit que <code>T</code> est
+un tableau de 5 éléments ?</p>
+
+<p>Avant tout, il faut donc lui affecter une valeur à <code>T</code>:</p>
+<pre>[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]</pre>
+
+<p><code>new</code> indique qu'il faut créer quelque chose, et
+<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> indique qu'il
+s'agit d'un tableau de 10 valeur entières. En réponse, un tableau d'entiers
+de longueur 10 est crée en mémoire, et la variable <code>T</code>
+<b>référence</b> ce tableau.</p>
+
+<p>La taille d'un tableau est fixée et ne peut plus être changée après la
+création du tableau. Pour connaître la taille d'un tableau <code>T</code>,
+on peut consulter la variable <code>T.length</code>.</p>
+
+<p>Lors de l'allocation, vous pouvez spécifier la taille à utiliser avec une
+variable:
+<code>[!java]int[] T = new int[i];[/!][!scala]var T = new
+Array[Int](i);[/!]</code>
+Dans ce cas, la taille du tableau est fixée à la valeur de <code>i</code>
+<i>quand <code>new</code> a été appelé</i>.
+La taille du tableau ne peut toujours pas être modifiée. Même si la valeur
+de <code>i</code> est modifiée ensuite, la taille reste la même.
+[!java]Enfin, il est interdit d'écrire quelque chose comme <code>int
+T[10];</code> pour déclarer la variable. Il faut absolument utiliser
+<code>new</code> pour l'allouer, comme dans <code>int[] T = new
+int[10];</code> [/!]</p>
+
+<h4>Déclaration et initialisation</h4>
+<p>Si vous connaissez le contenu de votre tableau à l'avance, vous pouvez le
+déclarer, l'allouer et l'initialiser en un coup:</p>
+<pre>[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]</pre>
+
+<p>Pour connaître la taille du tableau à allouer, le compilateur compte les
+valeurs données.  Ce code est équivalent à :</p>
+<pre>[!java]int[] T = new int[10];
+T[0] = 1;
+T[1] = 2;
+...
+T[9] = 10;[/!][!scala]var T = new Array[Int](10);
+T(0) = 1
+T(1) = 2
+...
+T(9) = 10[/!]</pre>
+
+<p>C'est aussi équivalent au code :</p>
+<pre>[!java]int[] T = new int[10];
+for (int i=0; i&lt;T.length; i++) {
+  T[i] = i+1;
+}[/!][!scala]var T = new Array[Int](10);
+for (i &lt;- 0 to T.length-1) {
+  T(i) = i+1
+}[/!]</pre>
+
+
+<!-- end of java|scala. python comes back -->
+[/!]
+
+<h3>Les [!python]listes[/!][!scala|java]tableaux[/!] et les paramètres de
+méthodes</h3>
+<p>On peut tout à fait passer [!java|scala]un tableau[/!][!python]une liste[/!]
+en paramètre d'une méthode. La méthode peut alors l'utiliser comme si la
+variable avait été définie localement:</p>
+<pre>[!java]boolean a42Premier(int[] tableau) {
+    return tableau[0] == 42;
+}[/!][!python]def a42Premier(liste):
+  return liste[0] == 42[/!][!scala]def a42Premier(tableau:Array[Int]):Boolean = {
+  return tableau(0) == 42
+}[/!]</pre>
+
+<p>Coté appelant, c'est aussi simple :</p>
+<pre>[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] (10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]
+[!java|scala]<span class="comment">// Initialisation des valeurs omise</span>
+[/!]if (a42Premier(tab))[!java|scala] {[/!][!python]:[/!]
+   <span class="comment">[!java|scala]//[/!][!python]#[/!] faire des choses</span>
+[!java|scala]}[/!]</pre>
+
+[!java]
+<p>Si vous voulez allouer et initialiser le tableau au vol lors du passage de
+paramètre, c'est un peu plus compliqué car il faut dire au compilateur le
+type du paramètre que vous construisez. Il faut alors utiliser la
+construction suivante, même si elle n'est pas très belle.</p>
+<pre>if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {
+   <span class="comment">// faire des choses</span>
+}</pre>
+[/!]
+
+<p>Les méthodes peuvent également retourner des
+[!java|scala]tableaux[/!][!python]listes[/!] comme résultat sans aucun
+problème.
+Voici une méthode retournant [!java|scala]un tableau[/!][!python]une
+liste[/!] de la taille demandée après avoir initialisé toutes les cases à la
+valeur 42.</p>
+
+<pre>[!java]int[] remplir42(int taille) {
+    int[] res = new int[taille];
+    for (int i=0; i&lt;taille; i++) 
+        res[i] = 42;
+    return res;
+}[/!][!scala]def remplir42(taille:Int):Array[Int] = {
+    var res = new Array[int] (taille)
+    for (i &lt;- 0 to taille -1) {
+        res(i) = 42;
+    }
+    return res;
+}[/!][!python]def remplir42(taille):
+    res = []
+    for i in range(taille):
+        res.append(42)
+    return res[/!]</pre>
+
+<h2>Objectif de l'exercice</h2>
+
+<p>Enfin ! Après toutes ces explications, nous pouvons revenir à l'exercice.</p>
+<p>Votre mission est plutôt simple au fond. Votre code doit sauvegarder le
+motif de couleurs observé sur la première colonne. Il faut bien entendu
+sauvegarder ces valeurs dans [!java|scala]un tableau[/!][!python]une
+liste[/!].
+[!python]Le plus simple pour cela est de créer une liste vide puis d'y
+adjoindre (avec <code>append()</code> les différentes couleurs lues sur le
+sol de la première colonne (avec <code>getCouleurSol()</code>).[/!]
+[!java|scala]Pour cela, il faut déclarer et créer un tableau de variables de
+type <code>Color</code>. Attention, les différents mondes ne sont pas tous
+de la même taille et il faut utiliser <code>getMondeHauteur()</code> pour
+trouver la taille du monde courant. Une fois créé, remplissez le tableau en
+lisant les couleurs au sol de la première colonne (avec
+<code>getCouleurSol()</code>).[/!]</p>  
+
+<p>Une fois le motif de la première colonne lu et sauvegardé, il faut le
+répliquer sur toutes les colonnes, par exemple en exécutant
+<code>getMondeLargeur()</code> fois une méthode écrite tout exprès.</p> 

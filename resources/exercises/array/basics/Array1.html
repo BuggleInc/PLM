@@ -1,0 +1,244 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting</h1>
+
+The goal of this exercise is to reproduce the pattern of the first row in
+the other rows with a shift of one cell (see the Objective tab for
+details). The biggest difference between this exercise and the others we had
+on patterns is that you have to read the pattern (on first row) before
+reproducing it. You cannot do otherwise because the same code will be
+executed on three different worlds, each of them having a specific
+pattern.
+
+<p>One solution is to read the next cell, and go copy it in position before
+coming back to read the second cell. But since it is forbidden to use the
+methods to teleport the buggle to a specific position (<code>setPos()</code>
+and similar), this approach will be a pain to implement. </p>
+ 
+<p>The simplest is to store the sequence of colors that constitute 
+the whole pattern in an [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].
+But before we can do so, we should learn a bit what [!java|scala]arrays[/!][!python]lists[/!] are.</p>
+
+<h2>[!java|scala]Arrays[/!][!python]List[/!]</h2> 
+
+<p>[!java|scala]An array[/!][!python]A list[/!] is an ordered sequence of variables that go together.
+It is somehow similar to a shelve where each level can store a separate value. Each 
+variable of the sequence is identified by its position, and can store
+a specific value. [!java|scala]All cells of the array must store values of the same
+type because arrays are homogeneous in [!thelang]. It is possible to trick this 
+restriction by using the datatype <code>[!java]Object[/!][!scala]Any[/!]</code> 
+that can contain [!java]almost[/!] any other datatype. [!java]Primitive types such 
+as the ones we saw so far (int, boolean, double, char, etc) cannot be stored in an 
+Object variable, but their objectified counter-part (Integer, Boolean, Double, 
+Char, Boolean, etc) can.[/!] It is however a good practice to make the type of an array 
+as specific as possible, i.e., if you plan to store some integers in your array, make it an 
+array of integers, not of [!java]Object[/!][!scala]Any[/!].[/!]
+[!python]Lists can even mix values of differing types, such as integer
+values in some cells and colors in other cells.[/!]</p>
+
+<div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
+
+<p>T is the [!java|scala]array[/!][!python]list[/!]'s name, 
+[!java|python]T[0][/!][!scala]T(0)[/!] is the name of the first cell, 
+[!java|python]T[1][/!][!scala]T(1)[/!] the name of the second cell, 
+[!java|python]T[2][/!][!scala]T(2)[/!] the third one, etc. And yes, the first cell is
+numbered [!java|python]T[0][/!][!scala]T(0)[/!] while the last one of [!java|scala]an array[/!][!python]a list[/!] 
+of size N is [!java|python]T[N-1][/!][!scala]T(N-1)[/!]. It may seem funny to count starting from 0 and not from 1 
+as usual, but some historical reasons make it unavoidable here.</p>
+
+<h3>Basic usage</h3>
+
+<p>We can use an integer variable <i>i</i> to access with [!java|python]T[i][/!][!scala]T(i)[/!] to the 
+cells: when the value of <i>i</i> is 0, then [!java|python]T[i][/!][!scala]T(i)[/!] accesses 
+[!java|python]T[0][/!][!scala]T(0)[/!]; 
+when the value of <i>i</i> is 10, then [!java|python]T[i][/!][!scala]T(i)[/!] accesses 
+[!java|python]T[10][/!][!scala]T(10)[/!]. 
+<i>i</i> is said to be the <b>index</b> in T. 
+<code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> can be used just like any
+variable. We can set a new value:</p> 
+<pre>[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]</pre>
+
+<p>We can retrieve and use its value: </p>
+<pre>x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]</pre>
+
+<p>We can test this value:</p>
+<pre>if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) [!scala|java]{[/!][!python]:[/!]
+    [!java|scala]//[/!][!python]#[/!] instructions...
+[!java|scala]}[/!]</pre>
+
+<p>It is very easy to traverse the whole [!scala|java]array[/!][!python]list[/!], for 
+example to initialize each cells.</p>
+
+<pre>[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]
+   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<p>[!java|scala]The notation <code>T.length</code> retrieves the length of the array T,[/!]
+[!python]The function <code>len()</code> retrieves the length of the list T,[/!] 
+allowing to build a classical for loop easily. 
+[!python]Actually, the <code>len()</code> function is much more generic and can be used to retrieve the length of many objects. 
+Applied  to strings for example, it returns the amount of chars in this string.[/!] 
+[!scala]Don't forget to start at <code>0</code> and stop at <code>T.length-1</code> instead of <code>1</code> to <code>T.length</code>
+however.[/!]</p>
+
+<p>If you just want to iterate over the values of T without keeping track of their index, you can simply write:</p>
+<pre>[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]
+  action()[!java];[/!]
+[!java|scala]}[/!]</pre>
+<p>[!java]This construct is called an <i>extended loop</i> in Java. The variable <i>i</i> takes all values
+of the set located to the right of the colon (:), one after the other.[/!]
+
+[!python|scala]This is actually very similar to the previous construct. 
+Simply, <code>[!python]range(n)[/!][!scala]i to j[/!]</code> returns a set of integers over which the 
+for construct iterates.
+Actually, [!thelang] offers much more elegant ways to traverse [!python]lists[/!][!scala]arrays[/!] and 
+other data collections, but this should be the topic of a specific set of exercises (that are still to be 
+written in PLM).[/!]</p>
+
+
+<h3>Declaring [!python]a list[/!][!java|scala]an array[/!]</h3>
+
+[!python]
+<p>If you know beforehand the content of your list, you can affect these values all together. 
+Just put them between square braces and separated by commas as follows:</p>
+<pre>
+L = [1, 3, 5, 7, 9] 
+<span class="comment"># L is now an array of 5 values, all of them being integers</span></pre>
+<p>Otherwise, you probably want to create an empty list and then append each values separately to the list:</p>
+<pre>
+L2 = [] 
+<span class="comment"># L2 is now an empty list</span>
+L2.append(1)
+L2.append(3)
+L2.append(5)
+L2.append(7)
+L2.append(9) 
+<span class="comment"># Its content is now the same as L previously</span></pre> 
+[/!]
+ 
+[!java|scala]
+<p>To declare a variable named <b>T</b> that can store an array of integers, one should write:</p>
+<pre>[!java]int[] T;[/!][!scala]var T:Array[Int][/!]</pre>
+
+<p>[!java]<code>int</code> means that the elements of the array are of type integer;
+<code>[]</code> means that we are speaking of an array and <code>T</code> is the name of the variable. 
+For historical reasons, this can also be written as  <code>int T[]</code> (with the [] after the variable name), 
+but this is less readable and should probably be avoided.[/!]
+[!scala]The <code>[Int]</code> notation specializes the Array type (that is generic), specifying that each cell 
+of this array is an integer. An array of booleans would simply by written <code>Array[Boolean]</code>.[/!]
+</p>
+
+<h3>Allocating an array</h3>
+
+<p>Declaring a variable <code>T</code> that stores an array only reserve the <b>name</b> <code>T</code> for
+later use, but not the memory area to store the cells. The array is not initialized yet: it does not have any
+value. What would <code>[!java]T[4][/!][!scala]T(4)[/!]</code> mean if we didn't say that the array is
+5 cells long?</p>
+
+<p>First and foremost, we have to give a value to <code>T</code>:</p>
+<pre>[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]</pre>
+
+<p><code>new</code> means that we want to create something, and
+<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> means that it is an array of 10 integer values. 
+In return, an array of 10 integer cells is created in memory, and the <code>T</code> variable 
+<b>references</b> this array.</p>
+
+<p>The size of an array is fixed and cannot be changed after the creation of
+the array. The size of a <code>T</code> array can be retrieve by consulting the
+variable <code>T.length</code>.</p>
+
+<p>While allocating, you can specify the size with a variable: <code>[!java]int[] T = new int[i];[/!][!scala]var T = new Array[Int](i);[/!]</code>
+In this case, the array's size will be set to the value of <code>i</code> <i>when <code>new</code> gets called</i>. 
+The size of the array still cannot be modified: even if the variable <code>i</code> changes afterward, 
+the size remains to the value given when it was allocated.
+[!java]Also, it is forbidden to write something like <code>int T[10];</code> when declaring the variable.
+You are required to use the <code>new</code> instruction to allocate it, as in 
+<code>int[] T = new int[10];</code> [/!]</p>
+
+<h4>Declaration and initialization</h4>
+<p>If you know beforehand the content of your array, you can declare, allocate and initialize it in one shoot:</p>
+<pre>[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]</pre>
+
+<p>To know the size of the array to allocate, the compiler counts the provided values. 
+This code is equivalent to:</p>
+<pre>[!java]int[] T = new int[10];
+T[0] = 1;
+T[1] = 2;
+...
+T[9] = 10;[/!][!scala]var T = new Array[Int](10);
+T(0) = 1
+T(1) = 2
+...
+T(9) = 10[/!]</pre>
+
+<p>It is also equivalent to:</p>
+<pre>[!java]int[] T = new int[10];
+for (int i=0; i&lt;T.length; i++) {
+  T[i] = i+1;
+}[/!][!scala]var T = new Array[Int](10);
+for (i &lt;- 0 to T.length-1) {
+  T(i) = i+1
+}[/!]</pre>
+
+
+[/!]<!-- end of java|scala. python comes back -->
+
+<h3>[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters</h3>
+<p>It is perfectly OK to pass [!python]a list[/!][!java|scala]an array[/!] to a method as a parameter. 
+This method can then use this parameter as if it were defined locally:</p>
+<pre>[!java]boolean has42First(int[] array) {
+    return array[0] == 42;
+}[/!][!python]def has42First(list):
+  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = {
+  return array(0) == 42
+}[/!]</pre>
+
+<p>On the caller side, that also very simple:</p>
+<pre>[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] (10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]
+[!java|scala]<span class="comment">// Values initialization omitted</span>
+[/!]if (has42First(tab))[!java|scala] {[/!][!python]:[/!]
+   <span class="comment">[!java|scala]//[/!][!python]#[/!] do something</span>
+[!java|scala]}[/!]</pre>
+
+[!java]
+<p>If you want to allocate and initialize the array in one shoot, that's 
+a bit more complicated as the compiler has to know the type of the parameter you are creating. 
+For that, use the following (ugly) construct:</p>
+<pre>if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {
+   <span class="comment">// do something</span>
+}</pre>
+[/!]
+
+<p>Methods can also return [!java|scala]arrays[/!][!python]lists[/!] as result without any complication. 
+Here is a method that returns [!java|scala]an array[/!][!python]a list[/!] of the requested size, filled with 42s.</p>
+
+<pre>[!java]int[] fill42(int size) {
+    int[] res = new int[size];
+    for (int i=0; i&lt;size; i++) 
+        res[i] = 42;
+    return res;
+}[/!][!scala]def fill42(size:Int):Array[Int] = {
+    var res = new Array[int] (size)
+    for (i &lt;- 0 to size -1) {
+        res(i) = 42;
+    }
+    return res;
+}[/!][!python]def fill42(size):
+    res = []
+    for i in range(size):
+        res.append(42)
+    return res[/!]</pre>
+
+<h2>Goal of this exercise</h2>
+
+<p>At least! After this long explanation, we can come back to the exercise.</p>
+<p>Your mission is rather simple actually. 
+Your code should save the color pattern observed on the first row into [!java|scala]an array[/!][!python]a list[/!]. 
+[!python]The easiest is to create an empty list, and then <code>append()</code> the colors one after the others as 
+you read them (with <code>getGroundColor()</code>).[/!]
+[!java|scala]For that, you should declare and allocate an array of <code>Color</code>. Beware, there is several
+worlds, of differing size; use <code>getWorldHeight()</code> to retrieve the size of the current world.
+Once the array allocated, fill it by reading the ground color in each locations (with <code>getGroundColor()</code>).[/!]</p>  
+
+<p>Once you managed to read and save the pattern on the first row, you have to reapply the 
+pattern on every rows, for example by executing <code>getWorldHeight()</code> times 
+a method written specifically for this.</p> 

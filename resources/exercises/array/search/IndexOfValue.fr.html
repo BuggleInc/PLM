@@ -1,0 +1,39 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Chercher une valeur donnée</h1>
+
+<p>L'objectif de cet exercice est de chercher la case contenant une valeur
+donnée, et de retourner sa position.</p>
+
+<p>Pour cela, il vous faut remplir le corps de la méthode
+<code>indexOf()</code>. Ses paramètres sont le tableau <code>tab</code> à
+explorer et la valeur <code>lookingFor</code> à chercher. Si la valeur
+<code>lookingFor</code> n'est pas dans le tableau <code>tab</code>, la
+méthode doit renvoyer -1.</p>
+
+<p>L'idée de l'algorithme est de parcourir tout le tableau en vérifiant la
+valeur
+contenue dans chaque case. S'il s'agit de la valeur cherchée, vous devez
+renvoyer l'indice de la case actuellement explorée.</p>
+
+<p>N'oubliez pas que les cases sont numérotées à partir de 0. Donc, si vous
+avez 3 cases, leurs indices seront 0, 1 et 2. Il n'y aura pas de case
+numérotée 3.</p>
+
+<p class="Java">Ensuite, souvenez vous que le nombre de cases d'un tableau peut être
+retrouvé
+grâce à l'attribut <code>length</code>. Donc, si votre tableau s'appelle
+<code>tableau</code>, sa taille sera <code>tableau.length</code>. Notez
+qu'il
+n'y a pas de () après <code>length</code>. Un attribut est une sorte de
+variable embarquée dans un autre objet (ici, le tableau).</p> 
+<p class="Java">Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length
+-1]</code>.</p>
+
+<p class="python">Ensuite, souvenez vous que le nombre de cases d'un tableau peut être
+retrouvé
+grâce à la fonction <code>len()</code>. Donc, si votre tableau s'appelle
+<code>tableau</code>, sa taille sera <code>len(tableau)</code>.</p> 
+
+<p class="python">Donc, la dernière valeur d'un tableau est donnée par <code>tab[ len(tab)
+-1]</code>.</p>
