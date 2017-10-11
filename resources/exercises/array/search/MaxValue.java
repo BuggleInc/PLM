@@ -1,16 +1,16 @@
-package lessons.welcome.array.search;
+package array.search;
 
 import java.util.Random;
 
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class MaxValue extends BatExercise {
+public class MaxValue extends ExerciseTemplated {
 
 	public MaxValue(Lesson lesson) {
-		super(lesson);
+		super("MaxValue");
 		Random r = new Random();
 		
 		int[] tab = new int[15];
@@ -30,11 +30,11 @@ public class MaxValue extends BatExercise {
 			tab4[i] = r.nextInt(35)-15;
 
 		BatWorld myWorld = new BatWorld("maxValue");
-		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
-		myWorld.addTest(VISIBLE, tab) ;
-		myWorld.addTest(VISIBLE, tab2) ;
-		myWorld.addTest(INVISIBLE, tab3) ;
-		myWorld.addTest(INVISIBLE, tab4) ;
+		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
+		myWorld.addTest(BatTest.VISIBLE, tab) ;
+		myWorld.addTest(BatTest.VISIBLE, tab2) ;
+		myWorld.addTest(BatTest.INVISIBLE, tab3) ;
+		myWorld.addTest(BatTest.INVISIBLE, tab4) ;
 
 		templatePython("maxValue", new String[] {"Array[Int]"},
 				"def maxValue(nums):\n",

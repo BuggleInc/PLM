@@ -1,28 +1,28 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class In1To10 extends BatExercise {
+public class In1To10 extends ExerciseTemplated {
 	public In1To10(Lesson lesson) {
-		super(lesson);
+		super("In1To10");
 
 		BatWorld myWorld = new BatWorld("in1To10");
-		myWorld.addTest(VISIBLE, 5, false) ;
-		myWorld.addTest(VISIBLE, 11, false) ;
-		myWorld.addTest(VISIBLE, 11, true) ;
-		myWorld.addTest(INVISIBLE, 10, false) ;
-		myWorld.addTest(INVISIBLE, 10, true) ;
-		myWorld.addTest(INVISIBLE, 9, false) ;
-		myWorld.addTest(INVISIBLE, 9, true) ;
-		myWorld.addTest(INVISIBLE, 1, false) ;
-		myWorld.addTest(INVISIBLE, 1, true) ;
-		myWorld.addTest(INVISIBLE, 0, false) ;
-		myWorld.addTest(INVISIBLE, 0, true) ;
-		myWorld.addTest(INVISIBLE, -1, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 5, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 11, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 11, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 10, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 10, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 9, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 9, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 0, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 0, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, -1, false) ;
 
 		templatePython("in1To10", new String[]{"Int","Boolean"},
 				"def in1To10(n, outsideMode):\n",

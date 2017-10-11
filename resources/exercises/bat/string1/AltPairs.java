@@ -4,19 +4,19 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class AltPairs extends BatExercise {
+public class AltPairs extends ExerciseTemplated {
 	public AltPairs(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("altPairs");
-		myWorld.addTest(VISIBLE, "kitten") ;
-		myWorld.addTest(VISIBLE, "Chocolate") ;
-		myWorld.addTest(VISIBLE, "CodingHorror") ;
-		myWorld.addTest(INVISIBLE, "yak") ;
-		myWorld.addTest(INVISIBLE, "ya") ;
-		myWorld.addTest(INVISIBLE, "y") ;
-		myWorld.addTest(INVISIBLE, "") ;
-		myWorld.addTest(INVISIBLE, "ThisThatTheOther") ;
+		myWorld.addTest(BatTest.VISIBLE, "kitten") ;
+		myWorld.addTest(BatTest.VISIBLE, "Chocolate") ;
+		myWorld.addTest(BatTest.VISIBLE, "CodingHorror") ;
+		myWorld.addTest(BatTest.INVISIBLE, "yak") ;
+		myWorld.addTest(BatTest.INVISIBLE, "ya") ;
+		myWorld.addTest(BatTest.INVISIBLE, "y") ;
+		myWorld.addTest(BatTest.INVISIBLE, "") ;
+		myWorld.addTest(BatTest.INVISIBLE, "ThisThatTheOther") ;
 
 		templatePython("altPairs", new String[]{"String"},
 				"def altPairs(str):\n",

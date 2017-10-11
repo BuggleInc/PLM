@@ -1,27 +1,27 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class RedTicket extends BatExercise {
+public class RedTicket extends ExerciseTemplated {
 	public RedTicket(Lesson lesson) {
-		super(lesson);
+		super("RedTicket");
 
 		BatWorld myWorld = new BatWorld("redTicket");
-		myWorld.addTest(VISIBLE, 2, 2, 2) ;
-		myWorld.addTest(VISIBLE, 2, 2, 1) ;
-		myWorld.addTest(VISIBLE, 0, 0, 0) ;
-		myWorld.addTest(INVISIBLE, 2, 0, 0) ;
-		myWorld.addTest(INVISIBLE, 1, 1, 1) ;
-		myWorld.addTest(INVISIBLE, 1, 2, 1) ;
-		myWorld.addTest(INVISIBLE, 1, 2, 0) ;
-		myWorld.addTest(INVISIBLE, 0, 2, 2) ;
-		myWorld.addTest(INVISIBLE, 1, 2, 2) ;
-		myWorld.addTest(INVISIBLE, 0, 2, 0) ;
-		myWorld.addTest(INVISIBLE, 1, 1, 2) ;
+		myWorld.addTest(BatTest.VISIBLE, 2, 2, 2) ;
+		myWorld.addTest(BatTest.VISIBLE, 2, 2, 1) ;
+		myWorld.addTest(BatTest.VISIBLE, 0, 0, 0) ;
+		myWorld.addTest(BatTest.INVISIBLE, 2, 0, 0) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, 1, 1) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, 2, 1) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, 2, 0) ;
+		myWorld.addTest(BatTest.INVISIBLE, 0, 2, 2) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, 2, 2) ;
+		myWorld.addTest(BatTest.INVISIBLE, 0, 2, 0) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, 1, 2) ;
 
 		templatePython("redTicket", new String[]{"Int","Int","Int"},
 				"def redTicket(a, b, c):\n",

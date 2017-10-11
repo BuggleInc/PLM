@@ -4,16 +4,16 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class StringBits extends BatExercise {
+public class StringBits extends ExerciseTemplated {
 	public StringBits(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("stringBits");
-		myWorld.addTest(VISIBLE, "Hello") ;
-		myWorld.addTest(VISIBLE, "Hi") ;
-		myWorld.addTest(VISIBLE, "HiHiHi") ;
-		myWorld.addTest(INVISIBLE, "") ;
-		myWorld.addTest(INVISIBLE, "Greetings") ;
+		myWorld.addTest(BatTest.VISIBLE, "Hello") ;
+		myWorld.addTest(BatTest.VISIBLE, "Hi") ;
+		myWorld.addTest(BatTest.VISIBLE, "HiHiHi") ;
+		myWorld.addTest(BatTest.INVISIBLE, "") ;
+		myWorld.addTest(BatTest.INVISIBLE, "Greetings") ;
 
 		templatePython("stringBits", new String[] {"String"},
 				"def stringBits(str):\n",

@@ -1,27 +1,27 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class CigarParty extends BatExercise {
+public class CigarParty extends ExerciseTemplated {
 	public CigarParty(Lesson lesson) {
-		super(lesson);
+		super("CigarParty");
 
 		BatWorld myWorld = new BatWorld("cigarParty");
-		myWorld.addTest(VISIBLE, 30, false) ;
-		myWorld.addTest(VISIBLE, 50, false) ;
-		myWorld.addTest(VISIBLE, 70, true) ;
-		myWorld.addTest(INVISIBLE, 30, true) ;
-		myWorld.addTest(INVISIBLE, 50, true) ;
-		myWorld.addTest(INVISIBLE, 60, false) ;
-		myWorld.addTest(INVISIBLE, 61, false) ;
-		myWorld.addTest(INVISIBLE, 40, false) ;
-		myWorld.addTest(INVISIBLE, 39, false) ;
-		myWorld.addTest(INVISIBLE, 40, true) ;
-		myWorld.addTest(INVISIBLE, 39, true) ;
+		myWorld.addTest(BatTest.VISIBLE, 30, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 50, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 70, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 30, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 50, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 60, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 61, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 40, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 39, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 40, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 39, true) ;
 
 		templatePython("cigarParty", new String[] {"Int","Boolean"},
 				"def cigarParty(cigars, isWeekend):\n",

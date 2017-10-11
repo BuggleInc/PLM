@@ -1,16 +1,16 @@
-package lessons.welcome.array.search;
+package array.search;
 
 import java.util.Random;
 
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class AverageValue extends BatExercise {
+public class AverageValue extends ExerciseTemplated {
 
 	public AverageValue(Lesson lesson) {
-		super(lesson);
+		super("AverageValue");
 		
 		int[] randomTab = new int[30];
 		Random r = new Random();
@@ -18,17 +18,17 @@ public class AverageValue extends BatExercise {
 			randomTab[i] = r.nextInt(35);
 		
 		BatWorld myWorld = new BatWorld("averageValue");
-		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 });
-		myWorld.addTest(VISIBLE, randomTab);
-		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 3, 1}) ;
-		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 4, 1}) ;
-		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 1, 2, 3}) ;
-		myWorld.addTest(INVISIBLE, new int[] {1, 1, 2, 1, 2, 1}) ;
-		myWorld.addTest(INVISIBLE, new int[] {1, 2, 3, 1, 2, 3}) ;
-		myWorld.addTest(INVISIBLE, new int[] {1, 2, 3}) ;
-		myWorld.addTest(INVISIBLE, new int[] {1, 1, 1}) ;
-		myWorld.addTest(INVISIBLE, new int[] {1, 2}) ;
-		myWorld.addTest(INVISIBLE, new int[] {42}) ;
+		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 });
+		myWorld.addTest(BatTest.VISIBLE, randomTab);
+		myWorld.addTest(BatTest.VISIBLE, new int[] {1, 1, 2, 3, 1}) ;
+		myWorld.addTest(BatTest.VISIBLE, new int[] {1, 1, 2, 4, 1}) ;
+		myWorld.addTest(BatTest.VISIBLE, new int[] {1, 1, 2, 1, 2, 3}) ;
+		myWorld.addTest(BatTest.INVISIBLE, new int[] {1, 1, 2, 1, 2, 1}) ;
+		myWorld.addTest(BatTest.INVISIBLE, new int[] {1, 2, 3, 1, 2, 3}) ;
+		myWorld.addTest(BatTest.INVISIBLE, new int[] {1, 2, 3}) ;
+		myWorld.addTest(BatTest.INVISIBLE, new int[] {1, 1, 1}) ;
+		myWorld.addTest(BatTest.INVISIBLE, new int[] {1, 2}) ;
+		myWorld.addTest(BatTest.INVISIBLE, new int[] {42}) ;
 
 		templatePython("averageValue", new String[] {"Array[Int]"},
 				"def averageValue(nums):\n",

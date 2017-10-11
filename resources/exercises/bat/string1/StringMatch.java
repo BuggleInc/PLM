@@ -4,21 +4,21 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class StringMatch extends BatExercise {
+public class StringMatch extends ExerciseTemplated {
 	public StringMatch(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("stringMatch");
-		myWorld.addTest(VISIBLE, "xxcaazz", "xxbaaz") ;
-		myWorld.addTest(VISIBLE, "abc", "abc") ;
-		myWorld.addTest(VISIBLE, "abc", "axc") ;
-		myWorld.addTest(INVISIBLE, "hello", "he") ;
-		myWorld.addTest(INVISIBLE, "he", "hello") ;
-		myWorld.addTest(INVISIBLE, "h", "hello") ;
-		myWorld.addTest(INVISIBLE, "", "hello") ;
-		myWorld.addTest(INVISIBLE, "aabbccdd", "abbbxxd") ;
-		myWorld.addTest(INVISIBLE, "aaxxaaxx", "iaxxai") ;
-		myWorld.addTest(INVISIBLE, "iaxxai", "aaxxaaxx") ;
+		myWorld.addTest(BatTest.VISIBLE, "xxcaazz", "xxbaaz") ;
+		myWorld.addTest(BatTest.VISIBLE, "abc", "abc") ;
+		myWorld.addTest(BatTest.VISIBLE, "abc", "axc") ;
+		myWorld.addTest(BatTest.INVISIBLE, "hello", "he") ;
+		myWorld.addTest(BatTest.INVISIBLE, "he", "hello") ;
+		myWorld.addTest(BatTest.INVISIBLE, "h", "hello") ;
+		myWorld.addTest(BatTest.INVISIBLE, "", "hello") ;
+		myWorld.addTest(BatTest.INVISIBLE, "aabbccdd", "abbbxxd") ;
+		myWorld.addTest(BatTest.INVISIBLE, "aaxxaaxx", "iaxxai") ;
+		myWorld.addTest(BatTest.INVISIBLE, "iaxxai", "aaxxaaxx") ;
 
 		templatePython("stringMatch", new String[]{"String","String"},
 				"def stringMatch(a, b):\n",

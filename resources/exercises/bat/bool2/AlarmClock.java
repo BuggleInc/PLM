@@ -1,25 +1,25 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class AlarmClock extends BatExercise {
+public class AlarmClock extends ExerciseTemplated {
 	public AlarmClock(Lesson lesson) {
-		super(lesson);
+		super("AlarmClock");
 
 		BatWorld myWorld = new BatWorld("alarmClock");
-		myWorld.addTest(VISIBLE, 1, false) ;
-		myWorld.addTest(VISIBLE, 5, false) ;
-		myWorld.addTest(VISIBLE, 0, false) ;
-		myWorld.addTest(INVISIBLE, 6, false) ;
-		myWorld.addTest(INVISIBLE, 0, true) ;
-		myWorld.addTest(INVISIBLE, 6, true) ;
-		myWorld.addTest(INVISIBLE, 1, true) ;
-		myWorld.addTest(INVISIBLE, 3, true) ;
-		myWorld.addTest(INVISIBLE, 5, true) ;
+		myWorld.addTest(BatTest.VISIBLE, 1, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 5, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 0, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 6, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 0, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 6, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 3, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 5, true) ;
 
 		templatePython("alarmClock", new String[]{"int","bool"},
 				"def alarmClock(day, vacation):\n",

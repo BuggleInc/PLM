@@ -1,20 +1,20 @@
 package lessons.welcome.array.basics;
 
 import java.awt.Color;
-import plm.core.model.Game
+import plm.core.model.I18nManager
 
 class ScalaArray1Entity extends plm.universe.bugglequest.SimpleBuggle {
 	override def setX(i: Int)  {
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(I18nManager.getI18n(getWorld().getLocale()).tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
 	override def setY(i: Int)  { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(I18nManager.getI18n(getWorld().getLocale()).tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
 	override def setPos(x: Int, y:Int)  { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
+			throw new RuntimeException(I18nManager.getI18n(getWorld().getLocale()).tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
 	/* BEGIN TEMPLATE */

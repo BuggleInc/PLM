@@ -4,18 +4,18 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class StringYak extends BatExercise {
+public class StringYak extends ExerciseTemplated {
 	public StringYak(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("stringYak");
-		myWorld.addTest(VISIBLE, "yakpak") ;
-		myWorld.addTest(VISIBLE, "pakyak") ;
-		myWorld.addTest(VISIBLE, "yak123ya") ;
-		myWorld.addTest(INVISIBLE, "yak") ;
-		myWorld.addTest(INVISIBLE, "yakxxxyak") ;
-		myWorld.addTest(INVISIBLE, "HiyakHi") ;
-		myWorld.addTest(INVISIBLE, "xxxyakyyyakzzz") ;
+		myWorld.addTest(BatTest.VISIBLE, "yakpak") ;
+		myWorld.addTest(BatTest.VISIBLE, "pakyak") ;
+		myWorld.addTest(BatTest.VISIBLE, "yak123ya") ;
+		myWorld.addTest(BatTest.INVISIBLE, "yak") ;
+		myWorld.addTest(BatTest.INVISIBLE, "yakxxxyak") ;
+		myWorld.addTest(BatTest.INVISIBLE, "HiyakHi") ;
+		myWorld.addTest(BatTest.INVISIBLE, "xxxyakyyyakzzz") ;
 
 		templatePython("stringYak", new String[]{"String"},
 				"def stringYak(str):\n",

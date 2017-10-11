@@ -1,22 +1,22 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class AnswerCell extends BatExercise {
+public class AnswerCell extends ExerciseTemplated {
 	public AnswerCell(Lesson lesson) {
-		super(lesson);
+		super("AnswerCell");
 
 		BatWorld myWorld = new BatWorld("answerCell");
-		myWorld.addTest(VISIBLE, false, false, false) ;
-		myWorld.addTest(VISIBLE, false, false, true) ;
-		myWorld.addTest(VISIBLE, true, false, false) ;
-		myWorld.addTest(INVISIBLE, true, true, false) ;
-		myWorld.addTest(INVISIBLE, false, true, false) ;
-		myWorld.addTest(INVISIBLE, true, true, true) ;
+		myWorld.addTest(BatTest.VISIBLE, false, false, false) ;
+		myWorld.addTest(BatTest.VISIBLE, false, false, true) ;
+		myWorld.addTest(BatTest.VISIBLE, true, false, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, true, true, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, false, true, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, true, true, true) ;
 
 		templatePython("answerCell", new String[] {"Boolean","Boolean","Boolean"},
 				"def answerCell(isMorning, isMom, isAsleep):\n",

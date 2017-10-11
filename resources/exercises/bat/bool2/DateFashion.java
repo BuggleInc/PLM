@@ -1,28 +1,28 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class DateFashion extends BatExercise {
+public class DateFashion extends ExerciseTemplated {
 	public DateFashion(Lesson lesson) {
-		super(lesson);
+		super("DateFashion");
 
 		BatWorld myWorld = new BatWorld("dateFashion");
-		myWorld.addTest(VISIBLE, 5, 10) ;
-		myWorld.addTest(VISIBLE, 5, 2) ;
-		myWorld.addTest(VISIBLE, 5, 5) ;
-		myWorld.addTest(INVISIBLE, 3, 3) ;
-		myWorld.addTest(INVISIBLE, 10, 2) ;
-		myWorld.addTest(INVISIBLE, 2, 9) ;
-		myWorld.addTest(INVISIBLE, 9, 9) ;
-		myWorld.addTest(INVISIBLE, 10, 5) ;
-		myWorld.addTest(INVISIBLE, 2, 2) ;
-		myWorld.addTest(INVISIBLE, 3, 7) ;
-		myWorld.addTest(INVISIBLE, 2, 7) ;
-		myWorld.addTest(INVISIBLE, 6, 2) ;
+		myWorld.addTest(BatTest.VISIBLE, 5, 10) ;
+		myWorld.addTest(BatTest.VISIBLE, 5, 2) ;
+		myWorld.addTest(BatTest.VISIBLE, 5, 5) ;
+		myWorld.addTest(BatTest.INVISIBLE, 3, 3) ;
+		myWorld.addTest(BatTest.INVISIBLE, 10, 2) ;
+		myWorld.addTest(BatTest.INVISIBLE, 2, 9) ;
+		myWorld.addTest(BatTest.INVISIBLE, 9, 9) ;
+		myWorld.addTest(BatTest.INVISIBLE, 10, 5) ;
+		myWorld.addTest(BatTest.INVISIBLE, 2, 2) ;
+		myWorld.addTest(BatTest.INVISIBLE, 3, 7) ;
+		myWorld.addTest(BatTest.INVISIBLE, 2, 7) ;
+		myWorld.addTest(BatTest.INVISIBLE, 6, 2) ;
 
 		templatePython("dateFashion", new String[]{"Int","Int"},
 				"def dateFashion(you, date):\n",

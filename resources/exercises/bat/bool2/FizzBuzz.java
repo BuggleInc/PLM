@@ -1,30 +1,30 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class FizzBuzz extends BatExercise {
+public class FizzBuzz extends ExerciseTemplated {
 	public FizzBuzz(Lesson lesson) {
-		super(lesson);
+		super("FizzBuzz");
 
 		BatWorld myWorld = new BatWorld("fizzBuzz");
-		myWorld.addTest(VISIBLE, 2) ;
-		myWorld.addTest(VISIBLE, 3) ;
-		myWorld.addTest(VISIBLE, 4) ;
-		myWorld.addTest(VISIBLE, 5) ;
-		myWorld.addTest(VISIBLE, 6) ;
-		myWorld.addTest(VISIBLE, 7) ;
-		myWorld.addTest(VISIBLE, 8) ;
-		myWorld.addTest(VISIBLE, 9) ;
-		myWorld.addTest(INVISIBLE, 10) ;
-		myWorld.addTest(INVISIBLE, 11) ;
-		myWorld.addTest(INVISIBLE, 12) ;
-		myWorld.addTest(INVISIBLE, 15) ;
-		myWorld.addTest(INVISIBLE, 16) ;
-		myWorld.addTest(INVISIBLE, 18) ;
+		myWorld.addTest(BatTest.VISIBLE, 2) ;
+		myWorld.addTest(BatTest.VISIBLE, 3) ;
+		myWorld.addTest(BatTest.VISIBLE, 4) ;
+		myWorld.addTest(BatTest.VISIBLE, 5) ;
+		myWorld.addTest(BatTest.VISIBLE, 6) ;
+		myWorld.addTest(BatTest.VISIBLE, 7) ;
+		myWorld.addTest(BatTest.VISIBLE, 8) ;
+		myWorld.addTest(BatTest.VISIBLE, 9) ;
+		myWorld.addTest(BatTest.INVISIBLE, 10) ;
+		myWorld.addTest(BatTest.INVISIBLE, 11) ;
+		myWorld.addTest(BatTest.INVISIBLE, 12) ;
+		myWorld.addTest(BatTest.INVISIBLE, 15) ;
+		myWorld.addTest(BatTest.INVISIBLE, 16) ;
+		myWorld.addTest(BatTest.INVISIBLE, 18) ;
 
 		templatePython("fizzBuzz", new String[]{"Int"},
 				"def fizzBuzz(a):\n",

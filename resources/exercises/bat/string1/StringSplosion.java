@@ -4,18 +4,18 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class StringSplosion extends BatExercise {
+public class StringSplosion extends ExerciseTemplated {
 	public StringSplosion(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("stringSplosion");
-		myWorld.addTest(VISIBLE, "Code") ;
-		myWorld.addTest(VISIBLE, "abc") ;
-		myWorld.addTest(VISIBLE, "x") ;
-		myWorld.addTest(INVISIBLE, "There") ;
-		myWorld.addTest(INVISIBLE, "Bye") ;
-		myWorld.addTest(INVISIBLE, "Good") ;
-		myWorld.addTest(INVISIBLE, "Bad") ;
+		myWorld.addTest(BatTest.VISIBLE, "Code") ;
+		myWorld.addTest(BatTest.VISIBLE, "abc") ;
+		myWorld.addTest(BatTest.VISIBLE, "x") ;
+		myWorld.addTest(BatTest.INVISIBLE, "There") ;
+		myWorld.addTest(BatTest.INVISIBLE, "Bye") ;
+		myWorld.addTest(BatTest.INVISIBLE, "Good") ;
+		myWorld.addTest(BatTest.INVISIBLE, "Bad") ;
 
 		templatePython("stringSplosion", new String[]{"String"},
 				"def stringSplosion(str):\n",

@@ -4,19 +4,19 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class StringX extends BatExercise {
+public class StringX extends ExerciseTemplated {
 	public StringX(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("stringX");
-		myWorld.addTest(VISIBLE, "xxHxix") ;
-		myWorld.addTest(VISIBLE, "abxxxcd") ;
-		myWorld.addTest(VISIBLE, "xabxxxcdx") ;
-		myWorld.addTest(INVISIBLE, "xKittenx") ;
-		myWorld.addTest(INVISIBLE, "Hello") ;
-		myWorld.addTest(INVISIBLE, "xx") ;
-		myWorld.addTest(INVISIBLE, "x") ;
-		myWorld.addTest(INVISIBLE, "") ;
+		myWorld.addTest(BatTest.VISIBLE, "xxHxix") ;
+		myWorld.addTest(BatTest.VISIBLE, "abxxxcd") ;
+		myWorld.addTest(BatTest.VISIBLE, "xabxxxcdx") ;
+		myWorld.addTest(BatTest.INVISIBLE, "xKittenx") ;
+		myWorld.addTest(BatTest.INVISIBLE, "Hello") ;
+		myWorld.addTest(BatTest.INVISIBLE, "xx") ;
+		myWorld.addTest(BatTest.INVISIBLE, "x") ;
+		myWorld.addTest(BatTest.INVISIBLE, "") ;
 
 		templatePython("stringX", new String[] {"String"},
 				"def stringX(str):\n",

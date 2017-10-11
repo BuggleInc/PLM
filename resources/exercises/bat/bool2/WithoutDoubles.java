@@ -1,28 +1,28 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.welcome.bat.bool2;
+package bat.bool2;
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class WithoutDoubles extends BatExercise {
+public class WithoutDoubles extends ExerciseTemplated {
 	public WithoutDoubles(Lesson lesson) {
-		super(lesson);
+		super("WithoutDoubles");
 
 		BatWorld myWorld = new BatWorld("withoutDoubles");
-		myWorld.addTest(VISIBLE, 2, 3, true) ;
-		myWorld.addTest(VISIBLE, 3, 3, true) ;
-		myWorld.addTest(VISIBLE, 3, 3, false) ;
-		myWorld.addTest(INVISIBLE, 2, 3, false) ;
-		myWorld.addTest(INVISIBLE, 5, 4, true) ;
-		myWorld.addTest(INVISIBLE, 5, 4, false) ;
-		myWorld.addTest(INVISIBLE, 5, 5, true) ;
-		myWorld.addTest(INVISIBLE, 5, 5, false) ;
-		myWorld.addTest(INVISIBLE, 6, 6, true) ;
-		myWorld.addTest(INVISIBLE, 6, 6, false) ;
-		myWorld.addTest(INVISIBLE, 1, 6, true) ;
-		myWorld.addTest(INVISIBLE, 6, 1, false) ;
+		myWorld.addTest(BatTest.VISIBLE, 2, 3, true) ;
+		myWorld.addTest(BatTest.VISIBLE, 3, 3, true) ;
+		myWorld.addTest(BatTest.VISIBLE, 3, 3, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 2, 3, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 5, 4, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 5, 4, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 5, 5, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 5, 5, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 6, 6, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 6, 6, false) ;
+		myWorld.addTest(BatTest.INVISIBLE, 1, 6, true) ;
+		myWorld.addTest(BatTest.INVISIBLE, 6, 1, false) ;
 
 		templatePython("withoutDoubles", new String[]{"Int","Int","Boolean"},
 				"def withoutDoubles(die1, die2, noDoubles):\n",

@@ -1,25 +1,25 @@
-package lessons.welcome.bat.bool1;
+package bat.bool1;
 
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class Close10 extends BatExercise {
+public class Close10 extends ExerciseTemplated {
 
 	public Close10(Lesson lesson) {
-		super(lesson);
+		super("Close10");
 
 		BatWorld myWorld = new BatWorld("close10");
 
-		myWorld.addTest(VISIBLE,  8,13);
-		myWorld.addTest(VISIBLE,  13,8);
-		myWorld.addTest(VISIBLE,  13,7);
+		myWorld.addTest(BatTest.VISIBLE,  8,13);
+		myWorld.addTest(BatTest.VISIBLE,  13,8);
+		myWorld.addTest(BatTest.VISIBLE,  13,7);
 
-		myWorld.addTest(INVISIBLE, 7,13);
-		myWorld.addTest(INVISIBLE, 5,21);
-		myWorld.addTest(INVISIBLE, 0,20);
-		myWorld.addTest(INVISIBLE, 10,10);
+		myWorld.addTest(BatTest.INVISIBLE, 7,13);
+		myWorld.addTest(BatTest.INVISIBLE, 5,21);
+		myWorld.addTest(BatTest.INVISIBLE, 0,20);
+		myWorld.addTest(BatTest.INVISIBLE, 10,10);
 
 		templatePython("close10", new String[] {"Int","Int"},
 				"import math\ndef close10(a, b):\n",

@@ -4,23 +4,23 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class Last2 extends BatExercise {
+public class Last2 extends ExerciseTemplated {
 	public Last2(Lesson lesson) {
 		super(lesson);
 
 		BatWorld myWorld = new BatWorld("last2");
-		myWorld.addTest(VISIBLE, "hixxhi") ;
-		myWorld.addTest(VISIBLE, "xaxxaxaxx") ;
-		myWorld.addTest(VISIBLE, "axxxaaxx") ;
-		myWorld.addTest(INVISIBLE, "xxaxxaxxaxx") ;
-		myWorld.addTest(INVISIBLE, "xaxaxaxx") ;
-		myWorld.addTest(INVISIBLE, "13121312") ;
-		myWorld.addTest(INVISIBLE, "11212") ;
-		myWorld.addTest(INVISIBLE, "13121311") ;
-		myWorld.addTest(INVISIBLE, "1717171") ;
-		myWorld.addTest(INVISIBLE, "hi") ;
-		myWorld.addTest(INVISIBLE, "h") ;
-		myWorld.addTest(INVISIBLE, "") ;
+		myWorld.addTest(BatTest.VISIBLE, "hixxhi") ;
+		myWorld.addTest(BatTest.VISIBLE, "xaxxaxaxx") ;
+		myWorld.addTest(BatTest.VISIBLE, "axxxaaxx") ;
+		myWorld.addTest(BatTest.INVISIBLE, "xxaxxaxxaxx") ;
+		myWorld.addTest(BatTest.INVISIBLE, "xaxaxaxx") ;
+		myWorld.addTest(BatTest.INVISIBLE, "13121312") ;
+		myWorld.addTest(BatTest.INVISIBLE, "11212") ;
+		myWorld.addTest(BatTest.INVISIBLE, "13121311") ;
+		myWorld.addTest(BatTest.INVISIBLE, "1717171") ;
+		myWorld.addTest(BatTest.INVISIBLE, "hi") ;
+		myWorld.addTest(BatTest.INVISIBLE, "h") ;
+		myWorld.addTest(BatTest.INVISIBLE, "") ;
 
 		templatePython("last2", new String[]{"String"},
 				"def last2(str):\n",

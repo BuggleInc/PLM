@@ -1,13 +1,13 @@
-package lessons.welcome.array.search;
+package array.search;
 
 import java.util.Random;
 
+import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
-public class IndexOfValue extends BatExercise {
+public class IndexOfValue extends ExerciseTemplated {
 
 	Random r = new Random();
 	
@@ -16,7 +16,7 @@ public class IndexOfValue extends BatExercise {
 	}
 	
 	public IndexOfValue(Lesson lesson) {
-		super(lesson);
+		super("IndexOfValue");
 
 		int[] tab = new int[15];
 		for (int i=0; i<tab.length; i++) 
@@ -35,16 +35,16 @@ public class IndexOfValue extends BatExercise {
 			tab4[i] = r.nextInt(35)-15;
 
 		BatWorld myWorld = new BatWorld("indexOfValue");
-		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
-		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
-		myWorld.addTest(VISIBLE, tab, r.nextInt(35)-15);
-		myWorld.addTest(VISIBLE, tab, getIndex(tab));
-		myWorld.addTest(VISIBLE, tab2, r.nextInt(35)-15);
-		myWorld.addTest(VISIBLE, tab2, getIndex(tab2));
-		myWorld.addTest(INVISIBLE, tab3, r.nextInt(35)-15);
-		myWorld.addTest(INVISIBLE, tab3, getIndex(tab3));
-		myWorld.addTest(INVISIBLE, tab4, r.nextInt(35)-15);
-		myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
+		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
+		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
+		myWorld.addTest(BatTest.VISIBLE, tab, r.nextInt(35)-15);
+		myWorld.addTest(BatTest.VISIBLE, tab, getIndex(tab));
+		myWorld.addTest(BatTest.VISIBLE, tab2, r.nextInt(35)-15);
+		myWorld.addTest(BatTest.VISIBLE, tab2, getIndex(tab2));
+		myWorld.addTest(BatTest.INVISIBLE, tab3, r.nextInt(35)-15);
+		myWorld.addTest(BatTest.INVISIBLE, tab3, getIndex(tab3));
+		myWorld.addTest(BatTest.INVISIBLE, tab4, r.nextInt(35)-15);
+		myWorld.addTest(BatTest.INVISIBLE, tab4, getIndex(tab4));
 
 		templatePython("indexOfValue", new String[] {"Array[Int]","Int"},
 				"def indexOfValue(nums,lookingFor):\n",
