@@ -21,42 +21,6 @@ public class Close10 extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 0,20);
 		myWorld.addTest(BatTest.INVISIBLE, 10,10);
 
-		templatePython("close10", new String[] {"Int","Int"},
-				"import math\ndef close10(a, b):\n",
-				"   if math.fabs(10-a) == math.fabs(10-b):\n"+
-				"      return 0\n"+
-				"   elif math.fabs(10-a) < math.fabs(10-b):\n"+
-				"      return a\n"+
-				"   else:\n"+
-				"      return b\n");
-		templateScala("close10",new String[] {"Int","Int"},
-				"def close10(a:Int, b:Int): Int = {\n",
-				"   if (Math.abs(10-a) == Math.abs(10-b))\n"+
-				"      return 0\n"+
-				"   else if (Math.abs(10-a) < Math.abs(10-b))\n"+
-				"      return a\n"+
-				"   else\n"+
-				"      return b\n"+
-				"}");
 		setup(myWorld);
 	}
-
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult(close10((Integer)t.getParameter(0),(Integer)t.getParameter(1)));
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int close10(int a, int b) {
-		/* BEGIN SOLUTION */
-		if (Math.abs(a-10)==Math.abs(b-10))
-			return 0;
-		if (Math.abs(a-10)<Math.abs(b-10))
-			return a;
-		return b;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

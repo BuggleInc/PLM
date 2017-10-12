@@ -31,39 +31,7 @@ public class Golomb extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, (Object)new Integer(19)) ;
 		myWorld.addTest(BatTest.INVISIBLE, (Object)new Integer(20)) ;
 		
-
-		templatePython("golomb", new String[] {"Int"},
-				"def golomb(num):\n",
-				"  if num==1:\n" +
-				"    return 1\n"+
-				"  else:\n"+
-				"    return 1+golomb(num-golomb(golomb(num-1)))\n");
-		templateScala("golomb", new String[] {"Int"}, 
-				"def golomb(num:Int): Int = {\n",
-				"  if(num==1)\n" +
-				"  		return 1;\n"+
-				"  else\n"+
-				"  		return 1+golomb(num-golomb(golomb(num-1)));\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( golomb((int)t.getParameter(0)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int golomb(int num) {
-		/* BEGIN SOLUTION */
-		if(num==1){
-			return 1;
-		}else{
-			return 1 + golomb( num - golomb( golomb( num-1 ) ) );
-		}
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }
 

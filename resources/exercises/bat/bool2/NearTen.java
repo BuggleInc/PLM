@@ -26,27 +26,6 @@ public class NearTen extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 3) ;
 		myWorld.addTest(BatTest.INVISIBLE, 1) ;
 
-		templatePython("nearTen", new String[]{"Int"},
-				"def nearTen(num):\n",
-				"  return (num % 10) <= 2 or (num % 10) >= 8\n");
-		templateScala("nearTen", new String[]{"Int"}, 
-				"def nearTen(num:Int):Boolean = {\n",
-				"  return (num % 10) <= 2 || (num % 10) >= 8\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( nearTen((Integer)t.getParameter(0)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean nearTen(int num) {
-		/* BEGIN SOLUTION */
-		return (num % 10) <= 2 || (num % 10) >= 8; 
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

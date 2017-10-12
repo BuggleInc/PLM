@@ -24,42 +24,6 @@ public class DateFashion extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 2, 7) ;
 		myWorld.addTest(BatTest.INVISIBLE, 6, 2) ;
 
-		templatePython("dateFashion", new String[]{"Int","Int"},
-				"def dateFashion(you, date):\n",
-				"	if (you <= 2 or date <= 2):\n"+
-				"		return 0\n"+
-				"	elif (you >= 8 or date >= 8):\n"+
-				"		return 2\n"+
-				"	else:\n"+
-				"		return 1\n");
-		templateScala("dateFashion",new String[]{"Int","Int"}, 
-				"def dateFashion(you:Int, date:Int):Int = {\n",
-				"	if (you <= 2 || date <= 2) \n"+
-				"		return 0\n"+
-				"	else if (you >= 8 || date >= 8)\n"+
-				"		return 2\n"+
-				"	else\n"+
-				"		return 1\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( dateFashion((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int dateFashion(int you, int date) {
-		/* BEGIN SOLUTION */
-		if (you <= 2 || date <= 2)
-			return 0;
-		else if (you >= 8 || date >= 8)
-			return 2;
-		else
-			return 1;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

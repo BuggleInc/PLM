@@ -45,44 +45,7 @@ public class IndexOfValue extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, tab3, getIndex(tab3));
 		myWorld.addTest(BatTest.INVISIBLE, tab4, r.nextInt(35)-15);
 		myWorld.addTest(BatTest.INVISIBLE, tab4, getIndex(tab4));
-
-		templatePython("indexOfValue", new String[] {"Array[Int]","Int"},
-				"def indexOfValue(nums,lookingFor):\n",
-				"  for i in range(len(nums)):\n" +
-				"    if nums[i]==lookingFor:\n"+
-				"      return i\n" +
-				"  return -1\n");
-		templateScala("indexOfValue", new String[] {"Array[Int]","Int"}, 
-				"def indexOfValue(nums:Array[Int] ,lookingFor:Int): Int = {\n",
-				"  for (i <- 0 to nums.length-1)\n" +
-				"    if (nums(i)==lookingFor) \n"+
-				"      return i\n" +
-				"  return -1\n"+
-				"}");
 		
 		setup(myWorld);
 	}
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( indexOf( (int[])t.getParameter(0), (Integer)t.getParameter(1) ) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	// computes the index of the first value equals to 'lookingFor' contained in tab variable
-	public int indexOf(int[] tab, Integer lookingFor) {
-		/* BEGIN SOLUTION */
-		for (int i=0; i<tab.length; i++) 
-			if (tab[i] == lookingFor) 
-				return i;
-		
-		return -1;
-		/* END SOLUTION */
-	}
-
-	/* END TEMPLATE */
 }
-
-
-
-

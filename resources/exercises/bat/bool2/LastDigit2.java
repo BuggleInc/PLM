@@ -25,36 +25,6 @@ public class LastDigit2 extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 10, 11, 20) ;
 		myWorld.addTest(BatTest.INVISIBLE, 0, 11, 0) ;
 
-		templatePython("lastDigit", new String[]{"Int","Int","Int"},
-				"def lastDigit(a, b, c):\n",
-				"	da = a % 10\n"+
-				"	db = b % 10\n"+
-				"	dc = c % 10\n"+
-				"	return da == db or da == dc or dc == db\n");
-		templateScala("lastDigit",new String[]{"Int","Int","Int"}, 
-				"def lastDigit(a:Int, b:Int, c:Int):Boolean = {\n",
-				"	val da = a % 10\n"+
-				"	val db = b % 10\n"+
-				"	val dc = c % 10\n"+
-				"	return da == db || da == dc || dc == db\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( lastDigit((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean lastDigit(int a, int b, int c) {
-		/* BEGIN SOLUTION */
-		int da = a % 10;
-		int db = b % 10;
-		int dc = c % 10;
-		return da == db || da == dc || dc == db;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

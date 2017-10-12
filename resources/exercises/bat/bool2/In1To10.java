@@ -24,27 +24,6 @@ public class In1To10 extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 0, true) ;
 		myWorld.addTest(BatTest.INVISIBLE, -1, false) ;
 
-		templatePython("in1To10", new String[]{"Int","Boolean"},
-				"def in1To10(n, outsideMode):\n",
-				"   return (outsideMode and (n <= 1 or n >= 10)) or ((not outsideMode) and (n >= 1 and n <= 10))\n");
-		templateScala("in1To10",new String[]{"Int","Boolean"}, 
-				"def in1To10(n:Int, outsideMode:Boolean):Boolean = {\n",
-				"   return (outsideMode && (n <= 1 || n >= 10)) || ((! outsideMode) && (n >= 1 && n <= 10))\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( in1To10((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean in1To10(int n, boolean outsideMode) {
-		/* BEGIN SOLUTION */
-		return (outsideMode && (n <= 1 || n >= 10)) || ((! outsideMode) && (n >= 1 && n <= 10));
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

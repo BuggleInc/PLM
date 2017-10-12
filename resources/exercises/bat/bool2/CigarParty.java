@@ -23,27 +23,6 @@ public class CigarParty extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 40, true) ;
 		myWorld.addTest(BatTest.INVISIBLE, 39, true) ;
 
-		templatePython("cigarParty", new String[] {"Int","Boolean"},
-				"def cigarParty(cigars, isWeekend):\n",
-				"   return (isWeekend and cigars >= 40) or (not isWeekend and (cigars >= 40) and (cigars <= 60))\n");
-		templateScala("cigarParty", new String[] {"Int","Boolean"}, 
-				"def cigarParty(cigars:Int, isWeekend:Boolean):Boolean = {\n",
-				"   return (isWeekend && cigars >= 40) || (! isWeekend && (cigars >= 40) && (cigars <= 60))\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( cigarParty((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean cigarParty(int cigars, boolean isWeekend) {
-		/* BEGIN SOLUTION */
-		return (isWeekend && cigars >= 40) || (!isWeekend && (cigars >= 40) && (cigars <= 60));
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

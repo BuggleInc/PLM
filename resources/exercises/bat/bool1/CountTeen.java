@@ -25,55 +25,6 @@ public class CountTeen extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 11,11,11,11);
 		myWorld.addTest(BatTest.INVISIBLE, 15,15,15,15);
 
-		templatePython("countTeen", new String[] {"Integer","Integer","Integer","Integer"},
-				"def countTeen(a, b, c, d):\n",
-				"		ret=0\n"+
-				"		if (a>12 and a<20):\n"+
-				"			ret+=1\n"+
-				"		if (b>12 and b<20):\n"+
-				"			ret+=1\n"+
-				"		if (c>12 and c<20):\n"+
-				"			ret+=1\n"+
-				"		if (d>12 and d<20):\n"+
-				"			ret+=1\n"+
-				"		return ret\n");
-		templateScala("countTeen", new String[] {"Integer","Integer","Integer","Integer"}, 
-			"def countTeen(a:Int, b:Int,c:Int,d:Int): Int = {\n",
-			  "  var ret=0;\n"
-			+ "  if (a>12&&a<20)\n"
-			+ "	   ret+=1;\n"
-			+ "  if (b>12&&b<20)\n"
-			+ "	   ret+=1;\n"
-			+ "  if (c>12&&c<20)\n"
-			+ "	   ret+=1;\n"
-			+ "  if (d>12&&d<20)\n"
-			+ "	   ret+=1;\n"
-			+ "  return ret\n"
-			+ "}");
 		setup(myWorld);
 	}
-
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( countTeen((Integer)t.getParameter(0),(Integer)t.getParameter(1),(Integer)t.getParameter(2),(Integer)t.getParameter(3)) );		
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int countTeen(int a, int b, int c,int d) {
-		/* BEGIN SOLUTION */
-		int ret=0;
-		if (a>12&&a<20)
-			ret+=1;
-		if (b>12&&b<20)
-			ret+=1;
-		if (c>12&&c<20)
-			ret+=1;
-		if (d>12&&d<20)
-			ret+=1;
-		return ret; 
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

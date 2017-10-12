@@ -8,6 +8,7 @@ public class FlowerPotEntity extends SimpleBuggle {
 	public void run() {
 	    growFlowers();
 	}
+        /* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void makeFlower(Color c) {
 	    setBrushColor(c);
@@ -48,4 +49,5 @@ public class FlowerPotEntity extends SimpleBuggle {
 	    line(Color.PINK, Color.GREEN);
 	}
 	/* END SOLUTION */
+   /* END TEMPLATE */
 }

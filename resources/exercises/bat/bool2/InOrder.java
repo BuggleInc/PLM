@@ -24,27 +24,6 @@ public class InOrder extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 7, 5, 6, true) ;
 		myWorld.addTest(BatTest.INVISIBLE, 7, 5, 4, true) ;
 
-		templatePython("inOrder", new String[] {"Int","Int","Int","Boolean"},
-				"def inOrder(a, b, c, bOk):\n",
-				"		return (bOk or (b > a)) and (c > b)\n");
-		templateScala("inOrder",new String[] {"Int","Int","Int","Boolean"}, 
-				"def inOrder(a:Int, b:Int, c:Int, bOk:Boolean):Boolean = {\n",
-				"		return (bOk || (b > a)) && (c > b)\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( inOrder((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2), (Boolean)t.getParameter(3)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean inOrder(int a, int b, int c, boolean bOk) {
-		/* BEGIN SOLUTION */
-		return (bOk || (b > a)) && (c > b);
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

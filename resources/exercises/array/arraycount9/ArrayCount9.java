@@ -17,41 +17,6 @@ public class ArrayCount9 extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, (Object)new int[] {4, 2, 4, 3, 1}) ;
 		myWorld.addTest(BatTest.INVISIBLE, (Object)new int[] {9, 2, 4, 3, 1}) ;
 
-		templatePython("arrayCount9", new String[]{"Array[Int]"},
-				"def arrayCount9(nums):\n",
-				"  res = 0\n" +
-				"  for value in nums:\n" +
-				"    if value == 9:\n" +
-				"      res += 1\n" +
-				"  return res\n");
-		templateScala("arrayCount9", new String[]{"Array[Int]"},
-				"def arrayCount9(nums:Array[Int]): Int = {\n",
-				"  var res = 0\n" +
-				"  for (value <- nums)\n" +
-				"    if (value == 9)\n" +
-				"      res += 1\n" +
-				"  return res\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( arrayCount9((int[])t.getParameter(0)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int arrayCount9(int[] nums) {
-		/* BEGIN SOLUTION */
-		int count = 0;
-		for (int i=0; i<nums.length; i++) {
-			if (nums[i] == 9) {
-				count++;
-			}
-		}
-		return count;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

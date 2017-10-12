@@ -26,27 +26,6 @@ public class LessBy10 extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 2, 2, -8) ;
 		myWorld.addTest(BatTest.INVISIBLE, 2, 8, 12) ;
 
-		templatePython("lessBy10", new String[] {"Int","Int","Int"},
-				"def lessBy10(a, b, c):\n",
-				"	return ((a - b) >= 10) or ((b - a) >= 10) or ((b - c) >= 10) or ((c - b) >= 10) or ((a - c) >= 10) or ((c - a) >= 10)\n");
-		templateScala("lessBy10", new String[] {"Int","Int","Int"},
-				"def lessBy10(a:Int, b:Int, c:Int):Boolean = {\n",
-				"	return ((a - b) >= 10) || ((b - a) >= 10) || ((b - c) >= 10) || ((c - b) >= 10) || ((a - c) >= 10) || ((c - a) >= 10)\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( lessBy10((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean lessBy10(int a, int b, int c) {
-		/* BEGIN SOLUTION */
-		return ((a - b) >= 10) || ((b - a) >= 10) || ((b - c) >= 10) || ((c - b) >= 10) || ((a - c) >= 10) || ((c - a) >= 10);
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

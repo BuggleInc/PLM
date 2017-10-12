@@ -26,27 +26,6 @@ public class InOrderEqual extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 9, 2, 2, true) ;
 		myWorld.addTest(BatTest.INVISIBLE, 0, 1, 0, true) ;
 
-		templatePython("inOrderEqual", new String[] {"Int","Int","Int","Boolean"},
-				"def inOrderEqual(a, b, c, equalOk):\n",
-				"		return (equalOk and ((a <= b) and (b <= c))) or (a < b and b < c)");
-		templateScala("inOrderEqual",new String[] {"Int","Int","Int","Boolean"}, 
-				"def inOrderEqual(a:Int, b:Int, c:Int, equalOk:Boolean):Boolean = {\n",
-				"		return (equalOk && ((a <= b) && (b <= c))) || (a < b && b < c)\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( inOrderEqual((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2), (Boolean)t.getParameter(3)) ); 
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
-		/* BEGIN SOLUTION */
-		return (equalOk && ((a <= b) && (b <= c))) || (a < b && b < c);
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

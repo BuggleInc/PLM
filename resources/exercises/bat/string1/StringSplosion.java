@@ -17,38 +17,6 @@ public class StringSplosion extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, "Good") ;
 		myWorld.addTest(BatTest.INVISIBLE, "Bad") ;
 
-		templatePython("stringSplosion", new String[]{"String"},
-				"def stringSplosion(str):\n",
-				"  res = ''\n" +
-				"  for i in range(len(str)):\n" +
-				"    res += str[0:i+1]\n" +
-				"  return res\n");
-		templateScala("stringSplosion", new String[]{"String"}, 
-				"def stringSplosion(str:String):String = {\n",
-				"  var res = \"\"\n" +
-				"  for (i <- 0 to str.length-1) \n" +
-				"    res ++= str.substring(0,i+1)\n" +
-				"  return res\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( stringSplosion((String)t.getParameter(0)) ); 
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	String stringSplosion(String str) {
-		/* BEGIN SOLUTION */
-		String result = "";
-		// On each iteration, add the substring of the chars 0..i
-		for (int i=0; i<str.length(); i++) {
-			result = result + str.substring(0, i+1);
-		}
-		return result;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

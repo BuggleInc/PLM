@@ -19,37 +19,6 @@ public class StringTimes extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, "code", 2) ;
 		myWorld.addTest(BatTest.INVISIBLE, "code", 3) ;
 
-		templatePython("stringTimes", new String[]{"String","Int"},
-				"def stringTimes(str, n):\n",
-				"  res = \"\"\n"+
-				"  for i in range(n):\n"+
-				"    res += str\n"+
-				"  return res\n");
-		templateScala("stringTimes", new String[]{"String","Int"}, 
-				"def stringTimes(str:String, n:Int):String = {\n",
-				"  var res = \"\"\n"+
-				"  for (i <- 1 to n)\n"+
-				"    res ++= str\n"+
-				"  return res\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( stringTimes((String)t.getParameter(0), (Integer)t.getParameter(1)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	String stringTimes(String str, int n) {
-		/* BEGIN SOLUTION */
-		String result = "";
-		for (int i=0; i<n; i++) {
-			result = result + str;  // could use += here
-		}
-		return result;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }

@@ -22,27 +22,6 @@ public class ShareDigit extends ExerciseTemplated {
 		myWorld.addTest(BatTest.INVISIBLE, 55, 55) ;
 		myWorld.addTest(BatTest.INVISIBLE, 55, 44) ;
 
-		templatePython("shareDigit", new String[]{"Int","Int"},
-				"def shareDigit(a, b):\n",
-				"   return (a/10 == b/10 or a/10 == b%10 or a%10 == b/10 or a%10 == b%10)");
-		templateScala("shareDigit", new String[]{"Int","Int"}, 
-				"def shareDigit(a:Int, b:Int):Boolean = {\n",
-				"   return (a/10 == b/10 || a/10 == b%10 || a%10 == b/10 || a%10 == b%10)\n"+
-				"}");
 		setup(myWorld);
 	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( shareDigit((Integer)t.getParameter(0), (Integer)t.getParameter(1)) ); 
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean shareDigit(int a, int b) {
-		/* BEGIN SOLUTION */
-		return (a/10 == b/10 || a/10 == b%10 || a%10 == b/10 || a%10 == b%10);
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
 }
