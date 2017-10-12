@@ -7,7 +7,7 @@ class ScalaStringTimesEntity extends BatEntity {
   def stringTimes(str: String, n: Int): String = {
     /* BEGIN SOLUTION */
     var res = ""
-    for (i <- 1 to n)
+    for (_ <- 1 to n)
       res ++= str
     res
     /* END SOLUTION */

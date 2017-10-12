@@ -8,7 +8,7 @@ class ScalaAverageValueEntity extends BatEntity {
   def averageValue(nums: Array[Int]): Int = {
     /* BEGIN SOLUTION */
     var total = 0
-    for (i <- 0 to nums.length - 1)
+    for (i <- nums.indices)
       total += nums(i)
     return total / nums.length
     /* END SOLUTION */

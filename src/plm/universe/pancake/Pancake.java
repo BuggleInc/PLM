@@ -29,7 +29,7 @@ public class Pancake {
 	/**
 	 * Indicate whether some other pancake is "equal to" this one
 	 * @param burnedMatter if we take care of the position of the burned part
-	 * @param Pancake other: the other pancake with which to compare
+	 * @param other : the other pancake with which to compare
 	 * @return If the two pancakes are equals
 	 */
 	public boolean equals(Pancake other, boolean burnedMatter) {

@@ -50,12 +50,12 @@ class ScalaIslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		right();
 	}
 
-	var chosenDirection = Direction.NORTH;
+	val chosenDirection = Direction.NORTH;
 
 	def isChosenDirectionFree():Boolean = {
-		var memorizedD = getDirection();
+		val memorizedD = getDirection();
 		setDirection(chosenDirection);
-		var isFree = ! isFacingWall();
+		val isFree = ! isFacingWall();
 		setDirection(memorizedD);
 		return isFree;
 		/* END SOLUTION */

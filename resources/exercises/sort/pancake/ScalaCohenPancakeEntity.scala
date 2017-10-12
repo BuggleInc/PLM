@@ -14,9 +14,9 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 			for (rank <- 0 to getStackSize()-1)
 				if (getPancakeRadius(rank) == size)
 					return rank;
-					return -99; // Well, be robust to border cases 
+			return -99; // be robust to border cases
 	}
-	var debug=false; 
+	val debug=false
 	def showStack(nl:Boolean) {
 		if (debug) {
 			System.out.print("{");
@@ -94,7 +94,7 @@ class ScalaCohenPancakeEntity extends PancakeEntity {
 						if (reverted) {
 							if (debug) 
 								Logger.debug("Case 2.B");
-							for (i <- 1 to maxPos) {
+							for (_ <- 1 to maxPos) {
 								flip(maxPos);
 								showStack(true)
 								if (maxPos>1)

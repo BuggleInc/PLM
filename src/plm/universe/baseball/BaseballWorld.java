@@ -233,7 +233,7 @@ public class BaseballWorld extends World {
 	
 	/** 
 	 * Reset the state of the current world to the one passed in argument
-	 * @param the world which must be the new start of your current world
+	 * @param world the new start of your current world
 	 */
 	public void reset(World world) {
 		super.reset(world);		

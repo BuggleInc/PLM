@@ -9,7 +9,7 @@ class ScalaSecondMaxValueEntity extends BatEntity {
     /* BEGIN SOLUTION */
     var max = Integer.MIN_VALUE
     var sec = Integer.MIN_VALUE
-    for (i <- 0 to nums.length - 1)
+    for (i <- nums.indices)
       if (nums(i) > max) {
         sec = max
         max = nums(i)

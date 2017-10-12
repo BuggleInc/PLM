@@ -14,7 +14,7 @@ class ScalaNaiveBaseballEntity extends BaseballEntity {
 			var maxDistance = -1;
 			for (pos <- 0 to getPositionsAmount() -1) {
 				val player = getPlayerColor(baseNext, pos);
-				var distance = (baseNext - player + getBasesAmount()) % getBasesAmount();
+				val distance = (baseNext - player + getBasesAmount()) % getBasesAmount();
 				if (distance > maxDistance) {
 					maxDistance = distance;
 					posNext = pos;

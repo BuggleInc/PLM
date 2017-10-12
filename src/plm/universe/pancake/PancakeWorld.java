@@ -43,7 +43,7 @@ public class PancakeWorld extends World {
 	/** 
 	 * Regular PancakeWorld constructor that creates a random plate
 	 * @param name : the name of the world
-	 * @param amountOfPancakes : the amount of pancakes in the stack
+	 * @param size : the amount of pancakes in the stack
 	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
 	 */
 	public PancakeWorld(String name, int size, boolean burnedPancake) {
@@ -128,7 +128,7 @@ public class PancakeWorld extends World {
 	}
 	/** 
 	 * Reset the state of the current world to the one passed in argument
-	 * @param the world which must be the new start of your current world
+	 * @param world the new start of your current world
 	 */
 	@Override
 	public void reset(World world) {

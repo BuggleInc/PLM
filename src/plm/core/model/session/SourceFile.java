@@ -70,7 +70,7 @@ public class SourceFile {
 	 * Returns the source text that we should compile
 	 * @param runtimePatterns
 	 * 			some last-minute replacement to do (such as package name adjustment)
-	 * @param whatKind
+	 * @param whatToRetrieve
 	 * 			whether we want to retrieve the student-provided content or the correction
 	 * @return
 	 */

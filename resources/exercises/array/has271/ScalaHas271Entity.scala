@@ -7,7 +7,6 @@ class ScalaHas271Entity extends BatEntity {
   /* BEGIN TEMPLATE */
   def has271(nums: Array[Int]): Boolean = {
     /* BEGIN SOLUTION */
-    var count = 0
     for (i <- 0 to nums.length - 2)
       if ((nums(i) + 5 == nums(i + 1)) && (Math.abs(nums(i + 2) - nums(i) + 1) <= 2))
         return true

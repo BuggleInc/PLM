@@ -48,12 +48,11 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 	def hasBottomWall(x:Int, y:Int): Boolean = hasTopWall(x, (y + 1) % getWorldHeight());
 
 	def setValueIfLess(x:Int, y:Int, i:Int): Boolean = {
-		var existing = getIndication(x, y);
-		if (i < existing) {
-			setIndication(x, y, i);
-			return true;
+		if (i < getIndication(x, y)) {
+			setIndication(x, y, i)
+			return true
 		}
-		return false;
+		return false
 	}
 
 	def evaluatePaths() {
@@ -66,7 +65,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		while (changed) { 
 			changed = false
 			for (x <- 0 to getWorldWidth() -1; y <- 0 to getWorldHeight()-1) {
-				var indication = getIndication(x, y);
+				val indication = getIndication(x, y);
 				if (indication != 9999) {
 					if (! hasBottomWall(x,y))
 						changed |= setValueIfLess(x, (y + 1) % getWorldHeight(), indication + 1);
@@ -88,8 +87,8 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 	def followShortestPath() {
 		while (! isOverBaggle()) {
 
-			var x = getX();
-			var y = getY();
+			val x = getX();
+			val y = getY();
 
 			var topValue = 9999;
 			var bottomValue = 9999;

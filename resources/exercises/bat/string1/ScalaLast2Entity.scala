@@ -7,8 +7,9 @@ class ScalaLast2Entity extends BatEntity {
   def last2(str: String): Int = {
     /* BEGIN SOLUTION */
     val l = str.length
-    if (l < 2)
-      0
+    if (l < 2) {
+      return 0
+    }
     val end = str.substring(l - 2, l)
     var count = 0
     for (i <- 0 to str.length - 3)

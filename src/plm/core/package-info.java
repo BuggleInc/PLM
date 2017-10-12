@@ -11,8 +11,6 @@
  *       code in memory and compiling it; grouping exercises together, providing templates to 
  *       students</li>                            
  *   <li>{@link plm.core.ui} User interface.</li>
- *   <li>{@link plm.core.ui.action} The action listeners of the UI, calling the right functions 
- *        of the game singleton.</li>
  * </ul>
  */
 package plm.core;

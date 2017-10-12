@@ -8,11 +8,13 @@ class ScalaMax1020Entity extends BatEntity {
     /* BEGIN SOLUTION */
     val A = Math.max(a, b)
     val B = Math.min(a, b)
-    if (A < 21 && A > 9)
-      A
-    if (B < 21 && B > 9)
-      B
-    0
+    if (A < 21 && A > 9) {
+      return A
+    }
+    if (B < 21 && B > 9) {
+      return B
+    }
+    return 0
     /* END SOLUTION */
   }
   /* END TEMPLATE */

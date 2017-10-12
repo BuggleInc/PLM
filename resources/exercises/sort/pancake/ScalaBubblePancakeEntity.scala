@@ -5,17 +5,16 @@ import plm.universe.pancake.PancakeEntity
 class ScalaBubblePancakeEntity extends PancakeEntity {
 
 	override def run() {
-		solve();
+		solve()
 	}
 
 	/* BEGIN TEMPLATE */
 	def solve() {
-		/* BEGIN SOLUTION */		
-    val stackSize = getStackSize();
-    var swapped=false;
+		/* BEGIN SOLUTION */
+    var swapped=false
     
     do {
-      swapped = false; 
+      swapped = false
       
       for(rank <- 0 to getStackSize()-2) { // Check all pancakes
         

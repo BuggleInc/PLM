@@ -12,9 +12,9 @@ class ScalaBDREntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	override def run() {
 		/* BEGIN SOLUTION */
-	    var done = false
+		var done = false
 		while (!done) {
-			var c = getIndication()
+			val c = getIndication()
 
 			if (c == 'R') { 
 				right(); forward();

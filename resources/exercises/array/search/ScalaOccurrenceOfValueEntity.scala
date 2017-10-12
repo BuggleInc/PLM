@@ -8,7 +8,7 @@ class ScalaOccurrenceOfValueEntity extends BatEntity {
   def occurrences(nums: Array[Int], lookingFor: Int): Int = {
     /* BEGIN SOLUTION */
     var count = 0
-    for (i <- 0 to nums.length - 1)
+    for (i <- nums.indices)
       if (nums(i) == lookingFor)
         count += 1
     count

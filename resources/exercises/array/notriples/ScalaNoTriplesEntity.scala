@@ -6,7 +6,6 @@ class ScalaNoTriplesEntity extends BatEntity {
   /* BEGIN TEMPLATE */
   def noTriples(nums: Array[Int]): Boolean = {
     /* BEGIN SOLUTION */
-    var count = 0
     for (i <- 0 to nums.length - 3)
       if ((nums(i) == nums(i + 1)) && (nums(i + 1) == nums(i + 2)))
         return false

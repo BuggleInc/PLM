@@ -8,12 +8,12 @@ class ScalaIndexOfMaxValueEntity extends BatEntity {
     /* BEGIN SOLUTION */
     var max = nums(0)
     var maxIdx = 0
-    for (i <- 0 to nums.length - 1)
+    for (i <- nums.indices)
       if (nums(i) > max) {
         max = nums(i)
         maxIdx = i
       }
-    return maxIdx
+    maxIdx
     /* END SOLUTION */
   }
   /* END TEMPLATE */

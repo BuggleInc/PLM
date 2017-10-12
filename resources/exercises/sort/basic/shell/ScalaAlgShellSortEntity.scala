@@ -29,7 +29,7 @@ class ScalaAlgShellSortEntity extends SortingEntity {
 			/* for each set of elements (there are h sets) */
 			for (i <- gap - 1 to getValueCount()-1) {
 				/* pick the last element in the set */
-				var value = getValue(i);
+				val value = getValue(i);
 				var j = i;
 				/* compare the element at B to the one before it in the set
 				 * if they are out of order continue this loop, moving

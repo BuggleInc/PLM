@@ -12,7 +12,7 @@ class ScalaAlgInsertionSortEntity extends SortingEntity {
 	def insertionSort() {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to getValueCount()-1) {
-			var value = getValue(i);
+			val value = getValue(i);
 			var j = i;
 			while ((j > 0) && (!isSmallerThan(j-1,value))) {
 				copy(j-1,j);

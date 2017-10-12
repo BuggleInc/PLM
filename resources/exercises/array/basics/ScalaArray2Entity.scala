@@ -33,7 +33,7 @@ class ScalaArray2Entity extends SimpleBuggle {
 		backward(getWorldHeight()-1);
 
 		/* duplicate the pattern */
-		for (col <- 1 to getWorldWidth()-1) {
+		for (_ <- 1 to getWorldWidth()-1) {
 			left();
 			forward();
 			right();

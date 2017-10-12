@@ -54,7 +54,7 @@ public class Array2Entity extends SimpleBuggle {
 
     void makeLine(Color[] colors) {
         int offset = Integer.parseInt(readMessage());
-        mark(colors[(0 + offset) % colors.length]);
+        mark(colors[(offset) % colors.length]);
         for (int i = 1; i < getWorldWidth(); i++) {
             forward();
             mark(colors[(i + offset) % colors.length]);
