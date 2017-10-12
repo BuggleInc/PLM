@@ -1,284 +1,277 @@
 package plm.core.ui;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Element;
-import javax.swing.text.IconView;
-import javax.swing.text.Position;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.View;
-import javax.swing.text.ViewFactory;
-import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTMLEditorKit;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.lesson.Exercise;
 
+import javax.swing.*;
+import javax.swing.text.*;
+import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTMLEditorKit;
+import java.awt.*;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class PlmHtmlEditorKit extends HTMLEditorKit {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private static Map<String,String> langColors = null;
-	/** Filters out the part that should not be displayed in the current programming language
-	 * 
-	 *  If current language is java, then we will:
-	 *    - keep parts such as [!java] ... [/!]  (that is, replace the whole group by what's within the tag)
-	 *    - remove parts such as [!python] ... [/!] 
-	 *    - remove parts such as [!scala] ... [/!]
-	 *     
-	 *    - keep parts such as [!java|python] ... [/!] 
-	 *    - keep parts such as [!python|java] ... [/!] 
-	 *    - keep parts such as [!java|scala] ... [/!] 
-	 *    - keep parts such as [!scala|java] ... [/!] 
-	 *    - remove parts such as [!scala|python] ... [/!] 
-	 *    - remove parts such as [!python|scala] ... [/!] 
-	 * 
-	 * Other automagic conversions:
-	 *  [!thelang] displays the name of the current programming language.
-	 * 
-	 */
+    private static Map<String, String> langColors = null;
 
-	public static String filterHTML(String in, boolean showAll, ProgrammingLanguage language){
-		return filterHTML(in, showAll,false, null, language);
-	}
+    /**
+     * Filters out the part that should not be displayed in the current programming language
+     * <p>
+     * If current language is java, then we will:
+     * - keep parts such as [!java] ... [/!]  (that is, replace the whole group by what's within the tag)
+     * - remove parts such as [!python] ... [/!]
+     * - remove parts such as [!scala] ... [/!]
+     * <p>
+     * - keep parts such as [!java|python] ... [/!]
+     * - keep parts such as [!python|java] ... [/!]
+     * - keep parts such as [!java|scala] ... [/!]
+     * - keep parts such as [!scala|java] ... [/!]
+     * - remove parts such as [!scala|python] ... [/!]
+     * - remove parts such as [!python|scala] ... [/!]
+     * <p>
+     * Other automagic conversions:
+     * [!thelang] displays the name of the current programming language.
+     */
 
-	public static String filterHTML(String in, boolean showAll, boolean showMulti, ProgrammingLanguage[] currLang, ProgrammingLanguage targetLang) {
-		if (langColors == null) {
-			langColors = new HashMap<String, String>();
-			langColors.put("java", "FF0000");
-			langColors.put("python", "008000");
-			langColors.put("scala",  "0000FF");
-			langColors.put("c",  "00FF00");
+    public static String filterHTML(String in, boolean showAll, ProgrammingLanguage language) {
+        return filterHTML(in, showAll, false, null, language);
+    }
 
-			langColors.put("java|python", "FF8000");
-			langColors.put("java|scala",  "FF00FF");
-			langColors.put("java|c",  "FFFF00");
-			langColors.put("python|java", "FF8000");
-			langColors.put("python|scala", "0080FF");
-			langColors.put("python|c", "00AF00");
-			langColors.put("scala|java",  "FF00FF");
-			langColors.put("scala|python", "0080FF");
-			langColors.put("scala|c", "00FFFF");
+    public static String filterHTML(String in, boolean showAll, boolean showMulti, ProgrammingLanguage[] currLang, ProgrammingLanguage targetLang) {
+        if (langColors == null) {
+            langColors = new HashMap<String, String>();
+            langColors.put("java", "FF0000");
+            langColors.put("python", "008000");
+            langColors.put("scala", "0000FF");
+            langColors.put("c", "00FF00");
 
-			// scala python c
-			langColors.put("scala|python|c", "00AFFF");
-			langColors.put("scala|c|python", "00AFFF");
-			langColors.put("python|c|scala", "00AFFF");
-			langColors.put("python|scala|c", "00AFFF");
-			langColors.put("c|python|scala", "00AFFF");
-			langColors.put("c|scala|python", "00AFFF");
+            langColors.put("java|python", "FF8000");
+            langColors.put("java|scala", "FF00FF");
+            langColors.put("java|c", "FFFF00");
+            langColors.put("python|java", "FF8000");
+            langColors.put("python|scala", "0080FF");
+            langColors.put("python|c", "00AF00");
+            langColors.put("scala|java", "FF00FF");
+            langColors.put("scala|python", "0080FF");
+            langColors.put("scala|c", "00FFFF");
 
-			//scala python java
-			langColors.put("scala|python|java", "FF80FF");
-			langColors.put("scala|java|python", "FF80FF");
-			langColors.put("python|java|scala", "FF80FF");
-			langColors.put("python|scala|java", "FF80FF");
-			langColors.put("java|python|scala", "FF80FF");
-			langColors.put("java|scala|python", "FF80FF");
+            // scala python c
+            langColors.put("scala|python|c", "00AFFF");
+            langColors.put("scala|c|python", "00AFFF");
+            langColors.put("python|c|scala", "00AFFF");
+            langColors.put("python|scala|c", "00AFFF");
+            langColors.put("c|python|scala", "00AFFF");
+            langColors.put("c|scala|python", "00AFFF");
 
-			//scala c java
-			langColors.put("scala|c|java", "EEEEEE");
-			langColors.put("scala|java|c", "EEEEEE");
-			langColors.put("c|java|scala", "EEEEEE");
-			langColors.put("c|scala|java", "EEEEEE");
-			langColors.put("java|c|scala", "EEEEEE");
-			langColors.put("java|scala|c", "EEEEEE");
+            //scala python java
+            langColors.put("scala|python|java", "FF80FF");
+            langColors.put("scala|java|python", "FF80FF");
+            langColors.put("python|java|scala", "FF80FF");
+            langColors.put("python|scala|java", "FF80FF");
+            langColors.put("java|python|scala", "FF80FF");
+            langColors.put("java|scala|python", "FF80FF");
 
-			//python java c
-			langColors.put("python|c|java", "333333");
-			langColors.put("python|java|c", "333333");
-			langColors.put("c|java|python", "333333");
-			langColors.put("c|python|java", "333333");
-			langColors.put("java|python|c", "333333");
-			langColors.put("java|c|python", "333333");
-		}
-		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
+            //scala c java
+            langColors.put("scala|c|java", "EEEEEE");
+            langColors.put("scala|java|c", "EEEEEE");
+            langColors.put("c|java|scala", "EEEEEE");
+            langColors.put("c|scala|java", "EEEEEE");
+            langColors.put("java|c|scala", "EEEEEE");
+            langColors.put("java|scala|c", "EEEEEE");
+
+            //python java c
+            langColors.put("python|c|java", "333333");
+            langColors.put("python|java|c", "333333");
+            langColors.put("c|java|python", "333333");
+            langColors.put("c|python|java", "333333");
+            langColors.put("java|python|c", "333333");
+            langColors.put("java|c|python", "333333");
+        }
+        String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
 
 		/* Display everything when in debug mode, with shiny colors */
-		if (showAll) {
-			// Process any block with one language first so that they can be nested in blocks with more than one language.
-			for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-				String l = lang.getLang().toLowerCase();
-				res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]",
-						"<font color=\""+langColors.get(l)+"\">$1</font>");
-			}
-			for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-				String l = lang.getLang().toLowerCase();
-				for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-					if (!lang2.equals(lang)) {
-						String l2 = lang2.getLang().toLowerCase();
-						res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2)+"\">$1</font>");
-					}
-				}
-			}
+        if (showAll) {
+            // Process any block with one language first so that they can be nested in blocks with more than one language.
+            for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
+                String l = lang.getLang().toLowerCase();
+                res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]",
+                        "<font color=\"" + langColors.get(l) + "\">$1</font>");
+            }
+            for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
+                String l = lang.getLang().toLowerCase();
+                for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
+                    if (!lang2.equals(lang)) {
+                        String l2 = lang2.getLang().toLowerCase();
+                        res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", "<font color=\"" + langColors.get(l + "|" + l2) + "\">$1</font>");
+                    }
+                }
+            }
 
-			for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-				String l = lang.getLang().toLowerCase();
-				for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-					if (!lang2.equals(lang)) {
-						String l2 = lang2.getLang().toLowerCase();
-						for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
-							if (!lang3.equals(lang) && !lang3.equals(lang2)) {
-								String l3 = lang3.getLang().toLowerCase();
-								res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-							}
-						}
-					}
-				}
-			}
-			return res;
-		}
+            for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
+                String l = lang.getLang().toLowerCase();
+                for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
+                    if (!lang2.equals(lang)) {
+                        String l2 = lang2.getLang().toLowerCase();
+                        for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
+                            if (!lang3.equals(lang) && !lang3.equals(lang2)) {
+                                String l3 = lang3.getLang().toLowerCase();
+                                res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "<font color=\"" + langColors.get(l + "|" + l2 + "|" + l3) + "\">$1</font>");
+                            }
+                        }
+                    }
+                }
+            }
+            return res;
+        }
 
 		/* if showMulti, all of selected language will be appear on editor, but in the same color */
-		//FIXME add colors
-		if(showMulti){
-			String replace="<font color=\"FF0000\">$7</font>";
-			
-			String strtemp="";
-			String cls[] = new String[currLang.length];
-			for(int i=0;i<currLang.length;i++){
-				cls[i]=currLang[i].getLang().toLowerCase();
-			}
-			while(!strtemp.equals(res)){
-				strtemp=res.toString();
-				for (String cl : cls) {
-					res = res.replaceAll("(?s)\\[!"+cl+"\\](.*?)\\[/!\\]",   "\\[!#\\]<font color=\"FF0000\">$1</font>\\[/!\\]");
-					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+cl+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "\\[!#\\]"+replace+"\\[/!\\]");
-					res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+cl+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "\\[!#\\]"+replace+"\\[/!\\]");
-				}
+        //FIXME add colors
+        if (showMulti) {
+            String replace = "<font color=\"FF0000\">$7</font>";
 
-				res = res.replaceAll("(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)"+"[a-z]*"+"(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)"+"[a-z]*"+"(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll(      "(?s)\\[![a-z]*\\](.*?)\\[/!\\]",   "");
-				res = res.replaceAll(      "(?s)\\[!#\\](.*?)\\[/!\\]",   "$1");
+            String strtemp = "";
+            String cls[] = new String[currLang.length];
+            for (int i = 0; i < currLang.length; i++) {
+                cls[i] = currLang[i].getLang().toLowerCase();
+            }
+            while (!strtemp.equals(res)) {
+                strtemp = res.toString();
+                for (String cl : cls) {
+                    res = res.replaceAll("(?s)\\[!" + cl + "\\](.*?)\\[/!\\]", "\\[!#\\]<font color=\"FF0000\">$1</font>\\[/!\\]");
+                    res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)" + cl + "(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]", "\\[!#\\]" + replace + "\\[/!\\]");
+                    res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)" + cl + "(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]", "\\[!#\\]" + replace + "\\[/!\\]");
+                }
 
-			}
-		}else{
+                res = res.replaceAll("(?s)\\[![a-z]*\\](.*?)\\[/!\\]", "");
+                res = res.replaceAll("(?s)\\[!((([a-z]*\\|)?)?)" + "[a-z]*" + "(((\\|[a-z]*)?)?)\\](.*?)\\[/!\\]", "");
+                res = res.replaceAll("(?s)\\[!((([a-z]*\\|)*)?)" + "[a-z]*" + "(((\\|[a-z]*)*)?)\\](.*?)\\[/!\\]", "");
+                res = res.replaceAll("(?s)\\[![a-z]*\\](.*?)\\[/!\\]", "");
+                res = res.replaceAll("(?s)\\[!#\\](.*?)\\[/!\\]", "$1");
 
-			
-			String strtemp="";
-			
-			while(!strtemp.equals(res)){
-				strtemp=res.toString();
-				
-				// Process any block with one language first so that they can be nested in blocks with more than one language.
-				for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-					String l = lang.getLang().toLowerCase();
-					if (lang.equals(ProgrammingLanguage.supportedProgLangs)) 
-						res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]", "$1"); // Keep it
-					else 
-						res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]", ""); // Not for us
-				}
-				for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-					String l = lang.getLang().toLowerCase();
-					for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-						String l2 = lang2.getLang().toLowerCase();
-						if (lang.equals(targetLang) || lang2.equals(targetLang))
-							res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","$1"); // Keep it
-						else 
-							res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]",""); // Not for us
-					}
-				}
+            }
+        } else {
 
-				for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-					String l = lang.getLang().toLowerCase();
-					for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-						if (!lang2.equals(lang)) {
-							String l2 = lang2.getLang().toLowerCase();
-							for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
-								if (!lang3.equals(lang) && !lang3.equals(lang2)) {
-									String l3 = lang3.getLang().toLowerCase();
-									if (lang.equals(targetLang) || lang2.equals(targetLang) || lang3.equals(targetLang))
-										res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","$1");
-									else
-										res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","");
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 
-		return res;
-	}
+            String strtemp = "";
 
-	public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
-		boolean visible=false;
-		@Override
-		public View create(Element element) {
-			Element iterElem = element;
-			String theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
+            while (!strtemp.equals(res)) {
+                strtemp = res.toString();
 
-			Object tagName = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
-			if (tagName instanceof HTML.Tag) {
-				HTML.Tag tag = (HTML.Tag) tagName;
-				if (tag == HTML.Tag.IMG)
-					return new MyIconView(element, baseExercise);
-			}
-			return super.create(element);
-		}
-	}
+                // Process any block with one language first so that they can be nested in blocks with more than one language.
+                for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
+                    String l = lang.getLang().toLowerCase();
+                    if (lang.equals(ProgrammingLanguage.supportedProgLangs))
+                        res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]", "$1"); // Keep it
+                    else
+                        res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]", ""); // Not for us
+                }
+                for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
+                    String l = lang.getLang().toLowerCase();
+                    for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
+                        String l2 = lang2.getLang().toLowerCase();
+                        if (lang.equals(targetLang) || lang2.equals(targetLang))
+                            res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", "$1"); // Keep it
+                        else
+                            res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", ""); // Not for us
+                    }
+                }
 
-	protected static Exercise baseExercise = null;
-	public PlmHtmlEditorKit() {
-		baseExercise = null;
-	}
+                for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
+                    String l = lang.getLang().toLowerCase();
+                    for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
+                        if (!lang2.equals(lang)) {
+                            String l2 = lang2.getLang().toLowerCase();
+                            for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
+                                if (!lang3.equals(lang) && !lang3.equals(lang2)) {
+                                    String l3 = lang3.getLang().toLowerCase();
+                                    if (lang.equals(targetLang) || lang2.equals(targetLang) || lang3.equals(targetLang))
+                                        res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "$1");
+                                    else
+                                        res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-	public PlmHtmlEditorKit(Exercise _baseExercise) {
-		baseExercise = _baseExercise;
-	}
+        return res;
+    }
 
-	@Override
-	public ViewFactory getViewFactory() {
-		return new HTMLFactoryX();
-	}
-	public static String getCSS() {
-		String header = "  <style type=\"text/css\">\n"+
-				"    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
-				"    code { background:#EEEEEE; }\n"+
-				"    pre { background: #EEEEEE;\n"+
-				"          margin: 5px;\n"+
-				"          padding: 6px;\n"+
-				"          border: 1px inset;\n"+
-				"          width: 640px;\n"+
-				"          overflow: auto;\n"+
-				"          text-align: left;\n"+
-				"          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-				"   .comment { background:#EEEEEE;\n"+
-				"              font-family: \"Times New Roman\", serif;\n"+
-				"              color:#00AA00;\n"+
-				"              font-style: italic; }\n";
-		String res;
-		return header+"  </style>\n";
-	}
+    public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
+        boolean visible = false;
+
+        @Override
+        public View create(Element element) {
+            Element iterElem = element;
+            String theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
+
+            Object tagName = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
+            if (tagName instanceof HTML.Tag) {
+                HTML.Tag tag = (HTML.Tag) tagName;
+                if (tag == HTML.Tag.IMG)
+                    return new MyIconView(element, baseExercise);
+            }
+            return super.create(element);
+        }
+    }
+
+    protected static Exercise baseExercise = null;
+
+    public PlmHtmlEditorKit() {
+        baseExercise = null;
+    }
+
+    public PlmHtmlEditorKit(Exercise _baseExercise) {
+        baseExercise = _baseExercise;
+    }
+
+    @Override
+    public ViewFactory getViewFactory() {
+        return new HTMLFactoryX();
+    }
+
+    public static String getCSS() {
+        String header = "  <style type=\"text/css\">\n" +
+                "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n" +
+                "    code { background:#EEEEEE; }\n" +
+                "    pre { background: #EEEEEE;\n" +
+                "          margin: 5px;\n" +
+                "          padding: 6px;\n" +
+                "          border: 1px inset;\n" +
+                "          width: 640px;\n" +
+                "          overflow: auto;\n" +
+                "          text-align: left;\n" +
+                "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n" +
+                "   .comment { background:#EEEEEE;\n" +
+                "              font-family: \"Times New Roman\", serif;\n" +
+                "              color:#00AA00;\n" +
+                "              font-style: italic; }\n";
+        String res;
+        return header + "  </style>\n";
+    }
 }
 
 class EmptyView extends IconView {
 
-	public EmptyView(Element elem) {
-		super(elem);
-	}
-	@Override
-	public float getPreferredSpan(int axis) {
-		return 0;
-	}
-	@Override
-	public void paint(Graphics g, Shape a) {
-	}
+    public EmptyView(Element elem) {
+        super(elem);
+    }
+
+    @Override
+    public float getPreferredSpan(int axis) {
+        return 0;
+    }
+
+    @Override
+    public void paint(Graphics g, Shape a) {
+    }
 }
 
 /* This is a crude copy/paste of IconView where all I changed is the constructor. 
@@ -288,26 +281,26 @@ class EmptyView extends IconView {
  * But I have the feeling that we will move to SWT before that day happens :-/ [Mt] */
 
 class MyIconView extends View {
-	/**
-	 * Creates a new icon view that represents an element.
-	 *
-	 * @param elem the element to create a view for
-	 * @param baseExercise 
-	 * @throws FileNotFoundException 
-	 */
-	public MyIconView(Element elem, Exercise baseExercise) {
-		super(elem);
-		String filename = (String) elem.getAttributes().getAttribute(HTML.Attribute.SRC);
-		if (filename == null) {
-			if (baseExercise == null) 
-				System.err.println("<img> tag without src attribute at offset "+elem.getStartOffset());
-			else
-				System.err.println("<img> tag without src attribute in exercise "+baseExercise.getName()+" at offset "+elem.getStartOffset());
-			
-			c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
-		} else {
-			Logger.error("Cannot load icon "+filename+" until after the ResourceCache is restored.");
-			/*
+    /**
+     * Creates a new icon view that represents an element.
+     *
+     * @param elem         the element to create a view for
+     * @param baseExercise
+     * @throws FileNotFoundException
+     */
+    public MyIconView(Element elem, Exercise baseExercise) {
+        super(elem);
+        String filename = (String) elem.getAttributes().getAttribute(HTML.Attribute.SRC);
+        if (filename == null) {
+            if (baseExercise == null)
+                System.err.println("<img> tag without src attribute at offset " + elem.getStartOffset());
+            else
+                System.err.println("<img> tag without src attribute in exercise " + baseExercise.getName() + " at offset " + elem.getStartOffset());
+
+            c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
+        } else {
+            Logger.error("Cannot load icon " + filename + " until after the ResourceCache is restored.");
+            /*
 			c = ResourcesCache.getIcon(filename,true);
 			if (c != null)
 				return;
@@ -333,126 +326,126 @@ class MyIconView extends View {
 				c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
 			}
 			*/
-		}
-	}
+        }
+    }
 
-	// --- View methods ---------------------------------------------
+    // --- View methods ---------------------------------------------
 
-	/**
-	 * Paints the icon.
-	 * The real paint behavior occurs naturally from the association
-	 * that the icon has with its parent container (the same
-	 * container hosting this view), so this simply allows us to
-	 * position the icon properly relative to the view.  Since
-	 * the coordinate system for the view is simply the parent
-	 * containers, positioning the child icon is easy.
-	 *
-	 * @param g the rendering surface to use
-	 * @param a the allocated region to render into
-	 * @see View#paint
-	 */
-	@Override
-	public void paint(Graphics g, Shape a) {
-		Rectangle alloc = a.getBounds();
-		c.paintIcon(getContainer(), g, alloc.x, alloc.y);
-	}
+    /**
+     * Paints the icon.
+     * The real paint behavior occurs naturally from the association
+     * that the icon has with its parent container (the same
+     * container hosting this view), so this simply allows us to
+     * position the icon properly relative to the view.  Since
+     * the coordinate system for the view is simply the parent
+     * containers, positioning the child icon is easy.
+     *
+     * @param g the rendering surface to use
+     * @param a the allocated region to render into
+     * @see View#paint
+     */
+    @Override
+    public void paint(Graphics g, Shape a) {
+        Rectangle alloc = a.getBounds();
+        c.paintIcon(getContainer(), g, alloc.x, alloc.y);
+    }
 
-	/**
-	 * Determines the preferred span for this view along an
-	 * axis.
-	 *
-	 * @param axis may be either View.X_AXIS or View.Y_AXIS
-	 * @return  the span the view would like to be rendered into
-	 *           Typically the view is told to render into the span
-	 *           that is returned, although there is no guarantee.
-	 *           The parent may choose to resize or break the view.
-	 * @exception IllegalArgumentException for an invalid axis
-	 */
-	@Override
-	public float getPreferredSpan(int axis) {
-		switch (axis) {
-		case View.X_AXIS:
-			return c.getIconWidth();
-		case View.Y_AXIS:
-			return c.getIconHeight();
-		default:
-			throw new IllegalArgumentException("Invalid axis: " + axis);
-		}
-	}
+    /**
+     * Determines the preferred span for this view along an
+     * axis.
+     *
+     * @param axis may be either View.X_AXIS or View.Y_AXIS
+     * @return the span the view would like to be rendered into
+     * Typically the view is told to render into the span
+     * that is returned, although there is no guarantee.
+     * The parent may choose to resize or break the view.
+     * @throws IllegalArgumentException for an invalid axis
+     */
+    @Override
+    public float getPreferredSpan(int axis) {
+        switch (axis) {
+            case View.X_AXIS:
+                return c.getIconWidth();
+            case View.Y_AXIS:
+                return c.getIconHeight();
+            default:
+                throw new IllegalArgumentException("Invalid axis: " + axis);
+        }
+    }
 
-	/**
-	 * Determines the desired alignment for this view along an
-	 * axis.  This is implemented to give the alignment to the
-	 * bottom of the icon along the y axis, and the default
-	 * along the x axis.
-	 *
-	 * @param axis may be either View.X_AXIS or View.Y_AXIS
-	 * @return the desired alignment >= 0.0f && <= 1.0f.  This should be
-	 *   a value between 0.0 and 1.0 where 0 indicates alignment at the
-	 *   origin and 1.0 indicates alignment to the full span
-	 *   away from the origin.  An alignment of 0.5 would be the
-	 *   center of the view.
-	 */
-	@Override
-	public float getAlignment(int axis) {
-		switch (axis) {
-		case View.Y_AXIS:
-			return 1;
-		default:
-			return super.getAlignment(axis);
-		}
-	}
+    /**
+     * Determines the desired alignment for this view along an
+     * axis.  This is implemented to give the alignment to the
+     * bottom of the icon along the y axis, and the default
+     * along the x axis.
+     *
+     * @param axis may be either View.X_AXIS or View.Y_AXIS
+     * @return the desired alignment >= 0.0f && <= 1.0f.  This should be
+     * a value between 0.0 and 1.0 where 0 indicates alignment at the
+     * origin and 1.0 indicates alignment to the full span
+     * away from the origin.  An alignment of 0.5 would be the
+     * center of the view.
+     */
+    @Override
+    public float getAlignment(int axis) {
+        switch (axis) {
+            case View.Y_AXIS:
+                return 1;
+            default:
+                return super.getAlignment(axis);
+        }
+    }
 
-	/**
-	 * Provides a mapping from the document model coordinate space
-	 * to the coordinate space of the view mapped to it.
-	 *
-	 * @param pos the position to convert >= 0
-	 * @param a the allocated region to render into
-	 * @return the bounding box of the given position
-	 * @exception BadLocationException  if the given position does not
-	 *   represent a valid location in the associated document
-	 * @see View#modelToView
-	 */
-	@Override
-	public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
-		int p0 = getStartOffset();
-		int p1 = getEndOffset();
-		if ((pos >= p0) && (pos <= p1)) {
-			Rectangle r = a.getBounds();
-			if (pos == p1) {
-				r.x += r.width;
-			}
-			r.width = 0;
-			return r;
-		}
-		throw new BadLocationException(pos + " not in range " + p0 + "," + p1, pos);
-	}
+    /**
+     * Provides a mapping from the document model coordinate space
+     * to the coordinate space of the view mapped to it.
+     *
+     * @param pos the position to convert >= 0
+     * @param a   the allocated region to render into
+     * @return the bounding box of the given position
+     * @throws BadLocationException if the given position does not
+     *                              represent a valid location in the associated document
+     * @see View#modelToView
+     */
+    @Override
+    public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
+        int p0 = getStartOffset();
+        int p1 = getEndOffset();
+        if ((pos >= p0) && (pos <= p1)) {
+            Rectangle r = a.getBounds();
+            if (pos == p1) {
+                r.x += r.width;
+            }
+            r.width = 0;
+            return r;
+        }
+        throw new BadLocationException(pos + " not in range " + p0 + "," + p1, pos);
+    }
 
-	/**
-	 * Provides a mapping from the view coordinate space to the logical
-	 * coordinate space of the model.
-	 *
-	 * @param x the X coordinate >= 0
-	 * @param y the Y coordinate >= 0
-	 * @param a the allocated region to render into
-	 * @return the location within the model that best represents the
-	 *  given point of view >= 0
-	 * @see View#viewToModel
-	 */
-	@Override
-	public int viewToModel(float x, float y, Shape a, Position.Bias[] bias) {
-		Rectangle alloc = (Rectangle) a;
-		if (x < alloc.x + (alloc.width / 2)) {
-			bias[0] = Position.Bias.Forward;
-			return getStartOffset();
-		}
-		bias[0] = Position.Bias.Backward;
-		return getEndOffset();
-	}
+    /**
+     * Provides a mapping from the view coordinate space to the logical
+     * coordinate space of the model.
+     *
+     * @param x the X coordinate >= 0
+     * @param y the Y coordinate >= 0
+     * @param a the allocated region to render into
+     * @return the location within the model that best represents the
+     * given point of view >= 0
+     * @see View#viewToModel
+     */
+    @Override
+    public int viewToModel(float x, float y, Shape a, Position.Bias[] bias) {
+        Rectangle alloc = (Rectangle) a;
+        if (x < alloc.x + (alloc.width / 2)) {
+            bias[0] = Position.Bias.Forward;
+            return getStartOffset();
+        }
+        bias[0] = Position.Bias.Backward;
+        return getEndOffset();
+    }
 
-	// --- member variables ------------------------------------------------
+    // --- member variables ------------------------------------------------
 
-	private Icon c;
+    private Icon c;
 }
 

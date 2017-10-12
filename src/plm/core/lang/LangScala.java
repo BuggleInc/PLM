@@ -56,7 +56,7 @@ public class LangScala extends JVMCompiledLang {
 	@Override
 	public String nameOfCorrectionEntity(Exercise exo){
 		String path = super.nameOfCorrectionEntity(exo);
-		
+
 		String[] components = path.split("\\.");
 		StringBuilder result = new StringBuilder();
 		int last = components.length - 1;
@@ -75,10 +75,10 @@ public class LangScala extends JVMCompiledLang {
 	}
 }
 
-/** In memory compiler of scala code. 
+/** In memory compiler of scala code.
  *  This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala */
 class ScalaCompiler {
-	
+
 	private PLMReporter reporter;
 	private Settings settings;
 	private Map<String, Class<?>> cache = new HashMap<String, Class<?>>();
@@ -86,7 +86,7 @@ class ScalaCompiler {
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	private boolean isDebugEnabled;
-	
+
 	public ScalaCompiler(boolean isDebugEnabled) {
 		super();
 		this.isDebugEnabled = isDebugEnabled;
@@ -96,7 +96,7 @@ class ScalaCompiler {
 		Option<VirtualDirectory> noAncestor = scala.Option$.MODULE$.apply(null);
 		target = new VirtualDirectory("(memory)", noAncestor);
 		settings.outputDirs().setSingleOutput(target);
-		
+
 		settings.usejavacp().tryToSetFromPropertyValue("true");
 		//settings.usemanifestcp().tryToSetFromPropertyValue("true");
 		reporter = new PLMReporter(settings, isDebugEnabled);
@@ -112,17 +112,17 @@ class ScalaCompiler {
 	}
 
 	public void compile(String name,String content,int offset) throws PLMCompilerException {
-		if (isDebugEnabled) 
+		if (isDebugEnabled)
 			System.out.println("Compiline souce "+name+" to scala (offset:"+offset+"):\n"+content);
-		
+
 		Run compiler = global.new Run();
 		List<SourceFile> sources = new LinkedList<SourceFile>();
-		
+
 		sources.add(new BatchSourceFile(new VirtualFile(name) , content.toCharArray()));
 		reporter.setOffset(offset);
-		
+
 		compiler.compileSources(JavaConverters.asScalaBufferConverter(sources).asScala().toList());
-		
+
 		if (isDebugEnabled && reporter.hasErrors())
 			System.out.println("Here is the scala source code of "+name+" (offset:"+offset+"): "+content);
 		reporter.throwExceptionOnNeed();
@@ -139,10 +139,10 @@ class ScalaCompiler {
 				cache.put(className, res);
 			}
 
-			return cache.get(className);			
+			return cache.get(className);
 		}
 	}
-	
+
 	class PLMReporter extends AbstractReporter {
 		final static int INFO = 0;
 		final static int WARNING = 1;
@@ -165,38 +165,38 @@ class ScalaCompiler {
 			return settings;
 		}
 		@Override
-		public void displayPrompt() { 
-			/* Don't do that, pal. */ 
+		public void displayPrompt() {
+			/* Don't do that, pal. */
 		}
 		private int severityRank(Severity s) {
-			String severityName = s.toString(); 
+			String severityName = s.toString();
 			int severity = -1;
 			if (severityName.equals("INFO") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@0"))
 				severity = INFO;
 			if (severityName.equals("WARNING") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@1"))
 				severity = WARNING;
-			if (severityName.equals("ERROR") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@2")) 
+			if (severityName.equals("ERROR") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@2"))
 				severity = ERROR;
 			if (severity == -1)
 				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt the PLM to this new version of scala (or whatever).");
 			return severity;
 		}
-		
+
 		@Override
 		public void display(Position pos, String message, Severity _severity) {
 			System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
 
 			String label = "";
 			int severity = severityRank(_severity);
-			if (severity == INFO && isDebugEnabled) 
+			if (severity == INFO && isDebugEnabled)
 				return;
 			if (severity == WARNING)
 				label = "warning: ";
 			if (severity == ERROR)
-				label = "error: "; 
+				label = "error: ";
 
 			counts[severity]++;
-			
+
 			int lineNum = -1;
 			try {
 				lineNum = pos.line() - offset;
@@ -235,7 +235,7 @@ class ScalaCompiler {
 			super.reset();
 			messages.removeAllElements();
 		}
-		
+
 		@Override
 		public int count(Object o) {
 			return counts[severityRank((Severity) o)];
