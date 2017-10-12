@@ -14,6 +14,11 @@ public abstract class ExerciseTemplated extends Exercise {
 		super(id, name);
 	}
 
+	public ExerciseTemplated() {
+	    this("");
+	    setId(getClass().getCanonicalName());
+	    setName(getClass().getCanonicalName());
+    }
 	public ExerciseTemplated(String name) {
 		super(name, name);
 		setId(getClass().getCanonicalName());

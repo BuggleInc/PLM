@@ -1,4 +1,4 @@
-package lessons.welcome.array.basics;
+package array.basics;
 
 import java.awt.Color;
 
@@ -11,7 +11,6 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class Array2 extends ExerciseTemplated {
 
 	public Array2(Lesson lesson) {
-		super(lesson);
 		BuggleWorld[] myWorlds = new BuggleWorld[3];
 
 		myWorlds[0] = new BuggleWorld("Pattern 1",6,6);

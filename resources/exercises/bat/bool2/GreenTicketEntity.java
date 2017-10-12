@@ -3,6 +3,7 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.universe.bat.BatEntity;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
