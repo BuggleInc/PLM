@@ -1,25 +1,23 @@
-package array.golomb;
+package array.golomb
 
-import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatTest;
-import plm.universe.bat.BatWorld;
+import plm.universe.bat.{BatEntity, BatTest}
 
 class ScalaGolombEntity extends BatEntity {
 
-	/* BEGIN TEMPLATE */
-def golomb(num:Int): Int = {
-		/* BEGIN SOLUTION */
-  if(num==1)
-  		return 1;
-  else
-  		return 1+golomb(num-golomb(golomb(num-1)));
-		/* END SOLUTION */
-}
-	/* END TEMPLATE */
+  /* BEGIN TEMPLATE */
+  def golomb(num: Int): Int = {
+    /* BEGIN SOLUTION */
+    if (num == 1)
+      1
+    else
+      1 + golomb(num - golomb(golomb(num - 1)))
+    /* END SOLUTION */
+  }
 
-	override def run(t: BatTest) {
-		t.setResult( golomb((int)t.getParameter(0)) );
-	}
+  /* END TEMPLATE */
+
+  override def run(t: BatTest) {
+    t.setResult(golomb(t.getParameter(0).asInstanceOf[Int]))
+  }
 }
 

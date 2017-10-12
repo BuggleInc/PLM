@@ -1,7 +1,7 @@
 package array.arraycount9
 import plm.universe.bat.{BatEntity, BatTest}
 
-public class ScalaArrayCount9Entity extends BatEntity {
+class ScalaArrayCount9Entity extends BatEntity {
 
 	/* BEGIN TEMPLATE */
 	def arrayCount9(nums:Array[Int]): Int = {

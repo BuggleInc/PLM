@@ -1,22 +1,20 @@
-package lessons.bat.string1;
-import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
-import plm.universe.bat.BatWorld;
+package bat.string1
+
+import plm.universe.bat.{BatEntity, BatTest}
 
 class ScalaStringTimesEntity extends BatEntity {
-	/* BEGIN TEMPLATE */
-def stringTimes(str:String, n:Int):String = {
-		/* BEGIN SOLUTION */
-  var res = ""
-  for (i <- 1 to n)
-    res ++= str
-  res
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+  /* BEGIN TEMPLATE */
+  def stringTimes(str: String, n: Int): String = {
+    /* BEGIN SOLUTION */
+    var res = ""
+    for (i <- 1 to n)
+      res ++= str
+    res
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
 
-	override def run(t: BatTest) {
-		t.setResult( stringTimes((String)t.getParameter(0), (Integer)t.getParameter(1)) );
-	}
+  override def run(t: BatTest) {
+    t.setResult(stringTimes(t.getParameter(0).asInstanceOf[String], t.getParameter(1).asInstanceOf[Int]) )
+  }
 }

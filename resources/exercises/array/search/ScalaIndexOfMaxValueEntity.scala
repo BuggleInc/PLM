@@ -1,6 +1,8 @@
 package array.search
 
-class IndexOfMaxValueEntity extends BatEntity {
+import plm.universe.bat.{BatEntity, BatTest}
+
+class ScalaIndexOfMaxValueEntity extends BatEntity {
   /* BEGIN TEMPLATE */
   def indexOfMaxValue(nums: Array[Int]): Int = {
     /* BEGIN SOLUTION */
@@ -17,7 +19,7 @@ class IndexOfMaxValueEntity extends BatEntity {
   /* END TEMPLATE */
 
   override def run(t: BatTest) {
-    t.setResult(indexOfMaximum(t.getParameter(0).asInstanceOf[Array[Int]]))
+    t.setResult(indexOfMaxValue(t.getParameter(0).asInstanceOf[Array[Int]]))
   }
 }
 

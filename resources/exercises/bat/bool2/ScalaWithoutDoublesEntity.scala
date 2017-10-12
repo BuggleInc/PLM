@@ -1,27 +1,26 @@
-package bat.bool2;
-import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
-import plm.universe.bat.BatTest;
-import plm.universe.bat.BatWorld;
+package bat.bool2
+
+import plm.universe.bat.{BatEntity, BatTest}
 
 class ScalaWithoutDoublesEntity extends BatEntity {
 
-	/* BEGIN TEMPLATE */
-def withoutDoubles(die1:Int, die2:Int, noDoubles:Boolean):Int = {
-		/* BEGIN SOLUTION */
-	if (noDoubles && (die1 == die2)) {
-		if (die1 == 6)
-			return 1 + die2
-		else
-			return die1 + 1 + die2
-	} else
-		return die1 + die2
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+  /* BEGIN TEMPLATE */
+  def withoutDoubles(die1: Int, die2: Int, noDoubles: Boolean): Int = {
+    /* BEGIN SOLUTION */
+    if (noDoubles && (die1 == die2)) {
+      if (die1 == 6)
+        return 1 + die2
+      else
+        return die1 + 1 + die2
+    } else
+      return die1 + die2
+    /* END SOLUTION */
+  }
 
-	override def run(t: BatTest) {
-		t.setResult( withoutDoubles((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Boolean)t.getParameter(2)) );
-	}
+  /* END TEMPLATE */
 
+  override def run(t: BatTest) {
+    t.setResult(withoutDoubles(t.getParameter(0).asInstanceOf[Int], t.getParameter(1).asInstanceOf[Int],
+                               t.getParameter(2).asInstanceOf[Boolean]) )
+  }
 }

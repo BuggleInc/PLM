@@ -3,7 +3,7 @@
 package bat.bool2
 import plm.universe.bat.{BatEntity, BatTest}
 
-public class ScalaShareDigitEntity extends BatEntity {
+class ScalaShareDigitEntity extends BatEntity {
 	/* BEGIN TEMPLATE */
 	def shareDigit(a:Int, b:Int):Boolean = {
 		/* BEGIN SOLUTION */

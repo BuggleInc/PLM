@@ -2,7 +2,7 @@ package bat.bool2
 
 import plm.universe.bat.{BatEntity, BatTest}
 
-class BlueTicketEntity extends BatEntity {
+class ScalaBlueTicketEntity extends BatEntity {
 
   /* BEGIN TEMPLATE */
   def blueTicket(a: Int, b: Int, c: Int): Int = {

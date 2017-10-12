@@ -16,7 +16,7 @@ class ScalaIndexOfValueEntity extends BatEntity {
   /* END TEMPLATE */
 
   override def run(t: BatTest) {
-    t.setResult(indexOf(t.getParameter(0).asInstanceOf[Array[Int]], t.getParameter(1).asInstanceOf[Int]))
+    t.setResult(indexOfValue(t.getParameter(0).asInstanceOf[Array[Int]], t.getParameter(1).asInstanceOf[Int]))
   }
 }
 
