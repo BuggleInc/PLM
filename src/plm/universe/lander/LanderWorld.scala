@@ -27,7 +27,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   var width: Int = 0
   var height: Int = 0
-  var ground: List[Point] = null
+  var ground: List[Point] =  null
   var position: Point = null
   var speed: Point = null
   /** Angle in degrees, 0 points north, 90 points west. */

@@ -430,7 +430,7 @@ public class TurtleWorld extends World {
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
 					sb.append(i18n.tr("  {0} (got {1} instead of {2})\n",
-							((Shape) other.shapes.get(i)).diffTo(shapes.get(i), i18n),
+							other.shapes.get(i).diffTo(shapes.get(i), i18n),
 							other.shapes.get(i),shapes.get(i)));
 		} }
 		return sb.toString();

@@ -3,9 +3,6 @@ package bat.bool1.diff21
 import plm.universe.bat.BatTest
 import plm.universe.bat.BatEntity
 
-/**
- * @author matthieu
- */
 class ScalaDiff21Entity extends BatEntity {
   override def run(t: BatTest) {
     t.setResult( diff21(t.getParameter(0).asInstanceOf[Integer]))

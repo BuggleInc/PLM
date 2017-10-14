@@ -60,7 +60,7 @@ public class BuggleWorld extends GridWorld {
 		BuggleWorld initialWorld = (BuggleWorld)iw;
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				BuggleWorldCell c = (BuggleWorldCell) initialWorld.getCell(i, j);
+				BuggleWorldCell c = initialWorld.getCell(i, j);
 				cells[i][j] = new BuggleWorldCell(c, this);
 			}
 		easter=false;
@@ -303,7 +303,7 @@ public class BuggleWorld extends GridWorld {
 
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
-				BuggleWorldCell cell = (BuggleWorldCell) getCell(x, y);
+				BuggleWorldCell cell = getCell(x, y);
 
 				if ((!cell.getColor().equals(Color.white)) || cell.hasBaggle() ||
 						cell.hasLeftWall() || cell.hasTopWall() || cell.hasContent()

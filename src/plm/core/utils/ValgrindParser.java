@@ -76,7 +76,7 @@ public class ValgrindParser {
 	private static String getValue(String tag, Element element) {
 		if(element.getElementsByTagName(tag)!=null && element.getElementsByTagName(tag).item(0)!=null){
 			NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
-			Node node = (Node) nodes.item(0);
+			Node node = nodes.item(0);
 			return node.getNodeValue();
 		}else{
 			return "";

@@ -14,7 +14,7 @@ public class BDR extends ExerciseTemplated {
 
 	BuggleWorld myWorld;
 	void set(int x, int y, String clue) {
-		BuggleWorldCell c = (BuggleWorldCell) myWorld.getCell(x, y);
+		BuggleWorldCell c = myWorld.getCell(x, y);
 		if (!c.hasContent())
 			c.addContent(clue);
 		
@@ -36,7 +36,6 @@ public class BDR extends ExerciseTemplated {
 	public BDR() {
 		super("BDR", "BDR");
 		tabName = "BDRBuggle";
-		//setToolbox();
 
 		myWorld = new BuggleWorld("Dance Floor",7,7);
 		/* first dancer, plus its steps */

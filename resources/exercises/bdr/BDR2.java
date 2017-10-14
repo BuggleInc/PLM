@@ -14,7 +14,7 @@ public class BDR2 extends ExerciseTemplated {
 
 	BuggleWorld myWorld ;
 	void set(int x, int y, String clue) {
-		BuggleWorldCell c = (BuggleWorldCell) myWorld.getCell(x, y);
+		BuggleWorldCell c = myWorld.getCell(x, y);
 		if (!c.hasContent())
 			c.addContent(clue);
 

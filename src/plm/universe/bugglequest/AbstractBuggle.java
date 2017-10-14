@@ -125,7 +125,7 @@ public abstract class AbstractBuggle extends Entity {
 	public void brushDown() {
 		this.brushDown = true;
 		addOperation(new ChangeBuggleBrushDown(name, false, true));
-		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
+		BuggleWorldCell cell = ((BuggleWorld)world).getCell(x, y);
 		Color oldColor = getCell().getColor();
 		addOperation(new ChangeCellColor(cell.getX(), cell.getY(), oldColor, brushColor));
 		cell.setColor(brushColor);

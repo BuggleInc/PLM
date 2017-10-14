@@ -416,11 +416,12 @@ public class Turtle extends Entity {
 	}
 
 	public void setPos(double x, int y) {
-		setPos((double) x, (double) y);
+		setPos(x, y);
 	}
 
+	@SuppressWarnings("RedundantCast")
 	public void setPos(int x, double y) {
-		setPos((double) x, (double) y);
+		setPos(x, y);
 	}
 
 	public void addSizeHint(int x1, int y1, int x2, int y2,String text){

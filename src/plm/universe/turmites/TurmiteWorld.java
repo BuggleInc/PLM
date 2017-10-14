@@ -42,7 +42,7 @@ public class TurmiteWorld extends BuggleWorld {
 				rule
 		});
 
-		new Buggle((BuggleWorld)this,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.red);
+		new Buggle(this,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.red);
 	}
 	
 	@JsonCreator
