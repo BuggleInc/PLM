@@ -16,6 +16,7 @@ file: foreach my $file (sort @files) {
     my $state = 0;
     my $seenTemplate = 0;
     my $seenSolution = 0;
+    my $solutionHasContent = 0;
     while (<FH>) {
 	if (/BEGIN SKEL/ or /END SKEL/) {
 	    $error++;
@@ -71,6 +72,8 @@ file: foreach my $file (sort @files) {
 		next file;
 	    } elsif (/END SOLUTION/) {
 		$state = 3;
+	    } elsif (/[a-zA-Z]/) {
+		$solutionHasContent = 1;
 	    }
 	} elsif ($state eq 3) { # after SOLUTION
 	    if (/BEGIN TEMPLATE/) {
@@ -122,6 +125,9 @@ file: foreach my $file (sort @files) {
     } elsif (($state eq 3) and ($seenTemplate == 1)) {
 	$error++;
 	print STDERR "$file: missing END TEMPLATE\n";
+    } elsif ($state eq 4 and $solutionHasContent eq 0) {
+	$error++;
+	print STDERR "$file: SOLUTION has no content\n";
     }
 }
 print "#errors: $error\n";
