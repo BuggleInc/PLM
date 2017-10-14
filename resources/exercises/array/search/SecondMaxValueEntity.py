@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def max2Value(nums):
+  # BEGIN SOLUTION
   max=-10000000
   sec=-10000000
   for i in range(len(nums)):
@@ -8,3 +10,6 @@ def max2Value(nums):
     elif nums[i] > sec:
       sec = nums[i]
   return sec
+
+# END SOLUTION
+# END TEMPLATE

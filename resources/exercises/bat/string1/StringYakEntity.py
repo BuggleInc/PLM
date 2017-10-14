@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def stringYak(str):
+  # BEGIN SOLUTION
   res = ''
   i=0
   while i<len(str):
@@ -8,3 +10,6 @@ def stringYak(str):
       res += str[i]
     i+=1
   return res
+
+# END SOLUTION
+# END TEMPLATE

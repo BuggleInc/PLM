@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def blueTicket(a, b, c):
+  # BEGIN SOLUTION
   ab = a + b
   ac = a + c
   bc = b + c
@@ -8,3 +10,6 @@ def blueTicket(a, b, c):
     return 5
   else:
     return 0
+
+# END SOLUTION
+# END TEMPLATE

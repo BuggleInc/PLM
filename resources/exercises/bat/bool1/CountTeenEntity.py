@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def countTeen(a, b, c, d):
+    # BEGIN SOLUTION
     ret=0
     if (a>12 and a<20):
       ret+=1
@@ -9,3 +11,6 @@ def countTeen(a, b, c, d):
     if (d>12 and d<20):
       ret+=1
     return ret
+
+# END SOLUTION
+# END TEMPLATE

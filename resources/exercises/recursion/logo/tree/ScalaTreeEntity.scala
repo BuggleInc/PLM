@@ -57,7 +57,6 @@ class ScalaTreeEntity extends Turtle {
 			right(angle);	         
 			backward(length);
 		}
-		/* END SOLUTION */	
 	}
 
 	override def run() {

@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def last2(str):
+  # BEGIN SOLUTION
   l = len(str)
   if l < 2:
     return 0
@@ -8,3 +10,6 @@ def last2(str):
     if str[i:i+2] == end:
       count += 1
   return count
+
+# END SOLUTION
+# END TEMPLATE

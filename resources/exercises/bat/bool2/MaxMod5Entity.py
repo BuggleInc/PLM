@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def maxMod5(a, b):
+	# BEGIN SOLUTION
 	if (a == b):
 		return 0
 	elif (a > b):
@@ -11,3 +13,6 @@ def maxMod5(a, b):
 			return a
 		else:
 			return b
+
+# END SOLUTION
+# END TEMPLATE

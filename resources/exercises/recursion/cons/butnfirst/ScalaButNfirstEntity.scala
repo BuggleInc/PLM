@@ -13,6 +13,7 @@ class ScalaButNfirstEntity extends ConsEntity {
 
   /* BEGIN TEMPLATE */
   def butNfirst(l:List[Int], n:Int): List[Int] = {
+  /*  BEGIN SOLUTION */
     if (n==0 || l==Nil) {
       l
     } else {

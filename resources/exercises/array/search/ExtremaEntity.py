@@ -1,4 +1,6 @@
+# BEGIN TEMPLATE
 def extrema(nums):
+  # BEGIN SOLUTION
   if (len(nums)>0) :
     min=nums[0]
     max=nums[0]
@@ -10,3 +12,6 @@ def extrema(nums):
     return max-min
   else :
     return 0
+
+# END SOLUTION
+# END TEMPLATE

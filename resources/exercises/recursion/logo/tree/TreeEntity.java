@@ -63,7 +63,6 @@ public class TreeEntity extends Turtle {
 			right(angle);	         
 			backward(length);
 		}
-		/* END SOLUTION */	
 	}
 
 	public void run() {
