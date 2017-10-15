@@ -29,8 +29,8 @@ import unit.exercise.example.Example;
 import unit.exercise.universe.ExampleWorld;
 
 public class ExerciseFactoryTest {
-	private LangJava java = new LangJava(true);
-	private LangScala scala = new LangScala(true);
+	private LangJava java = new LangJava(ClassLoader.getSystemClassLoader(), true);
+	private LangScala scala = new LangScala(ClassLoader.getSystemClassLoader(), true);
 	private LangPython python = new LangPython(true);
 	private LangBlockly blockly = new LangBlockly(true);
 
@@ -47,9 +47,9 @@ public class ExerciseFactoryTest {
 	@Before
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
-		exerciseFactory = new ExerciseFactory(
+		exerciseFactory = new ExerciseFactory(new FileUtils(ClassLoader.getSystemClassLoader()),
 			locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
-		exo = new Example();
+		exo = new Example(new FileUtils(ClassLoader.getSystemClassLoader()));
 		exerciseFactory.initializeExercise(exo, java);
 	}
 
@@ -114,7 +114,7 @@ public class ExerciseFactoryTest {
 			String expected = "";
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				sb = new FileUtils(ClassLoader.getSystemClassLoader()).readContentAsText(filename, humanLanguage, "html", true);
 				expected = sb.toString();
 			} catch (IOException ex) {}
 

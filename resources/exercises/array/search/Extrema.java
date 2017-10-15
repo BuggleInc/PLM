@@ -2,14 +2,15 @@ package array.search;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Extrema extends ExerciseTemplated {
-	public Extrema(Lesson lesson) {
+	public Extrema(Lesson lesson, FileUtils fileUtils) {
 		super("Extrema");
 
-		BatWorld myWorld = new BatWorld("extrema");
+		BatWorld myWorld = new BatWorld(fileUtils, "extrema");
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 7, 1}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2}) ;

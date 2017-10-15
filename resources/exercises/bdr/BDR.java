@@ -1,10 +1,12 @@
 package bdr;
 
 import java.awt.Color;
+import java.io.FileInputStream;
 
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
@@ -33,11 +35,11 @@ public class BDR extends ExerciseTemplated {
 	void left (int x, int y){  set(x, y, "L"); }
 	void back (int x, int y){  set(x, y, "I"); }
 
-	public BDR() {
+	public BDR(FileUtils fileUtils) {
 		super("BDR", "BDR");
 		tabName = "BDRBuggle";
 
-		myWorld = new BuggleWorld("Dance Floor",7,7);
+		myWorld = new BuggleWorld(fileUtils, "Dance Floor",7,7);
 		/* first dancer, plus its steps */
 		new SimpleBuggle(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
 		plus1(0,6);

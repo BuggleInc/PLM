@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class BatWorld extends World {
@@ -18,8 +19,8 @@ public class BatWorld extends World {
 	@JsonProperty("batTests")
 	public List<BatTest> tests = new Vector<BatTest>();
 
-	public BatWorld(String funName) {
-		super(funName);
+	public BatWorld(FileUtils fileUtils, String funName) {
+		super(fileUtils, funName);
 		
 		addEntity(new BatEntity(funName));
 	}
@@ -31,8 +32,8 @@ public class BatWorld extends World {
 	}
 
 	@JsonCreator
-	public BatWorld(@JsonProperty("name")String name, @JsonProperty("batTests")Vector<BatTest> tests) {
-		super(name);
+	public BatWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("batTests")Vector<BatTest> tests) {
+		super(fileUtils, name);
 		this.tests = tests;
 	}
 

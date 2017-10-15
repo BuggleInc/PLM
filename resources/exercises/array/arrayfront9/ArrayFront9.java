@@ -1,14 +1,15 @@
 package array.arrayfront9;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ArrayFront9 extends ExerciseTemplated {
-	public ArrayFront9(Lesson lesson) {
+	public ArrayFront9(Lesson lesson, FileUtils fileUtils) {
 		super("ArrayFront9");
 
-		BatWorld myWorld = new BatWorld("arrayFront9");
+		BatWorld myWorld = new BatWorld(fileUtils, "arrayFront9");
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 9, 3, 4}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 3, 4, 9}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 3, 4, 5}) ;

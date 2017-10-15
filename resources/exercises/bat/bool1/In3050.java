@@ -2,15 +2,16 @@ package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class In3050 extends ExerciseTemplated {
 
-	public In3050(Lesson lesson) {
+	public In3050(Lesson lesson, FileUtils fileUtils) {
 		super("In3050");
 
-		BatWorld myWorld = new BatWorld("in3050");
+		BatWorld myWorld = new BatWorld(fileUtils, "in3050");
 		myWorld.addTest(BatTest.VISIBLE,  30,31);
 		myWorld.addTest(BatTest.VISIBLE,  30,41);
 		myWorld.addTest(BatTest.VISIBLE,  40,50);

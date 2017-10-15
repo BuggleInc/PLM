@@ -1,14 +1,15 @@
 package array.has271;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Has271 extends ExerciseTemplated {
-	public Has271(Lesson lesson) {
+	public Has271(Lesson lesson, FileUtils fileUtils) {
 		super("Has271");
 
-		BatWorld myWorld = new BatWorld("has271");
+		BatWorld myWorld = new BatWorld(fileUtils, "has271");
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 7, 1}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 8, 1}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {2, 7, 1}) ;

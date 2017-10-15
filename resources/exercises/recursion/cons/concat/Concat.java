@@ -1,5 +1,6 @@
 package recursion.cons.concat;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class Concat extends ConsExercise {
 
-	public Concat() {
+	public Concat(FileUtils fileUtils) {
 		super("Concat", "Concat");
 		
-		BatWorld myWorld = new ConsWorld("concat");
+		BatWorld myWorld = new ConsWorld(fileUtils, "concat");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}),    (new int[]{11, 12, 13}));
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}),    (new int[]{1, 1, 1}));
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}),    (new int[]{}));

@@ -3,10 +3,10 @@ package plm.core.lang
 /**
  * @author matthieu
  */
-object ProgrammingLanguages {
-  val java: ProgrammingLanguage = new LangJava(false)
+class ProgrammingLanguages(classLoader: ClassLoader) {
+  val java: ProgrammingLanguage = new LangJava(classLoader, false)
   val python: ProgrammingLanguage = new LangPython(false)
-  val scala: ProgrammingLanguage = new LangScala(false)
+  val scala: ProgrammingLanguage = new LangScala(classLoader, false)
   val blockly: ProgrammingLanguage = new LangBlockly(false)
 
   ProgrammingLanguage.registerSupportedProgLang(java)

@@ -5,17 +5,18 @@ import java.awt.Color;
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class LoopWhile extends ExerciseTemplated {
 
-	public LoopWhile() {
+	public LoopWhile(FileUtils fileUtils) {
 		super("LoopWhile", "LoopWhile");
 		tabName = "Program";
 
-		BuggleWorld myWorld = new BuggleWorld("Closed world",7,7);
+		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Closed world",7,7);
 		for (int i=0;i<7;i++) {
 			new SimpleBuggle(myWorld, "Joker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 			myWorld.putTopWall (i, 6-i);

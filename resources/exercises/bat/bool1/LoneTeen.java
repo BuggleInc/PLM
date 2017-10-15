@@ -2,15 +2,16 @@ package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LoneTeen extends ExerciseTemplated {
 
-	public LoneTeen(Lesson lesson) {
+	public LoneTeen(Lesson lesson, FileUtils fileUtils) {
 		super("LoneTeen");
 
-		BatWorld myWorld = new BatWorld("loneTeen");
+		BatWorld myWorld = new BatWorld(fileUtils, "loneTeen");
 		myWorld.addTest(BatTest.VISIBLE,  13,42);
 		myWorld.addTest(BatTest.VISIBLE,  21,19);
 		myWorld.addTest(BatTest.VISIBLE,  13,13);

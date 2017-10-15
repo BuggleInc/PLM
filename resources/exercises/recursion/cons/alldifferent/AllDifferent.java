@@ -1,5 +1,6 @@
 package recursion.cons.alldifferent;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class AllDifferent extends ConsExercise {
 
-	public AllDifferent() {
+	public AllDifferent(FileUtils fileUtils) {
 		super("AllDifferent", "AllDifferent");
 
-		BatWorld myWorld = new ConsWorld("allDifferent");
+		BatWorld myWorld = new ConsWorld(fileUtils, "allDifferent");
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 3, 4});
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 2, 4});
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 1, 1});

@@ -2,15 +2,16 @@ package bat.bool1;
 
 
 import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class IcyHot extends ExerciseTemplated {
 
-	public IcyHot() {
+	public IcyHot(FileUtils fileUtils) {
 		super("IcyHot", "IcyHot");
 
-		BatWorld myWorld = new BatWorld("icyHot");
+		BatWorld myWorld = new BatWorld(fileUtils, "icyHot");
 		myWorld.addTest(BatTest.VISIBLE, 120,-1);
 		myWorld.addTest(BatTest.VISIBLE, -1,120);
 		myWorld.addTest(BatTest.VISIBLE, 2,120);

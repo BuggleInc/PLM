@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
@@ -12,13 +13,13 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class SlugHunting extends ExerciseTemplated {
 
-	public SlugHunting() {
+	public SlugHunting(FileUtils fileUtils) {
 		super("SlugHunting", "SlugHunting");
 		//setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 
-		BuggleWorld myWorld = new BuggleWorld("Forrest", 8, 7);
+		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Forrest", 8, 7);
 		for (int i = 5; i >= 2; i--)
 			myWorld.setColor(6, i,Color.green);
 		myWorld.setColor(5, 2,Color.green);
@@ -36,7 +37,7 @@ public class SlugHunting extends ExerciseTemplated {
 		}
 		myWorlds[0] = myWorld;
 
-		myWorld = new BuggleWorld("Desert", 8, 7);
+		myWorld = new BuggleWorld(fileUtils, "Desert", 8, 7);
 		for (int i = 5; i >= 2; i--)
 		    myWorld.setColor(6, i,Color.green);
 		myWorld.putTopWall(6, 2);

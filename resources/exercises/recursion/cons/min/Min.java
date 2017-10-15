@@ -1,5 +1,6 @@
 package recursion.cons.min;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class Min extends ConsExercise {
 
-	public Min() {
+	public Min(FileUtils fileUtils) {
 		super("Min", "Min");
 		
-		BatWorld myWorld = new ConsWorld("min");
+		BatWorld myWorld = new ConsWorld(fileUtils, "min");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}));
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 1, 1}));
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 1, 3, 2}));

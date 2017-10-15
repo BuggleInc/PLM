@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AlarmClock extends ExerciseTemplated {
-	public AlarmClock(Lesson lesson) {
+	public AlarmClock(Lesson lesson, FileUtils fileUtils) {
 		super("AlarmClock");
 
-		BatWorld myWorld = new BatWorld("alarmClock");
+		BatWorld myWorld = new BatWorld(fileUtils, "alarmClock");
 		myWorld.addTest(BatTest.VISIBLE, 1, false) ;
 		myWorld.addTest(BatTest.VISIBLE, 5, false) ;
 		myWorld.addTest(BatTest.VISIBLE, 0, false) ;

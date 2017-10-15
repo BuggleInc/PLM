@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class FizzBuzz extends ExerciseTemplated {
-	public FizzBuzz(Lesson lesson) {
+	public FizzBuzz(Lesson lesson, FileUtils fileUtils) {
 		super("FizzBuzz");
 
-		BatWorld myWorld = new BatWorld("fizzBuzz");
+		BatWorld myWorld = new BatWorld(fileUtils, "fizzBuzz");
 		myWorld.addTest(BatTest.VISIBLE, 2) ;
 		myWorld.addTest(BatTest.VISIBLE, 3) ;
 		myWorld.addTest(BatTest.VISIBLE, 4) ;

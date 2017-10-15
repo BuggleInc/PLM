@@ -1,5 +1,6 @@
 package plm.core.model.session;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
@@ -22,9 +23,11 @@ import plm.core.utils.FileUtils;
 
 public class TemplatedSourceFileFactory {
 
+	private final FileUtils fileUtils;
 	private Locale locale;
 	
-	public TemplatedSourceFileFactory(Locale locale) {
+	public TemplatedSourceFileFactory(FileUtils fileUtils, Locale locale) {
+		this.fileUtils = fileUtils;
 		this.locale = locale;
 	}
 	
@@ -40,7 +43,7 @@ public class TemplatedSourceFileFactory {
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, null, lang.getExt(), false);
+			sb = fileUtils.readContentAsText(filename, null, lang.getExt(), false);
 		} catch (IOException ex) {
 			throw new NoSuchEntityException(i18n.tr("Source file {0}.{1} not found.",filename.replaceAll("\\.","/"),lang.getExt()));			
 		}

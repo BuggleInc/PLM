@@ -1,5 +1,6 @@
 package recursion.cons.nlast;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class Nlast extends ConsExercise {
 
-	public Nlast() {
+	public Nlast(FileUtils fileUtils) {
 		super("Nlast", "Nlast");
 		
-		BatWorld myWorld = new ConsWorld("nlast");
+		BatWorld myWorld = new ConsWorld(fileUtils, "nlast");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}), 3);
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}), 2);
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 1, 1}), 3);

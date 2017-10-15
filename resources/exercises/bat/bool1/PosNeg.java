@@ -1,15 +1,16 @@
 package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class PosNeg extends ExerciseTemplated {
 
-	public PosNeg() {
+	public PosNeg(FileUtils fileUtils) {
 		super("PosNeg", "PosNeg");
 
-		BatWorld myWorld = new BatWorld("posNeg");
+		BatWorld myWorld = new BatWorld(fileUtils, "posNeg");
 		myWorld.addTest(BatTest.VISIBLE, -1,1,false);
 		myWorld.addTest(BatTest.VISIBLE, 1,-1,false);
 		myWorld.addTest(BatTest.VISIBLE, 1,1,false);

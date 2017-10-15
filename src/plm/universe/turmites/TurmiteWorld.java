@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Direction;
 import plm.universe.World;
@@ -33,8 +34,8 @@ public class TurmiteWorld extends BuggleWorld {
 	 * 
 	 * You can perfectly have several such constructor. 
 	 */
-	public TurmiteWorld(String title, int nbSteps, Object rule, int width, int height, int buggleX, int buggleY) {
-		super(title,width,height);
+	public TurmiteWorld(FileUtils fileUtils, String title, int nbSteps, Object rule, int width, int height, int buggleX, int buggleY) {
+		super(fileUtils, title, width, height);
 		currStep = 0;
 		setVisibleGrid(false);
 		setParameter(new Object[] {
@@ -46,8 +47,8 @@ public class TurmiteWorld extends BuggleWorld {
 	}
 	
 	@JsonCreator
-	public TurmiteWorld(@JsonProperty("name")String title, @JsonProperty("width")int width, @JsonProperty("height")int height) {
-		super(title,width,height);
+	public TurmiteWorld(FileUtils fileUtils, @JsonProperty("name")String title, @JsonProperty("width")int width, @JsonProperty("height")int height) {
+		super(fileUtils, title,width,height);
 		currStep = 0;
 		setVisibleGrid(false);
 	}
@@ -117,7 +118,7 @@ public class TurmiteWorld extends BuggleWorld {
 	
 	@Override
 	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
-		TurmiteWorld res = new TurmiteWorld("toto",1, "",1,1,1,1);
+		TurmiteWorld res = new TurmiteWorld(fileUtils, "toto",1, "",1,1,1,1);
 		res.removeEntity(res.getEntity(0));
 		return res.readFromFile(path,"TurmiteWorld",res);
 	}

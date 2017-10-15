@@ -35,8 +35,8 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class BuggleWorld extends GridWorld {
 
 	@JsonCreator
-	public BuggleWorld(@JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
-		super(name,x,y);
+	public BuggleWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
+		super(fileUtils, name,x,y);
 	}
 
 	@Override
@@ -97,14 +97,14 @@ public class BuggleWorld extends GridWorld {
 		return true;
 	}
 
-	public static World newFromFile(String path) throws IOException, BrokenWorldFileException {
-		BuggleWorld res = new BuggleWorld("toto", 1, 1);
+	public static World newFromFile(FileUtils fileUtils, String path) throws IOException, BrokenWorldFileException {
+		BuggleWorld res = new BuggleWorld(fileUtils, "toto", 1, 1);
 		return res.readFromFile(path);
 	}
 
 	@Override
 	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
-		BuggleWorld res = new BuggleWorld("toto", 1, 1);
+		BuggleWorld res = new BuggleWorld(fileUtils, "toto", 1, 1);
 
 		return readFromFile(path,"BuggleWorld",res);
 	}
@@ -115,7 +115,7 @@ public class BuggleWorld extends GridWorld {
 		if (path.endsWith(".map"))
 			System.err.println(i18n.tr("{0}: The path to the map on disk should not include the .map extension (or it won''t work in jarfiles). Please fix your exercise.",path));
 
-		BufferedReader reader = FileUtils.newFileReader(path, null, "map", false);
+		BufferedReader reader = fileUtils.newFileReader(path, null, "map", false);
 
 		/* Get the world name from the first line */
 		String line = reader.readLine();

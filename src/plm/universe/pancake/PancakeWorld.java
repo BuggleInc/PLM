@@ -1,5 +1,6 @@
 package plm.universe.pancake;
 
+import java.io.File;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class PancakeWorld extends World {
@@ -46,8 +48,8 @@ public class PancakeWorld extends World {
 	 * @param size : the amount of pancakes in the stack
 	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(String name, int size, boolean burnedPancake) {
-		super(name);
+	public PancakeWorld(FileUtils fileUtils, String name, int size, boolean burnedPancake) {
+		super(fileUtils, name);
 		Random r = new Random(0);
 		
 		/* Create the pancakes */
@@ -74,8 +76,8 @@ public class PancakeWorld extends World {
 	 * @param sizes the size of each pancake. If negative, the pancake is upside down
 	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
 	 */
-	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
-		super(name);
+	public PancakeWorld(FileUtils fileUtils, String name, int[] sizes, boolean burnedPancake) {
+		super(fileUtils, name);
 		
 		/* Create the pancakes */
 		this.pancakeStack =  new Pancake[sizes.length];
@@ -86,8 +88,8 @@ public class PancakeWorld extends World {
 	}
 	
 	@JsonCreator
-	public PancakeWorld(@JsonProperty("name")String name) {
-		super(name);
+	public PancakeWorld(FileUtils fileUtils, @JsonProperty("name")String name) {
+		super(fileUtils, name);
 	}
 
 	/** Returns a textual description of the differences between the caller and the parameter */

@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AnswerCell extends ExerciseTemplated {
-	public AnswerCell(Lesson lesson) {
+	public AnswerCell(Lesson lesson, FileUtils fileUtils) {
 		super("AnswerCell");
 
-		BatWorld myWorld = new BatWorld("answerCell");
+		BatWorld myWorld = new BatWorld(fileUtils, "answerCell");
 		myWorld.addTest(BatTest.VISIBLE, false, false, false) ;
 		myWorld.addTest(BatTest.VISIBLE, false, false, true) ;
 		myWorld.addTest(BatTest.VISIBLE, true, false, false) ;

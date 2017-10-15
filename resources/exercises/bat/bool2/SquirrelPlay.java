@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class SquirrelPlay extends ExerciseTemplated {
-	public SquirrelPlay(Lesson lesson) {
+	public SquirrelPlay(Lesson lesson, FileUtils fileUtils) {
 		super("SquirrelPlay");
 
-		BatWorld myWorld = new BatWorld("squirrelPlay");
+		BatWorld myWorld = new BatWorld(fileUtils, "squirrelPlay");
 		myWorld.addTest(BatTest.VISIBLE, 70, false) ;
 		myWorld.addTest(BatTest.VISIBLE, 95, false) ;
 		myWorld.addTest(BatTest.VISIBLE, 95, true) ;

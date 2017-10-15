@@ -6,7 +6,7 @@ import plm.universe.bat.BatEntity
 /**
  * @author matthieu
  */
-class ScalaSleepInEntity extends BatEntity {
+class ScalaMonkeyTroubleEntity extends BatEntity {
   override def run(t: BatTest) {
     t.setResult( monkeyTrouble(t.getParameter(0).asInstanceOf[Boolean],t.getParameter(1).asInstanceOf[Boolean]))
   }

@@ -1,15 +1,16 @@
 package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Makes10 extends ExerciseTemplated {
 
-	public Makes10() {
+	public Makes10(FileUtils fileUtils) {
 		super("Makes10", "Makes10");
 
-		BatWorld myWorld = new BatWorld("makes10");
+		BatWorld myWorld = new BatWorld(fileUtils, "makes10");
 		myWorld.addTest(BatTest.VISIBLE,  9,10);
 		myWorld.addTest(BatTest.VISIBLE,  9,9);
 		myWorld.addTest(BatTest.VISIBLE,  1,9);
