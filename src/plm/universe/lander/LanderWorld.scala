@@ -120,7 +120,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     if (state == FLYING) {
       angle = clamp(-90.0 max (angle - 5), 90.0 min (angle + 5), desiredAngle)
       thrust = clamp(0 max (thrust - 1), 5 min (thrust + 1), desiredThrust) min fuel
-      val force = radianToVector(angleRadian) * thrust + LanderWorld.GRAVITY
+      val force = radianToVector(angleRadian) * thrust.toDouble + LanderWorld.GRAVITY
       position = position + speed * dt
       speed = speed + force * dt
       fuel = (fuel - thrust) max 0
