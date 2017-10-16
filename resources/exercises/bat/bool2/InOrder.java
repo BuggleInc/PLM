@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class InOrder extends ExerciseTemplated {
-	public InOrder(Lesson lesson) {
+	public InOrder(Lesson lesson, FileUtils fileUtils) {
 		super("InOrder");
 
-		BatWorld myWorld = new BatWorld("inOrder");
+		BatWorld myWorld = new BatWorld(fileUtils, "inOrder");
 		myWorld.addTest(BatTest.VISIBLE, 1, 2, 4, false) ;
 		myWorld.addTest(BatTest.VISIBLE, 1, 2, 1, false) ;
 		myWorld.addTest(BatTest.VISIBLE, 1, 1, 2, true) ;

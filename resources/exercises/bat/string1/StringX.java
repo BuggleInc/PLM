@@ -2,12 +2,13 @@ package bat.string1;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringX extends ExerciseTemplated {
-    public StringX(Lesson lesson) {
-        BatWorld myWorld = new BatWorld("stringX");
+    public StringX(Lesson lesson, FileUtils fileUtils) {
+        BatWorld myWorld = new BatWorld(fileUtils, "stringX");
         myWorld.addTest(BatTest.VISIBLE, "xxHxix");
         myWorld.addTest(BatTest.VISIBLE, "abxxxcd");
         myWorld.addTest(BatTest.VISIBLE, "xabxxxcdx");

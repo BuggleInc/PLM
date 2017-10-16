@@ -4,6 +4,7 @@ import java.util.Random;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
@@ -15,7 +16,7 @@ public class OccurrenceOfValue extends ExerciseTemplated {
 		return tab[r.nextInt(tab.length)];
 	}
 	
-	public OccurrenceOfValue(Lesson lesson) {
+	public OccurrenceOfValue(Lesson lesson, FileUtils fileUtils) {
 		super("OccurrenceOfValue");
 		
 		int[] tab = new int[15];
@@ -34,7 +35,7 @@ public class OccurrenceOfValue extends ExerciseTemplated {
 		for (int i=0; i<tab4.length; i++) 
 			tab4[i] = r.nextInt(tab.length/2);
 
-		BatWorld myWorld = new BatWorld("occurrences");
+		BatWorld myWorld = new BatWorld(fileUtils, "occurrences");
 		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
 		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
 		myWorld.addTest(BatTest.VISIBLE, tab, r.nextInt(35)-15);

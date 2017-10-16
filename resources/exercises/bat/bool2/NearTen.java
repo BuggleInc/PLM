@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class NearTen extends ExerciseTemplated {
-	public NearTen(Lesson lesson) {
+	public NearTen(Lesson lesson, FileUtils fileUtils) {
 		super("NearTen");
 
-		BatWorld myWorld = new BatWorld("nearTen");
+		BatWorld myWorld = new BatWorld(fileUtils, "nearTen");
 		myWorld.addTest(BatTest.VISIBLE, 12) ;
 		myWorld.addTest(BatTest.VISIBLE, 17) ;
 		myWorld.addTest(BatTest.VISIBLE, 19) ;

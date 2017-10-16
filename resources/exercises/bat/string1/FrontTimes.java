@@ -2,12 +2,13 @@ package bat.string1;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class FrontTimes extends ExerciseTemplated {
-    public FrontTimes(Lesson lesson) {
-        BatWorld myWorld = new BatWorld("frontTimes");
+    public FrontTimes(Lesson lesson, FileUtils fileUtils) {
+        BatWorld myWorld = new BatWorld(fileUtils, "frontTimes");
         myWorld.addTest(BatTest.VISIBLE, "Chocolate", 2);
         myWorld.addTest(BatTest.VISIBLE, "Chocolate", 3);
         myWorld.addTest(BatTest.VISIBLE, "Abc", 3);

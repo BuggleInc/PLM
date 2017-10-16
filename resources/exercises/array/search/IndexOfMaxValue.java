@@ -4,12 +4,13 @@ import java.util.Random;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class IndexOfMaxValue extends ExerciseTemplated {
 
-	public IndexOfMaxValue(Lesson lesson) {
+	public IndexOfMaxValue(Lesson lesson, FileUtils fileUtils) {
 		super("IndexOfMaxValue");
 		Random r = new Random();
 		
@@ -21,7 +22,7 @@ public class IndexOfMaxValue extends ExerciseTemplated {
 		for (int i=0; i<tab2.length; i++) 
 			tab2[i] = r.nextInt(35);
 
-		BatWorld myWorld = new BatWorld("indexOfMaxValue");
+		BatWorld myWorld = new BatWorld(fileUtils, "indexOfMaxValue");
 		myWorld.addTest(BatTest.VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
 		myWorld.addTest(BatTest.VISIBLE, tab) ;
 		myWorld.addTest(BatTest.INVISIBLE, tab2) ;

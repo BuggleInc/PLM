@@ -24,13 +24,14 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
 import plm.core.model.lesson.tip.DefaultTipFactory;
+import plm.core.utils.FileUtils;
 import unit.exercise.examplerunner.ExampleRunner;
 
 @RunWith(Parameterized.class)
 public class ExerciseRunnerTest {
 
-	private static LangJava java = new LangJava(true);
-	private static LangScala scala = new LangScala(true);
+	private static LangJava java = new LangJava(ClassLoader.getSystemClassLoader(), true);
+	private static LangScala scala = new LangScala(ClassLoader.getSystemClassLoader(), true);
 	private static LangPython python = new LangPython(true);
 	private static LangBlockly blockly = new LangBlockly(true);
 	private static ProgrammingLanguage[] programmingLanguages =  { java, scala, python, blockly };
@@ -61,8 +62,9 @@ public class ExerciseRunnerTest {
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
 		exerciseFactory = new ExerciseFactory(
-		    locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
-		exo = new ExampleRunner();
+				new FileUtils(ClassLoader.getSystemClassLoader()),
+				locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
+		exo = new ExampleRunner(new FileUtils(ClassLoader.getSystemClassLoader()));
 		exerciseFactory.initializeExercise(exo, java);
 	}
 

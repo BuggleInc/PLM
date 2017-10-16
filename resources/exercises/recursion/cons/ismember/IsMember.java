@@ -1,5 +1,6 @@
 package recursion.cons.ismember;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class IsMember extends ConsExercise {
 
-	public IsMember() {
+	public IsMember(FileUtils fileUtils) {
 		super("IsMember", "IsMember");
 		
-		BatWorld myWorld = new ConsWorld("isMember");
+		BatWorld myWorld = new ConsWorld(fileUtils, "isMember");
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 3, 4}, 1);
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 3, 4}, 2);
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 3, 4}, 42);

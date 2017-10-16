@@ -1,15 +1,16 @@
 package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class NearHundred extends ExerciseTemplated {
 
-	public NearHundred() {
+	public NearHundred(FileUtils fileUtils) {
 		super("NearHundred", "NearHundred");
 
-		BatWorld myWorld = new BatWorld("nearHundred");
+		BatWorld myWorld = new BatWorld(fileUtils,"nearHundred");
 		myWorld.addTest(BatTest.VISIBLE, 93);
 		myWorld.addTest(BatTest.VISIBLE, 90);
 		myWorld.addTest(BatTest.VISIBLE, 89);

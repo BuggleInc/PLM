@@ -1,5 +1,6 @@
 package plm.universe.baseball;
 
+import java.io.File;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class BaseballWorld extends World {
@@ -41,12 +43,12 @@ public class BaseballWorld extends World {
 
 
 	/** Regular constructor used by exercises */
-	public BaseballWorld(String name, int baseAmount, int positionAmount) {
-		this(name,baseAmount,positionAmount,MIX_RANDOM);
+	public BaseballWorld(FileUtils fileUtils, String name, int baseAmount, int positionAmount) {
+		this(fileUtils, name,baseAmount,positionAmount,MIX_RANDOM);
 	}
 
-	public BaseballWorld(String name, int basesAmount, int positionsAmount, int mix) {
-		super(name);
+	public BaseballWorld(FileUtils fileUtils, String name, int basesAmount, int positionsAmount, int mix) {
+		super(fileUtils, name);
 		
 		// create the bases
 		this.basesAmount = basesAmount;
@@ -110,8 +112,8 @@ public class BaseballWorld extends World {
 	}
 
 
-	public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values) {
-		this(name, baseAmount, positionAmount, MIX_SORTED);
+	public BaseballWorld(FileUtils fileUtils, String name, int baseAmount, int positionAmount, int[] values) {
+		this(fileUtils, name, baseAmount, positionAmount, MIX_SORTED);
 		if (baseAmount*positionsAmount != values.length)
 			throw new RuntimeException("Your values array is not of the right size");
 		field = values;
@@ -132,8 +134,8 @@ public class BaseballWorld extends World {
 	}
 
 	@JsonCreator
-	public BaseballWorld(@JsonProperty("name")String name) {
-		super(name);
+	public BaseballWorld(FileUtils fileUtils, @JsonProperty("name")String name) {
+		super(fileUtils, name);
 	}
 
 	/**

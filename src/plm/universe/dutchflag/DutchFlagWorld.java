@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class DutchFlagWorld extends World {
@@ -32,8 +33,8 @@ public class DutchFlagWorld extends World {
 	 * @param name : the name of the world
 	 * @param size : the amount of elements 
 	 */
-	public DutchFlagWorld(String name, int size) {
-		super(name);
+	public DutchFlagWorld(FileUtils fileUtils, String name, int size) {
+		super(fileUtils, name);
 		new DutchFlagEntity(this);
 		
 		content = new int[size];
@@ -52,8 +53,8 @@ public class DutchFlagWorld extends World {
 		}
 	}
 	
-	public DutchFlagWorld(String name, int size, int colorRemoved) {
-		super(name);
+	public DutchFlagWorld(FileUtils fileUtils, String name, int size, int colorRemoved) {
+		super(fileUtils, name);
 		new DutchFlagEntity(this);
 		int [][]color = {
 				{1,2},
@@ -76,8 +77,8 @@ public class DutchFlagWorld extends World {
 	}
 
 	@JsonCreator
-	public DutchFlagWorld(@JsonProperty("name")String name) {
-		super(name);
+	public DutchFlagWorld(FileUtils fileUtils, @JsonProperty("name")String name) {
+		super(fileUtils, name);
 	}
 
 	/** Returns a textual description of the differences between the caller and the parameter */

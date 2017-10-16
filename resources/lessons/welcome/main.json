@@ -312,7 +312,7 @@
         "pt": "SleepDay",
         "fr": "Grasse matinée"
       },
-      "id": "bat.bool1.sleepin.SleepIn",
+      "id": "bat.bool1.SleepIn",
       "dependingLectures": [
         {
           "names": {
@@ -320,7 +320,7 @@
             "pt": "MonkeyTrouble",
             "fr": "Problème de singe"
           },
-          "id": "bat.bool1.monkeytrouble.MonkeyTrouble",
+          "id": "bat.bool1.MonkeyTrouble",
           "dependingLectures": []
         },
         {
@@ -329,7 +329,7 @@
             "pt": "Near Hundred",
             "fr": "Presque 100"
           },
-          "id": "bat.bool1.nearhundred.NearHundred",
+          "id": "bat.bool1.NearHundred",
           "dependingLectures": []
         },
         {
@@ -338,7 +338,7 @@
             "pt": "Soma dupla",
             "fr": "Somme doublée"
           },
-          "id": "bat.bool1.sumdouble.SumDouble",
+          "id": "bat.bool1.SumDouble",
           "dependingLectures": []
         },
         {
@@ -347,7 +347,7 @@
             "pt": "Diferença 21",
             "fr": "Diff 21"
           },
-          "id": "bat.bool1.diff21.Diff21",
+          "id": "bat.bool1.Diff21",
           "dependingLectures": []
         },
         {
@@ -356,7 +356,7 @@
             "pt": "Parot Trouble",
             "fr": "Problème de perroquet"
           },
-          "id": "bat.bool1.parottrouble.ParotTrouble",
+          "id": "bat.bool1.ParotTrouble",
           "dependingLectures": []
         },
         {
@@ -365,7 +365,7 @@
             "pt": "Makes 10",
             "fr": "Font 10"
           },
-          "id": "bat.bool1.makes10.Makes10",
+          "id": "bat.bool1.Makes10",
           "dependingLectures": []
         },
         {
@@ -374,7 +374,7 @@
             "pt": "Positivo Negativo",
             "fr": "Positif Négatif"
           },
-          "id": "bat.bool1.posneg.PosNeg",
+          "id": "bat.bool1.PosNeg",
           "dependingLectures": []
         },
         {
@@ -383,7 +383,7 @@
             "pt": "Frio Quente",
             "fr": "Feu glacé"
           },
-          "id": "bat.bool1.icyhot.IcyHot",
+          "id": "bat.bool1.IcyHot",
           "dependingLectures": []
         },
         {
@@ -392,7 +392,7 @@
             "pt": "In [10;20]",
             "fr": "Dans [10;20]"
           },
-          "id": "bat.bool1.in1020.In1020",
+          "id": "bat.bool1.In1020",
           "dependingLectures": []
         }
       ]

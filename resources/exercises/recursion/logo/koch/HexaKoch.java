@@ -5,34 +5,35 @@ import java.awt.Color;
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 import plm.universe.turtles.Turtle;
 import plm.universe.turtles.TurtleWorld;
 
 public class HexaKoch extends ExerciseTemplated {
 
-	public HexaKoch() {
+	public HexaKoch(FileUtils fileUtils) {
 		super("HexaKoch", "HexaKoch");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[5];
-		myWorlds[0] = new TurtleWorld("hexaKoch(0,200)", 400, 400);
+		myWorlds[0] = new TurtleWorld(fileUtils, "hexaKoch(0,200)", 400, 400);
 		myWorlds[0].setParameter(new Object[] {0,200.});		
 		new Turtle(myWorlds[0], "Hawksbill", 100, 250, 0, Color.red);
 		
-		myWorlds[1] = new TurtleWorld("hexaKoch(1,500)", 400, 400);
+		myWorlds[1] = new TurtleWorld(fileUtils, "hexaKoch(1,500)", 400, 400);
 		myWorlds[1].setParameter(new Object[] {1,500.});		
 		new Turtle(myWorlds[1], "Hawksbill", 100, 250, 0, Color.red);
 
-		myWorlds[2] = new TurtleWorld("hexaKoch(2,1400)", 400, 400);
+		myWorlds[2] = new TurtleWorld(fileUtils, "hexaKoch(2,1400)", 400, 400);
 		myWorlds[2].setParameter(new Object[] {2,1400.});		
 		new Turtle(myWorlds[2], "Hawksbill", 100, 250, 0, Color.red);
 
-		myWorlds[3] = new TurtleWorld("hexaKoch(3,3500)", 400, 400);
+		myWorlds[3] = new TurtleWorld(fileUtils, "hexaKoch(3,3500)", 400, 400);
 		myWorlds[3].setParameter(new Object[] {3,3500.});		
 		new Turtle(myWorlds[3], "Hawksbill", 100, 250, 0, Color.red);
 		
-		myWorlds[4] = new TurtleWorld("hexaKoch(4,7000)", 400, 400);
+		myWorlds[4] = new TurtleWorld(fileUtils, "hexaKoch(4,7000)", 400, 400);
 		myWorlds[4].setParameter(new Object[] {4,7500.});		
 		new Turtle(myWorlds[4], "Hawksbill", 100, 250,0, Color.red);
 

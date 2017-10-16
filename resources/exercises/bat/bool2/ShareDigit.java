@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ShareDigit extends ExerciseTemplated {
-	public ShareDigit(Lesson lesson) {
+	public ShareDigit(Lesson lesson, FileUtils fileUtils) {
 		super("ShareDigit");
 
-		BatWorld myWorld = new BatWorld("shareDigit");
+		BatWorld myWorld = new BatWorld(fileUtils, "shareDigit");
 		myWorld.addTest(BatTest.VISIBLE, 12, 23) ;
 		myWorld.addTest(BatTest.VISIBLE, 12, 43) ;
 		myWorld.addTest(BatTest.VISIBLE, 12, 44) ;

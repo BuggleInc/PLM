@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
@@ -12,14 +13,14 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class MethodsReturning extends ExerciseTemplated {
 
-	public MethodsReturning() {
+	public MethodsReturning(FileUtils fileUtils) {
 		super("MethodsReturning", "MethodsReturning");
 		tabName = "Program";
 		//setToolbox();
 
 		BuggleWorld[] myWorld = new BuggleWorld[3];
 		for (int i=0; i<3;i++) {
-			myWorld[i] = new BuggleWorld("World "+(i+1),7,7);
+			myWorld[i] = new BuggleWorld(fileUtils, "World "+(i+1),7,7);
 			new SimpleBuggle(myWorld[i], "Searcher", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 		}
 

@@ -1,14 +1,15 @@
 package array.arraycount9;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ArrayCount9 extends ExerciseTemplated {
-	public ArrayCount9(Lesson lesson) {
+	public ArrayCount9(Lesson lesson, FileUtils fileUtils) {
 		super("ArrayCount9");
 
-		BatWorld myWorld = new BatWorld("arrayCount9");
+		BatWorld myWorld = new BatWorld(fileUtils, "arrayCount9");
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 2, 9}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 9, 9}) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {1, 9, 9, 3, 9}) ;

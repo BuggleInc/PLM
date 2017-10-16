@@ -1,5 +1,6 @@
 package recursion.cons.increasing;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -8,10 +9,10 @@ import plm.universe.cons.RecList;
 
 public class Increasing extends ConsExercise {
 
-	public Increasing() {
+	public Increasing(FileUtils fileUtils) {
 		super("Increasing", "Increasing");
 		
-		BatWorld myWorld = new ConsWorld("increasing");
+		BatWorld myWorld = new ConsWorld(fileUtils, "increasing");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}));
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 1, 1}));
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 1, 3, 2}));

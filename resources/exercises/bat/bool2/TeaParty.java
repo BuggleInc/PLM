@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class TeaParty extends ExerciseTemplated {
-	public TeaParty(Lesson lesson) {
+	public TeaParty(Lesson lesson, FileUtils fileUtils) {
 		super("TeaParty");
 
-		BatWorld myWorld = new BatWorld("teaParty");
+		BatWorld myWorld = new BatWorld(fileUtils, "teaParty");
 		myWorld.addTest(BatTest.VISIBLE, 6, 8) ;
 		myWorld.addTest(BatTest.VISIBLE, 3, 8) ;
 		myWorld.addTest(BatTest.VISIBLE, 20, 6) ;

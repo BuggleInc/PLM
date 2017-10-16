@@ -15,17 +15,19 @@ import java.util.Locale;
 
 public class ExerciseFactory {
 
+	private final FileUtils fileUtils;
 	private final ExerciseRunner exerciseRunner;
 	private final ProgrammingLanguage[] programmingLanguages;
 	private final Locale[] humanLanguages;
 	private final TemplatedSourceFileFactory sourceFileFactory;
 	private final AbstractTipFactory tipsFactory;
 
-	public ExerciseFactory(Locale locale, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages, AbstractTipFactory tipsFactory) {
+	public ExerciseFactory(FileUtils fileUtils, Locale locale, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages, AbstractTipFactory tipsFactory) {
+		this.fileUtils = fileUtils;
 		this.exerciseRunner = exerciseRunner;
 		this.programmingLanguages = programmingLanguages;
 		this.humanLanguages = humanLanguages;
-		this.sourceFileFactory = new TemplatedSourceFileFactory(locale);
+		this.sourceFileFactory = new TemplatedSourceFileFactory(fileUtils, locale);
 		this.tipsFactory = tipsFactory;
 	}
 
@@ -57,7 +59,7 @@ public class ExerciseFactory {
 		for(Locale humanLanguage: humanLanguages) {
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				sb = fileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				String mission = tipsFactory.computeTips(exo, humanLanguage, sb.toString());
 				exo.addMission(humanLanguage.getLanguage(), mission);
 			}
@@ -77,7 +79,7 @@ public class ExerciseFactory {
 		for(Locale humanLanguage: humanLanguages) {
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				sb = fileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				exo.addHelp(humanLanguage.getLanguage(), sb.toString());
 			}
 			catch (FileNotFoundException e) {

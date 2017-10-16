@@ -1,30 +1,24 @@
 package plm.core.utils;
 
-import plm.core.model.lesson.ExerciseTemplated;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.Locale;
 
 /**
  * This class is in charge of loading the resources from disk into memory
- * 
- * It solves 2 main difficulties. The first one is to find the files in any case, be
- * them in the distributed jar file, or on the disk (as it happens when we develop PLM:
- * we don't build a jar for each run, we directly from our source tree). It also deals
- * with the windows/unix incompatibilities about directory separators (/ or \).
- * 
- * The second problem it deals with is about translations. When looking for a help file,
- * it first search for a suitable translated version. If not found, it fallbacks to the
- * English version. This is done through the locale static variable. Yeah, that's not
- * clean but it just works.
+ *
+ * It is translation aware. When looking for a help file, it first search for a suitable translated version. If not
+ * found, it falls back to the English version. This is done through the locale static variable. Yeah, that's not clean
+ * but it just works.
  */
+// TODO(polux): clean up this class
 public class FileUtils {
-	public static BufferedReader newFileReader(String file, Locale locale, String extension, boolean translatable)
+	private final ClassLoader classLoader;
+
+	public FileUtils(ClassLoader classLoader) {
+		this.classLoader = classLoader;
+	}
+
+	public BufferedReader newFileReader(String file, Locale locale, String extension, boolean translatable)
 			throws FileNotFoundException, UnsupportedEncodingException {
 		if (translatable && locale == null) {
 				throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
@@ -51,10 +45,9 @@ public class FileUtils {
 			fileName = fileName + (extension != null ? "." + extension : "");
 
 			// external HTML file of this exercise not found on file system. Try as resource, in case we are in a jar file
-			String resourceName =  "/" + fileName;
-        	resourceName = resourceName.replace('\\', '/'); /* just in case we were passed a windows path */
+        	String resourceName = fileName.replace('\\', '/'); /* just in case we were passed a windows path */
 
-        	InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
+			InputStream s = classLoader.getResourceAsStream(resourceName);
         	if (s == null) 
         		continue; // test next name in the list
 
@@ -73,9 +66,9 @@ public class FileUtils {
 				: file + " with extension " + extension + " could not be found.");
 	}	
 	
-	public static StringBuffer readContentAsText(String file, Locale locale, String extension, boolean translatable)
+	public StringBuffer readContentAsText(String file, Locale locale, String extension, boolean translatable)
 			throws FileNotFoundException, UnsupportedEncodingException {
-		BufferedReader br = FileUtils.newFileReader(file, locale, extension, translatable);
+		BufferedReader br = newFileReader(file, locale, extension, translatable);
 		String newLine = System.getProperty("line.separator");
 		
 		StringBuffer sb = new StringBuffer();

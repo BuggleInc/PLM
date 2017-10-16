@@ -5,18 +5,19 @@ import java.awt.Color;
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgs extends ExerciseTemplated {
 
-	public MethodsArgs() {
+	public MethodsArgs(FileUtils fileUtils) {
 		super("MethodsArgs", "MethodsArgs");
 		tabName = "Program";
 		//setToolbox();
 
-		BuggleWorld myWorld = new BuggleWorld("Buggles Party",7,7);
+		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Buggles Party",7,7);
 		new SimpleBuggle(myWorld, "Homer", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 		new SimpleBuggle(myWorld, "Bart", 1, 2, Direction.SOUTH, Color.black, Color.lightGray);
 		new SimpleBuggle(myWorld, "Lisa", 2, 4, Direction.SOUTH, Color.black, Color.lightGray);

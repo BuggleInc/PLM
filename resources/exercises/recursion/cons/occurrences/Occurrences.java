@@ -1,5 +1,6 @@
 package recursion.cons.occurrences;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class Occurrences extends ConsExercise {
 
-	public Occurrences() {
+	public Occurrences(FileUtils fileUtils) {
 		super("Occurrences", "Occurrences");
 		
-		BatWorld myWorld = new ConsWorld("occurrences");
+		BatWorld myWorld = new ConsWorld(fileUtils, "occurrences");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 2, 4}), 1);
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 2, 4}), 2);
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}), 42);
