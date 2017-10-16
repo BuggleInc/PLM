@@ -18,6 +18,15 @@ sub all_exo_are_translated() {
 	$todo{"$exo"} = 1;
 #	print "TODO '$exo'\n";
     }
+    # Search hints for common errors on disk
+    my @hints = qx(find resources -name '*CommonErr*.html');
+    foreach my $h (sort @hints) {
+	chomp ($h);
+	next unless $h =~ m|CommonErr..html|;
+	$h =~ s/.html$//;
+	$todo{"$h"} = 1;
+#	print "TODO '$h'\n";
+    }
     # Search lessons on disk
     my @lessons = qx(find resources/lessons -name 'description.html');
     foreach my $lesson (sort @lessons) {
