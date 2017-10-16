@@ -54,19 +54,15 @@ import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 
 public class LangJava extends JVMCompiledLang {
-	public LangJava(boolean isDebugEnabled) {
-		super("Java", "java", isDebugEnabled);
-	}
+	private static final Pattern IS_JAVA7_PATTERN = Pattern.compile("major version 52 is newer than 51, the highest major version supported by this compiler");
 
-	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
-	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of existing entity classes */
+	private final CompilerJava compiler = new CompilerJava(applicationClassLoader, Arrays.asList(new String[] {/* no option */ }));
+	private Map<String, Class<Object>> compiledClasses = new TreeMap<>(); /* list of existing entity classes */
+	private boolean warnedJava7= false;
 
-	public String getPackageName() {
-		return packageName();
+	public LangJava(ClassLoader applicationCassLoader, boolean isDebugEnabled) {
+		super(applicationCassLoader, "Java", "java", isDebugEnabled);
 	}
-	
-    boolean warnedJava7= false;
-    Pattern isJava7Pattern = Pattern.compile("major version 52 is newer than 51, the highest major version supported by this compiler");
 
 	public void compileExo(SourceFile sourceFile, ExecutionProgress lastResult, StudentOrCorrection whatToCompile, Locale locale) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
@@ -74,7 +70,7 @@ public class LangJava extends JVMCompiledLang {
 		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
 
 		/* Prepare the source files */
-		Map<String, String> sources = new TreeMap<String, String>();
+		Map<String, String> sources = new TreeMap<>();
 		String source = sourceFile.getCompilableContent(runtimePatterns,whatToCompile);
 		sources.put(className(sourceFile.getName()), source);
 
@@ -83,7 +79,7 @@ public class LangJava extends JVMCompiledLang {
 			compiledClasses = compiler.compile(sources, errs, I18nManager.getI18n(locale));
             for (Diagnostic<? extends JavaFileObject> diagnostic : errs.getDiagnostics()) {
             	String msg = diagnostic.getMessage(locale);
-            	Matcher isJava6Matcher = isJava7Pattern.matcher(msg);
+            	Matcher isJava6Matcher = IS_JAVA7_PATTERN.matcher(msg);
             	if (isJava6Matcher.find()) {
             		if (!warnedJava7)
             			Logger.debug("You are using a PLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is believed to work.\n");
@@ -146,8 +142,7 @@ class CompilerJava {
 	 * @throws IllegalStateException
 	 *             if the Java compiler cannot be loaded.
 	 */
-	public CompilerJava(Iterable<String> options) {
-		final ClassLoader loader = getClass().getClassLoader();
+	CompilerJava(ClassLoader loader, Iterable<String> options) {
 		
 		compiler = ToolProvider.getSystemJavaCompiler();
 		if (compiler == null) {
@@ -179,48 +174,12 @@ class CompilerJava {
 			}
 		}
 
-		// piece of code dedicated to webstart (jnlp) support
-		// (might be improved one day...)
-		List<URL> classpath = new ArrayList<URL>();
-
-		if (loader instanceof URLClassLoader) {
-			for (URL url : ((URLClassLoader) loader).getURLs()) {
-				if (url.toString().startsWith("http:")) {
-					try {
-						String jarFilename = url.getFile();
-						jarFilename = jarFilename.substring(jarFilename.lastIndexOf('/'));
-						File tempFile = new File(System.getProperty("java.io.tmpdir"), jarFilename);
-						// if the compiler was a singleton, we could have used
-						// File.createTempFile("cached-",".jar");
-						if (!tempFile.exists()) {
-							// we have to re-download .jar since
-							// JarURLConnection is not properly working
-							download(url, tempFile);
-							tempFile.deleteOnExit();
-						}
-						URL jarLocation = new URL("file:" + tempFile.getAbsolutePath());
-						classpath.add(jarLocation);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				} else {
-					classpath.add(url);
-				}
+		StringBuilder sb = new StringBuilder();
+		for (ClassLoader classLoader : new ClassLoader[] { loader, ClassLoader.getSystemClassLoader() }) {
+			for (URL jar : ((URLClassLoader) classLoader).getURLs()) {
+				sb.append(jar.getPath());
+				sb.append(File.pathSeparatorChar);
 			}
-		}
-		String classPath = System.getProperty("java.class.path");
-		for (String path : classPath.split(File.pathSeparator)) {
-			try {
-				classpath.add(new URL("file:" + path));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		StringBuffer sb = new StringBuffer();
-		for (URL jar : classpath) {
-			sb.append(jar.getPath());
-			sb.append(File.pathSeparatorChar);
 		}
 		this.options.add("-cp");
 		this.options.add(sb.toString());
@@ -271,7 +230,7 @@ class CompilerJava {
 	 *            zero or more Class objects representing classes or interfaces
 	 *            that the resulting class must be assignable (castable) to.
 	 * @return a Class which is generated by compiling the source
-	 * @throws CharSequenceCompilerException
+	 * @throws PLMCompilerException
 	 *             if the source cannot be compiled - for example, if it
 	 *             contains syntax or semantic errors or if dependent classes
 	 *             cannot be found.
@@ -313,7 +272,7 @@ class CompilerJava {
 	 *         classes. The map has the same keys as the input
 	 *         <var>classes</var>; the values are the corresponding Class
 	 *         objects.
-	 * @throws CharSequenceCompilerException
+	 * @throws PLMCompilerException
 	 *             if the source cannot be compiled
 	 */
 	public synchronized Map<String, Class<Object>> compile(final Map<String, String> classes,
@@ -441,7 +400,7 @@ final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
 
 	/**
 	 * Construct a new FileManager which forwards to the <var>fileManager</var>
-	 * for source and to the <var>classLoader</var> for classes
+	 * for source and to the <var>applicationClassLoader</var> for classes
 	 * 
 	 * @param fileManager
 	 *            another FileManager that this instance delegates to for

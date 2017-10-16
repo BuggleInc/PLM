@@ -13,8 +13,11 @@ import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 
 public abstract class JVMCompiledLang extends ProgrammingLanguage {
-	public JVMCompiledLang(String lang, String ext, boolean isDebugEnabled) {
+	protected final ClassLoader applicationClassLoader;
+
+	public JVMCompiledLang(ClassLoader applicationClassLoader, String lang, String ext, boolean isDebugEnabled) {
 		super(lang, ext, isDebugEnabled);
+		this.applicationClassLoader = applicationClassLoader;
 	}
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	protected static final String packageNamePrefix = "plm.runtime";

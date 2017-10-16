@@ -35,14 +35,16 @@ public abstract class World  {
 
 	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
 
+	protected final FileUtils fileUtils;
 	private String name;
 
-	public World(String name) {
+	public World(FileUtils fileUtils, String name) {
+		this.fileUtils = fileUtils;
 		this.name = name;
 	}
 
 	public World(World w2) {
-		this(w2.getName());
+		this(w2.fileUtils, w2.getName());
 		// TODO: Implement clone() in all Operation's subclasses
 		/*
 		for(List<Operation> operations : steps) {
@@ -259,7 +261,7 @@ public abstract class World  {
 		String api = "File "+filename+".html not found.";
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, getLocale(), "html", true);
+			sb = fileUtils.readContentAsText(filename, getLocale(), "html", true);
 			api = PlmHtmlEditorKit.filterHTML(sb.toString(), false, getProgLang());
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -272,7 +274,7 @@ public abstract class World  {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
 			StringBuffer sb = null;
 			try {
-				sb = FileUtils.readContentAsText(filename, getLocale(), "html", true);
+				sb = fileUtils.readContentAsText(filename, getLocale(), "html", true);
 			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;

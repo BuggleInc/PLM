@@ -2,15 +2,16 @@ package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class CountTeen extends ExerciseTemplated {
 
-	public CountTeen(Lesson lesson) {
+	public CountTeen(Lesson lesson, FileUtils fileUtils) {
 		super("CountTeen");
 
-		BatWorld myWorld = new BatWorld("countTeen");
+		BatWorld myWorld = new BatWorld(fileUtils, "countTeen");
 		myWorld.addTest(BatTest.VISIBLE,  13,20,10,54);
 		myWorld.addTest(BatTest.VISIBLE,  20,19,13,15);
 		myWorld.addTest(BatTest.VISIBLE,  20,10,13,42);

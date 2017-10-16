@@ -1,5 +1,6 @@
 package plm.universe.cons;
 
+import java.io.File;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
@@ -18,15 +20,15 @@ public class ConsWorld extends BatWorld {
 	public ConsWorld(ConsWorld other) {
 		super(other);
 	}
-	public ConsWorld(String funName) {
-		super(funName);
+	public ConsWorld(FileUtils fileUtils, String funName) {
+		super(fileUtils, funName);
 		getEntities().clear();
 		addEntity(new ConsEntity(funName));
 	}
 
 	@JsonCreator
-	public ConsWorld(@JsonProperty("name")String name, @JsonProperty("batTests")Vector<BatTest> tests) {
-		super(name, tests);
+	public ConsWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("batTests")Vector<BatTest> tests) {
+		super(fileUtils, name, tests);
 	}
 
 	@Override

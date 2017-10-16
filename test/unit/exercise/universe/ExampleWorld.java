@@ -6,19 +6,20 @@ import javax.script.ScriptException;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class ExampleWorld extends World {
 
 	private boolean objective;
 
-	public ExampleWorld(String name) {
-		super(name);
+	public ExampleWorld(FileUtils fileUtils, String name) {
+		super(fileUtils, name);
 		objective = false;
 	}
 
-	public ExampleWorld(ExampleWorld w2) {
-		this(w2.getName());
+	public ExampleWorld(FileUtils fileUtils, ExampleWorld w2) {
+		this(fileUtils, w2.getName());
 		reset(w2);
 	}
 

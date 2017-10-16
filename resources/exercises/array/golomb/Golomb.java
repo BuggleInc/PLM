@@ -2,14 +2,15 @@ package array.golomb;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Golomb extends ExerciseTemplated {
-	public Golomb(Lesson lesson) {
+	public Golomb(Lesson lesson, FileUtils fileUtils) {
 		super("Golomb");
 
-		BatWorld myWorld = new BatWorld("golomb");
+		BatWorld myWorld = new BatWorld(fileUtils, "golomb");
 		myWorld.addTest(BatTest.VISIBLE, (Object)new Integer(1)) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new Integer(2)) ;
 		myWorld.addTest(BatTest.VISIBLE, (Object)new Integer(3)) ;

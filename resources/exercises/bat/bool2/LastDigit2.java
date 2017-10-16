@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LastDigit2 extends ExerciseTemplated {
-	public LastDigit2(Lesson lesson) {
+	public LastDigit2(Lesson lesson, FileUtils fileUtils) {
 		super("LastDigit2");
 
-		BatWorld myWorld = new BatWorld("lastDigit");
+		BatWorld myWorld = new BatWorld(fileUtils, "lastDigit");
 		myWorld.addTest(BatTest.VISIBLE, 23, 19, 13) ;
 		myWorld.addTest(BatTest.VISIBLE, 23, 19, 12) ;
 		myWorld.addTest(BatTest.VISIBLE, 23, 19, 3) ;

@@ -1,5 +1,6 @@
 package recursion.cons.butnfirst;
 
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 import plm.universe.cons.ConsExercise;
@@ -7,10 +8,10 @@ import plm.universe.cons.ConsWorld;
 
 public class ButNfirst extends ConsExercise {
 
-	public ButNfirst() {
+	public ButNfirst(FileUtils fileUtils) {
 		super("ButNFirst", "ButNFirst");
 		
-		BatWorld myWorld = new ConsWorld("butNfirst");
+		BatWorld myWorld = new ConsWorld(fileUtils, "butNfirst");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}), 3);
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}), 2);
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 1, 3, 2}), 0);

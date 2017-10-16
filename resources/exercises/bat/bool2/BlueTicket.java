@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class BlueTicket extends ExerciseTemplated {
-	public BlueTicket(Lesson lesson) {
+	public BlueTicket(Lesson lesson, FileUtils fileUtils) {
 		super("BlueTicket");
 
-		BatWorld myWorld = new BatWorld("blueTicket");
+		BatWorld myWorld = new BatWorld(fileUtils, "blueTicket");
 		myWorld.addTest(BatTest.VISIBLE, 9, 1, 0) ;
 		myWorld.addTest(BatTest.VISIBLE, 9, 2, 0) ;
 		myWorld.addTest(BatTest.VISIBLE, 6, 1, 4) ;

@@ -5,17 +5,18 @@ import java.awt.Color;
 
 import plm.core.model.lesson.ExerciseTemplated;
 
+import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class Conditions extends ExerciseTemplated {
 
-	public Conditions() {
+	public Conditions(FileUtils fileUtils) {
 		super("Conditions", "Conditions");
 		tabName = "Program";
 				
-		BuggleWorld myWorld = new BuggleWorld("Closed World",7,7);
+		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Closed World",7,7);
 		for (int i=0;i<7;i++) { 
 			new SimpleBuggle(myWorld, "Buggle "+(i+1), i, 3, Direction.NORTH, Color.black, Color.lightGray);
 			if (i%2 == 0) {

@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class MaxMod5 extends ExerciseTemplated {
-	public MaxMod5(Lesson lesson) {
+	public MaxMod5(Lesson lesson, FileUtils fileUtils) {
 		super("MaxMod5");
 
-		BatWorld myWorld = new BatWorld("maxMod5");
+		BatWorld myWorld = new BatWorld(fileUtils, "maxMod5");
 		myWorld.addTest(BatTest.VISIBLE, 2, 3) ;
 		myWorld.addTest(BatTest.VISIBLE, 6, 2) ;
 		myWorld.addTest(BatTest.VISIBLE, 3, 2) ;

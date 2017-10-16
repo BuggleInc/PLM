@@ -1,10 +1,6 @@
 package plm.judge;
 
-import plm.core.lang.LangBlockly;
-import plm.core.lang.LangJava;
-import plm.core.lang.LangPython;
-import plm.core.lang.LangScala;
-import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.*;
 
 /**
  * The main class. This should be the entry point of the Judge.
@@ -16,8 +12,8 @@ public class Main {
 	private static String port;
 
 	public static void initSupportedProgLang() {
-		LangJava java = new LangJava(false);
-		LangScala scala = new LangScala(false);
+		LangJava java = new LangJava(ClassLoader.getSystemClassLoader(), false);
+		LangScala scala = new LangScala(ClassLoader.getSystemClassLoader(), false);
 		LangPython python = new LangPython(false);
 		LangBlockly blockly = new LangBlockly(false);
 

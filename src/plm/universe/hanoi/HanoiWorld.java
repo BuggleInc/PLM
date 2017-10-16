@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class HanoiWorld extends World {
@@ -41,20 +42,20 @@ public class HanoiWorld extends World {
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
-		super(name);
+	public HanoiWorld(FileUtils fileUtils, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
+		super(fileUtils, name);
 		slots = new Vector[] {A, B, C};
 	}
 
 	@SuppressWarnings("unchecked")
-	public HanoiWorld(String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
-		super(name);
+	public HanoiWorld(FileUtils fileUtils, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
+		super(fileUtils, name);
 		slots = new Vector[] {A, B, C, D};		
 	}
 	
 	@JsonCreator
-	public HanoiWorld(@JsonProperty("name")String name) {
-		super(name);
+	public HanoiWorld(FileUtils fileUtils, @JsonProperty("name")String name) {
+		super(fileUtils, name);
 	}
 	
 	/** Reset the state of the current world to the one passed in argument

@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class DateFashion extends ExerciseTemplated {
-	public DateFashion(Lesson lesson) {
+	public DateFashion(Lesson lesson, FileUtils fileUtils) {
 		super("DateFashion");
 
-		BatWorld myWorld = new BatWorld("dateFashion");
+		BatWorld myWorld = new BatWorld(fileUtils, "dateFashion");
 		myWorld.addTest(BatTest.VISIBLE, 5, 10) ;
 		myWorld.addTest(BatTest.VISIBLE, 5, 2) ;
 		myWorld.addTest(BatTest.VISIBLE, 5, 5) ;

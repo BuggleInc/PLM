@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
+import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -29,15 +30,17 @@ public class TurtleWorld extends World {
 	private double width;
 	private double height;
 	
-	public TurtleWorld(String name) {
-		super(name);
+	public TurtleWorld(FileUtils fileUtils, String name) {
+		super(fileUtils, name);
 	}
 
 	@JsonCreator
-	public TurtleWorld(@JsonProperty("name")String name, 
-			           @JsonProperty("width")int width, 
-			           @JsonProperty("height")int height) {
-		super(name);
+	public TurtleWorld(
+			FileUtils fileUtils,
+			@JsonProperty("name")String name,
+			@JsonProperty("width")int width,
+			@JsonProperty("height")int height) {
+		super(fileUtils, name);
 		this.width = width;
 		this.height = height;
 	}

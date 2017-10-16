@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
+import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class SortingWorld extends World {
@@ -28,11 +29,11 @@ public class SortingWorld extends World {
 	}
 
 	/** Constructor used in the exercises */
-	public SortingWorld(String name, int nbValues) {
-		this(name, nbValues, true);
+	public SortingWorld(FileUtils fileUtils, String name, int nbValues) {
+		this(fileUtils, name, nbValues, true);
 	}
-	public SortingWorld(String name, int nbValues, boolean someoneHomeOk) {
-		super(name);
+	public SortingWorld(FileUtils fileUtils, String name, int nbValues, boolean someoneHomeOk) {
+		super(fileUtils, name);
 		this.values = new int[nbValues];
 		for (int i=0 ; i< this.values.length ; i++) 
 			this.values[i] = i;
@@ -55,8 +56,8 @@ public class SortingWorld extends World {
 	}
 
 	@JsonCreator
-	public SortingWorld(@JsonProperty("name")String name/*, int[] initValues, int[] values, int readCount, int writeCount*/) {
-		super(name);
+	public SortingWorld(FileUtils fileUtils, @JsonProperty("name")String name/*, int[] initValues, int[] values, int readCount, int writeCount*/) {
+		super(fileUtils, name);
 	}
 
 	private void scramble() {

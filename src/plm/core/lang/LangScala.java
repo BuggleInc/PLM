@@ -30,9 +30,9 @@ public class LangScala extends JVMCompiledLang {
 
 	ScalaCompiler compiler;
 
-	public LangScala(boolean isDebugEnabled) {
-		super("Scala", "scala", isDebugEnabled);
-		compiler = new ScalaCompiler(isDebugEnabled);
+	public LangScala(ClassLoader classLoader, boolean isDebugEnabled) {
+		super(classLoader, "Scala", "scala", isDebugEnabled);
+		compiler = new ScalaCompiler(classLoader, isDebugEnabled);
 	}
 
 	@Override
@@ -84,11 +84,14 @@ class ScalaCompiler {
 	private Map<String, Class<?>> cache = new HashMap<String, Class<?>>();
 	private Global global;
 	private VirtualDirectory target;
-	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
+	private ClassLoader classLoader;
+	private ClassLoader applicationClassLoader;
 	private boolean isDebugEnabled;
-
-	public ScalaCompiler(boolean isDebugEnabled) {
+	
+	public ScalaCompiler(ClassLoader applicationClassLoader, boolean isDebugEnabled) {
 		super();
+		this.applicationClassLoader = applicationClassLoader;
+		classLoader = new AbstractFileClassLoader(target, applicationClassLoader);
 		this.isDebugEnabled = isDebugEnabled;
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
@@ -108,7 +111,7 @@ class ScalaCompiler {
 		reporter.setOffset(0);
 		target.clear();
 		cache = new HashMap<String, Class<?>>();
-		classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
+		classLoader = new AbstractFileClassLoader(target, applicationClassLoader);
 	}
 
 	public void compile(String name,String content,int offset) throws PLMCompilerException {

@@ -6,14 +6,15 @@ import java.util.Iterator;
 import javax.script.ScriptEngine;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.GridWorld;
 import plm.universe.World;
 
 public class LightBotWorld extends plm.universe.GridWorld implements Iterable<LightBotWorldCell> {
 
-	public LightBotWorld(String name, int x, int y) {
-		super(name,x,y);
+	public LightBotWorld(FileUtils fileUtils, String name, int x, int y) {
+		super(fileUtils, name,x,y);
 	}
 	protected LightBotWorldCell newCell(int x, int y) {
 		return new LightBotWorldCell(this, x, y);

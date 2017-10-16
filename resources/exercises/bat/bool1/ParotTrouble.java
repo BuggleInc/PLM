@@ -1,15 +1,16 @@
 package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ParotTrouble extends ExerciseTemplated {
 
-	public ParotTrouble() {
+	public ParotTrouble(FileUtils fileUtils) {
 		super("ParotTrouble", "ParotTrouble");
 
-		BatWorld myWorld = new BatWorld("parotTrouble");
+		BatWorld myWorld = new BatWorld(fileUtils, "parotTrouble");
 		myWorld.addTest(BatTest.VISIBLE,  true,6);
 		myWorld.addTest(BatTest.VISIBLE,  true,7);
 		myWorld.addTest(BatTest.VISIBLE,  false,6);

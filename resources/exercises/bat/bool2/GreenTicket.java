@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class GreenTicket extends ExerciseTemplated {
-	public GreenTicket(Lesson lesson) {
+	public GreenTicket(Lesson lesson, FileUtils fileUtils) {
 		super("GreenTicket");
 
-		BatWorld myWorld = new BatWorld("greenTicket");
+		BatWorld myWorld = new BatWorld(fileUtils, "greenTicket");
 		myWorld.addTest(BatTest.VISIBLE, 1, 2, 3) ;
 		myWorld.addTest(BatTest.VISIBLE, 2, 2, 2) ;
 		myWorld.addTest(BatTest.VISIBLE, 1, 1, 2) ;

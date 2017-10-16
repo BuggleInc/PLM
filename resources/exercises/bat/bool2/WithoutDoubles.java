@@ -3,14 +3,15 @@
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class WithoutDoubles extends ExerciseTemplated {
-	public WithoutDoubles(Lesson lesson) {
+	public WithoutDoubles(Lesson lesson, FileUtils fileUtils) {
 		super("WithoutDoubles");
 
-		BatWorld myWorld = new BatWorld("withoutDoubles");
+		BatWorld myWorld = new BatWorld(fileUtils, "withoutDoubles");
 		myWorld.addTest(BatTest.VISIBLE, 2, 3, true) ;
 		myWorld.addTest(BatTest.VISIBLE, 3, 3, true) ;
 		myWorld.addTest(BatTest.VISIBLE, 3, 3, false) ;

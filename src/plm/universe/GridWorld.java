@@ -1,5 +1,7 @@
 package plm.universe;
 
+import plm.core.utils.FileUtils;
+
 public abstract class GridWorld extends World {
 
 	protected GridWorldCell[][] cells;
@@ -7,8 +9,8 @@ public abstract class GridWorld extends World {
 	protected int sizeY;
 	protected boolean visibleGrid=true;
 
-	public GridWorld(String name, int x, int y) {
-		super(name);
+	public GridWorld(FileUtils fileUtils, String name, int x, int y) {
+		super(fileUtils, name);
 		create(x, y);
 	}
 
