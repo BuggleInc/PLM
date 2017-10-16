@@ -75,7 +75,7 @@ class Lessons(availableLanguageCodes: Iterable[String]) {
   private def loadDescription(lessonName: String, languageCode: String): Option[String] = {
     val prefix = lessonName.replace(".", "/")
     val suffix = if (languageCode != "en") "." + languageCode else ""
-    val path = s"$prefix/short_desc$suffix.html"
+    val path = s"$prefix/description$suffix.html"
     withResource(path) {
       case Some(is: InputStream) =>
         Some(Source.fromInputStream(is)(Codec.UTF8).mkString)
