@@ -3,7 +3,6 @@ package array.search;
 import java.util.Random;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
@@ -16,7 +15,7 @@ public class OccurrenceOfValue extends ExerciseTemplated {
 		return tab[r.nextInt(tab.length)];
 	}
 	
-	public OccurrenceOfValue(Lesson lesson, FileUtils fileUtils) {
+	public OccurrenceOfValue(FileUtils fileUtils) {
 		super("OccurrenceOfValue");
 		
 		int[] tab = new int[15];

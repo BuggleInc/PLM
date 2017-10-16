@@ -1,7 +1,6 @@
 package array.basics;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
@@ -11,7 +10,7 @@ import java.awt.*;
 
 public class Array1 extends ExerciseTemplated {
 
-    public Array1(Lesson lesson, FileUtils fileUtils) {
+    public Array1(FileUtils fileUtils) {
         BuggleWorld[] myWorlds = new BuggleWorld[3];
 
         myWorlds[0] = new BuggleWorld(fileUtils, "Pattern 1", 6, 6);

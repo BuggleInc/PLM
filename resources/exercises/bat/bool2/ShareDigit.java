@@ -2,13 +2,12 @@
 
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ShareDigit extends ExerciseTemplated {
-	public ShareDigit(Lesson lesson, FileUtils fileUtils) {
+	public ShareDigit(FileUtils fileUtils) {
 		super("ShareDigit");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "shareDigit");

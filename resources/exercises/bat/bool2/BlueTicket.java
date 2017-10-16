@@ -2,13 +2,12 @@
 
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class BlueTicket extends ExerciseTemplated {
-	public BlueTicket(Lesson lesson, FileUtils fileUtils) {
+	public BlueTicket(FileUtils fileUtils) {
 		super("BlueTicket");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "blueTicket");

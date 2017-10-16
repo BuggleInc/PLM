@@ -2,13 +2,12 @@
 
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LessBy10 extends ExerciseTemplated {
-	public LessBy10(Lesson lesson, FileUtils fileUtils) {
+	public LessBy10(FileUtils fileUtils) {
 		super("LessBy10");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "lessBy10");

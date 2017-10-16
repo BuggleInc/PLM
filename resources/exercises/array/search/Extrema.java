@@ -1,13 +1,12 @@
 package array.search;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Extrema extends ExerciseTemplated {
-	public Extrema(Lesson lesson, FileUtils fileUtils) {
+	public Extrema(FileUtils fileUtils) {
 		super("Extrema");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "extrema");

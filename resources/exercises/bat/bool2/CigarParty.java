@@ -2,13 +2,12 @@
 
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class CigarParty extends ExerciseTemplated {
-	public CigarParty(Lesson lesson, FileUtils fileUtils) {
+	public CigarParty(FileUtils fileUtils) {
 		super("CigarParty");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "cigarParty");

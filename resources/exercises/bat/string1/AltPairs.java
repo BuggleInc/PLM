@@ -1,13 +1,12 @@
 package bat.string1;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AltPairs extends ExerciseTemplated {
-    public AltPairs(Lesson lesson, FileUtils fileUtils) {
+    public AltPairs(FileUtils fileUtils) {
         BatWorld myWorld = new BatWorld(fileUtils, "altPairs");
         myWorld.addTest(BatTest.VISIBLE, "kitten");
         myWorld.addTest(BatTest.VISIBLE, "Chocolate");

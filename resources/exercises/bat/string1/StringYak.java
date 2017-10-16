@@ -1,13 +1,12 @@
 package bat.string1;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringYak extends ExerciseTemplated {
-    public StringYak(Lesson lesson, FileUtils fileUtils) {
+    public StringYak(FileUtils fileUtils) {
         BatWorld myWorld = new BatWorld(fileUtils, "stringYak");
         myWorld.addTest(BatTest.VISIBLE, "yakpak");
         myWorld.addTest(BatTest.VISIBLE, "pakyak");

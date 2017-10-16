@@ -1,14 +1,13 @@
 package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class CountTeen extends ExerciseTemplated {
 
-	public CountTeen(Lesson lesson, FileUtils fileUtils) {
+	public CountTeen(FileUtils fileUtils) {
 		super("CountTeen");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "countTeen");

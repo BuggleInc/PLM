@@ -1,12 +1,11 @@
 package array.arrayfront9;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class ArrayFront9 extends ExerciseTemplated {
-	public ArrayFront9(Lesson lesson, FileUtils fileUtils) {
+	public ArrayFront9(FileUtils fileUtils) {
 		super("ArrayFront9");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "arrayFront9");

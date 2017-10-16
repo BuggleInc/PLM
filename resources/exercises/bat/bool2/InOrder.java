@@ -2,13 +2,12 @@
 
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class InOrder extends ExerciseTemplated {
-	public InOrder(Lesson lesson, FileUtils fileUtils) {
+	public InOrder(FileUtils fileUtils) {
 		super("InOrder");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "inOrder");

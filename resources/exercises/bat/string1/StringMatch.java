@@ -1,13 +1,12 @@
 package bat.string1;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class StringMatch extends ExerciseTemplated {
-    public StringMatch(Lesson lesson, FileUtils fileUtils) {
+    public StringMatch(FileUtils fileUtils) {
         BatWorld myWorld = new BatWorld(fileUtils, "stringMatch");
         myWorld.addTest(BatTest.VISIBLE, "xxcaazz", "xxbaaz");
         myWorld.addTest(BatTest.VISIBLE, "abc", "abc");

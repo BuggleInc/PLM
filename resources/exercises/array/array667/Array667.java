@@ -1,12 +1,11 @@
 package array.array667;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Array667 extends ExerciseTemplated {
-	public Array667(Lesson lesson, FileUtils fileUtils) {
+	public Array667(FileUtils fileUtils) {
 		super("Array667");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "array667");

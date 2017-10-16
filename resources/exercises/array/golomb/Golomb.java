@@ -1,13 +1,12 @@
 package array.golomb;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Golomb extends ExerciseTemplated {
-	public Golomb(Lesson lesson, FileUtils fileUtils) {
+	public Golomb(FileUtils fileUtils) {
 		super("Golomb");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "golomb");

@@ -1,12 +1,11 @@
 package array.has271;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class Has271 extends ExerciseTemplated {
-	public Has271(Lesson lesson, FileUtils fileUtils) {
+	public Has271(FileUtils fileUtils) {
 		super("Has271");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "has271");

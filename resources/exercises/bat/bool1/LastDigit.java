@@ -1,13 +1,12 @@
 package bat.bool1;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class LastDigit extends ExerciseTemplated {
-	public LastDigit(Lesson lesson, FileUtils fileUtils) {
+	public LastDigit(FileUtils fileUtils) {
 		super("LastDigit");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "lastDigit");

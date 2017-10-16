@@ -3,14 +3,13 @@ package array.search;
 import java.util.Random;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AverageValue extends ExerciseTemplated {
 
-	public AverageValue(Lesson lesson, FileUtils fileUtils) {
+	public AverageValue(FileUtils fileUtils) {
 		super("AverageValue");
 		
 		int[] randomTab = new int[30];

@@ -2,13 +2,12 @@
 
 package bat.bool2;
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class SquirrelPlay extends ExerciseTemplated {
-	public SquirrelPlay(Lesson lesson, FileUtils fileUtils) {
+	public SquirrelPlay(FileUtils fileUtils) {
 		super("SquirrelPlay");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "squirrelPlay");

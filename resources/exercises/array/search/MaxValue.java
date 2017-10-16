@@ -3,14 +3,13 @@ package array.search;
 import java.util.Random;
 
 import plm.core.model.lesson.ExerciseTemplated;
-import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class MaxValue extends ExerciseTemplated {
 
-	public MaxValue(Lesson lesson, FileUtils fileUtils) {
+	public MaxValue(FileUtils fileUtils) {
 		super("MaxValue");
 		Random r = new Random();
 		
