@@ -29,8 +29,8 @@ class Exercises(
   private val exercises: Map[String, Exercise] =
     lessons
       .lessonsList
-      .flatMap(_.lectures)
-      .map(lecture => lecture.id -> initExercise(lecture.id))
+      .flatMap(_.orderedIDs)
+      .map(lectureId => lectureId -> initExercise(lectureId))
       .toMap
 
   def getExercise(exerciseId: String): Option[Exercise] =
