@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class Methods extends ExerciseTemplated {
 
 	public Methods(FileUtils fileUtils) {
-		super("Methods", "Methods");
+		super("Methods");
 		//setToolbox();
 
 		BuggleWorld myWorld =  new BuggleWorld(fileUtils, "Donut World",7,7);

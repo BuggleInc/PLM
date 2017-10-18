@@ -11,7 +11,7 @@ public class Stairs extends ExerciseTemplated {
 
 	public Stairs(FileUtils fileUtils) {
 
-		super("Stairs", "Stairs");
+		super("Stairs");
 
 		World myWorld = new TurtleWorld(fileUtils, "Stairs", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 250);

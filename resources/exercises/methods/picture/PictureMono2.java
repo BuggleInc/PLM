@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class PictureMono2 extends ExerciseTemplated {
 
 	public PictureMono2(FileUtils fileUtils) {
-		super("PictureMono2", "PictureMono2");
+		super("PictureMono2");
 		//setToolbox();
 		BuggleWorld myWorld =  new BuggleWorld(fileUtils, "World",21,21);
 		new SimpleBuggle(myWorld, "Picasso", 0, 20, Direction.EAST, Color.black, Color.lightGray);

@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class StringTimes extends ExerciseTemplated {
     public StringTimes(FileUtils fileUtils) {
+        super("StringTimes");
+
         BatWorld myWorld = new BatWorld(fileUtils, "stringTimes");
         myWorld.addTest(BatTest.VISIBLE, "Hi", 2);
         myWorld.addTest(BatTest.VISIBLE, "Hi", 3);

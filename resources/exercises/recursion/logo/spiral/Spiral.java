@@ -11,7 +11,7 @@ import plm.universe.turtles.TurtleWorld;
 public class Spiral extends ExerciseTemplated {
 
 	public Spiral(FileUtils fileUtils) {
-		super("Spiral", "Spiral");
+		super("Spiral");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[4];

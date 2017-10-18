@@ -11,7 +11,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class Moria extends ExerciseTemplated {
 
 	public Moria(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-		super("Moria", "Moria");
+		super("Moria");
 		tabName = "DwarfCode";
 
 		/* Create initial situation */

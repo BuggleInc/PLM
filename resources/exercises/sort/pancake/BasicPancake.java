@@ -9,7 +9,7 @@ import plm.universe.pancake.PancakeWorld;
 public class BasicPancake extends ExerciseTemplated {
 	
 	public BasicPancake(FileUtils fileUtils) {
-		super("BasicPancake", "BasicPancake");
+		super("BasicPancake");
 	
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld(fileUtils, "5 pancakes",5,false);

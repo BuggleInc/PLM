@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class HexaKoch extends ExerciseTemplated {
 
 	public HexaKoch(FileUtils fileUtils) {
-		super("HexaKoch", "HexaKoch");
+		super("HexaKoch");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[5];

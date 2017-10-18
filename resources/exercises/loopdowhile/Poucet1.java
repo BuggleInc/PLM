@@ -13,7 +13,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class Poucet1 extends ExerciseTemplated {
 
 	public Poucet1(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-		super("Poucet1", "Poucet1");
+		super("Poucet1");
 		tabName = "Poucet";
 
 		/* Create initial situation */

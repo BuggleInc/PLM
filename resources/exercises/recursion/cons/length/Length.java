@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class Length extends ConsExercise {
 
 	public Length(FileUtils fileUtils) {
-		super("Length", "Length");
+		super("Length");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "length");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}));

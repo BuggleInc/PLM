@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class FrontTimes extends ExerciseTemplated {
     public FrontTimes(FileUtils fileUtils) {
+        super("FrontTimes");
+
         BatWorld myWorld = new BatWorld(fileUtils, "frontTimes");
         myWorld.addTest(BatTest.VISIBLE, "Chocolate", 2);
         myWorld.addTest(BatTest.VISIBLE, "Chocolate", 3);

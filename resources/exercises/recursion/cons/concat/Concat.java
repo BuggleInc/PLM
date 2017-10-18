@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class Concat extends ConsExercise {
 
 	public Concat(FileUtils fileUtils) {
-		super("Concat", "Concat");
+		super("Concat");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "concat");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}),    (new int[]{11, 12, 13}));

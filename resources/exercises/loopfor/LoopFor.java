@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class LoopFor extends ExerciseTemplated {
 
 	public LoopFor(FileUtils fileUtils) {
-		super("LoopFor", "LoopFor");
+		super("LoopFor");
 		tabName = "Program";
 		//setToolbox();
 		

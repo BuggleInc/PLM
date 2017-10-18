@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class AltPairs extends ExerciseTemplated {
     public AltPairs(FileUtils fileUtils) {
+        super("AltPairs");
+
         BatWorld myWorld = new BatWorld(fileUtils, "altPairs");
         myWorld.addTest(BatTest.VISIBLE, "kitten");
         myWorld.addTest(BatTest.VISIBLE, "Chocolate");

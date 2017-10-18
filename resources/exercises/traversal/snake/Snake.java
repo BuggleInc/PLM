@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class Snake extends ExerciseTemplated {
 
 	public Snake(FileUtils fileUtils) {
-		super("Snake", "Snake");
+		super("Snake");
 		tabName = "SnakeBuggle";
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Desert",7,7);

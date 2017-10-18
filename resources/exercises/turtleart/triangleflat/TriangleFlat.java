@@ -11,7 +11,7 @@ public class TriangleFlat extends ExerciseTemplated {
 
 	public TriangleFlat(FileUtils fileUtils) {
 
-		super("TriangleFlat", "TriangleFlat");
+		super("TriangleFlat");
 
 		World myWorld = new TurtleWorld(fileUtils, "TriangleFlat", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 250);

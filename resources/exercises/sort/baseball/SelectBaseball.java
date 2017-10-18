@@ -9,7 +9,7 @@ import plm.universe.baseball.BaseballWorld;
 public class SelectBaseball extends ExerciseTemplated {
 
 	public SelectBaseball(FileUtils fileUtils) {
-		super("SelectBaseball", "SelectBaseball");
+		super("SelectBaseball");
 
 		setup(new BaseballWorld[] {
 				new BaseballWorld(fileUtils, "Almost",4,2, BaseballWorld.MIX_ALMOST_SORTED),

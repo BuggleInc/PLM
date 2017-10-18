@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class ButNlast extends ConsExercise {
 
 	public ButNlast(FileUtils fileUtils) {
-		super("ButNlast", "ButNlast");
+		super("ButNlast");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "butNlast");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}), 3);

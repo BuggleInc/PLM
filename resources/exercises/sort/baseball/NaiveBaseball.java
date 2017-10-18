@@ -9,7 +9,7 @@ import plm.universe.baseball.BaseballWorld;
 public class NaiveBaseball extends ExerciseTemplated {
 
 	public NaiveBaseball(FileUtils fileUtils) {
-		super("NaiveBaseball", "NaiveBaseball");
+		super("NaiveBaseball");
 
 		setup(new BaseballWorld[] {
 				new BaseballWorld(fileUtils, "Field 1",4,2, BaseballWorld.MIX_NOBODY_HOME),

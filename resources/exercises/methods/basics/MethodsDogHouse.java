@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class MethodsDogHouse extends ExerciseTemplated {
 
 	public MethodsDogHouse(FileUtils fileUtils) {
-		super("MethodsDogHouse", "MethodsDogHouse");
+		super("MethodsDogHouse");
 		BuggleWorld myWorld =  new BuggleWorld(fileUtils, "World",7,7);
 		new SimpleBuggle(myWorld, "Puppy", 0, 6, Direction.EAST, Color.red, Color.red);
 		

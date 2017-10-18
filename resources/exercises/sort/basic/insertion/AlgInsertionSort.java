@@ -9,7 +9,7 @@ import plm.universe.sort.SortingWorld;
 public class AlgInsertionSort extends ExerciseTemplated {
 
 	public AlgInsertionSort(FileUtils fileUtils) {
-		super("AlgInsertionSort", "AlgInsertionSort");
+		super("AlgInsertionSort");
 		
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld(fileUtils, "Functional test",10);

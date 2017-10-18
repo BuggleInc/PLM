@@ -14,7 +14,7 @@ import plm.universe.hanoi.HanoiWorld;
 public class TricolorHanoi3 extends ExerciseTemplated {
 
 	public TricolorHanoi3(FileUtils fileUtils) {
-		super("TricolorHanoi3", "TricolorHanoi3");
+		super("TricolorHanoi3");
 				
 		/* Create initial situation */
 		HanoiWorld w;

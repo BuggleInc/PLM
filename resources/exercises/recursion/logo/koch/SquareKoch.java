@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class SquareKoch extends ExerciseTemplated {
 
 	public SquareKoch(FileUtils fileUtils) {
-		super("SquareKoch", "SquareKoch");
+		super("SquareKoch");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[6];

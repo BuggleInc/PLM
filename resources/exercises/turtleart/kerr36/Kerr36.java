@@ -11,7 +11,7 @@ public class Kerr36 extends ExerciseTemplated {
 	
 	public Kerr36(FileUtils fileUtils) {
 		
-		super("Kerr36", "Kerr36");
+		super("Kerr36");
 
 		World myWorld = new TurtleWorld(fileUtils, "Kerr36", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 150, 150);

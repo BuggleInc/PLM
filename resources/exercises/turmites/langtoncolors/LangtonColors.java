@@ -13,7 +13,7 @@ public class LangtonColors extends ExerciseTemplated {
 	}
 	
 	public LangtonColors(FileUtils fileUtils) {
-		super("LangtonColors", "LangtonColors");
+		super("LangtonColors");
 		tabName = "LangtonsAnt";
 
 		BuggleWorld[] myWorlds = new BuggleWorld[] {

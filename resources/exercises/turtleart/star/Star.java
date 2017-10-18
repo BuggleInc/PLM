@@ -11,7 +11,7 @@ public class Star extends ExerciseTemplated {
 
 	public Star(FileUtils fileUtils) {
 
-		super("Star", "Star");
+		super("Star");
 
 		World myWorld = new TurtleWorld(fileUtils, "Star", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 150, 200);

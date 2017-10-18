@@ -12,7 +12,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class FlowerPot extends ExerciseTemplated {
 
 	public FlowerPot(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-		super("FlowerPot", "FlowerPot");
+		super("FlowerPot");
 		//setToolbox();
 		BuggleWorld[] myWorlds = new BuggleWorld[] {
 				(BuggleWorld) BuggleWorld.newFromFile(fileUtils, "methods/flowerpot/FlowerPot")

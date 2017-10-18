@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class StringBits extends ExerciseTemplated {
     public StringBits(FileUtils fileUtils) {
+        super("StringBits");
+
         BatWorld myWorld = new BatWorld(fileUtils, "stringBits");
         myWorld.addTest(BatTest.VISIBLE, "Hello");
         myWorld.addTest(BatTest.VISIBLE, "Hi");

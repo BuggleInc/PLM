@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class SlugTracking extends ExerciseTemplated {
 
 	public SlugTracking(FileUtils fileUtils) {
-		super("SlugTracking", "SlugTracking");
+		super("SlugTracking");
 		//setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];

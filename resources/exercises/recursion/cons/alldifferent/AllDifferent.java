@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class AllDifferent extends ConsExercise {
 
 	public AllDifferent(FileUtils fileUtils) {
-		super("AllDifferent", "AllDifferent");
+		super("AllDifferent");
 
 		BatWorld myWorld = new ConsWorld(fileUtils, "allDifferent");
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 3, 4});

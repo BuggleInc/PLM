@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class Last extends ConsExercise {
 
 	public Last(FileUtils fileUtils) {
-		super("Last", "Last");
+		super("Last");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "last");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}));

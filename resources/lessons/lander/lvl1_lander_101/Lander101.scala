@@ -10,7 +10,7 @@ import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
 
-class Lander101() extends ExerciseTemplated(lesson, null) {
+class Lander101() extends ExerciseTemplated("Lander101") {
   tabName = "Lander"
   setup(SIMPLE_TERRAIN_TRIVIAL_CONFIG)
 }

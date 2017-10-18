@@ -10,7 +10,7 @@ public class Triangle extends ExerciseTemplated {
 
 	public Triangle(FileUtils fileUtils) {
 
-		super("Triangle", "Triangle");
+		super("Triangle");
 
 		World myWorld = new TurtleWorld(fileUtils, "Triangle", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 250);

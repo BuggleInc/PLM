@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class Sierpinski extends ExerciseTemplated {
 
 	public Sierpinski(FileUtils fileUtils) {
-		super("Sierpinski", "Sierpinski");
+		super("Sierpinski");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[5];

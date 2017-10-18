@@ -11,6 +11,8 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class Array2 extends ExerciseTemplated {
 
 	public Array2(FileUtils fileUtils) {
+    super("Array2");
+
 		BuggleWorld[] myWorlds = new BuggleWorld[3];
 
 		myWorlds[0] = new BuggleWorld(fileUtils, "Pattern 1",6,6);

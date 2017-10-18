@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class PolygonFractal extends ExerciseTemplated {
 
 	public PolygonFractal(FileUtils fileUtils) {
-		super("PolygonFractal", "PolygonFractal");
+		super("PolygonFractal");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[7];

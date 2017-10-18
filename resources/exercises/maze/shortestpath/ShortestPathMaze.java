@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ShortestPathMaze extends ExerciseTemplated {
 
     public ShortestPathMaze(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-        super("ShortestPathMaze", "ShortestPathMaze");
+        super("ShortestPathMaze");
         tabName = "JediEscaper";
 
         setup(new World[]{

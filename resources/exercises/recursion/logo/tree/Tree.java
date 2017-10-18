@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class Tree extends ExerciseTemplated {
 
 	public Tree(FileUtils fileUtils) {
-		super("Tree", "Tree");
+		super("Tree");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[4];

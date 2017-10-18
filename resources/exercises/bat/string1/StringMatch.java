@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class StringMatch extends ExerciseTemplated {
     public StringMatch(FileUtils fileUtils) {
+        super("StringMatch");
+
         BatWorld myWorld = new BatWorld(fileUtils, "stringMatch");
         myWorld.addTest(BatTest.VISIBLE, "xxcaazz", "xxbaaz");
         myWorld.addTest(BatTest.VISIBLE, "abc", "abc");

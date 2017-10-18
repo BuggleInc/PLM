@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class StringSplosion extends ExerciseTemplated {
     public StringSplosion(FileUtils fileUtils) {
+        super("StringSplosion");
+
         BatWorld myWorld = new BatWorld(fileUtils, "stringSplosion");
         myWorld.addTest(BatTest.VISIBLE, "Code");
         myWorld.addTest(BatTest.VISIBLE, "abc");

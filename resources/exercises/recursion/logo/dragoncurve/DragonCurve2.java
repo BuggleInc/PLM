@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class DragonCurve2 extends ExerciseTemplated {
 
 	public DragonCurve2(FileUtils fileUtils) {
-		super("DragonCurve2", "DragonCurve2");
+		super("DragonCurve2");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[7];

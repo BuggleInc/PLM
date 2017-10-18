@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class SlugHunting extends ExerciseTemplated {
 
 	public SlugHunting(FileUtils fileUtils) {
-		super("SlugHunting", "SlugHunting");
+		super("SlugHunting");
 		//setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];

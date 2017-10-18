@@ -36,7 +36,7 @@ public class BDR extends ExerciseTemplated {
 	void back (int x, int y){  set(x, y, "I"); }
 
 	public BDR(FileUtils fileUtils) {
-		super("BDR", "BDR");
+		super("BDR");
 		tabName = "BDRBuggle";
 
 		myWorld = new BuggleWorld(fileUtils, "Dance Floor",7,7);

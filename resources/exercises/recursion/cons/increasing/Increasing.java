@@ -10,7 +10,7 @@ import plm.universe.cons.RecList;
 public class Increasing extends ConsExercise {
 
 	public Increasing(FileUtils fileUtils) {
-		super("Increasing", "Increasing");
+		super("Increasing");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "increasing");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}));

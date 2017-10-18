@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class MethodsArgs extends ExerciseTemplated {
 
 	public MethodsArgs(FileUtils fileUtils) {
-		super("MethodsArgs", "MethodsArgs");
+		super("MethodsArgs");
 		tabName = "Program";
 		//setToolbox();
 

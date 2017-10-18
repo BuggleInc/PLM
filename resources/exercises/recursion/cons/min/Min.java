@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class Min extends ConsExercise {
 
 	public Min(FileUtils fileUtils) {
-		super("Min", "Min");
+		super("Min");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "min");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3, 4}));

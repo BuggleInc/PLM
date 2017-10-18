@@ -9,7 +9,7 @@ import plm.universe.bat.BatWorld;
 public class IcyHot extends ExerciseTemplated {
 
 	public IcyHot(FileUtils fileUtils) {
-		super("IcyHot", "IcyHot");
+		super("IcyHot");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "icyHot");
 		myWorld.addTest(BatTest.VISIBLE, 120,-1);

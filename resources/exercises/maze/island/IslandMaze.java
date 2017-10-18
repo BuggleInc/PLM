@@ -11,7 +11,7 @@ import java.io.IOException;
 public class IslandMaze extends ExerciseTemplated {
 
     public IslandMaze(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-        super("IslandMaze", "IslandMaze");
+        super("IslandMaze");
         tabName = "Escaper";
 
 		/* Create initial situation */

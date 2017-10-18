@@ -13,7 +13,7 @@ public class HelloTurmite extends ExerciseTemplated {
 	final static int RIGHT  = 8;
 
 	public HelloTurmite(FileUtils fileUtils) {
-		super("HelloTurmite", "HelloTurmite");
+		super("HelloTurmite");
 		tabName = "Turmite";
 
 		BuggleWorld[] myWorlds = new BuggleWorld[] { // Name, #steps, rules, worldWidth, worldHeight, buggleX, buggleY

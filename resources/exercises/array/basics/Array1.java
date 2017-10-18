@@ -11,6 +11,8 @@ import java.awt.*;
 public class Array1 extends ExerciseTemplated {
 
     public Array1(FileUtils fileUtils) {
+        super("Array1");
+
         BuggleWorld[] myWorlds = new BuggleWorld[3];
 
         myWorlds[0] = new BuggleWorld(fileUtils, "Pattern 1", 6, 6);
