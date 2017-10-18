@@ -14,7 +14,6 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
-import plm.universe.lightbot.LightBotEntity;
 
 /**
  * Captures the whole logic of a given programming language (compiling the user code, running it).
@@ -101,8 +100,6 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	 *    
 	 *  * Java and Scala entities are launched by just executing their {@link #run()} method that 
 	 *    was redefined by the student (possibly with some templating)
-	 *  * LightBot entities are launched by executing the {@link LightBotEntity#run()} method, 
-	 *    that is NOT defined by the student, but interprets the code of the students.
 	 *  * Python (and other scripting language) entities are launched by injecting the 
 	 *    student-provided code within a {@link ScriptEngine}. 
 	 *    In this later case, the java entity is injected within the scripting world so that it 
