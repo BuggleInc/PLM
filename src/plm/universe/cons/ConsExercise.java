@@ -4,8 +4,8 @@ import plm.core.model.lesson.ExerciseTemplated;
 
 public abstract class ConsExercise extends ExerciseTemplated {
 
-	public ConsExercise(String id, String name) {
-		super(id, name);
+	public ConsExercise(String name) {
+		super(name);
 	}
 
 	public RecList cons(int head, RecList tail){

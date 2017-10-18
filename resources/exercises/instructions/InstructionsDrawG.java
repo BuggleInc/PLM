@@ -11,7 +11,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class InstructionsDrawG extends ExerciseTemplated {
 
 	public InstructionsDrawG(FileUtils fileUtils) {
-		super("InstructionsDrawG", "InstructionsDrawG");
+		super("InstructionsDrawG");
 		tabName = "Source";
 		//setToolbox();
 

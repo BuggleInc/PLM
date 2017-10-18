@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class Last2 extends ExerciseTemplated {
     public Last2(FileUtils fileUtils) {
+        super("Last2");
+
         BatWorld myWorld = new BatWorld(fileUtils, "last2");
         myWorld.addTest(BatTest.VISIBLE, "hixxhi");
         myWorld.addTest(BatTest.VISIBLE, "xaxxaxaxx");

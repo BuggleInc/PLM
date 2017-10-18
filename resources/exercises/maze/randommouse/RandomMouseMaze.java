@@ -12,7 +12,7 @@ import java.io.IOException;
 public class RandomMouseMaze extends ExerciseTemplated {
 
     public RandomMouseMaze(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-        super("RandomMouseMaze", "RandomMouseMaze");
+        super("RandomMouseMaze");
         tabName = "RandomMouseMaze";
 
         setup(new World[]{

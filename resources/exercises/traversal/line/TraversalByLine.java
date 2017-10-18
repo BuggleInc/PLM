@@ -11,7 +11,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class TraversalByLine extends ExerciseTemplated {
 
 	public TraversalByLine(FileUtils fileUtils) {
-		super("TraversalByLine", "TraversalByLine");
+		super("TraversalByLine");
 		tabName = "LineByLine";
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Grid",7,7);

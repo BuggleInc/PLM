@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class PlusOne extends ConsExercise {
 
 	public PlusOne(FileUtils fileUtils) {
-		super("PlusOne", "PlusOne");
+		super("PlusOne");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "plusOne");
 		myWorld.addTest(BatTest.VISIBLE, new int[]{1, 2, 3});

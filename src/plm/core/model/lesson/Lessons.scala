@@ -12,7 +12,9 @@ import scala.io.{Codec, Source}
  * @author matthieu
  */
 
-class Lessons(availableLanguageCodes: Iterable[String]) {
+class Lessons(
+    classLoader: ClassLoader,
+    availableLanguageCodes: Iterable[String]) {
   // WARNING, keep ChooseLessonDialog.lessons synchronized
   private val lessonIds: Seq[String] =
     Seq(
@@ -86,7 +88,7 @@ class Lessons(availableLanguageCodes: Iterable[String]) {
   }
 
   private def withResource[O](fileName: String)(action: Option[InputStream] => O): O = {
-    val maybeInputStream = Option(getClass.getClassLoader.getResourceAsStream(fileName))
+    val maybeInputStream = Option(classLoader.getResourceAsStream(fileName))
     try {
       action(maybeInputStream)
     } finally {

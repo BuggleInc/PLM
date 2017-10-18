@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class LoopWhile extends ExerciseTemplated {
 
 	public LoopWhile(FileUtils fileUtils) {
-		super("LoopWhile", "LoopWhile");
+		super("LoopWhile");
 		tabName = "Program";
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Closed world",7,7);

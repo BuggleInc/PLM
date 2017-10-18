@@ -12,7 +12,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class RunHalf extends ExerciseTemplated {
 
 	public RunHalf(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-		super("RunHalf", "RunHalf");
+		super("RunHalf");
 		//setToolbox();
 
 		World[] myWorlds = new World[] {

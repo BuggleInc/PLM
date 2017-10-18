@@ -11,7 +11,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class TraversalZigZag extends ExerciseTemplated {
 
 	public TraversalZigZag(FileUtils fileUtils) {
-		super("TraversalZigZag", "TraversalZigZag");
+		super("TraversalZigZag");
 		tabName = "ZigZag";
 		//setToolbox();
 

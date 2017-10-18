@@ -13,7 +13,7 @@ import plm.universe.turtles.TurtleWorld;
 public class Crab extends ExerciseTemplated {
 
 	public Crab(FileUtils fileUtils) {
-		super("Crab", "Crab");
+		super("Crab");
 
 		/* Create initial situation */
 		World[] myWorlds = new World[6];

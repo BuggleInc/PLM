@@ -13,7 +13,7 @@ import java.io.IOException;
 public class WallFollowerMaze extends ExerciseTemplated {
 
     public WallFollowerMaze(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-        super("WallFollowerMaze", "WallFollowerMaze");
+        super("WallFollowerMaze");
         tabName = "Escaper";
 
         setup(new World[]{

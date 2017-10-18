@@ -9,7 +9,7 @@ import plm.universe.sort.SortingWorld;
 public class AlgCombSort extends ExerciseTemplated {
 
 	public AlgCombSort(FileUtils fileUtils) {
-		super("AlgCombSort", "AlgCombSort");
+		super("AlgCombSort");
 		
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld(fileUtils, "Functional test",10);

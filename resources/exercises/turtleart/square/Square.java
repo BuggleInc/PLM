@@ -11,7 +11,7 @@ public class Square extends ExerciseTemplated {
 
 	public Square(FileUtils fileUtils) {
 
-		super("Square", "Square");
+		super("Square");
 
 		World myWorld = new TurtleWorld(fileUtils, "Square", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 250);

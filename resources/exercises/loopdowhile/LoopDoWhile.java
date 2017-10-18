@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class LoopDoWhile extends ExerciseTemplated {
 
 	public LoopDoWhile(FileUtils fileUtils) {
-		super("LoopDoWhile", "LoopDoWhile");
+		super("LoopDoWhile");
 		tabName = "Program";
 		//setToolbox();
 				

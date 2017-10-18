@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class Makes10 extends ExerciseTemplated {
 
 	public Makes10(FileUtils fileUtils) {
-		super("Makes10", "Makes10");
+		super("Makes10");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "makes10");
 		myWorld.addTest(BatTest.VISIBLE,  9,10);

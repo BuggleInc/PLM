@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class BaggleSeeker extends ExerciseTemplated {
 
 	public BaggleSeeker(FileUtils fileUtils) {
-		super("BaggleSeeker", "BaggleSeeker");
+		super("BaggleSeeker");
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Kitchen",7,7);
 		for (int i=0;i<7;i++) {

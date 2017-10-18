@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class StringYak extends ExerciseTemplated {
     public StringYak(FileUtils fileUtils) {
+        super("StringYak");
+
         BatWorld myWorld = new BatWorld(fileUtils, "stringYak");
         myWorld.addTest(BatTest.VISIBLE, "yakpak");
         myWorld.addTest(BatTest.VISIBLE, "pakyak");

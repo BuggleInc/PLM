@@ -11,7 +11,7 @@ public class DiskFourth extends ExerciseTemplated {
 	
 	public DiskFourth(FileUtils fileUtils) {
 		
-		super("DiskFourth", "DiskFourth");
+		super("DiskFourth");
 
 		World myWorld = new TurtleWorld(fileUtils, "DiskFourth", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 150, 150);

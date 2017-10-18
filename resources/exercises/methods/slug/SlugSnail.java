@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class SlugSnail extends ExerciseTemplated {
 
 	public SlugSnail(FileUtils fileUtils) {
-		super("SlugSnail", "SlugSnail");
+		super("SlugSnail");
 		//setToolbox();
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];

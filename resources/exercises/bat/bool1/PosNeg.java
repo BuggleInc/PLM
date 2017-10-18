@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class PosNeg extends ExerciseTemplated {
 
 	public PosNeg(FileUtils fileUtils) {
-		super("PosNeg", "PosNeg");
+		super("PosNeg");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "posNeg");
 		myWorld.addTest(BatTest.VISIBLE, -1,1,false);

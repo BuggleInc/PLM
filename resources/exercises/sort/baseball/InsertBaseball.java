@@ -11,7 +11,7 @@ import java.io.File;
 public class InsertBaseball extends ExerciseTemplated {
 
 	public InsertBaseball(FileUtils fileUtils) {
-		super("InsertBaseball", "InsertBaseball");
+		super("InsertBaseball");
 
 		setup(new BaseballWorld[] {
 				new BaseballWorld(fileUtils, "4 bases",4,2),

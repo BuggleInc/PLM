@@ -10,7 +10,7 @@ import plm.universe.turtles.TurtleWorld;
 public class SpiralUse extends ExerciseTemplated {
 
 	public SpiralUse(FileUtils fileUtils) {
-		super("SpiralUse", "SpiralUse");
+		super("SpiralUse");
 
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld(fileUtils, "Sheet", 400, 400);

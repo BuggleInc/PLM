@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class Variables extends ExerciseTemplated {
 
 	public Variables(FileUtils fileUtils) {
-		super("Variables", "Variables");
+		super("Variables");
 		//setToolbox();
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Kitchen",7,7);

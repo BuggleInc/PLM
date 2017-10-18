@@ -11,7 +11,7 @@ public class Flower3 extends ExerciseTemplated {
 	
 	public Flower3(FileUtils fileUtils) {
 		
-		super("Flower3", "Flower3");
+		super("Flower3");
 
 		World myWorld = new TurtleWorld(fileUtils, "Flower3", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 150, 150);

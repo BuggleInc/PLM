@@ -12,7 +12,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class RunFour extends ExerciseTemplated {
 
 	public RunFour(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-		super("RunFour", "RunFour");
+		super("RunFour");
 		//setToolbox();
 
 		/* Create initial situation */

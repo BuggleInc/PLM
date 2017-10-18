@@ -13,7 +13,7 @@ import plm.universe.hanoi.HanoiWorld;
 public class CyclicHanoi extends ExerciseTemplated {
 
 	public CyclicHanoi(FileUtils fileUtils) {
-		super("CyclicHanoi", "CyclicHanoi");
+		super("CyclicHanoi");
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[4];

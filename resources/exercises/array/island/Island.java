@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class Island extends ExerciseTemplated {
 	
 	public Island(FileUtils fileUtils) {
-		super("Island", "Island");
+		super("Island");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "island");
 		myWorld.addTest(BatTest.VISIBLE, (Object)new int[] {0,1,2,2,1,0,1,2,2,1,0}) ;

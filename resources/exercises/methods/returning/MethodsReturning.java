@@ -14,7 +14,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 public class MethodsReturning extends ExerciseTemplated {
 
 	public MethodsReturning(FileUtils fileUtils) {
-		super("MethodsReturning", "MethodsReturning");
+		super("MethodsReturning");
 		tabName = "Program";
 		//setToolbox();
 

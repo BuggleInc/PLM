@@ -7,6 +7,8 @@ import plm.universe.bat.BatWorld;
 
 public class StringX extends ExerciseTemplated {
     public StringX(FileUtils fileUtils) {
+        super("StringX");
+       
         BatWorld myWorld = new BatWorld(fileUtils, "stringX");
         myWorld.addTest(BatTest.VISIBLE, "xxHxix");
         myWorld.addTest(BatTest.VISIBLE, "abxxxcd");

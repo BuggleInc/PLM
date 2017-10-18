@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class Reverse extends ConsExercise {
 
 	public Reverse(FileUtils fileUtils) {
-		super("Reverse", "Reverse");
+		super("Reverse");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "reverse");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}));

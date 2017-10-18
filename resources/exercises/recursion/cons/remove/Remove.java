@@ -11,7 +11,7 @@ import plm.universe.cons.ConsWorld;
 public class Remove extends ConsExercise {
 
 	public Remove(FileUtils fileUtils) {
-		super("Remove", "Remove");
+		super("Remove");
 
 		BatWorld myWorld = new ConsWorld(fileUtils, "remove");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 3}),    1);

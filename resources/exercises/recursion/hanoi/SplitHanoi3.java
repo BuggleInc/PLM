@@ -14,7 +14,7 @@ import plm.universe.hanoi.HanoiWorld;
 public class SplitHanoi3 extends ExerciseTemplated {
 
 	public SplitHanoi3(FileUtils fileUtils) {
-		super("SplitHanoi3", "SplitHanoi3");
+		super("SplitHanoi3");
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];

@@ -11,7 +11,7 @@ import plm.universe.turtles.TurtleWorld;
 public class FourSquare extends ExerciseTemplated {
 
 	public FourSquare(FileUtils fileUtils) {
-		super("FourSquare", "FourSquare");
+		super("FourSquare");
 
 		/* Create initial situation */
 		World myWorld = new TurtleWorld(fileUtils, "WhiteBoard", 400, 400);

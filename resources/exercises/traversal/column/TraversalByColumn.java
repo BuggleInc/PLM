@@ -11,7 +11,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class TraversalByColumn extends ExerciseTemplated {
 
 	public TraversalByColumn(FileUtils fileUtils) {
-		super("TraversalByColumn", "TraversalByColumn");
+		super("TraversalByColumn");
 		tabName = "ColumnByColumn";
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Grid",7,7);

@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class Occurrences extends ConsExercise {
 
 	public Occurrences(FileUtils fileUtils) {
-		super("Occurrences", "Occurrences");
+		super("Occurrences");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "occurrences");
 		myWorld.addTest(BatTest.VISIBLE,   (new int[]{1, 2, 2, 4}), 1);

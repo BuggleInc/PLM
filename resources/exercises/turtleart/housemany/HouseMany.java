@@ -11,7 +11,7 @@ public class HouseMany extends ExerciseTemplated {
 	
 	public HouseMany(FileUtils fileUtils) {
 		
-		super("HouseMany", "HouseMany");
+		super("HouseMany");
 
 		World myWorld = new TurtleWorld(fileUtils, "HouseMany", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 250);

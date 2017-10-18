@@ -11,7 +11,7 @@ import java.io.IOException;
 public class PledgeMaze extends ExerciseTemplated {
 
     public PledgeMaze(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-        super("PledgeMaze", "PledgeMaze");
+        super("PledgeMaze");
         tabName = "Escaper";
 
         setup(new World[]{

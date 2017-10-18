@@ -11,7 +11,7 @@ public class CircleSquare extends ExerciseTemplated {
 
 	public CircleSquare(FileUtils fileUtils) {
 
-		super("CircleSquare", "CircleSquare");
+		super("CircleSquare");
 
 		World myWorld = new TurtleWorld(fileUtils, "CircleSquare", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 200);

@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class SumDouble extends ExerciseTemplated {
 
 	public SumDouble(FileUtils fileUtils) {
-		super("SumDouble", "SumDouble");
+		super("SumDouble");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "sumDouble");
 		myWorld.addTest(BatTest.VISIBLE,  1,2);

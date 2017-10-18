@@ -9,7 +9,7 @@ import unit.exercise.universe.ExampleWorld;
 public class ExampleRunner extends ExerciseTemplated {
 
 	public ExampleRunner(FileUtils fileUtils) {
-		super("ExampleRunner", "ExampleRunner");
+		super("ExampleRunner");
 		tabName = "Example";
 		
 		ExampleWorld w1 = new ExampleWorld(fileUtils, "Example World 1");

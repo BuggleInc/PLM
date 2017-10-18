@@ -9,7 +9,7 @@ import plm.universe.sort.SortingWorld;
 public class AlgCocktailSort1 extends ExerciseTemplated {
 	
 	public AlgCocktailSort1(FileUtils fileUtils) {
-		super("AlgCocktailSort1", "AlgCocktailSort1");
+		super("AlgCocktailSort1");
 		
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld(fileUtils, "Functional test",10);

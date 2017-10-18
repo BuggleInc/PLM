@@ -9,7 +9,7 @@ import plm.universe.dutchflag.DutchFlagWorld;
 public class DutchFlagAlgo extends ExerciseTemplated {
 	
 	public DutchFlagAlgo(FileUtils fileUtils) {
-		super("DutchFlagAlgo", "DutchFlagAlgo");
+		super("DutchFlagAlgo");
 	
 		setup( new DutchFlagWorld[] {
 				

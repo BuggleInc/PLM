@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class Diff21 extends ExerciseTemplated {
 
 	public Diff21(FileUtils fileUtils) {
-		super("Diff21", "Diff21");
+		super("Diff21");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "diff21");
 		myWorld.addTest(BatTest.VISIBLE,  2);

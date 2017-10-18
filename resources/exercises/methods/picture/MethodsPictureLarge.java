@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class MethodsPictureLarge extends ExerciseTemplated {
 
 	public MethodsPictureLarge(FileUtils fileUtils) {
-		super("MethodsPictureLarge", "MethodsPictureLarge");
+		super("MethodsPictureLarge");
 		//setToolbox();
 		BuggleWorld myWorld =  new BuggleWorld(fileUtils, "World",45,45);
 		new SimpleBuggle(myWorld, "Picasso", 0, 44, Direction.EAST, Color.black, Color.lightGray);

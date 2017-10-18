@@ -9,7 +9,7 @@ import plm.universe.cons.ConsWorld;
 public class IsMember extends ConsExercise {
 
 	public IsMember(FileUtils fileUtils) {
-		super("IsMember", "IsMember");
+		super("IsMember");
 		
 		BatWorld myWorld = new ConsWorld(fileUtils, "isMember");
 		myWorld.addTest(BatTest.VISIBLE,   new int[]{1, 2, 3, 4}, 1);

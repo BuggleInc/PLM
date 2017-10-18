@@ -41,7 +41,7 @@ public class BDR2 extends ExerciseTemplated {
 	void back (int x, int y){  set(x, y, "I"); }
 
 	public BDR2(FileUtils fileUtils) {
-		super("BDR2", "BDR2");
+		super("BDR2");
 		tabName = "BDR2";
 		//setToolbox();
 		// TODO: May we have to specify that run() method is provided ? and that 'I' is not backward()

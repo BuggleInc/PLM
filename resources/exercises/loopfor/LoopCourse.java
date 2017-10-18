@@ -12,7 +12,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class LoopCourse extends ExerciseTemplated{
 
 		public LoopCourse(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-			super("LoopCourse", "LoopCourse");
+			super("LoopCourse");
 			tabName = "Runner";
 			//setToolbox();
 

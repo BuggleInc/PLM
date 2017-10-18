@@ -11,7 +11,7 @@ public class House extends ExerciseTemplated {
 	
 	public House(FileUtils fileUtils) {
 		
-		super("House", "House");
+		super("House");
 
 		World myWorld = new TurtleWorld(fileUtils, "House", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 50, 250);

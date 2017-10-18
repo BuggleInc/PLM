@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class NearHundred extends ExerciseTemplated {
 
 	public NearHundred(FileUtils fileUtils) {
-		super("NearHundred", "NearHundred");
+		super("NearHundred");
 
 		BatWorld myWorld = new BatWorld(fileUtils,"nearHundred");
 		myWorld.addTest(BatTest.VISIBLE, 93);

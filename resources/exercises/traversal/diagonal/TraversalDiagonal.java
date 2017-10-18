@@ -11,7 +11,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class TraversalDiagonal extends ExerciseTemplated {
 
 	public TraversalDiagonal(FileUtils fileUtils) {
-		super("TraversalDiagonal", "TraversalDiagonal");
+		super("TraversalDiagonal");
 		tabName = "Diagonal";
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Grid",7,7);

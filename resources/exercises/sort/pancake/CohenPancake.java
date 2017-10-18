@@ -10,7 +10,7 @@ import plm.universe.pancake.PancakeWorld;
 public class CohenPancake extends ExerciseTemplated {
 	
 	public CohenPancake(FileUtils fileUtils) {
-		super("CohenPancake", "CohenPancake");
+		super("CohenPancake");
 
 		PancakeWorld[] plate = new PancakeWorld[] {
 				new PancakeWorld(fileUtils, "5 pancakes",new int[] {2,4,5,3,1},true),         // A+ H D-

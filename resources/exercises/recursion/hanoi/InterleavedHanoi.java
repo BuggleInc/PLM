@@ -14,7 +14,7 @@ import plm.universe.hanoi.HanoiWorld;
 public class InterleavedHanoi extends ExerciseTemplated {
 
 	public InterleavedHanoi(FileUtils fileUtils) {
-		super("InterleavedHanoi", "InterleavedHanoi");
+		super("InterleavedHanoi");
 				
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[3];

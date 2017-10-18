@@ -11,7 +11,7 @@ public class CircleYing extends ExerciseTemplated {
 	
 	public CircleYing(FileUtils fileUtils) {
 		
-		super("CircleYing", "CircleYing");
+		super("CircleYing");
 
 		World myWorld = new TurtleWorld(fileUtils, "CircleYing", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 35, 149);

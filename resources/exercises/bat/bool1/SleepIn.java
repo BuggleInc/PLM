@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class SleepIn extends ExerciseTemplated {
 
 	public SleepIn(FileUtils fileUtils) {
-		super("SleepIn", "SleepIn");
+		super("SleepIn");
 		tabName = "SourceCode";
 
 		BatWorld myWorld = new BatWorld(fileUtils, "sleepIn");

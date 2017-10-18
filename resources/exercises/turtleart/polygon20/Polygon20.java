@@ -11,7 +11,7 @@ public class Polygon20 extends ExerciseTemplated {
 
 	public Polygon20(FileUtils fileUtils) {
 
-		super("Polygon20", "Polygon20");
+		super("Polygon20");
 
 		World myWorld = new TurtleWorld(fileUtils, "Polygon20", 300, 300);
 		Turtle t = new Turtle(myWorld, "Hawksbill", 55, 165);

@@ -8,7 +8,7 @@ import plm.universe.bat.BatWorld;
 public class MonkeyTrouble extends ExerciseTemplated {
 
 	public MonkeyTrouble(FileUtils fileUtils) {
-		super("MonkeyTrouble", "MonkeyTrouble");
+		super("MonkeyTrouble");
 
 		BatWorld myWorld = new BatWorld(fileUtils, "monkeyTrouble");
 		myWorld.addTest(BatTest.VISIBLE, true, true);

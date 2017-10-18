@@ -9,7 +9,7 @@ import plm.universe.baseball.BaseballWorld;
 public class BubbleBaseball extends ExerciseTemplated {
 
 	public BubbleBaseball(FileUtils fileUtils) {
-		super("BubbleBaseball", "BubbleBaseball");
+		super("BubbleBaseball");
 
 		setup(new BaseballWorld[] {
 				new BaseballWorld(fileUtils, "5 bases, 2 positions",5,2),

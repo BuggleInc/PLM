@@ -13,7 +13,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class LoopStairs extends ExerciseTemplated{
 
 		public LoopStairs(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-			super("LoopStairs", "LoopStairs");
+			super("LoopStairs");
 			tabName = "Runner";
 			//setToolbox();
 

@@ -11,7 +11,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class Instructions extends ExerciseTemplated {
 
 	public Instructions(FileUtils fileUtils) {
-		super("Instructions", "Instructions");
+		super("Instructions");
 		tabName="Program";
 
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Training World", 7,7);

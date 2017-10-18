@@ -14,7 +14,7 @@ import plm.universe.hanoi.HanoiWorld;
 public class LinearTwinHanoi extends ExerciseTemplated {
 
 	public LinearTwinHanoi(FileUtils fileUtils) {
-		super("LinearTwinHanoi", "LinearTwinHanoi");
+		super("LinearTwinHanoi");
 
 		/* Create initial situation */
 		HanoiWorld[] myWorlds = new HanoiWorld[1];

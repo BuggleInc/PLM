@@ -11,7 +11,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class FlowerCase extends ExerciseTemplated {
 
 	public FlowerCase(FileUtils fileUtils) throws IOException, BrokenWorldFileException {
-		super("FlowerCase", "FlowerCase");
+		super("FlowerCase");
 		//setToolbox();
 		BuggleWorld[] myWorlds = new BuggleWorld[] {
 				(BuggleWorld) BuggleWorld.newFromFile(fileUtils, "methods/flowerpot/FlowerCase")

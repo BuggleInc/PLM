@@ -13,7 +13,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class Conditions extends ExerciseTemplated {
 
 	public Conditions(FileUtils fileUtils) {
-		super("Conditions", "Conditions");
+		super("Conditions");
 		tabName = "Program";
 				
 		BuggleWorld myWorld = new BuggleWorld(fileUtils, "Closed World",7,7);

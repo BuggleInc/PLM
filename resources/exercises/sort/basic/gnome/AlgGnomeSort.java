@@ -9,7 +9,7 @@ import plm.universe.sort.SortingWorld;
 public class AlgGnomeSort extends ExerciseTemplated {
 
 	public AlgGnomeSort(FileUtils fileUtils) {
-		super("AlgGnomeSort", "AlgGnomeSort");
+		super("AlgGnomeSort");
 		
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld(fileUtils, "Functional test",10);
