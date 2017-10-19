@@ -175,8 +175,8 @@ class CompilerJava {
 		}
 
 		StringBuilder sb = new StringBuilder();
-		for (ClassLoader classLoader : new ClassLoader[] { loader, ClassLoader.getSystemClassLoader() }) {
-			for (URL jar : ((URLClassLoader) classLoader).getURLs()) {
+		for (URLClassLoader classLoader : urlClassLoaders(loader)) {
+			for (URL jar : classLoader.getURLs()) {
 				sb.append(jar.getPath());
 				sb.append(File.pathSeparatorChar);
 			}
@@ -184,6 +184,22 @@ class CompilerJava {
 		this.options.add("-cp");
 		this.options.add(sb.toString());
 	}
+
+  /**
+   * Lists all {@link URLClassLoader} ancestors of {@code loader}, including
+   * {@code loader} if it is one.
+   */
+  private static Iterable<URLClassLoader> urlClassLoaders(ClassLoader loader) {
+    List<URLClassLoader> result = new ArrayList<>();
+    ClassLoader currentLoader = loader;
+    while (currentLoader != null) {
+      if (currentLoader instanceof URLClassLoader) {
+        result.add((URLClassLoader) currentLoader);
+      }
+      currentLoader = currentLoader.getParent();
+    }
+    return result;
+  }
 
 	private static void download(URL url, File localFileName) {
 		OutputStream out = null;
