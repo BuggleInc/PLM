@@ -174,16 +174,38 @@ class CompilerJava {
 			}
 		}
 
-		StringBuilder sb = new StringBuilder();
-		for (ClassLoader classLoader : new ClassLoader[] { loader, ClassLoader.getSystemClassLoader() }) {
-			for (URL jar : ((URLClassLoader) classLoader).getURLs()) {
-				sb.append(jar.getPath());
-				sb.append(File.pathSeparatorChar);
-			}
-		}
-		this.options.add("-cp");
-		this.options.add(sb.toString());
-	}
+    // We want to pass all paths (jars and root directories) that 'loader'
+    // knows about to the '-cp' option of javac. The list of URLs returned by
+    // 'loader.getURLs()' is not enough: we also need to retrieve the URLs of
+    // its parent classloaders. We thus retrieve the list of all
+    // URLClassloaders among 'loader' and its ancestors, then we add their URLs
+    // to the '-cp' option.
+    //
+    // This is a hack because we assume 'loader' and its relevant ancestors are
+    // URLClassLoaders, which is not necessarily the case. Ideally we wouldn't
+    // use the -cp option at all but instead have FileManagerImpl retrieve
+    // classes from 'loader', as described in
+    // http://atamur.blogspot.ch/2009/10/using-built-in-javacompiler-with-custom.html.
+    StringBuilder sb = new StringBuilder(); for (URLClassLoader classLoader :
+        urlClassLoaders(loader)) { for (URL jar : classLoader.getURLs()) {
+      sb.append(jar.getPath()); sb.append(File.pathSeparatorChar); } }
+    this.options.add("-cp"); this.options.add(sb.toString()); }
+
+  /**
+   * Lists all {@link URLClassLoader} ancestors of {@code loader}, including
+   * {@code loader} if it is one.
+   */
+  private static Iterable<URLClassLoader> urlClassLoaders(ClassLoader loader) {
+    List<URLClassLoader> result = new ArrayList<>();
+    ClassLoader currentLoader = loader;
+    while (currentLoader != null) {
+      if (currentLoader instanceof URLClassLoader) {
+        result.add((URLClassLoader) currentLoader);
+      }
+      currentLoader = currentLoader.getParent();
+    }
+    return result;
+  }
 
 	private static void download(URL url, File localFileName) {
 		OutputStream out = null;
