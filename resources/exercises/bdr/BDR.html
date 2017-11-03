@@ -28,15 +28,16 @@ But beware, this becomes dangerous if you chain the <tt>if</tt> instructions lik
 <pre><code class="code-container">if (isOverBaggle())    
      if (x == 5)
           left();
-else
+else // Do not write it this way, it's misleading!
      right();
 [!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
-<p>In fact, it does not turn right when there is no baggle on the ground AND x
-equals 5, but when the buggle found a baggle on the ground and x equals
-anything but 5. Putting this otherwise, the buggle understands the previous
-code as if it were written the following way (note that the <tt>else</tt>
-were moved to the right):</p>
+<p>You think that <code>right()</code> refers to the first
+  <code>if</code> and get executed when <code>isOverBaggle()</code>
+  returns false, but in fact,  it refers to the second one
+  <code>if</code> and will be executed when <code>isOverBaggle()</code>
+  returns true and <code>x != 5</code>. Yes, despite the indentation, the buggle
+  understands the previous code as follows:</p>
 <pre><code class="code-container">if (isOverBaggle())    
         if (x == 5)
             left();
@@ -44,20 +45,20 @@ were moved to the right):</p>
             right();
 [!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
-<p>The first lesson of this is that the indentation is very important to help
-humans understanding, even if it does not change the actual meaning of
-the code. We could have written the following code and obtain the same
-result. But if you want a human to read and review your code, you
-really want to indent it correctly. That's for example the case if you want
-a professor to read it (to grade it or to answer a question about it), or if
-you want to reuse your code later, or even if you need to debug your code yourself.</p> 
+<p>In [!thelang] the computer connects a <tt>else</tt> branch to the
+  closest <tt>if</tt>. If you find it ambiguous, you should add more
+  braces than strictly necessary. Computers don't even look at the
+  indentation in [!thelang]. If it were only for the computer, the
+  previous code could even be written as follows, and it would still
+  lead to the same result.</p>
 
 <pre><code class="code-container">if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
-<p>The second lesson is that a <tt>else</tt> branch always connects to the
-closest <tt>if</tt>. This may be a bit troublesome in some case, and it may
-be easier to add more braces than strictly needed to remove any ambiguity.</p>
-[/!]
+<p>But for humans, <b>you really want to indent your code correctly
+  correctly</b>. For example if you want a professor to review or even
+  grade your code, if you want to reuse your own code later, or even
+  if you need to debug it. That is right: you need to write readable
+  code for your own comfort.</p>  [/!]
 
 <h3>Chaining conditionals</h3>
 
