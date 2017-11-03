@@ -57,7 +57,6 @@ import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
 import plm.core.model.tracking.GitSpy;
-import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.ui.MainFrame;
@@ -126,8 +125,6 @@ public class Game implements IWorldView {
 	private Entity selectedEntity;
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
-
-	private HeartBeatSpy heartBeatSpy;
 
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -697,9 +694,6 @@ public class Game implements IWorldView {
 			for(ProgressSpyListener spyListener: progressSpyListeners){
 				spyListener.leave();
 			}
-			// stop the heartbeat report to PLMServer
-			if(heartBeatSpy != null)
-				heartBeatSpy.die();
 
 			storeProperties();
 			System.exit(0);
