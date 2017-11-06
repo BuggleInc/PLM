@@ -8,7 +8,7 @@ amount of steps? On the other hand, writing <tt>forward2()</tt>,
 to say the less.</p>
 
 <p>Luckily, it is possible to pass <b>parameters</b> to your methods. You have
-to specify their type and name between the parenthesis after the method
+to specify their [!java|scala|c]type and[/!] name between the parenthesis after the method
 name. Then, you can use them in the method body as if it were variables
 defined in there, and which initial value is what the caller specified.</p>
 
@@ -18,7 +18,7 @@ defined in there, and which initial value is what the caller specified.</p>
 
 <p>As caller, you have to specify the initial value of this "variables" between
 the call's parenthesis.</p>
-<pre>[!java|c]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java|c];[/!]</pre>
+<pre>[!java|c]double [/!][!scala]val [/!]blah = divideByTwo(3.14)[!java|c];[/!]</pre>
 
 <p>If you want several parameters, you need to separate them with comas (,)
 both in the declaration and calls.</p>
@@ -28,9 +28,9 @@ both in the declaration and calls.</p>
 [!python]def divide(x, y):[/!]
      return x / y[!java|c];[/!]
 [!java|scala|c]}[/!]</pre>
-<pre>[!java|c]double res = divide(3.14 , 1.5);[/!]
-[!scala]val res = divide(3.14 , 1.5)[/!]
-[!python]res = divide(3.14 , 1.5)[/!]</pre>
+<pre>[!java|c]double res = divide(3.14 , 2);[/!]
+[!scala]val res = divide(3.14 , 2)[/!]
+[!python]res = divide(3.14 , 2)[/!]</pre>
 
 [!java|scala]
 <p>In [!thelang], you can declare several methods of the same name as long as
