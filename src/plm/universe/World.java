@@ -25,6 +25,7 @@ import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
+import plm.universe.bugglequest.BuggleWorldView;
 
 @JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@jsonId")
@@ -150,7 +151,16 @@ public abstract class World  {
 						trash.add(runner);
 				}
 
-				/* HERE, we should generate a frame of the world */
+				/*Here, generate a frame of the world*/
+
+				Logger.debug("Je dessine maintenant");
+				WorldView test = new WorldView(this);
+
+				String svg = test.draw();
+				Logger.info("svg = " + svg);
+
+				Logger.info(this.toString());
+
 
 				for (EntityRunner dead : trash)
 					allRunners.remove(dead);
@@ -323,6 +333,7 @@ public abstract class World  {
 	}
 
 	public void addStep(List<Operation> operations) {
+		//Logger.info("addStep : ");
 		steps.add(operations);
 	}
 
