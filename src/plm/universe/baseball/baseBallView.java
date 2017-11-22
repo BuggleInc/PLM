@@ -125,7 +125,7 @@ public class baseBallView extends BaseballWorld {
      * @param amountOfPlayers the total amount of players per base
      */
     private void drawBase(Graphics2D g, int L, int dist, double theta, int xCenter, int yCenter, int base, int amountOfPlayers) {
-        BaseballWorld field = (BaseballWorld) world;
+        BaseballWorld field = (BaseballWorld) this;
         int[][] points = computeCorners(L, dist, theta, xCenter, yCenter);
 
         // draw the base
@@ -415,7 +415,7 @@ public class baseBallView extends BaseballWorld {
     }
 
     private void paintHistory(Graphics2D g) {
-        BaseballWorld field = (BaseballWorld) world;
+        BaseballWorld field = (BaseballWorld) this;
         //Vector<BaseballMove> moves = field.getMoves();
         int operationsAmount = this.getMoveCount();    // little optimization
 		/* getWidth()-20 to keep the room to display the bases on left and right */

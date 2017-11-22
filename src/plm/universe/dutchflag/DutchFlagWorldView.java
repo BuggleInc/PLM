@@ -30,8 +30,7 @@ import java.io.IOException;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
 import plm.core.utils.FileUtils;
-import plm.universe.World;
-import plm.universe.WorldView;
+
 
 
 public class DutchFlagWorldView extends DutchFlagWorld{

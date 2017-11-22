@@ -1,9 +1,6 @@
 package plm.universe;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -25,7 +22,6 @@ import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.UserSettings;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
-import plm.universe.bugglequest.BuggleWorldView;
 
 @JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@jsonId")
@@ -152,14 +148,9 @@ public abstract class World  {
 				}
 
 				/*Here, generate a frame of the world*/
+				this.draw();
 
-				Logger.debug("Je dessine maintenant");
-				WorldView test = new WorldView(this);
 
-				String svg = test.draw();
-				Logger.info("svg = " + svg);
-
-				Logger.info(this.toString());
 
 
 				for (EntityRunner dead : trash)
@@ -173,6 +164,8 @@ public abstract class World  {
 			//Logger.info("Done with exercise "+getName());
 		});
 	}
+
+	protected abstract void draw();
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();

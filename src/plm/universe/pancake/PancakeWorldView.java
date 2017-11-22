@@ -12,19 +12,23 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import plm.universe.WorldView;
+
 
 import plm.universe.World;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 
-public class PancakeWorldView extends WorldView {
+public class PancakeWorldView extends PancakeWorld {
 
 	private static final long serialVersionUID = 1L;
 	private double height;
 
 	private int Height = 400;
 	private int Width = 400;
+
+	public PancakeWorldView(PancakeWorld world) {
+		super(world);
+	}
 
 	public int getHeight() {
 		return Height;
@@ -34,9 +38,7 @@ public class PancakeWorldView extends WorldView {
 		return Width;
 	}
 
-	public PancakeWorldView(World w) {
-		super(w);
-	}
+
 
 	/**
 	 * Draw the component of the world
@@ -44,7 +46,7 @@ public class PancakeWorldView extends WorldView {
 	 */
 	public void paintComponent(Graphics g) {
 		//super.paintComponent(g);
-		PancakeWorld stack = (PancakeWorld) world;
+		PancakeWorld stack = (PancakeWorld) this;
 		int spatulaSize = 30;
 		
 		Graphics2D g2 = (Graphics2D) g;

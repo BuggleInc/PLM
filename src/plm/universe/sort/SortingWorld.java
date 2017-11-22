@@ -256,6 +256,11 @@ public class SortingWorld extends World {
 		this.writeCount = world.writeCount;
 	}
 
+	@Override
+	protected void draw() {
+
+	}
+
 	/**
 	 * Setup the engine so that it's ready to host the user code
 	 *

@@ -130,6 +130,11 @@ public class DutchFlagWorld extends World {
 		super.reset(world);		
 	}
 
+	@Override
+	protected void draw() {
+
+	}
+
 	/** Ensures that the provided engine can be used to solve Pancake exercises */ 
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {

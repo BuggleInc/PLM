@@ -1,9 +1,7 @@
 package plm.universe.bugglequest;
 
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +9,11 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import org.apache.batik.dom.GenericDOMImplementation;
+import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.SVGGraphics2DIOException;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
 import org.xnap.commons.i18n.I18n;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -67,6 +70,41 @@ public class BuggleWorld extends GridWorld {
 
 		super.reset(initialWorld);
 	}
+
+	@Override
+	protected void draw() {
+		// Get a DOMImplementation.
+		DOMImplementation domImpl =
+				GenericDOMImplementation.getDOMImplementation();
+
+		// Create an instance of org.w3c.dom.Document.
+		String svgNS = "http://www.w3.org/2000/svg";
+		Document document = domImpl.createDocument(svgNS, "svg", null);
+
+		// Create an instance of the SVG Generator.
+		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+
+		// Ask the test to render into the SVG Graphics2D implementation.
+		BuggleWorldView test = new BuggleWorldView(this);
+		test.paintComponent(svgGenerator);
+
+		// Finally, stream out SVG to the standard output using
+		// UTF-8 encoding.
+		boolean useCSS = true; // we want to use CSS style attributes
+		Writer out = null;
+		try {
+			out = new OutputStreamWriter(System.out, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		try {
+			svgGenerator.stream(out, useCSS);
+		} catch (SVGGraphics2DIOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	@Override
 	public void setWidth(int w) {
 		super.setWidth(w);

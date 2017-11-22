@@ -54,6 +54,11 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
+  protected void draw() {
+
+  }
+
+  @Override
   public String toString() {
     return realWorld.toString();
   }

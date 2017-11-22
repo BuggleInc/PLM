@@ -45,6 +45,12 @@ public class BatWorld extends World {
 			tests.add(t.copy());
 		super.reset(anotherWorld);		
 	}
+
+	@Override
+	protected void draw() {
+
+	}
+
 	@Override
 	public boolean equals(Object o){
 		if (!(o instanceof BatWorld)) {

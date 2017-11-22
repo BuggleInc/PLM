@@ -144,7 +144,12 @@ public class PancakeWorld extends World {
 		this.moveCount = other.moveCount;
 		super.reset(world);
 	}
-	
+
+	@Override
+	protected void draw() {
+
+	}
+
 	@JsonProperty("pancakeStack")
 	public Pancake[] getStack() {
 		return pancakeStack;

@@ -254,6 +254,11 @@ public class BaseballWorld extends World {
 		moveCount = other.moveCount;
 	}
 
+	@Override
+	protected void draw() {
+
+	}
+
 	/** Returns a string representation of the world */
 	public String toString() {
 		StringBuffer sb = new StringBuffer();

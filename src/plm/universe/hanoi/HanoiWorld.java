@@ -81,7 +81,12 @@ public class HanoiWorld extends World {
 		moveCount = other.moveCount;
 		super.reset(w);		
 	}
-	
+
+	@Override
+	protected void draw() {
+
+	}
+
 	@Override
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
