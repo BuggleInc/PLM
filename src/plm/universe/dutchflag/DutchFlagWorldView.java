@@ -30,7 +30,8 @@ import java.io.IOException;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
 import plm.core.utils.FileUtils;
-
+import plm.universe.World;
+import plm.universe.WorldView;
 
 
 public class DutchFlagWorldView extends DutchFlagWorld{
@@ -54,7 +55,10 @@ public class DutchFlagWorldView extends DutchFlagWorld{
         super(fileUtils, name, size, colorRemoved);
     }
 
-
+    public DutchFlagWorldView(DutchFlagWorld dfw)
+    {
+        super(dfw);
+    }
     private static final Color dutchRed = new Color(174,28,40);
     private static final Color dutchBlue = new Color(33,70,139);
     /**
