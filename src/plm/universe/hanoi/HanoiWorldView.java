@@ -30,6 +30,11 @@ public class HanoiWorldView extends HanoiWorld {
 
     }
 
+    public HanoiWorldView(HanoiWorld hanW) {
+        super(hanW);
+
+    }
+
     public void paintComponent(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
@@ -54,7 +59,7 @@ public class HanoiWorldView extends HanoiWorld {
         g2.drawString(""+this.moveCount+" moves", 0, 15);
     }
 
-    private void drawSlot(Graphics2D g2, int rank, double xoffset) {
+    public void drawSlot(Graphics2D g2, int rank, double xoffset) {
 
 
 		/* draw bars, with color indicating whether it's a valid move during interactive drag&drop */
