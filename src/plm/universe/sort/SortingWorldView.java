@@ -1,9 +1,10 @@
 package plm.universe.sort;
 
-import plm.core.utils.FileUtils;
-import plm.universe.Entity;
 import plm.universe.Operation;
-import plm.universe.sort.operations.*;
+import plm.universe.sort.operations.CopyOperation;
+import plm.universe.sort.operations.GetValueOperation;
+import plm.universe.sort.operations.SetValOperation;
+import plm.universe.sort.operations.SwapOperation;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -11,10 +12,11 @@ import java.awt.geom.Rectangle2D;
 public class SortingWorldView extends SortingWorld {
     private static final long serialVersionUID = 1L;
 
+
 	private boolean useStateView = true; // chronoView if false
 
-	public SortingWorldView(FileUtils fileUtils, String name, int nbValues) {
-		super(fileUtils, name, nbValues);
+	public SortingWorldView(SortingWorld world) {
+		super(world);
 	}
 
 
@@ -209,11 +211,15 @@ public class SortingWorldView extends SortingWorld {
 	/**
 	 * Decide which view we must draw ( state or chrono )
 	 */
-	public void paintComponent(Graphics g) throws Exception {
+	public void paintComponent(Graphics g){
 		if (useStateView) { // myExo is null during initialization
 			paintComponentState(g);
 		} else {
-			paintComponentChrono(g);
+			try {
+				paintComponentChrono(g);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -233,7 +239,7 @@ public class SortingWorldView extends SortingWorld {
 		g2.setColor(Color.black);
 		g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-		drawAlgoChrono(g2,this);
+		drawAlgoChrono(g2, (SortingWorld) this);
 	}
 
 	/**
