@@ -169,6 +169,10 @@ public class JSONUtils {
 		mapArgs.put("worldID", world.getName());
         mapArgs.put("steps", steps);
 
+		System.out.println("world = " + world.getName());
+		System.out.println("bufferSize = " + bufferSize);
+
+
         return createMessage("operations", mapArgs);
 	}
 

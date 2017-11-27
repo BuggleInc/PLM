@@ -9,8 +9,11 @@ import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.Entity;
 
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.awt.*;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.List;
@@ -27,16 +30,6 @@ public class BuggleWorldDraw {
             myWorld.putTopWall (i, 0  );
         }
 
-        List<Entity> list = myWorld.getEntities();
-
-
-
-        for (Entity e : list) {
-            e.run();
-            System.out.println(" e = " + e.getName());
-        }
-
-
             // Get a DOMImplementation.
         DOMImplementation domImpl =
                 GenericDOMImplementation.getDOMImplementation();
@@ -52,14 +45,14 @@ public class BuggleWorldDraw {
         BuggleWorldView test = new BuggleWorldView(myWorld);
         test.paintComponent(svgGenerator);
 
-        // Finally, stream out SVG to the standard output using
-        // UTF-8 encoding.
-        boolean useCSS = true; // we want to use CSS style attributes
-        Writer out = new OutputStreamWriter(System.out, "UTF-8");
-        try {
-            svgGenerator.stream(out, useCSS);
-        } catch (SVGGraphics2DIOException e) {
-            e.printStackTrace();
-        }
+        StringWriter writer = new StringWriter();
+        svgGenerator.stream(writer);
+        String str = writer.getBuffer().toString();
+
+        System.out.println(" =================================== " );
+
+        System.out.println(str);
+
+
     }
 }

@@ -148,7 +148,11 @@ public abstract class World  {
 				}
 
 				/*Here, generate a frame of the world*/
-				this.draw();
+				String SVGOperation =  this.draw();
+				//SVGOperation = this.draw();
+
+
+				//Logger.info(SVGOperation);
 
 
 
@@ -165,7 +169,7 @@ public abstract class World  {
 		});
 	}
 
-	protected abstract void draw();
+	protected abstract String draw();
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();
@@ -233,7 +237,7 @@ public abstract class World  {
 		return this.equals(standard);
 	}
 
-	@Override
+    @Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

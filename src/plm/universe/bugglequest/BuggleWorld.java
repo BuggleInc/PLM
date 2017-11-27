@@ -72,7 +72,7 @@ public class BuggleWorld extends GridWorld {
 	}
 
 	@Override
-	protected void draw() {
+	protected String draw() {
 		// Get a DOMImplementation.
 		DOMImplementation domImpl =
 				GenericDOMImplementation.getDOMImplementation();
@@ -88,20 +88,32 @@ public class BuggleWorld extends GridWorld {
 		BuggleWorldView test = new BuggleWorldView(this);
 		test.paintComponent(svgGenerator);
 
-		// Finally, stream out SVG to the standard output using
-		// UTF-8 encoding.
-		boolean useCSS = true; // we want to use CSS style attributes
-		Writer out = null;
+		StringWriter writer = new StringWriter();
 		try {
-			out = new OutputStreamWriter(System.out, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		try {
-			svgGenerator.stream(out, useCSS);
+			svgGenerator.stream(writer);
 		} catch (SVGGraphics2DIOException e) {
 			e.printStackTrace();
 		}
+		String str = writer.getBuffer().toString();
+
+		return str;
+
+		// Finally, stream out SVG to the standard output using
+		// UTF-8 encoding.
+//		boolean useCSS = true; // we want to use CSS style attributes
+//		Writer out = null;
+//
+//		try {
+//			out = new OutputStreamWriter(System.out, "UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//
+//		try {
+//			svgGenerator.stream(out, useCSS);
+//		} catch (SVGGraphics2DIOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 
@@ -387,6 +399,7 @@ public class BuggleWorld extends GridWorld {
 		result = PRIME * result + Arrays.hashCode(cells);
 		return result;
 	}
+
 	public World ignoreDirectionDifference() {
 		for (Entity e: getEntities())
 			((AbstractBuggle)e).ignoreDirectionDifference();

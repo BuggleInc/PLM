@@ -255,8 +255,8 @@ public class BaseballWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
-
+	protected String draw() {
+		return "";
 	}
 
 	/** Returns a string representation of the world */

@@ -31,6 +31,11 @@ public class ExampleWorld extends World {
 	}
 
 	@Override
+	protected String draw() {
+		return "";
+	}
+
+	@Override
 	public boolean equals(Object o){
 		if (!(o instanceof ExampleWorld)) {
 			return false;

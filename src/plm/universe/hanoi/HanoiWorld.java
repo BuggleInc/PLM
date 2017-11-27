@@ -3,6 +3,7 @@ package plm.universe.hanoi;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Vector;
@@ -92,7 +93,7 @@ public class HanoiWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
+	protected String draw() {
 		// Get a DOMImplementation.
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
@@ -108,16 +109,24 @@ public class HanoiWorld extends World {
 
 		boolean useCSS = true; // we want to use CSS style attributes
 		Writer out = null;
+
+		StringWriter writer = new StringWriter();
 		try {
-			out = new OutputStreamWriter(System.out, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		try {
-			svgGenerator.stream(out, useCSS);
+			svgGenerator.stream(writer);
 		} catch (SVGGraphics2DIOException e) {
 			e.printStackTrace();
 		}
+		String str = writer.getBuffer().toString();
+
+		return str;
+
+//		out = new OutputStreamWriter(System.out, "UTF-8");
+//
+//		try {
+//			svgGenerator.stream(out, useCSS);
+//		} catch (SVGGraphics2DIOException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 

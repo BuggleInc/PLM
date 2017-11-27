@@ -1,6 +1,7 @@
 package plm.universe.dutchflag;
 
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Random;
@@ -140,7 +141,7 @@ public class DutchFlagWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
+	protected String draw() {
 		// Get a DOMImplementation.
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
@@ -154,18 +155,15 @@ public class DutchFlagWorld extends World {
 		DutchFlagWorldView test = new DutchFlagWorldView(this);
 		test.paintComponent(svgGenerator);
 
-		boolean useCSS = true; // we want to use CSS style attributes
-		Writer out = null;
+		StringWriter writer = new StringWriter();
 		try {
-			out = new OutputStreamWriter(System.out, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		try {
-			svgGenerator.stream(out, useCSS);
+			svgGenerator.stream(writer);
 		} catch (SVGGraphics2DIOException e) {
 			e.printStackTrace();
 		}
+		String str = writer.getBuffer().toString();
+
+		return str;
 
 	}
 
