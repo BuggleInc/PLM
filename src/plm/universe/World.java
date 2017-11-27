@@ -35,6 +35,14 @@ public abstract class World  {
 	protected final FileUtils fileUtils;
 	private String name;
 
+	private SVGOperation operation = new SVGOperation();
+
+	public SVGOperation getOperation() {
+		return operation;
+	}public void setOperation(SVGOperation operation) {
+		this.operation = operation;
+	}
+
 	public World(FileUtils fileUtils, String name) {
 		this.fileUtils = fileUtils;
 		this.name = name;
@@ -148,8 +156,10 @@ public abstract class World  {
 				}
 
 				/*Here, generate a frame of the world*/
-				String SVGOperation =  this.draw();
+				operation.setOperation(this.draw());
+				//System.out.println("operation = " + operation.getOperation());
 				//SVGOperation = this.draw();
+
 
 
 				//Logger.info(SVGOperation);

@@ -32,6 +32,8 @@ public abstract class Entity extends Observable {
     Semaphore stepBegin = new Semaphore(0);
     Semaphore stepEnd = new Semaphore(0);
 
+
+
     public Entity() {
     }
 
@@ -117,6 +119,9 @@ public abstract class Entity extends Observable {
             world.addStep(operations);
             operations = new ArrayList<Operation>();
         }
+
+        //System.out.println("world.getOperation() = " + world.getOperation());
+
         fireStackListener();
         //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
         if (inited) {
