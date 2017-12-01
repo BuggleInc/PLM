@@ -27,16 +27,14 @@ import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
 import plm.core.utils.InvalidColorNameException;
-import plm.universe.BrokenWorldFileException;
-import plm.universe.Direction;
-import plm.universe.Entity;
-import plm.universe.GridWorld;
-import plm.universe.GridWorldCell;
-import plm.universe.World;
+import plm.universe.*;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class BuggleWorld extends GridWorld {
 
+	protected  int sizeX = super.sizeX;
+	protected  int sizeY=super.sizeY;
+	BuggleWorldView buggleWorldView = new BuggleWorldView(this);
 	@JsonCreator
 	public BuggleWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
 		super(fileUtils, name,x,y);
@@ -73,48 +71,15 @@ public class BuggleWorld extends GridWorld {
 
 	@Override
 	protected String draw() {
-		// Get a DOMImplementation.
-		DOMImplementation domImpl =
-				GenericDOMImplementation.getDOMImplementation();
 
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
-
-		// Create an instance of the SVG Generator.
-		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-
-		// Ask the test to render into the SVG Graphics2D implementation.
-		BuggleWorldView test = new BuggleWorldView(this);
-		test.paintComponent(svgGenerator);
-
-		StringWriter writer = new StringWriter();
-		try {
-			svgGenerator.stream(writer);
-		} catch (SVGGraphics2DIOException e) {
-			e.printStackTrace();
-		}
-		String str = writer.getBuffer().toString();
-
-		return str;
-
-		// Finally, stream out SVG to the standard output using
-		// UTF-8 encoding.
-//		boolean useCSS = true; // we want to use CSS style attributes
-//		Writer out = null;
-//
-//		try {
-//			out = new OutputStreamWriter(System.out, "UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-//
-//		try {
-//			svgGenerator.stream(out, useCSS);
-//		} catch (SVGGraphics2DIOException e) {
-//			e.printStackTrace();
-//		}
+		 String svg =null;
+		 svg = buggleWorldView.draw(this, 400,400);
+		 return svg;
 	}
+
+//	public static String drawSvg(BuggleWorldView buggleWorldView, int width, int height){
+//
+//	}
 
 
 	@Override
