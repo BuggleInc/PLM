@@ -12,31 +12,29 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.io.StringWriter;
 
 
+import org.apache.batik.svggen.SVGGraphics2DIOException;
+import plm.universe.SvgGenerator;
 import plm.universe.World;
+import plm.universe.WorldView;
+import plm.universe.hanoi.HanoiWorld;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 
-public class PancakeWorldView extends PancakeWorld {
+public class PancakeWorldView extends WorldView {
 
 	private static final long serialVersionUID = 1L;
-	private double height;
+	private  static double height;
 
-	private int Height = 400;
-	private int Width = 400;
 
 	public PancakeWorldView(PancakeWorld world) {
 		super(world);
 	}
 
-	public int getHeight() {
-		return Height;
-	}
 
-	public int getWidth() {
-		return Width;
-	}
+
 
 
 
@@ -44,9 +42,9 @@ public class PancakeWorldView extends PancakeWorld {
 	 * Draw the component of the world
 	 * @param g : some Graphics
 	 */
-	public void paintComponent(Graphics g) {
+	public  static void paintComponent(Graphics g,PancakeWorld pancakeWorld,int width, int height1) {
 		//super.paintComponent(g);
-		PancakeWorld stack = (PancakeWorld) this;
+		PancakeWorld stack = pancakeWorld;
 		int spatulaSize = 30;
 		
 		Graphics2D g2 = (Graphics2D) g;
@@ -56,12 +54,12 @@ public class PancakeWorldView extends PancakeWorld {
 
 		/* clear board */
 		g2.setColor(Color.white);
-		g2.fill(new Rectangle2D.Double(0., 0., getWidth(), getHeight()));
+		g2.fill(new Rectangle2D.Double(0., 0., width,height1));
 		
 		/* Draw the pancakes */
 		int stackSize = stack.getStackSize();
-		double usefullWidth = getWidth()-2*spatulaSize;
-		height = ((double)getHeight()) / stackSize;
+		double usefullWidth = width-2*spatulaSize;
+		height = ((double) height1) / stackSize;
 		
 		for (int rank=0;rank< stackSize;rank++) { 
 			int radius = stack.getPancakeRadius(rank);
@@ -133,5 +131,20 @@ public class PancakeWorldView extends PancakeWorld {
 		g2.setColor(Color.black);
 		g2.drawString(""+stack.moveCount+" moves", 0, 15);
 	}
+	public static String draw(PancakeWorld pancakeWorld, int width, int height){
+		// Ask the test to render into the SVG Graphics2D implementation.
+		paintComponent(SvgGenerator.svgGenerator, pancakeWorld,width,height);
+
+		StringWriter writer = new StringWriter();
+		try {
+			SvgGenerator.svgGenerator.stream(writer);
+		} catch (SVGGraphics2DIOException e) {
+			e.printStackTrace();
+		}
+		String str = writer.getBuffer().toString();
+		return str;
+
+	}
+
 }
 

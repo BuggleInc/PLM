@@ -27,6 +27,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
+import plm.universe.bugglequest.BuggleWorldView;
 
 public class HanoiWorld extends World {
 	
@@ -93,40 +94,10 @@ public class HanoiWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
-		// Get a DOMImplementation.
-		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
-
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
-
-		// Create an instance of the SVG Generator.
-		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-
-		HanoiWorldView test = new HanoiWorldView(this);
-		test.paintComponent(svgGenerator);
-
-		boolean useCSS = true; // we want to use CSS style attributes
-		Writer out = null;
-
-		StringWriter writer = new StringWriter();
-		try {
-			svgGenerator.stream(writer);
-		} catch (SVGGraphics2DIOException e) {
-			e.printStackTrace();
-		}
-		String str = writer.getBuffer().toString();
-
-		return str;
-
-//		out = new OutputStreamWriter(System.out, "UTF-8");
-//
-//		try {
-//			svgGenerator.stream(out, useCSS);
-//		} catch (SVGGraphics2DIOException e) {
-//			e.printStackTrace();
-//		}
+	protected  String draw() {
+		String svg =null;
+		svg = HanoiWorldView.draw(this, 400,400);
+		return svg;
 
 	}
 

@@ -14,6 +14,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
+import plm.universe.hanoi.HanoiWorldView;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -383,33 +384,12 @@ public class SortingWorld extends World {
 		}
 		return ""+value;
 	}
-
 	@Override
-	protected String draw() {
-		// Get a DOMImplementation.
-		DOMImplementation domImpl =
-				GenericDOMImplementation.getDOMImplementation();
+	protected  String draw() {
+		String svg =null;
+		svg = SortingWorldView.draw(this, 400,400);
+		return svg;
 
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
-
-		// Create an instance of the SVG Generator.
-		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-
-		// Ask the test to render into the SVG Graphics2D implementation.
-		SortingWorld sort = new SortingWorld(new FileUtils(ClassLoader.getSystemClassLoader()),"SORT",10);
-		SortingWorldView sortView = new SortingWorldView(sort);
-		sortView.paintComponent(svgGenerator);
-
-		StringWriter writer = new StringWriter();
-		try {
-			svgGenerator.stream(writer);
-		} catch (SVGGraphics2DIOException e) {
-			e.printStackTrace();
-		}
-		String str = writer.getBuffer().toString();
-
-		return str;
 	}
+
 }

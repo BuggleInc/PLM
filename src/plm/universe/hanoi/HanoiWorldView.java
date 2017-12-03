@@ -1,7 +1,11 @@
 package plm.universe.hanoi;
 
 
+import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.utils.FileUtils;
+import plm.universe.SvgGenerator;
+import plm.universe.WorldView;
+import plm.universe.bugglequest.BuggleWorld;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -9,33 +13,28 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Vector;
 
-public class HanoiWorldView extends HanoiWorld {
+import static plm.universe.bugglequest.BuggleWorldView.paintComponent;
+
+public class HanoiWorldView extends WorldView {
 
 
 
-    private int height=400;
-    private int width=400;
+
 
     private static final long serialVersionUID = 1L;
-    int pegFrom = -1;
-    boolean buggyMove = false;
+    static int  pegFrom = -1;
+    static  boolean buggyMove = false;
 
-    public HanoiWorldView(FileUtils fileUtils, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C, Vector<HanoiDisk> D) {
-        super(fileUtils, name, A, B, C, D);
-    }
-    public HanoiWorldView(FileUtils fileUtils, String name, Vector<HanoiDisk> A, Vector<HanoiDisk> B, Vector<HanoiDisk> C) {
-        super(fileUtils, name,A,B,C);
+
+    public HanoiWorldView(HanoiWorld hanoiWorld) {
+        super(hanoiWorld);
 
     }
 
-    public HanoiWorldView(HanoiWorld hanW) {
-        super(hanW);
-
-    }
-
-    public void paintComponent(Graphics g) {
+    public static  void paintComponent(Graphics g,HanoiWorld hanoiWorld,int width, int height) {
 
         Graphics2D g2 = (Graphics2D) g;
 
@@ -45,27 +44,27 @@ public class HanoiWorldView extends HanoiWorld {
 
 		/* clear board */
         g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0., 0., getWidth(), getHeight()));
+        g2.fill(new Rectangle2D.Double(0., 0., width, height));
 
         double renderedX = 300.;
         double renderedY = 250.;
-        double ratio = Math.min(((double) getWidth()) / renderedX, ((double) getHeight()) / renderedY);
-        g2.translate(Math.abs(getWidth() - ratio * renderedX)/2., Math.abs(getHeight() - ratio * renderedY)/2.);
+        double ratio = Math.min(((double) width) / renderedX, ((double) height) / renderedY);
+        g2.translate(Math.abs(width - ratio * renderedX)/2., Math.abs(height - ratio * renderedY)/2.);
         g2.scale(ratio, ratio);
 
-        for (int s=0;s<this.getSlotsAmount();s++)
-            drawSlot(g2, s, (1+2*s)*300./(2*this.getSlotsAmount()));
+        for (int s=0;s<hanoiWorld.getSlotsAmount();s++)
+            drawSlot(g2, s, (1+2*s)*300./(2*hanoiWorld.getSlotsAmount()),hanoiWorld);
         g2.setColor(Color.black);
-        g2.drawString(""+this.moveCount+" moves", 0, 15);
+        g2.drawString(""+hanoiWorld.moveCount+" moves", 0, 15);
     }
 
-    public void drawSlot(Graphics2D g2, int rank, double xoffset) {
+    public static void drawSlot(Graphics2D g2, int rank, double xoffset,HanoiWorld hanoiWorld) {
 
 
 		/* draw bars, with color indicating whether it's a valid move during interactive drag&drop */
         if (pegFrom == -1)
             g2.setColor(Color.black);
-        else if (this.getRadius(pegFrom) > this.getRadius(rank))
+        else if (hanoiWorld.getRadius(pegFrom) > hanoiWorld.getRadius(rank))
             g2.setColor(Color.red);
         else
             g2.setColor(Color.green);
@@ -74,19 +73,19 @@ public class HanoiWorldView extends HanoiWorld {
 //        if (this.values(rank)==null)
 //            return;
 
-        if(this.getSlots()[rank].toArray(new HanoiDisk[rank])==null)
+        if(hanoiWorld.getSlots()[rank].toArray(new HanoiDisk[rank])==null)
             return;
 
-      if(this.getSlots()[rank]==null)
+      if(hanoiWorld.getSlots()[rank]==null)
           return;
 
 		/* draw discs */
         int height = 1;
-        for (int i=0; i<this.getSlots()[rank].size(); i++) {
-            int size = this.getSlots()[rank].get(i).getSize();
-            g2.setColor(this.getColor(rank, i));
+        for (int i=0; i<hanoiWorld.getSlots()[rank].size(); i++) {
+            int size = hanoiWorld.getSlots()[rank].get(i).getSize();
+            g2.setColor(hanoiWorld.getColor(rank, i));
             g2.fill(new Rectangle2D.Double( xoffset-size*5-3, 180-(11.*height),  size*10+3, 10));
-            if (rank == pegFrom && i==this.getSlots()[rank].size()-1) {
+            if (rank == pegFrom && i==hanoiWorld.getSlots()[rank].size()-1) {
                 g2.setStroke(new BasicStroke(3));
                 g2.setColor(buggyMove ? Color.red : Color.green);
             } else {
@@ -98,16 +97,19 @@ public class HanoiWorldView extends HanoiWorld {
         g2.setStroke(new BasicStroke(1));
     }
 
+    public static String draw(HanoiWorld hanoiWorld, int width, int height){
+        // Ask the test to render into the SVG Graphics2D implementation.
+        paintComponent(SvgGenerator.svgGenerator, hanoiWorld,width,height);
 
-    //*****************
-    public int getWidth()
-    {
-        return this.width;
-    }
+        StringWriter writer = new StringWriter();
+        try {
+            SvgGenerator.svgGenerator.stream(writer);
+        } catch (SVGGraphics2DIOException e) {
+            e.printStackTrace();
+        }
+        String str = writer.getBuffer().toString();
+        return str;
 
-    public  int getHeight()
-    {
-        return height;
     }
 }
 
@@ -136,6 +138,7 @@ class TransferableHanoiPiece implements Transferable {
             return pegFrom;
         throw new UnsupportedFlavorException(flavor);
     }
+
 
 
 }

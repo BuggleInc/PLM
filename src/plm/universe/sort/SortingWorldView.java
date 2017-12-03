@@ -1,6 +1,10 @@
 package plm.universe.sort;
 
+import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.universe.Operation;
+import plm.universe.SvgGenerator;
+import plm.universe.WorldView;
+import plm.universe.hanoi.HanoiWorld;
 import plm.universe.sort.operations.CopyOperation;
 import plm.universe.sort.operations.GetValueOperation;
 import plm.universe.sort.operations.SetValOperation;
@@ -8,12 +12,13 @@ import plm.universe.sort.operations.SwapOperation;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.io.StringWriter;
 
-public class SortingWorldView extends SortingWorld {
+public class SortingWorldView extends WorldView {
     private static final long serialVersionUID = 1L;
 
 
-	private boolean useStateView = true; // chronoView if false
+	private  static boolean useStateView = true; // chronoView if false
 
 	public SortingWorldView(SortingWorld world) {
 		super(world);
@@ -27,7 +32,7 @@ public class SortingWorldView extends SortingWorld {
 	 *
 	 *  WARNING, this function is duplicated in SortingWorld. Yes, I fell ashamed.
 	 */
-	protected String val2str(int value,int amountOfValues) {
+	protected static  String val2str(int value,int amountOfValues) {
 		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		if (amountOfValues<26) {
 			return letters.substring(value, value+1);
@@ -44,11 +49,11 @@ public class SortingWorldView extends SortingWorld {
 	 * @param g2 some 2D graphics
 	 * @param we the sorting world considered
 	 */
-	private void drawAlgoChrono(Graphics2D g2, SortingWorld we) throws Exception {
+	private static void drawAlgoChrono(Graphics2D g2, SortingWorld we,int width, int height) throws Exception {
 		int operationsAmount = we.getValueCount();	// little optimization
 		/* getWidth()-12 to keep the room to display the very left value. Do that even if we don't depict them */
-		float stepX = ((float)getWidth()-12) / ((float)(Math.max(operationsAmount, 1)));
-		float stepY = ((float)getHeight()) / ((float)(we.getValueCount()));
+		float stepX = ((float)height-12) / ((float)(Math.max(operationsAmount, 1)));
+		float stepY = ((float)height) / ((float)(we.getValueCount()));
 		int x1, y1, x2, y2, tone;
 
 		// If the array is small enough, we print the values
@@ -185,15 +190,15 @@ public class SortingWorldView extends SortingWorld {
 	 * Draw the state view
 	 * @param g2 some graphics 2D
 	 * @param world the sorting world considered
-	 * @param maxSize the max size for a rectangle ( which represents a data in the array )
+	 *
 	 */
-	private void drawAlgoState(Graphics2D g2, SortingWorld world, int maxSize) {
-		double scale = ((double)getWidth())/world.getValues().length;
+	private static  void drawAlgoState(Graphics2D g2, SortingWorld world, int width,int height1) {
+		double scale = ((double)width)/world.getValues().length;
 		int[] values = world.getValues() ;
 		for (int i=0;i< values.length;i++)
 		{
-			double height = ((double)values[i])*((double)maxSize)/ ((double)(world.getValueCount()-1));
-			Shape rect = new Rectangle2D.Double(scale*i, ((double)maxSize)- height,scale, height);
+			double height = ((double)values[i])*((double)height1)/ ((double)(world.getValueCount()-1));
+			Shape rect = new Rectangle2D.Double(scale*i, ((double)height1)- height,scale, height);
 
 			g2.setColor( values[i]==i ? Color.GREEN : Color.RED) ;
 
@@ -202,7 +207,7 @@ public class SortingWorldView extends SortingWorld {
 			g2.setColor(Color.black);
 			g2.draw(rect);
 			if (scale > 20)
-				g2.drawString(val2str(values[i],world.getValueCount()) , (int)scale*i+(int)scale/2, maxSize-2);
+				g2.drawString(val2str(values[i],world.getValueCount()) , (int)scale*i+(int)scale/2, height1-2);
 		}
 		g2.setColor(Color.black);
 		g2.drawString(world.getName()+" ("+world.getWriteCount()+" write, "+world.getReadCount()+" read)", 0, 15);
@@ -211,12 +216,12 @@ public class SortingWorldView extends SortingWorld {
 	/**
 	 * Decide which view we must draw ( state or chrono )
 	 */
-	public void paintComponent(Graphics g){
+	public static void paintComponent(Graphics g, SortingWorld sortingWorld,int width, int height){
 		if (useStateView) { // myExo is null during initialization
-			paintComponentState(g);
+			paintComponentState(g,sortingWorld,width,height);
 		} else {
 			try {
-				paintComponentChrono(g);
+				paintComponentChrono(g,sortingWorld,width,height);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -227,40 +232,38 @@ public class SortingWorldView extends SortingWorld {
 	 * Paint the chrono view into a rectangle
 	 * @param g some graphics indicating where to draw
 	 */
-	private void paintComponentChrono(Graphics g) throws Exception {
+	private static void paintComponentChrono(Graphics g,SortingWorld sortingWorld,int width, int height) throws Exception {
 
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(Color.white);
-		g2.fill(new Rectangle2D.Double(0., 0.,(double)getWidth(),
-				(float)getHeight()));
+		g2.fill(new Rectangle2D.Double(0., 0.,(double)height,
+				(float)width));
 
 		g2.setColor(Color.black);
 		g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-		drawAlgoChrono(g2, (SortingWorld) this);
+		drawAlgoChrono(g2,sortingWorld,width,height);
 	}
 
 	/**
 	 * Draw the state view into a rectangle
 	 * @param g some graphics indicating where to draw
 	 */
-	private void paintComponentState(Graphics g) {
+	private static void paintComponentState(Graphics g,SortingWorld sortingWorld,int width, int height) {
 		//super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(Color.white);
-		g2.fill(new Rectangle2D.Double(0.,0.,(double)getWidth(),(float)getHeight()));
+		g2.fill(new Rectangle2D.Double(0.,0.,(double)width,(float)height));
 
 		g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-		if (this.getEntityCount() > 1)
+		if (sortingWorld.getEntityCount() > 1)
 			System.err.println("Sorting World does not accept more than one entity anymore. Please fix your exercise.");
 
-		int maxSize = getHeight();
-
-		drawAlgoState(g2, (SortingWorld) this, maxSize);
+		drawAlgoState(g2,sortingWorld ,width,height);
 	}
 
 	/**
@@ -269,7 +272,7 @@ public class SortingWorldView extends SortingWorld {
 	 * @param valueCount the total amount of values in the array
 	 * @return the tone of the value
 	 */
-	private int getValueColor(int value,int valueCount) {
+	private static int getValueColor(int value,int valueCount) {
 		return (int) ((((float) value) / ((float) valueCount)) * 255.);
 	}
 
@@ -282,12 +285,18 @@ public class SortingWorldView extends SortingWorld {
 		this.useStateView = useStateView;
 	}
 
+	public static String draw(SortingWorld sortingWorld, int width, int height){
+		// Ask the test to render into the SVG Graphics2D implementation.
+		paintComponent(SvgGenerator.svgGenerator, sortingWorld,width,height);
 
-	public int getWidth() {
-		return 400;
-	}
+		StringWriter writer = new StringWriter();
+		try {
+			SvgGenerator.svgGenerator.stream(writer);
+		} catch (SVGGraphics2DIOException e) {
+			e.printStackTrace();
+		}
+		String str = writer.getBuffer().toString();
+		return str;
 
-	public int getHeight() {
-		return 200;
 	}
 }
