@@ -37,13 +37,12 @@ public class drawDutchFlagSVG {
         // Ask the test to render into the SVG Graphics2D implementation.
        // DutchFlagWorldView myWorlds = new DutchFlagWorldView(new FileUtils(ClassLoader.getSystemClassLoader()), "6 lines",6);
 
-        DutchFlagWorldView myWorlds = new DutchFlagWorldView(new FileUtils(ClassLoader.getSystemClassLoader()),"12 blue/white",12,2);
+        DutchFlagWorld myworld = new DutchFlagWorld(new FileUtils(ClassLoader.getSystemClassLoader()), "6 lines",6);
 
      //   myWorlds.setParameter(new Object[] {0,2,1});
 
 
-        myWorlds.paintComponent(svgGenerator);
-
+        myworld.draw();
 
         // Finally, stream out SVG to the standard output using
         // UTF-8 encoding.

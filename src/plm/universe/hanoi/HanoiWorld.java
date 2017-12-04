@@ -1,10 +1,7 @@
 package plm.universe.hanoi;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
-import java.io.OutputStreamWriter;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Vector;
 
@@ -93,7 +90,7 @@ public class HanoiWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
+	protected void draw() {
 		// Get a DOMImplementation.
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
@@ -118,8 +115,8 @@ public class HanoiWorld extends World {
 		}
 		String str = writer.getBuffer().toString();
 
-		return str;
-
+//		return str;
+//
 //		out = new OutputStreamWriter(System.out, "UTF-8");
 //
 //		try {

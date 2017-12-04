@@ -1,6 +1,5 @@
 package plm.universe.baseball;
 
-import java.io.File;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -255,8 +254,8 @@ public class BaseballWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
-		return "";
+	protected void draw() {
+
 	}
 
 	/** Returns a string representation of the world */

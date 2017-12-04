@@ -42,8 +42,8 @@ public class BuggleWorldDraw {
         SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
 
         // Ask the test to render into the SVG Graphics2D implementation.
-        BuggleWorldView test = new BuggleWorldView(myWorld);
-        test.paintComponent(svgGenerator);
+//        BuggleWorldView test = new BuggleWorldView(myWorld);
+//        test.paintComponent(svgGenerator);
 
         StringWriter writer = new StringWriter();
         svgGenerator.stream(writer);

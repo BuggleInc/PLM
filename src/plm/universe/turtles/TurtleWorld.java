@@ -76,8 +76,8 @@ public class TurtleWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
-		return "";
+	protected void draw() {
+
 	}
 
 	public void addSizeHint(int x1, int y1, int x2, int y2) {

@@ -24,36 +24,27 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
+import java.io.StringWriter;
 
 
 //import plm.core.model.Game;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
+import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.utils.FileUtils;
+import plm.universe.SvgGenerator;
 import plm.universe.World;
+import plm.universe.WorldView;
 
 
-
-public class DutchFlagWorldView extends DutchFlagWorld{
+public class DutchFlagWorldView extends WorldView {
 
 
 
     private static final long serialVersionUID = 1L;
-    private double height;
-    private int rankFrom=-1; // DnD marker
-
-    private int Height=400;
-    private int width=400;
-
-
-
-    public DutchFlagWorldView(FileUtils fileUtils, String name, int size) {
-        super(fileUtils, name, size);
-    }
-
-    public DutchFlagWorldView(FileUtils fileUtils, String name, int size, int colorRemoved) {
-        super(fileUtils, name, size, colorRemoved);
-    }
+    private static double heightworld;
+    private static int rankFrom=-1; // DnD marker
+    
 
     public DutchFlagWorldView(DutchFlagWorld dfw)
     {
@@ -65,7 +56,7 @@ public class DutchFlagWorldView extends DutchFlagWorld{
      * Draw the component of the world
      * @param g : some Graphics
      */
-    public void paintComponent(Graphics g) {
+    public static void paintComponent(Graphics g, DutchFlagWorld dutchFlagWorld,int width, int height) {
 
 
         Graphics2D g2 = (Graphics2D) g;
@@ -75,16 +66,16 @@ public class DutchFlagWorldView extends DutchFlagWorld{
 
 		/* clear board */
         g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0., 0., getWidth(), getHeight()));
+        g2.fill(new Rectangle2D.Double(0., 0., width, height));
 
 		/* Draw the lines */
-        int stackSize = this.getSize();
-        height = ((double)getHeight()) / stackSize;
+        int stackSize = dutchFlagWorld.getSize();
+        heightworld = ((double)height) / stackSize;
 
         for (int rank=0;rank< stackSize;rank++) {
-            Shape rect = new Rectangle2D.Double(0, height*(stackSize-rank-1), getWidth(), height);
+            Shape rect = new Rectangle2D.Double(0, heightworld*(stackSize-rank-1), width, heightworld);
 
-            switch (this.getColor(rank)) {
+            switch (dutchFlagWorld.getColor(rank)) {
                 case DutchFlagEntity.BLUE:
                     g2.setColor(dutchBlue);
                     break;
@@ -97,42 +88,45 @@ public class DutchFlagWorldView extends DutchFlagWorld{
             }
             g2.fill(rect);
 
-            if (this.getSize()<100) {
+            if (dutchFlagWorld.getSize()<100) {
                 g2.setColor(Color.black);
                 g2.draw(rect);
             }
         }
 
         // Display the amount of moves
-        if (this.getColor(stackSize-1) == DutchFlagEntity.WHITE)
+        if (dutchFlagWorld.getColor(stackSize-1) == DutchFlagEntity.WHITE)
             g2.setColor(Color.black);
         else
             g2.setColor(Color.yellow);
-        g2.drawString(""+this.moveCount+" moves", 0, 15);
+        g2.drawString(""+dutchFlagWorld.moveCount+" moves", 0, 15);
 
         // Display the DnD markers
-        if (this.getSize()<100 && rankFrom != -1) {
+        if (dutchFlagWorld.getSize()<100 && rankFrom != -1) {
             g2.setColor(Color.red);
-            g2.draw(new Rectangle2D.Double(0, height*(stackSize-rankFrom-1), getWidth(), height));
-            g2.draw(new Rectangle2D.Double(1, height*(stackSize-rankFrom-1)+1, getWidth()-2, height-2));
+            g2.draw(new Rectangle2D.Double(0, height*(stackSize-rankFrom-1), width, height));
+            g2.draw(new Rectangle2D.Double(1, height*(stackSize-rankFrom-1)+1, width-2, height-2));
             g2.setColor(Color.white);
-            g2.draw(new Rectangle2D.Double(2, height*(stackSize-rankFrom-1)+2, getWidth()-4, height-4));
-            g2.draw(new Rectangle2D.Double(3, height*(stackSize-rankFrom-1)+3, getWidth()-6, height-6));
+            g2.draw(new Rectangle2D.Double(2, height*(stackSize-rankFrom-1)+2, width-4, height-4));
+            g2.draw(new Rectangle2D.Double(3, height*(stackSize-rankFrom-1)+3, width-6, height-6));
         }
     }
 
+    public static String draw(DutchFlagWorld dutchFlagWorld, int width, int height) {
+        // Ask the test to render into the SVG Graphics2D implementation.
+        paintComponent(SvgGenerator.svgGenerator, dutchFlagWorld,width,height);
+
+        StringWriter writer = new StringWriter();
+        try {
+            SvgGenerator.svgGenerator.stream(writer);
+        } catch (SVGGraphics2DIOException e) {
+            e.printStackTrace();
+        }
+        String str = writer.getBuffer().toString();
+        return str;
 
 
 
-
-    public int getWidth()
-    {
-        return this.width;
-    }
-
-    public  int getHeight()
-    {
-        return Height;
     }
 }
 

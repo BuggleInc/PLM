@@ -47,8 +47,8 @@ public class BatWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
-		return "";
+	protected void draw() {
+
 	}
 
 	@Override

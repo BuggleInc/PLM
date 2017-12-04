@@ -151,7 +151,7 @@ public class PancakeWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
+	protected void draw() {
 		// Get a DOMImplementation.
 		DOMImplementation domImpl =
 				GenericDOMImplementation.getDOMImplementation();
@@ -176,7 +176,7 @@ public class PancakeWorld extends World {
 		}
 		String str = writer.getBuffer().toString();
 
-		return str;
+		//return str;
 	}
 
 	@JsonProperty("pancakeStack")

@@ -32,16 +32,11 @@ public abstract class World  {
 
 	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
 
+	private ConcurrentLinkedDeque<List<SVGOperation>> SVGOperations = new ConcurrentLinkedDeque<List<SVGOperation>>();
+
 	protected final FileUtils fileUtils;
 	private String name;
 
-	private SVGOperation operation = new SVGOperation();
-
-	public SVGOperation getOperation() {
-		return operation;
-	}public void setOperation(SVGOperation operation) {
-		this.operation = operation;
-	}
 
 	public World(FileUtils fileUtils, String name) {
 		this.fileUtils = fileUtils;
@@ -156,9 +151,10 @@ public abstract class World  {
 				}
 
 				/*Here, generate a frame of the world*/
-				operation.setOperation(this.draw());
+				//operation.setOperation(this.draw());
 				//System.out.println("operation = " + operation.getOperation());
 				//SVGOperation = this.draw();
+				this.draw();
 
 
 
@@ -179,7 +175,7 @@ public abstract class World  {
 		});
 	}
 
-	protected abstract String draw();
+	protected abstract void draw();
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();
@@ -342,6 +338,11 @@ public abstract class World  {
 	public void addStep(List<Operation> operations) {
 		//Logger.info("addStep : ");
 		steps.add(operations);
+	}
+
+	public void addSVGOperations(List<SVGOperation> operation) {
+		//Logger.info("addStep : ");
+		SVGOperations.add(operation);
 	}
 
 	@JsonIgnore

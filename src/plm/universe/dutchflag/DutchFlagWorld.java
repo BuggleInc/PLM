@@ -1,9 +1,8 @@
 package plm.universe.dutchflag;
 
-import java.io.OutputStreamWriter;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -24,6 +23,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 import plm.universe.hanoi.HanoiWorldView;
 
@@ -141,29 +141,13 @@ public class DutchFlagWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
-		// Get a DOMImplementation.
-		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
+	protected void draw() {
+		String svg = DutchFlagWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
 
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
-
-		// Create an instance of the SVG Generator.
-		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-
-		DutchFlagWorldView test = new DutchFlagWorldView(this);
-		test.paintComponent(svgGenerator);
-
-		StringWriter writer = new StringWriter();
-		try {
-			svgGenerator.stream(writer);
-		} catch (SVGGraphics2DIOException e) {
-			e.printStackTrace();
-		}
-		String str = writer.getBuffer().toString();
-
-		return str;
+		this.addSVGOperations(list);
 
 	}
 

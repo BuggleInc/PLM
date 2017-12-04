@@ -17,10 +17,7 @@ import plm.universe.World;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import java.io.OutputStreamWriter;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.util.Random;
 
 public class SortingWorld extends World {
@@ -385,7 +382,7 @@ public class SortingWorld extends World {
 	}
 
 	@Override
-	protected String draw() {
+	protected void draw() {
 		// Get a DOMImplementation.
 		DOMImplementation domImpl =
 				GenericDOMImplementation.getDOMImplementation();
@@ -410,6 +407,6 @@ public class SortingWorld extends World {
 		}
 		String str = writer.getBuffer().toString();
 
-		return str;
+		//return str;
 	}
 }
