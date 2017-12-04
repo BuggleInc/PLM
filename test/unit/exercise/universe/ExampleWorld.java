@@ -7,7 +7,10 @@ import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
+
+import java.util.List;
 
 public class ExampleWorld extends World {
 
@@ -31,8 +34,9 @@ public class ExampleWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
+	protected List<SVGOperation> draw() {
 
+		return null;
 	}
 
 	@Override

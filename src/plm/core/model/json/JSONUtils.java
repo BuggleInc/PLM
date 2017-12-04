@@ -167,8 +167,8 @@ public class JSONUtils {
 
         Map<String, Object> mapArgs = new HashMap<String, Object>();
 		mapArgs.put("worldID", world.getName());
-        mapArgs.put("steps", steps); // A supprimer pour ne garder que Operation (dans le futur)
-        //mapArgs.put("operation", world.getOperation().getOperation());
+        mapArgs.put("steps", steps);
+        mapArgs.put("operation", world.getSSVGOperations());
 
         return createMessage("operations", mapArgs);
 	}

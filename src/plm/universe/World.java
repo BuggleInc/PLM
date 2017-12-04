@@ -151,11 +151,9 @@ public abstract class World  {
 				}
 
 				/*Here, generate a frame of the world*/
-				//operation.setOperation(this.draw());
-				//System.out.println("operation = " + operation.getOperation());
-				//SVGOperation = this.draw();
-				this.draw();
-
+				Logger.info("avant");
+				SVGOperations.add(this.draw());
+				Logger.info("apres");
 
 
 				//Logger.info(SVGOperation);
@@ -175,7 +173,7 @@ public abstract class World  {
 		});
 	}
 
-	protected abstract void draw();
+	protected abstract List<SVGOperation> draw();
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();
@@ -343,6 +341,11 @@ public abstract class World  {
 	public void addSVGOperations(List<SVGOperation> operation) {
 		//Logger.info("addStep : ");
 		SVGOperations.add(operation);
+		Logger.info("OKOKOKOKOKOKOKOKOK");
+	}
+
+	public ConcurrentLinkedDeque<List<SVGOperation>> getSSVGOperations() {
+		return SVGOperations;
 	}
 
 	@JsonIgnore

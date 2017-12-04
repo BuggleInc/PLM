@@ -3,21 +3,18 @@ package plm.universe.sort;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.apache.batik.dom.GenericDOMImplementation;
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
 import org.xnap.commons.i18n.I18n;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class SortingWorld extends World {
@@ -380,33 +377,15 @@ public class SortingWorld extends World {
 		}
 		return ""+value;
 	}
-
 	@Override
-	protected void draw() {
-		// Get a DOMImplementation.
-		DOMImplementation domImpl =
-				GenericDOMImplementation.getDOMImplementation();
 
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
+	protected List<SVGOperation> draw() {
+		String svg = SortingWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
 
-		// Create an instance of the SVG Generator.
-		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-
-		// Ask the test to render into the SVG Graphics2D implementation.
-		SortingWorld sort = new SortingWorld(new FileUtils(ClassLoader.getSystemClassLoader()),"SORT",10);
-		SortingWorldView sortView = new SortingWorldView(sort);
-		sortView.paintComponent(svgGenerator);
-
-		StringWriter writer = new StringWriter();
-		try {
-			svgGenerator.stream(writer);
-		} catch (SVGGraphics2DIOException e) {
-			e.printStackTrace();
-		}
-		String str = writer.getBuffer().toString();
-
-		//return str;
+		return list;
 	}
+
 }

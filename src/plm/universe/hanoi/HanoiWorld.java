@@ -1,18 +1,13 @@
 package plm.universe.hanoi;
 
 import java.awt.*;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import org.apache.batik.dom.GenericDOMImplementation;
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
 import org.xnap.commons.i18n.I18n;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -23,6 +18,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class HanoiWorld extends World {
@@ -90,41 +86,12 @@ public class HanoiWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
-		// Get a DOMImplementation.
-		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
-
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
-
-		// Create an instance of the SVG Generator.
-		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-
-		HanoiWorldView test = new HanoiWorldView(this);
-		test.paintComponent(svgGenerator);
-
-		boolean useCSS = true; // we want to use CSS style attributes
-		Writer out = null;
-
-		StringWriter writer = new StringWriter();
-		try {
-			svgGenerator.stream(writer);
-		} catch (SVGGraphics2DIOException e) {
-			e.printStackTrace();
-		}
-		String str = writer.getBuffer().toString();
-
-//		return str;
-//
-//		out = new OutputStreamWriter(System.out, "UTF-8");
-//
-//		try {
-//			svgGenerator.stream(out, useCSS);
-//		} catch (SVGGraphics2DIOException e) {
-//			e.printStackTrace();
-//		}
-
+	protected List<SVGOperation> draw() {
+		String svg = HanoiWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+		return list;
 	}
 
 	@Override

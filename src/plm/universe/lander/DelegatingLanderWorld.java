@@ -5,6 +5,7 @@ import javax.script.ScriptException;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 import scala.collection.immutable.List;
 
@@ -54,8 +55,9 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
-  protected void draw() {
+  protected java.util.List<SVGOperation> draw() {
 
+    return null;
   }
 
   @Override

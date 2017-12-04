@@ -1,11 +1,7 @@
 package plm.universe.turtles;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -20,6 +16,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class TurtleWorld extends World {
@@ -76,8 +73,9 @@ public class TurtleWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
+	protected List<SVGOperation> draw() {
 
+		return null;
 	}
 
 	public void addSizeHint(int x1, int y1, int x2, int y2) {

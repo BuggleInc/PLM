@@ -66,20 +66,16 @@ public class BuggleWorld extends GridWorld {
 		super.reset(initialWorld);
 	}
 
-	@Override
-	protected void draw() {
-		 String svg = BuggleWorldView.draw(this, 400,400);
-		 List<SVGOperation> list = new ArrayList<>();
-		 SVGOperation operation = new SVGOperation(svg);
-		 list.add(operation);
 
-		 this.addSVGOperations(list);
+	protected List<SVGOperation> draw() {
+
+		 String svg =null;
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+
+		return list;
 	}
-
-//	public static String drawSvg(BuggleWorldView buggleWorldView, int width, int height){
-//
-//	}
-
 
 	@Override
 	public void setWidth(int w) {

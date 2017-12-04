@@ -1,5 +1,6 @@
 package plm.universe.baseball;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -15,6 +16,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class BaseballWorld extends World {
@@ -254,8 +256,9 @@ public class BaseballWorld extends World {
 	}
 
 	@Override
-	protected void draw() {
+	protected List<SVGOperation> draw() {
 
+		return null;
 	}
 
 	/** Returns a string representation of the world */
