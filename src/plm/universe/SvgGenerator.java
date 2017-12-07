@@ -16,7 +16,7 @@ public  final class SvgGenerator {
     public static Document document = domImpl.createDocument(svgNS, "svg", null);
 
     // Create an instance of the SVG Generator.
-    public static  SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+    //public static  SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
 
 
 

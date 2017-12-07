@@ -1,5 +1,9 @@
 package plm.universe.bat;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -14,6 +18,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
 import plm.universe.World;
+import plm.universe.bugglequest.BuggleWorldView;
 
 public class BatWorld extends World {
 
@@ -47,11 +52,28 @@ public class BatWorld extends World {
 		super.reset(anotherWorld);		
 	}
 
-	@Override
+
 	protected List<SVGOperation> draw() {
 
-		return null;
-	}
+
+			String svg = BatWorldView.draw(this,200,200);
+			PrintWriter writer = null;
+			try {
+				writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			writer.write(svg);
+			writer.close();
+			List<SVGOperation> list = new ArrayList<SVGOperation>();
+			SVGOperation operation = new SVGOperation(svg);
+			list.add(operation);
+
+			return list;
+		}
+
 
 	@Override
 	public boolean equals(Object o){

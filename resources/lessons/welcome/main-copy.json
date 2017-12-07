@@ -408,6 +408,52 @@
     },
     {
       "names": {
+        "en": "Snake World",
+        "pt": "Mundo das cobras",
+        "fr": "Monde de serpents"
+      },
+      "id": "traversal.snake.Snake",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Traversal by column",
+            "pt": "Percorrer pelas colunas",
+            "fr": "Parcours en colonne"
+          },
+          "id": "traversal.column.traversalbycolumn.TraversalByColumn",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Traversal by line",
+            "pt": "Percorrer pelas linhas",
+            "fr": "Parcours en ligne"
+          },
+          "id": "traversal.line.traversalbyline.TraversalByLine",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Zig-zag traversal",
+            "pt": "Percorrer em zig-zag",
+            "fr": "Parcours en zig-zag"
+          },
+          "id": "traversal.zigzag.traversalzigzag.TraversalZigZag",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Diagonal Traversal",
+            "pt": "Percorrer na diagonal",
+            "fr": "Parcours en diagonale"
+          },
+          "id": "traversal.diagonal.traversaldiagonal.TraversalDiagonal",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
         "en": "Lost in the Moria",
         "pt": "Perdido em Moria",
         "fr": "Perdu dans la Moria"

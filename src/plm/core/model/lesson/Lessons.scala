@@ -18,18 +18,18 @@ class Lessons(
   // WARNING, keep ChooseLessonDialog.lessons synchronized
   private val lessonIds: Seq[String] =
     Seq(
-      "welcome",
-      "sort.basic",
-      "sort.dutchflag",
-      "maze",
-      // "turmites",
-      "turtleart",
-      "sort.baseball",
-      "sort.pancake",
-      "recursion.cons",
-      "recursion.logo",
-      "recursion.hanoi"
-      // "bat.string1"
+      "welcome"
+//      "sort.basic",
+//      "sort.dutchflag",
+//      "maze",
+//      // "turmites",
+//      "turtleart",
+//      "sort.baseball",
+//      "sort.pancake",
+//      "recursion.cons",
+//      "recursion.logo",
+//      "recursion.hanoi"
+//      // "bat.string1"
     )
 
   private val lessons: Map[String, Lesson] = {

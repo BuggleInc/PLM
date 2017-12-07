@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
@@ -139,7 +140,6 @@ public class DutchFlagWorld extends World {
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);
-
 		return list;
 	}
 

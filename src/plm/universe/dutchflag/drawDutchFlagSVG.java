@@ -7,6 +7,7 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+import plm.core.log.Logger;
 import plm.core.utils.FileUtils;
 import plm.universe.baseball.BaseballWorld;
 import plm.universe.baseball.baseBallView;
@@ -37,21 +38,13 @@ public class drawDutchFlagSVG {
         // Ask the test to render into the SVG Graphics2D implementation.
        // DutchFlagWorldView myWorlds = new DutchFlagWorldView(new FileUtils(ClassLoader.getSystemClassLoader()), "6 lines",6);
 
-        DutchFlagWorld myworld = new DutchFlagWorld(new FileUtils(ClassLoader.getSystemClassLoader()), "6 lines",6);
-
-     //   myWorlds.setParameter(new Object[] {0,2,1});
-
+        DutchFlagWorld myworld = new DutchFlagWorld(new FileUtils(ClassLoader.getSystemClassLoader()), "300 lines",300);
 
         myworld.draw();
 
-        // Finally, stream out SVG to the standard output using
-        // UTF-8 encoding.
-        boolean useCSS = true; // we want to use CSS style attributes
-        Writer out = new OutputStreamWriter(System.out, "UTF-8");
-        try {
-            svgGenerator.stream(out, useCSS);
-        } catch (SVGGraphics2DIOException e) {
-            e.printStackTrace();
-        }
+        //Logger.info(test);
+        //Logger.info(myworld.draw().get(0).getOperation());
+
+
     }
 }

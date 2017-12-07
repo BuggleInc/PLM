@@ -115,19 +115,19 @@ public abstract class Entity extends Observable {
      * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().
      */
     protected void stepUI() {
-        if (operations.size() > 0) {
-            world.addStep(operations);
-            operations = new ArrayList<Operation>();
-        }
+//        if (operations.size() > 0) {
+//            world.addStep(operations);
+//            operations = new ArrayList<Operation>();
+//        }
 
         //System.out.println("world.getOperation() = " + world.getOperation());
 
-        fireStackListener();
-        //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
-        if (inited) {
-            stepEnd.release();
-            stepBegin.acquireUninterruptibly();
-        }
+//        fireStackListener();
+//        //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
+//        if (inited) {
+//            stepEnd.release();
+//            stepBegin.acquireUninterruptibly();
+//        }
     }
 
     /**
