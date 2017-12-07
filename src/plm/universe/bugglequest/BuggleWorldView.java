@@ -1,4 +1,6 @@
 package plm.universe.bugglequest;
+import org.apache.batik.svggen.SVGGraphics2D;
+import plm.core.log.Logger;
 import plm.universe.GridWorld;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -42,15 +44,21 @@ public class BuggleWorldView  extends WorldView {
     private static Color WALL_COLOR = new Color(0.0f,0.0f,0.5f);
 
 
-    protected static double getCellWidth(BuggleWorld buggleWorld, int height, int width) {
-        return (double) Math.min(height / buggleWorld.getHeight() , width /  buggleWorld.getWidth());
+   protected static double getCellWidth(BuggleWorld buggleWorld, int height, int width) {
+//        System.out.println(height);//400
+//        System.out.println(width);//400
+//        System.out.println(buggleWorld.sizeX);//7
+//        System.out.println(buggleWorld.sizeY);//7
+
+        return (double) Math.min(height / buggleWorld.sizeY , width /  buggleWorld.sizeX);
+
     }
 
     protected static double getPadX(BuggleWorld buggleWorld, int height, int width) {
-        return (width - getCellWidth(buggleWorld,width,height) * buggleWorld.getWidth()) / 2;
+        return (width - getCellWidth(buggleWorld,width,height) * buggleWorld.sizeX) / 2;
     }
     protected static double getPadY(BuggleWorld buggleWorld, int height, int width) {
-        return (height - getCellWidth(buggleWorld,height, width) * buggleWorld.getHeight()) / 2;
+        return (height - getCellWidth(buggleWorld,height, width) * buggleWorld.sizeY) / 2;
     }
 
     public static void paintComponent(Graphics g, BuggleWorld buggleWorld,int width, int height) {
@@ -140,6 +148,7 @@ public class BuggleWorldView  extends WorldView {
                     g.draw(new Line2D.Double(padx+x*cellW, pady+y*cellW-1, padx+(x+1)*cellW, pady+y*cellW-1));
                     g.draw(new Line2D.Double(padx+x*cellW, pady+y*cellW, padx+(x+1)*cellW, pady+y*cellW));
                     g.draw(new Line2D.Double(padx+x*cellW, pady+y*cellW+1, padx+(x+1)*cellW, pady+y*cellW+1));
+                    //System.out.println(padx+x*cellW+","+ pady+y*cellW+1+"," + padx+(x+1)*cellW+","+ pady+y*cellW+1);
                 }
 
                 if (cell.hasLeftWall()) {
@@ -153,17 +162,22 @@ public class BuggleWorldView  extends WorldView {
         // frontier walls (since the world is a torus)
         for (int y = 0; y < buggleWorld.sizeY; y++) {
             if (((BuggleWorldCell) buggleWorld.getCell(0, y)).hasLeftWall()) {
-                g.draw(new Line2D.Double(padx+width*cellW-1, pady+y*cellW, padx+width*cellW-1, pady+(y+1)*cellW));
-                g.draw(new Line2D.Double(padx+width*cellW, pady+y*cellW, padx+width*cellW, pady+(y+1)*cellW));
-                g.draw(new Line2D.Double(padx+width*cellW+1, pady+y*cellW, padx+width*cellW+1, pady+(y+1)*cellW));
+                g.draw(new Line2D.Double(padx+buggleWorld.sizeX*cellW-1, pady+y*cellW, padx+buggleWorld.sizeX*cellW-1, pady+(y+1)*cellW));
+                g.draw(new Line2D.Double(padx+buggleWorld.sizeX*cellW, pady+y*cellW, padx+buggleWorld.sizeX*cellW, pady+(y+1)*cellW));
+                g.draw(new Line2D.Double(padx+buggleWorld.sizeX*cellW+1, pady+y*cellW, padx+buggleWorld.sizeX*cellW+1, pady+(y+1)*cellW));
+//                System.out.println(padx+width*cellW+","+ pady+y*cellW+","+ padx+width*cellW+","+ pady+(y+1)*cellW);
+//                System.out.println(padx);
+//                System.out.println("width = "+ width);
+//                System.out.println("buggleWorld.sizeX = " + buggleWorld.sizeX);
+//                System.out.println(cellW);
             }
         }
 
         for (int x = 0; x < buggleWorld.sizeX; x++) {
             if (((BuggleWorldCell) buggleWorld.getCell(x, 0)).hasTopWall()) {
-                g.draw(new Line2D.Double(padx+x*cellW, pady+height*cellW-1, padx+(x+1)*cellW, pady+height*cellW-1));
-                g.draw(new Line2D.Double(padx+x*cellW, pady+height*cellW, padx+(x+1)*cellW, pady+height*cellW));
-                g.draw(new Line2D.Double(padx+x*cellW, pady+height*cellW+1, padx+(x+1)*cellW, pady+height*cellW+1));
+                g.draw(new Line2D.Double(padx+x*cellW, pady+buggleWorld.sizeY*cellW-1, padx+(x+1)*cellW, pady+buggleWorld.sizeY*cellW-1));
+                g.draw(new Line2D.Double(padx+x*cellW, pady+buggleWorld.sizeY*cellW, padx+(x+1)*cellW, pady+buggleWorld.sizeY*cellW));
+                g.draw(new Line2D.Double(padx+x*cellW, pady+buggleWorld.sizeY*cellW+1, padx+(x+1)*cellW, pady+buggleWorld.sizeY*cellW+1));
             }
         }
     }
@@ -317,11 +331,13 @@ public class BuggleWorldView  extends WorldView {
             }};
 protected static String draw(BuggleWorld buggleWorld, int width, int height){
     // Ask the test to render into the SVG Graphics2D implementation.
-    paintComponent(SvgGenerator.svgGenerator, buggleWorld,width,height);
+    SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+    paintComponent(svgGenerator, buggleWorld,width,height);
 
     StringWriter writer = new StringWriter();
     try {
-        SvgGenerator.svgGenerator.stream(writer);
+        //SvgGenerator.svgGenerator.stream(writer);
+        svgGenerator.stream(writer);
     } catch (SVGGraphics2DIOException e) {
         e.printStackTrace();
     }

@@ -25,6 +25,7 @@ import plm.core.model.lesson.BlankExercise;
 import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
 import plm.universe.Operation;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class JSONUtils {
@@ -160,7 +161,7 @@ public class JSONUtils {
 			bufferSize = Math.min(nbSteps, bufferSize);
 		}
 
-		List<List<Operation>> steps = new ArrayList<List<Operation>>();
+		List<List<SVGOperation>> steps = new ArrayList<List<SVGOperation>>();
         for(int i=0; i<bufferSize; i++) {
         	steps.add(world.getSteps().poll());
         }
@@ -168,7 +169,6 @@ public class JSONUtils {
         Map<String, Object> mapArgs = new HashMap<String, Object>();
 		mapArgs.put("worldID", world.getName());
         mapArgs.put("steps", steps);
-        mapArgs.put("operation", world.getSSVGOperations());
 
         return createMessage("operations", mapArgs);
 	}

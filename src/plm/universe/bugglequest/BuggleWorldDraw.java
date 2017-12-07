@@ -5,6 +5,7 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+import plm.core.log.Logger;
 import plm.core.utils.FileUtils;
 import plm.universe.Direction;
 import plm.universe.Entity;
@@ -43,15 +44,11 @@ public class BuggleWorldDraw {
 
         // Ask the test to render into the SVG Graphics2D implementation.
 //        BuggleWorldView test = new BuggleWorldView(myWorld);
-//        test.paintComponent(svgGenerator);
+        Logger.info(myWorld.draw().get(0).getOperation());
 
         StringWriter writer = new StringWriter();
         svgGenerator.stream(writer);
         String str = writer.getBuffer().toString();
-
-        System.out.println(" =================================== " );
-
-        System.out.println(str);
 
 
     }

@@ -30,9 +30,9 @@ public abstract class World  {
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
-	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
+	private ConcurrentLinkedDeque<List<SVGOperation>> steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
 
-	private ConcurrentLinkedDeque<List<SVGOperation>> SVGOperations = new ConcurrentLinkedDeque<List<SVGOperation>>();
+	//private ConcurrentLinkedDeque<List<SVGOperation>> SVGOperations = new ConcurrentLinkedDeque<List<SVGOperation>>();
 
 	protected final FileUtils fileUtils;
 	private String name;
@@ -80,7 +80,7 @@ public abstract class World  {
 	 * @param initialWorld
 	 */
 	public void reset(World initialWorld) {
-		steps = new ConcurrentLinkedDeque<List<Operation>>();
+		steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
 		entities = new ArrayList<Entity>();
 		for (Entity oldEntity : initialWorld.entities) {
 			try {
@@ -114,7 +114,7 @@ public abstract class World  {
 
 	/** Run all entities of the world, until their natural end (or somebody from outside kill them on timeout) */
 	@SuppressWarnings("deprecation")
-	public CompletableFuture<Void> runEntities(final ProgrammingLanguage progLang,  
+	public CompletableFuture<Void> runEntities(final ProgrammingLanguage progLang,
 			final ExecutionProgress progress, final Locale locale, long timeoutMilli) {
 		
 		return CompletableFuture.runAsync(() -> {
@@ -151,15 +151,8 @@ public abstract class World  {
 				}
 
 				/*Here, generate a frame of the world*/
-				Logger.info("avant");
-				SVGOperations.add(this.draw());
-				Logger.info("apres");
-
-
-				//Logger.info(SVGOperation);
-
-
-
+				//Logger.info(this.draw().get(0).getOperation());
+				addStep(this.draw());
 
 				for (EntityRunner dead : trash)
 					allRunners.remove(dead);
@@ -325,27 +318,22 @@ public abstract class World  {
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);
 
-	public ConcurrentLinkedDeque<List<Operation>> getSteps() {
+	public ConcurrentLinkedDeque<List<SVGOperation>> getSteps() {
 		return steps;
 	}
 
-	public void setSteps(ConcurrentLinkedDeque<List<Operation>> steps) {
+	public void setSteps(ConcurrentLinkedDeque<List<SVGOperation>> steps) {
 		this.steps = steps;
 	}
 
-	public void addStep(List<Operation> operations) {
+	public void addStep(List<SVGOperation> operations) {
 		//Logger.info("addStep : ");
-		steps.add(operations);
-	}
-
-	public void addSVGOperations(List<SVGOperation> operation) {
-		//Logger.info("addStep : ");
-		SVGOperations.add(operation);
-		Logger.info("OKOKOKOKOKOKOKOKOK");
-	}
-
-	public ConcurrentLinkedDeque<List<SVGOperation>> getSSVGOperations() {
-		return SVGOperations;
+		if(operations != null && steps != null) {
+			steps.add(operations);
+		} else {
+			Logger.error("Steps ou Opertions NULL");
+			Logger.info(this.getName());
+		}
 	}
 
 	@JsonIgnore

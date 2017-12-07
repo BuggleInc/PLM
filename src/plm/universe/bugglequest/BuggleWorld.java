@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
@@ -69,7 +70,18 @@ public class BuggleWorld extends GridWorld {
 
 	protected List<SVGOperation> draw() {
 
-		 String svg =null;
+
+		String svg = BuggleWorldView.draw(this,400,400);
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		writer.write(svg);
+		writer.close();
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);
