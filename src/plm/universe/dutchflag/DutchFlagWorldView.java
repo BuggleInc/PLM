@@ -30,6 +30,7 @@ import java.io.StringWriter;
 //import plm.core.model.Game;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
+import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.utils.FileUtils;
 import plm.universe.SvgGenerator;
@@ -114,11 +115,12 @@ public class DutchFlagWorldView extends WorldView {
 
     public static String draw(DutchFlagWorld dutchFlagWorld, int width, int height) {
         // Ask the test to render into the SVG Graphics2D implementation.
-        paintComponent(SvgGenerator.svgGenerator, dutchFlagWorld,width,height);
+        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+        paintComponent(svgGenerator, dutchFlagWorld,width,height);
 
         StringWriter writer = new StringWriter();
         try {
-            SvgGenerator.svgGenerator.stream(writer);
+            svgGenerator.stream(writer);
         } catch (SVGGraphics2DIOException e) {
             e.printStackTrace();
         }

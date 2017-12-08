@@ -1,6 +1,9 @@
 package plm.universe.turtles;
 
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import javax.script.ScriptEngine;
@@ -18,6 +21,7 @@ import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.SVGOperation;
 import plm.universe.World;
+import plm.universe.hanoi.HanoiWorldView;
 
 public class TurtleWorld extends World {
 
@@ -74,8 +78,22 @@ public class TurtleWorld extends World {
 
 	@Override
 	protected List<SVGOperation> draw() {
+		String svg = TurtleWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		writer.write(svg);
+		writer.close();
 
-		return null;
+		return list;
 	}
 
 	public void addSizeHint(int x1, int y1, int x2, int y2) {

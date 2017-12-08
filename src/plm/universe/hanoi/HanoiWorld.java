@@ -1,6 +1,9 @@
 package plm.universe.hanoi;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -91,6 +94,18 @@ public class HanoiWorld extends World {
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);
+
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		writer.write(svg);
+		writer.close();
+
 		return list;
 	}
 

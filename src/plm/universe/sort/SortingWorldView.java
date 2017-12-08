@@ -1,5 +1,6 @@
 package plm.universe.sort;
 
+import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.universe.Operation;
 import plm.universe.SvgGenerator;
@@ -287,11 +288,12 @@ public class SortingWorldView extends WorldView {
 
 	public static String draw(SortingWorld sortingWorld, int width, int height){
 		// Ask the test to render into the SVG Graphics2D implementation.
-		paintComponent(SvgGenerator.svgGenerator, sortingWorld,width,height);
+		SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+		paintComponent(svgGenerator, sortingWorld,width,height);
 
 		StringWriter writer = new StringWriter();
 		try {
-			SvgGenerator.svgGenerator.stream(writer);
+			svgGenerator.stream(writer);
 		} catch (SVGGraphics2DIOException e) {
 			e.printStackTrace();
 		}

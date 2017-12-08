@@ -1,5 +1,9 @@
 package plm.universe.baseball;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +22,7 @@ import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
 import plm.universe.World;
+import plm.universe.bugglequest.BuggleWorldView;
 
 public class BaseballWorld extends World {
 	public static final int MIX_SORTED = 0;
@@ -257,8 +262,23 @@ public class BaseballWorld extends World {
 
 	@Override
 	protected List<SVGOperation> draw() {
+//
+//		String svg = BaseballView.draw(this,400,400);
+//		PrintWriter writer = null;
+//		try {
+//			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		writer.write(svg);
+//		writer.close();
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+//		SVGOperation operation = new SVGOperation(svg);
+//		list.add(operation);
 
-		return null;
+		return list;
 	}
 
 	/** Returns a string representation of the world */

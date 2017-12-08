@@ -4,22 +4,11 @@ package plm.universe.dutchflag;
 
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
-import plm.core.log.Logger;
 import plm.core.utils.FileUtils;
-import plm.universe.baseball.BaseballWorld;
-import plm.universe.baseball.baseBallView;
-import plm.universe.hanoi.HanoiDisk;
-import plm.universe.hanoi.HanoiWorldView;
-import recursion.hanoi.CyclicHanoiEntity;
 
-import java.awt.*;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.util.Vector;
 
 public class drawDutchFlagSVG {
 
