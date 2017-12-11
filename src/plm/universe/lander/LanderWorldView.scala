@@ -25,7 +25,7 @@ import java.awt.event.MouseAdapter
 import java.awt.geom.Point2D
 import java.io.{OutputStreamWriter, StringWriter, Writer}
 
-import org.apache.batik.svggen.SVGGraphics2DIOException
+import org.apache.batik.svggen.{SVGGraphics2D, SVGGraphics2DIOException}
 import plm.universe.lander.LanderWorld.State.{CRASHED, FLYING, LANDED, OUT}
 
 
@@ -49,8 +49,8 @@ object LanderWorldView {
 
 
   def draw(delegLandWorld: DelegatingLanderWorld, width: Int, height: Int): String = { // Ask the test to render into the SVG Graphics2D implementation.
-
-    paintComponent(SvgGenerator.svgGenerator, delegLandWorld, width, height)
+    val svgGenerator: SVGGraphics2D = new SVGGraphics2D(SvgGenerator.document)
+    paintComponent(svgGenerator, delegLandWorld, width, height)
 
     //***********AFFICHAGE SUR LA CONSOLE******************
 
@@ -60,7 +60,7 @@ object LanderWorldView {
     // we want to use CSS style attributes
     val out: Writer = new OutputStreamWriter(System.out, "UTF-8")
     try {
-      SvgGenerator.svgGenerator.stream(out, useCSS)
+      svgGenerator.stream(out, useCSS)
     } catch {
       case e: SVGGraphics2DIOException =>
         e.printStackTrace()
@@ -69,7 +69,7 @@ object LanderWorldView {
 
     val writer = new StringWriter
     try
-      SvgGenerator.svgGenerator.stream(writer)
+      svgGenerator.stream(writer)
     catch {
       case e: SVGGraphics2DIOException =>
         e.printStackTrace()
