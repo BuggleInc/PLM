@@ -71,16 +71,16 @@ public class BuggleWorld extends GridWorld {
 	protected List<SVGOperation> draw() {
 
 		String svg = BuggleWorldView.draw(this,400,400);
-		PrintWriter writer = null;
-		try {
-			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		writer.write(svg);
-		writer.close();
+//		PrintWriter writer = null;
+//		try {
+//			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		writer.write(svg);
+//		writer.close();
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);

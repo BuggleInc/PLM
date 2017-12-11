@@ -57,16 +57,16 @@ public class BatWorld extends World {
 
 
 			String svg = BatWorldView.draw(this,200,200);
-			PrintWriter writer = null;
-			try {
-				writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			writer.write(svg);
-			writer.close();
+//			PrintWriter writer = null;
+//			try {
+//				writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+//			} catch (FileNotFoundException e) {
+//				e.printStackTrace();
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			}
+//			writer.write(svg);
+//			writer.close();
 			List<SVGOperation> list = new ArrayList<SVGOperation>();
 			SVGOperation operation = new SVGOperation(svg);
 			list.add(operation);

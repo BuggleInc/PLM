@@ -122,12 +122,12 @@ public abstract class Entity extends Observable {
 
         //System.out.println("world.getOperation() = " + world.getOperation());
 
-//        fireStackListener();
-//        //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
-//        if (inited) {
-//            stepEnd.release();
-//            stepBegin.acquireUninterruptibly();
-//        }
+        fireStackListener();
+        //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
+        if (inited) {
+            stepEnd.release();
+            stepBegin.acquireUninterruptibly();
+        }
     }
 
     /**

@@ -93,18 +93,18 @@ public class HanoiWorld extends World {
 		String svg = HanoiWorldView.draw(this, 400,400);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
-		list.add(operation);
-
-		PrintWriter writer = null;
-		try {
-			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		writer.write(svg);
-		writer.close();
+//		list.add(operation);
+//
+//		PrintWriter writer = null;
+//		try {
+//			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		writer.write(svg);
+//		writer.close();
 
 		return list;
 	}

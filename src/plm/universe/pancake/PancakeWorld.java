@@ -320,9 +320,6 @@ public class PancakeWorld extends World {
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);
-
-
-
 		return list;
 	}
 }
