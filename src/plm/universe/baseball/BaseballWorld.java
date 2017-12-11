@@ -1,6 +1,7 @@
 package plm.universe.baseball;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -261,22 +262,23 @@ public class BaseballWorld extends World {
 	}
 
 	@Override
-	protected List<SVGOperation> draw() {
-//
-//		String svg = BaseballView.draw(this,400,400);
-//		PrintWriter writer = null;
-//		try {
-//			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-//		writer.write(svg);
-//		writer.close();
+	protected List<SVGOperation> draw()  {
+
+		String svg = null;
+		svg = BaseBallWorldView.draw(this,400,400);
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		writer.write(svg);
+		writer.close();
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
-//		SVGOperation operation = new SVGOperation(svg);
-//		list.add(operation);
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
 
 		return list;
 	}
