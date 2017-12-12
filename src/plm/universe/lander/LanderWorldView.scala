@@ -49,12 +49,8 @@ object LanderWorldView {
 
 
   def draw(delegLandWorld: DelegatingLanderWorld, width: Int, height: Int): String = { // Ask the test to render into the SVG Graphics2D implementation.
-<<<<<<< HEAD
 
-    val svgGenerator = new SVGGraphics2D(SvgGenerator.document)
-=======
     val svgGenerator: SVGGraphics2D = new SVGGraphics2D(SvgGenerator.document)
->>>>>>> d857804c1668b99b53df65c56dd5d07c327d758c
     paintComponent(svgGenerator, delegLandWorld, width, height)
 
     //***********AFFICHAGE SUR LA CONSOLE******************
