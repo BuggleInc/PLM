@@ -120,8 +120,6 @@ public abstract class Entity extends Observable {
 //            operations = new ArrayList<Operation>();
 //        }
 
-        //System.out.println("world.getOperation() = " + world.getOperation());
-
         fireStackListener();
         //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
         if (inited) {
@@ -225,7 +223,7 @@ public abstract class Entity extends Observable {
         return operations;
     }
 
-    public void addOperation(Operation operation) {
-        operations.add(operation);
-    }
+//    public void addOperation(Operation operation) {
+//        operations.add(operation);
+//    }
 }

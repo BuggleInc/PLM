@@ -82,7 +82,8 @@ public class BuggleWorld extends GridWorld {
 //		writer.write(svg);
 //		writer.close();
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
-		SVGOperation operation = new SVGOperation(svg);
+		SVGOperation operation = new SVGOperation();
+		operation.setOperation(svg);
 		list.add(operation);
 
 		return list;

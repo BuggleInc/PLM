@@ -146,14 +146,14 @@ public class Turtle extends Entity {
 	
 	public void line(double x1, double y1, double x2, double y2, Color color) {
 		if (penDown) {
-			addOperation(new AddLine(getName(), x1, y1, x2, y2, color));
+			//addOperation(new AddLine(getName(), x1, y1, x2, y2, color));
 			getWorld().addLine(x1, y1, x2, y2, color);
 		}
 	}
 	
 	public void circle(double radius) {
 		if (penDown) {
-			addOperation(new AddCircle(getName(), x, y, radius, color));
+			//addOperation(new AddCircle(getName(), x, y, radius, color));
 			getWorld().addCircle(x, y, radius, color);
 			stepUI();
 		}
@@ -224,7 +224,7 @@ public class Turtle extends Entity {
 		} 
 
 		line(x, y, nX, nY, color);
-		addOperation(new MoveTurtle(getName(), x, y, nX, nY));
+		//addOperation(new MoveTurtle(getName(), x, y, nX, nY));
 		this.x = nX;
 		this.y = nY;		
 
@@ -273,12 +273,12 @@ public class Turtle extends Entity {
 	}
 
 	public void hide() {
-		addOperation(new ChangeTurtleVisible(getName(), this.visible, false));
+		//addOperation(new ChangeTurtleVisible(getName(), this.visible, false));
 		this.visible = false;
 		stepUI();
 	}
 	public void show() {
-		addOperation(new ChangeTurtleVisible(getName(), this.visible, true));
+		//addOperation(new ChangeTurtleVisible(getName(), this.visible, true));
 		this.visible = true;
 		stepUI();
 	}
@@ -287,7 +287,7 @@ public class Turtle extends Entity {
 		return this.visible;
 	}
 	public void clear() {
-		addOperation(new ClearCanvas(getName()));
+		//addOperation(new ClearCanvas(getName()));
 		getWorld().clear();
 		stepUI();
 	}
@@ -323,7 +323,7 @@ public class Turtle extends Entity {
 	}
 
 	protected void setHeadingRadian(double heading) {
-		addOperation(new RotateTurtle(getName(), toAngularUnit(this.heading), toAngularUnit(heading)));
+		//addOperation(new RotateTurtle(getName(), toAngularUnit(this.heading), toAngularUnit(heading)));
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
 		stepUI();
 	}
@@ -350,7 +350,7 @@ public class Turtle extends Entity {
 	}
 
 	public void setX(double x) {
-		addOperation(new MoveTurtle(getName(), this.x, y, x, y));
+		//addOperation(new MoveTurtle(getName(), this.x, y, x, y));
 		this.x = x;
 		stepUI();
 	}
@@ -370,13 +370,13 @@ public class Turtle extends Entity {
 	}
 
 	public void setY(double y) {
-		addOperation(new MoveTurtle(getName(), x, this.y, x, y));
+		//addOperation(new MoveTurtle(getName(), x, this.y, x, y));
 		this.y = y;
 		stepUI();
 	}
 
 	public void setPos(double x, double y) {
-		addOperation(new MoveTurtle(getName(), this.x, this.y, x, y));
+		//addOperation(new MoveTurtle(getName(), this.x, this.y, x, y));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -425,12 +425,12 @@ public class Turtle extends Entity {
 	}
 
 	public void addSizeHint(int x1, int y1, int x2, int y2,String text){
-		addOperation(new AddSizeHint(getName(), x1, y1, x2, y2, text));
+		//addOperation(new AddSizeHint(getName(), x1, y1, x2, y2, text));
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 	public void addSizeHint(int x1, int y1, int x2, int y2){
 		String text = String.format("%.0f", Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
-		addOperation(new AddSizeHint(getName(), x1, y1, x2, y2, text));
+		//addOperation(new AddSizeHint(getName(), x1, y1, x2, y2, text));
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,text);
 	}
 

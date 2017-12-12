@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -162,7 +163,9 @@ public class JSONUtils {
 		}
 
 		List<List<SVGOperation>> steps = new ArrayList<List<SVGOperation>>();
-        for(int i=0; i<bufferSize; i++) {
+
+
+		for(int i=0; i<bufferSize; i++) {
         	steps.add(world.getSteps().poll());
         }
 

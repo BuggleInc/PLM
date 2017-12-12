@@ -50,7 +50,7 @@ public class HanoiEntity extends Entity {
 	public void regularMove(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
-		addOperation(new HanoiMove(src, dst));
+		//addOperation(new HanoiMove(src, dst));
 		stepUI();
 		/* END HIDDEN */
 	}

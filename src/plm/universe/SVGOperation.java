@@ -2,10 +2,10 @@ package plm.universe;
 
 public class SVGOperation {
 
-    public String Operation;
+    private String svgOperation;
 
-    public SVGOperation(String operation) {
-        Operation = operation;
+    public SVGOperation(String svgOperation) {
+        this.svgOperation = svgOperation;
     }
 
     public SVGOperation() {
@@ -14,10 +14,10 @@ public class SVGOperation {
 
     public String getOperation() {
 
-        return Operation;
+        return this.svgOperation;
     }
 
-    public void setOperation(String operation) {
-        Operation = operation;
+    public void setOperation(String svgOperation) {
+        this.svgOperation = svgOperation;
     }
 }

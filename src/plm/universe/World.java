@@ -32,8 +32,6 @@ public abstract class World  {
 
 	private ConcurrentLinkedDeque<List<SVGOperation>> steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
 
-	//private ConcurrentLinkedDeque<List<SVGOperation>> SVGOperations = new ConcurrentLinkedDeque<List<SVGOperation>>();
-
 	protected final FileUtils fileUtils;
 	private String name;
 
@@ -125,6 +123,9 @@ public abstract class World  {
 			for (final Entity entity : getEntities()) {
 				EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
 
+				//Draw The initial version of the world
+				steps.add(this.draw());
+
 				// So that we can still stop it from the maestro Thread, even if an infinite loop occurs
 				runner.setPriority(Thread.MIN_PRIORITY);
 				runner.start();
@@ -152,7 +153,7 @@ public abstract class World  {
 
 				/*Here, generate a frame of the world*/
 				//Logger.info(this.draw().get(0).getOperation());
-				addStep(this.draw());
+				steps.add(this.draw());
 
 				for (EntityRunner dead : trash)
 					allRunners.remove(dead);
