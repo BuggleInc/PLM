@@ -121,7 +121,7 @@ public abstract class Entity extends Observable {
 //        }
 
         fireStackListener();
-        //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
+//      Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
         if (inited) {
             stepEnd.release();
             stepBegin.acquireUninterruptibly();

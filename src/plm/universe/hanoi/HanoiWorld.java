@@ -93,7 +93,7 @@ public class HanoiWorld extends World {
 		String svg = HanoiWorldView.draw(this, 400,400);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
-//		list.add(operation);
+		list.add(operation);
 //
 //		PrintWriter writer = null;
 //		try {

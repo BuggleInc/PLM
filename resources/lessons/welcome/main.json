@@ -3,6 +3,43 @@
   "lectures": [
     {
       "names": {
+        "en": "Welcome in the Buggles' World",
+        "pt": "Bem-vindo ao mundo dos Buggles",
+        "fr": "Bienvenue dans le monde des buggles"
+      },
+      "id": "environment.Environment",
+      "dependingLectures": []
+    },
+    {
+      "names": {
+        "en": "Instructions",
+        "pt": "Instruções",
+        "fr": "Instructions"
+      },
+      "id": "instructions.Instructions",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Writing more complex programs",
+            "pt": "Escrevendo programas mais complexos",
+            "fr": "Écrire des programmes plus complexes"
+          },
+          "id": "instructions.InstructionsDrawG",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "Conditional instructions",
+        "pt": "Instruções condicionais",
+        "fr": "Instructions conditionnelles"
+      },
+      "id": "conditions.Conditions",
+      "dependingLectures": []
+    },
+    {
+      "names": {
         "en": "While loops",
         "pt": "Loops while (enquanto)",
         "fr": "Boucles tant que "
@@ -19,6 +56,272 @@
           "dependingLectures": []
         }
       ]
+    },
+    {
+      "names": {
+        "en": "Storing and manipulating data",
+        "pt": "Armazenando e manipulando dados",
+        "fr": "Stocker et manipuler des données"
+      },
+      "id": "variables.Variables",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Run Four bases",
+            "pt": "Ande quatro bases",
+            "fr": "La course des quatre bases"
+          },
+          "id": "variables.RunFour",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "The Four Halves run",
+            "pt": "A corrida dos quatro meios",
+            "fr": "La course des quatre moitiés"
+          },
+          "id": "variables.RunHalf",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Buggle Dance Revolution (BDR)",
+            "pt": "Buggle Dance Revolution (BDR)",
+            "fr": "Buggle Dance Revolution (BDR)"
+          },
+          "id": "bdr.BDR",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Buggle Dance Revolution 2 (BDR2)",
+            "pt": "Buggle Dance Revolution 2 (BDR2)",
+            "fr": "Buggle Dance Revolution 2 (BDR2)"
+          },
+          "id": "bdr.BDR2",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "For loops",
+        "pt": "Loops for",
+        "fr": "Boucles pour "
+      },
+      "id": "loopfor.LoopFor",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Stairway to Heaven",
+            "pt": "Uma escadaria para o Céu",
+            "fr": "la voie du paradis"
+          },
+          "id": "loopfor.LoopStairs",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Training Buggle",
+            "pt": "Treinando o Buggle",
+            "fr": "Entraînement de buggle"
+          },
+          "id": "loopfor.LoopCourse",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Outdoor Training Buggle",
+            "pt": "Treinamento ao ar livre do Buggle",
+            "fr": "Course en forêt"
+          },
+          "id": "loopfor.LoopCourseForest",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "Functions",
+        "pt": "Funções",
+        "fr": "Fonctions"
+      },
+      "id": "methods.returning.MethodsReturning",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Slug Hunting",
+            "pt": "Caça à lesma",
+            "fr": "Chasse à la limace"
+          },
+          "id": "methods.slug.SlugHunting",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "Methods with parameters",
+        "pt": "Métodos com perâmetros",
+        "fr": "Méthodes avec paramètres"
+      },
+      "id": "methods.args.MethodsArgs",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Slugs and Snails",
+            "pt": "Lesmas e Caracóis",
+            "fr": "Limaces et escargots"
+          },
+          "id": "methods.slug.SlugSnail",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Colorful drawing",
+            "pt": "Desenho colorido",
+            "fr": "Dessins colorés"
+          },
+          "id": "methods.picture.MethodsPicture",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Another Colorful Pattern",
+            "pt": "Outro padrão colorido",
+            "fr": "Autre motif coloré"
+          },
+          "id": "methods.picture.PatternPicture",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Flower Pot",
+            "pt": "Vaso de Flores",
+            "fr": "Pot de fleur"
+          },
+          "id": "methods.flowerpot.FlowerPot",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Flower Display Case",
+            "pt": "Vitrine de flores",
+            "fr": "Jardinière de fleurs"
+          },
+          "id": "methods.flowerpot.FlowerCase",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "SleepDay",
+        "pt": "SleepDay",
+        "fr": "Grasse matinée"
+      },
+      "id": "bat.bool1.SleepIn",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "MonkeyTrouble",
+            "pt": "MonkeyTrouble",
+            "fr": "Problème de singe"
+          },
+          "id": "bat.bool1.MonkeyTrouble",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Near Hundred",
+            "pt": "Near Hundred",
+            "fr": "Presque 100"
+          },
+          "id": "bat.bool1.NearHundred",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Sum Double",
+            "pt": "Soma dupla",
+            "fr": "Somme doublée"
+          },
+          "id": "bat.bool1.SumDouble",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Diff 21",
+            "pt": "Diferença 21",
+            "fr": "Diff 21"
+          },
+          "id": "bat.bool1.Diff21",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Parot Trouble",
+            "pt": "Parot Trouble",
+            "fr": "Problème de perroquet"
+          },
+          "id": "bat.bool1.ParotTrouble",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Makes 10",
+            "pt": "Makes 10",
+            "fr": "Font 10"
+          },
+          "id": "bat.bool1.Makes10",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Positive Negative",
+            "pt": "Positivo Negativo",
+            "fr": "Positif Négatif"
+          },
+          "id": "bat.bool1.PosNeg",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Icy Hot",
+            "pt": "Frio Quente",
+            "fr": "Feu glacé"
+          },
+          "id": "bat.bool1.IcyHot",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "In [10;20]",
+            "pt": "In [10;20]",
+            "fr": "Dans [10;20]"
+          },
+          "id": "bat.bool1.In1020",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "Buggles' Island",
+        "pt": "Ilha dos Buggles",
+        "fr": "L'île des Buggles"
+      },
+      "id": "array.island.Island",
+      "dependingLectures": []
+    },
+    {
+      "names": {
+        "en": "Lost in the Moria",
+        "pt": "Perdido em Moria",
+        "fr": "Perdu dans la Moria"
+      },
+      "id": "summative.moria.Moria",
+      "dependingLectures": []
     }
   ],
   "id": "welcome"

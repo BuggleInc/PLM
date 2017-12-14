@@ -113,57 +113,67 @@ public abstract class World  {
 	/** Run all entities of the world, until their natural end (or somebody from outside kill them on timeout) */
 	@SuppressWarnings("deprecation")
 	public CompletableFuture<Void> runEntities(final ProgrammingLanguage progLang,
-			final ExecutionProgress progress, final Locale locale, long timeoutMilli) {
-		
-		return CompletableFuture.runAsync(() -> {
-			List<EntityRunner> allRunners = new ArrayList<EntityRunner>();  
-			long startTime = System.currentTimeMillis();
+		final ExecutionProgress progress, final Locale locale, long timeoutMilli) {
 
-			// Start all entities, each in one thread
-			for (final Entity entity : getEntities()) {
-				EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
+
+		return CompletableFuture.runAsync(() -> {
+			Logger.info("Starting exercise"+ this.getName());
+				List<EntityRunner> allRunners = new ArrayList<EntityRunner>();
+				long startTime = System.currentTimeMillis();
 
 				//Draw The initial version of the world
 				steps.add(this.draw());
 
-				// So that we can still stop it from the maestro Thread, even if an infinite loop occurs
-				runner.setPriority(Thread.MIN_PRIORITY);
-				runner.start();
-				allRunners.add(runner);
-			}
+				// Start all entities, each in one thread
+				for (final Entity entity : getEntities()) {
+					EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
 
-			// Run all entities, step after step. 
-			// Kill everyone as soon as the timeout occurs  
-			List<EntityRunner> trash = new ArrayList<EntityRunner>();  
-			boolean timeout = false;
-			while (!timeout && !allRunners.isEmpty()) {
-				for (EntityRunner runner : allRunners) {
-					runner.entity.allowOneStep();
+					// So that we can still stop it from the maestro Thread, even if an infinite loop occurs
+					runner.setPriority(Thread.MIN_PRIORITY);
+					runner.start();
+					allRunners.add(runner);
+				}
 
-					long now = System.currentTimeMillis();
-					long elapsed = now-startTime;
-					if (runner.entity.waitStepEnd(timeoutMilli - elapsed) == false) {
-						timeout = true;
-						Logger.error("TIMEOUT after "+(System.currentTimeMillis()-startTime));
-						break; // Don't run the other entities once the timeout fires
+				// Run all entities, step after step.
+				// Kill everyone as soon as the timeout occurs
+				List<EntityRunner> trash = new ArrayList<EntityRunner>();
+				boolean timeout = false;
+				while (!timeout && !allRunners.isEmpty()) {
+					for (EntityRunner runner : allRunners) {
+						runner.entity.allowOneStep();
+
+						long now = System.currentTimeMillis();
+						long elapsed = now - startTime;
+						if (runner.entity.waitStepEnd(timeoutMilli - elapsed) == false) {
+							timeout = true;
+							Logger.error("TIMEOUT after " + (System.currentTimeMillis() - startTime) + " " + this.getName());
+
+							int totalsize = 0;
+							for (List<SVGOperation> l :steps){
+								for(SVGOperation s : l)
+									totalsize += s.getOperation().length();
+							}
+							Logger.info("Nombre d'étapes : " + steps.size() + " taille total texte : " + totalsize + " Monde : " + this.getName());
+							break; // Don't run the other entities once the timeout fires
+						}
+						if (!runner.isExecuting())
+							trash.add(runner);
 					}
-					if (!runner.isExecuting())
-						trash.add(runner);
+
+					/*Here, generate a frame of the world*/
+					//Logger.info(this.draw().get(0).getOperation());
+					steps.add(this.draw());
+
+					for (EntityRunner dead : trash)
+						allRunners.remove(dead);
+					if (timeout) {
+						for (EntityRunner runner : allRunners)
+							runner.stop();
+						progress.setTimeoutError();
+					}
 				}
 
-				/*Here, generate a frame of the world*/
-				//Logger.info(this.draw().get(0).getOperation());
-				steps.add(this.draw());
-
-				for (EntityRunner dead : trash)
-					allRunners.remove(dead);
-				if (timeout) {
-					for (EntityRunner runner : allRunners) 
-						runner.stop();
-					progress.setTimeoutError();
-				}
-			}
-			//Logger.info("Done with exercise "+getName());
+			Logger.info("Done with exercise "+getName());
 		});
 	}
 

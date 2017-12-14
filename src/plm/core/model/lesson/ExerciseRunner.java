@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -19,7 +20,7 @@ public class ExerciseRunner {
 
 	private Locale locale;
 
-	final long timeoutMilli = 5000; // 5sec
+	final long timeoutMilli = 20000; // 5sec
 
 	public ExerciseRunner(Locale locale) {
 		this.locale = locale;
@@ -103,18 +104,25 @@ public class ExerciseRunner {
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
 
+		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
+
 		exo.reset();
 		CompletableFuture<?>[] worldRunners =
 					exo.getWorlds(WorldKind.ANSWER)
 							.stream()
-							.map(world -> world.runEntities(progLang, null, locale, timeoutMilli))
+							.map(world -> world.runEntities(progLang, lastResult, locale, timeoutMilli))
 							.toArray(CompletableFuture[]::new);
 
 		try {
 			CompletableFuture.allOf(worldRunners).get();
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
-		}			
+		}
+
+		if(lastResult.outcome != ExecutionProgress.outcomeKind.PASS){
+			Logger.error("Panic: the demo does not succeed in " + exo.getName());
+		}
+
 	}
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile, ExecutionProgress progress) throws PLMCompilerException {

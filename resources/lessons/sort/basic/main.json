@@ -1,101 +1,102 @@
 {
   "name" : null,
-  "lectures" : [ {
-    "names" : {
-      "en" : "BubbleSort",
-      "pt" : "BubbleSort",
-      "fr" : "Tri à bulle"
-    },
-    "id" : "sort.basic.bubble.AlgBubbleSort1",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "BubbleSort (take 2)",
-      "pt" : "BubbleSort (take 2)",
-      "fr" : "Tri à bulle (deuxième version)"
-    },
-    "id" : "sort.basic.bubble.AlgBubbleSort2",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "BubbleSort (take 3)",
-      "pt" : "BubbleSort (take 3)",
-      "fr" : "Tri à bulle (troisième version)"
-    },
-    "id" : "sort.basic.bubble.AlgBubbleSort3",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "CocktailSort",
-      "pt" : "CocktailSort",
-      "fr" : "Tri Cocktail"
-    },
-    "id" : "sort.basic.cocktail.AlgCocktailSort1",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "CocktailSort (take 2)",
-      "pt" : "CocktailSort (take 2)",
-      "fr" : "Tri Cocktail (seconde version)"
-    },
-    "id" : "sort.basic.cocktail.AlgCocktailSort2",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "CocktailSort (take 3)",
-      "pt" : "CocktailSort (3o tempo)",
-      "fr" : "Tri Cocktail (troisième version)"
-    },
-    "id" : "sort.basic.cocktail.AlgCocktailSort3",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "CombSort",
-      "pt" : "CombSort",
-      "fr" : "Tri à peigne"
-    },
-    "id" : "sort.basic.comb.AlgCombSort",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "CombSort11",
-      "pt" : "CombSort11",
-      "fr" : "Tri à peigne 11"
-    },
-    "id" : "sort.basic.comb.AlgCombSort11",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "GnomeSort",
-      "pt" : "GnomeSort",
-      "fr" : "Tri du gnome"
-    },
-    "id" : "sort.basic.gnome.AlgGnomeSort",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "InsertionSort",
-      "pt" : "InsertionSort",
-      "fr" : "Tri par insertion"
-    },
-    "id" : "sort.basic.insertion.AlgInsertionSort",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "ShellSort",
-      "pt" : "ShellSort",
-      "fr" : "Tri Shell"
-    },
-    "id" : "sort.basic.shell.AlgShellSort",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "Selection Sort",
-      "pt" : "Selection Sort",
-      "fr" : "Tri par sélection"
-    },
-    "id" : "sort.basic.selection.AlgSelectionSort",
-    "dependingLectures" : [ ]
-  } ],
+  "lectures" : [
+    {
+      "names" : {
+        "en" : "BubbleSort",
+        "pt" : "BubbleSort",
+        "fr" : "Tri à bulle"
+      },
+      "id" : "sort.basic.bubble.AlgBubbleSort1",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "BubbleSort (take 2)",
+        "pt" : "BubbleSort (take 2)",
+        "fr" : "Tri à bulle (deuxième version)"
+      },
+      "id" : "sort.basic.bubble.AlgBubbleSort2",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "BubbleSort (take 3)",
+        "pt" : "BubbleSort (take 3)",
+        "fr" : "Tri à bulle (troisième version)"
+      },
+      "id" : "sort.basic.bubble.AlgBubbleSort3",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "CocktailSort",
+        "pt" : "CocktailSort",
+        "fr" : "Tri Cocktail"
+      },
+      "id" : "sort.basic.cocktail.AlgCocktailSort1",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "CocktailSort (take 2)",
+        "pt" : "CocktailSort (take 2)",
+        "fr" : "Tri Cocktail (seconde version)"
+      },
+      "id" : "sort.basic.cocktail.AlgCocktailSort2",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "CocktailSort (take 3)",
+        "pt" : "CocktailSort (3o tempo)",
+        "fr" : "Tri Cocktail (troisième version)"
+      },
+      "id" : "sort.basic.cocktail.AlgCocktailSort3",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "CombSort",
+        "pt" : "CombSort",
+        "fr" : "Tri à peigne"
+      },
+      "id" : "sort.basic.comb.AlgCombSort",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "CombSort11",
+        "pt" : "CombSort11",
+        "fr" : "Tri à peigne 11"
+      },
+      "id" : "sort.basic.comb.AlgCombSort11",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "GnomeSort",
+        "pt" : "GnomeSort",
+        "fr" : "Tri du gnome"
+      },
+      "id" : "sort.basic.gnome.AlgGnomeSort",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "InsertionSort",
+        "pt" : "InsertionSort",
+        "fr" : "Tri par insertion"
+      },
+      "id" : "sort.basic.insertion.AlgInsertionSort",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "ShellSort",
+        "pt" : "ShellSort",
+        "fr" : "Tri Shell"
+      },
+      "id" : "sort.basic.shell.AlgShellSort",
+      "dependingLectures" : [ ]
+    }, {
+      "names" : {
+        "en" : "Selection Sort",
+        "pt" : "Selection Sort",
+        "fr" : "Tri par sélection"
+      },
+      "id" : "sort.basic.selection.AlgSelectionSort",
+      "dependingLectures" : [ ]
+    } ],
   "id" : "sort.basic"
 }

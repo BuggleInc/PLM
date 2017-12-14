@@ -18,17 +18,17 @@ class Lessons(
   // WARNING, keep ChooseLessonDialog.lessons synchronized
   private val lessonIds: Seq[String] =
     Seq(
-      "welcome"
-//      "sort.basic",
-//      "sort.dutchflag"
-//      "maze",
-//      // "turmites",
-//      "turtleart",
-//      "sort.baseball",
-//      "sort.pancake",
-//      "recursion.cons",
-//     "recursion.logo",
-//      "recursion.hanoi"
+    "welcome" //OK without many exercices
+//    "sort.basic", //OK without performance test with 150 elements
+//    "sort.dutchflag", //OK
+//    "maze"
+//    "turmites",
+//    "turtleart",
+//    "sort.baseball",
+//    "sort.pancake" //OK
+//    "recursion.cons",
+//    "recursion.logo",
+//    "recursion.hanoi"
 //       "bat.string1"
     )
 
