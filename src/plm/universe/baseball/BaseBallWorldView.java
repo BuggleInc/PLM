@@ -559,10 +559,8 @@ public class BaseBallWorldView extends WorldView {
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
         paintComponent(svgGenerator, baseballWorld,width,height);
-
         StringWriter writer = new StringWriter();
         try {
-            //SvgGenerator.svgGenerator.stream(writer);
             svgGenerator.stream(writer);
         } catch (SVGGraphics2DIOException e) {
             e.printStackTrace();

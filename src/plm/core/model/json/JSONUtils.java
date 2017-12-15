@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.module.scala.DefaultScalaModule;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.lesson.BlankExercise;
 import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
@@ -95,6 +96,7 @@ public class JSONUtils {
 
 	public static ObjectNode exerciseToJSON(Exercise exercise) {
 		return (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
+
 	}
 
 	public static ObjectNode exerciseToJudgeJSON(Exercise exercise) {
@@ -126,7 +128,7 @@ public class JSONUtils {
         root.put("instructions", exercise.getMission(humanLang, progLang));
         root.put("help", exercise.getHelp(humanLang, progLang));
         root.put("code", code);
-        root.put("selectedWorldID", selectedWorldID);
+        root.put("selectedWorldID : ", selectedWorldID);
         root.put("toolbox", toolbox);
 
         return root;

@@ -45,10 +45,6 @@ public class BuggleWorldView  extends WorldView {
 
 
    protected static double getCellWidth(BuggleWorld buggleWorld, int height, int width) {
-//        System.out.println(height);//400
-//        System.out.println(width);//400
-//        System.out.println(buggleWorld.sizeX);//7
-//        System.out.println(buggleWorld.sizeY);//7
 
         return (double) Math.min(height / buggleWorld.sizeY , width /  buggleWorld.sizeX);
 
@@ -165,11 +161,6 @@ public class BuggleWorldView  extends WorldView {
                 g.draw(new Line2D.Double(padx+buggleWorld.sizeX*cellW-1, pady+y*cellW, padx+buggleWorld.sizeX*cellW-1, pady+(y+1)*cellW));
                 g.draw(new Line2D.Double(padx+buggleWorld.sizeX*cellW, pady+y*cellW, padx+buggleWorld.sizeX*cellW, pady+(y+1)*cellW));
                 g.draw(new Line2D.Double(padx+buggleWorld.sizeX*cellW+1, pady+y*cellW, padx+buggleWorld.sizeX*cellW+1, pady+(y+1)*cellW));
-//                System.out.println(padx+width*cellW+","+ pady+y*cellW+","+ padx+width*cellW+","+ pady+(y+1)*cellW);
-//                System.out.println(padx);
-//                System.out.println("width = "+ width);
-//                System.out.println("buggleWorld.sizeX = " + buggleWorld.sizeX);
-//                System.out.println(cellW);
             }
         }
 
@@ -336,7 +327,6 @@ protected static String draw(BuggleWorld buggleWorld, int width, int height){
 
     StringWriter writer = new StringWriter();
     try {
-        //SvgGenerator.svgGenerator.stream(writer);
         svgGenerator.stream(writer);
     } catch (SVGGraphics2DIOException e) {
         e.printStackTrace();

@@ -142,25 +142,6 @@
     },
     {
       "names": {
-        "en": "Functions",
-        "pt": "Funções",
-        "fr": "Fonctions"
-      },
-      "id": "methods.returning.MethodsReturning",
-      "dependingLectures": [
-        {
-          "names": {
-            "en": "Slug Hunting",
-            "pt": "Caça à lesma",
-            "fr": "Chasse à la limace"
-          },
-          "id": "methods.slug.SlugHunting",
-          "dependingLectures": []
-        }
-      ]
-    },
-    {
-      "names": {
         "en": "Methods with parameters",
         "pt": "Métodos com perâmetros",
         "fr": "Méthodes avec paramètres"

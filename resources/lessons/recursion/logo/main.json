@@ -34,38 +34,6 @@
     "dependingLectures" : [ ]
   }, {
     "names" : {
-      "en" : "Snow flake",
-      "pt" : "Floco de neve",
-      "fr" : "Flocons de neige"
-    },
-    "id" : "recursion.logo.koch.Koch",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "Snow square",
-      "pt" : "Snow square",
-      "fr" : "Carrés de neige"
-    },
-    "id" : "recursion.logo.koch.SquareKoch",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "Snow pentagon",
-      "pt" : "Snow pentagon",
-      "fr" : "Pentagone de neige"
-    },
-    "id" : "recursion.logo.koch.PentaKoch",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "Snow hexagon",
-      "pt" : "Snow hexagon",
-      "fr" : "Hexagone de neige"
-    },
-    "id" : "recursion.logo.koch.HexaKoch",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
       "en" : "Fractal Crab",
       "pt" : "Carangueijo Fractal",
       "fr" : "La fractale du crabe"
@@ -87,22 +55,6 @@
       "fr" : "Fractales de polygones"
     },
     "id" : "recursion.logo.polygonfractal.PolygonFractal",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "Dragon curve (1)",
-      "pt" : "Curva do Dragão (1)",
-      "fr" : "Courbe du Dragon (1)"
-    },
-    "id" : "recursion.logo.dragoncurve.DragonCurve1",
-    "dependingLectures" : [ ]
-  }, {
-    "names" : {
-      "en" : "The dragon curve (2)",
-      "pt" : "A curva do dragão (2)",
-      "fr" : "Courbe du Dragon (2)"
-    },
-    "id" : "recursion.logo.dragoncurve.DragonCurve2",
     "dependingLectures" : [ ]
   } ],
   "id" : "recursion.logo"
