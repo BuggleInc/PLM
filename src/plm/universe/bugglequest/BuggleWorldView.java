@@ -320,7 +320,7 @@ public class BuggleWorldView  extends WorldView {
                     { 0,0,0,0,1,1,0,0,0,0,0 },
                     { 0,0,0,0,0,1,1,1,0,0,0 }
             }};
-protected static String draw(BuggleWorld buggleWorld, int width, int height){
+public static String draw(BuggleWorld buggleWorld, int width, int height){
     // Ask the test to render into the SVG Graphics2D implementation.
     SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
     paintComponent(svgGenerator, buggleWorld,width,height);
