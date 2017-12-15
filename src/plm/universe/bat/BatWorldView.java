@@ -30,7 +30,7 @@ public class BatWorldView extends WorldView {
 //        return world instanceof BatWorld;
 //    }
 
-    
+
     public static void paintComponent(Graphics g, BatWorld batWorld, int width, int height) {
 
         Graphics2D g2 = (Graphics2D) g;
@@ -67,12 +67,19 @@ public class BatWorldView extends WorldView {
                 }
             }
             g2.drawString(currTest.getName(batWorld.getProgLang()) + "=" + currTest.getResult()
-                            //+ (currTest.isAnswered() && !currTest.isCorrect() ? " (expected: " + currTest.stringParameter(batWorld.getProgLang(),currTest.expected) + ")" : "")
+                    //+ (currTest.isAnswered() && !currTest.isCorrect() ? " (expected: " + currTest.stringParameter(batWorld.getProgLang(),currTest.expected) + ")" : "")
                     , 0, (i + 1) * 20);
         }
 
     }
 
+    /**
+     *
+     * @param batWorld
+     * @param width
+     * @param height
+     * @return the BatWorld's SVG under String Format
+     */
     public static String draw(BatWorld batWorld, int width, int height) {
 
         // Ask the test to render into the SVG Graphics2D implementation.

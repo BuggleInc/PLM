@@ -21,13 +21,13 @@ class Lessons(
     "welcome", //OK without many exercices
     "sort.basic", //OK without performance test with 150 elements
     "sort.dutchflag", //OK
-//    "maze"
-//    "turmites",
+//    "maze" //Les exercices timeOUT
+//    "turmites", //Les exercices timeOUT
 //    "turtleart",
-//    "sort.baseball",
+//    "sort.baseball", // Les dessins ne sont pas corrects pour le moment
     "sort.pancake", //OK
-//    "recursion.cons",
-//    "recursion.logo"
+    "recursion.cons", //Les dessins sont correct mais ne sont pas gérés cotés JS
+//    "recursion.logo", //Les dessins turtle ne sont pas correct
     "recursion.hanoi"
 //       "bat.string1"
     )

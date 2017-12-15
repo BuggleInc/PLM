@@ -149,19 +149,19 @@ public class BaseBallWorldView extends WorldView {
         g.fillPolygon(xPoints, yPoints, 4);
 
         // the radius of the disk representing the player. the graphically depicted is a bit smaller than the clickable
-           radius = (L / amountOfPlayers - 1); // clickable
+        radius = (L / amountOfPlayers - 1); // clickable
         int radius2 = (int) (radius * .8);// graphically depicted
 
 
-		/*
+        /*
          * This array will contain the coordinates of the middle of the lower segment ( when theta = 0 ) of the base
-		 * 0 => x coordinate ; 1 => y coordinate
-		 */
+         * 0 => x coordinate ; 1 => y coordinate
+         */
         int[] middleLower = new int[2];
         /*
          * This array will contain the coordinates of the middle of the upper segment ( when theta = 0 ) of the base
-		 * 0 => x coordinate ; 1 => y coordinate
-		 */
+         * 0 => x coordinate ; 1 => y coordinate
+         */
         int[] middleUpper = new int[2];
         // This array will contain the coordinates of the "step" between two disks -- 0 => x step ; 1 => y step
         int[] delta = new int[2];
@@ -174,10 +174,10 @@ public class BaseBallWorldView extends WorldView {
         delta[0] = (middleUpper[0] - middleLower[0]) / amountOfPlayers;
         delta[1] = (middleUpper[1] - middleLower[1]) / amountOfPlayers;
 
-		/*
-		 *  This array contains the coordinates of the center of the disk representing the player
-		 *	0 => x coordinate ; 1 => y coordinate
-		 */
+        /*
+         *  This array contains the coordinates of the center of the disk representing the player
+         *	0 => x coordinate ; 1 => y coordinate
+         */
         int centerPlayer[] = new int[2];
         // color of the player
         Color colorPlayer = null;
@@ -284,7 +284,7 @@ public class BaseBallWorldView extends WorldView {
         g.translate(Math.abs(width - displayRatio * virtualSize)/2., Math.abs(height - displayRatio * virtualSize)/2.);
         g.scale(displayRatio, displayRatio);
 
-		/* drawn the field */
+        /* drawn the field */
         g.setColor(new Color(58,157,35)); // lawn
         g.fill(new Rectangle2D.Double(0., 0., virtualSize, virtualSize));
 
@@ -331,12 +331,12 @@ public class BaseBallWorldView extends WorldView {
                     0.0f						// Dash phase
             ));
 
-			/*
-			 * This array will contains the coordinates (x,y) of :
-			 * -> the beginning of the arrow ( index 0 )
-			 * -> the end of the tail of the arrow ( index 1 )
-			 * -> the end of the head of the arrow
-			 */
+            /*
+             * This array will contains the coordinates (x,y) of :
+             * -> the beginning of the arrow ( index 0 )
+             * -> the end of the tail of the arrow ( index 1 )
+             * -> the end of the head of the arrow
+             */
             int[][] arrow = new int[3][2];
             // the step between two players of the same base
             int[] delta = new int[2] ;
@@ -421,7 +421,7 @@ public class BaseBallWorldView extends WorldView {
     private static void paintHistory(Graphics2D g,BaseballWorld baseballWorld) {
         //Vector<BaseballMove> moves = field.getMoves();
         int operationsAmount = baseballWorld.getMoveCount();    // little optimization
-		/* getWidth()-20 to keep the room to display the bases on left and right */
+        /* getWidth()-20 to keep the room to display the bases on left and right */
         float stepX = (400 - 20) / ((float) (Math.max(operationsAmount, 1)));
         float stepY = (400) / ((float) (baseballWorld.getBasesAmount() * (baseballWorld.getPositionsAmount() + 1)));
         int x1, y1, x2, y2;
@@ -487,7 +487,7 @@ public class BaseBallWorldView extends WorldView {
             x2 = (int) (x1 + stepX);
             int base = 0;
             int pos = 0;
-			/* Draw straight lines for unmodified values */
+            /* Draw straight lines for unmodified values */
             for (base = 0; base < baseballWorld.getBasesAmount(); base++)
                 for (pos = 0; pos < baseballWorld.getPositionsAmount(); pos++)
                     if ((baseballWorld.getBasesAmount()!= base || baseballWorld.getPositionsAmount()!= pos)){
@@ -509,7 +509,7 @@ public class BaseBallWorldView extends WorldView {
                         }
                     }
 
-			/* Draw the crossing lines representing the move */
+            /* Draw the crossing lines representing the move */
             // draw player->hole
             y1 = (int) ((base * (baseballWorld.getPositionsAmount() + 1) + pos) * stepY + stepY / 2);
             y2 = (int) ((base * (baseballWorld.getPositionsAmount() + 1) + 1) * stepY + stepY / 2);
@@ -554,7 +554,14 @@ public class BaseBallWorldView extends WorldView {
             paintHistory(g2,baseballWorld);
     }
 
-
+    /**
+     *
+     * @param baseballWorld
+     * @param width
+     * @param height
+     *
+     * @return the Baseball's SVG under String Format But there's currently problem in the render
+     */
     protected static String draw(BaseballWorld baseballWorld, int width, int height){
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);

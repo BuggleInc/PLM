@@ -45,7 +45,7 @@ public class DutchFlagWorldView extends WorldView {
     private static final long serialVersionUID = 1L;
     private static double heightworld;
     private static int rankFrom=-1; // DnD marker
-    
+
 
     public DutchFlagWorldView(DutchFlagWorld dfw)
     {
@@ -65,11 +65,11 @@ public class DutchFlagWorldView extends WorldView {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-		/* clear board */
+        /* clear board */
         g2.setColor(Color.white);
         g2.fill(new Rectangle2D.Double(0., 0., width, height));
 
-		/* Draw the lines */
+        /* Draw the lines */
         int stackSize = dutchFlagWorld.getSize();
         heightworld = ((double)height) / stackSize;
 
@@ -113,6 +113,13 @@ public class DutchFlagWorldView extends WorldView {
         }
     }
 
+    /**
+     *
+     * @param dutchFlagWorld
+     * @param width
+     * @param height
+     * @return the DutchFlagWorld's world under SVG Format
+     */
     public static String draw(DutchFlagWorld dutchFlagWorld, int width, int height) {
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
