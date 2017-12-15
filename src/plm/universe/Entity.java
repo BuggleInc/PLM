@@ -115,6 +115,10 @@ public abstract class Entity extends Observable {
      * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().
      */
     protected void stepUI() {
+        /*
+        We don't need this code anymore because we don't send Operations anymore to the JS
+        Only SVG Operations will be used
+         */
 //        if (operations.size() > 0) {
 //            world.addStep(operations);
 //            operations = new ArrayList<Operation>();

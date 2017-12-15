@@ -20,6 +20,10 @@ public class ExerciseRunner {
 
 	private Locale locale;
 
+	/*
+	timeoutMilli correspond to the time used by the runEntities method in World.
+	It crashed if SVGOperation are not drawn in 20 seconds.
+	 */
 	final long timeoutMilli = 20000; // 5sec
 
 	public ExerciseRunner(Locale locale) {
@@ -104,6 +108,7 @@ public class ExerciseRunner {
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
 
+		//We initializes Execution progress so that doesn't crash when loading SVGOperation
 		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
 		exo.reset();

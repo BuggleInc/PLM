@@ -155,6 +155,14 @@ public class JSONUtils {
 		}
 	}
 
+	/**
+	 *
+	 * @param world
+	 * @param bufferSize
+	 * @return String which be serialized in JSON for the JS
+	 *
+	 * Method that send SVGOperations to the student when he executes his code
+	 */
 	public static String operationsToJSON(World world, int bufferSize) {
 		int nbSteps = world.getSteps().size();
 

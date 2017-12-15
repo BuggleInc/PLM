@@ -1,5 +1,9 @@
 package plm.universe;
 
+/**
+ * SVGOperation is sent to the the JS, it contains the drawing of a world in a specific state
+ *
+ */
 public class SVGOperation {
 
     private String svgOperation;

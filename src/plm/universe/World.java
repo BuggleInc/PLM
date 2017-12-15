@@ -30,6 +30,10 @@ public abstract class World  {
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
+	/**
+	 * Create a List for each world which will contain SVGOperations
+	 * The SVGOperations will contain different drawsof the world.
+	 */
 	private ConcurrentLinkedDeque<List<SVGOperation>> steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
 
 	protected final FileUtils fileUtils;
