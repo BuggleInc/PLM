@@ -135,7 +135,7 @@ public class DutchFlagWorld extends World {
 	}
 
 	@Override
-	protected List<SVGOperation> draw() {
+    public List<SVGOperation> draw() {
 		String svg = DutchFlagWorldView.draw(this, 400,400);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);

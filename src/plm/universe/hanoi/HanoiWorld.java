@@ -89,7 +89,7 @@ public class HanoiWorld extends World {
 	}
 
 	@Override
-	protected List<SVGOperation> draw() {
+    public List<SVGOperation> draw() {
 		String svg = HanoiWorldView.draw(this, 400,400);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
