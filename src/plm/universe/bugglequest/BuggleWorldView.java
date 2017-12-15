@@ -33,7 +33,7 @@ import static plm.universe.bugglequest.BuggleWorld.*;
 
 public class BuggleWorldView  extends WorldView {
 
-   //static BuggleWorld buggleWorld = (BuggleWorld) world;
+    //static BuggleWorld buggleWorld = (BuggleWorld) world;
     public BuggleWorldView(BuggleWorld world2) {
         super(world2);
     }
@@ -44,7 +44,7 @@ public class BuggleWorldView  extends WorldView {
     private static Color WALL_COLOR = new Color(0.0f,0.0f,0.5f);
 
 
-   protected static double getCellWidth(BuggleWorld buggleWorld, int height, int width) {
+    protected static double getCellWidth(BuggleWorld buggleWorld, int height, int width) {
 
         return (double) Math.min(height / buggleWorld.sizeY , width /  buggleWorld.sizeX);
 
@@ -243,14 +243,14 @@ public class BuggleWorldView  extends WorldView {
 //            }
 //
 //        } else {
-            g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR);
-            g.fill(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
-            g.setColor(getCellColor(cell.getX(), cell.getY(),buggleWorld));
-            g.fill(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
+        g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR);
+        g.fill(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
+        g.setColor(getCellColor(cell.getX(), cell.getY(),buggleWorld));
+        g.fill(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
 
-            g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR.darker().darker());
-            g.draw(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
-            g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
+        g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR.darker().darker());
+        g.draw(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
+        g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
 //        }
     }
 
@@ -320,19 +320,27 @@ public class BuggleWorldView  extends WorldView {
                     { 0,0,0,0,1,1,0,0,0,0,0 },
                     { 0,0,0,0,0,1,1,1,0,0,0 }
             }};
-public static String draw(BuggleWorld buggleWorld, int width, int height){
-    // Ask the test to render into the SVG Graphics2D implementation.
-    SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
-    paintComponent(svgGenerator, buggleWorld,width,height);
 
-    StringWriter writer = new StringWriter();
-    try {
-        svgGenerator.stream(writer);
-    } catch (SVGGraphics2DIOException e) {
-        e.printStackTrace();
+    /**
+     *
+     * @param buggleWorld
+     * @param width
+     * @param height
+     * @return The BuggleWord's SVG under String Format
+     */
+    public static String draw(BuggleWorld buggleWorld, int width, int height){
+        // Ask the test to render into the SVG Graphics2D implementation.
+        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+        paintComponent(svgGenerator, buggleWorld,width,height);
+
+        StringWriter writer = new StringWriter();
+        try {
+            svgGenerator.stream(writer);
+        } catch (SVGGraphics2DIOException e) {
+            e.printStackTrace();
+        }
+        String str = writer.getBuffer().toString();
+        return str;
+
     }
-    String str = writer.getBuffer().toString();
-    return str;
-
-}
 }

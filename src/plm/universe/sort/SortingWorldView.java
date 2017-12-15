@@ -16,7 +16,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.StringWriter;
 
 public class SortingWorldView extends WorldView {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 
 	private  static boolean useStateView = true; // chronoView if false
@@ -106,11 +106,11 @@ public class SortingWorldView extends WorldView {
 			for (int valIdx=0; valIdx<we.getValueCount();valIdx++) {
 				y1 = (int) (valIdx * stepY + stepY/2);
 
-					tone = getValueColor(valuesAfter[valIdx],we.getValueCount());
-					g2.setColor(new Color(tone, tone, 128));
+				tone = getValueColor(valuesAfter[valIdx],we.getValueCount());
+				g2.setColor(new Color(tone, tone, 128));
 
-					g2.drawLine(x1, y1, x2, y1);
-            }
+				g2.drawLine(x1, y1, x2, y1);
+			}
 
 			/* Write the values in their new position (if there is not too much values) */
 			if (drawStr)
@@ -286,6 +286,13 @@ public class SortingWorldView extends WorldView {
 		this.useStateView = useStateView;
 	}
 
+	/**
+	 *
+	 * @param sortingWorld
+	 * @param width
+	 * @param height
+	 * @return draw the sortingWorldView's SVG under String Format
+	 */
 	public static String draw(SortingWorld sortingWorld, int width, int height){
 		// Ask the test to render into the SVG Graphics2D implementation.
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);

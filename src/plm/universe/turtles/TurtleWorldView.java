@@ -95,6 +95,13 @@ public class TurtleWorldView extends WorldView {
         }
     }
 
+    /**
+     *
+     * @param turtleWorld
+     * @param width
+     * @param height
+     * @return the TurleWorld View, but actually doesn't render the turtle
+     */
     public static String draw(TurtleWorld turtleWorld, int width, int height) {
 
         // Ask the test to render into the SVG Graphics2D implementation.

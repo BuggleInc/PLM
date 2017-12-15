@@ -43,7 +43,7 @@ public class HanoiWorldView extends WorldView {
 
 
 
-		/* clear board */
+        /* clear board */
         g2.setColor(Color.white);
         g2.fill(new Rectangle2D.Double(0., 0., width, height));
 
@@ -62,7 +62,7 @@ public class HanoiWorldView extends WorldView {
     public static void drawSlot(Graphics2D g2, int rank, double xoffset,HanoiWorld hanoiWorld) {
 
 
-		/* draw bars, with color indicating whether it's a valid move during interactive drag&drop */
+        /* draw bars, with color indicating whether it's a valid move during interactive drag&drop */
         if (pegFrom == -1)
             g2.setColor(Color.black);
         else if (hanoiWorld.getRadius(pegFrom) > hanoiWorld.getRadius(rank))
@@ -77,10 +77,10 @@ public class HanoiWorldView extends WorldView {
         if(hanoiWorld.getSlots()[rank].toArray(new HanoiDisk[rank])==null)
             return;
 
-      if(hanoiWorld.getSlots()[rank]==null)
-          return;
+        if(hanoiWorld.getSlots()[rank]==null)
+            return;
 
-		/* draw discs */
+        /* draw discs */
         int height = 1;
         for (int i=0; i<hanoiWorld.getSlots()[rank].size(); i++) {
             int size = hanoiWorld.getSlots()[rank].get(i).getSize();
@@ -98,6 +98,13 @@ public class HanoiWorldView extends WorldView {
         g2.setStroke(new BasicStroke(1));
     }
 
+    /**
+     *
+     * @param hanoiWorld
+     * @param width
+     * @param height
+     * @return the HanoiWorld's view under SVG String
+     */
     public static String draw(HanoiWorld hanoiWorld, int width, int height){
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);

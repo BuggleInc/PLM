@@ -27,7 +27,7 @@ class Lessons(
 //    "sort.baseball",
     "sort.pancake", //OK
 //    "recursion.cons",
-//    "recursion.logo"
+//    "recursion.logo",
     "recursion.hanoi"
 //       "bat.string1"
     )
