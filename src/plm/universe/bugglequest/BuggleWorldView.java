@@ -1,5 +1,6 @@
 package plm.universe.bugglequest;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.jfree.graphics2d.svg.SVGUtils;
 import plm.core.log.Logger;
 import plm.universe.GridWorld;
 import java.awt.Color;
@@ -9,9 +10,12 @@ import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+
+import org.jfree.*;
 
 
 import javax.imageio.ImageIO;
@@ -330,16 +334,13 @@ public class BuggleWorldView  extends WorldView {
      */
     public static String draw(BuggleWorld buggleWorld, int width, int height){
         // Ask the test to render into the SVG Graphics2D implementation.
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+
+        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+
+//        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
         paintComponent(svgGenerator, buggleWorld,width,height);
 
-        StringWriter writer = new StringWriter();
-        try {
-            svgGenerator.stream(writer);
-        } catch (SVGGraphics2DIOException e) {
-            e.printStackTrace();
-        }
-        String str = writer.getBuffer().toString();
+        String str = svgGenerator.getSVGElement();
         return str;
 
     }

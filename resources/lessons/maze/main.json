@@ -12,11 +12,38 @@
     },
     {
       "names": {
+        "en": "Following the walls",
+        "pt": "Seguindo as paredes",
+        "fr": "Longer les murs"
+      },
+      "id": "maze.wallfollower.WallFollowerMaze",
+      "dependingLectures": []
+    },
+    {
+      "names": {
+        "en": "Finding the walls to follow",
+        "pt": "Encontrando as paredes para seguir",
+        "fr": "Trouver les murs à longer"
+      },
+      "id": "maze.wallfindfollow.WallFindFollowMaze",
+      "dependingLectures": []
+    },
+    {
+      "names": {
         "en": "Lost between islands",
         "pt": "Perdido entre ilhas",
         "fr": "Perdu dans les îles"
       },
       "id": "maze.island.IslandMaze",
+      "dependingLectures": []
+    },
+    {
+      "names": {
+        "en": "Pledge algorithm",
+        "pt": "Algoritmo de Pledge",
+        "fr": "Algorithme de Pledge"
+      },
+      "id": "maze.pledge.PledgeMaze",
       "dependingLectures": []
     },
     {

@@ -142,6 +142,99 @@
     },
     {
       "names": {
+        "en": "Do .. while loops",
+        "pt": "Loops Do .. while (faça .. enquanto)",
+        "fr": "Boucles jusqu'à"
+      },
+      "id": "loopdowhile.LoopDoWhile",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Tracks of buggles",
+            "pt": "Trilhas de buggles",
+            "fr": "La buggle Petite Poucette"
+          },
+          "id": "loopdowhile.Poucet1",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "More buggles tracks",
+            "pt": "More buggles tracks",
+            "fr": "More buggles tracks"
+          },
+          "id": "loopdowhile.Poucet2",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "Methods",
+        "pt": "Métodos",
+        "fr": "Méthodes"
+      },
+      "id": "methods.basics.Methods",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Building methodically",
+            "pt": "Construindo metodicamente",
+            "fr": "Construire avec méthode"
+          },
+          "id": "methods.basics.MethodsDogHouse",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Methodically drawing",
+            "pt": "desenhando metodicamente",
+            "fr": "Dessiner avec méthode"
+          },
+          "id": "methods.picture.PictureMono1",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Methodically drawing (only bigger)",
+            "pt": "Desenhando metodicamente (apenas grande)",
+            "fr": "Dessiner avec méthode (en plus grand)"
+          },
+          "id": "methods.picture.PictureMono2",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
+        "en": "Functions",
+        "pt": "Funções",
+        "fr": "Fonctions"
+      },
+      "id": "methods.returning.MethodsReturning",
+      "dependingLectures": [
+        {
+          "names": {
+            "en": "Slug Tracking",
+            "pt": "Rastreando a lesma",
+            "fr": "Pistage de la limace"
+          },
+          "id": "methods.slug.SlugTracking",
+          "dependingLectures": []
+        },
+        {
+          "names": {
+            "en": "Slug Hunting",
+            "pt": "Caça à lesma",
+            "fr": "Chasse à la limace"
+          },
+          "id": "methods.slug.SlugHunting",
+          "dependingLectures": []
+        }
+      ]
+    },
+    {
+      "names": {
         "en": "Methods with parameters",
         "pt": "Métodos com perâmetros",
         "fr": "Méthodes avec paramètres"

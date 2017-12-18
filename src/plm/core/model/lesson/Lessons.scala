@@ -21,7 +21,7 @@ class Lessons(
     "welcome", //OK without many exercices
     "sort.basic", //OK without performance test with 150 elements
     "sort.dutchflag", //OK
-//    "maze" //Les exercices timeOUT
+    "maze", //Les exercices timeOUT
 //    "turmites", //Les exercices timeOUT
 //    "turtleart", //Les dessins turtle ne sont pas correct
 //    "sort.baseball", // Les dessins ne sont pas corrects pour le moment
