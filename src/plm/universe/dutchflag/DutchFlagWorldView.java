@@ -12,11 +12,8 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 
-
-//import plm.core.model.Game;
-//import plm.core.ui.WorldView;
-//import plm.universe.EntityControlPanel;
 import org.jfree.graphics2d.svg.SVGGraphics2D;
+
 import plm.universe.WorldView;
 
 

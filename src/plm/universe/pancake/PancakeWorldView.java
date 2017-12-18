@@ -11,7 +11,6 @@ import java.awt.Stroke;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-
 import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.WorldView;
 
