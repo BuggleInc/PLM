@@ -1,8 +1,6 @@
 package plm.universe.hanoi;
 
 
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.utils.FileUtils;
 import plm.universe.SvgGenerator;
 import plm.universe.WorldView;

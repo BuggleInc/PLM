@@ -1,7 +1,5 @@
 package plm.universe.turtles;
 
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.SvgGenerator;
@@ -105,18 +103,12 @@ public class TurtleWorldView extends WorldView {
     public static String draw(TurtleWorld turtleWorld, int width, int height) {
 
         // Ask the test to render into the SVG Graphics2D implementation.
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
-        paintComponent(svgGenerator, turtleWorld,width,height);
+                org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
 
-        StringWriter writer = new StringWriter();
-        try {
-            //SvgGenerator.svgGenerator.stream(writer);
-            svgGenerator.stream(writer);
-        } catch (SVGGraphics2DIOException e) {
-            e.printStackTrace();
-        }
-        String str = writer.getBuffer().toString();
-        return str;
+                paintComponent(svgGenerator, turtleWorld,width,height);
+
+                String str = svgGenerator.getSVGElement();
+                return str;
 
     }
 }

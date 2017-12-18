@@ -8,9 +8,6 @@ import java.awt.geom.Rectangle2D;
 import java.io.StringWriter;
 import java.util.List;
 
-
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.universe.SvgGenerator;
@@ -83,15 +80,12 @@ public class BatWorldView extends WorldView {
     public static String draw(BatWorld batWorld, int width, int height) {
 
         // Ask the test to render into the SVG Graphics2D implementation.
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+
+        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+
         paintComponent(svgGenerator, batWorld,width,height);
-        StringWriter writer = new StringWriter();
-        try {
-            svgGenerator.stream(writer);
-        } catch (SVGGraphics2DIOException e) {
-            e.printStackTrace();
-        }
-        String str = writer.getBuffer().toString();
+
+        String str = svgGenerator.getSVGElement();
         return str;
 
     }

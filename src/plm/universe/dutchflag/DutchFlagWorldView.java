@@ -1,8 +1,5 @@
 package plm.universe.dutchflag;
 
-
-
-
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -30,8 +27,6 @@ import java.io.StringWriter;
 //import plm.core.model.Game;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.core.utils.FileUtils;
 import plm.universe.SvgGenerator;
 import plm.universe.World;

@@ -1,5 +1,4 @@
 package plm.universe.bugglequest;
-import org.apache.batik.svggen.SVGGraphics2D;
 import org.jfree.graphics2d.svg.SVGUtils;
 import plm.core.log.Logger;
 import plm.universe.GridWorld;
@@ -21,8 +20,6 @@ import org.jfree.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.universe.Entity;
 import plm.universe.SvgGenerator;
 import plm.universe.World;
@@ -337,7 +334,6 @@ public class BuggleWorldView  extends WorldView {
 
         org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
 
-//        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
         paintComponent(svgGenerator, buggleWorld,width,height);
 
         String str = svgGenerator.getSVGElement();

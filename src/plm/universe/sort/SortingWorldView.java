@@ -1,7 +1,6 @@
 package plm.universe.sort;
 
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
+
 import plm.universe.Operation;
 import plm.universe.SvgGenerator;
 import plm.universe.WorldView;

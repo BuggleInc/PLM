@@ -15,8 +15,6 @@ import java.awt.geom.Rectangle2D;
 import java.io.StringWriter;
 
 
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
