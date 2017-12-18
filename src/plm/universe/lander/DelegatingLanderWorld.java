@@ -5,8 +5,15 @@ import javax.script.ScriptException;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
+import plm.universe.hanoi.HanoiWorldView;
 import scala.collection.immutable.List;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class DelegatingLanderWorld extends World {
 
@@ -51,6 +58,27 @@ public class DelegatingLanderWorld extends World {
   public void reset(World initialWorld) {
     realWorld.reset(((DelegatingLanderWorld) initialWorld).realWorld);
     super.reset(initialWorld);
+  }
+
+  @Override
+  protected java.util.List<SVGOperation> draw() {
+    String svg = LanderWorldView.draw(this, 400,400);
+    java.util.List<SVGOperation> list = new ArrayList<SVGOperation>();
+    SVGOperation operation = new SVGOperation(svg);
+    list.add(operation);
+
+    PrintWriter writer = null;
+    try {
+      writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
+    writer.write(svg);
+    writer.close();
+
+    return list;
   }
 
   @Override

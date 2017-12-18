@@ -202,15 +202,6 @@
           },
           "id": "methods.picture.PictureMono2",
           "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Drawing bigger and bigger",
-            "pt": "Desenhando maior e maior",
-            "fr": "Dessiner de plus en plus grand"
-          },
-          "id": "methods.picture.PictureMono3",
-          "dependingLectures": []
         }
       ]
     },
@@ -266,15 +257,6 @@
             "fr": "Dessins colorés"
           },
           "id": "methods.picture.MethodsPicture",
-          "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Larger colorful drawing",
-            "pt": "Um desenho colorido maior",
-            "fr": "Grand dessin coloré"
-          },
-          "id": "methods.picture.MethodsPictureLarge",
           "dependingLectures": []
         },
         {
@@ -405,52 +387,6 @@
       },
       "id": "array.island.Island",
       "dependingLectures": []
-    },
-    {
-      "names": {
-        "en": "Snake World",
-        "pt": "Mundo das cobras",
-        "fr": "Monde de serpents"
-      },
-      "id": "traversal.snake.Snake",
-      "dependingLectures": [
-        {
-          "names": {
-            "en": "Traversal by column",
-            "pt": "Percorrer pelas colunas",
-            "fr": "Parcours en colonne"
-          },
-          "id": "traversal.column.TraversalByColumn",
-          "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Traversal by line",
-            "pt": "Percorrer pelas linhas",
-            "fr": "Parcours en ligne"
-          },
-          "id": "traversal.line.TraversalByLine",
-          "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Zig-zag traversal",
-            "pt": "Percorrer em zig-zag",
-            "fr": "Parcours en zig-zag"
-          },
-          "id": "traversal.zigzag.TraversalZigZag",
-          "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Diagonal Traversal",
-            "pt": "Percorrer na diagonal",
-            "fr": "Parcours en diagonale"
-          },
-          "id": "traversal.diagonal.TraversalDiagonal",
-          "dependingLectures": []
-        }
-      ]
     },
     {
       "names": {
