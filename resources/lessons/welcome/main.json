@@ -420,7 +420,7 @@
             "pt": "Percorrer pelas colunas",
             "fr": "Parcours en colonne"
           },
-          "id": "traversal.column.traversalbycolumn.TraversalByColumn",
+          "id": "traversal.column.TraversalByColumn",
           "dependingLectures": []
         },
         {
@@ -429,7 +429,7 @@
             "pt": "Percorrer pelas linhas",
             "fr": "Parcours en ligne"
           },
-          "id": "traversal.line.traversalbyline.TraversalByLine",
+          "id": "traversal.line.TraversalByLine",
           "dependingLectures": []
         },
         {
@@ -438,7 +438,7 @@
             "pt": "Percorrer em zig-zag",
             "fr": "Parcours en zig-zag"
           },
-          "id": "traversal.zigzag.traversalzigzag.TraversalZigZag",
+          "id": "traversal.zigzag.TraversalZigZag",
           "dependingLectures": []
         },
         {
@@ -447,7 +447,7 @@
             "pt": "Percorrer na diagonal",
             "fr": "Parcours en diagonale"
           },
-          "id": "traversal.diagonal.traversaldiagonal.TraversalDiagonal",
+          "id": "traversal.diagonal.TraversalDiagonal",
           "dependingLectures": []
         }
       ]

@@ -1,4 +1,4 @@
-package traversal.line.traversalbyline;
+package traversal.line;
 
 import java.awt.Color;
 

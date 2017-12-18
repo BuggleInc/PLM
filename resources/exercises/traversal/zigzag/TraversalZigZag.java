@@ -1,4 +1,4 @@
-package traversal.zigzag.traversalzigzag;
+package traversal.zigzag;
 
 import java.awt.Color;
 
