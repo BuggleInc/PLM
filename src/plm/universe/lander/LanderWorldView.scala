@@ -1,3 +1,4 @@
+
 //package plm.universe.lander
 //
 //
@@ -109,7 +110,7 @@
 //
 //    def clearWidgetBackground() = {
 //      g2.setColor(Color.gray)
-//      g2.fill(new Rectangle2D.Double(0, 0, width, height))
+//      g2.fill(new Rectangle2D.Double(0, 0, width.toDouble, height.toDouble))
 //    }
 //
 //    def setupGlobalTransform() = {
@@ -122,7 +123,7 @@
 //
 //    def clearWorldBackground() = {
 //      g2.setColor(Color.black)
-//      g2.fill(new Rectangle2D.Double(0, 0, delegLandWorld.realWorld.width, delegLandWorld.realWorld.height))
+//      g2.fill(new Rectangle2D.Double(0, 0, delegLandWorld.realWorld.width.toDouble, delegLandWorld.realWorld.height.toDouble))
 //    }
 //
 //    /** Sets the line width to 1px no matter the transform, and the color to white. */
@@ -189,8 +190,8 @@
 //    def drawQuestionMarks() = {
 //      val x = delegLandWorld.realWorld.position.x
 //      val y = delegLandWorld.realWorld.position.y
-//      val textX = if (x >= delegLandWorld.realWorld.width) delegLandWorld.realWorld.width - 100 else if (x <= 0) 5 else x
-//      val textY = if (y >= delegLandWorld.realWorld.height) delegLandWorld.realWorld.height - 40 else if (y <= 0) 5 else y - 30
+//      val textX = if (x >= delegLandWorld.realWorld.width) delegLandWorld.realWorld.width.toDouble - 100 else if (x <= 0) 5 else x
+//      val textY = if (y >= delegLandWorld.realWorld.height) delegLandWorld.realWorld.height.toDouble - 40 else if (y <= 0) 5 else y - 30
 //      g2.setColor(Color.WHITE)
 //      g2.setFont(new Font(Font.MONOSPACED, Font.BOLD, 40))
 //      drawText("???", textX, textY)
@@ -199,21 +200,21 @@
 //    def drawStats(initialTransform: AffineTransform) {
 //      g2.setColor(Color.LIGHT_GRAY)
 //      g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30))
-//      drawText(f"x: ${delegLandWorld.realWorld.position.x}%.2f", 5, delegLandWorld.realWorld.height - 30)
-//      drawText(f"y: ${delegLandWorld.realWorld.position.y}%.2f", 5, delegLandWorld.realWorld.height - 2 * 30)
-//      drawText(f"speed x: ${delegLandWorld.realWorld.speed.x}%.2f", 5, delegLandWorld.realWorld.height - 3 * 30)
-//      drawText(f"speed y: ${delegLandWorld.realWorld.speed.y}%.2f", 5, delegLandWorld.realWorld.height - 4 * 30)
-//      drawText(f"angle: ${delegLandWorld.realWorld.angle}%.2f°", 5, delegLandWorld.realWorld.height - 5 * 30)
-//      drawText(f"thrust: ${delegLandWorld.realWorld.thrust}", 5, delegLandWorld.realWorld.height - 6 * 30)
-//      drawText(f"fuel: ${delegLandWorld.realWorld.fuel}", 5, delegLandWorld.realWorld.height - 7 * 30)
+//      drawText(f"x: ${delegLandWorld.realWorld.position.x}%.2f", 5, delegLandWorld.realWorld.height.toDouble - 30)
+//      drawText(f"y: ${delegLandWorld.realWorld.position.y}%.2f", 5, delegLandWorld.realWorld.height.toDouble - 2 * 30)
+//      drawText(f"speed x: ${delegLandWorld.realWorld.speed.x}%.2f", 5, delegLandWorld.realWorld.height.toDouble - 3 * 30)
+//      drawText(f"speed y: ${delegLandWorld.realWorld.speed.y}%.2f", 5, delegLandWorld.realWorld.height.toDouble - 4 * 30)
+//      drawText(f"angle: ${delegLandWorld.realWorld.angle}%.2f°", 5, delegLandWorld.realWorld.height.toDouble - 5 * 30)
+//      drawText(f"thrust: ${delegLandWorld.realWorld.thrust}", 5, delegLandWorld.realWorld.height.toDouble - 6 * 30)
+//      drawText(f"fuel: ${delegLandWorld.realWorld.fuel}", 5, delegLandWorld.realWorld.height.toDouble - 7 * 30)
 //
 //      if (mouseIn) {
 //        val deltaTransform = new AffineTransform(g2.getTransform())
 //        deltaTransform.invert()
 //        deltaTransform.concatenate(initialTransform)
 //        val coord = deltaTransform.transform(new Point2D.Double(mousePos.x, mousePos.y), null)
-//        drawText(f"x: ${coord.getX.round}", delegLandWorld.realWorld.width - 130, delegLandWorld.realWorld.height - 30)
-//        drawText(f"y: ${coord.getY.round}", delegLandWorld.realWorld.width - 130, delegLandWorld.realWorld.height - 2 * 30)
+//        drawText(f"x: ${coord.getX.round}", delegLandWorld.realWorld.width.toDouble - 130, delegLandWorld.realWorld.height.toDouble - 30)
+//        drawText(f"y: ${coord.getY.round}", delegLandWorld.realWorld.width.toDouble - 130, delegLandWorld.realWorld.height.toDouble - 2 * 30)
 //      }
 //    }
 //
@@ -221,7 +222,7 @@
 //
 //
 //
-//  }
+//}
 //
 //
 //class LanderWorldView(delagatingWorld: DelegatingLanderWorld) extends WorldView(delagatingWorld) {
@@ -231,6 +232,3 @@
 //
 //
 //}
-//
-//
-//
