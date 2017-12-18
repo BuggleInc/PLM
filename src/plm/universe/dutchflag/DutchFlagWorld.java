@@ -1,5 +1,7 @@
 package plm.universe.dutchflag;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -13,8 +15,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class DutchFlagWorld extends World {
@@ -128,6 +132,15 @@ public class DutchFlagWorld extends World {
 
 		this.moveCount = other.moveCount;
 		super.reset(world);		
+	}
+
+	@Override
+    public List<SVGOperation> draw() {
+		String svg = DutchFlagWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+		return list;
 	}
 
 	/** Ensures that the provided engine can be used to solve Pancake exercises */ 

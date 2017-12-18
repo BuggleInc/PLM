@@ -1,11 +1,10 @@
 package plm.universe.turtles;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Vector;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -20,7 +19,9 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
+import plm.universe.SVGOperation;
 import plm.universe.World;
+import plm.universe.hanoi.HanoiWorldView;
 
 public class TurtleWorld extends World {
 
@@ -74,7 +75,16 @@ public class TurtleWorld extends World {
 		
 		super.reset(w);		
 	}
-	
+
+	@Override
+	protected List<SVGOperation> draw() {
+		String svg = TurtleWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+		return list;
+	}
+
 	public void addSizeHint(int x1, int y1, int x2, int y2) {
 		addSizeHint(x1, y1, x2, y2, null);
 	}

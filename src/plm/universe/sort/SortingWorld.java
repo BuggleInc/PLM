@@ -1,21 +1,21 @@
 package plm.universe.sort;
 
-import java.util.Random;
-
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
-
-import org.xnap.commons.i18n.I18n;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import org.xnap.commons.i18n.I18n;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class SortingWorld extends World {
 	private int[] values;	// the values as they are sorted in the array
@@ -377,6 +377,15 @@ public class SortingWorld extends World {
 		}
 		return ""+value;
 	}
+	@Override
 
+	protected List<SVGOperation> draw() {
+		String svg = SortingWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+
+		return list;
+	}
 
 }

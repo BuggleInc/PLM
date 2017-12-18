@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -21,10 +22,12 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.module.scala.DefaultScalaModule;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.lesson.BlankExercise;
 import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
 import plm.universe.Operation;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class JSONUtils {
@@ -93,6 +96,7 @@ public class JSONUtils {
 
 	public static ObjectNode exerciseToJSON(Exercise exercise) {
 		return (ObjectNode) mapper.convertValue(exercise, JsonNode.class);
+
 	}
 
 	public static ObjectNode exerciseToJudgeJSON(Exercise exercise) {
@@ -124,7 +128,7 @@ public class JSONUtils {
         root.put("instructions", exercise.getMission(humanLang, progLang));
         root.put("help", exercise.getHelp(humanLang, progLang));
         root.put("code", code);
-        root.put("selectedWorldID", selectedWorldID);
+        root.put("selectedWorldID : ", selectedWorldID);
         root.put("toolbox", toolbox);
 
         return root;
@@ -151,6 +155,14 @@ public class JSONUtils {
 		}
 	}
 
+	/**
+	 *
+	 * @param world
+	 * @param bufferSize
+	 * @return String which be serialized in JSON for the JS
+	 *
+	 * Method that send SVGOperations to the student when he executes his code
+	 */
 	public static String operationsToJSON(World world, int bufferSize) {
 		int nbSteps = world.getSteps().size();
 
@@ -160,8 +172,10 @@ public class JSONUtils {
 			bufferSize = Math.min(nbSteps, bufferSize);
 		}
 
-		List<List<Operation>> steps = new ArrayList<List<Operation>>();
-        for(int i=0; i<bufferSize; i++) {
+		List<List<SVGOperation>> steps = new ArrayList<List<SVGOperation>>();
+
+
+		for(int i=0; i<bufferSize; i++) {
         	steps.add(world.getSteps().poll());
         }
 

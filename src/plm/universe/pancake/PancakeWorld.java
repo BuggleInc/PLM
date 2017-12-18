@@ -1,6 +1,10 @@
 package plm.universe.pancake;
 
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -14,8 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class PancakeWorld extends World {
@@ -144,7 +150,7 @@ public class PancakeWorld extends World {
 		this.moveCount = other.moveCount;
 		super.reset(world);
 	}
-	
+
 	@JsonProperty("pancakeStack")
 	public Pancake[] getStack() {
 		return pancakeStack;
@@ -306,6 +312,15 @@ public class PancakeWorld extends World {
 	@JsonIgnore
 	public boolean isBurnedPancake() {
 		return burnedWorld;
+	}
+
+	@Override
+    public List<SVGOperation> draw() {
+		String svg = PancakeWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+		return list;
 	}
 }
 

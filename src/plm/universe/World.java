@@ -1,9 +1,6 @@
 package plm.universe;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -33,10 +30,15 @@ public abstract class World  {
 
 	protected List<Entity> entities = new ArrayList<Entity>();
 
-	private ConcurrentLinkedDeque<List<Operation>> steps = new ConcurrentLinkedDeque<List<Operation>>();
+	/**
+	 * Create a List for each world which will contain SVGOperations
+	 * The SVGOperations will contain different drawsof the world.
+	 */
+	private ConcurrentLinkedDeque<List<SVGOperation>> steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
 
 	protected final FileUtils fileUtils;
 	private String name;
+
 
 	public World(FileUtils fileUtils, String name) {
 		this.fileUtils = fileUtils;
@@ -80,7 +82,7 @@ public abstract class World  {
 	 * @param initialWorld
 	 */
 	public void reset(World initialWorld) {
-		steps = new ConcurrentLinkedDeque<List<Operation>>();
+		steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
 		entities = new ArrayList<Entity>();
 		for (Entity oldEntity : initialWorld.entities) {
 			try {
@@ -114,55 +116,72 @@ public abstract class World  {
 
 	/** Run all entities of the world, until their natural end (or somebody from outside kill them on timeout) */
 	@SuppressWarnings("deprecation")
-	public CompletableFuture<Void> runEntities(final ProgrammingLanguage progLang,  
-			final ExecutionProgress progress, final Locale locale, long timeoutMilli) {
-		
+	public CompletableFuture<Void> runEntities(final ProgrammingLanguage progLang,
+		final ExecutionProgress progress, final Locale locale, long timeoutMilli) {
+
+
 		return CompletableFuture.runAsync(() -> {
-			List<EntityRunner> allRunners = new ArrayList<EntityRunner>();  
-			long startTime = System.currentTimeMillis();
+			Logger.info("Starting exercise"+ this.getName());
+				List<EntityRunner> allRunners = new ArrayList<EntityRunner>();
+				long startTime = System.currentTimeMillis();
 
-			// Start all entities, each in one thread
-			for (final Entity entity : getEntities()) {
-				EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
+				//Draw The initial version of the world
+				steps.add(this.draw());
 
-				// So that we can still stop it from the maestro Thread, even if an infinite loop occurs
-				runner.setPriority(Thread.MIN_PRIORITY);
-				runner.start();
-				allRunners.add(runner);
-			}
+				// Start all entities, each in one thread
+				for (final Entity entity : getEntities()) {
+					EntityRunner runner = new EntityRunner(entity, progress, progLang, locale);
 
-			// Run all entities, step after step. 
-			// Kill everyone as soon as the timeout occurs  
-			List<EntityRunner> trash = new ArrayList<EntityRunner>();  
-			boolean timeout = false;
-			while (!timeout && !allRunners.isEmpty()) {
-				for (EntityRunner runner : allRunners) {
-					runner.entity.allowOneStep();
+					// So that we can still stop it from the maestro Thread, even if an infinite loop occurs
+					runner.setPriority(Thread.MIN_PRIORITY);
+					runner.start();
+					allRunners.add(runner);
+				}
 
-					long now = System.currentTimeMillis();
-					long elapsed = now-startTime;
-					if (runner.entity.waitStepEnd(timeoutMilli - elapsed) == false) {
-						timeout = true;
-						Logger.error("TIMEOUT after "+(System.currentTimeMillis()-startTime));
-						break; // Don't run the other entities once the timeout fires
+				// Run all entities, step after step.
+				// Kill everyone as soon as the timeout occurs
+				List<EntityRunner> trash = new ArrayList<EntityRunner>();
+				boolean timeout = false;
+				while (!timeout && !allRunners.isEmpty()) {
+					for (EntityRunner runner : allRunners) {
+						runner.entity.allowOneStep();
+
+						long now = System.currentTimeMillis();
+						long elapsed = now - startTime;
+						if (runner.entity.waitStepEnd(timeoutMilli - elapsed) == false) {
+							timeout = true;
+							Logger.error("TIMEOUT after " + (System.currentTimeMillis() - startTime) + " " + this.getName());
+
+							int totalsize = 0;
+							for (List<SVGOperation> l :steps){
+								for(SVGOperation s : l)
+									totalsize += s.getOperation().length();
+							}
+							Logger.info("Nombre d'étapes : " + steps.size() + " taille total texte : " + totalsize + " Monde : " + this.getName());
+							break; // Don't run the other entities once the timeout fires
+						}
+						if (!runner.isExecuting())
+							trash.add(runner);
 					}
-					if (!runner.isExecuting())
-						trash.add(runner);
+
+					/*Here, generate a frame of the world*/
+					//Logger.info(this.draw().get(0).getOperation());
+					steps.add(this.draw());
+
+					for (EntityRunner dead : trash)
+						allRunners.remove(dead);
+					if (timeout) {
+						for (EntityRunner runner : allRunners)
+							runner.stop();
+						progress.setTimeoutError();
+					}
 				}
 
-				/* HERE, we should generate a frame of the world */
-
-				for (EntityRunner dead : trash)
-					allRunners.remove(dead);
-				if (timeout) {
-					for (EntityRunner runner : allRunners) 
-						runner.stop();
-					progress.setTimeoutError();
-				}
-			}
-			//Logger.info("Done with exercise "+getName());
+			Logger.info("Done with exercise "+getName());
 		});
 	}
+
+	protected abstract List<SVGOperation> draw();
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();
@@ -230,7 +249,7 @@ public abstract class World  {
 		return this.equals(standard);
 	}
 
-	@Override
+    @Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -314,16 +333,22 @@ public abstract class World  {
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);
 
-	public ConcurrentLinkedDeque<List<Operation>> getSteps() {
+	public ConcurrentLinkedDeque<List<SVGOperation>> getSteps() {
 		return steps;
 	}
 
-	public void setSteps(ConcurrentLinkedDeque<List<Operation>> steps) {
+	public void setSteps(ConcurrentLinkedDeque<List<SVGOperation>> steps) {
 		this.steps = steps;
 	}
 
-	public void addStep(List<Operation> operations) {
-		steps.add(operations);
+	public void addStep(List<SVGOperation> operations) {
+		//Logger.info("addStep : ");
+		if(operations != null && steps != null) {
+			steps.add(operations);
+		} else {
+			Logger.error("Steps ou Opertions NULL");
+			Logger.info(this.getName());
+		}
 	}
 
 	@JsonIgnore

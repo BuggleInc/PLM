@@ -59,7 +59,7 @@ public class BaseballEntity extends Entity {
 	 */
 	public void move(int base, int position) {
 		((BaseballWorld) this.world).move(base,position);
-		addOperation(new MoveOperation(base, position));
+		//addOperation(new MoveOperation(base, position));
 		stepUI();
 	}
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 
 import java.io.BufferedWriter;
 import java.util.*;
@@ -30,6 +31,8 @@ public abstract class Entity extends Observable {
     private List<Operation> operations = new ArrayList<Operation>();
     Semaphore stepBegin = new Semaphore(0);
     Semaphore stepEnd = new Semaphore(0);
+
+
 
     public Entity() {
     }
@@ -112,12 +115,17 @@ public abstract class Entity extends Observable {
      * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().
      */
     protected void stepUI() {
-        if (operations.size() > 0) {
-            world.addStep(operations);
-            operations = new ArrayList<Operation>();
-        }
+        /*
+        We don't need this code anymore because we don't send Operations anymore to the JS
+        Only SVG Operations will be used
+         */
+//        if (operations.size() > 0) {
+//            world.addStep(operations);
+//            operations = new ArrayList<Operation>();
+//        }
+
         fireStackListener();
-        //Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
+//      Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
         if (inited) {
             stepEnd.release();
             stepBegin.acquireUninterruptibly();
@@ -219,7 +227,7 @@ public abstract class Entity extends Observable {
         return operations;
     }
 
-    public void addOperation(Operation operation) {
-        operations.add(operation);
-    }
+//    public void addOperation(Operation operation) {
+//        operations.add(operation);
+//    }
 }

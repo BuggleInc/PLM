@@ -1,6 +1,11 @@
 package plm.universe.hanoi;
 
-import java.awt.Color;
+import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
@@ -16,6 +21,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
 
 public class HanoiWorld extends World {
@@ -81,7 +87,17 @@ public class HanoiWorld extends World {
 		moveCount = other.moveCount;
 		super.reset(w);		
 	}
-	
+
+	@Override
+    public List<SVGOperation> draw() {
+
+		String svg = HanoiWorldView.draw(this, 400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation(svg);
+		list.add(operation);
+		return list;
+	}
+
 	@Override
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
@@ -228,6 +244,8 @@ public class HanoiWorld extends World {
 	}
 	
 	/* END HIDDEN */
+
+
 
 }
 /* END TEMPLATE */

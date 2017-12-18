@@ -1,5 +1,9 @@
 package plm.universe.bat;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -12,7 +16,9 @@ import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
+import plm.universe.SVGOperation;
 import plm.universe.World;
+import plm.universe.bugglequest.BuggleWorldView;
 
 public class BatWorld extends World {
 
@@ -45,6 +51,19 @@ public class BatWorld extends World {
 			tests.add(t.copy());
 		super.reset(anotherWorld);		
 	}
+
+
+	protected List<SVGOperation> draw() {
+
+			String svg = BatWorldView.draw(this,200,200);
+			List<SVGOperation> list = new ArrayList<SVGOperation>();
+			SVGOperation operation = new SVGOperation(svg);
+			list.add(operation);
+
+			return list;
+		}
+
+
 	@Override
 	public boolean equals(Object o){
 		if (!(o instanceof BatWorld)) {

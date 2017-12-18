@@ -35,7 +35,7 @@ public class DutchFlagEntity extends Entity {
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);
-		addOperation(new DutchFlagSwap(from,to));
+		//addOperation(new DutchFlagSwap(from,to));
 		stepUI();
 	}
 

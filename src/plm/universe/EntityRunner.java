@@ -3,6 +3,7 @@ package plm.universe;
 import java.util.Locale;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 
 class EntityRunner extends Thread {
@@ -23,7 +24,6 @@ class EntityRunner extends Thread {
 	}
 	public void run() {
 		this.entity.stepBegin.acquireUninterruptibly();
-		//Logger.info("(entity) really start");
 		progLang.runEntity(entity, progress, locale);
 		//Logger.info("Entity "+entity.getName()+"@"+entity.getWorld().getName()+" in "+progLang+" terminating.");
 		this.executing = false;

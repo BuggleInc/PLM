@@ -1,10 +1,10 @@
 package plm.universe.bugglequest;
 
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,19 +20,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
 import plm.core.utils.InvalidColorNameException;
-import plm.universe.BrokenWorldFileException;
-import plm.universe.Direction;
-import plm.universe.Entity;
-import plm.universe.GridWorld;
-import plm.universe.GridWorldCell;
-import plm.universe.World;
+import plm.universe.*;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class BuggleWorld extends GridWorld {
+
+	protected  int sizeX = super.sizeX;
+	protected  int sizeY=super.sizeY;
 
 	@JsonCreator
 	public BuggleWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
@@ -67,6 +66,19 @@ public class BuggleWorld extends GridWorld {
 
 		super.reset(initialWorld);
 	}
+
+
+	protected List<SVGOperation> draw() {
+
+		String svg = BuggleWorldView.draw(this,400,400);
+		List<SVGOperation> list = new ArrayList<SVGOperation>();
+		SVGOperation operation = new SVGOperation();
+		operation.setOperation(svg);
+		list.add(operation);
+
+		return list;
+	}
+
 	@Override
 	public void setWidth(int w) {
 		super.setWidth(w);
@@ -349,6 +361,7 @@ public class BuggleWorld extends GridWorld {
 		result = PRIME * result + Arrays.hashCode(cells);
 		return result;
 	}
+
 	public World ignoreDirectionDifference() {
 		for (Entity e: getEntities())
 			((AbstractBuggle)e).ignoreDirectionDifference();

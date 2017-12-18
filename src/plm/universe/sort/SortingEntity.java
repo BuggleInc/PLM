@@ -22,15 +22,15 @@ public class SortingEntity extends Entity {
 	public void copy(int from,int to) {
 		SortingWorld sortingWorld = (SortingWorld) this.world;
 		sortingWorld.copy(from,to);
-		addOperation(new CopyOperation(to, from));
-		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		//addOperation(new CopyOperation(to, from));
+		//addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 	}
 
 	public int getValue(int i) {
 		SortingWorld sortingWorld = (SortingWorld) this.world;
-		addOperation(new GetValueOperation(i));
-		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		//addOperation(new GetValueOperation(i));
+		//addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 		return sortingWorld.getValue(i);
 	}
@@ -41,13 +41,13 @@ public class SortingEntity extends Entity {
 
 	public boolean isSmaller(int i, int j) {
 		SortingWorld sortingWorld = (SortingWorld) this.world;
-		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		//addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		return sortingWorld.isSmaller(i,j);
 	}
 
 	public boolean isSmallerThan(int i, int val) {
 		SortingWorld sortingWorld = (SortingWorld) this.world;
-		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		//addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		return sortingWorld.isSmallerThan(i,val);
 	}
 
@@ -58,16 +58,16 @@ public class SortingEntity extends Entity {
 	public void setValue(int i,int val) {
 		SortingWorld sortingWorld = (SortingWorld) this.world;
 		sortingWorld.setValue(i,val);
-		addOperation(new SetValOperation(val, i));
-		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		//addOperation(new SetValOperation(val, i));
+		//addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 	}
 
 	public void swap(int i, int j) {
 		SortingWorld sortingWorld = (SortingWorld) this.world;
 		sortingWorld.swap(j,i);
-		addOperation(new SwapOperation(i, j));
-		addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
+		//addOperation(new SwapOperation(i, j));
+		//addOperation(new CountOperation(sortingWorld.getReadCount(), sortingWorld.getWriteCount()));
 		stepUI();
 	}
 
