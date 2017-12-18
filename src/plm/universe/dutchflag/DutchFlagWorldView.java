@@ -28,7 +28,6 @@ import java.io.StringWriter;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
 import plm.core.utils.FileUtils;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
 

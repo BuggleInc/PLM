@@ -2,7 +2,6 @@ package plm.universe.turtles;
 
 import plm.core.log.Logger;
 import plm.universe.Entity;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
 import plm.universe.turtles.Turtle;

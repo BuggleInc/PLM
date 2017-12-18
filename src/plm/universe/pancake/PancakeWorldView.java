@@ -15,7 +15,6 @@ import java.awt.geom.Rectangle2D;
 import java.io.StringWriter;
 
 
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
 import plm.universe.hanoi.HanoiWorld;

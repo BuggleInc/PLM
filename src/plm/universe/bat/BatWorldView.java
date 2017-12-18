@@ -10,7 +10,6 @@ import java.util.List;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
 

@@ -2,9 +2,7 @@ package plm.universe.sort;
 
 
 import plm.universe.Operation;
-import plm.universe.SvgGenerator;
 import plm.universe.WorldView;
-import plm.universe.hanoi.HanoiWorld;
 import plm.universe.sort.operations.CopyOperation;
 import plm.universe.sort.operations.GetValueOperation;
 import plm.universe.sort.operations.SetValOperation;

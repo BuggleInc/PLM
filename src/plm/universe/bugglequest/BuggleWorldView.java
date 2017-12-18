@@ -21,7 +21,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import plm.universe.Entity;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 
 import plm.universe.WorldView;
