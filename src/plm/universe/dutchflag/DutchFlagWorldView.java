@@ -1,7 +1,6 @@
 package plm.universe.dutchflag;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,26 +9,14 @@ import java.awt.Shape;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DragGestureEvent;
-import java.awt.dnd.DragGestureListener;
-import java.awt.dnd.DragSource;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetDragEvent;
-import java.awt.dnd.DropTargetDropEvent;
-import java.awt.dnd.DropTargetEvent;
-import java.awt.dnd.DropTargetListener;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
-import java.io.StringWriter;
 
 
 //import plm.core.model.Game;
 //import plm.core.ui.WorldView;
 //import plm.universe.EntityControlPanel;
-import plm.core.utils.FileUtils;
-import plm.universe.SvgGenerator;
-import plm.universe.World;
+import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.WorldView;
 
 
@@ -117,7 +104,7 @@ public class DutchFlagWorldView extends WorldView {
      */
     public static String draw(DutchFlagWorld dutchFlagWorld, int width, int height) {
         // Ask the test to render into the SVG Graphics2D implementation.
-        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
         paintComponent(svgGenerator, dutchFlagWorld,width,height);
 

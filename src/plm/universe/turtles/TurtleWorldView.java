@@ -1,21 +1,14 @@
 package plm.universe.turtles;
 
-import plm.core.log.Logger;
+import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.Entity;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
-import plm.universe.turtles.Turtle;
-import plm.universe.turtles.TurtleWorld;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.RenderableImage;
-import java.io.StringWriter;
-import java.util.Iterator;
 
 public class TurtleWorldView extends WorldView {
 
@@ -103,7 +96,7 @@ public class TurtleWorldView extends WorldView {
     public static String draw(TurtleWorld turtleWorld, int width, int height) {
 
         // Ask the test to render into the SVG Graphics2D implementation.
-                org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+                SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
                 paintComponent(svgGenerator, turtleWorld,width,height);
 
