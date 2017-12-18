@@ -1,21 +1,13 @@
 package plm.universe.turtles;
 
-import plm.core.log.Logger;
 import plm.universe.Entity;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
-import plm.universe.turtles.Turtle;
-import plm.universe.turtles.TurtleWorld;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.RenderableImage;
-import java.io.StringWriter;
-import java.util.Iterator;
 
 public class TurtleWorldView extends WorldView {
 

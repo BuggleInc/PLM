@@ -1,10 +1,7 @@
 package plm.universe.hanoi;
 
 
-import plm.core.utils.FileUtils;
-import plm.universe.SvgGenerator;
 import plm.universe.WorldView;
-import plm.universe.bugglequest.BuggleWorld;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -12,10 +9,6 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.util.Vector;
-
-import static plm.universe.bugglequest.BuggleWorldView.paintComponent;
 
 public class HanoiWorldView extends WorldView {
 

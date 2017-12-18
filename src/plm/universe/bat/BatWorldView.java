@@ -5,12 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
-import java.io.StringWriter;
 import java.util.List;
 
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.Logger;
-import plm.universe.SvgGenerator;
 import plm.universe.World;
 import plm.universe.WorldView;
 
