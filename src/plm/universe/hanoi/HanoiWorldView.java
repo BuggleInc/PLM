@@ -1,10 +1,9 @@
 package plm.universe.hanoi;
 
 
-import plm.core.utils.FileUtils;
-import plm.universe.SvgGenerator;
+
+import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.WorldView;
-import plm.universe.bugglequest.BuggleWorld;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -12,10 +11,6 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.util.Vector;
-
-import static plm.universe.bugglequest.BuggleWorldView.paintComponent;
 
 public class HanoiWorldView extends WorldView {
 
@@ -105,7 +100,7 @@ public class HanoiWorldView extends WorldView {
      */
     public static String draw(HanoiWorld hanoiWorld, int width, int height){
         // Ask the test to render into the SVG Graphics2D implementation.
-        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
         paintComponent(svgGenerator, hanoiWorld,width,height);
 

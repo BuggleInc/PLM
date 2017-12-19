@@ -1,9 +1,6 @@
 package plm.universe.baseball;
 
-
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
-import plm.universe.SvgGenerator;
+import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.World;
 import plm.universe.WorldView;
 import plm.universe.turtles.ResourcesCache;
@@ -15,7 +12,6 @@ import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import java.io.StringWriter;
 import java.util.*;
 
 
@@ -564,15 +560,12 @@ public class BaseBallWorldView extends WorldView {
      */
     protected static String draw(BaseballWorld baseballWorld, int width, int height){
         // Ask the test to render into the SVG Graphics2D implementation.
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(SvgGenerator.document);
+
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
+
         paintComponent(svgGenerator, baseballWorld,width,height);
-        StringWriter writer = new StringWriter();
-        try {
-            svgGenerator.stream(writer);
-        } catch (SVGGraphics2DIOException e) {
-            e.printStackTrace();
-        }
-        String str = writer.getBuffer().toString();
+
+        String str = svgGenerator.getSVGElement();
         return str;
 
     }
