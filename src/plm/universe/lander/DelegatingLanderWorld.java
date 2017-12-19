@@ -62,21 +62,35 @@ public class DelegatingLanderWorld extends World {
 
   @Override
   protected java.util.List<SVGOperation> draw() {
-    String svg = LanderWorldView.draw(this, 400,400);
+//    String svg = LanderWorldView.draw(this, 400,400);
     java.util.List<SVGOperation> list = new ArrayList<SVGOperation>();
-    SVGOperation operation = new SVGOperation(svg);
-    list.add(operation);
+//    SVGOperation operation = new SVGOperation(svg);
+//    list.add(operation);
+<<<<<<< HEAD
+//
+//    PrintWriter writer = null;
+//    try {
+//      writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+//    } catch (FileNotFoundException e) {
+//      e.printStackTrace();
+//    } catch (UnsupportedEncodingException e) {
+//      e.printStackTrace();
+//    }
+//    writer.write(svg);
+//    writer.close();
+=======
 
-    PrintWriter writer = null;
-    try {
-      writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
-    }
-    writer.write(svg);
-    writer.close();
+//    PrintWriter writer = null;
+//     try {
+//       writer = new PrintWriter(this.getName()+".svg", "UTF-8");
+//     } catch (FileNotFoundException e) {
+//       e.printStackTrace();
+//     } catch (UnsupportedEncodingException e) {
+//       e.printStackTrace();
+//     }
+//     writer.write(svg);
+//     writer.close();
+>>>>>>> 6a4139d430f483d4067d7543e6c5da93a22f2449
 
     return list;
   }

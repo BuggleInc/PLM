@@ -1,7 +1,4 @@
 package plm.universe.bugglequest;
-import org.jfree.graphics2d.svg.SVGUtils;
-import plm.core.log.Logger;
-import plm.universe.GridWorld;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,28 +6,12 @@ import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
-
-import org.jfree.*;
 
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
+import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.Entity;
-import plm.universe.SvgGenerator;
-import plm.universe.World;
 
 import plm.universe.WorldView;
-import plm.universe.baseball.BaseballWorld;
-import plm.universe.bugglequest.AbstractBuggle;
-import plm.universe.bugglequest.BuggleWorld;
-import plm.universe.bugglequest.BuggleWorldCell;
-
-import static plm.universe.bugglequest.BuggleWorld.*;
 
 public class BuggleWorldView  extends WorldView {
 
@@ -332,7 +313,7 @@ public class BuggleWorldView  extends WorldView {
     public static String draw(BuggleWorld buggleWorld, int width, int height){
         // Ask the test to render into the SVG Graphics2D implementation.
 
-        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
         paintComponent(svgGenerator, buggleWorld,width,height);
 
