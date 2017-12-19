@@ -47,9 +47,9 @@ public class BatWorld extends World {
 	public void reset(World w) {
 		BatWorld anotherWorld = (BatWorld) w;
 		this.tests = new Vector<BatTest>();
-		for (BatTest t:anotherWorld.tests) 
+		for (BatTest t:anotherWorld.tests)
 			tests.add(t.copy());
-		super.reset(anotherWorld);		
+		super.reset(anotherWorld);
 	}
 
 

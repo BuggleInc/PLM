@@ -27,7 +27,7 @@ class Lessons(
 //    "sort.baseball", // Les dessins ne sont pas corrects pour le moment
     "sort.pancake", //OK
 //    "recursion.cons", //Les dessins sont correct mais ne sont pas gérés cotés JS
-//    "recursion.logo", //Les dessins turtle ne sont pas correct
+//    "recursion.logo" //Les dessins turtle ne sont pas correct
     "recursion.hanoi"
 //       "bat.string1"
     )
