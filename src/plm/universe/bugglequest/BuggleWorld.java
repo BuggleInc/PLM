@@ -30,8 +30,8 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class BuggleWorld extends GridWorld {
 
-	protected  int sizeX = super.sizeX;
-	protected  int sizeY=super.sizeY;
+//	protected  int sizeX = super.sizeX;
+//	protected  int sizeY=super.sizeY;
 
 	@JsonCreator
 	public BuggleWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
@@ -48,6 +48,7 @@ public class BuggleWorld extends GridWorld {
 	 */
 	public BuggleWorld(BuggleWorld world2) {
 		super(world2);
+
 	}
 
 	/**
