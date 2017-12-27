@@ -7,7 +7,10 @@ import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
+import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import org.jfree.graphics2d.svg.SVGGraphics2D;
+
 import plm.universe.World;
 import plm.universe.WorldView;
 

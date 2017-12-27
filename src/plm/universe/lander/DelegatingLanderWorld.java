@@ -63,20 +63,9 @@ public class DelegatingLanderWorld extends World {
   @Override
   protected java.util.List<SVGOperation> draw() {
 //    String svg = LanderWorldView.draw(this, 400,400);
-    java.util.List<SVGOperation> list = new ArrayList<SVGOperation>();
+      ArrayList<SVGOperation> list = new ArrayList<SVGOperation>();
 //    SVGOperation operation = new SVGOperation(svg);
 //    list.add(operation);
-
-//    PrintWriter writer = null;
-//     try {
-//       writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-//     } catch (FileNotFoundException e) {
-//       e.printStackTrace();
-//     } catch (UnsupportedEncodingException e) {
-//       e.printStackTrace();
-//     }
-//     writer.write(svg);
-//     writer.close();
 
     return list;
   }
@@ -85,4 +74,3 @@ public class DelegatingLanderWorld extends World {
   public String toString() {
     return realWorld.toString();
   }
-}

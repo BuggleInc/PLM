@@ -24,7 +24,7 @@ class Lessons(
     "maze", //OK
 //    "turmites", //exercices timeOUT when drawing
 //    "turtleart", //turtle Draw are not correct
-//    "sort.baseball", // Draw are not correct
+    "sort.baseball", // Draw are not correct
     "sort.pancake", //OK
 //    "recursion.cons", //Correct draw but not handle in JS
 //    "recursion.logo", //turtle Draw are not correct

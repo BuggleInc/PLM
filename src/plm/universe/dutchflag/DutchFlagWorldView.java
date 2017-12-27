@@ -14,6 +14,11 @@ import java.io.IOException;
 
 import org.jfree.graphics2d.svg.SVGGraphics2D;
 
+//import plm.core.model.Game;
+//import plm.core.ui.WorldView;
+//import plm.universe.EntityControlPanel;
+import plm.core.utils.FileUtils;
+import plm.universe.World;
 import plm.universe.WorldView;
 
 
