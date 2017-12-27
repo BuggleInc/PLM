@@ -66,19 +66,6 @@ public class DelegatingLanderWorld extends World {
     java.util.List<SVGOperation> list = new ArrayList<SVGOperation>();
 //    SVGOperation operation = new SVGOperation(svg);
 //    list.add(operation);
-<<<<<<< HEAD
-//
-//    PrintWriter writer = null;
-//    try {
-//      writer = new PrintWriter(this.getName()+".svg", "UTF-8");
-//    } catch (FileNotFoundException e) {
-//      e.printStackTrace();
-//    } catch (UnsupportedEncodingException e) {
-//      e.printStackTrace();
-//    }
-//    writer.write(svg);
-//    writer.close();
-=======
 
 //    PrintWriter writer = null;
 //     try {
@@ -90,7 +77,6 @@ public class DelegatingLanderWorld extends World {
 //     }
 //     writer.write(svg);
 //     writer.close();
->>>>>>> 6a4139d430f483d4067d7543e6c5da93a22f2449
 
     return list;
   }
