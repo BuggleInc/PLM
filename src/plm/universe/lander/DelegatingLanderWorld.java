@@ -74,3 +74,4 @@ public class DelegatingLanderWorld extends World {
   public String toString() {
     return realWorld.toString();
   }
+}
