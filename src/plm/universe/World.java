@@ -370,6 +370,6 @@ public abstract class World  {
 	
 	@JsonIgnore
 	public ProgrammingLanguage getProgLang() {
-		return settings.getProgLang();
+		return settings==null ? null : settings.getProgLang();
 	}
 }

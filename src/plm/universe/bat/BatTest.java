@@ -176,20 +176,20 @@ public class BatTest {
 	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
 		if (o == null) {
-			if (pl instanceof LangScala)
-				sb.append("Nil");
-			else if (pl instanceof LangPython)
+			if (pl == null || pl instanceof LangPython)
 				sb.append("None");
+			else if (pl instanceof LangScala)
+				sb.append("Nil");
 			else
 				sb.append("null");
 			
 		} else if (o instanceof String[]) {
-			if (pl instanceof LangJava) {
+			if (pl == null || pl instanceof LangPython) { 
+				sb.append("[");
+			} else if (pl instanceof LangJava) {
 				sb.append("{");
 			} else if (pl instanceof LangScala) {
 				sb.append("Array(");
-			} else if (pl instanceof LangPython) { 
-				sb.append("[");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
@@ -200,12 +200,12 @@ public class BatTest {
 			}
 			
 			sb.deleteCharAt(sb.length()-1);
-			if (pl instanceof LangJava) {
+			if (pl == null || pl instanceof LangPython) { 
+				sb.append("]");
+			} else if (pl instanceof LangJava) {
 				sb.append("}");
 			} else if (pl instanceof LangScala) {
 				sb.append(")");
-			} else if (pl instanceof LangPython) { 
-				sb.append("]");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
@@ -213,12 +213,12 @@ public class BatTest {
 			if (o.getClass().equals(Vector.class))
 				o = changeToPrimitiveArray(o);
 			
-			if (pl instanceof LangJava) {
+			if (pl == null || pl instanceof LangPython) {
+				sb.append("[");
+			} else if (pl instanceof LangJava) {
 				sb.append("{");
 			} else if (pl instanceof LangScala) {
 				sb.append("Array(");
-			} else if (pl instanceof LangPython) { // Python
-				sb.append("[");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
@@ -240,25 +240,25 @@ public class BatTest {
 			} else {
 				throw new RuntimeException("Unhandled internal type (only Array<int> and Array<Integer> are handled so far)");
 			}
-			if (pl instanceof LangJava) {
+			if (pl == null || pl instanceof LangPython) { 
+				sb.append("]");
+			} else if (pl instanceof LangJava) {
 				sb.append("}");
 			} else if (pl instanceof LangScala) {
 				sb.append(")");
-			} else if (pl instanceof LangPython) { 
-				sb.append("]");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
 		} else if (o instanceof Boolean) {
 			Boolean b = (Boolean) o;
-			if (pl instanceof LangJava || pl instanceof LangScala) {
-				sb.append(b ? "true":"false");
-			} else if (pl instanceof LangPython) { 
+			if (pl == null || pl instanceof LangPython) { 
 				sb.append(b ? "True" : "False");
+			} else if (pl instanceof LangJava || pl instanceof LangScala) {
+				sb.append(b ? "true":"false");
 			} else {
 				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
-		} else if (o instanceof String && pl instanceof LangPython) {
+		} else if (o instanceof String && (pl == null || pl instanceof LangPython)) {
 			sb.append("\""+o+"\"");
 		} else if (o instanceof PyInstance) {
 			sb.append( ((PyInstance)o).__str__());
