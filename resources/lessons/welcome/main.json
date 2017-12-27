@@ -387,15 +387,6 @@
       },
       "id": "array.island.Island",
       "dependingLectures": []
-    },
-    {
-      "names": {
-        "en": "Lost in the Moria",
-        "pt": "Perdido em Moria",
-        "fr": "Perdu dans la Moria"
-      },
-      "id": "summative.moria.Moria",
-      "dependingLectures": []
     }
   ],
   "id": "welcome"
