@@ -8,18 +8,14 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Stroke;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.io.StringWriter;
-
 
 import plm.universe.World;
-import plm.universe.WorldView;
-import plm.universe.hanoi.HanoiWorld;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
+import org.jfree.graphics2d.svg.SVGGraphics2D;
+
+import plm.universe.WorldView;
 
 public class PancakeWorldView extends WorldView {
 
@@ -140,7 +136,7 @@ public class PancakeWorldView extends WorldView {
 	public static String draw(PancakeWorld pancakeWorld, int width, int height){
 		// Ask the test to render into the SVG Graphics2D implementation.
 
-		org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+		SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
 		paintComponent(svgGenerator, pancakeWorld,width,height);
 

@@ -1,5 +1,7 @@
 package plm.universe.baseball;
 
+import org.jfree.graphics2d.svg.SVGGraphics2D;
+
 import plm.universe.World;
 import plm.universe.WorldView;
 import plm.universe.turtles.ResourcesCache;
@@ -11,7 +13,6 @@ import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import java.io.StringWriter;
 import java.util.*;
 
 
@@ -544,7 +545,7 @@ public class BaseBallWorldView extends WorldView {
 
     public static String draw(BaseballWorld baseballWorld, int width, int height) {
         // Ask the test to render into the SVG Graphics2D implementation.
-        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
         paintComponent(svgGenerator, baseballWorld,width,height);
 

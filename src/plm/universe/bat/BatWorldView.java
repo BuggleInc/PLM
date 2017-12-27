@@ -5,11 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
-import java.io.StringWriter;
 import java.util.List;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
+import org.jfree.graphics2d.svg.SVGGraphics2D;
+
 import plm.universe.World;
 import plm.universe.WorldView;
 
@@ -80,7 +81,7 @@ public class BatWorldView extends WorldView {
 
         // Ask the test to render into the SVG Graphics2D implementation.
 
-        org.jfree.graphics2d.svg.SVGGraphics2D svgGenerator  = new org.jfree.graphics2d.svg.SVGGraphics2D(400,400);
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
         paintComponent(svgGenerator, batWorld,width,height);
 

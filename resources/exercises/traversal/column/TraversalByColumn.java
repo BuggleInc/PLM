@@ -1,4 +1,4 @@
-package traversal.column.traversalbycolumn;
+package traversal.column;
 
 import java.awt.Color;
 

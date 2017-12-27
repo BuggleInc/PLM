@@ -1,4 +1,4 @@
-package traversal.diagonal.traversaldiagonal;
+package traversal.diagonal;
 
 import java.awt.Color;
 
