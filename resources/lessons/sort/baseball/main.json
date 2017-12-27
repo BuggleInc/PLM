@@ -8,7 +8,30 @@
     },
     "id" : "sort.baseball.NaiveBaseball",
     "dependingLectures" : [ ]
-  }
-  ],
+  }, {
+    "names" : {
+      "en" : "Selection Baseball",
+      "pt" : "Selection Baseball",
+      "fr" : "Baseball par sélection"
+    },
+    "id" : "sort.baseball.SelectBaseball",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Insertion Baseball",
+      "pt" : "Insertion Baseball",
+      "fr" : "Baseball par insertion"
+    },
+    "id" : "sort.baseball.InsertBaseball",
+    "dependingLectures" : [ ]
+  }, {
+    "names" : {
+      "en" : "Bubble Baseball",
+      "pt" : "Bubble Baseball",
+      "fr" : "Baseball à bulle"
+    },
+    "id" : "sort.baseball.BubbleBaseball",
+    "dependingLectures" : [ ]
+  } ],
   "id" : "sort.baseball"
 }

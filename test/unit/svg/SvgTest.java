@@ -439,6 +439,7 @@ public class SvgTest {
 
             //Create a file for the SVG
             String svg = PancakeWorldView.draw(myWorld, 400, 400);
+            System.out.println("svg = " + svg);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -624,6 +625,8 @@ public class SvgTest {
 
             HanoiWorld myWorld = new HanoiWorld(new FileUtils(ClassLoader.getSystemClassLoader()), "Hanoi", slot10, new Vector<HanoiDisk>(), slot12, new Vector<HanoiDisk>());
             myWorld.draw();
+
+
 
             //Create a file for the SVG
             String svg = HanoiWorldView.draw(myWorld, 400, 400);

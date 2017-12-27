@@ -1,7 +1,7 @@
 package plm.universe;
 
 public abstract class WorldView {
-   protected  World world;
+   protected static World world;
 
     public WorldView(World world) {
         this.world = world;

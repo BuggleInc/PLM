@@ -184,24 +184,6 @@
           },
           "id": "methods.basics.MethodsDogHouse",
           "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Methodically drawing",
-            "pt": "desenhando metodicamente",
-            "fr": "Dessiner avec méthode"
-          },
-          "id": "methods.picture.PictureMono1",
-          "dependingLectures": []
-        },
-        {
-          "names": {
-            "en": "Methodically drawing (only bigger)",
-            "pt": "Desenhando metodicamente (apenas grande)",
-            "fr": "Dessiner avec méthode (en plus grand)"
-          },
-          "id": "methods.picture.PictureMono2",
-          "dependingLectures": []
         }
       ]
     },
@@ -259,7 +241,7 @@
           "id": "methods.picture.MethodsPicture",
           "dependingLectures": []
         },
-        {
+                {
           "names": {
             "en": "Another Colorful Pattern",
             "pt": "Outro padrão colorido",

@@ -10,6 +10,8 @@ import java.awt.geom.Rectangle2D;
 
 import org.jfree.graphics2d.svg.SVGGraphics2D;
 import plm.universe.Entity;
+import plm.universe.World;
+
 
 import plm.universe.WorldView;
 
@@ -81,8 +83,8 @@ public class BuggleWorldView  extends WorldView {
             g.setColor(Color.white);
             g.fillRect(padx,pady ,(buggleWorld.sizeX-1)*cellW,(buggleWorld.sizeY-1)*cellW);
         }
-        for (int x=0; x<buggleWorld.sizeX; x++) {
-            for (int y=0; y<buggleWorld.sizeY; y++) {
+        for (int x=0; x<buggleWorld.getWidth(); x++) {
+            for (int y=0; y<buggleWorld.getHeight(); y++) {
 
                 g.setColor(getCellColor(x, y,buggleWorld));
 
@@ -117,8 +119,8 @@ public class BuggleWorldView  extends WorldView {
 
         g.setColor(WALL_COLOR);
 
-        for (int x = 0; x < buggleWorld.sizeX; x++) {
-            for (int y = 0; y < buggleWorld.sizeY; y++) {
+        for (int x = 0; x < buggleWorld.getWidth(); x++) {
+            for (int y = 0; y < buggleWorld.getHeight(); y++) {
                 BuggleWorldCell cell = (BuggleWorldCell) buggleWorld.getCell(x, y);
 
                 if (cell.hasTopWall()) {
@@ -137,7 +139,7 @@ public class BuggleWorldView  extends WorldView {
         }
 
         // frontier walls (since the world is a torus)
-        for (int y = 0; y < buggleWorld.sizeY; y++) {
+        for (int y = 0; y < buggleWorld.getHeight(); y++) {
             if (((BuggleWorldCell) buggleWorld.getCell(0, y)).hasLeftWall()) {
                 g.drawLine(padx+buggleWorld.sizeX*cellW-1, pady+y*cellW, padx+buggleWorld.sizeX*cellW-1, pady+(y+1)*cellW);
                 g.drawLine(padx+buggleWorld.sizeX*cellW, pady+y*cellW, padx+buggleWorld.sizeX*cellW, pady+(y+1)*cellW);
@@ -145,7 +147,7 @@ public class BuggleWorldView  extends WorldView {
             }
         }
 
-        for (int x = 0; x < buggleWorld.sizeX; x++) {
+        for (int x = 0; x < buggleWorld.getWidth(); x++) {
             if (((BuggleWorldCell) buggleWorld.getCell(x, 0)).hasTopWall()) {
                 g.drawLine(padx+x*cellW, pady+buggleWorld.sizeY*cellW-1, padx+(x+1)*cellW, pady+buggleWorld.sizeY*cellW-1);
                 g.drawLine(padx+x*cellW, pady+buggleWorld.sizeY*cellW, padx+(x+1)*cellW, pady+buggleWorld.sizeY*cellW);

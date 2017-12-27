@@ -83,6 +83,7 @@ public abstract class World  {
 	 */
 	public void reset(World initialWorld) {
 		steps = new ConcurrentLinkedDeque<List<SVGOperation>>();
+		steps.add(initialWorld.draw());
 		entities = new ArrayList<Entity>();
 		for (Entity oldEntity : initialWorld.entities) {
 			try {
