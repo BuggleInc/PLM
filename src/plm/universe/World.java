@@ -121,7 +121,7 @@ public abstract class World  {
 
 
 		return CompletableFuture.runAsync(() -> {
-			Logger.info("Starting exercise"+ this.getName());
+			Logger.info("Starting world "+ this.getName());
 				List<EntityRunner> allRunners = new ArrayList<EntityRunner>();
 				long startTime = System.currentTimeMillis();
 
@@ -152,20 +152,13 @@ public abstract class World  {
 							timeout = true;
 							Logger.error("TIMEOUT after " + (System.currentTimeMillis() - startTime) + " " + this.getName());
 
-							int totalsize = 0;
-							for (List<SVGOperation> l :steps){
-								for(SVGOperation s : l)
-									totalsize += s.getOperation().length();
-							}
-							Logger.info("Nombre d'étapes : " + steps.size() + " taille total texte : " + totalsize + " Monde : " + this.getName());
 							break; // Don't run the other entities once the timeout fires
 						}
 						if (!runner.isExecuting())
 							trash.add(runner);
 					}
 
-					/*Here, generate a frame of the world*/
-					//Logger.info(this.draw().get(0).getOperation());
+					/* Generate a frame of the world */
 					steps.add(this.draw());
 
 					for (EntityRunner dead : trash)
@@ -177,7 +170,13 @@ public abstract class World  {
 					}
 				}
 
-			Logger.info("Done with exercise "+getName());
+				long now = System.currentTimeMillis();
+				int totalsize = 0;
+				for (List<SVGOperation> l :steps){
+					for(SVGOperation s : l)
+						totalsize += s.getOperation().length();
+				}
+				Logger.info("Done with world "+getName()+" in "+(now-startTime)+ "ms ("+steps.size()+" steps, "+(totalsize/1024)+"kb).");
 		});
 	}
 
