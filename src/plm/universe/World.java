@@ -122,7 +122,6 @@ public abstract class World  {
 
 
 		return CompletableFuture.runAsync(() -> {
-			Logger.info("Starting world "+ this.getName());
 				List<EntityRunner> allRunners = new ArrayList<EntityRunner>();
 				long startTime = System.currentTimeMillis();
 

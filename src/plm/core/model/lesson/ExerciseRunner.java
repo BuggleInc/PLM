@@ -108,7 +108,7 @@ public class ExerciseRunner {
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
 
-		//We initializes Execution progress so that doesn't crash when loading SVGOperation
+		// We initializes Execution progress to survive when the demo fails
 		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
 		exo.reset();

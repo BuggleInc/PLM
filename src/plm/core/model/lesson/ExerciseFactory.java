@@ -57,14 +57,13 @@ public class ExerciseFactory {
 	private void computeMissions(Exercise exo) {
 		String filename = exo.getId().replaceAll("\\.", "/");
 		for(Locale humanLanguage: humanLanguages) {
-			StringBuffer sb = null;
 			try {
-				sb = fileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				StringBuffer sb = fileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				String mission = tipsFactory.computeTips(exo, humanLanguage, sb.toString());
 				exo.addMission(humanLanguage.getLanguage(), mission);
 			}
 			catch (FileNotFoundException e) {
-				Logger.info("No mission found for: " + exo.getId());
+				Logger.info("No mission found in "+humanLanguage.getDisplayName()+" for: " + exo.getId());
 				exo.addMission(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
@@ -77,13 +76,12 @@ public class ExerciseFactory {
 		String baseName = exo.getInitialWorlds().get(0).getClass().getName();
 		String filename = baseName.replaceAll("\\.", "/");
 		for(Locale humanLanguage: humanLanguages) {
-			StringBuffer sb = null;
 			try {
-				sb = fileUtils.readContentAsText(filename, humanLanguage, "html", true);
+				StringBuffer sb = fileUtils.readContentAsText(filename, humanLanguage, "html", true);
 				exo.addHelp(humanLanguage.getLanguage(), sb.toString());
 			}
 			catch (FileNotFoundException e) {
-				Logger.info("No help found for: " + exo.getId());
+				Logger.info("No help found in "+humanLanguage.getDisplayName()+" for: " + exo.getId());
 				exo.addHelp(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
