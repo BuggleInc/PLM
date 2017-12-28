@@ -14,7 +14,7 @@ class Exercises(
     tipFactory: AbstractTipFactory,
     availableLocales: Traversable[Locale]) {
 
-  private val DEFAULT_PROGRAMMING_LANGUAGE: ProgrammingLanguage = programmingLanguages.defaultProgrammingLanguage()
+  private val DEFAULT_PROGRAMMING_LANGUAGE = programmingLanguages.defaultProgrammingLanguage()
   private val EN_LOCALE: Locale = new Locale("en")
 
   private val exerciseFactory: ExerciseFactory =
@@ -36,10 +36,10 @@ class Exercises(
   def getExercise(exerciseId: String): Option[Exercise] =
     exercises
       .get(exerciseId)
+      .map(ExerciseFactory.computeAnswer)
       .map(ExerciseFactory.cloneExercise)
 
   private def initExercise(exerciseId: String): Exercise = {
-    // Instantiate the exercise the old fashioned way
     val userSettings: UserSettings = new UserSettings(EN_LOCALE, DEFAULT_PROGRAMMING_LANGUAGE)
     val exercise: Exercise =
       Class

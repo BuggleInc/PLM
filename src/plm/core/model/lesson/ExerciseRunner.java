@@ -108,7 +108,6 @@ public class ExerciseRunner {
 
 	public void runDemo(Exercise exo, ProgrammingLanguage progLang) {
 
-		// We initializes Execution progress to survive when the demo fails
 		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
 		exo.reset();
@@ -124,10 +123,8 @@ public class ExerciseRunner {
 			e.printStackTrace();
 		}
 
-		if(lastResult.outcome != ExecutionProgress.outcomeKind.PASS){
-			Logger.error("Panic: the demo does not succeed in " + exo.getName());
-		}
-
+		if (lastResult.outcome != ExecutionProgress.outcomeKind.PASS)
+			Logger.error("Panic: the demo of "+exo.getName()+" does not succeed:" + lastResult.getMsg());
 	}
 
 	public void mutateEntities(Exercise exo, SourceFile sourceFile, ProgrammingLanguage progLang, StudentOrCorrection whatToCompile, ExecutionProgress progress) throws PLMCompilerException {

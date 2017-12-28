@@ -16,15 +16,15 @@ import java.util.Locale;
 public class ExerciseFactory {
 
 	private final FileUtils fileUtils;
-	private final ExerciseRunner exerciseRunner;
+	private static ExerciseRunner exerciseRunner;
 	private final ProgrammingLanguage[] programmingLanguages;
 	private final Locale[] humanLanguages;
 	private final TemplatedSourceFileFactory sourceFileFactory;
 	private final AbstractTipFactory tipsFactory;
 
-	public ExerciseFactory(FileUtils fileUtils, Locale locale, ExerciseRunner exerciseRunner, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages, AbstractTipFactory tipsFactory) {
+	public ExerciseFactory(FileUtils fileUtils, Locale locale, ExerciseRunner exerciseRunner_, ProgrammingLanguage[] programmingLanguages, Locale[] humanLanguages, AbstractTipFactory tipsFactory) {
 		this.fileUtils = fileUtils;
-		this.exerciseRunner = exerciseRunner;
+		exerciseRunner = exerciseRunner_;
 		this.programmingLanguages = programmingLanguages;
 		this.humanLanguages = humanLanguages;
 		this.sourceFileFactory = new TemplatedSourceFileFactory(fileUtils, locale);
@@ -39,7 +39,7 @@ public class ExerciseFactory {
 		computeSupportedProgrammingLanguages(exo);
 		computeMissions(exo);
 		computeHelps(exo);
-		computeAnswer(exo, progLang);
+		//computeAnswer(exo); This is done lazily, on demand
 	}
 
 	private void computeSupportedProgrammingLanguages(Exercise exo) {
@@ -90,18 +90,22 @@ public class ExerciseFactory {
 		}
 	}
 
-	public void computeAnswer(Exercise exo, ProgrammingLanguage progLang) {
-		if(exo.isProgLangSupported(progLang)) {
-			SourceFile sf = exo.getDefaultSourceFile(progLang);
+	public static Exercise computeAnswer(Exercise exo) {
+		if (exo.getAnswerWorlds().get(0).getSteps().size()>1) // We already have the answers
+			return exo;
+		
+		if(exo.isProgLangSupported(ProgrammingLanguage.defaultProgLang)) {
+			SourceFile sf = exo.getDefaultSourceFile(ProgrammingLanguage.defaultProgLang);
 			try {
-				exerciseRunner.mutateEntities(exo, sf, progLang, StudentOrCorrection.CORRECTION, null);
+				exerciseRunner.mutateEntities(exo, sf, ProgrammingLanguage.defaultProgLang, StudentOrCorrection.CORRECTION, null);
 			} catch (PLMCompilerException e) {
 				e.printStackTrace();
 			}
-			exerciseRunner.runDemo(exo, progLang);
+			exerciseRunner.runDemo(exo, ProgrammingLanguage.defaultProgLang);
 		} else {
 			// TODO: Handle case if progLang is not supported
-			Logger.error("Exercise "+exo.getId()+" does not support "+progLang.getLang()+". Exercise left uninitialized.");
+			Logger.error("Exercise "+exo.getId()+" does not support "+ProgrammingLanguage.defaultProgLang.getLang()+". Exercise left uninitialized.");
 		}
+		return exo;
 	}
 }
