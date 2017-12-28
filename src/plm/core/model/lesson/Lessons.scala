@@ -8,28 +8,23 @@ import plm.core.log.Logger
 
 import scala.io.{Codec, Source}
 
-/**
- * @author matthieu
- */
-
 class Lessons(
     classLoader: ClassLoader,
     availableLanguageCodes: Iterable[String]) {
-  // WARNING, keep ChooseLessonDialog.lessons synchronized
   private val lessonIds: Seq[String] =
     Seq(
-    "welcome", //OK without many exercices
-    "sort.basic", //OK without performance test with 150 elements
-    "sort.dutchflag", //OK
+    "welcome",
+    "sort.basic",
+    "sort.dutchflag",
     "maze", //OK
-//    "turmites", //exercices timeOUT when drawing
-//    "turtleart", //turtle Draw are not correct
-    "sort.baseball", // Draw are not correct
-    "sort.pancake", //OK
-//    "recursion.cons", //Correct draw but not handle in JS
-//    "recursion.logo", //turtle Draw are not correct
+//    "turmites", //exercises timeout when drawing
+    "turtleart", //turtle is not drawn 
+    "sort.baseball", 
+    "sort.pancake",
+    "recursion.cons", // Drawing seems correct, but it's not handled in JS
+    "recursion.logo", //turtle is not drawn
     "recursion.hanoi"
-//       "bat.string1"
+//    "bat.string1"
     )
 
   private val lessons: Map[String, Lesson] = {
