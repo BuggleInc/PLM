@@ -116,7 +116,8 @@ public class ExecutionProgress {
 				I18nManager.getI18n(locale).tr("Your program must stop by itself to successfully pass the exercise.\n");
 	}
 
-	public String getMsg(Locale locale) {
+	/** Returns a human-readable representation of the outcome */
+	public String getMsg() {
 		String res = "";
 		if(outcome == ExecutionProgress.outcomeKind.PASS) {
 			res = I18nManager.getI18n(locale).tr("Congratulations, you passed this exercise.({0} tests passed)", passedTests);
