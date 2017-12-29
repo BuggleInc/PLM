@@ -1,5 +1,8 @@
 package unit.exercise.universe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
@@ -10,8 +13,6 @@ import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
 import plm.universe.World;
 
-import java.util.List;
-
 public class ExampleWorld extends World {
 
 	private boolean objective;
@@ -21,8 +22,8 @@ public class ExampleWorld extends World {
 		objective = false;
 	}
 
-	public ExampleWorld(FileUtils fileUtils, ExampleWorld w2) {
-		this(fileUtils, w2.getName());
+	public ExampleWorld(ExampleWorld w2) {
+		super(w2);
 		reset(w2);
 	}
 
@@ -36,7 +37,7 @@ public class ExampleWorld extends World {
 	@Override
 	protected List<SVGOperation> draw() {
 
-		return null;
+		return new ArrayList<SVGOperation>();
 	}
 
 	@Override
