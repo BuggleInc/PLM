@@ -32,7 +32,7 @@
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
     <property name="src.dir" value="${base.dir}/src"/>
-	<property name="test.dir" value="${base.dir}/test"/>
+    <property name="test.dir" value="${base.dir}/test"/>
     <property name="site.dir" value="${base.dir}/site"/>
     <property name="classes.dir" value="${site.dir}/bin"/>
     <property name="lessons.dir" value="${base.dir}/resources/lessons"/>
@@ -64,8 +64,8 @@
     <target name="compile" description="compile all source files">
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
-        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true"/>
-        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${test.dir}" includeantruntime="false" fork="true"/>
+        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true" debug="on" />
+        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${test.dir}" includeantruntime="false" fork="true" debug="on" />
     </target>
 
     <!-- <target name="dist" depends="clean, i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">  -->
@@ -207,35 +207,32 @@
     </target>
 
     <target name="all-tests" depends="compile" description="launch all tests">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
+        <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="suite.AllTests"/>
-	  </junit>
+	    <formatter type="plain" usefile="false" /> <!-- to screen -->
+            <test name="suite.AllTests"/>
+	</junit>
     </target>
 
     <target name="unit-tests" depends="compile" description="launch all unit tests">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
+	<junit showoutput="false" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="suite.UnitTests"/>
-	  </junit>
+	    <formatter type="plain" usefile="false" /> <!-- to screen -->
+            <test name="suite.UnitTests"/>
+	</junit>
     </target>
 
-<!--
 	<target name="integration-tests" depends="compile" description="launch all integration tests">
 	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
-        <test name="plm.test.IntegrationTests"/>
+                <test name="plm.test.IntegrationTests"/>
 	  </junit>
     </target>
 
-	  This requires Java7 to work, but I'd prefer to support for Java6
-      a bit longer if possible. Disable this for now, sorry Franck.
-
-
-
+<!--
     <property name="mac.dir" value="${lib.dir}/mac-resources"/>
     <property name="fr.lproj.dir" value="${mac.dir}/fr.lproj"/>
     <property name="mac.app.name" value="JavaLearningMachine"/>
@@ -259,6 +256,6 @@
 
 
 	<target name="Mac.app" depends="dist, build-Mac.app-bundle">
-	</target>
+ 	</target>
 -->
 </project>
