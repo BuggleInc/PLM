@@ -46,6 +46,9 @@
                     <include name="**/*.jar"/>
             </fileset>
     </path>
+    <path id="test.class.path">
+            <pathelement path="${test.dir}"/>
+    </path>
 
     <target name="clean" description="clean project">
         <delete dir="${site.dir}/lib"/>
@@ -216,9 +219,9 @@
     </target>
 
     <target name="unit-tests" depends="compile" description="launch all unit tests">
-	<junit showoutput="false" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
-		<classpath refid="project.class.path"/>
-		<formatter type="plain"/>
+	<junit showoutput="true" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
+	    <classpath refid="project.class.path"/>
+	    <classpath refid="test.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
             <test name="suite.UnitTests"/>
 	</junit>
