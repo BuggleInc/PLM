@@ -22,9 +22,9 @@ public class ExerciseRunner {
 
 	/*
 	timeoutMilli correspond to the time used by the runEntities method in World.
-	It crashed if SVGOperation are not drawn in 20 seconds.
+	It fails if SVGOperation are not drawn in 5 seconds.
 	 */
-	final long timeoutMilli = 20000; // 5sec
+	final long timeoutMilli = 5000; // 5sec
 
 	public ExerciseRunner(Locale locale) {
 		this.locale = locale;
