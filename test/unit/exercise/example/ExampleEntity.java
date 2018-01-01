@@ -8,6 +8,7 @@ public class ExampleEntity extends AbstractExampleEntity {
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
+		System.out.println("Demo is running");
 		setObjective(true);
 		/* END SOLUTION */
 	}

@@ -211,8 +211,7 @@
 
     <target name="all-tests" depends="compile" description="launch all tests">
         <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
-		<classpath refid="project.class.path"/>
-		<formatter type="plain"/>
+            <classpath refid="project.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
             <test name="suite.AllTests"/>
 	</junit>
@@ -227,12 +226,12 @@
 	</junit>
     </target>
 
-	<target name="integration-tests" depends="compile" description="launch all integration tests">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
-		<classpath refid="project.class.path"/>
-		<formatter type="plain"/>
-                <test name="plm.test.IntegrationTests"/>
-	  </junit>
+    <target name="integration-tests" depends="compile" description="launch all integration tests">
+	<junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
+            <classpath refid="project.class.path"/>
+	    <formatter type="plain" usefile="false" /> <!-- to screen -->
+            <test name="plm.test.IntegrationTests"/>
+        </junit>
     </target>
 
 <!--

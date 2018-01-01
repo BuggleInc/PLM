@@ -90,7 +90,7 @@ public class LangJava extends JVMCompiledLang {
                 }
             }
 		} catch (PLMCompilerException e) {
-			lastResult.setCompilationError(e.getDiagnostics());
+			lastResult.setCompilationError(e.getDiagnostics()+"\n"+source);
 			throw e;
 		}
 	}

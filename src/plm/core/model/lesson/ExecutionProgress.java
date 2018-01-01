@@ -130,4 +130,7 @@ public class ExecutionProgress {
 		}
 		return res;
 	}
+	public String toString() {
+		return getMsg();
+	}
 }

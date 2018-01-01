@@ -13,11 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import plm.core.lang.LangBlockly;
-import plm.core.lang.LangJava;
-import plm.core.lang.LangPython;
-import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguages;
+import plm.core.log.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
@@ -30,27 +28,27 @@ import unit.exercise.examplerunner.ExampleRunner;
 @RunWith(Parameterized.class)
 public class ExerciseRunnerTest {
 
-	private static LangJava java = new LangJava(ClassLoader.getSystemClassLoader(), true);
-	private static LangScala scala = new LangScala(ClassLoader.getSystemClassLoader(), true);
-	private static LangPython python = new LangPython(true);
-	private static LangBlockly blockly = new LangBlockly(true);
-	private static ProgrammingLanguage[] programmingLanguages =  { java, scala, python, blockly };
+	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
+	private static ProgrammingLanguage java = programmingLanguages.getProgrammingLanguage("java");
+	private static ProgrammingLanguage scala = programmingLanguages.getProgrammingLanguage("scala");
+	private static ProgrammingLanguage python = programmingLanguages.getProgrammingLanguage("python");
+	private static ProgrammingLanguage blockly = programmingLanguages.getProgrammingLanguage("blocky");
 
 	private ExerciseFactory exerciseFactory;
 	private Exercise exo;
 	private Locale locale = new Locale("en");
 	private ExerciseRunner exerciseRunner;
 	private Locale[] humanLanguages = { locale };
-	private String rootDirectory = "test";
 	private ProgrammingLanguage progLang;
 
 	@Parameterized.Parameters
 	public static Collection<Object[]> programmingLanguages() {
+		Logger.info("Starting");
 		return Arrays.asList(new Object[][] {
 	         { java },
-	         { scala },
+	         { scala }/*,
 	         { python },
-	         { blockly }
+	         { blockly }*/
 	      });
 	}
 
@@ -63,7 +61,7 @@ public class ExerciseRunnerTest {
 		exerciseRunner = new ExerciseRunner(locale);
 		exerciseFactory = new ExerciseFactory(
 				new FileUtils(ClassLoader.getSystemClassLoader()),
-				locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
+				locale, exerciseRunner, programmingLanguages.programmingLanguages(), humanLanguages, new DefaultTipFactory());
 		exo = new ExampleRunner(new FileUtils(ClassLoader.getSystemClassLoader()));
 		exerciseFactory.initializeExercise(exo, java);
 	}
@@ -77,6 +75,9 @@ public class ExerciseRunnerTest {
 
 	@Test
 	public void testRunSyntaxErrorCodeShouldReturnCompile() {
+		Logger.info("---------------------------------------------------");
+		Logger.info("#### Test testRunSyntaxErrorCodeShouldReturnCompile");
+		
 		String code = 
 				"public void run() {"
 				+ "setObjective(true)"
@@ -97,21 +98,28 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.COMPILE;
 		outcomeKind actual = result.outcome;
 
+		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be COMPILATION", expected, actual);
 	}
 
 	@Test
-	public void testRunExecutionErrorCodeShouldReturnFail() {
-		String code = 
+	public void testRunExceptionRaisingCodeShouldReturnFail() {
+		Logger.info("---------------------------------------------------");
+		Logger.info("#### Test testRunExceptionRaisingCodeShouldReturnFail in "+progLang);
+
+		String code = "";
+		if (progLang == java) {
+			code =
 				"public void run() {"
 				+ "String s = null;"
 				+ "int length = s.length();"
 				+ "}";
-		if(progLang == scala) {
+		}
+		else if(progLang == scala) {
 			code = 
 					"def run(): Unit = {"
-					+ "var s: String = null;"
-					+ "var length: Int = s.length;"
+					+ "val s: String = null;"
+					+ "val i = s.length;"
 					+ "}";
 		}
 		else if(progLang == python || progLang == blockly) {
@@ -120,16 +128,22 @@ public class ExerciseRunnerTest {
 					+ "  truc = None\n"
 					+ "  print truc.toto";
 		}
+		else 
+			throw new RuntimeException("unknown proglang: "+progLang);
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.FAIL;
 		outcomeKind actual = result.outcome;
 
+		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be FAIL", expected, actual);
 	}
 
 	@Test
 	public void testRunWrongCodeShouldReturnFail() {
+		Logger.info("---------------------------------------------------");
+		Logger.info("#### Test testRunWrongCodeShouldReturnFail in "+progLang);
+
 		String code = 
 				"public void run() {"
 				+ "setObjective(false);"
@@ -150,16 +164,23 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.FAIL;
 		outcomeKind actual = result.outcome;
 
+		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be FAIL", expected, actual);
 	}
 
 	@Test
 	public void testRunInfiniteLoopCodeShouldReturnTimeout() {
-		String code = 
+		Logger.info("---------------------------------------------------");
+		Logger.info("#### Test testRunInfiniteLoopCodeShouldReturnTimeout in "+progLang);
+
+		String code = "";
+		if (progLang == java) {
+			code =
 				"public void run() {"
 				+ "while(true) {}"
 				+ "}";
-		if(progLang == scala) {
+		}
+		else if(progLang == scala) {
 			code = 
 					"def run(): Unit = {"
 					+ "while(true) {};"
@@ -171,18 +192,24 @@ public class ExerciseRunnerTest {
 					+ "  i = 0\n"
 					+ "  while(True):\n"
 					+ "    i = i + 1";
-		}
+		}		
+		else 
+			throw new RuntimeException("unknown proglang: "+progLang);
 
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.TIMEOUT;
 		outcomeKind actual = result.outcome;
 
+		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be TIMEOUT", expected, actual);
 	}
 
 	@Test
 	public void testRunSolutionCodeShouldReturnPass() {
+		Logger.info("---------------------------------------------------");
+		Logger.info("#### Test testRunSolutionCodeShouldReturnPass in "+progLang);
+		
 		String code = 
 				"public void run() {"
 				+ "setObjective(true);"
@@ -203,6 +230,7 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.PASS;
 		outcomeKind actual = result.outcome;
 
+		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be PASS", expected, actual);
 	}
 }

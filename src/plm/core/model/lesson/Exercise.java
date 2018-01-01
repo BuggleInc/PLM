@@ -11,6 +11,7 @@ import java.util.Vector;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.universe.World;
@@ -120,8 +121,8 @@ public abstract class Exercise  {
 
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
-		//lastResult = new ExecutionProgress(getGame().getProgrammingLanguage());
-
+		ExerciseFactory.computeAnswer(this);
+		
 		for (int i=0; i<initialWorld.size(); i++) 
 			currentWorld.get(i).reset(initialWorld.get(i));
 	}

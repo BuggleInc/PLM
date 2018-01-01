@@ -110,7 +110,6 @@ public class ExerciseRunner {
 
 		final ExecutionProgress lastResult = new ExecutionProgress(progLang, locale);
 
-		exo.reset();
 		CompletableFuture<?>[] worldRunners =
 					exo.getWorlds(WorldKind.ANSWER)
 							.stream()

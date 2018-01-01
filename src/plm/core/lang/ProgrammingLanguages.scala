@@ -1,8 +1,5 @@
 package plm.core.lang
 
-/**
- * @author matthieu
- */
 class ProgrammingLanguages(classLoader: ClassLoader) {
   val java: ProgrammingLanguage = new LangJava(classLoader, false)
   val python: ProgrammingLanguage = new LangPython(false)
