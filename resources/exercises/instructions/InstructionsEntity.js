@@ -1,4 +1,4 @@
-# BEGIN TEMPLATE 
+// BEGIN TEMPLATE 
 function side(){
     forward()
     forward()
@@ -15,5 +15,5 @@ right()
 
 brushUp()
 forward()
-# END TEMPLATE
+// END TEMPLATE
 
