@@ -1,4 +1,4 @@
-package unit.exercise;
+package plm.test.unit.exercise;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -25,8 +25,8 @@ import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
-import unit.exercise.example.Example;
-import unit.exercise.universe.ExampleWorld;
+import plm.universe.unittest.ExampleWorld;
+import unittest.Example;
 
 public class ExerciseFactoryTest {
 	private LangJava java = new LangJava(ClassLoader.getSystemClassLoader(), true);

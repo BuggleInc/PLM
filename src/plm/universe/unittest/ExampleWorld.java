@@ -1,4 +1,4 @@
-package unit.exercise.universe;
+package plm.universe.unittest;
 
 import java.util.ArrayList;
 import java.util.List;

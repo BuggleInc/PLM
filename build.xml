@@ -32,7 +32,6 @@
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
     <property name="src.dir" value="${base.dir}/src"/>
-    <property name="test.dir" value="${base.dir}/test"/>
     <property name="site.dir" value="${base.dir}/site"/>
     <property name="classes.dir" value="${site.dir}/bin"/>
     <property name="lessons.dir" value="${base.dir}/resources/lessons"/>
@@ -45,9 +44,6 @@
             <fileset dir="${lib.dir}">
                     <include name="**/*.jar"/>
             </fileset>
-    </path>
-    <path id="test.class.path">
-            <pathelement path="${test.dir}"/>
     </path>
 
     <target name="clean" description="clean project">
@@ -68,7 +64,6 @@
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
         <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true" debug="on" />
-        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${test.dir}" includeantruntime="false" fork="true" debug="on" />
     </target>
 
     <!-- <target name="dist" depends="clean, i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">  -->
@@ -220,7 +215,6 @@
     <target name="unit-tests" depends="compile" description="launch all unit tests">
 	<junit showoutput="true" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
 	    <classpath refid="project.class.path"/>
-	    <classpath refid="test.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
             <test name="suite.UnitTests"/>
 	</junit>

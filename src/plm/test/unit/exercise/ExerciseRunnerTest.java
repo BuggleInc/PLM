@@ -1,4 +1,4 @@
-package unit.exercise;
+package plm.test.unit.exercise;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +23,7 @@ import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
 import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.utils.FileUtils;
-import unit.exercise.examplerunner.ExampleRunner;
+import plm.test.unit.exercise.examplerunner.ExampleRunner;
 
 @RunWith(Parameterized.class)
 public class ExerciseRunnerTest {

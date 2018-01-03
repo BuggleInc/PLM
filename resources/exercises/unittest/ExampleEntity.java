@@ -1,6 +1,6 @@
-package unit.exercise.example;
+package unittest;
 
-import unit.exercise.universe.AbstractExampleEntity;
+import plm.universe.unittest.AbstractExampleEntity;
 
 public class ExampleEntity extends AbstractExampleEntity {
 

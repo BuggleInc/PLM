@@ -1,4 +1,4 @@
-package unit.git;
+package plm.test.unit.git;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 

@@ -1,6 +1,5 @@
 package lessons.lander.universe
 
-import plm.core.ui.WorldView
 import plm.universe.World
 import java.awt.Graphics
 import java.awt.Graphics2D
@@ -22,6 +21,9 @@ import java.awt.event.MouseMotionAdapter
 import java.awt.event.MouseEvent
 import java.awt.event.MouseAdapter
 import java.awt.geom.Point2D
+import plm.universe.WorldView
+import plm.universe.lander.LanderWorld
+import plm.universe.lander.DelegatingLanderWorld
 
 object LanderWorldView {
   private val LANDER_SHAPE = List(

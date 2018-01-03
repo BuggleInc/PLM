@@ -1,4 +1,4 @@
-package unit.svg;
+package plm.test.unit.svg;
 
 import org.junit.Test;
 import plm.core.utils.FileUtils;

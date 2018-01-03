@@ -1,10 +1,10 @@
-package unit.exercise.example;
+package unittest;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
-import unit.exercise.universe.ExampleWorld;
+import plm.universe.unittest.ExampleWorld;
 
 public class Example extends ExerciseTemplated {
 
