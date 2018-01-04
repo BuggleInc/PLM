@@ -2,6 +2,7 @@ package plm.test.unit.exercise;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -50,7 +51,6 @@ public class ExerciseFactoryTest {
 
 	@Before
 	public void setUp() {
-		exo = exoBook.getExercise("environment.Environment").get();
 	}
 
 	@After
@@ -60,6 +60,8 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldAddSupportedProgLang() {
+		exo = exoBook.getExercise("environment.Environment").get();
+
 		ProgrammingLanguage[] expectedSupportedProgLangs = { javaLang, pythonLang };
 
 		for(ProgrammingLanguage expectedSupportedProgLang : expectedSupportedProgLangs) {
@@ -70,21 +72,18 @@ public class ExerciseFactoryTest {
 	}
 
 	@Test
-	public void testInitializeExerciseShouldNotAddNonSupportedProgLangByExercise() {
-		boolean actual = exo.isProgLangSupported(scalaLang);
-
-		assertFalse("Should not mark as supported progLang not supported by the exercise", actual);
-	}
-
-	@Test
-	public void testInitializeExerciseShouldNotAddNonSupportedProgLangByFactory() {
+	public void testInitializeExerciseShouldNotAddNonSupportedProgLang() {
+		exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
+		
 		boolean actual = exo.isProgLangSupported(blocklyLang);
 
-		assertFalse("Should not mark as supported progLang not supported by the factory", actual);
+		assertFalse("Should not mark as supported progLang that are not supported by the exercise", actual);
 	}
 
 	@Test
 	public void testInitializeExerciseShouldGenerateDefaultSourceFilesForEachSupportedProgLang() {
+		exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
+		
 		Set<ProgrammingLanguage> supportedProgLangs = exo.getProgLanguages();
 
 		for(ProgrammingLanguage supportedProgLang : supportedProgLangs) {
@@ -96,7 +95,9 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldNotGenerateDefaultSourceFilesForNonSupportedProgLangs() {
-		ProgrammingLanguage[] nonSupportedProgLangs = { scalaLang, blocklyLang };
+		exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
+
+		ProgrammingLanguage[] nonSupportedProgLangs = { blocklyLang };
 
 		for(ProgrammingLanguage nonSupportedProgLang : nonSupportedProgLangs) {
 			boolean actual = exo.getDefaultSourceFile(nonSupportedProgLang) == null;
@@ -107,44 +108,45 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldGenerateMissionsForEachSupportedHumanLang() {
+		exo = exoBook.getExercise("environment.Environment").get();
+
 		String filename = exo.getBaseName().replaceAll("\\.", "/");
 		for(Locale humanLanguage : humanLanguages) {
-			String expected = "";
-			StringBuffer sb = null;
-			try {
-				sb = new FileUtils(ClassLoader.getSystemClassLoader()).readContentAsText(filename, humanLanguage, "html", true);
-				expected = sb.toString();
-			} catch (IOException ex) {}
-
 			String actual = exo.getMission(humanLanguage, javaLang);
-			assertEquals("Should have retrieve the same content", expected, actual);
+			assertNotEquals("Should have retrieve the same content", "", actual);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldNotUpdateInitialWorlds() {
+		exo = exoBook.getExercise("environment.Environment").get();
+
 		for(World w : exo.getWorlds(WorldKind.INITIAL)) {
 			BuggleWorld initialWorld = (BuggleWorld) w;
 			int y = ((AbstractBuggle)initialWorld.getEntity(0)).getY();
-			assertEquals("Y of buggle in initial world should be 5", y, 5);
+			assertEquals("Y of buggle in initial world should be 3", y, 3);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldNotUpdateCurrentWorlds() {
+		exo = exoBook.getExercise("environment.Environment").get();
+		
 		for(World w : exo.getWorlds(WorldKind.CURRENT)) {
 			BuggleWorld currentWorld = (BuggleWorld) w;
 			int y = ((AbstractBuggle)currentWorld.getEntity(0)).getY();
-			assertEquals("Y of buggle in current world should be 5", y, 5);
+			assertEquals("Y of buggle in current world should be 3", y, 3);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldInitializeAnswerWorlds() {
+		exo = exoBook.getExercise("environment.Environment").get();
+		
 		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
 			BuggleWorld currentWorld = (BuggleWorld) w;
 			int y = ((AbstractBuggle)currentWorld.getEntity(0)).getY();
-			assertEquals("Y of buggle in current world should be 6", y, 6);
+			assertEquals("Y of buggle in answer world should be 2", y, 2);
 		}
 	}
 }
