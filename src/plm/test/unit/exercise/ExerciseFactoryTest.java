@@ -31,7 +31,7 @@ public class ExerciseFactoryTest {
 	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
 	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
 	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");
-	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blocky");
+	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blockly");
 
 	private Locale locale = new Locale("en");
 	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
@@ -43,71 +43,73 @@ public class ExerciseFactoryTest {
 			 new DefaultTipFactory(), humanLanguages
 			);
 
-	private Exercise exo;
-
 	public ExerciseFactoryTest() {
 	}
 
-	@Before
-	public void setUp() {
+	@Test
+	public void testInitializationValidity() {
+		assertNotEquals("java != scala", javaLang, scalaLang);
+		assertNotEquals("java != python", javaLang, pythonLang);
+		assertNotEquals("java != blockly", javaLang, blocklyLang);
+		
+		assertNotEquals("scala != python", scalaLang, pythonLang);
+		assertNotEquals("scala != blockly", scalaLang, blocklyLang);
+		
+		assertNotEquals("python != blockly", pythonLang, blocklyLang);
 	}
-
-	@After
-	public void tearDown() {
-		exo = null;
-	}
-
+	
 	@Test
 	public void testInitializeExerciseShouldAddSupportedProgLang() {
-		exo = exoBook.getExercise("environment.Environment").get();
+		Exercise exo = exoBook.getExercise("environment.Environment").get();
 
 		ProgrammingLanguage[] expectedSupportedProgLangs = { javaLang, pythonLang };
 
 		for(ProgrammingLanguage expectedSupportedProgLang : expectedSupportedProgLangs) {
 			boolean actual = exo.isProgLangSupported(expectedSupportedProgLang);
 
-			assertTrue("Should mark as supported "+expectedSupportedProgLang.getLang(), actual);
+			assertTrue("Should mark as supported "+expectedSupportedProgLang.getLang()+" in exo "+exo.getName(), actual);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldNotAddNonSupportedProgLang() {
-		exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
+		Exercise exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
 		
 		boolean actual = exo.isProgLangSupported(blocklyLang);
 
-		assertFalse("Should not mark as supported progLang that are not supported by the exercise", actual);
+		assertFalse("Should not mark as supported progLang that are not supported by the exercise "+exo.getName() , actual);
 	}
 
 	@Test
 	public void testInitializeExerciseShouldGenerateDefaultSourceFilesForEachSupportedProgLang() {
-		exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
+		Exercise exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
 		
 		Set<ProgrammingLanguage> supportedProgLangs = exo.getProgLanguages();
 
 		for(ProgrammingLanguage supportedProgLang : supportedProgLangs) {
 			boolean actual = exo.getDefaultSourceFile(supportedProgLang) instanceof SourceFile;
 
-			assertTrue("Should have generated a source file for each supported progLang", actual);
+			assertTrue("Should have generated a source file for the supported progLang "+supportedProgLang+" in exo "+exo.getName(), actual);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldNotGenerateDefaultSourceFilesForNonSupportedProgLangs() {
-		exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
+		Exercise exo = exoBook.getExercise("bat.bool1.MonkeyTrouble").get();
 
 		ProgrammingLanguage[] nonSupportedProgLangs = { blocklyLang };
 
 		for(ProgrammingLanguage nonSupportedProgLang : nonSupportedProgLangs) {
 			boolean actual = exo.getDefaultSourceFile(nonSupportedProgLang) == null;
 
-			assertTrue("Should have not generated a source file for non supported progLang", actual);
+			assertTrue("Should have not generated a source file for non supported progLang "+nonSupportedProgLang.getLang()+" in exo "+exo.getName(), 
+					actual);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldGenerateMissionsForEachSupportedHumanLang() {
-		exo = exoBook.getExercise("environment.Environment").get();
+		Exercise exo = exoBook.getExercise("environment.Environment").get();
 
 		String filename = exo.getBaseName().replaceAll("\\.", "/");
 		for(Locale humanLanguage : humanLanguages) {
@@ -118,7 +120,7 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldNotUpdateInitialWorlds() {
-		exo = exoBook.getExercise("environment.Environment").get();
+		Exercise exo = exoBook.getExercise("environment.Environment").get();
 
 		for(World w : exo.getWorlds(WorldKind.INITIAL)) {
 			BuggleWorld initialWorld = (BuggleWorld) w;
@@ -129,7 +131,7 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldNotUpdateCurrentWorlds() {
-		exo = exoBook.getExercise("environment.Environment").get();
+		Exercise exo = exoBook.getExercise("environment.Environment").get();
 		
 		for(World w : exo.getWorlds(WorldKind.CURRENT)) {
 			BuggleWorld currentWorld = (BuggleWorld) w;
@@ -140,7 +142,7 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldInitializeAnswerWorlds() {
-		exo = exoBook.getExercise("environment.Environment").get();
+		Exercise exo = exoBook.getExercise("environment.Environment").get();
 		
 		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
 			BuggleWorld currentWorld = (BuggleWorld) w;
