@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Set;
 
@@ -27,12 +28,14 @@ import plm.universe.bugglequest.BuggleWorld;
 
 public class ExerciseFactoryTest {
 	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
-	private static ProgrammingLanguage java = programmingLanguages.getProgrammingLanguage("java");
-	private static ProgrammingLanguage scala = programmingLanguages.getProgrammingLanguage("scala");
-	private static ProgrammingLanguage python = programmingLanguages.getProgrammingLanguage("python");
-	private static ProgrammingLanguage blockly = programmingLanguages.getProgrammingLanguage("blocky");
+	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
+	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
+	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");
+	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blocky");
 
-	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(),null),
+	private scala.collection.Iterable<String> langs = 
+			  scala.collection.JavaConversions.iterableAsScalaIterable(Arrays.asList(new String[] { "en" }));
+	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(), langs),
 			new FileUtils(ClassLoader.getSystemClassLoader()),
 			programmingLanguages,
 			 new DefaultTipFactory(), null
@@ -57,7 +60,7 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldAddSupportedProgLang() {
-		ProgrammingLanguage[] expectedSupportedProgLangs = { java, python };
+		ProgrammingLanguage[] expectedSupportedProgLangs = { javaLang, pythonLang };
 
 		for(ProgrammingLanguage expectedSupportedProgLang : expectedSupportedProgLangs) {
 			boolean actual = exo.isProgLangSupported(expectedSupportedProgLang);
@@ -68,14 +71,14 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldNotAddNonSupportedProgLangByExercise() {
-		boolean actual = exo.isProgLangSupported(scala);
+		boolean actual = exo.isProgLangSupported(scalaLang);
 
 		assertFalse("Should not mark as supported progLang not supported by the exercise", actual);
 	}
 
 	@Test
 	public void testInitializeExerciseShouldNotAddNonSupportedProgLangByFactory() {
-		boolean actual = exo.isProgLangSupported(blockly);
+		boolean actual = exo.isProgLangSupported(blocklyLang);
 
 		assertFalse("Should not mark as supported progLang not supported by the factory", actual);
 	}
@@ -93,7 +96,7 @@ public class ExerciseFactoryTest {
 
 	@Test
 	public void testInitializeExerciseShouldNotGenerateDefaultSourceFilesForNonSupportedProgLangs() {
-		ProgrammingLanguage[] nonSupportedProgLangs = { scala, blockly };
+		ProgrammingLanguage[] nonSupportedProgLangs = { scalaLang, blocklyLang };
 
 		for(ProgrammingLanguage nonSupportedProgLang : nonSupportedProgLangs) {
 			boolean actual = exo.getDefaultSourceFile(nonSupportedProgLang) == null;
@@ -113,7 +116,7 @@ public class ExerciseFactoryTest {
 				expected = sb.toString();
 			} catch (IOException ex) {}
 
-			String actual = exo.getMission(humanLanguage, java);
+			String actual = exo.getMission(humanLanguage, javaLang);
 			assertEquals("Should have retrieve the same content", expected, actual);
 		}
 	}
