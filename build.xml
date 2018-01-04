@@ -47,7 +47,7 @@
     </path>
     <path id="resources.class.path">
             <pathelement path="${lessons.dir}"/>
-            <pathelement path="${exercices.dir}"/>
+            <pathelement path="${exercises.dir}"/>
     </path>
 
     <target name="clean" description="clean project">
@@ -68,6 +68,7 @@
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
         <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true" debug="on" />
+        <javac encoding="UTF-8" classpathref="project.class.path" destdir="${classes.dir}" srcdir="${exercises.dir}" includeantruntime="false" fork="true" debug="on" />
     </target>
 
     <!-- <target name="dist" depends="clean, i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">  -->
@@ -208,21 +209,16 @@
       <delete dir="${site.dir}/po"/>
     </target>
 
-    <target name="all-tests" depends="compile" description="launch all tests">
-        <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
-            <classpath refid="project.class.path"/>
-            <classpath refid="resources.class.path"/>
-	    <formatter type="plain" usefile="false" /> <!-- to screen -->
-            <test name="suite.AllTests"/>
-	</junit>
-    </target>
+    <target name="all-tests" depends="unit-tests, integration-tests" description="launch all tests" />
 
     <target name="unit-tests" depends="compile" description="launch all unit tests">
 	<junit showoutput="true" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
 	    <classpath refid="project.class.path"/>
             <classpath refid="resources.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
-            <test name="plm.test.suite.UnitTests"/>
+            <test name="plm.test.unit.exercise.ExerciseFactoryTest"/>
+            <test name="plm.test.unit.exercise.ExerciseRunnerTest"/>
+            <test name="plm.test.unit.git.GitUtilsTest"/>
 	</junit>
     </target>
 
