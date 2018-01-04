@@ -30,12 +30,14 @@ import plm.core.utils.FileUtils;
 public class ExerciseRunnerTest {
 
 	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
-	private static ProgrammingLanguage java = programmingLanguages.getProgrammingLanguage("java");
-	private static ProgrammingLanguage scala = programmingLanguages.getProgrammingLanguage("scala");
-	private static ProgrammingLanguage python = programmingLanguages.getProgrammingLanguage("python");
-	private static ProgrammingLanguage blockly = programmingLanguages.getProgrammingLanguage("blocky");
+	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
+	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
+	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");
+	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blocky");
 
-	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(),null),
+	private scala.collection.Iterable<String> langs = 
+	  scala.collection.JavaConversions.iterableAsScalaIterable(Arrays.asList(new String[] { "en" }));
+	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(), langs),
 			new FileUtils(ClassLoader.getSystemClassLoader()),
 			programmingLanguages,
 			 new DefaultTipFactory(), null
@@ -51,8 +53,8 @@ public class ExerciseRunnerTest {
 	public static Collection<Object[]> programmingLanguages() {
 		Logger.info("Starting");
 		return Arrays.asList(new Object[][] {
-	         { java },
-	         { scala }/*,
+	         { javaLang },
+	         { scalaLang }/*,
 	         { python },
 	         { blockly }*/
 	      });
@@ -69,7 +71,7 @@ public class ExerciseRunnerTest {
 				new FileUtils(ClassLoader.getSystemClassLoader()),
 				locale, exerciseRunner, programmingLanguages.programmingLanguages(), humanLanguages, new DefaultTipFactory());
 		exo = exoBook.getExercise("environment.Environment").get();
-		exerciseFactory.initializeExercise(exo, java);
+		exerciseFactory.initializeExercise(exo, javaLang);
 	}
 
 	@After
@@ -88,13 +90,13 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(true)"
 				+ "}";
-		if(progLang == scala) {
+		if(progLang == scalaLang) {
 			code = 
 					"def run(): Unit {"
 					+ "setObjective(true)"
 					+ "}";
 		}
-		else if(progLang == python || progLang == blockly) {
+		else if(progLang == pythonLang || progLang == blocklyLang) {
 			code =
 					"def run():\n"
 					+ "  setObjective(true)";
@@ -114,21 +116,21 @@ public class ExerciseRunnerTest {
 		Logger.info("#### Test testRunExceptionRaisingCodeShouldReturnFail in "+progLang);
 
 		String code = "";
-		if (progLang == java) {
+		if (progLang == javaLang) {
 			code =
 				"public void run() {"
 				+ "String s = null;"
 				+ "int length = s.length();"
 				+ "}";
 		}
-		else if(progLang == scala) {
+		else if(progLang == scalaLang) {
 			code = 
 					"def run(): Unit = {"
 					+ "val s: String = null;"
 					+ "val i = s.length;"
 					+ "}";
 		}
-		else if(progLang == python || progLang == blockly) {
+		else if(progLang == pythonLang || progLang == blocklyLang) {
 			code =
 					"def run():\n"
 					+ "  truc = None\n"
@@ -154,13 +156,13 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(false);"
 				+ "}";
-		if(progLang == scala) {
+		if(progLang == scalaLang) {
 			code = 
 					"def run(): Unit = {"
 					+ "setObjective(false)"
 					+ "}";
 		}
-		else if(progLang == python || progLang == blockly) {
+		else if(progLang == pythonLang || progLang == blocklyLang) {
 			code =
 					"def run():\n"
 					+ "  setObjective(False)";
@@ -180,19 +182,19 @@ public class ExerciseRunnerTest {
 		Logger.info("#### Test testRunInfiniteLoopCodeShouldReturnTimeout in "+progLang);
 
 		String code = "";
-		if (progLang == java) {
+		if (progLang == javaLang) {
 			code =
 				"public void run() {"
 				+ "while(true) {}"
 				+ "}";
 		}
-		else if(progLang == scala) {
+		else if(progLang == scalaLang) {
 			code = 
 					"def run(): Unit = {"
 					+ "while(true) {};"
 					+ "}";
 		}
-		else if(progLang == python || progLang == blockly) {
+		else if(progLang == pythonLang || progLang == blocklyLang) {
 			code =
 					"def run():\n"
 					+ "  i = 0\n"
@@ -220,13 +222,13 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(true);"
 				+ "}";
-		if(progLang == scala) {
+		if(progLang == scalaLang) {
 			code = 
 					"def run(): Unit = {"
 					+ "setObjective(true)"
 					+ "}";
 		}
-		else if(progLang == python || progLang == blockly) {
+		else if(progLang == pythonLang || progLang == blocklyLang) {
 			code =
 					"def run():\n"
 					+ "  setObjective(True)";
