@@ -32,7 +32,7 @@ public class ExerciseRunnerTest {
 	private Locale locale = new Locale("en");
 	private Locale[] humanLanguages = { locale };
 	
-	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
+	private static final ProgrammingLanguages programmingLanguages = new ProgrammingLanguages(ClassLoader.getSystemClassLoader());
 	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
 	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
 	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");
