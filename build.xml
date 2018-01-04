@@ -45,6 +45,10 @@
                     <include name="**/*.jar"/>
             </fileset>
     </path>
+    <path id="resources.class.path">
+            <pathelement path="${lessons.dir}"/>
+            <pathelement path="${exercices.dir}"/>
+    </path>
 
     <target name="clean" description="clean project">
         <delete dir="${site.dir}/lib"/>
@@ -207,6 +211,7 @@
     <target name="all-tests" depends="compile" description="launch all tests">
         <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
             <classpath refid="project.class.path"/>
+            <classpath refid="resources.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
             <test name="suite.AllTests"/>
 	</junit>
@@ -215,6 +220,7 @@
     <target name="unit-tests" depends="compile" description="launch all unit tests">
 	<junit showoutput="true" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
 	    <classpath refid="project.class.path"/>
+            <classpath refid="resources.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
             <test name="plm.test.suite.UnitTests"/>
 	</junit>
@@ -223,6 +229,7 @@
     <target name="integration-tests" depends="compile" description="launch all integration tests">
 	<junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">
             <classpath refid="project.class.path"/>
+            <classpath refid="resources.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
             <test name="plm.test.IntegrationTests"/>
         </junit>
