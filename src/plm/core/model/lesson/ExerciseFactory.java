@@ -63,7 +63,7 @@ public class ExerciseFactory {
 				exo.addMission(humanLanguage.getLanguage(), mission);
 			}
 			catch (FileNotFoundException e) {
-				Logger.info("No mission found in "+humanLanguage.getDisplayName()+" for: " + exo.getId());
+				//Logger.info("No mission found in "+humanLanguage.getDisplayName()+" for: " + exo.getId());
 				exo.addMission(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
@@ -81,7 +81,7 @@ public class ExerciseFactory {
 				exo.addHelp(humanLanguage.getLanguage(), sb.toString());
 			}
 			catch (FileNotFoundException e) {
-				Logger.info("No help found in "+humanLanguage.getDisplayName()+" for: " + exo.getId());
+				//Logger.info("No help found in "+humanLanguage.getDisplayName()+" for: " + exo.getId());
 				exo.addHelp(humanLanguage.getLanguage(), "");
 			}
 			catch (IOException ex) {
@@ -106,6 +106,7 @@ public class ExerciseFactory {
 			// TODO: Handle case if progLang is not supported
 			Logger.error("Exercise "+exo.getId()+" does not support "+ProgrammingLanguage.defaultProgLang.getLang()+". Exercise left uninitialized.");
 		}
+		//Logger.info("Computed answers of "+exo.getName()+" (size:"+exo.getAnswerWorlds().get(0).getSteps().size()+")");
 		return exo;
 	}
 }
