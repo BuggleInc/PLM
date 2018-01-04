@@ -1,8 +1,5 @@
 package plm.universe.bat;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -18,7 +15,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
 import plm.universe.World;
-import plm.universe.bugglequest.BuggleWorldView;
 
 public class BatWorld extends World {
 
