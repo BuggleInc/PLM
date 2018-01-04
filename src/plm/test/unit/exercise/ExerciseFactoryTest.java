@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Set;
@@ -28,7 +27,7 @@ import plm.universe.bugglequest.AbstractBuggle;
 import plm.universe.bugglequest.BuggleWorld;
 
 public class ExerciseFactoryTest {
-	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
+	private static final ProgrammingLanguages programmingLanguages = new ProgrammingLanguages(ClassLoader.getSystemClassLoader());
 	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
 	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
 	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");

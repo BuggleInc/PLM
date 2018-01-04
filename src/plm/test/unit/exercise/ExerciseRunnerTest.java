@@ -91,13 +91,13 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(true)"
 				+ "}";
-		if(progLang == scalaLang) {
+		if(progLang.equals(scalaLang)) {
 			code = 
 					"def run(): Unit {"
 					+ "setObjective(true)"
 					+ "}";
 		}
-		else if(progLang == pythonLang || progLang == blocklyLang) {
+		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
 			code =
 					"def run():\n"
 					+ "  setObjective(true)";
@@ -117,21 +117,21 @@ public class ExerciseRunnerTest {
 		Logger.info("#### Test testRunExceptionRaisingCodeShouldReturnFail in "+progLang);
 
 		String code = "";
-		if (progLang == javaLang) {
+		if (progLang.equals(javaLang)) {
 			code =
 				"public void run() {"
 				+ "String s = null;"
 				+ "int length = s.length();"
 				+ "}";
 		}
-		else if(progLang == scalaLang) {
+		else if(progLang.equals(scalaLang)) {
 			code = 
 					"def run(): Unit = {"
 					+ "val s: String = null;"
 					+ "val i = s.length;"
 					+ "}";
 		}
-		else if(progLang == pythonLang || progLang == blocklyLang) {
+		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
 			code =
 					"def run():\n"
 					+ "  truc = None\n"
@@ -157,13 +157,13 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(false);"
 				+ "}";
-		if(progLang == scalaLang) {
+		if(progLang.equals(scalaLang)) {
 			code = 
 					"def run(): Unit = {"
 					+ "setObjective(false)"
 					+ "}";
 		}
-		else if(progLang == pythonLang || progLang == blocklyLang) {
+		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
 			code =
 					"def run():\n"
 					+ "  setObjective(False)";
@@ -183,19 +183,19 @@ public class ExerciseRunnerTest {
 		Logger.info("#### Test testRunInfiniteLoopCodeShouldReturnTimeout in "+progLang);
 
 		String code = "";
-		if (progLang == javaLang) {
+		if (progLang.equals(javaLang)) {
 			code =
 				"public void run() {"
 				+ "while(true) {}"
 				+ "}";
 		}
-		else if(progLang == scalaLang) {
+		else if(progLang.equals(scalaLang)) {
 			code = 
 					"def run(): Unit = {"
 					+ "while(true) {};"
 					+ "}";
 		}
-		else if(progLang == pythonLang || progLang == blocklyLang) {
+		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
 			code =
 					"def run():\n"
 					+ "  i = 0\n"
@@ -223,13 +223,13 @@ public class ExerciseRunnerTest {
 				"public void run() {"
 				+ "setObjective(true);"
 				+ "}";
-		if(progLang == scalaLang) {
+		if(progLang.equals(scalaLang)) {
 			code = 
 					"def run(): Unit = {"
 					+ "setObjective(true)"
 					+ "}";
 		}
-		else if(progLang == pythonLang || progLang == blocklyLang) {
+		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
 			code =
 					"def run():\n"
 					+ "  setObjective(True)";
