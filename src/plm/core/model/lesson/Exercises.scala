@@ -12,7 +12,7 @@ class Exercises(
     fileUtils: FileUtils,
     programmingLanguages: ProgrammingLanguages,
     tipFactory: AbstractTipFactory,
-    availableLocales: Traversable[Locale]) {
+    availableLocales: Array[Locale]) {
 
   private val DEFAULT_PROGRAMMING_LANGUAGE = programmingLanguages.defaultProgrammingLanguage()
   private val EN_LOCALE: Locale = new Locale("en")
@@ -23,7 +23,7 @@ class Exercises(
       EN_LOCALE,
       new ExerciseRunner(EN_LOCALE),
       programmingLanguages.programmingLanguages(),
-      availableLocales.toArray,
+      availableLocales,
       tipFactory)
 
   private val exercises: Map[String, Exercise] =

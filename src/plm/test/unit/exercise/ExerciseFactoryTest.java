@@ -33,17 +33,17 @@ public class ExerciseFactoryTest {
 	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");
 	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blocky");
 
+	private Locale locale = new Locale("en");
+	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
 	private scala.collection.Iterable<String> langs = 
 			  scala.collection.JavaConversions.iterableAsScalaIterable(Arrays.asList(new String[] { "en" }));
 	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(), langs),
 			new FileUtils(ClassLoader.getSystemClassLoader()),
 			programmingLanguages,
-			 new DefaultTipFactory(), null
+			 new DefaultTipFactory(), humanLanguages
 			);
 
 	private Exercise exo;
-	private Locale locale = new Locale("en");
-	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
 
 	public ExerciseFactoryTest() {
 	}

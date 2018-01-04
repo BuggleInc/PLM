@@ -29,6 +29,9 @@ import plm.core.utils.FileUtils;
 @RunWith(Parameterized.class)
 public class ExerciseRunnerTest {
 
+	private Locale locale = new Locale("en");
+	private Locale[] humanLanguages = { locale };
+	
 	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
 	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
 	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
@@ -40,13 +43,11 @@ public class ExerciseRunnerTest {
 	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(), langs),
 			new FileUtils(ClassLoader.getSystemClassLoader()),
 			programmingLanguages,
-			 new DefaultTipFactory(), null
+			 new DefaultTipFactory(), humanLanguages
 			);
 	private ExerciseFactory exerciseFactory;
 	private Exercise exo;
-	private Locale locale = new Locale("en");
 	private ExerciseRunner exerciseRunner;
-	private Locale[] humanLanguages = { locale };
 	private ProgrammingLanguage progLang;
 
 	@Parameterized.Parameters
