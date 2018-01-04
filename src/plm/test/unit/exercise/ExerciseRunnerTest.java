@@ -21,9 +21,10 @@ import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.ExerciseFactory;
 import plm.core.model.lesson.ExerciseRunner;
+import plm.core.model.lesson.Exercises;
+import plm.core.model.lesson.Lessons;
 import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.utils.FileUtils;
-import plm.test.unit.exercise.examplerunner.ExampleRunner;
 
 @RunWith(Parameterized.class)
 public class ExerciseRunnerTest {
@@ -34,6 +35,11 @@ public class ExerciseRunnerTest {
 	private static ProgrammingLanguage python = programmingLanguages.getProgrammingLanguage("python");
 	private static ProgrammingLanguage blockly = programmingLanguages.getProgrammingLanguage("blocky");
 
+	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(),null),
+			new FileUtils(ClassLoader.getSystemClassLoader()),
+			programmingLanguages,
+			 new DefaultTipFactory(), null
+			);
 	private ExerciseFactory exerciseFactory;
 	private Exercise exo;
 	private Locale locale = new Locale("en");
@@ -62,7 +68,7 @@ public class ExerciseRunnerTest {
 		exerciseFactory = new ExerciseFactory(
 				new FileUtils(ClassLoader.getSystemClassLoader()),
 				locale, exerciseRunner, programmingLanguages.programmingLanguages(), humanLanguages, new DefaultTipFactory());
-		exo = new ExampleRunner(new FileUtils(ClassLoader.getSystemClassLoader()));
+		exo = exoBook.getExercise("environment.Environment").get();
 		exerciseFactory.initializeExercise(exo, java);
 	}
 

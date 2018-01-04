@@ -216,7 +216,7 @@
 	<junit showoutput="true" enabletestlistenerevents="true" haltonfailure="true" haltonerror="true" printsummary="yes" fork="yes">
 	    <classpath refid="project.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
-            <test name="suite.UnitTests"/>
+            <test name="plm.test.suite.UnitTests"/>
 	</junit>
     </target>
 

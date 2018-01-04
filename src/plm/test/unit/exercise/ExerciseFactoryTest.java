@@ -12,33 +12,34 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import plm.core.lang.LangBlockly;
-import plm.core.lang.LangJava;
-import plm.core.lang.LangPython;
-import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguages;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
-import plm.core.model.lesson.ExerciseFactory;
-import plm.core.model.lesson.ExerciseRunner;
+import plm.core.model.lesson.Exercises;
+import plm.core.model.lesson.Lessons;
 import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
-import plm.universe.unittest.ExampleWorld;
-import unittest.Example;
+import plm.universe.bugglequest.AbstractBuggle;
+import plm.universe.bugglequest.BuggleWorld;
 
 public class ExerciseFactoryTest {
-	private LangJava java = new LangJava(ClassLoader.getSystemClassLoader(), true);
-	private LangScala scala = new LangScala(ClassLoader.getSystemClassLoader(), true);
-	private LangPython python = new LangPython(true);
-	private LangBlockly blockly = new LangBlockly(true);
+	private static final ProgrammingLanguages programmingLanguages = new plm.core.lang.ProgrammingLanguages(ClassLoader.getSystemClassLoader());
+	private static ProgrammingLanguage java = programmingLanguages.getProgrammingLanguage("java");
+	private static ProgrammingLanguage scala = programmingLanguages.getProgrammingLanguage("scala");
+	private static ProgrammingLanguage python = programmingLanguages.getProgrammingLanguage("python");
+	private static ProgrammingLanguage blockly = programmingLanguages.getProgrammingLanguage("blocky");
 
-	private ExerciseFactory exerciseFactory;
+	private Exercises exoBook = new Exercises(new Lessons(ClassLoader.getSystemClassLoader(),null),
+			new FileUtils(ClassLoader.getSystemClassLoader()),
+			programmingLanguages,
+			 new DefaultTipFactory(), null
+			);
+
 	private Exercise exo;
 	private Locale locale = new Locale("en");
-	private ExerciseRunner exerciseRunner;
-	private ProgrammingLanguage[] programmingLanguages =  { java, scala, python };
 	private Locale[] humanLanguages = { locale, new Locale("fr"), new Locale("pt_BR") };
 
 	public ExerciseFactoryTest() {
@@ -46,18 +47,12 @@ public class ExerciseFactoryTest {
 
 	@Before
 	public void setUp() {
-		exerciseRunner = new ExerciseRunner(locale);
-		exerciseFactory = new ExerciseFactory(new FileUtils(ClassLoader.getSystemClassLoader()),
-			locale, exerciseRunner, programmingLanguages, humanLanguages, new DefaultTipFactory());
-		exo = new Example(new FileUtils(ClassLoader.getSystemClassLoader()));
-		exerciseFactory.initializeExercise(exo, java);
+		exo = exoBook.getExercise("environment.Environment").get();
 	}
 
 	@After
 	public void tearDown() {
 		exo = null;
-		exerciseFactory = null;
-		exerciseRunner = null;
 	}
 
 	@Test
@@ -126,27 +121,27 @@ public class ExerciseFactoryTest {
 	@Test
 	public void testInitializeExerciseShouldNotUpdateInitialWorlds() {
 		for(World w : exo.getWorlds(WorldKind.INITIAL)) {
-			ExampleWorld initialWorld = (ExampleWorld) w;
-			boolean actual = initialWorld.getObjective();
-			assertFalse("Initial world's objective should be false", actual);
+			BuggleWorld initialWorld = (BuggleWorld) w;
+			int y = ((AbstractBuggle)initialWorld.getEntity(0)).getY();
+			assertEquals("Y of buggle in initial world should be 5", y, 5);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldNotUpdateCurrentWorlds() {
 		for(World w : exo.getWorlds(WorldKind.CURRENT)) {
-			ExampleWorld currentWorld = (ExampleWorld) w;
-			boolean actual = currentWorld.getObjective();
-			assertFalse("Current world's objective should be false", actual);
+			BuggleWorld currentWorld = (BuggleWorld) w;
+			int y = ((AbstractBuggle)currentWorld.getEntity(0)).getY();
+			assertEquals("Y of buggle in current world should be 5", y, 5);
 		}
 	}
 
 	@Test
 	public void testInitializeExerciseShouldInitializeAnswerWorlds() {
 		for(World w : exo.getWorlds(WorldKind.ANSWER)) {
-			ExampleWorld answerWorld = (ExampleWorld) w;
-			boolean actual = answerWorld.getObjective();
-			assertTrue("Answer world's objective should be true", actual);
+			BuggleWorld currentWorld = (BuggleWorld) w;
+			int y = ((AbstractBuggle)currentWorld.getEntity(0)).getY();
+			assertEquals("Y of buggle in current world should be 6", y, 6);
 		}
 	}
 }
