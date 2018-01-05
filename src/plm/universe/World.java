@@ -20,7 +20,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.UserSettings;
-import plm.core.ui.PlmHtmlEditorKit;
+import plm.core.ui.HtmlUtils;
 import plm.core.utils.FileUtils;
 
 @JsonTypeInfo(use = Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
@@ -280,7 +280,7 @@ public abstract class World  {
 		StringBuffer sb = null;
 		try {
 			sb = fileUtils.readContentAsText(filename, getLocale(), "html", true);
-			api = PlmHtmlEditorKit.filterHTML(sb.toString(), false, getProgLang());
+			api = HtmlUtils.filterHTML(sb.toString(), false, getProgLang());
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -300,7 +300,7 @@ public abstract class World  {
 			/* read it */
 			about = sb.toString();
 		}
-		return PlmHtmlEditorKit.filterHTML(about, false, getProgLang());
+		return HtmlUtils.filterHTML(about, false, getProgLang());
 	}
 	
 	/**
