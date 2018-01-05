@@ -1,4 +1,4 @@
-package plm.test.unit.exercise;
+package plm.core.model.lesson;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -17,13 +17,7 @@ import org.junit.runners.Parameterized;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.ProgrammingLanguages;
 import plm.core.log.Logger;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExecutionProgress.outcomeKind;
-import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.ExerciseFactory;
-import plm.core.model.lesson.ExerciseRunner;
-import plm.core.model.lesson.Exercises;
-import plm.core.model.lesson.Lessons;
 import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.utils.FileUtils;
 

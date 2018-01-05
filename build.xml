@@ -214,9 +214,9 @@
 	    <classpath refid="project.class.path"/>
             <classpath refid="resources.class.path"/>
 	    <formatter type="plain" usefile="false" /> <!-- to screen -->
-            <test name="plm.test.unit.exercise.ExerciseFactoryTest"/>
-            <test name="plm.test.unit.exercise.ExerciseRunnerTest"/>
-            <test name="plm.test.unit.git.GitUtilsTest"/>
+            <test name="plm.core.model.lesson.ExerciseFactoryTest"/>
+            <test name="plm.core.model.lesson.ExerciseRunnerTest"/>
+            <test name="plm.utils.GitUtilsTest"/>
 	</junit>
     </target>
 

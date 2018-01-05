@@ -1,4 +1,4 @@
-package plm.test.unit.exercise;
+package plm.core.model.lesson;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,16 +9,11 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.ProgrammingLanguages;
-import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
-import plm.core.model.lesson.Exercises;
-import plm.core.model.lesson.Lessons;
 import plm.core.model.lesson.tip.DefaultTipFactory;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;

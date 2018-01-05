@@ -1,4 +1,4 @@
-package plm.test.unit.git;
+package plm.utils;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static org.junit.Assert.assertEquals;
@@ -36,7 +36,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
-import plm.utils.GitUtils;
 
 public class GitUtilsTest {
 
