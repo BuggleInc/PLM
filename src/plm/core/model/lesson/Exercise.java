@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.log.Logger;
 import plm.core.model.session.SourceFile;
-import plm.core.ui.HtmlUtils;
+import plm.utils.HtmlUtils;
 import plm.universe.World;
 
 public abstract class Exercise  {
@@ -258,7 +258,7 @@ public abstract class Exercise  {
 		if(missions.containsKey(humanLang)) {
 			mission = missions.get(humanLang);
 		}
-		return HtmlUtils.filterHTML(mission, false, progLang);
+		return HtmlUtils.filter(mission, progLang);
 	}
 
 	@JsonIgnore
@@ -329,7 +329,7 @@ public abstract class Exercise  {
 		if(helps.containsKey(humanLang)) {
 			help = helps.get(humanLang);
 		}
-		return HtmlUtils.filterHTML(help, false, progLang);
+		return HtmlUtils.filter(help, progLang);
 	}
 
 	public Map<String, String> getHelps() {
