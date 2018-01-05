@@ -13,7 +13,7 @@ For more information, subscribe to our
 mailing list (low trafic), and 
 [visit the PLM web site](http://www.loria.fr/~quinson/Teaching/PLM/).
 
-[![Build Status](https://travis-ci.org/oster/PLM.svg)](https://travis-ci.org/oster/PLM)
+[![Build Status](https://travis-ci.org/BuggleInc/PLM.svg)](https://travis-ci.org/BuggleInc/PLM)
 
 ## License
 
