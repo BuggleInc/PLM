@@ -87,7 +87,7 @@ public class ExecutionProgress {
 		passedTests = -1;
 	}
 
-	public void setCompilationError(DiagnosticCollector<JavaFileObject> diagnostics) {
+	public void setCompilationError(DiagnosticCollector<JavaFileObject> diagnostics, String source) {
 		StringBuffer sb = new StringBuffer();
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {	
 			if (diagnostic.getSource() == null) 
@@ -96,7 +96,7 @@ public class ExecutionProgress {
 				sb.append(diagnostic.getSource().getName()+":"+(diagnostic.getLineNumber()-1)+":"+ diagnostic.getMessage(null)); // -1 because the head is on the first line so the student code begins at line 2
 			sb.append("\n");
 		}
-		setCompilationError(sb.toString());
+		setCompilationError("Source: "+source+"\n"+sb.toString());
 	}
 
 	public void setExecutionError(String msg) {
