@@ -1,6 +1,7 @@
 package plm.test.unit.exercise;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -36,7 +37,7 @@ public class ExerciseRunnerTest {
 	private static ProgrammingLanguage javaLang = programmingLanguages.getProgrammingLanguage("java");
 	private static ProgrammingLanguage scalaLang = programmingLanguages.getProgrammingLanguage("scala");
 	private static ProgrammingLanguage pythonLang = programmingLanguages.getProgrammingLanguage("python");
-	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blocky");
+	private static ProgrammingLanguage blocklyLang = programmingLanguages.getProgrammingLanguage("blockly");
 
 	private scala.collection.Iterable<String> langs = 
 	  scala.collection.JavaConversions.iterableAsScalaIterable(Arrays.asList(new String[] { "en" }));
@@ -45,14 +46,12 @@ public class ExerciseRunnerTest {
 			programmingLanguages,
 			 new DefaultTipFactory(), humanLanguages
 			);
-	private ExerciseFactory exerciseFactory;
 	private Exercise exo;
 	private ExerciseRunner exerciseRunner;
 	private ProgrammingLanguage progLang;
 
 	@Parameterized.Parameters
 	public static Collection<Object[]> programmingLanguages() {
-		Logger.info("Starting");
 		return Arrays.asList(new Object[][] {
 	         { javaLang },
 	         { scalaLang }/*,
@@ -61,6 +60,19 @@ public class ExerciseRunnerTest {
 	      });
 	}
 
+	@Test
+	public void testInitializationValidity() {
+		assertNotEquals("java != scala", javaLang, scalaLang);
+		assertNotEquals("java != python", javaLang, pythonLang);
+		assertNotEquals("java != blockly", javaLang, blocklyLang);
+		
+		assertNotEquals("scala != python", scalaLang, pythonLang);
+		assertNotEquals("scala != blockly", scalaLang, blocklyLang);
+		
+		assertNotEquals("python != blockly", pythonLang, blocklyLang);
+	}
+
+	
 	public ExerciseRunnerTest(ProgrammingLanguage progLang) {
 		this.progLang = progLang;
 	}
@@ -68,17 +80,12 @@ public class ExerciseRunnerTest {
 	@Before 
 	public void setUp() {
 		exerciseRunner = new ExerciseRunner(locale);
-		exerciseFactory = new ExerciseFactory(
-				new FileUtils(ClassLoader.getSystemClassLoader()),
-				locale, exerciseRunner, programmingLanguages.programmingLanguages(), humanLanguages, new DefaultTipFactory());
 		exo = exoBook.getExercise("environment.Environment").get();
-		exerciseFactory.initializeExercise(exo, javaLang);
 	}
 
 	@After
 	public void tearDown() {
 		exo = null;
-		exerciseFactory = null;
 		exerciseRunner = null;
 	}
 
@@ -87,21 +94,7 @@ public class ExerciseRunnerTest {
 		Logger.info("---------------------------------------------------");
 		Logger.info("#### Test testRunSyntaxErrorCodeShouldReturnCompile");
 		
-		String code = 
-				"public void run() {"
-				+ "setObjective(true)"
-				+ "}";
-		if(progLang.equals(scalaLang)) {
-			code = 
-					"def run(): Unit {"
-					+ "setObjective(true)"
-					+ "}";
-		}
-		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
-			code =
-					"def run():\n"
-					+ "  setObjective(true)";
-		}
+		String code = "This is an invalid source code";
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.COMPILE;
@@ -118,27 +111,20 @@ public class ExerciseRunnerTest {
 
 		String code = "";
 		if (progLang.equals(javaLang)) {
-			code =
-				"public void run() {"
-				+ "String s = null;"
-				+ "int length = s.length();"
-				+ "}";
+			code = "String s = null; \n"
+				 + "int length = s.length();\n";
 		}
 		else if(progLang.equals(scalaLang)) {
-			code = 
-					"def run(): Unit = {"
-					+ "val s: String = null;"
-					+ "val i = s.length;"
-					+ "}";
+			code = "val s: String = null;\n"
+				 + "val i = s.length;\n";
 		}
 		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
-			code =
-					"def run():\n"
-					+ "  truc = None\n"
-					+ "  print truc.toto";
+			code = "truc = None\n"
+				 + "print truc.toto";
 		}
 		else 
 			throw new RuntimeException("unknown proglang: "+progLang);
+		
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.FAIL;
@@ -153,21 +139,12 @@ public class ExerciseRunnerTest {
 		Logger.info("---------------------------------------------------");
 		Logger.info("#### Test testRunWrongCodeShouldReturnFail in "+progLang);
 
-		String code = 
-				"public void run() {"
-				+ "setObjective(false);"
-				+ "}";
-		if(progLang.equals(scalaLang)) {
-			code = 
-					"def run(): Unit = {"
-					+ "setObjective(false)"
-					+ "}";
+		String code;
+		if(progLang.equals(javaLang) || progLang.equals(scalaLang) || progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
+			code = "backward();";
 		}
-		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
-			code =
-					"def run():\n"
-					+ "  setObjective(False)";
-		}
+		else 
+			throw new RuntimeException("unknown proglang: "+progLang);
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
 		outcomeKind expected = outcomeKind.FAIL;
@@ -184,23 +161,15 @@ public class ExerciseRunnerTest {
 
 		String code = "";
 		if (progLang.equals(javaLang)) {
-			code =
-				"public void run() {"
-				+ "while(true) {}"
-				+ "}";
+			code = "while(true) {}";
 		}
 		else if(progLang.equals(scalaLang)) {
-			code = 
-					"def run(): Unit = {"
-					+ "while(true) {};"
-					+ "}";
+			code = "while(true) {};";
 		}
 		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
-			code =
-					"def run():\n"
-					+ "  i = 0\n"
-					+ "  while(True):\n"
-					+ "    i = i + 1";
+			code = "i = 0\n"
+				 + "while(True):\n"
+				 + "  i = i + 1";
 		}		
 		else 
 			throw new RuntimeException("unknown proglang: "+progLang);
@@ -219,20 +188,12 @@ public class ExerciseRunnerTest {
 		Logger.info("---------------------------------------------------");
 		Logger.info("#### Test testRunSolutionCodeShouldReturnPass in "+progLang);
 		
-		String code = 
-				"public void run() {"
-				+ "setObjective(true);"
-				+ "}";
+		String code = "forward();";
 		if(progLang.equals(scalaLang)) {
-			code = 
-					"def run(): Unit = {"
-					+ "setObjective(true)"
-					+ "}";
+			code = "forward()";
 		}
 		else if(progLang.equals(pythonLang) || progLang.equals(blocklyLang)) {
-			code =
-					"def run():\n"
-					+ "  setObjective(True)";
+			code = "forward()";
 		}
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
 		ExecutionProgress result = f.join();
