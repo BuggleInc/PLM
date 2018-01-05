@@ -123,13 +123,13 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				Logger.error(I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
+				//Logger.error(I18nManager.getI18n(locale).tr("last session data successfully retrieved"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				Logger.error(I18nManager.getI18n(locale).tr("last session data successfully merged"));
+				//Logger.error(I18nManager.getI18n(locale).tr("last session data successfully merged"));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
-				Logger.error(I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+				//Logger.error(I18nManager.getI18n(locale).tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
 				Map<String, int[][]> allConflicts = res.getConflicts();
 				for (String path : allConflicts.keySet()) {
 					ObjectId remote = git.getRepository().resolve("origin/"+userBranchHash);
@@ -148,7 +148,7 @@ public class GitUtils {
 					git.add().addFilepattern(path).call();
 				}
 
-				Logger.log(LogHandler.ERROR, "All conflicts have been manually handled ;)");
+				//Logger.error("All conflicts have been manually handled ;)");
 				// TODO: check if the commit is mandatory
 				git.commit().setMessage("Manual merging")
 				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))

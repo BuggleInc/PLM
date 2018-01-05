@@ -7,20 +7,14 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
 
 import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
-
-import plm.core.log.Logger;
 import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
 import plm.universe.World;
-import plm.universe.bugglequest.BuggleWorldView;
-import plm.universe.turtles.ResourcesCache;
 
 public class BaseballWorld extends World {
 	public static final int MIX_SORTED = 0;
