@@ -1,17 +1,27 @@
 package plm.core.ui;
 
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.Logger;
-import plm.core.model.lesson.Exercise;
-
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTMLEditorKit;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.Icon;
+import javax.swing.UIManager;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Element;
+import javax.swing.text.IconView;
+import javax.swing.text.Position;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.View;
+import javax.swing.text.ViewFactory;
+import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTMLEditorKit;
+
+import plm.core.lang.ProgrammingLanguage;
+import plm.core.log.Logger;
+import plm.core.model.lesson.Exercise;
 
 
 public class PlmHtmlEditorKit extends HTMLEditorKit {
@@ -94,33 +104,45 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
         }
         String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
 
+        String[] existingProgLang = new String[] {"java", "scala", "python", "c"};
+        String targetLangStr = targetLang.getLang().toLowerCase();
+        
 		/* Display everything when in debug mode, with shiny colors */
         if (showAll) {
             // Process any block with one language first so that they can be nested in blocks with more than one language.
-            for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-                String l = lang.getLang().toLowerCase();
+            for (String l : existingProgLang) {
                 res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]",
                         "<font color=\"" + langColors.get(l) + "\">$1</font>");
             }
-            for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-                String l = lang.getLang().toLowerCase();
-                for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-                    if (!lang2.equals(lang)) {
-                        String l2 = lang2.getLang().toLowerCase();
+            for (String l : existingProgLang) {
+                for (String l2 : existingProgLang) {
+                    if (!l2.equals(l)) {
                         res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", "<font color=\"" + langColors.get(l + "|" + l2) + "\">$1</font>");
                     }
                 }
             }
 
-            for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-                String l = lang.getLang().toLowerCase();
-                for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-                    if (!lang2.equals(lang)) {
-                        String l2 = lang2.getLang().toLowerCase();
-                        for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
-                            if (!lang3.equals(lang) && !lang3.equals(lang2)) {
-                                String l3 = lang3.getLang().toLowerCase();
+            for (String l : existingProgLang) {
+                for (String l2 : existingProgLang) {
+                    if (!l2.equals(l)) {
+                        for (String l3 : existingProgLang) {
+                            if (!l3.equals(l) && !l3.equals(l2)) {
                                 res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "<font color=\"" + langColors.get(l + "|" + l2 + "|" + l3) + "\">$1</font>");
+                            }
+                        }
+                    }
+                }
+            }
+            for (String l : existingProgLang) {
+                for (String l2 : existingProgLang) {
+                    if (!l2.equals(l)) {
+                        for (String l3 : existingProgLang) {
+                            if (!l3.equals(l) && !l3.equals(l2)) {
+                                for (String l4 : existingProgLang) {
+                                    if (!l4.equals(l) && !l4.equals(l2) && !l4.equals(l3)) {
+                                    	res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\|" + l4 + "\\](.*?)\\[/!\\]", "<font color=\"" + langColors.get(l + "|" + l2 + "|" + l3 + "|" + l4) + "\">$1</font>");
+                                    }
+                                }
                             }
                         }
                     }
@@ -163,33 +185,30 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
                 strtemp = res.toString();
 
                 // Process any block with one language first so that they can be nested in blocks with more than one language.
-                for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-                    String l = lang.getLang().toLowerCase();
-                    if (lang.equals(ProgrammingLanguage.supportedProgLangs))
+                for (String l : existingProgLang) {
+                    if (l.equals(targetLangStr))
                         res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]", "$1"); // Keep it
                     else
                         res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]", ""); // Not for us
                 }
-                for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-                    String l = lang.getLang().toLowerCase();
-                    for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-                        String l2 = lang2.getLang().toLowerCase();
-                        if (lang.equals(targetLang) || lang2.equals(targetLang))
-                            res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", "$1"); // Keep it
-                        else
-                            res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", ""); // Not for us
+                
+                for (String l : existingProgLang) {
+                    for (String l2 : existingProgLang) {
+                        if (!l2.equals(l)) {
+                        	if (l.equals(targetLangStr) || l2.equals(targetLangStr))
+                        		res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", "$1"); // Keep it
+                        	else
+                        		res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]", ""); // Not for us
+                        }
                     }
                 }
 
-                for (ProgrammingLanguage lang : ProgrammingLanguage.supportedProgLangs) {
-                    String l = lang.getLang().toLowerCase();
-                    for (ProgrammingLanguage lang2 : ProgrammingLanguage.supportedProgLangs) {
-                        if (!lang2.equals(lang)) {
-                            String l2 = lang2.getLang().toLowerCase();
-                            for (ProgrammingLanguage lang3 : ProgrammingLanguage.supportedProgLangs) {
-                                if (!lang3.equals(lang) && !lang3.equals(lang2)) {
-                                    String l3 = lang3.getLang().toLowerCase();
-                                    if (lang.equals(targetLang) || lang2.equals(targetLang) || lang3.equals(targetLang))
+                for (String l : existingProgLang) {
+                    for (String l2 : existingProgLang) {
+                        if (!l2.equals(l)) {
+                            for (String l3 : existingProgLang) {
+                                if (!l3.equals(l) && !l3.equals(l2)) {
+                                    if (l.equals(targetLangStr) || l2.equals(targetLangStr) || l3.equals(targetLangStr))
                                         res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "$1");
                                     else
                                         res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "");
@@ -198,6 +217,26 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
                         }
                     }
                 }
+                
+                for (String l : existingProgLang) {
+                    for (String l2 : existingProgLang) {
+                        if (!l2.equals(l)) {
+                            for (String l3 : existingProgLang) {
+                                if (!l3.equals(l) && !l3.equals(l2)) {
+                                    for (String l4 : existingProgLang) {
+                                        if (!l4.equals(l) && !l4.equals(l2) && !l4.equals(l3)) {
+                                        	if (l.equals(targetLangStr) || l2.equals(targetLangStr) || l3.equals(targetLangStr) || l4.equals(targetLangStr))
+                                        		res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\|" + l4 + "\\](.*?)\\[/!\\]", "$1");
+                                        	else
+                                        		res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\|" + l4 + "\\](.*?)\\[/!\\]", "");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
         }
 
