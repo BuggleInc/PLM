@@ -325,12 +325,7 @@ class CompilerJava {
 		final CompilationTask task = compiler.getTask(null, javaFileManager, diagnostics, options, null, sources);
 		final Boolean result = task.call();
 		if (result == null || !result.booleanValue()) {
-			/*
-			 * FIXME: provide a way to debug
-			 * when templates are broken
-			 */
-			 //for (String n:classes.keySet()) 
-			 // System.out.println("File "+n+":\n"+classes.get(n));
+			/* FIXME: provide a way to debug when templates are broken */
 			 
 			throw new PLMCompilerException(i18n.tr("Compilation failed."), classes.keySet(), diagnostics);
 		}

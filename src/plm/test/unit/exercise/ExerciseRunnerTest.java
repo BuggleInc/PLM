@@ -54,9 +54,9 @@ public class ExerciseRunnerTest {
 	public static Collection<Object[]> programmingLanguages() {
 		return Arrays.asList(new Object[][] {
 	         { javaLang },
-	         { scalaLang }/*,
-	         { python },
-	         { blockly }*/
+	         { scalaLang },
+	         { pythonLang },
+	         { blocklyLang }
 	      });
 	}
 
@@ -92,7 +92,7 @@ public class ExerciseRunnerTest {
 	@Test
 	public void testRunSyntaxErrorCodeShouldReturnCompile() {
 		Logger.info("---------------------------------------------------");
-		Logger.info("#### Test testRunSyntaxErrorCodeShouldReturnCompile");
+		Logger.info("#### Test testRunSyntaxErrorCodeShouldReturnCompile in "+progLang);
 		
 		String code = "This is an invalid source code";
 		CompletableFuture<ExecutionProgress> f = exerciseRunner.run(exo, progLang, code);
@@ -100,7 +100,8 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.COMPILE;
 		outcomeKind actual = result.outcome;
 
-		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
+		if (!expected.equals(actual))
+			Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be COMPILATION", expected, actual);
 	}
 
@@ -130,7 +131,8 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.FAIL;
 		outcomeKind actual = result.outcome;
 
-		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
+		if (!expected.equals(actual))
+			Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be FAIL", expected, actual);
 	}
 
@@ -150,7 +152,8 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.FAIL;
 		outcomeKind actual = result.outcome;
 
-		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
+		if (!expected.equals(actual))
+			Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be FAIL", expected, actual);
 	}
 
@@ -179,7 +182,8 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.TIMEOUT;
 		outcomeKind actual = result.outcome;
 
-		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
+		if (!expected.equals(actual))
+			Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be TIMEOUT", expected, actual);
 	}
 
@@ -200,7 +204,8 @@ public class ExerciseRunnerTest {
 		outcomeKind expected = outcomeKind.PASS;
 		outcomeKind actual = result.outcome;
 
-		Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
+		if (!expected.equals(actual))
+			Logger.info("Expected: "+expected+"; Outcome: "+actual+";"+result);
 		assertEquals("The outcome should be PASS", expected, actual);
 	}
 }

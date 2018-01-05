@@ -45,8 +45,8 @@ public class LangScala extends JVMCompiledLang {
 			compiler.reset();
 			compiler.compile(className(sourceFile.getName()), sourceFile.getCompilableContent(runtimePatterns,whatToCompile), sourceFile.getOffset());
 		} catch (PLMCompilerException e) {
-			System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
-			System.err.println(e.getMessage());
+			//System.err.println(I18nManager.getI18n(locale).tr("Compilation error:"));
+			//System.err.println(e.getMessage());
 			lastResult.setCompilationError(e.getMessage());
 			throw e;
 		}
@@ -187,7 +187,7 @@ class ScalaCompiler {
 
 		@Override
 		public void display(Position pos, String message, Severity _severity) {
-			System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
+			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
 
 			String label = "";
 			int severity = severityRank(_severity);
@@ -208,7 +208,7 @@ class ScalaCompiler {
 			}
 
 			String name = pos.source().path();
-			System.err.println("Name: "+ name);
+			//System.err.println("Name: "+ name);
 			int lastDot = name.lastIndexOf('.');
 			if (lastDot != -1)
 				name = name.substring(lastDot+1);
@@ -221,7 +221,7 @@ class ScalaCompiler {
 					msg += " ";
 				msg += "^";
 			}
-			System.err.println(msg);
+			//System.err.println(msg);
 
 			messages.add(msg);
 		}
