@@ -74,7 +74,6 @@ public class ExerciseRunner {
 		try {
 			mutateEntities(exo, sf, progLang, StudentOrCorrection.STUDENT, lastResult);
 		} catch (PLMCompilerException e) {
-			e.printStackTrace();
 			return CompletableFuture.completedFuture(lastResult);
 		} catch (PLMEntityNotFound e) {
 			e.printStackTrace();
@@ -152,6 +151,10 @@ public class ExerciseRunner {
 	}
 
 	private void checkWorld(World currentWorld, World answerWorld, ProgrammingLanguage progLang, ExecutionProgress progress) {
+		if (progress.outcome == ExecutionProgress.outcomeKind.COMPILE || 
+				progress.outcome == ExecutionProgress.outcomeKind.TIMEOUT)
+			return; // It failed previously. Don't be mean and leave it alone.
+		
 		progress.commonErrorText = "";
 		progress.commonErrorID = -1;
 		progress.totalTests++;
