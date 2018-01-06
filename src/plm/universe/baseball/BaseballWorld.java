@@ -12,6 +12,7 @@ import org.xnap.commons.i18n.I18n;
 
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.I18nManager;
 import plm.core.utils.FileUtils;
 import plm.universe.SVGOperation;
 import plm.universe.World;
@@ -30,7 +31,6 @@ public class BaseballWorld extends World {
 	private int holeBase,holePos; // The coordinate of the hole
 	protected int[] initialField;
 	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
-	private I18n i18n;
     public int[] initialworld;
 
     /** Copy constructor used internally by PLM */
@@ -142,6 +142,8 @@ public class BaseballWorld extends World {
 	 */
 	@Override
 	public String diffTo(World o) {
+		I18n i18n = I18nManager.getI18n(getLocale());
+
 		if (o == null || !(o instanceof BaseballWorld))
 			return i18n.tr("This is not a baseball world :-(");
 
@@ -399,10 +401,12 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(
+					I18nManager.getI18n(getLocale()).tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(
+					I18nManager.getI18n(getLocale()).tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -411,8 +415,9 @@ public class BaseballWorld extends World {
 				&& (holeBase != getBasesAmount()-1 || base != 0 )
 				&& (holeBase != base ) )
 
-			throw new IllegalArgumentException(i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
-					position,base,holeBase));
+			throw new IllegalArgumentException(
+					I18nManager.getI18n(getLocale()).tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
+							position,base,holeBase));
 
 		// All clear. Proceed.
 		moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position),this));
