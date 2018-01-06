@@ -24,7 +24,7 @@ import plm.core.utils.FileUtils;
 @RunWith(Parameterized.class)
 public class ExerciseRunnerTest {
 
-	private Locale locale = new Locale("en");
+	private Locale locale = Locale.ENGLISH;
 	private Locale[] humanLanguages = { locale };
 	
 	private static final ProgrammingLanguages programmingLanguages = new ProgrammingLanguages(ClassLoader.getSystemClassLoader());
@@ -41,7 +41,7 @@ public class ExerciseRunnerTest {
 			 new DefaultTipFactory(), humanLanguages
 			);
 	private Exercise exo;
-	private ExerciseRunner exerciseRunner;
+	private ExerciseRunner exerciseRunner = new ExerciseRunner(locale);
 	private ProgrammingLanguage progLang;
 
 	@Parameterized.Parameters
@@ -73,14 +73,12 @@ public class ExerciseRunnerTest {
 
 	@Before 
 	public void setUp() {
-		exerciseRunner = new ExerciseRunner(locale);
 		exo = exoBook.getExercise("environment.Environment").get();
 	}
 
 	@After
 	public void tearDown() {
 		exo = null;
-		exerciseRunner = null;
 	}
 
 	@Test
