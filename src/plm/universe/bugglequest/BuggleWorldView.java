@@ -174,26 +174,13 @@ public class BuggleWorldView  extends WorldView {
         } else
             g.setColor(b.getBodyColor());
 
-        if (buggleWorld.easter) {
-//            try {
-//                InputStream is = getClass().getResourceAsStream("/plm/universe/bugglequest/ui/rabbit.png");
-//                ImageIcon ic = new ImageIcon(ImageIO.read(is));
-//                g.drawImage(ic.getImage(), (int)(padx+ox),(int)(pady+oy), (int)getCellWidth(),(int)getCellWidth(),null);
-//            } catch (IOException e) {
-//                // Forget it
-//                buggleWorld.easter = false;
-//                return;
-//            }
-
-        } else {
-            for (int dy=0; dy<INVADER_SPRITE_SIZE; dy++) {
-                for (int dx=0; dx<INVADER_SPRITE_SIZE; dx++) {
-                    int direction = b.getDirection().intValue();
-                    if (INVADER_SPRITE[direction][dy][dx] == 1) {
-                        g.fillRect(padx+pad+ox+dx*pixW, pady+pad+oy+dy*pixW, pixW, pixW);
-                    }
-                }
-            }
+        for (int dy=0; dy<INVADER_SPRITE_SIZE; dy++) {
+        	for (int dx=0; dx<INVADER_SPRITE_SIZE; dx++) {
+        		int direction = b.getDirection().intValue();
+        		if (INVADER_SPRITE[direction][dy][dx] == 1) {
+        			g.fillRect(padx+pad+ox+dx*pixW, pady+pad+oy+dy*pixW, pixW, pixW);
+        		}
+        	}
         }
     }
 

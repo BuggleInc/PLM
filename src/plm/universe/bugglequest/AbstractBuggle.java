@@ -25,26 +25,8 @@ import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import plm.universe.bugglequest.exception.BuggleWallException;
 import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
-import plm.universe.bugglequest.operations.BuggleAlreadyHaveBaggle;
-import plm.universe.bugglequest.operations.BuggleDontHaveBaggle;
-import plm.universe.bugglequest.operations.BuggleEncounterWall;
-import plm.universe.bugglequest.operations.BuggleInOuterSpace;
-import plm.universe.bugglequest.operations.CellAlreadyHaveBaggle;
-import plm.universe.bugglequest.operations.ChangeBuggleBodyColor;
-import plm.universe.bugglequest.operations.ChangeBuggleBrushDown;
-import plm.universe.bugglequest.operations.ChangeBuggleCarryBaggle;
-import plm.universe.bugglequest.operations.ChangeBuggleDirection;
-import plm.universe.bugglequest.operations.ChangeCellColor;
-import plm.universe.bugglequest.operations.ChangeCellContent;
-import plm.universe.bugglequest.operations.ChangeCellHasBaggle;
-import plm.universe.bugglequest.operations.ChangeCellHasContent;
-import plm.universe.bugglequest.operations.MoveBuggleOperation;
-import plm.universe.bugglequest.operations.NoBaggleUnderBuggle;
 
 public abstract class AbstractBuggle extends Entity {
-	int k_val = 0;
-	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
-
 	@JsonSerialize(using = CustomColorSerializer.class)
 	Color bodyColor = Color.red;
 	@JsonSerialize(using = CustomColorSerializer.class)
@@ -134,7 +116,6 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void brushUp() {
-		if (k_seq[k_val]==4) k_val++; else k_val = 0;
 		//addOperation(new ChangeBuggleBrushDown(name, true, false));
 		this.brushDown = false;
 		setChanged();
@@ -186,12 +167,10 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void left() {
-		if (k_seq[k_val]==2) k_val++; else k_val = 0;
 		setDirection(direction.left());
 	}
 
 	public void right() {
-		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
 	}
 
@@ -367,7 +346,6 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void forward() throws BuggleWallException {
-		if (k_seq[k_val]==0) k_val++; else k_val = 0;
 		move(direction.toPoint());
 	}
 
@@ -377,7 +355,6 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void backward() throws BuggleWallException {
-		if (k_seq[k_val]==1) k_val++; else k_val = 0;
 		move(direction.opposite().toPoint());
 	}
 
@@ -468,14 +445,6 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
 		I18n i18n = I18nManager.getI18n(getWorld().getLocale());
-		if (k_seq[k_val]==5) k_val++; else k_val = 0;
-		if (k_val>k_seq.length-1) {
-			setName("Easter "+name);
-			Logger.debug("EASTEEEER");
-			((BuggleWorld)world).easter= true;
-			k_val=0;
-			return;
-		}
 
 		if (!isOverBaggle()) {
 			//addOperation(new NoBaggleUnderBuggle(name));
@@ -548,12 +517,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void clearMessage() {
-		String oldContent = readMessage();
-		boolean oldHasContent = getCell().hasContent();
 		getCell().emptyContent();
-		String newContent = readMessage();
-		//addOperation(new ChangeCellContent(getCell().getX(), getCell().getY(), oldContent, newContent));
-		//addOperation(new ChangeCellHasContent(getCell().getX(), getCell().getY(), oldHasContent, false));
 		stepUI();
 	}
 

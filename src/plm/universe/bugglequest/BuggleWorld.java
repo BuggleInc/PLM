@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.lang.LangBlockly;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
@@ -29,9 +28,6 @@ import plm.universe.*;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class BuggleWorld extends GridWorld {
-
-//	protected  int sizeX = super.sizeX;
-//	protected  int sizeY=super.sizeY;
 
 	@JsonCreator
 	public BuggleWorld(FileUtils fileUtils, @JsonProperty("name")String name, @JsonProperty("width")int x, @JsonProperty("height")int y) {
@@ -63,7 +59,6 @@ public class BuggleWorld extends GridWorld {
 				BuggleWorldCell c = initialWorld.getCell(i, j);
 				cells[i][j] = new BuggleWorldCell(c, this);
 			}
-		easter=false;
 
 		super.reset(initialWorld);
 	}
@@ -103,7 +98,6 @@ public class BuggleWorld extends GridWorld {
 		}
 	}
 
-	public boolean easter = false;
 	/* IO related */
 	@Override
 	public boolean haveIO() {
