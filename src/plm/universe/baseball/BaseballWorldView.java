@@ -1,33 +1,35 @@
 package plm.universe.baseball;
 
-import org.jfree.graphics2d.svg.SVGGraphics2D;
-
-import plm.universe.World;
-import plm.universe.WorldView;
-import plm.universe.turtles.ResourcesCache;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
 
-import java.util.*;
+import org.jfree.graphics2d.svg.SVGGraphics2D;
+
+import plm.universe.World;
+import plm.universe.WorldView;
 
 
-public class BaseBallWorldView extends WorldView {
+public class BaseballWorldView extends WorldView {
 
-    private static final long serialVersionUID = 1L;
     private static Vector<Integer[]> playersCoordinate;
     private static double radius;
     private static double displayRatio;
     private static double virtualSize = 300.; // we display on a world that is 300x300 and dynamically resized (to ease our computations)
 
-    private static boolean useCircularView = true; // historical view if false
-    private JPopupMenu popup = new JPopupMenu();
-
-    public BaseBallWorldView(World w) {
+    public BaseballWorldView(World w) {
         super(w);
     }
 
@@ -517,30 +519,13 @@ public class BaseBallWorldView extends WorldView {
      * @param g The Graphics2D context to draw on
      */
     public static void paintComponent(Graphics g, BaseballWorld baseballWorld, int width, int height) {
-        //super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0., 0., (double) width,
-                (double) height));
-
         g2.setColor(Color.black);
         g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-        if (useCircularView)
-            paintCircular(g2,baseballWorld,width,height);
-        else
-            paintHistory(g2,baseballWorld,width,height);
-    }
-
-    /** Returns if we must use the state view ( else we must use the chrono view ) */
-    protected boolean isUseStateView() {
-        return useCircularView;
-    }
-    protected void setUseStateView(boolean useStateView) {
-        this.useCircularView = useStateView;
+        paintCircular(g2,baseballWorld,width,height);
+        // FIXME: re-enable
+        //paintHistory(g2,baseballWorld,width,height);
     }
 
     public static String draw(BaseballWorld baseballWorld, int width, int height) {
