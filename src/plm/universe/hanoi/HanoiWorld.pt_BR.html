@@ -3,21 +3,19 @@
 <h1>HanoiWorld</h1>
 
 <p>
-Este mundo implementa o problema ultra-clássico das torres de
-hanoi. Você deve mover a pilha de discos da pilha onde eles estão para
-outra pilha (dado um segundo parâmetro no nome do mundo -- número 1
-para o mundo padrão). Existem algumas restrições extras: você pode
-mover apenas um disco por vez, e não pode colocar um disco sobre um
-menor.</p>
+Este mundo implementa o problema ultra-clássico das torres de hanoi. Você
+deve mover a pilha de discos da pilha onde eles estão para outra pilha (dado
+um segundo parâmetro no nome do mundo -- número 1 para o mundo
+padrão). Existem algumas restrições extras: você pode mover apenas um disco
+por vez, e não pode colocar um disco sobre um menor.</p>
 
 <p>Apenas 4 funções são fornecidas:</p>
 
 <pre>[!java|c]void [/!]mover([!java|c]int [/!]src, [!java|c]int [/!]dst)</pre>
 
-Move um disco de uma vara <code>src</code> para a vara
-<code>dst</code>. Se você tentar fazer um movimento inválido (como
-colocar um disco sobre outro menor), uma IllegalArgumentException é
-levantada. 
+Move um disco de uma vara <code>src</code> para a vara <code>dst</code>. Se
+você tentar fazer um movimento inválido (como colocar um disco sobre outro
+menor), uma IllegalArgumentException é levantada. 
 
 <pre>[!java|c]int [/!]getTamanhoSlot([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
 Retorna a quantidade de discos colocados num ponto específico. É usado

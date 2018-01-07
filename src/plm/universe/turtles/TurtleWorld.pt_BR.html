@@ -12,69 +12,69 @@ obedecem a comandos simples.</p>
 
 <h2>Funções para mover a tartaruga</h2>
 
-<pre>[!java|c]void [/!]avançar([!java|c]double [/!]passos[!scala]:Double[/!])
-[!java|c]void [/!]recuar([!java|c]double [/!]passos[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])
+[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])</code></pre>
 Move para frente e para trás na quantidade de passos pedidos.
 
-<pre>[!java|c]void [/!]direita([!java|c]double [/!]ângulo[!scala]:Double[/!])
-[!java|c]void [/!]esquerda([!java|c]double [/!]ângulo[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])
+[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])</code></pre>
 Vira à esquerda ou à direita um dado ângulo (em graus).
 
-<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
-[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+<pre><code class="code-container">[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</code></pre>
 Retorna a posição atual da tartaruga. Observe que o ponto (0,0) está no
 canto superior esquerdo, como é comum na ciência da computação.  
 
-<pre>[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
+<pre><code class="code-container">[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
 [!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])
-[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</code></pre>
 Teletransporta a tartaruga para uma nova posição (sem deixar rastros).
 
-<pre>[!java|c]void [/!]moverPara([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</code></pre>
 Move a tartaruga para uma nova posição.
 
-<pre>[!java|c]void [/!]círculo([!java|c]double [/!]raio[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])</code></pre>
 Desenha um círculo de raio especificado com o centro na tartaruga.
 
-<pre>[!java|c]void [/!]esconder()</pre>
+<pre><code class="code-container">[!java|c]void [/!]hide()</code></pre>
 Esconde a tartaruga.
 
-<pre>[!java|c]void [/!]mostrar()</pre>
+<pre><code class="code-container">[!java|c]void [/!]show()</code></pre>
 Mostra novamente a tartaruga.
 
-<pre>[!java]boolean [/!][!c]int [/!]éVisível()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]</code></pre>
 Retorna se a tartaruga é visível ou não.
 
-<pre>[!java|c]void [/!]limpar()</pre>
+<pre><code class="code-container">[!java|c]void [/!]clear()</code></pre>
 Remove todos os rastros do papel.
 
-<pre>[!java|c]double [/!]getHeading()[!scala]:Double[/!]</pre>
+<pre><code class="code-container">[!java|c]double [/!]getHeading()[!scala]:Double[/!]</code></pre>
 Retorna a direção atual da tartaruga (em graus).
 
-<pre>[!java|c]void [/!]setDireção([!java|c]double [/!]ângulo[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])</code></pre>
 Ajusta uma nova direção para a tartaruga (em graus).
 
 <h2>Funções da caneta</h2>
 
-<pre>[!java|c]void [/!]levantarCaneta()</pre>
+<pre><code class="code-container">[!java|c]void [/!]penUp()</code></pre>
 Levanta a caneta (tartarugas têm canetas, não pinceis, como os buggles). A
 tartaruga não vai  deixar nenhum rastro durante seus passos seguintes.
 
-<pre>[!java|c]void [/!]abaixarCaneta()</pre>
+<pre><code class="code-container">[!java|c]void [/!]penDown()</code></pre>
 Abaixa a caneta. A tartaruga vai deixar um rastro nos próximos movimentos.
 
-<pre>[!java]boolean [/!][!c]int [/!]canetaEstáAbaixada()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]</code></pre>
 Retorna a posição atual da caneta como um booleano.
 
-<pre>[!java|c]Cor [/!]getCor()[!scala]:Cor[/!]</pre>
+<pre><code class="code-container">[!java|c]Color [/!]getColor()[!scala]:Color[/!]</code></pre>
 Retorna a cor atual da caneta.
 
-<pre>[!java|c]void [/!]setCor([!java|c]Cor [/!]cor[!scala]:Cor[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])</code></pre>
 Muda a cor da caneta.
 
 <h2>Outras funções</h2>
 
-<pre>[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</code></pre>
 Retorna se a tartaruga atual está selecionada na interface gráfica.
 
 <h2>Cores válidas</h2>

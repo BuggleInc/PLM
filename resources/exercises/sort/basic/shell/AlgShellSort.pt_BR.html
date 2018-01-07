@@ -1,0 +1,46 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>ShellSort</h2>
+ 
+Este algoritmo é batizado em homenagem a seu autor, Donald Shell, que o
+publicou em 1959. Ele pode ser visto como uma aplicação da ideia do CombSort
+(faça com que elementos que tem um longo caminho pegarem atalhos) ao
+insertion sort (CombSort é uma variação do BubbleSort). Ao invés de comparar
+valores adjacentes durante o insertion sort, ele compara valores separados
+por um intervalo maior. Quanto maior o intervalo, mais rápido os elementos
+se movem para seu destino final, mas também menos preciso fica o
+movimento. É portanto essencial que o algoritmo vá sendo aplicado numa série
+de intervalos cada vez menor. No último passo, quando o intervalo for 1, o
+InsertionSort será usado, mas numa array que estará praticamente ordenada
+pelos passos anteriores.
+
+<p>Donald Shell propôs <code>len/2</code> como o valor inicial do intervalo, e
+ir dividindo por 2 a cada passo. O pseudo-código é o seguinte:
+<pre>
+gap=len/2
+while gap>0:
+  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.
+</pre>
+
+<p>Assim como no CombSort, a sequência de valores pega pelo intervalo é crucial
+para a performance do Shell sort. Em alguns casos patológicos raros, a
+sequência que usamos pode levar a uma performance O(n^2). Outras sequências
+foram propostas: os incrementos de Hibbard de 2k − 1 levam a uma
+complexidade de O(n^(3/2)) em casos ruins. incrementos de Pratt 2^i3^j levam
+a uma performance de O(nlog(n)log(n) nos piores casos. A existência de uma
+sequência levando a O(n log(n)) foi excluída por Poonen, Plaxton e
+Suel. Graças a esta performance, ShellSort é um candidato válido para arrays
+de várias centenas de milhares quando corretamente implementado.</p>
+
+<p>No nosso caso, a array é pequena demais para se beneficiar destas
+otimizações. Se você ainda assim quiser, tome o intervalo inicial como o
+maior valor da série alvo ainda menor que o tamanho do array, e então use
+valores decrescentes da série.</p>
+
+<p>Um fato interessante: Determinar a melhor sequência de intervalos para o
+shell sort se tornou um tema de pesquisa de nosso século em ciência da
+computação. Por exemplo, um artigo de 2001 introduz a seguinte sequência,
+que parece ser a melhor na prática para arrays de tamanho até 10^5: {1, 4,
+10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the
+Average Case of Shellsort, 13th International Symposium on Fundamentals of
+Computation Theory, LNCS 2001; Vol. 2138).</p> 

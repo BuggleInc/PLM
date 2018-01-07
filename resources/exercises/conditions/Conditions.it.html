@@ -10,13 +10,13 @@ prendi l'ombrello</i>.
 
 <p>La sintassi di [!thelang] è la seguente:</p>
 
-<pre>[!java|scala|c]if (<b>condizione</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFareSeVero();</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFareInSeguitoSeVero();</b>
-}[/!][!python]if <b>condizione</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFareSeVero()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFareInSeguitoSeVero()</b>[/!]
-<b>cosaFareComunque()[!java|c];[/!]</b></pre>
+<pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>
+}[/!][!python]if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]
+<b>whatToDoAnyway()[!java|c];[/!]</b></code></pre>
 
 <p>Se la condizione è vera il codice nel blocco immediatamente sottostante sarà
 eseguita per poi continuare con il resto del codice. Se la condizione è
@@ -49,21 +49,21 @@ adhere to strict code presentation standards.[/!] It is very easy to get
 lost in your own code if it's not properly indented, so you want to clean it
 up so that working on your code remains pleasant and productive.</p>
 
-
-<p class="python">Tutte le indentazioni di un dato blocco devono essere consistenti e non è
+[!python]
+<p>Tutte le indentazioni di un dato blocco devono essere consistenti e non è
 possibile tagliare un blocco. I codici seguenti sono incorretti e
 solleveranno errori.</p>
-<pre class="python">if <b>condizione</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFare()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFareInSeguito()</b> <span class="comment"># uno spazio di troppo</span>
-<b>cosaFareComunque()</b>
-</pre>
-<pre class="python">if <b>condizione</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFare()</b>
-<b>cosaFareComunque()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>cosaFareInSeguito()</b> <span class="comment"># questo blocco non segue le righe della condizione</span>
-</pre>
-
+<pre><code class="code-container">if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># one space too much </span>
+<b>whatToDoAnyway()</b>
+</code></pre>
+<pre><code class="code-container">if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+<b>whatToDoAnyway()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># this block is not hanging to a condition line</span>
+</code></pre>
+[/!]
 <p>The condition must be a
 <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code>
 expression.  The inner block of code will get executed if the expression is
@@ -119,18 +119,18 @@ per rimuovere qualsiasi ambiguità che potrebbe comparire in un espressione.</li
 condizione è falsa attraverso la seguente sintassi. In questo caso
 l'istruzione <code>cosaFareSeFalso()</code> sarà eseguita solo nella
 condizione false.</p>
- <pre>[!java|scala|c]if (<b>condition</b>) {
+ <pre><code class="code-container">[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
 }[/!][!python]if (<b>condition</b>):
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</pre>
-
-<p class="Python">Non dimenticate i duepunti (:) dopo l'else, essi indicano che un nuovo
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]</code></pre>
+[!python]
+<p>Non dimenticate i duepunti (:) dopo l'else, essi indicano che un nuovo
 blocco sta iniziando.</p>
-
+[/!]
 <h3>Traguardo dell'esercizio</h3><a name="Objectives">Se il buggle fronteggia un muro bisogna fare un passo
 indietro. Alrimenti bisogna fare un passo avanti. Per rilevare se si ha un
 muro difronte basta usare il metodo predefinito <code>isFacingWall()</code>
@@ -140,5 +140,4 @@ che ogni buggle capisce.  </a>
 ognuno di loro è in una propria situazione iniziale. Lo stesso codice sarà
 eseguito per ognuno di loro.</p>
 
-<p>Quando il tuo programma funzionerà, vai avanti al prossimo esercizio che è
-nel prossimo sotto-albero della selection windows.</p>
+<p>Quando il tuo programma avrà funzionato, prosegui con il prossimo esercizio.</p>

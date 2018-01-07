@@ -1,0 +1,48 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Mondo di Snake</h2>
+
+<p>Ora insegneremo al buggle ad esplorare il suo mondo. La sua posizione
+iniziale è nell'angolo in basso a sinistra, dovrai fargli visitare tutte le
+celle fino a sopra (colorando il terreno al suo passaggio). Il ciclo
+principale del tuo codice sarà qualcosa come:</p>
+<pre>
+ abbassa il pennello
+ fintanto che non raggiungi la posizione finale
+   muoviti come un serpente
+</pre>
+
+<p>Dobbiamo quindi scrivere due metodi specifici: il primo che ritorna un
+valore booleano indicante se siamo sulla posizione finale mentre il secondo
+dovrà muovere il buggle un passo da serpente in avanti.</p>
+
+<p>Raggiungeremo la posizione finale solo e solamente se entrambe queste
+condizioni saranno vere:</p>
+<ul>
+  <li>Stiamo fronteggiando un muro</li>
+  <li>C'è un muro a nord del buggle. Quindi se il buggle è rivolto ad est dovrai
+controllare se ci sono muri alla sua sinistra e se invece è rivolto a ovest
+dovrai controllare il lato destro.<br/>
+      We can get the current heading of the buggle using the
+<code>getDirection()</code>, and we know whether it looks east using
+<code>getDirection() == [!scala|python|java]Direction.[/!]EAST</code> (WEST
+for west).<br/>
+      Per effettuare il controllo non bisogna fare nulla di magico: devi girare il
+buggle e verificare se si trova dinnanzi ad un muro.</li>
+</ul>
+
+<p>Quindi il passo da serpente può essere compiuto avanzando se non abbiamo un
+muro difronte o viceversa spostandosi alla linea successiva (ad esempio se
+guardando a ovest vedete un muro dovrete girate a destra, andare avanti e
+girare di nuovo a destra).</p>
+
+<p>Hint: the main loop of your code must continue while the testing function
+returns false. There is two ways of writing it:</p>
+<pre>while (testingFunction() == [!c]0) {[/!][!java|scala]false) {[/!][!python]False):[/!]</pre>
+<p>[!python]You may prefer to write it as:[/!] [!java|scala|c]Since the
+exclamation mark (!) denotes the boolean negation in [!thelang], you may
+write it as:[/!]</p>
+<pre>while ([!java|scala|c]![/!][!python]not [/!]testingFunction())[!java|scala|c] {[/!][!python]:[/!]</pre>
+
+<p>È il tuo turno...</p>
+

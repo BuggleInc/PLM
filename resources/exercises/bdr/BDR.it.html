@@ -16,67 +16,66 @@ blocco di una delle alternative di una condizione contiene una sola
 istruzione le parentesi graffe diventano opzionali. Quindi, questi due pezzi
 di codice sono equivalenti:</p>
 
- <pre>if (<b>condizione</b>) {
-    <b>cosaFareACondizioneTrue();</b>
+ <pre><code class="code-container">if (<b>condition</b>) {
+    <b>whatToDoIfTheConditionIsTrue();</b>
 } else {
-    <b>cosaFareAltrimenti();</b>
-}</pre>
- <pre>if (<b>condizione</b>) 
-    <b>cosaFareACondizioneTrue();</b>
+    <b>whatToDoElse();</b>
+}</code></pre>
+ <pre><code class="code-container">if (<b>condition</b>) 
+    <b>whatToDoIfTheConditionIsTrue();</b>
 else
-    <b>cosaFareAltrimenti();</b></pre>
+    <b>whatToDoElse();</b></code></pre>
 
 <p>È possibile fare lo stesso per il corpo dei cicli contenenti una sola
 istruzione. Fate attenzione, questo diventa pericoloso se connettete più
 istruzioni <tt>if</tt> come in questo esempio: </p>
-<pre>if (isOverBaggle())    
+<pre><code class="code-container">if (isOverBaggle())    
      if (x == 5)
           left();
-else
+else // Do not write it this way, it's misleading!
      right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+[!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
-<p>Infatti, il buggle non gira a destra quando non ci sono baggle a terra ma
-quando il buggle trova un baggle a terra e x è diverso da 5. In altre
-parole, il buggle capisce il precedente codice come quello scritto quì sotto
-(nota che l'<tt>else</tt> è spostato più a destra):</p>
-<pre>if (isOverBaggle())    
+<p>You think that <code>right()</code> refers to the first <code>if</code> and
+get executed when <code>isOverBaggle()</code> returns false, but in fact, it
+refers to the second one <code>if</code> and will be executed when
+<code>isOverBaggle()</code> returns true and <code>x != 5</code>. Yes,
+despite the indentation, the buggle understands the previous code as
+follows:</p>
+<pre><code class="code-container">if (isOverBaggle())    
         if (x == 5)
             left();
         else
             right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+[!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
-<p>La prima lezione da imparare è che l'indentazione è molto importante per
-aiutare le persone a capire anche se non cambia il significato del
-codice. Avremmo potuto scrivere il codice seguente ottenendo lo stesso
-risultato. Ma se volete che un umano legga e revisioni il vostro codice lo
-dovete indentare correttamente. Ad esempio se voleste che un professore
-legga il vostro codice (per valutarlo oppure rispondere ad una domanda su di
-esso) oppure se voleste riusarlo più tardi o doveste debuggarlo
-(correggerlo) da soli.</p> 
+<p>In [!thelang] the computer connects a <tt>else</tt> branch to the closest
+<tt>if</tt>. If you find it ambiguous, you should add more braces than
+strictly necessary. Computers don't even look at the indentation in
+[!thelang]. If it were only for the computer, the previous code could even
+be written as follows, and it would still lead to the same result.</p>
 
-<pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+<pre><code class="code-container">if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</code></pre>
 
-<p>La seconda lezione da imparare è che l'alternativa <tt>else</tt> è sempre
-connessa alla <tt>if</tt> più vicina. Questo potrebbe essere un po'
-fastidioso in certi casi e potrebbe essere meglio aggiungere più parentesi
-di quelle che sono strettamente necessarie per rimuovere ogni ambiguità.</p>
-[/!]
+<p>But for humans, <b>you really want to indent your code correctly
+correctly</b>. For example if you want a professor to review or even grade
+your code, if you want to reuse your own code later, or even if you need to
+debug it. That is right: you need to write readable code for your own
+comfort.</p>  [/!]
 
 <h3>Concatenamenti delle condizioni</h3>
 
 <p>A volte vorrete chiedere al buggle qualcosa come questo:</p> 
-<pre>se piove prendi l'ombrello;
-altrimenti se è un giorno caldo prendi una bottiglia d'acqua;
-altrimenti se è il 4 luglio prendi la bandiera americana</pre>
+<pre><code class="code-container">if it's raining, take an umbrella;
+if not, and if it's a hot day, take a bottle of water;
+if not and if it's July 4th, take an American flag</code></pre>
 
 <p>Il punto è che vogliamo che solo una di queste azioni venga intrapresa. Vale
 a dire che se sta piovendo in un 4 luglio veramente caldo noi non vogliamo
 che il buggle esca con un ombrello, dell'acqua ed una bandiera ma solo con
 l'ombrello. Il seguente codice è quindi SBAGLIATO</p>
 
-<pre>[!scala|c|java]if (rainy())
+<pre><code class="code-container">[!scala|c|java]if (rainy())
     takeUmbrella();
 if (hot())
     takeWater();
@@ -86,7 +85,7 @@ if (todayIsJuly4th())
 if hot():
     takeWater()
 if todayIsJuly4th():
-    takeFlag()[/!]</pre>
+    takeFlag()[/!]</code></pre>
 
 
 <p>Poiché le condizioni sono valutate una dopo l'altra, c'è il rischio che si
@@ -94,7 +93,7 @@ vada a marciare il 4 luglio sotto la pioggia. Invece dovremo utilizzare
 qualcosa come questo per assicurarci che quando avremo trovato una
 condizione vera non venga valutata la successiva.</p>
 
-<pre>[!java|scala|c]if (rainy()) {
+<pre><code class="code-container">[!java|scala|c]if (rainy()) {
     takeUmbrella();
 } else {
     if (hotDay()) {
@@ -111,7 +110,7 @@ else:
         takeWater()
     else:
         if todayIsJuly4th():
-            takeFlag()[/!]</pre>
+            takeFlag()[/!]</code></pre>
 
 
 <p>Unfortunately, such a cascade of conditionals is quite difficult to read. It
@@ -122,7 +121,7 @@ using the <code>elif</code> keyword to mark explicitly these "else if"
 branches.[/!]
 </p>
 
-<pre>[!c|java|scala]if (rainy()) { 
+<pre><code class="code-container">[!c|java|scala]if (rainy()) { 
     takeUmbrella();
 } else if (hotDay()) {
     takeWater();
@@ -133,7 +132,7 @@ branches.[/!]
 elif hotDay():
     takeWater()
 elif todayIsJuly4th():
-    takeFlag()[/!]</pre>
+    takeFlag()[/!]</code></pre>
 
 <h3>Graffiti nel Mondo dei Buggle</h3>
 

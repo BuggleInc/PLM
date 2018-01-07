@@ -8,11 +8,11 @@ un numero prefissato di passi? D'altro canto creare i metodi
 <tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt> e via
 dicendo, non sarebbe realmente d'aiuto, per non dir meno.</p>
 
-<p>Fortunatamente è possibile passare <b>parametri</b> ai vostri metodi. Devi
-specificare il loro [!java|scala]tipo e [/!]nome dentro le parentesi tonde,
-dopo il nome del metodo. In seguito potrai usarli nel corpo nel metodo come
-se fossero variabili definite al suo interno ed aventi come valori iniziali
-quelli indicati dal chiamante.</p>
+<p>Luckily, it is possible to pass <b>parameters</b> to your methods. You have
+to specify their [!java|scala|c]type and[/!] name between the parenthesis
+after the method name. Then, you can use them in the method body as if it
+were variables defined in there, and which initial value is what the caller
+specified.</p>
 
 <pre>[!java|c]double [/!]divideByTwo([!java|c]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala|c]{[/!][!python]:[/!]
      return x / 2[!java|c];[/!]
@@ -20,7 +20,7 @@ quelli indicati dal chiamante.</p>
 
 <p>Dalla parte del chiamante tu dovrai specificare il valore iniziale di queste
 "variabili" fra le parentesi dell'invocazione.</p>
-<pre>[!java|c]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java|c];[/!]</pre>
+<pre>[!java|c]double [/!][!scala]val [/!]blah = divideByTwo(3.14)[!java|c];[/!]</pre>
 
 <p>Se vuoi inserire più di un parametro li devi separare da una virgola (,) sia
 nella dichiarazione che nell'invocazione.</p>
@@ -30,9 +30,9 @@ nella dichiarazione che nell'invocazione.</p>
 [!python]def divide(x, y):[/!]
      return x / y[!java|c];[/!]
 [!java|scala|c]}[/!]</pre>
-<pre>[!java|c]double res = divide(3.14 , 1.5);[/!]
-[!scala]val res = divide(3.14 , 1.5)[/!]
-[!python]res = divide(3.14 , 1.5)[/!]</pre>
+<pre>[!java|c]double res = divide(3.14 , 2);[/!]
+[!scala]val res = divide(3.14 , 2)[/!]
+[!python]res = divide(3.14 , 2)[/!]</pre>
 
 [!java|scala]
 <p>In [!thelang] puoi dichiarare diversi metodi con lo stesso nome fintantoché
@@ -74,11 +74,11 @@ noi sappiamo già che <code>x&lt;=y</code> perché in caso contrario il
 
 <h3>Traguardo dell'esercizio</h3>
 <p>This time, you have to write a <code> [!java|c]move(int
-stepCount,[!java]boolean[/!][!c]int[/!] forward)[/!] [!scala]move(stepCount:
-Int,forward: Boolean)[/!] [!python]move(stepCount,forward)[/!] </code>
-method which moves forward by <code>stepCount</code> steps if
-<code>forward</code> is true, and moves back of that amount of steps if the
-boolean is false.</p>
+stepCount,[!java]boolean[/!][!c]int[/!] goForward)[/!]
+[!scala]move(stepCount: Int,goForward: Boolean)[/!]
+[!python]move(stepCount,goForward)[/!] </code> method which moves forward by
+<code>stepCount</code> steps if <code>goForward</code> is true, and moves
+back of that amount of steps if the boolean is false.</p>
 
 <p>Questa volta c'è solo un mondo ma sette buggles, tutti che condividono lo
 stesso codice. Questo codice non dovrebbe essere troppo problematico da

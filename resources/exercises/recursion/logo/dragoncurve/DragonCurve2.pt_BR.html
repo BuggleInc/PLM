@@ -1,0 +1,48 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>A curva do dragão (2)</h2>
+
+<p>A solução anterior "induz" que a tartaruga se teletransporta para outro
+local, ou pelo menos, que ela levanta a caneta durante o desenho. Na
+verdade, o final do desenho da primeira chamada recursiva não coincide com o
+começo da segunda chamada recursiva. É por isto que nós temos que usar o
+método <code>setPos()</code></p>	
+
+<p>Nesta lição, você vai escrever um método recursivo que permita desenhar a
+curva do dragão sem levantar a caneta. Para isto, precisamos de outro método
+recursivo que desenhe o lado espelhado da curva.</p>
+
+<p>O método <code>dragon()</code> é então definido recursivamente usando ele
+próprio e <code>dragonReverse()</code>. Da mesma forma, o método
+<code>dragonReverse()</code> é definido recursivamente usando ele próprio e
+<code>dragon()</code>. Este é, portanto, um exemplo de <i>recursão
+mútua</i>.
+</p>
+
+<p>
+O protótipo do método <code>dragon()</code> é o mesmo do exercício anterior:</p>
+<pre>[!java|c]void [/!]dragão([!java|c]int [/!]ordem[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
+
+<p>A coordenada do novo ponto (u, v) introduzida pelo <code>dragon()</code> é:</p>
+<pre>
+u = (x + z)/2 + (t - y)/2
+v = (y + t)/2 - (z - x)/2
+</pre>
+
+<p>O protótipo do método <code>dragonReverse</code> é similar:</p>
+<pre>[!java|c]void [/!]inverterDragão([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])</pre>
+
+<p>A coordenada do novo ponto (u, v) introduzida pelo
+<code>dragonReverse()</code> é:</p>
+<pre>
+u = (x + z)/2 - (t - y)/2
+v = (y + t)/2 + (z - x)/2
+</pre>
+
+<p>Para deixar o trabalho de cada um dos dois métodos recursivos mais visível,
+a linha pintada pelo <code>dragon()</code> deve ser vermelha
+(<code>Color.red</code>) enquanto que a linha pintada pelo
+<code>dragonReverse()</code> deve ser azul(<code>Color.blue</code>).</p>
+
+<p>Dê uma olhada em cada visão de mundo objetivo para entender como escrever a
+função.</p> 

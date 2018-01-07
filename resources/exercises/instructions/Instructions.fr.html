@@ -8,65 +8,61 @@ instructions à l'ordinateur, qui les applique aveuglément. La plus grande
 difficulté est d'expliquer quoi faire à quelque chose d'aussi bête que
 l'ordinateur...
 
-<p>Notre second programme sera un peu plus compliqué, mais pas
-tellement. L'objectif de votre buggle est simplement de se dessiner une
-maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif pour
-voir exactement ce que cela veut dire.</p>
+<p>Our second program will be a bit more complicated, but not much. The goal
+for your buggle is simply to draw a house (a box), and hide inside. Check
+the objective world to see exactly what this means.</p>
 
-<p>Pour cela, vous aurez besoin de <code>avance()</code>,
-<code>gauche()</code> et <code>droite()</code>. Utilisez votre brosse pour
-marquer le sol en marchant. Commencez à marquer le sol avec
-<code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par
-exemple pour entrer dans votre maison sans marquer le sol).</p>
+<p>For that, you will need <code>forward()</code>, <code>left()</code> and
+<code>right()</code>. Use your brush to mark the ground as you walk. Start
+marking the ground with <code>brushDown()</code>, and stop it with
+<code>brushUp()</code> afterward (e.g., to enter your house without marking
+its ground).</p>
 
-<h3>Qu'est exactement qu'un programme ?</h3>
+<h3>What exactly is a program?</h3>
 
-<p>Les programmes sont des enchaînements d'appels de méthodes, qui
-forment des listes d'ordres simples donnés à la machine. C'est assez
-comparable à une recette de cuisine où l'on dit <i>cassez les œufs
-puis ajoutez du sel puis mélangez le tout puis faites
-cuire</i>. En [!thelang], il faut séparer ces instructions par des
-symboles point-virgule (;)[!python|scala] ou par des retours à la
-ligne[/!], et suivis de parenthèses. Notre recette s'écrirait de la
-façon suivante [!python|scala](vous pourriez aussi ajouter des
-points-virgules à la fin des lignes, mais c'est optionel)[/!] :</p>
+<p>Programs are mainly suites of method calls, which are no more than a list of
+simple orders given to the machine. It is very similar to a recipe stating
+<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.
+[!thelang] wants to have the instructions separated by semi-columns
+(;)[!python|scala] or by new lines[/!], and followed by parenthesis. Our
+little receipe would thus be written in the following way[!python|scala]
+(you can also add semi-columns at the end of the lines, but this is not
+mandatory)[/!].</p>
     
 <pre>
-casserLesOeufs()[!java|c];[/!]
-ajouterDuSel()[!java|c];[/!]
-melangerLeTout()[!java|c];[/!]
-faireCuire()[!java|c];[/!]
+meltTheChocolatePieces()[!java|c];[/!]
+addSugar()[!java|c];[/!]
+coolMix()[!java|c];[/!]
+serve()[!java|c];[/!]
 </pre>
     
-<p>N'écrivez pas tout sur la même ligne, même si cela ne fait aucune
-différence pour l'ordinateur[!python|scala] (si vous ajoutez les
-points-virgules)[/!]. C'est une <b>très mauvaise idée</b> car cela
-rend le code plus difficile à relire. Comme disait Harold Abelson,
-<i>les programmes doivent surtout être écrits pour être lisibles par
-les humains, et accessoirement pour être exécutables par les
-machines.</i></p>
+<p>Do not write it all on one line only even if the computer would accept it
+[!python|scala](provided that you don't omit the semi-columns)[/!]. This is
+a <b>really bad idea</b>, hindering the readability.  <i>Programs must be
+written for people to read, and only incidentally for machines to
+execute,</i> as said Harold Abelson.</p>
 
-<p>Les buggles peuvent comprendre un ensemble fini d'instructions (et
-nous verrons plus tard comment leur apprendre de nouveaux trucs). Il y
-a une méthode associée à chaque bouton du panneau de commande
-interactive.  Pour faire la même chose que le bouton <b>avance</b>
-(faire avancer la buggle d'un pas), il faut écrire dans l'éditeur : </p>
+<p>There is a limited set of instructions that buggles understand, and we will
+eventually learn how to define new ones. For now, there is a method for each
+button of the interactive control panel. To achieve the same effect than the
+<b>forward</b> button (making the buggle moving one step forward), you need
+to write the following in the editor: </p>
 
-<pre>[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]</pre>
+<pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
 <p>De même, pour faire l'équivalent des boutons
 <b>[!java|scala|python]recule[/!][!c]reculePas[/!]</b>, <b>gauche</b> et
 <b>droite</b>, il faut utiliser respectivement :</p>
 <pre>
-recule()[!java|c];[/!]
-gauche()[!java|c];[/!]
-droite()[!java|c];[/!]
+backward()[!java|c];[/!]
+left()[!java|c];[/!]
+right()[!java|c];[/!]
 </pre>
 
 <p>Le bouton <b>marquer</b> est un peu particulier, puisqu'il correspond à deux
 méthodes : la première lève le crayon, tandis que la seconde le baisse.</p>
 <pre>
-leveBrosse()[!java|c];[/!]
-baisseBrosse()[!java|c];[/!]
+brushUp()[!java|c];[/!]
+brushDown()[!java|c];[/!]
 </pre>
 
 <p>La buggle offre d'autres méthodes, présentées dans le menu "Aide/À propos de

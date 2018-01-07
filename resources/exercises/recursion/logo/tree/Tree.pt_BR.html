@@ -1,0 +1,45 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Árvores</h2>
+
+<p>Vamos agora construir árvores. Para isto, vamos escrever um método usando
+recursão dupla seguindo este protótipo</p> 
+<pre>[!java|c]void [/!]árvore([!java|c]int [/!]passos[!scala]:Int[/!], [!java|c]double [/!]comprimento[!scala]:Double[/!], [!java|c]double [/!]ângulo[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])</pre>
+
+<p>Para desenhar uma árvore de quatro níveis, você deve desenhar um tronco do
+comprimento dado, virar à direita num ângulo dado, desenhar uma árvore de
+nível 3, virar a esquerda duas vezes no ângulo dado, desenhar outra árvore
+de nível 3, e voltar para a posição inicial. Não esqueça de voltar para a
+posição inicial!<p>
+
+<p>Se um tronco da árvore é de comprimento 'len', o tronco da árvore no próximo
+nível será de comprimento 'len*shrink'.<p>
+
+<p>Finalmente, aqui está o pseudo-código do caso geral (você deve adicionar o
+caso base por si só):</p>
+<pre>
+  Mova para a frente no comprimento desejado
+  Desenhe (recursivamente) a sub-árvore da direita
+  Desenhe (recursivamente) a sub-árvore da esquerda
+  Mova para trás para a posição inicial
+</pre> 
+<p>Não esqueça de adicionar o caso base a seu código, ou seu buggle vai entrar
+num loop infinito. Então, desenhar a sub-árvore da direita é virar a direita
+e desenhar a sub-árvore.</p>
+
+<p>Como você pode ver, cada nível de recursão é representado por uma cor
+diferente. Para isto, você tem que chamar o <code>current(step)</code>,
+passar o nível de recursão atual como parâmetro. Isto vai pegar a cor certa
+para você. Não apague suas belas cores quando se mover de volta para sua
+posição inicial.</p>
+
+<p>Se você fizer a função errado, pode rapidamente ficar muito difícil de
+depurar pois os erros vão aparecer em cada nível  da recursão, mudando
+completamente o desenho. Por questões de depuração, você pode usar o
+<code>subtree()</code> que vai desenhar uma sub-árvore corretamente. Esta
+função é portanto muito similar àquela que você está tentando escrever. A
+única diferença é que <code>subtree()</code> apenas desenha em preto. Logo,
+você pode usar ela no lugar da chamada recursiva para depurar seu código,
+mas você vai ter que mudar para uma chamada recursiva adequada no seu
+próprio código (uma vez que funcione) para obter as cores certas, e passar
+no exercício.</p>  

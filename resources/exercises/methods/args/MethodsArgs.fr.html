@@ -9,10 +9,11 @@ les méthode <tt>avance2()</tt>, <tt>avance3()</tt>, <tt>avance4()</tt>, et
 suite, ça ne constitue pas un réel gain de temps. Et puis, c'est carrément
 moche !</p>
 
-<p>Heureusement, il est possible de donner des <b>paramètres</b> à vos
-méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui
-suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de
-la fonction comme s'il s'agissait de variables définies ici.</p>
+<p>Luckily, it is possible to pass <b>parameters</b> to your methods. You have
+to specify their [!java|scala|c]type and[/!] name between the parenthesis
+after the method name. Then, you can use them in the method body as if it
+were variables defined in there, and which initial value is what the caller
+specified.</p>
 
 <pre>[!java|c]double [/!]diviseParDeux([!java|c]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala|c]{[/!][!python]:[/!]
      return x / 2[!java|c];[/!]
@@ -20,7 +21,7 @@ la fonction comme s'il s'agissait de variables définies ici.</p>
 
 <p>À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les
 parenthèses de l'appel.</p>
-<pre>[!java|c]double [/!][!scala]val [/!]resultat = diviseParDeux(3.14)[!java|c];[/!]</pre>
+<pre>[!java|c]double [/!][!scala]val [/!]blah = divideByTwo(3.14)[!java|c];[/!]</pre>
 
 <p>Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules,
 lors de la déclaration comme lors de l'appel.</p>
@@ -30,9 +31,9 @@ lors de la déclaration comme lors de l'appel.</p>
 [!python]def divise(x, y):[/!]
      return x / y[!java|c];[/!]
 [!java|scala|c]}[/!]</pre>
-<pre>[!java|c]double res = divise(3.14 , 1.5);[/!]
-[!scala]val res = divise(3.14 , 1.5)[/!]
-[!python]res = divise(3.14 , 1.5)[/!]</pre>
+<pre>[!java|c]double res = divide(3.14 , 2);[/!]
+[!scala]val res = divide(3.14 , 2)[/!]
+[!python]res = divide(3.14 , 2)[/!]</pre>
 
 [!java|scala]
 <p>En [!thelang], il est possible d'avoir plusieurs méthodes du même nom, à
@@ -73,12 +74,12 @@ fonction.</p>
 
 
 <h3>Objectif de cet exercice</h3>
-<p>Cette fois, vous devez écrire une méthode
-<code>[!java|c]move(int nbPas,[!java]boolean[/!][!c]int[/!] versLAvant)[/!]
-[!scala]move(nbPas: Int,versLAvant: Boolean)[/!]
-[!python]move(nbPas,versLAvant)[/!] </code> qui se déplace de
-<code>nbPas</code> pas. Si <code>versLAvant</code> est vrai, il faut avancer
-de ce nombre de pas; dans le cas contraire, il faut reculer.</p>
+<p>This time, you have to write a <code> [!java|c]move(int
+stepCount,[!java]boolean[/!][!c]int[/!] goForward)[/!]
+[!scala]move(stepCount: Int,goForward: Boolean)[/!]
+[!python]move(stepCount,goForward)[/!] </code> method which moves forward by
+<code>stepCount</code> steps if <code>goForward</code> is true, and moves
+back of that amount of steps if the boolean is false.</p>
 
 <p>Cette fois, il y a un seul monde, et sept buggles, qui exécutent toutes le
 code que vous allez écrire.

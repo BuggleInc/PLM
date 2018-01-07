@@ -1,0 +1,55 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Torre de Hanoi</h2>
+
+<p>A Torre de Hanoi (ou Torres de Hanoi), também conhecida como Torre de Brahma
+(ou Torres de Brahma), é um quebra-cabeça ou jogo matemático. Consiste de
+três varas, e uma quantidade de discos de tamanhos diferentes que podem
+encaixar em qualquer das varas. O jogo começa com os discos todos em uma
+vara ordenados em ordem crescente, o menor em cima, formando uma pirâmide.</p>
+
+O objetivo do jogo é mover a pilha completa para outra vara, obedecendo as
+seguintes regras:
+<ul>
+  <li>Apenas um disco pode ser movido por vez.</li>
+
+  <li>Cada movimentação consiste em pegar o disco de cima de uma vara e colocá-lo
+em outra vara, no topo dos discos que já estiverem presentes.</li>
+
+  <li>Nenhum disco pode ser colocado sobre um disco menor.</li>
+</ul>
+
+<h3>Objetivo deste exercício</h3> 
+
+Escreva o núcleo do método: <code>[!java|c]void
+[/!]hanoi[!c]Rec[/!]([!java|c]int [/!]height[!scala]:Int[/!], [!java|c]int
+[/!]src[!scala]:Int[/!], [!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int
+[/!]dst[!scala]:Int[/!])</code>
+
+<p>Este método vai, recursivamente, resolve o problema apresentado. O primeiro
+parâmetro chamado <code>height</code> é a altura da torre a mover; o segundo
+parâmetro <code>src</code> é o índice da torre inicial, o terceiro parâmetro
+<code>other</code> é o índica da vara não utilizada enquanto que o quarto
+parâmetro <code>dst</code> é o índice da torre final experada.</p>
+
+<p>O segredo para resover este enigma é reconhecer que ele pode ser dividido em
+problemas menores e este em problemas menores até que uma solução é
+encontrada.</p>
+
+<div class="tip" id="tip-1" alt="Ainda não captei, por favor me dê mais orientações">
+Aqui está um pseudo-código da solução:
+<ul>
+  <li>Rotule as varas como A, B, C (estes rótulos pode se mover com diferentes
+passos)</li>
+  <li>Seja n o número total de discos (A altura da torre inicial)</li>
+  <li>número de discos a partir de 1 (menor, mais alto) até n (maior, mais baixo)</li>
+</ul>
+
+Para mover n discos da vara A para a vara C:
+<ul>
+  <li>mova n−1 discos de A para B. Isto deixa o disco n sozinho na vara A</li>
+  <li>Mova o disco de número n de A para C</li>
+  <li>Mova n−1 discos de B para C de forma que eles fiquem sobre o disco de número
+n</li>
+</ul>
+</div>

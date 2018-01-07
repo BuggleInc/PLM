@@ -12,70 +12,70 @@ simple orders.</p>
 
 <h2>Functions to move the turtle</h2>
 
-<pre>[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])
-[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])
+[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])</code></pre>
 Moves forward or backward of the requested amount of steps.
 
-<pre>[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])
-[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])
+[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])</code></pre>
 Turns left or right of the given angle (in degrees).
 
-<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
-[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+<pre><code class="code-container">[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</code></pre>
 Returns the current position of the turtle.  Note that the point (0,0) is on
 the top left corner, as it is often the case in Computer Science.  
 
-<pre>[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
+<pre><code class="code-container">[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
 [!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])
-[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</code></pre>
 Teleports the turtle to a new position (without leaving any trace).
 
-<pre>[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</code></pre>
 Moves the turtle to a new position.
 
-<pre>[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])</code></pre>
 Draw a circle of the specified radius centered on the turtle.
 
-<pre>[!java|c]void [/!]hide()</pre>
+<pre><code class="code-container">[!java|c]void [/!]hide()</code></pre>
 Hides the turtle.
 
-<pre>[!java|c]void [/!]show()</pre>
+<pre><code class="code-container">[!java|c]void [/!]show()</code></pre>
 Shows the turtle back.
 
-<pre>[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]</code></pre>
 Returns whether the turtle is currently visible.
 
-<pre>[!java|c]void [/!]clear()</pre>
+<pre><code class="code-container">[!java|c]void [/!]clear()</code></pre>
 Removes any trail on the sheet.
 
-<pre>[!java|c]double [/!]getHeading()[!scala]:Double[/!]</pre>
+<pre><code class="code-container">[!java|c]double [/!]getHeading()[!scala]:Double[/!]</code></pre>
 Returns the current heading of the turtle (in degrees).
 
-<pre>[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])</code></pre>
 Sets a new heading to the turtle (in degrees).
 
 <h2>Functions about the pen</h2>
 
-<pre>[!java|c]void [/!]penUp()</pre>
+<pre><code class="code-container">[!java|c]void [/!]penUp()</code></pre>
 Moves the pen up (turtles have pens, not brushes as buggles). The turtle
 will not leave any trace during its subsequent moves.
 
-<pre>[!java|c]void [/!]penDown()</pre>
+<pre><code class="code-container">[!java|c]void [/!]penDown()</code></pre>
 Moves the pen down. The turtle will leave a trace during its subsequent
 moves.
 
-<pre>[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]</code></pre>
 Returns the current pen position as a boolean.
 
-<pre>[!java|c]Color [/!]getColor()[!scala]:Color[/!]</pre>
+<pre><code class="code-container">[!java|c]Color [/!]getColor()[!scala]:Color[/!]</code></pre>
 Returns the current pen color.
 
-<pre>[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])</pre>
+<pre><code class="code-container">[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])</code></pre>
 Changes the pen color.
 
 <h2>Other functions</h2>
 
-<pre>[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</pre>
+<pre><code class="code-container">[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</code></pre>
 Returns whether the current turtle is selected in the graphical interface.
 
 <h2>Valid colors</h2>

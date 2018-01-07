@@ -6,10 +6,10 @@
 ripetere un azione fintantoché non si verifichi una condizione. Il ciclo
 while è usato per questo, con la seguente sintassi.</p>
  
-<pre>[!java|scala|c]while (<b>condizione</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>azione()</b>;
-}[/!][!python]while <b>condizione</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>azione()</b>[/!]</pre>
+<pre><code class="code-container">[!java|scala|c]while (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;
+}[/!][!python]while <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</code></pre>
 
 <p>Il blocco interno viene quindi eseguito ancora ed ancora finché la
 condizione rimane vera. Più in dettaglio, il buggle testa il valore della
@@ -19,29 +19,31 @@ esempio perché un movimento gli ha fatto fronteggiare un muro) lui ignora il
 blocco e continua. Se è ancora true, esso esegue il blocco e rivaluta la
 condizione. Esso continuerà finché la condizione rimarrà true.</p>
 
-<p>Naturalmente se le azioni scelte non influenzeranno il valore della
-condizione, il buggle continuerà ad eseguire l'azione all'infinito. In
-questo caso il pulsante <b>stop</b> dell'interfaccia diventerà utile. Per
-testare questo puoi provare a scrivere il seguente codice nell'editor:</p>
+<p>Naturally, if the chosen action does not modify the value of the condition,
+the buggle will do the action endlessly. The <b>stop</b> button <a><i
+class="mdi mdi-stop"></i></a> of the interface becomes then handy. To test
+this, you can try to type the following code in the editor:</p>
 
-<pre>[!java|scala]while (true) {
+<pre><code class="code-container">[!java|scala]while (true) {
 &nbsp;&nbsp;&nbsp;&nbsp;left();
 }[/!][!c]while (1) {
 &nbsp;&nbsp;&nbsp;&nbsp;left();
 }[/!][!python]while True:
-&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</code></pre>
 
 <p>This will let the buggle turn left as long as
 <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true
-(ie, endlessly), or until you stop it manually using the stop button.</p>
+(ie, endlessly), or until you stop it manually using the stop button. In
+this particuliar case, we will also automatically stop the execution after
+10 seconds.</p>
 
 <h3>Traguardo dell'esercizio</h3>
 Ora dovete scrivere del codice in modo che i vostri buggles si sposteranno
 avanti fintanto che non incontreranno un muro. L'idea è quindi quella di
 fare qualcosa come:
 
-<pre>mentre non stiamo fronteggiando un muro, eseguiamo:
-&nbsp;&nbsp;muoversiAvanti()</pre>
+<pre><code class="code-container">while we are not facing a wall, do:
+&nbsp;&nbsp;moveForward()</code></pre>
 
-<p>Look at the documentation (in "Help/About this world") for the full list of
-buggles' methods.</p>
+<p>Look at the documentation (button <i>API</i>) for the full list of buggles'
+methods.</p>
