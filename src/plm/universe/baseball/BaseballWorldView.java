@@ -24,7 +24,6 @@ import plm.universe.WorldView;
 
 public class BaseballWorldView extends WorldView {
 
-    private static Vector<Integer[]> playersCoordinate;
     private static double radius;
     private static double displayRatio;
     private static double virtualSize = 300.; // we display on a world that is 300x300 and dynamically resized (to ease our computations)
@@ -182,10 +181,6 @@ public class BaseballWorldView extends WorldView {
 
             colorPlayer = obtainColor(player);
 
-            playersCoordinate.add(new Integer[] {
-                    centerPlayer[0], centerPlayer[1],
-                    base,pos
-            });
             //System.out.println("center: "+centerPlayer[0]+","+centerPlayer[1]+" radius: "+this.radius+" player "+base+","+pos+" color:"+colorPlayer);
             drawPlayer(g, centerPlayer, radiusbis, colorPlayer, theta, base==player || player == -1);
         }
@@ -291,7 +286,6 @@ public class BaseballWorldView extends WorldView {
         radius+=amountOfBases-5; // adapting the position of the base to the total amount of bases
 
         // Draw the bases and the players on each base
-        playersCoordinate = new Vector<Integer[]>();
         for ( int i=0 ; i < world.getBasesAmount();i++)
             drawBase(g, world, L, radius, theta*i, (int) virtualSize/2, (int) virtualSize/2 , i, amountOfPlayers);
 
