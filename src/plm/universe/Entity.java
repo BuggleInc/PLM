@@ -29,8 +29,8 @@ public abstract class Entity extends Observable {
     protected World world;
 
     private List<Operation> operations = new ArrayList<Operation>();
-    Semaphore stepBegin = new Semaphore(0);
-    Semaphore stepEnd = new Semaphore(0);
+    Semaphore stepBegin = new Semaphore(0, false); // unfair semaphore are more efficient, at least according to 
+    Semaphore stepEnd = new Semaphore(0, false); // https://baptiste-wicht.com/posts/2010/09/java-synchronization-mutual-exclusion-benchmark.html
 
 
 
@@ -115,16 +115,7 @@ public abstract class Entity extends Observable {
      * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().
      */
     protected void stepUI() {
-        /*
-        We don't need this code anymore because we don't send Operations anymore to the JS
-        Only SVG Operations will be used
-         */
-//        if (operations.size() > 0) {
-//            world.addStep(operations);
-//            operations = new ArrayList<Operation>();
-//        }
 
-        fireStackListener();
 //      Logger.info(getName()+"@"+getWorld().getName()+" done with this step.");
         if (inited) {
             stepEnd.release();
@@ -138,30 +129,6 @@ public abstract class Entity extends Observable {
     public void copy(Entity other) {
         setName(other.getName());
         setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
-    }
-
-    /* Stuff related to tracing mechanism.
-     *
-     * This is the ability to highlight the current instruction in step-by-step execution.
-     *
-     * Right now, this is only used for LightBot because I'm not sure of how to retrieve the current point of execution in java or scripting
-     */
-    ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
-
-    public void addStackListener(IEntityStackListener l) {
-        stackListeners.add(l);
-    }
-
-    public void removeStackListener(IEntityStackListener l) {
-        stackListeners.remove(l);
-    }
-
-    public void fireStackListener() {
-        if (stackListeners.isEmpty())
-            return;
-        StackTraceElement[] trace = getCurrentStack();
-        for (IEntityStackListener l : stackListeners)
-            l.entityTraceChanged(this, trace);
     }
 
     @JsonIgnore
