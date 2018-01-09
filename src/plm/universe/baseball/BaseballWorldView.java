@@ -8,14 +8,17 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Vector;
-
-import org.jfree.graphics2d.svg.SVGGraphics2D;
 
 import plm.universe.World;
 import plm.universe.WorldView;
+import plm.utils.SVGGraphics2D;
 
 
 public class BaseballWorldView extends WorldView {
@@ -115,7 +118,7 @@ public class BaseballWorldView extends WorldView {
      * @param base the base that we want to draw
      * @param amountOfPlayers the total amount of players per base
      */
-    private static void drawBase(Graphics2D g,BaseballWorld world, int L, int dist, double theta, int xCenter, int yCenter, int base, int amountOfPlayers) {
+    private static void drawBase(SVGGraphics2D g,BaseballWorld world, int L, int dist, double theta, int xCenter, int yCenter, int base, int amountOfPlayers) {
         int[][] points = computeCorners( L, dist, theta, xCenter, yCenter );
 
         // draw the base
@@ -149,9 +152,9 @@ public class BaseballWorldView extends WorldView {
          * This array will contain the coordinates of the middle of the upper segment ( when theta = 0 ) of the base
          * 0 => x coordinate ; 1 => y coordinate
          */
-        int[] middleUpper = new int[2];
+        double[] middleUpper = new double[2];
         // This array will contain the coordinates of the "step" between two disks -- 0 => x step ; 1 => y step
-        int[] delta = new int[2] ;
+        double[] delta = new double[2] ;
 
         middleUpper[0] = ( points[1][0] + points[2][0] ) /2 ;
         middleUpper[1] = ( points[1][1] + points[2][1] ) /2 ;
@@ -165,14 +168,14 @@ public class BaseballWorldView extends WorldView {
          *  This array contains the coordinates of the center of the disk representing the player
          *	0 => x coordinate ; 1 => y coordinate
          */
-        int centerPlayer[] = new int[2];
+        double centerPlayer[] = new double[2];
         // color of the player
         Color colorPlayer = null;
         // Loop which computes the coordinates of the center of the disk, store it for the clicks and draws the resulting disk
         for ( int pos = 0 ; pos < amountOfPlayers ; pos++) {
             int player =  world.getPlayerColor(base,pos);
-            centerPlayer[0] = (int) (middleUpper[0] - (pos+.5)*delta[0]);
-            centerPlayer[1] = (int) (middleUpper[1] - (pos+.5)*delta[1]);
+            centerPlayer[0] = middleUpper[0] - (pos+.5)*delta[0];
+            centerPlayer[1] = middleUpper[1] - (pos+.5)*delta[1];
 
             colorPlayer = obtainColor(player);
 
@@ -190,7 +193,7 @@ public class BaseballWorldView extends WorldView {
      * @param theta
      * @param isHome
      */
-    private static void drawPlayer(Graphics2D g, int[] center, int radius, Color color, double theta, boolean isHome) {
+    private static void drawPlayer(SVGGraphics2D g, double[] center, double radius, Color color, double theta, boolean isHome) {
         g.setColor(Color.WHITE);
         g.fillOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
 
@@ -212,13 +215,7 @@ public class BaseballWorldView extends WorldView {
             g.drawOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
         }
 
-        if (!color.equals(Color.WHITE)) { // Don't draw a buggle on the hole
-            AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, center[0]-radius, center[1]-radius);
-            double scale = ((double)radius)/75.;
-            t.scale(scale,scale);
-            t.rotate(theta+Math.PI/2, 75.0, 75.0);
-            g.setTransform(t);
-            
+        if (!color.equals(Color.WHITE)) { // Don't draw a buggle on the hole            
             int[][] SPRITE = {
                     { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
                     { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -234,14 +231,23 @@ public class BaseballWorldView extends WorldView {
                     { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
                     { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
             };
+            
+            AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, center[0]-radius, center[1]-radius);
+            double scale = ((double)radius)/75.;
+            t.scale(scale,scale);
+            t.rotate(theta+Math.PI/2, 75.0, 75.0);
+
             g.setColor(color);
+            
+            Point2D src = new Point2D.Double();
+            Point2D orig = new Point2D.Double();
             for (int dy=0; dy<13; dy++)
                 for (int dx=0; dx<13; dx++)
                     if (SPRITE[dy][dx] == 1) {
-                        g.fillRect(dx*10, dy*10, 10,10);
+                    	src.setLocation(dx*10, dy*10);
+                    	t.transform(src, orig);
+                        g.fillRect(orig.getX(), orig.getY(), 10.*scale, 10.*scale);
                     }
-
-            g.setTransform(null);
         }
     }
 
@@ -274,7 +280,7 @@ public class BaseballWorldView extends WorldView {
     }
 
     /** Display the world under its circular form */
-    private static void paintCircular(Graphics2D g,BaseballWorld world) {
+    private static void paintCircular(SVGGraphics2D g,BaseballWorld world) {
 
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -486,20 +492,19 @@ public class BaseballWorldView extends WorldView {
      * Draw the component of the world
      * @param g The Graphics2D context to draw on
      */
-    public static void paintComponent(Graphics g, BaseballWorld baseballWorld) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.black);
-        g2.setFont(new Font("Monaco", Font.PLAIN, 12));
+    public static void paintComponent(SVGGraphics2D g, BaseballWorld baseballWorld) {
+        g.setColor(Color.black);
+        g.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-        paintCircular(g2,baseballWorld);
+        paintCircular(g,baseballWorld);
         // FIXME: re-enable
-        //paintHistory(g2,baseballWorld);
+        //paintHistory(g,baseballWorld);
     }
 
     public static String draw(BaseballWorld baseballWorld) {
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator  = new SVGGraphics2D((int)virtualSize, (int)virtualSize);
-
+        
         paintComponent(svgGenerator, baseballWorld);
 
         String str = svgGenerator.getSVGElement();
