@@ -21,8 +21,8 @@ public class ExerciseRunner {
 	private Locale locale;
 
 	/*
-	timeoutMilli correspond to the time used by the runEntities method in World.
-	It fails if SVGOperation are not drawn in 5 seconds.
+	 * timeoutMilli correspond to the time used by the runEntities method in World.
+	 * It fails if SVGOperation are not drawn before the timeout
 	 */
 	final long timeoutMilli = 5000; // 5sec
 

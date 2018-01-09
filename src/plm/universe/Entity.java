@@ -131,11 +131,6 @@ public abstract class Entity extends Observable {
         setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
     }
 
-    @JsonIgnore
-    public StackTraceElement[] getCurrentStack() {
-        return Thread.currentThread().getStackTrace();
-    }
-
     /**
      * Retrieve one parameter from the world
      */
