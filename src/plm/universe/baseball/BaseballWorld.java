@@ -267,7 +267,7 @@ public class BaseballWorld extends World {
 	@Override
 	protected List<SVGOperation> draw() {
 
-		String svg = BaseBallWorldView.draw(this,400,400);
+		String svg = BaseballWorldView.draw(this,400,400);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation();
 		operation.setOperation(svg);
