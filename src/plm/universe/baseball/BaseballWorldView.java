@@ -21,8 +21,7 @@ import plm.universe.WorldView;
 public class BaseballWorldView extends WorldView {
 
     private static double radius;
-    private static double displayRatio;
-    private static double virtualSize = 300.; // we display on a world that is 300x300 and dynamically resized (to ease our computations)
+    private static double virtualSize = 400.; // we display on a world that is 400x400 and dynamically resized (to ease our computations)
 
     public BaseballWorldView(World w) {
         super(w);
@@ -214,9 +213,7 @@ public class BaseballWorldView extends WorldView {
         }
 
         if (!color.equals(Color.WHITE)) { // Don't draw a buggle on the hole
-        	AffineTransform oldTransform = g.getTransform();
-            AffineTransform t = new AffineTransform(oldTransform); 
-            t.concatenate(new AffineTransform(1.0, 0, 0, 1.0, center[0]-radius, center[1]-radius));
+            AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, center[0]-radius, center[1]-radius);
             double scale = ((double)radius)/75.;
             t.scale(scale,scale);
             t.rotate(theta+Math.PI/2, 75.0, 75.0);
@@ -244,7 +241,7 @@ public class BaseballWorldView extends WorldView {
                         g.fillRect(dx*10, dy*10, 10,10);
                     }
 
-            g.setTransform(oldTransform);
+            g.setTransform(null);
         }
     }
 
@@ -277,15 +274,9 @@ public class BaseballWorldView extends WorldView {
     }
 
     /** Display the world under its circular form */
-    private static void paintCircular(Graphics2D g,BaseballWorld world, int width, int height) {
+    private static void paintCircular(Graphics2D g,BaseballWorld world) {
 
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        displayRatio = Math.min(((double) width) / virtualSize, ((double) height) / virtualSize);
-
-
-        g.translate(Math.abs(width - displayRatio * virtualSize)/2., Math.abs(height - displayRatio * virtualSize)/2.);
-        g.scale(displayRatio, displayRatio);
 
         /* drawn the world */
         g.setColor(new Color(58,157,35)); // lawn
@@ -378,12 +369,12 @@ public class BaseballWorldView extends WorldView {
         g.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
     }
 
-    private static void paintHistory(Graphics2D g,BaseballWorld world, int width, int height) {
+    private static void paintHistory(Graphics2D g,BaseballWorld world) {
         Vector<BaseballMove> moves = world.getMoves();
         int operationsAmount = moves.size();	// little optimization
         /* getWidth()-20 to keep the room to display the bases on left and right */
-        float stepX = ((float)width-20) / ((float)(Math.max(operationsAmount, 1)));
-        float stepY = ((float)height) / ((float)(world.getBasesAmount()* (world.getPositionsAmount()+1) ));
+        float stepX = ((float)virtualSize-20) / ((float)(Math.max(operationsAmount, 1)));
+        float stepY = ((float)virtualSize) / ((float)(world.getBasesAmount()* (world.getPositionsAmount()+1) ));
         int x1, y1, x2, y2;
 
         Stroke oldStroke = g.getStroke();
@@ -401,7 +392,7 @@ public class BaseballWorldView extends WorldView {
         for (int base=0; base<world.getBasesAmount(); base++) {
             g.setColor(obtainColor(base));
             g.fillRect(0, (int) (stepY*base*(world.getPositionsAmount()+1)), 10, (int) (stepY*world.getPositionsAmount()));
-            g.fillRect(width-10, (int) (stepY*base*(world.getPositionsAmount()+1)), 10, (int) (stepY*world.getPositionsAmount()));
+            g.fillRect((int)virtualSize-10, (int) (stepY*base*(world.getPositionsAmount()+1)), 10, (int) (stepY*world.getPositionsAmount()));
         }
 
         // Case without any operation to draw: initial view
@@ -495,21 +486,21 @@ public class BaseballWorldView extends WorldView {
      * Draw the component of the world
      * @param g The Graphics2D context to draw on
      */
-    public static void paintComponent(Graphics g, BaseballWorld baseballWorld, int width, int height) {
+    public static void paintComponent(Graphics g, BaseballWorld baseballWorld) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.black);
         g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-        paintCircular(g2,baseballWorld,width,height);
+        paintCircular(g2,baseballWorld);
         // FIXME: re-enable
-        //paintHistory(g2,baseballWorld,width,height);
+        //paintHistory(g2,baseballWorld);
     }
 
-    public static String draw(BaseballWorld baseballWorld, int width, int height) {
+    public static String draw(BaseballWorld baseballWorld) {
         // Ask the test to render into the SVG Graphics2D implementation.
-        SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
+        SVGGraphics2D svgGenerator  = new SVGGraphics2D((int)virtualSize, (int)virtualSize);
 
-        paintComponent(svgGenerator, baseballWorld,width,height);
+        paintComponent(svgGenerator, baseballWorld);
 
         String str = svgGenerator.getSVGElement();
         return str;
