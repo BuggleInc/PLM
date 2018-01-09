@@ -5,15 +5,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 import org.jfree.graphics2d.svg.SVGGraphics2D;
@@ -142,7 +138,7 @@ public class BaseballWorldView extends WorldView {
 
         // the radius of the disk representing the player. the graphically depicted is a bit smaller than the clickable
         radius = (L/amountOfPlayers-1); // clickable
-        int radiusbis = (int) (radius *.8);// graphically depicted
+        double radiusbis = radius *.8;// graphically depicted
 
 
         /*
@@ -182,7 +178,7 @@ public class BaseballWorldView extends WorldView {
             colorPlayer = obtainColor(player);
 
             //System.out.println("center: "+centerPlayer[0]+","+centerPlayer[1]+" radius: "+this.radius+" player "+base+","+pos+" color:"+colorPlayer);
-            drawPlayer(g, centerPlayer, radiusbis, colorPlayer, theta, base==player || player == -1);
+            drawPlayer(g, centerPlayer, (int)radiusbis, colorPlayer, theta, base==player || player == -1);
         }
     }
 
@@ -218,13 +214,37 @@ public class BaseballWorldView extends WorldView {
         }
 
         if (!color.equals(Color.WHITE)) { // Don't draw a buggle on the hole
-            Image img = getBuggleImage(color);
-            AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0,
-                    center[0]-radius, center[1]-radius);
-            double scale = 2*radius/((double)img.getWidth(null));
+        	AffineTransform oldTransform = g.getTransform();
+            AffineTransform t = new AffineTransform(oldTransform); 
+            t.concatenate(new AffineTransform(1.0, 0, 0, 1.0, center[0]-radius, center[1]-radius));
+            double scale = ((double)radius)/75.;
             t.scale(scale,scale);
-            t.rotate(theta+Math.PI/2, img.getHeight(null)/2.,img.getHeight(null)/2.);
-            g.drawImage(img, t, null);
+            t.rotate(theta+Math.PI/2, 75.0, 75.0);
+            g.setTransform(t);
+            
+            int[][] SPRITE = {
+                    { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                    { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                    { 0,0,0,1,0,0,0,0,0,1,0,0,0 },
+                    { 0,0,0,0,1,0,0,0,1,0,0,0,0 },
+                    { 0,0,0,1,1,1,1,1,1,1,0,0,0 },
+                    { 0,0,1,1,0,1,1,1,0,1,1,0,0 },
+                    { 0,1,1,1,1,1,1,1,1,1,1,1,0 },
+                    { 0,1,0,1,1,1,1,1,1,1,0,1,0 },
+                    { 0,1,0,1,0,0,0,0,0,1,0,1,0 },
+                    { 0,0,0,0,1,1,0,1,1,0,0,0,0 },
+                    { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                    { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                    { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            };
+            g.setColor(color);
+            for (int dy=0; dy<13; dy++)
+                for (int dx=0; dx<13; dx++)
+                    if (SPRITE[dy][dx] == 1) {
+                        g.fillRect(dx*10, dy*10, 10,10);
+                    }
+
+            g.setTransform(oldTransform);
         }
     }
 
@@ -357,43 +377,6 @@ public class BaseballWorldView extends WorldView {
         g.setColor(Color.black);
         g.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
     }
-
-    private static Map<Color,Image> buggleCache = new HashMap<Color, Image>();
-    private static Image getBuggleImage(Color c) {
-        if (buggleCache.containsKey(c))
-            return buggleCache.get(c);
-
-        BufferedImage res = new BufferedImage(130, 130, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g = res.createGraphics();
-        g.setColor(new Color(1, 1, 1, 0));
-        g.fillRect(0, 0, 130, 130);
-
-        int[][] SPRITE = {
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,1,0,0,0,0,0,1,0,0,0 },
-                { 0,0,0,0,1,0,0,0,1,0,0,0,0 },
-                { 0,0,0,1,1,1,1,1,1,1,0,0,0 },
-                { 0,0,1,1,0,1,1,1,0,1,1,0,0 },
-                { 0,1,1,1,1,1,1,1,1,1,1,1,0 },
-                { 0,1,0,1,1,1,1,1,1,1,0,1,0 },
-                { 0,1,0,1,0,0,0,0,0,1,0,1,0 },
-                { 0,0,0,0,1,1,0,1,1,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0 },
-        };
-        g.setColor(c);
-        for (int dy=0; dy<13; dy++)
-            for (int dx=0; dx<13; dx++)
-                if (SPRITE[dy][dx] == 1)
-                    g.fill(new Rectangle2D.Double(dx*10, dy*10, 10,10));
-
-        buggleCache.put(c, res);
-        return res;
-    }
-
 
     private static void paintHistory(Graphics2D g,BaseballWorld world, int width, int height) {
         Vector<BaseballMove> moves = world.getMoves();
