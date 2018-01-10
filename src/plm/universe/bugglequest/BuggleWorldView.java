@@ -6,13 +6,7 @@ import java.awt.geom.Arc2D;
 import plm.utils.SVGGraphics2D;
 import plm.universe.Entity;
 
-import plm.universe.WorldView;
-
-public class BuggleWorldView  extends WorldView {
-
-    public BuggleWorldView(BuggleWorld world2) {
-        super(world2);
-    }
+public class BuggleWorldView {
 
     private static Color DARK_CELL_COLOR = new Color(0.93f,0.93f,0.93f);
     private static Color LIGHT_CELL_COLOR = new Color(0.95f,0.95f,0.95f);

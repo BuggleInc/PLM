@@ -3,16 +3,9 @@ package plm.universe.bat;
 import java.awt.Color;
 import java.util.List;
 
-import plm.universe.World;
-import plm.universe.WorldView;
 import plm.utils.SVGGraphics2D;
 
-public class BatWorldView extends WorldView {
-
-    public BatWorldView(World w) {
-        super(w);
-    }
-
+public class BatWorldView {
 
     public static void paintComponent(SVGGraphics2D g, BatWorld batWorld, int width, int height) {
 

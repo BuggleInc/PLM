@@ -86,7 +86,7 @@ public class SortingWorldView {
 
 		// Case with several operations
 		for (int opIdx = 0; opIdx < operationsAmount; opIdx++) {
-			Operation op = we.getEntity(opIdx).getOperations().get(opIdx);
+			Operation op = null;//we.getEntity(opIdx).getOperations().get(opIdx);
 
 			//valuesAfter = op.run(valuesAfter);
 

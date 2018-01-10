@@ -82,11 +82,11 @@ public class DutchFlagWorldView {
      * @param height
      * @return the DutchFlagWorld's world under SVG Format
      */
-    public static String draw(DutchFlagWorld dutchFlagWorld, int width, int height) {
+    public static String draw(DutchFlagWorld dutchFlagWorld) {
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
-        paintComponent(svgGenerator, dutchFlagWorld,width,height);
+        paintComponent(svgGenerator, dutchFlagWorld, 400, 400);
 
         String str = svgGenerator.getSVGElement();
         return str;

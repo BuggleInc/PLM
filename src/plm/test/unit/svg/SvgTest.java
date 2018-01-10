@@ -57,7 +57,7 @@ public class SvgTest {
             }
 
             //Create a file for the SVG
-            String svg = BuggleWorldView.draw(myWorld, 400, 400);
+            String svg = BuggleWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -157,7 +157,7 @@ public class SvgTest {
             }
 
             //Create a file for the SVG
-            String svg = BuggleWorldView.draw(myWorld, 400, 400);
+            String svg = BuggleWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -250,7 +250,7 @@ public class SvgTest {
             myWorld.draw();
 
             //Create a file for the SVG
-            String svg = DutchFlagWorldView.draw(myWorld, 400, 400);
+            String svg = DutchFlagWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -343,7 +343,7 @@ public class SvgTest {
             myWorld.draw();
 
             //Create a file for the SVG
-            String svg = DutchFlagWorldView.draw(myWorld, 400, 400);
+            String svg = DutchFlagWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -438,7 +438,7 @@ public class SvgTest {
             myWorld.draw();
 
             //Create a file for the SVG
-            String svg = PancakeWorldView.draw(myWorld, 400, 400);
+            String svg = PancakeWorldView.draw(myWorld);
             System.out.println("svg = " + svg);
             PrintWriter writer = null;
             try {
@@ -532,7 +532,7 @@ public class SvgTest {
             myWorld.draw();
 
             //Create a file for the SVG
-            String svg = PancakeWorldView.draw(myWorld, 400, 400);
+            String svg = PancakeWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -629,7 +629,7 @@ public class SvgTest {
 
 
             //Create a file for the SVG
-            String svg = HanoiWorldView.draw(myWorld, 400, 400);
+            String svg = HanoiWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
@@ -724,7 +724,7 @@ public class SvgTest {
             myWorld.draw();
 
             //Create a file for the SVG
-            String svg = HanoiWorldView.draw(myWorld, 400, 400);
+            String svg = HanoiWorldView.draw(myWorld);
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(getRoot() + myWorld.getName() + ".svg", "UTF-8");
