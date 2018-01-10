@@ -380,7 +380,7 @@ public class SortingWorld extends World {
 	@Override
 
 	protected List<SVGOperation> draw() {
-		String svg = SortingWorldView.draw(this, 400,400);
+		String svg = SortingWorldView.draw(this);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);

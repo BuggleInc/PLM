@@ -1,39 +1,20 @@
 package plm.universe.bat;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
 import java.util.List;
-
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.Logger;
-import org.jfree.graphics2d.svg.SVGGraphics2D;
 
 import plm.universe.World;
 import plm.universe.WorldView;
+import plm.utils.SVGGraphics2D;
 
 public class BatWorldView extends WorldView {
-
-    private static final long serialVersionUID = 1L;
 
     public BatWorldView(World w) {
         super(w);
     }
 
-//    @Override
-//    public boolean isWorldCompatible(World world) {
-//        return world instanceof BatWorld;
-//    }
 
-
-    public static void paintComponent(Graphics g, BatWorld batWorld, int width, int height) {
-
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0., 0., (double) width, (double) height));
+    public static void paintComponent(SVGGraphics2D g, BatWorld batWorld, int width, int height) {
 
         List<BatTest> tests = batWorld.getTests();
         boolean foundError = false;
@@ -44,26 +25,26 @@ public class BatWorldView extends WorldView {
 
             if (currTest.isObjective()) {
                 if (currTest.isVisible())
-                    g2.setColor(Color.black);
+                    g.setColor(Color.black);
                 else
-                    g2.setColor(Color.white);
+                    g.setColor(Color.white);
             } else {
                 if (currTest.isAnswered()) {
 
                     if (currTest.isCorrect())
-                        g2.setColor(Color.blue);
+                        g.setColor(Color.blue);
                     else {
-                        g2.setColor(Color.red);
+                        g.setColor(Color.red);
                         foundError = true;
                     }
                 } else {
                     if (currTest.isVisible())
-                        g2.setColor(Color.black);
+                        g.setColor(Color.black);
                     else
-                        g2.setColor(Color.white);
+                        g.setColor(Color.white);
                 }
             }
-            g2.drawString(currTest.getName(batWorld.getProgLang()) + "=" + currTest.getResult()
+            g.drawString(currTest.getName(batWorld.getProgLang()) + "=" + currTest.getResult()
                     //+ (currTest.isAnswered() && !currTest.isCorrect() ? " (expected: " + currTest.stringParameter(batWorld.getProgLang(),currTest.expected) + ")" : "")
                     , 0, (i + 1) * 20);
         }
@@ -73,17 +54,15 @@ public class BatWorldView extends WorldView {
     /**
      *
      * @param batWorld
-     * @param width
-     * @param height
      * @return the BatWorld's SVG under String Format
      */
-    public static String draw(BatWorld batWorld, int width, int height) {
+    public static String draw(BatWorld batWorld) {
 
         // Ask the test to render into the SVG Graphics2D implementation.
 
         SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
-        paintComponent(svgGenerator, batWorld,width,height);
+        paintComponent(svgGenerator, batWorld, 400, 400);
 
         String str = svgGenerator.getSVGElement();
         return str;

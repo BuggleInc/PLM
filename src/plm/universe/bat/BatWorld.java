@@ -51,7 +51,7 @@ public class BatWorld extends World {
 
 	protected List<SVGOperation> draw() {
 
-			String svg = BatWorldView.draw(this,200,200);
+			String svg = BatWorldView.draw(this);
 			List<SVGOperation> list = new ArrayList<SVGOperation>();
 			SVGOperation operation = new SVGOperation(svg);
 			list.add(operation);

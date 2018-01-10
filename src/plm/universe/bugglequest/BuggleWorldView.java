@@ -1,17 +1,10 @@
 package plm.universe.bugglequest;
+
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 
-
-import org.jfree.graphics2d.svg.SVGGraphics2D;
+import plm.utils.SVGGraphics2D;
 import plm.universe.Entity;
-import plm.universe.World;
-
 
 import plm.universe.WorldView;
 
@@ -40,19 +33,16 @@ public class BuggleWorldView  extends WorldView {
         return (int) ((height - getCellWidth(buggleWorld,height, width) * buggleWorld.getHeight()) / 2);
     }
 
-    public static void paintComponent(Graphics g, BuggleWorld buggleWorld,int width, int height) {
-        //super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    public static void paintComponent(SVGGraphics2D g, BuggleWorld buggleWorld,int width, int height) {
 
-        drawBackground(g2, buggleWorld,width, height);
+        drawBackground(g, buggleWorld,width, height);
 
         for (Entity ent: buggleWorld.getEntities()) {
             AbstractBuggle b = (AbstractBuggle)ent;
-            drawBuggle(g2, b,buggleWorld,width,height);
+            drawBuggle(g, b,buggleWorld,width,height);
         }
 
-        drawWalls(g2,buggleWorld,width,height);
+        drawWalls(g,buggleWorld,width,height);
     }
 
     // return the color of the cell located at position (x,y)
@@ -74,7 +64,7 @@ public class BuggleWorldView  extends WorldView {
     }
 
 
-    private static void drawBackground(Graphics2D g, BuggleWorld buggleWorld, int width, int height) {
+    private static void drawBackground(SVGGraphics2D g, BuggleWorld buggleWorld, int width, int height) {
         int cellW = getCellWidth(buggleWorld, width, height);
         int padx = getPadX(buggleWorld, width, height);
         int pady = getPadY(buggleWorld, width, height);
@@ -110,7 +100,7 @@ public class BuggleWorldView  extends WorldView {
         }
     }
 
-    private static void drawWalls(Graphics2D g,BuggleWorld buggleWorld,int width,int height) {
+    private static void drawWalls(SVGGraphics2D g,BuggleWorld buggleWorld,int width,int height) {
         int cellW = getCellWidth(buggleWorld,width,height);
         int padx = getPadX(buggleWorld,width,height);
         int pady = getPadY(buggleWorld,width,height);
@@ -156,7 +146,7 @@ public class BuggleWorldView  extends WorldView {
         }
     }
 
-    private static void drawBuggle(Graphics2D g, AbstractBuggle b, BuggleWorld buggleWorld,int width,int height) {
+    private static void drawBuggle(SVGGraphics2D g, AbstractBuggle b, BuggleWorld buggleWorld,int width,int height) {
         double scaleFactor = 0.6; // to scale the sprite
         int pixW = (int) (scaleFactor * getCellWidth(buggleWorld,width,height) / INVADER_SPRITE_SIZE);  // fake pixel width
         int pad = (int) (0.5*(1.0-scaleFactor)*getCellWidth(buggleWorld,width,height)); // padding to center sprite in the cell
@@ -184,7 +174,7 @@ public class BuggleWorldView  extends WorldView {
         }
     }
 
-    private static void drawBaggle(Graphics2D g, BuggleWorldCell cell,BuggleWorld buggleWorld,int width,int height) {
+    private static void drawBaggle(SVGGraphics2D g, BuggleWorldCell cell,BuggleWorld buggleWorld,int width,int height) {
         double padx = getPadX(buggleWorld,width,height);
         double pady = getPadY(buggleWorld,width,height);
 
@@ -201,18 +191,6 @@ public class BuggleWorldView  extends WorldView {
         double ox = cell.getX()*getCellWidth(buggleWorld,width,height); // x-offset of the cell
         double oy = cell.getY()*getCellWidth(buggleWorld,width,height); // y-offset of the cell
 
-//        if (buggleWorld.easter) {
-//            try {
-//                InputStream is = getClass().getResourceAsStream("/plm/universe/bugglequest/ui/egg.png");
-//                ImageIcon ic = new ImageIcon(ImageIO.read(is));
-//                g.drawImage(ic.getImage(), (int)(padx+ox),(int)(pady+oy), (int)getCellWidth(),(int)getCellWidth(),null);
-//            } catch (IOException e) {
-//                // Forget it
-//                buggleWorld.easter = false;
-//                return;
-//            }
-//
-//        } else {
         g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR);
         g.fill(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
         g.setColor(getCellColor(cell.getX(), cell.getY(),buggleWorld));
@@ -221,10 +199,9 @@ public class BuggleWorldView  extends WorldView {
         g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR.darker().darker());
         g.draw(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
         g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
-//        }
     }
 
-    private static void drawMessage(Graphics2D g, BuggleWorldCell cell, String msg, BuggleWorld buggleWorld,int width,int height) {
+    private static void drawMessage(SVGGraphics2D g, BuggleWorldCell cell, String msg, BuggleWorld buggleWorld,int width,int height) {
         double padx = getPadX(buggleWorld,width,height);
         double pady = getPadY(buggleWorld,width,height);
         double ox = cell.getX()*getCellWidth(buggleWorld,width,height); // x-offset of the cell
@@ -298,12 +275,10 @@ public class BuggleWorldView  extends WorldView {
      * @param height
      * @return The BuggleWord's SVG under String Format
      */
-    public static String draw(BuggleWorld buggleWorld, int width, int height){
-        // Ask the test to render into the SVG Graphics2D implementation.
-
+    public static String draw(BuggleWorld buggleWorld){
         SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
-        paintComponent(svgGenerator, buggleWorld,width,height);
+        paintComponent(svgGenerator, buggleWorld, 400, 400);
 
         String str = svgGenerator.getSVGElement();
         return str;

@@ -2,9 +2,6 @@ package plm.universe.dutchflag;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -12,46 +9,27 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 
-import org.jfree.graphics2d.svg.SVGGraphics2D;
+import plm.utils.SVGGraphics2D;
 
-//import plm.core.model.Game;
-//import plm.core.ui.WorldView;
-//import plm.universe.EntityControlPanel;
-import plm.core.utils.FileUtils;
-import plm.universe.World;
-import plm.universe.WorldView;
+public class DutchFlagWorldView {
 
 
-public class DutchFlagWorldView extends WorldView {
-
-
-
-    private static final long serialVersionUID = 1L;
     private static double heightworld;
     private static int rankFrom=-1; // DnD marker
 
-
-    public DutchFlagWorldView(DutchFlagWorld dfw)
-    {
-        super(dfw);
-    }
     private static final Color dutchRed = new Color(174,28,40);
     private static final Color dutchBlue = new Color(33,70,139);
     /**
      * Draw the component of the world
-     * @param g : some Graphics
+     * @param h : some Graphics
      */
-    public static void paintComponent(Graphics g, DutchFlagWorld dutchFlagWorld,int width, int height) {
+    public static void paintComponent(SVGGraphics2D g, DutchFlagWorld dutchFlagWorld,int width, int height) {
 
-
-        Graphics2D g2 = (Graphics2D) g;
-
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setFont(new Font("Monaco", Font.PLAIN, 12));
+        g.setFont(new Font("Monaco", Font.PLAIN, 12));
 
         /* clear board */
-        g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0., 0., width, height));
+        g.setColor(Color.white);
+        g.fill(new Rectangle2D.Double(0., 0., width, height));
 
         /* Draw the lines */
         int stackSize = dutchFlagWorld.getSize();
@@ -62,38 +40,38 @@ public class DutchFlagWorldView extends WorldView {
 
             switch (dutchFlagWorld.getColor(rank)) {
                 case DutchFlagEntity.BLUE:
-                    g2.setColor(dutchBlue);
+                    g.setColor(dutchBlue);
                     break;
                 case DutchFlagEntity.WHITE:
-                    g2.setColor(Color.white);
+                    g.setColor(Color.white);
                     break;
                 case DutchFlagEntity.RED:
-                    g2.setColor(dutchRed);
+                    g.setColor(dutchRed);
                     break;
             }
-            g2.fill(rect);
+            g.fill(rect);
 
             if (dutchFlagWorld.getSize()<100) {
-                g2.setColor(Color.black);
-                g2.draw(rect);
+                g.setColor(Color.black);
+                g.draw(rect);
             }
         }
 
         // Display the amount of moves
         if (dutchFlagWorld.getColor(stackSize-1) == DutchFlagEntity.WHITE)
-            g2.setColor(Color.black);
+            g.setColor(Color.black);
         else
-            g2.setColor(Color.yellow);
-        g2.drawString(""+dutchFlagWorld.moveCount+" moves", 0, 15);
+            g.setColor(Color.yellow);
+        g.drawString(""+dutchFlagWorld.moveCount+" moves", 0, 15);
 
         // Display the DnD markers
         if (dutchFlagWorld.getSize()<100 && rankFrom != -1) {
-            g2.setColor(Color.red);
-            g2.draw(new Rectangle2D.Double(0, height*(stackSize-rankFrom-1), width, height));
-            g2.draw(new Rectangle2D.Double(1, height*(stackSize-rankFrom-1)+1, width-2, height-2));
-            g2.setColor(Color.white);
-            g2.draw(new Rectangle2D.Double(2, height*(stackSize-rankFrom-1)+2, width-4, height-4));
-            g2.draw(new Rectangle2D.Double(3, height*(stackSize-rankFrom-1)+3, width-6, height-6));
+            g.setColor(Color.red);
+            g.draw(new Rectangle2D.Double(0, height*(stackSize-rankFrom-1), width, height));
+            g.draw(new Rectangle2D.Double(1, height*(stackSize-rankFrom-1)+1, width-2, height-2));
+            g.setColor(Color.white);
+            g.draw(new Rectangle2D.Double(2, height*(stackSize-rankFrom-1)+2, width-4, height-4));
+            g.draw(new Rectangle2D.Double(3, height*(stackSize-rankFrom-1)+3, width-6, height-6));
         }
     }
 

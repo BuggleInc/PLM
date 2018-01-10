@@ -66,7 +66,7 @@ public class BuggleWorld extends GridWorld {
 
 	protected List<SVGOperation> draw() {
 
-		String svg = BuggleWorldView.draw(this,400,400);
+		String svg = BuggleWorldView.draw(this);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation();
 		operation.setOperation(svg);

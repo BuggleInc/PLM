@@ -78,7 +78,7 @@ public class TurtleWorld extends World {
 
 	@Override
 	protected List<SVGOperation> draw() {
-		String svg = TurtleWorldView.draw(this, 400,400);
+		String svg = TurtleWorldView.draw(this);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);

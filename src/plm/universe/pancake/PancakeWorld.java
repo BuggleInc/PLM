@@ -316,7 +316,7 @@ public class PancakeWorld extends World {
 
 	@Override
     public List<SVGOperation> draw() {
-		String svg = PancakeWorldView.draw(this, 400,400);
+		String svg = PancakeWorldView.draw(this);
 		List<SVGOperation> list = new ArrayList<SVGOperation>();
 		SVGOperation operation = new SVGOperation(svg);
 		list.add(operation);

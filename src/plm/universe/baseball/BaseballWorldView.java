@@ -3,32 +3,20 @@ package plm.universe.baseball;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.Vector;
 
-import plm.universe.World;
-import plm.universe.WorldView;
 import plm.utils.SVGGraphics2D;
 
 
-public class BaseballWorldView extends WorldView {
+public class BaseballWorldView {
 
     private static double radius;
     private static double virtualSize = 400.; // we display on a world that is 400x400 and dynamically resized (to ease our computations)
-
-    public BaseballWorldView(World w) {
-        super(w);
-    }
 
     /**
      * Draws an arrow on the given Graphics2D context
@@ -39,7 +27,7 @@ public class BaseballWorldView extends WorldView {
      * @param xHead The x location of the "head" of the arrow
      * @param yHead The y location of the "head" of the arrow
      */
-    private static void drawArrow(Graphics2D g, int xTail, int yTail, int xHead, int yHead) {
+    private static void drawArrow(SVGGraphics2D g, int xTail, int yTail, int xHead, int yHead) {
         float arrowWidth = 12.0f ;
         float theta = 0.6f ;
         int[] xPoints = new int[ 3 ] ;
@@ -282,8 +270,6 @@ public class BaseballWorldView extends WorldView {
     /** Display the world under its circular form */
     private static void paintCircular(SVGGraphics2D g,BaseballWorld world) {
 
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
         /* drawn the world */
         g.setColor(new Color(58,157,35)); // lawn
         g.fill(new Rectangle2D.Double(0., 0., virtualSize, virtualSize));
@@ -375,7 +361,7 @@ public class BaseballWorldView extends WorldView {
         g.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
     }
 
-    private static void paintHistory(Graphics2D g,BaseballWorld world) {
+    private static void paintHistory(SVGGraphics2D g,BaseballWorld world) {
         Vector<BaseballMove> moves = world.getMoves();
         int operationsAmount = moves.size();	// little optimization
         /* getWidth()-20 to keep the room to display the bases on left and right */
@@ -487,27 +473,18 @@ public class BaseballWorldView extends WorldView {
 
     }
 
-
-    /**
-     * Draw the component of the world
-     * @param g The Graphics2D context to draw on
-     */
-    public static void paintComponent(SVGGraphics2D g, BaseballWorld baseballWorld) {
+    public static String draw(BaseballWorld baseballWorld) {
+        // Ask the test to render into the SVG Graphics2D implementation.
+        SVGGraphics2D g  = new SVGGraphics2D((int)virtualSize, (int)virtualSize);
+        
         g.setColor(Color.black);
         g.setFont(new Font("Monaco", Font.PLAIN, 12));
-
+        
         paintCircular(g,baseballWorld);
         // FIXME: re-enable
         //paintHistory(g,baseballWorld);
-    }
 
-    public static String draw(BaseballWorld baseballWorld) {
-        // Ask the test to render into the SVG Graphics2D implementation.
-        SVGGraphics2D svgGenerator  = new SVGGraphics2D((int)virtualSize, (int)virtualSize);
-        
-        paintComponent(svgGenerator, baseballWorld);
-
-        String str = svgGenerator.getSVGElement();
+        String str = g.getSVGElement();
         return str;
 
     }

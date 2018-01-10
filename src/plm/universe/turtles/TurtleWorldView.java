@@ -1,45 +1,32 @@
 package plm.universe.turtles;
 
-import org.jfree.graphics2d.svg.SVGGraphics2D;
-import plm.universe.Entity;
-import plm.universe.World;
-import plm.universe.WorldView;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
-public class TurtleWorldView extends WorldView {
+import javax.swing.ImageIcon;
 
-    protected static World world;
+import plm.universe.Entity;
+import plm.utils.SVGGraphics2D;
 
-    public TurtleWorldView(World w) {
-        super(w);
+public class TurtleWorldView {
 
-    }
-
-    public static void paintComponent(Graphics g, TurtleWorld turtleWorld, int width, int height) {
-        doPaint(g,turtleWorld,width,height,true);
-    }
-    public static void doPaint(Graphics g, TurtleWorld turtleWorld, int sizeX, int sizeY, boolean showTurtle) {
-
-        Graphics2D g2 = (Graphics2D) g;
-        AffineTransform initialTransform = g2.getTransform();
+    public static void paintComponent(SVGGraphics2D g, TurtleWorld turtleWorld, int sizeX, int sizeY) {
 
         double displayRatio = Math.min(((double) sizeX)/turtleWorld.getWidth(), ((double)sizeY)/turtleWorld.getHeight());
         double deltaX = Math.abs((sizeX-displayRatio*turtleWorld.getWidth())/2.);
         double deltaY = Math.abs((sizeY-displayRatio*turtleWorld.getHeight())/2.);
-        g2.translate(deltaX, deltaY);
-        g2.scale(displayRatio, displayRatio);
+        g.translate(deltaX, deltaY);
+        g.scale(displayRatio, displayRatio);
 
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0.,0.,(double)turtleWorld.getWidth(),(double)turtleWorld.getHeight()));
+        g.setColor(Color.white);
+        g.fill(new Rectangle2D.Double(0.,0.,(double)turtleWorld.getWidth(),(double)turtleWorld.getHeight()));
 
-        g2.setColor(Color.BLACK);
-        Stroke oldStroke = g2.getStroke();
-        g2.setStroke(new BasicStroke(1.0f,
+        g.setColor(Color.BLACK);
+        Stroke oldStroke = g.getStroke();
+        g.setStroke(new BasicStroke(1.0f,
                 BasicStroke.CAP_BUTT,
                 BasicStroke.JOIN_MITER,
                 10.0f, new float[]{2f,10.0f}, 0.0f));
@@ -50,7 +37,7 @@ public class TurtleWorldView extends WorldView {
 //            for (int y=50;y<turtleWorld.getHeight();y+=50)
 //                g2.drawLine(1, y, (int)turtleWorld.getWidth()-1,y);
 //        }
-        g2.setStroke(oldStroke);
+        g.setStroke(oldStroke);
 
 //        if (world.isAnswerWorld() || Game.getInstance().isDebugEnabled()) {
 //            for (Entity e: world.getEntities()) {
@@ -64,10 +51,9 @@ public class TurtleWorldView extends WorldView {
 //                    indic.draw(g2);
 //            }
 //        }
-        if (showTurtle)
-            for (Entity ent : turtleWorld.getEntities())
-                drawTurtle(g2, (Turtle)ent);
-
+        
+        for (Entity ent : turtleWorld.getEntities())
+        	drawTurtle(g, (Turtle)ent);
 
 //        synchronized (((TurtleWorld) world).shapes) {
 //            Iterator<Shape> it2 = ((TurtleWorld) world).shapes();
@@ -77,7 +63,7 @@ public class TurtleWorldView extends WorldView {
 
     }
 
-    private static void drawTurtle(Graphics2D g, Turtle b) {
+    private static void drawTurtle(SVGGraphics2D g, Turtle b) {
         if (b.isVisible()) {
             ImageIcon ic = ResourcesCache.getIcon("img/world_turtle.png");
             AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2., b.getY()-ic.getIconHeight()/2.);
@@ -93,15 +79,13 @@ public class TurtleWorldView extends WorldView {
      * @param height
      * @return the TurleWorld View, but actually doesn't render the turtle
      */
-    public static String draw(TurtleWorld turtleWorld, int width, int height) {
+    public static String draw(TurtleWorld turtleWorld) {
 
-        // Ask the test to render into the SVG Graphics2D implementation.
-                SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
+    	SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
-                paintComponent(svgGenerator, turtleWorld,width,height);
+    	paintComponent(svgGenerator, turtleWorld, 400, 400);
 
-                String str = svgGenerator.getSVGElement();
-                return str;
-
+    	String str = svgGenerator.getSVGElement();
+    	return str;
     }
 }

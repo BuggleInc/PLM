@@ -1,56 +1,33 @@
 package plm.universe.hanoi;
 
-import plm.core.utils.FileUtils;
-
-import org.jfree.graphics2d.svg.SVGGraphics2D;
-
-import plm.universe.WorldView;
-
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.io.IOException;
 
-public class HanoiWorldView extends WorldView {
+import plm.utils.SVGGraphics2D;
 
+public class HanoiWorldView {
 
-
-
-
-    private static final long serialVersionUID = 1L;
     static int  pegFrom = -1;
     static  boolean buggyMove = false;
 
-
-    public HanoiWorldView(HanoiWorld hanoiWorld) {
-        super(hanoiWorld);
-
-    }
-
-    public static  void paintComponent(Graphics g,HanoiWorld hanoiWorld,int width, int height) {
-
-        Graphics2D g2 = (Graphics2D) g;
-
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-
+    public static  void paintComponent(SVGGraphics2D g, HanoiWorld hanoiWorld,int width, int height) {
 
         /* clear board */
-        g2.setColor(Color.white);
-        g2.fill(new Rectangle2D.Double(0., 0., width, height));
+        g.setColor(Color.white);
+        g.fill(new Rectangle2D.Double(0., 0., width, height));
 
         double renderedX = 300.;
         double renderedY = 250.;
         double ratio = Math.min(((double) width) / renderedX, ((double) height) / renderedY);
-        g2.translate(Math.abs(width - ratio * renderedX)/2., Math.abs(height - ratio * renderedY)/2.);
-        g2.scale(ratio, ratio);
+        g.translate(Math.abs(width - ratio * renderedX)/2., Math.abs(height - ratio * renderedY)/2.);
+        g.scale(ratio, ratio);
 
         for (int s=0;s<hanoiWorld.getSlotsAmount();s++)
-            drawSlot(g2, s, (1+2*s)*300./(2*hanoiWorld.getSlotsAmount()),hanoiWorld);
-        g2.setColor(Color.black);
-        g2.drawString(""+hanoiWorld.moveCount+" moves", 0, 15);
+            drawSlot(g, s, (1+2*s)*300./(2*hanoiWorld.getSlotsAmount()),hanoiWorld);
+        g.setColor(Color.black);
+        g.drawString(""+hanoiWorld.moveCount+" moves", 0, 15);
     }
 
     public static void drawSlot(Graphics2D g2, int rank, double xoffset,HanoiWorld hanoiWorld) {
@@ -99,45 +76,13 @@ public class HanoiWorldView extends WorldView {
      * @param height
      * @return the HanoiWorld's view under SVG String
      */
-    public static String draw(HanoiWorld hanoiWorld, int width, int height){
+    public static String draw(HanoiWorld hanoiWorld){
         // Ask the test to render into the SVG Graphics2D implementation.
         SVGGraphics2D svgGenerator  = new SVGGraphics2D(400,400);
 
-        paintComponent(svgGenerator, hanoiWorld,width,height);
+        paintComponent(svgGenerator, hanoiWorld, 400, 400);
 
         String str = svgGenerator.getSVGElement();
         return str;
     }
 }
-
-
-class TransferableHanoiPiece implements Transferable {
-    static DataFlavor hanoiDataFlavor = new DataFlavor(Integer.class,"Hanoi piece");
-    private Integer pegFrom;
-    public TransferableHanoiPiece(int _pegFrom) {
-        pegFrom = _pegFrom;
-    }
-
-    @Override
-    public DataFlavor[] getTransferDataFlavors() {
-        return new DataFlavor[] {hanoiDataFlavor};
-    }
-
-    @Override
-    public boolean isDataFlavorSupported(DataFlavor flavor) {
-        return flavor.equals(hanoiDataFlavor);
-    }
-
-    @Override
-    public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
-
-        if (flavor.equals(hanoiDataFlavor))
-            return pegFrom;
-        throw new UnsupportedFlavorException(flavor);
-    }
-
-
-
-}
-
-
