@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.pancake.operations.FlipOperation;
 
 public class PancakeEntity extends Entity {
 
@@ -41,9 +40,7 @@ public class PancakeEntity extends Entity {
 	 * 			beginning from the top of the stack, that you want to flip.
 	 */
 	public void flip(int numberOfPancakes) {
-		int old = ((PancakeWorld) world).getLastMove();
 		((PancakeWorld) world).flip(numberOfPancakes);
-		//addOperation(new FlipOperation(numberOfPancakes, old));
 		stepUI();
 	}
 

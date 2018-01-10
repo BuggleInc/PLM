@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import plm.core.log.Logger;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.dutchflag.operations.DutchFlagSwap;
 
 public class DutchFlagEntity extends Entity {
 
@@ -35,7 +34,6 @@ public class DutchFlagEntity extends Entity {
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);
-		//addOperation(new DutchFlagSwap(from,to));
 		stepUI();
 	}
 

@@ -14,7 +14,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.bat.operations.SetResult;
 
 public class BatEntity extends Entity {
 
@@ -94,7 +93,6 @@ public class BatEntity extends Entity {
 	}
 
 	public void generateSetResultOperation(int index, BatTest t) {
-		//addOperation(new SetResult(index, t.getResult()));
 		stepUI();
 	}
 

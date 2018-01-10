@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.log.Logger;
 
 import java.io.BufferedWriter;
 import java.util.*;
@@ -28,11 +27,8 @@ public abstract class Entity extends Observable {
 
     protected World world;
 
-    private List<Operation> operations = new ArrayList<Operation>();
     Semaphore stepBegin = new Semaphore(0, false); // unfair semaphore are more efficient, at least according to 
     Semaphore stepEnd = new Semaphore(0, false); // https://baptiste-wicht.com/posts/2010/09/java-synchronization-mutual-exclusion-benchmark.html
-
-
 
     public Entity() {
     }
@@ -183,13 +179,4 @@ public abstract class Entity extends Observable {
         Integer res = scriptOffset.get(lang);
         return res == null ? 0 : res;
     }
-
-    @JsonIgnore
-    public List<Operation> getOperations() {
-        return operations;
-    }
-
-//    public void addOperation(Operation operation) {
-//        operations.add(operation);
-//    }
 }

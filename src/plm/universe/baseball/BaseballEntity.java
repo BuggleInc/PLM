@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import plm.core.log.Logger;
 import plm.universe.Entity;
-import plm.universe.baseball.operations.MoveOperation;
 
 public class BaseballEntity extends Entity {
 
@@ -59,7 +58,6 @@ public class BaseballEntity extends Entity {
 	 */
 	public void move(int base, int position) {
 		((BaseballWorld) this.world).move(base,position);
-		//addOperation(new MoveOperation(base, position));
 		stepUI();
 	}
 

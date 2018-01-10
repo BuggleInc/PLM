@@ -1,5 +1,5 @@
 package plm.universe.hanoi;
-/* BEGIN TEMPLATE */
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
@@ -11,7 +11,6 @@ import plm.core.log.Logger;
 import plm.core.model.I18nManager;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.hanoi.operations.HanoiMove;
 
 public class HanoiEntity extends Entity {
 	
@@ -50,7 +49,6 @@ public class HanoiEntity extends Entity {
 	public void regularMove(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
-		//addOperation(new HanoiMove(src, dst));
 		stepUI();
 		/* END HIDDEN */
 	}
@@ -115,4 +113,3 @@ public class HanoiEntity extends Entity {
 	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
 	public int  getRayonPiquet(int rank) { return getSlotRadius(rank); }
 }
-/* END TEMPLATE */
