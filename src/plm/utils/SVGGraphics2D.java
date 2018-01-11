@@ -388,7 +388,7 @@ public final class SVGGraphics2D extends Graphics2D {
      * @param height  the height of the SVG element.
      */
     public SVGGraphics2D(int width, int height) {
-        this(width, height, null, new StringBuilder());
+        this(width, height, null, new StringBuilder(256*1024 /*256kb*/));
     }
 
     /**
@@ -2716,7 +2716,8 @@ public final class SVGGraphics2D extends Graphics2D {
     public String getSVGElement(String id, boolean includeDimensions, 
             ViewBox viewBox, PreserveAspectRatio preserveAspectRatio,
             MeetOrSlice meetOrSlice) {
-        StringBuilder svg = new StringBuilder("<svg ");
+        StringBuilder svg = new StringBuilder(this.sb.length()+256);
+        svg.append("<svg ");
         if (id != null) {
             svg.append("id=\"").append(id).append("\" ");
         }
@@ -2743,21 +2744,22 @@ public final class SVGGraphics2D extends Graphics2D {
         svg.append("text-rendering=\"").append(this.textRendering)
            .append("\" shape-rendering=\"").append(this.shapeRendering)
            .append("\">\n");
-        StringBuilder defs = new StringBuilder("<defs>");
+        
+        svg.append("<defs>");
         for (GradientPaintKey key : this.gradientPaints.keySet()) {
-            defs.append(getLinearGradientElement(this.gradientPaints.get(key), 
+            svg.append(getLinearGradientElement(this.gradientPaints.get(key), 
                     key.getPaint()));
-            defs.append("\n");
+            svg.append("\n");
         }
         for (LinearGradientPaintKey key : this.linearGradientPaints.keySet()) {
-            defs.append(getLinearGradientElement(
+            svg.append(getLinearGradientElement(
                     this.linearGradientPaints.get(key), key.getPaint()));
-            defs.append("\n");            
+            svg.append("\n");            
         }
         for (RadialGradientPaintKey key : this.radialGradientPaints.keySet()) {
-            defs.append(getRadialGradientElement(
+            svg.append(getRadialGradientElement(
                     this.radialGradientPaints.get(key), key.getPaint()));
-            defs.append("\n");
+            svg.append("\n");
         }
         for (int i = 0; i < this.clipPaths.size(); i++) {
             StringBuilder b = new StringBuilder("<clipPath id=\"")
@@ -2765,10 +2767,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     .append("\">");
             b.append("<path ").append(this.clipPaths.get(i)).append("/>");
             b.append("</clipPath>").append("\n");
-            defs.append(b.toString());
+            svg.append(b.toString());
         }
-        defs.append("</defs>\n");
-        svg.append(defs);
+        svg.append("</defs>\n");
+        
         svg.append(this.sb);
         svg.append("</svg>");        
         return svg.toString();
