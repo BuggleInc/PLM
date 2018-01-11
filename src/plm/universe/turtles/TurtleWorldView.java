@@ -68,7 +68,7 @@ public class TurtleWorldView {
             ImageIcon ic = ResourcesCache.getIcon("img/world_turtle.png");
             AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2., b.getY()-ic.getIconHeight()/2.);
             t.rotate(b.getHeadingRadian(), ic.getIconWidth()/2., ic.getIconHeight()/2.);
-            g.drawImage(ic.getImage(), t, null);
+           // g.drawImage(ic.getImage(), t, null);
         }
     }
 
