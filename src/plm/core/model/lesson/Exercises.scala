@@ -39,6 +39,12 @@ class Exercises(
       .map(ExerciseFactory.computeAnswer)
       .map(ExerciseFactory.cloneExercise)
 
+  def getExerciseNoUpdate(exerciseId: String): Option[Exercise] =
+    exercises
+      .get(exerciseId)
+      .map(ExerciseFactory.computeAnswer)
+      .map(ExerciseFactory.cloneExercise)
+
   private def initExercise(exerciseId: String): Exercise = {
     val userSettings: UserSettings = new UserSettings(EN_LOCALE, DEFAULT_PROGRAMMING_LANGUAGE)
     val exercise: Exercise =
