@@ -13,7 +13,7 @@ class Lessons(
     availableLanguageCodes: Iterable[String]) {
   private val lessonIds: Seq[String] =
     Seq(
-    "welcome",
+    "welcome"/*,
     "sort.basic",
     "sort.dutchflag",
     "maze", //OK
@@ -25,6 +25,7 @@ class Lessons(
     "recursion.logo", //turtle is not drawn
     "recursion.hanoi"
 //    "bat.string1"
+     */
     )
 
   private val lessons: Map[String, Lesson] = {
