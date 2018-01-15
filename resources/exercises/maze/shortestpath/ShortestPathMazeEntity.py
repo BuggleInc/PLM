@@ -7,7 +7,6 @@ def setPos(x,y):
 
 def setIndication(x, y, i):
     cell = entity.getWorld().getCell(x,y)
-    entity.generateOperationsChangeCellContent(cell, cell.getContent(), str(i), cell.hasContent(), True);
     cell.setContent(str(i))
 
 def getIndication(x,y):    

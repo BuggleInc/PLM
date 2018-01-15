@@ -22,7 +22,6 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 
 	def setIndication(x:Int, y:Int, i:Int) {
 		val c = world.asInstanceOf[BuggleWorld].getCell(x,y);
-    generateOperationsChangeCellContent(c, c.getContent, i+"", c.hasContent, true);
 		c.setContent(""+i);
 	}
 	def getIndication(x:Int, y:Int): Int =  {
