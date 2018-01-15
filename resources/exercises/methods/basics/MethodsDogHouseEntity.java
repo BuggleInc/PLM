@@ -4,9 +4,8 @@ import java.util.Locale;
 
 import org.xnap.commons.i18n.I18n;
 
-
+import plm.core.lang.ProgrammingLanguages;
 import plm.core.model.I18nManager;
-import plm.core.model.lesson.Exercise;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsDogHouseEntity extends SimpleBuggle {
@@ -26,13 +25,12 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 			return;
 		}
 		
-		//FIXME: Re-implement me
-		/*
 		for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
 			if (s.getMethodName().equals("dogHouse")) {
 				if (line != -1 && line != s.getLineNumber()) {
-					int offset = ((Exercise)getGame().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.JAVA, 0).getOffset();
-				    String msg = getGame().i18n.tr("Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this exercise. You can write left() only once in this exercise.",
+					I18n i18n = I18nManager.getI18n(getWorld().getLocale());
+					int offset = getScriptOffset("Java");
+				    String msg = i18n.tr("Sorry Dave, I cannot let you use left() both on lines {0} and {1} in this exercise. You can write left() only once in this exercise.",
 					        (line-offset+1),(s.getLineNumber()-offset+1));
 
 					throw new RuntimeException(msg);
@@ -44,7 +42,6 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 			}
 
 		}
-		*/
 	}
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */

@@ -179,4 +179,10 @@ public abstract class Entity extends Observable {
         Integer res = scriptOffset.get(lang);
         return res == null ? 0 : res;
     }
+    public Integer getScriptOffset(String langName) {
+    	for (ProgrammingLanguage pl : scriptOffset.keySet())
+    		if (pl.getLang().equals(langName)) 
+    			return getScriptOffset(pl);
+    	return 0;
+    }
 }
