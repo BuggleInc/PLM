@@ -1,5 +1,8 @@
 package plm.core.lang;
 
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -70,4 +73,42 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 			progress.setExecutionError(msg);
 		}
 	}
+
+	/**
+	* Lists all {@link URLClassLoader} ancestors of {@code loader}, including
+	* {@code loader} if it is one.
+	*/
+	public static String urlAncestorClassloaders(ClassLoader loader) {
+		List<URLClassLoader> list = new ArrayList<>();
+		ClassLoader currentLoader = loader;
+		while (currentLoader != null) {
+		  if (currentLoader instanceof URLClassLoader) {
+		    list.add((URLClassLoader) currentLoader);
+		  }
+		  currentLoader = currentLoader.getParent();
+		}
+		
+		// We want to pass all paths (jars and root directories) that 'loader'
+		// knows about to the '-cp' option of javac. The list of URLs returned by
+		// 'loader.getURLs()' is not enough: we also need to retrieve the URLs of
+		// its parent classloaders. We thus retrieve the list of all
+		// URLClassloaders among 'loader' and its ancestors, then we add their URLs
+		// to the '-cp' option.
+		//
+		// This is a hack because we assume 'loader' and its relevant ancestors are
+		// URLClassLoaders, which is not necessarily the case. Ideally we wouldn't
+		// use the -cp option at all but instead have FileManagerImpl retrieve
+		// classes from 'loader', as described in
+		// http://atamur.blogspot.ch/2009/10/using-built-in-javacompiler-with-custom.html.
+		StringBuilder sb = new StringBuilder(); 
+		for (URLClassLoader classLoader : list) { 
+			for (URL jar : classLoader.getURLs()) {
+				if (sb.length() > 0)
+					sb.append(File.pathSeparatorChar); 
+				sb.append(jar.getPath()); 
+			} 
+		}
+		return sb.toString();
+	}
+
 }
