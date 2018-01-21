@@ -2,7 +2,7 @@
  * JFreeSVG : an SVG library for the Java(tm) platform
  * ===================================================
  * 
- * (C)opyright 2013-2016, by Object Refinery Limited.  All rights reserved.
+ * (C)opyright 2013-2017, by Object Refinery Limited.  All rights reserved.
  *
  * Project Info:  http://www.jfree.org/jfreesvg/index.html
  * 
@@ -1200,9 +1200,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     .append("\" y2=\"").append(geomDP(l.getY2()))
                     .append("\" ");
             this.sb.append("style=\"").append(strokeStyle()).append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+               this.sb.append("transform=\"").append(getSVGTransform(
+                       this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append("/>");
         } else if (s instanceof Rectangle2D) {
@@ -1216,9 +1217,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     .append("\" ");
             this.sb.append("style=\"").append(strokeStyle())
                     .append("; fill: none").append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+               this.sb.append("transform=\"").append(getSVGTransform(
+                       this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append("/>");
         } else if (s instanceof Ellipse2D) {
@@ -1232,9 +1234,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     .append("\" ");
             this.sb.append("style=\"").append(strokeStyle())
                     .append("; fill: none").append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append("/>");        
         } else if (s instanceof Path2D) {
@@ -1243,9 +1246,10 @@ public final class SVGGraphics2D extends Graphics2D {
             appendOptionalElementIDFromHint(this.sb);
             this.sb.append("style=\"").append(strokeStyle())
                     .append("; fill: none").append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append(">");
             this.sb.append("<path ").append(getSVGPathData(path)).append("/>");
@@ -1280,9 +1284,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     .append("\" height=\"").append(geomDP(r.getHeight()))
                     .append("\" ");
             this.sb.append("style=\"").append(getSVGFillStyle()).append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append("/>");
         } else if (s instanceof Ellipse2D) {
@@ -1295,9 +1300,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     .append("\" ry=\"").append(geomDP(e.getHeight() / 2.0))
                     .append("\" ");
             this.sb.append("style=\"").append(getSVGFillStyle()).append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append("/>");        
         } else if (s instanceof Path2D) {
@@ -1306,9 +1312,10 @@ public final class SVGGraphics2D extends Graphics2D {
             appendOptionalElementIDFromHint(this.sb);
             this.sb.append("style=\"").append(getSVGFillStyle());
             this.sb.append("; stroke: none").append("\" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append(getClipPathRef());
             this.sb.append(">");
             this.sb.append("<path ").append(getSVGPathData(path)).append("/>");
@@ -1693,9 +1700,10 @@ public final class SVGGraphics2D extends Graphics2D {
                 this.hints.get(SVGHints.KEY_DRAW_STRING_TYPE))) {
             this.sb.append("<g ");
             appendOptionalElementIDFromHint(this.sb);
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\">");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\">");
+            }
             this.sb.append("<text x=\"").append(geomDP(x))
                     .append("\" y=\"").append(geomDP(y))
                     .append("\"");
@@ -2426,9 +2434,10 @@ public final class SVGGraphics2D extends Graphics2D {
                     img)));
             this.sb.append("\" ");
             this.sb.append(getClipPathRef()).append(" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");            
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append("x=\"").append(geomDP(x))
                     .append("\" y=\"").append(geomDP(y))
                     .append("\" ");
@@ -2452,9 +2461,10 @@ public final class SVGGraphics2D extends Graphics2D {
             this.sb.append("xlink:href=\"");
             this.sb.append(href).append("\" ");
             this.sb.append(getClipPathRef()).append(" ");
-            if (!this.transform.isIdentity())
-            	this.sb.append("transform=\"").append(getSVGTransform(
-            			this.transform)).append("\" ");
+            if (!this.transform.isIdentity()) {
+                this.sb.append("transform=\"").append(getSVGTransform(
+                        this.transform)).append("\" ");
+            }
             this.sb.append("x=\"").append(geomDP(x))
                     .append("\" y=\"").append(geomDP(y))
                     .append("\" ");
