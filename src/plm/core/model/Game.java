@@ -1137,10 +1137,6 @@ public class Game implements IWorldView {
 		this.users = users;
 	}
 
-	public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
-
-	public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
-
 	public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
 
 	/* Mechanism to find where to save our data */
