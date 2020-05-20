@@ -1,4 +1,9 @@
-2017????: 2.8
+20200520: 2.8
+
+  * Dependencies
+    - Bump scala to v2.11.12 (v2.11.4 did not play well with Java11)
+
+2017????: 2.7.1 (never released)
 
   The first Payload of fixes.
   
