@@ -28,7 +28,6 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -56,7 +55,6 @@ import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
-import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.ui.MainFrame;
@@ -202,13 +200,14 @@ public class Game implements IWorldView {
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		sessionKit = new GitSessionKit(this);
-
+/*
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
 		} catch (IOException | GitAPIException e) {
 			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	boolean canScala = false;
