@@ -11,7 +11,7 @@
   
   * Worlds:
     - Buggle/Python: Let the translation play nice with the exercises
-      forbidding forward() with a parameter.
+      forbidding forward() with a parameter (#512, #518).
   * Pedagogical Content:
     - SlugHunting.py: align the code template with the mission text
     - #484: BDR: rephrase an obscure paragraph
