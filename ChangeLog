@@ -1,6 +1,8 @@
 20200520: 2.8
 
-  * Dependencies
+  The 2020 release.
+
+  * Update dependencies so that it works nowadays
     - Update scala to v2.11.12 (v2.11.4 did not play well with Java11)
     - Update jython to v2.7.2~rc1 (to avoid a scary warning at startup)
     - Add dependencies to the jar, so that it works on a naked machine.
