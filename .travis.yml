@@ -4,6 +4,10 @@ scala:
   - 2.11.12
 jdk:
   - openjdk11
+addons:
+  apt:
+    packages:
+      - ant
 script:
   - ant test-all
 notifications:
