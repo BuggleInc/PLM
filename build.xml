@@ -64,7 +64,31 @@
         <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true"/>
     </target>    
     
-    <target name="dist" depends="clean, compile, i18n-generate-jar, updateversion" description="build a standalone application jar file">
+    <target name="source">
+        <tar destfile="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar">
+            <tarfileset dir="${base.dir}" includes="src/**/*.py   src/**/*.scala src/**/*.c src/**/*.java src/**/*.js"/>
+            <tarfileset dir="${base.dir}" includes="src/**/*.html src/**/*.css src/**/*.png src/**/*.svg src/**/*.map"/>
+            <tarfileset dir="${base.dir}" includes="img/**/*.png  img/**/*.svg"/>
+            <tarfileset dir="${base.dir}" includes="l10n/**/*.po  l10n/**/*.pot l10n/**/README"/>
+            <tarfileset dir="${base.dir}" includes="lib/doc/*.html lib/resources/**"/>
+            <tarfileset dir="${base.dir}" includes="ChangeLog COPYING *.pl build.xml LICENSE-GPL-3 po4a.conf README.md TODO.org" />
+	</tar>
+	<bzip2 src="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar" destfile="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar.bz2"/>
+	
+        <jar destfile="${dist.dir}/plm-src.${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Built-By" value="M. Quinson, G. Oster and others" />
+            </manifest>
+            <fileset dir="${base.dir}" includes="src/**/*.py   src/**/*.scala src/**/*.c src/**/*.java src/**/*.js"/>
+            <fileset dir="${base.dir}" includes="src/**/*.html src/**/*.css src/**/*.png src/**/*.svg src/**/*.map"/>
+            <fileset dir="${base.dir}" includes="img/**/*.png  img/**/*.svg"/>
+            <fileset dir="${base.dir}" includes="l10n/**/*.po  l10n/**/*.pot l10n/**/README"/>
+            <fileset dir="${base.dir}" includes="lib/doc/*.html lib/resources/**"/>
+            <fileset dir="${base.dir}" includes="ChangeLog COPYING *.pl build.xml LICENSE-GPL-3 po4a.conf README.md TODO.org" />
+	</jar>
+    </target>    
+    
+    <target name="dist" depends="clean, compile, source, i18n-generate-jar, updateversion" description="build a standalone application jar file">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/plm-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
@@ -109,20 +133,7 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.jgit-3.2.0.201312181205-r.jar" />
 	    <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsch-0.1.50.jar" />
-        </jar>
-	
-        <jar destfile="${dist.dir}/plm-src.${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
-            <manifest>
-                <attribute name="Built-By" value="M. Quinson, G. Oster and others" />
-                <attribute name="Main-Class" value="plm.core.ui.ProgrammersLearningMachine" />
-                <attribute name="Class-Path" value="." />
-            </manifest>
-            <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-            <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.c **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
-            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
-            <fileset dir="${base.dir}" includes="ChangeLog" />
-            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
-	</jar>
+        </jar>	
     </target>
     
     <target name="dist-web" depends="compile, updateversion" description="build webstart application jar files">
