@@ -295,10 +295,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuSession.setEnabled(true);
 		
 
-		miSessionExport = new JMenuItem(new ExportSession(g, i18n.tr("Export Session Cache"),	null, this));
+		miSessionExport = new JMenuItem(new ExportSession(g, i18n.tr("Write Session to disk"),	null, this));
 		menuSession.add(miSessionExport);
 
-		miSessionImport = new JMenuItem(new ImportSession(g, i18n.tr("Import Session Cache"),
+		miSessionImport = new JMenuItem(new ImportSession(g, i18n.tr("Read Session from disk"),
 				null, this));
 		menuSession.add(miSessionImport);
 		menuSession.addSeparator();
