@@ -31,7 +31,7 @@ cache:
   - C:\apache-ant-1.10.8-bin.zip
 
 build_script:
-  - ant dist
+  - C:\apache-ant-1.10.1\bin\ant dist
 
 artifacts:
 - path: dist\*.jar
