@@ -1,0 +1,30 @@
+
+# Documentation: https://www.appveyor.com/docs/
+#                https://www.appveyor.com/docs/installed-software/
+
+image:
+  - Visual Studio 2019
+
+version: "{build}"
+clone_depth: 1
+
+# scripts that are called at very beginning, before repo cloning
+init:
+- git config --global core.longpaths true
+- git config --global core.autocrlf input
+
+branches:
+  only:
+     - javaUI
+     - appveyor
+
+environment:
+  global:
+    JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+
+build_script:
+- ant dist
+
+artifacts:
+- path: dist\*.jar
+  name: jarfile
