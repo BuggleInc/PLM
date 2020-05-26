@@ -107,7 +107,7 @@
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/RSyntaxTextArea-2.5.4.jar" />			
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk7.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk8.jar" />
                         
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.11.12.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.11.12.jar"/>
