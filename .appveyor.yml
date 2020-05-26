@@ -44,4 +44,4 @@ artifacts:
 - path: exec\*
 
 on_failure:
-- appveyor PushArtifact exec\*
+- appveyor PushArtifact C:\projects\plm\exec\tmp
