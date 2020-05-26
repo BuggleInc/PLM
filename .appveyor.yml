@@ -36,11 +36,11 @@ cache:
 
 build_script:
   - C:\apache-ant-1.10.8\bin\ant dist
-  - java -jar c:\packr.jar --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm --classpath dist\plm-2.8*.jar --mainclass plm.core.ui.ProgrammersLearningMachine --output exec --verbose
+  - java -jar c:\packr.jar --output plm-2.8 --classpath dist\plm-2.8*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine 
 
 artifacts:
 - path: dist\*.jar
   name: jarfile
-- path: exec\*
-  name: exec
-
+- path: plm-2.8\**
+  name: plm-windows-2.8
+  type: zip
