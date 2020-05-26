@@ -37,6 +37,10 @@
 
     <property file="${base.dir}/keystore.properties"/>
 
+    <condition property="is_windows">
+       <os family="windows"/>
+    </condition>
+
     <path id="project.class.path">
             <pathelement path="${classes.dir}"/>    
             <fileset dir="${lib.dir}">
@@ -191,7 +195,10 @@
     <target name="i18n-update" description="Merges newly extracted messages into existing po files" depends="i18n-extract">
       <gettext-merge keysFile="plm.pot" poDirectory="l10n/engine"/>
     </target>
-    <target name="i18n-check" description="Checks that the extracted messages are correct" depends="i18n-update">
+    <target name="i18n-check"
+            unless="is_windows"
+            description="Checks that the extracted messages are correct" 
+	    depends="i18n-update">
       <!-- single quote sign is used to escape the format strings in MessageFormat;
            '' has to be used to get a single quote displayed. 
 	   That's unfortunate given the amount of ' we have in french and english but anyway.
