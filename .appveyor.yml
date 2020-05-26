@@ -43,3 +43,5 @@ artifacts:
   name: jarfile
 - path: exec\*
 
+on_failure:
+- appveyor PushArtifact exec\*
