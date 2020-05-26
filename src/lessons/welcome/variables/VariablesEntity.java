@@ -15,7 +15,6 @@ public class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 
 	@Override
-	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		int cpt = 0;
@@ -31,5 +30,4 @@ public class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 		dropBaggle();
 		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 }
