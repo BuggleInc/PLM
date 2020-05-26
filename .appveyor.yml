@@ -21,6 +21,7 @@ branches:
 environment:
  ANT_HOME: C:\apache-ant-1.10.8
  JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+ PLM_VERSION: 2.8
 
 install:
   - cmd: if not exist %ANT_HOME% pushd . && cd \ && appveyor DownloadFile https://downloads.apache.org/ant/binaries/apache-ant-1.10.8-bin.zip && 7z x apache-ant-1.10.8-bin.zip && popd
@@ -36,11 +37,10 @@ cache:
 
 build_script:
   - C:\apache-ant-1.10.8\bin\ant dist
-  - java -jar c:\packr.jar --output plm-2.8 --classpath dist\plm-2.8*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine 
+  - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine 
+  - zip c plm-windows-%PLM_VERSION%.zip plm-%PLM_VERSION%
 
 artifacts:
 - path: dist\*.jar
   name: jarfile
-- path: plm-2.8\**
-  name: plm-windows-2.8
-  type: zip
+- path: plm-windows-%PLM_VERSION%.zip
