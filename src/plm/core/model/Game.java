@@ -1141,9 +1141,11 @@ public class Game implements IWorldView {
 	/* Mechanism to find where to save our data */
 
 	private static String HOME_DIR = System.getProperty("user.home");
+	private static String APPDATA_DIR = System.getenv("APPDATA");
 
 	/* These names are tested one after the other, searching for one that exist or that we can create */
 	static String[] rootDirNames = new String[] { 
+		APPDATA_DIR + File.separator + "plm", /* preferred on windows, won't work elsewhere */
 		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */
 		HOME_DIR + File.separator + "_plm", /* Some paranoid administrator refuse directories which name starts with a dot */
 		HOME_DIR + File.separator + "plm",  /* one day, hidden directories with make trouble... */
