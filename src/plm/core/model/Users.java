@@ -74,7 +74,7 @@ public class Users {
 	 */
 	public void addUser(String username, String uuid) throws IllegalArgumentException {
 		User user = new User(username, uuid);
-		
+
 		if(!usersList.contains(user)) {
 			usersList.add(user);
 			try {

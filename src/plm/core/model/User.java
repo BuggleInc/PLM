@@ -1,6 +1,7 @@
 package plm.core.model;
 
 import java.io.IOException;
+import java.io.File;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -27,9 +28,14 @@ public class User implements JSONStreamAware {
 
 		lastUsed = false;
 		userUUID = UUID.randomUUID();
-		System.err.println(Game.i18n.tr("A new PLM user has been created for you: {0}", this));
+		final File gitDir = new File(
+				Game.getSavingLocation() + System.getProperty("file.separator") + getUserUUIDasString());
+		if (!gitDir.exists()) {
+			gitDir.mkdir();
+		}
+		System.err.println(Game.i18n.tr("A new PLM user has been created for you: {0}. Save directory: {1}", this, gitDir.toString()));
 	}
-	
+
 	public User(String username, String uuid) {
 		this.username = username;
 		if (uuid == null || uuid.equals("")) {
@@ -38,6 +44,7 @@ public class User implements JSONStreamAware {
 			this.userUUID = UUID.fromString(uuid);
 		}
 	}
+
 	private Object getOr(HashMap<String, Object> map, String key, Object defaultValue) {
 		if (map.containsKey(key))
 			return map.get(key);
@@ -55,6 +62,7 @@ public class User implements JSONStreamAware {
 		}
 		currentExo = (String) getOr(map, "exercise", DEFAULT_EXERCISE);
 	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void writeJSONString(Writer out) throws IOException {
 		LinkedHashMap obj = new LinkedHashMap();
@@ -80,6 +88,7 @@ public class User implements JSONStreamAware {
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 		Game.getInstance().getUsers().flushUsersToFile();
@@ -93,22 +102,23 @@ public class User implements JSONStreamAware {
 		this.lastUsed = lastUsed;
 	}
 
-	
 	public String getUserUUIDasString() {
 		return this.userUUID.toString();
 	}
+
 	public UUID getUserUUID() {
 		return userUUID;
 	}
-	
+
 	public String getCurrentExercise() {
 		return currentExo;
 	}
+
 	public void setCurrentExercise(String curExo) {
 		currentExo = curExo;
 		Game.getInstance().getUsers().flushUsersToFile();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 3;
