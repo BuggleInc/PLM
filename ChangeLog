@@ -5,6 +5,10 @@
   * Make it work on windows, thanks to appveyor.
   * Pedagogical content:
     - Hide the functions in welcome/variables.java: That's too early.
+    - In 'stairway to heaven', we are using a global variable to count
+      the amount of steps done so far. Rename it inTeerNal_Steep_Count
+      to ensure that it will never clash with any variable created by
+      the learner.
 
 20200523: 2.8
 

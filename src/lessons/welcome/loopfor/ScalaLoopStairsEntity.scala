@@ -6,37 +6,34 @@ import plm.core.model.Game
 
 class ScalaLoopStairsEntity extends SimpleBuggle {
 	override def forward(i: Int)  { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-	}
-	override def backward(i: Int) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+		for (i <- 1 to i) {
+			forward()
+		}
 	}
 
 	var colors = Array(
 			Color.blue,    Color.cyan, Color.green,  Color.yellow,
 			Color.orange,  Color.red,  Color.magenta,Color.pink)
 	
-	var step = -3
+	var inTeerNal_Steep_Count = -3
 	override def forward() {
 		super.forward();
-		if (step<0 || step%2 == 1 || (step/2)>=colors.length) {
-			if (step < 0)
+		if (inTeerNal_Steep_Count<0 || inTeerNal_Steep_Count%2 == 1 || (inTeerNal_Steep_Count/2)>=colors.length) {
+			if (inTeerNal_Steep_Count < 0)
 				setBrushColor(Color.lightGray);
-			else if ((step/2)>=colors.length)
+			else if ((inTeerNal_Steep_Count/2)>=colors.length)
 				setBrushColor(Color.pink);
 			else
-				setBrushColor(colors((step/2)%colors.length));
+				setBrushColor(colors((inTeerNal_Steep_Count/2)%colors.length));
 			brushDown();
 			brushUp();
 		}
-		step += 1; 
+		inTeerNal_Steep_Count += 1; 
 	}
 
 	override def run() {
 		/* BEGIN SOLUTION */
-		forward();
-		forward();
-		forward();
+		forward(3);
 		left();
 		for (i <- 1 to 8) { 
 			forward();
@@ -45,9 +42,7 @@ class ScalaLoopStairsEntity extends SimpleBuggle {
 			left();
 		}
 		right();
-		forward();
-		forward();
-		forward();
+		forward(3);
 		/* END SOLUTION */
 	}
 }

@@ -3,33 +3,24 @@ import javax.swing.JOptionPane;
 colors = [Color.blue,    Color.cyan, Color.green,  Color.yellow,
           Color.orange,  Color.red,  Color.magenta,Color.pink]
 
-step = -3
-def forward(i=1):
-    global step
-    if i>1:
-      errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
-    else:
+inTeerNal_Steep_Count = -3
+def forward(need=1):
+    global inTeerNal_Steep_Count
+    for i in range(need):
       entity.forward()
-      if step<0 or step%2 == 1 or (step/2)>=len(colors):
-          if step < 0:
+      if inTeerNal_Steep_Count<0 or inTeerNal_Steep_Count%2 == 1 or (inTeerNal_Steep_Count/2)>=len(colors):
+          if inTeerNal_Steep_Count < 0:
               setBrushColor(Color.lightGray)
-          elif (step/2)>=len(colors):
+          elif (inTeerNal_Steep_Count/2)>=len(colors):
               setBrushColor(Color.pink)
           else:
-              setBrushColor(colors[(step/2)%len(colors)])
+              setBrushColor(colors[(inTeerNal_Steep_Count/2)%len(colors)])
           brushDown()
           brushUp()
-      step += 1
-def backward(i=1):
-    if i>1:
-      errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
-    else:
-      entity.backward()
+      inTeerNal_Steep_Count += 1
       
 # BEGIN SOLUTION
-forward()
-forward()
-forward()
+forward(3)
 left()
 for i in range(8): 
     forward()   
