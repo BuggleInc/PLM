@@ -15,7 +15,7 @@ public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 	@Override
 	public void backward() {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay."));
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
 	}
 
 	Color[] colors = new Color[] {

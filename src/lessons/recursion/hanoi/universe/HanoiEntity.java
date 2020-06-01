@@ -52,7 +52,7 @@ public class HanoiEntity extends Entity {
 			(from==1 && to!=2) ||
 			(from==2 && to!=0))
 			throw new RuntimeException(Game.i18n.tr(
-					"Sorry Dave, I cannot let you use move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.",from, to));
+					"Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.",from, to));
 		regularMove(from,to);
 	}
 	/** Returns the amount of disks on the given slot */

@@ -8,7 +8,7 @@ public class LinearHanoiEntity extends HanoiEntity {
 	public void move(int from, int to) {
 		if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
 			throw new RuntimeException(Game.i18n.tr(
-					"Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
+					"Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
 		super.move(from,to);
 	}
 	

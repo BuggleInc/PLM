@@ -1,6 +1,6 @@
 def move(src,dst):
 	if (src==0 and dst==2) or (src==2 and dst==0):
-		errorMsg("Sorry Dave, I cannot let you use move disks between slots 0 and 2 directly. Use the intermediate slot in all moves.")
+		errorMsg("Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves.")
 	else:
 		entity.move(src,dst)
 # BEGIN TEMPLATE

@@ -29,7 +29,7 @@ def backward(i=1):
     if i>1:
       errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
     else:
-      errorMsg("Sorry Dave, you cannot run backward that way. Exercising is hard enough -- please don't overplay.")
+      errorMsg("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay.")
 # BEGIN SOLUTION
 for i in range(7):
     for side in range(4):
