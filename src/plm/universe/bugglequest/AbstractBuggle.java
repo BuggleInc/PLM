@@ -49,7 +49,11 @@ public abstract class AbstractBuggle extends Entity {
 		this.seenError = true;
 	}
 	public void seenError(String msg) {
-		System.err.println(getName()+": "+msg);
+		if (getWorld().getEntityCount()>1) {
+			System.err.println(getName()+": "+msg);
+		} else {
+			System.err.println(msg);
+		}
 		this.seenError = true;
 		this.seenErrorMsg = msg;
 	}
@@ -471,13 +475,13 @@ public abstract class AbstractBuggle extends Entity {
 		if (! (seenError == other.seenError && seenErrorMsg == other.seenErrorMsg) ) {
 			if (other.seenError) {
 				if (other.seenErrorMsg != "") {
-					sb.append(Game.i18n.tr("    Unexpected issue: {0}.\n", other.seenErrorMsg));
+					sb.append(Game.i18n.tr("    Unexpected issue: {0}\n", other.seenErrorMsg));
 				} else {
 					sb.append(Game.i18n.tr("    It encountered an unexpected issue (such as bumping into a wall).\n"));
 				}	
 			} else {
 				if (seenErrorMsg != "") {
-					sb.append(Game.i18n.tr("    It did not encounter the expected issue: {0}.\n", seenErrorMsg));
+					sb.append(Game.i18n.tr("    It did not encounter the expected issue: {0}\n", seenErrorMsg));
 				} else {
 					sb.append(Game.i18n.tr("    It did not encounter an issue as expected (such as bumping into a wall).\n"));
 				}	
