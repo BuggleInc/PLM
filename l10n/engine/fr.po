@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 16:22+0200\n"
-"PO-Revision-Date: 2020-06-01 16:16+0200\n"
+"PO-Revision-Date: 2020-06-01 16:24+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -2458,18 +2458,18 @@ msgid "    It is not carrying any baggle.\n"
 msgstr "    Elle ne porte pas de biscuit.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:478
-#, fuzzy, java-format
+#, java-format
 msgid "    Unexpected issue: {0}\n"
-msgstr "    Problème inattendu : {0}.\n"
+msgstr "    Problème inattendu : {0}\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:480
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
 msgstr "    Elle a eu un problème inattendu, tel que rencontrer un mur.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:484
-#, fuzzy, java-format
+#, java-format
 msgid "    It did not encounter the expected issue: {0}\n"
-msgstr "    Elle n''a pas eu le problème attendu : {0}.\n"
+msgstr "    Elle n''a pas eu le problème attendu : {0}\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:486
 msgid ""
