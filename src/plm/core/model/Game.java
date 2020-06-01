@@ -1001,7 +1001,7 @@ public class Game implements IWorldView {
 		if (isValidProgLanguage(newLanguage)) {
 			//System.out.println("Switch programming language to "+newLanguage);
 			if (newLanguage.equals(Game.SCALA) && !canScala) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.10 or higher to use it in the PLM.\n\n")+scalaError ,
+				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.11 or higher to use it in the PLM.\n\n")+scalaError ,
 						i18n.tr("Scala is missing"), JOptionPane.ERROR_MESSAGE); 
 				return;
 			}
