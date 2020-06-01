@@ -3,6 +3,7 @@
   * Core:
     - Make it work on windows, thanks to appveyor.
     - Make sure that the save directory is created before using it.
+    - Add the student code to the GitHub automatic bug reports.
   * UI:
     - Make it possible to open the mission text in an external windows.
   * Buggles:

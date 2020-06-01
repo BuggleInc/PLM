@@ -6,7 +6,11 @@ import java.awt.Dimension;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -16,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.client.GitHubClient;
@@ -25,6 +31,7 @@ import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.tracking.GitUtils;
 import plm.universe.World;
@@ -54,18 +61,18 @@ public class FeedbackDialog extends JDialog {
 
 		defaultTitle = FeedbackDialog.instance.i18n.tr("Please describe the problem in a few words");
 		defaultText = FeedbackDialog.instance.i18n.tr(
-				  "Please write your suggestion here, with all necessary details\n"
-				+ "(if possible in English or French).\n\n"
-				+ "When you find a typo or a sentence that is hard to understand, \n"
-				+ "it really helps to suggest a new wording.\n\n"
-				+ "If you encounter a technical bug, please tell us what you did,\n"
-				+ "which outcome you were expecting and what happened instead.\n\n"
-				+ "  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never."
-				+ "\n\n--------------------[ Technical Information ]--------------------\n"
-				+ "(This can help us fixing your problem, please don't erase)\n"); /* The rest is not translated */
+				  "Your suggestion comes here, with all necessary details.\n\n\n\n\n\n"
+				+ "(The following helps us fixing your problem, please don't erase)\n\n"
+	            + "--------------------[ Technical Information ]--------------------\n"); /* The rest is not translated */
 		
+		Lecture exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
+		String proposedExo = "";
+		if (exo instanceof Exercise)
+			proposedExo = "\n"+FeedbackDialog.instance.i18n.tr("--------------------[ my code for this exercise ]--------------------\n")
+			    + ((Exercise)exo).getSourceFile(Game.getProgrammingLanguage(), 0).getBody();
+
 		FeedbackDialog.instance.feedback.setText(defaultText
-				+ "\nLesson: "+Game.getInstance().getCurrentLesson().getId() + "\n"
+				+ "Lesson: "+Game.getInstance().getCurrentLesson().getId() + "\n"
 				+ "Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n"
 				+ worldInfo.toString()
 				+ "Programming Language: "+Game.getProgrammingLanguage().getLang() + "\n"
@@ -73,7 +80,8 @@ public class FeedbackDialog extends JDialog {
 				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
 				+ "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")" + "\n"
 				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
-				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n");
+				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n"
+				+ proposedExo);
 		
 		
 		FeedbackDialog.instance.title.setText(defaultTitle);
@@ -94,6 +102,42 @@ public class FeedbackDialog extends JDialog {
 		headerToolbar.add(new Label(i18n.tr("Issue title:")));
 		headerToolbar.add(title);
 		add(headerToolbar, BorderLayout.NORTH);
+		
+		JEditorPane hints = new JEditorPane("text/html","");
+		hints.setEditorKit(new PlmHtmlEditorKit());
+		hints.setEditable(false);
+		hints.setText(i18n.tr("<h1>Reporting a bug in PLM</h1>"
+						+ "<p>If you have your own GitHub account, please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. "
+						+ "If not, you can use this window to report an issue in the PLM (be it in one exercise or in the PLM itself). "
+	 				    + "Please write your report in English or French if possible.</p>"
+						+ "<p>You should include all relevant information that could help us fixing the issue. Don't remove the technical details unless you are certain that they are not relevant. "
+						+ "What you write here will be public: <b>Never disclose passwords or other sensible information on a bug tracker</b></p>"
+					  	+ "<p>When you find a typo or a sentence that is hard to understand, it really helps to suggest a new wording."
+					  	+ "If you encounter a technical bug, please tell us what you did, which outcome you were expecting and what happened instead.</p><br/>"));
+		hints.addHyperlinkListener(new HyperlinkListener() {
+			public void hyperlinkUpdate(HyperlinkEvent event) {
+				if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+					String uri = event.getDescription();
+
+					try {
+						if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+							System.out.print("Directly");
+						    Desktop.getDesktop().browse(new URI(uri));
+        				} else if (new File("/usr/bin/xdg-open").exists()) {
+							Runtime.getRuntime().exec("/usr/bin/xdg-open " + uri);
+						} else if (System.getProperty("os.name").toLowerCase().indexOf("mac") >= 0) {
+							Runtime.getRuntime().exec("open " + uri);
+						} else {
+							System.err.println("Cannot find any browser");
+						}
+					} catch (IOException | URISyntaxException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+				
+		add(hints, BorderLayout.NORTH);
 
 		feedback.setBackground(Color.white);
 		feedback.setOpaque(true);
