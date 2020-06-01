@@ -87,6 +87,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
 			/* Inject the entity into the scripting world so that it can forward script commands to the world */
 			engine.put("entity", ent);
+			engine.put("_i18n", Game.i18n);
 
 			/* Inject commands' wrappers that forward the calls to the entity */
 			ent.getWorld().setupBindings(this,engine);

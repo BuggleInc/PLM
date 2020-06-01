@@ -561,7 +561,7 @@ public class BuggleWorld extends GridWorld {
 				"    return getBrushColor()\n"+
 				
 				"def errorMsg(str):\n"+
-				"  entity.seenError(str)\n"
+				"  entity.seenError(_i18n.tr(str))\n"
 				
 						);		
 		} else {

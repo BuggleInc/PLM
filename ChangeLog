@@ -6,6 +6,7 @@
   * Make it possible to open the mission text in an external windows.
   * Buggles:
     - Display the buggles' errors in the verbose world diff.
+    - Translate these messages even in the Python bindings.
   * Pedagogical content:
     - Hide the functions in welcome/variables.java: That's too early.
     - In 'stairway to heaven', we are using a global variable to count
