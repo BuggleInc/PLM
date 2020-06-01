@@ -21,6 +21,7 @@ public class ProgrammersLearningMachine {
 				Game.getInstance().setCurrentExercise(user.getCurrentExercise());
 				
 				MainFrame.getInstance().setVisible(true);
+				Game.getInstance().setCaptureOutput(true);
 			}
 		});
 
