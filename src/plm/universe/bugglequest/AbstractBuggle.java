@@ -44,16 +44,21 @@ public abstract class AbstractBuggle extends Entity {
 	 * candidate for exercise completion.
 	 */
 	private boolean seenError = false;
+	private String seenErrorMsg = "";
 	public void seenError() {
 		this.seenError = true;
 	}
 	public void seenError(String msg) {
 		System.err.println(getName()+": "+msg);
 		this.seenError = true;
+		this.seenErrorMsg = msg;
 	}
 	public boolean haveSeenError() {
 		return seenError;
 	}	
+	public String haveSeenErrorMsg() {
+		return seenErrorMsg;
+	}
 
 	/** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
 	public AbstractBuggle() {
@@ -443,7 +448,7 @@ public abstract class AbstractBuggle extends Entity {
 				return false;
 		} else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
 			return false;
-		if (seenError != other.seenError)
+		if (! (seenError == other.seenError && seenErrorMsg == other.seenErrorMsg) )
 			return false;
 		if (x != other.x)
 			return false;
@@ -471,10 +476,21 @@ public abstract class AbstractBuggle extends Entity {
 			sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
 		if (!isCarryingBaggle() && other.isCarryingBaggle())
 			sb.append(Game.i18n.tr("    It is not carrying any baggle.\n"));
-		if (haveSeenError() && other.haveSeenError())
-			sb.append(Game.i18n.tr("    It encountered an issue, such as bumping into a wall.\n"));
-		if (haveSeenError() && !other.haveSeenError())
-			sb.append(Game.i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
+		if (! (seenError == other.seenError && seenErrorMsg == other.seenErrorMsg) ) {
+			if (other.seenError) {
+				if (other.seenErrorMsg != "") {
+					sb.append(Game.i18n.tr("    It encountered an expected issue: {0}.\n", other.seenErrorMsg));
+				} else {
+					sb.append(Game.i18n.tr("    It encountered an unexpected issue (such as bumping into a wall).\n"));
+				}	
+			} else {
+				if (seenErrorMsg != "") {
+					sb.append(Game.i18n.tr("    It did not encounter the expected issue: {0}.\n", seenErrorMsg));
+				} else {
+					sb.append(Game.i18n.tr("    It did not encounter an issue as expected (such as bumping into a wall).\n"));
+				}	
+			}
+		}
 		return sb.toString();
 	}
 
