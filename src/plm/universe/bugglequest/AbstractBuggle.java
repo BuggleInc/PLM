@@ -48,7 +48,7 @@ public abstract class AbstractBuggle extends Entity {
 		this.seenError = true;
 	}
 	public void seenError(String msg) {
-		System.err.println(msg);
+		System.err.println(getName()+": "+msg);
 		this.seenError = true;
 	}
 	public boolean haveSeenError() {
