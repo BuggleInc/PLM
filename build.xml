@@ -69,15 +69,22 @@
     </target>    
     
     <target name="source">
+        <delete dir="${dist.dir}/plm-${plm.major.version}"/>
+	<mkdir  dir="${dist.dir}/plm-${plm.major.version}"/>
+	<copy todir="${dist.dir}/plm-${plm.major.version}">
+            <fileset dir="${base.dir}" includes="src/**/*.py   src/**/*.scala src/**/*.c src/**/*.java src/**/*.js"/>
+            <fileset dir="${base.dir}" includes="src/**/*.html src/**/*.css src/**/*.png src/**/*.svg src/**/*.map"/>
+            <fileset dir="${base.dir}" includes="img/**/*.png  img/**/*.svg"/>
+            <fileset dir="${base.dir}" includes="l10n/**/*.po  l10n/**/*.pot l10n/**/README"/>
+            <fileset dir="${base.dir}" includes="lib/doc/*.html lib/resources/**"/>
+            <fileset dir="${base.dir}" includes="ChangeLog COPYING *.pl build.xml LICENSE-GPL-3 po4a.conf README.md TODO.org" />
+	</copy>
         <tar destfile="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar">
-            <tarfileset dir="${base.dir}" includes="src/**/*.py   src/**/*.scala src/**/*.c src/**/*.java src/**/*.js"/>
-            <tarfileset dir="${base.dir}" includes="src/**/*.html src/**/*.css src/**/*.png src/**/*.svg src/**/*.map"/>
-            <tarfileset dir="${base.dir}" includes="img/**/*.png  img/**/*.svg"/>
-            <tarfileset dir="${base.dir}" includes="l10n/**/*.po  l10n/**/*.pot l10n/**/README"/>
-            <tarfileset dir="${base.dir}" includes="lib/doc/*.html lib/resources/**"/>
-            <tarfileset dir="${base.dir}" includes="ChangeLog COPYING *.pl build.xml LICENSE-GPL-3 po4a.conf README.md TODO.org" />
+            <fileset dir="${dist.dir}/" includes="plm-${plm.major.version}/**"/>
 	</tar>
-	<bzip2 src="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar" destfile="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar.bz2"/>
+	<bzip2  src="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar" destfile="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar.bz2"/>
+	<delete file="${dist.dir}/plm.${plm.major.version}-${plm.minor.version}.tar" />
+        <delete dir="${dist.dir}/plm-${plm.major.version}"/>
 	
         <jar destfile="${dist.dir}/plm-src.${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
