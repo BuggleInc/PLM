@@ -3,6 +3,7 @@
   * Fix some glitches
     - Make sure that the save directory is created before using it.
   * Make it work on windows, thanks to appveyor.
+  * Make it possible to open the mission text in an external windows.
   * Pedagogical content:
     - Hide the functions in welcome/variables.java: That's too early.
     - In 'stairway to heaven', we are using a global variable to count

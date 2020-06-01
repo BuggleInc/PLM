@@ -91,7 +91,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
-    private JMenuItem miHelpFeedback, miHelpLesson,miHelpWorld,miHelpAbout;
+    private JMenuItem miHelpFeedback, miHelpLesson,miHelpWorld,miHelpMission,miHelpAbout;
         
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
@@ -377,6 +377,21 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		miHelpWorld.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		menuHelp.add(miHelpWorld);
+
+		miHelpMission = new JMenuItem(new AbstractGameAction(g, i18n.tr("Show the mission in a window"), null) {
+			private static final long serialVersionUID = 1L;
+
+			private AbstractAboutDialog dialog = null;
+
+			public void actionPerformed(ActionEvent arg0) {
+				if (this.dialog == null) {
+					this.dialog = new AboutMissionDialog(MainFrame.getInstance());
+				}
+				this.dialog.setVisible(true);
+			}
+		});
+		miHelpMission.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
+		menuHelp.add(miHelpMission);
 
 		if (!System.getProperty("os.name").startsWith("Mac")) {
 			miHelpAbout = new JMenuItem(new AbstractGameAction(g, i18n.tr("About the PLM"), null) {
