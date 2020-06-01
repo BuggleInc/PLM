@@ -464,14 +464,6 @@ public abstract class AbstractBuggle extends Entity {
 		 * So, use Game.i18n instead.
 		 */
 		StringBuffer sb = new StringBuffer();
-		if (getX() != other.getX() || getY() != other.getY()) 
-			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection()) 
-			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
-		if (getBodyColor() != other.getBodyColor()) 
-			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
-		if (getBrushColor() != other.getBrushColor())
-			sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
 		if (isCarryingBaggle() && !other.isCarryingBaggle())
 			sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
 		if (!isCarryingBaggle() && other.isCarryingBaggle())
@@ -479,7 +471,7 @@ public abstract class AbstractBuggle extends Entity {
 		if (! (seenError == other.seenError && seenErrorMsg == other.seenErrorMsg) ) {
 			if (other.seenError) {
 				if (other.seenErrorMsg != "") {
-					sb.append(Game.i18n.tr("    It encountered an expected issue: {0}.\n", other.seenErrorMsg));
+					sb.append(Game.i18n.tr("    Unexpected issue: {0}.\n", other.seenErrorMsg));
 				} else {
 					sb.append(Game.i18n.tr("    It encountered an unexpected issue (such as bumping into a wall).\n"));
 				}	
@@ -491,6 +483,14 @@ public abstract class AbstractBuggle extends Entity {
 				}	
 			}
 		}
+		if (getX() != other.getX() || getY() != other.getY()) 
+			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
+		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection()) 
+			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
+		if (getBodyColor() != other.getBodyColor()) 
+			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
+		if (getBrushColor() != other.getBrushColor())
+			sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
 		return sb.toString();
 	}
 

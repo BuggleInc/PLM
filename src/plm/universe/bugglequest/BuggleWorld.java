@@ -574,18 +574,18 @@ public class BuggleWorld extends GridWorld {
 		StringBuffer sb = new StringBuffer();
 		if (! other.getName().equals(getName()))
 			sb.append(i18n.tr("  The world''s name is {0}",other.getName()));
-		for (int x=0; x<getWidth(); x++) 
-			for (int y=0; y<getHeight(); y++) 
-				if (!getCell(x, y).equals(other.getCell(x, y))) 
-					sb.append(i18n.tr("  In ({0},{1})",x,y)+  getCell(x, y).diffTo(other.getCell(x, y))+".\n");
 		if (entities.size() != other.entities.size()) {
 			sb.append(i18n.tr("  There is {0} entities where {1} were expected.",other.entities.size(),entities.size()));
 		} else {
 			for (int i=0; i<entities.size(); i++)  
 				if (! entities.get(i).equals(other.entities.get(i))) 
 					sb.append(i18n.tr("  Something is wrong about buggle ''{0}'':\n",entities.get(i).getName())+
-							((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i)));
+							((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i))+"\n");
 		}
+		for (int x=0; x<getWidth(); x++) 
+			for (int y=0; y<getHeight(); y++) 
+				if (!getCell(x, y).equals(other.getCell(x, y))) 
+					sb.append(i18n.tr("  In ({0},{1})",x,y)+  getCell(x, y).diffTo(other.getCell(x, y))+".\n");
 		return sb.toString();
 	}
 
