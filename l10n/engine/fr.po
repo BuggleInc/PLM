@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 14:42+0200\n"
-"PO-Revision-Date: 2017-09-01 00:25+0200\n"
+"PO-Revision-Date: 2020-06-01 16:16+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -77,7 +77,6 @@ msgstr ""
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
 #: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
-#, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use "
 "the intermediate slot in all moves."
@@ -87,7 +86,7 @@ msgstr ""
 "les déplacements."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, "
 "from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
@@ -371,7 +370,6 @@ msgstr ""
 
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:18
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:18
-#, fuzzy
 msgid ""
 "Sorry Dave, you cannot run backward like this. Exercising is hard enough -- "
 "please don't overplay."
@@ -794,14 +792,10 @@ msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
 #: src/plm/core/model/Game.java:1004
-#, fuzzy
 msgid ""
 "Please install Scala version 2.11 or higher to use it in the PLM.\n"
 "\n"
-msgstr ""
-"Veuillez installer Scala version 2.10 ou supérieure pour l'utiliser dans la "
-"PLM.\n"
-"\n"
+msgstr "Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la PLM.\n\n"
 
 #: src/plm/core/model/Game.java:1005
 msgid "Scala is missing"
@@ -863,9 +857,9 @@ msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
 #: src/plm/core/model/User.java:36
-#, fuzzy, java-format
+#, java-format
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
-msgstr "Un nouvel utilisateur PLM a été créé pour vous !"
+msgstr "Un nouvel utilisateur PLM a été créé pour vous : {0}. Répertoire de sauvegarde : {1}"
 
 #: src/plm/core/model/Users.java:87
 #, java-format
@@ -1767,11 +1761,11 @@ msgstr "Session"
 
 #: src/plm/core/ui/MainFrame.java:298
 msgid "Write Session to disk"
-msgstr ""
+msgstr "Écrire la session sur disque"
 
 #: src/plm/core/ui/MainFrame.java:301
 msgid "Read Session from disk"
-msgstr ""
+msgstr "Lire la session depuis le disque"
 
 #: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:723
 #: src/plm/core/ui/action/AddUser.java:33
@@ -1821,7 +1815,7 @@ msgstr "À propos de ce monde"
 
 #: src/plm/core/ui/MainFrame.java:381
 msgid "Show the mission in a window"
-msgstr ""
+msgstr "Voir la mission dans une fenêtre"
 
 #. Buttons
 #: src/plm/core/ui/MainFrame.java:433 src/plm/core/ui/MainFrame.java:698
@@ -2443,7 +2437,6 @@ msgid "There is no baggle to pick up here."
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:370
-#, fuzzy
 msgid "You are already carrying a baggle."
 msgstr "Vous portez déjà un biscuit."
 
@@ -2462,24 +2455,22 @@ msgstr "    Elle ne porte pas de biscuit.\n"
 #: src/plm/universe/bugglequest/AbstractBuggle.java:474
 #, java-format
 msgid "    Unexpected issue: {0}.\n"
-msgstr ""
+msgstr "    Problème inattendu : {0}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:476
-#, fuzzy
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
-msgstr "    Elle a eu un problème tel que rencontrer un mur.\n"
+msgstr "    Elle a eu un problème inattendu, tel que rencontrer un mur.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:480
-#, fuzzy, java-format
+#, java-format
 msgid "    It did not encounter the expected issue: {0}.\n"
-msgstr "    Sa direction est {0} ; attendue : {1}.\n"
+msgstr "    Elle n''a pas eu le problème attendu : {0}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:482
-#, fuzzy
 msgid ""
 "    It did not encounter an issue as expected (such as bumping into a "
 "wall).\n"
-msgstr "    Elle n'a pas eu de problème tel que rencontrer un mur.\n"
+msgstr "    Elle n'a pas eu le problème attendu, tel que rencontrer un mur.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:487
 #, java-format
@@ -2885,24 +2876,3 @@ msgstr "Formes manquantes dans votre solution : \n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
-
-#~ msgid ""
-#~ "You found a bug in the PLM. Please report it with all possible details "
-#~ "(including the stacktrace below"
-#~ msgstr ""
-#~ "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec "
-#~ "tous les détails possibles (y compris la pile d'exécution ci-dessous)."
-
-#~ msgid ""
-#~ "<html>Congratulations, you passed this exercise.<br>({0} tests "
-#~ "passed)<br>Which exercise will you do now?</html>"
-#~ msgstr ""
-#~ "<html>Félicitations, vous avez réussi cet exercice.<bbr>({0} tests "
-#~ "passés)<br>Par quel exercice voulez vous continuer ?</html>"
-
-#~ msgid ""
-#~ "<html>Congratulations, you passed this exercise.<br>Which exercise will "
-#~ "you do now?</html>"
-#~ msgstr ""
-#~ "<html>Félicitations, vous avez réussi cet exercice.<br>Par quel exercice "
-#~ "voulez vous continuer ?</html>"
