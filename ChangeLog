@@ -1,9 +1,10 @@
 20200527: 2.8.1 (ongoing)
 
-  * Fix some glitches
+  * Core:
+    - Make it work on windows, thanks to appveyor.
     - Make sure that the save directory is created before using it.
-  * Make it work on windows, thanks to appveyor.
-  * Make it possible to open the mission text in an external windows.
+  * UI:
+    - Make it possible to open the mission text in an external windows.
   * Buggles:
     - Display the buggles' errors in the verbose world diff.
     - Translate these messages even in the Python bindings.
