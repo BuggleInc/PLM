@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 14:45+0200\n"
+"POT-Creation-Date: 2020-06-01 16:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2038,19 +2038,19 @@ msgstr ""
 msgid "Exception {0}: {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:91
+#: src/plm/universe/bugglequest/AbstractBuggle.java:95
 msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:95
+#: src/plm/universe/bugglequest/AbstractBuggle.java:99
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:171
+#: src/plm/universe/bugglequest/AbstractBuggle.java:175
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
 #: src/plm/universe/turtles/Turtle.java:216
 msgid ""
@@ -2058,7 +2058,7 @@ msgid ""
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:174
+#: src/plm/universe/bugglequest/AbstractBuggle.java:178
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
 #: src/plm/universe/turtles/Turtle.java:219
 msgid ""
@@ -2066,89 +2066,89 @@ msgid ""
 "instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:194
+#: src/plm/universe/bugglequest/AbstractBuggle.java:198
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:196
+#: src/plm/universe/bugglequest/AbstractBuggle.java:200
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:215
-#: src/plm/universe/bugglequest/AbstractBuggle.java:251
+#: src/plm/universe/bugglequest/AbstractBuggle.java:219
+#: src/plm/universe/bugglequest/AbstractBuggle.java:255
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:234
-#: src/plm/universe/bugglequest/AbstractBuggle.java:249
+#: src/plm/universe/bugglequest/AbstractBuggle.java:238
+#: src/plm/universe/bugglequest/AbstractBuggle.java:253
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:368
+#: src/plm/universe/bugglequest/AbstractBuggle.java:372
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:129
 msgid "There is no baggle to pick up here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:370
+#: src/plm/universe/bugglequest/AbstractBuggle.java:374
 msgid "You are already carrying a baggle."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:461
+#: src/plm/universe/bugglequest/AbstractBuggle.java:465
 msgid "Its value is 'null', which is never good."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:468
+#: src/plm/universe/bugglequest/AbstractBuggle.java:472
 msgid "    It should not carry that baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:470
+#: src/plm/universe/bugglequest/AbstractBuggle.java:474
 msgid "    It is not carrying any baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:474
+#: src/plm/universe/bugglequest/AbstractBuggle.java:478
 #, java-format
-msgid "    Unexpected issue: {0}.\n"
-msgstr ""
-
-#: src/plm/universe/bugglequest/AbstractBuggle.java:476
-msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
+msgid "    Unexpected issue: {0}\n"
 msgstr ""
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:480
-#, java-format
-msgid "    It did not encounter the expected issue: {0}.\n"
+msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:482
+#: src/plm/universe/bugglequest/AbstractBuggle.java:484
+#, java-format
+msgid "    It did not encounter the expected issue: {0}\n"
+msgstr ""
+
+#: src/plm/universe/bugglequest/AbstractBuggle.java:486
 msgid ""
 "    It did not encounter an issue as expected (such as bumping into a "
 "wall).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:487
+#: src/plm/universe/bugglequest/AbstractBuggle.java:491
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:489
+#: src/plm/universe/bugglequest/AbstractBuggle.java:493
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:491
+#: src/plm/universe/bugglequest/AbstractBuggle.java:495
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:493
+#: src/plm/universe/bugglequest/AbstractBuggle.java:497
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 14:42+0200\n"
+"POT-Creation-Date: 2020-06-01 16:22+0200\n"
 "PO-Revision-Date: 2020-06-01 16:16+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -795,7 +795,10 @@ msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 msgid ""
 "Please install Scala version 2.11 or higher to use it in the PLM.\n"
 "\n"
-msgstr "Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la PLM.\n\n"
+msgstr ""
+"Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la "
+"PLM.\n"
+"\n"
 
 #: src/plm/core/model/Game.java:1005
 msgid "Scala is missing"
@@ -859,7 +862,9 @@ msgstr "Annuler la demande d'aide"
 #: src/plm/core/model/User.java:36
 #, java-format
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
-msgstr "Un nouvel utilisateur PLM a été créé pour vous : {0}. Répertoire de sauvegarde : {1}"
+msgstr ""
+"Un nouvel utilisateur PLM a été créé pour vous : {0}. Répertoire de "
+"sauvegarde : {1}"
 
 #: src/plm/core/model/Users.java:87
 #, java-format
@@ -2361,7 +2366,7 @@ msgstr "OUEST"
 msgid "Exception {0}: {1}"
 msgstr "Exception {0} : {1}"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:91
+#: src/plm/universe/bugglequest/AbstractBuggle.java:95
 msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
@@ -2369,7 +2374,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser baisseCrayon() ici. Les "
 "buggles ont des brosses, pas des crayons. Utilise plutôt baisseBrosse()."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:95
+#: src/plm/universe/bugglequest/AbstractBuggle.java:99
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
@@ -2377,7 +2382,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser leveCrayon() ici. Les "
 "buggles ont des brosses, pas des crayons. Utilise plutôt leveBrosse()."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:171
+#: src/plm/universe/bugglequest/AbstractBuggle.java:175
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
 #: src/plm/universe/turtles/Turtle.java:216
 msgid ""
@@ -2387,7 +2392,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser Left() avec une majuscule. "
 "Utilise plutôt left() ou gauche()."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:174
+#: src/plm/universe/bugglequest/AbstractBuggle.java:178
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
 #: src/plm/universe/turtles/Turtle.java:219
 msgid ""
@@ -2397,7 +2402,7 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser Right() avec une majuscule. "
 "Utilise plutôt right() ou droite()."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:194
+#: src/plm/universe/bugglequest/AbstractBuggle.java:198
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
@@ -2406,7 +2411,7 @@ msgstr ""
 "Vous avez accédé à une cellule telle que Y={0}, mais le Y maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:196
+#: src/plm/universe/bugglequest/AbstractBuggle.java:200
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
@@ -2415,79 +2420,79 @@ msgstr ""
 "Vous avez accédé à une cellule telle que X={0}, mais le X maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:215
-#: src/plm/universe/bugglequest/AbstractBuggle.java:251
+#: src/plm/universe/bugglequest/AbstractBuggle.java:219
+#: src/plm/universe/bugglequest/AbstractBuggle.java:255
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 "Vous avez tenté de mettre la valeur de X à {0}, mais le X maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:234
-#: src/plm/universe/bugglequest/AbstractBuggle.java:249
+#: src/plm/universe/bugglequest/AbstractBuggle.java:238
+#: src/plm/universe/bugglequest/AbstractBuggle.java:253
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 "Vous avez tenté de mettre la valeur de Y à {0}, mais le Y maximal pour ce "
 "monde est {1}."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:368
+#: src/plm/universe/bugglequest/AbstractBuggle.java:372
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:129
 msgid "There is no baggle to pick up here."
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:370
+#: src/plm/universe/bugglequest/AbstractBuggle.java:374
 msgid "You are already carrying a baggle."
 msgstr "Vous portez déjà un biscuit."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:461
+#: src/plm/universe/bugglequest/AbstractBuggle.java:465
 msgid "Its value is 'null', which is never good."
 msgstr "Sa valeur est 'null', ce qui n'est jamais bon."
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:468
+#: src/plm/universe/bugglequest/AbstractBuggle.java:472
 msgid "    It should not carry that baggle.\n"
 msgstr "    Elle de devrait pas porter de biscuit.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:470
+#: src/plm/universe/bugglequest/AbstractBuggle.java:474
 msgid "    It is not carrying any baggle.\n"
 msgstr "    Elle ne porte pas de biscuit.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:474
-#, java-format
-msgid "    Unexpected issue: {0}.\n"
+#: src/plm/universe/bugglequest/AbstractBuggle.java:478
+#, fuzzy, java-format
+msgid "    Unexpected issue: {0}\n"
 msgstr "    Problème inattendu : {0}.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:476
+#: src/plm/universe/bugglequest/AbstractBuggle.java:480
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
 msgstr "    Elle a eu un problème inattendu, tel que rencontrer un mur.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:480
-#, java-format
-msgid "    It did not encounter the expected issue: {0}.\n"
+#: src/plm/universe/bugglequest/AbstractBuggle.java:484
+#, fuzzy, java-format
+msgid "    It did not encounter the expected issue: {0}\n"
 msgstr "    Elle n''a pas eu le problème attendu : {0}.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:482
+#: src/plm/universe/bugglequest/AbstractBuggle.java:486
 msgid ""
 "    It did not encounter an issue as expected (such as bumping into a "
 "wall).\n"
 msgstr "    Elle n'a pas eu le problème attendu, tel que rencontrer un mur.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:487
+#: src/plm/universe/bugglequest/AbstractBuggle.java:491
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr "    Sa position est ({0},{1}) ; attendue : ({2},{3}).\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:489
+#: src/plm/universe/bugglequest/AbstractBuggle.java:493
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr "    Sa direction est {0} ; attendue : {1}.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:491
+#: src/plm/universe/bugglequest/AbstractBuggle.java:495
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr "    Sa couleur est {0} ; attendue : {1}.\n"
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:493
+#: src/plm/universe/bugglequest/AbstractBuggle.java:497
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr "    La couleur de son pinceau est {0} ; attendue : {1}\n"
