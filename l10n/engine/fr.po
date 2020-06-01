@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 16:22+0200\n"
+"POT-Creation-Date: 2020-06-01 17:40+0200\n"
 "PO-Revision-Date: 2020-06-01 16:24+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: French <>\n"
@@ -1578,68 +1578,70 @@ msgstr "Changer le monde affiché"
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
-#: src/plm/core/ui/FeedbackDialog.java:55
+#: src/plm/core/ui/FeedbackDialog.java:62
 msgid "Please describe the problem in a few words"
 msgstr "Décrivez le problème en quelques mots"
 
-#: src/plm/core/ui/FeedbackDialog.java:57
+#: src/plm/core/ui/FeedbackDialog.java:64
 msgid ""
-"Please write your suggestion here, with all necessary details\n"
-"(if possible in English or French).\n"
+"Your suggestion comes here, with all necessary details.\n"
 "\n"
-"When you find a typo or a sentence that is hard to understand, \n"
-"it really helps to suggest a new wording.\n"
 "\n"
-"If you encounter a technical bug, please tell us what you did,\n"
-"which outcome you were expecting and what happened instead.\n"
 "\n"
-"  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never.\n"
+"\n"
+"\n"
+"(The following helps us fixing your problem, please don't erase)\n"
 "\n"
 "--------------------[ Technical Information ]--------------------\n"
-"(This can help us fixing your problem, please don't erase)\n"
 msgstr ""
-"Écrivez votre suggestion ici, avec tous les détails nécessaires\n"
-"(si possible en anglais ou en français).\n"
-"\n"
-"Si vous trouvez une typo ou une phrase difficile à comprendre, \n"
-"suggérer la reformulation nous aide vraiment.\n"
-"\n"
-"Si vous trouvez un bogue technique, expliquez-nous comment le reproduire,\n"
-"qu'est-ce que vous attendiez et ce qui s'est passé à la place.\n"
-"\n"
-" mais NE DIFFUSEZ JAMAIS UN MOT DE PASSE sur un outil de suivi de bogues. "
-"Jamais.\n"
-"\n"
-"--------------------[ Informations techniques ]--------------------\n"
-"(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:86
+#: src/plm/core/ui/FeedbackDialog.java:71
+msgid "--------------------[ my code for this exercise ]--------------------\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Report your feedback"
 msgstr "Signaler un problème dans la PLM"
 
-#: src/plm/core/ui/FeedbackDialog.java:94
+#: src/plm/core/ui/FeedbackDialog.java:102
 msgid "Issue title:"
 msgstr "Intitulé du problème :"
 
-#: src/plm/core/ui/FeedbackDialog.java:108
+#: src/plm/core/ui/FeedbackDialog.java:109
+msgid ""
+"<h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
+"please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug "
+"Tracker</a>. If not, you can use this window to report an issue in the PLM "
+"(be it in one exercise or in the PLM itself). Please write your report in "
+"English or French if possible.</p><p>You should include all relevant "
+"information that could help us fixing the issue. Don't remove the technical "
+"details unless you are certain that they are not relevant. What you write "
+"here will be public: <b>Never disclose passwords or other sensible "
+"information on a bug tracker</b></p><p>When you find a typo or a sentence "
+"that is hard to understand, it really helps to suggest a new wording.If you "
+"encounter a technical bug, please tell us what you did, which outcome you "
+"were expecting and what happened instead.</p><br/>"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:152
 #: src/plm/core/ui/action/RevertExercise.java:20
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/plm/core/ui/FeedbackDialog.java:113
+#: src/plm/core/ui/FeedbackDialog.java:157
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 "Voulez-vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:114
+#: src/plm/core/ui/FeedbackDialog.java:158
 msgid "are you sure?"
 msgstr "êtes-vous sûr ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:122
+#: src/plm/core/ui/FeedbackDialog.java:166
 msgid "Send feedback"
 msgstr "Envoyer"
 
-#: src/plm/core/ui/FeedbackDialog.java:149
+#: src/plm/core/ui/FeedbackDialog.java:193
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
@@ -1649,15 +1651,15 @@ msgstr ""
 "prendre \n"
 "en compte. Suivez notre avancement sur {0}."
 
-#: src/plm/core/ui/FeedbackDialog.java:150
+#: src/plm/core/ui/FeedbackDialog.java:194
 msgid "Thanks for your suggestion"
 msgstr "Merci pour votre retour"
 
-#: src/plm/core/ui/FeedbackDialog.java:159
+#: src/plm/core/ui/FeedbackDialog.java:203
 msgid "Error while uploading your feedback"
 msgstr "Erreur lors de l'envoi de votre retour"
 
-#: src/plm/core/ui/FeedbackDialog.java:166
+#: src/plm/core/ui/FeedbackDialog.java:210
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
@@ -1667,11 +1669,11 @@ msgstr ""
 "de pouvoir l'envoyer. Merci de corriger les points suivants : \n"
 "\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:167
+#: src/plm/core/ui/FeedbackDialog.java:211
 msgid "Incorrect feedback"
 msgstr "Rapport d'anomalie invalide"
 
-#: src/plm/core/ui/FeedbackDialog.java:192
+#: src/plm/core/ui/FeedbackDialog.java:236
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
@@ -1679,11 +1681,11 @@ msgstr ""
 "Le titre est encore celui par défaut. Merci de résumer votre problème dans "
 "le titre. \n"
 
-#: src/plm/core/ui/FeedbackDialog.java:196
+#: src/plm/core/ui/FeedbackDialog.java:240
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr "Le titre est vide. Merci de résumer votre problème dans le titre. \n"
 
-#: src/plm/core/ui/FeedbackDialog.java:200
+#: src/plm/core/ui/FeedbackDialog.java:244
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
@@ -2881,3 +2883,34 @@ msgstr "Formes manquantes dans votre solution : \n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
+
+#~ msgid ""
+#~ "Please write your suggestion here, with all necessary details\n"
+#~ "(if possible in English or French).\n"
+#~ "\n"
+#~ "When you find a typo or a sentence that is hard to understand, \n"
+#~ "it really helps to suggest a new wording.\n"
+#~ "\n"
+#~ "If you encounter a technical bug, please tell us what you did,\n"
+#~ "which outcome you were expecting and what happened instead.\n"
+#~ "\n"
+#~ "  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never.\n"
+#~ "\n"
+#~ "--------------------[ Technical Information ]--------------------\n"
+#~ "(This can help us fixing your problem, please don't erase)\n"
+#~ msgstr ""
+#~ "Écrivez votre suggestion ici, avec tous les détails nécessaires\n"
+#~ "(si possible en anglais ou en français).\n"
+#~ "\n"
+#~ "Si vous trouvez une typo ou une phrase difficile à comprendre, \n"
+#~ "suggérer la reformulation nous aide vraiment.\n"
+#~ "\n"
+#~ "Si vous trouvez un bogue technique, expliquez-nous comment le "
+#~ "reproduire,\n"
+#~ "qu'est-ce que vous attendiez et ce qui s'est passé à la place.\n"
+#~ "\n"
+#~ " mais NE DIFFUSEZ JAMAIS UN MOT DE PASSE sur un outil de suivi de bogues. "
+#~ "Jamais.\n"
+#~ "\n"
+#~ "--------------------[ Informations techniques ]--------------------\n"
+#~ "(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"

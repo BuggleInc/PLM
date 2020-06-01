@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 16:22+0200\n"
+"POT-Creation-Date: 2020-06-01 17:40+0200\n"
 "PO-Revision-Date: 2016-11-06 21:57-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
@@ -1547,67 +1547,69 @@ msgstr "Alternar o mundo mostrado"
 msgid "Switch the entity"
 msgstr "Alternar a entidade"
 
-#: src/plm/core/ui/FeedbackDialog.java:55
+#: src/plm/core/ui/FeedbackDialog.java:62
 msgid "Please describe the problem in a few words"
 msgstr "Favor descreva o problema em poucas palavras"
 
-#: src/plm/core/ui/FeedbackDialog.java:57
+#: src/plm/core/ui/FeedbackDialog.java:64
 msgid ""
-"Please write your suggestion here, with all necessary details\n"
-"(if possible in English or French).\n"
+"Your suggestion comes here, with all necessary details.\n"
 "\n"
-"When you find a typo or a sentence that is hard to understand, \n"
-"it really helps to suggest a new wording.\n"
 "\n"
-"If you encounter a technical bug, please tell us what you did,\n"
-"which outcome you were expecting and what happened instead.\n"
 "\n"
-"  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never.\n"
+"\n"
+"\n"
+"(The following helps us fixing your problem, please don't erase)\n"
 "\n"
 "--------------------[ Technical Information ]--------------------\n"
-"(This can help us fixing your problem, please don't erase)\n"
 msgstr ""
-"Por favor escreva sua sugestão aqui, com todos os detalhes necessários\n"
-"(se possível em inglês ou francês).\n"
-"\n"
-"Quando encontrar um erro de digitação ou uma frase difícil de\n"
-"entender, ajudaria muito se você mandasse uma sugestão de como deveria\n"
-"estar escrito.\n"
-"\n"
-"Se você encontrar um bug técnico, por favor nos diga o que fez, o que\n"
-"esperava que acontecesse e o que aconteceu ao invés disto.\n"
-"\n"
-"  mas NUNCA COLOQUE UMA SENHA num sistema de bugs. Nunca.\n"
-"\n"
-"--------------------[ Technical Information ]--------------------\n"
-"(Isto pode nos ajudar a consertar seu problema, favor não apagar)\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:86
+#: src/plm/core/ui/FeedbackDialog.java:71
+msgid "--------------------[ my code for this exercise ]--------------------\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Report your feedback"
 msgstr "Relate seu feedback"
 
-#: src/plm/core/ui/FeedbackDialog.java:94
+#: src/plm/core/ui/FeedbackDialog.java:102
 msgid "Issue title:"
 msgstr "título do assunto"
 
-#: src/plm/core/ui/FeedbackDialog.java:108
+#: src/plm/core/ui/FeedbackDialog.java:109
+msgid ""
+"<h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
+"please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug "
+"Tracker</a>. If not, you can use this window to report an issue in the PLM "
+"(be it in one exercise or in the PLM itself). Please write your report in "
+"English or French if possible.</p><p>You should include all relevant "
+"information that could help us fixing the issue. Don't remove the technical "
+"details unless you are certain that they are not relevant. What you write "
+"here will be public: <b>Never disclose passwords or other sensible "
+"information on a bug tracker</b></p><p>When you find a typo or a sentence "
+"that is hard to understand, it really helps to suggest a new wording.If you "
+"encounter a technical bug, please tell us what you did, which outcome you "
+"were expecting and what happened instead.</p><br/>"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:152
 #: src/plm/core/ui/action/RevertExercise.java:20
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/plm/core/ui/FeedbackDialog.java:113
+#: src/plm/core/ui/FeedbackDialog.java:157
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr "Quer realmente cancelar seu retorno e perder o que editou?"
 
-#: src/plm/core/ui/FeedbackDialog.java:114
+#: src/plm/core/ui/FeedbackDialog.java:158
 msgid "are you sure?"
 msgstr "Tem certeza?"
 
-#: src/plm/core/ui/FeedbackDialog.java:122
+#: src/plm/core/ui/FeedbackDialog.java:166
 msgid "Send feedback"
 msgstr "Enviar retorno"
 
-#: src/plm/core/ui/FeedbackDialog.java:149
+#: src/plm/core/ui/FeedbackDialog.java:193
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
@@ -1616,15 +1618,15 @@ msgstr ""
 "Obrigado pela sua opinião, vamos fazer nosso melhor para\n"
 "aproveitá-la. Siga nosso progresso em {0}."
 
-#: src/plm/core/ui/FeedbackDialog.java:150
+#: src/plm/core/ui/FeedbackDialog.java:194
 msgid "Thanks for your suggestion"
 msgstr "Obrigado por sua sugestão"
 
-#: src/plm/core/ui/FeedbackDialog.java:159
+#: src/plm/core/ui/FeedbackDialog.java:203
 msgid "Error while uploading your feedback"
 msgstr "Erro ao enviar seu feedback"
 
-#: src/plm/core/ui/FeedbackDialog.java:166
+#: src/plm/core/ui/FeedbackDialog.java:210
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
@@ -1633,11 +1635,11 @@ msgstr ""
 "Seu feeedback precisa de algumas mudanças antes de ser enviado. Favor\n"
 "consertar o(s) seguinte(s) problema(s):\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:167
+#: src/plm/core/ui/FeedbackDialog.java:211
 msgid "Incorrect feedback"
 msgstr "Feedback incorreto"
 
-#: src/plm/core/ui/FeedbackDialog.java:192
+#: src/plm/core/ui/FeedbackDialog.java:236
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
@@ -1645,12 +1647,12 @@ msgstr ""
 "O título do feedback ainda é o padrão. Especifique um título\n"
 "relevante.\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:196
+#: src/plm/core/ui/FeedbackDialog.java:240
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr ""
 "O título atual está vazio. Por favor especifique um título relevante.\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:200
+#: src/plm/core/ui/FeedbackDialog.java:244
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
@@ -2829,6 +2831,36 @@ msgstr "Formas faltando em sua solução:\n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (tem {1} ao invés de {2})\n"
+
+#~ msgid ""
+#~ "Please write your suggestion here, with all necessary details\n"
+#~ "(if possible in English or French).\n"
+#~ "\n"
+#~ "When you find a typo or a sentence that is hard to understand, \n"
+#~ "it really helps to suggest a new wording.\n"
+#~ "\n"
+#~ "If you encounter a technical bug, please tell us what you did,\n"
+#~ "which outcome you were expecting and what happened instead.\n"
+#~ "\n"
+#~ "  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never.\n"
+#~ "\n"
+#~ "--------------------[ Technical Information ]--------------------\n"
+#~ "(This can help us fixing your problem, please don't erase)\n"
+#~ msgstr ""
+#~ "Por favor escreva sua sugestão aqui, com todos os detalhes necessários\n"
+#~ "(se possível em inglês ou francês).\n"
+#~ "\n"
+#~ "Quando encontrar um erro de digitação ou uma frase difícil de\n"
+#~ "entender, ajudaria muito se você mandasse uma sugestão de como deveria\n"
+#~ "estar escrito.\n"
+#~ "\n"
+#~ "Se você encontrar um bug técnico, por favor nos diga o que fez, o que\n"
+#~ "esperava que acontecesse e o que aconteceu ao invés disto.\n"
+#~ "\n"
+#~ "  mas NUNCA COLOQUE UMA SENHA num sistema de bugs. Nunca.\n"
+#~ "\n"
+#~ "--------------------[ Technical Information ]--------------------\n"
+#~ "(Isto pode nos ajudar a consertar seu problema, favor não apagar)\n"
 
 #~ msgid ""
 #~ "You found a bug in the PLM. Please report it with all possible details "

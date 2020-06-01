@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 16:22+0200\n"
+"POT-Creation-Date: 2020-06-01 17:40+0200\n"
 "PO-Revision-Date: 2015-02-16 14:12+0100\n"
 "Last-Translator: Qiaoyang SU <suqiaoy@163.com>\n"
 "Language-Team: Chinese(中文)\n"
@@ -1319,89 +1319,105 @@ msgstr ""
 msgid "Switch the entity"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:55
+#: src/plm/core/ui/FeedbackDialog.java:62
 msgid "Please describe the problem in a few words"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:57
+#: src/plm/core/ui/FeedbackDialog.java:64
 msgid ""
-"Please write your suggestion here, with all necessary details\n"
-"(if possible in English or French).\n"
+"Your suggestion comes here, with all necessary details.\n"
 "\n"
-"When you find a typo or a sentence that is hard to understand, \n"
-"it really helps to suggest a new wording.\n"
 "\n"
-"If you encounter a technical bug, please tell us what you did,\n"
-"which outcome you were expecting and what happened instead.\n"
 "\n"
-"  but DO NEVER DISCLOSE A PASSWORD to a bug tracker. Never.\n"
+"\n"
+"\n"
+"(The following helps us fixing your problem, please don't erase)\n"
 "\n"
 "--------------------[ Technical Information ]--------------------\n"
-"(This can help us fixing your problem, please don't erase)\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:86
-msgid "Report your feedback"
+#: src/plm/core/ui/FeedbackDialog.java:71
+msgid "--------------------[ my code for this exercise ]--------------------\n"
 msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:94
+msgid "Report your feedback"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:102
 msgid "Issue title:"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:108
+#: src/plm/core/ui/FeedbackDialog.java:109
+msgid ""
+"<h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
+"please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug "
+"Tracker</a>. If not, you can use this window to report an issue in the PLM "
+"(be it in one exercise or in the PLM itself). Please write your report in "
+"English or French if possible.</p><p>You should include all relevant "
+"information that could help us fixing the issue. Don't remove the technical "
+"details unless you are certain that they are not relevant. What you write "
+"here will be public: <b>Never disclose passwords or other sensible "
+"information on a bug tracker</b></p><p>When you find a typo or a sentence "
+"that is hard to understand, it really helps to suggest a new wording.If you "
+"encounter a technical bug, please tell us what you did, which outcome you "
+"were expecting and what happened instead.</p><br/>"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:152
 #: src/plm/core/ui/action/RevertExercise.java:20
 msgid "Cancel"
 msgstr "取消"
 
-#: src/plm/core/ui/FeedbackDialog.java:113
+#: src/plm/core/ui/FeedbackDialog.java:157
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:114
+#: src/plm/core/ui/FeedbackDialog.java:158
 msgid "are you sure?"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:122
+#: src/plm/core/ui/FeedbackDialog.java:166
 msgid "Send feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:149
+#: src/plm/core/ui/FeedbackDialog.java:193
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:150
+#: src/plm/core/ui/FeedbackDialog.java:194
 msgid "Thanks for your suggestion"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:159
+#: src/plm/core/ui/FeedbackDialog.java:203
 msgid "Error while uploading your feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:166
+#: src/plm/core/ui/FeedbackDialog.java:210
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:167
+#: src/plm/core/ui/FeedbackDialog.java:211
 msgid "Incorrect feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:192
+#: src/plm/core/ui/FeedbackDialog.java:236
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:196
+#: src/plm/core/ui/FeedbackDialog.java:240
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:200
+#: src/plm/core/ui/FeedbackDialog.java:244
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
