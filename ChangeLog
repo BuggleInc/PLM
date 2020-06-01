@@ -1,4 +1,6 @@
-20200527: 2.8.1 (ongoing)
+20200601: 2.8.1
+
+  The Windows release.
 
   * Core:
     - Make it work on windows, thanks to appveyor.
