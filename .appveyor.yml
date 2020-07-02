@@ -27,14 +27,14 @@ install:
   - cmd: if not exist %ANT_HOME% pushd . && cd \ && appveyor DownloadFile https://downloads.apache.org/ant/binaries/apache-ant-1.10.8-bin.zip && 7z x apache-ant-1.10.8-bin.zip && popd
   - set PATH=%ANT_HOME%\bin;%PATH%
   - cmd: if not exist c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip pushd . && cd \ && appveyor DownloadFile https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.252-2.b09/java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip && popd
-  - cmd: if not exist c:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz pushd . && cd \ && appveyor DownloadFile https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz && popd
+  - cmd: if not exist c:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip pushd . && cd \ && appveyor DownloadFile http://people.irisa.fr/Martin.Quinson/Teaching/PLM/OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip && popd
   - cmd: if not exist c:\packr.jar pushd . && cd \ && appveyor DownloadFile https://libgdx.badlogicgames.com/ci/packr/packr.jar && popd
 
 cache:
   - C:\apache-ant-1.10.8
   - C:\apache-ant-1.10.8-bin.zip
   - C:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
-  - C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz
+  - C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip
   - C:\packr.jar
 
 build_script:
@@ -42,7 +42,7 @@ build_script:
   - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine 
   - 7z a plm-windows-%PLM_VERSION%.zip plm-%PLM_VERSION%
   - rd /s /q plm-%PLM_VERSION% # remove that directory
-  - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform mac --jdk C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine
+  - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform mac --jdk C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine
   - 7z a plm-mac-%PLM_VERSION%.zip plm-%PLM_VERSION%
 
 artifacts:
@@ -50,3 +50,5 @@ artifacts:
   name: jarfile
 - path: plm-windows-%PLM_VERSION%.zip
   name: plm-windows.zip
+- path: plm-mac-%PLM_VERSION%.zip
+  name: plm-mac.zip
