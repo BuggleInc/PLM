@@ -5531,7 +5531,10 @@ msgid ""
 "your code remains short and easy to read. A method to draw one flower of the "
 "color passed in parameter sounds like a good start, but it is probably not "
 "enough."
-msgstr "De plus, vous devriez décomposer ce dessin complexe en sous-motifs pour que votre code reste simple et agréable à lire. Une méthode dessinant une fleur est un bon début, même si ce n'est probablement pas assez."
+msgstr ""
+"De plus, vous devriez décomposer ce dessin complexe en sous-motifs pour que "
+"votre code reste simple et agréable à lire. Une méthode dessinant une fleur "
+"est un bon début, même si ce n'est probablement pas assez."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:15
