@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
-"POT-Creation-Date: 2017-09-02 12:32+0200\n"
+"POT-Creation-Date: 2020-09-18 09:53+0200\n"
 "PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -5617,12 +5617,29 @@ msgstr ""
 "variabile <code>baggleVisto</code> al chiamante."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:67
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:66
 msgid ""
-"This exercise is a bit different since there is two initial worlds, each "
-"with a specific objective. Your code must work for each of them. Observe "
-"that the world selection scrolling menu (right below the speed slider)  "
-"allows to switch the observed world."
+"Note that the used buggle provides some hidden code that will call your "
+"<code>haveBaggle</code> function on each column, moving automatically "
+"between columns. It is thus very important that your <code>haveBaggle</code> "
+"function have no side effect: the position (and orientation) at the end of "
+"your code must be the one observed at the beginning of this code. It will "
+"move in between to seek for the baggle, but come back to the column start."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:73
+#, fuzzy
+#| msgid ""
+#| "This exercise is a bit different since there is two initial worlds, each "
+#| "with a specific objective. Your code must work for each of them. Observe "
+#| "that the world selection scrolling menu (right below the speed slider)  "
+#| "allows to switch the observed world."
+msgid ""
+"Also, this exercise is a bit different since there is two initial worlds, "
+"each with a specific objective. Your code must work for each of them. "
+"Observe that the world selection scrolling menu (right below the speed "
+"slider)  allows to switch the observed world."
 msgstr ""
 "Questo esercizio si distinge un po' perché ci sono tre mondi iniziali, "
 "ognuno con il suo specifico objective. Il tuo codice deve funzinoare per "
@@ -5630,7 +5647,7 @@ msgstr ""
 "speed slider) permette di cambiare il mondo osservato."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:72
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:78
 #, fuzzy
 #| msgid ""
 #| "When your method <code>haveBaggle</code> works, proceed to next exercise."
@@ -9939,7 +9956,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:15
 msgid ""
-"An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
+"An article of 2011 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 "determining the minimal amount of flips to sort the stack is a NP-complete "
 "problem. Naturally, the stack sorting problem is not NP-complete since it "
 "can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
