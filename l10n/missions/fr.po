@@ -3,19 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2009.
 # Martin Quinson <Martin.Quinson@loria.fr>, 2014.
+# Martin Quinson <martin.quinson@ens-rennes.fr>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2020-09-18 09:53+0200\n"
-"PO-Revision-Date: 2017-09-02 12:35+0200\n"
-"Last-Translator: Martin Quinson\n"
-"Language-Team: French <>\n"
+"PO-Revision-Date: 2020-09-18 08:25+0000\n"
+"Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"programmers-learning-machine/missions/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -1156,7 +1158,7 @@ msgstr ""
 "symboles point-virgule (;)[!python|scala] ou par des retours à la\n"
 "ligne[/!], et suivis de parenthèses. Notre recette s'écrirait de la\n"
 "façon suivante [!python|scala](vous pourriez aussi ajouter des\n"
-"points-virgules à la fin des lignes, mais c'est optionel)[/!] :"
+"points-virgules à la fin des lignes, mais c'est optionel)[/!] ."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:33
@@ -1187,7 +1189,7 @@ msgstr ""
 "rend le code plus difficile à relire. Comme disait Harold Abelson,\n"
 "<i>les programmes doivent surtout être écrits pour être lisibles par\n"
 "les humains, et accessoirement pour être exécutables par les\n"
-"machines.</i>"
+"machines</i>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:46
@@ -1295,9 +1297,9 @@ msgid ""
 "thelang], instructing the [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] to not read the text you add for humans:"
 msgstr ""
-"Il y a [!java]trois[/!][!python|scala|c]deux[/!] sortes de commentaires en [!"
-"thelang], indiquant [!java|scala|c]au compilateur[/!][!python]à "
-"l'interpréteur[/!] qu'il ne doit pas lire le texte ajouté pour les humains."
+"Il y a [!java]trois[/!][!python|scala|c]deux[/!] sortes de commentaires en "
+"[!thelang], indiquant [!java|scala|c]au compilateur[/!][!python]à "
+"l'interpréteur[/!] qu'il ne doit pas lire le texte ajouté pour les humains :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:19
@@ -1849,7 +1851,7 @@ msgid ""
 "&nbsp;&nbsp;moveForward()"
 msgstr ""
 "tant que l'on est pas face à un mur, faire :\n"
-"&nbsp;&nbsp;avancer();"
+"&nbsp;&nbsp;avancer()"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:42
@@ -4278,9 +4280,9 @@ msgstr ""
 "Comme d'habitude, vous ne devez effectuer qu'un seul parcours pour obtenir "
 "les informations nécessaires. Vous pouvez supposer que la seconde plus "
 "grande valeur existe effectivement (qu'il y a au moins deux valeurs dans le "
-"tableau) et que toutes les valeurs du tableau sont plus grandes que [!"
-"python] -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est "
-"le plus petit entier existant en [!thelang]).[/!] "
+"tableau) et que toutes les valeurs du tableau sont plus grandes que [!python]"
+" -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est le "
+"plus petit entier existant en [!thelang]).[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -5285,26 +5287,27 @@ msgid ""
 "your code must be the one observed at the beginning of this code. It will "
 "move in between to seek for the baggle, but come back to the column start."
 msgstr ""
+"Notez que la buggle utilisée contient du code caché, qui va utiliser votre "
+"fonction <code>haveBaggle</code> sur chaque colonne en déplaçant la buggle "
+"automatiquement entre les colonnes. Il est donc très important que votre "
+"fonction <code>haveBuggle</code> n'ait pas d'effet de bord. La position (et "
+"l'orientation) à la fin de votre code doit être celle observée au début de "
+"ce code. La buggle va naturellement se déplacer pour chercher le baggle, "
+"mais elle doit revenir au début de la colonne."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:73
-#, fuzzy
-#| msgid ""
-#| "This exercise is a bit different since there is two initial worlds, each "
-#| "with a specific objective. Your code must work for each of them. Observe "
-#| "that the world selection scrolling menu (right below the speed slider)  "
-#| "allows to switch the observed world."
 msgid ""
 "Also, this exercise is a bit different since there is two initial worlds, "
 "each with a specific objective. Your code must work for each of them. "
 "Observe that the world selection scrolling menu (right below the speed "
 "slider)  allows to switch the observed world."
 msgstr ""
-"Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux, "
-"chacun ayant un objectif particulier. Votre code doit fonctionner pour "
-"chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde "
-"(juste sous la barre de réglage de la vitesse) permet de spécifier le monde "
-"que vous souhaitez observer."
+"De plus, cet exercice est un peu particulier, puisqu'il a deux mondes "
+"initiaux, chacun ayant un objectif particulier. Votre code doit fonctionner "
+"pour chacun d'entre eux. Remarquez que le menu déroulant de sélection du "
+"monde (juste sous la barre de réglage de la vitesse) permet de spécifier le "
+"monde que vous souhaitez observer."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:78
@@ -9326,15 +9329,16 @@ msgid ""
 "     increase i by one\n"
 "while the gap is bigger than 1 or the last traversal swapped at least one pair\n"
 msgstr ""
-" ecart = lgr;\n"
-" faire \n"
-"   si ecart>1 alors\n"
-"     ecart = ecart / 1.3\n"
-"   i = O\n"
-"   tant que i+ecart &lt; lgr faire:\n"
-"     si i et i+ecart doivent être inversés, le faire\n"
-"     incrémenter i de 1\n"
-" tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé au moins un élément\n"
+"ecart = lgr;\n"
+"faire \n"
+"  si ecart>1 alors\n"
+"    ecart = ecart / 1.3\n"
+"  i = O\n"
+"  tant que i+ecart &lt; lgr faire:\n"
+"    si i et i+ecart doivent être inversés, le faire\n"
+"    incrémenter i de 1\n"
+"tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé "
+"au moins un élément\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
@@ -9832,14 +9836,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:15
-#, fuzzy
-#| msgid ""
-#| "An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
-#| "determining the minimal amount of flips to sort the stack is a NP-"
-#| "complete problem. Naturally, the stack sorting problem is not NP-complete "
-#| "since it can be solved in 2n-3 steps with the naive algorithm and (5n"
-#| "+5)/3 steps with the Gates algorithm.  That's determining the minimal "
-#| "amount of steps that is NP."
 msgid ""
 "An article of 2011 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 "determining the minimal amount of flips to sort the stack is a NP-complete "
@@ -9848,7 +9844,7 @@ msgid ""
 "the Gates algorithm.  That's determining the minimal amount of steps that is "
 "NP."
 msgstr ""
-"Un article de 2013 (par L. Bulteau, G. Fertin and I. Rusu) a prouvé que ce "
+"Un article de 2011 (par L. Bulteau, G. Fertin and I. Rusu) a prouvé que ce "
 "problème est NP-Complet, c'est à dire qu'il n'existe pas d'algorithme "
 "efficace pour déterminer le nombre minimal de retournements pour toute "
 "taille de pile. Naturellement, le problème du tri de la pile n'est pas NP-"
@@ -12063,7 +12059,7 @@ msgid ""
 msgstr ""
 "Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
 "un entier <code>N</code>, retournez la liste constituée de ses <code>N</"
-"code> derniers éléments. "
+"code> derniers éléments."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Nlast.html:6
@@ -12107,7 +12103,7 @@ msgid ""
 msgstr ""
 "Étant donnée une [!scala]List[Int][/!][!java|python]liste récursive[/!] et "
 "un entier <code>N</code>, retournez la liste privée de ses <code>N</code> "
-"premiers éléments. "
+"premiers éléments."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButNlast.html:2
@@ -12551,13 +12547,13 @@ msgid ""
 "  Turn 60 degrees to the left\n"
 "  Draw recursively a smaller segment\n"
 msgstr ""
-"Dessiner récursivement un segment plus petit\n"
-"Tourner à 60 degrés vers la gauche\n"
-"Dessiner récursivement un segment plus petit\n"
-"Tourner à 120 degrés vers la droite\n"
-"Dessiner récursivement un segment plus petit\n"
-"Tourner à 60 degrés vers la gauche\n"
-"Dessiner récursivement un segment plus petit\n"
+"  Dessiner récursivement un segment plus petit\n"
+"  Tourner à 60 degrés vers la gauche\n"
+"  Dessiner récursivement un segment plus petit\n"
+"  Tourner à 120 degrés vers la droite\n"
+"  Dessiner récursivement un segment plus petit\n"
+"  Tourner à 60 degrés vers la gauche\n"
+"  Dessiner récursivement un segment plus petit\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Koch.html:30
@@ -12812,10 +12808,10 @@ msgid ""
 "  Draw (recursively) the left subtree\n"
 "  Move back to your initial position\n"
 msgstr ""
-"Avancer de la longueur désirée\n"
-"Dessiner (récursivement) le sous-arbre de droite\n"
-"Dessiner (récursivement) le sous-arbre de gauche\n"
-"Reculer de la longueur désirée pour retourner au point de départ\n"
+"  Avancer de la longueur désirée\n"
+"  Dessiner (récursivement) le sous-arbre de droite\n"
+"  Dessiner (récursivement) le sous-arbre de gauche\n"
+"  Reculer de la longueur désirée pour retourner au point de départ\n"
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/recursion/lego/tree/Tree.html:23
@@ -13736,7 +13732,7 @@ msgstr ""
 "Ce changement améliore considérablement les performances, comme vous pouvez "
 "le constater dans le tableau. Bien entendu, cette astuce pourrait être "
 "utilisée pour l'algorithme d'interclassement, ce qui boosterait les "
-"performances exactement de la même façon. "
+"performances exactement de la même façon."
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:21
@@ -13933,7 +13929,7 @@ msgstr ""
 "appels à <code>deplaceInterclassee</code> arrivent avant l'appel récursif. "
 "La fonction principale que vous devez écrire n'est pas récursive, mais "
 "rassemble simplement la plupart des disques, déplace les disques restants, "
-"puis répartit de nouveau les petits disques. "
+"puis répartit de nouveau les petits disques."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:31
@@ -13988,7 +13984,7 @@ msgid ""
 msgstr ""
 "<code>move3(n, src, mid, dst)</code>: déplace une pile de disques "
 "interclassée, c'est-à-dire une pile de (n*3) disques de couleurs alternées, "
-"depuis le piquet <code>src</code> jusqu'au piquet <code>dst</code>. "
+"depuis le piquet <code>src</code> jusqu'au piquet <code>dst</code>."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:13
@@ -16492,7 +16488,7 @@ msgstr ""
 "Dans cet univers, vous contrôlez un module d'alunissage. À chaque pas de la "
 "simulation, vous avez accès à la position du module, sa vitesse, son angle "
 "et la poussée de son moteur. Vous devez alors décider de l'angle et de la "
-"poussée pour l'étape suivante. "
+"poussée pour l'étape suivante."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:12
