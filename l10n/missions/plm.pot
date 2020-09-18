@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-09-02 12:32+0200\n"
+"POT-Creation-Date: 2020-09-18 09:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,42 +46,50 @@ msgid "(See also the note on exceptions, below)"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "<b>Turn left"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn right"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn back"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving back</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:12 src/lessons/turmites/universe/TurmiteWorld.html:11
+#: src/plm/universe/bugglequest/BuggleWorld.html:12
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]left()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:13 src/lessons/turmites/universe/TurmiteWorld.html:11
+#: src/plm/universe/bugglequest/BuggleWorld.html:13
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]right()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:14 src/lessons/turmites/universe/TurmiteWorld.html:11
+#: src/plm/universe/bugglequest/BuggleWorld.html:14
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]back()"
 msgstr ""
 
@@ -245,7 +253,9 @@ msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/bugglequest/BuggleWorld.html:37 src/plm/universe/turtles/TurtleWorld.html:76 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
+#: src/plm/universe/bugglequest/BuggleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:76
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
@@ -311,12 +321,14 @@ msgid "<b>Interacting with the world</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:49 src/lessons/turmites/universe/TurmiteWorld.html:15
+#: src/plm/universe/bugglequest/BuggleWorld.html:49
+#: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "<b>Get the color of the ground</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:50 src/lessons/turmites/universe/TurmiteWorld.html:15
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
+#: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr ""
 
@@ -366,7 +378,37 @@ msgid "[!java]void [/!]dropBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:58 src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:81 src/plm/universe/bugglequest/BuggleWorld.html:82 src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92 src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255 src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429 src/lessons/welcome/Main.html:469 src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/turtles/TurtleWorld.html:84 src/plm/universe/turtles/TurtleWorld.html:85 src/plm/universe/turtles/TurtleWorld.html:86 src/plm/universe/turtles/TurtleWorld.html:87 src/plm/universe/turtles/TurtleWorld.html:88 src/plm/universe/turtles/TurtleWorld.html:89 src/plm/universe/turtles/TurtleWorld.html:90 src/plm/universe/turtles/TurtleWorld.html:91 src/plm/universe/turtles/TurtleWorld.html:92 src/plm/universe/turtles/TurtleWorld.html:93 src/plm/universe/turtles/TurtleWorld.html:94
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
+#: src/plm/universe/bugglequest/BuggleWorld.html:70
+#: src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/bugglequest/BuggleWorld.html:73
+#: src/plm/universe/bugglequest/BuggleWorld.html:74
+#: src/plm/universe/bugglequest/BuggleWorld.html:75
+#: src/plm/universe/bugglequest/BuggleWorld.html:76
+#: src/plm/universe/bugglequest/BuggleWorld.html:77
+#: src/plm/universe/bugglequest/BuggleWorld.html:78
+#: src/plm/universe/bugglequest/BuggleWorld.html:79
+#: src/plm/universe/bugglequest/BuggleWorld.html:80
+#: src/plm/universe/bugglequest/BuggleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:82
+#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
+#: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
+#: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
+#: src/lessons/welcome/Main.html:469
+#: src/plm/universe/turtles/TurtleWorld.html:82
+#: src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/turtles/TurtleWorld.html:84
+#: src/plm/universe/turtles/TurtleWorld.html:85
+#: src/plm/universe/turtles/TurtleWorld.html:86
+#: src/plm/universe/turtles/TurtleWorld.html:87
+#: src/plm/universe/turtles/TurtleWorld.html:88
+#: src/plm/universe/turtles/TurtleWorld.html:89
+#: src/plm/universe/turtles/TurtleWorld.html:90
+#: src/plm/universe/turtles/TurtleWorld.html:91
+#: src/plm/universe/turtles/TurtleWorld.html:92
+#: src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "&nbsp;"
 msgstr ""
 
@@ -413,82 +455,98 @@ msgid "[!java]void [/!]clearMessage()"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:67 src/plm/universe/turtles/TurtleWorld.html:79
+#: src/plm/universe/bugglequest/BuggleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:79
 msgid "Valid colors"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Name"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/turtles/TurtleWorld.html:82
+#: src/plm/universe/bugglequest/BuggleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:82
 msgid "[!scala|java|python]Color.[/!]black"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:83
 msgid "[!scala|java|python]Color.[/!]blue"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/turtles/TurtleWorld.html:84
+#: src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/turtles/TurtleWorld.html:84
 msgid "[!scala|java|python]Color.[/!]cyan"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/turtles/TurtleWorld.html:85
+#: src/plm/universe/bugglequest/BuggleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:85
 msgid "[!scala|java|python]Color.[/!]darkGray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/turtles/TurtleWorld.html:86
+#: src/plm/universe/bugglequest/BuggleWorld.html:74
+#: src/plm/universe/turtles/TurtleWorld.html:86
 msgid "[!scala|java|python]Color.[/!]gray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/turtles/TurtleWorld.html:87
+#: src/plm/universe/bugglequest/BuggleWorld.html:75
+#: src/plm/universe/turtles/TurtleWorld.html:87
 msgid "[!scala|java|python]Color.[/!]green"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/turtles/TurtleWorld.html:88
+#: src/plm/universe/bugglequest/BuggleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:88
 msgid "[!scala|java|python]Color.[/!]lightGray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/turtles/TurtleWorld.html:89
+#: src/plm/universe/bugglequest/BuggleWorld.html:77
+#: src/plm/universe/turtles/TurtleWorld.html:89
 msgid "[!scala|java|python]Color.[/!]magenta"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/turtles/TurtleWorld.html:90
+#: src/plm/universe/bugglequest/BuggleWorld.html:78
+#: src/plm/universe/turtles/TurtleWorld.html:90
 msgid "[!scala|java|python]Color.[/!]orange"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/turtles/TurtleWorld.html:91
+#: src/plm/universe/bugglequest/BuggleWorld.html:79
+#: src/plm/universe/turtles/TurtleWorld.html:91
 msgid "[!scala|java|python]Color.[/!]pink"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:80 src/plm/universe/turtles/TurtleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:80
+#: src/plm/universe/turtles/TurtleWorld.html:92
 msgid "[!scala|java|python]Color.[/!]red"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/bugglequest/BuggleWorld.html:81
+#: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "[!scala|java|python]Color.[/!]white"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:82 src/plm/universe/turtles/TurtleWorld.html:94
+#: src/plm/universe/bugglequest/BuggleWorld.html:82
+#: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "[!scala|java|python]Color.[/!]yellow"
 msgstr ""
 
@@ -567,52 +625,86 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93 src/lessons/welcome/Main.html:176 src/lessons/welcome/Main.html:256 src/lessons/welcome/Main.html:350 src/lessons/welcome/Main.html:430 src/lessons/welcome/Main.html:470 src/lessons/welcome/instructions/Instructions.html:2
+#: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93
+#: src/lessons/welcome/Main.html:176 src/lessons/welcome/Main.html:256
+#: src/lessons/welcome/Main.html:350 src/lessons/welcome/Main.html:430
+#: src/lessons/welcome/Main.html:470
+#: src/lessons/welcome/instructions/Instructions.html:2
 msgid "Instructions"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94 src/lessons/welcome/Main.html:177 src/lessons/welcome/Main.html:257 src/lessons/welcome/Main.html:351 src/lessons/welcome/Main.html:431 src/lessons/welcome/Main.html:471
+#: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94
+#: src/lessons/welcome/Main.html:177 src/lessons/welcome/Main.html:257
+#: src/lessons/welcome/Main.html:351 src/lessons/welcome/Main.html:431
+#: src/lessons/welcome/Main.html:471
 msgid "Comments"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:95 src/lessons/welcome/Main.html:178 src/lessons/welcome/Main.html:258 src/lessons/welcome/Main.html:352 src/lessons/welcome/Main.html:432 src/lessons/welcome/Main.html:472
+#: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:95
+#: src/lessons/welcome/Main.html:178 src/lessons/welcome/Main.html:258
+#: src/lessons/welcome/Main.html:352 src/lessons/welcome/Main.html:432
+#: src/lessons/welcome/Main.html:472
 msgid "Conditionals/ Expressions"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:79 src/lessons/welcome/Main.html:96 src/lessons/welcome/Main.html:179 src/lessons/welcome/Main.html:259 src/lessons/welcome/Main.html:353 src/lessons/welcome/Main.html:433 src/lessons/welcome/Main.html:473 src/lessons/welcome/loopwhile/LoopWhile.html:2
+#: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:79
+#: src/lessons/welcome/Main.html:96 src/lessons/welcome/Main.html:179
+#: src/lessons/welcome/Main.html:259 src/lessons/welcome/Main.html:353
+#: src/lessons/welcome/Main.html:433 src/lessons/welcome/Main.html:473
+#: src/lessons/welcome/loopwhile/LoopWhile.html:2
 msgid "While loops"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:14 src/lessons/welcome/Main.html:97 src/lessons/welcome/Main.html:180 src/lessons/welcome/Main.html:260 src/lessons/welcome/Main.html:354 src/lessons/welcome/Main.html:434 src/lessons/welcome/Main.html:474
+#: src/lessons/welcome/Main.html:14 src/lessons/welcome/Main.html:97
+#: src/lessons/welcome/Main.html:180 src/lessons/welcome/Main.html:260
+#: src/lessons/welcome/Main.html:354 src/lessons/welcome/Main.html:434
+#: src/lessons/welcome/Main.html:474
 msgid "Variables"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:15 src/lessons/welcome/Main.html:98 src/lessons/welcome/Main.html:134 src/lessons/welcome/Main.html:181 src/lessons/welcome/Main.html:261 src/lessons/welcome/Main.html:355 src/lessons/welcome/Main.html:435 src/lessons/welcome/Main.html:475 src/lessons/welcome/loopfor/LoopFor.html:2
+#: src/lessons/welcome/Main.html:15 src/lessons/welcome/Main.html:98
+#: src/lessons/welcome/Main.html:134 src/lessons/welcome/Main.html:181
+#: src/lessons/welcome/Main.html:261 src/lessons/welcome/Main.html:355
+#: src/lessons/welcome/Main.html:435 src/lessons/welcome/Main.html:475
+#: src/lessons/welcome/loopfor/LoopFor.html:2
 msgid "For loops"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99 src/lessons/welcome/Main.html:182 src/lessons/welcome/Main.html:262 src/lessons/welcome/Main.html:356 src/lessons/welcome/Main.html:436 src/lessons/welcome/Main.html:476
+#: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99
+#: src/lessons/welcome/Main.html:182 src/lessons/welcome/Main.html:262
+#: src/lessons/welcome/Main.html:356 src/lessons/welcome/Main.html:436
+#: src/lessons/welcome/Main.html:476
 msgid "Do/While loops"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:17 src/lessons/welcome/Main.html:100 src/lessons/welcome/Main.html:162 src/lessons/welcome/Main.html:183 src/lessons/welcome/Main.html:263 src/lessons/welcome/Main.html:357 src/lessons/welcome/Main.html:437 src/lessons/welcome/Main.html:477 src/lessons/welcome/methods/basics/Methods.html:2
+#: src/lessons/welcome/Main.html:17 src/lessons/welcome/Main.html:100
+#: src/lessons/welcome/Main.html:162 src/lessons/welcome/Main.html:183
+#: src/lessons/welcome/Main.html:263 src/lessons/welcome/Main.html:357
+#: src/lessons/welcome/Main.html:437 src/lessons/welcome/Main.html:477
+#: src/lessons/welcome/methods/basics/Methods.html:2
 msgid "Methods"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438 src/lessons/welcome/Main.html:478
+#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101
+#: src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264
+#: src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438
+#: src/lessons/welcome/Main.html:478
 msgid "Switch"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:19 src/lessons/welcome/Main.html:102 src/lessons/welcome/Main.html:185 src/lessons/welcome/Main.html:265 src/lessons/welcome/Main.html:359 src/lessons/welcome/Main.html:439 src/lessons/welcome/Main.html:479
+#: src/lessons/welcome/Main.html:19 src/lessons/welcome/Main.html:102
+#: src/lessons/welcome/Main.html:185 src/lessons/welcome/Main.html:265
+#: src/lessons/welcome/Main.html:359 src/lessons/welcome/Main.html:439
+#: src/lessons/welcome/Main.html:479
 msgid "Arrays"
 msgstr ""
 
@@ -627,32 +719,38 @@ msgid "Java Instructions"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:51 src/lessons/welcome/instructions/InstructionsDrawG.html:2
+#: src/lessons/welcome/Main.html:51
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:2
 msgid "Writing more complex programs"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:65 src/lessons/welcome/conditions/Conditions.html:2
+#: src/lessons/welcome/Main.html:65
+#: src/lessons/welcome/conditions/Conditions.html:2
 msgid "Conditional instructions"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:106 src/lessons/welcome/loopwhile/BaggleSeeker.html:2
+#: src/lessons/welcome/Main.html:106
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
 msgid "Baggle Seeking"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:120 src/lessons/welcome/variables/Variables.html:2
+#: src/lessons/welcome/Main.html:120
+#: src/lessons/welcome/variables/Variables.html:2
 msgid "Storing and manipulating data"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:148 src/lessons/welcome/loopdowhile/LoopDoWhile.html:2
+#: src/lessons/welcome/Main.html:148
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:2
 msgid "Do .. while loops"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:188 src/lessons/welcome/methods/basics/MethodsDogHouse.html:2
+#: src/lessons/welcome/Main.html:188
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:2
 msgid "Building methodically"
 msgstr ""
 
@@ -662,22 +760,26 @@ msgid "Methods returning a result"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:215 src/lessons/welcome/methods/args/MethodsArgs.html:2
+#: src/lessons/welcome/Main.html:215
+#: src/lessons/welcome/methods/args/MethodsArgs.html:2
 msgid "Methods with parameters"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:229 src/lessons/welcome/methods/picture/PictureMono1.html:2
+#: src/lessons/welcome/Main.html:229
+#: src/lessons/welcome/methods/picture/PictureMono1.html:2
 msgid "Methodically drawing"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:242 src/lessons/welcome/methods/picture/PictureMono2.html:2
+#: src/lessons/welcome/Main.html:242
+#: src/lessons/welcome/methods/picture/PictureMono2.html:2
 msgid "Methodically drawing (only bigger)"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:268 src/lessons/welcome/methods/picture/PictureMono3.html:2
+#: src/lessons/welcome/Main.html:268
+#: src/lessons/welcome/methods/picture/PictureMono3.html:2
 msgid "Drawing bigger and bigger"
 msgstr ""
 
@@ -697,12 +799,14 @@ msgid "Buggle Dance Revolution 2"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:323 src/lessons/welcome/methods/slug/SlugHunting.html:2
+#: src/lessons/welcome/Main.html:323
+#: src/lessons/welcome/methods/slug/SlugHunting.html:2
 msgid "Slug Hunting"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:336 src/lessons/welcome/methods/slug/SlugTracking.html:2
+#: src/lessons/welcome/Main.html:336
+#: src/lessons/welcome/methods/slug/SlugTracking.html:2
 msgid "Slug Tracking"
 msgstr ""
 
@@ -722,22 +826,26 @@ msgid "Knitting, Arrays and modulos"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:403 src/lessons/welcome/traversal/column/TraversalByColumn.html:2
+#: src/lessons/welcome/Main.html:403
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:2
 msgid "Traversal by column"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:416 src/lessons/welcome/traversal/line/TraversalByLine.html:2
+#: src/lessons/welcome/Main.html:416
+#: src/lessons/welcome/traversal/line/TraversalByLine.html:2
 msgid "Traversal by line"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:442 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:2
+#: src/lessons/welcome/Main.html:442
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:2
 msgid "Zig-zag traversal"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:455 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:2
+#: src/lessons/welcome/Main.html:455
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:2
 msgid "Diagonal Traversal"
 msgstr ""
 
@@ -837,13 +945,16 @@ msgid "Write your program in the \"Code\" pane. It should read as follows:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/environment/Environment.html:20 src/lessons/welcome/instructions/Instructions.html:53
+#: src/lessons/welcome/environment/Environment.html:20
+#: src/lessons/welcome/instructions/Instructions.html:53
 #, no-wrap
 msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:21 src/lessons/welcome/loopfor/LoopFor.html:57 src/lessons/welcome/bdr/BDR.html:189
+#: src/lessons/welcome/environment/Environment.html:21
+#: src/lessons/welcome/loopfor/LoopFor.html:57
+#: src/lessons/welcome/bdr/BDR.html:189
 msgid "[!java|c]"
 msgstr ""
 
@@ -856,7 +967,26 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/environment/Environment.html:23 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:152 src/lessons/welcome/loopfor/LoopFor.html:80 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet2.html:25 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:61 src/lessons/welcome/bdr/BDR.html:196 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/cons/universe/ConsWorld.html:35 src/lessons/recursion/cons/Length.html:8 src/lessons/recursion/lego/square/FourSquare.html:46 src/lessons/maze/pledge/PledgeMaze.html:68 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/welcome/environment/Environment.html:23
+#: src/lessons/welcome/variables/Variables.html:78
+#: src/lessons/welcome/variables/Variables.html:152
+#: src/lessons/welcome/loopfor/LoopFor.html:80
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:54
+#: src/lessons/welcome/loopdowhile/Poucet2.html:25
+#: src/lessons/welcome/array/basics/Array1.html:183
+#: src/lessons/welcome/array/basics/Array1.html:209
+#: src/lessons/welcome/methods/args/MethodsArgs.html:66
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:40
+#: src/lessons/welcome/bdr/BDR.html:61 src/lessons/welcome/bdr/BDR.html:196
+#: src/lessons/welcome/bdr/BDR2.html:130
+#: src/lessons/turmites/langton/Langton.html:32
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:65
+#: src/lessons/sort/basic/comb/AlgCombSort.html:39
+#: src/lessons/recursion/cons/universe/ConsWorld.html:35
+#: src/lessons/recursion/cons/Length.html:8
+#: src/lessons/recursion/lego/square/FourSquare.html:46
+#: src/lessons/maze/pledge/PledgeMaze.html:68
+#: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -1288,7 +1418,22 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/conditions/Conditions.html:109 src/lessons/welcome/loopwhile/LoopWhile.html:35 src/lessons/welcome/loopwhile/BaggleSeeker.html:9 src/lessons/welcome/variables/Variables.html:119 src/lessons/welcome/loopfor/LoopFor.html:82 src/lessons/welcome/methods/basics/Methods.html:96 src/lessons/welcome/methods/basics/MethodsDogHouse.html:38 src/lessons/welcome/methods/returning/MethodsReturning.html:50 src/lessons/welcome/methods/args/MethodsArgs.html:70 src/lessons/welcome/methods/slug/SlugHunting.html:19 src/lessons/welcome/methods/slug/SlugTracking.html:23 src/lessons/welcome/bdr/BDR.html:151 src/lessons/welcome/bdr/BDR2.html:132 src/lessons/maze/wallfollower/WallFollowerMaze.html:18 src/lessons/maze/pledge/PledgeMaze.html:37 src/lessons/maze/shortestpath/ShortestPathMaze.html:23 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
+#: src/lessons/welcome/conditions/Conditions.html:109
+#: src/lessons/welcome/loopwhile/LoopWhile.html:35
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:9
+#: src/lessons/welcome/variables/Variables.html:119
+#: src/lessons/welcome/loopfor/LoopFor.html:82
+#: src/lessons/welcome/methods/basics/Methods.html:96
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:50
+#: src/lessons/welcome/methods/args/MethodsArgs.html:70
+#: src/lessons/welcome/methods/slug/SlugHunting.html:19
+#: src/lessons/welcome/methods/slug/SlugTracking.html:23
+#: src/lessons/welcome/bdr/BDR.html:151 src/lessons/welcome/bdr/BDR2.html:132
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:18
+#: src/lessons/maze/pledge/PledgeMaze.html:37
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
 msgstr ""
 
@@ -1495,7 +1640,8 @@ msgid "int x=5;"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:35 src/lessons/welcome/variables/Variables.html:69
+#: src/lessons/welcome/variables/Variables.html:35
+#: src/lessons/welcome/variables/Variables.html:69
 msgid "[/!] [!python]"
 msgstr ""
 
@@ -1513,7 +1659,10 @@ msgid "x = 5"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/loopfor/LoopFor.html:68 src/lessons/welcome/bdr/BDR2.html:83 src/lessons/recursion/cons/universe/ConsWorld.html:34
+#: src/lessons/welcome/variables/Variables.html:40
+#: src/lessons/welcome/loopfor/LoopFor.html:68
+#: src/lessons/welcome/bdr/BDR2.html:83
+#: src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
 msgstr ""
 
@@ -1564,7 +1713,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:52 src/lessons/welcome/loopdowhile/LoopDoWhile.html:39
+#: src/lessons/welcome/variables/Variables.html:52
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:39
 msgid "[/!] [!java|scala|c]"
 msgstr ""
 
@@ -2166,7 +2316,11 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet2.html:19 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/maze/pledge/PledgeMaze.html:59
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
+#: src/lessons/welcome/loopdowhile/Poucet2.html:19
+#: src/lessons/welcome/array/basics/Array1.html:100
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:54
+#: src/lessons/maze/pledge/PledgeMaze.html:59
 msgid "[!python]"
 msgstr ""
 
@@ -2573,7 +2727,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/basics/Array1.html:116 src/lessons/turmites/helloturmite/HelloTurmite.html:61
+#: src/lessons/welcome/array/basics/Array1.html:116
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:61
 msgid "[/!] [!java|scala]"
 msgstr ""
 
@@ -2768,7 +2923,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/basics/Array1.html:202 src/lessons/turmites/langton/Langton.html:21
+#: src/lessons/welcome/array/basics/Array1.html:202
+#: src/lessons/turmites/langton/Langton.html:21
 msgid "[!java]"
 msgstr ""
 
@@ -2820,7 +2976,9 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/array/basics/Array1.html:231 src/lessons/recursion/lego/square/FourSquare.html:48 src/lessons/recursion/hanoi/HanoiBoard.html:21
+#: src/lessons/welcome/array/basics/Array1.html:231
+#: src/lessons/recursion/lego/square/FourSquare.html:48
+#: src/lessons/recursion/hanoi/HanoiBoard.html:21
 msgid "Goal of this exercise"
 msgstr ""
 
@@ -3147,7 +3305,59 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10 src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:7 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:10 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8
+#: src/lessons/welcome/array/array123/Array123.html:5
+#: src/lessons/welcome/array/array667/Array667.html:8
+#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:5
+#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5
+#: src/lessons/welcome/array/notriples/NoTriples.html:8
+#: src/lessons/welcome/array/has271/Has271.html:10
+#: src/lessons/welcome/bat/bool1/Close10.html:8
+#: src/lessons/welcome/bat/bool1/Diff21.html:6
+#: src/lessons/welcome/bat/bool1/HasTeen.html:7
+#: src/lessons/welcome/bat/bool1/IcyHot.html:6
+#: src/lessons/welcome/bat/bool1/In1020.html:6
+#: src/lessons/welcome/bat/bool1/In3050.html:6
+#: src/lessons/welcome/bat/bool1/LoneTeen.html:7
+#: src/lessons/welcome/bat/bool1/Main.html:12
+#: src/lessons/welcome/bat/bool1/Makes10.html:6
+#: src/lessons/welcome/bat/bool1/Max1020.html:8
+#: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8
+#: src/lessons/welcome/bat/bool1/NearHundred.html:8
+#: src/lessons/welcome/bat/bool1/ParotTrouble.html:9
+#: src/lessons/welcome/bat/bool1/PosNeg.html:6
+#: src/lessons/welcome/bat/bool1/SleepIn.html:8
+#: src/lessons/welcome/bat/bool1/SumDouble.html:6
+#: src/lessons/welcome/bat/bool2/AlarmClock.html:12
+#: src/lessons/welcome/bat/bool2/AnswerCell.html:9
+#: src/lessons/welcome/bat/bool2/BlueTicket.html:11
+#: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12
+#: src/lessons/welcome/bat/bool2/CigarParty.html:10
+#: src/lessons/welcome/bat/bool2/DateFashion.html:13
+#: src/lessons/welcome/bat/bool2/GreenTicket.html:10
+#: src/lessons/welcome/bat/bool2/In1To10.html:9
+#: src/lessons/welcome/bat/bool2/InOrderEqual.html:10
+#: src/lessons/welcome/bat/bool2/InOrder.html:9
+#: src/lessons/welcome/bat/bool2/LastDigit2.html:9
+#: src/lessons/welcome/bat/bool2/LessBy10.html:6
+#: src/lessons/welcome/bat/bool2/Main.html:7
+#: src/lessons/welcome/bat/bool2/MaxMod5.html:10
+#: src/lessons/welcome/bat/bool2/NearTen.html:9
+#: src/lessons/welcome/bat/bool2/RedTicket.html:10
+#: src/lessons/welcome/bat/bool2/SortaSum.html:8
+#: src/lessons/welcome/bat/bool2/SquirrelPlay.html:11
+#: src/lessons/welcome/bat/bool2/TeaParty.html:12
+#: src/lessons/welcome/bat/bool2/TeenSum.html:9
+#: src/lessons/welcome/bat/bool2/TwoAsOne.html:6
+#: src/lessons/welcome/bat/bool2/WithoutDoubles.html:9
+#: src/lessons/bat/string1/Main.html:10 src/lessons/bat/string1/AltPairs.html:5
+#: src/lessons/bat/string1/FrontTimes.html:8
+#: src/lessons/bat/string1/Last2.html:9
+#: src/lessons/bat/string1/StringBits.html:5
+#: src/lessons/bat/string1/StringMatch.html:9
+#: src/lessons/bat/string1/StringSplosion.html:5
+#: src/lessons/bat/string1/StringTimes.html:5
+#: src/lessons/bat/string1/StringX.html:7
+#: src/lessons/bat/string1/StringYak.html:8
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site "
 "http://codingbat.com/"
@@ -3593,14 +3803,16 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/PictureMono1.html:4 src/lessons/welcome/methods/picture/MethodsPicture.html:4
+#: src/lessons/welcome/methods/picture/PictureMono1.html:4
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:4
 msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
 "in the \"Objective\" tab."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PictureMono1.html:7 src/lessons/welcome/methods/picture/MethodsPicture.html:7
+#: src/lessons/welcome/methods/picture/PictureMono1.html:7
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:7
 msgid ""
 "Your goal (here and in any well written program) is to write the simplest "
 "possible code. For that, you have to decompose your work in sub-steps, and "
@@ -3664,7 +3876,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/PictureMono3.html:4 src/lessons/welcome/methods/picture/MethodsPictureLarge.html:4
+#: src/lessons/welcome/methods/picture/PictureMono3.html:4
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:4
 msgid ""
 "As you can imagine, you have to reproduce the geometric drawing depicted in "
 "the \"Objectives\" tab. As you can see, it is even bigger than the previous "
@@ -3679,7 +3892,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:2 src/lessons/lightbot/Board06Func.html:2
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:2
+#: src/lessons/lightbot/Board06Func.html:2
 msgid "Functions"
 msgstr ""
 
@@ -3791,16 +4005,27 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:67
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:66
 msgid ""
-"This exercise is a bit different since there is two initial worlds, each "
-"with a specific objective. Your code must work for each of them. Observe "
-"that the world selection scrolling menu (right below the speed slider)  "
-"allows to switch the observed world."
+"Note that the used buggle provides some hidden code that will call your "
+"<code>haveBaggle</code> function on each column, moving automatically "
+"between columns. It is thus very important that your <code>haveBaggle</code> "
+"function have no side effect: the position (and orientation) at the end of "
+"your code must be the one observed at the beginning of this code. It will "
+"move in between to seek for the baggle, but come back to the column start."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:72
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:73
+msgid ""
+"Also, this exercise is a bit different since there is two initial worlds, "
+"each with a specific objective. Your code must work for each of "
+"them. Observe that the world selection scrolling menu (right below the speed "
+"slider)  allows to switch the observed world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:78
 msgid "When your function <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
 
@@ -3874,7 +4099,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/args/MethodsArgs.html:35 src/lessons/welcome/methods/picture/MethodsPicture.html:35
+#: src/lessons/welcome/methods/args/MethodsArgs.html:35
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:35
 msgid "[!java|scala]"
 msgstr ""
 
@@ -4121,7 +4347,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:13 src/lessons/welcome/traversal/Snake.html:40 src/lessons/welcome/traversal/column/TraversalByColumn.html:50 src/lessons/welcome/traversal/line/TraversalByLine.html:11 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:11 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:7
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:13
+#: src/lessons/welcome/traversal/Snake.html:40
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:50
+#: src/lessons/welcome/traversal/line/TraversalByLine.html:11
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:11
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:7
 msgid "Your turn..."
 msgstr ""
 
@@ -4146,7 +4377,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/PatternPicture.html:11 src/lessons/lander/lvl1_lander_101/Lander101.html:42
+#: src/lessons/welcome/methods/picture/PatternPicture.html:11
+#: src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
 msgstr ""
 
@@ -4280,7 +4512,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4 src/lessons/recursion/lego/square/FourSquare.html:28
+#: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
+#: src/lessons/recursion/lego/square/FourSquare.html:28
 msgid "[!java|scala|c]"
 msgstr ""
 
@@ -5384,12 +5617,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15 src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30 src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
+#: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15
+#: src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30
+#: src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
 msgid "What can I do to improve this PLM universe?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/turmites/Main.html:24 src/lessons/sort/basic/Main.html:17 src/lessons/sort/dutchflag/Main.html:11 src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14 src/lessons/recursion/cons/Main.html:7
+#: src/lessons/turmites/Main.html:24 src/lessons/sort/basic/Main.html:17
+#: src/lessons/sort/dutchflag/Main.html:11
+#: src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30
+#: src/lessons/turtleart/Main.html:14 src/lessons/recursion/cons/Main.html:7
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -5570,7 +5808,8 @@ msgid "Move forward by one step."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:37 src/lessons/turmites/helloturmite/HelloTurmite.html:67
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:37
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:67
 msgid "You now should have enough information to succeed."
 msgstr ""
 
@@ -5728,27 +5967,40 @@ msgid "Current color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14 src/lessons/turmites/turmitecreator/TurmiteCreator.html:29 src/lessons/turmites/turmitecreator/TurmiteCreator.html:32 src/lessons/turmites/turmitecreator/TurmiteCreator.html:40 src/lessons/turmites/turmitecreator/TurmiteCreator.html:42 src/lessons/turmites/turmitecreator/TurmiteCreator.html:43
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:29
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:32
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:40
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:42
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:43
 msgid "0"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:15 src/lessons/turmites/turmitecreator/TurmiteCreator.html:30 src/lessons/turmites/turmitecreator/TurmiteCreator.html:33 src/lessons/turmites/turmitecreator/TurmiteCreator.html:35 src/lessons/turmites/turmitecreator/TurmiteCreator.html:38 src/lessons/turmites/turmitecreator/TurmiteCreator.html:45
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:15
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:30
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:33
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:35
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:38
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:45
 msgid "1"
 msgstr ""
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:19 src/lessons/turmites/turmitecreator/TurmiteCreator.html:22
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:19
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:22
 msgid "Write color"
 msgstr ""
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:20 src/lessons/turmites/turmitecreator/TurmiteCreator.html:23
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:20
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:23
 msgid "Turn"
 msgstr ""
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:21 src/lessons/turmites/turmitecreator/TurmiteCreator.html:24
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:21
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:24
 msgid "Next state"
 msgstr ""
 
@@ -5758,12 +6010,14 @@ msgid "Current state"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:31 src/lessons/turmites/turmitecreator/TurmiteCreator.html:34
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:31
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:34
 msgid "R"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:41 src/lessons/turmites/turmitecreator/TurmiteCreator.html:44
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:41
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:44
 msgid "N"
 msgstr ""
 
@@ -6036,7 +6290,8 @@ msgid "Returns the amount of values in the array"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:13 src/plm/universe/sort/SortingWorld.html:31
+#: src/plm/universe/sort/SortingWorld.html:13
+#: src/plm/universe/sort/SortingWorld.html:31
 msgid "none"
 msgstr ""
 
@@ -6075,7 +6330,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:18 src/plm/universe/sort/SortingWorld.html:26
+#: src/plm/universe/sort/SortingWorld.html:18
+#: src/plm/universe/sort/SortingWorld.html:26
 msgid "one read"
 msgstr ""
 
@@ -6146,7 +6402,9 @@ msgid "[!java]boolean [/!][!c]int [/!]isSelected() [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:31 src/lessons/sort/pancake/universe/PancakeWorld.html:22 src/lessons/recursion/hanoi/universe/HanoiWorld.html:28
+#: src/plm/universe/sort/SortingWorld.html:31
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:22
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:28
 msgid "Returns whether the current world is selected in the graphical interface."
 msgstr ""
 
@@ -6176,7 +6434,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:48 src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
+#: src/plm/universe/sort/SortingWorld.html:48
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -6234,7 +6493,9 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/basic/short_desc.html:7 src/lessons/recursion/lego/short_desc.html:6 src/lessons/maze/short_desc.html:6
+#: src/lessons/sort/basic/short_desc.html:7
+#: src/lessons/recursion/lego/short_desc.html:6
+#: src/lessons/maze/short_desc.html:6
 msgid "You are supposed to master the bases of programming to take this lesson."
 msgstr ""
 
@@ -6293,7 +6554,8 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40 src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
 msgid "Show Tip (Pseudo-code)"
 msgstr ""
 
@@ -6746,7 +7008,9 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/basic/comb/AlgCombSort.html:27 src/lessons/maze/island/IslandMaze.html:67 src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/sort/basic/comb/AlgCombSort.html:27
+#: src/lessons/maze/island/IslandMaze.html:67
+#: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[!scala]"
 msgstr ""
 
@@ -6841,7 +7105,10 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/dutchflag/Main.html:2 src/lessons/sort/dutchflag/short_desc.html:2 src/lessons/sort/dutchflag/DutchFlagAlgo.html:2 src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:2
+#: src/lessons/sort/dutchflag/Main.html:2
+#: src/lessons/sort/dutchflag/short_desc.html:2
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:2
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:2
 msgid "The Dutch Flag Problem"
 msgstr ""
 
@@ -6959,7 +7226,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9 src/lessons/lander/universe/DelegatingLanderWorld.html:8
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:8
 msgid "Provided functions"
 msgstr ""
 
@@ -7006,7 +7274,8 @@ msgid "Returns the color of the given line."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22 src/lessons/sort/baseball/universe/BaseballWorld.html:31
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
 msgstr ""
@@ -7017,13 +7286,15 @@ msgid "Returns whether the flag is sorted."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25 src/lessons/sort/baseball/universe/BaseballWorld.html:37
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26 src/lessons/sort/baseball/universe/BaseballWorld.html:38
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
 msgid "Returns whether the current world is selected in the interface."
 msgstr ""
 
@@ -7109,7 +7380,8 @@ msgid "[!java]boolean [/!][!c]int [/!]isSelected()   [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/pancake/Main.html:2 src/lessons/sort/pancake/BasicPancake.html:2
+#: src/lessons/sort/pancake/Main.html:2
+#: src/lessons/sort/pancake/BasicPancake.html:2
 msgid "Pancake Sorting"
 msgstr ""
 
@@ -7143,7 +7415,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:15
 msgid ""
-"An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
+"An article of 2011 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 "determining the minimal amount of flips to sort the stack is a NP-complete "
 "problem. Naturally, the stack sorting problem is not NP-complete since it "
 "can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
@@ -7230,7 +7502,8 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:23 src/lessons/sort/pancake/BubblePancake.html:10
+#: src/lessons/sort/pancake/BasicPancake.html:23
+#: src/lessons/sort/pancake/BubblePancake.html:10
 msgid "I don't get it. I need some help."
 msgstr ""
 
@@ -7243,7 +7516,8 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:28 src/lessons/sort/pancake/BubblePancake.html:13
+#: src/lessons/sort/pancake/BasicPancake.html:28
+#: src/lessons/sort/pancake/BubblePancake.html:13
 msgid "The first tip was not enough. I need another one."
 msgstr ""
 
@@ -8228,7 +8502,8 @@ msgid "Turns left or right of the given angle (in degrees)."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:22 src/lessons/lander/universe/DelegatingLanderWorld.html:10
+#: src/plm/universe/turtles/TurtleWorld.html:22
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:10
 #, no-wrap
 msgid ""
 "[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
@@ -8634,7 +8909,15 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/cons/Length.html:10 src/lessons/recursion/cons/IsMember.html:7 src/lessons/recursion/cons/Occurrence.html:7 src/lessons/recursion/cons/Last.html:6 src/lessons/recursion/cons/Min.html:6 src/lessons/recursion/cons/Increasing.html:6 src/lessons/recursion/cons/ButLast.html:6 src/lessons/recursion/cons/PlusOne.html:5 src/lessons/recursion/cons/Remove.html:9 src/lessons/recursion/cons/ButNfirst.html:6
+#: src/lessons/recursion/cons/Length.html:10
+#: src/lessons/recursion/cons/IsMember.html:7
+#: src/lessons/recursion/cons/Occurrence.html:7
+#: src/lessons/recursion/cons/Last.html:6 src/lessons/recursion/cons/Min.html:6
+#: src/lessons/recursion/cons/Increasing.html:6
+#: src/lessons/recursion/cons/ButLast.html:6
+#: src/lessons/recursion/cons/PlusOne.html:5
+#: src/lessons/recursion/cons/Remove.html:9
+#: src/lessons/recursion/cons/ButNfirst.html:6
 msgid "Your solution should be linear in time."
 msgstr ""
 
@@ -8754,7 +9037,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/cons/Nth.html:6 src/lessons/recursion/cons/Nfirst.html:7
+#: src/lessons/recursion/cons/Nth.html:6
+#: src/lessons/recursion/cons/Nfirst.html:7
 msgid ""
 "You can assume that the list is long enough, i.e. that there is at least "
 "<code>N</code> elements.  Your solution should be linear in time."
@@ -8787,19 +9071,25 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/cons/Nlast.html:6 src/lessons/recursion/cons/ButNlast.html:6 src/lessons/recursion/cons/Concat.html:6
+#: src/lessons/recursion/cons/Nlast.html:6
+#: src/lessons/recursion/cons/ButNlast.html:6
+#: src/lessons/recursion/cons/Concat.html:6
 msgid ""
 "Your solution should be linear in time, but you will probably need to define "
 "several functions to achieve that complexity."
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/recursion/cons/Nlast.html:8 src/lessons/recursion/cons/ButNlast.html:8 src/lessons/recursion/cons/Reverse.html:8 src/lessons/recursion/cons/Concat.html:8
+#: src/lessons/recursion/cons/Nlast.html:8
+#: src/lessons/recursion/cons/ButNlast.html:8
+#: src/lessons/recursion/cons/Reverse.html:8
+#: src/lessons/recursion/cons/Concat.html:8
 msgid "I cannot do it in linear time"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/recursion/cons/Nlast.html:9 src/lessons/recursion/cons/ButNlast.html:9
+#: src/lessons/recursion/cons/Nlast.html:9
+#: src/lessons/recursion/cons/ButNlast.html:9
 msgid ""
 "The trick is to compute only once (and beforehand) how many elements you "
 "should keep."
@@ -9098,7 +9388,9 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:8 src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:26 src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:45
+#: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:8
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:26
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:45
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -9169,7 +9461,8 @@ msgid "Too much letters. Please picture it."
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/lessons/recursion/lego/koch/Koch.html:35 src/lessons/recursion/lego/koch/SquareKoch.html:9
+#: src/lessons/recursion/lego/koch/Koch.html:35
+#: src/lessons/recursion/lego/koch/SquareKoch.html:9
 msgid "Here are the results of the first levels of recursion."
 msgstr ""
 
@@ -9531,7 +9824,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:14 src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:27
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:14
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:27
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -9544,7 +9838,8 @@ msgid "The prototype of the method drawing the curve is the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19 src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:23
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19
+#: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:23
 #, no-wrap
 msgid ""
 "[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], "
@@ -9647,7 +9942,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/hanoi/Main.html:2 src/lessons/recursion/hanoi/short_desc.html:2
+#: src/lessons/recursion/hanoi/Main.html:2
+#: src/lessons/recursion/hanoi/short_desc.html:2
 msgid "Hanoi towers"
 msgstr ""
 
@@ -9841,17 +10137,20 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/recursion/hanoi/InterleavedHanoi.html:10 src/lessons/recursion/hanoi/SplitHanoi1.html:10
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:10
 msgid "Please show me an intermediate step"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/recursion/hanoi/InterleavedHanoi.html:12 src/lessons/recursion/hanoi/SplitHanoi1.html:12
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:12
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:12
 msgid "If your initial situation is as follows:"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/recursion/hanoi/InterleavedHanoi.html:15 src/lessons/recursion/hanoi/SplitHanoi1.html:15
+#: src/lessons/recursion/hanoi/InterleavedHanoi.html:15
+#: src/lessons/recursion/hanoi/SplitHanoi1.html:15
 msgid "then you have the following situation right before the main recursive call:"
 msgstr ""
 
@@ -9890,12 +10189,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:7 src/lessons/recursion/hanoi/SplitHanoi3.html:21
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
 msgid "Disks amount"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:7 src/lessons/recursion/hanoi/SplitHanoi3.html:21
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:7
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:21
 msgid "Interleaved"
 msgstr ""
 
@@ -9905,47 +10206,56 @@ msgid "Split"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:8 src/lessons/recursion/hanoi/SplitHanoi3.html:22
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "5 pairs"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:8 src/lessons/recursion/hanoi/SplitHanoi3.html:22
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "62 moves"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:8 src/lessons/recursion/hanoi/SplitHanoi3.html:22
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:8
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "88 moves"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:9 src/lessons/recursion/hanoi/SplitHanoi3.html:23
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "6 pairs"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:9 src/lessons/recursion/hanoi/SplitHanoi3.html:23
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "126 moves"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:9 src/lessons/recursion/hanoi/SplitHanoi3.html:23
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:9
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "183 moves"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:10 src/lessons/recursion/hanoi/SplitHanoi3.html:24
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "7 pairs"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:10 src/lessons/recursion/hanoi/SplitHanoi3.html:24
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "254 moves"
 msgstr ""
 
 #. type: Content of: <br><table><tr><td>
-#: src/lessons/recursion/hanoi/SplitHanoi2.html:10 src/lessons/recursion/hanoi/SplitHanoi3.html:24
+#: src/lessons/recursion/hanoi/SplitHanoi2.html:10
+#: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "374 moves"
 msgstr ""
 
@@ -11043,7 +11353,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/lightbot/universe/LightBotWorld.html:2 src/lessons/lightbot/Main.html:2 src/lessons/lightbot/short_desc.html:2
+#: src/lessons/lightbot/universe/LightBotWorld.html:2
+#: src/lessons/lightbot/Main.html:2 src/lessons/lightbot/short_desc.html:2
 msgid "LightBot"
 msgstr ""
 
@@ -11194,7 +11505,9 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board01TwoSteps.html:11 src/lessons/lightbot/Board02Turn.html:5 src/lessons/lightbot/Board06Func.html:4
+#: src/lessons/lightbot/Board01TwoSteps.html:11
+#: src/lessons/lightbot/Board02Turn.html:5
+#: src/lessons/lightbot/Board06Func.html:4
 msgid "and"
 msgstr ""
 
@@ -11433,7 +11746,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10
+#: src/lessons/welcome/bat/bool1/LastDigit.html:10
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:10
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site "
 "http://javabat.com/"
@@ -12070,7 +12384,8 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2 src/lessons/lander/universe/DelegatingLanderWorld.html:2
+#: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
+#: src/lessons/lander/universe/DelegatingLanderWorld.html:2
 msgid "Lunar Lander"
 msgstr ""
 
