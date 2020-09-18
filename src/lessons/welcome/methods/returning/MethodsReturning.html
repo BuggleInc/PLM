@@ -63,8 +63,14 @@ on one of them). For each cell, if it contains a baggle, we store true in
 <p>At the end, we move back by 6 steps, and we return the value of
 <code>seenBaggle</code> to the caller.</p>
 
+<p>Note that the used buggle provides some hidden code that will call your 
+<code>haveBaggle</code> function on each column, moving automatically between columns. It
+is thus very important that your <code>haveBaggle</code> function have no side
+effect: the position (and orientation) at the end of your code must be
+the one observed at the beginning of this code. It will move in
+between to seek for the baggle, but come back to the column start.</p>
 
-<p>This exercise is a bit different since there is two initial worlds, each
+<p>Also, this exercise is a bit different since there is two initial worlds, each
 with a specific objective. Your code must work for each of them. Observe
 that the world selection scrolling menu (right below the speed slider)
 allows to switch the observed world. </p>
