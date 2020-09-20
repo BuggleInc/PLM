@@ -8,13 +8,14 @@ cette piste, la buggle est sûre de se régaler d'un bon jus de limace
 (représentée par un baggle).
 </p>
 
-<p>To reach that goal, you had to write a method <tt>isFacingTrail</tt> that
-will be called automatically by the buggle on each step. Your method should
-return [!python]True[/!][!java|scala]true[/!] if facing a green cell, or
-[!python]False[/!][!java|scala]false[/!] if not. Of course, if we are facing
-a wall, it should return false without bumping into it. You should make sure
-that this method has no <b>side effect</b>, i.e. that it does not change the
-state of the calling buggle nor of its world.</p>
+<p>Pour arriver au résultat, vous devez écrire la méthode
+<code>isFacingTrail()</code>, qui sera appelée automatiquement par la buggle
+à chaque pas. Votre méthode doit renvoyer
+[!python]True[/!][!java|scala]true[/!] (vrai) si on est face à une case
+verte, ou [!python]False[/!][!java|scala]false[/!] (faux) sinon. Bien sûr,
+si on est face à un mur, elle doit répondre faux sans se cogner. Il faut de
+plus que cette méthode soit <b>sans effet de bord</b>, c'est-à-dire qu'elle
+ne modifie ni la buggle qui l'appelle, ni le monde environnant.</p>
 
 <p>Votre outil pour cela est la méthode <code>getCouleurSol()</code> qui
 retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut
