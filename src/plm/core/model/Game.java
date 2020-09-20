@@ -206,7 +206,7 @@ public class Game implements IWorldView {
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
 		} catch (IOException | GitAPIException e) {
-			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below"));
+			System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
 			e.printStackTrace();
 		}
 	}
