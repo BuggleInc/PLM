@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 15:15+0200\n"
+"POT-Creation-Date: 2020-09-20 16:48+0200\n"
 "PO-Revision-Date: 2015-02-16 14:12+0100\n"
 "Last-Translator: Qiaoyang SU <suqiaoy@163.com>\n"
 "Language-Team: Chinese(中文)\n"
@@ -543,32 +543,32 @@ msgid ""
 "Exception message: {1}\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:160
+#: src/plm/core/model/Game.java:162
 msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala能正常运行。"
 
-#: src/plm/core/model/Game.java:162
+#: src/plm/core/model/Game.java:164
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
 msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
 
-#: src/plm/core/model/Game.java:164
+#: src/plm/core/model/Game.java:166
 msgid "Jython is usable on your machine. Congratulations."
 msgstr "Jython能正常运行"
 
-#: src/plm/core/model/Game.java:166
+#: src/plm/core/model/Game.java:168
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr "PLM需要安装Jython来运行python语言程序"
 
-#: src/plm/core/model/Game.java:168
+#: src/plm/core/model/Game.java:170
 msgid "C is usable on your machine. Congratulations."
 msgstr "C语言能正常运行"
 
-#: src/plm/core/model/Game.java:170
+#: src/plm/core/model/Game.java:172
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "PLM需要安装gcc来运行C语言程序"
 
-#: src/plm/core/model/Game.java:177
+#: src/plm/core/model/Game.java:179
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -581,74 +581,80 @@ msgid ""
 "({2}/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:183
+#: src/plm/core/model/Game.java:185
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:186
+#: src/plm/core/model/Game.java:188
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:189
+#: src/plm/core/model/Game.java:191
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:234
+#: src/plm/core/model/Game.java:209
+msgid ""
+"You found a bug in the PLM. Please report it with all possible details "
+"(including the stacktrace below"
+msgstr ""
+
+#: src/plm/core/model/Game.java:235
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:243
+#: src/plm/core/model/Game.java:244
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 
-#: src/plm/core/model/Game.java:268
+#: src/plm/core/model/Game.java:269
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:307
+#: src/plm/core/model/Game.java:308
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:309
+#: src/plm/core/model/Game.java:310
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:344 src/plm/core/model/Game.java:345
+#: src/plm/core/model/Game.java:345 src/plm/core/model/Game.java:346
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "无法打开课程{0}: class Main not found"
 
-#: src/plm/core/model/Game.java:346
+#: src/plm/core/model/Game.java:347
 #, java-format
 msgid "Load lesson {0}"
 msgstr "读取课程{0}"
 
-#: src/plm/core/model/Game.java:362
+#: src/plm/core/model/Game.java:363
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
 
-#: src/plm/core/model/Game.java:363
+#: src/plm/core/model/Game.java:364
 msgid "Broken lesson"
 msgstr "跳出课程"
 
-#: src/plm/core/model/Game.java:499
+#: src/plm/core/model/Game.java:500
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -656,49 +662,49 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:507
+#: src/plm/core/model/Game.java:508
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/plm/core/model/Game.java:579
+#: src/plm/core/model/Game.java:580
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1004
+#: src/plm/core/model/Game.java:1005
 #, fuzzy
 msgid ""
 "Please install Scala version 2.11 or higher to use it in the PLM.\n"
 "\n"
 msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
 
-#: src/plm/core/model/Game.java:1005
+#: src/plm/core/model/Game.java:1006
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1009
+#: src/plm/core/model/Game.java:1010
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1010
+#: src/plm/core/model/Game.java:1011
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1014
+#: src/plm/core/model/Game.java:1015
 msgid ""
 "Please install C and its dependencies to use the C programming language in "
 "the PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1015
+#: src/plm/core/model/Game.java:1016
 msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1020
+#: src/plm/core/model/Game.java:1021
 msgid ""
 "The C langage is currently very experimental in the PLM.\n"
 "If you go for C, you may not be able to complete some exercises that\n"
@@ -707,7 +713,7 @@ msgid ""
 "Do you want to proceed anyway?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1024
+#: src/plm/core/model/Game.java:1025
 msgid "C is still experimental"
 msgstr ""
 
@@ -900,24 +906,35 @@ msgstr ""
 msgid "Abording on user request"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:72
+#. Testing repoDir is not enough because the directory may have been created by another spy but not initialized for git
+#: src/plm/core/model/tracking/GitSpy.java:56
+#, java-format
+msgid "Reusing the disk session located at {0}."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitSpy.java:58
+#, java-format
+msgid "Initialize a new disk session at {0}."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitSpy.java:76
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
 
 #. If no branch can be found remotely, create a new one.
 #. System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-#: src/plm/core/model/tracking/GitSpy.java:77
+#: src/plm/core/model/tracking/GitSpy.java:81
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:86
+#: src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:164
+#: src/plm/core/model/tracking/GitSpy.java:168
 msgid "Pushing to the remote repository before exiting"
 msgstr ""
 
