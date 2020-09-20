@@ -7,11 +7,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2020-09-18 09:53+0200\n"
+"POT-Creation-Date: 2020-09-20 15:30+0200\n"
 "PO-Revision-Date: 2020-09-18 08:25+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"programmers-learning-machine/missions/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/programmers-"
+"learning-machine/missions/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1297,8 +1297,8 @@ msgid ""
 "thelang], instructing the [!java|scala|c]compiler[/!][!"
 "python]interpreter[/!] to not read the text you add for humans:"
 msgstr ""
-"Il y a [!java]trois[/!][!python|scala|c]deux[/!] sortes de commentaires en "
-"[!thelang], indiquant [!java|scala|c]au compilateur[/!][!python]à "
+"Il y a [!java]trois[/!][!python|scala|c]deux[/!] sortes de commentaires en [!"
+"thelang], indiquant [!java|scala|c]au compilateur[/!][!python]à "
 "l'interpréteur[/!] qu'il ne doit pas lire le texte ajouté pour les humains :"
 
 #. type: Content of: <ul><li>
@@ -1702,7 +1702,7 @@ msgstr ""
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:50
 #: src/lessons/welcome/methods/args/MethodsArgs.html:70
 #: src/lessons/welcome/methods/slug/SlugHunting.html:19
-#: src/lessons/welcome/methods/slug/SlugTracking.html:23
+#: src/lessons/welcome/methods/slug/SlugTracking.html:24
 #: src/lessons/welcome/bdr/BDR.html:151 src/lessons/welcome/bdr/BDR2.html:132
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:18
 #: src/lessons/maze/pledge/PledgeMaze.html:37
@@ -4280,9 +4280,9 @@ msgstr ""
 "Comme d'habitude, vous ne devez effectuer qu'un seul parcours pour obtenir "
 "les informations nécessaires. Vous pouvez supposer que la seconde plus "
 "grande valeur existe effectivement (qu'il y a au moins deux valeurs dans le "
-"tableau) et que toutes les valeurs du tableau sont plus grandes que [!python]"
-" -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est le "
-"plus petit entier existant en [!thelang]).[/!]"
+"tableau) et que toutes les valeurs du tableau sont plus grandes que [!"
+"python] -100000000.[/!] [!java|scala]<code>Integer.MIN_VALUE</code> (qui est "
+"le plus petit entier existant en [!thelang]).[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -5843,12 +5843,22 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:8
+#, fuzzy
+#| msgid ""
+#| "To reach that goal, you had to write a boolean method <tt>isFacingTrail</"
+#| "tt>, which determines whether we are facing a green cell or not. Of "
+#| "course, if we are facing a wall, it should return false without bumping "
+#| "into it. You should make sure that this method has no <b>side effect</b>, "
+#| "i.e. that it does not change the state of the calling buggle nor of its "
+#| "world."
 msgid ""
-"To reach that goal, you had to write a boolean method <tt>isFacingTrail</"
-"tt>, which determines whether we are facing a green cell or not. Of course, "
-"if we are facing a wall, it should return false without bumping into it. You "
-"should make sure that this method has no <b>side effect</b>, i.e. that it "
-"does not change the state of the calling buggle nor of its world."
+"To reach that goal, you had to write a method <tt>isFacingTrail</tt> that "
+"will be called automatically by the buggle on each step. Your method should "
+"return [!python]True[/!][!java|scala]true[/!] if facing a green cell, or [!"
+"python]False[/!][!java|scala]false[/!] if not. Of course, if we are facing a "
+"wall, it should return false without bumping into it. You should make sure "
+"that this method has no <b>side effect</b>, i.e. that it does not change the "
+"state of the calling buggle nor of its world."
 msgstr ""
 "Pour arriver au résultat, vous devez écrire la méthode booléenne "
 "<code>isFacingTrail()</code>, qui permet de savoir si on est face à une case "
@@ -5858,7 +5868,7 @@ msgstr ""
 "monde environnant."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/slug/SlugTracking.html:13
+#: src/lessons/welcome/methods/slug/SlugTracking.html:14
 msgid ""
 "Your tool to that end is the <code>getGroundColor()</code> that returns the "
 "color of the current cell. Just go to the cell you want to test and run that "
@@ -5884,7 +5894,7 @@ msgstr ""
 "c]GREEN[/!]</code>, qui représente la couleur verte.[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/slug/SlugTracking.html:24
+#: src/lessons/welcome/methods/slug/SlugTracking.html:25
 msgid ""
 "Complete the <code>isFacingTrail()</code> method (which gets called "
 "automatically)."
@@ -9337,8 +9347,7 @@ msgstr ""
 "  tant que i+ecart &lt; lgr faire:\n"
 "    si i et i+ecart doivent être inversés, le faire\n"
 "    incrémenter i de 1\n"
-"tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé "
-"au moins un élément\n"
+"tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé au moins un élément\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
