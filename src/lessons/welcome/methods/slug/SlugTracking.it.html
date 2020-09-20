@@ -5,15 +5,16 @@
 Il tuo buggle è felicissimo! Ha appena trovato una bavosa traccia verde
 sicuramente lasciata da una grossa e deliziosa lumaca.  Il buggle è certo
 che alla sua fine si intratterrà con un con questa appetitosa lumaca
-(rappresentata con un baggle). 
+(rappresentata con un baggle).
 </p>
 
-<p>Per raggiungere l'obbiettivo dovrai scrivere il metodo booleano
-<tt>isFacingTrail</tt> (Ndt davantiTraccia) che determinerà di fronte
-abbiamo una cella verde oppure no. Ovviamente se ad esempio sarete davanti
-ad un muro esso dovrà ritornale false senza andarci a sbattere. Dovrete
-assicurarvi che questo metodo non avrà <b>effetti collaterali</b> e cioé che
-non cambi il buggle che lo sta chiamando o il mondo che lo circonda.</p>
+<p>To reach that goal, you had to write a method <tt>isFacingTrail</tt> that
+will be called automatically by the buggle on each step. Your method should
+return [!python]True[/!][!java|scala]true[/!] if facing a green cell, or
+[!python]False[/!][!java|scala]false[/!] if not. Of course, if we are facing
+a wall, it should return false without bumping into it. You should make sure
+that this method has no <b>side effect</b>, i.e. that it does not change the
+state of the calling buggle nor of its world.</p>
 
 <p>Your tool to that end is the <code>getGroundColor()</code> that returns the
 color of the current cell. Just go to the cell you want to test and run that

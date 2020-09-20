@@ -76,12 +76,19 @@ qu'avancer si non).</p>
 <p>Quand on est arrivé à la fin, on recule de 6 cases, et on retourne le
 contenu de <tt>vuBiscuit</tt> à l'appelant.</p>
 
+<p>Notez que la buggle utilisée contient du code caché, qui va utiliser votre
+fonction <code>haveBaggle</code> sur chaque colonne en déplaçant la buggle
+automatiquement entre les colonnes. Il est donc très important que votre
+fonction <code>haveBuggle</code> n'ait pas d'effet de bord. La position (et
+l'orientation) à la fin de votre code doit être celle observée au début de
+ce code. La buggle va naturellement se déplacer pour chercher le baggle,
+mais elle doit revenir au début de la colonne.</p>
 
-<p>Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux,
-chacun ayant un objectif particulier. Votre code doit fonctionner pour
-chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde
-(juste sous la barre de réglage de la vitesse) permet de spécifier le monde
-que vous souhaitez observer. </p>
+<p>De plus, cet exercice est un peu particulier, puisqu'il a deux mondes
+initiaux, chacun ayant un objectif particulier. Votre code doit fonctionner
+pour chacun d'entre eux. Remarquez que le menu déroulant de sélection du
+monde (juste sous la barre de réglage de la vitesse) permet de spécifier le
+monde que vous souhaitez observer. </p>
 
 <p>Quand votre fonction <tt>haveBaggle</tt> fonctionne, passez à l'exercice
 suivant.</p>

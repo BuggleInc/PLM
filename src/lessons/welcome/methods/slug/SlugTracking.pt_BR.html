@@ -5,15 +5,16 @@
 Seu buggle está super-feliz! Ele acabou de encontrar o rastro verde e úmido,
 certamente deixado por um apetitosa e grande lesma.  No seu final, o buggle
 tem certeza de que vai se divertir com est deliciosa lesma (representada por
-um baggle). 
+um baggle).
 </p>
 
-<p>Para atingir este objetivo, você tem que escrever um método booleano
-<tt>estáDeFrenteParaRastro</tt>, que determina se estamos virados para uma
-célula verde ou não. Obviamente, se nós estivermos virados para uma parede,
-ele deve retornar falso sem "bumping" nela. Você deve se certificar que este
-método não tem <b>efeitos colaterais</b>, i.e. que ele não muda o estado do
-"calling buggle" ou do mundo.</p>
+<p>To reach that goal, you had to write a method <tt>isFacingTrail</tt> that
+will be called automatically by the buggle on each step. Your method should
+return [!python]True[/!][!java|scala]true[/!] if facing a green cell, or
+[!python]False[/!][!java|scala]false[/!] if not. Of course, if we are facing
+a wall, it should return false without bumping into it. You should make sure
+that this method has no <b>side effect</b>, i.e. that it does not change the
+state of the calling buggle nor of its world.</p>
 
 <p>Sua ferramenta para este objetivo é o <code>getCorDoChão()</code> que
 retorna a cor da célula atual. Simplesmente vá para a célula que você quer

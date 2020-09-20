@@ -70,11 +70,17 @@ one of them). For each cell, if it contains a baggle, we store true in
 <p>Alla fine dovremo tornare indietro di 6 passi e ritornare il valore della
 variabile <code>baggleVisto</code> al chiamante.</p>
 
+<p>Note that the used buggle provides some hidden code that will call your
+<code>haveBaggle</code> function on each column, moving automatically
+between columns. It is thus very important that your <code>haveBaggle</code>
+function have no side effect: the position (and orientation) at the end of
+your code must be the one observed at the beginning of this code. It will
+move in between to seek for the baggle, but come back to the column start.</p>
 
-<p>Questo esercizio si distinge un po' perché ci sono tre mondi iniziali,
-ognuno con il suo specifico objective. Il tuo codice deve funzinoare per
-tutti loro. Nota che il menù scorrevole world selection (al di sotto dello
-speed slider) permette di cambiare il mondo osservato. </p>
+<p>Also, this exercise is a bit different since there is two initial worlds,
+each with a specific objective. Your code must work for each of
+them. Observe that the world selection scrolling menu (right below the speed
+slider)  allows to switch the observed world. </p>
 
 <p>When your function <code>haveBaggle</code> works, proceed to next exercise.</p>
 
