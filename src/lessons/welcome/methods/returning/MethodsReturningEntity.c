@@ -10,8 +10,7 @@ int haveBaggle(){
 			res = 1;
 		forward(1);
 	}
-	for (i=0; i<6; i++)
-		backward(1);
+        backward(6);
 	return res;
 	/* END SOLUTION */
 }

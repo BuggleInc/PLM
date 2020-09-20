@@ -5,14 +5,6 @@ import plm.core.model.Game
 
 
 class ScalaMethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int)  { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-	}
-
-	override def backward(i: Int) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-	}
-
 	override def run() { 
 		for (i <- 1 to 7) {
 			if (haveBaggle()) 
@@ -31,8 +23,7 @@ class ScalaMethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle 
 				res = true;
 			forward();
 		}
-		for (i <- 1 to 6) 
-			backward();
+		backward(6);
 		return res;
 		/* END SOLUTION */
 	}

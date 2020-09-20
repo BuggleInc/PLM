@@ -1,3 +1,11 @@
+20200920: 2.8.2
+
+  * Pedagogical content:
+    o welcome/methods/returning:
+      - clarify in text how the learner's code is called automatically
+      - allow backward(n). Parameters are introduced later, but loops
+        are not the focus anymore at this point of the lesson.
+
 20200601: 2.8.1
 
   The Windows release.
