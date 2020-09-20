@@ -50,8 +50,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		
 		try {
 			repoDir = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
+			File gitDir = new File(repoDir.getAbsolutePath() + System.getProperty("file.separator") + ".git");
 
-			if (!repoDir.exists()) {
+			if (gitDir.exists()) { // Testing repoDir is not enough because the directory may have been created by another spy but not initialized for git
+				System.out.println(Game.i18n.tr("Reusing the disk session located at {0}.", repoDir));
+			} else {
+				System.out.println(Game.i18n.tr("Initialize a new disk session at {0}.", repoDir));
 				gitUtils.initLocalRepository(repoDir);
 				gitUtils.setUpRepoConfig(repoUrl, userBranch);
 				// We must create an initial commit before creating a specific branch for the user
