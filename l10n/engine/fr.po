@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 16:48+0200\n"
-"PO-Revision-Date: 2020-09-18 08:25+0000\n"
+"POT-Creation-Date: 2020-09-20 16:55+0200\n"
+"PO-Revision-Date: 2020-09-20 14:56+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/programmers-"
 "learning-machine/binary/fr/>\n"
@@ -714,14 +714,10 @@ msgstr ""
 "Vous utilisez C par défaut, mais votre installation de C est cassée. "
 "Utilisation de Java à la place.\n"
 
-#: src/plm/core/model/Game.java:209
-#, fuzzy
-#| msgid ""
-#| "You found a bug in the PLM. Please report it with all possible details "
-#| "(including the stacktrace below)."
+#: src/plm/core/model/Game.java:209 src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below"
+"(including the stacktrace below)."
 msgstr ""
 "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
 "les détails possibles (y compris la pile d'exécution ci-dessous)."
@@ -1089,12 +1085,12 @@ msgstr "Abandon, comme demandé par l'utilisateur"
 #: src/plm/core/model/tracking/GitSpy.java:56
 #, java-format
 msgid "Reusing the disk session located at {0}."
-msgstr ""
+msgstr "Utilisation de la session disque localisée ici : {0}."
 
 #: src/plm/core/model/tracking/GitSpy.java:58
 #, java-format
 msgid "Initialize a new disk session at {0}."
-msgstr ""
+msgstr "Création d'une session disque ici : {0}."
 
 #: src/plm/core/model/tracking/GitSpy.java:76
 #, java-format
@@ -1106,14 +1102,6 @@ msgstr "Votre session {0} a été récupérée automatiquement depuis les serveu
 #: src/plm/core/model/tracking/GitSpy.java:81
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr "Impossible de récupérer une session adéquate sur les serveurs..."
-
-#: src/plm/core/model/tracking/GitSpy.java:90
-msgid ""
-"You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below)."
-msgstr ""
-"Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec tous "
-"les détails possibles (y compris la pile d'exécution ci-dessous)."
 
 #: src/plm/core/model/tracking/GitSpy.java:168
 msgid "Pushing to the remote repository before exiting"
@@ -2931,6 +2919,17 @@ msgstr "Formes manquantes dans votre solution : \n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
+
+#, fuzzy
+#~| msgid ""
+#~| "You found a bug in the PLM. Please report it with all possible details "
+#~| "(including the stacktrace below)."
+#~ msgid ""
+#~ "You found a bug in the PLM. Please report it with all possible details "
+#~ "(including the stacktrace below"
+#~ msgstr ""
+#~ "Vous avez trouvé un bogue dans la PLM. Veuillez faire un rapport avec "
+#~ "tous les détails possibles (y compris la pile d'exécution ci-dessous)."
 
 #~ msgid ""
 #~ "Please write your suggestion here, with all necessary details\n"
