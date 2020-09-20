@@ -1,7 +1,10 @@
-20200920: 2.8.2
+20200920: 2.9
+
+  The Saved Session Release:
+    - Fix a bug preventing the user code from being saved on disk.
 
   * Core:
-    - Fix a bug preventing the user code from being saved on disk.
+    - Also distribute a all-in-one archive for Mac OSX.
   * Pedagogical content:
     - Introduce a new Ukrainian translation, thanks Yuri Chornoivan.
     - welcome/methods/returning:
