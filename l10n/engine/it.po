@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 17:40+0200\n"
+"POT-Creation-Date: 2020-09-20 15:15+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -329,7 +329,6 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopForEntity.java:8
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
-#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
 #: src/lessons/welcome/summative/MoriaEntity.java:10
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -348,7 +347,6 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopForEntity.java:13
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
-#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
 #: src/lessons/welcome/summative/MoriaEntity.java:15
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14

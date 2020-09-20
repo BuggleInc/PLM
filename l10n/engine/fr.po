@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 17:40+0200\n"
+"POT-Creation-Date: 2020-09-20 15:15+0200\n"
 "PO-Revision-Date: 2020-09-18 08:25+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"programmers-learning-machine/binary/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/programmers-"
+"learning-machine/binary/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -339,7 +339,6 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopForEntity.java:8
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
-#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
 #: src/lessons/welcome/summative/MoriaEntity.java:10
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
@@ -358,7 +357,6 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopForEntity.java:13
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
-#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
 #: src/lessons/welcome/summative/MoriaEntity.java:15
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
@@ -1228,8 +1226,8 @@ msgstr ""
 "<h2>La PLM est fière d'être du logiciel libre</h2>\n"
 "<p>Copyright (c) 2008-2017.<br/>\n"
 "L'équipe PLM : Martin Quinson, Gérald Oster et les autres.<br/>\n"
-"(référez vous aux logs git pour des informations précises sur les "
-"auteurs).</p>\n"
+"(référez vous aux logs git pour des informations précises sur les auteurs).</"
+"p>\n"
 "<p>Le logiciel de la PLM a été écrit en interne par l'équipe. Ce logiciel "
 "est distribué sous la licence générale GNU version 3 (GPLv3).</p>\n"
 "\n"
@@ -1248,8 +1246,8 @@ msgstr ""
 "libres suivantes : CC-BY-SA, GPL, LGPL et/ou domaine publique CC0. Ils ont "
 "été en partie réalisé par nos soins et en partie emprunté à d'autres "
 "collections libres. La licence spécifique et l'origine de chaque fichier "
-"sont données (en anglais) dans le fichier COPYING distribué avec "
-"l'archive.</p>"
+"sont données (en anglais) dans le fichier COPYING distribué avec l'archive.</"
+"p>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:150
 msgid "Copying"
