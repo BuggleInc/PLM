@@ -5,6 +5,9 @@
       - clarify in text how the learner's code is called automatically
       - allow backward(n). Parameters are introduced later, but loops
         are not the focus anymore at this point of the lesson.
+    o welcome/methods/slug/SlugTracking:
+      - clarify in text how the learner's code is called automatically
+      - Add wall on the first world also, to show what they are.
 
 20200601: 2.8.1
 
