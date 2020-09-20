@@ -1,11 +1,12 @@
 20200920: 2.8.2
 
   * Pedagogical content:
-    o welcome/methods/returning:
+    - Introduce a new Ukrainian translation, thanks Yuri Chornoivan.
+    - welcome/methods/returning:
       - clarify in text how the learner's code is called automatically
       - allow backward(n). Parameters are introduced later, but loops
         are not the focus anymore at this point of the lesson.
-    o welcome/methods/slug/SlugTracking:
+    - welcome/methods/slug/SlugTracking:
       - clarify in text how the learner's code is called automatically
       - Add wall on the first world also, to show what they are.
 
