@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 16:48+0200\n"
+"POT-Creation-Date: 2020-09-20 16:55+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -694,10 +694,10 @@ msgstr ""
 "Il linguaggio di programmazione predefinito è Scala ma la tua installazione "
 "di scala non è utilizzabile. Seleziona Java invece.\n"
 
-#: src/plm/core/model/Game.java:209
+#: src/plm/core/model/Game.java:209 src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below"
+"(including the stacktrace below)."
 msgstr ""
 
 #: src/plm/core/model/Game.java:235
@@ -1072,12 +1072,6 @@ msgstr ""
 #. System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
 #: src/plm/core/model/tracking/GitSpy.java:81
 msgid "Couldn't retrieve a corresponding session from the servers..."
-msgstr ""
-
-#: src/plm/core/model/tracking/GitSpy.java:90
-msgid ""
-"You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below)."
 msgstr ""
 
 #: src/plm/core/model/tracking/GitSpy.java:168
