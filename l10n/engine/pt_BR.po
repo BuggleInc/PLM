@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 16:48+0200\n"
+"POT-Creation-Date: 2020-09-20 16:55+0200\n"
 "PO-Revision-Date: 2016-11-06 21:57-0300\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian\n"
@@ -698,13 +698,13 @@ msgstr ""
 "A linguagem de programação padrão é C, mas sua instalação do C não funciona. "
 "Trocando para Java.\n"
 
-#: src/plm/core/model/Game.java:209
+#: src/plm/core/model/Game.java:209 src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below"
+"(including the stacktrace below)."
 msgstr ""
-"Você encontrou um erro (bug) no PLM. Favor relate isto com todos os detalhes "
-"possíveis (incluindo a stacktrace abaixo)"
+"Você encontrou um bug no PLM. Favor relatar isto com todos os datalhes "
+"possíveis (incluindo o stacktrace abaixo)."
 
 #: src/plm/core/model/Game.java:235
 #, java-format
@@ -1077,14 +1077,6 @@ msgstr "Sua sessão {0} foi automaticamente recuperada dos servidores."
 #: src/plm/core/model/tracking/GitSpy.java:81
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr "Não consegui recuperar uma sessão correspondente dos servidores..."
-
-#: src/plm/core/model/tracking/GitSpy.java:90
-msgid ""
-"You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below)."
-msgstr ""
-"Você encontrou um bug no PLM. Favor relatar isto com todos os datalhes "
-"possíveis (incluindo o stacktrace abaixo)."
 
 #: src/plm/core/model/tracking/GitSpy.java:168
 msgid "Pushing to the remote repository before exiting"
@@ -2848,6 +2840,13 @@ msgstr "Formas faltando em sua solução:\n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (tem {1} ao invés de {2})\n"
+
+#~ msgid ""
+#~ "You found a bug in the PLM. Please report it with all possible details "
+#~ "(including the stacktrace below"
+#~ msgstr ""
+#~ "Você encontrou um erro (bug) no PLM. Favor relate isto com todos os "
+#~ "detalhes possíveis (incluindo a stacktrace abaixo)"
 
 #~ msgid ""
 #~ "Please write your suggestion here, with all necessary details\n"
