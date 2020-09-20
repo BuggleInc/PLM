@@ -1,0 +1,98 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>The universe of turtles</h1>
+
+<p>This is an adaptation of LOGO for the Programmer's Learning Machine.</p>
+
+<p>It is directly inspired from the work of the mathematician Seymour Papert in
+the 60's. Inspired from the swiss psycholog Jean Piaget, he came up with a
+learning method called LOGO to teach programming to young childs. The world
+is full of turtles which leave a painting where they go and which respond to
+simple orders.</p>
+
+<h2>Functions to move the turtle</h2>
+
+<pre>[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])
+[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])</pre>
+Moves forward or backward of the requested amount of steps.
+
+<pre>[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])
+[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+Turns left or right of the given angle (in degrees).
+
+<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+Returns the current position of the turtle.  Note that the point (0,0) is on
+the top left corner, as it is often the case in Computer Science.  
+
+<pre>[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])
+[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])
+[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+Teleports the turtle to a new position (without leaving any trace).
+
+<pre>[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])</pre>
+Moves the turtle to a new position.
+
+<pre>[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])</pre>
+Draw a circle of the specified radius centered on the turtle.
+
+<pre>[!java|c]void [/!]hide()</pre>
+Hides the turtle.
+
+<pre>[!java|c]void [/!]show()</pre>
+Shows the turtle back.
+
+<pre>[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]</pre>
+Returns whether the turtle is currently visible.
+
+<pre>[!java|c]void [/!]clear()</pre>
+Removes any trail on the sheet.
+
+<pre>[!java|c]double [/!]getHeading()[!scala]:Double[/!]</pre>
+Returns the current heading of the turtle (in degrees).
+
+<pre>[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])</pre>
+Sets a new heading to the turtle (in degrees).
+
+<h2>Functions about the pen</h2>
+
+<pre>[!java|c]void [/!]penUp()</pre>
+Moves the pen up (turtles have pens, not brushes as buggles). The turtle
+will not leave any trace during its subsequent moves.
+
+<pre>[!java|c]void [/!]penDown()</pre>
+Moves the pen down. The turtle will leave a trace during its subsequent
+moves.
+
+<pre>[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]</pre>
+Returns the current pen position as a boolean.
+
+<pre>[!java|c]Color [/!]getColor()[!scala]:Color[/!]</pre>
+Returns the current pen color.
+
+<pre>[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])</pre>
+Changes the pen color.
+
+<h2>Інші функції</h2>
+
+<pre>[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</pre>
+Returns whether the current turtle is selected in the graphical interface.
+
+<h2>Valid colors</h2>
+<table border=1>
+<tr><td>Назва</td><td>Колір</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+<tr><td>[!scala|java|python]Color.[/!]yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
+</table>
+

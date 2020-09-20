@@ -1,0 +1,78 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Turmites</h2>
+
+<p>This exercise explores a new way to extend the concept of Langton's
+ant. Now, the behavior of the ant not only depends on the color on the
+ground, but also on its internal state (represented by an integer
+value). The idea of changing the ant into such an automata naturally comes
+from the Turing machine concept. This explains the name of these new
+animals, which is a portemanteau of <i>Turing</i> and <i>Termite</i> (if you
+don't know what a Turing machine is, you should run to wikipedia, because it
+is simply impossible to be a real computer scientist before that).</p>     
+
+<p>Once again, you just have to write the <code>step()</code> method, in charge
+of doing one turmite's step. Once again, you should first find the rank of
+the current's cell ground color in the color sequence. But this time, the
+<code>rule</code> data depends both on the current color and the current
+state.  <code>rule</code> actually contains 3 information in each situation:
+the color to write, the move to do, and the next state value. For example,
+[!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the informations
+to use when <code>state==1</code> and <code>color==0</code>.  In other
+worlds, you can retrieve the information relative to your current situation
+by using
+<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>.</p> 
+
+<p>Each such information set contains 3 values. The first one is the rank of
+the color to write on the ground. The second is the move to do, with the
+following notation: 0=stop, 1=noturn, 2=left, 4=u-turn, 8=right. Note that
+if the command is stop, you shouldn't even move forward on that step (but
+you shouldn't stop your program either: the next steps can do something else
+in a future state). Finally, the third integer is the next
+<code>state</code> value to go into after this iteration.</p> 
+
+<p>Since these arbitrary notations are somehow difficult to remember, you
+should define a set of constants that you should use instead of the direct
+numerical values.  Their names could be NOTURN, LEFT, RIGHT and so on.
+[!scala]Just declare them using the keyword <code>val</code> instead of
+<code>var</code>.  You should always use <code>val</code> instead of
+<code>var</code> when possible anyway.[/!] [!java]The modifiers <code>final
+static</code> before their type is the way to mark variables as constant in
+Java.  You should write for example <code>static final int NOTURN=1;</code>
+Sorry for the complexity of this notation. [/!] [!python]By convention, such
+constant variables are written in upper case in python.  Technically, you
+can still modify them, but that would be a very bad idea.[/!] You should
+write them out of any method so that they are globally visible.</p>
+
+<p>Using such constants greatly help making the code easier to read. Compare
+the next two code chunks:</p> 
+
+<pre>[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]
+    left()[!java];[/!]
+[!java|scala]}[/!]</pre>
+<p>This is much more easier to read (although longer) than the following:</p>
+<pre>[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]
+    left()[!java];[/!]
+[!java|scala]}[/!]</pre>
+ 
+[!python]<p>Finally, you probably want to write a <code>elif</code> branch for the
+<code>STOP</code> condition too. Having a <code>else</code> branch
+displaying an error message such as "unknown case" is a good practice: it
+makes your assumptions about your code more explicit, and you will get an
+error message if they fall short. When doing so, the next problem is that
+you have nothing to do in the <code>STOP</code> case, but python do not
+allows you to write empty <code>elif</code> branches. You should use the
+<code>pass</code> instruction as a placeholder: it says python that you have
+a branch here, and that it does not contain anything.</p>[/!] [!java|scala]<p>You should probably use a [!java]switch case[/!][!scala]pattern matching[/!]
+construct to keep your code readable.  If you can't remember what it is,
+check <a href="plm://lessons.welcome/bdr.BDR2">this exercise</a>.</p>[/!]
+
+<p>You now should have enough information to succeed.</p>
+
+<h2>Bibliographical notes</h2>
+<p>According to wikipedia, turmites were invented independently by the end of
+the eighties. It has been shown that turmites in general are exactly
+equivalent in power to one-dimensional Turing machines with an infinite
+tape, as either can simulate the other. This means that absolutely any
+program that you can think of could theoretically be computed on this
+device...</p>
