@@ -1,5 +1,7 @@
 20200920: 2.8.2
 
+  * Core:
+    - Fix a bug preventing the user code from being saved on disk.
   * Pedagogical content:
     - Introduce a new Ukrainian translation, thanks Yuri Chornoivan.
     - welcome/methods/returning:
