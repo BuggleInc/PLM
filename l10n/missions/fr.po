@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2020-09-25 12:13+0200\n"
-"PO-Revision-Date: 2020-09-20 15:26+0000\n"
+"PO-Revision-Date: 2020-09-25 10:28+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/programmers-"
-"learning-machine/missions/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"programmers-learning-machine/missions/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12978,12 +12978,17 @@ msgid ""
 "switch to other worlds). For example, the \"Square Pyramid\" world will call "
 "your function as follows:"
 msgstr ""
+"Notez que vous n'avez que cette fonction à écrire, pas l'appel initial. "
+"Chaque monde fournira un ensemble spécifique de paramètres pour votre "
+"fonction. Utilisez le combobox en haut à droite pour voir les autres mondes. "
+"Par exemple, le monde \"Pyramide carrée\" appellera votre fonction de la "
+"manière suivante :"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/spiral/Spiral.html:36
 #, no-wrap
 msgid "spiral(100, 90, 0, 3);\n"
-msgstr ""
+msgstr "spiral(100, 90, 0, 3);\n"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:2
