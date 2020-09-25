@@ -1,5 +1,7 @@
 20200925: 2.9.1 (unreleased)
 
+  * Core:
+    - Introduce a new Portuguese translation, thanks to ssantos.
   * Pedagogical content:
     - recursion/lego/spiral:
       - clarify in text how the learner's code is called automatically
