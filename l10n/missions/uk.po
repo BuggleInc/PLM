@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-09-25 12:13+0200\n"
+"POT-Creation-Date: 2020-09-25 22:29+0200\n"
 "PO-Revision-Date: 2020-09-13 05:36+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/programmers-"
@@ -1005,6 +1005,21 @@ msgid ""
 "communication abilities, but it's not mean. If you look closer, the solution "
 "to solve your issue is written somewhere in those cryptic messages. You will "
 "see, with a bit of habit, we get used to it."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/environment/Environment.html:36
+msgid "But that's [!thelang]!"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/environment/Environment.html:37
+msgid ""
+"Currently, the PLM is configured to accept [!thelang] programs, but it can "
+"also accept [!java]Python or Scala[/!][!scala]Java or Python[/!][!"
+"python]Java or Scala[/!] programs.  Either click on the language icon at the "
+"very bottom right of the window, or head to the <tt>Language/Computer</tt> "
+"menu item to change it."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
