@@ -7,11 +7,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2020-09-20 15:30+0200\n"
+"POT-Creation-Date: 2020-09-25 12:13+0200\n"
 "PO-Revision-Date: 2020-09-20 15:26+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"programmers-learning-machine/missions/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/programmers-"
+"learning-machine/missions/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5854,12 +5854,12 @@ msgid ""
 msgstr ""
 "Pour arriver au résultat, vous devez écrire la méthode "
 "<code>isFacingTrail()</code>, qui sera appelée automatiquement par la buggle "
-"à chaque pas. Votre méthode doit renvoyer "
-"[!python]True[/!][!java|scala]true[/!] (vrai) si on est face à une case "
-"verte, ou [!python]False[/!][!java|scala]false[/!] (faux) sinon. Bien sûr, "
-"si on est face à un mur, elle doit répondre faux sans se cogner. Il faut de "
-"plus que cette méthode soit <b>sans effet de bord</b>, c'est-à-dire qu'elle "
-"ne modifie ni la buggle qui l'appelle, ni le monde environnant."
+"à chaque pas. Votre méthode doit renvoyer [!python]True[/!][!java|"
+"scala]true[/!] (vrai) si on est face à une case verte, ou [!python]False[/!]"
+"[!java|scala]false[/!] (faux) sinon. Bien sûr, si on est face à un mur, elle "
+"doit répondre faux sans se cogner. Il faut de plus que cette méthode soit "
+"<b>sans effet de bord</b>, c'est-à-dire qu'elle ne modifie ni la buggle qui "
+"l'appelle, ni le monde environnant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:14
@@ -12969,6 +12969,21 @@ msgstr ""
 "          avance(12);\n"
 "          gauche(90);\n"
 "          spiral(0,90,12,3);\n"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/lego/spiral/Spiral.html:30
+msgid ""
+"Note that you only have to write the function, not the initial call.  Each "
+"world will provide a specific set of initial parameters (use the combobox to "
+"switch to other worlds). For example, the \"Square Pyramid\" world will call "
+"your function as follows:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/lego/spiral/Spiral.html:36
+#, no-wrap
+msgid "spiral(100, 90, 0, 3);\n"
+msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:2
