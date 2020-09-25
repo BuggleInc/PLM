@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-09-20 15:30+0200\n"
+"POT-Creation-Date: 2020-09-25 12:13+0200\n"
 "PO-Revision-Date: 2020-09-13 05:36+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/programmers-"
@@ -9596,6 +9596,21 @@ msgid ""
 "          forward(12);\n"
 "          left(90);\n"
 "          spiral(0,90,12,3);\n"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/lego/spiral/Spiral.html:30
+msgid ""
+"Note that you only have to write the function, not the initial call.  Each "
+"world will provide a specific set of initial parameters (use the combobox to "
+"switch to other worlds). For example, the \"Square Pyramid\" world will call "
+"your function as follows:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/lego/spiral/Spiral.html:36
+#, no-wrap
+msgid "spiral(100, 90, 0, 3);\n"
 msgstr ""
 
 #. type: Content of: <h2>
