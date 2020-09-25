@@ -5,6 +5,7 @@ keystore.properties
 *~
 lib/jython/cachedir
 lib/cachedir/
+lib/plm-messages.jar
 *.mo
 .DS_Store
 .cache
