@@ -7,11 +7,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2020-09-25 12:13+0200\n"
+"POT-Creation-Date: 2020-09-25 22:29+0200\n"
 "PO-Revision-Date: 2020-09-25 10:28+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"programmers-learning-machine/missions/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/programmers-"
+"learning-machine/missions/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1091,6 +1091,23 @@ msgstr ""
 "de plus près, la solution pour corriger les problèmes est inscrite dans ces "
 "messages cryptiques. Vous verrez, avec un peu d'entraînement, vous vous y "
 "habituerez."
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/environment/Environment.html:36
+#, fuzzy
+#| msgid "Data in [!thelang]"
+msgid "But that's [!thelang]!"
+msgstr "Les données en [!thelang]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/environment/Environment.html:37
+msgid ""
+"Currently, the PLM is configured to accept [!thelang] programs, but it can "
+"also accept [!java]Python or Scala[/!][!scala]Java or Python[/!][!"
+"python]Java or Scala[/!] programs.  Either click on the language icon at the "
+"very bottom right of the window, or head to the <tt>Language/Computer</tt> "
+"menu item to change it."
+msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:4
