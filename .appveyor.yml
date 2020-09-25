@@ -39,12 +39,14 @@ cache:
 
 build_script:
   - C:\apache-ant-1.10.8\bin\ant dist
-  - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm-map-editor --mainclass plm.core.ui.editor.buggleeditor.MapEditorApp
+  - java -jar c:\packr.jar --output plm-editor-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm-map-editor --mainclass plm.core.ui.editor.buggleeditor.MapEditorApp
   - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform windows64 --jdk c:\java-1.8.0-openjdk-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine 
+  - cp plm-editor-%PLM_VERSION%/plm-map-editor.exe
   - 7z a plm-windows-%PLM_VERSION%.zip plm-%PLM_VERSION%
   - rd /s /q plm-%PLM_VERSION% # remove that directory
-  - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform mac --jdk C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip --executable plm-map-editor --mainclass plm.core.ui.editor.buggleeditor.MapEditorApp
+  - java -jar c:\packr.jar --output plm-editor-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform mac --jdk C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip --executable plm-map-editor --mainclass plm.core.ui.editor.buggleeditor.MapEditorApp
   - java -jar c:\packr.jar --output plm-%PLM_VERSION% --classpath dist\plm-%PLM_VERSION%*.jar --verbose --platform mac --jdk C:\OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.zip --executable plm --mainclass plm.core.ui.ProgrammersLearningMachine
+  - cp plm-editor-%PLM_VERSION%/Contents/MacOS/plm-map-editor plm-%PLM_VERSION%/Contents/MacOS/plm-map-editor
   - 7z a plm-mac-%PLM_VERSION%.zip plm-%PLM_VERSION%
 
 artifacts:
