@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2020-09-25 22:29+0200\n"
-"PO-Revision-Date: 2020-09-27 23:41+0000\n"
+"PO-Revision-Date: 2020-10-01 18:40+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "programmers-learning-machine/missions/pt/>\n"
@@ -2179,7 +2179,7 @@ msgid ""
 "Variables work very similarly for strings, floating point numbers and "
 "boolean values."
 msgstr ""
-"Variáveis funcionam muito parecido com strings, números com vírgula e "
+"Variáveis funcionam muito parecido com cadeias, números com vírgula e "
 "valores booleanos."
 
 #. type: Content of: <pre>
@@ -2205,7 +2205,7 @@ msgid ""
 "boolean married=true;<span class=\"comment\">// the contrary would be "
 "written \"false\"</span>"
 msgstr ""
-"String nome = \"Martin Quinson\";\n"
+"Cadeia nome = \"Martin Quinson\";\n"
 "double altura=1.77; <span class=\"comment\">// em metros</span>\n"
 "boolean casado=true;<span class=\"comment\">// o contrário se escreve \"false"
 "\"</span>"
@@ -2295,7 +2295,7 @@ msgstr ""
 "x = 3 * x[!java|c];[/!]\n"
 "[!java|scala|python]saudação = \"Oi \"+nome[!java];[/!] <span class=\"comment"
 "\">[!python]#[/!][!scala|java]//[/!] + é (também) a operação para concatenar "
-"(ie, para juntar) strings[/!]</span>"
+"(ie, para juntar) cadeias[/!]</span>"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:120
@@ -2390,7 +2390,7 @@ msgstr ""
 "operador <code>++</code> para incrementar a variável, mas isto não é "
 "permitido em [!thelang].  Isto é por que seria difícil definir este operador "
 "para todos os tipos de dados.  Por exemplo, o que faria ++ quando aplicado a "
-"um valor complexo ou a uma String? O problema não ocorre em Java pois "
+"um valor complexo ou a uma cadeia? O problema não ocorre em Java pois "
 "<code>int</code> não é um objeto e sim um tipo primitivo.  (se não conhece o "
 "<code>++</code>, simplesmente ignore este parágrafo: ele não existe em "
 "[!thelang])"
@@ -3337,7 +3337,7 @@ msgstr ""
 "da lista T,[/!] a permitir que se construa um loop clássico facilmente.  "
 "[!python]Na verdade, a função <code>len()</code> é muito mais genérica e "
 "pode ser usada para recuperar o comprimento de muitos objetos. Aplicada numa "
-"string, por exemplo, ela retorna a quantidade de caracteres na string.[/!] "
+"cadeia, por exemplo, ela retorna a quantidade de caracteres na cadeia.[/!] "
 "[!scala]Não se esqueça de começar em <code>0</code> e terminar em <code>T."
 "length-1</code> ao invés de ir de <code>1</code> até <code>T."
 "length</code>.[/!]"
@@ -3907,7 +3907,7 @@ msgstr ""
 "<code>readMessage()</code> obtém a mensagem no chão como uma "
 "[!java|scala]String[/!][!python]string[/!], enquanto <code>[!java]Integer."
 "parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> "
-"transforma a string <code>str</code> num inteiro ao <i>ler</i> ela."
+"transforma a cadeia <code>str</code> num inteiro ao <i>ler</i> ela."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:23
@@ -4643,10 +4643,9 @@ msgstr ""
 "exatamente antes do método que documentam para a ferramenta encontrá-los.[/!]"
 " [!python]comentários pydoc devem ser postos no começo do corpo do método de "
 "forma que a ferramenta possa encontrá-los. Eles devem ser postos entre <code>"
-"\"\"\"</code>, que marcam strings multilinhas em python.[/!] A primeira "
-"linha deve ser uma breve descrição do que o método faz enquanto que as "
-"linhas subsequentes devem fornecer qualquer detalhes importantes sobre o "
-"método."
+"\"\"\"</code>, que marcam cadeias multilinhas em python.[/!] A primeira "
+"linha deve ser uma breve descrição do que o método faz enquanto as linhas "
+"subsequentes devem fornecer qualquer detalhes importantes sobre o método."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/Methods.html:59
@@ -6193,8 +6192,8 @@ msgid ""
 "string if nothing is written)."
 msgstr ""
 "<code>[!c]char*[/!][!java]String[/!] lerMensagem()[!scala]: "
-"String[/!]</code>: retorna a mensagem lida no chão (ou uma string vazia se "
-"não há nada escrito )."
+"String[/!]</code>: retorna a mensagem lida no chão (ou uma cadeias vazia se "
+"não há nada escrito)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/bdr/BDR.html:144
@@ -6438,12 +6437,12 @@ msgid ""
 "is written down). It enables to work with chars instead of strings, that is "
 "much simpler in [!thelang]."
 msgstr ""
-"Outro detalhe é que detetar se strings são iguais é um pouco chato em Java. "
+"Outro detalhe é que detetar se cadeias são iguais é um pouco chato em Java. "
 "Então, usamos o <code>char getIndication[!c]Bdr[/!]()</code> ao invés do "
 "<code>[!java]String[/!][!c]char*[/!] lerMensagem()</code>. Este método, "
 "conhecido apenas pelos buggles deste exercício, retorna o primeiro caractere "
 "da mensagem escrita no chão (ou ' ' -- o caractere para espaço -- se não tem "
-"nada escrito). Ele ativa que se trabalhe com caracteres ao invés de strings, "
+"nada escrito). Ele ativa que se trabalhe com caracteres ao invés de cadeias, "
 "que é muito mais simples em [!thelang]."
 
 #. type: Content of: <h3>
@@ -11578,7 +11577,7 @@ msgid ""
 msgstr ""
 "Este mundo permite que experimente com listas recursivas, pois ele foi "
 "introduzido primeiro em Lisp. É muito similar ao BatWorld, mas deve escrever "
-"funções recursivas que funcionem em [!python|java]strings recursivas. pois "
+"funções recursivas que funcionem em [!python|java]cadeias recursivas. pois "
 "[!thelang] não fornece tal contrução nativamente, o ConsWorld define listas "
 "recursivas do tipo <code>RecList</code>.[/!] [!scala]listas de inteiros "
 "(<code>List[Int]</code>).[/!]"
@@ -15781,12 +15780,12 @@ msgid ""
 "divisible by five with the word \"Buzz\". Any number that is divisible by "
 "both three and five is replaced with the string \"Fizz Buzz\"."
 msgstr ""
-"De acordo com a Wikipedia, Fizz buzz é um jogo de \"group word\" para\n"
-"crianças para ensinar divisão. Os jogadores jogam em turnos numéricos\n"
-"que vão a aumentar, a substituir qualquer número divisível por três\n"
-"com a palavra \"Fizz\" e qualquer número divisível por cinco com a\n"
-"palavra \"Buzz\". Qualquer número que é divisível tanto por 3 quanto por\n"
-"5 é substituído pela palavra \"Fizz Buzz\"."
+"De acordo com a Wikipedia, Fizz buzz é um jogo de \"group word\" para "
+"crianças para ensinar divisão.  Os jogadores jogam em turnos numéricos que "
+"vão a aumentar, a substituir qualquer número divisível por três com a "
+"palavra \"Fizz\" e qualquer número divisível por cinco com a palavra \"Buzz\""
+". Qualquer número que é divisível tanto por 3 quanto por 5 é substituído "
+"pela cadeia \"Fizz Buzz\"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:8
@@ -15796,11 +15795,10 @@ msgid ""
 "[!python]The function <code>str(a)</code> changes an integer <code>a</code> "
 "into a string.[/!]"
 msgstr ""
-"números que não são substituídos são simplesmente retornados como uma\n"
-"string.  [!java|scala]O eito mais fácil é usar esta construção em\n"
-"[!thelang]: <code>\"\"+a</code>[/!] [!python]A função\n"
-"<code>str(a)</code> transforma um inteiro <code>a</code> numa\n"
-"string.[/!]"
+"números que não são substituídos são simplesmente retornados como uma "
+"cadeia  [!java|scala]O eito mais fácil é usar esta construção em [!thelang]: "
+"<code>\"\"+a</code>[/!] [!python]A função <code>str(a)</code> transforma um "
+"inteiro <code>a</code> numa cadeia.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:2
@@ -16093,7 +16091,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/Main.html:2
 msgid "String fun"
-msgstr "Diversão com Strings"
+msgstr "Diversão com cadeias"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:4
@@ -16101,9 +16099,8 @@ msgid ""
 "Strings are the simplest of the complex data types :) They provide several "
 "operations, such as getting the length of the string, or a substring of it."
 msgstr ""
-"Strings são os mais simples dos tipos de dados complexos :) Elas\n"
-"fornecem diferentes operações, como obter o tamanho da string ou uma\n"
-"sub-string."
+"Cadeias são os mais simples dos tipos de dados complexos :) Elas fornecem "
+"diferentes operações, como obter o tamanho da cadeia ou uma sub-cadeia."
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
@@ -16111,13 +16108,13 @@ msgid ""
 "A very good introduction to this type is available here: "
 "http://codingbat.com/doc/java-string-introduction.html"
 msgstr ""
-"Uma introdução muito boa a este tipo encontra-se em:\n"
-"http://codingbat.com/doc/java-string-introduction.html"
+"Uma introdução muito boa a este tipo encontra-se em: http://codingbat.com/"
+"doc/java-string-introduction.html"
 
 #. type: Content of: <h3>
 #: src/lessons/bat/string1/short_desc.html:2
 msgid "Small exercises about strings"
-msgstr "Pequenos exercícios com strings"
+msgstr "Pequenos exercícios com cadeias"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/short_desc.html:4
@@ -16125,8 +16122,8 @@ msgid ""
 "These are some training exercises around strings. But unfortunately, its "
 "integration within PLM is still ongoing."
 msgstr ""
-"Aqui estão alguns exercícios sobre strings. Mas infelizmente, a\n"
-"integração dele no PLM ainda está a ser construída."
+"Aqui estão alguns exercícios sobre cadeias. Mas infelizmente, a integração "
+"dele no PLM ainda está a ser construída."
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/short_desc.html:7
@@ -16144,7 +16141,7 @@ msgid ""
 "Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 "
 "... so \"kittens\" yields \"kien\"."
 msgstr ""
-"Dada uma string, retorne outra string feita com os caracteres de índices "
+"Dada uma cadeia, retorne outra cadeia feita com os caracteres de índices "
 "0,1, 4,5, 8,9 ... por exemplo \"kittens\" retorna \"kien\"."
 
 #. type: Content of: <h1>
@@ -16176,10 +16173,10 @@ msgid ""
 "as a substring of the string. So \"hixxxhi\" yields 1 (we won't count the "
 "end substring) while \"aaaNaa\" yields 2 (substrings may overlap)."
 msgstr ""
-"Dada uma string, retorne a quantidade de vezes que os dois últimos dígitos\n"
-"aparecem. Por exemplo, \"hixxxhi\" retorna 1 (não contamos a última\n"
-"sub-string) enquanto que \"aaaNaa\" retorna 2 (as ocorrências podem se\n"
-"sobrepor parcialmente)."
+"Dada uma cadeia retorne a quantidade de vezes que os dois últimos dígitos "
+"aparecem como uma sub-cadeia. Assim, \"hixxxhi\" retorna 1 (não contamos a "
+"última sub-cadeia) enquanto \"aaaNaa\" retorna 2 (as ocorrências podem "
+"sobrepor-se parcialmente)."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringBits.html:2
@@ -16192,14 +16189,14 @@ msgid ""
 "Given a string, return a new string made of every other char starting with "
 "the first, so \"Hello\" yields \"Hlo\"."
 msgstr ""
-"Dada uma string, retorne uma nova string formada a escolher um caractere\n"
-"sim, outro não, a começar com o primeiro. Assim, \"Primeiro\" se torna\n"
-"\"Pier\"."
+"Dada uma cadeia, retorne uma nova cadeia formada a escolher um caractere "
+"sim, outro não, a começar com o primeiro. Assim, \"Primeiro\" torna-se \"Pier"
+"\"."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringMatch.html:2
 msgid "StringMatch"
-msgstr "Comparação de string"
+msgstr "Comparação de cadeia"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringMatch.html:3
@@ -16209,27 +16206,27 @@ msgid ""
 "since the \"xx\", \"aa\", and \"az\" substrings appear in the same place in "
 "both strings."
 msgstr ""
-"Sejam duas strings a e b.\n"
-"Retorne a quantidade de posições onde elas contém a mesma substring de\n"
-"tamanho 2. Assim, \"xxcaazz\" e \"xxbaaz\" retornam 3, pois as substrings\n"
-"\"xx\", \"aa\" e \"az\" aparecem nas mesmas posições nas duas strings."
+"Sejam duas cadeia a e b, retorne a quantidade de posições onde elas contêm a "
+"mesma subcadeia de tamanho 2. Assim, \"xxcaazz\" e \"xxbaaz\" retornam 3, "
+"pois as subcadeias \"xx\", \"aa\" e \"az\" aparecem nas mesmas posições nas "
+"duas cadeias."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringSplosion.html:2
 msgid "StringSplosion"
-msgstr "Explosão de strings"
+msgstr "Explosão de cadeias"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringSplosion.html:3
 msgid "Given a non-empty string like \"Code\" return a string like \"CCoCodCode\"."
 msgstr ""
-"Dada uma string não vazia como \"Code\".\n"
-"Retorne uma string como \"CCoCodCode\"."
+"Dada uma cadeia não vazia como \"Code\" retorna uma cadeia como \"CCoCodCode"
+"\"."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringTimes.html:2
 msgid "StringTimes"
-msgstr "Multiplicação de strings"
+msgstr "Multiplicação de cadeias"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringTimes.html:3
@@ -16237,8 +16234,8 @@ msgid ""
 "Given a string and a non-negative int n, return a larger string that is n "
 "copies of the original string."
 msgstr ""
-"Dada uma string e um inteiro positivo n.\n"
-"Retorne uma string mais que consiste em n cópias da string original."
+"Dada uma cadeia e um inteiro positivo retorna uma cadeia mais comprida que "
+"consiste em n cópias da cadeia original."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringX.html:2
@@ -16251,7 +16248,7 @@ msgid ""
 "Given a string, return a version where all the \"x\" have been "
 "removed. Except an \"x\" at the very start or end should not be removed."
 msgstr ""
-"Dada uma string, retorne uma versão onde todos os \"x\" são removidos.\n"
+"Dada uma cadeia, retorne uma versão onde todos os \"x\" são removidos. "
 "Exceto os \"x\" no começo e no final que devem permanecer."
 
 #. type: Content of: <h1>
@@ -16266,9 +16263,9 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The "
 "\"yak\" strings will not overlap."
 msgstr ""
-"A string \"yak\" não tem sorte. Dada uma stringd, retorne uma versão\n"
-"onde todas as \"yak\" são suprimidas (qualquer que seja o caractere no\n"
-"lugar do 'a'). As diferentes strings \"yak\" não se sobrepõe."
+"A string \"yak\" não tem sorte. Dada uma cadeia, retorna uma versão onde "
+"todas as \"yak\" são removidas (qualquer que seja o caractere no lugar do "
+"'a'). As diferentes cadeias \"yak\" não se sobrepõem."
 
 #. type: Content of: <h2>
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
