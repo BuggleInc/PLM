@@ -6,13 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2020-09-25 22:29+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-10-06 07:43+0000\n"
+"Last-Translator: Kristoffer Grundström <lovaren@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/"
+"programmers-learning-machine/missions/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -36,7 +39,7 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:10
 msgid "<b>Moving</b>"
-msgstr ""
+msgstr "<b>Flyttar</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:10
@@ -47,49 +50,49 @@ msgstr ""
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "<b>Turn left"
-msgstr ""
+msgstr "<b>Sväng vänster"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn right"
-msgstr ""
+msgstr "Sväng höger"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn back"
-msgstr ""
+msgstr "Kör tillbaka"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving forward"
-msgstr ""
+msgstr "Kör framåt"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving back</b>"
-msgstr ""
+msgstr "Backar</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:12
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]left()"
-msgstr ""
+msgstr "[!java|c]void [/!]vänster()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:13
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]right()"
-msgstr ""
+msgstr "[!java|c]void [/!]höger()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:14
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]back()"
-msgstr ""
+msgstr "[!java|c]void [/!]backa()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:15
@@ -113,7 +116,7 @@ msgstr ""
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "Get Y coordinate"
-msgstr ""
+msgstr "Hämta Y-koordinat"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
@@ -128,7 +131,7 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "Set position</b>"
-msgstr ""
+msgstr "Ställ in plats</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:18
