@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-20 17:03+0200\n"
-"PO-Revision-Date: 2020-09-24 21:40+0000\n"
+"PO-Revision-Date: 2020-10-11 16:51+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "programmers-learning-machine/binary/pt/>\n"
@@ -403,8 +403,8 @@ msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
 msgstr ""
-"Desculpe Dave, não posso deixá-lo usar direita() neste exercício. Use "
-"esquerda() ao invés disto."
+"Desculpe Dave, não posso deixá-lo usar right() neste exercício. Use left() "
+"ao invés disto."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
 #, java-format
@@ -412,8 +412,8 @@ msgid ""
 "Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
 "exercise. You can write left() only once in this exercise."
 msgstr ""
-"Desculpe Dave, não posso deixá-lo usar esquerda() em ambas as linhas {0} e "
-"{1} neste exercício. Pode escrever esquerda() apenas uma vez neste exercício."
+"Desculpe Dave, não posso deixá-lo usar left() em ambas as linhas {0} e {1} "
+"neste exercício. Pode escrever left() apenas uma vez neste exercício."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:42
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:47
@@ -427,7 +427,7 @@ msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
 msgstr ""
-"Desculpe Dave, não posso deixá usar avançar() neste exercício. Use "
+"Desculpe Dave, não o posso deixar usar forward() neste exercício. Use "
 "setPos(x,y) ao invés disto."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:51
@@ -442,7 +442,7 @@ msgid ""
 "Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
 "y) instead."
 msgstr ""
-"Desculpe Dave, não posso deixá-lo usar recuar() neste exercício. Use "
+"Desculpe Dave, não o posso deixar usar backward() neste exercício. Use "
 "setPos(x,y) ao invés disto."
 
 #: src/plm/core/lang/JVMCompiledLang.java:53
@@ -466,7 +466,7 @@ msgstr ""
 "\n"
 "Este problema normalmente acontece quando o exercício espera que ponha todo "
 "o código dentro \n"
-"de um método e.g. executar(), mas põe algumas declarações (p.ex. avançar()) "
+"de um método e.g. executar(), mas põe algumas declarações (p.ex. forward()) "
 "fora de qualquer método.\n"
 "\n"
 "A solução mais fácil para consertar isto é copiar todo o seu código (Ctrl-A "
@@ -2358,16 +2358,16 @@ msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
 msgstr ""
-"Desculpe Dave, não posso deixá-lo usar abaixarCaneta() aqui. Os Buggles tem "
-"pinceis, não canetas. Tente usar abaixarPincel()."
+"Desculpe Dave, não posso deixá-lo usar penDown() aqui. Os Buggles tem "
+"pinceis, não canetas. Tente usar brushDown()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:99
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
-"Desculpe Dave, não posso deixá-lo usar levantarCaneta() aqui. Os buggles tem "
-"pinceis, não canetas. Tente usar levantarPincel()."
+"Desculpe Dave, não posso deixá-lo usar penUp() aqui. Os buggles tem pinceis, "
+"não canetas. Tente usar brushUp()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:175
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2376,8 +2376,8 @@ msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixá-lo usar Esquerda(x) com uma maiúscula. Ao "
-"invés disto, use esquerda()."
+"Desculpe Dave, mas não posso deixá-lo usar Left(x) com uma maiúscula. Ao "
+"invés disto, use left()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:178
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
@@ -2386,8 +2386,8 @@ msgid ""
 "Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
 "instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixá-lo usar Direita() com uma maiúscula. Em "
-"vez disto, use direita()."
+"Desculpe Dave, mas não posso deixá-lo usar Right() com uma maiúscula. Em vez "
+"disto, use right()."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:198
 #, java-format
@@ -2652,7 +2652,7 @@ msgstr "avançar"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:64
 msgid "forward()"
-msgstr "avançar()"
+msgstr "forward()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:75
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:231
@@ -2661,7 +2661,7 @@ msgstr "recuar"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:80
 msgid "backward()"
-msgstr "recuar()"
+msgstr "backward()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:91
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:233
@@ -2670,7 +2670,7 @@ msgstr "esquerda"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:95
 msgid "left()"
-msgstr "esquerda()"
+msgstr "left()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:101
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:234
@@ -2679,7 +2679,7 @@ msgstr "direita"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:105
 msgid "right()"
-msgstr "direita()"
+msgstr "right()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:111
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:235
@@ -2688,11 +2688,11 @@ msgstr "marcar"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:117
 msgid "brushUp()"
-msgstr "levantarPincel()"
+msgstr "brushUp()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:120
 msgid "brushDown()"
-msgstr "abaixarPincel()"
+msgstr "brushDown()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:146
 #, java-format
@@ -2806,16 +2806,16 @@ msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixá-lo usar abaixarPincel() aqui. Tartarugas "
-"tem canetas, não pinceis. Use abaixarCaneta() ao invés disto."
+"Desculpe Dave, mas não posso deixá-lo usar brushDown() aqui. Tartarugas tem "
+"canetas, não pinceis. Use penDown() ao invés disto."
 
 #: src/plm/universe/turtles/Turtle.java:228
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
 msgstr ""
-"Desculpe Dave, mas não posso deixá-lo usar levantarPincel() aqui. Tartarugas "
-"tem canetas, não pinceis. Use levantarCaneta() ao invés disto."
+"Desculpe Dave, mas não posso deixá-lo usar brushUp() aqui. Tartarugas tem "
+"canetas, não pinceis. Use penUp() ao invés disto."
 
 #: src/plm/universe/turtles/Turtle.java:409
 #, java-format
