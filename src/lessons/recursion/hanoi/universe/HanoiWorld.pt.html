@@ -1,0 +1,29 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>HanoiWorld</h1>
+
+<p>
+Este mundo implementa o problema ultra clássico das torres de Hanói. Deve
+mover a pilha de discos da pilha onde eles estão para outra pilha (dado um
+segundo parâmetro no nome do mundo -- número 1 para o mundo
+predefinido). Existem algumas restrições adicionais: pode mover apenas um
+disco por vez e não pode pôr um disco sobre um menor.</p>
+
+<p>Apenas 4 funções são fornecidas:</p>
+
+<pre>[!java|c]void [/!]mover([!java|c]int [/!]src, [!java|c]int [/!]dst)</pre>
+
+Move um disco da vara <code>src</code> para a vara <code>dst</code>. Se
+tentar fazer um movimento inválido (como pôr um disco sobre outro menor),
+uma IllegalArgumentException é lançada. 
+
+<pre>[!java|c]int [/!]getTamanhoSlot([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
+Retorna a quantidade de discos postos num ponto específico. É usado
+principalmente para inicializar a recursão e ajustar a quantidade de
+chamadas recursivas para executar.
+
+<pre>[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
+Retorna o raio do disco no topo da vara especificada.
+
+<pre>[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</pre>
+Retorna true se o mundo atual está selecionado na interface gráfica.

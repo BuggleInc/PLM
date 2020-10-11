@@ -1,0 +1,124 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Métodos</h2>
+
+<p>
+Vamos agora escrever nossos próprios métodos. Isto é como extender o
+vocabulário do buggle a ensinar novos truques. 
+</p>
+<p>Por exemplo, vimos num exercício anterior como pedir ao buggle para apanhar
+o baggle à frente dele e trazê-lo de volta. Se existem vários baggles no
+tabuleiro e se queremos trazê-los todos à linha de baixo, tem que repetir
+este código várias vezes, ou incluí-lo num loop. Em qualquer caso, deve
+evitar duplicar o seu código para mantê-lo agradável de ler e fácil de
+entender. Será melhor se o buggle puder obedecer uma ordem
+<code>goAndGet()()</code> assim como entende uma
+<code>[!c]stepForward()[/!][!scala|java|python]forward()[/!]</code>.</p>
+
+<h3>Definir métodos</h3>
+
+<p>A sintaxe de [!thelang] para escrever um método simples chamado
+<code>goAndGet()</code> é a seguinte:</p>
+<pre>[!java|c]void goAndGet()() {[/!][!python]def goAndGet()():[/!][!scala]def goAndGet()() {[/!]
+  ações()[!java|c];[/!]
+  ações()[!java|c];[/!]
+  eMaisAções()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>O corpo do método [!java|scala](entre chaves)[/!][!python](o bloco
+indentado)[/!] será executado quando chamarmos o método mais tarde (ou seja,
+quando escrevermos <code>goAndGet()()</code> em algum lugar do código). Este
+corpo do método pode conter tantas instruções quantas quiser e as
+construções que quisermos (for, while, if, etc).  [!java]A palavra-chave
+<code>void</code> significa que este método não retorna qualquer
+resultado. Por exemplo, o método <code>isOverBaggle()</code> retorna um
+resultado, que é um booleano a indicar se o buggle está ou não localizado
+sobre um baggle. Vamos em breve aprender a definir tais métodos também. Por
+agora, apenas escreva <code>void</code> neste local.[/!]
+</p>
+
+<h3>Documentar métodos</h3>
+
+<p>Deve esforçar-se para documentar o seu código para mantê-lo legível. Quando
+escreve código, fica claro o objetivo e as limitações, mas na maioria das
+vezes, isto é esquecido. Rapidamente esquecerá dos detalhes de cada método
+específico e vai chegar o dia em que ficará feliz em ler a documentação. No
+exemplo seguinte, usamos o formalismo específico de
+[!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], um programa que
+extrai a documentação do código-fonte de [!thelang] e produz páginas html. A
+principal vantagem é que permite que a documentação fique junto ao
+código. Então, quando mudar o código, tem menos chances de esquecer de
+atualizar a documentação.</p>
+
+<p>comentários em [!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] começam
+com a marca <code>/**</code> (com dois asteriscos). Eles devem ser postos
+exatamente antes do método que documentam para a ferramenta
+encontrá-los.[/!] [!python]comentários pydoc devem ser postos no começo do
+corpo do método de forma que a ferramenta possa encontrá-los. Eles devem ser
+postos entre <code>"""</code>, que marcam cadeias multilinhas em python.[/!]
+A primeira linha deve ser uma breve descrição do que o método faz enquanto
+as linhas subsequentes devem fornecer qualquer detalhes importantes sobre o
+método.</p>
+
+<pre>[!java|scala]/**
+ *  Força, recupera o baggle em frente do buggle e traz de volta 
+ *
+ *  Não verifica se tem paredes, então cuidado para não chamá-lo quando paredes estiverem presentes.
+ */[/!]
+[!java]void goAndGet()() {[/!]
+[!scala]def goAndGet()() {[/!]
+[!python]def goAndGet()():
+  """Vai, recupera o baggle em frente do buggle e traz de volta.
+
+  Não verifica se tem paredes, então cuidado para não o chamar quando uma parede estiver presente."""[/!]
+  ações()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<h3>Convenções de nomes</h3>
+<p>A maioria das linguagens de programação proíbe o uso de espaços em
+indentificadores de métodos e variáveis (=seus nomes).  Letras acentuadas
+são algumas vezes permitidas (como em [!thelang]), mas elas geram problemas
+de portabilidade entre sistemas operacionais e devem ser evitadas sempre que
+possível.</p>
+
+<p>Entre todas as linguagens de programação, existem duas convenções para
+nomear variáveis e métodos. A primeira, consiste em concatenar todas as
+palavras com apenas a primeria letra de cada palavra em maiúscula. "vai e
+apanha" torna-se goAndGet(). Isto é chamado "CamelCase" por que
+identificadores escritos desta forma parecem graficamente com as costas de
+um camelo. A outra convenção, chamada "snake_case", é escrever todas as
+palavras em minúsculas, separadas com sublinhados (_). "vai e apanha" se
+torna vai_e_apanha().</p>
+
+<p>Que convenção usar é o tópico de discussões acaloradas entre programadores,
+mas cada linguagem de programação tem os próprios hábitos deles. Em Python,
+Perl e C, o snake_case é normalmente usado para métodos e variáveis. Java e
+Scala preferemo lowerCamelCase (só a primeira letra inicial é minúscula)
+para isto.</p> 
+<p>A convenção CamelCase é sempre usada no PLM por que este programa foi
+escrito em Java, então mantivemos o hábito quando inserimos novas
+linguagens. Mas o fato de os vínculos Python do PLM usarem CamelCase e não
+snake_case é considerado um bug que será corrigido em algum lançamento
+futuro.</p>
+
+<h3>Objetivo do exercício</h3>
+<p>O objetivo deste exercício é escrever um método chamado
+<code>goAndGet()()</code> que faça a mesma coisa que foi feita num exercício
+anterior (vai para a frente até estar sobre um baggle, apanha-o, vai para
+trás até a posição inicial e solta o baggle).</p>
+
+<p>Este exercício é um pouco diferente por que não vai precisar escrever todo o
+código executado pelo buggle. Ao invés disto, deve apenas escrever um método
+que será chamado automagicamente quando clica em <b>Iniciar</b>. O seu
+buggle vai chamar o seu método <code>goAndGet()()</code> em cada linha, até
+que o baggle seja encontrado. [!python|scala]O código para isto já está
+pronto no método <code>goAndGet()()</code>, mas provavelmente não vai mudar
+isto. [/!] [!java]Não precisa escrever o código chamado
+<code>goAndGet()()</code>. Já está lá automaticamente, mesmo se não possa
+vê-lo.[/!]</p> 
+
+<p>Mas para isto funcionar, tem na verdade que escrever este método
+<code>goAndGet()</code> agora.</p>
+

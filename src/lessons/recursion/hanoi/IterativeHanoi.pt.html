@@ -1,0 +1,34 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Torres de Hanoi Iterativas</h2>
+
+<p>Neste último exercício da série, vamos implementar um algoritmo iterativo
+para o problema básico das Torres de hanoi (uma pilha, 3 varas, sem
+restrição de movimento adicional). </p>
+
+<p>Na verdade, este algoritmo é bastante simples: em movimentos ímpares, o
+disco menor é movido numa dada direção (tanto a aumentar 0-&gt;1-&gt;2-&gt;0
+ou a diminuir 2-&lt;1-&lt;0-&lt;2) enquanto em movimentos pares, o único
+movimento possível que não usa o disco menor é feito. Pare assim que a pilha
+é reconstruída na outra localização.</p> 
+
+<p>A função que precisa escrever agora tem dois parâmetros: a posição inicial
+do disco menor (p.ex., a vara inicialmente a conter a pilha) e um booleano a
+indicar se o disco menor deve mover na ordem de aumento ou não.</p>
+
+<p>A simplicidade deste algoritmo é, na verdade, enganosa. Podemos pensar sobre
+o interesse em algoritmos recursivos quando algoritmos iterativos tão
+simples existem. A minha impressão é que esta solução é boa de executar, mas
+quase impossível de ser concebida desde o princípio (suspeito que os autores
+construíram esta solução iterativa da observação da execução da solução
+recursiva)...</p>
+
+<p>Prever o efeito desta função também é difícil: quando o pequeno disco move
+na ordem crescente, a pilha é reconstruída na cavilha direita com 5 discos,
+mas na esquerda com 6 discos.</p>
+
+<p>Uma questão interessante é se tais algoritmos simples existem para a outra
+variante do problema. Alguns estão na literatura (p.ex. para a variante
+cíclica). Integraria as suas soluções no PLM com alegria, especialmente se
+puder dar uma dica (sem estragar a surpresa) da solução para guiar as outras
+pessoas.</p>      

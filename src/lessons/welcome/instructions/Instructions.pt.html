@@ -1,0 +1,70 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Instruções</h2>
+
+Parabéns! Acaba de escrever o seu primeiro programa! Agora captou a ideia:
+programar é nada mais que dar instruções simples ao computador, que as
+realiza cegamente. A maior dificuldade é explicar tudo para algo tão idiota
+quanto um computador...
+
+<p>O nosso segundo programa vai ser um pouco mais complicado, mas não muito. O
+objetivo do seu buggle é simplesmente desenhar uma casa (uma caixa) e
+esconder-se dentro dela. Confira o mundo objetivo para ver exatamente o que
+isso significa.</p>
+
+<p>Para isso, vai precisar de <code>forward()</code>, <code>left()</code> e
+<code>right()</code>. Use o seu pincel para marcar o chão enquanto
+anda. Comece a marcar o chão com <code>brushDown()</code> e pare com
+<code>brushUp()</code> depois (por exemplo, para entrar na sua casa sem
+marcar o chão).</p>
+
+<h3>O que exatamente é um programa?</h3>
+
+<p>Os programas são principalmente conjuntos de chamadas de métodos, que não
+são mais que uma lista de ordens simples dadas à máquina. É como uma receita
+que diz <i>Derreter os pedaços de chocolate, adicionar açúcar, esfriar a
+mistura e servir</i>.  [!thelang] quer ter as instruções separadas por
+ponto-e-virgula (;)[!python|scala] ou por novas linhas[/!], seguidas de
+parênteses. A nossa pequena receita seria assim escrita da seguinte
+forma[!python|scala] (também pode adicionar ponto-e-virgula no final das
+linhas, mas isso não é obrigatório)[/!].</p>
+    
+<pre>
+meltTheChocolatePieces()[!java|c];[/!]
+addSugar()[!java|c];[/!]
+coolMix()[!java|c];[/!]
+serve()[!java|c];[/!]
+</pre>
+    
+<p>Não escreva tudo numa só linha, mesmo que o computador o aceite
+[!python|scala](desde que não omita ponto-e-virgulas)[/!]. Esta é uma
+<b>péssima idéia</b>, que dificulta a legibilidade.  <i>Programas devem ser
+escritos para pessoas as lerem e apenas incidentalmente para as máquinas
+executarem,</i> como disse Harold Abelson.</p>
+
+<p>Há um conjunto limitado de instruções que os buggles entendem e
+eventualmente aprenderemos a definir novas instruções. Por enquanto, existe
+um método para cada botão do painel de controle interativo. Para alcançar o
+mesmo efeito que o botão <b>forward</b> (a fazer o buggle mover um passo à
+frente), precisa escrever o seguinte no editor: </p>
+
+<pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+<p>Da mesma forma, para obter o mesmo efeito que os botões
+<b>[!java|scala|python]recuar[/!][!c]recuarUmPasso[/!]</b>, <b>esquerda</b>
+e <b>direita</b>, precisa respetivamente:</p>
+<pre>
+backward()[!java|c];[/!]
+left()[!java|c];[/!]
+right()[!java|c];[/!]
+</pre>
+
+<p>O botão <b>marcar</b> é diferente, pois corresponde a dois métodos: o
+primeiro move a caneta para cima e o segundo move a caneta para baixo.</p>
+<pre>
+brushUp()[!java|c];[/!]
+brushDown()[!java|c];[/!]
+</pre>
+
+<p>O buggle tem outros métodos, que estão no menu "Ajuda/sobre este mundo" e
+serão introduzidos quando forem necessários.</p>
+

@@ -1,0 +1,89 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Funções</h2>
+
+<p>Frequentemente, vai escrever um método que calcula algum valor e o
+retorna. Métodos a retornar resultados são chamados <b>funções</b>. Escrever
+uma função não é realmente mais difícil do que escrever um simples método.
+[!java|c]Simplesmente tem que especificar o tipo de dados do resultado
+esperado entes do nome da função (onde previamente tínhamos
+<code>void</code>).[/!] [!scala]Simplesmente tem que adicionar um
+dois-pontos (:) depois do parêntesis e escrever o tipo de dados que a função
+dele vai retornar e adicionar um símbolo de igualdade (=). Esta sintaxe é na
+verdade mais próxima de definir uma variável, com o tipo dela, do que na
+verdade escrever uma função.[/!] Pode usar a instrução <code>return</code>
+em qualquer lugar do corpo da sua função para especificar que o cálculo foi
+feito (a função não continuará a ser executada) e que o resultado é o valor
+que acompanha a palavra-chave <code>return</code>.</p>
+
+<pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+
+<p>Na verdade, também pode usar a palavra-chave <code>return</code> em métodos
+que não retornam qualquer resultado, para interromper o cálculo. Obviamente
+que nestes casos não passa nenhum valor para retornar.</p>
+
+<p>É possível ter várias instruções <code>return</code> em várias ramificações
+de um condicional. De fato, é proibido ter um caminho de execução no corpo
+da função sem nenhum <code>return</code>, ou escrever algum código depois da
+instrução <code>return</code>. Na verdade, se a máquina alcança o fim da
+função sem encontrar qualquer <code>return</code>, ela não sabe o real valor
+que deve retornar a quem chamou a função. Além disto, o <code>return</code>
+interrompe imediatamente a execução da função (por que se preocupar a olhar
+além quando sabe o resultado da função?). Então, se existe algum código
+depois de um <code>return</code>, deve ser um erro e o compilador irá te
+alertar disto.</p>
+
+<pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
+    if (isFacingWall() == [!java|scala]true[/!][!c]1[/!]) {
+        return [!java|scala]false[/!][!c]0[/!];
+        <span class="comment">/* proibido pôr código aqui */</span>
+    } else {
+        return [!java|scala]true[/!][!c]1[/!];
+        <span class="comment">/* nem aqui */</span>
+    }
+    <span class="comment">/* e nem mesmo aqui. desista */</span>
+}[/!][!python]def livreEmFrente():
+    if isFacingWall() == True:
+        return False
+        <span class="comment"># proibido pôr código aqui</span>
+    else
+        return True
+        <span class="comment"># nem aqui</span>
+<span class="comment"># e nem mesmo aqui, desista</span>[/!]</pre>
+
+<h3>Objetivo do exercício</h3>Vai mais uma vez escrever uma função que o buggle vai usar. O nome dela deve
+ser <code>temBaggle</code> e retorna um valor booleano a indicar se a linha
+na frente do buggle contém um baggle ou não. O buggle vai usar isto para
+buscar a primeira linha a conter um baggle e parar nela.
+
+<p>A forma fácil de fazer esta função é usar uma variável booleana chamada
+<code>baggleAvistado</code> a indicar se vimos ou não um baggle até o
+momento. O valor inicial é
+'[!python]False[/!][!scala|java]false[/!][!c]0[/!]'.</p>
+
+<p>Então mova 6 passos para frente (o mundo contém 7 células e já estamos numa
+delas). Para cada célula, se ela contiver um baggle, vamos guardar true em
+<code>baggleVisto</code> (e se não, vamos simplesmente andar para frente).</p>
+
+<p>No final, vamos nos mover 6 passos para trás e retornar o valor de
+<code>baggleVisto</code> para quem chamou o método.</p>
+
+<p>Observe que o buggle usado fornece código oculto que irá chamar a sua função
+<code>haveBaggle</code> em cada coluna, movendo automaticamente entre
+colunas. Portanto, é muito importante que a sua função
+<code>haveBaggle</code> não tenha nenhum efeito colateral: a posição (e
+orientação) no final do seu código deve ser a observada no início deste
+código. Ela moverá entre elas para buscar a baggle, mas volta para o início
+da coluna.</p>
+
+<p>Além disso, este exercício é um pouco diferente, pois existem dois mundos
+iniciais, cada um com um objetivo específico. O seu código deve funcionar
+para cada um deles. Observe que o menu de rolagem de seleção de mundos (logo
+abaixo do controle deslizante de velocidade) permite mudar o mundo
+observado. </p>
+
+<p>Quando a sua função <code>temBaggle</code> funcionar, siga ao próximo
+exercício.</p>
+

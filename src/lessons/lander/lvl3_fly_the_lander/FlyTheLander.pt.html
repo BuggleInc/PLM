@@ -1,0 +1,38 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Pilote o módulo!</h1>
+
+<p>Depois de 30 dias a olhar a rochas e a comer cereais decide que é hora de
+explorar outras partes do planeta.</p>
+
+<p>Voa por um tempo e repentinamente repara que está quase sem
+combustível. Infelizmente, está numa situação delicada e o piloto automático
+é inútil.  Você mesmo terá que pilotar o módulo. A sua missão é <b>pousar o
+módulo numa área plana com uma velocidade vertical menor que 10 m/s, uma
+velocidade horizontal menor que 5 m/s e um ângulo de 0°.</b></p>
+
+<p>Precisa definir duas funções: <code>[!java]void [/!]initialize()</code> e
+<code>[!java]void[/!]step()</code>. <code>initialize()</code> é chamada uma
+única vez depois de apertar "Executar". Pode usá-lo para escolher uma área
+plana. Como antes, <code>step()</code> é chamado a cada 0,1 segundos e é
+usada para ajustar a potência e ângulo do módulo. Como no primeiro
+exercício, a potência do módulo é ajustada através de <code>[!java]void
+[/!]setDesiredThrust([!java]int
+[/!]desiredThrust[!scala]:Integer[/!])</code>.  Mas também pode controlar o
+ângulo dele através de <code>[!java]void [/!]setDesiredAngle([!java]double
+[/!]desiredAngle[!scala]:Double[/!])</code>.  Um ângulo de 0° denota uma
+posição vertical onde a "cabeça" do módulo  aponta para cima. Este é o
+ângulo com o qual deve pousar. Um ângulo positivo denota um módulo inclinado
+para a esquerda, um ângulo negativo um inclinado para a direita. Não pode
+inclinar mais que ±90° e o ângulo pode mudar por no máximo ±5° em cada
+passo.</p>
+
+<p>Como no exercício anterior, <code>[!java]List&lt;Point&gt;
+[/!]getGround()[!scala]:List[Point][/!]</code> retorna os vértices do perfil
+do solo da esquerda para a direita. Favor consulte a documentação
+(Ajuda/Sobre este mundo) para um manual de referência do módulo lunar.</p>
+
+<p>Como antes, o seu programa deve pousar o módulo com segurança em todas as
+situações encontradas além desta nova.</p>
+
+<p>Boa sorte, tente não cair!</p>

@@ -1,0 +1,32 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Rastrear a lesma</h2>
+<p>
+O seu buggle está super-feliz! Acabou de encontrar o rastro verde e úmido,
+certamente deixado por um apetitosa e grande lesma.  No final dele, o buggle
+tem certeza de que vai se divertir com est deliciosa lesma (representada por
+um baggle).
+</p>
+
+<p>Para atingir esse objetivo, teve que escrever um método
+<tt>isFacingTrail</tt> que será chamado automaticamente pelo buggle a cada
+passo. O seu método deve retornar [!python]True[/!][!java|scala]true[/!] se
+estiver diante de uma célula verde, ou
+[!python]False[/!][!java|scala]false[/!] se não estiver. Claro, se
+estivermos de frente para uma parede, deve retornar false sem esbarrar
+nela. Deve ter certeza de que este método não tem <b>efeitos colaterais</b>,
+ou seja, que não muda o estado do buggle chamado nem do mundo dele.</p>
+
+<p>A sua ferramenta para este objetivo é o <code>getGroundColor()</code> que
+retorna a cor da célula atual. Simplesmente vá à célula que quer testar e
+execute esta função.  [!java]Não pode testar se esta cor é igual a
+<code>Cor.verde</code> com um símbolo de <code>==</code> mas sim escrever
+algo como <code>getGroundColor().equals(Cor.verde)</code>. Isto acontece por
+que verde é um  <i>objeto</i> em Java e <code>.equals()</code> é a forma de
+testar igualdade entre objetos Java.[/!] [!python|scala]Então tem que testar
+se a cor retornada é igual ao valor <code>Cor.verde</code>, que representa
+verde.[/!]</p>   
+
+<h3>Objetivo do exercício</h3>
+<p>Complete o método <code>isFacingTrail()</code> (que será chamado
+automaticamente).</p>

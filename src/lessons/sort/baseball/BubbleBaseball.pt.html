@@ -1,0 +1,42 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Bubble Baseball</h1>
+
+<p>Puxa, adaptamos o insertion sort por que o selection sort precisava de
+muitos movimentos para pôr os jogadores selecionados nas posições deles, mas
+o insertion sort necessita de uma quantidade estúpida de mudanças para
+alcançar os elementos de fronteira para as posições deles dentro da área
+ordenada sem bagunçar os elementos já ordenados. No final, a nossa variante
+"selection" era mais eficiente com pelo menos <code>3*amountOfBase</code>
+movimentos para ordenar um elemento (1 para alcançar o espaço vazio ao lado
+do jogador e 2 para pôr o espaço vazio e o jogador em posição) enquanto a
+nossa variante "insertion" precisa de no máximo
+<code>3*amountOfPlayers</code> para ordenar um elemento (2 para descer o
+espaço vazio e o jogador na posição, 1 para trazer o espaço vazio de volta
+para a posição dele). Isto é duas vezes pior que ter dois jogadores por
+base. Pode ser possível melhorar o insertion sort a mover mais que um
+elemento enquanto desce, mas parece difícil (pelo menos, enquanto não
+misturar os elementos já ordenados) e provavelmente isto apenas vai garantir
+que a nossa variante "insertion" se torne tão eficiente como a nossa
+variante "selection", não dramaticamente melhor.</p>
+
+<p>Se não pudermos tornar o ordenamento mais rápido, podemos torná-lo mais
+fácil. Se pensar a respeito, parece natural adaptar a ordenação bolha para
+este problema: o buraco se torna a bolha que se move para cima e para baixo,
+a ordenar um pouco o array a cada passagem. As linhas grandes são simples:
+"enquanto (while) não estiver ordenado, mova o buraco para baixo até a base
+0 (a mover o maior jogador de cada base em cada passo) e então de volta à
+base maximal (a mover o menor jogador de cada base)". Depois de algum tempo,
+<code>isSorted()</code> vai retornar true e o seu algoritmo vai parar.</p>
+
+<p>Isto é tão fácil que vamos introduzir outra variante do problema, com mais
+de dois jogadores por base. Mas isto não vai te segurar por muito tempo, né?</p>
+
+<p>Surpreendentemente, a variante bubble sort precisa de menos movimentos que
+as outras variantes. Isto é fantástico, por que normalmente, o bubble sort é
+muito pior que os outros algoritmos, mas isto é graças à boa combinação
+entre as linhas grandes deles e o universo do basebol. E, na verdade,
+acontece bastante de um algoritmo escrito de forma agradável executa de
+forma bem decente. Mas isto não é uma regra universal, como foi demonstrado
+pelo algoritmo simplório do primeiro exercício, que era legal, simples e
+errado ;)</p>

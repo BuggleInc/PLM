@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Mais rastros de buggles</h2>
+
+<p>Uau! O seu buggle perdeu-se novamente no mesmo tipo de labirinto, mas desta
+vez, os corredores nem sempre são do mesmo tamanho. Porque não há como saber
+a comprimento do corredor antes de tomá-lo, um <code>for</code> não será
+mais suficiente. Ao invés disso, terá que mudar o seu loop interno para usar
+um loop <code>while</code>, a usar o método <code>crossing()</code> que diz
+se o seu buggle está atualmente numa intersecção.</p>
+
+<p>A complexidade adicional é que no início de um corredor, obviamente está num
+cruzamento, mas ainda quer seguir.  [!java|scala|c]Para isso, o mais fácil é
+usar um loop <code>do / while</code> em vez de um loop regular
+<code>while</code> para mover até a próxima intersecção.[/!] [!python]Para
+isso, use uma variável adicional para indicar se já entrou no corredor, como
+a seguir. Isto assegurará que execute o corpo do loop pelo menos uma vez
+(quando <code>firstTime</code> for true) antes de usarmos o valor retornado
+por <code>crossing()</code> para determinar se devemos continuar ou não.[/!]</p>
+
+[!python]
+<pre>primeiraVez = True
+while primeiraVez or not crossing():
+  primeiraVez = False
+  (corpo do loop)
+</pre>
+[/!] 
+
+<p>Com esse novo truque, o seu buggle deve sair desse labirinto muito
+facilmente.</p>

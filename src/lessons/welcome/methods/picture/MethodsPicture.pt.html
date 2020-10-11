@@ -1,0 +1,43 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Desenho colorido</h2>
+
+Neste exercício, vamos reproduzir o desenho geométrico que pode ver na guia
+"Objetivo".
+
+<p>O seu objetivo (aqui e em qualquer programa bem escrito) é escrever o código
+mais simples possível. Para isto, tem que decompor o seu trabalho em
+sub-passos e escrever métodos específicos para cada sub-passo.</p>
+
+<p>Se observar cuidadosamente a figura para pintar, é constituída de quatro
+partes a descrever um tipo de V a usar uma cor diferente. Uma decomposição
+possível é escrever um método responsável por pintar um V de uma cor
+específica a partir da posição atual. O protótipo dela pode ser:</p>
+<pre>[!java|c]void [/!]fazerV([!java|c]Cor [/!]c[!scala]: Cor[/!])[!python]  <span class="comment"># parâmetro c é do tipo Cor</span>[/!]</pre>
+
+<p>O tipo de dados <code>Cor</code> descreve obviamente uma cor particular. O
+seu código provavelmente vai chamar <code>fazerV</code> com os seguintes
+argumentos (uma cor diferente para cada chamada):</p>
+<ul>
+<li>[!java|scala|python]Cor.[/!]AMARELO</li>
+<li>[!java|scala|python]Cor.[/!]VERMELHO</li>
+<li>[!java|scala|python]Cor.[/!]AZUL</li>
+<li>[!java|scala|python]Cor.[/!]VERDE</li>
+</ul>
+
+<p>Em <code>makeV()</code>, deve usar o método <code>setBrushColor()</code>
+(pré-definido no buggle) para mudar a cor do pincel do buggle, assim como
+<code>brushUp()</code> e <code>brushDown()</code> para mudar a posição do
+pincel.</p>
+ 
+<p>É recomendável escrever o código do <code>makeV()</code> de forma que deixe
+o buggle na posição ao próximo V.</p>
+ 
+[!java|scala]
+<p>Agora é a sua vez. Tenho certeza de que pode imaginar os outros métodos
+necessários para manter o seu código simples e agradável de ler. Complete o
+método <code>run()</code> que será chamado automaticamente (uma vez).
+[!java]a palavra-chave <code>public</code> significa mais ou menos que todo
+o mundo pode chamar este método, o que é bom, pois a infraestrutura do PLM
+chama-o diretamente.[/!] </p>
+[/!]

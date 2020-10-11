@@ -1,0 +1,44 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Módulo lunar</h2>
+
+<p>Pilota um módulo lunar neste universo. A cada passo da simulação recebe a
+posição, velocidade, ângulo e potência do módulo e deve enviar um comando a
+ajustar o ângulo e a potência.</p>
+
+<h2>Funções fornecidas</h2>
+
+<pre>[!java|c]double [/!]getX()[!scala]:Double[/!]
+[!java|c]double [/!]getY()[!scala]:Double[/!]</pre>
+Obter (Get) as posições X e Y do módulo.
+<pre>[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]
+[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]</pre>
+Obter a velocidade horizontal e vertical do módulo.
+
+<pre>[!java|c]double [/!]getAngle()[!scala]:Double[/!]
+[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])</pre>
+Obter ou ajustar o ângulo do módulo.<br/>
+Um ângulo de 0° denota uma posição vertical onde a "cabeça" do módulo aponta
+para cima. É o ângulo com que deve pousar. Um ângulo positivo denota a
+inclinação para a esquerda, um ângulo negativo denota inclinação para a
+direita. Não pode inclinar mais que ±90° e o ângulo pode sofrer uma variação
+de no máximo ±5° a cada passo.
+
+<pre>[!java|c]int [/!]getThrust()[!scala]:Int[/!]
+[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])</pre>
+Obter ou ajustar a potência do módulo. <br/>Só pode aumentar ou diminuir a potência de 1 a cada passo. pois se a
+potência atual é 2 e pede 4, ela vai mudar para 3 no próximo passo. Se pedir
+menos que 0 (ou, respetivamente, mais que 4), vai ser como se tivesse pedido
+0 (ou, respetivamente, 4).
+
+<pre>[!java|c]int [/!]getFuel()[!scala]:Int[/!]</pre>
+Obter o combustível restante no módulo.  A cada passo da simulação o módulo
+consome tantas unidades de combustível como a potência atual. Uma vez que
+fique sem combustível entra em queda livre. Portanto, cuidado!
+
+<pre>[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]</pre>
+Obter os vértices do perfil do solo da esquerda para a direita.
+[!java|scala]Pode recuperar as coordenadas X e Y de cada ponto com os
+métodos correspondentes do seu ponto: <code>p.x()</code> e
+<code>p.y()</code>.[/!] [!python]Cada ponto é uma array de dois inteiros a
+denotar respetivamente as coordenadas X e Y de cada ponto.[/!]

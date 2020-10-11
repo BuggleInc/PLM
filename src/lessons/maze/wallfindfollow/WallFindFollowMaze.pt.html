@@ -1,0 +1,30 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Encontrar as paredes para seguir</h2>
+
+<p>Este é o mesmo labirinto que o anterior, mas o buggle não inicia na mesma
+localização. Em particular, não existe nenhuma parede à esquerda dele no
+início.</p>
+
+<p>O resultado é que o método que escreveu para o exercício anterior
+provavelmente não vai funcionar neste agora. Se usá-lo aqui sem
+modificações, o seu buggle provavelmente vai iniciar a percorrer as quatro
+células ao redor do ponto inicial (se este não é o caso, bem, é porque não
+fez o exercício anterior completamente. Sinta-se sortudo e vá para o próximo
+exercício :)</p>
+
+<p>Isto é porque o seu método <code>keepHandOnSideWall()</code> tem uma
+<b>pré-condição</b> implícita: funciona bem apenas se o buggle tem uma
+parede à esquerda quando o chama. Tais pré-condições são muito usadas em
+programação. Especificá-las explicitamente ajuda a entender o código escrito
+por outros e até servem, às vezes, para provar que o código funciona
+corretamente.</p>
+
+<h3>Objetivo do exercício</h3>
+
+<p>
+Consertar o problema deve ser bem fácil. Simplesmente garanta que a
+pré-condição de <code>keepHandOnSideWall()</code> seja verificada antes de
+chamá-lo. Para isto, atualize o seu código para primeiro olhar a uma parede
+à sua esquerda antes do loop <code>while</code> maior.
+</p>

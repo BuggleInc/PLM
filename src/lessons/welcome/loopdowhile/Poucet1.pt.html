@@ -1,0 +1,42 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Trilhas de buggles</h2>
+
+<p>O seu buggle perdeu-se num estranho labirinto e deve ajudá-lo a achar a
+saída que está representada em laranja. Não pode simplesmente explicar o
+caminho para a saída com algo do tipo
+<code>right();forward();forward();forward()</code> por que tem que gravar
+dois buggles ao mesmo tempo, que estão presos em mundos similares, mas não
+iguais. Pode alternar para o outro mundo a usar o combobox acima da
+representação do mundo (onde está escrito 'Floresta Fechada' agora) e
+selecionar a outra entrada (que deve ler 'Floresta Mais Fechada').</p>
+
+<p>A boa nova é que o caminho para a saída está desenhado no chão. Como pode
+ver, o mundo é feito de vários corredores, com baggles no chão. Depois de
+cada corredor, deve virar à esquerda se o corredor tiver três baggels ou
+mais e virar a direita se tiver apenas 2 ou menos baggles.</p>
+
+<p>Deve contar exatamente 5 células por corredor, de intersecção a
+intersecção.  Considere na sua contagem a intersecção terminar o corredor,
+mas não a intersecção antes do corredor.</p>
+
+<p>Logo, a forma geral do seu código deve ser algo como "enquanto não encontrar
+a saída, escolha o próximo corredor para decidir se vira à esqueda ou à
+direita na próxima intersecção". Pode determinar se está na célula de saída
+(que é laranja) com o método <code>exitReached()</code> fornecido.</p>
+
+<p>Para entrar num corredor, tem que simplesmente correr de uma intersecção
+para outra enquanto conta os baggles que vê no seu caminho. Isto é fácil:
+existem 5 passos em cada corredor, de forma que um simples loop
+<code>for</code> resolve.</p>
+
+
+<p><div class="tip" id="tip-1" alt="Não consigo imaginar como contar os baggles que vejo.">
+Precisa de uma variável que é inicializada em 0 e incrementada cada vez que
+vê um baggle no chão. Uma variável usada desta forma é frequentemente
+chamada de <i>contador</i>.<br/><br/>
+Não se esqueça de resetar o seu contador para 0 no começo de cada corredor! 
+</div></p>
+
+<p>Ah, e quando chegar na saída, não se esqueça de dar um passo a mais para
+sair de fato do labirinto!</p> 

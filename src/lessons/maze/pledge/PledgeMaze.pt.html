@@ -1,0 +1,76 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Algoritmo de Pledge</h2>
+
+<p>Novamente, pensou que o seu algoritmo era bom o suficiente para escapar do
+labirinto e novamente, o seu buggle está agora num labirinto onde o seu
+algoritmo anterior falhou. Dê-lhe uma hipótese: copie-e-cole o seu código e
+aperte o botão "Executar" e veja a sua criação falhar. A armadilha é no
+formato de um "G" maiúsculo. O buggle entra na armadilha e segue a borda
+interior. Num determinado momento, encontra a direção norte livre, vai nesta
+direção e cai de novo na armadilha.
+</p>
+
+<p>O algoritmo de Pledge (em homenagem a Jon Pledge of Exeter) pode resolver
+este labirinto.</p> 
+
+<p>Este algoritmo é uma modificação do anterior para evitar obstáculos. Escolhe
+aleatoriamente uma direção e deixe o buggle ir nesta direção. Quando
+encontra um obstáculo, uma pata (por exemplo, a da esquerda) é mantida na
+parede a seguir o obstáculo enquanto conta as curvas. Quando o buggle está
+de volta à direção original dele e a soma das curvas deu 0, o buggle deixa o
+obstáculo e continua a manter a direção original dele. </p>
+
+<p>Observe que o uso de "total turning" ao invés de simplesmente o "current
+direction" permite que o algoritmo evite armadilhas no formato G. Se alguém
+escolhe a esquerda para dentro da armadilha acaba a girar 260 graus pelas
+paredes. Como dissemos antes, o algoritmo simplório "current direction"
+entra num ciclo limitado à medida que deixa a parede mais à direita a
+apontar para a esquerda e anda para a secção curvada na esquerda de novo.</p>
+
+<p>O algoritmo de Pledge não deixa a parede mais à direita devido ao total de
+curvas não ser zero neste ponto. Segue a parede na volta toda, a deixa-o
+finalmente a apontar para a esquerda no "fundo exterior"</p>
+
+
+<h3>Objetivo do exercício</h3>
+
+<p><a name="Objective"/>Agora tem que modificar a sua solução para implementar
+o algoritmo de Pledge para escapar deste labirinto.</p>
+
+<p>Mude o seu método <code>keepHandOnSideWall()</code> para contar a quantidade
+de curvas feitas pelo buggle (+1 quando gira para a esquerda e -1 quando
+gira para a direita). Esta contagem pode necessitar a adição de um valor
+inteiro <code>angleSum</code> no seu programa.</p>
+
+<p>Escreva um método booleano <code>isDirectionFree(dir)</code> a indicar se a
+direção dada está livre, ou seja, se pode mover naquela direção (Observe que
+a demonstração usa a direção NORTH para isto). Pode recuperar a direção
+atual do buggle a usar o método <code>getDirection()</code>. Pode mudar a
+sua direção (sem se mover) a usar <code>setDirection(dir)</code>. Não se
+esqueça de guardar a direção anterior do seu buggle (numa variável
+exclusiva) antes de verificar se a sua direção favorita está livre para
+depois recuperar o seu estado.</p>
+
+<p>Também pode ter que mudar o resto do seu código, mas estas mudanças podiam
+ser poucas.</p>
+
+[!python]<p>Não se esqueça que se tem um método que modifica uma variável global (como
+angleSum), deve garantir que declara esta variável como global. Sem ele, o
+método cria uma variável de mesmo nome e a global nunca é modificada.</p>
+<pre>def myMethod():
+  global angleSum
+  ...
+  angleSum = angleSum + 1
+</pre>
+[/!]
+
+<div class="tip" id="tip-1" alt="Mostre uma dica adicional">
+Deve ajustar a sua direção para a sua favorita (NORTH é a
+recomendada). Então, deve escrever o loop principal algoritmo. Em outras
+palavras, enquanto o seu buggle não encontra o biscoito dele, tem que mover
+para a frente até ao próximo obstáculo na sua direção favorita. Então, ponha
+uma pata na parede (a usar <code>keepHandOnSideWall()</code>) enquanto a
+soma de curvas não for null (nula) e a direção favorita não estiver
+livre. Faça-o até que encontre o seu baggle.</div>
+	

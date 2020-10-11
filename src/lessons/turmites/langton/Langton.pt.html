@@ -1,0 +1,50 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>formiga de Langton</h2>
+
+<p>Neste exercício, vai transformar o seu buggle numa <i>formiga de
+Langton</i>. Estes pequenos animais artificiais são bastante interessantes
+por que eles recebem regras simples que dependem apenas do seu ambiente
+local e depois de um período de aparente comportamento caótico, um modelo
+geral <i>surge</i>.</p>
+
+<p>As regras são absolutamente triviais: para calcular qual o próximo passo,
+verifique a cor atual do chão (a usar <code>getGroundColor()</code>). Se for
+branco, mude para preto, vire à direita e mova uma célula. Se for preto mude
+para branco, vire a esquerda e ande uma célula.</p> 
+
+<p>Difícil encontrar regras mais simples, não é? Bem, vamos em frente codificar
+isto agora. Precisa completar o método <code>step()</code>, que codifica o
+comportamento da formiga em cada passo. Vai provavelmente usar o método
+<code>getGroundColor()</code> para recuperar a cor da célula na qual a
+formiga está no momento. Cores úteis são nomeadas simplesmente de
+<code>Cor.preto</code> e <code>Cor.branco</code>.</p>
+
+[!java]
+<p>Para comparar cores, não pode usar o símbolo de igualdade (==), pois estas
+coisas não são valores escalares, mas objetos. Ao invés disto, precisa
+escrever algo como o seguinte:</p> 
+<pre>
+Cor c /* = alguma inicialização */;
+if (c.equals(Cor.preto)) {
+  /* é igual */
+} else {
+  /* não é igual */
+}
+</pre>
+[/!]
+
+<p>Mudar a cor do chão não é difícil, mas meio demorado: tem que mudar a cor do
+pincel do seu buggle, baixar o pincel (para marcar a célula atual -- com
+<code>brushDown()</code>) e levantar o pincel de novo (com
+<code>brushUp()</code>) para evitar problemas quando o buggle se mexer. É,
+naturalmente, livre para organizar o seu código da forma que quiser, mas
+deve querer escrever um método <code>setGroundColor(color)</code> para
+separar um pouco as coisas.</p>
+
+<p>Como pode ver da execução deste exercício, o interessante neste algoritmo é
+que depois de uns 10000 passos de comportamento relativamente caótico, a
+formiga começa a construir um modelo regular. O surgimento deste modelo
+regular em meio ao caos é bastante fascinante, não acha? Mova para o próximo
+exercício para ver mais disto.</p>   
+
