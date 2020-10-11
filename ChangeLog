@@ -1,4 +1,6 @@
-20200925: 2.9.1 (unreleased)
+20201011: 2.9.2
+
+  The Portuguese release: we now have complete translation of the PLM.
 
   * Core:
     - Introduce a new Portuguese translation, thanks ssantos.
