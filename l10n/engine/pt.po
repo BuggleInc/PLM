@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# ssantos <ssantos@web.de>, 2020.
+# ssantos <ssantos@web.de>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-20 17:03+0200\n"
-"PO-Revision-Date: 2020-10-11 16:51+0000\n"
+"PO-Revision-Date: 2021-05-10 11:31+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "programmers-learning-machine/binary/pt/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: src/lessons/lightbot/universe/LightBotExercise.java:56
 msgid "A light is still off."
@@ -1604,8 +1604,8 @@ msgstr ""
 "<h1>Reportar um bug em PLM</h1><p>Se tem a sua própria conta do GitHub, por "
 "favor vá para o <a href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</"
 "a>. Caso contrário, pode usar esta janela para relatar um problema no PLM ("
-"seja em um exercício ou no próprio PLM). Escreva o seu relatório em inglês "
-"ou francês, se possível.</p><p> Deve incluir todas as informações relevantes "
+"seja num exercício ou no próprio PLM). Escreva o seu relatório em inglês ou "
+"francês, se possível.</p><p> Deve incluir todas as informações relevantes "
 "que nos possam ajudar a corrigir o problema. Não remova os detalhes técnicos "
 "a menos que tenha a certeza de que não são relevantes. O que escrever aqui "
 "será público: <b>Nunca revele palavras-passe ou outras informações sensatas "
