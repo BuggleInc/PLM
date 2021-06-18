@@ -14,7 +14,7 @@ public class ButLast extends ConsExercise {
 		
 		BatWorld myWorld = new ConsWorld("butLast");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}));
-		myWorld.addTest(VISIBLE,   data(new int[]{1, 1, 1}), 1);
+		myWorld.addTest(VISIBLE,   data(new int[]{1, 1, 1}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 1, 3, 2}));
 		myWorld.addTest(INVISIBLE, data(new int[]{2, 4, 6, 8, 10}));
 		myWorld.addTest(INVISIBLE, data(new int[]{6}));

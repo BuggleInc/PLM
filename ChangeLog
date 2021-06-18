@@ -1,6 +1,7 @@
 20201011: 2.9.3 (unreleased)
 
-  * no change so far
+  * Peagogical content:
+    - lessons/recursion/cons/ButLast: Fix a copy/paste error in the test instances
 
 20201011: 2.9.2
 
