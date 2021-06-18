@@ -1,8 +1,9 @@
 20201011: 2.9.3 (unreleased)
 
   * Peagogical content:
+    - lessons/recursion/cons/Concat: Fix a copy/paste error in Python
     - lessons/recursion/cons/ButLast: Fix a copy/paste error in the test instances
-    - lessons/recursion/cons/Occurence: was broken in python
+    - lessons/recursion/cons/Occurence: was broken in Python
 
 20201011: 2.9.2
 

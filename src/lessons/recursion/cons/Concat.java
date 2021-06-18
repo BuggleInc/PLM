@@ -12,7 +12,7 @@ public class Concat extends ConsExercise {
 	public Concat(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new ConsWorld("reverse");
+		BatWorld myWorld = new ConsWorld("concat");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3}),    data(new int[]{11, 12, 13}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3}),    data(new int[]{1, 1, 1}));
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3}),    data(new int[]{}));
@@ -24,8 +24,8 @@ public class Concat extends ConsExercise {
 
 		// unrecursed version, as it's impossible to add functions to BatExercises
 		
-		templatePython("reverse", new String[]{"RecList", "List[Int]"},
-				"def reverse(list1, list2):\n",
+		templatePython("concat", new String[]{"RecList", "List[Int]"},
+				"def concat(list1, list2):\n",
 				/* revert list in A */
 				"  A = None\n"+
 				"  B = list1\n"+
