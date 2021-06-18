@@ -12,7 +12,7 @@ public class Occurrence extends ConsExercise {
 	public Occurrence(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new ConsWorld("Occurence");
+		BatWorld myWorld = new ConsWorld("occurences");
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 2, 4}), 1);
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 2, 4}), 2);
 		myWorld.addTest(VISIBLE,   data(new int[]{1, 2, 3, 4}), 42);

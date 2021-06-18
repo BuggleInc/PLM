@@ -2,6 +2,7 @@
 
   * Peagogical content:
     - lessons/recursion/cons/ButLast: Fix a copy/paste error in the test instances
+    - lessons/recursion/cons/Occurence: was broken in python
 
 20201011: 2.9.2
 
