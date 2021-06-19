@@ -34,13 +34,11 @@ ciência da computação.</td></tr>
   <tr><td><b>Procura por uma parede à frente<br/>Procura por uma parede atrás</b></td>
       <td>[!java]boolean [/!][!c]int [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]<br/>
           [!java]boolean [/!][!c]int [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]</td></tr>				
-  <tr><td><b>Obter direção<br/>Ajustar direção</b><br/>direções válidas são:</td>
+  <tr><td><b>Obter direção<br/>Ajustar direção</b><br/></td>
       <td>[!java|c]Direção [/!]getDireção()[!scala]:Direção[/!]<br/>
           [!java|c]void [/!]ajustaDireção([!java|c]Direção
 [/!]dir[!scala]:Direção[/!])<br/>
-          [!scala|java|python]Direção.[/!]NORTE,
-[!scala|java|python]Direção.[/!]LESTE, [!scala|java|python]Direção.[/!]SUL e
-[!scala|java|python]Direção.[/!]OESTE</td></tr>
+
   <tr><td>Verifica se o buggle está atualmente <b>selecionado na interface</b></td>
       <td>[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]</td></tr>
  
@@ -73,23 +71,35 @@ ciência da computação.</td></tr>
           [!java]void [/!]limparMensagem()</td></tr>
 </table>
 
-<h2>Cores válidas</h2>
-<table border=1>
-<tr><td>Nome</td><td>Cor</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]azul</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]ciano</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]cinzaEscuro</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]cinza</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]verde</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]cinzaClaro</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]laranja</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]rosa</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]vermelho</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]branco</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
-<tr><td>[!scala|java|python]Cor.[/!]amarelo</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
-</table>
+<table border="0">
+<tr><td valign="top">
+    <h2>Cores válidas</h2>
+    <table border=1>
+    <tr><td>Name in [!thelang]</td><td>Cor</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]azul</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]ciano</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]cinzaEscuro</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]cinza</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]verde</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]cinzaClaro</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]laranja</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]rosa</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]vermelho</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]branco</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+    <tr><td>[!scala|java|python]Cor.[/!]amarelo</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
+    </table>
+</td><td valign="top">
+    <h2>Valid directions</h2>
+    <table border=1>
+    <tr><td>Name in [!thelang]</td><td>Meaning</td></tr>
+    <tr><td>[!scala|java|python]Direction.[/!]NORTH</td> <td>Pointing North</td></tr>
+    <tr><td>[!scala|java|python]Direction.[/!]EAST</td>  <td>Pointing East</td></tr>
+    <tr><td>[!scala|java|python]Direction.[/!]SOUTH</td> <td>Pointing South</td></tr>
+    <tr><td>[!scala|java|python]Direction.[/!]WEST</td>  <td>Pointing West</td></tr>
+    </table>
+</td></tr></table>
 
 <h2>Nota sobre exceções</h2>
 Buggles normais lançam uma exceção BuggleWallException se você pede para
