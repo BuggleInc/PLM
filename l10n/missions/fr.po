@@ -17223,7 +17223,6 @@ msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
 
-
 #~ msgid ""
 #~ "This <b>experimental</b> lesson aims at teaching students about "
 #~ "backtracking. It is not ready for consumtion yet, not even the first "
