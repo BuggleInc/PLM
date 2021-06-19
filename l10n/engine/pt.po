@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 17:03+0200\n"
+"POT-Creation-Date: 2021-06-20 00:44+0200\n"
 "PO-Revision-Date: 2021-05-10 11:31+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/"
-"programmers-learning-machine/binary/pt/>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/programmers-"
+"learning-machine/binary/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,7 +109,8 @@ msgstr "Movimento inválido"
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
-msgstr "Os discos não foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
+msgstr ""
+"Os discos não foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
 #, java-format
@@ -305,7 +306,8 @@ msgstr ""
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
-msgstr "Não posso obter o raio da panqueca #{0} pois ela não está entre 0 e {1}"
+msgstr ""
+"Não posso obter o raio da panqueca #{0} pois ela não está entre 0 e {1}"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:261
 #, java-format
@@ -701,8 +703,8 @@ msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
-"Encontrou um bug no PLM. Favor relatar isto com todos os datalhes possíveis ("
-"incluindo o stacktrace abaixo)."
+"Encontrou um bug no PLM. Favor relatar isto com todos os datalhes possíveis "
+"(incluindo o stacktrace abaixo)."
 
 #: src/plm/core/model/Game.java:235
 #, java-format
@@ -895,7 +897,8 @@ msgstr ""
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
-msgstr "{0}: Começar solução em \"template tail\". Mudar isto para BEGIN HIDDEN"
+msgstr ""
+"{0}: Começar solução em \"template tail\". Mudar isto para BEGIN HIDDEN"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
@@ -935,7 +938,8 @@ msgstr ""
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and such"
-msgstr "{0}: Nenhuma entidade encontrada. Deve consertar os seus caminhos e tal"
+msgstr ""
+"{0}: Nenhuma entidade encontrada. Deve consertar os seus caminhos e tal"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
@@ -945,7 +949,8 @@ msgstr "Mundo {0} está quebrado ({1}). Recalcule todos os mundos resposta."
 #: src/plm/core/model/lesson/ExerciseTemplated.java:410
 #, java-format
 msgid "Cache file {0} is missing. Recompute all answer worlds."
-msgstr "Ficheiro de cache {0} a faltar. Recalcular todos os mundos de resposta."
+msgstr ""
+"Ficheiro de cache {0} a faltar. Recalcular todos os mundos de resposta."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:414
 #, java-format
@@ -1011,8 +1016,8 @@ msgid ""
 "\n"
 " Would you like proceed anyway (and lose any solution typed so far)?"
 msgstr ""
-"O PLM foi incapaz de gravar o seu ficheiro de sessão para a lição {0} "
-"({1}:{2}).\n"
+"O PLM foi incapaz de gravar o seu ficheiro de sessão para a lição {0} ({1}:"
+"{2}).\n"
 "\n"
 " Quer continuar mesmo assim (e perder qualquer solução digitada até agora)?"
 
@@ -1113,7 +1118,8 @@ msgstr "Operação de mesclagem cancelada por causa dos seguintes erros:"
 
 #: src/plm/core/model/tracking/GitUtils.java:173
 msgid "Can't merge data retrieved from server with local session data."
-msgstr "Não posso mesclar dados trazidos do servidor com dados de sessão local."
+msgstr ""
+"Não posso mesclar dados trazidos do servidor com dados de sessão local."
 
 #: src/plm/core/model/tracking/GitUtils.java:214
 msgid "Cannot synchronize your session with the servers (network down)."
@@ -1166,12 +1172,12 @@ msgid ""
 "></html>"
 msgstr ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">versão {0}&nbsp;"
-"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\""
-">({1})</span></h3><br/>&copy; 2008-2020 Contribuintes. Todos os direitos "
-"reservados.<br/><ul style=\"margin-left:20px;\"><li>Idéia original: <i>L. "
-"Turbak (Wellesley College)</i></li><li> Design e código: <i>M. Quinson e G. "
-"Oster</i></li><li>Testes: <i>Estudantes da Telecom Nancy (aulas de ''11 a "
-"''15)</i></li></ul><br/>O seu código é gravado em {2}<br/>O seu ID de sessão "
+"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
+"span></h3><br/>&copy; 2008-2020 Contribuintes. Todos os direitos reservados."
+"<br/><ul style=\"margin-left:20px;\"><li>Idéia original: <i>L. Turbak "
+"(Wellesley College)</i></li><li> Design e código: <i>M. Quinson e G. Oster</"
+"i></li><li>Testes: <i>Estudantes da Telecom Nancy (aulas de ''11 a ''15)</"
+"i></li></ul><br/>O seu código é gravado em {2}<br/>O seu ID de sessão "
 "secreta é {3}<br/></html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:81
@@ -1201,8 +1207,8 @@ msgid ""
 "free collections. The specific license and origin of each files is listed in "
 "the COPYING file distributed with the archive.</p>"
 msgstr ""
-"<h2>O PLM é um software orgulhosamente Livre</h2><p>Copyright (c) 2008-2015.<"
-"br/> O time PLM: Martin Quinson, Gérald Oster e outros.<br/> (veja os logs "
+"<h2>O PLM é um software orgulhosamente Livre</h2><p>Copyright (c) 2008-2015."
+"<br/> O time PLM: Martin Quinson, Gérald Oster e outros.<br/> (veja os logs "
 "do git para a autoria exata de cada ficheiro).</p> <p>O softwtare PLM foi "
 "escrito internamente pelo time. Este software é distribuído sob a GNU "
 "general public license version 3 (GPLv3).</p> <p>O material pedagógico "
@@ -1397,8 +1403,8 @@ msgid ""
 msgstr ""
 "<html>Erro de compilação.<br>\n"
 "Veja abaixo a mensagem de erro detalhada (como dada por {0}).<br>\n"
-"Favor ler cuidadosamente para entender o problema e consertar o seu "
-"código.</html>"
+"Favor ler cuidadosamente para entender o problema e consertar o seu código.</"
+"html>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:83
 #: src/plm/core/ui/ExerciseFailedDialog.java:90
@@ -1433,8 +1439,8 @@ msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br><br><br>Select your next exercise:</html>"
 msgstr ""
-"<html> Parabéns, passou neste exercício.<br>({0} testes passaram)"
-"<br><br><br>selecione o seu próximo exercício:</html>"
+"<html> Parabéns, passou neste exercício.<br>({0} testes "
+"passaram)<br><br><br>selecione o seu próximo exercício:</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
 msgid ""
@@ -1569,14 +1575,14 @@ msgstr ""
 "\n"
 "(O seguinte ajuda-nos a resolver o seu problema, por favor não apague)\n"
 "\n"
-"----------------------------[ Informação Técnica "
-"]----------------------------\n"
+"----------------------------[ Informação "
+"Técnica ]----------------------------\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:71
 msgid "--------------------[ my code for this exercise ]--------------------\n"
 msgstr ""
-"--------------------[ o meu código para este exercício ]--------------------"
-"\n"
+"--------------------[ o meu código para este "
+"exercício ]--------------------\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Report your feedback"
@@ -1603,8 +1609,8 @@ msgid ""
 msgstr ""
 "<h1>Reportar um bug em PLM</h1><p>Se tem a sua própria conta do GitHub, por "
 "favor vá para o <a href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</"
-"a>. Caso contrário, pode usar esta janela para relatar um problema no PLM ("
-"seja num exercício ou no próprio PLM). Escreva o seu relatório em inglês ou "
+"a>. Caso contrário, pode usar esta janela para relatar um problema no PLM "
+"(seja num exercício ou no próprio PLM). Escreva o seu relatório em inglês ou "
 "francês, se possível.</p><p> Deve incluir todas as informações relevantes "
 "que nos possam ajudar a corrigir o problema. Não remova os detalhes técnicos "
 "a menos que tenha a certeza de que não são relevantes. O que escrever aqui "
@@ -1667,12 +1673,13 @@ msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
 msgstr ""
-"O título do feedback ainda é o predefinido, especifique um título relevante."
-"\n"
+"O título do feedback ainda é o predefinido, especifique um título "
+"relevante.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:240
 msgid "The current title is empty, please specify a relevant title.\n"
-msgstr "O título atual está vazio. Por favor especifique um título relevante.\n"
+msgstr ""
+"O título atual está vazio. Por favor especifique um título relevante.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:244
 msgid ""
@@ -1977,8 +1984,8 @@ msgid ""
 "<html>Please choose from the drop-down menu the user you want to remove.</"
 "html>"
 msgstr ""
-"<html>Por favor escolha o utilizador que quer remover do menu drop-"
-"down.</html>"
+"<html>Por favor escolha o utilizador que quer remover do menu drop-down.</"
+"html>"
 
 #: src/plm/core/ui/action/RemoveUser.java:35
 #, java-format
@@ -2394,7 +2401,8 @@ msgstr ""
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
-msgstr "Tentou acessar uma célula com Y={0}, mas o Y maximal neste mundo é {1}."
+msgstr ""
+"Tentou acessar uma célula com Y={0}, mas o Y maximal neste mundo é {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:200
 #, java-format
@@ -2443,7 +2451,8 @@ msgstr "    Problema inesperado: {0}\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:480
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
-msgstr "    Encontrou um problema inesperado (tal como esbarrar numa parede).\n"
+msgstr ""
+"    Encontrou um problema inesperado (tal como esbarrar numa parede).\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:484
 #, java-format
