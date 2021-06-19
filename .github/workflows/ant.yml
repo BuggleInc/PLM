@@ -21,7 +21,11 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Test with Ant
-      run: ant -noinput -buildfile build.xml test-all
-    - name: Build with Ant
+    - name: Test exercise solutions (Ant)
+      run: ant -noinput -buildfile build.xml test-exos
+    - name: Unit tests (Ant)
+      run: ant -noinput -buildfile build.xml test-unit
+    - name: Integration tests (Ant)
+      run: ant -noinput -buildfile build.xml test-integration
+    - name: Build jarfile (Ant)
       run: ant -noinput -buildfile build.xml dist
