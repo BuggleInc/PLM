@@ -1,5 +1,7 @@
 20210618: 2.9.3 (unreleased)
 
+  * Universes:
+    - Buggles: clarify the name of Directions in the documentation
   * Peagogical content:
     - lessons/recursion/cons/Concat: Fix a copy/paste error in Python
     - lessons/recursion/cons/ButLast: Fix a copy/paste error in the test instances
