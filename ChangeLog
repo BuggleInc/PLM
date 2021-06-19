@@ -4,6 +4,7 @@
     - lessons/recursion/cons/Concat: Fix a copy/paste error in Python
     - lessons/recursion/cons/ButLast: Fix a copy/paste error in the test instances
     - lessons/recursion/cons/Occurence: was broken in Python
+    - lessons/welcome/traversal/SnakeEntity: translations were breaking Python
   * Translations:
     - Updated: Portugese, thanks Silvério Santos.
 

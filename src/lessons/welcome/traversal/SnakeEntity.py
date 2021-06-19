@@ -12,7 +12,7 @@ def endingPosition():
 
 def snakeStep():
 	if isFacingWall():
-		if getDirection().toString() == "EAST":
+		if getDirection() == Direction.EAST:
 			left()
 			forward()
 			left()
