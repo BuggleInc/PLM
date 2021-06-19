@@ -243,7 +243,7 @@
     </target>
 
     <target name="test-exos" depends="compile" description="tests compilation of provided solutions of all exos">
-	  <junit haltonfailure="true" haltonerror="true" printsummary="withOutAndErr" fork="yes">		
+	  <junit haltonfailure="true" haltonerror="true" showoutput="yes" printsummary="withOutAndErr" fork="yes">		
 		<classpath refid="project.class.path"/>
 		<formatter type="plain"/>
         <test name="plm.test.integration.ExoTest"/>		
