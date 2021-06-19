@@ -87,7 +87,7 @@ public class ExoTest {
 		System.out.println("");
 		
 		//g.switchDebug();		
-		g.setLocale(new Locale("en"));
+		g.setLocale(new Locale("en")); // Test the templates in English, to catch translation issues
 		
 		return result;
 	}
@@ -153,15 +153,20 @@ public class ExoTest {
 			// compileAll already setup the error message; we just needed to not run the entity in that case
 		}
 		
-		if (exo.lastResult.compilationError != null) 
-				fail(exo.getId()+": compilation error: "+exo.lastResult.compilationError+". Compiled file:\n"+
-						((exo.getSourceFileCount(lang)>0) ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
-							                              : "none"));
+		if (exo.lastResult.compilationError != null) {
+			String msg = exo.getId()+": compilation error: "+exo.lastResult.compilationError+". Compiled file:\n"+
+					       ((exo.getSourceFileCount(lang)>0) ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
+													  : "none");
+			System.err.println(msg);									  
+			fail(msg);
+		}
 		
 		
 		if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			fail(exo.getId()+": failed exercise ("+
-				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.executionError+"'");
+			String msg = exo.getId()+": failed exercise ("+
+				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.executionError+"'";
+			System.err.println(msg);									  
+			fail(msg);				
 		}
 	}
 	
