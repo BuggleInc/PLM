@@ -29,5 +29,11 @@ jobs:
       run: ant -noinput -buildfile build.xml test-unit
     - name: Integration tests (Ant)
       run: ant -noinput -buildfile build.xml test-integration
+    - name: Update translations with po4a
+      run: po4a po4a.conf
     - name: Build jarfile (Ant)
       run: ant -noinput -buildfile build.xml dist
+    - name: Upload jar
+      uses: actions/upload-artifact@v2
+      with:
+        path: dist/*.jar
