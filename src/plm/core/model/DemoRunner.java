@@ -40,8 +40,19 @@ public class DemoRunner extends Thread {
 		while (it.hasNext()) {
 			Thread t = it.next();
 			if (!t.equals(this)) { /* do not wait for myself */
-				t.join();
-				it.remove();
+				int attempt = 100;
+				boolean done = false;
+				while (attempt>0 && !done) {
+					try {
+						t.join();
+						it.remove();
+						done = true;
+					} catch (InterruptedException e) {
+						attempt--;
+						if (attempt==0)
+							throw new InterruptedException("Joined 100 times in vain. "+e);
+					}
+				}
 			}
 		}
 	}
