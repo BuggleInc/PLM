@@ -1,5 +1,9 @@
 20210618: 2.9.3 (unreleased)
 
+  * Core:
+    - Add a link to the Discord server from the feedback dialog.
+      I hope that people will use it instead of bug reports to ask questions,
+      or that the one asking questions in GitHub issues will read my answers there.
   * Universes:
     - Buggles: clarify the name of Directions in the documentation
   * Peagogical content:

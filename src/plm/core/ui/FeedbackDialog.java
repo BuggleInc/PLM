@@ -106,14 +106,20 @@ public class FeedbackDialog extends JDialog {
 		JEditorPane hints = new JEditorPane("text/html","");
 		hints.setEditorKit(new PlmHtmlEditorKit());
 		hints.setEditable(false);
-		hints.setText(i18n.tr("<h1>Reporting a bug in PLM</h1>"
-						+ "<p>If you have your own GitHub account, please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. "
-						+ "If not, you can use this window to report an issue in the PLM (be it in one exercise or in the PLM itself). "
-	 				    + "Please write your report in English or French if possible.</p>"
-						+ "<p>You should include all relevant information that could help us fixing the issue. Don't remove the technical details unless you are certain that they are not relevant. "
-						+ "What you write here will be public: <b>Never disclose passwords or other sensible information on a bug tracker</b></p>"
-					  	+ "<p>When you find a typo or a sentence that is hard to understand, it really helps to suggest a new wording."
-					  	+ "If you encounter a technical bug, please tell us what you did, which outcome you were expecting and what happened instead.</p><br/>"));
+		hints.setText(i18n.tr(
+			"<h1>Asking a question about the PLM</h1>"
+			+"<p>If you're stuck or unsure, you can come and discuss with us on our <a href='https://discord.gg/agxNPGj'>Discord server</a>. "
+			+"You can also use this channel to chat about new ideas to extend the PLM, or simply to chat with us with working with the PLM.</p>"
+
+			+"<h1>Reporting a bug in PLM</h1>"
+			+ "<p>If you have your own GitHub account, please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. "
+			+ "If not, you can use this window to report an issue in the PLM (be it in one exercise or in the PLM itself), "
+			+ "but don't ask questions here, as we have no way to provide an answer on this channel. "
+			+ "Please write your report in English or French if possible.</p>"
+			+ "<p>You should include all relevant information that could help us fixing the issue. Don't remove the technical details unless you are certain that they are not relevant. "
+			+ "What you write here will be public: <b>Never disclose passwords or other sensible information on a bug tracker</b></p>"
+			+ "<p>When you find a typo or a sentence that is hard to understand, it really helps to suggest a new wording."
+			+ "If you encounter a technical bug, please tell us what you did, which outcome you were expecting and what happened instead.</p><br/>"));
 		hints.addHyperlinkListener(new HyperlinkListener() {
 			public void hyperlinkUpdate(HyperlinkEvent event) {
 				if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
