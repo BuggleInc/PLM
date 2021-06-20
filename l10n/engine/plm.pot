@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 00:21+0200\n"
+"POT-Creation-Date: 2021-06-21 00:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,7 +220,6 @@ msgid "This world is not a dutch flag"
 msgstr ""
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
 msgid "The two worlds are of differing size"
 msgstr ""
 
@@ -260,41 +259,45 @@ msgid "flip({0})"
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
-msgid "This is not a world of pancakes"
+msgid "This is not a world of pancakes."
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
+msgid "The two worlds are of differing size."
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:124
 #, java-format
-msgid "Stacks were not flipped the same amount of time: {0} vs. {1}\n"
+msgid "Stacks were not flipped the same amount of time: {0} vs. {1}.\n"
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:128
 #, java-format
-msgid " Pancake #{0} differs: {1} vs. {2}\n"
+msgid " Pancake #{0} differs: {1} vs. {2}.\n"
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:206
 #, java-format
-msgid "Asked to flip {0} pancakes, but you must flip at least one"
+msgid "Asked to flip {0} pancakes, but you must flip at least one."
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:208
 #, java-format
 msgid ""
-"Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
+"Asked to flip {0} pancakes, but there is only {1} pancakes on this stack."
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:242
 #, java-format
 msgid ""
-"Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
+"Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:261
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
-"{1}"
+"{1}."
 msgstr ""
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
@@ -444,8 +447,12 @@ msgstr ""
 msgid "Compilation error:"
 msgstr ""
 
+#: src/plm/core/lang/LangC.java:251
+msgid "Valgrind does not seem to be installed."
+msgstr ""
+
 #: src/plm/core/lang/LangC.java:260 src/plm/core/lang/LangC.java:267
-msgid "Error, please recompile the exercise"
+msgid "Error, please recompile the exercise."
 msgstr ""
 
 #.
@@ -484,7 +491,7 @@ msgstr ""
 #: src/plm/core/lang/LangPython.java:72
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
-"for typos\n"
+"for typos.\n"
 msgstr ""
 
 #: src/plm/core/lang/LangPython.java:76
@@ -498,11 +505,11 @@ msgid ""
 msgstr ""
 
 #: src/plm/core/lang/LangPython.java:87
-msgid "Error: there is no baggle to pickup under the buggle"
+msgid "Error: there is no baggle to pickup under the buggle."
 msgstr ""
 
 #: src/plm/core/lang/LangPython.java:89
-msgid "Error: a buggle cannot carry more than one baggle at the same time"
+msgid "Error: a buggle cannot carry more than one baggle at the same time."
 msgstr ""
 
 #: src/plm/core/lang/LangPython.java:91
@@ -582,7 +589,7 @@ msgid ""
 "   It is safer to change the current language, and restart the PLM before "
 "proceeding.\n"
 "   Alternatively, the property {1} can be changed in your configuration file "
-"({2}/plm.properties)"
+"({2}/plm.properties)."
 msgstr ""
 
 #: src/plm/core/model/Game.java:185
@@ -672,7 +679,7 @@ msgstr ""
 
 #: src/plm/core/model/Game.java:580
 #, java-format
-msgid "The lecture {0} has no world that I can select"
+msgid "The lecture {0} has no world that I can select."
 msgstr ""
 
 #: src/plm/core/model/Game.java:1005
@@ -774,7 +781,7 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
+msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
 msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
@@ -806,7 +813,7 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
 #, java-format
-msgid "{0}: No entity found. You should fix your paths and such"
+msgid "{0}: No entity found. You should fix your paths and settings."
 msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
@@ -829,7 +836,7 @@ msgstr ""
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
-"property {1}"
+"property {1}."
 msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:465
@@ -862,11 +869,11 @@ msgid ""
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
-msgid "Ok, quit and lose my data"
+msgid "Ok, quit and lose my data."
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
-msgid "Please stop! I'll save it myself first"
+msgid "Please stop! I'll save it myself first."
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:253
@@ -874,15 +881,15 @@ msgstr ""
 msgid ""
 "The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
 "\n"
-" Would you like proceed anyway (and lose any solution typed so far)?"
+" Would you like proceed anyway? Any solution typed so far will be lost."
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:256
-msgid "Your changes are NOT saved"
+msgid "Your changes are NOT saved."
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:259
-msgid "User aborted saving on system error"
+msgid "User aborted saving on system error."
 msgstr ""
 
 #: src/plm/core/model/session/ZipSessionKit.java:356
@@ -932,7 +939,7 @@ msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr ""
 
 #: src/plm/core/model/tracking/GitSpy.java:168
-msgid "Pushing to the remote repository before exiting"
+msgid "Pushing to the remote repository before exiting."
 msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:76
@@ -948,11 +955,11 @@ msgid "An error occurred while checking out the user's branch: "
 msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:132
-msgid "last session data successfully retrieved"
+msgid "Last session data successfully retrieved."
 msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:135
-msgid "last session data successfully merged"
+msgid "Last session data successfully merged."
 msgstr ""
 
 #: src/plm/core/model/tracking/GitUtils.java:138
@@ -1819,7 +1826,7 @@ msgstr ""
 #: src/plm/core/ui/action/StartExecution.java:66
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
-"activity with the stop button"
+"activity with the Stop button."
 msgstr ""
 
 #: src/plm/core/ui/action/StepExecution.java:22
@@ -2204,29 +2211,29 @@ msgstr ""
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
-"empty!)"
+"empty!)."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:136
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
-"first line: {1})"
+"first line: {1})."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:142
 #, java-format
-msgid "{0}.map: End of file reached before world size specification"
+msgid "{0}.map: End of file reached before world size specification."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:147
 #, java-format
-msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
+msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:173
 #, java-format
-msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
+msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:187
@@ -2242,7 +2249,7 @@ msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:218
 #, java-format
-msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
+msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:231
@@ -2252,17 +2259,17 @@ msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
-msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
+msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:241
 #, java-format
-msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
+msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:245
 #, java-format
-msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
+msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead."
 msgstr ""
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:255
