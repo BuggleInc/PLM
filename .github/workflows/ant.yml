@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      - uses: ryankurte/action-apt@v0.3.0
+    - uses: ryankurte/action-apt@v0.3.0
     with:
       packages: "gettext po4a"
     - name: Set up JDK 11
