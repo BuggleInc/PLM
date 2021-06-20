@@ -18,6 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ryankurte/action-apt@v0.3.0
       with:
+        arch: amd64
         packages: "gettext po4a"
     - name: Set up JDK 11
       uses: actions/setup-java@v2
