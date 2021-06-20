@@ -3,22 +3,22 @@
 # This file is distributed under the same license as the PLM itself
 # Martin Quinson <martin.quinson@loria.fr>, 2013.
 # Martin Quinson <Martin.Quinson@loria.fr>, 2014.
-# Martin Quinson <martin.quinson@ens-rennes.fr>, 2020.
+# Martin Quinson <martin.quinson@ens-rennes.fr>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 00:21+0200\n"
-"PO-Revision-Date: 2020-09-20 15:26+0000\n"
+"POT-Creation-Date: 2021-06-21 00:45+0200\n"
+"PO-Revision-Date: 2021-06-20 22:51+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/programmers-"
-"learning-machine/binary/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"programmers-learning-machine/binary/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.7\n"
 
 #: src/lessons/lightbot/universe/LightBotExercise.java:56
 msgid "A light is still off."
@@ -111,29 +111,24 @@ msgid "Invalid move"
 msgstr "Déplacement invalide"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
-#, fuzzy, java-format
-#| msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
+#, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}.\n"
 msgstr ""
-"Les disques n''ont pas été déplacés le même nombre de fois : {0} contre {1}\n"
+"Les disques n''ont pas été déplacés le même nombre de fois : {0} contre "
+"{1}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
-#, fuzzy, java-format
-#| msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+#, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
-msgstr " Le disque n°{0} du piquet {1} diffère : {2} vs {3}\n"
+msgstr " Le disque n°{0} du piquet {1} diffère : {2} vs {3}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
-#, fuzzy, java-format
-#| msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+#, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
-msgstr " La couleur du disque n°{0} au piquet {1} diffère : {2} vs {3}\n"
+msgstr " La couleur du disque n°{0} au piquet {1} diffère : {2} vs {3}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
-#, fuzzy, java-format
-#| msgid ""
-#| "Cannot move from slot {0} to {1}: the only existing slots are numbered "
-#| "from 0 to {2}"
+#, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}."
@@ -142,22 +137,17 @@ msgstr ""
 "numérotés de 0 à {2} existent."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
-#, fuzzy, java-format
-#| msgid "Cannot move from slot {0} to itself"
+#, java-format
 msgid "Cannot move from slot {0} to itself."
-msgstr "Impossible de bouger du piquet {0} à lui-même"
+msgstr "Impossible de bouger du piquet {0} à lui-même."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:206
-#, fuzzy, java-format
-#| msgid "No disc to move from slot {0}"
+#, java-format
 msgid "No disc to move from slot {0}."
-msgstr "Il n''y a pas de disque à déplacer sur le piquet {0}"
+msgstr "Il n''y a pas de disque à déplacer sur le piquet {0}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:211
-#, fuzzy, java-format
-#| msgid ""
-#| "Cannot move disc from slot {0} to {1} small disk must remain over large "
-#| "ones but {2} > {3}"
+#, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
 "but {2} > {3}."
@@ -166,15 +156,16 @@ msgstr ""
 "disques doivent rester au dessus des gros mais {2} > {3}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:229
-#, fuzzy, java-format
-#| msgid "Invalid color name: {0}"
+#, java-format
 msgid "Invalid slot: {0}."
-msgstr "Nom de couleur invalide : {0}"
+msgstr "Piquet invalide : {0}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:231
 #, java-format
 msgid "Slot {0} is only {1} high; Cannot get the color of the {2}th disk."
 msgstr ""
+"Le piquet {0} ne contient que {1} disque(s). Impossible d''obtenir la "
+"couleur du disque n°{2}."
 
 #. Create the button
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
@@ -217,9 +208,9 @@ msgid ""
 "information:\n"
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
-"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les "
-"informations suivantes:\n"
-"Exercice : {0}; Nombre de bases : {1}; Situation initiale : {2}"
+"Ce n''est toujours pas trié ! ! MERCI DE RAPPORTER CE PROBLÈME, avec les "
+"informations suivantes :\n"
+"Exercice : {0} ; Nombre de bases : {1} ; Situation initiale : {2}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:409
 #, java-format
@@ -260,7 +251,6 @@ msgid "This world is not a dutch flag"
 msgstr "Ce monde n'est pas un drapeau hollandais"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
 msgid "The two worlds are of differing size"
 msgstr "Les deux mondes ne sont pas de la même taille"
 
@@ -292,9 +282,9 @@ msgid ""
 "information:\n"
 "Initial situation: {0}"
 msgstr ""
-"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les "
-"informations suivantes :\n"
-"Situation initiale : {0}"
+"Ce n''est toujours pas trié ! ! MERCI DE RAPPORTER CE PROBLÈME, avec les "
+"informations suivantes :\n"
+"Situation initiale : {0}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:145
 #: src/plm/universe/sort/SortingButtonPanel.java:70
@@ -308,48 +298,66 @@ msgid "flip({0})"
 msgstr "retourne({0})"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
-msgid "This is not a world of pancakes"
+#, fuzzy
+#| msgid "This is not a world of pancakes"
+msgid "This is not a world of pancakes."
 msgstr "Ce n'est pas un monde de crêpes"
 
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
+#, fuzzy
+#| msgid "The two worlds are of differing size"
+msgid "The two worlds are of differing size."
+msgstr "Les deux mondes ne sont pas de la même taille"
+
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:124
-#, java-format
-msgid "Stacks were not flipped the same amount of time: {0} vs. {1}\n"
+#, fuzzy, java-format
+#| msgid "Stacks were not flipped the same amount of time: {0} vs. {1}\n"
+msgid "Stacks were not flipped the same amount of time: {0} vs. {1}.\n"
 msgstr ""
 "Les piles n''ont pas été retournées le même nombre de fois : {0} contre {1}\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:128
-#, java-format
-msgid " Pancake #{0} differs: {1} vs. {2}\n"
+#, fuzzy, java-format
+#| msgid " Pancake #{0} differs: {1} vs. {2}\n"
+msgid " Pancake #{0} differs: {1} vs. {2}.\n"
 msgstr " La crêpe numéro {0} diffère : {1} vs {2}\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:206
-#, java-format
-msgid "Asked to flip {0} pancakes, but you must flip at least one"
+#, fuzzy, java-format
+#| msgid "Asked to flip {0} pancakes, but you must flip at least one"
+msgid "Asked to flip {0} pancakes, but you must flip at least one."
 msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il faut en retourner au "
 "moins une."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:208
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
 msgid ""
-"Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
+"Asked to flip {0} pancakes, but there is only {1} pancakes on this stack."
 msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il n''y a que {1} crêpes sur "
 "la pile."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:242
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgid ""
-"Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
+"Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
 msgstr ""
 "Impossible d''obtenir la taille de la crêpe numéro {0} car ce n''est pas "
 "entre 0 et {1}"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:261
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Cannot get the orientation of pancake #{0} because it''s not between 0 "
+#| "and {1}"
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
-"{1}"
+"{1}."
 msgstr ""
 "Impossible d''obtenir l''orientation de la crêpe numéro {0} car ce n''est "
 "pas entre 0 et {1}"
@@ -532,8 +540,14 @@ msgstr ""
 msgid "Compilation error:"
 msgstr "Erreur de compilation :"
 
+#: src/plm/core/lang/LangC.java:251
+msgid "Valgrind does not seem to be installed."
+msgstr ""
+
 #: src/plm/core/lang/LangC.java:260 src/plm/core/lang/LangC.java:267
-msgid "Error, please recompile the exercise"
+#, fuzzy
+#| msgid "Error, please recompile the exercise"
+msgid "Error, please recompile the exercise."
 msgstr "Erreur, veuillez recompiler l'exercice."
 
 #.
@@ -581,9 +595,13 @@ msgstr ""
 "réussir l'exercice.\n"
 
 #: src/plm/core/lang/LangPython.java:72
+#, fuzzy
+#| msgid ""
+#| "NameError raised: You seem to use a non-existent identifier; Please check "
+#| "for typos\n"
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
-"for typos\n"
+"for typos.\n"
 msgstr ""
 "Erreur de nom : vous semblez utiliser un identifiant qui n'existe pas. "
 "Auriez-vous fait une typo ?\n"
@@ -603,11 +621,15 @@ msgstr ""
 "déclarée, ou quelque chose du genre.\n"
 
 #: src/plm/core/lang/LangPython.java:87
-msgid "Error: there is no baggle to pickup under the buggle"
+#, fuzzy
+#| msgid "Error: there is no baggle to pickup under the buggle"
+msgid "Error: there is no baggle to pickup under the buggle."
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
 #: src/plm/core/lang/LangPython.java:89
-msgid "Error: a buggle cannot carry more than one baggle at the same time"
+#, fuzzy
+#| msgid "Error: a buggle cannot carry more than one baggle at the same time"
+msgid "Error: a buggle cannot carry more than one baggle at the same time."
 msgstr "Erreur : une buggle ne peut porter qu'un biscuit à la fois."
 
 #: src/plm/core/lang/LangPython.java:91
@@ -691,7 +713,16 @@ msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "Veuillez installer gcc afin d'utiliser le langage C dans la PLM."
 
 #: src/plm/core/model/Game.java:179
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Warning, the default programming language is neither ''Java'' nor "
+#| "''python'' or ''Scala'' or ''C'' but {0}.\n"
+#| "   This language will be used to setup the worlds, possibly leading to "
+#| "severe issues for the exercises that don''t expect it.\n"
+#| "   It is safer to change the current language, and restart the PLM before "
+#| "proceeding.\n"
+#| "   Alternatively, the property {1} can be changed in your configuration "
+#| "file ({2}/plm.properties)"
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
 "or ''Scala'' or ''C'' but {0}.\n"
@@ -700,7 +731,7 @@ msgid ""
 "   It is safer to change the current language, and restart the PLM before "
 "proceeding.\n"
 "   Alternatively, the property {1} can be changed in your configuration file "
-"({2}/plm.properties)"
+"({2}/plm.properties)."
 msgstr ""
 "Attention, le langage de programmation par défaut n''est ni «Java» ni "
 "«python» ni «scala» ni «C», mais {0}.\n"
@@ -817,8 +848,9 @@ msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
 #: src/plm/core/model/Game.java:580
-#, java-format
-msgid "The lecture {0} has no world that I can select"
+#, fuzzy, java-format
+#| msgid "The lecture {0} has no world that I can select"
+msgid "The lecture {0} has no world that I can select."
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
 #: src/plm/core/model/Game.java:1005
@@ -941,8 +973,9 @@ msgstr ""
 "entité."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
-#, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
+#, fuzzy, java-format
+#| msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
+msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
 msgstr ""
 "{0}: BEGIN SOLUTION après la fin du template. Changez le en BEGIN HIDDEN."
 
@@ -983,8 +1016,9 @@ msgstr ""
 "d''entité pour ce langage : {2}"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
-#, java-format
-msgid "{0}: No entity found. You should fix your paths and such"
+#, fuzzy, java-format
+#| msgid "{0}: No entity found. You should fix your paths and such"
+msgid "{0}: No entity found. You should fix your paths and settings."
 msgstr "{0}: aucune entité trouvée. Vous devriez corriger vos réglages."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
@@ -1007,10 +1041,13 @@ msgstr ""
 "tous les mondes solutions."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:425
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Recompute the answer of {0} despite the cache file, as requested by the "
+#| "property {1}"
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
-"property {1}"
+"property {1}."
 msgstr ""
 "Recalcule la solution de {0} malgré le fichier de cache, comme demandé par "
 "la propriété {1}."
@@ -1049,30 +1086,42 @@ msgstr ""
 "rechargée correctement. Merci de faire un rapport d'anomalie."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
-msgid "Ok, quit and lose my data"
+#, fuzzy
+#| msgid "Ok, quit and lose my data"
+msgid "Ok, quit and lose my data."
 msgstr "D'accord. Quitter et perdre mes données."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
-msgid "Please stop! I'll save it myself first"
+#, fuzzy
+#| msgid "Please stop! I'll save it myself first"
+msgid "Please stop! I'll save it myself first."
 msgstr "STOP ! je vais d'abord sauvegarder mes données moi-même"
 
 #: src/plm/core/model/session/ZipSessionKit.java:253
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
+#| "\n"
+#| " Would you like proceed anyway (and lose any solution typed so far)?"
 msgid ""
 "The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
 "\n"
-" Would you like proceed anyway (and lose any solution typed so far)?"
+" Would you like proceed anyway? Any solution typed so far will be lost."
 msgstr ""
 "La PLM n''a pas pu sauvegarder votre session pour la leçon {0} ({1}:{2}).\n"
 "\n"
 "Voulez-vous continuer malgré tout ? Tout votre travail sera perdu."
 
 #: src/plm/core/model/session/ZipSessionKit.java:256
-msgid "Your changes are NOT saved"
+#, fuzzy
+#| msgid "Your changes are NOT saved"
+msgid "Your changes are NOT saved."
 msgstr "Vos changements n'ont PAS été sauvés."
 
 #: src/plm/core/model/session/ZipSessionKit.java:259
-msgid "User aborted saving on system error"
+#, fuzzy
+#| msgid "User aborted saving on system error"
+msgid "User aborted saving on system error."
 msgstr "L'utilisateur a annulé la sauvegarde suite à une erreur système."
 
 #: src/plm/core/model/session/ZipSessionKit.java:356
@@ -1126,7 +1175,9 @@ msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr "Impossible de récupérer une session adéquate sur les serveurs..."
 
 #: src/plm/core/model/tracking/GitSpy.java:168
-msgid "Pushing to the remote repository before exiting"
+#, fuzzy
+#| msgid "Pushing to the remote repository before exiting"
+msgid "Pushing to the remote repository before exiting."
 msgstr "Envoi de vos changements sur le serveur avant de quitter."
 
 #: src/plm/core/model/tracking/GitUtils.java:76
@@ -1142,11 +1193,15 @@ msgid "An error occurred while checking out the user's branch: "
 msgstr "Erreur lors de la récupération de la branche utilisateur : "
 
 #: src/plm/core/model/tracking/GitUtils.java:132
-msgid "last session data successfully retrieved"
+#, fuzzy
+#| msgid "last session data successfully retrieved"
+msgid "Last session data successfully retrieved."
 msgstr "Les données de la session précédente ont été récupérées."
 
 #: src/plm/core/model/tracking/GitUtils.java:135
-msgid "last session data successfully merged"
+#, fuzzy
+#| msgid "last session data successfully merged"
+msgid "Last session data successfully merged."
 msgstr "Les données de la session précédente ont été fusionnées avec succès."
 
 #: src/plm/core/model/tracking/GitUtils.java:138
@@ -1652,20 +1707,6 @@ msgid "Issue title:"
 msgstr "Intitulé du problème :"
 
 #: src/plm/core/ui/FeedbackDialog.java:110
-#, fuzzy
-#| msgid ""
-#| "<h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
-#| "please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug "
-#| "Tracker</a>. If not, you can use this window to report an issue in the "
-#| "PLM (be it in one exercise or in the PLM itself). Please write your "
-#| "report in English or French if possible.</p><p>You should include all "
-#| "relevant information that could help us fixing the issue. Don't remove "
-#| "the technical details unless you are certain that they are not relevant. "
-#| "What you write here will be public: <b>Never disclose passwords or other "
-#| "sensible information on a bug tracker</b></p><p>When you find a typo or a "
-#| "sentence that is hard to understand, it really helps to suggest a new "
-#| "wording.If you encounter a technical bug, please tell us what you did, "
-#| "which outcome you were expecting and what happened instead.</p><br/>"
 msgid ""
 "<h1>Asking a question about the PLM</h1><p>If you're stuck or unsure, you "
 "can come and discuss with us on our <a href='https://discord.gg/"
@@ -1685,11 +1726,18 @@ msgid ""
 "encounter a technical bug, please tell us what you did, which outcome you "
 "were expecting and what happened instead.</p><br/>"
 msgstr ""
+"<h1>Poser une question sur la PLM</h1>\n"
+"<p>Si vous êtes bloqué(e) ou hésitant(e), venez en discuter avec nous sur le "
+"<a href='https://discord.gg/agxNPGj'>serveur Discord</a>. Vous pouvez aussi "
+"utiliser ce canal pour discuter de nouvelles idées d'extensions pour la PLM, "
+"ou simplement pour discuter avec nous pendant que vous travaillez sur la PLM."
+"</p>\n"
 "<h1>Signaler un bug dans la PLM</h1>\n"
 "<p>Si vous avez un compte sur GitHub, rendez vous sur le <a href='https://"
 "github.com/BuggleInc/PLM'>gestionnaire de bugs de la PLM</a>. Sinon, vous "
 "pouvez utiliser cette fenêtre pour signaler le problème (en anglais ou en "
-"français si possible).</p>\n"
+"français si possible), <b>mais ne posez pas de question dans cette fenêtre, "
+"car nous ne pouvons pas vous répondre ici</b>.</p>\n"
 "<p>Merci d'inclure toutes les informations qui peuvent nous aider à "
 "comprendre le problème. Ne retirez les informations techniques ci-dessous "
 "que si vous êtes certain qu'elles sont sans rapport avec votre problème. Ce "
@@ -2169,9 +2217,13 @@ msgid "Launch the execution of your code"
 msgstr "Démarrer l'exécution de votre code"
 
 #: src/plm/core/ui/action/StartExecution.java:66
+#, fuzzy
+#| msgid ""
+#| "Cannot launch the execution right now. Wait a bit, or interrupt current "
+#| "activity with the stop button"
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
-"activity with the stop button"
+"activity with the Stop button."
 msgstr ""
 "Je ne peux démarrer l'exécution de votre code. Attendez un peu ou "
 "interrompez l'activité courante avec le bouton Stop."
@@ -2587,38 +2639,47 @@ msgstr ""
 "depuis un fichier jar. Merci de corriger votre exercice."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:130
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "{0}.map: this file does not seem to be a serialized BuggleWorld (the file "
+#| "is empty!)"
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
-"empty!)"
+"empty!)."
 msgstr ""
 "{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (fichier "
 "vide !)"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:136
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "{0}.map: This file does not seem to be a serialized BuggleWorld "
+#| "(malformated first line: {1})"
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
-"first line: {1})"
+"first line: {1})."
 msgstr ""
 "{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (première "
 "ligne mal formée : {1})"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:142
-#, java-format
-msgid "{0}.map: End of file reached before world size specification"
+#, fuzzy, java-format
+#| msgid "{0}.map: End of file reached before world size specification"
+msgid "{0}.map: End of file reached before world size specification."
 msgstr ""
 "{0}.map : fin de fichier (EOF) rencontrée avant la spécification de la "
 "taille du monde."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:147
-#, java-format
-msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
+#, fuzzy, java-format
+#| msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
+msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''."
 msgstr "{0}.map:1: ''Size: NNxMM'' était attendu, mais on a lu ''{0}''"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:173
-#, java-format
-msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
+#, fuzzy, java-format
+#| msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
+msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 "Je ne peux poser une buggle aux coordonnées {0},{1} : c''est en dehors du "
 "monde"
@@ -2635,8 +2696,9 @@ msgid "Invalid buggle''s color name: {0}"
 msgstr "Couleur invalide de buggle : {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:218
-#, java-format
-msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
+#, fuzzy, java-format
+#| msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
+msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 "Je ne peux définir les coordonnées de cellule {0},{1} : c''est en dehors du "
 "monde"
@@ -2647,18 +2709,21 @@ msgid "Invalid color name: {0}"
 msgstr "Nom de couleur invalide : {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:237
-#, java-format
-msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
+#, fuzzy, java-format
+#| msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
+msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead."
 msgstr "«baggle» ou «nobaggle» était attendu, mais on a «{0}» à la place"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:241
-#, java-format
-msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
+#, fuzzy, java-format
+#| msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
+msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead."
 msgstr "«topwall» ou «notopwall» était attendu, mais on a «{0}» à la place"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:245
-#, java-format
-msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
+#, fuzzy, java-format
+#| msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
+msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead."
 msgstr "«leftwall» ou «noleftwall» était attendu, mais on a «{0}» à la place"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:255
