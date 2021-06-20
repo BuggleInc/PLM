@@ -165,7 +165,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
 	@Override
 	public void leave() {	
-		System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting"));
+		System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting."));
 		
 		// push to the remote repository
 		String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");

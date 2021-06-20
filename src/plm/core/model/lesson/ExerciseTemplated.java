@@ -160,7 +160,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
+					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN.",shownFilename));
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
@@ -372,7 +372,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 		}
 		if (!foundALanguage) 
-			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
+			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and settings.",getName()));
 				
 		computeAnswer();
 	}
@@ -422,7 +422,7 @@ public abstract class ExerciseTemplated extends Exercise {
 							return;
 						}
 					} else {
-						System.out.println(i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
+						System.out.println(i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}.",worldFileName,Game.PROP_ANSWER_CACHE));
 					}
 				}
 				

@@ -127,24 +127,24 @@ public class BuggleWorld extends GridWorld {
 		String line = reader.readLine();
 		if (line == null)
 			throw new BrokenWorldFileException(Game.i18n.tr(
-					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty!)",path));
+					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty!).",path));
 		
 		Pattern p = Pattern.compile("^"+classname+": ");
 		Matcher m = p.matcher(line);
 		if (!m.find())
 			throw new RuntimeException(Game.i18n.tr(
-					"{0}.map: This file does not seem to be a serialized BuggleWorld (malformated first line: {1})", path, line));
+					"{0}.map: This file does not seem to be a serialized BuggleWorld (malformated first line: {1}).", path, line));
 		name = m.replaceAll("");
 		
 		/* Get the dimension from the second line that is eg "Size: 20x20" */
 		line = reader.readLine();
 		if (line == null)
 			throw new RuntimeException(Game.i18n.tr("" +
-					"{0}.map: End of file reached before world size specification",path));
+					"{0}.map: End of file reached before world size specification.",path));
 		p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
 		m = p.matcher(line);
 		if (!m.find()) 
-			throw new RuntimeException(Game.i18n.tr("{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''", line));
+			throw new RuntimeException(Game.i18n.tr("{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''.", line));
 		int width = Integer.parseInt(m.group(1)); 
 		int height = Integer.parseInt(m.group(2));
 
@@ -170,7 +170,7 @@ public class BuggleWorld extends GridWorld {
 
 				if (x<0 || x > width || y<0 || y>height)
 					throw new BrokenWorldFileException(Game.i18n.tr(
-							"Cannot put a buggle on coordinate {0},{1}: that''s out of the world",x,y));
+							"Cannot put a buggle on coordinate {0},{1}: that''s out of the world.",x,y));
 
 				String dirName = buggleMatcher.group(3);
 				Direction direction;
@@ -206,7 +206,7 @@ public class BuggleWorld extends GridWorld {
 				if (haveBaggle.equals("haveBaggle"))
 					b.doCarryBaggle();
 				else if (! haveBaggle.equals("noBaggle"))
-					throw new BrokenWorldFileException("Broken file, invalid buggle carrying information '"+haveBaggle+"': A buggle can either carry a baggle (haveBaggle) or not (noBaggle)");
+					throw new BrokenWorldFileException("Broken file, invalid buggle carrying information '"+haveBaggle+"': A buggle can either carry a baggle (haveBaggle) or not (noBaggle).");
 
 			} else if (cellMatcher.matches()) {
 				/* Get the info */
@@ -215,7 +215,7 @@ public class BuggleWorld extends GridWorld {
 
 				if (x<0 || x > width || y<0 || y>height)
 					throw new BrokenWorldFileException(Game.i18n.tr(
-							"Cannot define a cell on coordinate {0},{1}: that''s out of the world",x,y));
+							"Cannot define a cell on coordinate {0},{1}: that''s out of the world.",x,y));
 
 
 				String colorName = cellMatcher.group(3);
@@ -234,15 +234,15 @@ public class BuggleWorld extends GridWorld {
 				/* Make sure that this info makes sense */
 				if (!baggleFlag.equalsIgnoreCase("baggle") && !baggleFlag.equalsIgnoreCase("nobaggle"))
 					throw new BrokenWorldFileException(Game.i18n.tr(
-							"Expecting ''baggle'' or ''nobaggle'' but got {0} instead",baggleFlag));
+							"Expecting ''baggle'' or ''nobaggle'' but got {0} instead.",baggleFlag));
 
 				if (!topWallFlag.equalsIgnoreCase("topwall") && !topWallFlag.equalsIgnoreCase("notopwall"))
 					throw new BrokenWorldFileException(Game.i18n.tr(
-							"Expecting ''topwall'' or ''notopwall'' but got {0} instead",topWallFlag));
+							"Expecting ''topwall'' or ''notopwall'' but got {0} instead.",topWallFlag));
 
 				if (!leftWallFlag.equalsIgnoreCase("leftwall") && !leftWallFlag.equalsIgnoreCase("noleftwall"))
 					throw new BrokenWorldFileException(Game.i18n.tr(
-							"Expecting ''leftwall'' or ''noleftwall'' but got {0} instead",leftWallFlag));
+							"Expecting ''leftwall'' or ''noleftwall'' but got {0} instead.",leftWallFlag));
 
 				/* Use the info */
 				BuggleWorldCell cell = new BuggleWorldCell(res, x, y);

@@ -69,7 +69,7 @@ public class LangPython extends ScriptingLanguage {
 		} else { /* It makes sense to display a backtrace for any errors but syntax ones */
 
 			if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
-				msg.append(Game.i18n.tr("NameError raised: You seem to use a non-existent identifier; Please check for typos\n"));
+				msg.append(Game.i18n.tr("NameError raised: You seem to use a non-existent identifier; Please check for typos.\n"));
 				msg.append(cause.value+"\n");
 				errorKind = ExecutionProgress.outcomeKind.COMPILE;
 			} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
@@ -84,9 +84,9 @@ public class LangPython extends ScriptingLanguage {
 
 				/* FIXME: how could we factorize the world's error? */ 
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
-				msg.append(Game.i18n.tr("Error: there is no baggle to pickup under the buggle"));
+				msg.append(Game.i18n.tr("Error: there is no baggle to pickup under the buggle."));
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
-				msg.append(Game.i18n.tr("Error: a buggle cannot carry more than one baggle at the same time"));
+				msg.append(Game.i18n.tr("Error: a buggle cannot carry more than one baggle at the same time."));
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
 				msg.append(Game.i18n.tr("Error: your buggle just teleported to the outer space..."));
 			} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.BuggleWallException'>")) {

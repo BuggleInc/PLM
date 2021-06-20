@@ -129,10 +129,10 @@ public class GitUtils {
 			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
 			
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
-				System.out.println(Game.i18n.tr("last session data successfully retrieved"));
+				System.out.println(Game.i18n.tr("Last session data successfully retrieved."));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.MERGED) {
-				System.out.println(Game.i18n.tr("last session data successfully merged"));
+				System.out.println(Game.i18n.tr("Last session data successfully merged."));
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
 				System.out.println(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));

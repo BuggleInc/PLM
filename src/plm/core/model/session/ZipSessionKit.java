@@ -249,14 +249,14 @@ public class ZipSessionKit implements ISessionKit {
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
-			Object[] options = { Game.i18n.tr("Ok, quit and lose my data"), Game.i18n.tr("Please stop! I'll save it myself first") };
+			Object[] options = { Game.i18n.tr("Ok, quit and lose my data."), Game.i18n.tr("Please stop! I'll save it myself first.") };
 			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
-					+ " Would you like proceed anyway (and lose any solution typed so far)?",
+					+ " Would you like proceed anyway? Any solution typed so far will be lost.",
 					lesson.getName(),ex.getClass().getSimpleName(),ex.getLocalizedMessage()),
-					Game.i18n.tr("Your changes are NOT saved"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					Game.i18n.tr("Your changes are NOT saved."), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, options, options[1]);
 			if (n == 1) {
-				throw new UserAbortException(Game.i18n.tr("User aborted saving on system error"),ex);
+				throw new UserAbortException(Game.i18n.tr("User aborted saving on system error."),ex);
 			}
 
 

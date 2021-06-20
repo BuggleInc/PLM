@@ -179,7 +179,7 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart the PLM before proceeding.\n"+
-					"   Alternatively, the property {1} can be changed in your configuration file ({2}/plm.properties)",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE, getSavingLocation()));
+					"   Alternatively, the property {1} can be changed in your configuration file ({2}/plm.properties).",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE, getSavingLocation()));
 
 		if (defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && !canScala) {
 			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
@@ -577,7 +577,7 @@ public class Game implements IWorldView {
 			}
 			fireSelectedWorldHasChanged(world);
 		} else {
-			throw new RuntimeException(Game.i18n.tr("The lecture {0} has no world that I can select",lect));
+			throw new RuntimeException(Game.i18n.tr("The lecture {0} has no world that I can select.",lect));
 		}
 	}
 

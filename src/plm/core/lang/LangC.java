@@ -94,7 +94,7 @@ public class LangC extends ProgrammingLanguage {
 			}else if(code.contains("RemoteHanoi")){
 				remote = "RemoteHanoi";
 			}else{
-				PLMCompilerException e = new PLMCompilerException("This world is not implemented", null, null);
+				PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
 				throw e;
 			}
@@ -248,7 +248,7 @@ public class LangC extends ProgrammingLanguage {
 						valgrind.append("valgrind --xml=yes --xml-file=\""+valgrindFile.getAbsolutePath()+"\"");
 					}
 				} catch (IOException e) {
-					System.err.println("Valgrind does not seem to be installed");
+					System.err.println(Game.i18n.tr("Valgrind does not seem to be installed."));
 				}
 				arg1 = new String[3];
 				arg1[0]="/bin/sh";
@@ -257,14 +257,14 @@ public class LangC extends ProgrammingLanguage {
 			}
 			File exec = new File(saveDir.getAbsolutePath()+"/"+executable+""+extension);
 			if(!exec.exists()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
+				System.err.println(Game.i18n.tr("Error, please recompile the exercise."));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();
 				}
 				return;
 			}else if(!exec.canExecute() || !exec.isFile()){
-				System.err.println(Game.i18n.tr("Error, please recompile the exercise"));
+				System.err.println(Game.i18n.tr("Error, please recompile the exercise."));
 				randomFile.delete();
 				if(valgrindFile.exists()){
 					valgrindFile.delete();

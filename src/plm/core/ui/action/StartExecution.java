@@ -63,6 +63,6 @@ public class StartExecution extends AbstractGameAction implements HumanLangChang
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {
 		setDescription(i18n.tr("Launch the execution of your code"),
-				i18n.tr("Cannot launch the execution right now. Wait a bit, or interrupt current activity with the stop button"));		
+				i18n.tr("Cannot launch the execution right now. Wait a bit, or interrupt current activity with the Stop button."));
 	}
 }
