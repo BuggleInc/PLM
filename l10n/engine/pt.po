@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-20 00:44+0200\n"
+"POT-Creation-Date: 2021-06-21 00:21+0200\n"
 "PO-Revision-Date: 2021-05-10 11:31+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/programmers-"
@@ -107,48 +107,70 @@ msgid "Invalid move"
 msgstr "Movimento inválido"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
-#, java-format
-msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
+#, fuzzy, java-format
+#| msgid "The disks were not moved the same amount of time: {0} vs. {1}\n"
+msgid "The disks were not moved the same amount of time: {0} vs. {1}.\n"
 msgstr ""
 "Os discos não foram movidos na mesma quantidade de tempo: {0} vs. {1}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
-#, java-format
-msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+#, fuzzy, java-format
+#| msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
 msgstr " Disco #{0} do espaço #{1} difere: {2} vs. {3}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
-#, java-format
-msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+#, fuzzy, java-format
+#| msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n"
+msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
 msgstr " Cor do disco #{0} do espaço #{1} difere: {2} vs. {3}\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Cannot move from slot {0} to {1}: the only existing slots are numbered "
+#| "from 0 to {2}"
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
-"0 to {2}"
+"0 to {2}."
 msgstr ""
 "Não me posso mover do espaço {0} para o {1}: os únicos espaços existentes "
 "são os numerados de 0 a {2}"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
-#, java-format
-msgid "Cannot move from slot {0} to itself"
+#, fuzzy, java-format
+#| msgid "Cannot move from slot {0} to itself"
+msgid "Cannot move from slot {0} to itself."
 msgstr "Não me posso mover do slot {0} para ele próprio"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:206
-#, java-format
-msgid "No disc to move from slot {0}"
+#, fuzzy, java-format
+#| msgid "No disc to move from slot {0}"
+msgid "No disc to move from slot {0}."
 msgstr "Não há disco no slot {0} para mover"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:211
-#, java-format
+#, fuzzy, java-format
+#| msgid ""
+#| "Cannot move disc from slot {0} to {1} small disk must remain over large "
+#| "ones but {2} > {3}"
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
-"but {2} > {3}"
+"but {2} > {3}."
 msgstr ""
 "Não posso mover o disco do slot {0} para o {1} disco pequeno deve repousar "
 "sobre grande, mas {2} > {3}"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:229
+#, fuzzy, java-format
+#| msgid "Invalid color name: {0}"
+msgid "Invalid slot: {0}."
+msgstr "Nome de cor inválido: {0}"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:231
+#, java-format
+msgid "Slot {0} is only {1} high; Cannot get the color of the {2}th disk."
+msgstr ""
 
 #. Create the button
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
@@ -1592,16 +1614,35 @@ msgstr "Relate o seu feedback"
 msgid "Issue title:"
 msgstr "Título do assunto:"
 
-#: src/plm/core/ui/FeedbackDialog.java:109
+#: src/plm/core/ui/FeedbackDialog.java:110
+#, fuzzy
+#| msgid ""
+#| "<h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
+#| "please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug "
+#| "Tracker</a>. If not, you can use this window to report an issue in the "
+#| "PLM (be it in one exercise or in the PLM itself). Please write your "
+#| "report in English or French if possible.</p><p>You should include all "
+#| "relevant information that could help us fixing the issue. Don't remove "
+#| "the technical details unless you are certain that they are not relevant. "
+#| "What you write here will be public: <b>Never disclose passwords or other "
+#| "sensible information on a bug tracker</b></p><p>When you find a typo or a "
+#| "sentence that is hard to understand, it really helps to suggest a new "
+#| "wording.If you encounter a technical bug, please tell us what you did, "
+#| "which outcome you were expecting and what happened instead.</p><br/>"
 msgid ""
-"<h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
+"<h1>Asking a question about the PLM</h1><p>If you're stuck or unsure, you "
+"can come and discuss with us on our <a href='https://discord.gg/"
+"agxNPGj'>Discord server</a>. You can also use this channel to chat about new "
+"ideas to extend the PLM, or simply to chat with us with working with the PLM."
+"</p><h1>Reporting a bug in PLM</h1><p>If you have your own GitHub account, "
 "please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug "
 "Tracker</a>. If not, you can use this window to report an issue in the PLM "
-"(be it in one exercise or in the PLM itself). Please write your report in "
-"English or French if possible.</p><p>You should include all relevant "
-"information that could help us fixing the issue. Don't remove the technical "
-"details unless you are certain that they are not relevant. What you write "
-"here will be public: <b>Never disclose passwords or other sensible "
+"(be it in one exercise or in the PLM itself), but don't ask questions here, "
+"as we have no way to provide an answer on this channel. Please write your "
+"report in English or French if possible.</p><p>You should include all "
+"relevant information that could help us fixing the issue. Don't remove the "
+"technical details unless you are certain that they are not relevant. What "
+"you write here will be public: <b>Never disclose passwords or other sensible "
 "information on a bug tracker</b></p><p>When you find a typo or a sentence "
 "that is hard to understand, it really helps to suggest a new wording.If you "
 "encounter a technical bug, please tell us what you did, which outcome you "
@@ -1620,24 +1661,24 @@ msgstr ""
 "você encontrar um erro técnico, por favor diga-nos o que fez, que resultado "
 "estava a esperar e o que aconteceu no seu lugar.</p><br/>"
 
-#: src/plm/core/ui/FeedbackDialog.java:152
+#: src/plm/core/ui/FeedbackDialog.java:158
 #: src/plm/core/ui/action/RevertExercise.java:20
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/plm/core/ui/FeedbackDialog.java:157
+#: src/plm/core/ui/FeedbackDialog.java:163
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr "Quer realmente cancelar o seu retorno e perder o que editou?"
 
-#: src/plm/core/ui/FeedbackDialog.java:158
+#: src/plm/core/ui/FeedbackDialog.java:164
 msgid "are you sure?"
 msgstr "Tem certeza?"
 
-#: src/plm/core/ui/FeedbackDialog.java:166
+#: src/plm/core/ui/FeedbackDialog.java:172
 msgid "Send feedback"
 msgstr "Enviar retorno"
 
-#: src/plm/core/ui/FeedbackDialog.java:193
+#: src/plm/core/ui/FeedbackDialog.java:199
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
@@ -1646,15 +1687,15 @@ msgstr ""
 "Obrigado pela sua opinião, vamos fazer nosso melhor para\n"
 "aproveitá-la. Siga nosso progresso em {0}."
 
-#: src/plm/core/ui/FeedbackDialog.java:194
+#: src/plm/core/ui/FeedbackDialog.java:200
 msgid "Thanks for your suggestion"
 msgstr "Obrigado pela sua sugestão"
 
-#: src/plm/core/ui/FeedbackDialog.java:203
+#: src/plm/core/ui/FeedbackDialog.java:209
 msgid "Error while uploading your feedback"
 msgstr "Erro ao enviar o seu feedback"
 
-#: src/plm/core/ui/FeedbackDialog.java:210
+#: src/plm/core/ui/FeedbackDialog.java:216
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
@@ -1664,11 +1705,11 @@ msgstr ""
 "consertar o(s) seguinte(s) problema(s):\n"
 "\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:211
+#: src/plm/core/ui/FeedbackDialog.java:217
 msgid "Incorrect feedback"
 msgstr "Feedback incorreto"
 
-#: src/plm/core/ui/FeedbackDialog.java:236
+#: src/plm/core/ui/FeedbackDialog.java:242
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
@@ -1676,12 +1717,12 @@ msgstr ""
 "O título do feedback ainda é o predefinido, especifique um título "
 "relevante.\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:240
+#: src/plm/core/ui/FeedbackDialog.java:246
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr ""
 "O título atual está vazio. Por favor especifique um título relevante.\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:244
+#: src/plm/core/ui/FeedbackDialog.java:250
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
