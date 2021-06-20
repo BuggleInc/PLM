@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
-"POT-Creation-Date: 2021-06-20 00:35+0200\n"
+"POT-Creation-Date: 2021-06-21 00:20+0200\n"
 "PO-Revision-Date: 2015-02-14 21:22+0100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -296,7 +296,7 @@ msgid ""
 "Direction[/!])"
 msgstr "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:36
 msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
@@ -314,32 +314,32 @@ msgstr ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "<b>About the brush</b>"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "<b>Brush down"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "Brush up"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "Get brush position</b>"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "[!java|c]void [/!]brushUp()"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:42
 #, fuzzy
 #| msgid ""
@@ -350,7 +350,7 @@ msgstr ""
 "brushUp()[!java|c];[/!]\n"
 "brushDown()[!java|c];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:43
 #, fuzzy
 #| msgid ""
@@ -361,31 +361,31 @@ msgstr ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "<b>Change the brush color"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "Get the color of the brush</b>"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:45
 #, fuzzy
 #| msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 msgid "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
 msgstr "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:46
 #, fuzzy
 #| msgid "[!java]'C'[/!][!scala|python]\"C\"[/!]"
 msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgstr "[!java]'C'[/!][!scala|python]\"C\"[/!]"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:48
 msgid "<b>Interacting with the world</b>"
 msgstr ""
@@ -404,32 +404,32 @@ msgstr ""
 msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr "[!java]'C'[/!][!scala|python]\"C\"[/!]"
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "<b>Look for a baggle on the ground"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Look for a baggle in bag"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Pickup a baggle"
 msgstr "Prendi il baggle"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Drop a baggle</b>"
 msgstr "Posa a terra il baggle"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
 msgid "(see the note on exceptions)"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:54
 #, fuzzy
 #| msgid ""
@@ -440,7 +440,7 @@ msgstr ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:55
 #, fuzzy
 #| msgid ""
@@ -451,12 +451,12 @@ msgstr ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:56
 msgid "[!java]void [/!]pickupBaggle()"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "[!java]void [/!]dropBaggle()"
 msgstr ""
@@ -496,29 +496,29 @@ msgstr ""
 msgid "&nbsp;"
 msgstr "&nbsp;"
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "<b>Look for a message"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
 #, fuzzy
 #| msgid "Message"
 msgid "Add a message"
 msgstr "Messaggi"
 
-#. type: Content of: <table><tr><td><tr><td><b>
+#. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Read the message"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Erase the message</b>"
 msgstr ""
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:61
 #, fuzzy
 #| msgid ""
@@ -529,7 +529,7 @@ msgstr ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:62
 #, fuzzy
 #| msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
@@ -538,7 +538,7 @@ msgid ""
 "String[/!])"
 msgstr "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:63
 #, fuzzy
 #| msgid ""
@@ -549,7 +549,7 @@ msgstr ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 
-#. type: Content of: <table><tr><td><tr><td>
+#. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:64
 msgid "[!java]void [/!]clearMessage()"
 msgstr ""
