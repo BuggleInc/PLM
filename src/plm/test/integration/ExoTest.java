@@ -2,6 +2,8 @@ package plm.test.integration;
 
 import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -163,9 +165,18 @@ public class ExoTest {
 		
 		
 		if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			String msg = exo.getId()+": failed exercise ("+
+			String msg = "Test of "+exo.getId()+" failed ("+
 				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.executionError+"'";
 			System.err.println(msg);									  
+			for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)
+				try {
+					String name = "FailingWorld-"+exo.getId()+"-World"+wnum+".txt";
+					exo.getWorld(0).writeToFile(new File(name));
+					System.err.println(" World "+wnum+" dumped to "+name);
+				} catch (IOException e) {
+					System.err.println("Cannot write the bugged world to disk because of the following exception");
+					e.printStackTrace();
+				}
 			fail(msg);				
 		}
 	}
