@@ -166,19 +166,19 @@ public class HanoiWorld extends World {
 			return "The worlds don't have the same amount of pegs";
 
 		if (other.moveCount != moveCount)
-			res.append(Game.i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}\n",moveCount,other.moveCount));
+			res.append(Game.i18n.tr("The disks were not moved the same amount of time: {0} vs. {1}.\n",moveCount,other.moveCount));
 
 		for (int slot=0; slot<slotsVal.length; slot++)
 			for ( int pos = 0;pos< Math.max(slotsVal[slot].size(),other.slotsVal[slot].size()) ; pos++) {
 				String thisVal = pos >=  this.slotsVal[slot].size()?"--": this.slotsVal[slot].get(pos).toString();
 				String otherVal= pos >= other.slotsVal[slot].size()?"--":other.slotsVal[slot].get(pos).toString();
 				if (!thisVal.equals(otherVal)) {
-					res.append(Game.i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisVal,otherVal));
+					res.append(Game.i18n.tr(" Disk #{0} of slot #{1} differs: {2} vs. {3}.\n",(pos+1),slot,thisVal,otherVal));
 				} else {
 					Color thisColor = pos >=   this.slotsColor[slot].size()?null: this.slotsColor[slot].get(pos);
 					Color otherColor= pos >=  other.slotsColor[slot].size()?null:other.slotsColor[slot].get(pos);
 					if (!thisColor.equals(otherColor)) 
-						res.append(Game.i18n.tr(" Color of disk #{0} of slot #{1} differs: {2} vs. {3}\n",(pos+1),slot,thisColor,otherColor));						
+						res.append(Game.i18n.tr(" Color of disk #{0} of slot #{1} differs: {2} vs. {3}.\n",(pos+1),slot,thisColor,otherColor));
 				}
 			}
 		return res.toString();
@@ -199,16 +199,16 @@ public class HanoiWorld extends World {
 	 * @throws IllegalArgumentException if your move is not valid */
 	public void move(Integer src, Integer dst) {
 		if (src < 0 || src >= slotsVal.length || dst < 0 || dst >= slotsVal.length) 
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}",src,dst,getSlotAmount()-1));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}.",src,dst,getSlotAmount()-1));
 		if (src == dst)
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to itself",src));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to itself.",src));
 		if (slotsVal[src].size() == 0)
-			throw new IllegalArgumentException(Game.i18n.tr("No disc to move from slot {0}",src));
+			throw new IllegalArgumentException(Game.i18n.tr("No disc to move from slot {0}.",src));
 		
 		if (slotsVal[dst].size() > 0 &&
 				slotsVal[src].lastElement() > slotsVal[dst].lastElement())
 			throw new IllegalArgumentException(
-					Game.i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
+					Game.i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}.",
 							src,dst,slotsVal[src].lastElement(),slotsVal[dst].lastElement()));
 		
 		moveCount  ++;
@@ -226,9 +226,9 @@ public class HanoiWorld extends World {
 	}
 	public Color getColor(int slot, int pos) {
 		if (slot >= getSlotAmount() || slot < 0)
-			throw new RuntimeException("Invalid slot: "+slot);
+			throw new RuntimeException(Game.i18n.tr("Invalid slot: {0}.",slot));
 		if (pos>= slotsColor[slot].size())
-			throw new RuntimeException("Slot "+slot+" is only "+slotsColor[slot].size()+" high; cannot take position "+pos);
+			throw new RuntimeException(Game.i18n.tr("Slot {0} is only {1} high; Cannot get the color of the {2}th disk.",slot,slotsColor[slot].size(),pos));
 		return slotsColor[slot].get(pos);		
 	}
 	public void setColor(int slot, int pos, Color c) {
