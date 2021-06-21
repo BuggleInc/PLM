@@ -114,7 +114,7 @@ public class FeedbackDialog extends JDialog {
 			+"<h1>Reporting a bug in PLM</h1>\n"
 			+ "<p>If you have your own GitHub account, please head to the <a href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. "
 			+ "If not, you can use this window to report an issue in the PLM (be it in one exercise or in the PLM itself), "
-			+ "but don't ask questions here, as we have no way to provide an answer on this channel. "
+			+ "but <b>don't ask questions in this window</b>, as we have no way to provide an answer on this channel. "
 			+ "Please write your report in English or French if possible.</p>\n"
 			+ "<p>You should include all relevant information that could help us fixing the issue. Don't remove the technical details unless you are certain that they are not relevant. "
 			+ "What you write here will be public: <b>Never disclose passwords or other sensible information on a bug tracker</b></p>\n"

@@ -127,7 +127,7 @@ public class BuggleWorld extends GridWorld {
 		String line = reader.readLine();
 		if (line == null)
 			throw new BrokenWorldFileException(Game.i18n.tr(
-					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty!).",path));
+					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty).",path));
 		
 		Pattern p = Pattern.compile("^"+classname+": ");
 		Matcher m = p.matcher(line);
