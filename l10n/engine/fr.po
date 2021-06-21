@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 00:53+0200\n"
-"PO-Revision-Date: 2021-06-20 22:51+0000\n"
+"POT-Creation-Date: 2021-06-21 10:53+0200\n"
+"PO-Revision-Date: 2021-06-21 06:54+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/programmers-"
 "learning-machine/binary/fr/>\n"
@@ -298,42 +298,34 @@ msgid "flip({0})"
 msgstr "retourne({0})"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
-#, fuzzy
-#| msgid "This is not a world of pancakes"
 msgid "This is not a world of pancakes."
-msgstr "Ce n'est pas un monde de crêpes"
+msgstr "Ce n'est pas un monde de crêpes."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:120
-#, fuzzy
-#| msgid "The two worlds are of differing size"
 msgid "The two worlds are of differing size."
-msgstr "Les deux mondes ne sont pas de la même taille"
+msgstr "Les deux mondes ne sont pas de la même taille."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:124
-#, fuzzy, java-format
-#| msgid "Stacks were not flipped the same amount of time: {0} vs. {1}\n"
+#, java-format
 msgid "Stacks were not flipped the same amount of time: {0} vs. {1}.\n"
 msgstr ""
-"Les piles n''ont pas été retournées le même nombre de fois : {0} contre {1}\n"
+"Les piles n''ont pas été retournées le même nombre de fois : {0} contre "
+"{1}.\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:128
-#, fuzzy, java-format
-#| msgid " Pancake #{0} differs: {1} vs. {2}\n"
+#, java-format
 msgid " Pancake #{0} differs: {1} vs. {2}.\n"
-msgstr " La crêpe numéro {0} diffère : {1} vs {2}\n"
+msgstr " La crêpe numéro {0} diffère : {1} vs {2}.\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:206
-#, fuzzy, java-format
-#| msgid "Asked to flip {0} pancakes, but you must flip at least one"
+#, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one."
 msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il faut en retourner au "
 "moins une."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:208
-#, fuzzy, java-format
-#| msgid ""
-#| "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
+#, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack."
 msgstr ""
@@ -341,26 +333,21 @@ msgstr ""
 "la pile."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:242
-#, fuzzy, java-format
-#| msgid ""
-#| "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
+#, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
 msgstr ""
 "Impossible d''obtenir la taille de la crêpe numéro {0} car ce n''est pas "
-"entre 0 et {1}"
+"entre 0 et {1}."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:261
-#, fuzzy, java-format
-#| msgid ""
-#| "Cannot get the orientation of pancake #{0} because it''s not between 0 "
-#| "and {1}"
+#, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}."
 msgstr ""
 "Impossible d''obtenir l''orientation de la crêpe numéro {0} car ce n''est "
-"pas entre 0 et {1}"
+"pas entre 0 et {1}."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
 #: src/lessons/welcome/loopdowhile/Poucet2Entity.java:12
@@ -509,13 +496,19 @@ msgid ""
 "provided method."
 msgstr ""
 "Votre entité n'a pas démarré. Auriez-vous oublié de placer votre code dans "
-"une méthode ? Ce problème survient souvent quand l'exercice s'attend à ce "
-"que vous placiez votre code dans une méthode (nommée run() ou autrement) "
-"mais que vous placez malgré tout des instructions comme avance() en dehors "
-"de toute méthode. La solution la plus simple pour corriger ce problème est "
-"de copier tout votre code (Ctrl-A Ctrl-C) puis d'utiliser la fonctionnalité "
-"\"Exercice / réinitialiser\" du menu pour rétablir le code proposé. Ensuite, "
-"collez votre code (Ctrl-V) à l'intérieur de la méthode fournie."
+"une méthode ?\n"
+"\n"
+"Ce problème survient souvent quand l'exercice s'attend à ce que vous placiez "
+"votre code \n"
+"dans une méthode (nommée run() ou autrement) mais que vous placez malgré "
+"tout des \n"
+"instructions comme avance() en dehors de toute méthode.\n"
+"\n"
+"La solution la plus simple pour corriger ce problème est de copier tout "
+"votre code (Ctrl-A Ctrl-C) \n"
+"puis d'utiliser la fonctionnalité \"Exercice / réinitialiser\" du menu pour "
+"rétablir le code proposé. \n"
+"Ensuite, collez votre code (Ctrl-V) à l'intérieur de la méthode fournie."
 
 #: src/plm/core/lang/JVMCompiledLang.java:60
 msgid ""
@@ -542,11 +535,9 @@ msgstr "Erreur de compilation :"
 
 #: src/plm/core/lang/LangC.java:251
 msgid "Valgrind does not seem to be installed."
-msgstr ""
+msgstr "Valgrind ne semble pas installé."
 
 #: src/plm/core/lang/LangC.java:260 src/plm/core/lang/LangC.java:267
-#, fuzzy
-#| msgid "Error, please recompile the exercise"
 msgid "Error, please recompile the exercise."
 msgstr "Erreur, veuillez recompiler l'exercice."
 
@@ -590,15 +581,11 @@ msgid ""
 "You interrupted the execution, did you fall into an infinite loop ?\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
 msgstr ""
-"Vous avez interrompu l'exécution. Seriez-vous tombé dans une \n"
-"boucle infinie ? Votre programme doit s'arrêter de lui-même pour \n"
-"réussir l'exercice.\n"
+"Vous avez interrompu l'exécution. Seriez-vous tombé dans une boucle "
+"infinie ? \n"
+"Votre programme doit s'arrêter de lui-même pour réussir l'exercice.\n"
 
 #: src/plm/core/lang/LangPython.java:72
-#, fuzzy
-#| msgid ""
-#| "NameError raised: You seem to use a non-existent identifier; Please check "
-#| "for typos\n"
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos.\n"
@@ -621,14 +608,10 @@ msgstr ""
 "déclarée, ou quelque chose du genre.\n"
 
 #: src/plm/core/lang/LangPython.java:87
-#, fuzzy
-#| msgid "Error: there is no baggle to pickup under the buggle"
 msgid "Error: there is no baggle to pickup under the buggle."
 msgstr "Erreur : Il n'y a pas de biscuit à ramasser ici."
 
 #: src/plm/core/lang/LangPython.java:89
-#, fuzzy
-#| msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgid "Error: a buggle cannot carry more than one baggle at the same time."
 msgstr "Erreur : une buggle ne peut porter qu'un biscuit à la fois."
 
@@ -713,16 +696,7 @@ msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "Veuillez installer gcc afin d'utiliser le langage C dans la PLM."
 
 #: src/plm/core/model/Game.java:179
-#, fuzzy, java-format
-#| msgid ""
-#| "Warning, the default programming language is neither ''Java'' nor "
-#| "''python'' or ''Scala'' or ''C'' but {0}.\n"
-#| "   This language will be used to setup the worlds, possibly leading to "
-#| "severe issues for the exercises that don''t expect it.\n"
-#| "   It is safer to change the current language, and restart the PLM before "
-#| "proceeding.\n"
-#| "   Alternatively, the property {1} can be changed in your configuration "
-#| "file ({2}/plm.properties)"
+#, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
 "or ''Scala'' or ''C'' but {0}.\n"
@@ -848,8 +822,7 @@ msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
 #: src/plm/core/model/Game.java:580
-#, fuzzy, java-format
-#| msgid "The lecture {0} has no world that I can select"
+#, java-format
 msgid "The lecture {0} has no world that I can select."
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
@@ -903,8 +876,8 @@ msgid ""
 msgstr ""
 "Le langage C est actuellement extrêmement expérimental dans la PLM.\n"
 "Si vous continuez en C, vous ne pourrez pas compléter certains exercices\n"
-"qui sont encore en travaux en C (bien que d'autres parties fonctionnent\n"
-"déjà très bien).\n"
+"qui sont encore en travaux en C (bien que d'autres parties fonctionnent "
+"déjà).\n"
 "\n"
 "Voulez-vous continuer malgré tout ?"
 
@@ -973,11 +946,10 @@ msgstr ""
 "entité."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
-#, fuzzy, java-format
-#| msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
+#, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
 msgstr ""
-"{0}: BEGIN SOLUTION après la fin du template. Changez le en BEGIN HIDDEN."
+"{0} : BEGIN SOLUTION après la fin du template. Changez le en BEGIN HIDDEN."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
@@ -1016,10 +988,9 @@ msgstr ""
 "d''entité pour ce langage : {2}"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
-#, fuzzy, java-format
-#| msgid "{0}: No entity found. You should fix your paths and such"
+#, java-format
 msgid "{0}: No entity found. You should fix your paths and settings."
-msgstr "{0}: aucune entité trouvée. Vous devriez corriger vos réglages."
+msgstr "{0} : aucune entité trouvée. Vous devriez corriger vos réglages."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
@@ -1041,10 +1012,7 @@ msgstr ""
 "tous les mondes solutions."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:425
-#, fuzzy, java-format
-#| msgid ""
-#| "Recompute the answer of {0} despite the cache file, as requested by the "
-#| "property {1}"
+#, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}."
@@ -1086,23 +1054,15 @@ msgstr ""
 "rechargée correctement. Merci de faire un rapport d'anomalie."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
-#, fuzzy
-#| msgid "Ok, quit and lose my data"
 msgid "Ok, quit and lose my data."
 msgstr "D'accord. Quitter et perdre mes données."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
-#, fuzzy
-#| msgid "Please stop! I'll save it myself first"
 msgid "Please stop! I'll save it myself first."
-msgstr "STOP ! je vais d'abord sauvegarder mes données moi-même"
+msgstr "STOP ! je vais d'abord sauvegarder mes données moi-même."
 
 #: src/plm/core/model/session/ZipSessionKit.java:253
-#, fuzzy, java-format
-#| msgid ""
-#| "The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
-#| "\n"
-#| " Would you like proceed anyway (and lose any solution typed so far)?"
+#, java-format
 msgid ""
 "The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
 "\n"
@@ -1113,14 +1073,10 @@ msgstr ""
 "Voulez-vous continuer malgré tout ? Tout votre travail sera perdu."
 
 #: src/plm/core/model/session/ZipSessionKit.java:256
-#, fuzzy
-#| msgid "Your changes are NOT saved"
 msgid "Your changes are NOT saved."
 msgstr "Vos changements n'ont PAS été sauvés."
 
 #: src/plm/core/model/session/ZipSessionKit.java:259
-#, fuzzy
-#| msgid "User aborted saving on system error"
 msgid "User aborted saving on system error."
 msgstr "L'utilisateur a annulé la sauvegarde suite à une erreur système."
 
@@ -1175,8 +1131,6 @@ msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr "Impossible de récupérer une session adéquate sur les serveurs..."
 
 #: src/plm/core/model/tracking/GitSpy.java:168
-#, fuzzy
-#| msgid "Pushing to the remote repository before exiting"
 msgid "Pushing to the remote repository before exiting."
 msgstr "Envoi de vos changements sur le serveur avant de quitter."
 
@@ -1193,14 +1147,10 @@ msgid "An error occurred while checking out the user's branch: "
 msgstr "Erreur lors de la récupération de la branche utilisateur : "
 
 #: src/plm/core/model/tracking/GitUtils.java:132
-#, fuzzy
-#| msgid "last session data successfully retrieved"
 msgid "Last session data successfully retrieved."
 msgstr "Les données de la session précédente ont été récupérées."
 
 #: src/plm/core/model/tracking/GitUtils.java:135
-#, fuzzy
-#| msgid "last session data successfully merged"
 msgid "Last session data successfully merged."
 msgstr "Les données de la session précédente ont été fusionnées avec succès."
 
@@ -1293,23 +1243,44 @@ msgid "Changes"
 msgstr "Changements"
 
 #: src/plm/core/ui/AboutPLMDialog.java:124
+#, fuzzy
+#| msgid ""
+#| "<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2020.<br/> "
+#| "The PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git "
+#| "logs for the exact authorship of each file).</p> <p>The PLM software was "
+#| "written internally by the team. This software is distributed under the "
+#| "GNU general public license version 3 (GPLv3).</p> <p>The pedagogical "
+#| "material distributed with the PLM is covered both by the GPLv3 license "
+#| "(mainly for the included code) and by the CC-BY-SA license (mainly for "
+#| "the other media files). But the exact boundary here between the source "
+#| "code and the media is left as an exercise to the reader, so this material "
+#| "is distributed under both licenses for sake of simplicity.</p><p>The "
+#| "GPLv3 license can be found in the archive under the name LICENSE-GPL-3. "
+#| "The CC-BY-SA license can be found online: http://creativecommons.org/"
+#| "licenses/by-sa/3.0/</p><p>The whole artwork is free content, licenced "
+#| "under CC-BY-SA, GPL, LGPL and/or CC0-public domain. Some parts were done "
+#| "by us, other parts were borowed from free collections. The specific "
+#| "license and origin of each files is listed in the COPYING file "
+#| "distributed with the archive.</p>"
 msgid ""
-"<h2>The PLM is proudly Free Software</h2><p>Copyright (c) 2008-2020.<br/> "
-"The PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git "
-"logs for the exact authorship of each file).</p> <p>The PLM software was "
-"written internally by the team. This software is distributed under the GNU "
-"general public license version 3 (GPLv3).</p> <p>The pedagogical material "
-"distributed with the PLM is covered both by the GPLv3 license (mainly for "
-"the included code) and by the CC-BY-SA license (mainly for the other media "
-"files). But the exact boundary here between the source code and the media is "
-"left as an exercise to the reader, so this material is distributed under "
-"both licenses for sake of simplicity.</p><p>The GPLv3 license can be found "
-"in the archive under the name LICENSE-GPL-3. The CC-BY-SA license can be "
-"found online: http://creativecommons.org/licenses/by-sa/3.0/</p><p>The whole "
-"artwork is free content, licenced under CC-BY-SA, GPL, LGPL and/or CC0-"
-"public domain. Some parts were done by us, other parts were borowed from "
-"free collections. The specific license and origin of each files is listed in "
-"the COPYING file distributed with the archive.</p>"
+"<h2>The PLM is proudly Free Software</h2>\n"
+"<p>Copyright (c) 2008-2021.<br/>\n"
+" The PLM Team: Martin Quinson, Gérald Oster and others.<br/>\n"
+" (see the git logs for the exact authorship of each file).</p>\n"
+" <p>The PLM software was written internally by the team. This software is "
+"distributed under the GNU general public license version 3 (GPLv3).</p>\n"
+" <p>The pedagogical material distributed with the PLM is covered both by the "
+"GPLv3 license (mainly for the included code) and by the CC-BY-SA license "
+"(mainly for the other media files). But the exact boundary here between the "
+"source code and the media is left as an exercise to the reader, so this "
+"material is distributed under both licenses for sake of simplicity.</p>\n"
+"<p>The GPLv3 license can be found in the archive under the name LICENSE-"
+"GPL-3. The CC-BY-SA license can be found online: http://creativecommons.org/"
+"licenses/by-sa/3.0/</p>\n"
+"<p>The whole artwork is free content, licenced under CC-BY-SA, GPL, LGPL and/"
+"or CC0-public domain. Some parts were done by us, other parts were borowed "
+"from free collections. The specific license and origin of each files is "
+"listed in the COPYING file distributed with the archive.</p>"
 msgstr ""
 "<h2>La PLM est fière d'être du logiciel libre</h2>\n"
 "<p>Copyright (c) 2008-2020.<br/>\n"
@@ -1412,7 +1383,7 @@ msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
 "found)</p>"
 msgstr ""
-"<p>(impossible d''afficher le descriptif court de cette leçon: le fichier "
+"<p>(impossible d''afficher le descriptif court de cette leçon : le fichier "
 "{0} est introuvable)</p>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:227
@@ -1462,8 +1433,8 @@ msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
 msgstr ""
-"<i>Le maître s'est trompé plus de fois que le débutant n'a jamais fait<br>\n"
-"d'essais</i>, comme on dit."
+"<i>Le maître s'est trompé plus de fois que le débutant n'a jamais "
+"fait<br>d'essais</i>, comme on dit."
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
@@ -1709,24 +1680,27 @@ msgstr "Intitulé du problème :"
 #: src/plm/core/ui/FeedbackDialog.java:110
 #, fuzzy
 #| msgid ""
-#| "<h1>Asking a question about the PLM</h1><p>If you're stuck or unsure, you "
-#| "can come and discuss with us on our <a href='https://discord.gg/"
-#| "agxNPGj'>Discord server</a>. You can also use this channel to chat about "
-#| "new ideas to extend the PLM, or simply to chat with us with working with "
-#| "the PLM.</p><h1>Reporting a bug in PLM</h1><p>If you have your own GitHub "
-#| "account, please head to the <a href='https://github.com/BuggleInc/"
-#| "PLM'>PLM Bug Tracker</a>. If not, you can use this window to report an "
-#| "issue in the PLM (be it in one exercise or in the PLM itself), but don't "
-#| "ask questions here, as we have no way to provide an answer on this "
-#| "channel. Please write your report in English or French if possible.</"
-#| "p><p>You should include all relevant information that could help us "
-#| "fixing the issue. Don't remove the technical details unless you are "
-#| "certain that they are not relevant. What you write here will be public: "
-#| "<b>Never disclose passwords or other sensible information on a bug "
-#| "tracker</b></p><p>When you find a typo or a sentence that is hard to "
-#| "understand, it really helps to suggest a new wording.If you encounter a "
-#| "technical bug, please tell us what you did, which outcome you were "
-#| "expecting and what happened instead.</p><br/>"
+#| "<h1>Asking a question about the PLM</h1>\n"
+#| "<p>If you're stuck or unsure, you can come and discuss with us on our <a "
+#| "href='https://discord.gg/agxNPGj'>Discord server</a>. You can also use "
+#| "this channel to chat about new ideas to extend the PLM, or simply to chat "
+#| "with us with working with the PLM.</p>\n"
+#| "<h1>Reporting a bug in PLM</h1>\n"
+#| "<p>If you have your own GitHub account, please head to the <a "
+#| "href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. If not, you "
+#| "can use this window to report an issue in the PLM (be it in one exercise "
+#| "or in the PLM itself), but don't ask questions here, as we have no way to "
+#| "provide an answer on this channel. Please write your report in English or "
+#| "French if possible.</p>\n"
+#| "<p>You should include all relevant information that could help us fixing "
+#| "the issue. Don't remove the technical details unless you are certain that "
+#| "they are not relevant. What you write here will be public: <b>Never "
+#| "disclose passwords or other sensible information on a bug tracker</b></"
+#| "p>\n"
+#| "<p>When you find a typo or a sentence that is hard to understand, it "
+#| "really helps to suggest a new wording.If you encounter a technical bug, "
+#| "please tell us what you did, which outcome you were expecting and what "
+#| "happened instead.</p><br/>"
 msgid ""
 "<h1>Asking a question about the PLM</h1>\n"
 "<p>If you're stuck or unsure, you can come and discuss with us on our <a "
@@ -1737,9 +1711,9 @@ msgid ""
 "<p>If you have your own GitHub account, please head to the <a href='https://"
 "github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. If not, you can use this "
 "window to report an issue in the PLM (be it in one exercise or in the PLM "
-"itself), but don't ask questions here, as we have no way to provide an "
-"answer on this channel. Please write your report in English or French if "
-"possible.</p>\n"
+"itself), but <b>don't ask questions in this window</b>, as we have no way to "
+"provide an answer on this channel. Please write your report in English or "
+"French if possible.</p>\n"
 "<p>You should include all relevant information that could help us fixing the "
 "issue. Don't remove the technical details unless you are certain that they "
 "are not relevant. What you write here will be public: <b>Never disclose "
@@ -2186,7 +2160,8 @@ msgid ""
 " Are you sure that you want to proceed?"
 msgstr ""
 "Réinitialiser cet exercice effacera tout votre travail et ne peut pas être "
-"annulé. Êtes vous sûr de vouloir le faire ?"
+"annulé.\n"
+" Êtes vous sûr de vouloir le faire ?"
 
 #: src/plm/core/ui/action/RevertExercise.java:24
 msgid "Warning"
@@ -2240,10 +2215,6 @@ msgid "Launch the execution of your code"
 msgstr "Démarrer l'exécution de votre code"
 
 #: src/plm/core/ui/action/StartExecution.java:66
-#, fuzzy
-#| msgid ""
-#| "Cannot launch the execution right now. Wait a bit, or interrupt current "
-#| "activity with the stop button"
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
 "activity with the Stop button."
@@ -2657,7 +2628,7 @@ msgid ""
 "{0}: The path to the map on disk should not include the .map extension (or "
 "it won''t work in jarfiles). Please fix your exercise."
 msgstr ""
-"{0}: le nom de fichier donné pour lire la carte ne devrait pas inclure "
+"{0} : le nom de fichier donné pour lire la carte ne devrait pas inclure "
 "l'extension .map. Sinon, cela ne fonctionnera pas quand la PLM sera chargée "
 "depuis un fichier jar. Merci de corriger votre exercice."
 
@@ -2665,47 +2636,41 @@ msgstr ""
 #, fuzzy, java-format
 #| msgid ""
 #| "{0}.map: this file does not seem to be a serialized BuggleWorld (the file "
-#| "is empty!)"
+#| "is empty!)."
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
-"empty!)."
+"empty)."
 msgstr ""
 "{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (fichier "
 "vide !)"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:136
-#, fuzzy, java-format
-#| msgid ""
-#| "{0}.map: This file does not seem to be a serialized BuggleWorld "
-#| "(malformated first line: {1})"
+#, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})."
 msgstr ""
 "{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (première "
-"ligne mal formée : {1})"
+"ligne mal formée : {1})."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:142
-#, fuzzy, java-format
-#| msgid "{0}.map: End of file reached before world size specification"
+#, java-format
 msgid "{0}.map: End of file reached before world size specification."
 msgstr ""
 "{0}.map : fin de fichier (EOF) rencontrée avant la spécification de la "
 "taille du monde."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:147
-#, fuzzy, java-format
-#| msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
+#, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''."
-msgstr "{0}.map:1: ''Size: NNxMM'' était attendu, mais on a lu ''{0}''"
+msgstr "{0}.map :1 : ''Size : NNxMM'' était attendu, mais on a lu ''{0}''."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:173
-#, fuzzy, java-format
-#| msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
+#, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 "Je ne peux poser une buggle aux coordonnées {0},{1} : c''est en dehors du "
-"monde"
+"monde."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:187
 #, java-format
@@ -2719,12 +2684,11 @@ msgid "Invalid buggle''s color name: {0}"
 msgstr "Couleur invalide de buggle : {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:218
-#, fuzzy, java-format
-#| msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
+#, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 "Je ne peux définir les coordonnées de cellule {0},{1} : c''est en dehors du "
-"monde"
+"monde."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:231
 #, java-format
@@ -2732,22 +2696,19 @@ msgid "Invalid color name: {0}"
 msgstr "Nom de couleur invalide : {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:237
-#, fuzzy, java-format
-#| msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
+#, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead."
-msgstr "«baggle» ou «nobaggle» était attendu, mais on a «{0}» à la place"
+msgstr "«baggle» ou «nobaggle» était attendu, mais on a «{0}» à la place."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:241
-#, fuzzy, java-format
-#| msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
+#, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead."
-msgstr "«topwall» ou «notopwall» était attendu, mais on a «{0}» à la place"
+msgstr "«topwall» ou «notopwall» était attendu, mais on a «{0}» à la place."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:245
-#, fuzzy, java-format
-#| msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
+#, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead."
-msgstr "«leftwall» ou «noleftwall» était attendu, mais on a «{0}» à la place"
+msgstr "«leftwall» ou «noleftwall» était attendu, mais on a «{0}» à la place."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:255
 #, java-format
@@ -2774,12 +2735,12 @@ msgstr "  Le nom du monde est {0}"
 #: src/plm/universe/bugglequest/BuggleWorld.java:578
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
-msgstr "  Il y a {0} formes là où {1} formes étaient attendues"
+msgstr "  Il y a {0} entités là où {1}  étaient attendues."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:582
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
-msgstr "  Il y a quelque chose qui cloche avec la buggle «{0}»:\n"
+msgstr "  Il y a quelque chose qui cloche avec la buggle «{0}» :\n"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:588
 #, java-format
@@ -2935,23 +2896,23 @@ msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
 msgstr ""
-"C''est très bizarre. Il n''y a pas le même nombre de valeurs! J''en "
+"C''est très bizarre. Il n''y a pas le même nombre de valeurs ! J''en "
 "attendais {0}, mais j''en ai {1}.\n"
 
 #: src/plm/universe/sort/SortingWorld.java:119
 #, java-format
 msgid "Invalid read count. Expected: {0}; Found: {1}\n"
-msgstr "Le nombre de lectures diffère. Attendu : {0}; Observé : {1}\n"
+msgstr "Le nombre de lectures diffère. Attendu : {0} ; Observé : {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:122
 #, java-format
 msgid "Invalid write count. Expected: {0}; Found: {1}\n"
-msgstr "Le nombre d''écritures diffère. Attendu : {0}; Observé : {1}\n"
+msgstr "Le nombre d''écritures diffère. Attendu : {0} ; Observé : {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:126
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
-msgstr "Les valeurs à l''index {0} diffère. Attendue : {1}; Observée : {2}\n"
+msgstr "Les valeurs à l''index {0} diffère. Attendue : {1} ; Observée : {2}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:368
 #: src/plm/universe/sort/SortingWorld.java:369
