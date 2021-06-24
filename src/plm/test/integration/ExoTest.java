@@ -66,10 +66,16 @@ public class ExoTest {
 		
 		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
 		for (String lessonName : lessonNamesToTest) { 
-			if(g.switchLesson(lessonName, true)==null) {
-				System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
-				System.exit(1);
+			try {
+				if (g.switchLesson(lessonName, false)==null) {
+					System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
+					System.exit(1);
+				}
+			} catch (Throwable t) {
+				System.err.println("Switching to lesson "+lessonName+" raised a "+t.getClass().getName()+". Please fix it.");
+				t.printStackTrace();
 			}
+				
 			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
@@ -78,6 +84,7 @@ public class ExoTest {
 			for (Lecture l : g.getCurrentLesson().exercises()) 
 				if (l instanceof Exercise) {
 					result.add(new Object[] { Game.getInstance().getCurrentLesson(), l });
+					//System.out.println("  Add exercise "+l.getName());
 					if (alreadySeenExercises.contains(l)) {
 						System.err.println("Warning, I tried to add the exercise "+l.getName()+" twice. Something's wrong here");
 						System.exit(1);
@@ -152,6 +159,7 @@ public class ExoTest {
 			
 			exo.check();
 		} catch (PLMCompilerException e) {
+			System.err.println(e);
 			// compileAll already setup the error message; we just needed to not run the entity in that case
 		}
 		
