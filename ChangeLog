@@ -4,6 +4,7 @@
     - Add a link to the Discord server from the feedback dialog.
       I hope that people will use it instead of bug reports to ask questions,
       or that the one asking questions in GitHub issues will read my answers there.
+    - PLM should now survive to a corrupted ~/.plm directory and restore the session.
   * Universes:
     - Buggles: clarify the name of Directions in the documentation
   * Peagogical content:

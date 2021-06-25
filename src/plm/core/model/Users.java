@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
+import org.jruby.RubyProcess.Sys;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -167,7 +168,27 @@ public class Users {
 					}
 
 				} catch (ParseException | IOException pe) {
-					System.out.println(pe);
+					System.out.println("=========================================");
+					System.out.println("!!! Error while reading the user base !!!");
+					System.out.println("=========================================");
+					pe.printStackTrace();
+					if (usersList.isEmpty()) {
+						System.out.println("PANIC: no user found because of the exception. Let's add all sessions found on disk.");
+						for (File f : userDBFile.getParentFile().listFiles()) {
+							if (f.isDirectory() && f.getName().length()==36) {
+								System.out.println("  adding "+f.getName()+"...");
+								this.usersList.add(new User(null, f.getName()));
+							}
+						}
+						if (usersList.isEmpty()) {
+							System.out.println("FURTHER PANIC: no session found on disk. Let's create a new one.");
+							this.usersList.add(new User());
+						} else {
+							System.out.println("OK. Session restored.");
+						}
+						System.out.println("=========================================");
+						flushUsersToFile();
+					}
 				}
 			}
 		}
