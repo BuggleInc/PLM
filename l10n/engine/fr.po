@@ -1283,7 +1283,7 @@ msgid ""
 "listed in the COPYING file distributed with the archive.</p>"
 msgstr ""
 "<h2>La PLM est fière d'être du logiciel libre</h2>\n"
-"<p>Copyright (c) 2008-2020.<br/>\n"
+"<p>Copyright (c) 2008-2021.<br/>\n"
 "L'équipe PLM : Martin Quinson, Gérald Oster et les autres.<br/>\n"
 "(référez vous aux logs git pour des informations précises sur les auteurs).</"
 "p>\n"
@@ -2633,16 +2633,13 @@ msgstr ""
 "depuis un fichier jar. Merci de corriger votre exercice."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:130
-#, fuzzy, java-format
-#| msgid ""
-#| "{0}.map: this file does not seem to be a serialized BuggleWorld (the file "
-#| "is empty!)."
+#, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty)."
 msgstr ""
-"{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (fichier "
-"vide !)"
+"{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (le fichier "
+"est vide)."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:136
 #, java-format
