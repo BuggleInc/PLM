@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 10:53+0200\n"
+"POT-Creation-Date: 2021-06-25 04:57+0200\n"
 "PO-Revision-Date: 2021-06-21 06:54+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/programmers-"
@@ -901,12 +901,12 @@ msgstr ""
 "Un nouvel utilisateur PLM a été créé pour vous : {0}. Répertoire de "
 "sauvegarde : {1}"
 
-#: src/plm/core/model/Users.java:87
+#: src/plm/core/model/Users.java:88
 #, java-format
 msgid "User {0} exists already; don't add it again."
 msgstr "L''utilisateur {0} existe déjà ; il ne sera pas ajouté à nouveau."
 
-#: src/plm/core/model/Users.java:111
+#: src/plm/core/model/Users.java:112
 #, java-format
 msgid "Switched to user: {0}"
 msgstr "L''utilisateur est maintenant {0}"
