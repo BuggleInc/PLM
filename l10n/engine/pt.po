@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 10:53+0200\n"
+"POT-Creation-Date: 2021-06-25 04:57+0200\n"
 "PO-Revision-Date: 2021-06-21 08:54+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/programmers-"
@@ -873,12 +873,12 @@ msgstr "Cancelar o pedido de ajuda ao professor"
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
 msgstr "Um novo utilizador plm foi criado para si: {0}. Gravar diretório: {1}"
 
-#: src/plm/core/model/Users.java:87
+#: src/plm/core/model/Users.java:88
 #, java-format
 msgid "User {0} exists already; don't add it again."
 msgstr "Utilizador {0} já existe; não vou adicionar de novo."
 
-#: src/plm/core/model/Users.java:111
+#: src/plm/core/model/Users.java:112
 #, java-format
 msgid "Switched to user: {0}"
 msgstr "A alternar para utilizador: {0}"
