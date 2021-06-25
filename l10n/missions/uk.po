@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-06-21 09:50+0200\n"
+"POT-Creation-Date: 2021-06-25 04:58+0200\n"
 "PO-Revision-Date: 2020-09-13 05:36+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/programmers-"
@@ -6338,13 +6338,29 @@ msgid ""
 "Returns whether the current world is selected in the graphical interface."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/plm/universe/sort/SortingWorld.html:34
+msgid "As always, the indices of cells range from 0 to"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/plm/universe/sort/SortingWorld.html:34
+#, no-wrap
+msgid "getValueCount()-1"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/sort/SortingWorld.html:34
+msgid ". Accessing a cell out of this range raises an error."
+msgstr ""
+
 #. type: Content of: <h2>
-#: src/plm/universe/sort/SortingWorld.html:35
+#: src/plm/universe/sort/SortingWorld.html:36
 msgid "History view"
 msgstr "Панель журналу"
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:36
+#: src/plm/universe/sort/SortingWorld.html:37
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -6355,7 +6371,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:43
+#: src/plm/universe/sort/SortingWorld.html:44
 msgid ""
 "To help in this process, it is possible to graphically explore the history "
 "of your sorting algorithm. Switch to the Objective view and use the "
@@ -6364,7 +6380,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:48
+#: src/plm/universe/sort/SortingWorld.html:49
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
@@ -6378,7 +6394,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:57
+#: src/plm/universe/sort/SortingWorld.html:58
 msgid ""
 "This view, inspired from Aldo Cortesi, reveals very helpful understand the "
 "inner behavior of sorting algorithms."
@@ -6726,7 +6742,7 @@ msgstr ""
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:23
 #, no-wrap
 msgid ""
-"For each i in [1,len-1]\n"
+"For each i in [1,len-1] # Cell 0 is already sorted when considered alone\n"
 "  store the value of i in a variable v\n"
 "  copy the cell i-1 into i if i-1 contains a value bigger than v\n"
 "  copy the cell i-2 into i-1 if i-2 contains a value bigger than v\n"
