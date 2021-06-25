@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 10:53+0200\n"
+"POT-Creation-Date: 2021-06-25 04:57+0200\n"
 "PO-Revision-Date: 2014-01-19 09:06+100\n"
 "Last-Translator: vinnie <fz12345@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -895,12 +895,12 @@ msgstr "Annulla la richiesta di aiuto all'insegnante"
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
 msgstr ""
 
-#: src/plm/core/model/Users.java:87
+#: src/plm/core/model/Users.java:88
 #, java-format
 msgid "User {0} exists already; don't add it again."
 msgstr ""
 
-#: src/plm/core/model/Users.java:111
+#: src/plm/core/model/Users.java:112
 #, fuzzy, java-format
 msgid "Switched to user: {0}"
 msgstr "Passa alla visuale dello stato"
