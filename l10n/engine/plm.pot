@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 10:53+0200\n"
+"POT-Creation-Date: 2021-06-25 04:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -741,12 +741,12 @@ msgstr ""
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
 msgstr ""
 
-#: src/plm/core/model/Users.java:87
+#: src/plm/core/model/Users.java:88
 #, java-format
 msgid "User {0} exists already; don't add it again."
 msgstr ""
 
-#: src/plm/core/model/Users.java:111
+#: src/plm/core/model/Users.java:112
 #, java-format
 msgid "Switched to user: {0}"
 msgstr ""
