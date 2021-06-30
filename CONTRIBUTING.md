@@ -85,6 +85,19 @@ than one programming language. You can start it with:
 The lesson is defined as a Java file:
 https://github.com/BuggleInc/PLM/blob/javaUI/src/lessons/welcome/Main.java#L226
 
+Managing translations
+=====================
+
+Here are the commands to run to update the pot files on weblate, to
+allow the translators to update their work. This should be done
+regularly.
+
+- po4a po4a.conf
+- ant i18n-update
+- git checkout l10n/*/*.po
+- git commit -m "Update translation templates" l10n/*/*.pot
+- git push && wlc pull
+
 Releasing the PLM
 =================
 
@@ -94,6 +107,8 @@ mostly for internal use.
 Building the release:
 - The content of weblate is correctly integrated.
   - wlc commit && wlc push && git pull --rebase
+- All tests pass
+  - ant test-all
 - The mission texts are correctly translated:
   - po4a po4a.conf
   - Commit every translated file (eg, **/*.fr.html) in git
