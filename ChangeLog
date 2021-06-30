@@ -1,4 +1,6 @@
-20210618: 2.9.3 (unreleased)
+20210630: 2.9.3
+
+  The fixed crash loop release: corrupted files could put a stop to startup.
 
   * Core:
     - Add a link to the Discord server from the feedback dialog.
