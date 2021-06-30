@@ -3,14 +3,13 @@
 <h1>Tri par insertion</h1>
 
 <p>
-Ce tri est relativement simple à comprendre et à écrire, même s'il n'offre
-pas les meilleures performances possibles.  Il s'agit d'un algorithme
-quadratique (complexité asymptotique en O(n2)), mais il est plus efficace en
-pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié
-et N2/4 en moyenne).
+This sorting algorithm is quite simple to understand and write, even if it
+is not as efficient as possible. Its asymptotic complexity is in O(n²), but
+it is more efficient in practice (linear in best case, ie when the array is
+already sorted, and N2/4 on average).
 </p>
 <p>L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à
-sa place dans la partie du tableau déjà triée.  Lorsque l'on regarde un
+sa place dans la partie du tableau déjà triée. Lorsque l'on regarde un
 élément x du tableau, on est dans la situation suivante : tous les éléments
 à gauche du tableau sont déjà triés, et il faut insérer x à sa place dans le
 tableau.</p>
@@ -22,18 +21,18 @@ tableau.</p>
 	<img src="lessons/sort/basic/insertion/InsertionsortAfter.png"/>
 </div>
 <p>Le pseudo-code de cet algorithme est donc le suivant :</p>
-<pre>Pour tout i dans [1,lgr-1]
-  stocker la valeur de la case i dans une variable v
-  recopier la case i-1 dans i, si i-1 contient une valeur plus grande que v
-  recopier la case i-2 dans i-1, si i-2 contient une valeur plus grande que v
-  recopier la case i-3 dans i-2, si i-3 contient une valeur plus grande que v
-  recopier la case i-4 dans i-3, si i-4 contient une valeur plus grande que v
+<pre>For each i in [1,len-1] # Cell 0 is already sorted when considered alone
+  store the value of i in a variable v
+  copy the cell i-1 into i if i-1 contains a value bigger than v
+  copy the cell i-2 into i-1 if i-2 contains a value bigger than v
+  copy the cell i-3 into i-2 if i-3 contains a value bigger than v
+  copy the cell i-4 into i-3 if i-4 contains a value bigger than v
   ...
-  recopier v dans la dernière case recopiée plus haut
+  copy v into the last cell copied above
 </pre>
 <p>
 Bien entendu, il faut utiliser une boucle pour écrire la grosse permutation
-circulaire au cœur de la boucle.  L'écrire explicitement de la sorte serait
+circulaire au cœur de la boucle. L'écrire explicitement de la sorte serait
 vraiment ... contre-productif.
 </p>
 <p>Si vous vous étiez toujours demandé ce que font les chercheurs en
@@ -52,7 +51,7 @@ delà de nos objectifs présents.
 <p>Il existe d'autres variantes du tri par insertion, comme PatienceSorting,
 qui fait des paquets des valeurs et trie ensuite chaque paquet. Cet
 algorithme présente un pire cas en O(nlog n), et une complexité spatiale en
-O(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour
+O(n). LibrarySort (proposé en 2004) échange également un peu d'espace pour
 du temps puisqu'il présente une complexité moyenne en O(n log n), mais
 nécessite de stocker des données supplémentaires.</p>
  

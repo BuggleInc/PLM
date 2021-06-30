@@ -3,10 +3,10 @@
 <h1>InsertionSort</h1>
 
 <p>
-Este algoritmo de ordenação é muito simples de entender e escrever, mesmo se
-não for o mais eficiente possível. A complexidade assintótica dela é O(n2),
-mas é mais eficiente, na prática (linear no melhor caso, p.ex. quando a
-array já está ordenada e N2/4 no caso médio).
+This sorting algorithm is quite simple to understand and write, even if it
+is not as efficient as possible. Its asymptotic complexity is in O(n²), but
+it is more efficient in practice (linear in best case, ie when the array is
+already sorted, and N2/4 on average).
 </p>
 <p>A ideia é percorrer todos os elementos da array e inserir cada um deles na
 posição correta dele numa parte já ordenada da array. Quando olhamos num
@@ -20,7 +20,7 @@ já está ordenado e temos que inserir x na posição dele na array.</p>
 	<img src="lessons/sort/basic/insertion/InsertionsortAfter.png"/>
 </div>
 <p>O pseudo-código deste algoritmo é então o seguinte:</p>
-<pre>For each i in [1,len-1]
+<pre>For each i in [1,len-1] # Cell 0 is already sorted when considered alone
   store the value of i in a variable v
   copy the cell i-1 into i if i-1 contains a value bigger than v
   copy the cell i-2 into i-1 if i-2 contains a value bigger than v
