@@ -114,17 +114,20 @@ Building the release:
   - Commit every translated file (eg, **/*.fr.html) in git
 - ChangeLog
   - Ensure that all changes are documented
-  - Update the release date and version number
+  - Update the release date and version number (even number for stable)
 - Update the PLM_VERSION variable in .appveyor.yml to match the ChangeLog
+  - Use an even number for the stable release.
 - Update the version number in lib/resources/plm.configuration.properties
 - Git: commit everything
   - git push && git tag v2.??.?? && git push tags
   
 Publishing the release:
 - Open the plm-src.jar, and repack it as a tgz file containing a directory
+  - mv plm-src.2.9*.jar /tmp/ ; mkdir /tmp/plm-2.9.XXX; unzip ../plm-src.2.9* -d /tmp/plm-2.* 
+  - cd /tmp ; tar plm-2.9.XXX ; gzip -9v plm-2*.tar
 - Document the tag on github, and then upload all 4 artefacts from appveyor
 - Modify the web page to point to the latest release, and publish it
-- Announce it on Discord
+- Announce it on Discord and Tweeter
 
 Publishing the Debian package:
 - gbp import-orig plm-src.*.tgz
