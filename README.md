@@ -8,12 +8,9 @@ integrated and graphical environment, providing a short feedback loop to
 students in order to improve the effectiveness of the autonomous learning
 process.
 
-For more information, subscribe to our
-[announcement](https://sympa.inria.fr/sympa/subscribe/plm-announce)
-mailing list (low trafic), and 
-[visit the PLM web site](http://www.loria.fr/~quinson/Teaching/PLM/).
-
-[![Build Status](https://travis-ci.org/oster/PLM.svg)](https://travis-ci.org/oster/PLM)
+For more information,  
+[visit the PLM web site](http://people.irisa.fr/Martin.Quinson/Teaching/PLM/)
+or come and chat on our [Discord channel](https://discord.gg/agxNPGj).
 
 ## License
 
