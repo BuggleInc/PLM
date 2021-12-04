@@ -6,13 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2021-06-25 04:58+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-12-04 13:53+0000\n"
+"Last-Translator: Rajasekaran Karunanithi <rajasekaran86@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/"
+"programmers-learning-machine/missions/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -36,36 +39,36 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:10
 msgid "<b>Moving</b>"
-msgstr ""
+msgstr "<b>நகர்கிறது</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:10
 msgid "(See also the note on exceptions, below)"
-msgstr ""
+msgstr "(கீழே உள்ள விதிவிலக்குகள் பற்றிய குறிப்பையும் பார்க்கவும்)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "<b>Turn left"
-msgstr ""
+msgstr "<b>இடப்பக்கம் திரும்பு"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn right"
-msgstr ""
+msgstr "வலதுபுறம் திரும்பு"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn back"
-msgstr ""
+msgstr "பின்னே திரும்பு"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving forward"
-msgstr ""
+msgstr "முன்னோக்கி நகர்தல்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
