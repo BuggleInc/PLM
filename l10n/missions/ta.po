@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2021-06-25 04:58+0200\n"
-"PO-Revision-Date: 2025-02-13 03:02+0000\n"
+"PO-Revision-Date: 2025-07-19 15:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/"
 "programmers-learning-machine/missions/ta/>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
 msgid "BuggleWorld"
-msgstr "BuggleWorld"
+msgstr "Bugleworld"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/bugglequest/BuggleWorld.html:3
@@ -79,25 +79,25 @@ msgstr "முன்னோக்கி நகர்தல்"
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving back</b>"
-msgstr "Moving back</b>"
+msgstr "மீண்டும் நகரும் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:12
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]left()"
-msgstr "[!java|c]void [/!]left()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] இடது ()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:13
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]right()"
-msgstr "[!java|c]void [/!]right()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] சரி ()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:14
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java|c]void [/!]back()"
-msgstr "[!java|c]void [/!]back()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] பின் ()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:15
@@ -183,12 +183,12 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:25
 msgid "<b>Information on the buggle</b>"
-msgstr "<b>Information on the buggle</b>"
+msgstr "<b> பிழையான தகவல்கள் </b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "<b>Get the color of the body"
-msgstr "<b>Get the color of the body"
+msgstr "<b> உடலின் நிறத்தைப் பெறுங்கள்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:26
@@ -228,7 +228,7 @@ msgstr "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "<b>Get heading"
-msgstr "<b>Get heading"
+msgstr "<b> தலைப்பைப் பெறுங்கள்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:32
@@ -238,7 +238,7 @@ msgstr "கணம் heading</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:33
 msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
-msgstr "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
+msgstr "[! சாவா | சி] திசை [/!"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:34
@@ -261,17 +261,17 @@ msgstr ""
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "<b>About the brush</b>"
-msgstr "<b>About the brush</b>"
+msgstr "<b> தூரிகை பற்றி </b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "<b>Brush down"
-msgstr "<b>Brush down"
+msgstr "<b> கீழே துலக்குங்கள்"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
@@ -286,12 +286,12 @@ msgstr "Get மின்தொடி position</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "[!java|c]void [/!]brushUp()"
-msgstr "[!java|c]void [/!]brushUp()"
+msgstr "[! சாவாத் | சி] என்பது [/!] துலக்குதல் ()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid "[!java|c]void [/!]brushDown()"
-msgstr "[!java|c]void [/!]brushDown()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] பிரச் பேரூர் ()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:43
@@ -306,7 +306,7 @@ msgstr "<b>Change the மின்தொடி color"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "Get the color of the brush</b>"
-msgstr "Get the color of the brush</b>"
+msgstr "தூரிகையின் நிறத்தைப் பெறுங்கள் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:45
@@ -321,13 +321,13 @@ msgstr "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:48
 msgid "<b>Interacting with the world</b>"
-msgstr "<b>Interacting with the world</b>"
+msgstr "<b> உலகத்துடன் தொடர்புகொள்வது </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:49
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "<b>Get the color of the ground</b>"
-msgstr "<b>Get the color of the ground</b>"
+msgstr "<b> தரையின் நிறத்தைப் பெறுங்கள் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:50
@@ -348,12 +348,12 @@ msgstr "Look க்கு a baggle in bag"
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Pickup a baggle"
-msgstr "Pickup a baggle"
+msgstr "ஒரு பேக்ல் எடுப்பது"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "Drop a baggle</b>"
-msgstr "Drop a baggle</b>"
+msgstr "ஒரு பேக்லியை விடுங்கள் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
@@ -373,12 +373,12 @@ msgstr "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:56
 msgid "[!java]void [/!]pickupBaggle()"
-msgstr "[!java]void [/!]pickupBaggle()"
+msgstr "[! சாவா] வெற்றிட [/!] பிக்கப் பேக் ()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "[!java]void [/!]dropBaggle()"
-msgstr "[!java]void [/!]dropBaggle()"
+msgstr "[! சாவா] வெற்றிட [/!"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:58
@@ -413,7 +413,7 @@ msgstr "[!java]void [/!]dropBaggle()"
 #: src/plm/universe/turtles/TurtleWorld.html:93
 #: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "&nbsp;"
-msgstr "&nbsp;"
+msgstr "& nbsp;"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
@@ -433,7 +433,7 @@ msgstr "Read the செய்தி"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "Erase the message</b>"
-msgstr "Erase the message</b>"
+msgstr "செய்தியை அழிக்கவும் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:61
@@ -452,18 +452,18 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:63
 msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
-msgstr "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
+msgstr "[! சாவா] சரம் [/!] [! சி] கரி* [/!"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:64
 msgid "[!java]void [/!]clearMessage()"
-msgstr "[!java]void [/!]clearMessage()"
+msgstr "[! சாவா] வெற்றிட [/!] ClearMessage ()"
 
 #. type: Content of: <h2>
 #: src/plm/universe/bugglequest/BuggleWorld.html:69
 #: src/plm/universe/turtles/TurtleWorld.html:79
 msgid "Valid colors"
-msgstr "Valid colors"
+msgstr "செல்லுபடியாகும் வண்ணங்கள்"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
@@ -475,100 +475,100 @@ msgstr "பெயர் in [!thelang]"
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
 #: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Color"
-msgstr "Color"
+msgstr "நிறம்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:72
 #: src/plm/universe/turtles/TurtleWorld.html:82
 msgid "[!scala|java|python]Color.[/!]black"
-msgstr "[!scala|java|python]Color.[/!]black"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] கருப்பு"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:73
 #: src/plm/universe/turtles/TurtleWorld.html:83
 msgid "[!scala|java|python]Color.[/!]blue"
-msgstr "[!scala|java|python]Color.[/!]blue"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] நீலம்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:74
 #: src/plm/universe/turtles/TurtleWorld.html:84
 msgid "[!scala|java|python]Color.[/!]cyan"
-msgstr "[!scala|java|python]Color.[/!]cyan"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] சியான்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:75
 #: src/plm/universe/turtles/TurtleWorld.html:85
 msgid "[!scala|java|python]Color.[/!]darkGray"
-msgstr "[!scala|java|python]Color.[/!]darkGray"
+msgstr "[! ச்கலா | சாவா | பைதான்] நிறம். [/!] டார்க் கிரே"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:76
 #: src/plm/universe/turtles/TurtleWorld.html:86
 msgid "[!scala|java|python]Color.[/!]gray"
-msgstr "[!scala|java|python]Color.[/!]gray"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] சாம்பல்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:77
 #: src/plm/universe/turtles/TurtleWorld.html:87
 msgid "[!scala|java|python]Color.[/!]green"
-msgstr "[!scala|java|python]Color.[/!]green"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] பச்சை"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:78
 #: src/plm/universe/turtles/TurtleWorld.html:88
 msgid "[!scala|java|python]Color.[/!]lightGray"
-msgstr "[!scala|java|python]Color.[/!]lightGray"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] லைட் கிரே"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:79
 #: src/plm/universe/turtles/TurtleWorld.html:89
 msgid "[!scala|java|python]Color.[/!]magenta"
-msgstr "[!scala|java|python]Color.[/!]magenta"
+msgstr "[! ச்கலா | சாவா | பைதான்] நிறம். [/!] மெசந்தா"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:80
 #: src/plm/universe/turtles/TurtleWorld.html:90
 msgid "[!scala|java|python]Color.[/!]orange"
-msgstr "[!scala|java|python]Color.[/!]orange"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] ஆரஞ்சு"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:81
 #: src/plm/universe/turtles/TurtleWorld.html:91
 msgid "[!scala|java|python]Color.[/!]pink"
-msgstr "[!scala|java|python]Color.[/!]pink"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] இளஞ்சிவப்பு"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:82
 #: src/plm/universe/turtles/TurtleWorld.html:92
 msgid "[!scala|java|python]Color.[/!]red"
-msgstr "[!scala|java|python]Color.[/!]red"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] சிவப்பு"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:83
 #: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "[!scala|java|python]Color.[/!]white"
-msgstr "[!scala|java|python]Color.[/!]white"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] வெள்ளை"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:84
 #: src/plm/universe/turtles/TurtleWorld.html:94
 msgid "[!scala|java|python]Color.[/!]yellow"
-msgstr "[!scala|java|python]Color.[/!]yellow"
+msgstr "[! ச்காலா | சாவா | பைதான்] நிறம். [/!] மஞ்சள்"
 
 #. type: Content of: <table><tr><td><h2>
 #: src/plm/universe/bugglequest/BuggleWorld.html:87
 msgid "Valid directions"
-msgstr "Valid directions"
+msgstr "சரியான திசைகள்"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:89
 msgid "Meaning"
-msgstr "Meaning"
+msgstr "பொருள்"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:90
 msgid "[!scala|java|python]Direction.[/!]NORTH"
-msgstr "[!scala|java|python]Direction.[/!]NORTH"
+msgstr "[! ச்கலா | சாவா | பைதான்] திசை. [/!] வடக்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:90
@@ -578,7 +578,7 @@ msgstr "Pointing வடக்கு"
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:91
 msgid "[!scala|java|python]Direction.[/!]EAST"
-msgstr "[!scala|java|python]Direction.[/!]EAST"
+msgstr "[! ச்காலா | சாவா | பைதான்] திசை. [/!] கிழக்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:91
@@ -588,7 +588,7 @@ msgstr "Pointing கிழக்கு"
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:92
 msgid "[!scala|java|python]Direction.[/!]SOUTH"
-msgstr "[!scala|java|python]Direction.[/!]SOUTH"
+msgstr "[! ச்கலா | சாவா | பைதான்] திசை. [/!] தெற்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:92
@@ -598,7 +598,7 @@ msgstr "Pointing தெற்கு"
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:93
 msgid "[!scala|java|python]Direction.[/!]WEST"
-msgstr "[!scala|java|python]Direction.[/!]WEST"
+msgstr "[! ச்கலா | சாவா | பைதான்] திசை. [/!] மேற்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:93
@@ -641,7 +641,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/plm/universe/bat/BatWorld.html:2
 msgid "BatWorld"
-msgstr "BatWorld"
+msgstr "பேட்வேர்ல்ட்"
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:4
@@ -710,7 +710,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:470
 #: src/lessons/welcome/instructions/Instructions.html:2
 msgid "Instructions"
-msgstr "Instructions"
+msgstr "வழிமுறைகள்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94
@@ -718,7 +718,7 @@ msgstr "Instructions"
 #: src/lessons/welcome/Main.html:351 src/lessons/welcome/Main.html:431
 #: src/lessons/welcome/Main.html:471
 msgid "Comments"
-msgstr "Comments"
+msgstr "கருத்துகள்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:95
@@ -726,7 +726,7 @@ msgstr "Comments"
 #: src/lessons/welcome/Main.html:352 src/lessons/welcome/Main.html:432
 #: src/lessons/welcome/Main.html:472
 msgid "Conditionals/ Expressions"
-msgstr "Conditionals/ Expressions"
+msgstr "நிபந்தனைகள்/ வெளிப்பாடுகள்"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:79
@@ -785,12 +785,12 @@ msgstr "ஆளி, நிலைமாறி"
 #: src/lessons/welcome/Main.html:359 src/lessons/welcome/Main.html:439
 #: src/lessons/welcome/Main.html:479
 msgid "Arrays"
-msgstr "Arrays"
+msgstr "வரிசைகள்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:23
 msgid "Welcome in the Buggles' World"
-msgstr "Welcome in the Buggles' World"
+msgstr "BUGGLES உலகில் வரவேற்கிறோம்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:37
@@ -807,13 +807,13 @@ msgstr "Writing more அணைவு திட்டங்கள்"
 #: src/lessons/welcome/Main.html:65
 #: src/lessons/welcome/conditions/Conditions.html:2
 msgid "Conditional instructions"
-msgstr "Conditional instructions"
+msgstr "நிபந்தனை வழிமுறைகள்"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:106
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
 msgid "Baggle Seeking"
-msgstr "Baggle Seeking"
+msgstr "பேக்லே தேடுதல்"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:120
@@ -831,7 +831,7 @@ msgstr "Do .. while வளையங்கள்"
 #: src/lessons/welcome/Main.html:188
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:2
 msgid "Building methodically"
-msgstr "Building methodically"
+msgstr "முறைப்படி உருவாக்குதல்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:202
@@ -848,19 +848,19 @@ msgstr "முறைகள் with parameters"
 #: src/lessons/welcome/Main.html:229
 #: src/lessons/welcome/methods/picture/PictureMono1.html:2
 msgid "Methodically drawing"
-msgstr "Methodically drawing"
+msgstr "முறைப்படி வரைதல்"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:242
 #: src/lessons/welcome/methods/picture/PictureMono2.html:2
 msgid "Methodically drawing (only bigger)"
-msgstr "Methodically drawing (only bigger)"
+msgstr "முறைப்படி வரைதல் (பெரியது மட்டுமே)"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:268
 #: src/lessons/welcome/methods/picture/PictureMono3.html:2
 msgid "Drawing bigger and bigger"
-msgstr "Drawing bigger and bigger"
+msgstr "பெரியது மற்றும் பெரியது"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:281
@@ -892,17 +892,17 @@ msgstr "குருட்டடி Tracking"
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:362 src/lessons/welcome/traversal/Snake.html:2
 msgid "Snake World"
-msgstr "Snake World"
+msgstr "பாம்பு உலகம்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:376
 msgid "Knitting and Arrays"
-msgstr "Knitting and Arrays"
+msgstr "பின்னல் மற்றும் வரிசைகள்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:390
 msgid "Knitting, Arrays and modulos"
-msgstr "Knitting, Arrays and modulos"
+msgstr "பின்னல், வரிசைகள் மற்றும் மாடுலச்"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:403
@@ -920,7 +920,7 @@ msgstr "Traversal by வரி"
 #: src/lessons/welcome/Main.html:442
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:2
 msgid "Zig-zag traversal"
-msgstr "Zig-zag traversal"
+msgstr "சிக்-சாக் டிராவர்சல்"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:455
@@ -936,27 +936,27 @@ msgstr "Meaning of the குறியிடுகள்"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:486
 msgid "Introducing the concept"
-msgstr "Introducing the concept"
+msgstr "கருத்தை அறிமுகப்படுத்துகிறது"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:489
 msgid "Working on the concept"
-msgstr "Working on the concept"
+msgstr "கருத்தில் வேலை"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:492
 msgid "Concept assumed mastered"
-msgstr "Concept assumed mastered"
+msgstr "கருத்து தேர்ச்சி பெற்றது"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:495
 msgid "Concept not mandated by the exercise"
-msgstr "Concept not mandated by the exercise"
+msgstr "உடற்பயிற்சியால் கட்டாயப்படுத்தப்படவில்லை"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:501
 msgid "What will I learn?"
-msgstr "What will I learn?"
+msgstr "நான் என்ன கற்றுக்கொள்வேன்?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Main.html:502
@@ -1018,7 +1018,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:10
 msgid "My <i>buggle</i>? What is this??"
-msgstr "My <i>buggle</i>? What is this??"
+msgstr "எனது <i> பிழையான </i>? இது என்ன ??"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:12
@@ -1054,7 +1054,7 @@ msgstr "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
 #: src/lessons/welcome/loopfor/LoopFor.html:57
 #: src/lessons/welcome/bdr/BDR.html:189
 msgid "[!java|c]"
-msgstr "[!java|c]"
+msgstr "[! சாவா | சி]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:21
@@ -1119,7 +1119,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:36
 msgid "But that's [!thelang]!"
-msgstr "But that's [!thelang]!"
+msgstr "ஆனால் அது [! தெலாங்]!"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:37
@@ -1178,7 +1178,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:20
 msgid "What exactly is a program?"
-msgstr "What exactly is a program?"
+msgstr "ஒரு நிரல் என்றால் என்ன?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:22
@@ -1210,10 +1210,10 @@ msgid ""
 "coolMix()[!java|c];[/!]\n"
 "serve()[!java|c];[/!]\n"
 msgstr ""
-"meltTheChocolatePieces()[!java|c];[/!]\n"
-"addSugar()[!java|c];[/!]\n"
-"coolMix()[!java|c];[/!]\n"
-"serve()[!java|c];[/!]\n"
+"meltthechocolatepieses () [! சாவா | c]; [/!] \n"
+"addsugar () [! சாவா | c]; [/!] \n"
+"கூல்மிக்ச் () [! சாவா | சி]; [/!] \n"
+"பணி () [! சாவா | சி]; [/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:39
@@ -1264,9 +1264,9 @@ msgid ""
 "left()[!java|c];[/!]\n"
 "right()[!java|c];[/!]\n"
 msgstr ""
-"backward()[!java|c];[/!]\n"
-"left()[!java|c];[/!]\n"
-"right()[!java|c];[/!]\n"
+"பின்தங்கிய () [! சாவா | சி]; [/!] \n"
+"இடது () [! சாவா | சி]; [/!] \n"
+"வலது () [! சாவா | சி]; [/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:63
@@ -1284,8 +1284,8 @@ msgid ""
 "brushUp()[!java|c];[/!]\n"
 "brushDown()[!java|c];[/!]\n"
 msgstr ""
-"brushUp()[!java|c];[/!]\n"
-"brushDown()[!java|c];[/!]\n"
+"துலக்குதல் () [! சாவா | சி]; [/!] \n"
+"பிரச் பேரூர் () [! சாவா | சி]; [/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:71
@@ -1429,7 +1429,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:9
 msgid "The [!thelang] syntax is the following:"
-msgstr "The [!thelang] syntax is the following:"
+msgstr "[! தெலாங்] தொடரியல் பின்வருமாறு:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:11
@@ -1443,13 +1443,13 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
 "<b>whatToDoAnyway()[!java|c];[/!]</b>"
 msgstr ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>\n"
-"}[/!][!python]if <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
-"<b>whatToDoAnyway()[!java|c];[/!]</b>"
+"[! சாவா | ச்கலா | சி] என்றால் (<b> நிபந்தனை </b>) \n"
+"! \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; <b> whattodonextiftrue (); \n"
+"} [/!] [! பைதான்] என்றால் <b> நிபந்தனை </b>: \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; <b> whattodoiftrue () </b> \n"
+"! \n"
+"<b> whattodoanyway () [! சாவா | c]; [/!] </b>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:19
@@ -1474,10 +1474,10 @@ msgid ""
 "condition is true, while the instruction <code>whatToDoAnyway()</code> will "
 "be executed whether or not the condition is true."
 msgstr ""
-"In this example, the instructions <code>whatToDoIfTrue()</code> and "
-"<code>whatToDoNextIfTrue()</code> will be executed if and only if the "
-"condition is true, while the instruction <code>whatToDoAnyway()</code> will "
-"be executed whether or not the condition is true."
+"இந்த எடுத்துக்காட்டில், அறிவுறுத்தல்கள் <code> whattodoiftrue () </code> மற்றும் "
+"<code> whattodonextiftrue () </code> நிலை உண்மையாக இருந்தால் மட்டுமே "
+"செயல்படுத்தப்படும், அதே நேரத்தில் அறிவுறுத்தல் <குறியீடு> WHATTODOANYWAY () </code> "
+"நிலை உண்மையா இல்லையா என்பதை செயல்படுத்தும்."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:28
@@ -1642,8 +1642,8 @@ msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
 "boolean operations:"
 msgstr ""
-"Finally, a condition can be composed of several sub-conditions connected by "
-"boolean operations:"
+"இறுதியாக, பூலியன் செயல்பாடுகளால் இணைக்கப்பட்ட பல துணை நிபந்தனைகளைக் கொண்ட ஒரு "
+"நிபந்தனையை உருவாக்க முடியும்:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:83
@@ -1676,9 +1676,7 @@ msgstr ""
 msgid ""
 "<code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if "
 "<tt>cond</tt> is false."
-msgstr ""
-"<code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if <tt>cond</"
-"tt> is false."
+msgstr "<code> [! சாவா | ச்கலா | சி]! [/!] [!"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:90
@@ -1718,14 +1716,14 @@ msgid ""
 "else:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
 msgstr ""
-"[!java|scala|c]if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
-"} else {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
-"}[/!][!python]if (<b>condition</b>):\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>\n"
-"else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
+"[! சாவா | ச்கலா | சி] என்றால் (<b> நிபந்தனை </b>) \n"
+"! \n"
+"} else { \n"
+"! \n"
+"} [/!] [! பைதான்] என்றால் (<b> நிபந்தனை </b>): \n"
+"! \n"
+"வேறு: \n"
+"!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:106
@@ -1754,7 +1752,7 @@ msgstr ""
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
-msgstr "Exercise goal"
+msgstr "உடற்பயிற்சி இலக்கு"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/conditions/Conditions.html:109
@@ -1809,10 +1807,10 @@ msgid ""
 "}[/!][!python]while <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
 msgstr ""
-"[!java|scala|c]while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
-"}[/!][!python]while <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
+"[! சாவா | ச்கலா | சி] போது (<b> நிபந்தனை </b>) { \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; <b> செயல் () </b>; \n"
+"} [/!] [! பைதான்] போது <b> நிபந்தனை </b>: \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; <b> செயல் () </b> [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:13
@@ -1859,12 +1857,12 @@ msgid ""
 "}[/!][!python]while True:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
 msgstr ""
-"[!java|scala]while (true) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
-"}[/!][!c]while (1) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
-"}[/!][!python]while True:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
+"[! சாவா | ச்கலா] போது (உண்மை) { \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; இடது (); \n"
+"} [/!] [! சி] (1) { \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; இடது (); \n"
+"} [/!] [! பைதான்] உண்மை: \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; இடது () [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:32
@@ -1972,7 +1970,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:17
 msgid "Variable declarations"
-msgstr "Variable declarations"
+msgstr "மாறுபட்ட அறிவிப்புகள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:19
@@ -2002,7 +2000,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:29
 msgid "[!c|java]"
-msgstr "[!c|java]"
+msgstr "[! சி | சாவா]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:30
@@ -2032,13 +2030,13 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:34
 #, no-wrap
 msgid "int x=5;"
-msgstr "int x=5;"
+msgstr "int ஃச் = 5;"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:35
 #: src/lessons/welcome/variables/Variables.html:69
 msgid "[/!] [!python]"
-msgstr "[/!] [!python]"
+msgstr "[/!] [! பைதான்]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:38
@@ -2061,7 +2059,7 @@ msgstr "ஃச் = 5"
 #: src/lessons/welcome/bdr/BDR2.html:83
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
 msgid "[/!] [!scala]"
-msgstr "[/!] [!scala]"
+msgstr "[/!] [! ச்கலா]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:43
@@ -2076,7 +2074,7 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:44
 #, no-wrap
 msgid "var x:Int = 42"
-msgstr "var x:Int = 42"
+msgstr "var x: int = 42"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:45
@@ -2126,7 +2124,7 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:52
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:39
 msgid "[/!] [!java|scala|c]"
-msgstr "[/!] [!java|scala|c]"
+msgstr "[/!] [! சாவா | ச்கலா | சி]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:55
@@ -2326,7 +2324,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/variables/Variables.html:108
 msgid "Affectations"
-msgstr "Affectations"
+msgstr "பணிகள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:110
@@ -2402,7 +2400,7 @@ msgstr "Move forward until located வீச்சலகு a baggle"
 #. type: Content of: <p><ol><li>
 #: src/lessons/welcome/variables/Variables.html:130
 msgid "Pickup the baggle"
-msgstr "Pickup the baggle"
+msgstr "பாக்கில் எடுப்பது"
 
 #. type: Content of: <p><ol><li>
 #: src/lessons/welcome/variables/Variables.html:131
@@ -2444,7 +2442,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:145
 msgid "[!python|scala]"
-msgstr "[!python|scala]"
+msgstr "[! பைதான் | அளவு]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:146
@@ -2485,7 +2483,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:161
 msgid "It's your turn now!"
-msgstr "It's your turn now!"
+msgstr "இது இப்போது உங்கள் முறை!"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/variables/RunFour.html:2
@@ -2659,19 +2657,19 @@ msgid ""
 "    stepper = stepper + 1\n"
 "}[/!]"
 msgstr ""
-"[!java|c]int stepper = 0;\n"
-"while (stepper &lt; n) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;\n"
-"}[/!][!python]stepper=0\n"
-"while stepper &lt; n: \n"
-"    action()\n"
-"    stepper = stepper + 1[/!][!scala]\n"
-"var stepper = 1\n"
-"while (stepper &lt;= n) {\n"
-"    <b>action</b>()\n"
-"    stepper = stepper + 1\n"
-"}[/!]"
+"[! சாவா | சி] இன்ட் ச்டெப்பர் = 0; \n"
+"போது (ச்டெப்பர் & lt; n) { \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; <b> செயல் </b> (); \n"
+"& nbsp; & nbsp; & nbsp; & nbsp; <b> ச்டெப்பர் ++ </b>; \n"
+"} [/!] [! பைதான்] ச்டெப்பர் = 0 \n"
+"ச்டெப்பர் & lt; n: \n"
+"செயல் () \n"
+"ச்டெப்பர் = ச்டெப்பர் + 1 [/!] [! ச்கலா] \n"
+"var ச்டெப்பர் = 1 \n"
+"போது (ச்டெப்பர் & lt; = n) { \n"
+"<b> செயல் </b> () \n"
+"ச்டெப்பர் = ச்டெப்பர் + 1 \n"
+"} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:55
@@ -2813,7 +2811,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourse.html:2
 msgid "Training Buggle"
-msgstr "Training Buggle"
+msgstr "பயிற்சி பிழையானது"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourse.html:4
@@ -2853,7 +2851,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourseForest.html:2
 msgid "Outdoor Training Buggle"
-msgstr "Outdoor Training Buggle"
+msgstr "வெளிப்புற பயிற்சி பிழையானது"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopCourseForest.html:4
@@ -2960,7 +2958,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25
 msgid "Executing the loop body at least once"
-msgstr "Executing the loop body at least once"
+msgstr "லூப் உடலை ஒரு முறையாவது செயல்படுத்துகிறது"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
@@ -2969,7 +2967,7 @@ msgstr "Executing the loop body at least once"
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
 msgid "[!python]"
-msgstr "[!python]"
+msgstr "[! பைதான்]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:27
@@ -2993,10 +2991,8 @@ msgid ""
 "  firstTime = False\n"
 "  (loop body)\n"
 msgstr ""
-"firstTime = True\n"
-"while firstTime or (other conditions):\n"
-"  firstTime = False\n"
-"  (loop body)\n"
+"முதல் முறை = உண்மை \n"
+"முதல் முறை அல்லது (பிற நிபந்தனைகள்): முதல் முறை = பொய் (லூப் உடல்)\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:37
@@ -3038,14 +3034,14 @@ msgid ""
 "    <b>action()</b>[!java];[/!]\n"
 "} while (<b>condition</b>)[!java];[/!]"
 msgstr ""
-"do {\n"
-"    <b>action()</b>[!java];[/!]\n"
-"} while (<b>condition</b>)[!java];[/!]"
+"செய்யுங்கள் { \n"
+"<b> செயல் () </b> [! சாவா]; [/!] \n"
+"} போது (<b> நிபந்தனை </b>) [! சாவா]; [/!]"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopdowhile/Poucet1.html:2
 msgid "Tracks of buggles"
-msgstr "Tracks of buggles"
+msgstr "பங்குகளின் தடங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet1.html:4
@@ -3157,7 +3153,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopdowhile/Poucet2.html:2
 msgid "More buggles tracks"
-msgstr "More buggles tracks"
+msgstr "மேலும் BUGGLES தடங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet2.html:4
@@ -3209,10 +3205,8 @@ msgid ""
 "  firstTime = False\n"
 "  (loop body)\n"
 msgstr ""
-"firstTime = True\n"
-"while firstTime or not crossing():\n"
-"  firstTime = False\n"
-"  (loop body)\n"
+"முதல் முறை = உண்மை \n"
+"முதல் முறையாக அல்லது கடக்காதபோது (): முதல் முறை = பொய் (லூப் உடல்)\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet2.html:27
@@ -3222,7 +3216,8 @@ msgstr "With that புதிய trick, your buggle should exit this maze quite
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array1.html:2
 msgid "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
-msgstr "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
+msgstr ""
+"[! சாவா | ச்கலா] வரிசைகள் [/!] [! பைதான்] பட்டியல்கள் [/!] மற்றும் முடிச்சு"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array1.html:4
@@ -3271,7 +3266,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/array/basics/Array1.html:21
 msgid "[!java|scala]Arrays[/!][!python]List[/!]"
-msgstr "[!java|scala]Arrays[/!][!python]List[/!]"
+msgstr "[! சாவா | ச்கலா] வரிசைகள் [/!] [! பைதான்] பட்டியல் [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:23
@@ -3367,7 +3362,7 @@ msgstr "[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]"
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:60
 msgid "We can retrieve and use its value:"
-msgstr "We can retrieve and use its value:"
+msgstr "அதன் மதிப்பை நாம் மீட்டெடுத்து பயன்படுத்தலாம்:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:61
@@ -3389,10 +3384,9 @@ msgid ""
 "    [!java|scala]//[/!][!python]#[/!] instructions...\n"
 "[!java|scala]}[/!]"
 msgstr ""
-"if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) [!scala|java]{[/!][!python]:"
-"[/!]\n"
-"    [!java|scala]//[/!][!python]#[/!] instructions...\n"
-"[!java|scala]}[/!]"
+"if ([! சாவா | பைதான்] t [i] [/! \n"
+"[! சாவா | ச்கலா] // [/!] [! பைதான்]#[/! \n"
+"[! சாவா | ச்கலா]} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:68
@@ -3457,10 +3451,9 @@ msgid ""
 "  action()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
-"[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:"
-"[/!]\n"
-"  action()[!java];[/!]\n"
-"[!java|scala]}[/!]"
+". \n"
+"செயல் () [! சாவா]; [/!] \n"
+"[! சாவா | ச்கலா]} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:87
@@ -3488,7 +3481,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:98
 msgid "Declaring [!python]a list[/!][!java|scala]an array[/!]"
-msgstr "Declaring [!python]a list[/!][!java|scala]an array[/!]"
+msgstr "[! பைதான்] ஒரு பட்டியலை அறிவித்தல் [/!] [! சாவா | ச்கலா] ஒரு வரிசை [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:101
@@ -3548,7 +3541,7 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1.html:116
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:61
 msgid "[/!] [!java|scala]"
-msgstr "[/!] [!java|scala]"
+msgstr "[/!] [! சாவா | அளவு]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:119
@@ -3589,7 +3582,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:130
 msgid "Allocating an array"
-msgstr "Allocating an array"
+msgstr "ஒரு வரிசையை ஒதுக்குகிறது"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:132
@@ -3680,8 +3673,8 @@ msgid ""
 "If you know beforehand the content of your array, you can declare, allocate "
 "and initialize it in one shoot:"
 msgstr ""
-"If you know beforehand the content of your array, you can declare, allocate "
-"and initialize it in one shoot:"
+"உங்கள் வரிசையின் உள்ளடக்கத்தை முன்பே அறிந்தால், நீங்கள் ஒரு படப்பிடிப்பில் அறிவிக்கலாம், "
+"ஒதுக்கலாம் மற்றும் துவக்கலாம்:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:159
@@ -3754,7 +3747,8 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/array/basics/Array1.html:185
 msgid "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
-msgstr "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
+msgstr ""
+"[! பைதான்] பட்டியல்கள் [/!] [! ச்கலா | சாவா] வரிசைகள் [/!] மற்றும் முறை அளவுருக்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:186
@@ -3779,18 +3773,17 @@ msgid ""
 "  return array(0) == 42\n"
 "}[/!]"
 msgstr ""
-"[!java]boolean has42First(int[] array) {\n"
-"    return array[0] == 42;\n"
-"}[/!][!python]def has42First(list):\n"
-"  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = "
-"{\n"
-"  return array(0) == 42\n"
-"}[/!]"
+"[! சாவா] பூலியன் 42first (int [] வரிசை) { \n"
+"திரும்ப வரிசை [0] == 42; \n"
+"} [/! \n"
+"திரும்ப பட்டியல் [0] == 42 [/! \n"
+"திரும்ப வரிசை (0) == 42 \n"
+"} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:195
 msgid "On the caller side, that also very simple:"
-msgstr "On the caller side, that also very simple:"
+msgstr "அழைப்பாளர் பக்கத்தில், அதுவும் மிகவும் எளிமையானது:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:196
@@ -3817,7 +3810,7 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1.html:202
 #: src/lessons/turmites/langton/Langton.html:21
 msgid "[!java]"
-msgstr "[!java]"
+msgstr "[! சாவா]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:203
@@ -3896,7 +3889,7 @@ msgstr ""
 #: src/lessons/recursion/lego/square/FourSquare.html:48
 #: src/lessons/recursion/hanoi/HanoiBoard.html:21
 msgid "Goal of this exercise"
-msgstr "Goal of this exercise"
+msgstr "இந்த பயிற்சியின் குறிக்கோள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:233
@@ -3943,7 +3936,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array2.html:2
 msgid "[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos"
-msgstr "[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos"
+msgstr "[! சாவா | ச்கலா] வரிசைகள் [/!] [! பைதான்] பட்டியல்கள் [/!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:4
@@ -4019,7 +4012,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:28
 msgid "You're up."
-msgstr "You're up."
+msgstr "நீங்கள் எழுந்திருக்கிறீர்கள்."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/search/IndexOfValue.html:2
@@ -4318,7 +4311,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
 msgid "Array123"
-msgstr "Array123"
+msgstr "அர்ராய் 123"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/array123/Array123.html:3
@@ -4326,8 +4319,8 @@ msgid ""
 "Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
 "array somewhere."
 msgstr ""
-"Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
-"array somewhere."
+"முழு எண்களின் வரிசையைக் கொடுத்தால், உண்மையைத் திருப்பி விடுங்கள் .. 1, 2, 3, .. எங்காவது"
+" வரிசையில் தோன்றும்."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/array123/Array123.html:5
@@ -4393,7 +4386,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array667/Array667.html:2
 msgid "Array667"
-msgstr "Array667"
+msgstr "நகைச்சுவை"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/array667/Array667.html:3
@@ -4409,7 +4402,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
 msgid "ArrayCount9"
-msgstr "ArrayCount9"
+msgstr "வரிசை COUNT9"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:3
@@ -4419,7 +4412,7 @@ msgstr "Given an array of integers, return the எண் of 9's in the array."
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:2
 msgid "ArrayFront9"
-msgstr "ArrayFront9"
+msgstr "ரிவண்ட்ச்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:3
@@ -4433,7 +4426,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/notriples/NoTriples.html:2
 msgid "NoTriples"
-msgstr "NoTriples"
+msgstr "Notriples"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/notriples/NoTriples.html:3
@@ -4449,7 +4442,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/has271/Has271.html:2
 msgid "Has271"
-msgstr "Has271"
+msgstr "HAS271"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/has271/Has271.html:3
@@ -4517,7 +4510,7 @@ msgstr "Write a சார்பு that computes the Nth தனிமம் of t
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/island/Island.html:2
 msgid "Buggles' Island"
-msgstr "Buggles' Island"
+msgstr "Buggles 'தீவு"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/island/Island.html:4
@@ -4534,7 +4527,7 @@ msgstr ""
 #: src/lessons/welcome/array/island/Island.html:9
 #, no-wrap
 msgid "0 0 1 1 2 2 1 1 0 1 2 2 1 1 0"
-msgstr "0 0 1 1 2 2 1 1 0 1 2 2 1 1 0"
+msgstr "0 1 1 2 2 1 1 0 1 2 2 1 1 0"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:11
@@ -4565,7 +4558,7 @@ msgstr "This example is constituted of நான்கு, நாலடி, ந�
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:24
 msgid "1 1 2 2 1 1 (the island on the left)"
-msgstr "1 1 2 2 1 1 (the island on the left)"
+msgstr "1 1 2 2 1 1 (இடதுபுறத்தில் உள்ள தீவு)"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:25
@@ -4580,18 +4573,18 @@ msgstr "1 2 1 1 (the வலது island)"
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/array/island/Island.html:27
 msgid "2 (the mountain on the right)"
-msgstr "2 (the mountain on the right)"
+msgstr "2 (வலதுபுறத்தில் உள்ள மலை)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:30
 msgid "This can also be visualized this way:"
-msgstr "This can also be visualized this way:"
+msgstr "இதை இந்த வழியில் காட்சிப்படுத்தலாம்:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/island/Island.html:32
 #, no-wrap
 msgid "0 0(1 1(2 2)1 1)0(1(2)1 1)0"
-msgstr "0 0(1 1(2 2)1 1)0(1(2)1 1)0"
+msgstr "0 0 (1 1 (2 2) 1 1) 0 (1 (2) 1 1) 0"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/island/Island.html:34
@@ -4660,12 +4653,11 @@ msgid ""
 "  do()[!java|c];[/!]\n"
 "[!java|scala|c]}[/!]"
 msgstr ""
-"[!java|c]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def "
-"goAndGet() {[/!]\n"
-"  actions()[!java|c];[/!]\n"
-"  to()[!java|c];[/!]\n"
-"  do()[!java|c];[/!]\n"
-"[!java|scala|c]}[/!]"
+". \n"
+"செயல்கள் () [! சாவா | சி]; [/!] \n"
+"to () [! சாவா | சி]; [/!] \n"
+"செய்யுங்கள் () [! சாவா | சி]; [/!] \n"
+"[! சாவா | ச்கலா | சி]} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:26
@@ -4788,7 +4780,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:75
 msgid "Naming conventions"
-msgstr "Naming conventions"
+msgstr "பெயரிடும் மரபுகள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:76
@@ -4923,18 +4915,18 @@ msgid ""
 "[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
 "left()[!java|c];[/!]"
 msgstr ""
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"left()[!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"left()[!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"left()[!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"left()[!java|c];[/!]"
+". \n"
+". \n"
+"இடது () [! சாவா | சி]; [/!] \n"
+". \n"
+". \n"
+"இடது () [! சாவா | சி]; [/!] \n"
+". \n"
+". \n"
+"இடது () [! சாவா | சி]; [/!] \n"
+". \n"
+". \n"
+"இடது () [! சாவா | சி]; [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:21
@@ -5005,8 +4997,8 @@ msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
 "in the \"Objective\" tab."
 msgstr ""
-"In this exercise, we will reproduce the geometric drawing that you can see "
-"in the \"Objective\" tab."
+"இந்த பயிற்சியில், \"புறநிலை\" தாவலில் நீங்கள் காணக்கூடிய வடிவியல் வரைபடத்தை நாங்கள் மீண்டும்"
+" உருவாக்குவோம்."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono1.html:7
@@ -5422,15 +5414,15 @@ msgid ""
 "[!scala]val res = divide(3.14 , 1.5)[/!]\n"
 "[!python]res = divide(3.14 , 1.5)[/!]"
 msgstr ""
-"[!java|c]double res = divide(3.14 , 1.5);[/!]\n"
-"[!scala]val res = divide(3.14 , 1.5)[/!]\n"
-"[!python]res = divide(3.14 , 1.5)[/!]"
+"[! சாவா | சி] இரட்டை ரெச் = பிளவு (3.14, 1.5); [/!] \n"
+"[! ச்காலா] வால் ரெச் = பிளவு (3.14, 1.5) [/!] \n"
+"[! பைதான்] ரெச் = பிளவு (3.14, 1.5) [/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/args/MethodsArgs.html:35
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:35
 msgid "[!java|scala]"
-msgstr "[!java|scala]"
+msgstr "[! சாவா | ச்கலா]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:36
@@ -5542,7 +5534,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:2
 msgid "Flower Pot"
-msgstr "Flower Pot"
+msgstr "மலர் பானை"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:4
@@ -5593,32 +5585,32 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:20
 msgid "<code>[!scala|java|python]Color.[/!]RED</code>"
-msgstr "<code>[!scala|java|python]Color.[/!]RED</code>"
+msgstr "<code> [! SCALA | சாவா | பைதான்] நிறம். [/!] சிவப்பு </code>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:21
 msgid "<code>[!scala|java|python]Color.[/!]PINK</code>"
-msgstr "<code>[!scala|java|python]Color.[/!]PINK</code>"
+msgstr "<code> [! SCALA | சாவா | பைதான்] நிறம். [/!] இளஞ்சிவப்பு </code>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:22
 msgid "<code>[!scala|java|python]Color.[/!]CYAN</code>"
-msgstr "<code>[!scala|java|python]Color.[/!]CYAN</code>"
+msgstr "<code> [! SCALA | சாவா | பைதான்] நிறம். [/!] சியான் </code>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:23
 msgid "<code>[!scala|java|python]Color.[/!]ORANGE</code>"
-msgstr "<code>[!scala|java|python]Color.[/!]ORANGE</code>"
+msgstr "<code> [! SCALA | சாவா | பைதான்] நிறம். [/!] ஆரஞ்சு </code>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:24
 msgid "<code>[!scala|java|python]Color.[/!]GREEN</code>"
-msgstr "<code>[!scala|java|python]Color.[/!]GREEN</code>"
+msgstr "<code> [! SCALA | சாவா | பைதான்] நிறம். [/!] பச்சை </code>"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:25
 msgid "<code>[!scala|java|python]Color.[/!]YELLOW</code>"
-msgstr "<code>[!scala|java|python]Color.[/!]YELLOW</code>"
+msgstr "<code> [! SCALA | சாவா | பைதான்] நிறம். [/!] மஞ்சள் </code>"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:2
@@ -5639,12 +5631,13 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:8
 msgid "PS: the newly used color is <code>Color.BLUE</code>."
-msgstr "PS: the newly used color is <code>Color.BLUE</code>."
+msgstr ""
+"சோசலிச்ட் கட்சி: புதிதாகப் பயன்படுத்தப்படும் வண்ணம் <code> color.blue </code>."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:2
 msgid "Colorful drawing"
-msgstr "Colorful drawing"
+msgstr "வண்ணமயமான வரைதல்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:11
@@ -5684,22 +5677,22 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:21
 msgid "[!java|scala|python]Color.[/!]YELLOW"
-msgstr "[!java|scala|python]Color.[/!]YELLOW"
+msgstr "[! சாவா | ச்கலா | பைதான்] நிறம். [/!] மஞ்சள்"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:22
 msgid "[!java|scala|python]Color.[/!]RED"
-msgstr "[!java|scala|python]Color.[/!]RED"
+msgstr "[! சாவா | ச்கலா | பைதான்] நிறம். [/!] சிவப்பு"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:23
 msgid "[!java|scala|python]Color.[/!]BLUE"
-msgstr "[!java|scala|python]Color.[/!]BLUE"
+msgstr "[! சாவா | ச்கலா | பைதான்] நிறம். [/!] நீலம்"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:24
 msgid "[!java|scala|python]Color.[/!]GREEN"
-msgstr "[!java|scala|python]Color.[/!]GREEN"
+msgstr "[! சாவா | ச்கலா | பைதான்] நிறம். [/!] பச்சை"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:27
@@ -5741,7 +5734,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:2
 msgid "Larger colorful drawing"
-msgstr "Larger colorful drawing"
+msgstr "பெரிய வண்ணமயமான வரைதல்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:8
@@ -5763,12 +5756,12 @@ msgstr ""
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:11
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:7
 msgid "Your turn..."
-msgstr "Your turn..."
+msgstr "உங்கள் முறை ..."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:2
 msgid "Another Colorful Pattern"
-msgstr "Another Colorful Pattern"
+msgstr "மற்றொரு வண்ணமயமான முறை"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PatternPicture.html:4
@@ -5794,7 +5787,7 @@ msgstr ""
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:42
 msgid "Good luck!"
-msgstr "Good luck!"
+msgstr "நல்ல அதிர்ச்டம்!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:4
@@ -5917,13 +5910,13 @@ msgid ""
 "Complete the <code>isFacingTrail()</code> method (which gets called "
 "automatically)."
 msgstr ""
-"Complete the <code>isFacingTrail()</code> method (which gets called "
-"automatically)."
+"<code> isfacingtrail () </code> முறையை முடிக்கவும் (இது தானாகவே "
+"அழைக்கப்படுகிறது)."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/slug/SlugSnail.html:2
 msgid "Slugs and Snails"
-msgstr "Slugs and Snails"
+msgstr "நத்தைகள் மற்றும் நத்தைகள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugSnail.html:4
@@ -5987,12 +5980,12 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:9 src/lessons/welcome/bdr/BDR2.html:4
 #: src/lessons/recursion/lego/square/FourSquare.html:28
 msgid "[!java|scala|c]"
-msgstr "[!java|scala|c]"
+msgstr "[! சாவா | ச்கலா | சி]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:10
 msgid "Conditionals without curly braces"
-msgstr "Conditionals without curly braces"
+msgstr "சுருள் பிரேச்கள் இல்லாமல் நிபந்தனைகள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:12
@@ -6015,10 +6008,10 @@ msgid ""
 "    <b>whatToDoElse();</b>\n"
 "}"
 msgstr ""
-"if (<b>condition</b>) {\n"
-"    <b>whatToDoIfTheConditionIsTrue();</b>\n"
-"} else {\n"
-"    <b>whatToDoElse();</b>\n"
+"if (<b> நிபந்தனை </b>) { \n"
+"<b> whattodoifththeconditionistrue (); </b> \n"
+"} else { \n"
+"<b> whattodoelse (); </b> \n"
 "}"
 
 #. type: Content of: <pre>
@@ -6030,10 +6023,10 @@ msgid ""
 "else\n"
 "    <b>whatToDoElse();</b>"
 msgstr ""
-"if (<b>condition</b>) \n"
-"    <b>whatToDoIfTheConditionIsTrue();</b>\n"
-"else\n"
-"    <b>whatToDoElse();</b>"
+"if (<b> நிபந்தனை </b>) \n"
+"<b> whattodoifththeconditionistrue (); </b> \n"
+"வேறு \n"
+"<b> whattodoelse (); </b>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:26
@@ -6057,12 +6050,12 @@ msgid ""
 "     right(); \n"
 "[!c]stepForward();[/!][!java|scala]forward();[/!]"
 msgstr ""
-"if (isOverBaggle())    \n"
-"     if (x == 5)\n"
-"          left();\n"
-"else // Do not write it this way, it's misleading!\n"
-"     right(); \n"
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"if (isoverBaggle ()) \n"
+"if (x == 5) \n"
+"இடது (); \n"
+"வேறு // இதை இந்த வழியில் எழுத வேண்டாம், இது தவறாக வழிநடத்துகிறது! \n"
+"சரி (); \n"
+"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:35
@@ -6092,12 +6085,12 @@ msgid ""
 "            right();\n"
 "[!c]stepForward();[/!][!java|scala]forward();[/!]"
 msgstr ""
-"if (isOverBaggle())    \n"
-"        if (x == 5)\n"
-"            left();\n"
-"        else\n"
-"            right();\n"
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"if (isoverBaggle ()) \n"
+"if (x == 5) \n"
+"இடது (); \n"
+"வேறு \n"
+"சரி (); \n"
+"."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:49
@@ -6120,9 +6113,7 @@ msgstr ""
 msgid ""
 "if (isOverBaggle()) if (x == 5) left(); else right(); "
 "[!c]stepForward();[/!][!java|scala]forward();[/!]"
-msgstr ""
-"if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!]"
-"[!java|scala]forward();[/!]"
+msgstr "if (isoverBaggle ()) என்றால் (x == 5) இடது (); வேறு உரிமை (); ."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:57
@@ -6142,7 +6133,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:63
 msgid "Chaining conditionals"
-msgstr "Chaining conditionals"
+msgstr "சங்கிலி நிபந்தனைகள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:65
@@ -6190,17 +6181,17 @@ msgid ""
 "if todayIsJuly4th():\n"
 "    takeFlag()[/!]"
 msgstr ""
-"[!scala|c|java]if (rainy())\n"
-"    takeUmbrella();\n"
-"if (hot())\n"
-"    takeWater();\n"
-"if (todayIsJuly4th())\n"
-"    takeFlag();[/!][!python]if rainy():\n"
-"    takeUmbrella()\n"
-"if hot():\n"
-"    takeWater()\n"
-"if todayIsJuly4th():\n"
-"    takeFlag()[/!]"
+"[! ச்காலா | சி | சாவா] என்றால் (மழை ()) \n"
+"டேக்கிம்பிரெல்லா (); \n"
+"if (hot ()) \n"
+"டேக் வாட்டர் (); \n"
+"if (dideisjuly4th ()) \n"
+"டேக்ஃப்ளாக் (); [/!] [! பைதான்] மழை என்றால் (): \n"
+"டேக்கம்பிரெல்லா () \n"
+"சூடாக இருந்தால் (): \n"
+"டேக் வாட்டர் () \n"
+"todayisjuly4th () என்றால்: \n"
+"டேக்ஃப்ளாக் () [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:88
@@ -6238,24 +6229,24 @@ msgid ""
 "        if todayIsJuly4th():\n"
 "            takeFlag()[/!]"
 msgstr ""
-"[!java|scala|c]if (rainy()) {\n"
-"    takeUmbrella();\n"
-"} else {\n"
-"    if (hotDay()) {\n"
-"        takeWater();\n"
-"    } else {\n"
-"        if (todayIsJuly4th()) {\n"
-"            takeFlag();\n"
-"        }\n"
-"    }\n"
-"}[/!][!python]if rainy():\n"
-"    takeUmbrella()\n"
-"else:\n"
-"    if hotDay():\n"
-"        takeWater()\n"
-"    else:\n"
-"        if todayIsJuly4th():\n"
-"            takeFlag()[/!]"
+"[! சாவா | ச்கலா | சி] if (மழை ()) { \n"
+"டேக்கிம்பிரெல்லா (); \n"
+"} else { \n"
+"if (hotday ()) { \n"
+"டேக் வாட்டர் (); \n"
+"} else { \n"
+"if (dideisjuly4th ()) { \n"
+"டேக்ஃப்ளாக் (); \n"
+"} \n"
+"} \n"
+"} [/!] [! பைதான்] மழை என்றால் (): \n"
+"டேக்கம்பிரெல்லா () \n"
+"வேறு: \n"
+"ஆட் டே என்றால் (): \n"
+"டேக் வாட்டர் () \n"
+"வேறு: \n"
+"todayisjuly4th () என்றால்: \n"
+"டேக்ஃப்ளாக் () [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:113
@@ -6291,23 +6282,23 @@ msgid ""
 "elif todayIsJuly4th():\n"
 "    takeFlag()[/!]"
 msgstr ""
-"[!c|java|scala]if (rainy()) { \n"
-"    takeUmbrella();\n"
-"} else if (hotDay()) {\n"
-"    takeWater();\n"
-"} else if (todayIsJuly4th()) {\n"
-"    takeFlag();\n"
-"}[/!][!python]if rainy():\n"
-"    takeUmbrella()\n"
-"elif hotDay():\n"
-"    takeWater()\n"
-"elif todayIsJuly4th():\n"
-"    takeFlag()[/!]"
+"[! c | சாவா | ச்கலா] if (மழை ()) { \n"
+"டேக்கிம்பிரெல்லா (); \n"
+"} else if (hotday ()) { \n"
+"டேக் வாட்டர் (); \n"
+"} else if (tideisjuly4th ()) { \n"
+"டேக்ஃப்ளாக் (); \n"
+"} [/!] [! பைதான்] மழை என்றால் (): \n"
+"டேக்கம்பிரெல்லா () \n"
+"எலிஃப் ஆட் டே (): \n"
+"டேக் வாட்டர் () \n"
+"elif dideisjuly4th (): \n"
+"டேக்ஃப்ளாக் () [/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:133
 msgid "Graffiti in the Buggle World"
-msgstr "Graffiti in the Buggle World"
+msgstr "பிழையான உலகில் கிராஃபிட்டி"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:135
@@ -6360,8 +6351,8 @@ msgid ""
 "<code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the "
 "ground."
 msgstr ""
-"<code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the "
-"ground."
+"<code> [! சாவா | C] வெற்றிடத்தை [/!] ClearMessage () </code>: தரையில் எழுதப்பட்டதை"
+" அழிக்கிறது."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:151
@@ -6389,7 +6380,7 @@ msgstr "What பெறுநர் do"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:159
 msgid "Mnemonic"
-msgstr "Mnemonic"
+msgstr "நினைவூட்டல்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:142
@@ -6434,7 +6425,7 @@ msgstr "Turn பின் (U-turn) and move one படி forward"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:163
 msgid "Inverse"
-msgstr "Inverse"
+msgstr "தலைகீழ்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:146
@@ -6449,7 +6440,7 @@ msgstr "Move one படி forward"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:165
 msgid "First letter of the alphabet"
-msgstr "First letter of the alphabet"
+msgstr "எழுத்துக்களின் முதல் கடிதம்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:147
@@ -6464,7 +6455,7 @@ msgstr "Move two படிகள் forward"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:166
 msgid "Second letter of the alphabet"
-msgstr "Second letter of the alphabet"
+msgstr "எழுத்துக்களின் இரண்டாவது கடிதம்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:167 src/lessons/welcome/bdr/BDR2.html:148
@@ -6479,12 +6470,12 @@ msgstr "Move three படிகள் forward"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:167
 msgid "Third letter of the alphabet"
-msgstr "Third letter of the alphabet"
+msgstr "எழுத்துக்களின் மூன்றாவது கடிதம்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:153
 msgid "[!java|c]'Z'[/!][!scala|python]\"Z\"[/!]"
-msgstr "[!java|c]'Z'[/!][!scala|python]\"Z\"[/!]"
+msgstr "[! சாவா | C] 'z' [/!] [! ச்கலா | பைதான்] \"சட்\" [/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:153
@@ -6494,12 +6485,12 @@ msgstr "Move one படி பின்னோக்கு"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:169
 msgid "One letter before the end of the alphabet"
-msgstr "One letter before the end of the alphabet"
+msgstr "எழுத்துக்கள் முடிவதற்கு முன் ஒரு கடிதம்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:154
 msgid "[!java|c]'Y'[/!][!scala|python]\"Y\"[/!]"
-msgstr "[!java|c]'Y'[/!][!scala|python]\"Y\"[/!]"
+msgstr "[! சாவா | c] 'y' [/!] [! ச்கலா | பைதான்] \"ஒய்\" [/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:154
@@ -6509,7 +6500,7 @@ msgstr "Move two படிகள் பின்னோக்கு"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:170
 msgid "Two letters before the end of the alphabet"
-msgstr "Two letters before the end of the alphabet"
+msgstr "எழுத்துக்கள் முடிவதற்கு முன் இரண்டு எழுத்துக்கள்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:155
@@ -6524,12 +6515,12 @@ msgstr "Move three படிகள் பின்னோக்கு"
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:171
 msgid "Three letters before the end of the alphabet"
-msgstr "Three letters before the end of the alphabet"
+msgstr "எழுத்துக்கள் முடிவதற்கு முன் மூன்று எழுத்துக்கள்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:172 src/lessons/welcome/bdr/BDR2.html:159
 msgid "<i>(anything else)</i>"
-msgstr "<i>(anything else)</i>"
+msgstr "<i> (வேறு ஏதாவது) </i>"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:172 src/lessons/welcome/bdr/BDR2.html:159
@@ -6539,7 +6530,7 @@ msgstr "நிறுத்து dancing."
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:175
 msgid "Indications"
-msgstr "Indications"
+msgstr "அறிகுறிகள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:177
@@ -6596,7 +6587,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR.html:198
 msgid "Tips and Hints"
-msgstr "Tips and Hints"
+msgstr "உதவிக்குறிப்புகள் மற்றும் குறிப்புகள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:200
@@ -6721,7 +6712,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR2.html:40
 msgid "[/!] [!java|c]"
-msgstr "[/!] [!java|c]"
+msgstr "[/!] [! சாவா | சி]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR2.html:44
@@ -6917,11 +6908,11 @@ msgid ""
 "  case _           => println(\"Hello Sir\")\n"
 "}"
 msgstr ""
-"age match {\n"
-"  case i if i&lt;10 => println(\"Hey kid!\")\n"
-"  case i if i&lt;20 => println(\"Hey dude!\")\n"
-"  case i if i&lt;30 => println(\"Hello young man\")\n"
-"  case _           => println(\"Hello Sir\")\n"
+"அகவை போட்டி { \n"
+"நான் இருந்தால் நான் & lt; 10 => println (\"ஏய் குழந்தை!\") \n"
+"நான் இருந்தால் நான் & lt; 20 => println (\"ஏய் கனா!\") \n"
+"நான் இருந்தால் நான் & lt; 30 => println (\"அலோ இளைஞன்\") \n"
+"வழக்கு _ => println (\"அலோ ஐயா\") \n"
 "}"
 
 #. type: Content of: <p>
@@ -6965,8 +6956,8 @@ msgid ""
 "I told you that scala's pattern matching is very powerful! I actually love "
 "this feature!"
 msgstr ""
-"I told you that scala's pattern matching is very powerful! I actually love "
-"this feature!"
+"ச்கலாவின் முறை பொருத்தம் மிகவும் ஆற்றல் வாய்ந்தது என்று நான் சொன்னேன்! நான் உண்மையில் இந்த "
+"அம்சத்தை விரும்புகிறேன்!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:133
@@ -7001,22 +6992,22 @@ msgstr "Move நான்கு, நாலடி, நான்கடி cells fo
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:150
 msgid "[!java|c]'E'[/!][!scala|python]\"E\"[/!]"
-msgstr "[!java|c]'E'[/!][!scala|python]\"E\"[/!]"
+msgstr "[! சாவா | C] 'இது [/!] [! ச்கலா | பைதான்] \"மற்றும்\" [/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:150
 msgid "Move five cells forward"
-msgstr "Move five cells forward"
+msgstr "ஐந்து செல்களை முன்னோக்கி நகர்த்தவும்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:151
 msgid "[!java|c]'F'[/!][!scala|python]\"F\"[/!]"
-msgstr "[!java|c]'F'[/!][!scala|python]\"F\"[/!]"
+msgstr "[! சாவா | c] 'f' [/!] [! ச்கலா | பைதான்] \"எஃப்\" [/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:151
 msgid "Move six cells forward"
-msgstr "Move six cells forward"
+msgstr "ஆறு செல்களை முன்னோக்கி நகர்த்தவும்"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:156
@@ -7031,7 +7022,7 @@ msgstr "Move நான்கு, நாலடி, நான்கடி cells �
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:157
 msgid "[!java|c]'V'[/!][!scala|python]\"V\"[/!]"
-msgstr "[!java|c]'V'[/!][!scala|python]\"V\"[/!]"
+msgstr "[! சாவா | சி] 'வி' [/!] [! ச்கலா | பைதான்] \"வி\" [/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:157
@@ -7160,8 +7151,8 @@ msgid ""
 "while (testingFunction() == [!c]0) {[/!][!java|scala]false) "
 "{[/!][!python]False):[/!]"
 msgstr ""
-"while (testingFunction() == [!c]0) {[/!][!java|scala]false) {[/!][!python]"
-"False):[/!]"
+"போது (சோதனை செயல்பாடு () == [! சி] 0) {[/!] [! சாவா | ச்கலா] பொய்) {[/!] "
+"[! பைதான்] பொய்): [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:36
@@ -7180,9 +7171,7 @@ msgstr ""
 msgid ""
 "while ([!java|scala|c]![/!][!python]not "
 "[/!]testingFunction())[!java|scala|c] {[/!][!python]:[/!]"
-msgstr ""
-"while ([!java|scala|c]![/!][!python]not [/!]testingFunction())[!java|scala|c]"
-" {[/!][!python]:[/!]"
+msgstr "([! சாவா | ச்கலா | சி]! [/!] [!"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:4
@@ -7358,7 +7347,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/summative/Moria.html:2
 msgid "Lost in the Moria"
-msgstr "Lost in the Moria"
+msgstr "மோரியாவில் இழந்தது"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/summative/Moria.html:4
@@ -7422,7 +7411,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:2 src/lessons/turmites/short_desc.html:2
 msgid "The turmites"
-msgstr "The turmites"
+msgstr "டர்மைட்டுகள்"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/Main.html:4
@@ -7525,7 +7514,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/turmites/langton/Langton.html:2
 msgid "Langton's ant"
-msgstr "Langton's ant"
+msgstr "லாங்டனின் எறும்பு"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:4
@@ -7639,7 +7628,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:2
 msgid "Multicolor Langton's ant"
-msgstr "Multicolor Langton's ant"
+msgstr "மல்டிகலர் லாங்டனின் எறும்பு"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:4
@@ -7734,7 +7723,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:34
 msgid "Move forward by one step."
-msgstr "Move forward by one step."
+msgstr "ஒரு படி முன்னேறவும்."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langtoncolors/LangtonColors.html:37
@@ -7745,7 +7734,7 @@ msgstr "You now should have enough செய்தி பெறுநர் succ
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:2
 msgid "Turmites"
-msgstr "Turmites"
+msgstr "டர்மைட்டுகள்"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:4
@@ -7863,11 +7852,9 @@ msgid ""
 "    left()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
-"[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if "
-"rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if "
-"(rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
-"    left()[!java];[/!]\n"
-"[!java|scala]}[/!]"
+". \n"
+"இடது () [! சாவா]; [/!] \n"
+"[! சாவா | ச்கலா]} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:49
@@ -7884,10 +7871,9 @@ msgid ""
 "    left()[!java];[/!]\n"
 "[!java|scala]}[/!]"
 msgstr ""
-"[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!]"
-"[!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
-"    left()[!java];[/!]\n"
-"[!java|scala]}[/!]"
+". \n"
+"இடது () [! சாவா]; [/!] \n"
+"[! சாவா | ச்கலா]} [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
@@ -7926,7 +7912,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:69
 msgid "Bibliographical notes"
-msgstr "Bibliographical notes"
+msgstr "நூலியல் குறிப்புகள்"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:70
@@ -7948,7 +7934,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:2
 msgid "Creating Turmites"
-msgstr "Creating Turmites"
+msgstr "டர்மைட்டுகளை உருவாக்குதல்"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:4
@@ -7993,13 +7979,13 @@ msgstr "1"
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:19
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:22
 msgid "Write color"
-msgstr "Write color"
+msgstr "நிறம் எழுதுங்கள்"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:20
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:23
 msgid "Turn"
-msgstr "Turn"
+msgstr "திருப்பம்"
 
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:21
@@ -8036,7 +8022,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:51
 msgid "Going further"
-msgstr "Going further"
+msgstr "மேலும் செல்கிறது"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:52
@@ -8397,7 +8383,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/plm/universe/sort/SortingWorld.html:2
 msgid "Sorting World"
-msgstr "Sorting World"
+msgstr "உலகத்தை வரிசைப்படுத்துதல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/sort/SortingWorld.html:3
@@ -8422,17 +8408,17 @@ msgstr "முறைகள் available பெறுநர் sorting algorithms
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:11
 msgid "<b>Method</b>"
-msgstr "<b>Method</b>"
+msgstr "<b> முறை </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:11
 msgid "<b>Action</b>"
-msgstr "<b>Action</b>"
+msgstr "<b> செயல் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:11
 msgid "<b>Cost</b>"
-msgstr "<b>Cost</b>"
+msgstr "<b> செலவு </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:12
@@ -8442,7 +8428,7 @@ msgstr "[!java|c]int [/!]getValueCount() [!scala]:Int[/!]"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:13
 msgid "Returns the amount of values in the array"
-msgstr "Returns the amount of values in the array"
+msgstr "வரிசையில் உள்ள மதிப்புகளின் அளவை வழங்குகிறது"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:13
@@ -8471,7 +8457,7 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:16
 msgid "two reads"
-msgstr "two reads"
+msgstr "இரண்டு வாசிப்புகள்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:17
@@ -8496,7 +8482,7 @@ msgstr ""
 #: src/plm/universe/sort/SortingWorld.html:18
 #: src/plm/universe/sort/SortingWorld.html:26
 msgid "one read"
-msgstr "one read"
+msgstr "ஒன்று படித்தது"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:20
@@ -8515,7 +8501,7 @@ msgstr "Swaps the content of கலன் i and the one of கலன் j"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:21
 msgid "two reads, two writes"
-msgstr "two reads, two writes"
+msgstr "இரண்டு வாசிப்புகள், இரண்டு எழுதுகின்றன"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:22
@@ -8534,7 +8520,7 @@ msgstr "நகலெடு the content of கலன் 'from' into the கலன
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:23
 msgid "one read, one write"
-msgstr "one read, one write"
+msgstr "ஒருவர் படித்தார், ஒருவர் எழுதுங்கள்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:25
@@ -8563,12 +8549,12 @@ msgstr "Sets கலன் 'idx' பெறுநர் the <code>value</code>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:28
 msgid "one write"
-msgstr "one write"
+msgstr "ஒன்று எழுதுங்கள்"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:30
 msgid "[!java]boolean [/!][!c]int [/!]isSelected() [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isSelected() [!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/sort/SortingWorld.html:31
@@ -8588,7 +8574,7 @@ msgstr "அச் always, the indices of cells வீச்சு இருந�
 #: src/plm/universe/sort/SortingWorld.html:34
 #, no-wrap
 msgid "getValueCount()-1"
-msgstr "getValueCount()-1"
+msgstr "getValueCount ()-1"
 
 #. type: Content of: <p>
 #: src/plm/universe/sort/SortingWorld.html:34
@@ -8664,7 +8650,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/sort/basic/Main.html:2 src/lessons/sort/basic/short_desc.html:2
 msgid "Sorting Algorithms"
-msgstr "Sorting Algorithms"
+msgstr "வழிமுறைகளை வரிசைப்படுத்துதல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/Main.html:4
@@ -8724,7 +8710,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:2
 msgid "BubbleSort"
-msgstr "BubbleSort"
+msgstr "குமிழ்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:4
@@ -8772,7 +8758,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:28
 msgid "First attempt at BubbleSort"
-msgstr "First attempt at BubbleSort"
+msgstr "குமிழ்கள் முதல் முயற்சி"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:30
@@ -8827,7 +8813,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:2
 msgid "BubbleSort (take 2)"
-msgstr "BubbleSort (take 2)"
+msgstr "குமிழ்கள் (2 ஐ எடுத்துக் கொள்ளுங்கள்)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:4
@@ -8902,7 +8888,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:2
 msgid "BubbleSort (take 3)"
-msgstr "BubbleSort (take 3)"
+msgstr "குமிழ்கள் (3 ஐ எடுத்துக் கொள்ளுங்கள்)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:4
@@ -8933,7 +8919,8 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:14
 msgid "If you want, this tip shows the pseudo-code."
-msgstr "If you want, this tip shows the pseudo-code."
+msgstr ""
+"நீங்கள் விரும்பினால், இந்த உதவிக்குறிப்பு போலி குறியீட்டைக் காட்டுகிறது."
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:16
@@ -8961,7 +8948,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:2
 msgid "CocktailSort"
-msgstr "CocktailSort"
+msgstr "காக்டெய்ல்சார்ட்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:4
@@ -9021,7 +9008,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:2
 msgid "CocktailSort (take 2)"
-msgstr "CocktailSort (take 2)"
+msgstr "காக்டெய்ல்சார்ட் (எடுத்துக் கொள்ளுங்கள் 2)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:4
@@ -9063,7 +9050,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:2
 msgid "CocktailSort (take 3)"
-msgstr "CocktailSort (take 3)"
+msgstr "காக்டெய்ல்சார்ட் (3 எடுத்துக் கொள்ளுங்கள்)"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:4
@@ -9085,7 +9072,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:2
 msgid "InsertionSort"
-msgstr "InsertionSort"
+msgstr "செருகும்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:5
@@ -9118,7 +9105,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:18
 msgid "Once this is done, the situation is the following:"
-msgstr "Once this is done, the situation is the following:"
+msgstr "இது முடிந்ததும், நிலைமை பின்வருமாறு:"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:22
@@ -9215,7 +9202,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/sort/basic/shell/AlgShellSort.html:2
 msgid "ShellSort"
-msgstr "ShellSort"
+msgstr "குல்சார்ட்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/shell/AlgShellSort.html:4
@@ -9364,7 +9351,7 @@ msgstr ""
 #. type: Content of: <p><p><h2>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:18
 msgid "Existing variations"
-msgstr "Existing variations"
+msgstr "தற்போதுள்ள மாறுபாடுகள்"
 
 #. type: Content of: <p><p>
 #: src/lessons/sort/basic/selection/AlgSelectionSort.html:19
@@ -9382,7 +9369,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:2
 msgid "CombSort"
-msgstr "CombSort"
+msgstr "காம்ப்சார்ட்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:4
@@ -9424,23 +9411,22 @@ msgid ""
 "while the gap is bigger than 1 or the last traversal swapped at least one "
 "pair\n"
 msgstr ""
-"gap = len;\n"
-"do\n"
-"   if gap>1 then\n"
-"     gap = gap / 1.3\n"
-"   i = O\n"
-"   while i+gap &lt; len do:\n"
-"     if i and i+gap must be swapped, do it\n"
-"     increase i by one\n"
-"while the gap is bigger than 1 or the last traversal swapped at least one "
-"pair\n"
+"இடைவெளி = லென்; \n"
+"செய் \n"
+"இடைவெளி> 1 என்றால் \n"
+"இடைவெளி = இடைவெளி / 1.3 \n"
+"i = o \n"
+"நான்+இடைவெளி & lt; லென் டூ: \n"
+"நானும் i+இடைவெளியும் மாற்றப்பட வேண்டும் என்றால், அதைச் செய்யுங்கள் \n"
+"நான் ஒவ்வொன்றாக அதிகரிக்கவும் \n"
+"இடைவெளி 1 ஐ விட பெரியது அல்லது கடைசி பயணங்கள் குறைந்தது ஒரு சோடியை மாற்றின\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
 #: src/lessons/maze/island/IslandMaze.html:67
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[!scala]"
-msgstr "[!scala]"
+msgstr "[! ச்கலா]"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
@@ -9463,7 +9449,7 @@ msgstr ""
 #: src/lessons/sort/basic/comb/AlgCombSort.html:31
 #, no-wrap
 msgid "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
-msgstr "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
+msgstr "gap = (gap.asinstanceof [இரட்டை] / 1.3) .சின்ச்டான்சோஃப் [int]"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:32
@@ -9484,7 +9470,7 @@ msgstr ""
 #: src/lessons/sort/basic/comb/AlgCombSort.html:36
 #, no-wrap
 msgid "gap = (gap.toDouble / 1.3).toInt"
-msgstr "gap = (gap.toDouble / 1.3).toInt"
+msgstr "gap = (gap.Todouble / 1.3) .toint"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort.html:37
@@ -9511,7 +9497,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/comb/AlgCombSort11.html:2
 msgid "CombSort11"
-msgstr "CombSort11"
+msgstr "COMPSORT11"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/comb/AlgCombSort11.html:4
@@ -9531,7 +9517,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/basic/gnome/AlgGnomeSort.html:2
 msgid "GnomeSort"
-msgstr "GnomeSort"
+msgstr "Gnomesort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/gnome/AlgGnomeSort.html:4
@@ -9607,7 +9593,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:15
 msgid "This problem could be solved recursively."
-msgstr "This problem could be solved recursively."
+msgstr "இந்த சிக்கல் மறுநிகழ்வு தீர்க்கப்படலாம்."
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/short_desc.html:4
@@ -9709,7 +9695,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
 msgid "Provided values"
-msgstr "Provided values"
+msgstr "வழங்கப்பட்ட மதிப்புகள்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:6
@@ -9729,7 +9715,7 @@ msgstr "Provided செயல்பாடுகள்"
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
 msgid "This world is very simple, with only 5 provided functions."
-msgstr "This world is very simple, with only 5 provided functions."
+msgstr "இந்த உலகம் மிகவும் எளிமையானது, 5 வழங்கப்பட்ட செயல்பாடுகள் மட்டுமே."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:13
@@ -9770,26 +9756,26 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:20
 msgid "Returns the color of the given line."
-msgstr "Returns the color of the given line."
+msgstr "கொடுக்கப்பட்ட வரியின் நிறத்தை வழங்குகிறது."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:31
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:23
 msgid "Returns whether the flag is sorted."
-msgstr "Returns whether the flag is sorted."
+msgstr "கொடி வரிசைப்படுத்தப்பட்டதா என்பதைத் தருகிறது."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:37
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26
@@ -9802,7 +9788,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:2
 msgid "PancakeWorld"
-msgstr "PancakeWorld"
+msgstr "பான்கேக் வேர்ல்ட்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:4
@@ -9878,24 +9864,24 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:18
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isSorted()   [!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:19
 msgid "Returns whether the pancake stack is correctly sorted."
-msgstr "Returns whether the pancake stack is correctly sorted."
+msgstr "பான்கேக் அடுக்கு சரியாக வரிசைப்படுத்தப்பட்டதா என்பதைத் தருகிறது."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSelected()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isSelected()   [!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/Main.html:2
 #: src/lessons/sort/pancake/BasicPancake.html:2
 msgid "Pancake Sorting"
-msgstr "Pancake Sorting"
+msgstr "பான்கேக் வரிசையாக்கம்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:4
@@ -9992,7 +9978,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:2
 msgid "The pancake problem"
-msgstr "The pancake problem"
+msgstr "பான்கேக் சிக்கல்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/short_desc.html:4
@@ -10067,7 +10053,7 @@ msgstr ""
 #: src/lessons/sort/pancake/BasicPancake.html:23
 #: src/lessons/sort/pancake/BubblePancake.html:10
 msgid "I don't get it. I need some help."
-msgstr "I don't get it. I need some help."
+msgstr "எனக்கு அது கிடைக்கவில்லை. எனக்கு சில உதவி தேவை."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:24
@@ -10084,7 +10070,7 @@ msgstr ""
 #: src/lessons/sort/pancake/BasicPancake.html:28
 #: src/lessons/sort/pancake/BubblePancake.html:13
 msgid "The first tip was not enough. I need another one."
-msgstr "The first tip was not enough. I need another one."
+msgstr "முதல் முனை போதாது. எனக்கு இன்னொன்று தேவை."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:29
@@ -10110,7 +10096,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BubblePancake.html:2
 msgid "Bubble Pancakes"
-msgstr "Bubble Pancakes"
+msgstr "குமிழி அப்பங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BubblePancake.html:4
@@ -10180,7 +10166,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:2
 msgid "Burned Pancakes"
-msgstr "Burned Pancakes"
+msgstr "எரிந்த அப்பங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BurnedPancake.html:4
@@ -10197,7 +10183,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/GatesPancake.html:2
 msgid "Faster Pancake Sorting"
-msgstr "Faster Pancake Sorting"
+msgstr "வேகமான பான்கேக் வரிசையாக்கம்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:4
@@ -10344,7 +10330,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/sort/pancake/GatesPancake.html:61
 msgid "Your turn"
-msgstr "Your turn"
+msgstr "உங்கள் முறை"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/GatesPancake.html:62
@@ -10432,7 +10418,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/CohenPancake.html:2
 msgid "Faster Burned Pancake Sorting"
-msgstr "Faster Burned Pancake Sorting"
+msgstr "பாச்டர் பான்கேக் வரிசையாக்கத்தை எரித்தார்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:4
@@ -10494,12 +10480,14 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:22
 msgid "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
-msgstr "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
+msgstr ""
+"<b> வழக்கு 1.A: </b> <i> பி+1 </i> <i> ப </i> ஐ விட அடுக்கில் குறைவாக உள்ளது."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:23
 msgid "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
-msgstr "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
+msgstr ""
+"<b> வழக்கு 1. பி: </b> <i> பி+1 </i> <i> ப </i> ஐ விட அடுக்கில் அதிகமாக உள்ளது."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/CohenPancake.html:24
@@ -10559,8 +10547,8 @@ msgid ""
 "<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
 "that case, we must have that setting:"
 msgstr ""
-"<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
-"that case, we must have that setting:"
+"<b> வழக்கு 2. பி: </b> எந்த பான்கேக்கும் <i> ப </i> பான்கேக்கை விட குறைவாக உள்ளது "
+"<i> பி+1 </i>. அவ்வாறான நிலையில், அந்த அமைப்பை நாம் கொண்டிருக்க வேண்டும்:"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/CohenPancake.html:48
@@ -10623,7 +10611,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:68
 msgid "I cannot get it right."
-msgstr "I cannot get it right."
+msgstr "என்னால் அதை சரியாகப் பெற முடியாது."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/CohenPancake.html:69
@@ -10645,7 +10633,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:2
 msgid "The Rainbow Baseball Game"
-msgstr "The Rainbow Baseball Game"
+msgstr "ரெயின்போ பேச்பால் விளையாட்டு"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:4
@@ -10754,7 +10742,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
 msgid "Rainbow baseball"
-msgstr "Rainbow baseball"
+msgstr "ரெயின்போ பேச்பால்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/short_desc.html:4
@@ -10762,13 +10750,13 @@ msgid ""
 "This is another funny variation on the sorting problem, adapting the main "
 "sorting algorithms on an unusual context."
 msgstr ""
-"This is another funny variation on the sorting problem, adapting the main "
-"sorting algorithms on an unusual context."
+"இது வரிசையாக்க சிக்கலில் மற்றொரு வேடிக்கையான மாறுபாடாகும், இது ஒரு அசாதாரண சூழலில் "
+"முக்கிய வரிசையாக்க வழிமுறைகளை மாற்றியமைக்கிறது."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:2
 msgid "Rainbow Baseball"
-msgstr "Rainbow Baseball"
+msgstr "ரெயின்போ பேச்பால்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:3
@@ -10810,7 +10798,7 @@ msgstr "[!java|c]int [/!]getBasesAmount() [!scala]:Int[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:15
 msgid "Returns the amount of bases on this field."
-msgstr "Returns the amount of bases on this field."
+msgstr "இந்த துறையில் தளங்களின் அளவை வழங்குகிறது."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:17
@@ -10863,7 +10851,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:29
 msgid "Returns the color of the player at a given location."
-msgstr "Returns the color of the player at a given location."
+msgstr "கொடுக்கப்பட்ட இடத்தில் பிளேயரின் நிறத்தை வழங்குகிறது."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:32
@@ -10912,7 +10900,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/NaiveBaseball.html:2
 msgid "Naive Rainbow Baseball"
-msgstr "Naive Rainbow Baseball"
+msgstr "அப்பாவியாக ரெயின்போ பேச்பால்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:4
@@ -11151,7 +11139,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/InsertBaseball.html:2
 msgid "Insertion Baseball"
-msgstr "Insertion Baseball"
+msgstr "செருகும் பேச்பால்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:4
@@ -11294,7 +11282,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/BubbleBaseball.html:2
 msgid "Bubble Baseball"
-msgstr "Bubble Baseball"
+msgstr "குமிழி பேச்பால்"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:4
@@ -11361,9 +11349,9 @@ msgid ""
 "than two players per base.  But actually, that shouldn't block you very "
 "long, should it?"
 msgstr ""
-"This is so easy that we introduce another variant of the problem, with more "
-"than two players per base.  But actually, that shouldn't block you very "
-"long, should it?"
+"இது மிகவும் எளிதானது, பிரச்சினையின் மற்றொரு மாறுபாட்டை நாங்கள் அறிமுகப்படுத்துகிறோம், "
+"ஒரு தளத்திற்கு இரண்டு வீரர்கள். ஆனால் உண்மையில், அது உங்களை மிக நீளமாக தடுக்கக்கூடாது, "
+"வேண்டுமா?"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:25
@@ -11422,8 +11410,8 @@ msgid ""
 "[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])\n"
 "[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])"
 msgstr ""
-"[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])\n"
-"[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])"
+". \n"
+"."
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:16
@@ -11437,8 +11425,8 @@ msgid ""
 "[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
 "[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
 msgstr ""
-"[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
-"[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
+". \n"
+"."
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:20
@@ -11453,8 +11441,8 @@ msgid ""
 "[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
 "[!java|c]double [/!]getY()[!scala]:Double[/!]"
 msgstr ""
-"[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getY()[!scala]:Double[/!]"
+". \n"
+"[! சாவா | சி] இரட்டை [/!"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:24
@@ -11475,10 +11463,9 @@ msgid ""
 "[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], "
 "[!java|c]double [/!]y[!scala]:Double[/!])"
 msgstr ""
-"[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
-"[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
-"[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]"
-"double [/!]y[!scala]:Double[/!])"
+". \n"
+". \n"
+"."
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:30
@@ -11516,45 +11503,45 @@ msgstr "Draw a circle of the specified ஆரம் centered on the turtle."
 #: src/plm/universe/turtles/TurtleWorld.html:38
 #, no-wrap
 msgid "[!java|c]void [/!]hide()"
-msgstr "[!java|c]void [/!]hide()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] மறை ()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:39
 msgid "Hides the turtle."
-msgstr "Hides the turtle."
+msgstr "ஆமை மறைக்கிறது."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:41
 #, no-wrap
 msgid "[!java|c]void [/!]show()"
-msgstr "[!java|c]void [/!]show()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] காட்டு ()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:42
 msgid "Shows the turtle back."
-msgstr "Shows the turtle back."
+msgstr "ஆமை மீண்டும் காட்டுகிறது."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
+msgstr "[! சாவா] பூலியன் [/!] [!"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:45
 msgid "Returns whether the turtle is currently visible."
-msgstr "Returns whether the turtle is currently visible."
+msgstr "ஆமை தற்போது காணப்படுகிறதா என்பதைத் தருகிறது."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
 msgid "[!java|c]void [/!]clear()"
-msgstr "[!java|c]void [/!]clear()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] தெளிவான ()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:48
 msgid "Removes any trail on the sheet."
-msgstr "Removes any trail on the sheet."
+msgstr "தாளில் எந்த தடத்தையும் நீக்குகிறது."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:50
@@ -11588,7 +11575,7 @@ msgstr "செயல்பாடுகள் பற்றி the pen"
 #: src/plm/universe/turtles/TurtleWorld.html:58
 #, no-wrap
 msgid "[!java|c]void [/!]penUp()"
-msgstr "[!java|c]void [/!]penUp()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] பெனப் ()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:59
@@ -11603,7 +11590,7 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:62
 #, no-wrap
 msgid "[!java|c]void [/!]penDown()"
-msgstr "[!java|c]void [/!]penDown()"
+msgstr "[! சாவா | சி] வெற்றிட [/!] பெண்டவுன் ()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:63
@@ -11611,8 +11598,8 @@ msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
 msgstr ""
-"Moves the pen down. The turtle will leave a trace during its subsequent "
-"moves."
+"பேனாவை கீழே நகர்த்துகிறது. ஆமை அதன் அடுத்தடுத்த நகர்வுகளின் போது ஒரு தடயத்தை "
+"விட்டுவிடும்."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:65
