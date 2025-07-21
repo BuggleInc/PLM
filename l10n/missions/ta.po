@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2021-06-25 04:58+0200\n"
-"PO-Revision-Date: 2025-07-19 15:02+0000\n"
+"PO-Revision-Date: 2025-07-21 16:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/"
 "programmers-learning-machine/missions/ta/>\n"
@@ -11632,7 +11632,7 @@ msgstr "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:72
 msgid "Changes the pen color."
-msgstr "Changes the pen color."
+msgstr "பேனா நிறத்தை மாற்றுகிறது."
 
 #. type: Content of: <h2>
 #: src/plm/universe/turtles/TurtleWorld.html:74
@@ -11654,7 +11654,7 @@ msgstr "பெயர்"
 #. type: Content of: <h3>
 #: src/lessons/turtleart/Main.html:2 src/lessons/turtleart/short_desc.html:2
 msgid "Turtle Art"
-msgstr "Turtle Art"
+msgstr "ஆமை கலை"
 
 #. type: Content of: <p>
 #: src/lessons/turtleart/Main.html:4
@@ -11733,7 +11733,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:2
 msgid "ConsWorld"
-msgstr "ConsWorld"
+msgstr "கான்ச்வொர்ல்ட்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:4
@@ -11814,7 +11814,7 @@ msgstr "<b>Get the first தனிமம் of <code>l</code></b>"
 #: src/lessons/recursion/cons/universe/ConsWorld.html:31
 #, no-wrap
 msgid "l.head"
-msgstr "l.head"
+msgstr "எல்"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
@@ -11825,7 +11825,7 @@ msgstr "<b>Get the rest of the list</b>, when the first தனிமம் is re
 #: src/lessons/recursion/cons/universe/ConsWorld.html:32
 #, no-wrap
 msgid "l.tail"
-msgstr "l.tail"
+msgstr "எல்"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:33
@@ -11840,18 +11840,18 @@ msgstr ""
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
 #, no-wrap
 msgid "cons(value, list)"
-msgstr "cons(value, list)"
+msgstr "பாதகம் (மதிப்பு, பட்டியல்)"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:35
 #, no-wrap
 msgid "value::list"
-msgstr "value::list"
+msgstr "மதிப்பு :: பட்டியல்"
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Main.html:2
 msgid "Recursive Lists"
-msgstr "Recursive Lists"
+msgstr "சுழல்நிலை பட்டியல்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Main.html:3
@@ -11901,7 +11901,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Length.html:2
 msgid "Length"
-msgstr "Length"
+msgstr "நீளம்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Length.html:3
@@ -11910,9 +11910,8 @@ msgid ""
 "length[!scala] (without using its <code>size</code> method, of course)[/!].  "
 "[!java|python]"
 msgstr ""
-"Given a [!scala]List[Int][/!][!java|python]recursive list[/!], return its "
-"length[!scala] (without using its <code>size</code> method, of course)[/!].  "
-"[!java|python]"
+"[! ச்கலா] பட்டியல் [int] [/!] [! சாவா | பைதான்] சுழல்நிலை பட்டியல் "
+"[/! [! சாவா | பைதான்]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
@@ -11941,7 +11940,7 @@ msgstr "Your நீர்மக்கூழ் should be நேரியல் i
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/IsMember.html:2
 msgid "IsMember"
-msgstr "IsMember"
+msgstr "Ismember"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/IsMember.html:3
@@ -11957,7 +11956,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Occurrence.html:2
 msgid "Occurrences"
-msgstr "Occurrences"
+msgstr "நிகழ்வுகள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Occurrence.html:3
@@ -11974,7 +11973,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Last.html:2
 msgid "Last"
-msgstr "Last"
+msgstr "கடைசி"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Last.html:3
@@ -11988,7 +11987,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Min.html:2
 msgid "Min"
-msgstr "Min"
+msgstr "மணித்துளி"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Min.html:3
@@ -12004,7 +12003,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Increasing.html:2
 msgid "Increasing"
-msgstr "Increasing"
+msgstr "அதிகரிக்கும்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Increasing.html:3
@@ -12020,7 +12019,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButLast.html:2
 msgid "But Last"
-msgstr "But Last"
+msgstr "ஆனால் கடைசியாக"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButLast.html:3
@@ -12036,7 +12035,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/PlusOne.html:2
 msgid "PlusOne"
-msgstr "PlusOne"
+msgstr "பிளச்ஒன்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/PlusOne.html:3
@@ -12066,7 +12065,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Nth.html:2
 msgid "Nth"
-msgstr "Nth"
+msgstr "N"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Nth.html:3
@@ -12090,7 +12089,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Nfirst.html:2
 msgid "Nfirst"
-msgstr "Nfirst"
+msgstr "முதல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Nfirst.html:3
@@ -12108,7 +12107,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Nlast.html:2
 msgid "Nlast"
-msgstr "Nlast"
+msgstr "குண்டுவெடிப்பு"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Nlast.html:3
@@ -12151,7 +12150,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButNfirst.html:2
 msgid "But Nfirst"
-msgstr "But Nfirst"
+msgstr "ஆனால் முதல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButNfirst.html:3
@@ -12165,7 +12164,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/ButNlast.html:2
 msgid "But Nlast"
-msgstr "But Nlast"
+msgstr "ஆனால் கடைசியாக"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/ButNlast.html:3
@@ -12211,7 +12210,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Concat.html:2
 msgid "Concat"
-msgstr "Concat"
+msgstr "இணைக்கவும்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/cons/Concat.html:3
@@ -12263,7 +12262,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/lego/Main.html:2
 msgid "Recursive algorithms"
-msgstr "Recursive algorithms"
+msgstr "சுழல்நிலை வழிமுறைகள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/Main.html:3
@@ -12277,9 +12276,9 @@ msgid ""
 "algorithms (in particular QuickSort and MergeSort) is planned in the future "
 "within the sorting lesson."
 msgstr ""
-"If you need more recursive algorithms, an exercise on recursive sorting "
-"algorithms (in particular QuickSort and MergeSort) is planned in the future "
-"within the sorting lesson."
+"உங்களுக்கு அதிக சுழல்நிலை வழிமுறைகள் தேவைப்பட்டால், சுழல்நிலை வரிசையாக்க வழிமுறைகள் "
+"(குறிப்பாக குவிக்சார்ட் மற்றும் மெர்செசார்ட்) குறித்த ஒரு உடற்பயிற்சி எதிர்காலத்தில் "
+"வரிசையாக்க பாடத்திற்குள் திட்டமிடப்பட்டுள்ளது."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/Main.html:9
@@ -12301,8 +12300,8 @@ msgid ""
 "The Sierpinski triangle can be drawn using a simpler L-system. See "
 "http://jpvallon.free.fr/recursivite.html"
 msgstr ""
-"The Sierpinski triangle can be drawn using a simpler L-system. See http://"
-"jpvallon.free.fr/recursivite.html"
+"சியர்பின்ச்கி முக்கோணத்தை எளிமையான எல்-சிச்டத்தைப் பயன்படுத்தி வரையலாம். Http://"
+"jpvallon.free.fr/recursivite.html ஐப் பார்க்கவும்"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:14
@@ -12346,14 +12345,14 @@ msgid ""
 "We could do another exercise on embeeded polygons: "
 "http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
 msgstr ""
-"We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
-"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+"உட்பொதிக்கப்பட்ட பலகோணங்களில் நாங்கள் மற்றொரு உடற்பயிற்சியைச் செய்யலாம்: http://"
+"www.inrialpes.fr/helix/people/genoud/ensjava/tds/sujets/dessinsreccursifs/"
 "actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/short_desc.html:2
 msgid "Bases of recursion"
-msgstr "Bases of recursion"
+msgstr "மறுநிகழ்வின் தளங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/short_desc.html:3
@@ -12367,7 +12366,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/square/FourSquare.html:2
 msgid "The small cousines of Buggles"
-msgstr "The small cousines of Buggles"
+msgstr "பங்குகளின் சிறிய உறவினர்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/square/FourSquare.html:4
@@ -12432,7 +12431,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/square/FourSquare.html:29
 msgid "Doubles? But what is it?"
-msgstr "Doubles? But what is it?"
+msgstr "இரட்டையர்? ஆனால் அது என்ன?"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/square/FourSquare.html:30
@@ -12506,7 +12505,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:2
 msgid "Fractal of polygons"
-msgstr "Fractal of polygons"
+msgstr "பலகோணங்களின் பின்னம்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:4
@@ -12514,8 +12513,8 @@ msgid ""
 "The fractal we will now draw is formed of a polygon, with little polygons on "
 "each corner. The prototype of the method drawing it is the following:"
 msgstr ""
-"The fractal we will now draw is formed of a polygon, with little polygons on "
-"each corner. The prototype of the method drawing it is the following:"
+"ஒவ்வொரு மூலையிலும் சிறிய பலகோணங்களுடன், இப்போது நாம் வரையும் பின்னல் பலகோணத்தால் "
+"உருவாகிறது. முறை வரைதல் முறையின் முன்மாதிரி பின்வருமாறு:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:6
@@ -12525,10 +12524,7 @@ msgid ""
 "[!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double "
 "[/!]length[!scala]:Double[/!], [!java|c]double "
 "[/!]shrink[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]void [/!]polygonFractal ([!java|c]int [/!]levels[!scala]:Int[/!], "
-"[!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:"
-"Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
+msgstr "[! சாவா | சி] வெற்றிட [/! [/!] சுருக்கம் [! ச்கலா]: இரட்டை [/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:8
@@ -12627,7 +12623,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/lego/koch/Koch.html:34
 msgid "Too much letters. Please picture it."
-msgstr "Too much letters. Please picture it."
+msgstr "அதிக கடிதங்கள். தயவுசெய்து அதை சித்தரிக்கவும்."
 
 #. type: Content of: <p><div><p>
 #: src/lessons/recursion/lego/koch/Koch.html:35
@@ -12665,7 +12661,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/lego/koch/SquareKoch.html:8
 msgid "I don't see it, sorry. Please picture it."
-msgstr "I don't see it, sorry. Please picture it."
+msgstr "நான் அதைப் பார்க்கவில்லை, மன்னிக்கவும். தயவுசெய்து அதை சித்தரிக்கவும்."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/SquareKoch.html:14
@@ -12756,7 +12752,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/koch/Crab.html:2
 msgid "Fractal Crab"
-msgstr "Fractal Crab"
+msgstr "ஃப்ராக்டல் நண்டு"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/koch/Crab.html:4
@@ -12804,7 +12800,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/tree/Tree.html:2
 msgid "Trees"
-msgstr "Trees"
+msgstr "மரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/tree/Tree.html:4
@@ -12925,7 +12921,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/sierpinski/Sierpinski.html:2
 msgid "Sierpinski's Triangle"
-msgstr "Sierpinski's Triangle"
+msgstr "சியர்பின்ச்கியின் முக்கோணம்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/sierpinski/Sierpinski.html:4
@@ -12965,7 +12961,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/spiral/Spiral.html:2
 msgid "Spirals"
-msgstr "Spirals"
+msgstr "சுருள்கள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/spiral/Spiral.html:4
@@ -13020,22 +13016,22 @@ msgid ""
 "          left(90);\n"
 "          spiral(0,90,12,3);\n"
 msgstr ""
-"spiral(5, 90, 0, 3);\n"
-"  forward(0);\n"
-"  left(90);\n"
-"  spiral(4,90,3,3);\n"
-"    forward(3);\n"
-"    left(90);\n"
-"    spiral(3,90,6,3);\n"
-"      forward(6);\n"
-"      left(90);\n"
-"      spiral(2,90,9,3);\n"
-"        forward(9);\n"
-"        left(90);\n"
-"        spiral(1,90,12,3);\n"
-"          forward(12);\n"
-"          left(90);\n"
-"          spiral(0,90,12,3);\n"
+"சுழல் (5, 90, 0, 3); \n"
+"முன்னோக்கி (0); \n"
+"இடது (90); \n"
+"சுழல் (4,90,3,3); \n"
+"முன்னோக்கி (3); \n"
+"இடது (90); \n"
+"சுழல் (3,90,6,3); \n"
+"முன்னோக்கி (6); \n"
+"இடது (90); \n"
+"சுழல் (2,90,9,3); \n"
+"முன்னோக்கி (9); \n"
+"இடது (90); \n"
+"சுழல் (1,90,12,3); \n"
+"முன்னோக்கி (12); \n"
+"இடது (90); \n"
+"சுழல் (0,90,12,3);\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/spiral/Spiral.html:30
@@ -13054,12 +13050,12 @@ msgstr ""
 #: src/lessons/recursion/lego/spiral/Spiral.html:36
 #, no-wrap
 msgid "spiral(100, 90, 0, 3);\n"
-msgstr "spiral(100, 90, 0, 3);\n"
+msgstr "சுழல் (100, 90, 0, 3);\n"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:2
 msgid "Drawing spirals"
-msgstr "Drawing spirals"
+msgstr "வரைதல் சுழல்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/spiral/SpiralUse.html:4
@@ -13162,11 +13158,7 @@ msgid ""
 "[!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double "
 "[/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], "
 "[!java|c]double [/!]t[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]"
-"double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], "
-"[!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:"
-"Double[/!])"
+msgstr ". [! சாவா | சி] இரட்டை [/!] டி [! ச்கலா]: இரட்டை [/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:22
@@ -13218,10 +13210,10 @@ msgid ""
 "<code>dragonReverse()</code> is defined recursively using itself and "
 "<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
 msgstr ""
-"The method <code>dragon()</code> is then recursively defined using itself "
-"and <code>dragonReverse()</code>. Likewise, the method "
-"<code>dragonReverse()</code> is defined recursively using itself and "
-"<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
+"முறை <code> டிராகன் () </code> பின்னர் தன்னைப் பயன்படுத்தி மறுநிகழ்வு "
+"வரையறுக்கப்படுகிறது மற்றும் <code> டிராகன் ரிவர்ச் () </code>. அதேபோல், முறை <code> "
+"டிராகன் ரிவர்ச் () </code> தன்னைப் பயன்படுத்தி மறுநிகழ்வு வரையறுக்கப்படுகிறது மற்றும் "
+"<code> டிராகன் () </code>. இது <i> பரச்பர மறுநிகழ்வு </i> க்கு ஒரு எடுத்துக்காட்டு."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:21
@@ -13243,7 +13235,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:31
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
-msgstr "The prototype of the method <code>dragonReverse</code> is similar:"
+msgstr "<குறியீடு> டிராகன் ரிவர்ச் </code> முறையின் முன்மாதிரி ஒத்திருக்கிறது:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:32
@@ -13253,11 +13245,7 @@ msgid ""
 "[!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double "
 "[/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], "
 "[!java|c]double [/!]t[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], "
-"[!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:"
-"Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t"
-"[!scala]:Double[/!])"
+msgstr ". [! சாவா | சி] இரட்டை [/!] டி [! ச்கலா]: இரட்டை [/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:34
@@ -13295,7 +13283,7 @@ msgstr ""
 #: src/lessons/recursion/hanoi/Main.html:2
 #: src/lessons/recursion/hanoi/short_desc.html:2
 msgid "Hanoi towers"
-msgstr "Hanoi towers"
+msgstr "அனோய் கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:3
@@ -13361,7 +13349,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:3
 msgid "Here comes the super classical exercise on recursion."
-msgstr "Here comes the super classical exercise on recursion."
+msgstr "இங்கே மறுநிகழ்வு குறித்த சூப்பர் பாரம்பரிய உடற்பயிற்சி வருகிறது."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/short_desc.html:5
@@ -13375,7 +13363,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:2
 msgid "Tower of Hanoi"
-msgstr "Tower of Hanoi"
+msgstr "அனோய் கோபுரம்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:4
@@ -13466,12 +13454,13 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:36
 msgid "I don't get it, please give me some extra indications"
-msgstr "I don't get it, please give me some extra indications"
+msgstr ""
+"எனக்கு அது கிடைக்கவில்லை, தயவுசெய்து எனக்கு சில கூடுதல் அறிகுறிகளைக் கொடுங்கள்"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:37
 msgid "Here is the pseudo-code of the solution:"
-msgstr "Here is the pseudo-code of the solution:"
+msgstr "தீர்வின் போலி குறியீடு இங்கே:"
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:39
@@ -13514,7 +13503,7 @@ msgstr "move n−1 discs இருந்து B பெறுநர் C so they
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/InterleavedHanoi.html:2
 msgid "Interleaved Towers of Hanoi"
-msgstr "Interleaved Towers of Hanoi"
+msgstr "அனோயின் இன்டர்லீவ் கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/InterleavedHanoi.html:4
@@ -13560,7 +13549,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/SplitHanoi1.html:2
 msgid "Split Towers of Hanoi"
-msgstr "Split Towers of Hanoi"
+msgstr "அனோயின் பிளவு கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/SplitHanoi1.html:4
@@ -13586,7 +13575,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:2
 msgid "Better Split Towers of Hanoi"
-msgstr "Better Split Towers of Hanoi"
+msgstr "அனோயின் சிறந்த பிளவு கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:4
@@ -13603,72 +13592,72 @@ msgstr ""
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:7
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:21
 msgid "Disks amount"
-msgstr "Disks amount"
+msgstr "வட்டுகள் தொகை"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:7
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:21
 msgid "Interleaved"
-msgstr "Interleaved"
+msgstr "இடைக்கணிப்பு"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:7
 msgid "Split"
-msgstr "Split"
+msgstr "பிளவு"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:8
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "5 pairs"
-msgstr "5 pairs"
+msgstr "5 சோடிகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:8
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "62 moves"
-msgstr "62 moves"
+msgstr "62 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:8
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "88 moves"
-msgstr "88 moves"
+msgstr "88 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:9
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "6 pairs"
-msgstr "6 pairs"
+msgstr "6 சோடிகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:9
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "126 moves"
-msgstr "126 moves"
+msgstr "126 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:9
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "183 moves"
-msgstr "183 moves"
+msgstr "183 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:10
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "7 pairs"
-msgstr "7 pairs"
+msgstr "7 சோடிகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:10
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "254 moves"
-msgstr "254 moves"
+msgstr "254 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:10
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "374 moves"
-msgstr "374 moves"
+msgstr "374 நகர்வுகள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:13
@@ -13678,7 +13667,7 @@ msgstr "Can you make the split tower அச் efficient அச் the interleav
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:15
 msgid "I need a starter hint"
-msgstr "I need a starter hint"
+msgstr "எனக்கு ஒரு ச்டார்டர் குறிப்பு தேவை"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:16
@@ -13700,7 +13689,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <br><br><div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:24
 msgid "The starter hint was not enough"
-msgstr "The starter hint was not enough"
+msgstr "ச்டார்டர் குறிப்பு போதாது"
 
 #. type: Content of: <br><br><div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:25
@@ -13708,8 +13697,8 @@ msgid ""
 "If someone could split the (n-1) pairs of disks beforehand, could you split "
 "the remaining pair?"
 msgstr ""
-"If someone could split the (n-1) pairs of disks beforehand, could you split "
-"the remaining pair?"
+"யாராவது (N-1) இணை வட்டுகளை முன்பே பிரிக்க முடிந்தால், மீதமுள்ள சோடியை பிரிக்க "
+"முடியுமா?"
 
 #. type: Attribute 'alt' of: <br><br><br><br><div>
 #: src/lessons/recursion/hanoi/SplitHanoi2.html:30
@@ -13748,7 +13737,7 @@ msgstr "Then move the smaller கருப்பு disks in position."
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:2
 msgid "Fast Split Towers of Hanoi"
-msgstr "Fast Split Towers of Hanoi"
+msgstr "அனோயின் வேகமான பிளவு கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:4
@@ -13781,7 +13770,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:13
 msgid "I'm lost"
-msgstr "I'm lost"
+msgstr "நான் தொலைந்துவிட்டேன்"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:14
@@ -13808,27 +13797,27 @@ msgstr ""
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:21
 msgid "Slow Split"
-msgstr "Slow Split"
+msgstr "மெதுவாக பிளவு"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:21
 msgid "Fast Split"
-msgstr "Fast Split"
+msgstr "வேகமாக பிளவு"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:22
 msgid "46 moves"
-msgstr "46 moves"
+msgstr "46 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:23
 msgid "82 moves"
-msgstr "82 moves"
+msgstr "82 நகர்வுகள்"
 
 #. type: Content of: <br><table><tr><td>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:24
 msgid "150 moves"
-msgstr "150 moves"
+msgstr "150 நகர்வுகள்"
 
 #. type: Content of: <br><p>
 #: src/lessons/recursion/hanoi/SplitHanoi3.html:27
@@ -13884,7 +13873,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/LinearHanoi.html:15
 msgid "I tried, but I don't get it"
-msgstr "I tried, but I don't get it"
+msgstr "நான் முயற்சித்தேன், ஆனால் எனக்கு அது கிடைக்கவில்லை"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/LinearHanoi.html:16
@@ -13900,7 +13889,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/recursion/hanoi/LinearHanoi.html:20
 msgid "That first tip was not enough"
-msgstr "That first tip was not enough"
+msgstr "அந்த முதல் முனை போதாது"
 
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/LinearHanoi.html:21
@@ -13940,7 +13929,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:10
 msgid "You will use three recursive functions:"
-msgstr "You will use three recursive functions:"
+msgstr "நீங்கள் மூன்று சுழல்நிலை செயல்பாடுகளைப் பயன்படுத்துவீர்கள்:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/LinearTwinHanoi.html:12
@@ -14023,7 +14012,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:2
 msgid "Tricolor Hanoi: stack move"
-msgstr "Tricolor Hanoi: stack move"
+msgstr "முக்கோண அனோய்: அடுக்கு நகர்வு"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:4
@@ -14069,8 +14058,7 @@ msgid ""
 "<code>scatter()</code>: splits an interleaved stack into several regular "
 "ones."
 msgstr ""
-"<code>scatter()</code>: splits an interleaved stack into several regular "
-"ones."
+"<code> சிதறல் () </code>: ஒரு இடைவெளியில் அடுக்கை பல வழக்கமானவற்றாகப் பிரிக்கிறது."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi1.html:17
@@ -14089,7 +14077,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/TricolorHanoi2.html:2
 msgid "Tricolor Hanoi: the Gathering"
-msgstr "Tricolor Hanoi: the Gathering"
+msgstr "முக்கோண அனோய்: சேகரிப்பு"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi2.html:4
@@ -14127,7 +14115,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/TricolorHanoi3.html:2
 msgid "Tricolor Hanoi: the Final"
-msgstr "Tricolor Hanoi: the Final"
+msgstr "முக்கோண அனோய்: இறுதி"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/TricolorHanoi3.html:4
@@ -14166,7 +14154,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/CyclicHanoi.html:2
 msgid "Cyclic Towers of Hanoi"
-msgstr "Cyclic Towers of Hanoi"
+msgstr "அனோயின் சுழற்சி கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/CyclicHanoi.html:4
@@ -14209,7 +14197,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/recursion/hanoi/IterativeHanoi.html:2
 msgid "Iterative Towers of Hanoi"
-msgstr "Iterative Towers of Hanoi"
+msgstr "அனோயின் செயல்பாட்டு கோபுரங்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/IterativeHanoi.html:4
@@ -14296,7 +14284,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:2
 msgid "HanoiWorld"
-msgstr "HanoiWorld"
+msgstr "அனோய்வொர்ல்ட்"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:5
@@ -14366,7 +14354,7 @@ msgstr "Returns the ஆரம் of the top-most disk of the specified slot."
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:2 src/lessons/maze/short_desc.html:2
 msgid "Labyrinths"
-msgstr "Labyrinths"
+msgstr "லாபிரிந்த்ச்"
 
 #. type: Content of: <p>
 #: src/lessons/maze/Main.html:4 src/lessons/maze/short_desc.html:4
@@ -14377,7 +14365,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:2
 msgid "The crazy mouse"
-msgstr "The crazy mouse"
+msgstr "பைத்தியம் சுட்டி"
 
 #. type: Content of: <p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:4
@@ -14431,7 +14419,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:2
 msgid "Following the walls"
-msgstr "Following the walls"
+msgstr "சுவர்களைத் தொடர்ந்து"
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:4
@@ -14520,7 +14508,8 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:38
 msgid "I'm lost, please give me some extra indications"
-msgstr "I'm lost, please give me some extra indications"
+msgstr ""
+"நான் தொலைந்துவிட்டேன், தயவுசெய்து எனக்கு சில கூடுதல் அறிகுறிகளைக் கொடுங்கள்"
 
 #. type: Content of: <div><p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:39
@@ -14538,22 +14527,22 @@ msgstr ""
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:46
 msgid "Case 1"
-msgstr "Case 1"
+msgstr "வழக்கு 1"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:47
 msgid "Case 2"
-msgstr "Case 2"
+msgstr "வழக்கு 2"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:48
 msgid "Case 3"
-msgstr "Case 3"
+msgstr "வழக்கு 3"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:50
 msgid "Initial situation"
-msgstr "Initial situation"
+msgstr "தொடக்க நிலைமை"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:55
@@ -14752,7 +14741,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/maze/island/IslandMaze.html:2
 msgid "Lost between islands"
-msgstr "Lost between islands"
+msgstr "தீவுகளுக்கு இடையில் இழந்தது"
 
 #. type: Content of: <p>
 #: src/lessons/maze/island/IslandMaze.html:4
@@ -14822,7 +14811,8 @@ msgstr ""
 #. type: Attribute 'alt' of: <p><p><div>
 #: src/lessons/maze/island/IslandMaze.html:31
 msgid "I'm lost now, please give me some extra indications"
-msgstr "I'm lost now, please give me some extra indications"
+msgstr ""
+"நான் இப்போது தொலைந்துவிட்டேன், தயவுசெய்து எனக்கு சில கூடுதல் அறிகுறிகளைக் கொடுங்கள்"
 
 #. type: Content of: <p><p><div>
 #: src/lessons/maze/island/IslandMaze.html:32
@@ -14959,12 +14949,12 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:10
 msgid "<code>getWorldWidth()</code> gives the width of its world."
-msgstr "<code>getWorldWidth()</code> gives the width of its world."
+msgstr "<code> getworldwidth () </code> அதன் உலகின் அகலத்தை அளிக்கிறது."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:11
 msgid "<code>getWorldHeight()</code> gives the height of its world."
-msgstr "<code>getWorldHeight()</code> gives the height of its world."
+msgstr "<code> getWorldHeight () </code> அதன் உலகின் உயரத்தை அளிக்கிறது."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
@@ -15069,12 +15059,13 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:36
 msgid "I'm lost now. Please give me some extra indications."
-msgstr "I'm lost now. Please give me some extra indications."
+msgstr ""
+"நான் இப்போது தொலைந்துவிட்டேன். தயவுசெய்து எனக்கு சில கூடுதல் அறிகுறிகளைக் கொடுங்கள்."
 
 #. type: Content of: <div>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:37
 msgid "Use the Force, Luke!"
-msgstr "Use the Force, Luke!"
+msgstr "சக்தியைப் பயன்படுத்துங்கள், லூக்கா!"
 
 #. type: Content of: <h2>
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:2
@@ -15142,7 +15133,7 @@ msgstr ""
 #: src/lessons/lightbot/universe/LightBotWorld.html:2
 #: src/lessons/lightbot/Main.html:2 src/lessons/lightbot/short_desc.html:2
 msgid "LightBot"
-msgstr "LightBot"
+msgstr "லைட்போட்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lightbot/universe/LightBotWorld.html:4
@@ -15160,17 +15151,17 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:8
 msgid "<b>Order</b>"
-msgstr "<b>Order</b>"
+msgstr "<b> ஒழுங்கு </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:8
 msgid "<b>Meaning</b>"
-msgstr "<b>Meaning</b>"
+msgstr "<b> பொருள் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:9
 msgid "<b>Move forward</b>"
-msgstr "<b>Move forward</b>"
+msgstr "<b> முன்னேறவும் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:9
@@ -15181,7 +15172,7 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:10
 msgid "<b>Jump forward</b>"
-msgstr "<b>Jump forward</b>"
+msgstr "<b> முன்னோக்கி செல்லவும் </b>"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:10
@@ -15196,17 +15187,17 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:11
 msgid "<b>Turn left</b>."
-msgstr "<b>Turn left</b>."
+msgstr "<b> இடதுபுறம் திரும்பவும் </b>."
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:12
 msgid "<b>Turn right</b>."
-msgstr "<b>Turn right</b>."
+msgstr "<b> வலதுபுறம் திரும்பவும் </b>."
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:13
 msgid "<b>Switch the light</b>."
-msgstr "<b>Switch the light</b>."
+msgstr "<b> ஒளியை மாற்றவும் </b>."
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:13
@@ -15288,7 +15279,7 @@ msgstr "இல்லை previous experience is expected பெறுநர் ta
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board01TwoSteps.html:2
 msgid "Welcome"
-msgstr "Welcome"
+msgstr "வரவேற்கிறோம்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board01TwoSteps.html:4
@@ -15327,7 +15318,7 @@ msgstr ""
 #: src/lessons/lightbot/Board02Turn.html:5
 #: src/lessons/lightbot/Board06Func.html:4
 msgid "and"
-msgstr "and"
+msgstr "மற்றும்"
 
 #. type: Content of: <p><</p><p>
 #: src/lessons/lightbot/Board01TwoSteps.html:11
@@ -15337,7 +15328,7 @@ msgstr "."
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board02Turn.html:2
 msgid "Turn around"
-msgstr "Turn around"
+msgstr "திரும்பவும்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board02Turn.html:4
@@ -15371,7 +15362,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board04Stairs.html:2
 msgid "Stairs"
-msgstr "Stairs"
+msgstr "படிக்கட்டுகள்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board04Stairs.html:4
@@ -15381,17 +15372,17 @@ msgstr "Can you கணவாய் these stairs?"
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board05Higher.html:2
 msgid "Higher"
-msgstr "Higher"
+msgstr "உயர்ந்த"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board05Higher.html:4
 msgid "Let's go higher"
-msgstr "Let's go higher"
+msgstr "உயரமாக செல்வோம்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board06Func.html:4
 msgid "You can use"
-msgstr "You can use"
+msgstr "நீங்கள் பயன்படுத்தலாம்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board06Func.html:4
@@ -15430,17 +15421,17 @@ msgstr "It is perfectly okay பெறுநர் call a சார்பு இ
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board09Castle.html:2
 msgid "Castle"
-msgstr "Castle"
+msgstr "கோட்டை"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board09Castle.html:4
 msgid "You're getting good at this..."
-msgstr "You're getting good at this..."
+msgstr "நீங்கள் இதை நன்றாகப் பெறுகிறீர்கள் ..."
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board10Wall.html:2
 msgid "Wall"
-msgstr "Wall"
+msgstr "சுவர்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board10Wall.html:4
@@ -15450,7 +15441,7 @@ msgstr "Ready பெறுநர் climb the wall?"
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board11Sea.html:2
 msgid "Sea"
-msgstr "Sea"
+msgstr "கடல்"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board11Sea.html:4
@@ -15460,12 +15451,12 @@ msgstr "You now have பெறுநர் surf these waves of lamps."
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board12Escher.html:2
 msgid "Escher Castle"
-msgstr "Escher Castle"
+msgstr "எசர் கோட்டை"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board12Escher.html:4
 msgid "This one aint easy."
-msgstr "This one aint easy."
+msgstr "இது எளிதானது."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Close10.html:2
@@ -15504,7 +15495,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Diff21.html:2
 msgid "Diff 21"
-msgstr "Diff 21"
+msgstr "வேறுபாடு 21"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Diff21.html:3
@@ -15518,7 +15509,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/HasTeen.html:2
 msgid "Has Teen"
-msgstr "Has Teen"
+msgstr "டீன் ஏச்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/HasTeen.html:3
@@ -15532,7 +15523,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/IcyHot.html:2
 msgid "Icy Hot"
-msgstr "Icy Hot"
+msgstr "பனிக்கட்டி சூடாக"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/IcyHot.html:3
@@ -15546,7 +15537,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/In1020.html:2
 msgid "In [10;20]"
-msgstr "In [10;20]"
+msgstr "[10; 20] இல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/In1020.html:3
@@ -15560,7 +15551,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/In3050.html:2
 msgid "In [30;50]"
-msgstr "In [30;50]"
+msgstr "[30; 50] இல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/In3050.html:3
@@ -15574,7 +15565,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LastDigit.html:2
 msgid "LastDigit"
-msgstr "LastDigit"
+msgstr "LASTDIGIT"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/LastDigit.html:3
@@ -15600,7 +15591,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid "Lone Teen"
-msgstr "Lone Teen"
+msgstr "தனி டீன்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:3
@@ -15615,7 +15606,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Main.html:2
 msgid "Boolean fun"
-msgstr "Boolean fun"
+msgstr "பூலியன் வேடிக்கை"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Main.html:4
@@ -15640,7 +15631,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Makes10.html:2
 msgid "Makes 10"
-msgstr "Makes 10"
+msgstr "10 செய்கிறது"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/Makes10.html:3
@@ -15648,13 +15639,13 @@ msgid ""
 "Given 2 ints, a and b, return true if one of them is 10 or if their sum is "
 "10."
 msgstr ""
-"Given 2 ints, a and b, return true if one of them is 10 or if their sum is "
-"10."
+"2 ints, A மற்றும் B கொடுக்கப்பட்டால், அவற்றில் ஒன்று 10 ஆக இருந்தால் அல்லது அவற்றின் தொகை "
+"10 ஆக இருந்தால் உண்மையாக திரும்பவும்."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Max1020.html:2
 msgid "Max1020"
-msgstr "Max1020"
+msgstr "அதிகபட்சம் 1020"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Max1020.html:3
@@ -15677,7 +15668,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:2
 msgid "MonkeyTrouble"
-msgstr "MonkeyTrouble"
+msgstr "குரங்கு"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:4
@@ -15693,7 +15684,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/NearHundred.html:2
 msgid "Near Hundred"
-msgstr "Near Hundred"
+msgstr "நூறுக்கு அருகில்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/NearHundred.html:3
@@ -15711,7 +15702,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/ParotTrouble.html:2
 msgid "Parot Trouble"
-msgstr "Parot Trouble"
+msgstr "சிக்கலான பரோட்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/ParotTrouble.html:4
@@ -15741,7 +15732,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/SleepIn.html:2
 msgid "SleepDay"
-msgstr "SleepDay"
+msgstr "தூக்க நாள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool1/SleepIn.html:4
@@ -15771,7 +15762,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/AlarmClock.html:2
 msgid "AlarmClock"
-msgstr "AlarmClock"
+msgstr "அலாரம் கடிகாரம்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/AlarmClock.html:3
@@ -15793,7 +15784,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/AnswerCell.html:2
 msgid "AnswerCell"
-msgstr "AnswerCell"
+msgstr "பதில்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/AnswerCell.html:3
@@ -15809,7 +15800,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/BlueTicket.html:2
 msgid "BlueTicket"
-msgstr "BlueTicket"
+msgstr "புளூடிக்கெட்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/BlueTicket.html:3
@@ -15829,7 +15820,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:2
 msgid "CaughtSpeeding"
-msgstr "CaughtSpeeding"
+msgstr "காக்ச்பீடிங்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:3
@@ -15851,7 +15842,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/CigarParty.html:2
 msgid "CigarParty"
-msgstr "CigarParty"
+msgstr "சிகர்பார்ட்டி"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/CigarParty.html:3
@@ -15869,7 +15860,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/DateFashion.html:2
 msgid "DateFashion"
-msgstr "DateFashion"
+msgstr "தேதி ஃபேசன்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/DateFashion.html:3
@@ -15926,7 +15917,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:2
 msgid "GreenTicket"
-msgstr "GreenTicket"
+msgstr "கிரீன்டிகெட்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:3
@@ -15944,7 +15935,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/In1To10.html:2
 msgid "In1To10"
-msgstr "In1To10"
+msgstr "In1to10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/In1To10.html:3
@@ -15960,7 +15951,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/InOrderEqual.html:2
 msgid "InOrderEqual"
-msgstr "InOrderEqual"
+msgstr "Inorderequal"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/InOrderEqual.html:3
@@ -15978,7 +15969,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/InOrder.html:2
 msgid "InOrder"
-msgstr "InOrder"
+msgstr "Inordore"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/InOrder.html:3
@@ -15994,7 +15985,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:2
 msgid "LastDigit 2"
-msgstr "LastDigit 2"
+msgstr "லாச்ட் டிசிட் 2"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:3
@@ -16010,7 +16001,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/LessBy10.html:2
 msgid "LessBy10"
-msgstr "LessBy10"
+msgstr "குறைந்த 10"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/LessBy10.html:3
@@ -16018,13 +16009,13 @@ msgid ""
 "Given three ints, a b c, return true if one of them is 10 or more less than "
 "one of the others."
 msgstr ""
-"Given three ints, a b c, return true if one of them is 10 or more less than "
-"one of the others."
+"மூன்று இன்ட்ச், ஒரு பி சி கொடுக்கப்பட்டால், அவற்றில் ஒன்று மற்றவர்களில் ஒன்றைக் காட்டிலும் 10 "
+"அல்லது அதற்கு மேற்பட்டதாக இருந்தால் உண்மையாகத் திரும்புக."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/Main.html:2
 msgid "Boolean (even more) fun"
-msgstr "Boolean (even more) fun"
+msgstr "பூலியன் (இன்னும் அதிகமாக) வேடிக்கையானது"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/Main.html:4
@@ -16038,7 +16029,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:2
 msgid "MaxMod5"
-msgstr "MaxMod5"
+msgstr "MAXMOD5"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:3
@@ -16057,7 +16048,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/NearTen.html:2
 msgid "NearTen"
-msgstr "NearTen"
+msgstr "நார்டன்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/NearTen.html:3
@@ -16073,7 +16064,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/RedTicket.html:2
 msgid "RedTicket"
-msgstr "RedTicket"
+msgstr "ரெடிக்கெட்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/RedTicket.html:3
@@ -16091,7 +16082,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/ShareDigit.html:2
 msgid "ShareDigit"
-msgstr "ShareDigit"
+msgstr "Sharedigit"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/ShareDigit.html:3
@@ -16109,7 +16100,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/SortaSum.html:2
 msgid "SortaSum"
-msgstr "SortaSum"
+msgstr "Sortasum"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/SortaSum.html:3
@@ -16123,7 +16114,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:2
 msgid "SquirrelPlay"
-msgstr "SquirrelPlay"
+msgstr "அணில்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/SquirrelPlay.html:3
@@ -16143,7 +16134,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TeaParty.html:2
 msgid "TeaParty"
-msgstr "TeaParty"
+msgstr "டீபார்டி"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/TeaParty.html:3
@@ -16165,7 +16156,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TeenSum.html:2
 msgid "TeenSum"
-msgstr "TeenSum"
+msgstr "எதிர்க்கும்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/TeenSum.html:3
@@ -16181,7 +16172,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:2
 msgid "TwoAsOne"
-msgstr "TwoAsOne"
+msgstr "சரிபார்க்கவும்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:3
@@ -16195,7 +16186,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:2
 msgid "WithoutDoubles"
-msgstr "WithoutDoubles"
+msgstr "இல்லாமல்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bat/bool2/WithoutDoubles.html:3
@@ -16248,12 +16239,12 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/bat/string1/short_desc.html:7
 msgid "Please be patient with us."
-msgstr "Please be patient with us."
+msgstr "தயவுசெய்து எங்களுடன் பொறுமையாக இருங்கள்."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/AltPairs.html:2
 msgid "AltPairs"
-msgstr "AltPairs"
+msgstr "Altpairs"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/AltPairs.html:3
@@ -16267,7 +16258,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/FrontTimes.html:2
 msgid "FrontTimes"
-msgstr "FrontTimes"
+msgstr "முன் நேரங்கள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/FrontTimes.html:3
@@ -16283,7 +16274,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/Last2.html:2
 msgid "Last2"
-msgstr "Last2"
+msgstr "அது இல்லை"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Last2.html:4
@@ -16300,7 +16291,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringBits.html:2
 msgid "StringBits"
-msgstr "StringBits"
+msgstr "ச்ட்ரிங் பிட்ச்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringBits.html:3
@@ -16332,7 +16323,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringSplosion.html:2
 msgid "StringSplosion"
-msgstr "StringSplosion"
+msgstr "சரம்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringSplosion.html:3
@@ -16342,7 +16333,7 @@ msgstr "Given a non-empty சரம் like \"Code\" return a சரம் like 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringTimes.html:2
 msgid "StringTimes"
-msgstr "StringTimes"
+msgstr "சரம் நேரங்கள்"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringTimes.html:3
@@ -16356,7 +16347,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringX.html:2
 msgid "StringX"
-msgstr "StringX"
+msgstr "Stringx"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringX.html:3
@@ -16370,7 +16361,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringYak.html:2
 msgid "StringYak"
-msgstr "StringYak"
+msgstr "Stringyak"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringYak.html:3
@@ -16387,7 +16378,7 @@ msgstr ""
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:2
 msgid "Lunar Lander"
-msgstr "Lunar Lander"
+msgstr "சந்திர லேண்டர்"
 
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:4 src/lessons/lander/short_desc.html:4
@@ -16410,7 +16401,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:10
 msgid "Ideas concerning the progression of exercises:"
-msgstr "Ideas concerning the progression of exercises:"
+msgstr "பயிற்சிகளின் முன்னேற்றம் தொடர்பான யோசனைகள்:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:12
@@ -16451,7 +16442,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:20
 msgid "Same with wind?"
-msgstr "Same with wind?"
+msgstr "காற்றோடு அதே?"
 
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
@@ -16481,8 +16472,8 @@ msgid ""
 "[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
 "[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
 msgstr ""
-"[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
+". \n"
+"."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:15
@@ -16497,9 +16488,8 @@ msgid ""
 "[!java|c]void [/!]setDesiredAngle([!java|c]double "
 "[/!]desiredAngle[!scala]:Double[/!])"
 msgstr ""
-"[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
-"[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:"
-"Double[/!])"
+"[! சாவா | சி] இரட்டை [/! \n"
+"."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:19
@@ -16526,8 +16516,8 @@ msgid ""
 "[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
 "[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
 msgstr ""
-"[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
-"[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
+". \n"
+"."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:27
@@ -16568,7 +16558,7 @@ msgstr ""
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:38
 #, no-wrap
 msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
-msgstr "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
+msgstr "[! சாவா] பட்டியல் & lt; புள்ளி & gt; [/!"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lander/universe/DelegatingLanderWorld.html:39
@@ -16588,7 +16578,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:2
 msgid "Lander 101"
-msgstr "Lander 101"
+msgstr "லேண்டர் 101"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:4
@@ -16786,7 +16776,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:2
 msgid "Fly the Lander!"
-msgstr "Fly the Lander!"
+msgstr "லேண்டர் பறக்க!"
 
 #. type: Content of: <p>
 #: src/lessons/lander/lvl3_fly_the_lander/FlyTheLander.html:4
