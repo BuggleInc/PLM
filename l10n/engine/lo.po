@@ -7,23 +7,25 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-25 04:57+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-05-04 11:10+0000\n"
+"Last-Translator: BoneNI <bounkirdni@gmail.com>\n"
+"Language-Team: Lao <https://hosted.weblate.org/projects/programmers-learning-"
+"machine/binary/lo/>\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #: src/lessons/lightbot/universe/LightBotExercise.java:56
 msgid "A light is still off."
-msgstr ""
+msgstr "ໄຟຍັງມອດຢູ່ດວງໜຶ່ງ."
 
 #: src/lessons/lightbot/universe/LightBotExercise.java:58
 #, java-format
 msgid "{0} lights (out of {1}) are still off."
-msgstr ""
+msgstr "ໄຟ {0} ດວງ (ຈາກທັງໝົດ {1}) ຍັງມອດຢູ່."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:10
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:10
@@ -38,6 +40,7 @@ msgid ""
 "Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal "
 "instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ (Dave), ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ setX(x) ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ຍ່າງໄປຫາເປົ້າໝາຍແທນ."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:15
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:15
@@ -52,6 +55,7 @@ msgid ""
 "Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal "
 "instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ (Dave), ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ setY(y) ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ຍ່າງໄປຫາເປົ້າໝາຍແທນ."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:20
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:20
@@ -66,6 +70,7 @@ msgid ""
 "Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
 "goal instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ (Dave), ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ setPos(x,y) ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ຍ່າງໄປຫາເປົ້າໝາຍແທນ."
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
 #: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
@@ -73,6 +78,7 @@ msgid ""
 "Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use "
 "the intermediate slot in all moves."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າຍ້າຍແຜ່ນມົນລະຫວ່າງຊ່ອງ 0 ຫາ 2 ໂດຍກົງບໍ່ໄດ້. ໃຫ້ໃຊ້ຊ່ອງກາງໃນທຸກການຍ້າຍ."
 
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
 #, java-format
@@ -80,51 +86,53 @@ msgid ""
 "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, "
 "from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າຍ້າຍແຜ່ນມົນທວນເຂັມໂມງບໍ່ໄດ້. ໃຫ້ຍ້າຍຈາກ 0 ໄປ 1, ຈາກ 1 ໄປ 2 ຫຼື ຈາກ "
+"2 ໄປ 0 ເທົ່ານັ້ນ, ບໍ່ແມ່ນຈາກ {0} ໄປ {1}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:73
 #, java-format
 msgid "move({0},{1})"
-msgstr ""
+msgstr "ຍ້າຍ({0},{1})"
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:71
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:176
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:77
 msgid "Invalid move"
-msgstr ""
+msgstr "ການຍ້າຍບໍ່ຖືກຕ້ອງ"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}.\n"
-msgstr ""
+msgstr "ແຜ່ນມົນບໍ່ໄດ້ຖືກຍ້າຍໃນຈຳນວນຄັ້ງທີ່ເທົ່າກັນ: {0} ທຽບກັບ {1}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
 #, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
-msgstr ""
+msgstr " ແຜ່ນມົນທີ #{0} ຂອງຊ່ອງ #{1} ແຕກຕ່າງກັນ: {2} ທຽບກັບ {3}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
 #, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
-msgstr ""
+msgstr " ສີຂອງແຜ່ນມົນທີ #{0} ຂອງຊ່ອງ #{1} ແຕກຕ່າງກັນ: {2} ທຽບກັບ {3}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
 #, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}."
-msgstr ""
+msgstr "ບໍ່ສາມາດຍ້າຍຈາກຊ່ອງ {0} ໄປ {1}: ຊ່ອງທີ່ມີຢູ່ແມ່ນເລກ 0 ຫາ {2} ເທົ່ານັ້ນ."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
 #, java-format
 msgid "Cannot move from slot {0} to itself."
-msgstr ""
+msgstr "ບໍ່ສາມາດຍ້າຍຈາກຊ່ອງ {0} ໄປຫາຊ່ອງເດີມໄດ້."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:206
 #, java-format
 msgid "No disc to move from slot {0}."
-msgstr ""
+msgstr "ບໍ່ມີແຜ່ນມົນທີ່ຈະຍ້າຍຈາກຊ່ອງ {0}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:211
 #, java-format
@@ -132,22 +140,23 @@ msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
 "but {2} > {3}."
 msgstr ""
+"ບໍ່ສາມາດຍ້າຍແຜ່ນມົນຈາກຊ່ອງ {0} ໄປ {1} ໄດ້ ເພາະແຜ່ນນ້ອຍຕ້ອງຢູ່ເທິງແຜ່ນໃຫຍ່ສະເໝີ ແຕ່ {2} > {3}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:229
 #, java-format
 msgid "Invalid slot: {0}."
-msgstr ""
+msgstr "ຊ່ອງບໍ່ຖືກຕ້ອງ: {0}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:231
 #, java-format
 msgid "Slot {0} is only {1} high; Cannot get the color of the {2}th disk."
-msgstr ""
+msgstr "ຊ່ອງ {0} ສູງພຽງແຕ່ {1}; ບໍ່ສາມາດກວດເບິ່ງສີຂອງແຜ່ນມົນທີ {2} ໄດ້."
 
 #. Create the button
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
 #: src/plm/core/ui/ChooseLessonDialog.java:192
 msgid "Go"
-msgstr ""
+msgstr "ເລີ່ມ"
 
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
 #, java-format
@@ -155,25 +164,26 @@ msgid ""
 "The player {0} of the base {1} cannot reach the hole that is too far from "
 "its position"
 msgstr ""
+"ຜູ້ຫຼິ້ນ {0} ຂອງເບສ {1} ບໍ່ສາມາດໄປຮອດຂຸມທີ່ຢູ່ໄກເກີນໄປຈາກຕຳແໜ່ງຂອງລາວໄດ້"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:146
 msgid "This is not a baseball world :-("
-msgstr ""
+msgstr "ນີ້ບໍ່ແມ່ນໂລກເບສບອນ :-("
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:150
 #, java-format
 msgid "Differing amount of bases: {0} vs {1}"
-msgstr ""
+msgstr "ຈຳນວນເບສແຕກຕ່າງກັນ: {0} ທຽບກັບ {1}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:153
 #, java-format
 msgid "Differing amount of players: {0} vs {1}"
-msgstr ""
+msgstr "ຈຳນວນຜູ້ຫຼິ້ນແຕກຕ່າງກັນ: {0} ທຽບກັບ {1}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:159
 #, java-format
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
-msgstr ""
+msgstr "ຜູ້ຫຼິ້ນທີ່ເບສ {0}, ຕຳແໜ່ງ {1} ແຕກຕ່າງກັນ: {2} ທຽບກັບ {3}\n"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:372
 #, java-format
@@ -182,16 +192,18 @@ msgid ""
 "information:\n"
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
+"ຍັງບໍ່ທັນຈັດລຽງເທື່ອ!! ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້ ພ້ອມກັບຂໍ້ມູນຕໍ່ໄປນີ້:\n"
+"ບົດຝຶກຫັດ: {0}; ຈຳນວນເບສ: {1}; ສະຖານະເລີ່ມຕົ້ນ: {2}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:409
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
-msgstr ""
+msgstr "ບໍ່ສາມາດຍ້າຍຈາກເບສ {0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:412
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
-msgstr ""
+msgstr "ບໍ່ສາມາດຍ້າຍຈາກຕຳແໜ່ງ {0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1})"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:421
 #, java-format
@@ -199,44 +211,45 @@ msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
 "it in one move"
 msgstr ""
+"ຜູ້ຫຼິ້ນ {0} ຈາກເບສ {1} ຢູ່ໄກຈາກຂຸມ (ທີ່ເບສ {2}) ຫຼາຍເກີນໄປທີ່ຈະໄປຮອດໃນການຍ້າຍຄັ້ງດຽວ"
 
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:669
 #: src/plm/universe/sort/SortingWorldView.java:52
 msgid "Switch to time view"
-msgstr ""
+msgstr "ປ່ຽນເປັນມຸມມອງເວລາ"
 
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:671
 #: src/plm/universe/sort/SortingWorldView.java:54
 msgid "Switch to state view"
-msgstr ""
+msgstr "ປ່ຽນເປັນມຸມມອງສະຖານະ"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntity.java:28
 msgid "Flag sorter"
-msgstr ""
+msgstr "ຕົວຈັດລຽງທຸງ"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:102
 msgid "This world is not a dutch flag"
-msgstr ""
+msgstr "ໂລກນີ້ບໍ່ແມ່ນທຸງໂຮນລັງ"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
 msgid "The two worlds are of differing size"
-msgstr ""
+msgstr "ໂລກທັງສອງມີຂະໜາດແຕກຕ່າງກັນ"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:111
 #, java-format
 msgid " Ray #{0} differs: color {1} is not color {2}\n"
-msgstr ""
+msgstr " ແຖບທີ #{0} ແຕກຕ່າງກັນ: ສີ {1} ບໍ່ແມ່ນສີ {2}\n"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:177
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:180
 #, java-format
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
-msgstr ""
+msgstr "ບໍ່ສາມາດສະລັບ {0} ແລະ {1} ໄດ້ ເພາະ {2} ບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {3}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:197
 #, java-format
 msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
-msgstr ""
+msgstr "ບໍ່ສາມາດເບິ່ງສີຂອງເສັ້ນທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:232
 #, java-format
@@ -245,52 +258,55 @@ msgid ""
 "information:\n"
 "Initial situation: {0}"
 msgstr ""
+"ຍັງບໍ່ທັນຈັດລຽງເທື່ອ!! ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້ ພ້ອມກັບຂໍ້ມູນຕໍ່ໄປນີ້:\n"
+"ສະຖານະເລີ່ມຕົ້ນ: {0}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:145
 #: src/plm/universe/sort/SortingButtonPanel.java:70
 #, java-format
 msgid "swap({0},{1})"
-msgstr ""
+msgstr "ສະລັບ({0},{1})"
 
 #: src/lessons/sort/pancake/universe/PancakeFlipButtonPanel.java:66
 #, java-format
 msgid "flip({0})"
-msgstr ""
+msgstr "ປີ້ນ({0})"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
 msgid "This is not a world of pancakes."
-msgstr ""
+msgstr "ນີ້ບໍ່ແມ່ນໂລກຂອງແພນເຄັກ."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:120
 msgid "The two worlds are of differing size."
-msgstr ""
+msgstr "ໂລກທັງສອງມີຂະໜາດແຕກຕ່າງກັນ."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:124
 #, java-format
 msgid "Stacks were not flipped the same amount of time: {0} vs. {1}.\n"
-msgstr ""
+msgstr "ກອງແພນເຄັກບໍ່ໄດ້ຖືກປີ້ນໃນຈຳນວນຄັ້ງທີ່ເທົ່າກັນ: {0} ທຽບກັບ {1}.\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:128
 #, java-format
 msgid " Pancake #{0} differs: {1} vs. {2}.\n"
-msgstr ""
+msgstr " ແພນເຄັກແຜ່ນທີ #{0} ແຕກຕ່າງກັນ: {1} ທຽບກັບ {2}.\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:206
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one."
-msgstr ""
+msgstr "ມີຄຳສັ່ງໃຫ້ປີ້ນແພນເຄັກ {0} ແຜ່ນ, ແຕ່ເຈົ້າຕ້ອງປີ້ນຢ່າງໜ້ອຍໜຶ່ງແຜ່ນ."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:208
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack."
-msgstr ""
+msgstr "ມີຄຳສັ່ງໃຫ້ປີ້ນແພນເຄັກ {0} ແຜ່ນ, ແຕ່ໃນກອງມີພຽງແຕ່ {1} ແຜ່ນເທົ່ານັ້ນ."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:242
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
 msgstr ""
+"ບໍ່ສາມາດເບິ່ງລັດສະໝີຂອງແພນເຄັກທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:261
 #, java-format
@@ -298,6 +314,7 @@ msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}."
 msgstr ""
+"ບໍ່ສາມາດເບິ່ງທິດທາງຂອງແພນເຄັກທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
 #: src/lessons/welcome/loopdowhile/Poucet2Entity.java:12
@@ -314,6 +331,7 @@ msgid ""
 "Sorry Dave, I cannot let you use forward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ຄຳສັ່ງ forward ແບບກຳນົດຄ່າໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ລູບ (loop) ແທນ."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:14
 #: src/lessons/welcome/loopdowhile/Poucet2Entity.java:16
@@ -330,6 +348,7 @@ msgid ""
 "Sorry Dave, I cannot let you use backward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ຄຳສັ່ງ backward ແບບກຳນົດຄ່າໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ລູບ (loop) ແທນ."
 
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:18
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:18
@@ -337,10 +356,11 @@ msgid ""
 "Sorry Dave, you cannot run backward like this. Exercising is hard enough -- "
 "please don't overplay."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ເເຈົ້າແລ່ນຖອຍຫຼັງແບບນີ້ບໍ່ໄດ້. ການຝຶກຫັດມັນກໍຍາກພໍແລ້ວ -- ກະລຸນາຢ່າຫຼິ້ນເກີນຂອບເຂດ."
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
 msgid "You fall into water."
-msgstr ""
+msgstr "ເຈົ້າຕົກນ້ຳແລ້ວ."
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -357,25 +377,26 @@ msgstr ""
 #: src/plm/universe/bugglequest/SimpleBuggle.java:135
 #: src/plm/universe/bugglequest/SimpleBuggle.java:145
 msgid "Test failed"
-msgstr ""
+msgstr "ການທົດສອບລົ້ມເຫຼວ"
 
 #: src/lessons/welcome/methods/args/MethodsArgsEntity.java:10
 msgid ""
 "I cannot let you use forward with an argument in this exercise. Use a loop "
 "instead."
-msgstr ""
+msgstr "ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ forward ແບບກຳນົດຄ່າໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ລູບແທນ."
 
 #: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
 msgid ""
 "I cannot let you use backward with an argument in this exercise. Use a loop "
 "instead."
-msgstr ""
+msgstr "ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ backward ແບບກຳນົດຄ່າໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ລູບແທນ."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ right() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ left() ແທນ."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
 #, java-format
@@ -383,6 +404,8 @@ msgid ""
 "Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
 "exercise. You can write left() only once in this exercise."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ left() ທັງໃນແຖວ {0} ແລະ {1} ບໍ່ໄດ້. ເຈົ້າສາມາດຂຽນ left() ໄດ້ພ"
+"ຽງຄັ້ງດຽວເທົ່ານັ້ນໃນບົດຝຶກຫັດນີ້."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:42
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:47
@@ -396,6 +419,7 @@ msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ forward() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ setPos(x,y) ແທນ."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:51
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:55
@@ -409,6 +433,7 @@ msgid ""
 "Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
 "y) instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ backward() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ setPos(x,y) ແທນ."
 
 #: src/plm/core/lang/JVMCompiledLang.java:53
 msgid ""
@@ -426,12 +451,22 @@ msgid ""
 "within the\n"
 "provided method."
 msgstr ""
+"ຕົວລະຄອນຂອງເຈົ້າບໍ່ສາມາດເລີ່ມເຮັດວຽກໄດ້. ເຈົ້າລືມຂຽນລະຫັດໄວ້ໃນເມທອດ (method) ຫຼື ບໍ່?\n"
+"\n"
+"ບັນຫານີ້ມັກຈະເກີດຂຶ້ນເມື່ອບົດຝຶກຫັດກຳນົດໃຫ້ເຈົ້າຂຽນລະຫັດທັງໝົດໄວ້ໃນ \n"
+"ເມທອດ ເຊັ່ນ run(), ແຕ່ເຈົ້າເອົາຄຳສັ່ງ (ເຊັ່ນ forward()) ໄປໄວ້ຂ້າງນອກເມທອດ.\n"
+"\n"
+"ວິທີແກ້ໄຂທີ່ງ່າຍທີ່ສຸດຄືການກັອບປີ້ລະຫັດທັງໝົດ (Ctrl-A Ctrl-C), ໄປທີ່ເມນູ \n"
+"'Exercise/Revert' ເພື່ອລ້າງຂໍ້ມູນໃໝ່, ແລ້ວວາງ (Ctrl-V) ລະຫັດຂອງເຈົ້າລົງໃນ\n"
+"ເມທອດທີ່ກຳນົດໃຫ້."
 
 #: src/plm/core/lang/JVMCompiledLang.java:60
 msgid ""
 "Your entity failed to start. Your constructor seems to be broken, but I have "
 "no clue."
 msgstr ""
+"ຕົວລະຄອນບໍ່ສາມາດເລີ່ມເຮັດວຽກໄດ້. ຄອນສະຕຣັກເຕີ (constructor) ຂອງເຈົ້າຄືຊິມີບັນຫາ, ແຕ່ຂ້ອຍກໍບໍ່ແນ່ໃ"
+"ຈ."
 
 #: src/plm/core/lang/JVMCompiledLang.java:83
 #: src/plm/core/lang/LangLightbot.java:39
@@ -440,19 +475,21 @@ msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
 " Please fix your code.\n"
 msgstr ""
+"ການເຮັດວຽກຂອງໂປຣແກຣມເກີດຂໍ້ຜິດພາດ (exception) {0}: {1}\n"
+" ກະລຸນາແກ້ໄຂລະຫັດຂອງເຈົ້າ.\n"
 
 #: src/plm/core/lang/LangC.java:188 src/plm/core/lang/LangJava.java:82
 #: src/plm/core/lang/LangScala.java:61
 msgid "Compilation error:"
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດໃນການຄອມໄພລ໌ (Compilation error):"
 
 #: src/plm/core/lang/LangC.java:251
 msgid "Valgrind does not seem to be installed."
-msgstr ""
+msgstr "ເບິ່ງຄືວ່າ Valgrind ບໍ່ໄດ້ຖືກຕິດຕັ້ງໄວ້."
 
 #: src/plm/core/lang/LangC.java:260 src/plm/core/lang/LangC.java:267
 msgid "Error, please recompile the exercise."
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດ, ກະລຸນາຄອມໄພລ໌ບົດຝຶກຫັດໃໝ່."
 
 #.
 #. * FIXME: provide a way to debug
@@ -462,7 +499,7 @@ msgstr ""
 #. System.out.println("File "+n+":\n"+classes.get(n));
 #: src/plm/core/lang/LangJava.java:349
 msgid "Compilation failed."
-msgstr ""
+msgstr "ການຄອມໄພລ໌ລົ້ມເຫຼວ."
 
 #: src/plm/core/lang/LangPython.java:49
 #, java-format
@@ -471,6 +508,9 @@ msgid ""
 "Line {1}: {2}\n"
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
+"ຂໍ້ຜິດພາດທາງໄວຍາກອນ (Syntax error): {0}\n"
+"ແຖວ {1}: {2}\n"
+"ຖ້າສົງໄສ, ໃຫ້ກວດເບິ່ງການຍັບຍໍ້ (indentation) ແລະ ຢ່າໃຊ້ Tab ປະສົມກັບ Space\n"
 
 #: src/plm/core/lang/LangPython.java:58
 #, java-format
@@ -480,44 +520,53 @@ msgid ""
 "Please, check that you did not mix tabs and spaces. Use the TAB and shift-"
 "TAB keys to clean your indentation.\n"
 msgstr ""
+"ຂໍ້ຜິດພາດການຍັບຍໍ້ (Indentation error): {0}\n"
+"ແຖວ {1}: {2}\n"
+"ກະລຸນາກວດເບິ່ງວ່າເຈົ້າບໍ່ໄດ້ໃຊ້ Tab ປະສົມກັບ Space. ໃຫ້ໃຊ້ປຸ່ມ TAB ແລະ Shift-TAB ເພື່ອຈັດລະບຽບກາ"
+"ນຍັບຍໍ້.\n"
 
 #: src/plm/core/lang/LangPython.java:66
 msgid ""
 "You interrupted the execution, did you fall into an infinite loop ?\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
 msgstr ""
+"ເຈົ້າໄດ້ຢຸດການເຮັດວຽກກາງຄັນ, ເຈົ້າຕິດຢູ່ໃນລູບບໍ່ສິ້ນສຸດ (infinite loop) ຫຼື ບໍ່?\n"
+"ໂປຣແກຣມຂອງເຈົ້າຕ້ອງຢຸດດ້ວຍຕົວມັນເອງຈຶ່ງຈະຖືວ່າຜ່ານບົດຝຶກຫັດ.\n"
 
 #: src/plm/core/lang/LangPython.java:72
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos.\n"
 msgstr ""
+"ເກີດ NameError: ເບິ່ງຄືວ່າເຈົ້າໃຊ້ຊື່ຕົວແປ ຫຼື ຟັງຊັນທີ່ບໍ່ມີຢູ່ຈິງ; ກະລຸນາກວດເບິ່ງການຂຽນຜິດ.\n"
 
 #: src/plm/core/lang/LangPython.java:76
 msgid "TypeError raised: you are probably misusing a function or something.\n"
-msgstr ""
+msgstr "ເກີດ TypeError: ເຈົ້າອາດຈະໃຊ້ຟັງຊັນ ຫຼື ບາງຢ່າງຜິດປະເພດ.\n"
 
 #: src/plm/core/lang/LangPython.java:80
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
 msgstr ""
+"ເກີດ UnboundLocalError: ເຈົ້າອາດຈະໃຊ້ຕົວແປ global ໂດຍທີ່ບໍ່ໄດ້ປະກາດໃຫ້ຖືກຕ້ອງ.\n"
 
 #: src/plm/core/lang/LangPython.java:87
 msgid "Error: there is no baggle to pickup under the buggle."
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດ: ບໍ່ມີບັກເກີລ (baggle) ໃຫ້ເກັບຢູ່ກ້ອງຕົວບັກເກີລ (buggle)."
 
 #: src/plm/core/lang/LangPython.java:89
 msgid "Error: a buggle cannot carry more than one baggle at the same time."
 msgstr ""
+"ຂໍ້ຜິດພາດ: ບັກເກີລ (buggle) ບໍ່ສາມາດຖືບັກເກີລ (baggle) ຫຼາຍກວ່າໜຶ່ງອັນໃນເວລາດຽວກັນ."
 
 #: src/plm/core/lang/LangPython.java:91
 msgid "Error: your buggle just teleported to the outer space..."
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດ: ບັກເກີລຂອງເຈົ້າຫາກໍວາບໄປນອກອາວະກາດ..."
 
 #: src/plm/core/lang/LangPython.java:93
 msgid "Error: your buggle just hit a wall. That hurts."
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດ: ບັກເກີລຂອງເຈົ້າຕຳກຳແພງ. ເຈັບໃດ໋ນັ້ນ."
 
 #: src/plm/core/lang/LangPython.java:96
 #, java-format
@@ -525,23 +574,27 @@ msgid ""
 "Unknown error (please report): {0}\n"
 "Its value is: {1}"
 msgstr ""
+"ຂໍ້ຜິດພາດທີ່ບໍ່ຮູ້ຈັກ (ກະລຸນາລາຍງານ): {0}\n"
+"ຄ່າຂອງມັນແມ່ນ: {1}"
 
 #: src/plm/core/lang/ScriptingLanguage.java:86
 #, java-format
 msgid ""
 "No ScriptEngine for {0}. Please check your classpath and similar settings."
 msgstr ""
+"ບໍ່ມີ ScriptEngine ສຳລັບ {0}. ກະລຸນາກວດເບິ່ງ classpath ແລະ ການຕັ້ງຄ່າທີ່ກ່ຽວຂ້ອງ."
 
 #: src/plm/core/lang/ScriptingLanguage.java:96
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against the PLM."
 msgstr ""
+"ບໍ່ມີຊອດໂຄ້ດ (script source) {0} ສຳລັບຕົວລະຄອນ {1}. ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້ໃຫ້ PLM."
 
 #: src/plm/core/lang/ScriptingLanguage.java:108
 #, java-format
 msgid "Received a ScriptException that does not come from the {0} language.\n"
-msgstr ""
+msgstr "ໄດ້ຮັບ ScriptException ທີ່ບໍ່ໄດ້ມາຈາກພາສາ {0}.\n"
 
 #: src/plm/core/lang/ScriptingLanguage.java:113
 #, java-format
@@ -552,31 +605,34 @@ msgid ""
 "reproduce it.\n"
 "Exception message: {1}\n"
 msgstr ""
+"ການປະມວນຜົນສະຄຣິບເກີດຂໍ້ຜິດພາດທີ່ບໍ່ແມ່ນ ScriptException ແຕ່ແມ່ນ {0}.\n"
+" ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້ໃຫ້ PLM ພ້ອມລາຍລະອຽດທັງໝົດ.\n"
+"ຂໍ້ຄວາມຂໍ້ຜິດພາດ: {1}\n"
 
 #: src/plm/core/model/Game.java:162
 msgid "Scala is usable on your machine. Congratulations."
-msgstr ""
+msgstr "Scala ສາມາດໃຊ້ງານໄດ້ໃນເຄື່ອງຂອງເຈົ້າ. ຍິນດີດ້ວຍ."
 
 #: src/plm/core/model/Game.java:164
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
-msgstr ""
+msgstr "ກະລຸນາຕິດຕັ້ງ Scala ເວີຊັນ 2.11 ຫຼື ສູງກວ່າເພື່ອໃຊ້ໃນ PLM."
 
 #: src/plm/core/model/Game.java:166
 msgid "Jython is usable on your machine. Congratulations."
-msgstr ""
+msgstr "Jython ສາມາດໃຊ້ງານໄດ້ໃນເຄື່ອງຂອງເຈົ້າ. ຍິນດີດ້ວຍ."
 
 #: src/plm/core/model/Game.java:168
 msgid ""
 "Please install jython to use the python programming language in the PLM."
-msgstr ""
+msgstr "ກະລຸນາຕິດຕັ້ງ jython ເພື່ອໃຊ້ພາສາ Python ໃນ PLM."
 
 #: src/plm/core/model/Game.java:170
 msgid "C is usable on your machine. Congratulations."
-msgstr ""
+msgstr "ພາສາ C ສາມາດໃຊ້ງານໄດ້ໃນເຄື່ອງຂອງເຈົ້າ. ຍິນດີດ້ວຍ."
 
 #: src/plm/core/model/Game.java:172
 msgid "Please install gcc to use the C programming language in the PLM."
-msgstr ""
+msgstr "ກະລຸນາຕິດຕັ້ງ gcc ເພື່ອໃຊ້ພາສາ C ໃນ PLM."
 
 #: src/plm/core/model/Game.java:179
 #, java-format
@@ -590,46 +646,56 @@ msgid ""
 "   Alternatively, the property {1} can be changed in your configuration file "
 "({2}/plm.properties)."
 msgstr ""
+"ຄຳເຕືອນ, ພາສາຫຼັກບໍ່ແມ່ນທັງ Java, Python, Scala ຫຼື C ແຕ່ແມ່ນ {0}.\n"
+"   ພາສານີ້ຈະຖືກໃຊ້ເພື່ອຕັ້ງຄ່າໂລກຕ່າງໆ, ເຊິ່ງອາດເຮັດໃຫ້ເກີດບັນຫາຮ້າຍແຮງໃນບົດຝຶກຫັດ.\n"
+"   ທາງທີ່ດີຄວນປ່ຽນພາສາ ແລະ ເລີ່ມ PLM ໃໝ່ກ່ອນຈະໄປຕໍ່.\n"
+"   ຫຼື ເຈົ້າສາມາດປ່ຽນຄ່າ {1} ໃນໄຟລ໌ກຳນົດຄ່າ ({2}/plm.properties)."
 
 #: src/plm/core/model/Game.java:185
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
+"ພາສາຫຼັກແມ່ນ Scala, ແຕ່ການຕິດຕັ້ງ Scala ຂອງເຈົ້າໃຊ້ງານບໍ່ໄດ້. ລະບົບຈະປ່ຽນໄປໃຊ້ Java ແທນ.\n"
 
 #: src/plm/core/model/Game.java:188
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
+"ພາສາຫຼັກແມ່ນ Python, ແຕ່ການຕິດຕັ້ງ Python ຂອງເຈົ້າໃຊ້ງານບໍ່ໄດ້. ລະບົບຈະປ່ຽນໄປໃຊ້ Java ແທນ.\n"
 
 #: src/plm/core/model/Game.java:191
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
+"ພາສາຫຼັກແມ່ນ C, ແຕ່ການຕິດຕັ້ງ C ຂອງເຈົ້າໃຊ້ງານບໍ່ໄດ້. ລະບົບຈະປ່ຽນໄປໃຊ້ Java ແທນ.\n"
 
 #: src/plm/core/model/Game.java:209 src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
 msgstr ""
+"ເຈົ້າພົບຂໍ້ຜິດພາດໃນ PLM. ກະລຸນາລາຍງານພ້ອມລາຍລະອຽດ (ລວມທັງ stacktrace ດ້ານລຸ່ມ)."
 
 #: src/plm/core/model/Game.java:235
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດ {0} ຂະນະກວດສອບເວີຊັນຂອງ Scala: {1}"
 
 #: src/plm/core/model/Game.java:244
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
-msgstr ""
+msgstr "Scala ເກົ່າເກີນໄປ. ພົບເວີຊັນ {0} ແຕ່ຕ້ອງການ 2.10 ຫຼື ສູງກວ່າ."
 
 #: src/plm/core/model/Game.java:269
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
+"ບໍ່ສາມາດດຶງ Python ScriptEngine ໄດ້. ໄຟລ໌ jython.jar ແລະ ສ່ວນປະກອບອື່ນໆ ຢູ່ໃນ "
+"classpath ຫຼື ບໍ່?"
 
 #: src/plm/core/model/Game.java:308
 #, java-format
@@ -637,21 +703,23 @@ msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
+"ບໍ່ພົບຊັບພະຍາກອນ {0} ໃນ classpath.\n"
+"{1} ຢູ່ໃນ classpath ຂອງເຈົ້າ ຫຼື ບໍ່?"
 
 #: src/plm/core/model/Game.java:310
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
-msgstr ""
+msgstr "ໄດ້ຮັບ {0} ຂະນະທີ່ກຳລັງຄົ້ນຫາຊັບພະຍາກອນ {1}: {2}"
 
 #: src/plm/core/model/Game.java:345 src/plm/core/model/Game.java:346
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
-msgstr ""
+msgstr "ບໍ່ສາມາດປ່ຽນໄປບົດຮຽນ {0} ໄດ້: ບໍ່ພົບຄລາສ Main."
 
 #: src/plm/core/model/Game.java:347
 #, java-format
 msgid "Load lesson {0}"
-msgstr ""
+msgstr "ໂຫຼດບົດຮຽນ {0}"
 
 #: src/plm/core/model/Game.java:363
 #, java-format
@@ -659,10 +727,11 @@ msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
+"ບົດຮຽນ {0} ເກີດບັນຫາຂະນະໂຫຼດບົດຝຶກຫັດ, ກະລຸນາລາຍງານບັນຫາ ແລະ ເລືອກບົດຮຽນອື່ນ."
 
 #: src/plm/core/model/Game.java:364
 msgid "Broken lesson"
-msgstr ""
+msgstr "ບົດຮຽນເສຍ"
 
 #: src/plm/core/model/Game.java:500
 #, java-format
@@ -670,26 +739,28 @@ msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
 "consider contributing to this project by adapting this exercise to this "
 "language."
-msgstr ""
+msgstr "ບົດຝຶກຫັດ {0} ບໍ່ຮອງຮັບພາສາ {1}. ຈະກັບໄປໃຊ້ພາສາ {2} ແທນ."
 
 #: src/plm/core/model/Game.java:508
 msgid "Operation cancelled by the user"
-msgstr ""
+msgstr "ການເຮັດວຽກຖືກຍົກເລີກໂດຍຜູ້ໃຊ້"
 
 #: src/plm/core/model/Game.java:580
 #, java-format
 msgid "The lecture {0} has no world that I can select."
-msgstr ""
+msgstr "ບົດບັນຍາຍ {0} ບໍ່ມີໂລກທີ່ສາມາດເລືອກໄດ້."
 
 #: src/plm/core/model/Game.java:1005
 msgid ""
 "Please install Scala version 2.11 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
+"ກະລຸນາຕິດຕັ້ງ Scala ເວີຊັນ 2.11 ຫຼື ສູງກວ່າເພື່ອໃຊ້ໃນ PLM.\n"
+"\n"
 
 #: src/plm/core/model/Game.java:1006
 msgid "Scala is missing"
-msgstr ""
+msgstr "ບໍ່ພົບ Scala"
 
 #: src/plm/core/model/Game.java:1010
 msgid ""
@@ -697,10 +768,12 @@ msgid ""
 "language in the PLM.\n"
 "\n"
 msgstr ""
+"ກະລຸນາຕິດຕັ້ງ jython ແລະ ສ່ວນປະກອບອື່ນໆ ເພື່ອໃຊ້ພາສາ Python ໃນ PLM.\n"
+"\n"
 
 #: src/plm/core/model/Game.java:1011
 msgid "Python is missing"
-msgstr ""
+msgstr "ບໍ່ພົບ Python"
 
 #: src/plm/core/model/Game.java:1015
 msgid ""
@@ -708,10 +781,12 @@ msgid ""
 "the PLM.\n"
 "\n"
 msgstr ""
+"ກະລຸນາຕິດຕັ້ງ C ແລະ ສ່ວນປະກອບອື່ນໆ ເພື່ອໃຊ້ພາສາ C ໃນ PLM.\n"
+"\n"
 
 #: src/plm/core/model/Game.java:1016
 msgid "C is missing"
-msgstr ""
+msgstr "ບໍ່ພົບ C"
 
 #: src/plm/core/model/Game.java:1021
 msgid ""
@@ -721,80 +796,85 @@ msgid ""
 "\n"
 "Do you want to proceed anyway?"
 msgstr ""
+"ພາສາ C ໃນ PLM ຍັງຢູ່ໃນຂັ້ນທົດລອງເທົ່ານັ້ນ.\n"
+"ຖ້າເຈົ້າເລືອກ C, ເຈົ້າອາດຈະເຮັດບາງບົດຝຶກຫັດບໍ່ໄດ້ ເພາະຍັງພັດທະນາບໍ່ທັນແລ້ວ.\n"
+"\n"
+"ເຈົ້າຍັງຕ້ອງການໄປຕໍ່ ຫຼື ບໍ່?"
 
 #: src/plm/core/model/Game.java:1025
 msgid "C is still experimental"
-msgstr ""
+msgstr "ພາສາ C ຍັງຢູ່ໃນຂັ້ນທົດລອງ"
 
 #: src/plm/core/model/HelpServer.java:27 src/plm/core/ui/action/HelpMe.java:130
 msgid "Asking to the teacher for help"
-msgstr ""
+msgstr "ກຳລັງຂໍຄວາມຊ່ວຍເຫຼືອຈາກຄູ"
 
 #: src/plm/core/model/HelpServer.java:29 src/plm/core/ui/action/HelpMe.java:133
 #: src/plm/core/ui/action/HelpMe.java:145
 msgid "Cancel call for help to the teacher"
-msgstr ""
+msgstr "ຍົກເລີກການຂໍຄວາມຊ່ວຍເຫຼືອຈາກຄູ"
 
 #: src/plm/core/model/User.java:36
 #, java-format
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
-msgstr ""
+msgstr "ຜູ້ໃຊ້ PLM ໃໝ່ຖືກສ້າງຂຶ້ນແລ້ວ: {0}. ໂຟນເດີເກັບຂໍ້ມູນ: {1}"
 
 #: src/plm/core/model/Users.java:88
 #, java-format
 msgid "User {0} exists already; don't add it again."
-msgstr ""
+msgstr "ຜູ້ໃຊ້ {0} ມີຢູ່ແລ້ວ; ຢ່າເພີ່ມຊ້ຳ."
 
 #: src/plm/core/model/Users.java:112
 #, java-format
 msgid "Switched to user: {0}"
-msgstr ""
+msgstr "ປ່ຽນໄປໃຊ້ຜູ້ໃຊ້: {0}"
 
 #: src/plm/core/model/lesson/Exercise.java:80
 #, java-format
 msgid "The world ''{0}'' differs"
-msgstr ""
+msgstr "ໂລກ ''{0}'' ແຕກຕ່າງກັນ"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:47
 #, java-format
 msgid "Source file {0}.{1} not found."
-msgstr ""
+msgstr "ບໍ່ພົບໄຟລ໌ຊອດໂຄ້ດ {0}.{1}."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:120
 #, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
-msgstr ""
+msgstr "{0}: ພົບ BEGIN TEMPLATE ຊ້ອນກັນ. ກະລຸນາແກ້ໄຂ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:141
 #, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
-msgstr ""
+msgstr "{0}: BEGIN SOLUTION ຖືກປິດດ້ວຍ END TEMPLATE. ກະລຸນາແກ້ໄຂ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:159
 #: src/plm/core/model/lesson/ExerciseTemplated.java:183
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
-msgstr ""
+msgstr "{0}: ພົບ END TEMPLATE ໂດຍທີ່ບໍ່ມີ BEGIN TEMPLATE ຄູ່ກັນ. ກະລຸນາແກ້ໄຂ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
-msgstr ""
+msgstr "{0}: ພົບສ່ວນເລີ່ມຕົ້ນຂອງຄຳຕອບຢູ່ທ້າຍເທມເພຼດ. ໃຫ້ປ່ຽນເປັນ BEGIN HIDDEN."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
+"ຂໍ້ຜິດພາດໃນການອ່ານໄຟລ໌ {0}. ນີ້ແມ່ນບັກຂອງລະບົບອ່ານ (state={1}), ກະລຸນາລາຍງານ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:208
 #, java-format
 msgid ""
 "{0}: End of file unexpected after the solution but within the template. "
 "Please fix your entity."
-msgstr ""
+msgstr "{0}: ໄຟລ໌ສິ້ນສຸດລົງກ່ອນກຳນົດພາຍໃນເທມເພຼດ. ກະລຸນາແກ້ໄຂ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:210
 #, java-format
@@ -802,63 +882,65 @@ msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
 "template or solution? Please fix your entity."
 msgstr ""
+"{0}: ໄຟລ໌ສິ້ນສຸດລົງກ່ອນກຳນົດ (ສະຖານະ: {1}). ເຈົ້າລືມປິດເທມເພຼດ ຫຼື ຄຳຕອບ ຫຼື ບໍ່? ກະລຸນາແກ້ໄຂ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:366
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
 "entity for this language: {2}"
-msgstr ""
+msgstr "ບົດຝຶກຫັດ {0} ຄວນຈະຮອງຮັບພາສາ {1}, ແຕ່ບໍ່ພົບຕົວລະຄອນສຳລັບພາສານີ້: {2}"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:375
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and settings."
-msgstr ""
+msgstr "{0}: ບໍ່ພົບຕົວລະຄອນ. ກະລຸນາກວດເບິ່ງທີ່ຢູ່ໄຟລ໌ ແລະ ການຕັ້ງຄ່າ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
-msgstr ""
+msgstr "ໂລກ {0} ເສຍ ({1}). ກຳລັງຄຳນວນໂລກຄຳຕອບໃໝ່ທັງໝົດ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:410
 #, java-format
 msgid "Cache file {0} is missing. Recompute all answer worlds."
-msgstr ""
+msgstr "ບໍ່ພົບໄຟລ໌ແຄຊ໌ (cache) {0}. ກຳລັງຄຳນວນໂລກຄຳຕອບໃໝ່ທັງໝົດ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:414
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
-msgstr ""
+msgstr "ເກີດ IO exception ຂະນະອ່ານໂລກ {0} ({1}). ກຳລັງຄຳນວນໂລກຄຳຕອບໃໝ່ທັງໝົດ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:425
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}."
-msgstr ""
+msgstr "ກຳລັງຄຳນວນຄຳຕອບຂອງ {0} ໃໝ່ໂດຍບໍ່ໃຊ້ແຄຊ໌ ຕາມທີ່ຕັ້ງຄ່າໄວ້ໃນ {1}."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:465
 #, java-format
 msgid "Error while writing answer world of {0}:"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະຂຽນໂລກຄຳຕອບຂອງ {0}:"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:469
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
+"ບໍ່ສາມາດຂຽນໂລກຄຳຕອບຂອງ {0} ໄດ້. ກະລຸນາກວດເບິ່ງສິດການເຂົ້າເຖິງ (permissions)."
 
 #: src/plm/core/model/lesson/Lecture.java:90
 #: src/plm/core/model/lesson/Lesson.java:94
 #, java-format
 msgid "File {0}.html not found."
-msgstr ""
+msgstr "ບໍ່ພົບໄຟລ໌ {0}.html."
 
 #: src/plm/core/model/lesson/Lecture.java:99
 #: src/plm/core/model/lesson/Lesson.java:104
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
-msgstr ""
+msgstr "ບໍ່ພົບຊື່ພາລະກິດໃນ {0}.html"
 
 #. It should never happen since the session content should be created by the git spy module.
 #: src/plm/core/model/session/GitSessionKit.java:89
@@ -866,14 +948,16 @@ msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
 msgstr ""
+"ເກີດເຫດການທີ່ບໍ່ຄາດຄິດ. ເຊດຊັນ (session) ຂອງເຈົ້າບໍ່ຖືກສ້າງ ຫຼື ໂຫຼດຢ່າງຖືກຕ້ອງ. ກະລຸນາລາຍງານບັນຫາ"
+"ນີ້."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Ok, quit and lose my data."
-msgstr ""
+msgstr "ຕົກລົງ, ອອກໄປເລີຍ ແລະ ຍອມເສຍຂໍ້ມູນ."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Please stop! I'll save it myself first."
-msgstr ""
+msgstr "ຢຸດກ່ອນ! ຂ້ອຍຈະບັນທຶກເອງ."
 
 #: src/plm/core/model/session/ZipSessionKit.java:253
 #, java-format
@@ -882,22 +966,25 @@ msgid ""
 "\n"
 " Would you like proceed anyway? Any solution typed so far will be lost."
 msgstr ""
+"PLM ບໍ່ສາມາດບັນທຶກໄຟລ໌ເຊດຊັນສຳລັບບົດຮຽນ {0} ({1}:{2}).\n"
+"\n"
+" ເຈົ້າຍັງຕ້ອງການໄປຕໍ່ ຫຼື ບໍ່? ຄຳຕອບທີ່ເຈົ້າຂຽນມານັ້ນຈະເສຍໄປ."
 
 #: src/plm/core/model/session/ZipSessionKit.java:256
 msgid "Your changes are NOT saved."
-msgstr ""
+msgstr "ການປ່ຽນແປງຂອງເຈົ້າ ບໍ່ໄດ້ ຖືກບັນທຶກ."
 
 #: src/plm/core/model/session/ZipSessionKit.java:259
 msgid "User aborted saving on system error."
-msgstr ""
+msgstr "ຜູ້ໃຊ້ຍົກເລີກການບັນທຶກຍ້ອນລະບົບມີບັນຫາ."
 
 #: src/plm/core/model/session/ZipSessionKit.java:356
 msgid "Proceed"
-msgstr ""
+msgstr "ໄປຕໍ່"
 
 #: src/plm/core/model/session/ZipSessionKit.java:356
 msgid "Abort"
-msgstr ""
+msgstr "ຍົກເລີກ"
 
 #: src/plm/core/model/session/ZipSessionKit.java:357
 #, java-format
@@ -906,109 +993,114 @@ msgid ""
 "\n"
 " Would you like proceed anyway (and lose any solution typed previously)?"
 msgstr ""
+"PLM ບໍ່ສາມາດໂຫຼດລະຫັດຂອງເຈົ້າສຳລັບບົດຮຽນ {0} ({1}:{2}).\n"
+"\n"
+" ເຈົ້າຍັງຕ້ອງການໄປຕໍ່ ຫຼື ບໍ່ (ຄຳຕອບທີ່ຂຽນໄວ້ກ່ອນໜ້ານີ້ຈະເສຍໄປ)?"
 
 #: src/plm/core/model/session/ZipSessionKit.java:360
 msgid "Error while loading your session"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະໂຫຼດເຊດຊັນຂອງທ່ານ"
 
 #: src/plm/core/model/session/ZipSessionKit.java:363
 msgid "Abording on user request"
-msgstr ""
+msgstr "ກຳລັງຍົກເລີກຕາມຄຳຂໍຂອງຜູ້ໃຊ້"
 
 #. Testing repoDir is not enough because the directory may have been created by another spy but not initialized for git
 #: src/plm/core/model/tracking/GitSpy.java:56
 #, java-format
 msgid "Reusing the disk session located at {0}."
-msgstr ""
+msgstr "ກຳລັງໃຊ້ເຊດຊັນໃນດິດຄືນໃໝ່ ທີ່ຢູ່ {0}."
 
 #: src/plm/core/model/tracking/GitSpy.java:58
 #, java-format
 msgid "Initialize a new disk session at {0}."
-msgstr ""
+msgstr "ກຳລັງສ້າງເຊດຊັນໃນດິດໃໝ່ ທີ່ຢູ່ {0}."
 
 #: src/plm/core/model/tracking/GitSpy.java:76
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
-msgstr ""
+msgstr "ເຊດຊັນ {0} ຂອງທ່ານຖືກດຶງມາຈາກເຊີບເວີໂດຍອັດຕະໂນມັດແລ້ວ."
 
 #. If no branch can be found remotely, create a new one.
 #. System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
 #: src/plm/core/model/tracking/GitSpy.java:81
 msgid "Couldn't retrieve a corresponding session from the servers..."
-msgstr ""
+msgstr "ບໍ່ສາມາດດຶງເຊດຊັນທີ່ກ່ຽວຂ້ອງມາຈາກເຊີບເວີໄດ້..."
 
 #: src/plm/core/model/tracking/GitSpy.java:168
 msgid "Pushing to the remote repository before exiting."
-msgstr ""
+msgstr "ກຳລັງສົ່ງຂໍ້ມູນໄປຍັງຄັງເກັບຂໍ້ມູນ (repository) ກ່ອນປິດໂປຣແກຣມ."
 
 #: src/plm/core/model/tracking/GitUtils.java:76
 msgid "An error occurred while configuring the repository..."
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະກຳນົດຄ່າຄັງເກັບຂໍ້ມູນ..."
 
 #: src/plm/core/model/tracking/GitUtils.java:85
 msgid "Retrieving your session from the servers..."
-msgstr ""
+msgstr "ກຳລັງດຶງເຊດຊັນຂອງທ່ານມາຈາກເຊີບເວີ..."
 
 #: src/plm/core/model/tracking/GitUtils.java:119
 msgid "An error occurred while checking out the user's branch: "
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະປ່ຽນແບຣນ (branch) ຂອງຜູ້ໃຊ້: "
 
 #: src/plm/core/model/tracking/GitUtils.java:132
 msgid "Last session data successfully retrieved."
-msgstr ""
+msgstr "ດຶງຂໍ້ມູນເຊດຊັນຫຼ້າສຸດສຳເລັດແລ້ວ."
 
 #: src/plm/core/model/tracking/GitUtils.java:135
 msgid "Last session data successfully merged."
-msgstr ""
+msgstr "ຮວມຂໍ້ມູນເຊດຊັນຫຼ້າສຸດສຳເລັດແລ້ວ."
 
 #: src/plm/core/model/tracking/GitUtils.java:138
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
 msgstr ""
+"ພົບຂໍ້ຂັດແຍ້ງຂອງຂໍ້ມູນຂະນະກຳລັງຊິ້ງຄ໌ (synchronizing), ກຳລັງພະຍາຍາມແກ້ໄຂ..."
 
 #. TODO: handle this case
 #: src/plm/core/model/tracking/GitUtils.java:166
 msgid "Canceled the merge operation because of the following failures:"
-msgstr ""
+msgstr "ຍົກເລີກການຮວມຂໍ້ມູນຍ້ອນຄວາມລົ້ມເຫຼວດັ່ງຕໍ່ໄປນີ້:"
 
 #: src/plm/core/model/tracking/GitUtils.java:173
 msgid "Can't merge data retrieved from server with local session data."
-msgstr ""
+msgstr "ບໍ່ສາມາດຮວມຂໍ້ມູນທີ່ດຶງມາຈາກເຊີບເວີເຂົ້າກັບຂໍ້ມູນໃນເຄື່ອງໄດ້."
 
 #: src/plm/core/model/tracking/GitUtils.java:214
 msgid "Cannot synchronize your session with the servers (network down)."
-msgstr ""
+msgstr "ບໍ່ສາມາດຊິ້ງຄ໌ຂໍ້ມູນກັບເຊີບເວີໄດ້ (ອິນເຕີເນັດມີບັນຫາ)."
 
 #: src/plm/core/model/tracking/GitUtils.java:241
 msgid "Your session has been successfully saved into the clouds."
-msgstr ""
+msgstr "ບັນທຶກເຊດຊັນຂອງທ່ານລົງໃນລະບົບຄລາວ (cloud) ສຳເລັດແລ້ວ."
 
 #. An error occurred while pushing
 #: src/plm/core/model/tracking/GitUtils.java:245
 msgid "Fetching the server's last version..."
-msgstr ""
+msgstr "ກຳລັງດຶງຂໍ້ມູນເວີຊັນຫຼ້າສຸດຈາກເຊີບເວີ..."
 
 #: src/plm/core/model/tracking/GitUtils.java:252
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
 msgstr ""
+"ການດຶງຂໍ້ມູນເວີຊັນຫຼ້າສຸດບໍ່ສາມາດແກ້ໄຂບັນຫາໄດ້, ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້."
 
 #: src/plm/core/model/tracking/GitUtils.java:255
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະຊິ້ງຄ໌ຂໍ້ມູນກັບເຊີບເວີ, ກະລຸນາລາຍງານຂໍ້ຜິດພາດດັ່ງນີ້:"
 
 #: src/plm/core/ui/AboutLessonDialog.java:20
 msgid "About lesson - "
-msgstr ""
+msgstr "ກ່ຽວກັບບົດຮຽນ - "
 
 #: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:397
 #: src/plm/core/ui/MainFrame.java:737
 msgid "About the PLM"
-msgstr ""
+msgstr "ກ່ຽວກັບ PLM"
 
 #: src/plm/core/ui/AboutPLMDialog.java:60
 #, java-format
@@ -1022,14 +1114,21 @@ msgid ""
 "li></ul><br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/"
 "></html>"
 msgstr ""
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">ເວີຊັນ {0}"
+"&nbsp;<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("
+"{1})</span></h3><br/>&copy; 2008-2020 ທີມງານຜູ້ພັດທະນາ. ສະຫງວນລິຂະສິດ.<br/><ul "
+"style=\"margin-left:20px;\"><li>ແນວຄິດເລີ່ມຕົ້ນ: <i>L. Turbak (Wellesley College)"
+"</i></li><li>ອອກແບບ ແລະ ຂຽນລະຫັດ: <i>M. Quinson ແລະ G. Oster</i></li><li>ທົດສອບ"
+"ໂດຍ: <i>ນັກສຶກສາ Telecom Nancy (ຮຸ່ນປີ ''11 ຫາ ''15)</i></li></ul><br/>ລະຫັດຂອງທ່ານຖື"
+"ກບັນທຶກໄວ້ທີ່ {2}<br/>ລະຫັດເຊດຊັນລັບຂອງທ່ານແມ່ນ {3}<br/></html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:81
 msgid "About"
-msgstr ""
+msgstr "ກ່ຽວກັບ"
 
 #: src/plm/core/ui/AboutPLMDialog.java:118
 msgid "Changes"
-msgstr ""
+msgstr "ການປ່ຽນແປງ"
 
 #: src/plm/core/ui/AboutPLMDialog.java:124
 msgid ""
@@ -1055,27 +1154,27 @@ msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:150
 msgid "Copying"
-msgstr ""
+msgstr "ລິຂະສິດ"
 
 #: src/plm/core/ui/AboutPLMDialog.java:156
 #: src/plm/core/ui/ExerciseFailedDialog.java:43
 #: src/plm/core/ui/ExercisePassedDialog.java:100
 msgid "Close"
-msgstr ""
+msgstr "ປິດ"
 
 #: src/plm/core/ui/AboutWorldDialog.java:31
 #: src/plm/core/ui/AboutWorldDialog.java:50
 #, java-format
 msgid "About world - {0}"
-msgstr ""
+msgstr "ກ່ຽວກັບໂລກ - {0}"
 
 #: src/plm/core/ui/ChooseLectureDialog.java:100
 msgid "Choose your next exercise"
-msgstr ""
+msgstr "ເລືອກບົດຝຶກຫັດຕໍ່ໄປຂອງທ່ານ"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:46
 msgid "Choose your lesson"
-msgstr ""
+msgstr "ເລືອກບົດຮຽນຂອງທ່ານ"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:66
 msgid ""
@@ -1091,14 +1190,24 @@ msgid ""
 "offers an extensive set of varied exercises, allowing you to practice at "
 "your own pace.</font></p><br/>"
 msgstr ""
+"<table border=\"0\" align=\"center\"><tr>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ "
+"Programmer's Learning Machine</font>&nbsp;&nbsp;</td>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"</tr></table>\n"
+"\n"
+"<p><font size=\"+1\">PLM ແມ່ນລະບົບຈັດການການຮຽນຮູ້ (LMS) ທີ່ເນັ້ນການສອນສິລະປະການຂຽນໂປຣແກ"
+"ຣມຄອມພິວເຕີຜ່ານບົດຝຶກຫັດແບບໂຕ້ຕອບ. ມັນມີບົດຝຶກຫັດທີ່ຫຼາກຫຼາຍ ເພື່ອໃຫ້ທ່ານໄດ້ຝຶກຝົນຕາມຄວາມໄວທີ່ທ່ານຕ້ອງກາ"
+"ນ.</font></p><br/>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:144
 msgid "PLM lesson files"
-msgstr ""
+msgstr "ໄຟລ໌ບົດຮຽນ PLM"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:153
 msgid "Error"
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດ"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:180
 msgid ""
@@ -1107,77 +1216,82 @@ msgid ""
 "<p>Lessons located above are generally simpler than the ones located below.</"
 "p>"
 msgstr ""
+"<h1>ກະລຸນາເລືອກບົດຮຽນ</h1>\n"
+"<p>ກະລຸນາກົດທີ່ໄອຄອນທາງເບື້ອງຊ້າຍເພື່ອເລືອກບົດຮຽນ.</p>\n"
+"<p>ບົດຮຽນທີ່ຢູ່ທາງເທິງສ່ວນຫຼາຍຈະງ່າຍກວ່າບົດຮຽນທີ່ຢູ່ທາງລຸ່ມ.</p>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:224
 #, java-format
 msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
 "found)</p>"
-msgstr ""
+msgstr "<p>(ບໍ່ສາມາດສະແດງຄຳອະທິບາຍຫຍໍ້ຂອງບົດຮຽນນີ້ໄດ້: ບໍ່ພົບໄຟລ໌ {0})</p>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:227
 msgid "<p><b>Your score:</b> "
-msgstr ""
+msgstr "<p><b>ຄະແນນຂອງທ່ານ:</b> "
 
 #: src/plm/core/ui/ChooseLessonDialog.java:235
 #, java-format
 msgid "{0} out of {1} exercises passed."
-msgstr ""
+msgstr "ຜ່ານ {0} ຈາກທັງໝົດ {1} ບົດຝຶກຫັດ."
 
 #: src/plm/core/ui/ChooseLessonDialog.java:239
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
-msgstr ""
+msgstr "ຜ່ານ {0} ຈາກທັງໝົດ {1} ບົດຝຶກຫັດໃນ {2}."
 
 #: src/plm/core/ui/ChooseLessonDialog.java:245
 msgid "You never attempted this lesson."
-msgstr ""
+msgstr "ທ່ານຍັງບໍ່ເຄີຍລອງຮຽນບົດຮຽນນີ້ເທື່ອ."
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:27
 msgid "<i>Practice makes perfect</i>, as they say."
-msgstr ""
+msgstr "<i>ຄວາມພະຍາຍາມຢູ່ບ່ອນໃດ ຄວາມສຳເລັດຢູ່ບ່ອນນັ້ນ</i> ດັ່ງຄຳເພິ່ນວ່າ."
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:28
 msgid "<i>To err is human</i>, as they say."
-msgstr ""
+msgstr "<i>ສີ່ຕີນຍັງຮູ້ພາດ ນັກປາດຍັງຮູ້ຫຼົງ</i> ດັ່ງຄຳເພິ່ນວ່າ."
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:29
 msgid "You should keep trying until you get it right!"
-msgstr ""
+msgstr "ທ່ານຄວນພະຍາຍາມຕໍ່ໄປຈົນກວ່າຈະເຮັດໄດ້ຖືກຕ້ອງ!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:30
 msgid "We all learn from our mistakes, so, good job!"
-msgstr ""
+msgstr "ພວກເຮົາທຸກຄົນຕ່າງກໍຮຽນຮູ້ຈາກຄວາມຜິດພາດ, ເຮັດໄດ້ດີແລ້ວ!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:31
 msgid "We learn from failure, not from success!"
-msgstr ""
+msgstr "ພວກເຮົາຮຽນຮູ້ຈາກຄວາມລົ້ມເຫຼວ, ບໍ່ແມ່ນຈາກຄວາມສຳເລັດ!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:32
 msgid "Success comes after failure"
-msgstr ""
+msgstr "ຄວາມສຳເລັດມາຫຼັງຈາກຄວາມລົ້ມເຫຼວ"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
 msgstr ""
+"<i>ອາຈານລົ້ມເຫຼວມາຫຼາຍຄັ້ງ ກວ່າທີ່ມືໃໝ່ເຄີຍໄດ້ລອງເຮັດຊ້ຳ</i> ດັ່ງຄຳເພິ່ນວ່າ."
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
 "(Einstein)."
-msgstr ""
+msgstr "<i>ຄົນທີ່ບໍ່ເຄີຍເຮັດຜິດ ຄືຄົນທີ່ບໍ່ເຄີຍລອງເຮັດສິ່ງໃໝ່ໆ.</i> (ໄອສໄຕນ໌)"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:35
 msgid ""
 "<i>Success does not consist in never making mistakes,<br> but in never "
 "making the same one a second time.</i> (Shaw)"
 msgstr ""
+"<i>ຄວາມສຳເລັດບໍ່ໄດ້ໝາຍເຖິງການບໍ່ເຄີຍເຮັດຜິດ,<br> ແຕ່ແມ່ນການບໍ່ເຮັດຜິດຊ້ຳສອງໃນເລື່ອງເດີມ.</i> (ຊໍ)"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Mmm, not quite"
-msgstr ""
+msgstr "ອືມມ, ຍັງບໍ່ຖືກປານໃດ"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:56
 #, java-format
@@ -1191,6 +1305,14 @@ msgid ""
 "If you don''t see the error, check the details below for a <br>\n"
 "textual description of this difference between both worlds.</html>"
 msgstr ""
+"<html>ເທື່ອນີ້ເຈົ້າຍັງເຮັດບໍ່ທັນບັນລຸເປົ້າໝາຍເທື່ອ. <br>\n"
+"ບໍ່ເປັນຫຍັງ. {0}<br>\n"
+"<br>\n"
+"ເຈົ້າຄວນລອງປຽບທຽບພາບສະຖານະສຸດທ້າຍຂອງໂລກຂອງເຈົ້າ <br>\n"
+"ກັບພາບເປົ້າໝາຍ ເພື່ອໃຫ້ເຂົ້າໃຈບັນຫາ. <br>\n"
+"<br>\n"
+"ຖ້າເຈົ້າບໍ່ເຫັນຂໍ້ຜິດພາດ, ໃຫ້ເບິ່ງລາຍລະອຽດດ້ານລຸ່ມ <br>\n"
+"ເຊິ່ງຈະມີຄຳອະທິບາຍຄວາມແຕກຕ່າງລະຫວ່າງທັງສອງໂລກເປັນຕົວໜັງສື.</html>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:68
 #, java-format
@@ -1199,33 +1321,37 @@ msgid ""
 "You can find below the detailed error message (as given by {0}).<br>\n"
 "Please read it carefully to understand the problem, and fix your code.</html>"
 msgstr ""
+"<html>ເກີດຂໍ້ຜິດພາດໃນການຄອມໄພລ໌ (Compilation error).<br>\n"
+"ເຈົ້າສາມາດເບິ່ງລາຍລະອຽດຂໍ້ຜິດພາດໄດ້ທີ່ດ້ານລຸ່ມ (ຈາກ {0}).<br>\n"
+"ກະລຸນາອ່ານໃຫ້ລະອຽດເພື່ອເຂົ້າໃຈບັນຫາ ແລະ ແກ້ໄຂລະຫັດຂອງເຈົ້າ.</html>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:83
 #: src/plm/core/ui/ExerciseFailedDialog.java:90
 msgid "Details >>"
-msgstr ""
+msgstr "ລາຍລະອຽດ >>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:93
 msgid "Details <<"
-msgstr ""
+msgstr "ລາຍລະອຽດ <<"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:28
 msgid "Exercice passed \\o/"
-msgstr ""
+msgstr "ຜ່ານບົດຝຶກຫັດແລ້ວ \\o/"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:37
 msgid "Congrats"
-msgstr ""
+msgstr "ຍິນດີດ້ວຍ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:46
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>"
 msgstr ""
+"<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br>ຜ່ານການທົດສອບ {0} ຄັ້ງ.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:49
 msgid "<html>Congratulations, you passed this exercise.</html>"
-msgstr ""
+msgstr "<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:59
 #, java-format
@@ -1233,115 +1359,118 @@ msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br><br><br>Select your next exercise:</html>"
 msgstr ""
+"<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br>(ຜ່ານການທົດສອບ {0} ຄັ້ງ)<br><br><br>ເລືອກບົດຝຶກຫັດ"
+"ຕໍ່ໄປຂອງທ່ານ:</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
 msgid ""
 "<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
 "next exercise:</html>"
 msgstr ""
+"<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br><br><br><br>ເລືອກບົດຝຶກຫັດຕໍ່ໄປຂອງທ່ານ:</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid "Give feedback"
-msgstr ""
+msgstr "ໃຫ້ຄຳຄິດເຫັນ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:75
 msgid ""
 "Please help us to improve this exercise by filling this little evaluation."
-msgstr ""
+msgstr "ກະລຸນາຊ່ວຍພວກເຮົາປັບປຸງບົດຝຶກຫັດນີ້ ໂດຍການຕອບແບບປະເມີນສັ້ນໆ."
 
 #: src/plm/core/ui/ExercisePassedDialog.java:77
 msgid "Difficulty:"
-msgstr ""
+msgstr "ຄວາມຍາກ:"
 
 #. Difficulties are the text presented to the user while difficultiesEN are the one that will be added to the report
 #: src/plm/core/ui/ExercisePassedDialog.java:80
 #: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "(please choose)"
-msgstr ""
+msgstr "(ກະລຸນາເລືອກ)"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:80
 msgid "Too easy"
-msgstr ""
+msgstr "ງ່າຍເກີນໄປ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:80
 msgid "Easy"
-msgstr ""
+msgstr "ງ່າຍ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:80
 msgid "Just right"
-msgstr ""
+msgstr "ພໍດີ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:80
 msgid "Difficult"
-msgstr ""
+msgstr "ຍາກ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:80
 msgid "Too difficult"
-msgstr ""
+msgstr "ຍາກເກີນໄປ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:85
 msgid "Interest:"
-msgstr ""
+msgstr "ຄວາມໜ້າສົນໃຈ:"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "Really good"
-msgstr ""
+msgstr "ດີຫຼາຍ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "Amusing"
-msgstr ""
+msgstr "ມ່ວນ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "Just okay"
-msgstr ""
+msgstr "ກໍພໍໃຊ້ໄດ້"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "Boring"
-msgstr ""
+msgstr "ໜ້າເບື່ອ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "Really bad"
-msgstr ""
+msgstr "ແຍ່ຫຼາຍ"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:92
 msgid "Free comments on that exercise:"
-msgstr ""
+msgstr "ຄຳຄິດເຫັນເພີ່ມເຕີມຕໍ່ບົດຝຶກຫັດນີ້:"
 
 #: src/plm/core/ui/ExerciseView.java:87 src/plm/core/ui/ExerciseView.java:225
 msgid "Change the speed of execution"
-msgstr ""
+msgstr "ປ່ຽນຄວາມໄວໃນການເຮັດວຽກ"
 
 #: src/plm/core/ui/ExerciseView.java:94 src/plm/core/ui/ExerciseView.java:168
 #: src/plm/core/ui/ExerciseView.java:227
 msgid "World"
-msgstr ""
+msgstr "ໂລກ"
 
 #: src/plm/core/ui/ExerciseView.java:94 src/plm/core/ui/ExerciseView.java:168
 #: src/plm/core/ui/ExerciseView.java:228
 msgid "The world as it is right now"
-msgstr ""
+msgstr "ໂລກໃນສະຖານະປັດຈຸບັນ"
 
 #: src/plm/core/ui/ExerciseView.java:98 src/plm/core/ui/ExerciseView.java:170
 #: src/plm/core/ui/ExerciseView.java:229
 msgid "Objective"
-msgstr ""
+msgstr "ເປົ້າໝາຍ"
 
 #: src/plm/core/ui/ExerciseView.java:98 src/plm/core/ui/ExerciseView.java:170
 #: src/plm/core/ui/ExerciseView.java:230
 msgid "The world as it should be"
-msgstr ""
+msgstr "ໂລກທີ່ຄວນຈະເປັນ (ເປົ້າໝາຍ)"
 
 #: src/plm/core/ui/ExerciseView.java:224
 msgid "Switch the displayed world"
-msgstr ""
+msgstr "ປ່ຽນມຸມມອງໂລກທີ່ສະແດງ"
 
 #: src/plm/core/ui/ExerciseView.java:226
 msgid "Switch the entity"
-msgstr ""
+msgstr "ປ່ຽນຕົວລະຄອນ"
 
 #: src/plm/core/ui/FeedbackDialog.java:62
 msgid "Please describe the problem in a few words"
-msgstr ""
+msgstr "ກະລຸນາອະທິບາຍບັນຫາດ້ວຍຄຳເວົ້າສັ້ນໆ"
 
 #: src/plm/core/ui/FeedbackDialog.java:64
 msgid ""
@@ -1355,18 +1484,28 @@ msgid ""
 "\n"
 "--------------------[ Technical Information ]--------------------\n"
 msgstr ""
+"ຂຽນຄຳແນະນຳຂອງທ່ານຢູ່ນີ້ ພ້ອມລາຍລະອຽດທີ່ຈຳເປັນ.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"(ຂໍ້ມູນຕໍ່ໄປນີ້ຈະຊ່ວຍພວກເຮົາແກ້ໄຂບັນຫາຂອງທ່ານ, ກະລຸນາຢ່າລຶບ)\n"
+"\n"
+"--------------------[ ຂໍ້ມູນທາງເຕັກນິກ ]--------------------\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:71
 msgid "--------------------[ my code for this exercise ]--------------------\n"
 msgstr ""
+"--------------------[ ລະຫັດຂອງຂ້ອຍສຳລັບບົດຝຶກຫັດນີ້ ]--------------------\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Report your feedback"
-msgstr ""
+msgstr "ສົ່ງລາຍງານຄຳຄິດເຫັນຂອງທ່ານ"
 
 #: src/plm/core/ui/FeedbackDialog.java:102
 msgid "Issue title:"
-msgstr ""
+msgstr "ຫົວຂໍ້ບັນຫາ:"
 
 #: src/plm/core/ui/FeedbackDialog.java:110
 msgid ""
@@ -1395,19 +1534,19 @@ msgstr ""
 #: src/plm/core/ui/FeedbackDialog.java:158
 #: src/plm/core/ui/action/RevertExercise.java:20
 msgid "Cancel"
-msgstr ""
+msgstr "ຍົກເລີກ"
 
 #: src/plm/core/ui/FeedbackDialog.java:163
 msgid "Do you really want to cancel your feedback and lose any edit?"
-msgstr ""
+msgstr "ທ່ານຕ້ອງການຍົກເລີກຄຳຄິດເຫັນ ແລະ ຍອມເສຍຂໍ້ມູນທີ່ຂຽນໄວ້ແທ້ຫຼືບໍ່?"
 
 #: src/plm/core/ui/FeedbackDialog.java:164
 msgid "are you sure?"
-msgstr ""
+msgstr "ທ່ານແນ່ໃຈຫຼືບໍ່?"
 
 #: src/plm/core/ui/FeedbackDialog.java:172
 msgid "Send feedback"
-msgstr ""
+msgstr "ສົ່ງຄຳຄິດເຫັນ"
 
 #: src/plm/core/ui/FeedbackDialog.java:199
 #, java-format
@@ -1415,14 +1554,16 @@ msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
 msgstr ""
+"ຂອບໃຈສຳລັບຄຳຄິດເຫັນ, ພວກເຮົາຈະພະຍາຍາມປັບປຸງໃຫ້ດີທີ່ສຸດ.\n"
+"ຕິດຕາມຄວາມຄືບໜ້າໄດ້ທີ່ {0}."
 
 #: src/plm/core/ui/FeedbackDialog.java:200
 msgid "Thanks for your suggestion"
-msgstr ""
+msgstr "ຂອບໃຈສຳລັບຄຳແນະນຳຂອງທ່ານ"
 
 #: src/plm/core/ui/FeedbackDialog.java:209
 msgid "Error while uploading your feedback"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະອັບໂຫຼດຄຳຄິດເຫັນຂອງທ່ານ"
 
 #: src/plm/core/ui/FeedbackDialog.java:216
 msgid ""
@@ -1430,316 +1571,324 @@ msgid ""
 "please fix the following issue(s):\n"
 "\n"
 msgstr ""
+"ຄຳຄິດເຫັນຂອງທ່ານຕ້ອງມີການແກ້ໄຂເລັກນ້ອຍກ່ອນສົ່ງ,\n"
+"ກະລຸນາແກ້ໄຂບັນຫາດັ່ງຕໍ່ໄປນີ້:\n"
+"\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:217
 msgid "Incorrect feedback"
-msgstr ""
+msgstr "ຄຳຄິດເຫັນບໍ່ຖືກຕ້ອງ"
 
 #: src/plm/core/ui/FeedbackDialog.java:242
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
 msgstr ""
+"ຫົວຂໍ້ຄຳຄິດເຫັນຍັງເປັນຄ່າເລີ່ມຕົ້ນຢູ່, ກະລຸນາກຳນົດຫົວຂໍ້ໃຫ້ກ່ຽວຂ້ອງກັບບັນຫາ.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:246
 msgid "The current title is empty, please specify a relevant title.\n"
-msgstr ""
+msgstr "ຫົວຂໍ້ຫວ່າງເປົ່າ, ກະລຸນາກຳນົດຫົວຂໍ້ທີ່ເໝາະສົມ.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:250
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
 msgstr ""
+"ຄຳຄິດເຫັນຍັງມີຂໍ້ຄວາມອະທິບາຍ (ສ່ວນທີ່ຢູ່ເໜືອເສັ້ນ ---------) ຢູ່, ກະລຸນາລຶບອອກ.\n"
 
 #: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
 msgid "Where error and other messages get written"
-msgstr ""
+msgstr "ບ່ອນທີ່ສະແດງຂໍ້ຜິດພາດ ແລະ ຂໍ້ຄວາມອື່ນໆ"
 
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
 #: src/plm/core/ui/MainFrame.java:180 src/plm/core/ui/MainFrame.java:706
 msgid "File"
-msgstr ""
+msgstr "ໄຟລ໌"
 
 #: src/plm/core/ui/MainFrame.java:182
 msgid "File related functions"
-msgstr ""
+msgstr "ຟັງຊັນທີ່ກ່ຽວກັບໄຟລ໌"
 
 #: src/plm/core/ui/MainFrame.java:184 src/plm/core/ui/MainFrame.java:707
 msgid "Save a picture"
-msgstr ""
+msgstr "ບັນທຶກຮູບພາບ"
 
 #: src/plm/core/ui/MainFrame.java:190
 msgid "PNG Image Files"
-msgstr ""
+msgstr "ໄຟລ໌ຮູບພາບ PNG"
 
 #: src/plm/core/ui/MainFrame.java:198
 #, java-format
 msgid "Do you want to overwrite {0}?"
-msgstr ""
+msgstr "ທ່ານຕ້ອງການບັນທຶກທັບ {0} ຫຼື ບໍ່?"
 
 #: src/plm/core/ui/MainFrame.java:199
 #, java-format
 msgid "{0} exists"
-msgstr ""
+msgstr "{0} ມີຢູ່ແລ້ວ"
 
 #: src/plm/core/ui/MainFrame.java:218
 #, java-format
 msgid "Image saved into {0}."
-msgstr ""
+msgstr "ບັນທຶກຮູບພາບລົງໃນ {0} ແລ້ວ."
 
 #: src/plm/core/ui/MainFrame.java:227 src/plm/core/ui/MainFrame.java:708
 msgid "Quit"
-msgstr ""
+msgstr "ອອກຈາກໂປຣແກຣມ"
 
 #: src/plm/core/ui/MainFrame.java:234 src/plm/core/ui/MainFrame.java:710
 msgid "Exercise"
-msgstr ""
+msgstr "ບົດຝຶກຫັດ"
 
 #: src/plm/core/ui/MainFrame.java:239 src/plm/core/ui/MainFrame.java:469
 #: src/plm/core/ui/MainFrame.java:711
 msgid "Switch lesson"
-msgstr ""
+msgstr "ປ່ຽນບົດຮຽນ"
 
 #: src/plm/core/ui/MainFrame.java:251 src/plm/core/ui/MainFrame.java:472
 #: src/plm/core/ui/MainFrame.java:703 src/plm/core/ui/MainFrame.java:712
 msgid "Switch exercise"
-msgstr ""
+msgstr "ປ່ຽນບົດຝຶກຫັດ"
 
 #: src/plm/core/ui/MainFrame.java:262 src/plm/core/ui/MainFrame.java:713
 msgid "Revert Exercise"
-msgstr ""
+msgstr "ລ້າງບົດຝຶກຫັດໃໝ່"
 
 #: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:714
 msgid "Debug mode"
-msgstr ""
+msgstr "ໂໝດດີບັກ (Debug)"
 
 #: src/plm/core/ui/MainFrame.java:278 src/plm/core/ui/MainFrame.java:715
 msgid "Creative mode"
-msgstr ""
+msgstr "ໂໝດສ້າງສັນ"
 
 #. === Session menu ===
 #: src/plm/core/ui/MainFrame.java:292 src/plm/core/ui/MainFrame.java:717
 msgid "Session"
-msgstr ""
+msgstr "ເຊດຊັນ"
 
 #: src/plm/core/ui/MainFrame.java:298
 msgid "Write Session to disk"
-msgstr ""
+msgstr "ບັນທຶກເຊດຊັນລົງໃນດິດ"
 
 #: src/plm/core/ui/MainFrame.java:301
 msgid "Read Session from disk"
-msgstr ""
+msgstr "ອ່ານເຊດຊັນຈາກດິດ"
 
 #: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:723
 #: src/plm/core/ui/action/AddUser.java:33
 msgid "Add user"
-msgstr ""
+msgstr "ເພີ່ມຜູ້ໃຊ້"
 
 #: src/plm/core/ui/MainFrame.java:309 src/plm/core/ui/MainFrame.java:724
 #: src/plm/core/ui/action/SwitchUser.java:30
 msgid "Switch user"
-msgstr ""
+msgstr "ປ່ຽນຜູ້ໃຊ້"
 
 #: src/plm/core/ui/MainFrame.java:312 src/plm/core/ui/MainFrame.java:725
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid "Remove user"
-msgstr ""
+msgstr "ລຶບຜູ້ໃຊ້"
 
 #. === Language menu ===
 #: src/plm/core/ui/MainFrame.java:316 src/plm/core/ui/MainFrame.java:728
 msgid "Language"
-msgstr ""
+msgstr "ພາສາ"
 
 #. === Programming language changing ===
 #: src/plm/core/ui/MainFrame.java:321 src/plm/core/ui/MainFrame.java:729
 msgid "Human"
-msgstr ""
+msgstr "ພາສາມະນຸດ"
 
 #: src/plm/core/ui/MainFrame.java:335 src/plm/core/ui/MainFrame.java:730
 msgid "Computer"
-msgstr ""
+msgstr "ພາສາຄອມພິວເຕີ"
 
 #. === Help menu ===
 #: src/plm/core/ui/MainFrame.java:339 src/plm/core/ui/MainFrame.java:732
 msgid "Help"
-msgstr ""
+msgstr "ຊ່ວຍເຫຼືອ"
 
 #: src/plm/core/ui/MainFrame.java:343 src/plm/core/ui/MainFrame.java:733
 msgid "Provide feedback"
-msgstr ""
+msgstr "ສົ່ງຄຳຄິດເຫັນ"
 
 #: src/plm/core/ui/MainFrame.java:353 src/plm/core/ui/MainFrame.java:734
 msgid "About this lesson"
-msgstr ""
+msgstr "ກ່ຽວກັບບົດຮຽນນີ້"
 
 #: src/plm/core/ui/MainFrame.java:366 src/plm/core/ui/MainFrame.java:735
 msgid "About this world"
-msgstr ""
+msgstr "ກ່ຽວກັບໂລກນີ້"
 
 #: src/plm/core/ui/MainFrame.java:381
 msgid "Show the mission in a window"
-msgstr ""
+msgstr "ສະແດງພາລະກິດໃນປ່ອງຢ້ຽມໃໝ່"
 
 #. Buttons
 #: src/plm/core/ui/MainFrame.java:433 src/plm/core/ui/MainFrame.java:698
 msgid "Run"
-msgstr ""
+msgstr "ເລີ່ມເຮັດວຽກ"
 
 #: src/plm/core/ui/MainFrame.java:437 src/plm/core/ui/MainFrame.java:535
 #: src/plm/core/ui/MainFrame.java:699
 msgid "Step"
-msgstr ""
+msgstr "ເຮັດເທື່ອລະຂັ້ນ"
 
 #: src/plm/core/ui/MainFrame.java:442 src/plm/core/ui/MainFrame.java:700
 msgid "Stop"
-msgstr ""
+msgstr "ຢຸດ"
 
 #: src/plm/core/ui/MainFrame.java:448 src/plm/core/ui/MainFrame.java:701
 msgid "Reset"
-msgstr ""
+msgstr "ເລີ່ມໃໝ່"
 
 #: src/plm/core/ui/MainFrame.java:454 src/plm/core/ui/MainFrame.java:702
 msgid "Demo"
-msgstr ""
+msgstr "ຕົວຢ່າງ"
 
 #: src/plm/core/ui/MainFrame.java:520
 msgid "Next"
-msgstr ""
+msgstr "ຖັດໄປ"
 
 #: src/plm/core/ui/MainFrame.java:587
 msgid "Please wait, while the PLM is saving your session data."
-msgstr ""
+msgstr "ກະລຸນາລໍຖ້າ, PLM ກຳລັງບັນທຶກຂໍ້ມູນເຊດຊັນຂອງທ່ານ."
 
 #: src/plm/core/ui/MainFrame.java:718
 msgid "Lesson related functions"
-msgstr ""
+msgstr "ຟັງຊັນທີ່ກ່ຽວກັບບົດຮຽນ"
 
 #: src/plm/core/ui/MainFrame.java:719
 msgid "Export Session Cache"
-msgstr ""
+msgstr "ສົ່ງອອກແຄຊ໌ເຊດຊັນ"
 
 #: src/plm/core/ui/MainFrame.java:720
 msgid "Import Session Cache"
-msgstr ""
+msgstr "ນຳເຂົ້າແຄຊ໌ເຊດຊັນ"
 
 #: src/plm/core/ui/MissionEditorTabs.java:72
 msgid "Mission"
-msgstr ""
+msgstr "ພາລະກິດ"
 
 #: src/plm/core/ui/MissionEditorTabs.java:73
 msgid "Description of the work to do"
-msgstr ""
+msgstr "ລາຍລະອຽດຂອງວຽກທີ່ຕ້ອງເຮັດ"
 
 #. Create the tab with the code editor as content
 #: src/plm/core/ui/MissionEditorTabs.java:142
 msgid "Type your code here"
-msgstr ""
+msgstr "ຂຽນລະຫັດຂອງທ່ານຢູ່ນີ້"
 
 #: src/plm/core/ui/PlmHtmlEditorKit.java:343
 #, java-format
 msgid "<img> tag without src attribute at offset {0}."
-msgstr ""
+msgstr "ແທັກ <img> ບໍ່ມີແອດທຣິບິວ src ທີ່ຕຳແໜ່ງ {0}."
 
 #: src/plm/core/ui/PlmHtmlEditorKit.java:345
 #, java-format
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
-msgstr ""
+msgstr "ແທັກ <img> ບໍ່ມີແອດທຣິບິວ src ໃນບົດຝຶກຫັດ {0} ທີ່ຕຳແໜ່ງ {1}"
 
 #: src/plm/core/ui/StatusBar.java:154
 msgid "Saving"
-msgstr ""
+msgstr "ກຳລັງບັນທຶກ"
 
 #: src/plm/core/ui/StatusBar.java:159
 msgid "Compiling"
-msgstr ""
+msgstr "ກຳລັງຄອມໄພລ໌"
 
 #: src/plm/core/ui/StatusBar.java:175
 msgid "Running "
-msgstr ""
+msgstr "ກຳລັງເຮັດວຽກ "
 
 #: src/plm/core/ui/StatusBar.java:180
 msgid "Playing demo "
-msgstr ""
+msgstr "ກຳລັງສະແດງຕົວຢ່າງ "
 
 #: src/plm/core/ui/StatusBar.java:185
 msgid "Loading "
-msgstr ""
+msgstr "ກຳລັງໂຫຼດ "
 
 #: src/plm/core/ui/TipsDialog.java:20
 msgid "Tips"
-msgstr ""
+msgstr "ເຄັດລັບ"
 
 #: src/plm/core/ui/TipsDialog.java:21
 msgid "(no tips to display)"
-msgstr ""
+msgstr "(ບໍ່ມີເຄັດລັບທີ່ຈະສະແດງ)"
 
 #: src/plm/core/ui/action/AddUser.java:27
 msgid ""
 "If you already have a UUID, paste it here. If not, you can use that randomly "
 "generated identifier."
 msgstr ""
+"ຖ້າທ່ານມີ UUID ແລ້ວ, ໃຫ້ວາງຢູ່ນີ້. ຖ້າບໍ່ມີ, ທ່ານສາມາດໃຊ້ລະຫັດທີ່ລະບົບສຸ່ມໃຫ້ໄດ້."
 
 #: src/plm/core/ui/action/AddUser.java:29
 msgid "Username:"
-msgstr ""
+msgstr "ຊື່ຜູ້ໃຊ້:"
 
 #: src/plm/core/ui/action/AddUser.java:30
 msgid "Secret UUID:"
-msgstr ""
+msgstr "UUID ລັບ:"
 
 #: src/plm/core/ui/action/AddUser.java:38
 msgid ""
 "Your new user has been added successfully!\n"
 "You were automatically switched to that user."
 msgstr ""
+"ເພີ່ມຜູ້ໃຊ້ໃໝ່ສຳເລັດແລ້ວ!\n"
+"ລະບົບໄດ້ປ່ຽນໄປໃຊ້ຜູ້ໃຊ້ນັ້ນໃຫ້ໂດຍອັດຕະໂນມັດ."
 
 #: src/plm/core/ui/action/AddUser.java:41
 msgid ""
 "Invalid UUID! Either paste a correct identifier or use the randomly "
 "generated one."
-msgstr ""
+msgstr "UUID ບໍ່ຖືກຕ້ອງ! ກະລຸນາວາງລະຫັດທີ່ຖືກຕ້ອງ ຫຼື ໃຊ້ລະຫັດທີ່ລະບົບສຸ່ມໃຫ້."
 
 #: src/plm/core/ui/action/HelpMe.java:69
 msgid "Please ask here your question for the teacher:"
-msgstr ""
+msgstr "ກະລຸນາຂຽນຄຳຖາມຂອງທ່ານຫາຄູຢູ່ນີ້:"
 
 #: src/plm/core/ui/action/HelpMe.java:70
 msgid "Call for help"
-msgstr ""
+msgstr "ຮ້ອງຂໍຄວາມຊ່ວຍເຫຼືອ"
 
 #: src/plm/core/ui/action/HelpMe.java:136
 #: src/plm/core/ui/action/HelpMe.java:143
 msgid "Cancel call"
-msgstr ""
+msgstr "ຍົກເລີກການຮ້ອງຂໍ"
 
 #: src/plm/core/ui/action/HelpMe.java:136
 #: src/plm/core/ui/action/HelpMe.java:143
 msgid "Call for Help"
-msgstr ""
+msgstr "ຮ້ອງຂໍຄວາມຊ່ວຍເຫຼືອ"
 
 #: src/plm/core/ui/action/PlayDemo.java:27
 msgid "Run the demo of what you should code for this exercise"
-msgstr ""
+msgstr "ເບິ່ງຕົວຢ່າງຂອງສິ່ງທີ່ເຈົ້າຄວນຂຽນລະຫັດໃນບົດຝຶກຫັດນີ້"
 
 #: src/plm/core/ui/action/PlayDemo.java:28
 msgid "Impossible to run the demo right now"
-msgstr ""
+msgstr "ບໍ່ສາມາດເປີດຕົວຢ່າງໄດ້ໃນເວລານີ້"
 
 #: src/plm/core/ui/action/QuitGame.java:29
 msgid "Quit the application"
-msgstr ""
+msgstr "ອອກຈາກແອັບພລິເຄຊັນ"
 
 #: src/plm/core/ui/action/QuitGame.java:29
 msgid "Impossible to quit the application right now"
-msgstr ""
+msgstr "ບໍ່ສາມາດອອກຈາກແອັບພລິເຄຊັນໄດ້ໃນເວລານີ້"
 
 #: src/plm/core/ui/action/RemoveUser.java:27
 msgid ""
 "<html>Please choose from the drop-down menu the user you want to remove.</"
 "html>"
-msgstr ""
+msgstr "<html>ກະລຸນາເລືອກຜູ້ໃຊ້ທີ່ທ່ານຕ້ອງການລຶບຈາກລາຍການ.</html>"
 
 #: src/plm/core/ui/action/RemoveUser.java:35
 #, java-format
@@ -1748,53 +1897,58 @@ msgid ""
 "full UUID (something like 110E8400-E29B-11D4-A716-446655440000).\n"
 "Are you sure that you want to delete the user {0}?"
 msgstr ""
+"ຜູ້ໃຊ້ທີ່ຖືກລຶບຈະຫາຍໄປຖາວອນ ຖ້າທ່ານບໍ່ຮູ້ລະຫັດ \n"
+"UUID ເຕັມ (ຕົວຢ່າງ: 110E8400-E29B-11D4-A716-446655440000).\n"
+"ທ່ານແນ່ໃຈຫຼືບໍ່ວ່າຕ້ອງການລຶບຜູ້ໃຊ້ {0}?"
 
 #: src/plm/core/ui/action/RemoveUser.java:38
 msgid "Confirm user deletion"
-msgstr ""
+msgstr "ຢືນຢັນການລຶບຜູ້ໃຊ້"
 
 #: src/plm/core/ui/action/RemoveUser.java:41
 #, java-format
 msgid "User {0} successfully deleted"
-msgstr ""
+msgstr "ລຶບຜູ້ໃຊ້ {0} ສຳເລັດແລ້ວ"
 
 #: src/plm/core/ui/action/RemoveUser.java:44
 msgid "Sorry, you can't delete the current user."
-msgstr ""
+msgstr "ຂໍໂທດ, ທ່ານບໍ່ສາມາດລຶບຜູ້ໃຊ້ທີ່ກຳລັງໃຊ້ງານຢູ່ໄດ້."
 
 #: src/plm/core/ui/action/RemoveUser.java:44
 msgid "Try again"
-msgstr ""
+msgstr "ລອງໃໝ່"
 
 #: src/plm/core/ui/action/Reset.java:29
 msgid "Reset your world to the initial state"
-msgstr ""
+msgstr "ຕັ້ງຄ່າໂລກຄືນໃໝ່ເປັນສະຖານະເລີ່ມຕົ້ນ"
 
 #: src/plm/core/ui/action/Reset.java:29
 msgid "World cannot be reset right now"
-msgstr ""
+msgstr "ບໍ່ສາມາດຕັ້ງຄ່າໂລກໃໝ່ໄດ້ໃນເວລານີ້"
 
 #: src/plm/core/ui/action/RevertExercise.java:20
 msgid "OK"
-msgstr ""
+msgstr "ຕົກລົງ"
 
 #: src/plm/core/ui/action/RevertExercise.java:23
 msgid ""
 "Reverting this exercise will erase all your work and cannot be undone.\n"
 " Are you sure that you want to proceed?"
 msgstr ""
+"ການລ້າງບົດຝຶກຫັດໃໝ່ຈະລຶບວຽກທັງໝົດຂອງທ່ານ ແລະ ບໍ່ສາມາດກູ້ຄືນໄດ້.\n"
+" ທ່ານແນ່ໃຈຫຼືບໍ່ວ່າຕ້ອງການໄປຕໍ່?"
 
 #: src/plm/core/ui/action/RevertExercise.java:24
 msgid "Warning"
-msgstr ""
+msgstr "ຄຳເຕືອນ"
 
 #: src/plm/core/ui/action/RevertExercise.java:28
 msgid "Revert canceled on user request -- your work was preserved."
-msgstr ""
+msgstr "ການລ້າງຂໍ້ມູນຖືກຍົກເລີກຕາມຄຳຂໍ -- ວຽກຂອງທ່ານຍັງຄືເກົ່າ."
 
 #: src/plm/core/ui/action/RevertExercise.java:39
 msgid "Exercise reverted"
-msgstr ""
+msgstr "ລ້າງບົດຝຶກຫັດໃໝ່ສຳເລັດແລ້ວ"
 
 #: src/plm/core/ui/action/StartExecution.java:32
 msgid ""
@@ -1809,108 +1963,108 @@ msgstr ""
 
 #: src/plm/core/ui/action/StartExecution.java:37
 msgid "Do you want to store your data online?"
-msgstr ""
+msgstr "ທ່ານຕ້ອງການເກັບຂໍ້ມູນຂອງທ່ານທາງອອນລາຍຫຼືບໍ່?"
 
 #: src/plm/core/ui/action/StartExecution.java:38
 msgid "Ok, save my data online"
-msgstr ""
+msgstr "ຕົກລົງ, ບັນທຶກຂໍ້ມູນອອນລາຍ"
 
 #: src/plm/core/ui/action/StartExecution.java:38
 msgid "No, keep everything local"
-msgstr ""
+msgstr "ບໍ່, ເກັບໄວ້ໃນເຄື່ອງເທົ່ານັ້ນ"
 
 #: src/plm/core/ui/action/StartExecution.java:38
 msgid "Let me decide later"
-msgstr ""
+msgstr "ໃຫ້ຂ້ອຍຕັດສິນໃຈເທື່ອໜ້າ"
 
 #: src/plm/core/ui/action/StartExecution.java:65
 msgid "Launch the execution of your code"
-msgstr ""
+msgstr "ເລີ່ມປະມວນຜົນລະຫັດຂອງທ່ານ"
 
 #: src/plm/core/ui/action/StartExecution.java:66
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
 "activity with the Stop button."
-msgstr ""
+msgstr "ບໍ່ສາມາດເລີ່ມປະມວນຜົນໄດ້ໃນເວລານີ້. ກະລຸນາລໍຖ້າບຶດໜຶ່ງ ຫຼື ກົດປຸ່ມຢຸດ."
 
 #: src/plm/core/ui/action/StepExecution.java:22
 msgid "Execute one step of your code"
-msgstr ""
+msgstr "ປະມວນຜົນລະຫັດເທື່ອລະຂັ້ນ"
 
 #: src/plm/core/ui/action/StepExecution.java:23
 msgid "Impossible to step your code now. Need to stop the execution first?"
-msgstr ""
+msgstr "ບໍ່ສາມາດເຮັດເທື່ອລະຂັ້ນໄດ້ໃນເວລານີ້. ຕ້ອງຢຸດການປະມວນຜົນກ່ອນຫຼືບໍ່?"
 
 #: src/plm/core/ui/action/StopExecution.java:22
 msgid "Stop your code"
-msgstr ""
+msgstr "ຢຸດການເຮັດວຽກຂອງລະຫັດ"
 
 #: src/plm/core/ui/action/StopExecution.java:23
 msgid "No execution to stop right now"
-msgstr ""
+msgstr "ບໍ່ມີການປະມວນຜົນໃດໆທີ່ຕ້ອງຢຸດ"
 
 #: src/plm/core/ui/action/SwitchExo.java:29
 msgid "Switch to another exercise"
-msgstr ""
+msgstr "ປ່ຽນໄປບົດຝຶກຫັດອື່ນ"
 
 #: src/plm/core/ui/action/SwitchUser.java:29
 msgid "Please choose the user you want to use"
-msgstr ""
+msgstr "ກະລຸນາເລືອກຜູ້ໃຊ້ທີ່ທ່ານຕ້ອງການໃຊ້"
 
 #: src/plm/core/ui/action/SwitchUser.java:37
 #, java-format
 msgid "User {0} already selected."
-msgstr ""
+msgstr "ເລືອກຜູ້ໃຊ້ {0} ແລ້ວ."
 
 #: src/plm/core/ui/action/SwitchUser.java:41
 #, java-format
 msgid "User {0} now selected."
-msgstr ""
+msgstr "ປ່ຽນມາໃຊ້ຜູ້ໃຊ້ {0} ແລ້ວ."
 
 #: src/plm/core/ui/action/SwitchUser.java:43
 msgid "Operation canceled by user request"
-msgstr ""
+msgstr "ການເຮັດວຽກຖືກຍົກເລີກຕາມຄຳຂໍຂອງຜູ້ໃຊ້"
 
 #: src/plm/core/ui/action/SwitchUser.java:44
 msgid "Operation canceled as requested by user."
-msgstr ""
+msgstr "ຍົກເລີກການເຮັດວຽກຕາມທີ່ຜູ້ໃຊ້ຮ້ອງຂໍ."
 
 #: src/plm/core/ui/editor/MissionEditor.java:54
 msgid "PLM - Mission Editor (modified)"
-msgstr ""
+msgstr "PLM - ຕົວແກ້ໄຂພາລະກິດ (ມີການປ່ຽນແປງ)"
 
 #: src/plm/core/ui/editor/MissionEditor.java:55
 msgid "PLM - Mission Editor"
-msgstr ""
+msgstr "PLM - ຕົວແກ້ໄຂພາລະກິດ"
 
 #: src/plm/core/ui/editor/MissionEditor.java:253
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:254
 #, java-format
 msgid "Error while reading {0}"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດຂະນະອ່ານ {0}"
 
 #: src/plm/core/ui/editor/MissionEditor.java:260
 msgid "You did not save you changes. Do you want to save it before quiting?"
-msgstr ""
+msgstr "ທ່ານຍັງບໍ່ໄດ້ບັນທຶກການປ່ຽນແປງ. ຕ້ອງການບັນທຶກກ່ອນປິດຫຼືບໍ່?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:261
 #: src/plm/core/ui/editor/MissionEditor.java:380
 msgid "Save or loose your change?"
-msgstr ""
+msgstr "ບັນທຶກ ຫຼື ຍອມເສຍຂໍ້ມູນ?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:372
 msgid "Open Mission..."
-msgstr ""
+msgstr "ເປີດພາລະກິດ..."
 
 #: src/plm/core/ui/editor/MissionEditor.java:379
 msgid ""
 "You did not save you changes. Do you want to save it before opening another "
 "file?"
-msgstr ""
+msgstr "ທ່ານຍັງບໍ່ໄດ້ບັນທຶກການປ່ຽນແປງ. ຕ້ອງການບັນທຶກກ່ອນເປີດໄຟລ໌ອື່ນຫຼືບໍ່?"
 
 #: src/plm/core/ui/editor/MissionEditor.java:397
 msgid "HTML files"
-msgstr ""
+msgstr "ໄຟລ໌ HTML"
 
 #: src/plm/core/ui/editor/MissionEditor.java:405
 #, java-format
@@ -1925,181 +2079,183 @@ msgstr ""
 
 #: src/plm/core/ui/editor/MissionEditor.java:409
 msgid "This is a translated mission text"
-msgstr ""
+msgstr "ນີ້ແມ່ນຂໍ້ຄວາມພາລະກິດທີ່ຖືກແປແລ້ວ"
 
 #: src/plm/core/ui/editor/MissionEditor.java:426
 msgid "Quit Map Editor"
-msgstr ""
+msgstr "ອອກຈາກຕົວແກ້ໄຂແຜນທີ່"
 
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:188
 msgid "Create New Map"
-msgstr ""
+msgstr "ສ້າງແຜນທີ່ໃໝ່"
 
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:240
 msgid "Open Map..."
-msgstr ""
+msgstr "ເປີດແຜນທີ່..."
 
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:246
 msgid "PLM map files"
-msgstr ""
+msgstr "ໄຟລ໌ແຜນທີ່ PLM"
 
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:57
 msgid "Property"
-msgstr ""
+msgstr "ຄຸນສົມບັດ"
 
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:57
 msgid "Value"
-msgstr ""
+msgstr "ຄ່າ"
 
 #. The editor for the name
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:71
 msgid "World name"
-msgstr ""
+msgstr "ຊື່ໂລກ"
 
 #. ---------- world width ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:83
 msgid "World width"
-msgstr ""
+msgstr "ຄວາມກວ້າງຂອງໂລກ"
 
 #. ---------- world height ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:103
 msgid "World height"
-msgstr ""
+msgstr "ຄວາມສູງຂອງໂລກ"
 
 #. ---------- selected cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:123
 msgid "Selected cell X"
-msgstr ""
+msgstr "ຫ້ອງ X ທີ່ເລືອກ"
 
 #. ---------- selected cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:145
 msgid "Selected cell Y"
-msgstr ""
+msgstr "ຫ້ອງ Y ທີ່ເລືອກ"
 
 #. ---------- Ground color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:166
 msgid "Ground color (name or r/g/b)"
-msgstr ""
+msgstr "ສີພື້ນ (ຊື່ ຫຼື r/g/b)"
 
 #. ---------- top wall cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:183
 msgid "Top wall?"
-msgstr ""
+msgstr "ມີກຳແພງເທິງ?"
 
 #. ---------- left wall cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:205
 msgid "Left wall?"
-msgstr ""
+msgstr "ມີກຳແພງຊ້າຍ?"
 
 #. ---------- have baggle ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:227
 msgid "Baggle?"
-msgstr ""
+msgstr "ມີບັກເກີລ (Baggle)?"
 
 #. ---------- Buggle name ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:258
 msgid "Buggle name"
-msgstr ""
+msgstr "ຊື່ບັກເກີລ"
 
 #. ---------- Buggle direction ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:269
 msgid "Buggle direction (N|S|E|W)"
-msgstr ""
+msgstr "ທິດທາງບັກເກີລ (N|S|E|W)"
 
 #. ---------- Buggle color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:298
 msgid "Buggle color (name or r/g/b)"
-msgstr ""
+msgstr "ສີບັກເກີລ (ຊື່ ຫຼື r/g/b)"
 
 #. ---------- Buggle color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:314
 msgid "Brush color (name or r/g/b)"
-msgstr ""
+msgstr "ສີແປງ (ຊື່ ຫຼື r/g/b)"
 
 #: src/plm/core/utils/ColorMapper.java:59
 msgid "black"
-msgstr ""
+msgstr "ດຳ"
 
 #: src/plm/core/utils/ColorMapper.java:60
 msgid "blue"
-msgstr ""
+msgstr "ຟ້າ"
 
 #: src/plm/core/utils/ColorMapper.java:61
 msgid "cyan"
-msgstr ""
+msgstr "ຟ້າອ່ອນ (cyan)"
 
 #: src/plm/core/utils/ColorMapper.java:62
 msgid "dark grey"
-msgstr ""
+msgstr "ເທົາເຂັ້ມ"
 
 #: src/plm/core/utils/ColorMapper.java:63
 msgid "grey"
-msgstr ""
+msgstr "ເທົາ"
 
 #: src/plm/core/utils/ColorMapper.java:64
 msgid "green"
-msgstr ""
+msgstr "ຂຽວ"
 
 #: src/plm/core/utils/ColorMapper.java:65
 msgid "light grey"
-msgstr ""
+msgstr "ເທົາອ່ອນ"
 
 #: src/plm/core/utils/ColorMapper.java:66
 msgid "magenta"
-msgstr ""
+msgstr "ບົວເຂັ້ມ (magenta)"
 
 #: src/plm/core/utils/ColorMapper.java:67
 msgid "orange"
-msgstr ""
+msgstr "ສົ້ມ"
 
 #: src/plm/core/utils/ColorMapper.java:68
 msgid "pink"
-msgstr ""
+msgstr "ບົວ"
 
 #: src/plm/core/utils/ColorMapper.java:69
 msgid "red"
-msgstr ""
+msgstr "ແດງ"
 
 #: src/plm/core/utils/ColorMapper.java:70
 msgid "white"
-msgstr ""
+msgstr "ຂາວ"
 
 #: src/plm/core/utils/ColorMapper.java:71
 msgid "yellow"
-msgstr ""
+msgstr "ເຫຼືອງ"
 
 #: src/plm/universe/Direction.java:59
 msgid "NORTH"
-msgstr ""
+msgstr "ເໜືອ"
 
 #: src/plm/universe/Direction.java:61
 msgid "EAST"
-msgstr ""
+msgstr "ຕາເວັນອອກ"
 
 #: src/plm/universe/Direction.java:63
 msgid "SOUTH"
-msgstr ""
+msgstr "ໃຕ້"
 
 #: src/plm/universe/Direction.java:65
 msgid "WEST"
-msgstr ""
+msgstr "ຕາເວັນຕົກ"
 
 #: src/plm/universe/bat/BatEntity.java:38
 #, java-format
 msgid "Exception {0}: {1}"
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດ {0}: {1}"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:95
 msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ໃຊ້ penDown() ຢູ່ນີ້ບໍ່ໄດ້. ບັກເກີລມີແປງ ບໍ່ແມ່ນບິກ. ໃຫ້ໃຊ້ brushDown() ແທນ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:99
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ໃຊ້ penUp() ຢູ່ນີ້ບໍ່ໄດ້. ບັກເກີລມີແປງ ບໍ່ແມ່ນບິກ. ໃຫ້ໃຊ້ brushUp() ແທນ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:175
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2107,7 +2263,7 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
 "instead."
-msgstr ""
+msgstr "ຂໍໂທດເດີ ເດຟ, ໃຊ້ Left() ຕົວໃຫຍ່ບໍ່ໄດ້. ໃຫ້ໃຊ້ left() ແທນ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:178
 #: src/plm/universe/bugglequest/SimpleBuggle.java:36
@@ -2115,94 +2271,94 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
 "instead."
-msgstr ""
+msgstr "ຂໍໂທດເດີ ເດຟ, ໃຊ້ Right() ຕົວໃຫຍ່ບໍ່ໄດ້. ໃຫ້ໃຊ້ right() ແທນ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:198
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
-msgstr ""
+msgstr "ເຈົ້າພະຍາຍາມເຂົ້າເຖິງຫ້ອງ Y={0}, ແຕ່ຄ່າ Y ສູງສຸດໃນໂລກນີ້ແມ່ນ {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:200
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
-msgstr ""
+msgstr "ເຈົ້າພະຍາຍາມເຂົ້າເຖິງຫ້ອງ X={0}, ແຕ່ຄ່າ X ສູງສຸດໃນໂລກນີ້ແມ່ນ {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:219
 #: src/plm/universe/bugglequest/AbstractBuggle.java:255
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
-msgstr ""
+msgstr "ເຈົ້າພະຍາຍາມຕັ້ງຄ່າ X ເປັນ {0}, ແຕ່ຄ່າ X ສູງສຸດແມ່ນ {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:238
 #: src/plm/universe/bugglequest/AbstractBuggle.java:253
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
-msgstr ""
+msgstr "ເຈົ້າພະຍາຍາມຕັ້ງຄ່າ Y ເປັນ {0}, ແຕ່ຄ່າ Y ສູງສຸດແມ່ນ {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:372
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:129
 msgid "There is no baggle to pick up here."
-msgstr ""
+msgstr "ບໍ່ມີບັກເກີລ (baggle) ໃຫ້ເກັບຢູ່ນີ້."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:374
 msgid "You are already carrying a baggle."
-msgstr ""
+msgstr "ເຈົ້າກຳລັງຖືບັກເກີລຢູ່ແລ້ວ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:465
 msgid "Its value is 'null', which is never good."
-msgstr ""
+msgstr "ຄ່າຂອງມັນແມ່ນ 'null', ເຊິ່ງບໍ່ດີແນ່ນອນ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:472
 msgid "    It should not carry that baggle.\n"
-msgstr ""
+msgstr "    ມັນບໍ່ຄວນຖືບັກເກີລອັນນັ້ນ.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:474
 msgid "    It is not carrying any baggle.\n"
-msgstr ""
+msgstr "    ມັນບໍ່ໄດ້ຖືບັກເກີລໃດໆເລີຍ.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:478
 #, java-format
 msgid "    Unexpected issue: {0}\n"
-msgstr ""
+msgstr "    ບັນຫາທີ່ບໍ່ຄາດຄິດ: {0}\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:480
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
-msgstr ""
+msgstr "    ມັນພົບກັບບັນຫາທີ່ບໍ່ຄາດຄິດ (ເຊັ່ນ ຍ່າງຕຳກຳແພງ).\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:484
 #, java-format
 msgid "    It did not encounter the expected issue: {0}\n"
-msgstr ""
+msgstr "    ມັນບໍ່ພົບບັນຫາທີ່ຄາດໄວ້: {0}\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:486
 msgid ""
 "    It did not encounter an issue as expected (such as bumping into a "
 "wall).\n"
-msgstr ""
+msgstr "    ມັນບໍ່ພົບບັນຫາຕາມທີ່ຄາດໄວ້ (ເຊັ່ນ ຄວນຈະຍ່າງຕຳກຳແພງ).\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:491
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
-msgstr ""
+msgstr "    ຕຳແໜ່ງຂອງມັນແມ່ນ ({0},{1}); ແຕ່ທີ່ຖືກຕ້ອງແມ່ນ: ({2},{3}).\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:493
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    ທິດທາງຂອງມັນແມ່ນ {0}; ແຕ່ທີ່ຖືກຕ້ອງແມ່ນ: {1}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:495
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    ສີຂອງມັນແມ່ນ {0}; ແຕ່ທີ່ຖືກຕ້ອງແມ່ນ: {1}.\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:497
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    ສີແປງຂອງມັນແມ່ນ {0}; ແຕ່ທີ່ຖືກຕ້ອງແມ່ນ: {1}.\n"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:122
 #, java-format
@@ -2216,7 +2372,7 @@ msgstr ""
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty)."
-msgstr ""
+msgstr "{0}.map: ໄຟລ໌ນີ້ເບິ່ງຄືວ່າບໍ່ແມ່ນ BuggleWorld (ໄຟລ໌ຫວ່າງເປົ່າ)."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:136
 #, java-format
@@ -2228,53 +2384,53 @@ msgstr ""
 #: src/plm/universe/bugglequest/BuggleWorld.java:142
 #, java-format
 msgid "{0}.map: End of file reached before world size specification."
-msgstr ""
+msgstr "{0}.map: ສິ້ນສຸດໄຟລ໌ກ່ອນທີ່ຈະພົບການກຳນົດຂະໜາດໂລກ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:147
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''."
-msgstr ""
+msgstr "{0}.map:1: ຕ້ອງການ ''Size: NNxMM'' ແຕ່ພົບ ''{0}''."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:173
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world."
-msgstr ""
+msgstr "ບໍ່ສາມາດວາງບັກເກີລໄວ້ທີ່ {0},{1}: ມັນຢູ່ນອກຂອບເຂດໂລກ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:187
 #, java-format
 msgid "Invalid buggle''s direction: {0}"
-msgstr ""
+msgstr "ທິດທາງຂອງບັກເກີລບໍ່ຖືກຕ້ອງ: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:194
 #: src/plm/universe/bugglequest/BuggleWorld.java:201
 #, java-format
 msgid "Invalid buggle''s color name: {0}"
-msgstr ""
+msgstr "ຊື່ສີຂອງບັກເກີລບໍ່ຖືກຕ້ອງ: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:218
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world."
-msgstr ""
+msgstr "ບໍ່ສາມາດກຳນົດຫ້ອງທີ່ {0},{1}: ມັນຢູ່ນອກຂອບເຂດໂລກ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:231
 #, java-format
 msgid "Invalid color name: {0}"
-msgstr ""
+msgstr "ຊື່ສີບໍ່ຖືກຕ້ອງ: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead."
-msgstr ""
+msgstr "ຕ້ອງການ ''baggle'' ຫຼື ''nobaggle'' ແຕ່ພົບ {0} ແທນ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:241
 #, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead."
-msgstr ""
+msgstr "ຕ້ອງການ ''topwall'' ຫຼື ''notopwall'' ແຕ່ພົບ {0} ແທນ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:245
 #, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead."
-msgstr ""
+msgstr "ຕ້ອງການ ''leftwall'' ຫຼື ''noleftwall'' ແຕ່ພົບ {0} ແທນ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:255
 #, java-format
@@ -2287,279 +2443,281 @@ msgstr ""
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດໃນການອ່ານ. ຕ້ອງການຂໍ້ມູນຫ້ອງ ຫຼື ບັກເກີລ ແຕ່ພົບ: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:576
 #, java-format
 msgid "  The world''s name is {0}"
-msgstr ""
+msgstr "  ໂລກນີ້ຊື່ວ່າ {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:578
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
-msgstr ""
+msgstr "  ມີຕົວລະຄອນ {0} ຕົວ ແຕ່ຕ້ອງການ {1} ຕົວ."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:582
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
-msgstr ""
+msgstr "  ມີບາງຢ່າງຜິດປົກກະຕິກັບບັກເກີລ ''{0}'':\n"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:588
 #, java-format
 msgid "  In ({0},{1})"
-msgstr ""
+msgstr "  ທີ່ ({0},{1})"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:122
 msgid "There is already a baggle here."
-msgstr ""
+msgstr "ມີບັກເກີລ (baggle) ຢູ່ບ່ອນນີ້ແລ້ວ."
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:202
 msgid ", there shouldn't be this baggle"
-msgstr ""
+msgstr ", ບໍ່ຄວນມີບັກເກີລນີ້ຢູ່ນີ້"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:204
 msgid ", there should be a baggle"
-msgstr ""
+msgstr ", ຄວນຈະມີບັກເກີລຢູ່ນີ້"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:207
 #, java-format
 msgid ", the ground should not be {0}"
-msgstr ""
+msgstr ", ພື້ນບໍ່ຄວນເປັນສີ {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:209
 #, java-format
 msgid ", the ground is expected to be {0}, but it is {1}"
-msgstr ""
+msgstr ", ພື້ນຄວນຈະເປັນສີ {0}, ແຕ່ພົບວ່າເປັນສີ {1}"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:213
 #, java-format
 msgid ", the ground reads ''{0}'' (expected: ''{1}'')"
-msgstr ""
+msgstr ", ພື້ນສະແດງເປັນ ''{0}'' (ແຕ່ທີ່ຖືກຕ້ອງແມ່ນ: ''{1}'')"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:216
 msgid ", there shouldn't be any wall at west"
-msgstr ""
+msgstr ", ບໍ່ຄວນມີກຳແພງຢູ່ທາງທິດຕາເວັນຕົກ"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:218
 msgid ", there should be a wall at west"
-msgstr ""
+msgstr ", ຄວນມີກຳແພງຢູ່ທາງທິດຕາເວັນຕົກ"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:221
 msgid ", there shouldn't be any wall at north"
-msgstr ""
+msgstr ", ບໍ່ຄວນມີກຳແພງຢູ່ທາງທິດເໜືອ"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:223
 msgid ", there should be a wall at north"
-msgstr ""
+msgstr ", ຄວນມີກຳແພງຢູ່ທາງທິດເໜືອ"
 
 #: src/plm/universe/bugglequest/exception/BuggleWallException.java:10
 msgid "Buggles cannot traverse walls"
-msgstr ""
+msgstr "ບັກເກີລ (Buggle) ຍ່າງທະລຸກຳແພງບໍ່ໄດ້"
 
 #: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:10
 msgid "You have no baggle to drop"
-msgstr ""
+msgstr "ເຈົ້າບໍ່ມີບັກເກີລ (baggle) ໃຫ້ວາງ"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:59
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:232
 msgid "forward"
-msgstr ""
+msgstr "ໄປໜ້າ"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:64
 msgid "forward()"
-msgstr ""
+msgstr "ໄປໜ້າ()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:75
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:231
 msgid "backward"
-msgstr ""
+msgstr "ຖອຍຫຼັງ"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:80
 msgid "backward()"
-msgstr ""
+msgstr "ຖອຍຫຼັງ()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:91
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:233
 msgid "left"
-msgstr ""
+msgstr "ຊ້າຍ"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:95
 msgid "left()"
-msgstr ""
+msgstr "ຊ້າຍ()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:101
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:234
 msgid "right"
-msgstr ""
+msgstr "ຂວາ"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:105
 msgid "right()"
-msgstr ""
+msgstr "ຂວາ()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:111
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:235
 msgid "mark"
-msgstr ""
+msgstr "ໝາຍໄວ້"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:117
 msgid "brushUp()"
-msgstr ""
+msgstr "ຍົກແປງຂຶ້ນ()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:120
 msgid "brushDown()"
-msgstr ""
+msgstr "ວາງແປງລົງ()"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:146
 #, java-format
 msgid "setBrushColor(Color.{0})"
-msgstr ""
+msgstr "ກຳນົດສີແປງ(ສີ.{0})"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:222
 msgid "Wall hugging error"
-msgstr ""
+msgstr "ຂໍ້ຜິດພາດການຕຳກຳແພງ"
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:223
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
-msgstr ""
+msgstr "ບັກເກີລຂອງເຈົ້າຕຳກຳແພງ, ມັນເຈັບຫຼາຍໃດ໋ນັ້ນ! ='("
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:236
 msgid "Brush Color"
-msgstr ""
+msgstr "ສີແປງ"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:59
 msgid "go"
-msgstr ""
+msgstr "ເລີ່ມ"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:74
 #, java-format
 msgid "setValue({0},{1})"
-msgstr ""
+msgstr "ກຳນົດຄ່າ({0},{1})"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:78
 #, java-format
 msgid "copy({0},{1})"
-msgstr ""
+msgstr "ກັອບປີ້({0},{1})"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "swap"
-msgstr ""
+msgstr "ສະລັບ"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "setValue"
-msgstr ""
+msgstr "ກຳນົດຄ່າ"
 
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
-msgstr ""
+msgstr "ກັອບປີ້"
 
 #: src/plm/universe/sort/SortingWorld.java:116
 #, java-format
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
-msgstr ""
+msgstr "ແປກຫຼາຍ: ຈຳນວນຄ່າບໍ່ເທົ່າກັນ! ຕ້ອງການ: {0}; ແຕ່ພົບ: {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:119
 #, java-format
 msgid "Invalid read count. Expected: {0}; Found: {1}\n"
-msgstr ""
+msgstr "ຈຳນວນການອ່ານບໍ່ຖືກຕ້ອງ. ຕ້ອງການ: {0}; ແຕ່ພົບ: {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:122
 #, java-format
 msgid "Invalid write count. Expected: {0}; Found: {1}\n"
-msgstr ""
+msgstr "ຈຳນວນການຂຽນບໍ່ຖືກຕ້ອງ. ຕ້ອງການ: {0}; ແຕ່ພົບ: {1}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:126
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
-msgstr ""
+msgstr "ຄ່າທີ່ຕຳແໜ່ງ (index) {0} ແຕກຕ່າງກັນ. ຕ້ອງການ {1}; ແຕ່ພົບ {2}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:368
 #: src/plm/universe/sort/SortingWorld.java:369
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
-msgstr ""
+msgstr "ນອກຂອບເຂດໃນການສະລັບ swap({0},{1}): {2}<0"
 
 #: src/plm/universe/sort/SortingWorld.java:370
 #: src/plm/universe/sort/SortingWorld.java:371
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
-msgstr ""
+msgstr "ນອກຂອບເຂດໃນການສະລັບ swap({0},{1}): {2}>ຈຳນວນຄ່າ"
 
 #: src/plm/universe/turtles/Line.java:109
 msgid "x1 differs."
-msgstr ""
+msgstr "x1 ແຕກຕ່າງກັນ."
 
 #: src/plm/universe/turtles/Line.java:111
 msgid "x2 differs."
-msgstr ""
+msgstr "x2 ແຕກຕ່າງກັນ."
 
 #: src/plm/universe/turtles/Line.java:113
 msgid "y1 differs."
-msgstr ""
+msgstr "y1 ແຕກຕ່າງກັນ."
 
 #: src/plm/universe/turtles/Line.java:115
 msgid "y2 differs."
-msgstr ""
+msgstr "y2 ແຕກຕ່າງກັນ."
 
 #: src/plm/universe/turtles/Line.java:117
 msgid "The color differs."
-msgstr ""
+msgstr "ສີແຕກຕ່າງກັນ."
 
 #: src/plm/universe/turtles/Line.java:118
 msgid "I dont see the difference (please report this bug)."
-msgstr ""
+msgstr "ຂ້ອຍບໍ່ເຫັນຄວາມແຕກຕ່າງ (ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້)."
 
 #: src/plm/universe/turtles/Line.java:120
 msgid "That's not a line (please report this bug)."
-msgstr ""
+msgstr "ນັ້ນບໍ່ແມ່ນເສັ້ນຊື່ (ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້)."
 
 #: src/plm/universe/turtles/Turtle.java:224
 msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ໃຊ້ brushDown() ຢູ່ນີ້ບໍ່ໄດ້. ເຕົ່າມີບິກ ບໍ່ແມ່ນແປງ. ໃຫ້ໃຊ້ penDown() ແທນ."
 
 #: src/plm/universe/turtles/Turtle.java:228
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
 msgstr ""
+"ຂໍໂທດເດີ ເດຟ, ໃຊ້ brushUp() ຢູ່ນີ້ບໍ່ໄດ້. ເຕົ່າມີບິກ ບໍ່ແມ່ນແປງ. ໃຫ້ໃຊ້ penUp() ແທນ."
 
 #: src/plm/universe/turtles/Turtle.java:409
 #, java-format
 msgid "The turtle {0} is not heading to the right direction."
-msgstr ""
+msgstr "ເຕົ່າ {0} ບໍ່ໄດ້ຫັນໄປຫາທິດທາງທີ່ຖືກຕ້ອງ."
 
 #: src/plm/universe/turtles/Turtle.java:411
 #, java-format
 msgid "The turtle {0} is at the right location."
-msgstr ""
+msgstr "ເຕົ່າ {0} ຢູ່ຕຳແໜ່ງທີ່ຖືກຕ້ອງແລ້ວ."
 
 #: src/plm/universe/turtles/TurtleWorld.java:359
 #, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
-msgstr ""
+msgstr "  ມີຕົວລະຄອນ {0} ຕົວ, ແຕ່ຕ້ອງການ {1} ຕົວ\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:388
 #, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
-msgstr ""
+msgstr "  ມີຮູບຮ່າງ {0} ຮູບ, ແຕ່ຕ້ອງການພຽງແຕ່ {1} ຮູບ\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:390
 #, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
-msgstr ""
+msgstr "  ມີພຽງ {0} ຮູບຮ່າງ, ແຕ່ຕ້ອງການ {1} ຮູບຮ່າງ\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:417
 msgid "Superflous shapes in your solution:\n"
-msgstr ""
+msgstr "ມີຮູບຮ່າງເກີນມາໃນຄຳຕອບຂອງທ່ານ:\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:422
 msgid "Missing shapes in your solution:\n"
-msgstr ""
+msgstr "ຮູບຮ່າງທີ່ຂາດຫາຍໄປໃນຄຳຕອບຂອງທ່ານ:\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:433
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
-msgstr ""
+msgstr "  {0} (ພົບ {1} ແທນທີ່ຈະເປັນ {2})\n"
