@@ -659,9 +659,8 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "உங்கள் கணினியில் ச்கலா பயன்படுத்தக்கூடியது. வாழ்த்துக்கள்."
 
 #: src/plm/core/model/Game.java:164
-msgid "Please install Scala version 2.11 or higher to use it in the PLM."
-msgstr ""
-"பி.எல்.எம்மில் பயன்படுத்த ச்கலா பதிப்பு 2.11 அல்லது அதற்கு மேல் நிறுவவும்."
+msgid "Please install Scala version 2.12 or higher to use it in the PLM."
+msgstr "பி.எல்.எம்மில் பயன்படுத்த ச்கலா பதிப்பு 2.12 அல்லது அதற்கு மேல் நிறுவவும்."
 
 #: src/plm/core/model/Game.java:166
 msgid "Jython is usable on your machine. Congratulations."
@@ -737,8 +736,8 @@ msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr "ச்கலா பதிப்பை மீட்டெடுக்கும் போது பிழை {0}: {1}"
 
 #: src/plm/core/model/Game.java:244
-#, java-format
-msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
+#, fuzzy, java-format
+msgid "Scala is too ancient. Found {0} while I need 2.12 or higher."
 msgstr ""
 "ச்கலா மிகவும் பழமையானது. எனக்கு 2.10 அல்லது அதற்கு மேற்பட்டதாக இருக்கும்போது {0} "
 "காணப்பட்டது."
@@ -809,10 +808,10 @@ msgstr "விரிவுரை {0} நான் தேர்ந்தெடு
 
 #: src/plm/core/model/Game.java:1005
 msgid ""
-"Please install Scala version 2.11 or higher to use it in the PLM.\n"
+"Please install Scala version 2.12 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
-"பி.எல்.எம்மில் பயன்படுத்த ச்கலா பதிப்பு 2.11 அல்லது அதற்கு மேல் நிறுவவும்.\n"
+"பி.எல்.எம்மில் பயன்படுத்த ச்கலா பதிப்பு 2.12 அல்லது அதற்கு மேல் நிறுவவும்.\n"
 "\n"
 
 #: src/plm/core/model/Game.java:1006

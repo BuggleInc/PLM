@@ -56,9 +56,9 @@
 
     <taskdef resource="scala/tools/ant/antlib.xml">
       <classpath>
-        <pathelement location="${lib.dir}/scala/scala-compiler-2.11.12.jar" />
-        <pathelement location="${lib.dir}/scala/scala-library-2.11.12.jar" />
-        <pathelement location="${lib.dir}/scala/scala-reflect-2.11.12.jar" />
+        <pathelement location="${lib.dir}/scala/scala-compiler-2.12.20.jar" />
+        <pathelement location="${lib.dir}/scala/scala-library-2.12.20.jar" />
+        <pathelement location="${lib.dir}/scala/scala-reflect-2.12.20.jar" />
       </classpath>
     </taskdef>
 	
@@ -116,9 +116,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-4.2.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/tools-openjdk8.jar" />
                         
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.11.12.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.11.12.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-reflect-2.11.12.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-compiler-2.12.20.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-library-2.12.20.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/scala/scala-reflect-2.12.20.jar"/>
 
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime-3.2.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm-7.2.jar"/>

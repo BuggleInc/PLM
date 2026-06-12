@@ -672,9 +672,9 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala est utilisable sur votre machine. Félicitations."
 
 #: src/plm/core/model/Game.java:164
-msgid "Please install Scala version 2.11 or higher to use it in the PLM."
+msgid "Please install Scala version 2.12 or higher to use it in the PLM."
 msgstr ""
-"Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la "
+"Veuillez installer Scala version 2.12 ou supérieure pour l'utiliser dans la "
 "PLM."
 
 #: src/plm/core/model/Game.java:166
@@ -755,8 +755,8 @@ msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr "Erreur {0} lors de l''obtention du numéro de version de Scala : {1}"
 
 #: src/plm/core/model/Game.java:244
-#, java-format
-msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
+#, fuzzy, java-format
+msgid "Scala is too ancient. Found {0} while I need 2.12 or higher."
 msgstr ""
 "Scala est trop vieux. La PLM nécessite la version 2.10 ou supérieure, mais "
 "la version trouvée est : {0}."
@@ -828,10 +828,10 @@ msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
 #: src/plm/core/model/Game.java:1005
 msgid ""
-"Please install Scala version 2.11 or higher to use it in the PLM.\n"
+"Please install Scala version 2.12 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
-"Veuillez installer Scala version 2.11 ou supérieure pour l'utiliser dans la "
+"Veuillez installer Scala version 2.12 ou supérieure pour l'utiliser dans la "
 "PLM.\n"
 "\n"
 

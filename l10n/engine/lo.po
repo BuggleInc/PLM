@@ -614,8 +614,8 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala ສາມາດໃຊ້ງານໄດ້ໃນເຄື່ອງຂອງເຈົ້າ. ຍິນດີດ້ວຍ."
 
 #: src/plm/core/model/Game.java:164
-msgid "Please install Scala version 2.11 or higher to use it in the PLM."
-msgstr "ກະລຸນາຕິດຕັ້ງ Scala ເວີຊັນ 2.11 ຫຼື ສູງກວ່າເພື່ອໃຊ້ໃນ PLM."
+msgid "Please install Scala version 2.12 or higher to use it in the PLM."
+msgstr "ກະລຸນາຕິດຕັ້ງ Scala ເວີຊັນ 2.12 ຫຼື ສູງກວ່າເພື່ອໃຊ້ໃນ PLM."
 
 #: src/plm/core/model/Game.java:166
 msgid "Jython is usable on your machine. Congratulations."
@@ -685,8 +685,8 @@ msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr "ເກີດຂໍ້ຜິດພາດ {0} ຂະນະກວດສອບເວີຊັນຂອງ Scala: {1}"
 
 #: src/plm/core/model/Game.java:244
-#, java-format
-msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
+#, fuzzy, java-format
+msgid "Scala is too ancient. Found {0} while I need 2.12 or higher."
 msgstr "Scala ເກົ່າເກີນໄປ. ພົບເວີຊັນ {0} ແຕ່ຕ້ອງການ 2.10 ຫຼື ສູງກວ່າ."
 
 #: src/plm/core/model/Game.java:269
@@ -752,10 +752,10 @@ msgstr "ບົດບັນຍາຍ {0} ບໍ່ມີໂລກທີ່ສາ�
 
 #: src/plm/core/model/Game.java:1005
 msgid ""
-"Please install Scala version 2.11 or higher to use it in the PLM.\n"
+"Please install Scala version 2.12 or higher to use it in the PLM.\n"
 "\n"
 msgstr ""
-"ກະລຸນາຕິດຕັ້ງ Scala ເວີຊັນ 2.11 ຫຼື ສູງກວ່າເພື່ອໃຊ້ໃນ PLM.\n"
+"ກະລຸນາຕິດຕັ້ງ Scala ເວີຊັນ 2.12 ຫຼື ສູງກວ່າເພື່ອໃຊ້ໃນ PLM.\n"
 "\n"
 
 #: src/plm/core/model/Game.java:1006

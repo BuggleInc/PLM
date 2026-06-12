@@ -572,8 +572,8 @@ msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala能正常运行。"
 
 #: src/plm/core/model/Game.java:164
-msgid "Please install Scala version 2.11 or higher to use it in the PLM."
-msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
+msgid "Please install Scala version 2.12 or higher to use it in the PLM."
+msgstr "要使用PLM请按装Scala 2.12 或更高的版本"
 
 #: src/plm/core/model/Game.java:166
 msgid "Jython is usable on your machine. Congratulations."
@@ -636,7 +636,7 @@ msgstr ""
 
 #: src/plm/core/model/Game.java:244
 #, java-format
-msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
+msgid "Scala is too ancient. Found {0} while I need 2.12 or higher."
 msgstr ""
 
 #: src/plm/core/model/Game.java:269
@@ -698,9 +698,9 @@ msgstr ""
 #: src/plm/core/model/Game.java:1005
 #, fuzzy
 msgid ""
-"Please install Scala version 2.11 or higher to use it in the PLM.\n"
+"Please install Scala version 2.12 or higher to use it in the PLM.\n"
 "\n"
-msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
+msgstr "要使用PLM请按装Scala 2.12 或更高的版本"
 
 #: src/plm/core/model/Game.java:1006
 msgid "Scala is missing"

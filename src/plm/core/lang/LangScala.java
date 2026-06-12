@@ -25,7 +25,7 @@ import scala.tools.nsc.Global;
 import scala.tools.nsc.Global.Run;
 import scala.tools.nsc.Settings;
 import scala.tools.nsc.interpreter.AbstractFileClassLoader;
-import scala.tools.nsc.reporters.AbstractReporter;
+import scala.tools.nsc.reporters.FilteringReporter;
 
 public class LangScala extends JVMCompiledLang {
 
@@ -156,7 +156,7 @@ class ScalaCompiler {
 		}
 	}
 	
-	class PLMReporter extends AbstractReporter {
+	class PLMReporter extends FilteringReporter {
 		final static int INFO = 0;
 		final static int WARNING = 1;
 		final static int ERROR = 2;
@@ -175,10 +175,6 @@ class ScalaCompiler {
 		public Settings settings() {
 			return settings;
 		}
-		@Override
-		public void displayPrompt() { 
-			/* Don't do that, pal. */ 
-		}
 		private int severityRank(Severity s) {
 			String severityName = s.toString(); 
 			int severity = -1;
@@ -193,7 +189,7 @@ class ScalaCompiler {
 			return severity;
 		}
 		@Override
-		public void display(Position pos, String message, Severity _severity) {
+		public void doReport(Position pos, String message, Severity _severity) {
 			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
 
 			String label = "";
@@ -243,20 +239,6 @@ class ScalaCompiler {
 		public void reset() {
 			super.reset();
 			messages.removeAllElements();
-		}
-		
-		@Override
-		public int count(Object o) {
-			return counts[severityRank((Severity) o)];
-		}
-		@Override
-		public void resetCount(Object o) {
-			counts[severityRank((Severity) o)] = 0;
-		}
-		@Override
-		public void info0(Position pos, String msg, Object o, boolean force) {
-			Severity s = (Severity) o;
-			display(pos, msg, s);
 		}
 	}
 }
