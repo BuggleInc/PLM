@@ -546,7 +546,16 @@ final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
 				if (file.getKind() == Kind.CLASS && file.getName().startsWith(packageName))
 					files.add(file);
 			}
-			files.addAll(classLoader.files());
+			// Only return the compiled classes that actually live in the queried
+			// package. javac trusts that list(package=P) returns classes of P and
+			// derives their binary name as P + simpleName; returning every compiled
+			// class unconditionally made it mistake e.g. plm...SourceFile for
+			// scala.reflect.internal.util.SourceFile ("class file contains wrong
+			// class") and broke compilation.
+			for (JavaFileObject file : classLoader.files()) {
+				if (file.getName().startsWith(packageName))
+					files.add(file);
+			}
 		} else if (location == StandardLocation.SOURCE_PATH && kinds.contains(JavaFileObject.Kind.SOURCE)) {
 			for (JavaFileObject file : fileObjects.values()) {
 				if (file.getKind() == Kind.SOURCE && file.getName().startsWith(packageName))
