@@ -103,12 +103,17 @@ public class LessonRunner extends Thread {
 		runners.remove(this);
 	}
 
-	/** Stop all the threads that were already started. Harmful but who cares? */
-	@SuppressWarnings("deprecation")
+	/** Stop all the threads that were already started.
+	 *
+	 * Thread.stop() was used here historically, but it is deprecated for removal:
+	 * on recent JDKs its presence in this framework source -- which PLM recompiles
+	 * in process when running a Java exercise -- makes that compilation fail, so
+	 * no Java exercise can run. Replace it with Thread.interrupt(), a cooperative
+	 * request to stop. */
 	public void stopAll() {
 		while (runners.size()>0) {
 			Thread t = runners.remove(runners.size() - 1);
-			t.stop(); // harmful but who cares ?
+			t.interrupt();
 		}
 	}
 

@@ -104,6 +104,7 @@ public class GitUtils {
 		git.commit().setMessage("Empty initial commit")
 			.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 			.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+			.setSign(false) // never sign PLM's internal progress-tracking commits
 			.call();
 	}
 	
@@ -159,6 +160,7 @@ public class GitUtils {
 				git.commit().setMessage("Manual merging")
 				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+				.setSign(false) // never sign PLM's internal progress-tracking commits
 				.call();
 			}
 			else if(res.getMergeStatus() == MergeResult.MergeStatus.FAILED) {
@@ -339,6 +341,7 @@ public class GitUtils {
 		this.git.commit().setMessage(msg)
 		.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 		.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+		.setSign(false) // never sign PLM's internal progress-tracking commits
 		.call();
 	}
 
