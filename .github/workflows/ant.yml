@@ -34,6 +34,6 @@ jobs:
     - name: Build jarfile (Ant)
       run: ant -noinput -buildfile build.xml dist
     - name: Upload jar
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: dist/*.jar
