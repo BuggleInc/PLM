@@ -415,6 +415,13 @@
           </includes>
           <argLine>-Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+          <!-- Run each test class in its own JVM. PLM is full of singletons
+               (Game and its Swing listeners): the GUI smoke test registers a
+               MainFrame/ExerciseView as a Game listener that otherwise leaks
+               into the exercise tests and NPEs them, and the leak surfaced only
+               on Windows because the test order differs per OS. A fresh fork per
+               class isolates that state and makes the run order-independent. -->
+          <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
     </plugins>
