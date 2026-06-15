@@ -161,7 +161,7 @@ public class Game implements IWorldView {
 		if (checkScala())
 			System.err.println(i18n.tr("Scala is usable on your machine. Congratulations."));
 		else
-			System.err.println(i18n.tr("Please install Scala version 2.11 or higher to use it in the PLM."));
+			System.err.println(i18n.tr("Please install Scala version 2.12 or higher to use it in the PLM."));
 		if (checkPython())
 			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
 		else
@@ -237,11 +237,11 @@ public class Game implements IWorldView {
 			return canScala;
 		}
 
-		if (version.contains("version 2.10") || version.contains("version 2.11")) {
+		if (version.contains("version 2.12") || version.contains("version 2.13")) {
 			canScala = true;
 			return canScala;
 		} else {
-			scalaError = i18n.tr("Scala is too ancient. Found {0} while I need 2.10 or higher.",version);
+			scalaError = i18n.tr("Scala is too ancient. Found {0} while I need 2.12 or higher.",version);
 			System.err.println(scalaError);
 			return canScala;
 		}
@@ -1002,7 +1002,7 @@ public class Game implements IWorldView {
 		if (isValidProgLanguage(newLanguage)) {
 			//System.out.println("Switch programming language to "+newLanguage);
 			if (newLanguage.equals(Game.SCALA) && !canScala) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.11 or higher to use it in the PLM.\n\n")+scalaError ,
+				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.12 or higher to use it in the PLM.\n\n")+scalaError ,
 						i18n.tr("Scala is missing"), JOptionPane.ERROR_MESSAGE); 
 				return;
 			}

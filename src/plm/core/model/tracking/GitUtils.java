@@ -127,7 +127,9 @@ public class GitUtils {
 	
 	public void mergeRemoteIntoLocalBranch(String userBranchHash) throws Exception {
 		try {
-			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().getRef("refs/remotes/origin/"+userBranchHash)).call();
+			// jgit 6.x: Repository.getRef(String) was removed; exactRef() is
+			// the replacement for fully-qualified ref names like this one.
+			MergeResult res = git.merge().setCommit(true).setFastForward(MergeCommand.FastForwardMode.FF).setStrategy(MergeStrategy.RECURSIVE).include(git.getRepository().exactRef("refs/remotes/origin/"+userBranchHash)).call();
 			
 			if(res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
 				System.out.println(Game.i18n.tr("Last session data successfully retrieved."));
@@ -379,6 +381,9 @@ public class GitUtils {
 	}
 	
 	public Ref getRepoRef(String branch) throws IOException {
-		return git.getRepository().getRef(branch);
+		// jgit 6.x: Repository.getRef(String) was removed. findRef() keeps the
+		// old search semantics (tries short names under refs/heads, refs/tags,
+		// etc.); use exactRef() instead if only fully-qualified names are passed.
+		return git.getRepository().findRef(branch);
 	}
 }
