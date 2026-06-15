@@ -387,6 +387,19 @@
         <version>3.2.5</version>
         <configuration>
           <skipTests>${skipTests}</skipTests>
+          <!-- PLM's tests live under src/ (compiled into the main output), not
+               src/test/java, so point surefire there and run the maintainer's
+               AllTests suite only (it aggregates the rest; restricting to it
+               avoids re-running suites and the abstract base classes). The tests
+               are Swing-based: they need a display (run the job under xvfb) and
+               AWT must not be headless. The fork timeout stops a runaway test
+               (e.g. an exercise that loops) from hanging CI forever. -->
+          <testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+          <includes>
+            <include>**/AllTests.java</include>
+          </includes>
+          <argLine>-Djava.awt.headless=false</argLine>
+          <forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
         </configuration>
       </plugin>
     </plugins>
