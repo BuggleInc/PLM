@@ -47,6 +47,11 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
 		Pattern isJava6Pattern = Pattern.compile("major version 51 is newer than 50, the highest major version supported by this compiler");
 		
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
+			// Only show real errors. Warnings and notes here come from PLM's own
+			// framework sources, which are recompiled in process together with the
+			// student code; they are not the student's concern and only add noise.
+			if (diagnostic.getKind() != Diagnostic.Kind.ERROR)
+				continue;
 			String source = diagnostic.getSource() == null ? "(null)" : diagnostic.getSource().getName();
 			String msg = diagnostic.getMessage(getLocale());
 			
