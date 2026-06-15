@@ -30,18 +30,38 @@ jobs:
         path: target/*.jar
 
   test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
     - uses: actions/checkout@v6
-    - name: Install gettext (i18n) and xvfb (PLM's tests are Swing/GUI)
-      run: sudo apt-get update && sudo apt-get install -y gettext xvfb
     - name: Set up JDK 21
       uses: actions/setup-java@v5
       with:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    # The tests need an X display; run them under a virtual framebuffer.
-    - name: Run the test suite
+    # The i18n message-bundle generation needs gettext (msgfmt) on PATH.
+    - name: Install gettext + xvfb (Linux)
+      if: runner.os == 'Linux'
+      run: sudo apt-get update && sudo apt-get install -y gettext xvfb
+    - name: Install gettext (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install gettext
+        echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
+    - name: Install gettext (Windows)
+      if: runner.os == 'Windows'
+      run: choco install gettext --yes --no-progress
+    # Linux runners are headless -> run the Swing tests under a virtual display.
+    # Windows and macOS runners have a real display, so run them directly.
+    - name: Run tests (Linux, under xvfb)
+      if: runner.os == 'Linux'
       run: xvfb-run -a mvn -B test
+    - name: Run tests (Windows / macOS)
+      if: runner.os != 'Linux'
+      run: mvn -B test
