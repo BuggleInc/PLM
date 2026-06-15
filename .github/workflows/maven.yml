@@ -8,11 +8,6 @@ on:
   pull_request:
     branches: [ javaUI ]
 
-# Run the JavaScript actions on Node 24; Node 20 is being deprecated on the
-# runners. See https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   build:
 
@@ -24,7 +19,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y gettext
     # Scala 2.12's compiler bridge does not run on JDK 22+, and maven.compiler.release is 17.
     - name: Set up JDK 21
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '21'
         distribution: 'temurin'
@@ -32,6 +27,6 @@ jobs:
     - name: Build the self-contained jar with Maven
       run: mvn -B -DskipTests package
     - name: Upload jar
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         path: target/*.jar
