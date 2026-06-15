@@ -173,6 +173,14 @@
       <version>4.11.0</version>
       <scope>provided</scope>
     </dependency>
+    <!-- AssertJ-Swing drives the actual GUI (MainFrameSmokeTest) under a real or
+         virtual (xvfb) display. -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-swing-junit</artifactId>
+      <version>3.17.1</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -403,6 +411,7 @@
             <include>**/git/GitSpyTest.java</include>
             <include>**/git/GitUtilsTest.java</include>
             <include>**/simple/test/JavaSimpleExerciseTest.java</include>
+            <include>**/gui/MainFrameSmokeTest.java</include>
           </includes>
           <argLine>-Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
