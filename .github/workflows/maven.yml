@@ -44,4 +44,4 @@ jobs:
         cache: maven
     # The tests need an X display; run them under a virtual framebuffer.
     - name: Run the test suite
-      run: xvfb-run -a mvn -B test -DskipTests=false
+      run: xvfb-run -a mvn -B test

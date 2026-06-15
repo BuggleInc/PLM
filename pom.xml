@@ -24,10 +24,9 @@
     <scala.version>2.12.20</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
     <main.class>plm.core.ui.ProgrammersLearningMachine</main.class>
-    <!-- PLM's junit tests (plm.test.*) are outdated; keep them off the
-         critical path. Build with -DskipTests (default true here). -->
-    <maven.test.skip>true</maven.test.skip>
-    <skipTests>true</skipTests>
+    <!-- Tests run by default. The build/jar job skips their EXECUTION with
+         -DskipTests (the jar does not need the plm.test.* suite); the separate
+         CI test job runs them under xvfb. -->
   </properties>
 
   <dependencies>
@@ -386,7 +385,6 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
-          <skipTests>${skipTests}</skipTests>
           <!-- PLM's tests live under src/ (compiled into the main output), not
                src/test/java, so point surefire there and run the maintainer's
                AllTests suite only (it aggregates the rest; restricting to it
