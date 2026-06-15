@@ -25,7 +25,12 @@ import scala.tools.nsc.Global;
 import scala.tools.nsc.Global.Run;
 import scala.tools.nsc.Settings;
 import scala.tools.nsc.interpreter.AbstractFileClassLoader;
-import scala.tools.nsc.reporters.AbstractReporter;
+// Scala 2.12 compiler API: scala.tools.nsc.reporters.AbstractReporter was
+// removed. The reporter base is now scala.tools.nsc.reporters.Reporter, whose
+// single abstract entry point is info0(pos, msg, Severity, force) and whose
+// INFO/WARNING/ERROR severities are instance members (no longer string-named).
+import scala.tools.nsc.reporters.Reporter;
+import scala.reflect.internal.Reporter.Severity;
 
 public class LangScala extends JVMCompiledLang {
 
@@ -156,57 +161,42 @@ class ScalaCompiler {
 		}
 	}
 	
-	class PLMReporter extends AbstractReporter {
-		final static int INFO = 0;
-		final static int WARNING = 1;
-		final static int ERROR = 2;
-		final int[] counts = new int[] {0, 0, 0};
+	/* Ported from the Scala 2.11 reporter API (AbstractReporter, with
+	 * display()/displayPrompt()/settings()/count() hooks) to the Scala 2.12
+	 * API: scala.tools.nsc.reporters.Reporter exposes a single abstract method,
+	 *   info0(Position, String, Severity, boolean force),
+	 * and the INFO/WARNING/ERROR severities are instance members compared by
+	 * identity (no more brittle toString() matching). The base class tracks
+	 * error/warning state itself (hasErrors()), so we no longer keep our own
+	 * counts[] array. The Settings are owned by the enclosing ScalaCompiler. */
+	class PLMReporter extends Reporter {
 		int offset=0;
 		Vector<String> messages = new Vector<String>();
-		Settings settings;
 
 		public PLMReporter(Settings s) {
-			settings = s;
+			// Settings are no longer needed by the reporter base in 2.12.
 		}
 		public void setOffset(int _offset) {
 			this.offset = _offset;
 		}
 		@Override
-		public Settings settings() {
-			return settings;
-		}
-		@Override
-		public void displayPrompt() { 
-			/* Don't do that, pal. */ 
-		}
-		private int severityRank(Severity s) {
-			String severityName = s.toString(); 
-			int severity = -1;
-			if (severityName.equals("INFO") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@0"))
-				severity = INFO;
-			if (severityName.equals("WARNING") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@1"))
-				severity = WARNING;
-			if (severityName.equals("ERROR") || severityName.equals("scala.tools.nsc.reporters.Reporter$Severity@2")) 
-				severity = ERROR;
-			if (severity == -1)
-				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt the PLM to this new version of scala (or whatever).");
-			return severity;
-		}
-		@Override
-		public void display(Position pos, String message, Severity _severity) {
-			//System.err.println("Display pos:"+pos+"; msg:"+message+"; severity:"+_severity);
+		public void info0(Position pos, String message, Severity severity, boolean force) {
+			//System.err.println("info0 pos:"+pos+"; msg:"+message+"; severity:"+severity);
 
 			String label = "";
-			int severity = severityRank(_severity);
-			if (severity == INFO && !Game.getInstance().isDebugEnabled()) 
-				return;
-			if (severity == WARNING)
-				label = "warning: ";
-			if (severity == ERROR)
-				label = "error: "; 
+			boolean isInfo    = severity == INFO();
+			boolean isWarning = severity == WARNING();
+			boolean isError   = severity == ERROR();
+			if (!isInfo && !isWarning && !isError)
+				throw new RuntimeException("Got an unknown severity: "+severity+". Please adapt the PLM to this new version of scala (or whatever).");
 
-			counts[severity]++;
-			
+			if (isInfo && !Game.getInstance().isDebugEnabled())
+				return;
+			if (isWarning)
+				label = "warning: ";
+			if (isError)
+				label = "error: ";
+
 			int lineNum = -1;
 			try {
 				lineNum = pos.line() - offset;
@@ -243,20 +233,6 @@ class ScalaCompiler {
 		public void reset() {
 			super.reset();
 			messages.removeAllElements();
-		}
-		
-		@Override
-		public int count(Object o) {
-			return counts[severityRank((Severity) o)];
-		}
-		@Override
-		public void resetCount(Object o) {
-			counts[severityRank((Severity) o)] = 0;
-		}
-		@Override
-		public void info0(Position pos, String msg, Object o, boolean force) {
-			Severity s = (Severity) o;
-			display(pos, msg, s);
 		}
 	}
 }

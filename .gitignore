@@ -19,3 +19,5 @@ lib/plm-messages.jar
 nbproject/
 manifest.mf
 build/
+# Maven build output
+target/
