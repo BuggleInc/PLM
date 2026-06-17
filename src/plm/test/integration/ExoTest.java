@@ -22,6 +22,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -52,7 +53,7 @@ public class ExoTest {
 	
 	/* Generate the list of parameters we want to run our test on */
 	@Parameters
-	static public Collection<Object[]> exercises() {
+	static public Collection<Object[]> exercises() throws BrokenProgrammingLanguageException {
 		List<Object[]> result = new LinkedList<Object[]>();
 		
 		FileUtils.setLocale(new Locale("en"));
@@ -115,7 +116,7 @@ public class ExoTest {
 	}
 	
 	/** Try to run the solution, fail if it's missing **/
-	private void testCorrectionEntityExists(ProgrammingLanguage lang) {
+	private void testCorrectionEntityExists(ProgrammingLanguage lang) throws BrokenProgrammingLanguageException {
 		Game.getInstance().setProgramingLanguage(lang);
 		
 		DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
@@ -131,7 +132,7 @@ public class ExoTest {
 	}
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
-	private void testCorrectionEntity(ProgrammingLanguage lang) {
+	private void testCorrectionEntity(ProgrammingLanguage lang) throws BrokenProgrammingLanguageException {
 		Game.getInstance().setProgramingLanguage(lang);
 		
 		exo.lastResult = new ExecutionProgress();
@@ -190,53 +191,53 @@ public class ExoTest {
 	}
 	
 	@Test(timeout=10000)
-	public void testJavaEntityExists() {
+	public void testJavaEntityExists() throws BrokenProgrammingLanguageException {
 		testCorrectionEntityExists(Game.JAVA);
 	}
 	
 	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
-	public void testScalaEntityExists() {
+	public void testScalaEntityExists() throws BrokenProgrammingLanguageException {
 		if (!exo.getProgLanguages().contains(Game.SCALA)) 
 			fail("Exercise "+exo.getId()+" does not support scala");
 		testCorrectionEntityExists(Game.SCALA);
 	}
 	
 //	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
-	public void testCEntityExists() {
+	public void testCEntityExists() throws BrokenProgrammingLanguageException {
 		if (!exo.getProgLanguages().contains(Game.C)) 
 			fail("Exercise "+exo.getId()+" does not support C");
 		testCorrectionEntityExists(Game.C);
 	}
 	
 	@Test(timeout=30000) // the well known python's "performance"...
-	public void testPythonEntityExists() {
+	public void testPythonEntityExists() throws BrokenProgrammingLanguageException {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
 			fail("Exercise "+exo.getId()+" does not support python");
 		testCorrectionEntityExists(Game.PYTHON);
 	}
 	
 	@Test(timeout=10000)
-	public void testJavaEntity() {
+	public void testJavaEntity() throws BrokenProgrammingLanguageException {
 		testCorrectionEntity(Game.JAVA);
 	}
 	
 	// FIXME: Test this!
 	//@Test(timeout=30000) // The compiler sometimes takes time to kick in 
-	public void testScalaEntity() {
+	public void testScalaEntity() throws BrokenProgrammingLanguageException {
 		if (!exo.getProgLanguages().contains(Game.SCALA)) 
 			fail("Exercise "+exo.getId()+" does not support scala");
 		testCorrectionEntity(Game.SCALA);
 	}
 	
 //	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
-	public void testCEntity() {
+	public void testCEntity() throws BrokenProgrammingLanguageException {
 		if (!exo.getProgLanguages().contains(Game.C)) 
 			fail("Exercise "+exo.getId()+" does not support C");
 		testCorrectionEntity(Game.C);
 	}
 	
 	@Test(timeout=30000) // the well known python's "performance"...
-	public void testPythonEntity() {
+	public void testPythonEntity() throws BrokenProgrammingLanguageException {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
 			fail("Exercise "+exo.getId()+" does not support python");
 		testCorrectionEntity(Game.PYTHON);

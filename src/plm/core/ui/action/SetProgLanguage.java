@@ -2,8 +2,11 @@ package plm.core.ui.action;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
+
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.BrokenProgrammingLanguageException;
 
 public class SetProgLanguage extends AbstractGameAction {
 
@@ -18,6 +21,21 @@ public class SetProgLanguage extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		game.setProgramingLanguage(lang);
+			if (lang.equals(Game.C)) {
+				int res = JOptionPane.showConfirmDialog(null, 
+						i18n.tr(  "The C langage is currently very experimental in the PLM.\n"
+			                    + "If you go for C, you may not be able to complete some exercises that\n"
+			                    + "are still in progress in C, although some other parts are already okay.\n\n"
+			                    + "Do you want to proceed anyway?"),
+						i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
+				if (res != JOptionPane.OK_OPTION)
+					return;
+			}
+
+		try {
+			game.setProgramingLanguage(lang);
+		} catch (BrokenProgrammingLanguageException ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage(), ex.title, JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }

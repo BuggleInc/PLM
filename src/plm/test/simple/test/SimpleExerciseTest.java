@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -29,7 +30,7 @@ public abstract class SimpleExerciseTest {
 	protected Lesson l;
 	protected SimpleExercise exo;
 	
-	public SimpleExerciseTest(ProgrammingLanguage pl) {
+	public SimpleExerciseTest(ProgrammingLanguage pl) throws BrokenProgrammingLanguageException {
 		this.pl = pl;
 		
 		FileUtils.setLocale(new Locale("en"));

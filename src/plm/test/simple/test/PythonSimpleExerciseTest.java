@@ -1,10 +1,11 @@
 package plm.test.simple.test;
 
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 
 public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 
-	public PythonSimpleExerciseTest() {
+	public PythonSimpleExerciseTest() throws BrokenProgrammingLanguageException {
 		super(Game.PYTHON);
 	}
 

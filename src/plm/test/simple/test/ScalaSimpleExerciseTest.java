@@ -1,5 +1,6 @@
 package plm.test.simple.test;
 
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 
 
@@ -11,7 +12,7 @@ import plm.core.model.Game;
 
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
-	public ScalaSimpleExerciseTest() {
+	public ScalaSimpleExerciseTest() throws BrokenProgrammingLanguageException {
 		super(Game.SCALA);
 	}
 	

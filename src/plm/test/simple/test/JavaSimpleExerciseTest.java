@@ -1,10 +1,11 @@
 package plm.test.simple.test;
 
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 
 public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
-	public JavaSimpleExerciseTest() {
+	public JavaSimpleExerciseTest() throws BrokenProgrammingLanguageException {
 		super(Game.JAVA);
 	}
 

@@ -17,6 +17,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
@@ -65,7 +66,7 @@ public class LessonTest {
 	public void tearDown() throws Exception {
 	}
 	
-	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException {		
+	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {		
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
@@ -78,19 +79,19 @@ public class LessonTest {
 	}
 	
 	@Test
-	public void testJavaLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void testJavaLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
 		Lesson lesson = loadLesson(Game.JAVA);
 		assertTrue("An error arose while loading lesson "+lesson.getName()+"...", lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS);
 	}
 	
 	@Test
-	public void testScalaLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void testScalaLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
 		Lesson lesson = loadLesson(Game.SCALA);
 		assertTrue("An error arose while loading lesson "+lesson.getName()+"...", lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS);
 	}
 	
 	@Test
-	public void testPythonLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void testPythonLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
 		Lesson lesson = loadLesson(Game.PYTHON);
 		assertTrue("An error arose while loading lesson "+lesson.getName()+"...", lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS);
 	}

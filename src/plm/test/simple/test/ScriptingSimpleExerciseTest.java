@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -13,7 +14,7 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
-	public ScriptingSimpleExerciseTest(ProgrammingLanguage pl) {
+	public ScriptingSimpleExerciseTest(ProgrammingLanguage pl) throws BrokenProgrammingLanguageException {
 		super(pl);
 	}
 	

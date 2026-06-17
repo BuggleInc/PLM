@@ -44,6 +44,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.LangRuby;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game.GameState;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -171,32 +172,31 @@ public class Game implements IWorldView {
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
 
-		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
-		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
-				!defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang())) 
+		String defaultProgrammingLanguageName = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
+		ProgrammingLanguage defaultProgrammingLanguage = Game.JAVA;
+		if (defaultProgrammingLanguageName.equalsIgnoreCase(Game.PYTHON.getLang()))
+			defaultProgrammingLanguage = PYTHON;
+		else if (defaultProgrammingLanguageName.equalsIgnoreCase(Game.SCALA.getLang()))
+			defaultProgrammingLanguage = SCALA;
+		else if (defaultProgrammingLanguageName.equalsIgnoreCase(Game.C.getLang()))
+			defaultProgrammingLanguage = C;
+		else if (!defaultProgrammingLanguageName.equalsIgnoreCase(Game.JAVA.getLang()))
 			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart the PLM before proceeding.\n"+
 					"   Alternatively, the property {1} can be changed in your configuration file ({2}/plm.properties).",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE, getSavingLocation()));
 
-		if (defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && !canScala) {
+		if (defaultProgrammingLanguage == Game.SCALA && !canScala) {
 			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
-		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) && !canPython) {
+			defaultProgrammingLanguage = Game.JAVA;
+		} else if (defaultProgrammingLanguage == Game.PYTHON && !canPython) {
 			System.err.println(i18n.tr("The default programming language is python, but your python installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
-		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) && !canC) {
+			defaultProgrammingLanguage = Game.JAVA;
+		} else if (defaultProgrammingLanguage == Game.C && !canC) {
 			System.err.println(i18n.tr("The default programming language is C, but your C installation is not usable. Switching to Java instead.\n"));
-			setProgramingLanguage(JAVA);
-		} else {
-			for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) 
-				if (pl.getLang().equals(defaultProgrammingLanguage)) {
-					setProgramingLanguage(pl);
-					break;
-				}
+			defaultProgrammingLanguage = Game.JAVA;
 		}
+		setProgramingLanguageSafe(defaultProgrammingLanguage);
 
 		users = new Users(SAVE_DIR);
 
@@ -500,7 +500,8 @@ public class Game implements IWorldView {
 							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
 									+ "Please consider contributing to this project by adapting this exercise to this language.",
 									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
-				setProgramingLanguage(fallback);
+				setProgramingLanguageSafe(fallback);
+
 
 			}
 			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
@@ -993,38 +994,29 @@ public class Game implements IWorldView {
 		return FileUtils.getLocale();
 	}
 
+	public void setProgramingLanguageSafe(ProgrammingLanguage newLanguage) {
+		try {
+			setProgramingLanguage(newLanguage);
+		} catch (BrokenProgrammingLanguageException ex) {
+			throw new RuntimeException("Cannot set programming language to "+ newLanguage.getLang(), ex);
+		}
+	}
 
-
-	public void setProgramingLanguage(ProgrammingLanguage newLanguage) {
+	public void setProgramingLanguage(ProgrammingLanguage newLanguage) throws BrokenProgrammingLanguageException {
 		if (programmingLanguage.equals(newLanguage))
 			return;
 
 		if (isValidProgLanguage(newLanguage)) {
 			//System.out.println("Switch programming language to "+newLanguage);
 			if (newLanguage.equals(Game.SCALA) && !canScala) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.12 or higher to use it in the PLM.\n\n")+scalaError ,
-						i18n.tr("Scala is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
+				throw new BrokenProgrammingLanguageException(i18n.tr("Scala is missing"), i18n.tr("Please install Scala version 2.12 or higher to use it in the PLM.\n\n")+scalaError);
 			}
 			if (newLanguage.equals(Game.PYTHON) && !canPython) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install jython and its dependencies to use the python programming language in the PLM.\n\n")+pythonError,
-						i18n.tr("Python is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
+				throw new BrokenProgrammingLanguageException(i18n.tr("Python is missing"), 
+				 i18n.tr("Please install jython and its dependencies to use the python programming language in the PLM.\n\n")+pythonError); 
 			}
 			if (newLanguage.equals(Game.C) && !canC) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Please install C and its dependencies to use the C programming language in the PLM.\n\n")+CError,
-						i18n.tr("C is missing"), JOptionPane.ERROR_MESSAGE); 
-				return;
-			}
-			if (newLanguage.equals(Game.C) && !doBatch) {
-				int res = JOptionPane.showConfirmDialog(null, 
-						i18n.tr(  "The C langage is currently very experimental in the PLM.\n"
-			                    + "If you go for C, you may not be able to complete some exercises that\n"
-			                    + "are still in progress in C, although some other parts are already okay.\n\n"
-			                    + "Do you want to proceed anyway?"),
-						i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
-				if (res != JOptionPane.OK_OPTION)
-					return;
+				throw new BrokenProgrammingLanguageException(i18n.tr("C is missing"), i18n.tr("Please install C and its dependencies to use the C programming language in the PLM.\n\n")+CError); 
 			}
 			this.programmingLanguage = newLanguage;
 			if(getCurrentLesson() != null)
@@ -1034,7 +1026,7 @@ public class Game implements IWorldView {
 				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.getLang());
 			return;
 		}
-		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);
+		throw new BrokenProgrammingLanguageException("Missing "+newLanguage, "Ignoring request to switch the programming language to the unknown "+newLanguage);
 	}
 
 	public static ProgrammingLanguage getProgrammingLanguage() {
