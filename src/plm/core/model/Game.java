@@ -250,11 +250,10 @@ public class Game implements IWorldView {
 	public boolean canPython = false;
 	String pythonError = "";
 	private boolean checkPython() {
-		String[] resources = new String[] {
-				"/org/python/jsr223/PyScriptEngineFactory", "/org/jruby/ext/posix/util/Platform","/org/antlr/runtime/CharStream",
-				"/org/objectweb/asm/Opcodes"
+		String[] resources = new String[] { 
+				"/org/python/jsr223/PyScriptEngineFactory"
 		};
-		String[] hints     = new String[] {"jython.jar", "jruby.jar","antlr3-runtime.jar",
+		String[] hints     = new String[] {"jython.jar",// "jruby.jar","antlr3-runtime.jar",
 		"asm3.jar"};
 		for (int i=0;i<resources.length;i++) {
 			pythonError = canResolve(resources[i],hints[i]);
