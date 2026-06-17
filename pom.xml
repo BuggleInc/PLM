@@ -408,6 +408,7 @@
                The fork timeout still guards against a hang. -->
           <testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
           <includes>
+            <include>**/AllTests.java</include>
             <include>**/git/GitSpyTest.java</include>
             <include>**/git/GitUtilsTest.java</include>
             <include>**/simple/test/JavaSimpleExerciseTest.java</include>
