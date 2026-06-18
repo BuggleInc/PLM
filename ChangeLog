@@ -1,3 +1,14 @@
+(unreleased):
+
+  [Juan Manuel Méndez Rey]
+
+  * Core:
+    - Run on modern JDK by not using Thread.stop().
+      If the student writes an infinite loop, this won't get stopped, but at least the PLM can compile.
+    - Make sure we don't try to sign git commits even if the user local configuration requests otherwise.
+    - Only log error messages, not the deprecation messages from the PLM itself.
+    - Modernize the build chain by using maven
+
 20210630: 2.9.3
 
   The fixed crash loop release: corrupted files could put a stop to startup.
