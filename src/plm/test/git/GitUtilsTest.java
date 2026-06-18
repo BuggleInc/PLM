@@ -156,6 +156,7 @@ public class GitUtilsTest {
 	
 	@Test
 	public void testFetchBranchFromRemoteBranchShouldReturnTrueIfRemoteBranchExists () throws GitAPIException, IOException {		
+		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		GitUtils remoteGitUtils = new GitUtils();
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
@@ -163,7 +164,7 @@ public class GitUtilsTest {
 		remoteGitUtils.createLocalUserBranch(userBranch);
 		Git remoteGit = utils.getGit(remoteGitUtils);
 	
-		generateCommits(remoteGit);
+		generateCommits(remoteGit, localRepoDirectory);
 		
 		remoteGitUtils.checkoutUserBranch("master");
 		
@@ -205,6 +206,7 @@ public class GitUtilsTest {
 	
 	@Test
 	public void testMergeRemoteIntoLocalBranchShouldSynchronizeBranches() throws GitAPIException, IOException {
+		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		GitUtils remoteGitUtils = new GitUtils();
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
@@ -212,7 +214,7 @@ public class GitUtilsTest {
 		remoteGitUtils.createLocalUserBranch(userBranch);
 		Git remoteGit = utils.getGit(remoteGitUtils);
 		
-		generateCommits(remoteGit);
+		generateCommits(remoteGit, localRepoDirectory);
 		RevCommit remoteCommit = remoteGit.log().call().iterator().next();
 		
 		String remoteUrl = "file://"+remoteGit.getRepository().getDirectory().getAbsolutePath();
@@ -278,6 +280,7 @@ public class GitUtilsTest {
 	
 	@Test
 	public void testPushChangesShouldReturnTrueIfNoConflicts() throws GitAPIException, IOException, InterruptedException {
+		File localRepoDirectory = new File(plmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		File remoteRepoDirectory = new File(remotePlmTestDir.getAbsolutePath() + System.getProperty("file.separator") + userBranch);
 		GitUtils remoteGitUtils = new GitUtils();
 		remoteGitUtils.initLocalRepository(remoteRepoDirectory);
@@ -289,7 +292,7 @@ public class GitUtilsTest {
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
 		gitUtils.createLocalUserBranch(userBranch);
 		
-		generateCommits(git);
+		generateCommits(git, localRepoDirectory);
 		
 		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
 		boolean success = gitUtils.pushChanges(userBranch, progress, null);
@@ -321,7 +324,7 @@ public class GitUtilsTest {
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
 		gitUtils.createLocalUserBranch(userBranch);
 		
-		generateCommits(git);
+		generateCommits(git, localRepoDirectory);
 		
 		ProgressMonitor progress = NullProgressMonitor.INSTANCE;
 		boolean success = gitUtils.pushChanges(userBranch, progress, null);
@@ -332,11 +335,11 @@ public class GitUtilsTest {
 		assertFalse(success);
 	}
 	
-	private void generateCommits(Git git) {
+	private void generateCommits(Git git, File localRepoDirectory) {
 		for(int i=0; i<100; i++) {
 			try {
 				// Force a file change so every commit tree is unique even if they have the exact same timestamp
-				utils.generateFile(repoDir, "dummy.txt", "content_" + i);
+				utils.generateFile(localRepoDirectory, "dummy.txt", "content_" + i);
 				git.add().addFilepattern("dummy.txt").call();
 
 				git.commit().setMessage(utils.generateRandomString(32))
