@@ -56,7 +56,7 @@ jobs:
         echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
     - name: Install gettext (Windows)
       if: runner.os == 'Windows'
-      run: choco install gettext jython --yes --no-progress
+      run: choco install gettext --yes --no-progress
     # Linux runners are headless -> run the Swing tests under a virtual display.
     # Windows and macOS runners have a real display, so run them directly.
     - name: Run tests (Linux, under xvfb)
