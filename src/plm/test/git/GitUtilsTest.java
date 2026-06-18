@@ -335,6 +335,10 @@ public class GitUtilsTest {
 	private void generateCommits(Git git) {
 		for(int i=0; i<100; i++) {
 			try {
+				// Force a file change so every commit tree is unique even if they have the exact same timestamp
+				utils.generateFile(repoDir, "dummy.txt", "content_" + i);
+				git.add().addFilepattern("dummy.txt").call();
+
 				git.commit().setMessage(utils.generateRandomString(32))
 				.setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
 				.setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
