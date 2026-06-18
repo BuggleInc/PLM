@@ -28,6 +28,10 @@
          -DskipTests (the jar does not need the plm.test.* suite); the separate
          CI test job runs them under xvfb. -->
   </properties>
+  
+  <properties>
+    <sonar.organization>buggleinc</sonar.organization>
+  </properties>
 
   <dependencies>
     <!-- Scala toolchain. 2.12.x to match the wider scala-dev effort
