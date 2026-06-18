@@ -27,12 +27,9 @@
     <!-- Tests run by default. The build/jar job skips their EXECUTION with
          -DskipTests (the jar does not need the plm.test.* suite); the separate
          CI test job runs them under xvfb. -->
-  </properties>
-  
-  <properties>
     <sonar.organization>buggleinc</sonar.organization>
   </properties>
-
+  
   <dependencies>
     <!-- Scala toolchain. 2.12.x to match the wider scala-dev effort
          (upstream pinned 2.11.12). scala-compiler/reflect are needed at
