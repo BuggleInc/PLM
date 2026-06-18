@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install gettext (needed by the i18n message-bundle generation)
-        run: sudo apt-get update && sudo apt-get install -y gettext
+        run: sudo apt-get update && sudo apt-get install -y gettext xvfb jython
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -59,7 +59,7 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=BuggleInc_PLM
+        run: xvfb-run -a mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=BuggleInc_PLM
 
   test:
     name: test (${{ matrix.os }})
@@ -80,7 +80,7 @@ jobs:
     # The i18n message-bundle generation needs gettext (msgfmt) on PATH.
     - name: Install gettext + xvfb (Linux)
       if: runner.os == 'Linux'
-      run: sudo apt-get update && sudo apt install -y gettext xvfb jython jruby
+      run: sudo apt-get update && sudo apt install -y gettext xvfb jython
     - name: Install gettext (macOS)
       if: runner.os == 'macOS'
       run: |
