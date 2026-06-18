@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Install gettext (needed by the i18n message-bundle generation)
         run: sudo apt-get update && sudo apt-get install -y gettext
-      - uses: actions/checkout@6
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
@@ -45,13 +45,13 @@ jobs:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
       - name: Cache SonarQube packages
-        uses: actions/cache@4.3.0
+        uses: actions/cache@v4.3.0
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache Maven packages
-        uses: actions/cache@4.3.0
+        uses: actions/cache@v4.3.0
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
