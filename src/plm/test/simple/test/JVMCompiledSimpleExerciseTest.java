@@ -1,8 +1,7 @@
 package plm.test.simple.test;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -31,7 +30,7 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			fail(getClass().getName().replace("Test", "Entity") +" should pass the exercise...");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should pass the exercise...");
 		}
 	}
 	
@@ -47,19 +46,23 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.executionError!=null && !exo.lastResult.executionError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should execute properly and not throw the following error:\n"+exo.lastResult.executionError);
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should execute properly and not throw the following error:\n"+exo.lastResult.executionError);
 		}
 	}
 	
-	@Test (expected = PLMCompilerException.class)
+	@Test
 	public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
-		exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		Assertions.assertThrows(PLMCompilerException.class, () -> {
+			exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
+			exo.compileAll(null, StudentOrCorrection.STUDENT);
+		});
 	}
 	
-	@Test (expected = PLMCompilerException.class)
+	@Test
 	public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
-		exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
+		Assertions.assertThrows(PLMCompilerException.class, () -> {
+			exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
+			exo.compileAll(null, StudentOrCorrection.STUDENT);
+		});
 	}
 }

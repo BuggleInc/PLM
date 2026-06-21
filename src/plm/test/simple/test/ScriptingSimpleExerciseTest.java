@@ -1,8 +1,7 @@
 package plm.test.simple.test;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -29,7 +28,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.executionError!=null && !exo.lastResult.executionError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should execute properly and not throw the following error:\n"+exo.lastResult.executionError);
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should execute properly and not throw the following error:\n"+exo.lastResult.executionError);
 		}
 	}
 
@@ -44,7 +43,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			fail(getClass().getName().replace("Test", "Entity") +" should pass the exercise...");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should pass the exercise...");
 		}
 	}
 	
@@ -53,7 +52,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
 		exo.compileAll(null, StudentOrCorrection.STUDENT);
 		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
 		}
 	}
 	
@@ -62,7 +61,7 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 		exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
 		exo.compileAll(null, StudentOrCorrection.STUDENT);
 		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
 		}
 	}
 	

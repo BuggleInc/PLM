@@ -1,10 +1,13 @@
 package plm.test.git;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -13,9 +16,6 @@ import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.revwalk.RevCommit;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
@@ -53,7 +53,7 @@ public class GitUtilsTest {
 		System.out.println("repoDirectory: "+ repoDirectory.getAbsolutePath());
 	}
 	
-	@Before 
+	@BeforeEach 
 	public void setUp() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		Game.setProperty(trackUserProperty, "true");
 		try {
@@ -66,7 +66,7 @@ public class GitUtilsTest {
 		git = utils.getGit(gitUtils);
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown() {
 		Game.setProperty(trackUserProperty, oldTrackUserProperty);
 		gitUtils.dispose();
@@ -82,7 +82,7 @@ public class GitUtilsTest {
 		while(it.hasNext()) {
 			Ref ref = it.next();
 			if(ref.getName().equals(userBranch)) {
-				fail("The local branch shouldn't yet exist.");
+				Assertions.fail("The local branch shouldn't yet exist.");
 			}
 		}
 		
@@ -97,7 +97,7 @@ public class GitUtilsTest {
 		}
 		
 		if(!branchCreated) {
-			fail("The branch "+userBranch+" should have been created...");
+			Assertions.fail("The branch "+userBranch+" should have been created...");
 		}
 	}
 	
@@ -107,14 +107,14 @@ public class GitUtilsTest {
 		
 		currentBranch = git.getRepository().getBranch();
 		if(currentBranch.equals(userBranch)) {
-			fail("Should not be on the "+userBranch+" yet...");
+			Assertions.fail("Should not be on the "+userBranch+" yet...");
 		}
 		
 		gitUtils.createLocalUserBranch(userBranch);
 		
 		currentBranch = git.getRepository().getBranch();
 		if(!currentBranch.equals(userBranch)) {
-			fail("Should be on the "+userBranch+" now...");
+			Assertions.fail("Should be on the "+userBranch+" now...");
 		}
 	}
 	
@@ -126,14 +126,14 @@ public class GitUtilsTest {
 		
 		currentBranch = git.getRepository().getBranch();
 		if(!currentBranch.equals("master")) {
-			fail("Should by default be on the master branch...");
+			Assertions.fail("Should by default be on the master branch...");
 		}
 		
 		gitUtils.checkoutUserBranch(userBranch);
 		
 		currentBranch = git.getRepository().getBranch();
 		if(!currentBranch.equals(userBranch)) {
-			fail("Should be on the "+userBranch+" now...");
+			Assertions.fail("Should be on the "+userBranch+" now...");
 		}
 	}
 	
@@ -145,12 +145,12 @@ public class GitUtilsTest {
 		while(it.hasNext()) {
 			Ref ref = it.next();
 			if(ref.getName().equals(userBranch)) {
-				fail("The local branch shouldn't yet exist.");
+				Assertions.fail("The local branch shouldn't yet exist.");
 			}
 		}
 		
 		if(gitUtils.checkoutUserBranch(userBranch)) {
-			fail("The "+userBranch+" should not exist...");
+			Assertions.fail("The "+userBranch+" should not exist...");
 		}
 	}
 	
@@ -178,7 +178,7 @@ public class GitUtilsTest {
 		utils.deleteRepo(remotePlmTestDir);
 		
 		if(!success) {
-			fail("Should have been able to fetch the remote branch");
+			Assertions.fail("Should have been able to fetch the remote branch");
 		}
 	}
 	
@@ -200,7 +200,7 @@ public class GitUtilsTest {
 		utils.deleteRepo(remotePlmTestDir);
 		
 		if(success) {
-			fail("Should not have been able to fetch the remote branch since it doesn't exist...");
+			Assertions.fail("Should not have been able to fetch the remote branch since it doesn't exist...");
 		}
 	}
 	
@@ -222,14 +222,14 @@ public class GitUtilsTest {
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
 		gitUtils.createLocalUserBranch(userBranch);
 		if(!gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
-			fail("Should have been able to fetch remote branch...");
+			Assertions.fail("Should have been able to fetch remote branch...");
 		}
 		try {
 			gitUtils.mergeRemoteIntoLocalBranch(userBranch);
 		} catch (Exception e) {
 			System.err.println("An error occurred while merging the branches...");
 			e.printStackTrace();
-			fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
+			Assertions.fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
 		}
 		
 		RevCommit commit = git.log().call().iterator().next();
@@ -237,8 +237,7 @@ public class GitUtilsTest {
 		remoteGitUtils.dispose();
 		utils.deleteRepo(remotePlmTestDir);
 		
-		assertEquals(commit.getId().getName(),
-				remoteCommit.getId().getName());
+		Assertions.assertEquals(commit.getId().getName(), 				remoteCommit.getId().getName());
 	}
 	
 	@Test
@@ -262,20 +261,20 @@ public class GitUtilsTest {
 		gitUtils.setUpRepoConfig(remoteUrl, userBranch);
 		gitUtils.createLocalUserBranch(userBranch);
 		if(!gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
-			fail("Should have been able to fetch remote branch...");
+			Assertions.fail("Should have been able to fetch remote branch...");
 		}
 		try {
 			gitUtils.mergeRemoteIntoLocalBranch(userBranch);
 		} catch (Exception e) {
 			System.err.println("An error occurred while merging the branches...");
 			e.printStackTrace();
-			fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
+			Assertions.fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
 		}
 		
 		String path1 = localRepoDirectory + System.getProperty("file.separator") + "test1";
 		String path2 = localRepoDirectory + System.getProperty("file.separator") + "test2";
-		assertEquals(expectedContent1, utils.getFileContent(path1));
-		assertEquals(expectedContent2, utils.getFileContent(path2));
+		Assertions.assertEquals(expectedContent1, utils.getFileContent(path1));
+		Assertions.assertEquals(expectedContent2, utils.getFileContent(path2));
 	}
 	
 	@Test
@@ -300,7 +299,7 @@ public class GitUtilsTest {
 		remoteGitUtils.dispose();
 		utils.deleteRepo(remotePlmTestDir);
 		
-		assertTrue(success);
+		Assertions.assertTrue(success);
 	}
 	
 	@Test
@@ -332,7 +331,7 @@ public class GitUtilsTest {
 		remoteGitUtils.dispose();
 		utils.deleteRepo(remotePlmTestDir);
 		
-		assertFalse(success);
+		Assertions.assertFalse(success);
 	}
 	
 	private void generateCommits(Git git, File localRepoDirectory) {

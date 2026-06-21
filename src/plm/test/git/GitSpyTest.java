@@ -1,7 +1,5 @@
 package plm.test.git;
 
-import static org.junit.Assert.fail;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -13,11 +11,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.xnap.commons.i18n.I18nFactory;
@@ -33,7 +35,7 @@ import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitSpy;
 import plm.core.utils.FileUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class GitSpyTest {
 	
 	private GitSpy gitSpy;
@@ -59,12 +61,12 @@ public class GitSpyTest {
 		System.out.println("repoDir: "+ repoDir.getAbsolutePath());
 	}
 	
-	@Before 
+	@BeforeEach 
 	public void setUp() {
 
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown() {
 		utils.deleteRepo(repoDir);
 	}
@@ -100,7 +102,7 @@ public class GitSpyTest {
 		for(String suffix:suffixes) {
 			String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, suffix);
 			if(new File(fp).exists()) {
-				fail(fp+" should not exist previously...");
+				Assertions.fail(fp+" should not exist previously...");
 			}
 		}
 		
@@ -114,16 +116,16 @@ public class GitSpyTest {
 		}
 		
 		if(!hm.get(".code").equals(code)) {
-			fail("Code file's content is different from code:\nexpected: "+code+"\nresult: "+hm.get(".code"));
+			Assertions.fail("Code file's content is different from code:\nexpected: "+code+"\nresult: "+hm.get(".code"));
 		}
 		if(!hm.get(".correction").equals(correction)) {
-			fail("Correction file's content is different from correction:\nexpected: "+correction+"\nresult: "+hm.get(".correction"));
+			Assertions.fail("Correction file's content is different from correction:\nexpected: "+correction+"\nresult: "+hm.get(".correction"));
 		}
 		if(!hm.get(".error").equals(error)) {
-			fail("Error file's content is different from error:\nexpected: "+error+"\nresult: "+hm.get(".error"));
+			Assertions.fail("Error file's content is different from error:\nexpected: "+error+"\nresult: "+hm.get(".error"));
 		}
 		if(!hm.get(".mission").equals(mission)) {
-			fail("Mission file's content is different from mission:\nexpected: "+mission+"\nresult: "+hm.get(".mission"));
+			Assertions.fail("Mission file's content is different from mission:\nexpected: "+mission+"\nresult: "+hm.get(".mission"));
 		}
 	}
 
@@ -169,7 +171,7 @@ public class GitSpyTest {
 		for(String suffix:suffixes) {
 			String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, suffix);
 			if(! (new File(fp).exists()) ) {
-				fail(fp+" should have been created...");
+				Assertions.fail(fp+" should have been created...");
 			}
 		}
 		
@@ -183,16 +185,16 @@ public class GitSpyTest {
 		}
 		
 		if(!hm.get(".code").equals(code)) {
-			fail("Code file's content is different from code:\nexpected: "+code+"\nresult: "+hm.get(".code"));
+			Assertions.fail("Code file's content is different from code:\nexpected: "+code+"\nresult: "+hm.get(".code"));
 		}
 		if(!hm.get(".correction").equals(correction)) {
-			fail("Correction file's content is different from correction:\nexpected: "+correction+"\nresult: "+hm.get(".correction"));
+			Assertions.fail("Correction file's content is different from correction:\nexpected: "+correction+"\nresult: "+hm.get(".correction"));
 		}
 		if(!hm.get(".error").equals(error)) {
-			fail("Error file's content is different from error:\nexpected: "+error+"\nresult: "+hm.get(".error"));
+			Assertions.fail("Error file's content is different from error:\nexpected: "+error+"\nresult: "+hm.get(".error"));
 		}
 		if(!hm.get(".mission").equals(mission)) {
-			fail("Mission file's content is different from mission:\nexpected: "+mission+"\nresult: "+hm.get(".mission"));
+			Assertions.fail("Mission file's content is different from mission:\nexpected: "+mission+"\nresult: "+hm.get(".mission"));
 		}
 	}
 	
@@ -208,7 +210,7 @@ public class GitSpyTest {
 		
 		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
 		if(new File(fp).exists()) {
-			fail(fp+" should not exist previously...");
+			Assertions.fail(fp+" should not exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
@@ -216,7 +218,7 @@ public class GitSpyTest {
 		method.invoke(gitSpy, exo);
 		
 		if(! (new File(fp).exists()) ) {
-			fail(fp+" should exist now...");
+			Assertions.fail(fp+" should exist now...");
 		}
 	}
 	
@@ -238,7 +240,7 @@ public class GitSpyTest {
 		bw.close();
 		
 		if(! (new File(fp).exists()) ) {
-			fail(fp+" should exist previously...");
+			Assertions.fail(fp+" should exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
@@ -246,7 +248,7 @@ public class GitSpyTest {
 		method.invoke(gitSpy, exo);
 		
 		if( !(new File(fp).exists()) ) {
-			fail(fp+" should still exist now...");
+			Assertions.fail(fp+" should still exist now...");
 		}
 	}
 	
@@ -262,7 +264,7 @@ public class GitSpyTest {
 		
 		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
 		if(new File(fp).exists()) {
-			fail(fp+" should not exist previously...");
+			Assertions.fail(fp+" should not exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
@@ -270,7 +272,7 @@ public class GitSpyTest {
 		method.invoke(gitSpy, exo);
 		
 		if(new File(fp).exists()) {
-			fail(fp+" should not have been created...");
+			Assertions.fail(fp+" should not have been created...");
 		}
 	}
 	
@@ -292,7 +294,7 @@ public class GitSpyTest {
 		bw.close();
 		
 		if(! (new File(fp).exists()) ) {
-			fail(fp+" should exist previously...");
+			Assertions.fail(fp+" should exist previously...");
 		}
 		
 		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
@@ -300,7 +302,7 @@ public class GitSpyTest {
 		method.invoke(gitSpy, exo);
 		
 		if(new File(fp).exists()) {
-			fail(fp+" should have been deleted...");
+			Assertions.fail(fp+" should have been deleted...");
 		}
 	}
 	
@@ -321,7 +323,7 @@ public class GitSpyTest {
 			for(String suffix:suffixes) {
 				File file = new File(repoDir, exo.getId() + ext + suffix);
 				if(file.exists()) {
-					fail(file.getAbsolutePath() + " should not exist...");
+					Assertions.fail(file.getAbsolutePath() + " should not exist...");
 				}
 			}
 		}
@@ -335,7 +337,7 @@ public class GitSpyTest {
 			for(String suffix:suffixes) {
 				File file = new File(repoDir, exo.getId() + ext + suffix);
 				if(file.exists()) {
-					fail(file.getAbsolutePath() + " should still not exist...");
+					Assertions.fail(file.getAbsolutePath() + " should still not exist...");
 				}
 			}
 		}
@@ -358,7 +360,7 @@ public class GitSpyTest {
 				String fp = utils.getFilePath(repoDir, userUUID, exo, pl, suffix);
 				File file = new File(fp);
 				if(file.exists()) {
-					fail(file.getAbsolutePath() + " should not yet exist...");
+					Assertions.fail(file.getAbsolutePath() + " should not yet exist...");
 				}
 				FileWriter fw = new FileWriter(file.getAbsoluteFile());
 				BufferedWriter bw = new BufferedWriter(fw);
@@ -376,7 +378,7 @@ public class GitSpyTest {
 			for(String suffix:suffixes) {
 				File file = new File(repoDir, exo.getId() + ext + suffix);
 				if(file.exists()) {
-					fail(file.getAbsolutePath() + " should have been deleted...");
+					Assertions.fail(file.getAbsolutePath() + " should have been deleted...");
 				}
 			}
 		}

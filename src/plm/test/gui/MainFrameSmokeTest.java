@@ -2,9 +2,10 @@ package plm.test.gui;
 
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import plm.core.model.Game;
 import plm.core.ui.MainFrame;
@@ -20,7 +21,7 @@ public class MainFrameSmokeTest {
 
     private FrameFixture window;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         Game.getInstance(); // build the model (also initialises the languages)
         MainFrame frame = GuiActionRunner.execute(() -> MainFrame.getInstance());
@@ -33,7 +34,7 @@ public class MainFrameSmokeTest {
         window.requireVisible();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         if (window != null)
             window.cleanUp();

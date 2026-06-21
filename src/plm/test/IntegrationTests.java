@@ -1,13 +1,12 @@
 package plm.test;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
 
 import plm.test.integration.ExoTest;
 import plm.test.integration.LessonTest;
 
-@RunWith(Suite.class)
-@SuiteClasses({ LessonTest.class, ExoTest.class })
+@Suite
+@SelectClasses({ LessonTest.class, ExoTest.class })
 public class IntegrationTests {
 }

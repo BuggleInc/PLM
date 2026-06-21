@@ -1,14 +1,14 @@
 package plm.test.simple.test;
 
-import static org.junit.Assert.fail;
 
 import java.util.Locale;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -52,20 +52,20 @@ public abstract class SimpleExerciseTest {
 		g.setLocale(new Locale("en"));
 	}
 	
-	@BeforeClass
+	@BeforeAll
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDownAfterClass() throws Exception {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		exo.reset();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 	}
 	
@@ -77,7 +77,7 @@ public abstract class SimpleExerciseTest {
 			e.printStackTrace();
 		}
 		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should compile and not throw the following error:\n"+exo.lastResult.compilationError);
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should compile and not throw the following error:\n"+exo.lastResult.compilationError);
 		}
 	}
 		
@@ -100,7 +100,7 @@ public abstract class SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.executionError==null || exo.lastResult.executionError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
 		}
 	}
 	
@@ -117,7 +117,7 @@ public abstract class SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.executionError==null || exo.lastResult.executionError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an error...\n");
 		}
 	}
 	@Test
@@ -133,7 +133,7 @@ public abstract class SimpleExerciseTest {
 		}
 		
 		if(exo.lastResult.executionError==null || exo.lastResult.executionError.equals("")) {
-			fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an exception...\n");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not execute properly but throw an exception...\n");
 		}
 	}
 	
@@ -152,7 +152,7 @@ public abstract class SimpleExerciseTest {
 		exo.check();
 		
 		if(exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
 		}
 	}
 
@@ -171,7 +171,7 @@ public abstract class SimpleExerciseTest {
 		exo.check();
 		
 		if(exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
+			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
 		}
 	}
 	

@@ -1,20 +1,18 @@
 package plm.test.integration;
 
-import static org.junit.Assert.assertTrue;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Stream;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
@@ -23,7 +21,6 @@ import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.utils.FileUtils;
 
-@RunWith(Parameterized.class)
 public class LessonTest {
 	
 	private static String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
@@ -33,40 +30,32 @@ public class LessonTest {
 		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
 		"lessons.bat.string1", "lessons.lander",
 		};
-	
-	private String lessonName;
-	
-	public LessonTest(String lessonName) {
-		this.lessonName = lessonName;
-	}
-	
-	@Parameters
-	static public Collection<Object[]> lessons() {
-		List<Object[]> result = new LinkedList<Object[]>();
-		for(String lessonName:lessonNamesToTest) {
-			String t[] = new String[] {lessonName};
-			result.add(t);
-		}
-		return result;
-	}
-	
-	@BeforeClass
+		
+	@BeforeAll
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDownAfterClass() throws Exception {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 	}
 	
-	public Lesson loadLesson(ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {		
+	static public Stream<String> lessons() {
+			List<String> result = new LinkedList<String>();
+			for(String lessonName:lessonNamesToTest) {
+					result.add(lessonName);
+			}
+			return result.stream();
+	}
+	
+	public Lesson loadLesson(String lessonName, ProgrammingLanguage pl) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
 		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
@@ -78,21 +67,25 @@ public class LessonTest {
 		return Game.getInstance().switchLesson(lessonName, true);
 	}
 	
-	@Test
-	public void testJavaLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
-		Lesson lesson = loadLesson(Game.JAVA);
-		assertTrue("An error arose while loading lesson "+lesson.getName()+"...", lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS);
+	@ParameterizedTest
+	@MethodSource("lessons")
+	public void testJavaLesson(String lessonName) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
+			Lesson lesson = loadLesson(lessonName, Game.JAVA);
+			Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS, "An error arose while loading lesson "+lesson.getName()+"...");
 	}
 	
-	@Test
-	public void testScalaLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
-		Lesson lesson = loadLesson(Game.SCALA);
-		assertTrue("An error arose while loading lesson "+lesson.getName()+"...", lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS);
+	@ParameterizedTest
+	@MethodSource("lessons")
+	public void testScalaLesson(String lessonName) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
+			Lesson lesson = loadLesson(lessonName, Game.SCALA);
+			Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS, "An error arose while loading lesson "+lesson.getName()+"...");
 	}
 	
-	@Test
-	public void testPythonLesson() throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
-		Lesson lesson = loadLesson(Game.PYTHON);
-		assertTrue("An error arose while loading lesson "+lesson.getName()+"...", lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS);
-	}
+	@ParameterizedTest
+	@MethodSource("lessons")
+	public void testPythonLesson(String lessonName) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
+			Lesson lesson = loadLesson(lessonName, Game.PYTHON);
+			Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS, "An error arose while loading lesson "+lesson.getName()+"...");
+
+	}	
 }
