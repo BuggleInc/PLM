@@ -97,3 +97,10 @@ jobs:
     - name: Run tests (Windows / macOS)
       if: runner.os != 'Linux'
       run: mvn -B test
+    - name: Publish Test Report
+      uses: dorny/test-reporter@v3
+      if: always() # Build the report even if tests fail
+      with:
+        name: JUnit 5 Tests Summary
+        path: "**/surefire-reports/TEST-*.xml"
+        reporter: java-junit
