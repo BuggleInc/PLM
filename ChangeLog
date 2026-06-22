@@ -8,6 +8,7 @@
     - Modernize the build chain by using maven  [Juan Manuel Méndez Rey]
   * Languages
     - Modernize the C lang; student's printfs are now shown in the console
+    - #523: Code was always reported as successful in C, even if it did not compile.
   * Tests:
     - Move from junit4 to junit5.
 

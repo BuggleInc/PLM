@@ -41,13 +41,13 @@ public class LangC extends ProgrammingLanguage {
 
 		for (SourceFile sf : sfs){
 			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
-			compile(code,exo.getId(),exo.lastResult);
+			compile(code,exo.getId(),exo);
 			
 		}
 	}
 
 
-	private void compile(String code, String executable, ExecutionProgress lastResult) throws PLMCompilerException{
+	private void compile(String code, String executable, Exercise exo) throws PLMCompilerException{
 		
 		Runtime runtime = Runtime.getRuntime();
 
@@ -95,7 +95,7 @@ public class LangC extends ProgrammingLanguage {
 				remote = "RemoteHanoi";
 			}else{
 				PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
-				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+				exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
 				throw e;
 			}
 			
@@ -195,7 +195,7 @@ public class LangC extends ProgrammingLanguage {
 				PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
-				lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+				exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
 
 				throw e;
 			}
