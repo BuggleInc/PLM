@@ -3,13 +3,10 @@ package plm.core.lang;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.List;
-
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
@@ -22,12 +19,23 @@ import plm.core.utils.ValgrindParser;
 import plm.universe.Entity;
 
 public class LangC extends ProgrammingLanguage {
+  private boolean haveValgrind = false;
 
-	public LangC() {
-		super("C","c",ResourcesCache.getIcon("img/lang_c.png"));
-	}
+  public LangC()
+  {
+    super("C", "c", ResourcesCache.getIcon("img/lang_c.png"));
 
-	@Override
+    // Test whether Valgrind is installed
+    Runtime r = Runtime.getRuntime();
+    try {
+      r.exec("valgrind --version");
+      haveValgrind = true;
+    } catch (IOException e) {
+      System.err.println(Game.i18n.tr("Valgrind does not seem to be installed."));
+    }
+  }
+
+        @Override
 	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		
@@ -270,18 +278,12 @@ public class LangC extends ProgrammingLanguage {
                           arg1[2] = saveDir.getAbsolutePath() + "/" +
                                     executable + "" + extension;
                         } else {
-                          // test if valgrind exist
-                          Runtime r = Runtime.getRuntime();
-                          try {
-                            r.exec("valgrind --version");
+                          if (haveValgrind) {
                             if (valgrindFile.createNewFile()) {
                               valgrind.append(
                                   "valgrind --xml=yes --xml-file=\"" +
                                   valgrindFile.getAbsolutePath() + "\"");
                             }
-                          } catch (IOException e) {
-                            System.err.println(Game.i18n.tr(
-                                "Valgrind does not seem to be installed."));
                           }
                           arg1 = new String[3];
                           arg1[0] = "/bin/sh";
