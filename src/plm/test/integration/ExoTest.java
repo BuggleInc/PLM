@@ -207,7 +207,7 @@ public class ExoTest {
           initExerciseState(l, e);
           if (!e.getProgLanguages().contains(Game.C))
             Assertions.fail("Exercise " + e.getId() + " does not support C");
-          testCorrectionEntityExists(e, Game.C);
+          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntityExists(e, Game.C); });
         }
 
         @ParameterizedTest
