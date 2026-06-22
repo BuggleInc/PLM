@@ -1,89 +1,51 @@
 
-#undef printf
-
-
+#include "../include/RemoteBaseball.h"
 
 int getBasesAmount(){
-	int ba;
-	printf("110 getBasesAmout\n");
-	fflush(stdout);
-	scanf("%d",&ba);
-	flush();
-	return ba;
+  send_command("110 getBasesAmout");
+  return get_answer_int();
 }
 
 int getPositionsAmount(){
-	int pa;
-	printf("111 getPositionsAmout\n");
-	fflush(stdout);
-	scanf("%d",&pa);
-	flush();
-	return pa;
+  send_command("111 getPositionsAmout");
+  return get_answer_int();
 }
 
 int getHoleBase(){
-	int hb;
-	printf("112 getHoleBase\n");
-	fflush(stdout);
-	scanf("%d",&hb);
-	flush();
-	return hb;
+  send_command("112 getHoleBase");
+  return get_answer_int();
 }
 
 int getHolePosition(){
-	int hp;
-	printf("113 getHolePosition\n");
-	fflush(stdout);
-	scanf("%d",&hp);
-	flush();
-	return hp;
+  send_command("113 getHolePosition");
+  return get_answer_int();
 }
 
 int getPlayerColor(int base, int position){
-	int color;
-	printf("114 %d %d getPlayerColor\n", base, position);
-	fflush(stdout);
-	scanf("%d",&color);
-	flush();
-	return color;
+  send_command("114 %d %d getPlayerColor", base, position);
+  return get_answer_int();
 }
 
 int isSorted(){
-	int sort;
-	printf("115 isSorted\n");
-	fflush(stdout);
-	scanf("%d", &sort);
-	flush();
-	return sort;
+  send_command("115 isSorted");
+  return get_answer_int();
 }
 
 int isBaseSorted(int base){
-	int sel;
-	printf("116 %d isBaseSorted\n", base);
-	fflush(stdout);
-	scanf("%d", &sel);
-	flush();
-	return sel;
+  send_command("116 %d isBaseSorted", base);
+  return get_answer_int();
 }
 
 int isSelected(){
-	int sel;
-	printf("117 isSelected\n");
-	fflush(stdout);
-	scanf("%d", &sel);
-	flush();
-	return sel;
+  send_command("117 isSelected");
+  return get_answer_int();
 }
 
 void move(int base, int position){
-	printf("118 %d %d move\n", base, position);
-	fflush(stdout);
+  send_command("118 %d %d move", base, position);
 }
 
-void assertSorted(char* str){
-	printf("119 %s assertSorted\n", str);
-	fflush(stdout);
-}
+void assertSorted(char *str) { send_command("119 %s assertSorted", str); }
 
 /* BINDINGS TRANSLATION: French */
 int getNombreBases()     						{ return getBasesAmount(); }
@@ -94,7 +56,4 @@ int estTrie()              						{ return isSorted(); }
 int getTrouBase()     							{ return getHoleBase(); }
 int getTrouPosition() 							{ return getHolePosition(); }
 void deplace(int base, int position) 			{ move(base, position); }
-int estSelectionne() 							{ return isSelected(); }
-
-
-#define printf myPrintf
+int estSelectionne() { return isSelected(); }

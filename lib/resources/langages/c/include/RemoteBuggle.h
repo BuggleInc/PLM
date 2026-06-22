@@ -1,11 +1,7 @@
 #ifndef REMOTE_BUGGLE_H
 #define REMOTE_BUGGLE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
+#include "Remote.h"
 
 typedef enum{
 	white,
@@ -32,7 +28,6 @@ typedef enum{
 
 /* utils */
 
-char* int2str(int nb);
 int getParam();
 int getParamLangtonColor1(char* tab);
 void stepDone();

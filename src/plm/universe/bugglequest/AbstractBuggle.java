@@ -569,171 +569,182 @@ public abstract class AbstractBuggle extends Entity {
 
 	@Override
 	public void command(String command, BufferedWriter out){
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		int nb,nb2;
-		try {
-			switch(num){
-			case 110:
-				left();
-				break;
-			case 111:
-				right();
-				break;
-			case 112:
-				back();
-				break;
-			case 113 : 
-				nb = Integer.parseInt((command.split(" ")[1]));
-				if(nb==1){
-					forward();
-				}else{
-					forward(nb);
-				}
-				break;
-			case 114:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				if(nb==1){
-					backward();
-				}else{
-					backward(nb);
-				}
-				break;
-			case 115:
-				out.write(Integer.toString(getX()));
-				out.write("\n");
-				break;
-			case 116:
-				out.write(Integer.toString(getY()));
-				out.write("\n");
-				break;
-			case 117:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				setX(nb);
-				break;
-			case 118:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				setY(nb);
-				break;
-			case 119:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				nb2 = Integer.parseInt((command.split(" ")[2]));
-				setPos(nb, nb2);
-				break;
-			case 120:
-				out.write(Integer.toString(ColorMapper.color2int(getBodyColor())));
-				out.write("\n");
-				break;
-			case 121:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				setBodyColor(ColorMapper.int2color(nb));
-				break;
-			case 122:
-				out.write((isFacingWall()?"1":"0"));
-				out.write("\n");
-				break;
-			case 123:
-				out.write((isBackingWall()?"1":"0"));
-				out.write("\n");
-				break;	
-			case 124:
-				out.write(Integer.toString(getDirection().intValue()));
-				out.write("\n");
-				break;
-			case 125:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				Direction d=null;
-				switch(nb){
-				case Direction.NORTH_VALUE:
-					d=Direction.NORTH;
-					break;
-				case Direction.EAST_VALUE:
-					d=Direction.EAST;
-					break;
-				case Direction.SOUTH_VALUE:
-					d=Direction.SOUTH;
-					break;
-				case Direction.WEST_VALUE:
-					d=Direction.WEST;
-					break;
-				}
-				setDirection(d);
-				break;
-			case 126:
-				out.write((isSelected()?"1":"0"));
-				out.write("\n");
-				break;
-			case 127:
-				brushUp();
-				break;
-			case 128:
-				brushDown();
-				break;
-			case 129:
-				out.write((isBrushDown()?"1":"0"));
-				out.write("\n");
-				break;
-			case 130:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				setBrushColor(ColorMapper.int2color(nb));
-				break;
-			case 131:
-				out.write(Integer.toString(ColorMapper.color2int(getBrushColor())));
-				out.write("\n");
-				System.out.println("a toi");
-				break;
-			case 132:
-				out.write(Integer.toString(ColorMapper.color2int(getGroundColor())));
-				out.write("\n");
-				break;
-			case 133:
-				out.write((isOverBaggle()?"1":"0"));
-				out.write("\n");
-				break;
-			case 134:
-				out.write((isCarryingBaggle()?"1":"0"));
-				out.write("\n");
-				break;
-			case 135:
-				pickupBaggle();
-				break;
-			case 136:
-				dropBaggle();
-				break;
-			case 137:
-				out.write((isOverMessage()?"1":"0"));
-				out.write("\n");
-				break;
-			case 138:
-				String mess = (command.split(" ")[1]);
-				writeMessage(mess);
-				break;
-			case 139:
-				out.write(readMessage());
-				out.write("\n");
-				break;
-			case 140:
-				clearMessage();
-				break;
-			case 141:
-				out.write(Integer.toString(getWorldHeight()));
-				out.write("\n");
-				break;
-			case 142:
-				out.write(Integer.toString(getWorldWidth()));
-				out.write("\n");
-				break;
-			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
-				break;
-
-			}
-			out.flush();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}catch (InvalidColorNameException ine) {
-			ine.printStackTrace();
-		}
-
-	}
-
+          int num;
+          try {
+            num = Integer.parseInt((String)command.subSequence(0, 3));
+          } catch (StringIndexOutOfBoundsException e) {
+            throw new RuntimeException(
+                "Parse error while reading the command: " + command);
+          }
+          int nb, nb2;
+          try {
+            switch (num) {
+            case 110:
+              left();
+              break;
+            case 111:
+              right();
+              break;
+            case 112:
+              back();
+              break;
+            case 113:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              if (nb == 1) {
+                forward();
+              } else {
+                forward(nb);
+              }
+              break;
+            case 114:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              if (nb == 1) {
+                backward();
+              } else {
+                backward(nb);
+              }
+              break;
+            case 115:
+              out.write(Integer.toString(getX()));
+              out.write("\n");
+              break;
+            case 116:
+              out.write(Integer.toString(getY()));
+              out.write("\n");
+              break;
+            case 117:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              setX(nb);
+              break;
+            case 118:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              setY(nb);
+              break;
+            case 119:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              nb2 = Integer.parseInt((command.split(" ")[2]));
+              setPos(nb, nb2);
+              break;
+            case 120:
+              out.write(
+                  Integer.toString(ColorMapper.color2int(getBodyColor())));
+              out.write("\n");
+              break;
+            case 121:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              setBodyColor(ColorMapper.int2color(nb));
+              break;
+            case 122:
+              out.write((isFacingWall() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 123:
+              out.write((isBackingWall() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 124:
+              out.write(Integer.toString(getDirection().intValue()));
+              out.write("\n");
+              break;
+            case 125:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              Direction d = null;
+              switch (nb) {
+              case Direction.NORTH_VALUE:
+                d = Direction.NORTH;
+                break;
+              case Direction.EAST_VALUE:
+                d = Direction.EAST;
+                break;
+              case Direction.SOUTH_VALUE:
+                d = Direction.SOUTH;
+                break;
+              case Direction.WEST_VALUE:
+                d = Direction.WEST;
+                break;
+              }
+              setDirection(d);
+              break;
+            case 126:
+              out.write((isSelected() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 127:
+              brushUp();
+              break;
+            case 128:
+              brushDown();
+              break;
+            case 129:
+              out.write((isBrushDown() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 130:
+              nb = Integer.parseInt((command.split(" ")[1]));
+              setBrushColor(ColorMapper.int2color(nb));
+              break;
+            case 131:
+              out.write(
+                  Integer.toString(ColorMapper.color2int(getBrushColor())));
+              out.write("\n");
+              System.out.println("a toi");
+              break;
+            case 132:
+              out.write(
+                  Integer.toString(ColorMapper.color2int(getGroundColor())));
+              out.write("\n");
+              break;
+            case 133:
+              out.write((isOverBaggle() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 134:
+              out.write((isCarryingBaggle() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 135:
+              pickupBaggle();
+              break;
+            case 136:
+              dropBaggle();
+              break;
+            case 137:
+              out.write((isOverMessage() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 138:
+              String mess = (command.split(" ")[1]);
+              writeMessage(mess);
+              break;
+            case 139:
+              out.write(readMessage());
+              out.write("\n");
+              break;
+            case 140:
+              clearMessage();
+              break;
+            case 141:
+              out.write(Integer.toString(getWorldHeight()));
+              out.write("\n");
+              break;
+            case 142:
+              out.write(Integer.toString(getWorldWidth()));
+              out.write("\n");
+              break;
+            case 148: // getIndicationBdr
+              out.write("" + (isOverMessage() ? readMessage().charAt(0) : " ") +
+                        "\n");
+              break;
+            default:
+              System.out.println("UNKNOWN COMMAND received from "
+                                 + "the remote buggle: '" + command + "'");
+              break;
+            }
+            out.flush();
+          } catch (IOException ioe) {
+            ioe.printStackTrace();
+          } catch (InvalidColorNameException ine) {
+            ine.printStackTrace();
+          }
+        }
 }

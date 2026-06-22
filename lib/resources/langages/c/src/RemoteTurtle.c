@@ -1,161 +1,87 @@
 
-#undef printf
-
-char* int2str(int nb){
-	char* str = malloc(sizeof(char)*16);
-	sprintf(str, "%d", nb);
-	return str;
-}
+#include "../include/RemoteTurtle.h"
 
 int getParamInt(int nb){
-	int p=-1;
-	printf("200 %d getParamInt\n",nb);
-	fflush(stdout);
-	scanf("%d",&p);
-	flush();
-	return p;
+  send_command("200 %d getParamInt", nb);
+  return get_answer_int();
 }
 
 double getParamDouble(int nb){
-	double p=-1;
-	printf("201 %d getParamDouble\n",nb);
-	fflush(stdout);
-	scanf("%lf",&p);
-	flush();
-	return p;
+  send_command("201 %d getParamDouble", nb);
+  return get_answer_int();
 }
 
-void left(double nb){
-	printf("110 %lf left\n",nb);
-}
-				
-void right(double nb){
-	printf("111 %lf right\n",nb);
-}
-	
-void forward(double nb){
-	printf("112 %lf forward\n",nb);
-}
-	
-void backward(double nb){
-	printf("113 %lf backward\n",nb);
-}
-	
+void left(double nb) { send_command("110 %lf left", nb); }
+
+void right(double nb) { send_command("111 %lf right", nb); }
+
+void forward(double nb) { send_command("112 %lf forward", nb); }
+
+void backward(double nb) { send_command("113 %lf backward", nb); }
+
 double getX(){
-	double x=-1;
-	printf("114 getX\n");
-	fflush(stdout);
-	scanf("%lf",&x);
-	flush();
-	return x;
+  send_command("114 getX");
+  return get_answer_int();
 }
 	
 double getY(){
-	double y=-1;
-	printf("115 getY\n");
-	fflush(stdout);
-	scanf("%lf",&y);
-	flush();
-	return y;
-}
-	
-void setX(double nb){
-	printf("116 %lf setX\n", nb);
+  send_command("115 getY");
+  return get_answer_int();
 }
 
-void setY(double nb){
-	printf("117 %lf setY\n", nb);
-}
-	
+void setX(double nb) { send_command("116 %lf setX", nb); }
+
+void setY(double nb) { send_command("117 %lf setY", nb); }
+
 void setPos(double nb, double nb2){
-	printf("118 %lf %lf setPos\n", nb, nb2);
+  send_command("118 %lf %lf setPos", nb, nb2);
 }
 	
 void moveTo(double nb, double nb2){
-	printf("119 %lf %lf moveTo\n", nb, nb2);
+  send_command("119 %lf %lf moveTo", nb, nb2);
 }
-	
-void circle(double nb){
-	printf("120 %lf circle\n", nb);
-}
-	
-void hide(){
-	printf("121 hide\n");
-}
-	
-void show(){
-	printf("122 show\n");
-}
-	
+
+void circle(double nb) { send_command("120 %lf circle", nb); }
+
+void hide() { send_command("121 hide"); }
+
+void show() { send_command("122 show"); }
+
 int isVisible(){
-	int vis=0;
-	printf("123 isVisible\n");
-	fflush(stdout);
-	scanf("%d",&vis);
-	flush();
-	return vis;
+  send_command("123 isVisible");
+  return get_answer_int();
 }
-	
-void clear(){
-	printf("124 clear\n");
-}
-	
+
+void clear() { send_command("124 clear"); }
+
 double getHeading(){
-	double cap=-1;
-	printf("125 getHeading\n");
-	fflush(stdout);
-	scanf("%lf",&cap);
-	flush();
-	return cap;
+  send_command("125 getHeading");
+  return get_answer_double();
 }
-	
-void setHeading(double nb){
-	printf("126 %lf setHeading\n", nb);
-}
-	
-void penUp(){
-	printf("127 penUp\n");
-}
-	
-void penDown(){
-	printf("128 penDown\n");
-}
-	
+
+void setHeading(double nb) { send_command("126 %lf setHeading", nb); }
+
+void penUp() { send_command("127 penUp"); }
+
+void penDown() { send_command("128 penDown"); }
+
 int isPenDown(){
-	int down=0;
-	printf("129 isPenDown\n");
-	fflush(stdout);
-	scanf("%d",&down);
-	flush();
-	return down;
+  send_command("129 isPenDown");
+  fflush(stdout);
+  return get_answer_int();
 }
 
 Color getColor(){
-	int num=-1;
-	printf("130 getColor\n");
-	fflush(stdout);
-	scanf("%d",&num);
-	flush();
-	Color c = num;
-	return c;
+  send_command("130 getColor");
+  return get_answer_int();
 }
 
-void setColor(Color c){
-	printf("131 %d setColor\n", c);
-}
-	
+void setColor(Color c) { send_command("131 %d setColor", c); }
+
 int isSelected(){
-	int sel=0;
-	printf("132 isSelected\n");
-	fflush(stdout);
-	scanf("%d",&sel);
-	flush();
-	return sel;
+  send_command("132 isSelected");
+  return get_answer_int();
 }
-
-
-
-
 
 /* BINDINGS TRANSLATION: French */
 void avance(double steps) 			{ forward(steps); }
@@ -177,6 +103,4 @@ int estChoisie()      				{ return isSelected(); } // But we want to have the gr
 void efface()             			{ clear(); } 
 void cache()              			{ hide(); }
 void montre()             			{ show(); }
-int estVisible()      				{ return isVisible(); }
-
-#define printf myPrintf
+int estVisible() { return isVisible(); }

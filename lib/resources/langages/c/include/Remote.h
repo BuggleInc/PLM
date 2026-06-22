@@ -6,11 +6,12 @@
 #include <stdarg.h>
 #include <string.h>
 
-#define printf myPrintf
+void send_command(char *format, ...);
+int get_answer_int();
+double get_answer_double();
+char *get_answer_string();
+char get_answer_char();
 
-
-void flush();
-void myPrintf(char* format, ...);
 void run();
 
 

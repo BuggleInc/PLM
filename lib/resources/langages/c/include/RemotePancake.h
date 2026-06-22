@@ -1,11 +1,7 @@
 #ifndef REMOTE_PANCAKE_H
 #define REMOTE_PANCAKE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
+#include "Remote.h"
 
 int getStackSize();  
 int getPancakeRadius(int rank);  

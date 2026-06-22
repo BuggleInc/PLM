@@ -1,42 +1,24 @@
 
-#undef printf
+#include "../include/RemoteHanoi.h"
 
-
-void move(int src, int dst){
-	printf("110 %d %d move\n", src, dst);
-	fflush(stdout);
-}
+void move(int src, int dst) { send_command("110 %d %d move", src, dst); }
 
 int getSlotSize(int slot){
-	int size;
-	printf("111 %d getSlotSize\n", slot);
-	fflush(stdout);
-	scanf("%d",&size);
-	flush();
-	return size;
+  send_command("111 %d getSlotSize", slot);
+  return get_answer_int();
 }
 
 int isSelected(){
-	int sel;
-	printf("112 isSelected\n");
-	fflush(stdout);
-	scanf("%d", &sel);
-	flush();
-	return sel;
+  send_command("112 isSelected");
+  return get_answer_int();
 }
 
 int getParam(int nb){
-	int param;
-	printf("114 %d getParam\n", nb);
-	fflush(stdout);
-	scanf("%d",&param);
-	flush();
-	return param;
+  send_command("114 %d getParam", nb);
+  return get_answer_int();
 }
 
 /* BINDINGS TRANSLATION: French */
 void deplace(int src,int dst) 	{ move(src, dst); }
 int  getTaillePiquet(int rank) 	{ return getSlotSize(rank); }
-int estChoisi() 				{ return isSelected(); }
-
-#define printf myPrintf
+int estChoisi() { return isSelected(); }

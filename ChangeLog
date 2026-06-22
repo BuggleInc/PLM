@@ -6,9 +6,10 @@
     - Make sure we don't try to sign git commits even if the user local configuration requests otherwise.
     - Only log error messages, not the deprecation messages from the PLM itself.  [Juan Manuel Méndez Rey]
     - Modernize the build chain by using maven  [Juan Manuel Méndez Rey]
-
+  * Languages
+    - Modernize the C lang; student's printfs are now shown in the console
   * Tests:
-    - Move from junit4 to junit5
+    - Move from junit4 to junit5.
 
 20210630: 2.9.3
 

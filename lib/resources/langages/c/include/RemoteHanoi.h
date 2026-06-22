@@ -1,11 +1,7 @@
 #ifndef REMOTE_HANOI_H
 #define REMOTE_HANOI_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
+#include "Remote.h"
 
 void move(int src, int dst);
 int getSlotSize(int slot);

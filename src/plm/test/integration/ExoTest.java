@@ -199,56 +199,67 @@ public class ExoTest {
 			Assertions.fail("Exercise "+e.getId()+" does not support scala");
 		testCorrectionEntityExists(e, Game.SCALA);
 	}
-	
-//	@ParameterizedTest
-//    @MethodSource("exercises")
-	public void testCEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-		if (!e.getProgLanguages().contains(Game.C)) 
-			Assertions.fail("Exercise "+e.getId()+" does not support C");
-		testCorrectionEntityExists(e, Game.C);
-	}
-	
-	@ParameterizedTest
-    @MethodSource("exercises")
-	public void testPythonEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-		if (!e.getProgLanguages().contains(Game.PYTHON)) 
-			Assertions.fail("Exercise "+e.getId()+" does not support python");
-		testCorrectionEntityExists(e, Game.PYTHON);
-	}
-	
-	@ParameterizedTest
-    @MethodSource("exercises")
-	public void testJavaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-		testCorrectionEntity(e, Game.JAVA);
-	}
-	
-	@ParameterizedTest
-    @MethodSource("exercises")
-	public void testScalaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-		if (!e.getProgLanguages().contains(Game.SCALA)) 
-			Assertions.fail("Exercise "+e.getId()+" does not support scala");
-		testCorrectionEntity(e, Game.SCALA);
-	}
-	
-//	@ParameterizedTest
-//    @MethodSource("exercises")
-	public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-		if (!e.getProgLanguages().contains(Game.C)) 
-			Assertions.fail("Exercise "+e.getId()+" does not support C");
-		testCorrectionEntity(e, Game.C);
-	}
-	
-	@ParameterizedTest
-    @MethodSource("exercises")
-	public void testPythonEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-		if (!e.getProgLanguages().contains(Game.PYTHON)) 
-			Assertions.fail("Exercise "+e.getId()+" does not support python");
-		testCorrectionEntity(e, Game.PYTHON);
-	}
+
+        @ParameterizedTest
+        @MethodSource("exercises")
+        public void testCEntityExists(Lesson l, Exercise e)
+            throws BrokenProgrammingLanguageException {
+          initExerciseState(l, e);
+          if (!e.getProgLanguages().contains(Game.C))
+            Assertions.fail("Exercise " + e.getId() + " does not support C");
+          testCorrectionEntityExists(e, Game.C);
+        }
+
+        @ParameterizedTest
+        @MethodSource("exercises")
+        public void testPythonEntityExists(Lesson l, Exercise e)
+            throws BrokenProgrammingLanguageException {
+          initExerciseState(l, e);
+          if (!e.getProgLanguages().contains(Game.PYTHON))
+            Assertions.fail("Exercise " + e.getId() +
+                            " does not support python");
+          testCorrectionEntityExists(e, Game.PYTHON);
+        }
+
+        @ParameterizedTest
+        @MethodSource("exercises")
+        public void testJavaEntity(Lesson l, Exercise e)
+            throws BrokenProgrammingLanguageException {
+          initExerciseState(l, e);
+          testCorrectionEntity(e, Game.JAVA);
+        }
+
+        @ParameterizedTest
+        @MethodSource("exercises")
+        public void testScalaEntity(Lesson l, Exercise e)
+            throws BrokenProgrammingLanguageException {
+          initExerciseState(l, e);
+          if (!e.getProgLanguages().contains(Game.SCALA))
+            Assertions.fail("Exercise " + e.getId() +
+                            " does not support scala");
+          testCorrectionEntity(e, Game.SCALA);
+        }
+
+        @ParameterizedTest
+        @MethodSource("exercises")
+        public void testCEntity(Lesson l, Exercise e)
+            throws BrokenProgrammingLanguageException {
+          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
+            initExerciseState(l, e);
+            if (!e.getProgLanguages().contains(Game.C))
+              Assertions.fail("Exercise " + e.getId() + " does not support C");
+            testCorrectionEntity(e, Game.C);
+          });
+        }
+
+        @ParameterizedTest
+        @MethodSource("exercises")
+        public void testPythonEntity(Lesson l, Exercise e)
+            throws BrokenProgrammingLanguageException {
+          initExerciseState(l, e);
+          if (!e.getProgLanguages().contains(Game.PYTHON))
+            Assertions.fail("Exercise " + e.getId() +
+                            " does not support python");
+          testCorrectionEntity(e, Game.PYTHON);
+        }
 }

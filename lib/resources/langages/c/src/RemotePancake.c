@@ -1,64 +1,36 @@
 
-#undef printf
-
+#include "../include/RemotePancake.h"
 
 int getStackSize(){
-	int size;
-	printf("110 getStackSize\n");
-	fflush(stdout);
-	scanf("%d",&size);
-	flush();
-	return size;
+  send_command("110 getStackSize");
+  return get_answer_int();
 }
 
 int getPancakeRadius(int rank){
-	int rad;
-	printf("111 %d getPancakeRadius\n", rank);
-	fflush(stdout);
-	scanf("%d",&rad);
-	flush();
-	return rad;
+  send_command("111 %d getPancakeRadius", rank);
+  return get_answer_int();
 } 
 
 int isPancakeUpsideDown(int rank){
-	int down;
-	printf("112 %d isPancakeUpsideDown\n", rank);
-	fflush(stdout);
-	scanf("%d", &down);
-	flush();
-	return down;
-}  
-
-void flip(int amount){
-	printf("113 %d flip\n",amount);
-	fflush(stdout);
+  send_command("112 %d isPancakeUpsideDown", rank);
+  return get_answer_int();
 }
 
+void flip(int amount) { send_command("113 %d flip", amount); }
+
 int isSorted(){
-	int sort;
-	printf("114 isSorted\n");
-	fflush(stdout);
-	scanf("%d", &sort);
-	flush();
-	return sort;
+  send_command("114 isSorted");
+  return get_answer_int();
 }
 
 int isSelected(){
-	int sel;
-	printf("115 isSelected\n");
-	fflush(stdout);
-	scanf("%d", &sel);
-	flush();
-	return sel;
+  send_command("115 isSelected");
+  return get_answer_int();
 }  
 
 int wasRandom(){
-	int rand;
-	printf("116 wasRandom\n");
-	fflush(stdout);
-	scanf("%d", &rand);
-	flush();
-	return rand;
+  send_command("116 wasRandom");
+  return get_answer_int();
 }  
 
 /* BINDINGS TRANSLATION: French */
@@ -67,6 +39,4 @@ int getRayonCrepe(int rank) 		{ return getPancakeRadius(rank); }
 int getTaillePile() 				{ return getStackSize(); }
 int estCrepeRetournee(int rank) 	{ return isPancakeUpsideDown(rank); }
 int estTriee() 						{ return isSorted(); }
-int estChoisi() 					{ return isSelected(); }
-
-#define printf myPrintf
+int estChoisi() { return isSelected(); }

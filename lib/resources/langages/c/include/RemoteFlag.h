@@ -1,11 +1,7 @@
 #ifndef REMOTE_FLAG_H
 #define REMOTE_FLAG_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
+#include "Remote.h"
 
 void swap(int x, int y);
 int getSize();

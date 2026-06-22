@@ -1,11 +1,7 @@
 #ifndef REMOTE_BASEBALL_H
 #define REMOTE_BASEBALL_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
+#include "Remote.h"
 
 void assertSorted(char* str);
 

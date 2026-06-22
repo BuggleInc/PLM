@@ -1,51 +1,31 @@
+#include "../include/RemoteFlag.h"
 
-#undef printf
-
-void swap(int x, int y){
-	printf("110 %d %d swap\n", x, y);
-	fflush(stdout);
-}
+void swap(int x, int y) { send_command("110 %d %d swap", x, y); }
 
 int getSize(){
-	int size;
-	printf("111 getSize\n");
-	fflush(stdout);
-	scanf("%d",&size);
-	flush();
-	return size;
+  send_command("111 getSize");
+  return get_answer_int();
 }
 
 int getColor(int line){
-	int col;
-	printf("112 %d getColor\n", line);
-	fflush(stdout);
-	scanf("%d",&col);
-	flush();
-	return col;
+  send_command("112 %d getColor", line);
+  return get_answer_int();
 }
 
 int isSorted(){
-	int sort;
-	printf("113 isSorted\n");
-	fflush(stdout);
-	scanf("%d", &sort);
-	flush();
-	return sort;
+  send_command("113 isSorted");
+  return get_answer_int();
 }
 
 int isSelected(){
-	int sel;
-	printf("114 isSelected\n");
-	fflush(stdout);
-	scanf("%d", &sel);
-	flush();
-	return sel;
+  send_command("114 isSelected");
+  return get_answer_int();
 }
 
 
 void assertSorted(){
-	printf("115 assertSorted\n");
-	fflush(stdout);
+  send_command("115 assertSorted");
+  fflush(stdout);
 }
 
 /* BINDINGS TRANSLATION: French */
@@ -53,6 +33,4 @@ void echange(int i, int j) { swap(i,j); }
 int getCouleur(int rank)   { return getColor(rank); }
 int getTaille()            { return getSize(); }
 int estTrie()          { return isSorted(); }
-int estChoisi()        { return isSelected(); }
-
-#define printf myPrintf
+int estChoisi() { return isSelected(); }

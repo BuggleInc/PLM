@@ -1,349 +1,201 @@
 
-#undef printf
-/* Utils */
-
-
-char* int2str(int nb){
-	char* str = malloc(sizeof(char)*16);
-	sprintf(str, "%d", nb);
-	return str;
-}
-
-
+#include "../include/RemoteBuggle.h"
 
 /* Function for buggles */
 
+void left() { send_command("110 left"); }
 
-void left(){
-	printf("110 left\n");
-}
+void right() { send_command("111 right"); }
 
-void right(){
-	printf("111 right\n");
-}
-
-void back(){
-	printf("112 back\n");
-}
+void back() { send_command("112 back"); }
 
 void stepForward(){
 	forward(1);
 }
 
-void forward(int nb){
-	printf("113 %d forward\n", nb);
-}
+void forward(int nb) { send_command("113 %d forward", nb); }
 
 void stepBackward(){
 	backward(1);
 }
 
-void backward(int nb){
-	printf("114 %d backward\n",nb );
-}
+void backward(int nb) { send_command("114 %d backward", nb); }
 
 int getX(){
-	int x=-1;
-	printf("115 getX\n");
-	fflush(stdout);
-	scanf("%d",&x);
-	flush();
-	return x;
+  send_command("115 getX");
+  return get_answer_int();
 }
 
 int getY(){
-	int y=-1;
-	printf("116 getY\n");
-	fflush(stdout);
-	scanf("%d",&y);
-	flush();
-	return y;
+  send_command("116 getY");
+  return get_answer_int();
 }
 
-void setX(int nb){
-	printf("117 %d setX\n", nb);
-}
+void setX(int nb) { send_command("117 %d setX", nb); }
 
-void setY(int nb){
-	printf("118 %d setY\n", nb);
-}
+void setY(int nb) { send_command("118 %d setY", nb); }
 
-void setPos(int nb, int nb2){
-	printf("119 %d %d setPos\n", nb, nb2);
-}
+void setPos(int nb, int nb2) { send_command("119 %d %d setPos", nb, nb2); }
 
 Color getBodyColor(){
-	printf("120 getBodyColor\n");
-	int num=-1;
-	fflush(stdout);
-	scanf("%d",&num);
-	flush();
-	Color c = num;
-	return c;
+  send_command("120 getBodyColor");
+  Color c = get_answer_int();
+  return c;
 }
 
-void setBodyColor(Color color){
-	printf("121 %d setBodyColor\n", color);
-}
+void setBodyColor(Color color) { send_command("121 %d setBodyColor", color); }
 
 int isFacingWall(){
-	int face=0;
-	printf("122 isFacingWall\n");
-	fflush(stdout);
-	scanf("%d",&face);
-	flush();
-	return face;
+  send_command("122 isFacingWall");
+  return get_answer_int();
 }
 
 int isBackingWall(){
-	int back=0;
-	printf("123 isBackingWall\n");
-	fflush(stdout);
-	scanf("%d",&back);
-	flush();
-	return back;
+  send_command("123 isBackingWall");
+  return get_answer_int();
 }
 
-Direction getDirection(){
-	int dir=0;
-	printf("124 getDirection\n");
-	fflush(stdout);
-	scanf("%d", &dir);
-	flush();
-	return dir;
-}
+Direction getDirection() { return get_answer_int(); }
 
-void setDirection(Direction dir){
-	printf("125 %d setDirection\n", dir);
-}
+void setDirection(Direction dir) { send_command("125 %d setDirection", dir); }
 
 int isSelected(){
-	int sel=0;
-	printf("126 isSelected\n");
-	fflush(stdout);
-	scanf("%d",&sel);
-	flush();
-	return sel;
+  send_command("126 isSelected");
+  return get_answer_int();
 }
 
-void brushUp(){
-	printf("127 brushUp\n");
-}
+void brushUp() { send_command("127 brushUp"); }
 
-void brushDown(){
-	printf("128 brushDown\n");
-}
+void brushDown() { send_command("128 brushDown"); }
 
 int isBrushDown(){
-	int down=0;
-	printf("129 isBrushDown\n");
-	fflush(stdout);
-	scanf("%d",&down);
-	flush();
-	return down;
+  send_command("129 isBrushDown");
+  return get_answer_int();
 }
-void setBrushColor(Color color){
-	printf("130 %d setBrushColor\n", color);
-}
+void setBrushColor(Color color) { send_command("130 %d setBrushColor", color); }
 
 Color getBrushColor(){
-	int num=-1;
-	printf("131 getBrushColor\n");
-	fflush(stdout);
-	scanf("%d",&num);
-	flush();
-	Color c = num;
-	return c;
+  send_command("131 getBrushColor");
+  return get_answer_int();
 }
 
 Color getGroundColor(){
-	int num=-1;
-	printf("132 getGroundColor\n");
-	fflush(stdout);
-	scanf("%d",&num);
-	flush();
-	return num;
+  send_command("132 getGroundColor");
+  return get_answer_int();
 }
 
 int isOverBaggle(){
-	int over=0;
-	printf("133 isOverBaggle\n" );
-	fflush(stdout);
-	scanf("%d",&over);
-	flush();
-	return over;
+  send_command("133 isOverBaggle");
+  return get_answer_int();
 }
 
 int isCarryingBaggle(){
-	int carr=1;
-	printf("134 isCarryingBaggle\n");
-	fflush(stdout);
-	scanf("%d",&carr);
-	flush();
-	return carr;
+  send_command("134 isCarryingBaggle");
+  return get_answer_int();
 }
 
-void pickupBaggle(){
-	printf("135 pickupBaggle\n");
-}
+void pickupBaggle() { send_command("135 pickupBaggle"); }
 
-void dropBaggle(){
-	printf("136 dropBaggle\n");
-}
+void dropBaggle() { send_command("136 dropBaggle"); }
 
 int isOverMessage(){
-	int over=0;
-	printf("137 isOverMessage\n");
-	fflush(stdout);
-	scanf("%d",&over);
-	flush();
-	return over;
+  send_command("137 isOverMessage");
+  return get_answer_int();
 }
 
-void writeMessage(char* str){
-	printf("138 %s writeMessage\n",str);
-}
+void writeMessage(char *str) { send_command("138 %s writeMessage", str); }
 
 char* readMessage(){
-	char* mess = malloc(sizeof(char)*1024);
-	printf("139 readMessage\n");
-	fflush(stdout);
-	scanf("%s",mess);
-	flush();
-	return mess;
+  send_command("139 readMessage");
+  return get_answer_string();
 }
 
-void clearMessage(){
-	printf("140 clearMessage\n");
-}
+void clearMessage() { send_command("140 clearMessage"); }
 
 int getWorldHeight(){
-	int h=-1;
-	printf("141 getWorldHeight\n");
-	fflush(stdout);
-	scanf("%d",&h);
-	flush();
-	return h;
+  send_command("141 getWorldHeight");
+  return get_answer_int();
 }
 
 int getWorldWidth(){
-	int w=-1;
-	printf("142 getWorldWidth\n");
-	fflush(stdout);
-	scanf("%d",&w);
-	flush();
-	return w;
+  send_command("142 getWorldWidth");
+  return get_answer_int();
 }
 
 void setIndication(int x, int y, int i){
-	printf("143 %d %d %d setIndication\n", x,y,i);
+  send_command("143 %d %d %d setIndication", x, y, i);
 }
 
 
 int getIndication(int x, int y){
-	int ind=-1;
-	printf("144 %d %d getIndication\n",x,y);
-	fflush(stdout);
-	scanf("%d",&ind);
-	flush();
-	return ind;
+  send_command("144 %d %d getIndication", x, y);
+  return get_answer_int();
 }
 
 int hasBaggle(int x, int y){
-	int has=1;
-	printf("145 %d %d hasBaggle\n",x,y);
-	fflush(stdout);
-	scanf("%d",&has);
-	flush();
-	return has;
+  send_command("145 %d %d hasBaggle", x, y);
+  return get_answer_int();
 }
 
 int hasTopWall(int x, int y){
-	int has=1;
-	printf("146 %d %d hasTopWall\n",x,y);
-	fflush(stdout);
-	scanf("%d",&has);
-	flush();
-	return has;
+  send_command("146 %d %d hasTopWall", x, y);
+  return get_answer_int();
 }
 
 int hasLeftWall(int x, int y){
-	int has=1;
-	printf("147 %d %d hasLeftWall\n",x,y);
-	fflush(stdout);
-	scanf("%d",&has);
-	flush();
-	return has;
+  send_command("147 %d %d hasLeftWall", x, y);
+  return get_answer_int();
 }
 
 char getIndicationBdr(){
-	char c=' ';
-	printf("148 getIndicationBdr\n");
-	fflush(stdout);
-	scanf("%c",&c);
-	flush();
-	return c;
+  send_command("148 getIndicationBdr");
+  return get_answer_char();
 }
-
-
-
 
 /* Others */
 
 int getParam(){
-	int p=-1;
-	printf("200 getParam\n");
-	fflush(stdout);
-	scanf("%d",&p);
-	flush();
-	return p;
+  send_command("200 getParam");
+  return get_answer_int();
 }
 
-void stepDone(){
-	printf("201 stepDone\n");
-	fflush(stdout);
-}
+void stepDone() { send_command("201 stepDone"); }
 
 int getParamLangtonColor1(char* tab){
-	char* line = (char*)malloc(sizeof(char)*256);
-	printf("202 getParamLangtonColor1\n");
-	fflush(stdout);
-	scanf("%s",line);
-	flush();
+  send_command("202 getParamLangtonColor1");
+  char *line = get_answer_string();
 
-	int length = strlen(line);
-	int i=0;
-	for(i=0;i<length;i++){
-		tab[i]=line[i];
-	}
-	free(line);
-	return length;
+  int length = strlen(line);
+  int i = 0;
+  for (i = 0; i < length; i++) {
+    tab[i] = line[i];
+  }
+  free(line);
+  return length;
 }
 
 int*** getParamHelloTurmite1(int* dim1, int* dim2, int* dim3){
-	char* line = (char*)malloc(sizeof(char)*256);
-	printf("203 getParamHelloTurmite1\n");
-	fflush(stdout);
-	scanf("%s",line);
-	flush();
-	int i,j,k;
-	*dim1=line[0]-48;
-	*dim2=line[2]-48;
-	*dim3=line[4]-48;
-	int curs=6;
+  send_command("203 getParamHelloTurmite1");
+  char *line = get_answer_string();
 
-	int*** tab = (int***)malloc(sizeof(int**) * (*dim1));
-	for(i=0;i<*dim1;i++){
-		tab[i]=(int**)malloc(sizeof(int*)* (*dim2));
-		for(j=0;j<*dim2;j++){
-			tab[i][j]=(int*)malloc(sizeof(int)* (*dim1));
-			for(k=0;k<*dim3;k++){
-				tab[i][j][k]=line[curs]-48;
-				curs+=2;
-			}
-		}
-	}
-	return tab;
+  int i, j, k;
+  *dim1 = line[0] - 48;
+  *dim2 = line[2] - 48;
+  *dim3 = line[4] - 48;
+  int curs = 6;
+
+  int ***tab = (int ***)malloc(sizeof(int **) * (*dim1));
+  for (i = 0; i < *dim1; i++) {
+    tab[i] = (int **)malloc(sizeof(int *) * (*dim2));
+    for (j = 0; j < *dim2; j++) {
+      tab[i][j] = (int *)malloc(sizeof(int) * (*dim1));
+      for (k = 0; k < *dim3; k++) {
+        tab[i][j][k] = line[curs] - 48;
+        curs += 2;
+      }
+    }
+  }
+  return tab;
 }
 
 /* BINDINGS TRANSLATION: French */
@@ -380,6 +232,4 @@ int estChoisie()          		{ return isSelected(); } // But we want to have the 
 
 int aBiscuit(int x, int y) 		{ return hasBaggle(x,y); }
 int aMurNord(int x, int y) 		{ return hasTopWall(x,y); }
-int aMurOuest(int x, int y)		{ return hasLeftWall(x, y); }
-
-#define printf myPrintf
+int aMurOuest(int x, int y) { return hasLeftWall(x, y); }

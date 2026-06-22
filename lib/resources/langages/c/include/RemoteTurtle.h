@@ -1,11 +1,7 @@
 #ifndef REMOTE_TURTLE_H
 #define REMOTE_TURTLE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-
+#include "Remote.h"
 
 typedef enum{
 	white,

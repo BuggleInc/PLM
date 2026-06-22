@@ -1,11 +1,7 @@
 #ifndef REMOTE_SORT_H
 #define REMOTE_SORT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
+#include "Remote.h"
 
 int getValueCount();
 int isSmaller(int i, int j);
