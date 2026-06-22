@@ -31,7 +31,7 @@ public class LangC extends ProgrammingLanguage {
       r.exec("valgrind --version");
       haveValgrind = true;
     } catch (IOException e) {
-      System.err.println(Game.i18n.tr("Valgrind does not seem to be installed."));
+      System.err.println("Valgrind does not seem to be installed."); // Game.i18n is not initialized yet, don't use it
     }
   }
 
