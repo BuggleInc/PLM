@@ -141,7 +141,7 @@ public class Game implements IWorldView {
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
-	public  static I18n i18n;
+	public  static I18n i18n = I18nFactory.getI18n(Game.class,"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 
 	public static Game getInstance() {
 		if (Game.instance == null) {
@@ -156,7 +156,6 @@ public class Game implements IWorldView {
 	}
 
 	private Game() {
-		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
 
 		if (checkScala())
