@@ -207,7 +207,7 @@ public class ExoTest {
           initExerciseState(l, e);
           if (!e.getProgLanguages().contains(Game.C))
             Assertions.fail("Exercise " + e.getId() + " does not support C");
-          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntityExists(e, Game.C); });
+          testCorrectionEntityExists(e, Game.C);
         }
 
         @ParameterizedTest
@@ -226,7 +226,7 @@ public class ExoTest {
         public void testJavaEntity(Lesson l, Exercise e)
             throws BrokenProgrammingLanguageException {
           initExerciseState(l, e);
-          testCorrectionEntity(e, Game.JAVA);
+          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.JAVA); });
         }
 
         @ParameterizedTest
@@ -237,19 +237,17 @@ public class ExoTest {
           if (!e.getProgLanguages().contains(Game.SCALA))
             Assertions.fail("Exercise " + e.getId() +
                             " does not support scala");
-          testCorrectionEntity(e, Game.SCALA);
+          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.SCALA); });
         }
 
 //        @ParameterizedTest
 //        @MethodSource("exercises")
-        public void testCEntity(Lesson l, Exercise e)
-            throws BrokenProgrammingLanguageException {
-          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
-            initExerciseState(l, e);
-            if (!e.getProgLanguages().contains(Game.C))
-              Assertions.fail("Exercise " + e.getId() + " does not support C");
-            testCorrectionEntity(e, Game.C);
-          });
+        public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+        {
+          initExerciseState(l, e);
+          if (!e.getProgLanguages().contains(Game.C))
+            Assertions.fail("Exercise " + e.getId() + " does not support C");
+          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.C); });
         }
 
         @ParameterizedTest
@@ -260,6 +258,6 @@ public class ExoTest {
           if (!e.getProgLanguages().contains(Game.PYTHON))
             Assertions.fail("Exercise " + e.getId() +
                             " does not support python");
-          testCorrectionEntity(e, Game.PYTHON);
+          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.PYTHON); });
         }
 }
