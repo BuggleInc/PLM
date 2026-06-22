@@ -385,7 +385,8 @@ public abstract class ExerciseTemplated extends Exercise {
 		    		getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
 		    	}
 		        System.err.println("Uncaught exception while computing answer: " + ex);
-		    }
+                        ex.printStackTrace();
+                    }
 		};
 		Thread t = new Thread() {
 			@Override
