@@ -95,36 +95,61 @@ public class LangC extends ProgrammingLanguage {
 				remote = "RemoteHanoi";
 			}else{
 				PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
-				exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
-				throw e;
-			}
-			
-			BufferedReader cRemote = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
-			BufferedReader hRemote = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
-			BufferedReader cRemoteWorld = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
-			BufferedReader hRemoteWorld = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/"+remote+".h")));
-			String line;
-			StringBuffer preCode = new StringBuffer();
-			
-			while((line=hRemote.readLine())!=null){
-				preCode.append(line+"\n");
+                                exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+                                throw e;
                         }
 
-                        while ((line = cRemote.readLine()) != null)
-                          if (!line.equals("#include \"../include/Remote.h\""))
-                            preCode.append(line + "\n");
+                        String line;
+                        StringBuffer compiled_code = new StringBuffer();
 
+                        BufferedReader hRemote = new BufferedReader(new InputStreamReader(
+                            getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
+                        compiled_code.append("/************/");
+                        compiled_code.append("/* Remote.h */");
+                        compiled_code.append("/************/");
+                        while ((line = hRemote.readLine()) != null)
+                          if (!line.startsWith("#include \".."))
+                            compiled_code.append(line + "\n");
+                        hRemote.close();
+
+                        BufferedReader cRemote = new BufferedReader(new InputStreamReader(
+                            getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
+                        compiled_code.append("/************/");
+                        compiled_code.append("/* Remote.c */");
+                        compiled_code.append("/************/");
+                        while ((line = cRemote.readLine()) != null)
+                          if (!line.startsWith("#include \".."))
+                            compiled_code.append(line + "\n");
+                        cRemote.close();
+
+                        BufferedReader hRemoteWorld =
+                            new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(
+                                "resources/langages/c/include/" + remote + ".h")));
+                        compiled_code.append("/****************/");
+                        compiled_code.append("/* " + remote + ".h */");
+                        compiled_code.append("/****************/");
                         while ((line = hRemoteWorld.readLine()) != null)
                           if (!line.equals("#include \"Remote.h\""))
-                            preCode.append(line + "\n");
-
-                        while ((line = cRemoteWorld.readLine()) != null)
-                          if (!line.startsWith("#include \"../include/Remote"))
-                            preCode.append(line + "\n");
-
-                        cRemoteWorld.close();
+                            compiled_code.append(line + "\n");
                         hRemoteWorld.close();
-                        hRemote.close();
+
+                        BufferedReader cRemoteWorld =
+                            new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(
+                                "resources/langages/c/src/" + remote + ".c")));
+                        compiled_code.append("/****************/");
+                        compiled_code.append("/* " + remote + ".c */");
+                        compiled_code.append("/****************/");
+                        while ((line = cRemoteWorld.readLine()) != null)
+                          if (!line.startsWith("#include \".."))
+                            compiled_code.append(line + "\n");
+                        cRemoteWorld.close();
+
+                        compiled_code.append("/****************/");
+                        compiled_code.append("/* Student code */");
+                        compiled_code.append("/****************/");
+                        for (String li : code.split("\n"))
+                          if (!li.startsWith("#include \".."))
+                            compiled_code.append(li + "\n");
 
                         String[] arg1;
                         if (os.indexOf("win") >= 0) {
@@ -144,7 +169,7 @@ public class LangC extends ProgrammingLanguage {
                         final Process process = runtime.exec(arg1);
                         final BufferedWriter bwriter = new BufferedWriter(
                             new OutputStreamWriter(process.getOutputStream()));
-                        bwriter.write(preCode.toString() + "\n" + code);
+                        bwriter.write(compiled_code.toString());
                         bwriter.close();
 
                         Thread reader = new Thread() {
@@ -269,8 +294,9 @@ public class LangC extends ProgrammingLanguage {
                                              executable + "" + extension);
                         if (!exec.exists() || !exec.canExecute() ||
                             !exec.isFile()) {
-                          System.err.println(Game.i18n.tr(
-                              "Error, please recompile the exercise."));
+                          System.err.println(Game.i18n.tr("Error, please recompile the "
+                                                              + "exercise: {0} does not exist",
+                                                          exec.getName()));
                           if (valgrindFile.exists()) {
                             valgrindFile.delete();
                           }
