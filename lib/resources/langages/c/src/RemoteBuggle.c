@@ -13,7 +13,21 @@ void stepForward(){
 	forward(1);
 }
 
-void forward(int nb) { send_command("113 %d forward", nb); }
+void (*on_forward)(void) = NULL;
+void forward(int nb)
+{
+  if (on_forward != NULL) { // Run the callback after each step
+    for (int i = 0; i < nb; i++) {
+      send_command("113 1 forward");
+      (*on_forward)();
+    }
+  } else
+    send_command("113 %d forward", nb);
+}
+void set_on_forward(void (*param)(void))
+{
+  on_forward = param;
+}
 
 void stepBackward(){
 	backward(1);
@@ -154,15 +168,24 @@ char getIndicationBdr(){
 
 /* Others */
 
-int getParam(){
-  send_command("200 getParam");
+char* getParam(int i)
+{
+  send_command("200 %d getParam", i);
+  return get_answer_string();
+}
+int getParamCount()
+{
+  send_command("201 getParamCount");
   return get_answer_int();
 }
 
-void stepDone() { send_command("201 stepDone"); }
+void stepDone()
+{
+  send_command("202 stepDone");
+}
 
 int getParamLangtonColor1(char* tab){
-  send_command("202 getParamLangtonColor1");
+  send_command("203 getParamLangtonColor1");
   char *line = get_answer_string();
 
   int length = strlen(line);
@@ -175,7 +198,7 @@ int getParamLangtonColor1(char* tab){
 }
 
 int*** getParamHelloTurmite1(int* dim1, int* dim2, int* dim3){
-  send_command("203 getParamHelloTurmite1");
+  send_command("204 getParamHelloTurmite1");
   char *line = get_answer_string();
 
   int i, j, k;

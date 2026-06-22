@@ -687,7 +687,6 @@ public abstract class AbstractBuggle extends Entity {
               out.write(
                   Integer.toString(ColorMapper.color2int(getBrushColor())));
               out.write("\n");
-              System.out.println("a toi");
               break;
             case 132:
               out.write(
@@ -732,8 +731,16 @@ public abstract class AbstractBuggle extends Entity {
               out.write("\n");
               break;
             case 148: // getIndicationBdr
-              out.write("" + (isOverMessage() ? readMessage().charAt(0) : " ") +
-                        "\n");
+              out.write("" + (isOverMessage() ? readMessage().charAt(0) : " "));
+              out.write("\n");
+              break;
+            case 200: // getParam
+              nb = Integer.parseInt((command.split(" ")[1]));
+              out.write("" + getParam(nb).toString() + "\n");
+              break;
+            case 201: // getParamCount
+              out.write(Integer.toString(getParamCount()));
+              out.write("\n");
               break;
             default:
               System.out.println("UNKNOWN COMMAND received from "

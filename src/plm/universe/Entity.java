@@ -121,28 +121,23 @@ public abstract class Entity extends Observable {
 	}
 
 	/** Retrieve one parameter from the world */
-	public Object getParam(int i) {
-		return world.parameters[i];
-	}	
-	protected int getParamsAmount() {
-		return world.parameters.length;
-	}
+        public Object getParam(int i) { return world.parameters[i]; }
+        protected int getParamCount() { return world.parameters.length; }
 
-	/** Returns whether this is the entity selected in the interface */
-	public boolean isSelected() {
-		return this == Game.getInstance().getSelectedEntity();
-	}
+        /** Returns whether this is the entity selected in the interface */
+        public boolean isSelected() { return this == Game.getInstance().getSelectedEntity(); }
 
-	/** Run this specific entity, encoding the student logic to solve a given exercise. 
-	 * 
-	 *  This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)   
-	 */
-	public abstract void run() throws Exception;
+        /**
+         * Run this specific entity, encoding the student logic to solve a given exercise.
+         *
+         *  This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)
+         */
+        public abstract void run() throws Exception;
 
-	/** Allows Entity to communicate with external programs, as needed to execute C programs */
-	public abstract void command(String command, BufferedWriter out);
+        /** Allows Entity to communicate with external programs, as needed to execute C programs */
+        public abstract void command(String command, BufferedWriter out);
 
-	private Map<ProgrammingLanguage,String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
+        private Map<ProgrammingLanguage,String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
 	public void setScript(ProgrammingLanguage lang, String s) {
 		script.put(lang,  s);
 	}

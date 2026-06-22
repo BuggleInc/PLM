@@ -28,7 +28,8 @@ typedef enum{
 
 /* utils */
 
-int getParam();
+char* getParam(int i);
+int getParamCount();
 int getParamLangtonColor1(char* tab);
 void stepDone();
 int*** getParamHelloTurmite1(int* dim1, int* dim2, int* dim3);
@@ -39,6 +40,7 @@ void right();
 void back();
 void stepForward();
 void forward(int nb);
+void set_on_forward(void (*param)(void)); // Set a callback to execute after the move
 void stepBackward();
 void backward(int nb);
 int getX();
