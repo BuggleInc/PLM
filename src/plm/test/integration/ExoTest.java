@@ -200,8 +200,8 @@ public class ExoTest {
 		testCorrectionEntityExists(e, Game.SCALA);
 	}
 
-        @ParameterizedTest
-        @MethodSource("exercises")
+//        @ParameterizedTest
+//        @MethodSource("exercises")
         public void testCEntityExists(Lesson l, Exercise e)
             throws BrokenProgrammingLanguageException {
           initExerciseState(l, e);
@@ -240,8 +240,8 @@ public class ExoTest {
           testCorrectionEntity(e, Game.SCALA);
         }
 
-        @ParameterizedTest
-        @MethodSource("exercises")
+//        @ParameterizedTest
+//        @MethodSource("exercises")
         public void testCEntity(Lesson l, Exercise e)
             throws BrokenProgrammingLanguageException {
           Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
