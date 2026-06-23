@@ -680,8 +680,13 @@ public abstract class AbstractBuggle extends Entity {
               out.write("\n");
               break;
             case 130:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              setBrushColor(ColorMapper.int2color(nb));
+              String arg = command.split(" ")[1];
+              if (arg.indexOf('/') >= 0)
+                setBrushColor(ColorMapper.name2color(arg));
+              else {
+                nb = Integer.parseInt(arg);
+                setBrushColor(ColorMapper.int2color(nb));
+              }
               break;
             case 131:
               out.write(
@@ -691,6 +696,10 @@ public abstract class AbstractBuggle extends Entity {
             case 132:
               out.write(
                   Integer.toString(ColorMapper.color2int(getGroundColor())));
+              out.write("\n");
+              break;
+            case 149:
+              out.write(ColorMapper.color2name(getGroundColor()));
               out.write("\n");
               break;
             case 133:
@@ -734,6 +743,7 @@ public abstract class AbstractBuggle extends Entity {
               out.write("" + (isOverMessage() ? readMessage().charAt(0) : " "));
               out.write("\n");
               break;
+              // 149 is getGroundColorName
             case 200: // getParam
               nb = Integer.parseInt((command.split(" ")[1]));
               out.write("" + getParam(nb).toString() + "\n");

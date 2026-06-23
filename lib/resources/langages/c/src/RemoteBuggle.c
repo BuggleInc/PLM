@@ -87,6 +87,10 @@ int isBrushDown(){
   return get_answer_int();
 }
 void setBrushColor(Color color) { send_command("130 %d setBrushColor", color); }
+void setBrushColorName(const char* name)
+{
+  send_command("130 %s setBrushColor", name);
+}
 
 Color getBrushColor(){
   send_command("131 getBrushColor");
@@ -165,7 +169,11 @@ char getIndicationBdr(){
   send_command("148 getIndicationBdr");
   return get_answer_char();
 }
-
+char* getGroundColorName()
+{
+  send_command("149 getGroundColorName");
+  return get_answer_string();
+}
 /* Others */
 
 char* getParam(int i)

@@ -18,10 +18,12 @@ public class ExoTestCLang extends ExoTest {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))
       Assertions.fail("Exercise " + e.getId() + " does not support C");
-    testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.C);
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
+      testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.C);
+    });
   }
-  //        @ParameterizedTest
-  //        @MethodSource("exercises")
+  //@ParameterizedTest
+  //@MethodSource("exercises")
   public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);
