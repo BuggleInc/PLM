@@ -21,18 +21,35 @@ import plm.universe.Entity;
 public class LangC extends ProgrammingLanguage {
   private boolean haveValgrind = false;
 
-  public LangC()
-  {
-    super("C", "c", ResourcesCache.getIcon("img/lang_c.png"));
+  public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
-    // Test whether Valgrind is installed
-    Runtime r = Runtime.getRuntime();
-    try {
-      r.exec("valgrind --version");
-      haveValgrind = true;
-    } catch (IOException e) {
-      System.err.println("Valgrind does not seem to be installed."); // Game.i18n is not initialized yet, don't use it
+  /* Language detection logic */
+  private static String brokenLanguageMessage;
+  @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
+  private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+  @Override public boolean isBrokenLanguage()
+  {
+    Runtime runtime = Runtime.getRuntime();
+
+    if (brokenLanguageState == BrokenLanguageState.Unitialized) {
+      try {
+        runtime.exec("gcc --version");
+        brokenLanguageState = BrokenLanguageState.Usable;
+      } catch (IOException e) {
+        brokenLanguageMessage = e.getLocalizedMessage();
+        e.printStackTrace();
+        brokenLanguageState = BrokenLanguageState.NotUsable;
+      }
+
+      // Test whether Valgrind is installed
+      try {
+        runtime.exec("valgrind --version");
+        haveValgrind = true;
+      } catch (IOException e) {
+        System.err.println(Game.i18n.tr("Valgrind does not seem to be installed."));
+      }
     }
+    return brokenLanguageState == BrokenLanguageState.Usable;
   }
 
         @Override

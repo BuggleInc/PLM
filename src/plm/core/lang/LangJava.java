@@ -54,7 +54,20 @@ public class LangJava extends JVMCompiledLang {
 		super("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
 	}
 
-	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
+        /* Language detection logic */
+        private static String brokenLanguageMessage;
+        @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
+        private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+        @Override public boolean isBrokenLanguage()
+        {
+
+          if (brokenLanguageState == BrokenLanguageState.Unitialized) {
+            throw new RuntimeException("Unimplemented");
+          }
+          return brokenLanguageState == BrokenLanguageState.Usable;
+        }
+
+        private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of existing entity classes */
 
 

@@ -15,7 +15,20 @@ public class LangPython extends ScriptingLanguage {
 		super("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
 	}
 
-	protected void setupEntityBindings(Entity ent) {
+        /* Language detection logic */
+        private static String brokenLanguageMessage;
+        @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
+        private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+        @Override public boolean isBrokenLanguage()
+        {
+
+          if (brokenLanguageState == BrokenLanguageState.Unitialized) {
+            throw new RuntimeException("Unimplemented");
+          }
+          return brokenLanguageState == BrokenLanguageState.Usable;
+        }
+
+        protected void setupEntityBindings(Entity ent) {
 		ent.setScriptOffset(this, ent.getScriptOffset(this)+11);
 		ent.setScript(this, 
 				/* that's not really clean to get the output working when we redirect to the graphical console, 

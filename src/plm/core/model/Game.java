@@ -166,8 +166,8 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
 		else
 			System.err.println(i18n.tr("Please install jython to use the python programming language in the PLM."));
-		if (checkC())
-			System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
+                if (C.isBrokenLanguage())
+                  System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
 		else
 			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
 
@@ -191,11 +191,12 @@ public class Game implements IWorldView {
 		} else if (defaultProgrammingLanguage == Game.PYTHON && !canPython) {
 			System.err.println(i18n.tr("The default programming language is python, but your python installation is not usable. Switching to Java instead.\n"));
 			defaultProgrammingLanguage = Game.JAVA;
-		} else if (defaultProgrammingLanguage == Game.C && !canC) {
-			System.err.println(i18n.tr("The default programming language is C, but your C installation is not usable. Switching to Java instead.\n"));
-			defaultProgrammingLanguage = Game.JAVA;
-		}
-		setProgramingLanguageSafe(defaultProgrammingLanguage);
+                } else if (defaultProgrammingLanguage == Game.C && Game.C.isBrokenLanguage()) {
+                  System.err.println(i18n.tr("The default programming language is C, but your C installation is not " +
+                                             "usable. Switching to Java instead.\n"));
+                  defaultProgrammingLanguage = Game.JAVA;
+                }
+                setProgramingLanguageSafe(defaultProgrammingLanguage);
 
 		users = new Users(SAVE_DIR);
 
@@ -264,23 +265,7 @@ public class Game implements IWorldView {
 		return true;
 	}
 
-
-	public boolean canC = false;
-	String CError = "";
-	private boolean checkC(){
-		Runtime runtime = Runtime.getRuntime();
-		try {
-			runtime.exec("gcc --version");
-			canC=true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			canC=false;
-		}
-		return canC;
-	}
-
-
-	private String canResolve(String resource, String hint) {
+        private String canResolve(String resource, String hint) {
 		try {
 			URL path = getClass().getResource(resource+".class");
 			if (path != null)
@@ -1006,10 +991,13 @@ public class Game implements IWorldView {
 				throw new BrokenProgrammingLanguageException(i18n.tr("Python is missing"), 
 				 i18n.tr("Please install jython and its dependencies to use the python programming language in the PLM.\n\n")+pythonError); 
 			}
-			if (newLanguage.equals(Game.C) && !canC) {
-				throw new BrokenProgrammingLanguageException(i18n.tr("C is missing"), i18n.tr("Please install C and its dependencies to use the C programming language in the PLM.\n\n")+CError); 
-			}
-			this.programmingLanguage = newLanguage;
+                        if (newLanguage.equals(Game.C) && C.isBrokenLanguage()) {
+                          throw new BrokenProgrammingLanguageException(
+                              i18n.tr("C is missing"), i18n.tr("Please install C and its dependencies to use the C " +
+                                                               "programming language in the PLM.\n\n") +
+                                                           C.getBrokenLanguageMessage());
+                        }
+                        this.programmingLanguage = newLanguage;
 			if(getCurrentLesson() != null)
 				((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress();
 			fireProgLangChange(newLanguage);

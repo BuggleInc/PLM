@@ -94,4 +94,9 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
 		return exo.nameOfCorrectionEntity();
 	}
+
+        public enum BrokenLanguageState { Usable, NotUsable, Unitialized }
+        ;
+        public abstract boolean isBrokenLanguage();
+        public abstract String getBrokenLanguageMessage();
 }

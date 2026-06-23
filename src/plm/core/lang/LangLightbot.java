@@ -17,7 +17,11 @@ public class LangLightbot extends ProgrammingLanguage {
 		super("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
 	}
 
-	@Override
+        /* Language detection logic: useless for this "language" */
+        @Override public String getBrokenLanguageMessage() { return ""; }
+        @Override public boolean isBrokenLanguage() { return false; }
+
+        @Override
 	public void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		

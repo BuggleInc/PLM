@@ -40,7 +40,20 @@ public class LangScala extends JVMCompiledLang {
 		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
 	}
 
-	@Override
+        /* Language detection logic */
+        private static String brokenLanguageMessage;
+        @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
+        private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+        @Override public boolean isBrokenLanguage()
+        {
+
+          if (brokenLanguageState == BrokenLanguageState.Unitialized) {
+            throw new RuntimeException("Unimplemented");
+          }
+          return brokenLanguageState == BrokenLanguageState.Usable;
+        }
+
+        @Override
 	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
 			throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
