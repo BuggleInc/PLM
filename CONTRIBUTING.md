@@ -143,3 +143,9 @@ Publishing the Debian package:
 Preparing the next release cycle
 - Create a new entry in Changelog with an odd patch version
 - Update the version number in .appveyor.yml and plm.configuration.properties
+
+Receipes (notes to self)
+========================
+
+- Recompile and run the PLM w/o testing: `mvn package -DskipTests && java -jar target/plm-*.jar`
+- Run a specific test: `mvn test -Dtest=TestName*`

@@ -35,237 +35,168 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
+/* This ancestor class defines useful methods that are used in specific tests, that are subclasses */
+
 public class ExoTest {
 
-	static private String[] lessonNamesToTest = new String[] { // WARNING, keep ChooseLessonDialog.lessons synchronized
-		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
-		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake", 
-		"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi",
-		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
-		"lessons.bat.string1", "lessons.lander",
-		};
+  static private String[] lessonNamesToTest = new String[] {
+      // WARNING, keep ChooseLessonDialog.lessons synchronized
+      "lessons.welcome",
+      "lessons.turmites",
+      "lessons.maze",
+      "lessons.turtleart",
+      "lessons.sort.basic",
+      "lessons.sort.dutchflag",
+      "lessons.sort.baseball",
+      "lessons.sort.pancake",
+      "lessons.recursion.cons",
+      "lessons.recursion.lego",
+      "lessons.recursion.hanoi",
+      // "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
+      "lessons.bat.string1",
+      "lessons.lander",
+  };
 
-	@BeforeAll
-	static public void setUpClass() {
-	}
-	
-    /* Generate the stream of parameters we want to run our parameterized tests on */
-    static public Stream<Arguments> exercises() throws BrokenProgrammingLanguageException {
-		List<Arguments> result = new LinkedList<>();
-		
-		FileUtils.setLocale(new Locale("en"));
-		Game g = Game.getInstance();
-		g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
-		g.removeSessionKit();
-		g.setBatchExecution();
+  /* Generate the stream of parameters we want to run our parameterized tests on */
+  static public Stream<Arguments> exercises() throws BrokenProgrammingLanguageException
+  {
+    List<Arguments> result = new LinkedList<>();
 
-		/* Compute the answers with the java entities */
-                Game.getInstance().setProgramingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
+    FileUtils.setLocale(new Locale("en"));
+    Game g = Game.getInstance();
+    g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
+    g.removeSessionKit();
+    g.setBatchExecution();
 
-                Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
-		for (String lessonName : lessonNamesToTest) { 
-			try {
-				if (g.switchLesson(lessonName, false)==null) {
-					System.err.println("Warning, I tried to load "+lessonName+" but something went wrong... Please fix it before running this test again.");
-					System.exit(1);
-				}
-			} catch (Throwable t) {
-				System.err.println("Switching to lesson "+lessonName+" raised a "+t.getClass().getName()+". Please fix it.");
-				t.printStackTrace();
-			}
-				
-			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
-			if (g.getCurrentLesson().getExerciseCount() == 0) {
-				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
-				System.exit(1);
-			}
-			for (Lecture l : g.getCurrentLesson().exercises()) 
-				if (l instanceof Exercise) {
-					result.add(Arguments.of(Game.getInstance().getCurrentLesson(), l));
-					//System.out.println("  Add exercise "+l.getName());
-					if (alreadySeenExercises.contains(l)) {
-						System.err.println("Warning, I tried to add the exercise "+l.getName()+" twice. Something's wrong here");
-						System.exit(1);
-					}
-					alreadySeenExercises.add(l);
-				}
-		}
-		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
-		System.out.println("");
-		
-		//g.switchDebug();		
-		g.setLocale(new Locale("en")); // Test the templates in English, to catch translation issues
-		
-		return result.stream();
-	}
+    /* Compute the answers with the java entities */
+    Game.getInstance().setProgramingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
 
-	private void initExerciseState(Lesson l, Exercise exo) {
-		Game.getInstance().setCurrentLesson(l);
-		Game.getInstance().setCurrentExercise(exo);
-	
-		// disable delay on world execution
-		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
-			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
-		}
-	}
-	
-	/** Try to run the solution, fail if it's missing **/
-	private void testCorrectionEntityExists(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException {
-		Game.getInstance().setProgramingLanguage(lang);
-		
-		DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
-		
-		exo.lastResult = new ExecutionProgress();
-		try {
-			demoRunner.runDemo(exo);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			Assertions.fail(exo.getId()+"'s solution failed to run...");
-		}
-	}
-	
-	/** Resets current world, populate it with the correction entity, and rerun it */
-	private void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException {
-		Game.getInstance().setProgramingLanguage(lang);
-		
-		exo.lastResult = new ExecutionProgress();
-		System.err.println("Test exo "+exo.getName()+" in "+lang);
-		try {
-			exo.compileAll(null, StudentOrCorrection.CORRECTION);
-			if (exo.lastResult.compilationError != null && ! exo.lastResult.compilationError.equals(""))
-				Assertions.fail(exo.getId()+": compilation error: " + exo.lastResult.compilationError);
-
-			exo.reset();
-			// For compiled languages, we mutate to the compiled entity. 
-			// For script languages, we mutate to the correction entity.
-			StudentOrCorrection what = StudentOrCorrection.CORRECTION;
-                        if (lang.isJava() || lang.isScala() || lang.isC())
-                          what = StudentOrCorrection.STUDENT;
-			exo.mutateEntities(WorldKind.CURRENT, what);
-			
-			if (exo instanceof BatExercise)
-				for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
-					t.objectiveTest = false; // we want to set the result for real, not the expected
-			
-			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
-				for (Entity ent: w.getEntities())  
-					lang.runEntity(ent,exo.lastResult);
-			
-			exo.check();
-		} catch (PLMCompilerException e) {
-			System.err.println(e);
-			// compileAll already setup the error message; we just needed to not run the entity in that case
-		}
-		
-		if (exo.lastResult.compilationError != null) {
-			String msg = exo.getId()+": compilation error: "+exo.lastResult.compilationError+". Compiled file:\n"+
-					       ((exo.getSourceFileCount(lang)>0) ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
-													  : "none");
-			System.err.println(msg);									  
-			Assertions.fail(msg);
-		}
-		
-		
-		if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			String msg = "Test of "+exo.getId()+" failed ("+
-				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.executionError+"'";
-			System.err.println(msg);									  
-			for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)
-				try {
-					String name = "FailingWorld-"+exo.getId()+"-World"+wnum+".txt";
-					exo.getWorld(0).writeToFile(new File(name));
-					System.err.println(" World "+wnum+" dumped to "+name);
-				} catch (IOException e) {
-					System.err.println("Cannot write the bugged world to disk because of the following exception");
-					e.printStackTrace();
-				}
-			Assertions.fail(msg);				
-		}
-	}
-	
-	@ParameterizedTest
-    @MethodSource("exercises")
-	void testJavaEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-                testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.JAVA);
+    Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();
+    for (String lessonName : lessonNamesToTest) {
+      try {
+        if (g.switchLesson(lessonName, false) == null) {
+          System.err.println("Warning, I tried to load " + lessonName +
+                             " but something went wrong... Please fix it before running this test again.");
+          System.exit(1);
         }
-	
-	@ParameterizedTest
-    @MethodSource("exercises")
-	public void testScalaEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException {
-		initExerciseState(l, e);
-                if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
-                  Assertions.fail("Exercise " + e.getId() + " does not support scala");
-                testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.SCALA);
-        }
+      } catch (Throwable t) {
+        System.err.println("Switching to lesson " + lessonName + " raised a " + t.getClass().getName() +
+                           ". Please fix it.");
+        t.printStackTrace();
+      }
 
-//        @ParameterizedTest
-//        @MethodSource("exercises")
-        public void testCEntityExists(Lesson l, Exercise e)
-            throws BrokenProgrammingLanguageException {
-          initExerciseState(l, e);
-          if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))
-            Assertions.fail("Exercise " + e.getId() + " does not support C");
-          testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.C);
+      System.out.println("Lesson " + lessonName + " loaded (" + g.getCurrentLesson().getExerciseCount() +
+                         " exercises)");
+      if (g.getCurrentLesson().getExerciseCount() == 0) {
+        System.err.println("Cannot find any exercise in " + lessonName + ". Something's wrong here");
+        System.exit(1);
+      }
+      for (Lecture l : g.getCurrentLesson().exercises())
+        if (l instanceof Exercise) {
+          result.add(Arguments.of(Game.getInstance().getCurrentLesson(), l));
+          // System.out.println("  Add exercise "+l.getName());
+          if (alreadySeenExercises.contains(l)) {
+            System.err.println("Warning, I tried to add the exercise " + l.getName() +
+                               " twice. Something's wrong here");
+            System.exit(1);
+          }
+          alreadySeenExercises.add(l);
         }
+    }
+    System.out.println("There is currently " + result.size() + " exercises in our database. Yes sir.");
+    System.out.println("");
 
-        @ParameterizedTest
-        @MethodSource("exercises")
-        public void testPythonEntityExists(Lesson l, Exercise e)
-            throws BrokenProgrammingLanguageException {
-          initExerciseState(l, e);
-          if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
-            Assertions.fail("Exercise " + e.getId() +
-                            " does not support python");
-          testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.PYTHON);
-        }
+    // g.switchDebug();
+    g.setLocale(new Locale("en")); // Test the templates in English, to catch translation issues
 
-        @ParameterizedTest
-        @MethodSource("exercises")
-        public void testJavaEntity(Lesson l, Exercise e)
-            throws BrokenProgrammingLanguageException {
-          initExerciseState(l, e);
-          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
-            testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.JAVA);
-          });
-        }
+    return result.stream();
+  }
 
-        @ParameterizedTest
-        @MethodSource("exercises")
-        public void testScalaEntity(Lesson l, Exercise e)
-            throws BrokenProgrammingLanguageException {
-          initExerciseState(l, e);
-          if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
-            Assertions.fail("Exercise " + e.getId() +
-                            " does not support scala");
-          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
-            testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.SCALA);
-          });
-        }
+  protected void initExerciseState(Lesson l, Exercise exo)
+  {
+    Game.getInstance().setCurrentLesson(l);
+    Game.getInstance().setCurrentExercise(exo);
 
-//        @ParameterizedTest
-//        @MethodSource("exercises")
-        public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
-        {
-          initExerciseState(l, e);
-          if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))
-            Assertions.fail("Exercise " + e.getId() + " does not support C");
-          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
-            testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.C);
-          });
-        }
+    // disable delay on world execution
+    for (int worldRank = 0; worldRank < exo.getWorldCount(); worldRank++) {
+      exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
+    }
+  }
 
-        @ParameterizedTest
-        @MethodSource("exercises")
-        public void testPythonEntity(Lesson l, Exercise e)
-            throws BrokenProgrammingLanguageException {
-          initExerciseState(l, e);
-          if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
-            Assertions.fail("Exercise " + e.getId() +
-                            " does not support python");
-          Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
-            testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON);
-          });
+  /** Try to run the solution, fail if it's missing **/
+  protected void testCorrectionEntityExists(Exercise exo, ProgrammingLanguage lang)
+      throws BrokenProgrammingLanguageException
+  {
+    Game.getInstance().setProgramingLanguage(lang);
+
+    DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
+
+    exo.lastResult = new ExecutionProgress();
+    try {
+      demoRunner.runDemo(exo);
+    } catch (Exception e) {
+      e.printStackTrace();
+      Assertions.fail(exo.getId() + "'s solution failed to run...");
+    }
+  }
+
+  /** Resets current world, populate it with the correction entity, and rerun it */
+  protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException
+  {
+    Game.getInstance().setProgramingLanguage(lang);
+
+    exo.lastResult = new ExecutionProgress();
+    System.err.println("Test exo " + exo.getName() + " in " + lang);
+    try {
+      exo.compileAll(null, StudentOrCorrection.CORRECTION);
+      if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
+        Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
+
+      exo.reset();
+      // For compiled languages, we mutate to the compiled entity.
+      // For script languages, we mutate to the correction entity.
+      StudentOrCorrection what = StudentOrCorrection.CORRECTION;
+      if (lang.isJava() || lang.isScala() || lang.isC())
+        what = StudentOrCorrection.STUDENT;
+      exo.mutateEntities(WorldKind.CURRENT, what);
+
+      if (exo instanceof BatExercise)
+        for (BatTest t : ((BatWorld)exo.getWorld(0)).tests)
+          t.objectiveTest = false; // we want to set the result for real, not the expected
+
+      for (World w : exo.getWorlds(WorldKind.CURRENT))
+        for (Entity ent : w.getEntities())
+          lang.runEntity(ent, exo.lastResult);
+
+      exo.check();
+    } catch (PLMCompilerException e) {
+      System.err.println(e);
+      // compileAll already setup the error message; we just needed to not run the entity in that case
+    }
+
+    if (exo.lastResult.compilationError != null) {
+      String msg = exo.getId() + ": compilation error: " + exo.lastResult.compilationError + ". Compiled file:\n" +
+                   ((exo.getSourceFileCount(lang) > 0)
+                        ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
+                        : "none");
+      System.err.println(msg);
+      Assertions.fail(msg);
+    }
+
+    if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
+      String msg = "Test of " + exo.getId() + " failed (" + exo.lastResult.passedTests + "/" +
+                   exo.lastResult.totalTests + " passed): '" + exo.lastResult.executionError + "'";
+      System.err.println(msg);
+      for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)
+        try {
+          String name = "FailingWorld-" + exo.getId() + "-World" + wnum + ".txt";
+          exo.getWorld(0).writeToFile(new File(name));
+          System.err.println(" World " + wnum + " dumped to " + name);
+        } catch (IOException e) {
+          System.err.println("Cannot write the bugged world to disk because of the following exception");
+          e.printStackTrace();
         }
+      Assertions.fail(msg);
+    }
+  }
 }
