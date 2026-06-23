@@ -291,43 +291,42 @@ public class SortingWorld extends World {
 	 */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			e.eval(
-					"def getValueCount():\n" +
-					"  return entity.getValueCount()\n" +
-					"def swap(i,j):\n" +
-					"  entity.swap(i,j)\n" +
-					"def copy(i,j):\n" +
-					"  entity.copy(i,j)\n" +
-					"def getValue(i):\n" +
-					"  return entity.getValue(i)\n" +
-					"def setValue(i,j):\n" +
-					"  entity.setValue(i,j)\n" +
-					"def isSmaller(i,j):\n"+
-					"  return entity.isSmaller(i,j)\n"+
-					"def isSmallerThan(i,j):\n"+
-					"  return entity.isSmallerThan(i,j)\n"+
-					/* BINDINGS TRANSLATION: French */
-					"def getNombreValeurs():\n" +
-					"  return getValueCount()\n" +
-					"def echange(i,j):\n" +
-					"  swap(i,j)\n" +
-					"def copie(i,j):\n" +
-					"  copy(i,j)\n" +
-					"def getValeur(i):\n" +
-					"  return getValue(i)\n" +
-					"def setValeur(i,j):\n" +
-					"  setValue(i,j)\n" +
-					"def plusPetit(i,j):\n"+
-					"  return isSmaller(i,j)\n"+
-					"def plusPetitQue(i,j):\n"+
-					"  return isSmallerThan(i,j)\n"
+          if (lang.isPython()) {
+            e.eval("def getValueCount():\n"
+                   + "  return entity.getValueCount()\n"
+                   + "def swap(i,j):\n"
+                   + "  entity.swap(i,j)\n"
+                   + "def copy(i,j):\n"
+                   + "  entity.copy(i,j)\n"
+                   + "def getValue(i):\n"
+                   + "  return entity.getValue(i)\n"
+                   + "def setValue(i,j):\n"
+                   + "  entity.setValue(i,j)\n"
+                   + "def isSmaller(i,j):\n"
+                   + "  return entity.isSmaller(i,j)\n"
+                   + "def isSmallerThan(i,j):\n"
+                   + "  return entity.isSmallerThan(i,j)\n" +
+                   /* BINDINGS TRANSLATION: French */
+                   "def getNombreValeurs():\n"
+                   + "  return getValueCount()\n"
+                   + "def echange(i,j):\n"
+                   + "  swap(i,j)\n"
+                   + "def copie(i,j):\n"
+                   + "  copy(i,j)\n"
+                   + "def getValeur(i):\n"
+                   + "  return getValue(i)\n"
+                   + "def setValeur(i,j):\n"
+                   + "  setValue(i,j)\n"
+                   + "def plusPetit(i,j):\n"
+                   + "  return isSmaller(i,j)\n"
+                   + "def plusPetitQue(i,j):\n"
+                   + "  return isSmallerThan(i,j)\n"
 
-			);
-		} else {
-			throw new RuntimeException("No binding of SortingWorld for "+lang);
-		}
-	}
+            );
+          } else {
+            throw new RuntimeException("No binding of SortingWorld for " + lang);
+          }
+        }
 
 	/**
 	 * Return the value of index i in the array

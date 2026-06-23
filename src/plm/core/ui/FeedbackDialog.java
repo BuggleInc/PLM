@@ -68,23 +68,31 @@ public class FeedbackDialog extends JDialog {
 		Lecture exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
 		String proposedExo = "";
 		if (exo instanceof Exercise)
-			proposedExo = "\n"+FeedbackDialog.instance.i18n.tr("--------------------[ my code for this exercise ]--------------------\n")
-			    + ((Exercise)exo).getSourceFile(Game.getProgrammingLanguage(), 0).getBody();
+                  proposedExo = "\n" +
+                                FeedbackDialog.instance.i18n.tr(
+                                    "--------------------[ my code for this exercise ]--------------------\n") +
+                                ((Exercise)exo).getSourceFile(Game.getInstance().getProgrammingLanguage(), 0).getBody();
 
-		FeedbackDialog.instance.feedback.setText(defaultText
-				+ "Lesson: "+Game.getInstance().getCurrentLesson().getId() + "\n"
-				+ "Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n"
-				+ worldInfo.toString()
-				+ "Programming Language: "+Game.getProgrammingLanguage().getLang() + "\n"
-				+ "Locale: "+Game.getInstance().getLocale().getDisplayName() + "\n"
-				+ "Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
-				+ "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")" + "\n"
-				+ "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
-				+ "Public user ID: PLM"+GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString())+ "\n"
-				+ proposedExo);
-		
-		
-		FeedbackDialog.instance.title.setText(defaultTitle);
+                FeedbackDialog.instance.feedback.setText(
+                    defaultText + "Lesson: " + Game.getInstance().getCurrentLesson().getId() + "\n"
+                    + "Exercise: " + Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n" +
+                    worldInfo.toString() +
+                    "Programming Language: " + Game.getInstance().getProgrammingLanguage().getLang() + "\n"
+                    + "Locale: " + Game.getInstance().getLocale().getDisplayName() + "\n"
+                    + "Java version: " + System.getProperty("java.version") + " (VM: " +
+                    System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")"
+                    + "\n"
+                    + "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") +
+                    "; arch: " + System.getProperty("os.arch") + ")"
+                    + "\n"
+                    + "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" +
+                    Game.getProperty("plm.minor.version", "internal", false) + ")"
+                    + "\n"
+                    + "Public user ID: PLM" +
+                    GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()) + "\n" +
+                    proposedExo);
+
+                FeedbackDialog.instance.title.setText(defaultTitle);
 		FeedbackDialog.instance.pack();
 		return FeedbackDialog.instance;
 	}

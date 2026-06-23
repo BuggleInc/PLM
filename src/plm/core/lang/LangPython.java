@@ -1,9 +1,8 @@
 package plm.core.lang;
 
+import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-
 import org.python.core.PyException;
-
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.ui.ResourcesCache;
@@ -14,6 +13,7 @@ public class LangPython extends ScriptingLanguage {
 	public LangPython() {
 		super("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
 	}
+        @Override public boolean isPython() { return true; }
 
         /* Language detection logic */
         private static String brokenLanguageMessage;
@@ -21,11 +21,24 @@ public class LangPython extends ScriptingLanguage {
         private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
         @Override public boolean isBrokenLanguage()
         {
-
           if (brokenLanguageState == BrokenLanguageState.Unitialized) {
-            throw new RuntimeException("Unimplemented");
+            brokenLanguageState = BrokenLanguageState.Usable;
+
+            brokenLanguageMessage = canResolve("/org/python/jsr223/PyScriptEngineFactory", "jython.jar");
+            if (!brokenLanguageMessage.isEmpty()) {
+              System.err.println("Error while resolving the jython symbols. Is jython.jar installed?" +
+                                 brokenLanguageMessage);
+              brokenLanguageState = BrokenLanguageState.NotUsable;
+            }
+
+            ScriptEngineManager manager = new ScriptEngineManager();
+            if (manager.getEngineByName("python") == null) {
+              brokenLanguageMessage = Game.i18n.tr(
+                  "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies in the classpath?");
+              brokenLanguageState = BrokenLanguageState.NotUsable;
+            }
           }
-          return brokenLanguageState == BrokenLanguageState.Usable;
+          return brokenLanguageState != BrokenLanguageState.Usable;
         }
 
         protected void setupEntityBindings(Entity ent) {
@@ -59,21 +72,23 @@ public class LangPython extends ScriptingLanguage {
 		StringBuffer msg = new StringBuffer();
 
 		if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
-			msg.append(Game.i18n.tr("Syntax error: {0}\nLine {1}: {2}\n" +
-					"In doubt, check your indentation, and that you don't mix tabs and spaces\n",
-					cause.value.__findattr__("msg"),
-					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
-					cause.value.__findattr__("text")
-					));
-			errorKind = ExecutionProgress.outcomeKind.COMPILE;
+                  msg.append(
+                      Game.i18n.tr("Syntax error: {0}\nLine {1}: {2}\n"
+                                       + "In doubt, check your indentation, and that you don't mix tabs and spaces\n",
+                                   cause.value.__findattr__("msg"),
+                                   ((cause.value.__findattr__("lineno").asInt()) - ent.getScriptOffset(this) + 1),
+                                   cause.value.__findattr__("text")));
+                  errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'exceptions.IndentationError'>")) {
-			msg.append(Game.i18n.tr("Indentation error: {0}\nline {1}: {2}\n" +
-					"Please, check that you did not mix tabs and spaces. Use the TAB and shift-TAB keys to clean your indentation.\n",
-					cause.value.__findattr__("msg"),
-					((cause.value.__findattr__("lineno").asInt())-ent.getScriptOffset(Game.PYTHON)+1),
-					cause.value.__findattr__("text")));
-			errorKind = ExecutionProgress.outcomeKind.COMPILE;
+                  msg.append(
+                      Game.i18n.tr("Indentation error: {0}\nline {1}: {2}\n"
+                                       + "Please, check that you did not mix tabs and spaces. Use the TAB and " +
+                                         "shift-TAB keys to clean your indentation.\n",
+                                   cause.value.__findattr__("msg"),
+                                   ((cause.value.__findattr__("lineno").asInt()) - ent.getScriptOffset(this) + 1),
+                                   cause.value.__findattr__("text")));
+                  errorKind = ExecutionProgress.outcomeKind.COMPILE;
 
 		} else if (cause.type.toString().equals("<type 'java.lang.ThreadDeath'>")) {
 			msg.append(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n" +
@@ -117,9 +132,9 @@ public class LangPython extends ScriptingLanguage {
 			 */
 			org.python.core.PyTraceback tb = cause.traceback;
 			while (tb != null) {
-				tb.tb_lineno-= ent.getScriptOffset(Game.PYTHON);
-				if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
-					msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
+                          tb.tb_lineno -= ent.getScriptOffset(this);
+                          if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
+                            msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
 				} else {
 					msg.append(String.format("  File \"%.500s\", line %d, in %.500s\n",
 							tb.tb_frame.f_code.co_filename, tb.tb_lineno, tb.tb_frame.f_code.co_name));

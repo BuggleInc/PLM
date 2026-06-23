@@ -72,31 +72,32 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		
 		
 		try {
-			newSourceFromFile(Game.JAVA, entName, getClass().getCanonicalName());
-			addProgLanguage(Game.JAVA);
-		} catch (NoSuchEntityException e1) {
+                  newSourceFromFile(Game.getInstance().programmingLanguageManager.JAVA, entName,
+                                    getClass().getCanonicalName());
+                  addProgLanguage(Game.getInstance().programmingLanguageManager.JAVA);
+                } catch (NoSuchEntityException e1) {
 			throw new RuntimeException("ExerciseTemplatingEntities must be templated in Java for now, and use langTemplate afterward. Sorry -- patch warmly welcome if you manage to improve that piece of mess.");
 		}
-		
-		SourceFile javaFile = sourceFiles.get(Game.JAVA).get(0);
-		
-		javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
+
+                SourceFile javaFile = sourceFiles.get(Game.getInstance().programmingLanguageManager.JAVA).get(0);
+
+                javaFile.setCorrection("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
 		javaFile.setTemplate  ("$package "+template+" @SuppressWarnings(\"unchecked\") public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
 		//System.out.println("New template: "+sf.getTemplate());
-		
-		if (getProgLanguages().contains(Game.SCALA)) {
-			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);
-			String header = "$package\n"
-					+ "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
-					+ "import plm.universe.World; \n"
-					+ "import scala.collection.JavaConverters._;\n"
-					+ "class "+entName+" extends BatEntity { ";
-			
-			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");
-			scalaFile.setTemplate  (header+scalaFile.getTemplate()  +" }");
-		}
-		
-		computeAnswer();
+
+                if (getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA)) {
+                  SourceFile scalaFile = sourceFiles.get(Game.getInstance().programmingLanguageManager.SCALA).get(0);
+                  String header        = "$package\n"
+                                  + "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
+                                  + "import plm.universe.World; \n"
+                                  + "import scala.collection.JavaConverters._;\n"
+                                  + "class " + entName + " extends BatEntity { ";
+
+                  scalaFile.setCorrection(header + scalaFile.getCorrection() + " }");
+                  scalaFile.setTemplate(header + scalaFile.getTemplate() + " }");
+                }
+
+                computeAnswer();
 		setSetup(true);
 	}
 	protected void templatePython(String entName, String initialCode, String correction) {
@@ -104,18 +105,20 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		 * This is because setup() needs all programming languages to be declared when it runs */
 		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
-		if (this.getProgLanguages().contains(Game.PYTHON))
-			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
-		
-		newSource(Game.PYTHON, entName, initialCode, "$body",0,"");
-		corrections.put(Game.PYTHON, initialCode+correction);
-		addProgLanguage(Game.PYTHON);
-	}
+                if (this.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
+                  throw new RuntimeException("The exercise " + getName() +
+                                             " has two Python templates. Please fix this bug.");
+
+                newSource(Game.getInstance().programmingLanguageManager.PYTHON, entName, initialCode, "$body", 0, "");
+                corrections.put(Game.getInstance().programmingLanguageManager.PYTHON, initialCode + correction);
+                addProgLanguage(Game.getInstance().programmingLanguageManager.PYTHON);
+        }
 	protected void templateScala(String entName, String[] types, String initialCode, String correction) {
 		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
-		if (this.getProgLanguages().contains(Game.SCALA))
-			throw new RuntimeException("The exercise "+getName()+" has two Scala templates. Please fix this bug.");
+                if (this.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
+                  throw new RuntimeException("The exercise " + getName() +
+                                             " has two Scala templates. Please fix this bug.");
 		
 		StringBuffer skeleton = new StringBuffer(" val res = ");
 		skeleton.append(entName);
@@ -145,11 +148,12 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		skeleton.append("} catch {\n");
 		skeleton.append("  case e:java.lang.ClassCastException => t.setResult(res)\n"); // primitive types cannot be converted to java, but I don't care (and cannot test whether res is a primitive type)
 		skeleton.append("}\n");
-		
-		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",14,
-				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
-		addProgLanguage(Game.SCALA);
-	}
+
+                newSource(Game.getInstance().programmingLanguageManager.SCALA, entName, initialCode,
+                          "\n   override def run(t: BatTest) {\n" + skeleton + "\n   }\n$body", 14,
+                          "\n   override def run(t: BatTest) {\n" + skeleton + "\n   }\n" + initialCode + correction);
+                addProgLanguage(Game.getInstance().programmingLanguageManager.SCALA);
+        }
 	public boolean isSetup() {
 		return isSetup;
 	}

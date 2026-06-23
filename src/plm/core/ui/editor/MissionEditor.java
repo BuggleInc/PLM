@@ -124,17 +124,17 @@ public class MissionEditor extends JFrame {
 				}else{
 					ArrayList<ProgrammingLanguage> l = new ArrayList<>();
 					if(selectorC.isSelected()){
-						l.add(Game.C);
-					}
+                                          l.add(Game.getInstance().programmingLanguageManager.C);
+                                        }
 					if(selectorJava.isSelected()){
-						l.add(Game.JAVA);
-					}
+                                          l.add(Game.getInstance().programmingLanguageManager.JAVA);
+                                        }
 					if(selectorScala.isSelected()){
-						l.add(Game.SCALA);
-					}
+                                          l.add(Game.getInstance().programmingLanguageManager.SCALA);
+                                        }
 					if(selectorPython.isSelected()){
-						l.add(Game.PYTHON);
-					}
+                                          l.add(Game.getInstance().programmingLanguageManager.PYTHON);
+                                        }
 					ProgrammingLanguage array[] = new ProgrammingLanguage[l.size()];
 					for(int i=0;i<l.size();i++){
 						array[i]=l.get(i);

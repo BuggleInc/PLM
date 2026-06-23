@@ -1,14 +1,14 @@
 package plm.core.lang;
 
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
 import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
-
 import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PLMCompilerException;
+import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -65,8 +65,39 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	public ImageIcon getIcon() {
 		return icon;
 	}
-	
-	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
+        public boolean isJava() { return false; }
+        public boolean isScala() { return false; }
+        public boolean isPython() { return false; }
+        public boolean isC() { return false; }
+        public boolean isRuby() { return false; }
+        public boolean isLightBot() { return false; }
+
+        // internal tool used to detect whether a given language is usable
+        protected String canResolve(String resource, String hint)
+        {
+          try {
+            URL path = getClass().getResource(resource + ".class");
+            if (path != null)
+              return ""; // Cool, found it.
+
+            path = ClassLoader.getSystemResource(resource + ".class");
+            if (path != null)
+              return ""; // Cool, found it.
+
+            resource = resource.replaceAll("/", ".");
+            resource = resource.substring(1);
+            Class.forName(resource).newInstance();
+            return ""; // That's cool if I manage to create one such object
+
+          } catch (ClassNotFoundException ce) {
+            return Game.i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?", resource, hint);
+          } catch (Exception e) {
+            return Game.i18n.tr("{0} received while searching for resource {1}: {2}", e.getClass().getName(), resource,
+                                e.getLocalizedMessage());
+          }
+        }
+
+        protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 	public abstract void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
 	public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate) throws PLMCompilerException;
 	/** Make the entity run, according to the used universe and programming language.

@@ -13,8 +13,8 @@ import plm.core.model.Game;
 public class ScalaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
 	public ScalaSimpleExerciseTest() throws BrokenProgrammingLanguageException {
-		super(Game.SCALA);
-	}
+          super(Game.getInstance().programmingLanguageManager.SCALA);
+        }
 	
 	@Override
 	public String generateSyntaxErrorCode() {

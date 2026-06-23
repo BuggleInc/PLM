@@ -29,8 +29,8 @@ public class AboutMissionDialog extends AbstractAboutDialog implements ProgLangC
 		if (lecture instanceof Exercise) {
 			Exercise exo = (Exercise) lecture;
 			setTitle(exo.getName());
-			area.setText(exo.getMission(Game.getProgrammingLanguage()));
-			area.setCaretPosition(0);
+                        area.setText(exo.getMission(Game.getInstance().getProgrammingLanguage()));
+                        area.setCaretPosition(0);
 		} else {
 			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture
 			setVisible(false);
@@ -46,6 +46,6 @@ public class AboutMissionDialog extends AbstractAboutDialog implements ProgLangC
 
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {
-		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage());
-	}
+          currentProgrammingLanguageHasChanged(Game.getInstance().getProgrammingLanguage());
+        }
 }

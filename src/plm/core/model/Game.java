@@ -23,15 +23,13 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
-
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
-
+import org.checkerframework.checker.units.qual.C;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.GameListener;
 import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
@@ -44,6 +42,7 @@ import plm.core.lang.LangPython;
 import plm.core.lang.LangRuby;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguageManager;
 import plm.core.model.Game.GameState;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
@@ -97,27 +96,14 @@ public class Game implements IWorldView {
 
 	public static final String [][] humanLangs = { {"English","en"}, {"Français","fr"}, {"Italiano","it"}, {"Português", "pt"}, {"Português brasileiro", "pt_BR"}, {"Svenska", "sv"}, {"Українська", "uk"}, {"中文", "zh"} };
 
-	public static final ProgrammingLanguage JAVA =       new LangJava();
-	public static final ProgrammingLanguage PYTHON =     new LangPython();
-	public static final ProgrammingLanguage SCALA =      new LangScala();
-	public static final ProgrammingLanguage C =          new LangC();
-	//public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
-	public static final ProgrammingLanguage RUBY =       new LangRuby();
-	public static final ProgrammingLanguage LIGHTBOT =   new LangLightbot();
-	
-	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C // TODO: re-add JAVASCRIPT to this list once it works at least a bit
-	}; 
-	private ProgrammingLanguage programmingLanguage = JAVA;
+        public ProgrammingLanguageManager programmingLanguageManager;
 
-	/* TODO: document these values elsewhere */
+        /* TODO: document these values elsewhere */
 	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
 	// Turning to false will slow down the startup process, but avoid out of date files
 
-	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
-
-	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
+        public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
 
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
@@ -158,47 +144,9 @@ public class Game implements IWorldView {
 	private Game() {
 		loadProperties();
 
-		if (checkScala())
-			System.err.println(i18n.tr("Scala is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install Scala version 2.12 or higher to use it in the PLM."));
-		if (checkPython())
-			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install jython to use the python programming language in the PLM."));
-                if (C.isBrokenLanguage())
-                  System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
-		else
-			System.err.println(i18n.tr("Please install gcc to use the C programming language in the PLM."));
+                programmingLanguageManager = new ProgrammingLanguageManager();
 
-		String defaultProgrammingLanguageName = Game.getProperty(PROP_PROGRAMING_LANGUAGE,Game.JAVA.getLang(),true);
-		ProgrammingLanguage defaultProgrammingLanguage = Game.JAVA;
-		if (defaultProgrammingLanguageName.equalsIgnoreCase(Game.PYTHON.getLang()))
-			defaultProgrammingLanguage = PYTHON;
-		else if (defaultProgrammingLanguageName.equalsIgnoreCase(Game.SCALA.getLang()))
-			defaultProgrammingLanguage = SCALA;
-		else if (defaultProgrammingLanguageName.equalsIgnoreCase(Game.C.getLang()))
-			defaultProgrammingLanguage = C;
-		else if (!defaultProgrammingLanguageName.equalsIgnoreCase(Game.JAVA.getLang()))
-			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' but {0}.\n"+
-					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
-					"   It is safer to change the current language, and restart the PLM before proceeding.\n"+
-					"   Alternatively, the property {1} can be changed in your configuration file ({2}/plm.properties).",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE, getSavingLocation()));
-
-		if (defaultProgrammingLanguage == Game.SCALA && !canScala) {
-			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
-			defaultProgrammingLanguage = Game.JAVA;
-		} else if (defaultProgrammingLanguage == Game.PYTHON && !canPython) {
-			System.err.println(i18n.tr("The default programming language is python, but your python installation is not usable. Switching to Java instead.\n"));
-			defaultProgrammingLanguage = Game.JAVA;
-                } else if (defaultProgrammingLanguage == Game.C && Game.C.isBrokenLanguage()) {
-                  System.err.println(i18n.tr("The default programming language is C, but your C installation is not " +
-                                             "usable. Switching to Java instead.\n"));
-                  defaultProgrammingLanguage = Game.JAVA;
-                }
-                setProgramingLanguageSafe(defaultProgrammingLanguage);
-
-		users = new Users(SAVE_DIR);
+                users = new Users(SAVE_DIR);
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		sessionKit = new GitSessionKit(this);
@@ -211,83 +159,7 @@ public class Game implements IWorldView {
 		}
 	}
 
-	boolean canScala = false;
-	String scalaError = "";
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private boolean checkScala() {
-		String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit",        "/scala/reflect/io/AbstractFile"};
-		String[] hints     = new String[] {"scala-compiler.jar",           "scala-library.jar",  "scala-reflect.jar"};
-		for (int i=0;i<resources.length;i++) {
-			scalaError = canResolve(resources[i],hints[i]);
-			if (!scalaError.isEmpty()) {
-				System.err.println(scalaError);
-				return canScala;
-			}
-		}
-
-		String version = null;
-		try {
-			Class props = Class.forName("scala.util.Properties");
-			Method meth = props.getMethod("versionString", new Class[] {});
-			version = (String) meth.invoke(props);
-		} catch (Exception e) {
-			scalaError = i18n.tr("Error {0} while retrieving the Scala version: {1}", e.getClass().getName() ,e.getLocalizedMessage());
-			System.err.println( scalaError );
-			return canScala;
-		}
-
-		if (version.contains("version 2.12") || version.contains("version 2.13")) {
-			canScala = true;
-			return canScala;
-		} else {
-			scalaError = i18n.tr("Scala is too ancient. Found {0} while I need 2.12 or higher.",version);
-			System.err.println(scalaError);
-			return canScala;
-		}
-	}
-
-	public boolean canPython = false;
-	String pythonError = "";
-	private boolean checkPython() {
-		pythonError = canResolve("/org/python/jsr223/PyScriptEngineFactory","jython.jar");
-		if (!pythonError.isEmpty()) {
-			System.err.println(pythonError);
-			return canPython;
-		}
-
-		ScriptEngineManager manager = new ScriptEngineManager();       
-		if (manager.getEngineByName("python") == null) {
-			pythonError = i18n.tr("Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies in the classpath?");
-		}
-
-		canPython = true;
-		return true;
-	}
-
-        private String canResolve(String resource, String hint) {
-		try {
-			URL path = getClass().getResource(resource+".class");
-			if (path != null)
-				return ""; // Cool, found it.
-
-			path = ClassLoader.getSystemResource(resource+".class");
-			if (path != null)
-				return ""; // Cool, found it.
-
-			resource = resource.replaceAll("/", ".");
-			resource = resource.substring(1);
-			Class.forName(resource).newInstance();
-			return ""; // That's cool if I manage to create one such object
-
-		} catch (ClassNotFoundException ce) {
-			return i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?",resource,hint);
-		} catch (Exception e) {
-			return i18n.tr("{0} received while searching for resource {1}: {2}",e.getClass().getName(),resource,e.getLocalizedMessage());
-		}
-	}
-
-	/** Change the current lesson.
+        /** Change the current lesson.
 	 * 
 	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
 	 * (use @loadLesson() if you want to load a lesson located in an external jar file)
@@ -465,17 +337,19 @@ public class Game implements IWorldView {
 
 				ProgrammingLanguage fallback = null;
 				for (ProgrammingLanguage l:exo.getProgLanguages()) {
-					if (l.equals(programmingLanguage))
-						return; /* The exo accepts the language we currently have */
-					if (fallback == null)
-						fallback = l;
+                                  if (l.equals(programmingLanguageManager.current()))
+                                    return; /* The exo accepts the language we currently have */
+                                  if (fallback == null)
+                                    fallback = l;
 				}
 				/* Use the first (programming) language advertised by the exercise java as a fallback */
-				if (getProgrammingLanguage() != Game.LIGHTBOT && fallback != Game.LIGHTBOT)
-					System.out.println(
-							Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
-									+ "Please consider contributing to this project by adapting this exercise to this language.",
-									lect.getName(),getProgrammingLanguage(),fallback.getLang()));
+                                if (getProgrammingLanguage() != programmingLanguageManager.LIGHTBOT &&
+                                    fallback != programmingLanguageManager.LIGHTBOT)
+                                  System.out.println(Game.i18n.tr(
+                                      "Exercise {0} does not support language {1}. Fallback to {2} instead. "
+                                          + "Please consider contributing to this project by adapting this exercise " +
+                                            "to this language.",
+                                      lect.getName(), getProgrammingLanguage(), fallback.getLang()));
 				setProgramingLanguageSafe(fallback);
 
 
@@ -979,52 +853,15 @@ public class Game implements IWorldView {
 	}
 
 	public void setProgramingLanguage(ProgrammingLanguage newLanguage) throws BrokenProgrammingLanguageException {
-		if (programmingLanguage.equals(newLanguage))
-			return;
+          programmingLanguageManager.setCurrent(newLanguage);
+          if (getCurrentLesson() != null)
+            ((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress();
+          fireProgLangChange(newLanguage);
+        }
+        public ProgrammingLanguage getProgrammingLanguage() { return programmingLanguageManager.current(); }
+        public ProgrammingLanguageManager getProgrammingLanguageManager() { return programmingLanguageManager; }
 
-		if (isValidProgLanguage(newLanguage)) {
-			//System.out.println("Switch programming language to "+newLanguage);
-			if (newLanguage.equals(Game.SCALA) && !canScala) {
-				throw new BrokenProgrammingLanguageException(i18n.tr("Scala is missing"), i18n.tr("Please install Scala version 2.12 or higher to use it in the PLM.\n\n")+scalaError);
-			}
-			if (newLanguage.equals(Game.PYTHON) && !canPython) {
-				throw new BrokenProgrammingLanguageException(i18n.tr("Python is missing"), 
-				 i18n.tr("Please install jython and its dependencies to use the python programming language in the PLM.\n\n")+pythonError); 
-			}
-                        if (newLanguage.equals(Game.C) && C.isBrokenLanguage()) {
-                          throw new BrokenProgrammingLanguageException(
-                              i18n.tr("C is missing"), i18n.tr("Please install C and its dependencies to use the C " +
-                                                               "programming language in the PLM.\n\n") +
-                                                           C.getBrokenLanguageMessage());
-                        }
-                        this.programmingLanguage = newLanguage;
-			if(getCurrentLesson() != null)
-				((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress();
-			fireProgLangChange(newLanguage);
-			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
-				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.getLang());
-			return;
-		}
-		throw new BrokenProgrammingLanguageException("Missing "+newLanguage, "Ignoring request to switch the programming language to the unknown "+newLanguage);
-	}
-
-	public static ProgrammingLanguage getProgrammingLanguage() {
-		if (ongoingInitialization) /* break an initialization loop -- the crude way (FIXME) */
-			return JAVA;
-		else
-			return getInstance().programmingLanguage;
-	}
-	public static ProgrammingLanguage[] getProgrammingLanguages(){
-		return programmingLanguages;
-	}
-
-	public boolean isValidProgLanguage(ProgrammingLanguage newL) {
-		for (ProgrammingLanguage pl : programmingLanguages)
-			if (pl.equals(newL))
-				return true;
-		return false;
-	}
-	private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
+        private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
 	public void addProgLangListener(ProgLangChangesListener l) {
 		progLangListeners.add(l);
 	}
@@ -1171,8 +1008,8 @@ public class Game implements IWorldView {
 				if (sf instanceof SourceFileRevertable)
 					((SourceFileRevertable) sf).revert();
 			}
-		for (ProgrammingLanguage pl:Game.programmingLanguages)
-			Game.getInstance().studentWork.setPassed(ex, pl, false);
+                for (ProgrammingLanguage pl : programmingLanguageManager.langs)
+                  Game.getInstance().studentWork.setPassed(ex, pl, false);
 		for (ProgressSpyListener l : this.progressSpyListeners) {
 			l.reverted(ex);
 		}

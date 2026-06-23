@@ -160,58 +160,58 @@ public class BatTest {
 	}
 	public String stringParameter(Object o) {
 		StringBuffer res = new StringBuffer();
-		displayParameter(o, res, Game.getProgrammingLanguage());
-		return res.toString();
+                displayParameter(o, res, Game.getInstance().getProgrammingLanguage());
+                return res.toString();
 	}
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
 		if (o == null) {
-			if (pl == Game.SCALA)
-				sb.append("Nil");
-			else if (pl == Game.PYTHON)
-				sb.append("None");
-			else
-				sb.append("null");
+                  if (pl.isScala())
+                    sb.append("Nil");
+                  else if (pl.isPython())
+                    sb.append("None");
+                  else
+                    sb.append("null");
 			
 		} else if (o instanceof String[]) {
-			if (pl.equals(Game.JAVA)) {
-				sb.append("{");
-			} else if (pl.equals(Game.SCALA)) {
-				sb.append("Array(");
-			} else if (pl.equals(Game.PYTHON)) { 
-				sb.append("[");
-			} else {
-				throw new RuntimeException("Please port me to "+pl.getLang());
-			}
-			
-			String[]a = (String[]) o;
+                  if (pl.isJava()) {
+                    sb.append("{");
+                  } else if (pl.isScala()) {
+                    sb.append("Array(");
+                  } else if (pl.isPython()) {
+                    sb.append("[");
+                  } else {
+                    throw new RuntimeException("Please port me to " + pl.getLang());
+                  }
+
+                        String[]a = (String[]) o;
 			for (String i:a) {
 				sb.append(i+",");
 			}
 			
 			sb.deleteCharAt(sb.length()-1);
-			if (pl.equals(Game.JAVA)) {
-				sb.append("}");
-			} else if (pl.equals(Game.SCALA)) {
-				sb.append(")");
-			} else if (pl.equals(Game.PYTHON)) { 
-				sb.append("]");
-			} else {
-				throw new RuntimeException("Please port me to "+pl.getLang());
-			}
-		} else if (o.getClass().equals(Vector.class) || o.getClass().isArray()){
+                        if (pl.isJava()) {
+                          sb.append("}");
+                        } else if (pl.isScala()) {
+                          sb.append(")");
+                        } else if (pl.isPython()) {
+                          sb.append("]");
+                        } else {
+                          throw new RuntimeException("Please port me to " + pl.getLang());
+                        }
+                } else if (o.getClass().equals(Vector.class) || o.getClass().isArray()){
 			if (o.getClass().equals(Vector.class))
 				o = changeToPrimitiveArray(o);
-			
-			if (pl.equals(Game.JAVA)) {
-				sb.append("{");
-			} else if (pl.equals(Game.SCALA)) {
-				sb.append("Array(");
-			} else if (pl.equals(Game.PYTHON)) { // Python
-				sb.append("[");
-			} else {
-				throw new RuntimeException("Please port me to "+pl.getLang());
-			}
-			if (o.getClass().getComponentType().equals(Integer.TYPE)) {
+
+                        if (pl.isJava()) {
+                          sb.append("{");
+                        } else if (pl.isScala()) {
+                          sb.append("Array(");
+                        } else if (pl.isPython()) {
+                          sb.append("[");
+                        } else {
+                          throw new RuntimeException("Please port me to " + pl.getLang());
+                        }
+                        if (o.getClass().getComponentType().equals(Integer.TYPE)) {
 				int[]a = (int[]) o;
 				for (int i:a) 
 					sb.append(i+",");
@@ -229,45 +229,45 @@ public class BatTest {
 			} else {
 				throw new RuntimeException("Unhandled internal type (only Array<int> and Array<Integer> are handled so far)");
 			}
-			if (pl.equals(Game.JAVA)) {
-				sb.append("}");
-			} else if (pl.equals(Game.SCALA)) {
-				sb.append(")");
-			} else if (pl.equals(Game.PYTHON)) { 
-				sb.append("]");
-			} else {
-				throw new RuntimeException("Please port me to "+pl.getLang());
-			}
-		} else if (o instanceof Boolean) {
+                        if (pl.isJava()) {
+                          sb.append("}");
+                        } else if (pl.isScala()) {
+                          sb.append(")");
+                        } else if (pl.isPython()) {
+                          sb.append("]");
+                        } else {
+                          throw new RuntimeException("Please port me to " + pl.getLang());
+                        }
+                } else if (o instanceof Boolean) {
 			Boolean b = (Boolean) o;
-			if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA)) {
-				sb.append(b ? "true":"false");
-			} else if (pl.equals(Game.PYTHON)) { 
-				sb.append(b ? "True" : "False");
-			} else {
-				throw new RuntimeException("Please port me to "+pl.getLang());
-			}
-		} else if (o instanceof String && pl.equals(Game.PYTHON)) {
-			sb.append("\""+o+"\"");
-		} else if (o instanceof PyInstance) {
-			sb.append( ((PyInstance)o).__str__());
-		} else {
-			sb.append(o.toString());
-		}		
-	}
+                        if (pl.isJava() || pl.isScala()) {
+                          sb.append(b ? "true" : "false");
+                        } else if (pl.isPython()) {
+                          sb.append(b ? "True" : "False");
+                        } else {
+                          throw new RuntimeException("Please port me to " + pl.getLang());
+                        }
+                } else if (o instanceof String && pl.isPython()) {
+                  sb.append("\"" + o + "\"");
+                } else if (o instanceof PyInstance) {
+                  sb.append(((PyInstance)o).__str__());
+                } else {
+                  sb.append(o.toString());
+                }
+        }
 	public String getName() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (name == null) {
-			StringBuffer sb=new StringBuffer(funName+"(");
-			
-			for (Object o:parameters) {
-				displayParameter(o, sb, pl);
-				sb.append(",");
-			}
-			
-			sb.deleteCharAt(sb.length()-1);
-			sb.append(")");					
-			name=sb.toString();
+          ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
+          if (name == null) {
+            StringBuffer sb = new StringBuffer(funName + "(");
+
+            for (Object o : parameters) {
+              displayParameter(o, sb, pl);
+              sb.append(",");
+            }
+
+            sb.deleteCharAt(sb.length() - 1);
+            sb.append(")");
+            name = sb.toString();
 
 		}
 		return name;
@@ -277,14 +277,14 @@ public class BatTest {
 	}
 	
 	public String toString() {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		StringBuffer res = new StringBuffer(getName());
-		res.append("=");
-		displayParameter(result, res, pl);
-		res.append(" (expected: ");
-		displayParameter(expected, res, pl);
-		res.append("; isObjective: "+isObjective()+")");
-		return res.toString();
+          ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
+          StringBuffer res       = new StringBuffer(getName());
+          res.append("=");
+          displayParameter(result, res, pl);
+          res.append(" (expected: ");
+          displayParameter(expected, res, pl);
+          res.append("; isObjective: " + isObjective() + ")");
+          return res.toString();
 	}
 	public String getResult() {
 		Object o = result;
@@ -293,14 +293,14 @@ public class BatTest {
 		
 		if (o != null) {
 			StringBuffer sb = new StringBuffer();
-			displayParameter(o, sb, Game.getProgrammingLanguage());
-			return sb.toString();
+                        displayParameter(o, sb, Game.getInstance().getProgrammingLanguage());
+                        return sb.toString();
 		} else {
-			if (Game.getProgrammingLanguage() == Game.SCALA)
-				return "Nil";
-			if (Game.getProgrammingLanguage() == Game.PYTHON)
-				return "None";
-			return "null";
+                  if (Game.getInstance().getProgrammingLanguage().isScala())
+                    return "Nil";
+                  if (Game.getInstance().getProgrammingLanguage().isPython())
+                    return "None";
+                  return "null";
 		}
 	}
 	private boolean expectedHasValue = false;

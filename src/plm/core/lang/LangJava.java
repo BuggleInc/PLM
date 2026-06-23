@@ -53,6 +53,7 @@ public class LangJava extends JVMCompiledLang {
 	public LangJava() {
 		super("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
 	}
+        @Override public boolean isJava() { return true; }
 
         /* Language detection logic */
         private static String brokenLanguageMessage;
@@ -64,7 +65,7 @@ public class LangJava extends JVMCompiledLang {
           if (brokenLanguageState == BrokenLanguageState.Unitialized) {
             throw new RuntimeException("Unimplemented");
           }
-          return brokenLanguageState == BrokenLanguageState.Usable;
+          return brokenLanguageState != BrokenLanguageState.Usable;
         }
 
         private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
@@ -79,8 +80,8 @@ public class LangJava extends JVMCompiledLang {
 		
 		/* Prepare the source files */
 		Map<String, String> sources = new TreeMap<String, String>();
-		for (SourceFile sf: exo.getSourceFilesList(Game.JAVA) )
-				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile)); 
+                for (SourceFile sf : exo.getSourceFilesList(this))
+                  sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns, whatToCompile)); 
 
 		if (sources.isEmpty()) 
 			return;
@@ -98,8 +99,9 @@ public class LangJava extends JVMCompiledLang {
 				out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
 			if (Game.getInstance().isDebugEnabled())
-				for (SourceFile sf: exo.getSourceFilesList(Game.JAVA)) 
-					System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns,whatToCompile)); 
+                          for (SourceFile sf : exo.getSourceFilesList(this))
+                            System.out.println("Source file " + sf.getName() + ":" +
+                                               sf.getCompilableContent(runtimePatterns, whatToCompile)); 
 
 			throw e;
 		}

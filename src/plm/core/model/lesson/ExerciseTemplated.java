@@ -48,17 +48,17 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		String content;
-		if (lang.equals(Game.JAVA)) {
-			/* Remove line comments since at some point, we put everything on one line only, 
-			 * so this would comment the end of the template and break everything */
-			Pattern lineCommentPattern = Pattern.compile("//.*$", Pattern.MULTILINE);
-			Matcher lineCommentMatcher = lineCommentPattern.matcher(sb.toString());
-			content = lineCommentMatcher.replaceAll("");
-		} else {
-			content = sb.toString();
-		}
+                if (lang.isJava()) {
+                  /* Remove line comments since at some point, we put everything on one line only,
+                   * so this would comment the end of the template and break everything */
+                  Pattern lineCommentPattern = Pattern.compile("//.*$", Pattern.MULTILINE);
+                  Matcher lineCommentMatcher = lineCommentPattern.matcher(sb.toString());
+                  content                    = lineCommentMatcher.replaceAll("");
+                } else {
+                  content = sb.toString();
+                }
 
-		/* Extract the template, the initial content and the solution out of the file */
+                /* Extract the template, the initial content and the solution out of the file */
 		int state = 0;
 		int savedState = 0;
 		StringBuffer head = new StringBuffer(); /* before the template (state 0) */
@@ -87,33 +87,33 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else if (line.contains("package")) {
 					head.append("$package \n");	
 					correction.append("$package \n");
-				} else if(line.contains("#line") && lang.equals(Game.C)){
-					containsLinePreprocessor=true;
-					head.append(line+"\n");
-				}else if (line.contains("BEGIN TEMPLATE")) {
-					if(!containsLinePreprocessor && lang.equals(Game.C)){
-						head.append("#line 1 \""+name+".c\" \n");
-						containsLinePreprocessor=true;
-					}
-					correction.append(line+"\n");
-					seenTemplate = true;
-					state = 1;
-				} else if (line.contains("BEGIN SOLUTION")) {
-					if(!containsLinePreprocessor && lang.equals(Game.C)){
-						head.append("#line 1 \""+name+".c\" \n");
-						containsLinePreprocessor=true;
-					}
-					correction.append(line+"\n");
-					state = 2; 
-				} else if (line.contains("BEGIN SKEL")) {
-					correction.append(line+"\n");
-					savedState = state;
-					state = 6; 
-				} else {
-					correction.append(line+"\n");
-					head.append(line+"\n");
-				}
-				break;
+                                } else if (line.contains("#line") && lang.isC()) {
+                                  containsLinePreprocessor = true;
+                                  head.append(line + "\n");
+                                } else if (line.contains("BEGIN TEMPLATE")) {
+                                  if (!containsLinePreprocessor && lang.isC()) {
+                                    head.append("#line 1 \"" + name + ".c\" \n");
+                                    containsLinePreprocessor = true;
+                                  }
+                                  correction.append(line + "\n");
+                                  seenTemplate = true;
+                                  state        = 1;
+                                } else if (line.contains("BEGIN SOLUTION")) {
+                                  if (!containsLinePreprocessor && lang.isC()) {
+                                    head.append("#line 1 \"" + name + ".c\" \n");
+                                    containsLinePreprocessor = true;
+                                  }
+                                  correction.append(line + "\n");
+                                  state = 2;
+                                } else if (line.contains("BEGIN SKEL")) {
+                                  correction.append(line + "\n");
+                                  savedState = state;
+                                  state      = 6;
+                                } else {
+                                  correction.append(line + "\n");
+                                  head.append(line + "\n");
+                                }
+                                break;
 			case 1: /* template head */
 				correction.append(line+"\n");
 				if (line.contains("BEGIN TEMPLATE")) {
@@ -212,59 +212,61 @@ public abstract class ExerciseTemplated extends Exercise {
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C) { 
-			skelContent = skel.toString();
-			headContent = head.toString();
-		} else {
-			skelContent = skel.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
-			headContent = head.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
-		}
+                if (lang.isPython() || lang.isScala() || lang.isC()) {
+                  skelContent = skel.toString();
+                  headContent = head.toString();
+                } else {
+                  skelContent =
+                      skel.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
+                  headContent =
+                      head.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
+                }
 
-		String template = (headContent+"$body"+tail);
+                String template = (headContent+"$body"+tail);
 		int offset = headContent.split("\n").length;
 		
 		/* Remove the unnecessary leading spaces from the initial content */
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
-		if (lang != Game.PYTHON) {
-			initialContent = initialContent.replaceAll("\t","    ");
-			String[] ctn = newLinePattern.split(initialContent);
-			/* Compute the minimal amount of leading spaces on all lines */
-			int minAmountOfLeadingSpace = -1;
-			for (String line:ctn) {
-				if (line.equals(""))
-					continue;
-				int len = 0;
-				for (char c:line.toCharArray())
-					if (c == ' ') {
-						len ++;
-					} else { 
-						break;
-					} 
-				if (minAmountOfLeadingSpace == -1 || len<minAmountOfLeadingSpace)
-					minAmountOfLeadingSpace = len;
-			}
-			if (minAmountOfLeadingSpace > 0) {
-				/* Remove that amount of leading spaces on all lines, and rebuilds initialContent */
-				StringBuffer sbCtn = new StringBuffer();
-				for (String line : ctn) 
-					if (line.equals(""))
-						sbCtn.append("\n");
-					else 
-						sbCtn.append(line.substring(minAmountOfLeadingSpace)+"\n");
-				/* Rebuild the initial content */
-				initialContent = sbCtn.toString();
-			}
-		}
+                if (!lang.isPython()) {
+                  initialContent = initialContent.replaceAll("\t", "    ");
+                  String[] ctn   = newLinePattern.split(initialContent);
+                  /* Compute the minimal amount of leading spaces on all lines */
+                  int minAmountOfLeadingSpace = -1;
+                  for (String line : ctn) {
+                    if (line.equals(""))
+                      continue;
+                    int len = 0;
+                    for (char c : line.toCharArray())
+                      if (c == ' ') {
+                        len++;
+                      } else {
+                        break;
+                      }
+                    if (minAmountOfLeadingSpace == -1 || len < minAmountOfLeadingSpace)
+                      minAmountOfLeadingSpace = len;
+                  }
+                  if (minAmountOfLeadingSpace > 0) {
+                    /* Remove that amount of leading spaces on all lines, and rebuilds initialContent */
+                    StringBuffer sbCtn = new StringBuffer();
+                    for (String line : ctn)
+                      if (line.equals(""))
+                        sbCtn.append("\n");
+                      else
+                        sbCtn.append(line.substring(minAmountOfLeadingSpace) + "\n");
+                    /* Rebuild the initial content */
+                    initialContent = sbCtn.toString();
+                  }
+                }
 
-		/* remove any \n from template to not desynchronize line numbers between compiler and editor 
+                /* remove any \n from template to not desynchronize line numbers between compiler and editor 
 		 * Python: We should obviously not change blank signs in Python
-		 * Scala: no need since our compiler's front-end is aware of these offsets */ 
-		if (lang == Game.JAVA) {
-			Matcher newLineMatcher = newLinePattern.matcher(template);
-			template = newLineMatcher.replaceAll(" ");
-		}
+		 * Scala: no need since our compiler's front-end is aware of these offsets */
+                if (lang.isJava()) {
+                  Matcher newLineMatcher = newLinePattern.matcher(template);
+                  template               = newLineMatcher.replaceAll(" ");
+                }
 
-		/* Apply all requested rewrites, if any */
+                /* Apply all requested rewrites, if any */
 		if (patternString != null) {
 			Map<String, String> patterns = new HashMap<String, String>();
 			for (String pattern: patternString.split(";")) {
@@ -331,47 +333,51 @@ public abstract class ExerciseTemplated extends Exercise {
 		boolean foundALanguage=false;
 		setupWorlds(ws);
 
-		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-			boolean foundThisLanguage = false;
-			String searchedName = null;
-			for (SourceFile sf : getSourceFilesList(lang)) {
-				if (searchedName == null) {//lazy initialization if there is any sourcefile to parse
-					Pattern p = Pattern.compile(".*?([^.]*)$");
-					Matcher m = p.matcher(lang.nameOfCorrectionEntity(this));
-					if (m.matches())
-						searchedName = m.group(1);
-					p = Pattern.compile("Entity$");
-					m = p.matcher(searchedName);
-					searchedName = m.replaceAll("");
-				}
-				if (Game.getInstance().isDebugEnabled())
-					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
-				if (sf.getName().equals(searchedName)||sf.getName().equals(tabName))
-					foundThisLanguage=true;
-			}
-			if (!foundThisLanguage) {
-				try {
-					newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
-					super.addProgLanguage(lang);
-					foundALanguage = true;
-					if (Game.getInstance().isDebugEnabled())
-						System.out.println("Found suitable templating entity "+lang.nameOfCorrectionEntity(this)+" in "+lang);
+                for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
+                  boolean foundThisLanguage = false;
+                  String searchedName       = null;
+                  for (SourceFile sf : getSourceFilesList(lang)) {
+                    if (searchedName == null) { // lazy initialization if there is any sourcefile to parse
+                      Pattern p = Pattern.compile(".*?([^.]*)$");
+                      Matcher m = p.matcher(lang.nameOfCorrectionEntity(this));
+                      if (m.matches())
+                        searchedName = m.group(1);
+                      p            = Pattern.compile("Entity$");
+                      m            = p.matcher(searchedName);
+                      searchedName = m.replaceAll("");
+                    }
+                    if (Game.getInstance().isDebugEnabled())
+                      System.out.println("Saw " + sf.getName() + " in " + lang.getLang() + ", searched for " +
+                                         searchedName + " or " + tabName +
+                                         " while checking for the need of creating a new tab");
+                    if (sf.getName().equals(searchedName) || sf.getName().equals(tabName))
+                      foundThisLanguage = true;
+                  }
+                  if (!foundThisLanguage) {
+                    try {
+                      newSourceFromFile(lang, tabName, lang.nameOfCorrectionEntity(this));
+                      super.addProgLanguage(lang);
+                      foundALanguage = true;
+                      if (Game.getInstance().isDebugEnabled())
+                        System.out.println("Found suitable templating entity " + lang.nameOfCorrectionEntity(this) +
+                                           " in " + lang);
 
-				} catch (NoSuchEntityException e) {
-					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
-						System.out.println("No templating entity found: "+e);
-						
-					if (getProgLanguages().contains(lang)) 
-						throw new RuntimeException(
-								Game.i18n.tr("Exercise {0} is said to be compatible with language {1}, but there is no entity for this language: {2}",
-								getName(),lang,e.toString()));
-					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
-				}
-			} else {
-				foundALanguage = true;
-			}
-		}
-		if (!foundALanguage) 
+                    } catch (NoSuchEntityException e) {
+                      if (lang.isPython() || lang.isScala() || lang.isJava())
+                        System.out.println("No templating entity found: " + e);
+
+                      if (getProgLanguages().contains(lang))
+                        throw new RuntimeException(Game.i18n.tr("Exercise {0} is said to be compatible with language " +
+                                                                "{1}, but there is no entity for this language: {2}",
+                                                                getName(), lang, e.toString()));
+                      /* Ok, this language does not work for this exercise but didn't promise anything. I can deal with
+                       * it */
+                    }
+                  } else {
+                    foundALanguage = true;
+                  }
+                }
+                if (!foundALanguage) 
 			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and settings.",getName()));
 				
 		computeAnswer();
@@ -431,25 +437,28 @@ public abstract class ExerciseTemplated extends Exercise {
 				ExecutionProgress progress = new ExecutionProgress();
 				
 				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
-				if(Game.getProgrammingLanguage().equals(Game.C)){
-					try {
-						//TODO BAT remove if bat will be implemented in C
-						if(!id.contains("bat.string1.lessons.bat") && !id.contains("welcome.lessons.welcome.bat") && ! id.contains("welcome.lessons.welcome.array"))
-							compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
-					} catch (PLMCompilerException e) {
-						System.err.println("Severe error: the correction of exercise "+id+" cannot be compiled in C. Please go fix your PLM.");
-						e.printStackTrace();
-						Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
-						Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
-					}
-				}
-				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+                                if (Game.getInstance().getProgrammingLanguage().isC()) {
+                                  try {
+                                    // TODO BAT remove if bat will be implemented in C
+                                    if (!id.contains("bat.string1.lessons.bat") &&
+                                        !id.contains("welcome.lessons.welcome.bat") &&
+                                        !id.contains("welcome.lessons.welcome.array"))
+                                      compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+                                  } catch (PLMCompilerException e) {
+                                    System.err.println("Severe error: the correction of exercise " + id +
+                                                       " cannot be compiled in C. Please go fix your PLM.");
+                                    e.printStackTrace();
+                                    Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
+                                    Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
+                                  }
+                                }
+                                mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
-						ent.setScript(Game.C, id);
-						Game.getProgrammingLanguage().runEntity(ent,progress);
-					}
+                                          ent.setScript(Game.getInstance().programmingLanguageManager.C, id);
+                                          Game.getInstance().getProgrammingLanguage().runEntity(ent, progress);
+                                        }
 					aw.setAnswerWorld();
 				}
 				

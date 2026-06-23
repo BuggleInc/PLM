@@ -48,16 +48,23 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 					ent = (Entity)getClass().getClassLoader().loadClass(newClassName).newInstance(); 
 				} catch (Exception e2) {
 					if (whatToMutate == StudentOrCorrection.STUDENT) {
-						if (Game.getProgrammingLanguage() == Game.SCALA)
-							throw new PLMCompilerException(Game.i18n.tr(
-									  "Your entity failed to start. Did you forgot to put your code within a method?\n\n"
-									+ "This problem often arises when the exercise expects you to put all the code within a \n"
-									+ "method e.g. run(), but you put some statements (e.g. forward()) outside of any method.\n\n"
-									+ "The easiest solution to sort it out is to copy all your code (Ctrl-A Ctrl-C), use the \n"
-									+ "'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code within the\n"
-									+ "provided method."));
-						else
-							throw new PLMCompilerException(Game.i18n.tr("Your entity failed to start. Your constructor seems to be broken, but I have no clue."));
+                                          if (Game.getInstance().getProgrammingLanguage().isScala())
+                                            throw new PLMCompilerException(
+                                                Game.i18n.tr("Your entity failed to start. Did you forgot to put " +
+                                                             "your code within a method?\n\n"
+                                                             + "This problem often arises when the exercise expects " +
+                                                               "you to put all the code within a \n"
+                                                             + "method e.g. run(), but you put some statements (e.g. " +
+                                                               "forward()) outside of any method.\n\n"
+                                                             + "The easiest solution to sort it out is to copy all " +
+                                                               "your code (Ctrl-A Ctrl-C), use the \n"
+                                                             + "'Exercise/Revert' menu to reset the template, and " +
+                                                               "paste (Ctrl-V) your code within the\n"
+                                                             + "provided method."));
+                                          else
+                                            throw new PLMCompilerException(
+                                                Game.i18n.tr("Your entity failed to start. Your constructor seems to " +
+                                                             "be broken, but I have no clue."));
 					} else {
 						throw new PLMEntityNotFound("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 					}

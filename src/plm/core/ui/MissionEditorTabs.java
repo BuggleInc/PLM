@@ -58,8 +58,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						}
 						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
-						String mission = currentExercise.getMission(Game.getProgrammingLanguage());
-						Game.getInstance().fireReadTipSpy(desc, mission);
+                                                String mission = currentExercise.getMission(
+                                                    Game.getInstance().getProgrammingLanguage());
+                                                Game.getInstance().fireReadTipSpy(desc, mission);
 					}
 					if (desc.startsWith("plm://")) {
 						//Load a regular lesson
@@ -110,10 +111,11 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	}
 	@Override
 	public void currentExerciseHasChanged(Lecture lecture) {
-		currentExercise = lecture;		
+		currentExercise = lecture;
 
-		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage()); /* Redo any code panel, and reload the mission */
-		selectedEntityHasChanged();
+                currentProgrammingLanguageHasChanged(
+                    Game.getInstance().getProgrammingLanguage()); /* Redo any code panel, and reload the mission */
+                selectedEntityHasChanged();
 		doLayout();
 	}
 	@Override
@@ -163,6 +165,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
 	@Override
 	public void userHasChanged(User newUser) {
-		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage());
-	}
+          currentProgrammingLanguageHasChanged(Game.getInstance().getProgrammingLanguage());
+        }
 }

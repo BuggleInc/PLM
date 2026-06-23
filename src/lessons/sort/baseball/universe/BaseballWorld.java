@@ -185,50 +185,49 @@ public class BaseballWorld extends World {
 	 * @throws ScriptException */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			engine.eval(
-					"def getBasesAmount():\n" +
-					"  return entity.getBasesAmount()\n" +
-					"def getPositionsAmount():\n" +
-					"  return entity.getPositionsAmount()\n" +
-					"def getHoleBase():\n" +
-					"  return entity.getHoleBase()\n" +
-					"def getHolePosition():\n" +
-					"  return entity.getHolePosition()\n" +
-					"def isSorted():\n" +
-					"  return entity.isSorted()\n" +
-					"def isBaseSorted():\n" +
-					"  return entity.isBaseSorted()\n" +
-					"def getPlayerColor(base,pos):\n" +
-					"  return entity.getPlayerColor(base,pos)\n" +
-					"def move(base,pos):\n" +
-					"  entity.move(base,pos)\n" +
-					/* BINDINGS TRANSLATION: French */
-					"def getNombreBases():\n" +
-					"  return entitygetBasesAmount()\n" +
-					"def getNombrePositions():\n" +
-					"  return entity.getPositionsAmount()\n" +
-					"def getTrouBase():\n" +
-					"  return entity.getHoleBase()\n" +
-					"def getTrouPosition():\n" +
-					"  return entity.getHolePosition()\n" +
-					"def estTrie():\n" +
-					"  return entity.isSorted()\n" +
-					"def estBaseTriee():\n" +
-					"  return entity.isBaseSorted()\n" +
-					"def getCouleurJoueur(base,pos):\n" +
-					"  return entity.getPlayerColor(base,pos)\n" +
-					"def deplace(base,pos):\n" +
-					"  (base,pos)\n" +
-					"def estSelectionne():\n"+
-					"  return isSelected()\n"+
+          if (lang.isPython()) {
+            engine.eval("def getBasesAmount():\n"
+                        + "  return entity.getBasesAmount()\n"
+                        + "def getPositionsAmount():\n"
+                        + "  return entity.getPositionsAmount()\n"
+                        + "def getHoleBase():\n"
+                        + "  return entity.getHoleBase()\n"
+                        + "def getHolePosition():\n"
+                        + "  return entity.getHolePosition()\n"
+                        + "def isSorted():\n"
+                        + "  return entity.isSorted()\n"
+                        + "def isBaseSorted():\n"
+                        + "  return entity.isBaseSorted()\n"
+                        + "def getPlayerColor(base,pos):\n"
+                        + "  return entity.getPlayerColor(base,pos)\n"
+                        + "def move(base,pos):\n"
+                        + "  entity.move(base,pos)\n" +
+                        /* BINDINGS TRANSLATION: French */
+                        "def getNombreBases():\n"
+                        + "  return entitygetBasesAmount()\n"
+                        + "def getNombrePositions():\n"
+                        + "  return entity.getPositionsAmount()\n"
+                        + "def getTrouBase():\n"
+                        + "  return entity.getHoleBase()\n"
+                        + "def getTrouPosition():\n"
+                        + "  return entity.getHolePosition()\n"
+                        + "def estTrie():\n"
+                        + "  return entity.isSorted()\n"
+                        + "def estBaseTriee():\n"
+                        + "  return entity.isBaseSorted()\n"
+                        + "def getCouleurJoueur(base,pos):\n"
+                        + "  return entity.getPlayerColor(base,pos)\n"
+                        + "def deplace(base,pos):\n"
+                        + "  (base,pos)\n"
+                        + "def estSelectionne():\n"
+                        + "  return isSelected()\n"
+                        +
 
-					""
-					);
-		} else {
-			throw new RuntimeException("No binding of BaseballWorld for "+lang);
-		}
-	}
+                        "");
+          } else {
+            throw new RuntimeException("No binding of BaseballWorld for " + lang);
+          }
+        }
 
 	/** Returns the icon of the world */
 	@Override

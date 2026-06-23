@@ -109,18 +109,16 @@ public class TurmiteWorld extends BuggleWorld {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			super.setupBindings(lang, engine);
-			engine.put("daWorld", this);
-			engine.eval(
-					"def stepDone():\n"+
-					"	daWorld.stepDone()\n"+
-					/* BINDINGS TRANSLATION: French */
-					"def pasFait():\n"+
-					"	daWorld.stepDone()\n"
-					);
-		}
-	}
+          if (lang.isPython()) {
+            super.setupBindings(lang, engine);
+            engine.put("daWorld", this);
+            engine.eval("def stepDone():\n"
+                        + "	daWorld.stepDone()\n" +
+                        /* BINDINGS TRANSLATION: French */
+                        "def pasFait():\n"
+                        + "	daWorld.stepDone()\n");
+          }
+        }
 	
 	@Override
 	public World readFromFile(String path) throws IOException, BrokenWorldFileException {

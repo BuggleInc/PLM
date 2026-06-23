@@ -227,21 +227,22 @@ class LessonOverview extends JPanel {
 		sb.append(i18n.tr("<p><b>Your score:</b> "));
 		String id = path.replaceAll("/", ".").replaceAll("^lessons\\.", "");
 		boolean foundOne = false;
-		for (ProgrammingLanguage lang:Game.programmingLanguages) {
-			int possible = Game.getInstance().studentWork.getPossibleExercises(id, lang);
-			int passed = Game.getInstance().studentWork.getPassedExercises(id, lang);
-			if (possible>0) {
-				if (lang == Game.LIGHTBOT) 
-					sb.append(" "+i18n.tr("{0} out of {1} exercises passed.",passed,possible));
-				else {
-					sb.append("<br/>");
-					sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<img src=\"img/lang_"+lang.getLang().toLowerCase()+".png\">&nbsp;&nbsp;");
-					sb.append(i18n.tr("{0} out of {1} exercises passed in {2}.",passed,possible,lang.getLang()));
-				}
-				foundOne = true;
-			}
-		}
-		if (!foundOne) 
+                for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs) {
+                  int possible = Game.getInstance().studentWork.getPossibleExercises(id, lang);
+                  int passed   = Game.getInstance().studentWork.getPassedExercises(id, lang);
+                  if (possible > 0) {
+                    if (lang.isLightBot())
+                      sb.append(" " + i18n.tr("{0} out of {1} exercises passed.", passed, possible));
+                    else {
+                      sb.append("<br/>");
+                      sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<img src=\"img/lang_" + lang.getLang().toLowerCase() +
+                                ".png\">&nbsp;&nbsp;");
+                      sb.append(i18n.tr("{0} out of {1} exercises passed in {2}.", passed, possible, lang.getLang()));
+                    }
+                    foundOne = true;
+                  }
+                }
+                if (!foundOne) 
 			sb.append(i18n.tr("You never attempted this lesson."));
 		sb.append("</p>");
 		

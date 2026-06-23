@@ -16,6 +16,7 @@ public class LangLightbot extends ProgrammingLanguage {
 	public LangLightbot() {
 		super("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
 	}
+        public boolean isLightBot() { return true; }
 
         /* Language detection logic: useless for this "language" */
         @Override public String getBrokenLanguageMessage() { return ""; }

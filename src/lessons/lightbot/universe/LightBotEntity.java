@@ -156,12 +156,13 @@ public class LightBotEntity extends Entity  {
 	LightBotSourceFile sf;
 	@Override
 	public void run() {
-		sf = (LightBotSourceFile) ((Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.LIGHTBOT,0);
-				
-		/* Run main */
-		run("main",sf.getMain());
-		tracedStack[0] = new StackTraceElement("LightbotEntity","main","main",1);
-		fireStackListener();
+          sf = (LightBotSourceFile)((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise())
+                   .getSourceFile(Game.getInstance().programmingLanguageManager.LIGHTBOT, 0);
+
+          /* Run main */
+          run("main", sf.getMain());
+          tracedStack[0] = new StackTraceElement("LightbotEntity", "main", "main", 1);
+          fireStackListener();
 	}
 	public void runF1(){
 		run("func1",sf.getFunc1());

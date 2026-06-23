@@ -21,18 +21,19 @@ public class SetProgLanguage extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			if (lang.equals(Game.C)) {
-				int res = JOptionPane.showConfirmDialog(null, 
-						i18n.tr(  "The C langage is currently very experimental in the PLM.\n"
-			                    + "If you go for C, you may not be able to complete some exercises that\n"
-			                    + "are still in progress in C, although some other parts are already okay.\n\n"
-			                    + "Do you want to proceed anyway?"),
-						i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
-				if (res != JOptionPane.OK_OPTION)
-					return;
-			}
+          if (lang.isC()) {
+            int res = JOptionPane.showConfirmDialog(
+                null,
+                i18n.tr("The C langage is currently very experimental in the PLM.\n"
+                        + "If you go for C, you may not be able to complete some exercises that\n"
+                        + "are still in progress in C, although some other parts are already okay.\n\n"
+                        + "Do you want to proceed anyway?"),
+                i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
+            if (res != JOptionPane.OK_OPTION)
+              return;
+          }
 
-		try {
+                try {
 			game.setProgramingLanguage(lang);
 		} catch (BrokenProgrammingLanguageException ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage(), ex.title, JOptionPane.ERROR_MESSAGE);

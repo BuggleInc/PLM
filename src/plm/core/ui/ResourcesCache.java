@@ -97,39 +97,43 @@ public class ResourcesCache {
 		}
 		if (!iconsCache.containsKey(path)) {
 			BufferedImage combined;
-			if (exo.getProgLanguages().contains(Game.LIGHTBOT)) {
-				combined = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
-				Graphics g = combined.getGraphics();
-				g.drawImage(icon.getImage(), 0, 0, null);
-				
-				ImageIcon star = getIcon("resources/star.png");
-				ImageIcon starNo = getIcon("resources/star_white.png");
-				if (Game.getInstance().studentWork.getPassed(exo, Game.LIGHTBOT))  
-					g.drawImage(star.getImage(), 0, 0, null);
-				else 
-					g.drawImage(starNo.getImage(), 0, 0, null);
-				
-			} else {
-				combined = new BufferedImage(icon.getIconWidth()+26, icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
-				Graphics g = combined.getGraphics();
-				g.drawImage(icon.getImage(), 0, 0, null);
-				Dimension[] positions = new Dimension[] {new Dimension(26,0), new Dimension(26,16), 
-						                                 new Dimension(42,0), new Dimension(42,16)};
-				int curPos=0;
-				
-				Game.getInstance();
-				for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-					if (lang.equals(Game.LIGHTBOT))
-						continue;
-					
-					if (Game.getInstance().studentWork.getPassed(exo, lang)) {
-						g.drawImage(lang.getIcon().getImage(), positions[curPos].width, positions[curPos].height, null);
-						curPos++;
-					}
-				}
-			}
-			
-			iconsCache.put(path, new ImageIcon(combined));
+                        if (exo.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.LIGHTBOT)) {
+                          combined =
+                              new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+                          Graphics g = combined.getGraphics();
+                          g.drawImage(icon.getImage(), 0, 0, null);
+
+                          ImageIcon star   = getIcon("resources/star.png");
+                          ImageIcon starNo = getIcon("resources/star_white.png");
+                          if (Game.getInstance().studentWork.getPassed(
+                                  exo, Game.getInstance().programmingLanguageManager.LIGHTBOT))
+                            g.drawImage(star.getImage(), 0, 0, null);
+                          else
+                            g.drawImage(starNo.getImage(), 0, 0, null);
+
+                        } else {
+                          combined   = new BufferedImage(icon.getIconWidth() + 26, icon.getIconHeight(),
+                                                         BufferedImage.TYPE_INT_ARGB);
+                          Graphics g = combined.getGraphics();
+                          g.drawImage(icon.getImage(), 0, 0, null);
+                          Dimension[] positions = new Dimension[] {new Dimension(26, 0), new Dimension(26, 16),
+                                                                   new Dimension(42, 0), new Dimension(42, 16)};
+                          int curPos            = 0;
+
+                          Game.getInstance();
+                          for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs) {
+                            if (lang.equals(Game.getInstance().programmingLanguageManager.LIGHTBOT))
+                              continue;
+
+                            if (Game.getInstance().studentWork.getPassed(exo, lang)) {
+                              g.drawImage(lang.getIcon().getImage(), positions[curPos].width, positions[curPos].height,
+                                          null);
+                              curPos++;
+                            }
+                          }
+                        }
+
+                        iconsCache.put(path, new ImageIcon(combined));
 		}
 		return iconsCache.get(path);
 	}

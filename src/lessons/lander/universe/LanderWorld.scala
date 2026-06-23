@@ -45,7 +45,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   def getIcon = ResourcesCache.getIcon("img/world_lander.png");
 
   def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine) {
-  		if (lang.equals(Game.PYTHON)) {
+  		if (lang.isPython()) {
   			engine.put("Segment", Segment.getClass())
 			engine.eval(
 			    "def isFlying():\n"+

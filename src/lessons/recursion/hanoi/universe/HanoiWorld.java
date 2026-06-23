@@ -236,32 +236,33 @@ public class HanoiWorld extends World {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			e.eval( "def move(src,dst):\n"+
-					"  entity.move(src,dst)\n"+
-					"def getSlotSize(slot):\n"+
-					"  return entity.getSlotSize(slot)\n"+
-					"def getSlotAmount():\n"+
-					"  return entity.getSlotAmount()\n"+
-					"def getSlotRadius(slot):\n"+
-					"  return entity.getSlotRadius(slot)\n"+
-					
-					"def errorMsg(str):\n"+/* don't translate this one, there is no need*/
-					"  entity.seenError(str)\n"+
+          if (lang.isPython()) {
+            e.eval("def move(src,dst):\n"
+                   + "  entity.move(src,dst)\n"
+                   + "def getSlotSize(slot):\n"
+                   + "  return entity.getSlotSize(slot)\n"
+                   + "def getSlotAmount():\n"
+                   + "  return entity.getSlotAmount()\n"
+                   + "def getSlotRadius(slot):\n"
+                   + "  return entity.getSlotRadius(slot)\n"
+                   +
 
-					/* BINDINGS TRANSLATION: French */
-					"def deplace(src,dst):\n"+
-					"  entity.move(src,dst)\n"+
-					"def getTaillePiquet(slot):\n"+
-					"  return entity.getSlotSize(slot)\n"+
-					"def getNbPiquet():\n"+
-					"  return entity.getSlotAmount()\n"+
-			        "def getRayonPiquet(piquet):\n"+
-			        "  return entity.getSlotRadius(piquet)\n");
-		} else {
-			throw new RuntimeException("No binding of HanoiWorld for "+lang);
-		}
-	}
+                   "def errorMsg(str):\n" + /* don't translate this one, there is no need*/
+                   "  entity.seenError(str)\n" +
+
+                   /* BINDINGS TRANSLATION: French */
+                   "def deplace(src,dst):\n"
+                   + "  entity.move(src,dst)\n"
+                   + "def getTaillePiquet(slot):\n"
+                   + "  return entity.getSlotSize(slot)\n"
+                   + "def getNbPiquet():\n"
+                   + "  return entity.getSlotAmount()\n"
+                   + "def getRayonPiquet(piquet):\n"
+                   + "  return entity.getSlotRadius(piquet)\n");
+          } else {
+            throw new RuntimeException("No binding of HanoiWorld for " + lang);
+          }
+        }
 	
 	/**
 	 * Return the panel which let the user to interact dynamically with the world

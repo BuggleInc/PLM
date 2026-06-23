@@ -416,158 +416,168 @@ public class BuggleWorld extends GridWorld {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			engine.put("Direction", Direction.class);
-			engine.put("Color", Color.class);
-			engine.eval(
-				"def forward(steps=1):\n"+
-				"	entity.forward(steps)\n"+
-				"def backward(steps=1):\n"+
-				"	entity.backward(steps)\n"+
-				"def left():\n"+
-				"	entity.left()\n"+
-				"def back():\n"+
-				"	entity.back()\n"+
-				"def right():\n"+
-				"	entity.right()\n"+
-				
-				"def getWorldHeight():\n"+
-				"	return entity.getWorldHeight()\n"+
-				"def getWorldWidth():\n"+
-				"	return entity.getWorldWidth()\n"+
-				"def getX():\n"+
-				"	return entity.getX()\n"+
-				"def getY():\n"+
-				"	return entity.getY()\n"+
-				"def setX(x):\n"+
-				"	entity.setX(x)\n"+
-				"def setY(y):\n"+
-				"	entity.setY(y)\n"+
-				"def setPos(x,y):\n"+
-				"	entity.setPos(x,y)\n"+
-				"def setDirection(d):\n"+
-				"	entity.setDirection(d)\n"+
-				"def brushDown():\n"+
-				"   entity.brushDown()\n"+
-				"def brushUp():\n"+
-				"   entity.brushUp()\n" +
-				"def isBrushDown():\n"+
-				"   entity.isBrushDown()\n" +
-				"def isFacingWall():" +
-				"	return entity.isFacingWall()\n"+
-				"def isBackingWall():" +
-				"	return entity.isBackingWall()\n"+
-				"def getBodyColor():\n"+
-				"   return entity.getBodyColor()\n"+
-				"def setBodyColor(c):\n"+
-				"   return setBodyColor(c)\n"+
-				"def getGroundColor():\n"+
-				"   return entity.getGroundColor()\n"+
-				
-				"def errorMsg(str):\n"+
-				"  entity.seenError(str)\n"+
-				"def haveSeenError():\n"+
-				"  return entity.haveSeenError()\n"+
-				"def seenError():\n"+
-				"  entity.seenError()\n"+
-				
-				"def isOverBaggle():\n"+
-				"	return entity.isOverBaggle()\n"+
-				"def isCarryingBaggle():\n"+
-				"	return entity.isCarryingBaggle()\n"+
-				"def pickupBaggle():\n"+
-				"	return entity.pickupBaggle()\n"+
-				"def dropBaggle():\n"+
-				"	return entity.dropBaggle()\n"+
-				
-				"def isOverMessage():\n"+
-				"	return entity.isOverMessage()\n"+
-				"def readMessage():\n"+
-				"	return entity.readMessage()\n"+
-				"def clearMessage():\n"+
-				"   entity.clearMessage()\n"+
-				"def writeMessage(msg):\n"+
-				"   entity.writeMessage(msg)\n"+
-				
-				"def getDirection():\n"+
-				"   return entity.getDirection()\n"+
-				
-				"def setBrushColor(c):\n"+
-				"    entity.setBrushColor(c)\n"+
-				"def getBrushColor():\n"+
-				"    return entity.getBrushColor()\n"+
-				
-				/* BINDINGS TRANSLATION: French */
-				"def avance(pas=1):\n"+
-				"	if pas == 1:\n"+
-				"		forward()\n"+
-				"	else:\n"+
-				"		forward(pas)\n"+
-				"def recule(pas=1):\n"+
-				"	if pas == 1:\n"+
-				"		backward()\n"+
-				"	else:\n"+
-				"		backward(pas)\n"+
-				"def gauche():\n"+
-				"	left()\n"+
-				"def retourne():\n"+
-				"	back()\n"+
-				"def droite():\n"+
-				"	right()\n"+
-				"\n"+
-				"def getMondeHauteur():\n"+
-				"	return getWorldHeight()\n"+
-				"def getMondeLargeur():\n"+
-				"	return getWorldWidth()\n"+
-				"def baisseBrosse():\n"+
-				"   brushDown()\n"+
-				"def leveBrosse():\n"+
-				"   brushUp()\n" +
-				"def estBrosseBaissee():\n"+
-				"   isBrushDown()\n" +
-				"def estFaceMur():" +
-				"	return isFacingWall()\n"+
-				"def estDosMur():" +
-				"	return isBackingWall()\n"+
-				"def getCouleurSol():\n"+
-				"   return getGroundColor()\n"+
-				
-				"def estSurBiscuit():\n"+
-				"	return isOverBaggle()\n"+
-				"def porteBiscuit():\n"+
-				"	return isCarryingBaggle()\n"+
-				"def prendBiscuit():\n"+
-				"	return pickupBaggle()\n"+
-				"def poseBiscuit():\n"+
-				"	return dropBaggle()\n"+
-				
-				"def estSurMessage():\n"+
-				"	return isOverMessage()\n"+
-				"def litMessage():\n"+
-				"	return readMessage()\n"+
-				"def effaceMessage():\n"+
-				"   clearMessage()\n"+
-				"def ecritMessage(msg):\n"+
-				"   writeMessage(msg)\n"+
-				
-				"def getCouleurCorps():\n"+
-				"   return getBodyColor()\n"+
-				"def setCouleurCorps(c):\n"+
-				"   setBodyColor(c)\n"+
-				
-				"def setCouleurBrosse(c):\n"+
-				"    setBrushColor(c)\n"+
-				"def getCouleurBrosse():\n"+
-				"    return getBrushColor()\n"+
-				
-				"def errorMsg(str):\n"+
-				"  entity.seenError(_i18n.tr(str))\n"
-				
-						);		
-		} else {
-			throw new RuntimeException("No binding of BuggleWorld for "+lang);
-		}
-	}
+          if (lang.isPython()) {
+            engine.put("Direction", Direction.class);
+            engine.put("Color", Color.class);
+            engine.eval("def forward(steps=1):\n"
+                        + "	entity.forward(steps)\n"
+                        + "def backward(steps=1):\n"
+                        + "	entity.backward(steps)\n"
+                        + "def left():\n"
+                        + "	entity.left()\n"
+                        + "def back():\n"
+                        + "	entity.back()\n"
+                        + "def right():\n"
+                        + "	entity.right()\n"
+                        +
+
+                        "def getWorldHeight():\n"
+                        + "	return entity.getWorldHeight()\n"
+                        + "def getWorldWidth():\n"
+                        + "	return entity.getWorldWidth()\n"
+                        + "def getX():\n"
+                        + "	return entity.getX()\n"
+                        + "def getY():\n"
+                        + "	return entity.getY()\n"
+                        + "def setX(x):\n"
+                        + "	entity.setX(x)\n"
+                        + "def setY(y):\n"
+                        + "	entity.setY(y)\n"
+                        + "def setPos(x,y):\n"
+                        + "	entity.setPos(x,y)\n"
+                        + "def setDirection(d):\n"
+                        + "	entity.setDirection(d)\n"
+                        + "def brushDown():\n"
+                        + "   entity.brushDown()\n"
+                        + "def brushUp():\n"
+                        + "   entity.brushUp()\n"
+                        + "def isBrushDown():\n"
+                        + "   entity.isBrushDown()\n"
+                        + "def isFacingWall():"
+                        + "	return entity.isFacingWall()\n"
+                        + "def isBackingWall():"
+                        + "	return entity.isBackingWall()\n"
+                        + "def getBodyColor():\n"
+                        + "   return entity.getBodyColor()\n"
+                        + "def setBodyColor(c):\n"
+                        + "   return setBodyColor(c)\n"
+                        + "def getGroundColor():\n"
+                        + "   return entity.getGroundColor()\n"
+                        +
+
+                        "def errorMsg(str):\n"
+                        + "  entity.seenError(str)\n"
+                        + "def haveSeenError():\n"
+                        + "  return entity.haveSeenError()\n"
+                        + "def seenError():\n"
+                        + "  entity.seenError()\n"
+                        +
+
+                        "def isOverBaggle():\n"
+                        + "	return entity.isOverBaggle()\n"
+                        + "def isCarryingBaggle():\n"
+                        + "	return entity.isCarryingBaggle()\n"
+                        + "def pickupBaggle():\n"
+                        + "	return entity.pickupBaggle()\n"
+                        + "def dropBaggle():\n"
+                        + "	return entity.dropBaggle()\n"
+                        +
+
+                        "def isOverMessage():\n"
+                        + "	return entity.isOverMessage()\n"
+                        + "def readMessage():\n"
+                        + "	return entity.readMessage()\n"
+                        + "def clearMessage():\n"
+                        + "   entity.clearMessage()\n"
+                        + "def writeMessage(msg):\n"
+                        + "   entity.writeMessage(msg)\n"
+                        +
+
+                        "def getDirection():\n"
+                        + "   return entity.getDirection()\n"
+                        +
+
+                        "def setBrushColor(c):\n"
+                        + "    entity.setBrushColor(c)\n"
+                        + "def getBrushColor():\n"
+                        + "    return entity.getBrushColor()\n" +
+
+                        /* BINDINGS TRANSLATION: French */
+                        "def avance(pas=1):\n"
+                        + "	if pas == 1:\n"
+                        + "		forward()\n"
+                        + "	else:\n"
+                        + "		forward(pas)\n"
+                        + "def recule(pas=1):\n"
+                        + "	if pas == 1:\n"
+                        + "		backward()\n"
+                        + "	else:\n"
+                        + "		backward(pas)\n"
+                        + "def gauche():\n"
+                        + "	left()\n"
+                        + "def retourne():\n"
+                        + "	back()\n"
+                        + "def droite():\n"
+                        + "	right()\n"
+                        + "\n"
+                        + "def getMondeHauteur():\n"
+                        + "	return getWorldHeight()\n"
+                        + "def getMondeLargeur():\n"
+                        + "	return getWorldWidth()\n"
+                        + "def baisseBrosse():\n"
+                        + "   brushDown()\n"
+                        + "def leveBrosse():\n"
+                        + "   brushUp()\n"
+                        + "def estBrosseBaissee():\n"
+                        + "   isBrushDown()\n"
+                        + "def estFaceMur():"
+                        + "	return isFacingWall()\n"
+                        + "def estDosMur():"
+                        + "	return isBackingWall()\n"
+                        + "def getCouleurSol():\n"
+                        + "   return getGroundColor()\n"
+                        +
+
+                        "def estSurBiscuit():\n"
+                        + "	return isOverBaggle()\n"
+                        + "def porteBiscuit():\n"
+                        + "	return isCarryingBaggle()\n"
+                        + "def prendBiscuit():\n"
+                        + "	return pickupBaggle()\n"
+                        + "def poseBiscuit():\n"
+                        + "	return dropBaggle()\n"
+                        +
+
+                        "def estSurMessage():\n"
+                        + "	return isOverMessage()\n"
+                        + "def litMessage():\n"
+                        + "	return readMessage()\n"
+                        + "def effaceMessage():\n"
+                        + "   clearMessage()\n"
+                        + "def ecritMessage(msg):\n"
+                        + "   writeMessage(msg)\n"
+                        +
+
+                        "def getCouleurCorps():\n"
+                        + "   return getBodyColor()\n"
+                        + "def setCouleurCorps(c):\n"
+                        + "   setBodyColor(c)\n"
+                        +
+
+                        "def setCouleurBrosse(c):\n"
+                        + "    setBrushColor(c)\n"
+                        + "def getCouleurBrosse():\n"
+                        + "    return getBrushColor()\n"
+                        +
+
+                        "def errorMsg(str):\n"
+                        + "  entity.seenError(_i18n.tr(str))\n"
+
+            );
+          } else {
+            throw new RuntimeException("No binding of BuggleWorld for " + lang);
+          }
+        }
 	@Override
 	public String diffTo(World world) {
 		BuggleWorld other = (BuggleWorld) world;

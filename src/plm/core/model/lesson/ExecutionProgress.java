@@ -19,9 +19,9 @@ public class ExecutionProgress {
 	public String executionError = "";
 	public int passedTests, totalTests=0;
 	public Date date = new Date();
-	public ProgrammingLanguage language = Game.getProgrammingLanguage();
+        public ProgrammingLanguage language = Game.getInstance().getProgrammingLanguage();
 
-	/* The feedback from the student in the ExecisePassedDialog */
+        /* The feedback from the student in the ExecisePassedDialog */
 	public String feedbackDifficulty;
 	public String feedbackInterest;
 	public String feedback; 

@@ -78,8 +78,8 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			setupProgLanguages(game.getCurrentLesson().getCurrentExercise());
 		progLangLabel = new JLabel();
 		progLangLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		progLangLabel.setIcon(Game.getProgrammingLanguage().getIcon());
-		progLangLabel.addMouseListener(new MouseListener() {			
+                progLangLabel.setIcon(Game.getInstance().getProgrammingLanguage().getIcon());
+                progLangLabel.addMouseListener(new MouseListener() {			
 			public void mouseReleased(MouseEvent e) {
 				maybeShowPopup(e);
 			}

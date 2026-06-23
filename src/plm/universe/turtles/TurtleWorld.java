@@ -139,84 +139,83 @@ public class TurtleWorld extends World {
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			e.put("Color", Color.class);
-			e.eval( "def backward(i):\n"+
-					"  entity.backward(i)\n"+
-					"def forward(i):\n"+
-					"  entity.forward(i)\n"+
-					"def penUp():\n"+
-					"  entity.penUp()\n"+
-					"def penDown():\n"+
-					"  entity.penDown()\n"+
-					"def isPenDown():\n"+
-					"  return entity.isPenDown()\n"+
-					"def left(i):\n"+
-					"  entity.left(i)\n"+
-					"def right(i):\n"+
-					"  entity.right(i)\n"+
-					"def setColor(c):\n"+
-					"  entity.setColor(c)\n" +
-					"def getColor():\n"+
-					"  return entity.getColor()\n" +
-					"def setPos(x,y):\n" +
-					"  entity.setPos(x,y)\n" +
-					"def setX(x):\n" +
-					"  entity.setX(x)\n" +
-					"def setY(y):\n" +
-					"  entity.setY(y)\n" +
-					"def getX():\n" +
-					"  return entity.getX()\n" +
-					"def getY():\n" +
-					"  entity.getY()\n" +
-					"def moveTo(x,y):\n" +
-					"  entity.moveTo(x,y)\n"+
-					"def addSizeHint(x,y,z,t):\n"+
-					"  entity.addSizeHint(x,y,z,t)\n"+
-					"def circle(radius):\n"+
-					"  entity.circle(radius)\n"+
-					"def clear():\n"+
-					"  entity.clear()\n"+
-					"def hide():\n"+
-					"  entity.hide()\n"+
-					"def show():\n"+
-					"  entity.show()\n"+
-					"def isVisible():\n"+
-					"  return entity.isVisible()\n"+
-					/* BINDINGS TRANSLATION: French */
-					"def recule(i):\n"+
-					"  backward(i)\n"+
-					"def avance(i):\n"+
-					"  forward(i)\n"+
-					"def leveCrayon():\n"+
-					"  penUp()\n"+
-					"def baisseCrayon():\n"+
-					"  penDown()\n"+
-					"def estCrayonBaisse():\n"+
-					"  return isPenDown()\n"+
-					"def gauche(i):\n"+
-					"  left(i)\n"+
-					"def droite(i):\n"+
-					"  right(i)\n"+
-					"def setCouleur(c):\n"+
-					"  setColor(c)\n" +
-					"def allerVers(x,y):\n" +
-					"  moveTo(x,y)\n"+
-					"def cercle(radius):\n"+
-					"  circle(radius)\n"+
-					"def efface():\n"+
-					"  clear()\n"+
-					"def cache():\n"+
-					"  hide()\n"+
-					"def montre():\n"+
-					"  show()\n"+
-					"def estVisible():\n"+
-					"  return isVisible()\n"
-					);
-		} else {
-			throw new RuntimeException("No binding of TurtleWorld for "+lang);
-		}
-	}
+          if (lang.isPython()) {
+            e.put("Color", Color.class);
+            e.eval("def backward(i):\n"
+                   + "  entity.backward(i)\n"
+                   + "def forward(i):\n"
+                   + "  entity.forward(i)\n"
+                   + "def penUp():\n"
+                   + "  entity.penUp()\n"
+                   + "def penDown():\n"
+                   + "  entity.penDown()\n"
+                   + "def isPenDown():\n"
+                   + "  return entity.isPenDown()\n"
+                   + "def left(i):\n"
+                   + "  entity.left(i)\n"
+                   + "def right(i):\n"
+                   + "  entity.right(i)\n"
+                   + "def setColor(c):\n"
+                   + "  entity.setColor(c)\n"
+                   + "def getColor():\n"
+                   + "  return entity.getColor()\n"
+                   + "def setPos(x,y):\n"
+                   + "  entity.setPos(x,y)\n"
+                   + "def setX(x):\n"
+                   + "  entity.setX(x)\n"
+                   + "def setY(y):\n"
+                   + "  entity.setY(y)\n"
+                   + "def getX():\n"
+                   + "  return entity.getX()\n"
+                   + "def getY():\n"
+                   + "  entity.getY()\n"
+                   + "def moveTo(x,y):\n"
+                   + "  entity.moveTo(x,y)\n"
+                   + "def addSizeHint(x,y,z,t):\n"
+                   + "  entity.addSizeHint(x,y,z,t)\n"
+                   + "def circle(radius):\n"
+                   + "  entity.circle(radius)\n"
+                   + "def clear():\n"
+                   + "  entity.clear()\n"
+                   + "def hide():\n"
+                   + "  entity.hide()\n"
+                   + "def show():\n"
+                   + "  entity.show()\n"
+                   + "def isVisible():\n"
+                   + "  return entity.isVisible()\n" +
+                   /* BINDINGS TRANSLATION: French */
+                   "def recule(i):\n"
+                   + "  backward(i)\n"
+                   + "def avance(i):\n"
+                   + "  forward(i)\n"
+                   + "def leveCrayon():\n"
+                   + "  penUp()\n"
+                   + "def baisseCrayon():\n"
+                   + "  penDown()\n"
+                   + "def estCrayonBaisse():\n"
+                   + "  return isPenDown()\n"
+                   + "def gauche(i):\n"
+                   + "  left(i)\n"
+                   + "def droite(i):\n"
+                   + "  right(i)\n"
+                   + "def setCouleur(c):\n"
+                   + "  setColor(c)\n"
+                   + "def allerVers(x,y):\n"
+                   + "  moveTo(x,y)\n"
+                   + "def cercle(radius):\n"
+                   + "  circle(radius)\n"
+                   + "def efface():\n"
+                   + "  clear()\n"
+                   + "def cache():\n"
+                   + "  hide()\n"
+                   + "def montre():\n"
+                   + "  show()\n"
+                   + "def estVisible():\n"
+                   + "  return isVisible()\n");
+          } else {
+            throw new RuntimeException("No binding of TurtleWorld for " + lang);
+          }
+        }
 
 	@Override
 	public boolean equals(Object obj) {

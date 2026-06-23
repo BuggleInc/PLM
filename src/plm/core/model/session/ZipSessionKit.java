@@ -53,18 +53,18 @@ public class ZipSessionKit implements ISessionKit {
 		JSONObject allLessons = new JSONObject();
 		for (String lessonName : this.game.studentWork.getLessonsNames()) {
 			JSONObject allLangs = new JSONObject();
-			for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-				int possible = Game.getInstance().studentWork.getPossibleExercises(lessonName, lang);
-				int passed = Game.getInstance().studentWork.getPassedExercises(lessonName, lang);
+                        for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
+                          int possible = Game.getInstance().studentWork.getPossibleExercises(lessonName, lang);
+                          int passed   = Game.getInstance().studentWork.getPassedExercises(lessonName, lang);
 
-				if (possible>0) {
-					JSONObject oneLang = new JSONObject();
-					oneLang.put("possible",possible);
-					oneLang.put("passed",passed);
-					allLangs.put(lang.getLang(),oneLang);
-				}
-			}
-			if (allLangs.size()>0) 
+                          if (possible > 0) {
+                            JSONObject oneLang = new JSONObject();
+                            oneLang.put("possible", possible);
+                            oneLang.put("passed", passed);
+                            allLangs.put(lang.getLang(), oneLang);
+                          }
+                        }
+                        if (allLangs.size()>0) 
 				allLessons.put(lessonName, allLangs);
 		}
 		//System.out.println("JSON written: "+allLessons.toJSONString());
@@ -156,9 +156,9 @@ public class ZipSessionKit implements ISessionKit {
 			JSONObject allLangs = (JSONObject) allLessons.get(lessonName);
 			for (Object langName: allLangs.keySet()) {
 				ProgrammingLanguage lang = null;
-				for (ProgrammingLanguage l:Game.getProgrammingLanguages())
-					if (l.getLang().equals(langName))
-						lang = l;
+                                for (ProgrammingLanguage l : Game.getInstance().getProgrammingLanguageManager().langs)
+                                  if (l.getLang().equals(langName))
+                                    lang = l;
 				
 				JSONObject oneLang = (JSONObject) allLangs.get(langName);
 				int possible = Integer.parseInt(""+oneLang.get("possible"));

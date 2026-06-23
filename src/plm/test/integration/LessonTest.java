@@ -70,22 +70,25 @@ public class LessonTest {
 	@ParameterizedTest
 	@MethodSource("lessons")
 	public void testJavaLesson(String lessonName) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
-			Lesson lesson = loadLesson(lessonName, Game.JAVA);
-			Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS, "An error arose while loading lesson "+lesson.getName()+"...");
+          Lesson lesson = loadLesson(lessonName, Game.getInstance().programmingLanguageManager.JAVA);
+          Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS,
+                                "An error arose while loading lesson " + lesson.getName() + "...");
 	}
 	
 	@ParameterizedTest
 	@MethodSource("lessons")
 	public void testScalaLesson(String lessonName) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
-			Lesson lesson = loadLesson(lessonName, Game.SCALA);
-			Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS, "An error arose while loading lesson "+lesson.getName()+"...");
+          Lesson lesson = loadLesson(lessonName, Game.getInstance().programmingLanguageManager.SCALA);
+          Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS,
+                                "An error arose while loading lesson " + lesson.getName() + "...");
 	}
 	
 	@ParameterizedTest
 	@MethodSource("lessons")
 	public void testPythonLesson(String lessonName) throws InstantiationException, IllegalAccessException, ClassNotFoundException, BrokenProgrammingLanguageException {
-			Lesson lesson = loadLesson(lessonName, Game.PYTHON);
-			Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS, "An error arose while loading lesson "+lesson.getName()+"...");
+          Lesson lesson = loadLesson(lessonName, Game.getInstance().programmingLanguageManager.PYTHON);
+          Assertions.assertTrue(lesson.getLoadingOutcomeState() == LoadingOutcome.SUCCESS,
+                                "An error arose while loading lesson " + lesson.getName() + "...");
 
 	}	
 }

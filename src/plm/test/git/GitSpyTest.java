@@ -79,8 +79,8 @@ public class GitSpyTest {
 		String mission = utils.generateRandomString(32);
 		
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-		lastResult.language = Game.JAVA;
-		lastResult.compilationError = error;
+                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
+                lastResult.compilationError = error;
 		
 		SourceFile sf = Mockito.mock(SourceFile.class);
 		Mockito.when(sf.getBody()).thenReturn(code);
@@ -138,8 +138,8 @@ public class GitSpyTest {
 		String mission = utils.generateRandomString(32);
 		
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-		lastResult.language = Game.JAVA;
-		lastResult.compilationError = null;
+                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
+                lastResult.compilationError = null;
 		lastResult.executionError = error;
 		
 		SourceFile sf = Mockito.mock(SourceFile.class);
@@ -201,8 +201,8 @@ public class GitSpyTest {
 	@Test
 	public void testSuccessfulCheckSuccessWithoutPreviousSuccessShouldCreateDoneFile() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-		lastResult.language = Game.JAVA;
-		lastResult.outcome = outcomeKind.PASS;
+                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
+                lastResult.outcome = outcomeKind.PASS;
 		
 		Exercise exo = Mockito.mock(Exercise.class);
 		exo.lastResult = lastResult;
@@ -225,8 +225,8 @@ public class GitSpyTest {
 	@Test
 	public void testSuccessfulCheckSuccessWithPreviousSuccessShouldKeepDoneFile() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-		lastResult.language = Game.JAVA;
-		lastResult.outcome = outcomeKind.PASS;
+                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
+                lastResult.outcome = outcomeKind.PASS;
 		
 		Exercise exo = Mockito.mock(Exercise.class);
 		exo.lastResult = lastResult;
@@ -255,8 +255,8 @@ public class GitSpyTest {
 	@Test
 	public void testFailedCheckSuccessWithoutPreviousSuccessShouldDoNothing() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-		lastResult.language = Game.JAVA;
-		lastResult.outcome = outcomeKind.FAIL;
+                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
+                lastResult.outcome = outcomeKind.FAIL;
 		
 		Exercise exo = Mockito.mock(Exercise.class);
 		exo.lastResult = lastResult;
@@ -279,8 +279,8 @@ public class GitSpyTest {
 	@Test
 	public void testFailedCheckSuccessWithPreviousSuccessShouldDeleteDoneFile() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
 		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-		lastResult.language = Game.JAVA;
-		lastResult.outcome = outcomeKind.FAIL;
+                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
+                lastResult.outcome = outcomeKind.FAIL;
 		
 		Exercise exo = Mockito.mock(Exercise.class);
 		exo.lastResult = lastResult;
@@ -317,31 +317,31 @@ public class GitSpyTest {
 		suffixes.add(".correction");
 		suffixes.add(".mission");
 		suffixes.add(".DONE");
-		
-		for(ProgrammingLanguage pl : Game.programmingLanguages) {
-			String ext = "." + pl.getExt();	
-			for(String suffix:suffixes) {
-				File file = new File(repoDir, exo.getId() + ext + suffix);
-				if(file.exists()) {
-					Assertions.fail(file.getAbsolutePath() + " should not exist...");
-				}
-			}
-		}
-		
-		Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+
+                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+                  String ext = "." + pl.getExt();
+                  for (String suffix : suffixes) {
+                    File file = new File(repoDir, exo.getId() + ext + suffix);
+                    if (file.exists()) {
+                      Assertions.fail(file.getAbsolutePath() + " should not exist...");
+                    }
+                  }
+                }
+
+                Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
 		method.setAccessible(true);
 		method.invoke(gitSpy, exo);
-		
-		for(ProgrammingLanguage pl : Game.programmingLanguages) {
-			String ext = "." + pl.getExt();	
-			for(String suffix:suffixes) {
-				File file = new File(repoDir, exo.getId() + ext + suffix);
-				if(file.exists()) {
-					Assertions.fail(file.getAbsolutePath() + " should still not exist...");
-				}
-			}
-		}
-	}
+
+                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+                  String ext = "." + pl.getExt();
+                  for (String suffix : suffixes) {
+                    File file = new File(repoDir, exo.getId() + ext + suffix);
+                    if (file.exists()) {
+                      Assertions.fail(file.getAbsolutePath() + " should still not exist...");
+                    }
+                  }
+                }
+        }
 	
 	@Test
 	public void testDeleteFilesWithExistingFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
@@ -354,33 +354,33 @@ public class GitSpyTest {
 		suffixes.add(".correction");
 		suffixes.add(".mission");
 		suffixes.add(".DONE");
-		
-		for(ProgrammingLanguage pl : Game.programmingLanguages) {
-			for(String suffix:suffixes) {
-				String fp = utils.getFilePath(repoDir, userUUID, exo, pl, suffix);
-				File file = new File(fp);
-				if(file.exists()) {
-					Assertions.fail(file.getAbsolutePath() + " should not yet exist...");
-				}
-				FileWriter fw = new FileWriter(file.getAbsoluteFile());
-				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write("");
-				bw.close();
-			}
-		}
-		
-		Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+
+                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+                  for (String suffix : suffixes) {
+                    String fp = utils.getFilePath(repoDir, userUUID, exo, pl, suffix);
+                    File file = new File(fp);
+                    if (file.exists()) {
+                      Assertions.fail(file.getAbsolutePath() + " should not yet exist...");
+                    }
+                    FileWriter fw     = new FileWriter(file.getAbsoluteFile());
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write("");
+                    bw.close();
+                  }
+                }
+
+                Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
 		method.setAccessible(true);
 		method.invoke(gitSpy, exo);
-		
-		for(ProgrammingLanguage pl : Game.programmingLanguages) {
-			String ext = "." + pl.getExt();	
-			for(String suffix:suffixes) {
-				File file = new File(repoDir, exo.getId() + ext + suffix);
-				if(file.exists()) {
-					Assertions.fail(file.getAbsolutePath() + " should have been deleted...");
-				}
-			}
-		}
-	}
+
+                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+                  String ext = "." + pl.getExt();
+                  for (String suffix : suffixes) {
+                    File file = new File(repoDir, exo.getId() + ext + suffix);
+                    if (file.exists()) {
+                      Assertions.fail(file.getAbsolutePath() + " should have been deleted...");
+                    }
+                  }
+                }
+        }
 }

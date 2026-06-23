@@ -65,12 +65,13 @@ public class ExerciseFailedDialog extends JDialog {
 			ta.setText(ep.executionError);
 			ta.setCaretPosition(0);
 		} else {
-			msg = new JLabel( Game.i18n.tr("<html>Compilation error.<br>\n"
-					+ "You can find below the detailed error message (as given by {0}).<br>\n"
-					+ "Please read it carefully to understand the problem, and fix your code.</html>",
-						Game.getProgrammingLanguage().getLang()) );
-			ta.setText(ep.compilationError);
-			ta.setCaretPosition(0);
+                  msg = new JLabel(Game.i18n.tr(
+                      "<html>Compilation error.<br>\n"
+                          + "You can find below the detailed error message (as given by {0}).<br>\n"
+                          + "Please read it carefully to understand the problem, and fix your code.</html>",
+                      Game.getInstance().getProgrammingLanguage().getLang()));
+                  ta.setText(ep.compilationError);
+                  ta.setCaretPosition(0);
 		}
 		msg.setFocusable(false);
 		ta.setFocusable(true);

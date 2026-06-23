@@ -11,6 +11,7 @@ public class LangRuby extends ScriptingLanguage {
 	public LangRuby() {
 		super("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
 	}
+        @Override public boolean isRuby() { return true; }
 
         /* Language detection logic */
         private static String brokenLanguageMessage;
@@ -22,7 +23,7 @@ public class LangRuby extends ScriptingLanguage {
           if (brokenLanguageState == BrokenLanguageState.Unitialized) {
             throw new RuntimeException("Unimplemented");
           }
-          return brokenLanguageState == BrokenLanguageState.Usable;
+          return brokenLanguageState != BrokenLanguageState.Usable;
         }
 
         @Override

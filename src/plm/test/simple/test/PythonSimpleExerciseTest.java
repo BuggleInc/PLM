@@ -6,8 +6,8 @@ import plm.core.model.Game;
 public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
 
 	public PythonSimpleExerciseTest() throws BrokenProgrammingLanguageException {
-		super(Game.PYTHON);
-	}
+          super(Game.getInstance().programmingLanguageManager.PYTHON);
+        }
 
 	@Override
 	public String generateSyntaxErrorCode() {

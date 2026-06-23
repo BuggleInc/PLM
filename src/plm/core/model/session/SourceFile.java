@@ -36,12 +36,12 @@ public class SourceFile {
 		return this.body;
 	}
 
-	public void setBody(String text) { 
-		if (Game.getProgrammingLanguage().equals(Game.PYTHON))
-			body = text.replaceAll("\\t", "    ");
-		else
-			body = text;
-		notifyListener();
+	public void setBody(String text) {
+          if (Game.getInstance().getProgrammingLanguage().isPython())
+            body = text.replaceAll("\\t", "    ");
+          else
+            body = text;
+          notifyListener();
 	}
 	public void setTemplate(String string) {
 		this.template = string;

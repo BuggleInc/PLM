@@ -11,11 +11,12 @@ import plm.universe.World;
 public class LightBotExercise extends ExerciseTemplated {
 	public LightBotExercise(Lesson lesson) {
 		super(lesson);
-		addProgLanguage(Game.LIGHTBOT);
-		if (getProgLanguages().size()>1) 
+                addProgLanguage(Game.getInstance().programmingLanguageManager.LIGHTBOT);
+                if (getProgLanguages().size()>1) 
 			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
-	}
+                getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT)
+                    .add(new LightBotSourceFile("Code"));
+        }
 
 	@Override
 	protected void setup(World[] ws) {

@@ -49,26 +49,26 @@ public class LangC extends ProgrammingLanguage {
         System.err.println(Game.i18n.tr("Valgrind does not seem to be installed."));
       }
     }
-    return brokenLanguageState == BrokenLanguageState.Usable;
+    return brokenLanguageState != BrokenLanguageState.Usable;
   }
+  @Override public boolean isC() { return true; }
 
-        @Override
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
-			throws PLMCompilerException {
-		
-		List<SourceFile> sfs = exo.getSourceFilesList(Game.C);
-		if (sfs == null || sfs.isEmpty()) {
-			String msg = exo.getName()+": No source to compile";
-			System.err.println(msg);
-			exo.lastResult = ExecutionProgress.newCompilationError(msg);				
-			throw new PLMCompilerException(msg, null, null);
-		}
+  @Override
+  public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  {
 
-		for (SourceFile sf : sfs){
-			String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
-			compile(code,exo.getId(),exo);
-			
-		}
+    List<SourceFile> sfs = exo.getSourceFilesList(this);
+    if (sfs == null || sfs.isEmpty()) {
+      String msg = exo.getName() + ": No source to compile";
+      System.err.println(msg);
+      exo.lastResult = ExecutionProgress.newCompilationError(msg);
+      throw new PLMCompilerException(msg, null, null);
+    }
+
+    for (SourceFile sf : sfs) {
+      String code = sf.getCompilableContent(runtimePatterns, whatToCompile);
+      compile(code, exo.getId(), exo);
+    }
 	}
 
 
@@ -281,10 +281,10 @@ public class LangC extends ProgrammingLanguage {
                         String os = System.getProperty("os.name").toLowerCase();
                         final StringBuffer valgrind = new StringBuffer("");
                         String executable;
-			if(ent.getScript(Game.C)!=null){
-				executable=ent.getScript(Game.C);
-			}else{
-				executable= Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+                        if (ent.getScript(this) != null) {
+                          executable = ent.getScript(this);
+                        } else {
+                          executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
                         }
 
                         if (os.indexOf("win") >= 0) {

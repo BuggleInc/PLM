@@ -299,17 +299,17 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		suffixes.add(".correction");
 		suffixes.add(".mission");
 		suffixes.add(".DONE");
-		
-		for(ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			String ext = "." + pl.getExt();	
-			for(String suffix:suffixes) {
-				File file = new File(repoDir, exo.getId() + ext + suffix);
-				if(file.exists()) {
-					file.delete();
-				}
-			}
-		}	
-	}
+
+                for (ProgrammingLanguage pl : Game.getInstance().getProgrammingLanguageManager().langs) {
+                  String ext = "." + pl.getExt();
+                  for (String suffix : suffixes) {
+                    File file = new File(repoDir, exo.getId() + ext + suffix);
+                    if (file.exists()) {
+                      file.delete();
+                    }
+                  }
+                }
+        }
 	
 	/**
 	 * Create some files to know how many exercises there is by programming languages for this lesson. Also add a file
@@ -353,8 +353,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
 		ExecutionProgress execProg = lastExo.lastResult;
 		String exoCode = lastExo.getSourceFile(execProg.language, 0).getBody();
-		String ext = "." + Game.getProgrammingLanguage().getExt();
-		File exoFile = new File(repoDir, lastExo.getId() + ext + ".code");
+                String ext                 = "." + Game.getInstance().getProgrammingLanguage().getExt();
+                File exoFile = new File(repoDir, lastExo.getId() + ext + ".code");
 		
 		try {
 			// write the code of the exercise into the file
@@ -386,8 +386,8 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 	@SuppressWarnings("unchecked")
 	public void readTip(String id, String mission) {
 		Exercise lastExo = (Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise();
-		String ext = "." + Game.getProgrammingLanguage().getExt();
-		File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
+                String ext       = "." + Game.getInstance().getProgrammingLanguage().getExt();
+                File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
 		
 		try {
 			// write the instructions of the exercise into the file

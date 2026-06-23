@@ -29,12 +29,8 @@ public class DemoRunner extends Thread {
 		game.setState(Game.GameState.DEMO_STARTED);
 		
 		this.game.disableStepMode();
-		
-		if(Game.getProgrammingLanguage().equals(Game.C)){
-			exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.CORRECTION);
-		}
-		
-		exo.runDemo(runners);
+
+                exo.runDemo(runners);
 
 		Iterator<Thread> it = runners.iterator();
 		while (it.hasNext()) {

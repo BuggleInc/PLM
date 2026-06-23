@@ -6,8 +6,8 @@ import plm.core.model.Game;
 public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
 	
 	public JavaSimpleExerciseTest() throws BrokenProgrammingLanguageException {
-		super(Game.JAVA);
-	}
+          super(Game.getInstance().programmingLanguageManager.JAVA);
+        }
 
 	@Override
 	public String generateSyntaxErrorCode() {

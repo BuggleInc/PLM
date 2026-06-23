@@ -30,8 +30,9 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		setupWorlds(ws);
 		try {
 			// FIXME: Java only aint good
-			newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java");
-		} catch (NoSuchEntityException e) {
+                        newSourceFromFile(Game.getInstance().programmingLanguageManager.JAVA, this.tabName,
+                                          solver.getClass().getCanonicalName(), "java");
+                } catch (NoSuchEntityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
@@ -40,9 +41,9 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 	}
 	protected void computeAnswer() {
 		ExecutionProgress progress = new ExecutionProgress();
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		
-		for (World aw : answerWorld) {
+                ProgrammingLanguage pl     = Game.getInstance().getProgrammingLanguage();
+
+                for (World aw : answerWorld) {
 			System.out.println("Compute answer for world "+aw.getName());
 			try {
 				pl.runEntity(aw.getEntity(0),progress);

@@ -1,11 +1,11 @@
 package plm.core.lang;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
@@ -16,6 +16,7 @@ import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 import scala.Option;
 import scala.collection.JavaConverters;
+import scala.reflect.internal.Reporter.Severity;
 import scala.reflect.internal.util.BatchSourceFile;
 import scala.reflect.internal.util.Position;
 import scala.reflect.internal.util.SourceFile;
@@ -30,7 +31,6 @@ import scala.tools.nsc.interpreter.AbstractFileClassLoader;
 // single abstract entry point is info0(pos, msg, Severity, force) and whose
 // INFO/WARNING/ERROR severities are instance members (no longer string-named).
 import scala.tools.nsc.reporters.Reporter;
-import scala.reflect.internal.Reporter.Severity;
 
 public class LangScala extends JVMCompiledLang {
 
@@ -39,18 +39,51 @@ public class LangScala extends JVMCompiledLang {
 	public LangScala() {
 		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
 	}
+        @Override public boolean isScala() { return true; }
 
         /* Language detection logic */
         private static String brokenLanguageMessage;
         @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
         private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-        @Override public boolean isBrokenLanguage()
+        @SuppressWarnings({"rawtypes", "unchecked"}) @Override public boolean isBrokenLanguage()
         {
-
           if (brokenLanguageState == BrokenLanguageState.Unitialized) {
-            throw new RuntimeException("Unimplemented");
+            String[] resources =
+                new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit", "/scala/reflect/io/AbstractFile"};
+            String[] hints = new String[] {"scala-compiler.jar", "scala-library.jar", "scala-reflect.jar"};
+            for (int i = 0; i < resources.length; i++) {
+              brokenLanguageMessage = canResolve(resources[i], hints[i]);
+              if (!brokenLanguageMessage.isEmpty()) {
+                System.err.println(brokenLanguageState);
+                brokenLanguageState = BrokenLanguageState.NotUsable;
+                return false;
+              }
+            }
+
+            String version = "";
+            try {
+              Class props = Class.forName("scala.util.Properties");
+              Method meth = props.getMethod("versionString", new Class[] {});
+              version     = (String)meth.invoke(props);
+            } catch (Exception e) {
+              brokenLanguageMessage = Game.i18n.tr("Error {0} while retrieving the Scala version: {1}",
+                                                   e.getClass().getName(), e.getLocalizedMessage());
+              System.err.println(brokenLanguageMessage);
+              brokenLanguageState = BrokenLanguageState.NotUsable;
+              return false;
+            }
+
+            if (version.contains("version 2.12") || version.contains("version 2.13")) {
+              brokenLanguageState = BrokenLanguageState.Usable;
+            } else {
+              brokenLanguageMessage =
+                  Game.i18n.tr("Scala is too ancient. Found {0} while I need 2.12 or higher.", version);
+              System.err.println(brokenLanguageMessage);
+              brokenLanguageState = BrokenLanguageState.NotUsable;
+              return false;
+            }
           }
-          return brokenLanguageState == BrokenLanguageState.Usable;
+          return brokenLanguageState != BrokenLanguageState.Usable;
         }
 
         @Override

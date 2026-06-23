@@ -39,10 +39,10 @@ public class SimpleWorld extends World {
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine)
 			throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			engine.put("w", this);
-		}
-	}
+          if (lang.isPython()) {
+            engine.put("w", this);
+          }
+        }
 
 	@Override
 	public boolean equals(Object o){

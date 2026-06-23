@@ -606,8 +606,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			showWorldView();
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage l:exo.getProgLanguages()) {
-				if (!g.isValidProgLanguage(l)) 
-					System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your PLM.");
+                          if (!g.programmingLanguageManager.isValidProgLanguage(l))
+                            System.err.println("Request to add the programming language '" + l + "' to exercise " +
+                                               exo.getName() + " ignored. Fix your exercise or upgrade your PLM.");
 			}
 		} else {
 			hideWorldView();
@@ -766,8 +767,8 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 			for (ProgrammingLanguage pl : exo.getProgLanguages()) {
 				ButtonGroup group = new ButtonGroup();
 				JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,pl));
-				if (pl.equals(Game.getProgrammingLanguage()))
-					item.setSelected(true);
+                                if (pl.equals(Game.getInstance().getProgrammingLanguage()))
+                                  item.setSelected(true);
 				group.add(item);
 				add(item);
 			}

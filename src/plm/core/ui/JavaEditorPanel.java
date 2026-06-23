@@ -27,16 +27,17 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel,IEn
         setLineNumbersEnabled(true);
         setFoldIndicatorEnabled(true);
 
-        if (lang.equals(Game.JAVA)) {
-            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-        } else if (lang.equals(Game.PYTHON)) {
-            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
-        } else if (lang.equals(Game.SCALA)) {
-            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SCALA);
-        } else if (lang.equals(Game.C)) {
-            codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+        if (lang.isJava()) {
+          codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        } else if (lang.isPython()) {
+          codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
+        } else if (lang.isScala()) {
+          codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SCALA);
+        } else if (lang.isC()) {
+          codeEditor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
         } else {
-            System.err.println("WARNING: Unsupported programming language for syntax highlighting module. Please fix that PLM bug.");
+          System.err.println(
+              "WARNING: Unsupported programming language for syntax highlighting module. Please fix that PLM bug.");
         }
 
         codeEditor.setAnimateBracketMatching(true);

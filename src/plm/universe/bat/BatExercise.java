@@ -59,8 +59,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		 * This is because setup() needs all programming languages to be declared when it runs */
 		if (isSetup())
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
-		if (this.getProgLanguages().contains(Game.PYTHON))
-			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
+                if (this.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
+                  throw new RuntimeException("The exercise " + getName() +
+                                             " has two Python templates. Please fix this bug.");
 		
 		StringBuffer skeleton = new StringBuffer();
 		skeleton.append("for t in batTests:\n");
@@ -75,11 +76,13 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 			skeleton.append(")");
 		}
 		skeleton.append("))\n");
-		
-		newSource(Game.PYTHON, entName, initialCode, "$body\n"+skeleton,0,"");
-		corrections.put(Game.PYTHON, initialCode+correction+"\n"+skeleton);
-		addProgLanguage(Game.PYTHON);
-	}
+
+                newSource(Game.getInstance().programmingLanguageManager.PYTHON, entName, initialCode,
+                          "$body\n" + skeleton, 0, "");
+                corrections.put(Game.getInstance().programmingLanguageManager.PYTHON,
+                                initialCode + correction + "\n" + skeleton);
+                addProgLanguage(Game.getInstance().programmingLanguageManager.PYTHON);
+        }
 	
 	@Override 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
@@ -98,8 +101,8 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 
 		for (ProgrammingLanguage pl : getProgLanguages()) {
-			if (!pl.equals(Game.JAVA) && !pl.equals(Game.SCALA)) 
-				worlds.get(0).getEntity(0).setScript(pl, corrections.get(pl));
+                  if (!pl.isJava() && !pl.isScala())
+                    worlds.get(0).getEntity(0).setScript(pl, corrections.get(pl));
 		}
 		
 		for (BatTest t : ((BatWorld)worlds.get(0)).tests) 

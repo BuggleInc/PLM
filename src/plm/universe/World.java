@@ -151,36 +151,38 @@ public abstract class World {
 	}
 	
 	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
-		final ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (Game.getInstance().isDebugEnabled())
-			Logger.log("World:runEntities","Programming language: "+pl);
-		
-		for (final Entity b : entities) {
-			Thread runner = new Thread(new Runnable() {
-				public void run() {
-					Game.getInstance().statusArgAdd(getName());
-					pl.runEntity(b, progress);
-					Game.getInstance().statusArgRemove(getName());
-				}
-			});
+          final ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
+          if (Game.getInstance().isDebugEnabled())
+            Logger.log("World:runEntities", "Programming language: " + pl);
 
-			Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-			    public void uncaughtException(Thread th, Throwable ex) {
-			        
-			    	if(ex instanceof ThreadDeath) {
-			    		String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
-			    				+ "Your program must stop by itself to successfully pass the exercise.\n";
-				        progress.setExecutionError(Game.i18n.tr(msg));
-				        progress.outcome = ExecutionProgress.outcomeKind.FAIL;
-			    	}
-			    }
-			};
-			
-			// So that we can still stop it from the AWT Thread, even if an infinite loop occurs
-			runner.setPriority(Thread.MIN_PRIORITY);
-			runner.setUncaughtExceptionHandler(h);
-			runner.start();
-			runnerVect.add(runner);
+          for (final Entity b : entities) {
+            Thread runner = new Thread(new Runnable() {
+              public void run()
+              {
+                Game.getInstance().statusArgAdd(getName());
+                pl.runEntity(b, progress);
+                Game.getInstance().statusArgRemove(getName());
+              }
+            });
+
+            Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+              public void uncaughtException(Thread th, Throwable ex)
+              {
+
+                if (ex instanceof ThreadDeath) {
+                  String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
+                               + "Your program must stop by itself to successfully pass the exercise.\n";
+                  progress.setExecutionError(Game.i18n.tr(msg));
+                  progress.outcome = ExecutionProgress.outcomeKind.FAIL;
+                }
+              }
+            };
+
+            // So that we can still stop it from the AWT Thread, even if an infinite loop occurs
+            runner.setPriority(Thread.MIN_PRIORITY);
+            runner.setUncaughtExceptionHandler(h);
+            runner.start();
+            runnerVect.add(runner);
 		}
 	}
 

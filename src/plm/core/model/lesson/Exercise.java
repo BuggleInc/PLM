@@ -114,8 +114,8 @@ public abstract class Exercise extends Lecture {
 		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
-		Game.getProgrammingLanguage().compileExo(this, out, whatToCompile);
-	}
+                Game.getInstance().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+        }
 
 	/** get the list of source files for a given language, or create it if not existent yet */
 	public List<SourceFile> getSourceFilesList(ProgrammingLanguage lang) {
@@ -138,30 +138,38 @@ public abstract class Exercise extends Lecture {
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
-		ProgrammingLanguage lang = Game.getProgrammingLanguage();
+          ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
 
-		Vector<World> worlds;
-		switch (kind) {
-		case INITIAL: worlds = initialWorld; break;
-		case CURRENT: worlds = currentWorld; break;
-		case ANSWER:  worlds = answerWorld;  break;
-		default: throw new RuntimeException("kind is invalid: "+kind);
+          Vector<World> worlds;
+          switch (kind) {
+            case INITIAL:
+              worlds = initialWorld;
+              break;
+            case CURRENT:
+              worlds = currentWorld;
+              break;
+            case ANSWER:
+              worlds = answerWorld;
+              break;
+            default:
+              throw new RuntimeException("kind is invalid: " + kind);
 		}
 
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
-			String[] forbidden = new String[] {"'","\""};
-			for (String stringPattern : forbidden) {
-				Pattern pattern = Pattern.compile(stringPattern);
-				Matcher matcher = pattern.matcher(tabName);
+                if (Game.getInstance().getProgrammingLanguage().isJava()) {
+                  String[] forbidden = new String[] {"'", "\""};
+                  for (String stringPattern : forbidden) {
+                    Pattern pattern = Pattern.compile(stringPattern);
+                    Matcher matcher = pattern.matcher(tabName);
 
-				if (matcher.matches())
-					throw new RuntimeException(tabName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
-							"Your exercise uses a broken tabName.");
-			}
-		}
+                    if (matcher.matches())
+                      throw new RuntimeException(
+                          tabName + " is not a valid java identifier (forbidden char: " + stringPattern + "). "
+                          + "Your exercise uses a broken tabName.");
+                  }
+                }
 
-		try {
+                try {
 			for (World current:worlds) {
 				if (current.getEntities().isEmpty())
 					throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");

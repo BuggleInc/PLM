@@ -111,36 +111,40 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 		/* Display everything when in debug mode, with shiny colors */
 		if (showAll) {
 			// Process any block with one language first so that they can be nested in blocks with more than one language.
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-				String l = lang.getLang().toLowerCase();
-				res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]",
-						"<font color=\""+langColors.get(l)+"\">$1</font>");
-			}
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-				String l = lang.getLang().toLowerCase();
-				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
-					if (!lang2.equals(lang)) {
-						String l2 = lang2.getLang().toLowerCase();
-						res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2)+"\">$1</font>");
-					}
-				}
-			}
+                        for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
+                          String l = lang.getLang().toLowerCase();
+                          res      = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]",
+                                                    "<font color=\"" + langColors.get(l) + "\">$1</font>");
+                        }
+                        for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
+                          String l = lang.getLang().toLowerCase();
+                          for (ProgrammingLanguage lang2 : Game.getInstance().getProgrammingLanguageManager().langs) {
+                            if (!lang2.equals(lang)) {
+                              String l2 = lang2.getLang().toLowerCase();
+                              res       = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]",
+                                                         "<font color=\"" + langColors.get(l + "|" + l2) + "\">$1</font>");
+                            }
+                          }
+                        }
 
-			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-				String l = lang.getLang().toLowerCase();
-				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
-					if (!lang2.equals(lang)) {
-						String l2 = lang2.getLang().toLowerCase();
-						for (ProgrammingLanguage lang3 : Game.getProgrammingLanguages()) {
-							if (!lang3.equals(lang) && !lang3.equals(lang2)) {
-								String l3 = lang3.getLang().toLowerCase();
-								res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","<font color=\""+langColors.get(l+"|"+l2+"|"+l3)+"\">$1</font>");
-							}
-						}
-					}
-				}
-			}
-			return res;
+                        for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
+                          String l = lang.getLang().toLowerCase();
+                          for (ProgrammingLanguage lang2 : Game.getInstance().getProgrammingLanguageManager().langs) {
+                            if (!lang2.equals(lang)) {
+                              String l2 = lang2.getLang().toLowerCase();
+                              for (ProgrammingLanguage lang3 :
+                                   Game.getInstance().getProgrammingLanguageManager().langs) {
+                                if (!lang3.equals(lang) && !lang3.equals(lang2)) {
+                                  String l3 = lang3.getLang().toLowerCase();
+                                  res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]",
+                                                       "<font color=\"" + langColors.get(l + "|" + l2 + "|" + l3) +
+                                                           "\">$1</font>");
+                                }
+                              }
+                            }
+                          }
+                        }
+                        return res;
 		}
 
 		/* filter out irrelevant stuff when not in debug */
@@ -184,42 +188,55 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 				strtemp=res.toString();
 				
 				// Process any block with one language first so that they can be nested in blocks with more than one language.
-				for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-					String l = lang.getLang().toLowerCase();
-					if (lang.equals(Game.getProgrammingLanguage())) 
-						res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]", "$1"); // Keep it
-					else 
-						res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]", ""); // Not for us
-				}
-				for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-					String l = lang.getLang().toLowerCase();
-					for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
-						String l2 = lang2.getLang().toLowerCase();
-						if (lang.equals(Game.getProgrammingLanguage()) || lang2.equals(Game.getProgrammingLanguage()))
-							res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]","$1"); // Keep it
-						else 
-							res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]",""); // Not for us
-					}
-				}
+                                for (ProgrammingLanguage lang :
+                                     Game.getInstance().getProgrammingLanguageManager().langs) {
+                                  String l = lang.getLang().toLowerCase();
+                                  if (lang.equals(Game.getInstance().getProgrammingLanguage()))
+                                    res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]", "$1"); // Keep it
+                                  else
+                                    res = res.replaceAll("(?s)\\[!" + l + "\\](.*?)\\[/!\\]", ""); // Not for us
+                                }
+                                for (ProgrammingLanguage lang :
+                                     Game.getInstance().getProgrammingLanguageManager().langs) {
+                                  String l = lang.getLang().toLowerCase();
+                                  for (ProgrammingLanguage lang2 :
+                                       Game.getInstance().getProgrammingLanguageManager().langs) {
+                                    String l2 = lang2.getLang().toLowerCase();
+                                    if (lang.equals(Game.getInstance().getProgrammingLanguage()) ||
+                                        lang2.equals(Game.getInstance().getProgrammingLanguage()))
+                                      res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]",
+                                                           "$1"); // Keep it
+                                    else
+                                      res = res.replaceAll("(?s)\\[!" + l + "\\|" + l2 + "\\](.*?)\\[/!\\]",
+                                                           ""); // Not for us
+                                  }
+                                }
 
-				for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-					String l = lang.getLang().toLowerCase();
-					for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
-						if (!lang2.equals(lang)) {
-							String l2 = lang2.getLang().toLowerCase();
-							for (ProgrammingLanguage lang3 : Game.getProgrammingLanguages()) {
-								if (!lang3.equals(lang) && !lang3.equals(lang2)) {
-									String l3 = lang3.getLang().toLowerCase();
-									if (lang.equals(Game.getProgrammingLanguage()) || lang2.equals(Game.getProgrammingLanguage()) || lang3.equals((Game.getProgrammingLanguage())))
-										res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","$1");
-									else
-										res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\|"+l3+"\\](.*?)\\[/!\\]","");
-								}
-							}
-						}
-					}
-				}
-			}
+                                for (ProgrammingLanguage lang :
+                                     Game.getInstance().getProgrammingLanguageManager().langs) {
+                                  String l = lang.getLang().toLowerCase();
+                                  for (ProgrammingLanguage lang2 :
+                                       Game.getInstance().getProgrammingLanguageManager().langs) {
+                                    if (!lang2.equals(lang)) {
+                                      String l2 = lang2.getLang().toLowerCase();
+                                      for (ProgrammingLanguage lang3 :
+                                           Game.getInstance().getProgrammingLanguageManager().langs) {
+                                        if (!lang3.equals(lang) && !lang3.equals(lang2)) {
+                                          String l3 = lang3.getLang().toLowerCase();
+                                          if (lang.equals(Game.getInstance().getProgrammingLanguage()) ||
+                                              lang2.equals(Game.getInstance().getProgrammingLanguage()) ||
+                                              lang3.equals((Game.getInstance().getProgrammingLanguage())))
+                                            res = res.replaceAll(
+                                                "(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "$1");
+                                          else
+                                            res = res.replaceAll(
+                                                "(?s)\\[!" + l + "\\|" + l2 + "\\|" + l3 + "\\](.*?)\\[/!\\]", "");
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                        }
 		}
 
 		return res;
@@ -228,8 +245,8 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 	private static boolean hideLang(String cssClass) {
 		if (cssClass == null)
 			return false;
-		if (cssClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) 
-			return false;
+                if (cssClass.toLowerCase().equals(Game.getInstance().getProgrammingLanguage().getLang().toLowerCase()))
+                  return false;
 		return true;
 	}
 

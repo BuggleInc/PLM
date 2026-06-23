@@ -143,32 +143,30 @@ public class DutchFlagWorld extends World {
 	/** Ensures that the provided engine can be used to solve Pancake exercises */ 
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			e.eval(
-				"def getSize():\n" +
-				"  return entity.getSize()\n" +
-				"def getColor(rank):\n" +
-				"  return entity.getColor(rank)\n" +
-				"def swap(i,j):\n" +
-				"  entity.swap(i,j)\n"	+
-				"BLUE = entity.BLUE\n"	+
-				"WHITE = entity.WHITE\n"	+
-				"RED = entity.RED\n"	+
-				/* BINDINGS TRANSLATION: French */
-				"def getTaille():\n"+
-				"  return getSize()\n"+
-				"def getCouleur(rank):\n"+
-				"  return getColor(rank)\n"+
-				"def echange(i,j):\n"+
-				"  return swap(i,j)\n"+
-				"BLEU = entity.BLUE\n"	+
-				"BLANC = entity.WHITE\n"	+
-				"ROUGE = entity.RED\n"	
-				);
-		} else {
-			throw new RuntimeException("No binding of PancakeWorld for "+lang);
-		}
-	}
+          if (lang.isPython()) {
+            e.eval("def getSize():\n"
+                   + "  return entity.getSize()\n"
+                   + "def getColor(rank):\n"
+                   + "  return entity.getColor(rank)\n"
+                   + "def swap(i,j):\n"
+                   + "  entity.swap(i,j)\n"
+                   + "BLUE = entity.BLUE\n"
+                   + "WHITE = entity.WHITE\n"
+                   + "RED = entity.RED\n" +
+                   /* BINDINGS TRANSLATION: French */
+                   "def getTaille():\n"
+                   + "  return getSize()\n"
+                   + "def getCouleur(rank):\n"
+                   + "  return getColor(rank)\n"
+                   + "def echange(i,j):\n"
+                   + "  return swap(i,j)\n"
+                   + "BLEU = entity.BLUE\n"
+                   + "BLANC = entity.WHITE\n"
+                   + "ROUGE = entity.RED\n");
+          } else {
+            throw new RuntimeException("No binding of PancakeWorld for " + lang);
+          }
+        }
 
 	/* --------------------------------------- */
 	/** Swap two positions */
