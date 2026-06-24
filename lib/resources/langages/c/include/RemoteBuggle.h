@@ -51,6 +51,8 @@ void setPos(int nb, int nb2);
 Color getBodyColor();
 void setBodyColor(Color color);
 int isFacingWall();
+int isWallOnLeft();
+int isWallOnRight();
 int isBackingWall();
 Direction getDirection();
 void setDirection(Direction dir);

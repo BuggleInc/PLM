@@ -285,68 +285,63 @@ public abstract class AbstractBuggle extends Entity {
 			backward();
 	}
 
-	private boolean lookAtWall(boolean forward) {
-		Direction delta;
-		if (forward)
-			delta = getDirection();
-		else
-			delta = getDirection().opposite();
+        private boolean lookAtWall(Direction delta)
+        {
+          BuggleWorldCell cell;
+          switch (delta.intValue()) {
+            case Direction.NORTH_VALUE: /* looking up is easy */
+              cell = getCell();
+              return cell.hasTopWall();
 
-		BuggleWorldCell cell;
-		switch (delta.intValue()) {
-		case Direction.NORTH_VALUE: /* looking up is easy */
-			cell = getCell();
-			return cell.hasTopWall();
+            case Direction.WEST_VALUE: /* looking to the left also */
+              cell = getCell();
+              return cell.hasLeftWall();
 
-		case Direction.WEST_VALUE: /* looking to the left also */
-			cell = getCell();
-			return cell.hasLeftWall();
+            case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower */
+              cell = getCellFromLesson(getX(), (getY() + 1) % getWorldHeight());
+              return cell.hasTopWall();
 
-		case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower */
-			cell = getCellFromLesson(getX(), (getY()+1) % getWorldHeight());
-			return cell.hasTopWall();
+            case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell */
+              cell = getCellFromLesson((getX() + 1) % getWorldWidth(), getY());
+              return cell.hasLeftWall();
 
-		case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell */
-			cell = getCellFromLesson((getX()+1) % getWorldWidth(), getY());
-			return cell.hasLeftWall();
+            default:
+              throw new RuntimeException("Invalid direction: " + delta);
+          }
+        }
+        public boolean isFacingWall() { return lookAtWall(getDirection()); }
+        public boolean isBackingWall() { return lookAtWall(getDirection().opposite()); }
+        public boolean isWallOnLeft() { return lookAtWall(getDirection().left()); }
+        public boolean isWallOnRight() { return lookAtWall(getDirection().right()); }
 
-		default: throw new RuntimeException("Invalid direction: "+delta);
-		}
-	}
-	public boolean isFacingWall() {
-		return lookAtWall(true);
-	}
-	public boolean isBackingWall() {
-		return lookAtWall(false);
-	}
+        private void move(Point delta) throws BuggleWallException
+        {
+          if (delta == null)
+            return;
 
-	private void move(Point delta) throws BuggleWallException {
-		if (delta == null)
-			return;
+          int newx = (x + delta.x) % getWorldWidth();
+          if (newx < 0)
+            newx += getWorldWidth();
+          int newy = (y + delta.y) % getWorldHeight();
+          if (newy < 0)
+            newy += getWorldHeight();
 
-		int newx = (x + delta.x) % getWorldWidth();
-		if (newx < 0)
-			newx += getWorldWidth();
-		int newy = (y + delta.y) % getWorldHeight();
-		if (newy < 0)
-			newy += getWorldHeight();
+          if (delta.equals(direction.toPoint()) && isFacingWall() ||
+              delta.equals(direction.opposite().toPoint()) && isBackingWall())
 
-		if (delta.equals(direction.toPoint())            && isFacingWall() ||
-				delta.equals(direction.opposite().toPoint()) && isBackingWall())	
+            throw new BuggleWallException();
 
-			throw new BuggleWallException();
+          x = newx;
+          y = newy;
 
-		x = newx;
-		y = newy;
+          if (brushDown) {
+            getCell().setColor(brushColor);
+          }
 
-		if (brushDown) {
-			getCell().setColor(brushColor);
-		}
+          stepUI();
+        }
 
-		stepUI();
-	}
-
-	public boolean isOverBaggle() {
+        public boolean isOverBaggle() {
 		return getCellFromLesson(this.x, this.y).hasBaggle();
 	}
 
@@ -642,6 +637,14 @@ public abstract class AbstractBuggle extends Entity {
               out.write((isBackingWall() ? "1" : "0"));
               out.write("\n");
               break;
+            case 150:
+              out.write((isWallOnLeft() ? "1" : "0"));
+              out.write("\n");
+              break;
+            case 151:
+              out.write((isWallOnRight() ? "1" : "0"));
+              out.write("\n");
+              break;
             case 124:
               out.write(Integer.toString(getDirection().intValue()));
               out.write("\n");
@@ -739,6 +742,14 @@ public abstract class AbstractBuggle extends Entity {
               out.write(Integer.toString(getWorldWidth()));
               out.write("\n");
               break;
+            case 146: // hasTopWall
+              x = Integer.parseInt((command.split(" ")[1]));
+              y = Integer.parseInt((command.split(" ")[2]));
+              out.write(getCell().hasTopWall() ? "1" : "0");
+            case 147: // hasLeftWall
+              x = Integer.parseInt((command.split(" ")[1]));
+              y = Integer.parseInt((command.split(" ")[2]));
+              out.write(getCell().hasLeftWall() ? "1" : "0");
             case 148: // getIndicationBdr
               out.write("" + (isOverMessage() ? readMessage().charAt(0) : " "));
               out.write("\n");

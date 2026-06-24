@@ -68,6 +68,16 @@ int isBackingWall(){
   send_command("123 isBackingWall");
   return get_answer_int();
 }
+int isWallOnLeft()
+{
+  send_command("150 isWallOnLeft");
+  return get_answer_int();
+}
+int isWallOnRight()
+{
+  send_command("151 isWallOnRight");
+  return get_answer_int();
+}
 
 Direction getDirection() { return get_answer_int(); }
 
