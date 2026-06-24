@@ -9,31 +9,49 @@ void right() { send_command("111 right"); }
 
 void back() { send_command("112 back"); }
 
+void (*pre_forward)(int)  = NULL;
+void (*post_forward)(int) = NULL;
 void stepForward(){
 	forward(1);
 }
-
-void (*on_forward)(void) = NULL;
 void forward(int nb)
 {
-  if (on_forward != NULL) { // Run the callback after each step
-    for (int i = 0; i < nb; i++) {
-      send_command("113 1 forward");
-      (*on_forward)();
-    }
-  } else
-    send_command("113 %d forward", nb);
+  if (pre_forward != NULL)
+    (*pre_forward)(nb);
+  send_command("113 %d forward", nb);
+  if (post_forward != NULL)
+    (*post_forward)(nb);
 }
-void set_on_forward(void (*param)(void))
+void set_pre_forward(void (*param)(int))
 {
-  on_forward = param;
+  pre_forward = param;
+}
+void set_post_forward(void (*param)(int))
+{
+  post_forward = param;
 }
 
+void (*pre_backward)(int)  = NULL;
+void (*post_backward)(int) = NULL;
+void set_pre_backward(void (*param)(int))
+{
+  pre_backward = param;
+}
+void set_post_backward(void (*param)(int))
+{
+  post_backward = param;
+}
 void stepBackward(){
 	backward(1);
 }
-
-void backward(int nb) { send_command("114 %d backward", nb); }
+void backward(int nb)
+{
+  if (pre_backward != NULL)
+    (*pre_backward)(nb);
+  send_command("114 %d backward", nb);
+  if (post_backward != NULL)
+    (*post_backward)(nb);
+}
 
 int getX(){
   send_command("115 getX");

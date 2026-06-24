@@ -19,9 +19,24 @@ int exitReached()
   free(c);
   return result;
 }
-
+void dave_forward(int steps)
+{
+  if (steps > 1) {
+    printf("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.");
+    exit(1);
+  }
+}
+void dave_backward(int steps)
+{
+  if (steps > 1) {
+    printf("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.");
+    exit(1);
+  }
+}
 void run()
 {
+  set_pre_forward(&dave_forward);
+  set_pre_backward(&dave_backward);
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
   while (!exitReached()) {

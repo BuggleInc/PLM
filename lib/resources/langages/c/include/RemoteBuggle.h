@@ -40,7 +40,10 @@ void right();
 void back();
 void stepForward();
 void forward(int nb);
-void set_on_forward(void (*param)(void)); // Set a callback to execute after the move
+void set_pre_forward(void (*param)(int));   // Set a callback to execute before the move
+void set_post_forward(void (*param)(int));  // Set a callback to execute after the move
+void set_pre_backward(void (*param)(int));  // Set a callback to execute before the move
+void set_post_backward(void (*param)(int)); // Set a callback to execute after the move
 void stepBackward();
 void backward(int nb);
 int getX();

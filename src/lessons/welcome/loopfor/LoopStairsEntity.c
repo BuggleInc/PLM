@@ -2,7 +2,7 @@
 
 Color colors[]            = {blue, cyan, green, yellow, orange, red, magenta, pink};
 int inTeerNal_Steep_Count = -3;
-void forward_observer(void)
+void forward_observer(int i)
 {
   const int color_length = sizeof(colors) / sizeof(colors[0]);
   if (inTeerNal_Steep_Count < 0 || inTeerNal_Steep_Count % 2 == 1 || (inTeerNal_Steep_Count / 2) >= color_length) {
@@ -19,7 +19,7 @@ void forward_observer(void)
 }
 
 void run(){
-  set_on_forward(&forward_observer);
+  set_post_forward(&forward_observer);
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
   forward(1);
