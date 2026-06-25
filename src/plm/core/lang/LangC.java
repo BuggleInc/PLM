@@ -198,7 +198,8 @@ public class LangC extends ProgrammingLanguage {
                         bwriter.close();
 
                         Thread reader = new Thread() {
-                          public void run() {
+                          public void run()
+                          {
                             try {
                               BufferedReader reader =
                                   new BufferedReader(new InputStreamReader(
@@ -216,7 +217,6 @@ public class LangC extends ProgrammingLanguage {
                             }
                           }
                         };
-                        reader.run();
 
                         Thread error = new Thread() {
                           public void run() {
@@ -237,9 +237,11 @@ public class LangC extends ProgrammingLanguage {
                             }
                           }
                         };
-                        error.run();
-
+                        reader.start();
+                        error.start();
                         process.waitFor();
+                        reader.join();
+                        error.join();
 
                         if(resCompilationErr.length()>0){
 				PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
