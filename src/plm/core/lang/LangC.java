@@ -19,8 +19,6 @@ import plm.core.utils.ValgrindParser;
 import plm.universe.Entity;
 
 public class LangC extends ProgrammingLanguage {
-  private boolean haveValgrind = false;
-
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
   /* Language detection logic */
@@ -39,14 +37,6 @@ public class LangC extends ProgrammingLanguage {
         brokenLanguageMessage = e.getLocalizedMessage();
         e.printStackTrace();
         brokenLanguageState = BrokenLanguageState.NotUsable;
-      }
-
-      // Test whether Valgrind is installed
-      try {
-        runtime.exec("valgrind --version");
-        haveValgrind = true;
-      } catch (IOException e) {
-        System.err.println(Game.i18n.tr("Valgrind does not seem to be installed."));
       }
     }
     return brokenLanguageState != BrokenLanguageState.Usable;
@@ -181,14 +171,12 @@ public class LangC extends ProgrammingLanguage {
                           arg1 = new String[3];
                           arg1[0] = "cmd.exe";
                           arg1[1] = "/c";
-                          arg1[2] = "gcc -g -Wall -lm -lpthread -o \"" + exec +
-                                    "\" - ";
+                          arg1[2] = "gcc -g -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" - ";
                         } else {
                           arg1 = new String[3];
                           arg1[0] = "/bin/sh";
                           arg1[1] = "-c";
-                          arg1[2] = "gcc -g -x c -Wall -lm -lpthread -o \"" +
-                                    exec + "\" - ";
+                          arg1[2] = "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" - ";
                         }
 
                         final Process process = runtime.exec(arg1);
@@ -275,13 +263,9 @@ public class LangC extends ProgrammingLanguage {
 			String tempdir = System.getProperty("java.io.tmpdir")+"/plmTmp";
 			File saveDir = new File(tempdir+"/bin");
 
-                        int nb = (int)(Math.random() * 1000);
-                        final File valgrindFile =
-                            new File(tempdir + "/valgrind_" + nb + ".xml");
                         String extension = "";
                         String arg1[];
                         String os = System.getProperty("os.name").toLowerCase();
-                        final StringBuffer valgrind = new StringBuffer("");
                         String executable;
                         if (ent.getScript(this) != null) {
                           executable = ent.getScript(this);
@@ -297,18 +281,10 @@ public class LangC extends ProgrammingLanguage {
                           arg1[2] = saveDir.getAbsolutePath() + "/" +
                                     executable + "" + extension;
                         } else {
-                          if (haveValgrind) {
-                            if (valgrindFile.createNewFile()) {
-                              valgrind.append(
-                                  "valgrind --xml=yes --xml-file=\"" +
-                                  valgrindFile.getAbsolutePath() + "\"");
-                            }
-                          }
                           arg1 = new String[3];
                           arg1[0] = "/bin/sh";
                           arg1[1] = "-c";
-                          arg1[2] = valgrind + " " + saveDir.getAbsolutePath() +
-                                    "/" + executable + "" + extension;
+                          arg1[2] = saveDir.getAbsolutePath() + "/" + executable + "" + extension;
                         }
 
                         File exec = new File(saveDir.getAbsolutePath() + "/" +
@@ -318,9 +294,6 @@ public class LangC extends ProgrammingLanguage {
                           System.err.println(Game.i18n.tr("Error, please recompile the "
                                                               + "exercise: {0} does not exist",
                                                           exec.getName()));
-                          if (valgrindFile.exists()) {
-                            valgrindFile.delete();
-                          }
                           return;
                         }
 
@@ -358,25 +331,12 @@ public class LangC extends ProgrammingLanguage {
                               InputStreamReader isr = new InputStreamReader(
                                   process.getErrorStream());
                               BufferedReader err = new BufferedReader(isr);
-                              if (valgrind.length() > 0) {
-                                try {
-                                  process.waitFor();
-                                  StringBuffer errmsg =
-                                      ValgrindParser.parse(valgrindFile);
-                                  resCompilationErr.append(errmsg);
-                                  System.err.println(errmsg);
-                                  progress.executionError += errmsg;
-                                } catch (Exception ex) {
-                                  ex.printStackTrace();
+                              String line        = "";
+                              while ((line = err.readLine()) != null) {
+                                if (line.contains("<")) {
+                                  resCompilationErr.append(line + "\n");
                                 }
-                              } else {
-                                String line = "";
-                                while ((line = err.readLine()) != null) {
-                                  if (line.contains("<")) {
-                                    resCompilationErr.append(line + "\n");
-                                  }
-                                  System.err.println("error: " + line);
-                                }
+                                System.err.println("error: " + line);
                               }
 
                             } catch (IOException ioe) {
@@ -394,10 +354,6 @@ public class LangC extends ProgrammingLanguage {
                         error.join();
 
                         bwriter.close();
-
-                        if (valgrindFile.exists()) {
-                          valgrindFile.delete();
-                        }
 
                         if (resCompilationErr.length() > 0) {
                           System.err.println(resCompilationErr.toString());
