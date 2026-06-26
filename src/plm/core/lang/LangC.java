@@ -3,6 +3,7 @@ package plm.core.lang;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -247,7 +248,6 @@ public class LangC extends ProgrammingLanguage {
 
   @Override public void runEntity(final Entity ent, final ExecutionProgress progress)
   {
-    Runtime runtime                      = Runtime.getRuntime();
     final StringBuffer resCompilationErr = new StringBuffer();
 
     try {
@@ -256,7 +256,6 @@ public class LangC extends ProgrammingLanguage {
       File saveDir   = new File(tempdir + "/bin");
 
       String extension = "";
-      String arg1[];
       String os = System.getProperty("os.name").toLowerCase();
       String executable;
       if (ent.getScript(this) != null) {
@@ -265,28 +264,23 @@ public class LangC extends ProgrammingLanguage {
         executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
       }
 
-      if (os.indexOf("win") >= 0) {
+      if (os.indexOf("win") >= 0)
         extension = ".exe";
-        arg1      = new String[3];
-        arg1[0]   = "cmd.exe";
-        arg1[1]   = "/c";
-        arg1[2]   = saveDir.getAbsolutePath() + "/" + executable + "" + extension;
-      } else {
-        arg1    = new String[3];
-        arg1[0] = "/bin/sh";
-        arg1[1] = "-c";
-        arg1[2] = saveDir.getAbsolutePath() + "/" + executable + "" + extension;
-      }
 
-      File exec = new File(saveDir.getAbsolutePath() + "/" + executable + "" + extension);
+      String cmd = saveDir.getAbsolutePath() + "/" + executable + "" + extension;
+      File exec  = new File(cmd);
       if (!exec.exists() || !exec.canExecute() || !exec.isFile()) {
-        System.err.println(Game.i18n.tr("Error, please recompile the "
-                                            + "exercise: {0} does not exist",
-                                        exec.getName()));
+        System.err.println(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
         return;
       }
 
-      final Process process        = runtime.exec(arg1);
+      String asan_report = tempdir + "/asan_report.txt";
+      ProcessBuilder pb  = new ProcessBuilder(cmd);
+      // log_path=/tmp/plmTmp/asan_report.txt.$PID ~~> don't report to stderr but to that file
+      // to_syslog=0   ~~> Prevent ASan from writing also to stderr
+      pb.environment().put("ASAN_OPTIONS", "log_path=" + asan_report + ":to_syslog=0");
+      final Process process        = pb.start();
+      long pid                     = process.pid();
       final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 
       Thread reader = new Thread() {
@@ -311,12 +305,25 @@ public class LangC extends ProgrammingLanguage {
         public void run()
         {
           BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+          Exception parseError  = null;
+          String str            = "";
           try {
-            String str;
             while ((str = reader.readLine()) != null)
               ent.command(str, bwriter);
-          } catch (IOException ioe) {
-            ioe.printStackTrace();
+          } catch (Exception e) {
+            parseError = e;
+          }
+          if (parseError != null) {
+            StringBuffer sb = new StringBuffer(str + "\n");
+            try {
+              while ((str = reader.readLine()) != null)
+                sb.append(str + "\n");
+            } catch (IOException ioe) {
+              System.err.println("Exception while handling the exception. Bailing out");
+              parseError.printStackTrace();
+              ioe.printStackTrace();
+            }
+            throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
           }
         }
       };
@@ -330,6 +337,22 @@ public class LangC extends ProgrammingLanguage {
       error.join();
 
       bwriter.close();
+
+      File asan_report_file = new File(asan_report + "." + pid);
+      if (asan_report_file.exists()) {
+        System.err.println(Game.i18n.tr(
+            "The Address Sanitizer detected an issue with the execution of your entity. You probably want to fix "
+            + "it.\nThe exact error message contains hints about the problem. Good luck in debugging this.\n"));
+        try (BufferedReader br = new BufferedReader(new FileReader(asan_report_file))) {
+          String line;
+          while ((line = br.readLine()) != null) {
+            System.err.println(line);
+          }
+        } catch (IOException ioe) {
+          ioe.printStackTrace();
+        }
+        asan_report_file.delete();
+      }
 
       if (resCompilationErr.length() > 0) {
         System.err.println(resCompilationErr.toString());
