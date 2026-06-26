@@ -70,47 +70,45 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 			stepDone();
 			step(colors,rule);
 		}
-	}
-	
-	@Override
-	public void command(String command, BufferedWriter out) {
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		try {
-			switch(num){
-			case 200 :
-				out.write(((Integer)getParam(0)).toString());
-				out.write("\n");
-				out.flush();
-				break;
-			case 201:
-				stepDone();
-				break;
-			case 203:
-				int[][][] tab = (int[][][])getParam(1);
-				String str = Integer.toString(tab.length)+":"+Integer.toString(tab[0].length)+":"+Integer.toString(tab[0][0].length);
-				for(int i=0;i<tab.length;i++){
-					for(int j=0;j<tab[i].length;j++){
-						for(int k=0;k<tab[i][j].length;k++){
-							str+=":"+Integer.toString(tab[i][j][k]);
-						}
-					}
-				}
-				out.write(str);
-				out.write("\n");
-				out.flush();
-				break;
+        }
 
-			default:
-				super.command(command, out);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        @Override public void command(String command, BufferedWriter out) throws Exception
+        {
+          int num = Integer.parseInt((String)command.subSequence(0, 3));
+          try {
+            switch (num) {
+              case 200:
+                out.write(((Integer)getParam(0)).toString());
+                out.write("\n");
+                out.flush();
+                break;
+              case 201:
+                stepDone();
+                break;
+              case 203:
+                int[][][] tab = (int[][][])getParam(1);
+                String str    = Integer.toString(tab.length) + ":" + Integer.toString(tab[0].length) + ":" +
+                             Integer.toString(tab[0][0].length);
+                for (int i = 0; i < tab.length; i++) {
+                  for (int j = 0; j < tab[i].length; j++) {
+                    for (int k = 0; k < tab[i][j].length; k++) {
+                      str += ":" + Integer.toString(tab[i][j][k]);
+                    }
+                  }
+                }
+                out.write(str);
+                out.write("\n");
+                out.flush();
+                break;
 
-	
-	public void stepDone(){
-		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
-	}
+              default:
+                super.command(command, out);
+            }
+          } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+        }
+
+        public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

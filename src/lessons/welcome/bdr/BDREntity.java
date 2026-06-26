@@ -4,35 +4,36 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
-	
-	@Override
-	public void command(String command, BufferedWriter out) {
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		try {
-			switch(num){
-			case 148:
-				out.write(getIndication());
-				out.write("\n");
-				out.flush();
-				break;
-			default:
-				super.command(command, out);
-				break;
-			}
-		}catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
-	}
-	
-	public char getIndication() { 
-		if (isOverMessage()) { 
-			return readMessage().charAt(0); 
-		} else { 
-			return ' '; 
-		} 
-	}
 
-	public void run() {
+  @Override public void command(String command, BufferedWriter out) throws Exception
+  {
+    int num = Integer.parseInt((String)command.subSequence(0, 3));
+    try {
+      switch (num) {
+        case 148:
+          out.write(getIndication());
+          out.write("\n");
+          out.flush();
+          break;
+        default:
+          super.command(command, out);
+          break;
+      }
+    } catch (IOException ioe) {
+      ioe.printStackTrace();
+    }
+  }
+
+  public char getIndication()
+  {
+    if (isOverMessage()) {
+      return readMessage().charAt(0);
+    } else {
+      return ' ';
+    }
+  }
+
+        public void run() {
 		/* BEGIN SOLUTION */
 		while (true) {
 			char c = getIndication();

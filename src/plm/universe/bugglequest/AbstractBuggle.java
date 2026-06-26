@@ -559,18 +559,18 @@ public abstract class AbstractBuggle extends Entity {
 	public int getAlturaDoMundo()          { return getWorldHeight(); }
 	public int getLarguraDoMundo()          { return getWorldWidth(); }
 	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
-	public boolean estáSelecionado()           { return isSelected(); } 
+        public boolean estáSelecionado() { return isSelected(); }
 
-
-	@Override
-	public void command(String command, BufferedWriter out){
-          int num;
-          try {
-            num = Integer.parseInt((String)command.subSequence(0, 3));
-          } catch (StringIndexOutOfBoundsException e) {
-            throw new RuntimeException(
-                "Parse error while reading the command: " + command);
+        @Override public void command(String command, BufferedWriter out) throws Exception
+        {
+          if (command.contains("AddressSanitizer")) {
+            if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))
+              System.err.println(command);
+            return;
           }
+          // This throws parseError and StringOutOfBoundError at least
+          int num = Integer.parseInt((String)command.subSequence(0, 3));
+
           int nb, nb2;
           try {
             switch (num) {

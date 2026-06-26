@@ -134,8 +134,11 @@ public abstract class Entity extends Observable {
          */
         public abstract void run() throws Exception;
 
-        /** Allows Entity to communicate with external programs, as needed to execute C programs */
-        public abstract void command(String command, BufferedWriter out);
+        /**
+         * Allows Entity to communicate with external programs, as needed to execute C programs
+         * @throws Exception
+         */
+        public abstract void command(String command, BufferedWriter out) throws Exception;
 
         private Map<ProgrammingLanguage,String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
 	public void setScript(ProgrammingLanguage lang, String s) {

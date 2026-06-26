@@ -135,20 +135,18 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
 			stepDone();
 		}
 	}
-	
-	@Override
-	public void command(String command, BufferedWriter out) {
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		switch(num){
-		case 201:
-			stepDone();
-			break;
-		default:
-			super.command(command, out);
-		}
-	}
-	
-	public void stepDone(){
-		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
-	}
+
+        @Override public void command(String command, BufferedWriter out) throws Exception
+        {
+          int num = Integer.parseInt((String)command.subSequence(0, 3));
+          switch (num) {
+            case 201:
+              stepDone();
+              break;
+            default:
+              super.command(command, out);
+          }
+        }
+
+        public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

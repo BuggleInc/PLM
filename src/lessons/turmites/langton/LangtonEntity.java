@@ -39,33 +39,28 @@ public class LangtonEntity extends SimpleBuggle {
 			stepDone();
 		}
 	}
-	
-	@Override
-	public void command(String command, BufferedWriter out) {
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		switch(num){
-		case 200 :
-			try {
-				out.write(((Integer)getParam(0)).toString());
-				out.write("\n");
-				out.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case 201:
-			stepDone();
-			break;
-		default:
-			super.command(command, out);
-		}
-	}
-	
-			
-		
-	
-	public void stepDone(){
-		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
-	}
+
+        @Override public void command(String command, BufferedWriter out) throws Exception
+        {
+          int num = Integer.parseInt((String)command.subSequence(0, 3));
+          switch (num) {
+            case 200:
+              try {
+                out.write(((Integer)getParam(0)).toString());
+                out.write("\n");
+                out.flush();
+              } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+              }
+              break;
+            case 201:
+              stepDone();
+              break;
+            default:
+              super.command(command, out);
+          }
+        }
+
+        public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }
