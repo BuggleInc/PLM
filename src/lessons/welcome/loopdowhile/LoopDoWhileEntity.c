@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../lib/resources/langages/c/include/RemoteBuggle.h"
 
 int isGroundWhite() {
 	return getGroundColor()==white;
