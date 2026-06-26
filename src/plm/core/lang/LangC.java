@@ -296,13 +296,8 @@ public class LangC extends ProgrammingLanguage {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             try {
               String str;
-              while ((str = reader.readLine()) != null) {
-                if (str.startsWith("STDOUT:")) {
-                  System.out.println(str.substring(7));
-                } else {
-                  ent.command(str, bwriter);
-                }
-              }
+              while ((str = reader.readLine()) != null)
+                System.out.println(str);
             } finally {
               reader.close();
             }
@@ -315,17 +310,11 @@ public class LangC extends ProgrammingLanguage {
       Thread error = new Thread() {
         public void run()
         {
+          BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
           try {
-            InputStreamReader isr = new InputStreamReader(process.getErrorStream());
-            BufferedReader err    = new BufferedReader(isr);
-            String line           = "";
-            while ((line = err.readLine()) != null) {
-              if (line.contains("<")) {
-                resCompilationErr.append(line + "\n");
-              }
-              System.err.println("error: " + line);
-            }
-
+            String str;
+            while ((str = reader.readLine()) != null)
+              ent.command(str, bwriter);
           } catch (IOException ioe) {
             ioe.printStackTrace();
           }
