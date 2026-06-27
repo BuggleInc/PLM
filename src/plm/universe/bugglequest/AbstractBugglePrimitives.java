@@ -1,0 +1,192 @@
+package plm.universe.bugglequest;
+
+import plm.core.lang.primitives.Primitive;
+import plm.core.utils.ColorMapper;
+import plm.core.utils.InvalidColorNameException;
+import plm.universe.Direction;
+import plm.universe.EntityPrimitivesBase;
+import plm.universe.bugglequest.exception.*;
+
+import java.awt.*;
+
+public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
+
+    @Primitive(129)
+    boolean isBrushDown();
+
+    @Primitive(128)
+    void brushDown();
+
+    @Primitive(127)
+    void brushUp();
+
+    @Primitive(132)
+    Color getGroundColor();
+
+    @Primitive(149)
+    default String getGroundColorName() {
+        return ColorMapper.color2name(getGroundColor());
+    }
+
+    @Primitive(131)
+    Color getBrushColor();
+
+    @Primitive(130)
+    default void primitiveSetBrushColor(String arg) throws InvalidColorNameException {
+        if (arg.indexOf('/') >= 0)
+            setBrushColor(ColorMapper.name2color(arg));
+        else {
+            int nb = Integer.parseInt(arg);
+            setBrushColor(ColorMapper.int2color(nb));
+        }
+    }
+
+    void setBrushColor(Color c);
+
+    @Primitive(120)
+    Color getBodyColor();
+
+    @Primitive(121)
+    void setBodyColor(Color c);
+
+    default int primitiveGetDirection() {
+        return getDirection().intValue();
+    }
+
+    @Primitive(value = 124)
+    Direction getDirection();
+
+    default void primitiveSetDirection(int nb) {
+        Direction d = switch (nb) {
+            case Direction.NORTH_VALUE -> Direction.NORTH;
+            case Direction.EAST_VALUE -> Direction.EAST;
+            case Direction.SOUTH_VALUE -> Direction.SOUTH;
+            case Direction.WEST_VALUE -> Direction.WEST;
+            default -> null;
+        };
+        setDirection(d);
+    }
+
+    @Primitive(value = 125)
+    void setDirection(Direction direction);
+
+    @Primitive(110)
+    void left();
+
+    @Primitive(111)
+    void right();
+
+    @Primitive(112)
+    void back();
+
+    @Primitive(141)
+    int getWorldHeight();
+
+    @Primitive(142)
+    int getWorldWidth();
+
+    @Primitive(115)
+    int getX();
+
+    @Primitive(117)
+    void setX(int x) throws BuggleInOuterSpaceException;
+
+    @Primitive(116)
+    int getY();
+
+    @Primitive(118)
+    void setY(int y) throws BuggleInOuterSpaceException;
+
+    @Primitive(119)
+    void setPos(int x, int y) throws BuggleInOuterSpaceException;
+
+
+    @Primitive(value = 113, name = "forward")
+    default void primitiveForward(int nb) throws BuggleWallException {
+        if (nb == 1) {
+            forward();
+        } else {
+            forward(nb);
+        }
+    }
+
+    void forward() throws BuggleWallException;
+
+    void forward(int count) throws BuggleWallException;
+
+    @Primitive(value = 114, name = "backward")
+    default void primitiveBackward(int nb) throws BuggleWallException {
+        if (nb == 1) {
+            backward();
+        } else {
+            backward(nb);
+        }
+    }
+
+    void backward() throws BuggleWallException;
+
+    void backward(int count) throws BuggleWallException;
+
+    @Primitive(122)
+    boolean isFacingWall();
+
+    @Primitive(123)
+    boolean isBackingWall();
+
+    @Primitive(150)
+    boolean isWallOnLeft();
+
+    @Primitive(151)
+    boolean isWallOnRight();
+
+    @Primitive(133)
+    boolean isOverBaggle();
+
+    @Primitive(134)
+    boolean isCarryingBaggle();
+
+    @Deprecated
+    @Primitive(135)
+    void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
+
+    @Primitive(136)
+    void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException;
+
+    @Primitive(126)
+    @Override
+    boolean isSelected();
+
+    @Primitive(137)
+    boolean isOverMessage();
+
+    @Primitive(138)
+    void writeMessage(String msg);
+
+    void writeMessage(int nb);
+
+    @Primitive(139)
+    String readMessage();
+
+    @Primitive(140)
+    void clearMessage();
+
+    @Primitive(value = 200, name = "getParam")
+    default String getParamString(int i) {
+        return getParam(i).toString();
+    }
+
+    @Primitive(201)
+    @Override
+    int getParamCount();
+
+    @Primitive(148)
+    default char getIndicationBdr() {
+        return isOverMessage() ? readMessage().charAt(0): ' ';
+    }
+
+    @Primitive(value = 146, name = "hasTopWall")
+    boolean primitiveHasTopWall(int x, int y);
+
+    @Primitive(value = 147, name = "hasLeftWall")
+    boolean primitiveHasLeftWall(int x, int y);
+}

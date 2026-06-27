@@ -4,13 +4,15 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
 import plm.universe.World;
 
-public class Turtle extends Entity {
+@EntityPrimitives(TurtlePrimitives.class)
+public class Turtle extends Entity implements TurtlePrimitives {
 
 	public final static int DEGREE = 1;
 	public final static int RADIAN = 2;
@@ -75,10 +77,12 @@ public class Turtle extends Entity {
 		this.penDown = other.penDown;
 	}
 
+	@Override
 	public void forward(double dist) {
 		moveTo(x + dist * Math.cos(heading), y + dist * Math.sin(heading));
 	}
 
+	@Override
 	public void backward(double dist) {
 		moveTo(x + dist * Math.cos(heading + Math.PI), y + dist * Math.sin(heading + Math.PI));
 	}
@@ -118,11 +122,13 @@ public class Turtle extends Entity {
 			}
 		}
 	}
+	@Override
 	public void circle(double radius) {
 		if (penDown)
 			getWorld().addCircle(x, y, radius, color);
 	}
 
+	@Override
 	public void moveTo(double newX, double newY) {
 		final double w = this.getWorld().getWidth();
 		final double h = this.getWorld().getHeight();
@@ -204,9 +210,11 @@ public class Turtle extends Entity {
 		stepUI();
 	}
 
+	@Override
 	public void left(double angle) {
 		setHeadingRadian(heading - fromAngularUnit(angle));
 	}
+	@Override
 	public void right(double angle) {
 		setHeadingRadian(heading + fromAngularUnit(angle));
 	}
@@ -228,29 +236,36 @@ public class Turtle extends Entity {
 				"Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
 	}
 
+	@Override
 	public boolean isPenDown() {
 		return penDown;
 	}
 
+	@Override
 	public void penDown() {
 		this.penDown = true;
 	}
 
+	@Override
 	public void penUp() {
 		this.penDown = false;
 	}
 
+	@Override
 	public void hide() {
 		this.visible = false;
 		stepUI();
 	}
+	@Override
 	public void show() {
 		this.visible = true;
 		stepUI();
 	}
+	@Override
 	public boolean isVisible() {
 		return this.visible;
 	}
+	@Override
 	public void clear() {
 		getWorld().clear();
 	}
@@ -275,10 +290,12 @@ public class Turtle extends Entity {
 		throw new RuntimeException("Unknown angular unit:" + angularUnit + " (please report this bug)");
 	}
 
+	@Override
 	public double getHeading() {
 		return toAngularUnit(heading);
 	}
 
+	@Override
 	public void setHeading(double heading) {
 		setHeadingRadian(fromAngularUnit(heading));
 	}
@@ -306,24 +323,29 @@ public class Turtle extends Entity {
 		color = c;
 	}
 
+	@Override
 	public double getX() {
 		return x;
 	}
 
+	@Override
 	public void setX(double x) {
 		this.x = x;
 		stepUI();
 	}
 
+	@Override
 	public double getY() {
 		return y;
 	}
 
+	@Override
 	public void setY(double y) {
 		this.y = y;
 		stepUI();
 	}
 
+	@Override
 	public void setPos(double x, double y) {
 		this.x = x;
 		this.y = y;
@@ -527,12 +549,12 @@ public class Turtle extends Entity {
 				clear();
 				break;
 			case 125:
-				out.write(Double.toString(getCap()));
+				out.write(Double.toString(getHeading()));
 				out.write("\n");
 				break;
 			case 126:
 				nb = Double.parseDouble((command.split(" ")[1]));
-				setCap(nb);
+				setHeading(nb);
 				break;
 			case 127:
 				penUp();
@@ -545,12 +567,12 @@ public class Turtle extends Entity {
 				out.write("\n");
 				break;
 			case 130:
-				out.write(ColorMapper.color2int(getColor()));
+				out.write(color2int(getColor()));
 				out.write("\n");
 				break;
 			case 131:
 				nbInt = Integer.parseInt((command.split(" ")[1]));
-				setColor(ColorMapper.int2color(nbInt));
+				setColor(int2color(nbInt));
 				break;
 			case 132:
 				out.write((isSelected()?"1":"0"));
@@ -558,18 +580,12 @@ public class Turtle extends Entity {
 				break;
 			case 200:
 				nbInt = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString((int)getParam(nbInt)));
+				out.write(Integer.toString(getIntParam(nbInt)));
 				out.write("\n");
 				break;
 			case 201:
 				nbInt = Integer.parseInt((command.split(" ")[1]));
-				double param;
-				if(getParam(nbInt) instanceof Integer){
-					param =(double) ((Integer) getParam(nbInt)).intValue();
-				}else{
-					param = (double)getParam(nbInt);
-				}
-				out.write(Double.toString(param));
+				out.write(Double.toString(getDoubleParam(nbInt)));
 				out.write("\n");
 				break;
 			default:

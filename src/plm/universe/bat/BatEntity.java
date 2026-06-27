@@ -2,10 +2,12 @@ package plm.universe.bat;
 
 import java.io.BufferedWriter;
 
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
+@EntityPrimitives(BatEntityPrimitives.class)
 public class BatEntity extends Entity {
 	
 	public BatEntity() {

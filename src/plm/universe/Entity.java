@@ -19,7 +19,7 @@ import plm.core.model.Game;
  * Instead, the solution is to use the static field Game.i18n, as it is done in AbstractBuggle::diffTo().
  */
 
-public abstract class Entity extends Observable {
+public abstract class Entity extends Observable implements EntityPrimitivesBase {
 	protected String name = "(noname)";
 
 	protected World world;
@@ -121,10 +121,13 @@ public abstract class Entity extends Observable {
 	}
 
 	/** Retrieve one parameter from the world */
-        public Object getParam(int i) { return world.parameters[i]; }
-        protected int getParamCount() { return world.parameters.length; }
+	@Override
+	public Object getParam(int i) { return world.parameters[i]; }
+        @Override
+        public int getParamCount() { return world.parameters.length; }
 
         /** Returns whether this is the entity selected in the interface */
+		@Override
         public boolean isSelected() { return this == Game.getInstance().getSelectedEntity(); }
 
         /**

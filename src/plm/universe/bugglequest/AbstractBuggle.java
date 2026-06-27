@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
@@ -18,7 +19,8 @@ import plm.universe.bugglequest.exception.BuggleWallException;
 import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public abstract class AbstractBuggle extends Entity {
+@EntityPrimitives(AbstractBugglePrimitives.class)
+public abstract class AbstractBuggle extends Entity implements AbstractBugglePrimitives {
 	int k_val = 0;
 	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
 
@@ -99,10 +101,12 @@ public abstract class AbstractBuggle extends Entity {
 				"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
 	}
 
+	@Override
 	public boolean isBrushDown() {
 		return brushDown;
 	}
 
+	@Override
 	public void brushDown() {
 		this.brushDown = true;
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
@@ -112,6 +116,7 @@ public abstract class AbstractBuggle extends Entity {
 		notifyObservers(BRUSH_STATE);
 	}
 
+	@Override
 	public void brushUp() {
 		if (k_seq[k_val]==4) k_val++; else k_val = 0;
 		this.brushDown = false;
@@ -119,14 +124,17 @@ public abstract class AbstractBuggle extends Entity {
 		notifyObservers(BRUSH_STATE);
 	}
 
+	@Override
 	public Color getGroundColor() {
 		return getCell().getColor();
 	}
 
+	@Override
 	public Color getBrushColor() {
 		return brushColor;
 	}
 
+	@Override
 	public void setBrushColor(Color c) {
 		if (c != null)
 			brushColor = c;
@@ -136,10 +144,12 @@ public abstract class AbstractBuggle extends Entity {
 		notifyObservers(BRUSH_COLOR);
 	}
 
+	@Override
 	public Color getBodyColor() {
 		return bodyColor;
 	}
 
+	@Override
 	public void setBodyColor(Color c) {
 		if (c != null) {
 			this.bodyColor = c;
@@ -149,10 +159,12 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
+	@Override
 	public Direction getDirection() {
 		return direction;
 	}
 
+	@Override
 	public void setDirection(Direction direction) {
 		if (direction != null) {
 			this.direction = direction;
@@ -160,11 +172,13 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
+	@Override
 	public void left() {
 		if (k_seq[k_val]==2) k_val++; else k_val = 0;
 		setDirection(direction.left());
 	}
 
+	@Override
 	public void right() {
 		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
@@ -178,14 +192,17 @@ public abstract class AbstractBuggle extends Entity {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
 	}
 
+	@Override
 	public void back() {
 		setDirection(direction.opposite());
 	}
 
+	@Override
 	public int getWorldHeight() {
 		return ((GridWorld) world).getHeight();
 	}
 
+	@Override
 	public int getWorldWidth() {
 		return ((GridWorld) world).getWidth();
 	}
@@ -209,10 +226,12 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
+	@Override
 	public int getX() {
 		return x;
 	}
 
+	@Override
 	public void setX(int x) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (x>=bw.getWidth())
@@ -228,10 +247,12 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
+	@Override
 	public int getY() {
 		return y;
 	}
 
+	@Override
 	public void setY(int y) throws BuggleInOuterSpaceException  {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
@@ -247,6 +268,7 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
+	@Override
 	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
@@ -265,21 +287,25 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
+	@Override
 	public void forward() throws BuggleWallException {
 		if (k_seq[k_val]==0) k_val++; else k_val = 0;
 		move(direction.toPoint());
 	}
 
+	@Override
 	public void forward(int count) throws BuggleWallException {
 		for (int i = 0; i < count; i++)
 			forward();
 	}
 
+	@Override
 	public void backward() throws BuggleWallException {
 		if (k_seq[k_val]==1) k_val++; else k_val = 0;
 		move(direction.opposite().toPoint());
 	}
 
+	@Override
 	public void backward(int count) throws BuggleWallException {
 		for (int i = 0; i < count; i++)
 			backward();
@@ -309,9 +335,13 @@ public abstract class AbstractBuggle extends Entity {
               throw new RuntimeException("Invalid direction: " + delta);
           }
         }
+        @Override
         public boolean isFacingWall() { return lookAtWall(getDirection()); }
+        @Override
         public boolean isBackingWall() { return lookAtWall(getDirection().opposite()); }
+        @Override
         public boolean isWallOnLeft() { return lookAtWall(getDirection().left()); }
+        @Override
         public boolean isWallOnRight() { return lookAtWall(getDirection().right()); }
 
         private void move(Point delta) throws BuggleWallException
@@ -341,15 +371,18 @@ public abstract class AbstractBuggle extends Entity {
           stepUI();
         }
 
+        @Override
         public boolean isOverBaggle() {
 		return getCellFromLesson(this.x, this.y).hasBaggle();
 	}
 
+	@Override
 	public boolean isCarryingBaggle() {
 		return this.carryBaggle;
 	}
 
 	@Deprecated
+	@Override
 	public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
 		pickupBaggle();
 	}
@@ -371,6 +404,7 @@ public abstract class AbstractBuggle extends Entity {
 		carryBaggle = true;
 	}
 
+	@Override
 	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
 		if (! isCarryingBaggle())
 			throw new DontHaveBaggleException();
@@ -383,26 +417,44 @@ public abstract class AbstractBuggle extends Entity {
 	}
 	
 	
+	@Override
 	public boolean isOverMessage() {
 		return getCell().hasContent();
 	}
 
+	@Override
 	public void writeMessage(String msg) {
 		getCell().addContent(msg);
 	}
+	@Override
 	public void writeMessage(int nb) {
 		writeMessage(""+nb);
 	}
 
+	@Override
 	public String readMessage() {
 		return getCell().getContent();
 	}
 
+	@Override
 	public void clearMessage() {
 		getCell().emptyContent();
 	}
 
 
+	@Override
+	public boolean primitiveHasTopWall(int x, int y) {
+		this.x = x;
+		this.y = y;
+		return getCell().hasTopWall();
+	}
+
+	@Override
+	public boolean primitiveHasLeftWall(int x, int y) {
+		this.x = x;
+		this.y = y;
+		return getCell().hasLeftWall();
+	}
 
 	@Override
 	public String toString() {
@@ -563,6 +615,7 @@ public abstract class AbstractBuggle extends Entity {
 
         @Override public void command(String command, BufferedWriter out) throws Exception
         {
+			System.out.println(command);
           if (command.contains("AddressSanitizer")) {
             if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))
               System.err.println(command);
@@ -585,19 +638,11 @@ public abstract class AbstractBuggle extends Entity {
               break;
             case 113:
               nb = Integer.parseInt((command.split(" ")[1]));
-              if (nb == 1) {
-                forward();
-              } else {
-                forward(nb);
-              }
+              primitiveForward(nb);
               break;
             case 114:
               nb = Integer.parseInt((command.split(" ")[1]));
-              if (nb == 1) {
-                backward();
-              } else {
-                backward(nb);
-              }
+              primitiveBackward(nb);
               break;
             case 115:
               out.write(Integer.toString(getX()));
@@ -646,27 +691,12 @@ public abstract class AbstractBuggle extends Entity {
               out.write("\n");
               break;
             case 124:
-              out.write(Integer.toString(getDirection().intValue()));
+              out.write(Integer.toString(primitiveGetDirection()));
               out.write("\n");
               break;
             case 125:
               nb = Integer.parseInt((command.split(" ")[1]));
-              Direction d = null;
-              switch (nb) {
-              case Direction.NORTH_VALUE:
-                d = Direction.NORTH;
-                break;
-              case Direction.EAST_VALUE:
-                d = Direction.EAST;
-                break;
-              case Direction.SOUTH_VALUE:
-                d = Direction.SOUTH;
-                break;
-              case Direction.WEST_VALUE:
-                d = Direction.WEST;
-                break;
-              }
-              setDirection(d);
+			  primitiveSetDirection(nb);
               break;
             case 126:
               out.write((isSelected() ? "1" : "0"));
@@ -684,12 +714,7 @@ public abstract class AbstractBuggle extends Entity {
               break;
             case 130:
               String arg = command.split(" ")[1];
-              if (arg.indexOf('/') >= 0)
-                setBrushColor(ColorMapper.name2color(arg));
-              else {
-                nb = Integer.parseInt(arg);
-                setBrushColor(ColorMapper.int2color(nb));
-              }
+              primitiveSetBrushColor(arg);
               break;
             case 131:
               out.write(
@@ -743,15 +768,15 @@ public abstract class AbstractBuggle extends Entity {
               out.write("\n");
               break;
             case 146: // hasTopWall
-              x = Integer.parseInt((command.split(" ")[1]));
-              y = Integer.parseInt((command.split(" ")[2]));
-              out.write(getCell().hasTopWall() ? "1" : "0");
+              int x = Integer.parseInt((command.split(" ")[1]));
+              int y = Integer.parseInt((command.split(" ")[2]));
+              out.write(primitiveHasTopWall(x,y) ? "1" : "0");
             case 147: // hasLeftWall
               x = Integer.parseInt((command.split(" ")[1]));
               y = Integer.parseInt((command.split(" ")[2]));
-              out.write(getCell().hasLeftWall() ? "1" : "0");
+              out.write(primitiveHasLeftWall(x,y) ? "1" : "0");
             case 148: // getIndicationBdr
-              out.write("" + (isOverMessage() ? readMessage().charAt(0) : " "));
+              out.write(getIndicationBdr());
               out.write("\n");
               break;
               // 149 is getGroundColorName
