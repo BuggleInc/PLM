@@ -140,7 +140,7 @@ public class ExoTest {
     Game.getInstance().setProgramingLanguage(lang);
 
     exo.lastResult = new ExecutionProgress();
-    System.err.println("Test exo " + exo.getName() + " in " + lang);
+    System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
       exo.compileAll(null, StudentOrCorrection.CORRECTION);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))

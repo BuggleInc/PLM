@@ -229,6 +229,8 @@ public class LangC extends ProgrammingLanguage {
         PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
         System.err.println(Game.i18n.tr("Compilation error:"));
         System.err.println(e.getMessage());
+        System.err.println(code);
+
         exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
 
         throw e;

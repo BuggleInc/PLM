@@ -20,6 +20,8 @@ static void get_answer_line() {
   if (fgets(answer_buffer, sizeof(answer_buffer), stdin) == NULL) {
     exit(1);
   }
+  if (debug_fd)
+    fprintf(debug_fd, "Answer: %s\n", answer_buffer);
   answer_buffer[strcspn(answer_buffer, "\r\n")] = 0;
 }
 int get_answer_int() {
@@ -65,7 +67,7 @@ int main(int argc, char *argv[]) {
 
   debug_fd = fopen("/tmp/debug-PLM-C", "a");
   if (debug_fd)
-    fprintf(debug_fd, "Starting the entity %s\n", argc > 0 ? argv[1] : "(no name provided by Java)");
+    fprintf(debug_fd, "Starting the entity %s\n", argv[0]);
   run();
   return 0;
 }
