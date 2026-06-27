@@ -615,7 +615,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 
         @Override public void command(String command, BufferedWriter out) throws Exception
         {
-			System.out.println(command);
           if (command.contains("AddressSanitizer")) {
             if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))
               System.err.println(command);
