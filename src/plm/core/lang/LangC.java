@@ -127,7 +127,7 @@ public class LangC extends ProgrammingLanguage {
             }
 
             String line;
-            String compiled_code_name = tempdir + "/" + exo.getId() + ".c";
+            String compiled_code_name = plmDirTmp + "/" + exo.getId() + ".c";
             PrintWriter compiled_code = new PrintWriter(compiled_code_name);
 
             BufferedReader hRemote = new BufferedReader(new InputStreamReader(
