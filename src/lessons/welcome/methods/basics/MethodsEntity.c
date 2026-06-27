@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../../lib/resources/langages/c/include/RemoteBuggle.h"
 
 /* BEGIN TEMPLATE */
 /* BEGIN SOLUTION */
@@ -18,13 +18,13 @@ void goAndGet() {
 /* END SOLUTION */
 /* END TEMPLATE */
 
-
-void run(){
-	int i=0;
-	for (i=0; i<7; i++) {
-		goAndGet();
-		right();
-		forward(1);
-		left();
-	}
+void run()
+{
+  int i = 0;
+  for (i = 0; i < 7; i++) {
+    goAndGet();
+    right();
+    forward(1);
+    left();
+  }
 }

@@ -1,10 +1,10 @@
-//RemoteBuggle
+#include "../../../../../lib/resources/langages/c/include/RemoteBuggle.h"
 
 void hunt(Color c);
 int isFacingTrail(Color c);
 
 void run(){
-	hunt(getParam());
+  hunt(atoi(getParam(0)));
 }
 
 /* BEGIN TEMPLATE */

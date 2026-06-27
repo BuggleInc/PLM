@@ -29,10 +29,6 @@ public class SimpleExercise extends ExerciseTemplated {
 		super(lesson);
 		this.setName(name);
 	}
-	
-	protected void setup(World[] ws) {
-		super.setup(ws);
-	}
-	
-	
+
+        protected void setup(World[] ws) { super.setup(ws); }
 }

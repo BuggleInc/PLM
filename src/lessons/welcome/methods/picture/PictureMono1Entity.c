@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../../lib/resources/langages/c/include/RemoteBuggle.h"
 
 void mark();
 void makeV();
