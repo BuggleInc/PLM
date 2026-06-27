@@ -42,102 +42,104 @@ public abstract class Exercise extends Lecture {
 	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
 	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
 
+        public RunOutcome lastResult;
 
-	public ExecutionProgress lastResult;
+        public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Game.getInstance().getLocale(),
+                                               I18nFactory.FALLBACK);
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
+        public Exercise(Lesson lesson, String basename) { super(lesson, basename); }
 
-	public Exercise(Lesson lesson,String basename) {
-		super(lesson,basename);
-	}
-
-	public void setupWorlds(World[] w) {
-		currentWorld = new Vector<World>(w.length);
-		initialWorld = new Vector<World>(w.length);
-		answerWorld  = new Vector<World>(w.length);
-		for (int i=0; i<w.length; i++) {
-			if (w[i] == null) 
-				throw new RuntimeException("Broken exercise "+getId()+": world "+i+" is null!");
-			currentWorld.add( w[i].copy() );
-			initialWorld.add( w[i].copy() );
-			answerWorld. add( w[i].copy() );
-		}
-	}
-
-	public abstract void run(List<Thread> runnerVect);	
-	public abstract void runDemo(List<Thread> runnerVect);	
-
-	public void check() {
-		boolean pass = true;
-		if (lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			for (int i=0; i<currentWorld.size(); i++) {
-				currentWorld.get(i).notifyWorldUpdatesListeners();
-
-				lastResult.totalTests++;
-
-				if (!currentWorld.get(i).winning(answerWorld.get(i))) {
-					String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
-					lastResult.executionError += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
-					if (diff != null) 
-						lastResult.executionError += ":\n"+diff;
-					lastResult.executionError += "\n";
-					pass = false;
-				} else {
-					lastResult.passedTests++;
-				}
-			}
-			if (pass)
-				lastResult.outcome = ExecutionProgress.outcomeKind.PASS;
-			else 
-				lastResult.outcome = ExecutionProgress.outcomeKind.FAIL;
-		}
-	}
-	/** Reset the current worlds to the state of the initial worlds */
-	public void reset() {
-		lastResult = new ExecutionProgress();
-
-		for (int i=0; i<initialWorld.size(); i++) 
-			currentWorld.get(i).reset(initialWorld.get(i));
-	}
-
-	/**
-	 * Generate Java source from the user function
-	 * @param out 
-	 * 			where to display our errors
-	 * @param whatToCompile
-	 * 			either STUDENT's provided data or CORRECTION entity 
-	 * @throws PLMCompilerException 
-	 * 
-	 * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
-	 */
-	public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
-		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
-		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
-		 */
-                Game.getInstance().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+        public void setupWorlds(World[] w)
+        {
+          currentWorld = new Vector<World>(w.length);
+          initialWorld = new Vector<World>(w.length);
+          answerWorld  = new Vector<World>(w.length);
+          for (int i = 0; i < w.length; i++) {
+            if (w[i] == null)
+              throw new RuntimeException("Broken exercise " + getId() + ": world " + i + " is null!");
+            currentWorld.add(w[i].copy());
+            initialWorld.add(w[i].copy());
+            answerWorld.add(w[i].copy());
+          }
         }
 
-	/** get the list of source files for a given language, or create it if not existent yet */
-	public List<SourceFile> getSourceFilesList(ProgrammingLanguage lang) {
-		List<SourceFile> res = sourceFiles.get(lang); 
-		if (res == null) {
-			res = new ArrayList<SourceFile>();
-			sourceFiles.put(lang, res);
-		}
-		return res;
-	}
-	public int getSourceFileCount(ProgrammingLanguage lang) {
-		return getSourceFilesList(lang).size();
-	}	
-	public SourceFile getSourceFile(ProgrammingLanguage lang, int i) {
-		return getSourceFilesList(lang).get(i);
-	}
+        public abstract void run(List<Thread> runnerVect);
+        public abstract void runDemo(List<Thread> runnerVect);
 
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn));
-	}
+        public void check()
+        {
+          boolean pass = true;
+          if (lastResult.outcome == RunOutcome.kind.PASS) {
+            for (int i = 0; i < currentWorld.size(); i++) {
+              currentWorld.get(i).notifyWorldUpdatesListeners();
 
-	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
+              lastResult.totalTests++;
+
+              if (!currentWorld.get(i).winning(answerWorld.get(i))) {
+                String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
+                lastResult.executionError += i18n.tr("The world ''{0}'' differs", currentWorld.get(i).getName());
+                if (diff != null)
+                  lastResult.executionError += ":\n" + diff;
+                lastResult.executionError += "\n";
+                pass = false;
+              } else {
+                lastResult.passedTests++;
+              }
+            }
+            if (pass)
+              lastResult.outcome = RunOutcome.kind.PASS;
+            else
+              lastResult.outcome = RunOutcome.kind.FAIL;
+          }
+        }
+        /** Reset the current worlds to the state of the initial worlds */
+        public void reset()
+        {
+          lastResult = new RunOutcome();
+
+          for (int i = 0; i < initialWorld.size(); i++)
+            currentWorld.get(i).reset(initialWorld.get(i));
+        }
+
+        /**
+         * Generate Java source from the user function
+         * @param out
+         * 			where to display our errors
+         * @param whatToCompile
+         * 			either STUDENT's provided data or CORRECTION entity
+         * @throws PLMCompilerException
+         *
+         * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
+         */
+        public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+        {
+          /* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
+           * Instead, scripting languages get the source code as text directly from the sourceFiles
+           */
+          Game.getInstance().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+        }
+
+        /** get the list of source files for a given language, or create it if not existent yet */
+        public List<SourceFile> getSourceFilesList(ProgrammingLanguage lang)
+        {
+          List<SourceFile> res = sourceFiles.get(lang);
+          if (res == null) {
+            res = new ArrayList<SourceFile>();
+            sourceFiles.put(lang, res);
+          }
+          return res;
+        }
+        public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
+        public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
+
+        public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template, int offset,
+                              String correctionCtn)
+        {
+          getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset, correctionCtn));
+        }
+
+        public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate)
+        {
           ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
 
           Vector<World> worlds;
@@ -176,57 +178,58 @@ public abstract class Exercise extends Lecture {
 				current.setEntities( lang.mutateEntities(this, current.getEntities(), whatToMutate) );			
 			}
 		} catch (PLMCompilerException e) {
-			lastResult = ExecutionProgress.newCompilationError(e.getLocalizedMessage());
-		}
-	}
+                  lastResult = RunOutcome.newCompilationError(e.getLocalizedMessage());
+                }
+        }
 
-	public Vector<World> getWorlds(WorldKind kind) {
-		switch (kind) {
-		case INITIAL: return initialWorld;
-		case CURRENT: return currentWorld;
-		case ANSWER:  return answerWorld;
-		default: throw new RuntimeException("Unhandled kind of world: "+kind);
-		}
-	}
+        public Vector<World> getWorlds(WorldKind kind)
+        {
+          switch (kind) {
+            case INITIAL:
+              return initialWorld;
+            case CURRENT:
+              return currentWorld;
+            case ANSWER:
+              return answerWorld;
+            default:
+              throw new RuntimeException("Unhandled kind of world: " + kind);
+          }
+        }
 
-	public int getWorldCount() {
-		return this.initialWorld.size();
-	}
+        public int getWorldCount() { return this.initialWorld.size(); }
 
-	/** Returns the current world number index 
-	 * @see #getAnswerOfWorld(int)
-	 */
-	public World getWorld(int index) {// FIXME: rename to getCurrentWorld or KILLME
-		return this.currentWorld.get(index);
-	}
+        /**
+         * Returns the current world number index
+         * @see #getAnswerOfWorld(int)
+         */
+        public World getWorld(int index)
+        { // FIXME: rename to getCurrentWorld or KILLME
+          return this.currentWorld.get(index);
+        }
 
-	public int indexOfWorld(World w) {
-		int index = 0;
-		do {
-			if (this.currentWorld.get(index) == w)
-				return index;
-			index++;
-		} while (index < this.currentWorld.size());
+        public int indexOfWorld(World w)
+        {
+          int index = 0;
+          do {
+            if (this.currentWorld.get(index) == w)
+              return index;
+            index++;
+          } while (index < this.currentWorld.size());
 
-		throw new RuntimeException("World not found (please report this bug)");
-	}
+          throw new RuntimeException("World not found (please report this bug)");
+        }
 
-	public World getAnswerOfWorld(int index) { // FIXME: rename or KILLME
-		return this.answerWorld.get(index);
-	}
+        public World getAnswerOfWorld(int index)
+        { // FIXME: rename or KILLME
+          return this.answerWorld.get(index);
+        }
 
-	public String toString() {
-		return getName();
-	}
+        public String toString() { return getName(); }
 
-	/* setters and getter of the programming language that this exercise accepts */ 
-	private Set<ProgrammingLanguage> progLanguages = new HashSet<ProgrammingLanguage>();
+        /* setters and getter of the programming language that this exercise accepts */
+        private Set<ProgrammingLanguage> progLanguages = new HashSet<ProgrammingLanguage>();
 
-	public Set<ProgrammingLanguage> getProgLanguages() {
-		return progLanguages;
-	}
-	protected void addProgLanguage(ProgrammingLanguage newL) {
-		progLanguages.add(newL);
-	}
+        public Set<ProgrammingLanguage> getProgLanguages() { return progLanguages; }
+        protected void addProgLanguage(ProgrammingLanguage newL) { progLanguages.add(newL); }
 }
 

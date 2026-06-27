@@ -2,10 +2,10 @@ package lessons.backtracking;
 
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.NoSuchEntityException;
+import plm.core.model.lesson.RunOutcome;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -40,21 +40,21 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		computeAnswer();
 	}
 	protected void computeAnswer() {
-		ExecutionProgress progress = new ExecutionProgress();
-                ProgrammingLanguage pl     = Game.getInstance().getProgrammingLanguage();
+          RunOutcome progress    = new RunOutcome();
+          ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
 
-                for (World aw : answerWorld) {
-			System.out.println("Compute answer for world "+aw.getName());
-			try {
-				pl.runEntity(aw.getEntity(0),progress);
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			}
-		}
-	}
+          for (World aw : answerWorld) {
+            System.out.println("Compute answer for world " + aw.getName());
+            try {
+              pl.runEntity(aw.getEntity(0), progress);
+            } catch (Exception e) {
+              throw new RuntimeException(e);
+            }
+          }
+        }
 
-	protected void newBestSolution(BacktrackingPartialSolution sol) {
-		((BacktrackingWorld) getWorlds(WorldKind.CURRENT).get(0)).newBestSolution(sol);
-	}
-
+        protected void newBestSolution(BacktrackingPartialSolution sol)
+        {
+          ((BacktrackingWorld)getWorlds(WorldKind.CURRENT).get(0)).newBestSolution(sol);
+        }
 }

@@ -2,13 +2,12 @@ package plm.test.simple.test;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
+import plm.core.model.lesson.RunOutcome;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -28,41 +27,43 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 				pl.runEntity(ent,exo.lastResult);
 			}
 		}
-		
-		if(exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should pass the exercise...");
-		}
-	}
-	
-	@Test
-	public void testSolutionShouldExecuteProperly() throws PLMCompilerException {
-		exo.compileAll(null, StudentOrCorrection.CORRECTION);
-		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
-		
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
-			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
-			}
-		}
-		
-		if(exo.lastResult.executionError!=null && !exo.lastResult.executionError.equals("")) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should execute properly and not throw the following error:\n"+exo.lastResult.executionError);
-		}
-	}
-	
-	@Test
-	public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
-		Assertions.assertThrows(PLMCompilerException.class, () -> {
-			exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
-			exo.compileAll(null, StudentOrCorrection.STUDENT);
-		});
-	}
-	
-	@Test
-	public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException {
-		Assertions.assertThrows(PLMCompilerException.class, () -> {
-			exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
-			exo.compileAll(null, StudentOrCorrection.STUDENT);
-		});
-	}
+
+                if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
+                  Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise...");
+                }
+        }
+
+        @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException
+        {
+          exo.compileAll(null, StudentOrCorrection.CORRECTION);
+          exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+
+          for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+            for (Entity ent : w.getEntities()) {
+              pl.runEntity(ent, exo.lastResult);
+            }
+          }
+
+          if (exo.lastResult.executionError != null && !exo.lastResult.executionError.equals("")) {
+            Assertions.fail(getClass().getName().replace("Test", "Entity") +
+                            " should execute properly and not throw the following error:\n" +
+                            exo.lastResult.executionError);
+          }
+        }
+
+        @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
+        {
+          Assertions.assertThrows(PLMCompilerException.class, () -> {
+            exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
+            exo.compileAll(null, StudentOrCorrection.STUDENT);
+          });
+        }
+
+        @Test public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException
+        {
+          Assertions.assertThrows(PLMCompilerException.class, () -> {
+            exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
+            exo.compileAll(null, StudentOrCorrection.STUDENT);
+          });
+        }
 }

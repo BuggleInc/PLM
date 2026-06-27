@@ -2,13 +2,12 @@ package plm.test.simple.test;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
+import plm.core.model.lesson.RunOutcome;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -41,28 +40,31 @@ public abstract class ScriptingSimpleExerciseTest extends SimpleExerciseTest {
 				pl.runEntity(ent,exo.lastResult);
 			}
 		}
-		
-		if(exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should pass the exercise...");
-		}
-	}
-	
-	@Test
-	public void testVariableErrorRisingCodeShouldCompil() throws PLMCompilerException {
-		exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
-		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
-		}
-	}
-	
-	@Test
-	public void testSyntaxErrorRisingCodeShouldCompil() throws PLMCompilerException  {
-		exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
-		if(exo.lastResult.compilationError!=null && !exo.lastResult.compilationError.equals("")) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" compilation should do nothing and not throw the following error:\n"+exo.lastResult.compilationError);
-		}
-	}
-	
+
+                if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
+                  Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise...");
+                }
+        }
+
+        @Test public void testVariableErrorRisingCodeShouldCompil() throws PLMCompilerException
+        {
+          exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
+          exo.compileAll(null, StudentOrCorrection.STUDENT);
+          if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals("")) {
+            Assertions.fail(getClass().getName().replace("Test", "Entity") +
+                            " compilation should do nothing and not throw the following error:\n" +
+                            exo.lastResult.compilationError);
+          }
+        }
+
+        @Test public void testSyntaxErrorRisingCodeShouldCompil() throws PLMCompilerException
+        {
+          exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
+          exo.compileAll(null, StudentOrCorrection.STUDENT);
+          if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals("")) {
+            Assertions.fail(getClass().getName().replace("Test", "Entity") +
+                            " compilation should do nothing and not throw the following error:\n" +
+                            exo.lastResult.compilationError);
+          }
+        }
 }

@@ -11,9 +11,9 @@ import java.util.List;
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
@@ -51,7 +51,7 @@ public class LangC extends ProgrammingLanguage {
     if (sfs == null || sfs.isEmpty()) {
       String msg = exo.getName() + ": No source to compile";
       System.err.println(msg);
-      exo.lastResult = ExecutionProgress.newCompilationError(msg);
+      exo.lastResult = RunOutcome.newCompilationError(msg);
       throw new PLMCompilerException(msg, null, null);
     }
 
@@ -110,7 +110,7 @@ public class LangC extends ProgrammingLanguage {
         remote = "RemoteHanoi";
       } else {
         PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
-        exo.lastResult         = ExecutionProgress.newCompilationError(e.getMessage());
+        exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
         throw e;
       }
 
@@ -231,7 +231,7 @@ public class LangC extends ProgrammingLanguage {
         System.err.println(e.getMessage());
         System.err.println(code);
 
-        exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+        exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
 
         throw e;
       }
@@ -248,7 +248,7 @@ public class LangC extends ProgrammingLanguage {
     return old; /* Nothing to do, actually */
   }
 
-  @Override public void runEntity(final Entity ent, final ExecutionProgress progress)
+  @Override public void runEntity(final Entity ent, final RunOutcome progress)
   {
     final StringBuffer resCompilationErr = new StringBuffer();
 

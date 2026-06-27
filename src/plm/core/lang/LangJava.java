@@ -23,10 +23,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Map.Entry;
 import java.util.Set;
-
+import java.util.TreeMap;
 import javax.tools.DiagnosticCollector;
 import javax.tools.FileObject;
 import javax.tools.ForwardingJavaFileManager;
@@ -38,13 +37,12 @@ import javax.tools.JavaFileObject.Kind;
 import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
-
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
@@ -94,11 +92,12 @@ public class LangJava extends JVMCompiledLang {
 				out.log(errs);
 		} catch (PLMCompilerException e) {
 			System.err.println(Game.i18n.tr("Compilation error:"));
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
-			if (out != null)
-				out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+                        exo.lastResult = RunOutcome.newCompilationError(e.getDiagnostics());
+                        if (out != null)
+                          out.log(
+                              exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
-			if (Game.getInstance().isDebugEnabled())
+                        if (Game.getInstance().isDebugEnabled())
                           for (SourceFile sf : exo.getSourceFilesList(this))
                             System.out.println("Source file " + sf.getName() + ":" +
                                                sf.getCompilableContent(runtimePatterns, whatToCompile)); 

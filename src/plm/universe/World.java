@@ -6,18 +6,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
-
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.Logger;
-import plm.core.model.lesson.ExecutionProgress;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
@@ -149,8 +146,9 @@ public abstract class World {
 	public List<Entity> getEntities() {
 		return entities;
 	}
-	
-	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
+
+        public void runEntities(List<Thread> runnerVect, final RunOutcome progress)
+        {
           final ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
           if (Game.getInstance().isDebugEnabled())
             Logger.log("World:runEntities", "Programming language: " + pl);
@@ -173,7 +171,7 @@ public abstract class World {
                   String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
                                + "Your program must stop by itself to successfully pass the exercise.\n";
                   progress.setExecutionError(Game.i18n.tr(msg));
-                  progress.outcome = ExecutionProgress.outcomeKind.FAIL;
+                  progress.outcome = RunOutcome.kind.FAIL;
                 }
               }
             };
@@ -184,190 +182,190 @@ public abstract class World {
             runner.start();
             runnerVect.add(runner);
 		}
-	}
+        }
 
-	/* who's interested in every details of the world changes */
-	private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
+        /* who's interested in every details of the world changes */
+        private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
 
-	/* who's only interested in entities creation and destructions */
-	private ArrayList<IWorldView> entitiesUpdateListeners = new ArrayList<IWorldView>();
+        /* who's only interested in entities creation and destructions */
+        private ArrayList<IWorldView> entitiesUpdateListeners = new ArrayList<IWorldView>();
 
-	public void addWorldUpdatesListener(IWorldView v) {
-		synchronized (this.worldUpdatesListeners) {
-			this.worldUpdatesListeners.add(v);
-		}
-	}
+        public void addWorldUpdatesListener(IWorldView v)
+        {
+          synchronized (this.worldUpdatesListeners) {
+            this.worldUpdatesListeners.add(v);
+          }
+        }
 
-	public void removeWorldUpdatesListener(IWorldView v) {
-		synchronized (this.worldUpdatesListeners) {
-			this.worldUpdatesListeners.remove(v);
-		}
-	}
+        public void removeWorldUpdatesListener(IWorldView v)
+        {
+          synchronized (this.worldUpdatesListeners) {
+            this.worldUpdatesListeners.remove(v);
+          }
+        }
 
-	public void notifyWorldUpdatesListeners() {
-		if (worldUpdatesListeners.isEmpty())
-			return;
-		synchronized (this.worldUpdatesListeners) {
-			for (IWorldView v : this.worldUpdatesListeners) {
-				v.worldHasMoved();
-			}
-		}
-	}
+        public void notifyWorldUpdatesListeners()
+        {
+          if (worldUpdatesListeners.isEmpty())
+            return;
+          synchronized (this.worldUpdatesListeners) {
+            for (IWorldView v : this.worldUpdatesListeners) {
+              v.worldHasMoved();
+            }
+          }
+        }
 
-	public void addEntityUpdateListener(IWorldView v) {
-		synchronized (this.entitiesUpdateListeners) {
-			this.entitiesUpdateListeners.add(v);
-		}
-	}
+        public void addEntityUpdateListener(IWorldView v)
+        {
+          synchronized (this.entitiesUpdateListeners) {
+            this.entitiesUpdateListeners.add(v);
+          }
+        }
 
-	public void removeEntityUpdateListener(IWorldView v) {
-		synchronized (this.entitiesUpdateListeners) {
-			this.entitiesUpdateListeners.remove(v);
-		}
-	}
+        public void removeEntityUpdateListener(IWorldView v)
+        {
+          synchronized (this.entitiesUpdateListeners) {
+            this.entitiesUpdateListeners.remove(v);
+          }
+        }
 
-	public void notifyEntityUpdateListeners() {
-		synchronized (this.entitiesUpdateListeners) {
-			for (IWorldView v : this.entitiesUpdateListeners) {
-				v.worldHasChanged();
-			}
-		}
-	}
+        public void notifyEntityUpdateListeners()
+        {
+          synchronized (this.entitiesUpdateListeners) {
+            for (IWorldView v : this.entitiesUpdateListeners) {
+              v.worldHasChanged();
+            }
+          }
+        }
 
-	/* IO related */
-	/** Returns whether this universe implements world I/O */
-	public boolean haveIO() { 
-		return false; 
-	}
-	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
-		throw new RuntimeException("This universe does not implement world I/O");
-	}
+        /* IO related */
+        /** Returns whether this universe implements world I/O */
+        public boolean haveIO() { return false; }
+        public World readFromFile(String path) throws IOException, BrokenWorldFileException
+        {
+          throw new RuntimeException("This universe does not implement world I/O");
+        }
 
-	public void writeToFile(BufferedWriter f) throws IOException {}
+        public void writeToFile(BufferedWriter f) throws IOException {}
 
-	public void writeToFile(File outputFile) throws IOException {
-		BufferedWriter bw = null;
-		FileWriter fw = null;
-		try {
-			fw = new FileWriter(outputFile);
-			bw = new BufferedWriter(fw);
-			this.writeToFile(bw);
-		} catch (IOException e) {
-			throw e;
-		} finally {
-			if (bw != null)
-				bw.close();
-		}
-	}
+        public void writeToFile(File outputFile) throws IOException
+        {
+          BufferedWriter bw = null;
+          FileWriter fw     = null;
+          try {
+            fw = new FileWriter(outputFile);
+            bw = new BufferedWriter(fw);
+            this.writeToFile(bw);
+          } catch (IOException e) {
+            throw e;
+          } finally {
+            if (bw != null)
+              bw.close();
+          }
+        }
 
-	/* Find my UI */
-	public WorldView getView() {
-		return new WorldView(this) {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public boolean isWorldCompatible(World world) {
-				return false;
-			}
-		};
-	}
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void setEnabledControl(boolean enabled) {
-			}
-		};
-	}
-	public abstract ImageIcon getIcon();
+        /* Find my UI */
+        public WorldView getView()
+        {
+          return new WorldView(this) {
+            private static final long serialVersionUID = 1L;
+            @Override public boolean isWorldCompatible(World world)
+            {
+              return false;
+            }
+          };
+        }
+        public EntityControlPanel getEntityControlPanel()
+        {
+          return new EntityControlPanel() {
+            private static final long serialVersionUID = 1L;
+            @Override public void setEnabledControl(boolean enabled) {}
+          };
+        }
+        public abstract ImageIcon getIcon();
 
+        @Override public int hashCode()
+        {
+          final int prime = 31;
+          int result      = 1;
+          result          = prime * result + ((entities == null) ? 0 : entities.hashCode());
+          result          = prime * result + ((name == null) ? 0 : name.hashCode());
+          return result;
+        }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((entities == null) ? 0 : entities.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
+        /**
+         * Checks whether the receiver world wins the exercise
+         *
+         * https://www.youtube.com/watch?v=9QS0q3mGPGg
+         *
+         * @param standard a correction world that should be used to compare the receiver state
+         */
+        public boolean winning(World standard) { return this.equals(standard); }
 
-	/** Checks whether the receiver world wins the exercise
-	 * 
-	 * https://www.youtube.com/watch?v=9QS0q3mGPGg
-	 * 
-	 * @param standard a correction world that should be used to compare the receiver state
-	 */
-	public boolean winning(World standard) {
-		return this.equals(standard);
-	}
+        @Override public boolean equals(Object obj)
+        {
+          if (this == obj)
+            return true;
+          if (obj == null)
+            return false;
+          if (!(obj instanceof World))
+            return false;
+          World other = (World)obj;
+          if (entities == null) {
+            if (other.entities != null)
+              return false;
+          } else if (!entities.equals(other.entities))
+            return false;
+          if (name == null) {
+            if (other.name != null)
+              return false;
+          } else if (!name.equals(other.name))
+            return false;
+          return true;
+        }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if ( !(obj instanceof World))
-			return false;
-		World other = (World) obj;
-		if (entities == null) {
-			if (other.entities != null)
-				return false;
-		} else if (!entities.equals(other.entities))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
+        String about = null;
 
-	String about = null;
+        public String getAbout()
+        {
+          if (about == null) {
+            String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
+            StringBuffer sb = null;
+            try {
+              sb = FileUtils.readContentAsText(filename, "html", true);
+            } catch (IOException ex) {
+              about = "File " + filename + ".html not found.";
+              return about;
+            }
+            /* read it */
+            about = sb.toString();
+          }
+          return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" +
+              PlmHtmlEditorKit.filterHTML(about, Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
+        }
 
-	public String getAbout() {
-		if (about == null) {
-			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
-			StringBuffer sb = null;
-			try {
-				sb = FileUtils.readContentAsText(filename, "html", true);
-			} catch (IOException ex) {
-				about = "File "+filename+".html not found.";
-				return about;
-			}
-			/* read it */
-			about = sb.toString();
-		}
-		return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
-	}
-	
-	/**
-	 * Set about to null in order to allows it to be reloaded in the right language
-	 */
-	public void resetAbout() {
-		this.about = null ;
-	}
+        /**
+         * Set about to null in order to allows it to be reloaded in the right language
+         */
+        public void resetAbout() { this.about = null; }
 
-	protected Object[] parameters = null;
-	public void setParameter(Object[] parameters) {
-		this.parameters = parameters;		
-	}
-	public Object[] getParameters() {
-		return parameters;
-	}
-	public Object getParameter(int i){
-		return parameters[i];
-	}
+        protected Object[] parameters = null;
+        public void setParameter(Object[] parameters) { this.parameters = parameters; }
+        public Object[] getParameters() { return parameters; }
+        public Object getParameter(int i) { return parameters[i]; }
 
-	public void setSelectedEntity(Entity e) {
-		notifyWorldUpdatesListeners();//EntityUpdateListeners();
-	}
-	/** Returns the script except that must be injected within the environment before running user code
-	 * 
-	 * It should pass all order to the java entity, which were injected independently  
-	 * @throws ScriptException 
-	 */
-	public abstract void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException;
+        public void setSelectedEntity(Entity e)
+        {
+          notifyWorldUpdatesListeners(); // EntityUpdateListeners();
+        }
+        /**
+         * Returns the script except that must be injected within the environment before running user code
+         *
+         * It should pass all order to the java entity, which were injected independently
+         * @throws ScriptException
+         */
+        public abstract void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException;
 
-	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
-	public abstract String diffTo(World world);
+        /** Returns a textual representation of the differences from the receiver world to the one in parameter*/
+        public abstract String diffTo(World world);
 }

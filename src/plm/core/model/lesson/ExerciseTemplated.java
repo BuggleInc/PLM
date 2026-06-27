@@ -434,9 +434,10 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				
 				/* I/O didn't work. We have to load the files manually */
-				ExecutionProgress progress = new ExecutionProgress();
-				
-				// In all language but C, the correction is either directly usable (interpreted) or already compiled in the jarfile
+                                RunOutcome progress = new RunOutcome();
+
+                                // In all language but C, the correction is either directly usable (interpreted) or
+                                // already compiled in the jarfile
                                 if (Game.getInstance().getProgrammingLanguage().isC()) {
                                   try {
                                     // TODO BAT remove if bat will be implemented in C
@@ -491,27 +492,27 @@ public abstract class ExerciseTemplated extends Exercise {
 	@Override
 	public void run(List<Thread> runnerVect){
 		if (lastResult == null)
-			lastResult = new ExecutionProgress();
-		
-		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+                  lastResult = new RunOutcome();
 
-		for (World cw: getWorlds(WorldKind.CURRENT)) {
-			cw.doDelay();
-			cw.runEntities(runnerVect, lastResult);
-		}
-	}
+                mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
-	@Override
-	public void runDemo(List<Thread> runnerVect){
-		ExecutionProgress ignored = new ExecutionProgress();
-		
-		for (int i=0; i<initialWorld.size(); i++) { 
-			answerWorld.get(i).reset(initialWorld.get(i));
-			answerWorld.get(i).doDelay();
-		}
-		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+                for (World cw : getWorlds(WorldKind.CURRENT)) {
+                  cw.doDelay();
+                  cw.runEntities(runnerVect, lastResult);
+                }
+        }
 
-		for (World aw:getWorlds(WorldKind.ANSWER))
-			aw.runEntities(runnerVect,ignored);
-	}
+        @Override public void runDemo(List<Thread> runnerVect)
+        {
+          RunOutcome ignored = new RunOutcome();
+
+          for (int i = 0; i < initialWorld.size(); i++) {
+            answerWorld.get(i).reset(initialWorld.get(i));
+            answerWorld.get(i).doDelay();
+          }
+          mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+
+          for (World aw : getWorlds(WorldKind.ANSWER))
+            aw.runEntities(runnerVect, ignored);
+        }
 }

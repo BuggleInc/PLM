@@ -3,7 +3,6 @@ package plm.core.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -12,12 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-
 import net.miginfocom.swing.MigLayout;
 import plm.core.model.Game;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.RunOutcome;
 
 public class ExercisePassedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -96,42 +94,40 @@ public class ExercisePassedDialog extends JDialog {
 		
 		
 		/* ------------ The close button ------------ */
- 		final ExecutionProgress result = exo.lastResult;
-		JButton close = new JButton(Game.i18n.tr("Close"));
-		close.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (exoChooser != null) {
-					Game.getInstance().setCurrentExercise((Lecture) exoChooser.getSelectedItem());
-				}
-				
-				String chosenDifficulty = null;
-				for (String d: difficultiesEN) 
-					if (difficultiesChooser.getSelectedItem().equals(Game.i18n.tr(d)))
-						chosenDifficulty = d;
-				String chosenInterest = null;
-				for (String d: interestsEN) 
-					if (interestChooser.getSelectedItem().equals(Game.i18n.tr(d)))
-						chosenInterest = d;
-				
-				result.feedbackDifficulty = chosenDifficulty;
-				result.feedbackInterest = chosenInterest;
-				result.feedback = comment.getText();
-				if (result.feedback.equals(""))
-					result.feedback = null;
-				dispose();
-			}
-		});
-		add(close,"span, alignx 50%");
-		
-		/* ------------ wrap up the dialog ------------ */
-		setModal(true);
-		setModalityType(ModalityType.APPLICATION_MODAL);
-		pack();
-		close.requestFocusInWindow();
-		setMinimumSize(getSize());
-		setVisible(true);
-	}
+                final RunOutcome result = exo.lastResult;
+                JButton close           = new JButton(Game.i18n.tr("Close"));
+                close.addActionListener(new ActionListener() {
+                  @Override public void actionPerformed(ActionEvent e)
+                  {
+                    if (exoChooser != null) {
+                      Game.getInstance().setCurrentExercise((Lecture)exoChooser.getSelectedItem());
+                    }
 
+                    String chosenDifficulty = null;
+                    for (String d : difficultiesEN)
+                      if (difficultiesChooser.getSelectedItem().equals(Game.i18n.tr(d)))
+                        chosenDifficulty = d;
+                    String chosenInterest = null;
+                    for (String d : interestsEN)
+                      if (interestChooser.getSelectedItem().equals(Game.i18n.tr(d)))
+                        chosenInterest = d;
+
+                    result.feedbackDifficulty = chosenDifficulty;
+                    result.feedbackInterest   = chosenInterest;
+                    result.feedback           = comment.getText();
+                    if (result.feedback.equals(""))
+                      result.feedback = null;
+                    dispose();
+                  }
+                });
+                add(close, "span, alignx 50%");
+
+                /* ------------ wrap up the dialog ------------ */
+                setModal(true);
+                setModalityType(ModalityType.APPLICATION_MODAL);
+                pack();
+                close.requestFocusInWindow();
+                setMinimumSize(getSize());
+                setVisible(true);
+        }
 }

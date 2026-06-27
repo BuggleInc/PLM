@@ -23,9 +23,9 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.Users;
-import plm.core.model.lesson.ExecutionProgress;
-import plm.core.model.lesson.ExecutionProgress.outcomeKind;
 import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.RunOutcome;
+import plm.core.model.lesson.RunOutcome.kind;
 import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitSpy;
 import plm.core.utils.FileUtils;
@@ -72,8 +72,8 @@ public class GitSpyTest {
 		String correction = utils.generateRandomString(32);
 		String error = utils.generateRandomString(32);
 		String mission = utils.generateRandomString(32);
-		
-		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
+
+                RunOutcome lastResult        = Mockito.mock(RunOutcome.class);
                 lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
                 lastResult.compilationError = error;
 		
@@ -131,8 +131,8 @@ public class GitSpyTest {
 		String correction = utils.generateRandomString(32);
 		String error = utils.generateRandomString(32);
 		String mission = utils.generateRandomString(32);
-		
-		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
+
+                RunOutcome lastResult        = Mockito.mock(RunOutcome.class);
                 lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
                 lastResult.compilationError = null;
 		lastResult.executionError = error;
@@ -195,187 +195,202 @@ public class GitSpyTest {
 	
 	@Test
 	public void testSuccessfulCheckSuccessWithoutPreviousSuccessShouldCreateDoneFile() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
-                lastResult.outcome = outcomeKind.PASS;
-		
-		Exercise exo = Mockito.mock(Exercise.class);
-		exo.lastResult = lastResult;
-		Mockito.when(exo.getId()).thenReturn("exoTest");
-		
-		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
-		if(new File(fp).exists()) {
-			Assertions.fail(fp+" should not exist previously...");
-		}
-		
-		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
-		method.setAccessible(true);
-		method.invoke(gitSpy, exo);
-		
-		if(! (new File(fp).exists()) ) {
-			Assertions.fail(fp+" should exist now...");
-		}
-	}
-	
-	@Test
-	public void testSuccessfulCheckSuccessWithPreviousSuccessShouldKeepDoneFile() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
-		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
-                lastResult.outcome = outcomeKind.PASS;
-		
-		Exercise exo = Mockito.mock(Exercise.class);
-		exo.lastResult = lastResult;
-		Mockito.when(exo.getId()).thenReturn("exoTest");
-		
-		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
-		File file = new File(fp);
-		FileWriter fw = new FileWriter(file.getAbsoluteFile());
-		BufferedWriter bw = new BufferedWriter(fw);
-		bw.write("");
-		bw.close();
-		
-		if(! (new File(fp).exists()) ) {
-			Assertions.fail(fp+" should exist previously...");
-		}
-		
-		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
-		method.setAccessible(true);
-		method.invoke(gitSpy, exo);
-		
-		if( !(new File(fp).exists()) ) {
-			Assertions.fail(fp+" should still exist now...");
-		}
-	}
-	
-	@Test
-	public void testFailedCheckSuccessWithoutPreviousSuccessShouldDoNothing() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
-		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
-                lastResult.outcome = outcomeKind.FAIL;
-		
-		Exercise exo = Mockito.mock(Exercise.class);
-		exo.lastResult = lastResult;
-		Mockito.when(exo.getId()).thenReturn("exoTest");
-		
-		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
-		if(new File(fp).exists()) {
-			Assertions.fail(fp+" should not exist previously...");
-		}
-		
-		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
-		method.setAccessible(true);
-		method.invoke(gitSpy, exo);
-		
-		if(new File(fp).exists()) {
-			Assertions.fail(fp+" should not have been created...");
-		}
-	}
-	
-	@Test
-	public void testFailedCheckSuccessWithPreviousSuccessShouldDeleteDoneFile() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
-		ExecutionProgress lastResult = Mockito.mock(ExecutionProgress.class);
-                lastResult.language          = Game.getInstance().programmingLanguageManager.JAVA;
-                lastResult.outcome = outcomeKind.FAIL;
-		
-		Exercise exo = Mockito.mock(Exercise.class);
-		exo.lastResult = lastResult;
-		Mockito.when(exo.getId()).thenReturn("exoTest");
-		
-		String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
-		File file = new File(fp);
-		FileWriter fw = new FileWriter(file.getAbsoluteFile());
-		BufferedWriter bw = new BufferedWriter(fw);
-		bw.write("");
-		bw.close();
-		
-		if(! (new File(fp).exists()) ) {
-			Assertions.fail(fp+" should exist previously...");
-		}
-		
-		Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
-		method.setAccessible(true);
-		method.invoke(gitSpy, exo);
-		
-		if(new File(fp).exists()) {
-			Assertions.fail(fp+" should have been deleted...");
-		}
-	}
-	
-	@Test
-	public void testDeleteFilesWithoutExistingFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Exercise exo = Mockito.mock(Exercise.class);
-		Mockito.when(exo.getId()).thenReturn("exoTest");
-		
-		List<String> suffixes = new ArrayList<String>();
-		suffixes.add(".code");
-		suffixes.add(".error");
-		suffixes.add(".correction");
-		suffixes.add(".mission");
-		suffixes.add(".DONE");
+          RunOutcome lastResult = Mockito.mock(RunOutcome.class);
+          lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+          lastResult.outcome    = kind.PASS;
 
-                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
-                  String ext = "." + pl.getExt();
-                  for (String suffix : suffixes) {
-                    File file = new File(repoDir, exo.getId() + ext + suffix);
-                    if (file.exists()) {
-                      Assertions.fail(file.getAbsolutePath() + " should not exist...");
-                    }
-                  }
-                }
+          Exercise exo   = Mockito.mock(Exercise.class);
+          exo.lastResult = lastResult;
+          Mockito.when(exo.getId()).thenReturn("exoTest");
 
-                Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
-		method.setAccessible(true);
-		method.invoke(gitSpy, exo);
+          String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+          if (new File(fp).exists()) {
+            Assertions.fail(fp + " should not exist previously...");
+          }
 
-                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
-                  String ext = "." + pl.getExt();
-                  for (String suffix : suffixes) {
-                    File file = new File(repoDir, exo.getId() + ext + suffix);
-                    if (file.exists()) {
-                      Assertions.fail(file.getAbsolutePath() + " should still not exist...");
-                    }
-                  }
-                }
+          Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+          method.setAccessible(true);
+          method.invoke(gitSpy, exo);
+
+          if (!(new File(fp).exists())) {
+            Assertions.fail(fp + " should exist now...");
+          }
         }
-	
-	@Test
-	public void testDeleteFilesWithExistingFiles() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
-		Exercise exo = Mockito.mock(Exercise.class);
-		Mockito.when(exo.getId()).thenReturn("exoTest");
-		
-		List<String> suffixes = new ArrayList<String>();
-		suffixes.add(".code");
-		suffixes.add(".error");
-		suffixes.add(".correction");
-		suffixes.add(".mission");
-		suffixes.add(".DONE");
 
-                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
-                  for (String suffix : suffixes) {
-                    String fp = utils.getFilePath(repoDir, userUUID, exo, pl, suffix);
-                    File file = new File(fp);
-                    if (file.exists()) {
-                      Assertions.fail(file.getAbsolutePath() + " should not yet exist...");
-                    }
-                    FileWriter fw     = new FileWriter(file.getAbsoluteFile());
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    bw.write("");
-                    bw.close();
-                  }
-                }
+        @Test
+        public void testSuccessfulCheckSuccessWithPreviousSuccessShouldKeepDoneFile()
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+                   InvocationTargetException, IOException
+        {
+          RunOutcome lastResult = Mockito.mock(RunOutcome.class);
+          lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+          lastResult.outcome    = kind.PASS;
 
-                Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
-		method.setAccessible(true);
-		method.invoke(gitSpy, exo);
+          Exercise exo   = Mockito.mock(Exercise.class);
+          exo.lastResult = lastResult;
+          Mockito.when(exo.getId()).thenReturn("exoTest");
 
-                for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
-                  String ext = "." + pl.getExt();
-                  for (String suffix : suffixes) {
-                    File file = new File(repoDir, exo.getId() + ext + suffix);
-                    if (file.exists()) {
-                      Assertions.fail(file.getAbsolutePath() + " should have been deleted...");
-                    }
-                  }
-                }
+          String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+          File file         = new File(fp);
+          FileWriter fw     = new FileWriter(file.getAbsoluteFile());
+          BufferedWriter bw = new BufferedWriter(fw);
+          bw.write("");
+          bw.close();
+
+          if (!(new File(fp).exists())) {
+            Assertions.fail(fp + " should exist previously...");
+          }
+
+          Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+          method.setAccessible(true);
+          method.invoke(gitSpy, exo);
+
+          if (!(new File(fp).exists())) {
+            Assertions.fail(fp + " should still exist now...");
+          }
+        }
+
+        @Test
+        public void testFailedCheckSuccessWithoutPreviousSuccessShouldDoNothing()
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+                   InvocationTargetException, IOException
+        {
+          RunOutcome lastResult = Mockito.mock(RunOutcome.class);
+          lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+          lastResult.outcome    = kind.FAIL;
+
+          Exercise exo   = Mockito.mock(Exercise.class);
+          exo.lastResult = lastResult;
+          Mockito.when(exo.getId()).thenReturn("exoTest");
+
+          String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+          if (new File(fp).exists()) {
+            Assertions.fail(fp + " should not exist previously...");
+          }
+
+          Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+          method.setAccessible(true);
+          method.invoke(gitSpy, exo);
+
+          if (new File(fp).exists()) {
+            Assertions.fail(fp + " should not have been created...");
+          }
+        }
+
+        @Test
+        public void testFailedCheckSuccessWithPreviousSuccessShouldDeleteDoneFile()
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+                   InvocationTargetException, IOException
+        {
+          RunOutcome lastResult = Mockito.mock(RunOutcome.class);
+          lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+          lastResult.outcome    = kind.FAIL;
+
+          Exercise exo   = Mockito.mock(Exercise.class);
+          exo.lastResult = lastResult;
+          Mockito.when(exo.getId()).thenReturn("exoTest");
+
+          String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
+          File file         = new File(fp);
+          FileWriter fw     = new FileWriter(file.getAbsoluteFile());
+          BufferedWriter bw = new BufferedWriter(fw);
+          bw.write("");
+          bw.close();
+
+          if (!(new File(fp).exists())) {
+            Assertions.fail(fp + " should exist previously...");
+          }
+
+          Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+          method.setAccessible(true);
+          method.invoke(gitSpy, exo);
+
+          if (new File(fp).exists()) {
+            Assertions.fail(fp + " should have been deleted...");
+          }
+        }
+
+        @Test
+        public void testDeleteFilesWithoutExistingFiles()
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+                   InvocationTargetException
+        {
+          Exercise exo = Mockito.mock(Exercise.class);
+          Mockito.when(exo.getId()).thenReturn("exoTest");
+
+          List<String> suffixes = new ArrayList<String>();
+          suffixes.add(".code");
+          suffixes.add(".error");
+          suffixes.add(".correction");
+          suffixes.add(".mission");
+          suffixes.add(".DONE");
+
+          for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+            String ext = "." + pl.getExt();
+            for (String suffix : suffixes) {
+              File file = new File(repoDir, exo.getId() + ext + suffix);
+              if (file.exists()) {
+                Assertions.fail(file.getAbsolutePath() + " should not exist...");
+              }
+            }
+          }
+
+          Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+          method.setAccessible(true);
+          method.invoke(gitSpy, exo);
+
+          for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+            String ext = "." + pl.getExt();
+            for (String suffix : suffixes) {
+              File file = new File(repoDir, exo.getId() + ext + suffix);
+              if (file.exists()) {
+                Assertions.fail(file.getAbsolutePath() + " should still not exist...");
+              }
+            }
+          }
+        }
+
+        @Test
+        public void testDeleteFilesWithExistingFiles()
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+                   InvocationTargetException, IOException
+        {
+          Exercise exo = Mockito.mock(Exercise.class);
+          Mockito.when(exo.getId()).thenReturn("exoTest");
+
+          List<String> suffixes = new ArrayList<String>();
+          suffixes.add(".code");
+          suffixes.add(".error");
+          suffixes.add(".correction");
+          suffixes.add(".mission");
+          suffixes.add(".DONE");
+
+          for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+            for (String suffix : suffixes) {
+              String fp = utils.getFilePath(repoDir, userUUID, exo, pl, suffix);
+              File file = new File(fp);
+              if (file.exists()) {
+                Assertions.fail(file.getAbsolutePath() + " should not yet exist...");
+              }
+              FileWriter fw     = new FileWriter(file.getAbsoluteFile());
+              BufferedWriter bw = new BufferedWriter(fw);
+              bw.write("");
+              bw.close();
+            }
+          }
+
+          Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+          method.setAccessible(true);
+          method.invoke(gitSpy, exo);
+
+          for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+            String ext = "." + pl.getExt();
+            for (String suffix : suffixes) {
+              File file = new File(repoDir, exo.getId() + ext + suffix);
+              if (file.exists()) {
+                Assertions.fail(file.getAbsolutePath() + " should have been deleted...");
+              }
+            }
+          }
         }
 }

@@ -44,13 +44,13 @@ import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.ProgrammingLanguageManager;
 import plm.core.model.Game.GameState;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
@@ -855,7 +855,7 @@ public class Game implements IWorldView {
 	public void setProgramingLanguage(ProgrammingLanguage newLanguage) throws BrokenProgrammingLanguageException {
           programmingLanguageManager.setCurrent(newLanguage);
           if (getCurrentLesson() != null)
-            ((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new ExecutionProgress();
+            ((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new RunOutcome();
           fireProgLangChange(newLanguage);
         }
         public ProgrammingLanguage getProgrammingLanguage() { return programmingLanguageManager.current(); }

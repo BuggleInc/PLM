@@ -2,15 +2,13 @@ package plm.core.lang;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.ImageIcon;
-
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.model.Game;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.RunOutcome;
 import plm.universe.Entity;
 
 public abstract class JVMCompiledLang extends ProgrammingLanguage {
@@ -82,20 +80,23 @@ public abstract class JVMCompiledLang extends ProgrammingLanguage {
 		return newEntities;
 	}
 
-	@Override
-	public void runEntity(Entity ent, ExecutionProgress progress) {
-		try {
-			ent.run();
-		} catch (Exception e) {
-			String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
-					" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
+        @Override public void runEntity(Entity ent, RunOutcome progress)
+        {
+          try {
+            ent.run();
+          } catch (Exception e) {
+            String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n"
+                                          + " Please fix your code.\n",
+                                      e.getClass().getName(), e.getLocalizedMessage());
 
-			for (StackTraceElement elm : e.getStackTrace())
-				msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
+            for (StackTraceElement elm : e.getStackTrace())
+              msg += "   at " + elm.getClassName() + "." + elm.getMethodName() + " (" + elm.getFileName() + ":" +
+                     elm.getLineNumber() + ")"
+                     + "\n";
 
-			System.err.println(msg);
-			progress.setExecutionError(msg);
-			e.printStackTrace();
-		}
-	}
+            System.err.println(msg);
+            progress.setExecutionError(msg);
+            e.printStackTrace();
+          }
+        }
 }

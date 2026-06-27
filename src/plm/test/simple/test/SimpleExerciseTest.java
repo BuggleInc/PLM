@@ -1,23 +1,20 @@
 package plm.test.simple.test;
 
-
 import java.util.Locale;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
 import plm.test.simple.Main;
 import plm.test.simple.SimpleExercise;
@@ -147,45 +144,47 @@ public abstract class SimpleExerciseTest {
 			for (Entity ent: w.getEntities()) {
 				pl.runEntity(ent,exo.lastResult);
 			}
-		}
-		
-		exo.check();
-		
-		if(exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
-		}
-	}
+                }
 
-	@Test
-	public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException {
-		exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError());
-		exo.compileAll(null, StudentOrCorrection.STUDENT);
-		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
-		
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
-			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
-			}
-		}
-		
-		exo.check();
-		
-		if(exo.lastResult.outcome == ExecutionProgress.outcomeKind.PASS) {
-			Assertions.fail(getClass().getName().replace("Test", "Entity") +" should not pass this exercise...");
-		}
-	}
-	
-	// Used to generate compilation error for each programming languages tested
-	public abstract String generateSyntaxErrorCode();
-	public abstract String generateVariableErrorCode();
-	
-	// Used to generate execution error for each programming languages tested
-	public abstract String generateNullPointerErrorCode();
-	public abstract String generateOutOfBoundsErrorCode();
-	public abstract String generateExceptionRaisingCode();
+                exo.check();
 
-	// Used to generate a code throwing no errors but not passing the exercise
-	public abstract String generateWrongCode();
-	
-	public abstract String generateSolutionFollowedByError();
+                if (exo.lastResult.outcome == RunOutcome.kind.PASS) {
+                  Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this "
+                                                                                    + "exercise..."));
+                }
+        }
+
+        @Test public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException
+        {
+          exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError());
+          exo.compileAll(null, StudentOrCorrection.STUDENT);
+          exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+
+          for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+            for (Entity ent : w.getEntities()) {
+              pl.runEntity(ent, exo.lastResult);
+            }
+          }
+
+          exo.check();
+
+          if (exo.lastResult.outcome == RunOutcome.kind.PASS) {
+            Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this "
+                                                                              + "exercise..."));
+          }
+        }
+
+        // Used to generate compilation error for each programming languages tested
+        public abstract String generateSyntaxErrorCode();
+        public abstract String generateVariableErrorCode();
+
+        // Used to generate execution error for each programming languages tested
+        public abstract String generateNullPointerErrorCode();
+        public abstract String generateOutOfBoundsErrorCode();
+        public abstract String generateExceptionRaisingCode();
+
+        // Used to generate a code throwing no errors but not passing the exercise
+        public abstract String generateWrongCode();
+
+        public abstract String generateSolutionFollowedByError();
 }

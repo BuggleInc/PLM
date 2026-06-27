@@ -9,9 +9,9 @@ import java.util.Vector;
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
 import scala.Option;
@@ -99,46 +99,46 @@ public class LangScala extends JVMCompiledLang {
 			String msg = exo.getName()+": No source to compile";
 			System.err.println(msg);
 			PLMCompilerException e = new PLMCompilerException(msg, null, null);
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
-			throw e;
-		}
+                        exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
+                        throw e;
+                }
 
-		try {
-			compiler.reset();
-			for (plm.core.model.session.SourceFile sf : sfs) {
-				compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
-			}
-		} catch (PLMCompilerException e) {
-			System.err.println(Game.i18n.tr("Compilation error:"));
-			System.err.println(e.getMessage());
-			exo.lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+                try {
+                  compiler.reset();
+                  for (plm.core.model.session.SourceFile sf : sfs) {
+                    compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns, whatToCompile),
+                                     sf.getOffset());
+                  }
+                } catch (PLMCompilerException e) {
+                  System.err.println(Game.i18n.tr("Compilation error:"));
+                  System.err.println(e.getMessage());
+                  exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
 
-			throw e;
-		}
-		
-	}
-	
-	/** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
-	@Override
-	public String nameOfCorrectionEntity(Exercise exo){
-		String path = super.nameOfCorrectionEntity(exo);
-		
-		String[] components = path.split("\\.");
-		StringBuilder result = new StringBuilder();
-		int last = components.length - 1;
-		for (int i = 0; i < last; i++) {
-			result.append(components[i] + ".");
-		}
-		result.append("Scala" + components[last]);
-		return result.toString();
-	}
+                  throw e;
+                }
+        }
 
-	@Override
-	protected Entity mutateEntity(String newClassName)
-			throws InstantiationException, IllegalAccessException,
-			ClassNotFoundException {
-		return (Entity) compiler.findClass(className(newClassName)).newInstance();
-	}
+        /** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
+        @Override public String nameOfCorrectionEntity(Exercise exo)
+        {
+          String path = super.nameOfCorrectionEntity(exo);
+
+          String[] components  = path.split("\\.");
+          StringBuilder result = new StringBuilder();
+          int last             = components.length - 1;
+          for (int i = 0; i < last; i++) {
+            result.append(components[i] + ".");
+          }
+          result.append("Scala" + components[last]);
+          return result.toString();
+        }
+
+        @Override
+        protected Entity mutateEntity(String newClassName)
+            throws InstantiationException, IllegalAccessException, ClassNotFoundException
+        {
+          return (Entity)compiler.findClass(className(newClassName)).newInstance();
+        }
 }
 
 /** In memory compiler of scala code. 

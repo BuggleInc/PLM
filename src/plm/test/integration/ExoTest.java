@@ -16,12 +16,12 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.DemoRunner;
 import plm.core.model.Game;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -125,7 +125,7 @@ public class ExoTest {
 
     DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
 
-    exo.lastResult = new ExecutionProgress();
+    exo.lastResult = new RunOutcome();
     try {
       demoRunner.runDemo(exo);
     } catch (Exception e) {
@@ -139,7 +139,7 @@ public class ExoTest {
   {
     Game.getInstance().setProgramingLanguage(lang);
 
-    exo.lastResult = new ExecutionProgress();
+    exo.lastResult = new RunOutcome();
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
       exo.compileAll(null, StudentOrCorrection.CORRECTION);
@@ -177,7 +177,7 @@ public class ExoTest {
       Assertions.fail(msg);
     }
 
-    if (exo.lastResult.outcome != ExecutionProgress.outcomeKind.PASS) {
+    if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
       String msg = "Test of " + exo.getId() + " failed (" + exo.lastResult.passedTests + "/" +
                    exo.lastResult.totalTests + " passed): '" + exo.lastResult.executionError + "'";
       System.err.println(msg);

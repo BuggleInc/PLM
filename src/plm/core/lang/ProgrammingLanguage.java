@@ -10,9 +10,9 @@ import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
-import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.RunOutcome;
 import plm.universe.Entity;
 
 /**
@@ -120,11 +120,12 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 	 * 
 	 *  @see #run() that encodes the student logic in Java
 	 */
-	public abstract void runEntity(Entity ent, ExecutionProgress progress);
-	
-	public String nameOfCorrectionEntity(Exercise exo) { // This will be redefined by Scala to prepend "Scala" to that string
-		return exo.nameOfCorrectionEntity();
-	}
+        public abstract void runEntity(Entity ent, RunOutcome progress);
+
+        public String nameOfCorrectionEntity(Exercise exo)
+        { // This will be redefined by Scala to prepend "Scala" to that string
+          return exo.nameOfCorrectionEntity();
+        }
 
         public enum BrokenLanguageState { Usable, NotUsable, Unitialized }
         ;
