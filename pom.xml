@@ -317,8 +317,31 @@
           <failOnWarning>false</failOnWarning>
           <compilerArgs>
             <arg>-Xlint:none</arg>
+            <arg>-parameters</arg>
           </compilerArgs>
         </configuration>
+      </plugin>
+
+      <!-- Generation of C remote code from java primitives. -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>generate-resources</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>plm.core.lang.primitives.CodeCreation</mainClass>
+              <arguments>
+                <!-- Add arguments if needed -->
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <!-- i18n: generate org.plm.i18n.Messages ResourceBundles from

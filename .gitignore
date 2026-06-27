@@ -2,6 +2,7 @@ bin
 dist
 keystore.properties
 .settings
+.idea
 *~
 lib/jython/cachedir
 lib/cachedir/
