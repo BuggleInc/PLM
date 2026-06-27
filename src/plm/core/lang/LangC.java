@@ -127,7 +127,8 @@ public class LangC extends ProgrammingLanguage {
             }
 
             String line;
-            StringBuffer compiled_code = new StringBuffer();
+            String compiled_code_name = tempdir + "/" + exo.getId() + ".c";
+            PrintWriter compiled_code = new PrintWriter(compiled_code_name);
 
             BufferedReader hRemote = new BufferedReader(new InputStreamReader(
                     getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
@@ -175,18 +176,21 @@ public class LangC extends ProgrammingLanguage {
             for (String li : code.split("\n"))
                 if (!li.startsWith("#include \".."))
                     compiled_code.append(li + "\n");
+            compiled_code.close();
 
             String[] arg1;
             if (os.indexOf("win") >= 0) {
                 arg1 = new String[3];
                 arg1[0] = "cmd.exe";
                 arg1[1] = "/c";
-                arg1[2] = "gcc -g -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" - ";
+                arg1[2] =
+                    "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
             } else {
                 arg1 = new String[3];
                 arg1[0] = "/bin/sh";
                 arg1[1] = "-c";
-                arg1[2] = "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" - ";
+                arg1[2] =
+                    "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
             }
 
             final Process process = runtime.exec(arg1);
