@@ -53,39 +53,51 @@ public abstract class CommandArgumentType<T> {
             return value.charAt(0);
         }
     };
+    public static final CommandArgumentType<Boolean> BOOLEAN = new CommandArgumentType<>(4, "BOOLEAN", boolean.class) {
+      @Override public String serialize(Boolean value)
+      {
+        return value ? "1" : "0";
+      }
 
-    public static final CommandArgumentType<Color> COLOR = new CommandArgumentType<>(4, "COLOR", Color.class) {
-        @Override
-        public String serialize(Color value) {
-            return String.valueOf(ColorMapper.color2int(value));
-        }
-
-        @Override
-        public Color deserialize(String value) {
-            if (value.indexOf('/') >= 0) {
-                try {
-                    return ColorMapper.name2color(value);
-                } catch (InvalidColorNameException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                try {
-                    return ColorMapper.int2color(Integer.parseInt(value));
-                } catch (InvalidColorNameException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
+      @Override public Boolean deserialize(String value)
+      {
+        return value.equals("1");
+      }
     };
 
-    public static final CommandArgumentType<Direction> DIRECTION = new CommandArgumentType<>(5, "DIRECTION", Direction.class) {
-        @Override
-        public String serialize(Direction value) {
-            return String.valueOf(value.intValue());
-        }
+    public static final CommandArgumentType<Color> COLOR = new CommandArgumentType<>(5, "COLOR", Color.class) {
+      @Override public String serialize(Color value)
+      {
+        return String.valueOf(ColorMapper.color2int(value));
+      }
 
-        @Override
-        public Direction deserialize(String value) {
+      @Override public Color deserialize(String value)
+      {
+        if (value.indexOf('/') >= 0) {
+          try {
+            return ColorMapper.name2color(value);
+          } catch (InvalidColorNameException e) {
+            throw new RuntimeException(e);
+          }
+        } else {
+          try {
+            return ColorMapper.int2color(Integer.parseInt(value));
+          } catch (InvalidColorNameException e) {
+            throw new RuntimeException(e);
+          }
+        }
+      }
+    };
+
+    public static final CommandArgumentType<Direction> DIRECTION =
+        new CommandArgumentType<>(6, "DIRECTION", Direction.class) {
+          @Override public String serialize(Direction value)
+          {
+            return String.valueOf(value.intValue());
+          }
+
+          @Override public Direction deserialize(String value)
+          {
 
             int nb = Integer.parseInt(value);
             Direction d = switch (nb) {
@@ -96,9 +108,8 @@ public abstract class CommandArgumentType<T> {
                 default -> null;
             };
             return d;
-        }
-    };
-
+          }
+        };
 
     private final int ordinal;
     private final String name;
@@ -111,9 +122,7 @@ public abstract class CommandArgumentType<T> {
     }
 
     public static CommandArgumentType<?>[] values() {
-        return new CommandArgumentType[]{
-                INT, DOUBLE, STRING, COLOR, DIRECTION, CHAR
-        };
+      return new CommandArgumentType[] {INT, DOUBLE, STRING, COLOR, DIRECTION, CHAR, BOOLEAN};
     }
 
     public static CommandArgumentType<?> getCommandArgumentTypeFromClass(Class<?> clazz) {
