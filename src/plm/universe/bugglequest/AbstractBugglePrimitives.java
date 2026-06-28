@@ -43,6 +43,12 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
     @Primitive(130)
     void setBrushColor(Color c);
 
+
+    @Primitive(230)
+    default void setBrushColorName(String name) throws InvalidColorNameException {
+        primitiveSetBrushColor(name);
+    }
+
     @Primitive(120)
     Color getBodyColor();
 
@@ -108,6 +114,16 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
         } else {
             forward(nb);
         }
+    }
+
+    @Primitive(220)
+    default void stepForward() throws BuggleWallException {
+        forward();
+    }
+
+    @Primitive(221)
+    default void stepBackward() throws BuggleWallException {
+        forward();
     }
 
     void forward() throws BuggleWallException;

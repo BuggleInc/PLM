@@ -2,7 +2,6 @@ package plm.universe.turtles;
 
 import plm.core.lang.primitives.Primitive;
 import plm.core.utils.ColorMapper;
-import plm.core.utils.InvalidColorNameException;
 import plm.universe.EntityPrimitivesBase;
 
 import java.awt.*;
@@ -76,21 +75,20 @@ public interface TurtlePrimitives extends EntityPrimitivesBase {
     }
 
     @Primitive(131)
-    default Color int2color(int v) throws InvalidColorNameException {
-        return ColorMapper.int2color(v);
-    }
+    void setColor(Color c);
 
     @Primitive(132)
     @Override
     boolean isSelected();
 
+
     @Primitive(200)
-    default int getIntParam(int i) {
+    default int getParamInt(int i) {
         return (int) getParam(i);
     }
 
     @Primitive(201)
-    default double getDoubleParam(int i) {
+    default double getParamDouble(int i) {
         return ((Number) getParam(i)).doubleValue();
     }
 }

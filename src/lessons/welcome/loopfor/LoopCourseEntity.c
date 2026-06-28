@@ -35,8 +35,8 @@ void backward_observer(int steps)
 }
 void run()
 {
-  set_post_forward(&forward_observer);
-  set_pre_backward(&backward_observer);
+//   set_post_forward(&forward_observer);
+//   set_pre_backward(&backward_observer);
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
   for (int i = 0; i < 10; i++)

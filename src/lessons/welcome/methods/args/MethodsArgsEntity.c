@@ -33,8 +33,8 @@ static void go_backward(int steps)
 }
 
 void run(){
-  set_pre_forward(go_forward);
-  set_pre_backward(go_backward);
+//   set_pre_forward(go_forward);
+//   set_pre_backward(go_backward);
   if (getDirection() == NORTH) {
     move(getY(), 1);
   } else {

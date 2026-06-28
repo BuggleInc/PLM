@@ -4,9 +4,13 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import lessons.turmites.LangtonEntityPrimitives;
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.universe.bugglequest.SimpleBuggle;
 
-public class LangtonColorsEntity extends SimpleBuggle {
+@EntityPrimitives(LangtonEntityPrimitives.class)
+public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPrimitives {
 	Color[] allColors = {Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};
 
@@ -86,5 +90,6 @@ public class LangtonColorsEntity extends SimpleBuggle {
           }
         }
 
+		@Override
         public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

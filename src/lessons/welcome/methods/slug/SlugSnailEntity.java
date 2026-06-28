@@ -4,15 +4,18 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.core.utils.ColorMapper;
 
+@EntityPrimitives(SlugSnailEntity.class)
 public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
   public void command(String command, BufferedWriter out) throws Exception
   {
     int num = Integer.parseInt((String)command.subSequence(0, 3));
     switch (num) {
-      case 200:
+      case 215:
         try {
           out.write(Integer.toString(getColorIntParam()));
           out.write("\n");
@@ -27,6 +30,7 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
     }
   }
 
+  @Primitive(215)
   public int getColorIntParam() { return ColorMapper.color2int((Color)getParam(0)); }
 
   @Override public void run() { hunt((Color)getParam(0)); }

@@ -12,12 +12,12 @@ public final class PrimitiveMethod {
     private final CommandArgumentType<?> output;
     private final String name;
     private final String location;
-    private final int id;
+    public int id;
 
     public PrimitiveMethod(Primitive primitive, Method method) {
         this.id = primitive.value();
         this.name = primitive.name().isEmpty() ? method.getName() : primitive.name();
-        this.location = method.getDeclaringClass().getSimpleName() + "::" + method.getName();
+        this.location = method.getDeclaringClass().getSimpleName() + "::" + name();
         parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
         output = Optional.of(method.getReturnType())
                 .map(CommandArgumentType::getCommandArgumentTypeFromClass).orElse(null);
@@ -48,7 +48,7 @@ public final class PrimitiveMethod {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (PrimitiveMethod) obj;
-        return Objects.equals(location, that.location);
+        return Objects.equals(name, that.name) && Objects.equals(parameters, that.parameters);
     }
 
     @Override

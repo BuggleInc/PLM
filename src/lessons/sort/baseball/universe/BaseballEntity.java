@@ -4,36 +4,45 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.universe.Entity;
 
-public class BaseballEntity extends Entity {
+@EntityPrimitives(BaseballEntityPrimitives.class)
+public class BaseballEntity extends Entity implements BaseballEntityPrimitives {
 	/** Returns the amount of bases on your field */
+	@Override
 	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();
 	}
 	/** Returns the amount of players locations available on each base of the field */
+	@Override
 	public int getPositionsAmount() {
 		return ((BaseballWorld) this.world).getPositionsAmount();
 	}
 
 	/** Returns the color of the player at the specified coordinate */
+	@Override
 	public int getPlayerColor(int base, int position) {
 		return ((BaseballWorld) this.world).getPlayerColor(base,position);
 	}
 	/** Returns whether every players of the specified base are at home */
+	@Override
 	public boolean isBaseSorted(int base) {
 		return ((BaseballWorld) this.world).isBaseSorted(base);
 	}
 	/** Returns if every player of the field is on the right base */
+	@Override
 	public boolean isSorted() {
 		return ((BaseballWorld) this.world).isSorted();
 	}
 
 	/** Returns the base in which the hole is located */
+	@Override
 	public int getHoleBase() {
 		return ((BaseballWorld) this.world).getHoleBase();
 	}
 	/** Returns the hole position within its base */
+	@Override
 	public int getHolePosition(){
 		return ((BaseballWorld) this.world).getHolePosition();
 	}
@@ -44,12 +53,18 @@ public class BaseballEntity extends Entity {
 	 * Moves the specified player to the hole
 	 * @throws IllegalArgumentException if the specified player is not near the hole (at most one base away) 
 	 */
+	@Override
 	public void move(int base, int position) {
 		((BaseballWorld) this.world).move(base,position);
 		stepUI();
 	}
 
-	/** Must exist so that exercises can instantiate the entity (Entity is abstract) */ 
+	@Override
+	public void assertSorted(String str) {
+		((BaseballWorld) world).assertSorted(str);
+	}
+
+	/** Must exist so that exercises can instantiate the entity (Entity is abstract) */
 	@Override
 	public void run() {
 	}
@@ -119,7 +134,7 @@ public class BaseballEntity extends Entity {
 				break;
 			case 119:
 				str = command.split(" ")[1];
-				((BaseballWorld) world).assertSorted(str);
+				assertSorted(str);
 				break;
 			default:
 				System.out.println("COMMANDE INCONNUE : "+command);

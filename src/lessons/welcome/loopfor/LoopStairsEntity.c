@@ -19,7 +19,7 @@ void forward_observer(int i)
 }
 
 void run(){
-  set_post_forward(&forward_observer);
+//   set_post_forward(&forward_observer);
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
   forward(1);
