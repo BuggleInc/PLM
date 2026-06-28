@@ -31,7 +31,6 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
     @Primitive(131)
     Color getBrushColor();
 
-    @Primitive(130)
     default void primitiveSetBrushColor(String arg) throws InvalidColorNameException {
         if (arg.indexOf('/') >= 0)
             setBrushColor(ColorMapper.name2color(arg));
@@ -41,6 +40,7 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
         }
     }
 
+    @Primitive(130)
     void setBrushColor(Color c);
 
     @Primitive(120)
@@ -147,7 +147,7 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
     @Deprecated
     @Primitive(135)
-    void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
+    void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
 
     @Primitive(136)
     void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException;
