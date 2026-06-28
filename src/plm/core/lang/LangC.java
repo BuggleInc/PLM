@@ -389,6 +389,8 @@ public class LangC extends ProgrammingLanguage {
             if (type == CommandArgumentType.INT) return "int";
             if (type == CommandArgumentType.STRING) return "char*";
             if (type == CommandArgumentType.CHAR) return "char";
+            if (type == CommandArgumentType.BOOLEAN)
+              return "int";
 
             throw new IllegalStateException("Unknown type: " + type);
         }
@@ -447,6 +449,8 @@ public class LangC extends ProgrammingLanguage {
             if (type == CommandArgumentType.COLOR) return "get_answer_int()";
             if (type == CommandArgumentType.DIRECTION) return "get_answer_int()";
             if (type == CommandArgumentType.INT) return "get_answer_int()";
+            if (type == CommandArgumentType.BOOLEAN)
+              return "get_answer_int()";
 
             throw new IllegalStateException("Unknown type: " + type);
         }
@@ -458,6 +462,8 @@ public class LangC extends ProgrammingLanguage {
             if (type == CommandArgumentType.COLOR) return "%d";
             if (type == CommandArgumentType.DIRECTION) return "%d";
             if (type == CommandArgumentType.INT) return "%d";
+            if (type == CommandArgumentType.BOOLEAN)
+              return "%d";
 
             throw new IllegalStateException("Unknown type: " + type);
         }
@@ -507,9 +513,10 @@ public class LangC extends ProgrammingLanguage {
 
             final String code = "#include \"../include/" + name + ".h\"\n\n" + implementations;
 
+            // System.err.println("XXX Generating "+folder+name+".h\n"+header);
             Files.writeString(new File(folder, name + ".h").toPath(), header);
+            // System.err.println("XXX Generating "+folder+name+".c");
             Files.writeString(new File(folder, name + ".c").toPath(), code);
-
         }
     }
 }
