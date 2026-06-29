@@ -3,14 +3,13 @@ package lessons.maze.shortestpath;
 import java.io.IOException;
 
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 
-@EntityPrimitives(ShortestPathMazeEntityPrimitives.class)
-public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle implements ShortestPathMazeEntityPrimitives {
+@EntityPrimitives(lessons.maze.shortestpath.ShortestPathMazeEntityPrimitives.class)
+public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle implements lessons.maze.shortestpath.ShortestPathMazeEntityPrimitives {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

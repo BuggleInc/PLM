@@ -5,9 +5,8 @@ import java.io.IOException;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 
-@EntityPrimitives(SplitHanoi3Entity.class)
+@EntityPrimitives(lessons.recursion.hanoi.SplitHanoi3Entity.class)
 public class SplitHanoi3Entity extends HanoiEntity {
 
 	@Override

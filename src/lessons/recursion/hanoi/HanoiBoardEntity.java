@@ -5,9 +5,8 @@ import java.io.IOException;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 
-@EntityPrimitives(HanoiBoardEntity.class)
+@EntityPrimitives(lessons.recursion.hanoi.HanoiBoardEntity.class)
 public class HanoiBoardEntity extends HanoiEntity {
 
 	@Override

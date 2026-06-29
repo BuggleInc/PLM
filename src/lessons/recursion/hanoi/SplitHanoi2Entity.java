@@ -7,7 +7,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
 
-@EntityPrimitives(SplitHanoi2Entity.class)
+@EntityPrimitives(lessons.recursion.hanoi.SplitHanoi2Entity.class)
 public class SplitHanoi2Entity extends HanoiEntity {
 
 	@Override

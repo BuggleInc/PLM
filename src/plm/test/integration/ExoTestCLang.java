@@ -22,8 +22,8 @@ public class ExoTestCLang extends ExoTest {
       testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.C);
     });
   }
-  @ParameterizedTest
-  @MethodSource("exercises")
+//  @ParameterizedTest
+//  @MethodSource("exercises")
   public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);

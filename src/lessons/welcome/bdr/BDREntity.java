@@ -1,12 +1,11 @@
 package lessons.welcome.bdr;
 
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-@EntityPrimitives(BDREntity.class)
+@EntityPrimitives(lessons.welcome.bdr.BDREntity.class)
 public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 
   @Override public void command(String command, BufferedWriter out) throws Exception

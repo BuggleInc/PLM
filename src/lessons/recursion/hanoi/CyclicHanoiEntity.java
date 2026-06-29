@@ -1,8 +1,6 @@
 package lessons.recursion.hanoi;
 
-import lessons.recursion.hanoi.universe.HanoiEntity;
-
-public class CyclicHanoiEntity extends HanoiEntity {
+public class CyclicHanoiEntity extends lessons.recursion.hanoi.universe.HanoiEntity {
 	
 	public void move(int from, int to) {
 		//System.err.println("move("+from+","+to+")");

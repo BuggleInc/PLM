@@ -8,7 +8,7 @@ import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
 import plm.core.utils.ColorMapper;
 
-@EntityPrimitives(SlugSnailEntity.class)
+@EntityPrimitives(lessons.welcome.methods.slug.SlugSnailEntity.class)
 public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
   public void command(String command, BufferedWriter out) throws Exception
