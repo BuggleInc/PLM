@@ -3,11 +3,14 @@ package lessons.recursion.hanoi.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
-public class HanoiEntity extends Entity {
+@EntityPrimitives(HanoiEntityPrimitives.class)
+public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
 	/** Instantiation Constructor (used by exercises to setup the world) 
 	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
 	 */
@@ -38,6 +41,7 @@ public class HanoiEntity extends Entity {
 	}
 
 	/** Part of your world logic */
+	@Override
 	public void move(int src, int dst) {
 		regularMove(src,dst);
 	}
@@ -56,6 +60,7 @@ public class HanoiEntity extends Entity {
 		regularMove(from,to);
 	}
 	/** Returns the amount of disks on the given slot */
+	@Override
 	public int getSlotSize(int slot) {
 		return ((HanoiWorld) world).getSlotSize(slot);
 	}
@@ -76,6 +81,11 @@ public class HanoiEntity extends Entity {
 	public void deplace(int src,int dst) { move(src, dst); }
 	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
 
+	@Primitive(value = 114, name = "getParam")
+	public int getIntParam(int value) {
+		return (int) getParam(value);
+	}
+
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
@@ -94,6 +104,11 @@ public class HanoiEntity extends Entity {
 				break;
 			case 112:
 				out.write((isSelected()?"1":"0"));
+				out.write("\n");
+				break;
+			case 114:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				out.write(Integer.toString(getIntParam(nb)));
 				out.write("\n");
 				break;
 			default:

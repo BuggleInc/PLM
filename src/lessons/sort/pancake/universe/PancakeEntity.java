@@ -4,10 +4,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.universe.Entity;
 import plm.universe.World;
 
-public class PancakeEntity extends Entity {
+@EntityPrimitives(PancakeEntityPrimitives.class)
+public class PancakeEntity extends Entity implements PancakeEntityPrimitives {
 
 	/**
 	 * Must exist. Calling PancakeEntity("dummy name") is ok
@@ -34,6 +37,7 @@ public class PancakeEntity extends Entity {
 	 * @param numberOfPancakes : the number of pancakes, 
 	 * 			beginning from the top of the stack, that you want to flip.
 	 */
+	@Override
 	public void flip(int numberOfPancakes) {
 		((PancakeWorld) world).flip(numberOfPancakes);
 		stepUI();
@@ -44,11 +48,13 @@ public class PancakeEntity extends Entity {
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The radius of the expected pancake
 	 */
+	@Override
 	public int getPancakeRadius(int pancakeNumber) {
 		return ((PancakeWorld) world).getPancakeRadius(pancakeNumber);
 	}
 
 	/** Returns the size of the pancake stack */
+	@Override
 	public int getStackSize() {
 		return ((PancakeWorld) world).getStackSize();
 	}
@@ -56,6 +62,7 @@ public class PancakeEntity extends Entity {
 	/**
 	 * Returns whether the specific pancake (counting from the stack top) is upside down
 	 */
+	@Override
 	public boolean isPancakeUpsideDown(int rank) {
 		return ((PancakeWorld) world).isPancakeUpsideDown(rank);
 	}
@@ -63,11 +70,11 @@ public class PancakeEntity extends Entity {
 	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
 	 */
+	@Override
 	public boolean isSorted() {
 		return ( (PancakeWorld) this.world).isSorted();
 	}
-	
-	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
+	/** Must exist so that exercises can instantiate the entity (Entity is abstract)
 	 */
 	@Override
 	public void run() {

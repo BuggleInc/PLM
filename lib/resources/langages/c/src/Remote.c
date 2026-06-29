@@ -61,6 +61,16 @@ void send_command(char *format, ...) {
   va_end(args);
 }
 
+/* BEGIN UTILS FUNCTIONS */
+
+char* int2str(int nb){
+	char* str = malloc(sizeof(char)*16);
+	sprintf(str, "%d", nb);
+	return str;
+}
+
+/* END UTILS FUNCTIONS */
+
 int main(int argc, char *argv[]) {
   // Disable buffering on the new stdout so student's debug messages arrive immediately
   setvbuf(stdout, NULL, _IONBF, 0);

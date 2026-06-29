@@ -4,9 +4,11 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.core.lang.primitives.EntityPrimitives;
 
+@EntityPrimitives(lessons.recursion.hanoi.HanoiBoardEntity.class)
 public class HanoiBoardEntity extends HanoiEntity {
-	
+
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
@@ -15,7 +17,7 @@ public class HanoiBoardEntity extends HanoiEntity {
 			switch(num){
 			case 114:
 				nb = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString((Integer)getParam(nb)));
+				out.write(Integer.toString(getIntParam(nb)));
 				out.write("\n");
 				break;
 			default:

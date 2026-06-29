@@ -3,11 +3,14 @@ package lessons.sort.dutchflag.universe;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
-public class DutchFlagEntity extends Entity {
+@EntityPrimitives(DutchFlagEntityPrimitives.class)
+public class DutchFlagEntity extends Entity implements DutchFlagEntityPrimitives {
 
 	public final static int BLUE = 0;
 	public final static int WHITE = 1;
@@ -29,6 +32,7 @@ public class DutchFlagEntity extends Entity {
 	}
 	
 	/** Swap two positions */
+	@Override
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);
 		stepUI();
@@ -39,21 +43,29 @@ public class DutchFlagEntity extends Entity {
 	 * @param rank : the number of the ray that you want to get.
 	 * @return The color of that ray (either 0, 1 or 2)
 	 */
+	@Override
 	public int getColor(int rank) {
 		return ((DutchFlagWorld) world).getColor(rank);
 	}
 	
 	/** Returns the amount of rays in this flag */
+	@Override
 	public int getSize() {
 		return ((DutchFlagWorld) world).getSize();
 	}
 		
 	/** Returns whether the flag is correctly sorted */
+	@Override
 	public boolean isSorted() {
 		return ((DutchFlagWorld) world).isSorted();
-	}		
-			
-	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
+	}
+
+	@Override
+	public void assertSorted() {
+		((DutchFlagWorld) world).assertSorted();
+	}
+
+	/** Must exist so that exercises can instantiate the entity (Entity is abstract)
 	 */
 	@Override
 	public void run() {
@@ -103,7 +115,7 @@ public class DutchFlagEntity extends Entity {
 				out.write("\n");
 				break;
 			case 115:
-				((DutchFlagWorld) world).assertSorted();
+				assertSorted();
 				break;
 			default:
 				System.out.println("COMMANDE INCONNUE : "+command);

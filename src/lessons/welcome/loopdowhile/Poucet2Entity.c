@@ -35,8 +35,8 @@ void dave_backward(int steps)
 }
 void run()
 {
-  set_pre_forward(&dave_forward);
-  set_pre_backward(&dave_backward);
+//   set_pre_forward(&dave_forward);
+//   set_pre_backward(&dave_backward);
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
   while (!exitReached()) {

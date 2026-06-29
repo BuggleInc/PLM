@@ -4,9 +4,13 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import lessons.turmites.LangtonEntityPrimitives;
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.universe.bugglequest.SimpleBuggle;
 
-public class LangtonEntity extends SimpleBuggle {
+@EntityPrimitives(LangtonEntityPrimitives.class)
+public class LangtonEntity extends SimpleBuggle implements LangtonEntityPrimitives {
 	/* BEGIN TEMPLATE */
 	public void step() {
 		/* BEGIN SOLUTION */
@@ -54,7 +58,7 @@ public class LangtonEntity extends SimpleBuggle {
                 e.printStackTrace();
               }
               break;
-            case 201:
+            case 230:
               stepDone();
               break;
             default:
@@ -62,5 +66,6 @@ public class LangtonEntity extends SimpleBuggle {
           }
         }
 
+		@Override
         public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

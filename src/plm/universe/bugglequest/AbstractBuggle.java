@@ -382,10 +382,10 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 	}
 
 	@Deprecated
-	@Override
 	public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
 		pickupBaggle();
 	}
+	@Override
 	public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
 		if (k_seq[k_val]==5) k_val++; else k_val = 0;
 		if (k_val>k_seq.length-1) {

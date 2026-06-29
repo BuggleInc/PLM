@@ -2,12 +2,14 @@ package lessons.maze.shortestpath;
 
 import java.io.IOException;
 
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 
-public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
+@EntityPrimitives(lessons.maze.shortestpath.ShortestPathMazeEntityPrimitives.class)
+public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle implements lessons.maze.shortestpath.ShortestPathMazeEntityPrimitives {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
@@ -24,23 +26,32 @@ public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggl
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
-	void setIndication(int x, int y, int i) {
+	@Override
+	public void setIndication(int x, int y, int i) {
 		BuggleWorldCell c = ((BuggleWorld) world).getCell(x,y);
 		c.setContent(""+i);
 	}
-	int getIndication(int x, int y) {
+
+	@Override
+	public int getIndication(int x, int y) {
 		BuggleWorldCell c = ((BuggleWorld) world).getCell(x,y);
 		if (c.hasContent())
 			return Integer.parseInt(c.getContent());
 		return 9999;
 	}
-	boolean hasBaggle(int x, int y) {
+
+	@Override
+	public boolean hasBaggle(int x, int y) {
 		return ((BuggleWorld) world).getCell(x,y).hasBaggle();
 	}
-	boolean hasTopWall(int x, int y) {
+
+	@Override
+	public boolean hasTopWall(int x, int y) {
 		return ((BuggleWorld) world).getCell(x,y).hasTopWall();
 	}
-	boolean hasLeftWall(int x, int y) {
+
+	@Override
+	public boolean hasLeftWall(int x, int y) {
 		return ((BuggleWorld) world).getCell(x,y).hasLeftWall();
 	}
 

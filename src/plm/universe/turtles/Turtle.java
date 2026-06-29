@@ -319,6 +319,7 @@ public class Turtle extends Entity implements TurtlePrimitives {
 		return color;
 	}
 
+	@Override
 	public void setColor(Color c) {
 		color = c;
 	}
@@ -572,7 +573,7 @@ public class Turtle extends Entity implements TurtlePrimitives {
 				break;
 			case 131:
 				nbInt = Integer.parseInt((command.split(" ")[1]));
-				setColor(int2color(nbInt));
+				setColor(ColorMapper.int2color(nbInt));
 				break;
 			case 132:
 				out.write((isSelected()?"1":"0"));
@@ -580,12 +581,12 @@ public class Turtle extends Entity implements TurtlePrimitives {
 				break;
 			case 200:
 				nbInt = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString(getIntParam(nbInt)));
+				out.write(Integer.toString(getParamInt(nbInt)));
 				out.write("\n");
 				break;
 			case 201:
 				nbInt = Integer.parseInt((command.split(" ")[1]));
-				out.write(Double.toString(getDoubleParam(nbInt)));
+				out.write(Double.toString(getParamDouble(nbInt)));
 				out.write("\n");
 				break;
 			default:
