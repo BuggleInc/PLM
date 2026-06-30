@@ -12,12 +12,14 @@ public final class PrimitiveMethod {
     private final CommandArgumentType<?> output;
     private final String name;
     private final String location;
+    private final Method method;
     public int id;
 
     public PrimitiveMethod(Primitive primitive, Method method) {
         this.id = primitive.value();
         this.name = primitive.name().isEmpty() ? method.getName() : primitive.name();
         this.location = method.getDeclaringClass().getSimpleName() + "::" + name();
+        this.method = method;
         parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
         output = Optional.of(method.getReturnType())
                 .map(CommandArgumentType::getCommandArgumentTypeFromClass).orElse(null);
@@ -59,5 +61,9 @@ public final class PrimitiveMethod {
     @Override
     public String toString() {
         return name() + "(" + parameters.stream().map(PrimitiveParameter::toString).collect(Collectors.joining(",")) + ")" + ":" + Optional.ofNullable(output).map(CommandArgumentType::toString).orElse("void");
+    }
+
+    public Method getMethod() {
+        return method;
     }
 }
