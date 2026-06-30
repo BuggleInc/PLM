@@ -3,10 +3,22 @@ package plm.core.lang;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import org.python.core.PyException;
+import plm.core.lang.primitives.CommandArgumentType;
+import plm.core.lang.primitives.ExternalPrimitiveLanguage;
+import plm.core.lang.primitives.PrimitiveMethod;
+import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class LangPython extends ScriptingLanguage {
 
@@ -158,5 +170,123 @@ public class LangPython extends ScriptingLanguage {
             progress.setExecutionError(msg.toString());
 
           return true; // That was indeed a Python exception
+        }
+
+        public static class LangPythonExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
+
+          String getLanguageType(CommandArgumentType<?> type) {
+            if (type == CommandArgumentType.COLOR) return "int";
+            if (type == CommandArgumentType.DIRECTION) return "int";
+            if (type == CommandArgumentType.DOUBLE) return "float";
+            if (type == CommandArgumentType.INT) return "int";
+            if (type == CommandArgumentType.STRING) return "str";
+            if (type == CommandArgumentType.CHAR) return "str";
+            if (type == CommandArgumentType.BOOLEAN)
+              return "bool";
+
+            throw new IllegalStateException("Unknown type: " + type);
+          }
+
+          String getTypeDeclaration(CommandArgumentType<?> type) {
+            if (type == CommandArgumentType.DIRECTION) {
+              return "NORTH = 0\n" +
+                      "EAST = 1\n" +
+                      "SOUTH = 2\n" +
+                      "WEST = 3\n";
+            }
+            if (type == CommandArgumentType.COLOR) {
+              return  "white = 0\n" +
+                      "black = 1\n" +
+                      "blue = 2\n" +
+                      "cyan = 3\n" +
+                      "darkGray = 4\n" +
+                      "gray = 5\n" +
+                      "green = 6\n" +
+                      "lightGray = 7\n" +
+                      "magenta = 8\n" +
+                      "orange = 9\n" +
+                      "pink = 10\n" +
+                      "red = 11\n" +
+                      "yellow = 12\n";
+            }
+            return "";
+          }
+
+          String getParameter(PrimitiveParameter parameter) {
+            return parameter.name()+": "+getLanguageType(parameter.type());
+          }
+
+          String getPrototype(PrimitiveMethod method) {
+            String name = method.name();
+            List<PrimitiveParameter> parameters = method.parameters();
+            CommandArgumentType<?> output = method.output();
+
+
+            final String outputString = Optional.ofNullable(output).map(this::getLanguageType).orElse("None");
+
+            return "def " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ") -> "+outputString+":";
+          }
+
+          String getReturning(CommandArgumentType<?> type) {
+            if (type == null)
+              return "";
+
+            if (type == CommandArgumentType.STRING) return "get_answer_string()";
+            if (type == CommandArgumentType.DOUBLE) return "get_answer_double()";
+            if (type == CommandArgumentType.CHAR) return "get_answer_char()";
+            if (type == CommandArgumentType.COLOR) return "get_answer_int()";
+            if (type == CommandArgumentType.DIRECTION) return "get_answer_int()";
+            if (type == CommandArgumentType.INT) return "get_answer_int()";
+            if (type == CommandArgumentType.BOOLEAN)
+              return "get_answer_int()";
+
+            throw new IllegalStateException("Unknown type: " + type);
+          }
+
+          String getTemplatingForType(CommandArgumentType<?> type) {
+            if (type == CommandArgumentType.STRING) return "%s";
+            if (type == CommandArgumentType.DOUBLE) return "%f";
+            if (type == CommandArgumentType.CHAR) return "%s";
+            if (type == CommandArgumentType.COLOR) return "%d";
+            if (type == CommandArgumentType.DIRECTION) return "%d";
+            if (type == CommandArgumentType.INT) return "%d";
+            if (type == CommandArgumentType.BOOLEAN)
+              return "%d";
+
+            throw new IllegalStateException("Unknown type: " + type);
+          }
+
+          String getImplementation(PrimitiveMethod method) {
+            String prototype = getPrototype(method);
+
+            int id = method.id();
+            String name = method.name();
+            String formats = method.parameters().stream().map(PrimitiveParameter::type)
+                    .map(this::getTemplatingForType).map(s -> s + " ").collect(Collectors.joining());
+
+            String command = "\tsend_command(\"" + id + " " +
+                    formats
+                    + name
+                    + "\"" + method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", "+s).collect(Collectors.joining()) + ")";
+
+            String returning = method.output() != null ? "\treturn " + getReturning(method.output()) : "";
+
+            return prototype + "\n" + command + "\n" + returning + "\n";
+          }
+
+          @Override
+          public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException {
+            Set<CommandArgumentType<?>> involved = ExternalPrimitiveLanguage.involved(methods);
+
+            final String type_declarations = involved.stream().map(this::getTypeDeclaration)
+                    .filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
+
+            final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
+
+            final String code = ("from Remote import *\n\n" + type_declarations + implementations).replace("\t", " ".repeat(4));
+
+            // System.err.println("XXX Generating "+folder+name+".c");
+            Files.writeString(new File(folder, name + ".py").toPath(), code);
+          }
         }
 }
