@@ -1,5 +1,6 @@
 package plm.universe.bugglequest;
 
+import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.Primitive;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
@@ -188,7 +189,7 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
     @Primitive(value = 200, name = "getParam")
     default String getParamString(int i) {
-        return getParam(i).toString();
+        return CommandArgumentType.findTypeAndSerialize(getParam(i));
     }
 
     @Primitive(201)

@@ -12,6 +12,7 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
+import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 
 import java.io.*;
@@ -323,7 +324,8 @@ public class LangC extends ProgrammingLanguage {
                     String str = "";
                     try {
                         while ((str = reader.readLine()) != null)
-                            ent.command(str, bwriter);
+                            CommandExecutor.command(ent, str, bwriter);
+//                            ent.command(str, bwriter);
                     } catch (Exception e) {
                         parseError = e;
                     }
