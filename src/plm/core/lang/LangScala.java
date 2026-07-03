@@ -176,7 +176,7 @@ class ScalaCompiler {
 	}
 
 	public void compile(String name,String content,int offset) throws PLMCompilerException {
-		if (Game.getInstance().isDebugEnabled()) 
+		if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution()) 
 			System.out.println("Compiling souce "+name+" to scala (offset:"+offset+"):\n"+content);
 		
 		Run compiler = global.new Run();
