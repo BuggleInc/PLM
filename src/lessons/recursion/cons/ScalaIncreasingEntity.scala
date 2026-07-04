@@ -2,7 +2,6 @@ package lessons.recursion.cons
 
 import plm.universe.bat.BatEntity
 import plm.universe.bat.BatTest
-import lessons.recursion.cons.universe.ConsExercise
 import lessons.recursion.cons.universe.ConsEntity
 import lessons.recursion.cons.universe.RecList
 
