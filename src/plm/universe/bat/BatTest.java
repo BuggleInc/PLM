@@ -58,6 +58,9 @@ public class BatTest {
   Object getResult() { return result; }
   public void setResult(Object res) { result = res; }
 
+  public String getFunName() { return funName; }
+  public int getParameterCount() { return parameters.length; }
+
   boolean isVisible() { return visible; }
 
   public String stringParameter(Object o)

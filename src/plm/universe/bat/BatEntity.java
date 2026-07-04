@@ -1,7 +1,7 @@
 package plm.universe.bat;
 
 import java.io.BufferedWriter;
-
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.model.Game;
 import plm.universe.Entity;
@@ -46,10 +46,23 @@ public class BatEntity extends Entity {
 		// To be overriden by child classes
 	}
 
-	@Override
-	public void command(String command, BufferedWriter out) {
-		// TODO if use
-		
-	}
-
+        @Override public String getScript(ProgrammingLanguage lang)
+        {
+          String script = super.getScript(lang);
+          if (lang.isPython() && script != null)
+            script = script + "\n" + pythonDispatchLoop();
+          return script;
+        }
+        /** Calls the student's function once per test case and stores its result. */
+        protected String pythonDispatchLoop()
+        {
+          return "for t in batTests:\n"
+              + "    args = [" + pythonArgExpression() + " for i in range(t.getParameterCount())]\n"
+              + "    t.setResult(globals()[t.getFunName()](*args))\n";
+        }
+        protected String pythonArgExpression() { return "t.getParameter(i)"; }
+        @Override public void command(String command, BufferedWriter out)
+        {
+          // TODO if use
+        }
 }
