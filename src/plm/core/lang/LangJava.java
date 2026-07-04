@@ -1,42 +1,6 @@
 package plm.core.lang;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.net.URLConnection;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-import javax.tools.DiagnosticCollector;
-import javax.tools.FileObject;
-import javax.tools.ForwardingJavaFileManager;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaCompiler.CompilationTask;
-import javax.tools.JavaFileManager;
-import javax.tools.JavaFileObject;
-import javax.tools.JavaFileObject.Kind;
-import javax.tools.SimpleJavaFileObject;
-import javax.tools.StandardLocation;
-import javax.tools.ToolProvider;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -53,474 +17,489 @@ import plm.core.utils.ColorMapper;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaFileObject;
+import java.awt.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.util.*;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 public class LangJava extends JVMCompiledLang {
-	public LangJava() {
-		super("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
-	}
-        @Override public boolean isJava() { return true; }
+    /* Language detection logic */
+    private static String brokenLanguageMessage;
+    private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+    public Map<String, File> jarFile = new TreeMap<>(); /* list of existing entity classes */
+    File tempFolder = new File(System.getProperty("java.io.tmpdir"), "plm_java_toremove");
 
-        /* Language detection logic */
-        private static String brokenLanguageMessage;
-        @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
-        private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-        @Override public boolean isBrokenLanguage()
-        {
+    public LangJava() {
+        super("Java", "java", ResourcesCache.getIcon("img/lang_java.png"));
+    }
 
-          if (brokenLanguageState == BrokenLanguageState.Unitialized) {
-            throw new RuntimeException("Unimplemented");
-          }
-          return brokenLanguageState != BrokenLanguageState.Usable;
+    private static @NonNull String getCorrectedTemplate(String correction) {
+
+        int runFunctionI = correction.indexOf("void run(");
+
+        int beginTemplateIndex = correction.indexOf("/* BEGIN TEMPLATE */") + "/* BEGIN TEMPLATE */".length();
+        int endTemplateIndex = correction.indexOf("/* END TEMPLATE */");
+        int beginSolutionIndex = correction.indexOf("/* BEGIN SOLUTION */");
+
+        String template;
+        if (beginSolutionIndex == beginTemplateIndex + 3)
+            template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t public void run(){\n$body}\n}";
+        else {
+            if (beginTemplateIndex < runFunctionI && runFunctionI < endTemplateIndex)
+                template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
+            else
+                template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n$run\n\t\n$body\n}";
+        }
+        return template;
+    }
+
+    private static String extractRunFunction(String code) {
+        int startRun = code.indexOf("void run(");
+        int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
+        if (beginOfRunLine == -1) beginOfRunLine = 0;
+
+        int i = code.indexOf('{', startRun) + 1;
+        int bracket = 1;
+
+        for (; i < code.length() && bracket > 0; i++) {
+            if (code.charAt(i) == '{') bracket++;
+            if (code.charAt(i) == '}') bracket--;
         }
 
-        private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] {/* no option */ }));
-	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of existing entity classes */
+        String substring = code.substring(beginOfRunLine, i);
+        return substring;
+    }
+
+    private static String extractRunDependency(String code) {
+
+        StringBuilder section = new StringBuilder();
+
+        for(int i = 0; i < code.length(); i++) {
+            if (!code.startsWith("/* BEGIN DEPENDENCY */", i)) continue;
+
+            int begin = i + "/* BEGIN DEPENDENCY */".length();
+            int end = code.indexOf("/* END DEPENDENCY */", i);
+
+            section.append(code, begin, end).append("\n");
+            i = end + "/* END DEPENDENCY */".length();
+        }
+
+        return section.toString();
+    }
+
+    private static String extractImportDependency(String code) {
+
+        StringBuilder section = new StringBuilder();
+
+        for(int i = 0; i < code.length(); i++) {
+            if (!code.startsWith("/* BEGIN IMPORT */", i)) continue;
+
+            int begin = i + "/* BEGIN IMPORT */".length();
+            int end = code.indexOf("/* END IMPORT */", i);
+
+            section.append(code, begin, end).append("\n");
+            i = end + "/* END IMPORT */".length();
+        }
+
+        return section.toString();
+    }
+
+    private static String getRemote(String code) {
+        String remote;
+
+        if(code.contains("Langton") || code.contains("Turmite")) {
+            return null;
+        }
+        if(code.contains(".bat.")){
+            return null;
+        }
+        if (code.contains("Buggle")) {
+            remote = "RemoteBuggle";
+        } else if (code.contains("Turtle")) {
+            remote = "RemoteTurtle";
+        } else if (code.contains("Flag")) {
+            remote = "RemoteFlag";
+        } else if (code.contains("Baseball")) {
+            remote = "RemoteBaseball";
+        } else if (code.contains("Pancake")) {
+            remote = "RemotePancake";
+        } else if (code.contains("Hanoi")) {
+            remote = "RemoteHanoi";
+        } else if (code.contains("Sort")) {
+            remote = "RemoteSort";
+        } else {
+            return null;
+        }
+
+        return remote;
+    }
+
+    private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException {
+        Runtime rt = Runtime.getRuntime();
+
+        for (File javaFile : files) {
+
+            String path = javaFile.toPath().toString();
+            if (!path.endsWith(".java")) {
+                throw new PLMCompilerException("Trying to compile a non java file: '" + path + "'", Set.of(path), new Error(), diagnostic);
+            }
+
+        }
+
+        List<String> names = Arrays.asList(files).stream().map(s -> s.getName()).toList();
+        List<String> paths = Arrays.asList(files).stream().map(s -> s.toPath().toString()).toList();
+
+        ArrayList<String> args = new ArrayList<>();
+
+        args.add("javac");
+        args.addAll(names);
 
 
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
-		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
-		packageNameSuffix++;
-		runtimePatterns.put("\\$package", "package "+packageName()+";import java.awt.Color;");
+        Process proc;
+        try {
+            proc = rt.exec(args.toArray(String[]::new), new String[]{}, packageFolder);
 
-		
-		/* Prepare the source files */
-		Map<String, String> sources = new TreeMap<String, String>();
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+
+            String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
+
+            String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
+
+            if (!rtStderr.isEmpty()) {
+                throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error(), diagnostic);
+            }
+        } catch (IOException e) {
+            throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error(), diagnostic);
+        }
+
+    }
+
+    private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File root, File packageFolder, File jarFile, File mainFile, File... files) throws PLMCompilerException {
+
+        Set<File> allFiles = new HashSet<>();
+        allFiles.add(mainFile);
+        allFiles.addAll(List.of(files));
+
+        Runtime rt = Runtime.getRuntime();
+
+        if (!packageFolder.toPath().toString().startsWith(root.toPath().toString())) {
+            throw new PLMCompilerException("Root folder (" + root.toPath() + ") is not above package folder (" + packageFolder.toPath() + ") in file hierarchy.", Set.of(), new Error(), diagnostic);
+        }
+
+        String packagePath = packageFolder.toPath().toString().substring(root.toPath().toString().length() + 1);
+        String packageName = packagePath.replace('/', '.');
+
+        String mainFileDotPath = packageName + "." + mainFile.getName().substring(0, mainFile.getName().indexOf('.'));
+
+        File manifestFile = new File(packageFolder, "MANIFEST.MF");
+        try {
+            Files.writeString(manifestFile.toPath(), "Main-Class: " + mainFileDotPath + "\n");
+
+
+            List<String> classFiles = allFiles.stream().map(s -> {
+                String javaPath = s.toPath().toString();
+                return javaPath.substring(0, javaPath.lastIndexOf('.'))+".class";
+            }).filter(s -> s.endsWith(".class")).toList();
+            classFiles = classFiles.stream().map(s -> s.substring(root.toPath().toString().length() + 1)).toList();
+
+            ArrayList<String> args = new ArrayList<>();
+
+            args.add("jar");
+            args.add("cfm");
+            args.add(jarFile.toPath().toString());
+            args.add(manifestFile.toPath().toString());
+            args.addAll(classFiles);
+
+            Process proc = rt.exec(args.toArray(String[]::new), new String[]{}, root);
+
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+
+            String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
+
+            String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
+
+            if (!rtStderr.isEmpty()) {
+                throw new PLMCompilerException(rtStderr, allFiles.stream().map(s -> s.toPath().toString()).collect(Collectors.toSet()), new Error(), diagnostic);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean isJava() {
+        return true;
+    }
+
+    @Override
+    public String getBrokenLanguageMessage() {
+        return brokenLanguageMessage;
+    }
+
+    @Override
+    public boolean isBrokenLanguage() {
+        if (brokenLanguageState == BrokenLanguageState.Unitialized) {
+            throw new RuntimeException("Unimplemented");
+        }
+        return brokenLanguageState != BrokenLanguageState.Usable;
+    }
+
+    public String getRemoteJavaFile(String remoteName, String packageName) {
+        String remote;
+        if (remoteName == null || remoteName.isEmpty()) remote = "Remote.java";
+        else remote = remoteName;
+
+        if (!remote.startsWith("Remote")) remote = "Remote" + remote;
+        if (!remote.endsWith(".java")) remote = remote + ".java";
+
+        String path = "resources/langages/java/" + remote;
+
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
+
+        if (stream == null) {
+            throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
+        }
+
+        String packageDeclaration = "package " + packageName + ";";
+        String remoteCode = new BufferedReader(new InputStreamReader(stream))
+                .lines().collect(Collectors.joining("\n"));
+
+        if (remoteCode.startsWith("package")) {
+            remoteCode = remoteCode.replaceFirst("package .*;", packageDeclaration);
+        } else {
+            remoteCode = packageDeclaration + "\n" + remoteCode;
+        }
+
+        return remoteCode;
+    }
+
+    public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
+        /* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
+        packageNameSuffix++;
+        String packageNameCache = packageName();
+
+
+        Map<String, String> runtimePatterns = new TreeMap<String, String>();
+        runtimePatterns.put("\\$package", "package " + packageNameCache + ";");
+
+        String mainRemoteContent = getRemoteJavaFile(null, packageNameCache);
+
+        DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
+        try {
+            for (SourceFile sf : exo.getSourceFilesList(this)) {
+                String key = packageNameCache + "." + sf.getName();
+
+                String correction = sf.getCorrection();
+
+                String remote = getRemote(correction);
+                if (remote == null) {
+                    PLMCompilerException e = new PLMCompilerException("This universe is not implemented in Java.", null, diagnostic);
+                    exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
+                    throw e;
+                }
+
+                String runFunction = extractRunFunction(correction);
+                String dependency = extractRunDependency(correction);
+                String imports = extractImportDependency(correction);
+
+                runtimePatterns.put("\\$run", runFunction);
+                runtimePatterns.put("\\$dependency", dependency);
+                runtimePatterns.put("\\$imports",(
+                        "import static " + packageNameCache + ".Remote.*;\n" +
+                                "import static " + packageNameCache + "." + remote + ".*;\n"+imports).replace('\n', ' '));
+
+                String template = getCorrectedTemplate(correction);
+                sf.setTemplate(template);
+
+
+                String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
+                entityCode = Pattern.compile("([^a-zA-Z])(Color)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
+                entityCode = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
+                entityCode = Pattern.compile("this.").matcher(entityCode).replaceAll("");
+
+                File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
+                //noinspection ResultOfMethodCallIgnored
+                workspace.mkdirs();
+
+                File mainRemote = new File(workspace, "Remote.java");
+
+                String entityRemoteContent = getRemoteJavaFile(remote, packageNameCache)
+                        .replace("import static Remote.*;", "import static " + packageNameCache + ".Remote.*;");
+                File entityRemote = new File(workspace, remote + ".java");
+
+                File entityFile = new File(workspace, "Entity.java");
+                File mainFile = new File(workspace, "Main.java");
+
+                String mainContent = "package " + packageNameCache + ";\n" +
+                        "import " + packageNameCache + ".Entity;\n" +
+                        "\n" +
+                        "public class Main {\n" +
+                        "   public static void main(String[] args){\n" +
+                        "       new Entity().run();\n" +
+                        "   }\n" +
+                        "}\n";
+
+                try {
+                    Files.writeString(new File(workspace, "Template.txt").toPath(), template);
+                    Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
+                    Files.writeString(mainRemote.toPath(), mainRemoteContent);
+                    Files.writeString(entityRemote.toPath(), entityRemoteContent);
+                    Files.writeString(entityFile.toPath(), entityCode);
+                    Files.writeString(mainFile.toPath(), mainContent);
+
+                    compileJavaFiles(diagnostic, workspace, mainFile, mainRemote, entityRemote, entityFile);
+
+                    File jarFile = new File(workspace, "Code.jar");
+                    createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, entityFile, mainRemote, entityRemote);
+
+                    this.jarFile.put(key, jarFile);
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } catch (PLMCompilerException e) {
+            System.err.println(Game.i18n.tr("Compilation error:"));
+            exo.lastResult = RunOutcome.newCompilationError(e.getDiagnostics());
+            System.err.println(e.getMessage());
+            if (out != null)
+                out.log(
+                        exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+
+            if (Game.getInstance().isDebugEnabled())
                 for (SourceFile sf : exo.getSourceFilesList(this))
-                  sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns, whatToCompile)); 
+                    System.out.println("Source file " + sf.getName() + ":" +
+                            sf.getCompilableContent(runtimePatterns, whatToCompile));
 
-		if (sources.isEmpty()) 
-			return;
+            throw e;
+        }
+    }
 
-		try {
-			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-			compiledClasses = compiler.compile(sources, errs);
+    @Override
+    public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException {
 
-			if (out != null)
-				out.log(errs);
-		} catch (PLMCompilerException e) {
-			System.err.println(Game.i18n.tr("Compilation error:"));
-                        exo.lastResult = RunOutcome.newCompilationError(e.getDiagnostics());
-                        if (out != null)
-                          out.log(
-                              exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+        List<SourceFile> sourceFile = exo.getSourceFilesList(this);
 
-                        if (Game.getInstance().isDebugEnabled())
-                          for (SourceFile sf : exo.getSourceFilesList(this))
-                            System.out.println("Source file " + sf.getName() + ":" +
-                                               sf.getCompilableContent(runtimePatterns, whatToCompile)); 
+        if (sourceFile.size() != 1)
+            throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
 
-			throw e;
-		}
+        SourceFile source = sourceFile.get(0);
 
-	}
-	@Override
-	protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException {
-		return (Entity) compiledClasses.get(className(newClassName)).newInstance();
-	}
+        for (Entity old : olds) {
+            String key = className(source.getName());
+            File file = jarFile.get(key);
+            if(file != null) old.setScript(this, file.toPath().toString());
+        }
 
-}
+        return new ArrayList<>(olds);
+    }
 
+    @Override
+    protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException {
+        throw new RuntimeException("This function should not longer be called, the new implementation do not rely on it.");
+    }
 
-/**
- * This class provides an adapted interface to the javax.tools compiler.
- * 
- * Its main method is compile(), of prototype: 
- *  INPUT:  Map<String, String>  : a list of named sourcefiles
- *  OUTPUT: Map<String, Class<Object>> : a list of named compiled class 
- * 
- * It is used in {@link plm.core.model.lesson.Exercise}, where the student code gets compiled.
- * 
- * See also "Create dynamic applications with javax.tools", David J. Biesack.
- * http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
- */
+    @Override
+    public void runEntity(final Entity ent, final RunOutcome progress) {
+        final StringBuffer resEvaluationError = new StringBuffer();
 
-class CompilerJava {
-	// Compiler requires source files with a ".java" extension:
-	static final String JAVA_EXTENSION = ".java";
+        try {
 
-	private final ClassLoaderImpl classLoader;
+            String executable;
+            if (ent.getScript(this) != null) {
+                executable = ent.getScript(this);
+            } else {
+                executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
+                throw new IllegalStateException("TOFIX");
+            }
 
-	// The compiler instance that this facade uses.
-	private JavaCompiler compiler;
+            String cmd = executable;
+            File exec = new File(cmd);
+            if (!exec.exists()) {
+                System.err.println(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
+                return;
+            }
 
-	// The compiler options (such as "-target" "1.6").
-	private final List<String> options;
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", cmd);
+            final Process process = pb.start();
+            long pid = process.pid();
+            final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 
-	// collect compiler diagnostics in this instance.
-	private DiagnosticCollector<JavaFileObject> diagnostics;
+            Thread reader = new Thread() {
+                public void run() {
+                    try {
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                        try {
+                            String str;
+                            while ((str = reader.readLine()) != null)
+                                System.out.println(str);
+                        } finally {
+                            reader.close();
+                        }
+                    } catch (IOException ioe) {
+                        ioe.printStackTrace();
+                    }
+                }
+            };
 
-	// The FileManager which will store source and class "files".
-	private final FileManagerImpl javaFileManager;
+            Thread error = new Thread() {
+                public void run() {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                    Exception parseError = null;
+                    String str = "";
+                    try {
+                        while ((str = reader.readLine()) != null) {
+                            System.out.println("EXECUTING COMMAND: "+str);
+                            CommandExecutor.command(ent, str, bwriter);
+                            System.out.println("COMMAND EXECUTED");
+                        }
+                    } catch (Exception e) {
+                        parseError = e;
+                    }
+                    if (parseError != null) {
+                        StringBuffer sb = new StringBuffer(str + "\n");
+                        try {
+                            while ((str = reader.readLine()) != null)
+                                sb.append(str + "\n");
+                        } catch (IOException ioe) {
+                            System.err.println("Exception while handling the exception. Bailing out");
+                            parseError.printStackTrace();
+                            ioe.printStackTrace();
+                        }
+                        throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
+                    }
+                }
+            };
 
-	/**
-	 * Construct a new instance which delegates to the named class loader.
-	 * 
-	 * @param options
-	 *            The compiler options (such as "-target" "1.5"). See the usage
-	 *            for javac
-	 * @throws IllegalStateException
-	 *             if the Java compiler cannot be loaded.
-	 */
-	public CompilerJava(Iterable<String> options) {
-		final ClassLoader loader = getClass().getClassLoader();
-		
-		compiler = ToolProvider.getSystemJavaCompiler();
-		if (compiler == null) {
-			try {
-				compiler = (JavaCompiler) Class.forName("com.sun.tools.javac.api.JavacTool").newInstance();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		if (compiler == null) {
-			throw new IllegalStateException("Cannot find the system Java compiler. "
-					+ "Please use a java SDK instead of a java runtime or check the class path.");
-		}
+            reader.start();
+            error.start();
 
-		classLoader = (ClassLoaderImpl) AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-			public ClassLoader run() {
-				return new ClassLoaderImpl(loader);
-			}
-		});
+            process.waitFor();
 
-		diagnostics = new DiagnosticCollector<JavaFileObject>();
-		final JavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
-		javaFileManager = new FileManagerImpl(fileManager, classLoader);
+            reader.join();
+            error.join();
 
-		this.options = new ArrayList<String>();
-		if (options != null) {
-			for (String option : options) {
-				this.options.add(option);
-			}
-		}
+            bwriter.close();
 
-		// piece of code dedicated to webstart (jnlp) support
-		// (might be improved one day...)
-		List<URL> classpath = new ArrayList<URL>();
+            if (resEvaluationError.length() > 0) {
+                System.err.println(resEvaluationError.toString());
+                progress.setCompilationError(resEvaluationError.toString());
+            }
 
-		if (loader instanceof URLClassLoader) {
-			for (URL url : ((URLClassLoader) loader).getURLs()) {
-				if (url.toString().startsWith("http:")) {
-					try {
-						String jarFilename = url.getFile();
-						jarFilename = jarFilename.substring(jarFilename.lastIndexOf('/'));
-						File tempFile = new File(System.getProperty("java.io.tmpdir"), jarFilename);
-						// if the compiler was a singleton, we could have used
-						// File.createTempFile("cached-",".jar");
-						if (!tempFile.exists()) {
-							// we have to re-download .jar since
-							// JarURLConnection is not properly working
-							download(url, tempFile);
-							tempFile.deleteOnExit();
-						}
-						URL jarLocation = new URL("file:" + tempFile.getAbsolutePath());
-						classpath.add(jarLocation);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				} else {
-					classpath.add(url);
-				}
-			}
-		}
-		String classPath = System.getProperty("java.class.path");
-		for (String path : classPath.split(File.pathSeparator)) {
-			try {
-				classpath.add(new URL("file:" + path));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		StringBuffer sb = new StringBuffer();
-		for (URL jar : classpath) {
-			sb.append(jar.getPath());
-			sb.append(File.pathSeparatorChar);
-		}
-		this.options.add("-cp");
-		this.options.add(sb.toString());
-	}
-
-	private static void download(URL url, File localFileName) {
-		OutputStream out = null;
-		InputStream in = null;
-		try {
-			out = new BufferedOutputStream(new FileOutputStream(localFileName));
-			URLConnection conn = url.openConnection();
-			in = conn.getInputStream();
-			byte[] buffer = new byte[1024 * 512];
-			int numRead;
-			while ((numRead = in.read(buffer)) != -1) {
-				out.write(buffer, 0, numRead);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (in != null)
-					in.close();
-				if (out != null)
-					out.close();
-			} catch (IOException ioe) {
-				// ioe.printStackTrace();
-			}
-		}
-	}
-
-	/**
-	 * Compile Java source in <var>javaSource</var> and return the resulting
-	 * class.
-	 * <p>
-	 * Thread safety: this method is thread safe if the <var>javaSource</var>
-	 * and <var>diagnosticsList</var> are isolated to this thread.
-	 * 
-	 * @param qualifiedClassName
-	 *            The fully qualified class name.
-	 * @param javaSource
-	 *            Complete java source, including a package statement and a
-	 *            class, interface, or annotation declaration.
-	 * @param diagnosticsList
-	 *            Any diagnostics generated by compiling the source are added to
-	 *            this collector.
-	 * @param types
-	 *            zero or more Class objects representing classes or interfaces
-	 *            that the resulting class must be assignable (castable) to.
-	 * @return a Class which is generated by compiling the source
-	 * @throws CharSequenceCompilerException
-	 *             if the source cannot be compiled - for example, if it
-	 *             contains syntax or semantic errors or if dependent classes
-	 *             cannot be found.
-	 * @throws ClassCastException
-	 *             if the generated class is not assignable to all the optional
-	 *             <var>types</var>.
-	 */
-	public synchronized Class<Object> compile(final String qualifiedClassName, final String javaSource,
-			final DiagnosticCollector<JavaFileObject> diagnosticsList, final Class<?>... types)
-			throws PLMCompilerException, ClassCastException {
-		if (diagnosticsList != null)
-			diagnostics = diagnosticsList;
-		else
-			diagnostics = new DiagnosticCollector<JavaFileObject>();
-		Map<String, String> classes = new HashMap<String, String>(1);
-		classes.put(qualifiedClassName, javaSource);
-		Map<String, Class<Object>> compiled = compile(classes, diagnosticsList);
-		Class<Object> newClass = compiled.get(qualifiedClassName);
-		return castable(newClass, types);
-	}
-
-	/**
-	 * Compile multiple Java source strings and return a Map containing the
-	 * resulting classes.
-	 * <p>
-	 * Thread safety: this method is thread safe if the <var>classes</var> and
-	 * <var>diagnosticsList</var> are isolated to this thread.
-	 * 
-	 * @param classes
-	 *            A Map whose keys are qualified class names and whose values
-	 *            are the Java source strings containing the definition of the
-	 *            class. A map value may be null, indicating that compiled class
-	 *            is expected, although no source exists for it (it may be a
-	 *            non-public class contained in one of the other strings.)
-	 * @param diagnosticsList
-	 *            Any diagnostics generated by compiling the source are added to
-	 *            this list.
-	 * @return A mapping of qualified class names to their corresponding
-	 *         classes. The map has the same keys as the input
-	 *         <var>classes</var>; the values are the corresponding Class
-	 *         objects.
-	 * @throws CharSequenceCompilerException
-	 *             if the source cannot be compiled
-	 */
-	public synchronized Map<String, Class<Object>> compile(final Map<String, String> classes,
-			final DiagnosticCollector<JavaFileObject> diagnosticsList) throws PLMCompilerException {
-
-		if (diagnosticsList != null)
-			diagnostics = diagnosticsList;
-		else
-			diagnostics = new DiagnosticCollector<JavaFileObject>();
-
-		List<JavaFileObject> sources = new ArrayList<JavaFileObject>();
-		for (Entry<String, String> entry : classes.entrySet()) {
-			String qualifiedClassName = entry.getKey();
-			String javaSource = entry.getValue();
-			if (javaSource != null) {
-				final int dotPos = qualifiedClassName.lastIndexOf('.');
-				final String className = dotPos == -1 ? qualifiedClassName : qualifiedClassName.substring(dotPos + 1);
-				final String packageName = dotPos == -1 ? "" : qualifiedClassName.substring(0, dotPos);
-				final JavaFileObjectImpl source = new JavaFileObjectImpl(className, javaSource);
-				sources.add(source);
-				// Store the source file in the FileManager via package/class
-				// name.
-				// For source files, we add a .java extension
-				javaFileManager.putFileForInput(StandardLocation.SOURCE_PATH, packageName, className + JAVA_EXTENSION,
-						source);
-			}
-		}
-		// Get a CompliationTask from the compiler and compile the sources
-		final CompilationTask task = compiler.getTask(null, javaFileManager, diagnostics, options, null, sources);
-		final Boolean result = task.call();
-		if (result == null || !result.booleanValue()) {
-			/*
-			 * FIXME: provide a way to debug
-			 * when templates are broken
-			 */
-			 //for (String n:classes.keySet()) 
-			 // System.out.println("File "+n+":\n"+classes.get(n));
-			 
-			throw new PLMCompilerException(Game.i18n.tr("Compilation failed."), classes.keySet(), diagnostics);
-		}
-		try {
-			// For each class name in the input map, get its compiled
-			// class and put it in the output map
-			Map<String, Class<Object>> compiled = new HashMap<String, Class<Object>>();
-			for (String qualifiedClassName : classes.keySet()) {
-				final Class<Object> newClass = loadClass(qualifiedClassName);
-				compiled.put(qualifiedClassName, newClass);
-			}
-			return compiled;
-		} catch (ClassNotFoundException e) {
-			throw new PLMCompilerException(classes.keySet(), e, diagnostics);
-		} catch (IllegalArgumentException e) {
-			throw new PLMCompilerException(classes.keySet(), e, diagnostics);
-		} catch (SecurityException e) {
-			throw new PLMCompilerException(classes.keySet(), e, diagnostics);
-		}
-	}
-
-	/**
-	 * Load a class that was generated by this instance or accessible from its
-	 * parent class loader. Use this method if you need access to additional
-	 * classes compiled by
-	 * {@link #compile(String, CharSequence, DiagnosticCollector, Class...)
-	 * compile()}, for example if the primary class contained nested classes or
-	 * additional non-public classes.
-	 * 
-	 * @param qualifiedClassName
-	 *            the name of the compiled class you wish to load
-	 * @return a Class instance named by <var>qualifiedClassName</var>
-	 * @throws ClassNotFoundException
-	 *             if no such class is found.
-	 */
-	@SuppressWarnings("unchecked")
-	public Class<Object> loadClass(final String qualifiedClassName) throws ClassNotFoundException {
-		return (Class<Object>) classLoader.loadClass(qualifiedClassName);
-	}
-
-	/**
-	 * Check that the <var>newClass</var> is a subtype of all the type
-	 * parameters and throw a ClassCastException if not.
-	 * 
-	 * @param types
-	 *            zero of more classes or interfaces that the
-	 *            <var>newClass</var> must be castable to.
-	 * @return <var>newClass</var> if it is castable to all the types
-	 * @throws ClassCastException
-	 *             if <var>newClass</var> is not castable to all the types.
-	 */
-	private Class<Object> castable(Class<Object> newClass, Class<?>... types) throws ClassCastException {
-		for (Class<?> type : types)
-			if (!type.isAssignableFrom(newClass)) {
-				throw new ClassCastException(type.getName());
-			}
-		return newClass;
-	}
-
-	/**
-	 * Converts a String to a URI.
-	 * 
-	 * @param name
-	 *            a file name
-	 * @return a URI
-	 */
-	static URI toURI(String name) {
-		try {
-			return new URI(name);
-		} catch (URISyntaxException e) {
-			throw new RuntimeException(e);
-		}
-	}
-}
-
-/**
- * A JavaFileManager which manages Java source and classes. This FileManager
- * delegates to the JavaFileManager and the ClassLoaderImpl provided in the
- * constructor. The sources are all in memory CharSequence instances and the
- * classes are all in memory byte arrays.
- */
-final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
-	// the delegating class loader (passed to the constructor)
-	private final ClassLoaderImpl classLoader;
-
-	// Internal map of filename URIs to JavaFileObjects.
-	private final Map<URI, JavaFileObject> fileObjects = new HashMap<URI, JavaFileObject>();
-
-	/**
-	 * Construct a new FileManager which forwards to the <var>fileManager</var>
-	 * for source and to the <var>classLoader</var> for classes
-	 * 
-	 * @param fileManager
-	 *            another FileManager that this instance delegates to for
-	 *            additional source.
-	 * @param classLoader
-	 *            a ClassLoader which contains dependent classes that the
-	 *            compiled classes will require when compiling them.
-	 */
-	public FileManagerImpl(JavaFileManager fileManager, ClassLoaderImpl classLoader) {
-		super(fileManager);
-		this.classLoader = classLoader;
-	}
-
-	/**
-	 * @return the class loader which this file manager delegates to
-	 */
-	public ClassLoader getClassLoader() {
-		return classLoader;
-	}
-
-	/**
-	 * For a given file <var>location</var>, return a FileObject from which the
-	 * compiler can obtain source or byte code.
-	 * 
-	 * @param location
-	 *            an abstract file location
-	 * @param packageName
-	 *            the package name for the file
-	 * @param relativeName
-	 *            the file's relative name
-	 * @return a FileObject from this or the delegated FileManager
-	 * @see javax.tools.ForwardingJavaFileManager#getFileForInput(javax.tools.JavaFileManager.Location,
-	 *      java.lang.String, java.lang.String)
-	 */
-	@Override
-	public FileObject getFileForInput(Location location, String packageName, String relativeName) throws IOException {
-		FileObject o = fileObjects.get(uri(location, packageName, relativeName));
-		if (o != null)
-			return o;
-		return super.getFileForInput(location, packageName, relativeName);
-	}
-
-	/**
-	 * Store a file that may be retrieved later with
-	 * {@link #getFileForInput(javax.tools.JavaFileManager.Location, String, String)}
-	 * 
-	 * @param location
-	 *            the file location
-	 * @param packageName
-	 *            the Java class' package name
-	 * @param relativeName
-	 *            the relative name
-	 * @param file
-	 *            the file object to store for later retrieval
-	 */
-	public void putFileForInput(StandardLocation location, String packageName, String relativeName, JavaFileObject file) {
-		fileObjects.put(uri(location, packageName, relativeName), file);
-	}
-
-	/**
-	 * Convert a location and class name to a URI
-	 */
-	private URI uri(Location location, String packageName, String relativeName) {
-		return CompilerJava.toURI(location.getName() + '/' + packageName + '/' + relativeName);
-	}
+        } catch (Exception e) {
+            resEvaluationError.append(e.getMessage());
+            progress.setExecutionError(resEvaluationError.toString());
+        }
+    }
 
     public static class LangJavaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
@@ -645,28 +624,16 @@ final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
         public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException {
             Set<CommandArgumentType<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
-	/**
-	 * Add a class name/JavaFileObject mapping
-	 * 
-	 * @param qualifiedClassName
-	 *            the name
-	 * @param javaFile
-	 *            the file associated with the name
-	 */
-	void add(final String qualifiedClassName, final JavaFileObject javaFile) {
-		classes.put(qualifiedClassName, javaFile);
-	}
+            final String type_declarations = involved.stream().map(this::getTypeDeclaration)
+                    .filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
-	@Override
-	public InputStream getResourceAsStream(final String name) {
-		if (name.endsWith(".class")) {
-			String qualifiedClassName = name.substring(0, name.length() - ".class".length()).replace('/', '.');
-			JavaFileObjectImpl file = (JavaFileObjectImpl) classes.get(qualifiedClassName);
-			if (file != null) {
-				return new ByteArrayInputStream(file.getByteCode());
-			}
-		}
-		return super.getResourceAsStream(name);
-	}
+            final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
+
+            final String code = "import static Remote.*;\n\npublic class " + name + " {" + ("\n" + type_declarations + "\n" + implementations).replace("\n", "\n\t") + "\n}";
+
+            // System.err.println("XXX Generating "+folder+name+".c");
+            Files.writeString(new File(folder, name + ".java").toPath(), code);
+        }
+    }
 
 }
