@@ -23,6 +23,15 @@ class ValueFormatter {
     if (value instanceof lessons.recursion.cons.universe.RecList) {
       value = ((lessons.recursion.cons.universe.RecList)value).toArray();
     }
+    if (value instanceof scala.collection.immutable.List) {
+      scala.collection.immutable.List<?> sl = (scala.collection.immutable.List<?>)value;
+      int[] res                             = new int[sl.size()];
+      scala.collection.Iterator<?> it       = sl.iterator();
+      int i                                 = 0;
+      while (it.hasNext())
+        res[i++] = (Integer)it.next();
+      return res;
+    }
     if (value.getClass().isArray() && value.getClass().getComponentType().equals(Integer.class)) {
       Integer[] orig = (Integer[])value;
       if (orig.length == 0 || (orig.length == 1 && orig[0] == null))
@@ -37,12 +46,16 @@ class ValueFormatter {
 
   static boolean equals(Object o1, Object o2)
   {
-    if (o1 == null && o2 == null)
-      return true;
-    if (o1 == null || o2 == null)
-      return false;
     o1 = ValueFormatter.normalize(o1);
     o2 = ValueFormatter.normalize(o2);
+
+    if (o1 == null && o2 == null)
+      return true;
+    if (o1 == null)
+      return isEmptyArray(o2);
+    if (o2 == null)
+      return isEmptyArray(o1);
+
     if (o1.getClass().isArray() && o2.getClass().isArray()) {
       if (!o1.getClass().getComponentType().equals(o2.getClass().getComponentType()))
         return false; // not same type in both arrays
@@ -60,6 +73,10 @@ class ValueFormatter {
     if (o1.getClass().isArray() || o2.getClass().isArray())
       return false; // The other cannot be an array because of previous test
     return o1.equals(o2);
+  }
+  private static boolean isEmptyArray(Object o)
+  {
+    return o.getClass().isArray() && java.lang.reflect.Array.getLength(o) == 0;
   }
 
   /* --- Formatting logic --- */

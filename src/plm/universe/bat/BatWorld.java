@@ -12,13 +12,14 @@ import plm.universe.World;
 
 public class BatWorld extends World {
   public List<BatTest> tests = new Vector<>();
-
-  public BatWorld(String funName)
+  public BatWorld(String funName, BatEntity ent)
   {
     super(funName);
 
-    addEntity(new BatEntity());
+    addEntity(ent);
   }
+
+  public BatWorld(String funName) { this(funName, new BatEntity()); }
   public BatWorld(BatWorld w2)
   {
     super(w2);

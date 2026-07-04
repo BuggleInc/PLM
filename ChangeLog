@@ -6,6 +6,7 @@
     - Make sure we don't try to sign git commits even if the user local configuration requests otherwise.
     - Only log error messages, not the deprecation messages from the PLM itself.  [Juan Manuel Méndez Rey]
     - Modernize the build chain by using maven  [Juan Manuel Méndez Rey]
+    - Kill ExerciseTemplatingEntity. The design is so much simpler without it.
   * Languages
     - Modernize the C lang; student's printfs are now shown in the console
     - C lang: use the Address Sanitizer rather than valgrind: it's ways faster and we control the compilation anyway.
