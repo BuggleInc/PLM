@@ -1,0 +1,18 @@
+package lessons.welcome.bat.bool2;
+
+import plm.universe.bat.BatEntity;
+import plm.universe.bat.BatTest;
+
+public class In1To10Entity extends BatEntity {
+
+  public void run(BatTest t) { t.setResult(in1To10((Integer)t.getParameter(0), (Boolean)t.getParameter(1))); }
+
+  /* BEGIN TEMPLATE */
+  boolean in1To10(int n, boolean outsideMode)
+  {
+    /* BEGIN SOLUTION */
+    return (outsideMode && (n <= 1 || n >= 10)) || ((!outsideMode) && (n >= 1 && n <= 10));
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
+}

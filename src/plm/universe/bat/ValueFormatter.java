@@ -51,6 +51,8 @@ class ValueFormatter {
         return Arrays.equals((int[])o1, (int[])o2);
       } else if (o1.getClass().getComponentType().equals(String.class)) {
         return Arrays.equals((String[])o1, (String[])o2);
+      } else if (o1.getClass().getComponentType().equals(Object.class)) {
+        return Arrays.equals((Object[])o1, (Object[])o2);
       } else
         throw new UnsupportedOperationException("ValueFormatter.equals: unsupported array component type: " +
                                                 o1.getClass().getComponentType().getName());

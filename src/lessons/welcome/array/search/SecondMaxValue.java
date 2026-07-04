@@ -1,10 +1,8 @@
 package lessons.welcome.array.search;
 
 import java.util.Random;
-
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class SecondMaxValue extends BatExercise {
@@ -46,60 +44,6 @@ public class SecondMaxValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab3) ;
 		myWorld.addTest(INVISIBLE, tab4) ;
 
-		templatePython("max2Value", new String[] {"Array[Int]"},
-				"def max2Value(nums):\n",
-				"  max=-10000000\n"+
-				"  sec=-10000000\n"+
-				"  for i in range(len(nums)):\n"+
-				"    if nums[i] > max:\n"+
-				"      sec = max\n"+
-				"      max = nums[i]\n"+
-				"    elif nums[i] > sec:\n"+
-				"      sec = nums[i]\n"+
-				"  return sec\n");
-		templateScala("max2Value", new String[] {"Array[Int]"}, 
-				"def max2Value(nums:Array[Int]): Int = {\n",
-				"  var max=Integer.MIN_VALUE\n"+
-				"  var sec=Integer.MIN_VALUE\n"+
-				"  for (i <- 0 to nums.length-1)\n"+
-				"    if (nums(i) > max) {\n"+
-				"      sec = max\n"+
-				"      max = nums(i)\n"+
-				"    } else if (nums(i) > sec) {\n"+
-				"      sec = nums(i)\n"+
-				"    }\n"+
-				"  return sec\n"+
-				"}");
-
-		setup(myWorld);
-	}
-	
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( max2Value( (int[])t.getParameter(0) ));
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	// computes the index of the second maximum of the values contained in tab variable
-	public int max2Value(int[] tab) {
-		/* BEGIN SOLUTION */
-		int max = Integer.MIN_VALUE;
-		int sec = Integer.MIN_VALUE;
-		for (int i=0; i<tab.length; i++) 
-			if (tab[i] > max) {
-				sec = max;
-				max = tab[i];
-			} else if (tab[i] > sec) {
-				sec = tab[i];
-			}
-				
-		return sec;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+                setup(myWorld);
+        }
 }
-
-
-
-

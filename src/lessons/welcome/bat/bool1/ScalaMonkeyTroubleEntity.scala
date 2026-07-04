@@ -1,0 +1,19 @@
+package lessons.welcome.bat.bool1
+
+import plm.universe.bat.BatEntity
+import plm.universe.bat.BatTest
+
+class ScalaMonkeyTroubleEntity extends BatEntity {
+
+	override def run(t: BatTest) {
+		t.setResult( monkeyTrouble(t.getParameter(0).asInstanceOf[Boolean],t.getParameter(1).asInstanceOf[Boolean]) );
+	}
+
+	/* BEGIN TEMPLATE */
+	def monkeyTrouble(aSmile:Boolean, bSmile:Boolean): Boolean = {
+	/* BEGIN SOLUTION */
+   return ((aSmile && bSmile) || (!aSmile && !bSmile))
+	/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+}

@@ -25,9 +25,6 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
-import plm.universe.bat.BatWorld;
 
 /* This ancestor class defines useful methods that are used in specific tests, that are subclasses */
 
@@ -154,10 +151,6 @@ public class ExoTest {
         what = StudentOrCorrection.STUDENT;
       exo.mutateEntities(WorldKind.CURRENT, what);
 
-      if (exo instanceof BatExercise)
-        for (BatTest t : ((BatWorld)exo.getWorld(0)).tests)
-          t.objectiveTest = false; // we want to set the result for real, not the expected
-
       for (World w : exo.getWorlds(WorldKind.CURRENT))
         for (Entity ent : w.getEntities())
           lang.runEntity(ent, exo.lastResult);
@@ -166,6 +159,9 @@ public class ExoTest {
     } catch (PLMCompilerException e) {
       System.err.println(e);
       // compileAll already setup the error message; we just needed to not run the entity in that case
+    } catch (UnsupportedOperationException uoe) {
+      System.err.println("UnsupportedOperationException while executing" + exo.getId());
+      throw uoe;
     }
 
     if (exo.lastResult.compilationError != null) {

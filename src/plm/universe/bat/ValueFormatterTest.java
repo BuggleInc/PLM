@@ -9,7 +9,6 @@ import lessons.recursion.cons.universe.RecList;
 import org.junit.jupiter.api.Test;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.universe.bat.ValueFormatter;
 
 /** Tests for ValueFormatter */
 class ValueFormatterTest {

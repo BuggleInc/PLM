@@ -87,5 +87,5 @@ while keepGoing:
                     if pPlus1!=0:
                         flip(pPlus1+1)
                     radius = -1 # We're done with this iteration of the loop
-                pPlus1 = p # look downward
+                pPlus1 = p # look downward
 # END SOLUTION

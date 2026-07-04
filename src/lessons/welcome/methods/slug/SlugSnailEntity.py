@@ -11,7 +11,7 @@ def isFacingTrail(color):
 	  res = (getGroundColor() == color)
 	  backward()
 	  return res
-   # END SOLUTION
+   # END SOLUTION
 
 def hunt(color):
    # BEGIN HIDDEN

@@ -1,10 +1,8 @@
 package lessons.welcome.array.search;
 
 import java.util.Random;
-
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class AverageValue extends BatExercise {
@@ -30,38 +28,6 @@ public class AverageValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, new int[] {1, 2}) ;
 		myWorld.addTest(INVISIBLE, new int[] {42}) ;
 
-		templatePython("averageValue", new String[] {"Array[Int]"},
-				"def averageValue(nums):\n",
-				"  total = 0\n"+
-				"  for i in range(len(nums)):\n" +
-				"    total += nums[i]\n"+
-				"  return total / len(nums)\n");
-		templateScala("averageValue",new String[] {"Array[Int]"}, 
-				"def averageValue(nums:Array[Int]): Int = {\n",
-				"  var total = 0\n"+
-				"  for (i <- 0 to nums.length -1) \n" +
-				"    total += nums(i)\n"+
-				"  return total / nums.length\n"+
-				"}");
-		setup(myWorld);		
-	}
-	
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( averageValue((int[])t.getParameter(0)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int averageValue(int[] nums) {
-		/* BEGIN SOLUTION */
-		int total = 0;
-		for (int i=0; i < nums.length; i++) 
-			total += nums[i];
-		return total / nums.length;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
-
+                setup(myWorld);
+        }
 }

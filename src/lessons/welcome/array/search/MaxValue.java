@@ -1,10 +1,8 @@
 package lessons.welcome.array.search;
 
 import java.util.Random;
-
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class MaxValue extends BatExercise {
@@ -36,46 +34,6 @@ public class MaxValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab3) ;
 		myWorld.addTest(INVISIBLE, tab4) ;
 
-		templatePython("maxValue", new String[] {"Array[Int]"},
-				"def maxValue(nums):\n",
-				"  max=nums[0]\n"+
-				"  for i in range(len(nums)):\n"+
-				"    if nums[i] > max:\n"+
-				"      max = nums[i]\n"+
-				"  return max\n");
-		templateScala("maxValue", new String[] {"Array[Int]"}, 
-				"def maxValue(nums:Array[Int]): Int = {\n",
-				"  var max=nums(0)\n"+
-				"  for (i <- 0 to nums.length-1)\n"+
-				"    if (nums(i) > max)\n"+
-				"      max = nums(i)\n"+
-				"  return max\n"+
-				"}");
-
-		setup(myWorld);
-	}
-	
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( maxValue( (int[])t.getParameter(0) ));
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	// computes the index of the maximum of the values contained in tab variable
-	public int maxValue(int[] tab) {
-		/* BEGIN SOLUTION */
-		int max = tab[0];
-		for (int i=1; i<tab.length; i++) 
-			if (tab[i] >= max)  
-				max = tab[i];
-				
-		return max;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+                setup(myWorld);
+        }
 }
-
-
-
-

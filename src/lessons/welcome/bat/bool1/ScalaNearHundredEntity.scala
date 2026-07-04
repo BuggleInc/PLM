@@ -1,0 +1,19 @@
+package lessons.welcome.bat.bool1
+
+import plm.universe.bat.BatEntity
+import plm.universe.bat.BatTest
+
+class ScalaNearHundredEntity extends BatEntity {
+
+	override def run(t: BatTest) {
+		t.setResult( nearHundred(t.getParameter(0).asInstanceOf[Int]) );
+	}
+
+	/* BEGIN TEMPLATE */
+	def nearHundred(n:Int): Boolean = {
+	/* BEGIN SOLUTION */
+  return (90<=n && n<=110)||(190<=n&&n<=210);
+	/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+}
