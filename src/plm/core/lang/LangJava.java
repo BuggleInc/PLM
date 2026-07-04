@@ -38,6 +38,10 @@ import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.CommandArgumentType;
+import plm.core.lang.primitives.ExternalPrimitiveLanguage;
+import plm.core.lang.primitives.PrimitiveMethod;
+import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
@@ -45,6 +49,8 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
+import plm.core.utils.ColorMapper;
+import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 
 public class LangJava extends JVMCompiledLang {
@@ -516,202 +522,128 @@ final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
 		return CompilerJava.toURI(location.getName() + '/' + packageName + '/' + relativeName);
 	}
 
-	/**
-	 * Create a JavaFileImpl for an output class file and store it in the
-	 * classloader.
-	 * 
-	 * @see javax.tools.ForwardingJavaFileManager#getJavaFileForOutput(javax.tools.JavaFileManager.Location,
-	 *      java.lang.String, javax.tools.JavaFileObject.Kind,
-	 *      javax.tools.FileObject)
-	 */
-	@Override
-	public JavaFileObject getJavaFileForOutput(Location location, String qualifiedName, Kind kind, FileObject outputFile)
-			throws IOException {
-		JavaFileObject file = new JavaFileObjectImpl(qualifiedName, kind);
-		classLoader.add(qualifiedName, file);
-		return file;
-	}
+    public static class LangJavaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
-	@Override
-	public ClassLoader getClassLoader(JavaFileManager.Location location) {
-		return classLoader;
-	}
+        String getLanguageType(CommandArgumentType<?> type) {
+            if (type == CommandArgumentType.COLOR) return "int";
+            if (type == CommandArgumentType.DIRECTION) return "int";
+            if (type == CommandArgumentType.DOUBLE) return "double";
+            if (type == CommandArgumentType.INT) return "int";
+            if (type == CommandArgumentType.STRING) return "String";
+            if (type == CommandArgumentType.CHAR) return "char";
+            if (type == CommandArgumentType.BOOLEAN)
+                return "boolean";
 
-	@Override
-	public String inferBinaryName(Location loc, JavaFileObject file) {
-		String result;
-		// For our JavaFileImpl instances, return the file's name, else
-		// simply run the default implementation
-		if (file instanceof JavaFileObjectImpl)
-			result = file.getName();
-		else
-			result = super.inferBinaryName(loc, file);
-		return result;
-	}
+            throw new IllegalStateException("Unknown type: " + type);
+        }
 
-	@Override
-	public Iterable<JavaFileObject> list(Location location, String packageName, Set<Kind> kinds, boolean recurse)
-			throws IOException {
-		Iterable<JavaFileObject> result = super.list(location, packageName, kinds, recurse);
+        String getTypeDeclaration(CommandArgumentType<?> type) {
+            if (type == CommandArgumentType.DIRECTION) {
+                return "public static class Direction {\n" +
+                        "\tstatic final int NORTH = 0;\n" +
+                        "\tstatic final int EAST = 1;\n" +
+                        "\tstatic final int SOUTH = 2;\n" +
+                        "\tstatic final int WEST = 3;\n" +
+                        "}";
+            }
+            if (type == CommandArgumentType.COLOR) {
+                return "public static class Color {\n" +
+                        "\tstatic final int white = "+ ColorMapper.color2int(Color.white) +";\n" +
+                        "\tstatic final int WHITE = "+ColorMapper.color2int(Color.WHITE)+";\n" +
+                        "\tstatic final int black = "+ColorMapper.color2int(Color.black)+";\n" +
+                        "\tstatic final int BLACK = "+ColorMapper.color2int(Color.BLACK)+";\n" +
+                        "\tstatic final int blue = "+ColorMapper.color2int(Color.blue)+";\n" +
+                        "\tstatic final int BLUE = "+ColorMapper.color2int(Color.BLUE)+";\n" +
+                        "\tstatic final int cyan = "+ColorMapper.color2int(Color.cyan)+";\n" +
+                        "\tstatic final int CYAN = "+ColorMapper.color2int(Color.CYAN)+";\n" +
+                        "\tstatic final int darkGray = "+ColorMapper.color2int(Color.darkGray)+";\n" +
+                        "\tstatic final int DARK_GRAY = "+ColorMapper.color2int(Color.DARK_GRAY)+";\n" +
+                        "\tstatic final int gray = "+ColorMapper.color2int(Color.gray)+";\n" +
+                        "\tstatic final int GRAY = "+ColorMapper.color2int(Color.GRAY)+";\n" +
+                        "\tstatic final int green = "+ColorMapper.color2int(Color.green)+";\n" +
+                        "\tstatic final int GREEN = "+ColorMapper.color2int(Color.GREEN)+";\n" +
+                        "\tstatic final int lightGray = "+ColorMapper.color2int(Color.lightGray)+";\n" +
+                        "\tstatic final int LIGHT_GRAY = "+ColorMapper.color2int(Color.LIGHT_GRAY)+";\n" +
+                        "\tstatic final int magenta = "+ColorMapper.color2int(Color.magenta)+";\n" +
+                        "\tstatic final int MAGENTA = "+ColorMapper.color2int(Color.MAGENTA)+";\n" +
+                        "\tstatic final int orange = "+ColorMapper.color2int(Color.orange)+";\n" +
+                        "\tstatic final int ORANGE = "+ColorMapper.color2int(Color.ORANGE)+";\n" +
+                        "\tstatic final int pink = "+ColorMapper.color2int(Color.pink)+";\n" +
+                        "\tstatic final int PINK = "+ColorMapper.color2int(Color.PINK)+";\n" +
+                        "\tstatic final int red = "+ColorMapper.color2int(Color.red)+";\n" +
+                        "\tstatic final int RED = "+ColorMapper.color2int(Color.RED)+";\n" +
+                        "\tstatic final int yellow = "+ColorMapper.color2int(Color.yellow)+";\n" +
+                        "\tstatic final int YELLOW = "+ColorMapper.color2int(Color.YELLOW)+";\n" +
+                        "}";
+            }
+            return "";
+        }
 
-		ArrayList<JavaFileObject> files = new ArrayList<JavaFileObject>();
-		if (location == StandardLocation.CLASS_PATH && kinds.contains(JavaFileObject.Kind.CLASS)) {
-			for (JavaFileObject file : fileObjects.values()) {
-				if (file.getKind() == Kind.CLASS && file.getName().startsWith(packageName))
-					files.add(file);
-			}
-			// Only return the compiled classes that actually live in the queried
-			// package. javac trusts that list(package=P) returns classes of P and
-			// derives their binary name as P + simpleName; returning every compiled
-			// class unconditionally made it mistake e.g. plm...SourceFile for
-			// scala.reflect.internal.util.SourceFile ("class file contains wrong
-			// class") and broke compilation.
-			for (JavaFileObject file : classLoader.files()) {
-				if (file.getName().startsWith(packageName))
-					files.add(file);
-			}
-		} else if (location == StandardLocation.SOURCE_PATH && kinds.contains(JavaFileObject.Kind.SOURCE)) {
-			for (JavaFileObject file : fileObjects.values()) {
-				if (file.getKind() == Kind.SOURCE && file.getName().startsWith(packageName))
-					files.add(file);
-			}
-		}
-		for (JavaFileObject file : result) {
-			files.add(file);
-		}
+        String getParameter(PrimitiveParameter parameter) {
+            return getLanguageType(parameter.type()) + " " + parameter.name();
+        }
 
-		return files;
-	}
-}
+        String getPrototype(PrimitiveMethod method) {
+            String name = method.name();
+            List<PrimitiveParameter> parameters = method.parameters();
+            CommandArgumentType<?> output = method.output();
 
-/**
- * A JavaFileObject which contains either the source text or the compiler
- * generated class. This class is used in two cases.
- * <ol>
- * <li>This instance uses it to store the source which is passed to the
- * compiler. This uses the
- * {@link JavaFileObjectImpl#JavaFileObjectImpl(String, CharSequence)}
- * constructor.
- * <li>The Java compiler also creates instances (indirectly through the
- * FileManagerImplFileManager) when it wants to create a JavaFileObject for the
- * .class output. This uses the
- * {@link JavaFileObjectImpl#JavaFileObjectImpl(String, JavaFileObject.Kind)}
- * constructor.
- * </ol>
- * This class does not attempt to reuse instances (there does not seem to be a
- * need, as it would require adding a Map for the purpose, and this would also
- * prevent garbage collection of class byte code.)
- */
-final class JavaFileObjectImpl extends SimpleJavaFileObject {
-	// If kind == CLASS, this stores byte code from openOutputStream
-	private ByteArrayOutputStream byteCode;
 
-	// if kind == SOURCE, this contains the source text
-	private final CharSequence source;
+            final String outputString = Optional.ofNullable(output).map(this::getLanguageType).orElse("void");
 
-	/**
-	 * Construct a new instance which stores source
-	 * 
-	 * @param baseName
-	 *            the base name
-	 * @param source
-	 *            the source code
-	 */
-	JavaFileObjectImpl(final String baseName, final String source) {
-		super(CompilerJava.toURI(baseName + CompilerJava.JAVA_EXTENSION), Kind.SOURCE);
-		this.source = source;
-	}
+            return "public static " + outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
+        }
 
-	/**
-	 * Construct a new instance
-	 * 
-	 * @param name
-	 *            the file name
-	 * @param kind
-	 *            the kind of file
-	 */
-	JavaFileObjectImpl(final String name, final Kind kind) {
-		super(CompilerJava.toURI(name), kind);
-		source = null;
-	}
+        String getReturning(CommandArgumentType<?> type) {
+            if (type == null)
+                return "";
 
-	/**
-	 * Return the source code content
-	 * 
-	 * @see javax.tools.SimpleJavaFileObject#getCharContent(boolean)
-	 */
-	@Override
-	public CharSequence getCharContent(final boolean ignoreEncodingErrors) throws UnsupportedOperationException {
-		if (source == null)
-			throw new UnsupportedOperationException("getCharContent()");
-		return source;
-	}
+            if (type == CommandArgumentType.STRING) return "getAnswerString()";
+            if (type == CommandArgumentType.DOUBLE) return "getAnswerDouble()";
+            if (type == CommandArgumentType.CHAR) return "getAnswerChar()";
+            if (type == CommandArgumentType.COLOR) return "getAnswerInt()";
+            if (type == CommandArgumentType.DIRECTION) return "getAnswerInt()";
+            if (type == CommandArgumentType.INT) return "getAnswerInt()";
+            if (type == CommandArgumentType.BOOLEAN)
+                return "getAnswerBoolean()";
 
-	/**
-	 * Return an input stream for reading the byte code
-	 * 
-	 * @see javax.tools.SimpleJavaFileObject#openInputStream()
-	 */
-	@Override
-	public InputStream openInputStream() {
-		return new ByteArrayInputStream(getByteCode());
-	}
+            throw new IllegalStateException("Unknown type: " + type);
+        }
 
-	/**
-	 * Return an output stream for writing the bytecode
-	 * 
-	 * @see javax.tools.SimpleJavaFileObject#openOutputStream()
-	 */
-	@Override
-	public OutputStream openOutputStream() {
-		byteCode = new ByteArrayOutputStream();
-		return byteCode;
-	}
+        String getTemplatingForType(CommandArgumentType<?> type) {
+            if (type == CommandArgumentType.STRING) return "%s";
+            if (type == CommandArgumentType.DOUBLE) return "%f";
+            if (type == CommandArgumentType.CHAR) return "%c";
+            if (type == CommandArgumentType.COLOR) return "%d";
+            if (type == CommandArgumentType.DIRECTION) return "%d";
+            if (type == CommandArgumentType.INT) return "%d";
+            if (type == CommandArgumentType.BOOLEAN)
+                return "%d";
 
-	/**
-	 * @return the byte code generated by the compiler
-	 */
-	byte[] getByteCode() {
-		return byteCode.toByteArray();
-	}
-}
+            throw new IllegalStateException("Unknown type: " + type);
+        }
 
-/**
- * A custom ClassLoader which maps class names to JavaFileObjectImpl instances.
- */
-final class ClassLoaderImpl extends ClassLoader {
-	private final Map<String, JavaFileObject> classes = new HashMap<String, JavaFileObject>();
+        String getImplementation(PrimitiveMethod method) {
+            String prototype = getPrototype(method);
 
-	ClassLoaderImpl(final ClassLoader parentClassLoader) {
-		super(parentClassLoader);
-	}
+            int id = method.id();
+            String name = method.name();
+            String formats = method.parameters().stream().map(PrimitiveParameter::type)
+                    .map(this::getTemplatingForType).map(s -> s + " ").collect(Collectors.joining());
 
-	/**
-	 * @return An collection of JavaFileObject instances for the classes in the
-	 *         class loader.
-	 */
-	Collection<JavaFileObject> files() {
-		return Collections.unmodifiableCollection(classes.values());
-	}
+            String command = "\tsendCommand(\"" + id + " " +
+                    formats
+                    + name
+                    + "\"" + method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
-	@Override
-	protected Class<?> findClass(final String qualifiedClassName) throws ClassNotFoundException {
-		JavaFileObject file = classes.get(qualifiedClassName);
-		if (file != null) {
-			byte[] bytes = ((JavaFileObjectImpl) file).getByteCode();
-			return defineClass(qualifiedClassName, bytes, 0, bytes.length);
-		}
-		// Workaround for "feature" in Java 6
-		// see http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6434149
-		try {
-			Class<?> c = Class.forName(qualifiedClassName);
-			return c;
-		} catch (ClassNotFoundException nf) {
-			// Ignore and fall through
-			nf.printStackTrace();
-		}
-		return super.findClass(qualifiedClassName);
-	}
+            String returning = method.output() != null ? "\treturn " + getReturning(method.output()) + ";" : "";
+
+            return prototype + "{\n" + command + "\n" + returning + "\n}";
+        }
+
+        @Override
+        public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException {
+            Set<CommandArgumentType<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
 	/**
 	 * Add a class name/JavaFileObject mapping
