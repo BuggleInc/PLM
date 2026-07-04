@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Vector;
 import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
-import org.assertj.swing.util.Arrays;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
@@ -12,7 +11,6 @@ import plm.core.ui.WorldView;
 import plm.universe.World;
 
 public class BatWorld extends World {
-  // Both lists are synchronized. `results[i]` is the resul of `tests[i]`
   public List<BatTest> tests = new Vector<>();
 
   public BatWorld(String funName)
@@ -70,7 +68,7 @@ public class BatWorld extends World {
 
       if (!tests.get(i).equals(other.tests.get(i))) {
         sb.append(other.tests.get(i).getName() + " returned " + other.tests.get(i).getResult() + " while " +
-                  tests.get(i).getResult() + " were expected.\n");
+                  tests.get(i).getResult() + " was expected.\n");
         foundError = true;
       }
     }

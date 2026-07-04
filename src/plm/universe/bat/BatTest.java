@@ -1,6 +1,5 @@
 package plm.universe.bat;
 
-import java.util.function.ObjDoubleConsumer;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
@@ -32,7 +31,7 @@ public class BatTest {
     if (!(o instanceof BatTest))
       return false;
     BatTest other = (BatTest)o;
-    return ValueFormatter.equals(parameters, other.parameters);
+    return ValueFormatter.equals(parameters, other.parameters) && ValueFormatter.equals(result, other.result);
   }
 
   public Object getParameter(int i)
@@ -75,10 +74,9 @@ public class BatTest {
         sb.append(ValueFormatter.format(o, pl));
         sb.append(",");
       }
-      if (parameters.length > 1)
+      if (parameters.length > 0)
         sb.deleteCharAt(sb.length() - 1);
-      sb.append(") = ");
-      sb.append(ValueFormatter.format(result, pl));
+      sb.append(")");
 
       name = sb.toString();
     }
