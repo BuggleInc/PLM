@@ -37,27 +37,28 @@ public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
         }
     }
 
+        /* BEGIN TEMPLATE */
         public void run() {
 		/* BEGIN SOLUTION */
 		while (true) {
 			char c = getIndicationBdr();
 
 			if (c == 'R') { 
-				right(); forward();
+				right(); stepForward();
 			} else if (c == 'L') {
-				left(); forward();
+				left(); stepForward();
 			} else if (c == 'I') {
-				back(); forward(); 
+				back(); stepForward();
 			} else if (c == 'A')
-				forward();
+				stepForward();
 			else if (c == 'B')
-				forward(2);  
+				forward(2);
 			else if (c == 'C')
 				forward(3);
 			else if (c == 'Z')
-				backward();
+				stepBackward();
 			else if (c == 'Y')
-				backward(2);  
+				backward(2);
 			else if (c == 'X')
 				backward(3);
 			else 
@@ -65,4 +66,5 @@ public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 		}		
 		/* END SOLUTION */
 	}
+    /* END TEMPLATE */
 }

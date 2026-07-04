@@ -2,7 +2,7 @@ package lessons.welcome.methods.basics;
 
 public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException("I cannot let you use forward with an argument in this exercise. Use a loop instead.");
 	}
 
@@ -17,11 +17,11 @@ public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 		int i = 0;
 		while (!isOverBaggle()) {
 			i++;
-			forward();
+			stepForward();
 		}
 		pickupBaggle();
 		while (i>0) {
-			backward();
+			stepBackward();
 			i--;
 		}
 		dropBaggle();
@@ -34,7 +34,7 @@ public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 		for (int i=0; i<7; i++) {
 			goAndGet();
 			right();
-			forward();
+			stepForward();
 			left();
 		}
 	} 

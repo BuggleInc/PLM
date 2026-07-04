@@ -1,14 +1,37 @@
 package plm.universe;
 
+import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.Primitive;
 
-import java.awt.*;
-
 public interface EntityPrimitivesBase {
+    @Primitive(405)
+    String getName();
+
     Object getParam(int i);
 
     int getParamCount();
 
     boolean isSelected();
+
+
+    @Primitive(401)
+    default double getParamDouble(int i) {
+        return (Double) getParam(i);
+    }
+
+    @Primitive(402)
+    default int getParamInt(int i) {
+        return (Integer) getParam(i);
+    }
+
+    @Primitive(403)
+    default boolean getParamBoolean(int i) {
+        return (Boolean) getParam(i);
+    }
+
+    @Primitive(404)
+    default String getParamString(int i) {
+        return CommandArgumentType.findTypeAndSerialize(getParam(i));
+    }
 
 }

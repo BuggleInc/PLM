@@ -15,7 +15,7 @@ class ScalaLangtonEntity extends SimpleBuggle {
 			brushDown();
 			brushUp();
 
-			forward();
+			stepForward();
 		} else {
 			left();
 
@@ -23,7 +23,7 @@ class ScalaLangtonEntity extends SimpleBuggle {
 			brushDown();
 			brushUp();
 
-			forward();				
+			stepForward();
 		}
 		/* END SOLUTION */
 	}

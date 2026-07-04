@@ -30,18 +30,18 @@ public class PatternPictureEntity extends SimpleBuggle {
 	void squareA(Color c) {
 		setBrushColor(c);
 
-		forward();
+		stepForward();
 		mark();
 
 		left();
-		forward();
+		stepForward();
 
 		left();
-		forward();
+		stepForward();
 		mark();
 
 		left();
-		forward();
+		stepForward();
 		left();
 	}
 
@@ -49,17 +49,17 @@ public class PatternPictureEntity extends SimpleBuggle {
 		setBrushColor(c);
 		mark();
 
-		forward();
+		stepForward();
 
 		left();
-		forward();
+		stepForward();
 		mark();
 
 		left();
-		forward();
+		stepForward();
 
 		left();
-		forward();
+		stepForward();
 		left();
 	}
 

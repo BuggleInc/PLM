@@ -4,7 +4,7 @@ import plm.core.model.Game;
 
 public class RunFourEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
@@ -19,7 +19,7 @@ public class RunFourEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		int cpt = 0;
 		while (cpt != 4) {
-			forward();
+			stepForward();
 			if (isOverBaggle())
 				cpt++;
 		}

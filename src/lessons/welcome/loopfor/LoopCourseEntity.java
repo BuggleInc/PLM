@@ -6,7 +6,7 @@ import plm.core.model.Game;
 
 public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
@@ -14,7 +14,7 @@ public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
-	public void backward() {
+	public void stepBackward() {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
 	}
 
@@ -25,8 +25,8 @@ public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
 			new Color(255,130,130),new Color(255,110,110),new Color(255,45,45),
 			new Color(255,5,5),Color.magenta};
 	@Override
-	public void forward()  {
-		super.forward();
+	public void stepForward()  {
+		super.stepForward();
 		Color c = getGroundColor();
 		for (int i=0;i<colors.length-1;i++)
 			if (colors[i].equals(c)) {
@@ -48,7 +48,7 @@ public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
 		for (int i = 0; i<10;i++) 
 			for (int side=0;side<4;side++){
 				for (int step=0;step<8;step++)
-					forward();
+					stepForward();
 				left();
 			}
 		/* END SOLUTION */

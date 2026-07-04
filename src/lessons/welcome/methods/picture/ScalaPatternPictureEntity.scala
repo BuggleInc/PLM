@@ -30,18 +30,18 @@ class ScalaPatternPictureEntity extends SimpleBuggle {
 	def squareA(c:Color) {
 		setBrushColor(c);
 
-		forward();
+		stepForward();
 		mark();
 
 		left();
-		forward();
+		stepForward();
 
 		left();
-		forward();
+		stepForward();
 		mark();
 
 		left();
-		forward();
+		stepForward();
 		left();
 	}
 
@@ -49,17 +49,17 @@ class ScalaPatternPictureEntity extends SimpleBuggle {
 		setBrushColor(c);
 		mark();
 
-		forward();
+		stepForward();
 
 		left();
-		forward();
+		stepForward();
 		mark();
 
 		left();
-		forward();
+		stepForward();
 
 		left();
-		forward();
+		stepForward();
 		left();
 	}
 

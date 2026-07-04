@@ -111,36 +111,28 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
     @Primitive(value = 113, name = "forward")
     default void primitiveForward(int nb) throws BuggleWallException {
         if (nb == 1) {
-            forward();
+            stepForward();
         } else {
             forward(nb);
         }
     }
 
     @Primitive(220)
-    default void stepForward() throws BuggleWallException {
-        forward();
-    }
-
-    @Primitive(221)
-    default void stepBackward() throws BuggleWallException {
-        forward();
-    }
-
-    void forward() throws BuggleWallException;
+    void stepForward() throws BuggleWallException;
 
     void forward(int count) throws BuggleWallException;
 
     @Primitive(value = 114, name = "backward")
     default void primitiveBackward(int nb) throws BuggleWallException {
         if (nb == 1) {
-            backward();
+            stepBackward();
         } else {
             backward(nb);
         }
     }
 
-    void backward() throws BuggleWallException;
+    @Primitive(221)
+    void stepBackward() throws BuggleWallException;
 
     void backward(int count) throws BuggleWallException;
 
@@ -186,11 +178,6 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
     @Primitive(140)
     void clearMessage();
-
-    @Primitive(value = 200, name = "getParam")
-    default String getParamString(int i) {
-        return CommandArgumentType.findTypeAndSerialize(getParam(i));
-    }
 
     @Primitive(201)
     @Override

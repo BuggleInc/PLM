@@ -30,7 +30,7 @@ public class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle
 			case 0:
 				if (!isFacingWall())
 				{
-					forward();
+					stepForward();
 				}
 				break;
 			case 1:
@@ -42,9 +42,7 @@ public class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle
 			}
 		}
 		pickupBaggle();
-		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 
 	public int random3() {
 		double n = Math.random();
@@ -56,5 +54,8 @@ public class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle
 			return 2;
 		}
 	}
+	/* END SOLUTION */
+
+	/* END TEMPLATE */
 
 }

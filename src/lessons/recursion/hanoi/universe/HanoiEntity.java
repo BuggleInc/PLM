@@ -65,6 +65,8 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
 		return ((HanoiWorld) world).getSlotSize(slot);
 	}
 	/** Returns the radius of the topmost disk of the given slot */
+
+	@Primitive(307)
 	public int getSlotRadius(int slot) {
 		return ((HanoiWorld) world).getRadius(slot);
 	}
@@ -80,11 +82,6 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
 	/* BINDINGS TRANSLATION: French */
 	public void deplace(int src,int dst) { move(src, dst); }
 	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
-
-	@Primitive(value = 114, name = "getParam")
-	public int getIntParam(int value) {
-		return (int) getParam(value);
-	}
 
 	@Override
 	public void command(String command, BufferedWriter out) {
@@ -108,7 +105,7 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
 				break;
 			case 114:
 				nb = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString(getIntParam(nb)));
+				out.write(Integer.toString(getParamInt(nb)));
 				out.write("\n");
 				break;
 			default:

@@ -6,7 +6,7 @@ import plm.universe.GridWorld
 import plm.universe.bugglequest.BuggleWorldCell
 
 class ScalaPoucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
@@ -44,7 +44,7 @@ class ScalaPoucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 			var count = 0;
 			
 			do {
-				forward();
+				stepForward();
 				if (isOverBaggle())
 					count+=1;
 			} while (! crossing());
@@ -54,7 +54,7 @@ class ScalaPoucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 			else
 				right();
 		}
-		forward();
+		stepForward();
 		/* END SOLUTION */
 	}
 }

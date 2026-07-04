@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class LoopWhileEntity extends SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 
@@ -15,10 +15,12 @@ public class LoopWhileEntity extends SimpleBuggle {
 	}
 
 	@Override
+	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		while (!isFacingWall())
-			forward();
+			stepForward();
 		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 }

@@ -5,9 +5,9 @@ import plm.universe.bugglequest.SimpleBuggle
 import plm.core.model.Game
 
 class ScalaLoopStairsEntity extends SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		for (i <- 1 to i) {
-			forward()
+			stepForward()
 		}
 	}
 
@@ -16,8 +16,8 @@ class ScalaLoopStairsEntity extends SimpleBuggle {
 			Color.orange,  Color.red,  Color.magenta,Color.pink)
 	
 	var inTeerNal_Steep_Count = -3
-	override def forward() {
-		super.forward();
+	override def stepForward() {
+		super.stepForward();
 		if (inTeerNal_Steep_Count<0 || inTeerNal_Steep_Count%2 == 1 || (inTeerNal_Steep_Count/2)>=colors.length) {
 			if (inTeerNal_Steep_Count < 0)
 				setBrushColor(Color.lightGray);
@@ -36,9 +36,9 @@ class ScalaLoopStairsEntity extends SimpleBuggle {
 		forward(3);
 		left();
 		for (i <- 1 to 8) { 
-			forward();
+			stepForward();
 			right();
-			forward();
+			stepForward();
 			left();
 		}
 		right();

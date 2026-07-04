@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
@@ -397,6 +398,8 @@ public class Turtle extends Entity implements TurtlePrimitives {
 	public void addSizeHint(int x1, int y1, int x2, int y2,String txt){
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,txt);
 	}
+
+	@Primitive(310)
 	public void addSizeHint(int x1, int y1, int x2, int y2){
 		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,null);
 	}

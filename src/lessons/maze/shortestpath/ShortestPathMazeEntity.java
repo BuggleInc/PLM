@@ -195,7 +195,7 @@ public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggl
 			else if (bottomValue <= topValue && bottomValue <= rightValue && bottomValue <= leftValue)
 				setDirection(Direction.SOUTH);
 
-			forward();
+			stepForward();
 		}    
 		/* END SOLUTION */
 	}

@@ -21,14 +21,14 @@ class ScalaPictureMono3Entity extends SimpleBuggle {
 		forward(2);
 		mark();
 
-		forward();
+		stepForward();
 		left();
-		forward();
+		stepForward();
 		mark();
 
-		backward();
+		stepBackward();
 		right();
-		forward();
+		stepForward();
 		mark();
 
 		forward(2);

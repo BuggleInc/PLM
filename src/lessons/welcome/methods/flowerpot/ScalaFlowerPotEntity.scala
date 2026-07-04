@@ -13,11 +13,11 @@ class ScalaFlowerPotEntity extends SimpleBuggle {
 	    setBrushColor(c);
 	    brushDown();
 	    forward(2);
-	    backward();
+	    stepBackward();
 	    left();
-	    forward();
+	    stepForward();
 	    backward(2);
-	    forward();
+	    stepForward();
 	    setBrushColor(Color.YELLOW);
 	    brushUp();
 	    right();    
@@ -27,7 +27,7 @@ class ScalaFlowerPotEntity extends SimpleBuggle {
 	    makeFlower(c1);
 	    forward(3);
 	    makeFlower(c2);
-	    backward(5);    
+	    backward(5);
 	}
 	def halfLine(c:Color) {
 	    forward(2);

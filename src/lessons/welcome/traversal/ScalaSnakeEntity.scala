@@ -29,15 +29,15 @@ class ScalaSnakeEntity extends SimpleBuggle {
 		if (isFacingWall()) {
 			if (getDirection() == Direction.EAST) {
 				left();
-				forward();
+				stepForward();
 				left();
 			} else {
 				right();
-				forward();
+				stepForward();
 				right();
 			}
 		} else {
-			forward();
+			stepForward();
 		}
 
 		/* END SOLUTION */

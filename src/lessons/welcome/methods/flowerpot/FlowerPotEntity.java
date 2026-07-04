@@ -8,33 +8,10 @@ public class FlowerPotEntity extends SimpleBuggle {
 	public void run() {
 	    growFlowers();
 	}
-	/* BEGIN SOLUTION */
-	void makeFlower(Color c) {
-	    setBrushColor(c);
-	    brushDown();
-	    forward(2);
-	    backward();
-	    left();
-	    forward();
-	    backward(2);
-	    forward();
-	    setBrushColor(Color.YELLOW);
-	    brushUp();
-	    right();    
-	}
 
-	void line(Color c1, Color c2) {
-	    makeFlower(c1);
-	    forward(3);
-	    makeFlower(c2);
-	    backward(5);    
-	}
-	void halfLine(Color c) {
-	    forward(2);
-	    makeFlower(c);
-	    backward(3);
-	}
+	/* BEGIN TEMPLATE */
 	void growFlowers() {
+		/* BEGIN SOLUTION */
 	    line(Color.RED, Color.CYAN);
 	    
 	    right();    
@@ -47,5 +24,32 @@ public class FlowerPotEntity extends SimpleBuggle {
 	    
 	    line(Color.PINK, Color.GREEN);
 	}
-	/* END SOLUTION */
+
+	void makeFlower(Color c) {
+		setBrushColor(c);
+		brushDown();
+		forward(2);
+		stepBackward();
+		left();
+		stepForward();
+		backward(2);
+		stepForward();
+		setBrushColor(Color.YELLOW);
+		brushUp();
+		right();
+	}
+
+	void line(Color c1, Color c2) {
+		makeFlower(c1);
+		forward(3);
+		makeFlower(c2);
+		backward(5);
+	}
+	void halfLine(Color c) {
+		forward(2);
+		makeFlower(c);
+		backward(3);
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
 }

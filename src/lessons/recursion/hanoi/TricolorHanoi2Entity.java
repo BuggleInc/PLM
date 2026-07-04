@@ -5,9 +5,9 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 public class TricolorHanoi2Entity extends HanoiEntity {
 
 	public void run() {
-		int src = (Integer)getParam(0);
-		int mid = (Integer)getParam(1);
-		int dst = (Integer)getParam(2);
+		int src = getParamInt(0);
+		int mid = getParamInt(1);
+		int dst = getParamInt(2);
 		gather(getSlotSize(src), src, mid, dst);
 	}
 

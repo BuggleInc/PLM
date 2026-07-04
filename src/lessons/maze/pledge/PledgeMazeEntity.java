@@ -32,7 +32,7 @@ public class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 			{
 			case 0: // North runner mode
 				while ( !isFacingWall() )
-					forward();
+					stepForward();
 				
 				right(); // make sure that we have a left wall
 				angleSum--;
@@ -54,7 +54,7 @@ public class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	private void stepHandOnWall(){
 		while ( ! isFacingWall() )
 		{
-			forward();
+			stepForward();
 			left();
 			this.angleSum++;
 		}

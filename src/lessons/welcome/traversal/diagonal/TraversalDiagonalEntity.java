@@ -9,11 +9,11 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
 	public void run() {
 		/* BEGIN SOLUTION */
 		int cpt = 0;
-		writeMessage(cpt);
+		writeMessage(Integer.toString(cpt));
 		while (!endingPosition()) {
 			nextStep();
 			cpt++;
-			writeMessage(cpt);
+			writeMessage(Integer.toString(cpt));
 		}
 	}
 
@@ -44,11 +44,11 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
 	/* END TEMPLATE */
 
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
 	}
 	@Override
-	public void forward()  {
+	public void stepForward()  {
 		if (isInited())
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
 	}
@@ -57,7 +57,7 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
 	@Override
-	public void backward() {
+	public void stepBackward() {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
 }

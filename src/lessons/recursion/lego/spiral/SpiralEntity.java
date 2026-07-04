@@ -17,6 +17,6 @@ public class SpiralEntity extends plm.universe.turtles.Turtle {
 	/* END TEMPLATE */
 
 	public void run() {
-		spiral((Integer)getParam(0),(Integer)getParam(1),(Integer)getParam(2),(Integer)getParam(3));
+		spiral(getParamInt(0),getParamInt(1),getParamInt(2),getParamInt(3));
 	}
 }

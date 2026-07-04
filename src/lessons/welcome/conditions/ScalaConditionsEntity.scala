@@ -6,9 +6,9 @@ class ScalaConditionsEntity extends SimpleBuggle {
 	override def run() { 
 		/* BEGIN SOLUTION */
 		if (isFacingWall())
-			backward();
+			stepBackward();
 		else
-			forward();
+			stepForward();
 		/* END SOLUTION */
 	}
 }

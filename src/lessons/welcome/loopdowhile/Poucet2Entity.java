@@ -2,13 +2,16 @@ package lessons.welcome.loopdowhile;
 
 import java.awt.Color;
 
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.GridWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 
-public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
+@EntityPrimitives(PoucetEntityPrimitives.class)
+public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle implements PoucetEntityPrimitives {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
@@ -17,6 +20,7 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 	
 	// Compute the amount of free ways from the current cell
+	@Override
 	public boolean crossing() {
 		BuggleWorldCell here = (BuggleWorldCell) ((GridWorld) world).getCell(getX(),getY());
 		BuggleWorldCell right = (BuggleWorldCell) ((GridWorld) world).getCell( (getX()+1)% ((GridWorld) world).getWidth() , getY());
@@ -34,8 +38,9 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		
 		return open>2 || (here.hasLeftWall() != right.hasLeftWall()) || (here.hasTopWall() != below.hasTopWall());
 	}
+	@Override
 	public boolean exitReached() {
-		return getGroundColor().equals(Color.orange);
+		return getGroundColor()== Color.orange;
 	}	
 	/* BINDINGS TRANSLATION */
 	boolean sortieTrouvee() { return exitReached(); }
@@ -51,7 +56,7 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 			int seen = 0;
 			
 			do {
-				forward();
+				stepForward();
 				if (isOverBaggle())
 					seen++;
 			} while (! crossing());
@@ -61,7 +66,7 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 			else
 				right();
 		}
-		forward();
+		stepForward();
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

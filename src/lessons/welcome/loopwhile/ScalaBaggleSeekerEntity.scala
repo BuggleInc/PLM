@@ -4,7 +4,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 import plm.core.model.Game
 
 class ScalaBaggleSeekerEntity extends SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 
@@ -15,7 +15,7 @@ class ScalaBaggleSeekerEntity extends SimpleBuggle {
 	override def run() { 
 		/* BEGIN SOLUTION */
 		while (!isOverBaggle()) {
-			forward();
+			stepForward();
 		}
 		/* END SOLUTION */
 	}

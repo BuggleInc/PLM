@@ -14,9 +14,9 @@ public class InstructionsEntity extends SimpleBuggle {
 			right();
 		}
 		brushUp();
-		forward();
+		stepForward();
 		right();
-		forward();
+		stepForward();
 		left();
 		/* END SOLUTION */
 		/* END TEMPLATE */

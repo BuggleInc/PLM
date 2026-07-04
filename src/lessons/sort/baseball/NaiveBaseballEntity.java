@@ -24,7 +24,7 @@ public class NaiveBaseballEntity extends BaseballEntity {
 //			System.out.println("move "+baseNext+","+posNext);
 			move(baseNext,posNext);
 		}
-		((BaseballWorld) world).assertSorted("naive sort");
+		assertSorted("naive sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

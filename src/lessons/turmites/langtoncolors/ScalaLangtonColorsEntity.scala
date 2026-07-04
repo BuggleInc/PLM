@@ -24,7 +24,7 @@ class ScalaLangtonColorsEntity extends SimpleBuggle {
 			  brushDown();
 			  brushUp();
 
-			  forward();
+			  stepForward();
 
 			  return;
 			}

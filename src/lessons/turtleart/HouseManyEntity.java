@@ -34,7 +34,7 @@ public class HouseManyEntity extends Turtle {
 	void line() {
 	     for (int cpt=0;cpt<4;cpt++) {
 	        house(30);
-	        leveCrayon();
+	        penUp();
 	        right(90);
 	        forward(50);
 	        left(90);

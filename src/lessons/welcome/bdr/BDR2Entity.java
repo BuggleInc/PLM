@@ -1,21 +1,18 @@
 package lessons.welcome.bdr;
 
+/* BEGIN IMPORT */
 import java.util.Stack;
+/* END IMPORT */
 
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class BDR2Entity extends SimpleBuggle {
-	public char getIndication() { 
-		if (isOverMessage()) { 
-			return readMessage().charAt(0); 
-		} else { 
-			return ' '; 
-		} 
-	}
 
 	/* This is not really part of the solution to this exercise, but more an exercise checker 
 	 * (because we want all buggle to follow the same relative trajectory).
 	 * It is intended to help the process of board creation. */
+
+	/* BEGIN DEPENDENCY */
 	boolean checking = false;
 	Stack<Character> todoList = new Stack<Character>();
 	public void addTODO(String s) {
@@ -55,57 +52,64 @@ public class BDR2Entity extends SimpleBuggle {
 		}
 		return func+"("+getX()+","+getY()+")";
 	}
+	/* END DEPENDENCY */
 
 	public void run() { 
 		/* BEGIN HIDDEN (don't put that is student's code) */ 
-		addTODO((String) world.getParameter(0));			
+		addTODO(getParamString(0));
 		/* END HIDDEN */
 		
+		solve();
+		
+		/* BEGIN HIDDEN (don't put that is student's code) */
+		if (checking && todoList.size() != 0) 
+			complain(getName()+"I'm done, but I was supposed to do "+fmt(todoList.pop())+";");
+		/* END HIDDEN */
+	}
+
+	/* BEGIN TEMPLATE */
+	public void solve() {
 		/* BEGIN SOLUTION */
 		boolean moreMusic = true;
 
 		while (moreMusic) {
-			char read = getIndication();
-			if (checking) {
-				char todo = ' ';
-				if (todoList.size() == 0) { 
-					if (read != ' ')
-						complain(name+" reads "+fmt(read)+", but it's supposed to be done.");
-				} else
-					todo = todoList.pop();
-
-				if (todo != read) {
-					complain(name+" reads "+fmt(read)+", but it was supposed to do "+fmt(todo)+". Invalid TODO.");			
-				}
-			}
+			char read = getIndicationBdr();
+//			if (checking) {
+//				char todo = ' ';
+//				if (todoList.size() == 0) {
+//					if (read != ' ')
+//						complain(name+" reads "+fmt(read)+", but it's supposed to be done.");
+//				} else
+//					todo = todoList.pop();
+//
+//				if (todo != read) {
+//					complain(name+" reads "+fmt(read)+", but it was supposed to do "+fmt(todo)+". Invalid TODO.");
+//				}
+//			}
 
 			switch (read) {
-			case 'R': right(); forward(); break;
-			case 'L': left();  forward(); break;
-			case 'I': back();  forward(); break;
+				case 'R': right(); stepForward(); break;
+				case 'L': left();  stepForward(); break;
+				case 'I': back();  stepForward(); break;
 
-			case 'A': forward(1); break;
-			case 'B': forward(2); break;
-			case 'C': forward(3); break;
-			case 'D': forward(4); break;
-			case 'E': forward(5); break;
-			case 'F': forward(6); break;
+				case 'A': forward(1); break;
+				case 'B': forward(2); break;
+				case 'C': forward(3); break;
+				case 'D': forward(4); break;
+				case 'E': forward(5); break;
+				case 'F': forward(6); break;
 
-			case 'Z': backward(1); break;
-			case 'Y': backward(2); break;
-			case 'X': backward(3); break;
-			case 'W': backward(4); break;
-			case 'V': backward(5); break;
-			case 'U': backward(6); break;
+				case 'Z': backward(1); break;
+				case 'Y': backward(2); break;
+				case 'X': backward(3); break;
+				case 'W': backward(4); break;
+				case 'V': backward(5); break;
+				case 'U': backward(6); break;
 
-			default: moreMusic = false;
+				default: moreMusic = false;
 			}
 		}
 		/* END SOLUTION */
-		
-		/* BEGIN HIDDEN (don't put that is student's code) */
-		if (checking && todoList.size() != 0) 
-			complain(name+"I'm done, but I was supposed to do "+fmt(todoList.pop())+";");
-		/* END HIDDEN */
 	}
+	/* END TEMPLATE */
 }

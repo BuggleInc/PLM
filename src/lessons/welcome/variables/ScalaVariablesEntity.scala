@@ -3,7 +3,7 @@ package lessons.welcome.variables;
 import plm.core.model.Game
 
 class ScalaVariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 
@@ -17,11 +17,11 @@ class ScalaVariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 		var stepper = 0;
 		while (!isOverBaggle()) {
 			stepper += 1
-			forward()
+			stepForward()
 		}
 		pickupBaggle();
 		while (stepper>0) {
-			backward()
+			stepBackward()
 			stepper -= 1
 		}
 		dropBaggle();

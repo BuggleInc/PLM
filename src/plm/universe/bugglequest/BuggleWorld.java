@@ -311,7 +311,7 @@ public class BuggleWorld extends GridWorld {
 			for (int y = 0; y < getHeight(); y++) {
 				BuggleWorldCell cell = (BuggleWorldCell) getCell(x, y);
 
-				if ((!cell.getColor().equals(Color.white)) || cell.hasBaggle() || 
+				if ((cell.getColor()!= Color.white) || cell.hasBaggle() ||
 						cell.hasLeftWall() || cell.hasTopWall() || cell.hasContent()
 						) {
 					

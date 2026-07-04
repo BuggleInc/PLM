@@ -14,7 +14,7 @@ class ScalaLoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def run() {
 		/* BEGIN SOLUTION */
 		do {
-			forward();
+			stepForward();
 		} while (!isGroundWhite());
 		/* END SOLUTION */
 	}

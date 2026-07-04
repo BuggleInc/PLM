@@ -1,7 +1,5 @@
 package lessons.welcome.methods.returning;
 
-import plm.core.model.Game;
-
 
 public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
@@ -10,7 +8,7 @@ public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggl
 			if (haveBaggle()) 
 				return;
 			right();
-			forward();
+			stepForward();
 			left();
 		}
 	}
@@ -21,7 +19,7 @@ public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggl
 		for (int i=0; i<6; i++) {
 			if (isOverBaggle()) 
 				res = true;
-			forward();
+			stepForward();
 		}
 		backward(6);
 		return res;

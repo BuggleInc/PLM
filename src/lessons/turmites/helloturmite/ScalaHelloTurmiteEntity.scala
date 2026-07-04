@@ -38,10 +38,10 @@ class ScalaHelloTurmiteEntity extends SimpleBuggle {
 
 		rule(state)(currentColor)(NEXT_MOVE) match {
 		  case STOP   => /* nothing */
-		  case NOTURN => /* no turn */ forward(); 
-		  case LEFT   => left();   	   forward(); 
-		  case RIGHT  => right();      forward(); 
-		  case BACK   => back();       forward(); 
+		  case NOTURN => /* no turn */ stepForward();
+		  case LEFT   => left();   	   stepForward();
+		  case RIGHT  => right();      stepForward();
+		  case BACK   => back();       stepForward();
 		  case _      => System.out.println("Unknown turn command associated to i="+currentColor+": "+rule(state)(currentColor)(NEXT_MOVE));
 		}
 

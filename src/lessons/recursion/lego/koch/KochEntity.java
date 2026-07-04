@@ -34,7 +34,7 @@ public class KochEntity extends Turtle {
 	/* END TEMPLATE */
 	
 	public void run() {
-		snowFlake((Integer)getParam(0),(Double)getParam(1));
+		snowFlake(getParamInt(0),getParamDouble(1));
 	}
 	
 	public void drawHint() {

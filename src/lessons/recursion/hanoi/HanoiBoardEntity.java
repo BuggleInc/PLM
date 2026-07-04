@@ -17,7 +17,7 @@ public class HanoiBoardEntity extends HanoiEntity {
 			switch(num){
 			case 114:
 				nb = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString(getIntParam(nb)));
+				out.write(Integer.toString(getParamInt(nb)));
 				out.write("\n");
 				break;
 			default:
@@ -31,16 +31,16 @@ public class HanoiBoardEntity extends HanoiEntity {
 	}
 
 	public void run() {
-		solve((Integer)getParam(0),(Integer) getParam(1),(Integer) getParam(2));
-	}
-
-	public void solve(int src, int other, int dst) {
-		hanoi(getSlotSize(src), src, other, dst);
+		solve(getParamInt(1),getParamInt(1),getParamInt(2));
 	}
 
 	/* BEGIN TEMPLATE */
-	public void hanoi(int height, int src, int other, int dst) {
+	public void solve(int src, int other, int dst) {
 		/* BEGIN SOLUTION */
+		hanoi(getSlotSize(src), src, other, dst);
+	}
+
+	public void hanoi(int height, int src, int other, int dst) {
 		if (height != 0) {
 			hanoi(height-1, src, dst, other);
 			move(src,dst);

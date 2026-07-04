@@ -314,7 +314,7 @@ public class BaseballWorldView extends WorldView {
 	/** Returns the color corresponding to colorIndex */
 	private Color obtainColor(int colorIndex) {
 		Color[] colors = {
-				Color.WHITE, Color.BLUE, new Color(255,0,255), //Color.YELLOW, 
+				Color.WHITE, Color.BLUE, new Color(255,0,255), //Color.YELLOW,
 				new Color(255,204,0), /* gold */
 				new Color(158,253,56), /* French lime */
 				new Color(255,56,0), /* Coquelicot */ 

@@ -14,15 +14,15 @@ class ScalaFlowerCaseEntity extends SimpleBuggle {
 		setBrushColor(c);
 		brushDown();
 		forward(2);
-		backward();
+		stepBackward();
 		left();
-		forward();
+		stepForward();
 		backward(2);
-		forward();
+		stepForward();
 		setBrushColor(Color.YELLOW);
 		brushUp();
 		right();  
-		backward();
+		stepBackward();
 	}
 
 	def line(colors:Array[Color], returnBack:Boolean) {
@@ -35,7 +35,7 @@ class ScalaFlowerCaseEntity extends SimpleBuggle {
 		}
 
 		if (returnBack)
-			backward(4*(colors.length-1));    
+			backward(4*(colors.length-1));
 	}
 	def RLforward(steps: Int) {
 		right();
@@ -57,7 +57,7 @@ class ScalaFlowerCaseEntity extends SimpleBuggle {
 		line(Array(Color.ORANGE,Color.BLUE,Color.ORANGE),false);        
 
 		LRforward(2);
-		backward(2);      
+		backward(2);
 
 		line(Array(Color.RED, Color.CYAN),true);        
 		RLforward(4);

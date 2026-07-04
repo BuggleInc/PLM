@@ -29,22 +29,22 @@ public class Array1Entity extends plm.universe.bugglequest.SimpleBuggle {
 		/* read the colors */
 		for (int i=0;i<getWorldHeight();i++) {
 			colors[i]=getGroundColor();
-			forward();
+			stepForward();
 		}
 
 		/* duplicate the pattern */
 		for (int i=1; i<getWorldWidth();i++) {
 			left();
-			forward();
+			stepForward();
 			right();
-			forward();
+			stepForward();
 			makeLine(colors);
 		}
 	}
 	void makeLine(Color[] colors) {
 		for (int i=0;i<getWorldWidth();i++) {
 			mark(colors[i]);
-			forward();
+			stepForward();
 		}
 	}
 	void mark(Color c){

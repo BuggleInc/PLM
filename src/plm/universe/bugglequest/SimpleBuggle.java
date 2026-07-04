@@ -39,9 +39,9 @@ public class SimpleBuggle extends AbstractBuggle  {
 	
 	/* Raise a window error when an exception is encountered */
 	@Override
-	public void forward()  {
+	public void stepForward()  {
 		try { 
-			super.forward(); 
+			super.stepForward();
 		} catch (BuggleWallException e) {
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -52,7 +52,7 @@ public class SimpleBuggle extends AbstractBuggle  {
 	@Override
 	public void forward(int count)  {
 		try { 
-			super.forward(count); 
+			super.forward(count);
 		} catch (BuggleWallException e) { 
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -61,9 +61,9 @@ public class SimpleBuggle extends AbstractBuggle  {
 	}
 
 	@Override
-	public void backward()  {
+	public void stepBackward()  {
 		try { 
-			super.backward(); 
+			super.stepBackward();
 		} catch (BuggleWallException e) {
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -74,7 +74,7 @@ public class SimpleBuggle extends AbstractBuggle  {
 	@Override
 	public void backward(int count)  {
 		try { 
-			super.backward(count); 
+			super.backward(count);
 		} catch (BuggleWallException e) {
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -148,16 +148,16 @@ public class SimpleBuggle extends AbstractBuggle  {
 	}
 	
 	/* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
-	public void avance()          { forward(); }
+	public void avance()          { stepForward(); }
 	public void avance(int steps) { forward(steps); }
-	public void recule()          { backward(); }
+	public void recule()          { stepBackward(); }
 	public void recule(int steps) { backward(steps); }
 	public void prendBiscuit()    { pickupBaggle(); }
 	public void poseBiscuit()     { dropBaggle(); }
 	/* BINDINGS TRANSLATION: Brazilian Portuguese */
-	public void avançar()          { forward(); }
+	public void avançar()          { stepForward(); }
 	public void avançar(int steps) { forward(steps); }
-	public void recuar()          { backward(); }
+	public void recuar()          { stepBackward(); }
 	public void recuar(int steps) { backward(steps); }
 	public void pegarBaggle()    { pickupBaggle(); }
 	public void soltarBaggle()     { dropBaggle(); }

@@ -6,7 +6,7 @@ import plm.core.model.Game;
 
 public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
@@ -14,7 +14,7 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
-	public void backward() {
+	public void stepBackward() {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
 	}
 
@@ -30,11 +30,11 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
 			Color.red,
 	};
 	@Override
-	public void forward()  {
+	public void stepForward()  {
 		if (!haveSeenError())
-			super.forward();
+			super.stepForward();
 		Color c = getGroundColor();
-		if (c.equals(Color.blue)) {
+		if (c== Color.blue) {
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("You fall into water."), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
@@ -63,19 +63,19 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
 		for (int i = 0; i<7;i++) 
 			for (int side=0;side<4;side++){
 				for (int step=0;step<4;step++)
-					forward();
+					stepForward();
 				left();
 				for (int step=0;step<2;step++)
-					forward();
+					stepForward();
 				right();
 				for (int step=0;step<4;step++)
-					forward();
+					stepForward();
 				right();
-				forward();
-				forward();
+				stepForward();
+				stepForward();
 				left();
 				for (int step=0;step<4;step++)
-					forward();
+					stepForward();
 				left();
 			}
 		/* END SOLUTION */

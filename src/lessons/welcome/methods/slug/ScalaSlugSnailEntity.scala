@@ -16,7 +16,7 @@ class ScalaSlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 		while (! isOverBaggle()) {
 			if (isFacingTrail(c)) {
 				brushDown();
-				forward();
+				stepForward();
 				brushUp();
 			} else {
 				left();
@@ -33,9 +33,9 @@ class ScalaSlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 		if (isFacingWall())
 			return false;
 
-		forward();
+		stepForward();
 		val res = (getGroundColor() == c);
-		backward();
+		stepBackward();
 		return res;
 	}		
 	/* END HIDDEN */

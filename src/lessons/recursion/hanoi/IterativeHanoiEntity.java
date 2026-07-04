@@ -5,7 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 public class IterativeHanoiEntity extends HanoiEntity {
 	
 	public void run() {
-		hanoi((Integer)getParam(0),(Boolean) getParam(1));
+		hanoi(getParamInt(0),getParamBoolean(1));
 	}
 
 	/* BEGIN TEMPLATE */
