@@ -23,6 +23,8 @@ jobs:
         java-version: '17'
         distribution: 'zulu'
         cache: maven
+    - name: Download dependencies
+      run: mvn -B dependency:go-offline
     - name: Build the self-contained jar with Maven
       run: mvn -B -DskipTests package
     - name: Upload jar
@@ -56,6 +58,8 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Download dependencies
+        run: mvn -B dependency:go-offline
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -89,6 +93,8 @@ jobs:
     - name: Install gettext (Windows)
       if: runner.os == 'Windows'
       run: choco install gettext --yes --no-progress
+    - name: Download dependencies
+      run: mvn -B dependency:go-offline
     # Linux runners are headless -> run the Swing tests under a virtual display.
     # Windows and macOS runners have a real display, so run them directly.
     - name: Run tests (Linux, under xvfb)

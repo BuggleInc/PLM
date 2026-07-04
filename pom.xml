@@ -464,6 +464,7 @@
           </includes>
           <argLine>-Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
           <!-- Run each test class in its own JVM. PLM is full of singletons
                (Game and its Swing listeners): the GUI smoke test registers a
                MainFrame/ExerciseView as a Game listener that otherwise leaks
