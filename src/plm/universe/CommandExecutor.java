@@ -17,7 +17,7 @@ public final class CommandExecutor {
 
     private static final Map<Class<? extends Entity>, Map<Integer, PrimitiveMethod>> getMinimalPrimitiveForEntity_Cache = new HashMap<>();
 
-    public static void command(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException {
+    public synchronized static void command(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException {
         if (command.contains("AddressSanitizer")) {
             if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))
                 System.err.println(command);
@@ -56,8 +56,8 @@ public final class CommandExecutor {
                 String serialize = returnType.serialize(returnValue);
                 out.write(serialize);
                 out.write("\n");
+                out.flush();
             }
-            out.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
