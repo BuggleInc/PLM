@@ -1,0 +1,27 @@
+package lessons.welcome.bat.bool2;
+
+import plm.universe.bat.BatEntity;
+import plm.universe.bat.BatTest;
+
+public class WithoutDoublesEntity extends BatEntity {
+
+  public void run(BatTest t)
+  {
+    t.setResult(withoutDoubles((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Boolean)t.getParameter(2)));
+  }
+
+  /* BEGIN TEMPLATE */
+  int withoutDoubles(int die1, int die2, boolean noDoubles)
+  {
+    /* BEGIN SOLUTION */
+    if (noDoubles && (die1 == die2)) {
+      if (die1 == 6)
+        return 1 + die2;
+      else
+        return die1 + 1 + die2;
+    } else
+      return die1 + die2;
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
+}

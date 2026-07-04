@@ -1,0 +1,24 @@
+package lessons.recursion.cons
+
+import plm.universe.bat.BatEntity
+import plm.universe.bat.BatTest
+import lessons.recursion.cons.universe.ConsEntity
+
+class ScalaReverseEntity extends ConsEntity {
+
+	override def run(t: BatTest) {
+		t.setResult( reverse(t.getParameter(0).asInstanceOf[Array[Int]].toList) );
+	}
+
+	/* BEGIN TEMPLATE */
+	def reverse(l:List[Int]): List[Int] = {
+	/* BEGIN SOLUTION */
+  def lambda(l:List[Int], tmp:List[Int]):List[Int] = {     
+	if (l == Nil) return tmp
+     return lambda(l.tail, l.head::tmp)
+  }
+  lambda(l, Nil)
+	/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+}

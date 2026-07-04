@@ -1,0 +1,21 @@
+package lessons.welcome.bat.bool2;
+
+import plm.universe.bat.BatEntity;
+import plm.universe.bat.BatTest;
+
+public class AnswerCellEntity extends BatEntity {
+
+  public void run(BatTest t)
+  {
+    t.setResult(answerCell((Boolean)t.getParameter(0), (Boolean)t.getParameter(1), (Boolean)t.getParameter(2)));
+  }
+
+  /* BEGIN TEMPLATE */
+  boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep)
+  {
+    /* BEGIN SOLUTION */
+    return (!isAsleep) && !(isMorning && !isMom);
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
+}

@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
-
+import plm.core.model.Game;
 import plm.core.ui.WorldView;
 import plm.universe.World;
 
@@ -35,36 +35,44 @@ public class BatWorldView extends WorldView {
 
 		List<BatTest> tests = ((BatWorld) world).getTests();
 		boolean foundError=false;
-		for (int i=0;i<tests.size();i++) {
-			BatTest currTest = tests.get(i);
-			if (!currTest.isVisible() && foundError) 
-				break;
+                BatWorld answerWorld = (BatWorld)Game.getInstance().getAnswerOfSelectedWorld();
+                if (answerWorld == null)
+                  return; // Play safe when the exercise is not completely setup
 
-			if (currTest.isObjective()) {
-				if (currTest.isVisible()) 
-					g2.setColor(Color.black);
-				else 
-					g2.setColor(Color.white);
-			} else {
-				if (currTest.isAnswered()) {
+                for (int i = 0; i < tests.size(); i++) {
+                  BatTest currTest = tests.get(i);
+                  Object expected  = answerWorld.tests.get(i).result;
+                  Object actual    = currTest.result;
+                  boolean answered = actual != null;
+                  boolean correct  = ValueFormatter.equals(actual, expected);
 
-					if (currTest.isCorrect()) 
-						g2.setColor(Color.blue);
-					else { 
-						g2.setColor(Color.red);
-						foundError = true;
-					}
-				} else {
-					if (currTest.isVisible()) 
-						g2.setColor(Color.black);
-					else 
-						g2.setColor(Color.white);						
-				}
-			}
-			g2.drawString(currTest.getName()+"="+currTest.getResult()
-					+(currTest.isAnswered() && !currTest.isCorrect() ?" (expected: "+currTest.stringParameter(currTest.expected)+")":"")
-					, 0, (i+1)*20);
-		}
+                  if (!currTest.isVisible() && foundError)
+                    break;
 
-	}
+                  if (world.isAnswerWorld()) {
+                    if (currTest.isVisible())
+                      g2.setColor(Color.black);
+                    else
+                      g2.setColor(Color.white);
+                  } else {
+                    if (answered) {
+                      if (correct)
+                        g2.setColor(Color.blue);
+                      else {
+                        g2.setColor(Color.red);
+                        foundError = true;
+                      }
+                    } else {
+                      if (currTest.isVisible())
+                        g2.setColor(Color.black);
+                      else
+                        g2.setColor(Color.white);
+                    }
+                  }
+                  g2.drawString(
+                      currTest.getName() + "=" + actual +
+                          (answered && !correct ? " (expected: " + currTest.stringParameter(expected) + ")" : ""),
+                      0, (i + 1) * 20);
+                }
+        }
 }

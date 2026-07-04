@@ -1,0 +1,27 @@
+package lessons.bat.string1
+
+import plm.universe.bat.BatEntity
+import plm.universe.bat.BatTest
+
+class ScalaLast2Entity extends BatEntity {
+
+	override def run(t: BatTest) {
+		t.setResult( last2(t.getParameter(0).asInstanceOf[String]) );
+	}
+
+	/* BEGIN TEMPLATE */
+	def last2(str:String):Int = {
+  	/* BEGIN SOLUTION */
+    val l = str.length
+    if (l < 2)
+      return 0
+    val end = str.substring(l-2,l)
+    var count = 0
+    for (i <- 0 to str.length-3)
+      if (str.substring(i,i+2) == end)
+        count += 1
+    return count
+  	/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+}

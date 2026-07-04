@@ -1,0 +1,24 @@
+package lessons.welcome.bat.bool2;
+
+import plm.universe.bat.BatEntity;
+import plm.universe.bat.BatTest;
+
+public class FizzBuzzEntity extends BatEntity {
+
+  public void run(BatTest t) { t.setResult(fizzBuzz((Integer)t.getParameter(0))); }
+
+  /* BEGIN TEMPLATE */
+  String fizzBuzz(int a)
+  {
+    /* BEGIN SOLUTION */
+    if (a % 5 == 0 && a % 3 == 0)
+      return "Fizz Buzz";
+    else if (a % 5 == 0)
+      return "Buzz";
+    else if (a % 3 == 0)
+      return "Fizz";
+    return "" + a;
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
+}

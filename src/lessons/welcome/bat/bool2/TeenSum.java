@@ -1,9 +1,9 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class TeenSum extends BatExercise {
@@ -28,36 +28,6 @@ public class TeenSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 16) ;
 		myWorld.addTest(INVISIBLE, 6, 7) ;
 
-		templatePython("teenSum", new String[]{"Int","Int"},
-				"def teenSum(a, b):\n",
-				"	if ((a >= 13 and a <= 19) or (b >= 13 and b <= 19)):\n"+
-				"		return 19\n"+
-				"	else:\n"+
-				"		return a+b\n");
-		templateScala("teenSum", new String[]{"Int","Int"},
-				"def teenSum(a:Int, b:Int):Int = {\n",
-				"	if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19))\n"+
-				"		return 19\n"+
-				"	else\n"+
-				"		return a+b\n"+
-				"}");
-		setup(myWorld);
-	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( teenSum((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	int teenSum(int a, int b) {
-		/* BEGIN SOLUTION */
-		if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19))
-			return 19;
-		else
-			return a+b;
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+                setup(myWorld);
+        }
 }

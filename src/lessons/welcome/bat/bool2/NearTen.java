@@ -1,9 +1,9 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bat.bool2;
+
 import plm.core.model.lesson.Lesson;
 import plm.universe.bat.BatExercise;
-import plm.universe.bat.BatTest;
 import plm.universe.bat.BatWorld;
 
 public class NearTen extends BatExercise {
@@ -26,27 +26,6 @@ public class NearTen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3) ;
 		myWorld.addTest(INVISIBLE, 1) ;
 
-		templatePython("nearTen", new String[]{"Int"},
-				"def nearTen(num):\n",
-				"  return (num % 10) <= 2 or (num % 10) >= 8\n");
-		templateScala("nearTen", new String[]{"Int"}, 
-				"def nearTen(num:Int):Boolean = {\n",
-				"  return (num % 10) <= 2 || (num % 10) >= 8\n"+
-				"}");
-		setup(myWorld);
-	}
-
-	public void run(BatTest t) {
-		/* BEGIN SKEL */
-		t.setResult( nearTen((Integer)t.getParameter(0)) );
-		/* END SKEL */
-	}
-
-	/* BEGIN TEMPLATE */
-	boolean nearTen(int num) {
-		/* BEGIN SOLUTION */
-		return (num % 10) <= 2 || (num % 10) >= 8; 
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+                setup(myWorld);
+        }
 }
