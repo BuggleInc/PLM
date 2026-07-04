@@ -461,6 +461,7 @@
             <include>**/git/GitUtilsTest.java</include>
             <include>**/simple/test/JavaSimpleExerciseTest.java</include>
             <include>**/gui/MainFrameSmokeTest.java</include>
+            <include>**/universe/bat/ValueFormatterTest.java</include>
           </includes>
           <argLine>-Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
