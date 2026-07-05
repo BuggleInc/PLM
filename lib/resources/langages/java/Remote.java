@@ -1,5 +1,6 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.Scanner;
 
 public abstract class Remote {
@@ -47,10 +48,10 @@ public abstract class Remote {
     }
 
     public static void sendCommand(String format, Object... args) {
-        String command = String.format(format, args);
+      String command = String.format(Locale.ENGLISH, format, args);
 
-        System.err.println(command);
-        System.err.flush();
+      System.err.println(command);
+      System.err.flush();
     }
 
     /* BEGIN UTILS */

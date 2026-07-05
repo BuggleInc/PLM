@@ -3,9 +3,8 @@ package plm.universe.turtles;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
-
+import java.util.Locale;
 import plm.core.model.Game;
-
 
 public class Line implements Shape {
 	public double x1, y1,  x2, y2;
@@ -129,6 +128,7 @@ public class Line implements Shape {
 			else
 				slope = "slope="+ ((y2-y1) / (x2-x1));
 		}
-		return String.format("Line (x%.3f y%.3f / x%.3f y%.3f / %s) %s", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color),slope);
-	}
+                return String.format(Locale.ENGLISH, "Line (x%.3f y%.3f / x%.3f y%.3f / %s) %s", x1, y1, x2, y2, plm.core.utils.ColorMapper.color2name(color),
+                                     slope);
+        }
 }
