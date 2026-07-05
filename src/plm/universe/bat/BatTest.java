@@ -34,27 +34,7 @@ public class BatTest {
     return ValueFormatter.equals(parameters, other.parameters) && ValueFormatter.equals(result, other.result);
   }
 
-  public Object getParameter(int i)
-  {
-    if (parameters[i] != null && parameters[i].getClass().isArray()) {
-      if (parameters[i].getClass().getComponentType().equals(Integer.TYPE)) {
-        int[] orig = (int[])parameters[i];
-        int[] res  = new int[orig.length];
-        for (int cpt = 0; cpt < orig.length; cpt++)
-          res[cpt] = orig[cpt];
-        return res;
-      } else if (parameters[i].getClass().getComponentType().equals(Integer.class)) {
-        Integer[] orig = (Integer[])parameters[i];
-        Integer[] res  = new Integer[orig.length];
-        for (int cpt = 0; cpt < orig.length; cpt++)
-          res[cpt] = orig[cpt];
-        return res;
-      } else {
-        throw new RuntimeException("Unhandled internal type (only Array<int> and Array<Integer> are handled so far)");
-      }
-    }
-    return parameters[i];
-  }
+  public Object getParameter(int i) { return ValueFormatter.normalize(parameters[i]); }
   Object getResult() { return result; }
   public void setResult(Object res) { result = res; }
 
