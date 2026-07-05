@@ -31,7 +31,6 @@ public class LangJava extends JVMCompiledLang {
     /* Language detection logic */
     private static String brokenLanguageMessage;
     private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-    public Map<String, File> jarFile = new TreeMap<>(); /* list of existing entity classes */
     File tempFolder = new File(System.getProperty("java.io.tmpdir"), "plm_java_toremove");
 
     public LangJava() {
@@ -79,7 +78,7 @@ public class LangJava extends JVMCompiledLang {
 
         StringBuilder section = new StringBuilder();
 
-        for(int i = 0; i < code.length(); i++) {
+        for (int i = 0; i < code.length(); i++) {
             if (!code.startsWith("/* BEGIN DEPENDENCY */", i)) continue;
 
             int begin = i + "/* BEGIN DEPENDENCY */".length();
@@ -96,7 +95,7 @@ public class LangJava extends JVMCompiledLang {
 
         StringBuilder section = new StringBuilder();
 
-        for(int i = 0; i < code.length(); i++) {
+        for (int i = 0; i < code.length(); i++) {
             if (!code.startsWith("/* BEGIN IMPORT */", i)) continue;
 
             int begin = i + "/* BEGIN IMPORT */".length();
@@ -112,10 +111,10 @@ public class LangJava extends JVMCompiledLang {
     private static String getRemote(String code) {
         String remote;
 
-        if(code.contains("Langton") || code.contains("Turmite")) {
+        if (code.contains("Langton") || code.contains("Turmite")) {
             return null;
         }
-        if(code.contains(".bat.")){
+        if (code.contains(".bat.")) {
             return null;
         }
         if (code.contains("Buggle")) {
@@ -205,7 +204,7 @@ public class LangJava extends JVMCompiledLang {
 
             List<String> classFiles = allFiles.stream().map(s -> {
                 String javaPath = s.toPath().toString();
-                return javaPath.substring(0, javaPath.lastIndexOf('.'))+".class";
+                return javaPath.substring(0, javaPath.lastIndexOf('.')) + ".class";
             }).filter(s -> s.endsWith(".class")).toList();
             classFiles = classFiles.stream().map(s -> s.substring(root.toPath().toString().length() + 1)).toList();
 
@@ -313,9 +312,9 @@ public class LangJava extends JVMCompiledLang {
 
                 runtimePatterns.put("\\$run", runFunction);
                 runtimePatterns.put("\\$dependency", dependency);
-                runtimePatterns.put("\\$imports",(
+                runtimePatterns.put("\\$imports", (
                         "import static " + packageNameCache + ".Remote.*;\n" +
-                                "import static " + packageNameCache + "." + remote + ".*;\n"+imports).replace('\n', ' '));
+                                "import static " + packageNameCache + "." + remote + ".*;\n" + imports).replace('\n', ' '));
 
                 String template = getCorrectedTemplate(correction);
                 sf.setTemplate(template);
@@ -361,7 +360,7 @@ public class LangJava extends JVMCompiledLang {
                     File jarFile = new File(workspace, "Code.jar");
                     createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, entityFile, mainRemote, entityRemote);
 
-                    this.jarFile.put(key, jarFile);
+                    sf.meta.put("JAVA", jarFile.toPath().toString());
 
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -395,9 +394,10 @@ public class LangJava extends JVMCompiledLang {
         SourceFile source = sourceFile.get(0);
 
         for (Entity old : olds) {
-            String key = className(source.getName());
-            File file = jarFile.get(key);
-            if(file != null) old.setScript(this, file.toPath().toString());
+            String path = source.meta.get("JAVA");
+            if (path != null) {
+                old.setScript(this, path);
+            }
         }
 
         return new ArrayList<>(olds);
@@ -458,7 +458,7 @@ public class LangJava extends JVMCompiledLang {
                     String str = "";
                     try {
                         while ((str = reader.readLine()) != null) {
-                            System.out.println("EXECUTING COMMAND: "+str);
+                            System.out.println("EXECUTING COMMAND: " + str);
                             CommandExecutor.command(ent, str, bwriter);
                             System.out.println("COMMAND EXECUTED");
                         }
@@ -527,32 +527,32 @@ public class LangJava extends JVMCompiledLang {
             }
             if (type == CommandArgumentType.COLOR) {
                 return "public static class Color {\n" +
-                        "\tstatic final int white = "+ ColorMapper.color2int(Color.white) +";\n" +
-                        "\tstatic final int WHITE = "+ColorMapper.color2int(Color.WHITE)+";\n" +
-                        "\tstatic final int black = "+ColorMapper.color2int(Color.black)+";\n" +
-                        "\tstatic final int BLACK = "+ColorMapper.color2int(Color.BLACK)+";\n" +
-                        "\tstatic final int blue = "+ColorMapper.color2int(Color.blue)+";\n" +
-                        "\tstatic final int BLUE = "+ColorMapper.color2int(Color.BLUE)+";\n" +
-                        "\tstatic final int cyan = "+ColorMapper.color2int(Color.cyan)+";\n" +
-                        "\tstatic final int CYAN = "+ColorMapper.color2int(Color.CYAN)+";\n" +
-                        "\tstatic final int darkGray = "+ColorMapper.color2int(Color.darkGray)+";\n" +
-                        "\tstatic final int DARK_GRAY = "+ColorMapper.color2int(Color.DARK_GRAY)+";\n" +
-                        "\tstatic final int gray = "+ColorMapper.color2int(Color.gray)+";\n" +
-                        "\tstatic final int GRAY = "+ColorMapper.color2int(Color.GRAY)+";\n" +
-                        "\tstatic final int green = "+ColorMapper.color2int(Color.green)+";\n" +
-                        "\tstatic final int GREEN = "+ColorMapper.color2int(Color.GREEN)+";\n" +
-                        "\tstatic final int lightGray = "+ColorMapper.color2int(Color.lightGray)+";\n" +
-                        "\tstatic final int LIGHT_GRAY = "+ColorMapper.color2int(Color.LIGHT_GRAY)+";\n" +
-                        "\tstatic final int magenta = "+ColorMapper.color2int(Color.magenta)+";\n" +
-                        "\tstatic final int MAGENTA = "+ColorMapper.color2int(Color.MAGENTA)+";\n" +
-                        "\tstatic final int orange = "+ColorMapper.color2int(Color.orange)+";\n" +
-                        "\tstatic final int ORANGE = "+ColorMapper.color2int(Color.ORANGE)+";\n" +
-                        "\tstatic final int pink = "+ColorMapper.color2int(Color.pink)+";\n" +
-                        "\tstatic final int PINK = "+ColorMapper.color2int(Color.PINK)+";\n" +
-                        "\tstatic final int red = "+ColorMapper.color2int(Color.red)+";\n" +
-                        "\tstatic final int RED = "+ColorMapper.color2int(Color.RED)+";\n" +
-                        "\tstatic final int yellow = "+ColorMapper.color2int(Color.yellow)+";\n" +
-                        "\tstatic final int YELLOW = "+ColorMapper.color2int(Color.YELLOW)+";\n" +
+                        "\tstatic final int white = " + ColorMapper.color2int(Color.white) + ";\n" +
+                        "\tstatic final int WHITE = " + ColorMapper.color2int(Color.WHITE) + ";\n" +
+                        "\tstatic final int black = " + ColorMapper.color2int(Color.black) + ";\n" +
+                        "\tstatic final int BLACK = " + ColorMapper.color2int(Color.BLACK) + ";\n" +
+                        "\tstatic final int blue = " + ColorMapper.color2int(Color.blue) + ";\n" +
+                        "\tstatic final int BLUE = " + ColorMapper.color2int(Color.BLUE) + ";\n" +
+                        "\tstatic final int cyan = " + ColorMapper.color2int(Color.cyan) + ";\n" +
+                        "\tstatic final int CYAN = " + ColorMapper.color2int(Color.CYAN) + ";\n" +
+                        "\tstatic final int darkGray = " + ColorMapper.color2int(Color.darkGray) + ";\n" +
+                        "\tstatic final int DARK_GRAY = " + ColorMapper.color2int(Color.DARK_GRAY) + ";\n" +
+                        "\tstatic final int gray = " + ColorMapper.color2int(Color.gray) + ";\n" +
+                        "\tstatic final int GRAY = " + ColorMapper.color2int(Color.GRAY) + ";\n" +
+                        "\tstatic final int green = " + ColorMapper.color2int(Color.green) + ";\n" +
+                        "\tstatic final int GREEN = " + ColorMapper.color2int(Color.GREEN) + ";\n" +
+                        "\tstatic final int lightGray = " + ColorMapper.color2int(Color.lightGray) + ";\n" +
+                        "\tstatic final int LIGHT_GRAY = " + ColorMapper.color2int(Color.LIGHT_GRAY) + ";\n" +
+                        "\tstatic final int magenta = " + ColorMapper.color2int(Color.magenta) + ";\n" +
+                        "\tstatic final int MAGENTA = " + ColorMapper.color2int(Color.MAGENTA) + ";\n" +
+                        "\tstatic final int orange = " + ColorMapper.color2int(Color.orange) + ";\n" +
+                        "\tstatic final int ORANGE = " + ColorMapper.color2int(Color.ORANGE) + ";\n" +
+                        "\tstatic final int pink = " + ColorMapper.color2int(Color.pink) + ";\n" +
+                        "\tstatic final int PINK = " + ColorMapper.color2int(Color.PINK) + ";\n" +
+                        "\tstatic final int red = " + ColorMapper.color2int(Color.red) + ";\n" +
+                        "\tstatic final int RED = " + ColorMapper.color2int(Color.RED) + ";\n" +
+                        "\tstatic final int yellow = " + ColorMapper.color2int(Color.yellow) + ";\n" +
+                        "\tstatic final int YELLOW = " + ColorMapper.color2int(Color.YELLOW) + ";\n" +
                         "}";
             }
             return "";

@@ -1,5 +1,6 @@
 package plm.core.model.session;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -19,6 +20,8 @@ public class SourceFile {
 	private int offset;
 	private String correction;
 	private ISourceFileListener listener = null;
+
+	public Map<String, String> meta = new HashMap<>();
 
 	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn) {
 		this.name = name;
