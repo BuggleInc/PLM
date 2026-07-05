@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.function.Supplier;
 
 import javax.swing.ImageIcon;
 
@@ -25,30 +26,30 @@ public class Main extends Lesson {
 	
 	@Override
 	protected void loadExercises() throws IOException, BrokenWorldFileException {
-		addExercise(new TurtleGraphicalExercise(this,"Square",       300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"SmallSquare",  300,300, 50,150));
-		addExercise(new TurtleGraphicalExercise(this,"Stairs",       300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"TriangleFlat", 300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"Triangle",     300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"House",        300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"HouseThree",   300,300, 50,150));
-		addExercise(new TurtleGraphicalExercise(this,"HouseMany",    300,300, 50,250));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon6",     300,300, 81,190));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon7",     300,300, 65,190));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon20",    300,300, 55,165));
-		addExercise(new TurtleGraphicalExercise(this,"Polygon360",   300,300, 35,149));
-		addExercise(new TurtleGraphicalExercise(this,"CircleTwo",    300,300, 35,149));
-		addExercise(new TurtleGraphicalExercise(this,"CircleYing",   300,300, 35,149));
-		addExercise(new TurtleGraphicalExercise(this,"CircleSquare", 300,300, 50,200));
-		addExercise(new TurtleGraphicalExercise(this,"CircleTen",    300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"DiskFourth",   300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"DiskFour",     300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"DiskTwo",      300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"Star",         300,300, 150,200));
-		addExercise(new TurtleGraphicalExercise(this,"Flower",       300,300, 90, 175));
-		addExercise(new TurtleGraphicalExercise(this,"Kerr36",       300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"Kerr40",       300,300, 150,150));
-		addExercise(new TurtleGraphicalExercise(this,"Flower3",      300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"Square", SquareEntity::new,300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"SmallSquare", SmallSquareEntity::new,300,300, 50,150));
+		addExercise(new TurtleGraphicalExercise(this,"Stairs", StairsEntity::new,300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"TriangleFlat", TriangleFlatEntity::new,300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"Triangle", TriangleEntity::new,300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"House", HouseEntity::new,300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"HouseThree", HouseThreeEntity::new,300,300, 50,150));
+		addExercise(new TurtleGraphicalExercise(this,"HouseMany", HouseManyEntity::new,300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon6", Polygon6Entity::new,300,300, 81,190));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon7", Polygon7Entity::new,300,300, 65,190));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon20", Polygon20Entity::new,300,300, 55,165));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon360", Polygon360Entity::new,300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(this,"CircleTwo", CircleTwoEntity::new,300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(this,"CircleYing", CircleYingEntity::new,300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(this,"CircleSquare", CircleSquareEntity::new,300,300, 50,200));
+		addExercise(new TurtleGraphicalExercise(this,"CircleTen", CircleTenEntity::new,300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"DiskFourth", DiskFourthEntity::new,300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"DiskFour", DiskFourEntity::new,300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"DiskTwo", DiskTwoEntity::new,300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"Star", StarEntity::new,300,300, 150,200));
+		addExercise(new TurtleGraphicalExercise(this,"Flower", FlowerEntity::new,300,300, 90, 175));
+		addExercise(new TurtleGraphicalExercise(this,"Kerr36", Kerr36Entity::new,300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"Kerr40", Kerr40Entity::new,300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"Flower3", Flower3Entity::new,300,300, 150,150));
 		
 		setCurrentExercise(currentExercise); // recompute the missions
 	}
@@ -68,7 +69,7 @@ public class Main extends Lesson {
 
 class TurtleGraphicalExercise extends ExerciseTemplated {
 	
-	public TurtleGraphicalExercise(Lesson lesson,String name,
+	public TurtleGraphicalExercise(Lesson lesson,String name, Supplier<? extends Turtle> constructor,
 			int worldWidth,int worldHeight,int tx, int ty) {
 		
 		super(lesson, lesson.getClass().getName()+"."+name);
@@ -78,6 +79,8 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
 		World myWorld = new TurtleWorld(name, worldWidth, worldHeight);
 		Turtle t = new Turtle(myWorld, "Hawksbill", tx, ty);
 		t.setHeading(-90);
+
+		myWorld.replaceEntities(constructor);
 		setup(myWorld);
 	}
 	
