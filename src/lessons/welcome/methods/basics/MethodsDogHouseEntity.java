@@ -10,8 +10,10 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead."));
 	}
 
+	/* BEGIN DEPENDENCY */
 	private int line = -1;
 	private boolean studentCode = true;
+	/* END DEPENDENCY */
 	@Override
 	public void left() {
 		if (!studentCode) {
@@ -41,15 +43,15 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 		}
 	}
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
 	void dogHouse() {
+		/* BEGIN SOLUTION */
 		for (int i=0;i<4;i++) {
-			forward();
-			forward();
+			stepForward();
+			stepForward();
 			left();
 		}
+		/* END SOLUTION */
 	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 
 	@Override

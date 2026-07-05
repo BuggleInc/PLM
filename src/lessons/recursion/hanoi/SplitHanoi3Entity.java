@@ -17,7 +17,7 @@ public class SplitHanoi3Entity extends HanoiEntity {
 			switch(num){
 			case 114:
 				nb = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString(getIntParam(nb)));
+				out.write(Integer.toString(getParamInt(nb)));
 				out.write("\n");
 				break;
 			default:
@@ -31,16 +31,16 @@ public class SplitHanoi3Entity extends HanoiEntity {
 	}
 
 	public void run() {
-		solve((Integer)getParam(0),(Integer) getParam(1),(Integer) getParam(2),(Integer) getParam(3));
-	}
-
-	public void solve(int src, int other, int dst1, int dst2) {
-		splitHanoi(getSlotSize(src)/2, src,other, dst1, dst2);
+		solve(getParamInt(0),getParamInt(1),getParamInt(2),getParamInt(3));
 	}
 
 	/* BEGIN TEMPLATE */
-	public void splitHanoi(int height, int src,int other, int dst1, int dst2) {
+	public void solve(int src, int other, int dst1, int dst2) {
 		/* BEGIN SOLUTION */
+		splitHanoi(getSlotSize(src)/2, src,other, dst1, dst2);
+	}
+
+	public void splitHanoi(int height, int src,int other, int dst1, int dst2) {
 		//for (int i=6;i>height;i--) System.out.print(" ");
 		//System.out.println("split("+height+","+src+","+other+","+dst1+","+dst2+")");
 		if (height > 0) {

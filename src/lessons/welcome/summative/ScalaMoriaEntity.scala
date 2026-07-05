@@ -4,7 +4,7 @@ import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaMoriaEntity extends SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
@@ -16,22 +16,22 @@ class ScalaMoriaEntity extends SimpleBuggle {
 		back();
 		while (!isFacingWall()) {
 			while (!isOverBaggle() && !isFacingWall())
-				forward();
+				stepForward();
 			if (isOverBaggle()) {
 				pickupBaggle();
 				back();
 				while (!isOverBaggle())
-					forward();
-				backward();
+					stepForward();
+				stepBackward();
 				dropBaggle();
 				back();
-				forward();
+				stepForward();
 			}
 		}
 		right();
-		forward();
+		stepForward();
 		left();
-		forward();
+		stepForward();
 		/* END SOLUTION */
 	}
 }

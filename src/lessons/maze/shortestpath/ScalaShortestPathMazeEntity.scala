@@ -115,7 +115,7 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 			else if (bottomValue <= topValue && bottomValue <= rightValue && bottomValue <= leftValue)
 				setDirection(Direction.SOUTH);
 
-			forward();
+			stepForward();
 		}    
 		/* END SOLUTION */
 	}

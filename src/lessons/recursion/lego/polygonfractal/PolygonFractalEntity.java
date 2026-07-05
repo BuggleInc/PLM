@@ -25,6 +25,6 @@ public class PolygonFractalEntity extends Turtle {
 	/* END TEMPLATE */
 
 	public void run() {
-		polygonFractal((Integer)getParam(0),(Integer)getParam(1),(Double)getParam(2),(Double)getParam(3));
+		polygonFractal(getParamInt(0),getParamInt(1),getParamDouble(2),getParamDouble(3));
 	}
 }

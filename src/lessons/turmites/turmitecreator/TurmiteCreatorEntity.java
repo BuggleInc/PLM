@@ -10,10 +10,6 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
 
 	/* Do not change these definitions */
 
-	final static int NEXT_COLOR = 0;
-	final static int NEXT_MOVE  = 1;
-	final static int NEXT_STATE = 2;
-
 
 	Color[] colors; 
 	int state = 0;
@@ -22,7 +18,7 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
 		int currentColor=0;
 		Color current = getGroundColor(); 
 		for (int i=0;i<colors.length;i++) 
-			if (current.equals(colors[i])) 
+			if (current == (colors[i]))
 				currentColor = i;
 
 		setBrushColor(colors[ rule[state][currentColor][NEXT_COLOR] ]);
@@ -31,10 +27,10 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
 
 		switch (rule[state][currentColor][NEXT_MOVE]) {
 		case STOP:   /* nothing */;            break;
-		case NOTURN: /* no turn */; forward(); break;
-		case LEFT:   left();   	forward(); break;
-		case RIGHT:  right();   forward(); break;
-		case BACK:   back();    forward(); break;
+		case NOTURN: /* no turn */; stepForward(); break;
+		case LEFT:   left();   	stepForward(); break;
+		case RIGHT:  right();   stepForward(); break;
+		case BACK:   back();    stepForward(); break;
 		default:
 			System.out.println("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
 		}
@@ -48,6 +44,10 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
 	final static int LEFT   = 2;
 	final static int BACK   = 4;
 	final static int RIGHT  = 8;
+
+	final static int NEXT_COLOR = 0;
+	final static int NEXT_MOVE  = 1;
+	final static int NEXT_STATE = 2;
 
 	int nbSteps; 
 	int[][][] rule;

@@ -20,20 +20,20 @@ class ScalaMethodsPictureEntity extends SimpleBuggle {
 
 	def makeV(c:Color) {
 		setBrushColor(c);
-		forward();
+		stepForward();
 		mark();
 
-		forward();
+		stepForward();
 		left();
-		forward();
+		stepForward();
 		mark();
 
-		backward();
+		stepBackward();
 		right();
-		forward();
+		stepForward();
 		mark();
 
-		forward();
+		stepForward();
 		left();
 	}
 

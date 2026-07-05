@@ -1,10 +1,13 @@
 package lessons.recursion.lego.spiral;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
 import plm.universe.turtles.Turtle;
 import plm.universe.turtles.TurtleWorld;
+
+import java.util.Arrays;
 
 public class Spiral extends ExerciseTemplated {
 
@@ -28,7 +31,8 @@ public class Spiral extends ExerciseTemplated {
 		myWorlds[3] = new TurtleWorld("Hexagon", 400, 400);
 		myWorlds[3].setParameter(new Integer[] {25,60,0,6});		
 		new Turtle(myWorlds[3], "Hawksbill", 200, 200);
-		
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(SpiralEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}
 }

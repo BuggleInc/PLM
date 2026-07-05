@@ -9,7 +9,7 @@ class ScalaSlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
 				brushDown();
-				forward();
+				stepForward();
 				brushUp();
 			} else {
 				left();
@@ -24,9 +24,9 @@ class ScalaSlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		if (isFacingWall())
 			return false;
-		forward();
+		stepForward();
 		val res = (getGroundColor() == Color.green); 
-		backward();
+		stepBackward();
 		return res;
 		/* END SOLUTION */
 	}		

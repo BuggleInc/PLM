@@ -1,6 +1,7 @@
 package lessons.recursion.hanoi;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
@@ -48,7 +49,8 @@ public class SplitHanoi2 extends ExerciseTemplated {
 		for (int i=0;i<myWorlds.length;i++) {
 			new HanoiEntity("worker",myWorlds[i]);
 		}
-		
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(SplitHanoi2Entity::new)).toList().toArray(new HanoiWorld[0]);
 		setup(myWorlds);
 	}
 }

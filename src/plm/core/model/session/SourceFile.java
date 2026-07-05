@@ -1,5 +1,6 @@
 package plm.core.model.session;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -19,6 +20,8 @@ public class SourceFile {
 	private int offset;
 	private String correction;
 	private ISourceFileListener listener = null;
+
+	public Map<String, String> meta = new HashMap<>();
 
 	public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn) {
 		this.name = name;
@@ -62,7 +65,7 @@ public class SourceFile {
 
 	/**
 	 * Returns the source text that we should compile
-	 * @param runtimePatterns 
+	 * @param runtimePatterns
 	 * 			some last-minute replacement to do (such as package name adjustment)
 	 * @param whatKind
 	 * 			whether we want to retrieve the student-provided content or the correction
@@ -72,9 +75,12 @@ public class SourceFile {
 		String res;
 
 		if (whatToRetrieve == StudentOrCorrection.CORRECTION) {
-			res = correction;
+			final String BEGIN_TEMPLATE = "/* BEGIN TEMPLATE */";
+			final String END_TEMPLATE = "/* END TEMPLATE */";
+			String body = correction.substring(Math.max(correction.indexOf(BEGIN_TEMPLATE), 0), Math.min(correction.indexOf(END_TEMPLATE)+END_TEMPLATE.length()+1, correction.length()));
+			res =  template.replace("$body", body+" \n");;
 		} else if (template != null) {
-			res = template.replaceAll("\\$body", this.body+" \n");;			
+			res = template.replaceAll("\\$body", this.body+" \n");;
 		} else {
 			res = this.body;
 		}
@@ -82,7 +88,7 @@ public class SourceFile {
 			for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
-				if (pattern.getValue().contains("\n")) { 
+				if (pattern.getValue().contains("\n")) {
 					System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
 							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
 					System.out.println("pattern key: "+pattern.getKey());

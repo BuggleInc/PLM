@@ -53,78 +53,6 @@ public class GatesPancakeEntity extends PancakeEntity {
 	}
 
 	/* BEGIN HIDDEN */
-	int getRankOf(int size) {
-		for (int rank=0;rank<getStackSize();rank++)
-			if (getPancakeRadius(rank) == size)
-				return rank;
-		return -99; // Well, be robust to border cases 
-	}
-	boolean isFree(int pos) {
-		if (pos == -99)
-			return false;
-		int radius = getPancakeRadius(pos);
-		if (pos>0) {
-			int nextRadius = getPancakeRadius(pos-1);
-			if (nextRadius == radius-1 || nextRadius == radius+1)
-				return false;
-		}
-		if (pos<getStackSize()-1) {
-			int nextRadius = getPancakeRadius(pos+1);
-			if (nextRadius == radius-1 || nextRadius == radius+1)
-				return false;
-		}
-		return true;
-	}
-	boolean isFirst(int pos) {
-		if (pos == -99)
-			return false;
-		int radius = getPancakeRadius(pos);
-		if (pos>0) {
-			int nextRadius = getPancakeRadius(pos-1);
-			if (nextRadius == radius-1 || nextRadius == radius+1)
-				return false;
-		}
-		if (pos<getStackSize()-1) {
-			int nextRadius = getPancakeRadius(pos+1);
-			if (nextRadius == radius-1 || nextRadius == radius+1)
-				return true;
-		}
-		return false;
-	}
-	boolean isLast(int pos) {
-		if (pos == -99)
-			return false;
-		int radius = getPancakeRadius(pos);
-		if (pos<getStackSize()-1) {
-			int nextRadius = getPancakeRadius(pos+1);
-			if (nextRadius == radius-1 || nextRadius == radius+1)
-				return false;
-		}
-		if (pos>0) {
-			int nextRadius = getPancakeRadius(pos-1);
-			if (nextRadius == radius-1 || nextRadius == radius+1)
-				return true;
-		}
-		return false;
-	}
-	int blockLength() {
-		int pos = 0;
-		int radius = getPancakeRadius(pos);
-		int o = getPancakeRadius(pos+1) - radius;
-		
-		if (o != -1 && o != 1) {
-			System.out.println("Asked to compute the block length, but the step o is "+o+" instead of +1 or -1. " +
-					"The length is then 1, but you are violating a precondition somehow");
-			return 1;
-		}
-		
-		while (pos < getStackSize()-1 && getPancakeRadius(pos+1) == radius + o) {
-			pos++;
-			radius += o;
-		}
-		return pos+1;
-	}
-	int debug=0; // 0: silence; 1: which cases; 2: all details
 	/* END HIDDEN */
 	
 	/* BEGIN TEMPLATE */
@@ -235,7 +163,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 				if (blockLength() == stackSize) { // Done!
 					if (tRadius != 1) // all reverse 
 						flip(stackSize);
-					if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && ((PancakeWorld)world).wasRandom) {
+					if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && wasRandom()) {
 						System.out.println("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
 						System.out.print("{");
 						for (int rank=0; rank < stackSize; rank++) 
@@ -308,6 +236,80 @@ public class GatesPancakeEntity extends PancakeEntity {
 				}
 			}
 		}
+	}
+
+
+	int debug=0; // 0: silence; 1: which cases; 2: all details
+	int getRankOf(int size) {
+		for (int rank=0;rank<getStackSize();rank++)
+			if (getPancakeRadius(rank) == size)
+				return rank;
+		return -99; // Well, be robust to border cases
+	}
+	boolean isFree(int pos) {
+		if (pos == -99)
+			return false;
+		int radius = getPancakeRadius(pos);
+		if (pos>0) {
+			int nextRadius = getPancakeRadius(pos-1);
+			if (nextRadius == radius-1 || nextRadius == radius+1)
+				return false;
+		}
+		if (pos<getStackSize()-1) {
+			int nextRadius = getPancakeRadius(pos+1);
+			if (nextRadius == radius-1 || nextRadius == radius+1)
+				return false;
+		}
+		return true;
+	}
+	boolean isFirst(int pos) {
+		if (pos == -99)
+			return false;
+		int radius = getPancakeRadius(pos);
+		if (pos>0) {
+			int nextRadius = getPancakeRadius(pos-1);
+			if (nextRadius == radius-1 || nextRadius == radius+1)
+				return false;
+		}
+		if (pos<getStackSize()-1) {
+			int nextRadius = getPancakeRadius(pos+1);
+			if (nextRadius == radius-1 || nextRadius == radius+1)
+				return true;
+		}
+		return false;
+	}
+	boolean isLast(int pos) {
+		if (pos == -99)
+			return false;
+		int radius = getPancakeRadius(pos);
+		if (pos<getStackSize()-1) {
+			int nextRadius = getPancakeRadius(pos+1);
+			if (nextRadius == radius-1 || nextRadius == radius+1)
+				return false;
+		}
+		if (pos>0) {
+			int nextRadius = getPancakeRadius(pos-1);
+			if (nextRadius == radius-1 || nextRadius == radius+1)
+				return true;
+		}
+		return false;
+	}
+	int blockLength() {
+		int pos = 0;
+		int radius = getPancakeRadius(pos);
+		int o = getPancakeRadius(pos+1) - radius;
+
+		if (o != -1 && o != 1) {
+			System.out.println("Asked to compute the block length, but the step o is "+o+" instead of +1 or -1. " +
+					"The length is then 1, but you are violating a precondition somehow");
+			return 1;
+		}
+
+		while (pos < getStackSize()-1 && getPancakeRadius(pos+1) == radius + o) {
+			pos++;
+			radius += o;
+		}
+		return pos+1;
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

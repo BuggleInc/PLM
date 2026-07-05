@@ -7,6 +7,8 @@ import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import lessons.sort.pancake.universe.PancakeEntity;
 import org.reflections.Reflections;
 import plm.core.lang.LangC;
+import plm.core.lang.LangJava;
+import plm.core.lang.LangPython;
 import plm.universe.Entity;
 import plm.universe.bugglequest.AbstractBuggle;
 import plm.universe.sort.SortingEntity;
@@ -19,9 +21,7 @@ import java.util.Set;
 
 public class CodeCreation {
     public static void main(String[] args) throws IOException {
-        File folder = new File("target/classes/resources/langages/c");
-
-        LangC.LangCExternalPrimitiveGenerator generator = new LangC.LangCExternalPrimitiveGenerator();
+        File folder = new File("target/classes/resources/langages/");
 
         Map<String, Class<? extends Entity>> remoteMap = Map.of(
                 "RemoteBuggle", AbstractBuggle.class,
@@ -33,6 +33,8 @@ public class CodeCreation {
                 "RemoteFlag", DutchFlagEntity.class
         );
 
+        LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
+        File cFolder = new File(folder, "c");
         for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
             String name = entry.getKey();
             Class<? extends Entity> clazz = entry.getValue();
@@ -43,9 +45,26 @@ public class CodeCreation {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            generator.generate(folder, name, list.values().stream().toList());
-            Files.move(new File(folder, name+".h"), new File(folder,"include/"+name+".h"));
-            Files.move(new File(folder, name+".c"), new File(folder,"src/"+name+".c"));
+            langCGenerator.generate(cFolder, name, list.values().stream().toList());
+            Files.move(new File(cFolder, name+".h"), new File(cFolder,"include/"+name+".h"));
+            Files.move(new File(cFolder, name+".c"), new File(cFolder,"src/"+name+".c"));
         }
+
+
+        LangJava.LangJavaExternalPrimitiveGenerator langJavaGenerator = new LangJava.LangJavaExternalPrimitiveGenerator();
+        File javaFolder = new File(folder, "java");
+        for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
+            String name = entry.getKey();
+            Class<? extends Entity> clazz = entry.getValue();
+
+            Map<Integer, PrimitiveMethod> list = null;
+            try {
+                list = PrimitiveRegistration.getMaximalPrimitiveForEntity(clazz);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            langJavaGenerator.generate(javaFolder, name, list.values().stream().toList());
+        }
+
     }
 }

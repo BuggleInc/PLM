@@ -9,31 +9,31 @@ public class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBugg
 		/* BEGIN SOLUTION */
 		brushDown();
 		left();
-		forward();
-		forward();
-		forward();
-		forward();
+		stepForward();
+		stepForward();
+		stepForward();
+		stepForward();
 		left();
-		forward();
-		forward();
-		forward();
-		forward();
+		stepForward();
+		stepForward();
+		stepForward();
+		stepForward();
 		left();
-		forward();
-		forward();
-		forward();
-		forward();
+		stepForward();
+		stepForward();
+		stepForward();
+		stepForward();
 		left();
-		forward();
-		forward();
+		stepForward();
+		stepForward();
 		left();
-		forward();
+		stepForward();
 		/* back home */
 		brushUp();
 		right();
 		forward(2);
 		right();
-		forward();
+		stepForward();
 		left();
 		/* END SOLUTION */
 		/* END TEMPLATE */

@@ -1,7 +1,9 @@
 package lessons.recursion.lego.polygonfractal;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
@@ -47,7 +49,8 @@ public class PolygonFractal extends ExerciseTemplated {
 		myWorlds[6].setParameter(new Object[] {4,6,100.,.3});		
 		myWorlds[6].setDelay(1);
 		new Turtle(myWorlds[6], "Hawksbill", 125, 250, -90, Color.red);
-		
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(PolygonFractalEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}
 }

@@ -27,7 +27,7 @@ class ScalaPledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 			state match {
 			case 0 => // North runner mode
 				while ( !isFacingWall() )
-					forward();
+					stepForward();
 		
 				right(); // make sure that we have a left wall
 				angleSum -=1;
@@ -46,7 +46,7 @@ class ScalaPledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	def stepHandOnWall(){
 		while ( ! isFacingWall() ) {
-			forward();
+			stepForward();
 			left();
 			angleSum += 1;
 		}

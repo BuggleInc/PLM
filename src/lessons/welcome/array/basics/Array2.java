@@ -1,10 +1,13 @@
 package lessons.welcome.array.basics;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.turmites.helloturmite.HelloTurmiteEntity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
+import plm.universe.World;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
@@ -70,6 +73,7 @@ public class Array2 extends ExerciseTemplated {
 		new SimpleBuggle(myWorlds[1], "Braque", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
 		new SimpleBuggle(myWorlds[2], "Ingres", 0, 0, Direction.SOUTH, Color.black, Color.lightGray);
 
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(Array2Entity::new)).toList().toArray(new BuggleWorld[0]);
 		setup(myWorlds);
 	}
 }

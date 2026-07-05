@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
-import plm.core.lang.primitives.Primitive;
 
 public class InterleavedHanoiEntity extends HanoiEntity {
 
@@ -16,7 +15,7 @@ public class InterleavedHanoiEntity extends HanoiEntity {
 			switch(num){
 			case 114:
 				nb = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString(getIntParam(nb)));
+				out.write(Integer.toString(getParamInt(nb)));
 				out.write("\n");
 				break;
 			default:
@@ -30,16 +29,16 @@ public class InterleavedHanoiEntity extends HanoiEntity {
 	}
 
 	public void run() {
-		solve((Integer)getParam(0),(Integer) getParam(1),(Integer) getParam(2),(Integer) getParam(3));
+		solve(getParamInt(0),getParamInt(1),getParamInt(2),getParamInt(3));
 	}
-
+	/* BEGIN TEMPLATE */
 	public void solve(int src1,int src2, int other, int dst) {
+		/* BEGIN SOLUTION */
 		interleavedHanoi(getSlotSize(src1), src1,src2, other, dst);
 	}
 
-	/* BEGIN TEMPLATE */
+
 	public void interleavedHanoi(int height, int src1,int src2, int other, int dst) {
-		/* BEGIN SOLUTION */
 		//for (int i=4;i>height;i--) System.out.print(" ");
 		//System.out.println("solve("+height+","+src1+","+src2+","+other+","+dst+")");
 		if (height > 0) {

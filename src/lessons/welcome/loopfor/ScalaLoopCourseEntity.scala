@@ -5,13 +5,13 @@ import plm.universe.bugglequest.SimpleBuggle
 import plm.core.model.Game
 
 class ScalaLoopCourseEntity extends SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
-	override def backward() {
+	override def stepBackward() {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
 	}
 
@@ -22,8 +22,8 @@ class ScalaLoopCourseEntity extends SimpleBuggle {
 			new Color(255,130,130),new Color(255,110,110),new Color(255,45,45),
 			new Color(255,5,5), Color.magenta)
 
-	override def forward() {
-		super.forward();
+	override def stepForward() {
+		super.stepForward();
 		var c = getGroundColor();
 		var nextColor:Color = null;
 		for (i <- 0 to colors.length-1)
@@ -42,7 +42,7 @@ class ScalaLoopCourseEntity extends SimpleBuggle {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 10; side <- 1 to 4) {
 			for (step <- 1 to 8) {
-				forward()
+				stepForward()
 			}
 			left()
 		} 

@@ -45,6 +45,6 @@ public class PentaKochEntity extends Turtle {
 	}
 
 	public void run() {
-		pentaKoch((Integer)getParam(0),(Double)getParam(1));
+		pentaKoch(getParamInt(0),getParamDouble(1));
 	}
 }

@@ -41,8 +41,8 @@ public class DragonCurve2Entity extends Turtle {
 	/* END TEMPLATE */
 
 	public void run() {
-		dragon((Integer) getParam(0), (Double) getParam(1), (Double) getParam(2), (Double) getParam(3),
-				(Double) getParam(4));
+		dragon(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3),
+				getParamDouble(4));
 	}
 
 }

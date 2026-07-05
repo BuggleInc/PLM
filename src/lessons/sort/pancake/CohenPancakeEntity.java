@@ -8,26 +8,6 @@ public class CohenPancakeEntity extends PancakeEntity {
 		this.solve();
 	}
 
-	/* BEGIN HIDDEN */
-	int getRankOf(int size) {
-		for (int rank=0;rank<getStackSize();rank++)
-			if (getPancakeRadius(rank) == size)
-				return rank;
-		return -99; // Well, be robust to border cases 
-	}
-	int debug=0; // 0: silence; 1: all details
-	void showStack(boolean nl) {
-		if (debug>0) {
-			System.out.print("{");
-			for (int rank=0; rank < getStackSize(); rank++) 
-				System.out.print( (isPancakeUpsideDown(rank)?"-":"") + getPancakeRadius(rank)+", ");
-			System.out.print("}  ");
-			if (nl)
-				System.out.println();
-		}
-	}
-	/* END HIDDEN */
-
 	/* BEGIN TEMPLATE */
 	public void solve() {
 		/* BEGIN SOLUTION */
@@ -116,9 +96,29 @@ public class CohenPancakeEntity extends PancakeEntity {
 				}
 			}
 		}
-		
+
+	}
+
+
+	int getRankOf(int size) {
+		for (int rank=0;rank<getStackSize();rank++)
+			if (getPancakeRadius(rank) == size)
+				return rank;
+		return -99; // Well, be robust to border cases
+	}
+	int debug=0; // 0: silence; 1: all details
+	void showStack(boolean nl) {
+		if (debug>0) {
+			System.out.print("{");
+			for (int rank=0; rank < getStackSize(); rank++)
+				System.out.print( (isPancakeUpsideDown(rank)?"-":"") + getPancakeRadius(rank)+", ");
+			System.out.print("}  ");
+			if (nl)
+				System.out.println();
+		}
 		/* END SOLUTION */
 	}
+
 	/* END TEMPLATE */
 
 }

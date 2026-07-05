@@ -12,7 +12,7 @@ public class HouseThreeEntity extends Turtle {
 	 
 	     for (int i=0;i<4;i++) {
 	        house(30);
-	        leveCrayon();
+	        penUp();
 	        right(90);
 	        forward(50);
 	        left(90);

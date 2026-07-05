@@ -1,6 +1,7 @@
 package plm.universe.sort;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -10,6 +11,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
@@ -281,6 +283,11 @@ public class SortingWorld extends World {
 		this.operations = new ArrayList<Operation>(1);
 		for ( Operation o: world.operations)
 			this.operations.add(o);
+	}
+
+	@Override
+	public SortingWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+		return (SortingWorld) super.replaceEntities(newEntitySupplier);
 	}
 
 	/**

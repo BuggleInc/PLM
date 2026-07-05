@@ -80,15 +80,4 @@ public interface TurtlePrimitives extends EntityPrimitivesBase {
     @Primitive(132)
     @Override
     boolean isSelected();
-
-
-    @Primitive(200)
-    default int getParamInt(int i) {
-        return (int) getParam(i);
-    }
-
-    @Primitive(201)
-    default double getParamDouble(int i) {
-        return ((Number) getParam(i)).doubleValue();
-    }
 }

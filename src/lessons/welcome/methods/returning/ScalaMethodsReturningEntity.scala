@@ -9,7 +9,7 @@ class ScalaMethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle 
 			if (haveBaggle()) 
 				return;
 			right();
-			forward();
+			stepForward();
 			left();
 		}
 	}
@@ -20,7 +20,7 @@ class ScalaMethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle 
 		for (i <- 1 to 6) {
 			if (isOverBaggle()) 
 				res = true;
-			forward();
+			stepForward();
 		}
 		backward(6);
 		return res;

@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 import plm.core.model.Game
 
 class ScalaMethodsArgsEntity extends SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
@@ -22,10 +22,10 @@ class ScalaMethodsArgsEntity extends SimpleBuggle {
 	def move(steps: Int, fwd:Boolean) {
 		if (fwd) {
 			for (i <- 1 to steps) 
-				forward()
+				stepForward()
 		} else {
 			for (i <- 1 to steps) 
-				backward()
+				stepBackward()
 		}
 	}
 	/* END SOLUTION */

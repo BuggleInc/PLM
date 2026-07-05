@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.function.Supplier;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -66,7 +67,12 @@ public class TurtleWorld extends World {
 		
 		super.reset(w);		
 	}
-	
+
+	@Override
+	public TurtleWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+		return (TurtleWorld) super.replaceEntities(newEntitySupplier);
+	}
+
 	public void addSizeHint(int x1, int y1, int x2, int y2) {
 		addSizeHint(x1, y1, x2, y2, null);
 	}

@@ -17,7 +17,7 @@ public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
 				brushDown();
-				forward();
+				stepForward();
 				brushUp();
 			} else {
 				left();
@@ -30,9 +30,9 @@ public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		if (isFacingWall())
 			return false;
 
-		forward();
-		boolean res = getGroundColor().equals(Color.green);
-		backward();
+		stepForward();
+		boolean res = getGroundColor()== Color.green;
+		stepBackward();
 		return res;
 
 		/* END SOLUTION */

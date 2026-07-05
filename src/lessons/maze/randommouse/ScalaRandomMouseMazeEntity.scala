@@ -22,7 +22,7 @@ class ScalaRandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */ 
 		while (!isOverBaggle()) {
 			random3() match { 
-			     case 0 if (!isFacingWall()) => forward();
+			     case 0 if (!isFacingWall()) => stepForward();
 			     case 1                      => left();
 			     case 2                      => right();
 			     case _ =>

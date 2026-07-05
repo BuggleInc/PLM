@@ -1,20 +1,26 @@
 package lessons.welcome.loopdowhile;
 
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
+
 import java.awt.Color;
 
+@EntityPrimitives(LoopDoWhileEntity.class)
 public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
-	boolean isGroundWhite() { 
-		return getGroundColor().equals(Color.white)?true:false;
+
+	@Primitive(301)
+	public boolean isGroundWhite() {
+		return getGroundColor() == Color.white;
 	}
 	/* BINDINGS TRANSLATION */
-	boolean estSurBlanc() { return isGroundWhite() ; }
+	public boolean estSurBlanc() { return isGroundWhite() ; }
 	
 	@Override
 	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		do {
-			forward();
+			stepForward();
 		} while (!isGroundWhite());
 		/* END SOLUTION */
 	}

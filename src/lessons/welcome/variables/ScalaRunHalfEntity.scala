@@ -4,7 +4,7 @@ import java.awt.Color;
 import plm.core.model.Game
 
 class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int)  { 
+	override def forward(i: Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	override def backward(i: Int) {
@@ -24,7 +24,7 @@ class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 		while (2 * baggle != orange + 1) {
 			//if (getName().equals("buggle2")) 
 			//	System.out.println("baggle: "+baggle+"; orange: "+orange+"; sum:"+(2*baggle-orange-1));
-			forward();
+			stepForward();
 			if (isOverBaggle())
 				baggle += 1
 			if (isOverOrange())

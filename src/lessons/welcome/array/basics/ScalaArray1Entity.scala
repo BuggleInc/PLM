@@ -25,15 +25,15 @@ class ScalaArray1Entity extends plm.universe.bugglequest.SimpleBuggle {
 		/* read the colors */
 		for (i <- 0 to getWorldHeight()-1) {
 			colors(i) = getGroundColor()
-					forward();
+					stepForward();
 		}
 
 		/* duplicate the pattern */
 		for (col <- 1 to getWorldWidth()-1) {
 			left();
-			forward();
+			stepForward();
 			right();
-			forward();
+			stepForward();
 			makeLine(colors);
 		}
 	}
@@ -41,7 +41,7 @@ class ScalaArray1Entity extends plm.universe.bugglequest.SimpleBuggle {
 	def makeLine(colors:Array[Color]) {
 		for (i <- 0 to getWorldWidth()-1) {
 			mark(colors(i));
-			forward();
+			stepForward();
 		}
 	}
 	

@@ -6,7 +6,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class MoriaEntity extends SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 
@@ -26,22 +26,22 @@ public class MoriaEntity extends SimpleBuggle {
 		back();
 		while (!isFacingWall()) {
 			while (!isOverBaggle() && !isFacingWall())
-				forward();
+				stepForward();
 			if (isOverBaggle()) {
 				pickupBaggle();
 				back();
 				while (!isOverBaggle())
-					forward();
-				backward();
+					stepForward();
+				stepBackward();
 				dropBaggle();
 				back();
-				forward();
+				stepForward();
 			}
 		}
 		right();
-		forward();
+		stepForward();
 		left();
-		forward();
+		stepForward();
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

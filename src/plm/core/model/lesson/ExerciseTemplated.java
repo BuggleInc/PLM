@@ -406,7 +406,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
                                 // In all language but C, the correction is either directly usable (interpreted) or
                                 // already compiled in the jarfile
-                                if (Game.getInstance().getProgrammingLanguage().isC()) {
+                                if (Game.getInstance().getProgrammingLanguage().isC() || Game.getInstance().getProgrammingLanguage().isJava()) {
                                   try {
                                     // TODO BAT remove if bat will be implemented in C
                                     if (!id.contains("bat.string1.lessons.bat") &&

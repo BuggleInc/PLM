@@ -288,7 +288,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 	}
 
 	@Override
-	public void forward() throws BuggleWallException {
+	public void stepForward() throws BuggleWallException {
 		if (k_seq[k_val]==0) k_val++; else k_val = 0;
 		move(direction.toPoint());
 	}
@@ -296,11 +296,11 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 	@Override
 	public void forward(int count) throws BuggleWallException {
 		for (int i = 0; i < count; i++)
-			forward();
+			stepForward();
 	}
 
 	@Override
-	public void backward() throws BuggleWallException {
+	public void stepBackward() throws BuggleWallException {
 		if (k_seq[k_val]==1) k_val++; else k_val = 0;
 		move(direction.opposite().toPoint());
 	}
@@ -308,7 +308,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 	@Override
 	public void backward(int count) throws BuggleWallException {
 		for (int i = 0; i < count; i++)
-			backward();
+			stepBackward();
 	}
 
         private boolean lookAtWall(Direction delta)
@@ -549,9 +549,9 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 	public void gauche()   { left(); }
 	public void droite()   { right(); }
 	public void retourne() { back(); }
-	public void avance()          throws BuggleWallException { forward(); }
+	public void avance()          throws BuggleWallException { stepForward(); }
 	public void avance(int steps) throws BuggleWallException { forward(steps); }
-	public void recule()          throws BuggleWallException { backward(); }
+	public void recule()          throws BuggleWallException { stepBackward(); }
 	public void recule(int steps) throws BuggleWallException { backward(steps); }
 	public Color getCouleurCorps()        { return getBodyColor(); }
 	public void setCouleurCorps(Color c)  { setBodyColor(c); }
@@ -583,9 +583,9 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 	public void esquerda()        { left(); }
 	public void direita()         { right(); }
 	public void voltar()          { back(); }
-	public void avançar()          throws BuggleWallException { forward(); }
+	public void avançar()          throws BuggleWallException { stepForward(); }
 	public void avançar(int steps) throws BuggleWallException { forward(steps); }
-	public void recuar()           throws BuggleWallException { backward(); }
+	public void recuar()           throws BuggleWallException { stepBackward(); }
 	public void recuar(int steps)  throws BuggleWallException { backward(steps); }
 	public Color getCorDoCorpo()        { return getBodyColor(); }
 	public void setCorDoCorpo(Color c)  { setBodyColor(c); }

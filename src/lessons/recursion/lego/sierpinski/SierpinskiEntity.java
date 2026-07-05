@@ -17,7 +17,7 @@ public class SierpinskiEntity extends plm.universe.turtles.Turtle {
 	/* END TEMPLATE */
 
 	public void run() {
-		sierpinski((Integer) getParam(0), (Double) getParam(1));
+		sierpinski(getParamInt(0), getParamDouble(1));
 	}
 
 }

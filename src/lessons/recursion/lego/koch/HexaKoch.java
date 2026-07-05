@@ -1,7 +1,9 @@
 package lessons.recursion.lego.koch;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
@@ -39,7 +41,8 @@ public class HexaKoch extends ExerciseTemplated {
 		myWorlds[5] = new TurtleWorld("hexaKoch(5,15000)", 400, 400);
 		myWorlds[5].setParameter(new Object[] {5,15000.});		
 		new Turtle(myWorlds[5], "Hawksbill", 100, 250,0, Color.red);
-	*/	
+	*/
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(HexaKochEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}
 }

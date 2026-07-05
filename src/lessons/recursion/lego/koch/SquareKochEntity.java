@@ -56,6 +56,6 @@ public class SquareKochEntity extends Turtle {
 	}
 
 	public void run() {
-		snowSquare((Integer)getParam(0),(Double)getParam(1));
+		snowSquare(getParamInt(0),getParamDouble(1));
 	}
 }

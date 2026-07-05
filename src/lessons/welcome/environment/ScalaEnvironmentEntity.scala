@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 class ScalaEnvironmentEntity extends SimpleBuggle {
 	protected override def run() { 
 		/* BEGIN SOLUTION */
-		forward();
+		stepForward();
 		/* END SOLUTION */
 	}
 }

@@ -44,8 +44,8 @@ class ScalaMethodsDogHouseEntity extends SimpleBuggle {
 	/* BEGIN SOLUTION */
 	def dogHouse() {
 		for (i <- 1 to 4) {
-			forward()
-			forward()
+			stepForward()
+			stepForward()
 			left()
 		}
 	}

@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import lessons.turmites.LangtonEntityPrimitives;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.universe.bugglequest.SimpleBuggle;
 
 @EntityPrimitives(LangtonEntityPrimitives.class)
@@ -19,7 +18,7 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
 		/* BEGIN SOLUTION */
 		Color current = getGroundColor(); 
 		for (int i=0;i<colors.length;i++) {
-			if (current.equals(colors[i])) {
+			if (current == (colors[i])) {
 				switch (rule[i]) {
 				case 'L': left(); break;
 				case 'R': right(); break;
@@ -31,7 +30,7 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
 				brushDown();
 				brushUp();
 
-				forward();
+				stepForward();
 
 				return;
 			}
@@ -42,7 +41,7 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
 
 	@Override
 	public void run() { 
-		int nbSteps = (Integer)getParam(0);
+		int nbSteps = getParamInt(0);
 		char[] rule = ((char[])getParam(1));
 
 		Color[] colors = new Color[rule.length];
@@ -62,7 +61,7 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
           try {
             switch (num) {
               case 200:
-                out.write(((Integer)getParam(0)).toString());
+                out.write((getParamInt(0)));
                 out.write("\n");
                 out.flush();
 

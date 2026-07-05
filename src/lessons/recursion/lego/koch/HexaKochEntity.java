@@ -27,6 +27,6 @@ public class HexaKochEntity extends Turtle {
 	/* END TEMPLATE */
 
 	public void run() {
-		drawCurve((Integer)getParam(0),(Double)getParam(1));
+		drawCurve(getParamInt(0),getParamDouble(1));
 	}
 }

@@ -5,6 +5,8 @@ import lessons.recursion.hanoi.universe.HanoiWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 
+import java.util.Arrays;
+
 public class LinearHanoi extends ExerciseTemplated {
 
 	public LinearHanoi(Lesson lesson) {
@@ -21,7 +23,8 @@ public class LinearHanoi extends ExerciseTemplated {
 
 		for (int i=0;i<myWorlds.length;i++) 
 			new HanoiEntity("worker",myWorlds[i]);
-		
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(LinearHanoiEntity::new)).toList().toArray(new HanoiWorld[0]);
 		setup(myWorlds);
 	}
 }

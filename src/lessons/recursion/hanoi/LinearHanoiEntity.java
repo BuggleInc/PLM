@@ -13,7 +13,7 @@ public class LinearHanoiEntity extends HanoiEntity {
 	}
 	
 	public void run() {
-		linearHanoi(getSlotSize((Integer)getParam(0)), (Integer)getParam(0), (Integer)getParam(1),(Integer)getParam(2));
+		linearHanoi(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1),getParamInt(2));
 	}
 
 	/* BEGIN TEMPLATE */

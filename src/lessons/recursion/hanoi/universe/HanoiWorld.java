@@ -2,6 +2,7 @@ package lessons.recursion.hanoi.universe;
 
 import java.awt.Color;
 import java.util.Vector;
+import java.util.function.Supplier;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -11,6 +12,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
@@ -105,6 +107,11 @@ public class HanoiWorld extends World {
 		}
 		moveCount = other.moveCount;
 		super.reset(w);		
+	}
+
+	@Override
+	public HanoiWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+		return (HanoiWorld) super.replaceEntities(newEntitySupplier);
 	}
 
 	/* BEGIN HIDDEN */

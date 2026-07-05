@@ -6,7 +6,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgsEntity extends SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		throw new RuntimeException(Game.i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
 	@Override
@@ -17,7 +17,7 @@ public class MethodsArgsEntity extends SimpleBuggle {
 
 	@Override
 	public void run() { 
-		move(getY(),getDirection().equals(Direction.NORTH)); 
+		move(getY(),getDirection() == Direction.NORTH);
 	} 
 
 	/* BEGIN TEMPLATE */
@@ -25,10 +25,10 @@ public class MethodsArgsEntity extends SimpleBuggle {
 	public void move(int nbPas, boolean forward) {
 		if (forward) {
 			for (int i=0; i<nbPas; i++) 
-				forward();
+				stepForward();
 		} else {
 			for (int i=0; i<nbPas; i++) 
-				backward();
+				stepBackward();
 		}
 	}
 	/* END SOLUTION */

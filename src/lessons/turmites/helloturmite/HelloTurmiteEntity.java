@@ -31,7 +31,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 		/* BEGIN SOLUTION */
 		Color current = getGroundColor(); 
 		for (int i=0;i<colors.length;i++) 
-			if (current.equals(colors[i])) 
+			if (current == colors[i])
 				currentColor = i;
 
 		setBrushColor(colors[ rule[state][currentColor][NEXT_COLOR] ]);
@@ -40,10 +40,10 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 
 		switch (rule[state][currentColor][NEXT_MOVE]) {
 		case STOP:   /* nothing */;            break;
-		case NOTURN: /* no turn */; forward(); break;
-		case LEFT:   left();   	forward(); break;
-		case RIGHT:  right();   forward(); break;
-		case BACK:   back();    forward(); break;
+		case NOTURN: /* no turn */; stepForward(); break;
+		case LEFT:   left();   	stepForward(); break;
+		case RIGHT:  right();   stepForward(); break;
+		case BACK:   back();    stepForward(); break;
 		default:
 			System.out.println("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
 		}
@@ -56,7 +56,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 
 	@Override
 	public void run() { 
-		int nbSteps = (Integer)getParam(0);
+		int nbSteps = getParamInt(0);
 		Color[] colors; 
 		int[][][] rule; 
 
@@ -78,7 +78,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
           try {
             switch (num) {
               case 200:
-                out.write(((Integer)getParam(0)).toString());
+                out.write((getParamInt(0)));
                 out.write("\n");
                 out.flush();
                 break;

@@ -17,11 +17,11 @@ class ScalaMethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 			var i = 0;
 			while (!isOverBaggle()) {
 				i += 1;
-				forward();
+				stepForward();
 			}
 			pickupBaggle();
 			while (i>0) {
-				backward();
+				stepBackward();
 				i -= 1;
 			}
 			dropBaggle();
@@ -31,7 +31,7 @@ class ScalaMethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 		for (i <- 1 to 7) {
 			goAndGet();
 			right();
-			forward();
+			stepForward();
 			left();
 		}
 		/* END TEMPLATE */

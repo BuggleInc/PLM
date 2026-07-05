@@ -24,7 +24,7 @@ class ScalaWallFollowerMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		// Make sure we have a wall to the left
 		left();
 		while (!isFacingWall())
-			forward();
+			stepForward();
 		right();
 
 		while (!isOverBaggle())
@@ -38,7 +38,7 @@ class ScalaWallFollowerMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		// POST: we still have the same wall on the left, are one step ahead
 
 		while (!isFacingWall()) {
-			forward();
+			stepForward();
 			left(); // change to right to get a right follower
 		}
 		right(); // change to left to get a right follower

@@ -4,9 +4,9 @@ import java.awt.Color;
 
 public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
-	public void forward(int i)  { 
+	public void forward(int i)  {
 		for (int j=0;j<i;j++) {
-			forward();
+			stepForward();
 		}
 	}
 
@@ -16,8 +16,8 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
 	
 	int inTeerNal_Steep_Count = -3;
 	@Override
-	public void forward()  {
-		super.forward();
+	public void stepForward()  {
+		super.stepForward();
 		if (inTeerNal_Steep_Count<0 || inTeerNal_Steep_Count%2 == 1 || (inTeerNal_Steep_Count/2)>=colors.length) {
 			if (inTeerNal_Steep_Count < 0)
 				setBrushColor(Color.lightGray);
@@ -38,9 +38,9 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
 		forward(3);
 		left();
 		for (int i = 0; i<8;i++) { 
-			forward();
+			stepForward();
 			right();
-			forward();
+			stepForward();
 			left();
 		}
 		right();

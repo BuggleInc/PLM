@@ -1,9 +1,14 @@
 package lessons.recursion.hanoi;
 
+import lessons.welcome.methods.slug.SlugHuntingEntity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
+import plm.universe.World;
+import plm.universe.bugglequest.BuggleWorld;
+
+import java.util.Arrays;
 
 public class CyclicHanoi extends ExerciseTemplated {
 
@@ -29,7 +34,9 @@ public class CyclicHanoi extends ExerciseTemplated {
 		myWorlds[3].setParameter(new Object[] {0,2,1});		
 		
 		for (int i=0;i<myWorlds.length;i++) 
-			new HanoiEntity("worker",myWorlds[i]);		
+			new HanoiEntity("worker",myWorlds[i]);
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(CyclicHanoiEntity::new)).toList().toArray(new HanoiWorld[0]);
 		setup(myWorlds);
 	}
 }

@@ -2,6 +2,7 @@ package lessons.recursion.lego.tree;
 
 import java.awt.Color;
 
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.turtles.Turtle;
 
@@ -26,6 +27,7 @@ public class TreeEntity extends Turtle {
 			Color.orange,    Color.yellow, Color.green,
 			Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red};
 
+	@Primitive(308)
 	private void current(int v) {
 		if (v>=colors.length || v < 0)
 			setColor(colors[colors.length -1]);
@@ -67,6 +69,6 @@ public class TreeEntity extends Turtle {
 	}
 
 	public void run() {
-		tree((Integer)getParam(0),(Double)getParam(1),(Double)getParam(2),(Double)getParam(3));
+		tree(getParamInt(0),getParamDouble(1),getParamDouble(2),getParamDouble(3));
 	}
 }

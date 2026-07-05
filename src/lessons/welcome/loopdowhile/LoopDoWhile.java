@@ -26,6 +26,6 @@ public class LoopDoWhile extends ExerciseTemplated {
 		    	myWorld.setColor(i, 6-j,Color.yellow);
 		}
 
-    	setup(myWorld);
+    	setup(myWorld.replaceEntities(LoopDoWhileEntity::new));
 	}
 }

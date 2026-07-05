@@ -13,16 +13,16 @@ public class LinearTwinHanoiEntity extends HanoiEntity {
 	
 
 	public void run() {
-		solve((Integer)getParam(0),(Integer) getParam(1),(Integer) getParam(2));
-	}
-
-	public void solve(int src, int other, int dst) {
-		linearTwinHanoi(getSlotSize(src), src, other, dst);
+		solve(getParamInt(0),getParamInt(1),getParamInt(2));
 	}
 
 	/* BEGIN TEMPLATE */
-	public void linearTwinHanoi(int height, int src, int mid, int dst) {
+	public void solve(int src, int other, int dst) {
 		/* BEGIN SOLUTION */
+		linearTwinHanoi(getSlotSize(src), src, other, dst);
+	}
+
+	public void linearTwinHanoi(int height, int src, int mid, int dst) {
 		gather(height-1,src,mid,dst);
 //		System.err.println("End gather");
 		move(src,mid);

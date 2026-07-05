@@ -21,6 +21,6 @@ public class CrabEntity extends Turtle {
 	/* END TEMPLATE */
 
 	public void run() {
-		crab((Integer)getParam(0),(Double)getParam(1));
+		crab(getParamInt(0),getParamDouble(1));
 	}
 }

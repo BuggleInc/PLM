@@ -1,7 +1,9 @@
 package lessons.welcome.loopfor;
 
 import java.io.IOException;
+import java.util.Arrays;
 
+import lessons.turmites.helloturmite.HelloTurmiteEntity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.BrokenWorldFileException;
@@ -18,7 +20,8 @@ public class LoopStairs extends ExerciseTemplated{
 			World[] myWorlds = new World[] {
 					BuggleWorld.newFromFile("lessons/welcome/loopfor/LoopStairs")
 			};
-			
+
+			myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(LoopStairsEntity::new)).toList().toArray(new World[0]);
 			setup(myWorlds);
 		}
 

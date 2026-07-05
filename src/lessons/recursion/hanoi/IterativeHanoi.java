@@ -5,6 +5,8 @@ import plm.core.model.lesson.Lesson;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
 
+import java.util.Arrays;
+
 public class IterativeHanoi extends ExerciseTemplated {
 
 	public IterativeHanoi(Lesson lesson) {
@@ -20,7 +22,8 @@ public class IterativeHanoi extends ExerciseTemplated {
 		myWorlds[2].setParameter(new Object[] {1,false});		
 		for (int i=0;i<myWorlds.length;i++) 
 			new HanoiEntity("worker",myWorlds[i]);
-		
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(IterativeHanoiEntity::new)).toList().toArray(new HanoiWorld[0]);
 		setup(myWorlds);
 	}
 }

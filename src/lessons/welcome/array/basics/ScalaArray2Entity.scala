@@ -27,7 +27,7 @@ class ScalaArray2Entity extends SimpleBuggle {
 		/* read the colors */
 		colors(0) = getGroundColor();
 		for (i <- 1 to getWorldHeight()-1) {
-			forward();
+			stepForward();
 			colors(i) = getGroundColor();
 		}
 		backward(getWorldHeight()-1);
@@ -35,7 +35,7 @@ class ScalaArray2Entity extends SimpleBuggle {
 		/* duplicate the pattern */
 		for (col <- 1 to getWorldWidth()-1) {
 			left();
-			forward();
+			stepForward();
 			right();
 			makeLine(colors);
 		}
@@ -45,7 +45,7 @@ class ScalaArray2Entity extends SimpleBuggle {
 		val offset = readMessage().toInt;
 		mark(colors( (0+offset)%colors.length ) );
 		for (i <- 1 to getWorldWidth()-1) {
-			forward();
+			stepForward();
 			mark(colors(  (i+offset)%colors.length  ));
 		}
 		backward(getWorldHeight()-1);

@@ -38,16 +38,16 @@ class ScalaTraversalByColumnEntity extends SimpleBuggle {
 	}
 	/* END TEMPLATE */	
 
-	override def forward(i:Int)  { 
+	override def forward(i:Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
 	}
-	override def forward()  {
+	override def stepForward()  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
 	}
 	override def backward(i:Int) {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
-	override def backward() {
+	override def stepBackward() {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
 }

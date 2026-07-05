@@ -2,7 +2,10 @@ package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
 import lessons.sort.baseball.universe.BaseballWorld;
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 
+@EntityPrimitives(SelectBaseballEntity.class)
 public class SelectBaseballEntity extends BaseballEntity {
 
 	
@@ -12,7 +15,7 @@ public class SelectBaseballEntity extends BaseballEntity {
 		for (int base = 0 ; base < getBasesAmount() -1 ; base++) 
 			bringPlayersHome(base);
 		
-		((BaseballWorld) world).assertSorted("selection sort");
+		assertSorted("selection sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
@@ -21,7 +24,8 @@ public class SelectBaseballEntity extends BaseballEntity {
 		//if (false)
 		//	System.out.println(msg);
 	}
-	
+
+	@Primitive(311)
 	public void bringPlayersHome(int base) {
 		for (int positionToFill = 0; positionToFill<getPositionsAmount(); positionToFill++) {
 			out("Sort base "+base+", position "+positionToFill);
