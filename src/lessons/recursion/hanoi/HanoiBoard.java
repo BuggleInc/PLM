@@ -27,7 +27,7 @@ public class HanoiBoard extends ExerciseTemplated {
 			new HanoiEntity("worker",myWorlds[i]);
 		}
 
-		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(HanoiEntity::new)).toList().toArray(new HanoiWorld[0]);
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(HanoiBoardEntity::new)).toList().toArray(new HanoiWorld[0]);
 		setup(myWorlds);
 	}
 }
