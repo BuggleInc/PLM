@@ -1,24 +1,29 @@
 package lessons.sort.pancake;
 
+import lessons.sort.basic.bubble.AlgBubbleSort1Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
+import plm.universe.World;
+
+import java.util.Arrays;
 
 public class BasicPancake extends ExerciseTemplated {
 	
 	public BasicPancake(Lesson lesson) {
 		super(lesson);
 	
-		PancakeWorld plate[] = new PancakeWorld[4];
-		plate[0]= new PancakeWorld("5 pancakes",5,false);
-		plate[1]= new PancakeWorld("10 pancakes",10,false);
-		plate[2]= new PancakeWorld("15 pancakes",15,false);
-		plate[3]= new PancakeWorld("30 pancakes",30,false);
+		World[] myWorlds = new PancakeWorld[4];
+		myWorlds[0]= new PancakeWorld("5 pancakes",5,false);
+		myWorlds[1]= new PancakeWorld("10 pancakes",10,false);
+		myWorlds[2]= new PancakeWorld("15 pancakes",15,false);
+		myWorlds[3]= new PancakeWorld("30 pancakes",30,false);
 		for ( int i = 0 ; i<4;i++)
-			new PancakeEntity("Pancake Seller",plate[i]);
+			new PancakeEntity("Pancake Seller",myWorlds[i]);
 
-		setup(plate);
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(BasicPancakeEntity::new)).toList().toArray(new World[0]);
+		setup(myWorlds);
 	}
 
 }

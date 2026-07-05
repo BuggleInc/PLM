@@ -26,6 +26,6 @@ public class LoopFor extends ExerciseTemplated {
 			}
 		}
 		
-		setup(myWorld);
+		setup(myWorld.replaceEntities(LoopForEntity::new));
 	}
 }

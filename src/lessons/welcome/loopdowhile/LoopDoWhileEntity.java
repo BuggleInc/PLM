@@ -9,11 +9,11 @@ import java.awt.Color;
 public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	@Primitive(301)
-	boolean isGroundWhite() { 
-		return getGroundColor()== Color.white?true:false;
+	public boolean isGroundWhite() {
+		return getGroundColor() == Color.white;
 	}
 	/* BINDINGS TRANSLATION */
-	boolean estSurBlanc() { return isGroundWhite() ; }
+	public boolean estSurBlanc() { return isGroundWhite() ; }
 	
 	@Override
 	/* BEGIN TEMPLATE */

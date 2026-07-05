@@ -1,7 +1,9 @@
 package lessons.recursion.lego.koch;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
@@ -48,6 +50,7 @@ public class Crab extends ExerciseTemplated {
 		myWorlds[7].setParameter(new Object[] {12,200.});		
 		new Turtle(myWorlds[7], "Hawksbill", 200, 300,-90, Color.red);
 		*/
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(CrabEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}
 }

@@ -1,7 +1,9 @@
 package lessons.recursion.lego.sierpinski;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
@@ -37,6 +39,7 @@ public class Sierpinski extends ExerciseTemplated {
 		myWorlds[4].setDelay(2);
 		new Turtle(myWorlds[4], "Hawksbill", 350, 350,-180, Color.red);
 
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(SierpinskiEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}	
 	

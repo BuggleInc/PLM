@@ -1,7 +1,9 @@
 package lessons.recursion.lego.tree;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
@@ -30,6 +32,8 @@ public class Tree extends ExerciseTemplated {
 		myWorlds[3] = new TurtleWorld("tree(10,100,90,0.68)", 400, 400);
 		myWorlds[3].setParameter(new Object[] {10,100.,90.,.68});		
 		new Turtle(myWorlds[3], "Hawksbill", 200, 350,-90, Color.red);
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(TreeEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}
 }

@@ -1,9 +1,13 @@
 package lessons.turmites.helloturmite;
 
+import lessons.sort.basic.bubble.AlgBubbleSort1Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
+import plm.universe.World;
 import plm.universe.bugglequest.BuggleWorld;
 import lessons.turmites.universe.TurmiteWorld;
+
+import java.util.Arrays;
 
 public class HelloTurmite extends ExerciseTemplated {
 	final static int NOTURN = 1;
@@ -15,7 +19,7 @@ public class HelloTurmite extends ExerciseTemplated {
 		super(lesson);
 		tabName = "Turmite";
 
-		BuggleWorld[] myWorlds = new BuggleWorld[] { // Name, #steps, rules, worldWidth, worldHeight, buggleX, buggleY
+		World[] myWorlds = new BuggleWorld[] { // Name, #steps, rules, worldWidth, worldHeight, buggleX, buggleY
 				new TurmiteWorld("crabe (8342 steps)",           8342, 
 						         new int[][][] {{{1, LEFT, 0}, {1, LEFT, 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}}, 
 						         78, 72, 8, 33),
@@ -27,6 +31,7 @@ public class HelloTurmite extends ExerciseTemplated {
 						         65, 65, 60, 55), 
 		};
 
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(HelloTurmiteEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 
 	}

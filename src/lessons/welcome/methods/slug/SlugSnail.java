@@ -1,10 +1,13 @@
 package lessons.welcome.methods.slug;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.turmites.helloturmite.HelloTurmiteEntity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.Direction;
+import plm.universe.World;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
@@ -70,6 +73,7 @@ public class SlugSnail extends ExerciseTemplated {
 		hunter = new SimpleBuggle(myWorlds[1], "Hunter", 6, 6, Direction.NORTH, Color.black, Color.lightGray);
 		hunter.brushDown();
 
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(SlugSnailEntity::new)).toList().toArray(new BuggleWorld[0]);
 		setup(myWorlds);
 	}
 

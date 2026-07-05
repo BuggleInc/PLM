@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -105,6 +106,12 @@ public class BuggleWorld extends GridWorld {
 	public boolean haveIO() {
 		return true;
 	}
+
+	@Override
+	public BuggleWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+		return (BuggleWorld) super.replaceEntities(newEntitySupplier);
+	}
+
 	public static World newFromFile(String path) throws IOException, BrokenWorldFileException {
 		BuggleWorld res = new BuggleWorld("toto", 1, 1);
 		return res.readFromFile(path);

@@ -8,8 +8,11 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
+
+import java.util.function.Supplier;
 
 public class DutchFlagWorld extends World {
 
@@ -140,7 +143,12 @@ public class DutchFlagWorld extends World {
 		super.reset(world);		
 	}
 
-	/** Ensures that the provided engine can be used to solve Pancake exercises */ 
+	@Override
+	public DutchFlagWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+		return (DutchFlagWorld) super.replaceEntities(newEntitySupplier);
+	}
+
+	/** Ensures that the provided engine can be used to solve Pancake exercises */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
           if (lang.isPython()) {

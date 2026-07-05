@@ -1,6 +1,7 @@
 package lessons.recursion.lego.dragoncurve;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
@@ -43,6 +44,7 @@ public class DragonCurve2 extends ExerciseTemplated {
 		myWorlds[6].setParameter(new Object[] {15,100.,100.,200., 200.});		
 		new Turtle(myWorlds[6], "Lee", 100, 100, 0, Color.red);
 
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(DragonCurve2Entity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}	
 	

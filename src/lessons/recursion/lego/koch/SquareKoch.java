@@ -1,7 +1,9 @@
 package lessons.recursion.lego.koch;
 
 import java.awt.Color;
+import java.util.Arrays;
 
+import lessons.recursion.lego.dragoncurve.DragonCurve2Entity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
@@ -38,7 +40,8 @@ public class SquareKoch extends ExerciseTemplated {
 		myWorlds[5] = new TurtleWorld("snowSquare(5,200)", 400, 400);
 		myWorlds[5].setParameter(new Object[] {5,200.});		
 		new Turtle(myWorlds[5], "Hawksbill", 100, 300,-90, Color.red);
-		
+
+		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(SquareKochEntity::new)).toList().toArray(new World[0]);
 		setup(myWorlds);
 	}
 }

@@ -1,6 +1,7 @@
 package lessons.sort.baseball.universe;
 
 import java.util.Vector;
+import java.util.function.Supplier;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -14,6 +15,7 @@ import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
+import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
@@ -159,6 +161,11 @@ public class BaseballWorld extends World {
 					sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
 		return sb.toString();
+	}
+
+	@Override
+	public BaseballWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+		return (BaseballWorld) super.replaceEntities(newEntitySupplier);
 	}
 
 	public boolean equals(Object other) {

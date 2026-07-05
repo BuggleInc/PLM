@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
@@ -18,6 +19,7 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public abstract class World {
 	private boolean isDelayed = false; // whether we display interactively or not
@@ -77,7 +79,29 @@ public abstract class World {
 		notifyWorldUpdatesListeners();
 	}
 
-	public String getName() {
+    /**
+     * Replace entities inside the world with a new entity type
+     * Principally used when parsing to override the parsed entity type
+     *
+     * @param newEntitySupplier The supplier creating a new instance of the new entity type
+     *
+     * @return for chaining purposes
+     */
+    public World replaceEntities(Supplier<? extends Entity> newEntitySupplier) {
+        setEntities(
+                getEntities()
+                    .stream().map(entity -> {
+                        Entity buggle = newEntitySupplier.get();
+                        buggle.copy(entity);
+                        return buggle;
+                    }).toList()
+        );
+
+        return this;
+    }
+
+
+    public String getName() {
 		return this.name;
 	}
 
