@@ -463,7 +463,7 @@
             <include>**/gui/MainFrameSmokeTest.java</include>
             <include>**/universe/bat/ValueFormatterTest.java</include>
           </includes>
-          <argLine>-Djava.awt.headless=false</argLine>
+          <argLine>${argLine} -Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
           <!-- Run each test class in its own JVM. PLM is full of singletons
