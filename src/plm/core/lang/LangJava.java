@@ -623,7 +623,8 @@ public class LangJava extends JVMCompiledLang {
 
             final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
-            final String code = "import static Remote.*;\n\npublic class " + name + " {" + ("\n" + type_declarations + "\n" + implementations).replace("\n", "\n\t") + "\n}";
+            final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\n\npublic class " + name + " {" +
+                                ("\n" + type_declarations + "\n" + implementations).replace("\n", "\n\t") + "\n}";
 
             System.err.println("XXX Generating " + folder + "/" + name + ".java");
             Files.writeString(new File(folder, name + ".java").toPath(), code);

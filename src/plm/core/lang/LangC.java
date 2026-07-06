@@ -495,13 +495,13 @@ public class LangC extends ProgrammingLanguage {
 
             final String guard = name.toUpperCase() + "_H";
 
-            final String header_prefix = "#ifndef " + guard + "\n" +
-                    "#define " + guard + "\n" +
-                    "\n" +
-                    "#include <stdio.h>\n" +
-                    "#include <stdlib.h>\n" +
-                    "#include <stdarg.h>\n" +
-                    "#include <string.h>";
+            final String header_prefix = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#ifndef " + guard + "\n"
+                                         + "#define " + guard + "\n"
+                                         + "\n"
+                                         + "#include <stdio.h>\n"
+                                         + "#include <stdlib.h>\n"
+                                         + "#include <stdarg.h>\n"
+                                         + "#include <string.h>";
             final String header_suffix = "#endif";
 
             final String type_declarations = involved.stream().map(this::getTypeDeclaration)
@@ -513,7 +513,7 @@ public class LangC extends ProgrammingLanguage {
 
             final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
-            final String code = "#include \"../include/" + name + ".h\"\n\n" + implementations;
+            final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#include \"../include/" + name + ".h\"\n\n" + implementations;
 
             // System.err.println("XXX Generating "+folder+name+".h\n"+header);
             Files.writeString(new File(folder, name + ".h").toPath(), header);
