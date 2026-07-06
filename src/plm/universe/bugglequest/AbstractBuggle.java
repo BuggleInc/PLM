@@ -314,26 +314,25 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
         private boolean lookAtWall(Direction delta)
         {
           BuggleWorldCell cell;
-          switch (delta.intValue()) {
-            case Direction.NORTH_VALUE: /* looking up is easy */
-              cell = getCell();
-              return cell.hasTopWall();
-
-            case Direction.WEST_VALUE: /* looking to the left also */
-              cell = getCell();
-              return cell.hasLeftWall();
-
-            case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower */
-              cell = getCellFromLesson(getX(), (getY() + 1) % getWorldHeight());
-              return cell.hasTopWall();
-
-            case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell */
-              cell = getCellFromLesson((getX() + 1) % getWorldWidth(), getY());
-              return cell.hasLeftWall();
-
-            default:
-              throw new RuntimeException("Invalid direction: " + delta);
-          }
+            return switch (delta) {
+                case NORTH -> {
+                    cell = getCell();
+                    yield cell.hasTopWall();
+                }
+                case WEST -> {
+                    cell = getCell();
+                    yield cell.hasLeftWall();
+                }
+                case SOUTH -> {
+                    cell = getCellFromLesson(getX(), (getY() + 1) % getWorldHeight());
+                    yield cell.hasTopWall();
+                }
+                case EAST -> {
+                    cell = getCellFromLesson((getX() + 1) % getWorldWidth(), getY());
+                    yield cell.hasLeftWall();
+                }
+                default -> throw new RuntimeException("Invalid direction: " + delta);
+            };
         }
         @Override
         public boolean isFacingWall() { return lookAtWall(getDirection()); }

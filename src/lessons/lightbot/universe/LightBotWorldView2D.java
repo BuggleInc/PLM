@@ -114,22 +114,13 @@ public class LightBotWorldView2D extends WorldView {
 		double cx = cell.getX();
 		double cy = cell.getY();
 		
-		double angle = 0.;
-		switch (bot.getDirection().intValue()) {
-		case Direction.NORTH_VALUE:
-			angle = Math.PI;
-			break;
-		case Direction.SOUTH_VALUE:
-			angle = 0.;
-			break;
-		case Direction.EAST_VALUE:
-			angle = -Math.PI/2.;
-			break;
-		case Direction.WEST_VALUE:
-			angle = Math.PI/2;
-			break;
-		}
-		g.rotate(angle, cx*LightBotWorldView2D.CELL_WIDTH+width/2., cy*LightBotWorldView2D.CELL_WIDTH+height/2.);
+		double angle = switch (bot.getDirection()) {
+            case NORTH -> Math.PI;
+            case SOUTH -> 0.;
+            case EAST -> -Math.PI / 2.;
+            case WEST -> Math.PI / 2;
+        };
+        g.rotate(angle, cx*LightBotWorldView2D.CELL_WIDTH+width/2., cy*LightBotWorldView2D.CELL_WIDTH+height/2.);
 		
 		g.setColor(LightBotWorldView2D.BOT_COLOR);
 		g.fill(new Arc2D.Double((cx-0.25)*LightBotWorldView2D.CELL_WIDTH,(cy+0.1)*LightBotWorldView2D.CELL_WIDTH,1.5*width,1.5*height,60,60, Arc2D.PIE));		
