@@ -6,7 +6,7 @@ import java.util.Vector;
 import org.python.core.PyInstance;
 import plm.core.lang.ProgrammingLanguage;
 
-class ValueFormatter {
+public class ValueFormatter {
   // Collapses List, RecList, Integer[], Vector into one canonical internal type
   static Object normalize(Object value)
   {
