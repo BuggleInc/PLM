@@ -1,37 +1,29 @@
 package plm.core.lang.primitives;
 
 import com.google.common.io.Files;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.sort.baseball.universe.BaseballEntity;
 import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import lessons.sort.pancake.universe.PancakeEntity;
-import org.reflections.Reflections;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
-import plm.core.lang.LangPython;
 import plm.universe.Entity;
+import plm.universe.bat.BatEntity;
 import plm.universe.bugglequest.AbstractBuggle;
 import plm.universe.sort.SortingEntity;
 import plm.universe.turtles.Turtle;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 public class CodeCreation {
     public static void main(String[] args) throws IOException {
         File folder = new File("target/classes/resources/langages/");
 
-        Map<String, Class<? extends Entity>> remoteMap = Map.of(
-                "RemoteBuggle", AbstractBuggle.class,
-                "RemoteSort", SortingEntity.class,
-                "RemoteTurtle", Turtle.class,
-                "RemotePancake", PancakeEntity.class,
-                "RemoteHanoi", HanoiEntity.class,
-                "RemoteBaseball", BaseballEntity.class,
-                "RemoteFlag", DutchFlagEntity.class
-        );
+        Map<String, Class<? extends Entity>> remoteMap =
+            Map.of("RemoteBat", BatEntity.class, "RemoteBuggle", AbstractBuggle.class, "RemoteSort", SortingEntity.class, "RemoteTurtle", Turtle.class,
+                   "RemotePancake", PancakeEntity.class, "RemoteHanoi", HanoiEntity.class, "RemoteBaseball", BaseballEntity.class, "RemoteFlag",
+                   DutchFlagEntity.class);
 
         LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
         File cFolder = new File(folder, "c");

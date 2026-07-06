@@ -1,5 +1,7 @@
 package plm.universe.bat;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 import javax.script.ScriptEngine;
@@ -46,6 +48,18 @@ public class BatWorld extends World {
   }
   @Override public WorldView getView() { return new BatWorldView(this); }
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_bat.png"); }
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    BatEntity e = (BatEntity)getEntity(0);
+    int i       = 0;
+    for (BatTest t : tests) {
+      writer.write(t.toString());
+      writer.write("  ");
+      writer.write(e.getTest(i));
+      writer.write("\n");
+      i++;
+    }
+  }
 
   /* So that the view can display them */
   protected List<BatTest> getTests() { return tests; }

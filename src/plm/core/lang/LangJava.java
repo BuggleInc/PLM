@@ -109,33 +109,27 @@ public class LangJava extends JVMCompiledLang {
     }
 
     private static String getRemote(String code) {
-        String remote;
+      if (code.contains("Langton") || code.contains("Turmite"))
+        return null;
 
-        if (code.contains("Langton") || code.contains("Turmite")) {
-            return null;
-        }
-        if (code.contains(".bat.")) {
-            return null;
-        }
-        if (code.contains("Buggle")) {
-            remote = "RemoteBuggle";
-        } else if (code.contains("Turtle")) {
-            remote = "RemoteTurtle";
-        } else if (code.contains("Flag")) {
-            remote = "RemoteFlag";
-        } else if (code.contains("Baseball")) {
-            remote = "RemoteBaseball";
-        } else if (code.contains("Pancake")) {
-            remote = "RemotePancake";
-        } else if (code.contains("Hanoi")) {
-            remote = "RemoteHanoi";
-        } else if (code.contains("Sort")) {
-            remote = "RemoteSort";
-        } else {
-            return null;
-        }
+      if (code.contains(".bat."))
+        return "RemoteBat";
+      if (code.contains("Buggle"))
+        return "RemoteBuggle";
+      if (code.contains("Turtle"))
+        return "RemoteTurtle";
+      if (code.contains("Flag"))
+        return "RemoteFlag";
+      if (code.contains("Baseball"))
+        return "RemoteBaseball";
+      if (code.contains("Pancake"))
+        return "RemotePancake";
+      if (code.contains("Hanoi"))
+        return "RemoteHanoi";
+      if (code.contains("Sort"))
+        return "RemoteSort";
 
-        return remote;
+      return null;
     }
 
     private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException {
@@ -631,7 +625,7 @@ public class LangJava extends JVMCompiledLang {
 
             final String code = "import static Remote.*;\n\npublic class " + name + " {" + ("\n" + type_declarations + "\n" + implementations).replace("\n", "\n\t") + "\n}";
 
-            // System.err.println("XXX Generating "+folder+name+".c");
+            System.err.println("XXX Generating " + folder + "/" + name + ".java");
             Files.writeString(new File(folder, name + ".java").toPath(), code);
         }
     }

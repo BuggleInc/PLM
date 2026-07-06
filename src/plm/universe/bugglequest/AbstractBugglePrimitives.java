@@ -1,6 +1,5 @@
 package plm.universe.bugglequest;
 
-import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.Primitive;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
