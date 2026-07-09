@@ -138,9 +138,17 @@ public class ValueSerializer {
       StringBuilder sb = new StringBuilder();
       while (pos < input.length()) {
         char c = input.charAt(pos);
-        if (c == '\\' && pos + 1 < input.length() && input.charAt(pos + 1) == '"') {
+        if (c == '\\' && pos + 1 == input.length()) {
+          throw new IllegalArgumentException("Parse error: The last char of a string cannot be an unescaped backslash (ie, the char '\\' alone).");
+        } else if (c == '\\' && input.charAt(pos + 1) == '"') { // The following condition is granted at this point: pos + 1 < input.length()"
           sb.append('"');
           pos += 2;
+        } else if (c == '\\' && input.charAt(pos + 1) == '\\') {
+          sb.append('\\');
+          pos += 2;
+        } else if (c == '\\') {
+          throw new IllegalArgumentException("Parse error: Only quotes and backslashes can be escaped, but found the sequence <\\" + input.charAt(pos + 1) +
+                                             ">");
         } else if (c == '"') {
           pos++; // Skip closing '"'
           return sb.toString();
