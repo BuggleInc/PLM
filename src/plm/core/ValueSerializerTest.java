@@ -110,6 +110,20 @@ public class ValueSerializerTest {
     assertEquals(input, ValueSerializer.serialize(result));
   }
 
+  @Test void deserialize_nestedArray_size1_serializesCorrectly()
+  {
+    String input    = "[1:[1:i2]]";
+    Object[] result = (Object[])ValueSerializer.deserialize(input);
+    assertEquals(1, result.length);
+
+    assertTrue(result[0] instanceof Object[]);
+    Object[] nested = (Object[])result[0];
+    assertEquals(1, nested.length);
+    assertEquals(2, nested[0]);
+
+    assertEquals(input, ValueSerializer.serialize(result));
+  }
+
   @Test void deserialize_emptyArray_returnsEmptyObjectArray()
   {
     String input    = "[0]";
