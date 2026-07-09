@@ -31,11 +31,7 @@ public abstract class BatEntity extends Entity implements BatEntityPrimitives {
 
   @Override public int getTestCount() { return ((BatWorld)world).getTests().size(); }
   @Override public String getTest(int i) { return serialize(((BatWorld)world).getTests().get(i).parameters); }
-  @Override public void setTestResult(int i, String str)
-  {
-    ((BatWorld)world).getTests().get(i).setResult(deserialize(str));
-    System.err.println("Got the serialized(" + i + "," + str + "), of type " + ((BatWorld)world).getTests().get(i).getResult().getClass());
-  }
+  @Override public void setTestResult(int i, String str) { ((BatWorld)world).getTests().get(i).setResult(deserialize(str)); }
 
   @Override public String getScript(ProgrammingLanguage lang)
   {
