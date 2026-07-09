@@ -12,7 +12,7 @@ public class IncreasingEntity extends ConsEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(increasing(RecList.fromArray((int[])param[0]))));
+      setTestResult(i, serialize(increasing(RecList.fromArray(toPrimitive(toArrayOfType(param[0], Integer.class))))));
     }
   }
 

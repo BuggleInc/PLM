@@ -11,7 +11,7 @@ public class Array123Entity extends BatEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(array123((int[])param[0])));
+      setTestResult(i, serialize(array123(toPrimitive(toArrayOfType(param[0], Integer.class)))));
     }
   }
 

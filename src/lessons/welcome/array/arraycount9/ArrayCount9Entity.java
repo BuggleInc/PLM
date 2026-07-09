@@ -11,7 +11,7 @@ public class ArrayCount9Entity extends BatEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(arrayCount9((int[])param[0])));
+      setTestResult(i, serialize(arrayCount9(toPrimitive(toArrayOfType(param[0], Integer.class)))));
     }
   }
 

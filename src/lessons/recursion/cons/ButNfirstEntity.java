@@ -1,10 +1,9 @@
 package lessons.recursion.cons;
 
-import static plm.core.ValueSerializer.deserialize;
-import static plm.core.ValueSerializer.serialize;
-
 import lessons.recursion.cons.universe.ConsEntity;
 import lessons.recursion.cons.universe.RecList;
+
+import static plm.core.ValueSerializer.*;
 
 public class ButNfirstEntity extends ConsEntity {
 
@@ -13,7 +12,7 @@ public class ButNfirstEntity extends ConsEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(butNfirst(RecList.fromArray((int[])param[0]), (Integer)param[1])));
+      setTestResult(i, serialize(butNfirst(RecList.fromArray(toPrimitive(toArrayOfType(param[0], Integer.class))), (Integer)param[1])));
     }
   }
 

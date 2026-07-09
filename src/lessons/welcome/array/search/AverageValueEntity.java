@@ -11,7 +11,7 @@ public class AverageValueEntity extends BatEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(averageValue((int[])param[0])));
+      setTestResult(i, serialize(averageValue(toPrimitive(toArrayOfType(param[0], Integer.class)))));
     }
   }
 
