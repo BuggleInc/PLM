@@ -3,14 +3,12 @@ package plm.core.model.session;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import javax.swing.JScrollPane;
-
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.Lesson;
 import plm.core.ui.JavaEditorPanel;
-
 
 public class SourceFile {
 
@@ -88,63 +86,65 @@ public class SourceFile {
 			for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
-				if (pattern.getValue().contains("\n")) {
-					System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
-							+"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
-					System.out.println("pattern key: "+pattern.getKey());
-					System.out.println("pattern value: "+pattern.getValue());
-					System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
-					System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
-					System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
-					System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
-				}
-			}
-		return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
-	}
+                                if (pattern.getValue().contains("\n")) {
+                                  System.out.println(
+                                      "Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
+                                      + "Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
+                                  System.out.println("pattern key: " + pattern.getKey());
+                                  System.out.println("pattern value: " + pattern.getValue());
 
-	public void setListener(ISourceFileListener l) {
-		this.listener = l;
-	}
+                                  Lesson lesson = Game.getInstance().getCurrentLesson();
+                                  String exo    = lesson == null ? "unknown" : lesson.getCurrentExercise().getName();
+                                  System.out.println("Exercise: " + exo);
 
-	public void removeListener() {
-		this.listener = null;
-	}
+                                  System.out.println("PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" +
+                                                     Game.getProperty("plm.major.version", "internal", false) + "." +
+                                                     Game.getProperty("plm.minor.version", "", false) + ")");
+                                  System.out.println("Java version: " + System.getProperty("java.version") +
+                                                     " (VM version: " + System.getProperty("java.vm.version") + ")");
+                                  System.out.println("System: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") +
+                                                     "; arch: " + System.getProperty("os.arch") + ")");
+                                }
+                        }
+                return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
+        }
 
-	public void notifyListener() {
-		if (this.listener != null)
-			this.listener.sourceFileContentHasChanged();
-	}
+        public void setListener(ISourceFileListener l) { this.listener = l; }
 
-	@Override
-	public int hashCode() {
-		final int PRIME = 31;
-		int result = 1;
-		result = PRIME * result + ((body == null) ? 0 : body.hashCode());
-		return result;
-	}
+        public void removeListener() { this.listener = null; }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final SourceFile other = (SourceFile) obj;
-		if (body == null) {
-			if (other.body != null)
-				return false;
-		} else if (!body.equals(other.body))
-			return false;
-		return true;
-	}
+        public void notifyListener()
+        {
+          if (this.listener != null)
+            this.listener.sourceFileContentHasChanged();
+        }
 
-	public JScrollPane getEditorPanel(ProgrammingLanguage lang) {
-		return new JavaEditorPanel(this, lang);
-	}
+        @Override public int hashCode()
+        {
+          final int PRIME = 31;
+          int result      = 1;
+          result          = PRIME * result + ((body == null) ? 0 : body.hashCode());
+          return result;
+        }
 
-	public int getOffset() {
-		return offset;
-	}
+        @Override public boolean equals(Object obj)
+        {
+          if (this == obj)
+            return true;
+          if (obj == null)
+            return false;
+          if (getClass() != obj.getClass())
+            return false;
+          final SourceFile other = (SourceFile)obj;
+          if (body == null) {
+            if (other.body != null)
+              return false;
+          } else if (!body.equals(other.body))
+            return false;
+          return true;
+        }
+
+        public JScrollPane getEditorPanel(ProgrammingLanguage lang) { return new JavaEditorPanel(this, lang); }
+
+        public int getOffset() { return offset; }
 }
