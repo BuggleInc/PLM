@@ -71,9 +71,8 @@ public class ExoTest {
           System.exit(1);
         }
       } catch (Throwable t) {
-        System.err.println("Switching to lesson " + lessonName + " raised a " + t.getClass().getName() +
-                           ". Please fix it.");
         t.printStackTrace();
+        Assertions.fail("Switching to lesson " + lessonName + " raised a " + t.getClass().getName(), t);
       }
 
       System.out.println("Lesson " + lessonName + " loaded (" + g.getCurrentLesson().getExerciseCount() +
