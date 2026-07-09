@@ -127,8 +127,21 @@ public class ValueSerializerTest {
   @Test void deserialize_emptyArray_returnsEmptyObjectArray()
   {
     String input    = "[0]";
-    Object[] result = (Object[])ValueSerializer.deserialize("[0]");
+    Object[] result = (Object[])ValueSerializer.deserialize(input);
     assertEquals(0, result.length);
+
+    assertEquals(input, ValueSerializer.serialize(result));
+  }
+
+  @Test void deserialize_nestedEmptyArray_returnsEmptyObjectArray()
+  {
+    String input    = "[1:[0]]";
+    Object[] result = (Object[])ValueSerializer.deserialize(input);
+    assertEquals(1, result.length);
+
+    assertTrue(result[0] instanceof Object[]);
+    Object[] nested = (Object[])result[0];
+    assertEquals(0, nested.length);
 
     assertEquals(input, ValueSerializer.serialize(result));
   }

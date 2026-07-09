@@ -101,8 +101,10 @@ public class ValueSerializer {
     private Object[] parseArray()
     {
       pos++; // Skip '['
-      if (input.charAt(pos) == '0')
+      if (input.charAt(pos) == '0') {
+        pos += 2;
         return new Object[0];
+      }
 
       int colonIdx = input.indexOf(':', pos);
       if (colonIdx == -1) {
