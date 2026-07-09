@@ -444,8 +444,11 @@ public class LangJava extends JVMCompiledLang {
                         } finally {
                             reader.close();
                         }
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
+                    } catch (Throwable t) {
+                      t.printStackTrace();
+                      progress.outcome        = RunOutcome.kind.FAIL;
+                      progress.executionError = t.getMessage();
+                      process.destroyForcibly();
                     }
                 }
             };
