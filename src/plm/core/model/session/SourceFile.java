@@ -86,7 +86,7 @@ public class SourceFile {
 			for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 				res = res.replaceAll(pattern.getKey(), pattern.getValue());
 				// This is a trap to find issue #42 that I fail to reproduce
-                                if (pattern.getValue().contains("\n")) {
+                                if (pattern.getValue().contains("\n") && !pattern.getKey().equals("\\$run")) {
                                   System.out.println(
                                       "Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
                                       + "Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
