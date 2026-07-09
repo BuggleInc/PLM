@@ -1,12 +1,18 @@
 package lessons.bat.string1
 
+import plm.core.ValueSerializer
 import plm.universe.bat.BatEntity
-import plm.universe.bat.BatTest
 
 class ScalaLast2Entity extends BatEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( last2(t.getParameter(0).asInstanceOf[String]) );
+    override def run() {
+      import ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+        setTestResult(i, serialize(last2(param(0).asInstanceOf[String])) )
+    }
 	}
 
 	/* BEGIN TEMPLATE */

@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Vector;
 
 public abstract class Remote {
 

@@ -5,8 +5,14 @@ import plm.universe.bat.BatTest
 
 class ScalaLessBy10Entity extends BatEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( lessBy10(t.getParameter(0).asInstanceOf[Int], t.getParameter(1).asInstanceOf[Int], t.getParameter(2).asInstanceOf[Int]) );
+    override def run() {
+      import plm.core.ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+      	setTestResult(i, serialize(lessBy10(param(0).asInstanceOf[Int], param(1).asInstanceOf[Int], param(2).asInstanceOf[Int]) ))
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

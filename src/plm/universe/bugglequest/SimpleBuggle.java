@@ -43,123 +43,141 @@ public class SimpleBuggle extends AbstractBuggle  {
 		try { 
 			super.stepForward();
 		} catch (BuggleWallException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
+                  if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+                    throw new RuntimeException(e);
+                  if (!haveSeenError())
+                    javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"),
+                                                              javax.swing.JOptionPane.ERROR_MESSAGE);
+                  seenError();
+                }
+        }
 
-	@Override
-	public void forward(int count)  {
-		try { 
-			super.forward(count);
-		} catch (BuggleWallException e) { 
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
+        @Override public void forward(int count)
+        {
+          try {
+            super.forward(count);
+          } catch (BuggleWallException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
 
-	@Override
-	public void stepBackward()  {
-		try { 
-			super.stepBackward();
-		} catch (BuggleWallException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
+        @Override public void stepBackward()
+        {
+          try {
+            super.stepBackward();
+          } catch (BuggleWallException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
 
-	@Override
-	public void backward(int count)  {
-		try { 
-			super.backward(count);
-		} catch (BuggleWallException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
+        @Override public void backward(int count)
+        {
+          try {
+            super.backward(count);
+          } catch (BuggleWallException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
 
-	@Deprecated
-	@Override
-	public void pickUpBaggle () { 
-		pickupBaggle();
-	}
-	@Override
-	public void pickupBaggle () { 
-		try { 
-			super.pickupBaggle(); 
-		} catch (NoBaggleUnderBuggleException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		} catch (AlreadyHaveBaggleException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
+        @Deprecated @Override public void pickUpBaggle() { pickupBaggle(); }
+        @Override public void pickupBaggle()
+        {
+          try {
+            super.pickupBaggle();
+          } catch (NoBaggleUnderBuggleException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          } catch (AlreadyHaveBaggleException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
 
-	@Override
-	public void dropBaggle () { 
-		try { 
-			super.dropBaggle(); 
-		} catch (AlreadyHaveBaggleException e) { 
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		} catch (DontHaveBaggleException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}	
-	@Override 
-	public void setX(int x) {
-		try {
-			super.setX(x);
-		} catch (BuggleInOuterSpaceException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-	@Override 
-	public void setY(int y) {
-		try {
-			super.setY(y);
-		} catch (BuggleInOuterSpaceException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-	@Override 
-	public void setPos(int x,int y) {
-		try {
-			super.setPos(x,y);
-		} catch (BuggleInOuterSpaceException e) {
-			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
-		}
-	}
-	
-	/* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
-	public void avance()          { stepForward(); }
-	public void avance(int steps) { forward(steps); }
-	public void recule()          { stepBackward(); }
-	public void recule(int steps) { backward(steps); }
-	public void prendBiscuit()    { pickupBaggle(); }
-	public void poseBiscuit()     { dropBaggle(); }
-	/* BINDINGS TRANSLATION: Brazilian Portuguese */
-	public void avançar()          { stepForward(); }
-	public void avançar(int steps) { forward(steps); }
-	public void recuar()          { stepBackward(); }
-	public void recuar(int steps) { backward(steps); }
-	public void pegarBaggle()    { pickupBaggle(); }
-	public void soltarBaggle()     { dropBaggle(); }
+        @Override public void dropBaggle()
+        {
+          try {
+            super.dropBaggle();
+          } catch (AlreadyHaveBaggleException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          } catch (DontHaveBaggleException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
+        @Override public void setX(int x)
+        {
+          try {
+            super.setX(x);
+          } catch (BuggleInOuterSpaceException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
+        @Override public void setY(int y)
+        {
+          try {
+            super.setY(y);
+          } catch (BuggleInOuterSpaceException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
+        @Override public void setPos(int x, int y)
+        {
+          try {
+            super.setPos(x, y);
+          } catch (BuggleInOuterSpaceException e) {
+            if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
+              throw new RuntimeException(e);
+            if (!haveSeenError())
+              javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
+            seenError();
+          }
+        }
 
+        /* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
+        public void avance() { stepForward(); }
+        public void avance(int steps) { forward(steps); }
+        public void recule() { stepBackward(); }
+        public void recule(int steps) { backward(steps); }
+        public void prendBiscuit() { pickupBaggle(); }
+        public void poseBiscuit() { dropBaggle(); }
+        /* BINDINGS TRANSLATION: Brazilian Portuguese */
+        public void avançar() { stepForward(); }
+        public void avançar(int steps) { forward(steps); }
+        public void recuar() { stepBackward(); }
+        public void recuar(int steps) { backward(steps); }
+        public void pegarBaggle() { pickupBaggle(); }
+        public void soltarBaggle() { dropBaggle(); }
 }

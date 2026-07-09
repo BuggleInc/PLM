@@ -1,12 +1,18 @@
 package lessons.bat.string1
 
+import plm.core.ValueSerializer
 import plm.universe.bat.BatEntity
-import plm.universe.bat.BatTest
 
 class ScalaStringMatchEntity extends BatEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( stringMatch(t.getParameter(0).asInstanceOf[String], t.getParameter(1).asInstanceOf[String]) );
+    override def run() {
+      import ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+        setTestResult(i, serialize(stringMatch(param(0).asInstanceOf[String], param(1).asInstanceOf[String])) )
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

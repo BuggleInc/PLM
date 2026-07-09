@@ -1,11 +1,19 @@
 package lessons.bat.string1;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class AltPairsEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(altPairs((String)t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(altPairs((String)param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   public String altPairs(String str)

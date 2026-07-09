@@ -1,11 +1,19 @@
 package lessons.welcome.array.golomb;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class GolombEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(golomb((int)t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(golomb((Integer)param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   int golomb(int num)

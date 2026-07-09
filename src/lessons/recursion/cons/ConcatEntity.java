@@ -1,14 +1,19 @@
 package lessons.recursion.cons;
 
+import static plm.core.ValueSerializer.*;
+
 import lessons.recursion.cons.universe.ConsEntity;
 import lessons.recursion.cons.universe.RecList;
-import plm.universe.bat.BatTest;
 
 public class ConcatEntity extends ConsEntity {
 
-  public void run(BatTest t)
+  public void run()
   {
-    t.setResult(concat(RecList.fromArray((int[])t.getParameter(0)), RecList.fromArray((int[])t.getParameter(1))));
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(concat(RecList.fromArray((int[])param[0]), RecList.fromArray((int[])param[1]))));
+    }
   }
 
   /* BEGIN TEMPLATE */

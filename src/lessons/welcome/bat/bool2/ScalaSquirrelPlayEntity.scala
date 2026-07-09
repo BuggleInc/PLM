@@ -5,8 +5,14 @@ import plm.universe.bat.BatTest
 
 class ScalaSquirrelPlayEntity extends BatEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( squirrelPlay(t.getParameter(0).asInstanceOf[Int], t.getParameter(1).asInstanceOf[Boolean]) );
+    override def run() {
+      import plm.core.ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+      	setTestResult(i, serialize(squirrelPlay(param(0).asInstanceOf[Int], param(1).asInstanceOf[Boolean]) ))
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

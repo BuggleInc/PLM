@@ -1,13 +1,19 @@
 package lessons.welcome.bat.bool2;
 
+import static plm.core.ValueSerializer.deserialize;
+import static plm.core.ValueSerializer.serialize;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class GreenTicketEntity extends BatEntity {
 
-  public void run(BatTest t)
+  public void run()
   {
-    t.setResult(greenTicket((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)));
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(greenTicket((Integer)param[0], (Integer)param[1], (Integer)param[2])));
+    }
   }
 
   /* BEGIN TEMPLATE */

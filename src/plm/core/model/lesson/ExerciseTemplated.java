@@ -404,15 +404,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				/* I/O didn't work. We have to load the files manually */
                                 RunOutcome progress = new RunOutcome();
 
-                                // In all language but C, the correction is either directly usable (interpreted) or
-                                // already compiled in the jarfile
+                                // In all in-JVM languages, the correction is either directly usable (interpreted) or already compiled in the jarfile
+                                // We need to recompile for remote languages, aka C and Java for now
                                 if (Game.getInstance().getProgrammingLanguage().isC() || Game.getInstance().getProgrammingLanguage().isJava()) {
                                   try {
-                                    // TODO BAT remove if bat will be implemented in C
-                                    if (!id.contains("bat.string1.lessons.bat") &&
-                                        !id.contains("welcome.lessons.welcome.bat") &&
-                                        !id.contains("welcome.lessons.welcome.array"))
-                                      compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+                                    compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
                                   } catch (PLMCompilerException e) {
                                     System.err.println("Severe error: the correction of exercise " + id +
                                                        " cannot be compiled in C. Please go fix your PLM.");
@@ -425,7 +421,8 @@ public abstract class ExerciseTemplated extends Exercise {
 
 				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) {
-                                          ent.setScript(Game.getInstance().programmingLanguageManager.C, id);
+                                          if (!Game.getInstance().getProgrammingLanguage().isC() && !Game.getInstance().getProgrammingLanguage().isJava())
+                                            ent.setScript(Game.getInstance().getProgrammingLanguage(), id);
                                           Game.getInstance().getProgrammingLanguage().runEntity(ent, progress);
                                         }
 					aw.setAnswerWorld();

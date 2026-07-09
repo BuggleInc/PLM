@@ -6,8 +6,14 @@ import lessons.recursion.cons.universe.ConsEntity
 
 class ScalaLengthEntity extends ConsEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( length( t.getParameter(0).asInstanceOf[Array[Int]].toList ) );
+    override def run() {
+      import plm.core.ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+      	setTestResult(i, serialize(length( param(0).asInstanceOf[Array[Int]].toList ) ))
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

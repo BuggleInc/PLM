@@ -1,11 +1,19 @@
 package lessons.bat.string1;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class StringMatchEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(stringMatch((String)t.getParameter(0), (String)t.getParameter(1))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(stringMatch((String)param[0], (String)param[1])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   int stringMatch(String a, String b)

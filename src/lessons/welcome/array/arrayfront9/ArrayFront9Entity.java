@@ -1,11 +1,19 @@
 package lessons.welcome.array.arrayfront9;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class ArrayFront9Entity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(arrayFront9((int[])t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(arrayFront9((int[])param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   boolean arrayFront9(int[] nums)

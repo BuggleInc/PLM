@@ -15,7 +15,6 @@
 
 static FILE* debug_fd = NULL; // Where to send the debug info if not NULL
 static char answer_buffer[1024];
-
 static void get_answer_line() {
   if (fgets(answer_buffer, sizeof(answer_buffer), stdin) == NULL) {
     exit(1);
@@ -28,7 +27,6 @@ int get_answer_int() {
   get_answer_line();
   return (int)strtol(answer_buffer, NULL, 10);
 }
-
 double get_answer_double() {
   get_answer_line();
   return strtod(answer_buffer, NULL);

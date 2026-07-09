@@ -1,13 +1,18 @@
 package lessons.welcome.bat.bool1;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class HasTeenEntity extends BatEntity {
 
-  public void run(BatTest t)
+  public void run()
   {
-    t.setResult(hasTeen((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)));
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(hasTeen((Integer)param[0], (Integer)param[1], (Integer)param[2])));
+    }
   }
 
   /* BEGIN TEMPLATE */

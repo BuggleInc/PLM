@@ -5,8 +5,14 @@ import plm.universe.bat.BatTest
 
 class ScalaMakes10Entity extends BatEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( makes10(t.getParameter(0).asInstanceOf[Int],t.getParameter(1).asInstanceOf[Int]) );
+    override def run() {
+      import plm.core.ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+      	setTestResult(i, serialize(makes10(param(0).asInstanceOf[Int],param(1).asInstanceOf[Int]) ))
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

@@ -1,13 +1,19 @@
 package lessons.welcome.bat.bool2;
 
+import static plm.core.ValueSerializer.deserialize;
+import static plm.core.ValueSerializer.serialize;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class AnswerCellEntity extends BatEntity {
 
-  public void run(BatTest t)
+  public void run()
   {
-    t.setResult(answerCell((Boolean)t.getParameter(0), (Boolean)t.getParameter(1), (Boolean)t.getParameter(2)));
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(answerCell((Boolean)param[0], (Boolean)param[1], (Boolean)param[2])));
+    }
   }
 
   /* BEGIN TEMPLATE */

@@ -1,14 +1,19 @@
 package lessons.recursion.cons;
 
+import static plm.core.ValueSerializer.*;
+
 import lessons.recursion.cons.universe.ConsEntity;
 import lessons.recursion.cons.universe.RecList;
-import plm.universe.bat.BatTest;
 
 public class OccurrenceEntity extends ConsEntity {
 
-  public void run(BatTest t)
+  public void run()
   {
-    t.setResult(occurences(RecList.fromArray((int[])t.getParameter(0)), (int)t.getParameter(1)));
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(occurences(RecList.fromArray((int[])param[0]), (Integer)param[1])));
+    }
   }
 
   /* BEGIN TEMPLATE */

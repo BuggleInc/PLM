@@ -19,7 +19,6 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
-import plm.universe.bugglequest.SimpleBuggle;
 
 public abstract class World {
 	private boolean isDelayed = false; // whether we display interactively or not

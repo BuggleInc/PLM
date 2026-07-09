@@ -7,8 +7,14 @@ import lessons.recursion.cons.universe.RecList
 
 class ScalaIncreasingEntity extends ConsEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( increasing( t.getParameter(0).asInstanceOf[Array[Int]].toList ) );
+    override def run() {
+      import plm.core.ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+        setTestResult(i, serialize(increasing( param(0).asInstanceOf[Array[Int]].toList ) ))
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

@@ -1,11 +1,19 @@
 package lessons.welcome.array.array123;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class Array123Entity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(array123((int[])t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(array123((int[])param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   boolean array123(int[] nums)

@@ -1,11 +1,19 @@
 package lessons.welcome.array.search;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class MaxValueEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(maxValue((int[])t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(maxValue((int[])param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   // computes the index of the maximum of the values contained in tab variable

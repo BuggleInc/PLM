@@ -5,8 +5,14 @@ import plm.universe.bat.BatTest
 
 class ScalaSleepInEntity extends BatEntity {
 
-	override def run(t: BatTest) {
-		t.setResult( sleepIn(t.getParameter(0).asInstanceOf[Boolean],t.getParameter(1).asInstanceOf[Boolean]) );
+    override def run() {
+      import plm.core.ValueSerializer._
+
+      val count = getTestCount()
+      for (i <- 0 to count -1) {
+        val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
+      	setTestResult(i, serialize(sleepIn(param(0).asInstanceOf[Boolean],param(1).asInstanceOf[Boolean]) ))
+	  }
 	}
 
 	/* BEGIN TEMPLATE */

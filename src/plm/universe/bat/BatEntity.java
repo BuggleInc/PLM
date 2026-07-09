@@ -1,15 +1,15 @@
 package plm.universe.bat;
 
+import static plm.core.ValueSerializer.*;
+
 import java.io.BufferedWriter;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
-import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
 @EntityPrimitives(BatEntityPrimitives.class)
-public class BatEntity extends Entity implements BatEntityPrimitives {
+public abstract class BatEntity extends Entity implements BatEntityPrimitives {
 
   public BatEntity() { super(); }
 
@@ -29,24 +29,13 @@ public class BatEntity extends Entity implements BatEntityPrimitives {
     return (super.equals(o));
   }
 
-  @Override public void run()
-  {
-    for (BatTest t : ((BatWorld)world).getTests())
-      try {
-        run(t);
-      } catch (Exception e) {
-        t.setResult(Game.i18n.tr("Exception {0}: {1}", e.getClass().getName(), e.getMessage()));
-        e.printStackTrace();
-      }
-  }
-
-  protected void run(BatTest t)
-  {
-    // To be overriden by child classes
-  }
   @Override public int getTestCount() { return ((BatWorld)world).getTests().size(); }
-  @Override public String getTest(int i) { return ValueFormatter.serialize(((BatWorld)world).getTests().get(i).parameters); }
-  @Override public void setTestResult(int i, String str) { ((BatWorld)world).getTests().get(i).setResult(ValueFormatter.deserialize(str)); }
+  @Override public String getTest(int i) { return serialize(((BatWorld)world).getTests().get(i).parameters); }
+  @Override public void setTestResult(int i, String str)
+  {
+    ((BatWorld)world).getTests().get(i).setResult(deserialize(str));
+    System.err.println("Got the serialized(" + i + "," + str + "), of type " + ((BatWorld)world).getTests().get(i).getResult().getClass());
+  }
 
   @Override public String getScript(ProgrammingLanguage lang)
   {

@@ -1,5 +1,7 @@
 package plm.universe.bat;
 
+import static plm.core.ValueSerializer.serialize;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.List;
@@ -8,11 +10,18 @@ import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.World;
 
 public class BatWorld extends World {
+  public static class DefaultBatEntity extends BatEntity {
+    public DefaultBatEntity() {}
+    @Override public void run() throws Exception { throw new UnsupportedOperationException("Unimplemented method 'run'"); }
+  }
+
   public List<BatTest> tests = new Vector<>();
   public BatWorld(String funName, BatEntity ent)
   {
@@ -21,7 +30,7 @@ public class BatWorld extends World {
     addEntity(ent);
   }
 
-  public BatWorld(String funName) { this(funName, new BatEntity()); }
+  public BatWorld(String funName) { this(funName, new DefaultBatEntity()); }
   public BatWorld(BatWorld w2)
   {
     super(w2);
@@ -56,6 +65,12 @@ public class BatWorld extends World {
       writer.write(t.toString());
       writer.write("  ");
       writer.write(e.getTest(i));
+      writer.write(" ~> current:");
+      World current = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.CURRENT).elementAt(0);
+      writer.write(serialize(((BatWorld)current).getTests().get(i).result));
+      writer.write(" ; correction:");
+      World correction = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER).elementAt(0);
+      writer.write(serialize(((BatWorld)correction).getTests().get(i).result));
       writer.write("\n");
       i++;
     }

@@ -1,11 +1,19 @@
 package lessons.welcome.array.array667;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class Array667Entity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(array667((int[])t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(array667((int[])param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   int array667(int[] nums)

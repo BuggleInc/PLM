@@ -1,12 +1,20 @@
 package lessons.recursion.cons;
 
+import static plm.core.ValueSerializer.*;
+
 import lessons.recursion.cons.universe.ConsEntity;
 import lessons.recursion.cons.universe.RecList;
-import plm.universe.bat.BatTest;
 
 public class LastEntity extends ConsEntity {
 
-  public void run(BatTest t) { t.setResult(last(RecList.fromArray((int[])t.getParameter(0)))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(last(RecList.fromArray((int[])param[0]))));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   int last(RecList seq)

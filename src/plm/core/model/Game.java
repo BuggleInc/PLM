@@ -188,10 +188,12 @@ public class Game implements IWorldView {
 				return getCurrentLesson();
 			}
 		}
-		// Prevent obvious error messages
-		if (sessionKit != null)
-			sessionKit.loadLesson(SAVE_DIR, lesson);
-		try {
+                setCurrentLesson(lesson);
+
+                // Prevent obvious error messages
+                if (sessionKit != null)
+                  sessionKit.loadLesson(SAVE_DIR, lesson);
+                try {
 			waitInitThreads();
 		} catch (InterruptedException e) {
 			System.err.println("Interrupted while loading the lesson "+lesson.getName());
@@ -204,12 +206,11 @@ public class Game implements IWorldView {
 					i18n.tr("Broken lesson"), JOptionPane.ERROR_MESSAGE); 
 			return null;
 		}
-			
-		setCurrentLesson(lesson);
-		this.setState(GameState.LOADING_DONE);
-		return lesson;
-	}
-	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
+
+                this.setState(GameState.LOADING_DONE);
+                return lesson;
+        }
+        private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
 	/** Load a new lesson from an external JAR file.
 	 *  
 	 * This will only work if the system classloader is an URLClassLoader. 

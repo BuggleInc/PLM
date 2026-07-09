@@ -1,5 +1,15 @@
 package plm.core.lang;
 
+import java.awt.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.*;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaFileObject;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.CommandArgumentType;
@@ -16,16 +26,6 @@ import plm.core.ui.ResourcesCache;
 import plm.core.utils.ColorMapper;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
-
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaFileObject;
-import java.awt.*;
-import java.io.*;
-import java.nio.file.Files;
-import java.util.*;
-import java.util.List;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class LangJava extends JVMCompiledLang {
     /* Language detection logic */
@@ -306,9 +306,10 @@ public class LangJava extends JVMCompiledLang {
 
                 runtimePatterns.put("\\$run", runFunction);
                 runtimePatterns.put("\\$dependency", dependency);
-                runtimePatterns.put("\\$imports", (
-                        "import static " + packageNameCache + ".Remote.*;\n" +
-                                "import static " + packageNameCache + "." + remote + ".*;\n" + imports).replace('\n', ' '));
+                runtimePatterns.put("\\$imports", ("import static " + packageNameCache + ".ValueSerializer.*;\n"
+                                                   + "import static " + packageNameCache + ".Remote.*;\n"
+                                                   + "import static " + packageNameCache + "." + remote + ".*;\n" + imports)
+                                                      .replace('\n', ' '));
 
                 String template = getCorrectedTemplate(correction);
                 sf.setTemplate(template);
@@ -342,22 +343,29 @@ public class LangJava extends JVMCompiledLang {
                         "}\n";
 
                 try {
-                    Files.writeString(new File(workspace, "Template.txt").toPath(), template);
-                    Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
-                    Files.writeString(mainRemote.toPath(), mainRemoteContent);
-                    Files.writeString(entityRemote.toPath(), entityRemoteContent);
-                    Files.writeString(entityFile.toPath(), entityCode);
-                    Files.writeString(mainFile.toPath(), mainContent);
 
-                    compileJavaFiles(diagnostic, workspace, mainFile, mainRemote, entityRemote, entityFile);
+                  File ValueSerializer          = new File(workspace, "ValueSerializer.java");
+                  String ValueSerializerContent = Files.readString(new File("src/plm/core/ValueSerializer.java").toPath(), StandardCharsets.UTF_8);
+                  ValueSerializerContent        = ValueSerializerContent.replaceFirst("package .*;", "package " + packageNameCache + ";\n");
+                  Files.writeString(ValueSerializer.toPath(), ValueSerializerContent);
 
-                    File jarFile = new File(workspace, "Code.jar");
-                    createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, entityFile, mainRemote, entityRemote);
+                  Files.writeString(new File(workspace, "Template.txt").toPath(), template);
+                  Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
+                  Files.writeString(mainRemote.toPath(), mainRemoteContent);
+                  Files.writeString(entityRemote.toPath(), entityRemoteContent);
+                  Files.writeString(entityFile.toPath(), entityCode);
+                  Files.writeString(mainFile.toPath(), mainContent);
 
-                    sf.meta.put("JAVA", jarFile.toPath().toString());
+                  compileJavaFiles(diagnostic, workspace, mainFile, mainRemote, entityRemote, entityFile, ValueSerializer);
+
+                  File jarFile = new File(workspace, "Code.jar");
+                  createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, entityFile, mainRemote, entityRemote, ValueSerializer,
+                                new File(workspace, "ValueSerializer$Parser.class"));
+
+                  sf.meta.put("JAVA", jarFile.toPath().toString());
 
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                  throw new RuntimeException(e);
                 }
             }
         } catch (PLMCompilerException e) {
@@ -418,14 +426,11 @@ public class LangJava extends JVMCompiledLang {
 
             String cmd = executable;
             File exec = new File(cmd);
-            if (!exec.exists()) {
-                System.err.println(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
-                return;
-            }
+            if (!exec.exists())
+              throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
             ProcessBuilder pb = new ProcessBuilder("java", "-jar", cmd);
-            final Process process = pb.start();
-            long pid = process.pid();
+            final Process process        = pb.start();
             final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 
             Thread reader = new Thread() {
@@ -452,9 +457,9 @@ public class LangJava extends JVMCompiledLang {
                     String str = "";
                     try {
                         while ((str = reader.readLine()) != null) {
-                            System.out.println("EXECUTING COMMAND: " + str);
-                            CommandExecutor.command(ent, str, bwriter);
-                            System.out.println("COMMAND EXECUTED");
+                          //                            System.out.println("EXECUTING COMMAND: " + str);
+                          CommandExecutor.command(ent, str, bwriter);
+                          //                            System.out.println("COMMAND EXECUTED");
                         }
                     } catch (Exception e) {
                         parseError = e;

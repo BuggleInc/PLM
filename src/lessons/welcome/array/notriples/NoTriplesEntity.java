@@ -1,11 +1,19 @@
 package lessons.welcome.array.notriples;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class NoTriplesEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(noTriples((int[])t.getParameter(0))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(noTriples((int[])param[0])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   boolean noTriples(int[] nums)

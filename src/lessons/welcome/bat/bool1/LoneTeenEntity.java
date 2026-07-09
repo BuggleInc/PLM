@@ -1,11 +1,19 @@
 package lessons.welcome.bat.bool1;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class LoneTeenEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(loneTeen((Integer)t.getParameter(0), (Integer)t.getParameter(1))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(loneTeen((Integer)param[0], (Integer)param[1])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   boolean loneTeen(int a, int b)

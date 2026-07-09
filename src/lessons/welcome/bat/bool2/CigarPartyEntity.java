@@ -1,11 +1,20 @@
 package lessons.welcome.bat.bool2;
 
+import static plm.core.ValueSerializer.deserialize;
+import static plm.core.ValueSerializer.serialize;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class CigarPartyEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(cigarParty((Integer)t.getParameter(0), (Boolean)t.getParameter(1))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(cigarParty((Integer)param[0], (Boolean)param[1])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   boolean cigarParty(int cigars, boolean isWeekend)

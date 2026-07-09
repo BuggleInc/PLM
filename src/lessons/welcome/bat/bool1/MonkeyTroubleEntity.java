@@ -1,11 +1,19 @@
 package lessons.welcome.bat.bool1;
 
+import static plm.core.ValueSerializer.*;
+
 import plm.universe.bat.BatEntity;
-import plm.universe.bat.BatTest;
 
 public class MonkeyTroubleEntity extends BatEntity {
 
-  public void run(BatTest t) { t.setResult(monkeyTrouble((Boolean)t.getParameter(0), (Boolean)t.getParameter(1))); }
+  public void run()
+  {
+    int count = getTestCount();
+    for (int i = 0; i < count; i++) {
+      Object[] param = (Object[])deserialize(getTest(i));
+      setTestResult(i, serialize(monkeyTrouble((Boolean)param[0], (Boolean)param[1])));
+    }
+  }
 
   /* BEGIN TEMPLATE */
   public boolean monkeyTrouble(boolean aSmile, boolean bSmile)
