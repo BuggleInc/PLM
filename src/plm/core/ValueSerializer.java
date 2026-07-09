@@ -1,8 +1,70 @@
 package plm.core;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class ValueSerializer {
+
+  @SuppressWarnings("unchecked")
+  public static <T> T[] toArrayOfType(Object original, Class<? extends T> newType) {
+
+    if(original instanceof int[]) {
+      int[] array = (int[]) original;
+      Integer[] newArray = new Integer[array.length];
+      for(int i = 0; i < array.length; i++)
+        newArray[i] = array[i];
+      return toArrayOfType(newArray, newType);
+    }
+
+    if(original instanceof double[]) {
+      double[] array = (double[]) original;
+      Double[] newArray = new Double[array.length];
+      for(int i = 0; i < array.length; i++)
+        newArray[i] = array[i];
+      return toArrayOfType(newArray, newType);
+    }
+
+    if(original instanceof boolean[]) {
+      boolean[] array = (boolean[]) original;
+      Boolean[] newArray = new Boolean[array.length];
+      for(int i = 0; i < array.length; i++)
+        newArray[i] = array[i];
+      return toArrayOfType(newArray, newType);
+    }
+
+    if(newType.arrayType().isInstance(original)) return (T[]) original;
+    Object[] array = (Object[]) original;
+
+
+    Object o = Array.newInstance(newType, array.length);
+    T[] newArray = (T[]) o;
+    for(int i = 0; i < array.length; i++)
+      newArray[i] = (T) array[i];
+    return newArray;
+  }
+
+  public static int[] toPrimitive(Integer[] array){
+    int[] newArray = new int[array.length];
+    for(int i = 0; i < array.length; i++)
+      newArray[i] = array[i];
+    return newArray;
+  }
+
+  public static double[] toPrimitive(Double[] array){
+    double[] newArray = new double[array.length];
+    for(int i = 0; i < array.length; i++)
+      newArray[i] = array[i];
+    return newArray;
+  }
+
+  public static boolean[] toPrimitive(Boolean[] array){
+    boolean[] newArray = new boolean[array.length];
+    for(int i = 0; i < array.length; i++)
+      newArray[i] = array[i];
+    return newArray;
+  }
+
   /* --- Serialization logic --- */
   public static String serialize(Object o)
   {
@@ -15,16 +77,19 @@ public class ValueSerializer {
       sb.append('[');
       // Primitive types must be handled explicitely, as int cannot be casted to Object for a generic case.
       if (o.getClass().getComponentType().equals(Integer.TYPE)) {
+        assert o instanceof int[];
         int[] a = (int[])o;
         sb.append(a.length);
         for (int i : a)
           sb.append(":i" + i);
       } else if (o.getClass().getComponentType().equals(Double.TYPE)) {
+        assert o instanceof double[];
         double[] a = (double[])o;
         sb.append(a.length);
         for (double i : a)
           sb.append(":f" + i);
       } else if (o.getClass().getComponentType().equals(Boolean.TYPE)) {
+        assert o instanceof boolean[];
         boolean[] a = (boolean[])o;
         sb.append(a.length);
         for (boolean b : a)
@@ -85,7 +150,7 @@ public class ValueSerializer {
     Object parse()
     {
       if (pos >= input.length()) {
-        throw new IllegalArgumentException("Unexpected end of input at position " + pos);
+        throw new IllegalArgumentException("Unexpected end of input at position " + pos+" in "+input);
       }
 
       char c = input.charAt(pos);
@@ -108,7 +173,7 @@ public class ValueSerializer {
 
       int colonIdx = input.indexOf(':', pos);
       if (colonIdx == -1) {
-        throw new IllegalArgumentException("Expected ':' after array length at position " + pos);
+        throw new IllegalArgumentException("Expected ':' after array length at position " + pos+" in "+input);
       }
 
       int len = Integer.parseInt(input.substring(pos, colonIdx));
@@ -119,14 +184,14 @@ public class ValueSerializer {
         arr[i] = parse();
         if (i < len - 1) {
           if (input.charAt(pos) != ':') {
-            throw new IllegalArgumentException("Expected ':' between array elements at position " + pos);
+            throw new IllegalArgumentException("Expected ':' between array elements at position " + pos+" in "+input);
           }
           pos++; // Skip ':'
         }
       }
 
       if (pos >= input.length() || input.charAt(pos) != ']') {
-        throw new IllegalArgumentException("Expected ']' at end of array at position " + pos);
+        throw new IllegalArgumentException("Expected ']' at end of array at position " + pos+" in "+input);
       }
       pos++; // Skip ']'
       return arr;
@@ -149,7 +214,7 @@ public class ValueSerializer {
           pos++;
         }
       }
-      throw new IllegalArgumentException("Unterminated string starting at position " + (pos - sb.length() - 1));
+      throw new IllegalArgumentException("Unterminated string starting at position " + (pos - sb.length() - 1)+" in "+input);
     }
 
     private Object parsePrimitive()
@@ -170,7 +235,7 @@ public class ValueSerializer {
           case 'f':
             return Double.parseDouble(val);
           default: // Fallback if format string is exhausted or mismatched
-            throw new IllegalArgumentException("Parse error: Invalid type hint '" + typeHint + "' at position " + start + " in input \"" + input + "\"");
+            throw new IllegalArgumentException("Parse error: Invalid type hint '" + typeHint + "' at position " + start + " in input \"" + input + "\""+" in "+input);
         }
       } catch (NumberFormatException e) {
         throw new IllegalArgumentException(e);
