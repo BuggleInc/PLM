@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
   // Disable buffering on the new stdout so student's debug messages arrive immediately
   setvbuf(stdout, NULL, _IONBF, 0);
 
-  debug_fd = fopen("/tmp/debug-PLM-C", "a");
+  debug_fd = fopen("/tmp/debug-PLM-C", "w");
   if (debug_fd)
     fprintf(debug_fd, "Starting the entity %s\n", argv[0]);
   run();

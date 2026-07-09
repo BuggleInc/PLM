@@ -18,6 +18,8 @@ public abstract class Remote {
 
     private static void getAnswerLine() {
         answerBuffer = inputScan.nextLine();
+        System.out.println("Student receives: " + answerBuffer);
+        System.out.flush();
         if (answerBuffer == null) {
             System.exit(1);
         }
@@ -51,6 +53,8 @@ public abstract class Remote {
     public static void sendCommand(String format, Object... args) {
       String command = String.format(Locale.ENGLISH, format, args);
 
+      System.out.println("Student sends: " + command);
+      System.out.flush();
       System.err.println(command);
       System.err.flush();
     }

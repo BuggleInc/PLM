@@ -460,12 +460,16 @@ public class LangJava extends JVMCompiledLang {
                     String str = "";
                     try {
                         while ((str = reader.readLine()) != null) {
-                          //                            System.out.println("EXECUTING COMMAND: " + str);
+                          System.out.println("EXECUTING COMMAND: " + str);
                           CommandExecutor.command(ent, str, bwriter);
-                          //                            System.out.println("COMMAND EXECUTED");
+                          System.out.println("COMMAND EXECUTED");
                         }
                     } catch (Exception e) {
                         parseError = e;
+                        e.printStackTrace();
+                        progress.outcome        = RunOutcome.kind.FAIL;
+                        progress.executionError = e.getMessage();
+                        process.destroyForcibly();
                     }
                     if (parseError != null) {
                         StringBuffer sb = new StringBuffer(str + "\n");
