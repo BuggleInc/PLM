@@ -93,21 +93,14 @@ public abstract class CommandArgumentType<T> {
             new CommandArgumentType<>(6, "DIRECTION", Direction.class) {
                 @Override
                 public String serialize(Direction value) {
-                    return String.valueOf(value.intValue());
+                    return String.valueOf(value.ordinal());
                 }
 
                 @Override
                 public Direction deserialize(String value) {
 
                     int nb = Integer.parseInt(value);
-                    Direction d = switch (nb) {
-                        case Direction.NORTH_VALUE -> Direction.NORTH;
-                        case Direction.EAST_VALUE -> Direction.EAST;
-                        case Direction.SOUTH_VALUE -> Direction.SOUTH;
-                        case Direction.WEST_VALUE -> Direction.WEST;
-                        default -> null;
-                    };
-                    return d;
+                    return Direction.values()[nb];
                 }
             };
 

@@ -56,21 +56,14 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
     void setBodyColor(Color c);
 
     default int primitiveGetDirection() {
-        return getDirection().intValue();
+        return getDirection().ordinal();
     }
 
     @Primitive(value = 124)
     Direction getDirection();
 
     default void primitiveSetDirection(int nb) {
-        Direction d = switch (nb) {
-            case Direction.NORTH_VALUE -> Direction.NORTH;
-            case Direction.EAST_VALUE -> Direction.EAST;
-            case Direction.SOUTH_VALUE -> Direction.SOUTH;
-            case Direction.WEST_VALUE -> Direction.WEST;
-            default -> null;
-        };
-        setDirection(d);
+        setDirection(Direction.values()[nb]);
     }
 
     @Primitive(value = 125)

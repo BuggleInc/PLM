@@ -197,7 +197,7 @@ public class BuggleWorldView extends WorldView {
 		} else {
 			for (int dy=0; dy<INVADER_SPRITE_SIZE; dy++) {
 				for (int dx=0; dx<INVADER_SPRITE_SIZE; dx++) {
-					int direction = b.getDirection().intValue();
+					int direction = b.getDirection().ordinal();
 					if (INVADER_SPRITE[direction][dy][dx] == 1) {
 						g.fill(new Rectangle2D.Double(padx+pad+ox+dx*pixW, pady+pad+oy+dy*pixW, pixW, pixW));
 					}

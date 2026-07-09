@@ -250,23 +250,14 @@ public class LightBotWorldViewIsometric extends WorldView {
 		double cx = cell.getX();
 		double cy = cell.getY();
 
-		double angle = 0.;
-		switch (bot.getDirection().intValue()) {
-		case Direction.NORTH_VALUE:
-			angle = Math.PI;
-			break;
-		case Direction.SOUTH_VALUE:
-			angle = 0.;
-			break;
-		case Direction.EAST_VALUE:
-			angle = -Math.PI / 2.;
-			break;
-		case Direction.WEST_VALUE:
-			angle = Math.PI / 2;
-			break;
-		}
+		double angle = switch (bot.getDirection()) {
+            case NORTH -> Math.PI;
+            case SOUTH -> 0.;
+            case EAST -> -Math.PI / 2.;
+            case WEST -> Math.PI / 2;
+        };
 
-		double rx = cx * CELL_WIDTH - cell.getHeight() * CELL_HEIGHT + width / 2.;
+        double rx = cx * CELL_WIDTH - cell.getHeight() * CELL_HEIGHT + width / 2.;
 		double ry = cy * CELL_WIDTH - cell.getHeight() * CELL_HEIGHT + height / 2.;
 		g.rotate(angle, rx, ry);
 
