@@ -768,12 +768,12 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
             case 146: // hasTopWall
               int x = Integer.parseInt((command.split(" ")[1]));
               int y = Integer.parseInt((command.split(" ")[2]));
-              out.write(primitiveHasTopWall(x,y) ? "1" : "0");
+              out.write(primitiveHasTopWall(x, y) ? "1\n" : "0\n");
               break;
             case 147: // hasLeftWall
               x = Integer.parseInt((command.split(" ")[1]));
               y = Integer.parseInt((command.split(" ")[2]));
-              out.write(primitiveHasLeftWall(x,y) ? "1" : "0");
+              out.write(primitiveHasLeftWall(x, y) ? "1\n" : "0\n");
               break;
             case 148: // getIndicationBdr
               out.write(getIndicationBdr());
