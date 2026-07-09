@@ -465,6 +465,10 @@
                on Windows because the test order differs per OS. A fresh fork per
                class isolates that state and makes the run order-independent. -->
           <reuseForks>false</reuseForks>
+          <forkCount>1</forkCount>
+          <reuseForks>true</reuseForks>
+          <parallel>none</parallel>
+          <threadCount>1</threadCount>
         </configuration>
       </plugin>
 
