@@ -444,16 +444,7 @@
           <!-- PLM's tests live under src/ (compiled into the main output), not
                src/test/java, so point surefire there. The tests are Swing-based:
                they need a display (run the job under xvfb) and AWT must not be
-               headless.
-
-               We run a fast, reliable subset for now, NOT the full AllTests
-               suite: the exercise-runner tests (SimpleExerciseTest, LessonTest,
-               ExoTest, the Scala/Python variants) spin up the Scala/Jython/JRuby
-               engines and compile in process for every test, which takes ~45 min
-               and times CI out; some also rely on force-killing a runaway loop,
-               which no longer happens since Thread.stop() became a cooperative
-               Thread.interrupt(). Modernising that suite is follow-up work.
-               The fork timeout still guards against a hang. -->
+               headless. -->
           <testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
           <includes>
             <include>**/AllTests.java</include>
@@ -462,6 +453,7 @@
             <include>**/simple/test/JavaSimpleExerciseTest.java</include>
             <include>**/gui/MainFrameSmokeTest.java</include>
             <include>**/universe/bat/ValueFormatterTest.java</include>
+            <include>**/core/ValueSerializer.java</include>
           </includes>
           <argLine>${argLine} -Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
