@@ -12,7 +12,7 @@ public class IsMemberEntity extends ConsEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(isMember(RecList.fromArray((int[])param[0]), (Integer)param[1])));
+      setTestResult(i, serialize(isMember(RecList.fromArray((int[]) param[0]), (Integer)param[1])));
     }
   }
 

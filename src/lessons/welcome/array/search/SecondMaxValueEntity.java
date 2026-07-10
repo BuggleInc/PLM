@@ -11,7 +11,7 @@ public class SecondMaxValueEntity extends BatEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(max2Value((int[])param[0])));
+      setTestResult(i, serialize(max2Value((int[]) param[0])));
     }
   }
 
