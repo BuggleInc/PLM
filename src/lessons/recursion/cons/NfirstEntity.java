@@ -12,7 +12,7 @@ public class NfirstEntity extends ConsEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(nfirst(RecList.fromArray(toPrimitive(toArrayOfType(param[0], Integer.class))), (Integer)param[1])));
+      setTestResult(i, serialize(nfirst(RecList.fromArray((int[]) param[0]), (Integer)param[1])));
     }
   }
 

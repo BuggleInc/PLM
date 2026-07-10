@@ -27,14 +27,14 @@ public class ValueSerializerTest {
     assertEquals("\"he\\\"llo\"", ValueSerializer.serialize("he\"llo"));
   }
 
-  @Test void serialize_intArray_returnsFormattedString() { assertEquals("[3:i1:i2:i3]", ValueSerializer.serialize(new int[] {1, 2, 3})); }
-  @Test void serialize_IntegerArray_returnsFormattedString() { assertEquals("[2:i1:i2]", ValueSerializer.serialize(new Integer[] {1, 2})); }
+  @Test void serialize_intArray_returnsFormattedString() { assertEquals("i[3:i1:i2:i3]", ValueSerializer.serialize(new int[] {1, 2, 3})); }
+  @Test void serialize_IntegerArray_returnsFormattedString() { assertEquals("i[2:i1:i2]", ValueSerializer.serialize(new Integer[] {1, 2})); }
 
-  @Test void serialize_doubleArray_returnsFormattedString() { assertEquals("[2:f1.5:f-2.2]", ValueSerializer.serialize(new double[] {1.5, -2.2})); }
-  @Test void serialize_DoubleArray_returnsFormattedString() { assertEquals("[2:f1.5:f-2.2]", ValueSerializer.serialize(new Double[] {1.5, -2.2})); }
+  @Test void serialize_doubleArray_returnsFormattedString() { assertEquals("f[2:f1.5:f-2.2]", ValueSerializer.serialize(new double[] {1.5, -2.2})); }
+  @Test void serialize_DoubleArray_returnsFormattedString() { assertEquals("f[2:f1.5:f-2.2]", ValueSerializer.serialize(new Double[] {1.5, -2.2})); }
   @Test void serialize_stringArray_returnsFormattedString() { assertEquals("[2:\"a\":\"b\"]", ValueSerializer.serialize(new String[] {"a", "b"})); }
-  @Test void serialize_booleanArray_returnsFormattedString() { assertEquals("[2:b1:b0]", ValueSerializer.serialize(new boolean[] {true, false})); }
-  @Test void serialize_BooleanArray_returnsFormattedString() { assertEquals("[2:b1:b0]", ValueSerializer.serialize(new Boolean[] {true, false})); }
+  @Test void serialize_booleanArray_returnsFormattedString() { assertEquals("b[2:b1:b0]", ValueSerializer.serialize(new boolean[] {true, false})); }
+  @Test void serialize_BooleanArray_returnsFormattedString() { assertEquals("b[2:b1:b0]", ValueSerializer.serialize(new Boolean[] {true, false})); }
   @Test void serialize_mixedObjectArray_returnsFormattedString()
   {
     Object[] input = {"Hi", 2};
@@ -44,7 +44,7 @@ public class ValueSerializerTest {
   @Test void serialize_emptyArray_returnsZeroLength()
   {
     assertEquals("[0]", ValueSerializer.serialize(new Object[] {}));
-    assertEquals("[0]", ValueSerializer.serialize(new int[] {}));
+    assertEquals("i[0]", ValueSerializer.serialize(new int[] {}));
   }
 
   @Test void serialize_nestedArray_serializesCorrectly()

@@ -11,7 +11,7 @@ public class IslandEntity extends BatEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(island(toPrimitive(toArrayOfType(param[0], Integer.class)))));
+      setTestResult(i, serialize(island((int[]) param[0])));
     }
   }
 
