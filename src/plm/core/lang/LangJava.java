@@ -659,6 +659,14 @@ public class LangJava extends JVMCompiledLang {
             throw new IllegalStateException("Unknown type: " + type);
         }
 
+        String getArgumentExpression(PrimitiveParameter parameter)
+        {
+          // BOOLEAN is templated as "%d" over the wire, so we must convert any boolean to an int, or String.format will raise an error
+          if (parameter.type() == CommandArgumentType.BOOLEAN)
+            return "(" + parameter.name() + " ? 1 : 0)";
+          return parameter.name();
+        }
+
         String getImplementation(PrimitiveMethod method) {
             String prototype = getPrototype(method);
 
@@ -667,10 +675,8 @@ public class LangJava extends JVMCompiledLang {
             String formats = method.parameters().stream().map(PrimitiveParameter::type)
                     .map(this::getTemplatingForType).map(s -> s + " ").collect(Collectors.joining());
 
-            String command = "\tsendCommand(\"" + id + " " +
-                    formats
-                    + name
-                    + "\"" + method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s).collect(Collectors.joining()) + ");";
+            String command = "\tsendCommand(\"" + id + " " + formats + name + "\"" +
+                             method.parameters().stream().map(this::getArgumentExpression).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
             String returning = method.output() != null ? "\treturn " + getReturning(method.output()) + ";" : "";
 
