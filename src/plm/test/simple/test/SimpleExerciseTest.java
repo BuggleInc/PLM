@@ -141,16 +141,13 @@ public abstract class SimpleExerciseTest {
 		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
-			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
-			}
-                }
+                  for (Entity ent : w.getEntities())
+                    pl.runEntity(ent, exo.lastResult);
 
-                exo.check();
+                  exo.check();
 
-                if (exo.lastResult.outcome == RunOutcome.kind.PASS) {
-                  Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this "
-                                                                                    + "exercise..."));
+                  if (exo.lastResult.outcome == RunOutcome.kind.PASS)
+                    Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this exercise..."));
                 }
         }
 

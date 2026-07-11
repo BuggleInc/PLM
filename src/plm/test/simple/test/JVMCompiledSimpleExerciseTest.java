@@ -24,12 +24,13 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
 			for (Entity ent: w.getEntities()) {
-				pl.runEntity(ent,exo.lastResult);
-			}
-		}
+                          pl.runEntity(ent, exo.lastResult);
+                        }
+                }
 
                 if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
-                  Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise...");
+                  Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " +
+                                  exo.lastResult.outcome.toString());
                 }
         }
 

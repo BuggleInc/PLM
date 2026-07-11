@@ -6,7 +6,7 @@ class ScalaSimpleExerciseEntity extends plm.test.simple.SimpleExerciseEntity {
   /* BEGIN TEMPLATE */
   override def run() {
     /* BEGIN SOLUTION */
-    world.asInstanceOf[SimpleWorld].setObjectif(true);
+    setObjectif(true);
     /* END SOLUTION */
   }
   /* END TEMPLATE */

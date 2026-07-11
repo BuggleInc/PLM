@@ -1,22 +1,24 @@
 package plm.test.simple;
 
 import java.io.BufferedWriter;
-
-import plm.universe.Entity;
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.test.simple.SimpleWorld;
+import plm.universe.Entity;
 
-public class SimpleExerciseEntity extends Entity {
+@EntityPrimitives(SimpleEntityPrimitives.class)
+public class SimpleExerciseEntity extends Entity implements SimpleEntityPrimitives {
 
-	@Override
-	/* BEGIN TEMPLATE */
-	public void run() throws Exception {
-		/* BEGIN SOLUTION */
-		((SimpleWorld) world).setObjectif(true);
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+  @Override public void setObjectif(boolean b) { ((SimpleWorld)world).setObjectif(b); }
 
-	@Override
-	public void command(String command, BufferedWriter out) {
-	}
+  @Override
+  /* BEGIN TEMPLATE */
+  public void run() throws Exception
+  {
+    /* BEGIN SOLUTION */
+    setObjectif(true);
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
+
+  @Override public void command(String command, BufferedWriter out) {}
 }

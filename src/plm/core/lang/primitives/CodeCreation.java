@@ -10,6 +10,7 @@ import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import lessons.sort.pancake.universe.PancakeEntity;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
+import plm.test.simple.SimpleExerciseEntity;
 import plm.universe.Entity;
 import plm.universe.bat.BatEntity;
 import plm.universe.bugglequest.AbstractBuggle;
@@ -23,7 +24,7 @@ public class CodeCreation {
         Map<String, Class<? extends Entity>> remoteMap =
             Map.of("RemoteBat", BatEntity.class, "RemoteBuggle", AbstractBuggle.class, "RemoteSort", SortingEntity.class, "RemoteTurtle", Turtle.class,
                    "RemotePancake", PancakeEntity.class, "RemoteHanoi", HanoiEntity.class, "RemoteBaseball", BaseballEntity.class, "RemoteFlag",
-                   DutchFlagEntity.class);
+                   DutchFlagEntity.class, "RemoteSimple", SimpleExerciseEntity.class);
 
         LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
         File cFolder = new File(folder, "c");

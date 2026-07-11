@@ -120,6 +120,8 @@ public class LangJava extends JVMCompiledLang {
       if (code.contains("Langton") || code.contains("Turmite"))
         return null;
 
+      if (code.contains("plm.test.simple"))
+        return "RemoteSimple";
       if (code.contains(".bat."))
         return "RemoteBat";
       if (code.contains("Buggle"))
@@ -346,9 +348,15 @@ public class LangJava extends JVMCompiledLang {
                                      + "import " + packageNameCache + ".Remote;\n"
                                      + "\n"
                                      + "public class Main {\n"
-                                     + "   public static void main(String[] args){\n"
+                                     + "   public static void main(String[] args) {\n"
+                                     + "     try {\n"
                                      + "       Remote.connect(args[0]);\n"
                                      + "       new Entity().run();\n"
+                                     + "     } catch (Exception e) {\n"
+                                     + "       e.printStackTrace();\n"
+                                     + "       System.exit(1);\n"
+                                     + "     }\n"
+                                     + "     System.exit(0);\n"
                                      + "   }\n"
                                      + "}\n";
 
@@ -526,7 +534,7 @@ public class LangJava extends JVMCompiledLang {
             reader.start();
             error.start();
 
-            process.waitFor();
+            int retcode = process.waitFor();
 
             reader.join();
             error.join();
@@ -535,6 +543,9 @@ public class LangJava extends JVMCompiledLang {
             finalProtocolChannel.close();
             Files.deleteIfExists(socketPath);
             Files.deleteIfExists(socketDir);
+
+            if (retcode != 0)
+              progress.setExecutionError("An issue occured in the executed code. Check the output in the log panel for more info");
 
             if (resEvaluationError.length() > 0) {
                 System.err.println(resEvaluationError.toString());
