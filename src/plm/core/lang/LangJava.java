@@ -2,8 +2,16 @@ package plm.core.lang;
 
 import java.awt.*;
 import java.io.*;
+import java.net.StandardProtocolFamily;
+import java.net.UnixDomainSocketAddress;
+import java.nio.channels.Channels;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -333,14 +341,16 @@ public class LangJava extends JVMCompiledLang {
                 File entityFile = new File(workspace, "Entity.java");
                 File mainFile = new File(workspace, "Main.java");
 
-                String mainContent = "package " + packageNameCache + ";\n" +
-                        "import " + packageNameCache + ".Entity;\n" +
-                        "\n" +
-                        "public class Main {\n" +
-                        "   public static void main(String[] args){\n" +
-                        "       new Entity().run();\n" +
-                        "   }\n" +
-                        "}\n";
+                String mainContent = "package " + packageNameCache + ";\n"
+                                     + "import " + packageNameCache + ".Entity;\n"
+                                     + "import " + packageNameCache + ".Remote;\n"
+                                     + "\n"
+                                     + "public class Main {\n"
+                                     + "   public static void main(String[] args){\n"
+                                     + "       Remote.connect(args[0]);\n"
+                                     + "       new Entity().run();\n"
+                                     + "   }\n"
+                                     + "}\n";
 
                 try {
 
@@ -429,9 +439,36 @@ public class LangJava extends JVMCompiledLang {
             if (!exec.exists())
               throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-            ProcessBuilder pb = new ProcessBuilder("java", "-jar", cmd);
-            final Process process        = pb.start();
-            final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+            // Set up the protocol socket (AF_UNIX) that the child JVM will connect to.
+            // Its path is unique per run and is passed to the child as args[0].
+            Path socketDir                    = Files.createTempDirectory("plm-java-sock-");
+            Path socketPath                   = socketDir.resolve("protocol.sock");
+            ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
+            serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
+            serverChannel.configureBlocking(false);
+            Selector selector = Selector.open();
+            serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+
+            ProcessBuilder pb     = new ProcessBuilder("java", "-jar", cmd, socketPath.toString());
+            final Process process = pb.start();
+
+            final int ACCEPT_TIMEOUT_MS = 10000;
+            selector.select(ACCEPT_TIMEOUT_MS);
+            SocketChannel protocolChannel = serverChannel.accept();
+            selector.close();
+            serverChannel.close();
+
+            if (protocolChannel == null) {
+              process.destroyForcibly();
+              Files.deleteIfExists(socketPath);
+              Files.deleteIfExists(socketDir);
+              progress.outcome        = RunOutcome.kind.FAIL;
+              progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.");
+              return;
+            }
+
+            final SocketChannel finalProtocolChannel = protocolChannel;
+            final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
 
             Thread reader = new Thread() {
                 public void run() {
@@ -455,22 +492,22 @@ public class LangJava extends JVMCompiledLang {
 
             Thread error = new Thread() {
                 public void run() {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-                    Exception parseError = null;
-                    String str = "";
-                    try {
-                        while ((str = reader.readLine()) != null) {
-                          System.out.println("EXECUTING COMMAND: " + str);
-                          CommandExecutor.command(ent, str, bwriter);
-                          System.out.println("COMMAND EXECUTED");
-                        }
-                    } catch (Exception e) {
-                        parseError = e;
-                        e.printStackTrace();
-                        progress.outcome        = RunOutcome.kind.FAIL;
-                        progress.executionError = e.getMessage();
-                        process.destroyForcibly();
+                  BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
+                  Exception parseError  = null;
+                  String str            = "";
+                  try {
+                    while ((str = reader.readLine()) != null) {
+                      System.out.println("EXECUTING COMMAND: " + str);
+                      CommandExecutor.command(ent, str, bwriter);
+                      System.out.println("COMMAND EXECUTED");
                     }
+                  } catch (Exception e) {
+                    parseError = e;
+                    e.printStackTrace();
+                    progress.outcome        = RunOutcome.kind.FAIL;
+                    progress.executionError = e.getMessage();
+                    process.destroyForcibly();
+                  }
                     if (parseError != null) {
                         StringBuffer sb = new StringBuffer(str + "\n");
                         try {
@@ -495,6 +532,9 @@ public class LangJava extends JVMCompiledLang {
             error.join();
 
             bwriter.close();
+            finalProtocolChannel.close();
+            Files.deleteIfExists(socketPath);
+            Files.deleteIfExists(socketDir);
 
             if (resEvaluationError.length() > 0) {
                 System.err.println(resEvaluationError.toString());

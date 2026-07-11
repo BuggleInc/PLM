@@ -1,23 +1,48 @@
 import java.io.*;
+import java.net.StandardProtocolFamily;
+import java.net.UnixDomainSocketAddress;
+import java.nio.channels.Channels;
+import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.Locale;
-import java.util.Scanner;
 import java.util.Vector;
 
 public abstract class Remote {
 
-    /*
-     * System.in  : answers from the PLM
-     * System.out : student's debug output
-     * System.err : commands sent to the PLM
-     */
+  /*
+   * The protocol (commands to the PLM, answers from the PLM) travels over a UNIX domain socket whose path is passed as
+   * args[0] -- see connect() below, called from the generated Main.main().
+   *
+   * System.out : student's debug output (unchanged, still free to use)
+   */
 
-    private static final Scanner inputScan = new Scanner(System.in);
+  private static BufferedReader protocolIn;
+  private static PrintWriter protocolOut;
+
+  public static void connect(String socketPath)
+  {
+    try {
+      SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX);
+      channel.connect(UnixDomainSocketAddress.of(Path.of(socketPath)));
+      protocolIn  = new BufferedReader(new InputStreamReader(Channels.newInputStream(channel), StandardCharsets.UTF_8));
+      protocolOut = new PrintWriter(new OutputStreamWriter(Channels.newOutputStream(channel), StandardCharsets.UTF_8), true);
+    } catch (IOException e) {
+      System.out.println("Cannot connect to the PLM protocol socket '" + socketPath + "': " + e.getMessage());
+      System.exit(1);
+    }
+  }
 
     private static String answerBuffer;
 
     private static void getAnswerLine() {
-        answerBuffer = inputScan.nextLine();
+      try {
+        answerBuffer = protocolIn.readLine();
+      } catch (IOException e) {
+        answerBuffer = null;
+        System.err.println("IO exception while reading the protocol (reason: " + e.getMessage() + "). Bailing out.");
+        System.exit(1);
+      }
         System.out.println("Student receives: " + answerBuffer);
         System.out.flush();
         if (answerBuffer == null) {
@@ -55,8 +80,8 @@ public abstract class Remote {
 
       System.out.println("Student sends: " + command);
       System.out.flush();
-      System.err.println(command);
-      System.err.flush();
+      protocolOut.println(command);
+      protocolOut.flush();
     }
 
     /* BEGIN UTILS */
