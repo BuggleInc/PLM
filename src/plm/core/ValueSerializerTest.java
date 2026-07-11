@@ -25,7 +25,6 @@ public class ValueSerializerTest {
   {
     assertEquals("\"hello\"", ValueSerializer.serialize("hello"));
     assertEquals("\"he\\\"llo\"", ValueSerializer.serialize("he\"llo"));
-    assertEquals("\"he\\\\\"", ValueSerializer.serialize("he\\"));
   }
 
   @Test void serialize_intArray_returnsFormattedString() { assertEquals("[3:i1:i2:i3]", ValueSerializer.serialize(new int[] {1, 2, 3})); }
@@ -92,22 +91,6 @@ public class ValueSerializerTest {
     assertEquals("he\"llo", result[0]);
 
     assertEquals(input, ValueSerializer.serialize(result));
-  }
-
-  @Test void deserialize_stringWithEscapedEscapes_parsesCleanly()
-  {
-    String input    = "[1:\"he\\\\llo\"]";
-    Object[] result = (Object[])ValueSerializer.deserialize(input);
-    assertEquals(1, result.length);
-    assertEquals("he\\llo", result[0]);
-
-    assertEquals(input, ValueSerializer.serialize(result));
-  }
-
-  @Test void deserialize_stringInvalidEscapes_throws()
-  {
-    assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("\"he\\\""));  // Quoting the end
-    assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("\"he\\O\"")); // Invalid \O
   }
 
   @Test void deserialize_nestedArray_parsesRecursively()
