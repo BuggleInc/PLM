@@ -1,3 +1,126 @@
+The Programmer's Learning Machine (PLM) is a free cross-platform programming exerciser. It lets you explore various concepts of
+programming through interactive challenges in differing micro-worlds, that you can solve in either Java, Python, Scala or C. The
+design rational is given in the following paper: [The Programmer's Learning Machine: A Teaching System To Learn
+Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the following sections:
+
+* [Overall architecture](#Architecture) and concepts, to help the onboarding of prospective contributors
+* [How to translate the project](#Translating_the_PLM)
+* [Adding a new exercise](#Adding_a_new_exercise)
+* [Maintainer's notes](#Maintainers_notes): how to merge in new translation and how to release a new version of the PLM.
+
+# Architecture
+
+## Core concepts
+
+- **Lesson / Lecture**: a `Lesson` (e.g. `welcome`, `sort`, `recursion`) groups `Lecture`s in a pedagogical sequence. An
+  `Exercise` is a leaf `Lecture`.
+- **Exercise**: the unit of work a student solves (`plm.core.model.lesson.Exercise`). It owns three parallel sets of **worlds**:
+  `initialWorld` (the starting state, reset before every run), `currentWorld` (the current state while executing the student's
+  code), and `answerWorld` (the target state, produced by either loading a cached solution or by running the teacher's
+  correction code once). Passing == every `currentWorld` "wins" against its matching `answerWorld`.  By default
+  `World.winning()` uses equality but other winning conditions can be defined.
+- **World + Entity**: a `World` (`plm.universe.World`) is the simulated environment encoding the pedagogical problem situation.
+  This is a micro-world instance. It contains one or more `Entity` objects, which are the actors that execute the student's code
+  (or the teacher's correction code) against the world's primitives. `Entity`/`World` are subclassed per universe.
+- **Worlds as test cases**: an exercise typically ships **several world instances** and/or **several entities per world
+  instance.** Each is compiled/run independently and must pass for the exercise to be validated — i.e. the set of worlds *is*
+  the exercise's test suite (comparable to parametrized unit tests). Adding another world instance to an exercise, without
+  touching the student-facing code, is the standard way to catch a wider range of incorrect solutions.
+- **Universe**: a micro-world *kind*, i.e. a family of worlds/entities sharing a theme and a set of primitives (e.g. "the buggle
+  can walk, paint, pick up objects"). A given exercise uses exactly **one** universe. Universes found in `src/plm/universe` for
+  the generic ones and in `src/lessons/*/universe` for the ones specificaly tailored for a given lesson:
+  - `bugglequest` — generic grid actor (buggles), richest primitive set. It is the main PLM microworld and its implementation is
+    the reference. It is used to teach the basics about variablesand loops, and to introduce functions and problem
+    decomposition. This micro-world is also used to present various maze algorithms in a specific lesson.
+    - `turmites` is a subclass of the buggle microworld introducing [2D turing machines](https://en.wikipedia.org/wiki/Turmite).
+  - `turtles` — LOGO-style turtle graphics, used to teach recursion through the drawing of fractals.
+  - `sort` — sorting algorithms; primitives (`isSmaller`, `copy`, `swap`) observe the data accesses patterns so the student must
+    reproduce the *expected algorithm*, not just a correctly sorted array.
+  - `bat` — unit-testing style no graphical world but a textual output; a method prototype is filled in and tested against many
+    parameter values.
+  - Specific sorting microwords: `sort/baseball` ([pebble-motion](https://en.wikipedia.org/wiki/Pebble_motion_problems)),
+   `sort/pancake` ([pancake sorting](https://en.wikipedia.org/wiki/Pancake_sorting)), `sort/dutchflag` ([Dutch national flag
+    sorting](https://en.wikipedia.org/wiki/Dutch_national_flag_problem)).
+  - Specific recusion microwords: `recursion/hanoi` (comes with a rich set of exercises on recursive problem decomposition),
+    `recursion/cons` (recursive strings using the [cons](https://en.wikipedia.org/wiki/Cons) [car and
+    CDR](https://en.wikipedia.org/wiki/CAR_and_CDR) constructs of LISP). The cons micro-world is subclassed from the bat one.
+  - Recreative microworlds: `lightbot` a programming challenge using a graphical programming, `lander` a lunar lander
+    programming challenge. 
+  - Ongoing microworlds that do not work yet: `backtracking` should be completed or removed.
+- **Correction entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
+  `ScalaMoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference solution and the template shown to the
+  student. See "Adding a new exercise" below for the file layout and the BEGIN/END TEMPLATE/SOLUTION markers.
+
+## How an exercise executes
+
+* **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
+* **Compile**: `Exercise.compileAll()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java and C are
+  compiled to an external files, Scala is compiled within the same JVM that runs the PLM (but shall be converted to exernal
+  compilation at some point); Python and Ruby scripts are not compiled at all.
+* **Mutate entities**: `Exercise.mutateEntities()` swaps in the student's (or the correction's) compiled code for each world.
+  This is mandatory for the in-JVM execution as in Scala, but shall be removed once every languages execute remotely.
+* **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`, whose behavior
+  depends on the language/universe combo (see `ProgrammingLanguage.runEntity`):
+   - Java/C: an external process is started; primitives are relayed over pipes (`plm.universe.CommandExecutor`). In the future,
+     this shall be the way to go for all languages.
+   - Scala: the entity's `run()` method (student-authored) executes directly.
+   - Python/Ruby: student code is injected into a scripting engine bound to the Java world/entity, using an in-JVM scripting
+     engine for these languages. In the future, an external execution shall be used.
+   - LightBot: This challenge is an exception, as it can only be solved using the graphical block-list rather than a real
+     programming language. Thus, `run()` *interprets* a student-authored program.
+* **Check**: `Exercise.check()` compares each `currentWorld` to its `answerWorld` via `World.winning()`. On mismatch,
+  `World.diffTo()` produces a human-readable diff shown to the student. All the universes but Lander use a structural equality
+  between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks whether the lunar lander reached
+  a pad or crashed.
+
+Runaway/infinite-loop student code is caught via `Thread.UncaughtExceptionHandler` + interruption, not a hard sandbox — keep
+this in mind when touching `World.runEntities`. Changing this is the core motivation for the ongoing remote execution transition.
+
+## How tests work
+
+* `SimpleExercise` tests ensure that the compilation and templating work in every language without pulling a full universe. It
+  also tests the error catching mechanism of each language is working properly (syntax error, exception raising, etc).
+* Integration testing driven by `ExoTest`/`LessonTest` and living in `src/plm/test/integration` (`ExoTestJavaLang`,
+   `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`) run every exercise's own correction entity, in every language it
+   supports, through the normal compile/run/check pipeline and assert it passes. This is a regression test suite over the
+   pedagogical content itself: it catches broken exercises (e.g. a correction that no longer matches its `-answerN.map`) rather
+   than testing application logic in isolation.
+* `plm.test.git.*` tests the session persistence logic.
+* `plm.test.gui.MainFrameSmokeTest` is a Swing smoke test (via AssertJ-Swing) that needs a display (`xvfb` in CI).
+
+## Languages & runtime versions
+
+- **Build/host**: Java 17 (`maven.compiler.release=17`), built with Maven (`pom.xml`.
+- **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
+  - **Java** — compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
+    void main` boilerplate exposed to the student).
+  - **Scala** — `scala-library`/`scala-compiler`/`scala-reflect` 2.12.20; compiled jointly with Java sources (scalac runs before
+    javac in the Maven build) since PLM compiles user Scala in-process.
+  - **Python** — via Jython 2.7.3 (`jython-standalone`), i.e. **Python 2 syntax**, not Python 3. TODO: this will change.
+  - **Ruby** — via JRuby 9.4.8.0 (`jruby-complete`).
+  - **C** — compiled externally and driven over pipes.
+- Adding a new language: see
+  `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language`
+  and extend `plm.core.lang.ProgrammingLanguage`.
+
+## Build & run
+
+```
+mvn package -DskipTests && java -jar target/plm-*.jar   # build + run, no tests
+mvn test                                                # full test suite
+mvn test -Dtest=TestName*                               # a single test class
+```
+
+Entry point: `plm.core.ui.ProgrammersLearningMachine` (`main.class` in `pom.xml`).
+
+## Designing a new universe
+
+Extend, at minimum: `World` (state/data), an `Entity` subclass (ancestor of correction entities, exposes primitives), a
+`WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Document it with an
+HTML file following the same convention as mission texts. Existing universes stay small (a few hundred to ~1500 lines including
+the buggle map editor) because all non-functional plumbing (compilation, templating, session handling) is factored into
+`plm.core`.
+
 # Translating the PLM
 
 The easiest is to use
@@ -85,8 +208,9 @@ than one programming language. You can start it with:
 The lesson is defined as a Java file:
 https://github.com/BuggleInc/PLM/blob/javaUI/src/lessons/welcome/Main.java#L226
 
-Managing translations
-=====================
+# Maintainer's note
+
+## Managing translations
 
 Here are the commands to run to update the pot files on weblate, to
 allow the translators to update their work. This should be done
@@ -98,8 +222,7 @@ regularly.
 - git commit -m "Update translation templates" l10n/*/*.pot
 - git push && wlc pull
 
-Releasing the PLM
-=================
+## Releasing the PLM
 
 This is the check list to complete a new version of the PLM. It is
 mostly for internal use.
@@ -143,9 +266,3 @@ Publishing the Debian package:
 Preparing the next release cycle
 - Create a new entry in Changelog with an odd patch version
 - Update the version number in .appveyor.yml and plm.configuration.properties
-
-Receipes (notes to self)
-========================
-
-- Recompile and run the PLM w/o testing: `mvn package -DskipTests && java -jar target/plm-*.jar`
-- Run a specific test: `mvn test -Dtest=TestName*`
