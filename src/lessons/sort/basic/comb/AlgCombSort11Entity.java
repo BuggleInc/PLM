@@ -15,7 +15,7 @@ public class AlgCombSort11Entity extends SortingEntity {
 		boolean swapped;
 		do {
 			if (gap>1) {
-				gap /= 1.3;
+				gap = (int) (gap / 1.3);
 				if (gap == 10 || gap == 9)
 					gap = 11;
 			}

@@ -411,7 +411,7 @@ public abstract class ExerciseTemplated extends Exercise {
                                     compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
                                   } catch (PLMCompilerException e) {
                                     System.err.println("Severe error: the correction of exercise " + id +
-                                                       " cannot be compiled in C. Please go fix your PLM.");
+                                                       " cannot be compiled in "+Game.getInstance().getProgrammingLanguage().getLang()+". Please go fix your PLM.");
                                     e.printStackTrace();
                                     Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
                                     Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
