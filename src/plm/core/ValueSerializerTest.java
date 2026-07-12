@@ -1,6 +1,7 @@
 package plm.core;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -57,6 +58,21 @@ public class ValueSerializerTest {
   {
     Object[] input = {1, null};
     assertEquals("[2:i1:Z]", ValueSerializer.serialize(input));
+  }
+
+  @Test void serialize_char_returnsSingleCharTag() { assertEquals("cL", ValueSerializer.serialize('L')); }
+  @Test void serialize_charArray_returnsFormattedString() { assertEquals("c[3:cL:cR:cL]", ValueSerializer.serialize(new char[] {'L', 'R', 'L'})); }
+
+  @Test void serialize_2DIntArray_returnsFormattedString()
+  {
+    int[][] input = {{1, 2, 3}, {4, 5, 6}};
+    assertEquals("[2:i[3:i1:i2:i3]:i[3:i4:i5:i6]]", ValueSerializer.serialize(input));
+  }
+
+  @Test void serialize_3DIntArray_returnsFormattedString()
+  {
+    int[][][] input = {{{1, 2}, {3, 4}}};
+    assertEquals("[1:[2:i[2:i1:i2]:i[2:i3:i4]]]", ValueSerializer.serialize(input));
   }
 
   // ---------------------------------------------------------------
@@ -157,6 +173,24 @@ public class ValueSerializerTest {
     assertEquals(input, ValueSerializer.serialize(result));
   }
 
+  @Test void deserialize_char_returnsCharacter()
+  {
+    String input  = "cL";
+    Object result = ValueSerializer.deserialize(input);
+    assertEquals('L', result);
+
+    assertEquals(input, ValueSerializer.serialize(result));
+  }
+
+  @Test void deserialize_charArray_parsesNatively()
+  {
+    String input  = "c[3:cL:cR:cL]";
+    char[] result = (char[])ValueSerializer.deserialize(input);
+    assertArrayEquals(new char[] {'L', 'R', 'L'}, result);
+
+    assertEquals(input, ValueSerializer.serialize(result));
+  }
+
   @Test void deserialize_malformedInput_throwsException()
   {
     assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:i5"));              // Missing closing bracket
@@ -166,4 +200,51 @@ public class ValueSerializerTest {
   }
 
   @Test void deserialize_topLevelScalar_returnsScalar() { assertEquals(5, ValueSerializer.deserialize("i5")); }
+
+  // ---------------------------------------------------------------
+  // toIntArray()
+  // ---------------------------------------------------------------
+
+  @Test void toIntArray_alreadyIntArray_returnsAsIs()
+  {
+    int[] input = {1, 2, 3};
+    assertArrayEquals(input, (int[])ValueSerializer.toIntArray(input));
+  }
+
+  @Test void toIntArray_2DArray_rebuildsTypedArray()
+  {
+    int[][] input       = {{1, 2, 3}, {4, 5, 6}};
+    Object deserialized = ValueSerializer.deserialize(ValueSerializer.serialize(input));
+
+    int[][] result = (int[][])ValueSerializer.toIntArray(deserialized);
+
+    assertEquals(2, result.length);
+    assertArrayEquals(new int[] {1, 2, 3}, result[0]);
+    assertArrayEquals(new int[] {4, 5, 6}, result[1]);
+  }
+
+  @Test void toIntArray_3DArray_rebuildsTypedArray()
+  {
+    // Same shape as HelloTurmiteEntity's rule table: rule[state][currentColor][NEXT_COLOR/MOVE/STATE]
+    int[][][] input     = {{{1, 2, 0}, {1, 2, 1}}, {{0, 1, 0}, {0, 1, 1}}};
+    Object deserialized = ValueSerializer.deserialize(ValueSerializer.serialize(input));
+
+    int[][][] result = (int[][][])ValueSerializer.toIntArray(deserialized);
+
+    assertEquals(2, result.length);
+    assertArrayEquals(new int[] {1, 2, 0}, result[0][0]);
+    assertArrayEquals(new int[] {1, 2, 1}, result[0][1]);
+    assertArrayEquals(new int[] {0, 1, 0}, result[1][0]);
+    assertArrayEquals(new int[] {0, 1, 1}, result[1][1]);
+  }
+
+  @Test void toIntArray_emptyArray_rebuildsEmptyTypedArray()
+  {
+    int[][] input       = {};
+    Object deserialized = ValueSerializer.deserialize(ValueSerializer.serialize(input));
+
+    int[][] result = (int[][])ValueSerializer.toIntArray(deserialized);
+
+    assertEquals(0, result.length);
+  }
 }

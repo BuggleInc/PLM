@@ -1,19 +1,29 @@
 package plm.core;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class ValueSerializer {
 
     private static String getTypeRepresentation(Class<?> clazz) {
-        assert !clazz.isArray();
+      // A component type that is itself an array (e.g. int[][]'s component is int[]) means we're one level above the deepest
+      // level: no fixed tag needed here, each element (itself an array) carries its own tag when serialized recursively.
+      if (clazz.isArray())
+        return "";
 
-        if (clazz == Integer.class || clazz == int.class) return "i";
-        if (clazz == Double.class || clazz == double.class) return "f";
-        if (clazz == Boolean.class || clazz == boolean.class) return "b";
+      if (clazz == Integer.class || clazz == int.class)
+        return "i";
+      if (clazz == Double.class || clazz == double.class)
+        return "f";
+      if (clazz == Boolean.class || clazz == boolean.class)
+        return "b";
+      if (clazz == Character.class || clazz == char.class)
+        return "c";
 
-        if (clazz == Object.class || clazz == String.class) return "";
-        throw new IllegalArgumentException("Unknown serializable type: " + clazz.getSimpleName());
+      if (clazz == Object.class || clazz == String.class)
+        return "";
+      throw new IllegalArgumentException("Unknown serializable type: " + clazz.getSimpleName());
     }
 
     /* --- Serialization logic --- */
@@ -43,8 +53,14 @@ public class ValueSerializer {
                         booleanValues.add(boo);
                     }
                     values = booleanValues;
+                } else if (o instanceof char[] chars) {
+                  List<Character> charValues = new ArrayList<>();
+                  for (char c : chars) {
+                    charValues.add(c);
+                  }
+                  values = charValues;
                 } else {
-                    values = Arrays.stream((Object[]) o).toList();
+                  values = Arrays.stream((Object[])o).toList();
                 }
             }
 
@@ -79,6 +95,27 @@ public class ValueSerializer {
             throw new IllegalArgumentException("Unexpected trailing characters.");
         }
         return value;
+    }
+
+    /**
+     * Rebuilds a multi-dimensional int array (int[], int[][], int[][][], ...) from the generic Object[] tree that deserialize()
+     * returns above its deepest array level.
+     */
+    public static Object toIntArray(Object o)
+    {
+      if (o instanceof int[])
+        return o;
+
+      Object[] array     = (Object[])o;
+      Object[] converted = new Object[array.length];
+      for (int i = 0; i < array.length; i++)
+        converted[i] = toIntArray(array[i]);
+
+      Class<?> componentType = converted.length > 0 ? converted[0].getClass() : int[].class;
+      Object typedArray      = Array.newInstance(componentType, converted.length);
+      for (int i = 0; i < converted.length; i++)
+        Array.set(typedArray, i, converted[i]);
+      return typedArray;
     }
 
     private static final class Parser {
@@ -145,6 +182,14 @@ public class ValueSerializer {
                 return parseBoolean();
             }
 
+            if (c == 'c') {
+              pos++;
+              if (peek() == '[') {
+                return parseCharArray();
+              }
+              return parseChar();
+            }
+
             if (c == '[') {
                 return parseObjectArray();
             }
@@ -177,6 +222,16 @@ public class ValueSerializer {
                 result[i] = (Boolean) values[i];
             }
             return result;
+        }
+
+        private char[] parseCharArray()
+        {
+          Object[] values = parseArrayContents();
+          char[] result   = new char[values.length];
+          for (int i = 0; i < values.length; i++) {
+            result[i] = (Character)values[i];
+          }
+          return result;
         }
 
         /* ---------- Primitive values ---------- */
@@ -228,6 +283,13 @@ public class ValueSerializer {
                 case '1' -> true;
                 default -> throw new IllegalArgumentException("Invalid boolean");
             };
+        }
+
+        private Character parseChar()
+        {
+          char c = peek();
+          pos++;
+          return c;
         }
 
         private String parseString() {
