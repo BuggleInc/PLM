@@ -291,9 +291,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
-                newSource(lang, name, initialContent, template, offset,
-                          correction.toString().replaceAll(
-                              "SimpleBuggle", "AbstractBuggle")); // We don't want to have little dialogs when testing
+                newSource(lang, name, initialContent, template, offset, correction.toString());
         }
 
         protected final void setup(World w) { setup(new World[] {w}); }
@@ -420,13 +418,10 @@ public abstract class ExerciseTemplated extends Exercise {
                                 mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) {
-					for (Entity ent: aw.getEntities()) {
-                                          if (!Game.getInstance().getProgrammingLanguage().isC() && !Game.getInstance().getProgrammingLanguage().isJava())
-                                            ent.setScript(Game.getInstance().getProgrammingLanguage(), id);
-                                          Game.getInstance().getProgrammingLanguage().runEntity(ent, progress);
-                                        }
-					aw.setAnswerWorld();
-				}
+                                  for (Entity ent : aw.getEntities())
+                                    Game.getInstance().getProgrammingLanguage().runEntity(ent, progress);
+                                  aw.setAnswerWorld();
+                                }
 				
 				/* Try to write all files for next time */
 				if (answerWorld.get(0).haveIO()) {

@@ -49,9 +49,9 @@ public abstract class Lecture {
 	
 	public Lecture(Lesson lesson,String basename) {
 		this.lesson = lesson;
-		localId = (basename!=null?basename:getClass().getName());
-		id = lesson.getId()+"."+ getLocalId();
-		loadHTMLMission();
+                localId     = (basename != null ? basename : getClass().getSimpleName());
+                id          = lesson.getId() + "." + getLocalId();
+                loadHTMLMission();
 	}
 	public String getId() {
 		return id;
