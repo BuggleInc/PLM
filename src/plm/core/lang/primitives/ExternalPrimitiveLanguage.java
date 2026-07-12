@@ -22,4 +22,10 @@ public interface ExternalPrimitiveLanguage {
     }
 
     void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException;
+
+    /**
+     * Same as {@link #generate(File, String, List)}, but with a string added verbatim to the generated class body. This is to
+     * add hand-written helpers on need.
+     */
+    default void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException { generate(folder, name, methods); }
 }

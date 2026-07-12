@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import lessons.recursion.cons.universe.ConsEntity;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.sort.baseball.universe.BaseballEntity;
 import lessons.sort.dutchflag.universe.DutchFlagEntity;
@@ -22,9 +23,12 @@ public class CodeCreation {
         File folder = new File("target/classes/resources/langages/");
 
         Map<String, Class<? extends Entity>> remoteMap =
-            Map.of("RemoteBat", BatEntity.class, "RemoteBuggle", AbstractBuggle.class, "RemoteSort", SortingEntity.class, "RemoteTurtle", Turtle.class,
-                   "RemotePancake", PancakeEntity.class, "RemoteHanoi", HanoiEntity.class, "RemoteBaseball", BaseballEntity.class, "RemoteFlag",
-                   DutchFlagEntity.class, "RemoteSimple", SimpleExerciseEntity.class);
+            Map.of("RemoteBat", BatEntity.class, "RemoteCons", ConsEntity.class, "RemoteBuggle", AbstractBuggle.class, "RemoteSort", SortingEntity.class,
+                   "RemoteTurtle", Turtle.class, "RemotePancake", PancakeEntity.class, "RemoteHanoi", HanoiEntity.class, "RemoteBaseball", BaseballEntity.class,
+                   "RemoteFlag", DutchFlagEntity.class, "RemoteSimple", SimpleExerciseEntity.class);
+
+        // Hand-written code to splice into some generated remote stubs, for manual helpers
+        Map<String, String> remoteExtraJavaCode = Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE);
 
         LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
         File cFolder = new File(folder, "c");
@@ -56,7 +60,7 @@ public class CodeCreation {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            langJavaGenerator.generate(javaFolder, name, list.values().stream().toList());
+            langJavaGenerator.generate(javaFolder, name, list.values().stream().toList(), remoteExtraJavaCode.getOrDefault(name, ""));
         }
 
     }

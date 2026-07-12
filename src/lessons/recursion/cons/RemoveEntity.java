@@ -12,7 +12,7 @@ public class RemoveEntity extends ConsEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(remove(RecList.fromArray((int[]) param[0]), (Integer)param[1])));
+      setTestResult(i, serialize(RecList.toArray(remove(RecList.fromArray((int[])param[0]), (Integer)param[1]))));
     }
   }
 

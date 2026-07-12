@@ -41,6 +41,26 @@ public class LangJava extends JVMCompiledLang {
     private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
     File tempFolder = new File(System.getProperty("java.io.tmpdir"), "plm_java_toremove");
 
+    /** Extra source files to be copied alongside the student's code */
+    private static final Map<String, List<String>> remoteExtraSourceFiles = Map.of("RemoteCons", List.of("src/lessons/recursion/cons/universe/RecList.java"));
+
+    /** e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "lessons.recursion.cons.universe.RecList" */
+    private static String fqcnFromSourcePath(String sourcePath)
+    {
+      String withoutSrcPrefix = sourcePath.startsWith("src/") ? sourcePath.substring("src/".length()) : sourcePath;
+      String withoutExtension =
+          withoutSrcPrefix.endsWith(".java") ? withoutSrcPrefix.substring(0, withoutSrcPrefix.length() - ".java".length()) : withoutSrcPrefix;
+      return withoutExtension.replace('/', '.');
+    }
+
+    /** e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "RecList" */
+    private static String fileNameWithoutExtension(String path)
+    {
+      String name = new File(path).getName();
+      int dot     = name.lastIndexOf('.');
+      return dot < 0 ? name : name.substring(0, dot);
+    }
+
     public LangJava() {
         super("Java", "java", ResourcesCache.getIcon("img/lang_java.png"));
     }
@@ -124,6 +144,8 @@ public class LangJava extends JVMCompiledLang {
         return "RemoteSimple";
       if (code.contains(".bat."))
         return "RemoteBat";
+      if (code.contains(".cons."))
+        return "RemoteCons";
       if (code.contains("Buggle"))
         return "RemoteBuggle";
       if (code.contains("Turtle"))
@@ -285,6 +307,13 @@ public class LangJava extends JVMCompiledLang {
         return remoteCode;
     }
 
+    private void copyFile(File name, String path, String packageName) throws IOException
+    {
+      String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
+      content        = content.replaceFirst("package .*;", "package " + packageName + ";\n");
+      Files.writeString(name.toPath(), content);
+    }
+
     public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
         /* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
         packageNameSuffix++;
@@ -361,11 +390,20 @@ public class LangJava extends JVMCompiledLang {
                                      + "}\n";
 
                 try {
+                  File valueSerializer = new File(workspace, "ValueSerializer.java");
+                  copyFile(valueSerializer, "src/plm/core/ValueSerializer.java", packageNameCache);
 
-                  File ValueSerializer          = new File(workspace, "ValueSerializer.java");
-                  String ValueSerializerContent = Files.readString(new File("src/plm/core/ValueSerializer.java").toPath(), StandardCharsets.UTF_8);
-                  ValueSerializerContent        = ValueSerializerContent.replaceFirst("package .*;", "package " + packageNameCache + ";\n");
-                  Files.writeString(ValueSerializer.toPath(), ValueSerializerContent);
+                  List<File> extraFiles = new ArrayList<>();
+                  for (String sourcePath : remoteExtraSourceFiles.getOrDefault(remote, List.of())) {
+                    File extraFile = new File(workspace, new File(sourcePath).getName());
+                    copyFile(extraFile, sourcePath, packageNameCache);
+                    extraFiles.add(extraFile);
+
+                    // Change the existing own source imports (e.g. "lessons.recursion.cons.universe.RecList") to the local one we just copied.
+                    String originalFqcn = fqcnFromSourcePath(sourcePath);
+                    String simpleName   = fileNameWithoutExtension(sourcePath);
+                    entityCode          = entityCode.replace("import " + originalFqcn + ";", "import " + packageNameCache + "." + simpleName + ";");
+                  }
 
                   Files.writeString(new File(workspace, "Template.txt").toPath(), template);
                   Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
@@ -374,11 +412,15 @@ public class LangJava extends JVMCompiledLang {
                   Files.writeString(entityFile.toPath(), entityCode);
                   Files.writeString(mainFile.toPath(), mainContent);
 
-                  compileJavaFiles(diagnostic, workspace, mainFile, mainRemote, entityRemote, entityFile, ValueSerializer);
+                  List<File> filesToCompile = new ArrayList<>(List.of(mainFile, mainRemote, entityRemote, entityFile, valueSerializer));
+                  filesToCompile.addAll(extraFiles);
+                  compileJavaFiles(diagnostic, workspace, filesToCompile.toArray(File[] ::new));
 
                   File jarFile = new File(workspace, "Code.jar");
-                  createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, entityFile, mainRemote, entityRemote, ValueSerializer,
-                                new File(workspace, "ValueSerializer$Parser.class"));
+                  List<File> filesToJar =
+                      new ArrayList<>(List.of(entityFile, mainRemote, entityRemote, valueSerializer, new File(workspace, "ValueSerializer$Parser.class")));
+                  filesToJar.addAll(extraFiles);
+                  createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, filesToJar.toArray(File[] ::new));
 
                   sf.meta.put("JAVA", jarFile.toPath().toString());
 
@@ -478,66 +520,88 @@ public class LangJava extends JVMCompiledLang {
             final SocketChannel finalProtocolChannel = protocolChannel;
             final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
 
-            Thread reader = new Thread() {
-                public void run() {
-                    try {
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                        try {
-                            String str;
-                            while ((str = reader.readLine()) != null)
-                                System.out.println(str);
-                        } finally {
-                            reader.close();
-                        }
-                    } catch (Throwable t) {
-                      t.printStackTrace();
-                      progress.outcome        = RunOutcome.kind.FAIL;
-                      progress.executionError = t.getMessage();
-                      process.destroyForcibly();
-                    }
-                }
-            };
-
-            Thread error = new Thread() {
-                public void run() {
-                  BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-                  Exception parseError  = null;
-                  String str            = "";
+            Thread stdoutReader = new Thread() {
+              public void run()
+              {
+                try {
+                  BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
                   try {
-                    while ((str = reader.readLine()) != null) {
-                      System.out.println("EXECUTING COMMAND: " + str);
-                      CommandExecutor.command(ent, str, bwriter);
-                      System.out.println("COMMAND EXECUTED");
-                    }
-                  } catch (Exception e) {
-                    parseError = e;
-                    e.printStackTrace();
-                    progress.outcome        = RunOutcome.kind.FAIL;
-                    progress.executionError = e.getMessage();
-                    process.destroyForcibly();
+                    String str;
+                    while ((str = reader.readLine()) != null)
+                      System.out.println(str);
+                  } finally {
+                    reader.close();
                   }
-                    if (parseError != null) {
-                        StringBuffer sb = new StringBuffer(str + "\n");
-                        try {
-                            while ((str = reader.readLine()) != null)
-                                sb.append(str + "\n");
-                        } catch (IOException ioe) {
-                            System.err.println("Exception while handling the exception. Bailing out");
-                            parseError.printStackTrace();
-                            ioe.printStackTrace();
-                        }
-                        throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
-                    }
+                } catch (Throwable t) {
+                  t.printStackTrace();
+                  progress.outcome        = RunOutcome.kind.FAIL;
+                  progress.executionError = t.getMessage();
+                  process.destroyForcibly();
                 }
+              }
             };
 
-            reader.start();
-            error.start();
+            Thread stderrReader = new Thread() {
+              public void run()
+              {
+                try {
+                  BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                  try {
+                    String str;
+                    while ((str = reader.readLine()) != null)
+                      System.err.println(str);
+                  } finally {
+                    reader.close();
+                  }
+                } catch (Throwable t) {
+                  t.printStackTrace();
+                }
+              }
+            };
+
+            Thread commandReader = new Thread() {
+              public void run()
+              {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
+                Exception parseError  = null;
+                String str            = "";
+                try {
+                  while ((str = reader.readLine()) != null) {
+                    //                      System.out.println("EXECUTING COMMAND: " + str);
+                    CommandExecutor.command(ent, str, bwriter);
+                    //                      System.out.println("COMMAND EXECUTED");
+                  }
+                } catch (Exception e) {
+                  parseError = e;
+                  e.printStackTrace();
+                  progress.outcome        = RunOutcome.kind.FAIL;
+                  progress.executionError = e.getMessage();
+                  process.destroyForcibly();
+                }
+                if (parseError != null) {
+                  StringBuffer sb = new StringBuffer(str + "\n");
+                  try {
+                    while ((str = reader.readLine()) != null)
+                      sb.append(str + "\n");
+                  } catch (IOException ioe) {
+                    System.err.println("Exception while handling the exception. Bailing out");
+                    parseError.printStackTrace();
+                    ioe.printStackTrace();
+                  }
+                  throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
+                }
+              }
+            };
+
+            stdoutReader.start();
+            stderrReader.start();
+            commandReader.start();
 
             int retcode = process.waitFor();
 
-            reader.join();
-            error.join();
+            stdoutReader.join();
+            stderrReader.join();
+            commandReader.join();
 
             bwriter.close();
             finalProtocolChannel.close();
@@ -683,20 +747,25 @@ public class LangJava extends JVMCompiledLang {
             return prototype + "{\n" + command + "\n" + returning + "\n}";
         }
 
-        @Override
-        public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException {
-            Set<CommandArgumentType<?>> involved = ExternalPrimitiveLanguage.involved(methods);
+        @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException { generate(folder, name, methods, ""); }
 
-            final String type_declarations = involved.stream().map(this::getTypeDeclaration)
-                    .filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
+        @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
+        {
+          Set<CommandArgumentType<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
-            final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
+          final String type_declarations = involved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
-            final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\n\npublic class " + name + " {" +
-                                ("\n" + type_declarations + "\n" + implementations).replace("\n", "\n\t") + "\n}";
+          final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
-            System.err.println("XXX Generating " + folder + "/" + name + ".java");
-            Files.writeString(new File(folder, name + ".java").toPath(), code);
+          String body = "\n" + type_declarations + "\n" + implementations;
+          if (!extraCode.isBlank())
+            body += "\n" + extraCode;
+
+          final String code =
+              "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\n\npublic class " + name + " {" + body.replace("\n", "\n\t") + "\n}";
+
+          System.err.println("XXX Generating " + folder + "/" + name + ".java");
+          Files.writeString(new File(folder, name + ".java").toPath(), code);
         }
     }
 

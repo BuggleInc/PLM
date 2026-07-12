@@ -13,8 +13,6 @@ public abstract class Remote {
   /*
    * The protocol (commands to the PLM, answers from the PLM) travels over a UNIX domain socket whose path is passed as
    * args[0] -- see connect() below, called from the generated Main.main().
-   *
-   * System.out : student's debug output (unchanged, still free to use)
    */
 
   private static BufferedReader protocolIn;
@@ -43,11 +41,11 @@ public abstract class Remote {
         System.err.println("IO exception while reading the protocol (reason: " + e.getMessage() + "). Bailing out.");
         System.exit(1);
       }
-        System.out.println("Student receives: " + answerBuffer);
-        System.out.flush();
-        if (answerBuffer == null) {
-            System.exit(1);
-        }
+      //        System.out.println("Student receives: " + answerBuffer);
+      System.out.flush();
+      if (answerBuffer == null) {
+        System.exit(1);
+      }
     }
 
     public static int getAnswerInt() {
@@ -78,7 +76,7 @@ public abstract class Remote {
     public static void sendCommand(String format, Object... args) {
       String command = String.format(Locale.ENGLISH, format, args);
 
-      System.out.println("Student sends: " + command);
+      //      System.out.println("Student sends: " + command);
       System.out.flush();
       protocolOut.println(command);
       protocolOut.flush();

@@ -12,7 +12,7 @@ public class ConcatEntity extends ConsEntity {
     int count = getTestCount();
     for (int i = 0; i < count; i++) {
       Object[] param = (Object[])deserialize(getTest(i));
-      setTestResult(i, serialize(concat(RecList.fromArray((int[]) param[0]), RecList.fromArray((int[]) param[1]))));
+      setTestResult(i, serialize(RecList.toArray(concat(RecList.fromArray((int[])param[0]), RecList.fromArray((int[])param[1])))));
     }
   }
 

@@ -23,59 +23,63 @@ public class RecList {
 			return null;
 		return new RecList(seq[rank], fromArray(seq,rank+1) );
 	}
-	public int[] toArray() {
-		int len = 0;
-		RecList ptr = this;
-		while (ptr != null) {
-			ptr=ptr.tail;
-			len++;
-		}
-		if (len == 0)
-			return new int[]{};
-		int[] res = new int[len];
-		int i=0;
-		ptr = this;
-		while (ptr != null) {
-			res[i] = ptr.head;
-			ptr=ptr.tail;
-			i++;
-		}
-		return res;
-	}
+        public static int[] toArray(RecList l)
+        {
+          int len     = 0;
+          RecList ptr = l;
+          while (ptr != null) {
+            ptr = ptr.tail;
+            len++;
+          }
+          if (len == 0)
+            return new int[] {};
+          int[] res = new int[len];
+          int i     = 0;
+          ptr       = l;
+          while (ptr != null) {
+            res[i] = ptr.head;
+            ptr    = ptr.tail;
+            i++;
+          }
+          return res;
+        }
 
-	public List<Integer> toList() {
-		List<Integer> res = new ArrayList<Integer>();
-		RecList ptr = this;
-		while (ptr != null) {
-			res.add(ptr.head);
-			ptr = ptr.tail;
-		}
-		return res;
-	}
-	public String toString() {
-		StringBuffer res = new StringBuffer();
-		res.append(" [");
-		RecList ptr = this;
-		boolean first = true;
-		while (ptr != null) {
-			if (first)
-				first = false;
-			else 
-				res.append(", ");
-			res.append(ptr.head);
-			ptr = ptr.tail;
-		}
-		res.append("] ");
-		return res.toString();
-	}
+        public List<Integer> toList()
+        {
+          List<Integer> res = new ArrayList<Integer>();
+          RecList ptr       = this;
+          while (ptr != null) {
+            res.add(ptr.head);
+            ptr = ptr.tail;
+          }
+          return res;
+        }
+        public String toString()
+        {
+          StringBuffer res = new StringBuffer();
+          res.append(" [");
+          RecList ptr   = this;
+          boolean first = true;
+          while (ptr != null) {
+            if (first)
+              first = false;
+            else
+              res.append(", ");
+            res.append(ptr.head);
+            ptr = ptr.tail;
+          }
+          res.append("] ");
+          return res.toString();
+        }
 
-	public int plmInsiderLength() {
-		int res = 0;
-		RecList ptr = this;
-		while (ptr != null) {
-			ptr = ptr.tail;
-			res++;
-		}
-		return res;
-	}
+        public int plmInsiderLength()
+        {
+          int res     = 0;
+          RecList ptr = this;
+          while (ptr != null) {
+            ptr = ptr.tail;
+            res++;
+          }
+          return res;
+        }
 }

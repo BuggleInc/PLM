@@ -3,6 +3,7 @@ package plm.universe.bat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
+import lessons.recursion.cons.universe.RecList;
 import org.python.core.PyInstance;
 import plm.core.lang.ProgrammingLanguage;
 
@@ -20,9 +21,8 @@ public class ValueFormatter {
 
       return res;
     }
-    if (value instanceof lessons.recursion.cons.universe.RecList) {
-      value = ((lessons.recursion.cons.universe.RecList)value).toArray();
-    }
+    if (value instanceof RecList)
+      value = RecList.toArray((RecList)value);
     if (value instanceof scala.collection.immutable.List) {
       scala.collection.immutable.List<?> sl = (scala.collection.immutable.List<?>)value;
       int[] res                             = new int[sl.size()];
