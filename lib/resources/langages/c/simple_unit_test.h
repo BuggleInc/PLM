@@ -269,6 +269,7 @@ typedef struct s_sut_registery_t {
     printf("\n");                                                                                                                                              \
     free(registry->suites_);                                                                                                                                   \
     free(registry);                                                                                                                                            \
+    return failedTests ? 1 : 0;                                                                                                                                \
   }
 
 #endif
