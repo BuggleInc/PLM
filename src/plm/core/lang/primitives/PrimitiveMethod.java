@@ -1,5 +1,6 @@
 package plm.core.lang.primitives;
 
+import javax.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -9,10 +10,10 @@ import java.util.stream.Collectors;
 
 public final class PrimitiveMethod {
     private final List<PrimitiveParameter> parameters;
-    private final CommandArgumentType<?> output;
     private final String name;
     private final String location;
     private final Method method;
+    private final Class<?> output;
     public int id;
 
     public PrimitiveMethod(Primitive primitive, Method method) {
@@ -20,9 +21,13 @@ public final class PrimitiveMethod {
         this.name = primitive.name().isEmpty() ? method.getName() : primitive.name();
         this.location = method.getDeclaringClass().getSimpleName() + "::" + name();
         this.method = method;
-        parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
-        output = Optional.of(method.getReturnType())
-                .map(CommandArgumentType::getCommandArgumentTypeFromClass).orElse(null);
+        this.parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
+        this.output = method.getReturnType();
+    }
+
+    @Nullable
+    public Class<?> output() {
+        return output;
     }
 
     public int id() {
@@ -41,8 +46,8 @@ public final class PrimitiveMethod {
         return parameters;
     }
 
-    public CommandArgumentType<?> output() {
-        return output;
+    public boolean hasReturn() {
+        return output != null;
     }
 
     @Override
@@ -60,10 +65,10 @@ public final class PrimitiveMethod {
 
     @Override
     public String toString() {
-        return name() + "(" + parameters.stream().map(PrimitiveParameter::toString).collect(Collectors.joining(",")) + ")" + ":" + Optional.ofNullable(output).map(CommandArgumentType::toString).orElse("void");
+        return name() + "(" + parameters.stream().map(PrimitiveParameter::toString).collect(Collectors.joining(",")) + ")" + ":" + Optional.ofNullable(output).map(Class::getSimpleName).orElse("void");
     }
 
-    public Method getMethod() {
+    public Method method() {
         return method;
     }
 }

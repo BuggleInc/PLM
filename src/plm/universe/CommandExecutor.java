@@ -51,7 +51,7 @@ public final class CommandExecutor {
 
         for (int i = 0; i < args.length; i++) {
             Object rawArg = args[i];
-            Class<?> argType = method.parameters().get(i).getRawType();
+            Class<?> argType = method.parameters().get(i).type();
 
             if (argType.isEnum()) {
                 try {
@@ -62,12 +62,11 @@ public final class CommandExecutor {
             }
         }
 
-        Method javaMethod = method.getMethod();
+        Method javaMethod = method.method();
         Object returnValue = javaMethod.invoke(entity, args);
-        boolean hasReturn = method.output() != null;
 
         try {
-            if (hasReturn) {
+            if (method.hasReturn()) {
 
                 if (returnValue instanceof Enum<?>) {
                     returnValue = ((Enum<?>) returnValue).ordinal();
