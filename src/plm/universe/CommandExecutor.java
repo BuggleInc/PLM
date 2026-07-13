@@ -1,21 +1,23 @@
 package plm.universe;
 
-import plm.core.lang.primitives.CommandArgumentType;
+import plm.core.ValueSerializer;
 import plm.core.lang.primitives.PrimitiveMethod;
-import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.lang.primitives.PrimitiveRegistration;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class CommandExecutor {
+    private static final Map<Class<? extends Entity>, Map<Integer, PrimitiveMethod>> getMinimalPrimitiveForEntity_Cache = new HashMap<>();
+
     private CommandExecutor() {
     }
-
-    private static final Map<Class<? extends Entity>, Map<Integer, PrimitiveMethod>> getMinimalPrimitiveForEntity_Cache = new HashMap<>();
 
     public synchronized static void command(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException {
         if (command.contains("AddressSanitizer")) {
@@ -23,14 +25,21 @@ public final class CommandExecutor {
                 System.err.println(command);
             return;
         }
+        int firstSpace = command.indexOf(' ');
+        int lastSpace = command.lastIndexOf(' ');
 
-        int id = Integer.parseInt(command.substring(0, command.indexOf(' ')));
-        String primitive = command.substring(command.lastIndexOf(' ') + 1);
-        PrimitiveMethod method = getMinimalPrimitiveForEntity_Cache.computeIfAbsent(entity.getClass(), PrimitiveRegistration::getMinimalPrimitiveForEntity)
-                .get(id);
+        String opCodeSegment = command.substring(0, firstSpace);
+        String opArgsSegment = firstSpace <= lastSpace + 1 ? command.substring(firstSpace + 1, lastSpace) : "";
+        String opNameSegment = command.substring(lastSpace + 1);
 
-        if (!method.name().equals(primitive)) {
-            System.err.println("Primitive real name do not match provided name. (expected: " + method.name() + ", provided: " + primitive + ")");
+        int opCode = Integer.parseInt(opCodeSegment);
+        Map<Integer, PrimitiveMethod> primitiveMethodMap = getMinimalPrimitiveForEntity_Cache
+                .computeIfAbsent(entity.getClass(), PrimitiveRegistration::getMinimalPrimitiveForEntity);
+        PrimitiveMethod method = primitiveMethodMap.get(opCode);
+
+        if (!method.name().equals(opNameSegment)) {
+            System.err.println("Primitive real name do not match provided name. " +
+                    "(expected: " + method.name() + ", provided: " + opNameSegment + ")");
             return;
         }
 
@@ -38,28 +47,33 @@ public final class CommandExecutor {
         // But a serialized String argument may itself contain spaces (e.g. "Oh Boy!"), using a simple split(" ") would ruin the parameter.
         // Instead, tokenize the middle part while respecting quoted strings and bracketed arrays.
         // FIXME: we should use ValueSerializer for the whole array of parameters, but this requires to implement this logic in C too
-        int firstSpace  = command.indexOf(' ');
-        int lastSpace   = command.lastIndexOf(' ');
-        String argsPart = (firstSpace < lastSpace) ? command.substring(firstSpace + 1, lastSpace) : "";
-        String[] args   = splitArgsRespectingQuotesAndBrackets(argsPart);
+        Object[] args = (Object[]) ValueSerializer.deserialize(opArgsSegment);
 
-        Method javaMethod = method.getMethod();
-        List<PrimitiveParameter> parameters = method.parameters();
-        List<Object> javaParameters = new ArrayList<>();
+        for (int i = 0; i < args.length; i++) {
+            Object rawArg = args[i];
+            Class<?> argType = method.parameters().get(i).getRawType();
 
-        for (int i = 0; i < parameters.size(); i++) {
-            PrimitiveParameter parameter = parameters.get(i);
-
-            Object value = parameter.type().deserialize(args[i]);
-            javaParameters.add(value);
+            if (argType.isEnum()) {
+                try {
+                    args[i] = ((Object[]) argType.getMethod("values").invoke(null))[(int) rawArg];
+                } catch (NoSuchMethodException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
 
-        Object returnValue = javaMethod.invoke(entity, javaParameters.toArray());
-        @SuppressWarnings("unchecked") CommandArgumentType<Object> returnType = (CommandArgumentType<Object>) method.output();
+        Method javaMethod = method.getMethod();
+        Object returnValue = javaMethod.invoke(entity, args);
+        boolean hasReturn = method.output() != null;
 
         try {
-            if (returnType != null) {
-                String serialize = returnType.serialize(returnValue);
+            if (hasReturn) {
+
+                if (returnValue instanceof Enum<?>) {
+                    returnValue = ((Enum<?>) returnValue).ordinal();
+                }
+
+                String serialize = ValueSerializer.serialize(returnValue);
                 out.write(serialize);
                 out.write("\n");
                 out.flush();
@@ -74,48 +88,47 @@ public final class CommandExecutor {
      * string (e.g. "a b") or inside a bracketed array (e.g. [2:"a b":i3]). Respects backslash-escaping of quotes as produced by
      * ValueSerializer.serialize (\\ and \").
      */
-    private static String[] splitArgsRespectingQuotesAndBrackets(String argsPart)
-    {
-      if (argsPart.isEmpty())
-        return new String[0];
+    private static String[] splitArgsRespectingQuotesAndBrackets(String argsPart) {
+        if (argsPart.isEmpty())
+            return new String[0];
 
-      List<String> tokens   = new ArrayList<>();
-      StringBuilder current = new StringBuilder();
-      boolean inQuotes      = false;
-      int bracketDepth      = 0;
+        List<String> tokens = new ArrayList<>();
+        StringBuilder current = new StringBuilder();
+        boolean inQuotes = false;
+        int bracketDepth = 0;
 
-      for (int i = 0; i < argsPart.length(); i++) {
-        char c = argsPart.charAt(i);
+        for (int i = 0; i < argsPart.length(); i++) {
+            char c = argsPart.charAt(i);
 
-        if (inQuotes) {
-          current.append(c);
-          if (c == '\\' && i + 1 < argsPart.length()) {
-            // Keep the escaped character glued to its backslash to differentiate an escaped quote from for the string end
-            current.append(argsPart.charAt(++i));
-          } else if (c == '"') {
-            inQuotes = false;
-          }
-          continue;
+            if (inQuotes) {
+                current.append(c);
+                if (c == '\\' && i + 1 < argsPart.length()) {
+                    // Keep the escaped character glued to its backslash to differentiate an escaped quote from for the string end
+                    current.append(argsPart.charAt(++i));
+                } else if (c == '"') {
+                    inQuotes = false;
+                }
+                continue;
+            }
+
+            if (c == '"') {
+                inQuotes = true;
+                current.append(c);
+            } else if (c == '[') {
+                bracketDepth++;
+                current.append(c);
+            } else if (c == ']') {
+                bracketDepth--;
+                current.append(c);
+            } else if (c == ' ' && bracketDepth == 0) {
+                tokens.add(current.toString());
+                current.setLength(0);
+            } else {
+                current.append(c);
+            }
         }
+        tokens.add(current.toString());
 
-        if (c == '"') {
-          inQuotes = true;
-          current.append(c);
-        } else if (c == '[') {
-          bracketDepth++;
-          current.append(c);
-        } else if (c == ']') {
-          bracketDepth--;
-          current.append(c);
-        } else if (c == ' ' && bracketDepth == 0) {
-          tokens.add(current.toString());
-          current.setLength(0);
-        } else {
-          current.append(c);
-        }
-      }
-      tokens.add(current.toString());
-
-      return tokens.toArray(new String[0]);
+        return tokens.toArray(new String[0]);
     }
 }

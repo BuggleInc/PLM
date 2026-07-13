@@ -319,7 +319,8 @@ public class LangJava extends JVMCompiledLang {
         Map<String, String> runtimePatterns = new TreeMap<String, String>();
         runtimePatterns.put("\\$package", "package " + packageNameCache + ";");
 
-        String mainRemoteContent = getRemoteJavaFile(null, packageNameCache);
+        String mainRemoteContent = getRemoteJavaFile(null, packageNameCache)
+                .replace("import static ValueSerializer.*;", "import static " + packageNameCache + ".ValueSerializer.*;");;
 
         DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
         try {
@@ -342,6 +343,7 @@ public class LangJava extends JVMCompiledLang {
                 runtimePatterns.put("\\$run", runFunction);
                 runtimePatterns.put("\\$dependency", dependency);
                 runtimePatterns.put("\\$imports", ("import static " + packageNameCache + ".ValueSerializer.*;\n"
+                                                    + "import java.awt.Color;\n"
                                                    + "import static " + packageNameCache + ".Remote.*;\n"
                                                    + "import static " + packageNameCache + "." + remote + ".*;\n" + imports)
                                                       .replace('\n', ' '));
@@ -351,7 +353,6 @@ public class LangJava extends JVMCompiledLang {
 
 
                 String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
-                entityCode = Pattern.compile("([^a-zA-Z])(Color)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
                 entityCode = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
                 entityCode = Pattern.compile("this.").matcher(entityCode).replaceAll("");
 
@@ -621,7 +622,7 @@ public class LangJava extends JVMCompiledLang {
     public static class LangJavaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
         String getLanguageType(CommandArgumentType<?> type) {
-            if (type == CommandArgumentType.COLOR) return "int";
+            if (type == CommandArgumentType.COLOR) return "Color";
             if (type == CommandArgumentType.DIRECTION) return "int";
             if (type == CommandArgumentType.DOUBLE) return "double";
             if (type == CommandArgumentType.INT) return "int";
@@ -640,36 +641,6 @@ public class LangJava extends JVMCompiledLang {
                         "\tstatic final int EAST = 1;\n" +
                         "\tstatic final int SOUTH = 2;\n" +
                         "\tstatic final int WEST = 3;\n" +
-                        "}";
-            }
-            if (type == CommandArgumentType.COLOR) {
-                return "public static class Color {\n" +
-                        "\tstatic final int white = " + ColorMapper.color2int(Color.white) + ";\n" +
-                        "\tstatic final int WHITE = " + ColorMapper.color2int(Color.WHITE) + ";\n" +
-                        "\tstatic final int black = " + ColorMapper.color2int(Color.black) + ";\n" +
-                        "\tstatic final int BLACK = " + ColorMapper.color2int(Color.BLACK) + ";\n" +
-                        "\tstatic final int blue = " + ColorMapper.color2int(Color.blue) + ";\n" +
-                        "\tstatic final int BLUE = " + ColorMapper.color2int(Color.BLUE) + ";\n" +
-                        "\tstatic final int cyan = " + ColorMapper.color2int(Color.cyan) + ";\n" +
-                        "\tstatic final int CYAN = " + ColorMapper.color2int(Color.CYAN) + ";\n" +
-                        "\tstatic final int darkGray = " + ColorMapper.color2int(Color.darkGray) + ";\n" +
-                        "\tstatic final int DARK_GRAY = " + ColorMapper.color2int(Color.DARK_GRAY) + ";\n" +
-                        "\tstatic final int gray = " + ColorMapper.color2int(Color.gray) + ";\n" +
-                        "\tstatic final int GRAY = " + ColorMapper.color2int(Color.GRAY) + ";\n" +
-                        "\tstatic final int green = " + ColorMapper.color2int(Color.green) + ";\n" +
-                        "\tstatic final int GREEN = " + ColorMapper.color2int(Color.GREEN) + ";\n" +
-                        "\tstatic final int lightGray = " + ColorMapper.color2int(Color.lightGray) + ";\n" +
-                        "\tstatic final int LIGHT_GRAY = " + ColorMapper.color2int(Color.LIGHT_GRAY) + ";\n" +
-                        "\tstatic final int magenta = " + ColorMapper.color2int(Color.magenta) + ";\n" +
-                        "\tstatic final int MAGENTA = " + ColorMapper.color2int(Color.MAGENTA) + ";\n" +
-                        "\tstatic final int orange = " + ColorMapper.color2int(Color.orange) + ";\n" +
-                        "\tstatic final int ORANGE = " + ColorMapper.color2int(Color.ORANGE) + ";\n" +
-                        "\tstatic final int pink = " + ColorMapper.color2int(Color.pink) + ";\n" +
-                        "\tstatic final int PINK = " + ColorMapper.color2int(Color.PINK) + ";\n" +
-                        "\tstatic final int red = " + ColorMapper.color2int(Color.red) + ";\n" +
-                        "\tstatic final int RED = " + ColorMapper.color2int(Color.RED) + ";\n" +
-                        "\tstatic final int yellow = " + ColorMapper.color2int(Color.yellow) + ";\n" +
-                        "\tstatic final int YELLOW = " + ColorMapper.color2int(Color.YELLOW) + ";\n" +
                         "}";
             }
             return "";
@@ -697,7 +668,7 @@ public class LangJava extends JVMCompiledLang {
             if (type == CommandArgumentType.STRING) return "getAnswerString()";
             if (type == CommandArgumentType.DOUBLE) return "getAnswerDouble()";
             if (type == CommandArgumentType.CHAR) return "getAnswerChar()";
-            if (type == CommandArgumentType.COLOR) return "getAnswerInt()";
+            if (type == CommandArgumentType.COLOR) return "getAnswerColor()";
             if (type == CommandArgumentType.DIRECTION) return "getAnswerInt()";
             if (type == CommandArgumentType.INT) return "getAnswerInt()";
             if (type == CommandArgumentType.BOOLEAN)
@@ -732,10 +703,8 @@ public class LangJava extends JVMCompiledLang {
 
             int id = method.id();
             String name = method.name();
-            String formats = method.parameters().stream().map(PrimitiveParameter::type)
-                    .map(this::getTemplatingForType).map(s -> s + " ").collect(Collectors.joining());
 
-            String command = "\tsendCommand(\"" + id + " " + formats + name + "\"" +
+            String command = "\tsendCommand(\"" + id + "\", \"" + name + "\"" +
                              method.parameters().stream().map(this::getArgumentExpression).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
             String returning = method.output() != null ? "\treturn " + getReturning(method.output()) + ";" : "";
@@ -758,7 +727,7 @@ public class LangJava extends JVMCompiledLang {
             body += "\n" + extraCode;
 
           final String code =
-              "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\n\npublic class " + name + " {" + body.replace("\n", "\n\t") + "\n}";
+              "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" + body.replace("\n", "\n\t") + "\n}";
 
           System.err.println("XXX Generating " + folder + "/" + name + ".java");
           Files.writeString(new File(folder, name + ".java").toPath(), code);

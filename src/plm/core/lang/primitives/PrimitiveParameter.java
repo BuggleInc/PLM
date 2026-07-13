@@ -6,9 +6,11 @@ import java.util.Objects;
 public final class PrimitiveParameter {
     private final String name;
     private final CommandArgumentType<?> type;
+    private final Class<?> rawType;
 
     public PrimitiveParameter(Parameter parameter) {
         this.name = parameter.getName();
+        this.rawType = parameter.getType();
         this.type = CommandArgumentType.getCommandArgumentTypeFromClass(parameter.getType());
     }
 
@@ -38,4 +40,7 @@ public final class PrimitiveParameter {
         return name + ": " + type;
     }
 
+    public Class<?> getRawType() {
+        return rawType;
+    }
 }
