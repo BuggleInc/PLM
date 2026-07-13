@@ -1,5 +1,6 @@
 package plm.core;
 
+import java.awt.Color;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,6 +21,8 @@ public class ValueSerializer {
         return "b";
       if (clazz == Character.class || clazz == char.class)
         return "c";
+      if (clazz == Color.class)
+        return "C";
 
       if (clazz == Object.class || clazz == String.class)
         return "";
@@ -82,6 +85,11 @@ public class ValueSerializer {
 
         if (typeRepresentation.equals("b")) {
             return "b" + (Objects.equals(o, true) ? "1" : "0");
+        }
+        if (typeRepresentation.equals("C")) {
+          // getRGB() packs alpha+red+green+blue into a single int; new Color(argb, true) below
+          // reconstructs the exact same Color from it, alpha included.
+          return "C" + ((Color)o).getRGB();
         }
         return typeRepresentation + o;
     }
@@ -190,6 +198,14 @@ public class ValueSerializer {
               return parseChar();
             }
 
+            if (c == 'C') {
+              pos++;
+              if (peek() == '[') {
+                return parseColorArray();
+              }
+              return parseColor();
+            }
+
             if (c == '[') {
                 return parseObjectArray();
             }
@@ -230,6 +246,16 @@ public class ValueSerializer {
           char[] result   = new char[values.length];
           for (int i = 0; i < values.length; i++) {
             result[i] = (Character)values[i];
+          }
+          return result;
+        }
+
+        private Color[] parseColorArray()
+        {
+          Object[] values = parseArrayContents();
+          Color[] result  = new Color[values.length];
+          for (int i = 0; i < values.length; i++) {
+            result[i] = (Color)values[i];
           }
           return result;
         }
@@ -290,6 +316,12 @@ public class ValueSerializer {
           char c = peek();
           pos++;
           return c;
+        }
+
+        private Color parseColor()
+        {
+          // true: interpret the int as including the alpha channel, matching getRGB()/serialize() above.
+          return new Color(parseInt(), true);
         }
 
         private String parseString() {

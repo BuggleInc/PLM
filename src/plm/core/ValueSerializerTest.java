@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.Color;
 import org.junit.jupiter.api.Test;
 
 public class ValueSerializerTest {
@@ -62,6 +63,24 @@ public class ValueSerializerTest {
 
   @Test void serialize_char_returnsSingleCharTag() { assertEquals("cL", ValueSerializer.serialize('L')); }
   @Test void serialize_charArray_returnsFormattedString() { assertEquals("c[3:cL:cR:cL]", ValueSerializer.serialize(new char[] {'L', 'R', 'L'})); }
+
+  @Test void serialize_opaqueColor_returnsPackedArgbInt()
+  {
+    // 0xFFFF0000: alpha=255, red=255, green=0, blue=0
+    assertEquals("C" + 0xFFFF0000, ValueSerializer.serialize(new Color(255, 0, 0)));
+  }
+
+  @Test void serialize_translucentColor_includesAlphaChannel()
+  {
+    Color translucentBlue = new Color(0, 0, 255, 128);
+    assertEquals("C" + translucentBlue.getRGB(), ValueSerializer.serialize(translucentBlue));
+  }
+
+  @Test void serialize_colorArray_returnsFormattedString()
+  {
+    Color[] input = {Color.RED, Color.GREEN};
+    assertEquals("C[2:C" + Color.RED.getRGB() + ":C" + Color.GREEN.getRGB() + "]", ValueSerializer.serialize(input));
+  }
 
   @Test void serialize_2DIntArray_returnsFormattedString()
   {
@@ -188,6 +207,27 @@ public class ValueSerializerTest {
     char[] result = (char[])ValueSerializer.deserialize(input);
     assertArrayEquals(new char[] {'L', 'R', 'L'}, result);
 
+    assertEquals(input, ValueSerializer.serialize(result));
+  }
+
+  @Test void deserialize_color_returnsColorWithAlpha()
+  {
+    Color translucentBlue = new Color(0, 0, 255, 128);
+    String input          = ValueSerializer.serialize(translucentBlue);
+
+    Object result = ValueSerializer.deserialize(input);
+
+    assertEquals(translucentBlue, result);
+    assertEquals(128, ((Color)result).getAlpha());
+    assertEquals(input, ValueSerializer.serialize(result));
+  }
+
+  @Test void deserialize_colorArray_parsesEachElement()
+  {
+    String input   = ValueSerializer.serialize(new Color[] {Color.RED, Color.GREEN});
+    Color[] result = (Color[])ValueSerializer.deserialize(input);
+
+    assertArrayEquals(new Color[] {Color.RED, Color.GREEN}, result);
     assertEquals(input, ValueSerializer.serialize(result));
   }
 
