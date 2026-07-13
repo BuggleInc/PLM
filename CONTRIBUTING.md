@@ -106,9 +106,10 @@ this in mind when touching `World.runEntities`. Changing this is the core motiva
 ## Build & run
 
 ```
-mvn package -DskipTests && java -jar target/plm-*.jar   # build + run, no tests
-mvn test                                                # full test suite
-mvn test -Dtest=TestName*                               # a single test class
+mvn package -DskipTests && java -jar target/plm-*.jar          # build + run, no tests
+mvn test                                                       # full test suite
+mvn test -Dtest=TestName*                                      # a single test class
+mvn test -Dtest=none -Dsurefire.failIfNoSpecifiedTests=false   # Only the C unit tests
 ```
 
 Entry point: `plm.core.ui.ProgrammersLearningMachine` (`main.class` in `pom.xml`).

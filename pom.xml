@@ -347,6 +347,36 @@
               </arguments>
             </configuration>
           </execution>
+          <!-- Build the C unit test -->
+          <execution>
+            <id>compile-c-tests</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>gcc</executable>
+              <arguments>
+                <argument>-Wall</argument>
+                <argument>-Wextra</argument>
+                <argument>-o</argument>
+                <argument>${project.build.directory}/c_test_suite</argument>
+                <argument>lib/resources/langages/c/value_serializer.c</argument>
+                <argument>lib/resources/langages/c/value_serializer_test.c</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <!-- Execute the C unit test -->
+          <execution>
+            <id>run-c-tests</id>
+            <phase>test</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.build.directory}/c_test_suite</executable>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
 
