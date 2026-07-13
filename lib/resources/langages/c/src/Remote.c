@@ -6,21 +6,28 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#ifdef _WIN32
+#include <afunix.h>
+#include <fcntl.h>
+#include <io.h>
+#include <winsock2.h>
+#else
+#include <sys/socket.h>
+#include <sys/un.h>
+#endif
 
 /*
- * stdin/0:  where we read the answers from the PLM
- * stdout/1: where the user does its debug output (shown on the PLM console)
- * stderr/2: where we send commands to the PLM
+ * The protocol (commands to the PLM, answers from the PLM) travels over a UNIX domain socket whose path is passed as
+ * args[0] -- see connect() below, called from the generated main().
  */
 
-static FILE* debug_fd = NULL; // Where to send the debug info if not NULL
+static FILE* protocol_in  = NULL;
+static FILE* protocol_out = NULL;
 static char answer_buffer[1024];
 static void get_answer_line() {
-  if (fgets(answer_buffer, sizeof(answer_buffer), stdin) == NULL) {
+  if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
     exit(1);
   }
-  if (debug_fd)
-    fprintf(debug_fd, "Answer: %s\n", answer_buffer);
   answer_buffer[strcspn(answer_buffer, "\r\n")] = 0;
 }
 int get_answer_int() {
@@ -41,20 +48,12 @@ char get_answer_char() {
 }
 
 void send_command(char *format, ...) {
-  va_list args, args_copy;
+  va_list args;
   va_start(args, format);
 
-  if (debug_fd) {
-    va_copy(args_copy, args);
-    fprintf(debug_fd, "Command from C world: '");
-    vfprintf(debug_fd, format, args_copy);
-    fprintf(debug_fd, "'\n");
-    fflush(debug_fd);
-    va_end(args_copy);
-  }
-
-  vfprintf(stderr, format, args);
-  fprintf(stderr, "\n");
+  vfprintf(protocol_out, format, args);
+  fprintf(protocol_out, "\n");
+  fflush(protocol_out);
 
   va_end(args);
 }
@@ -73,9 +72,27 @@ int main(int argc, char *argv[]) {
   // Disable buffering on the new stdout so student's debug messages arrive immediately
   setvbuf(stdout, NULL, _IONBF, 0);
 
-  debug_fd = fopen("/tmp/debug-PLM-C", "w");
-  if (debug_fd)
-    fprintf(debug_fd, "Starting the entity %s\n", argv[0]);
+#ifdef _WIN32
+  WSADATA wsaData;
+  WSAStartup(MAKEWORD(2, 2), &wsaData);
+#endif
+
+  int sock = socket(AF_UNIX, SOCK_STREAM, 0);
+  struct sockaddr_un addr;
+  memset(&addr, 0, sizeof(addr));
+  addr.sun_family = AF_UNIX;
+  strncpy(addr.sun_path, argv[1], sizeof(addr.sun_path) - 1);
+  connect(sock, (struct sockaddr*)&addr, sizeof(addr));
+
+#ifdef _WIN32
+  int fd       = _open_osfhandle(sock, _O_RDWR);
+  protocol_in  = _fdopen(fd, "r");
+  protocol_out = _fdopen(fd, "w");
+#else
+  protocol_in  = fdopen(sock, "r");
+  protocol_out = fdopen(sock, "w");
+#endif
+
   run();
   return 0;
 }

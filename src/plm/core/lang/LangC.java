@@ -1,5 +1,16 @@
 package plm.core.lang;
 
+import java.io.*;
+import java.net.StandardProtocolFamily;
+import java.net.UnixDomainSocketAddress;
+import java.nio.channels.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -14,13 +25,6 @@ import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
-
-import java.io.*;
-import java.nio.file.Files;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class LangC extends ProgrammingLanguage {
     /* Language detection logic */
@@ -184,8 +188,7 @@ public class LangC extends ProgrammingLanguage {
                 arg1 = new String[3];
                 arg1[0] = "cmd.exe";
                 arg1[1] = "/c";
-                arg1[2] =
-                    "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
+                arg1[2] = "gcc -g -x c -Wall -lm -lpthread -lws2_32 -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
             } else {
                 arg1 = new String[3];
                 arg1[0] = "/bin/sh";
@@ -291,68 +294,119 @@ public class LangC extends ProgrammingLanguage {
                 return;
             }
 
+            Path socketDir                    = Files.createTempDirectory("plm-c-sock-");
+            Path socketPath                   = socketDir.resolve("protocol.sock");
+            ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
+            serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
+            serverChannel.configureBlocking(false);
+            Selector selector = Selector.open();
+            serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+
             String asan_report = tempdir + "/asan_report.txt";
-            ProcessBuilder pb = new ProcessBuilder(cmd);
+            ProcessBuilder pb  = new ProcessBuilder(cmd, socketPath.toString());
             // log_path=/tmp/plmTmp/asan_report.txt.$PID ~~> don't report to stderr but to that file
             // to_syslog=0   ~~> Prevent ASan from writing also to stderr
             pb.environment().put("ASAN_OPTIONS", "log_path=" + asan_report + ":to_syslog=0");
             final Process process = pb.start();
-            long pid = process.pid();
-            final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+            long pid              = process.pid();
 
-            Thread reader = new Thread() {
-                public void run() {
-                    try {
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                        try {
-                            String str;
-                            while ((str = reader.readLine()) != null)
-                                System.out.println(str);
-                        } finally {
-                            reader.close();
-                        }
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    }
+            final int ACCEPT_TIMEOUT_MS = 10000;
+            selector.select(ACCEPT_TIMEOUT_MS);
+            SocketChannel protocolChannel = serverChannel.accept();
+            selector.close();
+            serverChannel.close();
+
+            if (protocolChannel == null) {
+              process.destroyForcibly();
+              Files.deleteIfExists(socketPath);
+              Files.deleteIfExists(socketDir);
+              progress.outcome        = RunOutcome.kind.FAIL;
+              progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.");
+              return;
+            }
+
+            final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(protocolChannel), StandardCharsets.UTF_8));
+
+            Thread stdoutReader = new Thread() {
+              public void run()
+              {
+                try {
+                  BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                  try {
+                    String str;
+                    while ((str = reader.readLine()) != null)
+                      System.out.println(str);
+                  } finally {
+                    reader.close();
+                  }
+                } catch (IOException ioe) {
+                  ioe.printStackTrace();
                 }
+              }
             };
 
-            Thread error = new Thread() {
-                public void run() {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-                    Exception parseError = null;
-                    String str = "";
-                    try {
-                        while ((str = reader.readLine()) != null)
-                            CommandExecutor.command(ent, str, bwriter);
-//                            ent.command(str, bwriter);
-                    } catch (Exception e) {
-                        parseError = e;
-                    }
-                    if (parseError != null) {
-                        StringBuffer sb = new StringBuffer(str + "\n");
-                        try {
-                            while ((str = reader.readLine()) != null)
-                                sb.append(str + "\n");
-                        } catch (IOException ioe) {
-                            System.err.println("Exception while handling the exception. Bailing out");
-                            parseError.printStackTrace();
-                            ioe.printStackTrace();
-                        }
-                        throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
-                    }
+            Thread stderrReader = new Thread() {
+              public void run()
+              {
+                try {
+                  BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                  try {
+                    String str;
+                    while ((str = reader.readLine()) != null)
+                      System.err.println(str);
+                  } finally {
+                    reader.close();
+                  }
+                } catch (IOException ioe) {
+                  ioe.printStackTrace();
                 }
+              }
             };
 
-            reader.start();
-            error.start();
+            Thread commandReader = new Thread() {
+              public void run()
+              {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(protocolChannel), StandardCharsets.UTF_8));
+                Exception parseError  = null;
+                String str            = "";
+                try {
+                  while ((str = reader.readLine()) != null)
+                    CommandExecutor.command(ent, str, bwriter);
+                } catch (Exception e) {
+                  parseError              = e;
+                  progress.outcome        = RunOutcome.kind.FAIL;
+                  progress.executionError = e.getMessage();
+                  process.destroyForcibly();
+                }
+                if (parseError != null) {
+                  StringBuffer sb = new StringBuffer(str + "\n");
+                  try {
+                    while ((str = reader.readLine()) != null)
+                      sb.append(str + "\n");
+                  } catch (IOException ioe) {
+                    System.err.println("Exception while handling the exception. Bailing out");
+                    parseError.printStackTrace();
+                    ioe.printStackTrace();
+                  }
+                  throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
+                }
+              }
+            };
+
+            stdoutReader.start();
+            stderrReader.start();
+            commandReader.start();
 
             process.waitFor();
 
-            reader.join();
-            error.join();
+            stdoutReader.join();
+            stderrReader.join();
+            commandReader.join();
 
             bwriter.close();
+            protocolChannel.close();
+            Files.deleteIfExists(socketPath);
+            Files.deleteIfExists(socketDir);
 
             File asan_report_file = new File(asan_report + "." + pid);
             if (asan_report_file.exists()) {

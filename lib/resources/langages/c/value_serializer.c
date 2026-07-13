@@ -78,7 +78,7 @@ static void serialize_recursive(const plm_value_t* val, string_builder_t* sb)
       sb_append(sb, buffer);
       break;
     case PLM_VAL_DOUBLE:
-      snprintf(buffer, BUFF_SIZE, "f%g", val->as.f);
+      snprintf(buffer, BUFF_SIZE, "f%.17g", val->as.f);
       sb_append(sb, buffer);
       break;
     case PLM_VAL_BOOL:
