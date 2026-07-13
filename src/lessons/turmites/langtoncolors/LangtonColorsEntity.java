@@ -1,9 +1,10 @@
 package lessons.turmites.langtoncolors;
 
+import static plm.core.ValueSerializer.*;
+
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
-
 import lessons.turmites.LangtonEntityPrimitives;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.universe.bugglequest.SimpleBuggle;
@@ -42,17 +43,17 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
 	@Override
 	public void run() { 
 		int nbSteps = getParamInt(0);
-		char[] rule = ((char[])getParam(1));
+                char[] rule = (char[])deserialize(getParamSerialized(1));
 
-		Color[] colors = new Color[rule.length];
-		for (int i=0; i<rule.length; i++)
-			colors[i] = allColors[i];
+                Color[] colors = new Color[rule.length];
+                for (int i = 0; i < rule.length; i++)
+                  colors[i] = allColors[i];
 
-		for (int i=0;i<nbSteps;i++) {
-			stepDone();
-			step(rule,colors);
-		}
-	}
+                for (int i = 0; i < nbSteps; i++) {
+                  stepDone();
+                  step(rule, colors);
+                }
+        }
 
         @Override public void command(String command, BufferedWriter out) throws Exception
         {

@@ -136,17 +136,15 @@ public class LangJava extends JVMCompiledLang {
         return section.toString();
     }
 
-    private static String getRemote(String code) {
-      if (code.contains("Langton") || code.contains("Turmite"))
-        return null;
-
+    private static String getRemote(String code)
+    {
       if (code.contains("plm.test.simple"))
         return "RemoteSimple";
       if (code.contains(".bat."))
         return "RemoteBat";
       if (code.contains(".cons."))
         return "RemoteCons";
-      if (code.contains("Buggle"))
+      if (code.contains("Buggle") || code.contains("Langton") || code.contains("Turmite"))
         return "RemoteBuggle";
       if (code.contains("Turtle"))
         return "RemoteTurtle";
@@ -160,6 +158,8 @@ public class LangJava extends JVMCompiledLang {
         return "RemoteHanoi";
       if (code.contains("Sort"))
         return "RemoteSort";
+      //      if (code.contains("Lander"))
+      //        return "RemoteLander";
 
       return null;
     }
@@ -190,11 +190,9 @@ public class LangJava extends JVMCompiledLang {
             proc = rt.exec(args.toArray(String[]::new), new String[]{}, packageFolder);
 
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-
             BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
 
             String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
-
             String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
 
             if (!rtStderr.isEmpty()) {
@@ -245,11 +243,9 @@ public class LangJava extends JVMCompiledLang {
             Process proc = rt.exec(args.toArray(String[]::new), new String[]{}, root);
 
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-
             BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
 
             String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
-
             String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
 
             if (!rtStderr.isEmpty()) {

@@ -1,9 +1,10 @@
 package lessons.turmites.helloturmite;
 
+import static plm.core.ValueSerializer.*;
+
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
-
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class HelloTurmiteEntity extends SimpleBuggle {
@@ -57,19 +58,19 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 	@Override
 	public void run() { 
 		int nbSteps = getParamInt(0);
-		Color[] colors; 
-		int[][][] rule; 
+                Color[] colors;
+                int[][][] rule;
 
-		rule = ((int[][][])getParam(1));
+                rule = (int[][][])toIntArray(deserialize(getParamSerialized(1)));
 
-		colors = new Color[rule.length];
-		for (int i=0; i<rule.length; i++)
-			colors[i] = allColors[i];
+                colors = new Color[rule.length];
+                for (int i = 0; i < rule.length; i++)
+                  colors[i] = allColors[i];
 
-		for (int i=0;i<nbSteps;i++) {
-			stepDone();
-			step(colors,rule);
-		}
+                for (int i = 0; i < nbSteps; i++) {
+                  stepDone();
+                  step(colors, rule);
+                }
         }
 
         @Override public void command(String command, BufferedWriter out) throws Exception
