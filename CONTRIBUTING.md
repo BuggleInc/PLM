@@ -23,20 +23,20 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   This is a micro-world instance. It contains one or more `Entity` objects, which are the actors that execute the student's code
   (or the teacher's correction code) against the world's primitives. `Entity`/`World` are subclassed per universe.
 - **Worlds as test cases**: an exercise typically ships **several world instances** and/or **several entities per world
-  instance.** Each is compiled/run independently and must pass for the exercise to be validated — i.e. the set of worlds *is*
+  instance.** Each is compiled/run independently and must pass for the exercise to be validated, i.e. the set of worlds *is*
   the exercise's test suite (comparable to parametrized unit tests). Adding another world instance to an exercise, without
   touching the student-facing code, is the standard way to catch a wider range of incorrect solutions.
 - **Universe**: a micro-world *kind*, i.e. a family of worlds/entities sharing a theme and a set of primitives (e.g. "the buggle
   can walk, paint, pick up objects"). A given exercise uses exactly **one** universe. Universes found in `src/plm/universe` for
   the generic ones and in `src/lessons/*/universe` for the ones specificaly tailored for a given lesson:
-  - `bugglequest` — generic grid actor (buggles), richest primitive set. It is the main PLM microworld and its implementation is
+  - `bugglequest`: generic grid actor (buggles), richest primitive set. It is the main PLM microworld and its implementation is
     the reference. It is used to teach the basics about variablesand loops, and to introduce functions and problem
     decomposition. This micro-world is also used to present various maze algorithms in a specific lesson.
     - `turmites` is a subclass of the buggle microworld introducing [2D turing machines](https://en.wikipedia.org/wiki/Turmite).
-  - `turtles` — LOGO-style turtle graphics, used to teach recursion through the drawing of fractals.
-  - `sort` — sorting algorithms; primitives (`isSmaller`, `copy`, `swap`) observe the data accesses patterns so the student must
+  - `turtles`: LOGO-style turtle graphics, used to teach recursion through the drawing of fractals.
+  - `sort`: sorting algorithms; primitives (`isSmaller`, `copy`, `swap`) observe the data accesses patterns so the student must
     reproduce the *expected algorithm*, not just a correctly sorted array.
-  - `bat` — unit-testing style no graphical world but a textual output; a method prototype is filled in and tested against many
+  - `bat`: unit-testing style no graphical world but a textual output; a method prototype is filled in and tested against many
     parameter values.
   - Specific sorting microwords: `sort/baseball` ([pebble-motion](https://en.wikipedia.org/wiki/Pebble_motion_problems)),
    `sort/pancake` ([pancake sorting](https://en.wikipedia.org/wiki/Pancake_sorting)), `sort/dutchflag` ([Dutch national flag
@@ -73,7 +73,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks whether the lunar lander reached
   a pad or crashed.
 
-Runaway/infinite-loop student code is caught via `Thread.UncaughtExceptionHandler` + interruption, not a hard sandbox — keep
+Runaway/infinite-loop student code is caught via `Thread.UncaughtExceptionHandler` + interruption, not a hard sandbox, keep
 this in mind when touching `World.runEntities`. Changing this is the core motivation for the ongoing remote execution transition.
 
 ## How tests work
@@ -92,13 +92,13 @@ this in mind when touching `World.runEntities`. Changing this is the core motiva
 
 - **Build/host**: Java 17 (`maven.compiler.release=17`), built with Maven (`pom.xml`.
 - **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
-  - **Java** — compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
+  - **Java**: compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
     void main` boilerplate exposed to the student).
-  - **Scala** — `scala-library`/`scala-compiler`/`scala-reflect` 2.12.20; compiled jointly with Java sources (scalac runs before
+  - **Scala**: `scala-library`/`scala-compiler`/`scala-reflect` 2.12.20; compiled jointly with Java sources (scalac runs before
     javac in the Maven build) since PLM compiles user Scala in-process.
-  - **Python** — via Jython 2.7.3 (`jython-standalone`), i.e. **Python 2 syntax**, not Python 3. TODO: this will change.
-  - **Ruby** — via JRuby 9.4.8.0 (`jruby-complete`).
-  - **C** — compiled externally and driven over pipes.
+  - **Python**: via Jython 2.7.3 (`jython-standalone`), i.e. **Python 2 syntax**, not Python 3. TODO: this will change.
+  - **Ruby** via JRuby 9.4.8.0 (`jruby-complete`).
+  - **C** compiled externally and driven over pipes.
 - Adding a new language: see
   `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language`
   and extend `plm.core.lang.ProgrammingLanguage`.

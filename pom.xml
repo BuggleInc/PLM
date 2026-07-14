@@ -257,8 +257,7 @@
     </resources>
 
     <plugins>
-      <!-- Point compilation at the existing src/ tree (Java + Scala mixed),
-           without moving any files. -->
+      <!-- Point compilation at the existing src/ tree (Java + Scala mixed), without moving any files. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -487,7 +486,7 @@
           </includes>
           <argLine>${argLine} -Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
-          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <!-- <redirectTestOutputToFile>true</redirectTestOutputToFile> -->
           <!-- Run each test class in its own JVM. PLM is full of singletons
                (Game and its Swing listeners): the GUI smoke test registers a
                MainFrame/ExerciseView as a Game listener that otherwise leaks
@@ -496,7 +495,6 @@
                class isolates that state and makes the run order-independent. -->
           <reuseForks>false</reuseForks>
           <forkCount>1</forkCount>
-          <reuseForks>true</reuseForks>
           <parallel>none</parallel>
           <threadCount>1</threadCount>
         </configuration>

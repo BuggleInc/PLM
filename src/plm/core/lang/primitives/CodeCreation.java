@@ -9,6 +9,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.sort.baseball.universe.BaseballEntity;
 import lessons.sort.dutchflag.universe.DutchFlagEntity;
 import lessons.sort.pancake.universe.PancakeEntity;
+import lessons.turmites.universe.TurmiteEntity;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
 import plm.test.simple.SimpleExerciseEntity;
@@ -23,10 +24,11 @@ public class CodeCreation {
   {
     File folder = new File("target/classes/resources/langages/");
 
-    Map<String, Class<? extends Entity>> remoteMap =
-        Map.of("RemoteBat", BatEntity.class, "RemoteCons", ConsEntity.class, "RemoteBuggle", AbstractBuggle.class, "RemoteSort", SortingEntity.class,
-               "RemoteTurtle", Turtle.class, "RemotePancake", PancakeEntity.class, "RemoteHanoi", HanoiEntity.class, "RemoteBaseball", BaseballEntity.class,
-               "RemoteFlag", DutchFlagEntity.class, "RemoteSimple", SimpleExerciseEntity.class);
+    Map<String, Class<? extends Entity>> remoteMap = Map.ofEntries(
+        Map.entry("RemoteBat", BatEntity.class), Map.entry("RemoteCons", ConsEntity.class), Map.entry("RemoteBuggle", AbstractBuggle.class),
+        Map.entry("RemoteTurmite", TurmiteEntity.class), Map.entry("RemoteSort", SortingEntity.class), Map.entry("RemoteTurtle", Turtle.class),
+        Map.entry("RemotePancake", PancakeEntity.class), Map.entry("RemoteHanoi", HanoiEntity.class), Map.entry("RemoteBaseball", BaseballEntity.class),
+        Map.entry("RemoteFlag", DutchFlagEntity.class), Map.entry("RemoteSimple", SimpleExerciseEntity.class));
 
     // Hand-written code to splice into some generated remote stubs, for manual helpers
     Map<String, String> remoteExtraJavaCode = Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE);

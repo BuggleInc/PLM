@@ -1,11 +1,9 @@
 package lessons.turmites.turmitecreator;
 
 import java.awt.Color;
-import java.io.BufferedWriter;
+import lessons.turmites.universe.TurmiteEntity;
 
-public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle {
-  Color[] allColors = {Color.white, Color.yellow, Color.red,     Color.cyan,     Color.green, Color.orange,   Color.blue,
-                       Color.black, Color.gray,   Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
+public class TurmiteCreatorEntity extends TurmiteEntity {
 
   /* Do not change these definitions */
 
@@ -119,8 +117,11 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
   }
   /* END TEMPLATE */
 
-  @Override public void run()
+  public void run()
   {
+    Color[] allColors = {Color.white, Color.yellow, Color.red,     Color.cyan,     Color.green, Color.orange,   Color.blue,
+                         Color.black, Color.gray,   Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
+
     init();
 
     colors = new Color[rule[0].length];
@@ -146,18 +147,4 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
       stepDone();
     }
   }
-
-  @Override public void command(String command, BufferedWriter out) throws Exception
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    switch (num) {
-      case 201:
-        stepDone();
-        break;
-      default:
-        super.command(command, out);
-    }
-  }
-
-  public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

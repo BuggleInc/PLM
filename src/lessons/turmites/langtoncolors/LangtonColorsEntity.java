@@ -3,16 +3,9 @@ package lessons.turmites.langtoncolors;
 import static plm.core.ValueSerializer.*;
 
 import java.awt.Color;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import lessons.turmites.LangtonEntityPrimitives;
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.universe.bugglequest.SimpleBuggle;
+import lessons.turmites.universe.TurmiteEntity;
 
-@EntityPrimitives(LangtonEntityPrimitives.class)
-public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPrimitives {
-  Color[] allColors = {Color.white, Color.black, Color.blue,    Color.cyan,     Color.green, Color.orange,
-                       Color.red,   Color.gray,  Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
+public class LangtonColorsEntity extends TurmiteEntity {
 
   /* BEGIN TEMPLATE */
   public void step(char[] rule, Color[] colors)
@@ -45,8 +38,11 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
   }
   /* END TEMPLATE */
 
-  @Override public void run()
+  public void run()
   {
+    Color[] allColors = {Color.white, Color.black, Color.blue,    Color.cyan,     Color.green, Color.orange,
+                         Color.red,   Color.gray,  Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
+
     int nbSteps = getParamInt(0);
     char[] rule = (char[])deserialize(getParamSerialized(1));
 
@@ -59,41 +55,4 @@ public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPr
       step(rule, colors);
     }
   }
-
-  @Override public void command(String command, BufferedWriter out) throws Exception
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-
-    try {
-      switch (num) {
-        case 200:
-          out.write((getParamInt(0)));
-          out.write("\n");
-          out.flush();
-
-          break;
-        case 201:
-          stepDone();
-          break;
-        case 202:
-          char[] ch    = (char[])getParam(1);
-          String param = "";
-          for (int i = 0; i < ch.length; i++) {
-            param += ch[i];
-          }
-          out.write(param);
-          out.write("\n");
-          out.flush();
-          break;
-
-        default:
-          super.command(command, out);
-      }
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
-
-  @Override public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

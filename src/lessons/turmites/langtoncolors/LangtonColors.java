@@ -1,7 +1,6 @@
 package lessons.turmites.langtoncolors;
 
 import java.util.Arrays;
-import lessons.turmites.helloturmite.HelloTurmiteEntity;
 import lessons.turmites.universe.TurmiteWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;

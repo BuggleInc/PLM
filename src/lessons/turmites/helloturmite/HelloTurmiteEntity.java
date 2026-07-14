@@ -3,14 +3,9 @@ package lessons.turmites.helloturmite;
 import static plm.core.ValueSerializer.*;
 
 import java.awt.Color;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import plm.universe.bugglequest.SimpleBuggle;
+import lessons.turmites.universe.TurmiteEntity;
 
-public class HelloTurmiteEntity extends SimpleBuggle {
-  Color[] allColors = {Color.white, Color.black, Color.blue,    Color.cyan,     Color.green, Color.orange,
-                       Color.red,   Color.gray,  Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
-
+public class HelloTurmiteEntity extends TurmiteEntity {
   /* BEGIN TEMPLATE */
   final static int STOP = 0; /* for example */
   /* BEGIN HIDDEN */
@@ -68,8 +63,11 @@ public class HelloTurmiteEntity extends SimpleBuggle {
   }
   /* END TEMPLATE */
 
-  @Override public void run()
+  public void run()
   {
+    Color[] allColors = {Color.white, Color.black, Color.blue,    Color.cyan,     Color.green, Color.orange,
+                         Color.red,   Color.gray,  Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
+
     int nbSteps = getParamInt(0);
     Color[] colors;
     int[][][] rule;
@@ -85,43 +83,4 @@ public class HelloTurmiteEntity extends SimpleBuggle {
       step(colors, rule);
     }
   }
-
-  @Override public void command(String command, BufferedWriter out) throws Exception
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    try {
-      switch (num) {
-        case 200:
-          out.write((getParamInt(0)));
-          out.write("\n");
-          out.flush();
-          break;
-        case 201:
-          stepDone();
-          break;
-        case 203:
-          int[][][] tab = (int[][][])getParam(1);
-          String str    = Integer.toString(tab.length) + ":" + Integer.toString(tab[0].length) + ":" + Integer.toString(tab[0][0].length);
-          for (int i = 0; i < tab.length; i++) {
-            for (int j = 0; j < tab[i].length; j++) {
-              for (int k = 0; k < tab[i][j].length; k++) {
-                str += ":" + Integer.toString(tab[i][j][k]);
-              }
-            }
-          }
-          out.write(str);
-          out.write("\n");
-          out.flush();
-          break;
-
-        default:
-          super.command(command, out);
-      }
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
-
-  public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

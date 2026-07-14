@@ -6,7 +6,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Direction;
@@ -39,7 +38,7 @@ public class TurmiteWorld extends BuggleWorld {
     setVisibleGrid(false);
     setParameter(new Object[] {nbSteps, rule});
 
-    new Buggle((BuggleWorld)this, "ant", buggleX, buggleY, Direction.NORTH, Color.red, Color.red);
+    new TurmiteEntity((BuggleWorld)this, "ant", buggleX, buggleY, Direction.NORTH, Color.red, Color.red);
   }
 
   /**

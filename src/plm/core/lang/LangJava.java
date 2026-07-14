@@ -151,8 +151,10 @@ public class LangJava extends JVMCompiledLang {
       return "RemoteBat";
     if (code.contains(".cons."))
       return "RemoteCons";
-    if (code.contains("Buggle") || code.contains("Langton") || code.contains("Turmite"))
+    if (code.contains("Buggle"))
       return "RemoteBuggle";
+    if (code.contains("Langton") || code.contains("Turmite"))
+      return "RemoteTurmite";
     if (code.contains("Turtle"))
       return "RemoteTurtle";
     if (code.contains("Flag"))

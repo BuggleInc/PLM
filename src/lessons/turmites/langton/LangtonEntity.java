@@ -1,14 +1,9 @@
 package lessons.turmites.langton;
 
 import java.awt.Color;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import lessons.turmites.LangtonEntityPrimitives;
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.universe.bugglequest.SimpleBuggle;
+import lessons.turmites.universe.TurmiteEntity;
 
-@EntityPrimitives(LangtonEntityPrimitives.class)
-public class LangtonEntity extends SimpleBuggle implements LangtonEntityPrimitives {
+public class LangtonEntity extends TurmiteEntity {
   /* BEGIN TEMPLATE */
   public void step()
   {
@@ -34,7 +29,7 @@ public class LangtonEntity extends SimpleBuggle implements LangtonEntityPrimitiv
   }
   /* END TEMPLATE */
 
-  @Override public void run()
+  public void run()
   {
     int nbSteps = getParamInt(0);
     for (int i = 0; i < nbSteps; i++) {
@@ -42,28 +37,4 @@ public class LangtonEntity extends SimpleBuggle implements LangtonEntityPrimitiv
       stepDone();
     }
   }
-
-  @Override public void command(String command, BufferedWriter out) throws Exception
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    switch (num) {
-      case 200:
-        try {
-          out.write((getParamInt(0)));
-          out.write("\n");
-          out.flush();
-        } catch (IOException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
-        break;
-      case 230:
-        stepDone();
-        break;
-      default:
-        super.command(command, out);
-    }
-  }
-
-  @Override public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }
