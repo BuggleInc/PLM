@@ -36,7 +36,7 @@ public final class PrimitiveMethod {
 
   public List<PrimitiveParameter> parameters() { return parameters; }
 
-  public boolean hasReturn() { return output != null; }
+  public boolean hasReturn() { return output != null && output != void.class; }
 
   @Override public boolean equals(Object obj)
   {
