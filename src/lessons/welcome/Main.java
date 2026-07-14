@@ -1,7 +1,6 @@
 package lessons.welcome;
 
 import java.io.IOException;
-
 import lessons.welcome.array.array123.Array123;
 import lessons.welcome.array.array667.Array667;
 import lessons.welcome.array.arraycount9.ArrayCount9;
@@ -104,127 +103,123 @@ import plm.universe.BrokenWorldFileException;
 
 public class Main extends Lesson {
 
-	@Override
-	protected void loadExercises() throws IOException, BrokenWorldFileException {
-		addExercise(new Environment(this));
-		
-		Lecture instructions = addExercise(new Instructions(this));
-		addExercise(new InstructionsDrawG(this), instructions);
-		
-		//Lecture conditions = 
-		addExercise(new Conditions(this));
+  @Override protected void loadExercises() throws IOException, BrokenWorldFileException
+  {
+    addExercise(new Environment(this));
 
-		Lecture loopWhile = addExercise(new LoopWhile(this));
-		addExercise(new BaggleSeeker(this), loopWhile);
-		
-		Lecture vars = addExercise(new Variables(this));
-		addExercise(new RunFour(this), vars);
-		addExercise(new RunHalf(this), vars);
-		addExercise(new BDR(this),vars);
-		addExercise(new BDR2(this),vars);
-		
-		Lecture loopFor = addExercise(new LoopFor(this));
-		addExercise(new LoopStairs(this), loopFor);
-		addExercise(new LoopCourse(this),loopFor);
-		addExercise(new LoopCourseForest(this),loopFor);
-		
-		Lecture loopDoWhile = addExercise(new LoopDoWhile(this));
-		addExercise(new Poucet1(this), loopDoWhile);
-		addExercise(new Poucet2(this), loopDoWhile);
-		
-		Lecture methodsVoid = addExercise(new Methods(this));
-		  addExercise(new MethodsDogHouse(this),methodsVoid);
-  		  addExercise(new PictureMono1(this),methodsVoid);
-		  addExercise(new PictureMono2(this),methodsVoid);
-		  addExercise(new PictureMono3(this),methodsVoid);
-		 	 	  
- 	 	Lecture methodReturns = addExercise(new MethodsReturning(this));
-		  addExercise(new SlugTracking(this),methodReturns);
-		  addExercise(new SlugHunting(this),methodReturns);
-		
-		Lecture methodArg = addExercise(new MethodsArgs(this));
-		  addExercise(new SlugSnail(this), methodArg);
-		  addExercise(new MethodsPicture(this), methodArg);
-		  addExercise(new MethodsPictureLarge(this), methodArg);
- 	 	  addExercise(new PatternPicture(this), methodArg);
- 	 	  addExercise(new FlowerPot(this), methodArg);
- 	 	  addExercise(new FlowerCase(this), methodArg);
-	
-		  // First serie of boolean fun
-		  Lecture bat = addExercise(new SleepIn(this));
-		  addExercise(new MonkeyTrouble(this),bat);
-		  addExercise(new NearHundred(this),bat);
-		  addExercise(new SumDouble(this),bat);
-		  addExercise(new Diff21(this),bat);
-		  addExercise(new ParotTrouble(this),bat);
-		  addExercise(new Makes10(this),bat);
-		  addExercise(new PosNeg(this),bat);
-		  addExercise(new IcyHot(this),bat);
-		  addExercise(new In1020(this),bat);
-		  addExercise(new HasTeen(this),bat);
-		  addExercise(new LoneTeen(this),bat);
-		  addExercise(new CountTeen(this),bat);
-		  addExercise(new Close10(this),bat);
-		  addExercise(new In3050(this),bat);
-		  addExercise(new Max1020(this),bat);
-		  addExercise(new LastDigit(this),bat);
+    Lecture instructions = addExercise(new Instructions(this));
+    addExercise(new InstructionsDrawG(this), instructions);
 
-		  // Second serie of boolean fun
-		  bat = addExercise(new AlarmClock(this));
-		  addExercise(new AnswerCell(this),bat);
-		  addExercise(new BlueTicket(this),bat);
-		  addExercise(new CaughtSpeeding(this),bat);
-		  addExercise(new CigarParty(this),bat);
-		  addExercise(new DateFashion(this),bat);
-		  addExercise(new GreenTicket(this),bat);
-		  addExercise(new In1To10(this),bat);
-		  addExercise(new InOrder(this),bat);
-		  addExercise(new InOrderEqual(this),bat);
-		  addExercise(new LastDigit2(this),bat);
-		  addExercise(new LessBy10(this),bat);
-		  addExercise(new MaxMod5(this),bat);
-		  addExercise(new NearTen(this),bat);
-		  addExercise(new RedTicket(this),bat);
-		  addExercise(new ShareDigit(this),bat);
-		  addExercise(new SortaSum(this),bat);
-		  addExercise(new FizzBuzz(this), bat);
-		  addExercise(new SquirrelPlay(this),bat);
-		  addExercise(new TeaParty(this),bat);
-		  addExercise(new TeenSum(this),bat);
-		  addExercise(new TwoAsOne(this),bat);
-		  addExercise(new WithoutDoubles(this),bat);
+    // Lecture conditions =
+    addExercise(new Conditions(this));
 
-		  
-		// arrays exercises 
-		Lecture arrays = addExercise(new Array1(this));
-		addExercise(new Array2(this),arrays);
-		addExercise(new IndexOfValue(this),arrays);
-		addExercise(new OccurrenceOfValue(this),arrays);
-		addExercise(new AverageValue(this),arrays);
-		addExercise(new MaxValue(this),arrays);
-		addExercise(new IndexOfMaxValue(this),arrays);
-		addExercise(new Extrema(this),arrays);
-		addExercise(new SecondMaxValue(this),arrays);
-		addExercise(new ArrayCount9(this),arrays);
-		addExercise(new ArrayFront9(this),arrays);
-		addExercise(new Array123(this),arrays);
-		addExercise(new Array667(this),arrays);
-		addExercise(new NoTriples(this),arrays);
-		addExercise(new Has271(this),arrays);
-		addExercise(new Golomb(this),arrays);
-		addExercise(new Island(this),arrays);
+    Lecture loopWhile = addExercise(new LoopWhile(this));
+    addExercise(new BaggleSeeker(this), loopWhile);
 
-		
-		// 2D traversals
-		Lecture snake = addExercise(new Snake(this));
-		addExercise(new TraversalByColumn(this),snake);
-		addExercise(new TraversalByLine(this),snake);
-		addExercise(new TraversalZigZag(this),snake);
-		addExercise(new TraversalDiagonal(this),snake);
-		
-		// Other exercises
-		addExercise(new Moria(this));
+    Lecture vars = addExercise(new Variables(this));
+    addExercise(new RunFour(this), vars);
+    addExercise(new RunHalf(this), vars);
+    addExercise(new BDR(this), vars);
+    addExercise(new BDR2(this), vars);
 
-		
-	}
+    Lecture loopFor = addExercise(new LoopFor(this));
+    addExercise(new LoopStairs(this), loopFor);
+    addExercise(new LoopCourse(this), loopFor);
+    addExercise(new LoopCourseForest(this), loopFor);
+
+    Lecture loopDoWhile = addExercise(new LoopDoWhile(this));
+    addExercise(new Poucet1(this), loopDoWhile);
+    addExercise(new Poucet2(this), loopDoWhile);
+
+    Lecture methodsVoid = addExercise(new Methods(this));
+    addExercise(new MethodsDogHouse(this), methodsVoid);
+    addExercise(new PictureMono1(this), methodsVoid);
+    addExercise(new PictureMono2(this), methodsVoid);
+    addExercise(new PictureMono3(this), methodsVoid);
+
+    Lecture methodReturns = addExercise(new MethodsReturning(this));
+    addExercise(new SlugTracking(this), methodReturns);
+    addExercise(new SlugHunting(this), methodReturns);
+
+    Lecture methodArg = addExercise(new MethodsArgs(this));
+    addExercise(new SlugSnail(this), methodArg);
+    addExercise(new MethodsPicture(this), methodArg);
+    addExercise(new MethodsPictureLarge(this), methodArg);
+    addExercise(new PatternPicture(this), methodArg);
+    addExercise(new FlowerPot(this), methodArg);
+    addExercise(new FlowerCase(this), methodArg);
+
+    // First serie of boolean fun
+    Lecture bat = addExercise(new SleepIn(this));
+    addExercise(new MonkeyTrouble(this), bat);
+    addExercise(new NearHundred(this), bat);
+    addExercise(new SumDouble(this), bat);
+    addExercise(new Diff21(this), bat);
+    addExercise(new ParotTrouble(this), bat);
+    addExercise(new Makes10(this), bat);
+    addExercise(new PosNeg(this), bat);
+    addExercise(new IcyHot(this), bat);
+    addExercise(new In1020(this), bat);
+    addExercise(new HasTeen(this), bat);
+    addExercise(new LoneTeen(this), bat);
+    addExercise(new CountTeen(this), bat);
+    addExercise(new Close10(this), bat);
+    addExercise(new In3050(this), bat);
+    addExercise(new Max1020(this), bat);
+    addExercise(new LastDigit(this), bat);
+
+    // Second serie of boolean fun
+    bat = addExercise(new AlarmClock(this));
+    addExercise(new AnswerCell(this), bat);
+    addExercise(new BlueTicket(this), bat);
+    addExercise(new CaughtSpeeding(this), bat);
+    addExercise(new CigarParty(this), bat);
+    addExercise(new DateFashion(this), bat);
+    addExercise(new GreenTicket(this), bat);
+    addExercise(new In1To10(this), bat);
+    addExercise(new InOrder(this), bat);
+    addExercise(new InOrderEqual(this), bat);
+    addExercise(new LastDigit2(this), bat);
+    addExercise(new LessBy10(this), bat);
+    addExercise(new MaxMod5(this), bat);
+    addExercise(new NearTen(this), bat);
+    addExercise(new RedTicket(this), bat);
+    addExercise(new ShareDigit(this), bat);
+    addExercise(new SortaSum(this), bat);
+    addExercise(new FizzBuzz(this), bat);
+    addExercise(new SquirrelPlay(this), bat);
+    addExercise(new TeaParty(this), bat);
+    addExercise(new TeenSum(this), bat);
+    addExercise(new TwoAsOne(this), bat);
+    addExercise(new WithoutDoubles(this), bat);
+
+    // arrays exercises
+    Lecture arrays = addExercise(new Array1(this));
+    addExercise(new Array2(this), arrays);
+    addExercise(new IndexOfValue(this), arrays);
+    addExercise(new OccurrenceOfValue(this), arrays);
+    addExercise(new AverageValue(this), arrays);
+    addExercise(new MaxValue(this), arrays);
+    addExercise(new IndexOfMaxValue(this), arrays);
+    addExercise(new Extrema(this), arrays);
+    addExercise(new SecondMaxValue(this), arrays);
+    addExercise(new ArrayCount9(this), arrays);
+    addExercise(new ArrayFront9(this), arrays);
+    addExercise(new Array123(this), arrays);
+    addExercise(new Array667(this), arrays);
+    addExercise(new NoTriples(this), arrays);
+    addExercise(new Has271(this), arrays);
+    addExercise(new Golomb(this), arrays);
+    addExercise(new Island(this), arrays);
+
+    // 2D traversals
+    Lecture snake = addExercise(new Snake(this));
+    addExercise(new TraversalByColumn(this), snake);
+    addExercise(new TraversalByLine(this), snake);
+    addExercise(new TraversalZigZag(this), snake);
+    addExercise(new TraversalDiagonal(this), snake);
+
+    // Other exercises
+    addExercise(new Moria(this));
+  }
 }

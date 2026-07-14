@@ -1,22 +1,22 @@
 package lessons.sort.basic.bubble;
 
+import java.util.Arrays;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
 import plm.universe.sort.SortingWorld;
 
-import java.util.Arrays;
-
 public class AlgBubbleSort3 extends ExerciseTemplated {
 
-	public AlgBubbleSort3(Lesson lesson) {
-		super(lesson);
-		
-		World[] myWorlds = new SortingWorld[2];
-		myWorlds[0] = new SortingWorld("Functional test",10);
-		myWorlds[1] = new SortingWorld("Performance test (150 elms)",150);
+  public AlgBubbleSort3(Lesson lesson)
+  {
+    super(lesson);
 
-		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(AlgBubbleSort3Entity::new)).toList().toArray(new World[0]);
-		setup(myWorlds);
-	}
+    World[] myWorlds = new SortingWorld[2];
+    myWorlds[0]      = new SortingWorld("Functional test", 10);
+    myWorlds[1]      = new SortingWorld("Performance test (150 elms)", 150);
+
+    myWorlds = Arrays.stream(myWorlds).map(s -> s.replaceEntities(AlgBubbleSort3Entity::new)).toList().toArray(new World[0]);
+    setup(myWorlds);
+  }
 }

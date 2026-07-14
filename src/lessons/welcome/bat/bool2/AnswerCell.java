@@ -7,17 +7,18 @@ import plm.universe.bat.BatExercise;
 import plm.universe.bat.BatWorld;
 
 public class AnswerCell extends BatExercise {
-	public AnswerCell(Lesson lesson) {
-		super(lesson);
+  public AnswerCell(Lesson lesson)
+  {
+    super(lesson);
 
-		BatWorld myWorld = new BatWorld("answerCell");
-		myWorld.addTest(VISIBLE, false, false, false) ;
-		myWorld.addTest(VISIBLE, false, false, true) ;
-		myWorld.addTest(VISIBLE, true, false, false) ;
-		myWorld.addTest(INVISIBLE, true, true, false) ;
-		myWorld.addTest(INVISIBLE, false, true, false) ;
-		myWorld.addTest(INVISIBLE, true, true, true) ;
+    BatWorld myWorld = new BatWorld("answerCell");
+    myWorld.addTest(VISIBLE, false, false, false);
+    myWorld.addTest(VISIBLE, false, false, true);
+    myWorld.addTest(VISIBLE, true, false, false);
+    myWorld.addTest(INVISIBLE, true, true, false);
+    myWorld.addTest(INVISIBLE, false, true, false);
+    myWorld.addTest(INVISIBLE, true, true, true);
 
-                setup(myWorld);
-        }
+    setup(myWorld);
+  }
 }

@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.IOException;
-
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
@@ -21,783 +20,727 @@ import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 @EntityPrimitives(AbstractBugglePrimitives.class)
 public abstract class AbstractBuggle extends Entity implements AbstractBugglePrimitives {
-	int k_val = 0;
-	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
+  int k_val   = 0;
+  int[] k_seq = {0, 0, 1, 1, 2, 3, 2, 3, 4, 5};
 
-	Color bodyColor = Color.red;
-	Color brushColor = Color.red;
-	
-	private boolean dontIgnoreDirectionDifference = true; // if the buggle direction matters for world equality
+  Color bodyColor  = Color.red;
+  Color brushColor = Color.red;
 
+  private boolean dontIgnoreDirectionDifference = true; // if the buggle direction matters for world equality
 
-	private int x = 0;
-	private int y = 0;
+  private int x = 0;
+  private int y = 0;
 
-	Direction direction = Direction.NORTH;
+  Direction direction = Direction.NORTH;
 
-	boolean brushDown;
+  boolean brushDown;
 
-	private boolean carryBaggle;
+  private boolean carryBaggle;
 
-	/* used to tell the observers what was changed */
-	public static final int BRUSH_STATE = 0, BRUSH_COLOR = 1, BUGGLE_COLOR = 2;
+  /* used to tell the observers what was changed */
+  public static final int BRUSH_STATE = 0, BRUSH_COLOR = 1, BUGGLE_COLOR = 2;
 
-	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
-	 * candidate for exercise completion.
-	 */
-	private boolean seenError = false;
-	private String seenErrorMsg = "";
-	public void seenError() {
-		this.seenError = true;
-	}
-	public void seenError(String msg) {
-		if (getWorld().getEntityCount()>1) {
-			System.err.println(getName()+": "+msg);
-		} else {
-			System.err.println(msg);
-		}
-		this.seenError = true;
-		this.seenErrorMsg = msg;
-	}
-	public boolean haveSeenError() {
-		return seenError;
-	}	
-	public String haveSeenErrorMsg() {
-		return seenErrorMsg;
-	}
+  /* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
+   * candidate for exercise completion.
+   */
+  private boolean seenError   = false;
+  private String seenErrorMsg = "";
+  public void seenError() { this.seenError = true; }
+  public void seenError(String msg)
+  {
+    if (getWorld().getEntityCount() > 1) {
+      System.err.println(getName() + ": " + msg);
+    } else {
+      System.err.println(msg);
+    }
+    this.seenError    = true;
+    this.seenErrorMsg = msg;
+  }
+  public boolean haveSeenError() { return seenError; }
+  public String haveSeenErrorMsg() { return seenErrorMsg; }
 
-	/** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
-	public AbstractBuggle() {
-		super();
-	}
+  /** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
+  public AbstractBuggle() { super(); }
 
-	/** That constructor is called by the exercises */
-	public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color color, Color brushColor) {
-		super(name,world);
-		this.bodyColor = color;
-		this.brushColor = brushColor;
-		this.x = x;
-		this.y = y;
-		this.direction = direction;
-	}
-	@Override
-	public void copy(Entity e) {
-		super.copy(e);
-		AbstractBuggle other = (AbstractBuggle)e;
-		this.bodyColor = other.bodyColor;
-		this.brushColor = other.brushColor;
-		this.x = other.x;
-		this.y = other.y;
-		this.direction = other.direction;
-		this.carryBaggle = other.carryBaggle;
-	}
+  /** That constructor is called by the exercises */
+  public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color color, Color brushColor)
+  {
+    super(name, world);
+    this.bodyColor  = color;
+    this.brushColor = brushColor;
+    this.x          = x;
+    this.y          = y;
+    this.direction  = direction;
+  }
+  @Override public void copy(Entity e)
+  {
+    super.copy(e);
+    AbstractBuggle other = (AbstractBuggle)e;
+    this.bodyColor       = other.bodyColor;
+    this.brushColor      = other.brushColor;
+    this.x               = other.x;
+    this.y               = other.y;
+    this.direction       = other.direction;
+    this.carryBaggle     = other.carryBaggle;
+  }
 
-	public void penDown(){
-		throw new RuntimeException(Game.i18n.tr(
-				"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
-	}
-	public void penUp(){
-		throw new RuntimeException(Game.i18n.tr(
-				"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
-	}
+  public void penDown()
+  {
+    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
+  }
+  public void penUp()
+  {
+    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
+  }
 
-	@Override
-	public boolean isBrushDown() {
-		return brushDown;
-	}
+  @Override public boolean isBrushDown() { return brushDown; }
 
-	@Override
-	public void brushDown() {
-		this.brushDown = true;
-		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
-		cell.setColor(brushColor);
-		world.notifyWorldUpdatesListeners();
-		setChanged();
-		notifyObservers(BRUSH_STATE);
-	}
+  @Override public void brushDown()
+  {
+    this.brushDown       = true;
+    BuggleWorldCell cell = (BuggleWorldCell)((BuggleWorld)world).getCell(x, y);
+    cell.setColor(brushColor);
+    world.notifyWorldUpdatesListeners();
+    setChanged();
+    notifyObservers(BRUSH_STATE);
+  }
 
-	@Override
-	public void brushUp() {
-		if (k_seq[k_val]==4) k_val++; else k_val = 0;
-		this.brushDown = false;
-		setChanged();
-		notifyObservers(BRUSH_STATE);
-	}
+  @Override public void brushUp()
+  {
+    if (k_seq[k_val] == 4)
+      k_val++;
+    else
+      k_val = 0;
+    this.brushDown = false;
+    setChanged();
+    notifyObservers(BRUSH_STATE);
+  }
 
-	@Override
-	public Color getGroundColor() {
-		return getCell().getColor();
-	}
+  @Override public Color getGroundColor() { return getCell().getColor(); }
 
-	@Override
-	public Color getBrushColor() {
-		return brushColor;
-	}
+  @Override public Color getBrushColor() { return brushColor; }
 
-	@Override
-	public void setBrushColor(Color c) {
-		if (c != null)
-			brushColor = c;
-		if (brushDown) // mark the ground
-			brushDown();
-		setChanged();
-		notifyObservers(BRUSH_COLOR);
-	}
+  @Override public void setBrushColor(Color c)
+  {
+    if (c != null)
+      brushColor = c;
+    if (brushDown) // mark the ground
+      brushDown();
+    setChanged();
+    notifyObservers(BRUSH_COLOR);
+  }
 
-	@Override
-	public Color getBodyColor() {
-		return bodyColor;
-	}
+  @Override public Color getBodyColor() { return bodyColor; }
 
-	@Override
-	public void setBodyColor(Color c) {
-		if (c != null) {
-			this.bodyColor = c;
-			world.notifyWorldUpdatesListeners();
-			setChanged();
-			notifyObservers(BUGGLE_COLOR);
-		}
-	}
+  @Override public void setBodyColor(Color c)
+  {
+    if (c != null) {
+      this.bodyColor = c;
+      world.notifyWorldUpdatesListeners();
+      setChanged();
+      notifyObservers(BUGGLE_COLOR);
+    }
+  }
 
-	@Override
-	public Direction getDirection() {
-		return direction;
-	}
+  @Override public Direction getDirection() { return direction; }
 
-	@Override
-	public void setDirection(Direction direction) {
-		if (direction != null) {
-			this.direction = direction;
-			stepUI();
-		}
-	}
+  @Override public void setDirection(Direction direction)
+  {
+    if (direction != null) {
+      this.direction = direction;
+      stepUI();
+    }
+  }
 
-	@Override
-	public void left() {
-		if (k_seq[k_val]==2) k_val++; else k_val = 0;
-		setDirection(direction.left());
-	}
+  @Override public void left()
+  {
+    if (k_seq[k_val] == 2)
+      k_val++;
+    else
+      k_val = 0;
+    setDirection(direction.left());
+  }
 
-	@Override
-	public void right() {
-		if (k_seq[k_val]==3) k_val++; else k_val = 0;
-		setDirection(direction.right());
-	}
-	
-	// Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
-	public void Left() { 
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
-	}
-	public void Right() {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
-	}
+  @Override public void right()
+  {
+    if (k_seq[k_val] == 3)
+      k_val++;
+    else
+      k_val = 0;
+    setDirection(direction.right());
+  }
 
-	@Override
-	public void back() {
-		setDirection(direction.opposite());
-	}
+  // Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
+  public void Left() { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead.")); }
+  public void Right() { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead.")); }
 
-	@Override
-	public int getWorldHeight() {
-		return ((GridWorld) world).getHeight();
-	}
+  @Override public void back() { setDirection(direction.opposite()); }
 
-	@Override
-	public int getWorldWidth() {
-		return ((GridWorld) world).getWidth();
-	}
-	protected BuggleWorldCell getCell(){
-		return (BuggleWorldCell) ((GridWorld)world).getCell(x, y);
-	}
-	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException{
-		BuggleWorld bw = (BuggleWorld) world;
-		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
-		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
+  @Override public int getWorldHeight() { return ((GridWorld)world).getHeight(); }
 
-		return (BuggleWorldCell) ((GridWorld)world).getCell(u, v);
-	}
-	protected BuggleWorldCell getCellFromLesson(int u, int v) {
-		try {
-			return getCell(u,v);
-		} catch (BuggleInOuterSpaceException e) {
-			throw new RuntimeException("Broken lesson: you accessed a cell in outer space",e);
-		}
-	}
+  @Override public int getWorldWidth() { return ((GridWorld)world).getWidth(); }
+  protected BuggleWorldCell getCell() { return (BuggleWorldCell)((GridWorld)world).getCell(x, y); }
+  protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException
+  {
+    BuggleWorld bw = (BuggleWorld)world;
+    if (y >= bw.getHeight())
+      throw new BuggleInOuterSpaceException(
+          Game.i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.", y, (bw.getHeight() - 1)));
+    if (x >= bw.getWidth())
+      throw new BuggleInOuterSpaceException(
+          Game.i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.", x, (bw.getWidth() - 1)));
 
-	@Override
-	public int getX() {
-		return x;
-	}
+    return (BuggleWorldCell)((GridWorld)world).getCell(u, v);
+  }
+  protected BuggleWorldCell getCellFromLesson(int u, int v)
+  {
+    try {
+      return getCell(u, v);
+    } catch (BuggleInOuterSpaceException e) {
+      throw new RuntimeException("Broken lesson: you accessed a cell in outer space", e);
+    }
+  }
 
-	@Override
-	public void setX(int x) throws BuggleInOuterSpaceException {
-		BuggleWorld bw = (BuggleWorld) world;
-		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
-		this.x = x;
-		stepUI();
-	}
-	public void setXFromLesson(int x)  {
-		try {
-			setX(x);
-		} catch (BuggleInOuterSpaceException e) {
-			throw new RuntimeException("Broken lesson: you moved to outer space",e);
-		}
-	}
+  @Override public int getX() { return x; }
 
-	@Override
-	public int getY() {
-		return y;
-	}
+  @Override public void setX(int x) throws BuggleInOuterSpaceException
+  {
+    BuggleWorld bw = (BuggleWorld)world;
+    if (x >= bw.getWidth())
+      throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.", x, (bw.getWidth() - 1)));
+    this.x = x;
+    stepUI();
+  }
+  public void setXFromLesson(int x)
+  {
+    try {
+      setX(x);
+    } catch (BuggleInOuterSpaceException e) {
+      throw new RuntimeException("Broken lesson: you moved to outer space", e);
+    }
+  }
 
-	@Override
-	public void setY(int y) throws BuggleInOuterSpaceException  {
-		BuggleWorld bw = (BuggleWorld) world;
-		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
-		this.y = y;
-		stepUI();
-	}
-	public void setYFromLesson(int y)  {
-		try {
-			setY(y);
-		} catch (BuggleInOuterSpaceException e) {
-			throw new RuntimeException("Broken lesson: you moved to outer space",e);
-		}
-	}
+  @Override public int getY() { return y; }
 
-	@Override
-	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
-		BuggleWorld bw = (BuggleWorld) world;
-		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
-		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
-		this.x = x;
-		this.y = y;
-		stepUI();
-	}
-	public void setPosFromLesson(int x, int y)  {
-		try {
-			setPos(x,y);
-		} catch (BuggleInOuterSpaceException e) {
-			throw new RuntimeException("Broken lesson: you moved to outer space (at "+x+","+y+")",e);
-		}
-	}
+  @Override public void setY(int y) throws BuggleInOuterSpaceException
+  {
+    BuggleWorld bw = (BuggleWorld)world;
+    if (y >= bw.getHeight())
+      throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.", y, (bw.getHeight() - 1)));
+    this.y = y;
+    stepUI();
+  }
+  public void setYFromLesson(int y)
+  {
+    try {
+      setY(y);
+    } catch (BuggleInOuterSpaceException e) {
+      throw new RuntimeException("Broken lesson: you moved to outer space", e);
+    }
+  }
 
-	@Override
-	public void stepForward() throws BuggleWallException {
-		if (k_seq[k_val]==0) k_val++; else k_val = 0;
-		move(direction.toPoint());
-	}
+  @Override public void setPos(int x, int y) throws BuggleInOuterSpaceException
+  {
+    BuggleWorld bw = (BuggleWorld)world;
+    if (y >= bw.getHeight())
+      throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.", y, (bw.getHeight() - 1)));
+    if (x >= bw.getWidth())
+      throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.", x, (bw.getWidth() - 1)));
+    this.x = x;
+    this.y = y;
+    stepUI();
+  }
+  public void setPosFromLesson(int x, int y)
+  {
+    try {
+      setPos(x, y);
+    } catch (BuggleInOuterSpaceException e) {
+      throw new RuntimeException("Broken lesson: you moved to outer space (at " + x + "," + y + ")", e);
+    }
+  }
 
-	@Override
-	public void forward(int count) throws BuggleWallException {
-		for (int i = 0; i < count; i++)
-			stepForward();
-	}
+  @Override public void stepForward() throws BuggleWallException
+  {
+    if (k_seq[k_val] == 0)
+      k_val++;
+    else
+      k_val = 0;
+    move(direction.toPoint());
+  }
 
-	@Override
-	public void stepBackward() throws BuggleWallException {
-		if (k_seq[k_val]==1) k_val++; else k_val = 0;
-		move(direction.opposite().toPoint());
-	}
+  @Override public void forward(int count) throws BuggleWallException
+  {
+    for (int i = 0; i < count; i++)
+      stepForward();
+  }
 
-	@Override
-	public void backward(int count) throws BuggleWallException {
-		for (int i = 0; i < count; i++)
-			stepBackward();
-	}
+  @Override public void stepBackward() throws BuggleWallException
+  {
+    if (k_seq[k_val] == 1)
+      k_val++;
+    else
+      k_val = 0;
+    move(direction.opposite().toPoint());
+  }
 
-        private boolean lookAtWall(Direction delta)
-        {
-          BuggleWorldCell cell;
-            return switch (delta) {
-                case NORTH -> {
-                    cell = getCell();
-                    yield cell.hasTopWall();
-                }
-                case WEST -> {
-                    cell = getCell();
-                    yield cell.hasLeftWall();
-                }
-                case SOUTH -> {
-                    cell = getCellFromLesson(getX(), (getY() + 1) % getWorldHeight());
-                    yield cell.hasTopWall();
-                }
-                case EAST -> {
-                    cell = getCellFromLesson((getX() + 1) % getWorldWidth(), getY());
-                    yield cell.hasLeftWall();
-                }
-                default -> throw new RuntimeException("Invalid direction: " + delta);
-            };
+  @Override public void backward(int count) throws BuggleWallException
+  {
+    for (int i = 0; i < count; i++)
+      stepBackward();
+  }
+
+  private boolean lookAtWall(Direction delta)
+  {
+    BuggleWorldCell cell;
+    return switch (delta) {
+      case NORTH -> {
+        cell = getCell();
+        yield cell.hasTopWall();
+      }
+      case WEST -> {
+        cell = getCell();
+        yield cell.hasLeftWall();
+      }
+      case SOUTH -> {
+        cell = getCellFromLesson(getX(), (getY() + 1) % getWorldHeight());
+        yield cell.hasTopWall();
+      }
+      case EAST -> {
+        cell = getCellFromLesson((getX() + 1) % getWorldWidth(), getY());
+        yield cell.hasLeftWall();
+      }
+      default -> throw new RuntimeException("Invalid direction: " + delta);
+    };
+  }
+  @Override public boolean isFacingWall() { return lookAtWall(getDirection()); }
+  @Override public boolean isBackingWall() { return lookAtWall(getDirection().opposite()); }
+  @Override public boolean isWallOnLeft() { return lookAtWall(getDirection().left()); }
+  @Override public boolean isWallOnRight() { return lookAtWall(getDirection().right()); }
+
+  private void move(Point delta) throws BuggleWallException
+  {
+    if (delta == null)
+      return;
+
+    int newx = (x + delta.x) % getWorldWidth();
+    if (newx < 0)
+      newx += getWorldWidth();
+    int newy = (y + delta.y) % getWorldHeight();
+    if (newy < 0)
+      newy += getWorldHeight();
+
+    if (delta.equals(direction.toPoint()) && isFacingWall() || delta.equals(direction.opposite().toPoint()) && isBackingWall())
+
+      throw new BuggleWallException();
+
+    x = newx;
+    y = newy;
+
+    if (brushDown) {
+      getCell().setColor(brushColor);
+    }
+
+    stepUI();
+  }
+
+  @Override public boolean isOverBaggle() { return getCellFromLesson(this.x, this.y).hasBaggle(); }
+
+  @Override public boolean isCarryingBaggle() { return this.carryBaggle; }
+
+  @Deprecated public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException { pickupBaggle(); }
+  @Override public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException
+  {
+    if (k_seq[k_val] == 5)
+      k_val++;
+    else
+      k_val = 0;
+    if (k_val > k_seq.length - 1) {
+      setName("Easter " + name);
+      System.out.println("EASTEEEER");
+      ((BuggleWorld)world).easter = true;
+      k_val                       = 0;
+      return;
+    }
+
+    if (!isOverBaggle())
+      throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
+    if (isCarryingBaggle())
+      throw new AlreadyHaveBaggleException(Game.i18n.tr("You are already carrying a baggle."));
+    getCellFromLesson(this.x, this.y).baggleRemove();
+    carryBaggle = true;
+  }
+
+  @Override public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException
+  {
+    if (!isCarryingBaggle())
+      throw new DontHaveBaggleException();
+    getCellFromLesson(this.x, this.y).baggleAdd();
+    carryBaggle = false;
+  }
+
+  protected void doCarryBaggle() { /* This should not be used in user code, only in the world loading code */ carryBaggle = true; }
+
+  @Override public boolean isOverMessage() { return getCell().hasContent(); }
+
+  @Override public void writeMessage(String msg) { getCell().addContent(msg); }
+  @Override public void writeMessage(int nb) { writeMessage("" + nb); }
+
+  @Override public String readMessage() { return getCell().getContent(); }
+
+  @Override public void clearMessage() { getCell().emptyContent(); }
+
+  @Override public boolean primitiveHasTopWall(int x, int y)
+  {
+    this.x = x;
+    this.y = y;
+    return getCell().hasTopWall();
+  }
+
+  @Override public boolean primitiveHasLeftWall(int x, int y)
+  {
+    this.x = x;
+    this.y = y;
+    return getCell().hasLeftWall();
+  }
+
+  @Override public String toString()
+  {
+    return "Buggle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Direction:" + direction + " Color:" + bodyColor;
+  }
+
+  @Override public int hashCode()
+  {
+    final int PRIME = 31;
+    int result      = 1;
+    result          = PRIME * result + ((brushColor == null) ? 0 : brushColor.hashCode());
+    result          = PRIME * result + (brushDown ? 1231 : 1237);
+    result          = PRIME * result + ((bodyColor == null) ? 0 : bodyColor.hashCode());
+    result          = PRIME * result + ((direction == null) ? 0 : direction.hashCode());
+    result          = PRIME * result + x;
+    result          = PRIME * result + y;
+    return result;
+  }
+
+  public void ignoreDirectionDifference() { dontIgnoreDirectionDifference = false; }
+
+  @Override public boolean equals(Object obj)
+  {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (!(obj instanceof AbstractBuggle))
+      return false;
+
+    final AbstractBuggle other = (AbstractBuggle)obj;
+    if (bodyColor == null) {
+      if (other.bodyColor != null)
+        return false;
+    } else if (!bodyColor.equals(other.bodyColor))
+      return false;
+    if (dontIgnoreDirectionDifference && direction == null) {
+      if (other.direction != null)
+        return false;
+    } else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
+      return false;
+    if (!(seenError == other.seenError && seenErrorMsg == other.seenErrorMsg))
+      return false;
+    if (x != other.x)
+      return false;
+    if (y != other.y)
+      return false;
+    return true;
+  }
+  public String diffTo(AbstractBuggle other)
+  {
+    if (other == null)
+      return Game.i18n.tr("Its value is 'null', which is never good.");
+    /* We cannot use a i18n defined in our class, as we have to pass the classname to the initialization of i18n,
+     *    but gettext don't seem to like the fact that we generate at runtime some package names that it does not know at compile time.
+     * So, use Game.i18n instead.
+     */
+    StringBuffer sb = new StringBuffer();
+    if (isCarryingBaggle() && !other.isCarryingBaggle())
+      sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
+    if (!isCarryingBaggle() && other.isCarryingBaggle())
+      sb.append(Game.i18n.tr("    It is not carrying any baggle.\n"));
+    if (!(seenError == other.seenError && seenErrorMsg == other.seenErrorMsg)) {
+      if (other.seenError) {
+        if (other.seenErrorMsg != "") {
+          sb.append(Game.i18n.tr("    Unexpected issue: {0}\n", other.seenErrorMsg));
+        } else {
+          sb.append(Game.i18n.tr("    It encountered an unexpected issue (such as bumping into a wall).\n"));
         }
-        @Override
-        public boolean isFacingWall() { return lookAtWall(getDirection()); }
-        @Override
-        public boolean isBackingWall() { return lookAtWall(getDirection().opposite()); }
-        @Override
-        public boolean isWallOnLeft() { return lookAtWall(getDirection().left()); }
-        @Override
-        public boolean isWallOnRight() { return lookAtWall(getDirection().right()); }
-
-        private void move(Point delta) throws BuggleWallException
-        {
-          if (delta == null)
-            return;
-
-          int newx = (x + delta.x) % getWorldWidth();
-          if (newx < 0)
-            newx += getWorldWidth();
-          int newy = (y + delta.y) % getWorldHeight();
-          if (newy < 0)
-            newy += getWorldHeight();
-
-          if (delta.equals(direction.toPoint()) && isFacingWall() ||
-              delta.equals(direction.opposite().toPoint()) && isBackingWall())
-
-            throw new BuggleWallException();
-
-          x = newx;
-          y = newy;
-
-          if (brushDown) {
-            getCell().setColor(brushColor);
-          }
-
-          stepUI();
+      } else {
+        if (seenErrorMsg != "") {
+          sb.append(Game.i18n.tr("    It did not encounter the expected issue: {0}\n", seenErrorMsg));
+        } else {
+          sb.append(Game.i18n.tr("    It did not encounter an issue as expected (such as bumping into a wall).\n"));
         }
+      }
+    }
+    if (getX() != other.getX() || getY() != other.getY())
+      sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n", other.getX(), other.getY(), getX(), getY()));
+    if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection())
+      sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n", other.getDirection(), getDirection()));
+    if (getBodyColor() != other.getBodyColor())
+      sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n", other.getBodyColor(), getBodyColor()));
+    if (getBrushColor() != other.getBrushColor())
+      sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n", other.getBrushColor(), getBrushColor()));
+    return sb.toString();
+  }
 
-        @Override
-        public boolean isOverBaggle() {
-		return getCellFromLesson(this.x, this.y).hasBaggle();
-	}
+  /* BINDINGS TRANSLATION: French */
+  public void gauche() { left(); }
+  public void droite() { right(); }
+  public void retourne() { back(); }
+  public void avance() throws BuggleWallException { stepForward(); }
+  public void avance(int steps) throws BuggleWallException { forward(steps); }
+  public void recule() throws BuggleWallException { stepBackward(); }
+  public void recule(int steps) throws BuggleWallException { backward(steps); }
+  public Color getCouleurCorps() { return getBodyColor(); }
+  public void setCouleurCorps(Color c) { setBodyColor(c); }
+  public boolean estFaceMur() { return isFacingWall(); }
+  public boolean estDosMur() { return isBackingWall(); }
+  public void leveCrayon() { penUp(); }
+  public void baisseCrayon() { penDown(); }
+  public void leveBrosse() { brushUp(); }
+  public void baisseBrosse() { brushDown(); }
+  public boolean estBrosseBaissee() { return isBrushDown(); }
+  public Color getCouleurBrosse() { return getBrushColor(); }
+  public void setCouleurBrosse(Color c) { setBrushColor(c); }
+  public Color getCouleurSol() { return getGroundColor(); }
+  public boolean estSurBiscuit() { return isOverBaggle(); }
+  public boolean porteBiscuit() { return isCarryingBaggle(); }
+  public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+  public void poseBiscuit() throws AlreadyHaveBaggleException, DontHaveBaggleException { dropBaggle(); }
+  public boolean estSurMessage() { return isOverMessage(); }
+  public String litMessage() { return readMessage(); }
+  public void ecritMessage(String s) { writeMessage(s); }
+  public void ecritMessage(int i) { writeMessage(i); }
+  public void effaceMessage() { clearMessage(); }
+  public int getMondeHauteur() { return getWorldHeight(); }
+  public int getMondeLargeur() { return getWorldWidth(); }
+  // get/set X/Y/Pos are not translated as they happen to be the same in French
+  public boolean estChoisi() { return isSelected(); }  // we have to document the version without e, since po4a allows for one variant only
+  public boolean estChoisie() { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+  /* BINDINGS TRANSLATION: Brazilian Portuguese */
+  public void esquerda() { left(); }
+  public void direita() { right(); }
+  public void voltar() { back(); }
+  public void avançar() throws BuggleWallException { stepForward(); }
+  public void avançar(int steps) throws BuggleWallException { forward(steps); }
+  public void recuar() throws BuggleWallException { stepBackward(); }
+  public void recuar(int steps) throws BuggleWallException { backward(steps); }
+  public Color getCorDoCorpo() { return getBodyColor(); }
+  public void setCorDoCorpo(Color c) { setBodyColor(c); }
+  public boolean estáDeFrenteParaParede() { return isFacingWall(); }
+  public boolean estáDeCostasParaParede() { return isBackingWall(); }
+  public void levantarCaneta() { penUp(); }
+  public void abaixarCaneta() { penDown(); }
+  public void levantarPincel() { brushUp(); }
+  public void abaixarPincel() { brushDown(); }
+  public boolean pincelEstáAbaixado() { return isBrushDown(); }
+  public Color getCorDoPincel() { return getBrushColor(); }
+  public void setCorDoPincel(Color c) { setBrushColor(c); }
+  public Color getCorDoChão() { return getGroundColor(); }
+  public boolean estáSobreBaggle() { return isOverBaggle(); }
+  public boolean estáCarregandoBaggle() { return isCarryingBaggle(); }
+  public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+  public void soltarBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException { dropBaggle(); }
+  public boolean estáSobreMensagem() { return isOverMessage(); }
+  public String lerMensagem() { return readMessage(); }
+  public void escreverMensagem(String s) { writeMessage(s); }
+  public void escrevermensagem(int i) { writeMessage(i); }
+  public void limparMensagem() { clearMessage(); }
+  public int getAlturaDoMundo() { return getWorldHeight(); }
+  public int getLarguraDoMundo() { return getWorldWidth(); }
+  // get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
+  public boolean estáSelecionado() { return isSelected(); }
 
-	@Override
-	public boolean isCarryingBaggle() {
-		return this.carryBaggle;
-	}
+  @Override public void command(String command, BufferedWriter out) throws Exception
+  {
+    if (command.contains("AddressSanitizer")) {
+      if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))
+        System.err.println(command);
+      return;
+    }
+    // This throws parseError and StringOutOfBoundError at least
+    int num = Integer.parseInt((String)command.subSequence(0, 3));
 
-	@Deprecated
-	public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
-		pickupBaggle();
-	}
-	@Override
-	public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
-		if (k_seq[k_val]==5) k_val++; else k_val = 0;
-		if (k_val>k_seq.length-1) {
-			setName("Easter "+name);
-			System.out.println("EASTEEEER");
-			((BuggleWorld)world).easter= true;
-			k_val=0;
-			return;
-		}
-
-		if (!isOverBaggle())
-			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
-		if (isCarryingBaggle())
-			throw new AlreadyHaveBaggleException(Game.i18n.tr("You are already carrying a baggle."));
-		getCellFromLesson(this.x, this.y).baggleRemove();
-		carryBaggle = true;
-	}
-
-	@Override
-	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
-		if (! isCarryingBaggle())
-			throw new DontHaveBaggleException();
-		getCellFromLesson(this.x, this.y).baggleAdd();
-		carryBaggle = false;
-	}
-	
-	protected void doCarryBaggle() { /* This should not be used in user code, only in the world loading code */
-		carryBaggle = true;
-	}
-	
-	
-	@Override
-	public boolean isOverMessage() {
-		return getCell().hasContent();
-	}
-
-	@Override
-	public void writeMessage(String msg) {
-		getCell().addContent(msg);
-	}
-	@Override
-	public void writeMessage(int nb) {
-		writeMessage(""+nb);
-	}
-
-	@Override
-	public String readMessage() {
-		return getCell().getContent();
-	}
-
-	@Override
-	public void clearMessage() {
-		getCell().emptyContent();
-	}
-
-
-	@Override
-	public boolean primitiveHasTopWall(int x, int y) {
-		this.x = x;
-		this.y = y;
-		return getCell().hasTopWall();
-	}
-
-	@Override
-	public boolean primitiveHasLeftWall(int x, int y) {
-		this.x = x;
-		this.y = y;
-		return getCell().hasLeftWall();
-	}
-
-	@Override
-	public String toString() {
-		return "Buggle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Direction:" + direction + " Color:"
-				+ bodyColor;
-	}
-
-	@Override
-	public int hashCode() {
-		final int PRIME = 31;
-		int result = 1;
-		result = PRIME * result + ((brushColor == null) ? 0 : brushColor.hashCode());
-		result = PRIME * result + (brushDown ? 1231 : 1237);
-		result = PRIME * result + ((bodyColor == null) ? 0 : bodyColor.hashCode());
-		result = PRIME * result + ((direction == null) ? 0 : direction.hashCode());
-		result = PRIME * result + x;
-		result = PRIME * result + y;
-		return result;
-	}
-
-	public void ignoreDirectionDifference() {
-		dontIgnoreDirectionDifference = false;	
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof AbstractBuggle))
-			return false;
-
-		final AbstractBuggle other = (AbstractBuggle) obj;
-		if (bodyColor == null) {
-			if (other.bodyColor != null)
-				return false;
-		} else if (!bodyColor.equals(other.bodyColor))
-			return false;
-		if (dontIgnoreDirectionDifference && direction == null) {
-			if (other.direction != null)
-				return false;
-		} else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
-			return false;
-		if (! (seenError == other.seenError && seenErrorMsg == other.seenErrorMsg) )
-			return false;
-		if (x != other.x)
-			return false;
-		if (y != other.y)
-			return false;
-		return true;
-	}
-	public String diffTo(AbstractBuggle other) {
-		if (other == null) 
-			return Game.i18n.tr("Its value is 'null', which is never good.");
-		/* We cannot use a i18n defined in our class, as we have to pass the classname to the initialization of i18n, 
-		 *    but gettext don't seem to like the fact that we generate at runtime some package names that it does not know at compile time.
-		 * So, use Game.i18n instead.
-		 */
-		StringBuffer sb = new StringBuffer();
-		if (isCarryingBaggle() && !other.isCarryingBaggle())
-			sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
-		if (!isCarryingBaggle() && other.isCarryingBaggle())
-			sb.append(Game.i18n.tr("    It is not carrying any baggle.\n"));
-		if (! (seenError == other.seenError && seenErrorMsg == other.seenErrorMsg) ) {
-			if (other.seenError) {
-				if (other.seenErrorMsg != "") {
-					sb.append(Game.i18n.tr("    Unexpected issue: {0}\n", other.seenErrorMsg));
-				} else {
-					sb.append(Game.i18n.tr("    It encountered an unexpected issue (such as bumping into a wall).\n"));
-				}	
-			} else {
-				if (seenErrorMsg != "") {
-					sb.append(Game.i18n.tr("    It did not encounter the expected issue: {0}\n", seenErrorMsg));
-				} else {
-					sb.append(Game.i18n.tr("    It did not encounter an issue as expected (such as bumping into a wall).\n"));
-				}	
-			}
-		}
-		if (getX() != other.getX() || getY() != other.getY()) 
-			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-		if ((!dontIgnoreDirectionDifference) && getDirection() != other.getDirection()) 
-			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
-		if (getBodyColor() != other.getBodyColor()) 
-			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
-		if (getBrushColor() != other.getBrushColor())
-			sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
-		return sb.toString();
-	}
-
-	/* BINDINGS TRANSLATION: French */
-	public void gauche()   { left(); }
-	public void droite()   { right(); }
-	public void retourne() { back(); }
-	public void avance()          throws BuggleWallException { stepForward(); }
-	public void avance(int steps) throws BuggleWallException { forward(steps); }
-	public void recule()          throws BuggleWallException { stepBackward(); }
-	public void recule(int steps) throws BuggleWallException { backward(steps); }
-	public Color getCouleurCorps()        { return getBodyColor(); }
-	public void setCouleurCorps(Color c)  { setBodyColor(c); }
-	public boolean estFaceMur()           { return isFacingWall(); }
-	public boolean estDosMur()            { return isBackingWall(); }
-	public void leveCrayon()              { penUp(); }
-	public void baisseCrayon()            { penDown(); }
-	public void leveBrosse()              { brushUp(); }
-	public void baisseBrosse()            { brushDown(); }
-	public boolean estBrosseBaissee()     { return isBrushDown(); }
-	public Color getCouleurBrosse()       { return getBrushColor(); }
-	public void setCouleurBrosse(Color c) { setBrushColor(c); }
-	public Color getCouleurSol()          { return getGroundColor(); }
-	public boolean estSurBiscuit()        { return isOverBaggle(); }
-	public boolean porteBiscuit()         { return isCarryingBaggle(); }
-	public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
-	public void poseBiscuit()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
-	public boolean estSurMessage()        { return isOverMessage(); }
-	public String litMessage()            { return readMessage(); }
-	public void ecritMessage(String s)    { writeMessage(s); }
-	public void ecritMessage(int i)       { writeMessage(i); }
-	public void effaceMessage()           { clearMessage(); }
-	public int getMondeHauteur()          { return getWorldHeight(); }
-	public int getMondeLargeur()          { return getWorldWidth(); }
-	// get/set X/Y/Pos are not translated as they happen to be the same in French
-	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
-	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
-	/* BINDINGS TRANSLATION: Brazilian Portuguese */
-	public void esquerda()        { left(); }
-	public void direita()         { right(); }
-	public void voltar()          { back(); }
-	public void avançar()          throws BuggleWallException { stepForward(); }
-	public void avançar(int steps) throws BuggleWallException { forward(steps); }
-	public void recuar()           throws BuggleWallException { stepBackward(); }
-	public void recuar(int steps)  throws BuggleWallException { backward(steps); }
-	public Color getCorDoCorpo()        { return getBodyColor(); }
-	public void setCorDoCorpo(Color c)  { setBodyColor(c); }
-	public boolean estáDeFrenteParaParede() { return isFacingWall(); }
-	public boolean estáDeCostasParaParede() { return isBackingWall(); }
-	public void levantarCaneta()            { penUp(); }
-	public void abaixarCaneta()             { penDown(); }
-	public void levantarPincel()            { brushUp(); }
-	public void abaixarPincel()             { brushDown(); }
-    	public boolean pincelEstáAbaixado()     { return isBrushDown(); }
-	public Color getCorDoPincel()       { return getBrushColor(); }
-	public void setCorDoPincel(Color c) { setBrushColor(c); }
-	public Color getCorDoChão()          { return getGroundColor(); }
-	public boolean estáSobreBaggle()        { return isOverBaggle(); }
-	public boolean estáCarregandoBaggle()         { return isCarryingBaggle(); }
-	public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
-	public void soltarBaggle()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
-	public boolean estáSobreMensagem()        { return isOverMessage(); }
-	public String lerMensagem()            { return readMessage(); }
-	public void escreverMensagem(String s)    { writeMessage(s); }
-	public void escrevermensagem(int i)       { writeMessage(i); }
-	public void limparMensagem()           { clearMessage(); }
-	public int getAlturaDoMundo()          { return getWorldHeight(); }
-	public int getLarguraDoMundo()          { return getWorldWidth(); }
-	// get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
-        public boolean estáSelecionado() { return isSelected(); }
-
-        @Override public void command(String command, BufferedWriter out) throws Exception
-        {
-          if (command.contains("AddressSanitizer")) {
-            if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))
-              System.err.println(command);
-            return;
-          }
-          // This throws parseError and StringOutOfBoundError at least
-          int num = Integer.parseInt((String)command.subSequence(0, 3));
-
-          int nb, nb2;
-          try {
-            switch (num) {
-            case 110:
-              left();
-              break;
-            case 111:
-              right();
-              break;
-            case 112:
-              back();
-              break;
-            case 113:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              primitiveForward(nb);
-              break;
-            case 114:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              primitiveBackward(nb);
-              break;
-            case 115:
-              out.write(Integer.toString(getX()));
-              out.write("\n");
-              break;
-            case 116:
-              out.write(Integer.toString(getY()));
-              out.write("\n");
-              break;
-            case 117:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              setX(nb);
-              break;
-            case 118:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              setY(nb);
-              break;
-            case 119:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              nb2 = Integer.parseInt((command.split(" ")[2]));
-              setPos(nb, nb2);
-              break;
-            case 120:
-              out.write(
-                  Integer.toString(ColorMapper.color2int(getBodyColor())));
-              out.write("\n");
-              break;
-            case 121:
-              nb = Integer.parseInt((command.split(" ")[1]));
-              setBodyColor(ColorMapper.int2color(nb));
-              break;
-            case 122:
-              out.write((isFacingWall() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 123:
-              out.write((isBackingWall() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 150:
-              out.write((isWallOnLeft() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 151:
-              out.write((isWallOnRight() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 124:
-              out.write(Integer.toString(primitiveGetDirection()));
-              out.write("\n");
-              break;
-            case 125:
-              nb = Integer.parseInt((command.split(" ")[1]));
-			  primitiveSetDirection(nb);
-              break;
-            case 126:
-              out.write((isSelected() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 127:
-              brushUp();
-              break;
-            case 128:
-              brushDown();
-              break;
-            case 129:
-              out.write((isBrushDown() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 130:
-              String arg = command.split(" ")[1];
-              primitiveSetBrushColor(arg);
-              break;
-            case 131:
-              out.write(
-                  Integer.toString(ColorMapper.color2int(getBrushColor())));
-              out.write("\n");
-              break;
-            case 132:
-              out.write(
-                  Integer.toString(ColorMapper.color2int(getGroundColor())));
-              out.write("\n");
-              break;
-            case 149:
-              out.write(ColorMapper.color2name(getGroundColor()));
-              out.write("\n");
-              break;
-            case 133:
-              out.write((isOverBaggle() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 134:
-              out.write((isCarryingBaggle() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 135:
-              pickupBaggle();
-              break;
-            case 136:
-              dropBaggle();
-              break;
-            case 137:
-              out.write((isOverMessage() ? "1" : "0"));
-              out.write("\n");
-              break;
-            case 138:
-              String mess = (command.split(" ")[1]);
-              writeMessage(mess);
-              break;
-            case 139:
-              out.write(readMessage());
-              out.write("\n");
-              break;
-            case 140:
-              clearMessage();
-              break;
-            case 141:
-              out.write(Integer.toString(getWorldHeight()));
-              out.write("\n");
-              break;
-            case 142:
-              out.write(Integer.toString(getWorldWidth()));
-              out.write("\n");
-              break;
-            case 146: // hasTopWall
-              int x = Integer.parseInt((command.split(" ")[1]));
-              int y = Integer.parseInt((command.split(" ")[2]));
-              out.write(primitiveHasTopWall(x, y) ? "1\n" : "0\n");
-              break;
-            case 147: // hasLeftWall
-              x = Integer.parseInt((command.split(" ")[1]));
-              y = Integer.parseInt((command.split(" ")[2]));
-              out.write(primitiveHasLeftWall(x, y) ? "1\n" : "0\n");
-              break;
-            case 148: // getIndicationBdr
-              out.write(getIndicationBdr());
-              out.write("\n");
-              break;
-              // 149 is getGroundColorName
-            case 200: // getParam
-              nb = Integer.parseInt((command.split(" ")[1]));
-              out.write("" + getParam(nb).toString() + "\n");
-              break;
-            case 201: // getParamCount
-              out.write(Integer.toString(getParamCount()));
-              out.write("\n");
-              break;
-            default:
-              System.out.println("UNKNOWN COMMAND received from "
-                                 + "the remote buggle: '" + command + "'");
-              break;
-            }
-            out.flush();
-          } catch (IOException ioe) {
-            ioe.printStackTrace();
-          } catch (InvalidColorNameException ine) {
-            ine.printStackTrace();
-          }
-        }
+    int nb, nb2;
+    try {
+      switch (num) {
+        case 110:
+          left();
+          break;
+        case 111:
+          right();
+          break;
+        case 112:
+          back();
+          break;
+        case 113:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          primitiveForward(nb);
+          break;
+        case 114:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          primitiveBackward(nb);
+          break;
+        case 115:
+          out.write(Integer.toString(getX()));
+          out.write("\n");
+          break;
+        case 116:
+          out.write(Integer.toString(getY()));
+          out.write("\n");
+          break;
+        case 117:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          setX(nb);
+          break;
+        case 118:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          setY(nb);
+          break;
+        case 119:
+          nb  = Integer.parseInt((command.split(" ")[1]));
+          nb2 = Integer.parseInt((command.split(" ")[2]));
+          setPos(nb, nb2);
+          break;
+        case 120:
+          out.write(Integer.toString(ColorMapper.color2int(getBodyColor())));
+          out.write("\n");
+          break;
+        case 121:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          setBodyColor(ColorMapper.int2color(nb));
+          break;
+        case 122:
+          out.write((isFacingWall() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 123:
+          out.write((isBackingWall() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 150:
+          out.write((isWallOnLeft() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 151:
+          out.write((isWallOnRight() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 124:
+          out.write(Integer.toString(primitiveGetDirection()));
+          out.write("\n");
+          break;
+        case 125:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          primitiveSetDirection(nb);
+          break;
+        case 126:
+          out.write((isSelected() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 127:
+          brushUp();
+          break;
+        case 128:
+          brushDown();
+          break;
+        case 129:
+          out.write((isBrushDown() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 130:
+          String arg = command.split(" ")[1];
+          primitiveSetBrushColor(arg);
+          break;
+        case 131:
+          out.write(Integer.toString(ColorMapper.color2int(getBrushColor())));
+          out.write("\n");
+          break;
+        case 132:
+          out.write(Integer.toString(ColorMapper.color2int(getGroundColor())));
+          out.write("\n");
+          break;
+        case 149:
+          out.write(ColorMapper.color2name(getGroundColor()));
+          out.write("\n");
+          break;
+        case 133:
+          out.write((isOverBaggle() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 134:
+          out.write((isCarryingBaggle() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 135:
+          pickupBaggle();
+          break;
+        case 136:
+          dropBaggle();
+          break;
+        case 137:
+          out.write((isOverMessage() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 138:
+          String mess = (command.split(" ")[1]);
+          writeMessage(mess);
+          break;
+        case 139:
+          out.write(readMessage());
+          out.write("\n");
+          break;
+        case 140:
+          clearMessage();
+          break;
+        case 141:
+          out.write(Integer.toString(getWorldHeight()));
+          out.write("\n");
+          break;
+        case 142:
+          out.write(Integer.toString(getWorldWidth()));
+          out.write("\n");
+          break;
+        case 146: // hasTopWall
+          int x = Integer.parseInt((command.split(" ")[1]));
+          int y = Integer.parseInt((command.split(" ")[2]));
+          out.write(primitiveHasTopWall(x, y) ? "1\n" : "0\n");
+          break;
+        case 147: // hasLeftWall
+          x = Integer.parseInt((command.split(" ")[1]));
+          y = Integer.parseInt((command.split(" ")[2]));
+          out.write(primitiveHasLeftWall(x, y) ? "1\n" : "0\n");
+          break;
+        case 148: // getIndicationBdr
+          out.write(getIndicationBdr());
+          out.write("\n");
+          break;
+          // 149 is getGroundColorName
+        case 200: // getParam
+          nb = Integer.parseInt((command.split(" ")[1]));
+          out.write("" + getParam(nb).toString() + "\n");
+          break;
+        case 201: // getParamCount
+          out.write(Integer.toString(getParamCount()));
+          out.write("\n");
+          break;
+        default:
+          System.out.println("UNKNOWN COMMAND received from "
+                             + "the remote buggle: '" + command + "'");
+          break;
+      }
+      out.flush();
+    } catch (IOException ioe) {
+      ioe.printStackTrace();
+    } catch (InvalidColorNameException ine) {
+      ine.printStackTrace();
+    }
+  }
 }

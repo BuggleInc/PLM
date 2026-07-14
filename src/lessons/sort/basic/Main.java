@@ -17,26 +17,25 @@ import plm.core.model.lesson.Lesson;
 // see http://www.cs.ubc.ca/~harrison/Java/sorting-demo.html
 
 public class Main extends Lesson {
-	@Override
-	protected void loadExercises() {
-		
-		addExercise(new AlgBubbleSort1(this));
-		addExercise(new AlgBubbleSort2(this));
-		addExercise(new AlgBubbleSort3(this));
-		
-		addExercise(new AlgCocktailSort1(this));
-		addExercise(new AlgCocktailSort2(this));
-		addExercise(new AlgCocktailSort3(this));
+  @Override protected void loadExercises()
+  {
 
-		addExercise(new AlgCombSort(this));
-		addExercise(new AlgCombSort11(this));
+    addExercise(new AlgBubbleSort1(this));
+    addExercise(new AlgBubbleSort2(this));
+    addExercise(new AlgBubbleSort3(this));
 
-		addExercise(new AlgGnomeSort(this));
-		
-		addExercise(new AlgInsertionSort(this));
-		addExercise(new AlgShellSort(this));
-		
-		addExercise(new AlgSelectionSort(this));
-		
-	}
+    addExercise(new AlgCocktailSort1(this));
+    addExercise(new AlgCocktailSort2(this));
+    addExercise(new AlgCocktailSort3(this));
+
+    addExercise(new AlgCombSort(this));
+    addExercise(new AlgCombSort11(this));
+
+    addExercise(new AlgGnomeSort(this));
+
+    addExercise(new AlgInsertionSort(this));
+    addExercise(new AlgShellSort(this));
+
+    addExercise(new AlgSelectionSort(this));
+  }
 }

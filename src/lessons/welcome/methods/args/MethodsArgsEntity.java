@@ -5,32 +5,29 @@ import plm.universe.Direction;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgsEntity extends SimpleBuggle {
-	@Override
-	public void forward(int i)  {
-		throw new RuntimeException(Game.i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-	}
-	@Override
-	public void backward(int i) {
-		throw new RuntimeException(Game.i18n.tr("I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-	}
+  @Override public void forward(int i)
+  {
+    throw new RuntimeException(Game.i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+  }
+  @Override public void backward(int i)
+  {
+    throw new RuntimeException(Game.i18n.tr("I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+  }
 
+  @Override public void run() { move(getY(), getDirection() == Direction.NORTH); }
 
-	@Override
-	public void run() { 
-		move(getY(),getDirection() == Direction.NORTH);
-	} 
-
-	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
-	public void move(int nbPas, boolean forward) {
-		if (forward) {
-			for (int i=0; i<nbPas; i++) 
-				stepForward();
-		} else {
-			for (int i=0; i<nbPas; i++) 
-				stepBackward();
-		}
-	}
-	/* END SOLUTION */
-	/* END TEMPLATE */
+  /* BEGIN TEMPLATE */
+  /* BEGIN SOLUTION */
+  public void move(int nbPas, boolean forward)
+  {
+    if (forward) {
+      for (int i = 0; i < nbPas; i++)
+        stepForward();
+    } else {
+      for (int i = 0; i < nbPas; i++)
+        stepBackward();
+    }
+  }
+  /* END SOLUTION */
+  /* END TEMPLATE */
 }

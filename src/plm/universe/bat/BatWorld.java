@@ -97,8 +97,7 @@ public class BatWorld extends World {
         return sb.toString();
 
       if (!tests.get(i).equals(other.tests.get(i))) {
-        sb.append(other.tests.get(i).getName() + " returned " + other.tests.get(i).getResult() + " while " +
-                  tests.get(i).getResult() + " was expected.\n");
+        sb.append(other.tests.get(i).getName() + " returned " + other.tests.get(i).getResult() + " while " + tests.get(i).getResult() + " was expected.\n");
         foundError = true;
       }
     }

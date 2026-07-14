@@ -1,74 +1,60 @@
 package plm.core.lang.primitives;
 
-import javax.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public final class PrimitiveMethod {
-    private final List<PrimitiveParameter> parameters;
-    private final String name;
-    private final String location;
-    private final Method method;
-    private final Class<?> output;
-    public int id;
+  private final List<PrimitiveParameter> parameters;
+  private final String name;
+  private final String location;
+  private final Method method;
+  private final Class<?> output;
+  public int id;
 
-    public PrimitiveMethod(Primitive primitive, Method method) {
-        this.id = primitive.value();
-        this.name = primitive.name().isEmpty() ? method.getName() : primitive.name();
-        this.location = method.getDeclaringClass().getSimpleName() + "::" + name();
-        this.method = method;
-        this.parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
-        this.output = method.getReturnType();
-    }
+  public PrimitiveMethod(Primitive primitive, Method method)
+  {
+    this.id         = primitive.value();
+    this.name       = primitive.name().isEmpty() ? method.getName() : primitive.name();
+    this.location   = method.getDeclaringClass().getSimpleName() + "::" + name();
+    this.method     = method;
+    this.parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
+    this.output     = method.getReturnType();
+  }
 
-    @Nullable
-    public Class<?> output() {
-        return output;
-    }
+  @Nullable public Class<?> output() { return output; }
 
-    public int id() {
-        return id;
-    }
+  public int id() { return id; }
 
-    public String name() {
-        return name;
-    }
+  public String name() { return name; }
 
-    public String location() {
-        return location;
-    }
+  public String location() { return location; }
 
-    public List<PrimitiveParameter> parameters() {
-        return parameters;
-    }
+  public List<PrimitiveParameter> parameters() { return parameters; }
 
-    public boolean hasReturn() {
-        return output != null;
-    }
+  public boolean hasReturn() { return output != null; }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (PrimitiveMethod) obj;
-        return Objects.equals(name, that.name) && Objects.equals(parameters, that.parameters);
-    }
+  @Override public boolean equals(Object obj)
+  {
+    if (obj == this)
+      return true;
+    if (obj == null || obj.getClass() != this.getClass())
+      return false;
+    var that = (PrimitiveMethod)obj;
+    return Objects.equals(name, that.name) && Objects.equals(parameters, that.parameters);
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(location);
-    }
+  @Override public int hashCode() { return Objects.hash(location); }
 
-    @Override
-    public String toString() {
-        return name() + "(" + parameters.stream().map(PrimitiveParameter::toString).collect(Collectors.joining(",")) + ")" + ":" + Optional.ofNullable(output).map(Class::getSimpleName).orElse("void");
-    }
+  @Override public String toString()
+  {
+    return name() + "(" + parameters.stream().map(PrimitiveParameter::toString).collect(Collectors.joining(",")) + ")"
+        + ":" + Optional.ofNullable(output).map(Class::getSimpleName).orElse("void");
+  }
 
-    public Method method() {
-        return method;
-    }
+  public Method method() { return method; }
 }

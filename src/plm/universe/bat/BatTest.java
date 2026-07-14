@@ -43,10 +43,7 @@ public class BatTest {
 
   boolean isVisible() { return visible; }
 
-  public String stringParameter(Object o)
-  {
-    return ValueFormatter.format(o, Game.getInstance().getProgrammingLanguage());
-  }
+  public String stringParameter(Object o) { return ValueFormatter.format(o, Game.getInstance().getProgrammingLanguage()); }
   public String getName()
   {
     ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();

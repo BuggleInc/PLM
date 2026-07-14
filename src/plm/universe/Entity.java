@@ -1,15 +1,14 @@
 package plm.universe;
 
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.model.Game;
-
 import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
+import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.model.Game;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
  *
@@ -22,170 +21,134 @@ import java.util.concurrent.Semaphore;
 
 @EntityPrimitives(EntityPrimitivesBase.class)
 public abstract class Entity extends Observable implements EntityPrimitivesBase {
-    protected String name = "(noname)";
+  protected String name = "(noname)";
 
-    protected World world;
-    /* Stuff related to tracing mechanism.
-     *
-     * This is the ability to highlight the current instruction in step-by-step execution.
-     *
-     * Right now, this is only used for LightBot because I'm not sure of how to retrieve the current point of execution in java or scripting
-     */
-    ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
-    private Semaphore oneStepSemaphore = new Semaphore(0);
-    /* This is to allow exercise to forbid the use by students of some functions
-     * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)
-     */
-    private boolean inited = false;
-    private Map<ProgrammingLanguage, String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
-    private Map<ProgrammingLanguage, Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
+  protected World world;
+  /* Stuff related to tracing mechanism.
+   *
+   * This is the ability to highlight the current instruction in step-by-step execution.
+   *
+   * Right now, this is only used for LightBot because I'm not sure of how to retrieve the current point of execution in java or scripting
+   */
+  ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
+  private Semaphore oneStepSemaphore             = new Semaphore(0);
+  /* This is to allow exercise to forbid the use by students of some functions
+   * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)
+   */
+  private boolean inited                                 = false;
+  private Map<ProgrammingLanguage, String> script        = new HashMap<ProgrammingLanguage, String>();  /* What to execute when running a scripting language */
+  private Map<ProgrammingLanguage, Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
 
-    public Entity() {
-    }
+  public Entity() {}
 
-    public Entity(String name) {
-        this.name = name;
-    }
+  public Entity(String name) { this.name = name; }
 
-    public Entity(String name, World w) {
-        this.name = name;
-        if (w != null)
-            w.addEntity(this);
-    }
+  public Entity(String name, World w)
+  {
+    this.name = name;
+    if (w != null)
+      w.addEntity(this);
+  }
 
-    @Override
-    public String getName() {
-        return this.name;
-    }
+  @Override public String getName() { return this.name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) { this.name = name; }
 
-    public World getWorld() {
-        return world;
-    }
+  public World getWorld() { return world; }
 
-    /**
-     * Ideally, this should be used only from world.addEntity()
-     */
-    protected void setWorld(World world) {
-        this.world = world;
-    }
+  /**
+   * Ideally, this should be used only from world.addEntity()
+   */
+  protected void setWorld(World world) { this.world = world; }
 
-    public boolean isInited() {
-        return inited;
-    }
+  public boolean isInited() { return inited; }
 
-    public void initDone() {
-        inited = true;
-    }
+  public void initDone() { inited = true; }
 
-    public void allowOneStep() {
-        this.oneStepSemaphore.release();
-    }
+  public void allowOneStep() { this.oneStepSemaphore.release(); }
 
-    /**
-     * Delays the entity to let the user understand what's going on.
-     * <p>
-     * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().
-     */
-    protected void stepUI() {
-        fireStackListener();
-        world.notifyWorldUpdatesListeners();
-        if (world.isDelayed()) {
-            if (Game.getInstance().stepModeEnabled()) {
-                this.oneStepSemaphore.acquireUninterruptibly();
-            } else {
-                try {
-                    if (world.getDelay() > 0) // seems that sleep(0) takes time (yield thread?)
-                        Thread.sleep(world.getDelay());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+  /**
+   * Delays the entity to let the user understand what's going on.
+   * <p>
+   * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().
+   */
+  protected void stepUI()
+  {
+    fireStackListener();
+    world.notifyWorldUpdatesListeners();
+    if (world.isDelayed()) {
+      if (Game.getInstance().stepModeEnabled()) {
+        this.oneStepSemaphore.acquireUninterruptibly();
+      } else {
+        try {
+          if (world.getDelay() > 0) // seems that sleep(0) takes time (yield thread?)
+            Thread.sleep(world.getDelay());
+        } catch (InterruptedException e) {
+          e.printStackTrace();
         }
+      }
     }
+  }
 
-    /**
-     * Copy fields of the entity passed in argument
-     */
-    public void copy(Entity other) {
-        setName(other.getName());
-        setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
-    }
+  /**
+   * Copy fields of the entity passed in argument
+   */
+  public void copy(Entity other)
+  {
+    setName(other.getName());
+    setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
+  }
 
-    public void addStackListener(IEntityStackListener l) {
-        stackListeners.add(l);
-    }
+  public void addStackListener(IEntityStackListener l) { stackListeners.add(l); }
 
-    public void removeStackListener(IEntityStackListener l) {
-        stackListeners.remove(l);
-    }
+  public void removeStackListener(IEntityStackListener l) { stackListeners.remove(l); }
 
-    public void fireStackListener() {
-        if (stackListeners.isEmpty())
-            return;
-        StackTraceElement[] trace = getCurrentStack();
-        for (IEntityStackListener l : stackListeners)
-            l.entityTraceChanged(this, trace);
-    }
+  public void fireStackListener()
+  {
+    if (stackListeners.isEmpty())
+      return;
+    StackTraceElement[] trace = getCurrentStack();
+    for (IEntityStackListener l : stackListeners)
+      l.entityTraceChanged(this, trace);
+  }
 
-    public StackTraceElement[] getCurrentStack() {
-        return Thread.currentThread().getStackTrace();
-    }
+  public StackTraceElement[] getCurrentStack() { return Thread.currentThread().getStackTrace(); }
 
-    /**
-     * Retrieve one parameter from the world
-     */
-    @Override
-    public Object getParam(int i) {
-        return world.parameters[i];
-    }
+  /**
+   * Retrieve one parameter from the world
+   */
+  @Override public Object getParam(int i) { return world.parameters[i]; }
 
+  @Override public int getParamCount() { return world.parameters.length; }
 
+  /**
+   * Returns whether this is the entity selected in the interface
+   */
+  @Override public boolean isSelected() { return this == Game.getInstance().getSelectedEntity(); }
 
-    @Override
-    public int getParamCount() {
-        return world.parameters.length;
-    }
+  /**
+   * Run this specific entity, encoding the student logic to solve a given exercise.
+   * <p>
+   * This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)
+   */
+  public abstract void run() throws Exception;
 
-    /**
-     * Returns whether this is the entity selected in the interface
-     */
-    @Override
-    public boolean isSelected() {
-        return this == Game.getInstance().getSelectedEntity();
-    }
+  /**
+   * Allows Entity to communicate with external programs, as needed to execute C programs
+   *
+   * @throws Exception
+   */
+  public abstract void command(String command, BufferedWriter out) throws Exception;
 
-    /**
-     * Run this specific entity, encoding the student logic to solve a given exercise.
-     * <p>
-     * This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)
-     */
-    public abstract void run() throws Exception;
+  public void setScript(ProgrammingLanguage lang, String s) { script.put(lang, s); }
 
-    /**
-     * Allows Entity to communicate with external programs, as needed to execute C programs
-     *
-     * @throws Exception
-     */
-    public abstract void command(String command, BufferedWriter out) throws Exception;
+  public String getScript(ProgrammingLanguage lang) { return script.get(lang); }
 
-    public void setScript(ProgrammingLanguage lang, String s) {
-        script.put(lang, s);
-    }
+  public void setScriptOffset(ProgrammingLanguage lang, int offset) { scriptOffset.put(lang, offset); }
 
-    public String getScript(ProgrammingLanguage lang) {
-        return script.get(lang);
-    }
-
-    public void setScriptOffset(ProgrammingLanguage lang, int offset) {
-        scriptOffset.put(lang, offset);
-    }
-
-    public Integer getScriptOffset(ProgrammingLanguage lang) {
-        Integer res = scriptOffset.get(lang);
-        return res == null ? 0 : res;
-    }
+  public Integer getScriptOffset(ProgrammingLanguage lang)
+  {
+    Integer res = scriptOffset.get(lang);
+    return res == null ? 0 : res;
+  }
 }

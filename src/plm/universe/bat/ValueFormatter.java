@@ -67,17 +67,13 @@ public class ValueFormatter {
       } else if (o1.getClass().getComponentType().equals(Object.class)) {
         return Arrays.equals((Object[])o1, (Object[])o2);
       } else
-        throw new UnsupportedOperationException("ValueFormatter.equals: unsupported array component type: " +
-                                                o1.getClass().getComponentType().getName());
+        throw new UnsupportedOperationException("ValueFormatter.equals: unsupported array component type: " + o1.getClass().getComponentType().getName());
     }
     if (o1.getClass().isArray() || o2.getClass().isArray())
       return false; // The other cannot be an array because of previous test
     return o1.equals(o2);
   }
-  private static boolean isEmptyArray(Object o)
-  {
-    return o.getClass().isArray() && java.lang.reflect.Array.getLength(o) == 0;
-  }
+  private static boolean isEmptyArray(Object o) { return o.getClass().isArray() && java.lang.reflect.Array.getLength(o) == 0; }
 
   /* --- Formatting logic --- */
   static private void openArray(StringBuilder sb, ProgrammingLanguage pl)

@@ -1,30 +1,29 @@
 package lessons.sort.baseball;
 
+import java.util.Arrays;
+import lessons.sort.baseball.universe.BaseballWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import lessons.sort.baseball.universe.BaseballWorld;
 import plm.universe.World;
-
-import java.util.Arrays;
 
 public class InsertBaseball extends ExerciseTemplated {
 
-	public InsertBaseball(Lesson lesson) {
-		super(lesson);
+  public InsertBaseball(Lesson lesson)
+  {
+    super(lesson);
 
-		World[] myWorlds = {
-				new BaseballWorld("4 bases", 4, 2),
-				new BaseballWorld("5 bases", 5, 2),
-				new BaseballWorld("6 bases", 6, 2),
-				new BaseballWorld("7 bases", 7, 2),
-				new BaseballWorld("8 bases", 8, 2),
-				new BaseballWorld("9 bases", 9, 2),
-				new BaseballWorld("10 bases", 10, 2, new int[]{-1, 7, 2, 7, 1, 4, 3, 4, 5, 6, 8, 9, 5, 1, 3, 6, 0, 2, 0, 8}),
-				new BaseballWorld("15 bases", 15, 2),
-		};
+    World[] myWorlds = {
+        new BaseballWorld("4 bases", 4, 2),
+        new BaseballWorld("5 bases", 5, 2),
+        new BaseballWorld("6 bases", 6, 2),
+        new BaseballWorld("7 bases", 7, 2),
+        new BaseballWorld("8 bases", 8, 2),
+        new BaseballWorld("9 bases", 9, 2),
+        new BaseballWorld("10 bases", 10, 2, new int[] {-1, 7, 2, 7, 1, 4, 3, 4, 5, 6, 8, 9, 5, 1, 3, 6, 0, 2, 0, 8}),
+        new BaseballWorld("15 bases", 15, 2),
+    };
 
-		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(InsertBaseballEntity::new)).toList().toArray(new World[0]);
-		setup(myWorlds);
-	}
-
+    myWorlds = Arrays.stream(myWorlds).map(s -> s.replaceEntities(InsertBaseballEntity::new)).toList().toArray(new World[0]);
+    setup(myWorlds);
+  }
 }

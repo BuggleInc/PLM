@@ -6,15 +6,16 @@ import plm.universe.bat.BatWorld;
 
 public class SleepIn extends BatExercise {
 
-	public SleepIn(Lesson lesson) {
-		super(lesson);
+  public SleepIn(Lesson lesson)
+  {
+    super(lesson);
 
-		BatWorld myWorld = new BatWorld("sleepIn");
-		myWorld.addTest(VISIBLE,  false,false);
-		myWorld.addTest(VISIBLE,  true,false);
-		myWorld.addTest(INVISIBLE, false,true);
-		myWorld.addTest(INVISIBLE, true,true);
+    BatWorld myWorld = new BatWorld("sleepIn");
+    myWorld.addTest(VISIBLE, false, false);
+    myWorld.addTest(VISIBLE, true, false);
+    myWorld.addTest(INVISIBLE, false, true);
+    myWorld.addTest(INVISIBLE, true, true);
 
-                setup(myWorld);
-        }
+    setup(myWorld);
+  }
 }

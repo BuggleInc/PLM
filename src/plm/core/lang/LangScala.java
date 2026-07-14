@@ -34,251 +34,247 @@ import scala.tools.nsc.reporters.Reporter;
 
 public class LangScala extends JVMCompiledLang {
 
-	ScalaCompiler compiler = new ScalaCompiler();
-	
-	public LangScala() {
-		super("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
-	}
-        @Override public boolean isScala() { return true; }
+  ScalaCompiler compiler = new ScalaCompiler();
 
-        /* Language detection logic */
-        private static String brokenLanguageMessage;
-        @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
-        private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-        @SuppressWarnings({"rawtypes", "unchecked"}) @Override public boolean isBrokenLanguage()
-        {
-          if (brokenLanguageState == BrokenLanguageState.Unitialized) {
-            String[] resources =
-                new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit", "/scala/reflect/io/AbstractFile"};
-            String[] hints = new String[] {"scala-compiler.jar", "scala-library.jar", "scala-reflect.jar"};
-            for (int i = 0; i < resources.length; i++) {
-              brokenLanguageMessage = canResolve(resources[i], hints[i]);
-              if (!brokenLanguageMessage.isEmpty()) {
-                System.err.println(brokenLanguageState);
-                brokenLanguageState = BrokenLanguageState.NotUsable;
-                return false;
-              }
-            }
+  public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png")); }
+  @Override public boolean isScala() { return true; }
 
-            String version = "";
-            try {
-              Class props = Class.forName("scala.util.Properties");
-              Method meth = props.getMethod("versionString", new Class[] {});
-              version     = (String)meth.invoke(props);
-            } catch (Exception e) {
-              brokenLanguageMessage = Game.i18n.tr("Error {0} while retrieving the Scala version: {1}",
-                                                   e.getClass().getName(), e.getLocalizedMessage());
-              System.err.println(brokenLanguageMessage);
-              brokenLanguageState = BrokenLanguageState.NotUsable;
-              return false;
-            }
-
-            if (version.contains("version 2.12") || version.contains("version 2.13")) {
-              brokenLanguageState = BrokenLanguageState.Usable;
-            } else {
-              brokenLanguageMessage =
-                  Game.i18n.tr("Scala is too ancient. Found {0} while I need 2.12 or higher.", version);
-              System.err.println(brokenLanguageMessage);
-              brokenLanguageState = BrokenLanguageState.NotUsable;
-              return false;
-            }
-          }
-          return brokenLanguageState != BrokenLanguageState.Usable;
+  /* Language detection logic */
+  private static String brokenLanguageMessage;
+  @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
+  private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+  @SuppressWarnings({"rawtypes", "unchecked"}) @Override public boolean isBrokenLanguage()
+  {
+    if (brokenLanguageState == BrokenLanguageState.Unitialized) {
+      String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit", "/scala/reflect/io/AbstractFile"};
+      String[] hints     = new String[] {"scala-compiler.jar", "scala-library.jar", "scala-reflect.jar"};
+      for (int i = 0; i < resources.length; i++) {
+        brokenLanguageMessage = canResolve(resources[i], hints[i]);
+        if (!brokenLanguageMessage.isEmpty()) {
+          System.err.println(brokenLanguageState);
+          brokenLanguageState = BrokenLanguageState.NotUsable;
+          return false;
         }
+      }
 
-        @Override
-	public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) 
-			throws PLMCompilerException {
-		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
-		packageNameSuffix++;
-		runtimePatterns.put("\\$package", 
-				"package "+packageName()+";import java.awt.Color;");
+      String version = "";
+      try {
+        Class props = Class.forName("scala.util.Properties");
+        Method meth = props.getMethod("versionString", new Class[] {});
+        version     = (String)meth.invoke(props);
+      } catch (Exception e) {
+        brokenLanguageMessage = Game.i18n.tr("Error {0} while retrieving the Scala version: {1}", e.getClass().getName(), e.getLocalizedMessage());
+        System.err.println(brokenLanguageMessage);
+        brokenLanguageState = BrokenLanguageState.NotUsable;
+        return false;
+      }
 
-		List<plm.core.model.session.SourceFile> sfs = exo.getSourceFilesList(this);
-		if (sfs == null || sfs.isEmpty()) {
-			String msg = exo.getName()+": No source to compile";
-			System.err.println(msg);
-			PLMCompilerException e = new PLMCompilerException(msg, null, null);
-                        exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
-                        throw e;
-                }
+      if (version.contains("version 2.12") || version.contains("version 2.13")) {
+        brokenLanguageState = BrokenLanguageState.Usable;
+      } else {
+        brokenLanguageMessage = Game.i18n.tr("Scala is too ancient. Found {0} while I need 2.12 or higher.", version);
+        System.err.println(brokenLanguageMessage);
+        brokenLanguageState = BrokenLanguageState.NotUsable;
+        return false;
+      }
+    }
+    return brokenLanguageState != BrokenLanguageState.Usable;
+  }
 
-                try {
-                  compiler.reset();
-                  for (plm.core.model.session.SourceFile sf : sfs) {
-                    compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns, whatToCompile),
-                                     sf.getOffset());
-                  }
-                } catch (PLMCompilerException e) {
-                  System.err.println(Game.i18n.tr("Compilation error:"));
-                  System.err.println(e.getMessage());
-                  exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
+  @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  {
+    /* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
+    packageNameSuffix++;
+    runtimePatterns.put("\\$package", "package " + packageName() + ";import java.awt.Color;");
 
-                  throw e;
-                }
-        }
+    List<plm.core.model.session.SourceFile> sfs = exo.getSourceFilesList(this);
+    if (sfs == null || sfs.isEmpty()) {
+      String msg = exo.getName() + ": No source to compile";
+      System.err.println(msg);
+      PLMCompilerException e = new PLMCompilerException(msg, null, null);
+      exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
+      throw e;
+    }
 
-        /** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
-        @Override public String nameOfCorrectionEntity(Exercise exo)
-        {
-          String path = super.nameOfCorrectionEntity(exo);
+    try {
+      compiler.reset();
+      for (plm.core.model.session.SourceFile sf : sfs) {
+        compiler.compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns, whatToCompile), sf.getOffset());
+      }
+    } catch (PLMCompilerException e) {
+      System.err.println(Game.i18n.tr("Compilation error:"));
+      System.err.println(e.getMessage());
+      exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
 
-          String[] components  = path.split("\\.");
-          StringBuilder result = new StringBuilder();
-          int last             = components.length - 1;
-          for (int i = 0; i < last; i++) {
-            result.append(components[i] + ".");
-          }
-          result.append("Scala" + components[last]);
-          return result.toString();
-        }
+      throw e;
+    }
+  }
 
-        @Override
-        protected Entity mutateEntity(String newClassName)
-            throws InstantiationException, IllegalAccessException, ClassNotFoundException
-        {
-          return (Entity)compiler.findClass(className(newClassName)).newInstance();
-        }
+  /** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
+  @Override public String nameOfCorrectionEntity(Exercise exo)
+  {
+    String path = super.nameOfCorrectionEntity(exo);
+
+    String[] components  = path.split("\\.");
+    StringBuilder result = new StringBuilder();
+    int last             = components.length - 1;
+    for (int i = 0; i < last; i++) {
+      result.append(components[i] + ".");
+    }
+    result.append("Scala" + components[last]);
+    return result.toString();
+  }
+
+  @Override protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException
+  {
+    return (Entity)compiler.findClass(className(newClassName)).newInstance();
+  }
 }
 
-/** In memory compiler of scala code. 
- *  This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala */
+/**
+ * In memory compiler of scala code.
+ *  This is highly inspired of https://github.com/twitter/util/blob/master/util-eval/src/main/scala/com/twitter/util/Eval.scala
+ */
 class ScalaCompiler {
-	
-	private PLMReporter reporter;
-	private Settings settings;
-	private Map<String, Class<?>> cache = new HashMap<String, Class<?>>();
-	private Global global;
-	private VirtualDirectory target;
-	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
-	
-	public ScalaCompiler() {
-		super();
-		settings = new Settings();
-		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
 
-		Option<VirtualDirectory> noAncestor = scala.Option$.MODULE$.apply(null);
-		target = new VirtualDirectory("(memory)", noAncestor);
-		settings.outputDirs().setSingleOutput(target);
-		
-		settings.usejavacp().tryToSetFromPropertyValue("true");
-		//settings.usemanifestcp().tryToSetFromPropertyValue("true");
-		reporter = new PLMReporter(settings);
-		global = new Global(settings,reporter);
-	}
+  private PLMReporter reporter;
+  private Settings settings;
+  private Map<String, Class<?>> cache = new HashMap<String, Class<?>>();
+  private Global global;
+  private VirtualDirectory target;
+  private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 
-	public void reset() {
-		reporter.reset();
-		reporter.setOffset(0);
-		target.clear();
-		cache = new HashMap<String, Class<?>>();
-		classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
-	}
+  public ScalaCompiler()
+  {
+    super();
+    settings = new Settings();
+    settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
 
-	public void compile(String name,String content,int offset) throws PLMCompilerException {
-		if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution()) 
-			System.out.println("Compiling souce "+name+" to scala (offset:"+offset+"):\n"+content);
-		
-		Run compiler = global.new Run();
-		List<SourceFile> sources = new LinkedList<SourceFile>();
-		
-		sources.add(new BatchSourceFile(new VirtualFile(name) , content.toCharArray()));
-		reporter.setOffset(offset);
-		
-		compiler.compileSources(JavaConverters.asScalaBufferConverter(sources).asScala().toList());
-		
-		if (Game.getInstance().isDebugEnabled() && reporter.hasErrors())
-			System.out.println("Here is the scala source code of "+name+" (offset:"+offset+"): "+content);
-		reporter.throwExceptionOnNeed();
-	}
-	public Class<?> findClass(String className) {
-		synchronized (this) {
-			if (!cache.containsKey(className)) {
-				Class<?> res;
-				try {
-					res = classLoader.loadClass(className);
-				} catch (ClassNotFoundException e) {
-					res = null;
-				}
-				cache.put(className, res);
-			}
+    Option<VirtualDirectory> noAncestor = scala.Option$.MODULE$.apply(null);
+    target                              = new VirtualDirectory("(memory)", noAncestor);
+    settings.outputDirs().setSingleOutput(target);
 
-			return cache.get(className);			
-		}
-	}
-	
-	/* Ported from the Scala 2.11 reporter API (AbstractReporter, with
-	 * display()/displayPrompt()/settings()/count() hooks) to the Scala 2.12
-	 * API: scala.tools.nsc.reporters.Reporter exposes a single abstract method,
-	 *   info0(Position, String, Severity, boolean force),
-	 * and the INFO/WARNING/ERROR severities are instance members compared by
-	 * identity (no more brittle toString() matching). The base class tracks
-	 * error/warning state itself (hasErrors()), so we no longer keep our own
-	 * counts[] array. The Settings are owned by the enclosing ScalaCompiler. */
-	class PLMReporter extends Reporter {
-		int offset=0;
-		Vector<String> messages = new Vector<String>();
+    settings.usejavacp().tryToSetFromPropertyValue("true");
+    // settings.usemanifestcp().tryToSetFromPropertyValue("true");
+    reporter = new PLMReporter(settings);
+    global   = new Global(settings, reporter);
+  }
 
-		public PLMReporter(Settings s) {
-			// Settings are no longer needed by the reporter base in 2.12.
-		}
-		public void setOffset(int _offset) {
-			this.offset = _offset;
-		}
-		@Override
-		public void info0(Position pos, String message, Severity severity, boolean force) {
-			//System.err.println("info0 pos:"+pos+"; msg:"+message+"; severity:"+severity);
+  public void reset()
+  {
+    reporter.reset();
+    reporter.setOffset(0);
+    target.clear();
+    cache       = new HashMap<String, Class<?>>();
+    classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
+  }
 
-			String label = "";
-			boolean isInfo    = severity == INFO();
-			boolean isWarning = severity == WARNING();
-			boolean isError   = severity == ERROR();
-			if (!isInfo && !isWarning && !isError)
-				throw new RuntimeException("Got an unknown severity: "+severity+". Please adapt the PLM to this new version of scala (or whatever).");
+  public void compile(String name, String content, int offset) throws PLMCompilerException
+  {
+    if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution())
+      System.out.println("Compiling souce " + name + " to scala (offset:" + offset + "):\n" + content);
 
-			if (isInfo && !Game.getInstance().isDebugEnabled())
-				return;
-			if (isWarning)
-				label = "warning: ";
-			if (isError)
-				label = "error: ";
+    Run compiler             = global.new Run();
+    List<SourceFile> sources = new LinkedList<SourceFile>();
 
-			int lineNum = -1;
-			try {
-				lineNum = pos.line() - offset;
-			} catch (Throwable t) {
-				// That's fine if the line number is not defined.
-			}
+    sources.add(new BatchSourceFile(new VirtualFile(name), content.toCharArray()));
+    reporter.setOffset(offset);
 
-			String name = pos.source().path();
-			int lastDot = name.lastIndexOf('.');
-			if (lastDot != -1)
-				name = name.substring(lastDot+1);
-			String msg = name+(lineNum == -1? "": ":"+lineNum) +": "+label+message;
+    compiler.compileSources(JavaConverters.asScalaBufferConverter(sources).asScala().toList());
 
-			// Append the line content and a position marker, if possible
-			if (pos != null && pos.isDefined()) {
-				msg += "\n"+pos.inUltimateSource(pos.source()).lineContent()+"\n";
-				for (int i=0;i<pos.column()-1;i++)
-					msg += " ";
-				msg += "^";
-			}
-			System.err.println(msg);
+    if (Game.getInstance().isDebugEnabled() && reporter.hasErrors())
+      System.out.println("Here is the scala source code of " + name + " (offset:" + offset + "): " + content);
+    reporter.throwExceptionOnNeed();
+  }
+  public Class<?> findClass(String className)
+  {
+    synchronized (this) {
+      if (!cache.containsKey(className)) {
+        Class<?> res;
+        try {
+          res = classLoader.loadClass(className);
+        } catch (ClassNotFoundException e) {
+          res = null;
+        }
+        cache.put(className, res);
+      }
 
-			messages.add(msg);
-		}
-		public void throwExceptionOnNeed() throws PLMCompilerException {
-			if (hasErrors()) {
-				StringBuffer sb = new StringBuffer();
-				for (String s : messages)
-					sb.append(s);
-				throw new PLMCompilerException(sb.toString(), null, null);
-			}
-		}
-		@Override
-		public void reset() {
-			super.reset();
-			messages.removeAllElements();
-		}
-	}
+      return cache.get(className);
+    }
+  }
+
+  /* Ported from the Scala 2.11 reporter API (AbstractReporter, with
+   * display()/displayPrompt()/settings()/count() hooks) to the Scala 2.12
+   * API: scala.tools.nsc.reporters.Reporter exposes a single abstract method,
+   *   info0(Position, String, Severity, boolean force),
+   * and the INFO/WARNING/ERROR severities are instance members compared by
+   * identity (no more brittle toString() matching). The base class tracks
+   * error/warning state itself (hasErrors()), so we no longer keep our own
+   * counts[] array. The Settings are owned by the enclosing ScalaCompiler. */
+  class PLMReporter extends Reporter {
+    int offset              = 0;
+    Vector<String> messages = new Vector<String>();
+
+    public PLMReporter(Settings s)
+    {
+      // Settings are no longer needed by the reporter base in 2.12.
+    }
+    public void setOffset(int _offset) { this.offset = _offset; }
+    @Override public void info0(Position pos, String message, Severity severity, boolean force)
+    {
+      // System.err.println("info0 pos:"+pos+"; msg:"+message+"; severity:"+severity);
+
+      String label      = "";
+      boolean isInfo    = severity == INFO();
+      boolean isWarning = severity == WARNING();
+      boolean isError   = severity == ERROR();
+      if (!isInfo && !isWarning && !isError)
+        throw new RuntimeException("Got an unknown severity: " + severity + ". Please adapt the PLM to this new version of scala (or whatever).");
+
+      if (isInfo && !Game.getInstance().isDebugEnabled())
+        return;
+      if (isWarning)
+        label = "warning: ";
+      if (isError)
+        label = "error: ";
+
+      int lineNum = -1;
+      try {
+        lineNum = pos.line() - offset;
+      } catch (Throwable t) {
+        // That's fine if the line number is not defined.
+      }
+
+      String name = pos.source().path();
+      int lastDot = name.lastIndexOf('.');
+      if (lastDot != -1)
+        name = name.substring(lastDot + 1);
+      String msg = name + (lineNum == -1 ? "" : ":" + lineNum) + ": " + label + message;
+
+      // Append the line content and a position marker, if possible
+      if (pos != null && pos.isDefined()) {
+        msg += "\n" + pos.inUltimateSource(pos.source()).lineContent() + "\n";
+        for (int i = 0; i < pos.column() - 1; i++)
+          msg += " ";
+        msg += "^";
+      }
+      System.err.println(msg);
+
+      messages.add(msg);
+    }
+    public void throwExceptionOnNeed() throws PLMCompilerException
+    {
+      if (hasErrors()) {
+        StringBuffer sb = new StringBuffer();
+        for (String s : messages)
+          sb.append(s);
+        throw new PLMCompilerException(sb.toString(), null, null);
+      }
+    }
+    @Override public void reset()
+    {
+      super.reset();
+      messages.removeAllElements();
+    }
+  }
 }

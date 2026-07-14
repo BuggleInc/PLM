@@ -66,8 +66,7 @@ public class ExoTest {
     for (String lessonName : lessonNamesToTest) {
       try {
         if (g.switchLesson(lessonName, false) == null) {
-          System.err.println("Warning, I tried to load " + lessonName +
-                             " but something went wrong... Please fix it before running this test again.");
+          System.err.println("Warning, I tried to load " + lessonName + " but something went wrong... Please fix it before running this test again.");
           System.exit(1);
         }
       } catch (Throwable t) {
@@ -75,8 +74,7 @@ public class ExoTest {
         Assertions.fail("Switching to lesson " + lessonName + " raised a " + t.getClass().getName(), t);
       }
 
-      System.out.println("Lesson " + lessonName + " loaded (" + g.getCurrentLesson().getExerciseCount() +
-                         " exercises)");
+      System.out.println("Lesson " + lessonName + " loaded (" + g.getCurrentLesson().getExerciseCount() + " exercises)");
       if (g.getCurrentLesson().getExerciseCount() == 0) {
         System.err.println("Cannot find any exercise in " + lessonName + ". Something's wrong here");
         System.exit(1);
@@ -86,8 +84,7 @@ public class ExoTest {
           result.add(Arguments.of(Game.getInstance().getCurrentLesson(), l));
           // System.out.println("  Add exercise "+l.getName());
           if (alreadySeenExercises.contains(l)) {
-            System.err.println("Warning, I tried to add the exercise " + l.getName() +
-                               " twice. Something's wrong here");
+            System.err.println("Warning, I tried to add the exercise " + l.getName() + " twice. Something's wrong here");
             System.exit(1);
           }
           alreadySeenExercises.add(l);
@@ -114,8 +111,7 @@ public class ExoTest {
   }
 
   /** Try to run the solution, fail if it's missing **/
-  protected void testCorrectionEntityExists(Exercise exo, ProgrammingLanguage lang)
-      throws BrokenProgrammingLanguageException
+  protected void testCorrectionEntityExists(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException
   {
     Game.getInstance().setProgramingLanguage(lang);
 
@@ -165,16 +161,14 @@ public class ExoTest {
 
     if (exo.lastResult.compilationError != null) {
       String msg = exo.getId() + ": compilation error: " + exo.lastResult.compilationError + ". Compiled file:\n" +
-                   ((exo.getSourceFileCount(lang) > 0)
-                        ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
-                        : "none");
+                   ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION)) : "none");
       System.err.println(msg);
       Assertions.fail(msg);
     }
 
     if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
-      String msg = "Test of " + exo.getId() + " failed (" + exo.lastResult.passedTests + "/" +
-                   exo.lastResult.totalTests + " passed): '" + exo.lastResult.executionError + "'";
+      String msg = "Test of " + exo.getId() + " failed (" + exo.lastResult.passedTests + "/" + exo.lastResult.totalTests + " passed): '" +
+                   exo.lastResult.executionError + "'";
       System.err.println(msg);
       for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)
         try {

@@ -4,27 +4,28 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class TricolorHanoi1Entity extends HanoiEntity {
 
-	public void run() {
-		int src = getParamInt(0);
-		int mid = getParamInt(1);
-		int dst = getParamInt(2);
-		move3(getSlotSize(src)/3, src, mid, dst);
-	}
+  public void run()
+  {
+    int src = getParamInt(0);
+    int mid = getParamInt(1);
+    int dst = getParamInt(2);
+    move3(getSlotSize(src) / 3, src, mid, dst);
+  }
 
-	/* BEGIN TEMPLATE */
-	void move3(int height, int src, int mid, int dst) {
-		/* BEGIN SOLUTION */
-		if (height>0) {
-//			System.err.println("move3("+height+","+src+","+dst+")");
-			move3(height-1, src, dst, mid);
-			move(src,dst);
-			move(src,dst);
-			move(src,dst);
-			move3(height-1, mid, src, dst);
-		}
-		/* END SOLUTION */
-	}
+  /* BEGIN TEMPLATE */
+  void move3(int height, int src, int mid, int dst)
+  {
+    /* BEGIN SOLUTION */
+    if (height > 0) {
+      //			System.err.println("move3("+height+","+src+","+dst+")");
+      move3(height - 1, src, dst, mid);
+      move(src, dst);
+      move(src, dst);
+      move(src, dst);
+      move3(height - 1, mid, src, dst);
+    }
+    /* END SOLUTION */
+  }
 
-	/* END TEMPLATE */
-
+  /* END TEMPLATE */
 }

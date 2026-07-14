@@ -1,33 +1,32 @@
 package lessons.recursion.hanoi;
 
-import plm.core.model.Game;
 import lessons.recursion.hanoi.universe.HanoiEntity;
+import plm.core.model.Game;
 
 public class LinearHanoiEntity extends HanoiEntity {
-	
-	public void move(int from, int to) {
-		if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
-			throw new RuntimeException(Game.i18n.tr(
-					"Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
-		super.move(from,to);
-	}
-	
-	public void run() {
-		linearHanoi(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1),getParamInt(2));
-	}
 
-	/* BEGIN TEMPLATE */
-	public void linearHanoi(int height, int src, int mid, int dst) {
-		/* BEGIN SOLUTION */
-		if (height != 0) {
-			linearHanoi(height-1, src, mid, dst);
-			move(src,mid);
-			linearHanoi(height-1, dst,mid,src);
-			move(mid,dst);
-			linearHanoi(height-1, src, mid, dst);
-		}
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+  public void move(int from, int to)
+  {
+    if ((from == 0 && to == 2) || (from == 2 && to == 0))
+      throw new RuntimeException(
+          Game.i18n.tr("Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
+    super.move(from, to);
+  }
 
+  public void run() { linearHanoi(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1), getParamInt(2)); }
+
+  /* BEGIN TEMPLATE */
+  public void linearHanoi(int height, int src, int mid, int dst)
+  {
+    /* BEGIN SOLUTION */
+    if (height != 0) {
+      linearHanoi(height - 1, src, mid, dst);
+      move(src, mid);
+      linearHanoi(height - 1, dst, mid, src);
+      move(mid, dst);
+      linearHanoi(height - 1, src, mid, dst);
+    }
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
 }

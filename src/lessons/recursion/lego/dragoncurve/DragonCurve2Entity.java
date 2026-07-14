@@ -1,48 +1,45 @@
 package lessons.recursion.lego.dragoncurve;
 
 import java.awt.Color;
-
 import plm.universe.turtles.Turtle;
 
 public class DragonCurve2Entity extends Turtle {
 
-	/* BEGIN TEMPLATE */
-	public void dragon(int order, double x, double y, double z, double t) {
-		/* BEGIN HIDDEN */
-		double u, v;
+  /* BEGIN TEMPLATE */
+  public void dragon(int order, double x, double y, double z, double t)
+  {
+    /* BEGIN HIDDEN */
+    double u, v;
 
-		if (order == 1) {
-			setColor(Color.red);
-			moveTo(z, t);
-		} else {
-			u = (x + z + t - y) / 2;
-			v = (y + t - z + x) / 2;
-			dragon(order - 1, x, y, u, v);
-			dragonInverse(order - 1, u, v, z, t);
-		}
-		/* END HIDDEN */
-	}
+    if (order == 1) {
+      setColor(Color.red);
+      moveTo(z, t);
+    } else {
+      u = (x + z + t - y) / 2;
+      v = (y + t - z + x) / 2;
+      dragon(order - 1, x, y, u, v);
+      dragonInverse(order - 1, u, v, z, t);
+    }
+    /* END HIDDEN */
+  }
 
-	public void dragonInverse(int order, double x, double y, double z, double t) {
-		/* BEGIN HIDDEN */
-		double u, v;
+  public void dragonInverse(int order, double x, double y, double z, double t)
+  {
+    /* BEGIN HIDDEN */
+    double u, v;
 
-		if (order == 1) {
-			setColor(Color.blue);
-			moveTo(z, t);
-		} else {
-			u = (x + z - t + y) / 2;
-			v = (y + t + z - x) / 2;
-			dragon(order - 1, x, y, u, v);
-			dragonInverse(order - 1, u, v, z, t);
-		}
-		/* END HIDDEN */
-	}
-	/* END TEMPLATE */
+    if (order == 1) {
+      setColor(Color.blue);
+      moveTo(z, t);
+    } else {
+      u = (x + z - t + y) / 2;
+      v = (y + t + z - x) / 2;
+      dragon(order - 1, x, y, u, v);
+      dragonInverse(order - 1, u, v, z, t);
+    }
+    /* END HIDDEN */
+  }
+  /* END TEMPLATE */
 
-	public void run() {
-		dragon(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3),
-				getParamDouble(4));
-	}
-
+  public void run() { dragon(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3), getParamDouble(4)); }
 }

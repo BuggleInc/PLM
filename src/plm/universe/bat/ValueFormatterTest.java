@@ -41,20 +41,11 @@ class ValueFormatterTest {
   // equals() - integer arrays, across the accepted input shapes
   // ---------------------------------------------------------------
 
-  @Test void equals_identicalIntArrays_isTrue()
-  {
-    assertTrue(ValueFormatter.equals(new int[] {1, 2, 3}, new int[] {1, 2, 3}));
-  }
+  @Test void equals_identicalIntArrays_isTrue() { assertTrue(ValueFormatter.equals(new int[] {1, 2, 3}, new int[] {1, 2, 3})); }
 
-  @Test void equals_differentValues_isFalse()
-  {
-    assertFalse(ValueFormatter.equals(new int[] {1, 2, 3}, new int[] {1, 2, 4}));
-  }
+  @Test void equals_differentValues_isFalse() { assertFalse(ValueFormatter.equals(new int[] {1, 2, 3}, new int[] {1, 2, 4})); }
 
-  @Test void equals_differentLength_isFalse()
-  {
-    assertFalse(ValueFormatter.equals(new int[] {1, 2}, new int[] {1, 2, 3}));
-  }
+  @Test void equals_differentLength_isFalse() { assertFalse(ValueFormatter.equals(new int[] {1, 2}, new int[] {1, 2, 3})); }
 
   @Test void equals_listOfIntegerVsIntArray_isTrue()
   {
@@ -62,10 +53,7 @@ class ValueFormatterTest {
     assertTrue(ValueFormatter.equals(list, new int[] {1, 2, 3}));
   }
 
-  @Test void equals_integerArrayVsIntArray_isTrue()
-  {
-    assertTrue(ValueFormatter.equals(new Integer[] {1, 2, 3}, new int[] {1, 2, 3}));
-  }
+  @Test void equals_integerArrayVsIntArray_isTrue() { assertTrue(ValueFormatter.equals(new Integer[] {1, 2, 3}, new int[] {1, 2, 3})); }
 
   @Test void equals_recListVsIntArray_isTrue()
   {
@@ -73,10 +61,7 @@ class ValueFormatterTest {
     assertTrue(ValueFormatter.equals(rl, new int[] {1, 2, 3}));
   }
 
-  @Test void equals_identicalStringArrays_isTrue()
-  {
-    assertTrue(ValueFormatter.equals(new String[] {"x", "y"}, new String[] {"x", "y"}));
-  }
+  @Test void equals_identicalStringArrays_isTrue() { assertTrue(ValueFormatter.equals(new String[] {"x", "y"}, new String[] {"x", "y"})); }
 
   // ---------------------------------------------------------------
   // format() - null per language
@@ -94,34 +79,19 @@ class ValueFormatterTest {
 
   @Test void format_intArray_java() { assertEquals("{1,2,3}", ValueFormatter.format(new int[] {1, 2, 3}, javaLang())); }
 
-  @Test void format_intArray_scala()
-  {
-    assertEquals("Array(1,2,3)", ValueFormatter.format(new int[] {1, 2, 3}, scalaLang()));
-  }
+  @Test void format_intArray_scala() { assertEquals("Array(1,2,3)", ValueFormatter.format(new int[] {1, 2, 3}, scalaLang())); }
 
-  @Test void format_intArray_python()
-  {
-    assertEquals("[1,2,3]", ValueFormatter.format(new int[] {1, 2, 3}, pythonLang()));
-  }
+  @Test void format_intArray_python() { assertEquals("[1,2,3]", ValueFormatter.format(new int[] {1, 2, 3}, pythonLang())); }
 
-  @Test void format_emptyIntArray_noTrailingComma()
-  {
-    assertEquals("{}", ValueFormatter.format(new int[] {}, javaLang()));
-  }
+  @Test void format_emptyIntArray_noTrailingComma() { assertEquals("{}", ValueFormatter.format(new int[] {}, javaLang())); }
 
   // ---------------------------------------------------------------
   // format() - String[]
   // ---------------------------------------------------------------
 
-  @Test void format_stringArray_java()
-  {
-    assertEquals("{a,b}", ValueFormatter.format(new String[] {"a", "b"}, javaLang()));
-  }
+  @Test void format_stringArray_java() { assertEquals("{a,b}", ValueFormatter.format(new String[] {"a", "b"}, javaLang())); }
 
-  @Test void format_stringArray_python()
-  {
-    assertEquals("[a,b]", ValueFormatter.format(new String[] {"a", "b"}, pythonLang()));
-  }
+  @Test void format_stringArray_python() { assertEquals("[a,b]", ValueFormatter.format(new String[] {"a", "b"}, pythonLang())); }
 
   // ---------------------------------------------------------------
   // format() - Boolean

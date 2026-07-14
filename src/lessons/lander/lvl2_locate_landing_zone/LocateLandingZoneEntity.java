@@ -1,18 +1,18 @@
 package lessons.lander.lvl2_locate_landing_zone;
 
 import java.util.Iterator;
-
 import lessons.lander.universe.LanderEntity;
 import lessons.lander.universe.Point;
 import lessons.lander.universe.Segment;
 
 public class LocateLandingZoneEntity extends LanderEntity {
   /* BEGIN TEMPLATE */
-  public Segment getLandingZone() {
+  public Segment getLandingZone()
+  {
     /* return new Segment(new Point(0,0), new Point(0,0)); */
     /* BEGIN SOLUTION */
     Iterator<Point> ground = getGround().iterator();
-    Point lastPoint = ground.next();
+    Point lastPoint        = ground.next();
     while (ground.hasNext()) {
       Point point = ground.next();
       if (lastPoint.y() == point.y()) {
@@ -27,17 +27,17 @@ public class LocateLandingZoneEntity extends LanderEntity {
 
   /* BEGIN HIDDEN */
   double targetStart = 0;
-  double targetEnd = 0;
+  double targetEnd   = 0;
 
-  @Override
-  public void initialize() {
+  @Override public void initialize()
+  {
     Segment landingZone = getLandingZone();
-    targetStart = landingZone.start().x();
-    targetEnd = landingZone.end().x();
+    targetStart         = landingZone.start().x();
+    targetEnd           = landingZone.end().x();
   }
 
-  @Override
-  public void step() {
+  @Override public void step()
+  {
     if (getX() < targetStart) {
       setDesiredAngle(-30);
     } else if (getX() > targetEnd) {

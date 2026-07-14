@@ -1,9 +1,9 @@
 package lessons.recursion.cons;
 
+import static plm.core.ValueSerializer.*;
+
 import lessons.recursion.cons.universe.ConsEntity;
 import lessons.recursion.cons.universe.RecList;
-
-import static plm.core.ValueSerializer.*;
 
 public class ButNfirstEntity extends ConsEntity {
 

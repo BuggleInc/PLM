@@ -11,9 +11,7 @@ import plm.core.model.lesson.Lesson;
 
 public class ExoTestPythonLang extends ExoTest {
 
-  @ParameterizedTest
-  @MethodSource("exercises")
-  public void testPythonEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  @ParameterizedTest @MethodSource("exercises") public void testPythonEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
@@ -21,15 +19,11 @@ public class ExoTestPythonLang extends ExoTest {
     testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.PYTHON);
   }
 
-  @ParameterizedTest
-  @MethodSource("exercises")
-  public void testPythonEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  @ParameterizedTest @MethodSource("exercises") public void testPythonEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
       Assertions.fail("Exercise " + e.getId() + " has no Python entity");
-    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
-      testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON);
-    });
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON); });
   }
 }

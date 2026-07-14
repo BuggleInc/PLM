@@ -11,85 +11,89 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 @EntityPrimitives(LangtonEntityPrimitives.class)
 public class LangtonColorsEntity extends SimpleBuggle implements LangtonEntityPrimitives {
-	Color[] allColors = {Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
-			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};
+  Color[] allColors = {Color.white, Color.black, Color.blue,    Color.cyan,     Color.green, Color.orange,
+                       Color.red,   Color.gray,  Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
 
-	/* BEGIN TEMPLATE */
-	public void step(char[] rule, Color[] colors) {
-		/* BEGIN SOLUTION */
-		Color current = getGroundColor(); 
-		for (int i=0;i<colors.length;i++) {
-			if (current == (colors[i])) {
-				switch (rule[i]) {
-				case 'L': left(); break;
-				case 'R': right(); break;
-				default:
-					System.out.println("Unknown command associated to i="+i+": "+rule[i]);
-				}
-
-				setBrushColor(colors[(i+1) % colors.length]);
-				brushDown();
-				brushUp();
-
-				stepForward();
-
-				return;
-			}
-		}
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
-
-	@Override
-	public void run() { 
-		int nbSteps = getParamInt(0);
-                char[] rule = (char[])deserialize(getParamSerialized(1));
-
-                Color[] colors = new Color[rule.length];
-                for (int i = 0; i < rule.length; i++)
-                  colors[i] = allColors[i];
-
-                for (int i = 0; i < nbSteps; i++) {
-                  stepDone();
-                  step(rule, colors);
-                }
+  /* BEGIN TEMPLATE */
+  public void step(char[] rule, Color[] colors)
+  {
+    /* BEGIN SOLUTION */
+    Color current = getGroundColor();
+    for (int i = 0; i < colors.length; i++) {
+      if (current == (colors[i])) {
+        switch (rule[i]) {
+          case 'L':
+            left();
+            break;
+          case 'R':
+            right();
+            break;
+          default:
+            System.out.println("Unknown command associated to i=" + i + ": " + rule[i]);
         }
 
-        @Override public void command(String command, BufferedWriter out) throws Exception
-        {
-          int num = Integer.parseInt((String)command.subSequence(0, 3));
+        setBrushColor(colors[(i + 1) % colors.length]);
+        brushDown();
+        brushUp();
 
-          try {
-            switch (num) {
-              case 200:
-                out.write((getParamInt(0)));
-                out.write("\n");
-                out.flush();
+        stepForward();
 
-                break;
-              case 201:
-                stepDone();
-                break;
-              case 202:
-                char[] ch    = (char[])getParam(1);
-                String param = "";
-                for (int i = 0; i < ch.length; i++) {
-                  param += ch[i];
-                }
-                out.write(param);
-                out.write("\n");
-                out.flush();
-                break;
+        return;
+      }
+    }
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
 
-              default:
-                super.command(command, out);
-            }
-          } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+  @Override public void run()
+  {
+    int nbSteps = getParamInt(0);
+    char[] rule = (char[])deserialize(getParamSerialized(1));
+
+    Color[] colors = new Color[rule.length];
+    for (int i = 0; i < rule.length; i++)
+      colors[i] = allColors[i];
+
+    for (int i = 0; i < nbSteps; i++) {
+      stepDone();
+      step(rule, colors);
+    }
+  }
+
+  @Override public void command(String command, BufferedWriter out) throws Exception
+  {
+    int num = Integer.parseInt((String)command.subSequence(0, 3));
+
+    try {
+      switch (num) {
+        case 200:
+          out.write((getParamInt(0)));
+          out.write("\n");
+          out.flush();
+
+          break;
+        case 201:
+          stepDone();
+          break;
+        case 202:
+          char[] ch    = (char[])getParam(1);
+          String param = "";
+          for (int i = 0; i < ch.length; i++) {
+            param += ch[i];
           }
-        }
+          out.write(param);
+          out.write("\n");
+          out.flush();
+          break;
 
-		@Override
-        public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
+        default:
+          super.command(command, out);
+      }
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
+  @Override public void stepDone() { ((lessons.turmites.universe.TurmiteWorld)world).stepDone(); }
 }

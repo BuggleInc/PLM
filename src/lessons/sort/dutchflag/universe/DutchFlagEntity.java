@@ -2,7 +2,6 @@ package lessons.sort.dutchflag.universe;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
@@ -12,118 +11,97 @@ import plm.universe.World;
 @EntityPrimitives(DutchFlagEntityPrimitives.class)
 public class DutchFlagEntity extends Entity implements DutchFlagEntityPrimitives {
 
-	public final static int BLUE = 0;
-	public final static int WHITE = 1;
-	public final static int RED = 2;
-	
-	/** Required by the PLM infrastructure */
-	public DutchFlagEntity() {
-		super("DutchFlag Entity");
-	}
+  public final static int BLUE  = 0;
+  public final static int WHITE = 1;
+  public final static int RED   = 2;
 
-	/** Copy constructor (used internally) */
-	public DutchFlagEntity(String name) {
-		super(name);
-	}
-	
-	/** Instantiation Constructor (used by exercises to setup the world) */ 
-	public DutchFlagEntity(World world) {
-		super(Game.i18n.tr("Flag sorter"),world);
-	}
-	
-	/** Swap two positions */
-	@Override
-	public void swap(int from, int to) {
-		((DutchFlagWorld) world).swap(from, to);
-		stepUI();
-	}
+  /** Required by the PLM infrastructure */
+  public DutchFlagEntity() { super("DutchFlag Entity"); }
 
-	/**
-	 * Give the color of of a specific ray in the flag
-	 * @param rank : the number of the ray that you want to get.
-	 * @return The color of that ray (either 0, 1 or 2)
-	 */
-	@Override
-	public int getColor(int rank) {
-		return ((DutchFlagWorld) world).getColor(rank);
-	}
-	
-	/** Returns the amount of rays in this flag */
-	@Override
-	public int getSize() {
-		return ((DutchFlagWorld) world).getSize();
-	}
-		
-	/** Returns whether the flag is correctly sorted */
-	@Override
-	public boolean isSorted() {
-		return ((DutchFlagWorld) world).isSorted();
-	}
+  /** Copy constructor (used internally) */
+  public DutchFlagEntity(String name) { super(name); }
 
-	@Override
-	public void assertSorted() {
-		((DutchFlagWorld) world).assertSorted();
-	}
+  /** Instantiation Constructor (used by exercises to setup the world) */
+  public DutchFlagEntity(World world) { super(Game.i18n.tr("Flag sorter"), world); }
 
-	/** Must exist so that exercises can instantiate the entity (Entity is abstract)
-	 */
-	@Override
-	public void run() {
-	}
-	
-	/** Returns a string representation of the world */
-	public String toString(){
-		return "DutchFlagEntity (" + this.getClass().getName() + ")";
-	}
-	
-	/* BINDINGS TRANSLATION: French */
-	public void echange(int i, int j) { swap(i,j); }
-	public int getCouleur(int rank)   { return getColor(rank); }
-	public int getTaille()            { return getSize(); }
-	public boolean estTrie()          { return isSorted(); }
-	public boolean estChoisi()        { return isSelected(); }
-	public final static int BLEU = BLUE;
-	public final static int BLANC = WHITE;
-	public final static int ROUGE = RED;
+  /** Swap two positions */
+  @Override public void swap(int from, int to)
+  {
+    ((DutchFlagWorld)world).swap(from, to);
+    stepUI();
+  }
 
-	@Override
-	public void command(String command, BufferedWriter out) {
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		int nb,nb2;
-		try {
-			switch(num){
-			case 110:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				nb2 = Integer.parseInt((command.split(" ")[2]));
-				swap(nb, nb2);
-				break;
-			case 111:
-				out.write(Integer.toString(getSize()));
-				out.write("\n");
-				break;
-			case 112:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				out.write(Integer.toString(getColor(nb)));
-				out.write("\n");
-				break;
-			case 113:
-				out.write((isSorted()?"1":"0"));
-				out.write("\n");
-				break;
-			case 114:
-				out.write((isSelected()?"1":"0"));
-				out.write("\n");
-				break;
-			case 115:
-				assertSorted();
-				break;
-			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
-				break;
-			}
-			out.flush();
-		}catch(IOException ioe){
-			ioe.printStackTrace();
-		}
-	}
+  /**
+   * Give the color of of a specific ray in the flag
+   * @param rank : the number of the ray that you want to get.
+   * @return The color of that ray (either 0, 1 or 2)
+   */
+  @Override public int getColor(int rank) { return ((DutchFlagWorld)world).getColor(rank); }
+
+  /** Returns the amount of rays in this flag */
+  @Override public int getSize() { return ((DutchFlagWorld)world).getSize(); }
+
+  /** Returns whether the flag is correctly sorted */
+  @Override public boolean isSorted() { return ((DutchFlagWorld)world).isSorted(); }
+
+  @Override public void assertSorted() { ((DutchFlagWorld)world).assertSorted(); }
+
+  /**
+   * Must exist so that exercises can instantiate the entity (Entity is abstract)
+   */
+  @Override public void run() {}
+
+  /** Returns a string representation of the world */
+  public String toString() { return "DutchFlagEntity (" + this.getClass().getName() + ")"; }
+
+  /* BINDINGS TRANSLATION: French */
+  public void echange(int i, int j) { swap(i, j); }
+  public int getCouleur(int rank) { return getColor(rank); }
+  public int getTaille() { return getSize(); }
+  public boolean estTrie() { return isSorted(); }
+  public boolean estChoisi() { return isSelected(); }
+  public final static int BLEU  = BLUE;
+  public final static int BLANC = WHITE;
+  public final static int ROUGE = RED;
+
+  @Override public void command(String command, BufferedWriter out)
+  {
+    int num = Integer.parseInt((String)command.subSequence(0, 3));
+    int nb, nb2;
+    try {
+      switch (num) {
+        case 110:
+          nb  = Integer.parseInt((command.split(" ")[1]));
+          nb2 = Integer.parseInt((command.split(" ")[2]));
+          swap(nb, nb2);
+          break;
+        case 111:
+          out.write(Integer.toString(getSize()));
+          out.write("\n");
+          break;
+        case 112:
+          nb = Integer.parseInt((command.split(" ")[1]));
+          out.write(Integer.toString(getColor(nb)));
+          out.write("\n");
+          break;
+        case 113:
+          out.write((isSorted() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 114:
+          out.write((isSelected() ? "1" : "0"));
+          out.write("\n");
+          break;
+        case 115:
+          assertSorted();
+          break;
+        default:
+          System.out.println("COMMANDE INCONNUE : " + command);
+          break;
+      }
+      out.flush();
+    } catch (IOException ioe) {
+      ioe.printStackTrace();
+    }
+  }
 }

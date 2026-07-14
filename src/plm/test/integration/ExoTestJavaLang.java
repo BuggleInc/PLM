@@ -10,20 +10,15 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lesson;
 
 public class ExoTestJavaLang extends ExoTest {
-  @ParameterizedTest
-  @MethodSource("exercises")
-  void testJavaEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  @ParameterizedTest @MethodSource("exercises") void testJavaEntityExists(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);
     testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.JAVA);
   }
 
-  @ParameterizedTest
-  @MethodSource("exercises")
-  public void testJavaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  @ParameterizedTest @MethodSource("exercises") public void testJavaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);
-    Assertions.assertTimeoutPreemptively(
-        Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.JAVA); });
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.JAVA); });
   }
 }

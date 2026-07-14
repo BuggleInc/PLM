@@ -4,6 +4,5 @@ import plm.core.model.Game;
 
 public interface GameStateListener {
 
-	public void stateChanged(Game.GameState type) ;
-	
+  public void stateChanged(Game.GameState type);
 }

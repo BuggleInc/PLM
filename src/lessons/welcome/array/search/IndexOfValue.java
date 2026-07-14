@@ -7,43 +7,42 @@ import plm.universe.bat.BatWorld;
 
 public class IndexOfValue extends BatExercise {
 
-	Random r = new Random();
-	
-	private int getIndex(int[] tab) {
-		return tab[r.nextInt(tab.length)];
-	}
-	
-	public IndexOfValue(Lesson lesson) {
-		super(lesson);
+  Random r = new Random();
 
-		int[] tab = new int[15];
-		for (int i=0; i<tab.length; i++) 
-			tab[i] = r.nextInt(35)-15;
+  private int getIndex(int[] tab) { return tab[r.nextInt(tab.length)]; }
 
-		int[] tab2 = new int[20];
-		for (int i=0; i<tab2.length; i++) 
-			tab2[i] = r.nextInt(35)-15;
+  public IndexOfValue(Lesson lesson)
+  {
+    super(lesson);
 
-		int[] tab3 = new int[25];
-		for (int i=0; i<tab3.length; i++) 
-			tab3[i] = r.nextInt(35)-15;
-		
-		int[] tab4 = new int[25];
-		for (int i=0; i<tab4.length; i++) 
-			tab4[i] = r.nextInt(35)-15;
+    int[] tab = new int[15];
+    for (int i = 0; i < tab.length; i++)
+      tab[i] = r.nextInt(35) - 15;
 
-		BatWorld myWorld = new BatWorld("indexOfValue");
-		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 17) ;
-		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }, 15) ;
-		myWorld.addTest(VISIBLE, tab, r.nextInt(35)-15);
-		myWorld.addTest(VISIBLE, tab, getIndex(tab));
-		myWorld.addTest(VISIBLE, tab2, r.nextInt(35)-15);
-		myWorld.addTest(VISIBLE, tab2, getIndex(tab2));
-		myWorld.addTest(INVISIBLE, tab3, r.nextInt(35)-15);
-		myWorld.addTest(INVISIBLE, tab3, getIndex(tab3));
-		myWorld.addTest(INVISIBLE, tab4, r.nextInt(35)-15);
-		myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
+    int[] tab2 = new int[20];
+    for (int i = 0; i < tab2.length; i++)
+      tab2[i] = r.nextInt(35) - 15;
 
-                setup(myWorld);
-        }
+    int[] tab3 = new int[25];
+    for (int i = 0; i < tab3.length; i++)
+      tab3[i] = r.nextInt(35) - 15;
+
+    int[] tab4 = new int[25];
+    for (int i = 0; i < tab4.length; i++)
+      tab4[i] = r.nextInt(35) - 15;
+
+    BatWorld myWorld = new BatWorld("indexOfValue");
+    myWorld.addTest(VISIBLE, new int[] {2, -3, 1, 17, -13, 5, 3, 1, 9, 18}, 17);
+    myWorld.addTest(VISIBLE, new int[] {2, -3, 1, 17, -13, 5, 3, 1, 9, 18}, 15);
+    myWorld.addTest(VISIBLE, tab, r.nextInt(35) - 15);
+    myWorld.addTest(VISIBLE, tab, getIndex(tab));
+    myWorld.addTest(VISIBLE, tab2, r.nextInt(35) - 15);
+    myWorld.addTest(VISIBLE, tab2, getIndex(tab2));
+    myWorld.addTest(INVISIBLE, tab3, r.nextInt(35) - 15);
+    myWorld.addTest(INVISIBLE, tab3, getIndex(tab3));
+    myWorld.addTest(INVISIBLE, tab4, r.nextInt(35) - 15);
+    myWorld.addTest(INVISIBLE, tab4, getIndex(tab4));
+
+    setup(myWorld);
+  }
 }

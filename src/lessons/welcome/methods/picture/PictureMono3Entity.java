@@ -4,56 +4,62 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class PictureMono3Entity extends SimpleBuggle {
 
-	/* BEGIN TEMPLATE */
-	public void run() {
-		/* BEGIN SOLUTION */
-		for (int i=0; i<9; i++) {
-			makeLine(9);
-			nextLine();
-		}
-	}
-	void mark() {
-		brushDown();
-		brushUp();
-	}
+  /* BEGIN TEMPLATE */
+  public void run()
+  {
+    /* BEGIN SOLUTION */
+    for (int i = 0; i < 9; i++) {
+      makeLine(9);
+      nextLine();
+    }
+  }
+  void mark()
+  {
+    brushDown();
+    brushUp();
+  }
 
-	void makeV() {
-		forward(2);
-		mark();
+  void makeV()
+  {
+    forward(2);
+    mark();
 
-		stepForward();
-		left();
-		stepForward();
-		mark();
+    stepForward();
+    left();
+    stepForward();
+    mark();
 
-		stepBackward();
-		right();
-		stepForward();
-		mark();
+    stepBackward();
+    right();
+    stepForward();
+    mark();
 
-		forward(2);
-		left();
-	}
+    forward(2);
+    left();
+  }
 
-	void makePattern() {
-		makeV();
-		makeV();
-		makeV();
-		makeV();
-		forward(7);
-	}
+  void makePattern()
+  {
+    makeV();
+    makeV();
+    makeV();
+    makeV();
+    forward(7);
+  }
 
-	void makeLine(int count){
-		for (int i=0; i<count;i++)
-			makePattern();
-		backward(count*7);
-	}
+  void makeLine(int count)
+  {
+    for (int i = 0; i < count; i++)
+      makePattern();
+    backward(count * 7);
+  }
 
-	void nextLine() {
-		left();
-		forward(7);
-		right();	
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
+  void nextLine()
+  {
+    left();
+    forward(7);
+    right();
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
 }

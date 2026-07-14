@@ -1,3 +1,6 @@
+import static ValueSerializer.*;
+
+import java.awt.Color;
 import java.io.*;
 import java.net.StandardProtocolFamily;
 import java.net.UnixDomainSocketAddress;
@@ -7,9 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Vector;
-
-import java.awt.Color;
-import static ValueSerializer.*;
 
 public abstract class Remote {
 
@@ -34,74 +34,77 @@ public abstract class Remote {
     }
   }
 
-    private static String answerBuffer;
+  private static String answerBuffer;
 
-    private static void getAnswerLine() {
-      try {
-        answerBuffer = protocolIn.readLine();
-      } catch (IOException e) {
-        answerBuffer = null;
-        System.err.println("IO exception while reading the protocol (reason: " + e.getMessage() + "). Bailing out.");
-        System.exit(1);
-      }
-      //        System.out.println("Student receives: " + answerBuffer);
-      System.out.flush();
-      if (answerBuffer == null) {
-        System.exit(1);
-      }
+  private static void getAnswerLine()
+  {
+    try {
+      answerBuffer = protocolIn.readLine();
+    } catch (IOException e) {
+      answerBuffer = null;
+      System.err.println("IO exception while reading the protocol (reason: " + e.getMessage() + "). Bailing out.");
+      System.exit(1);
     }
-
-    public static int getAnswerInt() {
-        getAnswerLine();
-        return (int) deserialize(answerBuffer);
+    //        System.out.println("Student receives: " + answerBuffer);
+    System.out.flush();
+    if (answerBuffer == null) {
+      System.exit(1);
     }
+  }
 
-    public static boolean getAnswerBoolean() {
-        getAnswerLine();
-        return (boolean) deserialize(answerBuffer);
-    }
+  public static int getAnswerInt()
+  {
+    getAnswerLine();
+    return (int)deserialize(answerBuffer);
+  }
 
-    public static double getAnswerDouble() {
-        getAnswerLine();
-        return (double) deserialize(answerBuffer);
-    }
+  public static boolean getAnswerBoolean()
+  {
+    getAnswerLine();
+    return (boolean)deserialize(answerBuffer);
+  }
 
-    public static Color getAnswerColor() {
-      getAnswerLine();
-      return (Color) deserialize(answerBuffer);
-    }
+  public static double getAnswerDouble()
+  {
+    getAnswerLine();
+    return (double)deserialize(answerBuffer);
+  }
 
-    public static String getAnswerString() {
-        getAnswerLine();
-        return (String) deserialize(answerBuffer);
-    }
+  public static Color getAnswerColor()
+  {
+    getAnswerLine();
+    return (Color)deserialize(answerBuffer);
+  }
 
-    public static char getAnswerChar() {
-      getAnswerLine();
-      return (char) deserialize(answerBuffer);
-    }
+  public static String getAnswerString()
+  {
+    getAnswerLine();
+    return (String)deserialize(answerBuffer);
+  }
 
-    public static void sendCommand(String opCode, String name, Object... args) {
-      String command = opCode+" "+serialize(args)+" "+name;
+  public static char getAnswerChar()
+  {
+    getAnswerLine();
+    return (char)deserialize(answerBuffer);
+  }
 
-      //      System.out.println("Student sends: " + command);
-      System.out.flush();
-      protocolOut.println(command);
-      protocolOut.flush();
-    }
+  public static void sendCommand(String opCode, String name, Object... args)
+  {
+    String command = opCode + " " + serialize(args) + " " + name;
 
-    /* BEGIN UTILS */
+    //      System.out.println("Student sends: " + command);
+    System.out.flush();
+    protocolOut.println(command);
+    protocolOut.flush();
+  }
 
-    public static String int2str(int n) {
-        return Integer.toString(n);
-    }
+  /* BEGIN UTILS */
 
-    /* END UTILS */
+  public static String int2str(int n) { return Integer.toString(n); }
 
-    public abstract void run();
+  /* END UTILS */
 
-    public static void main(String[] args) {
-        throw new UnsupportedOperationException(
-                "Subclasses should provide their own main() method.");
-    }
+  public abstract void run();
+
+  public static void main(String[] args) { throw new UnsupportedOperationException("Subclasses should provide their own main() method."); }
 }

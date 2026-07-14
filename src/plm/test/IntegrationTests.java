@@ -9,6 +9,5 @@ import plm.test.integration.ExoTestScalaLang;
 import plm.test.integration.LessonTest;
 
 @Suite
-@SelectClasses(
-    {LessonTest.class, ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class})
+@SelectClasses({LessonTest.class, ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class})
 public class IntegrationTests {}

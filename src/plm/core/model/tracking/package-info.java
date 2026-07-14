@@ -1,6 +1,6 @@
 /**
  * Track student activities.
- * 
+ *
  * @author oster
  *
  */

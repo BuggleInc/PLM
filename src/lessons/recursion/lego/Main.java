@@ -16,20 +16,20 @@ import lessons.recursion.lego.tree.Tree;
 import plm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
-	@Override
-	protected void loadExercises() {
-		addExercise(new FourSquare(this));
-		addExercise(new Spiral(this));
-		addExercise(new SpiralUse(this));
-		addExercise(new Tree(this));
-		addExercise(new Koch(this));
-		addExercise(new SquareKoch(this));
-		addExercise(new PentaKoch(this));
-		addExercise(new HexaKoch(this));
-		addExercise(new Crab(this));
-		addExercise(new Sierpinski(this));
-		addExercise(new PolygonFractal(this));
-		addExercise(new DragonCurve1(this));
-		addExercise(new DragonCurve2(this));
-	}
+  @Override protected void loadExercises()
+  {
+    addExercise(new FourSquare(this));
+    addExercise(new Spiral(this));
+    addExercise(new SpiralUse(this));
+    addExercise(new Tree(this));
+    addExercise(new Koch(this));
+    addExercise(new SquareKoch(this));
+    addExercise(new PentaKoch(this));
+    addExercise(new HexaKoch(this));
+    addExercise(new Crab(this));
+    addExercise(new Sierpinski(this));
+    addExercise(new PolygonFractal(this));
+    addExercise(new DragonCurve1(this));
+    addExercise(new DragonCurve2(this));
+  }
 }

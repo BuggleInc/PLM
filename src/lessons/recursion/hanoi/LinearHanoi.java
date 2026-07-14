@@ -1,30 +1,28 @@
 package lessons.recursion.hanoi;
 
+import java.util.Arrays;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 
-import java.util.Arrays;
-
 public class LinearHanoi extends ExerciseTemplated {
 
-	public LinearHanoi(Lesson lesson) {
-		super(lesson);
-				
-		/* Create initial situation */
-		HanoiWorld[] myWorlds = new HanoiWorld[2];
-		myWorlds[0] = new HanoiWorld("solve(0,1,2)",  
-				new Integer[] {6,5,4,3,2,1}, new Integer[0],new Integer[0]);
-		myWorlds[0].setParameter(new Object[] {0,1,2});		
-		myWorlds[1] = new HanoiWorld("solve(2,1,0)", 
-				new Integer[0] , new Integer[0],new Integer[] {6,5,4,3,2,1});
-		myWorlds[1].setParameter(new Object[] {2,1,0});		
+  public LinearHanoi(Lesson lesson)
+  {
+    super(lesson);
 
-		for (int i=0;i<myWorlds.length;i++) 
-			new HanoiEntity("worker",myWorlds[i]);
+    /* Create initial situation */
+    HanoiWorld[] myWorlds = new HanoiWorld[2];
+    myWorlds[0]           = new HanoiWorld("solve(0,1,2)", new Integer[] {6, 5, 4, 3, 2, 1}, new Integer[0], new Integer[0]);
+    myWorlds[0].setParameter(new Object[] {0, 1, 2});
+    myWorlds[1] = new HanoiWorld("solve(2,1,0)", new Integer[0], new Integer[0], new Integer[] {6, 5, 4, 3, 2, 1});
+    myWorlds[1].setParameter(new Object[] {2, 1, 0});
 
-		myWorlds = Arrays.stream(myWorlds).map(s->s.replaceEntities(LinearHanoiEntity::new)).toList().toArray(new HanoiWorld[0]);
-		setup(myWorlds);
-	}
+    for (int i = 0; i < myWorlds.length; i++)
+      new HanoiEntity("worker", myWorlds[i]);
+
+    myWorlds = Arrays.stream(myWorlds).map(s -> s.replaceEntities(LinearHanoiEntity::new)).toList().toArray(new HanoiWorld[0]);
+    setup(myWorlds);
+  }
 }

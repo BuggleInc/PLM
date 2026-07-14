@@ -12,59 +12,55 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
-	
-	public JVMCompiledSimpleExerciseTest(ProgrammingLanguage pl) throws BrokenProgrammingLanguageException {
-		super(pl);
-	}
 
-	@Test
-	public void testSolutionShouldPass() throws PLMCompilerException {
-		exo.compileAll(null, StudentOrCorrection.CORRECTION);
-		exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
-		
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) {
-			for (Entity ent: w.getEntities()) {
-                          pl.runEntity(ent, exo.lastResult);
-                        }
-                }
+  public JVMCompiledSimpleExerciseTest(ProgrammingLanguage pl) throws BrokenProgrammingLanguageException { super(pl); }
 
-                if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
-                  Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " +
-                                  exo.lastResult.outcome.toString());
-                }
-        }
+  @Test public void testSolutionShouldPass() throws PLMCompilerException
+  {
+    exo.compileAll(null, StudentOrCorrection.CORRECTION);
+    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
-        @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException
-        {
-          exo.compileAll(null, StudentOrCorrection.CORRECTION);
-          exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+      for (Entity ent : w.getEntities()) {
+        pl.runEntity(ent, exo.lastResult);
+      }
+    }
 
-          for (World w : exo.getWorlds(WorldKind.CURRENT)) {
-            for (Entity ent : w.getEntities()) {
-              pl.runEntity(ent, exo.lastResult);
-            }
-          }
+    if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
+      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " + exo.lastResult.outcome.toString());
+    }
+  }
 
-          if (exo.lastResult.executionError != null && !exo.lastResult.executionError.equals("")) {
-            Assertions.fail(getClass().getName().replace("Test", "Entity") +
-                            " should execute properly and not throw the following error:\n" +
-                            exo.lastResult.executionError);
-          }
-        }
+  @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException
+  {
+    exo.compileAll(null, StudentOrCorrection.CORRECTION);
+    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
-        @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
-        {
-          Assertions.assertThrows(PLMCompilerException.class, () -> {
-            exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
-            exo.compileAll(null, StudentOrCorrection.STUDENT);
-          });
-        }
+    for (World w : exo.getWorlds(WorldKind.CURRENT)) {
+      for (Entity ent : w.getEntities()) {
+        pl.runEntity(ent, exo.lastResult);
+      }
+    }
 
-        @Test public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException
-        {
-          Assertions.assertThrows(PLMCompilerException.class, () -> {
-            exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
-            exo.compileAll(null, StudentOrCorrection.STUDENT);
-          });
-        }
+    if (exo.lastResult.executionError != null && !exo.lastResult.executionError.equals("")) {
+      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should execute properly and not throw the following error:\n" +
+                      exo.lastResult.executionError);
+    }
+  }
+
+  @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
+  {
+    Assertions.assertThrows(PLMCompilerException.class, () -> {
+      exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode());
+      exo.compileAll(null, StudentOrCorrection.STUDENT);
+    });
+  }
+
+  @Test public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException
+  {
+    Assertions.assertThrows(PLMCompilerException.class, () -> {
+      exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode());
+      exo.compileAll(null, StudentOrCorrection.STUDENT);
+    });
+  }
 }

@@ -8,81 +8,77 @@ import plm.core.model.lesson.RunOutcome;
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {
-	public LightBotExercise(Lesson lesson) {
-		super(lesson);
-                addProgLanguage(Game.getInstance().programmingLanguageManager.LIGHTBOT);
-                if (getProgLanguages().size()>1) 
-			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-                getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT)
-                    .add(new LightBotSourceFile("Code"));
+  public LightBotExercise(Lesson lesson)
+  {
+    super(lesson);
+    addProgLanguage(Game.getInstance().programmingLanguageManager.LIGHTBOT);
+    if (getProgLanguages().size() > 1)
+      throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
+    getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT).add(new LightBotSourceFile("Code"));
+  }
+
+  @Override protected void setup(World[] ws)
+  {
+    for (World w : ws)
+      ((LightBotWorld)w).rotateLeft();
+
+    setupWorlds(ws);
+    /* remove entities from the answer world: we don't care of where the bot is at the end */
+    for (World w : answerWorld)
+      w.emptyEntities();
+    computeAnswer();
+  }
+
+  @Override protected void computeAnswer()
+  {
+    for (int w = 0; w < answerWorld.size(); w++) {
+      LightBotWorld.CellIterator ci = ((LightBotWorld)answerWorld.get(w)).new CellIterator();
+      while (ci.hasNext()) {
+        ci.next().setLightOn();
+      }
+    }
+  }
+  @Override public void check()
+  {
+    lastResult = new RunOutcome();
+    for (int w = 0; w < currentWorld.size(); w++) {
+      LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
+      while (ci.hasNext()) {
+        LightBotWorldCell cell = ci.next();
+        if (cell.isLight()) {
+          lastResult.totalTests++;
+          if (cell.isLightOn())
+            lastResult.passedTests++;
         }
+      }
+      int stillOff = lastResult.totalTests - lastResult.passedTests;
+      if (stillOff == 1)
+        lastResult.executionError = Game.i18n.tr("A light is still off.");
+      if (stillOff > 1)
+        lastResult.executionError = Game.i18n.tr("{0} lights (out of {1}) are still off.", stillOff, lastResult.totalTests);
 
-	@Override
-	protected void setup(World[] ws) {
-		for (World w : ws) 
-			((LightBotWorld) w).rotateLeft();
-		
-		setupWorlds(ws);
-		/* remove entities from the answer world: we don't care of where the bot is at the end */
-		for (World w :answerWorld)
-			w.emptyEntities();
-		computeAnswer();
-	}
+      if (stillOff == 0)
+        lastResult.outcome = RunOutcome.kind.PASS;
+      else
+        lastResult.outcome = RunOutcome.kind.FAIL;
+    }
+  }
+  @Override public void run(List<Thread> runnerVect)
+  { // FIXME: that's a redefinition to the same, right?
+    reset();
 
-	@Override
-	protected void computeAnswer() {
-		for (int w=0;w<answerWorld.size();w++) {
-			LightBotWorld.CellIterator ci = ((LightBotWorld)answerWorld.get(w)).new CellIterator();
-			while (ci.hasNext()) {
-				ci.next().setLightOn();
-			}
-		}
-	}
-	@Override
-	public void check() {
-          lastResult = new RunOutcome();
-          for (int w = 0; w < currentWorld.size(); w++) {
-            LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
-            while (ci.hasNext()) {
-              LightBotWorldCell cell = ci.next();
-              if (cell.isLight()) {
-                lastResult.totalTests++;
-                if (cell.isLightOn())
-                  lastResult.passedTests++;
-              }
-            }
-            int stillOff = lastResult.totalTests - lastResult.passedTests;
-            if (stillOff == 1)
-              lastResult.executionError = Game.i18n.tr("A light is still off.");
-            if (stillOff > 1)
-              lastResult.executionError =
-                  Game.i18n.tr("{0} lights (out of {1}) are still off.", stillOff, lastResult.totalTests);
+    for (int i = 0; i < currentWorld.size(); i++)
+      currentWorld.get(i).doDelay();
 
-            if (stillOff == 0)
-              lastResult.outcome = RunOutcome.kind.PASS;
-            else
-              lastResult.outcome = RunOutcome.kind.FAIL;
-          }
-        }
-        @Override public void run(List<Thread> runnerVect)
-        { // FIXME: that's a redefinition to the same, right?
-          reset();
+    for (int i = 0; i < currentWorld.size(); i++)
+      currentWorld.get(i).runEntities(runnerVect, lastResult);
+  }
 
-          for (int i = 0; i < currentWorld.size(); i++)
-            currentWorld.get(i).doDelay();
+  @Override public void runDemo(List<Thread> runnerVect) { /* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */ }
 
-          for (int i = 0; i < currentWorld.size(); i++)
-            currentWorld.get(i).runEntities(runnerVect, lastResult);
-        }
-
-        @Override public void runDemo(List<Thread> runnerVect)
-        {
-          /* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */
-        }
-
-        @Override final public void mutateEntities(WorldKind kind, StudentOrCorrection what)
-        {
-          throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! "
-                                     + "super.mutateEntities() is not ready for that.");
-        }
+  @Override final public void mutateEntities(WorldKind kind, StudentOrCorrection what)
+  {
+    throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! "
+                               + "super.mutateEntities() is not ready for that.");
+  }
 }
