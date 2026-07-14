@@ -6,7 +6,7 @@ import lessons.turmites.universe.TurmiteEntity;
 public class TurmiteCreatorEntity extends TurmiteEntity {
 
   /* Do not change these definitions */
-
+  /* BEGIN DEPENDENCY */
   Color[] colors;
   int state = 0;
 
@@ -46,6 +46,7 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
 
     state = rule[state][currentColor][NEXT_STATE];
   }
+  /* END DEPENDENCY */
 
   /* BEGIN TEMPLATE */
   final static int STOP   = 0;

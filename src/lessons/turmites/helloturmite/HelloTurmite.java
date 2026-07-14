@@ -1,7 +1,6 @@
 package lessons.turmites.helloturmite;
 
 import java.util.Arrays;
-import lessons.sort.basic.bubble.AlgBubbleSort1Entity;
 import lessons.turmites.universe.TurmiteWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
