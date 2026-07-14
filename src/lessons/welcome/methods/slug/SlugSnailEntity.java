@@ -60,7 +60,7 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
       return false;
 
     stepForward();
-    boolean res = getGroundColor() == c;
+    boolean res = getGroundColor().equals(c);
     stepBackward();
     return res;
   }
