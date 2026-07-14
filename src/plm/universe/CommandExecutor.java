@@ -34,7 +34,12 @@ public final class CommandExecutor {
     int opCode = Integer.parseInt(opCodeSegment);
     Map<Integer, PrimitiveMethod> primitiveMethodMap =
         getMinimalPrimitiveForEntity_Cache.computeIfAbsent(entity.getClass(), PrimitiveRegistration::getMinimalPrimitiveForEntity);
+
     PrimitiveMethod method = primitiveMethodMap.get(opCode);
+    if (method == null) {
+      throw new IllegalStateException("No primitive with id " + opCode + " for entity of class " + entity.getClass().getName() +
+                                      ". This usually means the entity is not an instance of the exercise's real entity subclass.");
+    }
 
     if (!method.name().equals(opNameSegment)) {
       System.err.println("Primitive real name do not match provided name. "
