@@ -8,8 +8,8 @@ import java.util.Set;
 
 public interface ExternalPrimitiveLanguage {
 
-    static Set<CommandArgumentType<?>> involved(List<PrimitiveMethod> methods) {
-        Set<CommandArgumentType<?>> types = new HashSet<>();
+    static Set<Class<?>> involved(List<PrimitiveMethod> methods) {
+        Set<Class<?>> types = new HashSet<>();
         for (PrimitiveMethod method : methods) {
             types.add(method.output());
             for (PrimitiveParameter parameter : method.parameters()) {

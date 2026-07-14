@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
-import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -24,6 +23,7 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.CommandExecutor;
+import plm.universe.Direction;
 import plm.universe.Entity;
 
 public class LangC extends ProgrammingLanguage {
@@ -217,7 +217,7 @@ public class LangC extends ProgrammingLanguage {
                 arg1[0] = "/bin/sh";
                 arg1[1] = "-c";
                 arg1[2] =
-                    "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
+                        "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
             }
 
             final Process process = runtime.exec(arg1);
@@ -461,21 +461,21 @@ public class LangC extends ProgrammingLanguage {
 
     public static class LangCExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
-        String getLanguageType(CommandArgumentType<?> type) {
-            if (type == CommandArgumentType.COLOR) return "Color";
-            if (type == CommandArgumentType.DIRECTION) return "Direction";
-            if (type == CommandArgumentType.DOUBLE) return "double";
-            if (type == CommandArgumentType.INT) return "int";
-            if (type == CommandArgumentType.STRING) return "char*";
-            if (type == CommandArgumentType.CHAR) return "char";
-            if (type == CommandArgumentType.BOOLEAN)
-              return "int";
+        String getLanguageType(Class<?> type) {
+            if (type == Color.class) return "Color";
+            if (type == Direction.class) return "Direction";
+            if (type == Double.class || type == double.class) return "double";
+            if (type == Integer.class || type == int.class) return "int";
+            if (type == String.class) return "char*";
+            if (type == Character.class || type == char.class) return "char";
+            if (type == Boolean.class || type == boolean.class)
+                return "int";
 
             throw new IllegalStateException("Unknown type: " + type);
         }
 
-        String getTypeDeclaration(CommandArgumentType<?> type) {
-            if (type == CommandArgumentType.DIRECTION) {
+        String getTypeDeclaration(Class<?> type) {
+            if (type == Direction.class) {
                 return "typedef enum{\n" +
                         "    NORTH,\n" +
                         "    EAST,\n" +
@@ -483,7 +483,7 @@ public class LangC extends ProgrammingLanguage {
                         "    WEST\n" +
                         "} Direction;";
             }
-            if (type == CommandArgumentType.COLOR) {
+            if (type == Color.class) {
                 return "typedef enum{\n" +
                         "    white,\n" +
                         "    black,\n" +
@@ -510,39 +510,38 @@ public class LangC extends ProgrammingLanguage {
         String getPrototype(PrimitiveMethod method) {
             String name = method.name();
             List<PrimitiveParameter> parameters = method.parameters();
-            CommandArgumentType<?> output = method.output();
-
+            Class<?> output = method.output();
 
             final String outputString = Optional.ofNullable(output).map(this::getLanguageType).orElse("void");
 
             return outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ");";
         }
 
-        String getReturning(CommandArgumentType<?> type) {
+        String getReturning(Class<?> type) {
             if (type == null)
                 return "";
 
-            if (type == CommandArgumentType.STRING) return "get_answer_string()";
-            if (type == CommandArgumentType.DOUBLE) return "get_answer_double()";
-            if (type == CommandArgumentType.CHAR) return "get_answer_char()";
-            if (type == CommandArgumentType.COLOR) return "get_answer_int()";
-            if (type == CommandArgumentType.DIRECTION) return "get_answer_int()";
-            if (type == CommandArgumentType.INT) return "get_answer_int()";
-            if (type == CommandArgumentType.BOOLEAN)
-              return "get_answer_int()";
+            if (type == String.class) return "get_answer_string()";
+            if (type == Double.class || type == double.class) return "get_answer_double()";
+            if (type == Character.class || type == char.class) return "get_answer_char()";
+            if (type == Color.class) return "get_answer_int()";
+            if (type == Direction.class) return "get_answer_int()";
+            if (type == Integer.class || type == int.class) return "get_answer_int()";
+            if (type == Boolean.class || type == boolean.class)
+                return "get_answer_int()";
 
             throw new IllegalStateException("Unknown type: " + type);
         }
 
-        String getTemplatingForType(CommandArgumentType<?> type) {
-            if (type == CommandArgumentType.STRING) return "%s";
-            if (type == CommandArgumentType.DOUBLE) return "%lf";
-            if (type == CommandArgumentType.CHAR) return "%c";
-            if (type == CommandArgumentType.COLOR) return "%d";
-            if (type == CommandArgumentType.DIRECTION) return "%d";
-            if (type == CommandArgumentType.INT) return "%d";
-            if (type == CommandArgumentType.BOOLEAN)
-              return "%d";
+        String getTemplatingForType(Class<?> type) {
+            if (type == String.class) return "%s";
+            if (type == Double.class || type == double.class) return "%lf";
+            if (type == Character.class || type == char.class) return "%c";
+            if (type == Color.class) return "%d";
+            if (type == Direction.class) return "%d";
+            if (type == Integer.class || type == int.class) return "%d";
+            if (type == Boolean.class || type == boolean.class)
+                return "%d";
 
             throw new IllegalStateException("Unknown type: " + type);
         }
@@ -559,26 +558,26 @@ public class LangC extends ProgrammingLanguage {
             String command = "\tsend_command(\"" + id + " " +
                     formats
                     + name
-                    + "\"" + method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", "+s).collect(Collectors.joining()) + ");";
+                    + "\"" + method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
-            String returning = method.output() != null ? "\treturn " + getReturning(method.output()) + ";" : "";
+            String returning = method.hasReturn() ? "\treturn " + getReturning(method.output()) + ";" : "";
 
             return prototype + "{\n" + command + "\n" + returning + "\n}";
         }
 
         @Override
         public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException {
-            Set<CommandArgumentType<?>> involved = ExternalPrimitiveLanguage.involved(methods);
+            Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
             final String guard = name.toUpperCase() + "_H";
 
             final String header_prefix = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#ifndef " + guard + "\n"
-                                         + "#define " + guard + "\n"
-                                         + "\n"
-                                         + "#include <stdio.h>\n"
-                                         + "#include <stdlib.h>\n"
-                                         + "#include <stdarg.h>\n"
-                                         + "#include <string.h>";
+                    + "#define " + guard + "\n"
+                    + "\n"
+                    + "#include <stdio.h>\n"
+                    + "#include <stdlib.h>\n"
+                    + "#include <stdarg.h>\n"
+                    + "#include <string.h>";
             final String header_suffix = "#endif";
 
             final String type_declarations = involved.stream().map(this::getTypeDeclaration)
