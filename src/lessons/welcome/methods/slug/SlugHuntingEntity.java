@@ -1,6 +1,6 @@
 package lessons.welcome.methods.slug;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
@@ -29,7 +29,7 @@ public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
       return false;
 
     stepForward();
-    boolean res = getGroundColor() == Color.green;
+    boolean res = getGroundColor().equals(Color.green);
     stepBackward();
     return res;
 
