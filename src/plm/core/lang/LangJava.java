@@ -73,8 +73,8 @@ public class LangJava extends JVMCompiledLang {
     int beginSolutionIndex = correction.indexOf("/* BEGIN SOLUTION */");
 
     String template;
-    if (beginSolutionIndex == beginTemplateIndex + 3)
-      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t public void run(){\n$body}\n}";
+    if (beginSolutionIndex == beginTemplateIndex + 5)
+      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\tpublic void run(){\n$body\t}\n}";
     else {
       if (beginTemplateIndex < runFunctionI && runFunctionI < endTemplateIndex)
         template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
@@ -365,6 +365,7 @@ public class LangJava extends JVMCompiledLang {
         String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
         entityCode        = Pattern.compile("this.").matcher(entityCode).replaceAll("");
+        entityCode        = Pattern.compile("@Override").matcher(entityCode).replaceAll("");
 
         File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
         // noinspection ResultOfMethodCallIgnored
