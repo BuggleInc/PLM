@@ -1,7 +1,6 @@
 package plm.universe;
 
 import plm.core.ValueSerializer;
-import plm.core.lang.primitives.CommandArgumentType;
 import plm.core.lang.primitives.Primitive;
 
 public interface EntityPrimitivesBase {
@@ -32,8 +31,11 @@ public interface EntityPrimitivesBase {
 
     @Primitive(404)
     default String getParamString(int i) {
-        return CommandArgumentType.findTypeAndSerialize(getParam(i));
+        return (String) getParam(i);
     }
 
-    @Primitive(406) default String getParamSerialized(int i) { return ValueSerializer.serialize(getParam(i)); }
+    @Primitive(406)
+    default String getParamSerialized(int i) {
+        return ValueSerializer.serialize(getParam(i));
+    }
 }

@@ -5,19 +5,15 @@ import java.util.Objects;
 
 public final class PrimitiveParameter {
     private final String name;
-    private final CommandArgumentType<?> type;
+    private final Class<?> type;
 
     public PrimitiveParameter(Parameter parameter) {
         this.name = parameter.getName();
-        this.type = CommandArgumentType.getCommandArgumentTypeFromClass(parameter.getType());
+        this.type = parameter.getType();
     }
 
     public String name() {
         return this.name;
-    }
-
-    public CommandArgumentType<?> type() {
-        return type;
     }
 
     @Override
@@ -35,7 +31,10 @@ public final class PrimitiveParameter {
 
     @Override
     public String toString() {
-        return name + ": " + type;
+        return name + ": " + type.getSimpleName();
     }
 
+    public Class<?> type() {
+        return type;
+    }
 }

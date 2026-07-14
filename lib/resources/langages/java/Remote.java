@@ -8,6 +8,9 @@ import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Vector;
 
+import java.awt.Color;
+import static ValueSerializer.*;
+
 public abstract class Remote {
 
   /*
@@ -50,31 +53,36 @@ public abstract class Remote {
 
     public static int getAnswerInt() {
         getAnswerLine();
-        return Integer.parseInt(answerBuffer);
+        return (int) deserialize(answerBuffer);
     }
 
     public static boolean getAnswerBoolean() {
-        return getAnswerInt() == 1;
+        getAnswerLine();
+        return (boolean) deserialize(answerBuffer);
     }
-
 
     public static double getAnswerDouble() {
         getAnswerLine();
-        return Double.parseDouble(answerBuffer);
+        return (double) deserialize(answerBuffer);
+    }
+
+    public static Color getAnswerColor() {
+      getAnswerLine();
+      return (Color) deserialize(answerBuffer);
     }
 
     public static String getAnswerString() {
         getAnswerLine();
-        return answerBuffer;
+        return (String) deserialize(answerBuffer);
     }
 
     public static char getAnswerChar() {
-        getAnswerLine();
-        return answerBuffer.charAt(0);
+      getAnswerLine();
+      return (char) deserialize(answerBuffer);
     }
 
-    public static void sendCommand(String format, Object... args) {
-      String command = String.format(Locale.ENGLISH, format, args);
+    public static void sendCommand(String opCode, String name, Object... args) {
+      String command = opCode+" "+serialize(args)+" "+name;
 
       //      System.out.println("Student sends: " + command);
       System.out.flush();
