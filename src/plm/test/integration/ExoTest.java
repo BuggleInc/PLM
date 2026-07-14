@@ -173,7 +173,7 @@ public class ExoTest {
       for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)
         try {
           String name = "FailingWorld-" + exo.getId() + "-World" + wnum + ".txt";
-          exo.getWorld(0).writeToFile(new File(name));
+          exo.getWorld(wnum).writeToFile(new File(name));
           System.err.println(" World " + wnum + " dumped to " + name);
         } catch (IOException e) {
           System.err.println("Cannot write the bugged world to disk because of the following exception");

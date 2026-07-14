@@ -122,9 +122,7 @@ public class BuggleWorld extends GridWorld {
     /* Get the dimension from the second line that is eg "Size: 20x20" */
     line = reader.readLine();
     if (line == null)
-      throw new RuntimeException(Game.i18n.tr(""
-                                                  + "{0}.map: End of file reached before world size specification.",
-                                              path));
+      throw new RuntimeException(Game.i18n.tr("{0}.map: End of file reached before world size specification.", path));
     p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
     m = p.matcher(line);
     if (!m.find())
