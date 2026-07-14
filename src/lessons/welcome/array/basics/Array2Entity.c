@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 void mark(Color c);
 void makeLine(Color colors[], int colorsLength);

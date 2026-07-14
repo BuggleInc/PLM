@@ -17,7 +17,7 @@ public class ExoTestPythonLang extends ExoTest {
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
-      Assertions.fail("Exercise " + e.getId() + " does not support python");
+      Assertions.fail("Exercise " + e.getId() + " has no Python entity");
     testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.PYTHON);
   }
 
@@ -27,7 +27,7 @@ public class ExoTestPythonLang extends ExoTest {
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
-      Assertions.fail("Exercise " + e.getId() + " does not support python");
+      Assertions.fail("Exercise " + e.getId() + " has no Python entity");
     Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
       testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON);
     });

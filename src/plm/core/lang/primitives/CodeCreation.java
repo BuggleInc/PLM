@@ -43,8 +43,6 @@ public class CodeCreation {
                 throw new RuntimeException(e);
             }
             langCGenerator.generate(cFolder, name, list.values().stream().toList());
-            Files.move(new File(cFolder, name+".h"), new File(cFolder,"include/"+name+".h"));
-            Files.move(new File(cFolder, name+".c"), new File(cFolder,"src/"+name+".c"));
         }
 
 

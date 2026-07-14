@@ -17,7 +17,7 @@ public class ExoTestScalaLang extends ExoTest {
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
-      Assertions.fail("Exercise " + e.getId() + " does not support scala");
+      Assertions.fail("Exercise " + e.getId() + " has no Scala entity");
     testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.SCALA);
   }
 
@@ -27,7 +27,7 @@ public class ExoTestScalaLang extends ExoTest {
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
-      Assertions.fail("Exercise " + e.getId() + " does not support scala");
+      Assertions.fail("Exercise " + e.getId() + " has no Scala entity");
     Assertions.assertTimeoutPreemptively(
         Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.SCALA); });
   }

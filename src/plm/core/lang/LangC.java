@@ -110,77 +110,100 @@ public class LangC extends ProgrammingLanguage {
             }
 
             String remote = "";
-
-            if (code.contains("RemoteBuggle")) {
-                remote = "RemoteBuggle";
-            } else if (code.contains("RemoteTurtle")) {
-                remote = "RemoteTurtle";
-            } else if (code.contains("RemoteSort")) {
-                remote = "RemoteSort";
-            } else if (code.contains("RemoteFlag")) {
-                remote = "RemoteFlag";
-            } else if (code.contains("RemoteBaseball")) {
-                remote = "RemoteBaseball";
-            } else if (code.contains("RemotePancake")) {
-                remote = "RemotePancake";
-            } else if (code.contains("RemoteHanoi")) {
-                remote = "RemoteHanoi";
-            } else {
-                PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
-                exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
-                throw e;
+            if (code.contains("RemoteBat"))
+              remote = "RemoteBat";
+            else if (code.contains(".cons."))
+              remote = "RemoteCons";
+            else if (code.contains("Buggle") || code.contains("Langton") || code.contains("Turmite"))
+              remote = "RemoteBuggle";
+            else if (code.contains("Turtle"))
+              remote = "RemoteTurtle";
+            else if (code.contains("Flag"))
+              remote = "RemoteFlag";
+            else if (code.contains("Baseball"))
+              remote = "RemoteBaseball";
+            else if (code.contains("Pancake"))
+              remote = "RemotePancake";
+            else if (code.contains("Hanoi"))
+              remote = "RemoteHanoi";
+            else if (code.contains("Sort"))
+              remote = "RemoteSort";
+            else {
+              PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
+              exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
+              throw e;
             }
 
             String line;
             String compiled_code_name = plmDirTmp + "/" + exo.getId() + ".c";
             PrintWriter compiled_code = new PrintWriter(compiled_code_name);
 
-            BufferedReader hRemote = new BufferedReader(new InputStreamReader(
-                    getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
-            compiled_code.append("/************/");
-            compiled_code.append("/* Remote.h */");
-            compiled_code.append("/************/");
+            BufferedReader hSerializer =
+                new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/value_serializer.h")));
+            compiled_code.append("/**********************/\n");
+            compiled_code.append("/* value_serializer.h */\n");
+            compiled_code.append("/**********************/\n");
+            while ((line = hSerializer.readLine()) != null)
+              if (!line.startsWith("#include \""))
+                compiled_code.append(line + "\n");
+            hSerializer.close();
+
+            BufferedReader cSerializer =
+                new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/value_serializer.c")));
+            compiled_code.append("/**********************/\n");
+            compiled_code.append("/* value_serializer.c */\n");
+            compiled_code.append("/**********************/\n");
+            while ((line = cSerializer.readLine()) != null)
+              if (!line.startsWith("#include \""))
+                compiled_code.append(line + "\n");
+            cSerializer.close();
+
+            BufferedReader hRemote =
+                new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/Remote.h")));
+            compiled_code.append("/************/\n");
+            compiled_code.append("/* Remote.h */\n");
+            compiled_code.append("/************/\n");
             while ((line = hRemote.readLine()) != null)
-                if (!line.startsWith("#include \".."))
-                    compiled_code.append(line + "\n");
+              if (!line.startsWith("#include \""))
+                compiled_code.append(line + "\n");
             hRemote.close();
 
-            BufferedReader cRemote = new BufferedReader(
-                    new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
-            compiled_code.append("/************/");
-            compiled_code.append("/* Remote.c */");
-            compiled_code.append("/************/");
+            BufferedReader cRemote =
+                new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/Remote.c")));
+            compiled_code.append("/************/\n");
+            compiled_code.append("/* Remote.c */\n");
+            compiled_code.append("/************/\n");
             while ((line = cRemote.readLine()) != null)
-                if (!line.startsWith("#include \".."))
-                    compiled_code.append(line + "\n");
+              if (!line.startsWith("#include \""))
+                compiled_code.append(line + "\n");
             cRemote.close();
 
-            BufferedReader hRemoteWorld = new BufferedReader(new InputStreamReader(
-                    getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/" + remote + ".h")));
-            compiled_code.append("/****************/");
-            compiled_code.append("/* " + remote + ".h */");
-            compiled_code.append("/****************/");
+            BufferedReader hRemoteWorld =
+                new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/" + remote + ".h")));
+            compiled_code.append("/****************/\n");
+            compiled_code.append("/* " + remote + ".h */\n");
+            compiled_code.append("/****************/\n");
             while ((line = hRemoteWorld.readLine()) != null)
                 if (!line.equals("#include \"Remote.h\""))
                     compiled_code.append(line + "\n");
             hRemoteWorld.close();
 
-            BufferedReader cRemoteWorld = new BufferedReader(new InputStreamReader(
-                    getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/" + remote + ".c")));
-            compiled_code.append("/****************/");
-            compiled_code.append("/* " + remote + ".c */");
-            compiled_code.append("/****************/");
+            BufferedReader cRemoteWorld =
+                new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/" + remote + ".c")));
+            compiled_code.append("/****************/\n");
+            compiled_code.append("/* " + remote + ".c */\n");
+            compiled_code.append("/****************/\n");
             while ((line = cRemoteWorld.readLine()) != null)
-                if (!line.startsWith("#include \".."))
-                    compiled_code.append(line + "\n");
+              if (!line.startsWith("#include \""))
+                compiled_code.append(line + "\n");
             cRemoteWorld.close();
 
-            compiled_code.append("/****************/");
-            compiled_code.append("/* Student code */");
-            compiled_code.append("/****************/");
+            compiled_code.append("/****************/\n");
+            compiled_code.append("/* Student code */\n");
+            compiled_code.append("/****************/\n");
             for (String li : code.split("\n"))
-                if (!li.startsWith("#include \".."))
-                    compiled_code.append(li + "\n");
+              if (!li.startsWith("#include \""))
+                compiled_code.append(li + "\n");
             compiled_code.close();
 
             String[] arg1;
@@ -567,7 +590,7 @@ public class LangC extends ProgrammingLanguage {
 
             final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
-            final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#include \"../include/" + name + ".h\"\n\n" + implementations;
+            final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#include \"Remote.h\"\n#include \"" + name + ".h\"\n\n" + implementations;
 
             // System.err.println("XXX Generating "+folder+name+".h\n"+header);
             Files.writeString(new File(folder, name + ".h").toPath(), header);

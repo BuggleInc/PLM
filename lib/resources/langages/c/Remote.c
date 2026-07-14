@@ -1,4 +1,4 @@
-#include "../include/Remote.h"
+#include "Remote.h"
 
 #include <pthread.h>
 #include <stdarg.h>
@@ -24,30 +24,36 @@
 static FILE* protocol_in  = NULL;
 static FILE* protocol_out = NULL;
 static char answer_buffer[1024];
-static void get_answer_line() {
+static void get_answer_line()
+{
   if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
     exit(1);
   }
   answer_buffer[strcspn(answer_buffer, "\r\n")] = 0;
 }
-int get_answer_int() {
+int get_answer_int()
+{
   get_answer_line();
   return (int)strtol(answer_buffer, NULL, 10);
 }
-double get_answer_double() {
+double get_answer_double()
+{
   get_answer_line();
   return strtod(answer_buffer, NULL);
 }
-char *get_answer_string() {
+char* get_answer_string()
+{
   get_answer_line();
   return strdup(answer_buffer);
 }
-char get_answer_char() {
+char get_answer_char()
+{
   get_answer_line();
   return answer_buffer[0];
 }
 
-void send_command(char *format, ...) {
+void send_command(char* format, ...)
+{
   va_list args;
   va_start(args, format);
 
@@ -60,15 +66,17 @@ void send_command(char *format, ...) {
 
 /* BEGIN UTILS FUNCTIONS */
 
-char* int2str(int nb){
-	char* str = malloc(sizeof(char)*16);
-	sprintf(str, "%d", nb);
-	return str;
+char* int2str(int nb)
+{
+  static char str[16];
+  snprintf(str, 15, "%d", nb);
+  return str;
 }
 
 /* END UTILS FUNCTIONS */
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
   // Disable buffering on the new stdout so student's debug messages arrive immediately
   setvbuf(stdout, NULL, _IONBF, 0);
 
