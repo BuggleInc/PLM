@@ -312,7 +312,17 @@ public class ValueSerializer {
     private Color parseColor()
     {
       // true: interpret the int as including the alpha channel, matching getRGB()/serialize() above.
-      return new Color(parseInt(), true);
+      Color c = new Color(parseInt(), true);
+
+      // Try to return a canonical color such as Color.black so that == works as a comparator
+      for (Color c2 :
+           new Color[] {Color.white,     Color.WHITE,  Color.black, Color.BLACK, Color.blue,  Color.BLUE,      Color.cyan,       Color.CYAN,    Color.darkGray,
+                        Color.DARK_GRAY, Color.gray,   Color.GRAY,  Color.green, Color.GREEN, Color.lightGray, Color.LIGHT_GRAY, Color.magenta, Color.MAGENTA,
+                        Color.orange,    Color.ORANGE, Color.pink,  Color.PINK,  Color.red,   Color.RED,       Color.yellow,     Color.YELLOW})
+        if (c2.equals(c))
+          return c2;
+      // Not found, return the newly created color
+      return c;
     }
 
     private String parseString()
