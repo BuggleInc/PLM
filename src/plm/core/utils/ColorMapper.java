@@ -39,7 +39,13 @@ public class ColorMapper {
     }
   }
 
-  public static String color2name(Color c) { return c.getRed() + "/" + c.getGreen() + "/" + c.getBlue(); }
+  public static String color2name(Color c)
+  {
+    for (int i = 0; i < colors.length; i++)
+      if (c.equals(colors[i]))
+        return choices[i];
+    return c.getRed() + "/" + c.getGreen() + "/" + c.getBlue();
+  }
 
   public static int color2int(Color c)
   {
