@@ -1,9 +1,6 @@
 package lessons.sort.pancake.universe;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -69,46 +66,4 @@ public class PancakeEntity extends Entity implements PancakeEntityPrimitives {
   public boolean estCrepeRetournee(int rank) { return isPancakeUpsideDown(rank); }
   public boolean estTriee() { return isSorted(); }
   public boolean estChoisi() { return isSelected(); }
-
-  @Override public void command(String command, BufferedWriter out)
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    int nb;
-    try {
-      switch (num) {
-        case 110:
-          out.write(Integer.toString(getStackSize()));
-          out.write("\n");
-          break;
-        case 111:
-          nb = Integer.parseInt((command.split(" ")[1]));
-          out.write(Integer.toString(getPancakeRadius(nb)));
-          out.write("\n");
-          break;
-        case 112:
-          nb = Integer.parseInt((command.split(" ")[1]));
-          out.write((isPancakeUpsideDown(nb) ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 113:
-          nb = Integer.parseInt((command.split(" ")[1]));
-          flip(nb);
-          break;
-        case 114:
-          out.write((isSorted() ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 115:
-          out.write((isSelected() ? "1" : "0"));
-          out.write("\n");
-          break;
-        default:
-          System.out.println("COMMANDE INCONNUE : " + command);
-          break;
-      }
-      out.flush();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-  }
 }

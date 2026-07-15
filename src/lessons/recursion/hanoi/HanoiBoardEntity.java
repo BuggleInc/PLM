@@ -8,27 +8,6 @@ import plm.core.lang.primitives.EntityPrimitives;
 @EntityPrimitives(lessons.recursion.hanoi.HanoiBoardEntity.class)
 public class HanoiBoardEntity extends HanoiEntity {
 
-  @Override public void command(String command, BufferedWriter out)
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    int nb;
-    try {
-      switch (num) {
-        case 114:
-          nb = Integer.parseInt((command.split(" ")[1]));
-          out.write(Integer.toString(getParamInt(nb)));
-          out.write("\n");
-          break;
-        default:
-          super.command(command, out);
-          break;
-      }
-      out.flush();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-  }
-
   public void run() { solve(getParamInt(1), getParamInt(1), getParamInt(2)); }
 
   /* BEGIN TEMPLATE */

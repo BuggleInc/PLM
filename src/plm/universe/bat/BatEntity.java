@@ -2,7 +2,6 @@ package plm.universe.bat;
 
 import static plm.core.ValueSerializer.*;
 
-import java.io.BufferedWriter;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.universe.Entity;
@@ -48,8 +47,4 @@ public abstract class BatEntity extends Entity implements BatEntityPrimitives {
         + "    t.setResult(globals()[t.getFunName()](*args))\n";
   }
   protected String pythonArgExpression() { return "t.getParameter(i)"; }
-  @Override public void command(String command, BufferedWriter out)
-  {
-    // TODO if use
-  }
 }

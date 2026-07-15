@@ -1,8 +1,6 @@
 package plm.test.simple;
 
-import java.io.BufferedWriter;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.test.simple.SimpleWorld;
 import plm.universe.Entity;
 
 @EntityPrimitives(SimpleEntityPrimitives.class)
@@ -19,6 +17,4 @@ public class SimpleExerciseEntity extends Entity implements SimpleEntityPrimitiv
     /* END SOLUTION */
   }
   /* END TEMPLATE */
-
-  @Override public void command(String command, BufferedWriter out) {}
 }

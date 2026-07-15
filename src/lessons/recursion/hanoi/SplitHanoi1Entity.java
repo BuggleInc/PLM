@@ -1,33 +1,10 @@
 package lessons.recursion.hanoi;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.lang.primitives.EntityPrimitives;
 
 @EntityPrimitives(lessons.recursion.hanoi.SplitHanoi1Entity.class)
 public class SplitHanoi1Entity extends HanoiEntity {
-
-  @Override public void command(String command, BufferedWriter out)
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    int nb;
-    try {
-      switch (num) {
-        case 114:
-          nb = Integer.parseInt((command.split(" ")[1]));
-          out.write(Integer.toString(getParamInt(nb)));
-          out.write("\n");
-          break;
-        default:
-          super.command(command, out);
-          break;
-      }
-      out.flush();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-  }
 
   public void run() { solve(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3)); }
   /* BEGIN TEMPLATE */

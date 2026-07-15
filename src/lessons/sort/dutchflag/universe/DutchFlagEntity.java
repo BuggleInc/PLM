@@ -1,9 +1,6 @@
 package lessons.sort.dutchflag.universe;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -63,45 +60,4 @@ public class DutchFlagEntity extends Entity implements DutchFlagEntityPrimitives
   public final static int BLEU  = BLUE;
   public final static int BLANC = WHITE;
   public final static int ROUGE = RED;
-
-  @Override public void command(String command, BufferedWriter out)
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    int nb, nb2;
-    try {
-      switch (num) {
-        case 110:
-          nb  = Integer.parseInt((command.split(" ")[1]));
-          nb2 = Integer.parseInt((command.split(" ")[2]));
-          swap(nb, nb2);
-          break;
-        case 111:
-          out.write(Integer.toString(getSize()));
-          out.write("\n");
-          break;
-        case 112:
-          nb = Integer.parseInt((command.split(" ")[1]));
-          out.write(Integer.toString(getColor(nb)));
-          out.write("\n");
-          break;
-        case 113:
-          out.write((isSorted() ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 114:
-          out.write((isSelected() ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 115:
-          assertSorted();
-          break;
-        default:
-          System.out.println("COMMANDE INCONNUE : " + command);
-          break;
-      }
-      out.flush();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-  }
 }

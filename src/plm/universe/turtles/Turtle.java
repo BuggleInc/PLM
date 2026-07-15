@@ -1,13 +1,9 @@
 package plm.universe.turtles;
 
 import java.awt.Color;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
-import plm.core.utils.ColorMapper;
-import plm.core.utils.InvalidColorNameException;
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -407,122 +403,4 @@ public class Turtle extends Entity implements TurtlePrimitives {
   public void cache() { hide(); }
   public void montre() { show(); }
   public boolean estVisible() { return isVisible(); }
-
-  @Override public void command(String command, BufferedWriter out)
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    double nb, nb2;
-    int nbInt;
-    try {
-      switch (num) {
-        case 110:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          left(nb);
-          break;
-        case 111:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          right(nb);
-          break;
-        case 112:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          forward(nb);
-          break;
-        case 113:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          backward(nb);
-          break;
-        case 114:
-          out.write(Double.toString(getX()));
-          out.write("\n");
-          break;
-        case 115:
-          out.write(Double.toString(getY()));
-          out.write("\n");
-          break;
-        case 116:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          setX(nb);
-          break;
-        case 117:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          setY(nb);
-          break;
-        case 118:
-          nb  = Double.parseDouble((command.split(" ")[1]));
-          nb2 = Double.parseDouble((command.split(" ")[2]));
-          setPos(nb, nb2);
-          break;
-        case 119:
-          nb  = Double.parseDouble((command.split(" ")[1]));
-          nb2 = Double.parseDouble((command.split(" ")[2]));
-          moveTo(nb, nb2);
-          break;
-        case 120:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          circle(nb);
-          break;
-        case 121:
-          hide();
-          break;
-        case 122:
-          show();
-          break;
-        case 123:
-          out.write((isVisible() ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 124:
-          clear();
-          break;
-        case 125:
-          out.write(Double.toString(getHeading()));
-          out.write("\n");
-          break;
-        case 126:
-          nb = Double.parseDouble((command.split(" ")[1]));
-          setHeading(nb);
-          break;
-        case 127:
-          penUp();
-          break;
-        case 128:
-          penDown();
-          break;
-        case 129:
-          out.write((isPenDown() ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 130:
-          out.write(color2int(getColor()));
-          out.write("\n");
-          break;
-        case 131:
-          nbInt = Integer.parseInt((command.split(" ")[1]));
-          setColor(ColorMapper.int2color(nbInt));
-          break;
-        case 132:
-          out.write((isSelected() ? "1" : "0"));
-          out.write("\n");
-          break;
-        case 200:
-          nbInt = Integer.parseInt((command.split(" ")[1]));
-          out.write(Integer.toString(getParamInt(nbInt)));
-          out.write("\n");
-          break;
-        case 201:
-          nbInt = Integer.parseInt((command.split(" ")[1]));
-          out.write(Double.toString(getParamDouble(nbInt)));
-          out.write("\n");
-          break;
-        default:
-          System.out.println("COMMANDE INCONNUE : " + command);
-          break;
-      }
-      out.flush();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    } catch (InvalidColorNameException ine) {
-      ine.printStackTrace();
-    }
-  }
 }

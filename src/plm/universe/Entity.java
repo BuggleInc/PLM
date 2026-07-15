@@ -1,6 +1,5 @@
 package plm.universe;
 
-import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -132,13 +131,6 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    * This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)
    */
   public abstract void run() throws Exception;
-
-  /**
-   * Allows Entity to communicate with external programs, as needed to execute C programs
-   *
-   * @throws Exception
-   */
-  public abstract void command(String command, BufferedWriter out) throws Exception;
 
   public void setScript(ProgrammingLanguage lang, String s) { script.put(lang, s); }
 

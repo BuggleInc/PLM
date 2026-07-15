@@ -1,7 +1,5 @@
 package lessons.sort.pancake;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
 import plm.core.lang.primitives.EntityPrimitives;
@@ -21,26 +19,6 @@ import plm.core.lang.primitives.Primitive;
 public class GatesPancakeEntity extends PancakeEntity {
 
   @Primitive(116) public boolean wasRandom() { return ((PancakeWorld)world).wasRandom; }
-
-  // FIXME: killme and merge it to parent class
-  @Override public void command(String command, BufferedWriter out)
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    try {
-      switch (num) {
-        case 116:
-          out.write(wasRandom() ? "1" : "0");
-          out.write("\n");
-          break;
-        default:
-          super.command(command, out);
-          break;
-      }
-      out.flush();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-  }
 
   public void run() { solve(); }
 

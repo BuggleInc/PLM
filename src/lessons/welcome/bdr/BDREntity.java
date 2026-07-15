@@ -1,30 +1,9 @@
 package lessons.welcome.bdr;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import plm.core.lang.primitives.EntityPrimitives;
 
 @EntityPrimitives(lessons.welcome.bdr.BDREntity.class)
 public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
-
-  @Override public void command(String command, BufferedWriter out) throws Exception
-  {
-    int num = Integer.parseInt((String)command.subSequence(0, 3));
-    try {
-      switch (num) {
-        case 148:
-          out.write(getIndicationBdr());
-          out.write("\n");
-          out.flush();
-          break;
-        default:
-          super.command(command, out);
-          break;
-      }
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-  }
 
   @Override public char getIndicationBdr()
   {

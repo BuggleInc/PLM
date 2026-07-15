@@ -6,10 +6,6 @@ import scala.collection.JavaConversions._
 class LanderEntity extends Entity {
 
   private def landerWorld = getWorld().asInstanceOf[DelegatingLanderWorld].realWorld
-
-  override def command(command: String, out: java.io.BufferedWriter){
-    
-  }
   
   override def run() = {
     initialize()
