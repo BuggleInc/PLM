@@ -1,16 +1,20 @@
 package lessons.turmites.universe;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Direction;
 import plm.universe.World;
-import plm.universe.bugglequest.Buggle;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.ui.BuggleWorldView;
 
@@ -64,24 +68,16 @@ public class TurmiteWorld extends BuggleWorld {
   /** Used to check whether the student code changed the world in the right state */
   @Override public boolean equals(Object o)
   {
-    // hack hack hack: Avoid false negative with answer worlds that were serialized as BuggleWorlds
-    if (o instanceof BuggleWorld && !(o instanceof TurmiteWorld))
-      return super.equals(o);
-
     if (o == null || !(o instanceof TurmiteWorld))
       return false;
-    if (((TurmiteWorld)o).currStep != currStep && ((TurmiteWorld)o).currStep != 0) // allow other world to be a cache from disk
+    if (((TurmiteWorld)o).currStep != currStep)
       return false;
     return super.equals(o);
   }
   @Override public String diffTo(World other)
   {
-    // hack hack hack: Avoid false negative with answer worlds that were serialized as BuggleWorlds
-    if (other instanceof BuggleWorld && !(other instanceof TurmiteWorld))
-      return "other is not a turmiteWorld, but that's ok\n" + super.diffTo(other);
-
     String res = "";
-    if (((TurmiteWorld)other).currStep != currStep && ((TurmiteWorld)other).currStep != 0) // allow other world to be a cache from disk
+    if (((TurmiteWorld)other).currStep != currStep)
       res += "The amount of steps is wrong: " + ((TurmiteWorld)other).currStep + " is not " + currStep + "\n";
     return res + super.diffTo(other);
   }
@@ -109,5 +105,26 @@ public class TurmiteWorld extends BuggleWorld {
     TurmiteWorld res = new TurmiteWorld("toto", 1, "", 1, 1, 1, 1);
     res.removeEntity(res.getEntity(0));
     return res.readFromFile(path, "TurmiteWorld", res);
+  }
+
+  @Override protected String serializedClassName() { return "TurmiteWorld"; }
+
+  /** Writes the "Step: N" header line right after "Size: WxH", so that currStep round-trips through the .map file. */
+  @Override protected void writeExtraHeader(BufferedWriter writer) throws IOException { writer.write("Step: " + currStep + "\n"); }
+
+  /** Reads back the "Step: N" header line written by writeExtraHeader, and returns the following line. */
+  @Override protected String readExtraHeader(String path, BufferedReader reader) throws IOException, BrokenWorldFileException
+  {
+    String line = reader.readLine();
+    if (line == null)
+      throw new BrokenWorldFileException(Game.i18n.tr("{0}.map: End of file reached before the step count specification.", path));
+
+    Pattern p = Pattern.compile("^Step: (\\d+)$");
+    Matcher m = p.matcher(line);
+    if (!m.find())
+      throw new BrokenWorldFileException(Game.i18n.tr("{0}.map: Expected ''Step: N'' but got ''{1}''.", path, line));
+    currStep = Integer.parseInt(m.group(1));
+
+    return reader.readLine();
   }
 }

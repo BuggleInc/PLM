@@ -96,8 +96,16 @@ public class BuggleWorld extends GridWorld {
   {
     BuggleWorld res = new BuggleWorld("toto", 1, 1);
 
-    return readFromFile(path, "BuggleWorld", res);
+    return readFromFile(path, res.serializedClassName(), res);
   }
+
+  /**
+   * Hook called right after the "Size: WxH" line has been parsed, and before the Buggle/Cell lines are read.
+   *
+   * Subclasses adding their own header must override this to consume them, and return the first line that readFromFile() should
+   * treat as a Buggle/Cell line (typically by reading one more line before returning, as done here).
+   */
+  protected String readExtraHeader(String path, BufferedReader reader) throws IOException, BrokenWorldFileException { return reader.readLine(); }
 
   public World readFromFile(String path, String classname, BuggleWorld res) throws IOException, BrokenWorldFileException
   {
@@ -134,7 +142,8 @@ public class BuggleWorld extends GridWorld {
     res.setWidth(width);
     res.setHeight(height);
 
-    line = reader.readLine();
+    // Let subclasses consume any extra header line(s) (e.g. TurmiteWorld's step counter) before we get to the Buggle/Cell lines
+    line = res.readExtraHeader(path, reader);
 
     Pattern bugglePattern =
         Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),([^,]+),([^,]+),([^,]+),([^,]+),$"); // direction, color, brush, name, haveBaggle|noBaggle
@@ -251,11 +260,18 @@ public class BuggleWorld extends GridWorld {
     return res;
   }
 
+  /** The class name written on the first line of the serialized file (e.g. "BuggleWorld", "TurmiteWorld"). */
+  protected String serializedClassName() { return "BuggleWorld"; }
+
+  // Hook called right after the "Size: WxH" line has been written, letting subclasses add their own header line(s)
+  protected void writeExtraHeader(BufferedWriter writer) throws IOException {}
+
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
 
-    writer.write("BuggleWorld: " + getName() + "\n");
+    writer.write(serializedClassName() + ": " + getName() + "\n");
     writer.write("Size: " + getWidth() + "x" + getHeight() + "\n");
+    writeExtraHeader(writer);
 
     for (Entity e : getEntities()) {
       AbstractBuggle b = (AbstractBuggle)e;
