@@ -4,6 +4,7 @@ import java.util.Iterator;
 import scala.collection.JavaConversions._
 
 import lessons.lander.universe._;
+import lessons.lander.universe.LanderWorld._;
 
 class ScalaFlyTheLanderEntity extends LanderEntity {
   /* BEGIN TEMPLATE */

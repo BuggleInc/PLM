@@ -2,6 +2,7 @@ package lessons.lander.lvl2_locate_landing_zone;
 
 import java.util.Iterator;
 import scala.collection.JavaConversions._
+import lessons.lander.universe.LanderWorld._
 
 import lessons.lander.universe._;
 

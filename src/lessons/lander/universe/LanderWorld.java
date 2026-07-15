@@ -1,0 +1,243 @@
+package lessons.lander.universe;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
+import plm.core.ui.ResourcesCache;
+import plm.core.ui.WorldView;
+import plm.universe.World;
+
+public class LanderWorld extends World {
+  /** Immutable 2D point / vector */
+  public static class Point {
+    double x;
+    double y;
+    public Point(double x, double y)
+    {
+      this.x = x;
+      this.y = y;
+    }
+    public double x() { return x; }
+    public double y() { return y; }
+
+    public Point plus(Point p) { return new Point(x + p.x, y + p.y); }
+    public Point minus(Point p) { return new Point(x - p.x, y - p.y); }
+    public Point times(double l) { return new Point(x * l, y * l); }
+    public Point dividedBy(double l) { return new Point(x / l, y / l); }
+    public Point negate() { return this.times(-1); }
+
+    public double length() { return Math.sqrt(x * x + y * y); }
+    public Point normed() { return this.dividedBy(length()); }
+    public double dot(Point p) { return x * p.x + y * p.y; }
+    public double cross(Point p) { return x * p.y - y * p.x; }
+  }
+
+  /** A ground segment between two consecutive terrain points. */
+  public static class Segment {
+    Point start;
+    Point end;
+    public Segment(Point s, Point e)
+    {
+      start = s;
+      end   = e;
+    }
+    public Point start() { return start; }
+    public Point end() { return end; }
+
+    /** Used internally to test whether a point is underground. */
+    boolean intersects(LanderWorld.Segment s)
+    {
+      LanderWorld.Point v = s.end().minus(s.start());
+      double cross        = end.cross(v);
+      if (cross == 0) {
+        return false;
+      }
+      double f1 = s.start().minus(start).cross(v) / cross;
+      double f2 = s.start().minus(start).cross(end) / cross;
+      return f1 >= 0 && f2 >= 0 && f2 <= 1;
+    }
+  }
+  /** Small numeric helpers */
+  static double clamp(double min, double max, double value) { return value < min ? min : Math.min(value, max); }
+  static int clamp(int min, int max, int value) { return value < min ? min : Math.min(value, max); }
+  static LanderWorld.Point radianToVector(double angle) { return new LanderWorld.Point(Math.cos(angle), Math.sin(angle)); }
+  static double gameAngleToRadian(double angle) { return (angle + 90) * Math.PI / 180; }
+  // End of the helpers
+
+  public enum State { FLYING, LANDED, CRASHED, OUT }
+
+  private static final Point GRAVITY = new Point(0, -1).times(3.711);
+
+  int width;
+  int height;
+  List<Point> ground;
+  Point position;
+  Point speed;
+  /** Angle in degrees, 0 points north, 90 points west. */
+  double angle;
+  int thrust;
+  int fuel;
+  State state = State.FLYING;
+
+  double desiredAngle;
+  int desiredThrust;
+
+  public LanderWorld(String name, int width, int height, List<Point> ground, Point position, Point speed, double angle, int thrust, int fuel)
+  {
+    super(name);
+    this.width    = width;
+    this.height   = height;
+    this.ground   = ground;
+    this.position = position;
+    this.speed    = speed;
+    this.angle    = angle;
+    this.thrust   = thrust;
+    this.fuel     = fuel;
+    setDelay(10);
+    addEntity(new LanderEntity());
+  }
+
+  /** Copy constructor, required by World.copy() (found by reflection). */
+  public LanderWorld(LanderWorld world)
+  {
+    super(world.getName());
+    reset(world);
+  }
+
+  @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_lander.png"); }
+
+  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException
+  {
+    if (lang.isPython()) {
+      engine.put("Segment", Segment.class);
+      engine.eval("def isFlying():\n"
+                  + "  return entity.isFlying()\n"
+                  + "def simulateStep():\n"
+                  + "  entity.simulateStep()\n"
+                  + "def getGround():\n"
+                  + "  return [ (elm.x(), elm.y()) for elm in entity.getGround() ]\n"
+                  + "def getX():\n"
+                  + "  return entity.getX()\n"
+                  + "def getY():\n"
+                  + "  return entity.getY()\n"
+                  + "def getSpeedX():\n"
+                  + "  return entity.getSpeedX()\n"
+                  + "def getSpeedY():\n"
+                  + "  return entity.getSpeedY()\n"
+                  + "def getAngle():\n"
+                  + "  return entity.getAngle()\n"
+                  + "def setDesiredAngle(a):\n"
+                  + "  entity.setDesiredAngle(a)\n"
+                  + "def getThrust():\n"
+                  + "  return entity.getThrust()\n"
+                  + "def setDesiredThrust(t):\n"
+                  + "  entity.setDesiredThrust(t)\n"
+                  + "def getFuel():\n"
+                  + "  return entity.getFuel()\n"
+                  + "");
+    } else {
+      throw new RuntimeException("No binding of LanderWorld for " + lang);
+    }
+  }
+
+  /** Returns true if the lander landed successfully. */
+  @Override public boolean winning(World target) { return state == State.LANDED; }
+
+  @Override public String diffTo(World world) { return null; }
+
+  @Override public void reset(World initialWorld)
+  {
+    LanderWorld iw = (LanderWorld)initialWorld;
+    width          = iw.width;
+    height         = iw.height;
+    ground         = iw.ground;
+    position       = iw.position;
+    speed          = iw.speed;
+    angle          = iw.angle;
+    thrust         = iw.thrust;
+    fuel           = iw.fuel;
+    state          = iw.state;
+    desiredAngle   = angle;
+    desiredThrust  = thrust;
+    super.reset(initialWorld);
+  }
+
+  @Override public WorldView getView() { return new LanderWorldView(this); }
+
+  @Override public String toString() { return "java lander world"; }
+
+  // simulation
+  double angleRadian() { return gameAngleToRadian(angle); }
+
+  private List<Segment> groundSegments()
+  {
+    List<Segment> segments = new ArrayList<>();
+    for (int i = 0; i + 1 < ground.size(); i++) {
+      segments.add(new Segment(ground.get(i), ground.get(i + 1)));
+    }
+    return segments;
+  }
+
+  private List<Segment> flatSegments()
+  {
+    List<Segment> flat = new ArrayList<>();
+    for (Segment s : groundSegments()) {
+      if (s.start().y() == s.end().y()) {
+        flat.add(s);
+      }
+    }
+    return flat;
+  }
+
+  private boolean touchesSomeFlatSegment(Point p)
+  {
+    for (Segment s : flatSegments()) {
+      if (p.x() > s.start().x() && p.x() < s.end().x() && p.y() - s.start().y() < 1) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private boolean isUnderground(Point p)
+  {
+    Segment ray       = new Segment(p, new Point(0, 1));
+    int crossingCount = 0;
+    for (Segment s : groundSegments()) {
+      if (ray.intersects(s)) {
+        crossingCount++;
+      }
+    }
+    return crossingCount % 2 == 1;
+  }
+
+  void simulate(double dt)
+  {
+    if (state != State.FLYING) {
+      return;
+    }
+
+    angle       = clamp(Math.max(-90.0, angle - 5), Math.min(90.0, angle + 5), desiredAngle);
+    thrust      = Math.min(clamp(Math.max(0, thrust - 1), Math.min(5, thrust + 1), desiredThrust), fuel);
+    Point force = radianToVector(angleRadian()).times(thrust).plus(GRAVITY);
+    position    = position.plus(speed.times(dt));
+    speed       = speed.plus(force.times(dt));
+    fuel        = Math.max(fuel - thrust, 0);
+
+    boolean underground = isUnderground(position);
+    boolean goodConfig  = Math.abs(speed.y()) <= 10 && Math.abs(speed.x()) <= 5 && (angleRadian() - Math.PI / 2) < 1e-2;
+    boolean touchesFlat = touchesSomeFlatSegment(position);
+    boolean outOfWorldX = position.x() < 0 || position.x() > width;
+    boolean outOfWorldY = position.y() < 0 || position.y() > height;
+    boolean outOfWorld  = outOfWorldX || outOfWorldY;
+
+    if (underground) {
+      state = (goodConfig && touchesFlat) ? State.LANDED : State.CRASHED;
+    } else {
+      state = outOfWorld ? State.OUT : State.FLYING;
+    }
+  }
+}

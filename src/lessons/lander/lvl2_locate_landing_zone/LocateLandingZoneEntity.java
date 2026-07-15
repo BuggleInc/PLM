@@ -2,8 +2,8 @@ package lessons.lander.lvl2_locate_landing_zone;
 
 import java.util.Iterator;
 import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.Point;
-import lessons.lander.universe.Segment;
+import lessons.lander.universe.LanderWorld.Point;
+import lessons.lander.universe.LanderWorld.Segment;
 
 public class LocateLandingZoneEntity extends LanderEntity {
   /* BEGIN TEMPLATE */
