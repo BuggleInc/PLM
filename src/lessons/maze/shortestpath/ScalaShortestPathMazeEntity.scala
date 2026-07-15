@@ -30,8 +30,6 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		return 9999;
 	}
 	def hasBaggle(x:Int, y:Int):   Boolean = world.asInstanceOf[BuggleWorld].getCell(x,y).hasBaggle();
-	def hasTopWall(x:Int, y:Int):  Boolean = world.asInstanceOf[BuggleWorld].getCell(x,y).hasTopWall();
-	def hasLeftWall(x:Int, y:Int): Boolean = world.asInstanceOf[BuggleWorld].getCell(x,y).hasLeftWall();
 
 	/* BEGIN TEMPLATE */
 	override def run() {

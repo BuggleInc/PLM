@@ -389,19 +389,9 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 
   @Override public void clearMessage() { getCell().emptyContent(); }
 
-  @Override public boolean primitiveHasTopWall(int x, int y)
-  {
-    this.x = x;
-    this.y = y;
-    return getCell().hasTopWall();
-  }
+  @Override public boolean hasTopWall(int x, int y) { return ((BuggleWorld)world).getCell(x, y).hasTopWall(); }
 
-  @Override public boolean primitiveHasLeftWall(int x, int y)
-  {
-    this.x = x;
-    this.y = y;
-    return getCell().hasLeftWall();
-  }
+  @Override public boolean hasLeftWall(int x, int y) { return ((BuggleWorld)world).getCell(x, y).hasLeftWall(); }
 
   @Override public String toString()
   {
@@ -711,12 +701,12 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
         case 146: // hasTopWall
           int x = Integer.parseInt((command.split(" ")[1]));
           int y = Integer.parseInt((command.split(" ")[2]));
-          out.write(primitiveHasTopWall(x, y) ? "1\n" : "0\n");
+          out.write(hasTopWall(x, y) ? "1\n" : "0\n");
           break;
         case 147: // hasLeftWall
           x = Integer.parseInt((command.split(" ")[1]));
           y = Integer.parseInt((command.split(" ")[2]));
-          out.write(primitiveHasLeftWall(x, y) ? "1\n" : "0\n");
+          out.write(hasLeftWall(x, y) ? "1\n" : "0\n");
           break;
         case 148: // getIndicationBdr
           out.write(getIndicationBdr());
