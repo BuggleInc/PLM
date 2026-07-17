@@ -1,7 +1,5 @@
 package lessons.recursion.hanoi;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.lang.primitives.EntityPrimitives;
 
