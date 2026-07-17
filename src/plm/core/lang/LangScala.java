@@ -110,21 +110,6 @@ public class LangScala extends JVMCompiledLang {
     }
   }
 
-  /** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
-  @Override public String nameOfCorrectionEntity(Exercise exo)
-  {
-    String path = super.nameOfCorrectionEntity(exo);
-
-    String[] components  = path.split("\\.");
-    StringBuilder result = new StringBuilder();
-    int last             = components.length - 1;
-    for (int i = 0; i < last; i++) {
-      result.append(components[i] + ".");
-    }
-    result.append("Scala" + components[last]);
-    return result.toString();
-  }
-
   @Override protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException
   {
     return (Entity)compiler.findClass(className(newClassName)).newInstance();

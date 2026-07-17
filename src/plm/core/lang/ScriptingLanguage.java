@@ -24,7 +24,7 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
 
   @Override public List<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate)
   {
-    String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : nameOfCorrectionEntity(exo));
+    String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? exo.getTabName() : exo.nameOfCorrectionEntity());
 
     if (whatToMutate == StudentOrCorrection.STUDENT) {
       boolean foundScript = false;
@@ -52,9 +52,9 @@ public abstract class ScriptingLanguage extends ProgrammingLanguage {
     } else { // whatToMutate == StudentOrCorrection.CORRECTION
       StringBuffer sb = null;
       try {
-        sb = FileUtils.readContentAsText(this.nameOfCorrectionEntity(exo), getExt(), false);
+        sb = FileUtils.readContentAsText(exo.nameOfCorrectionEntity(), getExt(), false);
       } catch (IOException ex) {
-        throw new RuntimeException("Cannot compute the answer from file " + nameOfCorrectionEntity(exo) + "." + getExt() +
+        throw new RuntimeException("Cannot compute the answer from file " + exo.nameOfCorrectionEntity() + "." + getExt() +
                                    " since I cannot read it (error was: " + ex.getLocalizedMessage());
       }
       String script = sb.toString();
