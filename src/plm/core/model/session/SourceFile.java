@@ -64,13 +64,34 @@ public class SourceFile {
     if (whatToRetrieve == StudentOrCorrection.CORRECTION) {
       final String BEGIN_TEMPLATE = "/* BEGIN TEMPLATE */";
       final String END_TEMPLATE   = "/* END TEMPLATE */";
-      String body                 = correction.substring(Math.max(correction.indexOf(BEGIN_TEMPLATE), 0),
-                                                         Math.min(correction.indexOf(END_TEMPLATE) + END_TEMPLATE.length() + 1, correction.length()));
-      res                         = template.replace("$body", body + " \n");
-      ;
+      final String BEGIN_SOLUTION = "/* BEGIN SOLUTION */";
+      final String END_SOLUTION   = "/* END SOLUTION */";
+
+      String beginMarker;
+      String endMarker;
+      if (correction.contains(BEGIN_TEMPLATE) && correction.contains(END_TEMPLATE)) {
+        /* Normal case: the correction entity explicitly delimits the templated region */
+        beginMarker = BEGIN_TEMPLATE;
+        endMarker   = END_TEMPLATE;
+      } else if (correction.contains(BEGIN_SOLUTION) && correction.contains(END_SOLUTION)) {
+        /* No BEGIN/END TEMPLATE: the whole run() is graded, only BEGIN/END SOLUTION delimit it. */
+        beginMarker = BEGIN_SOLUTION;
+        endMarker   = END_SOLUTION;
+      } else {
+        throw new RuntimeException("Broken exercise: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION exist in file " + name);
+      }
+
+      String body;
+      if (beginMarker != null) {
+        body = correction.substring(Math.max(correction.indexOf(beginMarker), 0),
+                                    Math.min(correction.indexOf(endMarker) + endMarker.length() + 1, correction.length()));
+      } else {
+        body = correction;
+      }
+      res = template.replace("$body", body + " \n");
     } else if (template != null) {
       res = template.replaceAll("\\$body", this.body + " \n");
-      ;
+
     } else {
       res = this.body;
     }
