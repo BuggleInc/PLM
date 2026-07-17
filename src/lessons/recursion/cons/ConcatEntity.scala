@@ -12,7 +12,7 @@ class ConcatEntity extends ConsEntity {
       val count = getTestCount()
       for (i <- 0 to count -1) {
         val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
-      	setTestResult(i, serialize(concat( param(0).asInstanceOf[Array[Int]].toList, param(1).asInstanceOf[Array[Int]].toList ) ))
+      	setTestResult(i, serialize(concat( param(0).asInstanceOf[Array[Int]].toList, param(1).asInstanceOf[Array[Int]].toList ).toArray ))
 	  }
 	}
 
