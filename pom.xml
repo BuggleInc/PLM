@@ -11,10 +11,8 @@
 
   <name>Programmer's Learning Machine</name>
   <description>
-    Maven build for PLM. Replaces the legacy ant build (build.xml) and its
-    hand-vendored lib/*.jar binaries. Dependencies are declared here and
-    fetched from Maven Central; the project is compiled jointly (Java + Scala)
-    from the existing src/ tree, and `mvn package` produces a self-contained
+    Maven build for PLM. Replaces the legacy ant build (build.xml) and its hand-vendored lib/*.jar binaries. Dependencies are declared here and
+    fetched from Maven Central; the project is compiled from the existing src/ tree, and `mvn package` produces a self-contained
     shaded uber-jar runnable as plm.core.ui.ProgrammersLearningMachine.
   </description>
 
@@ -209,10 +207,8 @@
   </dependencies>
 
   <build>
-    <!-- Resources: mirror what the ant `dist` target jars (build.xml). The
-         non-.java/.scala files under src/ are exercise templates and Swing
-         assets that PLM reads at runtime, plus img/, lib/resources, lib/doc,
-         and ChangeLog. -->
+    <!-- Resources: The non-.java files under src/ are exercise templates and Swing assets that PLM reads at runtime, 
+         plus img/, lib/resources, lib/doc, and ChangeLog. -->
     <resources>
       <resource>
         <directory>src</directory>
@@ -278,37 +274,7 @@
         </executions>
       </plugin>
 
-      <!-- Joint Java+Scala compilation: scalac sees the Java sources and
-           javac sees the scalac output, so the two languages can
-           cross-reference each other (Scala lessons extend Java universe
-           classes; Java loads Scala via reflection). -->
-      <plugin>
-        <groupId>net.alchim31.maven</groupId>
-        <artifactId>scala-maven-plugin</artifactId>
-        <version>4.9.2</version>
-        <configuration>
-          <scalaVersion>${scala.version}</scalaVersion>
-          <args>
-            <arg>-nobootcp</arg>
-          </args>
-          <jvmArgs>
-            <jvmArg>-Xss8m</jvmArg>
-          </jvmArgs>
-        </configuration>
-        <executions>
-          <execution>
-            <id>scala-compile</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>add-source</goal>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- javac runs after scalac (joint compilation): the Scala .class
-           files are on the classpath so Java can reference Scala types. -->
+      <!-- compilation with javac. No scala file is part of the PLM itself -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
