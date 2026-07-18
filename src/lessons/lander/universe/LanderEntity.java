@@ -2,20 +2,15 @@ package lessons.lander.universe;
 
 import java.util.List;
 import lessons.lander.universe.LanderWorld.Point;
+import plm.core.lang.primitives.EntityPrimitives;
 import plm.universe.Entity;
 
-public class LanderEntity extends Entity {
+@EntityPrimitives(LanderEntityPrimitives.class)
+public class LanderEntity extends Entity implements LanderEntityPrimitives {
 
   private LanderWorld landerWorld() { return (LanderWorld)getWorld(); }
 
-  @Override public void run()
-  {
-    initialize();
-    while (isFlying()) {
-      step();
-      simulateStep();
-    }
-  }
+  @Override public void run() { /* To be overwritten */ }
 
   // methods to be overridden by the player
   public void initialize() {}
@@ -25,20 +20,19 @@ public class LanderEntity extends Entity {
   public List<Point> getGround() { return landerWorld().ground; }
 
   // query lander state
-  public double getX() { return landerWorld().position.x(); }
-  public double getY() { return landerWorld().position.y(); }
-  public double getSpeedX() { return landerWorld().speed.x(); }
-  public double getSpeedY() { return landerWorld().speed.y(); }
-  public double getAngle() { return landerWorld().angle; }
-  public int getThrust() { return landerWorld().thrust; }
-  public int getFuel() { return landerWorld().fuel; }
+  @Override public double getX() { return landerWorld().position.x(); }
+  @Override public double getY() { return landerWorld().position.y(); }
+  @Override public double getSpeedX() { return landerWorld().speed.x(); }
+  @Override public double getSpeedY() { return landerWorld().speed.y(); }
+  @Override public double getAngle() { return landerWorld().angle; }
+  @Override public int getThrust() { return landerWorld().thrust; }
+  @Override public int getFuel() { return landerWorld().fuel; }
 
-  public void setDesiredAngle(double desiredAngle) { landerWorld().desiredAngle = desiredAngle; }
-  public void setDesiredThrust(int desiredThrust) { landerWorld().desiredThrust = desiredThrust; }
+  @Override public void setDesiredAngle(double desiredAngle) { landerWorld().desiredAngle = desiredAngle; }
+  @Override public void setDesiredThrust(int desiredThrust) { landerWorld().desiredThrust = desiredThrust; }
 
-  /* Internal commands used by the python entities to simulate the above run method */
-  public boolean isFlying() { return landerWorld().state == LanderWorld.State.FLYING; }
-  public void simulateStep()
+  @Override public boolean isFlying() { return landerWorld().state == LanderWorld.State.FLYING; }
+  @Override public void simulateStep()
   {
     landerWorld().simulate(0.1);
     stepUI();

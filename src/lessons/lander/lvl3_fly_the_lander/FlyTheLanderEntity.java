@@ -5,6 +5,15 @@ import lessons.lander.universe.LanderEntity;
 import lessons.lander.universe.LanderWorld.Point;
 
 public class FlyTheLanderEntity extends LanderEntity {
+  @Override public void run()
+  {
+    initialize();
+    while (isFlying()) {
+      step();
+      simulateStep();
+    }
+  }
+
   /* BEGIN TEMPLATE */
   /* BEGIN HIDDEN */
   double targetStart;

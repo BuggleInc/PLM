@@ -167,8 +167,8 @@ public class LangJava extends JVMCompiledLang {
       return "RemoteHanoi";
     if (code.contains("Sort"))
       return "RemoteSort";
-    //      if (code.contains("Lander"))
-    //        return "RemoteLander";
+    if (code.contains("Lander"))
+      return "RemoteLander";
 
     return null;
   }

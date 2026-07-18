@@ -6,6 +6,15 @@ import lessons.lander.universe.LanderWorld.Point;
 import lessons.lander.universe.LanderWorld.Segment;
 
 public class LocateLandingZoneEntity extends LanderEntity {
+  @Override public void run()
+  {
+    initialize();
+    while (isFlying()) {
+      step();
+      simulateStep();
+    }
+  }
+
   /* BEGIN TEMPLATE */
   public Segment getLandingZone()
   {

@@ -3,6 +3,15 @@ package lessons.lander.lvl1_lander_101;
 import lessons.lander.universe.LanderEntity;
 
 public class Lander101Entity extends LanderEntity {
+  @Override public void run()
+  {
+    initialize();
+    while (isFlying()) {
+      step();
+      simulateStep();
+    }
+  }
+
   @Override public void step()
   {
     /* BEGIN TEMPLATE */
