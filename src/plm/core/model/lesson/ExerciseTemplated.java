@@ -34,10 +34,14 @@ public abstract class ExerciseTemplated extends Exercise {
   public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String patternString) throws NoSuchEntityException
   {
 
-    String shownFilename = filename.replaceAll("\\.", "/") + "." + lang.getExt();
-    StringBuffer sb      = null;
+    String shownFilename =
+        filename.replaceAll("\\.", "/") + (lang.equals(Game.getInstance().getProgrammingLanguageManager().SCALA) ? "Scala" : "") + "." + lang.getExt();
+
+    String realFileName = filename + (lang.equals(Game.getInstance().getProgrammingLanguageManager().SCALA) ? "Scala" : "");
+
+    StringBuffer sb = null;
     try {
-      sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
+      sb = FileUtils.readContentAsText(realFileName, lang.getExt(), false);
     } catch (IOException ex) {
       throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replaceAll("\\.", "/"), lang.getExt()));
     }
