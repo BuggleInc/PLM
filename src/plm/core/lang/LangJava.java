@@ -29,6 +29,7 @@ import plm.core.ui.ResourcesCache;
 import plm.universe.CommandExecutor;
 import plm.universe.Direction;
 import plm.universe.Entity;
+import plm.universe.Point;
 
 public class LangJava extends JVMCompiledLang {
   /**
@@ -65,44 +66,70 @@ public class LangJava extends JVMCompiledLang {
 
   private static @NonNull String getCorrectedTemplate(String correction)
   {
+    int beginTemplateIndex    = correction.indexOf("/* BEGIN TEMPLATE */");
+    int beginTemplateIndexEnd = beginTemplateIndex + "/* BEGIN TEMPLATE */".length();
+    int endTemplateIndex      = correction.indexOf("/* END TEMPLATE */");
+    int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
+    int runFunctionI          = correction.indexOf("void run(");
 
-    int runFunctionI = correction.indexOf("void run(");
-
-    int beginTemplateIndex = correction.indexOf("/* BEGIN TEMPLATE */") + "/* BEGIN TEMPLATE */".length();
-    int endTemplateIndex   = correction.indexOf("/* END TEMPLATE */");
-    int beginSolutionIndex = correction.indexOf("/* BEGIN SOLUTION */");
+    // Containment between the templated region [beginTemplateIndexRaw, endTemplateIndexEnd) and run()'s own real span
+    // (brace-matched, not a hand-picked offset) decides which shape the generated Entity class needs -- NOT how many
+    // characters of whitespace happen to separate two comment markers, which only reflects the codebase's usual
+    // indentation and silently breaks for any file where run() and the templated method are separate (see
+    // extractRunSpan()'s doc for the concrete example this fixes).
+    int[] runSpan = extractRunSpan(correction);
 
     String template;
-    if (beginSolutionIndex == beginTemplateIndex + 5)
+    if (runSpan != null && runSpan[0] <= runFunctionI && endTemplateIndex != -1 && beginTemplateIndex <= runFunctionI && runFunctionI <= endTemplateIndex) {
+      // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
+      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
+    } else if (runSpan != null && runSpan[0] <= beginTemplateIndex && endTemplateIndexEnd <= runSpan[1]) {
+      // The templated region sits fully inside run()'s braces, but run()'s own declaration line is outside it: the
+      // templated text is just run()'s body.
       template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\tpublic void run(){\n$body\t}\n}";
-    else {
-      if (beginTemplateIndex < runFunctionI && runFunctionI < endTemplateIndex)
-        template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
-      else
-        template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n$run\n\t\n$body\n}";
+    } else {
+      // run() and the templated region are disjoint (e.g. templated code lives in a separate step()-like method): keep
+      // run() intact via $run, and place the templated text elsewhere in the class body via $body.
+      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n$run\n\t\n$body\n}";
     }
     return template;
   }
 
-  private static String extractRunFunction(String code)
+  /**
+   * Returns [start, end) of run()'s own text (its declaration line through its brace-matched closing '}'), the same span
+   * extractRunFunction() below extracts as a string -- or null if there's no "void run(" at all.
+   *
+   * getCorrectedTemplate() needs this as *offsets* (not a substring) to test containment against the templated region,
+   * since a run() that merely happens to fall a fixed number of characters away from a comment marker is not the same
+   * thing as a run() whose braces actually contain (or are contained by) that region: e.g. an exercise with a separate
+   * step() method that the templated region belongs to, while run() itself (elsewhere in the file) just calls step() in
+   * a loop, must NOT have its own body discarded and replaced by the templated text.
+   */
+  private static int[] extractRunSpan(String code)
   {
-    int startRun       = code.indexOf("void run(");
+    int startRun = code.indexOf("void run(");
+    if (startRun == -1)
+      return null;
+
     int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
     if (beginOfRunLine == -1)
       beginOfRunLine = 0;
 
     int i       = code.indexOf('{', startRun) + 1;
     int bracket = 1;
-
     for (; i < code.length() && bracket > 0; i++) {
       if (code.charAt(i) == '{')
         bracket++;
       if (code.charAt(i) == '}')
         bracket--;
     }
+    return new int[] {beginOfRunLine, i};
+  }
 
-    String substring = code.substring(beginOfRunLine, i);
-    return substring;
+  private static String extractRunFunction(String code)
+  {
+    int[] span = extractRunSpan(code);
+    return span == null ? "" : code.substring(span[0], span[1]);
   }
 
   private static String extractRunDependency(String code)
@@ -313,11 +340,11 @@ public class LangJava extends JVMCompiledLang {
     return remoteCode;
   }
 
-  private void copyFile(File name, String path, String packageName) throws IOException
+  private String copyFile(String path, String packageName) throws IOException
   {
     String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
     content        = content.replaceFirst("package .*;", "package " + packageName + ";\n");
-    Files.writeString(name.toPath(), content);
+    return content;
   }
 
   public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
@@ -399,18 +426,33 @@ public class LangJava extends JVMCompiledLang {
 
         try {
           File valueSerializer = new File(workspace, "ValueSerializer.java");
-          copyFile(valueSerializer, "src/plm/core/ValueSerializer.java", packageNameCache);
+
+          List<String> extraSourcePaths = new ArrayList<>(Arrays.asList("src/plm/universe/Point.java", "src/plm/core/ValueSerializer.java"));
+          extraSourcePaths.addAll(remoteExtraSourceFiles.getOrDefault(remote, List.of()));
+
+          // Rewrite any import of a type we're about to copy locally, in EVERY file that might reference it (the
+          // student's own code, and our own runtime files like ValueSerializer.java) -- otherwise e.g.
+          // ValueSerializer.deserialize() would keep building instances of the ORIGINAL plm.universe.Point while
+          // RemoteLander.java expects the local copy: same simple name, different package, so it compiles fine and throws
+          // ClassCastException at runtime.
+          java.util.function.UnaryOperator<String> rewriteExtraImports = content ->
+          {
+            for (String sourcePath : extraSourcePaths) {
+              String originalFqcn = fqcnFromSourcePath(sourcePath);
+              String simpleName   = fileNameWithoutExtension(sourcePath);
+              content             = content.replace("import " + originalFqcn + ";", "import " + packageNameCache + "." + simpleName + ";");
+            }
+            return content;
+          };
+
+          entityCode = rewriteExtraImports.apply(entityCode);
+          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java", packageNameCache)));
 
           List<File> extraFiles = new ArrayList<>();
-          for (String sourcePath : remoteExtraSourceFiles.getOrDefault(remote, List.of())) {
+          for (String sourcePath : extraSourcePaths) {
             File extraFile = new File(workspace, new File(sourcePath).getName());
-            copyFile(extraFile, sourcePath, packageNameCache);
+            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath, packageNameCache)));
             extraFiles.add(extraFile);
-
-            // Change the existing own source imports (e.g. "lessons.recursion.cons.universe.RecList") to the local one we just copied.
-            String originalFqcn = fqcnFromSourcePath(sourcePath);
-            String simpleName   = fileNameWithoutExtension(sourcePath);
-            entityCode          = entityCode.replace("import " + originalFqcn + ";", "import " + packageNameCache + "." + simpleName + ";");
           }
 
           Files.writeString(new File(workspace, "Template.txt").toPath(), template);
@@ -636,6 +678,10 @@ public class LangJava extends JVMCompiledLang {
         return "Color";
       if (type == Direction.class)
         return "int";
+      if (type == Point.class)
+        return "Point";
+      if (type == Point[].class)
+        return "Point[]";
       if (type == Double.class || type == double.class)
         return "double";
       if (type == Integer.class || type == int.class)
@@ -693,6 +739,10 @@ public class LangJava extends JVMCompiledLang {
         return "getAnswerColor()";
       if (type == Direction.class)
         return "getAnswerInt()";
+      if (type == Point.class)
+        return "(Point)getAnswerObject()";
+      if (type == Point[].class)
+        return "(Point[])getAnswerObject()";
       if (type == Integer.class || type == int.class)
         return "getAnswerInt()";
       if (type == Boolean.class || type == boolean.class)

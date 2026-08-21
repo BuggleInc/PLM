@@ -2,12 +2,14 @@ package lessons.lander.universe;
 
 import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
+import plm.universe.Point;
 
 /**
  * LanderEntityPrimitives
  */
 public interface LanderEntityPrimitives extends EntityPrimitivesBase {
 
+  @Primitive(311) public Point[] getGround();
   @Primitive(300) public double getX();
   @Primitive(301) public double getY();
   @Primitive(302) public double getSpeedX();

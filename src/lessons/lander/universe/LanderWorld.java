@@ -8,35 +8,13 @@ import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.universe.Point;
 import plm.universe.World;
 
 public class LanderWorld extends World {
-  /** Immutable 2D point / vector */
-  public static class Point {
-    double x;
-    double y;
-    public Point(double x, double y)
-    {
-      this.x = x;
-      this.y = y;
-    }
-    public double x() { return x; }
-    public double y() { return y; }
-
-    public Point plus(Point p) { return new Point(x + p.x, y + p.y); }
-    public Point minus(Point p) { return new Point(x - p.x, y - p.y); }
-    public Point times(double l) { return new Point(x * l, y * l); }
-    public Point dividedBy(double l) { return new Point(x / l, y / l); }
-    public Point negate() { return this.times(-1); }
-
-    public double length() { return Math.sqrt(x * x + y * y); }
-    public Point normed() { return this.dividedBy(length()); }
-    public double dot(Point p) { return x * p.x + y * p.y; }
-    public double cross(Point p) { return x * p.y - y * p.x; }
-  }
 
   /** A ground segment between two consecutive terrain points. */
-  public static class Segment {
+  private static class Segment {
     Point start;
     Point end;
     public Segment(Point s, Point e)
@@ -50,7 +28,7 @@ public class LanderWorld extends World {
     /** Used internally to test whether a point is underground. */
     boolean intersects(LanderWorld.Segment s)
     {
-      LanderWorld.Point v = s.end().minus(s.start());
+      Point v             = s.end().minus(s.start());
       double cross        = end.cross(v);
       if (cross == 0) {
         return false;
@@ -63,7 +41,7 @@ public class LanderWorld extends World {
   /** Small numeric helpers */
   static double clamp(double min, double max, double value) { return value < min ? min : Math.min(value, max); }
   static int clamp(int min, int max, int value) { return value < min ? min : Math.min(value, max); }
-  static LanderWorld.Point radianToVector(double angle) { return new LanderWorld.Point(Math.cos(angle), Math.sin(angle)); }
+  static Point radianToVector(double angle) { return new Point(Math.cos(angle), Math.sin(angle)); }
   static double gameAngleToRadian(double angle) { return (angle + 90) * Math.PI / 180; }
   // End of the helpers
 
@@ -73,7 +51,7 @@ public class LanderWorld extends World {
 
   int width;
   int height;
-  List<Point> ground;
+  Point[] ground;
   Point position;
   Point speed;
   /** Angle in degrees, 0 points north, 90 points west. */
@@ -90,7 +68,9 @@ public class LanderWorld extends World {
     super(name);
     this.width    = width;
     this.height   = height;
-    this.ground   = ground;
+    this.ground   = new Point[ground.size()];
+    for (int i = 0; i < ground.size(); i++)
+      this.ground[i] = ground.get(i);
     this.position = position;
     this.speed    = speed;
     this.angle    = angle;
@@ -175,8 +155,8 @@ public class LanderWorld extends World {
   private List<Segment> groundSegments()
   {
     List<Segment> segments = new ArrayList<>();
-    for (int i = 0; i + 1 < ground.size(); i++) {
-      segments.add(new Segment(ground.get(i), ground.get(i + 1)));
+    for (int i = 0; i + 1 < ground.length; i++) {
+      segments.add(new Segment(ground[i], ground[i + 1]));
     }
     return segments;
   }

@@ -88,6 +88,16 @@ public abstract class Remote {
     return (char)deserialize(answerBuffer);
   }
 
+  /*
+   * Generic functions for objects (such as Point) that are already deserialized correctly by ValueSerializer.java
+   * See also LangJavaExternalPrimitiveGenerator.getReturning().
+   */
+  public static Object getAnswerObject()
+  {
+    getAnswerLine();
+    return deserialize(answerBuffer);
+  }
+
   public static void sendCommand(String opCode, String name, Object... args)
   {
     String command = opCode + " " + serialize(args) + " " + name;

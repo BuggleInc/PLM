@@ -1,8 +1,7 @@
 package lessons.lander.lvl3_fly_the_lander;
 
-import java.util.List;
 import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.LanderWorld.Point;
+import plm.universe.Point;
 
 public class FlyTheLanderEntity extends LanderEntity {
   @Override public void run()
@@ -22,8 +21,8 @@ public class FlyTheLanderEntity extends LanderEntity {
   public void initialize()
   {
     /* BEGIN HIDDEN */
-    List<Point> ground = getGround();
-    Point lastPoint    = ground.get(0);
+    Point[] ground  = getGround();
+    Point lastPoint = ground[0];
     for (Point point : ground) {
       if (point != lastPoint && lastPoint.y() == point.y()) {
         targetStart = lastPoint.x();

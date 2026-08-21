@@ -17,8 +17,14 @@ public interface ExternalPrimitiveLanguage {
         types.add(parameter.type());
       }
     }
-
     types.remove(null);
+
+    // It may happen that a type is only involved as an array of itself and not directly. For example, LanderWorld have a
+    // primitive returning "Point[]" but no primitive involves "Point" directly. So add the component types too.
+    for (Class<?> type : List.copyOf(types))
+      if (type.isArray())
+        types.add(type.getComponentType());
+
     return types;
   }
 

@@ -17,22 +17,22 @@ import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Random;
-import lessons.lander.universe.LanderWorld.Point;
 import plm.core.ui.WorldView;
+import plm.universe.Point;
 
 public class LanderWorldView extends WorldView {
 
   private static final long serialVersionUID = 1L;
 
-  private static final List<List<Point>> LANDER_SHAPE =
-      List.of(List.of(new Point(-2, 3), new Point(-3, 4), new Point(-3, 7), new Point(-2, 8), new Point(2, 8), new Point(3, 7), new Point(3, 4),
-                      new Point(2, 3), new Point(-2, 3)),
-              List.of(new Point(-6, 0), new Point(-4, 0)), List.of(new Point(6, 0), new Point(4, 0)),
-              List.of(new Point(-5, 0), new Point(-4, 2.8), new Point(-2, 3)), List.of(new Point(5, 0), new Point(4, 2.8), new Point(2, 3)));
+  private static final List<Point[]> LANDER_SHAPE =
+      List.of(new Point[] {new Point(-2, 3), new Point(-3, 4), new Point(-3, 7), new Point(-2, 8), new Point(2, 8), new Point(3, 7), new Point(3, 4),
+                           new Point(2, 3), new Point(-2, 3)},
+              new Point[] {new Point(-6, 0), new Point(-4, 0)}, new Point[] {new Point(6, 0), new Point(4, 0)},
+              new Point[] {new Point(-5, 0), new Point(-4, 2.8), new Point(-2, 3)}, new Point[] {new Point(5, 0), new Point(4, 2.8), new Point(2, 3)});
 
-  private static final List<Point> EXPLOSION_SHAPE =
-      List.of(new Point(-4, 3), new Point(-1, 2), new Point(0, 4), new Point(1, 2), new Point(4, 2), new Point(2, 0), new Point(3, -2), new Point(0, -1),
-              new Point(-3, -3), new Point(-2, 0), new Point(-4, 3));
+  private static final Point[] EXPLOSION_SHAPE =
+      new Point[] {new Point(-4, 3), new Point(-1, 2), new Point(0, 4),   new Point(1, 2),  new Point(4, 2), new Point(2, 0),
+                   new Point(3, -2), new Point(0, -1), new Point(-3, -3), new Point(-2, 0), new Point(-4, 3)};
 
   private static final Random RANDOM = new Random();
 
@@ -126,17 +126,16 @@ public class LanderWorldView extends WorldView {
       g2.setColor(Color.white);
     }
 
-    void drawPath(List<Point> path, boolean fill)
+    void drawPath(Point[] path, boolean fill)
     {
-      if (path.isEmpty()) {
+      if (path.length == 0) {
         return;
       }
-      GeneralPath polyLine = new GeneralPath(Path2D.WIND_EVEN_ODD, path.size());
-      Point head           = path.get(0);
+      GeneralPath polyLine = new GeneralPath(Path2D.WIND_EVEN_ODD, path.length);
+      Point head           = path[0];
       polyLine.moveTo(head.x(), head.y());
-      for (Point point : path.subList(1, path.size())) {
-        polyLine.lineTo(point.x(), point.y());
-      }
+      for (int i = 1; i < path.length; i++)
+        polyLine.lineTo(path[i].x(), path[i].y());
       if (fill) {
         g2.fill(polyLine);
       } else {
@@ -168,7 +167,7 @@ public class LanderWorldView extends WorldView {
       g2.scale(6, 6); // the lander shape is small
       resetPen();
       g2.rotate(realWorld().angleRadian() - Math.PI / 2);
-      for (List<Point> path : LANDER_SHAPE) {
+      for (Point[] path : LANDER_SHAPE) {
         drawPath(path, false);
       }
       int thrust = realWorld().thrust;

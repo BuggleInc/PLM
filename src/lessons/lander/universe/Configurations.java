@@ -1,7 +1,7 @@
 package lessons.lander.universe;
 
 import java.util.List;
-import lessons.lander.universe.LanderWorld.Point;
+import plm.universe.Point;
 
 public final class Configurations {
 

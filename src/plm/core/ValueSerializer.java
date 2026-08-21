@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
+import plm.universe.Point;
 
 public class ValueSerializer {
 
@@ -24,6 +25,8 @@ public class ValueSerializer {
       return "c";
     if (clazz == Color.class)
       return "C";
+    if (clazz == Point.class)
+      return "P";
 
     if (clazz == Object.class || clazz == String.class)
       return "";
@@ -87,6 +90,10 @@ public class ValueSerializer {
       // getRGB() packs alpha+red+green+blue into a single int; new Color(argb, true) below
       // reconstructs the exact same Color from it, alpha included.
       return "C" + ((Color)o).getRGB();
+    }
+    if (typeRepresentation.equals("P")) {
+      Point p = (Point)o;
+      return "P" + p.x() + ":" + p.y();
     }
     return typeRepresentation + o;
   }
@@ -192,6 +199,14 @@ public class ValueSerializer {
         return parseColor();
       }
 
+      if (c == 'P') {
+        pos++;
+        if (peek() == '[') {
+          return parsePointArray();
+        }
+        return parsePoint();
+      }
+
       if (c == '[') {
         return parseObjectArray();
       }
@@ -245,6 +260,16 @@ public class ValueSerializer {
       Color[] result  = new Color[values.length];
       for (int i = 0; i < values.length; i++) {
         result[i] = (Color)values[i];
+      }
+      return result;
+    }
+
+    private Point[] parsePointArray()
+    {
+      Object[] values = parseArrayContents();
+      Point[] result  = new Point[values.length];
+      for (int i = 0; i < values.length; i++) {
+        result[i] = (Point)values[i];
       }
       return result;
     }
@@ -323,6 +348,14 @@ public class ValueSerializer {
           return c2;
       // Not found, return the newly created color
       return c;
+    }
+
+    private Point parsePoint()
+    {
+      double x = parseDouble();
+      expect(':');
+      double y = parseDouble();
+      return new Point(x, y);
     }
 
     private String parseString()

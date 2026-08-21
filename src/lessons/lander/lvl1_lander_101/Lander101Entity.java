@@ -5,19 +5,18 @@ import lessons.lander.universe.LanderEntity;
 public class Lander101Entity extends LanderEntity {
   @Override public void run()
   {
-    initialize();
     while (isFlying()) {
       step();
       simulateStep();
     }
   }
 
+  /* BEGIN TEMPLATE */
   @Override public void step()
   {
-    /* BEGIN TEMPLATE */
     /* BEGIN SOLUTION */
     setDesiredThrust(getSpeedY() < -9 ? 4 : 3);
     /* END SOLUTION */
-    /* END TEMPLATE */
   }
+  /* END TEMPLATE */
 }

@@ -1,66 +1,46 @@
 package lessons.lander.lvl2_locate_landing_zone;
 
-import java.util.Iterator;
 import lessons.lander.universe.LanderEntity;
-import lessons.lander.universe.LanderWorld.Point;
-import lessons.lander.universe.LanderWorld.Segment;
+import plm.universe.Point;
 
 public class LocateLandingZoneEntity extends LanderEntity {
   @Override public void run()
   {
-    initialize();
+    Point[] landingZone = getLandingZone();
+    double targetStart  = landingZone[0].x();
+    double targetEnd    = landingZone[1].x();
+
     while (isFlying()) {
-      step();
+      if (getX() < targetStart) {
+        setDesiredAngle(-30);
+      } else if (getX() > targetEnd) {
+        setDesiredAngle(30);
+      } else {
+        if (getSpeedX() > 5) {
+          setDesiredAngle(25);
+        } else if (getSpeedX() < -5) {
+          setDesiredAngle(-25);
+        } else {
+          setDesiredAngle(0);
+        }
+      }
+      setDesiredThrust(getSpeedY() < -9 ? 4 : 3);
       simulateStep();
     }
   }
 
   /* BEGIN TEMPLATE */
-  public Segment getLandingZone()
+  public Point[] getLandingZone()
   {
     /* return new Segment(new Point(0,0), new Point(0,0)); */
     /* BEGIN SOLUTION */
-    Iterator<Point> ground = getGround().iterator();
-    Point lastPoint        = ground.next();
-    while (ground.hasNext()) {
-      Point point = ground.next();
-      if (lastPoint.y() == point.y()) {
-        return new Segment(lastPoint, point);
-      }
-      lastPoint = point;
-    }
+    Point[] ground = getGround();
+    for (int i = 0; i + 1 < ground.length; i++)
+      if (ground[i].y() == ground[i + 1].y())
+        return new Point[] {ground[i], ground[i + 1]};
+
     return null;
     /* END SOLUTION */
   }
   /* END TEMPLATE */
-
-  /* BEGIN HIDDEN */
-  double targetStart = 0;
-  double targetEnd   = 0;
-
-  @Override public void initialize()
-  {
-    Segment landingZone = getLandingZone();
-    targetStart         = landingZone.start().x();
-    targetEnd           = landingZone.end().x();
-  }
-
-  @Override public void step()
-  {
-    if (getX() < targetStart) {
-      setDesiredAngle(-30);
-    } else if (getX() > targetEnd) {
-      setDesiredAngle(30);
-    } else {
-      if (getSpeedX() > 5) {
-        setDesiredAngle(25);
-      } else if (getSpeedX() < -5) {
-        setDesiredAngle(-25);
-      } else {
-        setDesiredAngle(0);
-      }
-    }
-    setDesiredThrust(getSpeedY() < -9 ? 4 : 3);
-  }
-  /* END HIDDEN */
 }

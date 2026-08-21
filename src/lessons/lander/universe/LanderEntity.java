@@ -1,9 +1,8 @@
 package lessons.lander.universe;
 
-import java.util.List;
-import lessons.lander.universe.LanderWorld.Point;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.universe.Entity;
+import plm.universe.Point;
 
 @EntityPrimitives(LanderEntityPrimitives.class)
 public class LanderEntity extends Entity implements LanderEntityPrimitives {
@@ -17,7 +16,7 @@ public class LanderEntity extends Entity implements LanderEntityPrimitives {
   public void step() {}
 
   // query terrain
-  public List<Point> getGround() { return landerWorld().ground; }
+  @Override public Point[] getGround() { return landerWorld().ground; }
 
   // query lander state
   @Override public double getX() { return landerWorld().position.x(); }
@@ -39,7 +38,7 @@ public class LanderEntity extends Entity implements LanderEntityPrimitives {
   }
 
   /* BINDINGS TRANSLATION: French */
-  public List<Point> getSol() { return getGround(); }
+  public Point[] getSol() { return getGround(); }
   public double getVitesseX() { return getSpeedX(); }
   public double getVitesseY() { return getSpeedY(); }
   public int getPoussee() { return getThrust(); }
