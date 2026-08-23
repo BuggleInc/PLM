@@ -211,6 +211,7 @@ public class LangC extends ProgrammingLanguage {
         arg1[0] = "/bin/sh";
         arg1[1] = "-c";
         arg1[2] = "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
+        //  -O0 -fno-omit-frame-pointer
       }
 
       final Process process        = runtime.exec(arg1);
@@ -536,14 +537,14 @@ public class LangC extends ProgrammingLanguage {
       if (type == Color.class) {
         return "Color get_answer_color()\n"
             + "{\n"
-            + "    const char* line = get_answer_raw_line(); // e.g. \"C-65536\"\n"
+            + "    const char* line = get_answer_line(); // e.g. \"C-65536\"\n"
             + "    return (Color)strtol(line + 1, NULL, 10); // +1: skip the leading 'C' tag\n"
             + "}";
       }
       if (type == Point.class) {
         return "Point get_answer_point()\n"
             + "{\n"
-            + "    const char* line = get_answer_raw_line(); // e.g. \"P1.500000:2.300000\"\n"
+            + "    const char* line = get_answer_line(); // e.g. \"P1.500000:2.300000\"\n"
             + "    Point p;\n"
             + "    sscanf(line, \"P%lf:%lf\", &p.x, &p.y);\n"
             + "    return p;\n"
@@ -608,7 +609,7 @@ public class LangC extends ProgrammingLanguage {
       if (type == Integer.class || type == int.class)
         return "get_answer_int()";
       if (type == Boolean.class || type == boolean.class)
-        return "get_answer_boolean()";
+        return "get_answer_int()";
       if (type == void.class || type == Void.class)
         return "";
 

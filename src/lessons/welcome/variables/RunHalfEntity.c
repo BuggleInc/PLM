@@ -1,10 +1,5 @@
 //RemoteBuggle
 
-
-int isOverOrange() {
-	return getGroundColor()==orange;
-}
-
 void run(){
 	/* BEGIN SOLUTION */
 	int baggle = 0;

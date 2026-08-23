@@ -1,4 +1,5 @@
-//RemoteBuggle
+#include "../../../../../target/classes/resources/langages/c/Remote.h"
+#include "../../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 void nextStep();
 int endingPosition();

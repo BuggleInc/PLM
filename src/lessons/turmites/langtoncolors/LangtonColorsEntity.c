@@ -1,24 +1,24 @@
-//RemoteBuggle
+#include "../../../../target/classes/resources/langages/c/RemoteTurmite.h"
 
 void step(char* rule, Color* colors, int length);
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
 
 void run(){
-	int nbSteps = getParam();
-	char* rule=(char*)malloc(sizeof(char)*256);
-	int length = getParamLangtonColor1(rule);
+  int nbSteps = getParamInt(0);
+  char* rule  = (char*)malloc(sizeof(char) * 256);
+  int length  = getParamLangtonColor1(rule);
 
-	Color* colors = (Color*)malloc(sizeof(Color)*length);
-	int i;
-	for (i=0; i<length; i++)
-		colors[i] = allColors[i];
+  Color* colors = (Color*)malloc(sizeof(Color) * length);
+  int i;
+  for (i = 0; i < length; i++)
+    colors[i] = allColors[i];
 
-	for (i=0;i<nbSteps;i++) {
-		stepDone();
-		step(rule,colors,length);
-	}
-	free(colors);
+  for (i = 0; i < nbSteps; i++) {
+    stepDone();
+    step(rule, colors, length);
+  }
+  free(colors);
 }
 
 /* BEGIN TEMPLATE */

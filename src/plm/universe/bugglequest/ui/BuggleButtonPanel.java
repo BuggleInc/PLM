@@ -46,9 +46,11 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
     add(createButtonsPanel());
     add(createColorsBoxes());
 
-    Game.getInstance().addHumanLangListener(this);
-    buggle = (AbstractBuggle)Game.getInstance().getSelectedEntity();
-    buggle.addObserver(this);
+    Game that = Game.getInstance();
+    that.addHumanLangListener(this);
+    buggle = (AbstractBuggle)that.getSelectedEntity();
+    if (!that.isBatchExecution())
+      buggle.addObserver(this);
   }
 
   /**

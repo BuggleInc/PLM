@@ -24,34 +24,63 @@
 static FILE* protocol_in  = NULL;
 static FILE* protocol_out = NULL;
 static char answer_buffer[1024];
-static void get_answer_line()
+static char* get_answer_line()
 {
   if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
     exit(1);
   }
   answer_buffer[strcspn(answer_buffer, "\r\n")] = 0;
+  return answer_buffer;
 }
 int get_answer_int()
 {
   get_answer_line();
-  return (int)strtol(answer_buffer, NULL, 10);
+  return (int)strtol(answer_buffer + 1, NULL, 10); // +1: skip the leading 'i' or 'b' tag
 }
 double get_answer_double()
 {
   get_answer_line();
-  return strtod(answer_buffer, NULL);
+  return strtod(answer_buffer + 1, NULL); // +1: skip the leading 'f' tag
 }
 char* get_answer_string()
 {
   get_answer_line();
-  return strdup(answer_buffer);
+  // answer_buffer holds e.g. "He said \"hi\"", i.e. a quoted, backslash-escaped string -- the exact inverse of
+  // ValueSerializer.serialize()'s String case.
+  char* src = answer_buffer;
+  if (*src == '"')
+    src++; // skip the opening quote
+
+  char* result = malloc(strlen(src) + 1);
+  char* dst    = result;
+  while (*src != '\0' && *src != '"') {
+    if (*src == '\\' && *(src + 1) != '\0')
+      src++; // skip the backslash, emit the escaped character literally
+    *dst++ = *src++;
+  }
+  *dst = '\0';
+  return result;
 }
 char get_answer_char()
 {
   get_answer_line();
   return answer_buffer[0];
 }
-
+char* escape_string(const char* s)
+{
+  // Worst case every char needs escaping, plus 2 surrounding quotes and the null terminator.
+  char* result = malloc(strlen(s) * 2 + 3);
+  char* dst    = result;
+  *dst++       = '"';
+  for (const char* src = s; *src != '\0'; src++) {
+    if (*src == '"' || *src == '\\')
+      *dst++ = '\\';
+    *dst++ = *src;
+  }
+  *dst++ = '"';
+  *dst   = '\0';
+  return result;
+}
 void send_command(char* format, ...)
 {
   va_list args;

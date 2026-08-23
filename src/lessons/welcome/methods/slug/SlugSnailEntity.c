@@ -4,7 +4,7 @@ void hunt(Color c);
 int isFacingTrail(Color c);
 
 void run(){
-  hunt(atoi(getParam(0)));
+  hunt(getColorIntParam(0));
 }
 
 /* BEGIN TEMPLATE */

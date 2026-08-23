@@ -2,7 +2,6 @@ package lessons.welcome.loopdowhile;
 
 import java.awt.Color;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 
 @EntityPrimitives(Poucet1Entity.class)

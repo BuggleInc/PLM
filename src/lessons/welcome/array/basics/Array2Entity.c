@@ -35,14 +35,16 @@ void run() {
 
 
 void makeLine(Color colors[], int colorsLength) {
-	int offset = (int)readMessage()[0];
-	mark(colors[(0+offset)%colorsLength]);
-	int i;
-	for (i=1;i<getWorldWidth();i++) {
-		forward(1);
-		mark(colors[(i+offset)%colorsLength]);
-	}
-	backward(getWorldHeight()-1);
+  char* msg  = readMessage();
+  int offset = (int)msg[0];
+  free(msg);
+  mark(colors[(0 + offset) % colorsLength]);
+  int i;
+  for (i = 1; i < getWorldWidth(); i++) {
+    forward(1);
+    mark(colors[(i + offset) % colorsLength]);
+  }
+  backward(getWorldHeight() - 1);
 }
 /* END SOLUTION */
 /* END TEMPLATE */

@@ -1,12 +1,5 @@
 //RemoteBuggle
 
-int crossing() {
-	return getX()%5== 1 && getY()%5==1;
-}
-int exitReached() {
-	return getGroundColor()==orange;
-}
-
 void run(){
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */

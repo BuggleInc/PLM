@@ -1,15 +1,15 @@
-//RemoteBuggle
+#include "../../../../target/classes/resources/langages/c/RemoteTurmite.h"
 
 void step();
 
 
 void run(){
-	int nbSteps = getParam();
-	int i;
-	for (i=0;i<nbSteps;i++) {
-		step();
-		stepDone();
-	}
+  int nbSteps = getParamInt(0);
+  int i;
+  for (i = 0; i < nbSteps; i++) {
+    step();
+    stepDone();
+  }
 }
 
 /* BEGIN TEMPLATE */
