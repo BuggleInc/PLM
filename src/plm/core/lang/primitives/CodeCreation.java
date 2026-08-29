@@ -12,6 +12,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.turmites.universe.TurmiteEntity;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
+import plm.core.lang.LangScala;
 import plm.test.simple.SimpleExerciseEntity;
 import plm.universe.Entity;
 import plm.universe.bat.BatEntity;
@@ -31,7 +32,8 @@ public class CodeCreation {
         Map.entry("RemoteFlag", DutchFlagEntity.class), Map.entry("RemoteSimple", SimpleExerciseEntity.class), Map.entry("RemoteLander", LanderEntity.class));
 
     // Hand-written code to splice into some generated remote stubs, for manual helpers
-    Map<String, String> remoteExtraJavaCode = Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE);
+    Map<String, String> remoteExtraJavaCode  = Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE);
+    Map<String, String> remoteExtraScalaCode = Map.of("RemoteCons", ConsEntity.SCALA_REMOTE_EXTRA_CODE);
 
     LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
     File cFolder                                         = new File(folder, "c");
@@ -61,6 +63,21 @@ public class CodeCreation {
         throw new RuntimeException(e);
       }
       langJavaGenerator.generate(javaFolder, name, list.values().stream().toList(), remoteExtraJavaCode.getOrDefault(name, ""));
+    }
+
+    LangScala.LangScalaExternalPrimitiveGenerator langScalaGenerator = new LangScala.LangScalaExternalPrimitiveGenerator();
+    File scalaFolder                                                 = new File(folder, "scala");
+    for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
+      String name                   = entry.getKey();
+      Class<? extends Entity> clazz = entry.getValue();
+
+      Map<Integer, PrimitiveMethod> list = null;
+      try {
+        list = PrimitiveRegistration.getMaximalPrimitiveForEntity(clazz);
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+      langScalaGenerator.generate(scalaFolder, name, list.values().stream().toList(), remoteExtraScalaCode.getOrDefault(name, ""));
     }
   }
 }

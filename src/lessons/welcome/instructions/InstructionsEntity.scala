@@ -4,7 +4,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class InstructionsEntity extends SimpleBuggle {
 
-	protected override def run() {
+	override def run() {
 		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		brushDown();

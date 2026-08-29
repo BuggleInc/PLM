@@ -22,6 +22,43 @@ import plm.universe.World;
 
 public abstract class ExerciseTemplated extends Exercise {
 
+  /**
+   * Returns [start, end) of a method's own text (its declaration line through its brace-matched closing '}') within code,
+   * searching for the given declaration keyword (e.g. "void run(" for Java/C, "def run(" for Scala/Python) -- or null if
+   * that keyword doesn't appear at all.
+   *
+   * This is offsets, not a substring, so callers can test containment against another region (e.g. a templated region)
+   * without caring how many characters of incidental whitespace happen to separate two markers: what matters is whether
+   * the method's real brace-matched span contains, is contained by, or is disjoint from that region.
+   */
+  public static int[] extractRunSpan(String code, String runKeyword)
+  {
+    int startRun = code.indexOf(runKeyword);
+    if (startRun == -1)
+      return null;
+
+    int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
+    if (beginOfRunLine == -1)
+      beginOfRunLine = 0;
+
+    int i       = code.indexOf('{', startRun) + 1;
+    int bracket = 1;
+    for (; i < code.length() && bracket > 0; i++) {
+      if (code.charAt(i) == '{')
+        bracket++;
+      if (code.charAt(i) == '}')
+        bracket--;
+    }
+    return new int[] {beginOfRunLine, i};
+  }
+
+  /** The method's own text (declaration through closing brace), or "" if runKeyword doesn't appear in code at all. */
+  public static String extractRunFunction(String code, String runKeyword)
+  {
+    int[] span = extractRunSpan(code, runKeyword);
+    return span == null ? "" : code.substring(span[0], span[1]);
+  }
+
   protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
   public ExerciseTemplated(Lesson lesson) { super(lesson, null); }
