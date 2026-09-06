@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(hasTeen(param[0], param[1], param[2])))
+
 # BEGIN TEMPLATE
 def hasTeen(a, b, c):
 # BEGIN SOLUTION

@@ -1,4 +1,5 @@
-# BEGIN SOLUTION 
-while not isOverBaggle():
-  forward();
-# END SOLUTION
+def run():
+    # BEGIN SOLUTION 
+    while not isOverBaggle():
+      forward();
+    # END SOLUTION

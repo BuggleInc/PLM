@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(allDifferent(toRecListIfArray(param[0]))))
+
 # BEGIN TEMPLATE
 def allDifferent(list):
 # BEGIN SOLUTION

@@ -1,4 +1,4 @@
-#include "../../../../lib/resources/langages/c/include/RemoteBuggle.h"
+#include "../../../../lib/resources/langages/c/RemoteBuggle.h"
 
 char* colors[] = {"0/155/0",   "50/155/0",  "100/155/0", "140/155/0", "160/155/0",
                   "180/155/0", "200/155/0", "210/155/0", "255/0/0"};

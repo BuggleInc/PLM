@@ -1,5 +1,3 @@
-import java.awt.Color as Color
-
 # BEGIN TEMPLATE
 def hunt():
     # Complete this method

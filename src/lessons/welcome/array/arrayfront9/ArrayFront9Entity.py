@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(arrayFront9(param[0])))
+
 # BEGIN TEMPLATE
 def arrayFront9(nums):
 # BEGIN SOLUTION

@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(fizzBuzz(param[0])))
+
 # BEGIN TEMPLATE
 def fizzBuzz(a):
 # BEGIN SOLUTION

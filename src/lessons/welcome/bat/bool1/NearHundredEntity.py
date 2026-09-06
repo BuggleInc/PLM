@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(nearHundred(param[0])))
+
 # BEGIN TEMPLATE
 def nearHundred(n):
 # BEGIN SOLUTION

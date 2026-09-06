@@ -17,8 +17,7 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException
   {
-    exo.compileAll(null, StudentOrCorrection.CORRECTION);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -33,8 +32,7 @@ public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException
   {
-    exo.compileAll(null, StudentOrCorrection.CORRECTION);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {

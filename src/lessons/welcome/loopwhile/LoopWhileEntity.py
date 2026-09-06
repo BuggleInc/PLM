@@ -1,4 +1,5 @@
-# BEGIN SOLUTION
-while not isFacingWall():
-  forward()
-# END SOLUTION
+def run():
+    # BEGIN SOLUTION
+    while not isFacingWall():
+      forward()
+    # END SOLUTION

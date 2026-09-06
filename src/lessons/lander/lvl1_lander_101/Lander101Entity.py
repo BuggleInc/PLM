@@ -8,6 +8,7 @@ def step():
 # END SOLUTION
 # END TEMPLATE 
 
-while isFlying():
-  step()
-  simulateStep()
+def run():
+    while isFlying():
+        step()
+        simulateStep()

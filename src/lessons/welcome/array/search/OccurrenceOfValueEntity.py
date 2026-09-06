@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(occurrences(param[0], param[1])))
+
 # BEGIN TEMPLATE
 def occurrences(nums,lookingFor):
 # BEGIN SOLUTION

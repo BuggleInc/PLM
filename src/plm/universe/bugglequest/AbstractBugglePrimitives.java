@@ -114,6 +114,10 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive(137) boolean isOverMessage();
 
+  @Primitive(153) void seenError(String msg);
+
+  @Primitive(154) boolean haveSeenError();
+
   @Primitive(138) void writeMessage(String msg);
 
   void writeMessage(int nb);

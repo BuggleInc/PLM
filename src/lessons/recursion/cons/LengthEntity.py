@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(length(toRecListIfArray(param[0]))))
+
 # BEGIN TEMPLATE
 def length(list):
 # BEGIN SOLUTION

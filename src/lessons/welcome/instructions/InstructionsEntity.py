@@ -1,16 +1,17 @@
-# BEGIN SOLUTION
+def run():
+    # BEGIN SOLUTION
 
-brushDown()
+    brushDown()
 
-for i in range(4):
-    forward()
+    for i in range(4):
+        forward()
+        forward()
+        right()
+                    
+    brushUp()
     forward()
     right()
-                
-brushUp()
-forward()
-right()
-forward()
-left()
-# END SOLUTION
+    forward()
+    left()
+    # END SOLUTION
 

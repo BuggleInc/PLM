@@ -134,21 +134,20 @@ public class ExoTest {
     exo.lastResult = new RunOutcome();
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
-      exo.compileAll(null, StudentOrCorrection.CORRECTION);
-      if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
-        Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
-
       exo.reset();
       // For compiled languages, we mutate to the compiled entity.
       // For script languages, we mutate to the correction entity.
       StudentOrCorrection what = StudentOrCorrection.CORRECTION;
       if (lang.isJava() || lang.isScala() || lang.isC())
         what = StudentOrCorrection.STUDENT;
-      exo.mutateEntities(WorldKind.CURRENT, what);
+      exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, what);
+      if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
+        Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 
       for (World w : exo.getWorlds(WorldKind.CURRENT))
-        for (Entity ent : w.getEntities())
+        for (Entity ent : w.getEntities()) {
           lang.runEntity(ent, exo.lastResult);
+        }
 
       exo.check();
     } catch (PLMCompilerException e) {

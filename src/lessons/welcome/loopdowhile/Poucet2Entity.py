@@ -27,7 +27,7 @@ def crossing():
     return open>2 or (here.hasLeftWall() != right.hasLeftWall()) or (here.hasTopWall() != below.hasTopWall());
     
 def exitReached():
-    return getGroundColor().equals(Color.orange)
+    return getGroundColor() == Color.orange
 
 # BINDINGS TRANSLATION 
 def croisement():

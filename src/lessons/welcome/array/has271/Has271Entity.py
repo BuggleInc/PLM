@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(has271(param[0])))
+
 # BEGIN TEMPLATE
 import math
 def has271(nums):

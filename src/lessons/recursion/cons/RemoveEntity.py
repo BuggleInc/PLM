@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(remove(toRecListIfArray(param[0]), toRecListIfArray(param[1]))))
+
 # BEGIN TEMPLATE
 def remove(list, v):
 # BEGIN SOLUTION

@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(redTicket(param[0], param[1], param[2])))
+
 # BEGIN TEMPLATE
 def redTicket(a, b, c):
 # BEGIN SOLUTION

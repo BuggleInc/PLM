@@ -22,15 +22,9 @@ public class LangRuby extends ScriptingLanguage {
     }
     return brokenLanguageState != BrokenLanguageState.Usable;
   }
-
-  @Override protected void setupEntityBindings(Entity ent)
-  {
-    // Nothing to do for now
-  }
-
-  @Override protected boolean handleLangException(ScriptException e, Entity ent, RunOutcome progress)
-  {
-    // For now, we don't know how to decipher Ruby exceptions.
-    return false;
+  @Override
+  public void runEntity(Entity ent, RunOutcome progress) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'runEntity'");
   }
 }

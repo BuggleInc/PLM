@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(in1To10(param[0], param[1])))
+
 # BEGIN TEMPLATE
 def in1To10(n, outsideMode):
 # BEGIN SOLUTION

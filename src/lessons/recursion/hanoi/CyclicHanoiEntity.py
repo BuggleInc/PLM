@@ -1,5 +1,5 @@
 def move(src,dst):
-	entity.cyclicMove(src,dst)
+	cyclicMove(src,dst)
 
 # BEGIN TEMPLATE
 def clockwise(height, src,mid,dst):

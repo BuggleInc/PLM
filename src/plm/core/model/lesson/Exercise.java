@@ -17,6 +17,7 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
+import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class Exercise extends Lecture {
@@ -112,6 +113,30 @@ public abstract class Exercise extends Lecture {
      * Instead, scripting languages get the source code as text directly from the sourceFiles
      */
     Game.getInstance().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+  }
+
+  /**
+   * Compile the given source and immediately apply the result onto worldKind's entities, in one call.
+   *
+   * Every language is now remote (compiled into a workspace before it can run at all, even "scripting" ones like
+   * Python), so mutateEntities() always needs a matching compileAll() to have run first, or the entities are left
+   * without a script to execute and silently do nothing. Doing both together here, always in this order, makes that
+   * mistake structurally impossible instead of relying on every call site to remember the two steps.
+   */
+  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection what) throws PLMCompilerException
+  {
+    executeAll(out, kind, what, what);
+  }
+
+  /**
+   * Variant of executeAll() for the rare case where what gets compiled and what gets mutated differ -- e.g.
+   * ExoTest.testCorrectionEntity() compiles the teacher's correction but mutates to the student-facing compiled
+   * entity for JVM-compiled languages. Prefer the simpler 3-arg executeAll() whenever they match.
+   */
+  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate) throws PLMCompilerException
+  {
+    compileAll(out, whatToCompile);
+    mutateEntities(kind, whatToMutate);
   }
 
   /** get the list of source files for a given language, or create it if not existent yet */

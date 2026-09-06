@@ -1,3 +1,9 @@
+def run():
+    count = getTestCount()
+    for i in range(count):
+        param = deserialize(getTest(i))
+        setTestResult(i, serialize(maxMod5(param[0], param[1])))
+
 # BEGIN TEMPLATE
 def maxMod5(a, b):
 # BEGIN SOLUTION

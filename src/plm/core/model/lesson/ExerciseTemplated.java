@@ -24,8 +24,9 @@ public abstract class ExerciseTemplated extends Exercise {
 
   /**
    * Returns [start, end) of a method's own text (its declaration line through its brace-matched closing '}') within code,
-   * searching for the given declaration keyword (e.g. "void run(" for Java/C, "def run(" for Scala/Python) -- or null if
-   * that keyword doesn't appear at all.
+   * searching for the given declaration keyword (e.g. "void run(" for Java/C) -- or null if that keyword doesn't appear
+   * at all. For Python, whose blocks are indentation-delimited rather than brace-delimited, use
+   * extractRunSpanIndentBased() below instead.
    *
    * This is offsets, not a substring, so callers can test containment against another region (e.g. a templated region)
    * without caring how many characters of incidental whitespace happen to separate two markers: what matters is whether
@@ -56,6 +57,61 @@ public abstract class ExerciseTemplated extends Exercise {
   public static String extractRunFunction(String code, String runKeyword)
   {
     int[] span = extractRunSpan(code, runKeyword);
+    return span == null ? "" : code.substring(span[0], span[1]);
+  }
+
+  /**
+   * Python counterpart of extractRunSpan() above: Python has no braces, so a function's body is delimited by
+   * indentation instead -- it ends at the first subsequent non-blank line indented no more than the "def" line itself
+   * (or at end of file). Tabs and spaces are counted as plain characters (not expanded), which only matters if a single
+   * file mixes the two inconsistently -- not a case seen in any exercise file so far.
+   */
+  public static int[] extractRunSpanIndentBased(String code, String runKeyword)
+  {
+    int startRun = code.indexOf(runKeyword);
+    if (startRun == -1)
+      return null;
+
+    int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
+    beginOfRunLine      = beginOfRunLine == -1 ? 0 : beginOfRunLine + 1;
+
+    int defIndent = startRun - beginOfRunLine;
+
+    int lineEnd = code.indexOf('\n', startRun);
+    if (lineEnd == -1)
+      lineEnd = code.length();
+
+    int pos = lineEnd + 1;
+    int end = lineEnd;
+    while (pos <= code.length()) {
+      int nextLineEnd = code.indexOf('\n', pos);
+      if (nextLineEnd == -1)
+        nextLineEnd = code.length();
+
+      String line    = code.substring(pos, nextLineEnd);
+      String trimmed = line.strip();
+
+      if (!trimmed.isEmpty()) {
+        int indent = 0;
+        while (indent < line.length() && (line.charAt(indent) == ' ' || line.charAt(indent) == '\t'))
+          indent++;
+        if (indent <= defIndent)
+          break;
+      }
+
+      end = nextLineEnd;
+      if (nextLineEnd == code.length())
+        break;
+      pos = nextLineEnd + 1;
+    }
+
+    return new int[] {beginOfRunLine, end};
+  }
+
+  /** Indentation-based counterpart of extractRunFunction() above, for Python. */
+  public static String extractRunFunctionIndentBased(String code, String runKeyword)
+  {
+    int[] span = extractRunSpanIndentBased(code, runKeyword);
     return span == null ? "" : code.substring(span[0], span[1]);
   }
 
@@ -435,20 +491,15 @@ public abstract class ExerciseTemplated extends Exercise {
         /* I/O didn't work. We have to load the files manually */
         RunOutcome progress = new RunOutcome();
 
-        // In all in-JVM languages, the correction is either directly usable (interpreted) or already compiled in the jarfile
-        // We need to recompile for remote languages, aka C and Java for now
-        if (Game.getInstance().getProgrammingLanguage().isC() || Game.getInstance().getProgrammingLanguage().isJava()) {
-          try {
-            compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
-          } catch (PLMCompilerException e) {
-            System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " +
-                               Game.getInstance().getProgrammingLanguage().getLang() + ". Please go fix your PLM.");
-            e.printStackTrace();
-            Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
-            Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
-          }
+        try {
+          executeAll(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+        } catch (PLMCompilerException e) {
+          System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " +
+                             Game.getInstance().getProgrammingLanguage().getLang() + ". Please go fix your PLM.");
+          e.printStackTrace();
+          Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
+          Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
         }
-        mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
         for (World aw : answerWorld) {
           for (Entity ent : aw.getEntities())
@@ -503,7 +554,14 @@ public abstract class ExerciseTemplated extends Exercise {
       answerWorld.get(i).reset(initialWorld.get(i));
       answerWorld.get(i).doDelay();
     }
-    mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+    try {
+      executeAll(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
+    } catch (PLMCompilerException e) {
+      System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " +
+                         Game.getInstance().getProgrammingLanguage().getLang() + ". Please go fix your PLM.");
+      e.printStackTrace();
+      return;
+    }
 
     for (World aw : getWorlds(WorldKind.ANSWER))
       aw.runEntities(runnerVect, ignored);

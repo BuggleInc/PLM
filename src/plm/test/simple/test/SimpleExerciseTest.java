@@ -78,8 +78,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException
   {
     exo.getSourceFile(pl, 0).setBody(generateOutOfBoundsErrorCode());
-    exo.compileAll(null, StudentOrCorrection.STUDENT);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -95,8 +94,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException
   {
     exo.getSourceFile(pl, 0).setBody(generateNullPointerErrorCode());
-    exo.compileAll(null, StudentOrCorrection.STUDENT);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -111,8 +109,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException
   {
     exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode());
-    exo.compileAll(null, StudentOrCorrection.STUDENT);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -128,8 +125,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testWrongCodeShouldNotPass() throws PLMCompilerException
   {
     exo.getSourceFile(pl, 0).setBody(generateWrongCode());
-    exo.compileAll(null, StudentOrCorrection.STUDENT);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities())
@@ -145,8 +141,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException
   {
     exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError());
-    exo.compileAll(null, StudentOrCorrection.STUDENT);
-    exo.mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
