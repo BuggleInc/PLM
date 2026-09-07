@@ -10,4 +10,4 @@ def move3(height, src, mid, dst):
 		move3(height-1, mid, src, dst);
 	# END SOLUTION
 # END TEMPLATE
-move3(getSlotSize(getParam(0))/3, getParam(0),getParam(1),getParam(2))
+move3(getSlotSize(getParam(0))//3, getParam(0),getParam(1),getParam(2))

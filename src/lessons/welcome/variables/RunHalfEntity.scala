@@ -10,9 +10,6 @@ class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
-	def isOverOrange():Boolean = {
-		return getGroundColor().equals(Color.orange);
-	}
 	/* BINDINGS TRANSLATION */
 	def estSurOrange():Boolean = { return isOverOrange(); }
 

@@ -42,7 +42,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 			colors(i) = allColors(i);
 
 		for (i <- 1 to nbSteps) {
-			world.asInstanceOf[TurmiteWorld].stepDone();
+			stepDone();
 			step(rule,colors);
 		}
 	}

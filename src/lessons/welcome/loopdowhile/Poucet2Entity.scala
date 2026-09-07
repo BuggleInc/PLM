@@ -13,27 +13,6 @@ class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
-	def crossing(): Boolean = {
-		val gridWorld = world.asInstanceOf[GridWorld];
-	  	val here  = gridWorld.getCell(getX(),getY()).asInstanceOf[BuggleWorldCell];
-		val right = gridWorld.getCell(  (getX()+1)%gridWorld.getWidth() ,  getY()  ).asInstanceOf[BuggleWorldCell]
-		val below = gridWorld.getCell( getX()  ,  (getY()+1)%gridWorld.getHeight()).asInstanceOf[BuggleWorldCell]
-		
-		var open = 0;
-		if (!here.hasLeftWall())
-			open += 1;
-		if (!here.hasTopWall())
-			open += 1;
-		if (!right.hasLeftWall())
-			open += 1;
-		if (!below.hasTopWall())
-			open += 1;
-		
-		return open>2 || (here.hasLeftWall() != right.hasLeftWall()) || (here.hasTopWall() != below.hasTopWall());
-	}
-	def exitReached(): Boolean = {
-		return getGroundColor().equals(Color.orange);
-	}
 	/* BINDINGS TRANSLATION */
 	def sortieTrouvee(): Boolean = { return exitReached() }
 	def croisement(): Boolean = { return crossing() }

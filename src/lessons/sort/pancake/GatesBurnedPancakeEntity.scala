@@ -238,7 +238,7 @@ class GatesBurnedPancakeEntity extends PancakeEntity {
 				if (blockLength() == stackSize) { // Done!
 					if (tRadius != 1) // all reverse 
 						flip(stackSize);
-					if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && world.asInstanceOf[PancakeWorld].wasRandom) {
+					if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && wasRandom()) {
 						System.out.println("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
 						System.out.print("{");
 						for (rank <- 0 to stackSize) 

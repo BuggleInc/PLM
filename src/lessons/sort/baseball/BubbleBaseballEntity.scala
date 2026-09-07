@@ -30,7 +30,7 @@ class BubbleBaseballEntity extends BaseballEntity {
 				move(getHoleBase()+1,minPos);				
 			}
 		}
-		world.asInstanceOf[BaseballWorld].assertSorted("bubble sort");
+		assertSorted("bubble sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

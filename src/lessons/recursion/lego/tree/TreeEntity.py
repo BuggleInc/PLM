@@ -5,16 +5,6 @@ def setY(i):
 def setPos(x,y):
 	errorMsg("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead.")
 
-colors = [Color.cyan,      Color.blue,   Color.magenta, 
-          Color.orange,    Color.yellow, Color.green,
-          Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red]
-
-def current(i):
-    if (i>=len(colors) or i < 0):
-        setColor(Color.red)
-    else:
-        setColor(colors[i])
-
 def subtree(steps, length, angle, shrink):
   if (steps != 0):
     setColor(Color.black)

@@ -19,16 +19,6 @@ class TreeEntity extends Turtle {
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 	
-	val colors:Array[Color] = Array(Color.cyan,      Color.blue,   Color.magenta, 
-									Color.orange,    Color.yellow, Color.green,
-									Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red)
-									
-	def current(v:Int) {
-	  if (v>=colors.length || v < 0)
-	    setColor(colors(colors.length -1));
-	  setColor(colors(v))
-	}
-  
 	/* BEGIN TEMPLATE */
 	def tree(steps:Int, length:Double, angle:Double, shrink:Double)	{
 		/* BEGIN SOLUTION */

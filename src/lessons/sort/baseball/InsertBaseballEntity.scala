@@ -26,7 +26,7 @@ class InsertBaseballEntity extends BaseballEntity {
 			while (getHole() != player) 
 				move(getHole()+1);
 		}
-		world.asInstanceOf[BaseballWorld].assertSorted("insertion sort");
+		assertSorted("insertion sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

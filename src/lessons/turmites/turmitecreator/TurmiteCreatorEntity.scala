@@ -133,7 +133,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 
 		for (stepIt <- 1 to nbSteps) {
 			step(colors);
-			world.asInstanceOf[TurmiteWorld].stepDone();
+			stepDone();
 		}
 	}
 }

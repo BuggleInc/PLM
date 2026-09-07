@@ -61,7 +61,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 
 
 		for (i <- 1 to nbSteps) {
-			world.asInstanceOf[TurmiteWorld].stepDone();
+			stepDone();
 			step(colors,rule);
 		}
 	}

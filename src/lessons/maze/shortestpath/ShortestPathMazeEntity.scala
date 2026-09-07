@@ -19,18 +19,6 @@ class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
-	def setIndication(x:Int, y:Int, i:Int) {
-		val c = world.asInstanceOf[BuggleWorld].getCell(x,y);
-		c.setContent(""+i);
-	}
-	def getIndication(x:Int, y:Int): Int =  {
-		val c = world.asInstanceOf[BuggleWorld].getCell(x,y);
-		if (c.hasContent())
-			return c.getContent().toInt;
-		return 9999;
-	}
-	def hasBaggle(x:Int, y:Int):   Boolean = world.asInstanceOf[BuggleWorld].getCell(x,y).hasBaggle();
-
 	/* BEGIN TEMPLATE */
 	override def run() {
 		// Your code here

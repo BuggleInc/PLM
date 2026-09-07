@@ -1,7 +1,6 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
-import lessons.sort.baseball.universe.BaseballWorld;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
 

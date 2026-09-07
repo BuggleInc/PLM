@@ -33,7 +33,7 @@ class LangtonEntity extends SimpleBuggle {
 		val nbSteps = getParam(0).asInstanceOf[Int]; 
 		for (i <- 1 to nbSteps) {
 			step();
-			world.asInstanceOf[lessons.turmites.universe.TurmiteWorld].stepDone();
+			stepDone();
 		}
 	}
 }
