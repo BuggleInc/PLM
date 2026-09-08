@@ -29,9 +29,7 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
     Color c = getGroundColor();
     if (c == Color.blue) {
       if (!haveSeenError())
-        javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("You fall into water."), Game.i18n.tr("Test failed"),
-                                                  javax.swing.JOptionPane.ERROR_MESSAGE);
-      seenError();
+        seenError(Game.i18n.tr("You fall into water."));
     } else {
       for (int i = 0; i < colors.length - 1; i++)
         if (colors[i].equals(c)) {

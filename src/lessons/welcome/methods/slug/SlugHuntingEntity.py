@@ -15,10 +15,10 @@ def isFacingTrail():
    if isFacingWall():
       return False
    else:
-	  forward()
-	  res = getGroundColor() == Color.green
-	  backward()
-	  return res
+      forward()
+      res = getGroundColor() == Color.green
+      backward()
+      return res
 # END SOLUTION
 
 # and copy your isFacingTrail() over

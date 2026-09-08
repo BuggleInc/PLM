@@ -1,17 +1,17 @@
 def run():
     # BEGIN SOLUTION
     def makeFlower(c):
-    	setBrushColor(c)
-    	brushDown()
-    	forward(2)
-    	backward()
-    	left()
-    	forward()
-    	backward(2)
-    	forward()
-    	setBrushColor(Color.YELLOW)
-    	brushUp()
-    	right()   
+        setBrushColor(c)
+        brushDown()
+        forward(2)
+        backward()
+        left()
+        forward()
+        backward(2)
+        forward()
+        setBrushColor(Color.YELLOW)
+        brushUp()
+        right()   
 
     def line(c1, c2):
         makeFlower(c1)
@@ -22,10 +22,10 @@ def run():
         forward(2)
         makeFlower(c)
         backward(3)
-    	
+        
     def growFlowers():
         line(Color.RED, Color.CYAN)
-    	    
+            
         right()    
         forward(2)
         left()
@@ -33,7 +33,7 @@ def run():
         right()
         forward(2)
         left()
-    	    
+            
         line(Color.PINK, Color.GREEN);
     # END SOLUTION
     growFlowers()

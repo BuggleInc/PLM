@@ -1,37 +1,39 @@
-_forward  = forward
-_backward = backward
+def run():
+    global forward, backward
+    _forward  = forward
+    _backward = backward
 
-def forward(i=1):
-    if i==1:
-      _forward()
-    else:
-      errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
-def backward(i=1):
-    if i==1:
-      _backward()
-    else:
-      errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
+    def forward(i=1):
+        if i==1:
+          _forward()
+        else:
+          errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
+    def backward(i=1):
+        if i==1:
+          _backward()
+        else:
+          errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
 
-# BEGIN TEMPLATE
+    # BEGIN TEMPLATE
 
-# Add your code here
+    # Add your code here
 
-# BEGIN SOLUTION
-def goAndGet():
-  cpt = 0
-  
-  while isOverBaggle() == False:
-    cpt = cpt+1
-    forward()
-  pickupBaggle()
-  for i in range(cpt):
-    backward()
-  dropBaggle()
-# END SOLUTION
+    # BEGIN SOLUTION
+    def goAndGet():
+      cpt = 0
+      
+      while isOverBaggle() == False:
+        cpt = cpt+1
+        forward()
+      pickupBaggle()
+      for i in range(cpt):
+        backward()
+      dropBaggle()
+    # END SOLUTION
 
-for i in range(7):
-  goAndGet()
-  right()
-  forward()
-  left()
-# END TEMPLATE
+    for i in range(7):
+      goAndGet()
+      right()
+      forward()
+      left()
+    # END TEMPLATE

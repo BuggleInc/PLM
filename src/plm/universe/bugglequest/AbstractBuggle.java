@@ -379,7 +379,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   @Override public boolean isOverMessage() { return getCell().hasContent(); }
 
   @Override public void writeMessage(String msg) { getCell().addContent(msg); }
-  @Override public void writeMessage(int nb) { writeMessage("" + nb); }
 
   @Override public String readMessage() { return getCell().getContent(); }
 
@@ -503,7 +502,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   public boolean estSurMessage() { return isOverMessage(); }
   public String litMessage() { return readMessage(); }
   public void ecritMessage(String s) { writeMessage(s); }
-  public void ecritMessage(int i) { writeMessage(i); }
   public void effaceMessage() { clearMessage(); }
   public int getMondeHauteur() { return getWorldHeight(); }
   public int getMondeLargeur() { return getWorldWidth(); }
@@ -537,7 +535,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   public boolean estáSobreMensagem() { return isOverMessage(); }
   public String lerMensagem() { return readMessage(); }
   public void escreverMensagem(String s) { writeMessage(s); }
-  public void escrevermensagem(int i) { writeMessage(i); }
   public void limparMensagem() { clearMessage(); }
   public int getAlturaDoMundo() { return getWorldHeight(); }
   public int getLarguraDoMundo() { return getWorldWidth(); }

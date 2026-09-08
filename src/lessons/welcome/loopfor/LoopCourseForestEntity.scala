@@ -32,8 +32,7 @@ class LoopCourseForestEntity extends SimpleBuggle {
 		var c = getGroundColor();
 		if (c.equals(Color.blue)) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("You fall into water."), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-			seenError();
+				seenError(Game.i18n.tr("You fall into water."));
 		} else {
 			var nextColor:Color = null;
 			for (i <- 0 to colors.length-1)

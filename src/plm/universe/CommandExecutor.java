@@ -63,11 +63,24 @@ public final class CommandExecutor {
         } catch (NoSuchMethodException e) {
           throw new RuntimeException(e);
         }
+      } else if (argType == String.class && rawArg instanceof Integer) {
+        // Python has no static typing, so nothing forces exercise code to write e.g. str(i) before passing an int
+        // where a String is expected (unlike Java/Scala's Integer.toString() or C's int2str()). Rather than requiring
+        // that from every Python exercise, convert here: the serialized value is unambiguously an int (ValueSerializer
+        // tags it as such), so this can only trigger on a genuine int-for-String call, never silently hide a real
+        // type error.
+        args[i] = Integer.toString((Integer)rawArg);
       }
     }
 
-    Method javaMethod  = method.method();
-    Object returnValue = javaMethod.invoke(entity, args);
+    Method javaMethod = method.method();
+    method.parameters();
+    Object returnValue;
+    try {
+      returnValue = javaMethod.invoke(entity, args);
+    } catch (IllegalArgumentException iae) {
+      throw new IllegalArgumentException("Cannot apply parameters " + opArgsSegment + " to " + method.name() + "()", iae);
+    }
 
     try {
       if (method.hasReturn()) {

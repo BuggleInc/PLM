@@ -96,7 +96,15 @@ public class LangPython extends ScriptingLanguage {
    * wrapper is needed at all (unlike Java/Scala): Entity.py is just top-level function definitions, so the three cases
    * only decide how to concatenate $run/$body, not how to wrap them.
    */
-  private static String getCorrectedTemplate(String correction)
+  private record CorrectedTemplate(String template, String bodySource) {}
+
+  /**
+   * Python counterpart of LangJava/LangScala's getCorrectedTemplate(), built on
+   * ExerciseTemplated.extractRunSpanIndentBased() (Python has no braces -- see that method's javadoc). No class/object
+   * wrapper is needed at all (unlike Java/Scala): Entity.py is just top-level function definitions, so the four cases
+   * only decide how to concatenate $run/$body, not how to wrap them.
+   */
+  private static CorrectedTemplate getCorrectedTemplate(String correction)
   {
     int beginTemplateIndexRaw = correction.indexOf("# BEGIN TEMPLATE");
     int endTemplateIndex      = correction.indexOf("# END TEMPLATE");
@@ -111,20 +119,27 @@ public class LangPython extends ScriptingLanguage {
       // separate driving function) -- synthesize the wrapper ourselves rather than requiring an otherwise-empty
       // "def run():" to be hand-added to every such file. $bodyIndented (as opposed to $body elsewhere) tells
       // compileExo() this content needs a leading indent applied, since it comes straight from column 0 in the source.
-      return "$imports\n\ndef run():\n$bodyIndented";
+      return new CorrectedTemplate("$imports\n\ndef run():\n$bodyIndented", correction);
     }
     if (endTemplateIndex != -1 && beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex) {
-      // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
-      return "$imports\n\n$body";
+      // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included),
+      // so $body -- built from the whole correction -- already is a single, complete, self-contained "def run(): ..."
+      // and needs no wrapper of its own.
+      return new CorrectedTemplate("$imports\n\n$body", correction);
     }
     if (runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1]) {
       // The templated region sits fully inside an EXISTING run()'s indented body (already indented in the source, unlike
-      // the runSpan==null case above), but run()'s own "def" line is outside it.
-      return "$imports\n\ndef run():\n$body";
+      // the runSpan==null case above), but run()'s own "def" line is outside it. $body is still the whole correction,
+      // which -- exactly like the case just above -- already starts with that "def run():" line: it's a complete
+      // definition on its own and must NOT be wrapped in another "def run():", or the outer one becomes a dead
+      // function that defines an inner "run" and never calls it.
+      return new CorrectedTemplate("$imports\n\n$body", correction);
     }
     // run() and the templated region are disjoint (a separate templated function, run() elsewhere -- the common case
     // for the Bat/Cons exercises, whose run() was mechanically added precisely to make this uniform with Java/Scala).
-    return "$imports\n\n$run\n\n$body";
+    // $run already reproduces run() verbatim, so exclude its span from $body to avoid defining it a second time.
+    String bodySource = correction.substring(0, runSpan[0]) + correction.substring(runSpan[1]);
+    return new CorrectedTemplate("$imports\n\n$run\n\n$body", bodySource);
   }
 
   private static String extractRunDependency(String code)
@@ -238,13 +253,13 @@ public class LangPython extends ScriptingLanguage {
                             ("from ValueSerializer import *\n" + "from Remote import *\n" + "from " + remote + " import *\n" + extraImports)
                                 .replace('\n', '\u0001'));
 
-        String template = getCorrectedTemplate(correction);
+        CorrectedTemplate corrected = getCorrectedTemplate(correction);
 
-        String entityCode = template;
+        String entityCode = corrected.template();
         for (Map.Entry<String, String> e : runtimePatterns.entrySet())
           entityCode = entityCode.replaceAll(e.getKey(), e.getValue());
-        entityCode = entityCode.replace("$bodyIndented", Matcher_quoteReplacement(indent(stripMarkers(correction))));
-        entityCode = entityCode.replace("$body", Matcher_quoteReplacement(stripMarkers(correction)));
+        entityCode = entityCode.replace("$bodyIndented", Matcher_quoteReplacement(indent(stripMarkers(corrected.bodySource()))));
+        entityCode = entityCode.replace("$body", Matcher_quoteReplacement(stripMarkers(corrected.bodySource())));
         entityCode = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
@@ -266,7 +281,6 @@ public class LangPython extends ScriptingLanguage {
           extraFiles.add(extraFile);
         }
 
-        Files.writeString(new File(workspace, "Template.txt").toPath(), template);
         Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
         Files.copy(new File("lib/resources/langages/python/ValueSerializer.py").toPath(), valueSerializer.toPath(),
                    java.nio.file.StandardCopyOption.REPLACE_EXISTING);
@@ -283,7 +297,8 @@ public class LangPython extends ScriptingLanguage {
           String output = new BufferedReader(new InputStreamReader(proc.getInputStream())).lines().collect(Collectors.joining("\n"));
           int retcode   = proc.waitFor();
           if (retcode != 0) {
-            PLMCompilerException e = new PLMCompilerException(output, Set.of(entityFile.toString()), new Error(), null);
+            PLMCompilerException e = new PLMCompilerException("Compiling " + entityFile.toString() + " yielded the following output:\n" + output,
+                                                              Set.of(entityFile.toString()), new Error(), null);
             exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
             if (out != null)
               out.log(e.getMessage());
@@ -459,7 +474,7 @@ public class LangPython extends ScriptingLanguage {
               parseError.printStackTrace();
               ioe.printStackTrace();
             }
-            throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
+            throw new RuntimeException("Parse error while reading the command: \"" + sb.toString() + "\"", parseError);
           }
         }
       };

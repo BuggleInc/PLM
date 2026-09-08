@@ -120,8 +120,6 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive(138) void writeMessage(String msg);
 
-  void writeMessage(int nb);
-
   @Primitive(139) String readMessage();
 
   @Primitive(140) void clearMessage();

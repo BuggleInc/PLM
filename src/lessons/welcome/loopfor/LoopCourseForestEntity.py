@@ -3,8 +3,6 @@ def run():
     _forward  = forward
     _backward = backward
 
-    import javax.swing.JOptionPane;
-
     colors = [Color(0,155,0), Color(50,155,0), Color(100,155,0), Color(140,155,0),
               Color(160,155,0), Color(180,155,0), Color(200,155,0), Color(210,155,0), Color.red]
 
@@ -17,7 +15,7 @@ def run():
             c = getGroundColor()
             if c == Color.blue:
                 if not haveSeenError():
-                    javax.swing.JOptionPane.showMessageDialog(None, "You fall into water.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    errorMsg("You fall into water.")
                 seenError();
             else:
               for i in range(len(colors)-1):
