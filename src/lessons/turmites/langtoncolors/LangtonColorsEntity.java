@@ -1,7 +1,5 @@
 package lessons.turmites.langtoncolors;
 
-import static plm.core.ValueSerializer.*;
-
 import java.awt.Color;
 import lessons.turmites.universe.TurmiteEntity;
 
@@ -44,7 +42,7 @@ public class LangtonColorsEntity extends TurmiteEntity {
                          Color.red,   Color.gray,  Color.magenta, Color.darkGray, Color.pink,  Color.lightGray};
 
     int nbSteps = getParamInt(0);
-    char[] rule = (char[])deserialize(getParamSerialized(1));
+    char[] rule = getParamString(1).toCharArray();
 
     Color[] colors = new Color[rule.length];
     for (int i = 0; i < rule.length; i++)

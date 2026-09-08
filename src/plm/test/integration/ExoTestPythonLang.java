@@ -1,6 +1,7 @@
 package plm.test.integration;
 
 import java.time.Duration;
+import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -24,6 +25,9 @@ public class ExoTestPythonLang extends ExoTest {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
       Assertions.fail("Exercise " + e.getId() + " has no Python entity");
-    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON); });
+    // Turmite exercises run tens of thousands of remote-primitive round trips, so we need to increase the timeout value.
+    Duration timeout = Set.of("turmites.TurmiteCreator", "turmites.LangtonColors").contains(e.getId()) ? Duration.ofSeconds(30) : Duration.ofSeconds(5);
+    Assertions.assertTimeoutPreemptively(
+        timeout, () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON); }, "Test " + e.getId() + " timeouted.");
   }
 }

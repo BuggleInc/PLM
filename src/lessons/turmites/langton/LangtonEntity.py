@@ -18,6 +18,6 @@ def step():
 	# END SOLUTION
 # END TEMPLATE
 		
-for i in range(getParam(0)):
+for i in range(getParamInt(0)):
 	step()
 	stepDone()

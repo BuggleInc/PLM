@@ -10,7 +10,7 @@ import plm.universe.bugglequest.BuggleWorld;
 public class LangtonColors extends ExerciseTemplated {
   BuggleWorld createWorld(String rule, int nbSteps, int width, int height, int buggleX, int buggleY)
   {
-    return new TurmiteWorld(rule + " (" + nbSteps + " steps)", nbSteps, rule.toCharArray(), width, height, buggleX, buggleY);
+    return new TurmiteWorld(rule + " (" + nbSteps + " steps)", nbSteps, rule, width, height, buggleX, buggleY);
   }
 
   public LangtonColors(Lesson lesson)

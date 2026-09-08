@@ -35,7 +35,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 
 	override def run() { 
 		val nbSteps = getParam(0).asInstanceOf[Int];
-		val rule = getParam(1).asInstanceOf[Array[Char]];
+		val rule = getParam(1).asInstanceOf[String].toCharArray;
 
 		var colors = new Array[Color] (rule.length);
 		for (i <- 0 to rule.length-1)
