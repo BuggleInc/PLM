@@ -1,14 +1,8 @@
 def run():
-    import java.util.Random
-    rand = java.util.Random()
+    import random
 
     def random3():
-        n = rand.nextInt(3)
-        if n<0.33:
-            return 0
-        elif n <0.66:
-            return 1
-        return 2
+        return random.randrange(0,3)
 
     def setX(i):
             errorMsg("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead.")
