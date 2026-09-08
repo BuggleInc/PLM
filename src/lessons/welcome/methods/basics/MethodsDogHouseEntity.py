@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     line = -1
 

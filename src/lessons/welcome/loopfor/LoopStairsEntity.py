@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     global forward
     colors = [Color.blue,    Color.cyan, Color.green,  Color.yellow,

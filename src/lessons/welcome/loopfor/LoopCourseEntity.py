@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     global forward, backward
     _colors = [Color.white, Color(255,240,240), Color(255,220,220), Color(255,205,205),

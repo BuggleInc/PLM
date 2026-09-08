@@ -1,3 +1,4 @@
+from RemoteLander import *
 # BEGIN HIDDEN
 (startPos,endPos) = (0,0)
 # END HIDDEN

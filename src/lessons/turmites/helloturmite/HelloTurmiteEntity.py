@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     # BEGIN TEMPLATE
     # Do not change these definitions

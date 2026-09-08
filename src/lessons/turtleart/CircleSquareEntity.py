@@ -1,3 +1,4 @@
+from RemoteTurtle import *
 def run():
     # BEGIN SOLUTION
     addSizeHint(35,100, 35,200);

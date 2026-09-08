@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     def setX(i):
             errorMsg("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead.")

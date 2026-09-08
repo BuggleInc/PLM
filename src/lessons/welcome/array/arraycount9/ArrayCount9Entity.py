@@ -1,3 +1,4 @@
+from RemoteBat import *
 def run():
     count = getTestCount()
     for i in range(count):

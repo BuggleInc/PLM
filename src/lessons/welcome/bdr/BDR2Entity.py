@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     def getIndication():
     	if isOverMessage():

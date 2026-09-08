@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 # BEGIN TEMPLATE
 def spiral(steps, angle, length, increment):
   # BEGIN SOLUTION

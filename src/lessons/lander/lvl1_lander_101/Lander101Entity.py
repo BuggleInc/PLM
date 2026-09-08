@@ -1,3 +1,4 @@
+from RemoteLander import *
 # BEGIN TEMPLATE
 def step():
 # BEGIN SOLUTION

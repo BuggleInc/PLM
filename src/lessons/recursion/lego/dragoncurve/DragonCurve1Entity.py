@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 # BEGIN TEMPLATE
 def dragon(order, x, y, z, t):
   # BEGIN SOLUTION 

@@ -1,3 +1,4 @@
+from RemotePancake import *
 def run():
     # BEGIN SOLUTION
 

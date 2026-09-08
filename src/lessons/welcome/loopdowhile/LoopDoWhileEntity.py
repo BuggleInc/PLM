@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
     def isGroundWhite():
         return getGroundColor() == Color.white

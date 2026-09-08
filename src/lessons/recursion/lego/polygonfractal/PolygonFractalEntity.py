@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 # BEGIN TEMPLATE
 def polygonFractal (levels, sides, length, shrink):
     # BEGIN SOLUTION

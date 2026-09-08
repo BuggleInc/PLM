@@ -1,3 +1,4 @@
+from RemoteLander import *
 # BEGIN TEMPLATE
 def getLandingZone():
     # BEGIN SOLUTION

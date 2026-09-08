@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def run():
 	global move
 	_move = move

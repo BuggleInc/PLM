@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -160,39 +162,12 @@ public class LangPython extends ScriptingLanguage {
 
   private static String getRemote(String code)
   {
-    // Unlike Java/Scala's correction text (which carries package/class names identifying its universe), Python source
-    // files have no such markers at all -- bare functions, no imports. The only thing to sniff is which primitive
-    // functions the (mechanically-added, see the session history) run() actually calls. Markers must be unique to their
-    // universe: e.g. getX()/getY() exist on BOTH Lander and Buggle, so they can't be used to tell them apart.
-    if (code.contains("toRecListIfArray"))
-      return "RemoteCons";
-    if (code.contains("isFlying") || code.contains("simulateStep") || code.contains("getSpeedY") || code.contains("setDesiredThrust"))
-      return "RemoteLander";
-    if (code.contains("isFacingWall") || code.contains("isBackingWall") || code.contains("stepForward") || code.contains("stepBackward") ||
-        code.contains("pickupBaggle") || code.contains("dropBaggle") || code.contains("isOverBaggle") || code.contains("isCarryingBaggle") ||
-        code.contains("brushDown") || code.contains("brushUp") || code.contains("getGroundColor") || code.contains("getBrushColor") ||
-        code.contains("hasTopWall") || code.contains("hasLeftWall") || code.contains("isWallOnLeft") || code.contains("isWallOnRight") ||
-        code.contains("getIndicationBdr") || code.contains("haveSeenError") || code.contains("isOverMessage") || code.contains("clearMessage") ||
-        code.contains("getWorldHeight") || code.contains("getWorldWidth") || code.contains("writeMessage") || code.contains("readMessage") ||
-        code.contains("setPos") || code.contains("errorMsg") || code.contains("forward()") || code.contains("forward(") || code.contains("backward("))
-      return "RemoteBuggle";
-    if (code.contains("getTestCount") || code.contains("setTestResult"))
-      return "RemoteBat";
-    if (code.contains("Langton") || code.contains("Turmite"))
-      return "RemoteTurmite";
-    if (code.contains("Turtle"))
-      return "RemoteTurtle";
-    if (code.contains("Flag"))
-      return "RemoteFlag";
-    if (code.contains("Baseball"))
-      return "RemoteBaseball";
-    if (code.contains("Pancake"))
-      return "RemotePancake";
-    if (code.contains("Hanoi"))
-      return "RemoteHanoi";
-    if (code.contains("Sort"))
-      return "RemoteSort";
+    // Python exercises must declare their universe explicitly with a real "from RemoteXxx import *" line
+    Matcher explicit = Pattern.compile("(?m)^from (Remote\\w+) import \\*").matcher(code);
+    if (explicit.find())
+      return explicit.group(1);
 
+    // If there is no such explicit import, fail fast and get the exercise author fix the issue
     return null;
   }
 
@@ -249,9 +224,9 @@ public class LangPython extends ScriptingLanguage {
 
         runtimePatterns.put("\\$run", Matcher_quoteReplacement(runFunction));
         runtimePatterns.put("\\$dependency", Matcher_quoteReplacement(dependency));
-        runtimePatterns.put("\\$imports",
-                            ("from ValueSerializer import *\n" + "from Remote import *\n" + "from " + remote + " import *\n" + extraImports)
-                                .replace('\n', '\u0001'));
+        runtimePatterns.put("\\$imports", ("from ValueSerializer import *\n"
+                                           + "from Remote import *\n" + extraImports)
+                                              .replace('\n', '\u0001'));
 
         CorrectedTemplate corrected = getCorrectedTemplate(correction);
 

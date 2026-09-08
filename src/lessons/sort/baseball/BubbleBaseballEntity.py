@@ -1,3 +1,4 @@
+from RemoteSort import *
 def run():
     # BEGIN SOLUTION
     while not isSorted():

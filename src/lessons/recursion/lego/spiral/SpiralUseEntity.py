@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 def spiral(steps, angle, length, increment):
   if (steps <= 0):
     pass

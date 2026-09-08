@@ -34,7 +34,7 @@ class HouseManyEntity extends Turtle {
 	def line() {
 	     for (i <- 1 to 4) {
 	        house(30);
-	        leveCrayon();
+	        penUp();
 	        right(90);
 	        forward(50);
 	        left(90);

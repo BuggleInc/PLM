@@ -1,3 +1,4 @@
+from RemoteBuggle import *
 # BEGIN TEMPLATE 
 
 def snowSide(levels, length):

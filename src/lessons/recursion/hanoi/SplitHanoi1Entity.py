@@ -1,3 +1,4 @@
+from RemoteHanoi import *
 # BEGIN TEMPLATE
 def splitHanoi(height, src, other, dst1,dst2):
 	# Your code here

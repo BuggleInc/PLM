@@ -52,4 +52,6 @@ public interface TurtlePrimitives extends EntityPrimitivesBase {
   @Primitive(131) void setColor(Color c);
 
   @Primitive(132) @Override boolean isSelected();
+
+  @Primitive(133) public void addSizeHint(int x1, int y1, int x2, int y2);
 }
