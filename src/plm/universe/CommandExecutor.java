@@ -1,5 +1,6 @@
 package plm.universe;
 
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -63,13 +64,13 @@ public final class CommandExecutor {
         } catch (NoSuchMethodException e) {
           throw new RuntimeException(e);
         }
-      } else if (argType == String.class && rawArg instanceof Integer) {
-        // Python has no static typing, so nothing forces exercise code to write e.g. str(i) before passing an int
-        // where a String is expected (unlike Java/Scala's Integer.toString() or C's int2str()). Rather than requiring
-        // that from every Python exercise, convert here: the serialized value is unambiguously an int (ValueSerializer
-        // tags it as such), so this can only trigger on a genuine int-for-String call, never silently hide a real
-        // type error.
-        args[i] = Integer.toString((Integer)rawArg);
+      } else if (argType == String.class &&
+                 (rawArg instanceof Integer || rawArg instanceof Double || rawArg instanceof Boolean || rawArg instanceof Color || rawArg instanceof Point)) {
+        // Python has no static typing, so nothing forces student code to write e.g. str(i) before passing one of
+        // ValueSerializer.py's atomic types (int, float, bool, Color, Point) where a String is expected.
+        // Rather than requiring that from every Python exercise, convert here with a plain toString(): the serialized
+        // value is unambiguously typed (ValueSerializer tags it), so this convertion cannot hide a real type error.
+        args[i] = String.valueOf(rawArg);
       }
     }
 
