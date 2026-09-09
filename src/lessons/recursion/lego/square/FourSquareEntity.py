@@ -1,14 +1,15 @@
-from RemoteBuggle import *
-# BEGIN TEMPLATE 
-# BEGIN SOLUTION
-def square():
+from RemoteTurtle import *
+
+def run():
+  # BEGIN TEMPLATE 
+  # BEGIN SOLUTION
+  def square():
+    for i in range(4):
+      forward(100)
+      right(90)
+  
   for i in range(4):
-    forward(100)
+    square()
     right(90)
-
-for i in range(4):
-  square()
-  right(90)
-# END SOLUTION
-# END TEMPLATE
-
+  # END SOLUTION
+  # END TEMPLATE
