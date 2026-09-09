@@ -1,3 +1,5 @@
+from RemoteSort import *
+
 def run():
     # BEGIN SOLUTION
     for i in range(1,getValueCount()):

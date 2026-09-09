@@ -4,7 +4,7 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
 
 public interface SortingEntityPrimitives extends EntityPrimitivesBase {
-  @Primitive(114) void copy(int from, int to);
+  @Primitive(114) void copy(int fromPos, int toPos);
 
   @Primitive(115) int getValue(int i);
 

@@ -1,6 +1,8 @@
+from RemoteSort import *
+
 def run():
     # BEGIN SOLUTION 
-    gap = getValueCount()/2
+    gap = getValueCount()//2
 
     # while h remains larger than 0
     while gap>0:
@@ -18,5 +20,5 @@ def run():
         # insert B into the correct place
         setValue(j, value)
       # all sets gap-sorted, now decrease set size
-      gap = gap / 2
+      gap = gap // 2
     # END SOLUTION
