@@ -4,7 +4,7 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
 
 public interface DutchFlagEntityPrimitives extends EntityPrimitivesBase {
-  @Primitive(110) void swap(int from, int to);
+  @Primitive(110) void swap(int fromLine, int toLine);
 
   @Primitive(112) int getColor(int rank);
 

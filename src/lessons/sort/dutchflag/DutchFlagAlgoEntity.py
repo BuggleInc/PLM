@@ -1,3 +1,5 @@
+from RemoteDutchFlag import *
+
 def run():
     # BEGIN SOLUTION 
     afterBlue=0;
@@ -5,9 +7,9 @@ def run():
     beforeRed=getSize()-1;
     while afterBlue <= beforeWhite:
     	
-    	if (getColor(afterBlue) == BLUE):
+    	if (getColor(afterBlue) == Color.BLUE):
     		afterBlue += 1
-    	elif (getColor(afterBlue) == WHITE):
+    	elif (getColor(afterBlue) == Color.WHITE):
     		swap(afterBlue, beforeWhite);
     		beforeWhite -= 1
     	else:

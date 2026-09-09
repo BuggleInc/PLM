@@ -11,6 +11,10 @@ class DutchFlagAlgoEntity extends DutchFlagEntity {
 	}
 
 	/* BEGIN TEMPLATE */
+	val BLUE  = 0
+	val WHITE = 1
+    val RED   = 2
+
 	def solve() {
 		/* BEGIN SOLUTION */
 		var afterBlue=0;
@@ -31,7 +35,7 @@ class DutchFlagAlgoEntity extends DutchFlagEntity {
 				beforeRed -= 1
 			}
 		}
-		world.asInstanceOf[DutchFlagWorld].assertSorted();
+	    assertSorted()
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
