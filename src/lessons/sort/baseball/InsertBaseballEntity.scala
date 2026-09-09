@@ -10,34 +10,33 @@ class InsertBaseballEntity extends BaseballEntity {
 		/* BEGIN SOLUTION */
 		/* Bring the hole in 0,1 */
 		if (getHole() == 0) // It is already on base 0, but on another position
-			move(1);
+			_move(1);
 		while (getHole() > 1)
-			move(getHole()-1);
+			_move(getHole()-1);
 		
 		for (player <- 2 to getBasesAmount()*getPositionsAmount()-1) {
 			//out("Sort player "+player);
 			
-			//out("Compare "+(getHole()+1)+":"+getPlayerColor(getHole()+1)+" < "+(getHole()-1)+":"+getPlayerColor(getHole()-1));
-			while (getHole()>0 && getPlayerColor(getHole()+1) < getPlayerColor(getHole()-1)) {  
+			//out("Compare "+(getHole()+1)+":"+_getPlayerColor(getHole()+1)+" < "+(getHole()-1)+":"+_getPlayerColor(getHole()-1));
+			while (getHole()>0 && _getPlayerColor(getHole()+1) < _getPlayerColor(getHole()-1)) {  
 				val center = getHole();// ...2x1... with ascending positions from left to right
-				move(center+1);        // ...21x...
-				move(center-1);        // ...x12...
+				_move(center+1);        // ...21x...
+				_move(center-1);        // ...x12...
 			}
 			while (getHole() != player) 
-				move(getHole()+1);
+				_move(getHole()+1);
 		}
 		assertSorted("insertion sort");
-		/* END SOLUTION */
-	}
-	/* END TEMPLATE */
-	
-	def getPlayerColor(pos:Int):Int = getPlayerColor(pos / getPositionsAmount(), pos % getPositionsAmount());
-	def move(pos:Int):Unit = move(pos / getPositionsAmount(), pos % getPositionsAmount());
+    }
+
+	def _getPlayerColor(pos:Int):Int = getPlayerColor(pos / getPositionsAmount(), pos % getPositionsAmount());
+	def _move(pos:Int):Unit = move(pos / getPositionsAmount(), pos % getPositionsAmount());
 	def getHole():Int = getPositionsAmount()*getHoleBase()+getHolePosition();
 	
 	def out(msg:String) {
 		if (isSelected())
 			System.out.println(msg);
+		/* END SOLUTION */
 	}
-	/* END HIDDEN */
+	/* END TEMPLATE */
 }

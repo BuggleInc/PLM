@@ -1,9 +1,11 @@
+from RemoteBaseball import *
+
 def run():
     # BEGIN SOLUTION
     def getColor(pos):
-    	return getPlayerColor(pos / getPositionsAmount(), pos % getPositionsAmount())
+    	return getPlayerColor(pos // getPositionsAmount(), pos % getPositionsAmount())
     def doMove(pos):
-    	move(pos / getPositionsAmount(), pos % getPositionsAmount())
+    	move(pos // getPositionsAmount(), pos % getPositionsAmount())
     def getHole():
     		return getPositionsAmount()*getHoleBase()+getHolePosition()
 

@@ -1,7 +1,6 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
-import lessons.sort.baseball.universe.BaseballWorld;
 
 public class NaiveBaseballEntity extends BaseballEntity {
 

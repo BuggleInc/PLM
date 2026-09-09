@@ -1,10 +1,7 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 
-@EntityPrimitives(SelectBaseballEntity.class)
 public class SelectBaseballEntity extends BaseballEntity {
 
   /* BEGIN TEMPLATE */
@@ -15,17 +12,14 @@ public class SelectBaseballEntity extends BaseballEntity {
       bringPlayersHome(base);
 
     assertSorted("selection sort");
-    /* END SOLUTION */
   }
-  /* END TEMPLATE */
-  /* BEGIN HIDDEN */
   void out(String msg)
   {
     // if (false)
     //	System.out.println(msg);
   }
 
-  @Primitive(311) public void bringPlayersHome(int base)
+  public void bringPlayersHome(int base)
   {
     for (int positionToFill = 0; positionToFill < getPositionsAmount(); positionToFill++) {
       out("Sort base " + base + ", position " + positionToFill);
@@ -45,7 +39,7 @@ public class SelectBaseballEntity extends BaseballEntity {
           move(getHoleBase() + 1, (playerPos + 1) % 2);
         }
       }
-      out("The hole is now with the player in " + playerBase + ": " + world.toString());
+      out("The hole is now with the player in " + playerBase);
 
       if (playerBase == base) {
         // Already in the base. Bring it to its position
@@ -59,7 +53,7 @@ public class SelectBaseballEntity extends BaseballEntity {
             move(playerBase - 1, (positionToFill + 1) % 2);
           }
           playerBase--;
-          out("One step further. playerBase: " + playerBase + "; world:" + world.toString());
+          out("One step further. playerBase: " + playerBase);
         }
     }
   }
@@ -79,6 +73,7 @@ public class SelectBaseballEntity extends BaseballEntity {
       if (getPlayerColor(base, pos) == color)
         return pos;
     throw new IllegalArgumentException("cannot find any player of color " + color + " within base " + base);
+    /* END SOLUTION */
   }
-  /* END HIDDEN */
+  /* END TEMPLATE */
 }

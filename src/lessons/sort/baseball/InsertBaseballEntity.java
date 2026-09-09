@@ -27,7 +27,6 @@ public class InsertBaseballEntity extends BaseballEntity {
         _move(_getHole() + 1);
     }
     assertSorted("insertion sort");
-    /* END SOLUTION */
   }
 
   int _getPlayerColor(int pos) { return getPlayerColor(pos / getPositionsAmount(), pos % getPositionsAmount()); }
