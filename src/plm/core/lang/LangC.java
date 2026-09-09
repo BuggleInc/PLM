@@ -708,9 +708,7 @@ public class LangC extends ProgrammingLanguage {
       final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#include \"Remote.h\"\n#include \"" + name + ".h\"\n\n" + type_support_functions +
                           "\n\n" + implementations;
 
-      // System.err.println("XXX Generating "+folder+name+".h\n"+header);
       Files.writeString(new File(folder, name + ".h").toPath(), header);
-      // System.err.println("XXX Generating "+folder+name+".c");
       Files.writeString(new File(folder, name + ".c").toPath(), code);
     }
   }

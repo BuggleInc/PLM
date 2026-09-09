@@ -38,23 +38,9 @@ public class CodeCreation {
     Map<String, String> remoteExtraScalaCode = Map.of("RemoteCons", ConsEntity.SCALA_REMOTE_EXTRA_CODE);
     Map<String, String> remoteExtraPythonCode = Map.of("RemoteCons", ConsEntity.PYTHON_REMOTE_EXTRA_CODE);
 
-    LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
-    File cFolder                                         = new File(folder, "c");
-    for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
-      String name                   = entry.getKey();
-      Class<? extends Entity> clazz = entry.getValue();
-
-      Map<Integer, PrimitiveMethod> list = null;
-      try {
-        list = PrimitiveRegistration.getMaximalPrimitiveForEntity(clazz);
-      } catch (Exception e) {
-        throw new RuntimeException(e);
-      }
-      langCGenerator.generate(cFolder, name, list.values().stream().toList());
-    }
-
     LangJava.LangJavaExternalPrimitiveGenerator langJavaGenerator = new LangJava.LangJavaExternalPrimitiveGenerator();
     File javaFolder                                               = new File(folder, "java");
+    System.err.print("Generating Java entities in " + javaFolder + ":");
     for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
       String name                   = entry.getKey();
       Class<? extends Entity> clazz = entry.getValue();
@@ -65,11 +51,14 @@ public class CodeCreation {
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
+      System.err.print(" " + name);
       langJavaGenerator.generate(javaFolder, name, list.values().stream().toList(), remoteExtraJavaCode.getOrDefault(name, ""));
     }
+    System.err.println(".");
 
     LangScala.LangScalaExternalPrimitiveGenerator langScalaGenerator = new LangScala.LangScalaExternalPrimitiveGenerator();
     File scalaFolder                                                 = new File(folder, "scala");
+    System.err.print("Generating Scala entities in " + scalaFolder + ":");
     for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
       String name                   = entry.getKey();
       Class<? extends Entity> clazz = entry.getValue();
@@ -80,11 +69,14 @@ public class CodeCreation {
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
+      System.err.print(" " + name);
       langScalaGenerator.generate(scalaFolder, name, list.values().stream().toList(), remoteExtraScalaCode.getOrDefault(name, ""));
     }
+    System.err.println(".");
 
     LangPython.LangPythonExternalPrimitiveGenerator langPythonGenerator = new LangPython.LangPythonExternalPrimitiveGenerator();
     File pythonFolder                                                   = new File(folder, "python");
+    System.err.print("Generating Python entities in " + pythonFolder + ":");
     for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
       String name                   = entry.getKey();
       Class<? extends Entity> clazz = entry.getValue();
@@ -95,7 +87,27 @@ public class CodeCreation {
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
+      System.err.print(" " + name);
       langPythonGenerator.generate(pythonFolder, name, list.values().stream().toList(), remoteExtraPythonCode.getOrDefault(name, ""));
     }
+    System.err.println(".");
+
+    LangC.LangCExternalPrimitiveGenerator langCGenerator = new LangC.LangCExternalPrimitiveGenerator();
+    File cFolder                                         = new File(folder, "c");
+    System.err.print("Generating C entities in " + cFolder + ":");
+    for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet()) {
+      String name                   = entry.getKey();
+      Class<? extends Entity> clazz = entry.getValue();
+
+      Map<Integer, PrimitiveMethod> list = null;
+      try {
+        list = PrimitiveRegistration.getMaximalPrimitiveForEntity(clazz);
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+      System.err.print(" " + name);
+      langCGenerator.generate(cFolder, name, list.values().stream().toList());
+    }
+    System.err.println(".");
   }
 }

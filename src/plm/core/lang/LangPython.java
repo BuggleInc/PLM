@@ -590,7 +590,6 @@ public class LangPython extends ScriptingLanguage {
 
       final String code = "# THIS FILE IS GENERATED. DO NOT EDIT\nfrom Remote import *\n\n\n" + body + "\n";
 
-      System.err.println("XXX Generating " + folder + "/" + name + ".py");
       Files.writeString(new File(folder, name + ".py").toPath(), code);
     }
   }

@@ -920,7 +920,6 @@ public class LangScala extends JVMCompiledLang {
       final String code =
           "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport Remote._\nimport java.awt.Color\n\nobject " + name + " {" + body.replace("\n", "\n\t") + "\n}";
 
-      System.err.println("XXX Generating " + folder + "/" + name + ".scala");
       Files.writeString(new File(folder, name + ".scala").toPath(), code);
     }
   }

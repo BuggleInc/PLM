@@ -794,7 +794,6 @@ public class LangJava extends JVMCompiledLang {
       final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" +
                           body.replace("\n", "\n\t") + "\n}";
 
-      System.err.println("XXX Generating " + folder + "/" + name + ".java");
       Files.writeString(new File(folder, name + ".java").toPath(), code);
     }
   }
