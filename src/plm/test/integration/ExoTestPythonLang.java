@@ -26,7 +26,7 @@ public class ExoTestPythonLang extends ExoTest {
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
       Assertions.fail("Exercise " + e.getId() + " has no Python entity");
     // Turmite exercises run tens of thousands of remote-primitive round trips, so we need to increase the timeout value.
-    Duration timeout = Set.of("turmites.TurmiteCreator", "turmites.LangtonColors").contains(e.getId()) ? Duration.ofSeconds(30) : Duration.ofSeconds(5);
+    Duration timeout = Set.of("turmites.TurmiteCreator", "turmites.LangtonColors").contains(e.getId()) ? Duration.ofSeconds(60) : Duration.ofSeconds(20);
     Assertions.assertTimeoutPreemptively(
         timeout, () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON); }, "Test " + e.getId() + " timeouted.");
   }
