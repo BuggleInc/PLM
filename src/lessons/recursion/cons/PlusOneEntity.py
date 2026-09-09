@@ -3,7 +3,7 @@ def run():
     count = getTestCount()
     for i in range(count):
         param = deserialize(getTest(i))
-        setTestResult(i, serialize(plusOne(toRecListIfArray(param[0]))))
+        setTestResult(i, serialize(RecListToArray(plusOne(toRecListIfArray(param[0])))))
 
 # BEGIN TEMPLATE
 def plusOne(list):

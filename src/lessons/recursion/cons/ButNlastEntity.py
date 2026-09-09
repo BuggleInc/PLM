@@ -3,7 +3,7 @@ def run():
     count = getTestCount()
     for i in range(count):
         param = deserialize(getTest(i))
-        setTestResult(i, serialize(butNlast(toRecListIfArray(param[0]), toRecListIfArray(param[1]))))
+        setTestResult(i, serialize(RecListToArray(butNlast(toRecListIfArray(param[0]), toRecListIfArray(param[1])))))
 
 # BEGIN TEMPLATE
 def butNlast(list, n):

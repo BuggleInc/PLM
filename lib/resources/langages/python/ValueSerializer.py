@@ -76,23 +76,6 @@ Color.PINK      = Color.pink
 Color.RED       = Color.red      
 Color.YELLOW    = Color.yellow   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def _type_tag(v):
   if v is None:
     return "Z"

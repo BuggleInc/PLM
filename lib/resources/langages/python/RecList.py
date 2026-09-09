@@ -14,6 +14,13 @@ class RecList:
       ptr = ptr.tail
     return " [" + ", ".join(parts) + "] "
 
+  def plmInsiderLength(self):
+    res     = 0
+    ptr = self
+    while ptr is not None:
+      ptr = ptr.tail
+      res += 1
+    return res
 
 def cons(head, tail):
   return RecList(head, tail)
@@ -32,3 +39,11 @@ def toRecListIfArray(a):
   if isinstance(a, list):
     return recListFromArray(a)
   return a
+
+def RecListToArray(self):
+  result = []
+  ptr = self
+  while ptr is not None:
+    result.append(ptr.head)
+    ptr = ptr.tail
+  return result
