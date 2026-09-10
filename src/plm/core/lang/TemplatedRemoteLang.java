@@ -38,26 +38,6 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
     return section.toString();
   }
 
-  /**
-   * Common to Java, Scala and Python: {@code compileExo} stores the path of the compiled/generated entry point in
-   * {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"); mutating an entity just means
-   * copying that path onto it so that {@code runEntity} can later spawn the right process.
-   */
-  @Override public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException
-  {
-    List<SourceFile> sourceFiles = exo.getSourceFilesList(this);
-
-    if (sourceFiles.size() != 1)
-      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
-
-    String path = sourceFiles.get(0).meta.get(getLang().toUpperCase());
-    if (path != null)
-      for (Entity old : olds)
-        old.setScript(this, path);
-
-    return new ArrayList<>(olds);
-  }
-
   /* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
   /* FIXME: the exercise ID should be used now that the student code is executed in a remote process. There is no class cache to bypass anymore */
   protected static final String packageNamePrefix = "plm.runtime";

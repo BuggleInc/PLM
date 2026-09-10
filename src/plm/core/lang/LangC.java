@@ -2,10 +2,6 @@ package plm.core.lang;
 
 import java.awt.Color;
 import java.io.*;
-import java.net.StandardProtocolFamily;
-import java.net.UnixDomainSocketAddress;
-import java.nio.channels.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -24,12 +20,10 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
-import plm.universe.CommandExecutor;
 import plm.universe.Direction;
-import plm.universe.Entity;
 import plm.universe.Point;
 
-public class LangC extends ProgrammingLanguage {
+public class LangC extends RemoteExecutionLang {
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
@@ -285,176 +279,47 @@ public class LangC extends ProgrammingLanguage {
     }
   }
 
-  @Override public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate)
+  /**
+   * Runs the compiled executable directly (its path is exactly what compileExo() produced, stored in
+   * sf.meta.get("C") and copied onto the entity by the inherited mutateEntities()), redirecting ASan's reports to a
+   * file instead of stderr so they can be told apart from the student code's own stderr output and surfaced
+   * separately (see onProcessFinished() below).
+   */
+  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
-    List<SourceFile> sourceFiles = exercise.getSourceFilesList(this);
+    File exec = new File(executable);
+    if (!exec.exists() || !exec.canExecute() || !exec.isFile())
+      throw new IOException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    if (sourceFiles.size() != 1)
-      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
-
-    String path = sourceFiles.get(0).meta.get("C");
-    if (path != null)
-      for (Entity o : old)
-        o.setScript(this, path);
-
-    return old;
+    ProcessBuilder pb = new ProcessBuilder(executable, socketPath.toString());
+    // log_path=<...>/asan_report.txt ~~> don't report to stderr but to that file (ASan appends ".$PID" itself)
+    // to_syslog=0   ~~> Prevent ASan from writing also to stderr
+    pb.environment().put("ASAN_OPTIONS", "log_path=" + asanReportPath(exec) + ":to_syslog=0");
+    return pb;
   }
 
-  @Override public void runEntity(final Entity ent, final RunOutcome progress)
+  private static String asanReportPath(File exec) { return new File(exec.getParentFile(), "asan_report.txt").getAbsolutePath(); }
+
+  /**
+   * If gcc's Address Sanitizer detected an issue, its report lands next to the executable (see buildProcess() above)
+   *  instead of stderr; surface it the same way a normal stderr line would be.
+   */
+  @Override protected void onProcessFinished(Process process, String executable, RunOutcome progress)
   {
-    final StringBuffer resCompilationErr = new StringBuffer();
+    File report = new File(asanReportPath(new File(executable)) + "." + process.pid());
+    if (!report.exists())
+      return;
 
-    try {
-
-      String cmd = ent.getScript(this);
-      if (cmd == null)
-        throw new IllegalStateException("TOFIX");
-
-      File exec = new File(cmd);
-      if (!exec.exists() || !exec.canExecute() || !exec.isFile()) {
-        System.err.println(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
-        return;
-      }
-
-      Path socketDir                    = Files.createTempDirectory("plm-c-sock-");
-      Path socketPath                   = socketDir.resolve("protocol.sock");
-      ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
-      serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
-      serverChannel.configureBlocking(false);
-      Selector selector = Selector.open();
-      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-      String asan_report = new File(exec.getParentFile(), "asan_report.txt").getAbsolutePath();
-      ProcessBuilder pb  = new ProcessBuilder(cmd, socketPath.toString());
-      // log_path=/tmp/plmTmp/asan_report.txt.$PID ~~> don't report to stderr but to that file
-      // to_syslog=0   ~~> Prevent ASan from writing also to stderr
-      pb.environment().put("ASAN_OPTIONS", "log_path=" + asan_report + ":to_syslog=0");
-      final Process process = pb.start();
-      long pid              = process.pid();
-
-      final int ACCEPT_TIMEOUT_MS = 10000;
-      selector.select(ACCEPT_TIMEOUT_MS);
-      SocketChannel protocolChannel = serverChannel.accept();
-      selector.close();
-      serverChannel.close();
-
-      if (protocolChannel == null) {
-        process.destroyForcibly();
-        Files.deleteIfExists(socketPath);
-        Files.deleteIfExists(socketDir);
-        progress.outcome        = RunOutcome.kind.FAIL;
-        progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.");
-        return;
-      }
-
-      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(protocolChannel), StandardCharsets.UTF_8));
-
-      Thread stdoutReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null)
-                System.out.println(str);
-            } finally {
-              reader.close();
-            }
-          } catch (IOException ioe) {
-            ioe.printStackTrace();
-          }
-        }
-      };
-
-      Thread stderrReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null)
-                System.err.println(str);
-            } finally {
-              reader.close();
-            }
-          } catch (IOException ioe) {
-            ioe.printStackTrace();
-          }
-        }
-      };
-
-      Thread commandReader = new Thread() {
-        public void run()
-        {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(protocolChannel), StandardCharsets.UTF_8));
-          Exception parseError  = null;
-          String str            = "";
-          try {
-            while ((str = reader.readLine()) != null)
-              CommandExecutor.command(ent, str, bwriter);
-          } catch (Exception e) {
-            parseError              = e;
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = e.getMessage();
-            process.destroyForcibly();
-          }
-          if (parseError != null) {
-            StringBuffer sb = new StringBuffer(str + "\n");
-            try {
-              while ((str = reader.readLine()) != null)
-                sb.append(str + "\n");
-            } catch (IOException ioe) {
-              System.err.println("Exception while handling the exception. Bailing out");
-              parseError.printStackTrace();
-              ioe.printStackTrace();
-            }
-            throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
-          }
-        }
-      };
-
-      stdoutReader.start();
-      stderrReader.start();
-      commandReader.start();
-
-      process.waitFor();
-
-      stdoutReader.join();
-      stderrReader.join();
-      commandReader.join();
-
-      bwriter.close();
-      protocolChannel.close();
-      Files.deleteIfExists(socketPath);
-      Files.deleteIfExists(socketDir);
-
-      File asan_report_file = new File(asan_report + "." + pid);
-      if (asan_report_file.exists()) {
-        System.err.println(Game.i18n.tr("The Address Sanitizer detected an issue with the execution of your entity. You probably want to fix "
-                                        + "it.\nThe exact error message contains hints about the problem. Good luck in debugging this.\n"));
-        try (BufferedReader br = new BufferedReader(new FileReader(asan_report_file))) {
-          String line;
-          while ((line = br.readLine()) != null) {
-            System.err.println(line);
-          }
-        } catch (IOException ioe) {
-          ioe.printStackTrace();
-        }
-        asan_report_file.delete();
-      }
-
-      if (resCompilationErr.length() > 0) {
-        System.err.println(resCompilationErr.toString());
-        progress.setCompilationError(resCompilationErr.toString());
-      }
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+    System.err.println(Game.i18n.tr("The Address Sanitizer detected an issue with the execution of your entity. You probably want to fix "
+                                    + "it.\nThe exact error message contains hints about the problem. Good luck in debugging this.\n"));
+    try (BufferedReader br = new BufferedReader(new FileReader(report))) {
+      String line;
+      while ((line = br.readLine()) != null)
+        System.err.println(line);
+    } catch (IOException ioe) {
+      ioe.printStackTrace();
     }
+    report.delete();
   }
 
   public static class LangCExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {

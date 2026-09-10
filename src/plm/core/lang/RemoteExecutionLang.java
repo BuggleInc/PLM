@@ -15,9 +15,15 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.SourceFile;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 
@@ -26,14 +32,35 @@ import plm.universe.Entity;
  * {@link CommandExecutor} over a UNIX-domain-socket protocol (currently Java, Scala, Python and C -- though C does not
  * (yet) extend this class).
  *
- * Factors the part of {@link #runEntity} that is identical for all of them: binding the protocol socket, starting the
+ * Factors two things common to all of them:
+ * <ul>
+ * <li>how a compiled artifact's path travels from {@code compileExo} to {@code runEntity}: {@code compileExo} stores it
+ * in {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"), and {@link #mutateEntities} copies
+ * it onto the entities so {@code runEntity} knows what to spawn;</li>
+ * <li>the part of {@link #runEntity} that is identical for all of them: binding the protocol socket, starting the
  * process, relaying its stdout/stderr, and running the command-reading loop that feeds student primitive calls to
  * {@link CommandExecutor}. The only thing that actually differs from one language to another is how to turn the
- * compiled/interpreted "script" reference into a runnable {@link ProcessBuilder}, which is left to {@link #buildProcess}.
+ * compiled/interpreted "script" reference into a runnable {@link ProcessBuilder}, which is left to {@link #buildProcess}.</li>
+ * </ul>
  */
 public abstract class RemoteExecutionLang extends ProgrammingLanguage {
 
   public RemoteExecutionLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
+
+  @Override public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException
+  {
+    List<SourceFile> sourceFiles = exo.getSourceFilesList(this);
+
+    if (sourceFiles.size() != 1)
+      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
+
+    String path = sourceFiles.get(0).meta.get(getLang().toUpperCase());
+    if (path != null)
+      for (Entity old : olds)
+        old.setScript(this, path);
+
+    return new ArrayList<>(olds);
+  }
 
   /**
    * Build the process that will run the student code, given the value {@link Entity#getScript} returned for this
@@ -42,6 +69,14 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
    * executable path, a "jar|mainClass" pair, etc.) and for checking that whatever it points to actually exists.
    */
   protected abstract ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException;
+
+  /**
+   * Optional per-language hook, called once the student process has exited (right after {@code process.waitFor()}
+   * returns) and before the retcode/outcome bookkeeping below. No-op by default; overridden by languages that need to
+   * inspect something left behind by the process itself -- e.g. C reads a separate ASan report file, named after the
+   * process's PID, next to the executable.
+   */
+  protected void onProcessFinished(Process process, String executable, RunOutcome progress) {}
 
   @Override public void runEntity(final Entity ent, final RunOutcome progress)
   {
@@ -184,6 +219,8 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       stdoutReader.join();
       stderrReader.join();
       commandReader.join();
+
+      onProcessFinished(process, executable, progress);
 
       bwriter.close();
       finalProtocolChannel.close();
