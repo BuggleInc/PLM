@@ -1,17 +1,11 @@
 package lessons.recursion.hanoi;
 
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
-
-@EntityPrimitives(CyclicHanoiEntity.class)
 public class CyclicHanoiEntity extends lessons.recursion.hanoi.universe.HanoiEntity {
 
-  @Override @Primitive(321) public void cyclicMove(int from, int to) { super.cyclicMove(from, to); }
-
-  public void move(int from, int to)
+  public void move(int src, int dst)
   {
     // System.err.println("move("+from+","+to+")");
-    cyclicMove(from, to);
+    cyclicMove(src, dst);
   }
 
   public void run() { clockwise(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1), getParamInt(2)); }

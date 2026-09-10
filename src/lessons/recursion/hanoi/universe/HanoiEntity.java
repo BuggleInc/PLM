@@ -49,12 +49,12 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
     stepUI();
     /* END HIDDEN */
   }
-  public void cyclicMove(int from, int to)
+  public void cyclicMove(int src, int dst)
   {
-    if ((from == 0 && to != 1) || (from == 1 && to != 2) || (from == 2 && to != 0))
+    if ((src == 0 && dst != 1) || (src == 1 && dst != 2) || (src == 2 && dst != 0))
       throw new RuntimeException(Game.i18n.tr(
-          "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.", from, to));
-    regularMove(from, to);
+          "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.", src, dst));
+    regularMove(src, dst);
   }
   /** Returns the amount of disks on the given slot */
   @Override public int getSlotSize(int slot) { return ((HanoiWorld)world).getSlotSize(slot); }
