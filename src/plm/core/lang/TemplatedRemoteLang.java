@@ -38,6 +38,40 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
     return section.toString();
   }
 
+  /**
+   * Guess which RemoteXxx universe an exercise belongs to. Shared by Java, Scala and C.
+   * Python instead requires an explicit "from RemoteXxx import *" line (see its own getRemote()).
+   */
+  protected static String getRemote(String code)
+  {
+    if (code.contains("plm.test.simple"))
+      return "RemoteSimple";
+    if (code.contains(".bat."))
+      return "RemoteBat";
+    if (code.contains(".cons."))
+      return "RemoteCons";
+    if (code.contains("Buggle"))
+      return "RemoteBuggle";
+    if (code.contains("Langton") || code.contains("Turmite"))
+      return "RemoteTurmite";
+    if (code.contains("Turtle"))
+      return "RemoteTurtle";
+    if (code.contains("Flag"))
+      return "RemoteFlag";
+    if (code.contains("Baseball"))
+      return "RemoteBaseball";
+    if (code.contains("Pancake"))
+      return "RemotePancake";
+    if (code.contains("Hanoi"))
+      return "RemoteHanoi";
+    if (code.contains("Sort"))
+      return "RemoteSort";
+    if (code.contains("Lander"))
+      return "RemoteLander";
+
+    return null;
+  }
+
   /* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
   /* FIXME: the exercise ID should be used now that the student code is executed in a remote process. There is no class cache to bypass anymore */
   protected static final String packageNamePrefix = "plm.runtime";

@@ -221,36 +221,6 @@ public class LangScala extends TemplatedRemoteLang {
 
   private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
-  private static String getRemote(String code)
-  {
-    if (code.contains("plm.test.simple"))
-      return "RemoteSimple";
-    if (code.contains(".bat."))
-      return "RemoteBat";
-    if (code.contains(".cons."))
-      return "RemoteCons";
-    if (code.contains("Buggle"))
-      return "RemoteBuggle";
-    if (code.contains("Langton") || code.contains("Turmite"))
-      return "RemoteTurmite";
-    if (code.contains("Turtle"))
-      return "RemoteTurtle";
-    if (code.contains("Flag"))
-      return "RemoteFlag";
-    if (code.contains("Baseball"))
-      return "RemoteBaseball";
-    if (code.contains("Pancake"))
-      return "RemotePancake";
-    if (code.contains("Hanoi"))
-      return "RemoteHanoi";
-    if (code.contains("Sort"))
-      return "RemoteSort";
-    if (code.contains("Lander"))
-      return "RemoteLander";
-
-    return null;
-  }
-
   /**
    * Absolute path of the jar a given class was loaded from -- used to locate scala-library.jar/scala-compiler.jar/
    * scala-reflect.jar on disk (already proven present as PLM dependencies by isBrokenLanguage() above), so the external

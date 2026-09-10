@@ -132,36 +132,6 @@ public class LangJava extends TemplatedRemoteLang {
 
   private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
-  private static String getRemote(String code)
-  {
-    if (code.contains("plm.test.simple"))
-      return "RemoteSimple";
-    if (code.contains(".bat."))
-      return "RemoteBat";
-    if (code.contains(".cons."))
-      return "RemoteCons";
-    if (code.contains("Buggle"))
-      return "RemoteBuggle";
-    if (code.contains("Langton") || code.contains("Turmite"))
-      return "RemoteTurmite";
-    if (code.contains("Turtle"))
-      return "RemoteTurtle";
-    if (code.contains("Flag"))
-      return "RemoteFlag";
-    if (code.contains("Baseball"))
-      return "RemoteBaseball";
-    if (code.contains("Pancake"))
-      return "RemotePancake";
-    if (code.contains("Hanoi"))
-      return "RemoteHanoi";
-    if (code.contains("Sort"))
-      return "RemoteSort";
-    if (code.contains("Lander"))
-      return "RemoteLander";
-
-    return null;
-  }
-
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
   {
     Runtime rt = Runtime.getRuntime();

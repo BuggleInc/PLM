@@ -23,7 +23,7 @@ import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
 import plm.universe.Point;
 
-public class LangC extends RemoteExecutionLang {
+public class LangC extends TemplatedRemoteLang {
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
@@ -102,26 +102,8 @@ public class LangC extends RemoteExecutionLang {
 
       File exec = new File(compileDir.toFile(), executable + extension);
 
-      String remote = "";
-      if (code.contains("RemoteBat"))
-        remote = "RemoteBat";
-      else if (code.contains(".cons."))
-        remote = "RemoteCons";
-      else if (code.contains("Buggle") || code.contains("Langton") || code.contains("Turmite"))
-        remote = "RemoteBuggle";
-      else if (code.contains("Turtle"))
-        remote = "RemoteTurtle";
-      else if (code.contains("Flag"))
-        remote = "RemoteFlag";
-      else if (code.contains("Baseball"))
-        remote = "RemoteBaseball";
-      else if (code.contains("Pancake"))
-        remote = "RemotePancake";
-      else if (code.contains("Hanoi"))
-        remote = "RemoteHanoi";
-      else if (code.contains("Sort"))
-        remote = "RemoteSort";
-      else {
+      String remote = getRemote(code);
+      if (remote == null) {
         PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
         exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
         throw e;
