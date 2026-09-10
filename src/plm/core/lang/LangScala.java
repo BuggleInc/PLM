@@ -37,7 +37,7 @@ import plm.universe.Point;
  * Not yet factored with LangJava (structure kept close on purpose to make that factoring easy later); several private
  * helpers below are near-verbatim ports of LangJava's, adapted to Scala syntax where the generated code shape differs.
  */
-public class LangScala extends TemplatedRemoteLang {
+public class LangScala extends JvmTemplatedLang {
   /**
    * Extra source files to be copied alongside the student's code
    */
@@ -314,31 +314,7 @@ public class LangScala extends TemplatedRemoteLang {
   private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File jarFile, String mainClassDotPath,
                                     Set<String> classFiles) throws PLMCompilerException
   {
-    File manifestFile = new File(packageFolder, "MANIFEST.MF");
-    try {
-      Files.writeString(manifestFile.toPath(), "Main-Class: " + mainClassDotPath + "\n");
-
-      ArrayList<String> args = new ArrayList<>();
-      args.add("jar");
-      args.add("cfm");
-      args.add(jarFile.toPath().toString());
-      args.add(manifestFile.toPath().toString());
-      args.addAll(classFiles);
-
-      Process proc = Runtime.getRuntime().exec(args.toArray(String[] ::new), new String[] {}, packageFolder);
-
-      BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-      BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-      String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
-      String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
-
-      if (!rtStderr.isEmpty()) {
-        throw new PLMCompilerException(rtStderr, new HashSet<>(classFiles), new Error(), diagnostic);
-      }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    runJarTool(packageFolder, jarFile, mainClassDotPath, classFiles, diagnostic);
   }
 
   public String getRemoteScalaFile(String remoteName, String packageName)
@@ -532,7 +508,7 @@ public class LangScala extends TemplatedRemoteLang {
     return new ProcessBuilder("java", "-cp", jarPath + File.pathSeparator + scalaLibraryJar(), mainClass, socketPath.toString());
   }
 
-  public static class LangScalaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
+  public static class LangScalaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {
 
     String getLanguageType(Class<?> type)
     {
@@ -586,35 +562,6 @@ public class LangScala extends TemplatedRemoteLang {
       return "def " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + "): " + outputString;
     }
 
-    String getReturning(Class<?> type)
-    {
-      if (type == null)
-        return "";
-
-      if (type == String.class)
-        return "getAnswerString()";
-      if (type == Double.class || type == double.class)
-        return "getAnswerDouble()";
-      if (type == Character.class || type == char.class)
-        return "getAnswerChar()";
-      if (type == Color.class)
-        return "getAnswerColor()";
-      if (type == Direction.class)
-        return "getAnswerInt()";
-      if (type == Point.class)
-        return "getAnswerObject().asInstanceOf[Point]";
-      if (type == Point[].class)
-        return "getAnswerObject().asInstanceOf[Array[Point]]";
-      if (type == Integer.class || type == int.class)
-        return "getAnswerInt()";
-      if (type == Boolean.class || type == boolean.class)
-        return "getAnswerBoolean()";
-      if (type == void.class || type == Void.class)
-        return "";
-
-      throw new IllegalStateException("Unknown type: " + type);
-    }
-
     String getArgumentExpression(PrimitiveParameter parameter) { return parameter.name(); }
 
     String getImplementation(PrimitiveMethod method)
@@ -633,24 +580,11 @@ public class LangScala extends TemplatedRemoteLang {
       return prototype + " = {\n" + command + "\n" + returning + "\n}";
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException { generate(folder, name, methods, ""); }
+    String fileExtension() { return ".scala"; }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
+    String wrapCode(String name, String body)
     {
-      Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
-
-      final String type_declarations = involved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
-
-      final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
-
-      String body = "\n" + type_declarations + "\n" + implementations;
-      if (!extraCode.isBlank())
-        body += "\n" + extraCode;
-
-      final String code =
-          "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport Remote._\nimport java.awt.Color\n\nobject " + name + " {" + body.replace("\n", "\n\t") + "\n}";
-
-      Files.writeString(new File(folder, name + ".scala").toPath(), code);
+      return "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport Remote._\nimport java.awt.Color\n\nobject " + name + " {" + body.replace("\n", "\n\t") + "\n}";
     }
   }
 }

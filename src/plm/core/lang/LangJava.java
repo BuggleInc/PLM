@@ -27,7 +27,7 @@ import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
 import plm.universe.Point;
 
-public class LangJava extends TemplatedRemoteLang {
+public class LangJava extends JvmTemplatedLang {
   /**
    * Extra source files to be copied alongside the student's code
    */
@@ -60,20 +60,18 @@ public class LangJava extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
+  private static final String RUN_KEYWORD = "void run(";
+
   private static @NonNull String getCorrectedTemplate(String correction)
   {
     int beginTemplateIndex    = correction.indexOf("/* BEGIN TEMPLATE */");
     int beginTemplateIndexEnd = beginTemplateIndex + "/* BEGIN TEMPLATE */".length();
     int endTemplateIndex      = correction.indexOf("/* END TEMPLATE */");
     int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
-    int runFunctionI          = correction.indexOf("void run(");
+    int runFunctionI          = correction.indexOf(RUN_KEYWORD);
 
-    // Containment between the templated region [beginTemplateIndexRaw, endTemplateIndexEnd) and run()'s own real span
-    // (brace-matched, not a hand-picked offset) decides which shape the generated Entity class needs -- NOT how many
-    // characters of whitespace happen to separate two comment markers, which only reflects the codebase's usual
-    // indentation and silently breaks for any file where run() and the templated method are separate (see
-    // extractRunSpan()'s doc for the concrete example this fixes).
-    int[] runSpan = extractRunSpan(correction);
+    // Containment between the templated region [beginTemplateIndexRaw, endTemplateIndexEnd) and run() body
+    int[] runSpan = ExerciseTemplated.extractRunSpan(correction, RUN_KEYWORD);
 
     String template;
     if (runSpan != null && runSpan[0] <= runFunctionI && endTemplateIndex != -1 && beginTemplateIndex <= runFunctionI && runFunctionI <= endTemplateIndex) {
@@ -91,42 +89,7 @@ public class LangJava extends TemplatedRemoteLang {
     return template;
   }
 
-  /**
-   * Returns [start, end) of run()'s own text (its declaration line through its brace-matched closing '}'), the same span
-   * extractRunFunction() below extracts as a string -- or null if there's no "void run(" at all.
-   *
-   * getCorrectedTemplate() needs this as *offsets* (not a substring) to test containment against the templated region,
-   * since a run() that merely happens to fall a fixed number of characters away from a comment marker is not the same
-   * thing as a run() whose braces actually contain (or are contained by) that region: e.g. an exercise with a separate
-   * step() method that the templated region belongs to, while run() itself (elsewhere in the file) just calls step() in
-   * a loop, must NOT have its own body discarded and replaced by the templated text.
-   */
-  private static int[] extractRunSpan(String code)
-  {
-    int startRun = code.indexOf("void run(");
-    if (startRun == -1)
-      return null;
-
-    int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
-    if (beginOfRunLine == -1)
-      beginOfRunLine = 0;
-
-    int i       = code.indexOf('{', startRun) + 1;
-    int bracket = 1;
-    for (; i < code.length() && bracket > 0; i++) {
-      if (code.charAt(i) == '{')
-        bracket++;
-      if (code.charAt(i) == '}')
-        bracket--;
-    }
-    return new int[] {beginOfRunLine, i};
-  }
-
-  private static String extractRunFunction(String code)
-  {
-    int[] span = extractRunSpan(code);
-    return span == null ? "" : code.substring(span[0], span[1]);
-  }
+  private static String extractRunFunction(String code) { return ExerciseTemplated.extractRunFunction(code, RUN_KEYWORD); }
 
   private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
 
@@ -178,8 +141,6 @@ public class LangJava extends TemplatedRemoteLang {
     allFiles.add(mainFile);
     allFiles.addAll(List.of(files));
 
-    Runtime rt = Runtime.getRuntime();
-
     if (!packageFolder.toPath().toString().startsWith(root.toPath().toString())) {
       throw new PLMCompilerException("Root folder (" + root.toPath() + ") is not above package folder (" + packageFolder.toPath() + ") in file hierarchy.",
                                      Set.of(), new Error(), diagnostic);
@@ -190,41 +151,16 @@ public class LangJava extends TemplatedRemoteLang {
 
     String mainFileDotPath = packageName + "." + mainFile.getName().substring(0, mainFile.getName().indexOf('.'));
 
-    File manifestFile = new File(packageFolder, "MANIFEST.MF");
-    try {
-      Files.writeString(manifestFile.toPath(), "Main-Class: " + mainFileDotPath + "\n");
+    List<String> classFiles = allFiles.stream()
+                                  .map(s -> {
+                                    String javaPath = s.toPath().toString();
+                                    return javaPath.substring(0, javaPath.lastIndexOf('.')) + ".class";
+                                  })
+                                  .filter(s -> s.endsWith(".class"))
+                                  .toList();
+    classFiles = classFiles.stream().map(s -> s.substring(root.toPath().toString().length() + 1)).toList();
 
-      List<String> classFiles = allFiles.stream()
-                                    .map(s -> {
-                                      String javaPath = s.toPath().toString();
-                                      return javaPath.substring(0, javaPath.lastIndexOf('.')) + ".class";
-                                    })
-                                    .filter(s -> s.endsWith(".class"))
-                                    .toList();
-      classFiles = classFiles.stream().map(s -> s.substring(root.toPath().toString().length() + 1)).toList();
-
-      ArrayList<String> args = new ArrayList<>();
-
-      args.add("jar");
-      args.add("cfm");
-      args.add(jarFile.toPath().toString());
-      args.add(manifestFile.toPath().toString());
-      args.addAll(classFiles);
-
-      Process proc = rt.exec(args.toArray(String[] ::new), new String[] {}, root);
-
-      BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-      BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-      String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
-      String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
-
-      if (!rtStderr.isEmpty()) {
-        throw new PLMCompilerException(rtStderr, allFiles.stream().map(s -> s.toPath().toString()).collect(Collectors.toSet()), new Error(), diagnostic);
-      }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    runJarTool(root, jarFile, mainFileDotPath, new HashSet<>(classFiles), diagnostic);
   }
 
   @Override public boolean isJava() { return true; }
@@ -415,7 +351,7 @@ public class LangJava extends TemplatedRemoteLang {
     return new ProcessBuilder("java", "-jar", executable, socketPath.toString());
   }
 
-  public static class LangJavaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
+  public static class LangJavaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {
 
     String getLanguageType(Class<?> type)
     {
@@ -469,35 +405,6 @@ public class LangJava extends TemplatedRemoteLang {
       return "public static " + outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
     }
 
-    String getReturning(Class<?> type)
-    {
-      if (type == null)
-        return "";
-
-      if (type == String.class)
-        return "getAnswerString()";
-      if (type == Double.class || type == double.class)
-        return "getAnswerDouble()";
-      if (type == Character.class || type == char.class)
-        return "getAnswerChar()";
-      if (type == Color.class)
-        return "getAnswerColor()";
-      if (type == Direction.class)
-        return "getAnswerInt()";
-      if (type == Point.class)
-        return "(Point)getAnswerObject()";
-      if (type == Point[].class)
-        return "(Point[])getAnswerObject()";
-      if (type == Integer.class || type == int.class)
-        return "getAnswerInt()";
-      if (type == Boolean.class || type == boolean.class)
-        return "getAnswerBoolean()";
-      if (type == void.class || type == Void.class)
-        return "";
-
-      throw new IllegalStateException("Unknown type: " + type);
-    }
-
     String getArgumentExpression(PrimitiveParameter parameter)
     {
       // BOOLEAN is templated as "%d" over the wire, so we must convert any boolean to an int, or String.format will raise an error
@@ -521,24 +428,12 @@ public class LangJava extends TemplatedRemoteLang {
       return prototype + "{\n" + command + "\n" + returning + "\n}";
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException { generate(folder, name, methods, ""); }
+    String fileExtension() { return ".java"; }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
+    String wrapCode(String name, String body)
     {
-      Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
-
-      final String type_declarations = involved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
-
-      final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
-
-      String body = "\n" + type_declarations + "\n" + implementations;
-      if (!extraCode.isBlank())
-        body += "\n" + extraCode;
-
-      final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" +
-                          body.replace("\n", "\n\t") + "\n}";
-
-      Files.writeString(new File(folder, name + ".java").toPath(), code);
+      return "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" +
+          body.replace("\n", "\n\t") + "\n}";
     }
   }
 }
