@@ -34,6 +34,12 @@ public class LangC extends ProgrammingLanguage {
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
+  /**
+   * Root directory for every temp file this language produces (compiled binaries and their generated .c source).
+   * It's in "plm/C", placed under "/tmp" on Linux/Mac, "C:\Users\...\AppData\Local\Temp" on Windows. ).
+   */
+  private static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm", "C");
+
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
@@ -69,30 +75,30 @@ public class LangC extends ProgrammingLanguage {
     }
 
     for (SourceFile sf : sfs) {
-      String code = sf.getCompilableContent(runtimePatterns, whatToCompile);
-      compile(code, exo.getId(), exo);
+      String code     = sf.getCompilableContent(runtimePatterns, whatToCompile);
+      String execPath = compile(code, exo.getId(), exo, whatToCompile);
+      sf.meta.put("C", execPath);
     }
   }
 
-  private void compile(String code, String executable, Exercise exo) throws PLMCompilerException
+  /**
+   * Compile the given code and return the absolute path of the resulting executable.
+   *
+   * Each call gets its own fresh temp directory (holding both the generated .c file and the executable), instead of a
+   * path deterministically derived from exo.getId() alone: compileExo() is called separately -- and not necessarily in
+   * lockstep with runEntity() -- for the student's code and for the teacher's correction, so a shared, overwritable
+   * path would let one clobber the other's executable between "compile" and "run" (e.g. the student's entity ending up
+   * silently running the correction's code, or vice versa).
+   */
+  private String compile(String code, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
 
     Runtime runtime = Runtime.getRuntime();
 
     final StringBuffer resCompilationErr = new StringBuffer();
     try {
-      String tempdir = System.getProperty("java.io.tmpdir");
-
-      File plmDirTmp = new File(tempdir + "/plmTmp");
-      if (!plmDirTmp.exists()) {
-        plmDirTmp.mkdir();
-      }
-
-      File saveDirBin = new File(plmDirTmp.getAbsolutePath() + "/bin");
-      if (!saveDirBin.exists()) {
-        saveDirBin.mkdir();
-      }
-      String saveDirPathBin = saveDirBin.getAbsolutePath();
+      Files.createDirectories(TMP_ROOT);
+      Path compileDir = Files.createTempDirectory(TMP_ROOT, exo.getId() + "-" + whatToCompile + "-");
 
       String extension = "";
       String os        = System.getProperty("os.name").toLowerCase();
@@ -100,10 +106,7 @@ public class LangC extends ProgrammingLanguage {
         extension = ".exe";
       }
 
-      File exec = new File(saveDirPathBin + "/" + executable + extension);
-      if (exec.exists()) {
-        exec.delete();
-      }
+      File exec = new File(compileDir.toFile(), executable + extension);
 
       String remote = "";
       if (code.contains("RemoteBat"))
@@ -131,7 +134,7 @@ public class LangC extends ProgrammingLanguage {
       }
 
       String line;
-      String compiled_code_name = plmDirTmp + "/" + exo.getId() + ".c";
+      String compiled_code_name = new File(compileDir.toFile(), exo.getId() + ".c").getAbsolutePath();
       PrintWriter compiled_code = new PrintWriter(compiled_code_name);
 
       BufferedReader hSerializer =
@@ -272,17 +275,29 @@ public class LangC extends ProgrammingLanguage {
 
         throw e;
       }
+
+      return exec.getAbsolutePath();
     } catch (IOException ioe) {
-      ioe.printStackTrace();
+      throw new PLMCompilerException(ioe.getMessage(), null, null);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Thread.currentThread().interrupt();
+      throw new PLMCompilerException(e.getMessage(), null, null);
     }
   }
 
   @Override public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate)
   {
+    List<SourceFile> sourceFiles = exercise.getSourceFilesList(this);
 
-    return old; /* Nothing to do, actually */
+    if (sourceFiles.size() != 1)
+      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
+
+    String path = sourceFiles.get(0).meta.get("C");
+    if (path != null)
+      for (Entity o : old)
+        o.setScript(this, path);
+
+    return old;
   }
 
   @Override public void runEntity(final Entity ent, final RunOutcome progress)
@@ -291,23 +306,11 @@ public class LangC extends ProgrammingLanguage {
 
     try {
 
-      String tempdir = System.getProperty("java.io.tmpdir") + "/plmTmp";
-      File saveDir   = new File(tempdir + "/bin");
+      String cmd = ent.getScript(this);
+      if (cmd == null)
+        throw new IllegalStateException("TOFIX");
 
-      String extension = "";
-      String os        = System.getProperty("os.name").toLowerCase();
-      String executable;
-      if (ent.getScript(this) != null) {
-        executable = ent.getScript(this);
-      } else {
-        executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
-      }
-
-      if (os.indexOf("win") >= 0)
-        extension = ".exe";
-
-      String cmd = saveDir.getAbsolutePath() + "/" + executable + "" + extension;
-      File exec  = new File(cmd);
+      File exec = new File(cmd);
       if (!exec.exists() || !exec.canExecute() || !exec.isFile()) {
         System.err.println(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
         return;
@@ -321,7 +324,7 @@ public class LangC extends ProgrammingLanguage {
       Selector selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-      String asan_report = tempdir + "/asan_report.txt";
+      String asan_report = new File(exec.getParentFile(), "asan_report.txt").getAbsolutePath();
       ProcessBuilder pb  = new ProcessBuilder(cmd, socketPath.toString());
       // log_path=/tmp/plmTmp/asan_report.txt.$PID ~~> don't report to stderr but to that file
       // to_syslog=0   ~~> Prevent ASan from writing also to stderr
