@@ -151,8 +151,7 @@ public class LangC extends TemplatedRemoteLang {
           compiled_code.append(line + "\n");
       cRemote.close();
 
-      BufferedReader hRemoteWorld =
-          new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/" + remote + ".h")));
+      BufferedReader hRemoteWorld = new BufferedReader(new StringReader(loadRemoteFile(remote, "c", ".h")));
       compiled_code.append("/****************/\n");
       compiled_code.append("/* " + remote + ".h */\n");
       compiled_code.append("/****************/\n");
@@ -161,8 +160,7 @@ public class LangC extends TemplatedRemoteLang {
           compiled_code.append(line + "\n");
       hRemoteWorld.close();
 
-      BufferedReader cRemoteWorld =
-          new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/" + remote + ".c")));
+      BufferedReader cRemoteWorld = new BufferedReader(new StringReader(loadRemoteFile(remote, "c", ".c")));
       compiled_code.append("/****************/\n");
       compiled_code.append("/* " + remote + ".c */\n");
       compiled_code.append("/****************/\n");

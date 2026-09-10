@@ -18,6 +18,8 @@ class Point:
   def __repr__(self):
     return "Point(%r, %r)" % (self.x, self.y)
 
+  def __eq__(self, other):
+    return isinstance(other, Point) and self.x == other.x and self.y == other.y
 
 def _to_signed32(v):
   """Folds an arbitrary Python int down to Java's signed 32-bit int representation (Python ints don't wrap on their
@@ -45,7 +47,6 @@ class Color:
 
   def __hash__(self):
     return hash(self.rgb)
-
 
 # Named constants, matching java.awt.Color.X.getRGB() exactly (same values as LangC's generated Color enum), so that
 # exercise code can compare getGroundColor()/getBrushColor() results against e.g. Color.orange like in any other language.

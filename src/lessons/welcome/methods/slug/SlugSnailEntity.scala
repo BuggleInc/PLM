@@ -6,7 +6,7 @@ import java.awt.Color;
 class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	override def run() {
-		hunt(getParam(0).asInstanceOf[Color]); 
+		hunt(getParamInt(0).asInstanceOf[Color]); 
 	}
 
 	/* BEGIN TEMPLATE */

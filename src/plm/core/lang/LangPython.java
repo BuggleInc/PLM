@@ -165,28 +165,7 @@ public class LangPython extends TemplatedRemoteLang {
     return null;
   }
 
-  public String getRemotePythonFile(String remoteName)
-  {
-    String remote;
-    if (remoteName == null || remoteName.isEmpty())
-      remote = "Remote.py";
-    else
-      remote = remoteName;
-
-    if (!remote.startsWith("Remote"))
-      remote = "Remote" + remote;
-    if (!remote.endsWith(".py"))
-      remote = remote + ".py";
-
-    String path = "resources/langages/python/" + remote;
-
-    InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
-    if (stream == null) {
-      throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
-    }
-
-    return new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
-  }
+  public String getRemotePythonFile(String remoteName) { return loadRemoteFile(remoteName, "python", ".py"); }
 
   protected String packageName() { return "plm_python_run" + workspaceSuffix.get(); }
 

@@ -343,32 +343,13 @@ public class LangScala extends TemplatedRemoteLang {
 
   public String getRemoteScalaFile(String remoteName, String packageName)
   {
-    String remote;
-    if (remoteName == null || remoteName.isEmpty())
-      remote = "Remote.scala";
-    else
-      remote = remoteName;
-
-    if (!remote.startsWith("Remote"))
-      remote = "Remote" + remote;
-    if (!remote.endsWith(".scala"))
-      remote = remote + ".scala";
-
-    String path = "resources/langages/scala/" + remote;
-
-    InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
-    if (stream == null) {
-      throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
-    }
-
+    String remoteCode         = loadRemoteFile(remoteName, "scala", ".scala");
     String packageDeclaration = "package " + packageName;
-    String remoteCode         = new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
 
-    if (remoteCode.startsWith("package")) {
+    if (remoteCode.startsWith("package"))
       remoteCode = remoteCode.replaceFirst("package .*", packageDeclaration);
-    } else {
+    else
       remoteCode = packageDeclaration + "\n" + remoteCode;
-    }
 
     return remoteCode;
   }

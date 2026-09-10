@@ -241,33 +241,13 @@ public class LangJava extends TemplatedRemoteLang {
 
   public String getRemoteJavaFile(String remoteName, String packageName)
   {
-    String remote;
-    if (remoteName == null || remoteName.isEmpty())
-      remote = "Remote.java";
-    else
-      remote = remoteName;
-
-    if (!remote.startsWith("Remote"))
-      remote = "Remote" + remote;
-    if (!remote.endsWith(".java"))
-      remote = remote + ".java";
-
-    String path = "resources/langages/java/" + remote;
-
-    InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
-
-    if (stream == null) {
-      throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
-    }
-
+    String remoteCode         = loadRemoteFile(remoteName, "java", ".java");
     String packageDeclaration = "package " + packageName + ";";
-    String remoteCode         = new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
 
-    if (remoteCode.startsWith("package")) {
+    if (remoteCode.startsWith("package"))
       remoteCode = remoteCode.replaceFirst("package .*;", packageDeclaration);
-    } else {
+    else
       remoteCode = packageDeclaration + "\n" + remoteCode;
-    }
 
     return remoteCode;
   }

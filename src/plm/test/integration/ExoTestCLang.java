@@ -20,9 +20,7 @@ public class ExoTestCLang extends ExoTest {
       Assertions.fail("Exercise " + e.getId() + " has no C entity");
     Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> { testCorrectionEntityExists(e, Game.getInstance().programmingLanguageManager.C); });
   }
-  //  @ParameterizedTest
-  //  @MethodSource("exercises")
-  public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  @ParameterizedTest @MethodSource("exercises") public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(l, e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))

@@ -1,5 +1,7 @@
 package plm.universe;
 
+import static plm.core.ValueSerializer.serialize;
+
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -79,8 +81,14 @@ public final class CommandExecutor {
     Object returnValue;
     try {
       returnValue = javaMethod.invoke(entity, args);
-    } catch (IllegalArgumentException iae) {
-      throw new IllegalArgumentException("Cannot apply parameters " + opArgsSegment + " to " + method.name() + "()", iae);
+    } catch (InvocationTargetException e) {
+      String reserializedArgs = serialize(args);
+      String argMsg           = opArgsSegment.equals(reserializedArgs) ? opArgsSegment : opArgsSegment + " (changed to " + serialize(args) + ")";
+      throw new IllegalArgumentException("Calling " + method.name() + "(" + argMsg + ") raised an exception: " + e.getCause(), e);
+    } catch (IllegalArgumentException e) {
+      String reserializedArgs = serialize(args);
+      String argMsg           = opArgsSegment.equals(reserializedArgs) ? opArgsSegment : opArgsSegment + " (changed to " + serialize(args) + ")";
+      throw new IllegalArgumentException("Cannot apply parameters " + argMsg + " to " + method.name() + "()", e);
     }
 
     try {

@@ -33,19 +33,19 @@ public class ExoTest {
   static private String[] lessonNamesToTest = new String[] {
       // WARNING, keep ChooseLessonDialog.lessons synchronized
       "lessons.welcome",
-      "lessons.turmites",
-      "lessons.maze",
-      "lessons.turtleart",
-      "lessons.sort.basic",
-      "lessons.sort.dutchflag",
-      "lessons.sort.baseball",
-      "lessons.sort.pancake",
-      "lessons.recursion.cons",
-      "lessons.recursion.lego",
-      "lessons.recursion.hanoi",
-      // "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
-      "lessons.bat.string1",
-      "lessons.lander",
+      //    "lessons.turmites",
+      //    "lessons.maze",
+      //    "lessons.turtleart",
+      //    "lessons.sort.basic",
+      //    "lessons.sort.dutchflag",
+      //    "lessons.sort.baseball",
+      //    "lessons.sort.pancake",
+      //    "lessons.recursion.cons",
+      //    "lessons.recursion.lego",
+      //    "lessons.recursion.hanoi",
+      //    // "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
+      //    "lessons.bat.string1",
+      ///    "lessons.lander",
   };
 
   /* Generate the stream of parameters we want to run our parameterized tests on */

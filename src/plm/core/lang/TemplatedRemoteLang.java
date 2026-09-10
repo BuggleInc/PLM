@@ -1,7 +1,11 @@
 package plm.core.lang;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.PLMCompilerException;
 import plm.core.model.lesson.Exercise;
@@ -70,6 +74,28 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
       return "RemoteLander";
 
     return null;
+  }
+
+  /**
+   * Load the raw content of a "RemoteXxx" universe-glue file (e.g. RemoteBuggle.java/.scala/.py), shipped as a
+   * classloader resource under "resources/langages/&lt;langDir&gt;/". {@code remoteName} is normalized the same way in
+   * every caller: null/empty defaults to plain "Remote", "Remote" is prepended if missing, and {@code extension} is
+   * appended if missing. Package-declaration handling (Java/Scala only) is left to the caller, since Python has none.
+   */
+  protected static String loadRemoteFile(String remoteName, String langDir, String extension)
+  {
+    String remote = (remoteName == null || remoteName.isEmpty()) ? "Remote" + extension : remoteName;
+    if (!remote.startsWith("Remote"))
+      remote = "Remote" + remote;
+    if (!remote.endsWith(extension))
+      remote = remote + extension;
+
+    String path        = "resources/langages/" + langDir + "/" + remote;
+    InputStream stream = TemplatedRemoteLang.class.getClassLoader().getResourceAsStream(path);
+    if (stream == null)
+      throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
+
+    return new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
   }
 
   /* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
