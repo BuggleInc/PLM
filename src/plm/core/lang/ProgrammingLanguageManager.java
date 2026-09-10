@@ -11,15 +11,10 @@ public class ProgrammingLanguageManager {
   public final ProgrammingLanguage JAVA   = new LangJava();
   public final ProgrammingLanguage PYTHON = new LangPython();
   public final ProgrammingLanguage SCALA  = new LangScala();
-  public final ProgrammingLanguage C      = new LangC();
-  // public final ProgrammingLanguage JAVASCRIPT = new
-  // ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
-  public final ProgrammingLanguage RUBY     = new LangRuby();
+  public final ProgrammingLanguage C        = new LangC();
   public final ProgrammingLanguage LIGHTBOT = new LangLightbot();
 
-  public final ProgrammingLanguage[] langs = new ProgrammingLanguage[] {
-      JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C // TODO: re-add JAVASCRIPT to this list once it works at least a bit
-  };
+  public final ProgrammingLanguage[] langs    = new ProgrammingLanguage[] {JAVA, PYTHON, SCALA, LIGHTBOT, C};
   private ProgrammingLanguage currentLanguage = JAVA;
 
   public ProgrammingLanguageManager()

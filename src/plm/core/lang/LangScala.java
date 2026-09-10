@@ -3,9 +3,6 @@ package plm.core.lang;
 import java.awt.Color;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.net.StandardProtocolFamily;
-import java.net.UnixDomainSocketAddress;
-import java.nio.channels.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,9 +24,7 @@ import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
-import plm.universe.CommandExecutor;
 import plm.universe.Direction;
-import plm.universe.Entity;
 import plm.universe.Point;
 
 /**
@@ -42,7 +37,7 @@ import plm.universe.Point;
  * Not yet factored with LangJava (structure kept close on purpose to make that factoring easy later); several private
  * helpers below are near-verbatim ports of LangJava's, adapted to Scala syntax where the generated code shape differs.
  */
-public class LangScala extends JVMCompiledLang {
+public class LangScala extends TemplatedRemoteLang {
   /**
    * Extra source files to be copied alongside the student's code
    */
@@ -222,33 +217,9 @@ public class LangScala extends JVMCompiledLang {
 
   private static String extractRunFunction(String code) { return ExerciseTemplated.extractRunFunction(code, RUN_KEYWORD); }
 
-  private static String extractRunDependency(String code)
-  {
-    StringBuilder section = new StringBuilder();
-    for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith("/* BEGIN DEPENDENCY */", i))
-        continue;
-      int begin = i + "/* BEGIN DEPENDENCY */".length();
-      int end   = code.indexOf("/* END DEPENDENCY */", i);
-      section.append(code, begin, end).append("\n");
-      i = end + "/* END DEPENDENCY */".length();
-    }
-    return section.toString();
-  }
+  private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
 
-  private static String extractImportDependency(String code)
-  {
-    StringBuilder section = new StringBuilder();
-    for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith("/* BEGIN IMPORT */", i))
-        continue;
-      int begin = i + "/* BEGIN IMPORT */".length();
-      int end   = code.indexOf("/* END IMPORT */", i);
-      section.append(code, begin, end).append("\n");
-      i = end + "/* END IMPORT */".length();
-    }
-    return section.toString();
-  }
+  private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
   private static String getRemote(String code)
   {
@@ -589,217 +560,25 @@ public class LangScala extends JVMCompiledLang {
     }
   }
 
-  @Override public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException
+  /**
+   * Runs "java -cp &lt;jarPath&gt;:&lt;scala-library.jar&gt; &lt;mainClass&gt; &lt;socketPath&gt;", executable being the
+   * "jarPath|mainClass" pair stored by compileExo() (see its sf.meta.put("SCALA", ...)). We cannot use "java -jar" alone
+   * because a jar's Class-Path manifest attribute is only reliably resolved for relative paths, while the path of
+   * scala-library.jar is probably absolute, leading to silent failures at startup.
+   */
+  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
-    List<SourceFile> sourceFile = exo.getSourceFilesList(this);
+    String[] parts   = executable.split("\\|", 2);
+    String jarPath   = parts[0];
+    String mainClass = parts.length > 1 ? parts[1] : null;
+    if (mainClass == null)
+      throw new RuntimeException("Malformed script reference (missing main class): " + executable);
 
-    if (sourceFile.size() != 1)
-      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
+    File exec = new File(jarPath);
+    if (!exec.exists())
+      throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    SourceFile source = sourceFile.get(0);
-
-    for (Entity old : olds) {
-      String path = source.meta.get("SCALA");
-      if (path != null) {
-        old.setScript(this, path);
-      }
-    }
-
-    return new ArrayList<>(olds);
-  }
-
-  @Override protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException
-  {
-    throw new RuntimeException("This function should not longer be called, the new implementation do not rely on it.");
-  }
-
-  @Override public void runEntity(final Entity ent, final RunOutcome progress)
-  {
-    final StringBuffer resEvaluationError = new StringBuffer();
-
-    try {
-      String executable;
-      if (ent.getScript(this) != null) {
-        executable = ent.getScript(this);
-      } else {
-        executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
-        throw new IllegalStateException("TOFIX");
-      }
-
-      // executable is "<jar path>|<main class>" -- see compileExo()'s sf.meta.put("SCALA", ...).
-      // We cannot use "java -jar" because a jar's Class-Path manifest attribute is only reliably resolved for relative paths,
-      // while the path of scala-library.jar is probably absolute, leading to silent failures at startup.
-      String[] parts   = executable.split("\\|", 2);
-      String jarPath   = parts[0];
-      String mainClass = parts.length > 1 ? parts[1] : null;
-      if (mainClass == null)
-        throw new RuntimeException("Malformed script reference (missing main class): " + executable);
-
-      File exec = new File(jarPath);
-
-      if (!exec.exists())
-        throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
-
-      Path socketDir                    = Files.createTempDirectory("plm-scala-sock-");
-      Path socketPath                   = socketDir.resolve("protocol.sock");
-      ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
-      serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
-      serverChannel.configureBlocking(false);
-      Selector selector = Selector.open();
-      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-      ProcessBuilder pb     = new ProcessBuilder("java", "-cp", jarPath + File.pathSeparator + scalaLibraryJar(), mainClass, socketPath.toString());
-      final Process process = pb.start();
-
-      // Captured (not just printed) so that if the process never connects at all, its stdout/stderr -- almost certainly
-      // containing the actual reason (ClassNotFoundException, NoClassDefFoundError, an exception thrown before
-      // Remote.connect() is even reached, etc.) -- can be surfaced directly in the error message shown to the person,
-      // not just to the PLM server's own console. These must start capturing right away, BEFORE the accept()/timeout
-      // dance below: starting them only after a successful connection (as this used to) means a process that never
-      // connects is killed with its output never having been read at all, discarding the one clue that explains why.
-      final StringBuffer capturedStdout = new StringBuffer();
-      final StringBuffer capturedStderr = new StringBuffer();
-
-      Thread stdoutReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null) {
-                System.out.println(str);
-                capturedStdout.append(str).append("\n");
-              }
-            } finally {
-              reader.close();
-            }
-          } catch (IOException e) {
-            // Expected when process.destroyForcibly() (below, or in the accept-timeout branch above) tears down the
-            // process's pipes while this thread is still blocked in readLine(): not a real failure in its own right, so
-            // don't overwrite whatever progress.executionError already explains the actual failure with this noise.
-            if (process.isAlive())
-              e.printStackTrace(); // genuinely unexpected in that case, surface it
-          } catch (Throwable t) {
-            t.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = t.getMessage();
-            process.destroyForcibly();
-          }
-        }
-      };
-
-      Thread stderrReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null) {
-                System.err.println(str);
-                capturedStderr.append(str).append("\n");
-              }
-            } finally {
-              reader.close();
-            }
-          } catch (IOException e) {
-            if (process.isAlive())
-              e.printStackTrace();
-          } catch (Throwable t) {
-            t.printStackTrace();
-          }
-        }
-      };
-
-      stdoutReader.start();
-      stderrReader.start();
-
-      final int ACCEPT_TIMEOUT_MS = 10000;
-      selector.select(ACCEPT_TIMEOUT_MS);
-      SocketChannel protocolChannel = serverChannel.accept();
-      selector.close();
-      serverChannel.close();
-
-      if (protocolChannel == null) {
-        process.destroyForcibly();
-        // Give the reader threads a moment to drain whatever the process had already written before being killed.
-        try {
-          stdoutReader.join(2000);
-          stderrReader.join(2000);
-        } catch (InterruptedException ignored) {
-          Thread.currentThread().interrupt();
-        }
-        Files.deleteIfExists(socketPath);
-        Files.deleteIfExists(socketDir);
-        progress.outcome        = RunOutcome.kind.FAIL;
-        String details          = (capturedStderr.length() > 0 ? capturedStderr.toString() : capturedStdout.toString()).strip();
-        progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.") +
-                                  (details.isEmpty() ? " (no output was produced by the child process at all -- check that 'java' is on the PATH)"
-                                                     : "\n\n--- child process output ---\n" + details);
-        return;
-      }
-
-      final SocketChannel finalProtocolChannel = protocolChannel;
-      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-
-      Thread commandReader = new Thread() {
-        public void run()
-        {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-          Exception parseError  = null;
-          String str            = "";
-          try {
-            while ((str = reader.readLine()) != null) {
-              CommandExecutor.command(ent, str, bwriter);
-            }
-          } catch (Exception e) {
-            parseError = e;
-            e.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = e.getMessage();
-            process.destroyForcibly();
-          }
-          if (parseError != null) {
-            StringBuffer sb = new StringBuffer(str + "\n");
-            try {
-              while ((str = reader.readLine()) != null)
-                sb.append(str + "\n");
-            } catch (IOException ioe) {
-              System.err.println("Exception while handling the exception. Bailing out");
-              parseError.printStackTrace();
-              ioe.printStackTrace();
-            }
-            throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
-          }
-        }
-      };
-
-      commandReader.start();
-
-      int retcode = process.waitFor();
-
-      stdoutReader.join();
-      stderrReader.join();
-      commandReader.join();
-
-      bwriter.close();
-      finalProtocolChannel.close();
-      Files.deleteIfExists(socketPath);
-      Files.deleteIfExists(socketDir);
-
-      if (retcode != 0)
-        progress.setExecutionError("An issue occured in the executed code. Check the output in the log panel for more info");
-
-      if (resEvaluationError.length() > 0) {
-        System.err.println(resEvaluationError.toString());
-        progress.setCompilationError(resEvaluationError.toString());
-      }
-
-    } catch (Exception e) {
-      resEvaluationError.append(e.getMessage());
-      progress.setExecutionError(resEvaluationError.toString());
-    }
+    return new ProcessBuilder("java", "-cp", jarPath + File.pathSeparator + scalaLibraryJar(), mainClass, socketPath.toString());
   }
 
   public static class LangScalaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {

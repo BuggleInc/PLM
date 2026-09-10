@@ -59,7 +59,6 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   public boolean isScala() { return false; }
   public boolean isPython() { return false; }
   public boolean isC() { return false; }
-  public boolean isRuby() { return false; }
   public boolean isLightBot() { return false; }
 
   // internal tool used to detect whether a given language is usable

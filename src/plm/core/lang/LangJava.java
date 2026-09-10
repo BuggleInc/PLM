@@ -2,9 +2,6 @@ package plm.core.lang;
 
 import java.awt.*;
 import java.io.*;
-import java.net.StandardProtocolFamily;
-import java.net.UnixDomainSocketAddress;
-import java.nio.channels.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,12 +24,10 @@ import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
-import plm.universe.CommandExecutor;
 import plm.universe.Direction;
-import plm.universe.Entity;
 import plm.universe.Point;
 
-public class LangJava extends JVMCompiledLang {
+public class LangJava extends TemplatedRemoteLang {
   /**
    * Extra source files to be copied alongside the student's code
    */
@@ -133,43 +128,9 @@ public class LangJava extends JVMCompiledLang {
     return span == null ? "" : code.substring(span[0], span[1]);
   }
 
-  private static String extractRunDependency(String code)
-  {
+  private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
 
-    StringBuilder section = new StringBuilder();
-
-    for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith("/* BEGIN DEPENDENCY */", i))
-        continue;
-
-      int begin = i + "/* BEGIN DEPENDENCY */".length();
-      int end   = code.indexOf("/* END DEPENDENCY */", i);
-
-      section.append(code, begin, end).append("\n");
-      i = end + "/* END DEPENDENCY */".length();
-    }
-
-    return section.toString();
-  }
-
-  private static String extractImportDependency(String code)
-  {
-
-    StringBuilder section = new StringBuilder();
-
-    for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith("/* BEGIN IMPORT */", i))
-        continue;
-
-      int begin = i + "/* BEGIN IMPORT */".length();
-      int end   = code.indexOf("/* END IMPORT */", i);
-
-      section.append(code, begin, end).append("\n");
-      i = end + "/* END IMPORT */".length();
-    }
-
-    return section.toString();
-  }
+  private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
   private static String getRemote(String code)
   {
@@ -494,181 +455,14 @@ public class LangJava extends JVMCompiledLang {
     }
   }
 
-  @Override public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException
+  /** Runs "java -jar &lt;executable&gt; &lt;socketPath&gt;", the executable being the jar path produced by compileExo(). */
+  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
+    File exec = new File(executable);
+    if (!exec.exists())
+      throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    List<SourceFile> sourceFile = exo.getSourceFilesList(this);
-
-    if (sourceFile.size() != 1)
-      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
-
-    SourceFile source = sourceFile.get(0);
-
-    for (Entity old : olds) {
-      String path = source.meta.get("JAVA");
-      if (path != null) {
-        old.setScript(this, path);
-      }
-    }
-
-    return new ArrayList<>(olds);
-  }
-
-  @Override protected Entity mutateEntity(String newClassName) throws InstantiationException, IllegalAccessException
-  {
-    throw new RuntimeException("This function should not longer be called, the new implementation do not rely on it.");
-  }
-
-  @Override public void runEntity(final Entity ent, final RunOutcome progress)
-  {
-    final StringBuffer resEvaluationError = new StringBuffer();
-
-    try {
-
-      String executable;
-      if (ent.getScript(this) != null) {
-        executable = ent.getScript(this);
-      } else {
-        executable = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
-        throw new IllegalStateException("TOFIX");
-      }
-
-      String cmd = executable;
-      File exec  = new File(cmd);
-      if (!exec.exists())
-        throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
-
-      // Set up the protocol socket (AF_UNIX) that the child JVM will connect to.
-      // Its path is unique per run and is passed to the child as args[0].
-      Path socketDir                    = Files.createTempDirectory("plm-java-sock-");
-      Path socketPath                   = socketDir.resolve("protocol.sock");
-      ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
-      serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
-      serverChannel.configureBlocking(false);
-      Selector selector = Selector.open();
-      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-      ProcessBuilder pb     = new ProcessBuilder("java", "-jar", cmd, socketPath.toString());
-      final Process process = pb.start();
-
-      final int ACCEPT_TIMEOUT_MS = 10000;
-      selector.select(ACCEPT_TIMEOUT_MS);
-      SocketChannel protocolChannel = serverChannel.accept();
-      selector.close();
-      serverChannel.close();
-
-      if (protocolChannel == null) {
-        process.destroyForcibly();
-        Files.deleteIfExists(socketPath);
-        Files.deleteIfExists(socketDir);
-        progress.outcome        = RunOutcome.kind.FAIL;
-        progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.");
-        return;
-      }
-
-      final SocketChannel finalProtocolChannel = protocolChannel;
-      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-
-      Thread stdoutReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null)
-                System.out.println(str);
-            } finally {
-              reader.close();
-            }
-          } catch (Throwable t) {
-            t.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = t.getMessage();
-            process.destroyForcibly();
-          }
-        }
-      };
-
-      Thread stderrReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null)
-                System.err.println(str);
-            } finally {
-              reader.close();
-            }
-          } catch (Throwable t) {
-            t.printStackTrace();
-          }
-        }
-      };
-
-      Thread commandReader = new Thread() {
-        public void run()
-        {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-          Exception parseError  = null;
-          String str            = "";
-          try {
-            while ((str = reader.readLine()) != null) {
-              //                      System.out.println("EXECUTING COMMAND: " + str);
-              CommandExecutor.command(ent, str, bwriter);
-              //                      System.out.println("COMMAND EXECUTED");
-            }
-          } catch (Exception e) {
-            parseError = e;
-            e.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = e.getMessage();
-            process.destroyForcibly();
-          }
-          if (parseError != null) {
-            StringBuffer sb = new StringBuffer(str + "\n");
-            try {
-              while ((str = reader.readLine()) != null)
-                sb.append(str + "\n");
-            } catch (IOException ioe) {
-              System.err.println("Exception while handling the exception. Bailing out");
-              parseError.printStackTrace();
-              ioe.printStackTrace();
-            }
-            throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
-          }
-        }
-      };
-
-      stdoutReader.start();
-      stderrReader.start();
-      commandReader.start();
-
-      int retcode = process.waitFor();
-
-      stdoutReader.join();
-      stderrReader.join();
-      commandReader.join();
-
-      bwriter.close();
-      finalProtocolChannel.close();
-      Files.deleteIfExists(socketPath);
-      Files.deleteIfExists(socketDir);
-
-      if (retcode != 0)
-        progress.setExecutionError("An issue occured in the executed code. Check the output in the log panel for more info");
-
-      if (resEvaluationError.length() > 0) {
-        System.err.println(resEvaluationError.toString());
-        progress.setCompilationError(resEvaluationError.toString());
-      }
-
-    } catch (Exception e) {
-      resEvaluationError.append(e.getMessage());
-      progress.setExecutionError(resEvaluationError.toString());
-    }
+    return new ProcessBuilder("java", "-jar", executable, socketPath.toString());
   }
 
   public static class LangJavaExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {

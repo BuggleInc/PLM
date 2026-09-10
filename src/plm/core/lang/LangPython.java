@@ -1,10 +1,6 @@
 package plm.core.lang;
 
 import java.io.*;
-import java.net.StandardProtocolFamily;
-import java.net.UnixDomainSocketAddress;
-import java.nio.channels.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -24,9 +20,7 @@ import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
-import plm.universe.CommandExecutor;
 import plm.universe.Direction;
-import plm.universe.Entity;
 import plm.universe.Point;
 
 /**
@@ -40,7 +34,7 @@ import plm.universe.Point;
  * Python resolves "from X import *" by file presence in the working directory, not by a package-qualified name the way
  * Java/Scala do, so there is no analogue of the ClassCastException-class bug LangJava/LangScala had to work around there.
  */
-public class LangPython extends ScriptingLanguage {
+public class LangPython extends TemplatedRemoteLang {
   /**
    * Extra source files to be copied alongside the student's code (unlike LangJava/LangScala, no per-universe
    * "coreExtraSourceFiles vs remoteExtraSourceFiles" split is needed: ValueSerializer.py has no external dependency of its
@@ -194,7 +188,7 @@ public class LangPython extends ScriptingLanguage {
     return new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
   }
 
-  private String packageName() { return "plm_python_run" + workspaceSuffix.get(); }
+  protected String packageName() { return "plm_python_run" + workspaceSuffix.get(); }
 
   @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
@@ -319,168 +313,16 @@ public class LangPython extends ScriptingLanguage {
     return result.toString();
   }
 
-  @Override public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException
+  /** Runs "python3 &lt;executable&gt; &lt;socketPath&gt;" from the executable's own directory. */
+  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
-    List<SourceFile> sourceFile = exo.getSourceFilesList(this);
+    File exec = new File(executable);
+    if (!exec.exists())
+      throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    if (sourceFile.size() != 1)
-      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
-
-    SourceFile source = sourceFile.get(0);
-
-    for (Entity old : olds) {
-      String path = source.meta.get("PYTHON");
-      if (path == null)
-        new Exception("stack trace for null-path mutateEntities call").printStackTrace();
-      if (path != null) {
-        old.setScript(this, path);
-      }
-    }
-
-    return new ArrayList<>(olds);
-  }
-
-  @Override public void runEntity(final Entity ent, final RunOutcome progress)
-  {
-    final StringBuffer resEvaluationError = new StringBuffer();
-
-    try {
-      String executable = ent.getScript(this);
-      if (executable == null)
-        throw new IllegalStateException("TOFIX");
-
-      File exec = new File(executable);
-      if (!exec.exists())
-        throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
-
-      Path socketDir                    = Files.createTempDirectory("plm-python-sock-");
-      Path socketPath                   = socketDir.resolve("protocol.sock");
-      ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
-      serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
-      serverChannel.configureBlocking(false);
-      Selector selector = Selector.open();
-      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-      ProcessBuilder pb = new ProcessBuilder("python3", exec.getName(), socketPath.toString());
-      pb.directory(exec.getParentFile());
-      final Process process = pb.start();
-
-      final int ACCEPT_TIMEOUT_MS = 10000;
-      selector.select(ACCEPT_TIMEOUT_MS);
-      SocketChannel protocolChannel = serverChannel.accept();
-      selector.close();
-      serverChannel.close();
-
-      if (protocolChannel == null) {
-        process.destroyForcibly();
-        Files.deleteIfExists(socketPath);
-        Files.deleteIfExists(socketDir);
-        progress.outcome        = RunOutcome.kind.FAIL;
-        progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.");
-        return;
-      }
-
-      final SocketChannel finalProtocolChannel = protocolChannel;
-      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-
-      Thread stdoutReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null)
-                System.out.println(str);
-            } finally {
-              reader.close();
-            }
-          } catch (Throwable t) {
-            t.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = t.getMessage();
-            process.destroyForcibly();
-          }
-        }
-      };
-
-      Thread stderrReader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null)
-                System.err.println(str);
-            } finally {
-              reader.close();
-            }
-          } catch (Throwable t) {
-            t.printStackTrace();
-          }
-        }
-      };
-
-      Thread commandReader = new Thread() {
-        public void run()
-        {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-          Exception parseError  = null;
-          String str            = "";
-          try {
-            while ((str = reader.readLine()) != null) {
-              CommandExecutor.command(ent, str, bwriter);
-            }
-          } catch (Exception e) {
-            parseError = e;
-            e.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = e.getMessage();
-            process.destroyForcibly();
-          }
-          if (parseError != null) {
-            StringBuffer sb = new StringBuffer(str + "\n");
-            try {
-              while ((str = reader.readLine()) != null)
-                sb.append(str + "\n");
-            } catch (IOException ioe) {
-              System.err.println("Exception while handling the exception. Bailing out");
-              parseError.printStackTrace();
-              ioe.printStackTrace();
-            }
-            throw new RuntimeException("Parse error while reading the command: \"" + sb.toString() + "\"", parseError);
-          }
-        }
-      };
-
-      stdoutReader.start();
-      stderrReader.start();
-      commandReader.start();
-
-      int retcode = process.waitFor();
-
-      stdoutReader.join();
-      stderrReader.join();
-      commandReader.join();
-
-      bwriter.close();
-      finalProtocolChannel.close();
-      Files.deleteIfExists(socketPath);
-      Files.deleteIfExists(socketDir);
-
-      if (retcode != 0)
-        progress.setExecutionError("An issue occured in the executed code. Check the output in the log panel for more info");
-
-      if (resEvaluationError.length() > 0) {
-        System.err.println(resEvaluationError.toString());
-        progress.setCompilationError(resEvaluationError.toString());
-      }
-
-    } catch (Exception e) {
-      resEvaluationError.append(e.getMessage());
-      progress.setExecutionError(resEvaluationError.toString());
-    }
+    ProcessBuilder pb = new ProcessBuilder("python3", exec.getName(), socketPath.toString());
+    pb.directory(exec.getParentFile());
+    return pb;
   }
 
   public static class LangPythonExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
