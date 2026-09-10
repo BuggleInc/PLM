@@ -5,7 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class SplitHanoi3Entity extends HanoiEntity {
 
 	override def run() {
-		solve(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Int], getParam(2).asInstanceOf[Int], getParam(3).asInstanceOf[Int]);
+		solve(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3));
 	}
 
 	def solve(src:Int,other:Int, dst1:Int, dst2:Int) {

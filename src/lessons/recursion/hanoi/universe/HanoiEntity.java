@@ -49,7 +49,7 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
     stepUI();
     /* END HIDDEN */
   }
-  public void cyclicMove(int src, int dst)
+  @Override public void cyclicMove(int src, int dst)
   {
     if ((src == 0 && dst != 1) || (src == 1 && dst != 2) || (src == 2 && dst != 0))
       throw new RuntimeException(Game.i18n.tr(

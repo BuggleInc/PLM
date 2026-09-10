@@ -20,5 +20,5 @@ void solveRec(int src, int dst, int other, int height) {
 /* END TEMPLATE */
 
 void run(){
-	solve(getParam(0),getParam(1),getParam(2));
+  solve(getParamInt(0), getParamInt(1), getParamInt(2));
 }

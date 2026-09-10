@@ -21,4 +21,4 @@ def run():
             moveDouble(height-1, other2, src, other1,dst)
         # END SOLUTION
     # END TEMPLATE
-    splitHanoi(getSlotSize(getParam(0))/2, getParam(0),getParam(1),getParam(2),getParam(3))
+    splitHanoi(getSlotSize(getParamInt(0))//2, getParamInt(0),getParamInt(1),getParamInt(2),getParamInt(3))

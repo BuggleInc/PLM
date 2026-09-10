@@ -13,4 +13,4 @@ def run():
             move3(height-1, mid, src, dst)
         # END SOLUTION
     # END TEMPLATE
-    move3(getSlotSize(getParam(0))//3, getParam(0),getParam(1),getParam(2))
+    move3(getSlotSize(getParamInt(0))//3, getParamInt(0),getParamInt(1),getParamInt(2))

@@ -21,4 +21,4 @@ def run():
             linearHanoi(height-1, src,mid,dst)
         # END SOLUTION
     # END TEMPLATE
-    linearHanoi(getSlotSize(getParam(0)), getParam(0),getParam(1),getParam(2))
+    linearHanoi(getSlotSize(getParamInt(0)), getParamInt(0),getParamInt(1),getParamInt(2))

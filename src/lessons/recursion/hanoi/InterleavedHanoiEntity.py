@@ -20,4 +20,4 @@ def run():
             hanoi(height-1, other,src,dst);
         # END SOLUTION
     # END TEMPLATE
-    interleavedHanoi(getSlotSize(getParam(0)), getParam(0),getParam(1),getParam(2),getParam(3))
+    interleavedHanoi(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3))

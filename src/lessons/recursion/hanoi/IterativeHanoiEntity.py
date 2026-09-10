@@ -35,4 +35,4 @@ def run():
             count += 1            
         # END SOLUTION
     # END TEMPLATE
-    hanoi(getParam(0), getParam(1))
+    hanoi(getParamInt(0), getParamBoolean(1))

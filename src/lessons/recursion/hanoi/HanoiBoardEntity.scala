@@ -5,11 +5,8 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class HanoiBoardEntity extends HanoiEntity {
 
 	override def run() {
-		solve(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Int], getParam(2).asInstanceOf[Int]);
-	}
-
-	def solve(src:Int, other:Int, dst:Int) {
-		hanoi(getSlotSize(src), src,other,dst);
+		val src = getParamInt(0)
+		hanoi(getSlotSize(src), src, getParamInt(1), getParamInt(2));
 	}
 
 	/* BEGIN TEMPLATE */

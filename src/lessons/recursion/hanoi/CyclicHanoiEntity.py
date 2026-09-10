@@ -22,4 +22,4 @@ def run():
             anti(height-1,src,mid,dst);
         # END SOLUTION
     # END TEMPLATE
-    clockwise(getSlotSize(getParam(0)), getParam(0),getParam(1),getParam(2))
+    clockwise(getSlotSize(getParamInt(0)), getParamInt(0),getParamInt(1),getParamInt(2))

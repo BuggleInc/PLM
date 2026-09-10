@@ -9,4 +9,6 @@ public interface HanoiEntityPrimitives extends EntityPrimitivesBase {
   @Primitive(111) int getSlotSize(int slot);
 
   @Primitive(112) @Override boolean isSelected();
+
+  @Primitive(113) public void cyclicMove(int src, int dst);
 }

@@ -37,4 +37,4 @@ def run():
             scatter(height-1, src,mid,dst)
         # END SOLUTION
     # END TEMPLATE
-    tricolor(getSlotSize(getParam(0)), getParam(0),getParam(1),getParam(2))
+    tricolor(getSlotSize(getParamInt(0)), getParamInt(0),getParamInt(1),getParamInt(2))

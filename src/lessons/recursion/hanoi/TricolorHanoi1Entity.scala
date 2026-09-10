@@ -5,9 +5,9 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class TricolorHanoi1Entity extends HanoiEntity {
 
 	override def run() {
-    val src = getParam(0).asInstanceOf[Int]
-    val mid = getParam(1).asInstanceOf[Int]
-    val dst = getParam(2).asInstanceOf[Int]
+    val src = getParamInt(0)
+    val mid = getParamInt(1)
+    val dst = getParamInt(2)
 		move3(getSlotSize(src)/3, src,mid, dst)
 	}
 
