@@ -180,12 +180,7 @@ public class LangPython extends TemplatedRemoteLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String correction = sf.getCorrection();
 
-        String remote = getRemote(correction);
-        if (remote == null) {
-          PLMCompilerException e = new PLMCompilerException("This universe is not implemented in Python.", null, null);
-          exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
-          throw e;
-        }
+        String remote = getRemoteOrFail(correction, "Python", exo, null);
 
         String runFunction = extractRunFunction(correction);
         String dependency  = extractRunDependency(correction);

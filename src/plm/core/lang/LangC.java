@@ -108,12 +108,7 @@ public class LangC extends TemplatedRemoteLang {
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
-      String remote = getRemote(code);
-      if (remote == null) {
-        PLMCompilerException e = new PLMCompilerException("This universe is not implemented in C.", null, null);
-        exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
-        throw e;
-      }
+      String remote = getRemoteOrFail(code, "C", exo, null);
 
       String valueSerializerH = readResource("value_serializer.h");
       String valueSerializerC = readResource("value_serializer.c");
@@ -277,15 +272,7 @@ public class LangC extends TemplatedRemoteLang {
    * Read a classloader resource from "resources/langages/c/" as a String. Used for the fixed C sources that don't fit
    *  loadRemoteFile()'s "Remote"-prefixed naming convention.
    */
-  private static String readResource(String fileName) throws IOException
-  {
-    String path = "resources/langages/c/" + fileName;
-    try (InputStream in = LangC.class.getClassLoader().getResourceAsStream(path)) {
-      if (in == null)
-        throw new IOException("Resource '" + path + "' does not exist.");
-      return new String(in.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
-    }
-  }
+  private static String readResource(String fileName) throws IOException { return readClasspathResource("resources/langages/c/" + fileName); }
 
   /*
    * If {@code line} is a local #include (e.g. from a correction file that also carries its own #include pointing deep

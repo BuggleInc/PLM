@@ -358,12 +358,7 @@ public class LangScala extends JvmTemplatedLang {
 
         String correction = sf.getCorrection();
 
-        String remote = getRemote(correction);
-        if (remote == null) {
-          PLMCompilerException e = new PLMCompilerException("This universe is not implemented in Scala.", null, diagnostic);
-          exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
-          throw e;
-        }
+        String remote = getRemoteOrFail(correction, "Scala", exo, diagnostic);
 
         String runFunction = extractRunFunction(correction);
         String dependency  = extractRunDependency(correction);

@@ -1,15 +1,17 @@
 package plm.core.lang;
 
-import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 
@@ -77,6 +79,36 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   }
 
   /**
+   * Same as {@link #getRemote(String)}, but fails uniformly (PLMCompilerException thrown + {@code exo.lastResult} set
+   * to a compilation error) when {@code code}'s universe couldn't be guessed.
+   * {@code diagnostic} may be null (Python and C have no javac-style DiagnosticCollector to attach).
+   */
+  protected static String getRemoteOrFail(String code, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic)
+      throws PLMCompilerException
+  {
+    String remote = getRemote(code);
+    if (remote == null) {
+      PLMCompilerException e = new PLMCompilerException("This universe is not implemented in " + langName + ".", null, diagnostic);
+      exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
+      throw e;
+    }
+    return remote;
+  }
+
+  /**
+   * Read a classloader resource at {@code path} (relative to the classpath root) as a UTF-8 string. Low-level
+   * primitive behind {@link #loadRemoteFile} and LangC's own resource reading.
+   */
+  protected static String readClasspathResource(String path) throws IOException
+  {
+    try (InputStream in = TemplatedRemoteLang.class.getClassLoader().getResourceAsStream(path)) {
+      if (in == null)
+        throw new IOException("Resource '" + path + "' does not exist.");
+      return new String(in.readAllBytes(), StandardCharsets.UTF_8);
+    }
+  }
+
+  /**
    * Load the raw content of a "RemoteXxx" universe-glue file (e.g. RemoteBuggle.java/.scala/.py), shipped as a
    * classloader resource under "resources/langages/&lt;langDir&gt;/". {@code remoteName} is normalized the same way in
    * every caller: null/empty defaults to plain "Remote", "Remote" is prepended if missing, and {@code extension} is
@@ -90,12 +122,12 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
     if (!remote.endsWith(extension))
       remote = remote + extension;
 
-    String path        = "resources/langages/" + langDir + "/" + remote;
-    InputStream stream = TemplatedRemoteLang.class.getClassLoader().getResourceAsStream(path);
-    if (stream == null)
+    String path = "resources/langages/" + langDir + "/" + remote;
+    try {
+      return readClasspathResource(path);
+    } catch (IOException e) {
       throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
-
-    return new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
+    }
   }
 
   /* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
