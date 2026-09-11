@@ -151,7 +151,7 @@ public class ExoTest {
 
       exo.check();
     } catch (PLMCompilerException e) {
-      System.err.println(e);
+      e.printStackTrace();
       // compileAll already setup the error message; we just needed to not run the entity in that case
     } catch (UnsupportedOperationException uoe) {
       System.err.println("UnsupportedOperationException while executing" + exo.getId());
