@@ -23,8 +23,6 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
-import javax.script.ScriptEngineFactory;
-import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
@@ -898,12 +896,6 @@ public class Game implements IWorldView {
                          System.getProperty("java.vm.version") + ")");
       System.out.println("System: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") +
                          "; arch: " + System.getProperty("os.arch") + ")");
-      for (ScriptEngineFactory sef : new ScriptEngineManager().getEngineFactories()) {
-        System.out.println(sef);
-        System.out.append("  Engine: ").append(sef.getEngineName()).append(" ").println(sef.getEngineVersion());
-        System.out.append("  Language: ").append(sef.getLanguageName()).append(" ").println(sef.getLanguageVersion());
-        System.out.append("  Names: ").println(sef.getNames());
-      }
     }
   }
   public boolean isDebugEnabled() { return doDebug; }
