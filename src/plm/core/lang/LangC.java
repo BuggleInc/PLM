@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -33,6 +35,12 @@ public class LangC extends TemplatedRemoteLang {
    * It's in "plm/C", placed under "/tmp" on Linux/Mac, "C:\Users\...\AppData\Local\Temp" on Windows. ).
    */
   private static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm", "C");
+
+  /**
+   * Where compiled objects for the fixed (student-independent) C sources are cached across exercises and PLM runs;
+   *  see ensureCachedObject() below.
+   */
+  private static final Path OBJECTS_DIR = TMP_ROOT.resolve("objects");
 
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
@@ -78,29 +86,26 @@ public class LangC extends TemplatedRemoteLang {
   /**
    * Compile the given code and return the absolute path of the resulting executable.
    *
-   * Each call gets its own fresh temp directory (holding both the generated .c file and the executable), instead of a
-   * path deterministically derived from exo.getId() alone: compileExo() is called separately -- and not necessarily in
+   * Each call gets its own fresh temp directory (holding the generated .c file and the executable), instead of a path
+   * deterministically derived from exo.getId() alone: compileExo() is called separately -- and not necessarily in
    * lockstep with runEntity() -- for the student's code and for the teacher's correction, so a shared, overwritable
    * path would let one clobber the other's executable between "compile" and "run" (e.g. the student's entity ending up
    * silently running the correction's code, or vice versa).
+   *
+   * The fixed C sources (the wire-protocol/serialization glue, common to all universes, and the universe-specific
+   * glue) never depend on the student's own code, so compiling them fresh on every single run would be wasted work;
+   * ensureCachedObject() below compiles each one to a .o at most once (across every exercise and every PLM run) and
+   * reuses it afterwards. Only the student/correction file itself is compiled anew every time, then linked against
+   * those cached objects.
    */
   private String compile(String code, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
-
-    Runtime runtime = Runtime.getRuntime();
-
-    final StringBuffer resCompilationErr = new StringBuffer();
     try {
       Files.createDirectories(TMP_ROOT);
       Path compileDir = Files.createTempDirectory(TMP_ROOT, exo.getId() + "-" + whatToCompile + "-");
 
-      String extension = "";
-      String os        = System.getProperty("os.name").toLowerCase();
-      if (os.indexOf("win") >= 0) {
-        extension = ".exe";
-      }
-
-      File exec = new File(compileDir.toFile(), executable + extension);
+      boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
+      File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
       String remote = getRemote(code);
       if (remote == null) {
@@ -109,139 +114,49 @@ public class LangC extends TemplatedRemoteLang {
         throw e;
       }
 
-      String line;
-      String compiled_code_name = new File(compileDir.toFile(), exo.getId() + ".c").getAbsolutePath();
-      PrintWriter compiled_code = new PrintWriter(compiled_code_name);
+      String valueSerializerH = readResource("value_serializer.h");
+      String valueSerializerC = readResource("value_serializer.c");
+      String remoteH          = readResource("Remote.h");
+      String remoteC          = readResource("Remote.c");
+      String remoteWorldH     = loadRemoteFile(remote, "c", ".h");
+      String remoteWorldC     = loadRemoteFile(remote, "c", ".c");
 
-      BufferedReader hSerializer =
-          new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/value_serializer.h")));
-      compiled_code.append("/**********************/\n");
-      compiled_code.append("/* value_serializer.h */\n");
-      compiled_code.append("/**********************/\n");
-      while ((line = hSerializer.readLine()) != null)
-        if (!line.startsWith("#include \""))
-          compiled_code.append(line + "\n");
-      hSerializer.close();
+      Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), isWindows);
+      Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), isWindows);
+      Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), isWindows);
 
-      BufferedReader cSerializer =
-          new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/value_serializer.c")));
-      compiled_code.append("/**********************/\n");
-      compiled_code.append("/* value_serializer.c */\n");
-      compiled_code.append("/**********************/\n");
-      while ((line = cSerializer.readLine()) != null)
-        if (!line.startsWith("#include \""))
-          compiled_code.append(line + "\n");
-      cSerializer.close();
+      // These two headers still need a real, physical presence in compileDir: the student/correction file below
+      // #include's them directly, unlike value_serializer.h which nothing outside of value_serializer.c itself needs.
+      Files.writeString(compileDir.resolve("Remote.h"), remoteH);
+      Files.writeString(compileDir.resolve(remote + ".h"), remoteWorldH);
 
-      BufferedReader hRemote = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/Remote.h")));
-      compiled_code.append("/************/\n");
-      compiled_code.append("/* Remote.h */\n");
-      compiled_code.append("/************/\n");
-      while ((line = hRemote.readLine()) != null)
-        if (!line.startsWith("#include \""))
-          compiled_code.append(line + "\n");
-      hRemote.close();
+      // The student/correction code never declares these includes itself (it never had to, back when everything was
+      // flattened into one file where Remote.h's declarations were already visible by construction); provide them here.
+      // Some exercises' correction code *does* contain its own local #include lines, pointing at wherever that header
+      // lives in the PLM source tree (a convenience so external editors can resolve symbols outside of PLM) -- those
+      // paths mean nothing in compileDir, so: rewrite the ones referring to a header we actually placed here down to
+      // a plain local filename (harmless to include twice, thanks to their include guards), and drop any other local
+      // include we don't recognize, since we have no way to resolve it here either.
+      Set<String> knownHeaders = Set.of("Remote.h", "value_serializer.h", remote + ".h");
+      String studentCode       = Arrays.stream(code.split("\n", -1))
+                               .map(codeLine -> rewriteOrDropLocalInclude(codeLine, knownHeaders))
+                               .filter(java.util.Objects::nonNull)
+                               .collect(Collectors.joining("\n"));
 
-      BufferedReader cRemote = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/langages/c/Remote.c")));
-      compiled_code.append("/************/\n");
-      compiled_code.append("/* Remote.c */\n");
-      compiled_code.append("/************/\n");
-      while ((line = cRemote.readLine()) != null)
-        if (!line.startsWith("#include \""))
-          compiled_code.append(line + "\n");
-      cRemote.close();
+      String studentFileName = exo.getId() + ".c";
+      Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
 
-      BufferedReader hRemoteWorld = new BufferedReader(new StringReader(loadRemoteFile(remote, "c", ".h")));
-      compiled_code.append("/****************/\n");
-      compiled_code.append("/* " + remote + ".h */\n");
-      compiled_code.append("/****************/\n");
-      while ((line = hRemoteWorld.readLine()) != null)
-        if (!line.equals("#include \"Remote.h\""))
-          compiled_code.append(line + "\n");
-      hRemoteWorld.close();
+      String linkInputs = studentFileName + " \"" + valueSerializerObj + "\" \"" + remoteObj + "\" \"" + remoteWorldObj + "\"";
+      String linkCmd    = "gcc -g -Wall -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-fsanitize=address -o \"" + exec + "\" " + linkInputs;
+      //  -O0 -fno-omit-frame-pointer
 
-      BufferedReader cRemoteWorld = new BufferedReader(new StringReader(loadRemoteFile(remote, "c", ".c")));
-      compiled_code.append("/****************/\n");
-      compiled_code.append("/* " + remote + ".c */\n");
-      compiled_code.append("/****************/\n");
-      while ((line = cRemoteWorld.readLine()) != null)
-        if (!line.startsWith("#include \""))
-          compiled_code.append(line + "\n");
-      cRemoteWorld.close();
-
-      compiled_code.append("/****************/\n");
-      compiled_code.append("/* Student code */\n");
-      compiled_code.append("/****************/\n");
-      for (String li : code.split("\n"))
-        if (!li.startsWith("#include \""))
-          compiled_code.append(li + "\n");
-      compiled_code.close();
-
-      String[] arg1;
-      if (os.indexOf("win") >= 0) {
-        arg1    = new String[3];
-        arg1[0] = "cmd.exe";
-        arg1[1] = "/c";
-        arg1[2] = "gcc -g -x c -Wall -lm -lpthread -lws2_32 -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
-      } else {
-        arg1    = new String[3];
-        arg1[0] = "/bin/sh";
-        arg1[1] = "-c";
-        arg1[2] = "gcc -g -x c -Wall -lm -lpthread -fsanitize=address -o \"" + exec + "\" " + compiled_code_name;
-        //  -O0 -fno-omit-frame-pointer
-      }
-
-      final Process process        = runtime.exec(arg1);
-      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-      bwriter.write(compiled_code.toString());
-      bwriter.close();
-
-      Thread reader = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line           = "";
-            try {
-              while ((line = reader.readLine()) != null) {
-                resCompilationErr.append(line + "\n");
-              }
-            } finally {
-              reader.close();
-            }
-          } catch (IOException ioe) {
-            ioe.printStackTrace();
-          }
-        }
-      };
-
-      Thread error = new Thread() {
-        public void run()
-        {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            String line           = "";
-            try {
-              while ((line = reader.readLine()) != null) {
-                resCompilationErr.append(line + "\n");
-              }
-            } finally {
-              reader.close();
-            }
-          } catch (IOException ioe) {
-            ioe.printStackTrace();
-          }
-        }
-      };
-      reader.start();
-      error.start();
-      process.waitFor();
-      reader.join();
-      error.join();
-
-      if (resCompilationErr.length() > 0) {
-        PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
-        System.err.println(Game.i18n.tr("Compilation error:"));
+      String errors = runShellCommand(linkCmd, compileDir.toFile(), isWindows);
+      if (!errors.isEmpty()) {
+        PLMCompilerException e = new PLMCompilerException(errors, null, null);
+        if (Game.getInstance().isDebugEnabled())
+          System.err.println(Game.i18n.tr("Compilation error. The linking command " + linkCmd + " failed:"));
+        else
+          System.err.println(Game.i18n.tr("Compilation error. The linking command failed:"));
         System.err.println(e.getMessage());
         System.err.println(code);
 
@@ -252,11 +167,142 @@ public class LangC extends TemplatedRemoteLang {
 
       return exec.getAbsolutePath();
     } catch (IOException ioe) {
-      throw new PLMCompilerException(ioe.getMessage(), null, null);
+      throw new PLMCompilerException(ioe.getMessage(), null, ioe, null);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      throw new PLMCompilerException(e.getMessage(), null, null);
+      throw new PLMCompilerException(e.getMessage(), null, e, null);
     }
+  }
+
+  /**
+   * Compile a fixed (student-independent) C source to a .o file at most once, reusing it on every later call. Cached
+   * objects are named after a hash of their own source content, not a fixed name: a PLM upgrade that changes one of
+   * these bundled sources then simply produces a differently-named object instead of silently reusing a stale one --
+   * the old, now-unreferenced object is just harmless orphaned disk usage, same as the per-compile directories above.
+   *
+   * headers lists every header (by filename) that baseName's own "#include" needs to find alongside it while it gets
+   * compiled in isolation.
+   *
+   * Two concurrent first-uses of the same not-yet-cached object both compiling it is not a correctness problem (they
+   * would produce byte-identical output), only wasted work; the final Files.move() is atomic so neither can observe or
+   * link against a half-written object file.
+   */
+  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, boolean isWindows)
+      throws IOException, InterruptedException, PLMCompilerException
+  {
+    String hash     = Integer.toHexString(sourceContent.hashCode());
+    Path objectFile = OBJECTS_DIR.resolve(baseName + "-" + hash + ".o");
+    if (Files.exists(objectFile))
+      return objectFile;
+
+    Files.createDirectories(OBJECTS_DIR);
+    Path scratch = Files.createTempDirectory(OBJECTS_DIR, baseName + "-build-");
+    try {
+      for (Map.Entry<String, String> header : headers.entrySet())
+        Files.writeString(scratch.resolve(header.getKey()), header.getValue());
+      Path sourceFile = scratch.resolve(baseName + ".c");
+      Files.writeString(sourceFile, sourceContent);
+
+      Path tmpObject = scratch.resolve(baseName + ".o");
+      // Must share -fsanitize=address with the final link step: ASan's instrumentation needs to be consistent across
+      // every object file being linked together. -Wall/-g are harmless either way; -lm/-lpthread/-lws2_32 are link-only
+      // flags, meaningless here since we're not linking anything yet.
+      String compileCmd = "gcc -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
+      String errors     = runShellCommand(compileCmd, scratch.toFile(), isWindows);
+      if (!errors.isEmpty())
+        throw new PLMCompilerException(errors, null, null);
+
+      try {
+        Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
+      } catch (java.nio.file.FileAlreadyExistsException raceLost) {
+        // another thread published the same (byte-identical) object first; nothing to do.
+      }
+    } finally {
+      try (var walk = Files.walk(scratch)) {
+        walk.sorted(Comparator.reverseOrder()).forEach(p -> {
+          try {
+            Files.delete(p);
+          } catch (IOException ignored) {
+          }
+        });
+      }
+    }
+    return objectFile;
+  }
+
+  /**
+   * Run a shell command from workDir, returning everything it printed on stdout+stderr (empty = success, by
+   *  convention of every caller here: gcc stays silent unless something went wrong).
+   */
+  private static String runShellCommand(String shellCommand, File workDir, boolean isWindows) throws IOException, InterruptedException
+  {
+    String[] arg1 = isWindows ? new String[] {"cmd.exe", "/c", shellCommand} : new String[] {"/bin/sh", "-c", shellCommand};
+
+    Process process        = Runtime.getRuntime().exec(arg1, null, workDir);
+    final StringBuffer out = new StringBuffer();
+
+    Thread stdout = drain(process.getInputStream(), out);
+    Thread stderr = drain(process.getErrorStream(), out);
+    stdout.start();
+    stderr.start();
+    process.waitFor();
+    stdout.join();
+    stderr.join();
+
+    return out.toString();
+  }
+
+  private static Thread drain(InputStream in, StringBuffer into)
+  {
+    return new Thread() {
+      public void run()
+      {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
+          String line;
+          while ((line = reader.readLine()) != null)
+            into.append(line + "\n");
+        } catch (IOException ioe) {
+          ioe.printStackTrace();
+        }
+      }
+    };
+  }
+
+  /**
+   * Read a classloader resource from "resources/langages/c/" as a String. Used for the fixed C sources that don't fit
+   *  loadRemoteFile()'s "Remote"-prefixed naming convention.
+   */
+  private static String readResource(String fileName) throws IOException
+  {
+    String path = "resources/langages/c/" + fileName;
+    try (InputStream in = LangC.class.getClassLoader().getResourceAsStream(path)) {
+      if (in == null)
+        throw new IOException("Resource '" + path + "' does not exist.");
+      return new String(in.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+    }
+  }
+
+  /*
+   * If {@code line} is a local #include (e.g. from a correction file that also carries its own #include pointing deep
+   * into the PLM source tree, so external editors can resolve symbols outside of PLM), reduce it to a plain filename
+   * when that filename is one of {@code knownHeaders} we actually placed in the compile directory (harmless to
+   * #include twice, they all have include guards), or drop the line entirely when it points somewhere we can't
+   * resolve. Any other line (system includes, or plain code) is returned unchanged.
+   */
+  private static String rewriteOrDropLocalInclude(String line, Set<String> knownHeaders)
+  {
+    if (!line.startsWith("#include \""))
+      return line;
+
+    int firstQuote = line.indexOf('"');
+    int lastQuote  = line.lastIndexOf('"');
+    if (lastQuote <= firstQuote)
+      return line; // malformed; leave it as-is rather than guess
+
+    String includedPath = line.substring(firstQuote + 1, lastQuote);
+    String basename     = includedPath.substring(includedPath.lastIndexOf('/') + 1);
+
+    return knownHeaders.contains(basename) ? "#include \"" + basename + "\"" : null;
   }
 
   /**

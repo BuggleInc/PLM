@@ -24,7 +24,7 @@
 static FILE* protocol_in  = NULL;
 static FILE* protocol_out = NULL;
 static char answer_buffer[1024];
-static char* get_answer_line()
+char* get_answer_line()
 {
   if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
     exit(1);

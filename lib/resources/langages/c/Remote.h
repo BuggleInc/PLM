@@ -8,6 +8,7 @@
 #include <string.h>
 
 void send_command(char* format, ...);
+char* get_answer_line();
 int get_answer_int();
 double get_answer_double();
 char* get_answer_string();
