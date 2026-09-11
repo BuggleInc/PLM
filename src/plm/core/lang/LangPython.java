@@ -245,11 +245,16 @@ public class LangPython extends TemplatedRemoteLang {
 
         CorrectedTemplate corrected = getCorrectedTemplate(correction);
 
+        // The template SHAPE ($run/$body placement) always comes from the correction's own markers, but the actual
+        // $body/$bodyIndented CONTENT must be the student's current text when compiling the student's attempt --
+        // otherwise "Run" always executes the teacher's correction, regardless of what the student wrote.
+        String bodySource = whatToCompile == StudentOrCorrection.CORRECTION ? corrected.bodySource() : sf.getBody();
+
         String entityCode = corrected.template();
         for (Map.Entry<String, String> e : runtimePatterns.entrySet())
           entityCode = entityCode.replaceAll(e.getKey(), e.getValue());
-        entityCode = entityCode.replace("$bodyIndented", Matcher_quoteReplacement(indent(stripMarkers(corrected.bodySource()))));
-        entityCode = entityCode.replace("$body", Matcher_quoteReplacement(stripMarkers(corrected.bodySource())));
+        entityCode = entityCode.replace("$bodyIndented", Matcher_quoteReplacement(indent(stripMarkers(bodySource))));
+        entityCode = entityCode.replace("$body", Matcher_quoteReplacement(stripMarkers(bodySource)));
         entityCode = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
