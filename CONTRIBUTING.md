@@ -8,6 +8,10 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 * [Adding a new exercise](#Adding_a_new_exercise)
 * [Maintainer's notes](#Maintainers_notes): how to merge in new translation and how to release a new version of the PLM.
 
+TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemoteLanguage
+TODO: kill mutateEntities()
+TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compileAll()
+
 # Architecture
 
 ## Core concepts
