@@ -580,22 +580,17 @@ public class LangC extends TemplatedRemoteLang {
                                    + "#include <string.h>";
       final String header_suffix = "#endif";
 
-      final String type_declarations =
-          involved.stream()
-              .sorted(Comparator.comparing(this::getLanguageType)) // "Point" before "PointArray": PointArray's typedef references Point
-              .map(this::getTypeDeclaration)
-              .filter(o -> !o.isBlank())
-              .collect(Collectors.joining("\n\n"));
+      // "Point" before "PointArray": PointArray's typedef references Point
+      List<Class<?>> sortedInvolved = involved.stream().sorted(Comparator.comparing(this::getLanguageType)).toList();
+
+      final String type_declarations = sortedInvolved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
       final String prototypes = methods.stream().map(this::getPrototype).collect(Collectors.joining("\n"));
 
       final String header = String.join("\n\n", header_prefix, type_declarations, prototypes, header_suffix);
 
-      final String type_support_functions = involved.stream()
-                                                .sorted(Comparator.comparing(this::getLanguageType))
-                                                .map(this::getTypeSupportFunctions)
-                                                .filter(o -> !o.isBlank())
-                                                .collect(Collectors.joining("\n\n"));
+      final String type_support_functions =
+          sortedInvolved.stream().map(this::getTypeSupportFunctions).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
       final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
