@@ -45,7 +45,7 @@ public class LangScala extends JvmTemplatedLang {
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-  File tempFolder                                        = new File(System.getProperty("java.io.tmpdir"), "plm_scala_toremove");
+  File tempFolder                                        = TMP_ROOT.resolve("scala").toFile();
 
   public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png")); }
   @Override public boolean isScala() { return true; }

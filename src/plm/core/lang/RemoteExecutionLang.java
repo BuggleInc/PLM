@@ -29,8 +29,7 @@ import plm.universe.Entity;
 
 /**
  * Ancestor of every language whose student code runs as an external process, talking back to
- * {@link CommandExecutor} over a UNIX-domain-socket protocol (currently Java, Scala, Python and C -- though C does not
- * (yet) extend this class).
+ * {@link CommandExecutor} over a UNIX-domain-socket protocol (currently Java, Scala, Python and C).
  *
  * Factors two things common to all of them:
  * <ul>
@@ -44,6 +43,14 @@ import plm.universe.Entity;
  * </ul>
  */
 public abstract class RemoteExecutionLang extends ProgrammingLanguage {
+
+  /**
+   * Root directory under which every subclass keeps its own temporary files -- compiled artifacts and per-exercise
+   * workspaces (see each language's own tempFolder/*_ROOT), as well as the protocol sockets bound below in
+   * {@link #runEntity} -- so that cleaning up (or just inspecting) the PLM's scratch space only ever means looking at
+   * a single "plm" directory instead of one spot per language plus a handful of unprefixed socket directories.
+   */
+  protected static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm");
 
   public RemoteExecutionLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
@@ -87,7 +94,8 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       if (executable == null)
         throw new IllegalStateException("TOFIX");
 
-      Path socketDir                    = Files.createTempDirectory("plm-" + getExt() + "-sock-");
+      Files.createDirectories(TMP_ROOT);
+      Path socketDir                    = Files.createTempDirectory(TMP_ROOT, getExt() + "-sock-");
       Path socketPath                   = socketDir.resolve("protocol.sock");
       ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
       serverChannel.bind(UnixDomainSocketAddress.of(socketPath));

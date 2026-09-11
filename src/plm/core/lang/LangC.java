@@ -32,16 +32,16 @@ public class LangC extends TemplatedRemoteLang {
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
   /**
-   * Root directory for every temp file this language produces (compiled binaries and their generated .c source).
-   * It's in "plm/C", placed under "/tmp" on Linux/Mac, "C:\Users\...\AppData\Local\Temp" on Windows. ).
+   * Root directory for every temp file this language produces (compiled binaries and their generated .c source),
+   * nested under the shared {@link RemoteExecutionLang#TMP_ROOT} like every other language's own tempFolder.
    */
-  private static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm", "C");
+  private static final Path C_ROOT = TMP_ROOT.resolve("C");
 
   /**
    * Where compiled objects for the fixed (student-independent) C sources are cached across exercises and PLM runs;
    *  see ensureCachedObject() below.
    */
-  private static final Path OBJECTS_DIR = TMP_ROOT.resolve("objects");
+  private static final Path OBJECTS_DIR = C_ROOT.resolve("objects");
 
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
@@ -102,8 +102,8 @@ public class LangC extends TemplatedRemoteLang {
   private String compile(String code, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     try {
-      Files.createDirectories(TMP_ROOT);
-      Path compileDir = Files.createTempDirectory(TMP_ROOT, exo.getId() + "-" + whatToCompile + "-");
+      Files.createDirectories(C_ROOT);
+      Path compileDir = Files.createTempDirectory(C_ROOT, exo.getId() + "-" + whatToCompile + "-");
 
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));

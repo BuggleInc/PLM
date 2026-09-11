@@ -351,7 +351,7 @@ public class Game implements IWorldView {
           System.out.println(Game.i18n.tr("Exercise {0} does not support language {1}. Fallback to {2} instead. "
                                               + "Please consider contributing to this project by adapting this exercise "
                                               + "to this language.",
-                                          lect.getName(), getProgrammingLanguage(), fallback.getLang()));
+                                          lect.getName() + " (" + lect.getId() + ")", getProgrammingLanguage(), fallback.getLang()));
         setProgramingLanguageSafe(fallback);
       }
       MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it

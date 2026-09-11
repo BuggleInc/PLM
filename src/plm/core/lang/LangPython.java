@@ -47,7 +47,7 @@ public class LangPython extends TemplatedRemoteLang {
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
   private static final AtomicInteger workspaceSuffix = new AtomicInteger();
-  File tempFolder                                    = new File(System.getProperty("java.io.tmpdir"), "plm_python_toremove");
+  File tempFolder                                    = TMP_ROOT.resolve("python").toFile();
 
   public LangPython() { super("Python", "py", ResourcesCache.getIcon("img/lang_python.png")); }
   @Override public boolean isPython() { return true; }

@@ -35,7 +35,7 @@ public class LangJava extends JvmTemplatedLang {
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-  File tempFolder                                        = new File(System.getProperty("java.io.tmpdir"), "plm_java_toremove");
+  File tempFolder                                        = TMP_ROOT.resolve("java").toFile();
 
   public LangJava() { super("Java", "java", ResourcesCache.getIcon("img/lang_java.png")); }
 
