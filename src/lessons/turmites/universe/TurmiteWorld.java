@@ -6,10 +6,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.universe.BrokenWorldFileException;
@@ -87,18 +84,6 @@ public class TurmiteWorld extends BuggleWorld {
 
   public void stepDone() { currStep++; }
   @Override public boolean isDelayed() { return super.isDelayed() && ((getDelay() > 0) || (currStep % 1000 == 0)); }
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException
-  {
-    if (lang.isPython()) {
-      super.setupBindings(lang, engine);
-      engine.put("daWorld", this);
-      engine.eval("def stepDone():\n"
-                  + "	daWorld.stepDone()\n" +
-                  /* BINDINGS TRANSLATION: French */
-                  "def pasFait():\n"
-                  + "	daWorld.stepDone()\n");
-    }
-  }
 
   @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
   {

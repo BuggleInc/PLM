@@ -2,10 +2,7 @@ package lessons.lander.universe;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.Point;
@@ -88,40 +85,6 @@ public class LanderWorld extends World {
   }
 
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_lander.png"); }
-
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException
-  {
-    if (lang.isPython()) {
-      engine.put("Segment", Segment.class);
-      engine.eval("def isFlying():\n"
-                  + "  return entity.isFlying()\n"
-                  + "def simulateStep():\n"
-                  + "  entity.simulateStep()\n"
-                  + "def getGround():\n"
-                  + "  return [ (elm.x(), elm.y()) for elm in entity.getGround() ]\n"
-                  + "def getX():\n"
-                  + "  return entity.getX()\n"
-                  + "def getY():\n"
-                  + "  return entity.getY()\n"
-                  + "def getSpeedX():\n"
-                  + "  return entity.getSpeedX()\n"
-                  + "def getSpeedY():\n"
-                  + "  return entity.getSpeedY()\n"
-                  + "def getAngle():\n"
-                  + "  return entity.getAngle()\n"
-                  + "def setDesiredAngle(a):\n"
-                  + "  entity.setDesiredAngle(a)\n"
-                  + "def getThrust():\n"
-                  + "  return entity.getThrust()\n"
-                  + "def setDesiredThrust(t):\n"
-                  + "  entity.setDesiredThrust(t)\n"
-                  + "def getFuel():\n"
-                  + "  return entity.getFuel()\n"
-                  + "");
-    } else {
-      throw new RuntimeException("No binding of LanderWorld for " + lang);
-    }
-  }
 
   /** Returns true if the lander landed successfully. */
   @Override public boolean winning(World target) { return state == State.LANDED; }

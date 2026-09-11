@@ -6,9 +6,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
-import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -81,12 +79,6 @@ public class BatWorld extends World {
 
   /* World logic */
   public void addTest(boolean visible, Object... params) { tests.add(new BatTest(getName(), visible, params)); }
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine e)
-  {
-    if (lang.isPython()) {
-      e.put("batTests", tests);
-    }
-  }
   @Override public String diffTo(World w)
   {
     BatWorld other     = (BatWorld)w;

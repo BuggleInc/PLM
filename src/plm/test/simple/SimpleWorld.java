@@ -1,10 +1,6 @@
 package plm.test.simple;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.universe.World;
 
 public class SimpleWorld extends World {
@@ -34,13 +30,6 @@ public class SimpleWorld extends World {
   {
     // TODO Auto-generated method stub
     return null;
-  }
-
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException
-  {
-    if (lang.isPython()) {
-      engine.put("w", this);
-    }
   }
 
   @Override public boolean equals(Object o)

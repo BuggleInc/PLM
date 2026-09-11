@@ -2,10 +2,7 @@ package plm.universe.sort;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -275,51 +272,6 @@ public class SortingWorld extends World {
   }
 
   @Override public SortingWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) { return (SortingWorld)super.replaceEntities(newEntitySupplier); }
-
-  /**
-   * Setup the engine so that it's ready to host the user code
-   *
-   * @param lang the programming language used
-   * @throws ScriptException some error reported by the scripting engine itself
-   */
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException
-  {
-    if (lang.isPython()) {
-      e.eval("def getValueCount():\n"
-             + "  return entity.getValueCount()\n"
-             + "def swap(i,j):\n"
-             + "  entity.swap(i,j)\n"
-             + "def copy(i,j):\n"
-             + "  entity.copy(i,j)\n"
-             + "def getValue(i):\n"
-             + "  return entity.getValue(i)\n"
-             + "def setValue(i,j):\n"
-             + "  entity.setValue(i,j)\n"
-             + "def isSmaller(i,j):\n"
-             + "  return entity.isSmaller(i,j)\n"
-             + "def isSmallerThan(i,j):\n"
-             + "  return entity.isSmallerThan(i,j)\n" +
-             /* BINDINGS TRANSLATION: French */
-             "def getNombreValeurs():\n"
-             + "  return getValueCount()\n"
-             + "def echange(i,j):\n"
-             + "  swap(i,j)\n"
-             + "def copie(i,j):\n"
-             + "  copy(i,j)\n"
-             + "def getValeur(i):\n"
-             + "  return getValue(i)\n"
-             + "def setValeur(i,j):\n"
-             + "  setValue(i,j)\n"
-             + "def plusPetit(i,j):\n"
-             + "  return isSmaller(i,j)\n"
-             + "def plusPetitQue(i,j):\n"
-             + "  return isSmallerThan(i,j)\n"
-
-      );
-    } else {
-      throw new RuntimeException("No binding of SortingWorld for " + lang);
-    }
-  }
 
   /**
    * Return the value of index i in the array

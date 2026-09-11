@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
 import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PLMCompilerException;
@@ -96,16 +95,10 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    *    student-provided method (that is not a real entity but part of the world directly)
    *    is run against all testcase, that are not real worlds either.
    *
-   *  * Java and Scala entities are launched by just executing their {@link #run()} method that
-   *    was redefined by the student (possibly with some templating)
+   *  * Java, Scala, Python and C entities are launched in an external program, with some threads
+   *    to deal with the pipes that are connected to the external process.
    *  * LightBot entities are launched by executing the {@link LightBotEntity#run()} method,
    *    that is NOT defined by the student, but interprets the code of the students.
-   *  * Python (and other scripting language) entities are launched by injecting the
-   *    student-provided code within a {@link ScriptEngine}.
-   *    In this later case, the java entity is injected within the scripting world so that it
-   *    can forward the student commands to the world.
-   *  * C starts an external program that executes the student logic, along with an handful of threads
-   *    to deal with the pipes that are connected to the external process
    *
    *  @see #run() that encodes the student logic in Java
    */

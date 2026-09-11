@@ -2,12 +2,9 @@ package lessons.sort.baseball.universe;
 
 import java.util.Vector;
 import java.util.function.Supplier;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -177,56 +174,6 @@ public class BaseballWorld extends World {
           return false;
 
     return true;
-  }
-
-  /**
-   * Ensures that the provided script engine can run scripts in the specified programming language
-   * @throws ScriptException
-   */
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException
-  {
-    if (lang.isPython()) {
-      engine.eval("def getBasesAmount():\n"
-                  + "  return entity.getBasesAmount()\n"
-                  + "def getPositionsAmount():\n"
-                  + "  return entity.getPositionsAmount()\n"
-                  + "def getHoleBase():\n"
-                  + "  return entity.getHoleBase()\n"
-                  + "def getHolePosition():\n"
-                  + "  return entity.getHolePosition()\n"
-                  + "def isSorted():\n"
-                  + "  return entity.isSorted()\n"
-                  + "def isBaseSorted():\n"
-                  + "  return entity.isBaseSorted()\n"
-                  + "def getPlayerColor(base,pos):\n"
-                  + "  return entity.getPlayerColor(base,pos)\n"
-                  + "def move(base,pos):\n"
-                  + "  entity.move(base,pos)\n" +
-                  /* BINDINGS TRANSLATION: French */
-                  "def getNombreBases():\n"
-                  + "  return entitygetBasesAmount()\n"
-                  + "def getNombrePositions():\n"
-                  + "  return entity.getPositionsAmount()\n"
-                  + "def getTrouBase():\n"
-                  + "  return entity.getHoleBase()\n"
-                  + "def getTrouPosition():\n"
-                  + "  return entity.getHolePosition()\n"
-                  + "def estTrie():\n"
-                  + "  return entity.isSorted()\n"
-                  + "def estBaseTriee():\n"
-                  + "  return entity.isBaseSorted()\n"
-                  + "def getCouleurJoueur(base,pos):\n"
-                  + "  return entity.getPlayerColor(base,pos)\n"
-                  + "def deplace(base,pos):\n"
-                  + "  (base,pos)\n"
-                  + "def estSelectionne():\n"
-                  + "  return isSelected()\n"
-                  +
-
-                  "");
-    } else {
-      throw new RuntimeException("No binding of BaseballWorld for " + lang);
-    }
   }
 
   /** Returns the icon of the world */

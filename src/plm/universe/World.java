@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -364,13 +362,6 @@ public abstract class World {
   {
     notifyWorldUpdatesListeners(); // EntityUpdateListeners();
   }
-  /**
-   * Returns the script except that must be injected within the environment before running user code
-   *
-   * It should pass all order to the java entity, which were injected independently
-   * @throws ScriptException
-   */
-  public abstract void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException;
 
   /** Returns a textual representation of the differences from the receiver world to the one in parameter*/
   public abstract String diffTo(World world);

@@ -1,9 +1,6 @@
 package lessons.sort.pancake.universe;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -149,32 +146,6 @@ public class PancakeWorld extends World {
     this.lastMove    = other.lastMove;
     this.moveCount   = other.moveCount;
     super.reset(world);
-  }
-
-  /** Ensures that the provided engine can be used to solve Pancake exercises */
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException
-  {
-    if (lang.isPython()) {
-      e.eval("def getStackSize():\n"
-             + "  return entity.getStackSize()\n"
-             + "def getPancakeRadius(rank):\n"
-             + "  return entity.getPancakeRadius(rank)\n"
-             + "def isPancakeUpsideDown(pancakeNumber):\n"
-             + "  return entity.isPancakeUpsideDown(pancakeNumber)\n"
-             + "def flip(numberOfPancakes):\n"
-             + "  entity.flip(numberOfPancakes)\n" +
-             /* BINDINGS TRANSLATION: French */
-             "def getTaillePile():\n"
-             + "  return getStackSize()\n"
-             + "def getRayonCrepe(rank):\n"
-             + "  return getPancakeRadius(rank)\n"
-             + "def estCrepeRetournee(rank):\n"
-             + "  return isPancakeUpsideDown(rank)\n"
-             + "def retourne(nb):\n"
-             + "  return flip(nb)\n");
-    } else {
-      throw new RuntimeException("No binding of PancakeWorld for " + lang);
-    }
   }
 
   /* --------------------------------------- */

@@ -1,8 +1,6 @@
 package lessons.backtracking;
 
-import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.World;
@@ -87,7 +85,6 @@ public class BacktrackingWorld extends World {
     System.out.println("XXXX New best solution: " + bestSolution);
   }
   public BacktrackingPartialSolution getBestSolution() { return bestSolution; }
-  @Override public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) { throw new RuntimeException("No binding of BacktrackingWorld for " + lang); }
   @Override public String diffTo(World world)
   {
     return null; // FIXME: implement a textual diff
