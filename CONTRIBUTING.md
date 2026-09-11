@@ -54,18 +54,17 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 ## How an exercise executes
 
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
-* **Compile**: `Exercise.compileAll()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java and C are
-  compiled to an external files, Scala is compiled within the same JVM that runs the PLM (but shall be converted to exernal
-  compilation at some point); Python and Ruby scripts are not compiled at all.
-* **Mutate entities**: `Exercise.mutateEntities()` swaps in the student's (or the correction's) compiled code for each world.
-  This is mandatory for the in-JVM execution as in Scala, but shall be removed once every languages execute remotely.
-* **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`, whose behavior
-  depends on the language/universe combo (see `ProgrammingLanguage.runEntity`):
-   - Java/C: an external process is started; primitives are relayed over pipes (`plm.universe.CommandExecutor`). In the future,
-     this shall be the way to go for all languages.
-   - Scala: the entity's `run()` method (student-authored) executes directly.
-   - Python/Ruby: student code is injected into a scripting engine bound to the Java world/entity, using an in-JVM scripting
-     engine for these languages. In the future, an external execution shall be used.
+* **Compile**: `Exercise.compileAll()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java, Scala
+  and C are compiled to an external executable/jar; Python needs no compilation step, just the student's `.py` files written
+  out to a workspace. Either way, `compileExo()` ends up with something that can be spawned as a separate process -- there is
+  no more in-JVM execution for any language.
+* **Mutate entities**: `Exercise.mutateEntities()` copies the path `compileExo()` produced onto each entity, so `runEntity()`
+  below knows what to spawn for it.
+* **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
+   - Java/Scala/Python/C: all four inherit the same `RemoteExecutionLang.runEntity()`. It binds a UNIX domain socket, starts
+     the student code as an external process, and relays primitive calls over that socket to `plm.universe.CommandExecutor`.
+     The only thing each language still implements on its own is `buildProcess()`, which turns the compiled/written artifact
+     into the right command line (`java -jar ...`, `python3 ...`, the compiled binary, etc).
    - LightBot: This challenge is an exception, as it can only be solved using the graphical block-list rather than a real
      programming language. Thus, `run()` *interprets* a student-authored program.
 * **Check**: `Exercise.check()` compares each `currentWorld` to its `answerWorld` via `World.winning()`. On mismatch,
@@ -73,8 +72,12 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks whether the lunar lander reached
   a pad or crashed.
 
-Runaway/infinite-loop student code is caught via `Thread.UncaughtExceptionHandler` + interruption, not a hard sandbox, keep
-this in mind when touching `World.runEntities`. Changing this is the core motivation for the ongoing remote execution transition.
+Runaway/infinite-loop student code: the "Stop" action calls `LessonRunner.stopAll()`, which cooperatively `Thread.interrupt()`s
+each per-entity runner thread (a deprecated `Thread.stop()` used to be used instead, back when Java exercises were compiled
+in-process). Since student code is now an external process, interrupting the runner thread only unblocks it from
+`Process.waitFor()`; it does **not** currently `destroyForcibly()` the still-running student process, so a stopped infinite
+loop may leave an orphaned process behind. Keep this in mind when touching `RemoteExecutionLang.runEntity()`; there is no hard
+sandbox beyond this.
 
 ## How tests work
 
@@ -94,10 +97,9 @@ this in mind when touching `World.runEntities`. Changing this is the core motiva
 - **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
   - **Java**: compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
     void main` boilerplate exposed to the student).
-  - **Scala**: `scala-library`/`scala-compiler`/`scala-reflect` 2.12.20; compiled jointly with Java sources (scalac runs before
-    javac in the Maven build) since PLM compiles user Scala in-process.
-  - **Python**: via Jython 2.7.3 (`jython-standalone`), i.e. **Python 2 syntax**, not Python 3. TODO: this will change.
-  - **Ruby** via JRuby 9.4.8.0 (`jruby-complete`).
+  - **Scala**: `scala-library`/`scala-compiler`/`scala-reflect` 2.12.20; compiled by driving `scala.tools.nsc.Main` as a
+    separate `java -cp <scala jars> ...` process, then run as its own `java -jar` process like Java.
+  - **Python**: an external `python3` process is spawned per run.
   - **C** compiled externally and driven over pipes.
 - Adding a new language: see
   `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language`
