@@ -12,14 +12,14 @@ public class LangScalaTemplateTest {
 
   private void assertRejected(String correction, String expectedMessageSubstring)
   {
-    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> LangScala.getCorrectedTemplate(correction));
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> new LangScala().getCorrectedTemplate(correction));
     Assertions.assertTrue(e.getMessage().contains(expectedMessageSubstring),
                           "Expected message to contain \"" + expectedMessageSubstring + "\" but got: " + e.getMessage());
   }
 
   private void assertAccepted(String correction, String expectedTemplate) throws PLMCompilerException
   {
-    Assertions.assertEquals(expectedTemplate, LangScala.getCorrectedTemplate(correction));
+    Assertions.assertEquals(expectedTemplate, new LangScala().getCorrectedTemplate(correction));
   }
 
   @Test public void testNoRunAtAll() { assertRejected("class X { def foo() = 1 }", "No 'def run('"); }

@@ -20,7 +20,6 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
@@ -127,7 +126,7 @@ public class LangScala extends JvmTemplatedLang {
    * getCorrectedTemplate() produce code that compiles but behaves wrong, not code that fails to compile -- the worse
    * failure mode, since nothing points the author at the actual problem.
    */
-  private static void validateTemplateWellFormedness(String correction) throws PLMCompilerException
+  private void validateTemplateWellFormedness(String correction) throws PLMCompilerException
   {
     int runCount = countOccurrences(correction, RUN_KEYWORD);
     if (runCount == 0)
@@ -151,7 +150,7 @@ public class LangScala extends JvmTemplatedLang {
     int endTemplateIndex      = correction.indexOf("/* END TEMPLATE */");
     int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
-    int[] runSpan             = ExerciseTemplated.extractRunSpan(correction, RUN_KEYWORD);
+    int[] runSpan             = extractRunSpan(correction, RUN_KEYWORD);
 
     boolean case1 = beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex;
     boolean case2 = runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1];
@@ -191,7 +190,7 @@ public class LangScala extends JvmTemplatedLang {
    *
    * The LangJava version is separated for now (TBD) and computes the offset to ensure that the presented error messages match the code.
    */
-  public static @NonNull String getCorrectedTemplate(String correction) throws PLMCompilerException
+  public @NonNull String getCorrectedTemplate(String correction) throws PLMCompilerException
   {
     validateTemplateWellFormedness(correction);
     int beginTemplateIndexRaw = correction.indexOf("/* BEGIN TEMPLATE */");
@@ -199,7 +198,7 @@ public class LangScala extends JvmTemplatedLang {
     int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
 
-    int[] runSpan = ExerciseTemplated.extractRunSpan(correction, RUN_KEYWORD);
+    int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
 
     String template;
     if (beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex) {
@@ -215,7 +214,7 @@ public class LangScala extends JvmTemplatedLang {
     return template;
   }
 
-  private static String extractRunFunction(String code) { return ExerciseTemplated.extractRunFunction(code, RUN_KEYWORD); }
+  private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
   private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
 

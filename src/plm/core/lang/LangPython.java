@@ -16,7 +16,6 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
@@ -84,7 +83,55 @@ public class LangPython extends TemplatedRemoteLang {
 
   private static final String RUN_KEYWORD = "def run(";
 
-  private static String extractRunFunction(String code) { return ExerciseTemplated.extractRunFunctionIndentBased(code, RUN_KEYWORD); }
+  /**
+   * Python counterpart of {@link TemplatedRemoteLang#extractRunSpan}: Python has no braces, so a function's body is
+   * delimited by indentation instead -- it ends at the first subsequent non-blank line indented no more than the
+   * "def" line itself (or at end of file). Tabs and spaces are counted as plain characters (not expanded), which only
+   * matters if a single file mixes the two inconsistently -- not a case seen in any exercise file so far.
+   */
+  @Override protected int[] extractRunSpan(String code, String runKeyword)
+  {
+    int startRun = code.indexOf(runKeyword);
+    if (startRun == -1)
+      return null;
+
+    int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
+    beginOfRunLine     = beginOfRunLine == -1 ? 0 : beginOfRunLine + 1;
+
+    int defIndent = startRun - beginOfRunLine;
+
+    int lineEnd = code.indexOf('\n', startRun);
+    if (lineEnd == -1)
+      lineEnd = code.length();
+
+    int pos = lineEnd + 1;
+    int end = lineEnd;
+    while (pos <= code.length()) {
+      int nextLineEnd = code.indexOf('\n', pos);
+      if (nextLineEnd == -1)
+        nextLineEnd = code.length();
+
+      String line    = code.substring(pos, nextLineEnd);
+      String trimmed = line.strip();
+
+      if (!trimmed.isEmpty()) {
+        int indent = 0;
+        while (indent < line.length() && (line.charAt(indent) == ' ' || line.charAt(indent) == '\t'))
+          indent++;
+        if (indent <= defIndent)
+          break;
+      }
+
+      end = nextLineEnd;
+      if (nextLineEnd == code.length())
+        break;
+      pos = nextLineEnd + 1;
+    }
+
+    return new int[] {beginOfRunLine, end};
+  }
+
+  private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
   /**
    * Python counterpart of LangJava/LangScala's getCorrectedTemplate(), built on
@@ -100,14 +147,14 @@ public class LangPython extends TemplatedRemoteLang {
    * wrapper is needed at all (unlike Java/Scala): Entity.py is just top-level function definitions, so the four cases
    * only decide how to concatenate $run/$body, not how to wrap them.
    */
-  private static CorrectedTemplate getCorrectedTemplate(String correction)
+  private CorrectedTemplate getCorrectedTemplate(String correction)
   {
     int beginTemplateIndexRaw = correction.indexOf("# BEGIN TEMPLATE");
     int endTemplateIndex      = correction.indexOf("# END TEMPLATE");
     int endTemplateIndexEnd   = endTemplateIndex == -1 ? -1 : endTemplateIndex + "# END TEMPLATE".length();
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
 
-    int[] runSpan = ExerciseTemplated.extractRunSpanIndentBased(correction, RUN_KEYWORD);
+    int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
 
     if (runSpan == null) {
       // No "def run(" anywhere in the source at all: the templated text is meant to become run()'s entire body on its

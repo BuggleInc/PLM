@@ -17,7 +17,6 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
-import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class Exercise extends Lecture {

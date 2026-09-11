@@ -20,7 +20,6 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
@@ -62,7 +61,7 @@ public class LangJava extends JvmTemplatedLang {
 
   private static final String RUN_KEYWORD = "void run(";
 
-  private static @NonNull String getCorrectedTemplate(String correction)
+  private @NonNull String getCorrectedTemplate(String correction)
   {
     int beginTemplateIndex    = correction.indexOf("/* BEGIN TEMPLATE */");
     int beginTemplateIndexEnd = beginTemplateIndex + "/* BEGIN TEMPLATE */".length();
@@ -71,7 +70,7 @@ public class LangJava extends JvmTemplatedLang {
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
 
     // Containment between the templated region [beginTemplateIndexRaw, endTemplateIndexEnd) and run() body
-    int[] runSpan = ExerciseTemplated.extractRunSpan(correction, RUN_KEYWORD);
+    int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
 
     String template;
     if (runSpan != null && runSpan[0] <= runFunctionI && endTemplateIndex != -1 && beginTemplateIndex <= runFunctionI && runFunctionI <= endTemplateIndex) {
@@ -89,7 +88,7 @@ public class LangJava extends JvmTemplatedLang {
     return template;
   }
 
-  private static String extractRunFunction(String code) { return ExerciseTemplated.extractRunFunction(code, RUN_KEYWORD); }
+  private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
   private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
 
