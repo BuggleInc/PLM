@@ -78,7 +78,6 @@ public class LightBotExercise extends ExerciseTemplated {
 
   @Override final public void mutateEntities(WorldKind kind, StudentOrCorrection what)
   {
-    throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! "
-                               + "super.mutateEntities() is not ready for that.");
+    throw new RuntimeException("I'm sorry Dave, I'm affraid I cannot let you mutate Lightbot entities.");
   }
 }

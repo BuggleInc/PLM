@@ -15,15 +15,9 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.ImageIcon;
-import plm.core.PLMCompilerException;
 import plm.core.model.Game;
-import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.model.session.SourceFile;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 
@@ -34,7 +28,7 @@ import plm.universe.Entity;
  * Factors two things common to all of them:
  * <ul>
  * <li>how a compiled artifact's path travels from {@code compileExo} to {@code runEntity}: {@code compileExo} stores it
- * in {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"), and {@link #mutateEntities} copies
+ * in {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"), and {@link Exercise#mutateEntities} copies
  * it onto the entities so {@code runEntity} knows what to spawn;</li>
  * <li>the part of {@link #runEntity} that is identical for all languages: binding the protocol socket, starting the
  * process, relaying its stdout/stderr, and running the command-reading loop that feeds student primitive calls to
@@ -53,18 +47,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
   protected static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm");
 
   public RemoteExecutionLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
-
-  @Override public ArrayList<Entity> mutateEntities(Exercise exo, List<Entity> olds, StudentOrCorrection whatToMutate) throws PLMCompilerException
-  {
-    List<SourceFile> sourceFiles = exo.getSourceFilesList(this);
-
-    String path = sourceFiles.get(0).meta.get(getLang().toUpperCase());
-    if (path != null)
-      for (Entity old : olds)
-        old.setScript(this, path);
-
-    return new ArrayList<>(olds);
-  }
 
   /**
    * Build the process that will run the student code, given the value {@link Entity#getScript} returned for this

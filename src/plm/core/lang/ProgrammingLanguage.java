@@ -1,7 +1,6 @@
 package plm.core.lang;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.ImageIcon;
@@ -86,7 +85,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
   public abstract void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
-  public abstract List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate) throws PLMCompilerException;
+
   /**
    * Make the entity run, according to the used universe and programming language.
    *

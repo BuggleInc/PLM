@@ -21,12 +21,6 @@ public class LangLightbot extends ProgrammingLanguage {
 
   @Override public void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException { /* Nothing to do */ }
 
-  @Override public List<Entity> mutateEntities(Exercise exercise, List<Entity> old, StudentOrCorrection whatToMutate)
-  {
-
-    return null; /* This is never called, no need to do anything here */
-  }
-
   @Override public void runEntity(Entity ent, RunOutcome progress)
   {
     try {

@@ -17,6 +17,7 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
+import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class Exercise extends Lecture {
@@ -175,15 +176,16 @@ public abstract class Exercise extends Lecture {
       }
     }
 
-    try {
       for (World current : getWorlds(kind)) {
         if (current.getEntities().isEmpty())
           throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
-        current.setEntities(lang.mutateEntities(this, current.getEntities(), whatToMutate));
+
+        List<SourceFile> sourceFiles = getSourceFilesList(lang);
+        String path                  = sourceFiles.get(0).meta.get(lang.getLang().toUpperCase());
+        if (path != null)
+          for (Entity e : current.getEntities())
+            e.setScript(lang, path);
       }
-    } catch (PLMCompilerException e) {
-      lastResult = RunOutcome.newCompilationError(e.getLocalizedMessage());
-    }
   }
 
   public Vector<World> getWorlds(WorldKind kind)
