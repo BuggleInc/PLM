@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -69,7 +70,7 @@ public class LangC extends TemplatedRemoteLang {
   {
 
     List<SourceFile> sfs = exo.getSourceFilesList(this);
-    if (sfs == null || sfs.isEmpty()) {
+    if (sfs.isEmpty()) {
       String msg = exo.getName() + ": No source to compile";
       System.err.println(msg);
       exo.lastResult = RunOutcome.newCompilationError(msg);
@@ -183,10 +184,12 @@ public class LangC extends TemplatedRemoteLang {
    * headers lists every header (by filename) that baseName's own "#include" needs to find alongside it while it gets
    * compiled in isolation.
    *
-   * Two concurrent first-uses of the same not-yet-cached object both compiling it is not a correctness problem (they
-   * would produce byte-identical output), only wasted work; the final Files.move() is atomic so neither can observe or
-   * link against a half-written object file.
+   * Two concurrent first-uses of the same not-yet-cached object are safe either way (Files.move() is atomic, so neither
+   * can observe or link against a half-written object file, and both would produce byte-identical output regardless);
+   * the per-name lock below only avoids paying for gcc twice, it isn't needed for correctness.
    */
+  private static final ConcurrentHashMap<String, Object> objectLocks = new ConcurrentHashMap<>();
+
   private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, boolean isWindows)
       throws IOException, InterruptedException, PLMCompilerException
   {
@@ -195,36 +198,38 @@ public class LangC extends TemplatedRemoteLang {
     if (Files.exists(objectFile))
       return objectFile;
 
-    Files.createDirectories(OBJECTS_DIR);
-    Path scratch = Files.createTempDirectory(OBJECTS_DIR, baseName + "-build-");
-    try {
-      for (Map.Entry<String, String> header : headers.entrySet())
-        Files.writeString(scratch.resolve(header.getKey()), header.getValue());
-      Path sourceFile = scratch.resolve(baseName + ".c");
-      Files.writeString(sourceFile, sourceContent);
+    Object lock = objectLocks.computeIfAbsent(objectFile.toString(), k -> new Object());
+    synchronized (lock) {
+      if (Files.exists(objectFile)) // another thread may have just finished compiling it while we waited for the lock
+        return objectFile;
 
-      Path tmpObject = scratch.resolve(baseName + ".o");
-      // Must share -fsanitize=address with the final link step: ASan's instrumentation needs to be consistent across
-      // every object file being linked together. -Wall/-g are harmless either way; -lm/-lpthread/-lws2_32 are link-only
-      // flags, meaningless here since we're not linking anything yet.
-      String compileCmd = "gcc -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
-      String errors     = runShellCommand(compileCmd, scratch.toFile(), isWindows);
-      if (!errors.isEmpty())
-        throw new PLMCompilerException(errors, null, null);
-
+      Files.createDirectories(OBJECTS_DIR);
+      Path scratch = Files.createTempDirectory(OBJECTS_DIR, baseName + "-build-");
       try {
+        for (Map.Entry<String, String> header : headers.entrySet())
+          Files.writeString(scratch.resolve(header.getKey()), header.getValue());
+        Path sourceFile = scratch.resolve(baseName + ".c");
+        Files.writeString(sourceFile, sourceContent);
+
+        Path tmpObject = scratch.resolve(baseName + ".o");
+        // Must share -fsanitize=address with the final link step: ASan's instrumentation needs to be consistent across
+        // every object file being linked together. -Wall/-g are harmless either way; -lm/-lpthread/-lws2_32 are link-only
+        // flags, meaningless here since we're not linking anything yet.
+        String compileCmd = "gcc -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
+        String errors     = runShellCommand(compileCmd, scratch.toFile(), isWindows);
+        if (!errors.isEmpty())
+          throw new PLMCompilerException(errors, null, null);
+
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
-      } catch (java.nio.file.FileAlreadyExistsException raceLost) {
-        // another thread published the same (byte-identical) object first; nothing to do.
-      }
-    } finally {
-      try (var walk = Files.walk(scratch)) {
-        walk.sorted(Comparator.reverseOrder()).forEach(p -> {
-          try {
-            Files.delete(p);
-          } catch (IOException ignored) {
-          }
-        });
+      } finally {
+        try (var walk = Files.walk(scratch)) {
+          walk.sorted(Comparator.reverseOrder()).forEach(p -> {
+            try {
+              Files.delete(p);
+            } catch (IOException ignored) {
+            }
+          });
+        }
       }
     }
     return objectFile;
