@@ -94,7 +94,6 @@ public class LessonRunner extends Thread {
           });
         }
       } catch (InvocationTargetException | InterruptedException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
       Game.getInstance().fireProgressSpy(exo);

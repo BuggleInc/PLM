@@ -146,6 +146,8 @@ public abstract class Exercise extends Lecture {
       res = new ArrayList<SourceFile>();
       sourceFiles.put(lang, res);
     }
+    if (res.size() > 1)
+      throw new IllegalStateException("For now, it's impossible to have more than one entity script in a given exercise.");
     return res;
   }
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }

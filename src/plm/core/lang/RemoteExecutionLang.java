@@ -58,9 +58,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
   {
     List<SourceFile> sourceFiles = exo.getSourceFilesList(this);
 
-    if (sourceFiles.size() != 1)
-      throw new IllegalStateException("ToBeYetImplemented: Cannot differentiate entity scripts for now.");
-
     String path = sourceFiles.get(0).meta.get(getLang().toUpperCase());
     if (path != null)
       for (Entity old : olds)
