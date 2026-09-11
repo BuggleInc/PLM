@@ -20,6 +20,14 @@ class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def run() {
 		// Your code here 
 		/* BEGIN SOLUTION */ 
+		def random3():Int = {
+			Math.random() match {
+				case n if (n<0.33) => return 0;
+				case n if (n<0.66) => return 1;
+				case _             => return 2;
+			}
+		}
+		
 		while (!isOverBaggle()) {
 			random3() match { 
 			     case 0 if (!isFacingWall()) => stepForward();
@@ -32,12 +40,4 @@ class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-
-	def random3():Int = {
-		Math.random() match {
-		  case n if (n<0.33) => return 0;
-		  case n if (n<0.66) => return 1;
-		  case _             => return 2;
-		}
-	}
 }
