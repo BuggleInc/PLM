@@ -160,21 +160,6 @@ public abstract class Exercise extends Lecture {
   {
     ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
 
-    Vector<World> worlds;
-    switch (kind) {
-      case INITIAL:
-        worlds = initialWorld;
-        break;
-      case CURRENT:
-        worlds = currentWorld;
-        break;
-      case ANSWER:
-        worlds = answerWorld;
-        break;
-      default:
-        throw new RuntimeException("kind is invalid: " + kind);
-    }
-
     /* Sanity check for broken lessons: the entity name must be a valid Java identifier */
     if (Game.getInstance().getProgrammingLanguage().isJava()) {
       String[] forbidden = new String[] {"'", "\""};
@@ -189,7 +174,7 @@ public abstract class Exercise extends Lecture {
     }
 
     try {
-      for (World current : worlds) {
+      for (World current : getWorlds(kind)) {
         if (current.getEntities().isEmpty())
           throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
         current.setEntities(lang.mutateEntities(this, current.getEntities(), whatToMutate));
