@@ -86,11 +86,11 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    */
   protected static String getRemote(String code)
   {
-    if (code.contains("plm.test.simple"))
+    if (code.contains("setObjectif") || code.contains("RemoteSimple"))
       return "RemoteSimple";
     if (code.contains(".bat."))
       return "RemoteBat";
-    if (code.contains(".cons."))
+    if (code.contains(".cons.") || code.contains("#include \"universe/RecList.h"))
       return "RemoteCons";
     if (code.contains("Buggle"))
       return "RemoteBuggle";
@@ -99,7 +99,7 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
     if (code.contains("Turtle"))
       return "RemoteTurtle";
     if (code.contains("Flag"))
-      return "RemoteFlag";
+      return "RemoteDutchFlag";
     if (code.contains("Baseball"))
       return "RemoteBaseball";
     if (code.contains("Pancake"))
