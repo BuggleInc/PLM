@@ -78,7 +78,8 @@ public class PrimitiveRegistration {
 
   public static Map<Integer, PrimitiveMethod> getMaximalPrimitiveForEntity(Class<? extends Entity> entity)
   {
-    Set<Class<? extends Entity>> subTypesOf                        = getSubTypesOf(entity);
+    Set<Class<? extends Entity>> subTypesOf = getSubTypesOf(entity);
+    subTypesOf.add(entity); // For SimpleExerciseEntity, the entity itself carries @EntityPrimitives directly, not in a subclass
     List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass = subTypesOf.stream().flatMap(clazz -> getAllPrimitivesClass(clazz).stream()).toList();
 
     return getPrimitiveForEntity(allPrimitivesClass);

@@ -3,7 +3,7 @@ package plm.test.simple.test;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 
-public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
+public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   public PythonSimpleExerciseTest() throws BrokenProgrammingLanguageException { super(Game.getInstance().programmingLanguageManager.PYTHON); }
 
@@ -15,7 +15,7 @@ public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
   {
     return "def run():\n"
         + "  truc = None\n"
-        + "  print truc.toto";
+        + "  print(truc.toto)";
   }
 
   @Override public String generateExceptionRaisingCode()
@@ -28,20 +28,20 @@ public class PythonSimpleExerciseTest extends ScriptingSimpleExerciseTest {
   {
     return "def run():\n"
         + "  tab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n"
-        + "  print tab[42]";
+        + "  print(tab[42])";
   }
 
   @Override public String generateWrongCode()
   {
     return "def run():\n"
-        + "  w.setObjectif(False)\n";
+        + "  setObjectif(False)\n";
   }
 
   @Override public String generateSolutionFollowedByError()
   {
     return "def run():\n"
-        + "  w.setObjectif(False)\n"
+        + "  setObjectif(False)\n"
         + "  tab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n"
-        + "  print tab[42]";
+        + "  print(tab[42])";
   }
 }

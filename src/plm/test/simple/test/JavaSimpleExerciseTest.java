@@ -3,7 +3,7 @@ package plm.test.simple.test;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 
-public class JavaSimpleExerciseTest extends JVMCompiledSimpleExerciseTest {
+public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   public JavaSimpleExerciseTest() throws BrokenProgrammingLanguageException { super(Game.getInstance().programmingLanguageManager.JAVA); }
 

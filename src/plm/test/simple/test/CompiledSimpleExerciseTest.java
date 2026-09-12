@@ -11,9 +11,12 @@ import plm.core.model.lesson.RunOutcome;
 import plm.universe.Entity;
 import plm.universe.World;
 
-public abstract class JVMCompiledSimpleExerciseTest extends SimpleExerciseTest {
+/**
+ * Somewhat misnamed class that factorize some code between the tests of this directory.
+ */
+public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
-  public JVMCompiledSimpleExerciseTest(ProgrammingLanguage pl) throws BrokenProgrammingLanguageException { super(pl); }
+  public CompiledSimpleExerciseTest(ProgrammingLanguage pl) throws BrokenProgrammingLanguageException { super(pl); }
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException
   {
