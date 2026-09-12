@@ -587,7 +587,8 @@ public class Game implements IWorldView {
   public void removeSessionKit()
   {
     sessionKit = null;
-    System.out.println("Disabling the session kit on disk.");
+    if (!isBatchExecution())
+      System.out.println("Disabling the session kit on disk.");
   }
 
   public static void loadProperties()

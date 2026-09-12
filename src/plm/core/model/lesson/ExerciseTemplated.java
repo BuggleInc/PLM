@@ -318,7 +318,7 @@ public abstract class ExerciseTemplated extends Exercise {
           newSourceFromFile(lang, tabName, nameOfCorrectionEntity());
           super.addProgLanguage(lang);
           foundALanguage = true;
-          if (Game.getInstance().isDebugEnabled())
+          if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution())
             System.out.println("Found suitable templating entity " + nameOfCorrectionEntity() + " in " + lang);
 
         } catch (NoSuchEntityException e) {
