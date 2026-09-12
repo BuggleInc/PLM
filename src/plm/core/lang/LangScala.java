@@ -556,8 +556,6 @@ public class LangScala extends JvmTemplatedLang {
       return "def " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + "): " + outputString;
     }
 
-    String getArgumentExpression(PrimitiveParameter parameter) { return parameter.name(); }
-
     String getImplementation(PrimitiveMethod method)
     {
       String prototype = getPrototype(method);
@@ -565,9 +563,9 @@ public class LangScala extends JvmTemplatedLang {
       int id      = method.id();
       String name = method.name();
 
-      String command =
-          "\tsendCommand(\"" + id + "\", \"" + name + "\"" +
-          method.parameters().stream().map(this::getArgumentExpression).map(s -> ", " + s + ".asInstanceOf[Object]").collect(Collectors.joining()) + ")";
+      String command = "\tsendCommand(\"" + id + "\", \"" + name + "\"" +
+                       method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s + ".asInstanceOf[Object]").collect(Collectors.joining()) +
+                       ")";
 
       String returning = method.hasReturn() ? "\t" + getReturning(method.output()) : "";
 

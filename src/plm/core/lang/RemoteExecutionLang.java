@@ -194,7 +194,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
               parseError.printStackTrace();
               ioe.printStackTrace();
             }
-            throw new RuntimeException("Parse error while reading the command: " + sb.toString(), parseError);
+            throw new RuntimeException("Error while reading the command: " + sb.toString(), parseError);
           }
         }
       };

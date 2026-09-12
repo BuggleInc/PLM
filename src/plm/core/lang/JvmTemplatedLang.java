@@ -65,7 +65,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /**
    * Shared skeleton of Java/Scala's ExternalPrimitiveLanguage generator: computing the type declarations and method
    * implementations, and assembling them into a file, is identical between the two -- only the exact syntax produced
-   * (getLanguageType, getParameter, getPrototype, getArgumentExpression, getImplementation, the file's header/wrapper
+   * (getLanguageType, getParameter, getPrototype, getImplementation, the file's header/wrapper
    * and extension) differs, and is left to subclasses. getReturning() happens to be syntactically identical in both
    * (same getAnswerXxx() wire-side method names), so it is implemented once here.
    */
@@ -75,7 +75,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     abstract String getTypeDeclaration(Class<?> type);
     abstract String getParameter(PrimitiveParameter parameter);
     abstract String getPrototype(PrimitiveMethod method);
-    abstract String getArgumentExpression(PrimitiveParameter parameter);
     abstract String getImplementation(PrimitiveMethod method);
 
     /** File extension including the dot, e.g. ".java" or ".scala". */

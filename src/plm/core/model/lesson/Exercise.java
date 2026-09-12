@@ -131,7 +131,7 @@ public abstract class Exercise extends Lecture {
   /**
    * Variant of executeAll() for the rare case where what gets compiled and what gets mutated differ -- e.g.
    * ExoTest.testCorrectionEntity() compiles the teacher's correction but mutates to the student-facing compiled
-   * entity for JVM-compiled languages. Prefer the simpler 3-arg executeAll() whenever they match.
+   * entity. Prefer the simpler 3-arg executeAll() whenever they match.
    */
   public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate) throws PLMCompilerException
   {
