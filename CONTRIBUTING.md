@@ -11,6 +11,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemoteLanguage
 TODO: kill mutateEntities()
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compileAll()
+TODO: Port the SimpleExercise tests to LangC
 
 # Architecture
 
