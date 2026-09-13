@@ -72,7 +72,7 @@ public class HelloTurmiteEntity extends TurmiteEntity {
     Color[] colors;
     int[][][] rule;
 
-    rule = (int[][][])toIntArray(deserialize(getParamSerialized(1)));
+    rule = (int[][][])toIntArray(deserialize(getParamString(1)));
 
     colors = new Color[rule.length];
     for (int i = 0; i < rule.length; i++)
