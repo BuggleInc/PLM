@@ -344,19 +344,19 @@ public abstract class ExerciseTemplated extends Exercise {
 
   protected void computeAnswer()
   {
-    final String id                   = this.getId();
-    Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-      public void uncaughtException(Thread th, Throwable ex)
-      {
-        if (ex instanceof PLMEntityNotFound) {
-          getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
-        }
-        System.err.println("Uncaught exception while computing answer: " + ex);
-        ex.printStackTrace();
-      }
-    };
-    Thread t = new Thread() {
+    final String id = this.getId();
+    Runnable task   = new Runnable() {
       @Override public void run()
+      {
+        try {
+          doComputeAnswer();
+        } catch (PLMEntityNotFound ex) {
+          getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
+          throw ex; // Game.waitInitThreads() logs it (via the Future's ExecutionException)
+        }
+      }
+
+      private void doComputeAnswer()
       {
         Game.getInstance().statusArgAdd(getClass().getSimpleName());
         boolean allFound = true;
@@ -435,9 +435,7 @@ public abstract class ExerciseTemplated extends Exercise {
         Game.getInstance().statusArgRemove(getClass().getSimpleName());
       }
     };
-    t.setUncaughtExceptionHandler(h);
-    Game.addInitThread(t);
-    t.start();
+    Game.addInitThread(task);
   }
 
   @Override public void run(List<Thread> runnerVect)

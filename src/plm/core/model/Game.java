@@ -21,6 +21,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Vector;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import javax.swing.JOptionPane;
@@ -108,8 +112,7 @@ public class Game implements IWorldView {
   private World answerOfSelectedWorld;
   private World initialOfSelectedWorld;
   private Entity selectedEntity;
-  private List<Thread> demoRunners        = new ArrayList<Thread>();
-  private static List<Thread> initRunners = new ArrayList<Thread>();
+  private List<Thread> demoRunners = new ArrayList<Thread>();
 
   private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -280,11 +283,24 @@ public class Game implements IWorldView {
     Game.getInstance().switchLesson("lessons." + lessonPackage, false);
   } // end method
 
-  public static void addInitThread(Thread t) { initRunners.add(t); }
+  /* Bounded pool for the per-exercise "compute the answer" tasks fired at lesson-load time.
+   * At most Cores * 1.5 (rounded up) threads are run concurrently to avoid overloading the CPU.
+   */
+  private static final ExecutorService initExecutor = Executors.newFixedThreadPool((int)Math.ceil(Runtime.getRuntime().availableProcessors() * 1.5));
+  private static List<Future<?>> initRunners        = new ArrayList<Future<?>>();
+
+  public static void addInitThread(Runnable task) { initRunners.add(initExecutor.submit(task)); }
   public static void waitInitThreads() throws InterruptedException
   {
-    for (Thread t : initRunners)
-      t.join();
+    for (Future<?> f : initRunners) {
+      try {
+        f.get();
+      } catch (ExecutionException e) {
+        System.err.println("Uncaught exception while computing answer: " + e.getCause());
+        e.getCause().printStackTrace();
+      }
+    }
+    initRunners.clear();
   }
 
   public Collection<Lesson> getLessons() { return this.lessons.values(); }
