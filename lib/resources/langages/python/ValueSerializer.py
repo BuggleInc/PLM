@@ -95,12 +95,16 @@ def _type_tag(v):
   raise ValueError("Unknown serializable type: %r" % (type(v),))
 
 
-def serialize(o):
+# The optionnal parameter arrayelem_tag is useful when serializing lists that can be empty.
+# By default, the type of the first element is used to type the whole array, but this won't work with an empty list.
+# For example, use arrayelem_tag="i" if you know that your list should contain integers when it's not empty
+def serialize(o, arrayelem_tag=""):
   if o is None:
     return "Z"
 
   if isinstance(o, list):
-    tag = "" if len(o) == 0 else _type_tag(o[0])
+    assert len(o) == 0 or arrayelem_tag == "" or arrayelem_tag == _type_tag(o[0]), "arrayelem_tag %r inconsistent with actual element type %r" % (arrayelem_tag, _type_tag(o[0]))
+    tag = arrayelem_tag if len(o) == 0 else _type_tag(o[0])
     return tag + "[" + str(len(o)) + "".join(":" + serialize(v) for v in o) + "]"
 
   if isinstance(o, str):
