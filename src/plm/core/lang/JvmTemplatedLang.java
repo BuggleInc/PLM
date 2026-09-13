@@ -36,7 +36,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   protected static void runJarTool(File workDir, File jarFile, String mainClassDotPath, Set<String> classFiles, DiagnosticCollector<JavaFileObject> diagnostic)
       throws PLMCompilerException
   {
-    File manifestFile = new File(workDir, "MANIFEST.MF");
+    File manifestFile = new File(jarFile.getParentFile(), "MANIFEST.MF");
     try {
       Files.writeString(manifestFile.toPath(), "Main-Class: " + mainClassDotPath + "\n");
 
