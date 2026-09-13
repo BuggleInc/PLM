@@ -1,4 +1,4 @@
-#include "../../../../lib/resources/langages/c/include/RemoteBuggle.h"
+#include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 void run(){
 	/* BEGIN TEMPLATE */

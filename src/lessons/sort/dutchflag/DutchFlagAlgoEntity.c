@@ -1,4 +1,4 @@
-//RemoteFlag
+#include "../../../../target/classes/resources/langages/c/RemoteDutchFlag.h"
 
 #define BLUE  0
 #define WHITE  1

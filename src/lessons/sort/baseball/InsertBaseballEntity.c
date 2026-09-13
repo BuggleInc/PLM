@@ -1,4 +1,4 @@
-//RemoteBaseball
+#include "../../../../target/classes/resources/langages/c/RemoteBaseball.h"
 
 void out(char* msg);
 int getHoleInsert();

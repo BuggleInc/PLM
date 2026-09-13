@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 void bigSquare();
 void squareB(Color c);

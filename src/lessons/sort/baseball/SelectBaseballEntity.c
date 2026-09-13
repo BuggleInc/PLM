@@ -1,4 +1,4 @@
-//RemoteBaseball
+#include "../../../../target/classes/resources/langages/c/RemoteBaseball.h"
 
 int findPlayerPos(int base, int color);
 int findPlayerBase(int start, int color);

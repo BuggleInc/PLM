@@ -1,5 +1,4 @@
-//RemoteBuggle
-
+#include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 void stepHandOnWall();
 int isChosenDirectionFree();

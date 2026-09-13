@@ -1,5 +1,4 @@
-//RemoteTurtle
-
+#include "../../../../../target/classes/resources/langages/c/RemoteTurtle.h"
 
 Color colors[] =  {cyan,blue,magenta,orange,yellow,green,lightGray,gray,darkGray,black,red};
 int colorsLength = 11;

@@ -1,5 +1,4 @@
-//RemoteTurtle
-
+#include "../../../target/classes/resources/langages/c/RemoteTurtle.h"
 
 void branch(int size);
 

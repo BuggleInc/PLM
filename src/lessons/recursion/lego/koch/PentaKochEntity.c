@@ -1,4 +1,4 @@
-//RemoteTurtle
+#include "../../../../../target/classes/resources/langages/c/RemoteTurtle.h"
 
 void drawHint();
 void squareSide(int levels, double length);

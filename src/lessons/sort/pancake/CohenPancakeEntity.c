@@ -1,4 +1,4 @@
-//RemotePancake
+#include "../../../../target/classes/resources/langages/c/RemotePancake.h"
 
 int blockLength();
 int isLast(int pos);

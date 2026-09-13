@@ -1,4 +1,4 @@
-//RemoteSort
+#include "../../../../../target/classes/resources/langages/c/RemoteSort.h"
 
 /* BEGIN TEMPLATE */
 void cocktailSort() {

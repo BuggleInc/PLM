@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
 

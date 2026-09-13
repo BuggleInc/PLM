@@ -1,4 +1,4 @@
-//RemoteHanoi
+#include "../../../../target/classes/resources/langages/c/RemoteHanoi.h"
 
 void solve(int src, int dst, int other);
 void solveRec(int src, int dst, int other, int height) ;

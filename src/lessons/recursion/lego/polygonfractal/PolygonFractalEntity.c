@@ -1,5 +1,4 @@
-//RemoteTurtle
-
+#include "../../../../../target/classes/resources/langages/c/RemoteTurtle.h"
 
 /* BEGIN TEMPLATE */
 void polygonFractal (int levels, int sides, double length, double shrink) {

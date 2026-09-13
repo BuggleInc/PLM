@@ -1,4 +1,4 @@
-#include "../../../../lib/resources/langages/c/include/RemoteBuggle.h"
+#include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 Color colors[]            = {blue, cyan, green, yellow, orange, red, magenta, pink};
 int inTeerNal_Steep_Count = -3;

@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 /* BEGIN TEMPLATE */
 int isFacingTrail(Color c){

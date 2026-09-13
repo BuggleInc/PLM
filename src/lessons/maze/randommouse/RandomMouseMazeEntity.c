@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 int random3() {
 	return rand()%3;

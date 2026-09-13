@@ -1,4 +1,4 @@
-//RemoteTurtle
+#include "../../../../../target/classes/resources/langages/c/RemoteTurtle.h"
 
 /* BEGIN TEMPLATE */
 void dragon(int order, double x, double y, double z, double t) {

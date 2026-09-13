@@ -1,4 +1,4 @@
-//RemoteBuggle
+#include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 int hasRightWall(int x, int y);
 int hasBottomWall(int x, int y);
