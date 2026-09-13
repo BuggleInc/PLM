@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -27,9 +26,10 @@ import plm.universe.Point;
  * comment there): an external "python3" process is spawned per run, talking back to CommandExecutor over a UNIX domain
  * socket -- same protocol as Java/Scala/C.
  *
- * Not yet factored with LangJava (structure kept close on purpose to make that factoring easy later). Substantially
- * simpler than LangJava/LangScala in one respect: Python needs no compilation step at all (just write the .py files and
- * spawn "python3 Main.py <socket>"), and no import-rewriting for its copied support files (ValueSerializer.py, RecList.py):
+ * The per-compile workspace name (packageNameForExercise(), shared with Java/Scala/C in TemplatedRemoteLang) is
+ * factored; the rest of the pipeline isn't yet. Substantially simpler than LangJava/LangScala in one respect: Python
+ * needs no compilation step at all (just write the .py files and spawn "python3 Main.py <socket>"), and no
+ * import-rewriting for its copied support files (ValueSerializer.py, RecList.py):
  * Python resolves "from X import *" by file presence in the working directory, not by a package-qualified name the way
  * Java/Scala do, so there is no analogue of the ClassCastException-class bug LangJava/LangScala had to work around there.
  */
@@ -45,7 +45,6 @@ public class LangPython extends TemplatedRemoteLang {
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
-  private static final AtomicInteger workspaceSuffix = new AtomicInteger();
   File tempFolder                                    = TMP_ROOT.resolve("python").toFile();
 
   public LangPython() { super("Python", "py", ResourcesCache.getIcon("img/lang_python.png")); }
@@ -214,12 +213,9 @@ public class LangPython extends TemplatedRemoteLang {
 
   public String getRemotePythonFile(String remoteName) { return loadRemoteFile(remoteName, "python", ".py"); }
 
-  protected String packageName() { return "plm_python_run" + workspaceSuffix.get(); }
-
   @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
-    workspaceSuffix.incrementAndGet();
-    String runName = packageName();
+    String runName = packageNameForExercise(exo, whatToCompile);
 
     Map<String, String> runtimePatterns = new TreeMap<String, String>();
 

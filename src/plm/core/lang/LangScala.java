@@ -340,9 +340,7 @@ public class LangScala extends JvmTemplatedLang {
 
   @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
-    /* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
-    packageNameSuffix++;
-    String packageNameCache = packageName();
+    String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
     Map<String, String> runtimePatterns = new TreeMap<String, String>();
     runtimePatterns.put("\\$package", "package " + packageNameCache + ";");
