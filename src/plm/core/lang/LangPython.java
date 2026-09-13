@@ -200,7 +200,7 @@ public class LangPython extends TemplatedRemoteLang {
     return section.toString();
   }
 
-  protected static String getRemote(String code)
+  @Override protected String getRemote(String code)
   {
     // Python exercises must declare their universe explicitly with a real "from RemoteXxx import *" line
     Matcher explicit = Pattern.compile("(?m)^from (Remote\\w+) import \\*").matcher(code);

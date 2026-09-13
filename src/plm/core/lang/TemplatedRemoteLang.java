@@ -85,7 +85,7 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    * Guess which RemoteXxx universe an exercise belongs to. Shared by Java, Scala and C.
    * Python instead requires an explicit "from RemoteXxx import *" line (see its own getRemote()).
    */
-  protected static String getRemote(String code)
+  protected String getRemote(String code)
   {
     if (code.contains("setObjectif") || code.contains("RemoteSimple"))
       return "RemoteSimple";
@@ -120,8 +120,7 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    * to a compilation error) when {@code code}'s universe couldn't be guessed.
    * {@code diagnostic} may be null (Python and C have no javac-style DiagnosticCollector to attach).
    */
-  protected static String getRemoteOrFail(String code, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic)
-      throws PLMCompilerException
+  protected String getRemoteOrFail(String code, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
   {
     String remote = getRemote(code);
     if (remote == null) {
