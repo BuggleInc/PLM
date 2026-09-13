@@ -89,7 +89,14 @@ public class LanderWorld extends World {
   /** Returns true if the lander landed successfully. */
   @Override public boolean winning(World target) { return state == State.LANDED; }
 
-  @Override public String diffTo(World world) { return null; }
+  @Override public String diffTo(World w)
+  {
+    LanderWorld other = (LanderWorld)w;
+    if (other.state == State.LANDED)
+      return "Landed successfully.";
+    return "Did not land (" + (other.state == State.CRASHED ? "crashed" : other.state.toString()) + "): rocket ended up at (" + other.position.x() + ", " +
+        other.position.y() + ")";
+  }
 
   @Override public void reset(World initialWorld)
   {
