@@ -119,12 +119,35 @@ public class LangScala extends JvmTemplatedLang {
   }
 
   /**
+   * A correction is allowed to omit '/* BEGIN TEMPLATE *\/' / '/* END TEMPLATE *\/' entirely: that legally means an
+   * empty template, as if those markers sat immediately before '/* BEGIN SOLUTION *\/' and immediately after
+   * '/* END SOLUTION *\/'. Both validateTemplateWellFormedness() and getCorrectedTemplate() need the exact same
+   * [begin, endExclusive) span, whichever pair of markers it actually comes from -- factored here once instead of
+   * duplicated in both.
+   *
+   * @return {beginTemplateIndexRaw, endTemplateIndex, endTemplateIndexEnd}, or null if neither marker pair is present.
+   */
+  private static int[] effectiveTemplateSpan(String correction)
+  {
+    String begin = correction.contains("/* BEGIN TEMPLATE */") ? "/* BEGIN TEMPLATE */" : "/* BEGIN SOLUTION */";
+    String end   = correction.contains("/* BEGIN TEMPLATE */") ? "/* END TEMPLATE */" : "/* END SOLUTION */";
+    if (!correction.contains(begin))
+      return null;
+
+    int beginTemplateIndexRaw = correction.indexOf(begin);
+    int endTemplateIndex      = correction.indexOf(end);
+    int endTemplateIndexEnd   = endTemplateIndex + end.length();
+    return new int[] {beginTemplateIndexRaw, endTemplateIndex, endTemplateIndexEnd};
+  }
+
+  /**
    * Refuses to guess when a correction's markup is ambiguous or incomplete -- picking a plausible-looking template shape
-   * anyway is exactly what silently duplicated a primitive call in welcome.Environment earlier this session (no BEGIN
-   * TEMPLATE markers at all, so the "disjoint" fallback fired even though the whole solution was already nested inside
-   * an existing run()). Every check here exists because some real correction file, if not rejected, would make
-   * getCorrectedTemplate() produce code that compiles but behaves wrong, not code that fails to compile -- the worse
-   * failure mode, since nothing points the author at the actual problem.
+   * anyway is exactly what silently duplicated a primitive call in welcome.Environment earlier this session (BEGIN
+   * TEMPLATE overlapping run() in a way that doesn't match any of the 3 supported cases, so the "disjoint" fallback
+   * fired even though the whole solution was already nested inside an existing run()). Every check here exists because
+   * some real correction file, if not rejected, would make getCorrectedTemplate() produce code that compiles but
+   * behaves wrong, not code that fails to compile -- the worse failure mode, since nothing points the author at the
+   * actual problem. A missing BEGIN/END TEMPLATE pair is not such a case: see effectiveTemplateSpan().
    */
   private void validateTemplateWellFormedness(String correction) throws PLMCompilerException
   {
@@ -139,16 +162,14 @@ public class LangScala extends JvmTemplatedLang {
     checkMarkerPair(correction, "/* BEGIN TEMPLATE */", "/* END TEMPLATE */");
     checkMarkerPair(correction, "/* BEGIN SOLUTION */", "/* END SOLUTION */");
 
-    boolean hasTemplateMarkers = correction.contains("/* BEGIN TEMPLATE */");
-    if (!hasTemplateMarkers) {
-      throw new PLMCompilerException("No '/* BEGIN TEMPLATE */' / '/* END TEMPLATE */' markers found, although run() exists. Add them explicitly around"
-                                     + " the templated portion -- e.g. right after \"def run() {\" and right before its closing \"}\" if the whole run()"
-                                     + " body is templated, or around a separate method if run() itself should stay untouched.");
+    int[] span = effectiveTemplateSpan(correction);
+    if (span == null) {
+      throw new PLMCompilerException("Neither '/* BEGIN TEMPLATE */' nor '/* BEGIN SOLUTION */' markers found, although run() exists. Add at least"
+                                     + " '/* BEGIN SOLUTION */' / '/* END SOLUTION */' around the templated portion -- e.g. right after"
+                                     + " \"def run() {\" and right before its closing \"}\" if the whole run() body is templated, or around a"
+                                     + " separate method if run() itself should stay untouched.");
     }
-
-    int beginTemplateIndexRaw = correction.indexOf("/* BEGIN TEMPLATE */");
-    int endTemplateIndex      = correction.indexOf("/* END TEMPLATE */");
-    int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
+    int beginTemplateIndexRaw = span[0], endTemplateIndex = span[1], endTemplateIndexEnd = span[2];
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
     int[] runSpan             = extractRunSpan(correction, RUN_KEYWORD);
 
@@ -193,9 +214,8 @@ public class LangScala extends JvmTemplatedLang {
   public @NonNull String getCorrectedTemplate(String correction) throws PLMCompilerException
   {
     validateTemplateWellFormedness(correction);
-    int beginTemplateIndexRaw = correction.indexOf("/* BEGIN TEMPLATE */");
-    int endTemplateIndex      = correction.indexOf("/* END TEMPLATE */");
-    int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
+    int[] span                = effectiveTemplateSpan(correction);
+    int beginTemplateIndexRaw = span[0], endTemplateIndex = span[1], endTemplateIndexEnd = span[2];
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
 
     int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);

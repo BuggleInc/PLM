@@ -26,8 +26,11 @@ public class LangScalaTemplateTest {
 
   @Test public void testMultipleRun() { assertRejected("class X { def run() { } def run() { } }", "expected exactly one"); }
 
-  /** The exact welcome.Environment shape that motivated this whole validation pass -- see the class javadoc. */
-  @Test public void testNoTemplateMarkersRegression()
+  /**
+   * The exact welcome.Environment shape: no BEGIN/END TEMPLATE at all, just BEGIN/END SOLUTION inside run(). Legal:
+   *  it means an empty template, as if BEGIN/END TEMPLATE sat immediately around BEGIN/END SOLUTION.
+   */
+  @Test public void testNoTemplateMarkersIsAnEmptyTemplate() throws PLMCompilerException
   {
     String correction = "class EnvironmentEntity extends SimpleBuggle {\n"
                         + "\tprotected override def run() { \n"
@@ -36,7 +39,7 @@ public class LangScalaTemplateTest {
                         + "\t\t/* END SOLUTION */\n"
                         + "\t}\n"
                         + "}";
-    assertRejected(correction, "No '/* BEGIN TEMPLATE */'");
+    assertAccepted(correction, "$package\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}");
   }
 
   @Test public void testTemplateBeginWithoutEnd() { assertRejected("def run() { /* BEGIN TEMPLATE */ foo() }", "must be paired one-to-one"); }
