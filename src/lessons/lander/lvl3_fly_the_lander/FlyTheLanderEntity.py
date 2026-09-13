@@ -11,9 +11,8 @@ def run():
         for point in getGround():
             if (point != lastPoint):
                 if lastPoint.y == point.y:
-                    return (lastPoint.x,point.x)
+                    startPos, endPos = lastPoint.x, point.x
             lastPoint = point
-        return (0, 0)
         # END SOLUTION
     # END TEMPLATE
     
