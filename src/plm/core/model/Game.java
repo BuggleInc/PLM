@@ -988,7 +988,7 @@ public class Game implements IWorldView {
       for (int i = 0; i < ex.getSourceFileCount(lang); i++) {
         SourceFile sf = ex.getSourceFile(lang, i);
         if (sf instanceof SourceFileRevertable)
-          ((SourceFileRevertable)sf).revert(getProgrammingLanguage());
+          ((SourceFileRevertable)sf).revert(lang);
       }
     for (ProgrammingLanguage pl : programmingLanguageManager.langs)
       Game.getInstance().studentWork.setPassed(ex, pl, false);
