@@ -9,6 +9,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.session.ISourceFileListener;
 import plm.core.model.session.SourceFile;
 
@@ -21,6 +22,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
   private Document document;
   private SourceFile sourceFile;
+  private ProgrammingLanguage lang;
   private EditorKit editorKit;
   private boolean propagationInProgress = false, pendingPropagDocToSource = false, pendingPropagSourceToDoc = false;
 
@@ -41,6 +43,8 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
   public void setSourceFile(SourceFile srcFile) { this.sourceFile = srcFile; }
 
+  public void setProgrammingLanguage(ProgrammingLanguage lang) { this.lang = lang; }
+
   private void copyDocumentContentToSourceFileBody()
   {
     if (this.propagationInProgress) {
@@ -50,7 +54,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
     this.propagationInProgress = true;
     try {
-      this.sourceFile.setBody(this.document.getText(0, this.document.getLength()));
+      this.sourceFile.setBody(this.document.getText(0, this.document.getLength()), this.lang);
     } catch (BadLocationException e1) {
       e1.printStackTrace();
     } finally {

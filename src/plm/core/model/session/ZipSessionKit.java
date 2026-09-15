@@ -306,7 +306,7 @@ public class ZipSessionKit implements ISessionKit {
                     b.append("\n");
                   }
 
-                  srcFile.setBody(b.toString());
+                  srcFile.setBody(b.toString(), lang);
                 } catch (IOException e) {
                   e.printStackTrace();
                 } finally {

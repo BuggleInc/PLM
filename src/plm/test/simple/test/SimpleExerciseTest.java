@@ -77,7 +77,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException
   {
-    exo.getSourceFile(pl, 0).setBody(generateOutOfBoundsErrorCode());
+    exo.getSourceFile(pl, 0).setBody(generateOutOfBoundsErrorCode(), pl);
     exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
@@ -93,7 +93,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException
   {
-    exo.getSourceFile(pl, 0).setBody(generateNullPointerErrorCode());
+    exo.getSourceFile(pl, 0).setBody(generateNullPointerErrorCode(), pl);
     exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
@@ -108,7 +108,7 @@ public abstract class SimpleExerciseTest {
   }
   @Test public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException
   {
-    exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode());
+    exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode(), pl);
     exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
@@ -124,7 +124,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testWrongCodeShouldNotPass() throws PLMCompilerException
   {
-    exo.getSourceFile(pl, 0).setBody(generateWrongCode());
+    exo.getSourceFile(pl, 0).setBody(generateWrongCode(), pl);
     exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
@@ -140,7 +140,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException
   {
-    exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError());
+    exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError(), pl);
     exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {

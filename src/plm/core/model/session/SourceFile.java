@@ -34,9 +34,9 @@ public class SourceFile {
 
   public String getBody() { return this.body; }
 
-  public void setBody(String text)
+  public void setBody(String text, ProgrammingLanguage lang)
   {
-    if (Game.getInstance().getProgrammingLanguage().isPython())
+    if (lang.isPython())
       body = text.replaceAll("\\t", "    ");
     else
       body = text;

@@ -188,7 +188,7 @@ public class GitSessionKit implements ISessionKit {
                 b.append("\n");
               }
             }
-            srcFile.setBody(b.toString());
+            srcFile.setBody(b.toString(), lang);
           } catch (FileNotFoundException fnf) {
             /* that's fine, we never did that exercise */
           } catch (IOException ex) {

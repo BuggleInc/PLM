@@ -56,6 +56,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     /* Connect the synchronization element to the source file */
     srcFile.setListener(sync);
     sync.setSourceFile(srcFile);
+    sync.setProgrammingLanguage(lang);
 
     codeEditor.setText(srcFile.getBody());
     codeEditor.discardAllEdits();
