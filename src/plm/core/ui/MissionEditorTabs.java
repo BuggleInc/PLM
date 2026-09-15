@@ -54,8 +54,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
             }
             this.tipsDialog.setText("<html>\n" + Lecture.HTMLTipHeader + "<body>\n" + currentExercise.getTip(desc) + "</body>\n</html>\n");
             this.tipsDialog.setVisible(true);
-            String mission = currentExercise.getMission(Game.getInstance().getProgrammingLanguage());
-            Game.getInstance().fireReadTipSpy(desc, mission);
+            ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
+            String mission           = currentExercise.getMission(lang);
+            Game.getInstance().fireReadTipSpy(desc, mission, lang);
           }
           if (desc.startsWith("plm://")) {
             // Load a regular lesson

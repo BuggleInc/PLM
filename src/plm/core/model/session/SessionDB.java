@@ -22,9 +22,6 @@ public class SessionDB {
   {
     if (exo == null)
       exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo);
     if (bodyE == null) {
       bodyE = new HashMap<ProgrammingLanguage, Map<String, String>>();
@@ -42,9 +39,6 @@ public class SessionDB {
   {
     if (exo == null)
       exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo.getId());
     if (bodyE == null)
       return null;
@@ -58,9 +52,6 @@ public class SessionDB {
   {
     if (exo == null)
       exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     if (getPassed(exo, lang) == _passed)
       return;
 
@@ -79,9 +70,6 @@ public class SessionDB {
   {
     if (exo == null)
       exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Boolean> passedE = passed.get(exo.getId());
     if (passedE == null)
       return false;
@@ -95,9 +83,6 @@ public class SessionDB {
   {
     if (lesson == null)
       lesson = Game.getInstance().getCurrentLesson().getId();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Integer> passedL = possibleExercises.get(lesson);
     if (passedL == null)
       return 0;
@@ -111,9 +96,6 @@ public class SessionDB {
   {
     if (lesson == null)
       lesson = Game.getInstance().getCurrentLesson().getId();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
     if (passedL == null) {
       passedL = new HashMap<ProgrammingLanguage, Integer>();
@@ -126,9 +108,6 @@ public class SessionDB {
   {
     if (lesson == null)
       lesson = Game.getInstance().getCurrentLesson().getId();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Integer> possibleL = possibleExercises.get(lesson);
     if (possibleL == null) {
       possibleL = new HashMap<ProgrammingLanguage, Integer>();
@@ -141,9 +120,6 @@ public class SessionDB {
   {
     if (lesson == null)
       lesson = Game.getInstance().getCurrentLesson().getId();
-    if (lang == null)
-      lang = Game.getInstance().getProgrammingLanguage();
-
     Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
     if (passedL == null)
       return 0;

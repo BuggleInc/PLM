@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 
@@ -69,7 +70,7 @@ public class LocalFileSpy implements ProgressSpyListener {
     // TODO
   }
 
-  @Override public void readTip(String id, String mission)
+  @Override public void readTip(String id, String mission, ProgrammingLanguage lang)
   {
     // TODO Auto-generated method stub
   }

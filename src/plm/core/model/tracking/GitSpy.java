@@ -350,7 +350,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     Exercise lastExo    = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
     RunOutcome execProg = lastExo.lastResult;
     String exoCode      = lastExo.getSourceFile(execProg.language, 0).getBody();
-    String ext          = "." + Game.getInstance().getProgrammingLanguage().getExt();
+    String ext          = "." + execProg.language.getExt();
     File exoFile        = new File(repoDir, lastExo.getId() + ext + ".code");
 
     try {
@@ -379,10 +379,10 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     }
   }
 
-  @Override @SuppressWarnings("unchecked") public void readTip(String id, String mission)
+  @Override @SuppressWarnings("unchecked") public void readTip(String id, String mission, ProgrammingLanguage lang)
   {
     Exercise lastExo = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
-    String ext       = "." + Game.getInstance().getProgrammingLanguage().getExt();
+    String ext       = "." + lang.getExt();
     File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
 
     try {

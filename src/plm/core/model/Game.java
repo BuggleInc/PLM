@@ -764,10 +764,10 @@ public class Game implements IWorldView {
     }
   }
 
-  public void fireReadTipSpy(String id, String mission)
+  public void fireReadTipSpy(String id, String mission, ProgrammingLanguage lang)
   {
     for (ProgressSpyListener l : this.progressSpyListeners) {
-      l.readTip(id, mission);
+      l.readTip(id, mission, lang);
     }
   }
 

@@ -77,7 +77,7 @@ public class LessonRunner extends Thread {
     if (!game.isCreativeEnabled()) {
       try {
         if (exo.lastResult.outcome == RunOutcome.kind.PASS) {
-          Game.getInstance().studentWork.setPassed(exo, null, true);
+          Game.getInstance().studentWork.setPassed(exo, exo.lastResult.language, true);
 
           SwingUtilities.invokeAndWait(new Runnable() {
             @Override public void run()
