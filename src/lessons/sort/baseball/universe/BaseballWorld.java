@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -131,7 +132,7 @@ public class BaseballWorld extends World {
    * Returns a textual description of the differences between the caller and world
    * @param o the world with which you want to compare your world
    */
-  @Override public String diffTo(World o)
+  @Override public String diffTo(World o, ProgrammingLanguage ignored)
   {
     if (o == null || !(o instanceof BaseballWorld))
       return i18n.tr("This is not a baseball world :-(");

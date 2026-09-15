@@ -1,6 +1,7 @@
 package plm.test.simple;
 
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.universe.World;
 
 public class SimpleWorld extends World {
@@ -44,7 +45,7 @@ public class SimpleWorld extends World {
     return true;
   }
 
-  @Override public String diffTo(World world)
+  @Override public String diffTo(World world, ProgrammingLanguage ignored)
   {
     SimpleWorld other = (SimpleWorld)world;
     String s          = "No diff";

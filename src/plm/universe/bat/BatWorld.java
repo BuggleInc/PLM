@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -79,7 +80,7 @@ public class BatWorld extends World {
 
   /* World logic */
   public void addTest(boolean visible, Object... params) { tests.add(new BatTest(getName(), visible, params)); }
-  @Override public String diffTo(World w)
+  @Override public String diffTo(World w, ProgrammingLanguage lang)
   {
     BatWorld other     = (BatWorld)w;
     StringBuffer sb    = new StringBuffer();
@@ -89,7 +90,7 @@ public class BatWorld extends World {
         return sb.toString();
 
       if (!tests.get(i).equals(other.tests.get(i))) {
-        sb.append(other.tests.get(i).getName() + " returned " + other.tests.get(i).getResult() + " while " + tests.get(i).getResult() + " was expected.\n");
+        sb.append(other.tests.get(i).getName(lang) + " returned " + other.tests.get(i).getResult() + " while " + tests.get(i).getResult() + " was expected.\n");
         foundError = true;
       }
     }

@@ -3,6 +3,7 @@ package lessons.lander.universe;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.Point;
@@ -89,7 +90,7 @@ public class LanderWorld extends World {
   /** Returns true if the lander landed successfully. */
   @Override public boolean winning(World target) { return state == State.LANDED; }
 
-  @Override public String diffTo(World w)
+  @Override public String diffTo(World w, ProgrammingLanguage ignored)
   {
     LanderWorld other = (LanderWorld)w;
     if (other.state == State.LANDED)

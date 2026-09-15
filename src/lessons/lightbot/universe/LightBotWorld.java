@@ -3,6 +3,7 @@ package lessons.lightbot.universe;
 import java.util.Arrays;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.Entity;
@@ -165,5 +166,5 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
   public void switchLight(int x, int y) { ((LightBotWorldCell)getCell(x, y)).lightSwitch(); }
 
   @Override public Iterator<LightBotWorldCell> iterator() { return new CellIterator(); }
-  @Override public String diffTo(World other) { return "null"; }
+  @Override public String diffTo(World other, ProgrammingLanguage ignored) { return "null"; }
 }

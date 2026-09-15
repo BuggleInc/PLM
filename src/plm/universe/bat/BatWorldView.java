@@ -64,7 +64,7 @@ public class BatWorldView extends WorldView {
             g2.setColor(Color.white);
         }
       }
-      g2.drawString(currTest.getName() + (answered ? " gives " + actual : "") +
+      g2.drawString(currTest.getName(Game.getInstance().getProgrammingLanguage()) + (answered ? " gives " + actual : "") +
                         (answered && !correct ? " instead of " + currTest.stringParameter(expected) : ""),
                     0, (i + 1) * 20);
     }

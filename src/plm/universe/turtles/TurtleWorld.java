@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -129,7 +130,7 @@ public class TurtleWorld extends World {
     TurtleWorld other = (TurtleWorld)obj;
     if (!other.getName().equals(getName()))
       return false;
-    String diff = diffTo(other);
+    String diff = diffTo(other, null); // We don't have the ProgrammingLanguage at hand here, but this world ignores that parameter so use 'null'
     if (diff.equals(""))
       return true;
     return false;
@@ -251,7 +252,7 @@ public class TurtleWorld extends World {
     return changedSomething;
   }
 
-  @Override public String diffTo(World world)
+  @Override public String diffTo(World world, ProgrammingLanguage ignored)
   {
     if (world == this)
       return "";

@@ -3,6 +3,7 @@ package plm.universe.sort;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -99,7 +100,7 @@ public class SortingWorld extends World {
    * @param world : the world with which you want to compare your world
    * @return A textual description of the differences between the caller and world
    */
-  @Override public String diffTo(World world)
+  @Override public String diffTo(World world, ProgrammingLanguage ignored)
   {
     String s;
     if (world == null || !(world instanceof SortingWorld)) {

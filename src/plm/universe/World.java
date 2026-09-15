@@ -363,6 +363,10 @@ public abstract class World {
     notifyWorldUpdatesListeners(); // EntityUpdateListeners();
   }
 
-  /** Returns a textual representation of the differences from the receiver world to the one in parameter*/
-  public abstract String diffTo(World world);
+  /**
+   * Returns a textual representation of the differences from the receiver world to the one in parameter
+   *
+   * The BatWorld needs to know the ProgrammingLanguage to adapt its output, so give that parameter to all worlds.
+   */
+  public abstract String diffTo(World world, ProgrammingLanguage lang);
 }

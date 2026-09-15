@@ -1,5 +1,7 @@
 package plm.core.model.session;
 
+import plm.core.lang.ProgrammingLanguage;
+
 public class SourceFileRevertable extends SourceFile {
 
   private String initialBody;
@@ -12,7 +14,7 @@ public class SourceFileRevertable extends SourceFile {
     this.initialBody = initialBody;
   }
 
-  public void revert() { setBody(this.initialBody); }
+  public void revert(ProgrammingLanguage lang) { setBody(this.initialBody, lang); }
 
   public boolean hasChanged() { return (!this.initialBody.equals(getBody())); }
 

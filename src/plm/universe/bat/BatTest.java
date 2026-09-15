@@ -44,14 +44,13 @@ public class BatTest {
   boolean isVisible() { return visible; }
 
   public String stringParameter(Object o) { return ValueFormatter.format(o, Game.getInstance().getProgrammingLanguage()); }
-  public String getName()
+  public String getName(ProgrammingLanguage lang)
   {
-    ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
     if (name == null) {
       StringBuffer sb = new StringBuffer(funName + "(");
 
       for (Object o : parameters) {
-        sb.append(ValueFormatter.format(o, pl));
+        sb.append(ValueFormatter.format(o, lang));
         sb.append(",");
       }
       if (parameters.length > 0)
@@ -63,5 +62,5 @@ public class BatTest {
     return name;
   }
 
-  public String toString() { return getName(); }
+  public String toString(ProgrammingLanguage lang) { return getName(lang); }
 }

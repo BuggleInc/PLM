@@ -1,6 +1,7 @@
 package lessons.sort.pancake.universe;
 
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -97,7 +98,7 @@ public class PancakeWorld extends World {
   }
 
   /** Returns a textual description of the differences between the caller and the parameter */
-  @Override public String diffTo(World o)
+  @Override public String diffTo(World o, ProgrammingLanguage ignored)
   {
     if (o == null || !(o instanceof PancakeWorld))
       return Game.i18n.tr("This is not a world of pancakes.");

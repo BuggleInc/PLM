@@ -42,7 +42,7 @@ public class LightBotSourceFile extends SourceFileRevertable {
       func2[i] = LightBotInstruction.noop();
   }
 
-  @Override public void setBody(String newBody)
+  @Override public void setBody(String newBody, ProgrammingLanguage lang)
   {
     /* reset everything to noop */
     resetBody();

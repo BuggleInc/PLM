@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Vector;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -148,7 +149,7 @@ public class HanoiWorld extends World {
     return getName().equals(other.getName());
   }
 
-  @Override public String diffTo(World o)
+  @Override public String diffTo(World o, ProgrammingLanguage ignored)
   {
     StringBuffer res = new StringBuffer();
     if (o == null || !(o instanceof HanoiWorld))

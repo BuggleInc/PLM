@@ -9,6 +9,7 @@ import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.ColorMapper;
@@ -378,7 +379,7 @@ public class BuggleWorld extends GridWorld {
   public void putTopWall(int x, int y) { getCell(x, y).putTopWall(); }
 
   public void putLeftWall(int x, int y) { getCell(x, y).putLeftWall(); }
-  @Override public String diffTo(World world)
+  @Override public String diffTo(World world, ProgrammingLanguage ignored)
   {
     BuggleWorld other = (BuggleWorld)world;
     StringBuffer sb   = new StringBuffer();

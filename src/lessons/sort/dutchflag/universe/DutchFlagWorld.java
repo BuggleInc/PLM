@@ -2,6 +2,7 @@ package lessons.sort.dutchflag.universe;
 
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
@@ -82,7 +83,7 @@ public class DutchFlagWorld extends World {
   }
 
   /** Returns a textual description of the differences between the caller and the parameter */
-  @Override public String diffTo(World o)
+  @Override public String diffTo(World o, ProgrammingLanguage ignored)
   {
     if (o == null || !(o instanceof DutchFlagWorld))
       return Game.i18n.tr("This world is not a dutch flag");

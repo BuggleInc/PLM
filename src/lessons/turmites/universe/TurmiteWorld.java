@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.universe.BrokenWorldFileException;
@@ -71,12 +72,12 @@ public class TurmiteWorld extends BuggleWorld {
       return false;
     return super.equals(o);
   }
-  @Override public String diffTo(World other)
+  @Override public String diffTo(World other, ProgrammingLanguage lang)
   {
     String res = "";
     if (((TurmiteWorld)other).currStep != currStep)
       res += "The amount of steps is wrong: " + ((TurmiteWorld)other).currStep + " is not " + currStep + "\n";
-    return res + super.diffTo(other);
+    return res + super.diffTo(other, lang);
   }
 
   /* Here comes the world logic */
