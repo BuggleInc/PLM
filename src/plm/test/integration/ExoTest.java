@@ -140,7 +140,7 @@ public class ExoTest {
       StudentOrCorrection what = StudentOrCorrection.CORRECTION;
       if (lang.isJava() || lang.isScala() || lang.isC())
         what = StudentOrCorrection.STUDENT;
-      exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, what, lang);
+      exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, what, lang);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 

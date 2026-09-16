@@ -43,7 +43,7 @@ public abstract class Lecture {
                                              + "</head>\n";
   private String name    = "<no name>"; /** indicate whether this Exercise was successfully done or not */
   private String mission = "";          /** The text to display to present the lesson */
-  private Lesson lesson;
+  private Lesson lesson;                /* Container of ourselve */
 
   protected Map<String, String> tips = new HashMap<String, String>();
 

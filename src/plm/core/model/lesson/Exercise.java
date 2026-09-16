@@ -107,11 +107,8 @@ public abstract class Exercise extends Lecture {
    *
    * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
    */
-  public void compileAll(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
+  public void compile(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    /* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
-     * Instead, scripting languages get the source code as text directly from the sourceFiles
-     */
     lang.compileExo(this, out, whatToCompile);
   }
 
@@ -123,20 +120,20 @@ public abstract class Exercise extends Lecture {
    * without a script to execute and silently do nothing. Doing both together here, always in this order, makes that
    * mistake structurally impossible instead of relying on every call site to remember the two steps.
    */
-  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
+  public void compileAndMutate(LogWriter out, WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    executeAll(out, kind, what, what, lang);
+    compileAndMutate(out, kind, what, what, lang);
   }
 
   /**
-   * Variant of executeAll() for the rare case where what gets compiled and what gets mutated differ -- e.g.
+   * Variant of compileAndMutateAll() for the rare case where what gets compiled and what gets mutated differ -- e.g.
    * ExoTest.testCorrectionEntity() compiles the teacher's correction but mutates to the student-facing compiled
-   * entity. Prefer the simpler 3-arg executeAll() whenever they match.
+   * entity. Prefer the simpler 3-arg compileAndMutateAll() whenever they match.
    */
-  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate, ProgrammingLanguage lang)
+  public void compileAndMutate(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate, ProgrammingLanguage lang)
       throws PLMCompilerException
   {
-    compileAll(out, whatToCompile, lang);
+    compile(out, whatToCompile, lang);
     mutateEntities(kind, whatToMutate, lang);
   }
 

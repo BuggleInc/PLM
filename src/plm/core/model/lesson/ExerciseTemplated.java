@@ -399,7 +399,7 @@ public abstract class ExerciseTemplated extends Exercise {
         RunOutcome progress = new RunOutcome();
 
         try {
-          executeAll(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION, Game.getInstance().getProgrammingLanguage());
+          compileAndMutate(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION, Game.getInstance().getProgrammingLanguage());
         } catch (PLMCompilerException e) {
           System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " +
                              Game.getInstance().getProgrammingLanguage().getLang() + ". Please go fix your PLM.");
@@ -460,7 +460,7 @@ public abstract class ExerciseTemplated extends Exercise {
       answerWorld.get(i).doDelay();
     }
     try {
-      executeAll(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION, lang);
+      compileAndMutate(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION, lang);
     } catch (PLMCompilerException e) {
       System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
       e.printStackTrace();

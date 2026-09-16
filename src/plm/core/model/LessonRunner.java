@@ -46,7 +46,7 @@ public class LessonRunner extends Thread {
       game.saveSession(); // for safety reasons;
 
       game.setState(Game.GameState.COMPILATION_STARTED);
-      exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
+      exo.compile(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
       game.setState(Game.GameState.COMPILATION_ENDED);
 
       game.setState(Game.GameState.EXECUTION_STARTED);
