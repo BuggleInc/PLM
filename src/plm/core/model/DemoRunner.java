@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
 
 /**

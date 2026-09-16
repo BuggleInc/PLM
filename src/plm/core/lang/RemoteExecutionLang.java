@@ -71,7 +71,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
     try {
       String executable = ent.getScript(this);
       if (executable == null)
-        throw new IllegalStateException("TOFIX");
+        throw new IllegalStateException("It seems that the code was not compiled. I am puzzled.");
 
       Files.createDirectories(TMP_ROOT);
       Path socketDir                    = Files.createTempDirectory(TMP_ROOT, getExt() + "-sock-");

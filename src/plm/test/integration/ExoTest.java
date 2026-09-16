@@ -110,22 +110,6 @@ public class ExoTest {
     }
   }
 
-  /** Try to run the solution, fail if it's missing **/
-  protected void testCorrectionEntityExists(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException
-  {
-    Game.getInstance().setProgramingLanguage(lang);
-
-    DemoRunner demoRunner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
-
-    exo.lastResult = new RunOutcome();
-    try {
-      demoRunner.runDemo(exo, lang);
-    } catch (Exception e) {
-      e.printStackTrace();
-      Assertions.fail(exo.getId() + "'s solution failed to run...");
-    }
-  }
-
   /** Resets current world, populate it with the correction entity, and rerun it */
   protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException
   {
