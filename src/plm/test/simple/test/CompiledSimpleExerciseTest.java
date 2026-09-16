@@ -20,7 +20,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException
   {
-    exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT, pl);
+    exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, pl);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -35,7 +35,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException
   {
-    exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT, pl);
+    exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, pl);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {

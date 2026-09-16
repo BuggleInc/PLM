@@ -119,12 +119,7 @@ public class ExoTest {
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
       exo.reset();
-      // For compiled languages, we mutate to the compiled entity.
-      // For script languages, we mutate to the correction entity.
-      StudentOrCorrection what = StudentOrCorrection.CORRECTION;
-      if (lang.isJava() || lang.isScala() || lang.isC())
-        what = StudentOrCorrection.STUDENT;
-      exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, what, lang);
+      exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, lang);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 

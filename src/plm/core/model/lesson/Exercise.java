@@ -122,19 +122,8 @@ public abstract class Exercise extends Lecture {
    */
   public void compileAndMutate(LogWriter out, WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    compileAndMutate(out, kind, what, what, lang);
-  }
-
-  /**
-   * Variant of compileAndMutateAll() for the rare case where what gets compiled and what gets mutated differ -- e.g.
-   * ExoTest.testCorrectionEntity() compiles the teacher's correction but mutates to the student-facing compiled
-   * entity. Prefer the simpler 3-arg compileAndMutateAll() whenever they match.
-   */
-  public void compileAndMutate(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate, ProgrammingLanguage lang)
-      throws PLMCompilerException
-  {
-    compile(out, whatToCompile, lang);
-    mutateEntities(kind, whatToMutate, lang);
+    compile(out, what, lang);
+    mutateEntities(kind, lang);
   }
 
   /** get the list of source files for a given language, or create it if not existent yet */
@@ -157,7 +146,7 @@ public abstract class Exercise extends Lecture {
     getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset, correctionCtn));
   }
 
-  public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, ProgrammingLanguage lang)
+  public void mutateEntities(WorldKind kind, ProgrammingLanguage lang)
   {
     /* Sanity check for broken lessons: the entity name must be a valid Java identifier */
     if (lang.isJava()) {
