@@ -12,6 +12,8 @@ TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemo
 TODO: kill mutateEntities()
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compileAll()
 TODO: Port the SimpleExercise tests to LangC
+TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
+TODO: Split Lightbot away from the other languages, by defining another subclass of Lecture that is not an Exercise but a Brainteaser. Exercises are the one you can do in any programming language; brain teasers are in a specific, probably dedicated, programming language. 
 
 # Architecture
 
