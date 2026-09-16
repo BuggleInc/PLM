@@ -18,9 +18,6 @@ def run():
     #                line = s.getLineNumber()
     #                entity.left()	
     	
-    def dogHouse():
-    	raise java.lang.RuntimeException("You must define a dogHouse() method.");
-
     # BEGIN SOLUTION
     def dogHouse():
         for i in range(4):
