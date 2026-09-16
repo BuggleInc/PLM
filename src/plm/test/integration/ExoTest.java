@@ -119,7 +119,7 @@ public class ExoTest {
 
     exo.lastResult = new RunOutcome();
     try {
-      demoRunner.runDemo(exo);
+      demoRunner.runDemo(exo, lang);
     } catch (Exception e) {
       e.printStackTrace();
       Assertions.fail(exo.getId() + "'s solution failed to run...");
@@ -140,7 +140,7 @@ public class ExoTest {
       StudentOrCorrection what = StudentOrCorrection.CORRECTION;
       if (lang.isJava() || lang.isScala() || lang.isC())
         what = StudentOrCorrection.STUDENT;
-      exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, what);
+      exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, what, lang);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 

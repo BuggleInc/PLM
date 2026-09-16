@@ -59,8 +59,8 @@ public abstract class Exercise extends Lecture {
     }
   }
 
-  public abstract void run(List<Thread> runnerVect);
-  public abstract void runDemo(List<Thread> runnerVect);
+  public abstract void run(List<Thread> runnerVect, ProgrammingLanguage lang);
+  public abstract void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang);
 
   public void check()
   {
@@ -107,12 +107,12 @@ public abstract class Exercise extends Lecture {
    *
    * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
    */
-  public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  public void compileAll(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
   {
     /* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
      * Instead, scripting languages get the source code as text directly from the sourceFiles
      */
-    Game.getInstance().getProgrammingLanguage().compileExo(this, out, whatToCompile);
+    lang.compileExo(this, out, whatToCompile);
   }
 
   /**
@@ -123,9 +123,9 @@ public abstract class Exercise extends Lecture {
    * without a script to execute and silently do nothing. Doing both together here, always in this order, makes that
    * mistake structurally impossible instead of relying on every call site to remember the two steps.
    */
-  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection what) throws PLMCompilerException
+  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    executeAll(out, kind, what, what);
+    executeAll(out, kind, what, what, lang);
   }
 
   /**
@@ -133,10 +133,11 @@ public abstract class Exercise extends Lecture {
    * ExoTest.testCorrectionEntity() compiles the teacher's correction but mutates to the student-facing compiled
    * entity. Prefer the simpler 3-arg executeAll() whenever they match.
    */
-  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate) throws PLMCompilerException
+  public void executeAll(LogWriter out, WorldKind kind, StudentOrCorrection whatToCompile, StudentOrCorrection whatToMutate, ProgrammingLanguage lang)
+      throws PLMCompilerException
   {
-    compileAll(out, whatToCompile);
-    mutateEntities(kind, whatToMutate);
+    compileAll(out, whatToCompile, lang);
+    mutateEntities(kind, whatToMutate, lang);
   }
 
   /** get the list of source files for a given language, or create it if not existent yet */
@@ -159,12 +160,10 @@ public abstract class Exercise extends Lecture {
     getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset, correctionCtn));
   }
 
-  public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate)
+  public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate, ProgrammingLanguage lang)
   {
-    ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
-
     /* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-    if (Game.getInstance().getProgrammingLanguage().isJava()) {
+    if (lang.isJava()) {
       String[] forbidden = new String[] {"'", "\""};
       for (String stringPattern : forbidden) {
         Pattern pattern = Pattern.compile(stringPattern);

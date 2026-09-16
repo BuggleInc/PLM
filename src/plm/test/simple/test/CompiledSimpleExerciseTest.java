@@ -20,7 +20,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException
   {
-    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT, pl);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -35,7 +35,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException
   {
-    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT);
+    exo.executeAll(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, StudentOrCorrection.STUDENT, pl);
 
     for (World w : exo.getWorlds(WorldKind.CURRENT)) {
       for (Entity ent : w.getEntities()) {
@@ -53,7 +53,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
       exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode(), pl);
-      exo.compileAll(null, StudentOrCorrection.STUDENT);
+      exo.compileAll(null, StudentOrCorrection.STUDENT, pl);
     });
   }
 
@@ -61,7 +61,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
       exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode(), pl);
-      exo.compileAll(null, StudentOrCorrection.STUDENT);
+      exo.compileAll(null, StudentOrCorrection.STUDENT, pl);
     });
   }
 }

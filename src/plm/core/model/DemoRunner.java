@@ -2,6 +2,7 @@ package plm.core.model;
 
 import java.util.Iterator;
 import java.util.List;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
@@ -25,13 +26,13 @@ public class DemoRunner extends Thread {
     this.runners.add(this);
   }
 
-  public void runDemo(Exercise exo) throws Exception
+  public void runDemo(Exercise exo, ProgrammingLanguage lang) throws Exception
   {
     game.setState(Game.GameState.DEMO_STARTED);
 
     this.game.disableStepMode();
 
-    exo.runDemo(runners);
+    exo.runDemo(runners, lang);
 
     Iterator<Thread> it = runners.iterator();
     while (it.hasNext()) {
@@ -64,7 +65,7 @@ public class DemoRunner extends Thread {
     boolean stepModeWasActivated = this.game.stepModeEnabled();
 
     try {
-      runDemo(exo);
+      runDemo(exo, this.game.getProgrammingLanguage());
     } catch (InterruptedException e) {
       game.getOutputWriter().log(e);
     } catch (Exception e) {

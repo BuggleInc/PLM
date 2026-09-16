@@ -1,6 +1,7 @@
 package lessons.lightbot.universe;
 
 import java.util.List;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
@@ -63,7 +64,7 @@ public class LightBotExercise extends ExerciseTemplated {
         lastResult.outcome = RunOutcome.kind.FAIL;
     }
   }
-  @Override public void run(List<Thread> runnerVect)
+  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang)
   { // FIXME: that's a redefinition to the same, right?
     reset();
 
@@ -71,12 +72,14 @@ public class LightBotExercise extends ExerciseTemplated {
       currentWorld.get(i).doDelay();
 
     for (int i = 0; i < currentWorld.size(); i++)
-      currentWorld.get(i).runEntities(runnerVect, lastResult);
+      currentWorld.get(i).runEntities(runnerVect, lastResult, lang);
   }
 
-  @Override public void runDemo(List<Thread> runnerVect) { /* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */ }
+  @Override
+  public void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang)
+  { /* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */ }
 
-  @Override final public void mutateEntities(WorldKind kind, StudentOrCorrection what)
+  @Override final public void mutateEntities(WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang)
   {
     throw new RuntimeException("I'm sorry Dave, I'm affraid I cannot let you mutate Lightbot entities.");
   }

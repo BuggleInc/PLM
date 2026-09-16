@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import plm.core.PLMCompilerException;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
@@ -37,6 +38,7 @@ public class LessonRunner extends Thread {
     if (!(lect instanceof Exercise))
       return;
     final Exercise exo = (Exercise)lect;
+    final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
     exo.lastResult = new RunOutcome();
 
@@ -44,14 +46,14 @@ public class LessonRunner extends Thread {
       game.saveSession(); // for safety reasons;
 
       game.setState(Game.GameState.COMPILATION_STARTED);
-      exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.STUDENT);
+      exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
       game.setState(Game.GameState.COMPILATION_ENDED);
 
       game.setState(Game.GameState.EXECUTION_STARTED);
       if (!game.isCreativeEnabled())
         exo.reset();
 
-      exo.run(runners);
+      exo.run(runners, lang);
       while (runners.size() > 0) {
         Thread t = runners.get(0); // leave the thread into the set so that it remains interruptible
         t.join();

@@ -152,9 +152,8 @@ public abstract class World {
   public Entity getEntity(int i) { return entities.get(i); }
   public List<Entity> getEntities() { return entities; }
 
-  public void runEntities(List<Thread> runnerVect, final RunOutcome progress)
+  public void runEntities(List<Thread> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl)
   {
-    final ProgrammingLanguage pl = Game.getInstance().getProgrammingLanguage();
     if (Game.getInstance().isDebugEnabled())
       Logger.log("World:runEntities", "Programming language: " + pl);
 
