@@ -113,15 +113,21 @@ public abstract class Exercise extends Lecture {
   /**
    * Compile the given source and immediately apply the result onto worldKind's entities, in one call.
    *
-   * Every language is now remote (compiled into a workspace before it can run at all, even "scripting" ones like
-   * Python), so mutateEntities() always needs a matching compileAll() to have run first, or the entities are left
-   * without a script to execute and silently do nothing. Doing both together here, always in this order, makes that
-   * mistake structurally impossible instead of relying on every call site to remember the two steps.
+   * Every language save a textual information needed to later run the entity (the path to the compiled jar or binary, or to the
+   * generated entity script for Python). This information is saved in {@code sourcefile.meta.get(getLang().toUpperCase())}
+   * (e.g. "JAVA", "SCALA", "PYTHON", "C") by the programming language when compiling, and then copied by the current method
+   * into the script of each entity, so that the programming language can retrieve it when executing the entity later on.
    */
   public void compileAndMutate(LogWriter out, WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
   {
     compile(out, what, lang);
-    mutateEntities(kind, lang);
+    for (World current : getWorlds(kind)) {
+      List<SourceFile> sourceFiles = getSourceFilesList(lang);
+      String path                  = sourceFiles.get(0).meta.get(lang.getLang().toUpperCase());
+      if (path != null)
+        for (Entity e : current.getEntities())
+          e.setScript(lang, path);
+    }
   }
 
   /** get the list of source files for a given language, or create it if not existent yet */
@@ -142,17 +148,6 @@ public abstract class Exercise extends Lecture {
   public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template, int offset, String correctionCtn)
   {
     getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset, correctionCtn));
-  }
-
-  public void mutateEntities(WorldKind kind, ProgrammingLanguage lang)
-  {
-    for (World current : getWorlds(kind)) {
-      List<SourceFile> sourceFiles = getSourceFilesList(lang);
-      String path                  = sourceFiles.get(0).meta.get(lang.getLang().toUpperCase());
-      if (path != null)
-        for (Entity e : current.getEntities())
-          e.setScript(lang, path);
-    }
   }
 
   public Vector<World> getWorlds(WorldKind kind)

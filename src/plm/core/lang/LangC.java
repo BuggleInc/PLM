@@ -299,8 +299,9 @@ public class LangC extends TemplatedRemoteLang {
 
   /**
    * Runs the compiled executable directly (its path is exactly what compileExo() produced, stored in
-   * sf.meta.get("C") and copied onto the entity by Exercise.mutateEntities()), redirecting ASan's reports to a
-   * file instead of stderr so they can be told apart from the student code's own stderr output and surfaced
+   * sf.meta.get("C") and copied by {@link Exercise#compileAndMutate} it onto the entities' script
+   * with {@link Entity#setScript}, redirecting ASan's reports to a file instead of stderr so they
+   * can be told apart from the student code's own stderr output and surfaced
    * separately (see onProcessFinished() below).
    */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException

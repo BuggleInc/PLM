@@ -28,8 +28,8 @@ import plm.universe.Entity;
  * Factors two things common to all of them:
  * <ul>
  * <li>how a compiled artifact's path travels from {@code compileExo} to {@code runEntity}: {@code compileExo} stores it
- * in {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"), and {@link Exercise#mutateEntities} copies
- * it onto the entities so {@code runEntity} knows what to spawn;</li>
+ * in {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"), and {@link Exercise#compileAndMutate} copies
+ * it onto the entities' script with {@link Entity#setScript} so {@code runEntity} knows what to spawn;</li>
  * <li>the part of {@link #runEntity} that is identical for all languages: binding the protocol socket, starting the
  * process, relaying its stdout/stderr, and running the command-reading loop that feeds student primitive calls to
  * {@link CommandExecutor}. The only thing that actually differs from one language to another is how to turn the

@@ -9,7 +9,6 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 * [Maintainer's notes](#Maintainers_notes): how to merge in new translation and how to release a new version of the PLM.
 
 TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemoteLanguage
-TODO: kill mutateEntities()
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compileAll()
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
@@ -61,12 +60,9 @@ TODO: Split Lightbot away from the other languages, by defining another subclass
 ## How an exercise executes
 
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
-* **Compile**: `Exercise.compileAll()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java, Scala
+* **Compile**: `Exercise.compile()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java, Scala
   and C are compiled to an external executable/jar; Python needs no compilation step, just the student's `.py` files written
-  out to a workspace. Either way, `compileExo()` ends up with something that can be spawned as a separate process -- there is
-  no more in-JVM execution for any language.
-* **Mutate entities**: `Exercise.mutateEntities()` copies the path `compileExo()` produced onto each entity, so `runEntity()`
-  below knows what to spawn for it.
+  out to a workspace. Either way, `compileExo()` ends up with something that can be spawned as a separate process.
 * **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
    - Java/Scala/Python/C: all four inherit the same `RemoteExecutionLang.runEntity()`. It binds a UNIX domain socket, starts
      the student code as an external process, and relays primitive calls over that socket to `plm.universe.CommandExecutor`.
