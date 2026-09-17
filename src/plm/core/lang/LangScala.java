@@ -358,7 +358,7 @@ public class LangScala extends JvmTemplatedLang {
     return content;
   }
 
-  @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
@@ -368,6 +368,7 @@ public class LangScala extends JvmTemplatedLang {
     String mainRemoteContent =
         getRemoteScalaFile(null, packageNameCache).replace("import ValueSerializer._", "import " + packageNameCache + ".ValueSerializer._");
 
+    String jarPathAndMain                          = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -478,7 +479,7 @@ public class LangScala extends JvmTemplatedLang {
 
           createJarFile(diagnostic, workspace, jarFile, packageNameCache + ".Main", classFiles);
 
-          sf.meta.put("SCALA", jarFile.toPath().toString() + "|" + packageNameCache + ".Main");
+          jarPathAndMain = jarFile.toPath().toString() + "|" + packageNameCache + ".Main";
 
         } catch (IOException e) {
           throw new RuntimeException(e);
@@ -497,11 +498,12 @@ public class LangScala extends JvmTemplatedLang {
 
       throw e;
     }
+    return jarPathAndMain;
   }
 
   /**
    * Runs "java -cp &lt;jarPath&gt;:&lt;scala-library.jar&gt; &lt;mainClass&gt; &lt;socketPath&gt;", executable being the
-   * "jarPath|mainClass" pair stored by compileExo() (see its sf.meta.put("SCALA", ...)). We cannot use "java -jar" alone
+   * "jarPath|mainClass" pair returned by compileExo(). We cannot use "java -jar" alone
    * because a jar's Class-Path manifest attribute is only reliably resolved for relative paths, while the path of
    * scala-library.jar is probably absolute, leading to silent failures at startup.
    */

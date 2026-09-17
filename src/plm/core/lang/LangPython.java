@@ -213,11 +213,12 @@ public class LangPython extends TemplatedRemoteLang {
 
   public String getRemotePythonFile(String remoteName) { return loadRemoteFile(remoteName, "python", ".py"); }
 
-  @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String runName = packageNameForExercise(exo, whatToCompile);
 
     Map<String, String> runtimePatterns = new TreeMap<String, String>();
+    String mainPath                     = null;
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -299,11 +300,12 @@ public class LangPython extends TemplatedRemoteLang {
           Thread.currentThread().interrupt();
         }
 
-        sf.meta.put("PYTHON", mainFile.toPath().toString());
+        mainPath = mainFile.toPath().toString();
       }
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+    return mainPath;
   }
 
   /** Escapes $ and \ for use as the replacement argument of String.replaceAll(). */

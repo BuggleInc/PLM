@@ -412,8 +412,9 @@ public abstract class ExerciseTemplated extends Exercise {
         /* I/O didn't work. We have to load the files manually */
         RunOutcome progress = new RunOutcome();
 
+        String path = null;
         try {
-          compileAndMutate(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION, Game.getInstance().getProgrammingLanguage());
+          path = compileAndMutate(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION, Game.getInstance().getProgrammingLanguage());
         } catch (PLMCompilerException e) {
           System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " +
                              Game.getInstance().getProgrammingLanguage().getLang() + ". Please go fix your PLM.");
@@ -424,7 +425,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
         for (World aw : answerWorld) {
           for (Entity ent : aw.getEntities())
-            Game.getInstance().getProgrammingLanguage().runEntity(ent, progress);
+            Game.getInstance().getProgrammingLanguage().runEntity(ent, progress, path);
           aw.setAnswerWorld();
         }
 
@@ -452,14 +453,14 @@ public abstract class ExerciseTemplated extends Exercise {
     Game.addInitThread(task);
   }
 
-  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang)
+  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang, String executable)
   {
     if (lastResult == null)
       lastResult = new RunOutcome();
 
     for (World cw : getWorlds(WorldKind.CURRENT)) {
       cw.doDelay();
-      cw.runEntities(runnerVect, lastResult, lang);
+      cw.runEntities(runnerVect, lastResult, lang, executable);
     }
   }
 
@@ -471,8 +472,9 @@ public abstract class ExerciseTemplated extends Exercise {
       answerWorld.get(i).reset(initialWorld.get(i));
       answerWorld.get(i).doDelay();
     }
+    String executable;
     try {
-      compileAndMutate(Game.getInstance().getOutputWriter(), WorldKind.ANSWER, StudentOrCorrection.CORRECTION, lang);
+      executable = compileAndMutate(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION, lang);
     } catch (PLMCompilerException e) {
       System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
       e.printStackTrace();
@@ -480,6 +482,6 @@ public abstract class ExerciseTemplated extends Exercise {
     }
 
     for (World aw : getWorlds(WorldKind.ANSWER))
-      aw.runEntities(runnerVect, ignored, lang);
+      aw.runEntities(runnerVect, ignored, lang, executable);
   }
 }

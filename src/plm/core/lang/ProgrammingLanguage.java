@@ -84,7 +84,11 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   }
 
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
-  public abstract void compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
+  /**
+   * Compile the exercise, and return a textual reference to the result (a jar/binary path, a "jarPath|mainClass"
+   * pair, etc.) that {@link #runEntity} will later need to actually run it.
+   */
+  public abstract String compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
 
   /**
    * Make the entity run, according to the used universe and programming language.
@@ -99,9 +103,11 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    *  * LightBot entities are launched by executing the {@link LightBotEntity#run()} method,
    *    that is NOT defined by the student, but interprets the code of the students.
    *
+   *  @param executable the value {@link #compileExo} returned for this exercise/language (unused by languages that
+   *         don't compile, e.g. LightBot).
    *  @see #run() that encodes the student logic in Java
    */
-  public abstract void runEntity(Entity ent, RunOutcome progress);
+  public abstract void runEntity(Entity ent, RunOutcome progress, String executable);
 
   public enum BrokenLanguageState { Usable, NotUsable, Unitialized }
   ;

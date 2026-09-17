@@ -66,7 +66,7 @@ public class LangC extends TemplatedRemoteLang {
 
   @Override public boolean isC() { return true; }
 
-  @Override public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
 
     List<SourceFile> sfs = exo.getSourceFilesList(this);
@@ -77,11 +77,12 @@ public class LangC extends TemplatedRemoteLang {
       throw new PLMCompilerException(msg, null, null);
     }
 
+    String execPath = null;
     for (SourceFile sf : sfs) {
-      String code     = sf.getCompilableContent(runtimePatterns, whatToCompile);
-      String execPath = compile(code, exo.getId(), exo, whatToCompile);
-      sf.meta.put("C", execPath);
+      String code = sf.getCompilableContent(runtimePatterns, whatToCompile);
+      execPath    = compile(code, exo.getId(), exo, whatToCompile);
     }
+    return execPath;
   }
 
   /**
@@ -298,11 +299,9 @@ public class LangC extends TemplatedRemoteLang {
   }
 
   /**
-   * Runs the compiled executable directly (its path is exactly what compileExo() produced, stored in
-   * sf.meta.get("C") and copied by {@link Exercise#compileAndMutate} it onto the entities' script
-   * with {@link Entity#setScript}, redirecting ASan's reports to a file instead of stderr so they
-   * can be told apart from the student code's own stderr output and surfaced
-   * separately (see onProcessFinished() below).
+   * Runs the compiled executable directly (its path is exactly what compileExo() returned), redirecting ASan's
+   * reports to a file instead of stderr so they can be told apart from the student code's own stderr output and
+   * surfaced separately (see onProcessFinished() below).
    */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {

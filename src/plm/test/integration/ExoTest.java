@@ -119,13 +119,13 @@ public class ExoTest {
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
       exo.reset();
-      exo.compileAndMutate(null, WorldKind.CURRENT, StudentOrCorrection.CORRECTION, lang);
+      String executable = exo.compileAndMutate(null, StudentOrCorrection.CORRECTION, lang);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 
       for (World w : exo.getWorlds(WorldKind.CURRENT))
         for (Entity ent : w.getEntities()) {
-          lang.runEntity(ent, exo.lastResult);
+          lang.runEntity(ent, exo.lastResult, executable);
         }
 
       exo.check();

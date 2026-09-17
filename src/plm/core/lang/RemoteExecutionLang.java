@@ -27,9 +27,8 @@ import plm.universe.Entity;
  *
  * Factors two things common to all of them:
  * <ul>
- * <li>how a compiled artifact's path travels from {@code compileExo} to {@code runEntity}: {@code compileExo} stores it
- * in {@code sf.meta.get(getLang().toUpperCase())} (e.g. "JAVA", "SCALA", "PYTHON"), and {@link Exercise#compileAndMutate} copies
- * it onto the entities' script with {@link Entity#setScript} so {@code runEntity} knows what to spawn;</li>
+ * <li>{@code compileExo} returns a textual reference to the compiled artifact (e.g. a jar or binary path), which the
+ * caller threads through {@link #runEntity} as its {@code executable} parameter;</li>
  * <li>the part of {@link #runEntity} that is identical for all languages: binding the protocol socket, starting the
  * process, relaying its stdout/stderr, and running the command-reading loop that feeds student primitive calls to
  * {@link CommandExecutor}. The only thing that actually differs from one language to another is how to turn the
@@ -49,7 +48,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
   public RemoteExecutionLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
-   * Build the process that will run the student code, given the value {@link Entity#getScript} returned for this
+   * Build the process that will run the student code, given the {@code executable} value {@link #runEntity} received for this
    * language (typically a path produced by {@code compileExo}) and the path of the protocol socket that the process
    * must connect to. Implementations are responsible for interpreting the "script" string as they see fit (a plain
    * executable path, a "jar|mainClass" pair, etc.) and for checking that whatever it points to actually exists.
@@ -64,12 +63,11 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
    */
   protected void onProcessFinished(Process process, String executable, RunOutcome progress) {}
 
-  @Override public void runEntity(final Entity ent, final RunOutcome progress)
+  @Override public void runEntity(final Entity ent, final RunOutcome progress, final String executable)
   {
     final StringBuffer resEvaluationError = new StringBuffer();
 
     try {
-      String executable = ent.getScript(this);
       if (executable == null)
         throw new IllegalStateException("It seems that the code was not compiled. I am puzzled.");
 

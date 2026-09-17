@@ -15,7 +15,6 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.SourceFile;
 import plm.core.model.session.SourceFileRevertable;
-import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class Exercise extends Lecture {
@@ -57,7 +56,7 @@ public abstract class Exercise extends Lecture {
     }
   }
 
-  public abstract void run(List<Thread> runnerVect, ProgrammingLanguage lang);
+  public abstract void run(List<Thread> runnerVect, ProgrammingLanguage lang, String executable);
   public abstract void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang);
 
   public void check()
@@ -96,7 +95,10 @@ public abstract class Exercise extends Lecture {
   }
 
   /**
-   * Generate Java source from the user function
+   * Generate Java source from the user function, and return a textual reference to what got compiled (a jar/binary
+   * path, a "jarPath|mainClass" pair, etc. depending on the language -- see {@link ProgrammingLanguage#compileExo}),
+   * to be passed down to {@link ProgrammingLanguage#runEntity} later on. May be null for languages that don't
+   * compile at all (e.g. LightBot).
    * @param out
    * 			where to display our errors
    * @param whatToCompile
@@ -105,29 +107,19 @@ public abstract class Exercise extends Lecture {
    *
    * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
    */
-  public void compile(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
+  public String compile(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    lang.compileExo(this, out, whatToCompile);
+    return lang.compileExo(this, out, whatToCompile);
   }
 
   /**
-   * Compile the given source and immediately apply the result onto worldKind's entities, in one call.
-   *
-   * Every language save a textual information needed to later run the entity (the path to the compiled jar or binary, or to the
-   * generated entity script for Python). This information is saved in {@code sourcefile.meta.get(getLang().toUpperCase())}
-   * (e.g. "JAVA", "SCALA", "PYTHON", "C") by the programming language when compiling, and then copied by the current method
-   * into the script of each entity, so that the programming language can retrieve it when executing the entity later on.
+   * Compile the given source, kept as its own method (rather than inlining {@link #compile} at every call site) so
+   * that every call site is a single, unmistakable step instead of relying on each one to remember to compile before
+   * running.
    */
-  public void compileAndMutate(LogWriter out, WorldKind kind, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
+  public String compileAndMutate(LogWriter out, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    compile(out, what, lang);
-    for (World current : getWorlds(kind)) {
-      List<SourceFile> sourceFiles = getSourceFilesList(lang);
-      String path                  = sourceFiles.get(0).meta.get(lang.getLang().toUpperCase());
-      if (path != null)
-        for (Entity e : current.getEntities())
-          e.setScript(lang, path);
-    }
+    return compile(out, what, lang);
   }
 
   /** get the list of source files for a given language, or create it if not existent yet */

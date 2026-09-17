@@ -152,7 +152,7 @@ public abstract class World {
   public Entity getEntity(int i) { return entities.get(i); }
   public List<Entity> getEntities() { return entities; }
 
-  public void runEntities(List<Thread> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl)
+  public void runEntities(List<Thread> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final String executable)
   {
     if (Game.getInstance().isDebugEnabled())
       Logger.log("World:runEntities", "Programming language: " + pl);
@@ -162,7 +162,7 @@ public abstract class World {
         public void run()
         {
           Game.getInstance().statusArgAdd(getName());
-          pl.runEntity(b, progress);
+          pl.runEntity(b, progress, executable);
           Game.getInstance().statusArgRemove(getName());
         }
       });

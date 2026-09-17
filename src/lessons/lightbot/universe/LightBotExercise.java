@@ -64,7 +64,7 @@ public class LightBotExercise extends ExerciseTemplated {
         lastResult.outcome = RunOutcome.kind.FAIL;
     }
   }
-  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang)
+  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang, String executable)
   { // FIXME: that's a redefinition to the same, right?
     reset();
 
@@ -72,7 +72,7 @@ public class LightBotExercise extends ExerciseTemplated {
       currentWorld.get(i).doDelay();
 
     for (int i = 0; i < currentWorld.size(); i++)
-      currentWorld.get(i).runEntities(runnerVect, lastResult, lang);
+      currentWorld.get(i).runEntities(runnerVect, lastResult, lang, executable);
   }
 
   @Override

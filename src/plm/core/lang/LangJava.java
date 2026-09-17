@@ -194,7 +194,7 @@ public class LangJava extends JvmTemplatedLang {
     return content;
   }
 
-  public void compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
@@ -205,6 +205,7 @@ public class LangJava extends JvmTemplatedLang {
         getRemoteJavaFile(null, packageNameCache).replace("import static ValueSerializer.*;", "import static " + packageNameCache + ".ValueSerializer.*;");
     ;
 
+    String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -312,7 +313,7 @@ public class LangJava extends JvmTemplatedLang {
           filesToJar.addAll(extraFiles);
           createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, filesToJar.toArray(File[] ::new));
 
-          sf.meta.put("JAVA", jarFile.toPath().toString());
+          jarPath = jarFile.toPath().toString();
 
         } catch (IOException e) {
           throw new RuntimeException(e);
@@ -331,6 +332,7 @@ public class LangJava extends JvmTemplatedLang {
 
       throw e;
     }
+    return jarPath;
   }
 
   /** Runs "java -jar &lt;executable&gt; &lt;socketPath&gt;", the executable being the jar path produced by compileExo(). */
