@@ -199,7 +199,23 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
 
       commandReader.start();
 
-      int retcode = process.waitFor();
+      int retcode;
+      try {
+        retcode = process.waitFor();
+      } catch (InterruptedException ie) {
+        // "Stop" interrupts this runner thread (see LessonRunner.stopAll()) to break out of an infinite student
+        // loop. Being unblocked from waitFor() doesn't kill the child process by itself -- do that explicitly here,
+        // the same way as the "process never connected" branch above; its reader threads see the pipes close and
+        // exit on their own (EOF/IOException).
+        process.destroyForcibly();
+        Thread.currentThread().interrupt();
+        progress.outcome = RunOutcome.kind.FAIL;
+        progress.setExecutionError(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n"
+                                                + "Your program must stop by itself to successfully pass the exercise.\n"));
+        Files.deleteIfExists(socketPath);
+        Files.deleteIfExists(socketDir);
+        return;
+      }
 
       stdoutReader.join();
       stderrReader.join();

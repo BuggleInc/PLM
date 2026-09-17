@@ -81,9 +81,10 @@ TODO: Split Lightbot away from the other languages, by defining another subclass
 Runaway/infinite-loop student code: the "Stop" action calls `LessonRunner.stopAll()`, which cooperatively `Thread.interrupt()`s
 each per-entity runner thread (a deprecated `Thread.stop()` used to be used instead, back when Java exercises were compiled
 in-process). Since student code is now an external process, interrupting the runner thread only unblocks it from
-`Process.waitFor()`; it does **not** currently `destroyForcibly()` the still-running student process, so a stopped infinite
-loop may leave an orphaned process behind. Keep this in mind when touching `RemoteExecutionLang.runEntity()`; there is no hard
-sandbox beyond this.
+`Process.waitFor()`; `RemoteExecutionLang.runEntity()` catches that `InterruptedException` and calls `destroyForcibly()` on the
+child process before returning, so a stopped infinite loop does not leave any orphaned process behind. This mechanism is not
+a hard sandbox either: the process is killed, but nothing prevents it from spawning its own children or from being heavy
+enough to matter for the second or so it takes to die.
 
 ## How tests work
 
