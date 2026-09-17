@@ -10,7 +10,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemoteLanguage
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compileAll()
-TODO: kill compileAndMutate
+TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
 TODO: Split Lightbot away from the other languages, by defining another subclass of Lecture that is not an Exercise but a Brainteaser. Exercises are the one you can do in any programming language; brain teasers are in a specific, probably dedicated, programming language. 
@@ -63,7 +63,9 @@ TODO: Split Lightbot away from the other languages, by defining another subclass
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
 * **Compile**: `Exercise.compile()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java, Scala
   and C are compiled to an external executable/jar; Python needs no compilation step, just the student's `.py` files written
-  out to a workspace. Either way, `compileExo()` ends up with something that can be spawned as a separate process.
+  out to a workspace. Either way, `compileExo()` returns a textual reference to the result (a jar/binary path, a
+  "jarPath|mainClass" pair, etc., or `null` for LightBoy that don't compile at all), which the caller then passes down as-is
+  to `runEntity()`'s `executable` parameter below.
 * **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
    - Java/Scala/Python/C: all four inherit the same `RemoteExecutionLang.runEntity()`. It binds a UNIX domain socket, starts
      the student code as an external process, and relays primitive calls over that socket to `plm.universe.CommandExecutor`.

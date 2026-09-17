@@ -49,7 +49,7 @@ public class LessonRunner extends Thread {
         exo.reset();
 
       game.setState(Game.GameState.COMPILATION_STARTED);
-      String executable = exo.compileAndMutate(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
+      String executable = exo.compile(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
       game.setState(Game.GameState.COMPILATION_ENDED);
 
       game.setState(Game.GameState.EXECUTION_STARTED);

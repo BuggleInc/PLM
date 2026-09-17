@@ -119,7 +119,7 @@ public class ExoTest {
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
       exo.reset();
-      String executable = exo.compileAndMutate(null, StudentOrCorrection.CORRECTION, lang);
+      String executable = exo.compile(null, StudentOrCorrection.CORRECTION, lang);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 

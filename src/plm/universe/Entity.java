@@ -35,7 +35,6 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)
    */
   private boolean inited                                 = false;
-  private Map<ProgrammingLanguage, String> script        = new HashMap<ProgrammingLanguage, String>();  /* What to execute when running a scripting language */
   private Map<ProgrammingLanguage, Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
 
   public Entity() {}
@@ -131,10 +130,6 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    * This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)
    */
   public abstract void run() throws Exception;
-
-  public void setScript(ProgrammingLanguage lang, String s) { script.put(lang, s); }
-
-  public String getScript(ProgrammingLanguage lang) { return script.get(lang); }
 
   public void setScriptOffset(ProgrammingLanguage lang, int offset) { scriptOffset.put(lang, offset); }
 

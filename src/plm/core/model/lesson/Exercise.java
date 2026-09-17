@@ -112,16 +112,6 @@ public abstract class Exercise extends Lecture {
     return lang.compileExo(this, out, whatToCompile);
   }
 
-  /**
-   * Compile the given source, kept as its own method (rather than inlining {@link #compile} at every call site) so
-   * that every call site is a single, unmistakable step instead of relying on each one to remember to compile before
-   * running.
-   */
-  public String compileAndMutate(LogWriter out, StudentOrCorrection what, ProgrammingLanguage lang) throws PLMCompilerException
-  {
-    return compile(out, what, lang);
-  }
-
   /** get the list of source files for a given language, or create it if not existent yet */
   public List<SourceFile> getSourceFilesList(ProgrammingLanguage lang)
   {
