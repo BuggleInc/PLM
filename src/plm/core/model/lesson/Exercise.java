@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.PLMCompilerException;
@@ -148,29 +146,13 @@ public abstract class Exercise extends Lecture {
 
   public void mutateEntities(WorldKind kind, ProgrammingLanguage lang)
   {
-    /* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-    if (lang.isJava()) {
-      String[] forbidden = new String[] {"'", "\""};
-      for (String stringPattern : forbidden) {
-        Pattern pattern = Pattern.compile(stringPattern);
-        Matcher matcher = pattern.matcher(tabName);
-
-        if (matcher.matches())
-          throw new RuntimeException(tabName + " is not a valid java identifier (forbidden char: " + stringPattern + "). "
-                                     + "Your exercise uses a broken tabName.");
-      }
+    for (World current : getWorlds(kind)) {
+      List<SourceFile> sourceFiles = getSourceFilesList(lang);
+      String path                  = sourceFiles.get(0).meta.get(lang.getLang().toUpperCase());
+      if (path != null)
+        for (Entity e : current.getEntities())
+          e.setScript(lang, path);
     }
-
-      for (World current : getWorlds(kind)) {
-        if (current.getEntities().isEmpty())
-          throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
-
-        List<SourceFile> sourceFiles = getSourceFilesList(lang);
-        String path                  = sourceFiles.get(0).meta.get(lang.getLang().toUpperCase());
-        if (path != null)
-          for (Entity e : current.getEntities())
-            e.setScript(lang, path);
-      }
   }
 
   public Vector<World> getWorlds(WorldKind kind)

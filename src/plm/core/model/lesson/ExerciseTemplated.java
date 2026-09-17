@@ -292,6 +292,20 @@ public abstract class ExerciseTemplated extends Exercise {
   protected <W extends World> void setup(W[] ws)
   {
     boolean foundALanguage = false;
+
+    /* Sanity check for broken lessons: the tab name is used as the compiled class name and must be valid */
+    for (String forbidden : new String[] {"'", "\""}) {
+      Matcher matcher = Pattern.compile(forbidden).matcher(tabName);
+      if (matcher.matches())
+        throw new RuntimeException(tabName + " is not a valid java identifier (forbidden char: " + forbidden + "). "
+                                   + "Your exercise uses a broken tabName.");
+    }
+
+    /* Sanity check for broken lessons: every world must come with at least one entity */
+    for (World w : ws)
+      if (w.getEntities().isEmpty())
+        throw new RuntimeException("Every world in every exercise must have at least one entity when calling setup(). Please fix your exercise.");
+
     setupWorlds(ws);
 
     for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
