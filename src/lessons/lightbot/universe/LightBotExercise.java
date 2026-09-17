@@ -78,9 +78,4 @@ public class LightBotExercise extends ExerciseTemplated {
   @Override
   public void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang)
   { /* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */ }
-
-  @Override final public void mutateEntities(WorldKind kind, ProgrammingLanguage lang)
-  {
-    throw new RuntimeException("I'm sorry Dave, I'm affraid I cannot let you mutate Lightbot entities.");
-  }
 }

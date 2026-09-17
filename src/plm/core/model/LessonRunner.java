@@ -8,6 +8,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.ExerciseFailedDialog;
@@ -45,13 +46,14 @@ public class LessonRunner extends Thread {
     try {
       game.saveSession(); // for safety reasons;
 
+      if (!game.isCreativeEnabled())
+        exo.reset();
+
       game.setState(Game.GameState.COMPILATION_STARTED);
-      exo.compile(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
+      exo.compileAndMutate(this.game.getOutputWriter(), WorldKind.CURRENT, StudentOrCorrection.STUDENT, lang);
       game.setState(Game.GameState.COMPILATION_ENDED);
 
       game.setState(Game.GameState.EXECUTION_STARTED);
-      if (!game.isCreativeEnabled())
-        exo.reset();
 
       exo.run(runners, lang);
       while (runners.size() > 0) {

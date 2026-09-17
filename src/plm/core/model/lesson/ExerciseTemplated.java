@@ -457,8 +457,6 @@ public abstract class ExerciseTemplated extends Exercise {
     if (lastResult == null)
       lastResult = new RunOutcome();
 
-    mutateEntities(WorldKind.CURRENT, lang);
-
     for (World cw : getWorlds(WorldKind.CURRENT)) {
       cw.doDelay();
       cw.runEntities(runnerVect, lastResult, lang);
