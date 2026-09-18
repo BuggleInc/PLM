@@ -87,6 +87,115 @@ child process before returning, so a stopped infinite loop does not leave any or
 a hard sandbox either: the process is killed, but nothing prevents it from spawning its own children or from being heavy
 enough to matter for the second or so it takes to die.
 
+## From correction entity to compilable source: templating
+
+This section is about how the single `XxxEntity.<ext>` file described in "Adding a new exercise" below (which mixes the
+teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION,
+one for the STUDENT's current editor content. It happens in two separate steps.
+
+### Step 1 (load time): `ExerciseTemplated.newSourceFromFile()` parses the entity file once
+
+Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded. It reads the
+raw `XxxEntity.<ext>` file and runs it character-by-character (line-by-line) through a hand-written state machine (states 0
+to 6) driven by marker comments found in the file: `BEGIN/END TEMPLATE`, `BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`,
+`BEGIN/END SKEL`. `BEGIN/END HIDDEN` is stripped from what the student sees but kept in the correction (e.g. helper code the
+student shouldn't have to read); `BEGIN/END SKEL` (currently unused by any shipped exercise) is collected separately without
+otherwise being classified as head/template/solution/tail. Out of that pass, it builds several `StringBuffer`s:
+- `head`/`tail`: the file content strictly outside the templated region (before `BEGIN TEMPLATE`/after `END TEMPLATE`,
+  or the whole file if only `BEGIN/END SOLUTION` is used).
+- `templateHead`/`templateTail`: inside the templated region but outside the solution -- concatenated together as
+  `initialContent`, what the student sees in the editor the first time.
+- `solution`: the reference implementation, discarded here (it goes into `correction` below, not into what the student sees).
+- `correction`: the *entire* file content again, unchanged except for the class/package name rewrite -- this is stored
+  as-is and re-parsed later, at every compile, by each language's own marker-extraction logic (see step 2).
+
+It then does bookkeeping common to all languages: rewrites the `class`/`package` line to use the exercise's own class name,
+inserts a `#line` C preprocessor directive so compiler errors point at the right file for C, collapses `initialContent`'s
+leading whitespace to the smallest common indentation, and folds `head`+`tail` down to a single line for Java 
+(the Python/Scala/C compilers/offset-tracking don't need that flattening the way javac's line-based error reporting does).
+`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), and `offset` is `head`'s line count
+(used later to translate a compiler error's line number back into the student's own editor coordinates). An optional
+`patternString` (`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template`,
+`initialContent` and `skelContent` at this point. `newSource()` then stores `(name, initialContent, template, offset,
+correction)` as one `SourceFile` per `(exercise, language)` in `Exercise.sourceFiles`.
+
+### Step 2 (every compile): each language re-parses `correction` and fills in `$body` and friends
+
+`SourceFile` only knows about the single `$body` placeholder above; everything else is language-specific and lives in
+`ProgrammingLanguage.compileExo()` (Java/Scala/Python/C, sharing common helpers through `TemplatedRemoteLang`):
+- It re-extracts pieces out of the *raw* `correction` string using its own marker syntax (comment-delimited for Java/Scala/C,
+  e.g. `/* BEGIN DEPENDENCY */.../* END DEPENDENCY */`, `/* BEGIN IMPORT */.../* END IMPORT */`): the `run()`
+  method's own text (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for Java/Scala/C, indentation-based for
+  Python, see `LangPython`'s override), any extra dependency code, extra imports, and which `RemoteXxx` micro-world glue
+  file to compile against (guessed from keywords found in the source, e.g. `"Buggle"` -> `RemoteBuggle`, see
+  `TemplatedRemoteLang.getRemote()`).
+- It builds a `runtimePatterns` map of regex->replacement (`$package`, `$run`, `$dependency`, `$imports`, ...) to be
+  substituted into whatever template ends up being used.
+- Java additionally computes its own, second, per-compile `template` string (`LangJava.getCorrectedTemplate()`), picking
+  one of three class-body shapes depending on whether the file's templated region and `run()`'s own braces overlap, are
+  nested, or are disjoint, and overwrites the `SourceFile`'s stored template with it via `sf.setTemplate()` -- so the
+  `template`/`offset` computed once in step 1 are actually only the final answer for Python/Scala/C; Java rebuilds
+  `template` from scratch on every compile and only keeps `offset` from step 1.
+- Finally `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution: for
+  `StudentOrCorrection.CORRECTION` it slices the solution back out of `correction` (the text between the same
+  `BEGIN/END TEMPLATE` or `BEGIN/END SOLUTION` markers step 1 already knew about) and substitutes it for `$body`;
+  for `STUDENT` it substitutes the editor's current `body` instead; either way `runtimePatterns` is then applied on top
+  of the result, and non-breaking spaces are stripped. The resulting string is written to a per-compile workspace
+  (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id, `STUDENT`/`CORRECTION` and a hash
+  of the source, so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx` glue
+  file and any other support file the exercise needs, then compiled/run the usual way.
+
+So the same `XxxEntity` file is walked twice by two independent parsers using two different marker vocabularies: once by
+`ExerciseTemplated` (TEMPLATE/SOLUTION/HIDDEN/SKEL, to build the student-visible `initialContent` and the outer `$body`
+template) and once per-language inside `compileExo()` (DEPENDENCY/IMPORT/run(), to fill in everything else). The `correction`
+string is the only link between the two passes.
+
+## Saving the student's work: GitSpy and friends
+
+Two independent mechanisms persist what a student does, both driven by `Game.progressSpyListeners`
+(`plm.core.model.tracking.ProgressSpyListener`, fired from `Game.fireProgressSpy()`/`fireCallForHelpSpy()`/
+`fireCancelCallForHelpSpy()`/`fireReadTipSpy()` and from `Game.fireCurrentExerciseChanged()`/`worldHasChanged()`) whenever the
+student runs an exercise (`LessonRunner`, after showing the pass/fail dialog), switches exercise, reverts their code, asks
+for/cancels help, or reads a hint:
+- `LocalFileSpy`: appends one human-readable line per `executed()` event to a local `progress.spy` text file. Every other
+  callback is a no-op.
+- `GitSpy` (+ `GitUtils`, a thin wrapper around JGit): the interesting one, one per running PLM instance, constructed once
+  in `Game`'s constructor and registered as a `UserSwitchesListener` too. For each PLM user, it keeps one local git
+  repository under `SAVE_DIR/<userUUID>`, on a branch named `"PLM" + sha1(userUUID)`, and mirrors it to a shared server repo
+  (`plm.git.server.url`) -- this is both the per-student backup/sync mechanism and the anonymized activity log the PLM
+  maintainers use to see how students actually work through the exercises. Pushing is entirely opt-in, gated by the
+  `plm.git.track.user` property (the student is asked once, see `StartExecution`); everything still happens on the *local*
+  repo either way.
+  - `userHasChanged()` (called once at startup and on every user switch): creates/reuses `repoDir`, sets the git remote
+    config, creates an empty initial commit the very first time, checks out (or creates) the user's branch, tries to
+    `fetch`+`merge` the same branch from the server to resume a previous session (`GitUtils.mergeRemoteIntoLocalBranch()`
+    resolves conflicts file-by-file by keeping whichever side's last commit on that path is more recent), commits a
+    `"started"` marker, then asks for a (rate-limited, see below) push.
+  - `executed()`: writes/rewrites 4 files per exercise (`<id>.<ext>.code`, `.error`, `.correction`, `.mission`, via
+    `createFiles()`), creates or deletes a `.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
+    commit message, see below) and asks for a push.
+  - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise that had a result" (re-writes its
+    files before committing) and "the student clicked revert" (deletes that exercise's files instead).
+  - `callForHelp()`/`cancelCallForHelp()`/`readTip()`: same write-then-commit-then-push pattern for those UI events.
+  - `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
+    rate-limiting below, since this is the last chance to sync) then disposes the JGit handle.
+  - Commit messages are hand-built JSON blobs (`writeCommitMessage()`/`writePLMStartedOrLeavedCommitMessage()`) carrying the
+    exercise id, language, outcome, test counts, and optional feedback -- built by string surgery (dropping the JSON
+    library's own leading `{`) so that a `"kind"` key always comes first and the commit list stays human-scannable
+    from the GitHub UI.
+  - Pushing is rate-limited (`GitUtils.maybePushToUserBranch()`, see its own comment for the incident that motivated it):
+    at most one push in flight at a time (a static `currentlyPushing` flag) and a fixed delay (currently 1 minute) before
+    it actually pushes, run off the Swing EDT via a `SwingWorker`; `forcefullyPushToUserBranch()` used by `leave()` skips
+    that delay. A push that's rejected retries once after fetching and merging the remote branch first.
+- `GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitSpy` writes:
+  at startup, `loadLesson()` reads each exercise's `.code` file back into its `SourceFile.body` and its `.DONE` file into
+  `studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy`
+  already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
+  `.summary` file per lesson (a `StudentWork`-produced digest, not something `GitSpy` writes).
+- `SourceFileRevertable` (what `ExerciseTemplated.newSourceFromFile()` actually instantiates) keeps the original
+  `initialContent` from step 1 above so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
+  unrelated to git and only concerns the in-memory `SourceFile`.
+
 ## How tests work
 
 * `SimpleExercise` tests ensure that the compilation and templating work in every language without pulling a full universe. It
