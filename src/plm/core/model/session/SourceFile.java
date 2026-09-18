@@ -1,7 +1,9 @@
 package plm.core.model.session;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Supplier;
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -17,6 +19,7 @@ public class SourceFile {
   private int offset;
   private String correction;
   private ISourceFileListener listener = null;
+  private final Map<Class<?>, Object> onceCache = new HashMap<>();
 
   public SourceFile(String name, String initialBody, String template, int _offset, String _correctionCtn)
   {
@@ -44,48 +47,89 @@ public class SourceFile {
   public void setCorrection(String c) { this.correction = c; }
   public String getCorrection() { return this.correction; }
 
+  /**
+   * Lazily computes and caches one value per SourceFile instance, keyed by its class. Intended for languages whose
+   * per-compile extraction out of {@link #correction} (run()/dependency/imports/corrected template...) is a pure
+   * function of it -- {@code correction} never changes between compiles of the same SourceFile, so it only needs
+   * computing once. See CONTRIBUTING.md, "From correction entity to compilable source: templating".
+   */
+  @SuppressWarnings("unchecked") public <T> T cached(Class<T> type, Supplier<T> compute) { return (T)onceCache.computeIfAbsent(type, k -> compute.get()); }
+
+  /** Functional counterpart of {@link Supplier} that may throw a checked exception, for {@link #cachedOrThrow}. */
+  public interface ThrowingSupplier<T, E extends Exception> {
+    T get() throws E;
+  }
+
+  /**
+   * Same as {@link #cached}, for a per-language extraction that can itself fail to parse {@code correction} (e.g.
+   * Scala's getCorrectedTemplate(), which validates the template is well-formed). {@code computeIfAbsent} can't be
+   * reused here since its lambda parameter can't declare checked exceptions.
+   */
+  @SuppressWarnings("unchecked") public <T, E extends Exception> T cachedOrThrow(Class<T> type, ThrowingSupplier<T, E> compute) throws E
+  {
+    if (!onceCache.containsKey(type))
+      onceCache.put(type, compute.get());
+    return (T)onceCache.get(type);
+  }
+
   public String getCompilableContent(StudentOrCorrection whatToRetrieve) { return getCompilableContent(null, whatToRetrieve); }
+
+  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
+  {
+    return getCompilableContent(runtimePatterns, whatToRetrieve, deriveCorrectionBody());
+  }
+
+  /**
+   * The `$body` value to substitute in {@code template} for {@code StudentOrCorrection.CORRECTION}, as derived from
+   * {@link #correction} by the two-argument {@link #getCompilableContent}: the text between whichever of
+   * BEGIN/END TEMPLATE or BEGIN/END SOLUTION exists in {@code correction} (comment-delimited, `/* ... *&#47;`-style --
+   * i.e. Java/Scala/C's marker syntax), markers included.
+   */
+  private String deriveCorrectionBody()
+  {
+    final String BEGIN_TEMPLATE = "/* BEGIN TEMPLATE */";
+    final String END_TEMPLATE   = "/* END TEMPLATE */";
+    final String BEGIN_SOLUTION = "/* BEGIN SOLUTION */";
+    final String END_SOLUTION   = "/* END SOLUTION */";
+
+    String beginMarker;
+    String endMarker;
+    if (correction.contains(BEGIN_TEMPLATE) && correction.contains(END_TEMPLATE)) {
+      /* Normal case: the correction entity explicitly delimits the templated region */
+      beginMarker = BEGIN_TEMPLATE;
+      endMarker   = END_TEMPLATE;
+    } else if (correction.contains(BEGIN_SOLUTION) && correction.contains(END_SOLUTION)) {
+      /* No BEGIN/END TEMPLATE: the whole run() is graded, only BEGIN/END SOLUTION delimit it. */
+      beginMarker = BEGIN_SOLUTION;
+      endMarker   = END_SOLUTION;
+    } else {
+      throw new RuntimeException("Broken exercise: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION exist in file " + name);
+    }
+
+    return correction.substring(Math.max(correction.indexOf(beginMarker), 0),
+                                Math.min(correction.indexOf(endMarker) + endMarker.length() + 1, correction.length()));
+  }
 
   /**
    * Returns the source text that we should compile
    * @param runtimePatterns
    * 			some last-minute replacement to do (such as package name adjustment)
-   * @param whatKind
+   * @param whatToRetrieve
    * 			whether we want to retrieve the student-provided content or the correction
+   * @param correctionBody
+   * 			the `$body` value to use for {@code StudentOrCorrection.CORRECTION} (ignored for STUDENT, which always uses
+   * 			this SourceFile's own {@link #body}). Callers whose marker syntax or CORRECTION-body rule differs from
+   * 			{@link #deriveCorrectionBody}'s (Java/Scala/C's `/* ... *&#47;`-style TEMPLATE/SOLUTION markers) -- currently
+   * 			only Python, whose markers are `#`-style comments and whose CORRECTION body isn't always the plain
+   * 			marker-delimited slice -- compute their own instead of relying on it (see LangPython.compileExo()).
    * @return
    */
-  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
+  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve, String correctionBody)
   {
     String res;
 
     if (whatToRetrieve == StudentOrCorrection.CORRECTION) {
-      final String BEGIN_TEMPLATE = "/* BEGIN TEMPLATE */";
-      final String END_TEMPLATE   = "/* END TEMPLATE */";
-      final String BEGIN_SOLUTION = "/* BEGIN SOLUTION */";
-      final String END_SOLUTION   = "/* END SOLUTION */";
-
-      String beginMarker;
-      String endMarker;
-      if (correction.contains(BEGIN_TEMPLATE) && correction.contains(END_TEMPLATE)) {
-        /* Normal case: the correction entity explicitly delimits the templated region */
-        beginMarker = BEGIN_TEMPLATE;
-        endMarker   = END_TEMPLATE;
-      } else if (correction.contains(BEGIN_SOLUTION) && correction.contains(END_SOLUTION)) {
-        /* No BEGIN/END TEMPLATE: the whole run() is graded, only BEGIN/END SOLUTION delimit it. */
-        beginMarker = BEGIN_SOLUTION;
-        endMarker   = END_SOLUTION;
-      } else {
-        throw new RuntimeException("Broken exercise: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION exist in file " + name);
-      }
-
-      String body;
-      if (beginMarker != null) {
-        body = correction.substring(Math.max(correction.indexOf(beginMarker), 0),
-                                    Math.min(correction.indexOf(endMarker) + endMarker.length() + 1, correction.length()));
-      } else {
-        body = correction;
-      }
-      res = template.replace("$body", body + " \n");
+      res = template.replace("$body", correctionBody + " \n");
     } else if (template != null) {
       res = template.replaceAll("\\$body", this.body + " \n");
 

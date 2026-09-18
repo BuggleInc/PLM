@@ -241,6 +241,18 @@ public class LangScala extends JvmTemplatedLang {
   private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
   /**
+   * Everything compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on
+   * packageNameCache (which changes per compile).
+   */
+  record ScalaExtraction(String remote, String runFunction, String dependency, String rawImports, String template) {}
+
+  ScalaExtraction extractOnce(String correction) throws PLMCompilerException
+  {
+    return new ScalaExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
+                               getCorrectedTemplate(correction));
+  }
+
+  /**
    * Absolute path of the jar a given class was loaded from -- used to locate scala-library.jar/scala-compiler.jar/
    * scala-reflect.jar on disk (already proven present as PLM dependencies by isBrokenLanguage() above), so the external
    * "java" processes below can be given an explicit classpath without assuming any standalone "scalac"/"scala" binary is
@@ -376,22 +388,18 @@ public class LangScala extends JvmTemplatedLang {
 
         String correction = sf.getCorrection();
 
-        String remote = getRemoteOrFail(correction, "Scala", exo, diagnostic);
+        ScalaExtraction extraction = sf.cachedOrThrow(ScalaExtraction.class, () -> extractOnce(correction));
+        String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
 
-        String runFunction = extractRunFunction(correction);
-        String dependency  = extractRunDependency(correction);
-        String imports     = extractImportDependency(correction);
-
-        runtimePatterns.put("\\$run", runFunction);
-        runtimePatterns.put("\\$dependency", dependency);
+        runtimePatterns.put("\\$run", extraction.runFunction());
+        runtimePatterns.put("\\$dependency", extraction.dependency());
         runtimePatterns.put("\\$imports", ("import " + packageNameCache + ".ValueSerializer._; "
                                            + "import java.awt.Color; "
                                            + "import " + packageNameCache + ".Remote._; "
-                                           + "import " + packageNameCache + "." + remote + "._; " + imports)
+                                           + "import " + packageNameCache + "." + remote + "._; " + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        String template = getCorrectedTemplate(correction);
-        sf.setTemplate(template);
+        sf.setTemplate(extraction.template());
 
         String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
@@ -454,7 +462,7 @@ public class LangScala extends JvmTemplatedLang {
             extraFiles.add(extraFile);
           }
 
-          Files.writeString(new File(workspace, "Template.txt").toPath(), template);
+          Files.writeString(new File(workspace, "Template.txt").toPath(), extraction.template());
           Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
           Files.writeString(mainRemote.toPath(), mainRemoteContent);
           Files.writeString(entityRemote.toPath(), entityRemoteContent);

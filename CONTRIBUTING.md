@@ -15,6 +15,7 @@ TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
 TODO: Split Lightbot away from the other languages, by defining another subclass of Lecture that is not an Exercise but a Brainteaser. Exercises are the one you can do in any programming language; brain teasers are in a specific, probably dedicated, programming language. 
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
+TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code
 
 # Architecture
 
@@ -119,7 +120,7 @@ leading whitespace to the smallest common indentation, and folds `head`+`tail` d
 `initialContent` and `skelContent` at this point. `newSource()` then stores `(name, initialContent, template, offset,
 correction)` as one `SourceFile` per `(exercise, language)` in `Exercise.sourceFiles`.
 
-### Step 2 (every compile): each language re-parses `correction` and fills in `$body` and friends
+### Step 2 (upon the first compilation): each language re-parses `correction` and fills in `$body` and friends
 
 `SourceFile` only knows about the single `$body` placeholder above; everything else is language-specific and lives in
 `ProgrammingLanguage.compileExo()` (Java/Scala/Python/C, sharing common helpers through `TemplatedRemoteLang`):
@@ -144,6 +145,9 @@ correction)` as one `SourceFile` per `(exercise, language)` in `Exercise.sourceF
   (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id, `STUDENT`/`CORRECTION` and a hash
   of the source, so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx` glue
   file and any other support file the exercise needs, then compiled/run the usual way.
+
+Everything in step 2 above is a pure function of `correction`, which never changes between compiles of the same
+`SourceFile`, so it's computed only the first time a given exercise is compiled, and the result is cached in the `SourceFile`.
 
 So the same `XxxEntity` file is walked twice by two independent parsers using two different marker vocabularies: once by
 `ExerciseTemplated` (TEMPLATE/SOLUTION/HIDDEN/SKEL, to build the student-visible `initialContent` and the outer `$body`

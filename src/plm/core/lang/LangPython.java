@@ -133,6 +133,20 @@ public class LangPython extends TemplatedRemoteLang {
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
   /**
+   * Everything compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on runName
+   * (packageNameForExercise(), which changes per compile).
+   *
+   * Unlike Java, Python's extra $imports (remoteExtraSourceFiles-derived) do not depend on {@code correction} at
+   * all, so they are NOT part of this record; only what compileExo() reads out of {@code correction} itself is.
+   */
+  record PythonExtraction(String remote, String runFunction, String dependency, CorrectedTemplate corrected) {}
+
+  PythonExtraction extractOnce(String correction)
+  {
+    return new PythonExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), getCorrectedTemplate(correction));
+  }
+
+  /**
    * Python counterpart of LangJava/LangScala's getCorrectedTemplate(), built on
    * ExerciseTemplated.extractRunSpanIndentBased() (Python has no braces -- see that method's javadoc). No class/object
    * wrapper is needed at all (unlike Java/Scala): Entity.py is just top-level function definitions, so the three cases
@@ -140,12 +154,6 @@ public class LangPython extends TemplatedRemoteLang {
    */
   private record CorrectedTemplate(String template, String bodySource) {}
 
-  /**
-   * Python counterpart of LangJava/LangScala's getCorrectedTemplate(), built on
-   * ExerciseTemplated.extractRunSpanIndentBased() (Python has no braces -- see that method's javadoc). No class/object
-   * wrapper is needed at all (unlike Java/Scala): Entity.py is just top-level function definitions, so the four cases
-   * only decide how to concatenate $run/$body, not how to wrap them.
-   */
   private CorrectedTemplate getCorrectedTemplate(String correction)
   {
     int beginTemplateIndexRaw = correction.indexOf("# BEGIN TEMPLATE");
@@ -154,15 +162,9 @@ public class LangPython extends TemplatedRemoteLang {
     int runFunctionI          = correction.indexOf(RUN_KEYWORD);
 
     int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
+    if (runSpan == null)
+      throw new RuntimeException("No '" + RUN_KEYWORD + "' found in the correction. Every Python exercise must define a run() function.");
 
-    if (runSpan == null) {
-      // No "def run(" anywhere in the source at all: the templated text is meant to become run()'s entire body on its
-      // own (e.g. a Buggle exercise whose whole solution is a handful of top-level statements/helper defs, with no
-      // separate driving function) -- synthesize the wrapper ourselves rather than requiring an otherwise-empty
-      // "def run():" to be hand-added to every such file. $bodyIndented (as opposed to $body elsewhere) tells
-      // compileExo() this content needs a leading indent applied, since it comes straight from column 0 in the source.
-      return new CorrectedTemplate("$imports\n\ndef run():\n$bodyIndented", correction);
-    }
     if (endTemplateIndex != -1 && beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex) {
       // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included),
       // so $body -- built from the whole correction -- already is a single, complete, self-contained "def run(): ..."
@@ -224,35 +226,34 @@ public class LangPython extends TemplatedRemoteLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String correction = sf.getCorrection();
 
-        String remote = getRemoteOrFail(correction, "Python", exo, null);
-
-        String runFunction = extractRunFunction(correction);
-        String dependency  = extractRunDependency(correction);
+        PythonExtraction extraction = sf.cached(PythonExtraction.class, () -> extractOnce(correction));
+        String remote               = checkRemoteOrFail(extraction.remote(), "Python", exo, null);
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
         StringBuilder extraImports    = new StringBuilder();
         for (String sourcePath : extraSourcePaths)
           extraImports.append("from ").append(fileNameWithoutExtension(sourcePath)).append(" import *\n");
 
-        runtimePatterns.put("\\$run", Matcher_quoteReplacement(runFunction));
-        runtimePatterns.put("\\$dependency", Matcher_quoteReplacement(dependency));
+        runtimePatterns.put("\\$run", Matcher_quoteReplacement(extraction.runFunction()));
+        runtimePatterns.put("\\$dependency", Matcher_quoteReplacement(extraction.dependency()));
         runtimePatterns.put("\\$imports", ("from ValueSerializer import *\n"
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
 
-        CorrectedTemplate corrected = getCorrectedTemplate(correction);
+        CorrectedTemplate corrected = extraction.corrected();
+        sf.setTemplate(corrected.template());
 
         // The template SHAPE ($run/$body placement) always comes from the correction's own markers, but the actual
-        // $body/$bodyIndented CONTENT must be the student's current text when compiling the student's attempt --
-        // otherwise "Run" always executes the teacher's correction, regardless of what the student wrote.
-        String bodySource = whatToCompile == StudentOrCorrection.CORRECTION ? corrected.bodySource() : sf.getBody();
+        // $body CONTENT must be the student's current text when compiling the student's attempt (SourceFile's own
+        // STUDENT-side handling of that, shared with Java/Scala/C) -- otherwise "Run" always executes the teacher's
+        // correction, regardless of what the student wrote. Only CORRECTION needs stripMarkers(): Python entity
+        // files never nest "# BEGIN/END DEPENDENCY" inside the templated region, so the student-visible text
+        // (SourceFile's own #body) never carries one to strip; corrected.bodySource() is built from the raw
+        // correction and can.
+        String correctionBody = stripMarkers(corrected.bodySource());
 
-        String entityCode = corrected.template();
-        for (Map.Entry<String, String> e : runtimePatterns.entrySet())
-          entityCode = entityCode.replaceAll(e.getKey(), e.getValue());
-        entityCode = entityCode.replace("$bodyIndented", Matcher_quoteReplacement(indent(stripMarkers(bodySource))));
-        entityCode = entityCode.replace("$body", Matcher_quoteReplacement(stripMarkers(bodySource)));
-        entityCode = entityCode.replace('\u0001', '\n');
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, correctionBody);
+        entityCode        = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
         // noinspection ResultOfMethodCallIgnored
@@ -321,19 +322,6 @@ public class LangPython extends TemplatedRemoteLang {
         continue;
       result.append(line).append("\n");
     }
-    return result.toString();
-  }
-
-  /** Prefixes every non-empty line with 4 spaces -- used to nest column-0 source content under a synthesized "def run():"
-   *  (see getCorrectedTemplate()'s $bodyIndented case). Blank lines are left untouched: Python doesn't require them
-   *  indented, and leaving them alone avoids a trailing-whitespace-only line looking meaningfully different in diffs. */
-  private static String indent(String code)
-  {
-    StringBuilder result = new StringBuilder();
-    for (String line : code.split("\n", -1))
-      result.append(line.isEmpty() ? line : "    " + line).append("\n");
-    if (result.length() > 0)
-      result.setLength(result.length() - 1); // drop the extra trailing "\n" split(-1)/append loop introduces
     return result.toString();
   }
 

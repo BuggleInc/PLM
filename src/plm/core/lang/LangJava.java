@@ -94,6 +94,23 @@ public class LangJava extends JvmTemplatedLang {
 
   private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
+  /**
+   * Everything compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on
+   * packageNameCache (which changes per compile).
+   *
+   * @param remote      the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
+   *                    turns that into a compile failure)
+   * @param rawImports  the raw content of any BEGIN/END IMPORT section(s), NOT the full $imports replacement
+   *                    compileExo() builds (which also injects packageNameCache-qualified lines)
+   */
+  record JavaExtraction(String remote, String runFunction, String dependency, String rawImports, String template) {}
+
+  JavaExtraction extractOnce(String correction)
+  {
+    return new JavaExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
+                              getCorrectedTemplate(correction));
+  }
+
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
   {
     Runtime rt = Runtime.getRuntime();
@@ -213,22 +230,18 @@ public class LangJava extends JvmTemplatedLang {
 
         String correction = sf.getCorrection();
 
-        String remote = getRemoteOrFail(correction, "Java", exo, diagnostic);
+        JavaExtraction extraction = sf.cached(JavaExtraction.class, () -> extractOnce(correction));
+        String remote             = checkRemoteOrFail(extraction.remote(), "Java", exo, diagnostic);
 
-        String runFunction = extractRunFunction(correction);
-        String dependency  = extractRunDependency(correction);
-        String imports     = extractImportDependency(correction);
-
-        runtimePatterns.put("\\$run", runFunction);
-        runtimePatterns.put("\\$dependency", dependency);
+        runtimePatterns.put("\\$run", extraction.runFunction());
+        runtimePatterns.put("\\$dependency", extraction.dependency());
         runtimePatterns.put("\\$imports", ("import static " + packageNameCache + ".ValueSerializer.*;\n"
                                            + "import java.awt.Color;\n"
                                            + "import static " + packageNameCache + ".Remote.*;\n"
-                                           + "import static " + packageNameCache + "." + remote + ".*;\n" + imports)
+                                           + "import static " + packageNameCache + "." + remote + ".*;\n" + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        String template = getCorrectedTemplate(correction);
-        sf.setTemplate(template);
+        sf.setTemplate(extraction.template());
 
         String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
@@ -296,7 +309,7 @@ public class LangJava extends JvmTemplatedLang {
             extraFiles.add(extraFile);
           }
 
-          Files.writeString(new File(workspace, "Template.txt").toPath(), template);
+          Files.writeString(new File(workspace, "Template.txt").toPath(), extraction.template());
           Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
           Files.writeString(mainRemote.toPath(), mainRemoteContent);
           Files.writeString(entityRemote.toPath(), entityRemoteContent);

@@ -122,7 +122,16 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    */
   protected String getRemoteOrFail(String code, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
   {
-    String remote = getRemote(code);
+    return checkRemoteOrFail(getRemote(code), langName, exo, diagnostic);
+  }
+
+  /**
+   * Same null-check-and-throw as {@link #getRemoteOrFail(String, String, Exercise, DiagnosticCollector)}, but takes
+   * an already-guessed (possibly cached, e.g. via {@link SourceFile#cached}) {@code remote} instead of re-guessing it
+   * from {@code code} via {@link #getRemote}.
+   */
+  protected String checkRemoteOrFail(String remote, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
+  {
     if (remote == null) {
       PLMCompilerException e = new PLMCompilerException("This universe is not implemented in " + langName + ".", null, diagnostic);
       exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
