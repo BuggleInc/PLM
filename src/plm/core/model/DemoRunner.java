@@ -1,7 +1,7 @@
 package plm.core.model;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.Future;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -15,14 +15,13 @@ import plm.core.model.lesson.Lecture;
 public class DemoRunner extends Thread {
 
   private Game game;
-  private List<Thread> runners = null; // threads who run entities from lesson
+  private List<Future<?>> runners = null; // entity-run tasks from this lesson, on the shared pool
 
-  public DemoRunner(Game game, List<Thread> list)
+  public DemoRunner(Game game, List<Future<?>> list)
   {
     super();
     this.game    = game;
     this.runners = list;
-    this.runners.add(this);
   }
 
   public void runDemo(Exercise exo, ProgrammingLanguage lang) throws Exception
@@ -32,26 +31,6 @@ public class DemoRunner extends Thread {
     this.game.disableStepMode();
 
     exo.runDemo(runners, lang);
-
-    Iterator<Thread> it = runners.iterator();
-    while (it.hasNext()) {
-      Thread t = it.next();
-      if (!t.equals(this)) { /* do not wait for myself */
-        int attempt  = 100;
-        boolean done = false;
-        while (attempt > 0 && !done) {
-          try {
-            t.join();
-            it.remove();
-            done = true;
-          } catch (InterruptedException e) {
-            attempt--;
-            if (attempt == 0)
-              throw new InterruptedException("Joined 100 times in vain. " + e);
-          }
-        }
-      }
-    }
   }
 
   @Override public void run()
@@ -75,7 +54,5 @@ public class DemoRunner extends Thread {
       }
       game.setState(Game.GameState.DEMO_ENDED);
     }
-
-    runners.remove(this);
   }
 }

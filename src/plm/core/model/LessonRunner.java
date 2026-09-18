@@ -3,6 +3,7 @@ package plm.core.model;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Future;
 import javax.swing.SwingUtilities;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -24,7 +25,7 @@ import plm.core.ui.ExercisePassedDialog;
 public class LessonRunner extends Thread {
 
   private Game game;
-  private List<Thread> runners = new LinkedList<Thread>(); // threads who run entities from lesson
+  private List<Future<?>> runners = new LinkedList<Future<?>>(); // entity-run tasks from this lesson, on the shared pool
 
   public LessonRunner(Game game)
   {
@@ -55,11 +56,6 @@ public class LessonRunner extends Thread {
       game.setState(Game.GameState.EXECUTION_STARTED);
 
       exo.run(runners, lang, executable);
-      while (runners.size() > 0) {
-        Thread t = runners.get(0); // leave the thread into the set so that it remains interruptible
-        t.join();
-        runners.remove(t);
-      }
 
       if (!game.isCreativeEnabled())
         exo.check();
@@ -105,19 +101,19 @@ public class LessonRunner extends Thread {
   }
 
   /**
-   * Stop all the threads that were already started.
+   * Stop all the entity-run tasks that were already started.
    *
    * Thread.stop() was used here historically, but it is deprecated for removal:
    * on recent JDKs its presence in this framework source -- which PLM recompiles
    * in process when running a Java exercise -- makes that compilation fail, so
-   * no Java exercise can run. Replace it with Thread.interrupt(), a cooperative
-   * request to stop.
+   * no Java exercise can run. Replace it with Future.cancel(true), which interrupts
+   * the pool worker thread currently running the task -- a cooperative request to stop.
    */
   public void stopAll()
   {
     while (runners.size() > 0) {
-      Thread t = runners.remove(runners.size() - 1);
-      t.interrupt();
+      Future<?> f = runners.remove(runners.size() - 1);
+      f.cancel(true);
     }
   }
 }

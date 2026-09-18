@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
@@ -152,13 +153,13 @@ public abstract class World {
   public Entity getEntity(int i) { return entities.get(i); }
   public List<Entity> getEntities() { return entities; }
 
-  public void runEntities(List<Thread> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final String executable)
+  public void runEntities(List<Future<?>> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final String executable)
   {
     if (Game.getInstance().isDebugEnabled())
       Logger.log("World:runEntities", "Programming language: " + pl);
 
     for (final Entity b : entities) {
-      Thread runner = new Thread(new Runnable() {
+      Future<?> future = Game.submitEntityTask(new Runnable() {
         public void run()
         {
           Game.getInstance().statusArgAdd(getName());
@@ -166,25 +167,7 @@ public abstract class World {
           Game.getInstance().statusArgRemove(getName());
         }
       });
-
-      Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-        public void uncaughtException(Thread th, Throwable ex)
-        {
-
-          if (ex instanceof ThreadDeath) {
-            String msg = "You interrupted the execution, did you fall into an infinite loop ?\n"
-                         + "Your program must stop by itself to successfully pass the exercise.\n";
-            progress.setExecutionError(Game.i18n.tr(msg));
-            progress.outcome = RunOutcome.kind.FAIL;
-          }
-        }
-      };
-
-      // So that we can still stop it from the AWT Thread, even if an infinite loop occurs
-      runner.setPriority(Thread.MIN_PRIORITY);
-      runner.setUncaughtExceptionHandler(h);
-      runner.start();
-      runnerVect.add(runner);
+      runnerVect.add(future);
     }
   }
 

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
@@ -453,18 +454,15 @@ public abstract class ExerciseTemplated extends Exercise {
     Game.addInitThread(task);
   }
 
-  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang, String executable)
+  @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
     if (lastResult == null)
       lastResult = new RunOutcome();
 
-    for (World cw : getWorlds(WorldKind.CURRENT)) {
-      cw.doDelay();
-      cw.runEntities(runnerVect, lastResult, lang, executable);
-    }
+    runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
   }
 
-  @Override public void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang)
+  @Override public void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException
   {
     RunOutcome ignored = new RunOutcome();
 
@@ -481,7 +479,6 @@ public abstract class ExerciseTemplated extends Exercise {
       return;
     }
 
-    for (World aw : getWorlds(WorldKind.ANSWER))
-      aw.runEntities(runnerVect, ignored, lang, executable);
+    runAll(WorldKind.ANSWER, runnerVect, ignored, lang, executable);
   }
 }

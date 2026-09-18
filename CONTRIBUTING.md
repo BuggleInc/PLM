@@ -9,11 +9,12 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 * [Maintainer's notes](#Maintainers_notes): how to merge in new translation and how to release a new version of the PLM.
 
 TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemoteLanguage
-TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compileAll()
+TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
 TODO: Split Lightbot away from the other languages, by defining another subclass of Lecture that is not an Exercise but a Brainteaser. Exercises are the one you can do in any programming language; brain teasers are in a specific, probably dedicated, programming language. 
+TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 
 # Architecture
 

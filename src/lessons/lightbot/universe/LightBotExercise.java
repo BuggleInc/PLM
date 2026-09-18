@@ -1,6 +1,7 @@
 package lessons.lightbot.universe;
 
 import java.util.List;
+import java.util.concurrent.Future;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
@@ -64,18 +65,13 @@ public class LightBotExercise extends ExerciseTemplated {
         lastResult.outcome = RunOutcome.kind.FAIL;
     }
   }
-  @Override public void run(List<Thread> runnerVect, ProgrammingLanguage lang, String executable)
-  { // FIXME: that's a redefinition to the same, right?
+  @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
+  {
     reset();
-
-    for (int i = 0; i < currentWorld.size(); i++)
-      currentWorld.get(i).doDelay();
-
-    for (int i = 0; i < currentWorld.size(); i++)
-      currentWorld.get(i).runEntities(runnerVect, lastResult, lang, executable);
+    runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
   }
 
   @Override
-  public void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang)
+  public void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang)
   { /* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */ }
 }

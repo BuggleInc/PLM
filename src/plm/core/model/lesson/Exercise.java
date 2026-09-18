@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.PLMCompilerException;
@@ -56,8 +59,41 @@ public abstract class Exercise extends Lecture {
     }
   }
 
-  public abstract void run(List<Thread> runnerVect, ProgrammingLanguage lang, String executable);
-  public abstract void runDemo(List<Thread> runnerVect, ProgrammingLanguage lang);
+  public abstract void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException;
+  public abstract void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException;
+
+  /**
+   * Submit one task per entity of every world of {@code kind} to the shared bounded pool ({@link Game#submitEntityTask}),
+   * add each to {@code runnerVect} (so {@code LessonRunner.stopAll()} can find and {@code cancel(true)} them from
+   * another thread while this call is still blocked below), then wait for all of them to finish.
+   *
+   * A cancelled task (the user clicked "Stop") is not treated as a failure. Any other exception thrown by
+   * {@code runEntity()} is unwrapped from its {@link ExecutionException} wrapper and re-thrown as-is, so that a
+   * genuine bug surfaces to whoever called this (a test, or the GUI code that catches it broadly so it doesn't
+   * take down the interface).
+   */
+  public void runAll(WorldKind kind, List<Future<?>> runnerVect, RunOutcome progress, ProgrammingLanguage lang, String executable) throws InterruptedException
+  {
+    for (World w : getWorlds(kind)) {
+      w.doDelay();
+      w.runEntities(runnerVect, progress, lang, executable);
+    }
+
+    for (Future<?> f : new ArrayList<Future<?>>(runnerVect)) {
+      try {
+        f.get();
+      } catch (CancellationException ce) {
+        /* Stopped on purpose (LessonRunner.stopAll()); not a failure. */
+      } catch (ExecutionException ee) {
+        Throwable cause = ee.getCause();
+        if (cause instanceof RuntimeException)
+          throw (RuntimeException)cause;
+        throw new RuntimeException(cause);
+      } finally {
+        runnerVect.remove(f);
+      }
+    }
+  }
 
   public void check()
   {

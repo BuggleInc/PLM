@@ -112,7 +112,7 @@ public class Game implements IWorldView {
   private World answerOfSelectedWorld;
   private World initialOfSelectedWorld;
   private Entity selectedEntity;
-  private List<Thread> demoRunners = new ArrayList<Thread>();
+  private List<Future<?>> demoRunners = new ArrayList<Future<?>>();
 
   private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -285,11 +285,19 @@ public class Game implements IWorldView {
 
   /* Bounded pool for the per-exercise "compute the answer" tasks fired at lesson-load time.
    * At most Cores * 1.5 (rounded up) threads are run concurrently to avoid overloading the CPU.
+   *
+   * Also used by World.runEntities() to run each entity, so that "Run"/"Demo" clicks and test suites all share the
+   * same bounded pool instead of spawning one raw Thread per entity. This is safe to share: unlike
+   * computeAnswer()'s tasks (added below with addInitThread(), which run *as* a pool task themselves), nothing that
+   * submits an entity-run task ever does so from a task that is itself running on this same pool and blocking on
+   * the result -- so there is no risk of every worker thread ending up stuck waiting on a sub-task that can never
+   * get a free worker to run on.
    */
   private static final ExecutorService initExecutor = Executors.newFixedThreadPool((int)Math.ceil(Runtime.getRuntime().availableProcessors() * 1.5));
   private static List<Future<?>> initRunners        = new ArrayList<Future<?>>();
 
   public static void addInitThread(Runnable task) { initRunners.add(initExecutor.submit(task)); }
+  public static Future<?> submitEntityTask(Runnable task) { return initExecutor.submit(task); }
   public static void waitInitThreads() throws InterruptedException
   {
     for (Future<?> f : initRunners) {

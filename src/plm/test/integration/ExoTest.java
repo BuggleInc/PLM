@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.Future;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.provider.Arguments;
@@ -23,8 +24,6 @@ import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
-import plm.universe.Entity;
-import plm.universe.World;
 
 /* This ancestor class defines useful methods that are used in specific tests, that are subclasses */
 
@@ -111,7 +110,7 @@ public class ExoTest {
   }
 
   /** Resets current world, populate it with the correction entity, and rerun it */
-  protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException
+  protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException, InterruptedException
   {
     Game.getInstance().setProgramingLanguage(lang);
 
@@ -123,10 +122,7 @@ public class ExoTest {
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
 
-      for (World w : exo.getWorlds(WorldKind.CURRENT))
-        for (Entity ent : w.getEntities()) {
-          lang.runEntity(ent, exo.lastResult, executable);
-        }
+      exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, lang, executable);
 
       exo.check();
     } catch (PLMCompilerException e) {
